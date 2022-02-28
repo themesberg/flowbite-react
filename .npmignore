@@ -1,0 +1,8 @@
+.prettierrc
+.gitignore
+.github
+.idea
+
+tsconfig.json
+node_modules
+src

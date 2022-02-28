@@ -1,3 +1,3 @@
 # :construction: flowbite-react :construction:
 
-Flowbie react components
+Flowbite react components

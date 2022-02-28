@@ -1,12 +1,45 @@
 {
   "name": "flowbite-react",
   "version": "0.0.0",
+  "main": "./build/index.js",
+  "files": [
+    "build"
+  ],
+  "author": {
+    "name": "Nasreddine Bac Ali",
+    "email": "nasreddine.bacali95@gmail.com",
+    "url": "https://github.com/bacali95"
+  },
+  "homepage": "https://github.com/bacali95/flowbite-react",
+  "bugs": {
+    "url": "https://github.com/bacali95/flowbite-react/issues"
+  },
+  "repository": {
+    "url": "https://github.com/bacali95/flowbite-react",
+    "type": "git"
+  },
+  "license": "MIT",
+  "private": false,
   "scripts": {
     "build": "tsc"
   },
+  "peerDependencies": {
+    "react": "^17",
+    "react-dom": "^17"
+  },
   "devDependencies": {
+    "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^4.5.5"
-  }
+  },
+  "keywords": [
+    "react",
+    "design-system",
+    "tailwind",
+    "tailwindcss",
+    "flowbite",
+    "flowbite-react",
+    "flowbite-react-components"
+  ]
 }
