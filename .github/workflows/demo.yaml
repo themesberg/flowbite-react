@@ -1,0 +1,44 @@
+name: Build Demo
+
+on:
+  push:
+    branches-ignore:
+      - 'chore(release): *'
+    tags-ignore:
+      - 'v*'
+  pull_request:
+    tags-ignore:
+      - 'v*'
+
+concurrency: ${{ github.ref }}
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out the code 🗄
+        uses: actions/checkout@v2
+
+      - name: Install NodeJs 16 💿
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Install Packages 🏭
+        run: yarn install
+
+      - name: Lint the code 🕵
+        run: yarn lint
+
+      - name: Check the prettiness of the code 💅
+        run: yarn prettier
+
+      - name: Build the demo website 🛠
+        run: yarn build --base=/flowbite-react/
+
+      - name: Deploy the website 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        if: github.ref == 'refs/heads/main'
+        with:
+          branch: gh-pages
+          folder: build

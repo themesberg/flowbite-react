@@ -1,16 +1,15 @@
 {
   "name": "flowbite-react",
   "version": "0.0.0",
-  "main": "./build/index.js",
+  "main": "./dist/index.js",
   "files": [
-    "build"
+    "dist"
   ],
   "author": {
     "name": "Nasreddine Bac Ali",
     "email": "nasreddine.bacali95@gmail.com",
     "url": "https://github.com/bacali95"
   },
-  "homepage": "https://github.com/bacali95/flowbite-react",
   "bugs": {
     "url": "https://github.com/bacali95/flowbite-react/issues"
   },
@@ -21,17 +20,60 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "tsc"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build-components": "tsc -p tsconfig.components.json",
+    "lint": "eslint",
+    "prettier": "prettier --check {src,test}/**/*.{ts,tsx,json,scss}",
+    "prettier:fix": "prettier --write {src,test}/**/*.{ts,tsx,json,scss}"
   },
   "peerDependencies": {
     "react": "^17",
     "react-dom": "^17"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@heroicons/react": "^1.0.5",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.3",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^16.11.26",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "autoprefixer": "^10.4.2",
+    "classnames": "^2.3.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "flowbite": "^1.3.4",
+    "husky": "^7.0.4",
+    "postcss": "^8.4.7",
     "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-scripts": "^5.0.0",
+    "tailwindcss": "^3.0.23",
     "typescript": "^4.5.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "keywords": [
     "react",
