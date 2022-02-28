@@ -29,7 +29,8 @@
     "lint": "eslint",
     "prettier": "prettier --check {src,test}/**/*.{ts,tsx,json,scss}",
     "prettier:fix": "prettier --write {src,test}/**/*.{ts,tsx,json,scss}",
-    "release": "standard-version -a"
+    "release": "standard-version -a",
+    "prepublishOnly": "yarn build-components"
   },
   "peerDependencies": {
     "react": "^17",
