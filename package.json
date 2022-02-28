@@ -19,7 +19,7 @@
   },
   "license": "MIT",
   "private": false,
-  "homepage": ".",
+  "homepage": "https://bacali95.github.io/flowbite-react/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
