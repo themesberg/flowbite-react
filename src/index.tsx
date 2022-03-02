@@ -1,13 +1,13 @@
 import { render } from 'react-dom';
 import { Dashboard } from './Dashboard';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import './index.css';
 import 'flowbite';
 
 render(
-  <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
+  <HashRouter>
     <Dashboard />
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root'),
 );

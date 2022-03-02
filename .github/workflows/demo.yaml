@@ -35,8 +35,6 @@ jobs:
 
       - name: Build the demo website 🛠
         run: yarn build
-        env:
-          REACT_APP_BASENAME: flowbite-react
 
       - name: Deploy the website 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
