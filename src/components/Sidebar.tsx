@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import { ChevronDownIcon } from '@heroicons/react/solid';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export type SidebarItem = {
   icon: ReactNode;
@@ -28,6 +28,8 @@ export type SidebarProps = {
 };
 
 export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
+  const { pathname } = useLocation();
+
   return (
     <aside
       className={classNames('h-full', {
@@ -49,10 +51,17 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
               <li key={itemIndex}>
                 {item.dropdown === false ? (
                   <Link
-                    className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    className={classNames(
+                      'flex group items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700',
+                      {
+                        'bg-gray-100 dark:bg-gray-700': item.href === pathname,
+                      },
+                    )}
                     to={item.href}
                   >
-                    {item.icon}
+                    <div className="group-hover:text-black dark:group-hover:text-white">
+                      {item.icon}
+                    </div>
                     {!collapsed && (
                       <span className="flex-1 ml-3 whitespace-nowrap">
                         {item.title}
@@ -93,6 +102,8 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
                               'flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
                               {
                                 'pl-11': !collapsed,
+                                'bg-gray-100 dark:bg-gray-700':
+                                  subItem.href === pathname,
                               },
                             )}
                             to={subItem.href}

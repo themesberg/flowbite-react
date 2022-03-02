@@ -1,8 +1,15 @@
 import { FC, useState } from 'react';
-import { DarkThemeToggle, Navbar, Sidebar, SidebarItem } from './components';
-import { ChartPieIcon, MenuAlt1Icon } from '@heroicons/react/solid';
+import {
+  BellIcon,
+  ChartPieIcon,
+  CreditCardIcon,
+  MenuAlt1Icon,
+} from '@heroicons/react/solid';
 import { Route, Routes } from 'react-router-dom';
-import { Alerts } from './pages/Alerts';
+
+import { AlertsPage } from './pages/AlertsPage';
+import { AccordionPage } from './pages/AccordionPage';
+import { DarkThemeToggle, Navbar, Sidebar, SidebarItem } from './components';
 
 export const Dashboard: FC = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -20,10 +27,18 @@ export const Dashboard: FC = () => {
       {
         dropdown: false,
         icon: (
-          <ChartPieIcon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+          <BellIcon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
         ),
         title: 'Alerts',
         href: '/alerts',
+      },
+      {
+        dropdown: false,
+        icon: (
+          <CreditCardIcon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+        ),
+        title: 'Accordion',
+        href: '/accordion',
       },
     ],
   ];
@@ -46,7 +61,8 @@ export const Dashboard: FC = () => {
         <Sidebar collapsed={collapsed} itemsGroups={itemsGroups} />
         <main className="flex-1 overflow-auto p-4">
           <Routes>
-            <Route path="alerts" element={<Alerts />} />
+            <Route path="alerts" element={<AlertsPage />} />
+            <Route path="accordion" element={<AccordionPage />} />
           </Routes>
         </main>
       </div>

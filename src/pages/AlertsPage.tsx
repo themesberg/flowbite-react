@@ -6,9 +6,9 @@ import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 
-import { Alert } from '../components';
+import { Alert, Card } from '../components';
 
-export const Alerts: FC = () => {
+export const AlertsPage: FC = () => {
   const alertText = (
     <>
       <span className="font-medium">Info alert!</span> Change a few things up
@@ -20,7 +20,7 @@ export const Alerts: FC = () => {
     <div className="flex flex-col max-w-4xl mx-auto gap-4 dark:text-white">
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Default alert</span>
-        <div className="flex flex-col gap-4 w-full p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <Card>
           <Alert color="blue">{alertText}</Alert>
           <SyntaxHighlighter language="tsx" style={dracula}>
             {`
@@ -28,11 +28,11 @@ export const Alerts: FC = () => {
   <span className="font-medium">Info alert!</span> Change a few things...
 </Alert>`.trim()}
           </SyntaxHighlighter>
-        </div>
+        </Card>
       </div>
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Alerts with icon</span>
-        <div className="flex flex-col gap-4 w-full p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <Card>
           <Alert color="red" Icon={InformationCircleIcon}>
             {alertText}
           </Alert>
@@ -42,11 +42,11 @@ export const Alerts: FC = () => {
   <span className="font-medium">Info alert!</span> Change a few things...
 </Alert>`.trim()}
           </SyntaxHighlighter>
-        </div>
+        </Card>{' '}
       </div>
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Dismissible alerts</span>
-        <div className="flex flex-col gap-4 w-full p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <Card>
           <Alert color="green" onDismiss={() => alert('Alert dismissed!')}>
             {alertText}
           </Alert>
@@ -56,11 +56,11 @@ export const Alerts: FC = () => {
   <span className="font-medium">Info alert!</span> Change a few things...
 </Alert>`.trim()}
           </SyntaxHighlighter>
-        </div>
+        </Card>{' '}
       </div>
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Rounded</span>
-        <div className="flex flex-col gap-4 w-full p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <Card>
           <Alert color="yellow" rounded={false}>
             {alertText}
           </Alert>
@@ -70,11 +70,11 @@ export const Alerts: FC = () => {
   <span className="font-medium">Info alert!</span> Change a few things...
 </Alert>`.trim()}
           </SyntaxHighlighter>
-        </div>
+        </Card>{' '}
       </div>
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Border accent</span>
-        <div className="flex flex-col gap-4 w-full p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <Card>
           <Alert color="gray" withBorderAccent>
             {alertText}
           </Alert>
@@ -84,11 +84,11 @@ export const Alerts: FC = () => {
   <span className="font-medium">Info alert!</span> Change a few things...
 </Alert>`.trim()}
           </SyntaxHighlighter>
-        </div>
+        </Card>{' '}
       </div>
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Additional content</span>
-        <div className="flex flex-col gap-4 w-full p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <Card>
           <Alert
             color="blue"
             additionalContent={
@@ -156,11 +156,11 @@ export const Alerts: FC = () => {
   </h3>
 </Alert>`.trim()}
           </SyntaxHighlighter>
-        </div>
+        </Card>{' '}
       </div>
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">All options</span>
-        <div className="flex flex-col gap-4 w-full p-6 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <Card>
           <Alert
             color="green"
             rounded={false}
@@ -234,7 +234,7 @@ export const Alerts: FC = () => {
   </h3>
 </Alert>`.trim()}
           </SyntaxHighlighter>
-        </div>
+        </Card>{' '}
       </div>
     </div>
   );
