@@ -1,6 +1,7 @@
 import { FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import { ChevronDownIcon } from '@heroicons/react/solid';
+import { Link } from 'react-router-dom';
 
 export type SidebarItem = {
   icon: ReactNode;
@@ -47,9 +48,9 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
             {items.map((item, itemIndex) => (
               <li key={itemIndex}>
                 {item.dropdown === false ? (
-                  <a
-                    href={item.href}
+                  <Link
                     className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+                    to={item.href}
                   >
                     {item.icon}
                     {!collapsed && (
@@ -62,7 +63,7 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
                         {item.label}
                       </span>
                     )}
-                  </a>
+                  </Link>
                 ) : (
                   <>
                     <button
@@ -87,14 +88,14 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
                     >
                       {item.items.map((subItem, subItemIndex) => (
                         <li key={subItemIndex}>
-                          <a
-                            href={subItem.href}
+                          <Link
                             className={classNames(
                               'flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
                               {
                                 'pl-11': !collapsed,
                               },
                             )}
+                            to={subItem.href}
                           >
                             <span
                               className={classNames(
@@ -112,7 +113,7 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
                                 {subItem.label}
                               </span>
                             )}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
