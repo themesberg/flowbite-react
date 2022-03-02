@@ -1,13 +1,13 @@
-import { StrictMode } from 'react';
 import { render } from 'react-dom';
 import { Dashboard } from './Dashboard';
+import { BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 import 'flowbite';
 
 render(
-  <StrictMode>
+  <BrowserRouter>
     <Dashboard />
-  </StrictMode>,
+  </BrowserRouter>,
   document.getElementById('root'),
 );
