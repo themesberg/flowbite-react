@@ -39,6 +39,8 @@ jobs:
       - name: Deploy the website 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         if: github.ref == 'refs/heads/main'
+        env:
+          BASENAME: flowbite-react
         with:
           branch: gh-pages
           folder: build

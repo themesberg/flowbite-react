@@ -6,7 +6,7 @@ import './index.css';
 import 'flowbite';
 
 render(
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.BASENAME}>
     <Dashboard />
   </BrowserRouter>,
   document.getElementById('root'),

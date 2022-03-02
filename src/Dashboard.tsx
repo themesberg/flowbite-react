@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { DarkThemeToggle, Navbar, Sidebar, SidebarItem } from './components';
 import { ChartPieIcon, MenuAlt1Icon } from '@heroicons/react/solid';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useHref } from 'react-router-dom';
 import { Alerts } from './pages/Alerts';
 
 export const Dashboard: FC = () => {
@@ -14,7 +14,7 @@ export const Dashboard: FC = () => {
           <ChartPieIcon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
         ),
         title: 'Dashboard',
-        href: '/',
+        href: useHref('/'),
         label: '1',
       },
       {
@@ -23,7 +23,7 @@ export const Dashboard: FC = () => {
           <ChartPieIcon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
         ),
         title: 'Alerts',
-        href: '/alerts',
+        href: useHref('/alerts'),
       },
     ],
   ];
