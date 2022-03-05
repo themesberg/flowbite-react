@@ -1,10 +1,10 @@
-import { FC, ReactNode } from 'react';
+import { ComponentProps, FC } from 'react';
 import classNames from 'classnames';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { Link, useLocation } from 'react-router-dom';
 
 export type SidebarItem = {
-  icon: ReactNode;
+  icon: FC<ComponentProps<'svg'>>;
   title: string;
 } & (
   | {
@@ -43,8 +43,7 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
           <ul
             key={groupIndex}
             className={classNames('space-y-2', {
-              'pt-4 mt-4 border-t border-gray-200 dark:border-gray-700':
-                groupIndex > 0,
+              'pt-4 mt-4 border-t border-gray-200 dark:border-gray-700': groupIndex > 0,
             })}
           >
             {items.map((item, itemIndex) => (
@@ -60,13 +59,9 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
                     to={item.href}
                   >
                     <div className="group-hover:text-black dark:group-hover:text-white">
-                      {item.icon}
+                      <item.icon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                     </div>
-                    {!collapsed && (
-                      <span className="flex-1 ml-3 whitespace-nowrap">
-                        {item.title}
-                      </span>
-                    )}
+                    {!collapsed && <span className="flex-1 ml-3 whitespace-nowrap">{item.title}</span>}
                     {!collapsed && item.label && (
                       <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
                         {item.label}
@@ -81,20 +76,15 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
                       aria-controls={`dropdown-group-${groupIndex}`}
                       data-collapse-toggle={`dropdown-group-${groupIndex}`}
                     >
-                      {item.icon}
+                      <item.icon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                       {!collapsed && (
                         <>
-                          <span className="flex-1 ml-3 text-left whitespace-nowrap">
-                            {item.title}
-                          </span>
+                          <span className="flex-1 ml-3 text-left whitespace-nowrap">{item.title}</span>
                           <ChevronDownIcon className="w-6 h-6" />
                         </>
                       )}
                     </button>
-                    <ul
-                      id={`dropdown-group-${groupIndex}`}
-                      className="hidden py-2 space-y-2"
-                    >
+                    <ul id={`dropdown-group-${groupIndex}`} className="hidden py-2 space-y-2">
                       {item.items.map((subItem, subItemIndex) => (
                         <li key={subItemIndex}>
                           <Link
@@ -102,20 +92,16 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
                               'flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
                               {
                                 'pl-11': !collapsed,
-                                'bg-gray-100 dark:bg-gray-700':
-                                  subItem.href === pathname,
+                                'bg-gray-100 dark:bg-gray-700': subItem.href === pathname,
                               },
                             )}
                             to={subItem.href}
                           >
                             <span
-                              className={classNames(
-                                'flex-1 whitespace-nowrap',
-                                {
-                                  'text-left': !collapsed,
-                                  'text-center': collapsed,
-                                },
-                              )}
+                              className={classNames('flex-1 whitespace-nowrap', {
+                                'text-left': !collapsed,
+                                'text-center': collapsed,
+                              })}
                             >
                               {!collapsed ? subItem.title : subItem.title[0]}
                             </span>

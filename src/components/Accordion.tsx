@@ -14,14 +14,8 @@ export type AccordionProps = {
   arrowIcon?: FC<ComponentProps<'svg'>>;
 };
 
-export const Accordion: FC<AccordionProps> = ({
-  items,
-  flush,
-  arrowIcon: ArrowIcon = ChevronDownIcon,
-}) => {
-  const [openItems, setOpenItems] = useState<boolean[]>(
-    items.map((item) => item.open),
-  );
+export const Accordion: FC<AccordionProps> = ({ items, flush, arrowIcon: ArrowIcon = ChevronDownIcon }) => {
+  const [openItems, setOpenItems] = useState<(boolean | undefined)[]>(items.map((item) => item.open));
 
   return (
     <div id="accordion-collapse" data-accordion="collapse">
@@ -38,15 +32,12 @@ export const Accordion: FC<AccordionProps> = ({
                   'border-b': flush,
                   'border-t-0': index > 0,
                   'rounded-t-xl': !flush && index === 0,
-                  'rounded-b-xl':
-                    !flush && index === items.length - 1 && !openItems[index],
+                  'rounded-b-xl': !flush && index === items.length - 1 && !openItems[index],
                   'text-gray-900 dark:text-white': !!openItems[index],
                   'bg-gray-100 dark:bg-gray-800': !!openItems[index] && !flush,
                 },
               )}
-              onClick={() =>
-                setOpenItems({ ...openItems, [index]: !openItems[index] })
-              }
+              onClick={() => setOpenItems({ ...openItems, [index]: !openItems[index] })}
             >
               <span>{item.title}</span>
               <ArrowIcon
@@ -58,14 +49,10 @@ export const Accordion: FC<AccordionProps> = ({
           </h2>
           <div className={classNames({ hidden: !openItems[index] })}>
             <div
-              className={classNames(
-                'py-5 border-b border-t-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900',
-                {
-                  'px-5 border': !flush,
-                  'rounded-b-xl':
-                    !flush && index === items.length - 1 && openItems[index],
-                },
-              )}
+              className={classNames('py-5 border-b border-t-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900', {
+                'px-5 border': !flush,
+                'rounded-b-xl': !flush && index === items.length - 1 && openItems[index],
+              })}
             >
               {item.body}
             </div>

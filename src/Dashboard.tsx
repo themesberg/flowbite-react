@@ -1,15 +1,19 @@
 import { FC, useState } from 'react';
 import {
+  BadgeCheckIcon,
   BellIcon,
   ChartPieIcon,
+  ChevronDoubleRightIcon,
   CreditCardIcon,
   MenuAlt1Icon,
 } from '@heroicons/react/solid';
 import { Route, Routes } from 'react-router-dom';
 
+import { DarkThemeToggle, Navbar, Sidebar, SidebarItem } from './components';
 import { AlertsPage } from './pages/AlertsPage';
 import { AccordionPage } from './pages/AccordionPage';
-import { DarkThemeToggle, Navbar, Sidebar, SidebarItem } from './components';
+import { BadgesPage } from './pages/BadgesPage';
+import { BreadcrumbPage } from './pages/BreadcrumbPage';
 
 export const Dashboard: FC = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -17,28 +21,34 @@ export const Dashboard: FC = () => {
     [
       {
         dropdown: false,
-        icon: (
-          <ChartPieIcon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-        ),
+        icon: ChartPieIcon,
         title: 'Dashboard',
         href: '/',
         label: '1',
       },
       {
         dropdown: false,
-        icon: (
-          <BellIcon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-        ),
+        icon: BellIcon,
         title: 'Alerts',
         href: '/alerts',
       },
       {
         dropdown: false,
-        icon: (
-          <CreditCardIcon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-        ),
+        icon: CreditCardIcon,
         title: 'Accordion',
         href: '/accordion',
+      },
+      {
+        dropdown: false,
+        icon: BadgeCheckIcon,
+        title: 'Badges',
+        href: '/badges',
+      },
+      {
+        dropdown: false,
+        icon: ChevronDoubleRightIcon,
+        title: 'Breadcrumb',
+        href: '/breadcrumb',
       },
     ],
   ];
@@ -51,9 +61,7 @@ export const Dashboard: FC = () => {
             className="w-6 h-6 mr-6 cursor-pointer text-gray-600 dark:text-gray-400"
             onClick={() => setCollapsed(!collapsed)}
           />
-          <span className="text-xl font-semibold dark:text-white">
-            Flowbite React Components
-          </span>
+          <span className="text-xl font-semibold dark:text-white">Flowbite React Components</span>
         </div>
         <DarkThemeToggle />
       </Navbar>
@@ -63,6 +71,8 @@ export const Dashboard: FC = () => {
           <Routes>
             <Route path="alerts" element={<AlertsPage />} />
             <Route path="accordion" element={<AccordionPage />} />
+            <Route path="badges" element={<BadgesPage />} />
+            <Route path="breadcrumb" element={<BreadcrumbPage />} />
           </Routes>
         </main>
       </div>
