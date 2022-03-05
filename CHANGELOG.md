@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/bacali95/flowbite-react/compare/v0.0.4...v0.0.5) (2022-03-05)
+
+
+### Features
+
+* Add Badges and Breadcrumb ([7b7b288](https://github.com/bacali95/flowbite-react/commit/7b7b288763aee5d2baebc8052f370f60e8d9df3a))
+
 ### [0.0.4](https://github.com/bacali95/flowbite-react/compare/v0.0.3...v0.0.4) (2022-03-02)
 
 
