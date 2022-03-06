@@ -2,10 +2,11 @@ import { FC, useState } from 'react';
 import {
   BadgeCheckIcon,
   BellIcon,
-  ChartPieIcon,
   ChevronDoubleRightIcon,
   CreditCardIcon,
+  DuplicateIcon,
   MenuAlt1Icon,
+  TemplateIcon,
 } from '@heroicons/react/solid';
 import { Route, Routes } from 'react-router-dom';
 
@@ -14,6 +15,7 @@ import { AlertsPage } from './pages/AlertsPage';
 import { AccordionPage } from './pages/AccordionPage';
 import { BadgesPage } from './pages/BadgesPage';
 import { BreadcrumbPage } from './pages/BreadcrumbPage';
+import { ButtonsPage } from './pages/ButtonsPage';
 
 export const Dashboard: FC = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -21,7 +23,7 @@ export const Dashboard: FC = () => {
     [
       {
         dropdown: false,
-        icon: ChartPieIcon,
+        icon: TemplateIcon,
         title: 'Dashboard',
         href: '/',
         label: '1',
@@ -50,6 +52,12 @@ export const Dashboard: FC = () => {
         title: 'Breadcrumb',
         href: '/breadcrumb',
       },
+      {
+        dropdown: false,
+        icon: DuplicateIcon,
+        title: 'Buttons',
+        href: '/buttons',
+      },
     ],
   ];
 
@@ -73,6 +81,7 @@ export const Dashboard: FC = () => {
             <Route path="accordion" element={<AccordionPage />} />
             <Route path="badges" element={<BadgesPage />} />
             <Route path="breadcrumb" element={<BreadcrumbPage />} />
+            <Route path="buttons" element={<ButtonsPage />} />
           </Routes>
         </main>
       </div>

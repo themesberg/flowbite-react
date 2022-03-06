@@ -13,7 +13,7 @@ export const BadgesPage: FC = () => {
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Default badge</span>
         <Card>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Badge color="blue">Default</Badge>
             <Badge color="gray">Dark</Badge>
             <Badge color="red">Red</Badge>
@@ -39,7 +39,7 @@ export const BadgesPage: FC = () => {
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Large badge</span>
         <Card>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Badge color="blue" size="sm">
               Default
             </Badge>
@@ -81,7 +81,7 @@ export const BadgesPage: FC = () => {
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Badges as links</span>
         <Card>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Badge href="#/badges">Default</Badge>
             <Badge size="sm" href="#/badges">
               Default
@@ -97,7 +97,7 @@ export const BadgesPage: FC = () => {
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Badges with icon</span>
         <Card>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Badge icon={ClockIcon}>2 minutes ago</Badge>
             <Badge color="gray" icon={ClockIcon}>
               3 days ago
@@ -113,7 +113,7 @@ export const BadgesPage: FC = () => {
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Badge with icon only</span>
         <Card>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <Badge icon={CheckIcon} />
             <Badge color="gray" icon={CheckIcon} />
             <Badge size="sm" icon={CheckIcon} />
