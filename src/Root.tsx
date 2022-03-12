@@ -1,10 +1,11 @@
 import { FC, lazy, Suspense, useState } from 'react';
 import {
+  HiAnnotation,
   HiBadgeCheck,
   HiBell,
   HiChevronDoubleRight,
+  HiCollection,
   HiCreditCard,
-  HiDotsCircleHorizontal,
   HiDuplicate,
   HiHome,
   HiMenuAlt1,
@@ -21,6 +22,7 @@ const AccordionPage = lazy(() => import('./pages/AccordionPage'));
 const BadgesPage = lazy(() => import('./pages/BadgesPage'));
 const BreadcrumbPage = lazy(() => import('./pages/BreadcrumbPage'));
 const ButtonsPage = lazy(() => import('./pages/ButtonsPage'));
+const CardPage = lazy(() => import('./pages/CardPage'));
 const SpinnersPage = lazy(() => import('./pages/SpinnersPage'));
 const TooltipsPage = lazy(() => import('./pages/TooltipsPage'));
 
@@ -60,9 +62,15 @@ export const Root: FC = () => {
       },
       {
         group: false,
-        icon: HiDuplicate,
+        icon: HiCollection,
         title: 'Buttons',
         href: '/buttons',
+      },
+      {
+        group: false,
+        icon: HiDuplicate,
+        title: 'Card',
+        href: '/card',
       },
       {
         group: false,
@@ -72,7 +80,7 @@ export const Root: FC = () => {
       },
       {
         group: false,
-        icon: HiDotsCircleHorizontal,
+        icon: HiAnnotation,
         title: 'Tooltips',
         href: '/tooltips',
       },
@@ -118,6 +126,7 @@ export const Root: FC = () => {
               <Route path="badges" element={<BadgesPage />} />
               <Route path="breadcrumb" element={<BreadcrumbPage />} />
               <Route path="buttons" element={<ButtonsPage />} />
+              <Route path="card" element={<CardPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
             </Routes>
