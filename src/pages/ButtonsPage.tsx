@@ -246,10 +246,8 @@ const ButtonsPage: FC = () => {
         <span className="text-2xl font-bold">Loader</span>
         <Card className="dark:!bg-gray-900">
           <div className="flex flex-wrap items-center gap-2">
-            <Button loader size="sm">
-              Loading ...
-            </Button>
-            <Button loader size="sm" outline>
+            <Button loader>Loading ...</Button>
+            <Button loader outline>
               Loading ...
             </Button>
           </div>

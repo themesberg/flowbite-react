@@ -75,11 +75,27 @@ const gradientDuoToneClasses: Record<GradientDuoTone, string> = {
 };
 
 const sizeClasses: Record<Size, string> = {
-  xs: 'text-xs px-3 py-2',
-  sm: 'text-sm px-3 py-2',
-  md: 'text-sm px-5 py-2.5',
-  lg: 'text-base px-5 py-3',
-  xl: 'text-base px-6 py-3.5',
+  xs: 'text-xs px-2 py-1',
+  sm: 'text-sm px-3 py-1.5',
+  md: 'text-sm px-4 py-2',
+  lg: 'text-base px-5 py-2.5',
+  xl: 'text-base px-6 py-3',
+};
+
+const iconSizeClasses: Record<Size, string> = {
+  xs: '!px-1',
+  sm: '!px-1.5',
+  md: '!px-2',
+  lg: '!p-2.5',
+  xl: '!p-3',
+};
+
+const previousSize: Record<Size, Size> = {
+  xs: 'xs',
+  sm: 'xs',
+  md: 'sm',
+  lg: 'md',
+  xl: 'lg',
 };
 
 export const Button: FC<ButtonProps> = ({
@@ -115,21 +131,25 @@ export const Button: FC<ButtonProps> = ({
       {...props}
     >
       <span
-        className={classNames('flex', sizeClasses[size], {
+        className={classNames('flex items-center', sizeClasses[size], {
           'text-gray-900 transition-all ease-in duration-75 bg-white dark:bg-gray-900 group-hover:bg-opacity-0 group-hover:text-inherit dark:text-white':
             outline,
           'rounded-md': outline && !pill,
           'rounded-full': outline && pill,
-          'text-sm px-2.5': iconButton,
+          [iconSizeClasses[size]]: iconButton,
           'gap-2': loader,
         })}
       >
-        {loader && <Spinner size={size} />}
-
-        {!iconButton && iconPosition === 'start' && Icon && <Icon className="mr-1.5 w-5 h-5" />}
-        {children}
-        {!iconButton && iconPosition === 'end' && Icon && <Icon className="ml-1.5 w-5 h-5" />}
-        {iconButton && Icon && <Icon className="w-5 h-5" />}
+        {iconButton ? (
+          Icon && <Icon className="w-5 h-5" />
+        ) : (
+          <>
+            {loader && <Spinner size={previousSize[size]} />}
+            {!loader && iconPosition === 'start' && Icon && <Icon className="mr-2 w-5 h-5" />}
+            {children}
+            {iconPosition === 'end' && Icon && <Icon className="ml-2 w-5 h-5" />}
+          </>
+        )}
       </span>
 
       {label && (

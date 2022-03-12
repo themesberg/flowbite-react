@@ -20,11 +20,11 @@ const colorClasses: Record<Color, string> = {
 };
 
 const sizeClasses: Record<Size, string> = {
-  xs: 'w-4 h-4',
-  sm: 'w-6 h-6',
-  md: 'w-8 h-8',
-  lg: 'w-10 h-10',
-  xl: 'w-12 h-12',
+  xs: 'w-3 h-3',
+  sm: 'w-4 h-4',
+  md: 'w-6 h-6',
+  lg: 'w-8 h-8',
+  xl: 'w-10 h-10',
 };
 
 export const Spinner: FC<SpinnerProps> = ({ color = 'blue', size = 'md' }) => (
