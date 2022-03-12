@@ -1,7 +1,8 @@
-import { ComponentProps, FC, useState } from 'react';
+import { ComponentProps, FC, ReactNode, useState } from 'react';
 import classNames from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import { HiChevronDown } from 'react-icons/hi';
+import { Tooltip } from './Tooltip';
 
 export type SidebarItem = {
   icon: FC<ComponentProps<'svg'>>;
@@ -35,6 +36,15 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
     setGroupsState((state) => ({ ...state, [index]: !state[index] }));
   };
 
+  const ItemWrapper = ({ title, children }: { title: string; children: ReactNode }) =>
+    collapsed ? (
+      <Tooltip content={title} placement="right">
+        {children}
+      </Tooltip>
+    ) : (
+      <>{children}</>
+    );
+
   return (
     <aside
       className={classNames('h-full', {
@@ -54,40 +64,44 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
             {items.map((item, itemIndex) => (
               <li key={itemIndex}>
                 {item.group === false ? (
-                  <Link
-                    className={classNames(
-                      'flex group items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700',
-                      {
-                        'bg-gray-100 dark:bg-gray-700': item.href === pathname,
-                      },
-                    )}
-                    to={item.href}
-                  >
-                    <div className="group-hover:text-black dark:group-hover:text-white">
-                      <item.icon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-                    </div>
-                    {!collapsed && <span className="flex-1 ml-3 whitespace-nowrap">{item.title}</span>}
-                    {!collapsed && item.label && (
-                      <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
-                        {item.label}
-                      </span>
-                    )}
-                  </Link>
+                  <ItemWrapper title={item.title}>
+                    <Link
+                      className={classNames(
+                        'flex group items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700',
+                        {
+                          'bg-gray-100 dark:bg-gray-700': item.href === pathname,
+                        },
+                      )}
+                      to={item.href}
+                    >
+                      <div className="group-hover:text-black dark:group-hover:text-white">
+                        <item.icon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+                      </div>
+                      {!collapsed && <span className="flex-1 ml-3 whitespace-nowrap">{item.title}</span>}
+                      {!collapsed && item.label && (
+                        <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
+                          {item.label}
+                        </span>
+                      )}
+                    </Link>
+                  </ItemWrapper>
                 ) : (
                   <>
-                    <button
-                      type="button"
-                      className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      onClick={toggleGroup(groupIndex)}
-                    >
-                      <item.icon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-                      {!collapsed && (
-                        <>
-                          <span className="flex-1 ml-3 text-left whitespace-nowrap">{item.title}</span>
-                          <HiChevronDown className="w-6 h-6" />
-                        </>
-                      )}
-                    </button>
+                    <ItemWrapper title={item.title}>
+                      <button
+                        type="button"
+                        className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                        onClick={toggleGroup(groupIndex)}
+                      >
+                        <item.icon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+                        {!collapsed && (
+                          <>
+                            <span className="flex-1 ml-3 text-left whitespace-nowrap">{item.title}</span>
+                            <HiChevronDown className="w-6 h-6" />
+                          </>
+                        )}
+                      </button>
+                    </ItemWrapper>
                     <ul
                       className={classNames('py-2 space-y-2', {
                         hidden: !groupsState[groupIndex],
@@ -95,30 +109,32 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
                     >
                       {item.items.map((subItem, subItemIndex) => (
                         <li key={subItemIndex}>
-                          <Link
-                            className={classNames(
-                              'flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
-                              {
-                                'pl-11': !collapsed,
-                                'bg-gray-100 dark:bg-gray-700': subItem.href === pathname,
-                              },
-                            )}
-                            to={subItem.href}
-                          >
-                            <span
-                              className={classNames('flex-1 whitespace-nowrap', {
-                                'text-left': !collapsed,
-                                'text-center': collapsed,
-                              })}
+                          <ItemWrapper title={subItem.title}>
+                            <Link
+                              className={classNames(
+                                'flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
+                                {
+                                  'pl-11': !collapsed,
+                                  'bg-gray-100 dark:bg-gray-700': subItem.href === pathname,
+                                },
+                              )}
+                              to={subItem.href}
                             >
-                              {!collapsed ? subItem.title : subItem.title[0]}
-                            </span>
-                            {!collapsed && subItem.label && (
-                              <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
-                                {subItem.label}
+                              <span
+                                className={classNames('flex-1 whitespace-nowrap', {
+                                  'text-left': !collapsed,
+                                  'text-center': collapsed,
+                                })}
+                              >
+                                {!collapsed ? subItem.title : subItem.title[0]}
                               </span>
-                            )}
-                          </Link>
+                              {!collapsed && subItem.label && (
+                                <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">
+                                  {subItem.label}
+                                </span>
+                              )}
+                            </Link>
+                          </ItemWrapper>
                         </li>
                       ))}
                     </ul>
