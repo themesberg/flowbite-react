@@ -1,5 +1,6 @@
 import { ComponentProps, FC } from 'react';
 import classNames from 'classnames';
+import { Spinner } from './Spinner';
 
 type Color = 'blue' | 'alternative' | 'dark' | 'light' | 'green' | 'red' | 'yellow' | 'purple';
 type GradientMonochrome = 'blue' | 'green' | 'cyan' | 'teal' | 'lime' | 'red' | 'pink' | 'purple';
@@ -11,11 +12,19 @@ type GradientDuoTone =
   | 'pinkToOrange'
   | 'tealToLime'
   | 'redToYellow';
-
+type Size = 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
+type IconPosition = 'left' | 'right';
 export type ButtonProps = ComponentProps<'button'> & {
   pill?: boolean;
   outline?: boolean;
+  disabled?: boolean;
+  loader?: boolean;
+  iconButton?: boolean;
+  label?: string;
   color?: Color;
+  size?: Size;
+  icon?: FC<ComponentProps<'svg'>>;
+  iconPosition?: IconPosition;
   gradientMonochrome?: GradientMonochrome;
   gradientDuoTone?: GradientDuoTone;
 };
@@ -65,10 +74,25 @@ const gradientDuoToneClasses: Record<GradientDuoTone, string> = {
     'text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:ring-red-100 dark:focus:ring-red-400',
 };
 
+const sizeClasses: Record<Size, string> = {
+  extraSmall: 'text-xs px-3 py-2',
+  small: 'text-sm px-3 py-2',
+  medium: 'text-sm px-5 py-2.5',
+  large: 'text-base px-5 py-3',
+  extraLarge: 'text-base px-6 py-3.5',
+};
+
 export const Button: FC<ButtonProps> = ({
   children,
   pill,
   outline,
+  disabled = false,
+  loader = false,
+  iconButton = false,
+  label,
+  size = 'medium',
+  icon: Icon,
+  iconPosition,
   color = 'blue',
   gradientMonochrome,
   gradientDuoTone,
@@ -76,24 +100,48 @@ export const Button: FC<ButtonProps> = ({
 }) => {
   return (
     <button
+      disabled={loader || disabled}
       className={classNames(
-        'flex items-center justify-center p-0.5 text-sm text-center font-medium group',
+        'flex h-min items-center justify-center p-0.5 text-center font-medium group',
         pill ? 'rounded-full' : 'rounded-lg',
         !gradientMonochrome && !gradientDuoTone && colorClasses[color],
         !gradientDuoTone && gradientMonochrome && gradientMonochromeClasses[gradientMonochrome],
         gradientDuoTone && gradientDuoToneClasses[gradientDuoTone],
+        {
+          'bg-blue-400 dark:bg-blue-500 hover:bg-blue-400 dark:hover:bg-blue-400 cursor-not-allowed': disabled,
+        },
       )}
       type="button"
       {...props}
     >
       <span
-        className={classNames('px-5 py-2.5 rounded-md', {
+        className={classNames('flex', size && sizeClasses[size], {
           'text-gray-900 transition-all ease-in duration-75 bg-white dark:bg-gray-900 group-hover:bg-opacity-0 group-hover:text-inherit dark:text-white':
             outline,
+          'rounded-md': outline && !pill,
+          'rounded-full': outline && pill,
+          'text-sm px-2.5': iconButton,
+          'gap-2': loader,
         })}
       >
+        {loader && <Spinner size="xs" />}
+
+        {iconPosition === 'left' && Icon && <Icon className="mr-1.5 w-5 h-5" />}
         {children}
+        {iconPosition === 'right' && Icon && <Icon className="ml-1.5 w-5 h-5" />}
+        {iconButton && Icon && <Icon className="w-5 h-5" />}
       </span>
+
+      {label && (
+        <span
+          className={classNames({
+            'inline-flex justify-center items-center mr-4 -ml-2 w-4 h-4 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full':
+              !!label,
+          })}
+        >
+          {label}
+        </span>
+      )}
     </button>
   );
 };
