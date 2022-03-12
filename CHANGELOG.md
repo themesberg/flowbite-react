@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/bacali95/flowbite-react/compare/v0.0.6...v0.0.7) (2022-03-12)
+
+
+### Features
+
+* use react-icons icons library ([236ba62](https://github.com/bacali95/flowbite-react/commit/236ba627fe2da61938cce05b16fc865c76a83e8a))
+
 ### [0.0.6](https://github.com/bacali95/flowbite-react/compare/v0.0.5...v0.0.6) (2022-03-12)
 
 
