@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/bacali95/flowbite-react/compare/v0.0.5...v0.0.6) (2022-03-12)
+
+
+### Features
+
+* add tooltip component ([d2edbb7](https://github.com/bacali95/flowbite-react/commit/d2edbb78f91d632a832c0ee5b993080f07de46c9))
+
+
+### Bug Fixes
+
+* Edit Accordion.tsx ([1110731](https://github.com/bacali95/flowbite-react/commit/1110731209c4976f1539cf4fca777b8587783bc0))
+* use React state instead of data-* attributes in Sidebar.tsx ([3942ddd](https://github.com/bacali95/flowbite-react/commit/3942ddd65111d67f465c421720ab9a4c24af5e4d))
+
 ### [0.0.5](https://github.com/bacali95/flowbite-react/compare/v0.0.4...v0.0.5) (2022-03-05)
 
 
