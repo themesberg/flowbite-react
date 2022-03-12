@@ -18,7 +18,7 @@ export const Accordion: FC<AccordionProps> = ({ items, flush, arrowIcon: ArrowIc
   const [openItems, setOpenItems] = useState<(boolean | undefined)[]>(items.map((item) => item.open));
 
   return (
-    <div id="accordion-collapse" data-accordion="collapse">
+    <>
       {items.map((item, index) => (
         <Fragment key={index}>
           <h2>
@@ -59,6 +59,6 @@ export const Accordion: FC<AccordionProps> = ({ items, flush, arrowIcon: ArrowIc
           </div>
         </Fragment>
       ))}
-    </div>
+    </>
   );
 };
