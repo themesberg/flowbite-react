@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/bacali95/flowbite-react/compare/v0.0.6...v0.0.9) (2022-03-12)
+
+
+### Features
+
+* add Card component ([6c3d067](https://github.com/bacali95/flowbite-react/commit/6c3d067eb01022d5e444c38362b917aaa4c0f9d7))
+* add spinner component ([61c417d](https://github.com/bacali95/flowbite-react/commit/61c417dcc73df86339d5e6499b79873db2fb8a30))
+* use react-icons icons library ([236ba62](https://github.com/bacali95/flowbite-react/commit/236ba627fe2da61938cce05b16fc865c76a83e8a))
+* use tooltips when sidebar is collapsed ([17ecd1a](https://github.com/bacali95/flowbite-react/commit/17ecd1a45a6dc6ad504e33dd4b1af968e7f97314))
+
 ### [0.0.8](https://github.com/bacali95/flowbite-react/compare/v0.0.6...v0.0.8) (2022-03-12)
 
 
