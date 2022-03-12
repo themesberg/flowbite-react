@@ -44,6 +44,12 @@ const DashboardPage: FC = () => {
       images: { light: 'buttons.svg', dark: 'buttons.svg' },
     },
     {
+      title: 'Spinners',
+      href: '/spinners',
+      className: 'w-36',
+      images: { light: 'spinners-light.svg', dark: 'spinners-dark.svg' },
+    },
+    {
       title: 'Tooltips',
       href: '/tooltips',
       className: 'w-24',

@@ -10,6 +10,7 @@ import {
   HiMenuAlt1,
 } from 'react-icons/hi';
 import { BsGithub } from 'react-icons/bs';
+import { FaSpinner } from 'react-icons/fa';
 import { Route, Routes } from 'react-router-dom';
 
 import { DarkThemeToggle, Navbar, Sidebar, SidebarItem, Spinner } from './components';
@@ -20,6 +21,7 @@ const AccordionPage = lazy(() => import('./pages/AccordionPage'));
 const BadgesPage = lazy(() => import('./pages/BadgesPage'));
 const BreadcrumbPage = lazy(() => import('./pages/BreadcrumbPage'));
 const ButtonsPage = lazy(() => import('./pages/ButtonsPage'));
+const SpinnersPage = lazy(() => import('./pages/SpinnersPage'));
 const TooltipsPage = lazy(() => import('./pages/TooltipsPage'));
 
 export const Root: FC = () => {
@@ -64,6 +66,12 @@ export const Root: FC = () => {
       },
       {
         group: false,
+        icon: FaSpinner,
+        title: 'Spinners',
+        href: '/spinners',
+      },
+      {
+        group: false,
         icon: HiDotsCircleHorizontal,
         title: 'Tooltips',
         href: '/tooltips',
@@ -96,7 +104,13 @@ export const Root: FC = () => {
       <div className="flex h-full overflow-hidden bg-gray-50 dark:bg-gray-900">
         <Sidebar collapsed={collapsed} itemsGroups={itemsGroups} />
         <main className="flex-1 overflow-auto p-4">
-          <Suspense fallback={<Spinner />}>
+          <Suspense
+            fallback={
+              <div className="flex items-center justify-center h-full">
+                <Spinner />
+              </div>
+            }
+          >
             <Routes>
               <Route path="" element={<DashboardPage />} />
               <Route path="alerts" element={<AlertsPage />} />
@@ -104,6 +118,7 @@ export const Root: FC = () => {
               <Route path="badges" element={<BadgesPage />} />
               <Route path="breadcrumb" element={<BreadcrumbPage />} />
               <Route path="buttons" element={<ButtonsPage />} />
+              <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
             </Routes>
           </Suspense>
