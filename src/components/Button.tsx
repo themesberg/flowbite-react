@@ -12,12 +12,11 @@ type GradientDuoTone =
   | 'pinkToOrange'
   | 'tealToLime'
   | 'redToYellow';
-type Size = 'extraSmall' | 'small' | 'medium' | 'large' | 'extraLarge';
-type IconPosition = 'left' | 'right';
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+type IconPosition = 'start' | 'end';
 export type ButtonProps = ComponentProps<'button'> & {
   pill?: boolean;
   outline?: boolean;
-  disabled?: boolean;
   loader?: boolean;
   iconButton?: boolean;
   label?: string;
@@ -30,18 +29,19 @@ export type ButtonProps = ComponentProps<'button'> & {
 };
 
 const colorClasses: Record<Color, string> = {
-  blue: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800',
+  blue: 'text-white bg-blue-700 hover:bg-blue-800 disabled:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:disabled:hover:bg-blue-600',
   alternative:
-    'text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-2',
-  dark: 'text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700',
+    'text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 disabled:hover:bg-white focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-2 dark:disabled:hover:bg-gray-800',
+  dark: 'text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 disabled:hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700 dark:disabled:hover:bg-gray-800',
   light:
-    'text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-800',
+    'text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 disabled:hover:bg-white dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-800 dark:disabled:hover:bg-gray-600',
   green:
-    'text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800',
-  red: 'text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900',
-  yellow: 'text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 dark:focus:ring-yellow-900',
+    'text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 disabled:hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 dark:disabled:hover:bg-green-600',
+  red: 'text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 disabled:hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 dark:disabled:hover:bg-red-600',
+  yellow:
+    'text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 disabled:hover:bg-yellow-400 dark:focus:ring-yellow-900 dark:disabled:hover:bg-yellow-400',
   purple:
-    'text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900',
+    'text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 disabled:hover:bg-purple-700 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 dark:disabled:hover:bg-purple-600',
 };
 
 const gradientMonochromeClasses: Record<GradientMonochrome, string> = {
@@ -75,11 +75,11 @@ const gradientDuoToneClasses: Record<GradientDuoTone, string> = {
 };
 
 const sizeClasses: Record<Size, string> = {
-  extraSmall: 'text-xs px-3 py-2',
-  small: 'text-sm px-3 py-2',
-  medium: 'text-sm px-5 py-2.5',
-  large: 'text-base px-5 py-3',
-  extraLarge: 'text-base px-6 py-3.5',
+  xs: 'text-xs px-3 py-2',
+  sm: 'text-sm px-3 py-2',
+  md: 'text-sm px-5 py-2.5',
+  lg: 'text-base px-5 py-3',
+  xl: 'text-base px-6 py-3.5',
 };
 
 export const Button: FC<ButtonProps> = ({
@@ -90,9 +90,9 @@ export const Button: FC<ButtonProps> = ({
   loader = false,
   iconButton = false,
   label,
-  size = 'medium',
+  size = 'md',
   icon: Icon,
-  iconPosition,
+  iconPosition = 'start',
   color = 'blue',
   gradientMonochrome,
   gradientDuoTone,
@@ -100,7 +100,7 @@ export const Button: FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      disabled={loader || disabled}
+      disabled={disabled}
       className={classNames(
         'flex h-min items-center justify-center p-0.5 text-center font-medium group',
         pill ? 'rounded-full' : 'rounded-lg',
@@ -108,14 +108,14 @@ export const Button: FC<ButtonProps> = ({
         !gradientDuoTone && gradientMonochrome && gradientMonochromeClasses[gradientMonochrome],
         gradientDuoTone && gradientDuoToneClasses[gradientDuoTone],
         {
-          'bg-blue-400 dark:bg-blue-500 hover:bg-blue-400 dark:hover:bg-blue-400 cursor-not-allowed': disabled,
+          'opacity-50 dark:opacity-50 cursor-not-allowed': disabled,
         },
       )}
       type="button"
       {...props}
     >
       <span
-        className={classNames('flex', size && sizeClasses[size], {
+        className={classNames('flex', sizeClasses[size], {
           'text-gray-900 transition-all ease-in duration-75 bg-white dark:bg-gray-900 group-hover:bg-opacity-0 group-hover:text-inherit dark:text-white':
             outline,
           'rounded-md': outline && !pill,
@@ -124,21 +124,16 @@ export const Button: FC<ButtonProps> = ({
           'gap-2': loader,
         })}
       >
-        {loader && <Spinner size="xs" />}
+        {loader && <Spinner size={size} />}
 
-        {iconPosition === 'left' && Icon && <Icon className="mr-1.5 w-5 h-5" />}
+        {!iconButton && iconPosition === 'start' && Icon && <Icon className="mr-1.5 w-5 h-5" />}
         {children}
-        {iconPosition === 'right' && Icon && <Icon className="ml-1.5 w-5 h-5" />}
+        {!iconButton && iconPosition === 'end' && Icon && <Icon className="ml-1.5 w-5 h-5" />}
         {iconButton && Icon && <Icon className="w-5 h-5" />}
       </span>
 
       {label && (
-        <span
-          className={classNames({
-            'inline-flex justify-center items-center mr-4 -ml-2 w-4 h-4 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full':
-              !!label,
-          })}
-        >
+        <span className="inline-flex justify-center items-center mr-4 -ml-2 w-4 h-4 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
           {label}
         </span>
       )}

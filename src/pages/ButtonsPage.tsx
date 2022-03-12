@@ -174,11 +174,11 @@ const ButtonsPage: FC = () => {
         <span className="text-2xl font-bold">Button sizes</span>
         <Card className="dark:!bg-gray-900">
           <div className="flex flex-wrap items-center gap-2">
-            <Button size="extraSmall">Extra small</Button>
-            <Button size="small">Small</Button>
-            <Button size="medium">Base</Button>
-            <Button size="large">Large</Button>
-            <Button size="extraLarge">Extra large</Button>
+            <Button size="xs">Extra small</Button>
+            <Button size="sm">Small</Button>
+            <Button size="md">Base</Button>
+            <Button size="lg">Large</Button>
+            <Button size="xl">Extra large</Button>
           </div>
           <SyntaxHighlighter language="tsx" style={dracula}>
             {`
@@ -195,10 +195,10 @@ const ButtonsPage: FC = () => {
         <span className="text-2xl font-bold">Buttons with icon</span>
         <Card className="dark:!bg-gray-900">
           <div className="flex flex-wrap items-center gap-2">
-            <Button icon={HiShoppingCart} iconPosition="left">
+            <Button icon={HiShoppingCart} iconPosition="start">
               Buy now
             </Button>
-            <Button icon={HiOutlineArrowRight} iconPosition="right">
+            <Button icon={HiOutlineArrowRight} iconPosition="end">
               Choose plan
             </Button>
           </div>
@@ -246,15 +246,17 @@ const ButtonsPage: FC = () => {
         <span className="text-2xl font-bold">Loader</span>
         <Card className="dark:!bg-gray-900">
           <div className="flex flex-wrap items-center gap-2">
-            <Button loader>Loading ...</Button>
-            <Button loader outline>
+            <Button loader size="sm">
+              Loading ...
+            </Button>
+            <Button loader size="sm" outline>
               Loading ...
             </Button>
           </div>
           <SyntaxHighlighter language="tsx" style={dracula}>
             {`
-<Button loader>Loading ...</Button>
-<Button loader outline>Loading ...</Button>
+<Button loader size="sm">Loading ...</Button>
+<Button loader size="sm" outline>Loading ...</Button>
 `.trim()}
           </SyntaxHighlighter>
         </Card>

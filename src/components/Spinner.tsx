@@ -2,7 +2,7 @@ import { FC } from 'react';
 import classNames from 'classnames';
 
 type Color = 'blue' | 'gray' | 'green' | 'red' | 'yellow' | 'pink' | 'purple';
-type Size = 'xs' | 'sm' | 'md' | 'lg';
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type SpinnerProps = {
   color?: Color;
@@ -24,6 +24,7 @@ const sizeClasses: Record<Size, string> = {
   sm: 'w-6 h-6',
   md: 'w-8 h-8',
   lg: 'w-10 h-10',
+  xl: 'w-12 h-12',
 };
 
 export const Spinner: FC<SpinnerProps> = ({ color = 'blue', size = 'md' }) => (

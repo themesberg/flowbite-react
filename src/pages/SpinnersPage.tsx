@@ -52,6 +52,7 @@ const SpinnersPage: FC = () => {
             <Spinner size="sm" />
             <Spinner size="md" />
             <Spinner size="lg" />
+            <Spinner size="xl" />
           </div>
           <SyntaxHighlighter language="tsx" style={dracula}>
             {`
@@ -59,6 +60,7 @@ const SpinnersPage: FC = () => {
 <Spinner size="sm" />
 <Spinner size="md" />
 <Spinner size="lg" />
+<Spinner size="xl" />
 `.trim()}
           </SyntaxHighlighter>
         </Card>
