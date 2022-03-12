@@ -11,7 +11,7 @@ export const BreadcrumbPage: FC = () => {
   return (
     <div className="flex flex-col max-w-4xl mx-auto gap-4 dark:text-white">
       <div className="flex flex-col gap-2">
-        <span className="text-2xl font-bold">Default badge</span>
+        <span className="text-2xl font-bold">Default breadcrumb</span>
         <Card>
           <div className="flex gap-2">
             <Breadcrumb

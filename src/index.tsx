@@ -1,5 +1,5 @@
 import { render } from 'react-dom';
-import { Dashboard } from './Dashboard';
+import { Root } from './Root';
 import { HashRouter } from 'react-router-dom';
 
 import './index.css';
@@ -7,7 +7,7 @@ import 'flowbite';
 
 render(
   <HashRouter>
-    <Dashboard />
+    <Root />
   </HashRouter>,
   document.getElementById('root'),
 );

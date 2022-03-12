@@ -18,8 +18,9 @@ import { BadgesPage } from './pages/BadgesPage';
 import { BreadcrumbPage } from './pages/BreadcrumbPage';
 import { ButtonsPage } from './pages/ButtonsPage';
 import { TooltipsPage } from './pages/TooltipsPage';
+import { DashboardPage } from './pages/DashboardPage';
 
-export const Dashboard: FC = () => {
+export const Root: FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const itemsGroups: SidebarItem[][] = [
     [
@@ -28,7 +29,6 @@ export const Dashboard: FC = () => {
         icon: TemplateIcon,
         title: 'Dashboard',
         href: '/',
-        label: '1',
       },
       {
         group: false,
@@ -85,6 +85,7 @@ export const Dashboard: FC = () => {
         <Sidebar collapsed={collapsed} itemsGroups={itemsGroups} />
         <main className="flex-1 overflow-auto p-4">
           <Routes>
+            <Route path="" element={<DashboardPage />} />
             <Route path="alerts" element={<AlertsPage />} />
             <Route path="accordion" element={<AccordionPage />} />
             <Route path="badges" element={<BadgesPage />} />
