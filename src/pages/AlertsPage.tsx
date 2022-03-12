@@ -8,7 +8,7 @@ SyntaxHighlighter.registerLanguage('tsx', tsx);
 
 import { Alert, Card } from '../components';
 
-export const AlertsPage: FC = () => {
+const AlertsPage: FC = () => {
   const alertText = (
     <>
       <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
@@ -232,3 +232,5 @@ export const AlertsPage: FC = () => {
     </div>
   );
 };
+
+export default AlertsPage;

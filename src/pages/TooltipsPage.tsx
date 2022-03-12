@@ -6,7 +6,7 @@ import { Button, Card, Tooltip } from '../components';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 
-export const TooltipsPage: FC = () => {
+const TooltipsPage: FC = () => {
   return (
     <div className="flex flex-col max-w-4xl mx-auto gap-4 dark:text-white">
       <div className="flex flex-col gap-2">
@@ -168,3 +168,5 @@ export const TooltipsPage: FC = () => {
     </div>
   );
 };
+
+export default TooltipsPage;

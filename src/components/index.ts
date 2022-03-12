@@ -7,4 +7,5 @@ export * from './Card';
 export * from './DarkThemeToggle';
 export * from './Navbar';
 export * from './Sidebar';
+export * from './Spinner';
 export * from './Tooltip';

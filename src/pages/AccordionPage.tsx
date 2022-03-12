@@ -8,7 +8,7 @@ import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 
-export const AccordionPage: FC = () => {
+const AccordionPage: FC = () => {
   const items: AccordionItem[] = [
     {
       open: true,
@@ -156,3 +156,5 @@ const items = [
     </div>
   );
 };
+
+export default AccordionPage;

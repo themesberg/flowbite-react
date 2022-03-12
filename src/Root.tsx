@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, lazy, Suspense, useState } from 'react';
 import {
   HiBadgeCheck,
   HiBell,
@@ -12,14 +12,15 @@ import {
 import { BsGithub } from 'react-icons/bs';
 import { Route, Routes } from 'react-router-dom';
 
-import { DarkThemeToggle, Navbar, Sidebar, SidebarItem } from './components';
-import { AlertsPage } from './pages/AlertsPage';
-import { AccordionPage } from './pages/AccordionPage';
-import { BadgesPage } from './pages/BadgesPage';
-import { BreadcrumbPage } from './pages/BreadcrumbPage';
-import { ButtonsPage } from './pages/ButtonsPage';
-import { TooltipsPage } from './pages/TooltipsPage';
-import { DashboardPage } from './pages/DashboardPage';
+import { DarkThemeToggle, Navbar, Sidebar, SidebarItem, Spinner } from './components';
+
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
+const AlertsPage = lazy(() => import('./pages/AlertsPage'));
+const AccordionPage = lazy(() => import('./pages/AccordionPage'));
+const BadgesPage = lazy(() => import('./pages/BadgesPage'));
+const BreadcrumbPage = lazy(() => import('./pages/BreadcrumbPage'));
+const ButtonsPage = lazy(() => import('./pages/ButtonsPage'));
+const TooltipsPage = lazy(() => import('./pages/TooltipsPage'));
 
 export const Root: FC = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -95,15 +96,17 @@ export const Root: FC = () => {
       <div className="flex h-full overflow-hidden bg-gray-50 dark:bg-gray-900">
         <Sidebar collapsed={collapsed} itemsGroups={itemsGroups} />
         <main className="flex-1 overflow-auto p-4">
-          <Routes>
-            <Route path="" element={<DashboardPage />} />
-            <Route path="alerts" element={<AlertsPage />} />
-            <Route path="accordion" element={<AccordionPage />} />
-            <Route path="badges" element={<BadgesPage />} />
-            <Route path="breadcrumb" element={<BreadcrumbPage />} />
-            <Route path="buttons" element={<ButtonsPage />} />
-            <Route path="tooltips" element={<TooltipsPage />} />
-          </Routes>
+          <Suspense fallback={<Spinner />}>
+            <Routes>
+              <Route path="" element={<DashboardPage />} />
+              <Route path="alerts" element={<AlertsPage />} />
+              <Route path="accordion" element={<AccordionPage />} />
+              <Route path="badges" element={<BadgesPage />} />
+              <Route path="breadcrumb" element={<BreadcrumbPage />} />
+              <Route path="buttons" element={<ButtonsPage />} />
+              <Route path="tooltips" element={<TooltipsPage />} />
+            </Routes>
+          </Suspense>
         </main>
       </div>
     </div>

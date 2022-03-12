@@ -7,7 +7,7 @@ import { Badge, Card } from '../components';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 
-export const BadgesPage: FC = () => {
+const BadgesPage: FC = () => {
   return (
     <div className="flex flex-col max-w-4xl mx-auto gap-4 dark:text-white">
       <div className="flex flex-col gap-2">
@@ -131,3 +131,5 @@ export const BadgesPage: FC = () => {
     </div>
   );
 };
+
+export default BadgesPage;

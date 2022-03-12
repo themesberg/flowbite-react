@@ -7,7 +7,7 @@ import { HiHome } from 'react-icons/hi';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 
-export const BreadcrumbPage: FC = () => {
+const BreadcrumbPage: FC = () => {
   return (
     <div className="flex flex-col max-w-4xl mx-auto gap-4 dark:text-white">
       <div className="flex flex-col gap-2">
@@ -55,3 +55,5 @@ export const BreadcrumbPage: FC = () => {
     </div>
   );
 };
+
+export default BreadcrumbPage;

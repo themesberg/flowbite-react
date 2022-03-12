@@ -11,7 +11,7 @@ type ComponentItem = {
   images: { light: string; dark: string };
 };
 
-export const DashboardPage: FC = () => {
+const DashboardPage: FC = () => {
   const components: ComponentItem[] = [
     {
       title: 'Alerts',
@@ -81,3 +81,5 @@ export const DashboardPage: FC = () => {
     </div>
   );
 };
+
+export default DashboardPage;
