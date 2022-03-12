@@ -4,6 +4,7 @@ import {
   HiBadgeCheck,
   HiBell,
   HiChevronDoubleRight,
+  HiClipboardList,
   HiCollection,
   HiCreditCard,
   HiDuplicate,
@@ -19,6 +20,7 @@ import { DarkThemeToggle, Navbar, Sidebar, SidebarItem, Spinner } from './compon
 const DashboardPage = lazy(() => import('./pages/DashboardPage'));
 const AlertsPage = lazy(() => import('./pages/AlertsPage'));
 const AccordionPage = lazy(() => import('./pages/AccordionPage'));
+const ListGroupPage = lazy(() => import('./pages/ListGroupPage'));
 const BadgesPage = lazy(() => import('./pages/BadgesPage'));
 const BreadcrumbPage = lazy(() => import('./pages/BreadcrumbPage'));
 const ButtonsPage = lazy(() => import('./pages/ButtonsPage'));
@@ -91,6 +93,12 @@ export const Root: FC = () => {
         title: 'Tooltips',
         href: '/tooltips',
       },
+      {
+        group: false,
+        icon: HiClipboardList,
+        title: 'List Group',
+        href: '/list-group',
+      },
     ],
   ];
 
@@ -137,6 +145,7 @@ export const Root: FC = () => {
               <Route path="carousel" element={<CarouselPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
+              <Route path="list-group" element={<ListGroupPage />} />
             </Routes>
           </Suspense>
         </main>

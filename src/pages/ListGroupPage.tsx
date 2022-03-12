@@ -1,0 +1,63 @@
+import { FC } from 'react';
+import { ListGroup, ListGroupItem } from '../components/ListGroup';
+import { CodeExample, DemoPage } from './DemoPage';
+
+const ListGroupPage: FC = () => {
+  const defaultItems: ListGroupItem[] = [
+    {
+      title: 'Profile',
+    },
+    {
+      title: 'Settings',
+    },
+    {
+      title: 'Messages',
+    },
+    {
+      title: 'Download',
+    },
+  ];
+
+  const itemsWithLinks: ListGroupItem[] = [
+    {
+      title: 'Profile',
+      link: '#/list-group',
+      active: true,
+    },
+    {
+      title: 'Settings',
+      link: '#/list-group',
+    },
+    {
+      title: 'Messages',
+      link: '#/list-group',
+    },
+    {
+      title: 'Download',
+      link: '#/list-group',
+    },
+  ];
+
+  const examples: CodeExample[] = [
+    {
+      title: 'Default list',
+      code: <ListGroup items={defaultItems} />,
+    },
+    {
+      title: 'List group with links',
+      code: <ListGroup items={itemsWithLinks} />,
+    },
+    {
+      title: 'List group with buttons',
+      code: <ListGroup items={itemsWithLinks} />,
+    },
+    {
+      title: 'List group with icons',
+      code: <ListGroup items={itemsWithLinks} />,
+    },
+  ];
+
+  return <DemoPage examples={examples} />;
+};
+
+export default ListGroupPage;
