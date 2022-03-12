@@ -4,6 +4,7 @@ import {
   BellIcon,
   ChevronDoubleRightIcon,
   CreditCardIcon,
+  DotsCircleHorizontalIcon,
   DuplicateIcon,
   MenuAlt1Icon,
   TemplateIcon,
@@ -16,6 +17,7 @@ import { AccordionPage } from './pages/AccordionPage';
 import { BadgesPage } from './pages/BadgesPage';
 import { BreadcrumbPage } from './pages/BreadcrumbPage';
 import { ButtonsPage } from './pages/ButtonsPage';
+import { TooltipsPage } from './pages/TooltipsPage';
 
 export const Dashboard: FC = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -58,6 +60,12 @@ export const Dashboard: FC = () => {
         title: 'Buttons',
         href: '/buttons',
       },
+      {
+        group: false,
+        icon: DotsCircleHorizontalIcon,
+        title: 'Tooltips',
+        href: '/tooltips',
+      },
     ],
   ];
 
@@ -82,6 +90,7 @@ export const Dashboard: FC = () => {
             <Route path="badges" element={<BadgesPage />} />
             <Route path="breadcrumb" element={<BreadcrumbPage />} />
             <Route path="buttons" element={<ButtonsPage />} />
+            <Route path="tooltips" element={<TooltipsPage />} />
           </Routes>
         </main>
       </div>
