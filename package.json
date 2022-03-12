@@ -1,6 +1,6 @@
 {
   "name": "flowbite-react",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "./dist/index.js",
   "files": [
     "dist"
@@ -33,7 +33,7 @@
     "prepublishOnly": "yarn build-components"
   },
   "dependencies": {
-   "@popperjs/core": "^2.11.2",
+    "@popperjs/core": "^2.11.2",
     "classnames": "^2.3.1",
     "react-icons": "^4.3.1"
   },
