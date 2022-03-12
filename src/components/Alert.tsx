@@ -1,6 +1,6 @@
 import { ComponentProps, FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import { XIcon } from '@heroicons/react/solid';
+import { HiX } from 'react-icons/hi';
 
 export type AlertProps = {
   color?: 'blue' | 'red' | 'green' | 'yellow' | 'gray';
@@ -58,7 +58,7 @@ export const Alert: FC<AlertProps> = ({
             onClick={onDismiss}
           >
             <span className="sr-only">Close</span>
-            <XIcon className="w-5 h-5" />
+            <HiX className="w-5 h-5" />
           </button>
         )}
       </div>

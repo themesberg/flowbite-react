@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ExternalLinkIcon } from '@heroicons/react/solid';
+import { HiExternalLink } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 import { getImageUrl } from '../helpers';
 import classNames from 'classnames';
@@ -69,7 +69,7 @@ export const DashboardPage: FC = () => {
           >
             <div className="bg-gray-50 dark:bg-gray-700 rounded-t-lg py-2.5 px-5 flex justify-between items-center border-b border-gray-200 dark:border-gray-700">
               <span className="text-lg font-medium text-gray-500 dark:text-gray-400">{title}</span>
-              <ExternalLinkIcon className="w-5 h-5 text-gray-900 dark:text-white" />
+              <HiExternalLink className="w-5 h-5 text-gray-900 dark:text-white" />
             </div>
             <div className="flex justify-center items-center h-52">
               <img className={classNames(className, 'dark:hidden')} src={getImageUrl(images.light)} alt="Alerts" />

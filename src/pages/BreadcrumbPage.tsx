@@ -3,7 +3,7 @@ import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 import { Breadcrumb, Card } from '../components';
-import { HomeIcon } from '@heroicons/react/solid';
+import { HiHome } from 'react-icons/hi';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 
@@ -17,7 +17,7 @@ export const BreadcrumbPage: FC = () => {
             <Breadcrumb
               items={[
                 {
-                  icon: HomeIcon,
+                  icon: HiHome,
                   label: 'Home',
                   href: '#/breadcrumb',
                 },
@@ -36,7 +36,7 @@ export const BreadcrumbPage: FC = () => {
 <Breadcrumb
   items={[
     {
-      icon: HomeIcon,
+      icon: HiHome,
       label: 'Home',
       href: '/'
     },

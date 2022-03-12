@@ -1,7 +1,7 @@
 import { ComponentProps, FC, useState } from 'react';
 import classNames from 'classnames';
-import { ChevronDownIcon } from '@heroicons/react/solid';
 import { Link, useLocation } from 'react-router-dom';
+import { HiChevronDown } from 'react-icons/hi';
 
 export type SidebarItem = {
   icon: FC<ComponentProps<'svg'>>;
@@ -84,7 +84,7 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
                       {!collapsed && (
                         <>
                           <span className="flex-1 ml-3 text-left whitespace-nowrap">{item.title}</span>
-                          <ChevronDownIcon className="w-6 h-6" />
+                          <HiChevronDown className="w-6 h-6" />
                         </>
                       )}
                     </button>

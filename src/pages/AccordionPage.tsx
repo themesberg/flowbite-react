@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { ArrowCircleDownIcon } from '@heroicons/react/outline';
+import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 
@@ -147,9 +147,9 @@ const items = [
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Arrow style</span>
         <Card className="dark:!bg-gray-900">
-          <Accordion items={items} arrowIcon={ArrowCircleDownIcon} />
+          <Accordion items={items} arrowIcon={HiOutlineArrowCircleDown} />
           <SyntaxHighlighter language="tsx" style={dracula}>
-            {`<Accordion items={items} arrowIcon={ArrowCircleDownIcon} />`}
+            {`<Accordion items={items} arrowIcon={HiOutlineArrowCircleDown} />`}
           </SyntaxHighlighter>
         </Card>
       </div>

@@ -1,5 +1,5 @@
 import { ComponentProps, FC, Fragment, ReactNode, useState } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/solid';
+import { HiChevronDown } from 'react-icons/hi';
 import classNames from 'classnames';
 
 export type AccordionItem = {
@@ -14,11 +14,11 @@ export type AccordionProps = {
   arrowIcon?: FC<ComponentProps<'svg'>>;
 };
 
-export const Accordion: FC<AccordionProps> = ({ items, flush, arrowIcon: ArrowIcon = ChevronDownIcon }) => {
+export const Accordion: FC<AccordionProps> = ({ items, flush, arrowIcon: ArrowIcon = HiChevronDown }) => {
   const [openItems, setOpenItems] = useState<(boolean | undefined)[]>(items.map((item) => item.open));
 
   return (
-    <>
+    <div>
       {items.map((item, index) => (
         <Fragment key={index}>
           <h2>
@@ -59,6 +59,6 @@ export const Accordion: FC<AccordionProps> = ({ items, flush, arrowIcon: ArrowIc
           </div>
         </Fragment>
       ))}
-    </>
+    </div>
   );
 };

@@ -1,5 +1,5 @@
 import { ComponentProps, FC } from 'react';
-import { ChevronRightIcon } from '@heroicons/react/outline';
+import { HiOutlineChevronRight } from 'react-icons/hi';
 
 export type BreadcrumbItem = {
   icon?: FC<ComponentProps<'svg'>>;
@@ -17,7 +17,7 @@ export const Breadcrumb: FC<BreadcrumbProps> = ({ items }) => {
       <ol className="flex items-center">
         {items.map((item, index) => (
           <li key={index} className="flex items-center">
-            {index > 0 && <ChevronRightIcon className="w-6 h-6 mx-1 md:mx-2 text-gray-400" />}
+            {index > 0 && <HiOutlineChevronRight className="w-6 h-6 mx-1 md:mx-2 text-gray-400" />}
             {index < items.length - 1 ? (
               <a
                 className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"

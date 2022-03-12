@@ -33,9 +33,9 @@
     "prepublishOnly": "yarn build-components"
   },
   "dependencies": {
-    "@heroicons/react": "^1.0.5",
-    "@popperjs/core": "^2.11.2",
-    "classnames": "^2.3.1"
+   "@popperjs/core": "^2.11.2",
+    "classnames": "^2.3.1",
+    "react-icons": "^4.3.1"
   },
   "peerDependencies": {
     "react": "^17",

@@ -1,9 +1,9 @@
 import { FC } from 'react';
+import { HiCheck, HiClock } from 'react-icons/hi';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 import { Badge, Card } from '../components';
-import { CheckIcon, ClockIcon } from '@heroicons/react/solid';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 
@@ -81,7 +81,7 @@ export const BadgesPage: FC = () => {
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Badges as links</span>
         <Card>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <Badge href="#/badges">Default</Badge>
             <Badge size="sm" href="#/badges">
               Default
@@ -98,15 +98,15 @@ export const BadgesPage: FC = () => {
         <span className="text-2xl font-bold">Badges with icon</span>
         <Card>
           <div className="flex flex-wrap gap-2">
-            <Badge icon={ClockIcon}>2 minutes ago</Badge>
-            <Badge color="gray" icon={ClockIcon}>
+            <Badge icon={HiCheck}>2 minutes ago</Badge>
+            <Badge color="gray" icon={HiClock}>
               3 days ago
             </Badge>
           </div>
           <SyntaxHighlighter language="tsx" style={dracula}>
             {`
-<Badge icon={ClockIcon}>2 minutes ago</Badge>
-<Badge color="gray" icon={ClockIcon}>3 days ago</Badge>`.trim()}
+<Badge icon={HiClock}>2 minutes ago</Badge>
+<Badge color="gray" icon={HiClock}>3 days ago</Badge>`.trim()}
           </SyntaxHighlighter>
         </Card>
       </div>
@@ -114,17 +114,17 @@ export const BadgesPage: FC = () => {
         <span className="text-2xl font-bold">Badge with icon only</span>
         <Card>
           <div className="flex flex-wrap items-center gap-2">
-            <Badge icon={CheckIcon} />
-            <Badge color="gray" icon={CheckIcon} />
-            <Badge size="sm" icon={CheckIcon} />
-            <Badge color="gray" size="sm" icon={CheckIcon} />
+            <Badge icon={HiCheck} />
+            <Badge color="gray" icon={HiCheck} />
+            <Badge size="sm" icon={HiCheck} />
+            <Badge color="gray" size="sm" icon={HiCheck} />
           </div>
           <SyntaxHighlighter language="tsx" style={dracula}>
             {`
-<Badge icon={CheckIcon} />
-<Badge color="gray" icon={CheckIcon} />
-<Badge size="sm" icon={CheckIcon} />
-<Badge color="gray" size="sm" icon={CheckIcon} />`.trim()}
+<Badge icon={HiCheck} />
+<Badge color="gray" icon={HiCheck} />
+<Badge size="sm" icon={HiCheck} />
+<Badge color="gray" size="sm" icon={HiCheck} />`.trim()}
           </SyntaxHighlighter>
         </Card>
       </div>

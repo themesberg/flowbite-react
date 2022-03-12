@@ -1,14 +1,15 @@
 import { FC, useState } from 'react';
 import {
-  BadgeCheckIcon,
-  BellIcon,
-  ChevronDoubleRightIcon,
-  CreditCardIcon,
-  DotsCircleHorizontalIcon,
-  DuplicateIcon,
-  MenuAlt1Icon,
-  TemplateIcon,
-} from '@heroicons/react/solid';
+  HiBadgeCheck,
+  HiBell,
+  HiChevronDoubleRight,
+  HiCreditCard,
+  HiDotsCircleHorizontal,
+  HiDuplicate,
+  HiHome,
+  HiMenuAlt1,
+} from 'react-icons/hi';
+import { BsGithub } from 'react-icons/bs';
 import { Route, Routes } from 'react-router-dom';
 
 import { DarkThemeToggle, Navbar, Sidebar, SidebarItem } from './components';
@@ -26,43 +27,43 @@ export const Root: FC = () => {
     [
       {
         group: false,
-        icon: TemplateIcon,
+        icon: HiHome,
         title: 'Dashboard',
         href: '/',
       },
       {
         group: false,
-        icon: BellIcon,
+        icon: HiBell,
         title: 'Alerts',
         href: '/alerts',
       },
       {
         group: false,
-        icon: CreditCardIcon,
+        icon: HiCreditCard,
         title: 'Accordion',
         href: '/accordion',
       },
       {
         group: false,
-        icon: BadgeCheckIcon,
+        icon: HiBadgeCheck,
         title: 'Badges',
         href: '/badges',
       },
       {
         group: false,
-        icon: ChevronDoubleRightIcon,
+        icon: HiChevronDoubleRight,
         title: 'Breadcrumb',
         href: '/breadcrumb',
       },
       {
         group: false,
-        icon: DuplicateIcon,
+        icon: HiDuplicate,
         title: 'Buttons',
         href: '/buttons',
       },
       {
         group: false,
-        icon: DotsCircleHorizontalIcon,
+        icon: HiDotsCircleHorizontal,
         title: 'Tooltips',
         href: '/tooltips',
       },
@@ -73,13 +74,23 @@ export const Root: FC = () => {
     <div className="flex flex-col w-full h-screen overflow-hidden">
       <Navbar>
         <div className="flex items-center">
-          <MenuAlt1Icon
+          <HiMenuAlt1
             className="w-6 h-6 mr-6 cursor-pointer text-gray-600 dark:text-gray-400"
             onClick={() => setCollapsed(!collapsed)}
           />
           <span className="text-xl font-semibold dark:text-white">Flowbite React Components</span>
         </div>
-        <DarkThemeToggle />
+        <div className="flex gap-2 items-center">
+          <a
+            className="cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+            href="https://github.com/bacali95/flowbite-react"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <BsGithub className="w-5 h-5" />
+          </a>
+          <DarkThemeToggle />
+        </div>
       </Navbar>
       <div className="flex h-full overflow-hidden bg-gray-50 dark:bg-gray-900">
         <Sidebar collapsed={collapsed} itemsGroups={itemsGroups} />

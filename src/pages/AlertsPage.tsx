@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { EyeIcon, InformationCircleIcon } from '@heroicons/react/solid';
+import { HiEye, HiInformationCircle } from 'react-icons/hi';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
@@ -32,12 +32,12 @@ export const AlertsPage: FC = () => {
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Alerts with icon</span>
         <Card>
-          <Alert color="red" Icon={InformationCircleIcon}>
+          <Alert color="red" Icon={HiInformationCircle}>
             {alertText}
           </Alert>
           <SyntaxHighlighter language="tsx" style={dracula}>
             {`
-<Alert color="red" Icon={InformationCircleIcon}>
+<Alert color="red" Icon={HiInformationCircle}>
   <span className="font-medium">Info alert!</span> Change a few things...
 </Alert>`.trim()}
           </SyntaxHighlighter>
@@ -101,7 +101,7 @@ export const AlertsPage: FC = () => {
                     type="button"
                     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 mr-2 text-center inline-flex items-center dark:bg-blue-800 dark:hover:bg-blue-900"
                   >
-                    <EyeIcon className="-ml-0.5 mr-2 h-4 w-4" />
+                    <HiEye className="-ml-0.5 mr-2 h-4 w-4" />
                     View more
                   </button>
                   <button
@@ -113,7 +113,7 @@ export const AlertsPage: FC = () => {
                 </div>
               </>
             }
-            Icon={InformationCircleIcon}
+            Icon={HiInformationCircle}
           >
             <h3 className="text-lg font-medium text-blue-700 dark:text-blue-800">This is a info alert</h3>
           </Alert>
@@ -133,7 +133,7 @@ export const AlertsPage: FC = () => {
           type="button"
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-1.5 mr-2 text-center inline-flex items-center dark:bg-blue-800 dark:hover:bg-blue-900"
         >
-          <EyeIcon className="-ml-0.5 mr-2 h-4 w-4" />
+          <HiEye className="-ml-0.5 mr-2 h-4 w-4" />
           View more
         </button>
         <button
@@ -145,7 +145,7 @@ export const AlertsPage: FC = () => {
       </div>
     </>
   }
-  Icon={InformationCircleIcon}
+  Icon={HiInformationCircle}
 >
   <h3 className="text-lg font-medium text-blue-700 dark:text-blue-800">
     This is a info alert
@@ -173,7 +173,7 @@ export const AlertsPage: FC = () => {
                     type="button"
                     className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xs px-3 py-1.5 mr-2 text-center inline-flex items-center dark:bg-green-800 dark:hover:bg-green-900"
                   >
-                    <EyeIcon className="-ml-0.5 mr-2 h-4 w-4" />
+                    <HiEye className="-ml-0.5 mr-2 h-4 w-4" />
                     View more
                   </button>
                   <button
@@ -185,7 +185,7 @@ export const AlertsPage: FC = () => {
                 </div>
               </>
             }
-            Icon={InformationCircleIcon}
+            Icon={HiInformationCircle}
           >
             <h3 className="text-lg font-medium text-green-700 dark:text-green-800">This is a info alert</h3>
           </Alert>
@@ -208,7 +208,7 @@ export const AlertsPage: FC = () => {
           type="button"
           className="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-xs px-3 py-1.5 mr-2 text-center inline-flex items-center dark:bg-green-800 dark:hover:bg-green-900"
         >
-          <EyeIcon className="-ml-0.5 mr-2 h-4 w-4" />
+          <HiEye className="-ml-0.5 mr-2 h-4 w-4" />
           View more
         </button>
         <button
@@ -220,7 +220,7 @@ export const AlertsPage: FC = () => {
       </div>
     </>
   }
-  Icon={InformationCircleIcon}
+  Icon={HiInformationCircle}
 >
   <h3 className="text-lg font-medium text-green-700 dark:text-green-800">
     This is a info alert
