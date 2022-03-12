@@ -29,7 +29,7 @@ export type ButtonProps = ComponentProps<'button'> & {
 };
 
 const colorClasses: Record<Color, string> = {
-  blue: 'text-white bg-blue-700 hover:bg-blue-800 disabled:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:disabled:hover:bg-blue-600',
+  blue: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 disabled:hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:disabled:hover:bg-blue-600',
   alternative:
     'text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 disabled:hover:bg-white focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-2 dark:disabled:hover:bg-gray-800',
   dark: 'text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 disabled:hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700 dark:disabled:hover:bg-gray-800',
@@ -108,7 +108,7 @@ export const Button: FC<ButtonProps> = ({
         !gradientDuoTone && gradientMonochrome && gradientMonochromeClasses[gradientMonochrome],
         gradientDuoTone && gradientDuoToneClasses[gradientDuoTone],
         {
-          'opacity-50 dark:opacity-50 cursor-not-allowed': disabled,
+          'opacity-50 cursor-not-allowed': disabled,
         },
       )}
       type="button"
