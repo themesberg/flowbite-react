@@ -68,6 +68,7 @@ export const Tooltip: FC<TooltipProps> = ({
         {arrow && <div className="tooltip-arrow" data-popper-arrow />}
       </div>
       <span
+        className="w-fit"
         ref={wrapperRef}
         onFocus={show}
         onBlur={hide}

@@ -118,7 +118,7 @@ export const Button: FC<ButtonProps> = ({
     <button
       disabled={disabled}
       className={classNames(
-        'flex h-min items-center justify-center p-0.5 text-center font-medium group',
+        'flex h-min w-fit items-center justify-center p-0.5 text-center font-medium group',
         pill ? 'rounded-full' : 'rounded-lg',
         !gradientMonochrome && !gradientDuoTone && colorClasses[color],
         !gradientDuoTone && gradientMonochrome && gradientMonochromeClasses[gradientMonochrome],

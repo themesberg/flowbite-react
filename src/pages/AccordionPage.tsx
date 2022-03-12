@@ -1,12 +1,8 @@
 import { FC } from 'react';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 
-import { Accordion, AccordionItem, Card } from '../components';
-import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
-SyntaxHighlighter.registerLanguage('tsx', tsx);
+import { Accordion, AccordionItem } from '../components';
+import { CodeExample, DemoPage } from './DemoPage';
 
 const AccordionPage: FC = () => {
   const items: AccordionItem[] = [
@@ -14,7 +10,7 @@ const AccordionPage: FC = () => {
       open: true,
       title: 'What is Flowbite?',
       body: (
-        <>
+        <div>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
             Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons,
             dropdowns, modals, navbars, and more.
@@ -29,13 +25,13 @@ const AccordionPage: FC = () => {
             </a>{' '}
             and start developing websites even faster with components on top of Tailwind CSS.
           </p>
-        </>
+        </div>
       ),
     },
     {
       title: 'Is there a Figma file available?',
       body: (
-        <>
+        <div>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
             Flowbite is first conceptualized and designed using the Figma software so everything you see in the library
             has a design equivalent in our Figma file.
@@ -47,13 +43,13 @@ const AccordionPage: FC = () => {
             </a>{' '}
             based on the utility classes from Tailwind CSS and components from Flowbite.
           </p>
-        </>
+        </div>
       ),
     },
     {
       title: 'What are the differences between Flowbite and Tailwind UI?',
       body: (
-        <>
+        <div>
           <p className="mb-2 text-gray-500 dark:text-gray-400">
             The main difference is that the core components from Flowbite are open source under the MIT license, whereas
             Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone
@@ -80,81 +76,35 @@ const AccordionPage: FC = () => {
               </a>
             </li>
           </ul>
-        </>
+        </div>
       ),
     },
   ];
 
-  return (
-    <div className="flex flex-col max-w-4xl mx-auto gap-4 dark:text-white">
-      <div className="flex flex-col gap-2">
-        <span className="text-2xl font-bold">Default accordion</span>
-        <Card className="dark:!bg-gray-900">
-          <Accordion items={items} />
-          <SyntaxHighlighter language="tsx" style={dracula}>
-            {`<Accordion items={items} />`}
-          </SyntaxHighlighter>
-        </Card>
-      </div>
-      <div className="flex flex-col gap-2">
-        <span className="text-2xl font-bold">Always open</span>
-        <Card className="dark:!bg-gray-900">
-          <Accordion items={items} />
-          <SyntaxHighlighter language="tsx" style={dracula}>
-            {`
-const items = [
+  const examples: CodeExample[] = [
     {
-        open: true,
-        title: 'What is Flowbite?',
-        body: (
-          <>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
-              Flowbite is an open-source library of interactive components built
-              on top of Tailwind CSS including buttons, dropdowns, modals,
-              navbars, and more.
-            </p>
-            <p className="text-gray-500 dark:text-gray-400">
-              Check out this guide to learn how to{' '}
-              <a
-                href="https://flowbite.com/docs/getting-started/introduction/"
-                className="text-blue-600 dark:text-blue-500 hover:underline"
-              >
-                get started
-              </a>{' '}
-              and start developing websites even faster with components on top of
-              Tailwind CSS.
-            </p>
-          </>
-        )
-    }
-];
+      title: 'Default accordion',
+      code: <Accordion items={items} />,
+      codeClassName: 'dark:!bg-gray-900',
+    },
+    {
+      title: 'Always open',
+      code: <Accordion items={items} />,
+      codeClassName: 'dark:!bg-gray-900',
+    },
+    {
+      title: 'Flush accordion',
+      code: <Accordion items={items} flush />,
+      codeClassName: 'dark:!bg-gray-900',
+    },
+    {
+      title: 'Arrow style',
+      code: <Accordion items={items} arrowIcon={HiOutlineArrowCircleDown} />,
+      codeClassName: 'dark:!bg-gray-900',
+    },
+  ];
 
-...
-
-<Accordion items={items} />`.trim()}
-          </SyntaxHighlighter>
-        </Card>
-      </div>
-      <div className="flex flex-col gap-2">
-        <span className="text-2xl font-bold">Flush accordion</span>
-        <Card className="dark:!bg-gray-900">
-          <Accordion items={items} flush />
-          <SyntaxHighlighter language="tsx" style={dracula}>
-            {`<Accordion items={items} flush />`}
-          </SyntaxHighlighter>
-        </Card>
-      </div>
-      <div className="flex flex-col gap-2">
-        <span className="text-2xl font-bold">Arrow style</span>
-        <Card className="dark:!bg-gray-900">
-          <Accordion items={items} arrowIcon={HiOutlineArrowCircleDown} />
-          <SyntaxHighlighter language="tsx" style={dracula}>
-            {`<Accordion items={items} arrowIcon={HiOutlineArrowCircleDown} />`}
-          </SyntaxHighlighter>
-        </Card>
-      </div>
-    </div>
-  );
+  return <DemoPage examples={examples} />;
 };
 
 export default AccordionPage;
