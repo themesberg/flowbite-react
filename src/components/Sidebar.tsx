@@ -1,4 +1,4 @@
-import { ComponentProps, FC } from 'react';
+import { ComponentProps, FC, useState } from 'react';
 import classNames from 'classnames';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import { Link, useLocation } from 'react-router-dom';
@@ -8,7 +8,7 @@ export type SidebarItem = {
   title: string;
 } & (
   | {
-      dropdown: true;
+      group: true;
       items: {
         title: string;
         href: string;
@@ -16,7 +16,7 @@ export type SidebarItem = {
       }[];
     }
   | {
-      dropdown: false;
+      group: false;
       href: string;
       label?: string;
     }
@@ -28,7 +28,12 @@ export type SidebarProps = {
 };
 
 export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
+  const [groupsState, setGroupsState] = useState<Record<number, boolean>>({});
   const { pathname } = useLocation();
+
+  const toggleGroup = (index: number) => () => {
+    setGroupsState((state) => ({ ...state, [index]: !state[index] }));
+  };
 
   return (
     <aside
@@ -48,7 +53,7 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
           >
             {items.map((item, itemIndex) => (
               <li key={itemIndex}>
-                {item.dropdown === false ? (
+                {item.group === false ? (
                   <Link
                     className={classNames(
                       'flex group items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700',
@@ -73,8 +78,7 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
                     <button
                       type="button"
                       className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                      aria-controls={`dropdown-group-${groupIndex}`}
-                      data-collapse-toggle={`dropdown-group-${groupIndex}`}
+                      onClick={toggleGroup(groupIndex)}
                     >
                       <item.icon className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                       {!collapsed && (
@@ -84,7 +88,11 @@ export const Sidebar: FC<SidebarProps> = ({ collapsed, itemsGroups }) => {
                         </>
                       )}
                     </button>
-                    <ul id={`dropdown-group-${groupIndex}`} className="hidden py-2 space-y-2">
+                    <ul
+                      className={classNames('py-2 space-y-2', {
+                        hidden: !groupsState[groupIndex],
+                      })}
+                    >
                       {item.items.map((subItem, subItemIndex) => (
                         <li key={subItemIndex}>
                           <Link

@@ -22,38 +22,38 @@ export const Dashboard: FC = () => {
   const itemsGroups: SidebarItem[][] = [
     [
       {
-        dropdown: false,
+        group: false,
         icon: TemplateIcon,
         title: 'Dashboard',
         href: '/',
         label: '1',
       },
       {
-        dropdown: false,
+        group: false,
         icon: BellIcon,
         title: 'Alerts',
         href: '/alerts',
       },
       {
-        dropdown: false,
+        group: false,
         icon: CreditCardIcon,
         title: 'Accordion',
         href: '/accordion',
       },
       {
-        dropdown: false,
+        group: false,
         icon: BadgeCheckIcon,
         title: 'Badges',
         href: '/badges',
       },
       {
-        dropdown: false,
+        group: false,
         icon: ChevronDoubleRightIcon,
         title: 'Breadcrumb',
         href: '/breadcrumb',
       },
       {
-        dropdown: false,
+        group: false,
         icon: DuplicateIcon,
         title: 'Buttons',
         href: '/buttons',
