@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/bacali95/flowbite-react/compare/v0.0.11...v0.0.12) (2022-03-13)
+
+
+### Features
+
+* add Button group component ([1f8b8fd](https://github.com/bacali95/flowbite-react/commit/1f8b8fd6026d6cadc87263406c98c9202e5874ba))
+
 ### [0.0.11](https://github.com/bacali95/flowbite-react/compare/v0.0.10...v0.0.11) (2022-03-13)
 
 
