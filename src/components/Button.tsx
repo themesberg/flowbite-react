@@ -1,6 +1,5 @@
 import { ComponentProps, FC } from 'react';
 import classNames from 'classnames';
-import { Spinner } from './Spinner';
 
 type Color = 'blue' | 'alternative' | 'dark' | 'light' | 'green' | 'red' | 'yellow' | 'purple';
 type GradientMonochrome = 'blue' | 'green' | 'cyan' | 'teal' | 'lime' | 'red' | 'pink' | 'purple';
@@ -13,17 +12,14 @@ type GradientDuoTone =
   | 'tealToLime'
   | 'redToYellow';
 type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-type IconPosition = 'start' | 'end';
+
 export type ButtonProps = ComponentProps<'button'> & {
   pill?: boolean;
   outline?: boolean;
-  loader?: boolean;
-  iconButton?: boolean;
   label?: string;
   color?: Color;
   size?: Size;
   icon?: FC<ComponentProps<'svg'>>;
-  iconPosition?: IconPosition;
   gradientMonochrome?: GradientMonochrome;
   gradientDuoTone?: GradientDuoTone;
 };
@@ -90,25 +86,13 @@ const iconSizeClasses: Record<Size, string> = {
   xl: '!p-3',
 };
 
-const previousSize: Record<Size, Size> = {
-  xs: 'xs',
-  sm: 'xs',
-  md: 'sm',
-  lg: 'md',
-  xl: 'lg',
-};
-
 export const Button: FC<ButtonProps> = ({
   children,
   pill,
   outline,
   disabled = false,
-  loader = false,
-  iconButton = false,
-  label,
   size = 'md',
   icon: Icon,
-  iconPosition = 'start',
   color = 'blue',
   gradientMonochrome,
   gradientDuoTone,
@@ -136,27 +120,11 @@ export const Button: FC<ButtonProps> = ({
             outline,
           'rounded-md': outline && !pill,
           'rounded-full': outline && pill,
-          [iconSizeClasses[size]]: iconButton,
-          'gap-2': loader,
+          [iconSizeClasses[size]]: !!Icon,
         })}
       >
-        {iconButton ? (
-          Icon && <Icon className="h-5 w-5" />
-        ) : (
-          <>
-            {loader && <Spinner size={previousSize[size]} />}
-            {!loader && iconPosition === 'start' && Icon && <Icon className="mr-2 h-5 w-5" />}
-            {children}
-            {iconPosition === 'end' && Icon && <Icon className="ml-2 h-5 w-5" />}
-          </>
-        )}
+        {Icon ? <Icon className="h-5 w-5" /> : children}
       </span>
-
-      {label && (
-        <span className="mr-4 -ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-200 text-xs font-semibold text-blue-800">
-          {label}
-        </span>
-      )}
     </button>
   );
 };

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
 
-import { Button } from '../components';
+import { Button, Spinner } from '../components';
 import { CodeExample, DemoPage } from './DemoPage';
 
 const ButtonsPage: FC = () => {
@@ -129,11 +129,13 @@ const ButtonsPage: FC = () => {
       title: 'Buttons with icon',
       code: (
         <div className="flex flex-wrap items-center gap-2">
-          <Button icon={HiShoppingCart} iconPosition="start">
+          <Button>
+            <HiShoppingCart className="mr-2 h-5 w-5" />
             Buy now
           </Button>
-          <Button icon={HiOutlineArrowRight} iconPosition="end">
+          <Button>
             Choose plan
+            <HiOutlineArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
       ),
@@ -148,10 +150,10 @@ const ButtonsPage: FC = () => {
       title: 'Icon buttons',
       code: (
         <div className="flex flex-wrap items-center gap-2">
-          <Button iconButton icon={HiOutlineArrowRight} />
-          <Button iconButton icon={HiOutlineArrowRight} pill />
-          <Button iconButton icon={HiOutlineArrowRight} outline />
-          <Button iconButton icon={HiOutlineArrowRight} pill outline />
+          <Button icon={HiOutlineArrowRight} />
+          <Button icon={HiOutlineArrowRight} pill />
+          <Button icon={HiOutlineArrowRight} outline />
+          <Button icon={HiOutlineArrowRight} pill outline />
         </div>
       ),
       codeClassName: 'dark:!bg-gray-900',
@@ -160,8 +162,12 @@ const ButtonsPage: FC = () => {
       title: 'Loader',
       code: (
         <div className="flex flex-wrap items-center gap-2">
-          <Button loader>Loading ...</Button>
-          <Button loader outline>
+          <Button>
+            <Spinner className="mr-3" size="sm" light />
+            Loading ...
+          </Button>
+          <Button outline>
+            <Spinner className="mr-3" size="sm" light />
             Loading ...
           </Button>
         </div>
