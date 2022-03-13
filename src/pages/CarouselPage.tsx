@@ -77,7 +77,7 @@ const CarouselPage: FC = () => {
     {
       title: 'Slide as anything',
       code: (
-        <Carousel slide={false}>
+        <Carousel>
           <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
             Slide 1
           </div>
