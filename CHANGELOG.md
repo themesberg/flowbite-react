@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.11](https://github.com/bacali95/flowbite-react/compare/v0.0.10...v0.0.11) (2022-03-13)
+
+
+### Features
+
+* add light prop to Spinner component ([0590d66](https://github.com/bacali95/flowbite-react/commit/0590d66f6bd5046be13fa450bc6f5c575810cc08))
+
+
+### Bug Fixes
+
+* Remove extra icon content from Button component ([2762b55](https://github.com/bacali95/flowbite-react/commit/2762b5559d6404d1a50976643742891ee851cb9a))
+
 ### [0.0.10](https://github.com/bacali95/flowbite-react/compare/v0.0.9...v0.0.10) (2022-03-13)
 
 
