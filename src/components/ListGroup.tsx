@@ -37,7 +37,7 @@ export const ListGroup: FC<ListGroupProps> = ({ items }) => {
               className={classNames(
                 'block w-full cursor-pointer py-2 px-4 first:rounded-t-lg last:rounded-b-lg focus:outline-none dark:bg-gray-800',
                 {
-                  'bg-blue-700 text-white': item.active,
+                  '!bg-blue-700 text-white': item.active,
                   'hover:bg-gray-100 hover:text-blue-700 dark:hover:bg-gray-600 dark:hover:text-white': !item.active,
                 },
               )}

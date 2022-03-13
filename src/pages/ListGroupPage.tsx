@@ -43,6 +43,7 @@ const ListGroupPage: FC = () => {
     {
       title: 'Profile',
       icon: HiUserCircle,
+      onClick: () => alert('profile'),
     },
     {
       title: 'Settings',
@@ -74,6 +75,9 @@ const ListGroupPage: FC = () => {
     {
       title: 'List group with icons',
       code: <ListGroup items={itemsWithIcons} />,
+      codeStringifierOptions: {
+        functionValue: (fn) => (fn.name === 'onClick' ? fn : fn.name),
+      },
     },
   ];
 
