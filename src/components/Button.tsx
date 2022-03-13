@@ -116,7 +116,7 @@ export const Button: FC<ButtonProps> = ({
           'cursor-not-allowed opacity-50': disabled,
           'focus:!ring-2': !!positionInGroup,
           'rounded-r-none': positionInGroup === 'start',
-          'rounded-none border-l-0 pl-0': positionInGroup === 'middle',
+          '!rounded-none border-l-0 pl-0': positionInGroup === 'middle',
           'rounded-l-none border-l-0 pl-0': positionInGroup === 'end',
         },
         className,
@@ -129,7 +129,7 @@ export const Button: FC<ButtonProps> = ({
           'bg-white text-gray-900 transition-all duration-75 ease-in group-hover:bg-opacity-0 group-hover:text-inherit dark:bg-gray-900 dark:text-white':
             outline,
           'rounded-r-none': positionInGroup === 'start',
-          'rounded-none': positionInGroup === 'middle',
+          '!rounded-none': positionInGroup === 'middle',
           'rounded-l-none': positionInGroup === 'end',
           [iconSizeClasses[size]]: !!Icon,
         })}
