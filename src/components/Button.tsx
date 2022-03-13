@@ -118,13 +118,13 @@ export const Button: FC<ButtonProps> = ({
     <button
       disabled={disabled}
       className={classNames(
-        'flex h-min w-fit items-center justify-center p-0.5 text-center font-medium group',
+        'group flex h-min w-fit items-center justify-center p-0.5 text-center font-medium',
         pill ? 'rounded-full' : 'rounded-lg',
         !gradientMonochrome && !gradientDuoTone && colorClasses[color],
         !gradientDuoTone && gradientMonochrome && gradientMonochromeClasses[gradientMonochrome],
         gradientDuoTone && gradientDuoToneClasses[gradientDuoTone],
         {
-          'opacity-50 cursor-not-allowed': disabled,
+          'cursor-not-allowed opacity-50': disabled,
         },
       )}
       type="button"
@@ -132,7 +132,7 @@ export const Button: FC<ButtonProps> = ({
     >
       <span
         className={classNames('flex items-center', sizeClasses[size], {
-          'text-gray-900 transition-all ease-in duration-75 bg-white dark:bg-gray-900 group-hover:bg-opacity-0 group-hover:text-inherit dark:text-white':
+          'bg-white text-gray-900 transition-all duration-75 ease-in group-hover:bg-opacity-0 group-hover:text-inherit dark:bg-gray-900 dark:text-white':
             outline,
           'rounded-md': outline && !pill,
           'rounded-full': outline && pill,
@@ -141,19 +141,19 @@ export const Button: FC<ButtonProps> = ({
         })}
       >
         {iconButton ? (
-          Icon && <Icon className="w-5 h-5" />
+          Icon && <Icon className="h-5 w-5" />
         ) : (
           <>
             {loader && <Spinner size={previousSize[size]} />}
-            {!loader && iconPosition === 'start' && Icon && <Icon className="mr-2 w-5 h-5" />}
+            {!loader && iconPosition === 'start' && Icon && <Icon className="mr-2 h-5 w-5" />}
             {children}
-            {iconPosition === 'end' && Icon && <Icon className="ml-2 w-5 h-5" />}
+            {iconPosition === 'end' && Icon && <Icon className="ml-2 h-5 w-5" />}
           </>
         )}
       </span>
 
       {label && (
-        <span className="inline-flex justify-center items-center mr-4 -ml-2 w-4 h-4 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+        <span className="mr-4 -ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-200 text-xs font-semibold text-blue-800">
           {label}
         </span>
       )}

@@ -30,7 +30,7 @@ const sizeClasses: Record<Size, string> = {
 export const Spinner: FC<SpinnerProps> = ({ color = 'blue', size = 'md' }) => (
   <svg
     className={classNames(
-      'inline text-gray-200 dark:text-gray-600 animate-spin',
+      'inline animate-spin text-gray-200 dark:text-gray-600',
       colorClasses[color],
       sizeClasses[size],
     )}

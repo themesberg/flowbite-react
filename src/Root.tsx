@@ -95,23 +95,23 @@ export const Root: FC = () => {
   ];
 
   return (
-    <div className="flex flex-col w-full h-screen overflow-hidden">
+    <div className="flex h-screen w-full flex-col overflow-hidden">
       <Navbar>
         <div className="flex items-center">
           <HiMenuAlt1
-            className="w-6 h-6 mr-6 cursor-pointer text-gray-600 dark:text-gray-400"
+            className="mr-6 h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-400"
             onClick={() => setCollapsed(!collapsed)}
           />
           <span className="text-xl font-semibold dark:text-white">Flowbite React Components</span>
         </div>
-        <div className="flex gap-2 items-center">
+        <div className="flex items-center gap-2">
           <a
-            className="cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+            className="cursor-pointer rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
             href="https://github.com/bacali95/flowbite-react"
             target="_blank"
             rel="noreferrer"
           >
-            <BsGithub className="w-5 h-5" />
+            <BsGithub className="h-5 w-5" />
           </a>
           <DarkThemeToggle />
         </div>
@@ -121,7 +121,7 @@ export const Root: FC = () => {
         <main className="flex-1 overflow-auto p-4">
           <Suspense
             fallback={
-              <div className="flex items-center justify-center h-full">
+              <div className="flex h-full items-center justify-center">
                 <Spinner />
               </div>
             }

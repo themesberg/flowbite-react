@@ -19,7 +19,7 @@ const AccordionPage: FC = () => {
             Check out this guide to learn how to{' '}
             <a
               href="https://flowbite.com/docs/getting-started/introduction/"
-              className="text-blue-600 dark:text-blue-500 hover:underline"
+              className="text-blue-600 hover:underline dark:text-blue-500"
             >
               get started
             </a>{' '}
@@ -38,7 +38,7 @@ const AccordionPage: FC = () => {
           </p>
           <p className="text-gray-500 dark:text-gray-400">
             Check out the{' '}
-            <a href="https://flowbite.com/figma/" className="text-blue-600 dark:text-blue-500 hover:underline">
+            <a href="https://flowbite.com/figma/" className="text-blue-600 hover:underline dark:text-blue-500">
               Figma design system
             </a>{' '}
             based on the utility classes from Tailwind CSS and components from Flowbite.
@@ -60,9 +60,9 @@ const AccordionPage: FC = () => {
             technical reason stopping you from using the best of two worlds.
           </p>
           <p className="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
-          <ul className="pl-5 list-disc text-gray-500 dark:text-gray-400">
+          <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400">
             <li>
-              <a href="https://flowbite.com/pro/" className="text-blue-600 dark:text-blue-500 hover:underline">
+              <a href="https://flowbite.com/pro/" className="text-blue-600 hover:underline dark:text-blue-500">
                 Flowbite Pro
               </a>
             </li>
@@ -70,7 +70,7 @@ const AccordionPage: FC = () => {
               <a
                 href="https://tailwindui.com/"
                 rel="nofollow"
-                className="text-blue-600 dark:text-blue-500 hover:underline"
+                className="text-blue-600 hover:underline dark:text-blue-500"
               >
                 Tailwind UI
               </a>

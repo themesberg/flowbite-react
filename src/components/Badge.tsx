@@ -37,10 +37,10 @@ export const Badge: FC<BadgeProps> = ({ children, color = 'blue', size = 'xs', h
   const span = (
     <>
       <span
-        className={classNames('flex gap-1 h-fit items-center font-semibold', colorClasses[color], sizeClasses[size], {
-          'px-2 py-0.5 rounded': !!children,
-          'p-1 rounded-full': !children && size === 'xs',
-          'p-1.5 rounded-full': !children && size === 'sm',
+        className={classNames('flex h-fit items-center gap-1 font-semibold', colorClasses[color], sizeClasses[size], {
+          'rounded px-2 py-0.5': !!children,
+          'rounded-full p-1': !children && size === 'xs',
+          'rounded-full p-1.5': !children && size === 'sm',
         })}
       >
         {Icon && <Icon className={classNames(iconSizeClasses[size])} />}

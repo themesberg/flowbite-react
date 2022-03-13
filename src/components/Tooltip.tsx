@@ -53,12 +53,12 @@ export const Tooltip: FC<TooltipProps> = ({
     <>
       <div
         className={classNames(
-          'inline-block absolute z-10 py-2 px-3 text-sm font-medium rounded-lg shadow-sm tooltip',
+          'tooltip absolute z-10 inline-block rounded-lg py-2 px-3 text-sm font-medium shadow-sm',
           animation !== false && `transition-opacity ${animation}`,
           {
             'invisible opacity-0': !visible,
-            'text-white bg-gray-900 dark:bg-gray-700': style === 'dark',
-            'text-gray-900 bg-white border border-gray-200': style === 'light',
+            'bg-gray-900 text-white dark:bg-gray-700': style === 'dark',
+            'border border-gray-200 bg-white text-gray-900': style === 'light',
           },
         )}
         ref={tooltipRef}

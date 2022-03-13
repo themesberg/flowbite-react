@@ -25,9 +25,9 @@ export const Accordion: FC<AccordionProps> = ({ items, flush, arrowIcon: ArrowIc
             <button
               type="button"
               className={classNames(
-                'flex justify-between items-center py-5 w-full font-medium text-left border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400',
+                'flex w-full items-center justify-between border-gray-200 py-5 text-left font-medium text-gray-500 dark:border-gray-700 dark:text-gray-400',
                 {
-                  'px-5 border focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800':
+                  'border px-5 hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-800':
                     !flush,
                   'border-b': flush,
                   'border-t-0': index > 0,
@@ -41,7 +41,7 @@ export const Accordion: FC<AccordionProps> = ({ items, flush, arrowIcon: ArrowIc
             >
               <span>{item.title}</span>
               <ArrowIcon
-                className={classNames('w-6 h-6 shrink-0', {
+                className={classNames('h-6 w-6 shrink-0', {
                   'rotate-180': openItems[index],
                 })}
               />
@@ -49,8 +49,8 @@ export const Accordion: FC<AccordionProps> = ({ items, flush, arrowIcon: ArrowIc
           </h2>
           <div className={classNames({ hidden: !openItems[index] })}>
             <div
-              className={classNames('py-5 border-b border-t-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900', {
-                'px-5 border': !flush,
+              className={classNames('border-b border-t-0 border-gray-200 py-5 dark:border-gray-700 dark:bg-gray-900', {
+                'border px-5': !flush,
                 'rounded-b-xl': !flush && index === items.length - 1 && openItems[index],
               })}
             >

@@ -21,7 +21,7 @@ export type DemoPageProps = {
 
 export const DemoPage: FC<DemoPageProps> = ({ examples }) => {
   return (
-    <div className="flex flex-col max-w-4xl mx-auto gap-4 dark:text-white">
+    <div className="mx-auto flex max-w-4xl flex-col gap-8 dark:text-white">
       {examples.map(({ title, code, codeClassName, codeStringifierOptions }, index) => (
         <div key={index} className="flex flex-col gap-2">
           <span className="text-2xl font-bold">{title}</span>

@@ -30,35 +30,35 @@ export const Alert: FC<AlertProps> = ({
 }) => {
   return (
     <div
-      className={classNames('flex flex-col p-4 gap-2 text-sm', colorClasses[color], {
+      className={classNames('flex flex-col gap-2 p-4 text-sm', colorClasses[color], {
         'rounded-lg': rounded,
         'border-t-4': withBorderAccent,
       })}
       role="alert"
     >
       <div className="flex items-center">
-        {Icon && <Icon className="inline flex-shrink-0 mr-3 h-5 w-5" />}
+        {Icon && <Icon className="mr-3 inline h-5 w-5 flex-shrink-0" />}
         <div>{children}</div>
         {onDismiss && (
           <button
             type="button"
-            className={classNames('ml-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 p-1.5 inline-flex h-8 w-8', {
-              'bg-blue-100 text-blue-500 focus:ring-blue-400 hover:bg-blue-200 dark:bg-blue-200 dark:text-blue-600 dark:hover:bg-blue-300':
+            className={classNames('-mx-1.5 -my-1.5 ml-auto inline-flex h-8 w-8 rounded-lg p-1.5 focus:ring-2', {
+              'bg-blue-100 text-blue-500 hover:bg-blue-200 focus:ring-blue-400 dark:bg-blue-200 dark:text-blue-600 dark:hover:bg-blue-300':
                 color === 'blue',
-              'bg-red-100 text-red-500 focus:ring-red-400 hover:bg-red-200 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300':
+              'bg-red-100 text-red-500 hover:bg-red-200 focus:ring-red-400 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300':
                 color === 'red',
-              'bg-green-100 text-green-500 focus:ring-green-400 hover:bg-green-200 dark:bg-green-200 dark:text-green-600 dark:hover:bg-green-300':
+              'bg-green-100 text-green-500 hover:bg-green-200 focus:ring-green-400 dark:bg-green-200 dark:text-green-600 dark:hover:bg-green-300':
                 color === 'green',
-              'bg-yellow-100 text-yellow-500 focus:ring-yellow-400 hover:bg-yellow-200 dark:bg-yellow-200 dark:text-yellow-600 dark:hover:bg-yellow-300':
+              'bg-yellow-100 text-yellow-500 hover:bg-yellow-200 focus:ring-yellow-400 dark:bg-yellow-200 dark:text-yellow-600 dark:hover:bg-yellow-300':
                 color === 'yellow',
-              'bg-gray-100 text-gray-500 focus:ring-gray-400 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white':
+              'bg-gray-100 text-gray-500 hover:bg-gray-200 focus:ring-gray-400 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white':
                 color === 'gray',
             })}
             aria-label="Close"
             onClick={onDismiss}
           >
             <span className="sr-only">Close</span>
-            <HiX className="w-5 h-5" />
+            <HiX className="h-5 w-5" />
           </button>
         )}
       </div>

@@ -68,11 +68,11 @@ export const Carousel: FC<CarouselProps> = ({
   return (
     <div className="relative">
       {/* Carousel wrapper */}
-      <div className="overflow-hidden relative h-56 rounded-lg sm:h-64 xl:h-80 2xl:h-96">
+      <div className="relative h-56 overflow-hidden rounded-lg sm:h-64 xl:h-80 2xl:h-96">
         {items?.map((item, index) => (
           <div
             key={index}
-            className={classNames('absolute inset-0 transition-all transform duration-700 ease-in-out', {
+            className={classNames('absolute inset-0 transform transition-all duration-700 ease-in-out', {
               hidden: index !== activeItem && !isBeforeActiveItem(index) && !isAfterActiveItem(index),
               '-translate-x-full': isBeforeActiveItem(index),
               'translate-x-full': isAfterActiveItem(index),
@@ -85,13 +85,13 @@ export const Carousel: FC<CarouselProps> = ({
 
       {/* Slider indicators */}
       {indicators && (
-        <div className="flex absolute bottom-5 left-1/2 space-x-3 -translate-x-1/2">
+        <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 space-x-3">
           {items.map((_, index) => (
             <button
               key={index}
-              className={classNames('w-3 h-3  rounded-full', {
+              className={classNames('h-3 w-3  rounded-full', {
                 'bg-white dark:bg-gray-800': index === activeItem,
-                'bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800': index !== activeItem,
+                'bg-white/50 hover:bg-white dark:bg-gray-800/50 dark:hover:bg-gray-800': index !== activeItem,
               })}
               onClick={navigateTo(index)}
             />
@@ -101,14 +101,14 @@ export const Carousel: FC<CarouselProps> = ({
 
       {/* Slider controls */}
       <button
-        className="flex absolute top-0 left-0 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+        className="group absolute top-0 left-0 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
         onClick={navigateTo(activeItem - 1)}
         type="button"
       >
         {leftControl ? leftControl : <DefaultLeftControl />}
       </button>
       <button
-        className="flex absolute top-0 right-0 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+        className="group absolute top-0 right-0 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
         onClick={navigateTo(activeItem + 1)}
         type="button"
       >
@@ -119,13 +119,13 @@ export const Carousel: FC<CarouselProps> = ({
 };
 
 const DefaultLeftControl: FC = () => (
-  <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-    <HiOutlineChevronLeft className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" />
+  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 sm:h-10 sm:w-10">
+    <HiOutlineChevronLeft className="h-5 w-5 text-white dark:text-gray-800 sm:h-6 sm:w-6" />
   </span>
 );
 
 const DefaultRightControl: FC = () => (
-  <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-    <HiOutlineChevronRight className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" />
+  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 sm:h-10 sm:w-10">
+    <HiOutlineChevronRight className="h-5 w-5 text-white dark:text-gray-800 sm:h-6 sm:w-6" />
   </span>
 );
