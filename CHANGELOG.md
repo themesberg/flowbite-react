@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/bacali95/flowbite-react/compare/v0.0.9...v0.0.10) (2022-03-13)
+
+
+### Features
+
+* add Carousel component ([36014bc](https://github.com/bacali95/flowbite-react/commit/36014bc30d45033228150b9d78899b3be15bf181))
+
+
+### Bug Fixes
+
+* resolve issues ([118d301](https://github.com/bacali95/flowbite-react/commit/118d301e4a6e026eafdac4ef3dca9dda5aabf55d))
+* resolve issues ([3294f5b](https://github.com/bacali95/flowbite-react/commit/3294f5bf024b207f829806abcf27e84df3f46199))
+* resolve issues, change spinner sizes ([1b4668a](https://github.com/bacali95/flowbite-react/commit/1b4668a5adc7be8f2bb91b91c24d0e8c70709137))
+
 ### [0.0.9](https://github.com/bacali95/flowbite-react/compare/v0.0.6...v0.0.9) (2022-03-12)
 
 
