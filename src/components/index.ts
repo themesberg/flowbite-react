@@ -3,6 +3,7 @@ export * from './Accordion';
 export * from './Badge';
 export * from './Breadcrumb';
 export * from './Button';
+export * from './ButtonGroup';
 export * from './Card';
 export * from './Carousel';
 export * from './DarkThemeToggle';

@@ -12,6 +12,7 @@ type GradientDuoTone =
   | 'tealToLime'
   | 'redToYellow';
 type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+type PositionInGroup = 'start' | 'middle' | 'end';
 
 export type ButtonProps = ComponentProps<'button'> & {
   pill?: boolean;
@@ -22,6 +23,7 @@ export type ButtonProps = ComponentProps<'button'> & {
   icon?: FC<ComponentProps<'svg'>>;
   gradientMonochrome?: GradientMonochrome;
   gradientDuoTone?: GradientDuoTone;
+  positionInGroup?: PositionInGroup;
 };
 
 const colorClasses: Record<Color, string> = {
@@ -88,6 +90,7 @@ const iconSizeClasses: Record<Size, string> = {
 
 export const Button: FC<ButtonProps> = ({
   children,
+  className,
   pill,
   outline,
   disabled = false,
@@ -96,30 +99,38 @@ export const Button: FC<ButtonProps> = ({
   color = 'blue',
   gradientMonochrome,
   gradientDuoTone,
+  positionInGroup,
   ...props
 }) => {
   return (
     <button
       disabled={disabled}
       className={classNames(
-        'group flex h-min w-fit items-center justify-center p-0.5 text-center font-medium',
+        'group flex h-min w-fit items-center justify-center p-0.5 text-center font-medium focus:z-10',
         pill ? 'rounded-full' : 'rounded-lg',
         !gradientMonochrome && !gradientDuoTone && colorClasses[color],
         !gradientDuoTone && gradientMonochrome && gradientMonochromeClasses[gradientMonochrome],
         gradientDuoTone && gradientDuoToneClasses[gradientDuoTone],
         {
+          'border border-gray-900 dark:border-white': color === 'alternative' && outline,
           'cursor-not-allowed opacity-50': disabled,
+          'focus:!ring-2': !!positionInGroup,
+          'rounded-r-none': positionInGroup === 'start',
+          'rounded-none border-l-0 pl-0': positionInGroup === 'middle',
+          'rounded-l-none border-l-0 pl-0': positionInGroup === 'end',
         },
+        className,
       )}
       type="button"
       {...props}
     >
       <span
-        className={classNames('flex items-center', sizeClasses[size], {
+        className={classNames('flex items-center', sizeClasses[size], outline && pill ? 'rounded-full' : 'rounded-md', {
           'bg-white text-gray-900 transition-all duration-75 ease-in group-hover:bg-opacity-0 group-hover:text-inherit dark:bg-gray-900 dark:text-white':
             outline,
-          'rounded-md': outline && !pill,
-          'rounded-full': outline && pill,
+          'rounded-r-none': positionInGroup === 'start',
+          'rounded-none': positionInGroup === 'middle',
+          'rounded-l-none': positionInGroup === 'end',
           [iconSizeClasses[size]]: !!Icon,
         })}
       >
