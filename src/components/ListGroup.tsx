@@ -1,11 +1,11 @@
-import { ComponentProps, FC, Fragment } from 'react';
+import { ComponentProps, FC, Fragment, ReactNode } from 'react';
 import classNames from 'classnames';
 
 export type ListGroupProps = {
   items: ListGroupItem[];
 };
 export type ListGroupItem = {
-  title: string;
+  title: ReactNode;
   link?: string;
   icon?: FC<ComponentProps<'svg'>>;
   active?: boolean;
@@ -20,11 +20,12 @@ export const ListGroup: FC<ListGroupProps> = ({ items }) => {
           {!item.link ? (
             <button
               className={classNames(
-                'text-sm font-medium py-2 px-4 w-full text-left first:rounded-t-lg last:rounded-b-lg',
+                'flex gap-2 items-center text-sm font-medium py-2 px-4 w-full text-left first:rounded-t-lg last:rounded-b-lg',
                 {},
               )}
               type="button"
             >
+              {item.icon && <item.icon />}
               {item.title}
             </button>
           ) : (

@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { ListGroup, ListGroupItem } from '../components/ListGroup';
 import { CodeExample, DemoPage } from './DemoPage';
+import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
 
 const ListGroupPage: FC = () => {
   const defaultItems: ListGroupItem[] = [
@@ -38,6 +39,25 @@ const ListGroupPage: FC = () => {
     },
   ];
 
+  const itemsWithIcons: ListGroupItem[] = [
+    {
+      title: 'Profile',
+      icon: HiUserCircle,
+    },
+    {
+      title: 'Settings',
+      icon: HiOutlineAdjustments,
+    },
+    {
+      title: 'Messages',
+      icon: HiInbox,
+    },
+    {
+      title: 'Download',
+      icon: HiCloudDownload,
+    },
+  ];
+
   const examples: CodeExample[] = [
     {
       title: 'Default list',
@@ -53,7 +73,7 @@ const ListGroupPage: FC = () => {
     },
     {
       title: 'List group with icons',
-      code: <ListGroup items={itemsWithLinks} />,
+      code: <ListGroup items={itemsWithIcons} />,
     },
   ];
 

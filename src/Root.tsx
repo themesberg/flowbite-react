@@ -20,12 +20,12 @@ import { DarkThemeToggle, Navbar, Sidebar, SidebarItem, Spinner } from './compon
 const DashboardPage = lazy(() => import('./pages/DashboardPage'));
 const AlertsPage = lazy(() => import('./pages/AlertsPage'));
 const AccordionPage = lazy(() => import('./pages/AccordionPage'));
-const ListGroupPage = lazy(() => import('./pages/ListGroupPage'));
 const BadgesPage = lazy(() => import('./pages/BadgesPage'));
 const BreadcrumbPage = lazy(() => import('./pages/BreadcrumbPage'));
 const ButtonsPage = lazy(() => import('./pages/ButtonsPage'));
 const CardPage = lazy(() => import('./pages/CardPage'));
 const CarouselPage = lazy(() => import('./pages/CarouselPage'));
+const ListGroupPage = lazy(() => import('./pages/ListGroupPage'));
 const SpinnersPage = lazy(() => import('./pages/SpinnersPage'));
 const TooltipsPage = lazy(() => import('./pages/TooltipsPage'));
 
@@ -83,6 +83,12 @@ export const Root: FC = () => {
       },
       {
         group: false,
+        icon: HiClipboardList,
+        title: 'List group',
+        href: '/list-group',
+      },
+      {
+        group: false,
         icon: FaSpinner,
         title: 'Spinners',
         href: '/spinners',
@@ -92,12 +98,6 @@ export const Root: FC = () => {
         icon: HiAnnotation,
         title: 'Tooltips',
         href: '/tooltips',
-      },
-      {
-        group: false,
-        icon: HiClipboardList,
-        title: 'List Group',
-        href: '/list-group',
       },
     ],
   ];
@@ -143,9 +143,9 @@ export const Root: FC = () => {
               <Route path="buttons" element={<ButtonsPage />} />
               <Route path="card" element={<CardPage />} />
               <Route path="carousel" element={<CarouselPage />} />
+              <Route path="list-group" element={<ListGroupPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
-              <Route path="list-group" element={<ListGroupPage />} />
             </Routes>
           </Suspense>
         </main>
