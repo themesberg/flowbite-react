@@ -10,7 +10,7 @@ import {
   HiHome,
   HiMenuAlt1,
 } from 'react-icons/hi';
-import { BsGithub } from 'react-icons/bs';
+import { BsGithub, BsImages } from 'react-icons/bs';
 import { FaSpinner } from 'react-icons/fa';
 import { Route, Routes } from 'react-router-dom';
 
@@ -23,6 +23,7 @@ const BadgesPage = lazy(() => import('./pages/BadgesPage'));
 const BreadcrumbPage = lazy(() => import('./pages/BreadcrumbPage'));
 const ButtonsPage = lazy(() => import('./pages/ButtonsPage'));
 const CardPage = lazy(() => import('./pages/CardPage'));
+const CarouselPage = lazy(() => import('./pages/CarouselPage'));
 const SpinnersPage = lazy(() => import('./pages/SpinnersPage'));
 const TooltipsPage = lazy(() => import('./pages/TooltipsPage'));
 
@@ -71,6 +72,12 @@ export const Root: FC = () => {
         icon: HiDuplicate,
         title: 'Card',
         href: '/card',
+      },
+      {
+        group: false,
+        icon: BsImages,
+        title: 'Carousel',
+        href: '/carousel',
       },
       {
         group: false,
@@ -127,6 +134,7 @@ export const Root: FC = () => {
               <Route path="breadcrumb" element={<BreadcrumbPage />} />
               <Route path="buttons" element={<ButtonsPage />} />
               <Route path="card" element={<CardPage />} />
+              <Route path="carousel" element={<CarouselPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
             </Routes>
