@@ -23,7 +23,10 @@ export const ListGroup: FC<ListGroupProps> = ({ items }) => {
               onClick={item.onClick}
               className={classNames(
                 'flex w-full items-center gap-2 py-2 px-4 text-left text-sm font-medium first:rounded-t-lg last:rounded-b-lg',
-                {},
+                {
+                  '!bg-blue-700 text-white': item.active,
+                  'hover:bg-gray-100 hover:text-blue-700 dark:hover:bg-gray-600 dark:hover:text-white': !item.active,
+                },
               )}
               type="button"
             >
