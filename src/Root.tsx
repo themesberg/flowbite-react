@@ -4,6 +4,7 @@ import {
   HiBadgeCheck,
   HiBell,
   HiChevronDoubleRight,
+  HiClipboardList,
   HiCollection,
   HiCreditCard,
   HiDuplicate,
@@ -25,6 +26,7 @@ const ButtonsPage = lazy(() => import('./pages/ButtonsPage'));
 const ButtonGroupPage = lazy(() => import('./pages/ButtonGroupPage'));
 const CardPage = lazy(() => import('./pages/CardPage'));
 const CarouselPage = lazy(() => import('./pages/CarouselPage'));
+const ListGroupPage = lazy(() => import('./pages/ListGroupPage'));
 const SpinnersPage = lazy(() => import('./pages/SpinnersPage'));
 const TooltipsPage = lazy(() => import('./pages/TooltipsPage'));
 
@@ -88,6 +90,12 @@ export const Root: FC = () => {
       },
       {
         group: false,
+        icon: HiClipboardList,
+        title: 'List group',
+        href: '/list-group',
+      },
+      {
+        group: false,
         icon: FaSpinner,
         title: 'Spinners',
         href: '/spinners',
@@ -143,6 +151,7 @@ export const Root: FC = () => {
               <Route path="button-group" element={<ButtonGroupPage />} />
               <Route path="card" element={<CardPage />} />
               <Route path="carousel" element={<CarouselPage />} />
+              <Route path="list-group" element={<ListGroupPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
             </Routes>
