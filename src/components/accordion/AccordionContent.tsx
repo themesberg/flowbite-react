@@ -12,5 +12,3 @@ export const AccordionContent: FC<ComponentProps<'div'>> = ({ children, classNam
     </div>
   ) : null;
 };
-
-AccordionContent.displayName = 'Accordion.Content';

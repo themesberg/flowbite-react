@@ -22,5 +22,3 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({ children, open, flush 
 
   return <AccordionPanelContext.Provider value={{ flush, isOpen, setIsOpen }}>{items}</AccordionPanelContext.Provider>;
 };
-
-AccordionPanel.displayName = 'Accordion.Panel';

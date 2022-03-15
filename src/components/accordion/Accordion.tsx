@@ -27,6 +27,9 @@ const AccordionComponent: FC<AccordionProps> = ({ children, flush }) => {
 };
 
 AccordionComponent.displayName = 'Accordion';
+AccordionPanel.displayName = 'Accordion.Panel';
+AccordionTitle.displayName = 'Accordion.Title';
+AccordionContent.displayName = 'Accordion.Content';
 
 export const Accordion = Object.assign(AccordionComponent, {
   Panel: AccordionPanel,
