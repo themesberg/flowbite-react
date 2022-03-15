@@ -1,6 +1,7 @@
-import { FC, lazy, Suspense, useState } from 'react';
+import { FC, Suspense, useState } from 'react';
 import {
   HiAnnotation,
+  HiArrowCircleDown,
   HiBadgeCheck,
   HiBell,
   HiChevronDoubleRight,
@@ -17,18 +18,19 @@ import { Route, Routes } from 'react-router-dom';
 
 import { DarkThemeToggle, Navbar, Sidebar, SidebarItem, Spinner } from './components';
 
-const DashboardPage = lazy(() => import('./pages/DashboardPage'));
-const AlertsPage = lazy(() => import('./pages/AlertsPage'));
-const AccordionPage = lazy(() => import('./pages/AccordionPage'));
-const BadgesPage = lazy(() => import('./pages/BadgesPage'));
-const BreadcrumbPage = lazy(() => import('./pages/BreadcrumbPage'));
-const ButtonsPage = lazy(() => import('./pages/ButtonsPage'));
-const ButtonGroupPage = lazy(() => import('./pages/ButtonGroupPage'));
-const CardPage = lazy(() => import('./pages/CardPage'));
-const CarouselPage = lazy(() => import('./pages/CarouselPage'));
-const ListGroupPage = lazy(() => import('./pages/ListGroupPage'));
-const SpinnersPage = lazy(() => import('./pages/SpinnersPage'));
-const TooltipsPage = lazy(() => import('./pages/TooltipsPage'));
+import DashboardPage from './pages/DashboardPage';
+import AlertsPage from './pages/AlertsPage';
+import AccordionPage from './pages/AccordionPage';
+import BadgesPage from './pages/BadgesPage';
+import BreadcrumbPage from './pages/BreadcrumbPage';
+import ButtonsPage from './pages/ButtonsPage';
+import ButtonGroupPage from './pages/ButtonGroupPage';
+import CardPage from './pages/CardPage';
+import CarouselPage from './pages/CarouselPage';
+import DropdownPage from './pages/DropdownPage';
+import ListGroupPage from './pages/ListGroupPage';
+import SpinnersPage from './pages/SpinnersPage';
+import TooltipsPage from './pages/TooltipsPage';
 
 export const Root: FC = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -87,6 +89,12 @@ export const Root: FC = () => {
         icon: BsImages,
         title: 'Carousel',
         href: '/carousel',
+      },
+      {
+        group: false,
+        icon: HiArrowCircleDown,
+        title: 'Dropdown',
+        href: '/dropdown',
       },
       {
         group: false,
@@ -151,6 +159,7 @@ export const Root: FC = () => {
               <Route path="button-group" element={<ButtonGroupPage />} />
               <Route path="card" element={<CardPage />} />
               <Route path="carousel" element={<CarouselPage />} />
+              <Route path="dropdown" element={<DropdownPage />} />
               <Route path="list-group" element={<ListGroupPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />

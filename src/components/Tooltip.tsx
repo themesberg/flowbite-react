@@ -3,16 +3,18 @@ import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 export type TooltipProps = {
+  className?: string;
   content: ReactNode;
   placement?: Placement;
   trigger?: 'hover' | 'click';
-  style?: 'dark' | 'light';
-  animation?: false | `duration-${string}`;
+  style?: 'dark' | 'light' | 'auto';
+  animation?: false | `duration-${number}`;
   arrow?: boolean;
 };
 
 export const Tooltip: FC<TooltipProps> = ({
   children,
+  className,
   content,
   placement = 'top',
   trigger = 'hover',
@@ -47,7 +49,7 @@ export const Tooltip: FC<TooltipProps> = ({
     popperInstance.current?.update();
   };
 
-  const hide = () => setVisible(false);
+  const hide = () => setTimeout(() => setVisible(false), 100);
 
   return (
     <>
@@ -59,7 +61,10 @@ export const Tooltip: FC<TooltipProps> = ({
             'invisible opacity-0': !visible,
             'bg-gray-900 text-white dark:bg-gray-700': style === 'dark',
             'border border-gray-200 bg-white text-gray-900': style === 'light',
+            'border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-gray-700 dark:text-white':
+              style === 'auto',
           },
+          className,
         )}
         ref={tooltipRef}
         role="tooltip"

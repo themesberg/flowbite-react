@@ -6,6 +6,7 @@ export * from './Button';
 export * from './ButtonGroup';
 export * from './Card';
 export * from './Carousel';
+export * from './dropdown/Dropdown';
 export * from './DarkThemeToggle';
 export * from './Navbar';
 export * from './Sidebar';
