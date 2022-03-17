@@ -11,6 +11,7 @@ import {
   HiDuplicate,
   HiHome,
   HiMenuAlt1,
+  HiPencilAlt,
 } from 'react-icons/hi';
 import { BsCreditCard2FrontFill, BsGithub, BsImages } from 'react-icons/bs';
 import { FaSpinner } from 'react-icons/fa';
@@ -28,6 +29,7 @@ import ButtonGroupPage from './pages/ButtonGroupPage';
 import CardPage from './pages/CardPage';
 import CarouselPage from './pages/CarouselPage';
 import DropdownPage from './pages/DropdownPage';
+import FormsPage from './pages/FormsPage';
 import ListGroupPage from './pages/ListGroupPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TooltipsPage from './pages/TooltipsPage';
@@ -98,6 +100,12 @@ export const Root: FC = () => {
       },
       {
         group: false,
+        icon: HiPencilAlt,
+        title: 'Forms',
+        href: '/forms',
+      },
+      {
+        group: false,
         icon: HiClipboardList,
         title: 'List group',
         href: '/list-group',
@@ -160,6 +168,7 @@ export const Root: FC = () => {
               <Route path="card" element={<CardPage />} />
               <Route path="carousel" element={<CarouselPage />} />
               <Route path="dropdown" element={<DropdownPage />} />
+              <Route path="forms" element={<FormsPage />} />
               <Route path="list-group" element={<ListGroupPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />

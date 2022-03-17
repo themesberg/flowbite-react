@@ -62,6 +62,12 @@ const DashboardPage: FC = () => {
       images: { light: 'dropdown-light.svg', dark: 'dropdown-dark.svg' },
     },
     {
+      title: 'Forms',
+      href: '/forms',
+      className: 'w-40',
+      images: { light: 'forms-light.svg', dark: 'forms-dark.svg' },
+    },
+    {
       title: 'List group',
       href: '/list-group',
       className: 'w-36',
