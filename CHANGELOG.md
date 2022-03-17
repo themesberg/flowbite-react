@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/bacali95/flowbite-react/compare/v0.0.12...v0.0.13) (2022-03-17)
+
+
+### Features
+
+* add Dropdown component ([169b46e](https://github.com/bacali95/flowbite-react/commit/169b46e3bc59629a25f6badc1e6e8df0786b7ede))
+* add Forms components ([51c2486](https://github.com/bacali95/flowbite-react/commit/51c248631ae4f844bc21cc54456b5ef202d7015e))
+* refactor Accordion component ([16482e3](https://github.com/bacali95/flowbite-react/commit/16482e382a213af74797161ab1e75f5405a2312f))
+
+
+### Bug Fixes
+
+* fix Button styling ([c4aad36](https://github.com/bacali95/flowbite-react/commit/c4aad365d68ab3ea17e805c0fa0bc438a1d83924))
+* fix onclick func and button focus in dark mode ([a8b6c92](https://github.com/bacali95/flowbite-react/commit/a8b6c92184115a6d2f967bf1bdaa2ca0a00d52b8))
+* refactor Accordion component ([96dc14c](https://github.com/bacali95/flowbite-react/commit/96dc14c41530bd57db18b394fdf3a018c5463275))
+
 ### [0.0.12](https://github.com/bacali95/flowbite-react/compare/v0.0.11...v0.0.12) (2022-03-13)
 
 
