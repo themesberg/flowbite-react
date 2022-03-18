@@ -18,6 +18,7 @@ const ListGroupComponent: FC<ListGroupProps> = ({ children, className }) => (
   </div>
 );
 
+ListGroupComponent.displayName = 'ListGroup';
 ListGroupItem.displayName = 'ListGroup.Item';
 
 export const ListGroup = Object.assign(ListGroupComponent, { Item: ListGroupItem });
