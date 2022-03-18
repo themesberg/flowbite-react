@@ -1,83 +1,63 @@
 import { FC } from 'react';
-import { ListGroup, ListGroupItem } from '../components/ListGroup';
-import { CodeExample, DemoPage } from './DemoPage';
 import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
 
+import { ListGroup } from '../components';
+import { CodeExample, DemoPage } from './DemoPage';
+
 const ListGroupPage: FC = () => {
-  const defaultItems: ListGroupItem[] = [
-    {
-      title: 'Profile',
-    },
-    {
-      title: 'Settings',
-    },
-    {
-      title: 'Messages',
-    },
-    {
-      title: 'Download',
-    },
-  ];
-
-  const itemsWithLinks: ListGroupItem[] = [
-    {
-      title: 'Profile',
-      link: '#/list-group',
-      active: true,
-    },
-    {
-      title: 'Settings',
-      link: '#/list-group',
-    },
-    {
-      title: 'Messages',
-      link: '#/list-group',
-    },
-    {
-      title: 'Download',
-      link: '#/list-group',
-    },
-  ];
-
-  const itemsWithIcons: ListGroupItem[] = [
-    {
-      title: 'Profile',
-      icon: HiUserCircle,
-      onClick: () => alert('profile'),
-    },
-    {
-      title: 'Settings',
-      icon: HiOutlineAdjustments,
-    },
-    {
-      title: 'Messages',
-      icon: HiInbox,
-    },
-    {
-      title: 'Download',
-      icon: HiCloudDownload,
-    },
-  ];
-
   const examples: CodeExample[] = [
     {
       title: 'Default list',
-      code: <ListGroup items={defaultItems} />,
+      code: (
+        <ListGroup className="w-48">
+          <ListGroup.Item>Profile</ListGroup.Item>
+          <ListGroup.Item>Settings</ListGroup.Item>
+          <ListGroup.Item>Messages</ListGroup.Item>
+          <ListGroup.Item>Download</ListGroup.Item>
+        </ListGroup>
+      ),
     },
     {
       title: 'List group with links',
-      code: <ListGroup items={itemsWithLinks} />,
+      code: (
+        <ListGroup className="w-48">
+          <ListGroup.Item active href="#/list-group">
+            Profile
+          </ListGroup.Item>
+          <ListGroup.Item href="#/list-group">Settings</ListGroup.Item>
+          <ListGroup.Item href="#/list-group">Messages</ListGroup.Item>
+          <ListGroup.Item href="#/list-group">Download</ListGroup.Item>
+        </ListGroup>
+      ),
     },
     {
       title: 'List group with buttons',
-      code: <ListGroup items={itemsWithLinks} />,
-    },
-    {
-      title: 'List group with icons',
-      code: <ListGroup items={itemsWithIcons} />,
+      code: (
+        <ListGroup className="w-48">
+          <ListGroup.Item active onClick={() => alert('Profile clicked!')}>
+            Profile
+          </ListGroup.Item>
+          <ListGroup.Item>Settings</ListGroup.Item>
+          <ListGroup.Item>Messages</ListGroup.Item>
+          <ListGroup.Item>Download</ListGroup.Item>
+        </ListGroup>
+      ),
       codeStringifierOptions: {
         functionValue: (fn) => (fn.name === 'onClick' ? fn : fn.name),
       },
+    },
+    {
+      title: 'List group with icons',
+      code: (
+        <ListGroup className="w-48">
+          <ListGroup.Item active icon={HiUserCircle}>
+            Profile
+          </ListGroup.Item>
+          <ListGroup.Item icon={HiOutlineAdjustments}>Settings</ListGroup.Item>
+          <ListGroup.Item icon={HiInbox}>Messages</ListGroup.Item>
+          <ListGroup.Item icon={HiCloudDownload}>Download</ListGroup.Item>
+        </ListGroup>
+      ),
     },
   ];
 
