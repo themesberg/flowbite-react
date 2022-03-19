@@ -14,3 +14,5 @@ export * from './Navbar';
 export * from './Sidebar';
 export * from './Spinner';
 export * from './Tooltip';
+export * from './Tab';
+export * from './Tabs';
