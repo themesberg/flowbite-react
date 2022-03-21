@@ -1,9 +1,11 @@
 {
   "name": "flowbite-react",
   "version": "0.0.14",
-  "main": "./dist/index.js",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
   "files": [
-    "dist"
+    "lib"
   ],
   "author": {
     "name": "Nasreddine Bac Ali",
@@ -25,7 +27,9 @@
     "build": "react-app-rewired build --profile",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
-    "build-components": "tsc -p tsconfig.components.json",
+    "build-components": "yarn build-components:esm && yarn build-components:cjs",
+    "build-components:cjs": "tsc -p tsconfig.components.json",
+    "build-components:esm": "tsc -p tsconfig.components.json --module esnext --outDir lib/esm",
     "lint": "eslint",
     "prettier": "prettier --check {src,test}/**/*.{ts,tsx,json,scss}",
     "prettier:fix": "prettier --write {src,test}/**/*.{ts,tsx,json,scss}",
