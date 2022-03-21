@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://github.com/bacali95/flowbite-react/compare/v0.0.13...v0.0.14) (2022-03-21)
+
+
+### Features
+
+* refactor ListGroup component ([0f18211](https://github.com/bacali95/flowbite-react/commit/0f182113f982cfbc8b5664f7946b8bcf6312cb8e))
+
+
+### Bug Fixes
+
+* fix ListGroup component ([5eda5ed](https://github.com/bacali95/flowbite-react/commit/5eda5ed993f4f7938ce332599166c2fbd2f837ee))
+
 ### [0.0.13](https://github.com/bacali95/flowbite-react/compare/v0.0.12...v0.0.13) (2022-03-17)
 
 
