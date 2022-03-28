@@ -13,15 +13,15 @@
     "url": "https://github.com/bacali95"
   },
   "bugs": {
-    "url": "https://github.com/bacali95/flowbite-react/issues"
+    "url": "https://github.com/themesberg/flowbite-react/issues"
   },
   "repository": {
-    "url": "https://github.com/bacali95/flowbite-react",
+    "url": "https://github.com/themesberg/flowbite-react",
     "type": "git"
   },
   "license": "MIT",
   "private": false,
-  "homepage": "https://bacali95.github.io/flowbite-react/",
+  "homepage": "https://themesberg.github.io/flowbite-react/",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build --profile",
