@@ -1,9 +1,11 @@
 {
   "name": "flowbite-react",
-  "version": "0.0.13",
-  "main": "./dist/index.js",
+  "version": "0.0.15",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
   "files": [
-    "dist"
+    "lib"
   ],
   "author": {
     "name": "Nasreddine Bac Ali",
@@ -11,21 +13,23 @@
     "url": "https://github.com/bacali95"
   },
   "bugs": {
-    "url": "https://github.com/bacali95/flowbite-react/issues"
+    "url": "https://github.com/themesberg/flowbite-react/issues"
   },
   "repository": {
-    "url": "https://github.com/bacali95/flowbite-react",
+    "url": "https://github.com/themesberg/flowbite-react",
     "type": "git"
   },
   "license": "MIT",
   "private": false,
-  "homepage": "https://bacali95.github.io/flowbite-react/",
+  "homepage": "https://themesberg.github.io/flowbite-react/",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build --profile",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
-    "build-components": "tsc -p tsconfig.components.json",
+    "build-components": "yarn build-components:esm && yarn build-components:cjs",
+    "build-components:cjs": "tsc -p tsconfig.components.json",
+    "build-components:esm": "tsc -p tsconfig.components.json --module esnext --outDir lib/esm",
     "lint": "eslint",
     "prettier": "prettier --check {src,test}/**/*.{ts,tsx,json,scss}",
     "prettier:fix": "prettier --write {src,test}/**/*.{ts,tsx,json,scss}",
