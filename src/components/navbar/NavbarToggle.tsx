@@ -21,6 +21,7 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({ barIcon: BarIcon = GoThree
       )}
       onClick={handleClick}
     >
+      <span className="sr-only">Open main menu</span>
       <BarIcon className="h-6 w-6 shrink-0" />
     </button>
   );

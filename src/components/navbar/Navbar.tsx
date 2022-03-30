@@ -21,12 +21,12 @@ const NavbarCompnent: FC<NavbarCompnentProps> = ({ children, open }) => {
 };
 
 NavbarCompnent.displayName = 'Navbar';
-NavbarBrand.displayName = 'Navbar.Logo';
+NavbarBrand.displayName = 'Navbar.Brand';
 NavbarToggle.displayName = 'Navbar.Toggle';
 NavbarCollapse.displayName = 'Navbar.Collapse';
 
 export const Navbar = Object.assign(NavbarCompnent, {
-  Logo: NavbarBrand,
+  Brand: NavbarBrand,
   Toggle: NavbarToggle,
   Collapse: NavbarCollapse,
 });
