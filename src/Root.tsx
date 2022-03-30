@@ -15,6 +15,7 @@ import {
 } from 'react-icons/hi';
 import { BsCreditCard2FrontFill, BsGithub, BsImages } from 'react-icons/bs';
 import { FaSpinner } from 'react-icons/fa';
+import { FiNavigation } from 'react-icons/fi';
 import { MdTab } from 'react-icons/md';
 import { Route, Routes } from 'react-router-dom';
 
@@ -32,6 +33,7 @@ import CarouselPage from './pages/CarouselPage';
 import DropdownPage from './pages/DropdownPage';
 import FormsPage from './pages/FormsPage';
 import ListGroupPage from './pages/ListGroupPage';
+import NavbarPage from './pages/NavbarPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TooltipsPage from './pages/TooltipsPage';
 import TabsPage from './pages/TabsPage';
@@ -114,6 +116,12 @@ export const Root: FC = () => {
       },
       {
         group: false,
+        icon: FiNavigation,
+        title: 'Navbars',
+        href: '/navbars',
+      },
+      {
+        group: false,
         icon: FaSpinner,
         title: 'Spinners',
         href: '/spinners',
@@ -178,6 +186,7 @@ export const Root: FC = () => {
               <Route path="dropdown" element={<DropdownPage />} />
               <Route path="forms" element={<FormsPage />} />
               <Route path="list-group" element={<ListGroupPage />} />
+              <Route path="navbars" element={<NavbarPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tabs" element={<TabsPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
