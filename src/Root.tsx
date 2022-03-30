@@ -8,6 +8,7 @@ import {
   HiClipboardList,
   HiCollection,
   HiCreditCard,
+  HiDeviceTablet,
   HiDuplicate,
   HiHome,
   HiMenuAlt1,
@@ -31,6 +32,7 @@ import CarouselPage from './pages/CarouselPage';
 import DropdownPage from './pages/DropdownPage';
 import FormsPage from './pages/FormsPage';
 import ListGroupPage from './pages/ListGroupPage';
+import ModalPage from './pages/ModalPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TooltipsPage from './pages/TooltipsPage';
 
@@ -112,6 +114,12 @@ export const Root: FC = () => {
       },
       {
         group: false,
+        icon: HiDeviceTablet,
+        title: 'Modal',
+        href: '/modal',
+      },
+      {
+        group: false,
         icon: FaSpinner,
         title: 'Spinners',
         href: '/spinners',
@@ -170,6 +178,7 @@ export const Root: FC = () => {
               <Route path="dropdown" element={<DropdownPage />} />
               <Route path="forms" element={<FormsPage />} />
               <Route path="list-group" element={<ListGroupPage />} />
+              <Route path="modal" element={<ModalPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
             </Routes>
