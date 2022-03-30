@@ -16,7 +16,6 @@ import {
 import { BsCreditCard2FrontFill, BsGithub, BsImages } from 'react-icons/bs';
 import { FaSpinner } from 'react-icons/fa';
 import { FiNavigation } from 'react-icons/fi';
-import { MdTab } from 'react-icons/md';
 import { Route, Routes } from 'react-router-dom';
 
 import { DarkThemeToggle, Navbar, Sidebar, SidebarItem, Spinner } from './components';
@@ -36,7 +35,6 @@ import ListGroupPage from './pages/ListGroupPage';
 import NavbarPage from './pages/NavbarPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TooltipsPage from './pages/TooltipsPage';
-import TabsPage from './pages/TabsPage';
 
 export const Root: FC = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -128,12 +126,6 @@ export const Root: FC = () => {
       },
       {
         group: false,
-        icon: MdTab,
-        title: 'Tabs',
-        href: '/tabs',
-      },
-      {
-        group: false,
         icon: HiAnnotation,
         title: 'Tooltips',
         href: '/tooltips',
@@ -188,7 +180,6 @@ export const Root: FC = () => {
               <Route path="list-group" element={<ListGroupPage />} />
               <Route path="navbars" element={<NavbarPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
-              <Route path="tabs" element={<TabsPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
             </Routes>
           </Suspense>
