@@ -10,6 +10,7 @@ export * from './dropdown/Dropdown';
 export * from './DarkThemeToggle';
 export * from './form-controls';
 export * from './list-group/ListGroup';
+export * from './modal/Modal';
 export * from './navbar/Navbar';
 export * from './Sidebar';
 export * from './Spinner';

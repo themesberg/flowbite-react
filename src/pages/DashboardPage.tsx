@@ -56,6 +56,12 @@ const DashboardPage: FC = () => {
       images: { light: 'card-light.svg', dark: 'card-dark.svg' },
     },
     {
+      title: 'Carousel',
+      href: '/carousel',
+      className: 'w-48',
+      images: { light: 'carousel-light.svg', dark: 'carousel-dark.svg' },
+    },
+    {
       title: 'Dropdown',
       href: '/dropdown',
       className: 'w-28',
@@ -72,6 +78,12 @@ const DashboardPage: FC = () => {
       href: '/list-group',
       className: 'w-36',
       images: { light: 'list-group-light.svg', dark: 'list-group-dark.svg' },
+    },
+    {
+      title: 'Modal',
+      href: '/modal',
+      className: 'w-36',
+      images: { light: 'modal-light.svg', dark: 'modal-dark.svg' },
     },
     {
       title: 'Navbars',
