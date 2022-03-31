@@ -8,17 +8,30 @@ import { NavbarToggle } from './NavbarToggle';
 export type NavbarCompnentProps = {
   menuOpen?: boolean;
   fluid?: boolean;
+  rounded?: boolean;
+  border?: boolean;
 };
 
-const NavbarCompnent: FC<NavbarCompnentProps> = ({ children, menuOpen, fluid }) => {
+const NavbarCompnent: FC<NavbarCompnentProps> = ({ children, menuOpen, fluid, rounded, border }) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
   return (
     <NavbarContext.Provider value={{ isOpen, setIsOpen }}>
-      <nav className="rounded border-gray-200 bg-white px-2 py-2.5 dark:bg-gray-800 sm:px-4">
+      <nav
+        className={classNames('border-gray-200 bg-white px-2 py-2.5 dark:bg-gray-800 sm:px-4', {
+          // prettier-ignore
+          // REASON: prettier wants 'rounded' to be a prop
+          'rounded': rounded,
+          // prettier-ignore
+          // REASON: prettier wants 'border' to be a prop
+          'border': border,
+        })}
+      >
         <div
           className={classNames('mx-auto flex flex-wrap items-center justify-between', {
-            container: fluid,
+            // prettier-ignore
+            // REASON: prettier again wants 'container' to be a prop
+            'container': fluid,
           })}
         >
           {children}
