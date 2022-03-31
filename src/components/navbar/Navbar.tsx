@@ -5,11 +5,11 @@ import { NavbarContext } from './NavbarContext';
 import { NavbarToggle } from './NavbarToggle';
 
 export type NavbarCompnentProps = {
-  open?: boolean;
+  menuOpen?: boolean;
 };
 
-const NavbarCompnent: FC<NavbarCompnentProps> = ({ children, open }) => {
-  const [isOpen, setIsOpen] = useState(open);
+const NavbarCompnent: FC<NavbarCompnentProps> = ({ children, menuOpen = false }) => {
+  const [isOpen, setIsOpen] = useState(menuOpen);
 
   return (
     <NavbarContext.Provider value={{ isOpen, setIsOpen }}>
