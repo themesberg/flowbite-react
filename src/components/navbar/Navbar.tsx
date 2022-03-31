@@ -19,19 +19,13 @@ const NavbarCompnent: FC<NavbarCompnentProps> = ({ children, menuOpen, fluid, ro
     <NavbarContext.Provider value={{ isOpen, setIsOpen }}>
       <nav
         className={classNames('border-gray-200 bg-white px-2 py-2.5 dark:bg-gray-800 sm:px-4', {
-          // prettier-ignore
-          // REASON: prettier wants 'rounded' to be a prop
-          'rounded': rounded,
-          // prettier-ignore
-          // REASON: prettier wants 'border' to be a prop
-          'border': border,
+          rounded: rounded,
+          border: border,
         })}
       >
         <div
           className={classNames('mx-auto flex flex-wrap items-center justify-between', {
-            // prettier-ignore
-            // REASON: prettier again wants 'container' to be a prop
-            'container': fluid,
+            container: !fluid,
           })}
         >
           {children}
