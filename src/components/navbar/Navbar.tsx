@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import { NavbarBrand } from './NavbarBrand';
 import { NavbarCollapse } from './NavbarCollapse';
 import { NavbarContext } from './NavbarContext';
+import { NavbarLink } from './NavbarLink';
 import { NavbarToggle } from './NavbarToggle';
 
 export type NavbarCompnentProps = {
@@ -37,11 +38,13 @@ const NavbarCompnent: FC<NavbarCompnentProps> = ({ children, menuOpen, fluid, ro
 
 NavbarCompnent.displayName = 'Navbar';
 NavbarBrand.displayName = 'Navbar.Brand';
-NavbarToggle.displayName = 'Navbar.Toggle';
 NavbarCollapse.displayName = 'Navbar.Collapse';
+NavbarLink.displayName = 'Navbar.Link';
+NavbarToggle.displayName = 'Navbar.Toggle';
 
 export const Navbar = Object.assign(NavbarCompnent, {
   Brand: NavbarBrand,
-  Toggle: NavbarToggle,
   Collapse: NavbarCollapse,
+  Link: NavbarLink,
+  Toggle: NavbarToggle,
 });
