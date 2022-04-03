@@ -13,7 +13,7 @@ export type NavbarCompnentProps = {
   border?: boolean;
 };
 
-const NavbarCompnent: FC<NavbarCompnentProps> = ({ children, menuOpen, fluid, rounded, border }) => {
+const NavbarComponent: FC<NavbarCompnentProps> = ({ children, menuOpen, fluid, rounded, border }) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
   return (
@@ -36,13 +36,13 @@ const NavbarCompnent: FC<NavbarCompnentProps> = ({ children, menuOpen, fluid, ro
   );
 };
 
-NavbarCompnent.displayName = 'Navbar';
+NavbarComponent.displayName = 'Navbar';
 NavbarBrand.displayName = 'Navbar.Brand';
 NavbarCollapse.displayName = 'Navbar.Collapse';
 NavbarLink.displayName = 'Navbar.Link';
 NavbarToggle.displayName = 'Navbar.Toggle';
 
-export const Navbar = Object.assign(NavbarCompnent, {
+export const Navbar = Object.assign(NavbarComponent, {
   Brand: NavbarBrand,
   Collapse: NavbarCollapse,
   Link: NavbarLink,
