@@ -86,6 +86,12 @@ const DashboardPage: FC = () => {
       images: { light: 'modal-light.svg', dark: 'modal-dark.svg' },
     },
     {
+      title: 'Navbars',
+      href: '/navbars',
+      className: 'w-56',
+      images: { light: 'navbars-light.svg', dark: 'navbars-dark.svg' },
+    },
+    {
       title: 'Spinners',
       href: '/spinners',
       className: 'w-36',
