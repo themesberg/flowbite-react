@@ -92,6 +92,12 @@ const DashboardPage: FC = () => {
       images: { light: 'navbars-light.svg', dark: 'navbars-dark.svg' },
     },
     {
+      title: 'Rating',
+      href: '/rating',
+      className: 'w-36',
+      images: { light: 'rating-light.svg', dark: 'rating-dark.svg' },
+    },
+    {
       title: 'Spinners',
       href: '/spinners',
       className: 'w-36',
