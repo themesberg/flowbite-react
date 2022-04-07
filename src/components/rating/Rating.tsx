@@ -1,18 +1,29 @@
 import { FC } from 'react';
-import { RatingStar } from './RatingStar';
 import classNames from 'classnames';
+import { RatingAdvanced } from './RatingAdvanced';
+import { RatingContext } from './RatingContext';
+import { RatingStar } from './RatingStar';
+
+type Size = 'sm' | 'md' | 'lg';
 
 export type RatingComponentProps = {
   className?: string;
+  size?: Size;
 };
 
-const RatingComponent: FC<RatingComponentProps> = ({ children, className }) => {
-  return <div className={classNames('flex items-center', className)}>{children}</div>;
+const RatingComponent: FC<RatingComponentProps> = ({ children, className, size = 'sm' }) => {
+  return (
+    <RatingContext.Provider value={{ size }}>
+      <div className={classNames('flex items-center', className)}>{children}</div>
+    </RatingContext.Provider>
+  );
 };
 
 RatingComponent.displayName = 'Rating';
 RatingStar.displayName = 'Rating.Star';
+RatingAdvanced.displayName = 'Rating.Advanced';
 
 export const Rating = Object.assign(RatingComponent, {
   Star: RatingStar,
+  Advanced: RatingAdvanced,
 });

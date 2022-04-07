@@ -1,20 +1,20 @@
 import { ComponentProps, FC } from 'react';
 import classNames from 'classnames';
-
-type Size = 'sm' | 'md' | 'lg';
+import { useRatingContext } from './RatingContext';
 
 export type RatingStarProps = ComponentProps<'svg'> & {
-  size?: Size;
   filled?: boolean;
 };
 
-const sizeClasses: Record<Size, string> = {
+const sizeClasses = {
   sm: 'w-5 h-5',
   md: 'w-7 h-7',
   lg: 'w-10 h-10',
 };
 
-export const RatingStar: FC<RatingStarProps> = ({ size = 'sm', filled = true }) => {
+export const RatingStar: FC<RatingStarProps> = ({ filled = true }) => {
+  const { size } = useRatingContext();
+
   return (
     <svg
       className={classNames(sizeClasses[size], {
