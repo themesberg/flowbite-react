@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
-export type CardProps = {
+export type CardProps = PropsWithChildren<{
   className?: string;
   horizontal?: boolean;
   imgSrc?: string;
-};
+}>;
 
 export const Card: FC<CardProps> = ({ children, className, horizontal, imgSrc }) => {
   return (

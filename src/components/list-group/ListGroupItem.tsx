@@ -1,14 +1,14 @@
 import { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
-export type ListGroupItemProps = {
+export type ListGroupItemProps = PropsWithChildren<{
   className?: string;
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   active?: boolean;
   onClick?: () => void;
   disabled?: boolean;
-};
+}>;
 
 export const ListGroupItem: FC<ListGroupItemProps> = ({ children, className, href, onClick, active, icon: Icon }) => {
   const Wrapper = ({ children, className }: PropsWithChildren<{ className?: string }>) =>

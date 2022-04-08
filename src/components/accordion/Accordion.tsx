@@ -1,12 +1,12 @@
-import { Children, cloneElement, FC, ReactElement, useMemo } from 'react';
+import { Children, cloneElement, FC, PropsWithChildren, ReactElement, useMemo } from 'react';
 import { AccordionPanel, AccordionPanelProps } from './AccordionPanel';
 import { AccordionTitle } from './AccordionTitle';
 import { AccordionContent } from './AccordionContent';
 import classNames from 'classnames';
 
-export type AccordionProps = {
+export type AccordionProps = PropsWithChildren<{
   flush?: boolean;
-};
+}>;
 
 const AccordionComponent: FC<AccordionProps> = ({ children, flush }) => {
   const panels = useMemo(

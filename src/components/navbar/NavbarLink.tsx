@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
-export type NavbarLinkProps = {
+export type NavbarLinkProps = PropsWithChildren<{
   active?: boolean;
   disabled?: boolean;
   href?: string;
-};
+}>;
 
 export const NavbarLink: FC<NavbarLinkProps> = ({ active, disabled, href, children }) => {
   return (

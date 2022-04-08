@@ -3,6 +3,7 @@ import {
   cloneElement,
   ComponentProps,
   FC,
+  PropsWithChildren,
   ReactElement,
   ReactNode,
   useCallback,
@@ -13,13 +14,13 @@ import {
 import classNames from 'classnames';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 
-export type CarouselProps = {
+export type CarouselProps = PropsWithChildren<{
   slide?: boolean;
   slideInterval?: number;
   indicators?: boolean;
   leftControl?: ReactNode;
   rightControl?: ReactNode;
-};
+}>;
 
 export const Carousel: FC<CarouselProps> = ({
   children,

@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/themesberg/flowbite-react/compare/v0.0.15...v0.0.16) (2022-04-08)
+
+
+### Features
+
+* add Modal components ([df5713c](https://github.com/themesberg/flowbite-react/commit/df5713ca60a8edcfc49337d8c5ac9db1ff03c42c))
+* add React 18 support ([10ddd73](https://github.com/themesberg/flowbite-react/commit/10ddd73fe3c90efd98da61e362cd301353549fc5))
+* Create Navbar ([253944a](https://github.com/themesberg/flowbite-react/commit/253944abb494e345c6a6693f18b4a42541a53165))
+* Create Navbar example page ([670da6b](https://github.com/themesberg/flowbite-react/commit/670da6bc9fb644b6026c0f5cdc18a66449090db6))
+
+
+### Bug Fixes
+
+* added border for dark mode ([cfdf462](https://github.com/themesberg/flowbite-react/commit/cfdf462970ea31007725c9ab3ddf18dacbe935a0))
+* changed navbar logo display name ([a0caa49](https://github.com/themesberg/flowbite-react/commit/a0caa493b29bd1bae903a1c4a0c95bfea1704eca))
+* changed Navbar.Logo to Navbar.Brand ([5ecee8b](https://github.com/themesberg/flowbite-react/commit/5ecee8b0a069b8c5ed9da5b134a768e38a5d9464))
+* misspelled NavbarComponent ([ad183a8](https://github.com/themesberg/flowbite-react/commit/ad183a88f0e4a41af85b8534183b19c670ec7a6e))
+* removed commit for Tab component ([629d86c](https://github.com/themesberg/flowbite-react/commit/629d86c3938dea59ed219186014b0cac35644b7f))
+* removed linter ignore ([950921a](https://github.com/themesberg/flowbite-react/commit/950921a3b8bdb79cdc849403b11f466773059321))
+* removed linter ignore for hidden className ([7fe9e3e](https://github.com/themesberg/flowbite-react/commit/7fe9e3e8041f30a411626b87868eea30be4f663f))
+* removed test link ([129c9e2](https://github.com/themesberg/flowbite-react/commit/129c9e29855463bdfe5105ad0e74b7d1c6f2228d))
+* removed typo around a className ([d3fcd0f](https://github.com/themesberg/flowbite-react/commit/d3fcd0f5ca7e52a5ecf187120fde54175332013c))
+
 ### [0.0.15](https://github.com/themesberg/flowbite-react/compare/v0.0.14...v0.0.15) (2022-03-21)
 
 ### [0.0.14](https://github.com/themesberg/flowbite-react/compare/v0.0.13...v0.0.14) (2022-03-21)

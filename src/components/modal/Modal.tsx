@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
 import { ModalHeader } from './ModalHeader';
@@ -9,13 +9,13 @@ import { ModalContext } from './ModalContext';
 type Size = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
 type Placement = `${'top' | 'bottom'}-${'left' | 'center' | 'right'}` | `center${'' | '-left' | '-right'}`;
 
-export type ModalProps = {
+export type ModalProps = PropsWithChildren<{
   show?: boolean;
   popup?: boolean;
   size?: Size;
   placement?: Placement;
   onClose?: () => void;
-};
+}>;
 
 const sizeClasses: Record<Size, string> = {
   sm: 'max-w-sm',

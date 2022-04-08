@@ -1,12 +1,12 @@
-import { Children, cloneElement, ComponentProps, FC, ReactElement, useMemo, useState } from 'react';
+import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useMemo, useState } from 'react';
 import classNames from 'classnames';
 
 import { AccordionPanelContext } from './AccordionPanelContext';
 
-export type AccordionPanelProps = {
+export type AccordionPanelProps = PropsWithChildren<{
   open?: boolean;
   flush?: boolean;
-};
+}>;
 
 export const AccordionPanel: FC<AccordionPanelProps> = ({ children, open, flush }) => {
   const [isOpen, setIsOpen] = useState(open);

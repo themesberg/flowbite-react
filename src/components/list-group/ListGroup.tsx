@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
 import { ListGroupItem } from './ListGroupItem';
 
-export type ListGroupProps = {
+export type ListGroupProps = PropsWithChildren<{
   className?: string;
-};
+}>;
 
 const ListGroupComponent: FC<ListGroupProps> = ({ children, className }) => (
   <div

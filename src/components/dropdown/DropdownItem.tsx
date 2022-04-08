@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 
-export type DropdownItemProps = {
+export type DropdownItemProps = PropsWithChildren<{
   onClick?: () => void;
-};
+}>;
 
 export const DropdownItem: FC<DropdownItemProps> = ({ children, onClick }) => (
   <li

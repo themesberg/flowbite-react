@@ -1,15 +1,15 @@
-import { ComponentProps, FC, ReactNode } from 'react';
+import { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import classNames from 'classnames';
 import { HiX } from 'react-icons/hi';
 
-export type AlertProps = {
+export type AlertProps = PropsWithChildren<{
   color?: 'blue' | 'red' | 'green' | 'yellow' | 'gray';
   Icon?: FC<ComponentProps<'svg'>>;
   rounded?: boolean;
   withBorderAccent?: boolean;
   additionalContent?: ReactNode;
   onDismiss?: () => void;
-};
+}>;
 
 const colorClasses: Record<AlertProps['color'] & string, string> = {
   blue: 'text-blue-700 bg-blue-100 border-blue-500 dark:bg-blue-200 dark:text-blue-800',
