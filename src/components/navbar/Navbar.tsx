@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, PropsWithChildren, useState } from 'react';
 import classNames from 'classnames';
 import { NavbarBrand } from './NavbarBrand';
 import { NavbarCollapse } from './NavbarCollapse';
@@ -6,14 +6,14 @@ import { NavbarContext } from './NavbarContext';
 import { NavbarLink } from './NavbarLink';
 import { NavbarToggle } from './NavbarToggle';
 
-export type NavbarCompnentProps = {
+export type NavbarComponentProps = PropsWithChildren<{
   menuOpen?: boolean;
   fluid?: boolean;
   rounded?: boolean;
   border?: boolean;
-};
+}>;
 
-const NavbarComponent: FC<NavbarCompnentProps> = ({ children, menuOpen, fluid, rounded, border }) => {
+const NavbarComponent: FC<NavbarComponentProps> = ({ children, menuOpen, fluid, rounded, border }) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
   return (

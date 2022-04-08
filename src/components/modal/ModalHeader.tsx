@@ -1,10 +1,10 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { HiOutlineX } from 'react-icons/hi';
 
 import { useModalContext } from './ModalContext';
 
-export const ModalHeader: FC = ({ children }) => {
+export const ModalHeader: FC<PropsWithChildren<any>> = ({ children }) => {
   const { popup, onClose } = useModalContext();
 
   return (

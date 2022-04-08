@@ -1,8 +1,8 @@
 import { createPopper, Instance, Placement } from '@popperjs/core';
-import { FC, ReactNode, useEffect, useRef, useState } from 'react';
+import { FC, PropsWithChildren, ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
-export type TooltipProps = {
+export type TooltipProps = PropsWithChildren<{
   className?: string;
   content: ReactNode;
   placement?: Placement;
@@ -10,7 +10,7 @@ export type TooltipProps = {
   style?: 'dark' | 'light' | 'auto';
   animation?: false | `duration-${number}`;
   arrow?: boolean;
-};
+}>;
 
 export const Tooltip: FC<TooltipProps> = ({
   children,

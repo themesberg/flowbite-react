@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
 import { useModalContext } from './ModalContext';
 
-export type ModalFooterProps = {
+export type ModalFooterProps = PropsWithChildren<{
   className?: string;
-};
+}>;
 
 export const ModalFooter: FC<ModalFooterProps> = ({ children, className }) => {
   const { popup } = useModalContext();

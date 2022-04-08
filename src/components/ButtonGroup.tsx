@@ -1,11 +1,11 @@
-import { Children, cloneElement, FC, ReactElement, useMemo } from 'react';
+import { Children, cloneElement, FC, PropsWithChildren, ReactElement, useMemo } from 'react';
 
 import { ButtonProps } from './Button';
 
-export type ButtonGroupProps = {
+export type ButtonGroupProps = PropsWithChildren<{
   pill?: boolean;
   outline?: boolean;
-};
+}>;
 
 export const ButtonGroup: FC<ButtonGroupProps> = ({ children, pill, outline }) => {
   const items = useMemo(

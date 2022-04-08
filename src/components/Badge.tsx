@@ -1,12 +1,12 @@
-import { ComponentProps, FC } from 'react';
+import { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
-export type BadgeProps = {
+export type BadgeProps = PropsWithChildren<{
   color?: 'blue' | 'red' | 'green' | 'yellow' | 'gray' | 'indigo' | 'purple' | 'pink';
   size?: 'xs' | 'sm';
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
-};
+}>;
 
 const colorClasses: Record<BadgeProps['color'] & string, string> = {
   blue: 'bg-blue-100 text-blue-800 dark:bg-blue-200 dark:text-blue-800 group-hover:bg-blue-200 dark:group-hover:bg-blue-300',
