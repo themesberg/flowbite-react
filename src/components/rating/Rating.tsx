@@ -1,10 +1,8 @@
 import { FC } from 'react';
 import classNames from 'classnames';
 import { RatingAdvanced } from './RatingAdvanced';
-import { RatingContext } from './RatingContext';
+import { RatingContext, Size } from './RatingContext';
 import { RatingStar } from './RatingStar';
-
-type Size = 'sm' | 'md' | 'lg';
 
 export type RatingComponentProps = {
   className?: string;
