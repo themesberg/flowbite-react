@@ -1,8 +1,9 @@
-import { ComponentProps } from 'react';
-import { createContext, useContext } from 'react';
+import { ComponentProps, createContext, useContext } from 'react';
+
+export type Size = 'sm' | 'md' | 'lg';
 
 export type RatingContext = ComponentProps<'svg'> & {
-  size?: string;
+  size?: Size;
 };
 
 export const RatingContext = createContext<RatingContext | undefined>(undefined);
