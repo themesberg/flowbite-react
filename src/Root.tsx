@@ -14,6 +14,7 @@ import {
   HiMenuAlt1,
   HiPencilAlt,
   HiStar,
+  HiUser,
 } from 'react-icons/hi';
 import { BsCreditCard2FrontFill, BsGithub, BsImages } from 'react-icons/bs';
 import { FaSpinner } from 'react-icons/fa';
@@ -24,6 +25,7 @@ import { Route, Routes } from 'react-router-dom';
 import { DarkThemeToggle, Navbar, Sidebar, SidebarItem, Spinner } from './components';
 
 import DashboardPage from './pages/DashboardPage';
+import AvatarPage from './pages/AvatarPage';
 import AlertsPage from './pages/AlertsPage';
 import AccordionPage from './pages/AccordionPage';
 import BadgesPage from './pages/BadgesPage';
@@ -62,6 +64,12 @@ export const Root: FC = () => {
         icon: HiCreditCard,
         title: 'Accordion',
         href: '/accordion',
+      },
+      {
+        group: false,
+        icon: HiUser,
+        title: 'Avatar',
+        href: '/avatar',
       },
       {
         group: false,
@@ -196,6 +204,7 @@ export const Root: FC = () => {
               <Route path="" element={<DashboardPage />} />
               <Route path="alerts" element={<AlertsPage />} />
               <Route path="accordion" element={<AccordionPage />} />
+              <Route path="avatar" element={<AvatarPage />} />
               <Route path="badges" element={<BadgesPage />} />
               <Route path="breadcrumb" element={<BreadcrumbPage />} />
               <Route path="buttons" element={<ButtonsPage />} />
