@@ -5,7 +5,7 @@ export type AvatarProps = PropsWithChildren<{
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   rounded?: boolean;
   bordered?: boolean;
-  img: string;
+  img?: string;
   status?: 'offline' | 'online' | 'away' | 'busy';
   statusPosition?: 'top-left' | 'top-right' | 'bottom-right' | 'bottom-left';
 }>;
@@ -42,15 +42,35 @@ export const Avatar: React.FC<AvatarProps> = ({
 }) => {
   return (
     <div className="relative">
-      <img
-        className={classNames(sizeClasses[size], {
-          rounded: !rounded,
-          'rounded-full': rounded,
-          'rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
-        })}
-        src={img}
-        alt="Rounded avatar"
-      />
+      {img ? (
+        <img
+          className={classNames(sizeClasses[size], {
+            rounded: !rounded,
+            'rounded-full': rounded,
+            'rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
+          })}
+          src={img}
+          alt="Rounded avatar"
+        />
+      ) : (
+        <div
+          className={classNames(`relative overflow-hidden bg-gray-100 dark:bg-gray-600`, sizeClasses[size], {
+            rounded: !rounded,
+            'rounded-full': rounded,
+            'rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
+          })}
+        >
+          <svg
+            className="absolute -bottom-1 h-auto w-auto text-gray-400"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
+          </svg>
+        </div>
+      )}
+
       {status && (
         <span
           className={classNames(

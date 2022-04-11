@@ -21,7 +21,12 @@ const AvatarPage: FC = () => {
     },
     {
       title: 'Placeholder',
-      code: <Avatar />,
+      code: (
+        <div className="flex flex-wrap gap-2">
+          <Avatar />
+          <Avatar rounded />
+        </div>
+      ),
     },
     {
       title: 'Dot indicator',
