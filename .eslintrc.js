@@ -1,12 +1,5 @@
 module.exports = {
-  extends: [
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:prettier/recommended',
-    'prettier/prettier',
-  ],
+  extends: ['plugin:react/recommended', 'plugin:@typescript-eslint/eslint-recommended', 'plugin:@typescript-eslint/recommended', 'plugin:react-hooks/recommended', 'plugin:prettier/recommended', 'prettier/prettier', 'plugin:storybook/recommended'],
   root: true,
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint/eslint-plugin'],
@@ -21,11 +14,11 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'prettier/prettier': ['error'],
     'react/display-name': 'off',
-    'react/prop-types': 'off',
+    'react/prop-types': 'off'
   },
   settings: {
     react: {
-      version: 'detect',
-    },
-  },
+      version: 'detect'
+    }
+  }
 };
