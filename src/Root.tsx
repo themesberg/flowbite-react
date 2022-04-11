@@ -13,6 +13,7 @@ import {
   HiHome,
   HiMenuAlt1,
   HiPencilAlt,
+  HiStar,
 } from 'react-icons/hi';
 import { BsCreditCard2FrontFill, BsGithub, BsImages } from 'react-icons/bs';
 import { FaSpinner } from 'react-icons/fa';
@@ -35,6 +36,7 @@ import FormsPage from './pages/FormsPage';
 import ListGroupPage from './pages/ListGroupPage';
 import ModalPage from './pages/ModalPage';
 import NavbarPage from './pages/NavbarPage';
+import RatingPage from './pages/RatingPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TooltipsPage from './pages/TooltipsPage';
 
@@ -128,6 +130,12 @@ export const Root: FC = () => {
       },
       {
         group: false,
+        icon: HiStar,
+        title: 'Rating',
+        href: '/rating',
+      },
+      {
+        group: false,
         icon: FaSpinner,
         title: 'Spinners',
         href: '/spinners',
@@ -188,6 +196,7 @@ export const Root: FC = () => {
               <Route path="list-group" element={<ListGroupPage />} />
               <Route path="modal" element={<ModalPage />} />
               <Route path="navbars" element={<NavbarPage />} />
+              <Route path="rating" element={<RatingPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
             </Routes>
