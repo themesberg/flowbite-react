@@ -1,13 +1,13 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { RatingAdvanced } from './RatingAdvanced';
 import { RatingContext, Size } from './RatingContext';
 import { RatingStar } from './RatingStar';
 
-export type RatingComponentProps = {
+export type RatingComponentProps = PropsWithChildren<{
   className?: string;
   size?: Size;
-};
+}>;
 
 const RatingComponent: FC<RatingComponentProps> = ({ children, className, size = 'sm' }) => {
   return (
