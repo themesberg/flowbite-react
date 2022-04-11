@@ -6,6 +6,8 @@ export type AvatarProps = PropsWithChildren<{
   rounded?: boolean;
   bordered?: boolean;
   img: string;
+  status?: 'offline' | 'online' | 'away' | 'busy';
+  statusPosition?: 'top-left' | 'top-right' | 'bottom-right' | 'bottom-left';
 }>;
 
 const sizeClasses: Record<AvatarProps['size'] & string, string> = {
@@ -16,16 +18,48 @@ const sizeClasses: Record<AvatarProps['size'] & string, string> = {
   xl: 'w-36 h-36',
 };
 
-export const Avatar: React.FC<AvatarProps> = ({ size = 'md', rounded = false, bordered = false, img = null }) => {
+const statusClasses: Record<AvatarProps['status'] & string, string> = {
+  offline: 'bg-gray-400',
+  online: 'bg-green-400',
+  away: 'bg-yellow-400',
+  busy: 'bg-red-400',
+};
+
+const statusPositionClasses: Record<AvatarProps['statusPosition'] & string, string> = {
+  'top-left': 'top-0 right-7',
+  'top-right': 'top-0 left-7',
+  'bottom-left': 'bottom-0 right-7',
+  'bottom-right': 'bottom-0 left-7',
+};
+
+export const Avatar: React.FC<AvatarProps> = ({
+  img,
+  status,
+  statusPosition = 'top-right',
+  size = 'md',
+  rounded = false,
+  bordered = false,
+}) => {
   return (
-    <img
-      className={classNames(sizeClasses[size], {
-        rounded: !rounded,
-        'rounded-full': rounded,
-        'rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
-      })}
-      src={img}
-      alt="Rounded avatar"
-    />
+    <div className="relative">
+      <img
+        className={classNames(sizeClasses[size], {
+          rounded: !rounded,
+          'rounded-full': rounded,
+          'rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
+        })}
+        src={img}
+        alt="Rounded avatar"
+      />
+      {status && (
+        <span
+          className={classNames(
+            'absolute h-3.5 w-3.5 rounded-full border-2 border-white dark:border-gray-800',
+            statusClasses[status],
+            statusPositionClasses[statusPosition],
+          )}
+        ></span>
+      )}
+    </div>
   );
 };

@@ -25,7 +25,27 @@ const AvatarPage: FC = () => {
     },
     {
       title: 'Dot indicator',
-      code: <Avatar />,
+      code: (
+        <div className="flex flex-wrap gap-2">
+          <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded status="online" />
+          <Avatar
+            img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+            status="busy"
+            statusPosition="top-left"
+          />
+          <Avatar
+            img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+            rounded
+            status="offline"
+            statusPosition="bottom-right"
+          />
+          <Avatar
+            img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+            status="away"
+            statusPosition="bottom-left"
+          />
+        </div>
+      ),
     },
     {
       title: 'Stacked',
