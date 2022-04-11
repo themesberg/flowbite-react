@@ -27,20 +27,21 @@ const AvatarPage: FC = () => {
       title: 'Dot indicator',
       code: (
         <div className="flex flex-wrap gap-2">
-          <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded status="online" />
+          <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" status="online" />
           <Avatar
             img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+            rounded
             status="busy"
             statusPosition="top-left"
           />
           <Avatar
             img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-            rounded
             status="offline"
             statusPosition="bottom-right"
           />
           <Avatar
             img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+            rounded
             status="away"
             statusPosition="bottom-left"
           />

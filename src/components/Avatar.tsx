@@ -26,10 +26,10 @@ const statusClasses: Record<AvatarProps['status'] & string, string> = {
 };
 
 const statusPositionClasses: Record<AvatarProps['statusPosition'] & string, string> = {
-  'top-left': 'top-0 right-7',
-  'top-right': 'top-0 left-7',
-  'bottom-left': 'bottom-0 right-7',
-  'bottom-right': 'bottom-0 left-7',
+  'top-left': '-top-1 -right-1',
+  'top-right': '-top-1 -left-1',
+  'bottom-left': '-bottom-1 -right-1',
+  'bottom-right': '-bottom-1 -left-1',
 };
 
 export const Avatar: React.FC<AvatarProps> = ({
