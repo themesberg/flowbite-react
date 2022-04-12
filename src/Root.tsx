@@ -12,6 +12,7 @@ import {
   HiDuplicate,
   HiHome,
   HiMenuAlt1,
+  HiOutlineX,
   HiPencilAlt,
   HiStar,
 } from 'react-icons/hi';
@@ -39,6 +40,7 @@ import NavbarPage from './pages/NavbarPage';
 import RatingPage from './pages/RatingPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TooltipsPage from './pages/TooltipsPage';
+import ProgressbarPage from './pages/ProgressbarPage';
 
 export const Root: FC = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -146,6 +148,12 @@ export const Root: FC = () => {
         title: 'Tooltips',
         href: '/tooltips',
       },
+      {
+        group: false,
+        icon: HiOutlineX,
+        title: 'Progressbar',
+        href: '/progressbar',
+      },
     ],
   ];
 
@@ -199,6 +207,7 @@ export const Root: FC = () => {
               <Route path="rating" element={<RatingPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
+              <Route path="progressbar" element={<ProgressbarPage />} />
             </Routes>
           </Suspense>
         </main>
