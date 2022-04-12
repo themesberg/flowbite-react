@@ -38,6 +38,7 @@ import ModalPage from './pages/ModalPage';
 import NavbarPage from './pages/NavbarPage';
 import RatingPage from './pages/RatingPage';
 import SpinnersPage from './pages/SpinnersPage';
+import ToastPage from './pages/ToastPage';
 import TooltipsPage from './pages/TooltipsPage';
 
 export const Root: FC = () => {
@@ -143,6 +144,12 @@ export const Root: FC = () => {
       {
         group: false,
         icon: HiAnnotation,
+        title: 'Toast',
+        href: '/toast',
+      },
+      {
+        group: false,
+        icon: HiAnnotation,
         title: 'Tooltips',
         href: '/tooltips',
       },
@@ -198,6 +205,7 @@ export const Root: FC = () => {
               <Route path="navbars" element={<NavbarPage />} />
               <Route path="rating" element={<RatingPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
+              <Route path="toast" element={<ToastPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
             </Routes>
           </Suspense>
