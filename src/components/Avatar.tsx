@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, ReactChildren } from 'react';
 
 export type AvatarProps = PropsWithChildren<{
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -35,51 +35,58 @@ const statusPositionClasses: Record<AvatarProps['statusPosition'] & string, stri
 export const Avatar: React.FC<AvatarProps> = ({
   img,
   status,
+  children,
   statusPosition = 'top-right',
   size = 'md',
   rounded = false,
   bordered = false,
 }) => {
   return (
-    <div className="relative">
-      {img ? (
-        <img
-          className={classNames(sizeClasses[size], {
-            rounded: !rounded,
-            'rounded-full': rounded,
-            'rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
-          })}
-          src={img}
-          alt="Rounded avatar"
-        />
-      ) : (
-        <div
-          className={classNames(`relative overflow-hidden bg-gray-100 dark:bg-gray-600`, sizeClasses[size], {
-            rounded: !rounded,
-            'rounded-full': rounded,
-            'rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
-          })}
-        >
-          <svg
-            className="absolute -bottom-1 h-auto w-auto text-gray-400"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
+    <div className="flex items-center space-x-4">
+      <div className="relative">
+        {img ? (
+          <img
+            className={classNames(sizeClasses[size], {
+              rounded: !rounded,
+              'rounded-full': rounded,
+              'rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
+            })}
+            src={img}
+            alt="Rounded avatar"
+          />
+        ) : (
+          <div
+            className={classNames(`relative overflow-hidden bg-gray-100 dark:bg-gray-600`, sizeClasses[size], {
+              rounded: !rounded,
+              'rounded-full': rounded,
+              'rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
+            })}
           >
-            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
-          </svg>
-        </div>
-      )}
-
-      {status && (
-        <span
-          className={classNames(
-            'absolute h-3.5 w-3.5 rounded-full border-2 border-white dark:border-gray-800',
-            statusClasses[status],
-            statusPositionClasses[statusPosition],
-          )}
-        ></span>
-      )}
+            <svg
+              className="absolute -bottom-1 h-auto w-auto text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+          </div>
+        )}
+        {status && (
+          <span
+            className={classNames(
+              'absolute h-3.5 w-3.5 rounded-full border-2 border-white dark:border-gray-800',
+              statusClasses[status],
+              statusPositionClasses[statusPosition],
+            )}
+          ></span>
+        )}
+      </div>
+      {children && <div>{children}</div>}
     </div>
   );
 };
