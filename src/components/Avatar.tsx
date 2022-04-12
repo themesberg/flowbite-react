@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { PropsWithChildren, ReactChildren } from 'react';
+import React, { PropsWithChildren } from 'react';
 
 export type AvatarProps = PropsWithChildren<{
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';

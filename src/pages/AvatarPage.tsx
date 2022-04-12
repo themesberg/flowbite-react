@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import { HiEye, HiInformationCircle } from 'react-icons/hi';
 
 import { Avatar } from '../components';
 import { CodeExample, DemoPage } from './DemoPage';
@@ -54,10 +53,6 @@ const AvatarPage: FC = () => {
       ),
     },
     {
-      title: 'Stacked',
-      code: <Avatar />,
-    },
-    {
       title: 'Avatar text',
       code: (
         <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded>
@@ -67,10 +62,6 @@ const AvatarPage: FC = () => {
           </div>
         </Avatar>
       ),
-    },
-    {
-      title: 'User dropdown',
-      code: <Avatar />,
     },
     {
       title: 'Sizing',
