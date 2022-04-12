@@ -134,7 +134,7 @@ export const Button: FC<ButtonProps> = ({
           [iconSizeClasses[size]]: !!Icon,
         })}
       >
-        {Icon ? <Icon className={`h-5 w-5`} /> : children}
+        {Icon ? <Icon className="h-5 w-5" /> : children}
       </span>
     </button>
   );
