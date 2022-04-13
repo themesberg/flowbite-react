@@ -12,11 +12,12 @@ import {
   HiDuplicate,
   HiHome,
   HiMenuAlt1,
-  HiOutlineX,
   HiPencilAlt,
   HiStar,
   HiUser,
 } from 'react-icons/hi';
+import { AiOutlineMinus } from 'react-icons/ai';
+
 import { BsCreditCard2FrontFill, BsGithub, BsImages } from 'react-icons/bs';
 import { FaSpinner } from 'react-icons/fa';
 import { FiNavigation } from 'react-icons/fi';
@@ -159,7 +160,7 @@ export const Root: FC = () => {
       },
       {
         group: false,
-        icon: HiOutlineX,
+        icon: AiOutlineMinus,
         title: 'Progressbar',
         href: '/progressbar',
       },
