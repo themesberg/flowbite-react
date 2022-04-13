@@ -15,15 +15,18 @@ import {
   HiOutlineX,
   HiPencilAlt,
   HiStar,
+  HiUser,
 } from 'react-icons/hi';
 import { BsCreditCard2FrontFill, BsGithub, BsImages } from 'react-icons/bs';
 import { FaSpinner } from 'react-icons/fa';
 import { FiNavigation } from 'react-icons/fi';
+import { SiStorybook } from 'react-icons/si';
 import { Route, Routes } from 'react-router-dom';
 
 import { DarkThemeToggle, Navbar, Sidebar, SidebarItem, Spinner } from './components';
 
 import DashboardPage from './pages/DashboardPage';
+import AvatarPage from './pages/AvatarPage';
 import AlertsPage from './pages/AlertsPage';
 import AccordionPage from './pages/AccordionPage';
 import BadgesPage from './pages/BadgesPage';
@@ -63,6 +66,12 @@ export const Root: FC = () => {
         icon: HiCreditCard,
         title: 'Accordion',
         href: '/accordion',
+      },
+      {
+        group: false,
+        icon: HiUser,
+        title: 'Avatar',
+        href: '/avatar',
       },
       {
         group: false,
@@ -159,7 +168,7 @@ export const Root: FC = () => {
 
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden">
-      <Navbar fluid>
+      <Navbar className="border-b" fluid>
         <div className="flex items-center">
           <HiMenuAlt1
             className="mr-6 h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-400"
@@ -170,7 +179,17 @@ export const Root: FC = () => {
         <div className="flex items-center gap-2">
           <a
             className="cursor-pointer rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+            href={`${process.env.PUBLIC_URL}/storybook`}
+            title="Storybook"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <SiStorybook className="h-5 w-5" />
+          </a>
+          <a
+            className="cursor-pointer rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
             href="https://github.com/themesberg/flowbite-react"
+            title="Github Repository"
             target="_blank"
             rel="noreferrer"
           >
@@ -193,6 +212,7 @@ export const Root: FC = () => {
               <Route path="" element={<DashboardPage />} />
               <Route path="alerts" element={<AlertsPage />} />
               <Route path="accordion" element={<AccordionPage />} />
+              <Route path="avatar" element={<AvatarPage />} />
               <Route path="badges" element={<BadgesPage />} />
               <Route path="breadcrumb" element={<BreadcrumbPage />} />
               <Route path="buttons" element={<ButtonsPage />} />

@@ -15,7 +15,7 @@ const sizeClasses = {
 };
 
 export const RatingStar: FC<RatingStarProps> = ({ filled = true, starIcon: StarIcon = HiStar }) => {
-  const { size } = useRatingContext();
+  const { size = 'sm' } = useRatingContext();
 
   return (
     <StarIcon
