@@ -43,7 +43,7 @@ export const Root: FC = () => {
         </div>
       </Navbar>
       <div className="flex h-full overflow-hidden bg-gray-50 dark:bg-gray-900">
-        <Sidebar collapsed={collapsed} itemsGroups={routes} />
+        <Sidebar collapsed={collapsed} itemsGroups={[routes]} />
         <main className="flex-1 overflow-auto p-4">
           <Suspense
             fallback={
@@ -53,9 +53,9 @@ export const Root: FC = () => {
             }
           >
             <Routes>
-              {routes.map((r) =>
-                r.map(({ href, component: Component }) => <Route key={href} path={href} element={Component} />),
-              )}
+              {routes.map(({ href, component: Component }) => (
+                <Route key={href} path={href} element={Component} />
+              ))}
             </Routes>
           </Suspense>
         </main>

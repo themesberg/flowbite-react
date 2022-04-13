@@ -55,197 +55,195 @@ export type RouteProps =
       card?: ComponentCardItem;
     } & SidebarItem;
 
-export const routes: RouteProps[][] = [
-  [
-    {
-      title: 'Dashboard',
-      icon: HiHome,
-      href: '/',
-      component: <DashboardPage />,
-      group: false,
+export const routes: RouteProps[] = [
+  {
+    title: 'Dashboard',
+    icon: HiHome,
+    href: '/',
+    component: <DashboardPage />,
+    group: false,
+  },
+  {
+    title: 'Alerts',
+    icon: HiBell,
+    href: '/alerts',
+    component: <AlertsPage />,
+    group: false,
+    card: {
+      className: 'w-56',
+      images: { light: 'alerts-light.svg', dark: 'alerts-dark.svg' },
     },
-    {
-      title: 'Alerts',
-      icon: HiBell,
-      href: '/alerts',
-      component: <AlertsPage />,
-      group: false,
-      card: {
-        className: 'w-56',
-        images: { light: 'alerts-light.svg', dark: 'alerts-dark.svg' },
-      },
+  },
+  {
+    title: 'Accordion',
+    icon: HiCreditCard,
+    href: '/accordion',
+    component: <AccordionPage />,
+    group: false,
+    card: {
+      className: 'w-56',
+      images: { light: 'accordion-light.svg', dark: 'accordion-dark.svg' },
     },
-    {
-      title: 'Accordion',
-      icon: HiCreditCard,
-      href: '/accordion',
-      component: <AccordionPage />,
-      group: false,
-      card: {
-        className: 'w-56',
-        images: { light: 'accordion-light.svg', dark: 'accordion-dark.svg' },
-      },
+  },
+  {
+    title: 'Avatar',
+    icon: HiUser,
+    href: '/avatar',
+    component: <AvatarPage />,
+    group: false,
+  },
+  {
+    title: 'Badges',
+    icon: HiBadgeCheck,
+    href: '/badges',
+    component: <BadgesPage />,
+    group: false,
+    card: {
+      className: 'w-28',
+      images: { light: 'badges-light.svg', dark: 'badges-dark.svg' },
     },
-    {
-      title: 'Avatar',
-      icon: HiUser,
-      href: '/avatar',
-      component: <AvatarPage />,
-      group: false,
+  },
+  {
+    title: 'Breadcrumb',
+    icon: HiChevronDoubleRight,
+    href: '/breadcrumb',
+    component: <BreadcrumbPage />,
+    group: false,
+    card: {
+      className: 'w-64',
+      images: { light: 'breadcrumb-light.svg', dark: 'breadcrumb-dark.svg' },
     },
-    {
-      title: 'Badges',
-      icon: HiBadgeCheck,
-      href: '/badges',
-      component: <BadgesPage />,
-      group: false,
-      card: {
-        className: 'w-28',
-        images: { light: 'badges-light.svg', dark: 'badges-dark.svg' },
-      },
+  },
+  {
+    title: 'Buttons',
+    icon: HiCollection,
+    href: '/buttons',
+    component: <ButtonsPage />,
+    group: false,
+    card: {
+      className: 'w-24',
+      images: { light: 'buttons.svg', dark: 'buttons.svg' },
     },
-    {
-      title: 'Breadcrumb',
-      icon: HiChevronDoubleRight,
-      href: '/breadcrumb',
-      component: <BreadcrumbPage />,
-      group: false,
-      card: {
-        className: 'w-64',
-        images: { light: 'breadcrumb-light.svg', dark: 'breadcrumb-dark.svg' },
-      },
+  },
+  {
+    title: 'Button group',
+    icon: HiDuplicate,
+    href: '/button-group',
+    component: <ButtonGroupPage />,
+    group: false,
+    card: {
+      className: 'w-56',
+      images: { light: 'button-group-light.svg', dark: 'button-group-dark.svg' },
     },
-    {
-      title: 'Buttons',
-      icon: HiCollection,
-      href: '/buttons',
-      component: <ButtonsPage />,
-      group: false,
-      card: {
-        className: 'w-24',
-        images: { light: 'buttons.svg', dark: 'buttons.svg' },
-      },
+  },
+  {
+    title: 'Card',
+    icon: BsCreditCard2FrontFill,
+    href: '/card',
+    component: <CardPage />,
+    group: false,
+    card: {
+      className: 'w-36',
+      images: { light: 'card-light.svg', dark: 'card-dark.svg' },
     },
-    {
-      title: 'Button group',
-      icon: HiDuplicate,
-      href: '/button-group',
-      component: <ButtonGroupPage />,
-      group: false,
-      card: {
-        className: 'w-56',
-        images: { light: 'button-group-light.svg', dark: 'button-group-dark.svg' },
-      },
+  },
+  {
+    title: 'Carousel',
+    icon: BsImages,
+    href: '/carousel',
+    component: <CarouselPage />,
+    group: false,
+    card: {
+      className: 'w-48',
+      images: { light: 'carousel-light.svg', dark: 'carousel-dark.svg' },
     },
-    {
-      title: 'Card',
-      icon: BsCreditCard2FrontFill,
-      href: '/card',
-      component: <CardPage />,
-      group: false,
-      card: {
-        className: 'w-36',
-        images: { light: 'card-light.svg', dark: 'card-dark.svg' },
-      },
+  },
+  {
+    title: 'Dropdown',
+    icon: HiArrowCircleDown,
+    href: '/dropdown',
+    component: <DropdownPage />,
+    group: false,
+    card: {
+      className: 'w-28',
+      images: { light: 'dropdown-light.svg', dark: 'dropdown-dark.svg' },
     },
-    {
-      title: 'Carousel',
-      icon: BsImages,
-      href: '/carousel',
-      component: <CarouselPage />,
-      group: false,
-      card: {
-        className: 'w-48',
-        images: { light: 'carousel-light.svg', dark: 'carousel-dark.svg' },
-      },
+  },
+  {
+    title: 'Forms',
+    icon: HiPencilAlt,
+    href: '/forms',
+    component: <FormsPage />,
+    group: false,
+    card: {
+      className: 'w-40',
+      images: { light: 'forms-light.svg', dark: 'forms-dark.svg' },
     },
-    {
-      title: 'Dropdown',
-      icon: HiArrowCircleDown,
-      href: '/dropdown',
-      component: <DropdownPage />,
-      group: false,
-      card: {
-        className: 'w-28',
-        images: { light: 'dropdown-light.svg', dark: 'dropdown-dark.svg' },
-      },
+  },
+  {
+    title: 'List group',
+    icon: HiClipboardList,
+    href: '/list-group',
+    component: <ListGroupPage />,
+    group: false,
+    card: {
+      className: 'w-36',
+      images: { light: 'list-group-light.svg', dark: 'list-group-dark.svg' },
     },
-    {
-      title: 'Forms',
-      icon: HiPencilAlt,
-      href: '/forms',
-      component: <FormsPage />,
-      group: false,
-      card: {
-        className: 'w-40',
-        images: { light: 'forms-light.svg', dark: 'forms-dark.svg' },
-      },
+  },
+  {
+    title: 'Modal',
+    icon: HiDeviceTablet,
+    href: '/modal',
+    component: <ModalPage />,
+    group: false,
+    card: {
+      className: 'w-36',
+      images: { light: 'modal-light.svg', dark: 'modal-dark.svg' },
     },
-    {
-      title: 'List group',
-      icon: HiClipboardList,
-      href: '/list-group',
-      component: <ListGroupPage />,
-      group: false,
-      card: {
-        className: 'w-36',
-        images: { light: 'list-group-light.svg', dark: 'list-group-dark.svg' },
-      },
+  },
+  {
+    title: 'Navbars',
+    icon: FiNavigation,
+    href: '/navbars',
+    component: <NavbarPage />,
+    group: false,
+    card: {
+      className: 'w-56',
+      images: { light: 'navbars-light.svg', dark: 'navbars-dark.svg' },
     },
-    {
-      title: 'Modal',
-      icon: HiDeviceTablet,
-      href: '/modal',
-      component: <ModalPage />,
-      group: false,
-      card: {
-        className: 'w-36',
-        images: { light: 'modal-light.svg', dark: 'modal-dark.svg' },
-      },
+  },
+  {
+    title: 'Rating',
+    icon: HiStar,
+    href: '/rating',
+    component: <RatingPage />,
+    group: false,
+    card: {
+      className: 'w-36',
+      images: { light: 'rating-light.svg', dark: 'rating-dark.svg' },
     },
-    {
-      title: 'Navbars',
-      icon: FiNavigation,
-      href: '/navbars',
-      component: <NavbarPage />,
-      group: false,
-      card: {
-        className: 'w-56',
-        images: { light: 'navbars-light.svg', dark: 'navbars-dark.svg' },
-      },
+  },
+  {
+    title: 'Spinners',
+    icon: FaSpinner,
+    href: '/spinners',
+    component: <SpinnersPage />,
+    group: false,
+    card: {
+      className: 'w-36',
+      images: { light: 'spinners-light.svg', dark: 'spinners-dark.svg' },
     },
-    {
-      title: 'Rating',
-      icon: HiStar,
-      href: '/rating',
-      component: <RatingPage />,
-      group: false,
-      card: {
-        className: 'w-36',
-        images: { light: 'rating-light.svg', dark: 'rating-dark.svg' },
-      },
+  },
+  {
+    title: 'Tooltips',
+    icon: HiAnnotation,
+    href: '/tooltips',
+    component: <TooltipsPage />,
+    group: false,
+    card: {
+      className: 'w-24',
+      images: { light: 'tooltips-light.svg', dark: 'tooltips-dark.svg' },
     },
-    {
-      title: 'Spinners',
-      icon: FaSpinner,
-      href: '/spinners',
-      component: <SpinnersPage />,
-      group: false,
-      card: {
-        className: 'w-36',
-        images: { light: 'spinners-light.svg', dark: 'spinners-dark.svg' },
-      },
-    },
-    {
-      title: 'Tooltips',
-      icon: HiAnnotation,
-      href: '/tooltips',
-      component: <TooltipsPage />,
-      group: false,
-      card: {
-        className: 'w-24',
-        images: { light: 'tooltips-light.svg', dark: 'tooltips-dark.svg' },
-      },
-    },
-  ],
+  },
 ];
