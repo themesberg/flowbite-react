@@ -26,7 +26,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build --profile",
     "test": "react-app-rewired test --color",
-    "test:coverage": "CI=true react-app-rewired test --coverage --color",
+    "test:coverage": "CI=true react-app-rewired test --coverage --collectCoverageFrom='[\"src/components/**/*.{ts,tsx}\",\"!src/components/**/*.stories.{ts,tsx}\"]' --color",
     "eject": "react-app-rewired eject",
     "build-components": "yarn build-components:esm && yarn build-components:cjs",
     "build-components:cjs": "tsc -p tsconfig.components.json",
