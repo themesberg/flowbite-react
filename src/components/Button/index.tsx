@@ -1,4 +1,4 @@
-import { ComponentProps, FC } from 'react';
+import { ComponentProps, FC, ReactNode } from 'react';
 import classNames from 'classnames';
 
 type Color = 'blue' | 'alternative' | 'dark' | 'light' | 'green' | 'red' | 'yellow' | 'purple';
@@ -17,6 +17,7 @@ type PositionInGroup = 'start' | 'middle' | 'end';
 export type ButtonProps = Omit<ComponentProps<'button'>, 'color'> & {
   pill?: boolean;
   outline?: boolean;
+  label?: ReactNode;
   color?: Color;
   size?: Size;
   icon?: FC<ComponentProps<'svg'>>;
