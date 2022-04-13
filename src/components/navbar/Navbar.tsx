@@ -7,22 +7,27 @@ import { NavbarLink } from './NavbarLink';
 import { NavbarToggle } from './NavbarToggle';
 
 export type NavbarComponentProps = PropsWithChildren<{
+  className?: string;
   menuOpen?: boolean;
   fluid?: boolean;
   rounded?: boolean;
   border?: boolean;
 }>;
 
-const NavbarComponent: FC<NavbarComponentProps> = ({ children, menuOpen, fluid, rounded, border }) => {
+const NavbarComponent: FC<NavbarComponentProps> = ({ children, className, menuOpen, fluid, rounded, border }) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
   return (
     <NavbarContext.Provider value={{ isOpen, setIsOpen }}>
       <nav
-        className={classNames('border-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4', {
-          rounded: rounded,
-          border: border,
-        })}
+        className={classNames(
+          className,
+          'border-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
+          {
+            rounded: rounded,
+            border: border,
+          },
+        )}
       >
         <div
           className={classNames('mx-auto flex flex-wrap items-center justify-between', {
