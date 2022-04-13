@@ -33,6 +33,9 @@ jobs:
       - name: Check the prettiness of the code 💅
         run: yarn prettier
 
+      - name: Testing the code 🔬
+        run: yarn test
+
       - name: Build the demo website 🛠
         run: yarn build
 
