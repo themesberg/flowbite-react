@@ -36,6 +36,9 @@ jobs:
       - name: Build the demo website 🛠
         run: yarn build
 
+      - name: Build Storybook 📖
+        run: yarn build-storybook
+
       - name: Deploy the website 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         if: github.ref == 'refs/heads/main'

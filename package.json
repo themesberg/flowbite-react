@@ -31,12 +31,12 @@
     "build-components:cjs": "tsc -p tsconfig.components.json",
     "build-components:esm": "tsc -p tsconfig.components.json --module esnext --outDir lib/esm",
     "lint": "eslint",
-    "prettier": "prettier --check {src,test}/**/*.{ts,tsx,json,scss}",
-    "prettier:fix": "prettier --write {src,test}/**/*.{ts,tsx,json,scss}",
+    "prettier": "prettier --check {src,test,.storybook}/**/*.{js,jsx,ts,tsx,json,css,scss}",
+    "prettier:fix": "prettier --write {src,test,.storybook}/**/*.{js,jsx,ts,tsx,json,css,scss}",
     "release": "standard-version -a",
     "prepublishOnly": "yarn build-components",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o build/storybook"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.2",
@@ -58,7 +58,6 @@
     "@storybook/addon-essentials": "^6.4.21",
     "@storybook/addon-interactions": "^6.4.21",
     "@storybook/addon-links": "^6.4.21",
-    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/builder-webpack5": "^6.4.21",
     "@storybook/manager-webpack5": "^6.4.21",
     "@storybook/react": "^6.4.21",

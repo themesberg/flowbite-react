@@ -1,4 +1,4 @@
-import Style from './style'
+import Style from './style';
 
 export const decorators = [
   (Story) => (
@@ -6,15 +6,15 @@ export const decorators = [
       <Style />
       <Story />
     </>
-  )
-]
+  ),
+];
 
 export const parameters = {
-  actions: { argTypesRegex: "^on[A-Z].*" },
+  actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
     },
   },
-}
+};

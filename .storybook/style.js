@@ -1,4 +1,4 @@
-import './style.css'
+import './style.css';
 
 function Style() {
   return <div />;

@@ -14,10 +14,9 @@ type GradientDuoTone =
 type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type PositionInGroup = 'start' | 'middle' | 'end';
 
-export type ButtonProps = ComponentProps<'button'> & {
+export type ButtonProps = Omit<ComponentProps<'button'>, 'color'> & {
   pill?: boolean;
   outline?: boolean;
-  label?: string;
   color?: Color;
   size?: Size;
   icon?: FC<ComponentProps<'svg'>>;
