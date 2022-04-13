@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ComponentProps, FC, ReactNode } from 'react';
 
 import { BsCreditCard2FrontFill, BsImages } from 'react-icons/bs';
 import { FaSpinner } from 'react-icons/fa';
@@ -48,7 +48,7 @@ export type ComponentCardItem = {
 export type RouteProps =
   | {
       title: string;
-      icon: React.FC<React.ComponentProps<'svg'>>;
+      icon: FC<ComponentProps<'svg'>>;
       href: string;
       component: ReactNode;
       group: boolean;
@@ -91,6 +91,10 @@ export const routes: RouteProps[] = [
     href: '/avatar',
     component: <AvatarPage />,
     group: false,
+    card: {
+      className: 'w-40',
+      images: { light: 'avatar-light.svg', dark: 'avatar-dark.svg' },
+    },
   },
   {
     title: 'Badges',
@@ -220,7 +224,7 @@ export const routes: RouteProps[] = [
     component: <RatingPage />,
     group: false,
     card: {
-      className: 'w-36',
+      className: 'w-40',
       images: { light: 'rating-light.svg', dark: 'rating-dark.svg' },
     },
   },
