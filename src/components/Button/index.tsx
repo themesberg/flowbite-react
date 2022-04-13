@@ -105,6 +105,7 @@ export const Button: FC<ButtonProps> = ({
 }) => {
   return (
     <button
+      data-testid="button-element"
       disabled={disabled}
       className={classNames(
         'group flex h-min w-fit items-center justify-center p-0.5 text-center font-medium focus:z-10',
