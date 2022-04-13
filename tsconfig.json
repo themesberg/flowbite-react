@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2021",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -20,7 +16,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "demo/src"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

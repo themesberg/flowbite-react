@@ -1,8 +1,8 @@
 module.exports = {
   '*.{js,jsx,ts,tsx}': [
-    'eslint --max-warnings=0',
+    'eslint --cache --fix',
     'react-scripts test --bail --watchAll=false --findRelatedTests --passWithNoTests',
+    () => 'tsc -p tsconfig.json --noEmit',
   ],
-  '*.{ts,tsx}': [() => 'tsc-files -p tsconfig.json --noEmit', 'eslint --max-warnings=0'],
   '*.{js,jsx,ts,tsx,json,css,js}': ['prettier --write'],
 };
