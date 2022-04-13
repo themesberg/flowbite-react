@@ -57,7 +57,7 @@ const ProgressbarPage: FC = () => {
       title: 'With label inside',
       code: (
         <>
-          <Progressbar progress={45} label="flowbite" />
+          <Progressbar progress={50} label="flowbite" size="lg" />
         </>
       ),
     },

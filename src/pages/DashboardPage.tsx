@@ -109,6 +109,12 @@ const DashboardPage: FC = () => {
       className: 'w-24',
       images: { light: 'tooltips-light.svg', dark: 'tooltips-dark.svg' },
     },
+    {
+      title: 'Progressbar',
+      href: '/progressbar',
+      className: 'w-24',
+      images: { light: 'progressbar-light.svg', dark: 'progressbar-dark.svg' },
+    },
   ];
 
   return (

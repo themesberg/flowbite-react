@@ -3,8 +3,6 @@ import { FC, PropsWithChildren } from 'react';
 
 type Color = 'gray' | 'blue' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple';
 type Size = 'sm' | 'md' | 'lg' | 'xl';
-type TextSize = 'sm' | 'md' | 'lg' | 'xl';
-type TextColor = 'gray' | 'blue' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple';
 
 export type ProgressbarProps = PropsWithChildren<{
   className?: string;
@@ -14,8 +12,8 @@ export type ProgressbarProps = PropsWithChildren<{
   label?: string;
   labelPosition?: 'inside' | 'outside';
   labelProgress?: boolean;
-  labelSize?: TextSize;
-  labelColor?: TextColor;
+  labelSize?: Size;
+  labelColor?: Color;
 }>;
 
 const colorClasses: Record<Color, string> = {
@@ -34,12 +32,20 @@ const sizeClasses: Record<Size, string> = {
   xl: 'h-6',
 };
 const labelSizeClasses: Record<Size, string> = {
-  sm: 'text-xs font-medium text-blue-100 text-center p-0.5 leading-none',
-  md: 'text-xs font-medium text-blue-100 text-center p-0.5 leading-none',
-  lg: 'text-xs font-medium text-blue-100 text-center p-0.5 leading-none',
-  xl: 'text-xs font-medium text-blue-100 text-center p-0.5 leading-none',
+  sm: 'text-xs',
+  md: 'text-md',
+  lg: 'text-lg',
+  xl: 'text-xl',
 };
-
+const lableColorClasses: Record<Color, string> = {
+  blue: 'text-blue-600',
+  red: 'text-red-600',
+  purple: 'text-purple-600',
+  gray: 'text-gray-600',
+  green: 'text-green-600',
+  yellow: 'text-yellow-400',
+  indigo: 'text-indigo-600',
+};
 export const Progressbar: FC<ProgressbarProps> = ({
   className,
   progress = 45,
@@ -55,18 +61,37 @@ export const Progressbar: FC<ProgressbarProps> = ({
     <>
       {label && labelPosition === 'outside' && (
         <div className="mb-1 flex justify-between">
-          <span className="text-base font-medium text-blue-700 dark:text-white">{label}</span>
-          {labelProgress && <span className="text-sm font-medium text-blue-700 dark:text-white">{progress}%</span>}
+          <span
+            className={classNames(
+              'font-medium dark:text-white',
+              labelSizeClasses[labelSize],
+              lableColorClasses[labelColor],
+            )}
+          >
+            {label}
+          </span>
+          {labelProgress && (
+            <span
+              className={classNames(
+                'font-medium dark:text-white',
+                labelSizeClasses[labelSize],
+                lableColorClasses[labelColor],
+              )}
+            >
+              {progress}%
+            </span>
+          )}
         </div>
       )}
       <div className={classNames('w-full rounded-full bg-gray-200 dark:bg-gray-700 ', sizeClasses[size])}>
         <div
           className={classNames(
-            'rounded-full',
+            'rounded-full text-center font-medium leading-none text-blue-100',
             colorClasses[color],
             sizeClasses[size],
-            labelSizeClasses[labelSize],
             className,
+            labelSizeClasses[labelSize],
+            lableColorClasses[labelColor],
           )}
           style={{ width: progress + '%' }}
         >
