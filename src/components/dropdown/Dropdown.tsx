@@ -25,7 +25,7 @@ const icons: Record<string, FC<ComponentProps<'svg'>>> = {
 };
 
 const DropdownComponent: FC<DropdownProps> = (props) => {
-  const { children, className, label, inline, tooltipArrow, arrowIcon = true, ...restProps } = props;
+  const { children, className, label, inline, tooltipArrow = false, arrowIcon = true, ...restProps } = props;
   const { placement = inline ? 'bottom-start' : 'bottom', trigger = 'click', ...buttonProps } = restProps;
 
   const Icon = useMemo(() => {
