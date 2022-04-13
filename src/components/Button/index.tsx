@@ -91,6 +91,7 @@ const iconSizeClasses: Record<Size, string> = {
 export const Button: FC<ButtonProps> = ({
   children,
   className,
+  label,
   pill,
   outline,
   disabled = false,
@@ -134,7 +135,18 @@ export const Button: FC<ButtonProps> = ({
           [iconSizeClasses[size]]: !!Icon,
         })}
       >
-        {Icon ? <Icon className="h-5 w-5" /> : children}
+        {Icon ? (
+          <Icon className="h-5 w-5" />
+        ) : (
+          <>
+            {children}
+            {label && (
+              <span className="ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-200 text-xs font-semibold text-blue-800">
+                {label}
+              </span>
+            )}
+          </>
+        )}
       </span>
     </button>
   );
