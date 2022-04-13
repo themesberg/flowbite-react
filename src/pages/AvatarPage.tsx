@@ -16,7 +16,12 @@ const AvatarPage: FC = () => {
     },
     {
       title: 'Bordered Avatar',
-      code: <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" bordered />,
+      code: (
+        <div className="flex flex-wrap gap-2">
+          <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded bordered />
+          <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" bordered />
+        </div>
+      ),
     },
     {
       title: 'Placeholder',

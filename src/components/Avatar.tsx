@@ -49,7 +49,7 @@ export const Avatar: React.FC<AvatarProps> = ({
             className={classNames(sizeClasses[size], {
               rounded: !rounded,
               'rounded-full': rounded,
-              'rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
+              'p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
             })}
             src={img}
             alt="Rounded avatar"
@@ -59,7 +59,7 @@ export const Avatar: React.FC<AvatarProps> = ({
             className={classNames(`relative overflow-hidden bg-gray-100 dark:bg-gray-600`, sizeClasses[size], {
               rounded: !rounded,
               'rounded-full': rounded,
-              'rounded-full p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
+              'p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
             })}
           >
             <svg
