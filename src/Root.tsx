@@ -10,6 +10,7 @@ import {
   HiCreditCard,
   HiDeviceTablet,
   HiDuplicate,
+  HiFlag,
   HiHome,
   HiMenuAlt1,
   HiPencilAlt,
@@ -143,7 +144,7 @@ export const Root: FC = () => {
       },
       {
         group: false,
-        icon: HiAnnotation,
+        icon: HiFlag,
         title: 'Toast',
         href: '/toast',
       },
