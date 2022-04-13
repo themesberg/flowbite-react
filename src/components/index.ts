@@ -1,5 +1,5 @@
 export * from './Alert';
-export * from './accordion/Accordion';
+export * from './Accordion';
 export * from './Avatar';
 export * from './Badge';
 export * from './Breadcrumb';
