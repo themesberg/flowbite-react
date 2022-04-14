@@ -8,6 +8,7 @@ export type AvatarProps = PropsWithChildren<{
   img?: string;
   status?: 'offline' | 'online' | 'away' | 'busy';
   statusPosition?: 'top-left' | 'top-right' | 'bottom-right' | 'bottom-left';
+  stacked?: boolean;
 }>;
 
 const sizeClasses: Record<AvatarProps['size'] & string, string> = {
@@ -40,6 +41,7 @@ export const Avatar: FC<AvatarProps> = ({
   size = 'md',
   rounded = false,
   bordered = false,
+  stacked = false,
 }) => {
   return (
     <div className="flex items-center space-x-4">
@@ -49,7 +51,8 @@ export const Avatar: FC<AvatarProps> = ({
             className={classNames(sizeClasses[size], {
               rounded: !rounded,
               'rounded-full': rounded,
-              'p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
+              'ring-2 ring-gray-300 dark:ring-gray-500': bordered || stacked,
+              'p-1': bordered,
             })}
             src={img}
             alt="Rounded avatar"
@@ -59,7 +62,8 @@ export const Avatar: FC<AvatarProps> = ({
             className={classNames(`relative overflow-hidden bg-gray-100 dark:bg-gray-600`, sizeClasses[size], {
               rounded: !rounded,
               'rounded-full': rounded,
-              'p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
+              'ring-2 ring-gray-300 dark:ring-gray-500': bordered || stacked,
+              'p-1': bordered,
             })}
           >
             <svg
