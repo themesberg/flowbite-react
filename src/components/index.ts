@@ -15,4 +15,5 @@ export * from './modal/Modal';
 export * from './navbar/Navbar';
 export * from './Sidebar';
 export * from './Spinner';
+export * from './Toast';
 export * from './Tooltip';
