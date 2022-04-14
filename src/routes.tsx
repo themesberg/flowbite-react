@@ -267,7 +267,7 @@ export const routes: RouteProps[] = [
       images: { light: 'tables-light.svg', dark: 'tables-dark.svg' },
     },
   },
-  {   
+  {
     title: 'Toast',
     icon: BiNotification,
     href: '/toast',
@@ -276,7 +276,7 @@ export const routes: RouteProps[] = [
     card: {
       className: 'w-36',
       images: { light: 'toast-light.svg', dark: 'toast-dark.svg' },
-    }
+    },
   },
   {
     title: 'Tooltips',

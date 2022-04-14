@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Duration, ToastContext } from './ToastContext';
 import { ToastToggle } from './ToastToggle';
 
-export type ToastComponentProps = PropsWithChildren<{
+export type ToastProps = PropsWithChildren<{
   className?: string;
   duration?: Duration;
 }>;
@@ -19,7 +19,7 @@ const durationClasses: Record<Duration, string> = {
   1000: 'duration-1000',
 };
 
-const ToastComponent: FC<ToastComponentProps> = ({ children, className, duration = 300 }) => {
+const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300 }) => {
   const [isClosed, setIsClosed] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
 
@@ -28,6 +28,7 @@ const ToastComponent: FC<ToastComponentProps> = ({ children, className, duration
       <div
         data-testid="toast-element"
         className={classNames(
+          'flex w-full max-w-xs items-center rounded-lg bg-white p-4 text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400',
           durationClasses[duration],
           { 'opacity-0 ease-out': isClosed },
           { hidden: isRemoved },
