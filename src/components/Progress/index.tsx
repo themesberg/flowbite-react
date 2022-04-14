@@ -4,7 +4,7 @@ import { FC, PropsWithChildren } from 'react';
 type Color = 'dark' | 'blue' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple';
 type Size = 'sm' | 'md' | 'lg' | 'xl';
 
-export type ProgressbarProps = PropsWithChildren<{
+export type ProgressProps = PropsWithChildren<{
   className?: string;
   progress: number;
   color?: Color;
@@ -31,9 +31,9 @@ const sizeClasses: Record<Size, string> = {
   lg: 'h-4',
   xl: 'h-6',
 };
-export const Progressbar: FC<ProgressbarProps> = ({
+export const Progress: FC<ProgressProps> = ({
   className,
-  progress = 45,
+  progress,
   color = 'blue',
   size = 'md',
   label,
@@ -56,9 +56,9 @@ export const Progressbar: FC<ProgressbarProps> = ({
             sizeClasses[size],
             className,
           )}
-          style={{ width: progress + '%' }}
+          style={{ width: `${progress}%` }}
         >
-          {label && labelPosition == 'inside' && label}
+          {label && labelPosition === 'inside' && label}
         </div>
       </div>
     </div>

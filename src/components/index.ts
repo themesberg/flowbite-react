@@ -13,7 +13,7 @@ export * from './form-controls';
 export * from './list-group/ListGroup';
 export * from './modal/Modal';
 export * from './navbar/Navbar';
+export * from './Progress';
 export * from './Sidebar';
 export * from './Spinner';
 export * from './Tooltip';
-export * from './Progressbar';
