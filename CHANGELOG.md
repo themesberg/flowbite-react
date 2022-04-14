@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.17](https://github.com/themesberg/flowbite-react/compare/v0.0.16...v0.0.17) (2022-04-14)
+
+
+### Features
+
+* add Table component ([7568ccc](https://github.com/themesberg/flowbite-react/commit/7568ccc3f299501e6042f2c93a44599677735d1c))
+
+
+### Bug Fixes
+
+* add missing dark class names of the progress component ([09cfef4](https://github.com/themesberg/flowbite-react/commit/09cfef49d6a52a01cca814e22ca35eef4ba65992))
+* add missing label prop usage in the Button component ([5e8c291](https://github.com/themesberg/flowbite-react/commit/5e8c291351fec7c3ff327eea0b9635996bde534a))
+* added 700 duration to Duration type ([efd4611](https://github.com/themesberg/flowbite-react/commit/efd461171eaff21c37be189acb6d0c66fce791c7))
+* added PropsWithChildren ([3090117](https://github.com/themesberg/flowbite-react/commit/3090117cb0f177031da33e2db41287339663b847))
+* added testid, merged imports, added duration record ([c5c9cd5](https://github.com/themesberg/flowbite-react/commit/c5c9cd538d76a7a19840ea18e9b6e48ae0a594f2))
+* avatar bordered ([432d9f5](https://github.com/themesberg/flowbite-react/commit/432d9f594f8f5eba3e65a7c464ea49516c4c88bc))
+* correctly renamed toast to Toast ([fd5d162](https://github.com/themesberg/flowbite-react/commit/fd5d162b5134cc0bda73a673ebc353514ebe9467))
+* correctly renamed Toast.tsx to index.tsx ([53881df](https://github.com/themesberg/flowbite-react/commit/53881dfccd17f12af9c151c00792c4b0fd646f8a))
+* exclude storybook stories while building the library ([648b110](https://github.com/themesberg/flowbite-react/commit/648b1107052ffe8ebe2c041dba427f62013e0185))
+* export Size type and merged imports ([55c9cdf](https://github.com/themesberg/flowbite-react/commit/55c9cdf3835b93793b1a2696a4ac0cefcda4e0a9))
+* fix Button component styling ([c0683cf](https://github.com/themesberg/flowbite-react/commit/c0683cf8365235b436331710bd2a84c61a9cdd3e))
+* imported Size type from RatingContext ([bd8ebbb](https://github.com/themesberg/flowbite-react/commit/bd8ebbbd330de3afc2b64095ce875aa2822880ca))
+* make arrow prop of Dropdown component much understandable ([cc1beff](https://github.com/themesberg/flowbite-react/commit/cc1beffb41a6146d1a38417cb3fbde3de787f938))
+* make label prop of Button component as ReactNode ([59cee65](https://github.com/themesberg/flowbite-react/commit/59cee65a58623d138098fb3cfcc3c67d2a7e8d19))
+* removed svg component props ([195b67e](https://github.com/themesberg/flowbite-react/commit/195b67eae27fe48a5c923a1b6cf789b7f9ff0482))
+* removed Toast.tsx from src/ ([0f0c362](https://github.com/themesberg/flowbite-react/commit/0f0c36219b626b10da252dd58e3fb353f79cdbb7))
+* removed unneeded imports ([249e40e](https://github.com/themesberg/flowbite-react/commit/249e40e7209ee614f71cee240f69397364151501))
+* removed unneeded imports from stories ([a731a2c](https://github.com/themesberg/flowbite-react/commit/a731a2c4500a9ccc74a1491bf43cdb25cbc8ea7c))
+* replaced star svg with HiStar icon ([259f345](https://github.com/themesberg/flowbite-react/commit/259f3457a9f7797cd0d6af4114b58282a14138a1))
+* set tooltipArrow prop as false by default for the Dropdown component ([35ad443](https://github.com/themesberg/flowbite-react/commit/35ad443ab4bbc77cb1a2ab72e3ffd00805bcf073))
+* simplify routes array ([52cb973](https://github.com/themesberg/flowbite-react/commit/52cb973c080f8ce6b5001ce3e33cea5c3f51d46a))
+
 ### [0.0.16](https://github.com/themesberg/flowbite-react/compare/v0.0.15...v0.0.16) (2022-04-08)
 
 
