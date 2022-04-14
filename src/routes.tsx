@@ -1,5 +1,6 @@
 import { ComponentProps, FC, ReactNode } from 'react';
 
+import { BiNotification } from 'react-icons/bi';
 import { BsCreditCard2FrontFill, BsImages } from 'react-icons/bs';
 import { FaSpinner } from 'react-icons/fa';
 import { FiNavigation } from 'react-icons/fi';
@@ -42,6 +43,7 @@ import ProgressPage from './pages/ProgressPage';
 import RatingPage from './pages/RatingPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TablePage from './pages/TablePage';
+import ToastPage from './pages/ToastPage';
 import TooltipsPage from './pages/TooltipsPage';
 
 export type ComponentCardItem = {
@@ -263,6 +265,17 @@ export const routes: RouteProps[] = [
     card: {
       className: 'w-36',
       images: { light: 'tables-light.svg', dark: 'tables-dark.svg' },
+    },
+  },
+  {
+    title: 'Toast',
+    icon: BiNotification,
+    href: '/toast',
+    component: <ToastPage />,
+    group: false,
+    card: {
+      className: 'w-36',
+      images: { light: 'toast-light.svg', dark: 'toast-dark.svg' },
     },
   },
   {
