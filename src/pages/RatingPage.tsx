@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Rating } from '../components/rating/Rating';
+import { Rating } from '../components';
 import { CodeExample, DemoPage } from './DemoPage';
 
 const RatingPage: FC = () => {
