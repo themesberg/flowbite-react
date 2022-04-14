@@ -17,4 +17,5 @@ export * from './Progress';
 export * from './Rating';
 export * from './Sidebar';
 export * from './Spinner';
+export * from './Table';
 export * from './Tooltip';

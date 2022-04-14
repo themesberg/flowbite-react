@@ -17,6 +17,7 @@ import {
   HiHome,
   HiPencilAlt,
   HiStar,
+  HiTable,
   HiUser,
 } from 'react-icons/hi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
@@ -40,6 +41,7 @@ import NavbarPage from './pages/NavbarPage';
 import ProgressPage from './pages/ProgressPage';
 import RatingPage from './pages/RatingPage';
 import SpinnersPage from './pages/SpinnersPage';
+import TablePage from './pages/TablePage';
 import TooltipsPage from './pages/TooltipsPage';
 
 export type ComponentCardItem = {
@@ -250,6 +252,17 @@ export const routes: RouteProps[] = [
     card: {
       className: 'w-36',
       images: { light: 'spinners-light.svg', dark: 'spinners-dark.svg' },
+    },
+  },
+  {
+    title: 'Tables',
+    icon: HiTable,
+    href: '/tables',
+    component: <TablePage />,
+    group: false,
+    card: {
+      className: 'w-36',
+      images: { light: 'tables-light.svg', dark: 'tables-dark.svg' },
     },
   },
   {
