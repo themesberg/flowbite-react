@@ -18,8 +18,10 @@ import {
   HiHome,
   HiPencilAlt,
   HiStar,
+  HiTable,
   HiUser,
 } from 'react-icons/hi';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { SidebarItem } from './components';
 
 import AccordionPage from './pages/AccordionPage';
@@ -37,8 +39,10 @@ import FormsPage from './pages/FormsPage';
 import ListGroupPage from './pages/ListGroupPage';
 import ModalPage from './pages/ModalPage';
 import NavbarPage from './pages/NavbarPage';
+import ProgressPage from './pages/ProgressPage';
 import RatingPage from './pages/RatingPage';
 import SpinnersPage from './pages/SpinnersPage';
+import TablePage from './pages/TablePage';
 import ToastPage from './pages/ToastPage';
 import TooltipsPage from './pages/TooltipsPage';
 
@@ -220,6 +224,17 @@ export const routes: RouteProps[] = [
     },
   },
   {
+    title: 'Progress',
+    icon: AiOutlineLoading3Quarters,
+    href: '/progress',
+    component: <ProgressPage />,
+    group: false,
+    card: {
+      className: 'w-36',
+      images: { light: 'progress-light.svg', dark: 'progress-dark.svg' },
+    },
+  },
+  {
     title: 'Rating',
     icon: HiStar,
     href: '/rating',
@@ -242,6 +257,17 @@ export const routes: RouteProps[] = [
     },
   },
   {
+    title: 'Tables',
+    icon: HiTable,
+    href: '/tables',
+    component: <TablePage />,
+    group: false,
+    card: {
+      className: 'w-36',
+      images: { light: 'tables-light.svg', dark: 'tables-dark.svg' },
+    },
+  },
+  {   
     title: 'Toast',
     icon: BiNotification,
     href: '/toast',
@@ -250,7 +276,7 @@ export const routes: RouteProps[] = [
     card: {
       className: 'w-36',
       images: { light: 'toast-light.svg', dark: 'toast-dark.svg' },
-    },
+    }
   },
   {
     title: 'Tooltips',

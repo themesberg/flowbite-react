@@ -4,12 +4,12 @@ import { RatingAdvanced } from './RatingAdvanced';
 import { RatingContext, Size } from './RatingContext';
 import { RatingStar } from './RatingStar';
 
-export type RatingComponentProps = PropsWithChildren<{
+export type RatingProps = PropsWithChildren<{
   className?: string;
   size?: Size;
 }>;
 
-const RatingComponent: FC<RatingComponentProps> = ({ children, className, size = 'sm' }) => {
+const RatingComponent: FC<RatingProps> = ({ children, className, size = 'sm' }) => {
   return (
     <RatingContext.Provider value={{ size }}>
       <div className={classNames('flex items-center', className)}>{children}</div>
