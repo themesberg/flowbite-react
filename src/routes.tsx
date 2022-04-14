@@ -19,6 +19,7 @@ import {
   HiStar,
   HiTable,
   HiUser,
+  HiOutlineChevronDoubleRight,
 } from 'react-icons/hi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { SidebarItem } from './components';
@@ -38,6 +39,7 @@ import FormsPage from './pages/FormsPage';
 import ListGroupPage from './pages/ListGroupPage';
 import ModalPage from './pages/ModalPage';
 import NavbarPage from './pages/NavbarPage';
+import PaginationPage from './pages/PaginationPage';
 import ProgressPage from './pages/ProgressPage';
 import RatingPage from './pages/RatingPage';
 import SpinnersPage from './pages/SpinnersPage';
@@ -219,6 +221,17 @@ export const routes: RouteProps[] = [
     card: {
       className: 'w-56',
       images: { light: 'navbars-light.svg', dark: 'navbars-dark.svg' },
+    },
+  },
+  {
+    title: 'Pagination',
+    icon: HiOutlineChevronDoubleRight,
+    href: '/pagination',
+    component: <PaginationPage />,
+    group: false,
+    card: {
+      className: 'w-36',
+      images: { light: 'pagination-light.svg', dark: 'pagination-dark.svg' },
     },
   },
   {
