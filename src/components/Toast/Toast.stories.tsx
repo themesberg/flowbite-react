@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { HiFire, HiX, HiCheck, HiExclamation } from 'react-icons/hi';
+import { HiFire } from 'react-icons/hi';
 
 import { Toast, ToastComponentProps } from '.';
 
