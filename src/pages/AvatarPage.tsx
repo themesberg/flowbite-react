@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
 import { Avatar, Dropdown } from '../components';
-import { AvatarGroup } from '../components/AvatarGroup';
 import { CodeExample, DemoPage } from './DemoPage';
 
 const AvatarPage: FC = () => {
@@ -62,20 +61,20 @@ const AvatarPage: FC = () => {
       title: 'Stacked',
       code: (
         <>
-          <AvatarGroup>
+          <Avatar.Group>
             <Avatar img="https://flowbite.com/docs/images/people/profile-picture-1.jpg" rounded stacked />
             <Avatar img="https://flowbite.com/docs/images/people/profile-picture-2.jpg" rounded stacked />
             <Avatar img="https://flowbite.com/docs/images/people/profile-picture-3.jpg" rounded stacked />
             <Avatar img="https://flowbite.com/docs/images/people/profile-picture-4.jpg" rounded stacked />
             <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded stacked />
-          </AvatarGroup>
-          <AvatarGroup>
+          </Avatar.Group>
+          <Avatar.Group>
             <Avatar img="https://flowbite.com/docs/images/people/profile-picture-1.jpg" rounded stacked />
             <Avatar img="https://flowbite.com/docs/images/people/profile-picture-2.jpg" rounded stacked />
             <Avatar img="https://flowbite.com/docs/images/people/profile-picture-3.jpg" rounded stacked />
             <Avatar img="https://flowbite.com/docs/images/people/profile-picture-4.jpg" rounded stacked />
-            <AvatarGroup.Counter total={99} href="#" />
-          </AvatarGroup>
+            <Avatar.Counter total={99} href="#" />
+          </Avatar.Group>
         </>
       ),
     },

@@ -1,5 +1,7 @@
 import classNames from 'classnames';
 import { FC, PropsWithChildren } from 'react';
+import { AvatarGroup } from './AvatarGroup';
+import { AvatarGroupCounter } from './AvatarGroupCounter';
 
 export type AvatarProps = PropsWithChildren<{
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -33,7 +35,7 @@ const statusPositionClasses: Record<AvatarProps['statusPosition'] & string, stri
   'bottom-right': '-bottom-1 -left-1',
 };
 
-export const Avatar: FC<AvatarProps> = ({
+const AvatarComponent: FC<AvatarProps> = ({
   img,
   status,
   children,
@@ -94,3 +96,8 @@ export const Avatar: FC<AvatarProps> = ({
     </div>
   );
 };
+
+export const Avatar = Object.assign(AvatarComponent, {
+  Group: AvatarGroup,
+  Counter: AvatarGroupCounter,
+});
