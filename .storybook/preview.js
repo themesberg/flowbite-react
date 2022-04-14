@@ -17,4 +17,9 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  darkMode: {
+    current: 'dark',
+    darkClass: 'dark',
+    stylePreview: true,
+  },
 };
