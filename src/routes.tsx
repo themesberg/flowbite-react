@@ -19,6 +19,7 @@ import {
   HiStar,
   HiUser,
 } from 'react-icons/hi';
+import { GrInProgress } from 'react-icons/gr';
 import { SidebarItem } from './components';
 
 import AccordionPage from './pages/AccordionPage';
@@ -36,6 +37,7 @@ import FormsPage from './pages/FormsPage';
 import ListGroupPage from './pages/ListGroupPage';
 import ModalPage from './pages/ModalPage';
 import NavbarPage from './pages/NavbarPage';
+import ProgressbarPage from './pages/ProgressbarPage';
 import RatingPage from './pages/RatingPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TooltipsPage from './pages/TooltipsPage';
@@ -248,6 +250,17 @@ export const routes: RouteProps[] = [
     card: {
       className: 'w-24',
       images: { light: 'tooltips-light.svg', dark: 'tooltips-dark.svg' },
+    },
+  },
+  {
+    title: 'Progress',
+    icon: GrInProgress,
+    href: '/progress-bar',
+    component: <ProgressbarPage />,
+    group: false,
+    card: {
+      className: 'w-24',
+      images: { light: 'progress-light.svg', dark: 'progress-dark.svg' },
     },
   },
 ];
