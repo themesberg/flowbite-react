@@ -16,8 +16,7 @@ import {
   HiStar,
   HiUser,
 } from 'react-icons/hi';
-import { AiOutlineMinus } from 'react-icons/ai';
-
+import { GrInProgress } from 'react-icons/gr';
 import { BsCreditCard2FrontFill, BsGithub, BsImages } from 'react-icons/bs';
 import { FaSpinner } from 'react-icons/fa';
 import { FiNavigation } from 'react-icons/fi';
@@ -160,9 +159,9 @@ export const Root: FC = () => {
       },
       {
         group: false,
-        icon: AiOutlineMinus,
-        title: 'Progressbar',
-        href: '/progressbar',
+        icon: GrInProgress,
+        title: 'Progress',
+        href: '/progress-bar',
       },
     ],
   ];
@@ -228,7 +227,7 @@ export const Root: FC = () => {
               <Route path="rating" element={<RatingPage />} />
               <Route path="spinners" element={<SpinnersPage />} />
               <Route path="tooltips" element={<TooltipsPage />} />
-              <Route path="progressbar" element={<ProgressbarPage />} />
+              <Route path="progress-bar" element={<ProgressbarPage />} />
             </Routes>
           </Suspense>
         </main>

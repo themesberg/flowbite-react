@@ -110,8 +110,8 @@ const DashboardPage: FC = () => {
       images: { light: 'tooltips-light.svg', dark: 'tooltips-dark.svg' },
     },
     {
-      title: 'Progressbar',
-      href: '/progressbar',
+      title: 'Progress',
+      href: '/progress-bar',
       className: 'w-24',
       images: { light: 'progressbar-light.svg', dark: 'progressbar-dark.svg' },
     },
