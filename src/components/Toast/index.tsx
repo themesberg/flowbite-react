@@ -1,8 +1,7 @@
 import { PropsWithChildren, FC, useState } from 'react';
 import classNames from 'classnames';
-import { Duration } from './ToastContext';
+import { Duration, ToastContext } from './ToastContext';
 import { ToastToggle } from './ToastToggle';
-import { ToastContext } from './ToastContext';
 
 export type ToastComponentProps = PropsWithChildren<{
   className?: string;
@@ -16,6 +15,7 @@ const durationClasses: Record<Duration, string> = {
   200: 'duration-200',
   300: 'duration-300',
   500: 'duration-500',
+  700: 'duration-700',
   1000: 'duration-1000',
 };
 
@@ -26,7 +26,13 @@ const ToastComponent: FC<ToastComponentProps> = ({ children, className, duration
   return (
     <ToastContext.Provider value={{ duration, isClosed, isRemoved, setIsClosed, setIsRemoved }}>
       <div
-        className={classNames(durationClasses[duration], { 'opacity-0': isClosed }, { hidden: isRemoved }, className)}
+        data-testid="toast-element"
+        className={classNames(
+          durationClasses[duration],
+          { 'opacity-0 ease-out': isClosed },
+          { hidden: isRemoved },
+          className,
+        )}
       >
         {children}
       </div>
