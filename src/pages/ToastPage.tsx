@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Toast } from '../components/toast/Toast';
+import { Toast } from '../components/toast';
 import { CodeExample, DemoPage } from './DemoPage';
 import { HiFire, HiCheck, HiExclamation, HiX } from 'react-icons/hi';
 import { FaTelegramPlane } from 'react-icons/fa';
