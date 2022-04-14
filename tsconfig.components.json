@@ -3,11 +3,7 @@
     "outDir": "lib/cjs",
     "module": "CommonJS",
     "target": "ESNext",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "declaration": true,
@@ -22,7 +18,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "src/components"
-  ]
+  "include": ["src/components"],
+  "exclude": ["**/**.spec.tsx", "**/**.stories.tsx"]
 }

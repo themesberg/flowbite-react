@@ -1,12 +1,12 @@
-@import "~flowbite";
+@import '~flowbite';
 
 @tailwind components;
 @tailwind utilities;
 
 ::-webkit-scrollbar {
-    @apply w-1 h-1 bg-gray-100 dark:bg-gray-900;
+  @apply h-1 w-1 bg-gray-100 dark:bg-gray-900;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 hover:bg-gray-400 dark:border-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600;
+  @apply bg-gray-300 hover:bg-gray-400 dark:border-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600;
 }

@@ -16,6 +16,7 @@ const AccordionComponent: FC<AccordionProps> = ({ children, flush }) => {
 
   return (
     <div
+      data-testid="accordion-element"
       className={classNames('divide-y divide-gray-200 border-gray-200 dark:divide-gray-700 dark:border-gray-700', {
         'rounded-lg border': !flush,
         'border-b': flush,

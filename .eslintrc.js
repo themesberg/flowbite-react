@@ -6,6 +6,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
     'prettier/prettier',
+    'plugin:storybook/recommended',
   ],
   root: true,
   parser: '@typescript-eslint/parser',

@@ -9,10 +9,12 @@ import { DropdownDivider } from './DropdownDivider';
 import { DropdownHeader } from './DropdownHeader';
 
 export type DropdownProps = ButtonProps &
-  Omit<TooltipProps, 'content' | 'style' | 'animation'> & {
+  Omit<TooltipProps, 'content' | 'style' | 'animation' | 'arrow'> & {
     className?: string;
     label: ReactNode;
     inline?: boolean;
+    tooltipArrow?: boolean;
+    arrowIcon?: boolean;
   };
 
 const icons: Record<string, FC<ComponentProps<'svg'>>> = {
@@ -23,13 +25,8 @@ const icons: Record<string, FC<ComponentProps<'svg'>>> = {
 };
 
 const DropdownComponent: FC<DropdownProps> = (props) => {
-  const { children, className, label, inline, ...restProps } = props;
-  const {
-    placement = inline ? 'bottom-start' : 'bottom',
-    arrow = false,
-    trigger = 'click',
-    ...buttonProps
-  } = restProps;
+  const { children, className, label, inline, tooltipArrow = false, arrowIcon = true, ...restProps } = props;
+  const { placement = inline ? 'bottom-start' : 'bottom', trigger = 'click', ...buttonProps } = restProps;
 
   const Icon = useMemo(() => {
     const [p] = placement.split('-');
@@ -48,12 +45,12 @@ const DropdownComponent: FC<DropdownProps> = (props) => {
       style="auto"
       animation="duration-100"
       placement={placement}
-      arrow={arrow}
+      arrow={tooltipArrow}
       trigger={trigger}
     >
       <TriggerWrapper>
         {label}
-        <Icon className="ml-2 h-4 w-4" />
+        {arrowIcon && <Icon className="ml-2 h-4 w-4" />}
       </TriggerWrapper>
     </Tooltip>
   );
