@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 
 export type AvatarProps = PropsWithChildren<{
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -32,7 +32,7 @@ const statusPositionClasses: Record<AvatarProps['statusPosition'] & string, stri
   'bottom-right': '-bottom-1 -left-1',
 };
 
-export const Avatar: React.FC<AvatarProps> = ({
+export const Avatar: FC<AvatarProps> = ({
   img,
   status,
   children,

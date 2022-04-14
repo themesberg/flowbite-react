@@ -20,6 +20,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
 
   return (
     <button
+      data-testid="accordion-title-element"
       {...props}
       type="button"
       className={classNames(

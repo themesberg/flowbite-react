@@ -102,52 +102,51 @@ export const Button: FC<ButtonProps> = ({
   gradientDuoTone,
   positionInGroup,
   ...props
-}) => {
-  return (
-    <button
-      disabled={disabled}
-      className={classNames(
-        'group flex h-min w-fit items-center justify-center p-0.5 text-center font-medium focus:z-10',
-        pill ? 'rounded-full' : 'rounded-lg',
-        !gradientMonochrome && !gradientDuoTone && colorClasses[color],
-        !gradientDuoTone && gradientMonochrome && gradientMonochromeClasses[gradientMonochrome],
-        gradientDuoTone && gradientDuoToneClasses[gradientDuoTone],
-        {
-          'border border-gray-900 dark:border-white': color === 'alternative' && outline,
-          'cursor-not-allowed opacity-50': disabled,
-          'focus:!ring-2': !!positionInGroup,
-          'rounded-r-none': positionInGroup === 'start',
-          '!rounded-none border-l-0 pl-0': positionInGroup === 'middle',
-          'rounded-l-none border-l-0 pl-0': positionInGroup === 'end',
-        },
-        className,
-      )}
-      type="button"
-      {...props}
+}) => (
+  <button
+    data-testid="button-element"
+    disabled={disabled}
+    className={classNames(
+      'group flex h-min w-fit items-center justify-center p-0.5 text-center font-medium focus:z-10',
+      pill ? 'rounded-full' : 'rounded-lg',
+      !gradientMonochrome && !gradientDuoTone && colorClasses[color],
+      !gradientDuoTone && gradientMonochrome && gradientMonochromeClasses[gradientMonochrome],
+      gradientDuoTone && gradientDuoToneClasses[gradientDuoTone],
+      {
+        'border border-gray-900 dark:border-white': color === 'alternative' && outline,
+        'cursor-not-allowed opacity-50': disabled,
+        'focus:!ring-2': !!positionInGroup,
+        'rounded-r-none': positionInGroup === 'start',
+        '!rounded-none border-l-0 pl-0': positionInGroup === 'middle',
+        'rounded-l-none border-l-0 pl-0': positionInGroup === 'end',
+      },
+      className,
+    )}
+    type="button"
+    {...props}
+  >
+    <span
+      className={classNames('flex items-center', sizeClasses[size], outline && pill ? 'rounded-full' : 'rounded-md', {
+        'bg-white text-gray-900 transition-all duration-75 ease-in group-hover:bg-opacity-0 group-hover:text-inherit dark:bg-gray-900 dark:text-white':
+          outline,
+        'rounded-r-none': positionInGroup === 'start',
+        '!rounded-none': positionInGroup === 'middle',
+        'rounded-l-none': positionInGroup === 'end',
+        [iconSizeClasses[size]]: !!Icon,
+      })}
     >
-      <span
-        className={classNames('flex items-center', sizeClasses[size], outline && pill ? 'rounded-full' : 'rounded-md', {
-          'bg-white text-gray-900 transition-all duration-75 ease-in group-hover:bg-opacity-0 group-hover:text-inherit dark:bg-gray-900 dark:text-white':
-            outline,
-          'rounded-r-none': positionInGroup === 'start',
-          '!rounded-none': positionInGroup === 'middle',
-          'rounded-l-none': positionInGroup === 'end',
-          [iconSizeClasses[size]]: !!Icon,
-        })}
-      >
-        {Icon ? (
-          <Icon className="h-5 w-5" />
-        ) : (
-          <>
-            {children}
-            {label && (
-              <span className="ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-200 text-xs font-semibold text-blue-800">
-                {label}
-              </span>
-            )}
-          </>
-        )}
-      </span>
-    </button>
-  );
-};
+      {Icon ? (
+        <Icon className="h-5 w-5" />
+      ) : (
+        <>
+          {children}
+          {label && (
+            <span className="ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-200 text-xs font-semibold text-blue-800">
+              {label}
+            </span>
+          )}
+        </>
+      )}
+    </span>
+  </button>
+);

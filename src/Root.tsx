@@ -1,170 +1,14 @@
 import { FC, Suspense, useState } from 'react';
-import {
-  HiAnnotation,
-  HiArrowCircleDown,
-  HiBadgeCheck,
-  HiBell,
-  HiChevronDoubleRight,
-  HiClipboardList,
-  HiCollection,
-  HiCreditCard,
-  HiDeviceTablet,
-  HiDuplicate,
-  HiHome,
-  HiMenuAlt1,
-  HiPencilAlt,
-  HiStar,
-  HiUser,
-} from 'react-icons/hi';
-import { GrInProgress } from 'react-icons/gr';
-import { BsCreditCard2FrontFill, BsGithub, BsImages } from 'react-icons/bs';
-import { FaSpinner } from 'react-icons/fa';
-import { FiNavigation } from 'react-icons/fi';
+import { BsGithub } from 'react-icons/bs';
+import { HiMenuAlt1 } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
 import { Route, Routes } from 'react-router-dom';
 
-import { DarkThemeToggle, Navbar, Sidebar, SidebarItem, Spinner } from './components';
-
-import DashboardPage from './pages/DashboardPage';
-import AvatarPage from './pages/AvatarPage';
-import AlertsPage from './pages/AlertsPage';
-import AccordionPage from './pages/AccordionPage';
-import BadgesPage from './pages/BadgesPage';
-import BreadcrumbPage from './pages/BreadcrumbPage';
-import ButtonsPage from './pages/ButtonsPage';
-import ButtonGroupPage from './pages/ButtonGroupPage';
-import CardPage from './pages/CardPage';
-import CarouselPage from './pages/CarouselPage';
-import DropdownPage from './pages/DropdownPage';
-import FormsPage from './pages/FormsPage';
-import ListGroupPage from './pages/ListGroupPage';
-import ModalPage from './pages/ModalPage';
-import NavbarPage from './pages/NavbarPage';
-import RatingPage from './pages/RatingPage';
-import SpinnersPage from './pages/SpinnersPage';
-import TooltipsPage from './pages/TooltipsPage';
-import ProgressbarPage from './pages/ProgressbarPage';
+import { DarkThemeToggle, Navbar, Sidebar, Spinner } from './components';
+import { routes } from './routes';
 
 export const Root: FC = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const itemsGroups: SidebarItem[][] = [
-    [
-      {
-        group: false,
-        icon: HiHome,
-        title: 'Dashboard',
-        href: '/',
-      },
-      {
-        group: false,
-        icon: HiBell,
-        title: 'Alerts',
-        href: '/alerts',
-      },
-      {
-        group: false,
-        icon: HiCreditCard,
-        title: 'Accordion',
-        href: '/accordion',
-      },
-      {
-        group: false,
-        icon: HiUser,
-        title: 'Avatar',
-        href: '/avatar',
-      },
-      {
-        group: false,
-        icon: HiBadgeCheck,
-        title: 'Badges',
-        href: '/badges',
-      },
-      {
-        group: false,
-        icon: HiChevronDoubleRight,
-        title: 'Breadcrumb',
-        href: '/breadcrumb',
-      },
-      {
-        group: false,
-        icon: HiCollection,
-        title: 'Buttons',
-        href: '/buttons',
-      },
-      {
-        group: false,
-        icon: HiDuplicate,
-        title: 'Button group',
-        href: '/button-group',
-      },
-      {
-        group: false,
-        icon: BsCreditCard2FrontFill,
-        title: 'Card',
-        href: '/card',
-      },
-      {
-        group: false,
-        icon: BsImages,
-        title: 'Carousel',
-        href: '/carousel',
-      },
-      {
-        group: false,
-        icon: HiArrowCircleDown,
-        title: 'Dropdown',
-        href: '/dropdown',
-      },
-      {
-        group: false,
-        icon: HiPencilAlt,
-        title: 'Forms',
-        href: '/forms',
-      },
-      {
-        group: false,
-        icon: HiClipboardList,
-        title: 'List group',
-        href: '/list-group',
-      },
-      {
-        group: false,
-        icon: HiDeviceTablet,
-        title: 'Modal',
-        href: '/modal',
-      },
-      {
-        group: false,
-        icon: FiNavigation,
-        title: 'Navbars',
-        href: '/navbars',
-      },
-      {
-        group: false,
-        icon: HiStar,
-        title: 'Rating',
-        href: '/rating',
-      },
-      {
-        group: false,
-        icon: FaSpinner,
-        title: 'Spinners',
-        href: '/spinners',
-      },
-      {
-        group: false,
-        icon: HiAnnotation,
-        title: 'Tooltips',
-        href: '/tooltips',
-      },
-      {
-        group: false,
-        icon: GrInProgress,
-        title: 'Progress',
-        href: '/progress-bar',
-      },
-    ],
-  ];
 
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden">
@@ -199,7 +43,7 @@ export const Root: FC = () => {
         </div>
       </Navbar>
       <div className="flex h-full overflow-hidden bg-gray-50 dark:bg-gray-900">
-        <Sidebar collapsed={collapsed} itemsGroups={itemsGroups} />
+        <Sidebar collapsed={collapsed} itemsGroups={[routes]} />
         <main className="flex-1 overflow-auto p-4">
           <Suspense
             fallback={
@@ -209,25 +53,9 @@ export const Root: FC = () => {
             }
           >
             <Routes>
-              <Route path="" element={<DashboardPage />} />
-              <Route path="alerts" element={<AlertsPage />} />
-              <Route path="accordion" element={<AccordionPage />} />
-              <Route path="avatar" element={<AvatarPage />} />
-              <Route path="badges" element={<BadgesPage />} />
-              <Route path="breadcrumb" element={<BreadcrumbPage />} />
-              <Route path="buttons" element={<ButtonsPage />} />
-              <Route path="button-group" element={<ButtonGroupPage />} />
-              <Route path="card" element={<CardPage />} />
-              <Route path="carousel" element={<CarouselPage />} />
-              <Route path="dropdown" element={<DropdownPage />} />
-              <Route path="forms" element={<FormsPage />} />
-              <Route path="list-group" element={<ListGroupPage />} />
-              <Route path="modal" element={<ModalPage />} />
-              <Route path="navbars" element={<NavbarPage />} />
-              <Route path="rating" element={<RatingPage />} />
-              <Route path="spinners" element={<SpinnersPage />} />
-              <Route path="tooltips" element={<TooltipsPage />} />
-              <Route path="progress-bar" element={<ProgressbarPage />} />
+              {routes.map(({ href, component: Component }) => (
+                <Route key={href} path={href} element={Component} />
+              ))}
             </Routes>
           </Suspense>
         </main>
