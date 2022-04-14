@@ -12,7 +12,7 @@ export type TableProps = PropsWithChildren<ComponentProps<'table'> & TableContex
 
 const TableComponent: FC<TableProps> = ({ children, striped, hoverable, className, ...props }) => {
   return (
-    <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div data-testid="table-element" className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <TableContext.Provider value={{ striped, hoverable }}>
         <table
           className={classNames('w-full text-left text-sm text-gray-500 dark:text-gray-400', className)}

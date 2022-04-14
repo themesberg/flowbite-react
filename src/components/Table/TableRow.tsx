@@ -10,6 +10,7 @@ export const TableRow: FC<TableRowProps> = ({ children, className, ...props }) =
 
   return (
     <tr
+      data-testid="table-row-element"
       className={classNames(
         {
           'odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700': striped,
