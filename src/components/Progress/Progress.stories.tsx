@@ -12,5 +12,5 @@ const Template: Story<ProgressProps> = (args) => <Progress {...args} />;
 export const DefaultProgress = Template.bind({});
 DefaultProgress.storyName = 'Default';
 DefaultProgress.args = {
-  children: 'Progress',
+  progress: 45,
 };

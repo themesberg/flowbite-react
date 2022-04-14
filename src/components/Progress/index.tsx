@@ -12,8 +12,6 @@ export type ProgressProps = PropsWithChildren<{
   label?: string;
   labelPosition?: 'inside' | 'outside';
   labelProgress?: boolean;
-  labelSize?: Size;
-  labelColor?: Color;
 }>;
 
 const colorClasses: Record<Color, string> = {
@@ -44,14 +42,16 @@ export const Progress: FC<ProgressProps> = ({
     <div>
       {label && labelPosition === 'outside' && (
         <div className="mb-1 flex justify-between">
-          <span className={classNames('font-medium dark:text-white')}>{label}</span>
-          {labelProgress && <span className={classNames('font-medium dark:text-white')}>{progress}%</span>}
+          <span className="font-medium dark:text-white">{label}</span>
+          {labelProgress && <span className="font-medium dark:text-white">{progress}%</span>}
         </div>
       )}
-      <div className={classNames('w-full rounded-full bg-gray-200 dark:bg-gray-700 ', sizeClasses[size])}>
+      <div
+        className={classNames('w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700', sizeClasses[size])}
+      >
         <div
           className={classNames(
-            'rounded-full text-center font-medium leading-none text-blue-100',
+            'flex items-center justify-center rounded-full text-center font-medium leading-none text-blue-100',
             colorClasses[color],
             sizeClasses[size],
             className,
