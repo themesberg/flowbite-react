@@ -9,7 +9,7 @@ export * from './Card';
 export * from './Carousel';
 export * from './Dropdown';
 export * from './DarkThemeToggle';
-export * from './form-controls';
+export * from './FormControls';
 export * from './list-group/ListGroup';
 export * from './modal/Modal';
 export * from './Navbar';
