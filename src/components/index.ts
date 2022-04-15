@@ -10,7 +10,7 @@ export * from './Carousel';
 export * from './Dropdown';
 export * from './DarkThemeToggle';
 export * from './FormControls';
-export * from './list-group/ListGroup';
+export * from './ListGroup';
 export * from './modal/Modal';
 export * from './Navbar';
 export * from './Progress';
