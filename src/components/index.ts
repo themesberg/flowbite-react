@@ -11,7 +11,7 @@ export * from './Dropdown';
 export * from './DarkThemeToggle';
 export * from './FormControls';
 export * from './ListGroup';
-export * from './modal/Modal';
+export * from './Modal';
 export * from './Navbar';
 export * from './Progress';
 export * from './Rating';
