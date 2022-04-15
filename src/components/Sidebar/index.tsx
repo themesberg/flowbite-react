@@ -2,7 +2,7 @@ import { ComponentProps, FC, ReactNode, useState } from 'react';
 import classNames from 'classnames';
 import { Link, useLocation } from 'react-router-dom';
 import { HiChevronDown } from 'react-icons/hi';
-import { Tooltip } from './Tooltip';
+import { Tooltip } from '../Tooltip';
 
 export type SidebarItem = {
   icon: FC<ComponentProps<'svg'>>;
