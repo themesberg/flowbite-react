@@ -12,7 +12,7 @@ export * from './DarkThemeToggle';
 export * from './form-controls';
 export * from './list-group/ListGroup';
 export * from './modal/Modal';
-export * from './navbar/Navbar';
+export * from './Navbar';
 export * from './Progress';
 export * from './Rating';
 export * from './Sidebar';
