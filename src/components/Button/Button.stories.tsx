@@ -1,13 +1,13 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 
-import { Button, ButtonProps } from '.';
+import { Button, ButtonComponentProps } from '.';
 
 export default {
   title: 'Components/Buttons',
   component: Button,
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<ButtonComponentProps> = (args) => <Button {...args} />;
 
 export const DefaultButton = Template.bind({});
 DefaultButton.storyName = 'Default';
