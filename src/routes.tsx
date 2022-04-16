@@ -45,6 +45,8 @@ import SpinnersPage from './pages/SpinnersPage';
 import TablePage from './pages/TablePage';
 import ToastPage from './pages/ToastPage';
 import TooltipsPage from './pages/TooltipsPage';
+import TabsPage from './pages/TabsPage';
+import { MdTab } from 'react-icons/md';
 
 export type ComponentCardItem = {
   className: string;
@@ -254,6 +256,17 @@ export const routes: RouteProps[] = [
     card: {
       className: 'w-36',
       images: { light: 'spinners-light.svg', dark: 'spinners-dark.svg' },
+    },
+  },
+  {
+    title: 'Tabs',
+    icon: MdTab,
+    href: '/tabs',
+    component: <TabsPage />,
+    group: false,
+    card: {
+      className: 'w-36',
+      images: { light: 'tabs-light.svg', dark: 'tabs-dark.svg' },
     },
   },
   {
