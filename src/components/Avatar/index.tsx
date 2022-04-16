@@ -1,5 +1,7 @@
 import classNames from 'classnames';
 import { FC, PropsWithChildren } from 'react';
+import { AvatarGroup } from './AvatarGroup';
+import { AvatarGroupCounter } from './AvatarGroupCounter';
 
 export type AvatarProps = PropsWithChildren<{
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
@@ -8,6 +10,7 @@ export type AvatarProps = PropsWithChildren<{
   img?: string;
   status?: 'offline' | 'online' | 'away' | 'busy';
   statusPosition?: 'top-left' | 'top-right' | 'bottom-right' | 'bottom-left';
+  stacked?: boolean;
 }>;
 
 const sizeClasses: Record<AvatarProps['size'] & string, string> = {
@@ -32,7 +35,7 @@ const statusPositionClasses: Record<AvatarProps['statusPosition'] & string, stri
   'bottom-right': '-bottom-1 -left-1',
 };
 
-export const Avatar: FC<AvatarProps> = ({
+const AvatarComponent: FC<AvatarProps> = ({
   img,
   status,
   children,
@@ -40,6 +43,7 @@ export const Avatar: FC<AvatarProps> = ({
   size = 'md',
   rounded = false,
   bordered = false,
+  stacked = false,
 }) => {
   return (
     <div className="flex items-center space-x-4">
@@ -49,7 +53,8 @@ export const Avatar: FC<AvatarProps> = ({
             className={classNames(sizeClasses[size], {
               rounded: !rounded,
               'rounded-full': rounded,
-              'p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
+              'ring-2 ring-gray-300 dark:ring-gray-500': bordered || stacked,
+              'p-1': bordered,
             })}
             src={img}
             alt="Rounded avatar"
@@ -59,7 +64,8 @@ export const Avatar: FC<AvatarProps> = ({
             className={classNames(`relative overflow-hidden bg-gray-100 dark:bg-gray-600`, sizeClasses[size], {
               rounded: !rounded,
               'rounded-full': rounded,
-              'p-1 ring-2 ring-gray-300 dark:ring-gray-500': bordered,
+              'ring-2 ring-gray-300 dark:ring-gray-500': bordered || stacked,
+              'p-1': bordered,
             })}
           >
             <svg
@@ -90,3 +96,8 @@ export const Avatar: FC<AvatarProps> = ({
     </div>
   );
 };
+
+export const Avatar = Object.assign(AvatarComponent, {
+  Group: AvatarGroup,
+  Counter: AvatarGroupCounter,
+});
