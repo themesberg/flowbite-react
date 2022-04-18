@@ -1,0 +1,41 @@
+name: CI Checks
+
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency: ${{ github.ref }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the code 🗄
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS 16 💿
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install packages 🏭
+        run: yarn install
+
+      - name: Lint the code 🕵
+        run: yarn lint
+
+      - name: Run Prettier 💅
+        run: yarn prettier
+
+      - name: Run unit tests 🔬
+        run: yarn test
+
+      - name: Build code 🛠
+        run: yarn build
+
+      - name: Build Storybook 📖
+        run: yarn build:storybook
