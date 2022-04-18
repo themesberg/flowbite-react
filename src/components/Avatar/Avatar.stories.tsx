@@ -12,5 +12,5 @@ const Template: Story<AvatarProps> = (args) => <Avatar {...args} />;
 export const DefaultAvatar = Template.bind({});
 DefaultAvatar.storyName = 'Default';
 DefaultAvatar.args = {
-  img: 'https://i.pravatar.cc/100',
+  img: 'https://flowbite.com/docs/images/people/profile-picture-5.jpg',
 };
