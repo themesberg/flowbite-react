@@ -21,7 +21,7 @@
   },
   "license": "MIT",
   "private": false,
-  "homepage": "https://themesberg.github.io/flowbite-react/",
+  "homepage": "https://flowbite-react.com",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build --profile",
