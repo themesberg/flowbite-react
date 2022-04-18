@@ -1,5 +1,6 @@
 import { ComponentProps, FC, ReactNode } from 'react';
 import classNames from 'classnames';
+import { ButtonGroup } from './ButtonGroup';
 
 type Color = 'blue' | 'alternative' | 'dark' | 'light' | 'green' | 'red' | 'yellow' | 'purple';
 type GradientMonochrome = 'blue' | 'green' | 'cyan' | 'teal' | 'lime' | 'red' | 'pink' | 'purple';
@@ -14,7 +15,7 @@ type GradientDuoTone =
 type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 type PositionInGroup = 'start' | 'middle' | 'end';
 
-export type ButtonProps = Omit<ComponentProps<'button'>, 'color'> & {
+export type ButtonComponentProps = Omit<ComponentProps<'button'>, 'color'> & {
   pill?: boolean;
   outline?: boolean;
   label?: ReactNode;
@@ -88,7 +89,7 @@ const iconSizeClasses: Record<Size, string> = {
   xl: '!p-3',
 };
 
-export const Button: FC<ButtonProps> = ({
+const ButtonComponent: FC<ButtonComponentProps> = ({
   children,
   className,
   label,
@@ -150,3 +151,7 @@ export const Button: FC<ButtonProps> = ({
     </span>
   </button>
 );
+
+export const Button = Object.assign(ButtonComponent, {
+  Group: ButtonGroup,
+});
