@@ -44,7 +44,8 @@
   "dependencies": {
     "@popperjs/core": "^2.11.5",
     "classnames": "^2.3.1",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "react-indiana-drag-scroll": "^2.1.0"
   },
   "peerDependencies": {
     "flowbite": "^1",
