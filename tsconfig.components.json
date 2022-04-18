@@ -6,7 +6,6 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
     "moduleResolution": "node",
-    "declaration": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "esModuleInterop": true,
