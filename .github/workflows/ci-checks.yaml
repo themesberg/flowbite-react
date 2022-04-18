@@ -1,9 +1,6 @@
 name: CI Checks
 
 on:
-  push:
-    branches-ignore:
-      - main
   pull_request:
     branches:
       - main
