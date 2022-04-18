@@ -22,6 +22,28 @@ const PaginationPage: FC = () => {
       title: 'Pagination with icons and text',
       code: <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} showIcon />,
     },
+    {
+      title: 'Previous and next with icons',
+      code: (
+        <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} showOnlyPreviousAndNext />
+      ),
+    },
+    {
+      title: 'Table data navigation',
+      code: <Pagination currentPage={currentPage} totalPages={1000} onPageChange={onPageChange} tableDataPagination />,
+    },
+    {
+      title: 'Table data navigation with icon',
+      code: (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={1000}
+          onPageChange={onPageChange}
+          tableDataPagination
+          showIcon
+        />
+      ),
+    },
   ];
 
   return <DemoPage examples={examples} />;
