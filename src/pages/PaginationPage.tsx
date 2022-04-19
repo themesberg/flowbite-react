@@ -12,25 +12,60 @@ const PaginationPage: FC = () => {
   const examples: CodeExample[] = [
     {
       title: 'Default Pagination',
-      code: <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />,
+      code: (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={100}
+          onPageChange={onPageChange}
+          displayFormat={'pagination'}
+        />
+      ),
     },
     {
       title: 'Pagination with icons',
-      code: <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} showIconOnly />,
+      code: (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={100}
+          onPageChange={onPageChange}
+          displayFormat={'pagination-icon-only'}
+        />
+      ),
     },
     {
       title: 'Pagination with icons and text',
-      code: <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} showIcon />,
+      code: (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={100}
+          onPageChange={onPageChange}
+          showIcon
+          displayFormat={'pagination'}
+        />
+      ),
     },
     {
       title: 'Previous and next with icons',
       code: (
-        <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} showOnlyPreviousAndNext />
+        <Pagination
+          currentPage={currentPage}
+          totalPages={100}
+          onPageChange={onPageChange}
+          displayFormat={'navigation'}
+          showIcon
+        />
       ),
     },
     {
       title: 'Table data navigation',
-      code: <Pagination currentPage={currentPage} totalPages={1000} onPageChange={onPageChange} tableDataPagination />,
+      code: (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={1000}
+          onPageChange={onPageChange}
+          displayFormat="navigation-group"
+        />
+      ),
     },
     {
       title: 'Table data navigation with icon',
@@ -39,8 +74,8 @@ const PaginationPage: FC = () => {
           currentPage={currentPage}
           totalPages={1000}
           onPageChange={onPageChange}
-          tableDataPagination
-          showIcon
+          displayFormat="navigation-group"
+          showIcon={true}
         />
       ),
     },
