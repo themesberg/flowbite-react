@@ -9,10 +9,12 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 import classNames from 'classnames';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
+import ScrollContainer from 'react-indiana-drag-scroll';
 
 export type CarouselProps = PropsWithChildren<{
   slide?: boolean;
@@ -31,6 +33,9 @@ export const Carousel: FC<CarouselProps> = ({
   rightControl,
 }) => {
   const [activeItem, setActiveItem] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const carouselContainer = useRef<HTMLDivElement>(null);
+  const isDeviceMobile = typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1;
 
   const items = useMemo(
     () =>
@@ -38,7 +43,7 @@ export const Carousel: FC<CarouselProps> = ({
         cloneElement(child, {
           className: classNames(
             child.props.className,
-            'block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2',
+            'absolute top-1/2 left-1/2 block w-full -translate-x-1/2 -translate-y-1/2',
           ),
         }),
       ),
@@ -48,49 +53,56 @@ export const Carousel: FC<CarouselProps> = ({
   const navigateTo = useCallback(
     (item: number) => () => {
       item = (item + items.length) % items.length;
+      if (carouselContainer.current) {
+        carouselContainer.current.scrollLeft = carouselContainer.current.clientWidth * item;
+      }
       setActiveItem(item);
     },
     [items.length],
   );
 
-  const isAfterActiveItem = (item: number) =>
-    item !== activeItem && (activeItem === items.length - 1 ? item === 0 : item - 1 === activeItem);
-  const isBeforeActiveItem = (item: number) =>
-    item !== activeItem && (activeItem === 0 ? item === items.length - 1 : item + 1 === activeItem);
+  useEffect(() => {
+    if (carouselContainer.current && !isDragging) {
+      setActiveItem(Math.round(carouselContainer.current.scrollLeft / carouselContainer.current.clientWidth));
+    }
+  }, [isDragging]);
 
   useEffect(() => {
     if (slide) {
-      const intervalId = setInterval(() => navigateTo(activeItem + 1)(), slideInterval ?? 3000);
+      const intervalId = setInterval(() => !isDragging && navigateTo(activeItem + 1)(), slideInterval ?? 3000);
 
       return () => clearInterval(intervalId);
     }
-  }, [activeItem, navigateTo, slide, slideInterval]);
+  }, [activeItem, isDragging, navigateTo, slide, slideInterval]);
+
+  const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
 
   return (
     <div className="relative">
-      {/* Carousel wrapper */}
-      <div className="relative h-56 overflow-hidden rounded-lg sm:h-64 xl:h-80 2xl:h-96">
+      <ScrollContainer
+        className={classNames(
+          'flex h-56 snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg sm:h-64 xl:h-80 2xl:h-96',
+          { 'snap-x': isDeviceMobile || !isDragging },
+        )}
+        draggingClassName="cursor-grab"
+        onStartScroll={handleDragging(true)}
+        onEndScroll={handleDragging(false)}
+        innerRef={carouselContainer}
+        vertical={false}
+      >
         {items?.map((item, index) => (
-          <div
-            key={index}
-            className={classNames('absolute inset-0 transform transition-all duration-700 ease-in-out', {
-              hidden: index !== activeItem && !isBeforeActiveItem(index) && !isAfterActiveItem(index),
-              '-translate-x-full': isBeforeActiveItem(index),
-              'translate-x-full': isAfterActiveItem(index),
-            })}
-          >
+          <div key={index} className="w-full flex-shrink-0 transform snap-center">
             {item}
           </div>
         ))}
-      </div>
+      </ScrollContainer>
 
-      {/* Slider indicators */}
       {indicators && (
         <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 space-x-3">
           {items.map((_, index) => (
             <button
               key={index}
-              className={classNames('h-3 w-3  rounded-full', {
+              className={classNames('h-3 w-3 rounded-full', {
                 'bg-white dark:bg-gray-800': index === activeItem,
                 'bg-white/50 hover:bg-white dark:bg-gray-800/50 dark:hover:bg-gray-800': index !== activeItem,
               })}
@@ -100,21 +112,16 @@ export const Carousel: FC<CarouselProps> = ({
         </div>
       )}
 
-      {/* Slider controls */}
-      <button
-        className="group absolute top-0 left-0 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
-        onClick={navigateTo(activeItem - 1)}
-        type="button"
-      >
-        {leftControl ? leftControl : <DefaultLeftControl />}
-      </button>
-      <button
-        className="group absolute top-0 right-0 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
-        onClick={navigateTo(activeItem + 1)}
-        type="button"
-      >
-        {rightControl ? rightControl : <DefaultRightControl />}
-      </button>
+      <div className="absolute top-0 left-0 flex h-full items-center justify-center px-4 focus:outline-none">
+        <button className="group" onClick={navigateTo(activeItem - 1)} type="button">
+          {leftControl ? leftControl : <DefaultLeftControl />}
+        </button>
+      </div>
+      <div className="absolute top-0 right-0 flex h-full items-center justify-center px-4 focus:outline-none">
+        <button className="group" onClick={navigateTo(activeItem + 1)} type="button">
+          {rightControl ? rightControl : <DefaultRightControl />}
+        </button>
+      </div>
     </div>
   );
 };
