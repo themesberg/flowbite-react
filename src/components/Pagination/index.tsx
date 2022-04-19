@@ -1,5 +1,7 @@
 import classNames from 'classnames';
 import { FC, PropsWithChildren } from 'react';
+import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 export type PaginationProps = PropsWithChildren<{
   className?: string;
   currentPage: number;
@@ -17,14 +19,16 @@ export const Pagination: FC<PaginationProps> = ({
   showIcon = false,
   displayFormat = 'pagination',
 }) => {
-  if (displayFormat === 'pagination' || displayFormat === 'pagination-icon-only') {
-    return renderPagination(currentPage, totalPages, onPageChange, showIcon, displayFormat);
-  } else if (displayFormat === 'navigation') {
-    return renderNavigation(currentPage, totalPages, onPageChange, showIcon);
+  switch (displayFormat) {
+    case 'pagination':
+    case 'pagination-icon-only':
+      return renderPagination(currentPage, totalPages, onPageChange, showIcon, displayFormat);
+    case 'navigation':
+      return renderNavigation(currentPage, totalPages, onPageChange, showIcon);
+    default:
+      return renderNavigationGroup(currentPage, totalPages, onPageChange, showIcon);
   }
-  return renderNavigationGroup(currentPage, totalPages, onPageChange, showIcon);
 };
-
 const renderPagination = (
   currentPage: number,
   totalPages: number,
@@ -38,10 +42,7 @@ const renderPagination = (
   for (let i = startPage; i <= endPage; i++) {
     pageNumbers.push(i);
   }
-  let showIconOnly = false;
-  if (displayFormat === 'pagination-icon-only') {
-    showIconOnly = true;
-  }
+  const showIconOnly = displayFormat == 'pagination-icon-only';
   return (
     <nav aria-label="Page navigation example">
       <ul className="inline-flex items-center -space-x-px">
@@ -56,25 +57,11 @@ const renderPagination = (
           >
             {showIcon && (
               <>
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    fillRule="evenodd"
-                    d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
+                <HiChevronLeft className="h-5 w-5" />
                 Previous
               </>
             )}
-            {showIconOnly && (
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  fillRule="evenodd"
-                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-            )}
+            {showIconOnly && <HiChevronLeft className="h-5 w-5" />}
             {!showIconOnly && !showIcon && 'Previous'}
           </a>
         </li>
@@ -108,24 +95,10 @@ const renderPagination = (
             {showIcon && (
               <>
                 Next
-                <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    fillRule="evenodd"
-                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
+                <HiChevronRight className="h-5 w-5" />
               </>
             )}
-            {showIconOnly && (
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  fillRule="evenodd"
-                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-            )}
+            {showIconOnly && <HiChevronRight className="h-5 w-5" />}
           </a>
         </li>
       </ul>
@@ -152,18 +125,7 @@ const renderNavigation = (
           >
             {showIcon && (
               <>
-                <svg
-                  className="mr-2 h-5 w-5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
+                <BsArrowLeft className="mr-3 h-5 w-5" />
                 Previous
               </>
             )}
@@ -182,18 +144,7 @@ const renderNavigation = (
             {showIcon && (
               <>
                 Next
-                <svg
-                  className="ml-2 h-5 w-5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
+                <BsArrowRight className="ml-3 h-5 w-5" />
               </>
             )}
           </a>
@@ -221,21 +172,13 @@ const renderNavigationGroup = (
           onClick={() => onPageChange(currentPage - 1 > 0 ? currentPage - 1 : 1)}
           className={classNames(
             'rounded-l bg-gray-800 py-2 px-4 text-sm font-medium text-white hover:bg-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-            showIcon
-              ? 'inline-flex items-center rounded-l bg-gray-800 py-2 px-4 text-sm font-medium text-white hover:bg-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
-              : '',
+            showIcon ? 'inline-flex items-center' : '',
           )}
         >
           {!showIcon && 'Prev'}
           {showIcon && (
             <>
-              <svg className="mr-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  fillRule="evenodd"
-                  d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
+              <BsArrowLeft className="mr-3 h-5 w-5" />
               Prev
             </>
           )}
@@ -244,22 +187,14 @@ const renderNavigationGroup = (
           onClick={() => onPageChange(currentPage + 1 < totalPages ? currentPage + 1 : totalPages)}
           className={classNames(
             'rounded-r border-0 border-l border-gray-700 bg-gray-800 py-2 px-4 text-sm font-medium text-white hover:bg-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-            showIcon
-              ? 'inline-flex items-center rounded-r border-0 border-l border-gray-700 bg-gray-800 py-2 px-4 text-sm font-medium text-white hover:bg-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white'
-              : '',
+            showIcon ? 'inline-flex items-center' : '',
           )}
         >
           {!showIcon && 'Next'}
           {showIcon && (
             <>
               Next
-              <svg className="ml-2 h-5 w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  fillRule="evenodd"
-                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
+              <BsArrowRight className="ml-3 h-5 w-5" />
             </>
           )}
         </button>
