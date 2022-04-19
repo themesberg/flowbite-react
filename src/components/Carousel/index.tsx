@@ -112,20 +112,16 @@ export const Carousel: FC<CarouselProps> = ({
         </div>
       )}
 
-      <button
-        className="group absolute top-0 left-0 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
-        onClick={navigateTo(activeItem - 1)}
-        type="button"
-      >
-        {leftControl ? leftControl : <DefaultLeftControl />}
-      </button>
-      <button
-        className="group absolute top-0 right-0 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
-        onClick={navigateTo(activeItem + 1)}
-        type="button"
-      >
-        {rightControl ? rightControl : <DefaultRightControl />}
-      </button>
+      <div className="absolute top-0 left-0 flex h-full items-center justify-center px-4 focus:outline-none">
+        <button className="group" onClick={navigateTo(activeItem - 1)} type="button">
+          {leftControl ? leftControl : <DefaultLeftControl />}
+        </button>
+      </div>
+      <div className="absolute top-0 right-0 flex h-full items-center justify-center px-4 focus:outline-none">
+        <button className="group" onClick={navigateTo(activeItem + 1)} type="button">
+          {rightControl ? rightControl : <DefaultRightControl />}
+        </button>
+      </div>
     </div>
   );
 };
