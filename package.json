@@ -44,7 +44,8 @@
   "dependencies": {
     "@popperjs/core": "^2.11.5",
     "classnames": "^2.3.1",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "react-indiana-drag-scroll": "^2.1.0"
   },
   "peerDependencies": {
     "flowbite": "^1",
@@ -57,6 +58,7 @@
     "@babel/core": "^7.17.9",
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
+    "@storybook/addon-a11y": "^6.4.22",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",
