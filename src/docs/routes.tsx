@@ -36,6 +36,7 @@ import CarouselPage from './pages/CarouselPage';
 import DashboardPage from './pages/DashboardPage';
 import DropdownPage from './pages/DropdownPage';
 import FormsPage from './pages/FormsPage';
+import FooterPage from './pages/FooterPage';
 import ListGroupPage from './pages/ListGroupPage';
 import ModalPage from './pages/ModalPage';
 import NavbarPage from './pages/NavbarPage';
@@ -189,6 +190,17 @@ export const routes: RouteProps[] = [
     card: {
       className: 'w-40',
       images: { light: 'forms-light.svg', dark: 'forms-dark.svg' },
+    },
+  },
+  {
+    title: 'Footer',
+    icon: HiPencilAlt,
+    href: '/footer',
+    component: <FooterPage />,
+    group: false,
+    card: {
+      className: 'w-40',
+      images: { light: 'footer-light.svg', dark: 'footer-dark.svg' },
     },
   },
   {
