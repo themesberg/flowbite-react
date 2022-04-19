@@ -79,7 +79,6 @@ export const Carousel: FC<CarouselProps> = ({
 
   return (
     <div className="relative">
-      {/* Carousel wrapper */}
       <ScrollContainer
         className={classNames(
           'flex h-56 snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg sm:h-64 xl:h-80 2xl:h-96',
@@ -98,13 +97,12 @@ export const Carousel: FC<CarouselProps> = ({
         ))}
       </ScrollContainer>
 
-      {/* Slider indicators */}
       {indicators && (
         <div className="absolute bottom-5 left-1/2 flex -translate-x-1/2 space-x-3">
           {items.map((_, index) => (
             <button
               key={index}
-              className={classNames('h-3 w-3  rounded-full', {
+              className={classNames('h-3 w-3 rounded-full', {
                 'bg-white dark:bg-gray-800': index === activeItem,
                 'bg-white/50 hover:bg-white dark:bg-gray-800/50 dark:hover:bg-gray-800': index !== activeItem,
               })}
@@ -114,7 +112,6 @@ export const Carousel: FC<CarouselProps> = ({
         </div>
       )}
 
-      {/* Slider controls */}
       <button
         className="group absolute top-0 left-0 flex h-full cursor-pointer items-center justify-center px-4 focus:outline-none"
         onClick={navigateTo(activeItem - 1)}
