@@ -2,24 +2,24 @@ import { FC } from 'react';
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
 
 import { CodeExample, DemoPage } from './DemoPage';
-import { Button, ButtonGroup } from '../components';
+import { Button } from '../components';
 
 const ButtonGroupPage: FC = () => {
   const examples: CodeExample[] = [
     {
       title: 'Default example',
       code: (
-        <ButtonGroup>
+        <Button.Group>
           <Button color="alternative">Profile</Button>
           <Button color="alternative">Settings</Button>
           <Button color="alternative">Messages</Button>
-        </ButtonGroup>
+        </Button.Group>
       ),
     },
     {
       title: 'Group buttons with icons',
       code: (
-        <ButtonGroup>
+        <Button.Group>
           <Button color="alternative">
             <HiUserCircle className="mr-3 h-4 w-4" /> Profile
           </Button>
@@ -29,28 +29,28 @@ const ButtonGroupPage: FC = () => {
           <Button color="alternative">
             <HiCloudDownload className="mr-3 h-4 w-4" /> Messages
           </Button>
-        </ButtonGroup>
+        </Button.Group>
       ),
     },
     {
       title: 'All colors',
       code: (
         <div className="flex flex-wrap gap-2">
-          <ButtonGroup>
+          <Button.Group>
             <Button color="blue">Profile</Button>
             <Button color="blue">Settings</Button>
             <Button color="blue">Messages</Button>
-          </ButtonGroup>
-          <ButtonGroup>
+          </Button.Group>
+          <Button.Group>
             <Button gradientMonochrome="blue">Profile</Button>
             <Button gradientMonochrome="blue">Settings</Button>
             <Button gradientMonochrome="blue">Messages</Button>
-          </ButtonGroup>
-          <ButtonGroup>
+          </Button.Group>
+          <Button.Group>
             <Button gradientDuoTone="greenToBlue">Profile</Button>
             <Button gradientDuoTone="greenToBlue">Settings</Button>
             <Button gradientDuoTone="greenToBlue">Messages</Button>
-          </ButtonGroup>
+          </Button.Group>
         </div>
       ),
     },
@@ -58,21 +58,21 @@ const ButtonGroupPage: FC = () => {
       title: 'Outline',
       code: (
         <div className="flex flex-wrap gap-2">
-          <ButtonGroup outline>
+          <Button.Group outline>
             <Button color="alternative">Profile</Button>
             <Button color="alternative">Settings</Button>
             <Button color="alternative">Messages</Button>
-          </ButtonGroup>
-          <ButtonGroup outline>
+          </Button.Group>
+          <Button.Group outline>
             <Button gradientMonochrome="blue">Profile</Button>
             <Button gradientMonochrome="blue">Settings</Button>
             <Button gradientMonochrome="blue">Messages</Button>
-          </ButtonGroup>
-          <ButtonGroup outline>
+          </Button.Group>
+          <Button.Group outline>
             <Button gradientDuoTone="cyanToBlue">Profile</Button>
             <Button gradientDuoTone="cyanToBlue">Settings</Button>
             <Button gradientDuoTone="cyanToBlue">Messages</Button>
-          </ButtonGroup>
+          </Button.Group>
         </div>
       ),
     },
@@ -80,7 +80,7 @@ const ButtonGroupPage: FC = () => {
       title: 'Outline with icons',
       code: (
         <div className="flex flex-wrap gap-2">
-          <ButtonGroup outline>
+          <Button.Group outline>
             <Button color="alternative">
               <HiUserCircle className="mr-3 h-4 w-4" /> Profile
             </Button>
@@ -90,8 +90,8 @@ const ButtonGroupPage: FC = () => {
             <Button color="alternative">
               <HiCloudDownload className="mr-3 h-4 w-4" /> Messages
             </Button>
-          </ButtonGroup>
-          <ButtonGroup outline>
+          </Button.Group>
+          <Button.Group outline>
             <Button gradientMonochrome="blue">
               <HiUserCircle className="mr-3 h-4 w-4" /> Profile
             </Button>
@@ -101,8 +101,8 @@ const ButtonGroupPage: FC = () => {
             <Button gradientMonochrome="blue">
               <HiCloudDownload className="mr-3 h-4 w-4" /> Messages
             </Button>
-          </ButtonGroup>
-          <ButtonGroup outline>
+          </Button.Group>
+          <Button.Group outline>
             <Button gradientDuoTone="cyanToBlue">
               <HiUserCircle className="mr-3 h-4 w-4" /> Profile
             </Button>
@@ -112,7 +112,7 @@ const ButtonGroupPage: FC = () => {
             <Button gradientDuoTone="cyanToBlue">
               <HiCloudDownload className="mr-3 h-4 w-4" /> Messages
             </Button>
-          </ButtonGroup>
+          </Button.Group>
         </div>
       ),
     },
