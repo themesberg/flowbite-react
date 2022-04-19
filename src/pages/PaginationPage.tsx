@@ -7,7 +7,6 @@ const PaginationPage: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const onPageChange = (page: number) => {
     setCurrentPage(page);
-    console.log('Page changed to:', page);
   };
   const examples: CodeExample[] = [
     {

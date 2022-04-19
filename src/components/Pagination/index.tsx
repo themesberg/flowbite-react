@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { FC, PropsWithChildren } from 'react';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+
 export type PaginationProps = PropsWithChildren<{
   className?: string;
   currentPage: number;
@@ -29,6 +30,7 @@ export const Pagination: FC<PaginationProps> = ({
       return renderNavigationGroup(currentPage, totalPages, onPageChange, showIcon);
   }
 };
+
 const renderPagination = (
   currentPage: number,
   totalPages: number,
@@ -81,7 +83,6 @@ const renderPagination = (
             </li>
           );
         })}
-
         <li>
           <a
             onClick={() => onPageChange(currentPage + 1 < totalPages ? currentPage + 1 : totalPages)}
