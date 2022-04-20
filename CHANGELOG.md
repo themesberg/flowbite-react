@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://github.com/themesberg/flowbite-react/compare/v0.0.17...v0.0.18) (2022-04-20)
+
+
+### Features
+
+* add ability to drag to scroll for the Carousel component ([eb91078](https://github.com/themesberg/flowbite-react/commit/eb91078cd0a40e9411535af9a0cf3399c2cf7c0d))
+* adds avatar group ([c1c3d48](https://github.com/themesberg/flowbite-react/commit/c1c3d483c33a931df74f5c55c0e11e8100b97738))
+* adds the avatar component to the storybook ([e2f3a22](https://github.com/themesberg/flowbite-react/commit/e2f3a22ba76c832d65ddd667d2eb76fd314b3dee))
+
+
+### Bug Fixes
+
+* fix Carousel controls clicking behavior ([3fa9180](https://github.com/themesberg/flowbite-react/commit/3fa9180ff636038d75d499f6b9812dfa543d5d86))
+* improvement the dropdown stories ([1ab98cc](https://github.com/themesberg/flowbite-react/commit/1ab98cc56120234442e46c1fd585e61c8598714c))
+* remove unused import from Avatar.tsx ([ebe43ff](https://github.com/themesberg/flowbite-react/commit/ebe43ffcd54af8dacffae7a68b3e78c6d91ab534))
+
 ### [0.0.17](https://github.com/themesberg/flowbite-react/compare/v0.0.16...v0.0.17) (2022-04-14)
 
 
