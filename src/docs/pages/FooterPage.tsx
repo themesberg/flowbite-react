@@ -6,7 +6,17 @@ const FooterPage: FC = () => {
   const examples: CodeExample[] = [
     {
       title: 'Default Footer',
-      code: <Footer></Footer>,
+      code: (
+        <Footer>
+          <Footer.Copyright href="#" createby="Flowbite™" year={2022} />
+          <Footer.LinkBox>
+            <Footer.Link href="#">About</Footer.Link>
+            <Footer.Link href="#">Privacy Policy</Footer.Link>
+            <Footer.Link href="#">Licensing</Footer.Link>
+            <Footer.Link href="#">Contact</Footer.Link>
+          </Footer.LinkBox>
+        </Footer>
+      ),
     },
     {
       title: 'Footer with logo',
