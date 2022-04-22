@@ -1,18 +1,21 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from 'react';
+import { Mode } from '../contexts/ThemeContext';
 
 export const useDarkMode = (
   usePreferences: boolean,
-): [Mode, React.Dispatch<React.SetStateAction<Mode>> | null, (() => void) | null] => {
-  if (!usePreferences) return [null, null, null];
+): [Mode, React.Dispatch<React.SetStateAction<Mode>> | undefined, (() => void) | undefined] => {
+  if (!usePreferences) return [undefined, undefined, undefined];
 
-  const [mode, setMode] = useState<Mode>(null);
+  const [mode, setMode] = useState<Mode>(undefined);
 
   const toggleMode = () => {
     if (!mode) return;
+
     const newMode = mode == 'light' ? 'dark' : 'light';
     document.documentElement.className = '';
     document.documentElement.classList.add(newMode);
+
     setMode(newMode);
   };
 

@@ -1,17 +1,16 @@
-import React from 'react';
+import { FC, ProviderProps, createContext } from 'react';
 
-interface ThemeContextInterface {
+export type Mode = string | undefined | 'light' | 'dark';
+
+type ThemeContextProps = {
   mode?: Mode;
-  toggleMode?: any;
-}
+  toggleMode?: () => void | null;
+};
 
-export const ThemeContext = React.createContext<ThemeContextInterface>({});
+export const ThemeContext = createContext<ThemeContextProps>({});
 
-interface ThemeProviderProps {
-  children: React.ReactNode;
-  value?: any;
-}
+type ThemeProviderProps = ProviderProps<{}>;
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children, value }) => {
+export const ThemeProvider: FC<ThemeProviderProps> = ({ children, value }) => {
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };

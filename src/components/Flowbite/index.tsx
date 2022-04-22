@@ -3,7 +3,6 @@ import useDarkMode from '../../hooks/useDarkMode';
 import { ThemeContext } from '../../contexts/ThemeContext';
 
 export type FlowbiteProps = PropsWithChildren<{
-  children: any;
   dark?: boolean;
   usePreferences?: boolean;
 }>;
@@ -20,7 +19,7 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, dark, usePreferences = t
     }
   }, [dark, setMode]);
 
-  const value = useMemo(
+  const themeContextValue = useMemo(
     () => ({
       mode,
       toggleMode,
@@ -28,5 +27,5 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, dark, usePreferences = t
     [mode, toggleMode],
   );
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={themeContextValue}>{children}</ThemeContext.Provider>;
 };
