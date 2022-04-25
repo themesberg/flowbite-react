@@ -8,7 +8,7 @@ export type CardProps = PropsWithChildren<{
   imgSrc?: string;
 }>;
 
-export const Card: FC<CardProps> = ({ imgAlt, children, className, horizontal, imgSrc }) => {
+export const Card: FC<CardProps> = ({ children, className, horizontal, imgAlt, imgSrc }) => {
   return (
     <div
       className={classNames(
