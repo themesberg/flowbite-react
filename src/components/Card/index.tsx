@@ -2,13 +2,13 @@ import { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
 export type CardProps = PropsWithChildren<{
-  alt?: string;
   className?: string;
   horizontal?: boolean;
+  imgAlt?: string;
   imgSrc?: string;
 }>;
 
-export const Card: FC<CardProps> = ({ alt, children, className, horizontal, imgSrc }) => {
+export const Card: FC<CardProps> = ({ imgAlt, children, className, horizontal, imgSrc }) => {
   return (
     <div
       className={classNames(
@@ -27,7 +27,7 @@ export const Card: FC<CardProps> = ({ alt, children, className, horizontal, imgS
             'h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg': horizontal,
           })}
           src={imgSrc}
-          alt={alt ?? ''}
+          alt={imgAlt ?? ''}
         />
       )}
       <div className="flex h-full flex-col justify-center gap-4 p-6">{children}</div>
