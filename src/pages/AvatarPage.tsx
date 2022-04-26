@@ -121,6 +121,16 @@ const AvatarPage: FC = () => {
         </div>
       ),
     },
+    {
+      title: 'Alternative text',
+      code: (
+        <Avatar
+          alt="Default avatar with alt text"
+          img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+          rounded
+        />
+      ),
+    },
   ];
 
   return <DemoPage examples={examples} />;

@@ -4,6 +4,7 @@ import { AvatarGroup } from './AvatarGroup';
 import { AvatarGroupCounter } from './AvatarGroupCounter';
 
 export type AvatarProps = PropsWithChildren<{
+  alt?: string;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   rounded?: boolean;
   bordered?: boolean;
@@ -36,6 +37,7 @@ const statusPositionClasses: Record<AvatarProps['statusPosition'] & string, stri
 };
 
 const AvatarComponent: FC<AvatarProps> = ({
+  alt = '',
   img,
   status,
   children,
@@ -57,7 +59,7 @@ const AvatarComponent: FC<AvatarProps> = ({
               'p-1': bordered,
             })}
             src={img}
-            alt="Rounded avatar"
+            alt={alt}
           />
         ) : (
           <div
