@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import { FC, PropsWithChildren } from 'react';
 
 export type FooterLinkProps = PropsWithChildren<{
