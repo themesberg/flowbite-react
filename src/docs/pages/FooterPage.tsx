@@ -113,6 +113,99 @@ const FooterPage: FC = () => {
         </Footer>
       ),
     },
+    {
+      title: 'Footer Sitemap links',
+      code: (
+        <Footer className="flex flex-col bg-gray-800">
+          <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
+            <div className="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
+              <Footer.Col className="text-gray-400" title="Company">
+                <Footer.LinkBox className="flex-col">
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    About
+                  </Footer.Link>
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    Careers
+                  </Footer.Link>
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    Brand Center
+                  </Footer.Link>
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    Blog
+                  </Footer.Link>
+                </Footer.LinkBox>
+              </Footer.Col>
+              <Footer.Col className="text-gray-400" title="Help Center">
+                <Footer.LinkBox className="flex-col">
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    Discord Server
+                  </Footer.Link>
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    Twitter
+                  </Footer.Link>
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    Facebook
+                  </Footer.Link>
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    Contact Us
+                  </Footer.Link>
+                </Footer.LinkBox>
+              </Footer.Col>
+              <Footer.Col className="text-gray-400" title="Legal">
+                <Footer.LinkBox className="flex-col">
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    Privacy Policy
+                  </Footer.Link>
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    Licensing
+                  </Footer.Link>
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    Terms &amp; Conditions
+                  </Footer.Link>
+                </Footer.LinkBox>
+              </Footer.Col>
+              <Footer.Col className="text-gray-400" title="Download">
+                <Footer.LinkBox className="flex-col">
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    iOS
+                  </Footer.Link>
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    Android
+                  </Footer.Link>
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    Windows
+                  </Footer.Link>
+                  <Footer.Link className="mb-4 text-gray-300" href="#">
+                    MacOS
+                  </Footer.Link>
+                </Footer.LinkBox>
+              </Footer.Col>
+            </div>
+          </div>
+          <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
+          <div className="w-full sm:flex sm:items-center  sm:justify-between  ">
+            <Footer.Copyright className="text-gray-300" href="#" createby="Flowbite™" year={2022} />
+            <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+              <a href="#" className="text-gray-400 hover:text-white">
+                <BsFacebook className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white">
+                <BsInstagram className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white">
+                <BsTwitter className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white">
+                <BsGithub className="h-5 w-5" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white">
+                <BsDribbble className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </Footer>
+      ),
+    },
   ];
   return <DemoPage examples={examples} />;
 };
