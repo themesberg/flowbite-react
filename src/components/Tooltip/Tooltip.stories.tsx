@@ -14,6 +14,6 @@ export const DefaultTooltip = Template.bind({});
 DefaultTooltip.storyName = 'Default';
 DefaultTooltip.args = {
   content: 'Tooltip content',
-  placement: 'top',
+  placement: 'bottom',
   children: <Button>Default tooltip</Button>,
 };
