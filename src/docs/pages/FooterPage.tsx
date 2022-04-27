@@ -47,7 +47,7 @@ const FooterPage: FC = () => {
       title: 'Footer with social media icons',
       code: (
         <Footer className="flex flex-col">
-          <div className="w-full justify-between sm:flex sm:justify-between">
+          <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
             <div>
               <Footer.Brand
                 href="https://flowbite.com"
@@ -56,7 +56,7 @@ const FooterPage: FC = () => {
                 name="Flowbite"
               />
             </div>
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 sm:gap-6">
+            <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
               <Footer.Col title="About">
                 <Footer.LinkBox className="flex-col">
                   <Footer.Link className="mb-4" href="#">
