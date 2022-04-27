@@ -25,6 +25,14 @@ const FooterComponent: FC<FooterComponentProps> = ({ children, className }) => {
   );
 };
 
+FooterComponent.displayName = 'Footer';
+FooterCopyright.displayName = 'Footer.Copyright';
+FooterLink.displayName = 'Footer.Link';
+FooterBrand.displayName = 'Footer.Brand';
+FooterCol.displayName = 'Footer.Col';
+FooterLinkGroup.displayName = 'Footer.LinkGroup';
+FooterIconContent.displayName = 'Footer.IconContent';
+
 export const Footer = Object.assign(FooterComponent, {
   Copyright: FooterCopyright,
   Link: FooterLink,
