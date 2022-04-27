@@ -131,70 +131,68 @@ SitemapLinksFooter.args = {
   className: 'flex flex-col bg-gray-800',
   children: (
     <>
-      <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-        <div className="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
-          <Footer.Col className="text-gray-400" title="Company">
-            <Footer.LinkGroup className="flex-col">
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                About
-              </Footer.Link>
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                Careers
-              </Footer.Link>
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                Brand Center
-              </Footer.Link>
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                Blog
-              </Footer.Link>
-            </Footer.LinkGroup>
-          </Footer.Col>
-          <Footer.Col className="text-gray-400" title="Help Center">
-            <Footer.LinkGroup className="flex-col">
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                Discord Server
-              </Footer.Link>
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                Twitter
-              </Footer.Link>
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                Facebook
-              </Footer.Link>
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                Contact Us
-              </Footer.Link>
-            </Footer.LinkGroup>
-          </Footer.Col>
-          <Footer.Col className="text-gray-400" title="Legal">
-            <Footer.LinkGroup className="flex-col">
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                Privacy Policy
-              </Footer.Link>
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                Licensing
-              </Footer.Link>
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                Terms &amp; Conditions
-              </Footer.Link>
-            </Footer.LinkGroup>
-          </Footer.Col>
-          <Footer.Col className="text-gray-400" title="Download">
-            <Footer.LinkGroup className="flex-col">
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                iOS
-              </Footer.Link>
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                Android
-              </Footer.Link>
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                Windows
-              </Footer.Link>
-              <Footer.Link className="mb-4 text-gray-300" href="#">
-                MacOS
-              </Footer.Link>
-            </Footer.LinkGroup>
-          </Footer.Col>
-        </div>
+      <div className="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
+        <Footer.Col className="text-gray-400" title="Company">
+          <Footer.LinkGroup className="flex-col">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              About
+            </Footer.Link>
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              Careers
+            </Footer.Link>
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              Brand Center
+            </Footer.Link>
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              Blog
+            </Footer.Link>
+          </Footer.LinkGroup>
+        </Footer.Col>
+        <Footer.Col className="text-gray-400" title="Help Center">
+          <Footer.LinkGroup className="flex-col">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              Discord Server
+            </Footer.Link>
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              Twitter
+            </Footer.Link>
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              Facebook
+            </Footer.Link>
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              Contact Us
+            </Footer.Link>
+          </Footer.LinkGroup>
+        </Footer.Col>
+        <Footer.Col className="text-gray-400" title="Legal">
+          <Footer.LinkGroup className="flex-col">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              Privacy Policy
+            </Footer.Link>
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              Licensing
+            </Footer.Link>
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              Terms &amp; Conditions
+            </Footer.Link>
+          </Footer.LinkGroup>
+        </Footer.Col>
+        <Footer.Col className="text-gray-400" title="Download">
+          <Footer.LinkGroup className="flex-col">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              iOS
+            </Footer.Link>
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              Android
+            </Footer.Link>
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              Windows
+            </Footer.Link>
+            <Footer.Link className="mb-4 text-gray-300" href="#">
+              MacOS
+            </Footer.Link>
+          </Footer.LinkGroup>
+        </Footer.Col>
       </div>
       <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
       <div className="w-full sm:flex sm:items-center  sm:justify-between  ">
