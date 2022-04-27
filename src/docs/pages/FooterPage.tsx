@@ -114,7 +114,7 @@ const FooterPage: FC = () => {
       ),
     },
     {
-      title: 'Footer Sitemap links',
+      title: 'Footer sitemap links',
       code: (
         <Footer className="flex flex-col bg-gray-800">
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
