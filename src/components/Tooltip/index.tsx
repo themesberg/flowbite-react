@@ -73,9 +73,9 @@ export const Tooltip: FC<TooltipProps> = ({
 
   return (
     <>
-      <span className="w-fit" {...getReferenceProps({ ref: reference })}>
+      <div className="w-fit" {...getReferenceProps({ ref: reference })}>
         {children}
-      </span>
+      </div>
       <div
         {...getFloatingProps({
           className: classNames(
