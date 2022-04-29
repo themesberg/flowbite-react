@@ -7,10 +7,15 @@ export default {
   component: Badge,
 } as Meta;
 
-const Template: Story<BadgeProps> = (args) => <Badge {...args} />;
+const Template: Story<BadgeProps> = (args) => (
+  <div className="flex">
+    <Badge {...args} />
+  </div>
+);
 
 export const DefaultBadge = Template.bind({});
 DefaultBadge.storyName = 'Default';
+
 DefaultBadge.args = {
   children: 'Default',
 };
