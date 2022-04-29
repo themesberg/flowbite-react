@@ -15,7 +15,6 @@ const Template: Story<BadgeProps> = (args) => (
 
 export const DefaultBadge = Template.bind({});
 DefaultBadge.storyName = 'Default';
-
 DefaultBadge.args = {
   children: 'Default',
 };
