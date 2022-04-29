@@ -1,9 +1,7 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
-
-import React from 'react';
+import { HiEye, HiInformationCircle } from 'react-icons/hi';
 
 import { Alert, AlertProps } from '.';
-import { HiInformationCircle, HiEye } from 'react-icons/hi';
 
 export default {
   title: 'Components/Alert',
