@@ -136,13 +136,7 @@ function floatingMiddleware({
   const middleware = [];
 
   middleware.push(offset(4));
-
-  if (placement === 'auto') {
-    middleware.push(autoPlacement());
-  } else {
-    middleware.push(flip());
-  }
-
+  middleware.push(placement === 'auto' ? autoPlacement() : flip());
   middleware.push(shift({ padding: 8 }));
 
   if (arrowRef.current) {
