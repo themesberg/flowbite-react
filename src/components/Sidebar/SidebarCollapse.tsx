@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import { cloneElement, ComponentProps, FC, PropsWithChildren, useState } from 'react';
+import { cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
+import childrenAsArray from '../../helpers/childrenAsArray';
 
 interface SidebarCollaseProps extends PropsWithChildren<Record<string, unknown>> {
   icon?: FC<ComponentProps<'svg'>>;
@@ -10,7 +11,6 @@ interface SidebarCollaseProps extends PropsWithChildren<Record<string, unknown>>
 const SidebarCollase: FC<SidebarCollaseProps> = (props) => {
   const { children, label } = props;
   const [open, setOpen] = useState(false);
-  const _children = Array.isArray(children) ? children : [children];
 
   return (
     <>
@@ -32,8 +32,8 @@ const SidebarCollase: FC<SidebarCollaseProps> = (props) => {
           hidden: !open,
         })}
       >
-        {_children.map((child) =>
-          cloneElement(child, {
+        {childrenAsArray(children).map((child) =>
+          cloneElement(child as ReactElement, {
             className:
               'flex items-center p-2 pl-8 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
           }),

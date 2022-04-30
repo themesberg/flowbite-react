@@ -1,8 +1,8 @@
-import { FC, cloneElement } from 'react';
+import { FC, cloneElement, PropsWithChildren, ReactElement } from 'react';
+import childrenAsArray from '../../helpers/childrenAsArray';
 
-const SidebarItems: FC<Record<string, unknown>> = ({ children }) => {
-  const _children = Array.isArray(children) ? children : [children];
-  return <>{_children.map((child, i) => cloneElement(child, { first: i === 0 }))}</>;
+const SidebarItems: FC<PropsWithChildren<Record<string, unknown>>> = ({ children }) => {
+  return <>{childrenAsArray(children).map((child, i) => cloneElement(child as ReactElement, { first: i === 0 }))}</>;
 };
 
 SidebarItems.displayName = 'Sidebar.Items';
