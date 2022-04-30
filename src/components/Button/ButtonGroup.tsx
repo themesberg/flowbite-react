@@ -7,7 +7,7 @@ export type ButtonGroupProps = PropsWithChildren<{
   outline?: boolean;
 }>;
 
-export const ButtonGroup: FC<ButtonGroupProps> = ({ children, pill, outline }) => {
+const ButtonGroup: FC<ButtonGroupProps> = ({ children, pill, outline }) => {
   const items = useMemo(
     () =>
       Children.map(children as ReactElement<ButtonComponentProps>[], (child, index) =>
@@ -31,3 +31,6 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({ children, pill, outline }) =
     </div>
   );
 };
+
+ButtonGroup.displayName = 'Button.Group';
+export default ButtonGroup;
