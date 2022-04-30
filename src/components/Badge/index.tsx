@@ -1,8 +1,10 @@
 import { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
+export type BadgeColor = 'blue' | 'red' | 'green' | 'yellow' | 'gray' | 'indigo' | 'purple' | 'pink';
+
 export type BadgeProps = PropsWithChildren<{
-  color?: 'blue' | 'red' | 'green' | 'yellow' | 'gray' | 'indigo' | 'purple' | 'pink';
+  color?: BadgeColor;
   size?: 'xs' | 'sm';
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;

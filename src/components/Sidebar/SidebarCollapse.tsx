@@ -1,15 +1,13 @@
 import classNames from 'classnames';
-import { cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useState } from 'react';
+import { cloneElement, FC, ReactElement, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import childrenAsArray from '../../helpers/childrenAsArray';
+import { SidebarItemProps } from './SidebarItem';
 
-interface SidebarCollaseProps extends PropsWithChildren<Record<string, unknown>> {
-  icon?: FC<ComponentProps<'svg'>>;
-  label: string;
-}
+type SidebarCollapseProps = Omit<SidebarItemProps, 'href'>;
 
-const SidebarCollase: FC<SidebarCollaseProps> = (props) => {
-  const { children, label } = props;
+const SidebarCollase: FC<SidebarCollapseProps> = (props) => {
+  const { children, collapsed, label } = props;
   const [open, setOpen] = useState(false);
 
   return (
@@ -24,8 +22,12 @@ const SidebarCollase: FC<SidebarCollaseProps> = (props) => {
             <props.icon className="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
           </>
         )}
-        <span className="ml-3 flex-1 whitespace-nowrap text-left">{label}</span>
-        <HiChevronDown className="h-6 w-6" />
+        {!collapsed && (
+          <>
+            <span className="ml-3 flex-1 whitespace-nowrap text-left">{label}</span>
+            <HiChevronDown className="h-6 w-6" />
+          </>
+        )}
       </button>
       <ul
         className={classNames('space-y-2 py-2', {

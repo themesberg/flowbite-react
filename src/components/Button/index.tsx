@@ -2,7 +2,7 @@ import { ComponentProps, FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import { ButtonGroup } from './ButtonGroup';
 
-type Color = 'blue' | 'alternative' | 'dark' | 'light' | 'green' | 'red' | 'yellow' | 'purple';
+export type Color = 'blue' | 'alternative' | 'dark' | 'light' | 'green' | 'red' | 'yellow' | 'purple';
 type GradientMonochrome = 'blue' | 'green' | 'cyan' | 'teal' | 'lime' | 'red' | 'pink' | 'purple';
 type GradientDuoTone =
   | 'purpleToBlue'

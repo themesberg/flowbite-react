@@ -1,7 +1,7 @@
 import { cloneElement, FC, PropsWithChildren, ReactElement } from 'react';
 import classNames from 'classnames';
 import SidebarCTA from './SidebarCTA';
-import { SidebarLogo } from './SidebarLogo';
+import SidebarLogo from './SidebarLogo';
 import SidebarItem from './SidebarItem';
 import SidebarItemGroup from './SidebarItemGroup';
 import SidebarItems from './SidebarItems';

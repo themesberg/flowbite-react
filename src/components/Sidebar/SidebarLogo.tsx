@@ -6,7 +6,7 @@ interface SidebarLogoProps extends PropsWithChildren<Record<string, unknown>> {
   imgAlt?: string;
 }
 
-export const SidebarLogo: FC<SidebarLogoProps> = ({ children, href, img, imgAlt = '' }) => {
+const SidebarLogo: FC<SidebarLogoProps> = ({ children, href, img, imgAlt = '' }) => {
   return (
     <a href={href} className="mb-5 flex items-center pl-2.5">
       <img alt={imgAlt} className="mr-3 h-6 sm:h-7" src={img} />
@@ -14,3 +14,6 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({ children, href, img, imgAlt 
     </a>
   );
 };
+
+SidebarLogo.displayName = 'Sidebar.Logo';
+export default SidebarLogo;

@@ -1,8 +1,6 @@
 import classNames from 'classnames';
 import { PropsWithChildren, FC } from 'react';
-
-type Color = 'blue' | 'alternative' | 'dark' | 'light' | 'green' | 'red' | 'yellow' | 'purple';
-
+import { Color } from '../Button';
 interface SidebarCTAProps extends PropsWithChildren<Record<string, unknown>> {
   color?: Color;
 }
