@@ -2,7 +2,7 @@ import { ComponentProps, FC, ReactNode } from 'react';
 
 import { BiNotification } from 'react-icons/bi';
 import { BsCreditCard2FrontFill, BsImages } from 'react-icons/bs';
-import { FaSpinner } from 'react-icons/fa';
+import { FaBars, FaSpinner } from 'react-icons/fa';
 import { FiNavigation } from 'react-icons/fi';
 import {
   HiAnnotation,
@@ -46,6 +46,7 @@ import SpinnersPage from './pages/SpinnersPage';
 import TablePage from './pages/TablePage';
 import ToastPage from './pages/ToastPage';
 import TooltipsPage from './pages/TooltipsPage';
+import SidebarPage from './pages/SidebarPage';
 
 export type ComponentCardItem = {
   className: string;
@@ -255,6 +256,13 @@ export const routes: RouteProps[] = [
       className: 'w-40',
       images: { light: 'rating-light.svg', dark: 'rating-dark.svg' },
     },
+  },
+  {
+    title: 'Sidebar',
+    icon: FaBars,
+    href: '/sidebar',
+    component: <SidebarPage />,
+    group: false,
   },
   {
     title: 'Spinners',
