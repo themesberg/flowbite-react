@@ -6,8 +6,7 @@ import { SidebarItemProps } from './SidebarItem';
 
 type SidebarCollapseProps = Omit<SidebarItemProps, 'href'>;
 
-const SidebarCollase: FC<SidebarCollapseProps> = (props) => {
-  const { children, collapsed, label } = props;
+const SidebarCollase: FC<SidebarCollapseProps> = ({ children, collapsed, icon: Icon, label }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -17,10 +16,8 @@ const SidebarCollase: FC<SidebarCollapseProps> = (props) => {
         className="group flex w-full items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
         onClick={() => setOpen(!open)}
       >
-        {props.icon && (
-          <>
-            <props.icon className="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
-          </>
+        {Icon && (
+          <Icon className="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
         )}
         {!collapsed && (
           <>
