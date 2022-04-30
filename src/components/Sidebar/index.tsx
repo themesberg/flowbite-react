@@ -20,7 +20,7 @@ const SidebarComponent: FC<SidebarProps> = ({ children, collapsed }) => {
         'w-16': collapsed,
       })}
     >
-      <div className="overflow-y-auto rounded bg-gray-50 py-4 px-3 dark:bg-gray-800">{children}</div>
+      <div className="h-full overflow-y-auto rounded bg-gray-50 py-4 px-3 dark:bg-gray-800">{children}</div>
     </aside>
   );
 };
