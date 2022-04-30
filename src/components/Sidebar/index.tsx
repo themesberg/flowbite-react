@@ -6,12 +6,13 @@ import SidebarItem from './SidebarItem';
 import SidebarItemGroup from './SidebarItemGroup';
 import SidebarItems from './SidebarItems';
 import SidebarCollapse from './SidebarCollapse';
+import childrenAsArray from '../../helpers/childrenAsArray';
 
 export interface SidebarProps extends PropsWithChildren<Record<string, unknown>> {
-  collapsed: boolean;
+  collapsed?: boolean;
 }
 
-const SidebarComponent: FC<SidebarProps> = ({ children, collapsed }) => {
+const SidebarComponent: FC<SidebarProps> = ({ children, collapsed = false }) => {
   return (
     <aside
       aria-label="sidebar"
@@ -25,6 +26,7 @@ const SidebarComponent: FC<SidebarProps> = ({ children, collapsed }) => {
   );
 };
 
+SidebarComponent.displayName = 'Sidebar';
 export const Sidebar = Object.assign(SidebarComponent, {
   Collapse: SidebarCollapse,
   CTA: SidebarCTA,
