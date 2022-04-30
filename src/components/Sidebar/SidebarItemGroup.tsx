@@ -1,18 +1,20 @@
 import classNames from 'classnames';
-import { FC, PropsWithChildren } from 'react';
+import { cloneElement, FC, ReactElement } from 'react';
+import { SidebarProps } from '.';
+import childrenAsArray from '../../helpers/childrenAsArray';
 
-interface SidebarItemGroupProps extends PropsWithChildren<Record<string, unknown>> {
+interface SidebarItemGroupProps extends SidebarProps {
   first?: boolean;
 }
 
-const SidebarItemGroup: FC<SidebarItemGroupProps> = ({ children, first = true }) => {
+const SidebarItemGroup: FC<SidebarItemGroupProps> = ({ children, collapsed, first = true }) => {
   return (
     <ul
       className={classNames('space-y-2', {
         'mt-4 space-y-2 border-t border-gray-200 pt-4 dark:border-gray-700': !first,
       })}
     >
-      {children}
+      {childrenAsArray(children).map((child, i) => cloneElement(child as ReactElement, { key: i, collapsed }))}
     </ul>
   );
 };

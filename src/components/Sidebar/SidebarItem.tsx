@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { ComponentProps, FC, PropsWithChildren } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
 export interface SidebarItemProps extends PropsWithChildren<Record<string, unknown>> {
   className?: string;
   href: string;
@@ -9,7 +8,7 @@ export interface SidebarItemProps extends PropsWithChildren<Record<string, unkno
 }
 
 const SidebarItem: FC<SidebarItemProps> = (props) => {
-  const { children, className, href } = props;
+  const { children, className, collapsed, href } = props;
   const { pathname } = useLocation();
 
   return (
@@ -29,7 +28,7 @@ const SidebarItem: FC<SidebarItemProps> = (props) => {
             <props.icon className="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
           </>
         )}
-        <span className="ml-3">{children}</span>
+        {!collapsed && <span className="ml-3">{children}</span>}
       </Link>
     </li>
   );

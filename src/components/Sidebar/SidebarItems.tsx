@@ -1,8 +1,15 @@
-import { FC, cloneElement, PropsWithChildren, ReactElement } from 'react';
+import { FC, cloneElement, ReactElement } from 'react';
+import { SidebarProps } from '.';
 import childrenAsArray from '../../helpers/childrenAsArray';
 
-const SidebarItems: FC<PropsWithChildren<Record<string, unknown>>> = ({ children }) => {
-  return <>{childrenAsArray(children).map((child, i) => cloneElement(child as ReactElement, { first: i === 0 }))}</>;
+const SidebarItems: FC<SidebarProps> = ({ children, collapsed }) => {
+  return (
+    <>
+      {childrenAsArray(children).map((child, i) =>
+        cloneElement(child as ReactElement, { key: i, collapsed, first: i === 0 }),
+      )}
+    </>
+  );
 };
 
 SidebarItems.displayName = 'Sidebar.Items';
