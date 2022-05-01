@@ -43,7 +43,17 @@ export const Root: FC = () => {
         </div>
       </Navbar>
       <div className="flex h-full overflow-hidden bg-gray-50 dark:bg-gray-900">
-        <Sidebar collapsed={collapsed} itemsGroups={[routes]} />
+        <Sidebar collapsed={collapsed}>
+          <Sidebar.Items>
+            <Sidebar.ItemGroup>
+              {routes.map(({ href, icon, title }) => (
+                <Sidebar.Item key={title} href={href} icon={icon}>
+                  {title}
+                </Sidebar.Item>
+              ))}
+            </Sidebar.ItemGroup>
+          </Sidebar.Items>
+        </Sidebar>
         <main className="flex-1 overflow-auto p-4">
           <Suspense
             fallback={

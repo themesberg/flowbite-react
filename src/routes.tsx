@@ -23,7 +23,6 @@ import {
   HiOutlineChevronDoubleRight,
 } from 'react-icons/hi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import { SidebarItem } from './components';
 
 import AccordionPage from './pages/AccordionPage';
 import AlertsPage from './pages/AlertsPage';
@@ -53,15 +52,14 @@ export type ComponentCardItem = {
   images: { light: string; dark: string };
 };
 
-export type RouteProps =
-  | {
-      title: string;
-      icon: FC<ComponentProps<'svg'>>;
-      href: string;
-      component: ReactNode;
-      group: boolean;
-      card?: ComponentCardItem;
-    } & SidebarItem;
+export type RouteProps = {
+  title: string;
+  icon: FC<ComponentProps<'svg'>>;
+  href: string;
+  component: ReactNode;
+  group: boolean;
+  card?: ComponentCardItem;
+};
 
 export const routes: RouteProps[] = [
   {
