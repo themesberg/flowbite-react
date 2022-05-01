@@ -3,6 +3,7 @@ import { ComponentProps, FC, PropsWithChildren } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { SidebarProps } from '.';
 import { Badge, BadgeColor } from '../Badge';
+
 export interface SidebarItemProps extends PropsWithChildren<Pick<SidebarProps, 'collapsed'>> {
   className?: string;
   href: string;
