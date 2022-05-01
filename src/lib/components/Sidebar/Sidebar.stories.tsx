@@ -45,7 +45,7 @@ CTAButton.args = {
 };
 
 export const LogoBranding = Template.bind({});
-LogoBranding.storyName = 'CTA button';
+LogoBranding.storyName = 'Logo branding';
 LogoBranding.args = {
   children: <LogoSidebarComponent />,
   collapsed: false,
