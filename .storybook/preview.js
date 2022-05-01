@@ -1,11 +1,16 @@
+import { MemoryRouter } from 'react-router-dom';
 import Style from './style';
 
 export const decorators = [
   (Story) => (
-    <>
+    <MemoryRouter initialEntries={['/']}>
       <Style />
-      <Story />
-    </>
+      <div className="flex h-screen items-center justify-center">
+        <div>
+          <Story />
+        </div>
+      </div>
+    </MemoryRouter>
   ),
 ];
 
