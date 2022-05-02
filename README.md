@@ -4,16 +4,25 @@
     <a href="https://flowbite.com">
       <img alt="Flowbite - Tailwind CSS components" width="350" src="https://flowbite.s3.amazonaws.com/github/logo-github.png">
     </a>
-    </p>
-    <p>
-    Build websites even faster with components on top of React and Tailwind CSS</p>
+  </p>
+  <p>
+    Build websites even faster with components on top of React and Tailwind CSS
+  </p>
+  <p>
+    <a href="https://discord.com/invite/4eeurUVvTy">
+      <img src="https://img.shields.io/discord/902911619032576090?color=%237289da&label=Discord" alt="Discord">
+    </a>
+    <a href="https://www.npmjs.com/package/flowbite-react">
+      <img src="https://img.shields.io/npm/dt/flowbite-react.svg" alt="Total Downloads">
+    </a>
+    <a href="https://badge.fury.io/js/flowbite-react">
+      <img alt="Latest release" src="https://badge.fury.io/js/flowbite-react.svg">
+    </a>
+    <a href="https://flowbite.com/docs/getting-started/license/">
+      <img src="https://img.shields.io/badge/license-MIT-blue" alt="Licenese">
+    </a>
+  </p>
 </div>
-<p>
-    <a href="https://discord.com/invite/4eeurUVvTy"><img src="https://img.shields.io/discord/902911619032576090?color=%237289da&label=Discord" alt="Discord"></a>
-    <a href="https://www.npmjs.com/package/flowbite-react"><img src="https://img.shields.io/npm/dt/flowbite-react.svg" alt="Total Downloads"></a>
-    <a href="https://badge.fury.io/js/flowbite-react"><img alt="Latest release" src="https://badge.fury.io/js/flowbite-react.svg"></a>
-    <a href="https://flowbite.com/docs/getting-started/license/"><img src="https://img.shields.io/badge/license-MIT-blue" alt="Licenese"></a>
-</p>
 
 ---
 
@@ -312,8 +321,6 @@ If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite
   </tr>
   <tr>
     <td width="33.3333%">Floating Label</td>
-    <td width="33.3333%"></td>
-    <td width="33.3333%"></td>
   </tr>
   <tr>
     <td width="33.3333%">
@@ -321,8 +328,6 @@ If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite
             <img alt="Tailwind CSS Floating Label" src="https://flowbite.s3.amazonaws.com/github/floating-label.jpg">
         </a>
     </td>
-    <td width="33.3333%"></td>
-    <td width="33.3333%"></td>
   </tr>
 </table>
 
@@ -364,7 +369,7 @@ import 'flowbite';
 
 ### Include via CDN
 
-The quickest way to get started working with `flowbite` is to include the CSS and JavaScript in your project via CDN.
+The quickest way to get started working with `flowbite-react` is to include the CSS and JavaScript in your project via CDN.
 
 Add the following stylesheet inside `<head>`:
 
@@ -376,6 +381,7 @@ And include the following script right before the end of `<body>`:
 
 ```html
 <script defer src="https://unpkg.com/flowbite@latest/dist/flowbite.js"></script>
+<script defer src="https://unpkg.com/flowbite-react@latest/dist/flowbite-react.js"></script>
 ```
 
 ## Community
