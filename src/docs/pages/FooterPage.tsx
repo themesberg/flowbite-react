@@ -9,7 +9,7 @@ const FooterPage: FC = () => {
       title: 'Default Footer',
       code: (
         <Footer>
-          <Footer.Copyright href="#" createby="Flowbite™" year={2022} />
+          <Footer.Copyright href="#" by="Flowbite™" year={2022} />
           <Footer.LinkGroup className=" mt-3  flex-wrap items-center text-sm sm:mt-0">
             <Footer.Link href="#">About</Footer.Link>
             <Footer.Link href="#">Privacy Policy</Footer.Link>
@@ -39,7 +39,7 @@ const FooterPage: FC = () => {
             </Footer.LinkGroup>
           </div>
           <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
-          <Footer.Copyright href="#" createby="Flowbite™" year={2022} />
+          <Footer.Copyright href="#" by="Flowbite™" year={2022} />
         </Footer>
       ),
     },
@@ -91,7 +91,7 @@ const FooterPage: FC = () => {
           </div>
           <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
           <div className="w-full sm:flex sm:items-center sm:justify-between">
-            <Footer.Copyright href="#" createby="Flowbite™" year={2022} />
+            <Footer.Copyright href="#" by="Flowbite™" year={2022} />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
               <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsFacebook} />
               <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsInstagram} />
@@ -172,7 +172,7 @@ const FooterPage: FC = () => {
           </div>
           <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
           <div className="w-full sm:flex sm:items-center  sm:justify-between  ">
-            <Footer.Copyright className="text-gray-300" href="#" createby="Flowbite™" year={2022} />
+            <Footer.Copyright className="text-gray-300" href="#" by="Flowbite™" year={2022} />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
               <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsFacebook} />
               <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsInstagram} />
