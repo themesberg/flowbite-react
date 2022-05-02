@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.19](https://github.com/themesberg/flowbite-react/compare/v0.0.18...v0.0.19) (2022-05-02)
+
+
+### Features
+
+* adds more alert stories ([a99abc9](https://github.com/themesberg/flowbite-react/commit/a99abc9dd192e860949797721b9a56b7aba32ff1))
+* adds the addicional ([bcd268e](https://github.com/themesberg/flowbite-react/commit/bcd268e50efbee744f4167bf9c4b4a6f1c9582a0))
+* **build:** Upgrade `@popperjs/*` to `@floating-ui/react-*` ([#67](https://github.com/themesberg/flowbite-react/issues/67)) ([9ba11ef](https://github.com/themesberg/flowbite-react/commit/9ba11ef1830b42c9c3279797c3166c78a2ec325d)), closes [#57](https://github.com/themesberg/flowbite-react/issues/57) [#69](https://github.com/themesberg/flowbite-react/issues/69)
+* **component:** Add `alt` attribute to `Avatar`s ([d803781](https://github.com/themesberg/flowbite-react/commit/d80378129414957bf8b0126e63c825361aaf0adf))
+* **content:** Add example `Avatar` with `alt` ([b619076](https://github.com/themesberg/flowbite-react/commit/b619076ce94d14117b23460c8a6072bcf956e8db))
+* **content:** Add example `Card` with image with `alt` text ([7410610](https://github.com/themesberg/flowbite-react/commit/74106100888339d4febdb6a32bcaed57a5dae90e))
+
+
+### Bug Fixes
+
+* cleaning ([a7e1382](https://github.com/themesberg/flowbite-react/commit/a7e138286b1f9f6bda8e05d01ecf6cd698f2371e))
+* **component:** Add `displayName`s for syntax highlighter, resolving [#70](https://github.com/themesberg/flowbite-react/issues/70) ([#73](https://github.com/themesberg/flowbite-react/issues/73)) ([6741a83](https://github.com/themesberg/flowbite-react/commit/6741a837a2a739b3f208594b0b1d24f39035c5a7))
+* imports for alert component ([f7d6ce0](https://github.com/themesberg/flowbite-react/commit/f7d6ce03652a3d86a5a7f58fd686ba278b9315a1))
+* the badge size ([14b25da](https://github.com/themesberg/flowbite-react/commit/14b25da43674dde62282b547a063624ccee201ee))
+* use createPortal to render modals ([#77](https://github.com/themesberg/flowbite-react/issues/77)) ([e5e5e2e](https://github.com/themesberg/flowbite-react/commit/e5e5e2ea13285906caa4c5db9d4fc521a66fc2a7))
+
 ### [0.0.18](https://github.com/themesberg/flowbite-react/compare/v0.0.17...v0.0.18) (2022-04-20)
 
 
