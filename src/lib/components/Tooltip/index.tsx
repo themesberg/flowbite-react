@@ -101,10 +101,10 @@ export const Tooltip: FC<TooltipProps> = ({
         <div className="relative z-20">{content}</div>
         {arrow && (
           <div
-            className={classNames({
-              'absolute z-10 h-5 w-5 rotate-45 bg-gray-900 dark:bg-gray-700': style === 'dark',
-              'absolute h-5 w-5 rotate-45 bg-white': style === 'light',
-              'absolute h-5 w-5 rotate-45 bg-white dark:bg-gray-700': style === 'auto',
+            className={classNames('absolute z-10 h-2 w-2 rotate-45', {
+              'bg-gray-900 dark:bg-gray-700': style === 'dark',
+              'bg-white': style === 'light',
+              'bg-white dark:bg-gray-700': style === 'auto',
             })}
             ref={arrowRef}
             style={{
@@ -135,7 +135,7 @@ function floatingMiddleware({
 }): Middleware[] {
   const middleware = [];
 
-  middleware.push(offset(4));
+  middleware.push(offset(8));
   middleware.push(placement === 'auto' ? autoPlacement() : flip());
   middleware.push(shift({ padding: 8 }));
 
