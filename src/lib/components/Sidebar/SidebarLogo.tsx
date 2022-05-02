@@ -1,6 +1,6 @@
 import { PropsWithChildren, FC } from 'react';
 
-interface SidebarLogoProps extends PropsWithChildren<Record<string, unknown>> {
+export interface SidebarLogoProps extends PropsWithChildren<Record<string, unknown>> {
   href: string;
   img: string;
   imgAlt?: string;

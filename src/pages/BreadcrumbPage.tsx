@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { HiHome } from 'react-icons/hi';
 
-import { Breadcrumb } from '../components';
+import { Breadcrumb } from '../lib';
 import { CodeExample, DemoPage } from './DemoPage';
 
 const BreadcrumbPage: FC = () => {

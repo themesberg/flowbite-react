@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
 
-import { ListGroup } from '../components';
+import { ListGroup } from '../lib';
 import { CodeExample, DemoPage } from './DemoPage';
 
 const ListGroupPage: FC = () => {

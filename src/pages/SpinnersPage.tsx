@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Spinner } from '../components';
+import { Spinner } from '../lib';
 import { CodeExample, DemoPage } from './DemoPage';
 
 const SpinnersPage: FC = () => {

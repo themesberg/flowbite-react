@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { CodeExample, DemoPage } from './DemoPage';
-import { Checkbox, Table } from '../components';
+import { Checkbox, Table } from '../lib';
 
 const TablePage: FC = () => {
   const examples: CodeExample[] = [

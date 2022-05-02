@@ -3,7 +3,7 @@ import { cloneElement, FC, ReactElement } from 'react';
 import { SidebarProps } from '.';
 import childrenAsArray from '../../helpers/childrenAsArray';
 
-interface SidebarItemGroupProps extends SidebarProps {
+export interface SidebarItemGroupProps extends SidebarProps {
   first?: boolean;
 }
 

@@ -17,6 +17,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/components"],
+  "include": ["src/lib"],
   "exclude": ["**/**.spec.tsx", "**/**.stories.tsx"]
 }

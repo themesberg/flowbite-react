@@ -4,7 +4,7 @@ import { HiMenuAlt1 } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
 import { Route, Routes } from 'react-router-dom';
 
-import { DarkThemeToggle, Navbar, Sidebar, Spinner } from './components';
+import { DarkThemeToggle, Navbar, Sidebar, Spinner } from './lib';
 import { routes } from './routes';
 
 export const Root: FC = () => {
