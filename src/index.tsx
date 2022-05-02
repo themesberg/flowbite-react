@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { Root } from './Root';
+import { Root } from './docs/Root';
 import { HashRouter } from 'react-router-dom';
 
 import './index.css';
