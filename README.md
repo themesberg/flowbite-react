@@ -30,13 +30,15 @@
 
 ---
 
+### `flowbite-react` is an open source collection of UI components, built in React, with utility classes from Tailwind CSS that you can use as a starting point for user interfaces and websites.
+
 ## Table of Contents
 
 - [Documentation](#documentation)
-- [Components](#components)
 - [Getting started](#getting-started)
   - [Require via `npm`](#require-via--npm-)
   - [Include via CDN](#include-via-cdn)
+- [Components](#components)
 - [Community](#community)
 - [Contributing](#contributing)
 - [Figma](#figma)
@@ -50,9 +52,37 @@ If you want to browse the components, visit [flowbite-react.com](https://flowbit
 
 If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite.comhttps://flowbite.com/docs/getting-started/introduction/).
 
-## Components
+## Getting started
 
-`flowbite-react` is an open source collection of UI components, built in React, with utility classes from Tailwind CSS that you can use as a starting point for user interfaces and websites.
+To use `flowbite-react`, you just need to setup `flowbite` normally and install `flowbite-react` from `npm`.
+
+`flowbite` can be included as a plugin into an existing Tailwind CSS project.
+
+### Require via `npm`
+
+Make sure that you have <a href="https://nodejs.org/en/" rel="nofollow" >Node.js</a> and <a href="https://tailwindcss.com/" rel="nofollow" >Tailwind CSS</a> installed.
+
+1. Install `flowbite` as a dependency using `npm` by running the following command:
+
+```bash
+npm i flowbite flowbite-react
+```
+
+2. Require `flowbite` as a plugin inside the `tailwind.config.js` file:
+
+```javascript
+module.exports = {
+  plugins: [require('flowbite/plugin')],
+};
+```
+
+3. Include the main JavaScript file to make interactive elements work:
+
+```javascript
+import 'flowbite';
+```
+
+## Components
 
 <table>
   <tr>
@@ -256,7 +286,7 @@ If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite
   <tr>
     <td width="33.3333%">Input Field</td>
     <td width="33.3333%">File Input</td>
-    <td width="33.3333%">Search Input</td>
+    <td width="33.3333%">:construction: Search Input</td>
   </tr>
   <tr>
     <td width="33.3333%">
@@ -300,7 +330,7 @@ If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite
   <tr>
     <td width="33.3333%">Radio</td>
     <td width="33.3333%">Toggle</td>
-    <td width="33.3333%">Range Slider</td>
+    <td width="33.3333%">:construction: Range Slider</td>
   </tr>
   <tr>
     <td width="33.3333%">
@@ -320,7 +350,7 @@ If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite
     </td>
   </tr>
   <tr>
-    <td width="33.3333%">Floating Label</td>
+    <td width="33.3333%">:construction: Floating Label</td>
   </tr>
   <tr>
     <td width="33.3333%">
@@ -330,36 +360,6 @@ If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite
     </td>
   </tr>
 </table>
-
-## Getting started
-
-To use `flowbite-react`, you just need to setup `flowbite` normally and install `flowbite-react` from `npm`.
-
-`flowbite` can be included as a plugin into an existing Tailwind CSS project.
-
-### Require via `npm`
-
-Make sure that you have <a href="https://nodejs.org/en/" rel="nofollow" >Node.js</a> and <a href="https://tailwindcss.com/" rel="nofollow" >Tailwind CSS</a> installed.
-
-1. Install `flowbite` as a dependency using `npm` by running the following command:
-
-```bash
-npm i flowbite flowbite-react
-```
-
-2. Require `flowbite` as a plugin inside the `tailwind.config.js` file:
-
-```javascript
-module.exports = {
-  plugins: [require('flowbite/plugin')],
-};
-```
-
-3. Include the main JavaScript file to make interactive elements work:
-
-```javascript
-import 'flowbite';
-```
 
 ## Community
 
