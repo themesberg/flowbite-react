@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { FC, PropsWithChildren } from 'react';
-import { AvatarGroup } from './AvatarGroup';
-import { AvatarGroupCounter } from './AvatarGroupCounter';
+import AvatarGroup from './AvatarGroup';
+import AvatarGroupCounter from './AvatarGroupCounter';
 
 export type AvatarProps = PropsWithChildren<{
   alt?: string;
@@ -99,6 +99,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   );
 };
 
+AvatarComponent.displayName = 'Avatar';
 export const Avatar = Object.assign(AvatarComponent, {
   Group: AvatarGroup,
   Counter: AvatarGroupCounter,

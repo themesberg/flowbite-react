@@ -1,6 +1,6 @@
 import { ComponentProps, FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import { ButtonGroup } from './ButtonGroup';
+import ButtonGroup from './ButtonGroup';
 
 export type Color = 'blue' | 'alternative' | 'dark' | 'light' | 'green' | 'red' | 'yellow' | 'purple';
 type GradientMonochrome = 'blue' | 'green' | 'cyan' | 'teal' | 'lime' | 'red' | 'pink' | 'purple';
@@ -152,6 +152,7 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
   </button>
 );
 
+ButtonComponent.displayName = 'Button';
 export const Button = Object.assign(ButtonComponent, {
   Group: ButtonGroup,
 });
