@@ -68,7 +68,7 @@ const ToastPage: FC = () => {
           <div className="ml-auto flex items-center space-x-2">
             <a
               className="rounded-lg p-1.5 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-700"
-              href="#/toast"
+              href="/toast"
             >
               Undo
             </a>

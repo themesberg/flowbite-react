@@ -56,8 +56,8 @@ const BadgesPage: FC = () => {
       title: 'Badges as links',
       code: (
         <div className="flex flex-wrap items-center gap-2">
-          <Badge href="#/badges">Default</Badge>
-          <Badge size="sm" href="#/badges">
+          <Badge href="/badges">Default</Badge>
+          <Badge size="sm" href="/badges">
             Default
           </Badge>
         </div>

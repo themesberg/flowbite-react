@@ -14,11 +14,11 @@ const BreadcrumbPage: FC = () => {
             {
               icon: HiHome,
               label: 'Home',
-              href: '#/breadcrumb',
+              href: '/breadcrumb',
             },
             {
               label: 'Projects',
-              href: '#/breadcrumb',
+              href: '/breadcrumb',
             },
             {
               label: 'Flowbite React',

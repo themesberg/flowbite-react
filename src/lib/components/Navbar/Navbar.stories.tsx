@@ -20,13 +20,13 @@ DefaultNavbar.args = {
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
-        <Navbar.Link href="#/navbars" active>
+        <Navbar.Link href="/navbars" active>
           Home
         </Navbar.Link>
-        <Navbar.Link href="#/navbars">About</Navbar.Link>
-        <Navbar.Link href="#/navbars">Services</Navbar.Link>
-        <Navbar.Link href="#/navbars">Pricing</Navbar.Link>
-        <Navbar.Link href="#/navbars">Contact</Navbar.Link>
+        <Navbar.Link href="/navbars">About</Navbar.Link>
+        <Navbar.Link href="/navbars">Services</Navbar.Link>
+        <Navbar.Link href="/navbars">Pricing</Navbar.Link>
+        <Navbar.Link href="/navbars">Contact</Navbar.Link>
       </Navbar.Collapse>
     </>
   ),

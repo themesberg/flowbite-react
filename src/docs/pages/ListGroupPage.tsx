@@ -21,12 +21,12 @@ const ListGroupPage: FC = () => {
       title: 'List group with links',
       code: (
         <ListGroup className="w-48">
-          <ListGroup.Item active href="#/list-group">
+          <ListGroup.Item active href="/list-group">
             Profile
           </ListGroup.Item>
-          <ListGroup.Item href="#/list-group">Settings</ListGroup.Item>
-          <ListGroup.Item href="#/list-group">Messages</ListGroup.Item>
-          <ListGroup.Item href="#/list-group">Download</ListGroup.Item>
+          <ListGroup.Item href="/list-group">Settings</ListGroup.Item>
+          <ListGroup.Item href="/list-group">Messages</ListGroup.Item>
+          <ListGroup.Item href="/list-group">Download</ListGroup.Item>
         </ListGroup>
       ),
     },

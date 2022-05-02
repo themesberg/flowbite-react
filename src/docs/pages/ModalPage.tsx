@@ -94,14 +94,14 @@ const ModalPage: FC = () => {
                   <Checkbox id="remember" className="dark:border-gray-500 dark:bg-gray-600" />
                   <Label htmlFor="remember">Remember me</Label>
                 </div>
-                <a href="#/modal" className="text-sm text-blue-700 hover:underline dark:text-blue-500">
+                <a href="/modal" className="text-sm text-blue-700 hover:underline dark:text-blue-500">
                   Lost Password?
                 </a>
               </div>
               <Button className="w-full">Log in to your account</Button>
               <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                 Not registered?{' '}
-                <a href="#/modal" className="text-blue-700 hover:underline dark:text-blue-500">
+                <a href="/modal" className="text-blue-700 hover:underline dark:text-blue-500">
                   Create account
                 </a>
               </div>
