@@ -5,6 +5,7 @@ import { FooterCopyright } from './FooterCopyright';
 
 import { FooterLink } from './FooterLink';
 import { FooterLinkGroup } from './FooterLinkGroup';
+import { FooterIconContent } from './FooterIconContent';
 import { FooterCol } from './FooterCol';
 
 export type FooterComponentProps = PropsWithChildren<{
@@ -30,4 +31,5 @@ export const Footer = Object.assign(FooterComponent, {
   LinkGroup: FooterLinkGroup,
   Brand: FooterBrand,
   Col: FooterCol,
+  IconContent: FooterIconContent,
 });

@@ -93,21 +93,21 @@ const FooterPage: FC = () => {
           <div className="w-full sm:flex sm:items-center sm:justify-between">
             <Footer.Copyright href="#" createby="Flowbite™" year={2022} />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-              <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+              <Footer.IconContent href="#" className="hover:text-gray-900">
                 <BsFacebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+              </Footer.IconContent>
+              <Footer.IconContent href="#" className="hover:text-gray-900">
                 <BsInstagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+              </Footer.IconContent>
+              <Footer.IconContent href="#" className="hover:text-gray-900">
                 <BsTwitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+              </Footer.IconContent>
+              <Footer.IconContent href="#" className="hover:text-gray-900">
                 <BsGithub className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">
+              </Footer.IconContent>
+              <Footer.IconContent href="#" className="hover:text-gray-900">
                 <BsDribbble className="h-5 w-5" />
-              </a>
+              </Footer.IconContent>
             </div>
           </div>
         </Footer>
@@ -186,21 +186,21 @@ const FooterPage: FC = () => {
           <div className="w-full sm:flex sm:items-center  sm:justify-between  ">
             <Footer.Copyright className="text-gray-300" href="#" createby="Flowbite™" year={2022} />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-              <a href="#" className="text-gray-400 hover:text-white">
+              <Footer.IconContent href="#" className="text-gray-400 hover:text-white ">
                 <BsFacebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              </Footer.IconContent>
+              <Footer.IconContent href="#" className="text-gray-400 hover:text-white ">
                 <BsInstagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              </Footer.IconContent>
+              <Footer.IconContent href="#" className="text-gray-400 hover:text-white ">
                 <BsTwitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              </Footer.IconContent>
+              <Footer.IconContent href="#" className="text-gray-400 hover:text-white ">
                 <BsGithub className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              </Footer.IconContent>
+              <Footer.IconContent href="#" className="text-gray-400 hover:text-white ">
                 <BsDribbble className="h-5 w-5" />
-              </a>
+              </Footer.IconContent>
             </div>
           </div>
         </Footer>
