@@ -5,7 +5,7 @@ import { FooterCopyright } from './FooterCopyright';
 
 import { FooterLink } from './FooterLink';
 import { FooterLinkGroup } from './FooterLinkGroup';
-import { FooterIconContent } from './FooterIconContent';
+import { FooterIcon } from './FooterIcon';
 import { FooterCol } from './FooterCol';
 
 export type FooterComponentProps = PropsWithChildren<{
@@ -31,7 +31,7 @@ FooterLink.displayName = 'Footer.Link';
 FooterBrand.displayName = 'Footer.Brand';
 FooterCol.displayName = 'Footer.Col';
 FooterLinkGroup.displayName = 'Footer.LinkGroup';
-FooterIconContent.displayName = 'Footer.IconContent';
+FooterIcon.displayName = 'Footer.Icon';
 
 export const Footer = Object.assign(FooterComponent, {
   Copyright: FooterCopyright,
@@ -39,5 +39,5 @@ export const Footer = Object.assign(FooterComponent, {
   LinkGroup: FooterLinkGroup,
   Brand: FooterBrand,
   Col: FooterCol,
-  IconContent: FooterIconContent,
+  Icon: FooterIcon,
 });
