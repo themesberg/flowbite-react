@@ -1,4 +1,5 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 
 import { ModalHeader } from './ModalHeader';
@@ -42,25 +43,45 @@ const placementClasses: Record<Placement, string> = {
   'bottom-left': 'items-end justify-start',
 };
 
-const ModalComponent: FC<ModalProps> = ({ children, show, popup, size = '2xl', placement = 'center', onClose }) => (
-  <ModalContext.Provider value={{ popup, onClose }}>
-    <div
-      className={classNames(
-        'fixed top-0 right-0 left-0 z-50 h-modal overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
-        placementClasses[placement],
-        {
-          'flex bg-gray-900 bg-opacity-50 dark:bg-opacity-80': show,
-          hidden: !show,
-        },
-      )}
-      aria-hidden={!show}
-    >
-      <div className={classNames('relative h-full w-full p-4 md:h-auto', sizeClasses[size])}>
-        <div className="relative rounded-lg bg-white shadow dark:bg-gray-700">{children}</div>
-      </div>
-    </div>
-  </ModalContext.Provider>
-);
+const ModalComponent: FC<ModalProps> = ({ children, show, popup, size = '2xl', placement = 'center', onClose }) => {
+  const [container, setContainer] = useState<HTMLDivElement>();
+
+  useEffect(() => {
+    if (!show) return;
+
+    const element = document.createElement('div');
+    document.body.appendChild(element);
+    setContainer(element);
+
+    return () => {
+      document.body.removeChild(element);
+      setContainer(undefined);
+    };
+  }, [show]);
+
+  return container
+    ? createPortal(
+        <ModalContext.Provider value={{ popup, onClose }}>
+          <div
+            className={classNames(
+              'fixed top-0 right-0 left-0 z-50 h-modal overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
+              placementClasses[placement],
+              {
+                'flex bg-gray-900 bg-opacity-50 dark:bg-opacity-80': show,
+                hidden: !show,
+              },
+            )}
+            aria-hidden={!show}
+          >
+            <div className={classNames('relative h-full w-full p-4 md:h-auto', sizeClasses[size])}>
+              <div className="relative rounded-lg bg-white shadow dark:bg-gray-700">{children}</div>
+            </div>
+          </div>
+        </ModalContext.Provider>,
+        container,
+      )
+    : null;
+};
 
 ModalComponent.displayName = 'Modal';
 ModalHeader.displayName = 'Modal.Header';
