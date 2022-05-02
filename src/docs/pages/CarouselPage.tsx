@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { CodeExample, DemoPage } from './DemoPage';
-import { Carousel } from '../lib';
+import { Carousel } from '../../lib';
 
 const CarouselPage: FC = () => {
   const examples: CodeExample[] = [

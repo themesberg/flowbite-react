@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Progress } from '../lib';
+import { Progress } from '../../lib';
 import { CodeExample, DemoPage } from './DemoPage';
 
 const ProgressPage: FC = () => {

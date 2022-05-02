@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { HiMail } from 'react-icons/hi';
 
 import { CodeExample, DemoPage } from './DemoPage';
-import { Button, Checkbox, FileInput, Label, Radio, Select, Textarea, TextInput, ToggleSwitch } from '../lib';
+import { Button, Checkbox, FileInput, Label, Radio, Select, Textarea, TextInput, ToggleSwitch } from '../../lib';
 
 const FormsPage: FC = () => {
   const examples: CodeExample[] = [

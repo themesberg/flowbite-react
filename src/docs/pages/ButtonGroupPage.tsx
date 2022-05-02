@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
 
 import { CodeExample, DemoPage } from './DemoPage';
-import { Button } from '../lib';
+import { Button } from '../../lib';
 
 const ButtonGroupPage: FC = () => {
   const examples: CodeExample[] = [

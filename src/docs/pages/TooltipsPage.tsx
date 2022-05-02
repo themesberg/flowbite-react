@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Button, Tooltip } from '../lib';
+import { Button, Tooltip } from '../../lib';
 import { CodeExample, DemoPage } from './DemoPage';
 
 const TooltipsPage: FC = () => {

@@ -4,7 +4,7 @@ import { FaTelegramPlane } from 'react-icons/fa';
 import { MdLoop } from 'react-icons/md';
 
 import { CodeExample, DemoPage } from './DemoPage';
-import { Button, Toast } from '../lib';
+import { Button, Toast } from '../../lib';
 
 const ToastPage: FC = () => {
   const examples: CodeExample[] = [
