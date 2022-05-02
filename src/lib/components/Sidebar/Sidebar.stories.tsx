@@ -3,6 +3,8 @@ import { BiBuoy } from 'react-icons/bi';
 import { HiChartPie, HiViewBoards, HiInbox, HiUser, HiShoppingBag, HiArrowSmRight, HiTable } from 'react-icons/hi';
 
 import { Sidebar } from '.';
+import { Badge } from '../Badge';
+import { Button } from '../Button';
 
 export default {
   title: 'Components/Sidebar',
@@ -159,14 +161,11 @@ CTAButton.args = {
       </Sidebar.Items>
       <Sidebar.CTA>
         <div className="mb-3 flex items-center">
-          <span className="mr-2 rounded bg-orange-100 px-2.5 py-0.5 text-sm font-semibold text-orange-800 dark:bg-orange-200 dark:text-orange-900">
-            Beta
-          </span>
-          <button
-            type="button"
-            className="-mx-1.5 -my-1.5 ml-auto inline-flex h-6 w-6 rounded-lg bg-blue-50 p-1 text-blue-900 hover:bg-blue-200 focus:ring-2 focus:ring-blue-400 dark:bg-blue-900 dark:text-blue-400 dark:hover:bg-blue-800"
-            data-collapse-toggle="dropdown-cta"
+          <Badge color="yellow">Beta</Badge>
+          <Button
             aria-label="Close"
+            className="-mx-1.5 -my-1.5 ml-auto !h-6 !w-6 bg-transparent !p-1 text-blue-900 hover:bg-blue-200"
+            data-collapse-toggle="dropdown-cta"
           >
             <span className="sr-only">Close</span>
             <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -176,7 +175,7 @@ CTAButton.args = {
                 clipRule="evenodd"
               ></path>
             </svg>
-          </button>
+          </Button>
         </div>
         <p className="mb-3 text-sm text-blue-900 dark:text-blue-400">
           Preview the new Flowbite dashboard navigation! You can turn the new navigation off for a limited time in your
