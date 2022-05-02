@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>:construction: `flowbite-react` :construction:</h1>
+  <h1>:construction: flowbite-react (unreleased) :construction:</h1>
   <p>
     <a href="https://flowbite.com">
       <img alt="Flowbite - Tailwind CSS components" width="350" src="https://flowbite.s3.amazonaws.com/github/logo-github.png">
@@ -357,31 +357,8 @@ module.exports = {
 
 3. Include the main JavaScript file to make interactive elements work:
 
-```html
-<script src="../path/to/flowbite/dist/flowbite.js"></script>
-```
-
-If you use Webpack or other bundlers you can also import it like this:
-
 ```javascript
 import 'flowbite';
-```
-
-### Include via CDN
-
-The quickest way to get started working with `flowbite-react` is to include the CSS and JavaScript in your project via CDN.
-
-Add the following stylesheet inside `<head>`:
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/flowbite@latest/dist/flowbite.min.css" />
-```
-
-And include the following script right before the end of `<body>`:
-
-```html
-<script defer src="https://unpkg.com/flowbite@latest/dist/flowbite.js"></script>
-<script defer src="https://unpkg.com/flowbite-react@latest/dist/flowbite-react.js"></script>
 ```
 
 ## Community
