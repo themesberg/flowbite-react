@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Avatar, Dropdown } from '../components';
+import { Avatar, Dropdown } from '../lib';
 import { CodeExample, DemoPage } from './DemoPage';
 
 const AvatarPage: FC = () => {

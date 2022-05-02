@@ -4,7 +4,7 @@ import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 
-import { Card } from '../components';
+import { Card } from '../lib';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 

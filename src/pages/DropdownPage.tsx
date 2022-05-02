@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { CodeExample, DemoPage } from './DemoPage';
-import { Dropdown } from '../components';
+import { Dropdown } from '../lib';
 
 const DropdownPage: FC = () => {
   const examples: CodeExample[] = [

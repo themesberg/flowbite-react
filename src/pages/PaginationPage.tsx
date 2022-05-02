@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 
-import { Pagination } from '../components';
+import { Pagination } from '../lib';
 import { CodeExample, DemoPage } from './DemoPage';
 
 const PaginationPage: FC = () => {

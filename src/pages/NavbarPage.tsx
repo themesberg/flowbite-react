@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { CodeExample, DemoPage } from './DemoPage';
-import { Button, Navbar } from '../components';
+import { Button, Navbar } from '../lib';
 
 const NavbarPage: FC = () => {
   const examples: CodeExample[] = [

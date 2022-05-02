@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Card } from '../components';
+import { Card } from '../lib';
 import { CodeExample, DemoPage } from './DemoPage';
 
 const CardPage: FC = () => {
