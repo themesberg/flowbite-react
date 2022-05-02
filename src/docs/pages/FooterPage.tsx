@@ -10,12 +10,12 @@ const FooterPage: FC = () => {
       code: (
         <Footer>
           <Footer.Copyright href="#" createby="Flowbite™" year={2022} />
-          <Footer.LinkBox className=" mt-3  flex-wrap items-center text-sm sm:mt-0">
+          <Footer.LinkGroup className=" mt-3  flex-wrap items-center text-sm sm:mt-0">
             <Footer.Link href="#">About</Footer.Link>
             <Footer.Link href="#">Privacy Policy</Footer.Link>
             <Footer.Link href="#">Licensing</Footer.Link>
             <Footer.Link href="#">Contact</Footer.Link>
-          </Footer.LinkBox>
+          </Footer.LinkGroup>
         </Footer>
       ),
     },
@@ -31,12 +31,12 @@ const FooterPage: FC = () => {
               name="Flowbite"
             />
 
-            <Footer.LinkBox className="mt-3 flex-wrap items-center text-sm sm:mt-0">
+            <Footer.LinkGroup className="mt-3 flex-wrap items-center text-sm sm:mt-0">
               <Footer.Link href="#">About</Footer.Link>
               <Footer.Link href="#">Privacy Policy</Footer.Link>
               <Footer.Link href="#">Licensing</Footer.Link>
               <Footer.Link href="#">Contact</Footer.Link>
-            </Footer.LinkBox>
+            </Footer.LinkGroup>
           </div>
           <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
           <Footer.Copyright href="#" createby="Flowbite™" year={2022} />
@@ -58,34 +58,34 @@ const FooterPage: FC = () => {
             </div>
             <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
               <Footer.Col title="About">
-                <Footer.LinkBox className="flex-col">
+                <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4" href="#">
                     Flowbite
                   </Footer.Link>
                   <Footer.Link className="mb-4" href="#">
                     Tailwind CSS
                   </Footer.Link>
-                </Footer.LinkBox>
+                </Footer.LinkGroup>
               </Footer.Col>
               <Footer.Col title="Follow us">
-                <Footer.LinkBox className="flex-col">
+                <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4" href="#">
                     Gihub
                   </Footer.Link>
                   <Footer.Link className="mb-4" href="#">
                     Discord
                   </Footer.Link>
-                </Footer.LinkBox>
+                </Footer.LinkGroup>
               </Footer.Col>
               <Footer.Col title="Legal">
-                <Footer.LinkBox className="flex-col">
+                <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4" href="#">
                     Privacy Policy
                   </Footer.Link>
                   <Footer.Link className="mb-4" href="#">
                     Terms &amp; Conditions
                   </Footer.Link>
-                </Footer.LinkBox>
+                </Footer.LinkGroup>
               </Footer.Col>
             </div>
           </div>
@@ -120,7 +120,7 @@ const FooterPage: FC = () => {
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
             <div className="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
               <Footer.Col className="text-gray-400" title="Company">
-                <Footer.LinkBox className="flex-col">
+                <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4 text-gray-300" href="#">
                     About
                   </Footer.Link>
@@ -133,10 +133,10 @@ const FooterPage: FC = () => {
                   <Footer.Link className="mb-4 text-gray-300" href="#">
                     Blog
                   </Footer.Link>
-                </Footer.LinkBox>
+                </Footer.LinkGroup>
               </Footer.Col>
               <Footer.Col className="text-gray-400" title="Help Center">
-                <Footer.LinkBox className="flex-col">
+                <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4 text-gray-300" href="#">
                     Discord Server
                   </Footer.Link>
@@ -149,10 +149,10 @@ const FooterPage: FC = () => {
                   <Footer.Link className="mb-4 text-gray-300" href="#">
                     Contact Us
                   </Footer.Link>
-                </Footer.LinkBox>
+                </Footer.LinkGroup>
               </Footer.Col>
               <Footer.Col className="text-gray-400" title="Legal">
-                <Footer.LinkBox className="flex-col">
+                <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4 text-gray-300" href="#">
                     Privacy Policy
                   </Footer.Link>
@@ -162,10 +162,10 @@ const FooterPage: FC = () => {
                   <Footer.Link className="mb-4 text-gray-300" href="#">
                     Terms &amp; Conditions
                   </Footer.Link>
-                </Footer.LinkBox>
+                </Footer.LinkGroup>
               </Footer.Col>
               <Footer.Col className="text-gray-400" title="Download">
-                <Footer.LinkBox className="flex-col">
+                <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4 text-gray-300" href="#">
                     iOS
                   </Footer.Link>
@@ -178,7 +178,7 @@ const FooterPage: FC = () => {
                   <Footer.Link className="mb-4 text-gray-300" href="#">
                     MacOS
                   </Footer.Link>
-                </Footer.LinkBox>
+                </Footer.LinkGroup>
               </Footer.Col>
             </div>
           </div>

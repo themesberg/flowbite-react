@@ -4,7 +4,7 @@ import { FooterBrand } from './FooterBrand';
 import { FooterCopyright } from './FooterCopyright';
 
 import { FooterLink } from './FooterLink';
-import { FooterLinkBox } from './FooterLinkBox';
+import { FooterLinkGroup } from './FooterLinkGroup';
 import { FooterCol } from './FooterCol';
 
 export type FooterComponentProps = PropsWithChildren<{
@@ -27,7 +27,7 @@ const FooterComponent: FC<FooterComponentProps> = ({ children, className }) => {
 export const Footer = Object.assign(FooterComponent, {
   Copyright: FooterCopyright,
   Link: FooterLink,
-  LinkBox: FooterLinkBox,
+  LinkGroup: FooterLinkGroup,
   Brand: FooterBrand,
   Col: FooterCol,
 });
