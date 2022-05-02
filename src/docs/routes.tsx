@@ -21,6 +21,7 @@ import {
   HiTable,
   HiUser,
   HiOutlineChevronDoubleRight,
+  HiMinus,
 } from 'react-icons/hi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
@@ -194,7 +195,7 @@ export const routes: RouteProps[] = [
   },
   {
     title: 'Footer',
-    icon: HiPencilAlt,
+    icon: HiMinus,
     href: '/footer',
     component: <FooterPage />,
     group: false,
