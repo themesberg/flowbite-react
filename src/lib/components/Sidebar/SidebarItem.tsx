@@ -3,6 +3,7 @@ import { ComponentProps, FC, PropsWithChildren } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { SidebarProps } from '.';
 import { Badge, BadgeColor } from '../Badge';
+import { Tooltip } from '../Tooltip';
 
 export interface SidebarItemProps extends PropsWithChildren<Pick<SidebarProps, 'collapsed'>> {
   className?: string;
@@ -23,8 +24,20 @@ const SidebarItem: FC<SidebarItemProps> = ({
 }) => {
   const { pathname } = useLocation();
 
-  return (
+  const Wrapper = ({ children: wrapperChildren }: PropsWithChildren<any>) => (
     <li>
+      {collapsed ? (
+        <Tooltip content={children} placement="right">
+          {wrapperChildren}
+        </Tooltip>
+      ) : (
+        wrapperChildren
+      )}
+    </li>
+  );
+
+  return (
+    <Wrapper>
       <Link
         className={classNames(
           'flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
@@ -41,7 +54,7 @@ const SidebarItem: FC<SidebarItemProps> = ({
         {!collapsed && <span className="ml-3 flex-1 whitespace-nowrap">{children}</span>}
         {!collapsed && label && <Badge color={labelColor}>{label}</Badge>}
       </Link>
-    </li>
+    </Wrapper>
   );
 };
 
