@@ -106,11 +106,16 @@ WithSocialMediaFooter.args = {
       <div className="w-full sm:flex sm:items-center sm:justify-between">
         <Footer.Copyright href="#" by="Flowbite™" year={2022} />
         <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-          <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsFacebook} />
-          <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsInstagram} />
-          <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsTwitter} />
-          <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsGithub} />
-          <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsDribbble} />
+          <Footer.Icon href="#" ariaLabel="Facebook" className="text-gray-400 hover:text-gray-900" icon={BsFacebook} />
+          <Footer.Icon
+            href="#"
+            ariaLabel="Instagram"
+            className="text-gray-400 hover:text-gray-900"
+            icon={BsInstagram}
+          />
+          <Footer.Icon href="#" ariaLabel="Twitter" className="text-gray-400 hover:text-gray-900" icon={BsTwitter} />
+          <Footer.Icon href="#" ariaLabel="Github" className="text-gray-400 hover:text-gray-900" icon={BsGithub} />
+          <Footer.Icon href="#" ariaLabel="Dribble" className="text-gray-400 hover:text-gray-900" icon={BsDribbble} />
         </div>
       </div>
     </>
@@ -194,11 +199,11 @@ SitemapLinksFooter.args = {
       <div className="w-full sm:flex sm:items-center  sm:justify-between  ">
         <Footer.Copyright className="text-gray-300" href="#" by="Flowbite™" year={2022} />
         <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-          <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsFacebook} />
-          <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsInstagram} />
-          <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsTwitter} />
-          <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsGithub} />
-          <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsDribbble} />
+          <Footer.Icon href="#" ariaLabel="Facebook" className="text-gray-400 hover:text-white" icon={BsFacebook} />
+          <Footer.Icon href="#" ariaLabel="Instagram" className="text-gray-400 hover:text-white" icon={BsInstagram} />
+          <Footer.Icon href="#" ariaLabel="Twitter" className="text-gray-400 hover:text-white" icon={BsTwitter} />
+          <Footer.Icon href="#" ariaLabel="Github" className="text-gray-400 hover:text-white" icon={BsGithub} />
+          <Footer.Icon href="#" ariaLabel="Dribble" className="text-gray-400 hover:text-white" icon={BsDribbble} />
         </div>
       </div>
     </>
