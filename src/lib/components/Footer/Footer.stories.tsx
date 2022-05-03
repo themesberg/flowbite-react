@@ -31,14 +31,13 @@ WithLogoFooter.args = {
   className: 'flex flex-col',
   children: (
     <>
-      <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
+      <div className="flex w-full  justify-between">
         <Footer.Brand
           href="https://flowbite.com"
           src="https://flowbite.com/docs/images/logo.svg"
           alt="Flowbite Logo"
           name="Flowbite"
         />
-
         <Footer.LinkGroup className="mt-3 flex-wrap items-center text-sm sm:mt-0">
           <Footer.Link href="#">About</Footer.Link>
           <Footer.Link href="#">Privacy Policy</Footer.Link>
@@ -68,7 +67,8 @@ WithSocialMediaFooter.args = {
           />
         </div>
         <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
-          <Footer.Col title="About">
+          <div>
+            <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">About</h2>
             <Footer.LinkGroup className="flex-col">
               <Footer.Link className="mb-4" href="#">
                 Flowbite
@@ -77,8 +77,9 @@ WithSocialMediaFooter.args = {
                 Tailwind CSS
               </Footer.Link>
             </Footer.LinkGroup>
-          </Footer.Col>
-          <Footer.Col title="Follow us">
+          </div>
+          <div>
+            <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Follow uss</h2>
             <Footer.LinkGroup className="flex-col">
               <Footer.Link className="mb-4" href="#">
                 Gihub
@@ -87,8 +88,9 @@ WithSocialMediaFooter.args = {
                 Discord
               </Footer.Link>
             </Footer.LinkGroup>
-          </Footer.Col>
-          <Footer.Col title="Legal">
+          </div>
+          <div>
+            <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"> Legal</h2>
             <Footer.LinkGroup className="flex-col">
               <Footer.Link className="mb-4" href="#">
                 Privacy Policy
@@ -97,7 +99,7 @@ WithSocialMediaFooter.args = {
                 Terms &amp; Conditions
               </Footer.Link>
             </Footer.LinkGroup>
-          </Footer.Col>
+          </div>
         </div>
       </div>
       <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
@@ -122,7 +124,8 @@ SitemapLinksFooter.args = {
   children: (
     <>
       <div className="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
-        <Footer.Col className="text-gray-400" title="Company">
+        <div>
+          <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Company</h2>
           <Footer.LinkGroup className="flex-col">
             <Footer.Link className="mb-4 text-gray-300" href="#">
               About
@@ -137,8 +140,9 @@ SitemapLinksFooter.args = {
               Blog
             </Footer.Link>
           </Footer.LinkGroup>
-        </Footer.Col>
-        <Footer.Col className="text-gray-400" title="Help Center">
+        </div>
+        <div>
+          <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Help center</h2>
           <Footer.LinkGroup className="flex-col">
             <Footer.Link className="mb-4 text-gray-300" href="#">
               Discord Server
@@ -153,8 +157,9 @@ SitemapLinksFooter.args = {
               Contact Us
             </Footer.Link>
           </Footer.LinkGroup>
-        </Footer.Col>
-        <Footer.Col className="text-gray-400" title="Legal">
+        </div>
+        <div>
+          <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Legal</h2>
           <Footer.LinkGroup className="flex-col">
             <Footer.Link className="mb-4 text-gray-300" href="#">
               Privacy Policy
@@ -166,8 +171,9 @@ SitemapLinksFooter.args = {
               Terms &amp; Conditions
             </Footer.Link>
           </Footer.LinkGroup>
-        </Footer.Col>
-        <Footer.Col className="text-gray-400" title="Download">
+        </div>
+        <div>
+          <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Download</h2>
           <Footer.LinkGroup className="flex-col">
             <Footer.Link className="mb-4 text-gray-300" href="#">
               iOS
@@ -182,7 +188,7 @@ SitemapLinksFooter.args = {
               MacOS
             </Footer.Link>
           </Footer.LinkGroup>
-        </Footer.Col>
+        </div>
       </div>
       <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
       <div className="w-full sm:flex sm:items-center  sm:justify-between  ">
