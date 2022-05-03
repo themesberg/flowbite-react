@@ -54,10 +54,12 @@ const FooterPage: FC = () => {
                 src="https://flowbite.com/docs/images/logo.svg"
                 alt="Flowbite Logo"
                 name="Flowbite"
+                className="m-6"
               />
             </div>
             <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
-              <Footer.Col title="About">
+              <div>
+                <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">About</h2>
                 <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4" href="#">
                     Flowbite
@@ -66,8 +68,9 @@ const FooterPage: FC = () => {
                     Tailwind CSS
                   </Footer.Link>
                 </Footer.LinkGroup>
-              </Footer.Col>
-              <Footer.Col title="Follow us">
+              </div>
+              <div>
+                <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Follow uss</h2>
                 <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4" href="#">
                     Gihub
@@ -76,8 +79,9 @@ const FooterPage: FC = () => {
                     Discord
                   </Footer.Link>
                 </Footer.LinkGroup>
-              </Footer.Col>
-              <Footer.Col title="Legal">
+              </div>
+              <div>
+                <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"> Legal</h2>
                 <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4" href="#">
                     Privacy Policy
@@ -86,7 +90,7 @@ const FooterPage: FC = () => {
                     Terms &amp; Conditions
                   </Footer.Link>
                 </Footer.LinkGroup>
-              </Footer.Col>
+              </div>
             </div>
           </div>
           <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
@@ -108,7 +112,8 @@ const FooterPage: FC = () => {
       code: (
         <Footer className="flex flex-col bg-gray-800">
           <div className="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
-            <Footer.Col className="text-gray-400" title="Company">
+            <div>
+              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Company</h2>
               <Footer.LinkGroup className="flex-col">
                 <Footer.Link className="mb-4 text-gray-300" href="#">
                   About
@@ -123,8 +128,9 @@ const FooterPage: FC = () => {
                   Blog
                 </Footer.Link>
               </Footer.LinkGroup>
-            </Footer.Col>
-            <Footer.Col className="text-gray-400" title="Help Center">
+            </div>
+            <div>
+              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400"> Download</h2>
               <Footer.LinkGroup className="flex-col">
                 <Footer.Link className="mb-4 text-gray-300" href="#">
                   Discord Server
@@ -139,8 +145,9 @@ const FooterPage: FC = () => {
                   Contact Us
                 </Footer.Link>
               </Footer.LinkGroup>
-            </Footer.Col>
-            <Footer.Col className="text-gray-400" title="Legal">
+            </div>
+            <div>
+              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400"> Legal</h2>
               <Footer.LinkGroup className="flex-col">
                 <Footer.Link className="mb-4 text-gray-300" href="#">
                   Privacy Policy
@@ -152,8 +159,9 @@ const FooterPage: FC = () => {
                   Terms &amp; Conditions
                 </Footer.Link>
               </Footer.LinkGroup>
-            </Footer.Col>
-            <Footer.Col className="text-gray-400" title="Download">
+            </div>
+            <div>
+              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400"> Download</h2>
               <Footer.LinkGroup className="flex-col">
                 <Footer.Link className="mb-4 text-gray-300" href="#">
                   iOS
@@ -168,7 +176,7 @@ const FooterPage: FC = () => {
                   MacOS
                 </Footer.Link>
               </Footer.LinkGroup>
-            </Footer.Col>
+            </div>
           </div>
           <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
           <div className="w-full sm:flex sm:items-center  sm:justify-between  ">
