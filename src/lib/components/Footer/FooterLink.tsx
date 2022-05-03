@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { FC, PropsWithChildren } from 'react';
 
 export type FooterLinkProps = PropsWithChildren<{
@@ -7,8 +8,8 @@ export type FooterLinkProps = PropsWithChildren<{
 
 export const FooterLink: FC<FooterLinkProps> = ({ href, children, className }) => {
   return (
-    <li className={className}>
-      <a href={href} className="mr-4 hover:underline md:mr-6 ">
+    <li className={classNames('mr-4 last:mr-0 md:mr-6', className)}>
+      <a href={href} className="hover:underline">
         {children}
       </a>
     </li>
