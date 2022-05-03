@@ -3,7 +3,7 @@ import { FC, PropsWithChildren } from 'react';
 
 export type CopyrightProps = PropsWithChildren<{
   href?: string;
-  by?: any;
+  by?: string;
   year?: number;
   className?: string;
 }>;
