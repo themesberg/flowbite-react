@@ -36,6 +36,7 @@ export const Tooltip: FC<TooltipProps> = ({
   placement = 'top',
   style = 'dark',
   trigger = 'hover',
+  ...rest
 }) => {
   const arrowRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
@@ -96,6 +97,7 @@ export const Tooltip: FC<TooltipProps> = ({
             top: y ?? '',
             left: x ?? '',
           },
+          ...rest,
         })}
       >
         <div className="relative z-20">{content}</div>
