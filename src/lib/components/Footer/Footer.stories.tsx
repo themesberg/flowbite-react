@@ -95,7 +95,7 @@ WithSocialMediaFooter.args = {
             </Footer.LinkGroup>
           </div>
           <div>
-            <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Follow uss</h2>
+            <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Follow us</h2>
             <Footer.LinkGroup className="flex-col">
               <Footer.Link ariaLabel="Github" className="mb-4" href="#">
                 Gihub
