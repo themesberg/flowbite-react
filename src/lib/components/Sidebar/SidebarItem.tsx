@@ -31,9 +31,9 @@ const SidebarItem: FC<SidebarItemProps> = ({
   const { insideCollapse } = useSidebarItemContext();
 
   const Wrapper = ({ children: wrapperChildren }: PropsWithChildren<Record<string, unknown>>) => (
-    <li>
+    <li data-testid="sidebar-item">
       {collapsed ? (
-        <Tooltip content={children} placement="right">
+        <Tooltip content={children} data-testid="sidebar-item-tooltip" placement="right">
           {wrapperChildren}
         </Tooltip>
       ) : (
@@ -64,8 +64,16 @@ const SidebarItem: FC<SidebarItemProps> = ({
             )}
           />
         )}
-        {!collapsed && <span className="ml-3 flex-1 whitespace-nowrap">{children}</span>}
-        {!collapsed && label && <Badge color={labelColor}>{label}</Badge>}
+        {!collapsed && (
+          <span className="ml-3 flex-1 whitespace-nowrap" data-testid="sidebar-item-content">
+            {children}
+          </span>
+        )}
+        {!collapsed && label && (
+          <Badge color={labelColor} data-testid="sidebar-item-label">
+            {label}
+          </Badge>
+        )}
       </Link>
     </Wrapper>
   );

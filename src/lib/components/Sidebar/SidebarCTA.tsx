@@ -24,7 +24,11 @@ const SidebarCTA: FC<SidebarCTAProps> = ({ children, className, color = 'blue', 
   return collapsed ? (
     <></>
   ) : (
-    <div className={classNames('mt-6 rounded-lg p-4', colorClasses[color], className)} {...rest}>
+    <div
+      className={classNames('mt-6 rounded-lg p-4', colorClasses[color], className)}
+      data-testid="sidebar-cta"
+      {...rest}
+    >
       {children}
     </div>
   );
