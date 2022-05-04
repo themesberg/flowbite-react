@@ -30,7 +30,7 @@ const SidebarItem: FC<SidebarItemProps> = ({
   const { collapsed } = useSidebarContext();
   const { insideCollapse } = useSidebarItemContext();
 
-  const Wrapper = ({ children: wrapperChildren }: PropsWithChildren<any>) => (
+  const Wrapper = ({ children: wrapperChildren }: PropsWithChildren<Record<string, unknown>>) => (
     <li>
       {collapsed ? (
         <Tooltip content={children} placement="right">
