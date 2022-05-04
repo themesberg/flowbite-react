@@ -147,7 +147,7 @@ const SidebarPage: FC = () => {
               <Badge color="yellow">Beta</Badge>
               <Button
                 aria-label="Close"
-                className="-mx-1.5 -my-1.5 ml-auto !h-6 !w-6 bg-transparent !p-1 text-blue-900 hover:bg-blue-200"
+                className="-mx-1.5 -my-1.5 ml-auto !h-6 !w-6 bg-transparent !p-1 text-blue-900 hover:bg-blue-200 dark:!bg-blue-900 dark:text-blue-200 dark:hover:!bg-blue-800"
                 data-collapse-toggle="dropdown-cta"
               >
                 <span className="sr-only">Close</span>
