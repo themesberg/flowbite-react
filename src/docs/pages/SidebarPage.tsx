@@ -178,7 +178,7 @@ const SidebarPage: FC = () => {
       title: 'Logo branding',
       code: (
         <Sidebar collapsed={false}>
-          <Sidebar.Logo href="#" img="logo192.png" imgAlt="Flowbite logo">
+          <Sidebar.Logo href="#" img="favicon.png" imgAlt="Flowbite logo">
             Flowbite
           </Sidebar.Logo>
           <Sidebar.Items>
