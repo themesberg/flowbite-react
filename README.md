@@ -76,12 +76,6 @@ module.exports = {
 };
 ```
 
-3. Include the main JavaScript file to make interactive elements work:
-
-```javascript
-import 'flowbite';
-```
-
 ## Components
 
 <table>
