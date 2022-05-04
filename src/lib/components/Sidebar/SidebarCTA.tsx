@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import { PropsWithChildren, FC } from 'react';
+import { PropsWithChildren, FC, HTMLAttributes } from 'react';
 import { Color } from '../Button';
 
-export interface SidebarCTAProps extends PropsWithChildren<Record<string, unknown>> {
+export interface SidebarCTAProps extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
   color?: Color;
 }
 
@@ -17,8 +17,12 @@ const colorClasses: Record<Color, string> = {
   purple: 'bg-purple-50 dark:bg-purple-900',
 };
 
-const SidebarCTA: FC<SidebarCTAProps> = ({ children, color = 'blue' }) => {
-  return <div className={classNames('mt-6 rounded-lg p-4', colorClasses[color])}>{children}</div>;
+const SidebarCTA: FC<SidebarCTAProps> = ({ children, className, color = 'blue', ...rest }) => {
+  return (
+    <div className={classNames('mt-6 rounded-lg p-4', colorClasses[color], className)} {...rest}>
+      {children}
+    </div>
+  );
 };
 
 SidebarCTA.displayName = 'Sidebar.CTA';
