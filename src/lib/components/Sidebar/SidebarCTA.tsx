@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { PropsWithChildren, FC, HTMLAttributes } from 'react';
 import { Color } from '../Button';
+import { useSidebarContext } from './SidebarContext';
 
 export interface SidebarCTAProps extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
   color?: Color;
@@ -18,7 +19,11 @@ const colorClasses: Record<Color, string> = {
 };
 
 const SidebarCTA: FC<SidebarCTAProps> = ({ children, className, color = 'blue', ...rest }) => {
-  return (
+  const { collapsed } = useSidebarContext();
+
+  return collapsed ? (
+    <></>
+  ) : (
     <div className={classNames('mt-6 rounded-lg p-4', colorClasses[color], className)} {...rest}>
       {children}
     </div>
