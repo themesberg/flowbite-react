@@ -34,7 +34,12 @@ const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label
       >
         <>
           {Icon && (
-            <Icon className="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
+            <Icon
+              className={classNames(
+                'h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
+                { 'text-gray-900': open },
+              )}
+            />
           )}
           {collapsed ? (
             <span className="sr-only">{label}</span>

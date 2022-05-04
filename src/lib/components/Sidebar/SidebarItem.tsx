@@ -49,7 +49,7 @@ const SidebarItem: FC<SidebarItemProps> = ({
           'flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
           {
             'bg-gray-100 dark:bg-gray-700': href === pathname,
-            'group w-full pl-8 transition duration-75': insideCollapse,
+            'group w-full pl-8 transition duration-75': !collapsed && insideCollapse,
           },
           className,
         )}
