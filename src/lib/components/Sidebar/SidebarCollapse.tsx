@@ -23,7 +23,9 @@ const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label
           {Icon && (
             <Icon className="h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white" />
           )}
-          {!collapsed && (
+          {collapsed ? (
+            <span className="sr-only">{label}</span>
+          ) : (
             <>
               <span className="ml-3 flex-1 whitespace-nowrap text-left">{label}</span>
               <HiChevronDown className="h-6 w-6" />
