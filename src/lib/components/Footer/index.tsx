@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import { FC, PropsWithChildren } from 'react';
 import { FooterBrand } from './FooterBrand';
 import { FooterCopyright } from './FooterCopyright';
-
 import { FooterLink } from './FooterLink';
 import { FooterLinkGroup } from './FooterLinkGroup';
 import { FooterIcon } from './FooterIcon';

@@ -12,7 +12,7 @@ export const FooterIcon: FC<FooterIconProps> = ({ href, ariaLabel, className, ic
   return (
     <>
       {href ? (
-        <a href={href} aria-label={ariaLabel} className={classNames('text-gray-500  dark:hover:text-white', className)}>
+        <a href={href} aria-label={ariaLabel} className={classNames('text-gray-500 dark:hover:text-white', className)}>
           <Icon className="h-5 w-5" />
         </a>
       ) : (

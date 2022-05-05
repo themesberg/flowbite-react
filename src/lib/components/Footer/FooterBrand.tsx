@@ -7,19 +7,18 @@ export type FooterBrandProps = PropsWithChildren<{
   alt?: string;
   name?: string;
   className?: string;
-  ariaLabel?: string;
 }>;
 
-export const FooterBrand: FC<FooterBrandProps> = ({ children, href, src, alt, name, className, ariaLabel }) => (
+export const FooterBrand: FC<FooterBrandProps> = ({ children, href, src, alt, name, className }) => (
   <>
     {href ? (
       <a href={href} className={classNames('mb-4 flex items-center sm:mb-0', className)}>
-        <img src={src} className="mr-3 h-8" alt={alt} aria-label={ariaLabel} />
+        <img src={src} className="mr-3 h-8" alt={alt} />
         <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">{name}</span>
         {children}
       </a>
     ) : (
-      <img src={src} className="mr-3 h-8" alt={alt} aria-label={ariaLabel} />
+      <img src={src} className="mr-3 h-8" alt={alt} />
     )}
   </>
 );

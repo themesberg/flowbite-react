@@ -16,18 +16,10 @@ DefaultFooter.args = {
     <>
       <Footer.Copyright href="#" by="Flowbite™" year={2022} />
       <Footer.LinkGroup className="mt-3 flex-wrap items-center text-sm sm:mt-0">
-        <Footer.Link ariaLabel="About" href="#">
-          About
-        </Footer.Link>
-        <Footer.Link ariaLabel="Privacy Policy" href="#">
-          Privacy Policy
-        </Footer.Link>
-        <Footer.Link ariaLabel="Licensing" href="#">
-          Licensing
-        </Footer.Link>
-        <Footer.Link ariaLabel="Contact" href="#">
-          Contact
-        </Footer.Link>
+        <Footer.Link href="#">About</Footer.Link>
+        <Footer.Link href="#">Privacy Policy</Footer.Link>
+        <Footer.Link href="#">Licensing</Footer.Link>
+        <Footer.Link href="#">Contact</Footer.Link>
       </Footer.LinkGroup>
     </>
   ),
@@ -39,7 +31,7 @@ WithLogoFooter.args = {
   className: 'flex flex-col',
   children: (
     <>
-      <div className="flex w-full  justify-between">
+      <div className="flex w-full justify-between">
         <Footer.Brand
           href="https://flowbite.com"
           src="https://flowbite.com/docs/images/logo.svg"
@@ -47,18 +39,10 @@ WithLogoFooter.args = {
           name="Flowbite"
         />
         <Footer.LinkGroup className="mt-3 flex-wrap items-center text-sm sm:mt-0">
-          <Footer.Link ariaLabel="About" href="#">
-            About
-          </Footer.Link>
-          <Footer.Link ariaLabel="Privacy Policy" href="#">
-            Privacy Policy
-          </Footer.Link>
-          <Footer.Link ariaLabel="Licensing" href="#">
-            Licensing
-          </Footer.Link>
-          <Footer.Link ariaLabel="Contact" href="#">
-            Contact
-          </Footer.Link>
+          <Footer.Link href="#">About</Footer.Link>
+          <Footer.Link href="#">Privacy Policy</Footer.Link>
+          <Footer.Link href="#">Licensing</Footer.Link>
+          <Footer.Link href="#">Contact</Footer.Link>
         </Footer.LinkGroup>
       </div>
       <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
@@ -86,10 +70,10 @@ WithSocialMediaFooter.args = {
           <div>
             <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">About</h2>
             <Footer.LinkGroup className="flex-col">
-              <Footer.Link ariaLabel="Flowbite" className="mb-4" href="#">
+              <Footer.Link className="mb-4" href="#">
                 Flowbite
               </Footer.Link>
-              <Footer.Link ariaLabel="Tailwind CSS" className="mb-4" href="#">
+              <Footer.Link className="mb-4" href="#">
                 Tailwind CSS
               </Footer.Link>
             </Footer.LinkGroup>
@@ -97,21 +81,21 @@ WithSocialMediaFooter.args = {
           <div>
             <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Follow us</h2>
             <Footer.LinkGroup className="flex-col">
-              <Footer.Link ariaLabel="Github" className="mb-4" href="#">
+              <Footer.Link className="mb-4" href="#">
                 Gihub
               </Footer.Link>
-              <Footer.Link ariaLabel="Discord" className="mb-4" href="#">
+              <Footer.Link className="mb-4" href="#">
                 Discord
               </Footer.Link>
             </Footer.LinkGroup>
           </div>
           <div>
-            <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"> Legal</h2>
+            <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Legal</h2>
             <Footer.LinkGroup className="flex-col">
-              <Footer.Link ariaLabel="Privacy Policy" className="mb-4" href="#">
+              <Footer.Link className="mb-4" href="#">
                 Privacy Policy
               </Footer.Link>
-              <Footer.Link ariaLabel="Terms and Conditions" className="mb-4" href="#">
+              <Footer.Link className="mb-4" href="#">
                 Terms &amp; Conditions
               </Footer.Link>
             </Footer.LinkGroup>
@@ -148,16 +132,16 @@ SitemapLinksFooter.args = {
         <div>
           <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Company</h2>
           <Footer.LinkGroup className="flex-col">
-            <Footer.Link ariaLabel="About" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               About
             </Footer.Link>
-            <Footer.Link ariaLabel="Careers" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               Careers
             </Footer.Link>
-            <Footer.Link ariaLabel="Brand Center" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               Brand Center
             </Footer.Link>
-            <Footer.Link ariaLabel="Blog" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               Blog
             </Footer.Link>
           </Footer.LinkGroup>
@@ -165,16 +149,16 @@ SitemapLinksFooter.args = {
         <div>
           <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Help center</h2>
           <Footer.LinkGroup className="flex-col">
-            <Footer.Link ariaLabel="Discord Server" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               Discord Server
             </Footer.Link>
-            <Footer.Link ariaLabel="Twitter" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               Twitter
             </Footer.Link>
-            <Footer.Link ariaLabel="Facebook" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               Facebook
             </Footer.Link>
-            <Footer.Link ariaLabel="Contact Us" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               Contact Us
             </Footer.Link>
           </Footer.LinkGroup>
@@ -182,13 +166,13 @@ SitemapLinksFooter.args = {
         <div>
           <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Legal</h2>
           <Footer.LinkGroup className="flex-col">
-            <Footer.Link ariaLabel="Privacy Policy" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               Privacy Policy
             </Footer.Link>
-            <Footer.Link ariaLabel="Licensing" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               Licensing
             </Footer.Link>
-            <Footer.Link ariaLabel="Terms and Conditions" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               Terms &amp; Conditions
             </Footer.Link>
           </Footer.LinkGroup>
@@ -196,23 +180,23 @@ SitemapLinksFooter.args = {
         <div>
           <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Download</h2>
           <Footer.LinkGroup className="flex-col">
-            <Footer.Link ariaLabel="iOS" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               iOS
             </Footer.Link>
-            <Footer.Link ariaLabel="Android" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               Android
             </Footer.Link>
-            <Footer.Link ariaLabel="Windows" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               Windows
             </Footer.Link>
-            <Footer.Link ariaLabel="MacOS" className="mb-4 text-gray-300" href="#">
+            <Footer.Link className="mb-4 text-gray-300" href="#">
               MacOS
             </Footer.Link>
           </Footer.LinkGroup>
         </div>
       </div>
       <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
-      <div className="w-full sm:flex sm:items-center  sm:justify-between  ">
+      <div className="w-full sm:flex sm:items-center sm:justify-between">
         <Footer.Copyright className="text-gray-300" href="#" by="Flowbite™" year={2022} />
         <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
           <Footer.Icon href="#" ariaLabel="Facebook" className="text-gray-400 hover:text-white" icon={BsFacebook} />

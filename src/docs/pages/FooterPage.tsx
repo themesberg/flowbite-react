@@ -10,7 +10,7 @@ const FooterPage: FC = () => {
       code: (
         <Footer>
           <Footer.Copyright href="#" by="Flowbite™" year={2022} />
-          <Footer.LinkGroup className=" mt-3  flex-wrap items-center text-sm sm:mt-0">
+          <Footer.LinkGroup className="mt-3 flex-wrap items-center text-sm sm:mt-0">
             <Footer.Link href="#">About</Footer.Link>
             <Footer.Link href="#">Privacy Policy</Footer.Link>
             <Footer.Link href="#">Licensing</Footer.Link>
@@ -70,7 +70,7 @@ const FooterPage: FC = () => {
                 </Footer.LinkGroup>
               </div>
               <div>
-                <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Follow uss</h2>
+                <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Follow us</h2>
                 <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4" href="#">
                     Gihub
@@ -81,7 +81,7 @@ const FooterPage: FC = () => {
                 </Footer.LinkGroup>
               </div>
               <div>
-                <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"> Legal</h2>
+                <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Legal</h2>
                 <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4" href="#">
                     Privacy Policy
@@ -130,7 +130,7 @@ const FooterPage: FC = () => {
               </Footer.LinkGroup>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400"> Download</h2>
+              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Download</h2>
               <Footer.LinkGroup className="flex-col">
                 <Footer.Link className="mb-4 text-gray-300" href="#">
                   Discord Server
@@ -147,7 +147,7 @@ const FooterPage: FC = () => {
               </Footer.LinkGroup>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400"> Legal</h2>
+              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Legal</h2>
               <Footer.LinkGroup className="flex-col">
                 <Footer.Link className="mb-4 text-gray-300" href="#">
                   Privacy Policy
@@ -161,7 +161,7 @@ const FooterPage: FC = () => {
               </Footer.LinkGroup>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400"> Download</h2>
+              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Download</h2>
               <Footer.LinkGroup className="flex-col">
                 <Footer.Link className="mb-4 text-gray-300" href="#">
                   iOS
@@ -179,7 +179,7 @@ const FooterPage: FC = () => {
             </div>
           </div>
           <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
-          <div className="w-full sm:flex sm:items-center  sm:justify-between  ">
+          <div className="w-full sm:flex sm:items-center sm:justify-between">
             <Footer.Copyright className="text-gray-300" href="#" by="Flowbite™" year={2022} />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
               <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsFacebook} />
