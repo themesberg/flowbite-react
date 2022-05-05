@@ -188,7 +188,7 @@ const FormsPage: FC = () => {
     {
       title: 'Textarea',
       code: (
-        <div>
+        <div id="textarea">
           <Label className="mb-2 block" htmlFor="comment">
             Your message
           </Label>
@@ -199,7 +199,7 @@ const FormsPage: FC = () => {
     {
       title: 'Select input',
       code: (
-        <div>
+        <div id="select">
           <Label className="mb-2 block" htmlFor="countries">
             Select your country
           </Label>
@@ -215,7 +215,7 @@ const FormsPage: FC = () => {
     {
       title: 'Checkbox',
       code: (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4" id="checkbox">
           <div className="flex items-center gap-2">
             <Checkbox id="accept" defaultChecked />
             <Label htmlFor="accept">
@@ -259,7 +259,7 @@ const FormsPage: FC = () => {
     {
       title: 'Radio',
       code: (
-        <fieldset className="flex flex-col gap-4">
+        <fieldset className="flex flex-col gap-4" id="radio">
           <div className="flex items-center gap-2">
             <Radio id="united-state" name="countries" value="USA" defaultChecked />
             <Label htmlFor="united-state">United States</Label>
@@ -288,7 +288,7 @@ const FormsPage: FC = () => {
     {
       title: 'File upload',
       code: (
-        <div>
+        <div id="fileUpload">
           <Label className="mb-2 block" htmlFor="file">
             Upload file
           </Label>
@@ -299,7 +299,7 @@ const FormsPage: FC = () => {
     {
       title: 'Toggle Switch',
       code: (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4" id="toggle">
           <ToggleSwitch label="Toggle me" />
           <ToggleSwitch label="Toggle me (checked)" defaultChecked />
           <ToggleSwitch label="Toggle me (disabled)" disabled />
