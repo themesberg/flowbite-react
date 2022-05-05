@@ -4,7 +4,7 @@
     "baseUrl": "../node_modules",
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress", "cypress-axe"]
   },
   "include": ["**/*.ts", "support/index.js"]
 }

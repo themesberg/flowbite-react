@@ -1,6 +1,13 @@
 describe('Docs / Carousel', function () {
   beforeEach(function () {
     cy.visit('/carousel');
+    cy.injectAxe();
+  });
+
+  describe('The page', function () {
+    it("shouldn't have any detectable a11y violations", function () {
+      cy.checkA11y();
+    });
   });
 
   describe('Default', function () {
