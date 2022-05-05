@@ -18,7 +18,7 @@
     <a href="https://badge.fury.io/js/flowbite-react">
       <img alt="Latest release" src="https://badge.fury.io/js/flowbite-react.svg">
     </a>
-    <a href="https://flowbite-react.com/getting-started/license/">
+    <a href="https://flowbite.com/getting-started/license/">
       <img src="https://img.shields.io/badge/license-MIT-blue" alt="Licenese">
     </a>
   </p>
@@ -50,7 +50,7 @@ Documentation for `flowbite-react` is not yet finished.
 
 If you want to browse the components, visit [flowbite-react.com](https://flowbite-react.com/).
 
-If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite-react.comhttps://flowbite-react.com/getting-started/introduction/).
+If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite.com/getting-started/introduction/).
 
 ## Getting started
 
@@ -152,7 +152,7 @@ module.exports = {
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/typography/">
+        <a href="https://flowbite.com/typography/">
             <img alt="Tailwind CSS Typography" src="https://flowbite.s3.amazonaws.com/github/typography.jpg">
         </a>
     </td>
@@ -184,7 +184,7 @@ module.exports = {
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/timeline/">
+        <a href="https://flowbite.com/timeline/">
             <img alt="Tailwind CSS Timeline" src="https://flowbite.s3.amazonaws.com/github/timeline.jpg">
         </a>
     </td>
@@ -223,7 +223,7 @@ module.exports = {
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/plugins/datepicker/">
+        <a href="https://flowbite.com/plugins/datepicker/">
             <img alt="Tailwind CSS Datepicker" src="https://flowbite.s3.amazonaws.com/github/datepicker.jpg">
         </a>
     </td>
@@ -236,11 +236,11 @@ module.exports = {
   <tr>
     <td width="33.3333%">:construction: Footer</td>
     <td width="33.3333%">Accordion</td>
-    <td width="33.3333%">:construction: Sidebar</td>
+    <td width="33.3333%">Sidebar</td>
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/footer/">
+        <a href="https://flowbite.com/footer/">
             <img alt="Tailwind CSS Footer" src="https://flowbite.s3.amazonaws.com/github/footer.jpg">
         </a>
     </td>
@@ -294,7 +294,7 @@ module.exports = {
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/forms#searchInput">
+        <a href="https://flowbite.com/docs/forms/search-input/">
             <img alt="Tailwind CSS Search Input" src="https://flowbite.s3.amazonaws.com/github/search-input.jpg">
         </a>
     </td>
@@ -338,7 +338,7 @@ module.exports = {
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/forms#range">
+        <a href="https://flowbite.com/docs/forms/range/">
             <img alt="Tailwind CSS Range Slider" src="https://flowbite.s3.amazonaws.com/github/range-slider.jpg">
         </a>
     </td>
@@ -348,7 +348,7 @@ module.exports = {
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/forms#floatingLabel">
+        <a href="https://flowbite.com/docs/forms/floating-label/">
             <img alt="Tailwind CSS Floating Label" src="https://flowbite.s3.amazonaws.com/github/floating-label.jpg">
         </a>
     </td>
@@ -373,10 +373,10 @@ Thank you for your interest in helping! Visit our [guide on contributing](https:
 
 If you need the Figma files for the components you can check out our website for more information:
 
-🎨 [Get access to the Figma design files](https://flowbite-react.com/figma/)
+🎨 [Get access to the Figma design files](https://flowbite.com/figma/)
 
 ## Copyright and license
 
 The Flowbite name and logos are trademarks of Crafty Dwarf Inc.
 
-📝 [Read about the licensing terms](https://flowbite-react.com/getting-started/license/)
+📝 [Read about the licensing terms](https://flowbite.com/getting-started/license/)
