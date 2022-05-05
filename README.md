@@ -148,7 +148,7 @@ module.exports = {
   <tr>
     <td width="33.3333%">:construction: Typography</td>
     <td width="33.3333%">Modal</td>
-    <td width="33.3333%">:construction: Tabs</td>
+    <td width="33.3333%">Tabs</td>
   </tr>
   <tr>
     <td width="33.3333%">
@@ -234,13 +234,13 @@ module.exports = {
     </td>
   </tr>
   <tr>
-    <td width="33.3333%">:construction: Footer</td>
+    <td width="33.3333%">Footer</td>
     <td width="33.3333%">Accordion</td>
     <td width="33.3333%">Sidebar</td>
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite.com/footer/">
+        <a href="https://flowbite-react.com/footer/">
             <img alt="Tailwind CSS Footer" src="https://flowbite.s3.amazonaws.com/github/footer.jpg">
         </a>
     </td>
