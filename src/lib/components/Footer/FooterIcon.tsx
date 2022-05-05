@@ -16,7 +16,7 @@ export const FooterIcon: FC<FooterIconProps> = ({ href, ariaLabel, className, ic
           <Icon className="h-5 w-5" />
         </a>
       ) : (
-        <Icon className="h-5 w-5" aria-label={ariaLabel} />
+        <Icon className="h-5 w-5" />
       )}
     </>
   );
