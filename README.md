@@ -152,7 +152,7 @@ module.exports = {
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite.com/typography/">
+        <a href="https://flowbite.com/docs/components/typography/">
             <img alt="Tailwind CSS Typography" src="https://flowbite.s3.amazonaws.com/github/typography.jpg">
         </a>
     </td>
@@ -184,7 +184,7 @@ module.exports = {
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite.com/timeline/">
+        <a href="https://flowbite.com/docs/components/timeline/">
             <img alt="Tailwind CSS Timeline" src="https://flowbite.s3.amazonaws.com/github/timeline.jpg">
         </a>
     </td>
@@ -223,7 +223,7 @@ module.exports = {
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite.com/plugins/datepicker/">
+        <a href="https://flowbite.com/docs/plugins/datepicker/">
             <img alt="Tailwind CSS Datepicker" src="https://flowbite.s3.amazonaws.com/github/datepicker.jpg">
         </a>
     </td>
