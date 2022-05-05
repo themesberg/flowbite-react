@@ -1,9 +1,5 @@
 {
   "baseUrl": "http://localhost:3000",
-  "experimentalStudio": true,
-  "fixturesFolder": "cypress/fixtures",
-  "integrationFolder": "cypress/integration",
-  "pluginsFile": "cypress/plugins/index.ts",
-  "screenshotsFolder": "cypress/screenshots",
-  "supportFile": "cypress/support/index.ts"
+  "fixturesFolder": false,
+  "pluginsFile": false
 }
