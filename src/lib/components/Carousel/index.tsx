@@ -78,7 +78,7 @@ export const Carousel: FC<CarouselProps> = ({
   const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
 
   return (
-    <div className="relative">
+    <div className="relative" data-testid="carousel">
       <ScrollContainer
         className={classNames(
           'flex h-56 snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg sm:h-64 xl:h-80 2xl:h-96',
@@ -91,7 +91,12 @@ export const Carousel: FC<CarouselProps> = ({
         vertical={false}
       >
         {items?.map((item, index) => (
-          <div key={index} className="w-full flex-shrink-0 transform snap-center">
+          <div
+            key={index}
+            className="w-full flex-shrink-0 transform snap-center"
+            data-active={activeItem === index}
+            data-testid="carousel-item"
+          >
             {item}
           </div>
         ))}
@@ -107,18 +112,29 @@ export const Carousel: FC<CarouselProps> = ({
                 'bg-white/50 hover:bg-white dark:bg-gray-800/50 dark:hover:bg-gray-800': index !== activeItem,
               })}
               onClick={navigateTo(index)}
+              data-testid="carousel-indicator"
             />
           ))}
         </div>
       )}
 
       <div className="absolute top-0 left-0 flex h-full items-center justify-center px-4 focus:outline-none">
-        <button className="group" onClick={navigateTo(activeItem - 1)} type="button">
+        <button
+          className="group"
+          data-testid="carousel-left-control"
+          onClick={navigateTo(activeItem - 1)}
+          type="button"
+        >
           {leftControl ? leftControl : <DefaultLeftControl />}
         </button>
       </div>
       <div className="absolute top-0 right-0 flex h-full items-center justify-center px-4 focus:outline-none">
-        <button className="group" onClick={navigateTo(activeItem + 1)} type="button">
+        <button
+          className="group"
+          data-testid="carousel-right-control"
+          onClick={navigateTo(activeItem + 1)}
+          type="button"
+        >
           {rightControl ? rightControl : <DefaultRightControl />}
         </button>
       </div>
