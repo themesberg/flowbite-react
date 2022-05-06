@@ -148,11 +148,11 @@ module.exports = {
   <tr>
     <td width="33.3333%">:construction: Typography</td>
     <td width="33.3333%">Modal</td>
-    <td width="33.3333%">:construction: Tabs</td>
+    <td width="33.3333%">Tabs</td>
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite.com/typography/">
+        <a href="https://flowbite.com/docs/components/typography/">
             <img alt="Tailwind CSS Typography" src="https://flowbite.s3.amazonaws.com/github/typography.jpg">
         </a>
     </td>
@@ -184,7 +184,7 @@ module.exports = {
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite.com/timeline/">
+        <a href="https://flowbite.com/docs/components/timeline/">
             <img alt="Tailwind CSS Timeline" src="https://flowbite.s3.amazonaws.com/github/timeline.jpg">
         </a>
     </td>
@@ -223,7 +223,7 @@ module.exports = {
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite.com/plugins/datepicker/">
+        <a href="https://flowbite.com/docs/plugins/datepicker/">
             <img alt="Tailwind CSS Datepicker" src="https://flowbite.s3.amazonaws.com/github/datepicker.jpg">
         </a>
     </td>
@@ -234,13 +234,13 @@ module.exports = {
     </td>
   </tr>
   <tr>
-    <td width="33.3333%">:construction: Footer</td>
+    <td width="33.3333%">Footer</td>
     <td width="33.3333%">Accordion</td>
     <td width="33.3333%">Sidebar</td>
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite.com/footer/">
+        <a href="https://flowbite-react.com/footer/">
             <img alt="Tailwind CSS Footer" src="https://flowbite.s3.amazonaws.com/github/footer.jpg">
         </a>
     </td>
