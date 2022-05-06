@@ -1,26 +1,21 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { BiBuoy } from 'react-icons/bi';
 import { HiChartPie, HiViewBoards, HiInbox, HiUser, HiShoppingBag, HiArrowSmRight, HiTable } from 'react-icons/hi';
-import { Sidebar, SidebarComponent } from '.';
+import { Sidebar } from '.';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
-import { SidebarContext } from './SidebarContext';
 
 export default {
   title: 'Components/Sidebar',
-  component: SidebarComponent,
-} as ComponentMeta<typeof SidebarComponent>;
+  component: Sidebar,
+} as ComponentMeta<typeof Sidebar>;
 
-const Template: ComponentStory<typeof SidebarComponent> = (args) => (
-  <SidebarContext.Provider value={{ collapsed: args.collapsed ?? false }}>
-    <SidebarComponent className="px-0" {...args} />
-  </SidebarContext.Provider>
-);
+const Template: ComponentStory<typeof Sidebar> = (args) => <Sidebar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
   children: (
-    <SidebarComponent>
+    <>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item href="#" icon={HiChartPie}>
@@ -46,7 +41,7 @@ Default.args = {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
-    </SidebarComponent>
+    </>
   ),
   collapsed: false,
 };
@@ -55,7 +50,7 @@ export const WithoutIcons = Template.bind({});
 WithoutIcons.storyName = 'No icons';
 WithoutIcons.args = {
   children: (
-    <SidebarComponent>
+    <>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item href="#">Dashboard</Sidebar.Item>
@@ -71,7 +66,7 @@ WithoutIcons.args = {
           <Sidebar.Item href="#">Sign Up</Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
-    </SidebarComponent>
+    </>
   ),
   collapsed: false,
 };
@@ -80,7 +75,7 @@ export const MultiLevelDropdown = Template.bind({});
 MultiLevelDropdown.storyName = 'Multi-level dropdown';
 MultiLevelDropdown.args = {
   children: (
-    <SidebarComponent>
+    <>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item href="#" icon={HiChartPie}>
@@ -106,7 +101,7 @@ MultiLevelDropdown.args = {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
-    </SidebarComponent>
+    </>
   ),
   collapsed: false,
 };
@@ -115,7 +110,7 @@ export const ContentSeparator = Template.bind({});
 ContentSeparator.storyName = 'Content separator';
 ContentSeparator.args = {
   children: (
-    <SidebarComponent>
+    <>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item href="#" icon={HiChartPie}>
@@ -152,7 +147,7 @@ ContentSeparator.args = {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
-    </SidebarComponent>
+    </>
   ),
   collapsed: false,
 };
@@ -161,7 +156,7 @@ export const CTAButton = Template.bind({});
 CTAButton.storyName = 'CTA button';
 CTAButton.args = {
   children: (
-    <SidebarComponent>
+    <>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item href="#" icon={HiChartPie}>
@@ -216,7 +211,7 @@ CTAButton.args = {
           Turn new navigation off
         </a>
       </Sidebar.CTA>
-    </SidebarComponent>
+    </>
   ),
   collapsed: false,
 };
@@ -225,7 +220,7 @@ export const LogoBranding = Template.bind({});
 LogoBranding.storyName = 'Logo branding';
 LogoBranding.args = {
   children: (
-    <SidebarComponent>
+    <>
       <Sidebar.Logo href="#" img="favicon.png" imgAlt="Flowbite logo">
         Flowbite
       </Sidebar.Logo>
@@ -254,7 +249,7 @@ LogoBranding.args = {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
-    </SidebarComponent>
+    </>
   ),
   collapsed: false,
 };
