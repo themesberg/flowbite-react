@@ -7,41 +7,41 @@ import { Sidebar, SidebarProps } from '.';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
 
-describe('Sidebar', function () {
-  describe('when collapsed', function () {
-    describe('logo', function () {
-      it('should not display its text label', function () {
+describe('Sidebar', () => {
+  describe('when collapsed', () => {
+    describe('logo', () => {
+      it('should not display its text label', () => {
         const { getByTestId } = render(<SidebarTestComponent collapsed />);
         expect(getByTestId('sidebar-logo')).toHaveClass('sr-only');
       });
     });
 
-    describe('items', function () {
-      it('should not display their text content', function () {
+    describe('items', () => {
+      it('should not display their text content', () => {
         const { queryAllByTestId } = render(<SidebarTestComponent collapsed />);
         expect(queryAllByTestId('sidebar-item-content')).toHaveLength(0);
       });
-      it('should not display their label', function () {
+      it('should not display their label', () => {
         const { queryAllByTestId } = render(<SidebarTestComponent collapsed />);
         expect(queryAllByTestId('sidebar-item-label')).toHaveLength(0);
       });
-      it('should display a tooltip', async function () {
+      it('should display a tooltip', async () => {
         const { queryAllByTestId } = render(<SidebarTestComponent collapsed />);
         expect(queryAllByTestId('sidebar-item-tooltip')).not.toHaveLength(0);
       });
     });
 
-    describe('CTA', function () {
-      it('should not be displayed', function () {
+    describe('CTA', () => {
+      it('should not be displayed', () => {
         const { queryByTestId } = render(<SidebarTestComponent collapsed />);
         expect(queryByTestId('sidebar-cta')).toBeNull();
       });
     });
   });
 
-  describe('with a collapsable item', function () {
-    describe('that is closed', function () {
-      it('should expand when clicked', async function () {
+  describe('with a collapsable item', () => {
+    describe('that is closed', () => {
+      it('should expand when clicked', async () => {
         const { getByTestId } = render(<SidebarTestComponent />);
         act(() => {
           getByTestId('sidebar-collapse-button').click();
@@ -50,8 +50,8 @@ describe('Sidebar', function () {
       });
     });
 
-    describe('that is open', function () {
-      it('should collapse when clicked', async function () {
+    describe('that is open', () => {
+      it('should collapse when clicked', async () => {
         const { getByTestId } = render(<SidebarTestComponent />);
         act(() => {
           getByTestId('sidebar-collapse-button').click();
