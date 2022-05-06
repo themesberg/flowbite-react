@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useState } from 'react';
-import { Mode } from '../contexts/ThemeContext';
+import { Mode } from '../lib/contexts/ThemeContext';
 
 export const useDarkMode = (
   usePreferences: boolean,
