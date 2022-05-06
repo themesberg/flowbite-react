@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "types": ["cypress", "cypress-axe", "node"]
+  },
+  "include": ["**/*.ts"]
+}
