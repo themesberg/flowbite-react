@@ -9,7 +9,7 @@ const SidebarPage: FC = () => {
     {
       title: 'Default sidebar',
       code: (
-        <Sidebar collapsed={false}>
+        <Sidebar className="!bg-gray-50" collapsed={false}>
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item href="#" icon={HiChartPie}>
@@ -41,7 +41,7 @@ const SidebarPage: FC = () => {
     {
       title: 'Multi-level dropdown',
       code: (
-        <Sidebar collapsed={false}>
+        <Sidebar className="!bg-gray-50" collapsed={false}>
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item href="#" icon={HiChartPie}>
@@ -73,7 +73,7 @@ const SidebarPage: FC = () => {
     {
       title: 'Content separator',
       code: (
-        <Sidebar collapsed={false}>
+        <Sidebar className="!bg-gray-50" collapsed={false}>
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item href="#" icon={HiChartPie}>
@@ -116,7 +116,7 @@ const SidebarPage: FC = () => {
     {
       title: 'CTA button',
       code: (
-        <Sidebar collapsed={false}>
+        <Sidebar className="!bg-gray-50" collapsed={false}>
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item href="#" icon={HiChartPie}>
@@ -177,7 +177,7 @@ const SidebarPage: FC = () => {
     {
       title: 'Logo branding',
       code: (
-        <Sidebar collapsed={false}>
+        <Sidebar className="!bg-gray-50" collapsed={false}>
           <Sidebar.Logo href="#" img="favicon.png" imgAlt="Flowbite logo">
             Flowbite
           </Sidebar.Logo>
