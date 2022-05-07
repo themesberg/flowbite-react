@@ -78,7 +78,7 @@ export const Carousel: FC<CarouselProps> = ({
   const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
 
   return (
-    <div className="relative" data-testid="carousel">
+    <div className="relative w-full" data-testid="carousel">
       <ScrollContainer
         className={classNames(
           'flex h-56 snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg sm:h-64 xl:h-80 2xl:h-96',
@@ -93,7 +93,7 @@ export const Carousel: FC<CarouselProps> = ({
         {items?.map((item, index) => (
           <div
             key={index}
-            className="w-full flex-shrink-0 transform snap-center"
+            className="w-full flex-shrink-0 transform cursor-grab snap-center"
             data-active={activeItem === index}
             data-testid="carousel-item"
           >
