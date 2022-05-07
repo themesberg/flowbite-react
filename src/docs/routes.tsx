@@ -24,6 +24,7 @@ import {
   HiMinus,
 } from 'react-icons/hi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { MdColorLens, MdTab } from 'react-icons/md';
 
 import AccordionPage from './pages/AccordionPage';
 import AlertsPage from './pages/AlertsPage';
@@ -50,7 +51,7 @@ import ToastPage from './pages/ToastPage';
 import TooltipsPage from './pages/TooltipsPage';
 import SidebarPage from './pages/SidebarPage';
 import TabsPage from './pages/TabsPage';
-import { MdTab } from 'react-icons/md';
+import ThemePage from './pages/ThemePage';
 
 export type ComponentCardItem = {
   className: string;
@@ -306,6 +307,17 @@ export const routes: RouteProps[] = [
     icon: MdTab,
     href: '/tabs',
     component: <TabsPage />,
+    group: false,
+    card: {
+      className: 'w-64',
+      images: { light: 'tabs-light.svg', dark: 'tabs-dark.svg' },
+    },
+  },
+  {
+    title: 'Theme',
+    icon: MdColorLens,
+    href: '/theme',
+    component: <ThemePage />,
     group: false,
     card: {
       className: 'w-64',
