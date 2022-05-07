@@ -16,6 +16,7 @@ import {
   HiDeviceTablet,
   HiDuplicate,
   HiHome,
+  HiOutlineClock,
   HiPencilAlt,
   HiStar,
   HiTable,
@@ -47,6 +48,7 @@ import RatingPage from './pages/RatingPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TablePage from './pages/TablePage';
 import ToastPage from './pages/ToastPage';
+import TimelinePage from './pages/TimelinePage';
 import TooltipsPage from './pages/TooltipsPage';
 import SidebarPage from './pages/SidebarPage';
 import TabsPage from './pages/TabsPage';
@@ -310,6 +312,17 @@ export const routes: RouteProps[] = [
     card: {
       className: 'w-64',
       images: { light: 'tabs-light.svg', dark: 'tabs-dark.svg' },
+    },
+  },
+  {
+    title: 'Timeline',
+    icon: HiOutlineClock,
+    href: '/timeline',
+    component: <TimelinePage />,
+    group: false,
+    card: {
+      className: 'w-24',
+      images: { light: 'timeline-light.svg', dark: 'timeline-dark.svg' },
     },
   },
   {
