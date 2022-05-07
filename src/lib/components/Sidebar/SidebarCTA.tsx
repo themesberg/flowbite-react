@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import { PropsWithChildren, FC, HTMLAttributes } from 'react';
+import { PropsWithChildren, FC, ComponentProps } from 'react';
 import { Color } from '../Button';
 import { useSidebarContext } from './SidebarContext';
 
-export interface SidebarCTAProps extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
+export interface SidebarCTAProps extends PropsWithChildren<ComponentProps<'div'>> {
   color?: Color;
 }
 
