@@ -1,6 +1,7 @@
 import { FC, HTMLAttributes, useLayoutEffect, useMemo } from 'react';
-import { ThemeContext } from '../../contexts/ThemeContext';
 import useDarkMode from '../../../hooks/useDarkMode';
+import { ThemeContext } from '../../contexts/ThemeContext';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import defaultTheme from '../../theme/default';
 
 interface FlowbiteProps extends HTMLAttributes<HTMLDivElement> {
@@ -13,8 +14,7 @@ interface FlowbiteProps extends HTMLAttributes<HTMLDivElement> {
 export const Flowbite: FC<FlowbiteProps> = ({ children, theme: customTheme, dark, usePreferences = true }) => {
   const [mode, setMode, toggleMode] = useDarkMode(usePreferences);
 
-  console.log(customTheme); // @TODO
-  const mergedTheme = defaultTheme;
+  const mergedTheme = mergeDeep(defaultTheme, customTheme);
 
   useLayoutEffect(() => {
     if (dark) {

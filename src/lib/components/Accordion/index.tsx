@@ -1,9 +1,9 @@
-import { Children, cloneElement, FC, PropsWithChildren, ReactElement, useContext, useMemo } from 'react';
+import { Children, cloneElement, FC, PropsWithChildren, ReactElement, useMemo } from 'react';
 import { AccordionPanel, AccordionPanelProps } from './AccordionPanel';
 import { AccordionTitle } from './AccordionTitle';
 import { AccordionContent } from './AccordionContent';
 import cn from 'classnames';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { useTheme } from '../../../hooks/useTheme';
 
 export type AccordionProps = PropsWithChildren<{
   flush?: boolean;
@@ -12,7 +12,7 @@ export type AccordionProps = PropsWithChildren<{
 const AccordionComponent: FC<AccordionProps> = ({ children, flush }) => {
   const {
     theme: { accordion },
-  } = useContext(ThemeContext);
+  } = useTheme();
 
   const baseStyle = accordion.base;
   const flushStyle = {

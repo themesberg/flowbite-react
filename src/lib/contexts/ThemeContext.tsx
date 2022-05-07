@@ -3,7 +3,7 @@ import defaultTheme from '../theme/default';
 
 export type Mode = string | undefined | 'light' | 'dark';
 
-interface ThemeContextProps {
+export interface ThemeContextProps {
   theme: any;
   mode?: Mode;
   toggleMode?: () => void | null;
