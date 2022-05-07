@@ -10,6 +10,7 @@ SyntaxHighlighter.registerLanguage('tsx', tsx);
 
 export type CodeExample = {
   title: string;
+  content?: ReactNode;
   code: ReactNode;
   codeClassName?: string;
   codeStringifierOptions?: Options;
@@ -24,9 +25,10 @@ export const DemoPage: FC<DemoPageProps> = ({ examples }) => {
 
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-8 dark:text-white">
-      {examples.map(({ title, code, codeClassName, codeStringifierOptions }, index) => (
+      {examples.map(({ title, content, code, codeClassName, codeStringifierOptions }, index) => (
         <div key={index} className="flex flex-col gap-2">
           <span className="text-2xl font-bold">{title}</span>
+          {content && <div className="py-4">{content}</div>}
           <Card className={codeClassName}>
             {code}
             <SyntaxHighlighterFix language="tsx" style={dracula}>
