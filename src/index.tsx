@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { Root } from './docs/Root';
 import { BrowserRouter } from 'react-router-dom';
-import { Flowbite } from './lib/components/Flowbite';
+import { Flowbite } from './lib/components';
 
 import './index.css';
 import 'flowbite';
