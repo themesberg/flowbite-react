@@ -7,8 +7,6 @@ import { Alert, Card, DarkThemeToggle } from '../../lib';
 import { Flowbite } from '../../lib/components';
 
 const ThemePage: FC = () => {
-  const SyntaxHighlighterFix = SyntaxHighlighter as any;
-
   const theme = { config: { button: { base: 'py-5 px-5' } } };
 
   return (
@@ -27,7 +25,7 @@ const ThemePage: FC = () => {
           </p>
         </div>
         <Card>
-          <SyntaxHighlighterFix language="tsx" style={dracula}>
+          <SyntaxHighlighter language="tsx" style={dracula}>
             {reactElementToJSXString(<Flowbite theme={theme}>...</Flowbite>, {
               showFunctions: true,
               functionValue: (fn) => fn.name,
@@ -35,7 +33,7 @@ const ThemePage: FC = () => {
               useBooleanShorthandSyntax: false,
               useFragmentShortSyntax: false,
             })}
-          </SyntaxHighlighterFix>
+          </SyntaxHighlighter>
         </Card>
       </div>
       <span className="text-xl font-bold">Switch to dark theme</span>
@@ -44,7 +42,7 @@ const ThemePage: FC = () => {
         the <strong>DarkThemeToggle</strong> component.
       </p>
       <Card>
-        <SyntaxHighlighterFix language="tsx" style={dracula}>
+        <SyntaxHighlighter language="tsx" style={dracula}>
           {reactElementToJSXString(
             <Flowbite>
               <DarkThemeToggle />
@@ -57,7 +55,7 @@ const ThemePage: FC = () => {
               useFragmentShortSyntax: false,
             },
           )}
-        </SyntaxHighlighterFix>
+        </SyntaxHighlighter>
       </Card>
     </div>
   );
