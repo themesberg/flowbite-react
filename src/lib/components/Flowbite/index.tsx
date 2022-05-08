@@ -3,14 +3,19 @@ import { ThemeContext, useThemeMode } from './ThemeContext';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import defaultTheme from '../../theme/default';
 
-interface FlowbiteProps extends HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
-  theme?: object;
+export interface ThemeProps {
+  config?: object;
   dark?: boolean;
   usePreferences?: boolean;
 }
 
-export const Flowbite: FC<FlowbiteProps> = ({ children, theme: customTheme, dark, usePreferences = true }) => {
+interface FlowbiteProps extends HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  theme?: ThemeProps;
+}
+
+export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
+  const { config: customTheme, dark, usePreferences = true } = theme;
   const [mode, setMode, toggleMode] = useThemeMode(usePreferences);
 
   const mergedTheme = mergeDeep(defaultTheme, customTheme);

@@ -9,6 +9,8 @@ import { Flowbite } from '../../lib/components/Flowbite';
 const ThemePage: FC = () => {
   const SyntaxHighlighterFix = SyntaxHighlighter as any;
 
+  const theme = { config: { button: { base: 'py-5 px-5' } } };
+
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-8 dark:text-white">
       <div className="flex flex-col gap-2">
@@ -27,7 +29,7 @@ const ThemePage: FC = () => {
         </div>
         <Card>
           <SyntaxHighlighterFix language="tsx" style={dracula}>
-            {reactElementToJSXString(<Flowbite theme={{ button: { base: 'py-5 px-5' } }}>...</Flowbite>, {
+            {reactElementToJSXString(<Flowbite theme={theme}>...</Flowbite>, {
               showFunctions: true,
               functionValue: (fn) => fn.name,
               sortProps: false,
