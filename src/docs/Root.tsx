@@ -46,8 +46,8 @@ export const Root: FC = () => {
         <Sidebar collapsed={collapsed}>
           <Sidebar.Items>
             <Sidebar.ItemGroup>
-              {routes.map(({ href, icon, title }) => (
-                <Sidebar.Item key={title} href={href} icon={icon}>
+              {routes.map(({ href, icon, title }, key) => (
+                <Sidebar.Item key={key} href={href} icon={icon}>
                   {title}
                 </Sidebar.Item>
               ))}

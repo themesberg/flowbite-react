@@ -1,8 +1,8 @@
 import { ComponentProps, FC } from 'react';
 import classNames from 'classnames';
 import { HiChevronDown } from 'react-icons/hi';
-
 import { useAccordionContext } from './AccordionPanelContext';
+import { useTheme } from '../Flowbite/ThemeContext';
 
 export type AccordionTitleProps = ComponentProps<'button'> & {
   arrowIcon?: FC<ComponentProps<'svg'>>;
@@ -10,28 +10,34 @@ export type AccordionTitleProps = ComponentProps<'button'> & {
 
 export const AccordionTitle: FC<AccordionTitleProps> = ({
   children,
-  className,
   arrowIcon: ArrowIcon = HiChevronDown,
   ...props
 }) => {
   const { flush, isOpen, setIsOpen } = useAccordionContext();
-
   const onClick = () => setIsOpen(!isOpen);
+
+  const {
+    theme: {
+      accordion: { title },
+    },
+  } = useTheme();
+
+  const baseStyle = classNames(
+    'flex w-full items-center justify-between first:rounded-t-lg last:rounded-b-lg',
+    title.base,
+  );
+  const buttonStateStyle = classNames({
+    [title.notFlushed]: !flush,
+    [title.isOpen]: isOpen,
+    [title.isOpenNotFlushed]: isOpen && !flush,
+  });
 
   return (
     <button
       data-testid="accordion-title-element"
       {...props}
       type="button"
-      className={classNames(
-        'flex w-full items-center justify-between py-5 text-left font-medium text-gray-500 dark:text-gray-400',
-        {
-          'hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-800': !flush,
-          'text-gray-900 dark:text-white': isOpen,
-          'bg-gray-100 dark:bg-gray-800': isOpen && !flush,
-        },
-        className,
-      )}
+      className={classNames(baseStyle, buttonStateStyle)}
       onClick={onClick}
     >
       <h2>{children}</h2>
