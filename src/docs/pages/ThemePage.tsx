@@ -45,11 +45,6 @@ const ThemePage: FC = () => {
         the <strong>DarkThemeToggle</strong> component.
       </p>
       <Card>
-        <span className="w-auto">
-          <Flowbite>
-            <DarkThemeToggle />
-          </Flowbite>
-        </span>
         <SyntaxHighlighterFix language="tsx" style={dracula}>
           {reactElementToJSXString(
             <Flowbite>

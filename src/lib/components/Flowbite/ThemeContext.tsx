@@ -31,30 +31,40 @@ export const useThemeMode = (
   usePreferences: boolean,
 ): [Mode, React.Dispatch<React.SetStateAction<Mode>> | undefined, (() => void) | undefined] => {
   if (!usePreferences) return [undefined, undefined, undefined];
-
   const [mode, setMode] = useState<Mode>(undefined);
+
+  const savePreference = (m: string) => window.localStorage.setItem('theme', m);
 
   const toggleMode = () => {
     if (!mode) return;
 
-    const newMode = mode == 'light' ? 'dark' : 'light';
-    document.documentElement.className = '';
-    document.documentElement.classList.add(newMode);
-
-    setMode(newMode);
+    document.documentElement.classList.toggle('dark');
+    savePreference(mode);
+    setMode(mode == 'dark' ? 'light' : 'dark');
   };
 
-  useEffect(() => {
-    const userPreference = !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setMode(window.localStorage.getItem('theme') || (userPreference ? 'dark' : 'light'));
-  }, []);
+  if (usePreferences) {
+    useEffect(() => {
+      const userPreference = !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const userMode = window.localStorage.getItem('theme') || (userPreference ? 'dark' : 'light');
 
-  useEffect(() => {
-    if (!mode) return;
+      if (userMode) {
+        setMode(userMode);
+      }
+    }, []);
 
-    window.localStorage.setItem('theme', mode);
-    document.documentElement.classList.add(mode);
-  }, [mode]);
+    useEffect(() => {
+      if (!mode) return;
+
+      savePreference(mode);
+
+      if (mode != 'dark') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    }, [mode]);
+  }
 
   return [mode, setMode, toggleMode];
 };
