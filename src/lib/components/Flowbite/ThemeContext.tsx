@@ -33,7 +33,7 @@ export const useThemeMode = (
   if (!usePreferences) return [undefined, undefined, undefined];
   const [mode, setMode] = useState<Mode>(undefined);
 
-  const savePreference = (m: string) => window.localStorage.setItem('theme', m);
+  const savePreference = (m: string) => localStorage.setItem('theme', m);
 
   const toggleMode = () => {
     if (!mode) return;
@@ -46,7 +46,7 @@ export const useThemeMode = (
   if (usePreferences) {
     useEffect(() => {
       const userPreference = !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const userMode = window.localStorage.getItem('theme') || (userPreference ? 'dark' : 'light');
+      const userMode = localStorage.getItem('theme') || (userPreference ? 'dark' : 'light');
 
       if (userMode) {
         setMode(userMode);
