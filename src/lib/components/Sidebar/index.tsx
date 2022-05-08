@@ -1,4 +1,4 @@
-import { cloneElement, FC, PropsWithChildren, ReactElement } from 'react';
+import { FC, HTMLAttributes, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import SidebarCTA from './SidebarCTA';
 import SidebarLogo from './SidebarLogo';
@@ -6,25 +6,26 @@ import SidebarItem from './SidebarItem';
 import SidebarItemGroup from './SidebarItemGroup';
 import SidebarItems from './SidebarItems';
 import SidebarCollapse from './SidebarCollapse';
-import childrenAsArray from '../../helpers/childrenAsArray';
+import { SidebarContext } from './SidebarContext';
 
-export interface SidebarProps extends PropsWithChildren<Record<string, unknown>> {
+export interface SidebarProps extends PropsWithChildren<HTMLAttributes<HTMLDivElement>> {
   collapsed?: boolean;
 }
 
-const SidebarComponent: FC<SidebarProps> = ({ children, collapsed = false }) => {
+const SidebarComponent: FC<SidebarProps> = ({ children, className, collapsed = false, ...rest }) => {
   return (
-    <aside
-      aria-label="sidebar"
-      className={classNames('h-full', {
-        'w-64': !collapsed,
-        'w-16': collapsed,
-      })}
-    >
-      <div className="h-full overflow-y-auto rounded bg-gray-50 py-4 px-3 dark:bg-gray-800">
-        {childrenAsArray(children).map((child, i) => cloneElement(child as ReactElement, { key: i, collapsed }))}
-      </div>
-    </aside>
+    <SidebarContext.Provider value={{ collapsed }}>
+      <aside aria-label="Sidebar" className={classNames('h-full', collapsed ? 'w-16' : 'w-64')} {...rest}>
+        <div
+          className={classNames(
+            'h-full overflow-y-auto overflow-x-hidden rounded bg-white py-4 px-3 dark:bg-gray-800',
+            className,
+          )}
+        >
+          {children}
+        </div>
+      </aside>
+    </SidebarContext.Provider>
   );
 };
 

@@ -1,7 +1,6 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { BiBuoy } from 'react-icons/bi';
 import { HiChartPie, HiViewBoards, HiInbox, HiUser, HiShoppingBag, HiArrowSmRight, HiTable } from 'react-icons/hi';
-
 import { Sidebar } from '.';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
@@ -9,15 +8,14 @@ import { Button } from '../Button';
 export default {
   title: 'Components/Sidebar',
   component: Sidebar,
-} as Meta;
+} as ComponentMeta<typeof Sidebar>;
 
-const Template: Story = (args) => <Sidebar {...args} />;
+const Template: ComponentStory<typeof Sidebar> = (args) => <Sidebar {...args} />;
 
-export const DefaultSidebar = Template.bind({});
-DefaultSidebar.storyName = 'Default';
-DefaultSidebar.args = {
+export const Default = Template.bind({});
+Default.args = {
   children: (
-    <Sidebar collapsed={false}>
+    <>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item href="#" icon={HiChartPie}>
@@ -43,7 +41,32 @@ DefaultSidebar.args = {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
-    </Sidebar>
+    </>
+  ),
+  collapsed: false,
+};
+
+export const WithoutIcons = Template.bind({});
+WithoutIcons.storyName = 'No icons';
+WithoutIcons.args = {
+  children: (
+    <>
+      <Sidebar.Items>
+        <Sidebar.ItemGroup>
+          <Sidebar.Item href="#">Dashboard</Sidebar.Item>
+          <Sidebar.Item href="#" label="Pro" labelColor="gray">
+            Kanban
+          </Sidebar.Item>
+          <Sidebar.Item href="#" label="3">
+            Inbox
+          </Sidebar.Item>
+          <Sidebar.Item href="#">Users</Sidebar.Item>
+          <Sidebar.Item href="#">Products</Sidebar.Item>
+          <Sidebar.Item href="#">Sign In</Sidebar.Item>
+          <Sidebar.Item href="#">Sign Up</Sidebar.Item>
+        </Sidebar.ItemGroup>
+      </Sidebar.Items>
+    </>
   ),
   collapsed: false,
 };
@@ -52,7 +75,7 @@ export const MultiLevelDropdown = Template.bind({});
 MultiLevelDropdown.storyName = 'Multi-level dropdown';
 MultiLevelDropdown.args = {
   children: (
-    <Sidebar collapsed={false}>
+    <>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item href="#" icon={HiChartPie}>
@@ -78,7 +101,7 @@ MultiLevelDropdown.args = {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
-    </Sidebar>
+    </>
   ),
   collapsed: false,
 };
@@ -87,7 +110,7 @@ export const ContentSeparator = Template.bind({});
 ContentSeparator.storyName = 'Content separator';
 ContentSeparator.args = {
   children: (
-    <Sidebar collapsed={false}>
+    <>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item href="#" icon={HiChartPie}>
@@ -124,7 +147,7 @@ ContentSeparator.args = {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
-    </Sidebar>
+    </>
   ),
   collapsed: false,
 };
@@ -133,7 +156,7 @@ export const CTAButton = Template.bind({});
 CTAButton.storyName = 'CTA button';
 CTAButton.args = {
   children: (
-    <Sidebar collapsed={false}>
+    <>
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Sidebar.Item href="#" icon={HiChartPie}>
@@ -164,7 +187,7 @@ CTAButton.args = {
           <Badge color="yellow">Beta</Badge>
           <Button
             aria-label="Close"
-            className="-mx-1.5 -my-1.5 ml-auto !h-6 !w-6 bg-transparent !p-1 text-blue-900 hover:bg-blue-200"
+            className="-mx-1.5 -my-1.5 ml-auto !h-6 !w-6 bg-transparent !p-1 text-blue-900 hover:bg-blue-200 dark:!bg-blue-900 dark:text-blue-200 dark:hover:!bg-blue-800"
             data-collapse-toggle="dropdown-cta"
           >
             <span className="sr-only">Close</span>
@@ -173,7 +196,7 @@ CTAButton.args = {
                 fillRule="evenodd"
                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                 clipRule="evenodd"
-              ></path>
+              />
             </svg>
           </Button>
         </div>
@@ -188,7 +211,7 @@ CTAButton.args = {
           Turn new navigation off
         </a>
       </Sidebar.CTA>
-    </Sidebar>
+    </>
   ),
   collapsed: false,
 };
@@ -197,8 +220,8 @@ export const LogoBranding = Template.bind({});
 LogoBranding.storyName = 'Logo branding';
 LogoBranding.args = {
   children: (
-    <Sidebar collapsed={false}>
-      <Sidebar.Logo href="#" img="logo192.png" imgAlt="Flowbite logo">
+    <>
+      <Sidebar.Logo href="#" img="favicon.png" imgAlt="Flowbite logo">
         Flowbite
       </Sidebar.Logo>
       <Sidebar.Items>
@@ -226,7 +249,7 @@ LogoBranding.args = {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
       </Sidebar.Items>
-    </Sidebar>
+    </>
   ),
   collapsed: false,
 };

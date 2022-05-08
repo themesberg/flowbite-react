@@ -1,8 +1,9 @@
 import classNames from 'classnames';
-import { PropsWithChildren, FC } from 'react';
+import { PropsWithChildren, FC, ComponentProps } from 'react';
 import { Color } from '../Button';
+import { useSidebarContext } from './SidebarContext';
 
-export interface SidebarCTAProps extends PropsWithChildren<Record<string, unknown>> {
+export interface SidebarCTAProps extends PropsWithChildren<ComponentProps<'div'>> {
   color?: Color;
 }
 
@@ -17,8 +18,20 @@ const colorClasses: Record<Color, string> = {
   purple: 'bg-purple-50 dark:bg-purple-900',
 };
 
-const SidebarCTA: FC<SidebarCTAProps> = ({ children, color = 'blue' }) => {
-  return <div className={classNames('mt-6 rounded-lg p-4', colorClasses[color])}>{children}</div>;
+const SidebarCTA: FC<SidebarCTAProps> = ({ children, className, color = 'blue', ...rest }) => {
+  const { collapsed } = useSidebarContext();
+
+  return collapsed ? (
+    <></>
+  ) : (
+    <div
+      className={classNames('mt-6 rounded-lg p-4', colorClasses[color], className)}
+      data-testid="sidebar-cta"
+      {...rest}
+    >
+      {children}
+    </div>
+  );
 };
 
 SidebarCTA.displayName = 'Sidebar.CTA';
