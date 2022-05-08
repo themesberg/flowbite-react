@@ -1,4 +1,4 @@
-import cn from 'classnames';
+import classNames from 'classnames';
 import { ComponentProps, FC } from 'react';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -12,7 +12,7 @@ export const AccordionContent: FC<ComponentProps<'div'>> = ({ children, ...props
   } = useTheme();
   const { isOpen } = useAccordionContext();
 
-  const baseStyle = cn('first:rounded-t-lg', content.base);
+  const baseStyle = classNames('first:rounded-t-lg', content.base);
 
   return isOpen ? (
     <div {...props} className={baseStyle}>

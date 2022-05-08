@@ -1,5 +1,5 @@
 import { ComponentProps, FC } from 'react';
-import cn from 'classnames';
+import classNames from 'classnames';
 import { HiChevronDown } from 'react-icons/hi';
 import { useAccordionContext } from './AccordionPanelContext';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -22,8 +22,11 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
     },
   } = useTheme();
 
-  const baseStyle = cn('flex w-full items-center justify-between first:rounded-t-lg last:rounded-b-lg', title.base);
-  const buttonStateStyle = cn({
+  const baseStyle = classNames(
+    'flex w-full items-center justify-between first:rounded-t-lg last:rounded-b-lg',
+    title.base,
+  );
+  const buttonStateStyle = classNames({
     [title.notFlushed]: !flush,
     [title.isOpen]: isOpen,
     [title.isOpenNotFlushed]: isOpen && !flush,
@@ -34,11 +37,11 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
       data-testid="accordion-title-element"
       {...props}
       type="button"
-      className={cn(baseStyle, buttonStateStyle)}
+      className={classNames(baseStyle, buttonStateStyle)}
       onClick={onClick}
     >
       <h2>{children}</h2>
-      <ArrowIcon className={cn('h-6 w-6 shrink-0', { 'rotate-180': isOpen })} />
+      <ArrowIcon className={classNames('h-6 w-6 shrink-0', { 'rotate-180': isOpen })} />
     </button>
   );
 };
