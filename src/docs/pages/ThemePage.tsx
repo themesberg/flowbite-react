@@ -18,7 +18,6 @@ const ThemePage: FC = () => {
         <div className="py-4">
           <Alert color="yellow" Icon={HiInformationCircle}>
             This feature is highly experimental. In the future, it could be deprecated or even suffer several changes.
-            Please, be aware that if somehow
           </Alert>
           <p className="mt-4">
             Sometimes you want to give your web application a little more personality and customize some aspects of
