@@ -2,7 +2,7 @@ import { ComponentProps, FC } from 'react';
 import cn from 'classnames';
 import { HiChevronDown } from 'react-icons/hi';
 import { useAccordionContext } from './AccordionPanelContext';
-import { useTheme } from '../../../hooks/useTheme';
+import { useTheme } from '../Flowbite/ThemeContext';
 
 export type AccordionTitleProps = ComponentProps<'button'> & {
   arrowIcon?: FC<ComponentProps<'svg'>>;

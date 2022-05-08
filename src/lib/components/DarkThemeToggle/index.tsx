@@ -1,6 +1,6 @@
 import { FC, useContext } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
-import { ThemeContext } from '../../contexts/ThemeContext';
+import { ThemeContext } from '../Flowbite/ThemeContext';
 
 export const DarkThemeToggle: FC = () => {
   const { mode, toggleMode } = useContext(ThemeContext);

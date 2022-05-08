@@ -3,7 +3,7 @@ import { AccordionPanel, AccordionPanelProps } from './AccordionPanel';
 import { AccordionTitle } from './AccordionTitle';
 import { AccordionContent } from './AccordionContent';
 import cn from 'classnames';
-import { useTheme } from '../../../hooks/useTheme';
+import { useTheme } from '../Flowbite/ThemeContext';
 
 export type AccordionProps = PropsWithChildren<{
   flush?: boolean;

@@ -1,8 +1,33 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useEffect, useState } from 'react';
-import { Mode } from '../lib/contexts/ThemeContext';
+import { FC, ReactNode, createContext, useContext, useState, useEffect } from 'react';
+import defaultTheme from '../../theme/default';
 
-export const useDarkMode = (
+export type Mode = string | undefined | 'light' | 'dark';
+
+interface ThemeContextProps {
+  theme: any;
+  mode?: Mode;
+  toggleMode?: () => void | null;
+}
+
+export const ThemeContext = createContext<ThemeContextProps>({
+  theme: defaultTheme,
+});
+
+interface ThemeProviderProps {
+  children: ReactNode;
+  value?: any;
+}
+
+export const ThemeProvider: FC<ThemeProviderProps> = ({ children, value }) => {
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+};
+
+export function useTheme(): ThemeContextProps {
+  return useContext(ThemeContext);
+}
+
+export const useThemeMode = (
   usePreferences: boolean,
 ): [Mode, React.Dispatch<React.SetStateAction<Mode>> | undefined, (() => void) | undefined] => {
   if (!usePreferences) return [undefined, undefined, undefined];
@@ -33,5 +58,3 @@ export const useDarkMode = (
 
   return [mode, setMode, toggleMode];
 };
-
-export default useDarkMode;

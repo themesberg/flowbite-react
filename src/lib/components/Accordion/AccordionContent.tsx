@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { ComponentProps, FC } from 'react';
-import { useTheme } from '../../../hooks/useTheme';
+import { useTheme } from '../Flowbite/ThemeContext';
+
 import { useAccordionContext } from './AccordionPanelContext';
 
 export const AccordionContent: FC<ComponentProps<'div'>> = ({ children, ...props }) => {
