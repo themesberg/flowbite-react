@@ -106,6 +106,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.0",
     "react-syntax-highlighter": "^15.5.0",
+    "resize-observer-polyfill": "^1.5.1",
     "standard-version": "^9.3.2",
     "start-server-and-test": "^1.14.0",
     "storybook-dark-mode": "^1.0.9",

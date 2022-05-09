@@ -63,7 +63,9 @@ describe('Sidebar', () => {
   });
 });
 
-function SidebarTestComponent({ collapsed }: SidebarProps): JSX.Element {
+const SidebarTestComponent = ({ collapsed }: SidebarProps): JSX.Element => {
+  const history = createMemoryHistory();
+
   return (
     <Sidebar collapsed={collapsed}>
       <Sidebar.Logo href="#" img="favicon.png" imgAlt="Flowbite logo">
@@ -125,4 +127,4 @@ function SidebarTestComponent({ collapsed }: SidebarProps): JSX.Element {
       </Sidebar.CTA>
     </Sidebar>
   );
-}
+};
