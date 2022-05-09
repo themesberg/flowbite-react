@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ComponentProps, FC, PropsWithChildren } from 'react';
+import { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import { Badge, BadgeColor } from '../Badge';
 import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
@@ -12,14 +12,16 @@ export interface SidebarItem {
   labelColor?: BadgeColor;
 }
 
-export interface SidebarItemProps extends PropsWithChildren<SidebarItem> {
-  href: string;
+export interface SidebarItemProps extends PropsWithChildren<SidebarItem & Record<string, unknown>> {
+  as?: ElementType;
+  active?: boolean;
 }
 
 const SidebarItem: FC<SidebarItemProps> = ({
   children,
   className,
-  href,
+  as: Component = 'a',
+  active,
   icon: Icon,
   label,
   labelColor = 'blue',
@@ -27,7 +29,6 @@ const SidebarItem: FC<SidebarItemProps> = ({
 }) => {
   const { collapsed } = useSidebarContext();
   const { insideCollapse } = useSidebarItemContext();
-  const isCurrentPage = typeof window !== 'undefined' && window.location.pathname === href;
 
   const Wrapper = ({ children: wrapperChildren }: PropsWithChildren<Record<string, unknown>>) => (
     <li data-testid="sidebar-item">
@@ -43,23 +44,22 @@ const SidebarItem: FC<SidebarItemProps> = ({
 
   return (
     <Wrapper>
-      <a
+      <Component
         className={classNames(
           'flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
           {
-            'bg-gray-100 dark:bg-gray-700': isCurrentPage,
+            'bg-gray-100 dark:bg-gray-700': active,
             'group w-full pl-8 transition duration-75': !collapsed && insideCollapse,
           },
           className,
         )}
-        href={href}
         {...rest}
       >
         {Icon && (
           <Icon
             className={classNames(
               'h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
-              { 'text-gray-700 dark:text-gray-100': isCurrentPage },
+              { 'text-gray-700 dark:text-gray-100': active },
             )}
           />
         )}
@@ -73,7 +73,7 @@ const SidebarItem: FC<SidebarItemProps> = ({
             {label}
           </Badge>
         )}
-      </a>
+      </Component>
     </Wrapper>
   );
 };
