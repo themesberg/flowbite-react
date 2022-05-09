@@ -65,7 +65,7 @@ describe('Sidebar', () => {
   });
 });
 
-function SidebarTestComponent({ collapsed }: SidebarProps): JSX.Element {
+const SidebarTestComponent = ({ collapsed }: SidebarProps): JSX.Element => {
   const history = createMemoryHistory();
 
   return (
@@ -131,4 +131,4 @@ function SidebarTestComponent({ collapsed }: SidebarProps): JSX.Element {
       </Sidebar>
     </Router>
   );
-}
+};
