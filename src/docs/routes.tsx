@@ -279,6 +279,10 @@ export const routes: RouteProps[] = [
     href: '/sidebar',
     component: <SidebarPage />,
     group: false,
+    card: {
+      className: 'w-16',
+      images: { light: 'sidebar-light.svg', dark: 'sidebar-dark.svg' },
+    },
   },
   {
     title: 'Spinners',
