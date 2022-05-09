@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import { ComponentProps, FC, PropsWithChildren } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import { Badge, BadgeColor } from '../Badge';
 import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
@@ -26,9 +25,9 @@ const SidebarItem: FC<SidebarItemProps> = ({
   labelColor = 'blue',
   ...rest
 }) => {
-  const { pathname } = useLocation();
   const { collapsed } = useSidebarContext();
   const { insideCollapse } = useSidebarItemContext();
+  const isCurrentPage = typeof window !== 'undefined' && window.location.pathname === href;
 
   const Wrapper = ({ children: wrapperChildren }: PropsWithChildren<Record<string, unknown>>) => (
     <li data-testid="sidebar-item">
@@ -44,23 +43,23 @@ const SidebarItem: FC<SidebarItemProps> = ({
 
   return (
     <Wrapper>
-      <Link
+      <a
         className={classNames(
           'flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
           {
-            'bg-gray-100 dark:bg-gray-700': href === pathname,
+            'bg-gray-100 dark:bg-gray-700': isCurrentPage,
             'group w-full pl-8 transition duration-75': !collapsed && insideCollapse,
           },
           className,
         )}
-        to={href}
+        href={href}
         {...rest}
       >
         {Icon && (
           <Icon
             className={classNames(
               'h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
-              { 'text-gray-700 dark:text-gray-100': href === pathname },
+              { 'text-gray-700 dark:text-gray-100': isCurrentPage },
             )}
           />
         )}
@@ -74,7 +73,7 @@ const SidebarItem: FC<SidebarItemProps> = ({
             {label}
           </Badge>
         )}
-      </Link>
+      </a>
     </Wrapper>
   );
 };
