@@ -30,7 +30,7 @@ const RatingPage: FC = () => {
       ),
     },
     {
-      title: 'Rating with text',
+      title: 'Rating count',
       code: (
         <Rating>
           <Rating.Star />
@@ -71,7 +71,7 @@ const RatingPage: FC = () => {
       ),
     },
     {
-      title: 'Star sizing',
+      title: 'Advanced rating',
       code: (
         <>
           <Rating>
