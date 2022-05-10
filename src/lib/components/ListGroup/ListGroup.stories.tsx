@@ -1,4 +1,5 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
+import { HiUserCircle, HiOutlineAdjustments, HiInbox, HiCloudDownload } from 'react-icons/hi';
 
 import { ListGroup, ListGroupProps } from '.';
 
@@ -18,6 +19,51 @@ DefaultListGroup.args = {
       <ListGroup.Item>Settings</ListGroup.Item>
       <ListGroup.Item>Messages</ListGroup.Item>
       <ListGroup.Item>Download</ListGroup.Item>
+    </>
+  ),
+};
+
+export const WithLinks = Template.bind({});
+WithLinks.storyName = 'With links';
+WithLinks.args = {
+  children: (
+    <>
+      <ListGroup.Item active href="#">
+        Profile
+      </ListGroup.Item>
+      <ListGroup.Item href="#">Settings</ListGroup.Item>
+      <ListGroup.Item href="#">Messages</ListGroup.Item>
+      <ListGroup.Item href="#">Download</ListGroup.Item>
+    </>
+  ),
+};
+
+export const WithButtons = Template.bind({});
+WithButtons.storyName = 'With buttons';
+WithButtons.args = {
+  children: (
+    <>
+      <ListGroup.Item active onClick={() => alert('Profile clicked!')}>
+        Profile
+      </ListGroup.Item>
+      <ListGroup.Item>Settings</ListGroup.Item>
+      <ListGroup.Item>Messages</ListGroup.Item>
+      <ListGroup.Item>Download</ListGroup.Item>
+    </>
+  ),
+};
+
+export const WithIcons = Template.bind({});
+WithIcons.storyName = 'With icons';
+WithIcons.args = {
+  children: (
+    <>
+      <ListGroup.Item active icon={HiUserCircle}>
+        Profile
+      </ListGroup.Item>
+      <ListGroup.Item icon={HiOutlineAdjustments}>Settings</ListGroup.Item>
+      <ListGroup.Item icon={HiInbox}>Messages</ListGroup.Item>
+      <ListGroup.Item icon={HiCloudDownload}>Download</ListGroup.Item>
     </>
   ),
 };
