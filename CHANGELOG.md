@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.21](https://github.com/themesberg/flowbite-react/compare/v0.0.19...v0.0.21) (2022-05-10)
+
+
+### Features
+
+* add tab component ([#87](https://github.com/themesberg/flowbite-react/issues/87)) ([e94cceb](https://github.com/themesberg/flowbite-react/commit/e94cceb0f88302a9681a2cc9555bff5d2a532df9))
+* adds footer component ([#59](https://github.com/themesberg/flowbite-react/issues/59)) ([7799f15](https://github.com/themesberg/flowbite-react/commit/7799f15d4adf89e8cc21fef3b2553120c9a261db))
+* **build:** Add `cypress` for end-to-end (integration) testing ([#85](https://github.com/themesberg/flowbite-react/issues/85)) ([4df13e6](https://github.com/themesberg/flowbite-react/commit/4df13e6dff826ae9af2859e4ba3b92abb5e4bb06))
+* flowbite theme context provider ([#61](https://github.com/themesberg/flowbite-react/issues/61)) ([7274f5e](https://github.com/themesberg/flowbite-react/commit/7274f5e20a5111f1c7c43c63fd497c8a34a0950f))
+* **route:** Add `Sidebar` examples page & stories, resolving [#53](https://github.com/themesberg/flowbite-react/issues/53) [#56](https://github.com/themesberg/flowbite-react/issues/56) ([#69](https://github.com/themesberg/flowbite-react/issues/69)) ([38b86bd](https://github.com/themesberg/flowbite-react/commit/38b86bd8b10fb4d5c310f0cf214c5e935021f3cd))
+
+
+### Bug Fixes
+
+* **docs:** Update `README` Components links to new URL pattern ([#84](https://github.com/themesberg/flowbite-react/issues/84)) ([39c2d91](https://github.com/themesberg/flowbite-react/commit/39c2d91c02528b56231e374de0b34d8593344d97))
+* fix Carousel styles ([78060ea](https://github.com/themesberg/flowbite-react/commit/78060ea820f4b52c3b4e27acddd6d656ff91e5c7))
+* improving flow handling ([#86](https://github.com/themesberg/flowbite-react/issues/86)) ([dc8af66](https://github.com/themesberg/flowbite-react/commit/dc8af66f24fa218f4152fff29c87d4620ada4bb3))
+* refactor sidebar item to accept a component as wrapper ([1c964eb](https://github.com/themesberg/flowbite-react/commit/1c964eb1cbfa458d3595e2e0d367e6479dd65992))
+
 ### [0.0.20](https://github.com/themesberg/flowbite-react/compare/v0.0.19...v0.0.20) (2022-05-02)
 
 ### [0.0.19](https://github.com/themesberg/flowbite-react/compare/v0.0.18...v0.0.19) (2022-05-02)
