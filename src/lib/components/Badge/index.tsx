@@ -52,7 +52,7 @@ export const Badge: FC<BadgeProps> = ({ children, color = 'blue', size = 'xs', h
   );
 
   return href ? (
-    <a className="group" href={href}>
+    <a className="group" data-testid="badge-link" href={href}>
       {span}
     </a>
   ) : (
