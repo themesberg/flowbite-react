@@ -1,6 +1,6 @@
 {
   "name": "flowbite-react",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
