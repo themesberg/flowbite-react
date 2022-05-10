@@ -21,7 +21,7 @@ DefaultBadge.args = {
 };
 
 export const BadgeWithIcon = Template.bind({});
-BadgeWithIcon.storyName = 'Badge with icon';
+BadgeWithIcon.storyName = 'With icon';
 BadgeWithIcon.args = {
   color: 'indigo',
   icon: HiCheck,
@@ -29,8 +29,15 @@ BadgeWithIcon.args = {
 };
 
 export const BadgeOnlyIcon = Template.bind({});
-BadgeOnlyIcon.storyName = 'Badge only icon';
+BadgeOnlyIcon.storyName = 'Only icon';
 BadgeOnlyIcon.args = {
   color: 'green',
   icon: HiCheck,
+};
+
+export const BadgeAsLink = Template.bind({});
+BadgeAsLink.storyName = 'As link';
+BadgeAsLink.args = {
+  href: '/badges',
+  children: 'Read more →',
 };
