@@ -22,7 +22,7 @@ DefaultAlert.args = {
 };
 
 export const AlertWithIcons = Template.bind({});
-AlertWithIcons.storyName = 'Alert with icons';
+AlertWithIcons.storyName = 'With icons';
 AlertWithIcons.args = {
   icon: HiInformationCircle,
   children: (
@@ -34,7 +34,7 @@ AlertWithIcons.args = {
 };
 
 export const AlertDismissible = Template.bind({});
-AlertDismissible.storyName = 'Dismissible alert';
+AlertDismissible.storyName = 'Dismissible';
 AlertDismissible.args = {
   color: 'green',
   onDismiss: function onDismiss() {
@@ -44,7 +44,7 @@ AlertDismissible.args = {
 };
 
 export const AlertRounded = Template.bind({});
-AlertRounded.storyName = 'Do not rounded alert';
+AlertRounded.storyName = 'Not rounded';
 AlertRounded.args = {
   rounded: false,
   color: 'yellow',
