@@ -8,11 +8,12 @@ export default {
   component: Alert,
 } as Meta;
 
-const Template: Story<AlertProps> = (args) => <Alert {...args} />;
+const Template: Story<AlertProps> = (props) => <Alert {...props} />;
 
 export const DefaultAlert = Template.bind({});
 DefaultAlert.storyName = 'Default';
 DefaultAlert.args = {
+  onDismiss: false,
   children: (
     <>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta minima rerum veritatis optio atque impedit, enim
@@ -25,6 +26,7 @@ export const AlertWithIcons = Template.bind({});
 AlertWithIcons.storyName = 'With icons';
 AlertWithIcons.args = {
   icon: HiInformationCircle,
+  onDismiss: false,
   children: (
     <>
       More info about this info alert goes here. This example text is going to run a bit longer so that you can see how
@@ -37,34 +39,35 @@ export const AlertDismissible = Template.bind({});
 AlertDismissible.storyName = 'Dismissible';
 AlertDismissible.args = {
   color: 'green',
-  onDismiss: function onDismiss() {
-    return alert('Alert dismissed!');
-  },
+  onDismiss: () => alert('Alert dismissed!'),
   children: <>Info alert! Change a few things up and try submitting again.</>,
 };
 
 export const AlertRounded = Template.bind({});
 AlertRounded.storyName = 'Not rounded';
 AlertRounded.args = {
-  rounded: false,
   color: 'yellow',
+  rounded: false,
+  onDismiss: false,
   children: <>Info alert! Change a few things up and try submitting again.</>,
 };
 
 export const AlertWithBorderAccent = Template.bind({});
 AlertWithBorderAccent.storyName = 'Border accent';
 AlertWithBorderAccent.args = {
-  withBorderAccent: true,
   color: 'yellow',
+  onDismiss: false,
+  withBorderAccent: true,
   children: <>Info alert! Change a few things up and try submitting again.</>,
 };
 
 export const AlertWithAdditionalContent = Template.bind({});
 AlertWithAdditionalContent.storyName = 'Additional content';
 AlertWithAdditionalContent.args = {
-  withBorderAccent: true,
-  icon: HiInformationCircle,
   color: 'blue',
+  icon: HiInformationCircle,
+  onDismiss: false,
+  withBorderAccent: true,
   additionalContent: (
     <>
       <div className="mt-2 mb-4 text-sm text-blue-700 dark:text-blue-800">
@@ -101,11 +104,8 @@ AlertWithAllOptions.args = {
   color: 'green',
   rounded: false,
   withBorderAccent: true,
-  onDismiss: function onDismiss() {
-    return alert('Alert dismissed!');
-  },
+  onDismiss: () => alert('Alert dismissed!'),
   icon: HiInformationCircle,
-
   additionalContent: (
     <>
       <div className="mt-2 mb-4 text-sm text-green-700 dark:text-green-800">
