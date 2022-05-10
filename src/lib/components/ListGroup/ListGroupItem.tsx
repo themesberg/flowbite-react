@@ -13,11 +13,16 @@ export type ListGroupItemProps = PropsWithChildren<{
 export const ListGroupItem: FC<ListGroupItemProps> = ({ children, className, href, onClick, active, icon: Icon }) => {
   const Wrapper = ({ children, className }: PropsWithChildren<{ className?: string }>) =>
     !href ? (
-      <button className={classNames('text-left', className)} onClick={onClick} type="button">
+      <button
+        className={classNames('text-left', className)}
+        data-testid="list-group-item"
+        onClick={onClick}
+        type="button"
+      >
         {children}
       </button>
     ) : (
-      <a className={className} href={href}>
+      <a className={className} data-testid="list-group-item" href={href}>
         {children}
       </a>
     );
