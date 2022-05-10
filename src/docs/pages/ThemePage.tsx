@@ -14,7 +14,7 @@ const ThemePage: FC = () => {
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Theme</span>
         <div className="py-4">
-          <Alert color="yellow" Icon={HiInformationCircle}>
+          <Alert color="yellow" icon={HiInformationCircle}>
             This feature is highly experimental. In the future, it could be deprecated or even suffer several changes.
           </Alert>
           <p className="mt-4">

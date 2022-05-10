@@ -19,7 +19,7 @@ const AlertsPage: FC = () => {
     {
       title: 'Alerts with icon',
       code: (
-        <Alert color="red" Icon={HiInformationCircle}>
+        <Alert color="red" icon={HiInformationCircle}>
           {alertText}
         </Alert>
       ),
@@ -77,7 +77,7 @@ const AlertsPage: FC = () => {
               </div>
             </>
           }
-          Icon={HiInformationCircle}
+          icon={HiInformationCircle}
         >
           <h3 className="text-lg font-medium text-blue-700 dark:text-blue-800">This is a info alert</h3>
         </Alert>
@@ -114,7 +114,7 @@ const AlertsPage: FC = () => {
               </div>
             </>
           }
-          Icon={HiInformationCircle}
+          icon={HiInformationCircle}
         >
           <h3 className="text-lg font-medium text-green-700 dark:text-green-800">This is a info alert</h3>
         </Alert>
