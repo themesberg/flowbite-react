@@ -24,7 +24,7 @@ DefaultAlert.args = {
 export const AlertWithIcons = Template.bind({});
 AlertWithIcons.storyName = 'Alert with icons';
 AlertWithIcons.args = {
-  Icon: HiInformationCircle,
+  icon: HiInformationCircle,
   children: (
     <>
       More info about this info alert goes here. This example text is going to run a bit longer so that you can see how
@@ -63,7 +63,7 @@ export const AlertWithAdditionalContent = Template.bind({});
 AlertWithAdditionalContent.storyName = 'Additional content';
 AlertWithAdditionalContent.args = {
   withBorderAccent: true,
-  Icon: HiInformationCircle,
+  icon: HiInformationCircle,
   color: 'blue',
   additionalContent: (
     <>
@@ -104,7 +104,7 @@ AlertWithAllOptions.args = {
   onDismiss: function onDismiss() {
     return alert('Alert dismissed!');
   },
-  Icon: HiInformationCircle,
+  icon: HiInformationCircle,
 
   additionalContent: (
     <>

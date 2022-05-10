@@ -4,7 +4,7 @@ import { HiX } from 'react-icons/hi';
 
 export type AlertProps = PropsWithChildren<{
   color?: 'blue' | 'red' | 'green' | 'yellow' | 'gray';
-  Icon?: FC<ComponentProps<'svg'>>;
+  icon?: FC<ComponentProps<'svg'>>;
   rounded?: boolean;
   withBorderAccent?: boolean;
   additionalContent?: ReactNode;
@@ -22,7 +22,7 @@ const colorClasses: Record<AlertProps['color'] & string, string> = {
 export const Alert: FC<AlertProps> = ({
   children,
   color = 'blue',
-  Icon,
+  icon: Icon,
   rounded = true,
   withBorderAccent,
   additionalContent,
