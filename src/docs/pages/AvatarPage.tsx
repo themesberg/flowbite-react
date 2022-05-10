@@ -93,7 +93,9 @@ const AvatarPage: FC = () => {
       title: 'User dropdown',
       code: (
         <Dropdown
-          label={<Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />}
+          label={
+            <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
+          }
           arrowIcon={false}
           inline
         >
