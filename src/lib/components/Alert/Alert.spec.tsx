@@ -24,7 +24,6 @@ const TestAlert = (): JSX.Element => {
 
   return (
     <Alert
-      color="blue"
       additionalContent={
         <>
           <div className="mt-2 mb-4 text-sm text-blue-700 dark:text-blue-800">
@@ -48,6 +47,7 @@ const TestAlert = (): JSX.Element => {
           </div>
         </>
       }
+      color="blue"
       icon={HiInformationCircle}
       onDismiss={() => setDismissed(!isDismissed)}
     >
@@ -55,5 +55,3 @@ const TestAlert = (): JSX.Element => {
     </Alert>
   );
 };
-
-export {};
