@@ -55,5 +55,3 @@ const TestAlert = (): JSX.Element => {
     </Alert>
   );
 };
-
-export {};
