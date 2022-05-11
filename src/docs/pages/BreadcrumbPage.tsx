@@ -14,7 +14,7 @@ const BreadcrumbPage: FC = () => {
             Home
           </Breadcrumb.Item>
           <Breadcrumb.Item href="#">Projects</Breadcrumb.Item>
-          <Breadcrumb.Item icon={HiHome}>Flowbite React</Breadcrumb.Item>
+          <Breadcrumb.Item>Flowbite React</Breadcrumb.Item>
         </Breadcrumb>
       ),
     },
@@ -26,7 +26,7 @@ const BreadcrumbPage: FC = () => {
             Home
           </Breadcrumb.Item>
           <Breadcrumb.Item href="#">Projects</Breadcrumb.Item>
-          <Breadcrumb.Item icon={HiHome}>Flowbite React</Breadcrumb.Item>
+          <Breadcrumb.Item>Flowbite React</Breadcrumb.Item>
         </Breadcrumb>
       ),
     },

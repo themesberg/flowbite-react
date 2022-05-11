@@ -14,7 +14,7 @@ export const Default = (): JSX.Element => (
       Home
     </Breadcrumb.Item>
     <Breadcrumb.Item href="#">Projects</Breadcrumb.Item>
-    <Breadcrumb.Item icon={HiHome}>Flowbite React</Breadcrumb.Item>
+    <Breadcrumb.Item>Flowbite React</Breadcrumb.Item>
   </Breadcrumb>
 );
 
@@ -24,7 +24,7 @@ export const SolidBackground = (): JSX.Element => (
       Home
     </Breadcrumb.Item>
     <Breadcrumb.Item href="#">Projects</Breadcrumb.Item>
-    <Breadcrumb.Item icon={HiHome}>Flowbite React</Breadcrumb.Item>
+    <Breadcrumb.Item>Flowbite React</Breadcrumb.Item>
   </Breadcrumb>
 );
 SolidBackground.storyName = 'Solid background';
