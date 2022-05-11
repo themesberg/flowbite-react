@@ -1,81 +1,60 @@
 import { FC, useState } from 'react';
+import Pagination from '../../lib/components/Pagination';
 
-import { Pagination } from '../../lib';
 import { CodeExample, DemoPage } from './DemoPage';
 
-const PaginationPage: FC = () => {
+const PaginationPage: FC = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(1);
+
   const onPageChange = (page: number) => {
     setCurrentPage(page);
   };
+
   const examples: CodeExample[] = [
     {
-      title: 'Default Pagination',
-      code: (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={100}
-          onPageChange={onPageChange}
-          displayFormat={'pagination'}
-        />
-      ),
+      title: 'Default pagination',
+      code: <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />,
     },
     {
       title: 'Pagination with icons',
-      code: (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={100}
-          onPageChange={onPageChange}
-          displayFormat={'pagination-icon-only'}
-        />
-      ),
+      code: <Pagination currentPage={currentPage} onPageChange={onPageChange} showIcons totalPages={100} />,
     },
     {
-      title: 'Pagination with icons and text',
-      code: (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={100}
-          onPageChange={onPageChange}
-          showIcon
-          displayFormat={'pagination'}
-        />
-      ),
+      title: 'Previous and next',
+      code: <Pagination currentPage={currentPage} layout="navigation" totalPages={100} onPageChange={onPageChange} />,
     },
     {
       title: 'Previous and next with icons',
       code: (
         <Pagination
           currentPage={currentPage}
-          totalPages={100}
+          layout="navigation"
           onPageChange={onPageChange}
-          displayFormat={'navigation'}
-          showIcon
+          showIcons
+          totalPages={100}
         />
       ),
     },
     {
       title: 'Table data navigation',
       code: (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={1000}
-          onPageChange={onPageChange}
-          displayFormat="navigation-group"
-        />
+        <div className="flex items-center justify-center text-center">
+          <Pagination currentPage={currentPage} layout="table" onPageChange={onPageChange} totalPages={1000} />
+        </div>
       ),
     },
     {
-      title: 'Table data navigation with icon',
+      title: 'Table data navigation with icons',
       code: (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={1000}
-          onPageChange={onPageChange}
-          displayFormat="navigation-group"
-          showIcon={true}
-        />
+        <div className="flex items-center justify-center text-center">
+          <Pagination
+            currentPage={currentPage}
+            layout="table"
+            onPageChange={onPageChange}
+            showIcons
+            totalPages={1000}
+          />
+        </div>
       ),
     },
   ];
