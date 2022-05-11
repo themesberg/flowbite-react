@@ -6,9 +6,14 @@ export interface BreadcrumbItemProps extends ComponentProps<'li'> {
   icon?: FC<ComponentProps<'svg'>>;
 }
 
-const BreadcrumbItem: FC<PropsWithChildren<BreadcrumbItemProps>> = ({ children, href, icon: Icon }): JSX.Element => {
+const BreadcrumbItem: FC<PropsWithChildren<BreadcrumbItemProps>> = ({
+  children,
+  href,
+  icon: Icon,
+  ...rest
+}): JSX.Element => {
   return (
-    <li className="group flex items-center">
+    <li className="group flex items-center" {...rest}>
       <HiOutlineChevronRight
         aria-hidden="true"
         className="mx-1 h-6 w-6 text-gray-400 group-first:hidden md:mx-2"
