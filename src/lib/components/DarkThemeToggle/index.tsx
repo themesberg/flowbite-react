@@ -12,6 +12,7 @@ export const DarkThemeToggle: FC = () => {
       onClick={toggleMode}
       type="button"
     >
+      <span className="sr-only">Toggle dark mode</span>
       {mode === 'dark' ? (
         <HiSun className="h-5 w-5" data-testid="dark-theme-toggle-disabled" />
       ) : (
