@@ -1,205 +1,90 @@
 import classNames from 'classnames';
-import { FC, PropsWithChildren } from 'react';
-import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
+import { ComponentProps, FC, PropsWithChildren } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import range from '../../helpers/range';
 
-export type PaginationProps = PropsWithChildren<{
-  className?: string;
+export type PaginationProps = PropsWithChildren<Pagination>;
+interface Pagination extends ComponentProps<'nav'> {
   currentPage: number;
-  totalPages: number;
+  layout?: 'navigation' | 'pagination' | 'table';
   onPageChange: (page: number) => void;
-  // Optional props
-  showIcon?: boolean;
-  displayFormat: 'pagination' | 'pagination-icon-only' | 'navigation' | 'navigation-group';
-}>;
+  showIcons?: boolean;
+  totalPages: number;
+}
 
-export const Pagination: FC<PaginationProps> = ({
+const Pagination: FC<PaginationProps> = ({
   currentPage,
-  totalPages,
+  layout = 'pagination',
   onPageChange,
-  showIcon = false,
-  displayFormat = 'pagination',
-}) => {
-  switch (displayFormat) {
-    case 'pagination':
-    case 'pagination-icon-only':
-      return renderPagination(currentPage, totalPages, onPageChange, showIcon, displayFormat);
-    case 'navigation':
-      return renderNavigation(currentPage, totalPages, onPageChange, showIcon);
-    default:
-      return renderNavigationGroup(currentPage, totalPages, onPageChange, showIcon);
-  }
-};
+  showIcons: showIcon = false,
+  totalPages,
+  ...rest
+}): JSX.Element => {
+  const firstPage = Math.max(1, currentPage - 3);
+  const lastPage = Math.min(currentPage + 3, totalPages);
 
-const renderPagination = (
-  currentPage: number,
-  totalPages: number,
-  onPageChange: (page: number) => void,
-  showIcon: boolean,
-  displayFormat: 'pagination' | 'pagination-icon-only',
-) => {
-  const pageNumbers = [];
-  const startPage = Math.max(1, currentPage - 3);
-  const endPage = Math.min(currentPage + 3, totalPages);
-  for (let i = startPage; i <= endPage; i++) {
-    pageNumbers.push(i);
-  }
-  const showIconOnly = displayFormat == 'pagination-icon-only';
+  const goToNextPage = (): void => {
+    onPageChange(currentPage + 1 < totalPages ? currentPage + 1 : totalPages);
+  };
+
+  const goToPreviousPage = (): void => {
+    onPageChange(currentPage - 1 > 0 ? currentPage - 1 : 1);
+  };
+
   return (
-    <nav aria-label="Page navigation example">
-      <ul className="inline-flex items-center -space-x-px">
+    <nav {...rest}>
+      {layout === 'table' && (
+        <div className="text-sm text-gray-700 dark:text-gray-400">
+          Showing <span className="font-semibold text-gray-900 dark:text-white">{firstPage}</span> to&nbsp;
+          <span className="font-semibold text-gray-900 dark:text-white">{lastPage}</span> of&nbsp;
+          <span className="font-semibold text-gray-900 dark:text-white">{totalPages}</span> Entries
+        </div>
+      )}
+      <ul className="xs:mt-0 mt-2 inline-flex items-center -space-x-px">
         <li>
-          <a
-            onClick={() => onPageChange(currentPage - 1 > 0 ? currentPage - 1 : 1)}
+          <button
             className={classNames(
               'ml-0 rounded-l-lg border border-gray-300 bg-white py-2 px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-              showIconOnly ? 'block' : '',
               showIcon ? 'inline-flex' : '',
             )}
+            onClick={() => goToPreviousPage()}
           >
-            {showIcon && (
-              <>
-                <HiChevronLeft className="h-5 w-5" />
-                Previous
-              </>
-            )}
-            {showIconOnly && <HiChevronLeft className="h-5 w-5" />}
-            {!showIconOnly && !showIcon && 'Previous'}
-          </a>
+            {showIcon && <HiChevronLeft aria-hidden="true" className="h-5 w-5" />}
+            Previous
+          </button>
         </li>
-        {pageNumbers.map((page) => {
-          return (
-            <li key={page}>
-              <a
-                onClick={() => onPageChange(page)}
-                className={classNames(
-                  'border border-gray-300 bg-white py-2 px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-                  currentPage === page &&
-                    'bg-blue-50 py-2 px-3 text-blue-600 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white',
-                )}
-              >
-                {page}
-              </a>
-            </li>
-          );
-        })}
+        {layout === 'pagination' &&
+          range(firstPage, lastPage).map(
+            (page: number): JSX.Element => (
+              <li key={page}>
+                <button
+                  className={classNames(
+                    'w-12 border border-gray-300 bg-white py-2 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
+                    currentPage === page &&
+                      'bg-blue-50 text-blue-600 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white',
+                  )}
+                  onClick={() => onPageChange(page)}
+                >
+                  {page}
+                </button>
+              </li>
+            ),
+          )}
         <li>
-          <a
-            onClick={() => onPageChange(currentPage + 1 < totalPages ? currentPage + 1 : totalPages)}
+          <button
             className={classNames(
               'rounded-r-lg border border-gray-300 bg-white py-2 px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-              showIconOnly ? 'block' : '',
               showIcon ? 'inline-flex' : '',
             )}
+            onClick={() => goToNextPage()}
           >
-            {!showIconOnly && !showIcon && 'Next'}
-            {showIcon && (
-              <>
-                Next
-                <HiChevronRight className="h-5 w-5" />
-              </>
-            )}
-            {showIconOnly && <HiChevronRight className="h-5 w-5" />}
-          </a>
+            Next
+            {showIcon && <HiChevronRight aria-hidden="true" className="h-5 w-5" />}
+          </button>
         </li>
       </ul>
     </nav>
   );
 };
 
-const renderNavigation = (
-  currentPage: number,
-  totalPages: number,
-  onPageChange: (page: number) => void,
-  showIcon: boolean,
-) => {
-  return (
-    <nav aria-label="Page navigation example">
-      <ul className="inline-flex items-center -space-x-px">
-        <li>
-          <a
-            onClick={() => onPageChange(currentPage - 1 > 0 ? currentPage - 1 : 1)}
-            className={classNames(
-              'ml-0 rounded-l-lg border border-gray-300 bg-white py-2 px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-              showIcon ? 'inline-flex' : '',
-            )}
-          >
-            {showIcon && (
-              <>
-                <BsArrowLeft className="mr-3 h-5 w-5" />
-                Previous
-              </>
-            )}
-            {!showIcon && 'Previous'}
-          </a>
-        </li>
-        <li>
-          <a
-            onClick={() => onPageChange(currentPage + 1 < totalPages ? currentPage + 1 : totalPages)}
-            className={classNames(
-              'rounded-r-lg border border-gray-300 bg-white py-2 px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-              showIcon ? 'inline-flex' : '',
-            )}
-          >
-            {!showIcon && 'Next'}
-            {showIcon && (
-              <>
-                Next
-                <BsArrowRight className="ml-3 h-5 w-5" />
-              </>
-            )}
-          </a>
-        </li>
-      </ul>
-    </nav>
-  );
-};
-
-const renderNavigationGroup = (
-  currentPage: number,
-  totalPages: number,
-  onPageChange: (page: number) => void,
-  showIcon: boolean,
-) => {
-  return (
-    <div className="flex flex-col items-center">
-      <span className="text-sm text-gray-700 dark:text-gray-400">
-        Showing <span className="font-semibold text-gray-900 dark:text-white">{currentPage * 10 - 9}</span> to{' '}
-        <span className="font-semibold text-gray-900 dark:text-white">{currentPage * 10}</span> of{' '}
-        <span className="font-semibold text-gray-900 dark:text-white">{totalPages * 10}</span> Entries
-      </span>
-      <div className={classNames('xs:mt-0 mt-2 inline-flex', showIcon ? 'xs:mt-0 mt-2 inline-flex' : '')}>
-        <button
-          onClick={() => onPageChange(currentPage - 1 > 0 ? currentPage - 1 : 1)}
-          className={classNames(
-            'rounded-l bg-gray-800 py-2 px-4 text-sm font-medium text-white hover:bg-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-            showIcon ? 'inline-flex items-center' : '',
-          )}
-        >
-          {!showIcon && 'Prev'}
-          {showIcon && (
-            <>
-              <BsArrowLeft className="mr-3 h-5 w-5" />
-              Prev
-            </>
-          )}
-        </button>
-        <button
-          onClick={() => onPageChange(currentPage + 1 < totalPages ? currentPage + 1 : totalPages)}
-          className={classNames(
-            'rounded-r border-0 border-l border-gray-700 bg-gray-800 py-2 px-4 text-sm font-medium text-white hover:bg-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-            showIcon ? 'inline-flex items-center' : '',
-          )}
-        >
-          {!showIcon && 'Next'}
-          {showIcon && (
-            <>
-              Next
-              <BsArrowRight className="ml-3 h-5 w-5" />
-            </>
-          )}
-        </button>
-      </div>
-    </div>
-  );
-};
+export default Pagination;
