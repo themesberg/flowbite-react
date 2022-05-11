@@ -9,7 +9,7 @@ const BreadcrumbPage: FC = () => {
     {
       title: 'Default breadcrumb',
       code: (
-        <Breadcrumb>
+        <Breadcrumb aria-label="Default breadcrumb example">
           <Breadcrumb.Item href="#" icon={HiHome}>
             Home
           </Breadcrumb.Item>
@@ -21,7 +21,7 @@ const BreadcrumbPage: FC = () => {
     {
       title: 'Solid background',
       code: (
-        <Breadcrumb className="bg-gray-50 py-3 px-5 dark:bg-gray-900">
+        <Breadcrumb aria-label="Solid background breadcrumb example" className="bg-gray-50 py-3 px-5 dark:bg-gray-900">
           <Breadcrumb.Item href="#" icon={HiHome}>
             Home
           </Breadcrumb.Item>
