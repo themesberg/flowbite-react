@@ -9,7 +9,6 @@ export interface SpinnerProps extends ComponentProps<'span'> {
   color?: Color;
   light?: boolean;
   size?: Size;
-  label?: string;
 }
 
 const sizeClasses: Record<Size, string> = {
