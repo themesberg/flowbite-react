@@ -5,7 +5,6 @@ export interface BreadcrumbItemProps extends ComponentProps<'li'> {
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   isFirst?: boolean;
-  isLast?: boolean;
 }
 
 const BreadcrumbItem: FC<PropsWithChildren<BreadcrumbItemProps>> = ({
@@ -13,7 +12,6 @@ const BreadcrumbItem: FC<PropsWithChildren<BreadcrumbItemProps>> = ({
   href,
   icon: Icon,
   isFirst,
-  isLast,
 }): JSX.Element => {
   return (
     <li className="flex items-center">
@@ -24,7 +22,7 @@ const BreadcrumbItem: FC<PropsWithChildren<BreadcrumbItemProps>> = ({
           data-testid="breadcrumb-separator"
         />
       )}
-      {!isLast ? (
+      {typeof href !== 'undefined' ? (
         <a
           className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
           data-testid="breadcrumb-item"

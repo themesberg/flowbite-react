@@ -9,9 +9,7 @@ const BreadcrumbComponent: FC<BreadcrumbProps> = ({ children, ...rest }): JSX.El
   return (
     <nav aria-label="Breadcrumb" {...rest}>
       <ol className="flex items-center">
-        {children.map((child, key) =>
-          cloneElement(child as ReactElement, { isFirst: key === 0, isLast: key === children.length - 1, key }),
-        )}
+        {children.map((child, key) => cloneElement(child as ReactElement, { isFirst: key === 0, key }))}
       </ol>
     </nav>
   );
