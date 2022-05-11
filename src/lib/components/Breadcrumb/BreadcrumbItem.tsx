@@ -4,24 +4,16 @@ import { HiOutlineChevronRight } from 'react-icons/hi';
 export interface BreadcrumbItemProps extends ComponentProps<'li'> {
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
-  isFirst?: boolean;
 }
 
-const BreadcrumbItem: FC<PropsWithChildren<BreadcrumbItemProps>> = ({
-  children,
-  href,
-  icon: Icon,
-  isFirst,
-}): JSX.Element => {
+const BreadcrumbItem: FC<PropsWithChildren<BreadcrumbItemProps>> = ({ children, href, icon: Icon }): JSX.Element => {
   return (
-    <li className="flex items-center">
-      {!isFirst && (
-        <HiOutlineChevronRight
-          aria-hidden="true"
-          className="mx-1 h-6 w-6 text-gray-400 md:mx-2"
-          data-testid="breadcrumb-separator"
-        />
-      )}
+    <li className="group flex items-center">
+      <HiOutlineChevronRight
+        aria-hidden="true"
+        className="mx-1 h-6 w-6 text-gray-400 group-first:hidden md:mx-2"
+        data-testid="breadcrumb-separator"
+      />
       {typeof href !== 'undefined' ? (
         <a
           className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
