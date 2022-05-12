@@ -12,7 +12,7 @@ interface Pagination extends ComponentProps<'nav'> {
   totalPages: number;
 }
 
-const Pagination: FC<PaginationProps> = ({
+export const Pagination: FC<PaginationProps> = ({
   currentPage,
   layout = 'pagination',
   onPageChange,
@@ -86,5 +86,3 @@ const Pagination: FC<PaginationProps> = ({
     </nav>
   );
 };
-
-export default Pagination;

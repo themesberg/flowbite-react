@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import Pagination from '../../lib/components/Pagination';
+import { Pagination } from '../../lib/components/Pagination';
 
 import { CodeExample, DemoPage } from './DemoPage';
 
