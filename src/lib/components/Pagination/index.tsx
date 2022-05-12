@@ -24,11 +24,11 @@ export const Pagination: FC<PaginationProps> = ({
   const lastPage = Math.min(currentPage + 3, totalPages);
 
   const goToNextPage = (): void => {
-    onPageChange(currentPage + 1 < totalPages ? currentPage + 1 : totalPages);
+    onPageChange(Math.min(currentPage + 1, totalPages));
   };
 
   const goToPreviousPage = (): void => {
-    onPageChange(currentPage - 1 > 0 ? currentPage - 1 : 1);
+    onPageChange(Math.max(currentPage - 1, 1));
   };
 
   return (

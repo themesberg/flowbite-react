@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FC, useState, useEffect } from 'react';
-import Pagination from '.';
+import { Pagination } from '.';
 
 describe('Pagination', () => {
   describe('Previous button', () => {
