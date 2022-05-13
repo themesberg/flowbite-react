@@ -12,7 +12,7 @@ describe('Button Component', () => {
     expect(getByTestId('button-element')).toBeTruthy();
   });
 
-  it('should be able to render a pull button', () => {
+  it('should be able to render a pill button', () => {
     const { getByTestId } = render(<Button pill />);
     expect(getByTestId('button-element').className).toContain('rounded-full');
   });
