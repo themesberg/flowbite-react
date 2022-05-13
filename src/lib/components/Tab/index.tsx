@@ -3,7 +3,6 @@ import {
   ComponentProps,
   FC,
   KeyboardEvent,
-  MouseEvent,
   PropsWithChildren,
   ReactElement,
   useEffect,
@@ -14,7 +13,7 @@ import {
 import classNames from 'classnames';
 
 import { TabItem, TabProps } from './TabItem';
-import { nanoid } from 'nanoid';
+import * as nanoid from 'nanoid';
 
 export type TabStyle = 'default' | 'underline' | 'pills' | 'fullWidth';
 export type TabItemStatus = 'active' | 'notActive';
@@ -57,6 +56,14 @@ export type TabsProps = PropsWithChildren<
   }
 >;
 
+interface TabEventProps {
+  target: number;
+}
+
+interface TabKeyboardEventProps extends TabEventProps {
+  event: KeyboardEvent<HTMLButtonElement>;
+}
+
 export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'default' as TabStyle, ...rest }) => {
   const tabs = useMemo(
     () => Children.map(children as ReactElement<PropsWithChildren<TabProps>>[], ({ props }) => props),
@@ -76,16 +83,12 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
     ),
   );
 
-  const handleClick = (event: MouseEvent): void => {
-    const targetTab = parseInt(event.currentTarget?.id.replace('tab-', ''));
-
-    setActiveTab(targetTab);
-    setFocusedTab(targetTab);
+  const handleClick = ({ target }: TabEventProps): void => {
+    setActiveTab(target);
+    setFocusedTab(target);
   };
 
-  const handleKeyboard = (event: KeyboardEvent): void => {
-    let targetTab = parseInt(event.currentTarget?.id.replace('tab-', ''));
-
+  const handleKeyboard = ({ event, target }: TabKeyboardEventProps): void => {
     if (event.key === 'ArrowLeft') {
       setFocusedTab(Math.max(0, focusedTab - 1));
     }
@@ -95,17 +98,16 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
     }
 
     if (event.key === 'Enter') {
-      targetTab = targetTab === focusedTab ? targetTab : focusedTab;
-      setActiveTab(targetTab);
-      setFocusedTab(targetTab);
+      setActiveTab(target);
+      setFocusedTab(target);
     }
   };
 
   useEffect(() => {
-    tabRefs.current[focusedTab].focus();
+    tabRefs.current[focusedTab]?.focus();
   }, [focusedTab]);
 
-  const id = nanoid();
+  const id = useMemo(() => nanoid.nanoid(), []);
 
   return (
     <div className="flex flex-col gap-2">
@@ -134,8 +136,8 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
             )}
             disabled={tab.disabled}
             id={`${id}-tab-${index}`}
-            onClick={handleClick}
-            onKeyDown={handleKeyboard}
+            onClick={() => handleClick({ target: index })}
+            onKeyDown={(event) => handleKeyboard({ event, target: index })}
             ref={(element) => (tabRefs.current[index] = element as HTMLButtonElement)}
             role="tab"
             tabIndex={index === focusedTab ? 0 : -1}
@@ -150,7 +152,7 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
           <div
             key={index}
             aria-labelledby={`${id}-tab-${index}`}
-            className={classNames('p-4', className, tabs[activeTab].className)}
+            className={classNames('p-4', className, tab.className)}
             hidden={index !== activeTab}
             id={`${id}-tabpanel-${index}`}
             role="tabpanel"
