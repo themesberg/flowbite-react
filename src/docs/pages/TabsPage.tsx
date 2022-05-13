@@ -69,7 +69,7 @@ const TabsPage: FC = () => {
       code: (
         <Tabs.Group style="pills">
           <Tabs.Item active title="Tab 1">
-            Content 2
+            Content 1
           </Tabs.Item>
           <Tabs.Item title="Tab 2">Content 2</Tabs.Item>
           <Tabs.Item title="Tab 3">Content 3</Tabs.Item>
