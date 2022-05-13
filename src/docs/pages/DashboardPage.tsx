@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { HiExternalLink } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
-import { getImageUrl } from '../../lib';
 import classNames from 'classnames';
 
 import { routes } from '../routes';
+import { getImageUrl } from '../../lib/helpers/getImageUrl';
 
 const DashboardPage: FC = () => {
   return (
