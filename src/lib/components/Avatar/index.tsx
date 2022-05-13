@@ -48,7 +48,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   stacked = false,
 }) => {
   return (
-    <div className="flex items-center space-x-4">
+    <div data-testid="avatar-element" className="flex items-center space-x-4">
       <div className="relative">
         {img ? (
           <img
