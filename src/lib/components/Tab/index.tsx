@@ -98,6 +98,7 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
             hidden={index !== activeTabIndex}
             id={`panel-${index}`}
             role="tabpanel"
+            tabIndex={0}
           >
             {tab.children}
           </div>
