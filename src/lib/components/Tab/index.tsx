@@ -1,7 +1,19 @@
-import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useMemo, useState } from 'react';
+import {
+  Children,
+  cloneElement,
+  ComponentProps,
+  FC,
+  KeyboardEvent,
+  PropsWithChildren,
+  ReactElement,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import classNames from 'classnames';
 
 import { TabItem, TabProps } from './TabItem';
+import { nanoid } from 'nanoid';
 
 export type TabStyle = 'default' | 'underline' | 'pills' | 'fullWidth';
 export type TabItemStatus = 'active' | 'notActive';
@@ -45,58 +57,95 @@ export type TabsProps = PropsWithChildren<
 >;
 
 export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'default' as TabStyle, ...rest }) => {
+  const idPrefix = nanoid();
   const tabs = useMemo(
     () => Children.map(children as ReactElement<PropsWithChildren<TabProps>>[], ({ props }) => props),
     [children],
   );
-  const [activeTabIndex, setActiveTabIndex] = useState(
+  const [activeTab, setActiveTab] = useState(
+    Math.max(
+      0,
+      tabs.findIndex((tab) => tab.active),
+    ),
+  );
+  const [focusedTab, setFocusedTab] = useState(
     Math.max(
       0,
       tabs.findIndex((tab) => tab.active),
     ),
   );
 
+  const handleKeyboard = (event: KeyboardEvent): void => {
+    let targetTab = parseInt(event.currentTarget?.id.replace('tab-', ''));
+
+    if (event.key === 'ArrowLeft') {
+      setFocusedTab(Math.max(0, focusedTab - 1));
+    }
+
+    if (event.key === 'ArrowRight') {
+      setFocusedTab(Math.min(tabs.length - 1, focusedTab + 1));
+    }
+
+    if (event.key === 'Enter') {
+      targetTab = targetTab === focusedTab ? targetTab : focusedTab;
+      setActiveTab(targetTab);
+      setFocusedTab(targetTab);
+    }
+  };
+
+  useEffect(() => {
+    const focusedButton = document.getElementById(`${idPrefix}-tab-${focusedTab}`) as HTMLButtonElement;
+    focusedButton?.focus();
+  }, [focusedTab, idPrefix]);
+
   return (
     <div className="flex flex-col gap-2">
-      <div aria-label="Tabs" role="tablist" {...rest}>
-        <div
-          className={classNames('flex text-center', tabGroupStyleClasses[style], {
-            'border-b border-gray-200 dark:border-gray-700': style === 'underline',
-          })}
-        >
-          {tabs.map((tab, index) => (
-            <button
-              key={index}
-              aria-controls={`panel-${index}`}
-              aria-selected={index === activeTabIndex}
-              className={classNames(
-                'flex items-center justify-center p-4 text-sm font-medium first:ml-0 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500',
-                {
-                  'ml-2 first:ml-0': style !== 'fullWidth',
-                  'rounded-t-lg': style === 'underline' || style === 'default',
-                  'w-full first:rounded-l-lg last:rounded-r-lg': style === 'fullWidth',
-                  [tabItemStyleClasses[style].active]: index === activeTabIndex,
-                  [tabItemStyleClasses[style].notActive]: index !== activeTabIndex && !tab.disabled,
-                },
-              )}
-              disabled={tab.disabled}
-              id={`tab-${index}`}
-              onClick={() => setActiveTabIndex(index)}
-              role="tab"
-              tabIndex={index === 0 ? 0 : -1}
-            >
-              {tab.icon && <tab.icon className="mr-2 h-5 w-5" />}
-              {tab.title}
-            </button>
-          ))}
-        </div>
+      <div
+        aria-label="Tabs"
+        role="tablist"
+        className={classNames('flex text-center', tabGroupStyleClasses[style], {
+          'border-b border-gray-200 dark:border-gray-700': style === 'underline',
+        })}
+        {...rest}
+      >
+        {tabs.map((tab, index) => (
+          <button
+            key={index}
+            aria-controls={`${idPrefix}-panel-${index}`}
+            aria-selected={index === activeTab}
+            className={classNames(
+              'flex items-center justify-center p-4 text-sm font-medium first:ml-0 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500',
+              {
+                'ml-2 first:ml-0': style !== 'fullWidth',
+                'rounded-t-lg': style === 'underline' || style === 'default',
+                'w-full first:rounded-l-lg last:rounded-r-lg': style === 'fullWidth',
+                [tabItemStyleClasses[style].active]: index === activeTab,
+                [tabItemStyleClasses[style].notActive]: index !== activeTab && !tab.disabled,
+              },
+            )}
+            disabled={tab.disabled}
+            id={`${idPrefix}-tab-${index}`}
+            onClick={() => {
+              setActiveTab(index);
+              setFocusedTab(index);
+            }}
+            onKeyDown={handleKeyboard}
+            role="tab"
+            tabIndex={index === focusedTab ? 0 : -1}
+          >
+            {tab.icon && <tab.icon className="mr-2 h-5 w-5" />}
+            {tab.title}
+          </button>
+        ))}
+      </div>
+      <div>
         {tabs.map((tab, index) => (
           <div
             key={index}
-            aria-labelledby={`tab-${index}`}
-            className={classNames('p-4', className, tabs[activeTabIndex].className)}
-            hidden={index !== activeTabIndex}
-            id={`panel-${index}`}
+            aria-labelledby={`${idPrefix}-tab-${index}`}
+            className={classNames('p-4', className, tabs[activeTab].className)}
+            hidden={index !== activeTab}
+            id={`${idPrefix}-panel-${index}`}
             role="tabpanel"
             tabIndex={0}
           >
