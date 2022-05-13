@@ -1,4 +1,4 @@
-import { Children, FC, PropsWithChildren, ReactElement, useMemo, useState } from 'react';
+import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useMemo, useState } from 'react';
 import classNames from 'classnames';
 
 import { TabItem, TabProps } from './TabItem';
@@ -11,7 +11,7 @@ export const tabGroupStyleClasses: Record<TabStyle, string> = {
   underline: 'flex-wrap -mb-px',
   pills: 'flex-wrap font-medium text-sm text-gray-500 dark:text-gray-400',
   fullWidth:
-    'hidden text-sm font-medium hidden rounded-lg divide-x divide-gray-200 shadow sm:flex dark:divide-gray-700 dark:text-gray-400',
+    'hidden text-sm font-medium rounded-lg divide-x divide-gray-200 shadow sm:flex dark:divide-gray-700 dark:text-gray-400',
 };
 
 export const tabItemStyleClasses: Record<TabStyle, Record<TabItemStatus, string>> = {
@@ -37,22 +37,16 @@ export const tabItemStyleClasses: Record<TabStyle, Record<TabItemStatus, string>
   },
 };
 
-export type TabsProps = PropsWithChildren<{
-  className?: string;
-  style?: TabStyle;
-}>;
+export type TabsProps = PropsWithChildren<
+  ComponentProps<'div'> & {
+    className?: string;
+    style?: TabStyle;
+  }
+>;
 
-export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'default' }) => {
+export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'default' as TabStyle, ...rest }) => {
   const tabs = useMemo(
-    () =>
-      Children.map(children as ReactElement<PropsWithChildren<TabProps>>[], (child) => ({
-        title: child.props.title,
-        content: child.props.children,
-        active: child.props.active,
-        icon: child.props.icon,
-        className: child.props.className,
-        disabled: child.props.disabled,
-      })),
+    () => Children.map(children as ReactElement<PropsWithChildren<TabProps>>[], ({ props }) => props),
     [children],
   );
   const [activeTabIndex, setActiveTabIndex] = useState(
@@ -64,33 +58,51 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
 
   return (
     <div className="flex flex-col gap-2">
-      <div
-        className={classNames('flex text-center', tabGroupStyleClasses[style], {
-          'border-b border-gray-200 dark:border-gray-700': style === 'underline',
-        })}
-      >
+      <div aria-label="Tabs" role="tablist" {...rest}>
+        <div
+          className={classNames('flex text-center', tabGroupStyleClasses[style], {
+            'border-b border-gray-200 dark:border-gray-700': style === 'underline',
+          })}
+        >
+          {tabs.map((tab, index) => (
+            <button
+              key={index}
+              aria-controls={`panel-${index}`}
+              aria-selected={index === activeTabIndex}
+              className={classNames(
+                'flex items-center justify-center p-4 text-sm font-medium first:ml-0 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500',
+                {
+                  'ml-2 first:ml-0': style !== 'fullWidth',
+                  'rounded-t-lg': style === 'underline' || style === 'default',
+                  'w-full first:rounded-l-lg last:rounded-r-lg': style === 'fullWidth',
+                  [tabItemStyleClasses[style].active]: index === activeTabIndex,
+                  [tabItemStyleClasses[style].notActive]: index !== activeTabIndex && !tab.disabled,
+                },
+              )}
+              disabled={tab.disabled}
+              id={`tab-${index}`}
+              onClick={() => setActiveTabIndex(index)}
+              role="tab"
+              tabIndex={index === 0 ? 0 : -1}
+            >
+              {tab.icon && <tab.icon className="mr-2 h-5 w-5" />}
+              {tab.title}
+            </button>
+          ))}
+        </div>
         {tabs.map((tab, index) => (
-          <button
+          <div
             key={index}
-            className={classNames(
-              'flex items-center justify-center p-4 text-sm font-medium first:ml-0 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500',
-              {
-                'ml-2 first:ml-0': style !== 'fullWidth',
-                'rounded-t-lg': style === 'underline' || style === 'default',
-                'w-full first:rounded-l-lg last:rounded-r-lg': style === 'fullWidth',
-                [tabItemStyleClasses[style].active]: index === activeTabIndex,
-                [tabItemStyleClasses[style].notActive]: index !== activeTabIndex && !tab.disabled,
-              },
-            )}
-            onClick={() => setActiveTabIndex(index)}
-            disabled={tab.disabled}
+            aria-labelledby={`tab-${index}`}
+            className={classNames('p-4', className, tabs[activeTabIndex].className)}
+            hidden={index !== activeTabIndex}
+            id={`panel-${index}`}
+            role="tabpanel"
           >
-            {tab.icon && <tab.icon className="mr-2 h-5 w-5" />}
-            {tab.title}
-          </button>
+            {tab.children}
+          </div>
         ))}
       </div>
-      <div className={classNames('p-4', className, tabs[activeTabIndex].className)}>{tabs[activeTabIndex].content}</div>
     </div>
   );
 };
