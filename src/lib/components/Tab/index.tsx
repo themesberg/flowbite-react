@@ -1,13 +1,14 @@
 import {
   Children,
-  cloneElement,
   ComponentProps,
   FC,
   KeyboardEvent,
+  MouseEvent,
   PropsWithChildren,
   ReactElement,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 import classNames from 'classnames';
@@ -57,11 +58,11 @@ export type TabsProps = PropsWithChildren<
 >;
 
 export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'default' as TabStyle, ...rest }) => {
-  const idPrefix = nanoid();
   const tabs = useMemo(
     () => Children.map(children as ReactElement<PropsWithChildren<TabProps>>[], ({ props }) => props),
     [children],
   );
+  const tabRefs = useRef<HTMLButtonElement[]>([]);
   const [activeTab, setActiveTab] = useState(
     Math.max(
       0,
@@ -74,6 +75,13 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
       tabs.findIndex((tab) => tab.active),
     ),
   );
+
+  const handleClick = (event: MouseEvent): void => {
+    const targetTab = parseInt(event.currentTarget?.id.replace('tab-', ''));
+
+    setActiveTab(targetTab);
+    setFocusedTab(targetTab);
+  };
 
   const handleKeyboard = (event: KeyboardEvent): void => {
     let targetTab = parseInt(event.currentTarget?.id.replace('tab-', ''));
@@ -94,9 +102,10 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
   };
 
   useEffect(() => {
-    const focusedButton = document.getElementById(`${idPrefix}-tab-${focusedTab}`) as HTMLButtonElement;
-    focusedButton?.focus();
-  }, [focusedTab, idPrefix]);
+    tabRefs.current[focusedTab].focus();
+  }, [focusedTab]);
+
+  const id = nanoid();
 
   return (
     <div className="flex flex-col gap-2">
@@ -111,7 +120,7 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
         {tabs.map((tab, index) => (
           <button
             key={index}
-            aria-controls={`${idPrefix}-panel-${index}`}
+            aria-controls={`${id}-tabpanel-${index}`}
             aria-selected={index === activeTab}
             className={classNames(
               'flex items-center justify-center p-4 text-sm font-medium first:ml-0 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500',
@@ -124,12 +133,10 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
               },
             )}
             disabled={tab.disabled}
-            id={`${idPrefix}-tab-${index}`}
-            onClick={() => {
-              setActiveTab(index);
-              setFocusedTab(index);
-            }}
+            id={`${id}-tab-${index}`}
+            onClick={handleClick}
             onKeyDown={handleKeyboard}
+            ref={(element) => (tabRefs.current[index] = element as HTMLButtonElement)}
             role="tab"
             tabIndex={index === focusedTab ? 0 : -1}
           >
@@ -142,10 +149,10 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
         {tabs.map((tab, index) => (
           <div
             key={index}
-            aria-labelledby={`${idPrefix}-tab-${index}`}
+            aria-labelledby={`${id}-tab-${index}`}
             className={classNames('p-4', className, tabs[activeTab].className)}
             hidden={index !== activeTab}
-            id={`${idPrefix}-panel-${index}`}
+            id={`${id}-tabpanel-${index}`}
             role="tabpanel"
             tabIndex={0}
           >
