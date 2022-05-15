@@ -30,10 +30,10 @@ const statusClasses: Record<AvatarProps['status'] & string, string> = {
 };
 
 const statusPositionClasses: Record<AvatarProps['statusPosition'] & string, string> = {
-  'top-left': '-top-1 -right-1',
-  'top-right': '-top-1 -left-1',
-  'bottom-left': '-bottom-1 -right-1',
-  'bottom-right': '-bottom-1 -left-1',
+  'top-right': '-top-1 -right-1',
+  'top-left': '-top-1 -left-1',
+  'bottom-left': '-bottom-1 -left-1',
+  'bottom-right': '-bottom-1 -right-1',
 };
 
 const AvatarComponent: FC<AvatarProps> = ({
@@ -41,7 +41,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   img,
   status,
   children,
-  statusPosition = 'top-right',
+  statusPosition = 'top-left',
   size = 'md',
   rounded = false,
   bordered = false,
