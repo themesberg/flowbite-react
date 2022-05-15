@@ -41,18 +41,18 @@ const AvatarPage: FC = () => {
             img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
             rounded
             status="busy"
-            statusPosition="top-left"
+            statusPosition="top-right"
           />
           <Avatar
             img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
             status="offline"
-            statusPosition="bottom-right"
+            statusPosition="bottom-left"
           />
           <Avatar
             img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
             rounded
             status="away"
-            statusPosition="bottom-left"
+            statusPosition="bottom-right"
           />
         </div>
       ),
