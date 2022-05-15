@@ -1,10 +1,13 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { HiMail } from 'react-icons/hi';
 
 import { CodeExample, DemoPage } from './DemoPage';
 import { Button, Checkbox, FileInput, Label, Radio, Select, Textarea, TextInput, ToggleSwitch } from '../../lib';
 
 const FormsPage: FC = () => {
+  const [switch1, setSwitch1] = useState(false);
+  const [switch2, setSwitch2] = useState(true);
+
   const examples: CodeExample[] = [
     {
       title: 'Form example',
@@ -303,9 +306,9 @@ const FormsPage: FC = () => {
       title: 'Toggle Switch',
       code: (
         <div className="flex flex-col gap-4" id="toggle">
-          <ToggleSwitch label="Toggle me" />
-          <ToggleSwitch label="Toggle me (checked)" defaultChecked />
-          <ToggleSwitch label="Toggle me (disabled)" disabled />
+          <ToggleSwitch checked={switch1} label="Toggle me" onChange={setSwitch1} />
+          <ToggleSwitch checked={switch2} label="Toggle me (checked)" onChange={setSwitch2} />
+          <ToggleSwitch checked={false} disabled label="Toggle me (disabled)" onChange={() => undefined} />
         </div>
       ),
     },
