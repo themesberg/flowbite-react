@@ -26,13 +26,6 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
     toggle();
   };
 
-  const handleKeyUp = (event: KeyboardEvent<HTMLButtonElement>): void => {
-    if (event.key === 'Space') {
-      event.preventDefault();
-      toggle();
-    }
-  };
-
   const handleKeyPress = (event: KeyboardEvent<HTMLButtonElement>): void => {
     event.preventDefault();
   };
@@ -46,7 +39,6 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
         disabled={disabled}
         id={`${id}-flowbite-toggleswitch`}
         onClick={handleClick}
-        onKeyDown={handleKeyUp}
         onKeyPress={handleKeyPress}
         role="switch"
         tabIndex={0}
