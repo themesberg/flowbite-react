@@ -122,6 +122,7 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
         {tabs.map((tab, index) => (
           <button
             key={index}
+            type="button"
             aria-controls={`${id}-tabpanel-${index}`}
             aria-selected={index === activeTab}
             className={classNames(
