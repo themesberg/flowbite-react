@@ -19,12 +19,21 @@ describe('Card Component should be able to render a', () => {
 
     it('decorative image', () => {
       const { getByTestId } = render(<Card imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg" />);
-      expect((getByTestId('card-element') as HTMLImageElement).src);
+      expect((getByTestId('card-element').children[0] as HTMLImageElement).src).toEqual(
+        'https://flowbite.com/docs/images/blog/image-1.jpg',
+      );
     });
 
     it('alt text', () => {
-      const { getByTestId } = render(<Card imgAlt="Meaningful alt text for an image that is not purely decorative" />);
-      expect((getByTestId('card-element') as HTMLImageElement).alt);
+      const { getByTestId } = render(
+        <Card
+          imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg"
+          imgAlt="Meaningful alt text for an image that is not purely decorative"
+        />,
+      );
+      expect((getByTestId('card-element').children[0] as HTMLImageElement).alt).toEqual(
+        'Meaningful alt text for an image that is not purely decorative',
+      );
     });
   });
 });
