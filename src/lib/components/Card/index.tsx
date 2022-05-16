@@ -11,6 +11,7 @@ export type CardProps = PropsWithChildren<{
 export const Card: FC<CardProps> = ({ children, className, horizontal, imgAlt, imgSrc }) => {
   return (
     <div
+      data-testid="card-element"
       className={classNames(
         'flex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800',
         {
