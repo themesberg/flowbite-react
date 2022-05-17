@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { FC, ReactNode, createContext, useContext, useState, useEffect } from 'react';
+import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';
 
 export type Mode = string | undefined | 'light' | 'dark';
@@ -36,16 +37,22 @@ export const useThemeMode = (
   const savePreference = (m: string) => localStorage.setItem('theme', m);
 
   const toggleMode = () => {
-    if (!mode) return;
+    if (!mode) {
+      return;
+    }
 
-    document.documentElement.classList.toggle('dark');
+    if (windowExists()) {
+      document.documentElement.classList.toggle('dark');
+    }
+
     savePreference(mode);
     setMode(mode == 'dark' ? 'light' : 'dark');
   };
 
   if (usePreferences) {
     useEffect(() => {
-      const userPreference = !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const userPreference =
+        windowExists() && !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       const userMode = localStorage.getItem('theme') || (userPreference ? 'dark' : 'light');
 
       if (userMode) {
@@ -54,9 +61,15 @@ export const useThemeMode = (
     }, []);
 
     useEffect(() => {
-      if (!mode) return;
+      if (!mode) {
+        return;
+      }
 
       savePreference(mode);
+
+      if (!windowExists()) {
+        return;
+      }
 
       if (mode != 'dark') {
         document.documentElement.classList.remove('dark');

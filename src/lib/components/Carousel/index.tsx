@@ -15,6 +15,7 @@ import {
 import classNames from 'classnames';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import windowExists from '../../helpers/window-exists';
 
 export type CarouselProps = PropsWithChildren<{
   slide?: boolean;
@@ -35,7 +36,7 @@ export const Carousel: FC<CarouselProps> = ({
   const [activeItem, setActiveItem] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const carouselContainer = useRef<HTMLDivElement>(null);
-  const isDeviceMobile = typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1;
+  const isDeviceMobile = windowExists() && navigator.userAgent.indexOf('IEMobile') !== -1;
 
   const items = useMemo(
     () =>
