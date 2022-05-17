@@ -2,6 +2,7 @@ import { FC, HTMLAttributes, useLayoutEffect, useMemo } from 'react';
 import { ThemeContext, useThemeMode } from './ThemeContext';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import defaultTheme from '../../theme/default';
+import windowExists from '../../helpers/window-exists';
 
 export interface ThemeProps {
   config?: object;
@@ -25,7 +26,10 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
       if (setMode != null) {
         setMode('dark');
       }
-      document.documentElement.classList.add('dark');
+
+      if (windowExists()) {
+        document.documentElement.classList.add('dark');
+      }
     }
   }, [dark, setMode]);
 
