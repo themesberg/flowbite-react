@@ -16,10 +16,10 @@ export type ProgressProps = PropsWithChildren<{
 
 const colorClasses: Record<Color, string> = {
   dark: 'bg-gray-600 dark:bg-gray-300',
-  blue: 'bg-blue-600',
+  blue: 'bg-blue-600 dark:bg-blue-600',
   red: 'bg-red-600 dark:bg-red-500',
   green: 'bg-green-600 dark:bg-green-500',
-  yellow: 'bg-yellow-400',
+  yellow: 'bg-yellow-400 dark:bg-yellow-400',
   indigo: 'bg-indigo-600 dark:bg-indigo-500',
   purple: 'bg-purple-600 dark:bg-purple-500',
 };
