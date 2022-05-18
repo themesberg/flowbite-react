@@ -15,7 +15,7 @@ const TimelinePage: FC = () => {
               <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700"></div>
             </Timeline.Point>
             <Timeline.Content>
-              <Timeline.Date>February 2022</Timeline.Date>
+              <Timeline.Time>February 2022</Timeline.Time>
               <Timeline.Title>Application UI code in Tailwind CSS</Timeline.Title>
               <Timeline.Detail>
                 Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order
@@ -32,7 +32,7 @@ const TimelinePage: FC = () => {
               <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700"></div>
             </Timeline.Point>
             <Timeline.Content>
-              <Timeline.Date>March 2022</Timeline.Date>
+              <Timeline.Time>March 2022</Timeline.Time>
               <Timeline.Title>Marketing UI design in Figma</Timeline.Title>
               <Timeline.Detail>
                 All of the pages and components are first designed in Figma and we keep a parity between the two
@@ -45,7 +45,7 @@ const TimelinePage: FC = () => {
               <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700"></div>
             </Timeline.Point>
             <Timeline.Content>
-              <Timeline.Date>April 2022</Timeline.Date>
+              <Timeline.Time>April 2022</Timeline.Time>
               <Timeline.Title>E-Commerce UI code in Tailwind CSS</Timeline.Title>
               <Timeline.Detail>
                 Get started with dozens of web components and interactive elements built on top of Tailwind CSS.
@@ -67,7 +67,7 @@ const TimelinePage: FC = () => {
               </span>
             </Timeline.Point>
             <Timeline.Content>
-              <Timeline.Date>February 2022</Timeline.Date>
+              <Timeline.Time>February 2022</Timeline.Time>
               <Timeline.Title>Application UI code in Tailwind CSS</Timeline.Title>
               <Timeline.Detail>
                 Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order
@@ -86,7 +86,7 @@ const TimelinePage: FC = () => {
               </span>
             </Timeline.Point>
             <Timeline.Content>
-              <Timeline.Date>March 2022</Timeline.Date>
+              <Timeline.Time>March 2022</Timeline.Time>
               <Timeline.Title>Marketing UI design in Figma</Timeline.Title>
               <Timeline.Detail>
                 All of the pages and components are first designed in Figma and we keep a parity between the two
@@ -101,7 +101,7 @@ const TimelinePage: FC = () => {
               </span>
             </Timeline.Point>
             <Timeline.Content>
-              <Timeline.Date>April 2022</Timeline.Date>
+              <Timeline.Time>April 2022</Timeline.Time>
               <Timeline.Title>E-Commerce UI code in Tailwind CSS</Timeline.Title>
               <Timeline.Detail>
                 Get started with dozens of web components and interactive elements built on top of Tailwind CSS.
@@ -124,7 +124,7 @@ const TimelinePage: FC = () => {
             </Timeline.Point>
             <Timeline.Content>
               <Timeline.Title>Flowbite Library v1.0.0</Timeline.Title>
-              <Timeline.Date>Released on December 2, 2021</Timeline.Date>
+              <Timeline.Time>Released on December 2, 2021</Timeline.Time>
               <Timeline.Detail>Get started with dozens of web components and interactive elements.</Timeline.Detail>
             </Timeline.Content>
           </Timeline.Item>
@@ -136,7 +136,7 @@ const TimelinePage: FC = () => {
             </Timeline.Point>
             <Timeline.Content>
               <Timeline.Title>Flowbite Library v1.2.0</Timeline.Title>
-              <Timeline.Date>Released on December 23, 2021</Timeline.Date>
+              <Timeline.Time>Released on December 23, 2021</Timeline.Time>
               <Timeline.Detail>Get started with dozens of web components and interactive elements.</Timeline.Detail>
             </Timeline.Content>
           </Timeline.Item>
@@ -148,7 +148,7 @@ const TimelinePage: FC = () => {
             </Timeline.Point>
             <Timeline.Content>
               <Timeline.Title>Flowbite Library v1.3.0</Timeline.Title>
-              <Timeline.Date>Released on January 5, 2022</Timeline.Date>
+              <Timeline.Time>Released on January 5, 2022</Timeline.Time>
               <Timeline.Detail>Get started with dozens of web components and interactive elements.</Timeline.Detail>
             </Timeline.Content>
           </Timeline.Item>
