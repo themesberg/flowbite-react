@@ -40,7 +40,7 @@ export const Timeline = Object.assign(TimelineComponent, {
   Item: TimelineItem,
   Point: TimelinePoint,
   Content: TimelineContent,
-  Date: TimelineTime,
+  Time: TimelineTime,
   Title: TimelineTitle,
   Detail: TimelineDetail,
 });
