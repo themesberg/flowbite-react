@@ -10,7 +10,7 @@ const TabsPage: FC = () => {
     {
       title: 'Default tabs',
       code: (
-        <Tabs.Group style="default">
+        <Tabs.Group aria-label="Default tabs" style="default">
           <Tabs.Item active title="Profile">
             Profile content
           </Tabs.Item>
@@ -27,7 +27,7 @@ const TabsPage: FC = () => {
     {
       title: 'Tabs with underline',
       code: (
-        <Tabs.Group style="underline">
+        <Tabs.Group aria-label="Tabs with underline" style="underline">
           <Tabs.Item title="Profile">Profile content</Tabs.Item>
           <Tabs.Item active title="Dashboard">
             Dashboard content
@@ -44,7 +44,7 @@ const TabsPage: FC = () => {
     {
       title: 'Tabs with icons',
       code: (
-        <Tabs.Group style="underline">
+        <Tabs.Group aria-label="Tabs with icons" style="underline">
           <Tabs.Item title="Profile" icon={HiUserCircle}>
             Profile content
           </Tabs.Item>
@@ -67,9 +67,9 @@ const TabsPage: FC = () => {
     {
       title: 'Pills tabs',
       code: (
-        <Tabs.Group style="pills">
+        <Tabs.Group aria-label="Pills" style="pills">
           <Tabs.Item active title="Tab 1">
-            Content 2
+            Content 1
           </Tabs.Item>
           <Tabs.Item title="Tab 2">Content 2</Tabs.Item>
           <Tabs.Item title="Tab 3">Content 3</Tabs.Item>
@@ -84,7 +84,7 @@ const TabsPage: FC = () => {
     {
       title: 'Full width tabs',
       code: (
-        <Tabs.Group style="fullWidth">
+        <Tabs.Group aria-label="Full width tabs" style="fullWidth">
           <Tabs.Item title="Profile">Profile content</Tabs.Item>
           <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
           <Tabs.Item title="Settings">Settings content</Tabs.Item>

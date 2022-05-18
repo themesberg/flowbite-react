@@ -1,15 +1,7 @@
-import { FC, cloneElement, ReactElement } from 'react';
-import { SidebarProps } from '.';
-import childrenAsArray from '../../helpers/childrenAsArray';
+import { FC, PropsWithChildren, HTMLAttributes } from 'react';
 
-const SidebarItems: FC<SidebarProps> = ({ children, collapsed }) => {
-  return (
-    <>
-      {childrenAsArray(children).map((child, i) =>
-        cloneElement(child as ReactElement, { key: i, collapsed, first: i === 0 }),
-      )}
-    </>
-  );
+const SidebarItems: FC<PropsWithChildren<HTMLAttributes<HTMLDivElement>>> = ({ children, ...rest }) => {
+  return <div {...rest}>{children}</div>;
 };
 
 SidebarItems.displayName = 'Sidebar.Items';

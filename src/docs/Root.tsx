@@ -2,13 +2,14 @@ import { FC, Suspense, useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1 } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useLocation } from 'react-router-dom';
 
 import { DarkThemeToggle, Navbar, Sidebar, Spinner } from '../lib';
 import { routes } from './routes';
 
 export const Root: FC = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const { pathname } = useLocation();
 
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden">
@@ -46,8 +47,8 @@ export const Root: FC = () => {
         <Sidebar collapsed={collapsed}>
           <Sidebar.Items>
             <Sidebar.ItemGroup>
-              {routes.map(({ href, icon, title }) => (
-                <Sidebar.Item key={title} href={href} icon={icon}>
+              {routes.map(({ href, icon, title }, key) => (
+                <Sidebar.Item key={key} icon={icon} as={Link} to={href} active={href === pathname}>
                   {title}
                 </Sidebar.Item>
               ))}

@@ -10,5 +10,5 @@ export default {
 const Template: Story<ToggleSwitchProps> = (args) => <ToggleSwitch {...args} />;
 
 export const DefaultToggleSwitch = Template.bind({});
-DefaultToggleSwitch.storyName = 'ToggleSwitch';
+DefaultToggleSwitch.storyName = 'Toggle switch';
 DefaultToggleSwitch.args = {};

@@ -15,6 +15,7 @@ import {
 import classNames from 'classnames';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import windowExists from '../../helpers/window-exists';
 
 export type CarouselProps = PropsWithChildren<{
   slide?: boolean;
@@ -35,7 +36,7 @@ export const Carousel: FC<CarouselProps> = ({
   const [activeItem, setActiveItem] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const carouselContainer = useRef<HTMLDivElement>(null);
-  const isDeviceMobile = typeof window.orientation !== 'undefined' || navigator.userAgent.indexOf('IEMobile') !== -1;
+  const isDeviceMobile = windowExists() && navigator.userAgent.indexOf('IEMobile') !== -1;
 
   const items = useMemo(
     () =>
@@ -78,7 +79,7 @@ export const Carousel: FC<CarouselProps> = ({
   const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
 
   return (
-    <div className="relative" data-testid="carousel">
+    <div className="relative w-full" data-testid="carousel">
       <ScrollContainer
         className={classNames(
           'flex h-56 snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg sm:h-64 xl:h-80 2xl:h-96',
@@ -93,7 +94,7 @@ export const Carousel: FC<CarouselProps> = ({
         {items?.map((item, index) => (
           <div
             key={index}
-            className="w-full flex-shrink-0 transform snap-center"
+            className="w-full flex-shrink-0 transform cursor-grab snap-center"
             data-active={activeItem === index}
             data-testid="carousel-item"
           >

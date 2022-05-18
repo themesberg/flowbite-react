@@ -36,6 +36,7 @@ export const Tooltip: FC<TooltipProps> = ({
   placement = 'top',
   style = 'dark',
   trigger = 'hover',
+  ...rest
 }) => {
   const arrowRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
@@ -73,10 +74,11 @@ export const Tooltip: FC<TooltipProps> = ({
 
   return (
     <>
-      <div className="w-fit" {...getReferenceProps({ ref: reference })}>
+      <div className="w-fit" {...getReferenceProps({ ref: reference })} data-testid="tooltip-target">
         {children}
       </div>
       <div
+        data-testid="tooltip"
         {...getFloatingProps({
           className: classNames(
             'absolute inline-block rounded-lg py-2 px-3 text-sm font-medium shadow-sm',
@@ -96,6 +98,7 @@ export const Tooltip: FC<TooltipProps> = ({
             top: y ?? '',
             left: x ?? '',
           },
+          ...rest,
         })}
       >
         <div className="relative z-20">{content}</div>
@@ -106,6 +109,7 @@ export const Tooltip: FC<TooltipProps> = ({
               'bg-white': style === 'light',
               'bg-white dark:bg-gray-700': style === 'auto',
             })}
+            data-testid="tooltip-arrow"
             ref={arrowRef}
             style={{
               top: arrowY ?? '',
@@ -126,13 +130,13 @@ export const Tooltip: FC<TooltipProps> = ({
 /**
  * @see https://floating-ui.com/docs/middleware
  */
-function floatingMiddleware({
+const floatingMiddleware = ({
   arrowRef,
   placement,
 }: {
   arrowRef: RefObject<HTMLDivElement>;
   placement: 'auto' | Placement;
-}): Middleware[] {
+}): Middleware[] => {
   const middleware = [];
 
   middleware.push(offset(8));
@@ -144,17 +148,17 @@ function floatingMiddleware({
   }
 
   return middleware;
-}
+};
 
-function floatingPlacement({ placement }: { placement: 'auto' | Placement }): Placement | undefined {
+const floatingPlacement = ({ placement }: { placement: 'auto' | Placement }): Placement | undefined => {
   return placement === 'auto' ? undefined : placement;
-}
+};
 
-function floatingArrowPlacement({ placement }: { placement: Placement }): Placement {
+const floatingArrowPlacement = ({ placement }: { placement: Placement }): Placement => {
   return {
     top: 'bottom',
     right: 'left',
     bottom: 'top',
     left: 'right',
   }[placement.split('-')[0]] as Placement;
-}
+};

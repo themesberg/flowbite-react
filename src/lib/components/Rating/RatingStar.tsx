@@ -23,6 +23,7 @@ export const RatingStar: FC<RatingStarProps> = ({ filled = true, starIcon: StarI
         'text-yellow-400': filled,
         'text-gray-300 dark:text-gray-500': !filled,
       })}
+      data-testid="rating-star"
     />
   );
 };

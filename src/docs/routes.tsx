@@ -25,6 +25,7 @@ import {
   HiMinus,
 } from 'react-icons/hi';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
+import { MdColorLens, MdTab } from 'react-icons/md';
 
 import AccordionPage from './pages/AccordionPage';
 import AlertsPage from './pages/AlertsPage';
@@ -52,7 +53,7 @@ import TimelinePage from './pages/TimelinePage';
 import TooltipsPage from './pages/TooltipsPage';
 import SidebarPage from './pages/SidebarPage';
 import TabsPage from './pages/TabsPage';
-import { MdTab } from 'react-icons/md';
+import ThemePage from './pages/ThemePage';
 
 export type ComponentCardItem = {
   className: string;
@@ -280,6 +281,10 @@ export const routes: RouteProps[] = [
     href: '/sidebar',
     component: <SidebarPage />,
     group: false,
+    card: {
+      className: 'w-16',
+      images: { light: 'sidebar-light.svg', dark: 'sidebar-dark.svg' },
+    },
   },
   {
     title: 'Spinners',
@@ -323,6 +328,17 @@ export const routes: RouteProps[] = [
     card: {
       className: 'w-24',
       images: { light: 'timeline-light.svg', dark: 'timeline-dark.svg' },
+    },
+  },
+  {
+    title: 'Theme',
+    icon: MdColorLens,
+    href: '/theme',
+    component: <ThemePage />,
+    group: false,
+    card: {
+      className: 'w-64',
+      images: { light: 'tabs-light.svg', dark: 'tabs-dark.svg' },
     },
   },
   {

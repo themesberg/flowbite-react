@@ -9,7 +9,7 @@ const SidebarPage: FC = () => {
     {
       title: 'Default sidebar',
       code: (
-        <Sidebar collapsed={false}>
+        <Sidebar className="!bg-gray-50" collapsed={false}>
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item href="#" icon={HiChartPie}>
@@ -41,7 +41,7 @@ const SidebarPage: FC = () => {
     {
       title: 'Multi-level dropdown',
       code: (
-        <Sidebar collapsed={false}>
+        <Sidebar className="!bg-gray-50" collapsed={false}>
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item href="#" icon={HiChartPie}>
@@ -73,7 +73,7 @@ const SidebarPage: FC = () => {
     {
       title: 'Content separator',
       code: (
-        <Sidebar collapsed={false}>
+        <Sidebar className="!bg-gray-50" collapsed={false}>
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item href="#" icon={HiChartPie}>
@@ -116,7 +116,7 @@ const SidebarPage: FC = () => {
     {
       title: 'CTA button',
       code: (
-        <Sidebar collapsed={false}>
+        <Sidebar className="!bg-gray-50" collapsed={false}>
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item href="#" icon={HiChartPie}>
@@ -147,7 +147,7 @@ const SidebarPage: FC = () => {
               <Badge color="yellow">Beta</Badge>
               <Button
                 aria-label="Close"
-                className="-mx-1.5 -my-1.5 ml-auto !h-6 !w-6 bg-transparent !p-1 text-blue-900 hover:bg-blue-200"
+                className="-mx-1.5 -my-1.5 ml-auto !h-6 !w-6 bg-transparent !p-1 text-blue-900 hover:bg-blue-200 dark:!bg-blue-900 dark:text-blue-200 dark:hover:!bg-blue-800"
                 data-collapse-toggle="dropdown-cta"
               >
                 <span className="sr-only">Close</span>
@@ -177,8 +177,8 @@ const SidebarPage: FC = () => {
     {
       title: 'Logo branding',
       code: (
-        <Sidebar collapsed={false}>
-          <Sidebar.Logo href="#" img="logo192.png" imgAlt="Flowbite logo">
+        <Sidebar className="!bg-gray-50" collapsed={false}>
+          <Sidebar.Logo href="#" img="favicon.png" imgAlt="Flowbite logo">
             Flowbite
           </Sidebar.Logo>
           <Sidebar.Items>

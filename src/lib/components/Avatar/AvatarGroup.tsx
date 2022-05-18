@@ -5,7 +5,11 @@ export type AvatarGroupProps = PropsWithChildren<{
 }>;
 
 const AvatarGroup: React.FC<AvatarGroupProps> = ({ children }) => {
-  return <div className="mb-5 flex -space-x-4">{children}</div>;
+  return (
+    <div data-testid="avatar-group-element" className="mb-5 flex -space-x-4">
+      {children}
+    </div>
+  );
 };
 
 AvatarGroup.displayName = 'Avatar.Group';

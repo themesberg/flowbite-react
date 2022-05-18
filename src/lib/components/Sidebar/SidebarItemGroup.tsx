@@ -1,20 +1,17 @@
 import classNames from 'classnames';
-import { cloneElement, FC, ReactElement } from 'react';
-import { SidebarProps } from '.';
-import childrenAsArray from '../../helpers/childrenAsArray';
+import { FC, HTMLAttributes, PropsWithChildren } from 'react';
+import { SidebarItemContext } from './SidebarItemContext';
 
-export interface SidebarItemGroupProps extends SidebarProps {
-  first?: boolean;
-}
-
-const SidebarItemGroup: FC<SidebarItemGroupProps> = ({ children, collapsed, first = true }) => {
+const SidebarItemGroup: FC<PropsWithChildren<HTMLAttributes<HTMLUListElement>>> = ({ children, ...rest }) => {
   return (
     <ul
-      className={classNames('space-y-2', {
-        'mt-4 space-y-2 border-t border-gray-200 pt-4 dark:border-gray-700': !first,
-      })}
+      className={classNames(
+        'mt-4 space-y-2 border-t border-gray-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 dark:border-gray-700',
+      )}
+      data-testid="sidebar-item-group"
+      {...rest}
     >
-      {childrenAsArray(children).map((child, i) => cloneElement(child as ReactElement, { key: i, collapsed }))}
+      <SidebarItemContext.Provider value={{ insideCollapse: false }}>{children}</SidebarItemContext.Provider>
     </ul>
   );
 };

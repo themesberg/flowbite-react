@@ -6,16 +6,18 @@ import { ModalHeader } from './ModalHeader';
 import { ModalBody } from './ModalBody';
 import { ModalFooter } from './ModalFooter';
 import { ModalContext } from './ModalContext';
+import windowExists from '../../helpers/window-exists';
 
 type Size = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
 type Placement = `${'top' | 'bottom'}-${'left' | 'center' | 'right'}` | `center${'' | '-left' | '-right'}`;
 
 export type ModalProps = PropsWithChildren<{
-  show?: boolean;
-  popup?: boolean;
-  size?: Size;
-  placement?: Placement;
   onClose?: () => void;
+  placement?: Placement;
+  popup?: boolean;
+  root?: HTMLElement;
+  show?: boolean;
+  size?: Size;
 }>;
 
 const sizeClasses: Record<Size, string> = {
@@ -43,26 +45,34 @@ const placementClasses: Record<Placement, string> = {
   'bottom-left': 'items-end justify-start',
 };
 
-const ModalComponent: FC<ModalProps> = ({ children, show, popup, size = '2xl', placement = 'center', onClose }) => {
-  const [container, setContainer] = useState<HTMLDivElement>();
+const ModalComponent: FC<ModalProps> = ({
+  children,
+  root = windowExists() ? document.body : undefined,
+  show,
+  popup,
+  size = '2xl',
+  placement = 'center',
+  onClose,
+}): JSX.Element | null => {
+  const [container] = useState<HTMLDivElement | undefined>(windowExists() ? document.createElement('div') : undefined);
 
   useEffect(() => {
-    if (!show) return;
+    if (!container || !root || !show) {
+      return;
+    }
 
-    const element = document.createElement('div');
-    document.body.appendChild(element);
-    setContainer(element);
+    root.appendChild(container);
 
     return () => {
-      document.body.removeChild(element);
-      setContainer(undefined);
+      root.removeChild(container);
     };
-  }, [show]);
+  }, [container, root, show]);
 
   return container
     ? createPortal(
         <ModalContext.Provider value={{ popup, onClose }}>
           <div
+            aria-hidden={!show}
             className={classNames(
               'fixed top-0 right-0 left-0 z-50 h-modal overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
               placementClasses[placement],
@@ -71,7 +81,7 @@ const ModalComponent: FC<ModalProps> = ({ children, show, popup, size = '2xl', p
                 hidden: !show,
               },
             )}
-            aria-hidden={!show}
+            data-testid="modal"
           >
             <div className={classNames('relative h-full w-full p-4 md:h-auto', sizeClasses[size])}>
               <div className="relative rounded-lg bg-white shadow dark:bg-gray-700">{children}</div>

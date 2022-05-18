@@ -1,26 +1,29 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { HiMail } from 'react-icons/hi';
 
 import { CodeExample, DemoPage } from './DemoPage';
 import { Button, Checkbox, FileInput, Label, Radio, Select, Textarea, TextInput, ToggleSwitch } from '../../lib';
 
 const FormsPage: FC = () => {
+  const [switch1, setSwitch1] = useState(false);
+  const [switch2, setSwitch2] = useState(true);
+
   const examples: CodeExample[] = [
     {
       title: 'Form example',
       code: (
         <form className="flex flex-col gap-4">
           <div>
-            <Label className="mb-2 block" htmlFor="email">
+            <Label className="mb-2 block" htmlFor="email1">
               Your email
             </Label>
-            <TextInput id="email" type="email" placeholder="name@flowbite.com" required />
+            <TextInput id="email1" type="email" placeholder="name@flowbite.com" required />
           </div>
           <div>
-            <Label className="mb-2 block" htmlFor="password">
+            <Label className="mb-2 block" htmlFor="password1">
               Your password
             </Label>
-            <TextInput id="password" type="password" required />
+            <TextInput id="password1" type="password" required />
           </div>
           <div className="flex items-center gap-2">
             <Checkbox id="remember" />
@@ -59,8 +62,10 @@ const FormsPage: FC = () => {
       title: 'Disabled inputs',
       code: (
         <div className="flex flex-col gap-4">
-          <TextInput type="text" placeholder="Disabled input" disabled />
-          <TextInput type="text" placeholder="Disabled readonly input" disabled readOnly />
+          <Label htmlFor="disabledInput1">API token</Label>
+          <TextInput type="text" id="disabledInput1" placeholder="Disabled input" disabled />
+          <Label htmlFor="disabledInput2">Personal access token</Label>
+          <TextInput type="text" id="disabledInput2" placeholder="Disabled readonly input" disabled readOnly />
         </div>
       ),
     },
@@ -69,16 +74,16 @@ const FormsPage: FC = () => {
       code: (
         <form className="flex flex-col gap-4">
           <div>
-            <Label className="mb-2 block" htmlFor="email">
+            <Label className="mb-2 block" htmlFor="email2">
               Your email
             </Label>
-            <TextInput id="email" type="email" placeholder="name@flowbite.com" required shadow />
+            <TextInput id="email2" type="email" placeholder="name@flowbite.com" required shadow />
           </div>
           <div>
-            <Label className="mb-2 block" htmlFor="password">
+            <Label className="mb-2 block" htmlFor="password2">
               Your password
             </Label>
-            <TextInput id="password" type="password" required shadow />
+            <TextInput id="password2" type="password" required shadow />
           </div>
           <div>
             <Label className="mb-2 block" htmlFor="repeat-password">
@@ -103,11 +108,11 @@ const FormsPage: FC = () => {
       title: 'Helper text',
       code: (
         <div>
-          <Label className="mb-2 block" htmlFor="email">
+          <Label className="mb-2 block" htmlFor="email3">
             Your email
           </Label>
           <TextInput
-            id="email"
+            id="email3"
             type="email"
             placeholder="name@flowbite.com"
             required
@@ -128,10 +133,10 @@ const FormsPage: FC = () => {
       title: 'Input element with icon',
       code: (
         <div>
-          <Label className="mb-2 block" htmlFor="email">
+          <Label className="mb-2 block" htmlFor="email4">
             Your email
           </Label>
-          <TextInput id="email" type="email" placeholder="name@flowbite.com" required icon={HiMail} />
+          <TextInput id="email4" type="email" placeholder="name@flowbite.com" required icon={HiMail} />
         </div>
       ),
     },
@@ -142,7 +147,7 @@ const FormsPage: FC = () => {
           <Label className="mb-2 block" htmlFor="username">
             Username
           </Label>
-          <TextInput id="username" placeholder="Bonnie Green" required addon="@" />
+          <TextInput id="username3" placeholder="Bonnie Green" required addon="@" />
         </div>
       ),
     },
@@ -151,7 +156,7 @@ const FormsPage: FC = () => {
       code: (
         <div className="flex flex-col gap-4">
           <div>
-            <Label className="mb-2 block" htmlFor="username" color="green">
+            <Label className="mb-2 block" htmlFor="username3" color="green">
               Your name
             </Label>
             <TextInput
@@ -167,11 +172,11 @@ const FormsPage: FC = () => {
             />
           </div>
           <div>
-            <Label className="mb-2 block" htmlFor="username" color="red">
+            <Label className="mb-2 block" htmlFor="username4" color="red">
               Your name
             </Label>
             <TextInput
-              id="username"
+              id="username4"
               placeholder="Bonnie Green"
               required
               color="red"
@@ -260,6 +265,7 @@ const FormsPage: FC = () => {
       title: 'Radio',
       code: (
         <fieldset className="flex flex-col gap-4" id="radio">
+          <legend>Choose your favorite country</legend>
           <div className="flex items-center gap-2">
             <Radio id="united-state" name="countries" value="USA" defaultChecked />
             <Label htmlFor="united-state">United States</Label>
@@ -300,9 +306,9 @@ const FormsPage: FC = () => {
       title: 'Toggle Switch',
       code: (
         <div className="flex flex-col gap-4" id="toggle">
-          <ToggleSwitch label="Toggle me" />
-          <ToggleSwitch label="Toggle me (checked)" defaultChecked />
-          <ToggleSwitch label="Toggle me (disabled)" disabled />
+          <ToggleSwitch checked={switch1} label="Toggle me" onChange={setSwitch1} />
+          <ToggleSwitch checked={switch2} label="Toggle me (checked)" onChange={setSwitch2} />
+          <ToggleSwitch checked={false} disabled label="Toggle me (disabled)" onChange={() => undefined} />
         </div>
       ),
     },

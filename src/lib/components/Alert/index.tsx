@@ -4,11 +4,11 @@ import { HiX } from 'react-icons/hi';
 
 export type AlertProps = PropsWithChildren<{
   color?: 'blue' | 'red' | 'green' | 'yellow' | 'gray';
-  Icon?: FC<ComponentProps<'svg'>>;
+  icon?: FC<ComponentProps<'svg'>>;
   rounded?: boolean;
   withBorderAccent?: boolean;
   additionalContent?: ReactNode;
-  onDismiss?: () => void;
+  onDismiss?: boolean | (() => void);
 }>;
 
 const colorClasses: Record<AlertProps['color'] & string, string> = {
@@ -22,7 +22,7 @@ const colorClasses: Record<AlertProps['color'] & string, string> = {
 export const Alert: FC<AlertProps> = ({
   children,
   color = 'blue',
-  Icon,
+  icon: Icon,
   rounded = true,
   withBorderAccent,
   additionalContent,
@@ -39,9 +39,9 @@ export const Alert: FC<AlertProps> = ({
       <div className="flex items-center">
         {Icon && <Icon className="mr-3 inline h-5 w-5 flex-shrink-0" />}
         <div>{children}</div>
-        {onDismiss && (
+        {typeof onDismiss === 'function' && (
           <button
-            type="button"
+            aria-label="Close"
             className={classNames('-mx-1.5 -my-1.5 ml-auto inline-flex h-8 w-8 rounded-lg p-1.5 focus:ring-2', {
               'bg-blue-100 text-blue-500 hover:bg-blue-200 focus:ring-blue-400 dark:bg-blue-200 dark:text-blue-600 dark:hover:bg-blue-300':
                 color === 'blue',
@@ -54,8 +54,9 @@ export const Alert: FC<AlertProps> = ({
               'bg-gray-100 text-gray-500 hover:bg-gray-200 focus:ring-gray-400 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white':
                 color === 'gray',
             })}
-            aria-label="Close"
+            data-testid="alert-dismiss"
             onClick={onDismiss}
+            type="button"
           >
             <span className="sr-only">Close</span>
             <HiX className="h-5 w-5" />

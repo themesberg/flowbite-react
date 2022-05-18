@@ -2,26 +2,31 @@ import { Children, cloneElement, FC, PropsWithChildren, ReactElement, useMemo } 
 import { AccordionPanel, AccordionPanelProps } from './AccordionPanel';
 import { AccordionTitle } from './AccordionTitle';
 import { AccordionContent } from './AccordionContent';
-import classNames from 'classnames';
+import cn from 'classnames';
+import { useTheme } from '../Flowbite/ThemeContext';
 
 export type AccordionProps = PropsWithChildren<{
   flush?: boolean;
 }>;
 
 const AccordionComponent: FC<AccordionProps> = ({ children, flush }) => {
+  const {
+    theme: { accordion },
+  } = useTheme();
+
+  const baseStyle = accordion.base;
+  const flushStyle = {
+    'rounded-lg border': !flush,
+    'border-b': flush,
+  };
+
   const panels = useMemo(
     () => Children.map(children as ReactElement<AccordionPanelProps>[], (child) => cloneElement(child, { flush })),
     [children, flush],
   );
 
   return (
-    <div
-      data-testid="accordion-element"
-      className={classNames('divide-y divide-gray-200 border-gray-200 dark:divide-gray-700 dark:border-gray-700', {
-        'rounded-lg border': !flush,
-        'border-b': flush,
-      })}
-    >
+    <div data-testid="accordion-element" className={cn(baseStyle, flushStyle)}>
       {panels}
     </div>
   );
