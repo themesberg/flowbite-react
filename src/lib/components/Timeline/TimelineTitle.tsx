@@ -1,5 +1,11 @@
-import { FC, PropsWithChildren } from 'react';
+import { FC, PropsWithChildren, ComponentProps } from 'react';
 
-export const TimelineTitle: FC<PropsWithChildren<any>> = ({ children }) => {
-  return <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{children}</h3>;
+export type TimelineTitleProps = PropsWithChildren<ComponentProps<'h3'>>;
+
+export const TimelineTitle: FC<TimelineTitleProps> = ({ children, ...props }) => {
+  return (
+    <h3 className="text-lg font-semibold text-gray-900 dark:text-white" {...props}>
+      {children}
+    </h3>
+  );
 };
