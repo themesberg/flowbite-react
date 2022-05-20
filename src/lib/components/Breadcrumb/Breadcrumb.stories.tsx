@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react/types-6-0';
 import { HiHome } from 'react-icons/hi';
 
-import Breadcrumb from '.';
+import { Breadcrumb } from '.';
 
 export default {
   title: 'Components/Breadcrumb',

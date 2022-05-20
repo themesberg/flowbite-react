@@ -10,4 +10,4 @@ const BreadcrumbComponent: FC<ComponentProps<'nav'>> = ({ children, ...rest }): 
 };
 
 BreadcrumbComponent.displayName = 'Breadcrumb';
-export default Object.assign(BreadcrumbComponent, { Item: BreadcrumbItem });
+export const Breadcrumb = Object.assign(BreadcrumbComponent, { Item: BreadcrumbItem });
