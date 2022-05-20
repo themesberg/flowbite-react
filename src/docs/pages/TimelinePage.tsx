@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { CodeExample, DemoPage } from './DemoPage';
-import { Timeline } from '../../lib';
-import { Button } from '../../lib';
+import { Timeline, Button } from '../../lib';
 import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
 
 const TimelinePage: FC = () => {
