@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.25](https://github.com/themesberg/flowbite-react/compare/v0.0.24...v0.0.25) (2022-05-20)
+
+
+### Bug Fixes
+
+* **component:** Check for `window` in components ([#124](https://github.com/themesberg/flowbite-react/issues/124)) ([4b3b8c5](https://github.com/themesberg/flowbite-react/commit/4b3b8c5f0419e0d3aa80d751ef71a01e8a075e93)), closes [#123](https://github.com/themesberg/flowbite-react/issues/123)
+
 ### [0.0.24](https://github.com/themesberg/flowbite-react/compare/v0.0.23...v0.0.24) (2022-05-15)
 
 ### [0.0.23](https://github.com/themesberg/flowbite-react/compare/v0.0.22...v0.0.23) (2022-05-12)
