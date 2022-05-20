@@ -1,4 +1,4 @@
-import { FC, Suspense, useState } from 'react';
+import { FC, Suspense, useRef, useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1 } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
@@ -9,6 +9,7 @@ import { routes } from './routes';
 
 export const Root: FC = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const mainRef = useRef<HTMLDivElement>(null);
   const { pathname } = useLocation();
 
   return (
@@ -48,14 +49,21 @@ export const Root: FC = () => {
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               {routes.map(({ href, icon, title }, key) => (
-                <Sidebar.Item key={key} icon={icon} as={Link} to={href} active={href === pathname}>
+                <Sidebar.Item
+                  key={key}
+                  icon={icon}
+                  as={Link}
+                  to={href}
+                  active={href === pathname}
+                  onClick={() => mainRef.current?.scrollTo({ top: 0 })}
+                >
                   {title}
                 </Sidebar.Item>
               ))}
             </Sidebar.ItemGroup>
           </Sidebar.Items>
         </Sidebar>
-        <main className="flex-1 overflow-auto p-4">
+        <main className="flex-1 overflow-auto p-4" ref={mainRef}>
           <Suspense
             fallback={
               <div className="flex h-full items-center justify-center">
