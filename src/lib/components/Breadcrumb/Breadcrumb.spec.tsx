@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { HiHome } from 'react-icons/hi';
-import Breadcrumb from '.';
+import { Breadcrumb } from '.';
 
 describe('Breadcrumb', () => {
   describe('given an aria-label', () => {
