@@ -2,10 +2,11 @@ import { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import classNames from 'classnames';
 import { HiX } from 'react-icons/hi';
 import { useTheme } from '../Flowbite/ThemeContext';
+import { Colors } from '../Flowbite/FlowbiteTheme';
 
 export type AlertProps = PropsWithChildren<{
   additionalContent?: ReactNode;
-  color?: string;
+  color?: keyof Colors;
   icon?: FC<ComponentProps<'svg'>>;
   onDismiss?: boolean | (() => void);
   rounded?: boolean;
@@ -15,7 +16,7 @@ export type AlertProps = PropsWithChildren<{
 export const Alert: FC<AlertProps> = ({
   additionalContent,
   children,
-  color = 'blue',
+  color = 'info',
   icon: Icon,
   onDismiss,
   rounded = true,
