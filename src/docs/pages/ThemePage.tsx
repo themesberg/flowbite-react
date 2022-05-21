@@ -4,10 +4,10 @@ import { HiInformationCircle } from 'react-icons/hi';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Alert, Card, DarkThemeToggle } from '../../lib';
-import { Flowbite } from '../../lib/components';
+import { DeepPartial, Flowbite, FlowbiteTheme } from '../../lib/components';
 
 const ThemePage: FC = () => {
-  const theme = { config: { button: { base: 'py-5 px-5' } } };
+  const theme: DeepPartial<FlowbiteTheme> = { alert: { color: { primary: 'bg-primary' } } };
 
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-8 dark:text-white">
@@ -26,7 +26,7 @@ const ThemePage: FC = () => {
         </div>
         <Card>
           <SyntaxHighlighter language="tsx" style={dracula}>
-            {reactElementToJSXString(<Flowbite theme={theme}>...</Flowbite>, {
+            {reactElementToJSXString(<Flowbite theme={{ theme }}>...</Flowbite>, {
               showFunctions: true,
               functionValue: (fn) => fn.name,
               sortProps: false,
