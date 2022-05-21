@@ -2,6 +2,7 @@
 import { FC, ReactNode, createContext, useContext, useState, useEffect } from 'react';
 import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';
+import { FlowbiteTheme } from './FlowbiteTheme';
 
 export type Mode = string | undefined | 'light' | 'dark';
 
@@ -9,36 +10,6 @@ interface ThemeContextProps {
   theme: FlowbiteTheme;
   mode?: Mode;
   toggleMode?: () => void | null;
-}
-
-export interface FlowbiteTheme {
-  accordion: {
-    base: string;
-    title: {
-      base: string;
-      isOpen: string;
-      isOpenNotFlushed: string;
-      notFlushed: string;
-    };
-    content: {
-      base: string;
-    };
-  };
-  alert: {
-    base: string;
-    borderAccent: string;
-    closeButton: {
-      base: string;
-      color: {
-        [key in string]: string;
-      };
-    };
-    color: {
-      [key in string]: string;
-    };
-    icon: string;
-    rounded: string;
-  };
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({
