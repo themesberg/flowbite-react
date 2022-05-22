@@ -2,11 +2,12 @@
 import { FC, ReactNode, createContext, useContext, useState, useEffect } from 'react';
 import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';
+import { FlowbiteTheme } from './FlowbiteTheme';
 
 export type Mode = string | undefined | 'light' | 'dark';
 
 interface ThemeContextProps {
-  theme: any;
+  theme: FlowbiteTheme;
   mode?: Mode;
   toggleMode?: () => void | null;
 }
