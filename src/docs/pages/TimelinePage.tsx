@@ -10,9 +10,7 @@ const TimelinePage: FC = () => {
       code: (
         <Timeline>
           <Timeline.Item>
-            <Timeline.Point>
-              <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700"></div>
-            </Timeline.Point>
+            <Timeline.Point />
             <Timeline.Content>
               <Timeline.Time>February 2022</Timeline.Time>
               <Timeline.Title>Application UI code in Tailwind CSS</Timeline.Title>
@@ -27,9 +25,7 @@ const TimelinePage: FC = () => {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point>
-              <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700"></div>
-            </Timeline.Point>
+            <Timeline.Point />
             <Timeline.Content>
               <Timeline.Time>March 2022</Timeline.Time>
               <Timeline.Title>Marketing UI design in Figma</Timeline.Title>
@@ -40,9 +36,7 @@ const TimelinePage: FC = () => {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point>
-              <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700"></div>
-            </Timeline.Point>
+            <Timeline.Point />
             <Timeline.Content>
               <Timeline.Time>April 2022</Timeline.Time>
               <Timeline.Title>E-Commerce UI code in Tailwind CSS</Timeline.Title>
@@ -60,11 +54,7 @@ const TimelinePage: FC = () => {
       code: (
         <Timeline>
           <Timeline.Item>
-            <Timeline.Point>
-              <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-200 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900">
-                <HiCalendar className="h-3 w-3 text-blue-600 dark:text-blue-300" />
-              </span>
-            </Timeline.Point>
+            <Timeline.Point icon={HiCalendar} />
             <Timeline.Content>
               <Timeline.Time>February 2022</Timeline.Time>
               <Timeline.Title>Application UI code in Tailwind CSS</Timeline.Title>
@@ -79,11 +69,7 @@ const TimelinePage: FC = () => {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point>
-              <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-200 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900">
-                <HiCalendar className="h-3 w-3 text-blue-600 dark:text-blue-300" />
-              </span>
-            </Timeline.Point>
+            <Timeline.Point icon={HiCalendar} />
             <Timeline.Content>
               <Timeline.Time>March 2022</Timeline.Time>
               <Timeline.Title>Marketing UI design in Figma</Timeline.Title>
@@ -94,11 +80,7 @@ const TimelinePage: FC = () => {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point>
-              <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-200 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900">
-                <HiCalendar className="h-3 w-3 text-blue-600 dark:text-blue-300" />
-              </span>
-            </Timeline.Point>
+            <Timeline.Point icon={HiCalendar} />
             <Timeline.Content>
               <Timeline.Time>April 2022</Timeline.Time>
               <Timeline.Title>E-Commerce UI code in Tailwind CSS</Timeline.Title>
@@ -116,11 +98,7 @@ const TimelinePage: FC = () => {
       code: (
         <Timeline horizontal>
           <Timeline.Item>
-            <Timeline.Point>
-              <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-200 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900">
-                <HiCalendar className="h-3 w-3 text-blue-600 dark:text-blue-300" />
-              </span>
-            </Timeline.Point>
+            <Timeline.Point icon={HiCalendar} />
             <Timeline.Content>
               <Timeline.Title>Flowbite Library v1.0.0</Timeline.Title>
               <Timeline.Time>Released on December 2, 2021</Timeline.Time>
@@ -128,11 +106,7 @@ const TimelinePage: FC = () => {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point>
-              <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-200 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900">
-                <HiCalendar className="h-3 w-3 text-blue-600 dark:text-blue-300" />
-              </span>
-            </Timeline.Point>
+            <Timeline.Point icon={HiCalendar} />
             <Timeline.Content>
               <Timeline.Title>Flowbite Library v1.2.0</Timeline.Title>
               <Timeline.Time>Released on December 23, 2021</Timeline.Time>
@@ -140,11 +114,7 @@ const TimelinePage: FC = () => {
             </Timeline.Content>
           </Timeline.Item>
           <Timeline.Item>
-            <Timeline.Point>
-              <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-200 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900">
-                <HiCalendar className="h-3 w-3 text-blue-600 dark:text-blue-300" />
-              </span>
-            </Timeline.Point>
+            <Timeline.Point icon={HiCalendar} />
             <Timeline.Content>
               <Timeline.Title>Flowbite Library v1.3.0</Timeline.Title>
               <Timeline.Time>Released on January 5, 2022</Timeline.Time>
