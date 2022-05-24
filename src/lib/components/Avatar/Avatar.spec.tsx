@@ -1,10 +1,32 @@
-import { cleanup, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Avatar } from '.';
+import { Flowbite } from '../Flowbite';
+import { CustomFlowbiteTheme } from '../Flowbite/FlowbiteTheme';
 import AvatarGroup from './AvatarGroup';
 
-describe('Avatar Component should be able to render a', () => {
-  afterEach(cleanup);
+describe('Components / Avatar', () => {
+  describe('Theme', () => {
+    it('should be able to apply custom classes', () => {
+      const theme: CustomFlowbiteTheme = {
+        avatar: {
+          size: {
+            xxl: 'h-64 w-64',
+          },
+        },
+      };
+      const { getByTestId } = render(
+        <Flowbite theme={{ theme }}>
+          <Avatar size="xxl" />
+        </Flowbite>,
+      );
 
+      expect(getByTestId('flowbite-avatar-img')).toHaveClass('h-64');
+      expect(getByTestId('flowbite-avatar-img')).toHaveClass('w-64');
+    });
+  });
+});
+
+describe('Avatar Component should be able to render a', () => {
   it('avatar', () => {
     const { getByTestId } = render(<Avatar />);
     expect(getByTestId('avatar-element')).toBeTruthy();
@@ -25,7 +47,7 @@ describe('Avatar Component should be able to render a', () => {
   it('bordered avatar', () => {
     const { getByTestId } = render(<Avatar bordered={true} />);
     expect(getByTestId('avatar-element').children[0].children[0].className).toContain(
-      'ring-2 ring-gray-300 dark:ring-gray-500 p-1',
+      'p-1 ring-2 ring-gray-300 dark:ring-gray-500',
     );
   });
 

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { ComponentProps, FC, PropsWithChildren } from 'react';
-import { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import { Sizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import AvatarGroup from './AvatarGroup';
 import AvatarGroupCounter from './AvatarGroupCounter';
@@ -10,7 +10,7 @@ export interface AvatarProps extends PropsWithChildren<ComponentProps<'div'>> {
   bordered?: boolean;
   img?: string;
   rounded?: boolean;
-  size?: keyof FlowbiteSizes;
+  size?: keyof Sizes;
   stacked?: boolean;
   status?: 'away' | 'busy' | 'offline' | 'online';
   statusPosition?: 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
@@ -43,6 +43,7 @@ const AvatarComponent: FC<AvatarProps> = ({
               theme.img.enabled,
               theme.size[size],
             )}
+            data-testid="flowbite-avatar-img"
             src={img}
           />
         ) : (
@@ -54,6 +55,7 @@ const AvatarComponent: FC<AvatarProps> = ({
               theme.img.disabled,
               theme.size[size],
             )}
+            data-testid="flowbite-avatar-img"
           >
             <svg
               className="absolute -bottom-1 h-auto w-auto text-gray-400"
