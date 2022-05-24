@@ -15,7 +15,7 @@ export const TimelinePoint: FC<TimelnePointProps> = ({ children, className, icon
     <div data-testid="timeline-point" className={classNames({ 'flex items-center': horizontal }, className)} {...props}>
       {children}
       {Icon ? (
-        <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-200 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900">
+        <span className="sr-only absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-200 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900">
           <Icon className="h-3 w-3 text-blue-600 dark:text-blue-300" />
         </span>
       ) : (
