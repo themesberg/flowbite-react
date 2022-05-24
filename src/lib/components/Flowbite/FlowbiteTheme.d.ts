@@ -1,3 +1,5 @@
+export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
+
 export interface FlowbiteTheme {
   accordion: {
     base: string;
