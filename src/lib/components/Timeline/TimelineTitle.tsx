@@ -1,11 +1,20 @@
 import { FC, PropsWithChildren, ComponentProps } from 'react';
+import classNames from 'classnames';
 
-export type TimelineTitleProps = PropsWithChildren<ComponentProps<'h3'>>;
+export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-export const TimelineTitle: FC<TimelineTitleProps> = ({ children, ...props }) => {
+export type TimelineTitleProps = PropsWithChildren<
+  ComponentProps<HeadingLevel> & {
+    className?: string;
+    as?: HeadingLevel;
+  }
+>;
+
+export const TimelineTitle: FC<TimelineTitleProps> = ({ children, className, as = 'h3', ...props }) => {
+  const Tag = as;
   return (
-    <h3 className="text-lg font-semibold text-gray-900 dark:text-white" {...props}>
+    <Tag className={classNames('text-lg font-semibold text-gray-900 dark:text-white', className)} {...props}>
       {children}
-    </h3>
+    </Tag>
   );
 };
