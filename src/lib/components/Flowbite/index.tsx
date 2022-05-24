@@ -4,18 +4,13 @@ import { mergeDeep } from '../../helpers/mergeDeep';
 import defaultTheme from '../../theme/default';
 import windowExists from '../../helpers/window-exists';
 import { FlowbiteTheme } from './FlowbiteTheme';
+import { DeepPartial } from '../../helpers/deep-partial';
 
 export interface ThemeProps {
   dark?: boolean;
   theme?: DeepPartial<FlowbiteTheme>;
   usePreferences?: boolean;
 }
-
-export type DeepPartial<T> = T extends object
-  ? {
-      [P in keyof T]?: DeepPartial<T[P]>;
-    }
-  : T;
 
 interface FlowbiteProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
