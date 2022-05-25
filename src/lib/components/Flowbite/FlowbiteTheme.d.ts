@@ -48,6 +48,17 @@ export interface FlowbiteTheme {
       'top-right': string;
     };
   };
+  badge: {
+    base: string;
+    color: Colors;
+    href: string;
+    icon: {
+      disabled: string;
+      enabled: string;
+      size: BadgeSizes;
+    };
+    size: BadgeSizes;
+  };
 }
 
 export type Colors = FlowbiteColors & {
@@ -73,3 +84,9 @@ export interface FlowbiteSizes {
   lg: string;
   xl: string;
 }
+
+export type BadgeSizes = FlowbiteBadgeSizes & {
+  [key in string]: string;
+};
+
+export type FlowbiteBadgeSizes = Pick<FlowbiteSizes, 'xs' | 'sm'>;
