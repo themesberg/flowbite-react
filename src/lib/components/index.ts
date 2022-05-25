@@ -20,6 +20,7 @@ export * from './Rating';
 export * from './Sidebar';
 export * from './Spinner';
 export * from './Table';
+export * from './Tab';
+export * from './Timeline';
 export * from './Toast';
 export * from './Tooltip';
-export * from './Tab';
