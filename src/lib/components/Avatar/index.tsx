@@ -28,10 +28,11 @@ const AvatarComponent: FC<AvatarProps> = ({
   statusPosition = 'top-left',
   ...props
 }) => {
+  const theirProps = Object.entries(props).filter(([key]) => key !== 'className');
   const theme = useTheme().theme.avatar;
 
   return (
-    <div className={theme.base} data-testid="avatar-element" {...props}>
+    <div className={theme.base} data-testid="avatar-element" {...theirProps}>
       <div className="relative">
         {img ? (
           <img

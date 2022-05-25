@@ -6,6 +6,12 @@ import AvatarGroup from './AvatarGroup';
 
 describe('Components / Avatar', () => {
   describe('Theme', () => {
+    it("shouldn't be able to set className directly", () => {
+      const { getByTestId } = render(<Avatar className="test testing" />);
+
+      expect(getByTestId('avatar-element')).not.toHaveClass('test testing');
+    });
+
     it('should be able to apply custom classes', () => {
       const theme: CustomFlowbiteTheme = {
         avatar: {
