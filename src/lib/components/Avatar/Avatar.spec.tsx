@@ -26,8 +26,7 @@ describe('Components / Avatar', () => {
         </Flowbite>,
       );
 
-      expect(getByTestId('flowbite-avatar-img')).toHaveClass('h-64');
-      expect(getByTestId('flowbite-avatar-img')).toHaveClass('w-64');
+      expect(getByTestId('flowbite-avatar-img')).toHaveClass('h-64 w-64');
     });
   });
 });

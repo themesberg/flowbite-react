@@ -1,3 +1,6 @@
+import type { AlertColors } from '../Alert';
+import type { AvatarSizes } from '../Avatar';
+
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
 export interface FlowbiteTheme {
@@ -31,9 +34,9 @@ export interface FlowbiteTheme {
     borderAccent: string;
     closeButton: {
       base: string;
-      color: Colors;
+      color: AlertColors;
     };
-    color: Colors;
+    color: AlertColors;
     icon: string;
     rounded: string;
   };
@@ -45,7 +48,7 @@ export interface FlowbiteTheme {
       on: string;
     };
     rounded: string;
-    size: Sizes;
+    size: AvatarSizes;
     stacked: string;
     status: {
       away: string;
@@ -54,12 +57,7 @@ export interface FlowbiteTheme {
       offline: string;
       online: string;
     };
-    statusPosition: {
-      'bottom-left': string;
-      'bottom-right': string;
-      'top-left': string;
-      'top-right': string;
-    };
+    statusPosition: FlowbitePositions;
   };
   badge: {
     base: string;
@@ -86,21 +84,23 @@ export interface FlowbiteTheme {
   };
 }
 
-export type Colors = FlowbiteColors & {
-  [key in string]: string;
-};
-
 export interface FlowbiteColors {
+  alternative: string;
+  dark: string;
   failure: string;
   gray: string;
   info: string;
+  light: string;
   success: string;
   warning: string;
 }
 
-export type Sizes = FlowbiteSizes & {
-  [key in string]: string;
-};
+export interface FlowbitePositions {
+  'bottom-left': string;
+  'bottom-right': string;
+  'top-left': string;
+  'top-right': string;
+}
 
 export interface FlowbiteSizes {
   xs: string;
@@ -109,9 +109,3 @@ export interface FlowbiteSizes {
   lg: string;
   xl: string;
 }
-
-export type BadgeSizes = FlowbiteBadgeSizes & {
-  [key in string]: string;
-};
-
-export type FlowbiteBadgeSizes = Pick<FlowbiteSizes, 'xs' | 'sm'>;

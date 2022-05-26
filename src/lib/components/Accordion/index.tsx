@@ -12,6 +12,7 @@ export interface AccordionProps extends PropsWithChildren<ComponentProps<'div'>>
 
 const AccordionComponent: FC<AccordionProps> = ({ children, flush, ...props }): JSX.Element => {
   const theirProps = excludeClassName(props);
+
   const theme = useTheme().theme.accordion;
 
   const panels = useMemo(
