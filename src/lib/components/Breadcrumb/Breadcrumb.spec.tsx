@@ -3,22 +3,20 @@ import { HiHome } from 'react-icons/hi';
 import { Breadcrumb } from '.';
 import { Flowbite } from '../Flowbite';
 
-describe('Breadcrumb', () => {
-  describe('A11y', () => {
-    it('should respect aria-label', () => {
-      const { getByRole } = render(<BreadcrumbTest />);
+describe('Components / Breadcrumb', () => {
+  describe('Props', () => {
+    it('should ignore `className`', () => {
+      const { getByRole } = render(
+        <Breadcrumb className="test testing">
+          <Breadcrumb.Item href="#" icon={HiHome}>
+            Home
+          </Breadcrumb.Item>
+        </Breadcrumb>,
+      );
 
       const breadcrumb = getByRole('navigation');
 
-      expect(breadcrumb).toHaveAccessibleName('test label');
-    });
-
-    it("shouldn't include icon in accessible name", () => {
-      const { getAllByRole } = render(<BreadcrumbTest />);
-
-      const items = getAllByRole('link');
-
-      expect(items[0]).toHaveAccessibleName('Home');
+      expect(breadcrumb).not.toHaveClass('test testing');
     });
   });
 
@@ -76,6 +74,52 @@ describe('Breadcrumb', () => {
       expect(noLinkItem).not.toHaveAttribute('href');
       expect(noLinkWrapper).toHaveClass('justify-center');
       expect(noLinkItem).toHaveClass('text-md');
+    });
+  });
+
+  describe('A11y', () => {
+    it('should have `role="navigation"`', () => {
+      const { getByRole } = render(<BreadcrumbTest />);
+
+      const breadcrumb = getByRole('navigation');
+
+      expect(breadcrumb).toBeInTheDocument();
+    });
+
+    it('should contain a `role="list"`', () => {
+      const { getByRole } = render(<BreadcrumbTest />);
+
+      const breadcrumb = getByRole('navigation');
+      const breadcrumbsList = getByRole('list');
+
+      expect(breadcrumb).toContainElement(breadcrumbsList);
+    });
+
+    it('should contain a `role="listitem"` for each `Breadcrumb.Item`', () => {
+      const { getAllByRole } = render(<BreadcrumbTest />);
+
+      const breadcrumbs = getAllByRole('listitem');
+
+      expect(breadcrumbs[0]).toHaveTextContent('Home');
+      expect(breadcrumbs[1]).toHaveTextContent('Projects');
+      expect(breadcrumbs[2]).toHaveTextContent('Flowbite React');
+    });
+
+    it('should contain a `role="link"` for each `Breadcrumb.Item href=".."`', () => {
+      const { getAllByRole } = render(<BreadcrumbTest />);
+
+      const breadcrumbLinks = getAllByRole('link');
+
+      expect(breadcrumbLinks[0]).toHaveTextContent('Home');
+      expect(breadcrumbLinks[1]).toHaveTextContent('Projects');
+    });
+
+    it('should use `aria-label` if provided', () => {
+      const { getByRole } = render(<BreadcrumbTest />);
+
+      const breadcrumb = getByRole('navigation');
+
+      expect(breadcrumb).toHaveAccessibleName('test label');
     });
   });
 });
