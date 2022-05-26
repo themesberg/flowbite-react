@@ -14,12 +14,12 @@ const AlertsPage: FC = () => {
   const examples: CodeExample[] = [
     {
       title: 'Default alert',
-      code: <Alert color="blue">{alertText}</Alert>,
+      code: <Alert color="info">{alertText}</Alert>,
     },
     {
       title: 'Alerts with icon',
       code: (
-        <Alert color="red" icon={HiInformationCircle}>
+        <Alert color="failure" icon={HiInformationCircle}>
           {alertText}
         </Alert>
       ),
@@ -27,7 +27,7 @@ const AlertsPage: FC = () => {
     {
       title: 'Dismissible alerts',
       code: (
-        <Alert color="green" onDismiss={() => alert('Alert dismissed!')}>
+        <Alert color="success" onDismiss={() => alert('Alert dismissed!')}>
           {alertText}
         </Alert>
       ),
@@ -36,7 +36,7 @@ const AlertsPage: FC = () => {
     {
       title: 'Rounded',
       code: (
-        <Alert color="yellow" rounded={false}>
+        <Alert color="warning" rounded={false}>
           {alertText}
         </Alert>
       ),
@@ -44,7 +44,7 @@ const AlertsPage: FC = () => {
     {
       title: 'Border accent',
       code: (
-        <Alert color="yellow" withBorderAccent>
+        <Alert color="warning" withBorderAccent>
           {alertText}
         </Alert>
       ),
@@ -53,7 +53,7 @@ const AlertsPage: FC = () => {
       title: 'Additional content',
       code: (
         <Alert
-          color="blue"
+          color="info"
           additionalContent={
             <>
               <div className="mt-2 mb-4 text-sm text-blue-700 dark:text-blue-800">
@@ -87,7 +87,7 @@ const AlertsPage: FC = () => {
       title: 'All options',
       code: (
         <Alert
-          color="green"
+          color="success"
           rounded={false}
           withBorderAccent
           onDismiss={() => alert('Alert dismissed!')}
