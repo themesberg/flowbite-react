@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { ComponentProps, FC, PropsWithChildren } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
 import { Sizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import AvatarGroup from './AvatarGroup';
@@ -28,7 +29,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   statusPosition = 'top-left',
   ...props
 }) => {
-  const theirProps = Object.entries(props).filter(([key]) => key !== 'className');
+  const theirProps = excludeClassName(props);
   const theme = useTheme().theme.avatar;
 
   return (
