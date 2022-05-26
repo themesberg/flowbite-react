@@ -47,7 +47,7 @@ const TestAlert = (): JSX.Element => {
           </div>
         </>
       }
-      color="blue"
+      color="info"
       icon={HiInformationCircle}
       onDismiss={() => setDismissed(!isDismissed)}
     >

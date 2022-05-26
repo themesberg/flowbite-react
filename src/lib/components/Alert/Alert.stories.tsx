@@ -38,7 +38,7 @@ AlertWithIcons.args = {
 export const AlertDismissible = Template.bind({});
 AlertDismissible.storyName = 'Dismissible';
 AlertDismissible.args = {
-  color: 'green',
+  color: 'success',
   onDismiss: () => alert('Alert dismissed!'),
   children: <>Info alert! Change a few things up and try submitting again.</>,
 };
@@ -46,7 +46,7 @@ AlertDismissible.args = {
 export const AlertRounded = Template.bind({});
 AlertRounded.storyName = 'Not rounded';
 AlertRounded.args = {
-  color: 'yellow',
+  color: 'warning',
   rounded: false,
   onDismiss: false,
   children: <>Info alert! Change a few things up and try submitting again.</>,
@@ -55,7 +55,7 @@ AlertRounded.args = {
 export const AlertWithBorderAccent = Template.bind({});
 AlertWithBorderAccent.storyName = 'Border accent';
 AlertWithBorderAccent.args = {
-  color: 'yellow',
+  color: 'warning',
   onDismiss: false,
   withBorderAccent: true,
   children: <>Info alert! Change a few things up and try submitting again.</>,
@@ -64,7 +64,7 @@ AlertWithBorderAccent.args = {
 export const AlertWithAdditionalContent = Template.bind({});
 AlertWithAdditionalContent.storyName = 'Additional content';
 AlertWithAdditionalContent.args = {
-  color: 'blue',
+  color: 'info',
   icon: HiInformationCircle,
   onDismiss: false,
   withBorderAccent: true,
@@ -101,7 +101,7 @@ AlertWithAdditionalContent.args = {
 export const AlertWithAllOptions = Template.bind({});
 AlertWithAllOptions.storyName = 'All options';
 AlertWithAllOptions.args = {
-  color: 'green',
+  color: 'success',
   rounded: false,
   withBorderAccent: true,
   onDismiss: () => alert('Alert dismissed!'),
