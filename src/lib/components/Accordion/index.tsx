@@ -1,24 +1,18 @@
-import { Children, cloneElement, FC, PropsWithChildren, ReactElement, useMemo } from 'react';
+import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useMemo } from 'react';
 import { AccordionPanel, AccordionPanelProps } from './AccordionPanel';
 import { AccordionTitle } from './AccordionTitle';
 import { AccordionContent } from './AccordionContent';
-import cn from 'classnames';
+import classNames from 'classnames';
 import { useTheme } from '../Flowbite/ThemeContext';
+import { excludeClassName } from '../../helpers/exclude';
 
-export type AccordionProps = PropsWithChildren<{
+export interface AccordionProps extends PropsWithChildren<ComponentProps<'div'>> {
   flush?: boolean;
-}>;
+}
 
-const AccordionComponent: FC<AccordionProps> = ({ children, flush }) => {
-  const {
-    theme: { accordion },
-  } = useTheme();
-
-  const baseStyle = accordion.base;
-  const flushStyle = {
-    'rounded-lg border': !flush,
-    'border-b': flush,
-  };
+const AccordionComponent: FC<AccordionProps> = ({ children, flush, ...props }): JSX.Element => {
+  const theirProps = excludeClassName(props);
+  const theme = useTheme().theme.accordion;
 
   const panels = useMemo(
     () => Children.map(children as ReactElement<AccordionPanelProps>[], (child) => cloneElement(child, { flush })),
@@ -26,7 +20,11 @@ const AccordionComponent: FC<AccordionProps> = ({ children, flush }) => {
   );
 
   return (
-    <div data-testid="accordion-element" className={cn(baseStyle, flushStyle)}>
+    <div
+      className={classNames(theme.base, theme.flush[flush ? 'on' : 'off'])}
+      data-testid="flowbite-accordion"
+      {...theirProps}
+    >
       {panels}
     </div>
   );

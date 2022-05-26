@@ -3,14 +3,27 @@ export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 export interface FlowbiteTheme {
   accordion: {
     base: string;
-    title: {
-      base: string;
-      isOpen: string;
-      isOpenNotFlushed: string;
-      notFlushed: string;
-    };
     content: {
       base: string;
+    };
+    flush: {
+      off: string;
+      on: string;
+    };
+    title: {
+      arrow: {
+        base: string;
+        open: string;
+      };
+      base: string;
+      flush: {
+        off: string;
+        on: string;
+      };
+      open: {
+        off: string;
+        on: string;
+      };
     };
   };
   alert: {

@@ -30,7 +30,7 @@ describe('Accordion Component', () => {
         </Accordion.Panel>
       </Accordion>,
     );
-    expect(getByTestId('accordion-element')).toBeTruthy();
+    expect(getByTestId('flowbite-accordion')).toBeTruthy();
   });
 
   it('should be able to render a closed accordion', () => {
@@ -57,11 +57,11 @@ describe('Accordion Component', () => {
         </Accordion.Panel>
       </Accordion>,
     );
-    expect(getByTestId('accordion-element').children.length).toEqual(1);
+    expect(getByTestId('flowbite-accordion').children.length).toEqual(1);
   });
 
   it("should be able to open and close an accordion panel when clicking on it's title", () => {
-    const { getByTestId } = render(
+    const { getByRole, getByTestId } = render(
       <Accordion>
         <Accordion.Panel>
           <Accordion.Title>What is Flowbite?</Accordion.Title>
@@ -85,14 +85,14 @@ describe('Accordion Component', () => {
       </Accordion>,
     );
 
-    expect(getByTestId('accordion-element').children.length).toEqual(1);
+    expect(getByTestId('flowbite-accordion').children.length).toEqual(1);
 
     // Open first panel
-    userEvent.click(getByTestId('accordion-title-element'));
-    expect(getByTestId('accordion-element').children.length).toEqual(2);
+    userEvent.click(getByRole('button'));
+    expect(getByTestId('flowbite-accordion').children.length).toEqual(2);
 
     // Close it again
-    userEvent.click(getByTestId('accordion-title-element'));
-    expect(getByTestId('accordion-element').children.length).toEqual(1);
+    userEvent.click(getByRole('button'));
+    expect(getByTestId('flowbite-accordion').children.length).toEqual(1);
   });
 });

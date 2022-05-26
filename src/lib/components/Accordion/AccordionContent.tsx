@@ -1,21 +1,17 @@
-import classNames from 'classnames';
 import { ComponentProps, FC } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 import { useAccordionContext } from './AccordionPanelContext';
 
-export const AccordionContent: FC<ComponentProps<'div'>> = ({ children, ...props }) => {
-  const {
-    theme: {
-      accordion: { content },
-    },
-  } = useTheme();
-  const { isOpen } = useAccordionContext();
+export const AccordionContent: FC<ComponentProps<'div'>> = ({ children, ...props }): JSX.Element | null => {
+  const theirProps = excludeClassName(props);
 
-  const baseStyle = classNames('first:rounded-t-lg', content.base);
+  const { isOpen } = useAccordionContext();
+  const theme = useTheme().theme.accordion.content;
 
   return isOpen ? (
-    <div {...props} className={baseStyle}>
+    <div className={theme.base} {...theirProps}>
       {children}
     </div>
   ) : null;
