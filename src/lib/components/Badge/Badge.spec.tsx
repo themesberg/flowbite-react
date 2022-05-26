@@ -64,8 +64,8 @@ describe('Components / Badge', () => {
       const theme = {
         badge: {
           icon: {
-            disabled: 'rounded-lg p-1',
-            enabled: 'rounded-full p-5',
+            off: 'rounded-lg p-1',
+            on: 'rounded-full p-5',
             size: {
               xxl: 'w-6 h-6',
             },

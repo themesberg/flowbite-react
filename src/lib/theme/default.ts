@@ -54,8 +54,8 @@ export default {
     base: 'flex items-center space-x-4',
     bordered: 'p-1 ring-2 ring-gray-300 dark:ring-gray-500',
     img: {
-      disabled: 'rounded relative overflow-hidden bg-gray-100 dark:bg-gray-600',
-      enabled: 'rounded',
+      off: 'rounded relative overflow-hidden bg-gray-100 dark:bg-gray-600',
+      on: 'rounded',
     },
     rounded: '!rounded-full',
     size: {
@@ -99,8 +99,8 @@ export default {
     },
     href: 'group',
     icon: {
-      disabled: 'rounded px-2 py-0.5',
-      enabled: 'rounded-full p-1.5',
+      off: 'rounded px-2 py-0.5',
+      on: 'rounded-full p-1.5',
       size: {
         xs: 'w-3 h-3',
         sm: 'w-3.5 h-3.5',

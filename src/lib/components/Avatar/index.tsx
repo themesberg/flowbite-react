@@ -42,7 +42,7 @@ const AvatarComponent: FC<AvatarProps> = ({
               bordered && theme.bordered,
               rounded && theme.rounded,
               stacked && theme.stacked,
-              theme.img.enabled,
+              theme.img.on,
               theme.size[size],
             )}
             data-testid="flowbite-avatar-img"
@@ -54,7 +54,7 @@ const AvatarComponent: FC<AvatarProps> = ({
               bordered && theme.bordered,
               rounded && theme.rounded,
               stacked && theme.stacked,
-              theme.img.disabled,
+              theme.img.off,
               theme.size[size],
             )}
             data-testid="flowbite-avatar-img"

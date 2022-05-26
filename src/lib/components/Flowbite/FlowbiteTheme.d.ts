@@ -41,8 +41,8 @@ export interface FlowbiteTheme {
     base: string;
     bordered: string;
     img: {
-      disabled: string;
-      enabled: string;
+      off: string;
+      on: string;
     };
     rounded: string;
     size: Sizes;
@@ -66,8 +66,8 @@ export interface FlowbiteTheme {
     color: Colors;
     href: string;
     icon: {
-      disabled: string;
-      enabled: string;
+      off: string;
+      on: string;
       size: BadgeSizes;
     };
     size: BadgeSizes;

@@ -24,12 +24,7 @@ export const Badge: FC<BadgeProps> = ({
 
   const Content = (): JSX.Element => (
     <span
-      className={classNames(
-        Icon ? theme.icon.enabled : theme.icon.disabled,
-        theme.base,
-        theme.color[color],
-        theme.size[size],
-      )}
+      className={classNames(Icon ? theme.icon.on : theme.icon.off, theme.base, theme.color[color], theme.size[size])}
       data-testid="flowbite-badge"
       {...theirProps}
     >
