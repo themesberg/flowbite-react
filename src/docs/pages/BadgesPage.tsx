@@ -10,11 +10,11 @@ const BadgesPage: FC = () => {
       title: 'Default badge',
       code: (
         <div className="flex flex-wrap gap-2">
-          <Badge color="blue">Default</Badge>
+          <Badge color="info">Default</Badge>
           <Badge color="gray">Dark</Badge>
-          <Badge color="red">Red</Badge>
-          <Badge color="green">Green</Badge>
-          <Badge color="yellow">Yellow</Badge>
+          <Badge color="failure">Failure</Badge>
+          <Badge color="success">Success</Badge>
+          <Badge color="warning">Warning</Badge>
           <Badge color="indigo">Indigo</Badge>
           <Badge color="purple">Purple</Badge>
           <Badge color="pink">Pink</Badge>
@@ -25,20 +25,20 @@ const BadgesPage: FC = () => {
       title: 'Large badge',
       code: (
         <div className="flex flex-wrap gap-2">
-          <Badge color="blue" size="sm">
+          <Badge color="info" size="sm">
             Default
           </Badge>
           <Badge color="gray" size="sm">
             Dark
           </Badge>
-          <Badge color="red" size="sm">
-            Red
+          <Badge color="failure" size="sm">
+            Failure
           </Badge>
-          <Badge color="green" size="sm">
-            Green
+          <Badge color="success" size="sm">
+            Success
           </Badge>
-          <Badge color="yellow" size="sm">
-            Yellow
+          <Badge color="warning" size="sm">
+            Warning
           </Badge>
           <Badge color="indigo" size="sm">
             Indigo
