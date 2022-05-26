@@ -59,6 +59,18 @@ export interface FlowbiteTheme {
     };
     size: BadgeSizes;
   };
+  breadcrumb: {
+    item: {
+      base: string;
+      chevron: string;
+      href: {
+        off: string;
+        on: string;
+      };
+      icon: string;
+    };
+    list: string;
+  };
 }
 
 export type Colors = FlowbiteColors & {
