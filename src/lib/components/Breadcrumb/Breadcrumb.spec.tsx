@@ -5,18 +5,18 @@ import { Flowbite } from '../Flowbite';
 
 describe('Components / Breadcrumb', () => {
   describe('Props', () => {
-    it('should ignore `className`', () => {
+    it('should ignore `className` on `Breadcrumb.Item`s', () => {
       const { getByRole } = render(
-        <Breadcrumb className="test testing">
-          <Breadcrumb.Item href="#" icon={HiHome}>
+        <Breadcrumb>
+          <Breadcrumb.Item href="#" icon={HiHome} className="test testing">
             Home
           </Breadcrumb.Item>
         </Breadcrumb>,
       );
 
-      const breadcrumb = getByRole('navigation');
+      const itemWithClassName = getByRole('listitem');
 
-      expect(breadcrumb).not.toHaveClass('test testing');
+      expect(itemWithClassName).not.toHaveClass('test testing');
     });
   });
 
