@@ -1,10 +1,13 @@
 import { ComponentProps, FC } from 'react';
+import { useTheme } from '../Flowbite/ThemeContext';
 import BreadcrumbItem from './BreadcrumbItem';
 
 const BreadcrumbComponent: FC<ComponentProps<'nav'>> = ({ children, ...rest }): JSX.Element => {
+  const theme = useTheme().theme.breadcrumb;
+
   return (
     <nav aria-label="Breadcrumb" {...rest}>
-      <ol className="flex items-center">{children}</ol>
+      <ol className={theme.list}>{children}</ol>
     </nav>
   );
 };
