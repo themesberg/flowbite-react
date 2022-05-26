@@ -4,10 +4,11 @@ import { HiInformationCircle } from 'react-icons/hi';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Alert, Card, DarkThemeToggle } from '../../lib';
-import { DeepPartial, Flowbite, FlowbiteTheme } from '../../lib/components';
+import { Flowbite } from '../../lib/components';
+import { CustomFlowbiteTheme } from '../../lib/components/Flowbite/FlowbiteTheme';
 
 const ThemePage: FC = () => {
-  const theme: DeepPartial<FlowbiteTheme> = { alert: { color: { primary: 'bg-primary' } } };
+  const theme: CustomFlowbiteTheme = { alert: { color: { primary: 'bg-primary' } } };
 
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-8 dark:text-white">
