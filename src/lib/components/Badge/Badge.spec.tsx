@@ -4,6 +4,20 @@ import { Badge } from '.';
 import { Flowbite } from '../Flowbite';
 
 describe('Components / Badge', () => {
+  describe('Props', () => {
+    it('should ignore `className`', () => {
+      const { getByTestId } = render(
+        <Badge className="test testing" color="success">
+          A badge
+        </Badge>,
+      );
+
+      const badge = getByTestId('flowbite-badge');
+
+      expect(badge).not.toHaveClass('test testing');
+    });
+  });
+
   describe('Rendering', () => {
     describe('"href" provided', () => {
       it('should wrap itself in anchor', () => {
@@ -30,6 +44,7 @@ describe('Components / Badge', () => {
           },
         },
       };
+
       const { getByTestId } = render(
         <Flowbite theme={{ theme }}>
           <Badge color="primary" href="/" icon={HiCheck}>
@@ -37,6 +52,7 @@ describe('Components / Badge', () => {
           </Badge>
         </Flowbite>,
       );
+
       const badge = getByTestId('flowbite-badge');
 
       expect(badge).toHaveClass(
@@ -59,20 +75,26 @@ describe('Components / Badge', () => {
           },
         },
       };
+
       const { getAllByTestId, getByTestId } = render(
         <Flowbite theme={{ theme }}>
           <Badge size="xxl">A badge</Badge>
           <Badge icon={HiCheck} size="xxl" />
         </Flowbite>,
       );
+
       const badges = getAllByTestId('flowbite-badge');
-      const icon = getByTestId('flowbite-badge-icon');
       const regularBadge = badges[0];
-      const emptyBadge = badges[1];
 
       expect(regularBadge).toHaveClass('text-2xl');
       expect(regularBadge).toHaveClass('rounded-lg p-1');
+
+      const emptyBadge = badges[1];
+
       expect(emptyBadge).toHaveClass('rounded-full p-5');
+
+      const icon = getByTestId('flowbite-badge-icon');
+
       expect(icon).toHaveClass('w-6 h-6');
     });
   });
