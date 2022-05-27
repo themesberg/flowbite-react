@@ -1,13 +1,14 @@
 import classNames from 'classnames';
 import { PropsWithChildren, FC, ComponentProps } from 'react';
-import { Color } from '../Button';
 import { useSidebarContext } from './SidebarContext';
 
 export interface SidebarCTAProps extends PropsWithChildren<ComponentProps<'div'>> {
-  color?: Color;
+  color?: SidebarCTAColor;
 }
 
-const colorClasses: Record<Color, string> = {
+type SidebarCTAColor = 'alternative' | 'blue' | 'dark' | 'green' | 'light' | 'purple' | 'red' | 'yellow';
+
+const colorClasses: Record<SidebarCTAColor, string> = {
   blue: 'bg-blue-50 dark:bg-blue-900',
   alternative: 'bg-alternative-50 dark:bg-alternative-900',
   dark: 'bg-dark-50 dark:bg-dark-900',

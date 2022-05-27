@@ -1,13 +1,22 @@
-import { Children, cloneElement, FC, PropsWithChildren, ReactElement, useMemo } from 'react';
+import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useMemo } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
 
 import { ButtonComponentProps } from '.';
 
-export type ButtonGroupProps = PropsWithChildren<{
-  pill?: boolean;
-  outline?: boolean;
-}>;
+export type ButtonGroupProps = PropsWithChildren<
+  ComponentProps<'div'> & Pick<ButtonComponentProps, 'outline' | 'pill'>
+>;
 
-const ButtonGroup: FC<ButtonGroupProps> = ({ children, pill, outline }) => {
+export interface PositionInButtonGroup {
+  none: string;
+  start: string;
+  middle: string;
+  end: string;
+}
+
+const ButtonGroup: FC<ButtonGroupProps> = ({ children, outline, pill, ...props }): JSX.Element => {
+  const theirProps = excludeClassName(props);
+
   const items = useMemo(
     () =>
       Children.map(children as ReactElement<ButtonComponentProps>[], (child, index) =>
@@ -26,7 +35,7 @@ const ButtonGroup: FC<ButtonGroupProps> = ({ children, pill, outline }) => {
   );
 
   return (
-    <div className="inline-flex" role="group">
+    <div className="inline-flex" role="group" {...theirProps}>
       {items}
     </div>
   );

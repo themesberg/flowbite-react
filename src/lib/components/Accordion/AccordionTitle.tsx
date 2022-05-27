@@ -3,10 +3,11 @@ import classNames from 'classnames';
 import { useAccordionContext } from './AccordionPanelContext';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { excludeClassName } from '../../helpers/exclude';
-import { HeadingLevel } from '../Flowbite/FlowbiteTheme';
+import { FlowbiteHeadingLevel } from '../Flowbite/FlowbiteTheme';
 
 export interface AccordionTitleProps extends ComponentProps<'button'> {
-  as?: HeadingLevel;
+  arrowIcon?: FC<ComponentProps<'svg'>>;
+  as?: FlowbiteHeadingLevel;
 }
 
 export const AccordionTitle: FC<AccordionTitleProps> = ({ as: Heading = 'h2', children, ...props }): JSX.Element => {

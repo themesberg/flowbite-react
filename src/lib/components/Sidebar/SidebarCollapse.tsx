@@ -1,14 +1,14 @@
 import classNames from 'classnames';
 import * as nanoid from 'nanoid';
-import { FC, PropsWithChildren, useMemo, useState } from 'react';
+import { ComponentProps, FC, PropsWithChildren, useMemo, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { excludeClassName } from '../../helpers/exclude';
 import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
-import { SidebarItem } from './SidebarItem';
+import { SidebarItemProps } from './SidebarItem';
 import { SidebarItemContext } from './SidebarItemContext';
 
-export type SidebarCollapseProps = PropsWithChildren<SidebarItem>;
+export type SidebarCollapseProps = PropsWithChildren<ComponentProps<'button'> & SidebarItemProps>;
 
 const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label, ...props }): JSX.Element => {
   const theirProps = excludeClassName(props);

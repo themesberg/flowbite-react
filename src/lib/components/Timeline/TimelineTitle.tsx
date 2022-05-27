@@ -1,11 +1,11 @@
 import { FC, PropsWithChildren, ComponentProps } from 'react';
 import classNames from 'classnames';
-import { HeadingLevel } from '../Flowbite/FlowbiteTheme';
+import { FlowbiteHeadingLevel } from '../Flowbite/FlowbiteTheme';
 
 export type TimelineTitleProps = PropsWithChildren<
-  ComponentProps<HeadingLevel> & {
+  ComponentProps<FlowbiteHeadingLevel> & {
     className?: string;
-    as?: HeadingLevel;
+    as?: FlowbiteHeadingLevel;
   }
 >;
 
