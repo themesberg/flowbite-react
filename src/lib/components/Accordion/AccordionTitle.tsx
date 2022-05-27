@@ -4,13 +4,16 @@ import { HiChevronDown } from 'react-icons/hi';
 import { useAccordionContext } from './AccordionPanelContext';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { excludeClassName } from '../../helpers/exclude';
+import { HeadingLevel } from '../Flowbite/FlowbiteTheme';
 
 export interface AccordionTitleProps extends ComponentProps<'button'> {
   arrowIcon?: FC<ComponentProps<'svg'>>;
+  as?: HeadingLevel;
 }
 
 export const AccordionTitle: FC<AccordionTitleProps> = ({
   arrowIcon: ArrowIcon = HiChevronDown,
+  as: Heading = 'h2',
   children,
   ...props
 }): JSX.Element => {
@@ -28,8 +31,8 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
       type="button"
       {...theirProps}
     >
-      <h2>{children}</h2>
-      <ArrowIcon className={classNames(theme.arrow.base, isOpen && theme.arrow.open)} />
+      <Heading data-testid="flowbite-accordion-heading">{children}</Heading>
+      <ArrowIcon aria-hidden className={classNames(theme.arrow.base, isOpen && theme.arrow.open)} />
     </button>
   );
 };
