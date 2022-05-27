@@ -1,98 +1,216 @@
-import { cleanup, render } from '@testing-library/react';
+import { render, RenderResult } from '@testing-library/react';
+import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 
-import { Accordion } from '.';
-import userEvent from '@testing-library/user-event';
+import { Accordion, AccordionProps } from '.';
+import { Flowbite } from '../Flowbite';
 
-describe('Accordion Component', () => {
-  afterEach(cleanup);
+describe('Components / Accordion', () => {
+  describe('Props', () => {
+    it('should ignore `className`', () => {
+      const dom = render(<TestAccordion className="no-classname" />);
+      const accordion = getAccordion(dom);
+      const content = getAccordionContent(dom)[0];
+      const title = getAccordionTitles(dom)[0];
 
-  it('should be able to render an accordion', () => {
-    const { getByTestId } = render(
-      <Accordion>
-        <Accordion.Panel open>
-          <Accordion.Title>What is Flowbite?</Accordion.Title>
-          <Accordion.Content>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
-              Flowbite is an open-source library of interactive components built on top of Tailwind CSS including
-              buttons, dropdowns, modals, navbars, and more.
-            </p>
-            <p className="text-gray-500 dark:text-gray-400">
-              Check out this guide to learn how to{' '}
-              <a
-                href="https://flowbite.com/docs/getting-started/introduction/"
-                className="text-blue-600 hover:underline dark:text-blue-500"
-              >
-                get started
-              </a>{' '}
-              and start developing websites even faster with components on top of Tailwind CSS.
-            </p>
-          </Accordion.Content>
-        </Accordion.Panel>
-      </Accordion>,
-    );
-    expect(getByTestId('flowbite-accordion')).toBeTruthy();
+      expect(accordion).not.toHaveClass('no-classname');
+      expect(content).not.toHaveClass('no-classname');
+      expect(title).not.toHaveClass('no-classname');
+    });
+
+    describe('`Accordion.Title`', () => {
+      it('should allow any heading level with `as=""`', () => {
+        const headings = getAccordionHeadings(render(<TestAccordion />));
+        const h3Heading = headings[0];
+        const defaultHeading = headings[1];
+
+        expect(h3Heading.tagName.toLocaleLowerCase()).toEqual('h3');
+        expect(defaultHeading.tagName.toLocaleLowerCase()).toEqual('h2');
+      });
+    });
   });
 
-  it('should be able to render a closed accordion', () => {
-    const { getByTestId } = render(
-      <Accordion>
-        <Accordion.Panel>
-          <Accordion.Title>What is Flowbite?</Accordion.Title>
-          <Accordion.Content>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
-              Flowbite is an open-source library of interactive components built on top of Tailwind CSS including
-              buttons, dropdowns, modals, navbars, and more.
-            </p>
-            <p className="text-gray-500 dark:text-gray-400">
-              Check out this guide to learn how to{' '}
-              <a
-                href="https://flowbite.com/docs/getting-started/introduction/"
-                className="text-blue-600 hover:underline dark:text-blue-500"
-              >
-                get started
-              </a>{' '}
-              and start developing websites even faster with components on top of Tailwind CSS.
-            </p>
-          </Accordion.Content>
-        </Accordion.Panel>
-      </Accordion>,
-    );
-    expect(getByTestId('flowbite-accordion').children.length).toEqual(1);
+  describe('Rendering', () => {
+    it('should render without crashing', () => {
+      const accordion = getAccordion(render(<TestAccordion />));
+
+      expect(accordion).toBeInTheDocument();
+    });
   });
 
-  it("should be able to open and close an accordion panel when clicking on it's title", () => {
-    const { getByRole, getByTestId } = render(
-      <Accordion>
-        <Accordion.Panel>
-          <Accordion.Title>What is Flowbite?</Accordion.Title>
-          <Accordion.Content>
-            <p className="mb-2 text-gray-500 dark:text-gray-400">
-              Flowbite is an open-source library of interactive components built on top of Tailwind CSS including
-              buttons, dropdowns, modals, navbars, and more.
-            </p>
-            <p className="text-gray-500 dark:text-gray-400">
-              Check out this guide to learn how to{' '}
-              <a
-                href="https://flowbite.com/docs/getting-started/introduction/"
-                className="text-blue-600 hover:underline dark:text-blue-500"
-              >
-                get started
-              </a>{' '}
-              and start developing websites even faster with components on top of Tailwind CSS.
-            </p>
-          </Accordion.Content>
-        </Accordion.Panel>
-      </Accordion>,
-    );
+  describe('Theme', () => {
+    describe('`Accordion`', () => {
+      it('should use custom `base` classes', () => {
+        const theme = {
+          accordion: {
+            base: 'text-4xl',
+          },
+        };
 
-    expect(getByTestId('flowbite-accordion').children.length).toEqual(1);
+        const accordion = getAccordion(
+          render(
+            <Flowbite theme={{ theme }}>
+              <TestAccordion />
+            </Flowbite>,
+          ),
+        );
 
-    // Open first panel
-    userEvent.click(getByRole('button'));
-    expect(getByTestId('flowbite-accordion').children.length).toEqual(2);
+        expect(accordion).toHaveClass('text-4xl');
+      });
 
-    // Close it again
-    userEvent.click(getByRole('button'));
-    expect(getByTestId('flowbite-accordion').children.length).toEqual(1);
+      it('should use custom `flush` classes', () => {
+        const theme = {
+          accordion: {
+            flush: {
+              off: 'text-4xl',
+              on: 'text-3xl',
+            },
+          },
+        };
+
+        const accordions = getAccordions(
+          render(
+            <Flowbite theme={{ theme }}>
+              <TestAccordion />
+              <TestAccordion flush />
+            </Flowbite>,
+          ),
+        );
+        const normal = accordions[0];
+        const flush = accordions[1];
+
+        expect(normal).toHaveClass('text-4xl');
+        expect(flush).toHaveClass('text-3xl');
+      });
+    });
+
+    describe('`Accordion.Content`', () => {
+      it('should use custom `content` classes', () => {
+        const theme = {
+          accordion: {
+            content: {
+              base: 'text-4xl',
+            },
+          },
+        };
+
+        const accordionContent = getAccordionContent(
+          render(
+            <Flowbite theme={{ theme }}>
+              <TestAccordion />
+            </Flowbite>,
+          ),
+        );
+
+        accordionContent.forEach((item) => expect(item).toHaveClass('text-4xl'));
+      });
+    });
+
+    describe('`Accordion.Title`', () => {
+      it('should use custom `title` classes', () => {
+        const theme = {
+          accordion: {
+            title: {
+              arrow: {
+                base: 'w-8 h-8',
+                open: 'text-purple-600',
+              },
+              base: 'p-3',
+              flush: {
+                off: 'text-4xl',
+                on: 'text-3xl',
+              },
+              open: {
+                off: 'text-gray-400',
+                on: 'text-gray-600',
+              },
+            },
+          },
+        };
+
+        const titles = getAccordionTitles(
+          render(
+            <Flowbite theme={{ theme }}>
+              <TestAccordion />
+              <TestAccordion flush />
+            </Flowbite>,
+          ),
+        );
+        const normalTitles = [titles[0], titles[1]];
+        const flushTitles = [titles[2], titles[3]];
+        const openTitles = [titles[0], titles[2]];
+        const closedTitles = [titles[1], titles[3]];
+
+        titles.forEach((title) => expect(title).toHaveClass('p-3'));
+        normalTitles.forEach((title) => expect(title).toHaveClass('text-4xl'));
+        flushTitles.forEach((title) => expect(title).toHaveClass('text-3xl'));
+        openTitles.forEach((title) => expect(title).toHaveClass('text-gray-600'));
+        closedTitles.forEach((title) => expect(title).toHaveClass('text-gray-400'));
+      });
+    });
+  });
+
+  describe('A11y', () => {
+    it('should allow `aria-label`', () => {
+      const accordion = getAccordion(render(<TestAccordion aria-label="My accordion" />));
+
+      expect(accordion).toHaveAccessibleName('My accordion');
+    });
+
+    describe('`Accordion.Content`', () => {
+      it('should allow `aria-labelledby=""`', () => {
+        const dom = render(<TestAccordion />);
+        const title = getAccordionTitles(dom)[0];
+        const content = getAccordionContent(dom)[0];
+
+        expect(title).toHaveAttribute('id', 'accordion-title');
+        expect(content).toHaveAttribute('aria-labelledby', 'accordion-title');
+        expect(content).toHaveAccessibleName('Title');
+      });
+    });
+
+    describe('`Accordion.Title`', () => {
+      it('should contain `role="button"`', () => {
+        const titles = getAccordionTitles(render(<TestAccordion />));
+
+        titles.forEach((title) => expect(title).toHaveAccessibleName('Title'));
+      });
+
+      it('should allow `id=""`', () => {
+        const accordion = getAccordion(render(<TestAccordion aria-label="My accordion" />));
+
+        expect(accordion).toHaveAccessibleName('My accordion');
+      });
+    });
   });
 });
+
+const TestAccordion = ({ ...props }: AccordionProps): JSX.Element => (
+  <Accordion {...props}>
+    <Accordion.Panel open>
+      <Accordion.Title arrowIcon={HiOutlineArrowCircleDown} as="h3" className="no-classname" id="accordion-title">
+        Title
+      </Accordion.Title>
+      <Accordion.Content className="no-classname" aria-labelledby="accordion-title">
+        <p>Content</p>
+      </Accordion.Content>
+    </Accordion.Panel>
+    <Accordion.Panel>
+      <Accordion.Title arrowIcon={HiOutlineArrowCircleDown}>Title</Accordion.Title>
+      <Accordion.Content>
+        <p>Content</p>
+      </Accordion.Content>
+    </Accordion.Panel>
+  </Accordion>
+);
+
+const getAccordion = ({ getByTestId }: RenderResult): HTMLElement => getByTestId('flowbite-accordion');
+
+const getAccordions = ({ getAllByTestId }: RenderResult): HTMLElement[] => getAllByTestId('flowbite-accordion');
+
+const getAccordionContent = ({ getAllByTestId }: RenderResult): HTMLElement[] =>
+  getAllByTestId('flowbite-accordion-content');
+
+const getAccordionHeadings = ({ getAllByTestId }: RenderResult): HTMLElement[] =>
+  getAllByTestId('flowbite-accordion-heading');
+
+const getAccordionTitles = ({ getAllByRole }: RenderResult): HTMLElement[] => getAllByRole('button');
