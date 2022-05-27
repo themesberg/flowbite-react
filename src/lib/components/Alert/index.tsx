@@ -2,16 +2,20 @@ import { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import classNames from 'classnames';
 import { HiX } from 'react-icons/hi';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { Colors } from '../Flowbite/FlowbiteTheme';
+import { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 
-export type AlertProps = PropsWithChildren<{
+export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
   additionalContent?: ReactNode;
-  color?: keyof Colors;
+  color?: keyof AlertColors;
   icon?: FC<ComponentProps<'svg'>>;
   onDismiss?: boolean | (() => void);
   rounded?: boolean;
   withBorderAccent?: boolean;
-}>;
+}
+
+export interface AlertColors extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'success' | 'warning'> {
+  [key: string]: string;
+}
 
 export const Alert: FC<AlertProps> = ({
   additionalContent,

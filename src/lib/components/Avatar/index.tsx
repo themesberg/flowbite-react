@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { ComponentProps, FC, PropsWithChildren } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
-import { Sizes } from '../Flowbite/FlowbiteTheme';
+import { FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import AvatarGroup from './AvatarGroup';
 import AvatarGroupCounter from './AvatarGroupCounter';
@@ -11,10 +11,14 @@ export interface AvatarProps extends PropsWithChildren<ComponentProps<'div'>> {
   bordered?: boolean;
   img?: string;
   rounded?: boolean;
-  size?: keyof Sizes;
+  size?: keyof AvatarSizes;
   stacked?: boolean;
   status?: 'away' | 'busy' | 'offline' | 'online';
-  statusPosition?: 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
+  statusPosition?: keyof FlowbitePositions;
+}
+
+export interface AvatarSizes extends FlowbiteSizes {
+  [key: string]: string;
 }
 
 const AvatarComponent: FC<AvatarProps> = ({
@@ -42,7 +46,7 @@ const AvatarComponent: FC<AvatarProps> = ({
               bordered && theme.bordered,
               rounded && theme.rounded,
               stacked && theme.stacked,
-              theme.img.enabled,
+              theme.img.on,
               theme.size[size],
             )}
             data-testid="flowbite-avatar-img"
@@ -54,7 +58,7 @@ const AvatarComponent: FC<AvatarProps> = ({
               bordered && theme.bordered,
               rounded && theme.rounded,
               stacked && theme.stacked,
-              theme.img.disabled,
+              theme.img.off,
               theme.size[size],
             )}
             data-testid="flowbite-avatar-img"

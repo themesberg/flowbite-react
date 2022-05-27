@@ -1,14 +1,27 @@
 export default {
   accordion: {
     base: 'divide-y divide-gray-200 border-gray-200 dark:divide-gray-700 dark:border-gray-700',
-    title: {
-      base: 'py-5 px-5 text-left font-medium text-gray-500 dark:text-gray-400',
-      isOpen: 'text-gray-900 dark:text-white',
-      isOpenNotFlushed: 'bg-gray-100 dark:bg-gray-800',
-      notFlushed: 'hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-800',
-    },
     content: {
-      base: 'py-5 px-5 last:rounded-b-lg dark:bg-gray-900',
+      base: 'py-5 px-5 last:rounded-b-lg dark:bg-gray-900 first:rounded-t-lg',
+    },
+    flush: {
+      off: 'rounded-lg border',
+      on: 'border-b',
+    },
+    title: {
+      arrow: {
+        base: 'h-6 w-6 shrink-0',
+        open: 'rotate-180',
+      },
+      base: 'flex w-full items-center justify-between first:rounded-t-lg last:rounded-b-lg py-5 px-5 text-left font-medium text-gray-500 dark:text-gray-400',
+      flush: {
+        off: 'hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-800',
+        on: '!bg-transparent dark:!bg-transparent',
+      },
+      open: {
+        off: '',
+        on: 'text-gray-900 bg-gray-100 dark:bg-gray-800 dark:text-white',
+      },
     },
   },
   alert: {
@@ -41,8 +54,8 @@ export default {
     base: 'flex items-center space-x-4',
     bordered: 'p-1 ring-2 ring-gray-300 dark:ring-gray-500',
     img: {
-      disabled: 'rounded relative overflow-hidden bg-gray-100 dark:bg-gray-600',
-      enabled: 'rounded',
+      off: 'rounded relative overflow-hidden bg-gray-100 dark:bg-gray-600',
+      on: 'rounded',
     },
     rounded: '!rounded-full',
     size: {
@@ -86,8 +99,8 @@ export default {
     },
     href: 'group',
     icon: {
-      disabled: 'rounded px-2 py-0.5',
-      enabled: 'rounded-full p-1.5',
+      off: 'rounded px-2 py-0.5',
+      on: 'rounded-full p-1.5',
       size: {
         xs: 'w-3 h-3',
         sm: 'w-3.5 h-3.5',

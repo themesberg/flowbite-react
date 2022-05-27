@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import { Badge } from '../Badge';
-import { Colors } from '../Flowbite/FlowbiteTheme';
+import { Color } from '../Button';
 import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
 import { useSidebarItemContext } from './SidebarItemContext';
@@ -10,7 +10,7 @@ export interface SidebarItem {
   className?: string;
   icon?: FC<ComponentProps<'svg'>>;
   label?: string;
-  labelColor?: keyof Colors;
+  labelColor?: Color;
 }
 
 export interface SidebarItemProps extends PropsWithChildren<SidebarItem & Record<string, unknown>> {

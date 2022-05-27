@@ -1,14 +1,22 @@
 import { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { Colors, BadgeSizes } from '../Flowbite/FlowbiteTheme';
+import { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { excludeClassName } from '../../helpers/exclude';
 
-export interface BadgeProps extends PropsWithChildren<ComponentProps<'span'>> {
-  color?: keyof Colors;
+export interface BadgeProps extends PropsWithChildren<Omit<ComponentProps<'span'>, 'color'>> {
+  color?: keyof BadgeColors;
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   size?: keyof BadgeSizes;
+}
+
+export interface BadgeColors extends FlowbiteColors {
+  [key: string]: string;
+}
+
+export interface BadgeSizes extends FlowbiteSizes {
+  [key: string]: string;
 }
 
 export const Badge: FC<BadgeProps> = ({
@@ -20,16 +28,12 @@ export const Badge: FC<BadgeProps> = ({
   ...props
 }): JSX.Element => {
   const theirProps = excludeClassName(props);
+
   const theme = useTheme().theme.badge;
 
   const Content = (): JSX.Element => (
     <span
-      className={classNames(
-        Icon ? theme.icon.enabled : theme.icon.disabled,
-        theme.base,
-        theme.color[color],
-        theme.size[size],
-      )}
+      className={classNames(Icon ? theme.icon.on : theme.icon.off, theme.base, theme.color[color], theme.size[size])}
       data-testid="flowbite-badge"
       {...theirProps}
     >

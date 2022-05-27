@@ -3,45 +3,36 @@ import classNames from 'classnames';
 import { HiChevronDown } from 'react-icons/hi';
 import { useAccordionContext } from './AccordionPanelContext';
 import { useTheme } from '../Flowbite/ThemeContext';
+import { excludeClassName } from '../../helpers/exclude';
+import { HeadingLevel } from '../Flowbite/FlowbiteTheme';
 
-export type AccordionTitleProps = ComponentProps<'button'> & {
+export interface AccordionTitleProps extends ComponentProps<'button'> {
   arrowIcon?: FC<ComponentProps<'svg'>>;
-};
+  as?: HeadingLevel;
+}
 
 export const AccordionTitle: FC<AccordionTitleProps> = ({
-  children,
   arrowIcon: ArrowIcon = HiChevronDown,
+  as: Heading = 'h2',
+  children,
   ...props
-}) => {
+}): JSX.Element => {
+  const theirProps = excludeClassName(props);
+
   const { flush, isOpen, setIsOpen } = useAccordionContext();
+  const theme = useTheme().theme.accordion.title;
+
   const onClick = () => setIsOpen(!isOpen);
-
-  const {
-    theme: {
-      accordion: { title },
-    },
-  } = useTheme();
-
-  const baseStyle = classNames(
-    'flex w-full items-center justify-between first:rounded-t-lg last:rounded-b-lg',
-    title.base,
-  );
-  const buttonStateStyle = classNames({
-    [title.notFlushed]: !flush,
-    [title.isOpen]: isOpen,
-    [title.isOpenNotFlushed]: isOpen && !flush,
-  });
 
   return (
     <button
-      data-testid="accordion-title-element"
-      {...props}
-      type="button"
-      className={classNames(baseStyle, buttonStateStyle)}
+      className={classNames(theme.base, theme.flush[flush ? 'on' : 'off'], theme.open[isOpen ? 'on' : 'off'])}
       onClick={onClick}
+      type="button"
+      {...theirProps}
     >
-      <h2>{children}</h2>
-      <ArrowIcon className={classNames('h-6 w-6 shrink-0', { 'rotate-180': isOpen })} />
+      <Heading data-testid="flowbite-accordion-heading">{children}</Heading>
+      <ArrowIcon aria-hidden className={classNames(theme.arrow.base, isOpen && theme.arrow.open)} />
     </button>
   );
 };
