@@ -45,15 +45,15 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
   gradientDuoTone,
   gradientMonochrome,
   label,
-  outline,
-  pill,
+  outline = false,
+  pill = false,
   positionInGroup = 'none',
   size = 'md',
   ...props
 }): JSX.Element => {
   const theirProps = excludeClassName(props);
 
-  const theme = useTheme().theme.button;
+  const { buttonGroup: groupTheme, button: theme } = useTheme().theme;
 
   return (
     <button
@@ -63,9 +63,9 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
         !gradientDuoTone && !gradientMonochrome && theme.color[color],
         gradientDuoTone && !gradientMonochrome && theme.gradientDuoTone[gradientDuoTone],
         !gradientDuoTone && gradientMonochrome && theme.gradient[gradientMonochrome],
+        groupTheme.position[positionInGroup],
         theme.base,
         theme.pill[pill ? 'on' : 'off'],
-        theme.position[positionInGroup],
       )}
       disabled={disabled}
       type="button"
