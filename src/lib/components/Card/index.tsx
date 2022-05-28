@@ -1,37 +1,33 @@
-import { FC, PropsWithChildren } from 'react';
+import { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
+import { useTheme } from '../Flowbite/ThemeContext';
+import { excludeClassName } from '../../helpers/exclude';
 
-export type CardProps = PropsWithChildren<{
-  className?: string;
+export interface CardProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
   horizontal?: boolean;
   imgAlt?: string;
   imgSrc?: string;
-}>;
+}
 
-export const Card: FC<CardProps> = ({ children, className, horizontal, imgAlt, imgSrc }) => {
+export const Card: FC<CardProps> = ({ children, horizontal, imgAlt, imgSrc, ...props }): JSX.Element => {
+  const theirProps = excludeClassName(props);
+
+  const theme = useTheme().theme.card;
+
   return (
     <div
-      data-testid="card-element"
-      className={classNames(
-        'flex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800',
-        {
-          'flex-col': !horizontal,
-          'flex-col md:max-w-xl md:flex-row': horizontal,
-        },
-        className,
-      )}
+      className={classNames(theme.base, theme.horizontal[horizontal ? 'on' : 'off'])}
+      data-testid="flowbite-card"
+      {...theirProps}
     >
       {imgSrc && (
         <img
-          className={classNames({
-            'rounded-t-lg': !horizontal,
-            'h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg': horizontal,
-          })}
-          src={imgSrc}
           alt={imgAlt ?? ''}
+          className={classNames(theme.img.base, theme.img.horizontal[horizontal ? 'on' : 'off'])}
+          src={imgSrc}
         />
       )}
-      <div className="flex h-full flex-col justify-center gap-4 p-6">{children}</div>
+      <div className={theme.children}>{children}</div>
     </div>
   );
 };
