@@ -1,44 +1,38 @@
 import { ComponentProps, FC } from 'react';
 import classNames from 'classnames';
+import { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 
-type Color = 'blue' | 'gray' | 'green' | 'red' | 'yellow' | 'pink' | 'purple';
-type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
-export interface SpinnerProps extends ComponentProps<'span'> {
-  className?: string;
-  color?: Color;
+export interface SpinnerProps extends Omit<ComponentProps<'span'>, 'color'> {
+  color?: keyof SpinnerColors;
   light?: boolean;
-  size?: Size;
+  size?: keyof SpinnerSizes;
 }
 
-const sizeClasses: Record<Size, string> = {
-  xs: 'w-3 h-3',
-  sm: 'w-4 h-4',
-  md: 'w-6 h-6',
-  lg: 'w-8 h-8',
-  xl: 'w-10 h-10',
-};
+export interface SpinnerColors
+  extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'pink' | 'purple' | 'success' | 'warning'> {
+  [key: string]: string;
+}
 
-export const Spinner: FC<SpinnerProps> = ({ className, color = 'blue', light, size = 'md', ...rest }) => {
-  const colorClasses: Record<Color, string> = {
-    blue: 'fill-blue-600',
-    gray: classNames('fill-gray-600', { 'dark:fill-gray-300': !light }),
-    green: classNames('fill-green-500', { 'dark:text-gray-600': !light }),
-    red: 'fill-red-600',
-    yellow: classNames('fill-yellow-400', { 'dark:text-gray-600': !light }),
-    pink: 'fill-pink-600',
-    purple: 'fill-purple-600',
-  };
+export interface SpinnerSizes extends FlowbiteSizes {
+  [key: string]: string;
+}
+
+export const Spinner: FC<SpinnerProps> = ({ color = 'info', light, size = 'md', ...props }): JSX.Element => {
+  const theirProps = excludeClassName(props);
+
+  const theme = useTheme().theme.spinner;
 
   return (
-    <span role="status" {...rest}>
+    <span role="status" {...theirProps}>
       <svg
         className={classNames(
-          'inline animate-spin text-gray-200',
-          { 'dark:text-gray-600': !light },
-          colorClasses[color],
-          sizeClasses[size],
-          className,
+          theme.base,
+          theme.color[color],
+          theme.light[light ? 'on' : 'off'].base,
+          theme.light[light ? 'on' : 'off'].color[color],
+          theme.size[size],
         )}
         fill="none"
         viewBox="0 0 100 101"
