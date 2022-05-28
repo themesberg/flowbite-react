@@ -197,18 +197,21 @@ export default {
       off: 'rounded-lg',
       on: 'rounded-full',
     },
-    position: {
-      none: 'focus:!ring-2',
-      start: 'rounded-r-none',
-      middle: '!rounded-none border-l-0 pl-0',
-      end: 'rounded-l-none border-l-0 pl-0',
-    },
     size: {
       xs: 'text-xs px-2 py-1',
       sm: 'text-sm px-3 py-1.5',
       md: 'text-sm px-4 py-2',
       lg: 'text-base px-5 py-2.5',
       xl: 'text-base px-6 py-3',
+    },
+  },
+  buttonGroup: {
+    base: 'inline-flex',
+    position: {
+      none: 'focus:!ring-2',
+      start: 'rounded-r-none',
+      middle: '!rounded-none border-l-0 pl-0',
+      end: 'rounded-l-none border-l-0 pl-0',
     },
   },
   card: {

@@ -95,8 +95,11 @@ export interface FlowbiteTheme {
       pill: FlowbiteBoolean;
     };
     pill: FlowbiteBoolean;
-    position: PositionInButtonGroup;
     size: ButtonSizes;
+  };
+  buttonGroup: {
+    base: string;
+    position: PositionInButtonGroup;
   };
   card: {
     base: string;
