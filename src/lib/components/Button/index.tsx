@@ -58,12 +58,12 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
   return (
     <button
       className={classNames(
-        color === 'gray' && outline && 'border border-gray-900 dark:border-white',
         disabled && theme.disabled,
         !gradientDuoTone && !gradientMonochrome && theme.color[color],
         gradientDuoTone && !gradientMonochrome && theme.gradientDuoTone[gradientDuoTone],
         !gradientDuoTone && gradientMonochrome && theme.gradient[gradientMonochrome],
         groupTheme.position[positionInGroup],
+        outline && theme.outline.color[color],
         theme.base,
         theme.pill[pill ? 'on' : 'off'],
       )}

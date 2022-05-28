@@ -90,7 +90,13 @@ describe('Components / Button', () => {
 
   describe('Rendering', () => {
     it('should render', () => {
-      const button = getButton(render(<Button>Hi there</Button>));
+      const button = getButton(
+        render(
+          <Button color="gray" outline>
+            Hi there
+          </Button>,
+        ),
+      );
 
       expect(button).toHaveTextContent('Hi there');
     });
