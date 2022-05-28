@@ -10,15 +10,15 @@ export default {
 
 const Template: Story = (args) => <Spinner {...args} />;
 
-export const DefaultSpinner = Template.bind({});
-DefaultSpinner.storyName = 'Default';
-DefaultSpinner.args = {
-  title: 'Default spinner example',
+export const Default = Template.bind({});
+Default.args = {
+  color: 'info',
   size: 'md',
+  title: 'Default spinner example',
 };
 
 export const Alignment = (): JSX.Element => (
-  <div className="flex w-1/3 flex-col gap-3 bg-gray-50 p-6">
+  <div className="flex w-1/3 flex-col gap-3 p-6">
     <div className="text-left">
       <Spinner aria-label="Left-aligned spinner example" />
     </div>
@@ -33,10 +33,10 @@ export const Alignment = (): JSX.Element => (
 
 export const Colors = (): JSX.Element => (
   <div className="flex flex-row gap-3">
-    <Spinner color="blue" aria-label="Blue spinner example" />
-    <Spinner color="green" aria-label="Green spinner example" />
-    <Spinner color="red" aria-label="Red spinner example" />
-    <Spinner color="yellow" aria-label="Yellow spinner example" />
+    <Spinner color="info" aria-label="Info spinner example" />
+    <Spinner color="success" aria-label="Success spinner example" />
+    <Spinner color="failure" aria-label="Failure spinner example" />
+    <Spinner color="warning" aria-label="Warning spinner example" />
     <Spinner color="pink" aria-label="Pink spinner example" />
     <Spinner color="purple" aria-label="Purple spinner example" />
   </div>
