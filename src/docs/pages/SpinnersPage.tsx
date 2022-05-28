@@ -13,10 +13,10 @@ const SpinnersPage: FC = () => {
       title: 'Colors',
       code: (
         <div className="flex flex-wrap gap-2">
-          <Spinner color="blue" aria-label="Blue spinner example" />
-          <Spinner color="green" aria-label="Green spinner example" />
-          <Spinner color="red" aria-label="Red spinner example" />
-          <Spinner color="yellow" aria-label="Yellow spinner example" />
+          <Spinner color="info" aria-label="Info spinner example" />
+          <Spinner color="success" aria-label="Success spinner example" />
+          <Spinner color="failure" aria-label="Failure spinner example" />
+          <Spinner color="warning" aria-label="Warning spinner example" />
           <Spinner color="pink" aria-label="Pink spinner example" />
           <Spinner color="purple" aria-label="Purple spinner example" />
         </div>
