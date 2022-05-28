@@ -30,19 +30,21 @@ export const DemoPage: FC<DemoPageProps> = ({ examples }) => {
         <div key={index} className="flex flex-col gap-2">
           <span className="text-2xl font-bold">{title}</span>
           {content && <div className="py-4">{content}</div>}
-          <Card className={codeClassName}>
-            {showCode && code}
-            <SyntaxHighlighterFix language="tsx" style={dracula}>
-              {reactElementToJSXString(code, {
-                showFunctions: true,
-                functionValue: (fn) => fn.name,
-                sortProps: false,
-                useBooleanShorthandSyntax: false,
-                useFragmentShortSyntax: false,
-                ...codeStringifierOptions,
-              })}
-            </SyntaxHighlighterFix>
-          </Card>
+          <div className={codeClassName}>
+            <Card>
+              {showCode && code}
+              <SyntaxHighlighterFix language="tsx" style={dracula}>
+                {reactElementToJSXString(code, {
+                  showFunctions: true,
+                  functionValue: (fn) => fn.name,
+                  sortProps: false,
+                  useBooleanShorthandSyntax: false,
+                  useFragmentShortSyntax: false,
+                  ...codeStringifierOptions,
+                })}
+              </SyntaxHighlighterFix>
+            </Card>
+          </div>
         </div>
       ))}
     </div>
