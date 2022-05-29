@@ -17,7 +17,10 @@ export interface FlowbiteTheme {
     title: {
       arrow: {
         base: string;
-        open: string;
+        open: {
+          off: string;
+          on: string;
+        };
       };
       base: string;
       flush: {

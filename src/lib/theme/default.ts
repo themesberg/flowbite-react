@@ -11,7 +11,10 @@ export default {
     title: {
       arrow: {
         base: 'h-6 w-6 shrink-0',
-        open: 'rotate-180',
+        open: {
+          off: '',
+          on: 'rotate-180',
+        },
       },
       base: 'flex w-full items-center justify-between first:rounded-t-lg last:rounded-b-lg py-5 px-5 text-left font-medium text-gray-500 dark:text-gray-400',
       flush: {
