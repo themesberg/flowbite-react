@@ -1,5 +1,6 @@
 import type { AlertColors } from '../Alert';
 import type { AvatarSizes } from '../Avatar';
+import { SpinnerColors, SpinnerSizes } from '../Spinner';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
@@ -97,6 +98,21 @@ export interface FlowbiteTheme {
       };
     };
   };
+  spinner: {
+    base: string;
+    color: SpinnerColors;
+    light: {
+      off: {
+        base: string;
+        color: SpinnerColors;
+      };
+      on: {
+        base: string;
+        color: SpinnerColors;
+      };
+    };
+    size: SpinnerSizes;
+  };
 }
 
 export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -108,6 +124,8 @@ export interface FlowbiteColors {
   gray: string;
   info: string;
   light: string;
+  pink: string;
+  purple: string;
   success: string;
   warning: string;
 }
