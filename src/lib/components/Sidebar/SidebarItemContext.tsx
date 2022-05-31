@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 
 export type SidebarItemContext = {
-  insideCollapse: boolean;
+  isInsideCollapse: boolean;
 };
 
 export const SidebarItemContext = createContext<SidebarItemContext | undefined>(undefined);

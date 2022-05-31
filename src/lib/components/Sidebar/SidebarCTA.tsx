@@ -19,7 +19,7 @@ const colorClasses: Record<Color, string> = {
 };
 
 const SidebarCTA: FC<SidebarCTAProps> = ({ children, className, color = 'blue', ...rest }) => {
-  const { collapsed } = useSidebarContext();
+  const { isCollapsed: collapsed } = useSidebarContext();
 
   return collapsed ? (
     <></>

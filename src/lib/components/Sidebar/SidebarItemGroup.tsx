@@ -11,7 +11,7 @@ const SidebarItemGroup: FC<PropsWithChildren<HTMLAttributes<HTMLUListElement>>> 
       data-testid="sidebar-item-group"
       {...rest}
     >
-      <SidebarItemContext.Provider value={{ insideCollapse: false }}>{children}</SidebarItemContext.Provider>
+      <SidebarItemContext.Provider value={{ isInsideCollapse: false }}>{children}</SidebarItemContext.Provider>
     </ul>
   );
 };

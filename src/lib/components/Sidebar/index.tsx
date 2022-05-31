@@ -12,10 +12,10 @@ export interface SidebarProps extends PropsWithChildren<HTMLAttributes<HTMLDivEl
   collapsed?: boolean;
 }
 
-const SidebarComponent: FC<SidebarProps> = ({ children, className, collapsed = false, ...rest }) => {
+const SidebarComponent: FC<SidebarProps> = ({ children, className, collapsed: isCollapsed = false, ...theirProps }) => {
   return (
-    <SidebarContext.Provider value={{ collapsed }}>
-      <aside aria-label="Sidebar" className={classNames('h-full', collapsed ? 'w-16' : 'w-64')} {...rest}>
+    <SidebarContext.Provider value={{ isCollapsed }}>
+      <aside aria-label="Sidebar" className={classNames('h-full', isCollapsed ? 'w-16' : 'w-64')} {...theirProps}>
         <div
           className={classNames(
             'h-full overflow-y-auto overflow-x-hidden rounded bg-white py-4 px-3 dark:bg-gray-800',
