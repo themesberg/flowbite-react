@@ -98,6 +98,27 @@ export interface FlowbiteTheme {
       };
     };
   };
+  carousel: {
+    base: string;
+    indicators: {
+      active: {
+        off: string;
+        on: string;
+      };
+      base: string;
+      wrapper: string;
+    };
+    item: {
+      base: string;
+      wrapper: string;
+    };
+    leftControl: string;
+    rightControl: string;
+    scrollContainer: {
+      base: string;
+      snap: string;
+    };
+  };
   spinner: {
     base: string;
     color: SpinnerColors;

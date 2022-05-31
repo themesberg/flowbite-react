@@ -138,6 +138,27 @@ export default {
       },
     },
   },
+  carousel: {
+    base: 'relative w-full',
+    indicators: {
+      active: {
+        off: 'bg-white/50 hover:bg-white dark:bg-gray-800/50 dark:hover:bg-gray-800',
+        on: 'bg-white dark:bg-gray-800',
+      },
+      base: 'h-3 w-3 rounded-full',
+      wrapper: 'absolute bottom-5 left-1/2 flex -translate-x-1/2 space-x-3',
+    },
+    item: {
+      base: 'absolute top-1/2 left-1/2 block w-full -translate-x-1/2 -translate-y-1/2',
+      wrapper: 'w-full flex-shrink-0 transform cursor-grab snap-center',
+    },
+    leftControl: 'absolute top-0 left-0 flex h-full items-center justify-center px-4 focus:outline-none',
+    rightControl: 'absolute top-0 right-0 flex h-full items-center justify-center px-4 focus:outline-none',
+    scrollContainer: {
+      base: 'flex h-56 snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg sm:h-64 xl:h-80 2xl:h-96',
+      snap: 'snap-x',
+    },
+  },
   spinner: {
     base: 'inline animate-spin text-gray-200',
     color: {
