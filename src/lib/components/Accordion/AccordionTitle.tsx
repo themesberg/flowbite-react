@@ -12,14 +12,14 @@ export interface AccordionTitleProps extends ComponentProps<'button'> {
 export const AccordionTitle: FC<AccordionTitleProps> = ({ as: Heading = 'h2', children, ...props }): JSX.Element => {
   const theirProps = excludeClassName(props);
 
-  const { arrowIcon: ArrowIcon, flush, open, setOpen } = useAccordionContext();
+  const { arrowIcon: ArrowIcon, flush, isOpen, setOpen } = useAccordionContext();
   const theme = useTheme().theme.accordion.title;
 
   const onClick = () => typeof setOpen !== 'undefined' && setOpen();
 
   return (
     <button
-      className={classNames(theme.base, theme.flush[flush ? 'on' : 'off'], theme.open[open ? 'on' : 'off'])}
+      className={classNames(theme.base, theme.flush[flush ? 'on' : 'off'], theme.open[isOpen ? 'on' : 'off'])}
       onClick={onClick}
       type="button"
       {...theirProps}
@@ -28,7 +28,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({ as: Heading = 'h2', ch
       {ArrowIcon && (
         <ArrowIcon
           aria-hidden
-          className={classNames(theme.arrow.base, theme.arrow.open[open ? 'on' : 'off'])}
+          className={classNames(theme.arrow.base, theme.arrow.open[isOpen ? 'on' : 'off'])}
           data-testid="flowbite-accordion-arrow"
         />
       )}

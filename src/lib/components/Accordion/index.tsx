@@ -1,4 +1,4 @@
-import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useState } from 'react';
+import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useMemo, useState } from 'react';
 import { AccordionPanel, AccordionPanelProps } from './AccordionPanel';
 import { AccordionTitle } from './AccordionTitle';
 import { AccordionContent } from './AccordionContent';
@@ -23,7 +23,14 @@ const AccordionComponent: FC<AccordionProps> = ({
 }): JSX.Element => {
   const theirProps = excludeClassName(props);
 
-  const [open, setOpen] = useState(0);
+  const [isOpen, setOpen] = useState(0);
+  const panels = useMemo(
+    () =>
+      Children.map(children, (child, i) =>
+        cloneElement(child, { alwaysOpen, arrowIcon, flush, isOpen: isOpen === i, setOpen: () => setOpen(i) }),
+      ),
+    [alwaysOpen, arrowIcon, children, flush, isOpen],
+  );
   const theme = useTheme().theme.accordion;
 
   return (
@@ -32,9 +39,7 @@ const AccordionComponent: FC<AccordionProps> = ({
       data-testid="flowbite-accordion"
       {...theirProps}
     >
-      {Children.map(children, (child, i) =>
-        cloneElement(child, { alwaysOpen, arrowIcon, flush, open: open === i, setOpen: () => setOpen(i) }),
-      )}
+      {panels}
     </div>
   );
 };

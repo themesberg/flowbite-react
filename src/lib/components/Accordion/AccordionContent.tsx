@@ -7,11 +7,11 @@ import { useAccordionContext } from './AccordionPanelContext';
 export const AccordionContent: FC<ComponentProps<'div'>> = ({ children, ...props }): JSX.Element => {
   const theirProps = excludeClassName(props);
 
-  const { open } = useAccordionContext();
+  const { isOpen } = useAccordionContext();
   const theme = useTheme().theme.accordion.content;
 
   return (
-    <div className={theme.base} data-testid="flowbite-accordion-content" hidden={!open} {...theirProps}>
+    <div className={theme.base} data-testid="flowbite-accordion-content" hidden={!isOpen} {...theirProps}>
       {children}
     </div>
   );

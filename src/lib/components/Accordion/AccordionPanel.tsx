@@ -3,19 +3,19 @@ import { AccordionProps } from '.';
 import { AccordionPanelContext } from './AccordionPanelContext';
 
 export interface AccordionPanelProps extends PropsWithChildren<AccordionProps> {
-  open?: boolean;
+  isOpen?: boolean;
   setOpen?: () => void;
 }
 
 export const AccordionPanel: FC<AccordionPanelProps> = ({ children, ...props }): JSX.Element => {
   const { alwaysOpen } = props;
-  const [open, setOpen] = useState(props.open);
+  const [isOpen, setOpen] = useState(props.isOpen);
 
   const provider = alwaysOpen
     ? {
         ...props,
-        open,
-        setOpen: () => setOpen(!open),
+        isOpen,
+        setOpen: () => setOpen(!isOpen),
       }
     : props;
 
