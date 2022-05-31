@@ -20,8 +20,8 @@ export interface SidebarItemLabelColors extends Pick<FlowbiteColors, 'gray'> {
 
 export interface SidebarItemProps
   extends PropsWithChildren<SidebarItem & ComponentProps<'a'> & Record<string, unknown>> {
+  active?: boolean;
   as?: ElementType;
-  isActive?: boolean;
 }
 
 const SidebarItem: FC<SidebarItemProps> = ({
@@ -29,7 +29,7 @@ const SidebarItem: FC<SidebarItemProps> = ({
   children,
   className,
   icon: Icon,
-  isActive,
+  active: isActive,
   label,
   labelColor = 'info',
   ...theirProps
