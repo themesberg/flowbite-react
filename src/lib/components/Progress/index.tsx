@@ -36,7 +36,13 @@ export const Progress: FC<ProgressProps> = ({
       <span id={`${id}-flowbite-progress`} className="sr-only">
         {label}
       </span>
-      <div aria-labelledby={`${id}-flowbite-progress`} aria-valuenow={progress} role="progressbar" {...props}>
+      <div
+        aria-labelledby={`${id}-flowbite-progress`}
+        aria-valuenow={progress}
+        aria-label="progressbar"
+        role="progressbar"
+        {...props}
+      >
         {label && labelPosition === 'outside' && (
           <div className={theme.label}>
             <span>{label}</span>
