@@ -1,24 +1,37 @@
-import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useMemo } from 'react';
+import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useMemo, useState } from 'react';
 import { AccordionPanel, AccordionPanelProps } from './AccordionPanel';
 import { AccordionTitle } from './AccordionTitle';
 import { AccordionContent } from './AccordionContent';
 import classNames from 'classnames';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { excludeClassName } from '../../helpers/exclude';
+import { HiChevronDown } from 'react-icons/hi';
 
 export interface AccordionProps extends PropsWithChildren<ComponentProps<'div'>> {
+  alwaysOpen?: boolean;
+  arrowIcon?: FC<ComponentProps<'svg'>>;
+  children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];
   flush?: boolean;
 }
 
-const AccordionComponent: FC<AccordionProps> = ({ children, flush, ...props }): JSX.Element => {
+const AccordionComponent: FC<AccordionProps> = ({
+  alwaysOpen = false,
+  arrowIcon = HiChevronDown,
+  children,
+  flush = false,
+  ...props
+}): JSX.Element => {
   const theirProps = excludeClassName(props);
 
-  const theme = useTheme().theme.accordion;
-
+  const [isOpen, setOpen] = useState(0);
   const panels = useMemo(
-    () => Children.map(children as ReactElement<AccordionPanelProps>[], (child) => cloneElement(child, { flush })),
-    [children, flush],
+    () =>
+      Children.map(children, (child, i) =>
+        cloneElement(child, { alwaysOpen, arrowIcon, flush, isOpen: isOpen === i, setOpen: () => setOpen(i) }),
+      ),
+    [alwaysOpen, arrowIcon, children, flush, isOpen],
   );
+  const theme = useTheme().theme.accordion;
 
   return (
     <div

@@ -1,16 +1,115 @@
-import { render, RenderResult } from '@testing-library/react';
+import { render, RenderResult, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 
 import { Accordion, AccordionProps } from '.';
 import { Flowbite } from '../Flowbite';
 
 describe('Components / Accordion', () => {
+  describe('A11y', () => {
+    it('should use `aria-label` if provided', () => {
+      const accordion = getAccordion(render(<TestAccordion aria-label="My accordion" />));
+
+      expect(accordion).toHaveAccessibleName('My accordion');
+    });
+
+    describe('`Accordion.Content`', () => {
+      it('should use `aria-labelledby=""` if provided', () => {
+        const { getAllByRole, getAllByTestId } = render(<TestAccordion />);
+        const title = getAccordionTitles({ getAllByRole })[0];
+        const content = getAccordionContent({ getAllByTestId })[0];
+
+        expect(title).toHaveAttribute('id', 'accordion-title');
+        expect(content).toHaveAttribute('aria-labelledby', 'accordion-title');
+        expect(content).toHaveAccessibleName('Title');
+      });
+    });
+
+    describe('`Accordion.Title`', () => {
+      it('should contain `role="button"`', () => {
+        const titles = getAccordionTitles(render(<TestAccordion />));
+
+        titles.forEach((title) => expect(title).toBeInTheDocument());
+      });
+
+      it('should use `id=""` if provided', () => {
+        const accordion = getAccordion(render(<TestAccordion aria-label="My accordion" />));
+
+        expect(accordion).toHaveAccessibleName('My accordion');
+      });
+
+      it("shouldn't include `arrowIcon` in label", () => {
+        const titles = getAccordionTitles(render(<TestAccordion />));
+
+        titles.forEach((title) => expect(title).toHaveAccessibleName('Title'));
+      });
+    });
+  });
+
+  describe('Keyboard interactions', () => {
+    describe('`Space`', () => {
+      describe('`Accordion.Panel`', () => {
+        it('should open focused panel, and close others', () => {
+          const { getAllByRole, getAllByTestId } = render(<TestAccordion />);
+          const panels = getAccordionContent({ getAllByTestId });
+          const titles = getAccordionTitles({ getAllByRole });
+
+          titles.forEach(() => userEvent.tab());
+          userEvent.keyboard('[Space]');
+
+          expect(panels[0]).not.toBeVisible();
+          expect(panels[1]).toBeVisible();
+        });
+
+        describe('`alwaysOpen={true}`', () => {
+          it('should open focused panel', () => {
+            const titles = getAccordionTitles(render(<TestAccordion alwaysOpen />));
+
+            titles.forEach(() => userEvent.tab());
+            userEvent.keyboard('[Space]');
+
+            expect(titles[0]).toBeVisible();
+            expect(titles[1]).toBeVisible();
+          });
+        });
+      });
+    });
+
+    describe('`Tab`', () => {
+      it('should be possible to `Tab` out', async () => {
+        const { getByText } = render(
+          <>
+            <TestAccordion />
+            <button role="checkbox">Outside button</button>
+          </>,
+        );
+        const outsideButton = getByText('Outside button');
+
+        await waitFor(() => {
+          userEvent.tab();
+          expect(outsideButton).toHaveFocus();
+        });
+      });
+
+      describe('`Accordion.Title`', () => {
+        it('should each receive focus in order', () => {
+          const titles = getAccordionTitles(render(<TestAccordion />));
+
+          titles.forEach((title) => {
+            userEvent.tab();
+            expect(title).toHaveFocus();
+          });
+        });
+      });
+    });
+  });
+
   describe('Props', () => {
     it('should ignore `className`', () => {
-      const dom = render(<TestAccordion className="no-classname" />);
-      const accordion = getAccordion(dom);
-      const content = getAccordionContent(dom)[0];
-      const title = getAccordionTitles(dom)[0];
+      const { getAllByTestId, getAllByRole, getByTestId } = render(<TestAccordion className="no-classname" />);
+      const accordion = getAccordion({ getByTestId });
+      const content = getAccordionContent({ getAllByTestId })[0];
+      const title = getAccordionTitles({ getAllByRole })[0];
 
       expect(accordion).not.toHaveClass('no-classname');
       expect(content).not.toHaveClass('no-classname');
@@ -18,22 +117,55 @@ describe('Components / Accordion', () => {
     });
 
     describe('`Accordion.Title`', () => {
-      it('should allow any heading level with `as=""`', () => {
-        const headings = getAccordionHeadings(render(<TestAccordion />));
-        const h3Heading = headings[0];
-        const defaultHeading = headings[1];
+      describe('`as=""`', () => {
+        it('should use any HTML heading element', () => {
+          const headings = getAccordionHeadings(render(<TestAccordion />));
+          const h3Heading = headings[0];
+          const defaultHeading = headings[1];
 
-        expect(h3Heading.tagName.toLocaleLowerCase()).toEqual('h3');
-        expect(defaultHeading.tagName.toLocaleLowerCase()).toEqual('h2');
+          expect(h3Heading.tagName.toLocaleLowerCase()).toEqual('h3');
+          expect(defaultHeading.tagName.toLocaleLowerCase()).toEqual('h2');
+        });
+      });
+
+      it('should use `arrowIcon` if provided to `Accordion`', () => {
+        const { getAllByTestId } = render(<TestAccordion />);
+        const arrows = getAllByTestId('flowbite-accordion-arrow');
+
+        arrows.forEach((arrow) => expect(arrow).toBeInTheDocument());
       });
     });
   });
 
   describe('Rendering', () => {
-    it('should render without crashing', () => {
+    it('should render', () => {
       const accordion = getAccordion(render(<TestAccordion />));
 
       expect(accordion).toBeInTheDocument();
+    });
+
+    describe('`alwaysOpen={true}`', () => {
+      it('should render', () => {
+        const accordion = getAccordion(render(<TestAccordion alwaysOpen />));
+
+        expect(accordion).toBeInTheDocument();
+      });
+    });
+
+    describe('`arrowIcon={..}`', () => {
+      it('should render', () => {
+        const accordion = getAccordion(render(<TestAccordion arrowIcon={HiOutlineArrowCircleDown} />));
+
+        expect(accordion).toBeInTheDocument();
+      });
+    });
+
+    describe('`flush={true}`', () => {
+      it('should render', () => {
+        const accordion = getAccordion(render(<TestAccordion flush />));
+
+        expect(accordion).toBeInTheDocument();
+      });
     });
   });
 
@@ -112,7 +244,10 @@ describe('Components / Accordion', () => {
             title: {
               arrow: {
                 base: 'w-8 h-8',
-                open: 'text-purple-600',
+                open: {
+                  off: '',
+                  on: 'text-purple-600',
+                },
               },
               base: 'p-3',
               flush: {
@@ -130,8 +265,8 @@ describe('Components / Accordion', () => {
         const titles = getAccordionTitles(
           render(
             <Flowbite theme={{ theme }}>
-              <TestAccordion />
-              <TestAccordion flush />
+              <TestAccordion alwaysOpen />
+              <TestAccordion alwaysOpen flush />
             </Flowbite>,
           ),
         );
@@ -148,54 +283,20 @@ describe('Components / Accordion', () => {
       });
     });
   });
-
-  describe('A11y', () => {
-    it('should allow `aria-label`', () => {
-      const accordion = getAccordion(render(<TestAccordion aria-label="My accordion" />));
-
-      expect(accordion).toHaveAccessibleName('My accordion');
-    });
-
-    describe('`Accordion.Content`', () => {
-      it('should allow `aria-labelledby=""`', () => {
-        const dom = render(<TestAccordion />);
-        const title = getAccordionTitles(dom)[0];
-        const content = getAccordionContent(dom)[0];
-
-        expect(title).toHaveAttribute('id', 'accordion-title');
-        expect(content).toHaveAttribute('aria-labelledby', 'accordion-title');
-        expect(content).toHaveAccessibleName('Title');
-      });
-    });
-
-    describe('`Accordion.Title`', () => {
-      it('should contain `role="button"`', () => {
-        const titles = getAccordionTitles(render(<TestAccordion />));
-
-        titles.forEach((title) => expect(title).toHaveAccessibleName('Title'));
-      });
-
-      it('should allow `id=""`', () => {
-        const accordion = getAccordion(render(<TestAccordion aria-label="My accordion" />));
-
-        expect(accordion).toHaveAccessibleName('My accordion');
-      });
-    });
-  });
 });
 
-const TestAccordion = ({ ...props }: AccordionProps): JSX.Element => (
-  <Accordion {...props}>
-    <Accordion.Panel open>
-      <Accordion.Title arrowIcon={HiOutlineArrowCircleDown} as="h3" className="no-classname" id="accordion-title">
+const TestAccordion = (props: Omit<AccordionProps, 'children'>): JSX.Element => (
+  <Accordion arrowIcon={HiOutlineArrowCircleDown} {...props}>
+    <Accordion.Panel>
+      <Accordion.Title as="h3" className="no-classname" id="accordion-title">
         Title
       </Accordion.Title>
-      <Accordion.Content className="no-classname" aria-labelledby="accordion-title">
+      <Accordion.Content aria-labelledby="accordion-title" className="no-classname">
         <p>Content</p>
       </Accordion.Content>
     </Accordion.Panel>
     <Accordion.Panel>
-      <Accordion.Title arrowIcon={HiOutlineArrowCircleDown}>Title</Accordion.Title>
+      <Accordion.Title>Title</Accordion.Title>
       <Accordion.Content>
         <p>Content</p>
       </Accordion.Content>
@@ -203,14 +304,17 @@ const TestAccordion = ({ ...props }: AccordionProps): JSX.Element => (
   </Accordion>
 );
 
-const getAccordion = ({ getByTestId }: RenderResult): HTMLElement => getByTestId('flowbite-accordion');
+const getAccordion = ({ getByTestId }: Pick<RenderResult, 'getByTestId'>): HTMLElement =>
+  getByTestId('flowbite-accordion');
 
-const getAccordions = ({ getAllByTestId }: RenderResult): HTMLElement[] => getAllByTestId('flowbite-accordion');
+const getAccordions = ({ getAllByTestId }: Pick<RenderResult, 'getAllByTestId'>): HTMLElement[] =>
+  getAllByTestId('flowbite-accordion');
 
-const getAccordionContent = ({ getAllByTestId }: RenderResult): HTMLElement[] =>
+const getAccordionContent = ({ getAllByTestId }: Pick<RenderResult, 'getAllByTestId'>): HTMLElement[] =>
   getAllByTestId('flowbite-accordion-content');
 
-const getAccordionHeadings = ({ getAllByTestId }: RenderResult): HTMLElement[] =>
+const getAccordionHeadings = ({ getAllByTestId }: Pick<RenderResult, 'getAllByTestId'>): HTMLElement[] =>
   getAllByTestId('flowbite-accordion-heading');
 
-const getAccordionTitles = ({ getAllByRole }: RenderResult): HTMLElement[] => getAllByRole('button');
+const getAccordionTitles = ({ getAllByRole }: Pick<RenderResult, 'getAllByRole'>): HTMLElement[] =>
+  getAllByRole('button');

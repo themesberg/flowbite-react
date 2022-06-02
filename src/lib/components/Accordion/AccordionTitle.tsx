@@ -1,28 +1,21 @@
 import { ComponentProps, FC } from 'react';
 import classNames from 'classnames';
-import { HiChevronDown } from 'react-icons/hi';
 import { useAccordionContext } from './AccordionPanelContext';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { excludeClassName } from '../../helpers/exclude';
 import { HeadingLevel } from '../Flowbite/FlowbiteTheme';
 
 export interface AccordionTitleProps extends ComponentProps<'button'> {
-  arrowIcon?: FC<ComponentProps<'svg'>>;
   as?: HeadingLevel;
 }
 
-export const AccordionTitle: FC<AccordionTitleProps> = ({
-  arrowIcon: ArrowIcon = HiChevronDown,
-  as: Heading = 'h2',
-  children,
-  ...props
-}): JSX.Element => {
+export const AccordionTitle: FC<AccordionTitleProps> = ({ as: Heading = 'h2', children, ...props }): JSX.Element => {
   const theirProps = excludeClassName(props);
 
-  const { flush, isOpen, setIsOpen } = useAccordionContext();
+  const { arrowIcon: ArrowIcon, flush, isOpen, setOpen } = useAccordionContext();
   const theme = useTheme().theme.accordion.title;
 
-  const onClick = () => setIsOpen(!isOpen);
+  const onClick = () => typeof setOpen !== 'undefined' && setOpen();
 
   return (
     <button
@@ -32,7 +25,13 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
       {...theirProps}
     >
       <Heading data-testid="flowbite-accordion-heading">{children}</Heading>
-      <ArrowIcon aria-hidden className={classNames(theme.arrow.base, isOpen && theme.arrow.open)} />
+      {ArrowIcon && (
+        <ArrowIcon
+          aria-hidden
+          className={classNames(theme.arrow.base, theme.arrow.open[isOpen ? 'on' : 'off'])}
+          data-testid="flowbite-accordion-arrow"
+        />
+      )}
     </button>
   );
 };

@@ -1,21 +1,25 @@
 import { ComponentProps, FC } from 'react';
 
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { HiChevronDown } from 'react-icons/hi';
+import { HiChevronDown, HiOutlineArrowCircleDown } from 'react-icons/hi';
 
 import { Accordion, AccordionProps } from '.';
 
 export default {
   title: 'Components/Accordion',
   component: Accordion,
+  args: {
+    alwaysOpen: false,
+    flush: false,
+  },
 } as Meta;
 
 const icon: FC<ComponentProps<'svg'>> = HiChevronDown;
 
 const Template: Story<AccordionProps> = (args) => (
-  <Accordion {...args}>
-    <Accordion.Panel key={0} open>
-      <Accordion.Title arrowIcon={icon}>What is Flowbite?</Accordion.Title>
+  <Accordion arrowIcon={icon} {...args}>
+    <Accordion.Panel>
+      <Accordion.Title>What is Flowbite?</Accordion.Title>
       <Accordion.Content>
         <p className="mb-2 text-gray-500 dark:text-gray-400">
           Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons,
@@ -33,8 +37,8 @@ const Template: Story<AccordionProps> = (args) => (
         </p>
       </Accordion.Content>
     </Accordion.Panel>
-    <Accordion.Panel key={1}>
-      <Accordion.Title arrowIcon={icon}>Is there a Figma file available?</Accordion.Title>
+    <Accordion.Panel>
+      <Accordion.Title>Is there a Figma file available?</Accordion.Title>
       <Accordion.Content>
         <p className="mb-2 text-gray-500 dark:text-gray-400">
           Flowbite is first conceptualized and designed using the Figma software so everything you see in the library
@@ -49,8 +53,8 @@ const Template: Story<AccordionProps> = (args) => (
         </p>
       </Accordion.Content>
     </Accordion.Panel>
-    <Accordion.Panel key={2}>
-      <Accordion.Title arrowIcon={icon}>What are the differences between Flowbite and Tailwind UI?</Accordion.Title>
+    <Accordion.Panel>
+      <Accordion.Title>What are the differences between Flowbite and Tailwind UI?</Accordion.Title>
       <Accordion.Content>
         <p className="mb-2 text-gray-500 dark:text-gray-400">
           The main difference is that the core components from Flowbite are open source under the MIT license, whereas
@@ -83,6 +87,21 @@ const Template: Story<AccordionProps> = (args) => (
   </Accordion>
 );
 
-export const DefaultAccordion = Template.bind({});
-DefaultAccordion.storyName = 'Default';
-DefaultAccordion.args = {};
+export const AlwaysOpen = Template.bind({});
+AlwaysOpen.storyName = 'Always open';
+AlwaysOpen.args = {
+  alwaysOpen: true,
+};
+
+export const Default = Template.bind({});
+
+export const Flush = Template.bind({});
+Flush.args = {
+  flush: true,
+};
+
+export const WithArrowIcon = Template.bind({});
+WithArrowIcon.storyName = 'With arrow icon';
+WithArrowIcon.args = {
+  arrowIcon: HiOutlineArrowCircleDown,
+};

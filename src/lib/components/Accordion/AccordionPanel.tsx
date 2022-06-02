@@ -1,17 +1,23 @@
-import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useMemo, useState } from 'react';
+import { FC, PropsWithChildren, useState } from 'react';
+import { AccordionProps } from '.';
 import { AccordionPanelContext } from './AccordionPanelContext';
 
-export interface AccordionPanelProps extends PropsWithChildren<Record<string, unknown>> {
-  flush?: boolean;
-  open?: boolean;
+export interface AccordionPanelProps extends PropsWithChildren<AccordionProps> {
+  isOpen?: boolean;
+  setOpen?: () => void;
 }
 
-export const AccordionPanel: FC<AccordionPanelProps> = ({ children, flush, open }): JSX.Element => {
-  const [isOpen, setIsOpen] = useState(open);
-  const items = useMemo(
-    () => Children.map(children as ReactElement<ComponentProps<'div' | 'button'>>[], (child) => cloneElement(child)),
-    [children],
-  );
+export const AccordionPanel: FC<AccordionPanelProps> = ({ children, ...props }): JSX.Element => {
+  const { alwaysOpen } = props;
+  const [isOpen, setOpen] = useState(props.isOpen);
 
-  return <AccordionPanelContext.Provider value={{ flush, isOpen, setIsOpen }}>{items}</AccordionPanelContext.Provider>;
+  const provider = alwaysOpen
+    ? {
+        ...props,
+        isOpen,
+        setOpen: () => setOpen(!isOpen),
+      }
+    : props;
+
+  return <AccordionPanelContext.Provider value={provider}>{children}</AccordionPanelContext.Provider>;
 };

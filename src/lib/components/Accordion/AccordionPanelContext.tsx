@@ -1,10 +1,7 @@
 import { createContext, useContext } from 'react';
+import { AccordionPanelProps } from './AccordionPanel';
 
-type AccordionPanelContext = {
-  flush?: boolean;
-  isOpen?: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-};
+type AccordionPanelContext = Omit<AccordionPanelProps, 'children'>;
 
 export const AccordionPanelContext = createContext<AccordionPanelContext | undefined>(undefined);
 
