@@ -1,7 +1,8 @@
 import classNames from 'classnames';
-import { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
+import * as nanoid from 'nanoid';
+import { ComponentProps, ElementType, FC, PropsWithChildren, useMemo } from 'react';
 import { Badge } from '../Badge';
-import { Color } from '../Button';
+import { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
 import { useSidebarItemContext } from './SidebarItemContext';
@@ -10,35 +11,41 @@ export interface SidebarItem {
   className?: string;
   icon?: FC<ComponentProps<'svg'>>;
   label?: string;
-  labelColor?: Color;
+  labelColor?: keyof SidebarItemLabelColors;
 }
 
-export interface SidebarItemProps extends PropsWithChildren<SidebarItem & Record<string, unknown>> {
-  as?: ElementType;
+export interface SidebarItemLabelColors extends Pick<FlowbiteColors, 'gray'> {
+  [key: string]: string;
+}
+
+export interface SidebarItemProps
+  extends PropsWithChildren<SidebarItem & ComponentProps<'a'> & Record<string, unknown>> {
   active?: boolean;
+  as?: ElementType;
 }
 
 const SidebarItem: FC<SidebarItemProps> = ({
+  as: Component = 'a',
   children,
   className,
-  as: Component = 'a',
-  active,
   icon: Icon,
+  active: isActive,
   label,
-  labelColor = 'blue',
-  ...rest
+  labelColor = 'info',
+  ...theirProps
 }) => {
-  const { collapsed } = useSidebarContext();
-  const { insideCollapse } = useSidebarItemContext();
+  const id = useMemo(() => nanoid.nanoid(), []);
+  const { isCollapsed } = useSidebarContext();
+  const { isInsideCollapse } = useSidebarItemContext();
 
-  const Wrapper = ({ children: wrapperChildren }: PropsWithChildren<Record<string, unknown>>) => (
-    <li data-testid="sidebar-item">
-      {collapsed ? (
-        <Tooltip content={children} data-testid="sidebar-item-tooltip" placement="right">
-          {wrapperChildren}
+  const Wrapper: FC<PropsWithChildren<unknown>> = ({ children }): JSX.Element => (
+    <li>
+      {isCollapsed ? (
+        <Tooltip content={children} placement="right">
+          {children}
         </Tooltip>
       ) : (
-        wrapperChildren
+        children
       )}
     </li>
   );
@@ -46,31 +53,35 @@ const SidebarItem: FC<SidebarItemProps> = ({
   return (
     <Wrapper>
       <Component
+        aria-labelledby={`flowbite-sidebar-item-${id}`}
         className={classNames(
           'flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
           {
-            'bg-gray-100 dark:bg-gray-700': active,
-            'group w-full pl-8 transition duration-75': !collapsed && insideCollapse,
+            'bg-gray-100 dark:bg-gray-700': isActive,
+            'group w-full pl-8 transition duration-75': !isCollapsed && isInsideCollapse,
           },
           className,
         )}
-        {...rest}
+        {...theirProps}
       >
         {Icon && (
           <Icon
+            aria-hidden
             className={classNames(
               'h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
-              { 'text-gray-700 dark:text-gray-100': active },
+              { 'text-gray-700 dark:text-gray-100': isActive },
             )}
           />
         )}
-        {!collapsed && (
-          <span className="ml-3 flex-1 whitespace-nowrap" data-testid="sidebar-item-content">
-            {children}
-          </span>
-        )}
-        {!collapsed && label && (
-          <Badge color={labelColor} data-testid="sidebar-item-label">
+        <span
+          className={classNames('ml-3 flex-1 whitespace-nowrap', { hidden: isCollapsed })}
+          data-testid="flowbite-sidebar-item-content"
+          id={`flowbite-sidebar-item-${id}`}
+        >
+          {children}
+        </span>
+        {label && (
+          <Badge color={labelColor} data-testid="flowbite-sidebar-label" hidden={isCollapsed}>
             {label}
           </Badge>
         )}

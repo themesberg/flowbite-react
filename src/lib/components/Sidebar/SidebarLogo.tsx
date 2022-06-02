@@ -1,5 +1,6 @@
 import classNames from 'classnames';
-import { PropsWithChildren, FC, HTMLAttributes } from 'react';
+import * as nanoid from 'nanoid';
+import { PropsWithChildren, FC, HTMLAttributes, useMemo } from 'react';
 import { useSidebarContext } from './SidebarContext';
 
 export interface SidebarLogoProps extends PropsWithChildren<HTMLAttributes<HTMLAnchorElement>> {
@@ -9,17 +10,23 @@ export interface SidebarLogoProps extends PropsWithChildren<HTMLAttributes<HTMLA
   imgAlt?: string;
 }
 
-const SidebarLogo: FC<SidebarLogoProps> = ({ children, className, href, img, imgAlt = '', ...rest }) => {
-  const { collapsed } = useSidebarContext();
+const SidebarLogo: FC<SidebarLogoProps> = ({ children, className, href, img, imgAlt = '', ...theirProps }) => {
+  const id = useMemo(() => nanoid.nanoid(), []);
+  const { isCollapsed } = useSidebarContext();
 
   return (
-    <a className={classNames('mb-5 flex items-center pl-2.5', className)} href={href} {...rest}>
+    <a
+      aria-labelledby={`flowbite-sidebar-logo-${id}`}
+      className={classNames('mb-5 flex items-center pl-2.5', className)}
+      href={href}
+      {...theirProps}
+    >
       <img alt={imgAlt} className="mr-3 h-6 sm:h-7" src={img} />
       <span
         className={classNames(
-          collapsed ? 'sr-only' : 'self-center whitespace-nowrap text-xl font-semibold dark:text-white',
+          isCollapsed ? 'hidden' : 'self-center whitespace-nowrap text-xl font-semibold dark:text-white',
         )}
-        data-testid="sidebar-logo"
+        id={`flowbite-sidebar-logo-${id}`}
       >
         {children}
       </span>

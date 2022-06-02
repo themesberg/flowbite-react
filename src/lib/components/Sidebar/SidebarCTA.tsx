@@ -18,16 +18,15 @@ const colorClasses: Record<Color, string> = {
   purple: 'bg-purple-50 dark:bg-purple-900',
 };
 
-const SidebarCTA: FC<SidebarCTAProps> = ({ children, className, color = 'blue', ...rest }) => {
-  const { collapsed } = useSidebarContext();
+const SidebarCTA: FC<SidebarCTAProps> = ({ children, className, color = 'blue', ...theirProps }) => {
+  const { isCollapsed } = useSidebarContext();
 
-  return collapsed ? (
-    <></>
-  ) : (
+  return (
     <div
       className={classNames('mt-6 rounded-lg p-4', colorClasses[color], className)}
       data-testid="sidebar-cta"
-      {...rest}
+      hidden={isCollapsed}
+      {...theirProps}
     >
       {children}
     </div>

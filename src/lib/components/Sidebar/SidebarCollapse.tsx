@@ -1,6 +1,8 @@
 import classNames from 'classnames';
-import { FC, PropsWithChildren, useState } from 'react';
+import * as nanoid from 'nanoid';
+import { FC, PropsWithChildren, useMemo, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
+import { excludeClassName } from '../../helpers/exclude';
 import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
 import { SidebarItem } from './SidebarItem';
@@ -8,18 +10,21 @@ import { SidebarItemContext } from './SidebarItemContext';
 
 export type SidebarCollapseProps = PropsWithChildren<SidebarItem>;
 
-const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label, ...rest }) => {
-  const { collapsed } = useSidebarContext();
-  const [open, setOpen] = useState(false);
+const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label, ...props }): JSX.Element => {
+  const theirProps = excludeClassName(props);
 
-  const Wrapper = ({ children: wrapperChildren }: PropsWithChildren<Record<string, unknown>>) => (
+  const id = useMemo(() => nanoid.nanoid(), []);
+  const { isCollapsed } = useSidebarContext();
+  const [isOpen, setOpen] = useState(false);
+
+  const Wrapper = ({ children }: PropsWithChildren<unknown>) => (
     <li>
-      {collapsed ? (
+      {isCollapsed ? (
         <Tooltip content={label} placement="right">
-          {wrapperChildren}
+          {children}
         </Tooltip>
       ) : (
-        wrapperChildren
+        children
       )}
     </li>
   );
@@ -28,35 +33,31 @@ const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label
     <Wrapper>
       <button
         className="group flex w-full items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-        data-testid="sidebar-collapse-button"
-        onClick={() => setOpen(!open)}
+        id={`flowbite-sidebar-collapse-${id}`}
+        onClick={() => setOpen(!isOpen)}
         type="button"
-        {...rest}
+        {...theirProps}
       >
         {Icon && (
           <Icon
+            aria-hidden
             className={classNames(
               'h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
-              { 'text-gray-900': open },
+              { 'text-gray-900': isOpen },
             )}
           />
         )}
-        {collapsed ? (
+        {isCollapsed ? (
           <span className="sr-only">{label}</span>
         ) : (
           <>
             <span className="ml-3 flex-1 whitespace-nowrap text-left">{label}</span>
-            <HiChevronDown className="h-6 w-6" />
+            <HiChevronDown aria-hidden className="h-6 w-6" />
           </>
         )}
       </button>
-      <ul
-        className={classNames('space-y-2 py-2', {
-          hidden: !open,
-        })}
-        data-testid="sidebar-collapse"
-      >
-        <SidebarItemContext.Provider value={{ insideCollapse: true }}>{children}</SidebarItemContext.Provider>
+      <ul aria-labelledby={`flowbite-sidebar-collapse-${id}`} className="space-y-2 py-2" hidden={!isOpen}>
+        <SidebarItemContext.Provider value={{ isInsideCollapse: true }}>{children}</SidebarItemContext.Provider>
       </ul>
     </Wrapper>
   );

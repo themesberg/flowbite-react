@@ -21,7 +21,7 @@ Default.args = {
           <Sidebar.Item href="#" icon={HiChartPie}>
             Dashboard
           </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards} label="Pro" labelColor="alternative">
+          <Sidebar.Item href="#" icon={HiViewBoards} label="Pro" labelColor="gray">
             Kanban
           </Sidebar.Item>
           <Sidebar.Item href="#" icon={HiInbox} label="3">
