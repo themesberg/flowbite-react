@@ -162,6 +162,9 @@ export default {
       snap: 'snap-x',
     },
   },
+  footer: {
+    base: 'w-full rounded-lg bg-white p-4 shadow dark:bg-gray-800 md:flex md:items-center md:justify-between md:p-6',
+  },
   spinner: {
     base: 'inline animate-spin text-gray-200',
     color: {

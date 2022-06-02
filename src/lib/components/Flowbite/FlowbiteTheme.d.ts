@@ -122,6 +122,9 @@ export interface FlowbiteTheme {
       snap: string;
     };
   };
+  footer: {
+    base: string;
+  };
   spinner: {
     base: string;
     color: SpinnerColors;

@@ -6,19 +6,16 @@ import { FooterLink } from './FooterLink';
 import { FooterLinkGroup } from './FooterLinkGroup';
 import { FooterIcon } from './FooterIcon';
 
+import { useTheme } from '../Flowbite/ThemeContext';
+
 export type FooterComponentProps = PropsWithChildren<{
   className?: string;
 }>;
 
 const FooterComponent: FC<FooterComponentProps> = ({ children, className }) => {
+  const theme = useTheme().theme.footer;
   return (
-    <footer
-      data-testid="footer-element"
-      className={classNames(
-        'w-full rounded-lg bg-white p-4 shadow dark:bg-gray-800 md:flex md:items-center md:justify-between md:p-6',
-        className,
-      )}
-    >
+    <footer data-testid="footer-element" className={classNames(theme.base, className)}>
       {children}
     </footer>
   );
