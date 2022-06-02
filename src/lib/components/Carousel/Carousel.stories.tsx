@@ -17,6 +17,29 @@ const Template: Story<CarouselProps> = (args) => (
   </Carousel>
 );
 
-export const DefaultCarousel = Template.bind({});
-DefaultCarousel.storyName = 'Default';
-DefaultCarousel.args = {};
+export const Default = Template.bind({});
+Default.args = {};
+
+export const SlideInterval = Template.bind({});
+SlideInterval.storyName = 'Slide interval';
+SlideInterval.args = {
+  slideInterval: 5000,
+};
+
+export const Static = Template.bind({});
+Static.args = {
+  slide: false,
+};
+
+export const CustomControls = Template.bind({});
+CustomControls.storyName = 'With custom controls';
+CustomControls.args = {
+  leftControl: '<',
+  rightControl: '>',
+};
+
+export const WithNoIndicators = Template.bind({});
+WithNoIndicators.storyName = 'With no indicators';
+WithNoIndicators.args = {
+  indicators: false,
+};
