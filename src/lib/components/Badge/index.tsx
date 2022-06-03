@@ -16,7 +16,7 @@ export interface BadgeColors
   [key: string]: string;
 }
 
-export interface BadgeSizes extends FlowbiteSizes {
+export interface BadgeSizes extends Pick<FlowbiteSizes, 'xs' | 'sm'> {
   [key: string]: string;
 }
 

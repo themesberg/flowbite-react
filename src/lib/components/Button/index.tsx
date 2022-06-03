@@ -35,6 +35,10 @@ export interface ButtonGradientDuoToneColors extends FlowbiteGradientDuoToneColo
   [key: string]: string;
 }
 
+export interface ButtonOutlineColors extends Pick<FlowbiteColors, 'gray'> {
+  [key: string]: string;
+}
+
 export interface ButtonSizes extends FlowbiteSizes {
   [key: string]: string;
 }
