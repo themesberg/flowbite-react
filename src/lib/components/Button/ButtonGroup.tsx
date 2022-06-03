@@ -1,19 +1,29 @@
-import { Children, cloneElement, FC, PropsWithChildren, ReactElement, useMemo } from 'react';
+import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useMemo } from 'react';
 
 import { ButtonComponentProps } from '.';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 
-export type ButtonGroupProps = PropsWithChildren<{
-  pill?: boolean;
-  outline?: boolean;
-}>;
+export type ButtonGroupProps = PropsWithChildren<
+  ComponentProps<'div'> & Pick<ButtonComponentProps, 'outline' | 'pill'>
+>;
 
-const ButtonGroup: FC<ButtonGroupProps> = ({ children, pill, outline }) => {
+export interface PositionInButtonGroup {
+  none: string;
+  start: string;
+  middle: string;
+  end: string;
+}
+
+const ButtonGroup: FC<ButtonGroupProps> = ({ children, outline, pill, ...props }): JSX.Element => {
+  const theirProps = excludeClassName(props);
+
   const items = useMemo(
     () =>
       Children.map(children as ReactElement<ButtonComponentProps>[], (child, index) =>
         cloneElement(child, {
-          pill,
           outline,
+          pill,
           positionInGroup:
             index === 0
               ? 'start'
@@ -24,9 +34,10 @@ const ButtonGroup: FC<ButtonGroupProps> = ({ children, pill, outline }) => {
       ),
     [children, outline, pill],
   );
+  const theme = useTheme().theme.buttonGroup;
 
   return (
-    <div className="inline-flex" role="group">
+    <div className={theme.base} role="group" {...theirProps}>
       {items}
     </div>
   );

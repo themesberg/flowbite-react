@@ -42,9 +42,9 @@ const ButtonGroupPage: FC = () => {
             <Button color="blue">Messages</Button>
           </Button.Group>
           <Button.Group>
-            <Button gradientMonochrome="blue">Profile</Button>
-            <Button gradientMonochrome="blue">Settings</Button>
-            <Button gradientMonochrome="blue">Messages</Button>
+            <Button gradientMonochrome="info">Profile</Button>
+            <Button gradientMonochrome="info">Settings</Button>
+            <Button gradientMonochrome="info">Messages</Button>
           </Button.Group>
           <Button.Group>
             <Button gradientDuoTone="greenToBlue">Profile</Button>
@@ -64,9 +64,9 @@ const ButtonGroupPage: FC = () => {
             <Button color="alternative">Messages</Button>
           </Button.Group>
           <Button.Group outline>
-            <Button gradientMonochrome="blue">Profile</Button>
-            <Button gradientMonochrome="blue">Settings</Button>
-            <Button gradientMonochrome="blue">Messages</Button>
+            <Button gradientMonochrome="info">Profile</Button>
+            <Button gradientMonochrome="info">Settings</Button>
+            <Button gradientMonochrome="info">Messages</Button>
           </Button.Group>
           <Button.Group outline>
             <Button gradientDuoTone="cyanToBlue">Profile</Button>
@@ -92,13 +92,13 @@ const ButtonGroupPage: FC = () => {
             </Button>
           </Button.Group>
           <Button.Group outline>
-            <Button gradientMonochrome="blue">
+            <Button gradientMonochrome="info">
               <HiUserCircle className="mr-3 h-4 w-4" /> Profile
             </Button>
-            <Button gradientMonochrome="blue">
+            <Button gradientMonochrome="info">
               <HiAdjustments className="mr-3 h-4 w-4" /> Settings
             </Button>
-            <Button gradientMonochrome="blue">
+            <Button gradientMonochrome="info">
               <HiCloudDownload className="mr-3 h-4 w-4" /> Messages
             </Button>
           </Button.Group>

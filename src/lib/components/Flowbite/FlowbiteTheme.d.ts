@@ -1,6 +1,8 @@
 import type { AlertColors } from '../Alert';
 import type { AvatarSizes } from '../Avatar';
-import { SpinnerColors, SpinnerSizes } from '../Spinner';
+import type { SpinnerColors, SpinnerSizes } from '../Spinner';
+import type { ButtonColors, ButtonOutlineColors, ButtonSizes, PositionInButtonGroup } from '../Button';
+import type { ButtonGradientColors, ButtonGradientDuoToneColors } from '../Button';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
@@ -10,10 +12,7 @@ export interface FlowbiteTheme {
     content: {
       base: string;
     };
-    flush: {
-      off: string;
-      on: string;
-    };
+    flush: FlowbiteBoolean;
     title: {
       arrow: {
         base: string;
@@ -23,14 +22,8 @@ export interface FlowbiteTheme {
         };
       };
       base: string;
-      flush: {
-        off: string;
-        on: string;
-      };
-      open: {
-        off: string;
-        on: string;
-      };
+      flush: FlowbiteBoolean;
+      open: FlowbiteBoolean;
     };
   };
   alert: {
@@ -86,6 +79,28 @@ export interface FlowbiteTheme {
     };
     list: string;
   };
+  button: {
+    base: string;
+    color: ButtonColors;
+    disabled: string;
+    gradient: ButtonGradientColors;
+    gradientDuoTone: ButtonGradientDuoToneColors;
+    inner: {
+      base: string;
+      position: PositionInButtonGroup;
+    };
+    label: string;
+    outline: FlowbiteBoolean & {
+      color: ButtonOutlineColors;
+      pill: FlowbiteBoolean;
+    };
+    pill: FlowbiteBoolean;
+    size: ButtonSizes;
+  };
+  buttonGroup: {
+    base: string;
+    position: PositionInButtonGroup;
+  };
   card: {
     base: string;
     children: string;
@@ -139,20 +154,49 @@ export interface FlowbiteTheme {
   };
 }
 
-export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export interface FlowbiteBoolean {
+  off: string;
+  on: string;
+}
 
 export interface FlowbiteColors {
-  alternative: string;
+  cyan: string;
   dark: string;
   failure: string;
   gray: string;
+  indigo: string;
   info: string;
   light: string;
+  lime: string;
   pink: string;
   purple: string;
   success: string;
+  teal: string;
   warning: string;
 }
+
+export interface FlowbiteGradientColors {
+  cyan: string;
+  failure: string;
+  info: string;
+  lime: string;
+  pink: string;
+  purple: string;
+  success: string;
+  teal: string;
+}
+
+export interface FlowbiteGradientDuoToneColors {
+  cyanToBlue: string;
+  greenToBlue: string;
+  pinkToOrange: string;
+  purpleToBlue: string;
+  purpleToPink: string;
+  redToYellow: string;
+  tealToLime: string;
+}
+
+export type FlowbiteHeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export interface FlowbitePositions {
   'bottom-left': string;

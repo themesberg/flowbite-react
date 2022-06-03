@@ -7,8 +7,11 @@ import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
 import { useSidebarItemContext } from './SidebarItemContext';
 
-export interface SidebarItem {
+export interface SidebarItemProps extends PropsWithChildren<ComponentProps<'div'> & Record<string, unknown>> {
+  active?: boolean;
+  as?: ElementType;
   className?: string;
+  href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   label?: string;
   labelColor?: keyof SidebarItemLabelColors;
@@ -16,12 +19,6 @@ export interface SidebarItem {
 
 export interface SidebarItemLabelColors extends Pick<FlowbiteColors, 'gray'> {
   [key: string]: string;
-}
-
-export interface SidebarItemProps
-  extends PropsWithChildren<SidebarItem & ComponentProps<'a'> & Record<string, unknown>> {
-  active?: boolean;
-  as?: ElementType;
 }
 
 const SidebarItem: FC<SidebarItemProps> = ({
@@ -33,8 +30,9 @@ const SidebarItem: FC<SidebarItemProps> = ({
   label,
   labelColor = 'info',
   ...theirProps
-}) => {
+}): JSX.Element => {
   const id = useMemo(() => nanoid.nanoid(), []);
+
   const { isCollapsed } = useSidebarContext();
   const { isInsideCollapse } = useSidebarItemContext();
 
