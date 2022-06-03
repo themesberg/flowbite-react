@@ -8,9 +8,8 @@ export default {
 
 const Template: Story<TimelineProps> = (args) => <Timeline {...args} />;
 
-export const DefaultTimeline = Template.bind({});
-DefaultTimeline.storyName = 'Default Timeline';
-DefaultTimeline.args = {
+export const Default = Template.bind({});
+Default.args = {
   children: (
     <>
       <Timeline.Item>
