@@ -1,6 +1,7 @@
 import type { RenderResult } from '@testing-library/react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe, vi } from 'vitest';
 import { Button } from '.';
 import { Flowbite } from '../Flowbite';
 
@@ -23,7 +24,7 @@ describe('Components / Button', () => {
   describe('Keyboard interactions', () => {
     describe('`Space`', () => {
       it('should trigger `onClick`', () => {
-        const onClick = jest.fn();
+        const onClick = vi.fn();
         const button = getButton(render(<Button onClick={onClick}>Hi there</Button>));
 
         userEvent.click(button);

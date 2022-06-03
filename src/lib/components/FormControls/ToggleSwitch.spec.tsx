@@ -2,6 +2,7 @@ import type { RenderResult } from '@testing-library/react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
+import { vi } from 'vitest';
 import { TextInput } from './TextInput';
 import { ToggleSwitch } from './ToggleSwitch';
 
@@ -46,7 +47,7 @@ describe('Components / Form controls / Toggle switch', () => {
   describe('Keyboard interaction', () => {
     describe('`Enter`', () => {
       it("shouldn't toggle", () => {
-        const handleChange = jest.fn();
+        const handleChange = vi.fn();
         const switchElement = getSwitch(
           render(
             <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={handleChange} />,
@@ -65,7 +66,7 @@ describe('Components / Form controls / Toggle switch', () => {
       });
 
       it("shouldn't submit surrounding form", () => {
-        const handleSubmit = jest.fn();
+        const handleSubmit = vi.fn();
         const switchElement = getSwitch(
           render(
             <form
@@ -92,7 +93,7 @@ describe('Components / Form controls / Toggle switch', () => {
 
     describe('`Space`', () => {
       it('should toggle', () => {
-        const handleChange = jest.fn();
+        const handleChange = vi.fn();
 
         const TestToggleSwitch = (): JSX.Element => {
           const [state, setState] = useState(false);
@@ -167,7 +168,7 @@ describe('Components / Form controls / Toggle switch', () => {
   describe('Mouse interaction', () => {
     describe('Click button', () => {
       it('should toggle', () => {
-        const handleChange = jest.fn();
+        const handleChange = vi.fn();
         const switchElement = getSwitch(
           render(
             <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={handleChange} />,
@@ -183,7 +184,7 @@ describe('Components / Form controls / Toggle switch', () => {
 
     describe('Click label', () => {
       it('should toggle', () => {
-        const handleChange = jest.fn();
+        const handleChange = vi.fn();
         const view = render(
           <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={handleChange} />,
         );
