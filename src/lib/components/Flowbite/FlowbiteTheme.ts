@@ -1,8 +1,11 @@
 import type { AlertColors } from '../Alert';
 import type { AvatarSizes } from '../Avatar';
+import type { BadgeColors, BadgeSizes } from '../Badge';
 import type { SpinnerColors, SpinnerSizes } from '../Spinner';
-import type { ButtonColors, ButtonOutlineColors, ButtonSizes, PositionInButtonGroup } from '../Button';
+import type { ButtonColors, ButtonOutlineColors, ButtonSizes } from '../Button';
 import type { ButtonGradientColors, ButtonGradientDuoToneColors } from '../Button';
+import type { DeepPartial } from '../../helpers/deep-partial';
+import type { PositionInButtonGroup } from '../Button/ButtonGroup';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
@@ -59,7 +62,7 @@ export interface FlowbiteTheme {
   };
   badge: {
     base: string;
-    color: Colors;
+    color: BadgeColors;
     href: string;
     icon: {
       off: string;
