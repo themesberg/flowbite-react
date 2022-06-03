@@ -31,7 +31,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "eject": "react-app-rewired eject",
-    "lint": "eslint --color",
+    "lint": "eslint --color --ignore-path .gitignore .",
     "lint:staged": "lint-staged --config lint-staged.js",
     "prettier": "prettier --check {src,test,.storybook}/**/*.{js,jsx,ts,tsx,json,css,scss}",
     "prettier:fix": "prettier --write {src,test,.storybook}/**/*.{js,jsx,ts,tsx,json,css,scss}",
