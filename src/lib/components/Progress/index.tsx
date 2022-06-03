@@ -1,13 +1,14 @@
 import classNames from 'classnames';
 import { useId } from 'react';
 import { ComponentProps, FC, PropsWithChildren } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
 import { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 
 import { useTheme } from '../Flowbite/ThemeContext';
-export interface ProgressProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
+export interface ProgressProps extends PropsWithChildren<ComponentProps<'div'>> {
   size?: keyof ProgressSizes;
   label?: string;
-  labelPosition?: 'inside' | 'outside';
+  labelPosition?: 'inside' | 'outside' | 'none';
   labelProgress?: boolean;
   progress: number;
 }
@@ -21,8 +22,8 @@ export interface ProgressSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg' | 
 
 export const Progress: FC<ProgressProps> = ({
   color = 'blue',
-  label = '',
-  labelPosition = 'inside',
+  label = 'progressbar',
+  labelPosition = 'none',
   labelProgress = false,
   progress,
   size = 'md',
@@ -30,19 +31,11 @@ export const Progress: FC<ProgressProps> = ({
 }): JSX.Element => {
   const id = useId();
   const theme = useTheme().theme.progress;
+  const theirProps = excludeClassName(props);
 
   return (
     <>
-      <span id={`${id}-flowbite-progress`} className="sr-only">
-        {label}
-      </span>
-      <div
-        aria-labelledby={`${id}-flowbite-progress`}
-        aria-valuenow={progress}
-        aria-label="progressbar"
-        role="progressbar"
-        {...props}
-      >
+      <div id={id} aria-label={label} aria-valuenow={progress} role="progressbar" {...theirProps}>
         {label && labelPosition === 'outside' && (
           <div className={theme.label}>
             <span>{label}</span>
