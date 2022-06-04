@@ -16,4 +16,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier', 'react-hooks', 'storybook'],
   root: true,
+  rules: {
+    '@typescript-eslint/consistent-type-imports': 'warn',
+  },
 };
