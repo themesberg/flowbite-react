@@ -35,6 +35,15 @@ describe.concurrent('Components / Card', () => {
       expect(card).toBeInTheDocument();
     });
 
+    describe('`href=".."`', () => {
+      it('should render an `<a>`', () => {
+        const card = getCard(render(<Card href="#" />));
+
+        expect(card).toBeInTheDocument();
+        expect(card.tagName.toLocaleLowerCase()).toEqual('a');
+      });
+    });
+
     describe('`horizontal={true}`', () => {
       it('should render', () => {
         const card = getCard(render(<Card horizontal />));
@@ -115,6 +124,24 @@ describe.concurrent('Components / Card', () => {
 
       expect(normalCard).toHaveClass('text-blue-200');
       expect(horizontalCard).toHaveClass('text-blue-300');
+    });
+
+    it('should use `href` classes', () => {
+      const theme = {
+        card: {
+          href: 'text-blue-700',
+        },
+      };
+
+      const card = getCard(
+        render(
+          <Flowbite theme={{ theme }}>
+            <Card href="#">My card</Card>
+          </Flowbite>,
+        ),
+      );
+
+      expect(card).toHaveClass('text-blue-700');
     });
 
     it('should use `img` classes', () => {
