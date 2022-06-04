@@ -1,10 +1,10 @@
 import type { ComponentProps, FC, KeyboardEvent, PropsWithChildren, ReactElement } from 'react';
+import { useId } from 'react';
 import { Children, useEffect, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import type { TabProps } from './TabItem';
 import { TabItem } from './TabItem';
-import * as nanoid from 'nanoid';
 
 export type TabStyle = 'default' | 'underline' | 'pills' | 'fullWidth';
 export type TabItemStatus = 'active' | 'notActive';
@@ -56,6 +56,7 @@ interface TabKeyboardEventProps extends TabEventProps {
 }
 
 export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'default' as TabStyle, ...rest }) => {
+  const id = useId();
   const tabs = useMemo(
     () => Children.map(children as ReactElement<PropsWithChildren<TabProps>>[], ({ props }) => props),
     [children],
@@ -97,8 +98,6 @@ export const TabsComponent: FC<TabsProps> = ({ children, className, style = 'def
   useEffect(() => {
     tabRefs.current[focusedTab]?.focus();
   }, [focusedTab]);
-
-  const id = useMemo(() => nanoid.nanoid(), []);
 
   return (
     <div className="flex flex-col gap-2">

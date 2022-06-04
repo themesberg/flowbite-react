@@ -1,7 +1,6 @@
 import classNames from 'classnames';
-import * as nanoid from 'nanoid';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
-import { useMemo } from 'react';
+import { useId } from 'react';
 import { Badge } from '../Badge';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { Tooltip } from '../Tooltip';
@@ -32,8 +31,7 @@ const SidebarItem: FC<SidebarItemProps> = ({
   labelColor = 'info',
   ...theirProps
 }): JSX.Element => {
-  const id = useMemo(() => nanoid.nanoid(), []);
-
+  const id = useId();
   const { isCollapsed } = useSidebarContext();
   const { isInsideCollapse } = useSidebarItemContext();
 

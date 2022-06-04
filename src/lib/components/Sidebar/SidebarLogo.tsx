@@ -1,7 +1,6 @@
 import classNames from 'classnames';
-import * as nanoid from 'nanoid';
 import type { PropsWithChildren, FC, HTMLAttributes } from 'react';
-import { useMemo } from 'react';
+import { useId } from 'react';
 import { useSidebarContext } from './SidebarContext';
 
 export interface SidebarLogoProps extends PropsWithChildren<HTMLAttributes<HTMLAnchorElement>> {
@@ -12,7 +11,7 @@ export interface SidebarLogoProps extends PropsWithChildren<HTMLAttributes<HTMLA
 }
 
 const SidebarLogo: FC<SidebarLogoProps> = ({ children, className, href, img, imgAlt = '', ...theirProps }) => {
-  const id = useMemo(() => nanoid.nanoid(), []);
+  const id = useId();
   const { isCollapsed } = useSidebarContext();
 
   return (
