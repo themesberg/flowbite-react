@@ -16,15 +16,4 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'prettier', 'react-hooks', 'storybook'],
   root: true,
-  rules: {
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/no-inferrable-types': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/ban-ts-ignore': 'off',
-    '@typescript-eslint/ban-types': 'off',
-    'react/react-in-jsx-scope': 'off',
-    'react/display-name': 'off',
-    'react/prop-types': 'off',
-  },
 };
