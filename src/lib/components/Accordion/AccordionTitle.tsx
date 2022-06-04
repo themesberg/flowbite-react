@@ -25,7 +25,9 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({ as: Heading = 'h2', ch
       type="button"
       {...theirProps}
     >
-      <Heading data-testid="flowbite-accordion-heading">{children}</Heading>
+      <Heading className={theme.heading} data-testid="flowbite-accordion-heading">
+        {children}
+      </Heading>
       {ArrowIcon && (
         <ArrowIcon
           aria-hidden
