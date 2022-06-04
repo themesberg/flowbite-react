@@ -1,4 +1,4 @@
-import { ComponentProps, FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { useToastContext } from './ToastContext';
 import { HiX } from 'react-icons/hi';
 

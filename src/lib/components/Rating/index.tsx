@@ -1,7 +1,8 @@
-import { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { RatingAdvanced } from './RatingAdvanced';
-import { RatingContext, Size } from './RatingContext';
+import type { Size } from './RatingContext';
+import { RatingContext } from './RatingContext';
 import { RatingStar } from './RatingStar';
 
 export type RatingProps = PropsWithChildren<{

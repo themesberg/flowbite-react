@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import classNames from 'classnames';
 
-import { TextInput, TextInputProps } from './TextInput';
+import type { TextInputProps } from './TextInput';
+import { TextInput } from './TextInput';
 
 export type FileInputProps = Omit<TextInputProps, 'type'>;
 

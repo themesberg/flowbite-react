@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { TimelineItem } from './TimelineItem';
 import { TimelineContext } from './TimelineContext';

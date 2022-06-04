@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { FC, HTMLAttributes, PropsWithChildren } from 'react';
+import type { FC, HTMLAttributes, PropsWithChildren } from 'react';
 import { SidebarItemContext } from './SidebarItemContext';
 
 const SidebarItemGroup: FC<PropsWithChildren<HTMLAttributes<HTMLUListElement>>> = ({ children, ...rest }) => {

@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
 import { ListGroupItem } from './ListGroupItem';

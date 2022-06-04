@@ -1,4 +1,4 @@
-import { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
 import { DropdownDivider } from './DropdownDivider';
 

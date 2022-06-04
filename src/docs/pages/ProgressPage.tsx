@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
 import { Progress } from '../../lib';
-import { CodeExample, DemoPage } from './DemoPage';
+import type { CodeExample } from './DemoPage';
+import { DemoPage } from './DemoPage';
 
 const ProgressPage: FC = () => {
   const examples: CodeExample[] = [

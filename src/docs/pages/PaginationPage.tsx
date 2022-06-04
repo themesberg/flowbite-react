@@ -1,7 +1,9 @@
-import { FC, useState } from 'react';
+import type { FC } from 'react';
+import { useState } from 'react';
 import { Pagination } from '../../lib/components/Pagination';
 
-import { CodeExample, DemoPage } from './DemoPage';
+import type { CodeExample } from './DemoPage';
+import { DemoPage } from './DemoPage';
 
 const PaginationPage: FC = (): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(1);

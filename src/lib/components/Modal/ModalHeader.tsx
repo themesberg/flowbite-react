@@ -1,4 +1,4 @@
-import { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { HiOutlineX } from 'react-icons/hi';
 

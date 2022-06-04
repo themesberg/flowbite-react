@@ -1,8 +1,8 @@
-import { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
+import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import classNames from 'classnames';
 import { HiX } from 'react-icons/hi';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 
 export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
   additionalContent?: ReactNode;

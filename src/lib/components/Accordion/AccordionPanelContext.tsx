@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { AccordionPanelProps } from './AccordionPanel';
+import type { AccordionPanelProps } from './AccordionPanel';
 
 type AccordionPanelContext = Omit<AccordionPanelProps, 'children'>;
 

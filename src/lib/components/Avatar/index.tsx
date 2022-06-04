@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
-import { FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import type { FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import AvatarGroup from './AvatarGroup';
 import AvatarGroupCounter from './AvatarGroupCounter';

@@ -1,7 +1,9 @@
-import { FC, useState } from 'react';
+import type { FC } from 'react';
+import { useState } from 'react';
 import { HiMail } from 'react-icons/hi';
 
-import { CodeExample, DemoPage } from './DemoPage';
+import type { CodeExample } from './DemoPage';
+import { DemoPage } from './DemoPage';
 import { Button, Checkbox, FileInput, Label, Radio, Select, Textarea, TextInput, ToggleSwitch } from '../../lib';
 
 const FormsPage: FC = () => {

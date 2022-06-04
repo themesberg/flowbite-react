@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 
 export type CopyrightProps = PropsWithChildren<{
   href?: string;

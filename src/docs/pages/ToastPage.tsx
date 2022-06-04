@@ -1,9 +1,10 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { HiFire, HiCheck, HiExclamation, HiX } from 'react-icons/hi';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { MdLoop } from 'react-icons/md';
 
-import { CodeExample, DemoPage } from './DemoPage';
+import type { CodeExample } from './DemoPage';
+import { DemoPage } from './DemoPage';
 import { Button, Toast } from '../../lib';
 
 const ToastPage: FC = () => {

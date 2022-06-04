@@ -1,5 +1,6 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { Timeline, TimelineProps } from '.';
+import type { Meta, Story } from '@storybook/react/types-6-0';
+import type { TimelineProps } from '.';
+import { Timeline } from '.';
 
 export default {
   title: 'Components/Timeline',

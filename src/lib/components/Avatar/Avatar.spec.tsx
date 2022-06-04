@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { Avatar } from '.';
 import { Flowbite } from '../Flowbite';
-import { CustomFlowbiteTheme } from '../Flowbite/FlowbiteTheme';
+import type { CustomFlowbiteTheme } from '../Flowbite/FlowbiteTheme';
 import AvatarGroup from './AvatarGroup';
 
 describe('Components / Avatar', () => {

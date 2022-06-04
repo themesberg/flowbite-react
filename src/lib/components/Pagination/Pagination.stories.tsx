@@ -1,6 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 import { useEffect, useState } from 'react';
-import { Pagination, PaginationProps } from '.';
+import type { PaginationProps } from '.';
+import { Pagination } from '.';
 
 export default {
   title: 'Components/Pagination',

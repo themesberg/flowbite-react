@@ -1,6 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 
-import { Tooltip, TooltipProps } from '.';
+import type { TooltipProps } from '.';
+import { Tooltip } from '.';
 import { Button } from '../Button';
 
 export default {

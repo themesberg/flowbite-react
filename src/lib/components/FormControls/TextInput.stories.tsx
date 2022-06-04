@@ -1,6 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 
-import { TextInput, TextInputProps } from './TextInput';
+import type { TextInputProps } from './TextInput';
+import { TextInput } from './TextInput';
 
 export default {
   title: 'Components/FormControls',

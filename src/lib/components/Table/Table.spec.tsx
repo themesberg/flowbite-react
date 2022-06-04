@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { cleanup, render } from '@testing-library/react';
 
-import { Table, TableProps } from '.';
+import type { TableProps } from '.';
+import { Table } from '.';
 
 const TestComponent: FC<TableProps> = (props) => (
   <Table {...props}>

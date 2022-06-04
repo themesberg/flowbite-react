@@ -1,5 +1,6 @@
-import { FC, ReactNode } from 'react';
-import reactElementToJSXString, { Options } from 'react-element-to-jsx-string';
+import type { FC, ReactNode } from 'react';
+import type { Options } from 'react-element-to-jsx-string';
+import reactElementToJSXString from 'react-element-to-jsx-string';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';

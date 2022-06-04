@@ -1,4 +1,4 @@
-import { ComponentProps, FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 

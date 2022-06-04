@@ -1,6 +1,8 @@
-import { PropsWithChildren, FC, useState } from 'react';
+import type { PropsWithChildren, FC } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
-import { Duration, ToastContext } from './ToastContext';
+import type { Duration } from './ToastContext';
+import { ToastContext } from './ToastContext';
 import { ToastToggle } from './ToastToggle';
 
 export type ToastProps = PropsWithChildren<{

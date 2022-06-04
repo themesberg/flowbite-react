@@ -1,4 +1,4 @@
-import { ComponentProps, FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import classNames from 'classnames';
 import { useRatingContext } from './RatingContext';
 import { HiStar } from 'react-icons/hi';

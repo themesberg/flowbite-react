@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { FooterBrand } from './FooterBrand';
 import { FooterCopyright } from './FooterCopyright';
 import { FooterLink } from './FooterLink';

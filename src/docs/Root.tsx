@@ -1,4 +1,5 @@
-import { FC, Suspense, useRef, useState } from 'react';
+import type { FC } from 'react';
+import { Suspense, useRef, useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1 } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';

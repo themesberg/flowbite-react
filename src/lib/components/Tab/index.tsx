@@ -1,18 +1,9 @@
-import {
-  Children,
-  ComponentProps,
-  FC,
-  KeyboardEvent,
-  PropsWithChildren,
-  ReactElement,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import type { ComponentProps, FC, KeyboardEvent, PropsWithChildren, ReactElement } from 'react';
+import { Children, useEffect, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 
-import { TabItem, TabProps } from './TabItem';
+import type { TabProps } from './TabItem';
+import { TabItem } from './TabItem';
 import * as nanoid from 'nanoid';
 
 export type TabStyle = 'default' | 'underline' | 'pills' | 'fullWidth';

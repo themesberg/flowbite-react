@@ -1,8 +1,9 @@
 import classNames from 'classnames';
 import * as nanoid from 'nanoid';
-import { ComponentProps, ElementType, FC, PropsWithChildren, useMemo } from 'react';
+import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
+import { useMemo } from 'react';
 import { Badge } from '../Badge';
-import { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
 import { useSidebarItemContext } from './SidebarItemContext';

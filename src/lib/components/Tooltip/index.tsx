@@ -1,10 +1,12 @@
-import { FC, PropsWithChildren, ReactNode, RefObject, useEffect, useRef, useState } from 'react';
+import type { FC, PropsWithChildren, ReactNode, RefObject } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { arrow, autoPlacement, Placement, shift } from '@floating-ui/core';
+import type { Placement } from '@floating-ui/core';
+import { arrow, autoPlacement, shift } from '@floating-ui/core';
+import type { Middleware } from '@floating-ui/react-dom-interactions';
 import {
   autoUpdate,
   flip,
-  Middleware,
   offset,
   useClick,
   useFloating,

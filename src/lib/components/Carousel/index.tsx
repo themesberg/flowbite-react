@@ -1,17 +1,5 @@
-import {
-  Children,
-  cloneElement,
-  ComponentProps,
-  FC,
-  PropsWithChildren,
-  ReactElement,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
+import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';

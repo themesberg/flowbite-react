@@ -1,9 +1,10 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 import { Avatar } from '../Avatar';
 import { Button } from '../Button';
 import { Dropdown } from '../Dropdown';
 
-import { Navbar, NavbarComponentProps } from '../Navbar';
+import type { NavbarComponentProps } from '../Navbar';
+import { Navbar } from '../Navbar';
 
 export default {
   title: 'Components/Navbar',

@@ -1,4 +1,4 @@
-import { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
+import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 
 export type TabProps = PropsWithChildren<{
   title: ReactNode;

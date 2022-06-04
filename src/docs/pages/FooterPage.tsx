@@ -1,5 +1,6 @@
-import { FC } from 'react';
-import { CodeExample, DemoPage } from './DemoPage';
+import type { FC } from 'react';
+import type { CodeExample } from './DemoPage';
+import { DemoPage } from './DemoPage';
 import { Footer } from '../../lib/components/Footer';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 

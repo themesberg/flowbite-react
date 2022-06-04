@@ -1,6 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 
-import { Textarea, TextareaProps } from './Textarea';
+import type { TextareaProps } from './Textarea';
+import { Textarea } from './Textarea';
 
 export default {
   title: 'Components/FormControls',

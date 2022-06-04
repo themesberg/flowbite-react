@@ -1,7 +1,8 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 import { HiFire } from 'react-icons/hi';
 
-import { Toast, ToastProps } from '.';
+import type { ToastProps } from '.';
+import { Toast } from '.';
 
 export default {
   title: 'Components/Toast',

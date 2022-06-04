@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import range from '../../helpers/range';
 

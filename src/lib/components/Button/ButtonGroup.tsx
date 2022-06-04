@@ -1,6 +1,7 @@
-import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useMemo } from 'react';
+import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
+import { Children, cloneElement, useMemo } from 'react';
 
-import { ButtonComponentProps } from '.';
+import type { ButtonComponentProps } from '.';
 import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 

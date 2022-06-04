@@ -1,4 +1,4 @@
-import { ComponentProps, FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 
 export const NavbarBrand: FC<ComponentProps<'a'>> = ({ children, href }) => (
   <a href={href} className="flex items-center">

@@ -1,6 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 
-import { Select, SelectProps } from './Select';
+import type { SelectProps } from './Select';
+import { Select } from './Select';
 
 export default {
   title: 'Components/FormControls',
