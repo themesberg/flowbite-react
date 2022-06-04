@@ -174,7 +174,7 @@ module.exports = {
   <tr>
     <td width="33.3333%">Navbar</td>
     <td width="33.3333%">Pagination</td>
-    <td width="33.3333%">:construction: Timeline</td>
+    <td width="33.3333%">Timeline</td>
   </tr>
   <tr>
     <td width="33.3333%">
@@ -188,7 +188,7 @@ module.exports = {
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite.com/docs/components/timeline/">
+        <a href="https://flowbite-react.com/timeline/">
             <img alt="Tailwind CSS Timeline" src="https://flowbite.s3.amazonaws.com/github/timeline.jpg">
         </a>
     </td>
