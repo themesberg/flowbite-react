@@ -1,7 +1,8 @@
 import { render, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
-import { Modal, ModalProps } from '.';
+import type { ModalProps } from '.';
+import { Modal } from '.';
 import { Button } from '../Button';
 
 describe('Components / Modal', () => {

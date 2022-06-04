@@ -1,4 +1,5 @@
-import { ComponentProps, FC, KeyboardEvent, MouseEvent, useMemo } from 'react';
+import type { ComponentProps, FC, KeyboardEvent, MouseEvent } from 'react';
+import { useMemo } from 'react';
 import classNames from 'classnames';
 import * as nanoid from 'nanoid';
 

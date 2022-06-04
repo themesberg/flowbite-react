@@ -1,9 +1,9 @@
-import { ComponentProps, FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import classNames from 'classnames';
 import { useAccordionContext } from './AccordionPanelContext';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { excludeClassName } from '../../helpers/exclude';
-import { FlowbiteHeadingLevel } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteHeadingLevel } from '../Flowbite/FlowbiteTheme';
 
 export interface AccordionTitleProps extends ComponentProps<'button'> {
   arrowIcon?: FC<ComponentProps<'svg'>>;

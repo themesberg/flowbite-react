@@ -1,4 +1,4 @@
-import { ComponentProps, FC, ReactNode } from 'react';
+import type { ComponentProps, FC, ReactNode } from 'react';
 import classNames from 'classnames';
 
 type Size = 'sm' | 'md' | 'lg';

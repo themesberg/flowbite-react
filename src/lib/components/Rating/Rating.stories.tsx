@@ -1,6 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 
-import { Rating, RatingProps } from '.';
+import type { RatingProps } from '.';
+import { Rating } from '.';
 
 export default {
   title: 'Components/Rating',

@@ -1,4 +1,5 @@
-import { render, RenderResult } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { Spinner } from '.';
 import { Flowbite } from '../Flowbite';
 

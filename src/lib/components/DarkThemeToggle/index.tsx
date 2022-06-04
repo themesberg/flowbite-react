@@ -1,4 +1,5 @@
-import { FC, useContext } from 'react';
+import type { FC } from 'react';
+import { useContext } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { ThemeContext } from '../Flowbite/ThemeContext';
 

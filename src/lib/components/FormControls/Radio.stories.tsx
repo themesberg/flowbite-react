@@ -1,6 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 
-import { Radio, RadioProps } from './Radio';
+import type { RadioProps } from './Radio';
+import { Radio } from './Radio';
 
 export default {
   title: 'Components/FormControls',

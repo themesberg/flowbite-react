@@ -1,4 +1,5 @@
-import { FC, PropsWithChildren, useEffect, useState } from 'react';
+import type { FC, PropsWithChildren } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 
@@ -8,19 +9,19 @@ import { ModalFooter } from './ModalFooter';
 import { ModalContext } from './ModalContext';
 import windowExists from '../../helpers/window-exists';
 
-type Size = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
-type Placement = `${'top' | 'bottom'}-${'left' | 'center' | 'right'}` | `center${'' | '-left' | '-right'}`;
+export type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
+export type ModalPlacement = `${'top' | 'bottom'}-${'left' | 'center' | 'right'}` | `center${'' | '-left' | '-right'}`;
 
 export type ModalProps = PropsWithChildren<{
   onClose?: () => void;
-  placement?: Placement;
+  placement?: ModalPlacement;
   popup?: boolean;
   root?: HTMLElement;
   show?: boolean;
-  size?: Size;
+  size?: ModalSize;
 }>;
 
-const sizeClasses: Record<Size, string> = {
+const sizeClasses: Record<ModalSize, string> = {
   sm: 'max-w-sm',
   md: 'max-w-md',
   lg: 'max-w-lg',
@@ -33,7 +34,7 @@ const sizeClasses: Record<Size, string> = {
   '7xl': 'max-w-7xl',
 };
 
-const placementClasses: Record<Placement, string> = {
+const placementClasses: Record<ModalPlacement, string> = {
   'top-left': 'items-start justify-start',
   'top-center': 'items-start justify-center',
   'top-right': 'items-start justify-end',

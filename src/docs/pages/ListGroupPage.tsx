@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
 
 import { ListGroup } from '../../lib';
-import { CodeExample, DemoPage } from './DemoPage';
+import type { CodeExample } from './DemoPage';
+import { DemoPage } from './DemoPage';
 
 const ListGroupPage: FC = () => {
   const examples: CodeExample[] = [

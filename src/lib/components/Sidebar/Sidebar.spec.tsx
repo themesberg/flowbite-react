@@ -1,7 +1,9 @@
-import { render, RenderResult, waitFor } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { HiChartPie, HiInbox, HiShoppingBag } from 'react-icons/hi';
-import { Sidebar, SidebarProps } from '.';
+import type { SidebarProps } from '.';
+import { Sidebar } from '.';
 
 describe('Components / Sidebar', () => {
   describe('A11y', () => {

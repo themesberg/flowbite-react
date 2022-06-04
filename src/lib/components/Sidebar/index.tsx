@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes, PropsWithChildren } from 'react';
+import type { FC, HTMLAttributes, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import SidebarCTA from './SidebarCTA';
 import SidebarLogo from './SidebarLogo';

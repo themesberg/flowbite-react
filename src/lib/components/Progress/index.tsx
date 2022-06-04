@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import * as nanoid from 'nanoid';
-import { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 
 type Color = 'dark' | 'blue' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple';
 type Size = 'sm' | 'md' | 'lg' | 'xl';

@@ -1,6 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 
-import { Progress, ProgressProps } from '.';
+import type { ProgressProps } from '.';
+import { Progress } from '.';
 
 export default {
   title: 'Components/Progress',

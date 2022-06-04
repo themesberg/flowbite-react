@@ -1,4 +1,4 @@
-import { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 
 export type TableHeadCellProps = PropsWithChildren<ComponentProps<'th'>>;

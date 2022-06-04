@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { FC, ReactNode, createContext, useContext, useState, useEffect } from 'react';
+import type { FC, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';
-import { FlowbiteTheme } from './FlowbiteTheme';
+import type { FlowbiteTheme } from './FlowbiteTheme';
 
 export type Mode = string | undefined | 'light' | 'dark';
 
@@ -18,7 +19,7 @@ export const ThemeContext = createContext<ThemeContextProps>({
 
 interface ThemeProviderProps {
   children: ReactNode;
-  value?: any;
+  value: ThemeContextProps;
 }
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children, value }) => {

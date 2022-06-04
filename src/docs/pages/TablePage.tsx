@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 
-import { CodeExample, DemoPage } from './DemoPage';
+import type { CodeExample } from './DemoPage';
+import { DemoPage } from './DemoPage';
 import { Checkbox, Table } from '../../lib';
 
 const TablePage: FC = () => {

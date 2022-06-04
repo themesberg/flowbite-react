@@ -1,5 +1,6 @@
-import { FC } from 'react';
-import { CodeExample, DemoPage } from './DemoPage';
+import type { FC } from 'react';
+import type { CodeExample } from './DemoPage';
+import { DemoPage } from './DemoPage';
 import { Timeline, Button } from '../../lib';
 import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
 

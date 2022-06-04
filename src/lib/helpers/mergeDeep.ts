@@ -5,7 +5,7 @@
  * @param item
  * @returns {boolean}
  */
-export function isObject(item: any) {
+export function isObject(item: unknown) {
   return item && typeof item === 'object' && !Array.isArray(item);
 }
 
@@ -14,7 +14,10 @@ export function isObject(item: any) {
  * @param target
  * @param ...sources
  */
-export function mergeDeep(target: any, ...sources: any[]): any {
+export function mergeDeep(
+  target: Record<string, unknown>,
+  ...sources: Record<string, unknown>[]
+): Record<string, unknown> {
   if (!sources.length) return target;
   const source = sources.shift();
 
@@ -22,7 +25,7 @@ export function mergeDeep(target: any, ...sources: any[]): any {
     for (const key in source) {
       if (isObject(source[key])) {
         if (!target[key]) Object.assign(target, { [key]: {} });
-        mergeDeep(target[key], source[key]);
+        mergeDeep(target[key] as Record<string, unknown>, source[key] as Record<string, unknown>);
       } else {
         Object.assign(target, { [key]: source[key] });
       }

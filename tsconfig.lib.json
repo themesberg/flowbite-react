@@ -1,22 +1,13 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "lib/cjs",
     "module": "CommonJS",
-    "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "jsx": "react-jsx",
-    "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "esModuleInterop": true,
-    "noImplicitThis": true,
     "noImplicitAny": true,
-    "skipLibCheck": true,
-    "strictNullChecks": true,
-    "resolveJsonModule": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "allowSyntheticDefaultImports": true
+    "noImplicitThis": true,
+    "outDir": "lib/cjs"
   },
-  "include": ["src/lib"],
-  "exclude": ["**/**.spec.tsx", "**/**.stories.tsx"]
+  "exclude": ["**/*.spec.tsx", "**/*.stories.tsx"],
+  "include": ["src/lib"]
 }

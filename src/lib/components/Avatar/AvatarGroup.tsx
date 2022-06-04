@@ -1,4 +1,5 @@
-import React, { PropsWithChildren, ReactNode } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
+import React from 'react';
 
 export type AvatarGroupProps = PropsWithChildren<{
   children: ReactNode;

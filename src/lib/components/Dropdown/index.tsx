@@ -1,9 +1,12 @@
-import { ComponentProps, FC, PropsWithChildren, ReactNode, useMemo } from 'react';
+import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
+import { useMemo } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import classNames from 'classnames';
 
-import { Button, ButtonComponentProps } from '../Button';
-import { Tooltip, TooltipProps } from '../Tooltip';
+import type { ButtonComponentProps } from '../Button';
+import { Button } from '../Button';
+import type { TooltipProps } from '../Tooltip';
+import { Tooltip } from '../Tooltip';
 import { DropdownItem } from './DropdownItem';
 import { DropdownDivider } from './DropdownDivider';
 import { DropdownHeader } from './DropdownHeader';
@@ -35,7 +38,7 @@ const DropdownComponent: FC<DropdownProps> = (props) => {
   }, [placement]);
   const content = useMemo(() => <ul className="py-1">{children}</ul>, [children]);
 
-  const TriggerWrapper = ({ children }: PropsWithChildren<any>) =>
+  const TriggerWrapper: FC<PropsWithChildren<ComponentProps<'button'>>> = ({ children }): JSX.Element =>
     inline ? <button className="flex items-center">{children}</button> : <Button {...buttonProps}>{children}</Button>;
 
   return (

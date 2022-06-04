@@ -1,7 +1,8 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
 
-import { Dropdown, DropdownProps } from '.';
+import type { DropdownProps } from '.';
+import { Dropdown } from '.';
 
 export default {
   title: 'Components/Dropdown',

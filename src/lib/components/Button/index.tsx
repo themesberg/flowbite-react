@@ -1,7 +1,8 @@
-import { ComponentProps, FC, ReactNode } from 'react';
+import type { ComponentProps, FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import ButtonGroup, { PositionInButtonGroup } from './ButtonGroup';
-import {
+import type { PositionInButtonGroup } from './ButtonGroup';
+import ButtonGroup from './ButtonGroup';
+import type {
   FlowbiteColors,
   FlowbiteGradientColors,
   FlowbiteGradientDuoToneColors,

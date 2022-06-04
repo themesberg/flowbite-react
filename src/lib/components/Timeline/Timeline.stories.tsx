@@ -1,5 +1,6 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { Timeline, TimelineProps } from '.';
+import type { Meta, Story } from '@storybook/react/types-6-0';
+import type { TimelineProps } from '.';
+import { Timeline } from '.';
 
 export default {
   title: 'Components/Timeline',
@@ -8,9 +9,8 @@ export default {
 
 const Template: Story<TimelineProps> = (args) => <Timeline {...args} />;
 
-export const DefaultTimeline = Template.bind({});
-DefaultTimeline.storyName = 'Default Timeline';
-DefaultTimeline.args = {
+export const Default = Template.bind({});
+Default.args = {
   children: (
     <>
       <Timeline.Item>

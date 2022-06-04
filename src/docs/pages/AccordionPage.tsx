@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 
 import { Accordion } from '../../lib';
-import { CodeExample, DemoPage } from './DemoPage';
+import type { CodeExample } from './DemoPage';
+import { DemoPage } from './DemoPage';
 
 const AccordionPage: FC = () => {
   const examples: CodeExample[] = [

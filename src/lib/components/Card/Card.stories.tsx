@@ -1,6 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 
-import { Card, CardProps } from '.';
+import type { CardProps } from '.';
+import { Card } from '.';
 
 export default {
   title: 'Components/Card',

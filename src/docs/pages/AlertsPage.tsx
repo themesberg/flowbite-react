@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
 
 import { Alert } from '../../lib';
-import { CodeExample, DemoPage } from './DemoPage';
+import type { CodeExample } from './DemoPage';
+import { DemoPage } from './DemoPage';
 
 const AlertsPage: FC = () => {
   const alertText = (

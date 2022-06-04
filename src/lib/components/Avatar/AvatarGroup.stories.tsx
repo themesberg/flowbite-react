@@ -1,6 +1,6 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 import { Avatar } from '.';
-import { AvatarGroupProps } from './AvatarGroup';
+import type { AvatarGroupProps } from './AvatarGroup';
 
 export default {
   title: 'Components/Avatar',

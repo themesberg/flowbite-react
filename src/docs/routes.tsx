@@ -1,4 +1,4 @@
-import { ComponentProps, FC, ReactNode } from 'react';
+import type { ComponentProps, FC, ReactNode } from 'react';
 
 import { BiNotification } from 'react-icons/bi';
 import { BsCreditCard2FrontFill, BsImages } from 'react-icons/bs';

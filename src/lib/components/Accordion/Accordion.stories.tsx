@@ -1,9 +1,10 @@
-import { ComponentProps, FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 import { HiChevronDown, HiOutlineArrowCircleDown } from 'react-icons/hi';
 
-import { Accordion, AccordionProps } from '.';
+import type { AccordionProps } from '.';
+import { Accordion } from '.';
 
 export default {
   title: 'Components/Accordion',

@@ -1,5 +1,7 @@
-import { Children, cloneElement, ComponentProps, FC, PropsWithChildren, ReactElement, useMemo, useState } from 'react';
-import { AccordionPanel, AccordionPanelProps } from './AccordionPanel';
+import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
+import { Children, cloneElement, useMemo, useState } from 'react';
+import type { AccordionPanelProps } from './AccordionPanel';
+import { AccordionPanel } from './AccordionPanel';
 import { AccordionTitle } from './AccordionTitle';
 import { AccordionContent } from './AccordionContent';
 import classNames from 'classnames';

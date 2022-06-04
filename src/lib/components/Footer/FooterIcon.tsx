@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, ComponentProps } from 'react';
+import type { FC, PropsWithChildren, ComponentProps } from 'react';
 import classNames from 'classnames';
 
 export type FooterIconProps = PropsWithChildren<{

@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { HiInformationCircle } from 'react-icons/hi';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Alert, Card, DarkThemeToggle } from '../../lib';
 import { Flowbite } from '../../lib/components';
-import { CustomFlowbiteTheme } from '../../lib/components/Flowbite/FlowbiteTheme';
+import type { CustomFlowbiteTheme } from '../../lib/components/Flowbite/FlowbiteTheme';
 
 const ThemePage: FC = () => {
   const theme: CustomFlowbiteTheme = { alert: { color: { primary: 'bg-primary' } } };

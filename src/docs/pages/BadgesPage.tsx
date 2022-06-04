@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { HiCheck, HiClock } from 'react-icons/hi';
 
 import { Badge } from '../../lib';
-import { CodeExample, DemoPage } from './DemoPage';
+import type { CodeExample } from './DemoPage';
+import { DemoPage } from './DemoPage';
 
 const BadgesPage: FC = () => {
   const examples: CodeExample[] = [

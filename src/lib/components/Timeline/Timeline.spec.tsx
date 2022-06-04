@@ -1,7 +1,8 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { cleanup, render } from '@testing-library/react';
 
-import { Timeline, TimelineProps } from '.';
+import type { TimelineProps } from '.';
+import { Timeline } from '.';
 
 describe('Timeline Component', () => {
   afterEach(cleanup);

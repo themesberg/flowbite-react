@@ -1,10 +1,13 @@
-import { FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { HiOutlineX } from 'react-icons/hi';
 
 import { useModalContext } from './ModalContext';
+import { excludeClassName } from '../../helpers/exclude';
 
-export const ModalHeader: FC<PropsWithChildren<any>> = ({ children }) => {
+export const ModalHeader: FC<PropsWithChildren<ComponentProps<'div'>>> = ({ children, ...props }): JSX.Element => {
+  const theirProps = excludeClassName(props);
+
   const { popup, onClose } = useModalContext();
 
   return (
@@ -13,6 +16,7 @@ export const ModalHeader: FC<PropsWithChildren<any>> = ({ children }) => {
         'p-2': popup,
         'border-b p-5': !popup,
       })}
+      {...theirProps}
     >
       <h3 className="text-xl font-medium text-gray-900 dark:text-white">{children}</h3>
       <button

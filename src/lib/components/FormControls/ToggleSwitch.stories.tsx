@@ -1,6 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 
-import { ToggleSwitch, ToggleSwitchProps } from './ToggleSwitch';
+import type { ToggleSwitchProps } from './ToggleSwitch';
+import { ToggleSwitch } from './ToggleSwitch';
 
 export default {
   title: 'Components/FormControls',

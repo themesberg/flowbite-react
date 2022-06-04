@@ -1,8 +1,10 @@
-import { render, RenderResult, waitFor } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 
-import { Accordion, AccordionProps } from '.';
+import type { AccordionProps } from '.';
+import { Accordion } from '.';
 import { Flowbite } from '../Flowbite';
 
 describe('Components / Accordion', () => {

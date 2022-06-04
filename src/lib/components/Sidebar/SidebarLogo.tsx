@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as nanoid from 'nanoid';
-import { PropsWithChildren, FC, HTMLAttributes, useMemo } from 'react';
+import type { PropsWithChildren, FC, HTMLAttributes } from 'react';
+import { useMemo } from 'react';
 import { useSidebarContext } from './SidebarContext';
 
 export interface SidebarLogoProps extends PropsWithChildren<HTMLAttributes<HTMLAnchorElement>> {
