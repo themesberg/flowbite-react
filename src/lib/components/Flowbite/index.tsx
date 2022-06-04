@@ -18,10 +18,10 @@ interface FlowbiteProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
-  const { theme: customTheme, dark, usePreferences = true } = theme;
+  const { theme: customTheme = {}, dark, usePreferences = true } = theme;
   const [mode, setMode, toggleMode] = useThemeMode(usePreferences);
 
-  const mergedTheme = mergeDeep(defaultTheme, customTheme);
+  const mergedTheme = mergeDeep(defaultTheme, customTheme) as unknown as FlowbiteTheme;
 
   useLayoutEffect(() => {
     if (dark) {

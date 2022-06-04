@@ -18,7 +18,7 @@ export const ThemeContext = createContext<ThemeContextProps>({
 
 interface ThemeProviderProps {
   children: ReactNode;
-  value?: any;
+  value: ThemeContextProps;
 }
 
 export const ThemeProvider: FC<ThemeProviderProps> = ({ children, value }) => {

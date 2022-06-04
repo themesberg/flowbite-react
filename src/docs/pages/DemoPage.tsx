@@ -22,8 +22,6 @@ export type DemoPageProps = {
 };
 
 export const DemoPage: FC<DemoPageProps> = ({ examples }) => {
-  const SyntaxHighlighterFix = SyntaxHighlighter as any;
-
   return (
     <div className="mx-auto flex max-w-4xl flex-col gap-8 dark:text-white">
       {examples.map(({ title, content, code, showCode = true, codeClassName, codeStringifierOptions }, index) => (
@@ -33,7 +31,7 @@ export const DemoPage: FC<DemoPageProps> = ({ examples }) => {
           <div className={codeClassName}>
             <Card>
               {showCode && code}
-              <SyntaxHighlighterFix language="tsx" style={dracula}>
+              <SyntaxHighlighter language="tsx" style={dracula}>
                 {reactElementToJSXString(code, {
                   showFunctions: true,
                   functionValue: (fn) => fn.name,
@@ -42,7 +40,7 @@ export const DemoPage: FC<DemoPageProps> = ({ examples }) => {
                   useFragmentShortSyntax: false,
                   ...codeStringifierOptions,
                 })}
-              </SyntaxHighlighterFix>
+              </SyntaxHighlighter>
             </Card>
           </div>
         </div>

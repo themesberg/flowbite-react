@@ -2,7 +2,7 @@ import { FC, useState } from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 import { CodeExample, DemoPage } from './DemoPage';
-import { Button, Checkbox, Label, Modal, Select, TextInput } from '../../lib';
+import { Button, Checkbox, Label, Modal, Select, ModalSize, TextInput, ModalPlacement } from '../../lib';
 
 const ModalPage: FC = () => {
   const [openModal, setOpenModal] = useState<string | undefined>();
@@ -129,7 +129,7 @@ const ModalPage: FC = () => {
             </Select>
             <Button onClick={() => setOpenModal('size')}>Toggle modal</Button>
           </div>
-          <Modal show={openModal === 'size'} size={modalSize as any} onClose={() => setOpenModal(undefined)}>
+          <Modal show={openModal === 'size'} size={modalSize as ModalSize} onClose={() => setOpenModal(undefined)}>
             <Modal.Header>Small modal</Modal.Header>
             <Modal.Body className="space-y-6 p-6">
               <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
@@ -172,7 +172,7 @@ const ModalPage: FC = () => {
           </div>
           <Modal
             show={openModal === 'placement'}
-            placement={modalPlacement as any}
+            placement={modalPlacement as ModalPlacement}
             onClose={() => setOpenModal(undefined)}
           >
             <Modal.Header>Small modal</Modal.Header>

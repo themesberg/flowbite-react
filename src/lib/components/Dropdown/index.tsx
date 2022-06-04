@@ -35,7 +35,7 @@ const DropdownComponent: FC<DropdownProps> = (props) => {
   }, [placement]);
   const content = useMemo(() => <ul className="py-1">{children}</ul>, [children]);
 
-  const TriggerWrapper = ({ children }: PropsWithChildren<any>) =>
+  const TriggerWrapper: FC<PropsWithChildren<ComponentProps<'button'>>> = ({ children }): JSX.Element =>
     inline ? <button className="flex items-center">{children}</button> : <Button {...buttonProps}>{children}</Button>;
 
   return (
