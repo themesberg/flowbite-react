@@ -23,6 +23,7 @@ export interface FlowbiteTheme {
       };
       base: string;
       flush: FlowbiteBoolean;
+      heading: string;
       open: FlowbiteBoolean;
     };
   };

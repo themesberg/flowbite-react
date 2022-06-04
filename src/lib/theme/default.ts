@@ -21,6 +21,7 @@ export default {
         off: 'hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-800',
         on: '!bg-transparent dark:!bg-transparent',
       },
+      heading: '',
       open: {
         off: '',
         on: 'text-gray-900 bg-gray-100 dark:bg-gray-800 dark:text-white',
