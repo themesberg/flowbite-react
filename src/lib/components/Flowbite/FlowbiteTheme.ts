@@ -142,6 +142,10 @@ export interface FlowbiteTheme {
       snap: string;
     };
   };
+  darkthemetoggle: {
+    base: string;
+    icon: string;
+  };
   rating: {
     base: string;
     star: {
