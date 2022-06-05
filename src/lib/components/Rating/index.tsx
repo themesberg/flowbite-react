@@ -1,19 +1,28 @@
-import type { FC, PropsWithChildren } from 'react';
-import classNames from 'classnames';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { RatingAdvanced } from './RatingAdvanced';
-import type { Size } from './RatingContext';
 import { RatingContext } from './RatingContext';
 import { RatingStar } from './RatingStar';
+import { useTheme } from '../Flowbite/ThemeContext';
+import type { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import { excludeClassName } from '../../helpers/exclude';
 
-export type RatingProps = PropsWithChildren<{
-  className?: string;
-  size?: Size;
-}>;
+export interface StarSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
+  [key: string]: string;
+}
 
-const RatingComponent: FC<RatingProps> = ({ children, className, size = 'sm' }) => {
+export interface RatingProps extends PropsWithChildren<ComponentProps<'div'>> {
+  size?: keyof StarSizes;
+}
+
+const RatingComponent: FC<RatingProps> = ({ children, size = 'sm', ...props }) => {
+  const theme = useTheme().theme.rating;
+  const theirProps = excludeClassName(props);
+
   return (
     <RatingContext.Provider value={{ size }}>
-      <div className={classNames('flex items-center', className)}>{children}</div>
+      <div className={theme.base} {...theirProps}>
+        {children}
+      </div>
     </RatingContext.Provider>
   );
 };

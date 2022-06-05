@@ -2,28 +2,18 @@ import type { ComponentProps, FC } from 'react';
 import classNames from 'classnames';
 import { useRatingContext } from './RatingContext';
 import { HiStar } from 'react-icons/hi';
+import { useTheme } from '../Flowbite/ThemeContext';
 
-export type RatingStarProps = {
+export interface RatingStarProps {
   filled?: boolean;
   starIcon?: FC<ComponentProps<'svg'>>;
-};
+}
 
-const sizeClasses = {
-  sm: 'w-5 h-5',
-  md: 'w-7 h-7',
-  lg: 'w-10 h-10',
-};
-
-export const RatingStar: FC<RatingStarProps> = ({ filled = true, starIcon: StarIcon = HiStar }) => {
+export const RatingStar: FC<RatingStarProps> = ({ filled = true, starIcon: Icon = HiStar }) => {
   const { size = 'sm' } = useRatingContext();
+  const theme = useTheme().theme.rating.star;
 
   return (
-    <StarIcon
-      className={classNames(sizeClasses[size], {
-        'text-yellow-400': filled,
-        'text-gray-300 dark:text-gray-500': !filled,
-      })}
-      data-testid="rating-star"
-    />
+    <Icon className={classNames(theme.sizes[size], theme[filled ? 'filled' : 'empty'])} data-testid="rating-star" />
   );
 };
