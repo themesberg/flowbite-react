@@ -97,8 +97,8 @@ export const Tooltip: FC<TooltipProps> = ({
           ref: floating,
           style: {
             position: strategy,
-            top: y ?? '',
-            left: x ?? '',
+            top: y ?? ' ',
+            left: x ?? ' ',
           },
           ...rest,
         })}
@@ -114,10 +114,10 @@ export const Tooltip: FC<TooltipProps> = ({
             data-testid="tooltip-arrow"
             ref={arrowRef}
             style={{
-              top: arrowY ?? '',
-              left: arrowX ?? '',
-              right: '',
-              bottom: '',
+              top: arrowY ?? ' ',
+              left: arrowX ?? ' ',
+              right: ' ',
+              bottom: ' ',
               [floatingArrowPlacement({ placement: floatingTooltip.placement })]: '-4px',
             }}
           >
