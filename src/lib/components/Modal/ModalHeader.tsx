@@ -20,8 +20,8 @@ export const ModalHeader: FC<ModalHeaderProps> = ({ children, ...props }): JSX.E
       {...theirProps}
     >
       <h3 className={theme.title}>{children}</h3>
-      <button className={theme.close.base} type="button" onClick={onClose}>
-        <HiOutlineX className={theme.close.icon} />
+      <button aria-label="Close" className={theme.close.base} type="button" onClick={onClose}>
+        <HiOutlineX aria-hidden className={theme.close.icon} />
       </button>
     </div>
   );

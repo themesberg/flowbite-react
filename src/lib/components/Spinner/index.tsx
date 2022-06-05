@@ -15,7 +15,7 @@ export interface SpinnerColors
   [key: string]: string;
 }
 
-export interface SpinnerSizes extends FlowbiteSizes {
+export interface SpinnerSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> {
   [key: string]: string;
 }
 

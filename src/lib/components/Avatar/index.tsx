@@ -17,7 +17,7 @@ export interface AvatarProps extends PropsWithChildren<ComponentProps<'div'>> {
   statusPosition?: keyof FlowbitePositions;
 }
 
-export interface AvatarSizes extends FlowbiteSizes {
+export interface AvatarSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> {
   [key: string]: string;
 }
 
