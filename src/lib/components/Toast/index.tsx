@@ -1,4 +1,4 @@
-import type { PropsWithChildren, FC } from 'react';
+import type { PropsWithChildren, FC, ComponentProps } from 'react';
 import { useState } from 'react';
 import classNames from 'classnames';
 import type { Duration } from './ToastContext';
@@ -6,10 +6,9 @@ import { ToastContext } from './ToastContext';
 import { ToastToggle } from './ToastToggle';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export type ToastProps = PropsWithChildren<{
-  className?: string;
+export interface ToastProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
   duration?: Duration;
-}>;
+}
 
 const durationClasses: Record<Duration, string> = {
   75: 'duration-75',
@@ -35,8 +34,8 @@ const ToastComponent: FC<ToastProps> = ({ children, duration = 300 }) => {
         className={classNames(
           theme.base,
           durationClasses[duration],
-          { [`${theme.closed}`]: isClosed },
-          { [`${theme.removed}`]: isRemoved },
+          { [theme.closed]: isClosed },
+          { [theme.removed]: isRemoved },
         )}
       >
         {children}
