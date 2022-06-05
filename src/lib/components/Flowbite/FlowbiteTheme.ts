@@ -183,6 +183,27 @@ export interface FlowbiteTheme {
       icon: string;
     };
   };
+  tooltip: {
+    target: string;
+    base: string;
+    animation: string;
+    hidden: string;
+    style: {
+      dark: string;
+      light: string;
+      auto: string;
+    };
+    content: string;
+    arrow: {
+      base: string;
+      style: {
+        dark: string;
+        light: string;
+        auto: string;
+      };
+      placement: string;
+    };
+  };
 }
 
 export interface FlowbiteBoolean {

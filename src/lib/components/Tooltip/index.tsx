@@ -1,4 +1,4 @@
-import type { FC, PropsWithChildren, ReactNode, RefObject } from 'react';
+import type { ComponentProps, FC, PropsWithChildren, ReactNode, RefObject } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import type { Placement } from '@floating-ui/core';
@@ -15,16 +15,17 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react-dom-interactions';
+import { useTheme } from '../Flowbite/ThemeContext';
+import { excludeClassName } from '../../helpers/exclude';
 
-export type TooltipProps = PropsWithChildren<{
-  className?: string;
+export interface TooltipProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className' | 'style'>> {
   content: ReactNode;
   placement?: 'auto' | Placement;
   trigger?: 'hover' | 'click';
   style?: 'dark' | 'light' | 'auto';
   animation?: false | `duration-${number}`;
   arrow?: boolean;
-}>;
+}
 
 /**
  * @see https://floating-ui.com/docs/react-dom-interactions
@@ -33,13 +34,15 @@ export const Tooltip: FC<TooltipProps> = ({
   animation = 'duration-300',
   arrow = true,
   children,
-  className,
   content,
   placement = 'top',
   style = 'dark',
   trigger = 'hover',
-  ...rest
+  ...props
 }) => {
+  const theme = useTheme().theme.tooltip;
+  const theirProps = excludeClassName(props);
+
   const arrowRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
 
@@ -76,40 +79,34 @@ export const Tooltip: FC<TooltipProps> = ({
 
   return (
     <>
-      <div className="w-fit" {...getReferenceProps({ ref: reference })} data-testid="tooltip-target">
+      <div className={theme.target} {...getReferenceProps({ ref: reference })} data-testid="tooltip-target">
         {children}
       </div>
       <div
         data-testid="tooltip"
         {...getFloatingProps({
-          className: classNames(
-            'absolute inline-block rounded-lg py-2 px-3 text-sm font-medium shadow-sm',
-            animation !== false && `transition-opacity ${animation}`,
-            {
-              'invisible opacity-0': !open,
-              'bg-gray-900 text-white dark:bg-gray-700': style === 'dark',
-              'border border-gray-200 bg-white text-gray-900': style === 'light',
-              'border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-gray-700 dark:text-white':
-                style === 'auto',
-            },
-            className,
-          ),
+          className: classNames(theme.base, animation !== false && `${theme.animation} ${animation}`, {
+            [theme.hidden]: !open,
+            [theme.style.dark]: style === 'dark',
+            [theme.style.light]: style === 'light',
+            [theme.style.auto]: style === 'auto',
+          }),
           ref: floating,
           style: {
             position: strategy,
             top: y ?? ' ',
             left: x ?? ' ',
           },
-          ...rest,
+          ...theirProps,
         })}
       >
-        <div className="relative z-20">{content}</div>
+        <div className={theme.content}>{content}</div>
         {arrow && (
           <div
-            className={classNames('absolute z-10 h-2 w-2 rotate-45', {
-              'bg-gray-900 dark:bg-gray-700': style === 'dark',
-              'bg-white': style === 'light',
-              'bg-white dark:bg-gray-700': style === 'auto',
+            className={classNames(theme.arrow.base, {
+              [theme.arrow.style.dark]: style === 'dark',
+              [theme.arrow.style.light]: style === 'light',
+              [theme.arrow.style.auto]: style === 'auto',
             })}
             data-testid="tooltip-arrow"
             ref={arrowRef}
@@ -118,7 +115,7 @@ export const Tooltip: FC<TooltipProps> = ({
               left: arrowX ?? ' ',
               right: ' ',
               bottom: ' ',
-              [floatingArrowPlacement({ placement: floatingTooltip.placement })]: '-4px',
+              [floatingArrowPlacement({ placement: floatingTooltip.placement })]: theme.arrow.placement,
             }}
           >
             &nbsp;

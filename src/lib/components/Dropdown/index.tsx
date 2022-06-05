@@ -1,8 +1,6 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { useMemo } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
-import classNames from 'classnames';
-
 import type { ButtonComponentProps } from '../Button';
 import { Button } from '../Button';
 import type { TooltipProps } from '../Tooltip';
@@ -10,6 +8,7 @@ import { Tooltip } from '../Tooltip';
 import { DropdownItem } from './DropdownItem';
 import { DropdownDivider } from './DropdownDivider';
 import { DropdownHeader } from './DropdownHeader';
+import { excludeClassName } from '../../helpers/exclude';
 
 export type DropdownProps = ButtonComponentProps &
   Omit<TooltipProps, 'content' | 'style' | 'animation' | 'arrow'> & {
@@ -28,7 +27,8 @@ const icons: Record<string, FC<ComponentProps<'svg'>>> = {
 };
 
 const DropdownComponent: FC<DropdownProps> = (props) => {
-  const { children, className, label, inline, tooltipArrow = false, arrowIcon = true, ...restProps } = props;
+  const theirProps = excludeClassName(props) as DropdownProps;
+  const { children, label, inline, tooltipArrow = false, arrowIcon = true, ...restProps } = theirProps;
   const { placement = inline ? 'bottom-start' : 'bottom', trigger = 'click', ...buttonProps } = restProps;
 
   const Icon = useMemo(() => {
@@ -43,7 +43,6 @@ const DropdownComponent: FC<DropdownProps> = (props) => {
 
   return (
     <Tooltip
-      className={classNames('w-44 !rounded !p-0', className)}
       content={content}
       style="auto"
       animation="duration-100"
