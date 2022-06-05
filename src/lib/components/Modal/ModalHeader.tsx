@@ -1,30 +1,27 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
 import { HiOutlineX } from 'react-icons/hi';
-
 import { useModalContext } from './ModalContext';
 import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 
-export const ModalHeader: FC<PropsWithChildren<ComponentProps<'div'>>> = ({ children, ...props }): JSX.Element => {
-  const theirProps = excludeClassName(props);
+export type ModalHeaderProps = PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>>;
 
+export const ModalHeader: FC<ModalHeaderProps> = ({ children, ...props }): JSX.Element => {
   const { popup, onClose } = useModalContext();
+  const theme = useTheme().theme.modal.header;
+  const theirProps = excludeClassName(props);
 
   return (
     <div
-      className={classNames('flex items-start justify-between rounded-t dark:border-gray-600', {
-        'p-2': popup,
-        'border-b p-5': !popup,
+      className={classNames(theme.base, {
+        [theme.popup]: popup,
       })}
       {...theirProps}
     >
-      <h3 className="text-xl font-medium text-gray-900 dark:text-white">{children}</h3>
-      <button
-        className="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
-        type="button"
-        onClick={onClose}
-      >
-        <HiOutlineX className="h-5 w-5" />
+      <h3 className={theme.title}>{children}</h3>
+      <button className={theme.close.base} type="button" onClick={onClose}>
+        <HiOutlineX className={theme.close.icon} />
       </button>
     </div>
   );

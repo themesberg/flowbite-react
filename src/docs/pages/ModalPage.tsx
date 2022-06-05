@@ -20,16 +20,18 @@ const ModalPage: FC = () => {
           <Button onClick={() => setOpenModal('default')}>Toggle modal</Button>
           <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)}>
             <Modal.Header>Terms of Service</Modal.Header>
-            <Modal.Body className="space-y-6">
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                With less than a month to go before the European Union enacts new consumer privacy laws for its
-                citizens, companies around the world are updating their terms of service agreements to comply.
-              </p>
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is
-                meant to ensure a common set of data rights in the European Union. It requires organizations to notify
-                users as soon as possible of high-risk data breaches that could personally affect them.
-              </p>
+            <Modal.Body>
+              <div className="space-y-6">
+                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  With less than a month to go before the European Union enacts new consumer privacy laws for its
+                  citizens, companies around the world are updating their terms of service agreements to comply.
+                </p>
+                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is
+                  meant to ensure a common set of data rights in the European Union. It requires organizations to notify
+                  users as soon as possible of high-risk data breaches that could personally affect them.
+                </p>
+              </div>
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={() => setOpenModal(undefined)}>I accept</Button>
@@ -48,18 +50,20 @@ const ModalPage: FC = () => {
           <Button onClick={() => setOpenModal('pop-up')}>Toggle modal</Button>
           <Modal show={openModal === 'pop-up'} size="md" popup onClose={() => setOpenModal(undefined)}>
             <Modal.Header />
-            <Modal.Body className="text-center">
-              <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-              <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                Are you sure you want to delete this product?
-              </h3>
-              <div className="flex justify-center gap-4">
-                <Button color="red" onClick={() => setOpenModal(undefined)}>
-                  {"Yes, I'm sure"}
-                </Button>
-                <Button color="alternative" onClick={() => setOpenModal(undefined)}>
-                  No, cancel
-                </Button>
+            <Modal.Body>
+              <div className="text-center">
+                <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
+                <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                  Are you sure you want to delete this product?
+                </h3>
+                <div className="flex justify-center gap-4">
+                  <Button color="red" onClick={() => setOpenModal(undefined)}>
+                    {"Yes, I'm sure"}
+                  </Button>
+                  <Button color="alternative" onClick={() => setOpenModal(undefined)}>
+                    No, cancel
+                  </Button>
+                </div>
               </div>
             </Modal.Body>
           </Modal>
@@ -73,40 +77,42 @@ const ModalPage: FC = () => {
           <Button onClick={() => setOpenModal('form-elements')}>Toggle modal</Button>
           <Modal show={openModal === 'form-elements'} size="md" popup onClose={() => setOpenModal(undefined)}>
             <Modal.Header />
-            <Modal.Body className="space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8">
-              <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
-              <div>
-                <Label className="mb-2 block" htmlFor="email">
-                  Your email
-                </Label>
-                <TextInput
-                  id="email"
-                  className="dark:border-gray-500 dark:bg-gray-600"
-                  placeholder="name@company.com"
-                  required
-                />
-              </div>
-              <div>
-                <Label className="mb-2 block" htmlFor="password">
-                  Your password
-                </Label>
-                <TextInput id="password" className="dark:border-gray-500 dark:bg-gray-600" type="password" required />
-              </div>
-              <div className="flex justify-between">
-                <div className="flex items-center gap-2">
-                  <Checkbox id="remember" className="dark:border-gray-500 dark:bg-gray-600" />
-                  <Label htmlFor="remember">Remember me</Label>
+            <Modal.Body>
+              <div className="space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8">
+                <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
+                <div>
+                  <Label className="mb-2 block" htmlFor="email">
+                    Your email
+                  </Label>
+                  <TextInput
+                    id="email"
+                    className="dark:border-gray-500 dark:bg-gray-600"
+                    placeholder="name@company.com"
+                    required
+                  />
                 </div>
-                <a href="/modal" className="text-sm text-blue-700 hover:underline dark:text-blue-500">
-                  Lost Password?
-                </a>
-              </div>
-              <Button className="w-full">Log in to your account</Button>
-              <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                Not registered?{' '}
-                <a href="/modal" className="text-blue-700 hover:underline dark:text-blue-500">
-                  Create account
-                </a>
+                <div>
+                  <Label className="mb-2 block" htmlFor="password">
+                    Your password
+                  </Label>
+                  <TextInput id="password" className="dark:border-gray-500 dark:bg-gray-600" type="password" required />
+                </div>
+                <div className="flex justify-between">
+                  <div className="flex items-center gap-2">
+                    <Checkbox id="remember" className="dark:border-gray-500 dark:bg-gray-600" />
+                    <Label htmlFor="remember">Remember me</Label>
+                  </div>
+                  <a href="/modal" className="text-sm text-blue-700 hover:underline dark:text-blue-500">
+                    Lost Password?
+                  </a>
+                </div>
+                <Button className="w-full">Log in to your account</Button>
+                <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
+                  Not registered?{' '}
+                  <a href="/modal" className="text-blue-700 hover:underline dark:text-blue-500">
+                    Create account
+                  </a>
+                </div>
               </div>
             </Modal.Body>
           </Modal>
@@ -134,16 +140,18 @@ const ModalPage: FC = () => {
           </div>
           <Modal show={openModal === 'size'} size={modalSize as ModalSize} onClose={() => setOpenModal(undefined)}>
             <Modal.Header>Small modal</Modal.Header>
-            <Modal.Body className="space-y-6 p-6">
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                With less than a month to go before the European Union enacts new consumer privacy laws for its
-                citizens, companies around the world are updating their terms of service agreements to comply.
-              </p>
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is
-                meant to ensure a common set of data rights in the European Union. It requires organizations to notify
-                users as soon as possible of high-risk data breaches that could personally affect them.
-              </p>
+            <Modal.Body>
+              <div className="space-y-6 p-6">
+                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  With less than a month to go before the European Union enacts new consumer privacy laws for its
+                  citizens, companies around the world are updating their terms of service agreements to comply.
+                </p>
+                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is
+                  meant to ensure a common set of data rights in the European Union. It requires organizations to notify
+                  users as soon as possible of high-risk data breaches that could personally affect them.
+                </p>
+              </div>
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={() => setOpenModal(undefined)}>I accept</Button>
@@ -179,16 +187,18 @@ const ModalPage: FC = () => {
             onClose={() => setOpenModal(undefined)}
           >
             <Modal.Header>Small modal</Modal.Header>
-            <Modal.Body className="space-y-6 p-6">
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                With less than a month to go before the European Union enacts new consumer privacy laws for its
-                citizens, companies around the world are updating their terms of service agreements to comply.
-              </p>
-              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is
-                meant to ensure a common set of data rights in the European Union. It requires organizations to notify
-                users as soon as possible of high-risk data breaches that could personally affect them.
-              </p>
+            <Modal.Body>
+              <div className="space-y-6 p-6">
+                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  With less than a month to go before the European Union enacts new consumer privacy laws for its
+                  citizens, companies around the world are updating their terms of service agreements to comply.
+                </p>
+                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is
+                  meant to ensure a common set of data rights in the European Union. It requires organizations to notify
+                  users as soon as possible of high-risk data breaches that could personally affect them.
+                </p>
+              </div>
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={() => setOpenModal(undefined)}>I accept</Button>

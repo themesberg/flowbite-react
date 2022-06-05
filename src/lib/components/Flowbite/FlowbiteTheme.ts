@@ -142,6 +142,32 @@ export interface FlowbiteTheme {
       snap: string;
     };
   };
+  modal: {
+    base: string;
+    visible: string;
+    hidden: string;
+    content: {
+      base: string;
+      inner: string;
+    };
+    body: {
+      base: string;
+      popup: string;
+    };
+    header: {
+      base: string;
+      popup: string;
+      title: string;
+      close: {
+        base: string;
+        icon: string;
+      };
+    };
+    footer: {
+      base: string;
+      popup: string;
+    };
+  };
   rating: {
     base: string;
     star: {

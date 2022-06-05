@@ -1,25 +1,26 @@
-import type { FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import classNames from 'classnames';
-
 import { ModalHeader } from './ModalHeader';
 import { ModalBody } from './ModalBody';
 import { ModalFooter } from './ModalFooter';
 import { ModalContext } from './ModalContext';
 import windowExists from '../../helpers/window-exists';
+import { useTheme } from '../Flowbite/ThemeContext';
+import { excludeClassName } from '../../helpers/exclude';
 
 export type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl';
 export type ModalPlacement = `${'top' | 'bottom'}-${'left' | 'center' | 'right'}` | `center${'' | '-left' | '-right'}`;
 
-export type ModalProps = PropsWithChildren<{
+export interface ModalProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
   onClose?: () => void;
   placement?: ModalPlacement;
   popup?: boolean;
   root?: HTMLElement;
   show?: boolean;
   size?: ModalSize;
-}>;
+}
 
 const sizeClasses: Record<ModalSize, string> = {
   sm: 'max-w-sm',
@@ -54,8 +55,11 @@ const ModalComponent: FC<ModalProps> = ({
   size = '2xl',
   placement = 'center',
   onClose,
+  ...props
 }): JSX.Element | null => {
   const [container] = useState<HTMLDivElement | undefined>(windowExists() ? document.createElement('div') : undefined);
+  const theme = useTheme().theme.modal;
+  const theirProps = excludeClassName(props);
 
   useEffect(() => {
     if (!container || !root || !show) {
@@ -74,18 +78,15 @@ const ModalComponent: FC<ModalProps> = ({
         <ModalContext.Provider value={{ popup, onClose }}>
           <div
             aria-hidden={!show}
-            className={classNames(
-              'fixed top-0 right-0 left-0 z-50 h-modal overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
-              placementClasses[placement],
-              {
-                'flex bg-gray-900 bg-opacity-50 dark:bg-opacity-80': show,
-                hidden: !show,
-              },
-            )}
+            className={classNames(theme.base, placementClasses[placement], {
+              [theme.visible]: show,
+              [theme.hidden]: !show,
+            })}
             data-testid="modal"
+            {...theirProps}
           >
-            <div className={classNames('relative h-full w-full p-4 md:h-auto', sizeClasses[size])}>
-              <div className="relative rounded-lg bg-white shadow dark:bg-gray-700">{children}</div>
+            <div className={classNames(theme.content.base, sizeClasses[size])}>
+              <div className={theme.content.inner}>{children}</div>
             </div>
           </div>
         </ModalContext.Provider>,
