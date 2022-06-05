@@ -7,6 +7,7 @@ import type { ButtonGradientColors, ButtonGradientDuoToneColors } from '../Butto
 import type { DeepPartial } from '../../helpers/deep-partial';
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
 import type { StarSizes } from '../Rating';
+import type { ModalPositions, ModalSizes } from '../Modal';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
@@ -142,6 +143,33 @@ export interface FlowbiteTheme {
       snap: string;
     };
   };
+  modal: {
+    base: string;
+    show: FlowbiteBoolean;
+    content: {
+      base: string;
+      inner: string;
+    };
+    body: {
+      base: string;
+      popup: string;
+    };
+    header: {
+      base: string;
+      popup: string;
+      title: string;
+      close: {
+        base: string;
+        icon: string;
+      };
+    };
+    footer: {
+      base: string;
+      popup: string;
+    };
+    sizes: ModalSizes;
+    positions: ModalPositions;
+  };
   rating: {
     base: string;
     star: {
@@ -257,8 +285,13 @@ export type FlowbiteHeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export interface FlowbitePositions {
   'bottom-left': string;
   'bottom-right': string;
+  'bottom-center': string;
   'top-left': string;
+  'top-center': string;
   'top-right': string;
+  'center-left': string;
+  center: string;
+  'center-right': string;
 }
 
 export interface FlowbiteSizes {
@@ -267,4 +300,10 @@ export interface FlowbiteSizes {
   md: string;
   lg: string;
   xl: string;
+  '2xl': string;
+  '3xl': string;
+  '4xl': string;
+  '5xl': string;
+  '6xl': string;
+  '7xl': string;
 }

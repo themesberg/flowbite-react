@@ -39,7 +39,7 @@ export interface ButtonOutlineColors extends Pick<FlowbiteColors, 'gray'> {
   [key: string]: string;
 }
 
-export interface ButtonSizes extends FlowbiteSizes {
+export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'xl'> {
   [key: string]: string;
 }
 
