@@ -6,7 +6,7 @@ import type { ButtonColors, ButtonOutlineColors, ButtonSizes } from '../Button';
 import type { ButtonGradientColors, ButtonGradientDuoToneColors } from '../Button';
 import type { DeepPartial } from '../../helpers/deep-partial';
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
-import type { StarSizes } from '../Rating/RatingContext';
+import type { StarSizes } from '../Rating';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 

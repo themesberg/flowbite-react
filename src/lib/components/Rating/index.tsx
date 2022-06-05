@@ -1,20 +1,28 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { RatingAdvanced } from './RatingAdvanced';
-import type { StarSizes } from './RatingContext';
 import { RatingContext } from './RatingContext';
 import { RatingStar } from './RatingStar';
 import { useTheme } from '../Flowbite/ThemeContext';
+import type { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import { excludeClassName } from '../../helpers/exclude';
+
+export interface StarSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
+  [key: string]: string;
+}
 
 export interface RatingProps extends PropsWithChildren<ComponentProps<'div'>> {
   size?: keyof StarSizes;
 }
 
-const RatingComponent: FC<RatingProps> = ({ children, size = 'sm' }) => {
+const RatingComponent: FC<RatingProps> = ({ children, size = 'sm', ...props }) => {
   const theme = useTheme().theme.rating;
+  const theirProps = excludeClassName(props);
 
   return (
     <RatingContext.Provider value={{ size }}>
-      <div className={theme.base}>{children}</div>
+      <div className={theme.base} {...theirProps}>
+        {children}
+      </div>
     </RatingContext.Provider>
   );
 };

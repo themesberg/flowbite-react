@@ -1,9 +1,5 @@
 import { createContext, useContext } from 'react';
-import type { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
-
-export interface StarSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
-  [key: string]: string;
-}
+import type { StarSizes } from '.';
 
 export type RatingContext = {
   size?: keyof StarSizes;
