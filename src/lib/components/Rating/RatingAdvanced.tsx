@@ -1,17 +1,20 @@
-import type { FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { useTheme } from '../Flowbite/ThemeContext';
 
-export type RatingAdvancedProps = PropsWithChildren<{
+export interface RatingAdvancedProps extends PropsWithChildren<ComponentProps<'div'>> {
   percentFilled?: number;
-}>;
+}
 
-export const RatingAdvanced: FC<RatingAdvancedProps> = ({ percentFilled, children }) => {
+export const RatingAdvanced: FC<RatingAdvancedProps> = ({ percentFilled = 0, children }) => {
+  const theme = useTheme().theme.rating.advanced;
+
   return (
-    <div className="flex items-center">
-      <span className="text-sm font-medium text-blue-600 dark:text-blue-500">{children}</span>
-      <div className="mx-4 h-5 w-2/4 rounded bg-gray-200 dark:bg-gray-700">
-        <div className="h-5 rounded bg-yellow-400" data-testid="rating-fill" style={{ width: `${percentFilled}%` }} />
+    <div className={theme.base}>
+      <span className={theme.label}>{children}</span>
+      <div className={theme.progress.base}>
+        <div className={theme.progress.fill} data-testid="rating-fill" style={{ width: `${percentFilled}%` }} />
       </div>
-      <span className="text-sm font-medium text-blue-600 dark:text-blue-500">{`${percentFilled}%`}</span>
+      <span className={theme.progress.label}>{`${percentFilled}%`}</span>
     </div>
   );
 };

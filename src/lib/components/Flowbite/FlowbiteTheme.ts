@@ -6,6 +6,7 @@ import type { ButtonColors, ButtonOutlineColors, ButtonSizes } from '../Button';
 import type { ButtonGradientColors, ButtonGradientDuoToneColors } from '../Button';
 import type { DeepPartial } from '../../helpers/deep-partial';
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
+import type { StarSizes } from '../Rating/RatingContext';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
@@ -139,6 +140,23 @@ export interface FlowbiteTheme {
     scrollContainer: {
       base: string;
       snap: string;
+    };
+  };
+  rating: {
+    base: string;
+    star: {
+      sizes: StarSizes;
+      filled: string;
+      empty: string;
+    };
+    advanced: {
+      base: string;
+      label: string;
+      progress: {
+        base: string;
+        fill: string;
+        label: string;
+      };
     };
   };
   spinner: {
