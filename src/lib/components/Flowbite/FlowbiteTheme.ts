@@ -159,6 +159,31 @@ export interface FlowbiteTheme {
       };
     };
   };
+  pagination: {
+    base: string;
+    layout: {
+      table: {
+        base: string;
+        span: string;
+      };
+    };
+    pages: {
+      base: string;
+      showIcon: string;
+      previous: {
+        base: string;
+        icon: string;
+      };
+      next: {
+        base: string;
+        icon: string;
+      };
+      selector: {
+        base: string;
+        active: string;
+      };
+    };
+  };
   spinner: {
     base: string;
     color: SpinnerColors;
