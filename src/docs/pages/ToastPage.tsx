@@ -54,10 +54,12 @@ const ToastPage: FC = () => {
     {
       title: 'Simple toast',
       code: (
-        <Toast className="space-x-4 divide-x divide-gray-200 dark:divide-gray-700">
-          <FaTelegramPlane className="h-5 w-5 text-blue-600 dark:text-blue-500" />
-          <div className="pl-4 text-sm font-normal">Message sent successfully.</div>
-        </Toast>
+        <div className="space-x-4 divide-x divide-gray-200 dark:divide-gray-700">
+          <Toast>
+            <FaTelegramPlane className="h-5 w-5 text-blue-600 dark:text-blue-500" />
+            <div className="pl-4 text-sm font-normal">Message sent successfully.</div>
+          </Toast>
+        </div>
       ),
       codeClassName: 'dark:!bg-gray-900',
     },
@@ -82,23 +84,25 @@ const ToastPage: FC = () => {
     {
       title: 'Interactive toast',
       code: (
-        <Toast className="!items-start">
-          <div className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-500 dark:bg-blue-900 dark:text-blue-300">
-            <MdLoop className="h-5 w-5" />
-          </div>
-          <div className="ml-3 text-sm font-normal">
-            <span className="mb-1 text-sm font-semibold text-gray-900 dark:text-white">Update available</span>
-            <div className="mb-2 text-sm font-normal">A new software version is available for download.</div>
-            <div className="flex gap-2">
-              <Button className="!w-full" size="xs">
-                Update
-              </Button>
-              <Button className="!w-full" color="light" size="xs">
-                Not now
-              </Button>
+        <Toast>
+          <div className="flex !items-start">
+            <div className="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-500 dark:bg-blue-900 dark:text-blue-300">
+              <MdLoop className="h-5 w-5" />
             </div>
+            <div className="ml-3 text-sm font-normal">
+              <span className="mb-1 text-sm font-semibold text-gray-900 dark:text-white">Update available</span>
+              <div className="mb-2 text-sm font-normal">A new software version is available for download.</div>
+              <div className="flex gap-2">
+                <Button className="!w-full" size="xs">
+                  Update
+                </Button>
+                <Button className="!w-full" color="light" size="xs">
+                  Not now
+                </Button>
+              </div>
+            </div>
+            <Toast.Toggle />
           </div>
-          <Toast.Toggle />
         </Toast>
       ),
       codeClassName: 'dark:!bg-gray-900',

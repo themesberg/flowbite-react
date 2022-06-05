@@ -1,14 +1,15 @@
-import type { PropsWithChildren, FC } from 'react';
+import type { PropsWithChildren, FC, ComponentProps } from 'react';
 import { useState } from 'react';
 import classNames from 'classnames';
 import type { Duration } from './ToastContext';
 import { ToastContext } from './ToastContext';
 import { ToastToggle } from './ToastToggle';
+import { useTheme } from '../Flowbite/ThemeContext';
+import { excludeClassName } from '../../helpers/exclude';
 
-export type ToastProps = PropsWithChildren<{
-  className?: string;
+export interface ToastProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
   duration?: Duration;
-}>;
+}
 
 const durationClasses: Record<Duration, string> = {
   75: 'duration-75',
@@ -21,21 +22,24 @@ const durationClasses: Record<Duration, string> = {
   1000: 'duration-1000',
 };
 
-const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300 }) => {
+const ToastComponent: FC<ToastProps> = ({ children, duration = 300, ...props }) => {
   const [isClosed, setIsClosed] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
+
+  const theme = useTheme().theme.toast;
+  const theirProps = excludeClassName(props);
 
   return (
     <ToastContext.Provider value={{ duration, isClosed, isRemoved, setIsClosed, setIsRemoved }}>
       <div
         data-testid="toast-element"
         className={classNames(
-          'flex w-full max-w-xs items-center rounded-lg bg-white p-4 text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400',
+          theme.base,
           durationClasses[duration],
-          { 'opacity-0 ease-out': isClosed },
-          { hidden: isRemoved },
-          className,
+          { [theme.closed]: isClosed },
+          { [theme.removed]: isRemoved },
         )}
+        {...theirProps}
       >
         {children}
       </div>
