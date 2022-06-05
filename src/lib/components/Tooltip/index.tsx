@@ -85,12 +85,12 @@ export const Tooltip: FC<TooltipProps> = ({
       <div
         data-testid="tooltip"
         {...getFloatingProps({
-          className: classNames(theme.base, animation !== false && `${theme.animation} ${animation}`, {
-            [theme.hidden]: !open,
-            [theme.style.dark]: style === 'dark',
-            [theme.style.light]: style === 'light',
-            [theme.style.auto]: style === 'auto',
-          }),
+          className: classNames(
+            theme.base,
+            animation && `${theme.animation} ${animation}`,
+            !open && theme.hidden,
+            theme.style[style],
+          ),
           ref: floating,
           style: {
             position: strategy,
