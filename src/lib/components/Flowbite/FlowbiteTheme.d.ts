@@ -124,6 +124,28 @@ export interface FlowbiteTheme {
   };
   footer: {
     base: string;
+    color: {};
+    groupLink: {
+      base: string;
+      link: {
+        base: string;
+        href: string;
+      };
+    };
+    icon: {
+      base: string;
+      size: string;
+    };
+    copyright: {
+      base: string;
+      href: string;
+      span: string;
+    };
+    brand: {
+      base: string;
+      img: string;
+      span: string;
+    };
   };
   spinner: {
     base: string;
@@ -155,6 +177,7 @@ export interface FlowbiteColors {
   purple: string;
   success: string;
   warning: string;
+  white: string;
 }
 
 export interface FlowbitePositions {

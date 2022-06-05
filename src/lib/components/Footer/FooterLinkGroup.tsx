@@ -1,10 +1,22 @@
 import classNames from 'classnames';
-import { FC, PropsWithChildren } from 'react';
+import { ComponentProps, FC, PropsWithChildren } from 'react';
 
-export type FooterLinkGroupProps = PropsWithChildren<{
-  className?: string;
-}>;
+import { useTheme } from '../Flowbite/ThemeContext';
 
-export const FooterLinkGroup: FC<FooterLinkGroupProps> = ({ children, className }) => {
-  return <ul className={classNames('flex text-gray-500 dark:text-gray-400 ', className)}>{children}</ul>;
+export interface FooterLinkGroupProps extends PropsWithChildren<Omit<ComponentProps<'ul'>, 'className'>> {
+  col?: boolean;
+}
+
+export const FooterLinkGroup: FC<FooterLinkGroupProps> = ({ children, col = false }) => {
+  const theme = useTheme().theme.footer.groupLink;
+  console.log(col);
+  return (
+    <ul
+      className={classNames(theme.base, {
+        'flex-col': col,
+      })}
+    >
+      {children}
+    </ul>
+  );
 };

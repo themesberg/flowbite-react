@@ -164,6 +164,30 @@ export default {
   },
   footer: {
     base: 'w-full rounded-lg bg-white p-4 shadow dark:bg-gray-800 md:flex md:items-center md:justify-between md:p-6',
+    color: {
+      white: 'white',
+    },
+    groupLink: {
+      base: 'flex flex-wrap items-center text-sm text-gray-500 dark:text-gray-400',
+      link: {
+        base: 'mr-4 last:mr-0 md:mr-6',
+        href: 'hover:underline',
+      },
+    },
+    icon: {
+      base: 'text-gray-500 dark:hover:text-white',
+      size: 'h-5 w-5',
+    },
+    copyright: {
+      base: 'text-sm text-gray-500 dark:text-gray-400 sm:text-center',
+      href: 'ml-1 hover:underline',
+      span: 'ml-1',
+    },
+    brand: {
+      base: 'mb-4 flex items-center sm:mb-0',
+      img: 'mr-3 h-8',
+      span: 'self-center whitespace-nowrap text-2xl font-semibold dark:text-white',
+    },
   },
   spinner: {
     base: 'inline animate-spin text-gray-200',
