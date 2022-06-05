@@ -6,7 +6,7 @@ import range from '../../helpers/range';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export type PaginationProps = PropsWithChildren<Pagination>;
-interface Pagination extends ComponentProps<'nav'> {
+interface Pagination extends Omit<ComponentProps<'nav'>, 'className'> {
   currentPage: number;
   layout?: 'navigation' | 'pagination' | 'table';
   onPageChange: (page: number) => void;
@@ -48,10 +48,10 @@ export const Pagination: FC<PaginationProps> = ({
       <ul className={theme.pages.base}>
         <li>
           <button
-            className={classNames(theme.pages.previous.base, showIcon ? theme.pages.showIcon : '')}
+            className={classNames(theme.pages.previous.base, showIcon && theme.pages.showIcon)}
             onClick={() => goToPreviousPage()}
           >
-            {showIcon && <HiChevronLeft aria-hidden="true" className={theme.pages.previous.icon} />}
+            {showIcon && <HiChevronLeft className={theme.pages.previous.icon} />}
             Previous
           </button>
         </li>
@@ -61,7 +61,7 @@ export const Pagination: FC<PaginationProps> = ({
               <li aria-current={page === currentPage ? 'page' : undefined} key={page}>
                 <button
                   className={classNames(theme.pages.selector.base, {
-                    [`${theme.pages.selector.active}`]: currentPage === page,
+                    [theme.pages.selector.active]: currentPage === page,
                   })}
                   onClick={() => onPageChange(page)}
                 >
@@ -72,11 +72,11 @@ export const Pagination: FC<PaginationProps> = ({
           )}
         <li>
           <button
-            className={classNames(theme.pages.next.base, showIcon ? theme.pages.showIcon : '')}
+            className={classNames(theme.pages.next.base, showIcon && theme.pages.showIcon)}
             onClick={() => goToNextPage()}
           >
             Next
-            {showIcon && <HiChevronRight aria-hidden="true" className={theme.pages.showIcon} />}
+            {showIcon && <HiChevronRight className={theme.pages.showIcon} />}
           </button>
         </li>
       </ul>
