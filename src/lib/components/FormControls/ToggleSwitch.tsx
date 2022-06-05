@@ -1,7 +1,6 @@
 import type { ComponentProps, FC, KeyboardEvent, MouseEvent } from 'react';
-import { useMemo } from 'react';
+import { useId } from 'react';
 import classNames from 'classnames';
-import * as nanoid from 'nanoid';
 
 export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
   checked: boolean;
@@ -18,7 +17,7 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
   onChange,
   ...props
 }) => {
-  const id = useMemo(() => nanoid.nanoid(), []);
+  const id = useId();
 
   const toggle = (): void => onChange(!checked);
 

@@ -1,5 +1,5 @@
 import type { FC, HTMLAttributes } from 'react';
-import { useLayoutEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { ThemeContext, useThemeMode } from './ThemeContext';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import defaultTheme from '../../theme/default';
@@ -24,7 +24,7 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
 
   const mergedTheme = mergeDeep(defaultTheme, customTheme) as unknown as FlowbiteTheme;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (dark) {
       if (setMode != null) {
         setMode('dark');

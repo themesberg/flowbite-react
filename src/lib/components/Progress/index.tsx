@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import * as nanoid from 'nanoid';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { useId } from 'react';
 
 type Color = 'dark' | 'blue' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple';
 type Size = 'sm' | 'md' | 'lg' | 'xl';
@@ -42,7 +42,7 @@ export const Progress: FC<ProgressProps> = ({
   size = 'md',
   ...props
 }) => {
-  const id = nanoid.nanoid();
+  const id = useId();
 
   return (
     <>

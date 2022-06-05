@@ -1,7 +1,6 @@
 import classNames from 'classnames';
-import * as nanoid from 'nanoid';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { useMemo, useState } from 'react';
+import { useId, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { excludeClassName } from '../../helpers/exclude';
 import { Tooltip } from '../Tooltip';
@@ -14,7 +13,7 @@ export type SidebarCollapseProps = PropsWithChildren<ComponentProps<'button'> & 
 const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label, ...props }): JSX.Element => {
   const theirProps = excludeClassName(props);
 
-  const id = useMemo(() => nanoid.nanoid(), []);
+  const id = useId();
   const { isCollapsed } = useSidebarContext();
   const [isOpen, setOpen] = useState(false);
 
