@@ -8,7 +8,7 @@ export type DarkThemeToggleProps = Omit<ComponentProps<'button'>, 'className'>;
 
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = (props) => {
   const theirProps = excludeClassName(props);
-  const theme = useTheme().theme.darkthemetoggle;
+  const theme = useTheme().theme.darkThemeToggle;
   const { mode, toggleMode } = useContext(ThemeContext);
 
   return (
@@ -21,9 +21,9 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = (props) => {
       {...theirProps}
     >
       {mode === 'dark' ? (
-        <HiSun className={theme.icon} data-testid="dark-theme-toggle-disabled" />
+        <HiSun aria-hidden className={theme.icon} data-testid="dark-theme-toggle-disabled" />
       ) : (
-        <HiMoon className={theme.icon} data-testid="dark-theme-toggle-enabled" />
+        <HiMoon aria-hidden className={theme.icon} data-testid="dark-theme-toggle-enabled" />
       )}
     </button>
   );

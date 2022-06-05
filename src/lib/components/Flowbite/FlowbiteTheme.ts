@@ -142,7 +142,7 @@ export interface FlowbiteTheme {
       snap: string;
     };
   };
-  darkthemetoggle: {
+  darkThemeToggle: {
     base: string;
     icon: string;
   };
