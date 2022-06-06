@@ -1,7 +1,7 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
-import { useTheme } from '../Flowbite/ThemeContext';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface CardProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
   horizontal?: boolean;

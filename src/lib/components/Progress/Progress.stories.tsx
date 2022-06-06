@@ -1,5 +1,4 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
-
 import type { ProgressProps } from '.';
 import { Progress } from '.';
 

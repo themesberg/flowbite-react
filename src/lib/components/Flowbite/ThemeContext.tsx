@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import type { FC, ReactNode } from 'react';
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';
 import type { FlowbiteTheme } from './FlowbiteTheme';

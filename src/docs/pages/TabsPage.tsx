@@ -1,10 +1,9 @@
 import type { FC } from 'react';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
-
+import { Tabs } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
-import { Tabs } from '../../lib';
 
 const TabsPage: FC = () => {
   const examples: CodeExample[] = [

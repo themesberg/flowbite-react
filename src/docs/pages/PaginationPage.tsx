@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import { useState } from 'react';
 import { Pagination } from '../../lib/components/Pagination';
-
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
 

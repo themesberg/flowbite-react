@@ -1,8 +1,8 @@
-import type { ComponentProps, FC } from 'react';
 import classNames from 'classnames';
-import { useRatingContext } from './RatingContext';
+import type { ComponentProps, FC } from 'react';
 import { HiStar } from 'react-icons/hi';
 import { useTheme } from '../Flowbite/ThemeContext';
+import { useRatingContext } from './RatingContext';
 
 export interface RatingStarProps {
   filled?: boolean;

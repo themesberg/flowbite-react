@@ -1,8 +1,6 @@
-import type { ComponentProps, FC, KeyboardEvent, PropsWithChildren, ReactElement } from 'react';
-import { useId } from 'react';
-import { Children, useEffect, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
-
+import type { ComponentProps, FC, KeyboardEvent, PropsWithChildren, ReactElement } from 'react';
+import { Children, useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { TabProps } from './TabItem';
 import { TabItem } from './TabItem';
 

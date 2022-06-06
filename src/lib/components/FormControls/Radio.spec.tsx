@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-
 import { Radio } from './Radio';
 
 describe.concurrent('Components / Form controls / Radio', () => {

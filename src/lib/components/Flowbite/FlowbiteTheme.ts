@@ -1,14 +1,19 @@
+import type { DeepPartial } from '../../helpers/deep-partial';
 import type { AlertColors } from '../Alert';
 import type { AvatarSizes } from '../Avatar';
 import type { BadgeColors, BadgeSizes } from '../Badge';
-import type { SpinnerColors, SpinnerSizes } from '../Spinner';
-import type { ButtonColors, ButtonOutlineColors, ButtonSizes } from '../Button';
-import type { ButtonGradientColors, ButtonGradientDuoToneColors } from '../Button';
-import type { DeepPartial } from '../../helpers/deep-partial';
+import type {
+  ButtonColors,
+  ButtonGradientColors,
+  ButtonGradientDuoToneColors,
+  ButtonOutlineColors,
+  ButtonSizes,
+} from '../Button';
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
-import type { StarSizes } from '../Rating';
 import type { ModalPositions, ModalSizes } from '../Modal';
+import type { StarSizes } from '../Rating';
 import type { SidebarCTAColors } from '../Sidebar/SidebarCTA';
+import type { SpinnerColors, SpinnerSizes } from '../Spinner';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 

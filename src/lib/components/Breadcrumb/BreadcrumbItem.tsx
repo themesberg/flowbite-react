@@ -1,4 +1,4 @@
-import type { FC, ComponentProps, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';

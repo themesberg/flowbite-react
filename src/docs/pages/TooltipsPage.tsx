@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-
 import { Button, Tooltip } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';

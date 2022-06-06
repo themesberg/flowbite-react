@@ -5,8 +5,9 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:react-hooks/recommended',
     'plugin:storybook/recommended',
+    'plugin:tailwindcss/recommended',
   ],
-  ignorePatterns: ['.eslintrc.js', 'config-overrides.js', 'lint-staged.js', 'postcss.config.js', 'tailwind.config.js'],
+  ignorePatterns: ['config-overrides.js', 'lint-staged.js', 'postcss.config.js', 'tailwind.config.js'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -14,7 +15,7 @@ module.exports = {
     },
     project: ['tsconfig.json', 'tsconfig.lib.json', 'cypress/tsconfig.json'],
   },
-  plugins: ['@typescript-eslint', 'prettier', 'react-hooks', 'storybook'],
+  plugins: ['@typescript-eslint', 'prettier', 'react-hooks', 'storybook', 'tailwindcss'],
   root: true,
   rules: {
     '@typescript-eslint/consistent-type-imports': 'warn',

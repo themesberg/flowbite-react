@@ -4,7 +4,6 @@ import { BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1 } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
 import { Link, Route, Routes, useLocation } from 'react-router-dom';
-
 import { DarkThemeToggle, Navbar, Sidebar, Spinner } from '../lib';
 import { routes } from './routes';
 

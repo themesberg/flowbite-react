@@ -1,8 +1,6 @@
-import type { ComponentProps, FC } from 'react';
-
 import type { Meta, Story } from '@storybook/react/types-6-0';
+import type { ComponentProps, FC } from 'react';
 import { HiChevronDown, HiOutlineArrowCircleDown } from 'react-icons/hi';
-
 import type { AccordionProps } from '.';
 import { Accordion } from '.';
 

@@ -1,5 +1,4 @@
 import type { FC } from 'react';
-
 import { Avatar, Dropdown } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';

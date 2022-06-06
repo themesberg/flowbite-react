@@ -1,9 +1,8 @@
 import { createRoot } from 'react-dom/client';
-import { Root } from './docs/Root';
 import { BrowserRouter } from 'react-router-dom';
-import { Flowbite } from './lib/components';
-
+import { Root } from './docs/Root';
 import './index.css';
+import { Flowbite } from './lib/components';
 
 const container = document.getElementById('root');
 

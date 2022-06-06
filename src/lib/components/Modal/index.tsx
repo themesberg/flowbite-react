@@ -1,15 +1,15 @@
+import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import classNames from 'classnames';
-import { ModalHeader } from './ModalHeader';
-import { ModalBody } from './ModalBody';
-import { ModalFooter } from './ModalFooter';
-import { ModalContext } from './ModalContext';
-import windowExists from '../../helpers/window-exists';
-import { useTheme } from '../Flowbite/ThemeContext';
 import { excludeClassName } from '../../helpers/exclude';
+import windowExists from '../../helpers/window-exists';
 import type { FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import { useTheme } from '../Flowbite/ThemeContext';
+import { ModalBody } from './ModalBody';
+import { ModalContext } from './ModalContext';
+import { ModalFooter } from './ModalFooter';
+import { ModalHeader } from './ModalHeader';
 
 export interface ModalPositions extends FlowbitePositions {
   [key: string]: string;

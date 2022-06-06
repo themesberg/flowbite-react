@@ -1,8 +1,8 @@
 import type { FC } from 'react';
+import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
+import { Button, Timeline } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
-import { Timeline, Button } from '../../lib';
-import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
 
 const TimelinePage: FC = () => {
   const examples: CodeExample[] = [

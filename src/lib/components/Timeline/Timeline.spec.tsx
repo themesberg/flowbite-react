@@ -1,7 +1,6 @@
 import { cleanup, render } from '@testing-library/react';
 import type { FC } from 'react';
 import { describe, expect, it } from 'vitest';
-
 import type { TimelineProps } from '.';
 import { Timeline } from '.';
 

@@ -1,5 +1,5 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 
 export type TableCellProps = PropsWithChildren<ComponentProps<'td'>>;
 

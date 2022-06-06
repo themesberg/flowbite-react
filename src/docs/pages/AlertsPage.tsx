@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
-
 import { Alert } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';

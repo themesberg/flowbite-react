@@ -1,14 +1,14 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
+import SidebarCollapse from './SidebarCollapse';
+import { SidebarContext } from './SidebarContext';
 import SidebarCTA from './SidebarCTA';
-import SidebarLogo from './SidebarLogo';
 import SidebarItem from './SidebarItem';
 import SidebarItemGroup from './SidebarItemGroup';
 import SidebarItems from './SidebarItems';
-import SidebarCollapse from './SidebarCollapse';
-import { SidebarContext } from './SidebarContext';
-import { useTheme } from '../Flowbite/ThemeContext';
-import { excludeClassName } from '../../helpers/exclude';
+import SidebarLogo from './SidebarLogo';
 
 export interface SidebarProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
   collapseBehavior?: 'collapse' | 'hide';

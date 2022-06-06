@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-
 import { Select } from './Select';
 
 describe.concurrent('Components / Form controls / Select', () => {

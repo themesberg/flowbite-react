@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-
 import { Avatar } from '.';
 import { Flowbite } from '../Flowbite';
 import type { CustomFlowbiteTheme } from '../Flowbite/FlowbiteTheme';

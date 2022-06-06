@@ -1,9 +1,8 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
-
-import { useModalContext } from './ModalContext';
-import { useTheme } from '../Flowbite/ThemeContext';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
+import { useModalContext } from './ModalContext';
 
 export type ModalFooterProps = PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>>;
 

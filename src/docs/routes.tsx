@@ -1,5 +1,5 @@
 import type { ComponentProps, FC, ReactNode } from 'react';
-
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { BiNotification } from 'react-icons/bi';
 import { BsCreditCard2FrontFill, BsImages } from 'react-icons/bs';
 import { FaBars, FaSpinner } from 'react-icons/fa';
@@ -16,17 +16,15 @@ import {
   HiDeviceTablet,
   HiDuplicate,
   HiHome,
+  HiMinus,
+  HiOutlineChevronDoubleRight,
   HiOutlineClock,
   HiPencilAlt,
   HiStar,
   HiTable,
   HiUser,
-  HiOutlineChevronDoubleRight,
-  HiMinus,
 } from 'react-icons/hi';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import { MdColorLens, MdTab } from 'react-icons/md';
-
 import AccordionPage from './pages/AccordionPage';
 import AlertsPage from './pages/AlertsPage';
 import AvatarPage from './pages/AvatarPage';
@@ -38,22 +36,22 @@ import CardPage from './pages/CardPage';
 import CarouselPage from './pages/CarouselPage';
 import DashboardPage from './pages/DashboardPage';
 import DropdownPage from './pages/DropdownPage';
-import FormsPage from './pages/FormsPage';
 import FooterPage from './pages/FooterPage';
+import FormsPage from './pages/FormsPage';
 import ListGroupPage from './pages/ListGroupPage';
 import ModalPage from './pages/ModalPage';
 import NavbarPage from './pages/NavbarPage';
 import PaginationPage from './pages/PaginationPage';
 import ProgressPage from './pages/ProgressPage';
 import RatingPage from './pages/RatingPage';
+import SidebarPage from './pages/SidebarPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TablePage from './pages/TablePage';
-import ToastPage from './pages/ToastPage';
-import TimelinePage from './pages/TimelinePage';
-import TooltipsPage from './pages/TooltipsPage';
-import SidebarPage from './pages/SidebarPage';
 import TabsPage from './pages/TabsPage';
 import ThemePage from './pages/ThemePage';
+import TimelinePage from './pages/TimelinePage';
+import ToastPage from './pages/ToastPage';
+import TooltipsPage from './pages/TooltipsPage';
 
 export type ComponentCardItem = {
   className: string;

@@ -3,7 +3,6 @@ import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-
 import type { AccordionProps } from '.';
 import { Accordion } from '.';
 import { Flowbite } from '../Flowbite';

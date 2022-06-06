@@ -1,8 +1,8 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
-import { useTheme } from '../Flowbite/ThemeContext';
-import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
+import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface BadgeProps extends PropsWithChildren<Omit<ComponentProps<'span'>, 'color'>> {
   color?: keyof BadgeColors;

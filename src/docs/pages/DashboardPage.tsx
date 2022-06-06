@@ -1,10 +1,9 @@
+import classNames from 'classnames';
 import type { FC } from 'react';
 import { HiExternalLink } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
-import classNames from 'classnames';
-
-import { routes } from '../routes';
 import { getImageUrl } from '../../lib/helpers/getImageUrl';
+import { routes } from '../routes';
 
 const DashboardPage: FC = () => {
   return (
