@@ -63,7 +63,13 @@ const SidebarItem: FC<SidebarItemProps> = ({
         )}
         {...theirProps}
       >
-        {Icon && <Icon aria-hidden className={classNames(theme.icon.base, isActive && theme.icon.active)} />}
+        {Icon && (
+          <Icon
+            aria-hidden
+            className={classNames(theme.icon.base, isActive && theme.icon.active)}
+            data-testid="flowbite-sidebar-item-icon"
+          />
+        )}
         <span
           className={classNames(theme.content.base, isCollapsed && theme.content.collapsed)}
           data-testid="flowbite-sidebar-item-content"

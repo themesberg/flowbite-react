@@ -9,7 +9,7 @@ const SidebarItemGroup: FC<PropsWithChildren<Omit<ComponentProps<'ul'>, 'classNa
   const theme = useTheme().theme.sidebar.itemGroup;
 
   return (
-    <ul className={theme} data-testid="sidebar-item-group" {...theirProps}>
+    <ul className={theme} data-testid="flowbite-sidebar-item-group" {...theirProps}>
       <SidebarItemContext.Provider value={{ isInsideCollapse: false }}>{children}</SidebarItemContext.Provider>
     </ul>
   );

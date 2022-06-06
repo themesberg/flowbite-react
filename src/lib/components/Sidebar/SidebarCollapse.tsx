@@ -40,12 +40,20 @@ const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label
         type="button"
         {...theirProps}
       >
-        {Icon && <Icon aria-hidden className={classNames(theme.icon.base, theme.icon.open[isOpen ? 'on' : 'off'])} />}
+        {Icon && (
+          <Icon
+            aria-hidden
+            className={classNames(theme.icon.base, theme.icon.open[isOpen ? 'on' : 'off'])}
+            data-testid="flowbite-sidebar-collapse-icon"
+          />
+        )}
         {isCollapsed ? (
           <span className="sr-only">{label}</span>
         ) : (
           <>
-            <span className={theme.label.base}>{label}</span>
+            <span className={theme.label.base} data-testid="flowbite-sidebar-collapse-label">
+              {label}
+            </span>
             <HiChevronDown aria-hidden className={theme.label.icon} />
           </>
         )}
