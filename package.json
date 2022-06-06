@@ -95,6 +95,7 @@
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-plugin-storybook": "^0.5.12",
+    "eslint-plugin-tailwindcss": "^3.5.0",
     "flowbite": "^1.4.2",
     "husky": "^7.0.4",
     "jsdom": "^19.0.0",
