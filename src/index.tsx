@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Flowbite } from './lib/components';
 
 import './index.css';
-import 'flowbite';
 
 const container = document.getElementById('root');
 
