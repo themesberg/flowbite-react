@@ -8,6 +8,7 @@ import type { DeepPartial } from '../../helpers/deep-partial';
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
 import type { StarSizes } from '../Rating';
 import type { ModalPositions, ModalSizes } from '../Modal';
+import type { SidebarCTAColors } from '../Sidebar/SidebarCTA';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
@@ -226,6 +227,49 @@ export interface FlowbiteTheme {
       };
     };
   };
+  sidebar: {
+    base: string;
+    collapsed: FlowbiteBoolean;
+    inner: string;
+    collapse: {
+      button: string;
+      icon: {
+        base: string;
+        open: FlowbiteBoolean;
+      };
+      label: {
+        base: string;
+        icon: string;
+      };
+      list: string;
+    };
+    cta: {
+      base: string;
+      color: SidebarCTAColors;
+    };
+    item: {
+      active: string;
+      base: string;
+      collapsed: {
+        insideCollapse: string;
+      };
+      content: {
+        base: string;
+        collapsed: string;
+      };
+      icon: {
+        base: string;
+        active: string;
+      };
+    };
+    items: string;
+    itemGroup: string;
+    logo: {
+      base: string;
+      collapsed: FlowbiteBoolean;
+      img: string;
+    };
+  };
   spinner: {
     base: string;
     color: SpinnerColors;
@@ -279,19 +323,23 @@ export interface FlowbiteBoolean {
 }
 
 export interface FlowbiteColors {
+  blue: string;
   cyan: string;
   dark: string;
   failure: string;
   gray: string;
+  green: string;
   indigo: string;
   info: string;
   light: string;
   lime: string;
   pink: string;
   purple: string;
+  red: string;
   success: string;
   teal: string;
   warning: string;
+  yellow: string;
 }
 
 export interface FlowbiteGradientColors {
