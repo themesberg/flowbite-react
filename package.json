@@ -41,7 +41,8 @@
     "start": "react-app-rewired start",
     "start:storybook": "start-storybook -p 6006",
     "test": "vitest",
-    "test:coverage": "vitest --coverage",
+    "test:coverage": "vitest run --coverage",
+    "test:open": "vitest --ui",
     "test:e2e": "start-test 3000 cypress:run",
     "test:e2e:open": "start-test 3000 cypress:open"
   },
@@ -82,6 +83,7 @@
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
     "@vitejs/plugin-react": "^1.3.2",
+    "@vitest/ui": "^0.14.0",
     "autoprefixer": "^10.4.4",
     "axe-core": "^4.4.1",
     "babel-loader": "^8.2.4",
