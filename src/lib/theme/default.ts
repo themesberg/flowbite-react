@@ -259,6 +259,10 @@ export default {
       snap: 'snap-x',
     },
   },
+  darkThemeToggle: {
+    base: 'rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700',
+    icon: 'h-5 w-5',
+  },
   modal: {
     base: 'fixed top-0 right-0 left-0 z-50 h-modal overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
     show: {

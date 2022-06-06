@@ -143,6 +143,10 @@ export interface FlowbiteTheme {
       snap: string;
     };
   };
+  darkThemeToggle: {
+    base: string;
+    icon: string;
+  };
   modal: {
     base: string;
     show: FlowbiteBoolean;
