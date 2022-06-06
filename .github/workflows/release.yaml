@@ -4,15 +4,70 @@ on:
   release:
     types: [published]
 
+concurrency: release-${{ github.ref }}
+
 jobs:
+  prepare:  
+    name: ⚡ Initialize & Caching
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Check out the code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: 💿 Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: yarn
+        
+      - name: ⏳ Setup Cache 
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
+      - name: 🏭 Install dependencies
+        run: yarn install
+
   release:
     name: 📦 Publishing the release
     runs-on: ubuntu-latest
+    needs: [prepare]
+
     steps:
       - name: 📥 Check out the code
         uses: actions/checkout@v3
 
-      - name: 💿 Setup NodeJS 16
+      - name: 💿 Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+          cache: yarn
+      
+      - name: 🏭 Install packages
+        run: yarn install
+    
+      # - name: 🚀 Publish the release
+      #   run: yarn publish --access public
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+
+  pages:
+    name: 🌍 Publishing the website
+    runs-on: ubuntu-latest
+    needs: [release]
+
+    steps:
+      - name: 📥 Check out the code
+        uses: actions/checkout@v3
+
+      - name: 💿 Setup Node 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
@@ -24,11 +79,6 @@ jobs:
 
       - name: 🧰 Build code
         run: yarn build
-
-      - name: 🚀 Publish the release
-        run: yarn publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
 
       - name: 📖 Build Storybook
         run: yarn build:storybook
