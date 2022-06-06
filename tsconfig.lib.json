@@ -2,10 +2,6 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "CommonJS",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
     "outDir": "lib/cjs"
   },
   "exclude": ["**/*.spec.tsx", "**/*.stories.tsx"],
