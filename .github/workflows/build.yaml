@@ -45,10 +45,12 @@ jobs:
         run: yarn build
 
       - name: 📊 Upload coverage to Codecov 
-        run: |
-          curl -Os https://uploader.codecov.io/latest/linux/codecov
-          chmod +x codecov
-          ./codecov
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: false
+          files: coverage/coverage-final.json
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: false
 
       - name: 📖 Build Storybook 
         run: yarn build:storybook
