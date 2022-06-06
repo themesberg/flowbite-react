@@ -1,3 +1,4 @@
+import { describe, expect, it } from 'vitest';
 import { mergeDeep } from './mergeDeep';
 
 describe('Helper / mergeDeep (Deeply merge two objects)', () => {

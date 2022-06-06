@@ -2,11 +2,12 @@ import type { RenderResult } from '@testing-library/react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
-import { vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+
 import { TextInput } from './TextInput';
 import { ToggleSwitch } from './ToggleSwitch';
 
-describe('Components / Form controls / Toggle switch', () => {
+describe.concurrent('Components / Form controls / Toggle switch', () => {
   it('should render', () => {
     render(<ToggleSwitch checked={false} label="Enable" onChange={console.log} />);
   });

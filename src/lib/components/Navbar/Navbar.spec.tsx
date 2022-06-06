@@ -1,8 +1,10 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe, expect, it } from 'vitest';
+
 import { Navbar } from '.';
 
-describe('Navbar', () => {
+describe.concurrent('Navbar', () => {
   describe('its toggle button', () => {
     describe('when clicked', () => {
       describe('when Navbar is collapsed', () => {

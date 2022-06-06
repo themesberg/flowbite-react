@@ -2,9 +2,11 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { HiUserCircle, HiAdjustments, HiClipboardList } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
+import { describe, expect, it } from 'vitest';
+
 import { Tabs } from '.';
 
-describe('Components / Tabs', () => {
+describe.concurrent('Components / Tabs', () => {
   describe('when clicked', () => {
     it('should open clicked tab', () => {
       const { getAllByRole } = render(<TestTabs />);

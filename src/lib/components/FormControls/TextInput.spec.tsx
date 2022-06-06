@@ -1,7 +1,9 @@
 import { render } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
 import { TextInput } from './TextInput';
 
-describe('Components / Form controls / Text input', () => {
+describe.concurrent('Components / Form controls / Text input', () => {
   it('should render', () => {
     render(<TextInput />);
   });

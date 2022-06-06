@@ -2,9 +2,11 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
+import { describe, expect, it } from 'vitest';
+
 import { Alert } from '.';
 
-describe('Alert', () => {
+describe.concurrent('Alert', () => {
   describe('that is dismissable', () => {
     describe('and user clicks X to dismiss', () => {
       it('should run its dismiss callback', () => {

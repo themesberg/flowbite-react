@@ -1,8 +1,10 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe, expect, it } from 'vitest';
+
 import { Dropdown } from '.';
 
-describe('Components / Dropdown', () => {
+describe.concurrent('Components / Dropdown', () => {
   describe('Collapsed', () => {
     describe('when trigger is clicked', () => {
       it('should expand', () => {

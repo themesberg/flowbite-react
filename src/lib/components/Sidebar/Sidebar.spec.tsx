@@ -2,10 +2,12 @@ import type { RenderResult } from '@testing-library/react';
 import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { HiChartPie, HiInbox, HiShoppingBag } from 'react-icons/hi';
+import { describe, expect, it } from 'vitest';
+
 import type { SidebarProps } from '.';
 import { Sidebar } from '.';
 
-describe('Components / Sidebar', () => {
+describe.concurrent('Components / Sidebar', () => {
   describe('A11y', () => {
     it('should use `aria-label` if provided', () => {
       const { getByLabelText } = render(<TestSidebar aria-label="My differently labelled sidebar" />);

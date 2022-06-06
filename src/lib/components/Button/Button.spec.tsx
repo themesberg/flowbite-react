@@ -1,11 +1,12 @@
 import type { RenderResult } from '@testing-library/react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+
 import { Button } from '.';
 import { Flowbite } from '../Flowbite';
 
-describe('Components / Button', () => {
+describe.concurrent('Components / Button', () => {
   describe('A11y', () => {
     it('should have `role="button"` by default', () => {
       const button = getButton(render(<Button>Hi there</Button>));

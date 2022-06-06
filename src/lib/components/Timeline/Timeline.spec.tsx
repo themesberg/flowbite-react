@@ -1,19 +1,20 @@
-import type { FC } from 'react';
 import { cleanup, render } from '@testing-library/react';
+import type { FC } from 'react';
+import { describe, expect, it } from 'vitest';
 
 import type { TimelineProps } from '.';
 import { Timeline } from '.';
 
-describe('Timeline Component', () => {
+describe.concurrent('Components / Timeline', () => {
   afterEach(cleanup);
 
   it('should be able to render a timeline component', () => {
-    const { getByTestId } = render(<TestComponent />);
+    const { getByTestId } = render(<TestTimeline />);
     expect(getByTestId('timeline-component')).toBeTruthy();
   });
 
   it('should be able to render a horizontal timeline component', () => {
-    const { getAllByTestId } = render(<TestComponent horizontal />);
+    const { getAllByTestId } = render(<TestTimeline horizontal />);
     const timelineItems = getAllByTestId('timeline-item');
     const timelineContents = getAllByTestId('timeline-content');
     const timelinePoints = getAllByTestId('timeline-point');
@@ -24,7 +25,7 @@ describe('Timeline Component', () => {
   });
 });
 
-const TestComponent: FC<TimelineProps> = (props) => (
+const TestTimeline: FC<TimelineProps> = (props) => (
   <Timeline {...props}>
     <Timeline.Item>
       <Timeline.Point>

@@ -17,6 +17,6 @@ export default defineConfig({
     environment: 'jsdom',
     exclude: ['cypress', 'lib', 'node_modules'],
     globals: true,
-    setupFiles: 'src/setupTests.js',
+    setupFiles: 'src/setup-tests.ts',
   },
 });

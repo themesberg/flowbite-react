@@ -1,14 +1,12 @@
-import { cleanup, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { vi } from 'vitest';
+import { render } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
+import { describe, expect, it, vi } from 'vitest';
+
 import { Toast } from '.';
 
-describe('Toast Component', () => {
-  afterEach(() => {
-    cleanup;
-    vi.clearAllTimers();
-  });
+describe('Components / Toast', () => {
+  afterEach(() => vi.clearAllTimers());
 
   it('should be able to render a toast', () => {
     const { getByTestId } = render(<Toast />);

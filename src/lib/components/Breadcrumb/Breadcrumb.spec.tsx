@@ -1,9 +1,11 @@
 import { render } from '@testing-library/react';
 import { HiHome } from 'react-icons/hi';
+import { describe, expect, it } from 'vitest';
+
 import { Breadcrumb } from '.';
 import { Flowbite } from '../Flowbite';
 
-describe('Components / Breadcrumb', () => {
+describe.concurrent('Components / Breadcrumb', () => {
   describe('Props', () => {
     it('should ignore `className` on `Breadcrumb.Item`s', () => {
       const { getByRole } = render(
