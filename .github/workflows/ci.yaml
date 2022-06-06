@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency: ${{ github.ref }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Check out the code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: 💿 Setup NodeJS 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: ⏳ Setup Cache 
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
+      - name: 🏭 Install packages
+        run: yarn install
+
+      - name: 🕵 Lint the code
+        run: yarn lint
+
+      - name: 💅 Run Prettier
+        run: yarn prettier
+
+      - name: 🔬 Run unit tests
+        run: yarn test:coverage
+
+      - name: 📊 Upload coverage to Codecov 
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
+          files: coverage/coverage-final.json
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true
+
+      - name: 🧰 Build code
+        run: yarn build
+
+      - name: 📖 Build Storybook 
+        run: yarn build:storybook
