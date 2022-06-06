@@ -39,7 +39,7 @@ jobs:
         run: yarn prettier
 
       - name: 🔬 Run unit tests
-        run: yarn test
+        run: yarn test:coverage
 
       - name: 🧰 Build code
         run: yarn build
