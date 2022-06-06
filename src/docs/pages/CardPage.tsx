@@ -338,7 +338,7 @@ const CardPage: FC = () => {
               <ul className="divide-y divide-gray-200 dark:divide-gray-700">
                 <li className="py-3 sm:py-4">
                   <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <img
                         className="h-8 w-8 rounded-full"
                         src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
@@ -356,7 +356,7 @@ const CardPage: FC = () => {
                 </li>
                 <li className="py-3 sm:py-4">
                   <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <img
                         className="h-8 w-8 rounded-full"
                         src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
@@ -374,7 +374,7 @@ const CardPage: FC = () => {
                 </li>
                 <li className="py-3 sm:py-4">
                   <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <img
                         className="h-8 w-8 rounded-full"
                         src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
@@ -392,7 +392,7 @@ const CardPage: FC = () => {
                 </li>
                 <li className="py-3 sm:py-4">
                   <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <img
                         className="h-8 w-8 rounded-full"
                         src="https://flowbite.com/docs/images/people/profile-picture-4.jpg"
@@ -410,7 +410,7 @@ const CardPage: FC = () => {
                 </li>
                 <li className="pt-3 pb-0 sm:pt-4">
                   <div className="flex items-center space-x-4">
-                    <div className="flex-shrink-0">
+                    <div className="shrink-0">
                       <img
                         className="h-8 w-8 rounded-full"
                         src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
@@ -447,7 +447,7 @@ const CardPage: FC = () => {
             <ul role="list" className="my-7 space-y-5">
               <li className="flex space-x-3">
                 <svg
-                  className="h-5 w-5 flex-shrink-0 text-blue-600 dark:text-blue-500"
+                  className="h-5 w-5 shrink-0 text-blue-600 dark:text-blue-500"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -464,7 +464,7 @@ const CardPage: FC = () => {
               </li>
               <li className="flex space-x-3">
                 <svg
-                  className="h-5 w-5 flex-shrink-0 text-blue-600 dark:text-blue-500"
+                  className="h-5 w-5 shrink-0 text-blue-600 dark:text-blue-500"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -481,7 +481,7 @@ const CardPage: FC = () => {
               </li>
               <li className="flex space-x-3">
                 <svg
-                  className="h-5 w-5 flex-shrink-0 text-blue-600 dark:text-blue-500"
+                  className="h-5 w-5 shrink-0 text-blue-600 dark:text-blue-500"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -498,7 +498,7 @@ const CardPage: FC = () => {
               </li>
               <li className="flex space-x-3 line-through decoration-gray-500">
                 <svg
-                  className="h-5 w-5 flex-shrink-0 text-gray-400 dark:text-gray-500"
+                  className="h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -513,7 +513,7 @@ const CardPage: FC = () => {
               </li>
               <li className="flex space-x-3 line-through decoration-gray-500">
                 <svg
-                  className="h-5 w-5 flex-shrink-0 text-gray-400 dark:text-gray-500"
+                  className="h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -528,7 +528,7 @@ const CardPage: FC = () => {
               </li>
               <li className="flex space-x-3 line-through decoration-gray-500">
                 <svg
-                  className="h-5 w-5 flex-shrink-0 text-gray-400 dark:text-gray-500"
+                  className="h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -543,7 +543,7 @@ const CardPage: FC = () => {
               </li>
               <li className="flex space-x-3 line-through decoration-gray-500">
                 <svg
-                  className="h-5 w-5 flex-shrink-0 text-gray-400 dark:text-gray-500"
+                  className="h-5 w-5 shrink-0 text-gray-400 dark:text-gray-500"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"

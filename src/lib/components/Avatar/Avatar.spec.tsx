@@ -8,9 +8,9 @@ import AvatarGroup from './AvatarGroup';
 describe.concurrent('Components / Avatar', () => {
   describe('Theme', () => {
     it("shouldn't be able to set className directly", () => {
-      const { getByTestId } = render(<Avatar className="test testing" />);
+      const { getByTestId } = render(<Avatar className="text-gray-100" />);
 
-      expect(getByTestId('avatar-element')).not.toHaveClass('test testing');
+      expect(getByTestId('avatar-element')).not.toHaveClass('text-gray-100');
     });
 
     it('should be able to apply custom classes', () => {

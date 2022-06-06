@@ -108,14 +108,14 @@ describe.concurrent('Components / Accordion', () => {
 
   describe('Props', () => {
     it('should ignore `className`', () => {
-      const { getAllByTestId, getAllByRole, getByTestId } = render(<TestAccordion className="no-classname" />);
+      const { getAllByTestId, getAllByRole, getByTestId } = render(<TestAccordion className="text-blue-300" />);
       const accordion = getAccordion({ getByTestId });
       const content = getAccordionContent({ getAllByTestId })[0];
       const title = getAccordionTitles({ getAllByRole })[0];
 
-      expect(accordion).not.toHaveClass('no-classname');
-      expect(content).not.toHaveClass('no-classname');
-      expect(title).not.toHaveClass('no-classname');
+      expect(accordion).not.toHaveClass('text-blue-300');
+      expect(content).not.toHaveClass('text-blue-300');
+      expect(title).not.toHaveClass('text-blue-300');
     });
 
     describe('`Accordion.Title`', () => {
@@ -290,10 +290,10 @@ describe.concurrent('Components / Accordion', () => {
 const TestAccordion = (props: Omit<AccordionProps, 'children'>): JSX.Element => (
   <Accordion arrowIcon={HiOutlineArrowCircleDown} {...props}>
     <Accordion.Panel>
-      <Accordion.Title as="h3" className="no-classname" id="accordion-title">
+      <Accordion.Title as="h3" className="text-blue-300" id="accordion-title">
         Title
       </Accordion.Title>
-      <Accordion.Content aria-labelledby="accordion-title" className="no-classname">
+      <Accordion.Content aria-labelledby="accordion-title" className="text-blue-300">
         <p>Content</p>
       </Accordion.Content>
     </Accordion.Panel>
