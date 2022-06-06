@@ -13,9 +13,42 @@ on:
 concurrency: ci-${{ github.ref }}
 
 jobs:
+  prepare:  
+    name: ⚡ Initialize & Caching
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        os: [ubuntu-latest]
+
+    steps:
+      - name: 📥 Check out the code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: 💿 Setup Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+        
+      - name: ⏳ Setup Cache 
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
+      - name: 🏭 Install dependencies
+        run: yarn install
+
   quality:  
     name: 🔍 Checking the code
     runs-on: ${{ matrix.os }}
+    needs: [prepare]
 
     strategy:
       matrix:
@@ -63,9 +96,9 @@ jobs:
 
   security:
     if: github.event_name != 'pull_request'
-    name: 🚨 Checking for vulnerabilities
+    name: 🚨 Running security check
     runs-on: ${{ matrix.os }}
-    needs: [quality]
+    needs: [prepare]
 
     strategy:
       matrix:
@@ -101,7 +134,7 @@ jobs:
   build:
     name: 🔍 Building the code
     runs-on: ${{ matrix.os }}
-    needs: [quality]
+    needs: [quality, security]
 
     strategy:
       matrix:
