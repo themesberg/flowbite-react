@@ -37,7 +37,13 @@ jobs:
         run: yarn prettier
 
       - name: Run unit tests 🔬
-        run: yarn test
+        run: yarn test:coverage
+
+      - name: Upload coverage to Codecov 📊
+        run: |
+          curl -Os https://uploader.codecov.io/latest/linux/codecov
+          chmod +x codecov
+          ./codecov
 
       - name: Build code 🛠
         run: yarn build
