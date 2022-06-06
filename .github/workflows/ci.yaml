@@ -8,7 +8,7 @@ on:
 concurrency: ci-${{ github.ref }}
 
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Check out the code
@@ -32,20 +32,12 @@ jobs:
       - name: 🏭 Install packages
         run: yarn install
 
-  validate:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
       - name: 🕵 Lint the code
         run: yarn lint
 
       - name: 💅 Run Prettier
         run: yarn prettier
 
-  test:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
       - name: 🔬 Run unit tests
         run: yarn test:coverage
 
@@ -57,10 +49,6 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
 
-  build:
-    needs: [setup, validate, test]
-    runs-on: ubuntu-latest
-    steps:
       - name: 🧰 Build code
         run: yarn build
 
