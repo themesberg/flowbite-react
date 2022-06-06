@@ -1,6 +1,7 @@
 import type { RenderResult } from '@testing-library/react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
 import { Button } from '.';
 import { Flowbite } from '../Flowbite';
 import defaultTheme from '../../theme/default';
@@ -39,7 +40,7 @@ describe('Components / Button group', () => {
   describe('Keyboard interactions', () => {
     describe('`Space`', () => {
       it('should trigger `onClick` of focused `Button`', () => {
-        const onClick = jest.fn();
+        const onClick = vi.fn();
         const buttons = getButtons(
           render(
             <Button.Group>

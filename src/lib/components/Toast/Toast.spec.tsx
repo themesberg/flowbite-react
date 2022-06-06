@@ -1,13 +1,12 @@
-import { cleanup, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { render } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
+import { describe, expect, it, vi } from 'vitest';
+
 import { Toast } from '.';
 
-describe('Toast Component', () => {
-  afterEach(() => {
-    cleanup;
-    jest.clearAllTimers();
-  });
+describe('Components / Toast', () => {
+  afterEach(() => vi.clearAllTimers());
 
   it('should be able to render a toast', () => {
     const { getByTestId } = render(<Toast />);
@@ -24,7 +23,7 @@ describe('Toast Component', () => {
   });
 
   it('should be able to render a hidden toast after 75ms', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { getByTestId } = render(
       <Toast duration={75}>
         <Toast.Toggle />
@@ -32,14 +31,14 @@ describe('Toast Component', () => {
     );
     userEvent.click(getByTestId('toast-toggle-element'));
     act(() => {
-      jest.advanceTimersByTime(75);
+      vi.advanceTimersByTime(75);
     });
     expect(getByTestId('toast-element').className).toContain('hidden');
     expect(getByTestId('toast-element').className).toContain('duration-75');
   });
 
   it('should be able to render a hidden toast after 100ms', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { getByTestId } = render(
       <Toast duration={100}>
         <Toast.Toggle />
@@ -47,14 +46,14 @@ describe('Toast Component', () => {
     );
     userEvent.click(getByTestId('toast-toggle-element'));
     act(() => {
-      jest.advanceTimersByTime(100);
+      vi.advanceTimersByTime(100);
     });
     expect(getByTestId('toast-element').className).toContain('hidden');
     expect(getByTestId('toast-element').className).toContain('duration-100');
   });
 
   it('should be able to render a hidden toast after 150ms', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { getByTestId } = render(
       <Toast duration={150}>
         <Toast.Toggle />
@@ -62,14 +61,14 @@ describe('Toast Component', () => {
     );
     userEvent.click(getByTestId('toast-toggle-element'));
     act(() => {
-      jest.advanceTimersByTime(150);
+      vi.advanceTimersByTime(150);
     });
     expect(getByTestId('toast-element').className).toContain('hidden');
     expect(getByTestId('toast-element').className).toContain('duration-150');
   });
 
   it('should be able to render a hidden toast after 200ms', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { getByTestId } = render(
       <Toast duration={200}>
         <Toast.Toggle />
@@ -77,14 +76,14 @@ describe('Toast Component', () => {
     );
     userEvent.click(getByTestId('toast-toggle-element'));
     act(() => {
-      jest.advanceTimersByTime(200);
+      vi.advanceTimersByTime(200);
     });
     expect(getByTestId('toast-element').className).toContain('hidden');
     expect(getByTestId('toast-element').className).toContain('duration-200');
   });
 
   it('should be able to render a hidden toast after 300ms', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { getByTestId } = render(
       <Toast duration={300}>
         <Toast.Toggle />
@@ -92,14 +91,14 @@ describe('Toast Component', () => {
     );
     userEvent.click(getByTestId('toast-toggle-element'));
     act(() => {
-      jest.advanceTimersByTime(300);
+      vi.advanceTimersByTime(300);
     });
     expect(getByTestId('toast-element').className).toContain('hidden');
     expect(getByTestId('toast-element').className).toContain('duration-300');
   });
 
   it('should be able to render a hidden toast after 500ms', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { getByTestId } = render(
       <Toast duration={500}>
         <Toast.Toggle />
@@ -107,14 +106,14 @@ describe('Toast Component', () => {
     );
     userEvent.click(getByTestId('toast-toggle-element'));
     act(() => {
-      jest.advanceTimersByTime(500);
+      vi.advanceTimersByTime(500);
     });
     expect(getByTestId('toast-element').className).toContain('hidden');
     expect(getByTestId('toast-element').className).toContain('duration-500');
   });
 
   it('should be able to render a hidden toast after 700ms', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { getByTestId } = render(
       <Toast duration={700}>
         <Toast.Toggle />
@@ -122,14 +121,14 @@ describe('Toast Component', () => {
     );
     userEvent.click(getByTestId('toast-toggle-element'));
     act(() => {
-      jest.advanceTimersByTime(700);
+      vi.advanceTimersByTime(700);
     });
     expect(getByTestId('toast-element').className).toContain('hidden');
     expect(getByTestId('toast-element').className).toContain('duration-700');
   });
 
   it('should be able to render a hidden toast after 1000ms', () => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     const { getByTestId } = render(
       <Toast duration={1000}>
         <Toast.Toggle />
@@ -137,7 +136,7 @@ describe('Toast Component', () => {
     );
     userEvent.click(getByTestId('toast-toggle-element'));
     act(() => {
-      jest.advanceTimersByTime(1000);
+      vi.advanceTimersByTime(1000);
     });
     expect(getByTestId('toast-element').className).toContain('hidden');
     expect(getByTestId('toast-element').className).toContain('duration-1000');

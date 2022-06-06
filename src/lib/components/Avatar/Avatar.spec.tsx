@@ -1,10 +1,12 @@
 import { render } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
 import { Avatar } from '.';
 import { Flowbite } from '../Flowbite';
 import type { CustomFlowbiteTheme } from '../Flowbite/FlowbiteTheme';
 import AvatarGroup from './AvatarGroup';
 
-describe('Components / Avatar', () => {
+describe.concurrent('Components / Avatar', () => {
   describe('Theme', () => {
     it("shouldn't be able to set className directly", () => {
       const { getByTestId } = render(<Avatar className="test testing" />);

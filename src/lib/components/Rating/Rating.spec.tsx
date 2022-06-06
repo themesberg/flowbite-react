@@ -1,7 +1,9 @@
 import { render } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
 import { Rating } from '.';
 
-describe('Rating', () => {
+describe.concurrent('Rating', () => {
   describe('with a star that is not filled', () => {
     it('should visually distinguish the star in gray', () => {
       const { getAllByTestId } = render(<AdvancedRating />);

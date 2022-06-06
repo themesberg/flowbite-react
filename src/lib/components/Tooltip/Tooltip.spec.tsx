@@ -1,9 +1,11 @@
-import { Tooltip } from './index';
-import { Button } from '../Button';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { describe, expect, it } from 'vitest';
 
-describe('Tooltip', () => {
+import { Tooltip } from './index';
+import { Button } from '../Button';
+
+describe.concurrent('Tooltip', () => {
   it('should display when target is focused', () => {
     const { getAllByTestId } = render(<TooltipTests />);
     const tooltip = getAllByTestId('tooltip')[0];

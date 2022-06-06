@@ -1,10 +1,34 @@
+import { render } from '@testing-library/react';
 import type { FC } from 'react';
-import { cleanup, render } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
 
 import type { TableProps } from '.';
 import { Table } from '.';
 
-const TestComponent: FC<TableProps> = (props) => (
+describe.concurrent('Components / Table', () => {
+  it('should be able to render a table', () => {
+    const { getByTestId } = render(<TestTable />);
+    expect(getByTestId('table-element')).toBeTruthy();
+  });
+
+  it('should be able to render a striped table', () => {
+    const { getAllByTestId } = render(<TestTable striped />);
+    const rows = getAllByTestId('table-row-element');
+
+    expect(rows.length).toEqual(5);
+    expect(rows[0].className).toContain('odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700');
+  });
+
+  it('should be able to render a hoverable table', () => {
+    const { getAllByTestId } = render(<TestTable hoverable />);
+    const rows = getAllByTestId('table-row-element');
+
+    expect(rows.length).toEqual(5);
+    expect(rows[0].className).toContain('hover:bg-gray-50 dark:hover:bg-gray-600');
+  });
+});
+
+const TestTable: FC<TableProps> = (props) => (
   <Table {...props}>
     <Table.Head>
       <Table.HeadCell>Product name</Table.HeadCell>
@@ -80,28 +104,3 @@ const TestComponent: FC<TableProps> = (props) => (
     </Table.Body>
   </Table>
 );
-
-describe('Table Component', () => {
-  afterEach(cleanup);
-
-  it('should be able to render a table', () => {
-    const { getByTestId } = render(<TestComponent />);
-    expect(getByTestId('table-element')).toBeTruthy();
-  });
-
-  it('should be able to render a striped table', () => {
-    const { getAllByTestId } = render(<TestComponent striped />);
-    const rows = getAllByTestId('table-row-element');
-
-    expect(rows.length).toEqual(5);
-    expect(rows[0].className).toContain('odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700');
-  });
-
-  it('should be able to render a hoverable table', () => {
-    const { getAllByTestId } = render(<TestComponent hoverable />);
-    const rows = getAllByTestId('table-row-element');
-
-    expect(rows.length).toEqual(5);
-    expect(rows[0].className).toContain('hover:bg-gray-50 dark:hover:bg-gray-600');
-  });
-});

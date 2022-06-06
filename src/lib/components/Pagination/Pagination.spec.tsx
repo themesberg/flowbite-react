@@ -2,9 +2,11 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { useState, useEffect } from 'react';
+import { describe, expect, it } from 'vitest';
+
 import { Pagination } from '.';
 
-describe('Pagination', () => {
+describe.concurrent('Pagination', () => {
   describe('Previous button', () => {
     describe('when clicked', () => {
       describe('on first page', () => {

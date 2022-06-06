@@ -2,9 +2,11 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { HiCloudDownload } from 'react-icons/hi';
+import { describe, expect, it } from 'vitest';
+
 import { ListGroup } from '.';
 
-describe('List group', () => {
+describe.concurrent('Components / List group', () => {
   describe('items', () => {
     describe('with a callback action (onClick)', () => {
       describe('and user clicks the item', () => {

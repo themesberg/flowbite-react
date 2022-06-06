@@ -1,7 +1,9 @@
 import { render } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
 import { Progress } from '.';
 
-describe('Components / Progress', () => {
+describe.concurrent('Components / Progress', () => {
   it('should render', () => {
     render(<Progress progress={45} />);
   });

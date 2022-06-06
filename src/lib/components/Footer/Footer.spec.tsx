@@ -1,8 +1,10 @@
 import { cleanup, render } from '@testing-library/react';
-import { Footer } from '.';
 import { BsFacebook } from 'react-icons/bs';
+import { describe, expect, it } from 'vitest';
 
-describe('Footer Component should be able to render a', () => {
+import { Footer } from '.';
+
+describe.concurrent('Footer Component should be able to render a', () => {
   afterEach(cleanup);
 
   it('footer', () => {

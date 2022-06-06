@@ -1,9 +1,11 @@
 import { render } from '@testing-library/react';
 import { HiCheck } from 'react-icons/hi';
+import { describe, expect, it } from 'vitest';
+
 import { Badge } from '.';
 import { Flowbite } from '../Flowbite';
 
-describe('Components / Badge', () => {
+describe.concurrent('Components / Badge', () => {
   describe('Props', () => {
     it('should ignore `className`', () => {
       const { getByTestId } = render(

@@ -1,8 +1,10 @@
 import { render } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
 import { Select } from './Select';
 import { Textarea } from './Textarea';
 
-describe('Components / Form controls / Select', () => {
+describe.concurrent('Components / Form controls / Select', () => {
   it('should render', () => {
     render(<Textarea rows={3} />);
   });

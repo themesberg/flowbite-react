@@ -1,9 +1,11 @@
 import type { RenderResult } from '@testing-library/react';
 import { render } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
 import { Card } from '.';
 import { Flowbite } from '../Flowbite';
 
-describe('Components / Card', () => {
+describe.concurrent('Components / Card', () => {
   describe('A11y', () => {
     it('should allow `aria-label`', () => {
       const card = getCard(render(<Card aria-label="My card" />));

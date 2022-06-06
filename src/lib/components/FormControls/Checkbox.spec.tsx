@@ -1,7 +1,9 @@
 import { render } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
 import { Checkbox } from './Checkbox';
 
-describe('Components / Form controls / Checkbox', () => {
+describe.concurrent('Components / Form controls / Checkbox', () => {
   it('should render', () => {
     render(<Checkbox />);
   });

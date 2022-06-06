@@ -4,13 +4,18 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNext"
+    "target": "ESNext",
+    "types": ["@testing-library/jest-dom", "node", "vitest"]
   }
 }

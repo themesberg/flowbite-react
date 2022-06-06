@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
 import { HiGlobe, HiLockClosed } from 'react-icons/hi';
+import { describe, expect, it } from 'vitest';
+
 import { Button } from '../Button';
 import { Checkbox } from './Checkbox';
 import { FileInput } from './FileInput';
@@ -10,7 +12,7 @@ import { Textarea } from './Textarea';
 import { TextInput } from './TextInput';
 import { ToggleSwitch } from './ToggleSwitch';
 
-describe('Components / Form controls / Label', () => {
+describe.concurrent('Components / Form controls / Label', () => {
   it('should render', () => {
     render(<Label>Hello</Label>);
   });
