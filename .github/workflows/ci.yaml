@@ -61,6 +61,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     needs: [quality]
 
+    strategy:
+      matrix:
+        node-version: [16.x]
+        os: [ubuntu-latest]
+
     steps:
       - name: 📥 Check out the code
         uses: actions/checkout@v3
