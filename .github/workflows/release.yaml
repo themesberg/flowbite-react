@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release:
+    name: 📦 Publishing the release
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Check out the code
+        uses: actions/checkout@v3
+
+      - name: 💿 Setup NodeJS 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org
+          cache: yarn
+      
+      - name: 🏭 Install packages
+        run: yarn install
+
+      - name: 🧰 Build code
+        run: yarn build
+
+      - name: 🚀 Publish the release
+        run: yarn publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+
+      - name: 📖 Build Storybook
+        run: yarn build:storybook
+
+      - name: 🚀 Deploy the website
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build

@@ -11,6 +11,7 @@ concurrency: build-${{ github.ref }}
 
 jobs:
   build:
+    name: 🔧 Building the code
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Check out the code
@@ -20,6 +21,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
+          cache: yarn
 
       - name: ⏳ Setup Cache
         uses: actions/cache@v3

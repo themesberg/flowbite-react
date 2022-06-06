@@ -9,7 +9,7 @@ concurrency: ci-${{ github.ref }}
 
 jobs:
   check:
-    name: 🔍 Check the code
+    name: 🔍 Checking the code
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Check out the code
@@ -49,24 +49,6 @@ jobs:
           files: coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
-
-  build:
-    name: 🔧 Build the code
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📥 Check out the code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
-
-      - name: 💿 Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: yarn
-
-      - name: 🏭 Install dependencies
-        run: yarn install
 
       - name: 🧰 Build code
         run: yarn build
