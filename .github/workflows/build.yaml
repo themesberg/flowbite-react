@@ -1,4 +1,4 @@
-name: Publish Docs
+name: Build
 
 on:
   push:
@@ -13,15 +13,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out the code 🗄
+      - name: 📥 Check out the code
         uses: actions/checkout@v3
 
-      - name: Setup NodeJS 16 💿
+      - name: 💿 Setup NodeJS 16
         uses: actions/setup-node@v3
         with:
           node-version: 16
 
-      - name: Setup Cache 🗂
+      - name: ⏳ Setup Cache 
         uses: actions/cache@v3
         with:
           path: '**/node_modules'
@@ -29,25 +29,31 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-modules-
 
-      - name: Install packages 🏭
+      - name: 🏭 Install packages
         run: yarn install
 
-      - name: Lint the code 🕵
+      - name: 🕵 Lint the code
         run: yarn lint
 
-      - name: Run Prettier 💅
+      - name: 💅 Run Prettier
         run: yarn prettier
 
-      - name: Run unit tests 🔬
+      - name: 🔬 Run unit tests
         run: yarn test
 
-      - name: Build code 🛠
+      - name: 🧰 Build code
         run: yarn build
 
-      - name: Build Storybook 📖
+      - name: 📊 Upload coverage to Codecov 
+        run: |
+          curl -Os https://uploader.codecov.io/latest/linux/codecov
+          chmod +x codecov
+          ./codecov
+
+      - name: 📖 Build Storybook 
         run: yarn build:storybook
 
-      - name: Deploy the website 🚀
+      - name: 🚀 Deploy the website
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages

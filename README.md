@@ -9,6 +9,9 @@
     Build websites even faster with components on top of React and Tailwind CSS
   </p>
   <p>
+    <a href="https://codecov.io/gh/themesberg/flowbite-react">
+      <img src="https://codecov.io/gh/themesberg/flowbite-react/branch/main/graph/badge.svg?token=wnw40SeY4k"/>
+    </a>
     <a href="https://discord.com/invite/4eeurUVvTy">
       <img src="https://img.shields.io/discord/902911619032576090?color=%237289da&label=Discord" alt="Discord">
     </a>
