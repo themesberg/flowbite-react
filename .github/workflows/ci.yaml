@@ -4,6 +4,11 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
+    tags-ignore:
+      - "*"
 
 concurrency: ci-${{ github.ref }}
 
@@ -55,6 +60,43 @@ jobs:
           files: coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
+
+  security:
+    if: github.event_name != 'pull_request'
+    name: 🚨 Checking for vulnerabilities
+    runs-on: ${{ matrix.os }}
+    needs: [quality]
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        os: [ubuntu-latest]
+
+    steps:
+      - name: 📥 Check out the code
+        uses: actions/checkout@v3
+
+      - name: 💿 Setup NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+
+      - name: ⏳ Setup Cache
+        uses: actions/cache@v3
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
+      - name: 🏭 Install dependencies
+        run: yarn install
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
   build:
     name: 🔍 Building the code
