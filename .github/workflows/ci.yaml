@@ -134,7 +134,7 @@ jobs:
   build:
     name: 🔍 Building the code
     runs-on: ${{ matrix.os }}
-    needs: [quality, security]
+    needs: [quality]
 
     strategy:
       matrix:
