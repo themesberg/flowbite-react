@@ -3,6 +3,7 @@ import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useId, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
 import type { SidebarItemProps } from './SidebarItem';
@@ -16,8 +17,9 @@ const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label
   const id = useId();
   const { isCollapsed } = useSidebarContext();
   const [isOpen, setOpen] = useState(false);
+  const theme = useTheme().theme.sidebar.collapse;
 
-  const Wrapper = ({ children }: PropsWithChildren<unknown>) => (
+  const Wrapper: FC<PropsWithChildren<unknown>> = ({ children }): JSX.Element => (
     <li>
       {isCollapsed ? (
         <Tooltip content={label} placement="right">
@@ -32,31 +34,23 @@ const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label
   return (
     <Wrapper>
       <button
-        className="group flex w-full items-center rounded-lg p-2 text-base font-normal text-gray-900 transition duration-75 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+        className={theme.button}
         id={`flowbite-sidebar-collapse-${id}`}
         onClick={() => setOpen(!isOpen)}
         type="button"
         {...theirProps}
       >
-        {Icon && (
-          <Icon
-            aria-hidden
-            className={classNames(
-              'h-6 w-6 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
-              { 'text-gray-900': isOpen },
-            )}
-          />
-        )}
+        {Icon && <Icon aria-hidden className={classNames(theme.icon.base, theme.icon.open[isOpen ? 'on' : 'off'])} />}
         {isCollapsed ? (
           <span className="sr-only">{label}</span>
         ) : (
           <>
-            <span className="ml-3 flex-1 whitespace-nowrap text-left">{label}</span>
-            <HiChevronDown aria-hidden className="h-6 w-6" />
+            <span className={theme.label.base}>{label}</span>
+            <HiChevronDown aria-hidden className={theme.label.icon} />
           </>
         )}
       </button>
-      <ul aria-labelledby={`flowbite-sidebar-collapse-${id}`} className="space-y-2 py-2" hidden={!isOpen}>
+      <ul aria-labelledby={`flowbite-sidebar-collapse-${id}`} className={theme.list} hidden={!isOpen}>
         <SidebarItemContext.Provider value={{ isInsideCollapse: true }}>{children}</SidebarItemContext.Provider>
       </ul>
     </Wrapper>

@@ -1,16 +1,15 @@
-import classNames from 'classnames';
-import type { FC, HTMLAttributes, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 import { SidebarItemContext } from './SidebarItemContext';
 
-const SidebarItemGroup: FC<PropsWithChildren<HTMLAttributes<HTMLUListElement>>> = ({ children, ...rest }) => {
+const SidebarItemGroup: FC<PropsWithChildren<Omit<ComponentProps<'ul'>, 'className'>>> = ({ children, ...props }) => {
+  const theirProps = excludeClassName(props);
+
+  const theme = useTheme().theme.sidebar.itemGroup;
+
   return (
-    <ul
-      className={classNames(
-        'mt-4 space-y-2 border-t border-gray-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 dark:border-gray-700',
-      )}
-      data-testid="sidebar-item-group"
-      {...rest}
-    >
+    <ul className={theme} data-testid="sidebar-item-group" {...theirProps}>
       <SidebarItemContext.Provider value={{ isInsideCollapse: false }}>{children}</SidebarItemContext.Provider>
     </ul>
   );

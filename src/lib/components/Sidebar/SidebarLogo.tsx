@@ -1,33 +1,27 @@
-import classNames from 'classnames';
-import type { PropsWithChildren, FC, HTMLAttributes } from 'react';
+import type { PropsWithChildren, FC, ComponentProps } from 'react';
 import { useId } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 import { useSidebarContext } from './SidebarContext';
 
-export interface SidebarLogoProps extends PropsWithChildren<HTMLAttributes<HTMLAnchorElement>> {
+export interface SidebarLogoProps extends PropsWithChildren<Omit<ComponentProps<'a'>, 'className'>> {
   className?: string;
   href: string;
   img: string;
   imgAlt?: string;
 }
 
-const SidebarLogo: FC<SidebarLogoProps> = ({ children, className, href, img, imgAlt = '', ...theirProps }) => {
+const SidebarLogo: FC<SidebarLogoProps> = ({ children, href, img, imgAlt = '', ...props }) => {
+  const theirProps = excludeClassName(props);
+
   const id = useId();
   const { isCollapsed } = useSidebarContext();
+  const theme = useTheme().theme.sidebar.logo;
 
   return (
-    <a
-      aria-labelledby={`flowbite-sidebar-logo-${id}`}
-      className={classNames('mb-5 flex items-center pl-2.5', className)}
-      href={href}
-      {...theirProps}
-    >
-      <img alt={imgAlt} className="mr-3 h-6 sm:h-7" src={img} />
-      <span
-        className={classNames(
-          isCollapsed ? 'hidden' : 'self-center whitespace-nowrap text-xl font-semibold dark:text-white',
-        )}
-        id={`flowbite-sidebar-logo-${id}`}
-      >
+    <a aria-labelledby={`flowbite-sidebar-logo-${id}`} className={theme.base} href={href} {...theirProps}>
+      <img alt={imgAlt} className={theme.img} src={img} />
+      <span className={theme.collapsed[isCollapsed ? 'on' : 'off']} id={`flowbite-sidebar-logo-${id}`}>
         {children}
       </span>
     </a>
