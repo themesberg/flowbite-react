@@ -74,7 +74,7 @@ const FooterPage: FC = () => {
                 <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Follow us</h2>
                 <Footer.LinkGroup className="flex-col">
                   <Footer.Link className="mb-4" href="#">
-                    Gihub
+                    Github
                   </Footer.Link>
                   <Footer.Link className="mb-4" href="#">
                     Discord
