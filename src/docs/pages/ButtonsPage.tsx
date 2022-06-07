@@ -12,12 +12,12 @@ const ButtonsPage: FC = () => {
       code: (
         <div className="flex flex-wrap gap-2">
           <Button>Default</Button>
-          <Button color="alternative">Alternative</Button>
+          <Button color="gray">Gray</Button>
           <Button color="dark">Dark</Button>
           <Button color="light">Light</Button>
-          <Button color="green">Green</Button>
-          <Button color="red">Red</Button>
-          <Button color="yellow">Yellow</Button>
+          <Button color="success">Success</Button>
+          <Button color="failure">Failure</Button>
+          <Button color="warning">Warning</Button>
           <Button color="purple">Purple</Button>
         </div>
       ),
@@ -27,9 +27,8 @@ const ButtonsPage: FC = () => {
       title: 'Button pills',
       code: (
         <div className="flex flex-wrap gap-2">
-          <Button pill>Default</Button>
-          <Button color="alternative" pill>
-            Alternative
+          <Button color="gray" pill>
+            Gray
           </Button>
           <Button color="dark" pill>
             Dark
@@ -37,14 +36,14 @@ const ButtonsPage: FC = () => {
           <Button color="light" pill>
             Light
           </Button>
-          <Button color="green" pill>
-            Green
+          <Button color="success" pill>
+            Success
           </Button>
-          <Button color="red" pill>
-            Red
+          <Button color="failure" pill>
+            Failure
           </Button>
-          <Button color="yellow" pill>
-            Yellow
+          <Button color="warning" pill>
+            Warning
           </Button>
           <Button color="purple" pill>
             Purple
@@ -172,11 +171,15 @@ const ButtonsPage: FC = () => {
       code: (
         <div className="flex flex-wrap items-center gap-2">
           <Button>
-            <Spinner className="mr-3" size="sm" light />
+            <div className="mr-3">
+              <Spinner size="sm" light />
+            </div>
             Loading ...
           </Button>
           <Button outline>
-            <Spinner className="mr-3" size="sm" light />
+            <div className="mr-3">
+              <Spinner size="sm" light />
+            </div>
             Loading ...
           </Button>
         </div>

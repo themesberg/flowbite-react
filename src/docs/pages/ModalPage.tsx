@@ -33,7 +33,7 @@ const ModalPage: FC = () => {
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={() => setOpenModal(undefined)}>I accept</Button>
-              <Button color="alternative" onClick={() => setOpenModal(undefined)}>
+              <Button color="gray" onClick={() => setOpenModal(undefined)}>
                 Decline
               </Button>
             </Modal.Footer>
@@ -58,7 +58,7 @@ const ModalPage: FC = () => {
                   <Button color="failure" onClick={() => setOpenModal(undefined)}>
                     {"Yes, I'm sure"}
                   </Button>
-                  <Button color="alternative" onClick={() => setOpenModal(undefined)}>
+                  <Button color="gray" onClick={() => setOpenModal(undefined)}>
                     No, cancel
                   </Button>
                 </div>
@@ -104,7 +104,9 @@ const ModalPage: FC = () => {
                     Lost Password?
                   </a>
                 </div>
-                <Button className="w-full">Log in to your account</Button>
+                <div className="w-full">
+                  <Button>Log in to your account</Button>
+                </div>
                 <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                   Not registered?{' '}
                   <a href="/modal" className="text-blue-700 hover:underline dark:text-blue-500">
@@ -153,7 +155,7 @@ const ModalPage: FC = () => {
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={() => setOpenModal(undefined)}>I accept</Button>
-              <Button color="alternative" onClick={() => setOpenModal(undefined)}>
+              <Button color="gray" onClick={() => setOpenModal(undefined)}>
                 Decline
               </Button>
             </Modal.Footer>
@@ -196,7 +198,7 @@ const ModalPage: FC = () => {
             </Modal.Body>
             <Modal.Footer>
               <Button onClick={() => setOpenModal(undefined)}>I accept</Button>
-              <Button color="alternative" onClick={() => setOpenModal(undefined)}>
+              <Button color="gray" onClick={() => setOpenModal(undefined)}>
                 Decline
               </Button>
             </Modal.Footer>

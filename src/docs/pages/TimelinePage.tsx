@@ -19,7 +19,7 @@ const TimelinePage: FC = () => {
                 Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order
                 E-commerce & Marketing pages.
               </Timeline.Body>
-              <Button color="alternative">
+              <Button color="gray">
                 Learn More
                 <HiArrowNarrowRight className="ml-2 h-3 w-3" />
               </Button>
@@ -63,7 +63,7 @@ const TimelinePage: FC = () => {
                 Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order
                 E-commerce & Marketing pages.
               </Timeline.Body>
-              <Button color="alternative">
+              <Button color="gray">
                 Learn More
                 <HiArrowNarrowRight className="ml-2 h-3 w-3" />
               </Button>

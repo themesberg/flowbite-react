@@ -59,7 +59,7 @@ const SpinnersPage: FC = () => {
             <Spinner aria-label="Spinner button example" />
             <span className="pl-3">Loading...</span>
           </Button>
-          <Button color="alternative">
+          <Button color="gray">
             <Spinner aria-label="Alternate spinner button example" />
             <span className="pl-3">Loading...</span>
           </Button>
