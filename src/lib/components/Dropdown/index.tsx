@@ -1,7 +1,7 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { useMemo } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
-import type { ButtonComponentProps } from '../Button';
+import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 import type { TooltipProps } from '../Tooltip';
 import { Tooltip } from '../Tooltip';
@@ -10,7 +10,7 @@ import { DropdownDivider } from './DropdownDivider';
 import { DropdownHeader } from './DropdownHeader';
 import { excludeClassName } from '../../helpers/exclude';
 
-export type DropdownProps = ButtonComponentProps &
+export type DropdownProps = ButtonProps &
   Omit<TooltipProps, 'content' | 'style' | 'animation' | 'arrow'> & {
     className?: string;
     label: ReactNode;
