@@ -11,7 +11,7 @@ import type {
 import { useTheme } from '../Flowbite/ThemeContext';
 import { excludeClassName } from '../../helpers/exclude';
 
-export interface ButtonProps extends Omit<ComponentProps<'button'>, 'className' | 'color'> {
+export interface ButtonComponentProps extends Omit<ComponentProps<'button'>, 'className' | 'color'> {
   color?: keyof ButtonColors;
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
   gradientMonochrome?: keyof ButtonGradientColors;
