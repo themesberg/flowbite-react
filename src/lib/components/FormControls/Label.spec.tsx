@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react';
 import { HiGlobe, HiLockClosed } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-
 import { Button } from '../Button';
 import { Checkbox } from './Checkbox';
 import { FileInput } from './FileInput';
@@ -13,14 +12,8 @@ import { TextInput } from './TextInput';
 import { ToggleSwitch } from './ToggleSwitch';
 
 describe.concurrent('Components / Form controls / Label', () => {
-  it('should render', () => {
-    render(<Label>Hello</Label>);
-  });
-
   describe('A11y', () => {
     it('should provide accessible name to any form control associated by `htmlFor`', () => {
-      const { getByLabelText } = render(<TestForm />);
-
       const inputLabels = [
         'Your email',
         'Your password',
@@ -31,7 +24,21 @@ describe.concurrent('Components / Form controls / Label', () => {
         'Your message',
       ];
 
+      const { getByLabelText } = render(<TestForm />);
+
       inputLabels.forEach((label) => expect(getByLabelText(label)).toHaveAccessibleName(label));
+    });
+  });
+
+  describe('Rendering', () => {
+    it('should render', () => {
+      render(<Label>Hello</Label>);
+    });
+
+    describe('`value=".."`', () => {
+      it('should render', () => {
+        render(<Label value="Hello" />);
+      });
     });
   });
 });
