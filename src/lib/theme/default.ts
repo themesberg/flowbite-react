@@ -230,6 +230,7 @@ export default {
       off: 'flex-col',
       on: 'flex-col md:max-w-xl md:flex-row',
     },
+    href: 'hover:bg-gray-100 dark:hover:bg-gray-700',
     img: {
       base: '',
       horizontal: {

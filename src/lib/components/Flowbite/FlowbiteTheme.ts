@@ -114,6 +114,7 @@ export interface FlowbiteTheme {
       off: string;
       on: string;
     };
+    href: string;
     img: {
       base: string;
       horizontal: {
