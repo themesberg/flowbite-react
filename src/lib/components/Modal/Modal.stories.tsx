@@ -46,7 +46,7 @@ Default.args = {
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={action('close')}>I accept</Button>
-        <Button color="alternative" onClick={action('close')}>
+        <Button color="gray" onClick={action('close')}>
           Decline
         </Button>
       </Modal.Footer>
@@ -68,7 +68,7 @@ PopUp.args = {
           <Button color="red" onClick={action('close')}>
             {"Yes, I'm sure"}
           </Button>
-          <Button color="alternative" onClick={action('close')}>
+          <Button color="gray" onClick={action('close')}>
             No, cancel
           </Button>
         </div>
@@ -112,7 +112,9 @@ FormElements.args = {
               Lost Password?
             </a>
           </div>
-          <Button className="w-full">Log in to your account</Button>
+          <div className="w-full">
+            <Button>Log in to your account</Button>
+          </div>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?{' '}
             <a href="/modal" className="text-blue-700 hover:underline dark:text-blue-500">

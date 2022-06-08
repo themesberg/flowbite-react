@@ -78,21 +78,17 @@ describe.concurrent('Components / Button', () => {
       expect(button).toHaveAttribute('type', 'submit');
     });
 
-    it('should be disabled given `disabled={true}`', () => {
-      const button = getButton(render(<Button disabled>Hi there</Button>));
+    describe('`disabled={true}`', () => {
+      it('should be disabled given', () => {
+        const button = getButton(render(<Button disabled>Hi there</Button>));
 
-      expect(button).toBeDisabled();
-    });
-
-    it('should ignore `className`', () => {
-      const button = getButton(render(<Button className="font-extralight">Hi there</Button>));
-
-      expect(button).not.toHaveClass('font-extralight');
+        expect(button).toBeDisabled();
+      });
     });
   });
 
   describe('Rendering', () => {
-    it('should render', () => {
+    it('should render a `<button>`', () => {
       const button = getButton(
         render(
           <Button color="gray" outline>
@@ -104,16 +100,28 @@ describe.concurrent('Components / Button', () => {
       expect(button).toHaveTextContent('Hi there');
     });
 
-    it('should render given `children={0}`', () => {
-      const button = getButton(render(<Button>0</Button>));
+    describe('`children={0}`', () => {
+      it('should render', () => {
+        const button = getButton(render(<Button>0</Button>));
 
-      expect(button).toHaveTextContent('0');
+        expect(button).toHaveTextContent('0');
+      });
     });
 
-    it('should render without `children`', () => {
-      const button = getButton(render(<Button label="Something or other" />));
+    describe('`children={undefined}`', () => {
+      it('should render', () => {
+        const button = getButton(render(<Button label="Something or other" />));
 
-      expect(button).toHaveTextContent('Something or other');
+        expect(button).toHaveTextContent('Something or other');
+      });
+    });
+
+    describe('`href=".."`', () => {
+      it('should render an anchor `<a>`', () => {
+        const button = getButtonLink(render(<Button href="#" label="Something or other" />));
+
+        expect(button).toBeInTheDocument();
+      });
     });
   });
 
@@ -334,5 +342,7 @@ describe.concurrent('Components / Button', () => {
 });
 
 const getButton = ({ getByRole }: RenderResult): HTMLElement => getByRole('button');
+
+const getButtonLink = ({ getByRole }: RenderResult): HTMLElement => getByRole('link');
 
 const getButtons = ({ getAllByRole }: RenderResult): HTMLElement[] => getAllByRole('button');

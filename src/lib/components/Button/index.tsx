@@ -11,10 +11,11 @@ import type {
 import { useTheme } from '../Flowbite/ThemeContext';
 import { excludeClassName } from '../../helpers/exclude';
 
-export interface ButtonComponentProps extends Omit<ComponentProps<'button'>, 'color'> {
+export interface ButtonProps extends Omit<ComponentProps<'button'>, 'className' | 'color'> {
   color?: keyof ButtonColors;
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
   gradientMonochrome?: keyof ButtonGradientColors;
+  href?: string;
   label?: ReactNode;
   outline?: boolean;
   pill?: boolean;
@@ -43,12 +44,13 @@ export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'x
   [key: string]: string;
 }
 
-const ButtonComponent: FC<ButtonComponentProps> = ({
+const ButtonComponent: FC<ButtonProps> = ({
   children,
   color = 'info',
   disabled = false,
   gradientDuoTone,
   gradientMonochrome,
+  href,
   label,
   outline = false,
   pill = false,
@@ -56,12 +58,15 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
   size = 'md',
   ...props
 }): JSX.Element => {
+  const isLink = typeof href !== 'undefined';
   const theirProps = excludeClassName(props);
 
   const { buttonGroup: groupTheme, button: theme } = useTheme().theme;
 
+  const Component = isLink ? 'a' : 'button';
+
   return (
-    <button
+    <Component
       className={classNames(
         disabled && theme.disabled,
         !gradientDuoTone && !gradientMonochrome && theme.color[color],
@@ -73,7 +78,8 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
         theme.pill[pill ? 'on' : 'off'],
       )}
       disabled={disabled}
-      type="button"
+      href={href}
+      type={isLink ? undefined : 'button'}
       {...theirProps}
     >
       <span
@@ -94,7 +100,7 @@ const ButtonComponent: FC<ButtonComponentProps> = ({
           )}
         </>
       </span>
-    </button>
+    </Component>
   );
 };
 

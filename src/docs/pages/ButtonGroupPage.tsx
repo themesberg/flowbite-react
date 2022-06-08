@@ -11,9 +11,9 @@ const ButtonGroupPage: FC = () => {
       title: 'Default example',
       code: (
         <Button.Group>
-          <Button color="alternative">Profile</Button>
-          <Button color="alternative">Settings</Button>
-          <Button color="alternative">Messages</Button>
+          <Button color="gray">Profile</Button>
+          <Button color="gray">Settings</Button>
+          <Button color="gray">Messages</Button>
         </Button.Group>
       ),
     },
@@ -21,13 +21,13 @@ const ButtonGroupPage: FC = () => {
       title: 'Group buttons with icons',
       code: (
         <Button.Group>
-          <Button color="alternative">
+          <Button color="gray">
             <HiUserCircle className="mr-3 h-4 w-4" /> Profile
           </Button>
-          <Button color="alternative">
+          <Button color="gray">
             <HiAdjustments className="mr-3 h-4 w-4" /> Settings
           </Button>
-          <Button color="alternative">
+          <Button color="gray">
             <HiCloudDownload className="mr-3 h-4 w-4" /> Messages
           </Button>
         </Button.Group>
@@ -60,9 +60,9 @@ const ButtonGroupPage: FC = () => {
       code: (
         <div className="flex flex-wrap gap-2">
           <Button.Group outline>
-            <Button color="alternative">Profile</Button>
-            <Button color="alternative">Settings</Button>
-            <Button color="alternative">Messages</Button>
+            <Button color="gray">Profile</Button>
+            <Button color="gray">Settings</Button>
+            <Button color="gray">Messages</Button>
           </Button.Group>
           <Button.Group outline>
             <Button gradientMonochrome="info">Profile</Button>
@@ -82,13 +82,13 @@ const ButtonGroupPage: FC = () => {
       code: (
         <div className="flex flex-wrap gap-2">
           <Button.Group outline>
-            <Button color="alternative">
+            <Button color="gray">
               <HiUserCircle className="mr-3 h-4 w-4" /> Profile
             </Button>
-            <Button color="alternative">
+            <Button color="gray">
               <HiAdjustments className="mr-3 h-4 w-4" /> Settings
             </Button>
-            <Button color="alternative">
+            <Button color="gray">
               <HiCloudDownload className="mr-3 h-4 w-4" /> Messages
             </Button>
           </Button.Group>
