@@ -240,7 +240,7 @@ export default {
     },
   },
   carousel: {
-    base: 'relative w-full',
+    base: 'relative h-full w-full min-h-56 sm:min-h-64 xl:min-h-80 2xl:min-h-96',
     indicators: {
       active: {
         off: 'bg-white/50 hover:bg-white dark:bg-gray-800/50 dark:hover:bg-gray-800',
@@ -256,7 +256,7 @@ export default {
     leftControl: 'absolute top-0 left-0 flex h-full items-center justify-center px-4 focus:outline-none',
     rightControl: 'absolute top-0 right-0 flex h-full items-center justify-center px-4 focus:outline-none',
     scrollContainer: {
-      base: 'flex h-56 snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg sm:h-64 xl:h-80 2xl:h-96',
+      base: 'flex h-full snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg',
       snap: 'snap-x',
     },
   },
