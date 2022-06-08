@@ -147,6 +147,15 @@ export interface FlowbiteTheme {
     base: string;
     icon: string;
   };
+  listGroup: {
+    base: string;
+    item: {
+      active: FlowbiteBoolean;
+      base: string;
+      href: FlowbiteBoolean;
+      icon: string;
+    };
+  };
   modal: {
     base: string;
     show: FlowbiteBoolean;

@@ -10,38 +10,44 @@ const ListGroupPage: FC = () => {
     {
       title: 'Default list',
       code: (
-        <ListGroup className="w-48">
-          <ListGroup.Item>Profile</ListGroup.Item>
-          <ListGroup.Item>Settings</ListGroup.Item>
-          <ListGroup.Item>Messages</ListGroup.Item>
-          <ListGroup.Item>Download</ListGroup.Item>
-        </ListGroup>
+        <div className="w-48">
+          <ListGroup>
+            <ListGroup.Item>Profile</ListGroup.Item>
+            <ListGroup.Item>Settings</ListGroup.Item>
+            <ListGroup.Item>Messages</ListGroup.Item>
+            <ListGroup.Item>Download</ListGroup.Item>
+          </ListGroup>
+        </div>
       ),
     },
     {
       title: 'List group with links',
       code: (
-        <ListGroup className="w-48">
-          <ListGroup.Item active href="/list-group">
-            Profile
-          </ListGroup.Item>
-          <ListGroup.Item href="/list-group">Settings</ListGroup.Item>
-          <ListGroup.Item href="/list-group">Messages</ListGroup.Item>
-          <ListGroup.Item href="/list-group">Download</ListGroup.Item>
-        </ListGroup>
+        <div className="w-48">
+          <ListGroup>
+            <ListGroup.Item active href="/list-group">
+              Profile
+            </ListGroup.Item>
+            <ListGroup.Item href="/list-group">Settings</ListGroup.Item>
+            <ListGroup.Item href="/list-group">Messages</ListGroup.Item>
+            <ListGroup.Item href="/list-group">Download</ListGroup.Item>
+          </ListGroup>
+        </div>
       ),
     },
     {
       title: 'List group with buttons',
       code: (
-        <ListGroup className="w-48">
-          <ListGroup.Item active onClick={() => alert('Profile clicked!')}>
-            Profile
-          </ListGroup.Item>
-          <ListGroup.Item>Settings</ListGroup.Item>
-          <ListGroup.Item>Messages</ListGroup.Item>
-          <ListGroup.Item>Download</ListGroup.Item>
-        </ListGroup>
+        <div className="w-48">
+          <ListGroup>
+            <ListGroup.Item active onClick={() => alert('Profile clicked!')}>
+              Profile
+            </ListGroup.Item>
+            <ListGroup.Item>Settings</ListGroup.Item>
+            <ListGroup.Item>Messages</ListGroup.Item>
+            <ListGroup.Item>Download</ListGroup.Item>
+          </ListGroup>
+        </div>
       ),
       codeStringifierOptions: {
         functionValue: (fn) => (fn.name === 'onClick' ? fn : fn.name),
@@ -50,14 +56,16 @@ const ListGroupPage: FC = () => {
     {
       title: 'List group with icons',
       code: (
-        <ListGroup className="w-48">
-          <ListGroup.Item active icon={HiUserCircle}>
-            Profile
-          </ListGroup.Item>
-          <ListGroup.Item icon={HiOutlineAdjustments}>Settings</ListGroup.Item>
-          <ListGroup.Item icon={HiInbox}>Messages</ListGroup.Item>
-          <ListGroup.Item icon={HiCloudDownload}>Download</ListGroup.Item>
-        </ListGroup>
+        <div className="w-48">
+          <ListGroup>
+            <ListGroup.Item active icon={HiUserCircle}>
+              Profile
+            </ListGroup.Item>
+            <ListGroup.Item icon={HiOutlineAdjustments}>Settings</ListGroup.Item>
+            <ListGroup.Item icon={HiInbox}>Messages</ListGroup.Item>
+            <ListGroup.Item icon={HiCloudDownload}>Download</ListGroup.Item>
+          </ListGroup>
+        </div>
       ),
     },
   ];
