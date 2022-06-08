@@ -1,10 +1,11 @@
 import type { ComponentProps, FC, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import classNames from 'classnames';
 
 type Size = 'sm' | 'md' | 'lg';
 type Color = 'base' | 'green' | 'red';
 
-export type TextInputProps = ComponentProps<'input'> & {
+export type TextInputProps = Omit<ComponentProps<'input'>, 'ref'> & {
   sizing?: Size;
   shadow?: boolean;
   helperText?: ReactNode;
@@ -31,48 +32,42 @@ const colorClasses: Record<Color, { input: string; helperText: string }> = {
   },
 };
 
-export const TextInput: FC<TextInputProps> = ({
-  className,
-  sizing = 'md',
-  shadow,
-  helperText,
-  addon,
-  icon: Icon,
-  color = 'base',
-  ...props
-}) => (
-  <>
-    <div className="flex">
-      {addon && (
-        <span className="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-200 px-3 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-400">
-          {addon}
-        </span>
-      )}
-      <div className="relative w-full">
-        {Icon && (
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <Icon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-          </div>
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  ({ className, sizing = 'md', shadow, helperText, addon, icon: Icon, color = 'base', ...props }, ref) => (
+    <>
+      <div className="flex">
+        {addon && (
+          <span className="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-200 px-3 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-400">
+            {addon}
+          </span>
         )}
-        <input
-          className={classNames(
-            'block w-full border disabled:cursor-not-allowed disabled:opacity-50',
-            colorClasses[color].input,
-            {
-              'pl-10': Icon,
-              'rounded-lg': !addon,
-              'rounded-r-lg': addon,
-              'shadow-sm dark:shadow-sm-light': shadow,
-              'p-2 sm:text-xs': sizing === 'sm',
-              'p-2.5 text-sm': sizing === 'md',
-              'sm:text-md p-4': sizing === 'lg',
-            },
-            className,
+        <div className="relative w-full">
+          {Icon && (
+            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <Icon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+            </div>
           )}
-          {...props}
-        />
+          <input
+            className={classNames(
+              'block w-full border disabled:cursor-not-allowed disabled:opacity-50',
+              colorClasses[color].input,
+              {
+                'pl-10': Icon,
+                'rounded-lg': !addon,
+                'rounded-r-lg': addon,
+                'shadow-sm dark:shadow-sm-light': shadow,
+                'p-2 sm:text-xs': sizing === 'sm',
+                'p-2.5 text-sm': sizing === 'md',
+                'sm:text-md p-4': sizing === 'lg',
+              },
+              className,
+            )}
+            {...props}
+            ref={ref}
+          />
+        </div>
       </div>
-    </div>
-    {helperText && <p className={classNames('mt-1 text-sm', colorClasses[color].helperText)}>{helperText}</p>}
-  </>
+      {helperText && <p className={classNames('mt-1 text-sm', colorClasses[color].helperText)}>{helperText}</p>}
+    </>
+  ),
 );
