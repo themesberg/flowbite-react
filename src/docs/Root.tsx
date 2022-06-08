@@ -45,7 +45,7 @@ export const Root: FC = () => {
           <DarkThemeToggle />
         </div>
       </Navbar>
-      <div className="flex h-full overflow-hidden bg-gray-50 dark:bg-gray-900">
+      <div className="flex h-full overflow-hidden bg-white dark:bg-gray-900">
         <Sidebar collapsed={collapsed}>
           <Sidebar.Items>
             <Sidebar.ItemGroup>

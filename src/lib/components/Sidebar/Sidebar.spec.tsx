@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest';
 
 import type { SidebarProps } from '.';
 import { Sidebar } from '.';
+import { Flowbite } from '../Flowbite';
 
 describe.concurrent('Components / Sidebar', () => {
   describe('A11y', () => {
@@ -185,6 +186,223 @@ describe.concurrent('Components / Sidebar', () => {
       });
     });
   });
+
+  describe('Theme', () => {
+    it('should use custom classes', () => {
+      const theme = {
+        sidebar: {
+          base: 'bg-gray-100',
+          collapsed: {
+            off: 'text-gray-200',
+            on: 'text-gray-300',
+          },
+          inner: 'bg-gray-200',
+        },
+      };
+
+      const { getByLabelText } = render(
+        <Flowbite theme={{ theme }}>
+          <TestSidebar aria-label="not-collapsed" />
+          <TestSidebar aria-label="collapsed" collapsed />
+        </Flowbite>,
+      );
+      const sidebar = getByLabelText('not-collapsed');
+      const inner = sidebar.firstElementChild;
+      const collapsedSidebar = getByLabelText('collapsed');
+
+      expect(sidebar).toHaveClass('bg-gray-100');
+      expect(sidebar).toHaveClass('text-gray-200');
+      expect(inner).toHaveClass('bg-gray-200');
+      expect(collapsedSidebar).toHaveClass('text-gray-300');
+    });
+
+    describe('`Sidebar.Collapse`', () => {
+      it('should use custom classes', () => {
+        const theme = {
+          sidebar: {
+            collapse: {
+              button: 'text-gray-100',
+              icon: {
+                base: 'text-gray-200',
+                open: {
+                  off: 'bg-gray-100',
+                  on: 'bg-gray-200',
+                },
+              },
+              label: {
+                base: 'text-gray-300',
+                icon: 'text-gray-400',
+              },
+              list: 'bg-gray-300',
+            },
+          },
+        };
+
+        const { getAllByRole, getAllByTestId } = render(
+          <Flowbite theme={{ theme }}>
+            <TestSidebar />
+          </Flowbite>,
+        );
+        const buttons = getSidebarCollapseButtons({ getAllByRole });
+        let icons = getSidebarCollapseIcons({ getAllByTestId });
+        const labels = getSidebarCollapseLabels({ getAllByTestId });
+        const labelIcons = labels.map((label) => label.nextElementSibling);
+        const list = getSidebarCollapses({ getAllByRole });
+
+        buttons.forEach((button) => expect(button).toHaveClass('text-gray-100'));
+        icons.forEach((icon) => expect(icon).toHaveClass('text-gray-200 bg-gray-100'));
+        labels.forEach((label) => expect(label).toHaveClass('text-gray-300'));
+        labelIcons.forEach((labelicon) => expect(labelicon).toHaveClass('text-gray-400'));
+        list.forEach((list) => expect(list).toHaveClass('bg-gray-300'));
+
+        buttons.forEach((button) => userEvent.click(button));
+
+        icons = getSidebarCollapseIcons({ getAllByTestId });
+
+        icons.forEach((icon) => expect(icon).toHaveClass('bg-gray-200'));
+      });
+    });
+
+    describe('`Sidebar.CTA`', () => {
+      it('should use custom classes', () => {
+        const theme = {
+          sidebar: {
+            cta: {
+              base: 'bg-gray-100',
+              color: {
+                primary: 'text-gray-100',
+              },
+            },
+          },
+        };
+
+        const cta = getSidebarCTA(
+          render(
+            <Flowbite theme={{ theme }}>
+              <TestSidebar />
+            </Flowbite>,
+          ),
+        );
+
+        expect(cta).toHaveClass('bg-gray-100 text-gray-100');
+      });
+    });
+
+    describe('`Sidebar.Item`', () => {
+      it('should use custom classes', () => {
+        const theme = {
+          sidebar: {
+            item: {
+              active: 'text-gray-100',
+              base: 'bg-gray-100',
+              collapsed: {
+                insideCollapse: 'text-gray-300',
+              },
+              content: {
+                base: 'bg-gray-200',
+                collapsed: 'text-gray-600',
+              },
+              icon: {
+                base: 'text-gray-400',
+                active: 'bg-gray-300',
+              },
+            },
+          },
+        };
+
+        const { getAllByRole, getAllByTestId } = render(
+          <Flowbite theme={{ theme }}>
+            <TestSidebar collapsed />
+          </Flowbite>,
+        );
+        const contents = getSidebarItemContents({ getAllByTestId });
+        const icons = getSidebarItemIcons({ getAllByTestId });
+        const items = getSidebarItems({ getAllByRole })
+          .map((item) => item.firstElementChild)
+          .map((item) => item?.firstElementChild)
+          .filter((item) => item?.tagName.toLocaleLowerCase() !== 'button') as HTMLElement[];
+        const activeItems = getAllByTestId('active-item');
+        const activeIcons = activeItems.map((item) => item.firstElementChild);
+        const inactiveIcons = [...icons.filter((icon) => !activeIcons.includes(icon))];
+        const inactiveItems = [...items.filter((item) => item !== null && !activeItems.includes(item))];
+
+        activeIcons.forEach((icon) => expect(icon).toHaveClass('bg-gray-300'));
+        activeItems.forEach((item) => expect(item).toHaveClass('text-gray-100'));
+        contents.forEach((content) => expect(content).toHaveClass('bg-gray-200'));
+        inactiveIcons.forEach((icon) => expect(icon).not.toHaveClass('bg-gray-300'));
+        inactiveItems.forEach((item) => expect(item).not.toHaveClass('text-gray-100'));
+        icons.forEach((icon) => expect(icon).toHaveClass('text-gray-400'));
+        items.forEach((item) => expect(item).toHaveClass('bg-gray-100'));
+      });
+    });
+
+    describe('`Sidebar.Items`', () => {
+      it('should use custom classes', () => {
+        const theme = {
+          sidebar: {
+            items: 'text-gray-100',
+          },
+        };
+
+        const itemsContainers = getSidebarItemsContainer(
+          render(
+            <Flowbite theme={{ theme }}>
+              <TestSidebar />
+            </Flowbite>,
+          ),
+        );
+
+        itemsContainers.forEach((container) => expect(container).toHaveClass('text-gray-100'));
+      });
+    });
+
+    describe('`Sidebar.ItemGroup`', () => {
+      it('should use custom classes', () => {
+        const theme = {
+          sidebar: {
+            itemGroup: 'text-gray-100',
+          },
+        };
+
+        const itemGroups = getSidebarItemGroups(
+          render(
+            <Flowbite theme={{ theme }}>
+              <TestSidebar />
+            </Flowbite>,
+          ),
+        );
+
+        itemGroups.forEach((group) => expect(group).toHaveClass('text-gray-100'));
+      });
+    });
+
+    describe('`Sidebar.Logo`', () => {
+      it('should use custom classes', () => {
+        const theme = {
+          sidebar: {
+            logo: {
+              base: 'text-gray-100',
+              collapsed: {
+                off: 'text-gray-300',
+                on: 'text-gray-400',
+              },
+              img: 'text-gray-200',
+            },
+          },
+        };
+
+        const logo = getSidebarLogo(
+          render(
+            <Flowbite theme={{ theme }}>
+              <TestSidebar />
+            </Flowbite>,
+          ),
+        );
+
+        expect(logo).toHaveClass('text-gray-100');
+      });
+    });
+  });
 });
 
 const TestSidebar = ({ ...props }: SidebarProps): JSX.Element => (
@@ -194,7 +412,7 @@ const TestSidebar = ({ ...props }: SidebarProps): JSX.Element => (
     </Sidebar.Logo>
     <Sidebar.Items>
       <Sidebar.ItemGroup>
-        <Sidebar.Item href="#" icon={HiChartPie} label="3" labelColor="success">
+        <Sidebar.Item active data-testid="active-item" href="#" icon={HiChartPie} label="3" labelColor="success">
           Dashboard
         </Sidebar.Item>
         <Sidebar.Collapse aria-label="E-commerce" icon={HiShoppingBag}>
@@ -207,7 +425,7 @@ const TestSidebar = ({ ...props }: SidebarProps): JSX.Element => (
         <Sidebar.Item as="h3">My heading</Sidebar.Item>
       </Sidebar.ItemGroup>
     </Sidebar.Items>
-    <Sidebar.CTA>Some content</Sidebar.CTA>
+    <Sidebar.CTA color="primary">Some content</Sidebar.CTA>
   </Sidebar>
 );
 
@@ -219,13 +437,28 @@ const getSidebarCollapseButtons = ({ getAllByRole }: Pick<RenderResult, 'getAllB
 const getSidebarCollapses = ({ getAllByRole }: Pick<RenderResult, 'getAllByRole'>): HTMLElement[] =>
   getAllByRole('list').slice(1);
 
+const getSidebarCollapseIcons = ({ getAllByTestId }: Pick<RenderResult, 'getAllByTestId'>): HTMLElement[] =>
+  getAllByTestId('flowbite-sidebar-collapse-icon');
+
+const getSidebarCollapseLabels = ({ getAllByTestId }: Pick<RenderResult, 'getAllByTestId'>): HTMLElement[] =>
+  getAllByTestId('flowbite-sidebar-collapse-label');
+
 const getSidebarCTA = ({ getByText }: Pick<RenderResult, 'getByText'>): HTMLElement => getByText('Some content');
 
 const getSidebarItemContents = ({ getAllByTestId }: Pick<RenderResult, 'getAllByTestId'>): HTMLElement[] =>
   getAllByTestId('flowbite-sidebar-item-content');
 
+const getSidebarItemGroups = ({ getAllByTestId }: Pick<RenderResult, 'getAllByTestId'>): HTMLElement[] =>
+  getAllByTestId('flowbite-sidebar-item-group');
+
+const getSidebarItemIcons = ({ getAllByTestId }: Pick<RenderResult, 'getAllByTestId'>): HTMLElement[] =>
+  getAllByTestId('flowbite-sidebar-item-icon');
+
 const getSidebarItems = ({ getAllByRole }: Pick<RenderResult, 'getAllByRole'>): HTMLElement[] =>
   getAllByRole('listitem');
+
+const getSidebarItemsContainer = ({ getAllByTestId }: Pick<RenderResult, 'getAllByTestId'>): HTMLElement[] =>
+  getAllByTestId('flowbite-sidebar-items');
 
 const getSidebarLabels = ({ queryAllByTestId }: Pick<RenderResult, 'queryAllByTestId'>): HTMLElement[] =>
   queryAllByTestId('flowbite-sidebar-label');

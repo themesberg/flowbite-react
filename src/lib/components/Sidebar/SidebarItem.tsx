@@ -1,13 +1,16 @@
 import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import { useId } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
 import { Badge } from '../Badge';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
+import { useTheme } from '../Flowbite/ThemeContext';
 import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
 import { useSidebarItemContext } from './SidebarItemContext';
 
-export interface SidebarItemProps extends PropsWithChildren<ComponentProps<'div'> & Record<string, unknown>> {
+export interface SidebarItemProps
+  extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'> & Record<string, unknown>> {
   active?: boolean;
   as?: ElementType;
   className?: string;
@@ -24,16 +27,18 @@ export interface SidebarItemLabelColors extends Pick<FlowbiteColors, 'gray'> {
 const SidebarItem: FC<SidebarItemProps> = ({
   as: Component = 'a',
   children,
-  className,
   icon: Icon,
   active: isActive,
   label,
   labelColor = 'info',
-  ...theirProps
+  ...props
 }): JSX.Element => {
+  const theirProps = excludeClassName(props);
+
   const id = useId();
   const { isCollapsed } = useSidebarContext();
   const { isInsideCollapse } = useSidebarItemContext();
+  const theme = useTheme().theme.sidebar.item;
 
   const Wrapper: FC<PropsWithChildren<unknown>> = ({ children }): JSX.Element => (
     <li>
@@ -52,26 +57,21 @@ const SidebarItem: FC<SidebarItemProps> = ({
       <Component
         aria-labelledby={`flowbite-sidebar-item-${id}`}
         className={classNames(
-          'flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
-          {
-            'bg-gray-100 dark:bg-gray-700': isActive,
-            'group w-full pl-8 transition duration-75': !isCollapsed && isInsideCollapse,
-          },
-          className,
+          theme.base,
+          isActive && theme.active,
+          !isCollapsed && isInsideCollapse && theme.collapsed.insideCollapse,
         )}
         {...theirProps}
       >
         {Icon && (
           <Icon
             aria-hidden
-            className={classNames(
-              'h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
-              { 'text-gray-700 dark:text-gray-100': isActive },
-            )}
+            className={classNames(theme.icon.base, isActive && theme.icon.active)}
+            data-testid="flowbite-sidebar-item-icon"
           />
         )}
         <span
-          className={classNames('ml-3 flex-1 whitespace-nowrap', { hidden: isCollapsed })}
+          className={classNames(theme.content.base, isCollapsed && theme.content.collapsed)}
           data-testid="flowbite-sidebar-item-content"
           id={`flowbite-sidebar-item-${id}`}
         >
