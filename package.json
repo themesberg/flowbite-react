@@ -45,7 +45,9 @@
     "test:coverage": "vitest run --coverage",
     "test:open": "vitest --ui",
     "test:e2e": "start-test 3000 cypress:run",
-    "test:e2e:open": "start-test 3000 cypress:open"
+    "test:e2e:open": "start-test 3000 cypress:open",
+    "semantic-release": "semantic-release",
+    "commit": "cz"
   },
   "dependencies": {
     "@floating-ui/react-dom": "^0.6.3",
@@ -114,6 +116,7 @@
     "react-scripts": "^5.0.0",
     "react-syntax-highlighter": "^15.5.0",
     "resize-observer-polyfill": "^1.5.1",
+    "semantic-release": "^19.0.2",
     "standard-version": "^9.3.2",
     "start-server-and-test": "^1.14.0",
     "storybook-dark-mode": "^1.0.9",
