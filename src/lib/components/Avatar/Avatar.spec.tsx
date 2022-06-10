@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-
 import { Avatar } from '.';
 import { Flowbite } from '../Flowbite';
 import type { CustomFlowbiteTheme } from '../Flowbite/FlowbiteTheme';
@@ -9,9 +8,9 @@ import AvatarGroup from './AvatarGroup';
 describe.concurrent('Components / Avatar', () => {
   describe('Theme', () => {
     it("shouldn't be able to set className directly", () => {
-      const { getByTestId } = render(<Avatar className="test testing" />);
+      const { getByTestId } = render(<Avatar className="text-gray-100" />);
 
-      expect(getByTestId('avatar-element')).not.toHaveClass('test testing');
+      expect(getByTestId('avatar-element')).not.toHaveClass('text-gray-100');
     });
 
     it('should be able to apply custom classes', () => {

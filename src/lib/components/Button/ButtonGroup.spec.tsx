@@ -3,8 +3,8 @@ import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 import { Button } from '.';
-import { Flowbite } from '../Flowbite';
 import defaultTheme from '../../theme/default';
+import { Flowbite } from '../Flowbite';
 
 describe('Components / Button group', () => {
   describe('A11y', () => {

@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-
 import { useTableContext } from './TableContext';
 
 export type TableRowProps = PropsWithChildren<ComponentProps<'tr'>>;

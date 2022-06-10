@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react';
 import { HiCheck } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-
 import { Badge } from '.';
 import { Flowbite } from '../Flowbite';
 
@@ -9,14 +8,14 @@ describe.concurrent('Components / Badge', () => {
   describe('Props', () => {
     it('should ignore `className`', () => {
       const { getByTestId } = render(
-        <Badge className="test testing" color="success">
+        <Badge className="text-gray-100" color="success">
           A badge
         </Badge>,
       );
 
       const badge = getByTestId('flowbite-badge');
 
-      expect(badge).not.toHaveClass('test testing');
+      expect(badge).not.toHaveClass('text-gray-100');
     });
   });
 

@@ -1,6 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { BiBuoy } from 'react-icons/bi';
-import { HiChartPie, HiViewBoards, HiInbox, HiUser, HiShoppingBag, HiArrowSmRight, HiTable } from 'react-icons/hi';
+import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
 import { Sidebar } from '.';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
@@ -185,7 +185,7 @@ CTAButton.args = {
       <Sidebar.CTA>
         <div className="mb-3 flex items-center">
           <Badge color="yellow">Beta</Badge>
-          <div className="-mx-1.5 -my-1.5 ml-auto">
+          <div className="-m-1.5 ml-auto">
             <Button aria-label="Close" outline>
               <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                 <path

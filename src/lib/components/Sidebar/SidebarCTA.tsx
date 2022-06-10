@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { PropsWithChildren, FC, ComponentProps } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';

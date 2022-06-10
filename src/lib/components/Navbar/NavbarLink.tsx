@@ -1,5 +1,5 @@
-import type { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
+import type { FC, PropsWithChildren } from 'react';
 
 export type NavbarLinkProps = PropsWithChildren<{
   active?: boolean;

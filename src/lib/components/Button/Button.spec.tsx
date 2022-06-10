@@ -2,7 +2,6 @@ import type { RenderResult } from '@testing-library/react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-
 import { Button } from '.';
 import { Flowbite } from '../Flowbite';
 

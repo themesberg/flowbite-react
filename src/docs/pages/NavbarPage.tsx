@@ -1,7 +1,7 @@
 import type { FC } from 'react';
+import { Avatar, Button, Dropdown, Navbar } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
-import { Avatar, Button, Dropdown, Navbar } from '../../lib';
 
 const NavbarPage: FC = () => {
   const examples: CodeExample[] = [

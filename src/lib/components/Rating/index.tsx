@@ -1,10 +1,10 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
+import type { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import { useTheme } from '../Flowbite/ThemeContext';
 import { RatingAdvanced } from './RatingAdvanced';
 import { RatingContext } from './RatingContext';
 import { RatingStar } from './RatingStar';
-import { useTheme } from '../Flowbite/ThemeContext';
-import type { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
-import { excludeClassName } from '../../helpers/exclude';
 
 export interface StarSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
   [key: string]: string;

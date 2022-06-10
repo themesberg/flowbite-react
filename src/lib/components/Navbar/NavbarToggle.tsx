@@ -1,5 +1,5 @@
-import type { ComponentProps, FC } from 'react';
 import classNames from 'classnames';
+import type { ComponentProps, FC } from 'react';
 import { GoThreeBars } from 'react-icons/go';
 import { useNavbarContext } from './NavbarContext';
 

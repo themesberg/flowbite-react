@@ -1,7 +1,7 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
-import { useNavbarContext } from './NavbarContext';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
+import { useNavbarContext } from './NavbarContext';
 
 export const NavbarCollapse: FC<PropsWithChildren<ComponentProps<'div'>>> = ({ children, ...props }): JSX.Element => {
   const theirProps = excludeClassName(props);

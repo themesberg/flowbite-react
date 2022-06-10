@@ -3,7 +3,6 @@ import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-
 import { Alert } from '.';
 
 describe.concurrent('Alert', () => {

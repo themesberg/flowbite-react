@@ -1,5 +1,4 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
-
 import type { TextInputProps } from './TextInput';
 import { TextInput } from './TextInput';
 

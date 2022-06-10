@@ -1,13 +1,13 @@
+import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo, useState } from 'react';
+import { HiChevronDown } from 'react-icons/hi';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
+import { AccordionContent } from './AccordionContent';
 import type { AccordionPanelProps } from './AccordionPanel';
 import { AccordionPanel } from './AccordionPanel';
 import { AccordionTitle } from './AccordionTitle';
-import { AccordionContent } from './AccordionContent';
-import classNames from 'classnames';
-import { useTheme } from '../Flowbite/ThemeContext';
-import { excludeClassName } from '../../helpers/exclude';
-import { HiChevronDown } from 'react-icons/hi';
 
 export interface AccordionProps extends PropsWithChildren<ComponentProps<'div'>> {
   alwaysOpen?: boolean;

@@ -3,7 +3,6 @@ import { render, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { HiChartPie, HiInbox, HiShoppingBag } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-
 import type { SidebarProps } from '.';
 import { Sidebar } from '.';
 import { Flowbite } from '../Flowbite';

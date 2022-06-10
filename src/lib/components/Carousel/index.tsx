@@ -1,11 +1,11 @@
+import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import classNames from 'classnames';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import { excludeClassName } from '../../helpers/exclude';
 import windowExists from '../../helpers/window-exists';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { excludeClassName } from '../../helpers/exclude';
 
 export interface CarouselProps extends PropsWithChildren<ComponentProps<'div'>> {
   indicators?: boolean;

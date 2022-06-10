@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import { useState } from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { Button, Checkbox, Label, Modal, Select, TextInput } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
-import { Button, Checkbox, Label, Modal, Select, TextInput } from '../../lib';
 
 const ModalPage: FC = () => {
   const [openModal, setOpenModal] = useState<string | undefined>();

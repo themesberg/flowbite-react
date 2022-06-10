@@ -1,9 +1,8 @@
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { describe, expect, it } from 'vitest';
-
 import { Pagination } from '.';
 
 describe.concurrent('Pagination', () => {

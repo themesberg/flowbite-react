@@ -1,7 +1,6 @@
 import { render } from '@testing-library/react';
 import { HiHome } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-
 import { Breadcrumb } from '.';
 import { Flowbite } from '../Flowbite';
 
@@ -10,7 +9,7 @@ describe.concurrent('Components / Breadcrumb', () => {
     it('should ignore `className` on `Breadcrumb.Item`s', () => {
       const { getByRole } = render(
         <Breadcrumb>
-          <Breadcrumb.Item href="#" icon={HiHome} className="test testing">
+          <Breadcrumb.Item href="#" icon={HiHome} className="text-gray-100">
             Home
           </Breadcrumb.Item>
         </Breadcrumb>,
@@ -18,7 +17,7 @@ describe.concurrent('Components / Breadcrumb', () => {
 
       const itemWithClassName = getByRole('listitem');
 
-      expect(itemWithClassName).not.toHaveClass('test testing');
+      expect(itemWithClassName).not.toHaveClass('text-gray-100');
     });
   });
 

@@ -1,6 +1,6 @@
+import classNames from 'classnames';
 import type { FC, PropsWithChildren } from 'react';
 import { useState } from 'react';
-import classNames from 'classnames';
 import { NavbarBrand } from './NavbarBrand';
 import { NavbarCollapse } from './NavbarCollapse';
 import { NavbarContext } from './NavbarContext';

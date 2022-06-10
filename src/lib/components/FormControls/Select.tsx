@@ -1,5 +1,5 @@
-import type { ComponentProps, FC, ReactNode } from 'react';
 import classNames from 'classnames';
+import type { ComponentProps, FC, ReactNode } from 'react';
 
 type Size = 'sm' | 'md' | 'lg';
 type Color = 'base' | 'green' | 'red';

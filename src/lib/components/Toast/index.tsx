@@ -1,11 +1,11 @@
-import type { PropsWithChildren, FC, ComponentProps } from 'react';
-import { useState } from 'react';
 import classNames from 'classnames';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { useState } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 import type { Duration } from './ToastContext';
 import { ToastContext } from './ToastContext';
 import { ToastToggle } from './ToastToggle';
-import { useTheme } from '../Flowbite/ThemeContext';
-import { excludeClassName } from '../../helpers/exclude';
 
 export interface ToastProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
   duration?: Duration;

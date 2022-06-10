@@ -1,5 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-CI=true yarn test
-yarn run lint:staged
+yarn prettier && yarn lint && yarn test run && yarn build

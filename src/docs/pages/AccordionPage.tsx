@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
-
 import { Accordion } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';

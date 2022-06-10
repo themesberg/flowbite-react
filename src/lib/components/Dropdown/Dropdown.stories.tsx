@@ -1,6 +1,5 @@
-import type { Meta, Story } from '@storybook/react/types-6-0';
 import { action } from '@storybook/addon-actions';
-
+import type { Meta, Story } from '@storybook/react/types-6-0';
 import type { DropdownProps } from '.';
 import { Dropdown } from '.';
 

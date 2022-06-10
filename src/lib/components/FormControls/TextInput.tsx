@@ -1,6 +1,6 @@
+import classNames from 'classnames';
 import type { ComponentProps, FC, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import classNames from 'classnames';
 
 type Size = 'sm' | 'md' | 'lg';
 type Color = 'base' | 'green' | 'red';

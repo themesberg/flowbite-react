@@ -1,8 +1,7 @@
-import userEvent from '@testing-library/user-event';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
 import { describe, expect, it, vi } from 'vitest';
-
 import { Toast } from '.';
 
 describe('Components / Toast', () => {

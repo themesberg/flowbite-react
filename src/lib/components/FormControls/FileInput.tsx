@@ -1,6 +1,5 @@
-import type { FC } from 'react';
 import classNames from 'classnames';
-
+import type { FC } from 'react';
 import type { TextInputProps } from './TextInput';
 import { TextInput } from './TextInput';
 

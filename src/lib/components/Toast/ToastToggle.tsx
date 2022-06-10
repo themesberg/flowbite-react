@@ -1,7 +1,7 @@
 import type { ComponentProps, FC } from 'react';
-import { useToastContext } from './ToastContext';
 import { HiX } from 'react-icons/hi';
 import { useTheme } from '../Flowbite/ThemeContext';
+import { useToastContext } from './ToastContext';
 
 type ToastToggleProps = ComponentProps<'button'> & {
   xIcon?: FC<ComponentProps<'svg'>>;

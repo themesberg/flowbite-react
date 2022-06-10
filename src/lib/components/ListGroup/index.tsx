@@ -1,8 +1,7 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-
-import { ListGroupItem } from './ListGroupItem';
 import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
+import { ListGroupItem } from './ListGroupItem';
 
 export type ListGroupProps = PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>>;
 

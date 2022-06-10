@@ -1,6 +1,3 @@
-import type { ComponentProps, FC, PropsWithChildren, ReactNode, RefObject } from 'react';
-import { useEffect, useRef, useState } from 'react';
-import classNames from 'classnames';
 import type { Placement } from '@floating-ui/core';
 import { arrow, autoPlacement, shift } from '@floating-ui/core';
 import type { Middleware } from '@floating-ui/react-dom-interactions';
@@ -15,8 +12,11 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react-dom-interactions';
-import { useTheme } from '../Flowbite/ThemeContext';
+import classNames from 'classnames';
+import type { ComponentProps, FC, PropsWithChildren, ReactNode, RefObject } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface TooltipProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className' | 'style'>> {
   content: ReactNode;

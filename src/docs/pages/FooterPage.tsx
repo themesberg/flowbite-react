@@ -1,8 +1,8 @@
 import type { FC } from 'react';
+import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
+import { Footer } from '../../lib/components/Footer';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
-import { Footer } from '../../lib/components/Footer';
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 
 const FooterPage: FC = () => {
   const examples: CodeExample[] = [

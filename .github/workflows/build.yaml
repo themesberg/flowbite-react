@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: 16
 
-      - name: ⏳ Setup Cache 
+      - name: ⏳ Setup Cache
         uses: actions/cache@v3
         with:
           path: '**/node_modules'
@@ -44,7 +44,7 @@ jobs:
       - name: 🧰 Build code
         run: yarn build
 
-      - name: 📊 Upload coverage to Codecov 
+      - name: 📊 Upload coverage to Codecov
         uses: codecov/codecov-action@v2
         with:
           fail_ci_if_error: false
@@ -52,7 +52,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: false
 
-      - name: 📖 Build Storybook 
+      - name: 📖 Build Storybook
         run: yarn build:storybook
 
       - name: 🚀 Deploy the website

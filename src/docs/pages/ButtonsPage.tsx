@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
-
 import { Button, Spinner } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';

@@ -1,5 +1,5 @@
-import type { FC, PropsWithChildren, ComponentProps } from 'react';
 import classNames from 'classnames';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 
 export type TimelineTimeProps = PropsWithChildren<
   ComponentProps<'time'> & {

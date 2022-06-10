@@ -1,12 +1,11 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
-
-import { TableHead } from './TableHead';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { TableBody } from './TableBody';
-import { TableRow } from './TableRow';
-import { TableHeadCell } from './TableHeadCell';
 import { TableCell } from './TableCell';
 import { TableContext } from './TableContext';
+import { TableHead } from './TableHead';
+import { TableHeadCell } from './TableHeadCell';
+import { TableRow } from './TableRow';
 
 export type TableProps = PropsWithChildren<ComponentProps<'table'> & TableContext>;
 

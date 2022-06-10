@@ -1,7 +1,6 @@
 import { cleanup, render } from '@testing-library/react';
 import { BsFacebook } from 'react-icons/bs';
 import { describe, expect, it } from 'vitest';
-
 import { Footer } from '.';
 
 describe.concurrent('Footer Component should be able to render a', () => {

@@ -1,12 +1,12 @@
-import type { FC, PropsWithChildren } from 'react';
 import classNames from 'classnames';
-import { TimelineItem } from './TimelineItem';
-import { TimelineContext } from './TimelineContext';
-import { TimelinePoint } from './TimelinePoint';
+import type { FC, PropsWithChildren } from 'react';
+import { TimelineBody } from './TimelineBody';
 import { TimelineContent } from './TimelineContent';
+import { TimelineContext } from './TimelineContext';
+import { TimelineItem } from './TimelineItem';
+import { TimelinePoint } from './TimelinePoint';
 import { TimelineTime } from './TimelineTime';
 import { TimelineTitle } from './TimelineTitle';
-import { TimelineBody } from './TimelineBody';
 
 export type TimelineProps = PropsWithChildren<{
   className?: string;
