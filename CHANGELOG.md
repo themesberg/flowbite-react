@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.26](https://github.com/themesberg/flowbite-react/compare/v0.0.25...v0.0.26) (2022-06-13)
+
+### Features
+
+- **component:** Add `Accordion.Title` theme for heading ([#184](https://github.com/themesberg/flowbite-react/issues/184)) ([45bc263](https://github.com/themesberg/flowbite-react/commit/45bc2639d03157db4eea5a0933321239596ceeb0))
+- **component:** Allow `Button`s to have `href` ([#209](https://github.com/themesberg/flowbite-react/issues/209)) ([2f9f345](https://github.com/themesberg/flowbite-react/commit/2f9f34540bb86080003b504cc800f9857f8e4953))
+- **component:** Allow `Label` as self-closing tag, resolves [#173](https://github.com/themesberg/flowbite-react/issues/173) ([#207](https://github.com/themesberg/flowbite-react/issues/207)) ([17f5e8e](https://github.com/themesberg/flowbite-react/commit/17f5e8e81bdd1c26930b4dd5166dc5f67fd8d761))
+- **component:** theme support to darkthemetoggle ([#199](https://github.com/themesberg/flowbite-react/issues/199)) ([1ab7160](https://github.com/themesberg/flowbite-react/commit/1ab7160daa0423a593911a7e1b32aa27e3b25ca3))
+- **component:** theme support to modal ([#197](https://github.com/themesberg/flowbite-react/issues/197)) ([3ed4551](https://github.com/themesberg/flowbite-react/commit/3ed455186fe15efadea0f21efaaca87a9292c5fb))
+- **component:** theme support to pagination ([#195](https://github.com/themesberg/flowbite-react/issues/195)) ([80b7e2a](https://github.com/themesberg/flowbite-react/commit/80b7e2a364a557f54b94b512fe41c2e4839bd9bc))
+- **component:** theme support to rating ([#191](https://github.com/themesberg/flowbite-react/issues/191)) ([c0daead](https://github.com/themesberg/flowbite-react/commit/c0daead778731585b2d6a9dd624eb3c3dbf51cc7))
+- **component:** theme support to toast ([#192](https://github.com/themesberg/flowbite-react/issues/192)) ([2d5b556](https://github.com/themesberg/flowbite-react/commit/2d5b556507c234b3c77a7d7a2d1c542c2324f056))
+- **component:** theme support to tooltip ([#198](https://github.com/themesberg/flowbite-react/issues/198)) ([957ea45](https://github.com/themesberg/flowbite-react/commit/957ea4569e1fb8802f5a5d0386607d12c682c2c0))
+- **component:** Use `FlowbiteTheme` in `Sidebar`s, resolves [#143](https://github.com/themesberg/flowbite-react/issues/143) ([#200](https://github.com/themesberg/flowbite-react/issues/200)) ([59654eb](https://github.com/themesberg/flowbite-react/commit/59654eb1182e6df8f528d7a25ec8d817e6f18acc))
+- **component:** Use theme in `ListGroup`s, resolves [#137](https://github.com/themesberg/flowbite-react/issues/137) ([#203](https://github.com/themesberg/flowbite-react/issues/203)) ([360a723](https://github.com/themesberg/flowbite-react/commit/360a7235625fc8e8da01a0bf0d70e18064e40d83))
+
+### Bug Fixes
+
+- `nanoid` requires Node `crypto` module ([#185](https://github.com/themesberg/flowbite-react/issues/185)) ([da59ccc](https://github.com/themesberg/flowbite-react/commit/da59ccca0900a14fd0e8720041dd4830aa04984c))
+- **a11y:** Use darker text for `Breadcrumb.Item`s, resolves [#102](https://github.com/themesberg/flowbite-react/issues/102) ([b6fcf6a](https://github.com/themesberg/flowbite-react/commit/b6fcf6ac6c8107a7b6bdaa515f20e5bc6e252d20))
+- **build:** Change `yarn lint` command to actually lint files ([#183](https://github.com/themesberg/flowbite-react/issues/183)) ([3471318](https://github.com/themesberg/flowbite-react/commit/34713188352c5da675de7e57ffabe92f9443cc61))
+- **component:** add displayName to TextInput ([#219](https://github.com/themesberg/flowbite-react/issues/219)) ([cb5ca89](https://github.com/themesberg/flowbite-react/commit/cb5ca8929d86e3c179d833ae246b1c9e35c63e51))
+- **component:** add forwardRef to TextInput ([#212](https://github.com/themesberg/flowbite-react/issues/212)) ([596a445](https://github.com/themesberg/flowbite-react/commit/596a4453dd77adb361dd3dfea3b8d6650be5e91c))
+- **component:** Allow `Card` to have `href` ([#194](https://github.com/themesberg/flowbite-react/issues/194)) ([3be9786](https://github.com/themesberg/flowbite-react/commit/3be9786471f5847e1307fa76319bea4e11eec718))
+- **component:** Allow `Carousel`s to fill height, resolves [#168](https://github.com/themesberg/flowbite-react/issues/168) ([#208](https://github.com/themesberg/flowbite-react/issues/208)) ([9ccf0c2](https://github.com/themesberg/flowbite-react/commit/9ccf0c2a2499d50ae9c9da953a4bcbedb0cc41ca))
+- **component:** Remove default export from `Breadcrumb` ([#150](https://github.com/themesberg/flowbite-react/issues/150)) ([511a86c](https://github.com/themesberg/flowbite-react/commit/511a86c8a55b6823f8dd80d916a20b49181705a5))
+- Replace old colors on `Alerts` page & stories ([#156](https://github.com/themesberg/flowbite-react/issues/156)) ([4619168](https://github.com/themesberg/flowbite-react/commit/46191683cc2e28d0bdfce459c7eabeb10983e0f1))
+- **type:** Generate `FlowbiteTheme.d.ts` to builds ([#182](https://github.com/themesberg/flowbite-react/issues/182)) ([097d875](https://github.com/themesberg/flowbite-react/commit/097d8756c0130c663e3e1db15a016e8caa5316bf))
+- update typo on Footer.Link from Gihub to Github ([#210](https://github.com/themesberg/flowbite-react/issues/210)) ([7ca9fcc](https://github.com/themesberg/flowbite-react/commit/7ca9fccd86d140ea89e52858bb59e288203bde47))
+- You may want the label to be the number 0 ([#157](https://github.com/themesberg/flowbite-react/issues/157)) ([396d8f3](https://github.com/themesberg/flowbite-react/commit/396d8f34ec6621a3936bee132de303c90acba1e5))
+
 ### [0.0.25](https://github.com/themesberg/flowbite-react/compare/v0.0.24...v0.0.25) (2022-05-20)
 
 ### Bug Fixes
