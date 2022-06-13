@@ -240,7 +240,7 @@ export default {
     },
   },
   carousel: {
-    base: 'relative h-full w-full min-h-56 sm:min-h-64 xl:min-h-80 2xl:min-h-96',
+    base: 'relative h-full w-full min-h-[3.5rem] sm:min-h-[4rem] xl:min-h-[5rem] 2xl:min-h-[6rem]',
     indicators: {
       active: {
         off: 'bg-white/50 hover:bg-white dark:bg-gray-800/50 dark:hover:bg-gray-800',
