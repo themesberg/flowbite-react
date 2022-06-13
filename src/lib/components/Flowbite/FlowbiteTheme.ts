@@ -15,6 +15,7 @@ import type { ModalPositions, ModalSizes } from '../Modal';
 import type { StarSizes } from '../Rating';
 import type { SidebarCTAColors } from '../Sidebar/SidebarCTA';
 import type { SpinnerColors, SpinnerSizes } from '../Spinner';
+import type { TabStyleItem, TabStyles } from '../Tab';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
@@ -296,6 +297,19 @@ export interface FlowbiteTheme {
       };
     };
     size: SpinnerSizes;
+  };
+  tab: {
+    base: string;
+    tablist: {
+      base: string;
+      styles: TabStyles;
+      tabitem: {
+        base: string;
+        styles: TabStyleItem<TabStyles>;
+        icon: string;
+      };
+    };
+    tabpanel: string;
   };
   toast: {
     base: string;

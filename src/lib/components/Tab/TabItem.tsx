@@ -1,11 +1,10 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 
-export type TabProps = PropsWithChildren<{
+export interface TabProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className' | 'title'>> {
   title: ReactNode;
   active?: boolean;
   disabled?: boolean;
   icon?: FC<ComponentProps<'svg'>>;
-  className?: string;
-}>;
+}
 
 export const TabItem: FC<TabProps> = ({ children }) => <>{children}</>;
