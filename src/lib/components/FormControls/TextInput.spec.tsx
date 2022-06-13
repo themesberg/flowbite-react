@@ -14,4 +14,10 @@ describe.concurrent('Components / Form controls / Text input', () => {
       expect(textInput).toBeInTheDocument();
     });
   });
+
+  describe('Check display name', () => {
+    it('should have a display name of "TextInput"', () => {
+      expect(TextInput.displayName).toEqual('TextInput');
+    });
+  });
 });
