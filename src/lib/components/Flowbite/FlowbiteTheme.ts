@@ -10,6 +10,7 @@ import type {
   ButtonSizes,
 } from '../Button';
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
+import type { HelperColors } from '../FormControls/HelperText';
 import type { ModalPositions, ModalSizes } from '../Modal';
 import type { StarSizes } from '../Rating';
 import type { SidebarCTAColors } from '../Sidebar/SidebarCTA';
@@ -153,6 +154,12 @@ export interface FlowbiteTheme {
   darkThemeToggle: {
     base: string;
     icon: string;
+  };
+  formControls: {
+    helperText: {
+      base: string;
+      colors: HelperColors;
+    };
   };
   listGroup: {
     base: string;

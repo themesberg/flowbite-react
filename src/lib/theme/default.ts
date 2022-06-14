@@ -264,6 +264,18 @@ export default {
     base: 'rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700',
     icon: 'h-5 w-5',
   },
+  formControls: {
+    helperText: {
+      base: 'mt-2 text-sm',
+      colors: {
+        gray: 'text-gray-500 dark:text-gray-400',
+        info: 'text-blue-700 dark:text-blue-800',
+        success: 'text-green-600 dark:text-green-500',
+        failure: 'text-red-600 dark:text-red-500',
+        warning: 'text-yellow-500 dark:text-yellow-600',
+      },
+    },
+  },
   listGroup: {
     base: 'list-none rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white',
     item: {
