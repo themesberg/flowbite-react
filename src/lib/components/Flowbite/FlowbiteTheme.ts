@@ -166,6 +166,9 @@ export interface FlowbiteTheme {
       colors: LabelColors;
       disabled: string;
     };
+    radio: {
+      base: string;
+    };
   };
   listGroup: {
     base: string;
