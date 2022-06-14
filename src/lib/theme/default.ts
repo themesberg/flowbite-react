@@ -275,6 +275,17 @@ export default {
         warning: 'text-yellow-500 dark:text-yellow-600',
       },
     },
+    label: {
+      base: 'text-sm font-medium',
+      colors: {
+        default: 'text-gray-900 dark:text-gray-300',
+        info: 'text-blue-500 dark:text-blue-600',
+        failure: 'text-red-700 dark:text-red-500',
+        warning: 'text-yellow-500 dark:text-yellow-600',
+        success: 'text-green-700 dark:text-green-500',
+      },
+      disabled: 'opacity-50',
+    },
   },
   listGroup: {
     base: 'list-none rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white',
