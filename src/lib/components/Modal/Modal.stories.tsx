@@ -104,7 +104,7 @@ FormElements.args = {
           </div>
           <div className="flex justify-between">
             <div className="flex items-center gap-2">
-              <Checkbox id="remember" className="dark:border-gray-500 dark:bg-gray-600" />
+              <Checkbox id="remember" />
               <Label htmlFor="remember">Remember me</Label>
             </div>
             <a href="/modal" className="text-sm text-blue-700 hover:underline dark:text-blue-500">
