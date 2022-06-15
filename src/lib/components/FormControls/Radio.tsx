@@ -1,15 +1,11 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 
-export type RadioProps = Omit<ComponentProps<'input'>, 'type'>;
+export type RadioProps = Omit<ComponentProps<'input'>, 'type' | 'className'>;
 
-export const Radio: FC<RadioProps> = ({ className, ...props }) => (
-  <input
-    className={classNames(
-      'h-4 w-4 border border-gray-300 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-blue-600 dark:focus:ring-blue-600',
-      className,
-    )}
-    type="radio"
-    {...props}
-  />
-);
+export const Radio: FC<RadioProps> = (props) => {
+  const theme = useTheme().theme.formControls.radio;
+  const theirProps = excludeClassName(props);
+  return <input className={theme.base} type="radio" {...theirProps} />;
+};
