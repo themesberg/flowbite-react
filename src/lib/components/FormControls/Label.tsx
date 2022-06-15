@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
 import type { FlowbiteStateColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -22,8 +23,9 @@ export const Label: FC<LabelProps> = ({
   ...props
 }): JSX.Element => {
   const theme = useTheme().theme.formControls.label;
+  const theirProps = excludeClassName(props);
   return (
-    <label className={classNames(theme.base, theme.colors[color], disabled ?? theme.disabled)} {...props}>
+    <label className={classNames(theme.base, theme.colors[color], disabled ?? theme.disabled)} {...theirProps}>
       {value ?? children ?? ''}
     </label>
   );
