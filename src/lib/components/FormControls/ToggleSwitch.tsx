@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, KeyboardEvent, MouseEvent } from 'react';
 import { useId } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange' | 'className'> & {
@@ -11,6 +12,7 @@ export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange' | 'cla
 
 export const ToggleSwitch: FC<ToggleSwitchProps> = ({ checked, disabled, label, name, onChange, ...props }) => {
   const theme = useTheme().theme.formControls.toggleSwitch;
+  const theirProps = excludeClassName(props);
   const id = useId();
 
   const toggle = (): void => onChange(!checked);
@@ -38,7 +40,7 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({ checked, disabled, label, 
         tabIndex={0}
         type="button"
         className={classNames(theme.base, theme.active[disabled ? 'off' : 'on'])}
-        {...props}
+        {...theirProps}
       >
         <div className={classNames(theme.toggle.base, theme.toggle.checked[checked ? 'on' : 'off'])} />
         <span
