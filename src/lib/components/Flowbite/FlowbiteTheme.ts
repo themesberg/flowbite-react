@@ -10,7 +10,7 @@ import type {
   ButtonSizes,
 } from '../Button';
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
-import type { HelperColors } from '../FormControls/HelperText';
+import type { HelperColors, LabelColors } from '../FormControls';
 import type { ModalPositions, ModalSizes } from '../Modal';
 import type { StarSizes } from '../Rating';
 import type { SidebarCTAColors } from '../Sidebar/SidebarCTA';
@@ -160,6 +160,11 @@ export interface FlowbiteTheme {
     helperText: {
       base: string;
       colors: HelperColors;
+    };
+    label: {
+      base: string;
+      colors: LabelColors;
+      disabled: string;
     };
   };
   listGroup: {
@@ -348,34 +353,36 @@ export interface FlowbiteBoolean {
   on: string;
 }
 
-export interface FlowbiteColors {
+export interface FlowbiteStateColors {
+  info: string;
+  failure: string;
+  success: string;
+  warning: string;
+}
+
+export interface FlowbiteColors extends FlowbiteStateColors {
+  [key: string]: string;
   blue: string;
   cyan: string;
   dark: string;
-  failure: string;
   gray: string;
   green: string;
   indigo: string;
-  info: string;
   light: string;
   lime: string;
   pink: string;
   purple: string;
   red: string;
-  success: string;
   teal: string;
-  warning: string;
   yellow: string;
 }
 
-export interface FlowbiteGradientColors {
+export interface FlowbiteGradientColors extends Omit<FlowbiteStateColors, 'warning'> {
+  [key: string]: string;
   cyan: string;
-  failure: string;
-  info: string;
   lime: string;
   pink: string;
   purple: string;
-  success: string;
   teal: string;
 }
 

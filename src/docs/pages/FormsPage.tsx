@@ -15,15 +15,15 @@ const FormsPage: FC = () => {
       code: (
         <form className="flex flex-col gap-4">
           <div>
-            <Label className="mb-2 block" htmlFor="email1">
-              Your email
-            </Label>
+            <div className="mb-2 block">
+              <Label htmlFor="email1" value="Your email" />
+            </div>
             <TextInput id="email1" type="email" placeholder="name@flowbite.com" required />
           </div>
           <div>
-            <Label className="mb-2 block" htmlFor="password1">
-              Your password
-            </Label>
+            <div className="mb-2 block">
+              <Label htmlFor="password1" value="Your password" />
+            </div>
             <TextInput id="password1" type="password" required />
           </div>
           <div className="flex items-center gap-2">
@@ -39,21 +39,21 @@ const FormsPage: FC = () => {
       code: (
         <div className="flex flex-col gap-4">
           <div>
-            <Label className="mb-2 block" htmlFor="small">
-              Small input
-            </Label>
+            <div className="mb-2 block">
+              <Label htmlFor="small" value="Small input" />
+            </div>
             <TextInput id="small" type="text" sizing="sm" />
           </div>
           <div>
-            <Label className="mb-2 block" htmlFor="base">
-              Base input
-            </Label>
+            <div className="mb-2 block">
+              <Label htmlFor="base" value="Base input" />
+            </div>
             <TextInput id="base" type="text" sizing="md" />
           </div>
           <div>
-            <Label className="mb-2 block" htmlFor="large">
-              Large input
-            </Label>
+            <div className="mb-2 block">
+              <Label htmlFor="large" value="Large input" />
+            </div>
             <TextInput id="large" type="text" sizing="lg" />
           </div>
         </div>
@@ -75,21 +75,21 @@ const FormsPage: FC = () => {
       code: (
         <form className="flex flex-col gap-4">
           <div>
-            <Label className="mb-2 block" htmlFor="email2">
-              Your email
-            </Label>
+            <div className="mb-2 block">
+              <Label htmlFor="email2" value="Your email" />
+            </div>
             <TextInput id="email2" type="email" placeholder="name@flowbite.com" required shadow />
           </div>
           <div>
-            <Label className="mb-2 block" htmlFor="password2">
-              Your password
-            </Label>
+            <div className="mb-2 block">
+              <Label htmlFor="password2" value="Your password" />
+            </div>
             <TextInput id="password2" type="password" required shadow />
           </div>
           <div>
-            <Label className="mb-2 block" htmlFor="repeat-password">
-              Repeat password
-            </Label>
+            <div className="mb-2 block">
+              <Label htmlFor="repeat-password" value="Repeat password" />
+            </div>
             <TextInput id="repeat-password" type="password" required shadow />
           </div>
           <div className="flex items-center gap-2">
@@ -109,9 +109,9 @@ const FormsPage: FC = () => {
       title: 'Helper text',
       code: (
         <div>
-          <Label className="mb-2 block" htmlFor="email3">
-            Your email
-          </Label>
+          <div className="mb-2 block">
+            <Label htmlFor="email3" value="Your email" />
+          </div>
           <TextInput
             id="email3"
             type="email"
@@ -134,9 +134,9 @@ const FormsPage: FC = () => {
       title: 'Input element with icon',
       code: (
         <div>
-          <Label className="mb-2 block" htmlFor="email4">
-            Your email
-          </Label>
+          <div className="mb-2 block">
+            <Label htmlFor="email4" value="Your email" />
+          </div>
           <TextInput id="email4" type="email" placeholder="name@flowbite.com" required icon={HiMail} />
         </div>
       ),
@@ -145,9 +145,9 @@ const FormsPage: FC = () => {
       title: 'Input element with addon',
       code: (
         <div>
-          <Label className="mb-2 block" htmlFor="username">
-            Username
-          </Label>
+          <div className="mb-2 block">
+            <Label htmlFor="username" value="Username" />
+          </div>
           <TextInput id="username3" placeholder="Bonnie Green" required addon="@" />
         </div>
       ),
@@ -157,9 +157,9 @@ const FormsPage: FC = () => {
       code: (
         <div className="flex flex-col gap-4">
           <div>
-            <Label className="mb-2 block" htmlFor="username3" color="green">
-              Your name
-            </Label>
+            <div className="mb-2 block">
+              <Label htmlFor="username3" color="green" value="Your name" />
+            </div>
             <TextInput
               id="username"
               placeholder="Bonnie Green"
@@ -173,9 +173,9 @@ const FormsPage: FC = () => {
             />
           </div>
           <div>
-            <Label className="mb-2 block" htmlFor="username4" color="red">
-              Your name
-            </Label>
+            <div className="mb-2 block">
+              <Label htmlFor="username4" color="red" value="Your name" />
+            </div>
             <TextInput
               id="username4"
               placeholder="Bonnie Green"
@@ -195,9 +195,9 @@ const FormsPage: FC = () => {
       title: 'Textarea',
       code: (
         <div id="textarea">
-          <Label className="mb-2 block" htmlFor="comment">
-            Your message
-          </Label>
+          <div className="mb-2 block">
+            <Label htmlFor="comment" value="Your message" />
+          </div>
           <Textarea id="comment" placeholder="Leave a comment..." required rows={4} />
         </div>
       ),
@@ -206,9 +206,9 @@ const FormsPage: FC = () => {
       title: 'Select input',
       code: (
         <div id="select">
-          <Label className="mb-2 block" htmlFor="countries">
-            Select your country
-          </Label>
+          <div className="mb-2 block">
+            <Label htmlFor="countries" value="Select your country" />
+          </div>
           <Select id="countries" required>
             <option>United States</option>
             <option>Canada</option>
@@ -255,7 +255,7 @@ const FormsPage: FC = () => {
           </div>
           <div className="flex items-center gap-2">
             <Checkbox id="disabled" disabled />
-            <Label htmlFor="disabled" className="opacity-50">
+            <Label htmlFor="disabled" disabled>
               Eligible for international shipping (disabled)
             </Label>
           </div>
@@ -285,7 +285,7 @@ const FormsPage: FC = () => {
           </div>
           <div className="flex items-center gap-2">
             <Radio id="china" name="countries" value="China" disabled />
-            <Label className="opacity-50" htmlFor="china">
+            <Label htmlFor="china" disabled>
               China (disabled)
             </Label>
           </div>
@@ -296,9 +296,9 @@ const FormsPage: FC = () => {
       title: 'File upload',
       code: (
         <div id="fileUpload">
-          <Label className="mb-2 block" htmlFor="file">
-            Upload file
-          </Label>
+          <div className="mb-2 block">
+            <Label htmlFor="file" value="Upload file" />
+          </div>
           <FileInput id="file" helperText="A profile picture is useful to confirm your are logged into your account" />
         </div>
       ),
