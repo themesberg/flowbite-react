@@ -78,7 +78,7 @@ const ButtonComponent: FC<ButtonProps> = ({
         outline && theme.outline.color[color],
         theme.base,
         theme.pill[pill ? 'on' : 'off'],
-        className
+        className,
       )}
       disabled={disabled}
       href={href}
