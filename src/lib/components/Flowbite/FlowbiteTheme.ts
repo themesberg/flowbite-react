@@ -172,6 +172,15 @@ export interface FlowbiteTheme {
     checkbox: {
       base: string;
     };
+    toggleSwitch: {
+      base: string;
+      active: FlowbiteBoolean;
+      toggle: {
+        base: string;
+        checked: FlowbiteBoolean;
+      };
+      label: string;
+    };
   };
   listGroup: {
     base: string;

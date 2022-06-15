@@ -292,6 +292,21 @@ export default {
     checkbox: {
       base: 'h-4 w-4 rounded border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600',
     },
+    toggleSwitch: {
+      base: 'group relative flex items-center rounded-lg focus:outline-none',
+      active: {
+        on: 'cursor-pointer',
+        off: 'cursor-not-allowed opacity-50',
+      },
+      toggle: {
+        base: 'toggle-bg h-6 w-11 rounded-full border group-focus:ring-4 group-focus:ring-blue-500/25',
+        checked: {
+          on: 'border-blue-700 bg-blue-700 after:translate-x-full after:border-white',
+          off: 'border-gray-200 bg-gray-200 dark:border-gray-600 dark:bg-gray-700',
+        },
+      },
+      label: 'ml-3 text-sm font-medium text-gray-900 dark:text-gray-300',
+    },
   },
   listGroup: {
     base: 'list-none rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white',

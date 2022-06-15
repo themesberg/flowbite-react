@@ -1,22 +1,18 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, KeyboardEvent, MouseEvent } from 'react';
 import { useId } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 
-export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
+export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange' | 'className'> & {
   checked: boolean;
   label: string;
   onChange: (checked: boolean) => void;
 };
 
-export const ToggleSwitch: FC<ToggleSwitchProps> = ({
-  checked,
-  className,
-  disabled,
-  label,
-  name,
-  onChange,
-  ...props
-}) => {
+export const ToggleSwitch: FC<ToggleSwitchProps> = ({ checked, disabled, label, name, onChange, ...props }) => {
+  const theme = useTheme().theme.formControls.toggleSwitch;
+  const theirProps = excludeClassName(props);
   const id = useId();
 
   const toggle = (): void => onChange(!checked);
@@ -43,28 +39,14 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
         role="switch"
         tabIndex={0}
         type="button"
-        className={classNames(
-          'group relative flex items-center rounded-lg focus:outline-none',
-          {
-            'cursor-not-allowed opacity-50': disabled,
-            'cursor-pointer': !disabled,
-          },
-          className,
-        )}
-        {...props}
+        className={classNames(theme.base, theme.active[disabled ? 'off' : 'on'])}
+        {...theirProps}
       >
-        <div
-          className={classNames(
-            'toggle-bg h-6 w-11 rounded-full border group-focus:ring-4 group-focus:ring-blue-500/25',
-            checked
-              ? 'border-blue-700 bg-blue-700 after:translate-x-full after:border-white'
-              : 'border-gray-200 bg-gray-200 dark:border-gray-600 dark:bg-gray-700',
-          )}
-        />
+        <div className={classNames(theme.toggle.base, theme.toggle.checked[checked ? 'on' : 'off'])} />
         <span
           data-testid="flowbite-toggleswitch-label"
           id={`${id}-flowbite-toggleswitch-label`}
-          className="ml-3 text-sm font-medium text-gray-900 dark:text-gray-300"
+          className={theme.label}
         >
           {label}
         </span>
