@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, KeyboardEvent, PropsWithChildren, ReactElement } from 'react';
 import { Children, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
 import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { TabProps } from './TabItem';
@@ -38,6 +39,7 @@ interface TabKeyboardEventProps extends TabEventProps {
 
 export const TabsComponent: FC<TabsProps> = ({ children, style = 'default', ...rest }) => {
   const theme = useTheme().theme.tab;
+  const theirProps = excludeClassName(rest);
 
   const id = useId();
   const tabs = useMemo(
@@ -88,7 +90,7 @@ export const TabsComponent: FC<TabsProps> = ({ children, style = 'default', ...r
         aria-label="Tabs"
         role="tablist"
         className={classNames(theme.tablist.base, theme.tablist.styles[style])}
-        {...rest}
+        {...theirProps}
       >
         {tabs.map((tab, index) => (
           <button
