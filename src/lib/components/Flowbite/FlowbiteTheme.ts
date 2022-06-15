@@ -169,6 +169,9 @@ export interface FlowbiteTheme {
     radio: {
       base: string;
     };
+    checkbox: {
+      base: string;
+    };
   };
   listGroup: {
     base: string;

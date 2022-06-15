@@ -1,15 +1,11 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 
-export type CheckboxProps = Omit<ComponentProps<'input'>, 'type'>;
+export type CheckboxProps = Omit<ComponentProps<'input'>, 'type' | 'className'>;
 
-export const Checkbox: FC<CheckboxProps> = ({ className, ...props }) => (
-  <input
-    className={classNames(
-      'h-4 w-4 rounded border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600',
-      className,
-    )}
-    type="checkbox"
-    {...props}
-  />
-);
+export const Checkbox: FC<CheckboxProps> = (props) => {
+  const theme = useTheme().theme.formControls.checkbox;
+  const theirProps = excludeClassName(props);
+  return <input className={theme.base} type="checkbox" {...theirProps} />;
+};
