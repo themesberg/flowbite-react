@@ -11,7 +11,7 @@ import { useTheme } from '../Flowbite/ThemeContext';
 import type { PositionInButtonGroup } from './ButtonGroup';
 import ButtonGroup from './ButtonGroup';
 
-export interface ButtonProps extends Omit<ComponentProps<'button'>, 'className' | 'color'> {
+export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color'> {
   color?: keyof ButtonColors;
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
   gradientMonochrome?: keyof ButtonGradientColors;
@@ -21,6 +21,7 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'className' 
   pill?: boolean;
   positionInGroup?: keyof PositionInButtonGroup;
   size?: keyof ButtonSizes;
+  className?: string;
 }
 
 export interface ButtonColors
@@ -56,6 +57,7 @@ const ButtonComponent: FC<ButtonProps> = ({
   pill = false,
   positionInGroup = 'none',
   size = 'md',
+  className = '',
   ...props
 }): JSX.Element => {
   const isLink = typeof href !== 'undefined';
@@ -76,6 +78,7 @@ const ButtonComponent: FC<ButtonProps> = ({
         outline && theme.outline.color[color],
         theme.base,
         theme.pill[pill ? 'on' : 'off'],
+        className
       )}
       disabled={disabled}
       href={href}
