@@ -1,10 +1,9 @@
 import classNames from 'classnames';
-import { useId } from 'react';
-import { ComponentProps, FC, PropsWithChildren } from 'react';
+import { ComponentProps, FC, PropsWithChildren, useId } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
 import { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
-
 import { useTheme } from '../Flowbite/ThemeContext';
+
 export interface ProgressProps extends PropsWithChildren<ComponentProps<'div'>> {
   size?: keyof ProgressSizes;
   label?: string;
