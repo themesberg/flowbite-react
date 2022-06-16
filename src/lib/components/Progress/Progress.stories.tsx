@@ -24,13 +24,13 @@ Default.args = {
 export const Sizes = (): JSX.Element => (
   <>
     <div className="text-base font-medium dark:text-white">Small</div>
-    <Progress progress={45} size="sm" color="dark" />
+    <Progress progress={45} size="sm" />
     <div className="mt-3 text-base font-medium dark:text-white">Default</div>
-    <Progress progress={45} size="md" color="dark" />
+    <Progress progress={45} size="md" />
     <div className="mt-3 text-lg font-medium dark:text-white">Large</div>
-    <Progress progress={45} size="lg" color="dark" />
+    <Progress progress={45} size="lg" />
     <div className="mt-3 text-lg font-medium dark:text-white">Extra Large</div>
-    <Progress progress={45} size="xl" color="dark" />
+    <Progress progress={45} size="xl" />
   </>
 );
 
@@ -58,6 +58,7 @@ WithLabelInside.storyName = 'With label inside';
 WithLabelInside.args = {
   label: 'Flowbite',
   progress: 45,
+  size: 'lg',
 };
 
 export const WithLabelOutside = Template.bind({});

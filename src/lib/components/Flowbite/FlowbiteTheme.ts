@@ -12,6 +12,7 @@ import type {
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
 import type { HelperColors, LabelColors } from '../FormControls';
 import type { ModalPositions, ModalSizes } from '../Modal';
+import type { ProgressColor, ProgressSizes } from '../Progress';
 import type { StarSizes } from '../Rating';
 import type { SidebarCTAColors } from '../Sidebar/SidebarCTA';
 import type { SpinnerColors, SpinnerSizes } from '../Spinner';
@@ -302,6 +303,13 @@ export interface FlowbiteTheme {
       collapsed: FlowbiteBoolean;
       img: string;
     };
+  };
+  progress: {
+    base: string;
+    label: string;
+    bar: string;
+    color: ProgressColor;
+    size: ProgressSizes;
   };
   spinner: {
     base: string;
