@@ -1,7 +1,8 @@
 import classNames from 'classnames';
-import { ComponentProps, FC, PropsWithChildren, useId } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { useId } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
-import { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface ProgressProps extends PropsWithChildren<ComponentProps<'div'>> {
