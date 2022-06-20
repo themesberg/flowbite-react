@@ -176,8 +176,8 @@ export interface FlowbiteTheme {
     };
     title: {
       base: string;
-    },
-    divider:{ 
+    };
+    divider: {
       base: string;
     };
     copyright: {
