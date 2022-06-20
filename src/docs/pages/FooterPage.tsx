@@ -100,7 +100,7 @@ const FooterPage: FC = () => {
       title: 'Footer sitemap links',
       code: (
         <Footer col bgDark>
-          <div className="w-full grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
+          <div className="grid w-full grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
             <div>
               <Footer.Title title="Company" />
               <Footer.LinkGroup col>
@@ -137,7 +137,7 @@ const FooterPage: FC = () => {
               </Footer.LinkGroup>
             </div>
           </div>
-          <div className="bg-gray-700 w-full py-6 px-4 sm:flex sm:items-center sm:justify-between">
+          <div className="w-full bg-gray-700 py-6 px-4 sm:flex sm:items-center sm:justify-between">
             <Footer.Copyright href="#" by="Flowbite™" year={2022} />
             <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
               <Footer.Icon href="#" icon={BsFacebook} />

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FooterLinkGroupProps extends PropsWithChildren<Omit<ComponentProps<'ul'>, 'className'>> {

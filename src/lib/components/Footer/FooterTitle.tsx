@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export type FooterTitleProps = PropsWithChildren<{
