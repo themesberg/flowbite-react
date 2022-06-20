@@ -32,7 +32,7 @@ const FooterTest = (): JSX.Element => (
       alt="Flowbite Logo"
       name="Flowbite"
     />
-    <Footer.LinkGroup className="mt-3 flex-wrap items-center text-sm sm:mt-0">
+    <Footer.LinkGroup>
       <Footer.Link href="#">About</Footer.Link>
       <Footer.Link href="#">Services</Footer.Link>
     </Footer.LinkGroup>

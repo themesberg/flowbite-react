@@ -157,6 +157,40 @@ export interface FlowbiteTheme {
     base: string;
     icon: string;
   };
+  footer: {
+    base: string;
+    col: string;
+    container: string;
+    bgDark: string;
+    groupLink: {
+      base: string;
+      link: {
+        base: string;
+        href: string;
+      };
+      col: string;
+    };
+    icon: {
+      base: string;
+      size: string;
+    };
+    title: {
+      base: string;
+    },
+    divider:{ 
+      base: string;
+    };
+    copyright: {
+      base: string;
+      href: string;
+      span: string;
+    };
+    brand: {
+      base: string;
+      img: string;
+      span: string;
+    };
+  };
   formControls: {
     helperText: {
       base: string;

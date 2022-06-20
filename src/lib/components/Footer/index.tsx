@@ -1,23 +1,31 @@
 import classNames from 'classnames';
-import type { FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
+import { useTheme } from '../Flowbite/ThemeContext';
 import { FooterBrand } from './FooterBrand';
 import { FooterCopyright } from './FooterCopyright';
+import { FooterDivider } from './FooterDivider';
 import { FooterIcon } from './FooterIcon';
 import { FooterLink } from './FooterLink';
 import { FooterLinkGroup } from './FooterLinkGroup';
+import { FooterTitle } from './FooterTitle';
 
-export type FooterComponentProps = PropsWithChildren<{
-  className?: string;
-}>;
+export interface FooterProps extends ComponentProps<'footer'> {
+  col?: boolean;
+  bgDark?: boolean;
+  container?: boolean;
+}
 
-const FooterComponent: FC<FooterComponentProps> = ({ children, className }) => {
+export const FooterComponent: FC<FooterProps> = ({
+  children,
+  col = false,
+  bgDark = false,
+  container = false,
+}): JSX.Element => {
+  const theme = useTheme().theme.footer;
   return (
     <footer
       data-testid="footer-element"
-      className={classNames(
-        'w-full rounded-lg bg-white p-4 shadow dark:bg-gray-800 md:flex md:items-center md:justify-between md:p-6',
-        className,
-      )}
+      className={classNames(theme.base, col && theme.col, bgDark && theme.bgDark, container && theme.container)}
     >
       {children}
     </footer>
@@ -30,6 +38,8 @@ FooterLink.displayName = 'Footer.Link';
 FooterBrand.displayName = 'Footer.Brand';
 FooterLinkGroup.displayName = 'Footer.LinkGroup';
 FooterIcon.displayName = 'Footer.Icon';
+FooterTitle.displayName = 'Footer.Title';
+FooterDivider.displayName = 'Footer.Divider';
 
 export const Footer = Object.assign(FooterComponent, {
   Copyright: FooterCopyright,
@@ -37,4 +47,6 @@ export const Footer = Object.assign(FooterComponent, {
   LinkGroup: FooterLinkGroup,
   Brand: FooterBrand,
   Icon: FooterIcon,
+  Title: FooterTitle,
+  Divider: FooterDivider,
 });

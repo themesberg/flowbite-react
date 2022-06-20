@@ -1,24 +1,27 @@
-import classNames from 'classnames';
 import type { FC, PropsWithChildren } from 'react';
+import { useTheme } from '../Flowbite/ThemeContext';
 
 export type FooterBrandProps = PropsWithChildren<{
   href?: string;
   src: string;
   alt?: string;
   name?: string;
-  className?: string;
 }>;
 
-export const FooterBrand: FC<FooterBrandProps> = ({ children, href, src, alt, name, className }) => (
-  <>
-    {href ? (
-      <a href={href} className={classNames('mb-4 flex items-center sm:mb-0', className)}>
-        <img src={src} className="mr-3 h-8" alt={alt} />
-        <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">{name}</span>
-        {children}
-      </a>
-    ) : (
-      <img src={src} className="mr-3 h-8" alt={alt} />
-    )}
-  </>
-);
+export const FooterBrand: FC<FooterBrandProps> = ({ children, href, src, alt, name }) => {
+  const theme = useTheme().theme.footer.brand;
+
+  return (
+    <>
+      {href ? (
+        <a href={href} className={theme.base}>
+          <img src={src} className={theme.img} alt={alt} />
+          <span className={theme.span}>{name}</span>
+          {children}
+        </a>
+      ) : (
+        <img src={src} className={theme.img} alt={alt} />
+      )}
+    </>
+  );
+};
