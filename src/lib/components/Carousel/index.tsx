@@ -34,9 +34,9 @@ export const Carousel: FC<CarouselProps> = ({
 
   const items = useMemo(
     () =>
-      Children.map(children as ReactElement<ComponentProps<'img'>>[], (child: ReactElement<ComponentProps<'img'>>) =>
+      Children.map(children as ReactElement[], (child: ReactElement) =>
         cloneElement(child, {
-          className: theme.item.base,
+          className: classNames(theme.item.base, child.props.className),
         }),
       ),
     [children, theme.item.base],
