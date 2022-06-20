@@ -20,7 +20,7 @@ Never made an open source contribution before? Wondering how contributions work 
 4. Create a new branch for your fix using `git checkout -b branch-name-here`.
 5. Make the appropriate changes for the issue you are trying to address or the feature that you want to add.
 6. Use `git add insert-paths-of-changed-files-here` to add the file contents of the changed files to the "snapshot" git uses to manage the state of the project, also known as the index.
-7. Use `git commit -m "Insert a short message of the changes made here"` to store the contents of the index with a descriptive message. Use [conventional commits](https://www.conventionalcommits.org/) to create a nice message.
+7. Use `yarn commit` or `npm run commit` to store the contents of the index with a descriptive message. Use [conventional commits](https://www.conventionalcommits.org/) to create a nice message.
 8. Push the changes to the remote repository using `git push origin branch-name-here`.
 9. Submit a pull request to the upstream repository.
 10. Title the pull request with a short description of the changes made and the issue or bug number associated with your change. For example, you can title an issue like so `"Added more log outputting to resolve #4352"`.
