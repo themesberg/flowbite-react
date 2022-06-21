@@ -44,7 +44,8 @@
     "test:coverage": "vitest run --coverage",
     "test:open": "vitest --ui",
     "test:e2e": "start-test 3000 cypress:run",
-    "test:e2e:open": "start-test 3000 cypress:open"
+    "test:e2e:open": "start-test 3000 cypress:open",
+    "commit": "cz"
   },
   "dependencies": {
     "@floating-ui/react-dom": "^0.6.3",
@@ -89,6 +90,7 @@
     "babel-loader": "^8.2.4",
     "cypress": "^9.6.0",
     "cypress-axe": "^0.14.0",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -140,5 +142,10 @@
     "flowbite",
     "flowbite-react",
     "flowbite-react-components"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
