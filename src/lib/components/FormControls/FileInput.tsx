@@ -13,7 +13,7 @@ export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | '
 }
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ sizing = 'md', helperText, color = 'base', ...props }, ref) => {
+  ({ sizing = 'md', helperText, color = 'gray', ...props }, ref) => {
     const theme = useTheme().theme.formControls.fileInput;
     const theirProps = excludeClassName(props);
     return (

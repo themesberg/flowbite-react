@@ -24,7 +24,7 @@ export interface TextInputProps extends Omit<ComponentProps<'input'>, 'ref' | 'c
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ sizing = 'md', shadow, helperText, addon, icon: Icon, color = 'base', ...props }, ref) => {
+  ({ sizing = 'md', shadow, helperText, addon, icon: Icon, color = 'gray', ...props }, ref) => {
     const theme = useTheme().theme.formControls.textInput;
     const theirProps = excludeClassName(props);
     return (
