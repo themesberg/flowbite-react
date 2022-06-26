@@ -10,7 +10,7 @@ import type {
   ButtonSizes,
 } from '../Button';
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
-import type { HelperColors, LabelColors } from '../FormControls';
+import type { HelperColors, LabelColors, TextInputColors, TextInputSizes } from '../FormControls';
 import type { ModalPositions, ModalSizes } from '../Modal';
 import type { ProgressColor, ProgressSizes } from '../Progress';
 import type { StarSizes } from '../Rating';
@@ -172,6 +172,36 @@ export interface FlowbiteTheme {
     };
     checkbox: {
       base: string;
+    };
+    textInput: {
+      base: string;
+      addon: string;
+      field: {
+        base: string;
+        icon: {
+          base: string;
+          svg: string;
+        };
+        input: {
+          base: string;
+          sizes: TextInputSizes;
+          colors: TextInputColors;
+          withIcon: FlowbiteBoolean;
+          withAddon: FlowbiteBoolean;
+          withShadow: FlowbiteBoolean;
+        };
+      };
+    };
+    fileInput: {
+      base: string;
+      field: {
+        base: string;
+        input: {
+          base: string;
+          sizes: TextInputSizes;
+          colors: TextInputColors;
+        };
+      };
     };
     toggleSwitch: {
       base: string;

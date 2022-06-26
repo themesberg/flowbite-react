@@ -8,8 +8,8 @@ export interface HelperColors extends Pick<FlowbiteColors, 'gray' | 'info' | 'fa
   [key: string]: string;
 }
 
-export interface HelperTextProps extends PropsWithChildren<Omit<ComponentProps<'p'>, 'className'>> {
-  color?: string;
+export interface HelperTextProps extends PropsWithChildren<Omit<ComponentProps<'p'>, 'color' | 'className'>> {
+  color?: keyof HelperColors;
   value?: string;
 }
 
