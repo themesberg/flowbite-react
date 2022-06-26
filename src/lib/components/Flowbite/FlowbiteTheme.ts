@@ -10,7 +10,7 @@ import type {
   ButtonSizes,
 } from '../Button';
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
-import type { HelperColors, LabelColors, TextInputColors, TextInputSizes } from '../FormControls';
+import type { HelperColors, LabelColors, TextareaColors, TextInputColors, TextInputSizes } from '../FormControls';
 import type { ModalPositions, ModalSizes } from '../Modal';
 import type { ProgressColor, ProgressSizes } from '../Progress';
 import type { StarSizes } from '../Rating';
@@ -212,6 +212,11 @@ export interface FlowbiteTheme {
       };
       label: string;
     };
+    textarea: {
+      base: string;
+      colors: TextareaColors;
+      withShadow: FlowbiteBoolean;
+    }
   };
   listGroup: {
     base: string;
