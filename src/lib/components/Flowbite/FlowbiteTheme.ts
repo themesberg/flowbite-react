@@ -216,7 +216,7 @@ export interface FlowbiteTheme {
       base: string;
       colors: TextareaColors;
       withShadow: FlowbiteBoolean;
-    }
+    };
   };
   listGroup: {
     base: string;

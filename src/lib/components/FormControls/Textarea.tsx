@@ -5,16 +5,14 @@ import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import HelperText from './HelperText';
 
-type Color = 'base' | 'green' | 'red';
-
 export interface TextareaColors extends Pick<FlowbiteColors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
   [key: string]: string;
 }
 
-export interface TextareaProps extends Omit<ComponentProps<'textarea'>, 'className'> {
+export interface TextareaProps extends Omit<ComponentProps<'textarea'>, 'className' | 'color'> {
   shadow?: boolean;
   helperText?: ReactNode;
-  color?: Color;
+  color?: keyof TextareaColors;
 }
 
 
