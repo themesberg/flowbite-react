@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, ReactNode } from 'react';
-import type { FlowbiteSizes } from '../../../../lib/esm/components/Flowbite/FlowbiteTheme';
+import type { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { excludeClassName } from '../../helpers/exclude';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
