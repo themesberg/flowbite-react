@@ -266,7 +266,6 @@ export default {
   },
   footer: {
     base: 'w-full rounded-lg bg-white shadow dark:bg-gray-800 md:flex md:items-center md:justify-between',
-    col: 'flex flex-col',
     container: 'w-full p-6',
     bgDark: 'bg-gray-800',
     groupLink: {

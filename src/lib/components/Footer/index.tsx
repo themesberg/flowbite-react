@@ -10,22 +10,16 @@ import { FooterLinkGroup } from './FooterLinkGroup';
 import { FooterTitle } from './FooterTitle';
 
 export interface FooterProps extends ComponentProps<'footer'> {
-  col?: boolean;
   bgDark?: boolean;
   container?: boolean;
 }
 
-export const FooterComponent: FC<FooterProps> = ({
-  children,
-  col = false,
-  bgDark = false,
-  container = false,
-}): JSX.Element => {
+export const FooterComponent: FC<FooterProps> = ({ children, bgDark = false, container = false }): JSX.Element => {
   const theme = useTheme().theme.footer;
   return (
     <footer
       data-testid="footer-element"
-      className={classNames(theme.base, col && theme.col, bgDark && theme.bgDark, container && theme.container)}
+      className={classNames(theme.base, bgDark && theme.bgDark, container && theme.container)}
     >
       {children}
     </footer>

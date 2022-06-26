@@ -53,6 +53,7 @@ WithLogoFooter.args = {
 export const WithSocialMediaFooter = Template.bind({});
 WithSocialMediaFooter.storyName = 'Social Media Icons';
 WithSocialMediaFooter.args = {
+  container: true,
   children: (
     <div className="w-full p-6">
       <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">

@@ -159,7 +159,6 @@ export interface FlowbiteTheme {
   };
   footer: {
     base: string;
-    col: string;
     container: string;
     bgDark: string;
     groupLink: {
