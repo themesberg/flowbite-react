@@ -1,20 +1,24 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 import { useNavbarContext } from './NavbarContext';
 
-export const NavbarCollapse: FC<PropsWithChildren<ComponentProps<'div'>>> = ({ children, ...props }): JSX.Element => {
-  const theirProps = excludeClassName(props);
+export type NavbarCollapseProps = Omit<PropsWithChildren<ComponentProps<'div'>>, 'className'>
 
+export const NavbarCollapse: FC<NavbarCollapseProps> = ({ children, ...props }): JSX.Element => {
   const { isOpen } = useNavbarContext();
+  
+  const theme = useTheme().theme.navbar.collapse;
+  const theirProps = excludeClassName(props);
 
   return (
     <div
-      className={classNames('w-full md:block md:w-auto', { hidden: !isOpen })}
+      className={classNames(theme.base, theme.hidden[!isOpen ? 'on' : 'off'])}
       data-testid="navbar-collapse"
       {...theirProps}
     >
-      <ul className="mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium">{children}</ul>
+      <ul className={theme.list}>{children}</ul>
     </div>
   );
 };

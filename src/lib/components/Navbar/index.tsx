@@ -1,39 +1,36 @@
 import classNames from 'classnames';
-import type { FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useState } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 import { NavbarBrand } from './NavbarBrand';
 import { NavbarCollapse } from './NavbarCollapse';
 import { NavbarContext } from './NavbarContext';
 import { NavbarLink } from './NavbarLink';
 import { NavbarToggle } from './NavbarToggle';
 
-export type NavbarComponentProps = PropsWithChildren<{
+export interface NavbarComponentProps extends Omit<PropsWithChildren<ComponentProps<'nav'>>, 'className'> {
   className?: string;
   menuOpen?: boolean;
   fluid?: boolean;
   rounded?: boolean;
   border?: boolean;
-}>;
+};
 
-const NavbarComponent: FC<NavbarComponentProps> = ({ children, className, menuOpen, fluid, rounded, border }) => {
+const NavbarComponent: FC<NavbarComponentProps> = ({ children, menuOpen, fluid = false, rounded, border, ...props }) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
+
+  const theme = useTheme().theme.navbar;
+  const theirProps = excludeClassName(props);
 
   return (
     <NavbarContext.Provider value={{ isOpen, setIsOpen }}>
       <nav
-        className={classNames(
-          className,
-          'border-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
-          {
-            rounded: rounded,
-            border: border,
-          },
-        )}
+        className={classNames(theme.base, theme.bordered[border ? 'on' : 'off'], theme.rounded[rounded ? 'on' : 'off'])}
+        {...theirProps}
       >
         <div
-          className={classNames('mx-auto flex flex-wrap items-center justify-between', {
-            container: !fluid,
-          })}
+          className={classNames(theme.inner.base, theme.inner.fuild[fluid ? 'on' : 'off'])}
         >
           {children}
         </div>

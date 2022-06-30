@@ -1,23 +1,30 @@
 import classNames from 'classnames';
-import type { FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { excludeClassName } from '../../helpers/exclude';
+import { useTheme } from '../Flowbite/ThemeContext';
 
-export type NavbarLinkProps = PropsWithChildren<{
+export interface NavbarLinkProps extends Omit<PropsWithChildren<ComponentProps<'a'>>, 'className'> {
   active?: boolean;
   disabled?: boolean;
   href?: string;
-}>;
+};
 
-export const NavbarLink: FC<NavbarLinkProps> = ({ active, disabled, href, children }) => {
+export const NavbarLink: FC<NavbarLinkProps> = ({ active, disabled, href, children, ...props }) => {
+  const theme = useTheme().theme.navbar.link;
+  const theirProps = excludeClassName(props)
+
   return (
     <li>
       <a
         href={href}
-        className={classNames('block py-2 pr-4 pl-3 md:p-0', {
-          'bg-blue-700 text-white dark:text-white md:bg-transparent md:text-blue-700': active,
-          'border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white':
-            !active && !disabled,
-          'text-gray-400 hover:cursor-not-allowed dark:text-gray-600': disabled,
-        })}
+        className={classNames(theme.base,
+          {
+            [theme.active.on]: active,
+            [theme.active.off]:
+              !active && !disabled
+          },
+          theme.disabled[disabled ? 'on' : 'off'])}
+        {...theirProps}
       >
         {children}
       </a>

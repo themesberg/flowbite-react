@@ -273,6 +273,30 @@ export interface FlowbiteTheme {
     sizes: ModalSizes;
     positions: ModalPositions;
   };
+  navbar: {
+    base: string;
+    rounded: FlowbiteBoolean;
+    bordered: FlowbiteBoolean;
+    inner: {
+      base: string;
+      fuild: FlowbiteBoolean;
+    };
+    brand: string;
+    collapse: {
+      base: string;
+      list: string;
+      hidden: FlowbiteBoolean;
+    };
+    link: {
+      base: string;
+      active: FlowbiteBoolean;
+      disabled: FlowbiteBoolean;
+    };
+    toggle: {
+      base: string;
+      icon: string;
+    };
+  };
   rating: {
     base: string;
     star: {
