@@ -8,5 +8,9 @@ export interface FooterLinkGroupProps extends PropsWithChildren<Omit<ComponentPr
 
 export const FooterLinkGroup: FC<FooterLinkGroupProps> = ({ children, col = false }) => {
   const theme = useTheme().theme.footer.groupLink;
-  return <ul className={classNames(theme.base, col && theme.col)}>{children}</ul>;
+  return (
+    <ul data-testid="footer-groupLink" className={classNames(theme.base, col && theme.col)}>
+      {children}
+    </ul>
+  );
 };

@@ -11,7 +11,7 @@ export const FooterCopyright: FC<CopyrightProps> = ({ href, by, year }) => {
   const theme = useTheme().theme.footer.copyright;
 
   return (
-    <>
+    <div data-testid="footer-copyright">
       <span className={theme.base}>
         © {year}
         {href ? (
@@ -23,6 +23,6 @@ export const FooterCopyright: FC<CopyrightProps> = ({ href, by, year }) => {
         )}
         . All Rights Reserved.
       </span>
-    </>
+    </div>
   );
 };

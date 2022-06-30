@@ -10,7 +10,7 @@ export interface FooterIconProps extends PropsWithChildren<ComponentProps<'a'>> 
 export const FooterIcon: FC<FooterIconProps> = ({ href, ariaLabel, icon: Icon }) => {
   const theme = useTheme().theme.footer.icon;
   return (
-    <>
+    <div data-testid="footer-icon">
       {href ? (
         <a href={href} aria-label={ariaLabel} className={theme.base}>
           <Icon className={theme.size} />
@@ -18,6 +18,6 @@ export const FooterIcon: FC<FooterIconProps> = ({ href, ariaLabel, icon: Icon })
       ) : (
         <Icon className={theme.size} />
       )}
-    </>
+    </div>
   );
 };

@@ -7,5 +7,9 @@ export type FooterTitleProps = PropsWithChildren<{
 
 export const FooterTitle: FC<FooterTitleProps> = ({ title }) => {
   const theme = useTheme().theme.footer.title;
-  return <h2 className={theme.base}>{title}</h2>;
+  return (
+    <h2 data-testid="footer-title" className={theme.base}>
+      {title}
+    </h2>
+  );
 };

@@ -12,7 +12,7 @@ export const FooterBrand: FC<FooterBrandProps> = ({ children, href, src, alt, na
   const theme = useTheme().theme.footer.brand;
 
   return (
-    <>
+    <div data-testid="footer-brand">
       {href ? (
         <a href={href} className={theme.base}>
           <img src={src} className={theme.img} alt={alt} />
@@ -22,6 +22,6 @@ export const FooterBrand: FC<FooterBrandProps> = ({ children, href, src, alt, na
       ) : (
         <img src={src} className={theme.img} alt={alt} />
       )}
-    </>
+    </div>
   );
 };
