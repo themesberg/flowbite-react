@@ -10,6 +10,7 @@ import type {
   ButtonSizes,
 } from '../Button';
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
+import type { FlowbiteFloatingTheme } from '../Floating';
 import type { HelperColors, LabelColors, SelectColors, SelectSizes, TextareaColors, TextInputColors, TextInputSizes } from '../FormControls';
 import type { ModalPositions, ModalSizes } from '../Modal';
 import type { ProgressColor, ProgressSizes } from '../Progress';
@@ -459,27 +460,13 @@ export interface FlowbiteTheme {
       icon: string;
     };
   };
-  tooltip: {
-    target: string;
-    base: string;
-    animation: string;
-    hidden: string;
-    style: {
-      dark: string;
-      light: string;
-      auto: string;
-    };
+  tooltip: FlowbiteFloatingTheme;
+  dropdown: {
+    floating: FlowbiteFloatingTheme;
     content: string;
-    arrow: {
-      base: string;
-      style: {
-        dark: string;
-        light: string;
-        auto: string;
-      };
-      placement: string;
-    };
-  };
+    inlineWrapper: string;
+    arrowIcon: string;
+  }
 }
 
 export interface FlowbiteBoolean {

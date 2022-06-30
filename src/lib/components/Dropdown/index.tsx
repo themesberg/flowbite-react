@@ -4,20 +4,19 @@ import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOu
 import { excludeClassName } from '../../helpers/exclude';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
-import type { TooltipProps } from '../Tooltip';
-import { Tooltip } from '../Tooltip';
+import type { FloatingProps } from '../Floating';
+import { Floating } from '../Floating';
+import { useTheme } from '../Flowbite/ThemeContext';
 import { DropdownDivider } from './DropdownDivider';
 import { DropdownHeader } from './DropdownHeader';
 import { DropdownItem } from './DropdownItem';
 
-export type DropdownProps = ButtonProps &
-  Omit<TooltipProps, 'content' | 'style' | 'animation' | 'arrow'> & {
-    className?: string;
-    label: ReactNode;
-    inline?: boolean;
-    tooltipArrow?: boolean;
-    arrowIcon?: boolean;
-  };
+export interface DropdownProps extends PropsWithChildren<Pick<FloatingProps, 'placement' | 'trigger'>>, ButtonProps {
+  label: ReactNode;
+  inline?: boolean;
+  floatingArrow?: boolean;  
+  arrowIcon?: boolean;
+};
 
 const icons: Record<string, FC<ComponentProps<'svg'>>> = {
   top: HiOutlineChevronUp,
@@ -26,35 +25,44 @@ const icons: Record<string, FC<ComponentProps<'svg'>>> = {
   left: HiOutlineChevronLeft,
 };
 
-const DropdownComponent: FC<DropdownProps> = (props) => {
+const DropdownComponent: FC<DropdownProps> = ({ children, ...props }) => {
+  const theme = useTheme().theme.dropdown;
   const theirProps = excludeClassName(props) as DropdownProps;
-  const { children, label, inline, tooltipArrow = false, arrowIcon = true, ...restProps } = theirProps;
-  const { placement = inline ? 'bottom-start' : 'bottom', trigger = 'click', ...buttonProps } = restProps;
+  const { 
+    placement = props.inline ? 'bottom-start' : 'bottom', 
+    trigger = 'click',
+    label,
+    inline,
+    floatingArrow = false,
+    arrowIcon = true,
+    ...buttonProps
+  } = theirProps;
 
   const Icon = useMemo(() => {
     const [p] = placement.split('-');
-
     return icons[p] ?? HiOutlineChevronDown;
   }, [placement]);
-  const content = useMemo(() => <ul className="py-1">{children}</ul>, [children]);
 
-  const TriggerWrapper: FC<PropsWithChildren<ComponentProps<'button'>>> = ({ children }): JSX.Element =>
-    inline ? <button className="flex items-center">{children}</button> : <Button {...buttonProps}>{children}</Button>;
+  const content = useMemo(() => <ul className={theme.content}>{children}</ul>, [children, theme]);
+
+  const TriggerWrapper: FC<ButtonProps> = ({ children }): JSX.Element =>
+    inline ? <button className={theme.inlineWrapper}>{children}</button> : <Button {...buttonProps}>{children}</Button>;
 
   return (
-    <Tooltip
+    <Floating
       content={content}
       style="auto"
       animation="duration-100"
       placement={placement}
-      arrow={tooltipArrow}
+      arrow={floatingArrow}
       trigger={trigger}
+      theme={theme.floating}
     >
       <TriggerWrapper>
         {label}
-        {arrowIcon && <Icon className="ml-2 h-4 w-4" />}
+        {arrowIcon && <Icon className={theme.arrowIcon} />}
       </TriggerWrapper>
-    </Tooltip>
+    </Floating>
   );
 };
 
