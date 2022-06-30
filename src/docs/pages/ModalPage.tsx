@@ -119,18 +119,20 @@ const ModalPage: FC = () => {
       code: (
         <>
           <div className="flex flex-wrap gap-4">
-            <Select className="w-40" defaultValue="md" onChange={(event) => setModalSize(event.target.value)}>
-              <option value="sm">sm</option>
-              <option value="md">md</option>
-              <option value="lg">lg</option>
-              <option value="xl">xl</option>
-              <option value="2xl">2xl</option>
-              <option value="3xl">3xl</option>
-              <option value="4xl">4xl</option>
-              <option value="5xl">5xl</option>
-              <option value="6xl">6xl</option>
-              <option value="7xl">7xl</option>
-            </Select>
+            <div className="w-40">
+              <Select defaultValue="md" onChange={(event) => setModalSize(event.target.value)}>
+                <option value="sm">sm</option>
+                <option value="md">md</option>
+                <option value="lg">lg</option>
+                <option value="xl">xl</option>
+                <option value="2xl">2xl</option>
+                <option value="3xl">3xl</option>
+                <option value="4xl">4xl</option>
+                <option value="5xl">5xl</option>
+                <option value="6xl">6xl</option>
+                <option value="7xl">7xl</option>
+              </Select>
+            </div>
             <Button onClick={() => setOpenModal('size')}>Toggle modal</Button>
           </div>
           <Modal show={openModal === 'size'} size={modalSize} onClose={() => setOpenModal(undefined)}>
@@ -163,17 +165,19 @@ const ModalPage: FC = () => {
       code: (
         <>
           <div className="flex flex-wrap gap-4">
-            <Select className="w-40" defaultValue="center" onChange={(event) => setModalPlacement(event.target.value)}>
-              <option value="center">Center</option>
-              <option value="top-left">Top left</option>
-              <option value="top-center">Top center</option>
-              <option value="top-right">Top right</option>
-              <option value="center-left">Center left</option>
-              <option value="center-right">Center right</option>
-              <option value="bottom-right">Bottom right</option>
-              <option value="bottom-center">Bottom center</option>
-              <option value="bottom-left">Bottom left</option>
-            </Select>
+            <div className="w-40">
+              <Select defaultValue="center" onChange={(event) => setModalPlacement(event.target.value)}>
+                <option value="center">Center</option>
+                <option value="top-left">Top left</option>
+                <option value="top-center">Top center</option>
+                <option value="top-right">Top right</option>
+                <option value="center-left">Center left</option>
+                <option value="center-right">Center right</option>
+                <option value="bottom-right">Bottom right</option>
+                <option value="bottom-center">Bottom center</option>
+                <option value="bottom-left">Bottom left</option>
+              </Select>
+            </div>
             <Button onClick={() => setOpenModal('placement')}>Toggle modal</Button>
           </div>
           <Modal show={openModal === 'placement'} position={modalPlacement} onClose={() => setOpenModal(undefined)}>
