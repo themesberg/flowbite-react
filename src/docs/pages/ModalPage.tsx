@@ -82,18 +82,13 @@ const ModalPage: FC = () => {
                   <div className="mb-2 block">
                     <Label htmlFor="email" value="Your email" />
                   </div>
-                  <TextInput
-                    id="email"
-                    className="dark:border-gray-500 dark:bg-gray-600"
-                    placeholder="name@company.com"
-                    required
-                  />
+                  <TextInput id="email" placeholder="name@company.com" required />
                 </div>
                 <div>
                   <div className="mb-2 block">
                     <Label htmlFor="password" value="Your password" />
                   </div>
-                  <TextInput id="password" className="dark:border-gray-500 dark:bg-gray-600" type="password" required />
+                  <TextInput id="password" type="password" required />
                 </div>
                 <div className="flex justify-between">
                   <div className="flex items-center gap-2">
