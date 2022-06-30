@@ -1,15 +1,15 @@
-import classNames from 'classnames';
-import type { FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { useTheme } from '../Flowbite/ThemeContext';
 
-export type FooterLinkProps = PropsWithChildren<{
+export interface FooterLinkProps extends Omit<PropsWithChildren<ComponentProps<'a'>>,'className'>{
   href: string;
-  className?: string;
-}>;
+}
 
-export const FooterLink: FC<FooterLinkProps> = ({ href, children, className }) => {
+export const FooterLink: FC<FooterLinkProps> = ({ href, children }) => {
+  const theme = useTheme().theme.footer.groupLink.link;
   return (
-    <li className={classNames('mr-4 last:mr-0 md:mr-6', className)}>
-      <a href={href} className="hover:underline">
+    <li className={theme.base}>
+      <a href={href} className={theme.href}>
         {children}
       </a>
     </li>

@@ -9,9 +9,9 @@ const FooterPage: FC = () => {
     {
       title: 'Default Footer',
       code: (
-        <Footer>
+        <Footer container>
           <Footer.Copyright href="#" by="Flowbite™" year={2022} />
-          <Footer.LinkGroup className="mt-3 flex-wrap items-center text-sm sm:mt-0">
+          <Footer.LinkGroup>
             <Footer.Link href="#">About</Footer.Link>
             <Footer.Link href="#">Privacy Policy</Footer.Link>
             <Footer.Link href="#">Licensing</Footer.Link>
@@ -23,86 +23,76 @@ const FooterPage: FC = () => {
     {
       title: 'Footer with logo',
       code: (
-        <Footer className="flex flex-col">
-          <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
-            <Footer.Brand
-              href="https://flowbite.com"
-              src="https://flowbite.com/docs/images/logo.svg"
-              alt="Flowbite Logo"
-              name="Flowbite"
-            />
-
-            <Footer.LinkGroup className="mt-3 flex-wrap items-center text-sm sm:mt-0">
-              <Footer.Link href="#">About</Footer.Link>
-              <Footer.Link href="#">Privacy Policy</Footer.Link>
-              <Footer.Link href="#">Licensing</Footer.Link>
-              <Footer.Link href="#">Contact</Footer.Link>
-            </Footer.LinkGroup>
+        <Footer container>
+          <div className="w-full text-center">
+            <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
+              <Footer.Brand
+                href="https://flowbite.com"
+                src="https://flowbite.com/docs/images/logo.svg"
+                alt="Flowbite Logo"
+                name="Flowbite"
+              />
+              <Footer.LinkGroup>
+                <Footer.Link href="#">About</Footer.Link>
+                <Footer.Link href="#">Privacy Policy</Footer.Link>
+                <Footer.Link href="#">Licensing</Footer.Link>
+                <Footer.Link href="#">Contact</Footer.Link>
+              </Footer.LinkGroup>
+            </div>
+            <Footer.Divider />
+            <Footer.Copyright href="#" by="Flowbite™" year={2022} />
           </div>
-          <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
-          <Footer.Copyright href="#" by="Flowbite™" year={2022} />
         </Footer>
       ),
     },
     {
       title: 'Footer with social media icons',
       code: (
-        <Footer className="flex flex-col">
-          <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-            <div>
-              <Footer.Brand
-                href="https://flowbite.com"
-                src="https://flowbite.com/docs/images/logo.svg"
-                alt="Flowbite Logo"
-                name="Flowbite"
-                className="m-6"
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
+        <Footer container>
+          <div className="w-full">
+            <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
               <div>
-                <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">About</h2>
-                <Footer.LinkGroup className="flex-col">
-                  <Footer.Link className="mb-4" href="#">
-                    Flowbite
-                  </Footer.Link>
-                  <Footer.Link className="mb-4" href="#">
-                    Tailwind CSS
-                  </Footer.Link>
-                </Footer.LinkGroup>
+                <Footer.Brand
+                  href="https://flowbite.com"
+                  src="https://flowbite.com/docs/images/logo.svg"
+                  alt="Flowbite Logo"
+                  name="Flowbite"
+                />
               </div>
-              <div>
-                <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Follow us</h2>
-                <Footer.LinkGroup className="flex-col">
-                  <Footer.Link className="mb-4" href="#">
-                    Github
-                  </Footer.Link>
-                  <Footer.Link className="mb-4" href="#">
-                    Discord
-                  </Footer.Link>
-                </Footer.LinkGroup>
-              </div>
-              <div>
-                <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white">Legal</h2>
-                <Footer.LinkGroup className="flex-col">
-                  <Footer.Link className="mb-4" href="#">
-                    Privacy Policy
-                  </Footer.Link>
-                  <Footer.Link className="mb-4" href="#">
-                    Terms &amp; Conditions
-                  </Footer.Link>
-                </Footer.LinkGroup>
+              <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
+                <div>
+                  <Footer.Title title="about" />
+                  <Footer.LinkGroup col>
+                    <Footer.Link href="#">Flowbite</Footer.Link>
+                    <Footer.Link href="#">Tailwind CSS</Footer.Link>
+                  </Footer.LinkGroup>
+                </div>
+                <div>
+                  <Footer.Title title="Follow us" />
+                  <Footer.LinkGroup col>
+                    <Footer.Link href="#">Github</Footer.Link>
+                    <Footer.Link href="#">Discord</Footer.Link>
+                  </Footer.LinkGroup>
+                </div>
+                <div>
+                  <Footer.Title title="Legal" />
+                  <Footer.LinkGroup col>
+                    <Footer.Link href="#">Privacy Policy</Footer.Link>
+                    <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
+                  </Footer.LinkGroup>
+                </div>
               </div>
             </div>
-          </div>
-          <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
-          <div className="w-full sm:flex sm:items-center sm:justify-between">
-            <Footer.Copyright href="#" by="Flowbite™" year={2022} />
-            <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-              <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsFacebook} />
-              <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsInstagram} />
-              <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsTwitter} />
-              <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsGithub} />
-              <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsDribbble} />
+            <Footer.Divider />
+            <div className="w-full sm:flex sm:items-center sm:justify-between">
+              <Footer.Copyright href="#" by="Flowbite™" year={2022} />
+              <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+                <Footer.Icon href="#" icon={BsFacebook} />
+                <Footer.Icon href="#" icon={BsInstagram} />
+                <Footer.Icon href="#" icon={BsTwitter} />
+                <Footer.Icon href="#" icon={BsGithub} />
+                <Footer.Icon href="#" icon={BsDribbble} />
+              </div>
             </div>
           </div>
         </Footer>
@@ -111,83 +101,54 @@ const FooterPage: FC = () => {
     {
       title: 'Footer sitemap links',
       code: (
-        <Footer className="flex flex-col bg-gray-800">
-          <div className="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
-            <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Company</h2>
-              <Footer.LinkGroup className="flex-col">
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  About
-                </Footer.Link>
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  Careers
-                </Footer.Link>
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  Brand Center
-                </Footer.Link>
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  Blog
-                </Footer.Link>
-              </Footer.LinkGroup>
+        <Footer bgDark>
+          <div className="w-full">
+            <div className="grid w-full grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
+              <div>
+                <Footer.Title title="Company" />
+                <Footer.LinkGroup col>
+                  <Footer.Link href="#">About</Footer.Link>
+                  <Footer.Link href="#">Careers</Footer.Link>
+                  <Footer.Link href="#">Brand Center</Footer.Link>
+                  <Footer.Link href="#">Blog</Footer.Link>
+                </Footer.LinkGroup>
+              </div>
+              <div>
+                <Footer.Title title="help center" />
+                <Footer.LinkGroup col>
+                  <Footer.Link href="#">Discord Server</Footer.Link>
+                  <Footer.Link href="#">Twitter</Footer.Link>
+                  <Footer.Link href="#">Facebook</Footer.Link>
+                  <Footer.Link href="#">Contact Us</Footer.Link>
+                </Footer.LinkGroup>
+              </div>
+              <div>
+                <Footer.Title title="legal" />
+                <Footer.LinkGroup col>
+                  <Footer.Link href="#">Privacy Policy</Footer.Link>
+                  <Footer.Link href="#">Licensing</Footer.Link>
+                  <Footer.Link href="#">Terms &amp; Conditions</Footer.Link>
+                </Footer.LinkGroup>
+              </div>
+              <div>
+                <Footer.Title title="download" />
+                <Footer.LinkGroup col>
+                  <Footer.Link href="#">iOS</Footer.Link>
+                  <Footer.Link href="#">Android</Footer.Link>
+                  <Footer.Link href="#">Windows</Footer.Link>
+                  <Footer.Link href="#">MacOS</Footer.Link>
+                </Footer.LinkGroup>
+              </div>
             </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Download</h2>
-              <Footer.LinkGroup className="flex-col">
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  Discord Server
-                </Footer.Link>
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  Twitter
-                </Footer.Link>
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  Facebook
-                </Footer.Link>
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  Contact Us
-                </Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Legal</h2>
-              <Footer.LinkGroup className="flex-col">
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  Privacy Policy
-                </Footer.Link>
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  Licensing
-                </Footer.Link>
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  Terms &amp; Conditions
-                </Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold uppercase text-gray-400">Download</h2>
-              <Footer.LinkGroup className="flex-col">
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  iOS
-                </Footer.Link>
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  Android
-                </Footer.Link>
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  Windows
-                </Footer.Link>
-                <Footer.Link className="mb-4 text-gray-300" href="#">
-                  MacOS
-                </Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-          </div>
-          <hr className="my-6 w-full border-gray-200 p-1 dark:border-gray-700 sm:mx-auto lg:my-8" />
-          <div className="w-full sm:flex sm:items-center sm:justify-between">
-            <Footer.Copyright className="text-gray-300" href="#" by="Flowbite™" year={2022} />
-            <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-              <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsFacebook} />
-              <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsInstagram} />
-              <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsTwitter} />
-              <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsGithub} />
-              <Footer.Icon href="#" className="text-gray-400 hover:text-white" icon={BsDribbble} />
+            <div className="w-full bg-gray-700 py-6 px-4 sm:flex sm:items-center sm:justify-between">
+              <Footer.Copyright href="#" by="Flowbite™" year={2022} />
+              <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+                <Footer.Icon href="#" icon={BsFacebook} />
+                <Footer.Icon href="#" icon={BsInstagram} />
+                <Footer.Icon href="#" icon={BsTwitter} />
+                <Footer.Icon href="#" icon={BsGithub} />
+                <Footer.Icon href="#" icon={BsDribbble} />
+              </div>
             </div>
           </div>
         </Footer>

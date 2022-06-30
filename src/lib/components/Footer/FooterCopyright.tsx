@@ -1,27 +1,28 @@
-import classNames from 'classnames';
-import type { FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { useTheme } from '../Flowbite/ThemeContext';
 
-export type CopyrightProps = PropsWithChildren<{
+export interface CopyrightProps extends Omit<PropsWithChildren<ComponentProps<'span'>>,'className'> {
   href?: string;
   by: string;
   year?: number;
-  className?: string;
-}>;
+}
 
-export const FooterCopyright: FC<CopyrightProps> = ({ href, by, year, className }) => {
+export const FooterCopyright: FC<CopyrightProps> = ({ href, by, year }) => {
+  const theme = useTheme().theme.footer.copyright;
+
   return (
-    <>
-      <span className={classNames('text-sm text-gray-500 dark:text-gray-400 sm:text-center', className)}>
+    <div data-testid="footer-copyright">
+      <span className={theme.base}>
         © {year}
         {href ? (
-          <a href={href} className="ml-1 hover:underline">
+          <a href={href} className={theme.base}>
             {by}
           </a>
         ) : (
-          <span className="ml-1">{by}</span>
+          <span className={theme.span}>{by}</span>
         )}
         . All Rights Reserved.
       </span>
-    </>
+    </div>
   );
 };

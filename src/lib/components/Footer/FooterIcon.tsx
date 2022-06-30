@@ -1,23 +1,23 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { useTheme } from '../Flowbite/ThemeContext';
 
-export type FooterIconProps = PropsWithChildren<{
+export interface FooterIconProps extends Omit<PropsWithChildren<ComponentProps<'a'>>, 'className'> {
   href?: string;
-  className?: string;
   icon: FC<ComponentProps<'svg'>>;
   ariaLabel?: string;
-}>;
+}
 
-export const FooterIcon: FC<FooterIconProps> = ({ href, ariaLabel, className, icon: Icon }) => {
+export const FooterIcon: FC<FooterIconProps> = ({ href, ariaLabel, icon: Icon }) => {
+  const theme = useTheme().theme.footer.icon;
   return (
-    <>
+    <div data-testid="footer-icon">
       {href ? (
-        <a href={href} aria-label={ariaLabel} className={classNames('text-gray-500 dark:hover:text-white', className)}>
-          <Icon className="h-5 w-5" />
+        <a href={href} aria-label={ariaLabel} className={theme.base}>
+          <Icon className={theme.size} />
         </a>
       ) : (
-        <Icon className="h-5 w-5" />
+        <Icon className={theme.size} />
       )}
-    </>
+    </div>
   );
 };
