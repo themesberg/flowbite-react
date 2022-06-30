@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/themesberg/flowbite-react/compare/v0.0.27...v0.1.0) (2022-06-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* **inputs:** Adding theme support to the component blocks the access to className property
+directly
+
+* fix(inputs): fix wrong default color name from `base` to `gray`
+
+* **inputs:** adds theme support to TextInput and FileInput ([#246](https://github.com/themesberg/flowbite-react/issues/246)) ([366a119](https://github.com/themesberg/flowbite-react/commit/366a119fb91710709514dd8e790d0f2246401aa3))
+
 ### [0.0.27](https://github.com/themesberg/flowbite-react/compare/v0.0.26...v0.0.27) (2022-06-21)
 
 
