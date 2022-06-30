@@ -45,8 +45,7 @@
     "test:coverage": "vitest run --coverage",
     "test:open": "vitest --ui",
     "test:e2e": "start-test 3000 cypress:run",
-    "test:e2e:open": "start-test 3000 cypress:open",
-    "commit": "cz"
+    "test:e2e:open": "start-test 3000 cypress:open"
   },
   "dependencies": {
     "@floating-ui/react-dom": "^0.6.3",
