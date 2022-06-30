@@ -1,12 +1,12 @@
-import type { FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export type FooterBrandProps = PropsWithChildren<{
+export interface FooterBrandProps extends Omit<PropsWithChildren<ComponentProps<'div'>>, 'className'> {
   href?: string;
   src: string;
   alt?: string;
   name?: string;
-}>;
+}
 
 export const FooterBrand: FC<FooterBrandProps> = ({ children, href, src, alt, name }) => {
   const theme = useTheme().theme.footer.brand;

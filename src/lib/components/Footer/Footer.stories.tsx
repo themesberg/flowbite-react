@@ -7,7 +7,7 @@ export default {
   component: Footer,
 } as Meta;
 
-const Template: Story = ({ children, className }) => <Footer className={className}>{children}</Footer>;
+const Template: Story = ({ children }) => <Footer>{children}</Footer>;
 
 export const DefaultFooter = Template.bind({});
 DefaultFooter.storyName = 'Default';

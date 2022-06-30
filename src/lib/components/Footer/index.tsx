@@ -9,7 +9,7 @@ import { FooterLink } from './FooterLink';
 import { FooterLinkGroup } from './FooterLinkGroup';
 import { FooterTitle } from './FooterTitle';
 
-export interface FooterProps extends ComponentProps<'footer'> {
+export interface FooterProps extends Omit<ComponentProps<'footer'>, 'className'> {
   bgDark?: boolean;
   container?: boolean;
 }

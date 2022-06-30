@@ -25,7 +25,7 @@ describe.concurrent('Footer Component should be able to render a', () => {
 });
 
 const FooterTest = (): JSX.Element => (
-  <Footer className="flex flex-col">
+  <Footer>
     <Footer.Brand
       href="https://flowbite.com"
       src="https://flowbite.com/docs/images/logo.svg"
@@ -37,6 +37,6 @@ const FooterTest = (): JSX.Element => (
       <Footer.Link href="#">Services</Footer.Link>
     </Footer.LinkGroup>
     <Footer.Copyright href="#" by="Flowbite™" year={2022} />
-    <Footer.Icon href="#" className="text-gray-400 hover:text-gray-900" icon={BsFacebook} />
+    <Footer.Icon href="#" icon={BsFacebook} />
   </Footer>
 );
