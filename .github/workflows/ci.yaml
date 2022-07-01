@@ -8,12 +8,13 @@ on:
     branches:
       - main
     tags-ignore:
-      - "*"
+      - '*'
 
 concurrency: ci-${{ github.ref }}
 
 jobs:
-  prepare:  
+  # First it needs to cache and setup
+  prepare:
     name: ⚡ Initialize & Caching
     runs-on: ${{ matrix.os }}
 
@@ -33,8 +34,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: yarn
-        
-      - name: ⏳ Setup Cache 
+
+      - name: ⏳ Setup Cache
         uses: actions/cache@v3
         with:
           path: '**/node_modules'
@@ -45,7 +46,8 @@ jobs:
       - name: 🏭 Install dependencies
         run: yarn install
 
-  quality:  
+  # Then we can check the code quality
+  quality:
     name: 🔍 Checking the code
     runs-on: ${{ matrix.os }}
     needs: [prepare]
@@ -94,6 +96,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
 
+  # Lets also run some security check
   security:
     if: github.event_name != 'pull_request'
     name: 🚨 Running security check
@@ -118,7 +121,7 @@ jobs:
       - name: ⏳ Setup Cache
         uses: actions/cache@v3
         with:
-          path: "**/node_modules"
+          path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-modules-
@@ -131,6 +134,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
+  # If quality pass, let's try to build things
   build:
     name: 🔍 Building the code
     runs-on: ${{ matrix.os }}
@@ -153,7 +157,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: yarn
 
-      - name: ⏳ Setup Cache 
+      - name: ⏳ Setup Cache
         uses: actions/cache@v3
         with:
           path: '**/node_modules'

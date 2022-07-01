@@ -8,7 +8,8 @@ on:
 concurrency: release-${{ github.ref }}
 
 jobs:
-  prepare:  
+  # First it needs to cache and setup
+  prepare:
     name: ⚡ Initialize & Caching
     runs-on: ubuntu-latest
 
@@ -23,8 +24,8 @@ jobs:
         with:
           node-version: 16
           cache: yarn
-        
-      - name: ⏳ Setup Cache 
+
+      - name: ⏳ Setup Cache
         uses: actions/cache@v3
         with:
           path: '**/node_modules'
@@ -35,6 +36,7 @@ jobs:
       - name: 🏭 Install dependencies
         run: yarn install
 
+  # Then it needs to release the new version
   release:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     name: 📦 Publishing the release
@@ -51,21 +53,22 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org
           cache: yarn
-      
+
       - name: 🏭 Install packages
         run: yarn install
-    
-      - name: 🚀 Publish the release
-        run: yarn semantic-release
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  pages:
+      - name: 🚀 Publish the release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: yarn semantic-release
+
+  # Once release it needs to update the documentation
+  docs:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
-    name: 🌍 Publishing the website
+    name: 📚 Publishing the documentation
     runs-on: ubuntu-latest
-    needs: [release]
+    needs: [prepare, release]
 
     steps:
       - name: 📥 Check out the code
@@ -77,7 +80,7 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org
           cache: yarn
-      
+
       - name: 🏭 Install packages
         run: yarn install
 
