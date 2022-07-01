@@ -4,19 +4,66 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
+    tags-ignore:
+      - '*'
 
-concurrency: ${{ github.ref }}
+concurrency: ci-${{ github.ref }}
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  # First it needs to cache and setup
+  prepare:
+    name: ⚡ Initialize & Caching
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        os: [ubuntu-latest]
+
     steps:
       - name: 📥 Check out the code
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
 
-      - name: 💿 Setup NodeJS 16
+      - name: 💿 Setup Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+
+      - name: ⏳ Setup Cache
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
+      - name: 🏭 Install dependencies
+        run: yarn install
+
+  # Then we can check the code quality
+  quality:
+    name: 🔍 Checking the code
+    runs-on: ${{ matrix.os }}
+    needs: [prepare]
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        os: [ubuntu-latest]
+
+    steps:
+      - name: 📥 Check out the code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: 💿 Setup Node ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: 16
@@ -29,7 +76,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-modules-
 
-      - name: 🏭 Install packages
+      - name: 🏭 Install dependencies
         run: yarn install
 
       - name: 🕵 Lint the code
@@ -48,6 +95,78 @@ jobs:
           files: coverage/coverage-final.json
           token: ${{ secrets.CODECOV_TOKEN }}
           verbose: true
+
+  # Lets also run some security check
+  security:
+    if: github.event_name != 'pull_request'
+    name: 🚨 Running security check
+    runs-on: ${{ matrix.os }}
+    needs: [prepare]
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        os: [ubuntu-latest]
+
+    steps:
+      - name: 📥 Check out the code
+        uses: actions/checkout@v3
+
+      - name: 💿 Setup NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+
+      - name: ⏳ Setup Cache
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
+      - name: 🏭 Install dependencies
+        run: yarn install
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  # If quality pass, let's try to build things
+  build:
+    name: 🔍 Building the code
+    runs-on: ${{ matrix.os }}
+    needs: [quality]
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        os: [ubuntu-latest]
+
+    steps:
+      - name: 📥 Check out the code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: 💿 Setup Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+
+      - name: ⏳ Setup Cache
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
+      - name: 🏭 Install dependencies
+        run: yarn install
 
       - name: 🧰 Build code
         run: yarn build
