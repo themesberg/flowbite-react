@@ -5,11 +5,7 @@ export const decorators = [
   (Story) => (
     <MemoryRouter initialEntries={['/']}>
       <Style />
-      <div className="flex h-screen items-center justify-center">
-        <div className="flex w-full items-center justify-center">
-          <Story />
-        </div>
-      </div>
+      <Story />
     </MemoryRouter>
   ),
 ];
