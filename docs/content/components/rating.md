@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Rating - Flowbite
+title: React Rating - Flowbite
 description: Use the rating component to show reviews and testimonials from your users using stars and scores based on multiple styles and sizes
 group: components
 toc: true

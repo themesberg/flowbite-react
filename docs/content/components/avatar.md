@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Avatar - Flowbite
+title: React Avatar - Flowbite
 description: Use the avatar component to show a visual representation of a user profile using an image element or SVG object based on multiple styles and sizes
 group: components
 toc: true

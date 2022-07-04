@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Colors - Flowbite
+title: React Colors - Flowbite
 description: Customize the default colors of FlowBite using the Tailwind CSS configuration file
 group: customize
 toc: true

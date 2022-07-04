@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Dark Mode - Flowbite
+title: React Dark Mode - Flowbite
 description: Learn how to configure and build a dark mode switcher for Tailwind CSS using Flowbite and start developing with the components from the library
 group: customize
 toc: true

@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Alerts - Flowbite
+title: React Alerts - Flowbite
 description: Show contextual information to your users using alert elements based on Tailwind CSS
 group: components
 toc: true

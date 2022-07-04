@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS List Group - Flowbite
+title: React List Group - Flowbite
 description: Use the list group component to display a series of items, buttons or links inside a single element
 group: components
 toc: true

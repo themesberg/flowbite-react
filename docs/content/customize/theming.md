@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Theming - Flowbite
+title: React Theming - Flowbite
 description: Use the theming options from the configuration file to override the default utility classes from FlowBite
 group: customize
 toc: true

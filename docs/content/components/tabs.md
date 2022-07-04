@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Tabs - Flowbite
+title: React Tabs - Flowbite
 description: Use these responsive tabs components to create a secondary navigational hierarchy for your website or toggle content inside a container
 group: components
 toc: true

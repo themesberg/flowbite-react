@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Textarea - Flowbite
+title: React Textarea - Flowbite
 description: Use the textarea component as a multi-line text field input and use it inside form elements available in multiple sizes, styles, and variants
 group: forms
 toc: true

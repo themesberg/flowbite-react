@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Pagination - Flowbite
+title: React Pagination - Flowbite
 description: Use the Tailwind CSS pagination element to indicate a series of content across various pages
 group: components
 toc: true

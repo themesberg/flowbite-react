@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Tooltip - Flowbite
+title: React Tooltip - Flowbite
 description: Use the following Tailwind CSS powered tooltips to show extra content when hovering or focusing on an element
 group: components
 toc: true

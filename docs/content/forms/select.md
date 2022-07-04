@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Select - Flowbite
+title: React Select - Flowbite
 description: Get started with the select component to allow the user to choose from one or more options from a dropdown list based on multiple styles, sizes, and variants
 group: forms
 toc: true

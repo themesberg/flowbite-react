@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Footer - Flowbite
+title: React Footer - Flowbite
 description: Use the footer section at the bottom of every page to show valuable information to your users, such as sitemap links, a copyright notice, and a logo
 group: components
 toc: true

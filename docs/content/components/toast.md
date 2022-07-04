@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Toast - Flowbite
+title: React Toast - Flowbite
 description: Push notifications to your users using the toast component and choose from multiple sizes, colors, styles, and positions
 group: components
 

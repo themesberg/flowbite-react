@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Spinner - Flowbite
+title: React Spinner - Flowbite
 description: Use the spinner component as a loader indicator in your projects when fetching data based on an animated SVG using the utility classes from Tailwind CSS
 group: components
 toc: true

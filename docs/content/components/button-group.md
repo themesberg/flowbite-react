@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Button Group - Flowbite
+title: React Button Group - Flowbite
 description: Button groups are a Tailwind CSS powered set of buttons sticked together in a horizontal line
 group: components
 toc: true

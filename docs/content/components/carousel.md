@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Carousel - Flowbite
+title: React Carousel - Flowbite
 description: Use the carousel component to slide through multiple elements and images using custom controls, indicators, intervals, and options
 group: components
 toc: true

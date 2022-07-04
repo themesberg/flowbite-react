@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Timeline - Flowbite
+title: React Timeline - Flowbite
 description: Get started with the responsive timeline component to show data in a chronological order with support for multiple styles, sizes, and variants
 group: components
 toc: true

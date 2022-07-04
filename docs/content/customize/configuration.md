@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Configuration - Flowbite
+title: React Configuration - Flowbite
 description: Learn how to customize the default Flowbite and Tailwind CSS options and styles
 group: customize
 toc: true

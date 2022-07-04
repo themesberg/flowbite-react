@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Tailwind CSS Modal - Flowbite
+title: React Modal - Flowbite
 description: Use the modal component to show interactive dialogs and notifications to your website users available in multiple sizes, colors, and styles
 group: components
 toc: true
