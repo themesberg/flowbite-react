@@ -5,8 +5,8 @@ description: Show contextual information to your users using alert elements base
 group: components
 toc: true
 
-previous: Optimization
-previousLink: customize/optimization/
+previous: License
+previousLink: getting-started/license
 next: Accordion
 nextLink: components/accordion/
 ---

@@ -8,8 +8,8 @@ toc: true
 
 previous: Input Field
 previousLink: forms/input-field/
-next: Search Input
-nextLink: forms/search-input/
+next: Select
+nextLink: forms/select/
 ---
 
 The file input component can be used to upload one or more files from the device storage of the user available in multiple sizes, styles, and variants and built with the utility-first classes from Tailwind CSS including support for dark mode.

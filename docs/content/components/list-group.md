@@ -7,8 +7,8 @@ toc: true
 
 previous: Forms
 previousLink: components/forms/
-next: Typography
-nextLink: components/typography/
+next: Modals
+nextLink: components/modal/
 ---
 
 The list group component can be used to display a series of elements, buttons or links inside a single card component similar to a sidebar.
