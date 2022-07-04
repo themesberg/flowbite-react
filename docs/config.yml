@@ -1,0 +1,34 @@
+languageCode: 'en'
+title: 'Flowbite'
+baseURL: 'https://flowbite-react.com/'
+# baseURL:                "http://localhost:3001/"
+# baseURL:                "http://localhost:1313/"
+enableInlineShortcodes: true
+
+params:
+  homepage: 'https://flowbite-react.com/'
+  currentVersion: 1.0.0
+  authors: Themesberg
+  social_image_path: /images/og-image.png
+  StoryBookURL: 'http://localhost:6006/'
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+    style: colorful
+    tabWidth: 2
+  tableOfContents:
+    startLevel: 2
+    endLevel: 6
+
+buildDrafts: true
+buildFuture: true
+
+enableRobotsTXT: true
+metaDataFormat: 'yaml'
+disableKinds: ['404', 'taxonomy', 'taxonomyTerm', 'RSS']
+
+publishDir: '_gh_pages'

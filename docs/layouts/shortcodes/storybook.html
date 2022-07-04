@@ -1,0 +1,7 @@
+{{- /* Usage: `storybook [args]` `args` are optional and can be one of the following: id: the component id */ -}} {{-
+$id := .Get "id" -}}
+
+<iframe
+  class="w-full"
+  src="{{ .Site.Params.StoryBookURL }}iframe.html?id={{ $id }}&viewMode=docs&shortcuts=false&singleStory=true&args="
+></iframe>

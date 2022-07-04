@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{ partial "header" . }}
+  </head>
+  {{ block "body_override" . }}
+
+  <body class="dark:bg-gray-900">
+    {{ end }} {{ block "main" . }} {{ end }} {{ partial "footer" . }} {{ partial "scripts" . }} {{ block "footer" . }}
+    {{ end }}
+  </body>
+</html>

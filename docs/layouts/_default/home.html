@@ -1,0 +1,90 @@
+{{ define "main" }}
+
+{{ partial "navbar" }}
+
+<div class="px-4 mx-auto w-full max-w-8xl">
+  <div class="lg:flex">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden fixed inset-0 z-20 flex-none w-72 h-full lg:static lg:h-auto lg:overflow-y-visible lg:pt-0 lg:w-48 lg:block">
+      {{ partial "sidebar" . }}
+    </aside>
+
+    <div class="hidden fixed inset-0 z-10 bg-gray-900/50 dark:bg-gray-900/60" id="sidebarBackdrop"></div>
+
+    <main id="content-wrapper" class="flex-auto w-full min-w-0 lg:static lg:max-h-full lg:overflow-visible">
+      <div class="flex w-full">
+
+        <!-- Main content -->
+        <div class="flex-auto pt-6 min-w-0 max-w-4xl lg:px-8 lg:pt-10 pb:12 xl:pb-24 lg:pb-16">
+
+          <!-- Intro -->
+          <div class="pb-4 mb-10 border-b border-gray-200 dark:border-gray-800">
+            <h1 class="inline-block mb-2 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white" id="content">{{ .Title | markdownify }}</h1>
+            <p class="mb-4 text-lg text-gray-500 dark:text-gray-400">{{ .Page.Params.Description | markdownify }}</p>
+          </div>
+
+          <aside>
+            <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CK7D4KQE&placement=flowbitedesign" id="_carbonads_js"></script>
+          </aside>
+
+          <div id="mainContent">
+
+            {{ .Content }}
+
+            <aside class="flex mt-6 mb-8 font-medium leading-6">
+              {{ if isset .Page.Params "previous" }}
+                <a class="flex mr-8 text-gray-500 transition-colors duration-200 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white" href="{{ .Page.Params.PreviousLink | relURL }}"><span aria-hidden="true" class="mr-2">←</span>{{ .Page.Params.Previous }}</a>
+              {{ end }}
+              {{ if isset .Page.Params "next" }}
+              <a class="flex ml-auto text-right text-gray-500 transition-colors duration-200 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white" href="{{ .Page.Params.NextLink | relURL }}">{{ .Page.Params.Next }}<span aria-hidden="true" class="ml-2">→</span></a>
+              {{ end }}
+            </aside>
+
+            <aside id="revue-embed" class="p-4 my-8 bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+              <h3 class="mb-3 text-xl font-medium text-gray-900 dark:text-white">Get more updates...</h3>
+              <p class="mb-5 text-sm font-medium text-gray-500 dark:text-gray-300">Do you want to get notified when a new component is added to Flowbite? Sign up for our newsletter and you'll be among the first to find out about new features, components, versions, and tools.</p>
+              <form action="https://www.getrevue.co/profile/flowbite/add_subscriber" method="post" id="revue-form" name="revue-form" >
+              <div class="flex items-end mb-3">
+                <div class="relative mr-3 w-full revue-form-group">
+                  <label for="member_email" class="block hidden mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email address</label>
+                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                  </div>
+                  <input class="revue-form-field bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your email address..." type="email" name="member[email]" id="member_email" required>
+                </div>
+                <div class="revue-form-actions">
+                  <input type="submit" value="Subscribe" class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" name="member[subscribe]" id="member_submit">
+                </div>
+              </div>
+              <div class="text-sm font-medium text-gray-500 revue-form-footer dark:text-gray-300">By subscribing, you agree with Revue’s <a rel="nofollow" href="https://www.getrevue.co/terms" class="text-blue-600 hover:underline dark:text-blue-500">Terms of Service</a> and <a rel="nofollow" class="text-blue-600 hover:underline dark:text-blue-500" href="https://www.getrevue.co/privacy">Privacy Policy</a>.</div>
+              </form>
+            </aside>
+
+          </div>
+        </div>
+
+        <!-- Table of content -->
+        <div class="hidden flex-none pl-8 mr-8 w-64 xl:text-sm xl:block">
+          {{ if (eq .Page.Params.toc true) }}
+          <div class="flex flex-col justify-between overflow-y-auto sticky max-h-(screen-18) pt-10 pb-6 top-12">
+            <div class="mb-8">
+              <h5 class="mb-3 text-sm font-semibold tracking-wide text-gray-900 uppercase dark:text-white lg:text-xs">On this page</h5>
+              {{ .TableOfContents }}
+            </div>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+</div>
+{{ end }}
+
+{{ define "footer" }}
+{{ range .Page.Params.extra_js -}}
+<script{{ with .async }} async{{ end }} src="{{ .src }}">
+</script>
+  {{- end -}}
+  {{ end }}
