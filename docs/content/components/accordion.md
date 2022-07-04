@@ -4,7 +4,6 @@ title: Tailwind CSS Accordion - Flowbite
 description: Use the accordion component to show hidden information based on the collapse and expand state of the child elements using data attribute options
 group: components
 toc: true
-requires_js: true
 
 previous: Alerts
 previousLink: components/alerts/

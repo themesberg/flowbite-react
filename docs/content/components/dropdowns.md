@@ -4,7 +4,6 @@ title: Tailwind CSS Dropdown - Flowbite
 description: Use the Tailwind CSS dropdown elements to show a list of items displayed as a menu
 group: components
 toc: true
-requires_js: true
 
 previous: Carousel
 previousLink: components/carousel/

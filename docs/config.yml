@@ -7,10 +7,10 @@ enableInlineShortcodes: true
 
 params:
   homepage: 'https://flowbite-react.com/'
-  current_version: 1.0.0
+  currentVersion: 1.0.0
   authors: Themesberg
   social_image_path: /images/og-image.png
-  storybook_url: 'http://localhost:6006/'
+  StoryBookURL: 'http://localhost:6006/'
 
 markup:
   goldmark:

@@ -4,7 +4,6 @@ title: Tailwind CSS Carousel - Flowbite
 description: Use the carousel component to slide through multiple elements and images using custom controls, indicators, intervals, and options
 group: components
 toc: true
-requires_js: true
 
 previous: Card
 previousLink: components/card/

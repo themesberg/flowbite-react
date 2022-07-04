@@ -4,7 +4,7 @@ title: Tailwind CSS Tooltip - Flowbite
 description: Use the following Tailwind CSS powered tooltips to show extra content when hovering or focusing on an element
 group: components
 toc: true
-requires_js: true
+
 
 previous: Toast
 previousLink: components/toast/

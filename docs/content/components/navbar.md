@@ -4,7 +4,7 @@ title: Tailwind CSS Navbar - Flowbite
 description: Use these responsive Tailwind CSS navbar elements to show a navigational bar at the top side of your website
 group: components
 toc: true
-requires_js: true
+
 
 previous: Tabs
 previousLink: components/tabs/
