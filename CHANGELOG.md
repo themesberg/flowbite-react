@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/themesberg/flowbite-react/compare/v0.1.0...v0.1.1) (2022-07-05)
+
+
+### Bug Fixes
+
+* **component:** Remove `type="button"` when not a `<button>` ([#217](https://github.com/themesberg/flowbite-react/issues/217)) ([8c7012e](https://github.com/themesberg/flowbite-react/commit/8c7012e77b5ca2abde0b8d30ca1ad38cf70cbdd0))
+
 ## [0.1.0](https://github.com/themesberg/flowbite-react/compare/v0.0.27...v0.1.0) (2022-06-30)
 
 
