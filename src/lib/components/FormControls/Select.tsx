@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, ReactNode } from 'react';
+import {forwardRef} from 'react';
 import type { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { excludeClassName } from '../../helpers/exclude';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
@@ -14,7 +15,7 @@ export interface SelectSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
   [key: string]: string;
 }
 
-export interface SelectProps extends Omit<ComponentProps<'select'>, 'className' | 'color'> {
+export interface SelectProps extends Omit<ComponentProps<'select'>, 'className' | 'color' | 'ref'> {
   sizing?: keyof SelectSizes;
   shadow?: boolean;
   helperText?: ReactNode;
@@ -23,7 +24,7 @@ export interface SelectProps extends Omit<ComponentProps<'select'>, 'className' 
   color?: keyof SelectColors;
 };
 
-export const Select: FC<SelectProps> = ({
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(({
   children,
   sizing = 'md',
   shadow,
@@ -32,7 +33,7 @@ export const Select: FC<SelectProps> = ({
   icon: Icon,
   color = 'gray',
   ...props
-}) => {
+}, ref) => {
   const theme = useTheme().theme.formControls.select;
   const theirProps = excludeClassName(props);
 
@@ -59,6 +60,7 @@ export const Select: FC<SelectProps> = ({
             theme.field.select.sizes[sizing],
           )}
           {...theirProps}
+          ref={ref}
         >
           {children}
         </select>
@@ -66,4 +68,4 @@ export const Select: FC<SelectProps> = ({
       </div>
     </div>
   )
-};
+});
