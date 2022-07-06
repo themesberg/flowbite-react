@@ -136,14 +136,20 @@ export const Carousel: FC<CarouselProps> = ({
   );
 };
 
-const DefaultLeftControl: FC = () => (
-  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 sm:h-10 sm:w-10">
-    <HiOutlineChevronLeft className="h-5 w-5 text-white dark:text-gray-800 sm:h-6 sm:w-6" />
-  </span>
-);
+const DefaultLeftControl: FC = () => {
+  const theme = useTheme().theme.carousel;
+  return (
+    <span className={theme.control.base}>
+      <HiOutlineChevronLeft className={theme.control.icon} />
+    </span>
+  )
+};
 
-const DefaultRightControl: FC = () => (
-  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 sm:h-10 sm:w-10">
-    <HiOutlineChevronRight className="h-5 w-5 text-white dark:text-gray-800 sm:h-6 sm:w-6" />
+const DefaultRightControl: FC = () => {
+  const theme = useTheme().theme.carousel;
+  return (
+  <span className={theme.control.base}>
+    <HiOutlineChevronRight className={theme.control.icon} />
   </span>
-);
+  )
+};
