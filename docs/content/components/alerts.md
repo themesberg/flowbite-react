@@ -19,7 +19,7 @@ Flowbite also includes dismissable alerts which can be hidden by the users by cl
 
 Use the following examples of alert components to show messages as feedback to your users.
 
-{{< example class="dark:bg-gray-800" github="components/alerts.md" show_dark=true >}}
+{{< example class="dark:bg-gray-800" github="components/alerts.md" show_dark=true lang="react" >}}
 <div class="p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert">
   <span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
 </div>

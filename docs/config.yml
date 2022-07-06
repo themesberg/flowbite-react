@@ -18,7 +18,7 @@ markup:
       unsafe: true
   highlight:
     noClasses: false
-    style: colorful
+    style: monokai
     tabWidth: 2
   tableOfContents:
     startLevel: 2

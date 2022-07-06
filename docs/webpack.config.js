@@ -1,0 +1,67 @@
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const { SourceMapDevToolPlugin } = require("webpack");
+const path = require('path');
+
+module.exports = {
+  entry: {
+    docs: path.resolve(__dirname, 'src/docs.js'),
+  },
+  output: {
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'static/'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      },
+      {
+        test: /\.css$/,
+        include: path.resolve(__dirname, 'src'),
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          outputPath: 'static/images/'
+        }
+      },
+      {
+        test: /\.(ttf|eot|svg|gif|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [{
+          loader: 'file-loader',
+        }]
+      }
+    ],
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.css']
+  },
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new SourceMapDevToolPlugin({
+      filename: "[file].map"
+    }),
+  ],
+  optimization: {
+    minimizer: [
+      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+      // `...`,
+      new CssMinimizerPlugin(),
+    ],
+  }
+};
