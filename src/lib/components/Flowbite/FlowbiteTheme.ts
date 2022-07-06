@@ -147,6 +147,10 @@ export interface FlowbiteTheme {
       base: string;
       wrapper: string;
     };
+    control:{
+      base: string;
+      icon: string;
+    },
     leftControl: string;
     rightControl: string;
     scrollContainer: {
