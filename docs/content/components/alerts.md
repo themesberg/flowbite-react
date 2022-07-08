@@ -17,19 +17,20 @@ Flowbite also includes dismissable alerts which can be hidden by the users by cl
 
 ## Usage
 
-```react
+{{< example class="flex space-x-4 dark:bg-gray-800" github="docs/components/alerts.md" show_dark=true >}}
 import { Alert } from 'flowbite-react'
 
 export default function App() {
   return (
     <>
       <Alert color="info">
-        <span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
+        <span class="font-medium">Info alert!</span>
+        Change a few things up and try submitting again.
       </Alert>
     </>
   )
 }
-```
+{{< /example >}}
 
 ## Properties
 
@@ -162,69 +163,79 @@ The parameters for the Dismiss object can be used to programatically initialize 
 
 Use the following examples of alert components to show messages as feedback to your users.
 
-```jsx
+{{< example class="flex space-x-4 dark:bg-gray-800" github="docs/components/alerts.md" show_dark=true >}}
 <Alert color="info">
-  <span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
+  <span class="font-medium">Info alert!</span>
+  Change a few things up and try submitting again.
 </Alert>
 <Alert color="failure">
-  <span class="font-medium">Danger alert!</span> Change a few things up and try submitting again.
+  <span class="font-medium">Danger alert!</span>
+  Change a few things up and try submitting again.
 </Alert>
 <Alert color="success">
-  <span class="font-medium">Success alert!</span> Change a few things up and try submitting again.
+  <span class="font-medium">Success alert!</span>
+  Change a few things up and try submitting again.
 </Alert>
 <Alert color="warning">
-  <span class="font-medium">Warning alert!</span> Change a few things up and try submitting again.
+  <span class="font-medium">Warning alert!</span>
+  Change a few things up and try submitting again.
 </div>
 <Alert color="gray">
-  <span class="font-medium">Dark alert!</span> Change a few things up and try submitting again.
+  <span class="font-medium">Dark alert!</span>
+  Change a few things up and try submitting again.
 </Alert>
-```
+{{< /example >}}
 
 ### Alerts with icon
 
 You can also include a descriptive icon to complement the message inside the alert component with the following example.
 
-```jsx
+{{< example class="flex space-x-4 dark:bg-gray-800" github="docs/components/alerts.md" show_dark=true >}}
 <Alert color="info" icon={HiInformationCircle}>
-  <span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
+  <span class="font-medium">Info alert!</span>
+  Change a few things up and try submitting again.
 </div>
-```
+{{< /example >}}
 
 ### Dismissing
 
 Use the following alert elements that are also dismissable.
 
-```jsx
+{{< example class="flex space-x-4 dark:bg-gray-800" github="docs/components/alerts.md" show_dark=true >}}
 <Alert color="info" onDismiss={() => alert('Alert dismissed!')}>
-  <span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
+  <span class="font-medium">Info alert!</span>
+  Change a few things up and try submitting again.
 </Alert>
-```
+{{< /example >}}
 
 ### Border accent
 
 Use the following alert components with a border accent as an alternative style.
 
-```jsx
+{{< example class="flex space-x-4 dark:bg-gray-800" github="docs/components/alerts.md" show_dark=true >}}
 <Alert color="info" icon={HiInformationCircle} onDismiss={() => alert('Alert dismissed!')}>
   <div class="ml-3 text-sm font-medium text-blue-700">
-    A simple info alert with an <a href="#" class="font-semibold underline hover:text-blue-800">example link</a>. Give it a click if you like.
+    A simple info alert with an 
+    <a href="#" class="font-semibold underline hover:text-blue-800">example link</a>. 
+    Give it a click if you like.
   </div>
 </Alert>
-```
+{{< /example >}}
 
 ### Additional content
 
 The following alert components can be used if you wish to disclose more information inside the element.
 
-```jsx
+{{< example class="flex space-x-4 dark:bg-gray-800" github="docs/components/alerts.md" show_dark=true >}}
 <Alert
   color="info"
   icon={HiInformationCircle}
   additionalContent={
     <>
       <div className="mt-2 mb-4 text-sm text-blue-700 dark:text-blue-800">
-        More info about this info alert goes here. This example text is going to run a bit longer so that you
-        can see how spacing within an alert works with this kind of content.
+        More info about this info alert goes here. This example text 
+        is going to run a bit longer so that you can see how spacing 
+        within an alert works with this kind of content.
       </div>
       <div className="flex gap-1">
         <Button>
@@ -236,6 +247,8 @@ The following alert components can be used if you wish to disclose more informat
     </>
   }
 >
-  <h3 className="text-lg font-medium text-blue-700 dark:text-blue-800">This is a info alert</h3>
+  <h3 className="text-lg font-medium text-blue-700 dark:text-blue-800">
+    This is a info alert
+  </h3>
 </Alert>
-```
+{{< /example >}}

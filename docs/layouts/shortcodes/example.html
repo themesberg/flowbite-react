@@ -8,8 +8,8 @@
     show_markup: if the markup should be output in the HTML - default: `true`
 */ -}}
 
-{{- $lang := .Get "lang" | default "html" -}}
-{{- $show_preview := .Get "show_preview" | default true -}}
+{{- $lang := .Get "lang" | default "jsx" -}}
+{{- $show_preview := .Get "show_preview" | default false -}}
 {{- $show_markup := .Get "show_markup" | default true -}}
 {{- $show_dark := .Get "show_dark" | default false -}}
 {{- $input := .Inner -}}
