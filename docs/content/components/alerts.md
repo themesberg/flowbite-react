@@ -194,7 +194,7 @@ You can also include a descriptive icon to complement the message inside the ale
 <Alert color="info" icon={HiInformationCircle}>
   <span class="font-medium">Info alert!</span>
   Change a few things up and try submitting again.
-</div>
+</Alert>
 {{< /example >}}
 
 ### Dismissing
