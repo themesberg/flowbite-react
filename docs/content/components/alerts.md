@@ -36,120 +36,120 @@ export default function App() {
 
 The parameters for the Dismiss object can be used to programatically initialize and manipulate the behaviour of the dismissal of the target element.
 
-<div class="overflow-x-auto relative my-10 shadow-md sm:rounded-lg">
+<div class="relative my-10 overflow-x-auto shadow-md sm:rounded-lg">
   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
     <thead class="bg-gray-50 dark:bg-gray-700">
       <tr class="text-xs font-medium uppercase">
-        <th scope="col" class="py-3 px-6">
+        <th scope="col" class="px-6 py-3">
           Parameter
         </th>
-        <th scope="col" class="py-3 px-6">
+        <th scope="col" class="px-6 py-3">
           Type
         </th>
-        <th scope="col" class="py-3 px-6">
+        <th scope="col" class="px-6 py-3">
           Required
         </th>
-        <th scope="col" class="py-3 px-6">
+        <th scope="col" class="px-6 py-3">
           Description
         </th>
       </tr>
     </thead>
     <tbody>
       <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-        <td class="py-4 px-6 font-medium">
+        <td class="px-6 py-4 font-medium">
           <code class="text-blue-600 dark:text-blue-400">additionalContent</code>
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           ReactNode
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           Optional
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           The additional content to your alert
         </td>
       </tr>
       <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-        <td class="py-4 px-6 font-medium">
+        <td class="px-6 py-4 font-medium">
           <code class="text-blue-600 dark:text-blue-400">chindren</code>
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           ReactNode
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           Required
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           The content of the alert
         </td>
       </tr>
       <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-        <td class="py-4 px-6 font-medium">
+        <td class="px-6 py-4 font-medium">
           <code class="text-blue-600 dark:text-blue-400">color</code>
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           failure | gray | info | success | warning
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           Optional
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           The alert color defined by the AlertColors interface (default: gray)
         </td>
       </tr>
       <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-        <td class="py-4 px-6 font-medium">
+        <td class="px-6 py-4 font-medium">
           <code class="text-blue-600 dark:text-blue-400">icon</code>
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           SVGElement
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           Optional
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           The alert icon component (You can get one from react-icons library)
         </td>
       </tr>
       <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-        <td class="py-4 px-6 font-medium">
+        <td class="px-6 py-4 font-medium">
           <code class="text-blue-600 dark:text-blue-400">onDimiss</code>
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           () => void
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           Optional
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           Function that handles the dimissable state of the alert
         </td>
       </tr>
       <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-        <td class="py-4 px-6 font-medium">
+        <td class="px-6 py-4 font-medium">
           <code class="text-blue-600 dark:text-blue-400">rounded</code>
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           boolean
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           Optional
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           The alert box will have rounded shape (default: true)
         </td>
       </tr>
       <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-        <td class="py-4 px-6 font-medium">
+        <td class="px-6 py-4 font-medium">
           <code class="text-blue-600 dark:text-blue-400">withBorderAccent</code>
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           boolean
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           Optional
         </td>
-        <td class="py-4 px-6">
+        <td class="px-6 py-4">
           The alert box will have a bolder border at the top (default: false)
         </td>
       </tr>
