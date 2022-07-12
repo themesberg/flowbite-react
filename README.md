@@ -2,7 +2,7 @@
   <h1>:construction: flowbite-react (unreleased) :construction:</h1>
   <p>
     <a href="https://flowbite-react.com">
-      <img alt="Flowbite - Tailwind CSS components" width="350" src="https://flowbite.s3.amazonaws.com/github/logo-github.png">
+      <img alt="Flowbite - Tailwind CSS components" width="350" src=".github/assets/flowbite-react-github.png">
     </a>
   </p>
   <p>
