@@ -1,3 +1,7 @@
+body {
+  overflow: hidden;
+}
+
 @import '~flowbite';
 
 @tailwind components;
