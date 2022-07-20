@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { NavbarBrand } from './NavbarBrand';
@@ -22,6 +22,10 @@ const NavbarComponent: FC<NavbarComponentProps> = ({ children, menuOpen, fluid =
 
   const theme = useTheme().theme.navbar;
   const theirProps = excludeClassName(props);
+
+  useEffect(() => {
+    setIsOpen(menuOpen);
+  }, [menuOpen])
 
   return (
     <NavbarContext.Provider value={{ isOpen, setIsOpen }}>
