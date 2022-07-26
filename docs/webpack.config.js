@@ -6,6 +6,7 @@ const path = require('path');
 module.exports = {
   entry: {
     docs: path.resolve(__dirname, 'src/docs.js'),
+    react: path.resolve(__dirname, 'src/react.js'),
   },
   output: {
     filename: '[name].js',

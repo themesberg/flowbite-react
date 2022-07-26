@@ -17,7 +17,7 @@ Flowbite also includes dismissable alerts which can be hidden by the users by cl
 
 ## Usage
 
-{{< example class="flex space-x-4 dark:bg-gray-800" github="docs/components/alerts.md" show_dark=true >}}
+{{< example class="flex space-x-4 dark:bg-gray-800" github="docs/components/alerts.md" component="alert" show_dark=true >}}
 import { Alert } from 'flowbite-react'
 
 export default function App() {
@@ -156,6 +156,22 @@ The parameters for the Dismiss object can be used to programatically initialize 
     </tbody>
   </table>
 </div>
+
+## Theming
+
+```js
+alert: {
+  base: string;
+  borderAccent: string;
+  closeButton: {
+    base: string;
+    color: AlertColors;
+  };
+  color: AlertColors;
+  icon: string;
+  rounded: string;
+};
+```
 
 ## Examples
 
