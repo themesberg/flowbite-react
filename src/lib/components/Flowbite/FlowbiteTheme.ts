@@ -1,4 +1,4 @@
-import type { DeepPartial } from '../../helpers/deep-partial';
+import { DeepPartial } from '..';
 import type { AlertColors } from '../Alert';
 import type { AvatarSizes } from '../Avatar';
 import type { BadgeColors, BadgeSizes } from '../Badge';
