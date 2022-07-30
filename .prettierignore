@@ -1,6 +1,8 @@
-*.md
-.gitignore
-build/
-coverage/
-lib/
+**/*.md
+**/build/
+**/coverage/
 docs/
+lib/
+
+!src/docs/
+!src/lib/
