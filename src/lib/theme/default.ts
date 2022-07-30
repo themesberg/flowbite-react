@@ -253,7 +253,7 @@ export default {
       base: 'absolute top-1/2 left-1/2 block w-full -translate-x-1/2 -translate-y-1/2',
       wrapper: 'w-full flex-shrink-0 transform cursor-grab snap-center',
     },
-    control:{
+    control: {
       base: 'inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 sm:h-10 sm:w-10',
       icon: 'h-5 w-5 text-white dark:text-gray-800 sm:h-6 sm:w-6',
     },
@@ -267,6 +267,32 @@ export default {
   darkThemeToggle: {
     base: 'rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700',
     icon: 'h-5 w-5',
+  },
+  dropdown: {
+    floating: {
+      target: 'w-fit',
+      base: 'z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700',
+      animation: 'transition-opacity',
+      hidden: 'invisible opacity-0',
+      style: {
+        dark: 'bg-gray-900 text-white dark:bg-gray-700',
+        light: 'border border-gray-200 bg-white text-gray-900',
+        auto: 'border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-gray-700 dark:text-white',
+      },
+      content: 'relative z-20',
+      arrow: {
+        base: 'absolute z-10 h-2 w-2 rotate-45',
+        style: {
+          dark: 'bg-gray-900 dark:bg-gray-700',
+          light: 'bg-white',
+          auto: 'bg-white dark:bg-gray-700',
+        },
+        placement: '-4px',
+      },
+    },
+    arrowIcon: 'ml-2 h-4 w-4',
+    inlineWrapper: 'flex items-center',
+    content: 'py-1',
   },
   footer: {
     base: 'w-full rounded-lg bg-white shadow dark:bg-gray-800 md:flex md:items-center md:justify-between',
@@ -301,7 +327,6 @@ export default {
       span: 'self-center whitespace-nowrap text-2xl font-semibold text-gray-800 dark:text-white',
     },
   },
-
   formControls: {
     helperText: {
       base: 'mt-2 text-sm',
@@ -430,7 +455,8 @@ export default {
     },
     select: {
       base: 'flex',
-      addon: 'inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-200 px-3 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-400',
+      addon:
+        'inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-200 px-3 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-400',
       field: {
         base: 'relative w-full',
         icon: {
@@ -560,7 +586,7 @@ export default {
       hidden: {
         on: 'hidden',
         off: '',
-      },      
+      },
     },
     link: {
       base: 'block py-2 pr-4 pl-3 md:p-0',
@@ -833,31 +859,5 @@ export default {
       },
       placement: '-4px',
     },
-  },
-  dropdown: {
-    floating: {
-      target: 'w-fit',
-      base: 'absolute inline-block rounded-lg py-2 px-3 text-sm font-medium shadow-sm',
-      animation: 'transition-opacity',
-      hidden: 'invisible opacity-0',
-      style: {
-        dark: 'bg-gray-900 text-white dark:bg-gray-700',
-        light: 'border border-gray-200 bg-white text-gray-900',
-        auto: 'border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-gray-700 dark:text-white',
-      },
-      content: 'relative z-20',
-      arrow: {
-        base: 'absolute z-10 h-2 w-2 rotate-45',
-        style: {
-          dark: 'bg-gray-900 dark:bg-gray-700',
-          light: 'bg-white',
-          auto: 'bg-white dark:bg-gray-700',
-        },
-        placement: '-4px',
-      },
-    },
-    arrowIcon: 'ml-2 h-4 w-4',
-    inlineWrapper: 'flex items-center',
-    content: 'py-1',
   },
 };

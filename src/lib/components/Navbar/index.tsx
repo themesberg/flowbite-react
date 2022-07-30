@@ -15,9 +15,16 @@ export interface NavbarComponentProps extends Omit<PropsWithChildren<ComponentPr
   fluid?: boolean;
   rounded?: boolean;
   border?: boolean;
-};
+}
 
-const NavbarComponent: FC<NavbarComponentProps> = ({ children, menuOpen, fluid = false, rounded, border, ...props }) => {
+const NavbarComponent: FC<NavbarComponentProps> = ({
+  children,
+  menuOpen,
+  fluid = false,
+  rounded,
+  border,
+  ...props
+}) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
   const theme = useTheme().theme.navbar;
@@ -29,11 +36,7 @@ const NavbarComponent: FC<NavbarComponentProps> = ({ children, menuOpen, fluid =
         className={classNames(theme.base, theme.bordered[border ? 'on' : 'off'], theme.rounded[rounded ? 'on' : 'off'])}
         {...theirProps}
       >
-        <div
-          className={classNames(theme.inner.base, theme.inner.fuild[fluid ? 'on' : 'off'])}
-        >
-          {children}
-        </div>
+        <div className={classNames(theme.inner.base, theme.inner.fuild[fluid ? 'on' : 'off'])}>{children}</div>
       </nav>
     </NavbarContext.Provider>
   );
