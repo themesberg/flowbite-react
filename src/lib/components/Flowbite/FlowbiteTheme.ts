@@ -413,7 +413,6 @@ export interface FlowbiteTheme {
       };
       content: {
         base: string;
-        collapsed: string;
       };
       icon: {
         base: string;

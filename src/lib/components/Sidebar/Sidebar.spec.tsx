@@ -459,8 +459,5 @@ const getSidebarItems = ({ getAllByRole }: Pick<RenderResult, 'getAllByRole'>): 
 const getSidebarItemsContainer = ({ getAllByTestId }: Pick<RenderResult, 'getAllByTestId'>): HTMLElement[] =>
   getAllByTestId('flowbite-sidebar-items');
 
-const getSidebarLabels = ({ queryAllByTestId }: Pick<RenderResult, 'queryAllByTestId'>): HTMLElement[] =>
-  queryAllByTestId('flowbite-sidebar-label');
-
 const getSidebarLogo = ({ getByLabelText }: Pick<RenderResult, 'getByLabelText'>): HTMLElement =>
   getByLabelText('Flowbite');

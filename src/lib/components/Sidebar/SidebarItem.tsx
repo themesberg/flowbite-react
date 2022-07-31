@@ -32,7 +32,7 @@ const SidebarItem: FC<SidebarItemProps> = ({
   label,
   labelColor = 'info',
   ...props
-}): JSX.Element => {
+}) => {
   const theirProps = excludeClassName(props);
 
   const id = useId();
@@ -40,16 +40,26 @@ const SidebarItem: FC<SidebarItemProps> = ({
   const { isInsideCollapse } = useSidebarItemContext();
   const theme = useTheme().theme.sidebar.item;
 
-  const Wrapper: FC<PropsWithChildren<unknown>> = ({ children }): JSX.Element => (
+  const Wrapper: FC<PropsWithChildren<unknown>> = ({ children: Component }) => (
     <li>
       {isCollapsed ? (
-        <Tooltip content={children} placement="right">
-          {children}
+        <Tooltip content={<Children>{children}</Children>} placement="right">
+          {Component}
         </Tooltip>
       ) : (
-        children
+        Component
       )}
     </li>
+  );
+
+  const Children: FC<PropsWithChildren<unknown>> = ({ children }) => (
+    <span
+      className={classNames(theme.content.base)}
+      data-testid="flowbite-sidebar-item-content"
+      id={`flowbite-sidebar-item-${id}`}
+    >
+      {children}
+    </span>
   );
 
   return (
@@ -70,14 +80,8 @@ const SidebarItem: FC<SidebarItemProps> = ({
             data-testid="flowbite-sidebar-item-icon"
           />
         )}
-        <span
-          className={classNames(theme.content.base, isCollapsed && theme.content.collapsed)}
-          data-testid="flowbite-sidebar-item-content"
-          id={`flowbite-sidebar-item-${id}`}
-        >
-          {children}
-        </span>
-        {label && (
+        {!isCollapsed && <Children>{children}</Children>}
+        {label && !isCollapsed && (
           <Badge color={labelColor} data-testid="flowbite-sidebar-label" hidden={isCollapsed}>
             {label}
           </Badge>
