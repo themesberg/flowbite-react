@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.1.4](https://github.com/themesberg/flowbite-react/compare/v0.1.3...v0.1.4) (2022-07-31)
 
+
+### Bug Fixes
+
+* **component:** display text only on Sidebar.Item tooltip ([#315](https://github.com/themesberg/flowbite-react/issues/315)) ([9af5d13](https://github.com/themesberg/flowbite-react/commit/9af5d136a95cadd91c3212080bb060091ce3453d)), closes [#258](https://github.com/themesberg/flowbite-react/issues/258)
+* **theme:** add z-index to Dropdown floating component ([#314](https://github.com/themesberg/flowbite-react/issues/314)) ([77cb356](https://github.com/themesberg/flowbite-react/commit/77cb3560538751aa256b7c24e71df9fd6bec0c36)), closes [#308](https://github.com/themesberg/flowbite-react/issues/308)
+
+### [0.1.4](https://github.com/themesberg/flowbite-react/compare/v0.1.3...v0.1.4) (2022-07-31)
+
 ### [0.1.3](https://github.com/themesberg/flowbite-react/compare/v0.1.2...v0.1.3) (2022-07-06)
 
 ### [0.1.2](https://github.com/themesberg/flowbite-react/compare/v0.1.1...v0.1.2) (2022-07-05)
