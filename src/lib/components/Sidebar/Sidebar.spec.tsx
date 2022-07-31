@@ -117,30 +117,6 @@ describe.concurrent('Components / Sidebar', () => {
         });
       });
 
-      describe('`Sidebar.Collapse` and `Sidebar.Item`', () => {
-        it('should display tooltip', () => {
-          const items = getSidebarItems(render(<TestSidebar collapsed />));
-
-          items.forEach((item) => {
-            expect(item.firstElementChild).toHaveAttribute('data-testid', 'tooltip-target');
-          });
-        });
-
-        it("shouldn't display text content", () => {
-          const items = getSidebarItemContents(render(<TestSidebar collapsed />));
-
-          items.forEach((item) => expect(item).toHaveClass('hidden'));
-        });
-      });
-
-      describe('`Sidebar.Item`', () => {
-        it("shouldn't display `label`", () => {
-          const labels = getSidebarLabels(render(<TestSidebar collapsed />));
-
-          labels.forEach((label) => expect(label).not.toBeVisible());
-        });
-      });
-
       describe('`Sidebar.Logo`', () => {
         it("shouldn't display text content", () => {
           const logo = getSidebarLogo(render(<TestSidebar collapsed />));
