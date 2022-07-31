@@ -14,9 +14,9 @@ import { DropdownItem } from './DropdownItem';
 export interface DropdownProps extends PropsWithChildren<Pick<FloatingProps, 'placement' | 'trigger'>>, ButtonProps {
   label: ReactNode;
   inline?: boolean;
-  floatingArrow?: boolean;  
+  floatingArrow?: boolean;
   arrowIcon?: boolean;
-};
+}
 
 const icons: Record<string, FC<ComponentProps<'svg'>>> = {
   top: HiOutlineChevronUp,
@@ -28,8 +28,8 @@ const icons: Record<string, FC<ComponentProps<'svg'>>> = {
 const DropdownComponent: FC<DropdownProps> = ({ children, ...props }) => {
   const theme = useTheme().theme.dropdown;
   const theirProps = excludeClassName(props) as DropdownProps;
-  const { 
-    placement = props.inline ? 'bottom-start' : 'bottom', 
+  const {
+    placement = props.inline ? 'bottom-start' : 'bottom',
     trigger = 'click',
     label,
     inline,

@@ -4,11 +4,11 @@ import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useNavbarContext } from './NavbarContext';
 
-export type NavbarCollapseProps = Omit<PropsWithChildren<ComponentProps<'div'>>, 'className'>
+export type NavbarCollapseProps = Omit<PropsWithChildren<ComponentProps<'div'>>, 'className'>;
 
 export const NavbarCollapse: FC<NavbarCollapseProps> = ({ children, ...props }): JSX.Element => {
   const { isOpen } = useNavbarContext();
-  
+
   const theme = useTheme().theme.navbar.collapse;
   const theirProps = excludeClassName(props);
 

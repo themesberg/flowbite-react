@@ -1,4 +1,4 @@
-import type { DeepPartial } from '../../helpers/deep-partial';
+import { DeepPartial } from '..';
 import type { AlertColors } from '../Alert';
 import type { AvatarSizes } from '../Avatar';
 import type { BadgeColors, BadgeSizes } from '../Badge';
@@ -11,7 +11,15 @@ import type {
 } from '../Button';
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
 import type { FlowbiteFloatingTheme } from '../Floating';
-import type { HelperColors, LabelColors, SelectColors, SelectSizes, TextareaColors, TextInputColors, TextInputSizes } from '../FormControls';
+import type {
+  HelperColors,
+  LabelColors,
+  SelectColors,
+  SelectSizes,
+  TextareaColors,
+  TextInputColors,
+  TextInputSizes,
+} from '../FormControls';
 import type { ModalPositions, ModalSizes } from '../Modal';
 import type { ProgressColor, ProgressSizes } from '../Progress';
 import type { StarSizes } from '../Rating';
@@ -147,10 +155,10 @@ export interface FlowbiteTheme {
       base: string;
       wrapper: string;
     };
-    control:{
+    control: {
       base: string;
       icon: string;
-    },
+    };
     leftControl: string;
     rightControl: string;
     scrollContainer: {
@@ -470,7 +478,7 @@ export interface FlowbiteTheme {
     content: string;
     inlineWrapper: string;
     arrowIcon: string;
-  }
+  };
 }
 
 export interface FlowbiteBoolean {

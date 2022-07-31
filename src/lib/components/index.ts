@@ -9,6 +9,7 @@ export * from './Carousel';
 export * from './DarkThemeToggle';
 export * from './Dropdown';
 export * from './Flowbite';
+export type { CustomFlowbiteTheme } from './Flowbite/FlowbiteTheme';
 export * from './Footer';
 export * from './FormControls';
 export * from './ListGroup';
@@ -24,3 +25,9 @@ export * from './Table';
 export * from './Timeline';
 export * from './Toast';
 export * from './Tooltip';
+
+export type DeepPartial<T> = T extends object
+  ? {
+      [P in keyof T]?: DeepPartial<T[P]>;
+    }
+  : T;

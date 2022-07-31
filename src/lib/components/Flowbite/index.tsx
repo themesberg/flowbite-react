@@ -1,6 +1,6 @@
 import type { FC, HTMLAttributes } from 'react';
 import { useEffect, useMemo } from 'react';
-import type { DeepPartial } from '../../helpers/deep-partial';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';

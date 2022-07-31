@@ -19,12 +19,7 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({ barIcon: BarIcon = GoThree
   const theirProps = excludeClassName(props);
 
   return (
-    <button
-      className={theme.base}
-      data-testid="navbar-toggle"
-      onClick={handleClick}
-      {...theirProps}
-    >
+    <button className={theme.base} data-testid="navbar-toggle" onClick={handleClick} {...theirProps}>
       <span className="sr-only">Open main menu</span>
       <BarIcon className={theme.icon} />
     </button>

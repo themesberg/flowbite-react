@@ -142,14 +142,14 @@ const DefaultLeftControl: FC = () => {
     <span className={theme.control.base}>
       <HiOutlineChevronLeft className={theme.control.icon} />
     </span>
-  )
+  );
 };
 
 const DefaultRightControl: FC = () => {
   const theme = useTheme().theme.carousel;
   return (
-  <span className={theme.control.base}>
-    <HiOutlineChevronRight className={theme.control.icon} />
-  </span>
-  )
+    <span className={theme.control.base}>
+      <HiOutlineChevronRight className={theme.control.icon} />
+    </span>
+  );
 };

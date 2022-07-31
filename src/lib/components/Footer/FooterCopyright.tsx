@@ -1,7 +1,7 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export interface CopyrightProps extends Omit<PropsWithChildren<ComponentProps<'span'>>,'className'> {
+export interface CopyrightProps extends Omit<PropsWithChildren<ComponentProps<'span'>>, 'className'> {
   href?: string;
   by: string;
   year?: number;

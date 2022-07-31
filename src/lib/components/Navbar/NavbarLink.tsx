@@ -7,23 +7,24 @@ export interface NavbarLinkProps extends Omit<PropsWithChildren<ComponentProps<'
   active?: boolean;
   disabled?: boolean;
   href?: string;
-};
+}
 
 export const NavbarLink: FC<NavbarLinkProps> = ({ active, disabled, href, children, ...props }) => {
   const theme = useTheme().theme.navbar.link;
-  const theirProps = excludeClassName(props)
+  const theirProps = excludeClassName(props);
 
   return (
     <li>
       <a
         href={href}
-        className={classNames(theme.base,
+        className={classNames(
+          theme.base,
           {
             [theme.active.on]: active,
-            [theme.active.off]:
-              !active && !disabled
+            [theme.active.off]: !active && !disabled,
           },
-          theme.disabled[disabled ? 'on' : 'off'])}
+          theme.disabled[disabled ? 'on' : 'off'],
+        )}
         {...theirProps}
       >
         {children}

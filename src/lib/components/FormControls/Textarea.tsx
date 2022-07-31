@@ -16,19 +16,21 @@ export interface TextareaProps extends Omit<ComponentProps<'textarea'>, 'classNa
   color?: keyof TextareaColors;
 }
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(({ shadow, helperText, color = 'gray', ...props }, ref) => {
-  const theme = useTheme().theme.formControls.textarea;
-  const theirProps = excludeClassName(props)
-  return (
-    <>
-      <textarea 
-        ref={ref}
-        className={classNames(theme.base, theme.colors[color], theme.withShadow[shadow ? 'on' : 'off'])}
-        {...theirProps}
-      />
-      {helperText && <HelperText color={color}>{helperText}</HelperText>}
-    </>
-  )
-});
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ shadow, helperText, color = 'gray', ...props }, ref) => {
+    const theme = useTheme().theme.formControls.textarea;
+    const theirProps = excludeClassName(props);
+    return (
+      <>
+        <textarea
+          ref={ref}
+          className={classNames(theme.base, theme.colors[color], theme.withShadow[shadow ? 'on' : 'off'])}
+          {...theirProps}
+        />
+        {helperText && <HelperText color={color}>{helperText}</HelperText>}
+      </>
+    );
+  },
+);
 
 Textarea.displayName = 'Textarea';
