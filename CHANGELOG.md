@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/themesberg/flowbite-react/compare/v0.1.4...v0.1.5) (2022-08-01)
+
+
+### Bug Fixes
+
+* **component:** remove "All Rights Reserved" from `<Footer.Copyright>` ([#317](https://github.com/themesberg/flowbite-react/issues/317)) ([c6524ee](https://github.com/themesberg/flowbite-react/commit/c6524eea31491480fe85870f22829a96c819c414))
+
 ### [0.1.4](https://github.com/themesberg/flowbite-react/compare/v0.1.3...v0.1.4) (2022-07-31)
 
 
