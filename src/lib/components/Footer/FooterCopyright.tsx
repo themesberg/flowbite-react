@@ -15,13 +15,12 @@ export const FooterCopyright: FC<CopyrightProps> = ({ href, by, year }) => {
       <span className={theme.base}>
         © {year}
         {href ? (
-          <a href={href} className={theme.base}>
+          <a href={href} className={theme.href}>
             {by}
           </a>
         ) : (
           <span className={theme.span}>{by}</span>
         )}
-        . All Rights Reserved.
       </span>
     </div>
   );
