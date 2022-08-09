@@ -14,7 +14,11 @@ export const RatingAdvanced: FC<RatingAdvancedProps> = ({ percentFilled = 0, chi
     <div className={theme.base} {...theirProps}>
       <span className={theme.label}>{children}</span>
       <div className={theme.progress.base}>
-        <div className={theme.progress.fill} data-testid="rating-fill" style={{ width: `${percentFilled}%` }} />
+        <div
+          className={theme.progress.fill}
+          data-testid="flowbite-rating-fill"
+          style={{ width: `${percentFilled}%` }}
+        />
       </div>
       <span className={theme.progress.label}>{`${percentFilled}%`}</span>
     </div>

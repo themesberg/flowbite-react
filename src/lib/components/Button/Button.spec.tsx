@@ -1,126 +1,107 @@
-import type { RenderResult } from '@testing-library/react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { Button } from '.';
 import { Flowbite } from '../Flowbite';
 
-describe.concurrent('Components / Button', () => {
+describe('Components / Button', () => {
   describe('A11y', () => {
     it('should have `role="button"` by default', () => {
-      const button = getButton(render(<Button>Hi there</Button>));
+      render(<Button>Hi there</Button>);
 
-      expect(button).toBeInTheDocument();
+      expect(button()).toBeInTheDocument();
     });
 
     it('should be able to use any other role permitted for `<button>`s', () => {
-      const { getByRole } = render(<Button role="menuitem">Hi there</Button>);
-      const button = getByRole('menuitem');
+      render(<Button role="menuitem">Hi there</Button>);
+
+      const button = screen.getByRole('menuitem');
 
       expect(button).toBeInTheDocument();
     });
   });
 
   describe('Keyboard interactions', () => {
-    describe('`Space`', () => {
-      it('should trigger `onClick`', () => {
-        const onClick = vi.fn();
-        const button = getButton(render(<Button onClick={onClick}>Hi there</Button>));
+    it('should trigger `onClick` when `Space` is pressed', async () => {
+      const user = userEvent.setup();
+      const onClick = vi.fn();
 
-        userEvent.click(button);
+      render(<Button onClick={onClick}>Hi there</Button>);
 
-        expect(onClick).toHaveBeenCalledTimes(1);
-      });
+      await user.click(button());
+
+      expect(onClick).toHaveBeenCalledTimes(1);
     });
 
-    describe('`Tab`', () => {
-      it('should focus', () => {
-        const button = getButton(render(<Button>Hi there</Button>));
+    it('should focus when `Tab` is pressed', async () => {
+      const user = userEvent.setup();
+      render(<Button>Hi there</Button>);
 
-        userEvent.tab();
+      await user.tab();
 
-        expect(button).toHaveFocus();
-      });
+      expect(button()).toHaveFocus();
+    });
 
-      it('should be possible to `Tab` out', () => {
-        const buttons = getButtons(
-          render(
-            <>
-              <Button>Hi there</Button>
-              <Button>Hello there</Button>
-            </>,
-          ),
-        );
+    it('should be possible to `Tab` out', async () => {
+      const user = userEvent.setup();
+      render(
+        <>
+          <Button>Hi there</Button>
+          <Button>Hello there</Button>
+          <button type="submit">Submit</button>
+        </>,
+      );
 
-        userEvent.tab();
+      await user.tab();
 
-        expect(buttons[0]).toHaveFocus();
+      expect(buttons()[0]).toHaveFocus();
 
-        userEvent.tab();
+      await user.tab();
 
-        expect(buttons[1]).toHaveFocus();
-      });
+      expect(buttons()[1]).toHaveFocus();
+
+      await user.tab();
+
+      expect(buttons()[2]).toHaveFocus();
     });
   });
 
   describe('Props', () => {
     it('should allow HTML attributes for `<button>`s', () => {
-      const button = getButton(
-        render(
-          <Button formAction="post.php" type="submit">
-            Hi there
-          </Button>,
-        ),
+      render(
+        <Button formAction="post.php" type="submit">
+          Hi there
+        </Button>,
       );
 
-      expect(button).toHaveAttribute('formAction', 'post.php');
-      expect(button).toHaveAttribute('type', 'submit');
+      expect(button()).toHaveAttribute('formAction', 'post.php');
+      expect(button()).toHaveAttribute('type', 'submit');
     });
 
-    describe('`disabled={true}`', () => {
-      it('should be disabled given', () => {
-        const button = getButton(render(<Button disabled>Hi there</Button>));
+    it('should be disabled when `disabled={true}`', () => {
+      render(<Button disabled>Hi there</Button>);
 
-        expect(button).toBeDisabled();
-      });
+      expect(button()).toBeDisabled();
     });
   });
 
   describe('Rendering', () => {
-    it('should render a `<button>`', () => {
-      const button = getButton(
-        render(
-          <Button color="gray" outline>
-            Hi there
-          </Button>,
-        ),
-      );
+    it('should render when `children={0}`', () => {
+      render(<Button>0</Button>);
 
-      expect(button).toHaveTextContent('Hi there');
+      expect(button()).toHaveTextContent('0');
     });
 
-    describe('`children={0}`', () => {
-      it('should render', () => {
-        const button = getButton(render(<Button>0</Button>));
+    it('should render when `children={undefined}`', () => {
+      render(<Button label="Something or other" />);
 
-        expect(button).toHaveTextContent('0');
-      });
+      expect(button()).toHaveTextContent('Something or other');
     });
 
-    describe('`children={undefined}`', () => {
-      it('should render', () => {
-        const button = getButton(render(<Button label="Something or other" />));
+    it('should render an anchor `<a>` when `href=".."`', () => {
+      render(<Button href="#" label="Something or other" />);
 
-        expect(button).toHaveTextContent('Something or other');
-      });
-    });
-
-    describe('`href=".."`', () => {
-      it('should render an anchor `<a>`', () => {
-        const button = getButtonLink(render(<Button href="#" label="Something or other" />));
-
-        expect(button).toBeInTheDocument();
-      });
+      expect(buttonLink()).toBeInTheDocument();
     });
   });
 
@@ -132,15 +113,13 @@ describe.concurrent('Components / Button', () => {
         },
       };
 
-      const button = getButton(
-        render(
-          <Flowbite theme={{ theme }}>
-            <Button />
-          </Flowbite>,
-        ),
+      render(
+        <Flowbite theme={{ theme }}>
+          <Button />
+        </Flowbite>,
       );
 
-      expect(button).toHaveClass('font-extralight');
+      expect(button()).toHaveClass('font-extralight');
     });
 
     it('should use `color` classes', () => {
@@ -152,15 +131,13 @@ describe.concurrent('Components / Button', () => {
         },
       };
 
-      const button = getButton(
-        render(
-          <Flowbite theme={{ theme }}>
-            <Button color="primary" />
-          </Flowbite>,
-        ),
+      render(
+        <Flowbite theme={{ theme }}>
+          <Button color="primary" />
+        </Flowbite>,
       );
 
-      expect(button).toHaveClass('font-extralight');
+      expect(button()).toHaveClass('font-extralight');
     });
 
     it('should use `disabled` classes', () => {
@@ -170,15 +147,13 @@ describe.concurrent('Components / Button', () => {
         },
       };
 
-      const button = getButton(
-        render(
-          <Flowbite theme={{ theme }}>
-            <Button disabled />
-          </Flowbite>,
-        ),
+      render(
+        <Flowbite theme={{ theme }}>
+          <Button disabled />
+        </Flowbite>,
       );
 
-      expect(button).toHaveClass('font-extralight');
+      expect(button()).toHaveClass('font-extralight');
     });
 
     it('should use `gradient` classes', () => {
@@ -190,15 +165,13 @@ describe.concurrent('Components / Button', () => {
         },
       };
 
-      const button = getButton(
-        render(
-          <Flowbite theme={{ theme }}>
-            <Button gradientMonochrome="yellowToPink" />
-          </Flowbite>,
-        ),
+      render(
+        <Flowbite theme={{ theme }}>
+          <Button gradientMonochrome="yellowToPink" />
+        </Flowbite>,
       );
 
-      expect(button).toHaveClass('font-extralight');
+      expect(button()).toHaveClass('font-extralight');
     });
 
     it('should use `gradientDuoTone` classes', () => {
@@ -210,15 +183,13 @@ describe.concurrent('Components / Button', () => {
         },
       };
 
-      const button = getButton(
-        render(
-          <Flowbite theme={{ theme }}>
-            <Button gradientDuoTone="yellowToPink" />
-          </Flowbite>,
-        ),
+      render(
+        <Flowbite theme={{ theme }}>
+          <Button gradientDuoTone="yellowToPink" />
+        </Flowbite>,
       );
 
-      expect(button).toHaveClass('font-extralight');
+      expect(button()).toHaveClass('font-extralight');
     });
 
     it('should use `inner` classes', () => {
@@ -230,13 +201,13 @@ describe.concurrent('Components / Button', () => {
         },
       };
 
-      const { getByText } = render(
+      render(
         <Flowbite theme={{ theme }}>
           <Button>Hi there</Button>
         </Flowbite>,
       );
 
-      const buttonInnerContent = getByText('Hi there');
+      const buttonInnerContent = screen.getByText('Hi there');
 
       expect(buttonInnerContent).toHaveClass('font-extralight');
     });
@@ -248,13 +219,13 @@ describe.concurrent('Components / Button', () => {
         },
       };
 
-      const { getByText } = render(
+      render(
         <Flowbite theme={{ theme }}>
           <Button label="Hi there" />
         </Flowbite>,
       );
 
-      const buttonLabel = getByText('Hi there');
+      const buttonLabel = screen.getByText('Hi there');
 
       expect(buttonLabel).toHaveClass('font-extralight');
     });
@@ -273,7 +244,7 @@ describe.concurrent('Components / Button', () => {
         },
       };
 
-      const { getByText } = render(
+      render(
         <Flowbite theme={{ theme }}>
           <Button>Normal button</Button>
           <Button outline>Outline button</Button>
@@ -283,9 +254,9 @@ describe.concurrent('Components / Button', () => {
         </Flowbite>,
       );
 
-      const normalButton = getByText('Normal button');
-      const outlineButton = getByText('Outline button');
-      const outlinePillButton = getByText('Outline pill button');
+      const normalButton = screen.getByText('Normal button');
+      const outlineButton = screen.getByText('Outline button');
+      const outlinePillButton = screen.getByText('Outline pill button');
 
       expect(normalButton).toHaveClass('font-extralight text-purple-300');
       expect(outlineButton).toHaveClass('font-extrabold text-purple-300');
@@ -302,17 +273,15 @@ describe.concurrent('Components / Button', () => {
         },
       };
 
-      const buttons = getButtons(
-        render(
-          <Flowbite theme={{ theme }}>
-            <Button label="Normal button" />
-            <Button label="Pill" pill />
-          </Flowbite>,
-        ),
+      render(
+        <Flowbite theme={{ theme }}>
+          <Button label="Normal button" />
+          <Button label="Pill" pill />
+        </Flowbite>,
       );
 
-      const normalButton = buttons[0];
-      const pill = buttons[1];
+      const normalButton = buttons()[0];
+      const pill = buttons()[1];
 
       expect(normalButton).toHaveClass('font-extralight');
       expect(pill).toHaveClass('font-extrabold');
@@ -327,21 +296,21 @@ describe.concurrent('Components / Button', () => {
         },
       };
 
-      const { getByText } = render(
+      render(
         <Flowbite theme={{ theme }}>
           <Button size="xxl">Hello</Button>
         </Flowbite>,
       );
 
-      const button = getByText('Hello');
+      const button = screen.getByText('Hello');
 
       expect(button).toHaveClass('font-extrabold');
     });
   });
 });
 
-const getButton = ({ getByRole }: RenderResult): HTMLElement => getByRole('button');
+const button = () => screen.getByRole('button');
 
-const getButtonLink = ({ getByRole }: RenderResult): HTMLElement => getByRole('link');
+const buttonLink = () => screen.getByRole('link');
 
-const getButtons = ({ getAllByRole }: RenderResult): HTMLElement[] => getAllByRole('button');
+const buttons = () => screen.getAllByRole('button');

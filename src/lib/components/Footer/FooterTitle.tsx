@@ -7,8 +7,9 @@ export interface FooterTitleProps extends Omit<PropsWithChildren<ComponentProps<
 
 export const FooterTitle: FC<FooterTitleProps> = ({ title }) => {
   const theme = useTheme().theme.footer.title;
+
   return (
-    <h2 data-testid="footer-title" className={theme.base}>
+    <h2 data-testid="flowbite-footer-title" className={theme.base}>
       {title}
     </h2>
   );

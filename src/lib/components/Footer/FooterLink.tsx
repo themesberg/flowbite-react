@@ -5,8 +5,9 @@ export interface FooterLinkProps extends Omit<PropsWithChildren<ComponentProps<'
   href: string;
 }
 
-export const FooterLink: FC<FooterLinkProps> = ({ href, children }) => {
+export const FooterLink: FC<FooterLinkProps> = ({ children, href }) => {
   const theme = useTheme().theme.footer.groupLink.link;
+
   return (
     <li className={theme.base}>
       <a href={href} className={theme.href}>

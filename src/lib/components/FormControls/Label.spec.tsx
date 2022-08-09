@@ -12,7 +12,7 @@ import { TextInput } from './TextInput';
 import { ToggleSwitch } from './ToggleSwitch';
 
 describe.concurrent('Components / Form controls / Label', () => {
-  describe('A11y', () => {
+  describe.concurrent('A11y', () => {
     it('should provide accessible name to any form control associated by `htmlFor`', () => {
       const inputLabels = [
         'Your email',
@@ -27,18 +27,6 @@ describe.concurrent('Components / Form controls / Label', () => {
       const { getByLabelText } = render(<TestForm />);
 
       inputLabels.forEach((label) => expect(getByLabelText(label)).toHaveAccessibleName(label));
-    });
-  });
-
-  describe('Rendering', () => {
-    it('should render', () => {
-      render(<Label>Hello</Label>);
-    });
-
-    describe('`value=".."`', () => {
-      it('should render', () => {
-        render(<Label value="Hello" />);
-      });
     });
   });
 });

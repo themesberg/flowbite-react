@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import type { FC } from 'react';
 import { describe, expect, it } from 'vitest';
 import type { TableProps } from '.';
@@ -6,21 +6,24 @@ import { Table } from '.';
 
 describe.concurrent('Components / Table', () => {
   it('should be able to render a table', () => {
-    const { getByTestId } = render(<TestTable />);
-    expect(getByTestId('table-element')).toBeTruthy();
+    render(<TestTable />);
+
+    expect(screen.getByTestId('table-element')).toBeTruthy();
   });
 
   it('should be able to render a striped table', () => {
-    const { getAllByTestId } = render(<TestTable striped />);
-    const rows = getAllByTestId('table-row-element');
+    render(<TestTable striped />);
+
+    const rows = screen.getAllByTestId('table-row-element');
 
     expect(rows.length).toEqual(5);
     expect(rows[0].className).toContain('odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700');
   });
 
   it('should be able to render a hoverable table', () => {
-    const { getAllByTestId } = render(<TestTable hoverable />);
-    const rows = getAllByTestId('table-row-element');
+    render(<TestTable hoverable />);
+
+    const rows = screen.getAllByTestId('table-row-element');
 
     expect(rows.length).toEqual(5);
     expect(rows[0].className).toContain('hover:bg-gray-50 dark:hover:bg-gray-600');

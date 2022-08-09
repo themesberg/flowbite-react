@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { mergeDeep } from './mergeDeep';
 
-describe('Helper / mergeDeep (Deeply merge two objects)', () => {
-  describe('given two objects', () => {
+describe.concurrent('Helper / mergeDeep (Deeply merge two objects)', () => {
+  describe.concurrent('given two objects', () => {
     it('should combine unique shallow properties', () => {
       const combineMe = {
         a: 'a',
@@ -23,7 +23,7 @@ describe('Helper / mergeDeep (Deeply merge two objects)', () => {
       });
     });
 
-    describe('with identical key', () => {
+    describe.concurrent('with identical key', () => {
       it("should use overriding object's value", () => {
         const combineMe = {
           base: 'base',
@@ -58,7 +58,7 @@ describe('Helper / mergeDeep (Deeply merge two objects)', () => {
         });
       });
 
-      describe('that is an object', () => {
+      describe.concurrent('that is an object', () => {
         it('should combine keys from both objects', () => {
           const combineMe = {
             content: {

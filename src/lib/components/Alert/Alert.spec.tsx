@@ -1,26 +1,51 @@
-import { render } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Alert } from '.';
 
-describe.concurrent('Alert', () => {
-  describe('that is dismissable', () => {
-    describe('and user clicks X to dismiss', () => {
-      it('should run its dismiss callback', () => {
-        const { getByRole, getByTestId } = render(<TestAlert />);
-        const alert = getByRole('alert');
-        const dismissButton = getByTestId('alert-dismiss');
+describe.concurrent('Components / Alert', () => {
+  describe.concurrent('A11y', () => {
+    it('should have `role="alert"`', () => {
+      render(<TestAlert />);
 
-        userEvent.click(dismissButton);
-        expect(alert).toHaveTextContent('dismissed');
+      expect(alert()).toBeInTheDocument();
+    });
+  });
+
+  describe.concurrent('Keyboard interactions', () => {
+    it('should dismiss when `Tab` is pressed to navigate to Dismiss button and `Space` is pressed', async () => {
+      const onDismiss = vi.fn();
+      const user = userEvent.setup();
+      render(<Alert onDismiss={onDismiss} />);
+
+      await waitFor(async () => {
+        await user.tab();
+
+        expect(dismiss()).toHaveFocus();
       });
+
+      await user.keyboard('[Space]');
+
+      expect(onDismiss).toHaveBeenCalled();
+    });
+  });
+
+  describe.concurrent('Props', () => {
+    it('should call `onDismiss` when clicked', async () => {
+      const onDismiss = vi.fn();
+      const user = userEvent.setup();
+      render(<Alert onDismiss={onDismiss} />);
+
+      await user.click(dismiss());
+
+      expect(onDismiss).toHaveBeenCalled();
     });
   });
 });
 
-const TestAlert = (): JSX.Element => {
+const TestAlert: FC = () => {
   const [isDismissed, setDismissed] = useState(false);
 
   return (
@@ -51,8 +76,14 @@ const TestAlert = (): JSX.Element => {
       color="info"
       icon={HiInformationCircle}
       onDismiss={() => setDismissed(!isDismissed)}
+      rounded
+      withBorderAccent
     >
       {isDismissed ? 'dismissed' : 'waiting'}
     </Alert>
   );
 };
+
+const alert = () => screen.getByRole('alert');
+
+const dismiss = () => screen.getByLabelText('Dismiss');

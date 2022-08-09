@@ -32,7 +32,7 @@ const ToastComponent: FC<ToastProps> = ({ children, duration = 300, ...props }) 
   return (
     <ToastContext.Provider value={{ duration, isClosed, isRemoved, setIsClosed, setIsRemoved }}>
       <div
-        data-testid="toast-element"
+        data-testid="flowbite-toast"
         className={classNames(
           theme.base,
           durationClasses[duration],

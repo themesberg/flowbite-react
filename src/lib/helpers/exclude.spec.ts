@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import exclude from './exclude';
 
-describe('Helpers / Exclude (delete key from object)', () => {
-  describe('Given object that contains targeted key', () => {
+describe.concurrent('Helpers / Exclude (delete key from object)', () => {
+  describe.concurrent('Given object that contains targeted key', () => {
     it('should return input object without that key', () => {
       const input = {
         a: 1,
@@ -18,7 +18,7 @@ describe('Helpers / Exclude (delete key from object)', () => {
     });
   });
 
-  describe('Given object that does not contain target key', () => {
+  describe.concurrent('Given object that does not contain target key', () => {
     it('should return input object', () => {
       const input = {
         b: 2,

@@ -37,7 +37,7 @@ const ModalComponent: FC<ModalProps> = ({
   position = 'center',
   onClose,
   ...props
-}): JSX.Element | null => {
+}) => {
   const [container] = useState<HTMLDivElement | undefined>(windowExists() ? document.createElement('div') : undefined);
   const theme = useTheme().theme.modal;
   const theirProps = excludeClassName(props);
