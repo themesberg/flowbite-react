@@ -61,6 +61,7 @@ const ModalComponent: FC<ModalProps> = ({
             aria-hidden={!show}
             className={classNames(theme.base, theme.positions[position], show ? theme.show.on : theme.show.off)}
             data-testid="modal"
+            role="dialog"
             {...theirProps}
           >
             <div className={classNames(theme.content.base, theme.sizes[size])}>
