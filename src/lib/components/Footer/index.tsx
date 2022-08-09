@@ -18,7 +18,7 @@ export const FooterComponent: FC<FooterProps> = ({ children, bgDark = false, con
   const theme = useTheme().theme.footer;
   return (
     <footer
-      data-testid="footer-element"
+      data-testid="flowbite-footer"
       className={classNames(theme.base, bgDark && theme.bgDark, container && theme.container)}
     >
       {children}

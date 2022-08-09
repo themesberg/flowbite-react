@@ -1,113 +1,91 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { FC } from 'react';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
 import { describe, expect, it } from 'vitest';
 import { Tabs } from '.';
 
-describe.concurrent('Components / Tabs', () => {
-  describe('when clicked', () => {
-    it('should open clicked tab', () => {
-      const { getAllByRole } = render(<TestTabs />);
+describe('Components / Tabs', () => {
+  it('should open tab when clicked', async () => {
+    const user = userEvent.setup();
+    render(<TestTabs />);
 
-      const tabs = getAllByRole('tab');
-      const firstTab = tabs[0];
-      const nextTab = tabs[1];
+    expect(firstTab()).toHaveFocus();
 
-      expect(firstTab).toHaveFocus();
+    const nextTab = tabs()[1];
 
-      userEvent.click(nextTab);
+    await user.click(nextTab);
 
-      expect(firstTab).toHaveAttribute('aria-selected', 'false');
-      expect(nextTab).toHaveFocus();
-      expect(nextTab).toHaveAttribute('aria-selected', 'true');
-    });
+    expect(firstTab()).toHaveAttribute('aria-selected', 'false');
+    expect(nextTab).toHaveFocus();
+    expect(nextTab).toHaveAttribute('aria-selected', 'true');
   });
 
-  describe('when focused', () => {
-    describe('when Enter is pressed', () => {
-      it('should open focused tab', () => {
-        const { getAllByRole } = render(<TestTabs />);
+  it('should open focused tab when `Enter` is pressed', async () => {
+    const user = userEvent.setup();
+    render(<TestTabs />);
 
-        const tabs = getAllByRole('tab');
-        const firstTab = tabs[0];
-        const nextTab = tabs[1];
+    expect(firstTab()).toHaveFocus();
 
-        expect(firstTab).toHaveFocus();
+    await user.keyboard('[ArrowRight]');
 
-        userEvent.keyboard('[ArrowRight]');
+    const nextTab = tabs()[1];
 
-        expect(nextTab).toHaveFocus();
+    expect(nextTab).toHaveFocus();
 
-        userEvent.keyboard('[Enter]');
+    await user.keyboard('[Enter]');
 
-        expect(nextTab).toHaveAttribute('aria-selected', 'true');
-      });
-    });
+    expect(nextTab).toHaveAttribute('aria-selected', 'true');
+  });
 
-    describe('when Left arrow is pressed', () => {
-      describe('when first tab is already focused', () => {
-        it('should do nothing', () => {
-          const { getAllByRole } = render(<TestTabs />);
+  it('should do nothing when Left Arrow is pressed and first tab is already focused', async () => {
+    const user = userEvent.setup();
+    render(<TestTabs />);
 
-          const tabs = getAllByRole('tab');
-          const firstTab = tabs[0];
+    expect(firstTab()).toHaveFocus();
 
-          expect(firstTab).toHaveFocus();
+    await user.keyboard('[ArrowLeft]');
 
-          userEvent.keyboard('[ArrowLeft]');
+    expect(firstTab()).toHaveFocus();
+  });
 
-          expect(firstTab).toHaveFocus();
-        });
-      });
+  it('should focus previous tab when Left Arrow is pressed', async () => {
+    const user = userEvent.setup();
+    render(<TestTabsDifferentActiveItem />);
 
-      it('should focus previous tab', () => {
-        const { getAllByRole } = render(<TestTabsDifferentActiveItem />);
+    expect(activeTab()).toHaveFocus();
 
-        const tabs = getAllByRole('tab');
-        const firstTab = tabs[0];
-        const activeTab = tabs.find((tab) => tab.getAttribute('aria-selected') === 'true');
+    await user.keyboard('[ArrowLeft]');
 
-        expect(activeTab).toHaveFocus();
+    expect(firstTab()).toHaveFocus();
+  });
 
-        userEvent.keyboard('[ArrowLeft]');
+  it('should do nothing when Right Arrow is pressed and last tab is already focused', async () => {
+    const user = userEvent.setup();
+    render(<TestTabsLastActiveItem />);
 
-        expect(firstTab).toHaveFocus();
-      });
-    });
+    expect(lastTab()).toHaveAttribute('aria-selected', 'true');
+    expect(lastTab()).toHaveFocus();
 
-    describe('when Right arrow is pressed', () => {
-      describe('when last tab is already focused', () => {
-        it('should do nothing', () => {
-          const { getAllByRole } = render(<TestTabsLastActiveItem />);
+    await user.keyboard('[ArrowRight]');
 
-          const tabs = getAllByRole('tab');
-          const lastTab = tabs[tabs.length - 1];
+    expect(lastTab()).toHaveFocus();
+  });
 
-          expect(lastTab).toHaveAttribute('aria-selected', 'true');
-          expect(lastTab).toHaveFocus();
+  it('should focus next tab when Right Arrow is pressed', async () => {
+    const user = userEvent.setup();
+    render(<TestTabs />);
 
-          userEvent.keyboard('[ArrowRight]');
+    await user.keyboard('[ArrowRight]');
 
-          expect(lastTab).toHaveFocus();
-        });
-      });
+    const nextTab = tabs()[1];
 
-      it('should focus next tab', () => {
-        const { getAllByRole } = render(<TestTabs />);
-
-        const tabs = getAllByRole('tab');
-        const nextTab = tabs[1];
-
-        userEvent.keyboard('[ArrowRight]');
-
-        expect(nextTab).toHaveFocus();
-      });
-    });
+    expect(nextTab).toHaveFocus();
   });
 });
 
-const TestTabs = (): JSX.Element => (
+const TestTabs: FC = () => (
   <Tabs.Group aria-label="Test tabs">
     <Tabs.Item title="Profile" icon={HiUserCircle}>
       Profile content
@@ -127,7 +105,7 @@ const TestTabs = (): JSX.Element => (
   </Tabs.Group>
 );
 
-const TestTabsDifferentActiveItem = (): JSX.Element => (
+const TestTabsDifferentActiveItem: FC = () => (
   <Tabs.Group aria-label="Test tabs">
     <Tabs.Item title="Profile" icon={HiUserCircle}>
       Profile content
@@ -147,7 +125,7 @@ const TestTabsDifferentActiveItem = (): JSX.Element => (
   </Tabs.Group>
 );
 
-const TestTabsLastActiveItem = (): JSX.Element => (
+const TestTabsLastActiveItem: FC = () => (
   <Tabs.Group aria-label="Test tabs">
     <Tabs.Item title="Profile" icon={HiUserCircle}>
       Profile content
@@ -166,3 +144,11 @@ const TestTabsLastActiveItem = (): JSX.Element => (
     </Tabs.Item>
   </Tabs.Group>
 );
+
+const tabs = () => screen.getAllByRole('tab');
+
+const activeTab = () => tabs().find((tab) => tab.getAttribute('aria-selected') === 'true');
+
+const firstTab = () => tabs()[0];
+
+const lastTab = () => tabs()[tabs().length - 1];

@@ -2,25 +2,27 @@ import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FooterBrandProps extends Omit<PropsWithChildren<ComponentProps<'div'>>, 'className'> {
-  href?: string;
-  src: string;
   alt?: string;
+  href?: string;
   name?: string;
+  src: string;
 }
 
-export const FooterBrand: FC<FooterBrandProps> = ({ children, href, src, alt, name }) => {
+export const FooterBrand: FC<FooterBrandProps> = ({ alt, children, href, name, src }) => {
   const theme = useTheme().theme.footer.brand;
 
   return (
-    <div data-testid="footer-brand">
+    <div>
       {href ? (
-        <a href={href} className={theme.base}>
-          <img src={src} className={theme.img} alt={alt} />
-          <span className={theme.span}>{name}</span>
+        <a data-testid="flowbite-footer-brand" href={href} className={theme.base}>
+          <img alt={alt} src={src} className={theme.img} />
+          <span data-testid="flowbite-footer-brand-span" className={theme.span}>
+            {name}
+          </span>
           {children}
         </a>
       ) : (
-        <img src={src} className={theme.img} alt={alt} />
+        <img alt={alt} data-testid="flowbite-footer-brand" src={src} className={theme.img} />
       )}
     </div>
   );

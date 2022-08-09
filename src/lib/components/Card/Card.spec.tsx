@@ -1,62 +1,41 @@
-import type { RenderResult } from '@testing-library/react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Card } from '.';
 import { Flowbite } from '../Flowbite';
 
-describe.concurrent('Components / Card', () => {
+describe('Components / Card', () => {
   describe('A11y', () => {
     it('should allow `aria-label`', () => {
-      const card = getCard(render(<Card aria-label="My card" />));
+      render(<Card aria-label="My card" />);
 
-      expect(card).toHaveAccessibleName('My card');
+      expect(card()).toHaveAccessibleName('My card');
     });
 
-    describe('`imgSrc="..."` and `imgAlt="..."`', () => {
-      it('should provide `<img />` with alternative text', () => {
-        const { getByAltText } = render(
-          <Card
-            imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg"
-          />,
-        );
-        const img = getByAltText('Meaningful alt text for an image that is not purely decorative');
+    it('should provide `<img />` with alternative text given `imgSrc="..."` and `imgAlt="..."`', () => {
+      render(
+        <Card
+          imgAlt="Meaningful alt text for an image that is not purely decorative"
+          imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg"
+        />,
+      );
+      const img = screen.getByAltText('Meaningful alt text for an image that is not purely decorative');
 
-        expect(img).toBeInTheDocument();
-      });
+      expect(img).toBeInTheDocument();
     });
   });
 
   describe('Rendering', () => {
-    it('should render', () => {
-      const card = getCard(render(<Card />));
+    it('should render an `<a>` given `href=".."`', () => {
+      render(<Card href="#" />);
 
-      expect(card).toBeInTheDocument();
+      expect(screen.getByRole('link')).toEqual(card());
     });
 
-    describe('`href=".."`', () => {
-      it('should render an `<a>`', () => {
-        const card = getCard(render(<Card href="#" />));
+    it('should render an `<img>` given `imgSrc=".."`', () => {
+      render(<Card imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg" />);
+      const img = screen.getByRole('img');
 
-        expect(card).toBeInTheDocument();
-        expect(card.tagName.toLocaleLowerCase()).toEqual('a');
-      });
-    });
-
-    describe('`horizontal={true}`', () => {
-      it('should render', () => {
-        const card = getCard(render(<Card horizontal />));
-
-        expect(card).toBeInTheDocument();
-      });
-    });
-
-    describe('`imgSrc="..."`', () => {
-      it('should render', () => {
-        const card = getCard(render(<Card imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg" />));
-
-        expect(card).toBeInTheDocument();
-      });
+      expect(card()).toContainElement(img);
     });
   });
 
@@ -67,16 +46,13 @@ describe.concurrent('Components / Card', () => {
           base: 'text-blue-100',
         },
       };
-
-      const card = getCard(
-        render(
-          <Flowbite theme={{ theme }}>
-            <Card />
-          </Flowbite>,
-        ),
+      render(
+        <Flowbite theme={{ theme }}>
+          <Card />
+        </Flowbite>,
       );
 
-      expect(card).toHaveClass('text-blue-100');
+      expect(card()).toHaveClass('text-blue-100');
     });
 
     it('should use `children` classes', () => {
@@ -85,16 +61,14 @@ describe.concurrent('Components / Card', () => {
           children: 'text-blue-900',
         },
       };
-
-      const { getByLabelText } = render(
+      render(
         <Flowbite theme={{ theme }}>
           <Card>
             <span aria-label="The content">Some content</span>
           </Card>
         </Flowbite>,
       );
-
-      const children = getByLabelText('The content');
+      const children = screen.getByLabelText('The content');
 
       expect(children.parentElement).toHaveClass('text-blue-900');
     });
@@ -108,18 +82,14 @@ describe.concurrent('Components / Card', () => {
           },
         },
       };
-
-      const cards = getCards(
-        render(
-          <Flowbite theme={{ theme }}>
-            <Card />
-            <Card horizontal />
-          </Flowbite>,
-        ),
+      render(
+        <Flowbite theme={{ theme }}>
+          <Card />
+          <Card horizontal />
+        </Flowbite>,
       );
-
-      const normalCard = cards[0];
-      const horizontalCard = cards[1];
+      const normalCard = cards()[0];
+      const horizontalCard = cards()[1];
 
       expect(normalCard).toHaveClass('text-blue-200');
       expect(horizontalCard).toHaveClass('text-blue-300');
@@ -131,16 +101,13 @@ describe.concurrent('Components / Card', () => {
           href: 'text-blue-700',
         },
       };
-
-      const card = getCard(
-        render(
-          <Flowbite theme={{ theme }}>
-            <Card href="#">My card</Card>
-          </Flowbite>,
-        ),
+      render(
+        <Flowbite theme={{ theme }}>
+          <Card href="#">My card</Card>
+        </Flowbite>,
       );
 
-      expect(card).toHaveClass('text-blue-700');
+      expect(card()).toHaveClass('text-blue-700');
     });
 
     it('should use `img` classes', () => {
@@ -155,8 +122,7 @@ describe.concurrent('Components / Card', () => {
           },
         },
       };
-
-      const { getByAltText } = render(
+      render(
         <Flowbite theme={{ theme }}>
           <Card imgAlt="Card with image" imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg" />
           <Card
@@ -166,9 +132,8 @@ describe.concurrent('Components / Card', () => {
           />
         </Flowbite>,
       );
-
-      const cardWithImage = getByAltText('Card with image');
-      const horizontalCardWithImage = getByAltText('Horizontal card with image');
+      const cardWithImage = screen.getByAltText('Card with image');
+      const horizontalCardWithImage = screen.getByAltText('Horizontal card with image');
 
       expect(cardWithImage).toHaveClass('text-blue-400 bg-blue-500');
       expect(horizontalCardWithImage).toHaveClass('bg-blue-600');
@@ -176,7 +141,6 @@ describe.concurrent('Components / Card', () => {
   });
 });
 
-const getCard = ({ getByTestId }: Pick<RenderResult, 'getByTestId'>): HTMLElement => getByTestId('flowbite-card');
+const card = () => screen.getByTestId('flowbite-card');
 
-const getCards = ({ getAllByTestId }: Pick<RenderResult, 'getAllByTestId'>): HTMLElement[] =>
-  getAllByTestId('flowbite-card');
+const cards = () => screen.getAllByTestId('flowbite-card');

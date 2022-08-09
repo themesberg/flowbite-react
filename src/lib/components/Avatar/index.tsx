@@ -6,7 +6,7 @@ import { useTheme } from '../Flowbite/ThemeContext';
 import AvatarGroup from './AvatarGroup';
 import AvatarGroupCounter from './AvatarGroupCounter';
 
-export interface AvatarProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface AvatarProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
   alt?: string;
   bordered?: boolean;
   img?: string;
@@ -37,7 +37,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   const theme = useTheme().theme.avatar;
 
   return (
-    <div className={theme.base} data-testid="avatar-element" {...theirProps}>
+    <div className={theme.base} data-testid="flowbite-avatar" {...theirProps}>
       <div className="relative">
         {img ? (
           <img

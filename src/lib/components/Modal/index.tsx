@@ -37,7 +37,7 @@ const ModalComponent: FC<ModalProps> = ({
   position = 'center',
   onClose,
   ...props
-}): JSX.Element | null => {
+}) => {
   const [container] = useState<HTMLDivElement | undefined>(windowExists() ? document.createElement('div') : undefined);
   const theme = useTheme().theme.modal;
   const theirProps = excludeClassName(props);
@@ -61,6 +61,7 @@ const ModalComponent: FC<ModalProps> = ({
             aria-hidden={!show}
             className={classNames(theme.base, theme.positions[position], show ? theme.show.on : theme.show.off)}
             data-testid="modal"
+            role="dialog"
             {...theirProps}
           >
             <div className={classNames(theme.content.base, theme.sizes[size])}>

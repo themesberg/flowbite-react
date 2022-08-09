@@ -1,148 +1,303 @@
-import { render } from '@testing-library/react';
-import { BsFacebook } from 'react-icons/bs';
+import { cleanup, render, screen } from '@testing-library/react';
+import { FC } from 'react';
+import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { describe, expect, it } from 'vitest';
 import { Footer } from '.';
 import { Flowbite } from '../Flowbite';
 
-describe.concurrent('Footer component should be able to', () => {
-  it('rendering itself', () => {
-    const { getByTestId } = render(<Footer />);
-    expect(getByTestId('footer-element')).toBeTruthy();
-  });
-
-  describe('use theme support', () => {
-    const theme = {
-      footer: {
-        container: 'w-full p-6',
-        bgDark: 'bg-gray-800',
-        groupLink: {
-          col: 'flex-col space-y-4',
-        },
-      },
-    };
-
-    it('must have container classes', () => {
-      const { getByText } = render(
-        <Flowbite theme={{ theme }}>
-          <Footer container>Container</Footer>
-        </Flowbite>,
+describe('Components / Footer', () => {
+  describe('Rendering', () => {
+    it('should render an `<a>` with an `<img>` on `Footer.Brand href=".."`', () => {
+      render(
+        <Footer>
+          <Footer.Brand alt="Flowbite" href="https://flowbite.com" src="">
+            Flowbite
+          </Footer.Brand>
+        </Footer>,
       );
-      const containerFooter = getByText('Container');
-      expect(containerFooter).toHaveClass('w-full p-6');
-    });
+      const a = screen.getByTestId('flowbite-footer-brand');
+      const img = screen.getByAltText('Flowbite');
 
-    it('must have bgDark classes', () => {
-      const { getByText } = render(
-        <Flowbite theme={{ theme }}>
-          <Footer bgDark>BgDark</Footer>
-        </Flowbite>,
-      );
-      const bgDarkFooter = getByText('BgDark');
-      expect(bgDarkFooter).toHaveClass('bg-gray-800');
+      expect(a).toBeInTheDocument();
+      expect(a).toContainElement(img);
     });
   });
 
-  describe('footer brand should be able to', () => {
-    it('render itself', () => {
-      const { getByTestId } = render(<Footer.Brand src="" />);
-      expect(getByTestId('footer-brand')).toBeTruthy();
-    });
+  it('should render an `<img>` on `Footer.Brand src=".."`', () => {
+    render(
+      <Footer>
+        <Footer.Brand alt="Flowbite" src="">
+          Flowbite
+        </Footer.Brand>
+      </Footer>,
+    );
+    const img = screen.getByAltText('Flowbite');
 
-    it('render img with link', () => {
-      const { getByTestId } = render(
-        <Footer.Brand
-          href="https://flowbite.com"
-          src="https://flowbite.com/docs/images/logo.svg"
-          alt="Flowbite Logo"
-          name="Flowbite"
-        />,
-      );
-      const footerBrand = getByTestId('footer-brand');
-
-      expect(footerBrand.children[0].children[0].tagName).toEqual('IMG');
-      expect((footerBrand.children[0] as HTMLAnchorElement).href).toEqual('https://flowbite.com/');
-    });
-
-    it('render img without link', () => {
-      const { getByTestId } = render(<Footer.Brand src="https://flowbite.com/docs/images/logo.svg" />);
-      expect((getByTestId('footer-brand').children[0] as HTMLImageElement).src).toEqual(
-        'https://flowbite.com/docs/images/logo.svg',
-      );
-    });
+    expect(img).toBeInTheDocument();
   });
 
-  describe('footer icons should be able to ', () => {
-    it('render the icon with link', () => {
-      const { getByTestId } = render(<Footer.Icon href="https://www.flowbite.com" icon={BsFacebook} />);
-      const footerIcon = getByTestId('footer-icon');
+  it('should render an `<a>` on `Footer.Copyright href=".."`', () => {
+    render(
+      <Footer>
+        <Footer.Copyright by="Flowbite" href="https://flowbite.com" year={2022}>
+          Flowbite
+        </Footer.Copyright>
+      </Footer>,
+    );
 
-      expect(footerIcon.children[0].tagName).toEqual('A');
-      expect((footerIcon.children[0] as HTMLAnchorElement).href).toEqual('https://www.flowbite.com/');
-      expect(footerIcon.children[0].children[0].tagName).toEqual('svg');
-    });
-
-    it('render only icon', () => {
-      const { getByTestId } = render(<Footer.Icon icon={BsFacebook} />);
-      expect(getByTestId('footer-icon').children[0].tagName).toEqual('svg');
-    });
-
-    it('render aria attributes', () => {
-      const { getByTestId } = render(<Footer.Icon icon={BsFacebook} href="#" ariaLabel="Something" />);
-      expect(getByTestId('footer-icon').children[0] as HTMLAnchorElement).toHaveAccessibleName('Something');
-    });
+    expect(copyright()).toContainElement(screen.getByRole('link'));
   });
 
-  describe('footer divider', () => {
-    it('rendering itself', () => {
-      const { getByTestId } = render(<Footer.Divider />);
-      expect(getByTestId('footer-divider')).toBeTruthy();
-    });
+  it('should render an `<a>` on `Footer.Icon href=".."`', () => {
+    render(
+      <Footer>
+        <Footer.Icon ariaLabel="Icon" href="/" icon={BsFacebook} />
+      </Footer>,
+    );
+    const iconLink = screen.getAllByRole('link')[0];
+
+    expect(iconLink).toContainElement(icon());
   });
 
-  describe('Link group use theme support', () => {
-    it('must have col classes', () => {
+  describe('Theme', () => {
+    it('should use `base` classes', () => {
       const theme = {
         footer: {
-          groupLink: {
-            col: 'flex-col space-y-4',
-          },
+          base: 'text-gray-100',
         },
       };
-      const { getByTestId } = render(
+      render(
         <Flowbite theme={{ theme }}>
-          <Footer.LinkGroup col>
-            <Footer.Link href="#">Hi</Footer.Link>
-          </Footer.LinkGroup>
+          <TestFooter />
         </Flowbite>,
       );
-      expect(getByTestId('footer-groupLink')).toHaveClass('flex-col space-y-4');
-    });
-  });
 
-  describe('footer title', () => {
-    it('rendering itself', () => {
-      const { getByTestId } = render(<Footer.Title title="Something" />);
-      expect(getByTestId('footer-title')).toBeTruthy();
-    });
-  });
-
-  describe('footer copyright', () => {
-    it('render itself', () => {
-      const { getByTestId } = render(<Footer.Copyright by="" />);
-      expect(getByTestId('footer-copyright')).toBeTruthy();
+      expect(footer()).toHaveClass('text-gray-100');
     });
 
-    it('render link', () => {
-      const { getByTestId } = render(<Footer.Copyright by="" href="https://flowbite.com/" />);
-
-      expect((getByTestId('footer-copyright').children[0].children[0] as HTMLAnchorElement).href).toEqual(
-        'https://flowbite.com/',
+    it('should use `bgDark` classes', () => {
+      const theme = {
+        footer: {
+          bgDark: 'text-gray-100',
+        },
+      };
+      render(
+        <Flowbite theme={{ theme }}>
+          <TestFooter />
+        </Flowbite>,
       );
+
+      expect(footer()).toHaveClass('text-gray-100');
     });
 
-    it('render children', () => {
-      const { getByTestId } = render(<Footer.Copyright by="" year={2020} />);
-      expect(getByTestId('footer-copyright').children[0].children[0].tagName).toEqual('SPAN');
+    it('should use `container` classes', () => {
+      const theme = {
+        footer: {
+          container: 'text-gray-100',
+        },
+      };
+      render(
+        <Flowbite theme={{ theme }}>
+          <TestFooter />
+        </Flowbite>,
+      );
+
+      expect(footer()).toHaveClass('text-gray-100');
+    });
+
+    describe('`Footer.Brand`', () => {
+      it('should use `brand` classes', () => {
+        const theme = {
+          footer: {
+            brand: {
+              base: 'text-gray-100',
+              img: 'text-gray-200',
+              span: 'text-gray-300',
+            },
+          },
+        };
+        render(
+          <Flowbite theme={{ theme }}>
+            <Footer>
+              <Footer.Brand alt="Flowbite" href="https://flowbite.com" src="">
+                Flowbite
+              </Footer.Brand>
+            </Footer>
+          </Flowbite>,
+        );
+
+        expect(brand()).toHaveClass('text-gray-100');
+        expect(screen.getByRole('img')).toHaveClass('text-gray-200');
+
+        cleanup();
+        render(
+          <Flowbite theme={{ theme }}>
+            <Footer>
+              <Footer.Brand href="/" src="">
+                Flowbite
+              </Footer.Brand>
+            </Footer>
+          </Flowbite>,
+        );
+
+        expect(screen.getByTestId('flowbite-footer-brand-span')).toHaveClass('text-gray-300');
+      });
+    });
+
+    describe('`Footer.Copyright`', () => {
+      it('should use `copyright` classes', () => {
+        const theme = {
+          footer: {
+            copyright: {
+              base: 'text-gray-100',
+              href: 'text-gray-200',
+              span: 'text-gray-300',
+            },
+          },
+        };
+        render(
+          <Flowbite theme={{ theme }}>
+            <Footer>
+              <Footer.Copyright by="Flowbite" year={2022}>
+                Test
+              </Footer.Copyright>
+            </Footer>
+          </Flowbite>,
+        );
+
+        expect(copyright()).toHaveClass('text-gray-100');
+        expect(screen.getByTestId('flowbite-footer-copyright-span')).toHaveClass('text-gray-300');
+
+        cleanup();
+        render(
+          <Flowbite theme={{ theme }}>
+            <Footer>
+              <Footer.Copyright by="Flowbite" href="/" year={2022}>
+                Test
+              </Footer.Copyright>
+            </Footer>
+          </Flowbite>,
+        );
+
+        expect(screen.getByRole('link')).toHaveClass('text-gray-200');
+      });
+    });
+
+    it('should use `divider` classes', () => {});
+
+    it('should use `groupLink` classes', () => {});
+
+    describe('`Footer.Icon`', () => {
+      it('should use `icon` classes', () => {
+        const theme = {
+          footer: {
+            icon: {
+              base: 'text-gray-800',
+              size: 'text-gray-900',
+            },
+          },
+        };
+        render(
+          <Flowbite theme={{ theme }}>
+            <Footer>
+              <Footer.Icon ariaLabel="Icon" href="/" icon={BsFacebook} />
+            </Footer>
+          </Flowbite>,
+        );
+
+        expect(icon()).toHaveClass('text-gray-800');
+
+        cleanup();
+        render(
+          <Flowbite theme={{ theme }}>
+            <Footer>
+              <Footer.Icon ariaLabel="Icon" icon={BsFacebook} />
+            </Footer>
+          </Flowbite>,
+        );
+
+        expect(icon()).toHaveClass('text-gray-900');
+      });
+    });
+
+    describe('`Footer.Title`', () => {
+      it('should use `title` classes', () => {
+        const theme = {
+          footer: {
+            title: {
+              base: 'text-gray-100',
+            },
+          },
+        };
+        render(
+          <Flowbite theme={{ theme }}>
+            <Footer.Title title="Flowbite" />
+          </Flowbite>,
+        );
+
+        expect(title()).toHaveClass('text-gray-100');
+      });
     });
   });
 });
+
+const TestFooter: FC = () => (
+  <Footer bgDark container>
+    <div className="w-full">
+      <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
+        <div>
+          <Footer.Brand
+            href="https://flowbite.com"
+            src="https://flowbite.com/docs/images/logo.svg"
+            alt="Flowbite Logo"
+            name="Flowbite"
+          />
+        </div>
+        <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
+          <div>
+            <Footer.Title title="about" />
+            <Footer.LinkGroup col>
+              <Footer.Link href="#">Flowbite</Footer.Link>
+              <Footer.Link href="#">Tailwind CSS</Footer.Link>
+            </Footer.LinkGroup>
+          </div>
+          <div>
+            <Footer.Title title="Follow us" />
+            <Footer.LinkGroup col>
+              <Footer.Link href="#">Github</Footer.Link>
+              <Footer.Link href="#">Discord</Footer.Link>
+            </Footer.LinkGroup>
+          </div>
+          <div>
+            <Footer.Title title="Legal" />
+            <Footer.LinkGroup col>
+              <Footer.Link href="#">Privacy Policy</Footer.Link>
+              <Footer.Link href="#">Terms & Conditions</Footer.Link>
+            </Footer.LinkGroup>
+          </div>
+        </div>
+      </div>
+      <Footer.Divider />
+      <div className="w-full sm:flex sm:items-center sm:justify-between">
+        <Footer.Copyright href="#" by="Flowbite™" year={2022} />
+        <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+          <Footer.Icon href="#" icon={BsFacebook} />
+          <Footer.Icon href="#" icon={BsInstagram} />
+          <Footer.Icon href="#" icon={BsTwitter} />
+          <Footer.Icon href="#" icon={BsGithub} />
+          <Footer.Icon href="#" icon={BsDribbble} />
+        </div>
+      </div>
+    </div>
+  </Footer>
+);
+
+const brand = () => screen.getByTestId('flowbite-footer-brand');
+
+const copyright = () => screen.getByTestId('flowbite-footer-copyright');
+
+const footer = () => screen.getByTestId('flowbite-footer');
+
+const icon = () => screen.getByTestId('flowbite-footer-icon');
+
+const title = () => screen.getByTestId('flowbite-footer-title');

@@ -17,13 +17,7 @@ export const ToastToggle: FC<ToastToggleProps> = ({ xIcon: XIcon = HiX }) => {
   };
 
   return (
-    <button
-      data-testid="toast-toggle-element"
-      type="button"
-      className={theme.base}
-      onClick={handleClick}
-      aria-label="close"
-    >
+    <button aria-label="Close" onClick={handleClick} type="button" className={theme.base}>
       <XIcon className={theme.icon} />
     </button>
   );

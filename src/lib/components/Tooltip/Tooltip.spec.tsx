@@ -1,65 +1,52 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
 import { Button } from '../Button';
 import { Tooltip } from './index';
 
-describe.concurrent('Tooltip', () => {
-  it('should display when target is focused', () => {
-    const { getAllByTestId } = render(<TooltipTests />);
-    const tooltip = getAllByTestId('tooltip')[0];
+describe('Tooltip', () => {
+  describe('Keyboard interactions', () => {
+    it('should display when target is focused with `Tab`', async () => {
+      const user = userEvent.setup();
+      render(<TooltipTests />);
 
-    userEvent.tab();
-    expect(tooltip).not.toHaveClass('invisible');
-  });
+      await user.tab();
 
-  describe('with trigger on hover (default)', () => {
-    it('should display when target is hovered over', () => {
-      const { getAllByTestId } = render(<TooltipTests />);
-      const target = getAllByTestId('tooltip-target')[0];
-      const tooltip = getAllByTestId('tooltip')[0];
+      const tooltip = tooltips()[0];
 
-      userEvent.hover(target);
+      expect(tooltip).not.toHaveClass('invisible');
+    });
+
+    it('should display when `Space` is pressed while target is focused', async () => {
+      const user = userEvent.setup();
+      render(<TooltipTests />);
+
+      const target = targets()[1];
+      const tooltip = tooltips()[1];
+
+      await user.click(target);
+
       expect(tooltip).not.toHaveClass('invisible');
     });
   });
 
-  describe('with trigger on click', () => {
-    it('should display when target is clicked', () => {
-      const { getAllByTestId } = render(<TooltipTests />);
-      const target = getAllByTestId('tooltip-target')[1];
-      const tooltip = getAllByTestId('tooltip')[1];
+  describe('Rendering', () => {
+    it('should invert placement so it stays on screen if it would normally be placed off screen', async () => {
+      const user = userEvent.setup();
+      render(<TooltipTests />);
 
-      userEvent.click(target);
-      expect(tooltip).not.toHaveClass('invisible');
-    });
-  });
+      let tooltip = tooltips()[2];
+      let arrow = arrows()[2];
 
-  describe('with placement that would not be visible on screen', () => {
-    it('should invert placement so it stays on screen', () => {
-      const { getAllByTestId } = render(<TooltipTests />);
-      let tooltip = getAllByTestId('tooltip')[2];
-      let arrow = getAllByTestId('tooltip-arrow')[2];
-
-      userEvent.click(tooltip);
+      await user.click(tooltip);
       expect(arrow).toHaveStyle('top: -4px');
 
-      tooltip = getAllByTestId('tooltip')[3];
-      arrow = getAllByTestId('tooltip-arrow')[3];
+      tooltip = tooltips()[3];
+      arrow = arrows()[3];
 
-      userEvent.click(tooltip);
+      await user.click(tooltip);
+
       expect(arrow).toHaveStyle('left: -4px');
-    });
-  });
-
-  describe('with auto placement', () => {
-    it('should choose better placement than default, if available', () => {
-      const { getAllByTestId } = render(<TooltipTests />);
-      const tooltip = getAllByTestId('tooltip')[4];
-      const arrow = getAllByTestId('tooltip-arrow')[4];
-
-      userEvent.click(tooltip);
-      expect(arrow).toHaveStyle('top: -4px');
     });
   });
 });
@@ -85,3 +72,9 @@ const TooltipTests = (): JSX.Element => {
     </div>
   );
 };
+
+const arrows = () => screen.getAllByTestId('flowbite-tooltip-arrow');
+
+const targets = () => screen.getAllByTestId('flowbite-tooltip-target');
+
+const tooltips = () => screen.getAllByTestId('flowbite-tooltip');

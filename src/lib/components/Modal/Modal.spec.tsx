@@ -1,4 +1,4 @@
-import { render, within } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { describe, expect, it } from 'vitest';
@@ -6,39 +6,59 @@ import type { ModalProps } from '.';
 import { Modal } from '.';
 import { Button } from '../Button';
 
-describe.concurrent('Components / Modal', () => {
-  describe('when trigger on page is clicked', () => {
-    it('should open', () => {
+describe('Components / Modal', () => {
+  describe('A11y', () => {
+    it('should have `role="dialog"`', async () => {
+      const user = userEvent.setup();
       const root = document.createElement('div');
-      const buttonContainer = render(<TestModal root={root} />);
-      const modalContainer = within(root);
-      const openButton = buttonContainer.getByRole('button');
 
-      let modal = modalContainer.queryByTestId('modal');
-      expect(modal).toBeNull();
+      render(<TestModal root={root} />);
 
-      userEvent.click(openButton);
+      const openButton = screen.getByRole('button');
 
-      modal = modalContainer.getByTestId('modal');
-      expect(root).toContainElement(modal);
-      expect(modal).toHaveAttribute('aria-hidden', 'false');
+      await user.click(openButton);
+
+      const modal = within(root).getByRole('dialog');
+
+      expect(modal).toBeDefined();
     });
   });
 
-  describe('when trigger inside modal is clicked', () => {
-    it('should close', () => {
+  describe('Keyboard interactions', () => {
+    it('should open `Modal` when `Space` is pressed on its toggle button', async () => {
       const root = document.createElement('div');
-      const buttonContainer = render(<TestModal root={root} />);
-      const modalContainer = within(root);
+      const user = userEvent.setup();
 
-      const openButton = buttonContainer.getByRole('button');
-      userEvent.click(openButton);
+      render(<TestModal root={root} />);
 
-      const closeButton = modalContainer.getAllByRole('button')[0];
-      userEvent.click(closeButton);
+      const openButton = screen.getByRole('button');
 
-      const modal = modalContainer.queryByTestId('modal');
-      expect(modal).toBeNull();
+      await user.click(openButton);
+
+      const modal = within(root).getByRole('dialog');
+
+      expect(root).toContainElement(modal);
+      expect(modal).toHaveAttribute('aria-hidden', 'false');
+    });
+
+    it('should close `Modal` when `Space` is pressed on any of its buttons', async () => {
+      const root = document.createElement('div');
+      const user = userEvent.setup();
+
+      render(<TestModal root={root} />);
+
+      const openButton = screen.getByRole('button');
+
+      await user.click(openButton);
+
+      const modal = within(root).getByRole('dialog');
+      const closeButton = within(modal).getAllByRole('button')[0];
+
+      expect(modal).toHaveAttribute('aria-hidden', 'false');
+
+      await user.click(closeButton);
+
+      expect(modal).toHaveAttribute('aria-hidden', 'true');
     });
   });
 });

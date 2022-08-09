@@ -1,44 +1,39 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { FC } from 'react';
 import { describe, expect, it } from 'vitest';
 import { Navbar } from '.';
 
 describe.concurrent('Navbar', () => {
-  describe('its toggle button', () => {
-    describe('when clicked', () => {
-      describe('when Navbar is collapsed', () => {
-        it('should show the collapse (menu) contents', () => {
-          const { getByTestId } = render(<NavbarTest />);
+  describe.concurrent('A11y', () => {
+    it('should have `role="navigation"`', () => {
+      render(<Navbar />);
 
-          const collapse = getByTestId('navbar-collapse');
-          const toggleButton = getByTestId('navbar-toggle');
+      expect(screen.getByRole('navigation')).toBeInTheDocument();
+    });
+  });
 
-          expect(collapse).toHaveClass('hidden');
+  describe.concurrent('Keyboard interactions', () => {
+    it('should hide/show `Navbar.Menu` when `Space` is pressed on `Navbar.Toggle`', async () => {
+      const user = userEvent.setup();
+      render(<NavbarTest />);
+      const collapse = screen.getByTestId('flowbite-navbar-collapse');
+      const toggle = screen.getByTestId('flowbite-navbar-toggle');
 
-          userEvent.click(toggleButton);
-          expect(collapse).not.toHaveClass('hidden');
-        });
-      });
+      expect(collapse).toHaveClass('hidden');
 
-      describe('when Navbar is expanded', () => {
-        it('should hide the collapse (menu) contents', () => {
-          const { getByTestId } = render(<NavbarTest />);
+      await user.click(toggle);
 
-          const collapse = getByTestId('navbar-collapse');
-          const toggleButton = getByTestId('navbar-toggle');
+      expect(collapse).not.toHaveClass('hidden');
 
-          userEvent.click(toggleButton);
-          expect(collapse).not.toHaveClass('hidden');
+      await user.click(toggle);
 
-          userEvent.click(toggleButton);
-          expect(collapse).toHaveClass('hidden');
-        });
-      });
+      expect(collapse).toHaveClass('hidden');
     });
   });
 });
 
-const NavbarTest = (): JSX.Element => (
+const NavbarTest: FC = () => (
   <Navbar>
     <Navbar.Brand href="https://flowbite.com/">
       <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />

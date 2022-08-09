@@ -1,27 +1,23 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Rating } from '.';
 
-describe.concurrent('Rating', () => {
-  describe('with a star that is not filled', () => {
-    it('should visually distinguish the star in gray', () => {
-      const { getAllByTestId } = render(<AdvancedRating />);
+describe.concurrent('Components / Rating', () => {
+  describe.concurrent('Rendering', () => {
+    it('should fill each bar by the specified percentaged when using `Rating.Advanced`', () => {
+      render(<AdvancedRating />);
 
-      const stars = getAllByTestId('rating-star');
-      expect(stars[4].getAttribute('class')).toContain('text-gray');
+      expect(bars()[0]).toHaveStyle('width: 70%');
+      expect(bars()[1]).toHaveStyle('width: 17%');
+      expect(bars()[2]).toHaveStyle('width: 8%');
+      expect(bars()[3]).toHaveStyle('width: 4%');
+      expect(bars()[4]).toHaveStyle('width: 1%');
     });
-  });
 
-  describe('that is advanced', () => {
-    it('should fill a bar by the specified percentaged', () => {
-      const { getAllByTestId } = render(<AdvancedRating />);
+    it('should visually distinguish unfilled stars in gray', () => {
+      render(<AdvancedRating />);
 
-      const filledBars = getAllByTestId('rating-fill');
-      expect(filledBars[0]).toHaveStyle('width: 70%');
-      expect(filledBars[1]).toHaveStyle('width: 17%');
-      expect(filledBars[2]).toHaveStyle('width: 8%');
-      expect(filledBars[3]).toHaveStyle('width: 4%');
-      expect(filledBars[4]).toHaveStyle('width: 1%');
+      expect(stars()[4]).toHaveClass('text-gray-300');
     });
   });
 });
@@ -44,3 +40,7 @@ const AdvancedRating = (): JSX.Element => (
     <Rating.Advanced percentFilled={1}>1 star</Rating.Advanced>
   </div>
 );
+
+const bars = () => screen.getAllByTestId('flowbite-rating-fill');
+
+const stars = () => screen.getAllByTestId('flowbite-rating-star');

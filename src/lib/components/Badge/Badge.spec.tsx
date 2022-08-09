@@ -1,37 +1,20 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { HiCheck } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
 import { Badge } from '.';
 import { Flowbite } from '../Flowbite';
 
-describe.concurrent('Components / Badge', () => {
-  describe('Props', () => {
-    it('should ignore `className`', () => {
-      const { getByTestId } = render(
-        <Badge className="text-gray-100" color="success">
-          A badge
+describe('Components / Badge', () => {
+  describe('Rendering', () => {
+    it('should render an `<a>` given `href=".."`', () => {
+      render(
+        <Badge href="/" icon={HiCheck}>
+          A badge with a link
         </Badge>,
       );
 
-      const badge = getByTestId('flowbite-badge');
-
-      expect(badge).not.toHaveClass('text-gray-100');
-    });
-  });
-
-  describe('Rendering', () => {
-    describe('"href" provided', () => {
-      it('should wrap itself in anchor', () => {
-        const { getByRole } = render(
-          <Badge href="/" icon={HiCheck}>
-            A badge with a link
-          </Badge>,
-        );
-        const badgeLink = getByRole('link');
-
-        expect(badgeLink).toBeInTheDocument();
-        expect(badgeLink).toHaveAttribute('href', '/');
-      });
+      expect(link()).toBeInTheDocument();
+      expect(link()).toHaveAttribute('href', '/');
     });
   });
 
@@ -45,8 +28,7 @@ describe.concurrent('Components / Badge', () => {
           },
         },
       };
-
-      const { getByTestId } = render(
+      render(
         <Flowbite theme={{ theme }}>
           <Badge color="primary" href="/" icon={HiCheck}>
             A badge
@@ -54,9 +36,7 @@ describe.concurrent('Components / Badge', () => {
         </Flowbite>,
       );
 
-      const badge = getByTestId('flowbite-badge');
-
-      expect(badge).toHaveClass(
+      expect(badge()).toHaveClass(
         'bg-blue-100 text-blue-800 dark:bg-blue-200 dark:text-blue-800 group-hover:bg-blue-200 dark:group-hover:bg-blue-300',
       );
     });
@@ -76,27 +56,27 @@ describe.concurrent('Components / Badge', () => {
           },
         },
       };
-
-      const { getAllByTestId, getByTestId } = render(
+      render(
         <Flowbite theme={{ theme }}>
           <Badge size="xxl">A badge</Badge>
           <Badge icon={HiCheck} size="xxl" />
         </Flowbite>,
       );
 
-      const badges = getAllByTestId('flowbite-badge');
+      const badges = screen.getAllByTestId('flowbite-badge');
       const regularBadge = badges[0];
+      const emptyBadge = badges[1];
 
       expect(regularBadge).toHaveClass('text-2xl');
       expect(regularBadge).toHaveClass('rounded-lg p-1');
-
-      const emptyBadge = badges[1];
-
       expect(emptyBadge).toHaveClass('rounded-full p-5');
-
-      const icon = getByTestId('flowbite-badge-icon');
-
-      expect(icon).toHaveClass('w-6 h-6');
+      expect(icon()).toHaveClass('w-6 h-6');
     });
   });
 });
+
+const badge = () => screen.getByTestId('flowbite-badge');
+
+const icon = () => screen.getByTestId('flowbite-badge-icon');
+
+const link = () => screen.getByRole('link');

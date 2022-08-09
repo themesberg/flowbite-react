@@ -37,9 +37,9 @@ const ButtonGroupPage: FC = () => {
       code: (
         <div className="flex flex-wrap gap-2">
           <Button.Group>
-            <Button color="blue">Profile</Button>
-            <Button color="blue">Settings</Button>
-            <Button color="blue">Messages</Button>
+            <Button color="info">Profile</Button>
+            <Button color="info">Settings</Button>
+            <Button color="info">Messages</Button>
           </Button.Group>
           <Button.Group>
             <Button gradientMonochrome="info">Profile</Button>

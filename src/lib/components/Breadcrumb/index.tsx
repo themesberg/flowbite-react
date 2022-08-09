@@ -2,7 +2,7 @@ import type { ComponentProps, FC } from 'react';
 import { useTheme } from '../Flowbite/ThemeContext';
 import BreadcrumbItem from './BreadcrumbItem';
 
-const BreadcrumbComponent: FC<ComponentProps<'nav'>> = ({ children, ...props }): JSX.Element => {
+const BreadcrumbComponent: FC<ComponentProps<'nav'>> = ({ children, ...props }) => {
   const theme = useTheme().theme.breadcrumb;
 
   return (

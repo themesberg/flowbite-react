@@ -1,38 +1,35 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { FC } from 'react';
 import { describe, expect, it } from 'vitest';
 import { Dropdown } from '.';
 
-describe.concurrent('Components / Dropdown', () => {
-  describe('Collapsed', () => {
-    describe('when trigger is clicked', () => {
-      it('should expand', () => {
-        const { getByRole, getByTestId } = render(<TestDropdown />);
-        const triggerButton = getByRole('button');
+describe('Components / Dropdown', () => {
+  describe('Keyboard interactions', () => {
+    it('should collapse if expanded when `Space` is pressed', async () => {
+      const user = userEvent.setup();
+      render(<TestDropdown />);
 
-        expect(getByTestId('tooltip')).toHaveClass('invisible');
+      expect(dropdown()).toHaveClass('invisible');
 
-        userEvent.click(triggerButton);
-        expect(getByTestId('tooltip')).not.toHaveClass('invisible');
-      });
+      await user.click(button());
+
+      expect(dropdown()).not.toHaveClass('invisible');
     });
-  });
 
-  describe('Expanded', () => {
-    describe('when trigger is clicked', () => {
-      it('should collapse', () => {
-        const { getByRole, getByTestId } = render(<TestDropdown />);
-        const triggerButton = getByRole('button');
+    it('should expand if collapsed when `Space` is pressed', async () => {
+      const user = userEvent.setup();
+      render(<TestDropdown />);
 
-        userEvent.click(triggerButton);
-        userEvent.click(triggerButton);
-        expect(getByTestId('tooltip')).toHaveClass('invisible');
-      });
+      await user.click(button());
+      await user.click(button());
+
+      expect(dropdown()).toHaveClass('invisible');
     });
   });
 });
 
-const TestDropdown = (): JSX.Element => (
+const TestDropdown: FC = () => (
   <Dropdown label="Dropdown button" placement="right">
     <Dropdown.Header>
       <span className="block text-sm">Bonnie Green</span>
@@ -45,3 +42,7 @@ const TestDropdown = (): JSX.Element => (
     <Dropdown.Item>Sign out</Dropdown.Item>
   </Dropdown>
 );
+
+const button = () => screen.getByRole('button');
+
+const dropdown = () => screen.getByTestId('flowbite-tooltip');

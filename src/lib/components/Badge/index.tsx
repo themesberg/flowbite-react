@@ -4,7 +4,7 @@ import { excludeClassName } from '../../helpers/exclude';
 import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export interface BadgeProps extends PropsWithChildren<Omit<ComponentProps<'span'>, 'color'>> {
+export interface BadgeProps extends PropsWithChildren<Omit<ComponentProps<'span'>, 'className' | 'color'>> {
   color?: keyof BadgeColors;
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;

@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { Spinner } from '.';
 import { Flowbite } from '../Flowbite';
 
-describe.concurrent('Components / Spinner', () => {
+describe('Components / Spinner', () => {
   describe('A11y', () => {
     it('should have `role="status"` by default', () => {
       const spinner = getSpinner(render(<Spinner aria-label="My spinner" />));
@@ -18,20 +18,6 @@ describe.concurrent('Components / Spinner', () => {
       const spinner = getByLabelText('My spinner');
 
       expect(spinner).not.toHaveAttribute('role');
-    });
-  });
-
-  describe('Rendering', () => {
-    it('should render', () => {
-      const spinner = getSpinner(render(<Spinner color="success" />));
-
-      expect(spinner).toBeInTheDocument();
-    });
-
-    it('should render when `light={true}`', () => {
-      const spinner = getSpinner(render(<Spinner color="failure" light />));
-
-      expect(spinner).toBeInTheDocument();
     });
   });
 

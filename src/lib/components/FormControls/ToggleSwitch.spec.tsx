@@ -1,226 +1,132 @@
-import type { RenderResult } from '@testing-library/react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { TextInput } from './TextInput';
 import { ToggleSwitch } from './ToggleSwitch';
 
-describe.concurrent('Components / Form controls / Toggle switch', () => {
-  it('should render', () => {
-    render(<ToggleSwitch checked={false} label="Enable" onChange={console.log} />);
-  });
-
-  describe('Props', () => {
-    describe('`type`', () => {
-      it('should be "button" by default', () => {
-        const switchElement = getSwitch(render(<ToggleSwitch checked={false} label="Enable" onChange={console.log} />));
-
-        assertSwitch({ switchElement });
-        expect(switchElement).toHaveAttribute('type', 'button');
-      });
-
-      it('should use the supplied `type`, if there is one', () => {
-        const switchElement = getSwitch(
-          render(<ToggleSwitch checked={false} label="Enable" onChange={console.log} type="submit" />),
-        );
-
-        assertSwitch({ switchElement });
-        expect(switchElement).toHaveAttribute('type', 'submit');
-      });
-    });
-  });
-
+describe('Components / Form controls / Toggle switch', () => {
   describe('A11y', () => {
-    it('should have accessible name', () => {
-      const switchElement = getSwitch(
-        render(
-          <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />,
-        ),
-      );
+    it('should have `role="switch"` by default', () => {
+      render(<ToggleSwitch checked={false} label="Enable" onChange={console.log} />);
 
-      assertSwitch({ switchElement });
-      expect(switchElement).toHaveAccessibleName('Enable notifications');
+      expect(toggleSwitch()).toBeInTheDocument();
+    });
+
+    it('should have an accessible name', () => {
+      render(<ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />);
+
+      expect(toggleSwitch()).toHaveAccessibleName('Enable notifications');
     });
   });
 
   describe('Keyboard interaction', () => {
-    describe('`Enter`', () => {
-      it("shouldn't toggle", () => {
-        const handleChange = vi.fn();
-        const switchElement = getSwitch(
-          render(
-            <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={handleChange} />,
-          ),
-        );
+    it("shouldn't toggle when `Enter` is pressed", async () => {
+      const user = userEvent.setup();
+      const handleChange = vi.fn();
+      render(
+        <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={handleChange} />,
+      );
 
-        assertSwitch({ switchElement });
+      await user.tab();
 
-        userEvent.tab();
+      expect(toggleSwitch()).toHaveFocus();
 
-        expect(switchElement).toHaveFocus();
+      await user.keyboard('[Enter]');
 
-        userEvent.keyboard('[Enter]');
-
-        expect(handleChange).not.toHaveBeenCalled();
-      });
-
-      it("shouldn't submit surrounding form", () => {
-        const handleSubmit = vi.fn();
-        const switchElement = getSwitch(
-          render(
-            <form
-              onSubmit={(event) => {
-                event.preventDefault();
-                handleSubmit();
-              }}
-            >
-              <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />
-            </form>,
-          ),
-        );
-
-        userEvent.tab();
-
-        assertSwitch({ switchElement });
-        expect(switchElement).toHaveFocus();
-
-        userEvent.keyboard('[Enter]');
-
-        expect(handleSubmit).not.toHaveBeenCalled();
-      });
+      expect(handleChange).not.toHaveBeenCalled();
     });
 
-    describe('`Space`', () => {
-      it('should toggle', () => {
-        const handleChange = vi.fn();
+    it("shouldn't submit surrounding form when `Enter` is pressed", async () => {
+      const handleSubmit = vi.fn();
+      const user = userEvent.setup();
+      render(
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            handleSubmit();
+          }}
+        >
+          <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />
+        </form>,
+      );
 
-        const TestToggleSwitch = (): JSX.Element => {
-          const [state, setState] = useState(false);
+      await user.tab();
 
-          return (
-            <ToggleSwitch
-              checked={state}
-              label="Enable notifications"
-              name="notifications"
-              onChange={(value) => {
-                setState(value);
-                handleChange(value);
-              }}
-            />
-          );
-        };
+      expect(toggleSwitch()).toHaveFocus();
 
-        const switchElement = getSwitch(render(<TestToggleSwitch />));
+      await user.keyboard('[Enter]');
 
-        assertSwitch({ switchElement, props: { checked: false } });
-
-        userEvent.tab();
-
-        expect(switchElement).toHaveFocus();
-
-        userEvent.keyboard('[Space]');
-
-        assertSwitch({ switchElement, props: { checked: true } });
-
-        userEvent.keyboard('[Space]');
-
-        assertSwitch({ switchElement, props: { checked: false } });
-      });
+      expect(handleSubmit).not.toHaveBeenCalled();
     });
 
-    describe('`Tab`', () => {
-      it('should focus', () => {
-        const switchElement = getSwitch(
-          render(
-            <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />,
-          ),
+    it('should toggle when `Space` is pressed', async () => {
+      const handleChange = vi.fn();
+      const user = userEvent.setup();
+
+      const TestToggleSwitch: FC = () => {
+        const [state, setState] = useState(false);
+
+        return (
+          <ToggleSwitch
+            checked={state}
+            label="Enable notifications"
+            name="notifications"
+            onChange={(value) => {
+              setState(value);
+              handleChange(value);
+            }}
+          />
         );
+      };
+      render(<TestToggleSwitch />);
 
-        userEvent.tab();
+      await user.tab();
 
-        assertSwitch({ switchElement });
-        expect(switchElement).toHaveFocus();
-      });
+      expect(toggleSwitch()).toHaveFocus();
 
-      it('should allow the user to `Tab` away', () => {
-        const TestToggleSwitch = (): JSX.Element => (
-          <form>
-            <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />
-            <TextInput type="text" />
-          </form>
-        );
+      await user.keyboard('[Space]');
 
-        const view = render(<TestToggleSwitch />);
-        const switchElement = getSwitch(view);
-        const nextItemInTabOrder = view.getByRole('textbox');
+      expect(toggleSwitch()).toHaveAttribute('aria-checked', 'true');
 
-        userEvent.tab();
-        userEvent.tab();
+      await user.keyboard('[Space]');
 
-        assertSwitch({ switchElement });
-        expect(switchElement).not.toHaveFocus();
-        expect(nextItemInTabOrder).toHaveFocus();
-      });
+      expect(toggleSwitch()).toHaveAttribute('aria-checked', 'false');
+    });
+
+    it('should focus when `Tab` is pressed', async () => {
+      const user = userEvent.setup();
+      render(<ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />);
+
+      await user.tab();
+
+      expect(toggleSwitch()).toHaveFocus();
+    });
+
+    it('should allow the user to `Tab` away', async () => {
+      const user = userEvent.setup();
+      render(
+        <form>
+          <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />
+          <TextInput type="text" />
+        </form>,
+      );
+
+      await user.tab();
+      await user.tab();
+
+      expect(toggleSwitch()).not.toHaveFocus();
+      expect(screen.getByRole('textbox')).toHaveFocus();
     });
   });
 
-  describe('Mouse interaction', () => {
-    describe('Click button', () => {
-      it('should toggle', () => {
-        const handleChange = vi.fn();
-        const switchElement = getSwitch(
-          render(
-            <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={handleChange} />,
-          ),
-        );
+  describe('Props', () => {
+    it('should allow HTML attributes for `<button>`s', () => {
+      render(<ToggleSwitch checked={false} label="Enable" onChange={console.log} type="submit" />);
 
-        userEvent.click(switchElement);
-
-        assertSwitch({ switchElement });
-        expect(handleChange).toHaveBeenCalledTimes(1);
-      });
-    });
-
-    describe('Click label', () => {
-      it('should toggle', () => {
-        const handleChange = vi.fn();
-        const view = render(
-          <ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={handleChange} />,
-        );
-
-        const switchElement = getSwitch(view);
-        const switchLabel = view.getByTestId('flowbite-toggleswitch-label');
-
-        userEvent.click(switchLabel);
-
-        assertSwitch({ switchElement });
-        expect(handleChange).toHaveBeenCalledTimes(1);
-      });
+      expect(toggleSwitch()).toHaveAttribute('type', 'submit');
     });
   });
 });
 
-const getSwitch = ({ getByRole }: RenderResult): HTMLElement => getByRole('switch');
-
-const assertSwitch = ({
-  switchElement,
-  props,
-}: {
-  switchElement: HTMLElement;
-  props?: {
-    checked?: boolean;
-    label?: string;
-  };
-}): void => {
-  expect(switchElement).toBeInstanceOf(HTMLButtonElement);
-  expect(switchElement).toHaveAttribute('tabindex', '0');
-
-  if (props?.checked) {
-    expect(switchElement).toHaveAttribute('aria-checked', props.checked ? 'true' : 'false');
-  }
-
-  if (props?.label) {
-    expect(switchElement).toHaveTextContent(props.label);
-  }
-};
+const toggleSwitch = () => screen.getByRole('switch');
