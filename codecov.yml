@@ -4,4 +4,4 @@ coverage:
       default:
         if_ci_failed: success
         target: auto
-        threshold: 0.5%
+        threshold: 5%
