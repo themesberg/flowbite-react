@@ -43,13 +43,12 @@ export const Alert: FC<AlertProps> = ({
         <div>{children}</div>
         {typeof onDismiss === 'function' && (
           <button
+            aria-label="Dismiss"
             className={classNames(theme.closeButton.base, theme.closeButton.color[color])}
-            data-testid="alert-dismiss"
             onClick={onDismiss}
             type="button"
           >
-            <span className="sr-only">Close</span>
-            <HiX aria-hidden="true" className="h-5 w-5" />
+            <HiX aria-hidden className="h-5 w-5" />
           </button>
         )}
       </div>
