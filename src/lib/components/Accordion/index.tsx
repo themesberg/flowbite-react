@@ -9,7 +9,7 @@ import type { AccordionPanelProps } from './AccordionPanel';
 import { AccordionPanel } from './AccordionPanel';
 import { AccordionTitle } from './AccordionTitle';
 
-export interface AccordionProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface AccordionProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
   alwaysOpen?: boolean;
   arrowIcon?: FC<ComponentProps<'svg'>>;
   children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];

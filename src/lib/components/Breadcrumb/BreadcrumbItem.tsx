@@ -3,7 +3,7 @@ import { HiOutlineChevronRight } from 'react-icons/hi';
 import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export interface BreadcrumbItemProps extends PropsWithChildren<ComponentProps<'li'>> {
+export interface BreadcrumbItemProps extends PropsWithChildren<Omit<ComponentProps<'li'>, 'className'>> {
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
 }
