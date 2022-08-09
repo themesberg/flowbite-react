@@ -21,9 +21,9 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = (props) => {
       {...theirProps}
     >
       {mode === 'dark' ? (
-        <HiSun aria-hidden className={theme.icon} data-testid="dark-theme-toggle-disabled" />
+        <HiSun aria-label="Currently dark mode" className={theme.icon} />
       ) : (
-        <HiMoon aria-hidden className={theme.icon} data-testid="dark-theme-toggle-enabled" />
+        <HiMoon aria-label="Currently light mode" className={theme.icon} />
       )}
     </button>
   );
