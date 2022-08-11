@@ -325,7 +325,7 @@ export interface FlowbiteTheme {
     bordered: FlowbiteBoolean;
     inner: {
       base: string;
-      fuild: FlowbiteBoolean;
+      fluid: FlowbiteBoolean;
     };
     brand: string;
     collapse: {

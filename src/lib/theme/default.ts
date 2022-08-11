@@ -574,7 +574,7 @@ export default {
     },
     inner: {
       base: 'mx-auto flex flex-wrap items-center justify-between',
-      fuild: {
+      fluid: {
         on: '',
         off: 'container',
       },
