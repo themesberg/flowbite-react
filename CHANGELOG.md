@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/themesberg/flowbite-react/compare/v0.1.5...v0.1.6) (2022-08-11)
+
+
+### Bug Fixes
+
+* typo in navbar theme typedef ([#327](https://github.com/themesberg/flowbite-react/issues/327)) ([459a864](https://github.com/themesberg/flowbite-react/commit/459a8648f054b80fc4499ecd68689bc3d3d0c244))
+
 ### [0.1.5](https://github.com/themesberg/flowbite-react/compare/v0.1.4...v0.1.5) (2022-08-01)
 
 
