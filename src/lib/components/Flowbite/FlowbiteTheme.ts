@@ -10,6 +10,7 @@ import type {
   ButtonSizes,
 } from '../Button';
 import type { PositionInButtonGroup } from '../Button/ButtonGroup';
+import { FlowbiteDropdownTheme } from '../Dropdown';
 import type { FlowbiteFloatingTheme } from '../Floating';
 import type {
   HelperColors,
@@ -473,7 +474,7 @@ export interface FlowbiteTheme {
   };
   tooltip: FlowbiteFloatingTheme;
   dropdown: {
-    floating: FlowbiteFloatingTheme;
+    floating: FlowbiteDropdownTheme;
     content: string;
     inlineWrapper: string;
     arrowIcon: string;

@@ -13,6 +13,7 @@ import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { excludeClassName } from '../../helpers/exclude';
 import { getArrowPlacement, getMiddleware, getPlacement } from '../../helpers/floating';
+import { FlowbiteDropdownTheme } from '../Dropdown';
 
 export interface FlowbiteFloatingTheme {
   target: string;
@@ -38,7 +39,7 @@ export interface FlowbiteFloatingTheme {
 
 export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className' | 'style'>> {
   content: ReactNode;
-  theme: FlowbiteFloatingTheme;
+  theme: FlowbiteFloatingTheme | FlowbiteDropdownTheme;
   placement?: 'auto' | Placement;
   trigger?: 'hover' | 'click';
   style?: 'dark' | 'light' | 'auto';
