@@ -1,14 +1,18 @@
-import type { FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { useTheme } from '../Flowbite/ThemeContext';
 
 export type DropdownItemProps = PropsWithChildren<{
   onClick?: () => void;
+  icon?: FC<ComponentProps<'svg'>>;
 }>;
 
-export const DropdownItem: FC<DropdownItemProps> = ({ children, onClick }) => (
-  <li
-    className="block cursor-pointer py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white"
-    onClick={onClick}
-  >
-    {children}
-  </li>
-);
+export const DropdownItem: FC<DropdownItemProps> = ({ children, onClick, icon: Icon }) => {
+  const theme = useTheme().theme.dropdown.floating.item;
+
+  return (
+    <li className={theme.base} onClick={onClick}>
+      {Icon && <Icon className={theme.icon} />}
+      {children}
+    </li>
+  );
+};
