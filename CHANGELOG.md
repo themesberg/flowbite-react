@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/themesberg/flowbite-react/compare/v0.1.6...v0.1.8) (2022-08-17)
+
+
+### Bug Fixes
+
+* **component:** add missing display name for checkbox, radio and select ([#328](https://github.com/themesberg/flowbite-react/issues/328)) ([8c307aa](https://github.com/themesberg/flowbite-react/commit/8c307aa1b072d82c2779d5de2dabb5609759689e))
+
 ### [0.1.7](https://github.com/themesberg/flowbite-react/compare/v0.1.6...v0.1.7) (2022-08-11)
 
 ### [0.1.6](https://github.com/themesberg/flowbite-react/compare/v0.1.5...v0.1.6) (2022-08-11)
