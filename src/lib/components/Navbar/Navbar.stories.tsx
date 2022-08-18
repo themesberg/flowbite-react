@@ -47,7 +47,7 @@ WithCTA.args = {
         <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
       </Navbar.Brand>
-      <div className="flex md:order-2">
+      <div className="flex gap-3 md:order-2">
         <Button>Get started</Button>
         <Navbar.Toggle />
       </div>
@@ -73,7 +73,7 @@ WithDropdown.args = {
         <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
       </Navbar.Brand>
-      <div className="flex md:order-2">
+      <div className="flex gap-3 md:order-2">
         <Dropdown
           arrowIcon={false}
           inline
