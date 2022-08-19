@@ -13,7 +13,6 @@ export interface SidebarItemProps
   extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'> & Record<string, unknown>> {
   active?: boolean;
   as?: ElementType;
-  className?: string;
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   label?: string;
