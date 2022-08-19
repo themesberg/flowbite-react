@@ -14,7 +14,7 @@ export const Root: FC = () => {
 
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden">
-      <Navbar className="border-b" fluid>
+      <Navbar fluid>
         <div className="flex items-center">
           <HiMenuAlt1
             className="mr-6 h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-400"
