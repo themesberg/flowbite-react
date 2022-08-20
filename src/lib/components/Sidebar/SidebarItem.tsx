@@ -39,19 +39,21 @@ const SidebarItem: FC<SidebarItemProps> = ({
   const { isInsideCollapse } = useSidebarItemContext();
   const theme = useTheme().theme.sidebar.item;
 
-  const Wrapper: FC<PropsWithChildren<unknown>> = ({ children: Component }) => (
+  const ListItem: FC<PropsWithChildren> = ({ children: wrapperChildren }) => (
     <li>
       {isCollapsed ? (
-        <Tooltip content={<Children>{children}</Children>} placement="right">
-          {Component}
+        <Tooltip content={<TooltipContent>{children}</TooltipContent>} placement="right">
+          {wrapperChildren}
         </Tooltip>
       ) : (
-        Component
+        wrapperChildren
       )}
     </li>
   );
 
-  const Children: FC<PropsWithChildren<unknown>> = ({ children }) => (
+  const TooltipContent: FC<PropsWithChildren> = ({ children }) => <Children>{children}</Children>;
+
+  const Children: FC<PropsWithChildren> = ({ children }) => (
     <span
       className={classNames(theme.content.base)}
       data-testid="flowbite-sidebar-item-content"
@@ -62,7 +64,7 @@ const SidebarItem: FC<SidebarItemProps> = ({
   );
 
   return (
-    <Wrapper>
+    <ListItem>
       <Component
         aria-labelledby={`flowbite-sidebar-item-${id}`}
         className={classNames(
@@ -79,14 +81,17 @@ const SidebarItem: FC<SidebarItemProps> = ({
             data-testid="flowbite-sidebar-item-icon"
           />
         )}
+        {isCollapsed && !Icon && (
+          <span className={theme.collapsed.noIcon}>{(children as string).charAt(0).toLocaleUpperCase() ?? '?'}</span>
+        )}
         {!isCollapsed && <Children>{children}</Children>}
-        {label && !isCollapsed && (
+        {!isCollapsed && label && (
           <Badge color={labelColor} data-testid="flowbite-sidebar-label" hidden={isCollapsed}>
             {label}
           </Badge>
         )}
       </Component>
-    </Wrapper>
+    </ListItem>
   );
 };
 
