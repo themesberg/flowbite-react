@@ -30,7 +30,7 @@ import type { TabStyleItem, TabStyles } from '../Tab';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
-export interface FlowbiteTheme {
+export interface FlowbiteTheme extends Record<string, unknown> {
   accordion: {
     base: string;
     content: {
@@ -411,6 +411,7 @@ export interface FlowbiteTheme {
       base: string;
       collapsed: {
         insideCollapse: string;
+        noIcon: string;
       };
       content: {
         base: string;

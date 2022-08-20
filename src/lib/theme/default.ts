@@ -1,4 +1,6 @@
-export default {
+import type { FlowbiteTheme } from '../components';
+
+const theme: FlowbiteTheme = {
   accordion: {
     base: 'divide-y divide-gray-200 border-gray-200 dark:divide-gray-700 dark:border-gray-700',
     content: {
@@ -697,10 +699,11 @@ export default {
       },
     },
     item: {
-      base: 'flex items-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
+      base: 'flex items-center justify-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700',
       active: 'bg-gray-100 dark:bg-gray-700',
       collapsed: {
         insideCollapse: 'group w-full pl-8 transition duration-75',
+        noIcon: 'font-bold',
       },
       content: {
         base: 'px-3 flex-1 whitespace-nowrap',
@@ -866,3 +869,5 @@ export default {
     },
   },
 };
+
+export default theme;
