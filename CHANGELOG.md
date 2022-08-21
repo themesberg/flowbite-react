@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/themesberg/flowbite-react/compare/v0.1.9...v0.1.10) (2022-08-21)
+
+
+### Bug Fixes
+
+* **component:** use 1st letter of text in collapsed Sidebar.Item with no icon ([#338](https://github.com/themesberg/flowbite-react/issues/338)) ([103d173](https://github.com/themesberg/flowbite-react/commit/103d17324d388fe60898697ed42811428af169bb)), closes [#81](https://github.com/themesberg/flowbite-react/issues/81)
+
 ### [0.1.9](https://github.com/themesberg/flowbite-react/compare/v0.1.8...v0.1.9) (2022-08-19)
 
 ### [0.1.8](https://github.com/themesberg/flowbite-react/compare/v0.1.6...v0.1.8) (2022-08-17)
