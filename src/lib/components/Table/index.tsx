@@ -37,5 +37,5 @@ export const Table = Object.assign(TableComponent, {
   Row: TableRow,
   Cell: TableCell,
   HeadCell: TableHeadCell,
-  Context: TableContext
+  Context: TableContext,
 });
