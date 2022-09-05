@@ -76,7 +76,7 @@ export const Pagination: FC<PaginationProps> = ({
             onClick={() => goToNextPage()}
           >
             Next
-            {showIcon && <HiChevronRight aria-hidden className={theme.pages.showIcon} />}
+            {showIcon && <HiChevronRight aria-hidden className={theme.pages.next.icon} />}
           </button>
         </li>
       </ul>
