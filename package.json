@@ -57,8 +57,8 @@
   },
   "peerDependencies": {
     "flowbite": "^1",
-    "react": "^17 || ^18",
-    "react-dom": "^17 || ^18",
+    "react": "^18",
+    "react-dom": "^18",
     "tailwindcss": "^3"
   },
   "devDependencies": {
