@@ -2,12 +2,12 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { TableBody } from './TableBody';
 import { TableCell } from './TableCell';
-import { TableContext } from './TableContext';
+import { TableContext, TableContextType } from './TableContext';
 import { TableHead } from './TableHead';
 import { TableHeadCell } from './TableHeadCell';
 import { TableRow } from './TableRow';
 
-export type TableProps = PropsWithChildren<ComponentProps<'table'> & TableContext>;
+export type TableProps = PropsWithChildren<ComponentProps<'table'> & TableContextType>;
 
 const TableComponent: FC<TableProps> = ({ children, striped, hoverable, className, ...props }) => {
   return (
