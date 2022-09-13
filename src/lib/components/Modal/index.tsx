@@ -3,7 +3,6 @@ import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { excludeClassName } from '../../helpers/exclude';
-import windowExists from '../../helpers/window-exists';
 import type { FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { ModalBody } from './ModalBody';
@@ -30,29 +29,37 @@ export interface ModalProps extends PropsWithChildren<Omit<ComponentProps<'div'>
 
 const ModalComponent: FC<ModalProps> = ({
   children,
-  root = windowExists() ? document.body : undefined,
   show,
+  root,
   popup,
   size = '2xl',
   position = 'center',
   onClose,
   ...props
 }) => {
-  const [container] = useState<HTMLDivElement | undefined>(windowExists() ? document.createElement('div') : undefined);
+  const [parent, setParent] = useState<HTMLElement | undefined>(root);
+  const [container, setContainer] = useState<HTMLDivElement | undefined>();
   const theme = useTheme().theme.modal;
   const theirProps = excludeClassName(props);
 
   useEffect(() => {
-    if (!container || !root || !show) {
+    if (!parent) setParent(document.body);
+    if (!container) setContainer(document.createElement('div'));
+  }, []);
+
+  useEffect(() => {
+    if (!container || !parent || !show) {
       return;
     }
 
-    root.appendChild(container);
+    parent.appendChild(container);
 
     return () => {
-      root.removeChild(container);
+      if (container) {
+        parent.removeChild(container);
+      }
     };
-  }, [container, root, show]);
+  }, [container, parent, show]);
 
   return container
     ? createPortal(
