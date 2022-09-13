@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/themesberg/flowbite-react/compare/v0.1.10...v0.1.11) (2022-09-13)
+
+
+### Bug Fixes
+
+* **package:** minimal react version is 18 ([#344](https://github.com/themesberg/flowbite-react/issues/344)) ([bc4fea7](https://github.com/themesberg/flowbite-react/commit/bc4fea7ecbc83dcbff61a5d01805008993a66a71))
+* **pagination:** fix next button icon misalignment ([#346](https://github.com/themesberg/flowbite-react/issues/346)) ([0dd10d3](https://github.com/themesberg/flowbite-react/commit/0dd10d339a17961743c6d8a4ceb5c8e06677c0df)), closes [#330](https://github.com/themesberg/flowbite-react/issues/330)
+
 ### [0.1.10](https://github.com/themesberg/flowbite-react/compare/v0.1.9...v0.1.10) (2022-08-21)
 
 
