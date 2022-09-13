@@ -59,7 +59,7 @@ const ModalComponent: FC<ModalProps> = ({
         parent.removeChild(container);
       }
     };
-  }, [container, root, show]);
+  }, [container, parent, show]);
 
   return container
     ? createPortal(
