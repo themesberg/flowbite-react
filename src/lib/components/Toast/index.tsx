@@ -9,6 +9,7 @@ import { ToastToggle } from './ToastToggle';
 
 export interface ToastProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
   duration?: Duration;
+  className?: string;
 }
 
 const durationClasses: Record<Duration, string> = {
@@ -22,7 +23,7 @@ const durationClasses: Record<Duration, string> = {
   1000: 'duration-1000',
 };
 
-const ToastComponent: FC<ToastProps> = ({ children, duration = 300, ...props }) => {
+const ToastComponent: FC<ToastProps> = ({ className, children, duration = 300, ...props }) => {
   const [isClosed, setIsClosed] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
 
@@ -34,6 +35,7 @@ const ToastComponent: FC<ToastProps> = ({ children, duration = 300, ...props }) 
       <div
         data-testid="flowbite-toast"
         className={classNames(
+          className,
           theme.base,
           durationClasses[duration],
           { [theme.closed]: isClosed },

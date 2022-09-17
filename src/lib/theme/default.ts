@@ -135,7 +135,7 @@ const theme: FlowbiteTheme = {
     list: 'flex items-center',
   },
   button: {
-    base: 'group flex h-min w-fit items-center justify-center p-0.5 text-center font-medium focus:z-10',
+    base: 'group flex h-min items-center justify-center p-0.5 text-center font-medium focus:z-10',
     color: {
       dark: 'text-white bg-gray-800 border border-transparent hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 disabled:hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700 dark:disabled:hover:bg-gray-800',
       failure:

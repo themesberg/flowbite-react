@@ -13,6 +13,7 @@ import ButtonGroup from './ButtonGroup';
 
 export interface ButtonProps extends Omit<ComponentProps<'button'>, 'className' | 'color'> {
   color?: keyof ButtonColors;
+  className?: string;
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
   gradientMonochrome?: keyof ButtonGradientColors;
   href?: string;
@@ -46,6 +47,7 @@ export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'x
 
 const ButtonComponent: FC<ButtonProps> = ({
   children,
+  className,
   color = 'info',
   disabled = false,
   gradientDuoTone,
@@ -68,6 +70,7 @@ const ButtonComponent: FC<ButtonProps> = ({
   return (
     <Component
       className={classNames(
+        className,
         disabled && theme.disabled,
         !gradientDuoTone && !gradientMonochrome && theme.color[color],
         gradientDuoTone && !gradientMonochrome && theme.gradientDuoTone[gradientDuoTone],
