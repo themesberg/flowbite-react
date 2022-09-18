@@ -68,8 +68,8 @@ const PaginationPage: FC = (): JSX.Element => {
             onPageChange={onPageChange}
             showIcons
             totalPages={1000}
-            previousText="Go back"
-            nextText="Go forward"
+            previousLabel="Go back"
+            nextLabel="Go forward"
           ></Pagination>
         </div>
       ),

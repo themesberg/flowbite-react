@@ -83,8 +83,8 @@ describe('Pagination', () => {
           layout="navigation"
           onPageChange={() => undefined}
           totalPages={5}
-          previousText="Go back"
-          nextText="Go forward"
+          previousLabel="Go back"
+          nextLabel="Go forward"
         ></Pagination>,
       );
 

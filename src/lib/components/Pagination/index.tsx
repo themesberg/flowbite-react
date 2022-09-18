@@ -12,8 +12,8 @@ interface Pagination extends Omit<ComponentProps<'nav'>, 'className'> {
   onPageChange: (page: number) => void;
   showIcons?: boolean;
   totalPages: number;
-  previousText?: string;
-  nextText?: string;
+  previousLabel?: string;
+  nextLabel?: string;
 }
 
 export const Pagination: FC<PaginationProps> = ({
@@ -22,8 +22,8 @@ export const Pagination: FC<PaginationProps> = ({
   onPageChange,
   showIcons: showIcon = false,
   totalPages,
-  previousText = 'Previous',
-  nextText = 'Next',
+  previousLabel = 'Previous',
+  nextLabel = 'Next',
   ...props
 }): JSX.Element => {
   const firstPage = Math.max(1, currentPage - 3);
@@ -56,7 +56,7 @@ export const Pagination: FC<PaginationProps> = ({
             onClick={() => goToPreviousPage()}
           >
             {showIcon && <HiChevronLeft aria-hidden className={theme.pages.previous.icon} />}
-            {previousText}
+            {previousLabel}
           </button>
         </li>
         {layout === 'pagination' &&
@@ -79,7 +79,7 @@ export const Pagination: FC<PaginationProps> = ({
             className={classNames(theme.pages.next.base, showIcon && theme.pages.showIcon)}
             onClick={() => goToNextPage()}
           >
-            {nextText}
+            {nextLabel}
             {showIcon && <HiChevronRight aria-hidden className={theme.pages.next.icon} />}
           </button>
         </li>
