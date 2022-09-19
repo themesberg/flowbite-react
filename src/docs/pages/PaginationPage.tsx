@@ -58,6 +58,22 @@ const PaginationPage: FC = (): JSX.Element => {
         </div>
       ),
     },
+    {
+      title: "Change 'Previous' and 'Next' text",
+      code: (
+        <div className="flex items-center justify-center text-center">
+          <Pagination
+            currentPage={currentPage}
+            layout="pagination"
+            onPageChange={onPageChange}
+            showIcons
+            totalPages={1000}
+            previousLabel="Go back"
+            nextLabel="Go forward"
+          ></Pagination>
+        </div>
+      ),
+    },
   ];
 
   return <DemoPage examples={examples} />;

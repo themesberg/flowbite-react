@@ -75,6 +75,22 @@ describe('Pagination', () => {
 
       expect(pages()).toHaveLength(0);
     });
+
+    it('should change previous and next text when provided', () => {
+      render(
+        <Pagination
+          currentPage={1}
+          layout="navigation"
+          onPageChange={() => undefined}
+          totalPages={5}
+          previousLabel="Go back"
+          nextLabel="Go forward"
+        ></Pagination>,
+      );
+
+      expect(previousButton()).toHaveTextContent('Go back');
+      expect(nextButton()).toHaveTextContent('Go forward');
+    });
   });
 });
 
