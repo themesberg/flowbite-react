@@ -142,7 +142,11 @@ const ButtonsPage: FC = () => {
     },
     {
       title: 'Button with label',
-      code: <Button label="2">Messages</Button>,
+      code: (
+        <div>
+          <Button label="2">Messages</Button>
+        </div>
+      ),
       codeClassName: 'dark:!bg-gray-900',
     },
     {
@@ -187,7 +191,11 @@ const ButtonsPage: FC = () => {
     },
     {
       title: 'Disabled',
-      code: <Button disabled>Disabled button</Button>,
+      code: (
+        <div>
+          <Button disabled>Disabled button</Button>
+        </div>
+      ),
       codeClassName: 'dark:!bg-gray-900',
     },
   ];
