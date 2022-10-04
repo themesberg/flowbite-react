@@ -10,7 +10,7 @@ const SidebarPage: FC = () => {
     {
       title: 'Default sidebar',
       code: (
-        <div className="w-fit bg-gray-50">
+        <div className="w-fit">
           <Sidebar aria-label="Default sidebar example">
             <Sidebar.Items>
               <Sidebar.ItemGroup>
@@ -44,7 +44,7 @@ const SidebarPage: FC = () => {
     {
       title: 'Multi-level dropdown',
       code: (
-        <div className="w-fit bg-gray-50">
+        <div className="w-fit">
           <Sidebar aria-label="Sidebar with multi-level dropdown example">
             <Sidebar.Items>
               <Sidebar.ItemGroup>
@@ -78,7 +78,7 @@ const SidebarPage: FC = () => {
     {
       title: 'Content separator',
       code: (
-        <div className="w-fit bg-gray-50">
+        <div className="w-fit">
           <Sidebar aria-label="Sidebar with content separator example">
             <Sidebar.Items>
               <Sidebar.ItemGroup>
@@ -123,7 +123,7 @@ const SidebarPage: FC = () => {
     {
       title: 'CTA button',
       code: (
-        <div className="w-fit bg-gray-50">
+        <div className="w-fit">
           <Sidebar aria-label="Sidebar with call to action button example">
             <Sidebar.Items>
               <Sidebar.ItemGroup>
@@ -191,7 +191,7 @@ const SidebarPage: FC = () => {
     {
       title: 'Logo branding',
       code: (
-        <div className="w-fit bg-gray-50">
+        <div className="w-fit">
           <Sidebar aria-label="Sidebar with logo branding example">
             <Sidebar.Logo href="#" img="favicon.png" imgAlt="Flowbite logo">
               Flowbite
