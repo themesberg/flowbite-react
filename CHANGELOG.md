@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/themesberg/flowbite-react/compare/v0.1.11...v0.1.12) (2022-10-07)
+
+
+### Bug Fixes
+
+* Button doesn't fit to its parent width ([#370](https://github.com/themesberg/flowbite-react/issues/370)) ([15571aa](https://github.com/themesberg/flowbite-react/commit/15571aa27e7fe96b8aae6e6eaec22e03cab17814))
+
 ### [0.1.11](https://github.com/themesberg/flowbite-react/compare/v0.1.10...v0.1.11) (2022-09-13)
 
 
