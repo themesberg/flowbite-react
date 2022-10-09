@@ -33,6 +33,14 @@ const AvatarPage: FC = () => {
       ),
     },
     {
+      title: 'Placeholder Initials',
+      code: (
+        <div className="flex flex-wrap gap-2">
+          <Avatar placeholderInitials="RR" />
+        </div>
+      ),
+    },
+    {
       title: 'Dot indicator',
       code: (
         <div className="flex flex-wrap gap-2">
