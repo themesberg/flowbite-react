@@ -190,7 +190,7 @@ const theme: FlowbiteTheme = {
         middle: '!rounded-none',
         end: 'rounded-l-none',
       },
-      outline: 'border border-transparent'
+      outline: 'border border-transparent',
     },
     label:
       'ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-200 text-xs font-semibold text-blue-800',

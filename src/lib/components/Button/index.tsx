@@ -89,7 +89,7 @@ const ButtonComponent: FC<ButtonProps> = ({
           theme.outline[outline ? 'on' : 'off'],
           theme.outline.pill[outline && pill ? 'on' : 'off'],
           theme.size[size],
-          outline && !theme.outline.color[color] && theme.inner.outline
+          outline && !theme.outline.color[color] && theme.inner.outline,
         )}
       >
         <>
