@@ -113,6 +113,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
     inner: {
       base: string;
       position: PositionInButtonGroup;
+      outline: string;
     };
     label: string;
     outline: FlowbiteBoolean & {

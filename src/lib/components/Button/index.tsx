@@ -73,7 +73,7 @@ const ButtonComponent: FC<ButtonProps> = ({
         gradientDuoTone && !gradientMonochrome && theme.gradientDuoTone[gradientDuoTone],
         !gradientDuoTone && gradientMonochrome && theme.gradient[gradientMonochrome],
         groupTheme.position[positionInGroup],
-        outline && theme.outline.color[color],
+        outline && (theme.outline.color[color] ?? theme.outline.color.default),
         theme.base,
         theme.pill[pill ? 'on' : 'off'],
       )}
@@ -89,6 +89,7 @@ const ButtonComponent: FC<ButtonProps> = ({
           theme.outline[outline ? 'on' : 'off'],
           theme.outline.pill[outline && pill ? 'on' : 'off'],
           theme.size[size],
+          outline && !theme.outline.color[color] && theme.inner.outline
         )}
       >
         <>

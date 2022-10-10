@@ -190,12 +190,15 @@ const theme: FlowbiteTheme = {
         middle: '!rounded-none',
         end: 'rounded-l-none',
       },
+      outline: 'border border-transparent'
     },
     label:
       'ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-blue-200 text-xs font-semibold text-blue-800',
     outline: {
       color: {
         gray: 'border border-gray-900 dark:border-white',
+        default: 'border-0',
+        light: '',
       },
       off: '',
       on: 'bg-white text-gray-900 transition-all duration-75 ease-in group-hover:bg-opacity-0 group-hover:text-inherit dark:bg-gray-900 dark:text-white',
