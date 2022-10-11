@@ -80,6 +80,10 @@ export interface FlowbiteTheme extends Record<string, unknown> {
       online: string;
     };
     statusPosition: FlowbitePositions;
+    initials: {
+      base: string;
+      text: string;
+    };
   };
   badge: {
     base: string;
@@ -557,4 +561,8 @@ export interface FlowbiteSizes {
   '5xl': string;
   '6xl': string;
   '7xl': string;
+}
+
+export interface FlowbiteContentPositions {
+  center: string;
 }

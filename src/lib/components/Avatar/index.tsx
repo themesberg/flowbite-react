@@ -15,6 +15,7 @@ export interface AvatarProps extends PropsWithChildren<Omit<ComponentProps<'div'
   stacked?: boolean;
   status?: 'away' | 'busy' | 'offline' | 'online';
   statusPosition?: keyof FlowbitePositions;
+  placeholderInitials?: string;
 }
 
 export interface AvatarSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> {
@@ -31,6 +32,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   stacked = false,
   status,
   statusPosition = 'top-left',
+  placeholderInitials = '',
   ...props
 }) => {
   const theirProps = excludeClassName(props);
@@ -52,6 +54,20 @@ const AvatarComponent: FC<AvatarProps> = ({
             data-testid="flowbite-avatar-img"
             src={img}
           />
+        ) : placeholderInitials ? (
+          <div
+            className={classNames(
+              theme.img.off,
+              theme.initials.base,
+              rounded && theme.rounded,
+              stacked && theme.stacked,
+              bordered && theme.bordered,
+            )}
+          >
+            <span className={classNames(theme.initials.text)} data-testid="flowbite-avatar-initials-placeholder">
+              {placeholderInitials}
+            </span>
+          </div>
         ) : (
           <div
             className={classNames(

@@ -90,6 +90,10 @@ const theme: FlowbiteTheme = {
       center: 'center center',
       'center-left': 'center -left-1',
     },
+    initials: {
+      text: 'font-medium text-gray-600 dark:text-gray-300',
+      base: 'inline-flex overflow-hidden relative justify-center items-center w-10 h-10 bg-gray-100 dark:bg-gray-600',
+    },
   },
   badge: {
     base: 'flex h-fit items-center gap-1 font-semibold',

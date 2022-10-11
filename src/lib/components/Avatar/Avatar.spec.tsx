@@ -4,8 +4,8 @@ import { Avatar } from '.';
 import { Flowbite } from '../Flowbite';
 import type { CustomFlowbiteTheme } from '../Flowbite/FlowbiteTheme';
 
-describe.concurrent('Components / Avatar', () => {
-  describe.concurrent('Theme', () => {
+describe('Components / Avatar', () => {
+  describe('Theme', () => {
     it('should use custom classes', () => {
       const theme: CustomFlowbiteTheme = {
         avatar: {
@@ -23,6 +23,18 @@ describe.concurrent('Components / Avatar', () => {
       expect(img()).toHaveClass('h-64 w-64');
     });
   });
+  describe('Placeholder', () => {
+    it('should display placeholder initials', () => {
+      render(
+        <Flowbite>
+          <Avatar placeholderInitials="RR" />
+        </Flowbite>,
+      );
+
+      expect(initialsPlaceholder()).toHaveTextContent('RR');
+    });
+  });
 });
 
 const img = () => screen.getByTestId('flowbite-avatar-img');
+const initialsPlaceholder = () => screen.getByTestId('flowbite-avatar-initials-placeholder');
