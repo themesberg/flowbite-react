@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/themesberg/flowbite-react/compare/v0.1.12...v0.2.0) (2022-10-11)
+
+
+### Bug Fixes
+
+* **button:** reduce the thickness of button outline ([#376](https://github.com/themesberg/flowbite-react/issues/376)) ([5ef0aef](https://github.com/themesberg/flowbite-react/commit/5ef0aeff0e90d4de47d1d1e9a954a792a473860d))
+* **storybook:** fix welcome page ([#377](https://github.com/themesberg/flowbite-react/issues/377)) ([d2518ad](https://github.com/themesberg/flowbite-react/commit/d2518adf4ace2d062a2f370b18994cd44cebbb42))
+
 ### [0.1.12](https://github.com/themesberg/flowbite-react/compare/v0.1.11...v0.1.12) (2022-10-07)
 
 
