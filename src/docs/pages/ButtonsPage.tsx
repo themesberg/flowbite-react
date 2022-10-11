@@ -10,14 +10,30 @@ const ButtonsPage: FC = () => {
       title: 'Default button',
       code: (
         <div className="flex flex-wrap gap-2">
-          <Button>Default</Button>
-          <Button color="gray">Gray</Button>
-          <Button color="dark">Dark</Button>
-          <Button color="light">Light</Button>
-          <Button color="success">Success</Button>
-          <Button color="failure">Failure</Button>
-          <Button color="warning">Warning</Button>
-          <Button color="purple">Purple</Button>
+          <div>
+            <Button>Default</Button>
+          </div>
+          <div>
+            <Button color="gray">Gray</Button>
+          </div>
+          <div>
+            <Button color="dark">Dark</Button>
+          </div>
+          <div>
+            <Button color="light">Light</Button>
+          </div>
+          <div>
+            <Button color="success">Success</Button>
+          </div>
+          <div>
+            <Button color="failure">Failure</Button>
+          </div>
+          <div>
+            <Button color="warning">Warning</Button>
+          </div>
+          <div>
+            <Button color="purple">Purple</Button>
+          </div>
         </div>
       ),
       codeClassName: 'dark:!bg-gray-900',
@@ -26,27 +42,41 @@ const ButtonsPage: FC = () => {
       title: 'Button pills',
       code: (
         <div className="flex flex-wrap gap-2">
-          <Button color="gray" pill>
-            Gray
-          </Button>
-          <Button color="dark" pill>
-            Dark
-          </Button>
-          <Button color="light" pill>
-            Light
-          </Button>
-          <Button color="success" pill>
-            Success
-          </Button>
-          <Button color="failure" pill>
-            Failure
-          </Button>
-          <Button color="warning" pill>
-            Warning
-          </Button>
-          <Button color="purple" pill>
-            Purple
-          </Button>
+          <div>
+            <Button color="gray" pill>
+              Gray
+            </Button>
+          </div>
+          <div>
+            <Button color="dark" pill>
+              Dark
+            </Button>
+          </div>
+          <div>
+            <Button color="light" pill>
+              Light
+            </Button>
+          </div>
+          <div>
+            <Button color="success" pill>
+              Success
+            </Button>
+          </div>
+          <div>
+            <Button color="failure" pill>
+              Failure
+            </Button>
+          </div>
+          <div>
+            <Button color="warning" pill>
+              Warning
+            </Button>
+          </div>
+          <div>
+            <Button color="purple" pill>
+              Purple
+            </Button>
+          </div>
         </div>
       ),
       codeClassName: 'dark:!bg-gray-900',
@@ -55,14 +85,30 @@ const ButtonsPage: FC = () => {
       title: 'Gradient Monochrome',
       code: (
         <div className="flex flex-wrap gap-2">
-          <Button gradientMonochrome="info">Info</Button>
-          <Button gradientMonochrome="success">Success</Button>
-          <Button gradientMonochrome="cyan">Cyan</Button>
-          <Button gradientMonochrome="teal">Teal</Button>
-          <Button gradientMonochrome="lime">Lime</Button>
-          <Button gradientMonochrome="failure">Failure</Button>
-          <Button gradientMonochrome="pink">Pink</Button>
-          <Button gradientMonochrome="purple">Purple</Button>
+          <div>
+            <Button gradientMonochrome="info">Info</Button>
+          </div>
+          <div>
+            <Button gradientMonochrome="success">Success</Button>
+          </div>
+          <div>
+            <Button gradientMonochrome="cyan">Cyan</Button>
+          </div>
+          <div>
+            <Button gradientMonochrome="teal">Teal</Button>
+          </div>
+          <div>
+            <Button gradientMonochrome="lime">Lime</Button>
+          </div>
+          <div>
+            <Button gradientMonochrome="failure">Failure</Button>
+          </div>
+          <div>
+            <Button gradientMonochrome="pink">Pink</Button>
+          </div>
+          <div>
+            <Button gradientMonochrome="purple">Purple</Button>
+          </div>
         </div>
       ),
       codeClassName: 'dark:!bg-gray-900',
@@ -71,13 +117,27 @@ const ButtonsPage: FC = () => {
       title: 'Gradient duo-tone',
       code: (
         <div className="flex flex-wrap gap-2">
-          <Button gradientDuoTone="purpleToBlue">Purple to Blue</Button>
-          <Button gradientDuoTone="cyanToBlue">Cyan to Blue</Button>
-          <Button gradientDuoTone="greenToBlue">Green to Blue</Button>
-          <Button gradientDuoTone="purpleToPink">Purple to Pink</Button>
-          <Button gradientDuoTone="pinkToOrange">Pink to Orange</Button>
-          <Button gradientDuoTone="tealToLime">Teal to Lime</Button>
-          <Button gradientDuoTone="redToYellow">Red to Yellow</Button>
+          <div>
+            <Button gradientDuoTone="purpleToBlue">Purple to Blue</Button>
+          </div>
+          <div>
+            <Button gradientDuoTone="cyanToBlue">Cyan to Blue</Button>
+          </div>
+          <div>
+            <Button gradientDuoTone="greenToBlue">Green to Blue</Button>
+          </div>
+          <div>
+            <Button gradientDuoTone="purpleToPink">Purple to Pink</Button>
+          </div>
+          <div>
+            <Button gradientDuoTone="pinkToOrange">Pink to Orange</Button>
+          </div>
+          <div>
+            <Button gradientDuoTone="tealToLime">Teal to Lime</Button>
+          </div>
+          <div>
+            <Button gradientDuoTone="redToYellow">Red to Yellow</Button>
+          </div>
         </div>
       ),
       codeClassName: 'dark:!bg-gray-900',
@@ -86,27 +146,41 @@ const ButtonsPage: FC = () => {
       title: 'Outline',
       code: (
         <div className="flex flex-wrap items-center gap-2">
-          <Button outline gradientDuoTone="purpleToBlue">
-            Purple to Blue
-          </Button>
-          <Button outline gradientDuoTone="cyanToBlue">
-            Cyan to Blue
-          </Button>
-          <Button outline gradientDuoTone="greenToBlue">
-            Green to Blue
-          </Button>
-          <Button outline gradientDuoTone="purpleToPink">
-            Purple to Pink
-          </Button>
-          <Button outline gradientDuoTone="pinkToOrange">
-            Pink to Orange
-          </Button>
-          <Button outline gradientDuoTone="tealToLime">
-            Teal to Lime
-          </Button>
-          <Button outline gradientDuoTone="redToYellow">
-            Red to Yellow
-          </Button>
+          <div>
+            <Button outline gradientDuoTone="purpleToBlue">
+              Purple to Blue
+            </Button>
+          </div>
+          <div>
+            <Button outline gradientDuoTone="cyanToBlue">
+              Cyan to Blue
+            </Button>
+          </div>
+          <div>
+            <Button outline gradientDuoTone="greenToBlue">
+              Green to Blue
+            </Button>
+          </div>
+          <div>
+            <Button outline gradientDuoTone="purpleToPink">
+              Purple to Pink
+            </Button>
+          </div>
+          <div>
+            <Button outline gradientDuoTone="pinkToOrange">
+              Pink to Orange
+            </Button>
+          </div>
+          <div>
+            <Button outline gradientDuoTone="tealToLime">
+              Teal to Lime
+            </Button>
+          </div>
+          <div>
+            <Button outline gradientDuoTone="redToYellow">
+              Red to Yellow
+            </Button>
+          </div>
         </div>
       ),
       codeClassName: 'dark:!bg-gray-900',
@@ -115,11 +189,21 @@ const ButtonsPage: FC = () => {
       title: 'Button sizes',
       code: (
         <div className="flex flex-wrap items-center gap-2">
-          <Button size="xs">Extra small</Button>
-          <Button size="sm">Small</Button>
-          <Button size="md">Base</Button>
-          <Button size="lg">Large</Button>
-          <Button size="xl">Extra large</Button>
+          <div>
+            <Button size="xs">Extra small</Button>
+          </div>
+          <div>
+            <Button size="sm">Small</Button>
+          </div>
+          <div>
+            <Button size="md">Base</Button>
+          </div>
+          <div>
+            <Button size="lg">Large</Button>
+          </div>
+          <div>
+            <Button size="xl">Extra large</Button>
+          </div>
         </div>
       ),
       codeClassName: 'dark:!bg-gray-900',
@@ -128,14 +212,18 @@ const ButtonsPage: FC = () => {
       title: 'Buttons with icon',
       code: (
         <div className="flex flex-wrap items-center gap-2">
-          <Button>
-            <HiShoppingCart className="mr-2 h-5 w-5" />
-            Buy now
-          </Button>
-          <Button>
-            Choose plan
-            <HiOutlineArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+          <div>
+            <Button>
+              <HiShoppingCart className="mr-2 h-5 w-5" />
+              Buy now
+            </Button>
+          </div>
+          <div>
+            <Button>
+              Choose plan
+              <HiOutlineArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
         </div>
       ),
       codeClassName: 'dark:!bg-gray-900',
@@ -143,7 +231,7 @@ const ButtonsPage: FC = () => {
     {
       title: 'Button with label',
       code: (
-        <div>
+        <div className="w-3/12">
           <Button label="2">Messages</Button>
         </div>
       ),
@@ -153,18 +241,26 @@ const ButtonsPage: FC = () => {
       title: 'Icon buttons',
       code: (
         <div className="flex flex-wrap items-center gap-2">
-          <Button>
-            <HiOutlineArrowRight className="h-6 w-6" />
-          </Button>
-          <Button pill>
-            <HiOutlineArrowRight className="h-6 w-6" />
-          </Button>
-          <Button outline>
-            <HiOutlineArrowRight className="h-6 w-6" />
-          </Button>
-          <Button outline pill>
-            <HiOutlineArrowRight className="h-6 w-6" />
-          </Button>
+          <div>
+            <Button>
+              <HiOutlineArrowRight className="h-6 w-6" />
+            </Button>
+          </div>
+          <div>
+            <Button pill>
+              <HiOutlineArrowRight className="h-6 w-6" />
+            </Button>
+          </div>
+          <div>
+            <Button outline>
+              <HiOutlineArrowRight className="h-6 w-6" />
+            </Button>
+          </div>
+          <div>
+            <Button outline pill>
+              <HiOutlineArrowRight className="h-6 w-6" />
+            </Button>
+          </div>
         </div>
       ),
       codeClassName: 'dark:!bg-gray-900',
@@ -173,18 +269,22 @@ const ButtonsPage: FC = () => {
       title: 'Loader',
       code: (
         <div className="flex flex-wrap items-center gap-2">
-          <Button>
-            <div className="mr-3">
-              <Spinner size="sm" light />
-            </div>
-            Loading ...
-          </Button>
-          <Button outline>
-            <div className="mr-3">
-              <Spinner size="sm" light />
-            </div>
-            Loading ...
-          </Button>
+          <div>
+            <Button>
+              <div className="mr-3">
+                <Spinner size="sm" light />
+              </div>
+              Loading ...
+            </Button>
+          </div>
+          <div>
+            <Button outline>
+              <div className="mr-3">
+                <Spinner size="sm" light />
+              </div>
+              Loading ...
+            </Button>
+          </div>
         </div>
       ),
       codeClassName: 'dark:!bg-gray-900',
@@ -192,7 +292,7 @@ const ButtonsPage: FC = () => {
     {
       title: 'Disabled',
       code: (
-        <div>
+        <div className="w-3/12">
           <Button disabled>Disabled button</Button>
         </div>
       ),
