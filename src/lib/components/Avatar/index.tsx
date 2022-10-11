@@ -55,8 +55,16 @@ const AvatarComponent: FC<AvatarProps> = ({
             src={img}
           />
         ) : placeholderInitials ? (
-          <div className="inline-flex overflow-hidden relative justify-center items-center w-10 h-10 bg-gray-100 rounded-full dark:bg-gray-600">
-            <span className="font-medium text-gray-600 dark:text-gray-300">{placeholderInitials}</span>
+          <div
+            className={classNames(
+              theme.img.off,
+              theme.initials.base,
+              rounded && theme.rounded,
+              stacked && theme.stacked,
+              bordered && theme.bordered,
+            )}
+          >
+            <span className={classNames(theme.initials.text)}>{placeholderInitials}</span>
           </div>
         ) : (
           <div
