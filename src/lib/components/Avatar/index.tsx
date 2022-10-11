@@ -64,7 +64,9 @@ const AvatarComponent: FC<AvatarProps> = ({
               bordered && theme.bordered,
             )}
           >
-            <span className={classNames(theme.initials.text)}>{placeholderInitials}</span>
+            <span className={classNames(theme.initials.text)} data-testid="flowbite-avatar-initials-placeholder">
+              {placeholderInitials}
+            </span>
           </div>
         ) : (
           <div
