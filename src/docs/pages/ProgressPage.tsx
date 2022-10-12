@@ -47,7 +47,7 @@ const ProgressPage: FC = () => {
     },
     {
       title: 'With label inside',
-      code: <Progress progress={50} label="Flowbite" size="lg" />,
+      code: <Progress progress={50} label="Flowbite" labelPosition="inside" size="lg" />,
     },
     {
       title: 'With label outside',
