@@ -15,11 +15,12 @@ const SidebarCollapse: FC<SidebarCollapseProps> = ({
   icon: Icon,
   label,
   className,
+  defaultIsOpen,
   ...props
 }): JSX.Element => {
   const id = useId();
   const { isCollapsed } = useSidebarContext();
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(defaultIsOpen);
   const theme = useTheme().theme.sidebar.collapse;
 
   const Wrapper: FC<PropsWithChildren<unknown>> = ({ children }): JSX.Element => (
