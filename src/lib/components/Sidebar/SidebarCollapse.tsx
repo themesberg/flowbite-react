@@ -11,12 +11,12 @@ import { SidebarItemContext } from './SidebarItemContext';
 
 export type SidebarCollapseProps = PropsWithChildren<ComponentProps<'button'> & SidebarItemProps>;
 
-const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label, ...props }): JSX.Element => {
+const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label, defaultIsOpen = false, ...props }): JSX.Element => {
   const theirProps = excludeClassName(props);
 
   const id = useId();
   const { isCollapsed } = useSidebarContext();
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(defaultIsOpen);
   const theme = useTheme().theme.sidebar.collapse;
 
   const Wrapper: FC<PropsWithChildren<unknown>> = ({ children }): JSX.Element => (
