@@ -58,6 +58,19 @@ const ThemePage: FC = () => {
           )}
         </SyntaxHighlighter>
       </Card>
+      <span className="text-xl font-bold">Get the theme</span>
+      <p>
+        For more customizations, there is the possibility to get the theme with the <strong>useTheme</strong> hook and
+        its mode with the <strong>useThemeMode</strong> hook.
+      </p>
+      <Card>
+        <SyntaxHighlighter language="tsx" style={dracula}>
+          const theme = useTheme().theme.button;
+        </SyntaxHighlighter>
+        <SyntaxHighlighter language="tsx" style={dracula}>
+          const [mode, setMode, toggleMode] = useThemeMode(usePreferences);
+        </SyntaxHighlighter>
+      </Card>
     </div>
   );
 };
