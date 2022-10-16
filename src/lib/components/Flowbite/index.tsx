@@ -5,7 +5,7 @@ import { mergeDeep } from '../../helpers/mergeDeep';
 import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';
 import type { FlowbiteTheme } from './FlowbiteTheme';
-import { ThemeContext, useThemeMode } from './ThemeContext';
+import { ThemeContext, useTheme, useThemeMode } from './ThemeContext';
 
 export interface ThemeProps {
   dark?: boolean;
@@ -49,3 +49,4 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
 };
 
 export type { FlowbiteTheme } from './FlowbiteTheme';
+export { useTheme, useThemeMode };
