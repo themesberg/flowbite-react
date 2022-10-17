@@ -36,8 +36,8 @@ describe('Components / Dropdown', () => {
       await userEvent.click(screen.getByText('Dashboard'));
 
       expect(dropdown()).toHaveClass('invisible');
-    })
-  })
+    });
+  });
 });
 
 const TestDropdown: FC = () => (
