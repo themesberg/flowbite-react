@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FC } from 'react';
 import { describe, expect, it } from 'vitest';
@@ -32,8 +32,10 @@ describe('Components / Dropdown', () => {
       const user = userEvent.setup();
       render(<TestDropdown />);
 
-      await user.click(button());
-      await userEvent.click(screen.getByText('Dashboard'));
+      act(() => {
+        user.click(button());
+        userEvent.click(dropdownItem());
+      });
 
       expect(dropdown()).toHaveClass('invisible');
     });
@@ -57,3 +59,5 @@ const TestDropdown: FC = () => (
 const button = () => screen.getByRole('button');
 
 const dropdown = () => screen.getByTestId('flowbite-tooltip');
+
+const dropdownItem = () => screen.getByText('Dashboard');
