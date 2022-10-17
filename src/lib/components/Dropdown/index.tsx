@@ -1,7 +1,8 @@
-import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
-import { useMemo } from 'react';
+import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
+import React, { Children, useMemo, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import { excludeClassName } from '../../helpers/exclude';
+import { uuid } from '../../helpers/uuid';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 import type { FloatingProps } from '../Floating';
@@ -71,7 +72,22 @@ const DropdownComponent: FC<DropdownProps> = ({ children, ...props }) => {
     return icons[p] ?? HiOutlineChevronDown;
   }, [placement]);
 
-  const content = useMemo(() => <ul className={theme.content}>{children}</ul>, [children, theme]);
+  const [closeRequestKey, setCloseRequestKey] = useState<string | undefined>(undefined);
+
+  const attachCloseListener: any = (node: ReactNode) => {
+    if (!React.isValidElement(node)) return node;
+    if ((node as ReactElement).type === DropdownItem)
+      return React.cloneElement(node, { closeDropdown: () => setCloseRequestKey(uuid()) });
+    if (node.props.children && typeof node.props.children === 'object') {
+      return React.cloneElement(node, { children: Children.map(node.props.children, attachCloseListener) });
+    }
+    return node;
+  };
+
+  const content = useMemo(
+    () => <ul className={theme.content}>{Children.map(children, attachCloseListener)}</ul>,
+    [children, theme],
+  );
 
   const TriggerWrapper: FC<ButtonProps> = ({ children }): JSX.Element =>
     inline ? <button className={theme.inlineWrapper}>{children}</button> : <Button {...buttonProps}>{children}</Button>;
@@ -85,6 +101,7 @@ const DropdownComponent: FC<DropdownProps> = ({ children, ...props }) => {
       arrow={floatingArrow}
       trigger={trigger}
       theme={theme.floating}
+      closeRequestKey={closeRequestKey}
     >
       <TriggerWrapper>
         {label}

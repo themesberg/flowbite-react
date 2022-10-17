@@ -45,6 +45,7 @@ export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'di
   style?: 'dark' | 'light' | 'auto';
   animation?: false | `duration-${number}`;
   arrow?: boolean;
+  closeRequestKey?: string;
 }
 
 /**
@@ -59,6 +60,7 @@ export const Floating: FC<FloatingProps> = ({
   placement = 'top',
   style = 'dark',
   trigger = 'hover',
+  closeRequestKey,
   ...props
 }) => {
   const theirProps = excludeClassName(props);
@@ -96,6 +98,10 @@ export const Floating: FC<FloatingProps> = ({
       return autoUpdate(refs.reference.current, refs.floating.current, update);
     }
   }, [open, refs.floating, refs.reference, update]);
+
+  useEffect(() => {
+    if (closeRequestKey !== undefined) setOpen(false);
+  }, [closeRequestKey]);
 
   return (
     <>
