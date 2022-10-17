@@ -74,6 +74,10 @@ const DropdownComponent: FC<DropdownProps> = ({ children, ...props }) => {
 
   const [closeRequestKey, setCloseRequestKey] = useState<string | undefined>(undefined);
 
+  /**
+   * Adds closeDropdown callback to DropdownItem instances that sends a close request to Floating when clicked.
+   * @param node current element being traversed
+   */
   const attachCloseListener: any = (node: ReactNode) => {
     if (!React.isValidElement(node)) return node;
     if ((node as ReactElement).type === DropdownItem)
