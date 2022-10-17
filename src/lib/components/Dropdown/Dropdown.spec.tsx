@@ -27,6 +27,17 @@ describe('Components / Dropdown', () => {
       expect(dropdown()).toHaveClass('invisible');
     });
   });
+  describe('Mouse interactions', () => {
+    it('should collapse if item is clicked', async () => {
+      const user = userEvent.setup();
+      render(<TestDropdown />);
+
+      await user.click(button());
+      await userEvent.click(screen.getByText('Dashboard'));
+
+      expect(dropdown()).toHaveClass('invisible');
+    })
+  })
 });
 
 const TestDropdown: FC = () => (
