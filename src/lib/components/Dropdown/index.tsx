@@ -81,7 +81,12 @@ const DropdownComponent: FC<DropdownProps> = ({ children, ...props }) => {
   const attachCloseListener: any = (node: ReactNode) => {
     if (!React.isValidElement(node)) return node;
     if ((node as ReactElement).type === DropdownItem)
-      return React.cloneElement(node, { closeDropdown: () => setCloseRequestKey(uuid()) });
+      return React.cloneElement(node, {
+        onClick: () => {
+          node.props.onClick?.();
+          setCloseRequestKey(uuid());
+        },
+      });
     if (node.props.children && typeof node.props.children === 'object') {
       return React.cloneElement(node, { children: Children.map(node.props.children, attachCloseListener) });
     }
