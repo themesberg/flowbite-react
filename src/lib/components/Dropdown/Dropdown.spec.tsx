@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FC } from 'react';
 import { describe, expect, it } from 'vitest';
@@ -27,6 +27,19 @@ describe('Components / Dropdown', () => {
       expect(dropdown()).toHaveClass('invisible');
     });
   });
+  describe('Mouse interactions', () => {
+    it('should collapse if item is clicked', async () => {
+      const user = userEvent.setup();
+      render(<TestDropdown />);
+
+      act(() => {
+        user.click(button());
+        userEvent.click(dropdownItem());
+      });
+
+      expect(dropdown()).toHaveClass('invisible');
+    });
+  });
 });
 
 const TestDropdown: FC = () => (
@@ -46,3 +59,5 @@ const TestDropdown: FC = () => (
 const button = () => screen.getByRole('button');
 
 const dropdown = () => screen.getByTestId('flowbite-tooltip');
+
+const dropdownItem = () => screen.getByText('Dashboard');
