@@ -856,7 +856,7 @@ const theme: FlowbiteTheme = {
   },
   tooltip: {
     target: 'w-fit',
-    base: 'absolute inline-block rounded-lg py-2 px-3 text-sm font-medium shadow-sm',
+    base: 'absolute inline-block z-10 rounded-lg py-2 px-3 text-sm font-medium shadow-sm',
     animation: 'transition-opacity',
     hidden: 'invisible opacity-0',
     style: {
