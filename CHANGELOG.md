@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/themesberg/flowbite-react/compare/v0.2.0...v0.2.1) (2022-10-19)
+
+
+### Features
+
+* allow using initials as `Avatar` placeholder ([#375](https://github.com/themesberg/flowbite-react/issues/375)) ([e349d82](https://github.com/themesberg/flowbite-react/commit/e349d82ca1d0933ea037655022b38aa1b9836a33)), closes [#357](https://github.com/themesberg/flowbite-react/issues/357) [#357](https://github.com/themesberg/flowbite-react/issues/357) [#357](https://github.com/themesberg/flowbite-react/issues/357) [#357](https://github.com/themesberg/flowbite-react/issues/357)
+* **button:** added forwardRef to button component ([#391](https://github.com/themesberg/flowbite-react/issues/391)) ([3278c84](https://github.com/themesberg/flowbite-react/commit/3278c84ba15bc754032c4e248eb31e64d8bb53ff)), closes [#341](https://github.com/themesberg/flowbite-react/issues/341)
+* **themecontext:** exported theme hooks and updated docs ([#390](https://github.com/themesberg/flowbite-react/issues/390)) ([37644b7](https://github.com/themesberg/flowbite-react/commit/37644b7247a35ce15df0379425139585bc8ae27f)), closes [#389](https://github.com/themesberg/flowbite-react/issues/389)
+
+
+### Bug Fixes
+
+* **dropdown:** close dropdown when item is selected ([#392](https://github.com/themesberg/flowbite-react/issues/392)) ([05f5534](https://github.com/themesberg/flowbite-react/commit/05f5534e972c750b979f6eaa225a5f0f98738ffb)), closes [#349](https://github.com/themesberg/flowbite-react/issues/349) [#349](https://github.com/themesberg/flowbite-react/issues/349) [#349](https://github.com/themesberg/flowbite-react/issues/349)
+
 ## [0.2.0](https://github.com/themesberg/flowbite-react/compare/v0.1.12...v0.2.0) (2022-10-11)
 
 
