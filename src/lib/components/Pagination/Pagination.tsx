@@ -3,8 +3,7 @@ import type { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import range from '../../helpers/range';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { PaginationButtonProps } from './Pagination.types';
-import PaginationButton from './PaginationButton';
+import PaginationButton, { PaginationButtonProps } from './PaginationButton';
 
 export type PaginationProps = PropsWithChildren<Pagination>;
 
