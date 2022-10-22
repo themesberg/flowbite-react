@@ -95,6 +95,7 @@
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "@vitejs/plugin-react": "^2.0.0",
+    "@vitest/coverage-c8": "^0.24.3",
     "@vitest/ui": "^0.21.0",
     "autoprefixer": "^10.4.8",
     "axe-core": "^4.4.3",
