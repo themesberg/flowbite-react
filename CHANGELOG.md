@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/themesberg/flowbite-react/compare/v0.3.1...v0.3.2) (2022-10-22)
+
+
+### Features
+
+* **classname:** more missing classnames access ([#406](https://github.com/themesberg/flowbite-react/issues/406)) ([9e40115](https://github.com/themesberg/flowbite-react/commit/9e4011554cc132fd24bff286955b5f2d6861e1f8))
+
 ### [0.3.1](https://github.com/themesberg/flowbite-react/compare/v0.3.0...v0.3.1) (2022-10-22)
 
 
