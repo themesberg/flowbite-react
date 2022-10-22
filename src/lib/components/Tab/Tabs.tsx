@@ -3,7 +3,7 @@ import type { ComponentProps, FC, KeyboardEvent, PropsWithChildren, ReactElement
 import { Children, useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
-import type { TabProps } from './TabItem';
+import type { TabItemProps } from './TabItem';
 import { TabItem } from './TabItem';
 
 export interface TabStyles {
@@ -41,7 +41,7 @@ export const TabsComponent: FC<TabsProps> = ({ children, style = 'default', clas
 
   const id = useId();
   const tabs = useMemo(
-    () => Children.map(children as ReactElement<PropsWithChildren<TabProps>>[], ({ props }) => props),
+    () => Children.map(children as ReactElement<PropsWithChildren<TabItemProps>>[], ({ props }) => props),
     [children],
   );
   const tabRefs = useRef<HTMLButtonElement[]>([]);

@@ -4,7 +4,7 @@ import { useId } from 'react';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useSidebarContext } from './SidebarContext';
 
-export interface SidebarLogoProps extends PropsWithChildren<Omit<ComponentProps<'a'>, 'className'>> {
+export interface SidebarLogoProps extends PropsWithChildren<ComponentProps<'a'>> {
   className?: string;
   href: string;
   img: string;
