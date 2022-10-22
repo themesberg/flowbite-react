@@ -59,7 +59,7 @@ const theme: FlowbiteTheme = {
     rounded: 'rounded-lg',
   },
   avatar: {
-    base: 'flex items-center space-x-4',
+    base: 'flex justify-center items-center space-x-4',
     bordered: 'p-1 ring-2 ring-gray-300 dark:ring-gray-500',
     img: {
       off: 'rounded relative overflow-hidden bg-gray-100 dark:bg-gray-600',
