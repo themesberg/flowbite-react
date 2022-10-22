@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import { excludeClassName } from '../../../helpers/exclude';
 import type { FlowbiteColors, FlowbiteSizes } from '../../Flowbite/FlowbiteTheme';
 import { useTheme } from '../../Flowbite/ThemeContext';
 import HelperText from '../HelperText';
@@ -26,7 +25,6 @@ export interface SelectProps extends Omit<ComponentProps<'select'>, 'color' | 'r
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ children, sizing = 'md', shadow, helperText, addon, icon: Icon, color = 'gray', className, ...props }, ref) => {
     const theme = useTheme().theme.formControls.select;
-    const theirProps = excludeClassName(props);
 
     return (
       <div className={classNames(theme.base, className)}>
@@ -46,7 +44,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
               theme.field.select.withShadow[shadow ? 'on' : 'off'],
               theme.field.select.sizes[sizing],
             )}
-            {...theirProps}
+            {...props}
             ref={ref}
           >
             {children}

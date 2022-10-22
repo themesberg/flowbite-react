@@ -4,16 +4,9 @@ import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface RatingAdvancedProps extends PropsWithChildren<ComponentProps<'div'>> {
   percentFilled?: number;
-  progressClassName?: string;
 }
 
-export const RatingAdvanced: FC<RatingAdvancedProps> = ({
-  percentFilled = 0,
-  children,
-  className,
-  progressClassName,
-  ...props
-}) => {
+export const RatingAdvanced: FC<RatingAdvancedProps> = ({ percentFilled = 0, children, className, ...props }) => {
   const theme = useTheme().theme.rating.advanced;
 
   return (
@@ -21,7 +14,7 @@ export const RatingAdvanced: FC<RatingAdvancedProps> = ({
       <span className={theme.label}>{children}</span>
       <div className={theme.progress.base}>
         <div
-          className={classNames(theme.progress.fill, progressClassName)}
+          className={theme.progress.fill}
           data-testid="flowbite-rating-fill"
           style={{ width: `${percentFilled}%` }}
         />

@@ -27,7 +27,6 @@ export type TabItemStatus = 'active' | 'notActive';
 
 export interface TabsProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
   style?: keyof TabStyles;
-  tabButtonClassName?: string;
 }
 
 interface TabEventProps {
@@ -38,13 +37,7 @@ interface TabKeyboardEventProps extends TabEventProps {
   event: KeyboardEvent<HTMLButtonElement>;
 }
 
-export const TabsComponent: FC<TabsProps> = ({
-  children,
-  style = 'default',
-  className,
-  tabButtonClassName,
-  ...rest
-}) => {
+export const TabsComponent: FC<TabsProps> = ({ children, style = 'default', className, ...rest }) => {
   const theme = useTheme().theme.tab;
   const theirProps = excludeClassName(rest);
 
@@ -114,7 +107,6 @@ export const TabsComponent: FC<TabsProps> = ({
                 [tabItemStyle.active.on]: index === activeTab,
                 [tabItemStyle.active.off]: index !== activeTab && !tab.disabled,
               },
-              tabButtonClassName,
             )}
             disabled={tab.disabled}
             id={`${id}-tab-${index}`}

@@ -16,7 +16,6 @@ interface Pagination extends ComponentProps<'nav'> {
   totalPages: number;
   previousLabel?: string;
   nextLabel?: string;
-  buttonClassName?: string;
   renderPaginationButton?: (props: PaginationButtonProps) => ReactNode;
 }
 

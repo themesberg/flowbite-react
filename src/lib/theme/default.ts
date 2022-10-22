@@ -33,8 +33,10 @@ const theme: FlowbiteTheme = {
   alert: {
     base: 'flex flex-col gap-2 p-4 text-sm',
     borderAccent: 'border-t-4',
+    wrapper: 'flex items-center',
     closeButton: {
       base: '-mx-1.5 -my-1.5 ml-auto inline-flex h-8 w-8 rounded-lg p-1.5 focus:ring-2',
+      icon: 'w-5 h-5',
       color: {
         info: 'bg-blue-100 text-blue-500 hover:bg-blue-200 focus:ring-blue-400 dark:bg-blue-200 dark:text-blue-600 dark:hover:bg-blue-300',
         gray: 'bg-gray-100 text-gray-500 hover:bg-gray-200 focus:ring-gray-400 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white',
@@ -62,6 +64,7 @@ const theme: FlowbiteTheme = {
     img: {
       off: 'rounded relative overflow-hidden bg-gray-100 dark:bg-gray-600',
       on: 'rounded',
+      placeholder: 'absolute w-auto h-auto text-gray-400 -bottom-1',
     },
     rounded: '!rounded-full',
     size: {
@@ -94,6 +97,12 @@ const theme: FlowbiteTheme = {
       text: 'font-medium text-gray-600 dark:text-gray-300',
       base: 'inline-flex overflow-hidden relative justify-center items-center w-10 h-10 bg-gray-100 dark:bg-gray-600',
     },
+  },
+  avatarGroupCounter: {
+    base: 'relative flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 rounded-full ring-2 ring-gray-300 hover:bg-gray-600 dark:ring-gray-500',
+  },
+  avatarGroup: {
+    base: 'flex mb-5 -space-x-4',
   },
   badge: {
     base: 'flex h-fit items-center gap-1 font-semibold',

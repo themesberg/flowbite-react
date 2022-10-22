@@ -11,7 +11,6 @@ export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>
   onDismiss?: boolean | (() => void);
   rounded?: boolean;
   withBorderAccent?: boolean;
-  className?: string;
 }
 
 export interface AlertColors extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'success' | 'warning'> {
@@ -41,7 +40,7 @@ export const Alert: FC<AlertProps> = ({
       )}
       role="alert"
     >
-      <div className="flex items-center">
+      <div className={theme.wrapper}>
         {Icon && <Icon className={theme.icon} />}
         <div>{children}</div>
         {typeof onDismiss === 'function' && (
@@ -51,7 +50,7 @@ export const Alert: FC<AlertProps> = ({
             onClick={onDismiss}
             type="button"
           >
-            <HiX aria-hidden className="w-5 h-5" />
+            <HiX aria-hidden className={theme.closeButton.icon} />
           </button>
         )}
       </div>

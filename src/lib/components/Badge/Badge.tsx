@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -29,8 +28,6 @@ export const Badge: FC<BadgeProps> = ({
   className,
   ...props
 }): JSX.Element => {
-  const theirProps = excludeClassName(props);
-
   const theme = useTheme().theme.badge;
 
   const Content = (): JSX.Element => (
@@ -43,7 +40,7 @@ export const Badge: FC<BadgeProps> = ({
         className,
       )}
       data-testid="flowbite-badge"
-      {...theirProps}
+      {...props}
     >
       {Icon && <Icon aria-hidden className={theme.icon.size[size]} data-testid="flowbite-badge-icon" />}
       {children && <span>{children}</span>}

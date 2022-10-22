@@ -9,11 +9,10 @@ export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | '
   sizing?: keyof TextInputSizes;
   helperText?: ReactNode;
   color?: keyof TextInputColors;
-  inputClassName?: string;
 }
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ sizing = 'md', helperText, color = 'gray', className, inputClassName, ...props }, ref) => {
+  ({ sizing = 'md', helperText, color = 'gray', className, ...props }, ref) => {
     const theme = useTheme().theme.formControls.fileInput;
     return (
       <>
@@ -24,7 +23,6 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
                 theme.field.input.base,
                 theme.field.input.colors[color],
                 theme.field.input.sizes[sizing],
-                inputClassName,
               )}
               {...props}
               type="file"

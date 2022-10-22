@@ -1,22 +1,16 @@
 import classNames from 'classnames';
-import type { PropsWithChildren } from 'react';
+import type { ComponentProps, PropsWithChildren } from 'react';
 import React from 'react';
+import { useTheme } from '../Flowbite';
 
-export type AvatarGroupdCounterProps = PropsWithChildren<{
+export interface AvatarGroupdCounterProps extends PropsWithChildren<ComponentProps<'a'>> {
   total?: number;
-  href: string;
-  className?: string;
-}>;
+}
 
 const AvatarGroupCounter: React.FC<AvatarGroupdCounterProps> = ({ total, href, className }) => {
+  const theme = useTheme().theme.avatarGroupCounter;
   return (
-    <a
-      className={classNames(
-        'relative flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 rounded-full ring-2 ring-gray-300 hover:bg-gray-600 dark:ring-gray-500 ',
-        className,
-      )}
-      href={href}
-    >
+    <a className={classNames(theme.base, className)} href={href}>
       +{total}
     </a>
   );

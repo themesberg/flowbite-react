@@ -36,6 +36,13 @@ const AvatarComponent: FC<AvatarProps> = ({
   ...props
 }) => {
   const theme = useTheme().theme.avatar;
+  const imgClassName = classNames(
+    bordered && theme.bordered,
+    rounded && theme.rounded,
+    stacked && theme.stacked,
+    theme.img.on,
+    theme.size[size],
+  );
 
   return (
     <div className={classNames(theme.base, className)} data-testid="flowbite-avatar" {...props}>
@@ -43,13 +50,7 @@ const AvatarComponent: FC<AvatarProps> = ({
         {img ? (
           <img
             alt={alt}
-            className={classNames(
-              bordered && theme.bordered,
-              rounded && theme.rounded,
-              stacked && theme.stacked,
-              theme.img.on,
-              theme.size[size],
-            )}
+            className={classNames(imgClassName, theme.img.on)}
             data-testid="flowbite-avatar-img"
             src={img}
           />
@@ -68,18 +69,9 @@ const AvatarComponent: FC<AvatarProps> = ({
             </span>
           </div>
         ) : (
-          <div
-            className={classNames(
-              bordered && theme.bordered,
-              rounded && theme.rounded,
-              stacked && theme.stacked,
-              theme.img.off,
-              theme.size[size],
-            )}
-            data-testid="flowbite-avatar-img"
-          >
+          <div className={classNames(imgClassName, theme.img.off)} data-testid="flowbite-avatar-img">
             <svg
-              className="absolute w-auto h-auto text-gray-400 -bottom-1"
+              className={theme.img.placeholder}
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"

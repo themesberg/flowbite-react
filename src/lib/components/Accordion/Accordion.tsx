@@ -38,7 +38,7 @@ const AccordionComponent: FC<AccordionProps> = ({
 
   return (
     <div
-      className={classNames(theme.base, className, theme.flush[flush ? 'on' : 'off'])}
+      className={classNames(theme.base, theme.flush[flush ? 'on' : 'off'], className)}
       data-testid="flowbite-accordion"
       {...theirProps}
     >

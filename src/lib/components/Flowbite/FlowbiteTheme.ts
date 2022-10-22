@@ -54,8 +54,10 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   alert: {
     base: string;
     borderAccent: string;
+    wrapper: string;
     closeButton: {
       base: string;
+      icon: string;
       color: AlertColors;
     };
     color: AlertColors;
@@ -68,6 +70,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
     img: {
       off: string;
       on: string;
+      placeholder: string;
     };
     rounded: string;
     size: AvatarSizes;
@@ -84,6 +87,12 @@ export interface FlowbiteTheme extends Record<string, unknown> {
       base: string;
       text: string;
     };
+  };
+  avatarGroupCounter: {
+    base: string;
+  };
+  avatarGroup: {
+    base: string;
   };
   badge: {
     base: string;

@@ -1,10 +1,8 @@
 import classNames from 'classnames';
-import type { FC } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-type FooterDividerProps = {
-  className?: string;
-};
+type FooterDividerProps = ComponentProps<'hr'>;
 
 export const FooterDivider: FC<FooterDividerProps> = ({ className }) => {
   const theme = useTheme().theme.footer.divider;
