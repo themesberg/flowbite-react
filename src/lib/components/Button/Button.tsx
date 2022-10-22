@@ -18,6 +18,7 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'r
   href?: string;
   label?: ReactNode;
   outline?: boolean;
+  fullSized?: boolean;
   pill?: boolean;
   positionInGroup?: keyof PositionInButtonGroup;
   size?: keyof ButtonSizes;
@@ -56,6 +57,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
       label,
       outline = false,
       pill = false,
+      fullSized,
       positionInGroup = 'none',
       size = 'md',
       className,
@@ -81,6 +83,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
           outline && (theme.outline.color[color] ?? theme.outline.color.default),
           theme.base,
           theme.pill[pill ? 'on' : 'off'],
+          fullSized && theme.fullSized,
           className,
         )}
         disabled={disabled}
