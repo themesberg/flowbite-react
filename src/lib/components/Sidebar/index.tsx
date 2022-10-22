@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import { ComponentProps, FC, PropsWithChildren } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 import SidebarCollapse from './SidebarCollapse';
 import { SidebarContext } from './SidebarContext';
@@ -10,7 +9,7 @@ import SidebarItemGroup from './SidebarItemGroup';
 import SidebarItems from './SidebarItems';
 import SidebarLogo from './SidebarLogo';
 
-export interface SidebarProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
+export interface SidebarProps extends PropsWithChildren<ComponentProps<'div'>> {
   collapseBehavior?: 'collapse' | 'hide';
   collapsed?: boolean;
 }
@@ -19,19 +18,18 @@ const SidebarComponent: FC<SidebarProps> = ({
   children,
   collapseBehavior = 'collapse',
   collapsed: isCollapsed = false,
+  className,
   ...props
 }): JSX.Element => {
-  const theirProps = excludeClassName(props);
-
   const theme = useTheme().theme.sidebar;
 
   return (
     <SidebarContext.Provider value={{ isCollapsed }}>
       <aside
         aria-label="Sidebar"
-        className={classNames(theme.base, theme.collapsed[isCollapsed ? 'on' : 'off'])}
+        className={classNames(theme.base, theme.collapsed[isCollapsed ? 'on' : 'off'], className)}
         hidden={isCollapsed && collapseBehavior === 'hide'}
-        {...theirProps}
+        {...props}
       >
         <div className={theme.inner}>{children}</div>
       </aside>

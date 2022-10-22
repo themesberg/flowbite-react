@@ -1,6 +1,16 @@
 import type { FC } from 'react';
 import { BiBuoy } from 'react-icons/bi';
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
+import {
+  HiArrowSmRight,
+  HiChartPie,
+  HiInbox,
+  HiLogout,
+  HiQuestionMarkCircle,
+  HiShoppingBag,
+  HiTable,
+  HiUser,
+  HiViewBoards,
+} from 'react-icons/hi';
 import { Badge, Sidebar } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
@@ -113,6 +123,42 @@ const SidebarPage: FC = () => {
                 </Sidebar.Item>
                 <Sidebar.Item href="#" icon={BiBuoy}>
                   Help
+                </Sidebar.Item>
+              </Sidebar.ItemGroup>
+            </Sidebar.Items>
+          </Sidebar>
+        </div>
+      ),
+    },
+    {
+      title: 'Content space',
+      code: (
+        <div className="w-fit h-[800px]">
+          <Sidebar collapsed={true} aria-label="Sidebar with content spacer example">
+            <Sidebar.Items className="flex h-full flex-col justify-between">
+              <Sidebar.ItemGroup>
+                <Sidebar.Item href="#" icon={HiChartPie}>
+                  Dashboard
+                </Sidebar.Item>
+                <Sidebar.Item href="#" icon={HiViewBoards}>
+                  Kanban
+                </Sidebar.Item>
+                <Sidebar.Item href="#" icon={HiInbox}>
+                  Inbox
+                </Sidebar.Item>
+                <Sidebar.Item href="#" icon={HiUser}>
+                  Users
+                </Sidebar.Item>
+                <Sidebar.Item href="#" icon={HiShoppingBag}>
+                  Products
+                </Sidebar.Item>
+              </Sidebar.ItemGroup>
+              <Sidebar.ItemGroup>
+                <Sidebar.Item href="#" icon={HiQuestionMarkCircle}>
+                  Help
+                </Sidebar.Item>
+                <Sidebar.Item href="#" icon={HiLogout}>
+                  Logout
                 </Sidebar.Item>
               </Sidebar.ItemGroup>
             </Sidebar.Items>
