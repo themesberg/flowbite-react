@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import type { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { RatingAdvanced } from './RatingAdvanced';
@@ -17,11 +16,10 @@ export interface RatingProps extends PropsWithChildren<ComponentProps<'div'>> {
 
 const RatingComponent: FC<RatingProps> = ({ children, size = 'sm', className, ...props }) => {
   const theme = useTheme().theme.rating;
-  const theirProps = excludeClassName(props);
 
   return (
     <RatingContext.Provider value={{ size }}>
-      <div className={classNames(theme.base, className)} {...theirProps}>
+      <div className={classNames(theme.base, className)} {...props}>
         {children}
       </div>
     </RatingContext.Provider>

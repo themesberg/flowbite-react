@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
-import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { AccordionContent } from './AccordionContent';
 import type { AccordionPanelProps } from './AccordionPanel';
@@ -24,8 +23,6 @@ const AccordionComponent: FC<AccordionProps> = ({
   className,
   ...props
 }): JSX.Element => {
-  const theirProps = excludeClassName(props);
-
   const [isOpen, setOpen] = useState(0);
   const panels = useMemo(
     () =>
@@ -40,7 +37,7 @@ const AccordionComponent: FC<AccordionProps> = ({
     <div
       className={classNames(theme.base, theme.flush[flush ? 'on' : 'off'], className)}
       data-testid="flowbite-accordion"
-      {...theirProps}
+      {...props}
     >
       {panels}
     </div>

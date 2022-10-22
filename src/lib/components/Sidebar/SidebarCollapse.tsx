@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useId, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
-import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
@@ -11,9 +10,13 @@ import { SidebarItemContext } from './SidebarItemContext';
 
 export type SidebarCollapseProps = PropsWithChildren<ComponentProps<'button'> & SidebarItemProps>;
 
-const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label, ...props }): JSX.Element => {
-  const theirProps = excludeClassName(props);
-
+const SidebarCollapse: FC<SidebarCollapseProps> = ({
+  children,
+  icon: Icon,
+  label,
+  className,
+  ...props
+}): JSX.Element => {
   const id = useId();
   const { isCollapsed } = useSidebarContext();
   const [isOpen, setOpen] = useState(false);
@@ -34,11 +37,11 @@ const SidebarCollapse: FC<SidebarCollapseProps> = ({ children, icon: Icon, label
   return (
     <Wrapper>
       <button
-        className={theme.button}
+        className={classNames(theme.button, className)}
         id={`flowbite-sidebar-collapse-${id}`}
         onClick={() => setOpen(!isOpen)}
         type="button"
-        {...theirProps}
+        {...props}
       >
         {Icon && (
           <Icon

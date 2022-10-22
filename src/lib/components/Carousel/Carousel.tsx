@@ -3,7 +3,6 @@ import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } f
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
-import { excludeClassName } from '../../helpers/exclude';
 import windowExists from '../../helpers/window-exists';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -26,7 +25,6 @@ export const Carousel: FC<CarouselProps> = ({
   ...props
 }): JSX.Element => {
   const isDeviceMobile = windowExists() && navigator.userAgent.indexOf('IEMobile') !== -1;
-  const theirProps = excludeClassName(props);
 
   const carouselContainer = useRef<HTMLDivElement>(null);
   const [activeItem, setActiveItem] = useState(0);
@@ -71,7 +69,7 @@ export const Carousel: FC<CarouselProps> = ({
   const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
 
   return (
-    <div className={classNames(theme.base, className)} data-testid="carousel" {...theirProps}>
+    <div className={classNames(theme.base, className)} data-testid="carousel" {...props}>
       <ScrollContainer
         className={classNames(
           theme.scrollContainer.base,

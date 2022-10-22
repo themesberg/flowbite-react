@@ -1,15 +1,17 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export interface ListGroupItemProps extends PropsWithChildren<Omit<ComponentProps<'a' | 'button'>, 'className'>> {
+export type ListGroupItemProps = (
+  | PropsWithChildren<ComponentProps<'a'>>
+  | PropsWithChildren<ComponentProps<'button'>>
+) & {
   active?: boolean;
   disabled?: boolean;
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   onClick?: () => void;
-}
+};
 
 export const ListGroupItem: FC<ListGroupItemProps> = ({
   active: isActive,
@@ -17,14 +19,15 @@ export const ListGroupItem: FC<ListGroupItemProps> = ({
   href,
   icon: Icon,
   onClick,
+  className,
   ...props
 }): JSX.Element => {
   const isLink = typeof href !== 'undefined';
-
   const Component = isLink ? 'a' : 'button';
-  const theirProps = excludeClassName(props);
 
   const theme = useTheme().theme.listGroup.item;
+
+  const theirProps = props as object;
 
   return (
     <li>
