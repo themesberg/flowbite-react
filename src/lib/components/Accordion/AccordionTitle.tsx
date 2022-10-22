@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import type { FlowbiteHeadingLevel } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useAccordionContext } from './AccordionPanelContext';
@@ -10,9 +9,12 @@ export interface AccordionTitleProps extends ComponentProps<'button'> {
   as?: FlowbiteHeadingLevel;
 }
 
-export const AccordionTitle: FC<AccordionTitleProps> = ({ as: Heading = 'h2', children, ...props }): JSX.Element => {
-  const theirProps = excludeClassName(props);
-
+export const AccordionTitle: FC<AccordionTitleProps> = ({
+  as: Heading = 'h2',
+  children,
+  className,
+  ...props
+}): JSX.Element => {
   const { arrowIcon: ArrowIcon, flush, isOpen, setOpen } = useAccordionContext();
   const theme = useTheme().theme.accordion.title;
 
@@ -20,10 +22,15 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({ as: Heading = 'h2', ch
 
   return (
     <button
-      className={classNames(theme.base, theme.flush[flush ? 'on' : 'off'], theme.open[isOpen ? 'on' : 'off'])}
+      className={classNames(
+        theme.base,
+        theme.flush[flush ? 'on' : 'off'],
+        theme.open[isOpen ? 'on' : 'off'],
+        className,
+      )}
       onClick={onClick}
       type="button"
-      {...theirProps}
+      {...props}
     >
       <Heading className={theme.heading} data-testid="flowbite-accordion-heading">
         {children}

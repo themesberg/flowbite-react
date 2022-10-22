@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface CardProps extends PropsWithChildren<ComponentProps<'div'>> {
@@ -19,11 +18,10 @@ export const Card: FC<CardProps> = ({
   imgSrc,
   ...props
 }): JSX.Element => {
-  const theirProps = excludeClassName(props);
-
   const theme = useTheme().theme.card;
 
   const Component = typeof href === 'undefined' ? 'div' : 'a';
+  const theirProps = props as object;
 
   return (
     <Component

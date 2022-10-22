@@ -1,7 +1,6 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
 import React, { Children, useMemo, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
-import { excludeClassName } from '../../helpers/exclude';
 import { uuid } from '../../helpers/uuid';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
@@ -56,7 +55,7 @@ const icons: Record<string, FC<ComponentProps<'svg'>>> = {
 
 const DropdownComponent: FC<DropdownProps> = ({ children, className, ...props }) => {
   const theme = useTheme().theme.dropdown;
-  const theirProps = excludeClassName(props) as DropdownProps;
+  const theirProps = props as DropdownProps;
   const {
     placement = props.inline ? 'bottom-start' : 'bottom',
     trigger = 'click',

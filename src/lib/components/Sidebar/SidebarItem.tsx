@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import { useId } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import { Badge } from '../Badge';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -9,8 +8,7 @@ import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
 import { useSidebarItemContext } from './SidebarItemContext';
 
-export interface SidebarItemProps
-  extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'> & Record<string, unknown>> {
+export interface SidebarItemProps extends PropsWithChildren<ComponentProps<'div'> & Record<string, unknown>> {
   active?: boolean;
   as?: ElementType;
   href?: string;
@@ -30,10 +28,9 @@ const SidebarItem: FC<SidebarItemProps> = ({
   active: isActive,
   label,
   labelColor = 'info',
+  className,
   ...props
 }) => {
-  const theirProps = excludeClassName(props);
-
   const id = useId();
   const { isCollapsed } = useSidebarContext();
   const { isInsideCollapse } = useSidebarItemContext();
@@ -71,8 +68,9 @@ const SidebarItem: FC<SidebarItemProps> = ({
           theme.base,
           isActive && theme.active,
           !isCollapsed && isInsideCollapse && theme.collapsed.insideCollapse,
+          className,
         )}
-        {...theirProps}
+        {...props}
       >
         {Icon && (
           <Icon

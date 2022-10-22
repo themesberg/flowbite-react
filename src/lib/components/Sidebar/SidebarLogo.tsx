@@ -1,6 +1,6 @@
+import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useId } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useSidebarContext } from './SidebarContext';
 
@@ -11,15 +11,18 @@ export interface SidebarLogoProps extends PropsWithChildren<Omit<ComponentProps<
   imgAlt?: string;
 }
 
-const SidebarLogo: FC<SidebarLogoProps> = ({ children, href, img, imgAlt = '', ...props }) => {
-  const theirProps = excludeClassName(props);
-
+const SidebarLogo: FC<SidebarLogoProps> = ({ children, href, img, imgAlt = '', className, ...props }) => {
   const id = useId();
   const { isCollapsed } = useSidebarContext();
   const theme = useTheme().theme.sidebar.logo;
 
   return (
-    <a aria-labelledby={`flowbite-sidebar-logo-${id}`} className={theme.base} href={href} {...theirProps}>
+    <a
+      aria-labelledby={`flowbite-sidebar-logo-${id}`}
+      className={classNames(theme.base, className)}
+      href={href}
+      {...props}
+    >
       <img alt={imgAlt} className={theme.img} src={img} />
       <span className={theme.collapsed[isCollapsed ? 'on' : 'off']} id={`flowbite-sidebar-logo-${id}`}>
         {children}

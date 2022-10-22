@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import type { PositionInButtonGroup } from '../ButtonGroup/ButtonGroup';
 import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import type {
@@ -66,11 +65,11 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
     ref,
   ) => {
     const isLink = typeof href !== 'undefined';
-    const theirProps = excludeClassName(props);
 
     const { buttonGroup: groupTheme, button: theme } = useTheme().theme;
 
     const Component = isLink ? 'a' : 'button';
+    const theirProps = props as object;
 
     return (
       <Component
