@@ -1,13 +1,13 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
-import type { ProgressProps } from '.';
-import { Progress } from '.';
+import type { ProgressProps } from './Progress';
+import { Progress } from './Progress';
 
 export default {
   title: 'Components/Progress',
   component: Progress,
   decorators: [
     (Story): JSX.Element => (
-      <div className="flex w-1/2 flex-col">
+      <div className="flex flex-col w-1/2">
         <Story />
       </div>
     ),

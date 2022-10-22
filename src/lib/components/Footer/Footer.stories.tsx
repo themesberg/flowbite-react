@@ -1,6 +1,6 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
-import { Footer } from '.';
+import { Footer } from './Footer';
 
 export default {
   title: 'Components/Footer',
@@ -13,7 +13,7 @@ export const DefaultFooter = Template.bind({});
 DefaultFooter.storyName = 'Default';
 DefaultFooter.args = {
   children: (
-    <div className="flex w-full justify-between p-6">
+    <div className="flex justify-between w-full p-6">
       <Footer.Copyright href="#" by="Flowbite™" year={2022} />
       <Footer.LinkGroup>
         <Footer.Link href="#">About</Footer.Link>
@@ -30,7 +30,7 @@ WithLogoFooter.storyName = 'With Logo';
 WithLogoFooter.args = {
   children: (
     <div className="w-full p-6 text-center">
-      <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
+      <div className="justify-between w-full sm:flex sm:items-center sm:justify-between">
         <Footer.Brand
           href="https://flowbite.com"
           src="https://flowbite.com/docs/images/logo.svg"
@@ -56,7 +56,7 @@ WithSocialMediaFooter.args = {
   container: true,
   children: (
     <div className="w-full p-6">
-      <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
+      <div className="grid justify-between w-full sm:flex sm:justify-between md:flex md:grid-cols-1">
         <div>
           <Footer.Brand
             href="https://flowbite.com"
@@ -92,7 +92,7 @@ WithSocialMediaFooter.args = {
       <Footer.Divider />
       <div className="w-full sm:flex sm:items-center sm:justify-between">
         <Footer.Copyright href="#" by="Flowbite™" year={2022} />
-        <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+        <div className="flex mt-4 space-x-6 sm:mt-0 sm:justify-center">
           <Footer.Icon href="#" icon={BsFacebook} />
           <Footer.Icon href="#" icon={BsInstagram} />
           <Footer.Icon href="#" icon={BsTwitter} />
@@ -109,7 +109,7 @@ SitemapLinksFooter.storyName = 'Sitemap Links';
 SitemapLinksFooter.args = {
   children: (
     <div className="w-full bg-gray-800">
-      <div className="grid w-full grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
+      <div className="grid w-full grid-cols-2 gap-8 px-6 py-8 md:grid-cols-4">
         <div>
           <Footer.Title title="Company" />
           <Footer.LinkGroup col>
@@ -146,9 +146,9 @@ SitemapLinksFooter.args = {
           </Footer.LinkGroup>
         </div>
       </div>
-      <div className="w-full bg-gray-700 py-6 px-4 sm:flex sm:items-center sm:justify-between">
+      <div className="w-full px-4 py-6 bg-gray-700 sm:flex sm:items-center sm:justify-between">
         <Footer.Copyright href="#" by="Flowbite™" year={2022} />
-        <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+        <div className="flex mt-4 space-x-6 sm:mt-0 sm:justify-center">
           <Footer.Icon href="#" icon={BsFacebook} />
           <Footer.Icon href="#" icon={BsInstagram} />
           <Footer.Icon href="#" icon={BsTwitter} />

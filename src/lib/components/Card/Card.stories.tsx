@@ -1,13 +1,13 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
-import type { CardProps } from '.';
-import { Card } from '.';
+import type { CardProps } from './Card';
+import { Card } from './Card';
 
 export default {
   title: 'Components/Card',
   component: Card,
   decorators: [
     (Story): JSX.Element => (
-      <div className="h-1/2 w-1/2">
+      <div className="w-1/2 h-1/2">
         <Story />
       </div>
     ),

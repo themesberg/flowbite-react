@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -19,13 +18,11 @@ export interface SpinnerSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | '
   [key: string]: string;
 }
 
-export const Spinner: FC<SpinnerProps> = ({ color = 'info', light, size = 'md', ...props }): JSX.Element => {
-  const theirProps = excludeClassName(props);
-
+export const Spinner: FC<SpinnerProps> = ({ color = 'info', light, size = 'md', className, ...props }): JSX.Element => {
   const theme = useTheme().theme.spinner;
 
   return (
-    <span role="status" {...theirProps}>
+    <span role="status" {...props}>
       <svg
         className={classNames(
           theme.base,
@@ -33,6 +30,7 @@ export const Spinner: FC<SpinnerProps> = ({ color = 'info', light, size = 'md', 
           theme.light[light ? 'on' : 'off'].base,
           theme.light[light ? 'on' : 'off'].color[color],
           theme.size[size],
+          className,
         )}
         fill="none"
         viewBox="0 0 100 101"

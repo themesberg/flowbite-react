@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import type { StarSizes } from '.';
+import type { StarSizes } from './Rating';
 
 export type RatingContext = {
   size?: keyof StarSizes;

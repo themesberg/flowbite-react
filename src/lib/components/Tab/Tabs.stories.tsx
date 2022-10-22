@@ -1,8 +1,8 @@
 import type { Meta } from '@storybook/react/types-6-0';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
-import type { TabsProps } from '.';
-import { Tabs, TabsComponent } from '.';
+import type { TabsProps } from './Tabs';
+import { Tabs, TabsComponent } from './Tabs';
 
 export default {
   title: 'Components/Tabs',

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Progress } from '.';
+import { Progress } from './Progress';
 
 describe.concurrent('Components / Progress', () => {
   describe.concurrent('A11y', () => {

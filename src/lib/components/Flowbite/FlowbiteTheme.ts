@@ -25,8 +25,8 @@ import type { ModalPositions, ModalSizes } from '../Modal';
 import type { ProgressColor, ProgressSizes } from '../Progress';
 import type { StarSizes } from '../Rating';
 import type { SidebarCTAColors } from '../Sidebar/SidebarCTA';
-import type { SpinnerColors, SpinnerSizes } from '../Spinner';
-import type { TabStyleItem, TabStyles } from '../Tab';
+import type { SpinnerColors, SpinnerSizes } from '../Spinner/Spinner';
+import type { TabStyleItem, TabStyles } from '../Tab/Tabs';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 

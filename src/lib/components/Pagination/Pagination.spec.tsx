@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
 import { describe, expect } from 'vitest';
-import { Pagination } from '.';
+import { Pagination } from './Pagination';
 
 describe('Pagination', () => {
   describe('Keyboard interactions', () => {
