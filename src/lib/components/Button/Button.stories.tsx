@@ -1,7 +1,7 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
-import type { ButtonProps } from '.';
-import { Button } from '.';
 import theme from '../../theme/default';
+import type { ButtonProps } from './Button';
+import { Button } from './Button';
 
 export default {
   title: 'Components/Button',

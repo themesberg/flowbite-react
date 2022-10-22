@@ -1,6 +1,6 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
-import type { AvatarProps } from '.';
-import { Avatar } from '.';
+import type { AvatarProps } from './Avatar';
+import { Avatar } from './Avatar';
 
 export default {
   title: 'Components/Avatar',

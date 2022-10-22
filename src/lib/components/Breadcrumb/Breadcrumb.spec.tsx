@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { FC } from 'react';
 import { HiHome } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { Breadcrumb } from '.';
 import { Flowbite } from '../Flowbite';
+import { Breadcrumb } from './Breadcrumb';
 
 describe('Components / Breadcrumb', () => {
   describe('A11y', () => {

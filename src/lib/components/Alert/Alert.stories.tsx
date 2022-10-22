@@ -1,7 +1,7 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
-import type { AlertProps } from '.';
-import { Alert } from '.';
+import type { AlertProps } from './Alert';
+import { Alert } from './Alert';
 
 export default {
   title: 'Components/Alert',

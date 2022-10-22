@@ -1,7 +1,7 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
 import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
-import type { ListGroupProps } from '.';
-import { ListGroup } from '.';
+import type { ListGroupProps } from './ListGroup';
+import { ListGroup } from './ListGroup';
 
 export default {
   title: 'Components/ListGroup',

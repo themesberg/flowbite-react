@@ -2,8 +2,8 @@ import { cleanup, render, screen } from '@testing-library/react';
 import { FC } from 'react';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { describe, expect, it } from 'vitest';
-import { Footer } from '.';
 import { Flowbite } from '../Flowbite';
+import { Footer } from './Footer';
 
 describe('Components / Footer', () => {
   describe('Rendering', () => {
@@ -244,7 +244,7 @@ describe('Components / Footer', () => {
 const TestFooter: FC = () => (
   <Footer bgDark container>
     <div className="w-full">
-      <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
+      <div className="grid justify-between w-full sm:flex sm:justify-between md:flex md:grid-cols-1">
         <div>
           <Footer.Brand
             href="https://flowbite.com"
@@ -280,7 +280,7 @@ const TestFooter: FC = () => (
       <Footer.Divider />
       <div className="w-full sm:flex sm:items-center sm:justify-between">
         <Footer.Copyright href="#" by="Flowbite™" year={2022} />
-        <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
+        <div className="flex mt-4 space-x-6 sm:mt-0 sm:justify-center">
           <Footer.Icon href="#" icon={BsFacebook} />
           <Footer.Icon href="#" icon={BsInstagram} />
           <Footer.Icon href="#" icon={BsTwitter} />

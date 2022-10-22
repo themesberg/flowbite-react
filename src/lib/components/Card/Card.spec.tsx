@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Card } from '.';
 import { Flowbite } from '../Flowbite';
+import { Card } from './Card';
 
 describe('Components / Card', () => {
   describe('A11y', () => {

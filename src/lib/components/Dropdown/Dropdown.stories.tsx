@@ -1,7 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import type { Meta, Story } from '@storybook/react/types-6-0';
-import type { DropdownProps } from '.';
-import { Dropdown } from '.';
+import type { DropdownProps } from './Dropdown';
+import { Dropdown } from './Dropdown';
 
 export default {
   title: 'Components/Dropdown',
@@ -48,7 +48,7 @@ WithHeader.args = {
     <>
       <Dropdown.Header>
         <span className="block text-sm">Bonnie Green</span>
-        <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+        <span className="block text-sm font-medium truncate">name@flowbite.com</span>
       </Dropdown.Header>
       <Dropdown.Item>Dashboard</Dropdown.Item>
       <Dropdown.Item>Settings</Dropdown.Item>

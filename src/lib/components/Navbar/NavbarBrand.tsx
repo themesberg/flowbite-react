@@ -1,14 +1,13 @@
+import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export type NavbarBrandProps = Omit<PropsWithChildren<ComponentProps<'a'>>, 'className'>;
+export type NavbarBrandProps = PropsWithChildren<ComponentProps<'a'>>;
 
-export const NavbarBrand: FC<NavbarBrandProps> = ({ children, href, ...props }) => {
+export const NavbarBrand: FC<NavbarBrandProps> = ({ children, href, className, ...props }) => {
   const theme = useTheme().theme.navbar;
-  const theirProps = excludeClassName(props);
   return (
-    <a href={href} className={theme.brand} {...theirProps}>
+    <a href={href} className={classNames(theme.brand, className)} {...props}>
       {children}
     </a>
   );

@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FC } from 'react';
 import { describe, expect, it } from 'vitest';
-import { Navbar } from '.';
+import { Navbar } from './Navbar';
 
 describe.concurrent('Navbar', () => {
   describe.concurrent('A11y', () => {
