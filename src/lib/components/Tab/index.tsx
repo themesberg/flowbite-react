@@ -25,8 +25,9 @@ export type TabStyleItem<Type> = {
 
 export type TabItemStatus = 'active' | 'notActive';
 
-export interface TabsProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className' | 'style'>> {
+export interface TabsProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
   style?: keyof TabStyles;
+  tabButtonClassName?: string;
 }
 
 interface TabEventProps {
@@ -37,7 +38,13 @@ interface TabKeyboardEventProps extends TabEventProps {
   event: KeyboardEvent<HTMLButtonElement>;
 }
 
-export const TabsComponent: FC<TabsProps> = ({ children, style = 'default', ...rest }) => {
+export const TabsComponent: FC<TabsProps> = ({
+  children,
+  style = 'default',
+  className,
+  tabButtonClassName,
+  ...rest
+}) => {
   const theme = useTheme().theme.tab;
   const theirProps = excludeClassName(rest);
 
@@ -80,12 +87,14 @@ export const TabsComponent: FC<TabsProps> = ({ children, style = 'default', ...r
     }
   };
 
+  const tabItemStyle = theme.tablist.tabitem.styles[style];
+
   useEffect(() => {
     tabRefs.current[focusedTab]?.focus();
   }, [focusedTab]);
 
   return (
-    <div className={theme.base}>
+    <div className={classNames(theme.base, className)}>
       <div
         aria-label="Tabs"
         role="tablist"
@@ -98,10 +107,15 @@ export const TabsComponent: FC<TabsProps> = ({ children, style = 'default', ...r
             type="button"
             aria-controls={`${id}-tabpanel-${index}`}
             aria-selected={index === activeTab}
-            className={classNames(theme.tablist.tabitem.base, theme.tablist.tabitem.styles[style], {
-              [theme.tablist.tabitem.styles[style].active.on]: index === activeTab,
-              [theme.tablist.tabitem.styles[style].active.off]: index !== activeTab && !tab.disabled,
-            })}
+            className={classNames(
+              theme.tablist.tabitem.base,
+              { ...tabItemStyle },
+              {
+                [tabItemStyle.active.on]: index === activeTab,
+                [tabItemStyle.active.off]: index !== activeTab && !tab.disabled,
+              },
+              tabButtonClassName,
+            )}
             disabled={tab.disabled}
             id={`${id}-tab-${index}`}
             onClick={() => handleClick({ target: index })}

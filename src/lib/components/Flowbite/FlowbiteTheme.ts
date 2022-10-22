@@ -1,6 +1,6 @@
 import { DeepPartial } from '..';
-import type { AlertColors } from '../Alert';
-import type { AvatarSizes } from '../Avatar';
+import type { AlertColors } from '../Alert/Alert';
+import type { AvatarSizes } from '../Avatar/Avatar';
 import type { BadgeColors, BadgeSizes } from '../Badge';
 import type {
   ButtonColors,
@@ -9,7 +9,7 @@ import type {
   ButtonOutlineColors,
   ButtonSizes,
 } from '../Button';
-import type { PositionInButtonGroup } from '../Button/ButtonGroup';
+import { PositionInButtonGroup } from '../ButtonGroup';
 import { FlowbiteDropdownTheme } from '../Dropdown';
 import type { FlowbiteFloatingTheme } from '../Floating';
 import type {
@@ -110,6 +110,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   };
   button: {
     base: string;
+    fullSized: string;
     color: ButtonColors;
     disabled: string;
     gradient: ButtonGradientColors;

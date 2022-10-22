@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -8,16 +7,15 @@ export interface HelperColors extends Pick<FlowbiteColors, 'gray' | 'info' | 'fa
   [key: string]: string;
 }
 
-export interface HelperTextProps extends PropsWithChildren<Omit<ComponentProps<'p'>, 'color' | 'className'>> {
+export interface HelperTextProps extends PropsWithChildren<Omit<ComponentProps<'p'>, 'color'>> {
   color?: keyof HelperColors;
   value?: string;
 }
 
-const HelperText: FC<HelperTextProps> = ({ value, children, color = 'default', ...props }) => {
+const HelperText: FC<HelperTextProps> = ({ value, children, color = 'default', className, ...props }) => {
   const theme = useTheme().theme.formControls.helperText;
-  const theirProps = excludeClassName(props);
   return (
-    <p className={classNames(theme.base, theme.colors[color])} {...theirProps}>
+    <p className={classNames(theme.base, theme.colors[color], className)} {...props}>
       {value ?? children ?? ''}
     </p>
   );

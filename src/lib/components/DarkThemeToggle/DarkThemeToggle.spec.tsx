@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
-import { DarkThemeToggle } from '.';
 import { Flowbite } from '../Flowbite';
+import { DarkThemeToggle } from './DarkThemeToggle';
 
 describe.concurrent('Dark theme toggle', () => {
   it('should toggle the theme when `Space` is pressed', async () => {

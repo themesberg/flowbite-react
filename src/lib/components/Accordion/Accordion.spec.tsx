@@ -3,9 +3,9 @@ import userEvent from '@testing-library/user-event';
 import { FC } from 'react';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import type { AccordionProps } from '.';
-import { Accordion } from '.';
 import { Flowbite } from '../Flowbite';
+import type { AccordionProps } from './Accordion';
+import { Accordion } from './Accordion';
 
 describe('Components / Accordion', () => {
   describe('A11y', () => {

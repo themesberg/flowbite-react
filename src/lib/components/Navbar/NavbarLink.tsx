@@ -1,17 +1,15 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { excludeClassName } from '../../helpers/exclude';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export interface NavbarLinkProps extends Omit<PropsWithChildren<ComponentProps<'a'>>, 'className'> {
+export interface NavbarLinkProps extends PropsWithChildren<ComponentProps<'a'>> {
   active?: boolean;
   disabled?: boolean;
   href?: string;
 }
 
-export const NavbarLink: FC<NavbarLinkProps> = ({ active, disabled, href, children, ...props }) => {
+export const NavbarLink: FC<NavbarLinkProps> = ({ active, disabled, href, children, className, ...props }) => {
   const theme = useTheme().theme.navbar.link;
-  const theirProps = excludeClassName(props);
 
   return (
     <li>
@@ -24,8 +22,9 @@ export const NavbarLink: FC<NavbarLinkProps> = ({ active, disabled, href, childr
             [theme.active.off]: !active && !disabled,
           },
           theme.disabled[disabled ? 'on' : 'off'],
+          className,
         )}
-        {...theirProps}
+        {...props}
       >
         {children}
       </a>

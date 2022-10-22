@@ -1,13 +1,14 @@
-import type { PropsWithChildren, ReactNode } from 'react';
+import classNames from 'classnames';
+import type { PropsWithChildren } from 'react';
 import React from 'react';
 
 export type AvatarGroupProps = PropsWithChildren<{
-  children: ReactNode;
+  className?: string;
 }>;
 
-const AvatarGroup: React.FC<AvatarGroupProps> = ({ children }) => {
+const AvatarGroup: React.FC<AvatarGroupProps> = ({ children, className }) => {
   return (
-    <div data-testid="avatar-group-element" className="mb-5 flex -space-x-4">
+    <div data-testid="avatar-group-element" className={classNames('flex mb-5 -space-x-4', className)}>
       {children}
     </div>
   );
