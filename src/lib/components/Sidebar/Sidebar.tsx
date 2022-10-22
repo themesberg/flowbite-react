@@ -9,7 +9,7 @@ import SidebarItemGroup from './SidebarItemGroup';
 import SidebarItems from './SidebarItems';
 import SidebarLogo from './SidebarLogo';
 
-export interface SidebarProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'className'>> {
+export interface SidebarProps extends PropsWithChildren<ComponentProps<'div'>> {
   collapseBehavior?: 'collapse' | 'hide';
   collapsed?: boolean;
 }
