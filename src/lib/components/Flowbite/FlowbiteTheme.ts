@@ -270,7 +270,9 @@ export interface FlowbiteTheme extends Record<string, unknown> {
       active: FlowbiteBoolean;
       toggle: {
         base: string;
-        checked: FlowbiteBoolean;
+        checked: FlowbiteBoolean & {
+          color: FlowbiteColors;
+        };
       };
       label: string;
     };
