@@ -85,13 +85,6 @@ export const Floating: FC<FloatingProps> = ({
     y,
   } = floatingTooltip;
 
-  // const { getFloatingProps, getReferenceProps } = useInteractions([
-  //   useClick(context, { enabled: trigger === 'click' }),
-  //   useFocus(context),
-  //   useHover(context, { enabled: trigger === 'hover' }),
-  //   useRole(context, { role: 'tooltip' }),
-  // ]);
-
   const { getFloatingProps, getReferenceProps } = useInteractions([
     useClick(context, { enabled: trigger === 'click' }),
     useFocus(context),
