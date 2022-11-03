@@ -1,6 +1,7 @@
 import type { Placement } from '@floating-ui/core';
 import {
   autoUpdate,
+  safePolygon,
   useClick,
   useFloating,
   useFocus,
@@ -84,10 +85,20 @@ export const Floating: FC<FloatingProps> = ({
     y,
   } = floatingTooltip;
 
+  // const { getFloatingProps, getReferenceProps } = useInteractions([
+  //   useClick(context, { enabled: trigger === 'click' }),
+  //   useFocus(context),
+  //   useHover(context, { enabled: trigger === 'hover' }),
+  //   useRole(context, { role: 'tooltip' }),
+  // ]);
+
   const { getFloatingProps, getReferenceProps } = useInteractions([
     useClick(context, { enabled: trigger === 'click' }),
     useFocus(context),
-    useHover(context, { enabled: trigger === 'hover' }),
+    useHover(context, {
+      enabled: trigger === 'hover',
+      handleClose: safePolygon(),
+    }),
     useRole(context, { role: 'tooltip' }),
   ]);
 
