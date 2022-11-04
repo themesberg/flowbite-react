@@ -5,7 +5,7 @@ import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';
 import type { FlowbiteTheme } from './FlowbiteTheme';
 
-export type Mode = string | undefined | 'light' | 'dark';
+export type Mode = 'light' | 'dark';
 
 interface ThemeContextProps {
   theme: FlowbiteTheme;
@@ -32,54 +32,34 @@ export function useTheme(): ThemeContextProps {
 
 export const useThemeMode = (
   usePreferences: boolean,
-): [Mode, React.Dispatch<React.SetStateAction<Mode>> | undefined, (() => void) | undefined] => {
-  if (!usePreferences) return [undefined, undefined, undefined];
-  const [mode, setMode] = useState<Mode>(undefined);
-
-  const savePreference = (m: string) => localStorage.setItem('theme', m);
-
+): [Mode, React.Dispatch<React.SetStateAction<Mode>>, () => void] => {
+  const [mode, setModeState] = useState<Mode>('light');
+  const savePreference = (mode: Mode) => localStorage.setItem('theme', mode);
+  const getPreference = (): Mode => (localStorage.getItem('theme') as Mode) || getPrefersColorScheme();
+  const userPreferenceIsDark = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+  const getPrefersColorScheme = (): Mode => (userPreferenceIsDark() ? 'dark' : 'light');
   const toggleMode = () => {
-    if (!mode) {
+    const newMode = mode === 'dark' ? 'light' : 'dark';
+    setMode(newMode);
+    setModeState(newMode);
+  };
+  const setMode = (mode: Mode) => {
+    savePreference(mode);
+    if (!windowExists()) {
       return;
     }
 
-    if (windowExists()) {
-      document.documentElement.classList.toggle('dark');
+    if (mode === 'dark') {
+      document.documentElement.classList.add('dark');
+      return;
     }
 
-    savePreference(mode);
-    setMode(mode == 'dark' ? 'light' : 'dark');
+    document.documentElement.classList.remove('dark');
   };
-
   if (usePreferences) {
-    useEffect(() => {
-      const userPreference =
-        windowExists() && !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const userMode = localStorage.getItem('theme') || (userPreference ? 'dark' : 'light');
-
-      if (userMode) {
-        setMode(userMode);
-      }
-    }, []);
-
-    useEffect(() => {
-      if (!mode) {
-        return;
-      }
-
-      savePreference(mode);
-
-      if (!windowExists()) {
-        return;
-      }
-
-      if (mode != 'dark') {
-        document.documentElement.classList.remove('dark');
-      } else {
-        document.documentElement.classList.add('dark');
-      }
-    }, [mode]);
+    useEffect(() => setModeState(getPreference()), []);
+    useEffect(() => setMode(mode), [mode]);
   }
 
-  return [mode, setMode, toggleMode];
+  return [mode, setModeState, toggleMode];
 };
