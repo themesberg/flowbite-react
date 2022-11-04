@@ -39,11 +39,26 @@ describe('Components / Dropdown', () => {
 
       expect(dropdown()).toHaveClass('invisible');
     });
+
+    it('should not collapse in case item is clicked if dismissOnClick = false', async () => {
+      const user = userEvent.setup();
+      render(<TestDropdown dismissOnClick={false} />);
+
+      expect(dropdown()).toHaveClass('invisible');
+
+      await user.click(button());
+
+      expect(dropdown()).not.toHaveClass('invisible');
+
+      await user.click(dropdownItem());
+
+      expect(dropdown()).not.toHaveClass('invisible');
+    });
   });
 });
 
-const TestDropdown: FC = () => (
-  <Dropdown label="Dropdown button" placement="right">
+const TestDropdown: FC<{ dismissOnClick?: boolean }> = ({ dismissOnClick = true }) => (
+  <Dropdown label="Dropdown button" placement="right" dismissOnClick={dismissOnClick}>
     <Dropdown.Header>
       <span className="block text-sm">Bonnie Green</span>
       <span className="block text-sm font-medium truncate">name@flowbite.com</span>
