@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.3](https://github.com/themesberg/flowbite-react/compare/v0.3.2...v0.3.3) (2022-11-04)
+
+
+### Features
+
+* **breadcrumbitem:** add forwardRef to breadcrumb item ([#421](https://github.com/themesberg/flowbite-react/issues/421)) ([0e4ae62](https://github.com/themesberg/flowbite-react/commit/0e4ae62b2b93561c4857bea63df45fe9170f546e))
+* **sidebaritem:** add forwardRef to sidebar item ([#420](https://github.com/themesberg/flowbite-react/issues/420)) ([faca797](https://github.com/themesberg/flowbite-react/commit/faca797b0b8ce7a94b40a44019c7323e721af5e5)), closes [#397](https://github.com/themesberg/flowbite-react/issues/397)
+
 ### [0.3.2](https://github.com/themesberg/flowbite-react/compare/v0.3.1...v0.3.2) (2022-10-22)
 
 
