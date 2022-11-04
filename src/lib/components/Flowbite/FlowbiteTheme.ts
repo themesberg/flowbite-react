@@ -1,6 +1,6 @@
 import { DeepPartial } from '..';
-import type { AlertColors } from '../Alert';
-import type { AvatarSizes } from '../Avatar';
+import type { AlertColors } from '../Alert/Alert';
+import type { AvatarSizes } from '../Avatar/Avatar';
 import type { BadgeColors, BadgeSizes } from '../Badge';
 import type {
   ButtonColors,
@@ -9,7 +9,7 @@ import type {
   ButtonOutlineColors,
   ButtonSizes,
 } from '../Button';
-import type { PositionInButtonGroup } from '../Button/ButtonGroup';
+import { PositionInButtonGroup } from '../ButtonGroup';
 import { FlowbiteDropdownTheme } from '../Dropdown';
 import type { FlowbiteFloatingTheme } from '../Floating';
 import type {
@@ -25,8 +25,8 @@ import type { ModalPositions, ModalSizes } from '../Modal';
 import type { ProgressColor, ProgressSizes } from '../Progress';
 import type { StarSizes } from '../Rating';
 import type { SidebarCTAColors } from '../Sidebar/SidebarCTA';
-import type { SpinnerColors, SpinnerSizes } from '../Spinner';
-import type { TabStyleItem, TabStyles } from '../Tab';
+import type { SpinnerColors, SpinnerSizes } from '../Spinner/Spinner';
+import type { TabStyleItem, TabStyles } from '../Tab/Tabs';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
@@ -54,8 +54,10 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   alert: {
     base: string;
     borderAccent: string;
+    wrapper: string;
     closeButton: {
       base: string;
+      icon: string;
       color: AlertColors;
     };
     color: AlertColors;
@@ -68,6 +70,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
     img: {
       off: string;
       on: string;
+      placeholder: string;
     };
     rounded: string;
     size: AvatarSizes;
@@ -84,6 +87,12 @@ export interface FlowbiteTheme extends Record<string, unknown> {
       base: string;
       text: string;
     };
+  };
+  avatarGroupCounter: {
+    base: string;
+  };
+  avatarGroup: {
+    base: string;
   };
   badge: {
     base: string;
@@ -110,6 +119,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   };
   button: {
     base: string;
+    fullSized: string;
     color: ButtonColors;
     disabled: string;
     gradient: ButtonGradientColors;
@@ -260,7 +270,9 @@ export interface FlowbiteTheme extends Record<string, unknown> {
       active: FlowbiteBoolean;
       toggle: {
         base: string;
-        checked: FlowbiteBoolean;
+        checked: FlowbiteBoolean & {
+          color: FlowbiteColors;
+        };
       };
       label: string;
     };

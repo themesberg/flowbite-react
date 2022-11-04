@@ -22,8 +22,8 @@ DefaultNavbar.args = {
   children: (
     <>
       <Navbar.Brand href="https://flowbite.com/">
-        <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
+        <img src="https://flowbite.com/docs/images/logo.svg" className="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
+        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
       </Navbar.Brand>
       <Navbar.Toggle />
       <Navbar.Collapse>
@@ -44,8 +44,8 @@ WithCTA.args = {
   children: (
     <>
       <Navbar.Brand href="https://flowbite.com/">
-        <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
+        <img src="https://flowbite.com/docs/images/logo.svg" className="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
+        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
       </Navbar.Brand>
       <div className="flex gap-3 md:order-2">
         <Button>Get started</Button>
@@ -70,8 +70,8 @@ WithDropdown.args = {
   children: (
     <>
       <Navbar.Brand href="https://flowbite.com/">
-        <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
+        <img src="https://flowbite.com/docs/images/logo.svg" className="h-6 mr-3 sm:h-9" alt="Flowbite Logo" />
+        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
       </Navbar.Brand>
       <div className="flex gap-3 md:order-2">
         <Dropdown
@@ -83,7 +83,7 @@ WithDropdown.args = {
         >
           <Dropdown.Header>
             <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+            <span className="block text-sm font-medium truncate">name@flowbite.com</span>
           </Dropdown.Header>
           <Dropdown.Item>Dashboard</Dropdown.Item>
           <Dropdown.Item>Settings</Dropdown.Item>

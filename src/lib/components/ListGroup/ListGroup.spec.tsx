@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { HiCloudDownload } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { ListGroup } from '.';
 import { Flowbite } from '../Flowbite';
+import { ListGroup } from './ListGroup';
 
 describe('Components / List group', () => {
   describe('Keyboard interactions', () => {

@@ -1,6 +1,6 @@
 import type { FC, PropsWithChildren } from 'react';
 import { useState } from 'react';
-import type { AccordionProps } from '.';
+import type { AccordionProps } from './Accordion';
 import { AccordionPanelContext } from './AccordionPanelContext';
 
 export interface AccordionPanelProps extends PropsWithChildren<AccordionProps> {

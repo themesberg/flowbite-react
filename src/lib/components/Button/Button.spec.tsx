@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import { Button } from '.';
 import { Flowbite } from '../Flowbite';
+import { Button } from './Button';
 
 describe('Components / Button', () => {
   describe('A11y', () => {

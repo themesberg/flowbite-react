@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/themesberg/flowbite-react/compare/v0.3.1...v0.3.2) (2022-10-22)
+
+
+### Features
+
+* **classname:** more missing classnames access ([#406](https://github.com/themesberg/flowbite-react/issues/406)) ([9e40115](https://github.com/themesberg/flowbite-react/commit/9e4011554cc132fd24bff286955b5f2d6861e1f8))
+
+### [0.3.1](https://github.com/themesberg/flowbite-react/compare/v0.3.0...v0.3.1) (2022-10-22)
+
+
+### Features
+
+* **classname:** all components with classname access ([#405](https://github.com/themesberg/flowbite-react/issues/405)) ([99b4ceb](https://github.com/themesberg/flowbite-react/commit/99b4cebf5f92e8f3eb15851dcb0b6997c8606c47))
+
+
+### Bug Fixes
+
+* **avatar:** center avatar correctly ([#404](https://github.com/themesberg/flowbite-react/issues/404)) ([1027212](https://github.com/themesberg/flowbite-react/commit/1027212dc5e3d030c65b418c3710d07d577e4016))
+
+## [0.3.0](https://github.com/themesberg/flowbite-react/compare/v0.2.1...v0.3.0) (2022-10-22)
+
 ### [0.2.1](https://github.com/themesberg/flowbite-react/compare/v0.2.0...v0.2.1) (2022-10-19)
 
 

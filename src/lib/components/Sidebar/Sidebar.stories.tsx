@@ -1,9 +1,9 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { BiBuoy } from 'react-icons/bi';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
-import { Sidebar } from '.';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
+import { Sidebar } from './Sidebar';
 
 export default {
   title: 'Components/Sidebar',
