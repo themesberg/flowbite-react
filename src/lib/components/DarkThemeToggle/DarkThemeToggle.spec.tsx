@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { Flowbite } from '../Flowbite';
 import { DarkThemeToggle } from './DarkThemeToggle';
 
-describe.concurrent('Dark theme toggle', () => {
+describe('Dark theme toggle', () => {
   it('should toggle the theme when `Space` is pressed', async () => {
     const user = userEvent.setup();
     render(
@@ -12,6 +12,24 @@ describe.concurrent('Dark theme toggle', () => {
         <DarkThemeToggle />
       </Flowbite>,
     );
+
+    await user.tab();
+    await user.keyboard('[Space]');
+
+    expect(screen.queryByLabelText('Currently light mode')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText('Currently dark mode')).toBeInTheDocument();
+  });
+
+  it('should toggle the theme with `usePreferences` is false', async () => {
+    const user = userEvent.setup();
+    render(
+      <Flowbite theme={{ usePreferences: false }}>
+        <DarkThemeToggle />
+      </Flowbite>,
+    );
+
+    expect(screen.queryByLabelText('Currently light mode')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Currently dark mode')).not.toBeInTheDocument();
 
     await user.tab();
     await user.keyboard('[Space]');
