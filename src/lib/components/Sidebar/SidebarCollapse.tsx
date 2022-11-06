@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { useId, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { Tooltip } from '../Tooltip';
@@ -8,20 +8,24 @@ import { useSidebarContext } from './SidebarContext';
 import type { SidebarItemProps } from './SidebarItem';
 import { SidebarItemContext } from './SidebarItemContext';
 
-export type SidebarCollapseProps = PropsWithChildren<ComponentProps<'button'> & SidebarItemProps>;
+export interface SidebarCollapseProps extends PropsWithChildren<ComponentProps<'button'> & SidebarItemProps> {
+  open?: boolean;
+}
 
 const SidebarCollapse: FC<SidebarCollapseProps> = ({
   children,
   icon: Icon,
   label,
   className,
-  defaultIsOpen,
+  open = false,
   ...props
 }): JSX.Element => {
   const id = useId();
   const { isCollapsed } = useSidebarContext();
-  const [isOpen, setOpen] = useState(defaultIsOpen);
+  const [isOpen, setOpen] = useState(open);
   const theme = useTheme().theme.sidebar.collapse;
+
+  useEffect(() => setOpen(open), [open]);
 
   const Wrapper: FC<PropsWithChildren<unknown>> = ({ children }): JSX.Element => (
     <li>

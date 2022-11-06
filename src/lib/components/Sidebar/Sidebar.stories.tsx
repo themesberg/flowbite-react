@@ -119,7 +119,7 @@ DefaultExpandedDropdown.args = {
           <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
             <Sidebar.Item href="#">Products</Sidebar.Item>
           </Sidebar.Collapse>
-          <Sidebar.Collapse icon={HiShoppingBag} label="Billing" defaultIsOpen>
+          <Sidebar.Collapse icon={HiShoppingBag} label="Billing" open>
             <Sidebar.Item href="#">Usage Summary</Sidebar.Item>
           </Sidebar.Collapse>
           <Sidebar.Item href="#" icon={HiInbox}>
