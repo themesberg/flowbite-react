@@ -44,6 +44,7 @@ export interface DropdownProps extends PropsWithChildren<Pick<FloatingProps, 'pl
   inline?: boolean;
   floatingArrow?: boolean;
   arrowIcon?: boolean;
+  dismissOnClick?: boolean;
 }
 
 const icons: Record<string, FC<ComponentProps<'svg'>>> = {
@@ -53,7 +54,7 @@ const icons: Record<string, FC<ComponentProps<'svg'>>> = {
   left: HiOutlineChevronLeft,
 };
 
-const DropdownComponent: FC<DropdownProps> = ({ children, className, ...props }) => {
+const DropdownComponent: FC<DropdownProps> = ({ children, className, dismissOnClick = true, ...props }) => {
   const theme = useTheme().theme.dropdown;
   const theirProps = props as DropdownProps;
   const {
@@ -80,7 +81,7 @@ const DropdownComponent: FC<DropdownProps> = ({ children, className, ...props })
       return React.cloneElement(node, {
         onClick: () => {
           node.props.onClick?.();
-          setCloseRequestKey(uuid());
+          dismissOnClick && setCloseRequestKey(uuid());
         },
       } as any);
     if (node.props.children && typeof node.props.children === 'object') {

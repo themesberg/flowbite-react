@@ -9,7 +9,7 @@ const DropdownPage: FC = () => {
     {
       title: 'Dropdown example',
       code: (
-        <Dropdown label="Dropdown button">
+        <Dropdown label="Dropdown button" dismissOnClick={false}>
           <Dropdown.Item>Dashboard</Dropdown.Item>
           <Dropdown.Item>Settings</Dropdown.Item>
           <Dropdown.Item>Earnings</Dropdown.Item>
