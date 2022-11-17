@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.5](https://github.com/themesberg/flowbite-react/compare/v0.3.4...v0.3.5) (2022-11-17)
+
+
+### Features
+
+* **components:** export components types ([#434](https://github.com/themesberg/flowbite-react/issues/434)) ([45ea65a](https://github.com/themesberg/flowbite-react/commit/45ea65a4e1e376b398f462d07b9a1f1ea2ca114b)), closes [#433](https://github.com/themesberg/flowbite-react/issues/433)
+
 ### [0.3.4](https://github.com/themesberg/flowbite-react/compare/v0.3.3...v0.3.4) (2022-11-06)
 
 
