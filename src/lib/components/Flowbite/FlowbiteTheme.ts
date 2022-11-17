@@ -9,7 +9,7 @@ import type {
   ButtonOutlineColors,
   ButtonSizes,
 } from '../Button';
-import { PositionInButtonGroup } from '../ButtonGroup';
+import { PositionInButtonGroup } from '../Button';
 import { FlowbiteDropdownTheme } from '../Dropdown';
 import type { FlowbiteFloatingTheme } from '../Floating';
 import type {

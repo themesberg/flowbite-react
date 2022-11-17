@@ -1,7 +1,5 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
-import type { PositionInButtonGroup } from '../ButtonGroup/ButtonGroup';
-import ButtonGroup from '../ButtonGroup/ButtonGroup';
 import type {
   FlowbiteColors,
   FlowbiteGradientColors,
@@ -9,6 +7,8 @@ import type {
   FlowbiteSizes,
 } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
+import type { PositionInButtonGroup } from './ButtonGroup';
+import ButtonGroup from './ButtonGroup';
 
 export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'ref'> {
   color?: keyof ButtonColors;
