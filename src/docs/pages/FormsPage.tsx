@@ -145,7 +145,7 @@ const FormsPage: FC = () => {
           <div className="mb-2 block">
             <Label htmlFor="email4" value="Your email" />
           </div>
-          <TextInput id="email4" type="email" placeholder="name@flowbite.com" required icon={HiMail} />
+          <TextInput id="email4" type="email"  iconRight={HiMail} placeholder="name@flowbite.com" required  />
         </div>
       ),
     },

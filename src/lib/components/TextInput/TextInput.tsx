@@ -39,12 +39,13 @@ export interface TextInputProps extends Omit<ComponentProps<'input'>, 'ref' | 'c
   helperText?: ReactNode;
   addon?: ReactNode;
   icon?: FC<ComponentProps<'svg'>>;
+  iconRight?: FC<ComponentProps<'svg'>>;
   color?: keyof TextInputColors;
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
-  ({ sizing = 'md', shadow, helperText, addon, icon: Icon, color = 'gray', className, ...props }, ref) => {
-    const theme = useTheme().theme.textInput;
+  ({ sizing = 'md', shadow, helperText, addon, icon: Icon, iconRight:IconRight, color = 'gray', className, ...props }, ref) => {
+    const theme = useTheme().theme.formControls.textInput;
     return (
       <>
         <div className={classNames(theme.base, className)}>
@@ -55,6 +56,11 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 <Icon className={theme.field.icon.svg} />
               </div>
             )}
+              {IconRight && (
+                <div className={theme.field.iconRight.base}>
+                  <IconRight className={theme.field.iconRight.svg} />
+                </div>
+              )}
             <input
               className={classNames(
                 theme.field.input.base,
