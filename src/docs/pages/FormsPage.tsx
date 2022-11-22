@@ -139,13 +139,35 @@ const FormsPage: FC = () => {
       ),
     },
     {
-      title: 'Input element with icon',
+      title: 'Input element with icon on the left side',
       code: (
         <div>
           <div className="mb-2 block">
             <Label htmlFor="email4" value="Your email" />
           </div>
-          <TextInput id="email4" type="email"  iconRight={HiMail} placeholder="name@flowbite.com" required  />
+          <TextInput id="email4" type="email" icon={HiMail} placeholder="name@flowbite.com" required  />
+        </div>
+      ),
+    },
+    {
+      title: 'Input element with icon on the right side',
+      code: (
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="email4" value="Your email" />
+          </div>
+          <TextInput id="email4" type="email" rightIcon={HiMail} placeholder="name@flowbite.com" required  />
+        </div>
+      ),
+    },
+    {
+      title: 'Input element with icon on both sides',
+      code: (
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="email4" value="Your email" />
+          </div>
+          <TextInput id="email4" type="email" icon={HiMail} rightIcon={HiMail} placeholder="name@flowbite.com" required  />
         </div>
       ),
     },
