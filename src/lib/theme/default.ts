@@ -60,13 +60,24 @@ const theme: FlowbiteTheme = {
   },
   avatar: {
     base: 'flex justify-center items-center space-x-4',
-    bordered: 'p-1 ring-2 ring-gray-300 dark:ring-gray-500',
+    bordered: 'p-1 ring-2',
     img: {
       off: 'rounded relative overflow-hidden bg-gray-100 dark:bg-gray-600',
       on: 'rounded',
       placeholder: 'absolute w-auto h-auto text-gray-400 -bottom-1',
     },
     rounded: '!rounded-full',
+    color: {
+      dark: 'ring-gray-800 dark:ring-gray-800',
+      failure: 'ring-red-500 dark:ring-red-700',
+      gray: 'ring-gray-500 dark:ring-gray-400',
+      info: 'ring-blue-400 dark:ring-blue-800',
+      light: 'ring-gray-300 dark:ring-gray-500',
+      purple: 'ring-purple-500 dark:ring-purple-600',
+      success: 'ring-green-500 dark:ring-green-500',
+      warning: 'ring-yellow-300 dark:ring-yellow-500',
+      pink: 'ring-pink-500 dark:ring-pink-500',
+    },
     size: {
       xs: 'w-6 h-6',
       sm: 'w-8 h-8',

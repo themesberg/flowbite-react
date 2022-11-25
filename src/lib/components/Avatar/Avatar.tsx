@@ -1,20 +1,26 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import type { FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import AvatarGroup from './AvatarGroup';
 import AvatarGroupCounter from './AvatarGroupCounter';
 
-export interface AvatarProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface AvatarProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
   alt?: string;
   bordered?: boolean;
   img?: string;
+  color?: keyof AvatarColors;
   rounded?: boolean;
   size?: keyof AvatarSizes;
   stacked?: boolean;
   status?: 'away' | 'busy' | 'offline' | 'online';
   statusPosition?: keyof FlowbitePositions;
   placeholderInitials?: string;
+}
+
+export interface AvatarColors
+  extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'pink' | 'purple' | 'success' | 'warning'> {
+  [key: string]: string;
 }
 
 export interface AvatarSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> {
@@ -26,6 +32,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   bordered = false,
   children,
   img,
+  color = 'light',
   rounded = false,
   size = 'md',
   stacked = false,
@@ -38,6 +45,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   const theme = useTheme().theme.avatar;
   const imgClassName = classNames(
     bordered && theme.bordered,
+    bordered && theme.color[color],
     rounded && theme.rounded,
     stacked && theme.stacked,
     theme.img.on,
