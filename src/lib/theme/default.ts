@@ -456,8 +456,8 @@ const theme: FlowbiteTheme = {
           svg: 'h-5 w-5 text-gray-500 dark:text-gray-400',
         },
         rightIcon: {
-            base: 'pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3',
-            svg: 'h-5 w-5 text-gray-500 dark:text-gray-400',
+          base: 'pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3',
+          svg: 'h-5 w-5 text-gray-500 dark:text-gray-400',
         },
         input: {
           base: 'block w-full border disabled:cursor-not-allowed disabled:opacity-50',
