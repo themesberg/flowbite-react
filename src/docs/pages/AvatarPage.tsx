@@ -24,6 +24,52 @@ const AvatarPage: FC = () => {
       ),
     },
     {
+      title: 'Colored Avatar',
+      code: (
+        <>
+          <div className="flex flex-wrap gap-2">
+            <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded bordered color="gray" />
+            <Avatar
+              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+              rounded
+              bordered
+              color="light"
+            />
+            <Avatar
+              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+              rounded
+              bordered
+              color="purple"
+            />
+            <Avatar
+              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+              rounded
+              bordered
+              color="success"
+            />
+            <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded bordered color="pink" />
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" bordered color="gray" />
+            <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" bordered color="light" />
+            <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" bordered color="purple" />
+            <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" bordered color="success" />
+            <Avatar img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" bordered color="pink" />
+          </div>
+        </>
+      ),
+    },
+    {
+      title: 'Placeholder',
+      code: (
+        <div className="flex flex-wrap gap-2">
+          <Avatar />
+          <Avatar rounded />
+        </div>
+      ),
+    },
+    {
       title: 'Placeholder',
       code: (
         <div className="flex flex-wrap gap-2">

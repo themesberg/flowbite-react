@@ -1,6 +1,6 @@
 import { DeepPartial } from '..';
 import type { AlertColors } from '../Alert/Alert';
-import type { AvatarSizes } from '../Avatar/Avatar';
+import type { AvatarColors, AvatarSizes } from '../Avatar/Avatar';
 import type { BadgeColors, BadgeSizes } from '../Badge';
 import type {
   ButtonColors,
@@ -72,6 +72,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
       on: string;
       placeholder: string;
     };
+    color: AvatarColors;
     rounded: string;
     size: AvatarSizes;
     stacked: string;
