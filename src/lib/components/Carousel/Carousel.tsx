@@ -43,17 +43,18 @@ export const Carousel: FC<CarouselProps> = ({
 
   const navigateTo = useCallback(
     (item: number) => () => {
+      if (!items) return;
       item = (item + items.length) % items.length;
       if (carouselContainer.current) {
         carouselContainer.current.scrollLeft = carouselContainer.current.clientWidth * item;
       }
       setActiveItem(item);
     },
-    [items.length],
+    [items],
   );
 
   useEffect(() => {
-    if (carouselContainer.current && !isDragging) {
+    if (carouselContainer.current && !isDragging && carouselContainer.current.scrollLeft !== 0) {
       setActiveItem(Math.round(carouselContainer.current.scrollLeft / carouselContainer.current.clientWidth));
     }
   }, [isDragging]);
@@ -96,7 +97,7 @@ export const Carousel: FC<CarouselProps> = ({
       </ScrollContainer>
       {indicators && (
         <div className={theme.indicators.wrapper}>
-          {items.map(
+          {items?.map(
             (_, index): JSX.Element => (
               <button
                 key={index}
@@ -111,26 +112,31 @@ export const Carousel: FC<CarouselProps> = ({
           )}
         </div>
       )}
-      <div className={theme.leftControl}>
-        <button
-          className="group"
-          data-testid="carousel-left-control"
-          onClick={navigateTo(activeItem - 1)}
-          type="button"
-        >
-          {leftControl ? leftControl : <DefaultLeftControl />}
-        </button>
-      </div>
-      <div className={theme.rightControl}>
-        <button
-          className="group"
-          data-testid="carousel-right-control"
-          onClick={navigateTo(activeItem + 1)}
-          type="button"
-        >
-          {rightControl ? rightControl : <DefaultRightControl />}
-        </button>
-      </div>
+
+      {items && (
+        <>
+          <div className={theme.leftControl}>
+            <button
+              className="group"
+              data-testid="carousel-left-control"
+              onClick={navigateTo(activeItem - 1)}
+              type="button"
+            >
+              {leftControl ? leftControl : <DefaultLeftControl />}
+            </button>
+          </div>
+          <div className={theme.rightControl}>
+            <button
+              className="group"
+              data-testid="carousel-right-control"
+              onClick={navigateTo(activeItem + 1)}
+              type="button"
+            >
+              {rightControl ? rightControl : <DefaultRightControl />}
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
