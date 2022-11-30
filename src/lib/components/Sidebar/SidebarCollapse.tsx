@@ -29,7 +29,7 @@ const SidebarCollapse: FC<SidebarCollapseProps> = ({
 
   const Wrapper: FC<PropsWithChildren<unknown>> = ({ children }): JSX.Element => (
     <li>
-      {isCollapsed ? (
+      {isCollapsed && !isOpen ? (
         <Tooltip content={label} placement="right">
           {children}
         </Tooltip>
@@ -45,6 +45,7 @@ const SidebarCollapse: FC<SidebarCollapseProps> = ({
         className={classNames(theme.button, className)}
         id={`flowbite-sidebar-collapse-${id}`}
         onClick={() => setOpen(!isOpen)}
+        title={label}
         type="button"
         {...props}
       >
