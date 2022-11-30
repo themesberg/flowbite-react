@@ -4,19 +4,29 @@ import { useId } from 'react';
 import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
+export interface FlowbiteProgressTheme {
+  base: string;
+  label: string;
+  bar: string;
+  color: ProgressColor;
+  size: ProgressSizes;
+}
+
+export interface ProgressColor
+  extends Pick<FlowbiteColors, 'dark' | 'blue' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple'> {
+  [key: string]: string;
+}
+
+export interface ProgressSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg' | 'xl'> {
+  [key: string]: string;
+}
+
 export interface ProgressProps extends PropsWithChildren<ComponentProps<'div'>> {
   size?: keyof ProgressSizes;
   label?: string;
   labelPosition?: 'inside' | 'outside' | 'none';
   labelProgress?: boolean;
   progress: number;
-}
-export interface ProgressColor
-  extends Pick<FlowbiteColors, 'dark' | 'blue' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple'> {
-  [key: string]: string;
-}
-export interface ProgressSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg' | 'xl'> {
-  [key: string]: string;
 }
 
 export const Progress: FC<ProgressProps> = ({

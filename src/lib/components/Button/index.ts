@@ -1,2 +1,2 @@
 export * from './Button';
-export type { ButtonGroupProps, PositionInButtonGroup } from './ButtonGroup';
+export type { ButtonGroupProps, FlowbiteButtonGroupTheme, PositionInButtonGroup } from './ButtonGroup';

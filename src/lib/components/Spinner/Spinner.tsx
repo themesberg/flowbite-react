@@ -3,10 +3,20 @@ import type { ComponentProps, FC } from 'react';
 import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export interface SpinnerProps extends Omit<ComponentProps<'span'>, 'color'> {
-  color?: keyof SpinnerColors;
-  light?: boolean;
-  size?: keyof SpinnerSizes;
+export interface FlowbiteSpinnerTheme {
+  base: string;
+  color: SpinnerColors;
+  light: {
+    off: {
+      base: string;
+      color: SpinnerColors;
+    };
+    on: {
+      base: string;
+      color: SpinnerColors;
+    };
+  };
+  size: SpinnerSizes;
 }
 
 export interface SpinnerColors
@@ -16,6 +26,12 @@ export interface SpinnerColors
 
 export interface SpinnerSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> {
   [key: string]: string;
+}
+
+export interface SpinnerProps extends Omit<ComponentProps<'span'>, 'color'> {
+  color?: keyof SpinnerColors;
+  light?: boolean;
+  size?: keyof SpinnerSizes;
 }
 
 export const Spinner: FC<SpinnerProps> = ({ color = 'info', light, size = 'md', className, ...props }): JSX.Element => {

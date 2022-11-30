@@ -5,6 +5,32 @@ import range from '../../helpers/range';
 import { useTheme } from '../Flowbite/ThemeContext';
 import PaginationButton, { PaginationButtonProps } from './PaginationButton';
 
+export interface FlowbitePaginationTheme {
+  base: string;
+  layout: {
+    table: {
+      base: string;
+      span: string;
+    };
+  };
+  pages: {
+    base: string;
+    showIcon: string;
+    previous: {
+      base: string;
+      icon: string;
+    };
+    next: {
+      base: string;
+      icon: string;
+    };
+    selector: {
+      base: string;
+      active: string;
+    };
+  };
+}
+
 export type PaginationProps = PropsWithChildren<Pagination>;
 
 interface Pagination extends ComponentProps<'nav'> {

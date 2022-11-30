@@ -4,7 +4,10 @@ import { Children, cloneElement, useMemo } from 'react';
 import type { ButtonProps } from '../Button';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export type ButtonGroupProps = PropsWithChildren<ComponentProps<'div'> & Pick<ButtonProps, 'outline' | 'pill'>>;
+export interface FlowbiteButtonGroupTheme {
+  base: string;
+  position: PositionInButtonGroup;
+}
 
 export interface PositionInButtonGroup {
   none: string;
@@ -12,6 +15,8 @@ export interface PositionInButtonGroup {
   middle: string;
   end: string;
 }
+
+export type ButtonGroupProps = PropsWithChildren<ComponentProps<'div'> & Pick<ButtonProps, 'outline' | 'pill'>>;
 
 const ButtonGroup: FC<ButtonGroupProps> = ({
   children,

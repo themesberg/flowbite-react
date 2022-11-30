@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
 import type {
+  FlowbiteBoolean,
   FlowbiteColors,
   FlowbiteGradientColors,
   FlowbiteGradientDuoToneColors,
@@ -10,17 +11,25 @@ import { useTheme } from '../Flowbite/ThemeContext';
 import type { PositionInButtonGroup } from './ButtonGroup';
 import ButtonGroup from './ButtonGroup';
 
-export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'ref'> {
-  color?: keyof ButtonColors;
-  gradientDuoTone?: keyof ButtonGradientDuoToneColors;
-  gradientMonochrome?: keyof ButtonGradientColors;
-  href?: string;
-  label?: ReactNode;
-  outline?: boolean;
-  fullSized?: boolean;
-  pill?: boolean;
-  positionInGroup?: keyof PositionInButtonGroup;
-  size?: keyof ButtonSizes;
+export interface FlowbiteButtonTheme {
+  base: string;
+  fullSized: string;
+  color: ButtonColors;
+  disabled: string;
+  gradient: ButtonGradientColors;
+  gradientDuoTone: ButtonGradientDuoToneColors;
+  inner: {
+    base: string;
+    position: PositionInButtonGroup;
+    outline: string;
+  };
+  label: string;
+  outline: FlowbiteBoolean & {
+    color: ButtonOutlineColors;
+    pill: FlowbiteBoolean;
+  };
+  pill: FlowbiteBoolean;
+  size: ButtonSizes;
 }
 
 export interface ButtonColors
@@ -42,6 +51,19 @@ export interface ButtonOutlineColors extends Pick<FlowbiteColors, 'gray'> {
 
 export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'xl'> {
   [key: string]: string;
+}
+
+export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'ref'> {
+  color?: keyof ButtonColors;
+  gradientDuoTone?: keyof ButtonGradientDuoToneColors;
+  gradientMonochrome?: keyof ButtonGradientColors;
+  href?: string;
+  label?: ReactNode;
+  outline?: boolean;
+  fullSized?: boolean;
+  pill?: boolean;
+  positionInGroup?: keyof PositionInButtonGroup;
+  size?: keyof ButtonSizes;
 }
 
 const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(

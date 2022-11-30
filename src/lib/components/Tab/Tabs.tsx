@@ -6,6 +6,20 @@ import { useTheme } from '../Flowbite/ThemeContext';
 import type { TabItemProps } from './TabItem';
 import { TabItem } from './TabItem';
 
+export interface FlowbiteTabTheme {
+  base: string;
+  tablist: {
+    base: string;
+    styles: TabStyles;
+    tabitem: {
+      base: string;
+      styles: TabStyleItem<TabStyles>;
+      icon: string;
+    };
+  };
+  tabpanel: string;
+}
+
 export interface TabStyles {
   default: string;
   underline: string;
@@ -24,16 +38,16 @@ export type TabStyleItem<Type> = {
 
 export type TabItemStatus = 'active' | 'notActive';
 
-export interface TabsProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
-  style?: keyof TabStyles;
-}
-
 interface TabEventProps {
   target: number;
 }
 
 interface TabKeyboardEventProps extends TabEventProps {
   event: KeyboardEvent<HTMLButtonElement>;
+}
+
+export interface TabsProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
+  style?: keyof TabStyles;
 }
 
 export const TabsComponent: FC<TabsProps> = ({ children, style = 'default', className, ...rest }) => {

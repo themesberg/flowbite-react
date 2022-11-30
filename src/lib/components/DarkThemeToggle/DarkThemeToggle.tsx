@@ -4,6 +4,11 @@ import { useContext } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { ThemeContext, useTheme } from '../Flowbite/ThemeContext';
 
+export interface FlowbiteDarkThemeToggleTheme {
+  base: string;
+  icon: string;
+}
+
 export type DarkThemeToggleProps = ComponentProps<'button'>;
 
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({ className, ...props }) => {

@@ -1,12 +1,38 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useState } from 'react';
+import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { NavbarBrand } from './NavbarBrand';
 import { NavbarCollapse } from './NavbarCollapse';
 import { NavbarContext } from './NavbarContext';
 import { NavbarLink } from './NavbarLink';
 import { NavbarToggle } from './NavbarToggle';
+
+export interface FlowbiteNavbarTheme {
+  base: string;
+  rounded: FlowbiteBoolean;
+  bordered: FlowbiteBoolean;
+  inner: {
+    base: string;
+    fluid: FlowbiteBoolean;
+  };
+  brand: string;
+  collapse: {
+    base: string;
+    list: string;
+    hidden: FlowbiteBoolean;
+  };
+  link: {
+    base: string;
+    active: FlowbiteBoolean;
+    disabled: FlowbiteBoolean;
+  };
+  toggle: {
+    base: string;
+    icon: string;
+  };
+}
 
 export interface NavbarComponentProps extends PropsWithChildren<ComponentProps<'nav'>> {
   menuOpen?: boolean;

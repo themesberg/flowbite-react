@@ -5,6 +5,41 @@ import { useTheme } from '../Flowbite/ThemeContext';
 import AvatarGroup from './AvatarGroup';
 import AvatarGroupCounter from './AvatarGroupCounter';
 
+export interface FlowbiteAvatarTheme {
+  base: string;
+  bordered: string;
+  img: {
+    off: string;
+    on: string;
+    placeholder: string;
+  };
+  color: AvatarColors;
+  rounded: string;
+  size: AvatarSizes;
+  stacked: string;
+  status: {
+    away: string;
+    base: string;
+    busy: string;
+    offline: string;
+    online: string;
+  };
+  statusPosition: FlowbitePositions;
+  initials: {
+    base: string;
+    text: string;
+  };
+}
+
+export interface AvatarColors
+  extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'pink' | 'purple' | 'success' | 'warning'> {
+  [key: string]: string;
+}
+
+export interface AvatarSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> {
+  [key: string]: string;
+}
+
 export interface AvatarProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
   alt?: string;
   bordered?: boolean;
@@ -16,15 +51,6 @@ export interface AvatarProps extends PropsWithChildren<Omit<ComponentProps<'div'
   status?: 'away' | 'busy' | 'offline' | 'online';
   statusPosition?: keyof FlowbitePositions;
   placeholderInitials?: string;
-}
-
-export interface AvatarColors
-  extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'pink' | 'purple' | 'success' | 'warning'> {
-  [key: string]: string;
-}
-
-export interface AvatarSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> {
-  [key: string]: string;
 }
 
 const AvatarComponent: FC<AvatarProps> = ({

@@ -6,6 +6,32 @@ import ScrollContainer from 'react-indiana-drag-scroll';
 import windowExists from '../../helpers/window-exists';
 import { useTheme } from '../Flowbite/ThemeContext';
 
+export interface FlowbiteCarouselTheme {
+  base: string;
+  indicators: {
+    active: {
+      off: string;
+      on: string;
+    };
+    base: string;
+    wrapper: string;
+  };
+  item: {
+    base: string;
+    wrapper: string;
+  };
+  control: {
+    base: string;
+    icon: string;
+  };
+  leftControl: string;
+  rightControl: string;
+  scrollContainer: {
+    base: string;
+    snap: string;
+  };
+}
+
 export interface CarouselProps extends PropsWithChildren<ComponentProps<'div'>> {
   indicators?: boolean;
   leftControl?: ReactNode;

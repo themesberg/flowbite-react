@@ -13,7 +13,28 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { getArrowPlacement, getMiddleware, getPlacement } from '../../helpers/floating';
-import { FlowbiteFloatingTheme } from '../Flowbite/FlowbiteTheme';
+
+export interface FlowbiteFloatingTheme {
+  target: string;
+  base: string;
+  animation: string;
+  hidden: string;
+  style: {
+    dark: string;
+    light: string;
+    auto: string;
+  };
+  content: string;
+  arrow: {
+    base: string;
+    style: {
+      dark: string;
+      light: string;
+      auto: string;
+    };
+    placement: string;
+  };
+}
 
 export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
   content: ReactNode;
