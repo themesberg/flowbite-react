@@ -11,34 +11,6 @@ import { DropdownDivider } from './DropdownDivider';
 import { DropdownHeader } from './DropdownHeader';
 import { DropdownItem } from './DropdownItem';
 
-export interface FlowbiteDropdownTheme {
-  target: string;
-  base: string;
-  animation: string;
-  hidden: string;
-  style: {
-    dark: string;
-    light: string;
-    auto: string;
-  };
-  header: string;
-  content: string;
-  arrow: {
-    base: string;
-    style: {
-      dark: string;
-      light: string;
-      auto: string;
-    };
-    placement: string;
-  };
-  item: {
-    base: string;
-    icon: string;
-  };
-  divider: string;
-}
-
 export interface DropdownProps extends PropsWithChildren<Pick<FloatingProps, 'placement' | 'trigger'>>, ButtonProps {
   label: ReactNode;
   inline?: boolean;

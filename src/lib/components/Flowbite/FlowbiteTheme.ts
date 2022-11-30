@@ -10,8 +10,6 @@ import type {
   ButtonSizes,
 } from '../Button';
 import { PositionInButtonGroup } from '../Button';
-import { FlowbiteDropdownTheme } from '../Dropdown';
-import type { FlowbiteFloatingTheme } from '../Floating';
 import type {
   HelperColors,
   LabelColors,
@@ -31,474 +29,557 @@ import type { TabStyleItem, TabStyles } from '../Tab/Tabs';
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
 export interface FlowbiteTheme extends Record<string, unknown> {
-  accordion: {
-    base: string;
-    content: {
-      base: string;
-    };
-    flush: FlowbiteBoolean;
-    title: {
-      arrow: {
-        base: string;
-        open: {
-          off: string;
-          on: string;
-        };
-      };
-      base: string;
-      flush: FlowbiteBoolean;
-      heading: string;
-      open: FlowbiteBoolean;
-    };
-  };
-  alert: {
-    base: string;
-    borderAccent: string;
-    wrapper: string;
-    closeButton: {
-      base: string;
-      icon: string;
-      color: AlertColors;
-    };
-    color: AlertColors;
-    icon: string;
-    rounded: string;
-  };
-  avatar: {
-    base: string;
-    bordered: string;
-    img: {
-      off: string;
-      on: string;
-      placeholder: string;
-    };
-    color: AvatarColors;
-    rounded: string;
-    size: AvatarSizes;
-    stacked: string;
-    status: {
-      away: string;
-      base: string;
-      busy: string;
-      offline: string;
-      online: string;
-    };
-    statusPosition: FlowbitePositions;
-    initials: {
-      base: string;
-      text: string;
-    };
-  };
-  avatarGroupCounter: {
+  accordion: FlowbiteAccordionTheme;
+  alert: FlowbiteAlertTheme;
+  avatar: FlowbiteAvatarTheme;
+  avatarGroupCounter: FlowbiteAvatarGroupCounterTheme;
+  avatarGroup: FlowbiteAvatarGroupTheme;
+  badge: FlowbiteBadgeTheme;
+  breadcrumb: FlowbiteBreadcrumbTheme;
+  button: FlowbiteButtonTheme;
+  buttonGroup: FlowbiteButtonGroupTheme;
+  card: FlowbiteCardTheme;
+  carousel: FlowbiteCarouselTheme;
+  darkThemeToggle: FlowbiteDarkThemeToggleTheme;
+  footer: FlowbiteFooterTheme;
+  formControls: FlowbiteFormControlsTheme;
+  listGroup: FlowbiteListGroupTheme;
+  modal: FlowbiteModalTheme;
+  navbar: FlowbiteNavbarTheme;
+  rating: FlowbiteRatingTheme;
+  pagination: FlowbitePaginationTheme;
+  sidebar: FlowbiteSidebarTheme;
+  progress: FlowbiteProgressTheme;
+  spinner: FlowbiteSpinnerTheme;
+  tab: FlowbiteTabTheme;
+  toast: FlowbiteToastTheme;
+  tooltip: FlowbiteTooltipTheme;
+  dropdown: FlowbiteDropdownTheme;
+}
+
+export interface FlowbiteAccordionTheme {
+  base: string;
+  content: {
     base: string;
   };
-  avatarGroup: {
-    base: string;
-  };
-  badge: {
-    base: string;
-    color: BadgeColors;
-    href: string;
-    icon: {
-      off: string;
-      on: string;
-      size: BadgeSizes;
-    };
-    size: BadgeSizes;
-  };
-  breadcrumb: {
-    item: {
+  flush: FlowbiteBoolean;
+  title: {
+    arrow: {
       base: string;
-      chevron: string;
-      href: {
+      open: {
         off: string;
         on: string;
       };
-      icon: string;
     };
-    list: string;
-  };
-  button: {
     base: string;
-    fullSized: string;
-    color: ButtonColors;
-    disabled: string;
-    gradient: ButtonGradientColors;
-    gradientDuoTone: ButtonGradientDuoToneColors;
-    inner: {
-      base: string;
-      position: PositionInButtonGroup;
-      outline: string;
-    };
-    label: string;
-    outline: FlowbiteBoolean & {
-      color: ButtonOutlineColors;
-      pill: FlowbiteBoolean;
-    };
-    pill: FlowbiteBoolean;
-    size: ButtonSizes;
+    flush: FlowbiteBoolean;
+    heading: string;
+    open: FlowbiteBoolean;
   };
-  buttonGroup: {
+}
+
+export interface FlowbiteAlertTheme {
+  base: string;
+  borderAccent: string;
+  wrapper: string;
+  closeButton: {
+    base: string;
+    icon: string;
+    color: AlertColors;
+  };
+  color: AlertColors;
+  icon: string;
+  rounded: string;
+}
+
+export interface FlowbiteAvatarTheme {
+  base: string;
+  bordered: string;
+  img: {
+    off: string;
+    on: string;
+    placeholder: string;
+  };
+  color: AvatarColors;
+  rounded: string;
+  size: AvatarSizes;
+  stacked: string;
+  status: {
+    away: string;
+    base: string;
+    busy: string;
+    offline: string;
+    online: string;
+  };
+  statusPosition: FlowbitePositions;
+  initials: {
+    base: string;
+    text: string;
+  };
+}
+
+export interface FlowbiteAvatarGroupCounterTheme {
+  base: string;
+}
+
+export interface FlowbiteAvatarGroupTheme {
+  base: string;
+}
+
+export interface FlowbiteBadgeTheme {
+  base: string;
+  color: BadgeColors;
+  href: string;
+  icon: {
+    off: string;
+    on: string;
+    size: BadgeSizes;
+  };
+  size: BadgeSizes;
+}
+
+export interface FlowbiteBreadcrumbTheme {
+  item: {
+    base: string;
+    chevron: string;
+    href: {
+      off: string;
+      on: string;
+    };
+    icon: string;
+  };
+  list: string;
+}
+
+export interface FlowbiteButtonTheme {
+  base: string;
+  fullSized: string;
+  color: ButtonColors;
+  disabled: string;
+  gradient: ButtonGradientColors;
+  gradientDuoTone: ButtonGradientDuoToneColors;
+  inner: {
     base: string;
     position: PositionInButtonGroup;
+    outline: string;
   };
-  card: {
+  label: string;
+  outline: FlowbiteBoolean & {
+    color: ButtonOutlineColors;
+    pill: FlowbiteBoolean;
+  };
+  pill: FlowbiteBoolean;
+  size: ButtonSizes;
+}
+
+export interface FlowbiteButtonGroupTheme {
+  base: string;
+  position: PositionInButtonGroup;
+}
+
+export interface FlowbiteCardTheme {
+  base: string;
+  children: string;
+  horizontal: {
+    off: string;
+    on: string;
+  };
+  href: string;
+  img: {
     base: string;
-    children: string;
     horizontal: {
       off: string;
       on: string;
     };
-    href: string;
-    img: {
-      base: string;
-      horizontal: {
-        off: string;
-        on: string;
-      };
-    };
   };
-  carousel: {
+}
+
+export interface FlowbiteCarouselTheme {
+  base: string;
+  indicators: {
+    active: {
+      off: string;
+      on: string;
+    };
     base: string;
-    indicators: {
-      active: {
-        off: string;
-        on: string;
-      };
-      base: string;
-      wrapper: string;
-    };
-    item: {
-      base: string;
-      wrapper: string;
-    };
-    control: {
-      base: string;
-      icon: string;
-    };
-    leftControl: string;
-    rightControl: string;
-    scrollContainer: {
-      base: string;
-      snap: string;
-    };
+    wrapper: string;
   };
-  darkThemeToggle: {
+  item: {
+    base: string;
+    wrapper: string;
+  };
+  control: {
     base: string;
     icon: string;
   };
-  footer: {
+  leftControl: string;
+  rightControl: string;
+  scrollContainer: {
     base: string;
-    container: string;
-    bgDark: string;
-    groupLink: {
-      base: string;
-      link: {
-        base: string;
-        href: string;
-      };
-      col: string;
-    };
-    icon: {
-      base: string;
-      size: string;
-    };
-    title: {
-      base: string;
-    };
-    divider: {
-      base: string;
-    };
-    copyright: {
+    snap: string;
+  };
+}
+
+export interface FlowbiteDarkThemeToggleTheme {
+  base: string;
+  icon: string;
+}
+
+export interface FlowbiteFooterTheme {
+  base: string;
+  container: string;
+  bgDark: string;
+  groupLink: {
+    base: string;
+    link: {
       base: string;
       href: string;
-      span: string;
     };
-    brand: {
+    col: string;
+  };
+  icon: {
+    base: string;
+    size: string;
+  };
+  title: {
+    base: string;
+  };
+  divider: {
+    base: string;
+  };
+  copyright: {
+    base: string;
+    href: string;
+    span: string;
+  };
+  brand: {
+    base: string;
+    img: string;
+    span: string;
+  };
+}
+
+export interface FlowbiteFormControlsTheme {
+  helperText: {
+    base: string;
+    colors: HelperColors;
+  };
+  label: {
+    base: string;
+    colors: LabelColors;
+    disabled: string;
+  };
+  radio: {
+    base: string;
+  };
+  checkbox: {
+    base: string;
+  };
+  textInput: {
+    base: string;
+    addon: string;
+    field: {
       base: string;
-      img: string;
+      icon: {
+        base: string;
+        svg: string;
+      };
+      input: {
+        base: string;
+        sizes: TextInputSizes;
+        colors: TextInputColors;
+        withIcon: FlowbiteBoolean;
+        withAddon: FlowbiteBoolean;
+        withShadow: FlowbiteBoolean;
+      };
+    };
+  };
+  fileInput: {
+    base: string;
+    field: {
+      base: string;
+      input: {
+        base: string;
+        sizes: TextInputSizes;
+        colors: TextInputColors;
+      };
+    };
+  };
+  toggleSwitch: {
+    base: string;
+    active: FlowbiteBoolean;
+    toggle: {
+      base: string;
+      checked: FlowbiteBoolean & {
+        color: FlowbiteColors;
+      };
+    };
+    label: string;
+  };
+  textarea: {
+    base: string;
+    colors: TextareaColors;
+    withShadow: FlowbiteBoolean;
+  };
+  select: {
+    base: string;
+    addon: string;
+    field: {
+      base: string;
+      icon: {
+        base: string;
+        svg: string;
+      };
+      select: {
+        base: string;
+        withIcon: FlowbiteBoolean;
+        withAddon: FlowbiteBoolean;
+        withShadow: FlowbiteBoolean;
+        sizes: SelectSizes;
+        colors: SelectColors;
+      };
+    };
+  };
+}
+
+export interface FlowbiteListGroupTheme {
+  base: string;
+  item: {
+    active: FlowbiteBoolean;
+    base: string;
+    href: FlowbiteBoolean;
+    icon: string;
+  };
+}
+
+export interface FlowbiteModalTheme {
+  base: string;
+  show: FlowbiteBoolean;
+  content: {
+    base: string;
+    inner: string;
+  };
+  body: {
+    base: string;
+    popup: string;
+  };
+  header: {
+    base: string;
+    popup: string;
+    title: string;
+    close: {
+      base: string;
+      icon: string;
+    };
+  };
+  footer: {
+    base: string;
+    popup: string;
+  };
+  sizes: ModalSizes;
+  positions: ModalPositions;
+}
+
+export interface FlowbiteNavbarTheme {
+  base: string;
+  rounded: FlowbiteBoolean;
+  bordered: FlowbiteBoolean;
+  inner: {
+    base: string;
+    fluid: FlowbiteBoolean;
+  };
+  brand: string;
+  collapse: {
+    base: string;
+    list: string;
+    hidden: FlowbiteBoolean;
+  };
+  link: {
+    base: string;
+    active: FlowbiteBoolean;
+    disabled: FlowbiteBoolean;
+  };
+  toggle: {
+    base: string;
+    icon: string;
+  };
+}
+
+export interface FlowbiteRatingTheme {
+  base: string;
+  star: {
+    sizes: StarSizes;
+    filled: string;
+    empty: string;
+  };
+  advanced: {
+    base: string;
+    label: string;
+    progress: {
+      base: string;
+      fill: string;
+      label: string;
+    };
+  };
+}
+
+export interface FlowbitePaginationTheme {
+  base: string;
+  layout: {
+    table: {
+      base: string;
       span: string;
     };
   };
-  formControls: {
-    helperText: {
+  pages: {
+    base: string;
+    showIcon: string;
+    previous: {
       base: string;
-      colors: HelperColors;
+      icon: string;
+    };
+    next: {
+      base: string;
+      icon: string;
+    };
+    selector: {
+      base: string;
+      active: string;
+    };
+  };
+}
+
+export interface FlowbiteSidebarTheme {
+  base: string;
+  collapsed: FlowbiteBoolean;
+  inner: string;
+  collapse: {
+    button: string;
+    icon: {
+      base: string;
+      open: FlowbiteBoolean;
     };
     label: {
       base: string;
-      colors: LabelColors;
-      disabled: string;
-    };
-    radio: {
-      base: string;
-    };
-    checkbox: {
-      base: string;
-    };
-    textInput: {
-      base: string;
-      addon: string;
-      field: {
-        base: string;
-        icon: {
-          base: string;
-          svg: string;
-        };
-        input: {
-          base: string;
-          sizes: TextInputSizes;
-          colors: TextInputColors;
-          withIcon: FlowbiteBoolean;
-          withAddon: FlowbiteBoolean;
-          withShadow: FlowbiteBoolean;
-        };
-      };
-    };
-    fileInput: {
-      base: string;
-      field: {
-        base: string;
-        input: {
-          base: string;
-          sizes: TextInputSizes;
-          colors: TextInputColors;
-        };
-      };
-    };
-    toggleSwitch: {
-      base: string;
-      active: FlowbiteBoolean;
-      toggle: {
-        base: string;
-        checked: FlowbiteBoolean & {
-          color: FlowbiteColors;
-        };
-      };
-      label: string;
-    };
-    textarea: {
-      base: string;
-      colors: TextareaColors;
-      withShadow: FlowbiteBoolean;
-    };
-    select: {
-      base: string;
-      addon: string;
-      field: {
-        base: string;
-        icon: {
-          base: string;
-          svg: string;
-        };
-        select: {
-          base: string;
-          withIcon: FlowbiteBoolean;
-          withAddon: FlowbiteBoolean;
-          withShadow: FlowbiteBoolean;
-          sizes: SelectSizes;
-          colors: SelectColors;
-        };
-      };
-    };
-  };
-  listGroup: {
-    base: string;
-    item: {
-      active: FlowbiteBoolean;
-      base: string;
-      href: FlowbiteBoolean;
       icon: string;
     };
+    list: string;
   };
-  modal: {
+  cta: {
     base: string;
-    show: FlowbiteBoolean;
+    color: SidebarCTAColors;
+  };
+  item: {
+    active: string;
+    base: string;
+    collapsed: {
+      insideCollapse: string;
+      noIcon: string;
+    };
     content: {
       base: string;
-      inner: string;
     };
-    body: {
+    label: string;
+    icon: {
       base: string;
-      popup: string;
-    };
-    header: {
-      base: string;
-      popup: string;
-      title: string;
-      close: {
-        base: string;
-        icon: string;
-      };
-    };
-    footer: {
-      base: string;
-      popup: string;
-    };
-    sizes: ModalSizes;
-    positions: ModalPositions;
-  };
-  navbar: {
-    base: string;
-    rounded: FlowbiteBoolean;
-    bordered: FlowbiteBoolean;
-    inner: {
-      base: string;
-      fluid: FlowbiteBoolean;
-    };
-    brand: string;
-    collapse: {
-      base: string;
-      list: string;
-      hidden: FlowbiteBoolean;
-    };
-    link: {
-      base: string;
-      active: FlowbiteBoolean;
-      disabled: FlowbiteBoolean;
-    };
-    toggle: {
-      base: string;
-      icon: string;
+      active: string;
     };
   };
-  rating: {
-    base: string;
-    star: {
-      sizes: StarSizes;
-      filled: string;
-      empty: string;
-    };
-    advanced: {
-      base: string;
-      label: string;
-      progress: {
-        base: string;
-        fill: string;
-        label: string;
-      };
-    };
-  };
-  pagination: {
-    base: string;
-    layout: {
-      table: {
-        base: string;
-        span: string;
-      };
-    };
-    pages: {
-      base: string;
-      showIcon: string;
-      previous: {
-        base: string;
-        icon: string;
-      };
-      next: {
-        base: string;
-        icon: string;
-      };
-      selector: {
-        base: string;
-        active: string;
-      };
-    };
-  };
-  sidebar: {
+  items: string;
+  itemGroup: string;
+  logo: {
     base: string;
     collapsed: FlowbiteBoolean;
-    inner: string;
-    collapse: {
-      button: string;
-      icon: {
-        base: string;
-        open: FlowbiteBoolean;
-      };
-      label: {
-        base: string;
-        icon: string;
-      };
-      list: string;
-    };
-    cta: {
+    img: string;
+  };
+}
+
+export interface FlowbiteProgressTheme {
+  base: string;
+  label: string;
+  bar: string;
+  color: ProgressColor;
+  size: ProgressSizes;
+}
+
+export interface FlowbiteSpinnerTheme {
+  base: string;
+  color: SpinnerColors;
+  light: {
+    off: {
       base: string;
-      color: SidebarCTAColors;
+      color: SpinnerColors;
     };
-    item: {
-      active: string;
+    on: {
       base: string;
-      collapsed: {
-        insideCollapse: string;
-        noIcon: string;
-      };
-      content: {
-        base: string;
-      };
-      label: string;
-      icon: {
-        base: string;
-        active: string;
-      };
-    };
-    items: string;
-    itemGroup: string;
-    logo: {
-      base: string;
-      collapsed: FlowbiteBoolean;
-      img: string;
+      color: SpinnerColors;
     };
   };
-  progress: {
+  size: SpinnerSizes;
+}
+
+export interface FlowbiteTabTheme {
+  base: string;
+  tablist: {
     base: string;
-    label: string;
-    bar: string;
-    color: ProgressColor;
-    size: ProgressSizes;
-  };
-  spinner: {
-    base: string;
-    color: SpinnerColors;
-    light: {
-      off: {
-        base: string;
-        color: SpinnerColors;
-      };
-      on: {
-        base: string;
-        color: SpinnerColors;
-      };
-    };
-    size: SpinnerSizes;
-  };
-  tab: {
-    base: string;
-    tablist: {
+    styles: TabStyles;
+    tabitem: {
       base: string;
-      styles: TabStyles;
-      tabitem: {
-        base: string;
-        styles: TabStyleItem<TabStyles>;
-        icon: string;
-      };
-    };
-    tabpanel: string;
-  };
-  toast: {
-    base: string;
-    closed: string;
-    removed: string;
-    toggle: {
-      base: string;
+      styles: TabStyleItem<TabStyles>;
       icon: string;
     };
   };
-  tooltip: FlowbiteFloatingTheme;
-  dropdown: {
-    floating: FlowbiteDropdownTheme;
-    content: string;
-    inlineWrapper: string;
-    arrowIcon: string;
+  tabpanel: string;
+}
+
+export interface FlowbiteToastTheme {
+  base: string;
+  closed: string;
+  removed: string;
+  toggle: {
+    base: string;
+    icon: string;
   };
+}
+
+export interface FlowbiteFloatingTheme {
+  target: string;
+  base: string;
+  animation: string;
+  hidden: string;
+  style: {
+    dark: string;
+    light: string;
+    auto: string;
+  };
+  content: string;
+  arrow: {
+    base: string;
+    style: {
+      dark: string;
+      light: string;
+      auto: string;
+    };
+    placement: string;
+  };
+}
+
+export interface FlowbiteTooltipTheme extends FlowbiteFloatingTheme {}
+
+export interface FlowbiteDropdownFloatingTheme extends FlowbiteFloatingTheme {
+  header: string;
+  item: {
+    base: string;
+    icon: string;
+  };
+  divider: string;
+}
+
+export interface FlowbiteDropdownTheme {
+  floating: FlowbiteDropdownFloatingTheme;
+  content: string;
+  inlineWrapper: string;
+  arrowIcon: string;
 }
 
 export interface FlowbiteBoolean {
