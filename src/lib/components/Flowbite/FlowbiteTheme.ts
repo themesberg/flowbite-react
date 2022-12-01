@@ -434,6 +434,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
       content: {
         base: string;
       };
+      label: string;
       icon: {
         base: string;
         active: string;

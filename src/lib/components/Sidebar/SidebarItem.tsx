@@ -80,7 +80,7 @@ const SidebarItem = forwardRef<Element, SidebarItemProps>(
           )}
           {!isCollapsed && <Children>{children}</Children>}
           {!isCollapsed && label && (
-            <Badge color={labelColor} data-testid="flowbite-sidebar-label" hidden={isCollapsed}>
+            <Badge color={labelColor} data-testid="flowbite-sidebar-label" hidden={isCollapsed} className={theme.label}>
               {label}
             </Badge>
           )}
