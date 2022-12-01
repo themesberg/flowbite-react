@@ -7,7 +7,7 @@ import type { FlowbiteTheme } from './FlowbiteTheme';
 
 export type Mode = 'light' | 'dark';
 
-interface ThemeContextProps {
+export interface ThemeContextProps {
   theme: FlowbiteTheme;
   mode?: Mode;
   toggleMode?: () => void | null;
