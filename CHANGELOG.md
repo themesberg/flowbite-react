@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.6](https://github.com/themesberg/flowbite-react/compare/v0.3.5...v0.3.6) (2022-12-02)
+
+
+### Features
+
+* **avatar:** adds color prop and test case for it ([#439](https://github.com/themesberg/flowbite-react/issues/439)) ([104d6fb](https://github.com/themesberg/flowbite-react/commit/104d6fb83bd48de696c2b79138640e747e5b020f)), closes [#409](https://github.com/themesberg/flowbite-react/issues/409) [#409](https://github.com/themesberg/flowbite-react/issues/409)
+
 ### [0.3.5](https://github.com/themesberg/flowbite-react/compare/v0.3.4...v0.3.5) (2022-11-17)
 
 
