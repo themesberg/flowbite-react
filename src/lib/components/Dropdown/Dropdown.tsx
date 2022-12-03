@@ -4,39 +4,27 @@ import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOu
 import { uuid } from '../../helpers/uuid';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
-import type { FloatingProps } from '../Floating';
+import type { FloatingProps, FlowbiteFloatingTheme } from '../Floating';
 import { Floating } from '../Floating';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { DropdownDivider } from './DropdownDivider';
 import { DropdownHeader } from './DropdownHeader';
 import { DropdownItem } from './DropdownItem';
 
-export interface FlowbiteDropdownTheme {
-  target: string;
-  base: string;
-  animation: string;
-  hidden: string;
-  style: {
-    dark: string;
-    light: string;
-    auto: string;
-  };
+export interface FlowbiteDropdownFloatingTheme extends FlowbiteFloatingTheme {
   header: string;
-  content: string;
-  arrow: {
-    base: string;
-    style: {
-      dark: string;
-      light: string;
-      auto: string;
-    };
-    placement: string;
-  };
   item: {
     base: string;
     icon: string;
   };
   divider: string;
+}
+
+export interface FlowbiteDropdownTheme {
+  floating: FlowbiteDropdownFloatingTheme;
+  content: string;
+  inlineWrapper: string;
+  arrowIcon: string;
 }
 
 export interface DropdownProps extends PropsWithChildren<Pick<FloatingProps, 'placement' | 'trigger'>>, ButtonProps {

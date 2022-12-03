@@ -6,6 +6,16 @@ import type { Duration } from './ToastContext';
 import { ToastContext } from './ToastContext';
 import { ToastToggle } from './ToastToggle';
 
+export interface FlowbiteToastTheme {
+  base: string;
+  closed: string;
+  removed: string;
+  toggle: {
+    base: string;
+    icon: string;
+  };
+}
+
 export interface ToastProps extends PropsWithChildren<ComponentProps<'div'>> {
   duration?: Duration;
 }

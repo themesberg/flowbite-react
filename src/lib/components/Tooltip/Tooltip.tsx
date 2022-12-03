@@ -1,7 +1,9 @@
 import type { Placement } from '@floating-ui/core';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
-import { Floating } from '../Floating';
+import { Floating, FlowbiteFloatingTheme } from '../Floating';
 import { useTheme } from '../Flowbite/ThemeContext';
+
+export interface FlowbiteTooltipTheme extends FlowbiteFloatingTheme {}
 
 export interface TooltipProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
   content: ReactNode;

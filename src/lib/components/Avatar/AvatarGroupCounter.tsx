@@ -3,6 +3,10 @@ import type { ComponentProps, PropsWithChildren } from 'react';
 import React from 'react';
 import { useTheme } from '../Flowbite';
 
+export interface FlowbiteAvatarGroupCounterTheme {
+  base: string;
+}
+
 export interface AvatarGroupdCounterProps extends PropsWithChildren<ComponentProps<'a'>> {
   total?: number;
 }

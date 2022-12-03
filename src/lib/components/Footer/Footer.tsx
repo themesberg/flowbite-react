@@ -9,6 +9,40 @@ import { FooterLink } from './FooterLink';
 import { FooterLinkGroup } from './FooterLinkGroup';
 import { FooterTitle } from './FooterTitle';
 
+export interface FlowbiteFooterTheme {
+  base: string;
+  container: string;
+  bgDark: string;
+  groupLink: {
+    base: string;
+    link: {
+      base: string;
+      href: string;
+    };
+    col: string;
+  };
+  icon: {
+    base: string;
+    size: string;
+  };
+  title: {
+    base: string;
+  };
+  divider: {
+    base: string;
+  };
+  copyright: {
+    base: string;
+    href: string;
+    span: string;
+  };
+  brand: {
+    base: string;
+    img: string;
+    span: string;
+  };
+}
+
 export interface FooterProps extends ComponentProps<'footer'> {
   bgDark?: boolean;
   container?: boolean;

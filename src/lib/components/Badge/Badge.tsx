@@ -3,11 +3,16 @@ import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export interface BadgeProps extends PropsWithChildren<Omit<ComponentProps<'span'>, 'color'>> {
-  color?: keyof BadgeColors;
-  href?: string;
-  icon?: FC<ComponentProps<'svg'>>;
-  size?: keyof BadgeSizes;
+export interface FlowbiteBadgeTheme {
+  base: string;
+  color: BadgeColors;
+  href: string;
+  icon: {
+    off: string;
+    on: string;
+    size: BadgeSizes;
+  };
+  size: BadgeSizes;
 }
 
 export interface BadgeColors
@@ -17,6 +22,13 @@ export interface BadgeColors
 
 export interface BadgeSizes extends Pick<FlowbiteSizes, 'xs' | 'sm'> {
   [key: string]: string;
+}
+
+export interface BadgeProps extends PropsWithChildren<Omit<ComponentProps<'span'>, 'color'>> {
+  color?: keyof BadgeColors;
+  href?: string;
+  icon?: FC<ComponentProps<'svg'>>;
+  size?: keyof BadgeSizes;
 }
 
 export const Badge: FC<BadgeProps> = ({

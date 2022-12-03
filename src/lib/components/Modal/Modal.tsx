@@ -2,12 +2,40 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import type { FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { ModalBody } from './ModalBody';
 import { ModalContext } from './ModalContext';
 import { ModalFooter } from './ModalFooter';
 import { ModalHeader } from './ModalHeader';
+
+export interface FlowbiteModalTheme {
+  base: string;
+  show: FlowbiteBoolean;
+  content: {
+    base: string;
+    inner: string;
+  };
+  body: {
+    base: string;
+    popup: string;
+  };
+  header: {
+    base: string;
+    popup: string;
+    title: string;
+    close: {
+      base: string;
+      icon: string;
+    };
+  };
+  footer: {
+    base: string;
+    popup: string;
+  };
+  sizes: ModalSizes;
+  positions: ModalPositions;
+}
 
 export interface ModalPositions extends FlowbitePositions {
   [key: string]: string;

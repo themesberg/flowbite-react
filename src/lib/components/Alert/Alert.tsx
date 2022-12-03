@@ -4,6 +4,24 @@ import { HiX } from 'react-icons/hi';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
+export interface FlowbiteAlertTheme {
+  base: string;
+  borderAccent: string;
+  wrapper: string;
+  closeButton: {
+    base: string;
+    icon: string;
+    color: AlertColors;
+  };
+  color: AlertColors;
+  icon: string;
+  rounded: string;
+}
+
+export interface AlertColors extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'success' | 'warning'> {
+  [key: string]: string;
+}
+
 export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
   additionalContent?: ReactNode;
   color?: keyof AlertColors;
@@ -11,10 +29,6 @@ export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>
   onDismiss?: boolean | (() => void);
   rounded?: boolean;
   withBorderAccent?: boolean;
-}
-
-export interface AlertColors extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'success' | 'warning'> {
-  [key: string]: string;
 }
 
 export const Alert: FC<AlertProps> = ({

@@ -12,24 +12,28 @@ export function isObject(item: unknown) {
 }
 
 /**
- * Deep merge two objects.
+ * Deep merge two objects with deep copy of the target object.
  * @param target
  * @param ...sources
  */
 export function mergeDeep<T extends Record<string, unknown>>(target: T, ...sources: DeepPartial<T>[]): T {
   if (!sources.length) return target;
   const source = sources.shift();
+  const output = { ...target };
 
   if (isObject(target) && isObject(source)) {
     for (const key in source) {
       if (isObject(source[key])) {
-        if (!target[key]) Object.assign(target, { [key]: {} });
-        mergeDeep(target[key] as Record<string, unknown>, source[key] as Record<string, unknown>);
+        if (!target[key]) Object.assign(output, { [key]: {} });
+        (output[key] as Record<string, unknown>) = mergeDeep(
+          target[key] as Record<string, unknown>,
+          source[key] as Record<string, unknown>,
+        );
       } else {
-        Object.assign(target, { [key]: source[key] });
+        Object.assign(output, { [key]: source[key] });
       }
     }
   }
 
-  return mergeDeep(target, ...sources);
+  return mergeDeep(output, ...sources);
 }

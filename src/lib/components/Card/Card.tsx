@@ -2,6 +2,23 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useTheme } from '../Flowbite/ThemeContext';
 
+export interface FlowbiteCardTheme {
+  base: string;
+  children: string;
+  horizontal: {
+    off: string;
+    on: string;
+  };
+  href: string;
+  img: {
+    base: string;
+    horizontal: {
+      off: string;
+      on: string;
+    };
+  };
+}
+
 export interface CardProps extends PropsWithChildren<ComponentProps<'div'>> {
   horizontal?: boolean;
   href?: string;
