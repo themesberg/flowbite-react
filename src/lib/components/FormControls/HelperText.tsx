@@ -20,9 +20,6 @@ export interface FlowbiteFormControlsTheme {
   radio: {
     base: string;
   };
-  checkbox: {
-    base: string;
-  };
   textInput: {
     base: string;
     addon: string;

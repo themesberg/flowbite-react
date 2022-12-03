@@ -1,4 +1,4 @@
-export * from './Checkbox';
+export * from '../Checkbox';
 export * from './FileInput';
 export * from './HelperText';
 export * from './Label';

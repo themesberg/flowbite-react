@@ -3,7 +3,7 @@ import type { CheckboxProps } from './Checkbox';
 import { Checkbox } from './Checkbox';
 
 export default {
-  title: 'Components/FormControls',
+  title: 'Components/Checkbox',
   component: Checkbox,
 } as Meta;
 
