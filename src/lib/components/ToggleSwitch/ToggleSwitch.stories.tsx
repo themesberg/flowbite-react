@@ -1,12 +1,12 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
-import theme from '../../../../lib/theme/default';
+import theme from '../../theme/default';
 import type { ToggleSwitchProps } from './ToggleSwitch';
 import { ToggleSwitch } from './ToggleSwitch';
 
-const colors = Object.keys(theme.formControls.toggleSwitch.toggle.checked.color);
+const colors = Object.keys(theme.toggleSwitch.toggle.checked.color);
 
 export default {
-  title: 'Components/FormControls',
+  title: 'Components/ToggleSwitch',
   component: ToggleSwitch,
 } as Meta;
 

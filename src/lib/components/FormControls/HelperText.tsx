@@ -1,23 +1,12 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteFormControlsTheme {
   helperText: {
     base: string;
     colors: HelperColors;
-  };
-  toggleSwitch: {
-    base: string;
-    active: FlowbiteBoolean;
-    toggle: {
-      base: string;
-      checked: FlowbiteBoolean & {
-        color: FlowbiteColors;
-      };
-    };
-    label: string;
   };
 }
 

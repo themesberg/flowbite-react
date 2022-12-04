@@ -28,6 +28,7 @@ import { FlowbiteTabTheme } from '../Tab';
 import { FlowbiteTextareaTheme } from '../Textarea';
 import { FlowbiteTextInputTheme } from '../TextInput';
 import { FlowbiteToastTheme } from '../Toast';
+import { FlowbiteToggleSwitchTheme } from '../ToggleSwitch';
 import { FlowbiteTooltipTheme } from '../Tooltip';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
@@ -66,6 +67,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   select: FlowbiteSelectTheme;
   textInput: FlowbiteTextInputTheme;
   textarea: FlowbiteTextareaTheme;
+  toggleSwitch: FlowbiteToggleSwitchTheme;
 }
 
 export interface FlowbiteBoolean {

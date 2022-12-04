@@ -1,8 +1,20 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, KeyboardEvent, MouseEvent } from 'react';
 import { useId } from 'react';
-import { FlowbiteColors } from '../../Flowbite/FlowbiteTheme';
-import { useTheme } from '../../Flowbite/ThemeContext';
+import { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
+import { useTheme } from '../Flowbite/ThemeContext';
+
+export interface FlowbiteToggleSwitchTheme {
+  base: string;
+  active: FlowbiteBoolean;
+  toggle: {
+    base: string;
+    checked: FlowbiteBoolean & {
+      color: FlowbiteColors;
+    };
+  };
+  label: string;
+}
 
 export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
   checked: boolean;
@@ -21,7 +33,7 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
   color = 'blue',
   ...props
 }) => {
-  const theme = useTheme().theme.formControls.toggleSwitch;
+  const theme = useTheme().theme.toggleSwitch;
   const id = useId();
 
   const toggle = (): void => onChange(!checked);

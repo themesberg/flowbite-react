@@ -4,11 +4,11 @@ import { describe, expect, it } from 'vitest';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { FileInput } from '../FileInput';
-import { ToggleSwitch } from '../FormControls/ToggleSwitch';
 import { Radio } from '../Radio';
 import { Select } from '../Select';
 import { Textarea } from '../Textarea';
 import { TextInput } from '../TextInput';
+import { ToggleSwitch } from '../ToggleSwitch';
 import { Label } from './Label';
 
 describe.concurrent('Components / Label', () => {
