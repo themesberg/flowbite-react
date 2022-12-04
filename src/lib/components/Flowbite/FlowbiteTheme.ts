@@ -10,6 +10,7 @@ import { FlowbiteCarouselTheme } from '../Carousel';
 import { FlowbiteCheckboxTheme } from '../Checkbox';
 import { FlowbiteDarkThemeToggleTheme } from '../DarkThemeToggle';
 import { FlowbiteDropdownTheme } from '../Dropdown';
+import { FlowbiteFileInputTheme } from '../FileInput';
 import { FlowbiteFooterTheme } from '../Footer';
 import { FlowbiteFormControlsTheme } from '../FormControls';
 import { FlowbiteListGroupTheme } from '../ListGroup';
@@ -54,6 +55,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   tooltip: FlowbiteTooltipTheme;
   dropdown: FlowbiteDropdownTheme;
   checkbox: FlowbiteCheckboxTheme;
+  fileInput: FlowbiteFileInputTheme;
 }
 
 export interface FlowbiteBoolean {

@@ -1,5 +1,6 @@
 import type { FC } from 'react';
-import { Checkbox, Table } from '../../lib';
+import { Table } from '../../lib';
+import { Checkbox } from '../../lib/components/Checkbox';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
 

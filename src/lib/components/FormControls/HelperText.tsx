@@ -39,17 +39,6 @@ export interface FlowbiteFormControlsTheme {
       };
     };
   };
-  fileInput: {
-    base: string;
-    field: {
-      base: string;
-      input: {
-        base: string;
-        sizes: TextInputSizes;
-        colors: TextInputColors;
-      };
-    };
-  };
   toggleSwitch: {
     base: string;
     active: FlowbiteBoolean;

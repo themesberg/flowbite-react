@@ -3,7 +3,7 @@ import { HiGlobe, HiLockClosed } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
 import { Button } from '../../Button';
 import { Checkbox } from '../../Checkbox';
-import { FileInput } from '../FileInput';
+import { FileInput } from '../../FileInput';
 import { Radio } from '../Radio';
 import { Select } from '../Select';
 import { Textarea } from '../Textarea';

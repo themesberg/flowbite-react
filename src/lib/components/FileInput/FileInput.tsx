@@ -1,9 +1,21 @@
 import classNames from 'classnames';
 import type { ComponentProps, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import { useTheme } from '../../Flowbite/ThemeContext';
-import HelperText from '../HelperText';
-import type { TextInputColors, TextInputSizes } from '../TextInput';
+import { useTheme } from '../Flowbite/ThemeContext';
+import HelperText from '../FormControls/HelperText';
+import type { TextInputColors, TextInputSizes } from '../FormControls/TextInput';
+
+export interface FlowbiteFileInputTheme {
+  base: string;
+  field: {
+    base: string;
+    input: {
+      base: string;
+      sizes: TextInputSizes;
+      colors: TextInputColors;
+    };
+  };
+}
 
 export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | 'ref' | 'color'> {
   sizing?: keyof TextInputSizes;
@@ -13,7 +25,7 @@ export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | '
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
   ({ sizing = 'md', helperText, color = 'gray', className, ...props }, ref) => {
-    const theme = useTheme().theme.formControls.fileInput;
+    const theme = useTheme().theme.fileInput;
     return (
       <>
         <div className={classNames(theme.base, className)}>

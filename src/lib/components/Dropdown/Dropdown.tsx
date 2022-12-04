@@ -74,7 +74,7 @@ const DropdownComponent: FC<DropdownProps> = ({ children, className, dismissOnCl
       } as any);
     if (node.props.children && typeof node.props.children === 'object') {
       return React.cloneElement(node, {
-        // @ts-expect-error unknown error
+        // @ts-ignore
         children: Children.map(node.props.children, attachCloseListener),
       });
     }

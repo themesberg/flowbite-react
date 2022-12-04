@@ -1,7 +1,9 @@
 import type { FC } from 'react';
 import { useState } from 'react';
 import { HiMail } from 'react-icons/hi';
-import { Button, Checkbox, FileInput, Label, Radio, Select, Textarea, TextInput, ToggleSwitch } from '../../lib';
+import { Button, Label, Radio, Select, Textarea, TextInput, ToggleSwitch } from '../../lib';
+import { Checkbox } from '../../lib/components/Checkbox';
+import { FileInput } from '../../lib/components/FileInput';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
 

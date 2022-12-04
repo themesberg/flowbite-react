@@ -3,7 +3,7 @@ import type { FileInputProps } from './FileInput';
 import { FileInput } from './FileInput';
 
 export default {
-  title: 'Components/FormControls',
+  title: 'Components/FileInput',
   component: FileInput,
 } as Meta;
 
