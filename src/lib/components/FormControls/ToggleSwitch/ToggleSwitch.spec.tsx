@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FC, useState } from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import { TextInput } from '../TextInput';
+import { TextInput } from '../../TextInput';
 import { ToggleSwitch } from './ToggleSwitch';
 
 describe('Components / Form controls / Toggle switch', () => {

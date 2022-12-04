@@ -3,31 +3,11 @@ import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { TextareaColors } from './Textarea';
-import { TextInputColors, TextInputSizes } from './TextInput';
 
 export interface FlowbiteFormControlsTheme {
   helperText: {
     base: string;
     colors: HelperColors;
-  };
-  textInput: {
-    base: string;
-    addon: string;
-    field: {
-      base: string;
-      icon: {
-        base: string;
-        svg: string;
-      };
-      input: {
-        base: string;
-        sizes: TextInputSizes;
-        colors: TextInputColors;
-        withIcon: FlowbiteBoolean;
-        withAddon: FlowbiteBoolean;
-        withShadow: FlowbiteBoolean;
-      };
-    };
   };
   toggleSwitch: {
     base: string;

@@ -3,7 +3,7 @@ import type { TextInputProps } from './TextInput';
 import { TextInput } from './TextInput';
 
 export default {
-  title: 'Components/FormControls',
+  title: 'Components/TextInput',
   component: TextInput,
 } as Meta;
 

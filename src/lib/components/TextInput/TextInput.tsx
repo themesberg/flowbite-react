@@ -1,9 +1,29 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import type { FlowbiteColors, FlowbiteSizes } from '../../Flowbite/FlowbiteTheme';
-import { useTheme } from '../../Flowbite/ThemeContext';
-import HelperText from '../HelperText';
+import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import { useTheme } from '../Flowbite/ThemeContext';
+import HelperText from '../FormControls/HelperText';
+
+export interface FlowbiteTextInputTheme {
+  base: string;
+  addon: string;
+  field: {
+    base: string;
+    icon: {
+      base: string;
+      svg: string;
+    };
+    input: {
+      base: string;
+      sizes: TextInputSizes;
+      colors: TextInputColors;
+      withIcon: FlowbiteBoolean;
+      withAddon: FlowbiteBoolean;
+      withShadow: FlowbiteBoolean;
+    };
+  };
+}
 
 export interface TextInputColors extends Pick<FlowbiteColors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
   [key: string]: string;
@@ -24,7 +44,7 @@ export interface TextInputProps extends Omit<ComponentProps<'input'>, 'ref' | 'c
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ sizing = 'md', shadow, helperText, addon, icon: Icon, color = 'gray', className, ...props }, ref) => {
-    const theme = useTheme().theme.formControls.textInput;
+    const theme = useTheme().theme.textInput;
     return (
       <>
         <div className={classNames(theme.base, className)}>

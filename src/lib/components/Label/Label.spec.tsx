@@ -5,10 +5,10 @@ import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { FileInput } from '../FileInput';
 import { Textarea } from '../FormControls/Textarea';
-import { TextInput } from '../FormControls/TextInput';
 import { ToggleSwitch } from '../FormControls/ToggleSwitch';
 import { Radio } from '../Radio';
 import { Select } from '../Select';
+import { TextInput } from '../TextInput';
 import { Label } from './Label';
 
 describe.concurrent('Components / Label', () => {

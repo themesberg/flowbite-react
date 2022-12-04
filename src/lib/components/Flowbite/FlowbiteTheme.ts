@@ -25,6 +25,7 @@ import { FlowbiteSelectTheme } from '../Select';
 import { FlowbiteSidebarTheme } from '../Sidebar';
 import { FlowbiteSpinnerTheme } from '../Spinner';
 import { FlowbiteTabTheme } from '../Tab';
+import { FlowbiteTextInputTheme } from '../TextInput';
 import { FlowbiteToastTheme } from '../Toast';
 import { FlowbiteTooltipTheme } from '../Tooltip';
 
@@ -62,6 +63,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   label: FlowbiteLabelTheme;
   radio: FlowbiteRadioTheme;
   select: FlowbiteSelectTheme;
+  textInput: FlowbiteTextInputTheme;
 }
 
 export interface FlowbiteBoolean {
