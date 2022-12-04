@@ -3,7 +3,7 @@ import type { TextareaProps } from './Textarea';
 import { Textarea } from './Textarea';
 
 export default {
-  title: 'Components/FormControls',
+  title: 'Components/Textarea',
   component: Textarea,
 } as Meta;
 

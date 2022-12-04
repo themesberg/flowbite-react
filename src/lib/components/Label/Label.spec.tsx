@@ -4,10 +4,10 @@ import { describe, expect, it } from 'vitest';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { FileInput } from '../FileInput';
-import { Textarea } from '../FormControls/Textarea';
 import { ToggleSwitch } from '../FormControls/ToggleSwitch';
 import { Radio } from '../Radio';
 import { Select } from '../Select';
+import { Textarea } from '../Textarea';
 import { TextInput } from '../TextInput';
 import { Label } from './Label';
 

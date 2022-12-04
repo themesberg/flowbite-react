@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { TextareaColors } from './Textarea';
 
 export interface FlowbiteFormControlsTheme {
   helperText: {
@@ -19,11 +18,6 @@ export interface FlowbiteFormControlsTheme {
       };
     };
     label: string;
-  };
-  textarea: {
-    base: string;
-    colors: TextareaColors;
-    withShadow: FlowbiteBoolean;
   };
 }
 

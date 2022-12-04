@@ -1,9 +1,15 @@
 import classNames from 'classnames';
 import type { ComponentProps, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import type { FlowbiteColors } from '../../Flowbite/FlowbiteTheme';
-import { useTheme } from '../../Flowbite/ThemeContext';
-import HelperText from '../HelperText';
+import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
+import { useTheme } from '../Flowbite/ThemeContext';
+import HelperText from '../FormControls/HelperText';
+
+export interface FlowbiteTextareaTheme {
+  base: string;
+  colors: TextareaColors;
+  withShadow: FlowbiteBoolean;
+}
 
 export interface TextareaColors extends Pick<FlowbiteColors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
   [key: string]: string;
@@ -17,7 +23,7 @@ export interface TextareaProps extends Omit<ComponentProps<'textarea'>, 'color' 
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ shadow, helperText, color = 'gray', className, ...props }, ref) => {
-    const theme = useTheme().theme.formControls.textarea;
+    const theme = useTheme().theme.textarea;
     return (
       <>
         <textarea
