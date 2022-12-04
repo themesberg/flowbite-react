@@ -19,6 +19,7 @@ import { FlowbiteModalTheme } from '../Modal';
 import { FlowbiteNavbarTheme } from '../Navbar';
 import { FlowbitePaginationTheme } from '../Pagination';
 import { FlowbiteProgressTheme } from '../Progress';
+import { FlowbiteRadioTheme } from '../Radio';
 import { FlowbiteRatingTheme } from '../Rating';
 import { FlowbiteSidebarTheme } from '../Sidebar';
 import { FlowbiteSpinnerTheme } from '../Spinner';
@@ -58,6 +59,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   checkbox: FlowbiteCheckboxTheme;
   fileInput: FlowbiteFileInputTheme;
   label: FlowbiteLabelTheme;
+  radio: FlowbiteRadioTheme;
 }
 
 export interface FlowbiteBoolean {

@@ -401,6 +401,9 @@ const theme: FlowbiteTheme = {
     },
     disabled: 'opacity-50',
   },
+  radio: {
+    base: 'h-4 w-4 border border-gray-300 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-blue-600 dark:focus:ring-blue-600',
+  },
   formControls: {
     helperText: {
       base: 'mt-2 text-sm',
@@ -411,9 +414,6 @@ const theme: FlowbiteTheme = {
         failure: 'text-red-600 dark:text-red-500',
         warning: 'text-yellow-500 dark:text-yellow-600',
       },
-    },
-    radio: {
-      base: 'h-4 w-4 border border-gray-300 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-blue-600 dark:focus:ring-blue-600',
     },
     textInput: {
       base: 'flex',

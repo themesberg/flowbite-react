@@ -4,14 +4,14 @@ import { describe, expect, it } from 'vitest';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { FileInput } from '../FileInput';
-import { Radio } from '../FormControls/Radio';
 import { Select } from '../FormControls/Select';
 import { Textarea } from '../FormControls/Textarea';
 import { TextInput } from '../FormControls/TextInput';
 import { ToggleSwitch } from '../FormControls/ToggleSwitch';
+import { Radio } from '../Radio';
 import { Label } from './Label';
 
-describe.concurrent('Components / Form controls / Label', () => {
+describe.concurrent('Components / Label', () => {
   describe.concurrent('A11y', () => {
     it('should provide accessible name to any form control associated by `htmlFor`', () => {
       const inputLabels = [

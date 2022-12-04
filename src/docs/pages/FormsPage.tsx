@@ -1,10 +1,11 @@
 import type { FC } from 'react';
 import { useState } from 'react';
 import { HiMail } from 'react-icons/hi';
-import { Button, Radio, Select, Textarea, TextInput, ToggleSwitch } from '../../lib';
+import { Button, Select, Textarea, TextInput, ToggleSwitch } from '../../lib';
 import { Checkbox } from '../../lib/components/Checkbox';
 import { FileInput } from '../../lib/components/FileInput';
 import { Label } from '../../lib/components/Label';
+import { Radio } from '../../lib/components/Radio';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
 

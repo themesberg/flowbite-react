@@ -11,9 +11,6 @@ export interface FlowbiteFormControlsTheme {
     base: string;
     colors: HelperColors;
   };
-  radio: {
-    base: string;
-  };
   textInput: {
     base: string;
     addon: string;

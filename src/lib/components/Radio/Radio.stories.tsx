@@ -3,7 +3,7 @@ import type { RadioProps } from './Radio';
 import { Radio } from './Radio';
 
 export default {
-  title: 'Components/FormControls',
+  title: 'Components/Radio',
   component: Radio,
 } as Meta;
 
