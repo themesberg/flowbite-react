@@ -3,7 +3,7 @@ import type { ComponentProps, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
-import HelperText from '../FormControls/HelperText';
+import { HelperText } from '../HelperText';
 
 export interface FlowbiteTextareaTheme {
   base: string;

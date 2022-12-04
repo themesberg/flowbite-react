@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import type { ComponentProps, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import { useTheme } from '../Flowbite/ThemeContext';
-import HelperText from '../FormControls/HelperText';
+import { HelperText } from '../HelperText';
 import type { TextInputColors, TextInputSizes } from '../TextInput';
 
 export interface FlowbiteFileInputTheme {

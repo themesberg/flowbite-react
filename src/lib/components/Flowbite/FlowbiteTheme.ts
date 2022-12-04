@@ -12,7 +12,7 @@ import { FlowbiteDarkThemeToggleTheme } from '../DarkThemeToggle';
 import { FlowbiteDropdownTheme } from '../Dropdown';
 import { FlowbiteFileInputTheme } from '../FileInput';
 import { FlowbiteFooterTheme } from '../Footer';
-import { FlowbiteFormControlsTheme } from '../FormControls';
+import { FlowbiteHelperTextTheme } from '../HelperText';
 import { FlowbiteLabelTheme } from '../Label';
 import { FlowbiteListGroupTheme } from '../ListGroup';
 import { FlowbiteModalTheme } from '../Modal';
@@ -47,7 +47,6 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   carousel: FlowbiteCarouselTheme;
   darkThemeToggle: FlowbiteDarkThemeToggleTheme;
   footer: FlowbiteFooterTheme;
-  formControls: FlowbiteFormControlsTheme;
   listGroup: FlowbiteListGroupTheme;
   modal: FlowbiteModalTheme;
   navbar: FlowbiteNavbarTheme;
@@ -68,6 +67,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   textInput: FlowbiteTextInputTheme;
   textarea: FlowbiteTextareaTheme;
   toggleSwitch: FlowbiteToggleSwitchTheme;
+  helperText: FlowbiteHelperTextTheme;
 }
 
 export interface FlowbiteBoolean {
