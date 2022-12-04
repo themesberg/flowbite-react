@@ -52,6 +52,7 @@
     "@floating-ui/react-dom-interactions": "^0.9.1",
     "classnames": "^2.3.2",
     "commitizen": "^4.2.5",
+    "flowbite-react": "^0.3.6",
     "react-icons": "^4.6.0",
     "react-indiana-drag-scroll": "^2.2.0"
   },
