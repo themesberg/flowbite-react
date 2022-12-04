@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { useTheme } from '../Flowbite';
 
 export type TimelineTimeProps = PropsWithChildren<
   ComponentProps<'time'> & {
@@ -8,11 +9,9 @@ export type TimelineTimeProps = PropsWithChildren<
 >;
 
 export const TimelineTime: FC<TimelineTimeProps> = ({ children, className, ...props }) => {
+  const theme = useTheme().theme.timeline.item.content;
   return (
-    <time
-      className={classNames('mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500', className)}
-      {...props}
-    >
+    <time className={classNames(theme.time, className)} {...props}>
       {children}
     </time>
   );

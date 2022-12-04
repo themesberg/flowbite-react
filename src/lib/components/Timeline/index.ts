@@ -1,4 +1,5 @@
 export * from './Timeline';
+export type { FlowbiteTimelineTheme } from './Timeline';
 export type { TimelineBodyProps } from './TimelineBody';
 export type { TimelineContentProps } from './TimelineContent';
 export type { TimelineItemProps } from './TimelineItem';

@@ -28,6 +28,7 @@ import { FlowbiteTabTheme } from '../Tab';
 import { FlowbiteTableTheme } from '../Table';
 import { FlowbiteTextareaTheme } from '../Textarea';
 import { FlowbiteTextInputTheme } from '../TextInput';
+import { FlowbiteTimelineTheme } from '../Timeline';
 import { FlowbiteToastTheme } from '../Toast';
 import { FlowbiteToggleSwitchTheme } from '../ToggleSwitch';
 import { FlowbiteTooltipTheme } from '../Tooltip';
@@ -70,6 +71,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   toggleSwitch: FlowbiteToggleSwitchTheme;
   helperText: FlowbiteHelperTextTheme;
   table: FlowbiteTableTheme;
+  timeline: FlowbiteTimelineTheme;
 }
 
 export interface FlowbiteBoolean {
