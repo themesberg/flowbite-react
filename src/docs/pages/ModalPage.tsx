@@ -1,9 +1,10 @@
 import type { FC } from 'react';
 import { useState } from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { Button, Modal, Select, TextInput } from '../../lib';
+import { Button, Modal, TextInput } from '../../lib';
 import { Checkbox } from '../../lib/components/Checkbox';
 import { Label } from '../../lib/components/Label';
+import { Select } from '../../lib/components/Select';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
 

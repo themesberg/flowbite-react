@@ -1,9 +1,29 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import type { FlowbiteColors, FlowbiteSizes } from '../../Flowbite/FlowbiteTheme';
-import { useTheme } from '../../Flowbite/ThemeContext';
-import HelperText from '../HelperText';
+import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import { useTheme } from '../Flowbite/ThemeContext';
+import HelperText from '../FormControls/HelperText';
+
+export interface FlowbiteSelectTheme {
+  base: string;
+  addon: string;
+  field: {
+    base: string;
+    icon: {
+      base: string;
+      svg: string;
+    };
+    select: {
+      base: string;
+      withIcon: FlowbiteBoolean;
+      withAddon: FlowbiteBoolean;
+      withShadow: FlowbiteBoolean;
+      sizes: SelectSizes;
+      colors: SelectColors;
+    };
+  };
+}
 
 export interface SelectColors extends Pick<FlowbiteColors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
   [key: string]: string;
@@ -24,7 +44,7 @@ export interface SelectProps extends Omit<ComponentProps<'select'>, 'color' | 'r
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   ({ children, sizing = 'md', shadow, helperText, addon, icon: Icon, color = 'gray', className, ...props }, ref) => {
-    const theme = useTheme().theme.formControls.select;
+    const theme = useTheme().theme.select;
 
     return (
       <div className={classNames(theme.base, className)}>

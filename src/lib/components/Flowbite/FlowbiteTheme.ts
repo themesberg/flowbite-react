@@ -21,6 +21,7 @@ import { FlowbitePaginationTheme } from '../Pagination';
 import { FlowbiteProgressTheme } from '../Progress';
 import { FlowbiteRadioTheme } from '../Radio';
 import { FlowbiteRatingTheme } from '../Rating';
+import { FlowbiteSelectTheme } from '../Select';
 import { FlowbiteSidebarTheme } from '../Sidebar';
 import { FlowbiteSpinnerTheme } from '../Spinner';
 import { FlowbiteTabTheme } from '../Tab';
@@ -60,6 +61,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   fileInput: FlowbiteFileInputTheme;
   label: FlowbiteLabelTheme;
   radio: FlowbiteRadioTheme;
+  select: FlowbiteSelectTheme;
 }
 
 export interface FlowbiteBoolean {

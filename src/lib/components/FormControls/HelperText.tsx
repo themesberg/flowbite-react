@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { SelectColors, SelectSizes } from './Select';
 import { TextareaColors } from './Textarea';
 import { TextInputColors, TextInputSizes } from './TextInput';
 
@@ -45,25 +44,6 @@ export interface FlowbiteFormControlsTheme {
     base: string;
     colors: TextareaColors;
     withShadow: FlowbiteBoolean;
-  };
-  select: {
-    base: string;
-    addon: string;
-    field: {
-      base: string;
-      icon: {
-        base: string;
-        svg: string;
-      };
-      select: {
-        base: string;
-        withIcon: FlowbiteBoolean;
-        withAddon: FlowbiteBoolean;
-        withShadow: FlowbiteBoolean;
-        sizes: SelectSizes;
-        colors: SelectColors;
-      };
-    };
   };
 }
 

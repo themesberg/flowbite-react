@@ -3,7 +3,7 @@ import type { SelectProps } from './Select';
 import { Select } from './Select';
 
 export default {
-  title: 'Components/FormControls',
+  title: 'Components/Select',
   component: Select,
 } as Meta;
 
