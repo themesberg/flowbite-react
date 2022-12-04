@@ -13,6 +13,7 @@ import { FlowbiteDropdownTheme } from '../Dropdown';
 import { FlowbiteFileInputTheme } from '../FileInput';
 import { FlowbiteFooterTheme } from '../Footer';
 import { FlowbiteFormControlsTheme } from '../FormControls';
+import { FlowbiteLabelTheme } from '../Label';
 import { FlowbiteListGroupTheme } from '../ListGroup';
 import { FlowbiteModalTheme } from '../Modal';
 import { FlowbiteNavbarTheme } from '../Navbar';
@@ -56,6 +57,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   dropdown: FlowbiteDropdownTheme;
   checkbox: FlowbiteCheckboxTheme;
   fileInput: FlowbiteFileInputTheme;
+  label: FlowbiteLabelTheme;
 }
 
 export interface FlowbiteBoolean {

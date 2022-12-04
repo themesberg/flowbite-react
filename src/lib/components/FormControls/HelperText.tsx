@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { LabelColors } from './Label';
 import { SelectColors, SelectSizes } from './Select';
 import { TextareaColors } from './Textarea';
 import { TextInputColors, TextInputSizes } from './TextInput';
@@ -11,11 +10,6 @@ export interface FlowbiteFormControlsTheme {
   helperText: {
     base: string;
     colors: HelperColors;
-  };
-  label: {
-    base: string;
-    colors: LabelColors;
-    disabled: string;
   };
   radio: {
     base: string;

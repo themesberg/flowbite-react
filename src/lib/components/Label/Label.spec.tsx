@@ -1,14 +1,14 @@
 import { render } from '@testing-library/react';
 import { HiGlobe, HiLockClosed } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { Button } from '../../Button';
-import { Checkbox } from '../../Checkbox';
-import { FileInput } from '../../FileInput';
-import { Radio } from '../Radio';
-import { Select } from '../Select';
-import { Textarea } from '../Textarea';
-import { TextInput } from '../TextInput';
-import { ToggleSwitch } from '../ToggleSwitch';
+import { Button } from '../Button';
+import { Checkbox } from '../Checkbox';
+import { FileInput } from '../FileInput';
+import { Radio } from '../FormControls/Radio';
+import { Select } from '../FormControls/Select';
+import { Textarea } from '../FormControls/Textarea';
+import { TextInput } from '../FormControls/TextInput';
+import { ToggleSwitch } from '../FormControls/ToggleSwitch';
 import { Label } from './Label';
 
 describe.concurrent('Components / Form controls / Label', () => {

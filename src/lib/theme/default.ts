@@ -390,6 +390,17 @@ const theme: FlowbiteTheme = {
       },
     },
   },
+  label: {
+    base: 'text-sm font-medium',
+    colors: {
+      default: 'text-gray-900 dark:text-gray-300',
+      info: 'text-blue-500 dark:text-blue-600',
+      failure: 'text-red-700 dark:text-red-500',
+      warning: 'text-yellow-500 dark:text-yellow-600',
+      success: 'text-green-700 dark:text-green-500',
+    },
+    disabled: 'opacity-50',
+  },
   formControls: {
     helperText: {
       base: 'mt-2 text-sm',
@@ -400,17 +411,6 @@ const theme: FlowbiteTheme = {
         failure: 'text-red-600 dark:text-red-500',
         warning: 'text-yellow-500 dark:text-yellow-600',
       },
-    },
-    label: {
-      base: 'text-sm font-medium',
-      colors: {
-        default: 'text-gray-900 dark:text-gray-300',
-        info: 'text-blue-500 dark:text-blue-600',
-        failure: 'text-red-700 dark:text-red-500',
-        warning: 'text-yellow-500 dark:text-yellow-600',
-        success: 'text-green-700 dark:text-green-500',
-      },
-      disabled: 'opacity-50',
     },
     radio: {
       base: 'h-4 w-4 border border-gray-300 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-blue-600 dark:focus:ring-blue-600',

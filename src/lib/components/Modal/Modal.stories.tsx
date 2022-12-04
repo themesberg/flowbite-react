@@ -3,7 +3,8 @@ import type { Meta, Story } from '@storybook/react/types-6-0';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
-import { Label, TextInput } from '../FormControls';
+import { TextInput } from '../FormControls';
+import { Label } from '../Label';
 import type { ModalProps } from './Modal';
 import { Modal } from './Modal';
 

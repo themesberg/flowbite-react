@@ -1,7 +1,13 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import type { FlowbiteStateColors } from '../../Flowbite/FlowbiteTheme';
-import { useTheme } from '../../Flowbite/ThemeContext';
+import type { FlowbiteStateColors } from '../Flowbite/FlowbiteTheme';
+import { useTheme } from '../Flowbite/ThemeContext';
+
+export interface FlowbiteLabelTheme {
+  base: string;
+  colors: LabelColors;
+  disabled: string;
+}
 
 export interface LabelColors extends FlowbiteStateColors {
   [key: string]: string;
@@ -22,7 +28,7 @@ export const Label: FC<LabelProps> = ({
   className,
   ...props
 }): JSX.Element => {
-  const theme = useTheme().theme.formControls.label;
+  const theme = useTheme().theme.label;
   return (
     <label className={classNames(theme.base, theme.colors[color], disabled ?? theme.disabled, className)} {...props}>
       {value ?? children ?? ''}
