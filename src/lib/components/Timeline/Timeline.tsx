@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import type { FC, PropsWithChildren } from 'react';
+import { useTheme } from '../Flowbite';
 import { TimelineBody } from './TimelineBody';
 import { TimelineContent } from './TimelineContent';
 import { TimelineContext } from './TimelineContext';
@@ -8,21 +9,54 @@ import { TimelinePoint } from './TimelinePoint';
 import { TimelineTime } from './TimelineTime';
 import { TimelineTitle } from './TimelineTitle';
 
+export interface FlowbiteTimelineTheme {
+  direction: {
+    horizontal: string;
+    vertical: string;
+  };
+  item: {
+    base: {
+      horizontal: string;
+      vertical: string;
+    };
+    point: {
+      base: {
+        horizontal: string;
+        vertical: string;
+      };
+      marker: {
+        base: string;
+        icon: {
+          wrapper: string;
+          base: string;
+        };
+      };
+      line: string;
+    };
+    content: {
+      base: string;
+      time: string;
+      title: string;
+      body: string;
+    };
+  };
+}
+
 export type TimelineProps = PropsWithChildren<{
   className?: string;
   horizontal?: boolean;
 }>;
 
 const TimelineComponent: FC<TimelineProps> = ({ children, horizontal, className }) => {
+  const theme = useTheme().theme.timeline;
+
   return (
     <TimelineContext.Provider value={{ horizontal }}>
       <ol
         data-testid="timeline-component"
         className={classNames(
-          {
-            'relative border-l border-gray-200 dark:border-gray-700': !horizontal,
-            'items-center sm:flex': horizontal,
-          },
+          horizontal && theme.direction.horizontal,
+          !horizontal && theme.direction.vertical,
           className,
         )}
       >

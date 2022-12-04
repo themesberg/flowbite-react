@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { useTheme } from '../Flowbite';
 import { useTimelineContext } from './TimelineContext';
 
 export type TimelineContentProps = PropsWithChildren<
@@ -9,9 +10,11 @@ export type TimelineContentProps = PropsWithChildren<
 >;
 
 export const TimelineContent: FC<TimelineContentProps> = ({ children, className, ...props }) => {
+  const theme = useTheme().theme.timeline.item.content;
   const { horizontal } = useTimelineContext();
+
   return (
-    <div data-testid="timeline-content" className={classNames({ 'mt-3 sm:pr-8': horizontal }, className)} {...props}>
+    <div data-testid="timeline-content" className={classNames(horizontal && theme.base, className)} {...props}>
       {children}
     </div>
   );

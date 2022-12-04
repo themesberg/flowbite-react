@@ -1,5 +1,8 @@
 import type { FC } from 'react';
-import { Button, Card, Checkbox, Dropdown, Label, TextInput } from '../../lib';
+import { Button, Card, Dropdown } from '../../lib';
+import { Checkbox } from '../../lib/components/Checkbox';
+import { Label } from '../../lib/components/Label';
+import { TextInput } from '../../lib/components/TextInput';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
 

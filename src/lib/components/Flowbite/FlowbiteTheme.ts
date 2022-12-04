@@ -7,20 +7,30 @@ import { FlowbiteBreadcrumbTheme } from '../Breadcrumb';
 import { FlowbiteButtonGroupTheme, FlowbiteButtonTheme } from '../Button';
 import { FlowbiteCardTheme } from '../Card';
 import { FlowbiteCarouselTheme } from '../Carousel';
+import { FlowbiteCheckboxTheme } from '../Checkbox';
 import { FlowbiteDarkThemeToggleTheme } from '../DarkThemeToggle';
 import { FlowbiteDropdownTheme } from '../Dropdown';
+import { FlowbiteFileInputTheme } from '../FileInput';
 import { FlowbiteFooterTheme } from '../Footer';
-import { FlowbiteFormControlsTheme } from '../FormControls';
+import { FlowbiteHelperTextTheme } from '../HelperText';
+import { FlowbiteLabelTheme } from '../Label';
 import { FlowbiteListGroupTheme } from '../ListGroup';
 import { FlowbiteModalTheme } from '../Modal';
 import { FlowbiteNavbarTheme } from '../Navbar';
 import { FlowbitePaginationTheme } from '../Pagination';
 import { FlowbiteProgressTheme } from '../Progress';
+import { FlowbiteRadioTheme } from '../Radio';
 import { FlowbiteRatingTheme } from '../Rating';
+import { FlowbiteSelectTheme } from '../Select';
 import { FlowbiteSidebarTheme } from '../Sidebar';
 import { FlowbiteSpinnerTheme } from '../Spinner';
 import { FlowbiteTabTheme } from '../Tab';
+import { FlowbiteTableTheme } from '../Table';
+import { FlowbiteTextareaTheme } from '../Textarea';
+import { FlowbiteTextInputTheme } from '../TextInput';
+import { FlowbiteTimelineTheme } from '../Timeline';
 import { FlowbiteToastTheme } from '../Toast';
+import { FlowbiteToggleSwitchTheme } from '../ToggleSwitch';
 import { FlowbiteTooltipTheme } from '../Tooltip';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
@@ -39,7 +49,6 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   carousel: FlowbiteCarouselTheme;
   darkThemeToggle: FlowbiteDarkThemeToggleTheme;
   footer: FlowbiteFooterTheme;
-  formControls: FlowbiteFormControlsTheme;
   listGroup: FlowbiteListGroupTheme;
   modal: FlowbiteModalTheme;
   navbar: FlowbiteNavbarTheme;
@@ -52,6 +61,17 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   toast: FlowbiteToastTheme;
   tooltip: FlowbiteTooltipTheme;
   dropdown: FlowbiteDropdownTheme;
+  checkbox: FlowbiteCheckboxTheme;
+  fileInput: FlowbiteFileInputTheme;
+  label: FlowbiteLabelTheme;
+  radio: FlowbiteRadioTheme;
+  select: FlowbiteSelectTheme;
+  textInput: FlowbiteTextInputTheme;
+  textarea: FlowbiteTextareaTheme;
+  toggleSwitch: FlowbiteToggleSwitchTheme;
+  helperText: FlowbiteHelperTextTheme;
+  table: FlowbiteTableTheme;
+  timeline: FlowbiteTimelineTheme;
 }
 
 export interface FlowbiteBoolean {

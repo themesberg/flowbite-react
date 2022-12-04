@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { useTheme } from '../Flowbite';
 import { TableBody } from './TableBody';
 import { TableCell } from './TableCell';
 import { TableContext, TableContextType } from './TableContext';
@@ -7,16 +8,33 @@ import { TableHead } from './TableHead';
 import { TableHeadCell } from './TableHeadCell';
 import { TableRow } from './TableRow';
 
+export interface FlowbiteTableTheme {
+  base: string;
+  wrapper: string;
+  head: {
+    base: string;
+    cell: {
+      base: string;
+    };
+  };
+  row: {
+    hovered: string;
+    striped: string;
+  };
+  cell: {
+    base: string;
+  };
+}
+
 export type TableProps = PropsWithChildren<ComponentProps<'table'> & TableContextType>;
 
 const TableComponent: FC<TableProps> = ({ children, striped, hoverable, className, ...props }) => {
+  const theme = useTheme().theme.table;
+
   return (
-    <div data-testid="table-element" className="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div data-testid="table-element" className={classNames(theme.wrapper)}>
       <TableContext.Provider value={{ striped, hoverable }}>
-        <table
-          className={classNames('w-full text-left text-sm text-gray-500 dark:text-gray-400', className)}
-          {...props}
-        >
+        <table className={classNames(theme.base, className)} {...props}>
           {children}
         </table>
       </TableContext.Provider>
