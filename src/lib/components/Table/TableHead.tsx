@@ -1,17 +1,14 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { useTheme } from '../Flowbite';
 
 export type TableHeadProps = PropsWithChildren<ComponentProps<'thead'>>;
 
 export const TableHead: FC<TableHeadProps> = ({ children, className, ...props }) => {
+  const theme = useTheme().theme.table;
+
   return (
-    <thead
-      className={classNames(
-        'bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400',
-        className,
-      )}
-      {...props}
-    >
+    <thead className={classNames(theme.head.base, className)} {...props}>
       <tr>{children}</tr>
     </thead>
   );

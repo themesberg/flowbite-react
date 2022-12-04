@@ -914,6 +914,23 @@ const theme: FlowbiteTheme = {
       placement: '-4px',
     },
   },
+  table: {
+    wrapper: 'relative overflow-x-auto shadow-md sm:rounded-lg',
+    base: 'w-full text-left text-sm text-gray-500 dark:text-gray-400',
+    head: {
+      base: 'bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400',
+      cell: {
+        base: 'px-6 py-3',
+      },
+    },
+    row: {
+      hovered: 'hover:bg-gray-50 dark:hover:bg-gray-600',
+      striped: 'odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700',
+    },
+    cell: {
+      base: 'px-6 py-4',
+    },
+  },
 };
 
 export default theme;
