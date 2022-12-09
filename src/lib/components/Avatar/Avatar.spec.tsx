@@ -56,6 +56,17 @@ describe('Components / Avatar', () => {
       expect(initialsPlaceholder()).toHaveTextContent('RR');
     });
   });
+  describe('Image', () => {
+    it('should support custom image elements', () => {
+      render(
+        <Flowbite>
+          <Avatar img={(props) => <img referrerPolicy="no-referrer" {...props} />} />
+        </Flowbite>,
+      );
+
+      expect(img()).toHaveAttribute('referrerpolicy', 'no-referrer');
+    });
+  });
 });
 
 const img = () => screen.getByTestId('flowbite-avatar-img');
