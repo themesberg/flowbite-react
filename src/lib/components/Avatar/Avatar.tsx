@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import type { FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import AvatarGroup from './AvatarGroup';
@@ -40,10 +40,16 @@ export interface AvatarSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | 'l
   [key: string]: string;
 }
 
+export interface AvatarImageProps {
+  alt?: string;
+  className: string;
+  'data-testid': string;
+}
+
 export interface AvatarProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
   alt?: string;
   bordered?: boolean;
-  img?: string;
+  img?: string | ((props: AvatarImageProps) => ReactElement);
   color?: keyof AvatarColors;
   rounded?: boolean;
   size?: keyof AvatarSizes;
@@ -78,16 +84,16 @@ const AvatarComponent: FC<AvatarProps> = ({
     theme.size[size],
   );
 
+  const imgProps = { alt, className: classNames(imgClassName, theme.img.on), 'data-testid': 'flowbite-avatar-img' };
   return (
     <div className={classNames(theme.base, className)} data-testid="flowbite-avatar" {...props}>
       <div className="relative">
         {img ? (
-          <img
-            alt={alt}
-            className={classNames(imgClassName, theme.img.on)}
-            data-testid="flowbite-avatar-img"
-            src={img}
-          />
+          typeof img === 'string' ? (
+            <img {...imgProps} src={img} />
+          ) : (
+            img(imgProps)
+          )
         ) : placeholderInitials ? (
           <div
             className={classNames(
