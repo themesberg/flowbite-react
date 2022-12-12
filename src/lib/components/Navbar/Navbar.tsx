@@ -1,36 +1,31 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useState } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { NavbarBrand } from './NavbarBrand';
-import { NavbarCollapse } from './NavbarCollapse';
+import { FlowbiteNavbarBrandTheme, NavbarBrand } from './NavbarBrand';
+import { FlowbiteNavbarCollapseTheme, NavbarCollapse } from './NavbarCollapse';
 import { NavbarContext } from './NavbarContext';
-import { NavbarLink } from './NavbarLink';
-import { NavbarToggle } from './NavbarToggle';
+import { FlowbiteNavbarLinkTheme, NavbarLink } from './NavbarLink';
+import { FlowbiteNavbarToggleTheme, NavbarToggle } from './NavbarToggle';
 
 export interface FlowbiteNavbarTheme {
+  root: FlowbiteNavbarRootTheme;
+  brand: FlowbiteNavbarBrandTheme;
+  collapse: FlowbiteNavbarCollapseTheme;
+  link: FlowbiteNavbarLinkTheme;
+  toggle: FlowbiteNavbarToggleTheme;
+}
+
+export interface FlowbiteNavbarRootTheme {
   base: string;
   rounded: FlowbiteBoolean;
   bordered: FlowbiteBoolean;
   inner: {
     base: string;
     fluid: FlowbiteBoolean;
-  };
-  brand: string;
-  collapse: {
-    base: string;
-    list: string;
-    hidden: FlowbiteBoolean;
-  };
-  link: {
-    base: string;
-    active: FlowbiteBoolean;
-    disabled: FlowbiteBoolean;
-  };
-  toggle: {
-    base: string;
-    icon: string;
   };
 }
 
@@ -39,6 +34,7 @@ export interface NavbarComponentProps extends PropsWithChildren<ComponentProps<'
   fluid?: boolean;
   rounded?: boolean;
   border?: boolean;
+  theme?: DeepPartial<FlowbiteNavbarRootTheme>;
 }
 
 const NavbarComponent: FC<NavbarComponentProps> = ({
@@ -48,11 +44,12 @@ const NavbarComponent: FC<NavbarComponentProps> = ({
   rounded,
   border,
   className,
+  theme: customTheme = {},
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
-  const theme = useTheme().theme.navbar;
+  const theme = mergeDeep(useTheme().theme.navbar.root, customTheme);
 
   return (
     <NavbarContext.Provider value={{ isOpen, setIsOpen }}>

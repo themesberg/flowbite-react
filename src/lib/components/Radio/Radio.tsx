@@ -1,17 +1,24 @@
 import classNames from 'classnames';
 import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteRadioTheme {
   base: string;
 }
 
-export type RadioProps = Omit<ComponentProps<'input'>, 'type' | 'ref'>;
+export interface RadioProps extends Omit<ComponentProps<'input'>, 'type' | 'ref'> {
+  theme?: DeepPartial<FlowbiteRadioTheme>;
+}
 
-export const Radio = forwardRef<HTMLInputElement, RadioProps>(({ className, ...props }, ref) => {
-  const theme = useTheme().theme.radio;
-  return <input ref={ref} className={classNames(theme.base, className)} type="radio" {...props} />;
-});
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(
+  ({ theme: customTheme = {}, className, ...props }, ref) => {
+    const theme = mergeDeep(useTheme().theme.radio, customTheme);
+
+    return <input ref={ref} className={classNames(theme.base, className)} type="radio" {...props} />;
+  },
+);
 
 Radio.displayName = 'Radio';
