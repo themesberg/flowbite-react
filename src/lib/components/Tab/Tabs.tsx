@@ -1,6 +1,19 @@
 import classNames from 'classnames';
-import type { ComponentProps, FC, KeyboardEvent, PropsWithChildren, ReactElement } from 'react';
-import { Children, useEffect, useId, useMemo, useRef, useState } from 'react';
+import {
+  Children,
+  ComponentProps,
+  ForwardedRef,
+  forwardRef,
+  KeyboardEvent,
+  PropsWithChildren,
+  ReactElement,
+  useEffect,
+  useId,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { TabItemProps } from './TabItem';
@@ -46,111 +59,121 @@ interface TabKeyboardEventProps extends TabEventProps {
   event: KeyboardEvent<HTMLButtonElement>;
 }
 
-export interface TabsProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
+export interface TabsProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style' | 'ref'>> {
   style?: keyof TabStyles;
 }
 
-export const TabsComponent: FC<TabsProps> = ({ children, style = 'default', className, ...rest }) => {
-  const theme = useTheme().theme.tab;
+export interface TabsRef {
+  setActiveTab: (activeTab: number) => void;
+}
 
-  const id = useId();
-  const tabs = useMemo(
-    () => Children.map(children as ReactElement<PropsWithChildren<TabItemProps>>[], ({ props }) => props),
-    [children],
-  );
-  const tabRefs = useRef<HTMLButtonElement[]>([]);
-  const [activeTab, setActiveTab] = useState(
-    Math.max(
-      0,
-      tabs.findIndex((tab) => tab.active),
-    ),
-  );
-  const [focusedTab, setFocusedTab] = useState(
-    Math.max(
-      0,
-      tabs.findIndex((tab) => tab.active),
-    ),
-  );
+export const TabsComponent = forwardRef<TabsRef, TabsProps>(
+  ({ children, style = 'default', className, ...rest }, ref: ForwardedRef<TabsRef>) => {
+    const theme = useTheme().theme.tab;
 
-  const handleClick = ({ target }: TabEventProps): void => {
-    setActiveTab(target);
-    setFocusedTab(target);
-  };
+    const id = useId();
+    const tabs = useMemo(
+      () => Children.map(children as ReactElement<PropsWithChildren<TabItemProps>>[], ({ props }) => props),
+      [children],
+    );
+    const tabRefs = useRef<HTMLButtonElement[]>([]);
+    const [activeTab, setActiveTab] = useState(
+      Math.max(
+        0,
+        tabs.findIndex((tab) => tab.active),
+      ),
+    );
+    const [focusedTab, setFocusedTab] = useState(
+      Math.max(
+        0,
+        tabs.findIndex((tab) => tab.active),
+      ),
+    );
 
-  const handleKeyboard = ({ event, target }: TabKeyboardEventProps): void => {
-    if (event.key === 'ArrowLeft') {
-      setFocusedTab(Math.max(0, focusedTab - 1));
-    }
-
-    if (event.key === 'ArrowRight') {
-      setFocusedTab(Math.min(tabs.length - 1, focusedTab + 1));
-    }
-
-    if (event.key === 'Enter') {
+    const handleClick = ({ target }: TabEventProps): void => {
       setActiveTab(target);
       setFocusedTab(target);
-    }
-  };
+    };
 
-  const tabItemStyle = theme.tablist.tabitem.styles[style];
+    const handleKeyboard = ({ event, target }: TabKeyboardEventProps): void => {
+      if (event.key === 'ArrowLeft') {
+        setFocusedTab(Math.max(0, focusedTab - 1));
+      }
 
-  useEffect(() => {
-    tabRefs.current[focusedTab]?.focus();
-  }, [focusedTab]);
+      if (event.key === 'ArrowRight') {
+        setFocusedTab(Math.min(tabs.length - 1, focusedTab + 1));
+      }
 
-  return (
-    <div className={classNames(theme.base, className)}>
-      <div
-        aria-label="Tabs"
-        role="tablist"
-        className={classNames(theme.tablist.base, theme.tablist.styles[style], className)}
-        {...rest}
-      >
-        {tabs.map((tab, index) => (
-          <button
-            key={index}
-            type="button"
-            aria-controls={`${id}-tabpanel-${index}`}
-            aria-selected={index === activeTab}
-            className={classNames(
-              theme.tablist.tabitem.base,
-              { ...tabItemStyle },
-              {
-                [tabItemStyle.active.on]: index === activeTab,
-                [tabItemStyle.active.off]: index !== activeTab && !tab.disabled,
-              },
-            )}
-            disabled={tab.disabled}
-            id={`${id}-tab-${index}`}
-            onClick={() => handleClick({ target: index })}
-            onKeyDown={(event) => handleKeyboard({ event, target: index })}
-            ref={(element) => (tabRefs.current[index] = element as HTMLButtonElement)}
-            role="tab"
-            tabIndex={index === focusedTab ? 0 : -1}
-          >
-            {tab.icon && <tab.icon className={theme.tablist.tabitem.icon} />}
-            {tab.title}
-          </button>
-        ))}
+      if (event.key === 'Enter') {
+        setActiveTab(target);
+        setFocusedTab(target);
+      }
+    };
+
+    const tabItemStyle = theme.tablist.tabitem.styles[style];
+
+    useEffect(() => {
+      tabRefs.current[focusedTab]?.focus();
+    }, [focusedTab]);
+
+    useImperativeHandle(ref, () => ({
+      setActiveTab,
+    }));
+
+    return (
+      <div className={classNames(theme.base, className)}>
+        <div
+          aria-label="Tabs"
+          role="tablist"
+          className={classNames(theme.tablist.base, theme.tablist.styles[style], className)}
+          {...rest}
+        >
+          {tabs.map((tab, index) => (
+            <button
+              key={index}
+              type="button"
+              aria-controls={`${id}-tabpanel-${index}`}
+              aria-selected={index === activeTab}
+              className={classNames(
+                theme.tablist.tabitem.base,
+                { ...tabItemStyle },
+                {
+                  [tabItemStyle.active.on]: index === activeTab,
+                  [tabItemStyle.active.off]: index !== activeTab && !tab.disabled,
+                },
+              )}
+              disabled={tab.disabled}
+              id={`${id}-tab-${index}`}
+              onClick={() => handleClick({ target: index })}
+              onKeyDown={(event) => handleKeyboard({ event, target: index })}
+              ref={(element) => (tabRefs.current[index] = element as HTMLButtonElement)}
+              role="tab"
+              tabIndex={index === focusedTab ? 0 : -1}
+            >
+              {tab.icon && <tab.icon className={theme.tablist.tabitem.icon} />}
+              {tab.title}
+            </button>
+          ))}
+        </div>
+        <div>
+          {tabs.map((tab, index) => (
+            <div
+              key={index}
+              aria-labelledby={`${id}-tab-${index}`}
+              className={theme.tabpanel}
+              hidden={index !== activeTab}
+              id={`${id}-tabpanel-${index}`}
+              role="tabpanel"
+              tabIndex={0}
+            >
+              {tab.children}
+            </div>
+          ))}
+        </div>
       </div>
-      <div>
-        {tabs.map((tab, index) => (
-          <div
-            key={index}
-            aria-labelledby={`${id}-tab-${index}`}
-            className={theme.tabpanel}
-            hidden={index !== activeTab}
-            id={`${id}-tabpanel-${index}`}
-            role="tabpanel"
-            tabIndex={0}
-          >
-            {tab.children}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+    );
+  },
+);
 
 TabsComponent.displayName = 'Tabs.Group';
 TabItem.displayName = 'Tabs.Item';
