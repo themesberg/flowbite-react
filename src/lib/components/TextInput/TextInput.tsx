@@ -14,11 +14,16 @@ export interface FlowbiteTextInputTheme {
       base: string;
       svg: string;
     };
+    rightIcon: {
+      base: string;
+      svg: string;
+    };
     input: {
       base: string;
       sizes: TextInputSizes;
       colors: TextInputColors;
       withIcon: FlowbiteBoolean;
+      withRightIcon: FlowbiteBoolean;
       withAddon: FlowbiteBoolean;
       withShadow: FlowbiteBoolean;
     };
@@ -48,7 +53,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     { sizing = 'md', shadow, helperText, addon, icon: Icon, rightIcon: RightIcon, color = 'gray', className, ...props },
     ref,
   ) => {
-    const theme = useTheme().theme.formControls.textInput;
+    const theme = useTheme().theme.textInput;
     return (
       <>
         <div className={classNames(theme.base, className)}>
@@ -60,7 +65,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               </div>
             )}
             {RightIcon && (
-              <div className={theme.field.rightIcon.base}>
+              <div data-testid="right-icon" className={theme.field.rightIcon.base}>
                 <RightIcon className={theme.field.rightIcon.svg} />
               </div>
             )}
