@@ -51,7 +51,6 @@
     "@floating-ui/react-dom": "^1.0.0",
     "@floating-ui/react-dom-interactions": "^0.9.1",
     "classnames": "^2.3.2",
-    "commitizen": "^4.2.5",
     "react-icons": "^4.6.0",
     "react-indiana-drag-scroll": "^2.2.0"
   },
@@ -100,6 +99,7 @@
     "autoprefixer": "^10.4.8",
     "axe-core": "^4.4.3",
     "babel-loader": "^8.2.5",
+    "commitizen": "^4.2.6",
     "cypress": "^10.4.0",
     "cypress-axe": "^1.0.0",
     "cz-conventional-changelog": "3.3.0",

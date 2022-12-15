@@ -7,7 +7,14 @@ module.exports = {
     'plugin:storybook/recommended',
     'plugin:tailwindcss/recommended',
   ],
-  ignorePatterns: ['.eslintrc.js', 'config-overrides.js', 'lint-staged.js', 'postcss.config.js', 'tailwind.config.js'],
+  ignorePatterns: [
+    '.eslintrc.js',
+    'config-overrides.js',
+    'lint-staged.js',
+    'postcss.config.js',
+    'tailwind.config.js',
+    'commitlint.config.js',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
