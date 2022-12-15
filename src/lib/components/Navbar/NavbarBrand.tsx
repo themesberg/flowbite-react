@@ -1,13 +1,22 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export type NavbarBrandProps = PropsWithChildren<ComponentProps<'a'>>;
+export interface FlowbiteNavbarBrandTheme {
+  base: string;
+}
 
-export const NavbarBrand: FC<NavbarBrandProps> = ({ children, href, className, ...props }) => {
-  const theme = useTheme().theme.navbar;
+export interface NavbarBrandProps extends PropsWithChildren<ComponentProps<'a'>> {
+  theme?: DeepPartial<FlowbiteNavbarBrandTheme>;
+}
+
+export const NavbarBrand: FC<NavbarBrandProps> = ({ theme: customTheme = {}, children, href, className, ...props }) => {
+  const theme = mergeDeep(useTheme().theme.navbar.brand, customTheme);
+
   return (
-    <a href={href} className={classNames(theme.brand, className)} {...props}>
+    <a href={href} className={classNames(theme.base, className)} {...props}>
       {children}
     </a>
   );
