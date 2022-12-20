@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { useEffect, useState } from 'react';
+import { ComponentProps, FC, PropsWithChildren, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -57,7 +56,7 @@ export interface ModalProps extends PropsWithChildren<ComponentProps<'div'>> {
 const ModalComponent: FC<ModalProps> = ({
   children,
   show,
-  root,
+  root = document.body,
   popup,
   size = '2xl',
   position = 'center',
@@ -65,52 +64,38 @@ const ModalComponent: FC<ModalProps> = ({
   className,
   ...props
 }) => {
-  const [parent, setParent] = useState<HTMLElement | undefined>(root);
-  const [container, setContainer] = useState<HTMLDivElement | undefined>();
   const theme = useTheme().theme.modal;
+  // Declare a ref to store a reference to a div element.
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (!parent) setParent(document.body);
-    if (!container) setContainer(document.createElement('div'));
-  }, []);
+  // If the current value of the ref is falsy (e.g. null), set it to a new div
+  // element.
+  if (!containerRef.current) {
+    containerRef.current = document.createElement('div');
+  }
 
-  useEffect(() => {
-    if (!container || !parent || !show) {
-      return;
-    }
+  // If the current value of the ref is not already a child of the root element,
+  // append it or replace its parent.
+  if (containerRef.current.parentNode !== root) {
+    root.appendChild(containerRef.current);
+  }
 
-    parent.appendChild(container);
-
-    return () => {
-      if (container) {
-        parent.removeChild(container);
-      }
-    };
-  }, [container, parent, show]);
-
-  return container
-    ? createPortal(
-        <ModalContext.Provider value={{ popup, onClose }}>
-          <div
-            aria-hidden={!show}
-            className={classNames(
-              theme.base,
-              theme.positions[position],
-              show ? theme.show.on : theme.show.off,
-              className,
-            )}
-            data-testid="modal"
-            role="dialog"
-            {...props}
-          >
-            <div className={classNames(theme.content.base, theme.sizes[size])}>
-              <div className={theme.content.inner}>{children}</div>
-            </div>
-          </div>
-        </ModalContext.Provider>,
-        container,
-      )
-    : null;
+  return createPortal(
+    <ModalContext.Provider value={{ popup, onClose }}>
+      <div
+        aria-hidden={!show}
+        className={classNames(theme.base, theme.positions[position], show ? theme.show.on : theme.show.off, className)}
+        data-testid="modal"
+        role="dialog"
+        {...props}
+      >
+        <div className={classNames(theme.content.base, theme.sizes[size])}>
+          <div className={theme.content.inner}>{children}</div>
+        </div>
+      </div>
+    </ModalContext.Provider>,
+    containerRef.current,
+  );
 };
 
 ModalComponent.displayName = 'Modal';
