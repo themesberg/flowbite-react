@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ComponentProps, ElementType, FC, forwardRef, PropsWithChildren, useId } from 'react';
+import { ComponentProps, ElementType, FC, forwardRef, PropsWithChildren, ReactNode, useId } from 'react';
 import { Badge } from '../Badge';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -21,6 +21,41 @@ export interface SidebarItemLabelColors extends Pick<FlowbiteColors, 'gray'> {
   [key: string]: string;
 }
 
+const ListItem: FC<PropsWithChildren<{ id: string; isCollapsed: boolean; tooltipChildren: ReactNode | undefined }>> = ({
+  id,
+  isCollapsed,
+  tooltipChildren,
+  children: wrapperChildren,
+}) => (
+  <li>
+    {isCollapsed ? (
+      <Tooltip content={<TooltipContent id={id}>{tooltipChildren}</TooltipContent>} placement="right">
+        {wrapperChildren}
+      </Tooltip>
+    ) : (
+      wrapperChildren
+    )}
+  </li>
+);
+
+const TooltipContent: FC<PropsWithChildren<{ id: string }>> = ({ id, children }) => (
+  <Children id={id}>{children}</Children>
+);
+
+const Children: FC<PropsWithChildren<{ id: string }>> = ({ id, children }) => {
+  const theme = useTheme().theme.sidebar.item;
+
+  return (
+    <span
+      className={classNames(theme.content.base)}
+      data-testid="flowbite-sidebar-item-content"
+      id={`flowbite-sidebar-item-${id}`}
+    >
+      {children}
+    </span>
+  );
+};
+
 const SidebarItem = forwardRef<Element, SidebarItemProps>(
   (
     { as: Component = 'a', children, icon: Icon, active: isActive, label, labelColor = 'info', className, ...props },
@@ -31,32 +66,8 @@ const SidebarItem = forwardRef<Element, SidebarItemProps>(
     const { isInsideCollapse } = useSidebarItemContext();
     const theme = useTheme().theme.sidebar.item;
 
-    const ListItem: FC<PropsWithChildren> = ({ children: wrapperChildren }) => (
-      <li>
-        {isCollapsed ? (
-          <Tooltip content={<TooltipContent>{children}</TooltipContent>} placement="right">
-            {wrapperChildren}
-          </Tooltip>
-        ) : (
-          wrapperChildren
-        )}
-      </li>
-    );
-
-    const TooltipContent: FC<PropsWithChildren> = ({ children }) => <Children>{children}</Children>;
-
-    const Children: FC<PropsWithChildren> = ({ children }) => (
-      <span
-        className={classNames(theme.content.base)}
-        data-testid="flowbite-sidebar-item-content"
-        id={`flowbite-sidebar-item-${id}`}
-      >
-        {children}
-      </span>
-    );
-
     return (
-      <ListItem>
+      <ListItem id={id} isCollapsed={isCollapsed} tooltipChildren={children}>
         <Component
           aria-labelledby={`flowbite-sidebar-item-${id}`}
           className={classNames(
@@ -78,7 +89,7 @@ const SidebarItem = forwardRef<Element, SidebarItemProps>(
           {isCollapsed && !Icon && (
             <span className={theme.collapsed.noIcon}>{(children as string).charAt(0).toLocaleUpperCase() ?? '?'}</span>
           )}
-          {!isCollapsed && <Children>{children}</Children>}
+          {!isCollapsed && <Children id={id}>{children}</Children>}
           {!isCollapsed && label && (
             <Badge color={labelColor} data-testid="flowbite-sidebar-label" hidden={isCollapsed} className={theme.label}>
               {label}
