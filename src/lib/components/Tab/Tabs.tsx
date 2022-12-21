@@ -61,6 +61,7 @@ interface TabKeyboardEventProps extends TabEventProps {
 
 export interface TabsProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style' | 'ref'>> {
   style?: keyof TabStyles;
+  onActiveTabChange?: (activeTab: number) => void;
 }
 
 export interface TabsRef {
@@ -68,7 +69,7 @@ export interface TabsRef {
 }
 
 export const TabsComponent = forwardRef<TabsRef, TabsProps>(
-  ({ children, style = 'default', className, ...rest }, ref: ForwardedRef<TabsRef>) => {
+  ({ children, style = 'default', className, onActiveTabChange, ...rest }, ref: ForwardedRef<TabsRef>) => {
     const theme = useTheme().theme.tab;
 
     const id = useId();
@@ -90,8 +91,13 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
       ),
     );
 
+    const setActiveTabWithCallback = (activeTab: number) => {
+      setActiveTab(activeTab);
+      if (onActiveTabChange) onActiveTabChange(activeTab);
+    };
+
     const handleClick = ({ target }: TabEventProps): void => {
-      setActiveTab(target);
+      setActiveTabWithCallback(target);
       setFocusedTab(target);
     };
 
@@ -105,7 +111,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
       }
 
       if (event.key === 'Enter') {
-        setActiveTab(target);
+        setActiveTabWithCallback(target);
         setFocusedTab(target);
       }
     };
@@ -117,7 +123,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
     }, [focusedTab]);
 
     useImperativeHandle(ref, () => ({
-      setActiveTab,
+      setActiveTab: setActiveTabWithCallback,
     }));
 
     return (
