@@ -1,12 +1,29 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { describe, expect, it } from 'vitest';
 import { Button } from '../Button';
+import { TextInput } from '../TextInput';
 import type { ModalProps } from './Modal';
 import { Modal } from './Modal';
 
 describe('Components / Modal', () => {
+  it('should automatically focus the `TextInput` inside the `Modal` when its opened', async () => {
+    const root = document.createElement('div');
+    const user = userEvent.setup();
+
+    render(<TestModal root={root} />);
+
+    const openButton = screen.getByRole('button');
+
+    await user.click(openButton);
+
+    const modal = within(root).getByRole('dialog');
+    const input = within(modal).getByTestId('text-input');
+
+    waitFor(() => expect(input).toHaveFocus());
+  });
+
   describe('A11y', () => {
     it('should have `role="dialog"`', async () => {
       const user = userEvent.setup();
@@ -66,6 +83,15 @@ describe('Components / Modal', () => {
 const TestModal = ({ root }: Pick<ModalProps, 'root'>): JSX.Element => {
   const [open, setOpen] = useState(false);
 
+  const setInputRef = useCallback(
+    (input: HTMLInputElement) => {
+      if (open && input) {
+        input.focus();
+      }
+    },
+    [open],
+  );
+
   return (
     <>
       <Button onClick={() => setOpen(true)}>Toggle modal</Button>
@@ -83,6 +109,7 @@ const TestModal = ({ root }: Pick<ModalProps, 'root'>): JSX.Element => {
               soon as possible of high-risk data breaches that could personally affect them.
             </p>
           </div>
+          <TextInput data-testid="text-input" ref={setInputRef} autoFocus />
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => setOpen(false)}>I accept</Button>
