@@ -456,6 +456,10 @@ const theme: FlowbiteTheme = {
         base: 'pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3',
         svg: 'h-5 w-5 text-gray-500 dark:text-gray-400',
       },
+      rightIcon: {
+        base: 'pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3',
+        svg: 'h-5 w-5 text-gray-500 dark:text-gray-400',
+      },
       input: {
         base: 'block w-full border disabled:cursor-not-allowed disabled:opacity-50',
         sizes: {
@@ -472,6 +476,10 @@ const theme: FlowbiteTheme = {
             'border-yellow-500 bg-yellow-50 text-yellow-900 placeholder-yellow-700 focus:border-yellow-500 focus:ring-yellow-500 dark:border-yellow-400 dark:bg-yellow-100 dark:focus:border-yellow-500 dark:focus:ring-yellow-500',
           success:
             'border-green-500 bg-green-50 text-green-900 placeholder-green-700 focus:border-green-500 focus:ring-green-500 dark:border-green-400 dark:bg-green-100 dark:focus:border-green-500 dark:focus:ring-green-500',
+        },
+        withRightIcon: {
+          on: 'pr-10',
+          off: '',
         },
         withIcon: {
           on: 'pl-10',

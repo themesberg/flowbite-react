@@ -16,11 +16,16 @@ export interface FlowbiteTextInputTheme {
       base: string;
       svg: string;
     };
+    rightIcon: {
+      base: string;
+      svg: string;
+    };
     input: {
       base: string;
       sizes: TextInputSizes;
       colors: TextInputColors;
       withIcon: FlowbiteBoolean;
+      withRightIcon: FlowbiteBoolean;
       withAddon: FlowbiteBoolean;
       withShadow: FlowbiteBoolean;
     };
@@ -41,6 +46,7 @@ export interface TextInputProps extends Omit<ComponentProps<'input'>, 'ref' | 'c
   helperText?: ReactNode;
   addon?: ReactNode;
   icon?: FC<ComponentProps<'svg'>>;
+  rightIcon?: FC<ComponentProps<'svg'>>;
   color?: keyof TextInputColors;
   theme?: DeepPartial<FlowbiteTextInputTheme>;
 }
@@ -53,6 +59,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       helperText,
       addon,
       icon: Icon,
+      rightIcon: RightIcon
       color = 'gray',
       className,
       theme: customTheme = {},
@@ -70,6 +77,11 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             {Icon && (
               <div className={theme.field.icon.base}>
                 <Icon className={theme.field.icon.svg} />
+              </div>
+            )}
+            {RightIcon && (
+              <div data-testid="right-icon" className={theme.field.rightIcon.base}>
+                <RightIcon className={theme.field.rightIcon.svg} />
               </div>
             )}
             <input
