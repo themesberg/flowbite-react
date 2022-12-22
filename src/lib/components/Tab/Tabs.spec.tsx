@@ -1,10 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FC } from 'react';
+import { createRef, FC, forwardRef } from 'react';
+import { act } from 'react-dom/test-utils';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
-import { describe, expect, it } from 'vitest';
-import { Tabs } from './Tabs';
+import { describe, expect, it, vi } from 'vitest';
+import { Tabs, TabsRef } from './Tabs';
 
 describe('Components / Tabs', () => {
   it('should open tab when clicked', async () => {
@@ -83,10 +84,58 @@ describe('Components / Tabs', () => {
 
     expect(nextTab).toHaveFocus();
   });
+
+  it('should call onActiveTabChanged when clicked', async () => {
+    const user = userEvent.setup();
+
+    const helper = { onActiveTabChange: (_activeTab: number) => {} };
+    const spy = vi.spyOn(helper, 'onActiveTabChange');
+
+    render(<TestTabs onActiveTabChange={helper.onActiveTabChange} />);
+
+    expect(firstTab()).toHaveFocus();
+
+    const nextTab = tabs()[1];
+
+    await user.click(nextTab);
+
+    expect(firstTab()).toHaveAttribute('aria-selected', 'false');
+    expect(nextTab).toHaveFocus();
+    expect(nextTab).toHaveAttribute('aria-selected', 'true');
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(1);
+  });
+
+  it('should open tab and call onActiveTabChanged when setActiveTab is called', async () => {
+    const ref = createRef<TabsRef>();
+
+    const helper = { onActiveTabChange: (_activeTab: number) => {} };
+    const spy = vi.spyOn(helper, 'onActiveTabChange');
+
+    render(<TestTabs ref={ref} onActiveTabChange={helper.onActiveTabChange} />);
+
+    expect(firstTab()).toHaveAttribute('aria-selected', 'true');
+
+    act(() => {
+      ref.current?.setActiveTab(1);
+    });
+
+    const nextTab = tabs()[1];
+    expect(firstTab()).toHaveAttribute('aria-selected', 'false');
+    expect(nextTab).toHaveAttribute('aria-selected', 'true');
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(1);
+  });
 });
 
-const TestTabs: FC = () => (
-  <Tabs.Group aria-label="Test tabs">
+interface TestTabsProps {
+  onActiveTabChange?: (activeTab: number) => void;
+}
+
+const TestTabs = forwardRef<TabsRef, TestTabsProps>(({ onActiveTabChange }, ref) => (
+  <Tabs.Group aria-label="Test tabs" onActiveTabChange={onActiveTabChange} ref={ref}>
     <Tabs.Item title="Profile" icon={HiUserCircle}>
       Profile content
     </Tabs.Item>
@@ -103,7 +152,7 @@ const TestTabs: FC = () => (
       Disabled content
     </Tabs.Item>
   </Tabs.Group>
-);
+));
 
 const TestTabsDifferentActiveItem: FC = () => (
   <Tabs.Group aria-label="Test tabs">
