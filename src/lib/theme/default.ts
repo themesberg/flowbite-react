@@ -624,23 +624,27 @@ const theme: FlowbiteTheme = {
     },
   },
   navbar: {
-    base: 'border-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
-    rounded: {
-      on: 'rounded',
-      off: '',
-    },
-    bordered: {
-      on: 'border',
-      off: '',
-    },
-    inner: {
-      base: 'mx-auto flex flex-wrap items-center justify-between',
-      fluid: {
-        on: '',
-        off: 'container',
+    root: {
+      base: 'border-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
+      rounded: {
+        on: 'rounded',
+        off: '',
+      },
+      bordered: {
+        on: 'border',
+        off: '',
+      },
+      inner: {
+        base: 'mx-auto flex flex-wrap items-center justify-between',
+        fluid: {
+          on: '',
+          off: 'container',
+        },
       },
     },
-    brand: 'flex items-center',
+    brand: {
+      base: 'flex items-center',
+    },
     collapse: {
       base: 'w-full md:block md:w-auto',
       list: 'mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium',

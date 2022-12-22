@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, ReactNode } from 'react';
 import { forwardRef } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { HelperText } from '../HelperText';
@@ -46,14 +48,27 @@ export interface TextInputProps extends Omit<ComponentProps<'input'>, 'ref' | 'c
   icon?: FC<ComponentProps<'svg'>>;
   rightIcon?: FC<ComponentProps<'svg'>>;
   color?: keyof TextInputColors;
+  theme?: DeepPartial<FlowbiteTextInputTheme>;
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (
-    { sizing = 'md', shadow, helperText, addon, icon: Icon, rightIcon: RightIcon, color = 'gray', className, ...props },
+    {
+      sizing = 'md',
+      shadow,
+      helperText,
+      addon,
+      icon: Icon,
+      rightIcon: RightIcon
+      color = 'gray',
+      className,
+      theme: customTheme = {},
+      ...props
+    },
     ref,
   ) => {
-    const theme = useTheme().theme.textInput;
+    const theme = mergeDeep(useTheme().theme.textInput, customTheme);
+
     return (
       <>
         <div className={classNames(theme.base, className)}>
