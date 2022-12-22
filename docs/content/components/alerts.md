@@ -17,7 +17,7 @@ Flowbite also includes dismissable alerts which can be hidden by the users by cl
 
 ## Usage
 
-{{< example  github="docs/components/alerts.md" component="alert.example" show_dark=true >}}
+{{< example  github="docs/components/alerts.md" example="alert.example" show_dark=true >}}
 import React from 'react'
 import { Alert } from 'flowbite-react'
 

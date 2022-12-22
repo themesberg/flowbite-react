@@ -2,25 +2,12 @@ import React from "react";
 import { Alert, Button } from "flowbite-react";
 import { HiInformationCircle, HiEye } from "react-icons/hi";
 
-export default {
-  example: AlertExample,
-  default: AlertDefault,
-  with_icon: AlertWithIcon,
-  dimissing: AlertDimissing,
-  border_accent: AlertBorderAccent,
-  additional_content: AlertWithAdditionalContent,
-}
-
-// ------------------
-// All example codes
-// ------------------
-
 function AlertExample() {
   return (
     <Alert color="info">
       <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
     </Alert>
-  );
+  )
 }
 
 function AlertDefault() {
@@ -98,4 +85,13 @@ function AlertWithAdditionalContent() {
       </h3>
     </Alert>
   )
+}
+
+export default {
+  'example' : AlertExample,
+  'default': AlertDefault,
+  'with_icon': AlertWithIcon,
+  'dimissing': AlertDimissing,
+  'border_accent': AlertBorderAccent,
+  'additional_content': AlertWithAdditionalContent,
 }

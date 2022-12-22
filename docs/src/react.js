@@ -32,31 +32,26 @@ const getObjProp = (obj, path, def) => {
   return current
 }
 
-const getExampleFromPath = path => {
-  if (path) {
-    return getObjProp(mappedExamples, path, null)
+const renderExample = () => {
+  const container = document.getElementById("app")
+  const path = container.getAttribute("data-example")
+
+  const Example = getObjProp(mappedExamples, path, null)
+  if (!Example) {
+    console(`${path} not does not exists at the mapped examples.`)
+    console.log(mappedExamples)
+    return
   }
-  return null
-}
 
-const parseJsonProps = json => {
-  try {
-    return JSON.parse(json)
-  } catch {
-    return {}
-  }
-}
-
-const container = document.getElementById("app")
-const path = container.getAttribute("data-example")
-
-if (path) {
-  const Example = getExampleFromPath(path)  
   const root = createRoot(container)
   let store = {} // this is a hack for state
 
   root.render(
     <Flowbite>
       <Example />
-    </Flowbite>)
+    </Flowbite>
+  )
 }
+
+// Render the example
+renderExample()
