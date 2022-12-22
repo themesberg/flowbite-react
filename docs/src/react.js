@@ -1,9 +1,11 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import { Alert, Flowbite } from 'flowbite-react';
+import { Flowbite } from 'flowbite-react';
+import { AlertDefault, AlertExample } from './examples/alert';
 
 const mappedComponents = {
-  'alert': Alert,
+  'alert_example': AlertExample,
+  'alert_default': AlertDefault,
   // 'Spinner': Spinner
 }
 
@@ -15,6 +17,7 @@ const getComponentById = id => {
   if (id) {
     return mappedComponents[id] || null
   }
+  console.log(`Component ${id} not found!`);
   return null
 }
 
@@ -36,10 +39,14 @@ if (componentID) {
   }
   // const props = parseJsonProps(container.dataset.reactProps)
 
-  console.log("Rendering component: " + componentID, Component)
+  console.log(`Rendering component: ${componentID}`, Component)
+
+  console.log(Component.toString())
 
   const root = createRoot(container)
   let store = {}    
-  root.render(<Component {...props} />)
-
+  root.render(
+  <Flowbite>
+    <Component {...props} />
+  </Flowbite>)
 }

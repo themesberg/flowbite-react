@@ -17,15 +17,14 @@ Flowbite also includes dismissable alerts which can be hidden by the users by cl
 
 ## Usage
 
-{{< example class="flex space-x-4 dark:bg-gray-800" github="docs/components/alerts.md" component="alert" show_dark=true >}}
+{{< example class="flex space-x-4 dark:bg-gray-800" github="docs/components/alerts.md" component="alert_example" show_dark=true >}}
 import { Alert } from 'flowbite-react'
 
 export default function App() {
   return (
     <>
       <Alert color="info">
-        <span class="font-medium">Info alert!</span>
-        Change a few things up and try submitting again.
+        <span class="font-medium">Info alert!</span> Change a few things up and try submitting again.
       </Alert>
     </>
   )
@@ -159,18 +158,20 @@ The parameters for the Dismiss object can be used to programatically initialize 
 
 ## Theming
 
-```js
-alert: {
+```ts
+export interface FlowbiteAlertTheme {
   base: string;
   borderAccent: string;
+  wrapper: string;
   closeButton: {
     base: string;
+    icon: string;
     color: AlertColors;
   };
   color: AlertColors;
   icon: string;
   rounded: string;
-};
+}
 ```
 
 ## Examples
@@ -179,25 +180,25 @@ alert: {
 
 Use the following examples of alert components to show messages as feedback to your users.
 
-{{< example class="flex space-x-4 dark:bg-gray-800" github="docs/components/alerts.md" show_dark=true >}}
+{{< example class="flex space-x-4 dark:bg-gray-800" github="docs/components/alerts.md" component="alert_default" show_dark=true >}}
 <Alert color="info">
-  <span class="font-medium">Info alert!</span>
+  <span className="font-medium">Info alert!</span>
   Change a few things up and try submitting again.
 </Alert>
 <Alert color="failure">
-  <span class="font-medium">Danger alert!</span>
+  <span className="font-medium">Danger alert!</span>
   Change a few things up and try submitting again.
 </Alert>
 <Alert color="success">
-  <span class="font-medium">Success alert!</span>
+  <span className="font-medium">Success alert!</span>
   Change a few things up and try submitting again.
 </Alert>
 <Alert color="warning">
-  <span class="font-medium">Warning alert!</span>
+  <span className="font-medium">Warning alert!</span>
   Change a few things up and try submitting again.
-</div>
+</Alert>
 <Alert color="gray">
-  <span class="font-medium">Dark alert!</span>
+  <span className="font-medium">Dark alert!</span>
   Change a few things up and try submitting again.
 </Alert>
 {{< /example >}}
