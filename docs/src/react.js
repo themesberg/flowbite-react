@@ -1,23 +1,41 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Flowbite } from 'flowbite-react';
-import { AlertDefault, AlertExample } from './examples/alert';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { Flowbite } from 'flowbite-react'
+import alertExamples from './examples/alert'
 
-const mappedComponents = {
-  'alert_example': AlertExample,
-  'alert_default': AlertDefault,
-  // 'Spinner': Spinner
+// Register examples
+const mappedExamples = {
+  alert: alertExamples,
 }
 
-const registerComponent = (id, component) => {
-  mappedComponents[id] = component
-}
+const getObjProp = (obj, path, def) => {
+  const stringToPath = function (path) {
+    if (typeof path !== 'string') return path
 
-const getComponentById = id => {
-  if (id) {
-    return mappedComponents[id] || null
+    let output = []
+    path.split('.').forEach(function (item) {
+      item.split(/\[([^}]+)\]/g).forEach(function (key) {
+        if (key.length > 0) output.push(key)
+      })
+    })
+    return output
   }
-  console.log(`Component ${id} not found!`);
+
+  path = stringToPath(path)
+
+  let current = obj
+  for (let i = 0; i < path.length; i++) {
+    if (!current[path[i]]) return def
+    current = current[path[i]]
+  }
+
+  return current
+}
+
+const getExampleFromPath = path => {
+  if (path) {
+    return getObjProp(mappedExamples, path, null)
+  }
   return null
 }
 
@@ -30,23 +48,15 @@ const parseJsonProps = json => {
 }
 
 const container = document.getElementById("app")
-const componentID = container.getAttribute("data-component")
+const path = container.getAttribute("data-example")
 
-if (componentID) {
-  const Component = getComponentById(componentID)
-  const props = {
-    children: "This is just an alert message"
-  }
-  // const props = parseJsonProps(container.dataset.reactProps)
-
-  console.log(`Rendering component: ${componentID}`, Component)
-
-  console.log(Component.toString())
-
+if (path) {
+  const Example = getExampleFromPath(path)  
   const root = createRoot(container)
-  let store = {}    
+  let store = {} // this is a hack for state
+
   root.render(
-  <Flowbite>
-    <Component {...props} />
-  </Flowbite>)
+    <Flowbite>
+      <Example />
+    </Flowbite>)
 }
