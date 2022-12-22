@@ -59,7 +59,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       helperText,
       addon,
       icon: Icon,
-      rightIcon: RightIcon
+      rightIcon: RightIcon,
       color = 'gray',
       className,
       theme: customTheme = {},
