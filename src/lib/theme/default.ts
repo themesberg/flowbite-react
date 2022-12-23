@@ -159,6 +159,10 @@ const theme: FlowbiteTheme = {
     },
   },
   breadcrumb: {
+    root: {
+      base: '',
+      list: 'flex items-center',
+    },
     item: {
       base: 'group flex items-center',
       chevron: 'mx-1 h-6 w-6 text-gray-400 group-first:hidden md:mx-2',
@@ -168,7 +172,6 @@ const theme: FlowbiteTheme = {
       },
       icon: 'mr-2 h-4 w-4',
     },
-    list: 'flex items-center',
   },
   button: {
     base: 'group flex h-min items-center justify-center p-0.5 text-center font-medium focus:z-10',
