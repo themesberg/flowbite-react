@@ -269,13 +269,15 @@ const theme: FlowbiteTheme = {
     },
   },
   card: {
-    base: 'flex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800',
-    children: 'flex h-full flex-col justify-center gap-4 p-6',
-    horizontal: {
-      off: 'flex-col',
-      on: 'flex-col md:max-w-xl md:flex-row',
+    root: {
+      base: 'flex rounded-lg border border-gray-200 bg-white shadow-md dark:border-gray-700 dark:bg-gray-800',
+      children: 'flex h-full flex-col justify-center gap-4 p-6',
+      horizontal: {
+        off: 'flex-col',
+        on: 'flex-col md:max-w-xl md:flex-row',
+      },
+      href: 'hover:bg-gray-100 dark:hover:bg-gray-700',
     },
-    href: 'hover:bg-gray-100 dark:hover:bg-gray-700',
     img: {
       base: '',
       horizontal: {
