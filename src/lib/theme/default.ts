@@ -33,9 +33,20 @@ const theme: FlowbiteTheme = {
     },
   },
   alert: {
-    base: 'flex flex-col gap-2 p-4 text-sm',
-    borderAccent: 'border-t-4',
-    wrapper: 'flex items-center',
+    root: {
+      base: 'flex flex-col gap-2 p-4 text-sm',
+      borderAccent: 'border-t-4',
+      wrapper: 'flex items-center',
+      color: {
+        info: 'text-blue-700 bg-blue-100 border-blue-500 dark:bg-blue-200 dark:text-blue-800',
+        gray: 'text-gray-700 bg-gray-100 border-gray-500 dark:bg-gray-700 dark:text-gray-300',
+        failure: 'text-red-700 bg-red-100 border-red-500 dark:bg-red-200 dark:text-red-800',
+        success: 'text-green-700 bg-green-100 border-green-500 dark:bg-green-200 dark:text-green-800',
+        warning: 'text-yellow-700 bg-yellow-100 border-yellow-500 dark:bg-yellow-200 dark:text-yellow-800',
+      },
+      icon: 'mr-3 inline h-5 w-5 flex-shrink-0',
+      rounded: 'rounded-lg',
+    },
     closeButton: {
       base: '-mx-1.5 -my-1.5 ml-auto inline-flex h-8 w-8 rounded-lg p-1.5 focus:ring-2',
       icon: 'w-5 h-5',
@@ -50,15 +61,6 @@ const theme: FlowbiteTheme = {
           'bg-yellow-100 text-yellow-500 hover:bg-yellow-200 focus:ring-yellow-400 dark:bg-yellow-200 dark:text-yellow-600 dark:hover:bg-yellow-300',
       },
     },
-    color: {
-      info: 'text-blue-700 bg-blue-100 border-blue-500 dark:bg-blue-200 dark:text-blue-800',
-      gray: 'text-gray-700 bg-gray-100 border-gray-500 dark:bg-gray-700 dark:text-gray-300',
-      failure: 'text-red-700 bg-red-100 border-red-500 dark:bg-red-200 dark:text-red-800',
-      success: 'text-green-700 bg-green-100 border-green-500 dark:bg-green-200 dark:text-green-800',
-      warning: 'text-yellow-700 bg-yellow-100 border-yellow-500 dark:bg-yellow-200 dark:text-yellow-800',
-    },
-    icon: 'mr-3 inline h-5 w-5 flex-shrink-0',
-    rounded: 'rounded-lg',
   },
   avatar: {
     base: 'flex justify-center items-center space-x-4',
