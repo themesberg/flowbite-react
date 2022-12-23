@@ -1,11 +1,27 @@
 import classNames from 'classnames';
-import type { ComponentProps, FC } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useAccordionContext } from './AccordionPanelContext';
 
-export const AccordionContent: FC<ComponentProps<'div'>> = ({ children, className, ...props }): JSX.Element => {
+export interface FlowbiteAccordionComponentTheme {
+  base: string;
+}
+
+export interface AccordionContentProps extends PropsWithChildren<ComponentProps<'div'>> {
+  theme?: DeepPartial<FlowbiteAccordionComponentTheme>;
+}
+
+export const AccordionContent: FC<AccordionContentProps> = ({
+  children,
+  className,
+  theme: customTheme = {},
+  ...props
+}): JSX.Element => {
   const { isOpen } = useAccordionContext();
-  const theme = useTheme().theme.accordion.content;
+
+  const theme = mergeDeep(useTheme().theme.accordion.content, customTheme);
 
   return (
     <div

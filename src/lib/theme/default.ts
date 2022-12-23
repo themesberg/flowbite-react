@@ -2,13 +2,15 @@ import type { FlowbiteTheme } from '../components';
 
 const theme: FlowbiteTheme = {
   accordion: {
-    base: 'divide-y divide-gray-200 border-gray-200 dark:divide-gray-700 dark:border-gray-700',
+    root: {
+      base: 'divide-y divide-gray-200 border-gray-200 dark:divide-gray-700 dark:border-gray-700',
+      flush: {
+        off: 'rounded-lg border',
+        on: 'border-b',
+      },
+    },
     content: {
       base: 'py-5 px-5 last:rounded-b-lg dark:bg-gray-900 first:rounded-t-lg',
-    },
-    flush: {
-      off: 'rounded-lg border',
-      on: 'border-b',
     },
     title: {
       arrow: {
