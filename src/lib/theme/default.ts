@@ -122,7 +122,7 @@ const theme: FlowbiteTheme = {
   },
   avatarGroup: {
     root: {
-      base: 'flex mb-5 -space-x-4',
+      base: 'flex -space-x-4',
     },
   },
   badge: {
