@@ -9,8 +9,10 @@ describe('Components / Avatar', () => {
     it('should use custom sizes', () => {
       const theme: CustomFlowbiteTheme = {
         avatar: {
-          size: {
-            xxl: 'h-64 w-64',
+          root: {
+            size: {
+              xxl: 'h-64 w-64',
+            },
           },
         },
       };
@@ -26,8 +28,10 @@ describe('Components / Avatar', () => {
     it('should use custom colors', () => {
       const theme: CustomFlowbiteTheme = {
         avatar: {
-          color: {
-            rose: 'ring-rose-500 dark:ring-rose-400',
+          root: {
+            color: {
+              rose: 'ring-rose-500 dark:ring-rose-400',
+            },
           },
         },
       };
