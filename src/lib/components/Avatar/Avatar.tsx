@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import AvatarGroup from './AvatarGroup';
@@ -87,7 +88,8 @@ const AvatarComponent: FC<AvatarProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = useTheme().theme.avatar;
+  const theme = mergeDeep(useTheme().theme.avatar, customTheme);
+
   const imgClassName = classNames(
     bordered && theme.root.bordered,
     bordered && theme.root.color[color],

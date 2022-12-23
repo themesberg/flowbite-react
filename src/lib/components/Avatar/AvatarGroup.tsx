@@ -18,10 +18,10 @@ export interface AvatarGroupProps extends PropsWithChildren<ComponentProps<'div'
 }
 
 const AvatarGroup: React.FC<AvatarGroupProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const theme = mergeDeep(useTheme().theme.avatarGroup, customTheme);
+  const theme = mergeDeep(useTheme().theme.avatarGroup.root, customTheme);
 
   return (
-    <div data-testid="avatar-group-element" className={classNames(theme.root.base, className)} {...props}>
+    <div data-testid="avatar-group-element" className={classNames(theme.base, className)} {...props}>
       {children}
     </div>
   );

@@ -19,10 +19,10 @@ export interface AvatarGroupCounterProps extends PropsWithChildren<ComponentProp
 }
 
 const AvatarGroupCounter: React.FC<AvatarGroupCounterProps> = ({ total, href, className, theme: customTheme = {} }) => {
-  const theme = mergeDeep(useTheme().theme.avatarGroupCounter, customTheme);
+  const theme = mergeDeep(useTheme().theme.avatarGroupCounter.root, customTheme);
 
   return (
-    <a className={classNames(theme.root.base, className)} href={href}>
+    <a className={classNames(theme.base, className)} href={href}>
       +{total}
     </a>
   );
