@@ -945,7 +945,7 @@ const theme: FlowbiteTheme = {
   },
   timeline: {
     direction: {
-      horizontal: 'items-center sm:flex',
+      horizontal: 'items-base sm:flex',
       vertical: 'relative border-l border-gray-200 dark:border-gray-700',
     },
     item: {
@@ -959,7 +959,12 @@ const theme: FlowbiteTheme = {
           vertical: '',
         },
         marker: {
-          base: 'absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700',
+          base: {
+            horizontal:
+              'absolute -left-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700',
+            vertical:
+              'absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700',
+          },
           icon: {
             wrapper:
               'absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-200 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900',

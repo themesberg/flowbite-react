@@ -25,7 +25,10 @@ export interface FlowbiteTimelineTheme {
         vertical: string;
       };
       marker: {
-        base: string;
+        base: {
+          horizontal: string;
+          vertical: string;
+        };
         icon: {
           wrapper: string;
           base: string;
