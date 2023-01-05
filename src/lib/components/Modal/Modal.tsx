@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { ComponentProps, FC, PropsWithChildren, useRef } from 'react';
+import { ComponentProps, FC, PropsWithChildren, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -79,6 +79,19 @@ const ModalComponent: FC<ModalProps> = ({
   if (containerRef.current.parentNode !== root) {
     root.appendChild(containerRef.current);
   }
+
+  useEffect(() => {
+    return () => {
+      const container = containerRef.current;
+
+      // If a container exists on unmount, it is removed from the DOM and
+      // garbage collected.
+      if (container) {
+        container.parentNode?.removeChild(container);
+        containerRef.current = null;
+      }
+    };
+  }, []);
 
   return createPortal(
     <ModalContext.Provider value={{ popup, onClose }}>
