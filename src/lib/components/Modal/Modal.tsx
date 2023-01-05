@@ -84,14 +84,12 @@ const ModalComponent: FC<ModalProps> = ({
     return () => {
       const container = containerRef.current;
 
-      if (!container) {
-        return;
-      }
-
       // If a container exists on unmount, it is removed from the DOM and
       // garbage collected.
-      container.parentNode?.removeChild(container);
-      containerRef.current = null;
+      if (container) {
+        container.parentNode?.removeChild(container);
+        containerRef.current = null;
+      }
     };
   }, []);
 
