@@ -24,6 +24,16 @@ describe('Components / Modal', () => {
     waitFor(() => expect(input).toHaveFocus());
   });
 
+  it('should be removed from DOM and garbage collected', async () => {
+    const root = document.createElement('div');
+
+    const { unmount } = render(<TestModal root={root} />);
+
+    unmount();
+
+    await waitFor(() => expect(root.childNodes.length).toBe(0));
+  });
+
   describe('A11y', () => {
     it('should have `role="dialog"`', async () => {
       const user = userEvent.setup();
