@@ -53,7 +53,17 @@ describe('Components / Avatar', () => {
         </Flowbite>,
       );
 
-      expect(initialsPlaceholder()).toHaveTextContent('RR');
+      expect(initialsPlaceholderText()).toHaveTextContent('RR');
+    });
+
+    it('should support border color with placeholder initials', () => {
+      render(
+        <Flowbite>
+          <Avatar placeholderInitials="RR" bordered color="success" />
+        </Flowbite>,
+      );
+
+      expect(initialsPlaceholder()).toHaveClass('ring-green-500 dark:ring-green-500');
     });
   });
   describe('Image', () => {
@@ -71,3 +81,4 @@ describe('Components / Avatar', () => {
 
 const img = () => screen.getByTestId('flowbite-avatar-img');
 const initialsPlaceholder = () => screen.getByTestId('flowbite-avatar-initials-placeholder');
+const initialsPlaceholderText = () => screen.getByTestId('flowbite-avatar-initials-placeholder-text');
