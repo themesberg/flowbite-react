@@ -26,7 +26,9 @@ export const TimelinePoint: FC<TimelnePointProps> = ({ children, className, icon
           <Icon aria-hidden className={classNames(theme.marker.icon.base)} />
         </span>
       ) : (
-        <div className={classNames(theme.marker.base)}></div>
+        <div
+          className={classNames(horizontal && theme.marker.base.horizontal, !horizontal && theme.marker.base.vertical)}
+        ></div>
       )}
       {horizontal && <div className={classNames(theme.line)} />}
     </div>
