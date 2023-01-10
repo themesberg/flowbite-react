@@ -48,8 +48,7 @@
     "test:e2e:open": "start-test 3000 cypress:open"
   },
   "dependencies": {
-    "@floating-ui/react-dom": "^1.0.0",
-    "@floating-ui/react-dom-interactions": "^0.9.1",
+    "@floating-ui/react": "^0.16.0",
     "classnames": "^2.3.2",
     "react-icons": "^4.6.0",
     "react-indiana-drag-scroll": "^2.2.0"
