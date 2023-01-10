@@ -1,7 +1,5 @@
-import { arrow, autoPlacement, shift } from '@floating-ui/core';
-import type { Placement } from '@floating-ui/react-dom';
-import type { Middleware } from '@floating-ui/react-dom-interactions';
-import { flip, offset } from '@floating-ui/react-dom-interactions';
+import type { Middleware, Placement } from '@floating-ui/react';
+import { arrow, autoPlacement, flip, offset, shift } from '@floating-ui/react';
 import type { RefObject } from 'react';
 
 /**
