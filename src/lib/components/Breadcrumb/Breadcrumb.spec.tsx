@@ -45,7 +45,9 @@ describe('Components / Breadcrumb', () => {
     it('should use custom list classes', () => {
       const theme = {
         breadcrumb: {
-          list: 'gap-6',
+          root: {
+            list: 'gap-6',
+          },
         },
       };
       render(

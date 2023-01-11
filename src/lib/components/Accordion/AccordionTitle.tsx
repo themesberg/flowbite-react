@@ -1,24 +1,42 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
-import type { FlowbiteHeadingLevel } from '../Flowbite/FlowbiteTheme';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
+import type { FlowbiteBoolean, FlowbiteHeadingLevel } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useAccordionContext } from './AccordionPanelContext';
+
+export interface FlowbiteAccordionTitleTheme {
+  arrow: {
+    base: string;
+    open: {
+      off: string;
+      on: string;
+    };
+  };
+  base: string;
+  flush: FlowbiteBoolean;
+  heading: string;
+  open: FlowbiteBoolean;
+}
 
 export interface AccordionTitleProps extends ComponentProps<'button'> {
   arrowIcon?: FC<ComponentProps<'svg'>>;
   as?: FlowbiteHeadingLevel;
+  theme?: DeepPartial<FlowbiteAccordionTitleTheme>;
 }
 
 export const AccordionTitle: FC<AccordionTitleProps> = ({
   as: Heading = 'h2',
   children,
   className,
+  theme: customTheme = {},
   ...props
 }): JSX.Element => {
   const { arrowIcon: ArrowIcon, flush, isOpen, setOpen } = useAccordionContext();
-  const theme = useTheme().theme.accordion.title;
-
   const onClick = () => typeof setOpen !== 'undefined' && setOpen();
+
+  const theme = mergeDeep(useTheme().theme.accordion.title, customTheme);
 
   return (
     <button

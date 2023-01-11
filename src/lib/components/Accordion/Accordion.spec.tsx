@@ -115,7 +115,9 @@ describe('Components / Accordion', () => {
       it('should use custom `base` classes', () => {
         const theme = {
           accordion: {
-            base: 'text-4xl',
+            root: {
+              base: 'text-4xl',
+            },
           },
         };
 
@@ -131,9 +133,11 @@ describe('Components / Accordion', () => {
       it('should use custom `flush` classes', () => {
         const theme = {
           accordion: {
-            flush: {
-              off: 'text-4xl',
-              on: 'text-3xl',
+            root: {
+              flush: {
+                off: 'text-4xl',
+                on: 'text-3xl',
+              },
             },
           },
         };
