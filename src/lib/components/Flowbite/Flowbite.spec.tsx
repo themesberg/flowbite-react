@@ -94,8 +94,10 @@ const TestComponent = () => {
 
 const customTheme = {
   avatar: {
-    size: {
-      xxl: 'h-64 w-64',
+    root: {
+      size: {
+        xxl: 'h-64 w-64',
+      },
     },
   },
 };

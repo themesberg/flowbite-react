@@ -1,17 +1,25 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteBadgeTheme {
+  root: FlowbiteBadgeRootTheme;
+  icon: FlowbiteBadgeIconTheme;
+}
+
+export interface FlowbiteBadgeRootTheme {
   base: string;
   color: BadgeColors;
   href: string;
-  icon: {
-    off: string;
-    on: string;
-    size: BadgeSizes;
-  };
+  size: BadgeSizes;
+}
+
+export interface FlowbiteBadgeIconTheme {
+  off: string;
+  on: string;
   size: BadgeSizes;
 }
 
@@ -29,6 +37,7 @@ export interface BadgeProps extends PropsWithChildren<Omit<ComponentProps<'span'
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   size?: keyof BadgeSizes;
+  theme?: DeepPartial<FlowbiteBadgeTheme>;
 }
 
 export const Badge: FC<BadgeProps> = ({
@@ -38,17 +47,18 @@ export const Badge: FC<BadgeProps> = ({
   icon: Icon,
   size = 'xs',
   className,
+  theme: customTheme = {},
   ...props
 }): JSX.Element => {
-  const theme = useTheme().theme.badge;
+  const theme = mergeDeep(useTheme().theme.badge, customTheme);
 
   const Content = (): JSX.Element => (
     <span
       className={classNames(
-        theme.base,
-        theme.color[color],
+        theme.root.base,
+        theme.root.color[color],
         theme.icon[Icon ? 'on' : 'off'],
-        theme.size[size],
+        theme.root.size[size],
         className,
       )}
       data-testid="flowbite-badge"
@@ -60,7 +70,7 @@ export const Badge: FC<BadgeProps> = ({
   );
 
   return href ? (
-    <a className={theme.href} href={href}>
+    <a className={theme.root.href} href={href}>
       <Content />
     </a>
   ) : (
