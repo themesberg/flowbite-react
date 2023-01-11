@@ -35,6 +35,7 @@ export interface AccordionProps extends PropsWithChildren<ComponentProps<'div'>>
   arrowIcon?: FC<ComponentProps<'svg'>>;
   children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];
   flush?: boolean;
+  collapseAll?: boolean;
 }
 
 const AccordionComponent: FC<AccordionProps> = ({
@@ -42,10 +43,11 @@ const AccordionComponent: FC<AccordionProps> = ({
   arrowIcon = HiChevronDown,
   children,
   flush = false,
+  collapseAll = false,
   className,
   ...props
 }): JSX.Element => {
-  const [isOpen, setOpen] = useState(0);
+  const [isOpen, setOpen] = useState(collapseAll ? -1 : 0);
   const panels = useMemo(
     () =>
       Children.map(children, (child, i) =>
