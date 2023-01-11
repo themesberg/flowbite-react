@@ -139,6 +139,7 @@ const AvatarComponent: FC<AvatarProps> = ({
         )}
         {status && (
           <span
+            data-testid="flowbite-avatar-status"
             className={classNames(theme.status.base, theme.status[status], theme.root.statusPosition[statusPosition])}
           />
         )}

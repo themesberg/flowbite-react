@@ -81,8 +81,20 @@ describe('Components / Avatar', () => {
       expect(img()).toHaveAttribute('referrerpolicy', 'no-referrer');
     });
   });
+  describe('Status', () => {
+    it('should have online status indicator', () => {
+      render(
+        <Flowbite>
+          <Avatar status="online" />
+        </Flowbite>,
+      );
+
+      expect(status()).toHaveClass('bg-green-400');
+    });
+  });
 });
 
+const status = () => screen.getByTestId('flowbite-avatar-status');
 const img = () => screen.getByTestId('flowbite-avatar-img');
 const initialsPlaceholder = () => screen.getByTestId('flowbite-avatar-initials-placeholder');
 const initialsPlaceholderText = () => screen.getByTestId('flowbite-avatar-initials-placeholder-text');
