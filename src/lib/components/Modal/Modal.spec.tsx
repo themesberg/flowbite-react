@@ -34,6 +34,44 @@ describe('Components / Modal', () => {
     await waitFor(() => expect(root.childNodes.length).toBe(0));
   });
 
+  it('should be closed by clicking outside if the "dismissible" prop is passed.', async () => {
+    const root = document.createElement('div');
+    const user = userEvent.setup();
+
+    render(<TestModal root={root} dismissible />);
+
+    const openButton = screen.getByRole('button');
+
+    await user.click(openButton);
+
+    const modal = within(root).getByRole('dialog');
+
+    expect(modal).toHaveAttribute('aria-hidden', 'false');
+
+    await user.click(modal);
+
+    expect(modal).toHaveAttribute('aria-hidden', 'true');
+  });
+
+  it('should be closed by Esc key press.', async () => {
+    const root = document.createElement('div');
+    const user = userEvent.setup();
+
+    render(<TestModal root={root} dismissible />);
+
+    const openButton = screen.getByRole('button');
+
+    await user.click(openButton);
+
+    const modal = within(root).getByRole('dialog');
+
+    expect(modal).toHaveAttribute('aria-hidden', 'false');
+
+    await user.keyboard('[Escape]');
+
+    expect(modal).toHaveAttribute('aria-hidden', 'true');
+  });
+
   describe('A11y', () => {
     it('should have `role="dialog"`', async () => {
       const user = userEvent.setup();
@@ -90,7 +128,7 @@ describe('Components / Modal', () => {
   });
 });
 
-const TestModal = ({ root }: Pick<ModalProps, 'root'>): JSX.Element => {
+const TestModal = ({ root, dismissible = false }: Pick<ModalProps, 'root' | 'dismissible'>): JSX.Element => {
   const [open, setOpen] = useState(false);
 
   const setInputRef = useCallback(
@@ -105,7 +143,7 @@ const TestModal = ({ root }: Pick<ModalProps, 'root'>): JSX.Element => {
   return (
     <>
       <Button onClick={() => setOpen(true)}>Toggle modal</Button>
-      <Modal root={root} show={open} onClose={() => setOpen(false)}>
+      <Modal dismissible={dismissible} root={root} show={open} onClose={() => setOpen(false)}>
         <Modal.Header>Terms of Service</Modal.Header>
         <Modal.Body>
           <div className="space-y-6">

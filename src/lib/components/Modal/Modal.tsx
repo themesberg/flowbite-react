@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import { ComponentProps, FC, PropsWithChildren, useEffect, useRef } from 'react';
+import { ComponentProps, FC, MouseEvent, PropsWithChildren, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { useKeyDown } from '../../hooks';
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { ModalBody } from './ModalBody';
@@ -51,6 +52,7 @@ export interface ModalProps extends PropsWithChildren<ComponentProps<'div'>> {
   root?: HTMLElement;
   show?: boolean;
   size?: keyof ModalSizes;
+  dismissible?: boolean;
 }
 
 const ModalComponent: FC<ModalProps> = ({
@@ -60,6 +62,7 @@ const ModalComponent: FC<ModalProps> = ({
   popup,
   size = '2xl',
   position = 'center',
+  dismissible = false,
   onClose,
   className,
   ...props
@@ -93,6 +96,18 @@ const ModalComponent: FC<ModalProps> = ({
     };
   }, []);
 
+  useKeyDown('Escape', () => {
+    if (dismissible && onClose) {
+      onClose();
+    }
+  });
+
+  const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
+    if (dismissible && e.target === e.currentTarget && onClose) {
+      onClose();
+    }
+  };
+
   return createPortal(
     <ModalContext.Provider value={{ popup, onClose }}>
       <div
@@ -100,6 +115,7 @@ const ModalComponent: FC<ModalProps> = ({
         className={classNames(theme.base, theme.positions[position], show ? theme.show.on : theme.show.off, className)}
         data-testid="modal"
         role="dialog"
+        onClick={handleOnClick}
         {...props}
       >
         <div className={classNames(theme.content.base, theme.sizes[size])}>
