@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { ComponentProps, FC, MouseEvent, PropsWithChildren, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { useKeyDown } from '../../hooks';
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { ModalBody } from './ModalBody';
@@ -94,6 +95,12 @@ const ModalComponent: FC<ModalProps> = ({
       }
     };
   }, []);
+
+  useKeyDown('Escape', () => {
+    if (dismissible && onClose) {
+      onClose();
+    }
+  });
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
     if (dismissible && e.target === e.currentTarget && onClose) {

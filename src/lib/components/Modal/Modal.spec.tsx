@@ -53,6 +53,25 @@ describe('Components / Modal', () => {
     expect(modal).toHaveAttribute('aria-hidden', 'true');
   });
 
+  it('should be closed by Esc key press.', async () => {
+    const root = document.createElement('div');
+    const user = userEvent.setup();
+
+    render(<TestModal root={root} dismissible />);
+
+    const openButton = screen.getByRole('button');
+
+    await user.click(openButton);
+
+    const modal = within(root).getByRole('dialog');
+
+    expect(modal).toHaveAttribute('aria-hidden', 'false');
+
+    await user.keyboard('[Escape]');
+
+    expect(modal).toHaveAttribute('aria-hidden', 'true');
+  });
+
   describe('A11y', () => {
     it('should have `role="dialog"`', async () => {
       const user = userEvent.setup();
