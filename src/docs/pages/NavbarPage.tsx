@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { Avatar, Button, Dropdown, Navbar } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
@@ -9,7 +10,7 @@ const NavbarPage: FC = () => {
       title: 'Default navbar',
       code: (
         <Navbar fluid rounded>
-          <Navbar.Brand href="https://flowbite.com/">
+          <Navbar.Brand as={Link} to="/navbars">
             <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
           </Navbar.Brand>
@@ -18,7 +19,9 @@ const NavbarPage: FC = () => {
             <Navbar.Link href="/navbars" active>
               Home
             </Navbar.Link>
-            <Navbar.Link href="/navbars">About</Navbar.Link>
+            <Navbar.Link as={Link} to={'/navbars'}>
+              About
+            </Navbar.Link>
             <Navbar.Link href="/navbars">Services</Navbar.Link>
             <Navbar.Link href="/navbars">Pricing</Navbar.Link>
             <Navbar.Link href="/navbars">Contact</Navbar.Link>
