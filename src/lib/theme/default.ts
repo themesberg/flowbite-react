@@ -388,7 +388,7 @@ const theme: FlowbiteTheme = {
     field: {
       base: 'relative w-full',
       input: {
-        base: 'rounded-lg block w-full border disabled:cursor-not-allowed disabled:opacity-50',
+        base: 'rounded-lg overflow-hidden block w-full border disabled:cursor-not-allowed disabled:opacity-50',
         sizes: {
           sm: 'sm:text-xs',
           md: 'text-sm',
