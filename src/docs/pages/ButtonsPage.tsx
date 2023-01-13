@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
-import { Button, Spinner } from '../../lib';
+import { Button } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
 
@@ -269,21 +269,15 @@ const ButtonsPage: FC = () => {
       title: 'Loader',
       code: (
         <div className="flex flex-wrap items-center gap-2">
-          <div>
-            <Button>
-              <div className="mr-3">
-                <Spinner size="sm" light />
-              </div>
-              Loading ...
-            </Button>
-          </div>
-          <div>
-            <Button outline>
-              <div className="mr-3">
-                <Spinner size="sm" light />
-              </div>
-              Loading ...
-            </Button>
+          <div className="flex flex-wrap items-center gap-2">
+            <div>
+              <Button isProcessing={true}>Loading ...</Button>
+            </div>
+            <div>
+              <Button isProcessing={true} outline>
+                Loading ...
+              </Button>
+            </div>
           </div>
         </div>
       ),

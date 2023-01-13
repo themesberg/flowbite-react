@@ -10,6 +10,7 @@ import type {
   FlowbiteSizes,
 } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
+import { Spinner } from '../Spinner';
 import type { PositionInButtonGroup } from './ButtonGroup';
 import ButtonGroup from './ButtonGroup';
 
@@ -18,6 +19,12 @@ export interface FlowbiteButtonTheme {
   fullSized: string;
   color: FlowbiteColors;
   disabled: string;
+  isProcessing: string;
+  processing: {
+    spinnerSize: string;
+    spinnerLight: string;
+    spinnerClassName: string;
+  };
   gradient: ButtonGradientColors;
   gradientDuoTone: ButtonGradientDuoToneColors;
   inner: FlowbiteButtonInnerTheme;
@@ -66,6 +73,12 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'r
   gradientMonochrome?: keyof ButtonGradientColors;
   href?: string;
   target?: string;
+  isProcessing?: boolean;
+  processing?: {
+    spinnerSize?: string;
+    spinnerLight?: boolean;
+    spinnerClassName?: string;
+  };
   label?: ReactNode;
   outline?: boolean;
   pill?: boolean;
@@ -82,6 +95,12 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
       color = 'info',
       disabled = false,
       fullSized,
+      isProcessing = false,
+      processing = {
+        spinnerSize: 'sm',
+        spinnerLight: true,
+        spinnerClassName: 'mr-3',
+      },
       gradientDuoTone,
       gradientMonochrome,
       href,
@@ -132,6 +151,13 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
           )}
         >
           <>
+            {isProcessing && (
+              <Spinner
+                size={processing.spinnerSize}
+                light={processing.spinnerLight}
+                className={processing.spinnerClassName}
+              />
+            )}
             {typeof children !== 'undefined' && children}
             {typeof label !== 'undefined' && (
               <span data-testid="flowbite-button-label" className={theme.label}>
