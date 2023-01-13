@@ -195,13 +195,13 @@ const FormsPage: FC = () => {
         <div className="flex flex-col gap-4">
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="username3" color="green" value="Your name" />
+              <Label htmlFor="username3" color="success" value="Your name" />
             </div>
             <TextInput
               id="username"
               placeholder="Bonnie Green"
               required
-              color="green"
+              color="success"
               helperText={
                 <>
                   <span className="font-medium">Alright!</span> Username available!
@@ -211,19 +211,56 @@ const FormsPage: FC = () => {
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="username4" color="red" value="Your name" />
+              <Label htmlFor="username4" color="failure" value="Your name" />
             </div>
             <TextInput
               id="username4"
               placeholder="Bonnie Green"
               required
-              color="red"
+              color="failure"
               helperText={
                 <>
                   <span className="font-medium">Oops!</span> Username already taken!
                 </>
               }
             />
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: 'Input colors',
+      code: (
+        <div className="flex flex-col gap-4">
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="input-gray" color="gray" value="Gray" />
+            </div>
+            <TextInput id="input-gray" placeholder="Input Gray" required color="gray" />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="input-info" color="info" value="Info" />
+            </div>
+            <TextInput id="input-info" placeholder="Input Info" required color="info" />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="input-success" color="success" value="Success" />
+            </div>
+            <TextInput id="input-success" placeholder="Input Success" required color="success" />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="input-failure" color="failure" value="Failure" />
+            </div>
+            <TextInput id="input-failure" placeholder="Input Failure" required color="failure" />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="input-warning" color="warning" value="Warning" />
+            </div>
+            <TextInput id="input-warning" placeholder="Input Warning" required color="warning" />
           </div>
         </div>
       ),
