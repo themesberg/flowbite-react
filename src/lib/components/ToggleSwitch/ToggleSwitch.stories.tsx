@@ -1,4 +1,5 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
+import { useState } from 'react';
 import theme from '../../theme/default';
 import type { ToggleSwitchProps } from './ToggleSwitch';
 import { ToggleSwitch } from './ToggleSwitch';
@@ -10,7 +11,15 @@ export default {
   component: ToggleSwitch,
 } as Meta;
 
-const Template: Story<ToggleSwitchProps> = (args) => <ToggleSwitch {...args} />;
+const Template: Story<ToggleSwitchProps> = ({ checked, onChange, ...args }) => {
+  const [switchChecked, setSwitchChecked] = useState(checked);
+
+  const handleChange = () => {
+    setSwitchChecked((currentCheck) => !currentCheck);
+  };
+
+  return <ToggleSwitch checked={switchChecked} onChange={handleChange} {...args} />;
+};
 
 export const DefaultToggleSwitch = Template.bind({});
 DefaultToggleSwitch.storyName = 'Toggle switch';

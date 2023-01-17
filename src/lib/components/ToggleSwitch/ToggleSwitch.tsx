@@ -71,7 +71,7 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
           className={classNames(
             theme.toggle.base,
             theme.toggle.checked[checked ? 'on' : 'off'],
-            !disabled && theme.toggle.checked.color[color],
+            !disabled && checked && theme.toggle.checked.color[color],
           )}
         />
         <span
