@@ -226,7 +226,7 @@ const theme: FlowbiteTheme = {
         light: '',
       },
       off: '',
-      on: 'bg-white text-gray-900 transition-all duration-75 ease-in group-hover:bg-opacity-0 group-hover:text-inherit dark:bg-gray-900 dark:text-white',
+      on: '!block bg-white text-gray-900 transition-all duration-75 ease-in group-hover:bg-opacity-0 group-hover:text-inherit dark:bg-gray-900 dark:text-white w-full',
       pill: {
         off: 'rounded-md',
         on: 'rounded-full',
