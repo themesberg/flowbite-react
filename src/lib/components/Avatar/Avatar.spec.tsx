@@ -9,8 +9,10 @@ describe('Components / Avatar', () => {
     it('should use custom sizes', () => {
       const theme: CustomFlowbiteTheme = {
         avatar: {
-          size: {
-            xxl: 'h-64 w-64',
+          root: {
+            size: {
+              xxl: 'h-64 w-64',
+            },
           },
         },
       };
@@ -26,8 +28,10 @@ describe('Components / Avatar', () => {
     it('should use custom colors', () => {
       const theme: CustomFlowbiteTheme = {
         avatar: {
-          color: {
-            rose: 'ring-rose-500 dark:ring-rose-400',
+          root: {
+            color: {
+              rose: 'ring-rose-500 dark:ring-rose-400',
+            },
           },
         },
       };
@@ -53,7 +57,17 @@ describe('Components / Avatar', () => {
         </Flowbite>,
       );
 
-      expect(initialsPlaceholder()).toHaveTextContent('RR');
+      expect(initialsPlaceholderText()).toHaveTextContent('RR');
+    });
+
+    it('should support border color with placeholder initials', () => {
+      render(
+        <Flowbite>
+          <Avatar placeholderInitials="RR" bordered color="success" />
+        </Flowbite>,
+      );
+
+      expect(initialsPlaceholder()).toHaveClass('ring-green-500 dark:ring-green-500');
     });
   });
   describe('Image', () => {
@@ -67,7 +81,20 @@ describe('Components / Avatar', () => {
       expect(img()).toHaveAttribute('referrerpolicy', 'no-referrer');
     });
   });
+  describe('Status', () => {
+    it('should have online status indicator', () => {
+      render(
+        <Flowbite>
+          <Avatar status="online" />
+        </Flowbite>,
+      );
+
+      expect(status()).toHaveClass('bg-green-400');
+    });
+  });
 });
 
+const status = () => screen.getByTestId('flowbite-avatar-status');
 const img = () => screen.getByTestId('flowbite-avatar-img');
 const initialsPlaceholder = () => screen.getByTestId('flowbite-avatar-initials-placeholder');
+const initialsPlaceholderText = () => screen.getByTestId('flowbite-avatar-initials-placeholder-text');

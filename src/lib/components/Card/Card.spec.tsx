@@ -43,7 +43,9 @@ describe('Components / Card', () => {
     it('should use `base` classes', () => {
       const theme = {
         card: {
-          base: 'text-blue-100',
+          root: {
+            base: 'text-blue-100',
+          },
         },
       };
       render(
@@ -58,7 +60,9 @@ describe('Components / Card', () => {
     it('should use `children` classes', () => {
       const theme = {
         card: {
-          children: 'text-blue-900',
+          root: {
+            children: 'text-blue-900',
+          },
         },
       };
       render(
@@ -76,9 +80,11 @@ describe('Components / Card', () => {
     it('should use `horizontal` classes', () => {
       const theme = {
         card: {
-          horizontal: {
-            off: 'text-blue-200',
-            on: 'text-blue-300',
+          root: {
+            horizontal: {
+              off: 'text-blue-200',
+              on: 'text-blue-300',
+            },
           },
         },
       };
@@ -98,7 +104,9 @@ describe('Components / Card', () => {
     it('should use `href` classes', () => {
       const theme = {
         card: {
-          href: 'text-blue-700',
+          root: {
+            href: 'text-blue-700',
+          },
         },
       };
       render(

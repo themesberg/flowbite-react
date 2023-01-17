@@ -2,32 +2,24 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { AccordionContent } from './AccordionContent';
+import { AccordionContent, FlowbiteAccordionComponentTheme } from './AccordionContent';
 import type { AccordionPanelProps } from './AccordionPanel';
 import { AccordionPanel } from './AccordionPanel';
-import { AccordionTitle } from './AccordionTitle';
+import { AccordionTitle, FlowbiteAccordionTitleTheme } from './AccordionTitle';
 
 export interface FlowbiteAccordionTheme {
+  root: FlowbiteAccordionRootTheme;
+  content: FlowbiteAccordionComponentTheme;
+  title: FlowbiteAccordionTitleTheme;
+}
+
+export interface FlowbiteAccordionRootTheme {
   base: string;
-  content: {
-    base: string;
-  };
   flush: FlowbiteBoolean;
-  title: {
-    arrow: {
-      base: string;
-      open: {
-        off: string;
-        on: string;
-      };
-    };
-    base: string;
-    flush: FlowbiteBoolean;
-    heading: string;
-    open: FlowbiteBoolean;
-  };
 }
 
 export interface AccordionProps extends PropsWithChildren<ComponentProps<'div'>> {
@@ -35,6 +27,8 @@ export interface AccordionProps extends PropsWithChildren<ComponentProps<'div'>>
   arrowIcon?: FC<ComponentProps<'svg'>>;
   children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];
   flush?: boolean;
+  collapseAll?: boolean;
+  theme?: DeepPartial<FlowbiteAccordionRootTheme>;
 }
 
 const AccordionComponent: FC<AccordionProps> = ({
@@ -42,10 +36,12 @@ const AccordionComponent: FC<AccordionProps> = ({
   arrowIcon = HiChevronDown,
   children,
   flush = false,
+  collapseAll = false,
   className,
+  theme: customTheme = {},
   ...props
 }): JSX.Element => {
-  const [isOpen, setOpen] = useState(0);
+  const [isOpen, setOpen] = useState(collapseAll ? -1 : 0);
   const panels = useMemo(
     () =>
       Children.map(children, (child, i) =>
@@ -53,7 +49,8 @@ const AccordionComponent: FC<AccordionProps> = ({
       ),
     [alwaysOpen, arrowIcon, children, flush, isOpen],
   );
-  const theme = useTheme().theme.accordion;
+
+  const theme = mergeDeep(useTheme().theme.accordion.root, customTheme);
 
   return (
     <div
