@@ -62,7 +62,7 @@ export const Progress: FC<ProgressProps> = ({
             style={{ width: `${progress}%` }}
           >
             {textLabel && labelText && textLabelPosition === 'inside' && <span>{textLabel}</span>}
-            {progress && labelProgress && progressLabelPosition === 'inside' && <span>{progress}</span>}
+            {progress && labelProgress && progressLabelPosition === 'inside' && <span>{progress}%</span>}
           </div>
         </div>
       </div>
