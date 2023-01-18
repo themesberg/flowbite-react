@@ -23,18 +23,22 @@ export interface ProgressSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg' | 
 
 export interface ProgressProps extends PropsWithChildren<ComponentProps<'div'>> {
   size?: keyof ProgressSizes;
-  label?: string;
-  labelPosition?: 'inside' | 'outside' | 'none';
-  labelProgress?: boolean;
+  textLabel?: string;
+  labelText?: boolean;
+  textLabelPosition?: 'inside' | 'outside';
   progress: number;
+  labelProgress?: boolean;
+  progressLabelPosition?: 'inside' | 'outside';
 }
 
 export const Progress: FC<ProgressProps> = ({
   color = 'blue',
-  label = 'progressbar',
-  labelPosition = 'none',
-  labelProgress = false,
+  textLabel = 'progressbar',
+  labelText = false,
+  textLabelPosition = 'inside',
   progress,
+  labelProgress = false,
+  progressLabelPosition = 'inside',
   size = 'md',
   className,
   ...props
@@ -44,11 +48,12 @@ export const Progress: FC<ProgressProps> = ({
 
   return (
     <>
-      <div id={id} aria-label={label} aria-valuenow={progress} role="progressbar" {...props}>
-        {label && labelPosition === 'outside' && (
+      <div id={id} aria-label={textLabel} aria-valuenow={progress} role="progressbar" {...props}>
+        {((textLabel && labelText && textLabelPosition === 'outside') ||
+          (progress && labelProgress && progressLabelPosition === 'outside')) && (
           <div className={theme.label}>
-            <span>{label}</span>
-            {labelProgress && <span>{progress}%</span>}
+            {textLabel && labelText && textLabelPosition === 'outside' && <span>{textLabel}</span>}
+            {progress && labelProgress && progressLabelPosition === 'outside' && <span>{progress}%</span>}
           </div>
         )}
         <div className={classNames(theme.base, theme.size[size], className)}>
@@ -56,7 +61,8 @@ export const Progress: FC<ProgressProps> = ({
             className={classNames(theme.bar, theme.color[color], theme.size[size])}
             style={{ width: `${progress}%` }}
           >
-            {label && labelPosition === 'inside' && label}
+            {textLabel && labelText && textLabelPosition === 'inside' && <span>{textLabel}</span>}
+            {progress && labelProgress && progressLabelPosition === 'inside' && <span>{progress}</span>}
           </div>
         </div>
       </div>

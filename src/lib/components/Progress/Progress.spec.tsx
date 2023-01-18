@@ -5,13 +5,13 @@ import { Progress } from './Progress';
 describe.concurrent('Components / Progress', () => {
   describe.concurrent('A11y', () => {
     it('should have `role="progressbar"`', () => {
-      render(<Progress label="Accessible name" progress={45} />);
+      render(<Progress textLabel="Accessible name" progress={45} />);
 
       expect(progressBar()).toBeInTheDocument();
     });
 
-    it('should use `label` as accessible name', () => {
-      render(<Progress label="Accessible name" labelPosition="outside" labelProgress progress={45} />);
+    it('should use `textLabel` as accessible name', () => {
+      render(<Progress textLabel="Accessible name" textLabelPosition="outside" labelProgress progress={45} />);
 
       expect(progressBar()).toHaveAccessibleName('Accessible name');
     });
@@ -20,6 +20,13 @@ describe.concurrent('Components / Progress', () => {
       render(<Progress progress={45} />);
 
       expect(progressBar()).toHaveAttribute('aria-valuenow', '45');
+    });
+
+    it('should only display labels if specified', () => {
+      render(<Progress progress={45} labelProgress={false} textLabel="Flowbite" labelText={true} />);
+
+      expect(progressBar()).not.toHaveTextContent('45');
+      expect(progressBar()).toHaveTextContent('Flowbite');
     });
   });
 });
