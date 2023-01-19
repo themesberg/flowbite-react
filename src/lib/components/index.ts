@@ -21,6 +21,7 @@ export * from './Navbar';
 export * from './Pagination';
 export * from './Progress';
 export * from './Radio';
+export * from './RangeSlider';
 export * from './Rating';
 export * from './Select';
 export * from './Sidebar/Sidebar';
