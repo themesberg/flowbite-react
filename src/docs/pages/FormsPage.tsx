@@ -6,6 +6,7 @@ import { Checkbox } from '../../lib/components/Checkbox';
 import { FileInput } from '../../lib/components/FileInput';
 import { Label } from '../../lib/components/Label';
 import { Radio } from '../../lib/components/Radio';
+import { RangeSlider } from '../../lib/components/RangeSlider';
 import { Select } from '../../lib/components/Select';
 import { Textarea } from '../../lib/components/Textarea';
 import { TextInput } from '../../lib/components/TextInput';
@@ -384,6 +385,43 @@ const FormsPage: FC = () => {
           <ToggleSwitch checked={switch1} label="Toggle me" onChange={setSwitch1} />
           <ToggleSwitch checked={switch2} label="Toggle me (checked)" onChange={setSwitch2} />
           <ToggleSwitch checked={false} disabled label="Toggle me (disabled)" onChange={() => undefined} />
+        </div>
+      ),
+    },
+    {
+      title: 'Range Slider',
+      code: (
+        <div className="flex flex-col gap-4">
+          <div>
+            <div className="mb-1 block">
+              <Label htmlFor="default-range" value="Default" />
+            </div>
+            <RangeSlider id="default-range" />
+          </div>
+          <div>
+            <div className="mb-1 block">
+              <Label htmlFor="disbaled-range" value="Disabled" />
+            </div>
+            <RangeSlider id="disabled-range" disabled={true} />
+          </div>
+          <div>
+            <div className="mb-1 block">
+              <Label htmlFor="sm-range" value="Small" />
+            </div>
+            <RangeSlider id="sm-range" sizing="sm" />
+          </div>
+          <div>
+            <div className="mb-1 block">
+              <Label htmlFor="md-range" value="Medium" />
+            </div>
+            <RangeSlider id="md-range" sizing="md" />
+          </div>
+          <div>
+            <div className="mb-1 block">
+              <Label htmlFor="lg-range" value="Large" />
+            </div>
+            <RangeSlider id="lg-range" sizing="lg" />
+          </div>
         </div>
       ),
     },

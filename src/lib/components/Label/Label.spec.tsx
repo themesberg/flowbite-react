@@ -5,6 +5,7 @@ import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { FileInput } from '../FileInput';
 import { Radio } from '../Radio';
+import { RangeSlider } from '../RangeSlider';
 import { Select } from '../Select';
 import { Textarea } from '../Textarea';
 import { TextInput } from '../TextInput';
@@ -22,6 +23,7 @@ describe.concurrent('Components / Label', () => {
         'Upload file',
         'United States',
         'Your message',
+        'Price',
       ];
 
       const { getByLabelText } = render(<TestForm />);
@@ -97,6 +99,10 @@ const TestForm = (): JSX.Element => (
       <div>
         <Label htmlFor="comment">Your message</Label>
         <Textarea id="comment" helperText="Leave a comment..." required rows={4} />
+      </div>
+      <div>
+        <Label htmlFor="price">Price</Label>
+        <RangeSlider id="price" min={0} max={100} />
       </div>
     </fieldset>
     <Button type="submit">Submit</Button>
