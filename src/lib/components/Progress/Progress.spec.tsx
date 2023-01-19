@@ -30,7 +30,15 @@ describe.concurrent('Components / Progress', () => {
     });
 
     it('should display labels in specified positions', () => {
-      render(<Progress progress={45} labelProgress={true} progressLabelPosition="outside" textLabel="Flowbite" labelText={true} />);
+      render(
+        <Progress
+          progress={45}
+          labelProgress={true}
+          progressLabelPosition="outside"
+          textLabel="Flowbite"
+          labelText={true}
+        />,
+      );
 
       expect(outerLabelContainer()).toBeInTheDocument();
       expect(outerProgressLabel()).toHaveTextContent('45');
