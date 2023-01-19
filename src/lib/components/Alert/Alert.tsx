@@ -65,7 +65,7 @@ export const Alert: FC<AlertProps> = ({
       role="alert"
     >
       <div className={theme.root.wrapper} data-testid="flowbite-alert-wrapper">
-        {Icon && <Icon className={theme.root.icon}  data-testid="flowbite-alert-icon"/>}
+        {Icon && <Icon className={theme.root.icon} data-testid="flowbite-alert-icon" />}
         <div>{children}</div>
         {typeof onDismiss === 'function' && (
           <button
