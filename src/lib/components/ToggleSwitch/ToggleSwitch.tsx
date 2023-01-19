@@ -7,15 +7,21 @@ import { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteToggleSwitchTheme {
+  root: FlowbiteToggleSwitchRootTheme;
+  toggle: FlowbiteToggleSwitchToggleTheme;
+}
+
+export interface FlowbiteToggleSwitchRootTheme {
   base: string;
   active: FlowbiteBoolean;
-  toggle: {
-    base: string;
-    checked: FlowbiteBoolean & {
-      color: FlowbiteColors;
-    };
-  };
   label: string;
+}
+
+export interface FlowbiteToggleSwitchToggleTheme {
+  base: string;
+  checked: FlowbiteBoolean & {
+    color: FlowbiteColors;
+  };
 }
 
 export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
@@ -64,10 +70,11 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
         role="switch"
         tabIndex={0}
         type="button"
-        className={classNames(theme.base, theme.active[disabled ? 'off' : 'on'], className)}
+        className={classNames(theme.root.base, theme.root.active[disabled ? 'off' : 'on'], className)}
         {...props}
       >
         <div
+          data-testid="flowbite-toggleswitch-toggle"
           className={classNames(
             theme.toggle.base,
             theme.toggle.checked[checked ? 'on' : 'off'],
@@ -77,7 +84,7 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
         <span
           data-testid="flowbite-toggleswitch-label"
           id={`${id}-flowbite-toggleswitch-label`}
-          className={theme.label}
+          className={theme.root.label}
         >
           {label}
         </span>
