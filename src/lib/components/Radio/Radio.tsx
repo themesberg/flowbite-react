@@ -6,6 +6,9 @@ import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteRadioTheme {
+  root: FlowbiteRadioRootTheme;
+}
+export interface FlowbiteRadioRootTheme {
   base: string;
 }
 
@@ -17,7 +20,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ({ theme: customTheme = {}, className, ...props }, ref) => {
     const theme = mergeDeep(useTheme().theme.radio, customTheme);
 
-    return <input ref={ref} className={classNames(theme.base, className)} type="radio" {...props} />;
+    return <input ref={ref} className={classNames(theme.root.base, className)} type="radio" {...props} />;
   },
 );
 
