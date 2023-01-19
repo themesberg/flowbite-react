@@ -28,7 +28,18 @@ describe.concurrent('Components / Progress', () => {
       expect(progressBar()).not.toHaveTextContent('45');
       expect(progressBar()).toHaveTextContent('Flowbite');
     });
+
+    it('should display labels in specified positions', () => {
+      render(<Progress progress={45} labelProgress={true} progressLabelPosition="outside" textLabel="Flowbite" labelText={true} />);
+
+      expect(outerLabelContainer()).toBeInTheDocument();
+      expect(outerProgressLabel()).toHaveTextContent('45');
+      expect(innerTextLabel()).toHaveTextContent('Flowbite');
+    });
   });
 });
 
 const progressBar = () => screen.getByRole('progressbar');
+const outerLabelContainer = () => screen.getByTestId('flowbite-progress-outer-label-container');
+const outerProgressLabel = () => screen.getByTestId('flowbite-progress-outer-progress-label');
+const innerTextLabel = () => screen.getByTestId('flowbite-progress-inner-text-label');
