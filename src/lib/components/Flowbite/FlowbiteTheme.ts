@@ -20,6 +20,7 @@ import { FlowbiteNavbarTheme } from '../Navbar';
 import { FlowbitePaginationTheme } from '../Pagination';
 import { FlowbiteProgressTheme } from '../Progress';
 import { FlowbiteRadioTheme } from '../Radio';
+import { FlowbiteRangeSliderTheme } from '../RangeSlider';
 import { FlowbiteRatingTheme } from '../Rating';
 import { FlowbiteSelectTheme } from '../Select';
 import { FlowbiteSidebarTheme } from '../Sidebar';
@@ -65,6 +66,7 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   fileInput: FlowbiteFileInputTheme;
   label: FlowbiteLabelTheme;
   radio: FlowbiteRadioTheme;
+  rangeSlider: FlowbiteRangeSliderTheme;
   select: FlowbiteSelectTheme;
   textInput: FlowbiteTextInputTheme;
   textarea: FlowbiteTextareaTheme;
