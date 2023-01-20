@@ -381,7 +381,9 @@ const theme: FlowbiteTheme = {
     },
   },
   checkbox: {
-    base: 'h-4 w-4 rounded border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600',
+    root: {
+      base: 'h-4 w-4 rounded border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600',
+    },
   },
   fileInput: {
     base: 'flex',
@@ -419,7 +421,9 @@ const theme: FlowbiteTheme = {
     disabled: 'opacity-50',
   },
   radio: {
-    base: 'h-4 w-4 border border-gray-300 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-blue-600 dark:focus:ring-blue-600',
+    root: {
+      base: 'h-4 w-4 border border-gray-300 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-blue-600 dark:focus:ring-blue-600',
+    },
   },
   rangeSlider: {
     base: 'flex',
@@ -545,10 +549,13 @@ const theme: FlowbiteTheme = {
     },
   },
   toggleSwitch: {
-    base: 'group relative flex items-center rounded-lg focus:outline-none',
-    active: {
-      on: 'cursor-pointer',
-      off: 'cursor-not-allowed opacity-50',
+    root: {
+      base: 'group relative flex items-center rounded-lg focus:outline-none',
+      active: {
+        on: 'cursor-pointer',
+        off: 'cursor-not-allowed opacity-50',
+      },
+      label: 'ml-3 text-sm font-medium text-gray-900 dark:text-gray-300',
     },
     toggle: {
       base: 'toggle-bg h-6 w-11 rounded-full border group-focus:ring-4 group-focus:ring-blue-500/25',
@@ -576,7 +583,6 @@ const theme: FlowbiteTheme = {
         },
       },
     },
-    label: 'ml-3 text-sm font-medium text-gray-900 dark:text-gray-300',
   },
   helperText: {
     base: 'mt-2 text-sm',

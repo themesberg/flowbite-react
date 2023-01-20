@@ -6,6 +6,9 @@ import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteCheckboxTheme {
+  root: FlowbiteCheckboxRootTheme;
+}
+export interface FlowbiteCheckboxRootTheme {
   base: string;
 }
 
@@ -17,7 +20,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ theme: customTheme = {}, className, ...props }, ref) => {
     const theme = mergeDeep(useTheme().theme.checkbox, customTheme);
 
-    return <input ref={ref} className={classNames(theme.base, className)} type="checkbox" {...props} />;
+    return <input ref={ref} className={classNames(theme.root.base, className)} type="checkbox" {...props} />;
   },
 );
 
