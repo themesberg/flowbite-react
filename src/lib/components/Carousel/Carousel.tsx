@@ -80,7 +80,7 @@ export const Carousel: FC<CarouselProps> = ({
   );
 
   useEffect(() => {
-    if (carouselContainer.current && !isDragging && carouselContainer.current.scrollLeft !== 0) {
+    if (carouselContainer.current && !isDragging) {
       setActiveItem(Math.round(carouselContainer.current.scrollLeft / carouselContainer.current.clientWidth));
     }
   }, [isDragging]);
