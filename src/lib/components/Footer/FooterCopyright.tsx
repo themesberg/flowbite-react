@@ -1,15 +1,24 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
+
+export interface FlowbiteFooterCopyrightTheme {
+  base: string;
+  href: string;
+  span: string;
+}
 
 export interface CopyrightProps extends PropsWithChildren<ComponentProps<'span'>> {
   href?: string;
   by: string;
   year?: number;
+  theme?: DeepPartial<FlowbiteFooterCopyrightTheme>;
 }
 
-export const FooterCopyright: FC<CopyrightProps> = ({ href, by, year, className }) => {
-  const theme = useTheme().theme.footer.copyright;
+export const FooterCopyright: FC<CopyrightProps> = ({ href, by, year, className, theme: customTheme = {} }) => {
+  const theme = mergeDeep(useTheme().theme.footer.copyright, customTheme);
 
   return (
     <div>

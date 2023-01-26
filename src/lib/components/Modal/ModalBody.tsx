@@ -1,13 +1,22 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useModalContext } from './ModalContext';
 
-export type ModalBodyProps = PropsWithChildren<ComponentProps<'div'>>;
+export interface FlowbiteModalBodyTheme {
+  base: string;
+  popup: string;
+}
 
-export const ModalBody: FC<ModalBodyProps> = ({ children, className, ...props }) => {
+export interface ModalBodyProps extends PropsWithChildren<ComponentProps<'div'>> {
+  theme?: DeepPartial<FlowbiteModalBodyTheme>;
+}
+
+export const ModalBody: FC<ModalBodyProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
+  const theme = mergeDeep(useTheme().theme.modal.body, customTheme);
   const { popup } = useModalContext();
-  const theme = useTheme().theme.modal.body;
 
   return (
     <div

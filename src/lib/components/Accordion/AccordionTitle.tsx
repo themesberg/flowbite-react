@@ -9,10 +9,7 @@ import { useAccordionContext } from './AccordionPanelContext';
 export interface FlowbiteAccordionTitleTheme {
   arrow: {
     base: string;
-    open: {
-      off: string;
-      on: string;
-    };
+    open: FlowbiteBoolean;
   };
   base: string;
   flush: FlowbiteBoolean;

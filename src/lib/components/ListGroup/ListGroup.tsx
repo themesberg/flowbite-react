@@ -1,27 +1,34 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { ListGroupItem } from './ListGroupItem';
+import { FlowbiteListGroupItemTheme, ListGroupItem } from './ListGroupItem';
 
 export interface FlowbiteListGroupTheme {
-  base: string;
-  item: {
-    active: FlowbiteBoolean;
-    base: string;
-    href: FlowbiteBoolean;
-    icon: string;
-  };
+  root: FlowbiteListGroupRootTheme;
+  item: FlowbiteListGroupItemTheme;
 }
 
-export type ListGroupProps = PropsWithChildren<ComponentProps<'div'>>;
+export interface FlowbiteListGroupRootTheme {
+  base: string;
+}
 
-const ListGroupComponent: FC<ListGroupProps> = ({ children, className, ...props }): JSX.Element => {
-  const theme = useTheme().theme.listGroup.base;
+export interface ListGroupProps extends PropsWithChildren<ComponentProps<'div'>> {
+  theme?: DeepPartial<FlowbiteListGroupTheme>;
+}
+
+const ListGroupComponent: FC<ListGroupProps> = ({
+  children,
+  className,
+  theme: customTheme = {},
+  ...props
+}): JSX.Element => {
+  const theme = mergeDeep(useTheme().theme.listGroup, customTheme);
   const theirProps = props as object;
 
   return (
-    <ul className={classNames(theme, className)} {...theirProps}>
+    <ul className={classNames(theme.root.base, className)} {...theirProps}>
       {children}
     </ul>
   );

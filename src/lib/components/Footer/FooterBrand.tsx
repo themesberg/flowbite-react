@@ -1,15 +1,33 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
+
+export interface FlowbiteFooterBrandTheme {
+  base: string;
+  img: string;
+  span: string;
+}
+
 export interface FooterBrandProps extends PropsWithChildren<ComponentProps<'div'>> {
   alt?: string;
   href?: string;
   name?: string;
   src: string;
+  theme?: DeepPartial<FlowbiteFooterBrandTheme>;
 }
 
-export const FooterBrand: FC<FooterBrandProps> = ({ alt, className, children, href, name, src }) => {
-  const theme = useTheme().theme.footer.brand;
+export const FooterBrand: FC<FooterBrandProps> = ({
+  alt,
+  className,
+  children,
+  href,
+  name,
+  src,
+  theme: customTheme = {},
+}) => {
+  const theme = mergeDeep(useTheme().theme.footer.brand, customTheme);
 
   return (
     <div>

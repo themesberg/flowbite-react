@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import type { FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import AvatarGroup from './AvatarGroup';
 import AvatarGroupCounter from './AvatarGroupCounter';
@@ -24,9 +24,7 @@ export interface FlowbiteAvatarRootTheme {
   statusPosition: FlowbitePositions;
 }
 
-export interface FlowbiteAvatarImageTheme {
-  off: string;
-  on: string;
+export interface FlowbiteAvatarImageTheme extends FlowbiteBoolean {
   placeholder: string;
 }
 

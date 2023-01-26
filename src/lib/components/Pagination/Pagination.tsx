@@ -1,37 +1,45 @@
 import classNames from 'classnames';
 import type { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import range from '../../helpers/range';
 import { useTheme } from '../Flowbite/ThemeContext';
-import PaginationButton, { PaginationButtonProps } from './PaginationButton';
+import PaginationButton, { FlowbitePaginationButtonTheme, PaginationButtonProps } from './PaginationButton';
 
 export interface FlowbitePaginationTheme {
   base: string;
-  layout: {
-    table: {
-      base: string;
-      span: string;
-    };
-  };
-  pages: {
+  layout: FlowbitePaginationLayoutTheme;
+  pages: FlowbitePaginationPagesTheme;
+}
+
+export interface FlowbitePaginationRootTheme {
+  base: string;
+}
+
+export interface FlowbitePaginationLayoutTheme {
+  table: {
     base: string;
-    showIcon: string;
-    previous: {
-      base: string;
-      icon: string;
-    };
-    next: {
-      base: string;
-      icon: string;
-    };
-    selector: {
-      base: string;
-      active: string;
-    };
+    span: string;
   };
 }
 
-export type PaginationProps = PropsWithChildren<Pagination>;
+export interface FlowbitePaginationPagesTheme {
+  base: string;
+  showIcon: string;
+  previous: FlowbitePaginationNavigationTheme;
+  next: FlowbitePaginationNavigationTheme;
+  selector: FlowbitePaginationButtonTheme;
+}
+
+export interface FlowbitePaginationNavigationTheme {
+  base: string;
+  icon: string;
+}
+
+export interface PaginationProps extends PropsWithChildren<Pagination> {
+  theme?: DeepPartial<FlowbitePaginationTheme>;
+}
 
 interface Pagination extends ComponentProps<'nav'> {
   currentPage: number;
@@ -54,12 +62,13 @@ export const Pagination = ({
   nextLabel = 'Next',
   className,
   renderPaginationButton = (props) => <PaginationButton {...props} />,
+  theme: customTheme = {},
   ...props
 }: PaginationProps): JSX.Element => {
+  const theme = mergeDeep(useTheme().theme.pagination, customTheme);
+
   const firstPage = Math.max(1, currentPage - 3);
   const lastPage = Math.min(currentPage + 3, totalPages);
-
-  const theme = useTheme().theme.pagination;
 
   const goToNextPage = (): void => {
     onPageChange(Math.min(currentPage + 1, totalPages));

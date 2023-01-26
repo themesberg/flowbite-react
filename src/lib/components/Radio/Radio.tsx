@@ -8,6 +8,7 @@ import { useTheme } from '../Flowbite/ThemeContext';
 export interface FlowbiteRadioTheme {
   root: FlowbiteRadioRootTheme;
 }
+
 export interface FlowbiteRadioRootTheme {
   base: string;
 }

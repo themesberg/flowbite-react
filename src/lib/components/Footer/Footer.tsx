@@ -1,51 +1,36 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { FooterBrand } from './FooterBrand';
-import { FooterCopyright } from './FooterCopyright';
-import { FooterDivider } from './FooterDivider';
-import { FooterIcon } from './FooterIcon';
+import { FlowbiteFooterBrandTheme, FooterBrand } from './FooterBrand';
+import { FlowbiteFooterCopyrightTheme, FooterCopyright } from './FooterCopyright';
+import { FlowbiteFooterDividerTheme, FooterDivider } from './FooterDivider';
+import { FlowbiteFooterIconTheme, FooterIcon } from './FooterIcon';
 import { FooterLink } from './FooterLink';
-import { FooterLinkGroup } from './FooterLinkGroup';
-import { FooterTitle } from './FooterTitle';
+import { FlowbiteFooterLinkGroupTheme, FooterLinkGroup } from './FooterLinkGroup';
+import { FlowbiteFooterTitleTheme, FooterTitle } from './FooterTitle';
 
 export interface FlowbiteFooterTheme {
+  root: FlowbiteFooterRootTheme;
+  groupLink: FlowbiteFooterLinkGroupTheme;
+  icon: FlowbiteFooterIconTheme;
+  title: FlowbiteFooterTitleTheme;
+  divider: FlowbiteFooterDividerTheme;
+  copyright: FlowbiteFooterCopyrightTheme;
+  brand: FlowbiteFooterBrandTheme;
+}
+
+export interface FlowbiteFooterRootTheme {
   base: string;
   container: string;
   bgDark: string;
-  groupLink: {
-    base: string;
-    link: {
-      base: string;
-      href: string;
-    };
-    col: string;
-  };
-  icon: {
-    base: string;
-    size: string;
-  };
-  title: {
-    base: string;
-  };
-  divider: {
-    base: string;
-  };
-  copyright: {
-    base: string;
-    href: string;
-    span: string;
-  };
-  brand: {
-    base: string;
-    img: string;
-    span: string;
-  };
 }
 
 export interface FooterProps extends ComponentProps<'footer'> {
   bgDark?: boolean;
   container?: boolean;
+  theme?: DeepPartial<FlowbiteFooterTheme>;
 }
 
 export const FooterComponent: FC<FooterProps> = ({
@@ -53,12 +38,14 @@ export const FooterComponent: FC<FooterProps> = ({
   className,
   bgDark = false,
   container = false,
+  theme: customTheme = {},
 }): JSX.Element => {
-  const theme = useTheme().theme.footer;
+  const theme = mergeDeep(useTheme().theme.footer, customTheme);
+
   return (
     <footer
       data-testid="flowbite-footer"
-      className={classNames(theme.base, bgDark && theme.bgDark, container && theme.container, className)}
+      className={classNames(theme.root.base, bgDark && theme.root.bgDark, container && theme.root.container, className)}
     >
       {children}
     </footer>
