@@ -331,7 +331,7 @@ module.exports = {
   <tr>
     <td width="33.3333%">Radio</td>
     <td width="33.3333%">Toggle</td>
-    <td width="33.3333%">:construction: Range Slider</td>
+    <td width="33.3333%">Range Slider</td>
   </tr>
   <tr>
     <td width="33.3333%">
