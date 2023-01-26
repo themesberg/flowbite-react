@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteBadgeTheme {
@@ -17,9 +17,7 @@ export interface FlowbiteBadgeRootTheme {
   size: BadgeSizes;
 }
 
-export interface FlowbiteBadgeIconTheme {
-  off: string;
-  on: string;
+export interface FlowbiteBadgeIconTheme extends FlowbiteBoolean {
   size: BadgeSizes;
 }
 

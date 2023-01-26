@@ -7,13 +7,19 @@ import { useTheme } from '../Flowbite/ThemeContext';
 import type { TextInputSizes } from '../TextInput';
 
 export interface FlowbiteRangeSliderTheme {
+  root: FlowbiteRangeSliderRoottheme;
+  field: FlowbiteRangeSliderFieldtheme;
+}
+
+export interface FlowbiteRangeSliderRoottheme {
   base: string;
-  field: {
+}
+
+export interface FlowbiteRangeSliderFieldtheme {
+  base: string;
+  input: {
     base: string;
-    input: {
-      base: string;
-      sizes: TextInputSizes;
-    };
+    sizes: TextInputSizes;
   };
 }
 
@@ -28,7 +34,7 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
 
     return (
       <>
-        <div data-testid="flowbite-range-slider" className={classNames(theme.base, className)}>
+        <div data-testid="flowbite-range-slider" className={classNames(theme.root.base, className)}>
           <div className={theme.field.base}>
             <input
               className={classNames(theme.field.input.base, theme.field.input.sizes[sizing])}

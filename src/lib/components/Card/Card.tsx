@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
+import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteCardTheme {
@@ -12,19 +13,13 @@ export interface FlowbiteCardTheme {
 export interface FlowbiteCardRootTheme {
   base: string;
   children: string;
-  horizontal: {
-    off: string;
-    on: string;
-  };
+  horizontal: FlowbiteBoolean;
   href: string;
 }
 
 export interface FlowbiteCardImageTheme {
   base: string;
-  horizontal: {
-    off: string;
-    on: string;
-  };
+  horizontal: FlowbiteBoolean;
 }
 
 export interface CardProps extends PropsWithChildren<ComponentProps<'div'>> {

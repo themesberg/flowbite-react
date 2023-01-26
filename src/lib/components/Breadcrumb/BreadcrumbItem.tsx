@@ -3,15 +3,13 @@ import { ComponentProps, FC, forwardRef, PropsWithChildren } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
+import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteBreadcrumbItemTheme {
   base: string;
   chevron: string;
-  href: {
-    off: string;
-    on: string;
-  };
+  href: FlowbiteBoolean;
   icon: string;
 }
 

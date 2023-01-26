@@ -1,5 +1,7 @@
 import type { Placement } from '@floating-ui/core';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { Floating, FlowbiteFloatingTheme } from '../Floating';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -12,6 +14,7 @@ export interface TooltipProps extends PropsWithChildren<Omit<ComponentProps<'div
   style?: 'dark' | 'light' | 'auto';
   animation?: false | `duration-${number}`;
   arrow?: boolean;
+  theme?: DeepPartial<FlowbiteTooltipTheme>;
 }
 
 /**
@@ -26,9 +29,10 @@ export const Tooltip: FC<TooltipProps> = ({
   style = 'dark',
   trigger = 'hover',
   className,
+  theme: customTheme = {},
   ...props
 }) => {
-  const theme = useTheme().theme.tooltip;
+  const theme = mergeDeep(useTheme().theme.tooltip, customTheme);
 
   return (
     <Floating

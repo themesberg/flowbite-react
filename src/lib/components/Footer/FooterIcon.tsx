@@ -1,15 +1,29 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
+
+export interface FlowbiteFooterIconTheme {
+  base: string;
+  size: string;
+}
 
 export interface FooterIconProps extends PropsWithChildren<ComponentProps<'a'>> {
   ariaLabel?: string;
   href?: string;
   icon: FC<ComponentProps<'svg'>>;
+  theme?: DeepPartial<FlowbiteFooterIconTheme>;
 }
 
-export const FooterIcon: FC<FooterIconProps> = ({ href, className, ariaLabel, icon: Icon }) => {
-  const theme = useTheme().theme.footer.icon;
+export const FooterIcon: FC<FooterIconProps> = ({
+  href,
+  className,
+  ariaLabel,
+  icon: Icon,
+  theme: customTheme = {},
+}) => {
+  const theme = mergeDeep(useTheme().theme.footer.icon, customTheme);
 
   return (
     <div>

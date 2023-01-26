@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useId } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -27,6 +29,7 @@ export interface ProgressProps extends PropsWithChildren<ComponentProps<'div'>> 
   labelPosition?: 'inside' | 'outside' | 'none';
   labelProgress?: boolean;
   progress: number;
+  theme?: DeepPartial<FlowbiteProgressTheme>;
 }
 
 export const Progress: FC<ProgressProps> = ({
@@ -37,10 +40,11 @@ export const Progress: FC<ProgressProps> = ({
   progress,
   size = 'md',
   className,
+  theme: customTheme = {},
   ...props
 }): JSX.Element => {
+  const theme = mergeDeep(useTheme().theme.progress, customTheme);
   const id = useId();
-  const theme = useTheme().theme.progress;
 
   return (
     <>

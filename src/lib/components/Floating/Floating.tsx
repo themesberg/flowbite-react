@@ -15,6 +15,11 @@ import { useEffect, useRef, useState } from 'react';
 import { getArrowPlacement, getMiddleware, getPlacement } from '../../helpers/floating';
 
 export interface FlowbiteFloatingTheme {
+  root: FlowbiteFloatingRootTheme;
+  arrow: FlowbiteFloatingArrowTheme;
+}
+
+export interface FlowbiteFloatingRootTheme {
   target: string;
   base: string;
   animation: string;
@@ -25,15 +30,16 @@ export interface FlowbiteFloatingTheme {
     auto: string;
   };
   content: string;
-  arrow: {
-    base: string;
-    style: {
-      dark: string;
-      light: string;
-      auto: string;
-    };
-    placement: string;
+}
+
+export interface FlowbiteFloatingArrowTheme {
+  base: string;
+  style: {
+    dark: string;
+    light: string;
+    auto: string;
   };
+  placement: string;
 }
 
 export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
@@ -53,7 +59,6 @@ export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'di
 export const Floating: FC<FloatingProps> = ({
   children,
   content,
-  theme,
   animation = 'duration-300',
   arrow = true,
   placement = 'top',
@@ -61,6 +66,7 @@ export const Floating: FC<FloatingProps> = ({
   trigger = 'hover',
   closeRequestKey,
   className,
+  theme,
   ...props
 }) => {
   const arrowRef = useRef<HTMLDivElement>(null);
@@ -72,6 +78,7 @@ export const Floating: FC<FloatingProps> = ({
     open,
     placement: getPlacement({ placement }),
   });
+
   const {
     context,
     floating,
