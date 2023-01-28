@@ -10,7 +10,6 @@ import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
 
 const ModalPage: FC = () => {
-  const [openModal, setOpenModal] = useState<string | undefined>();
   const [modalSize, setModalSize] = useState<string>('md');
   const [modalPlacement, setModalPlacement] = useState<string>('center');
 
@@ -19,28 +18,34 @@ const ModalPage: FC = () => {
       title: 'Default modal',
       code: (
         <>
-          <Button onClick={() => setOpenModal('default')}>Toggle modal</Button>
-          <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)}>
-            <Modal.Header>Terms of Service</Modal.Header>
-            <Modal.Body>
-              <div className="space-y-6">
-                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                  With less than a month to go before the European Union enacts new consumer privacy laws for its
-                  citizens, companies around the world are updating their terms of service agreements to comply.
-                </p>
-                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                  The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is
-                  meant to ensure a common set of data rights in the European Union. It requires organizations to notify
-                  users as soon as possible of high-risk data breaches that could personally affect them.
-                </p>
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button onClick={() => setOpenModal(undefined)}>I accept</Button>
-              <Button color="gray" onClick={() => setOpenModal(undefined)}>
-                Decline
-              </Button>
-            </Modal.Footer>
+          <Modal>
+            <Modal.Trigger>
+              <Button>Toggle modal</Button>
+            </Modal.Trigger>
+            <Modal.Content>
+              <Modal.Header>Terms of Service</Modal.Header>
+              <Modal.Body>
+                <div className="space-y-6">
+                  <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    With less than a month to go before the European Union enacts new consumer privacy laws for its
+                    citizens, companies around the world are updating their terms of service agreements to comply.
+                  </p>
+                  <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                    The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is
+                    meant to ensure a common set of data rights in the European Union. It requires organizations to
+                    notify users as soon as possible of high-risk data breaches that could personally affect them.
+                  </p>
+                </div>
+              </Modal.Body>
+              <Modal.Footer>
+                <Modal.Close>
+                  <Button>I accept</Button>
+                </Modal.Close>
+                <Modal.Close>
+                  <Button color="gray">Decline</Button>
+                </Modal.Close>
+              </Modal.Footer>
+            </Modal.Content>
           </Modal>
         </>
       ),
@@ -48,9 +53,11 @@ const ModalPage: FC = () => {
     {
       title: 'Dismissable modal',
       code: (
-        <>
-          <Button onClick={() => setOpenModal('dismissible')}>Toggle modal</Button>
-          <Modal dismissible show={openModal === 'dismissible'} onClose={() => setOpenModal(undefined)}>
+        <Modal>
+          <Modal.Trigger>
+            <Button>Toggle modal</Button>
+          </Modal.Trigger>
+          <Modal.Content dismissible>
             <Modal.Header>Terms of Service</Modal.Header>
             <Modal.Body>
               <div className="space-y-6">
@@ -66,21 +73,25 @@ const ModalPage: FC = () => {
               </div>
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={() => setOpenModal(undefined)}>I accept</Button>
-              <Button color="gray" onClick={() => setOpenModal(undefined)}>
-                Decline
-              </Button>
+              <Modal.Close>
+                <Button>I accept</Button>
+              </Modal.Close>
+              <Modal.Close>
+                <Button color="gray">Decline</Button>
+              </Modal.Close>
             </Modal.Footer>
-          </Modal>
-        </>
+          </Modal.Content>
+        </Modal>
       ),
     },
     {
       title: 'Pop-up modal',
       code: (
-        <>
-          <Button onClick={() => setOpenModal('pop-up')}>Toggle modal</Button>
-          <Modal show={openModal === 'pop-up'} size="md" popup onClose={() => setOpenModal(undefined)}>
+        <Modal popup>
+          <Modal.Trigger>
+            <Button>Toggle modal</Button>
+          </Modal.Trigger>
+          <Modal.Content size="md">
             <Modal.Header />
             <Modal.Body>
               <div className="text-center">
@@ -89,25 +100,23 @@ const ModalPage: FC = () => {
                   Are you sure you want to delete this product?
                 </h3>
                 <div className="flex justify-center gap-4">
-                  <Button color="failure" onClick={() => setOpenModal(undefined)}>
-                    {"Yes, I'm sure"}
-                  </Button>
-                  <Button color="gray" onClick={() => setOpenModal(undefined)}>
-                    No, cancel
-                  </Button>
+                  <Button color="failure">{"Yes, I'm sure"}</Button>
+                  <Button color="gray">No, cancel</Button>
                 </div>
               </div>
             </Modal.Body>
-          </Modal>
-        </>
+          </Modal.Content>
+        </Modal>
       ),
     },
     {
       title: 'Form elements',
       code: (
-        <>
-          <Button onClick={() => setOpenModal('form-elements')}>Toggle modal</Button>
-          <Modal show={openModal === 'form-elements'} size="md" popup onClose={() => setOpenModal(undefined)}>
+        <Modal popup>
+          <Modal.Trigger>
+            <Button>Toggle modal</Button>
+          </Modal.Trigger>
+          <Modal.Content size="md">
             <Modal.Header />
             <Modal.Body>
               <div className="space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8">
@@ -144,14 +153,14 @@ const ModalPage: FC = () => {
                 </div>
               </div>
             </Modal.Body>
-          </Modal>
-        </>
+          </Modal.Content>
+        </Modal>
       ),
     },
     {
       title: 'Sizing',
       code: (
-        <>
+        <Modal>
           <div className="flex flex-wrap gap-4">
             <div className="w-40">
               <Select defaultValue="md" onChange={(event) => setModalSize(event.target.value)}>
@@ -167,9 +176,11 @@ const ModalPage: FC = () => {
                 <option value="7xl">7xl</option>
               </Select>
             </div>
-            <Button onClick={() => setOpenModal('size')}>Toggle modal</Button>
           </div>
-          <Modal show={openModal === 'size'} size={modalSize} onClose={() => setOpenModal(undefined)}>
+          <Modal.Trigger>
+            <Button>Toggle modal</Button>
+          </Modal.Trigger>
+          <Modal.Content size={modalSize}>
             <Modal.Header>Small modal</Modal.Header>
             <Modal.Body>
               <div className="space-y-6 p-6">
@@ -185,19 +196,17 @@ const ModalPage: FC = () => {
               </div>
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={() => setOpenModal(undefined)}>I accept</Button>
-              <Button color="gray" onClick={() => setOpenModal(undefined)}>
-                Decline
-              </Button>
+              <Button>I accept</Button>
+              <Button color="gray">Decline</Button>
             </Modal.Footer>
-          </Modal>
-        </>
+          </Modal.Content>
+        </Modal>
       ),
     },
     {
       title: 'Placement',
       code: (
-        <>
+        <Modal>
           <div className="flex flex-wrap gap-4">
             <div className="w-40">
               <Select defaultValue="center" onChange={(event) => setModalPlacement(event.target.value)}>
@@ -212,9 +221,11 @@ const ModalPage: FC = () => {
                 <option value="bottom-left">Bottom left</option>
               </Select>
             </div>
-            <Button onClick={() => setOpenModal('placement')}>Toggle modal</Button>
           </div>
-          <Modal show={openModal === 'placement'} position={modalPlacement} onClose={() => setOpenModal(undefined)}>
+          <Modal.Trigger>
+            <Button>Toggle modal</Button>
+          </Modal.Trigger>
+          <Modal.Content position={modalPlacement}>
             <Modal.Header>Small modal</Modal.Header>
             <Modal.Body>
               <div className="space-y-6 p-6">
@@ -230,13 +241,11 @@ const ModalPage: FC = () => {
               </div>
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={() => setOpenModal(undefined)}>I accept</Button>
-              <Button color="gray" onClick={() => setOpenModal(undefined)}>
-                Decline
-              </Button>
+              <Button>I accept</Button>
+              <Button color="gray">Decline</Button>
             </Modal.Footer>
-          </Modal>
-        </>
+          </Modal.Content>
+        </Modal>
       ),
     },
   ];

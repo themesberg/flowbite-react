@@ -16,14 +16,14 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ModalProps> = ({ children, ...rest }): JSX.Element => {
+const Template: Story<ModalProps> = ({ children, show, ...rest }): JSX.Element => {
   return (
-    <>
-      <Button onClick={action('open')}>Toggle modal</Button>
-      <Modal onClose={action('close')} {...rest}>
-        {children}
-      </Modal>
-    </>
+    <Modal show={show} onClose={action('handleModalCloseCallback')}>
+      <Modal.Trigger>
+        <Button>Toggle modal</Button>
+      </Modal.Trigger>
+      <Modal.Content {...rest}>{children}</Modal.Content>
+    </Modal>
   );
 };
 
@@ -46,13 +46,19 @@ Default.args = {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={action('close')}>I accept</Button>
-        <Button color="gray" onClick={action('close')}>
-          Decline
-        </Button>
+        <Button>I accept</Button>
+        <Modal.Close>
+          <Button color="gray">Decline</Button>
+        </Modal.Close>
       </Modal.Footer>
     </>
   ),
+};
+
+export const InitialyOpened = Template.bind({});
+InitialyOpened.args = {
+  ...Default.args,
+  show: true,
 };
 
 export const PopUp = Template.bind({});
@@ -66,12 +72,12 @@ PopUp.args = {
           Are you sure you want to delete this product?
         </h3>
         <div className="flex justify-center gap-4">
-          <Button color="red" onClick={action('close')}>
+          <Button color="failure" onClick={action('close')}>
             {"Yes, I'm sure"}
           </Button>
-          <Button color="gray" onClick={action('close')}>
-            No, cancel
-          </Button>
+          <Modal.Close>
+            <Button color="gray">No, cancel</Button>
+          </Modal.Close>
         </div>
       </div>
     </Modal.Body>
