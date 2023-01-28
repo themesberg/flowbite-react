@@ -119,6 +119,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
     const tabItemStyle = theme.tablist.tabitem.styles[style];
 
     useEffect(() => {
+      if (focusedTab === activeTab) return;
       tabRefs.current[focusedTab]?.focus();
     }, [focusedTab]);
 
