@@ -1,11 +1,12 @@
 import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useCallback, useState } from 'react';
+import { ReactNode, useCallback } from 'react';
 import { describe, expect, it } from 'vitest';
 import { Button } from '../Button';
 import { TextInput } from '../TextInput';
-import type { ModalProps } from './Modal';
 import { Modal } from './Modal';
+import { ModalContentProps } from './ModalContent';
+import { useModalContext } from './ModalContext';
 
 describe('Components / Modal', () => {
   it('should automatically focus the `TextInput` inside the `Modal` when its opened', async () => {
@@ -128,22 +129,14 @@ describe('Components / Modal', () => {
   });
 });
 
-const TestModal = ({ root, dismissible = false }: Pick<ModalProps, 'root' | 'dismissible'>): JSX.Element => {
-  const [open, setOpen] = useState(false);
-
-  const setInputRef = useCallback(
-    (input: HTMLInputElement) => {
-      if (open && input) {
-        input.focus();
-      }
-    },
-    [open],
-  );
-
+const TestModal = ({ root, dismissible = false }: Pick<ModalContentProps, 'root' | 'dismissible'>): JSX.Element => {
   return (
-    <>
-      <Button onClick={() => setOpen(true)}>Toggle modal</Button>
-      <Modal dismissible={dismissible} root={root} show={open} onClose={() => setOpen(false)}>
+    <Modal>
+      <Modal.Trigger>
+        <Button>Toggle modal</Button>
+      </Modal.Trigger>
+
+      <Modal.Content dismissible={dismissible} root={root}>
         <Modal.Header>Terms of Service</Modal.Header>
         <Modal.Body>
           <div className="space-y-6">
@@ -157,15 +150,37 @@ const TestModal = ({ root, dismissible = false }: Pick<ModalProps, 'root' | 'dis
               soon as possible of high-risk data breaches that could personally affect them.
             </p>
           </div>
-          <TextInput data-testid="text-input" ref={setInputRef} autoFocus />
+          <InputFocus>{({ setInputRef }) => <TextInput data-testid="text-input" ref={setInputRef} />}</InputFocus>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={() => setOpen(false)}>I accept</Button>
-          <Button color="gray" onClick={() => setOpen(false)}>
-            Decline
-          </Button>
+          <Modal.Close>
+            <Button>I accept</Button>
+          </Modal.Close>
+          <Modal.Close>
+            <Button color="gray">Decline</Button>
+          </Modal.Close>
         </Modal.Footer>
-      </Modal>
-    </>
+      </Modal.Content>
+    </Modal>
   );
+};
+
+const InputFocus = ({
+  children,
+}: {
+  // render-prop
+  children: (props: { setInputRef: (input: HTMLInputElement) => void }) => ReactNode;
+}) => {
+  const { isOpen } = useModalContext();
+
+  const setInputRef = useCallback(
+    (input: HTMLInputElement) => {
+      if (isOpen && input) {
+        input.focus();
+      }
+    },
+    [isOpen],
+  );
+
+  return <>{children({ setInputRef })} </>;
 };

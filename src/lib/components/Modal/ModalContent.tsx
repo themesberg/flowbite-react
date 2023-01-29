@@ -58,18 +58,18 @@ export const ModalContent: FC<ModalContentProps> = ({
   className,
   ...props
 }) => {
-  const { isOpen, close } = useModalContext();
+  const { isOpen, closeModal } = useModalContext();
   const theme = useTheme().theme.modal;
 
   useKeyDown('Escape', () => {
     if (dismissible) {
-      close();
+      closeModal();
     }
   });
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
     if (dismissible && e.target === e.currentTarget) {
-      close();
+      closeModal();
     }
   };
 

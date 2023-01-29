@@ -17,37 +17,35 @@ const ModalPage: FC = () => {
     {
       title: 'Default modal',
       code: (
-        <>
-          <Modal>
-            <Modal.Trigger>
-              <Button>Toggle modal</Button>
-            </Modal.Trigger>
-            <Modal.Content>
-              <Modal.Header>Terms of Service</Modal.Header>
-              <Modal.Body>
-                <div className="space-y-6">
-                  <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                    With less than a month to go before the European Union enacts new consumer privacy laws for its
-                    citizens, companies around the world are updating their terms of service agreements to comply.
-                  </p>
-                  <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                    The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is
-                    meant to ensure a common set of data rights in the European Union. It requires organizations to
-                    notify users as soon as possible of high-risk data breaches that could personally affect them.
-                  </p>
-                </div>
-              </Modal.Body>
-              <Modal.Footer>
-                <Modal.Close>
-                  <Button>I accept</Button>
-                </Modal.Close>
-                <Modal.Close>
-                  <Button color="gray">Decline</Button>
-                </Modal.Close>
-              </Modal.Footer>
-            </Modal.Content>
-          </Modal>
-        </>
+        <Modal>
+          <Modal.Trigger>
+            <Button>Toggle modal</Button>
+          </Modal.Trigger>
+          <Modal.Content>
+            <Modal.Header>Terms of Service</Modal.Header>
+            <Modal.Body>
+              <div className="space-y-6">
+                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  With less than a month to go before the European Union enacts new consumer privacy laws for its
+                  citizens, companies around the world are updating their terms of service agreements to comply.
+                </p>
+                <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                  The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is
+                  meant to ensure a common set of data rights in the European Union. It requires organizations to notify
+                  users as soon as possible of high-risk data breaches that could personally affect them.
+                </p>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Modal.Close>
+                <Button>I accept</Button>
+              </Modal.Close>
+              <Modal.Close>
+                <Button color="gray">Decline</Button>
+              </Modal.Close>
+            </Modal.Footer>
+          </Modal.Content>
+        </Modal>
       ),
     },
     {
@@ -100,8 +98,12 @@ const ModalPage: FC = () => {
                   Are you sure you want to delete this product?
                 </h3>
                 <div className="flex justify-center gap-4">
-                  <Button color="failure">{"Yes, I'm sure"}</Button>
-                  <Button color="gray">No, cancel</Button>
+                  <Modal.Close>
+                    <Button color="failure">{"Yes, I'm sure"}</Button>
+                  </Modal.Close>
+                  <Modal.Close>
+                    <Button color="gray">No, cancel</Button>
+                  </Modal.Close>
                 </div>
               </div>
             </Modal.Body>
@@ -176,10 +178,11 @@ const ModalPage: FC = () => {
                 <option value="7xl">7xl</option>
               </Select>
             </div>
+            <Modal.Trigger>
+              <Button>Toggle modal</Button>
+            </Modal.Trigger>
           </div>
-          <Modal.Trigger>
-            <Button>Toggle modal</Button>
-          </Modal.Trigger>
+
           <Modal.Content size={modalSize}>
             <Modal.Header>Small modal</Modal.Header>
             <Modal.Body>
@@ -196,8 +199,12 @@ const ModalPage: FC = () => {
               </div>
             </Modal.Body>
             <Modal.Footer>
-              <Button>I accept</Button>
-              <Button color="gray">Decline</Button>
+              <Modal.Close>
+                <Button>I accept</Button>
+              </Modal.Close>
+              <Modal.Close>
+                <Button color="gray">Decline</Button>
+              </Modal.Close>
             </Modal.Footer>
           </Modal.Content>
         </Modal>
@@ -221,10 +228,11 @@ const ModalPage: FC = () => {
                 <option value="bottom-left">Bottom left</option>
               </Select>
             </div>
+            <Modal.Trigger>
+              <Button>Toggle modal</Button>
+            </Modal.Trigger>
           </div>
-          <Modal.Trigger>
-            <Button>Toggle modal</Button>
-          </Modal.Trigger>
+
           <Modal.Content position={modalPlacement}>
             <Modal.Header>Small modal</Modal.Header>
             <Modal.Body>
@@ -241,8 +249,12 @@ const ModalPage: FC = () => {
               </div>
             </Modal.Body>
             <Modal.Footer>
-              <Button>I accept</Button>
-              <Button color="gray">Decline</Button>
+              <Modal.Close>
+                <Button>I accept</Button>
+              </Modal.Close>
+              <Modal.Close>
+                <Button color="gray">Decline</Button>
+              </Modal.Close>
             </Modal.Footer>
           </Modal.Content>
         </Modal>

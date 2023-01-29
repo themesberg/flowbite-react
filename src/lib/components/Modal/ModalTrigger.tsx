@@ -1,14 +1,9 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { useModalContext } from './ModalContext';
+import { ProxyChild } from './ProxyChild';
 
-export type ModalHeaderProps = PropsWithChildren<ComponentProps<'div'>>;
+export const ModalTrigger: FC<PropsWithChildren> = ({ children }): JSX.Element => {
+  const { openModal } = useModalContext();
 
-export const ModalTrigger: FC<ModalHeaderProps> = ({ children, ...props }): JSX.Element => {
-  const { open } = useModalContext();
-
-  return (
-    <div {...props} onClick={open}>
-      {children}
-    </div>
-  );
+  return <ProxyChild onClick={openModal}>{children}</ProxyChild>;
 };

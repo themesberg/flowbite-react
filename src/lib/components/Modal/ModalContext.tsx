@@ -2,8 +2,8 @@ import { createContext, FC, PropsWithChildren, useCallback, useContext, useMemo,
 type ModalContext = {
   popup: boolean;
   isOpen: boolean;
-  open: () => void;
-  close: () => void;
+  openModal: () => void;
+  closeModal: () => void;
 };
 
 const ModalContext = createContext<ModalContext | undefined>(undefined);
@@ -32,17 +32,19 @@ export const ModalContextProvider: FC<ModalContextProviderProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(show);
 
-  const close = useCallback(() => {
+  const closeModal = useCallback(() => {
     setIsOpen(false);
     onClose?.();
   }, [onClose]);
 
-  const open = useCallback(() => {
+  const openModal = useCallback(() => {
     setIsOpen(true);
   }, []);
 
   return (
-    <ModalContext.Provider value={useMemo(() => ({ isOpen, popup, close, open }), [isOpen, popup, close, open])}>
+    <ModalContext.Provider
+      value={useMemo(() => ({ isOpen, popup, closeModal, openModal }), [isOpen, popup, closeModal, openModal])}
+    >
       {children}
     </ModalContext.Provider>
   );

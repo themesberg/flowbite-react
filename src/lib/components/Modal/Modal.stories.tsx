@@ -85,7 +85,6 @@ PopUp.args = {
 };
 
 export const FormElements = Template.bind({});
-FormElements.storyName = 'Form elements';
 FormElements.args = {
   children: (
     <>
