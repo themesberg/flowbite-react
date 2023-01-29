@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 
-// Virtual component to which propagates the click handler to the children
+// Virtual component which propagates the click handler to the children
 export const ProxyChild = ({ children, onClick }: PropsWithChildren<{ onClick: () => void }>) => {
   if (React.isValidElement(children)) {
     return React.cloneElement(children, {
