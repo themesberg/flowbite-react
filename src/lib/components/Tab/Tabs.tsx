@@ -98,7 +98,6 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
 
     const handleClick = ({ target }: TabEventProps): void => {
       setActiveTabWithCallback(target);
-      setFocusedTab(target);
     };
 
     const handleKeyboard = ({ event, target }: TabKeyboardEventProps): void => {
