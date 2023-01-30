@@ -13,12 +13,12 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({ children, ...props }):
   const [isOpen, setOpen] = useState(props.isOpen);
 
   const provider = alwaysOpen
-    ? {
+    ? props
+    : {
         ...props,
         isOpen,
         setOpen: () => setOpen(!isOpen),
-      }
-    : props;
+      };
 
   return <AccordionPanelContext.Provider value={provider}>{children}</AccordionPanelContext.Provider>;
 };
