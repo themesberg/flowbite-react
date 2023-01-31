@@ -29,7 +29,7 @@ describe.concurrent('Components / Progress', () => {
       expect(progressBar()).toHaveTextContent('Flowbite');
     });
 
-    it('should display labels in specified positions', () => {
+    it('should display test label inside, progress label outside', () => {
       render(
         <Progress
           progress={45}
@@ -41,8 +41,24 @@ describe.concurrent('Components / Progress', () => {
       );
 
       expect(outerLabelContainer()).toBeInTheDocument();
-      expect(outerProgressLabel()).toHaveTextContent('45');
+      expect(outerProgressLabel()).toHaveTextContent('45%');
       expect(innerTextLabel()).toHaveTextContent('Flowbite');
+    });
+
+    it('should display text label outside, progress label inside', () => {
+      render(
+        <Progress
+          progress={45}
+          labelProgress={true}
+          textLabel="Flowbite"
+          labelText={true}
+          textLabelPosition="outside"
+        />,
+      );
+
+      expect(outerLabelContainer()).toBeInTheDocument();
+      expect(outerTextLabel()).toHaveTextContent('Flowbite');
+      expect(innerProgressLabel()).toHaveTextContent('45%');
     });
   });
 });
@@ -50,4 +66,6 @@ describe.concurrent('Components / Progress', () => {
 const progressBar = () => screen.getByRole('progressbar');
 const outerLabelContainer = () => screen.getByTestId('flowbite-progress-outer-label-container');
 const outerProgressLabel = () => screen.getByTestId('flowbite-progress-outer-progress-label');
+const outerTextLabel = () => screen.getByTestId('flowbite-progress-outer-text-label');
 const innerTextLabel = () => screen.getByTestId('flowbite-progress-inner-text-label');
+const innerProgressLabel = () => screen.getByTestId('flowbite-progress-inner-progress-label');
