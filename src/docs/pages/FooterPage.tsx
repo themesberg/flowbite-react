@@ -10,7 +10,7 @@ const FooterPage: FC = () => {
       title: 'Default Footer',
       code: (
         <Footer container>
-          <Footer.Copyright href="#" by="Flowbite™" year={2022} />
+          <Footer.Copyright href="#" by="Flowbite™" year={2023} />
           <Footer.LinkGroup>
             <Footer.Link href="#">About</Footer.Link>
             <Footer.Link href="#">Privacy Policy</Footer.Link>
@@ -40,7 +40,7 @@ const FooterPage: FC = () => {
               </Footer.LinkGroup>
             </div>
             <Footer.Divider />
-            <Footer.Copyright href="#" by="Flowbite™" year={2022} />
+            <Footer.Copyright href="#" by="Flowbite™" year={2023} />
           </div>
         </Footer>
       ),
@@ -85,7 +85,7 @@ const FooterPage: FC = () => {
             </div>
             <Footer.Divider />
             <div className="w-full sm:flex sm:items-center sm:justify-between">
-              <Footer.Copyright href="#" by="Flowbite™" year={2022} />
+              <Footer.Copyright href="#" by="Flowbite™" year={2023} />
               <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                 <Footer.Icon href="#" icon={BsFacebook} />
                 <Footer.Icon href="#" icon={BsInstagram} />
@@ -141,7 +141,7 @@ const FooterPage: FC = () => {
               </div>
             </div>
             <div className="w-full bg-gray-700 py-6 px-4 sm:flex sm:items-center sm:justify-between">
-              <Footer.Copyright href="#" by="Flowbite™" year={2022} />
+              <Footer.Copyright href="#" by="Flowbite™" year={2023} />
               <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
                 <Footer.Icon href="#" icon={BsFacebook} />
                 <Footer.Icon href="#" icon={BsInstagram} />
