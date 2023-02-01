@@ -137,7 +137,7 @@ const ModalPage: FC = () => {
                   <Button>Log in to your account</Button>
                 </div>
                 <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-                  Not registered?{' '}
+                  Not registered?
                   <a href="/modal" className="text-blue-700 hover:underline dark:text-blue-500">
                     Create account
                   </a>

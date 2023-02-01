@@ -18,13 +18,13 @@ const AccordionPage: FC = () => {
                 buttons, dropdowns, modals, navbars, and more.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                Check out this guide to learn how to{' '}
+                Check out this guide to learn how to
                 <a
                   href="https://flowbite.com/docs/getting-started/introduction/"
                   className="text-blue-600 hover:underline dark:text-blue-500"
                 >
                   get started
-                </a>{' '}
+                </a>
                 and start developing websites even faster with components on top of Tailwind CSS.
               </p>
             </Accordion.Content>
@@ -37,10 +37,10 @@ const AccordionPage: FC = () => {
                 library has a design equivalent in our Figma file.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                Check out the{' '}
+                Check out the
                 <a href="https://flowbite.com/figma/" className="text-blue-600 hover:underline dark:text-blue-500">
                   Figma design system
-                </a>{' '}
+                </a>
                 based on the utility classes from Tailwind CSS and components from Flowbite.
               </p>
             </Accordion.Content>
@@ -92,13 +92,13 @@ const AccordionPage: FC = () => {
                 buttons, dropdowns, modals, navbars, and more.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                Check out this guide to learn how to{' '}
+                Check out this guide to learn how to
                 <a
                   href="https://flowbite.com/docs/getting-started/introduction/"
                   className="text-blue-600 hover:underline dark:text-blue-500"
                 >
                   get started
-                </a>{' '}
+                </a>
                 and start developing websites even faster with components on top of Tailwind CSS.
               </p>
             </Accordion.Content>
@@ -111,10 +111,10 @@ const AccordionPage: FC = () => {
                 library has a design equivalent in our Figma file.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                Check out the{' '}
+                Check out the
                 <a href="https://flowbite.com/figma/" className="text-blue-600 hover:underline dark:text-blue-500">
                   Figma design system
-                </a>{' '}
+                </a>
                 based on the utility classes from Tailwind CSS and components from Flowbite.
               </p>
             </Accordion.Content>
@@ -166,13 +166,13 @@ const AccordionPage: FC = () => {
                 buttons, dropdowns, modals, navbars, and more.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                Check out this guide to learn how to{' '}
+                Check out this guide to learn how to
                 <a
                   href="https://flowbite.com/docs/getting-started/introduction/"
                   className="text-blue-600 hover:underline dark:text-blue-500"
                 >
                   get started
-                </a>{' '}
+                </a>
                 and start developing websites even faster with components on top of Tailwind CSS.
               </p>
             </Accordion.Content>
@@ -185,10 +185,10 @@ const AccordionPage: FC = () => {
                 library has a design equivalent in our Figma file.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                Check out the{' '}
+                Check out the
                 <a href="https://flowbite.com/figma/" className="text-blue-600 hover:underline dark:text-blue-500">
                   Figma design system
-                </a>{' '}
+                </a>
                 based on the utility classes from Tailwind CSS and components from Flowbite.
               </p>
             </Accordion.Content>
@@ -240,13 +240,13 @@ const AccordionPage: FC = () => {
                 buttons, dropdowns, modals, navbars, and more.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                Check out this guide to learn how to{' '}
+                Check out this guide to learn how to
                 <a
                   href="https://flowbite.com/docs/getting-started/introduction/"
                   className="text-blue-600 hover:underline dark:text-blue-500"
                 >
                   get started
-                </a>{' '}
+                </a>
                 and start developing websites even faster with components on top of Tailwind CSS.
               </p>
             </Accordion.Content>
@@ -259,10 +259,10 @@ const AccordionPage: FC = () => {
                 library has a design equivalent in our Figma file.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                Check out the{' '}
+                Check out the
                 <a href="https://flowbite.com/figma/" className="text-blue-600 hover:underline dark:text-blue-500">
                   Figma design system
-                </a>{' '}
+                </a>
                 based on the utility classes from Tailwind CSS and components from Flowbite.
               </p>
             </Accordion.Content>
@@ -314,13 +314,13 @@ const AccordionPage: FC = () => {
                 buttons, dropdowns, modals, navbars, and more.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                Check out this guide to learn how to{' '}
+                Check out this guide to learn how to
                 <a
                   href="https://flowbite.com/docs/getting-started/introduction/"
                   className="text-blue-600 hover:underline dark:text-blue-500"
                 >
                   get started
-                </a>{' '}
+                </a>
                 and start developing websites even faster with components on top of Tailwind CSS.
               </p>
             </Accordion.Content>
@@ -333,10 +333,10 @@ const AccordionPage: FC = () => {
                 library has a design equivalent in our Figma file.
               </p>
               <p className="text-gray-500 dark:text-gray-400">
-                Check out the{' '}
+                Check out the
                 <a href="https://flowbite.com/figma/" className="text-blue-600 hover:underline dark:text-blue-500">
                   Figma design system
-                </a>{' '}
+                </a>
                 based on the utility classes from Tailwind CSS and components from Flowbite.
               </p>
             </Accordion.Content>
