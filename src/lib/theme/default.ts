@@ -318,7 +318,7 @@ const theme: FlowbiteTheme = {
   dropdown: {
     floating: {
       target: 'w-fit',
-      base: 'z-10 w-fit rounded divide-y divide-gray-100 shadow',
+      base: 'z-10 w-fit rounded-lg divide-y divide-gray-100 shadow',
       animation: 'transition-opacity',
       hidden: 'invisible opacity-0',
       style: {
