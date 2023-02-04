@@ -80,16 +80,17 @@ export const Pagination = ({
       )}
       <ul className={theme.pages.base}>
         <li>
-          {renderPaginationButton({
-            className: classNames(classNames(theme.pages.previous.base, showIcon && theme.pages.showIcon)),
-            onClick: goToPreviousPage,
-            children: (
-              <>
-                {showIcon && <HiChevronLeft aria-hidden className={theme.pages.previous.icon} />}
-                {previousLabel}
-              </>
-            ),
-          })}
+          {currentPage > 1 &&
+            renderPaginationButton({
+              className: classNames(classNames(theme.pages.previous.base, showIcon && theme.pages.showIcon)),
+              onClick: goToPreviousPage,
+              children: (
+                <>
+                  {showIcon && <HiChevronLeft aria-hidden className={theme.pages.previous.icon} />}
+                  {previousLabel}
+                </>
+              ),
+            })}
         </li>
         {layout === 'pagination' &&
           range(firstPage, lastPage).map(
@@ -107,16 +108,17 @@ export const Pagination = ({
             ),
           )}
         <li>
-          {renderPaginationButton({
-            className: classNames(theme.pages.next.base, showIcon && theme.pages.showIcon),
-            onClick: goToNextPage,
-            children: (
-              <>
-                {nextLabel}
-                {showIcon && <HiChevronRight aria-hidden className={theme.pages.next.icon} />}
-              </>
-            ),
-          })}
+          {currentPage < totalPages &&
+            renderPaginationButton({
+              className: classNames(theme.pages.next.base, showIcon && theme.pages.showIcon),
+              onClick: goToNextPage,
+              children: (
+                <>
+                  {nextLabel}
+                  {showIcon && <HiChevronRight aria-hidden className={theme.pages.next.icon} />}
+                </>
+              ),
+            })}
         </li>
       </ul>
     </nav>
