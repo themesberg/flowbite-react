@@ -33,6 +33,16 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
       if (windowExists()) {
         document.documentElement.classList.add('dark');
       }
+    } else if (dark === false) {
+      if (setMode != null) {
+        setMode('light');
+      }
+      
+      if (windowExists()) {
+        if (document.documentElement.classList.contains('dark')) {
+          document.documentElement.classList.remove('dark')
+        }
+      }
     }
   }, [dark, setMode]);
 
