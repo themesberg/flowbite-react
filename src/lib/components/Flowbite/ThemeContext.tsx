@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import type { FC, ReactNode } from 'react';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';
 import type { FlowbiteTheme } from './FlowbiteTheme';
@@ -33,12 +33,13 @@ export function useTheme(): ThemeContextProps {
 export const useThemeMode = (): [Mode, React.Dispatch<React.SetStateAction<Mode>>, () => void] => {
   const userPreferenceIsDark = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
   const getPrefersColorScheme = (): Mode => (userPreferenceIsDark() ? 'dark' : 'light');
-  const [mode, setModeState] = useState<Mode>(getPrefersColorScheme());
-  const toggleMode = () => {
+  const _toggleMode = () => {
     const newMode = mode === 'dark' ? 'light' : 'dark';
     setMode(newMode);
     setModeState(newMode);
   };
+  const { mode: _mode, toggleMode = _toggleMode } = useContext(ThemeContext);
+  const [mode, setModeState] = useState<Mode>(_mode ? _mode : getPrefersColorScheme());
   const setMode = (mode: Mode) => {
     if (!windowExists()) {
       return;
@@ -51,6 +52,13 @@ export const useThemeMode = (): [Mode, React.Dispatch<React.SetStateAction<Mode>
 
     document.documentElement.classList.remove('dark');
   };
+
+  useEffect(() => {
+    if (_mode) {
+      setMode(_mode);
+      setModeState(_mode);
+    }
+  }, [_mode]);
 
   return [mode, setModeState, toggleMode];
 };
