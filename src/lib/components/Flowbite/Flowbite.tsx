@@ -10,7 +10,6 @@ import { ThemeContext, useTheme, useThemeMode } from './ThemeContext';
 export interface ThemeProps {
   dark?: boolean;
   theme?: DeepPartial<FlowbiteTheme>;
-  usePreferences?: boolean;
 }
 
 interface FlowbiteProps extends HTMLAttributes<HTMLDivElement> {
@@ -19,8 +18,8 @@ interface FlowbiteProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
-  const { theme: customTheme = {}, dark, usePreferences = true } = theme;
-  const [mode, setMode, toggleMode] = useThemeMode(usePreferences);
+  const { theme: customTheme = {}, dark } = theme;
+  const [mode, setMode, toggleMode] = useThemeMode();
 
   const mergedTheme = mergeDeep(defaultTheme, customTheme);
 
@@ -37,11 +36,9 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
       if (setMode != null) {
         setMode('light');
       }
-      
+
       if (windowExists()) {
-        if (document.documentElement.classList.contains('dark')) {
-          document.documentElement.classList.remove('dark')
-        }
+        document.documentElement.classList.remove('dark');
       }
     }
   }, [dark, setMode]);

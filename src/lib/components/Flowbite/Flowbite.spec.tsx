@@ -1,13 +1,9 @@
 import { act, render } from '@testing-library/react';
-import { afterEach, describe, expect, it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import defaultTheme from '../../theme/default';
 import { Flowbite, useTheme } from '../Flowbite';
 import { ThemeContextProps } from './ThemeContext';
-
-afterEach(() => {
-  localStorage.removeItem('theme');
-});
 
 describe('Components / Flowbite', () => {
   describe('hook / useTheme', () => {
@@ -49,19 +45,6 @@ describe('Components / Flowbite', () => {
       expect(theme).toEqual(mergedTheme);
     });
 
-    it('should return darkmode', () => {
-      render(
-        <Flowbite theme={{ dark: true }}>
-          <TestComponent />
-        </Flowbite>,
-      );
-
-      const { mode } = context;
-
-      expect(mode).toBe('dark');
-      expect(documentEl()).toHaveClass('dark');
-    });
-
     it('should toggle mode', () => {
       render(
         <Flowbite>
@@ -81,6 +64,19 @@ describe('Components / Flowbite', () => {
       const { mode: mode2 } = context;
 
       expect(mode2).toBe('dark');
+      expect(documentEl()).toHaveClass('dark');
+    });
+
+    it('should return darkmode', () => {
+      render(
+        <Flowbite theme={{ dark: true }}>
+          <TestComponent />
+        </Flowbite>,
+      );
+
+      const { mode } = context;
+
+      expect(mode).toBe('dark');
       expect(documentEl()).toHaveClass('dark');
     });
   });

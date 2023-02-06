@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import type { FC, ReactNode } from 'react';
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import windowExists from '../../helpers/window-exists';
 import defaultTheme from '../../theme/default';
 import type { FlowbiteTheme } from './FlowbiteTheme';
@@ -30,21 +30,16 @@ export function useTheme(): ThemeContextProps {
   return useContext(ThemeContext);
 }
 
-export const useThemeMode = (
-  usePreferences: boolean,
-): [Mode, React.Dispatch<React.SetStateAction<Mode>>, () => void] => {
-  const [mode, setModeState] = useState<Mode>('light');
-  const savePreference = (mode: Mode) => localStorage.setItem('theme', mode);
-  const getPreference = (): Mode => (localStorage.getItem('theme') as Mode) || getPrefersColorScheme();
+export const useThemeMode = (): [Mode, React.Dispatch<React.SetStateAction<Mode>>, () => void] => {
   const userPreferenceIsDark = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
   const getPrefersColorScheme = (): Mode => (userPreferenceIsDark() ? 'dark' : 'light');
+  const [mode, setModeState] = useState<Mode>(getPrefersColorScheme());
   const toggleMode = () => {
     const newMode = mode === 'dark' ? 'light' : 'dark';
     setMode(newMode);
     setModeState(newMode);
   };
   const setMode = (mode: Mode) => {
-    savePreference(mode);
     if (!windowExists()) {
       return;
     }
@@ -56,10 +51,6 @@ export const useThemeMode = (
 
     document.documentElement.classList.remove('dark');
   };
-  if (usePreferences) {
-    useEffect(() => setModeState(getPreference()), []);
-    useEffect(() => setMode(mode), [mode]);
-  }
 
   return [mode, setModeState, toggleMode];
 };

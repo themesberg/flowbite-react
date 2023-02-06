@@ -68,7 +68,7 @@ const ThemePage: FC = () => {
           const theme = useTheme().theme.button;
         </SyntaxHighlighter>
         <SyntaxHighlighter language="tsx" style={dracula}>
-          const [mode, setMode, toggleMode] = useThemeMode(usePreferences);
+          const [mode, setMode, toggleMode] = useThemeMode();
         </SyntaxHighlighter>
       </Card>
     </div>
