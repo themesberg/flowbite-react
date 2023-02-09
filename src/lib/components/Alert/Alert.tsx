@@ -26,9 +26,28 @@ export interface FlowbiteAlertCloseButtonTheme {
   color: AlertColors;
 }
 
-export interface AlertColors extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'success' | 'warning'> {
+export interface AlertColors
+  extends Pick<
+    FlowbiteColors,
+    | 'failure'
+    | 'gray'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'blue'
+    | 'cyan'
+    | 'pink'
+    | 'lime'
+    | 'dark'
+    | 'indigo'
+    | 'teal'
+    | 'purple'
+  > {
   [key: string]: string;
 }
+
+// gray: string;
+// light: string;
 
 export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
   additionalContent?: ReactNode;
@@ -43,7 +62,7 @@ export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>
 export const Alert: FC<AlertProps> = ({
   additionalContent,
   children,
-  color = 'info',
+  color = 'pink',
   icon: Icon,
   onDismiss,
   rounded = true,
