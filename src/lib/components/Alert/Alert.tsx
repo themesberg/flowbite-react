@@ -42,12 +42,11 @@ export interface AlertColors
     | 'indigo'
     | 'teal'
     | 'purple'
+    | 'gray'
+    | 'light'
   > {
   [key: string]: string;
 }
-
-// gray: string;
-// light: string;
 
 export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
   additionalContent?: ReactNode;
