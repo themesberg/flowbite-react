@@ -14,7 +14,7 @@ import ButtonGroup from './ButtonGroup';
 export interface FlowbiteButtonTheme {
   base: string;
   fullSized: string;
-  color: ButtonColors;
+  color: FlowbiteColors;
   disabled: string;
   gradient: ButtonGradientColors;
   gradientDuoTone: ButtonGradientDuoToneColors;
@@ -31,35 +31,6 @@ export interface FlowbiteButtonTheme {
   pill: FlowbiteBoolean;
   size: ButtonSizes;
 }
-
-export interface ButtonColors
-  extends Pick<
-    FlowbiteColors,
-    | 'dark'
-    | 'failure'
-    | 'gray'
-    | 'info'
-    | 'light'
-    | 'purple'
-    | 'success'
-    | 'warning'
-    | 'blue'
-    | 'cyan'
-    | 'dark'
-    | 'gray'
-    | 'green'
-    | 'indigo'
-    | 'light'
-    | 'lime'
-    | 'pink'
-    | 'purple'
-    | 'red'
-    | 'teal'
-    | 'yellow'
-  > {
-  [key: string]: string;
-}
-
 export interface ButtonGradientColors extends FlowbiteGradientColors {
   [key: string]: string;
 }
@@ -77,7 +48,7 @@ export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'x
 }
 
 export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'ref'> {
-  color?: keyof ButtonColors;
+  color?: keyof FlowbiteColors;
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
   gradientMonochrome?: keyof ButtonGradientColors;
   href?: string;
