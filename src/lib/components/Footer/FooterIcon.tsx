@@ -17,9 +17,9 @@ export interface FooterIconProps extends PropsWithChildren<ComponentProps<'a'>> 
 }
 
 export const FooterIcon: FC<FooterIconProps> = ({
-  href,
-  className,
   ariaLabel,
+  className,
+  href,
   icon: Icon,
   theme: customTheme = {},
 }) => {

@@ -109,15 +109,15 @@ const ModalComponent: FC<ModalProps> = ({
     <ModalContext.Provider value={{ popup, onClose }}>
       <div
         aria-hidden={!show}
+        data-testid="modal"
+        role="dialog"
+        onClick={handleOnClick}
         className={classNames(
           theme.root.base,
           theme.root.positions[position],
           show ? theme.root.show.on : theme.root.show.off,
           className,
         )}
-        data-testid="modal"
-        role="dialog"
-        onClick={handleOnClick}
         {...props}
       >
         <div className={classNames(theme.content.base, theme.root.sizes[size])}>

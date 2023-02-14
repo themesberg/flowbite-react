@@ -11,7 +11,7 @@ const ThemePage: FC = () => {
   const theme: CustomFlowbiteTheme = { alert: { color: { info: 'bg-primary' } } };
 
   return (
-    <div className="flex flex-col max-w-4xl gap-8 mx-auto dark:text-white">
+    <div className="mx-auto flex max-w-4xl flex-col gap-8 dark:text-white">
       <div className="flex flex-col gap-2">
         <span className="text-2xl font-bold">Theme</span>
         <div className="py-4">

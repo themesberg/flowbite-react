@@ -13,7 +13,7 @@ export interface FooterTitleProps extends PropsWithChildren<ComponentProps<'h2'>
   theme?: DeepPartial<FlowbiteFooterTitleTheme>;
 }
 
-export const FooterTitle: FC<FooterTitleProps> = ({ title, className, theme: customTheme = {} }) => {
+export const FooterTitle: FC<FooterTitleProps> = ({ className, theme: customTheme = {}, title }) => {
   const theme = mergeDeep(useTheme().theme.footer.title, customTheme);
 
   return (

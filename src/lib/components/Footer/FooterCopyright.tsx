@@ -17,23 +17,21 @@ export interface CopyrightProps extends PropsWithChildren<ComponentProps<'span'>
   theme?: DeepPartial<FlowbiteFooterCopyrightTheme>;
 }
 
-export const FooterCopyright: FC<CopyrightProps> = ({ href, by, year, className, theme: customTheme = {} }) => {
+export const FooterCopyright: FC<CopyrightProps> = ({ by, className, href, theme: customTheme = {}, year }) => {
   const theme = mergeDeep(useTheme().theme.footer.copyright, customTheme);
 
   return (
-    <div>
-      <span className={classNames(theme.base, className)} data-testid="flowbite-footer-copyright">
-        © {year}
-        {href ? (
-          <a href={href} className={theme.href}>
-            {by}
-          </a>
-        ) : (
-          <span data-testid="flowbite-footer-copyright-span" className={theme.span}>
-            {by}
-          </span>
-        )}
-      </span>
+    <div className={classNames(theme.base, className)} data-testid="flowbite-footer-copyright">
+      © {year}
+      {href ? (
+        <a href={href} className={theme.href}>
+          {by}
+        </a>
+      ) : (
+        <span data-testid="flowbite-footer-copyright-span" className={theme.span}>
+          {by}
+        </span>
+      )}
     </div>
   );
 };

@@ -40,7 +40,7 @@ export const FooterBrand: FC<FooterBrandProps> = ({
           {children}
         </a>
       ) : (
-        <img alt={alt} data-testid="flowbite-footer-brand" src={src} className={theme.img} />
+        <img alt={alt} data-testid="flowbite-footer-brand" src={src} className={classNames(theme.img, className)} />
       )}
     </div>
   );

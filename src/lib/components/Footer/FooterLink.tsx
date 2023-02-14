@@ -14,7 +14,7 @@ export interface FooterLinkProps extends PropsWithChildren<ComponentProps<'a'>> 
   theme?: DeepPartial<FlowbiteFooterLinkTheme>;
 }
 
-export const FooterLink: FC<FooterLinkProps> = ({ children, className, theme: customTheme = {}, href }) => {
+export const FooterLink: FC<FooterLinkProps> = ({ children, className, href, theme: customTheme = {} }) => {
   const theme = mergeDeep(useTheme().theme.footer.groupLink.link, customTheme);
 
   return (

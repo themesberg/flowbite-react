@@ -12,19 +12,19 @@ import { FlowbiteFooterLinkGroupTheme, FooterLinkGroup } from './FooterLinkGroup
 import { FlowbiteFooterTitleTheme, FooterTitle } from './FooterTitle';
 
 export interface FlowbiteFooterTheme {
-  root: FlowbiteFooterRootTheme;
+  brand: FlowbiteFooterBrandTheme;
+  copyright: FlowbiteFooterCopyrightTheme;
+  divider: FlowbiteFooterDividerTheme;
   groupLink: FlowbiteFooterLinkGroupTheme;
   icon: FlowbiteFooterIconTheme;
+  root: FlowbiteFooterRootTheme;
   title: FlowbiteFooterTitleTheme;
-  divider: FlowbiteFooterDividerTheme;
-  copyright: FlowbiteFooterCopyrightTheme;
-  brand: FlowbiteFooterBrandTheme;
 }
 
 export interface FlowbiteFooterRootTheme {
   base: string;
-  container: string;
   bgDark: string;
+  container: string;
 }
 
 export interface FooterProps extends ComponentProps<'footer'> {
@@ -34,9 +34,9 @@ export interface FooterProps extends ComponentProps<'footer'> {
 }
 
 export const FooterComponent: FC<FooterProps> = ({
+  bgDark = false,
   children,
   className,
-  bgDark = false,
   container = false,
   theme: customTheme = {},
 }): JSX.Element => {
