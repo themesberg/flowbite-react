@@ -8,7 +8,7 @@ import { Flowbite } from '../../lib/components';
 import type { CustomFlowbiteTheme } from '../../lib/components/Flowbite/FlowbiteTheme';
 
 const ThemePage: FC = () => {
-  const theme: CustomFlowbiteTheme = { alert: { root: { color: { info: 'bg-primary' } } } };
+  const theme: CustomFlowbiteTheme = { alert: { color: { info: 'bg-primary' } } };
 
   return (
     <div className="flex flex-col max-w-4xl gap-8 mx-auto dark:text-white">
