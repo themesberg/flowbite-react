@@ -15,7 +15,7 @@ export interface FlowbiteAlertRootTheme {
   base: string;
   borderAccent: string;
   wrapper: string;
-  color: AlertColors;
+  color: FlowbiteColors;
   icon: string;
   rounded: string;
 }
@@ -23,34 +23,12 @@ export interface FlowbiteAlertRootTheme {
 export interface FlowbiteAlertCloseButtonTheme {
   base: string;
   icon: string;
-  color: AlertColors;
-}
-
-export interface AlertColors
-  extends Pick<
-    FlowbiteColors,
-    | 'failure'
-    | 'gray'
-    | 'info'
-    | 'success'
-    | 'warning'
-    | 'blue'
-    | 'cyan'
-    | 'pink'
-    | 'lime'
-    | 'dark'
-    | 'indigo'
-    | 'teal'
-    | 'purple'
-    | 'gray'
-    | 'light'
-  > {
-  [key: string]: string;
+  color: FlowbiteColors;
 }
 
 export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
   additionalContent?: ReactNode;
-  color?: keyof AlertColors;
+  color?: keyof FlowbiteColors;
   icon?: FC<ComponentProps<'svg'>>;
   onDismiss?: boolean | (() => void);
   rounded?: boolean;
