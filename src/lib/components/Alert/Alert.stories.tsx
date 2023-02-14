@@ -1,11 +1,18 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
+import theme from '../../theme/default';
 import type { AlertProps } from './Alert';
 import { Alert } from './Alert';
 
 export default {
   title: 'Components/Alert',
   component: Alert,
+  argTypes: {
+    color: {
+      options: Object.keys(theme.alert.root.color),
+      control: { type: 'inline-radio' },
+    },
+  },
 } as Meta;
 
 const Template: Story<AlertProps> = (props) => <Alert {...props} />;
