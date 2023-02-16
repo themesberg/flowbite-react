@@ -12,8 +12,8 @@ export const TimelineBody: FC<TimelineBodyProps> = ({ children, className, ...pr
   const theme = useTheme().theme.timeline.item.content;
 
   return (
-    <p className={classNames(theme.body, className)} {...props}>
+    <div className={classNames(theme.body, className)} {...props}>
       {children}
-    </p>
+    </div>
   );
 };
