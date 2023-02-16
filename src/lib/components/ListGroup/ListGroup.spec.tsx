@@ -3,7 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { HiCloudDownload } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../Flowbite';
+import { DeepPartial } from '..';
+import { Flowbite, FlowbiteTheme } from '../Flowbite';
 import { ListGroup } from './ListGroup';
 
 describe('Components / List group', () => {
@@ -56,7 +57,9 @@ describe('Components / List group', () => {
     it('should use custom classes', () => {
       const theme = {
         listGroup: {
-          base: 'text-gray-100',
+          root: {
+            base: 'text-gray-100',
+          },
         },
       };
 
@@ -69,19 +72,21 @@ describe('Components / List group', () => {
     });
 
     it('should use custom classes on `ListGroup.Item`', () => {
-      const theme = {
+      const theme: DeepPartial<FlowbiteTheme> = {
         listGroup: {
           item: {
-            active: {
-              off: 'text-gray-400',
-              on: 'text-gray-200',
-            },
             base: 'text-gray-100',
-            href: {
-              off: 'font-bold',
-              on: 'font-normal',
+            link: {
+              active: {
+                off: 'text-gray-400',
+                on: 'text-gray-200',
+              },
+              href: {
+                off: 'font-bold',
+                on: 'font-normal',
+              },
+              icon: 'text-gray-300',
             },
-            icon: 'text-gray-300',
           },
         },
       };
@@ -93,7 +98,7 @@ describe('Components / List group', () => {
       );
 
       icons().forEach((icon) => expect(icon).toHaveClass('text-gray-300'));
-      items().forEach((item) => expect(item).toHaveClass('text-gray-100'));
+      items().forEach((item) => expect(item.parentNode).toHaveClass('text-gray-100'));
 
       const activeItem = items()[0];
       const itemWithHref = items()[1];

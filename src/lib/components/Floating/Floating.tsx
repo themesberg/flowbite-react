@@ -113,17 +113,21 @@ export const Floating: FC<FloatingProps> = ({
 
   return (
     <>
-      <div className={theme.target} {...getReferenceProps({ ref: reference })} data-testid="flowbite-tooltip-target">
+      <div
+        className={theme.root.target}
+        {...getReferenceProps({ ref: reference })}
+        data-testid="flowbite-tooltip-target"
+      >
         {children}
       </div>
       <div
         data-testid="flowbite-tooltip"
         {...getFloatingProps({
           className: classNames(
-            theme.base,
-            animation && `${theme.animation} ${animation}`,
-            !open && theme.hidden,
-            theme.style[style],
+            theme.root.base,
+            animation && `${theme.root.animation} ${animation}`,
+            !open && theme.root.hidden,
+            theme.root.style[style],
             className,
           ),
           ref: floating,
@@ -135,7 +139,7 @@ export const Floating: FC<FloatingProps> = ({
           ...props,
         })}
       >
-        <div className={theme.content}>{content}</div>
+        <div className={theme.root.content}>{content}</div>
         {arrow && (
           <div
             className={classNames(theme.arrow.base, {

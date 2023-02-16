@@ -13,7 +13,7 @@ export interface FlowbiteFooterLinkGroupTheme {
 
 export interface FooterLinkGroupProps extends PropsWithChildren<ComponentProps<'ul'>> {
   col?: boolean;
-  theme: DeepPartial<FlowbiteFooterLinkGroupTheme>;
+  theme?: DeepPartial<FlowbiteFooterLinkGroupTheme>;
 }
 
 export const FooterLinkGroup: FC<FooterLinkGroupProps> = ({

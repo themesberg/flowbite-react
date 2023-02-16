@@ -63,7 +63,9 @@ describe('Components / Footer', () => {
     it('should use `base` classes', () => {
       const theme = {
         footer: {
-          base: 'text-gray-100',
+          root: {
+            base: 'text-gray-100',
+          },
         },
       };
       render(
@@ -78,7 +80,9 @@ describe('Components / Footer', () => {
     it('should use `bgDark` classes', () => {
       const theme = {
         footer: {
-          bgDark: 'text-gray-100',
+          root: {
+            bgDark: 'text-gray-100',
+          },
         },
       };
       render(
@@ -93,7 +97,9 @@ describe('Components / Footer', () => {
     it('should use `container` classes', () => {
       const theme = {
         footer: {
-          container: 'text-gray-100',
+          root: {
+            container: 'text-gray-100',
+          },
         },
       };
       render(
