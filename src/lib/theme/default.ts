@@ -616,7 +616,7 @@ const theme: FlowbiteTheme = {
       off: 'hidden',
     },
     content: {
-      base: 'relative h-full w-full p-4 md:h-auto',
+      base: 'relative h-full w-full p-4',
       inner: 'relative rounded-lg bg-white shadow dark:bg-gray-700',
     },
     body: {
