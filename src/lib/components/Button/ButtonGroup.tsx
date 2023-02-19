@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo } from 'react';
 import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { ButtonProps } from '../Button';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -44,7 +45,7 @@ const ButtonGroup: FC<ButtonGroupProps> = ({
       ),
     [children, outline, pill],
   );
-  const theme = useTheme().theme.buttonGroup;
+  const theme = mergeDeep(useTheme().theme.buttonGroup, customTheme);
 
   return (
     <div className={classNames(theme.base, className)} role="group" {...props}>

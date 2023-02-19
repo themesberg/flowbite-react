@@ -3,6 +3,10 @@ import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { DropdownDivider } from './DropdownDivider';
 
+export interface FlowbiteDropdownHeaderTheme {
+  header: string;
+}
+
 export const DropdownHeader: FC<PropsWithChildren<ComponentProps<'div'>>> = ({
   children,
   className,

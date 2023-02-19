@@ -1,5 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -32,10 +34,18 @@ export interface SpinnerProps extends Omit<ComponentProps<'span'>, 'color'> {
   color?: keyof SpinnerColors;
   light?: boolean;
   size?: keyof SpinnerSizes;
+  theme?: DeepPartial<FlowbiteSpinnerTheme>;
 }
 
-export const Spinner: FC<SpinnerProps> = ({ color = 'info', light, size = 'md', className, ...props }): JSX.Element => {
-  const theme = useTheme().theme.spinner;
+export const Spinner: FC<SpinnerProps> = ({
+  className,
+  color = 'info',
+  light,
+  size = 'md',
+  theme: customTheme = {},
+  ...props
+}): JSX.Element => {
+  const theme = mergeDeep(useTheme().theme.spinner, customTheme);
 
   return (
     <span role="status" {...props}>
@@ -63,3 +73,5 @@ export const Spinner: FC<SpinnerProps> = ({ color = 'info', light, size = 'md', 
     </span>
   );
 };
+
+Spinner.displayName = 'Spinner';

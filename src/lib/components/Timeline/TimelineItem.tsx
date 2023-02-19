@@ -1,22 +1,33 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
+import { FlowbiteTimelineContentTheme } from './TimelineContent';
 import { useTimelineContext } from './TimelineContext';
+import { FlowbiteTimelinePointTheme } from './TimelinePoint';
 
-export type TimelineItemProps = PropsWithChildren<
-  ComponentProps<'li'> & {
-    className?: string;
-  }
->;
+export interface FlowbiteTimelineItemTheme {
+  root: {
+    horizontal: string;
+    vertical: string;
+  };
+  content: FlowbiteTimelineContentTheme;
+  point: FlowbiteTimelinePointTheme;
+}
 
-export const TimelineItem: FC<TimelineItemProps> = ({ children, className, ...props }) => {
-  const theme = useTheme().theme.timeline.item;
+export interface TimelineItemProps extends PropsWithChildren, ComponentProps<'li'> {
+  theme?: DeepPartial<FlowbiteTimelineItemTheme>;
+}
+
+export const TimelineItem: FC<TimelineItemProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
+  const theme = mergeDeep(useTheme().theme.timeline.item, customTheme);
   const { horizontal } = useTimelineContext();
 
   return (
     <li
       data-testid="timeline-item"
-      className={classNames(horizontal && theme.base.horizontal, !horizontal && theme.base.vertical, className)}
+      className={classNames(horizontal && theme.root.horizontal, !horizontal && theme.root.vertical, className)}
       {...props}
     >
       {children}

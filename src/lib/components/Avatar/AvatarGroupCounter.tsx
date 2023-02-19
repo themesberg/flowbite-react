@@ -6,20 +6,16 @@ import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
 
 export interface FlowbiteAvatarGroupCounterTheme {
-  root: FlowbiteAvatarGroupCounterRootTheme;
-}
-
-export interface FlowbiteAvatarGroupCounterRootTheme {
   base: string;
 }
 
 export interface AvatarGroupCounterProps extends PropsWithChildren<ComponentProps<'a'>> {
+  theme?: DeepPartial<FlowbiteAvatarGroupCounterTheme>;
   total?: number;
-  theme?: DeepPartial<FlowbiteAvatarGroupCounterRootTheme>;
 }
 
 const AvatarGroupCounter: React.FC<AvatarGroupCounterProps> = ({ total, href, className, theme: customTheme = {} }) => {
-  const theme = mergeDeep(useTheme().theme.avatarGroupCounter.root, customTheme);
+  const theme = mergeDeep(useTheme().theme.avatar.groupCounter, customTheme);
 
   return (
     <a className={classNames(theme.base, className)} href={href}>

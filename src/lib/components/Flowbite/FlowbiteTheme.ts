@@ -1,7 +1,7 @@
 import { DeepPartial } from '..';
 import { FlowbiteAccordionTheme } from '../Accordion';
 import { FlowbiteAlertTheme } from '../Alert';
-import { FlowbiteAvatarGroupCounterTheme, FlowbiteAvatarGroupTheme, FlowbiteAvatarTheme } from '../Avatar';
+import { FlowbiteAvatarTheme } from '../Avatar';
 import { FlowbiteBadgeTheme } from '../Badge';
 import { FlowbiteBreadcrumbTheme } from '../Breadcrumb';
 import { FlowbiteButtonGroupTheme, FlowbiteButtonTheme } from '../Button';
@@ -40,8 +40,6 @@ export interface FlowbiteTheme extends Record<string, unknown> {
   accordion: FlowbiteAccordionTheme;
   alert: FlowbiteAlertTheme;
   avatar: FlowbiteAvatarTheme;
-  avatarGroupCounter: FlowbiteAvatarGroupCounterTheme;
-  avatarGroup: FlowbiteAvatarGroupTheme;
   badge: FlowbiteBadgeTheme;
   breadcrumb: FlowbiteBreadcrumbTheme;
   button: FlowbiteButtonTheme;

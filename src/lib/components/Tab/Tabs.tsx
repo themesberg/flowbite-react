@@ -14,6 +14,8 @@ import {
   useRef,
   useState,
 } from 'react';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { TabItemProps } from './TabItem';
@@ -59,9 +61,10 @@ interface TabKeyboardEventProps extends TabEventProps {
   event: KeyboardEvent<HTMLButtonElement>;
 }
 
-export interface TabsProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style' | 'ref'>> {
-  style?: keyof TabStyles;
+export interface TabsProps extends PropsWithChildren, Omit<ComponentProps<'div'>, 'ref' | 'style'> {
   onActiveTabChange?: (activeTab: number) => void;
+  style?: keyof TabStyles;
+  theme?: DeepPartial<FlowbiteTabTheme>;
 }
 
 export interface TabsRef {
@@ -69,8 +72,11 @@ export interface TabsRef {
 }
 
 export const TabsComponent = forwardRef<TabsRef, TabsProps>(
-  ({ children, style = 'default', className, onActiveTabChange, ...rest }, ref: ForwardedRef<TabsRef>) => {
-    const theme = useTheme().theme.tab;
+  (
+    { children, className, onActiveTabChange, style = 'default', theme: customTheme = {}, ...props },
+    ref: ForwardedRef<TabsRef>,
+  ) => {
+    const theme = mergeDeep(useTheme().theme.tab, customTheme);
 
     const id = useId();
     const tabs = useMemo(
@@ -132,7 +138,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
           aria-label="Tabs"
           role="tablist"
           className={classNames(theme.tablist.base, theme.tablist.styles[style], className)}
-          {...rest}
+          {...props}
         >
           {tabs.map((tab, index) => (
             <button

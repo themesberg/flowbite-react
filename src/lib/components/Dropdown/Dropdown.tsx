@@ -1,23 +1,23 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
 import React, { Children, useMemo, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
+import { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { uuid } from '../../helpers/uuid';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 import type { FloatingProps, FlowbiteFloatingTheme } from '../Floating';
 import { Floating } from '../Floating';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { DropdownDivider } from './DropdownDivider';
-import { DropdownHeader } from './DropdownHeader';
-import { DropdownItem } from './DropdownItem';
+import { DropdownDivider, FlowbiteDropdownDividerTheme } from './DropdownDivider';
+import { DropdownHeader, FlowbiteDropdownHeaderTheme } from './DropdownHeader';
+import { DropdownItem, FlowbiteDropdownItemTheme } from './DropdownItem';
 
-export interface FlowbiteDropdownFloatingTheme extends FlowbiteFloatingTheme {
-  header: string;
-  item: {
-    base: string;
-    icon: string;
-  };
-  divider: string;
+export interface FlowbiteDropdownFloatingTheme
+  extends FlowbiteFloatingTheme,
+    FlowbiteDropdownDividerTheme,
+    FlowbiteDropdownHeaderTheme {
+  item: FlowbiteDropdownItemTheme;
 }
 
 export interface FlowbiteDropdownTheme {
@@ -27,12 +27,16 @@ export interface FlowbiteDropdownTheme {
   arrowIcon: string;
 }
 
-export interface DropdownProps extends PropsWithChildren<Pick<FloatingProps, 'placement' | 'trigger'>>, ButtonProps {
-  label: ReactNode;
-  inline?: boolean;
-  floatingArrow?: boolean;
+export interface DropdownProps
+  extends PropsWithChildren,
+    Pick<FloatingProps, 'placement' | 'trigger'>,
+    Omit<ButtonProps, 'theme'> {
   arrowIcon?: boolean;
   dismissOnClick?: boolean;
+  floatingArrow?: boolean;
+  inline?: boolean;
+  label: ReactNode;
+  theme?: DeepPartial<FlowbiteDropdownTheme>;
 }
 
 const icons: Record<string, FC<ComponentProps<'svg'>>> = {
@@ -42,9 +46,15 @@ const icons: Record<string, FC<ComponentProps<'svg'>>> = {
   left: HiOutlineChevronLeft,
 };
 
-const DropdownComponent: FC<DropdownProps> = ({ children, className, dismissOnClick = true, ...props }) => {
-  const theme = useTheme().theme.dropdown;
-  const theirProps = props as DropdownProps;
+const DropdownComponent: FC<DropdownProps> = ({
+  children,
+  className,
+  dismissOnClick = true,
+  theme: customTheme = {},
+  ...props
+}) => {
+  const theme = mergeDeep(useTheme().theme.dropdown, customTheme);
+  const theirProps = props as Omit<DropdownProps, 'theme'>;
   const {
     placement = props.inline ? 'bottom-start' : 'bottom',
     trigger = 'click',

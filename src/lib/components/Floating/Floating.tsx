@@ -15,58 +15,54 @@ import { useEffect, useRef, useState } from 'react';
 import { getArrowPlacement, getMiddleware, getPlacement } from '../../helpers/floating';
 
 export interface FlowbiteFloatingTheme {
-  root: FlowbiteFloatingRootTheme;
   arrow: FlowbiteFloatingArrowTheme;
-}
-
-export interface FlowbiteFloatingRootTheme {
-  target: string;
-  base: string;
   animation: string;
+  base: string;
+  content: string;
   hidden: string;
   style: {
+    auto: string;
     dark: string;
     light: string;
-    auto: string;
   };
-  content: string;
+  target: string;
 }
 
 export interface FlowbiteFloatingArrowTheme {
   base: string;
+  placement: string;
   style: {
     dark: string;
     light: string;
     auto: string;
   };
-  placement: string;
 }
 
 export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
-  content: ReactNode;
-  theme: FlowbiteFloatingTheme;
-  placement?: 'auto' | Placement;
-  trigger?: 'hover' | 'click';
-  style?: 'dark' | 'light' | 'auto';
   animation?: false | `duration-${number}`;
   arrow?: boolean;
   closeRequestKey?: string;
+  content: ReactNode;
+  placement?: 'auto' | Placement;
+  style?: 'dark' | 'light' | 'auto';
+  theme: FlowbiteFloatingTheme;
+  trigger?: 'hover' | 'click';
 }
 
 /**
  * @see https://floating-ui.com/docs/react-dom-interactions
  */
 export const Floating: FC<FloatingProps> = ({
-  children,
-  content,
   animation = 'duration-300',
   arrow = true,
+  children,
+  className,
+  closeRequestKey,
+  content,
   placement = 'top',
   style = 'dark',
-  trigger = 'hover',
-  closeRequestKey,
-  className,
   theme,
+  trigger = 'hover',
   ...props
 }) => {
   const arrowRef = useRef<HTMLDivElement>(null);
@@ -113,21 +109,17 @@ export const Floating: FC<FloatingProps> = ({
 
   return (
     <>
-      <div
-        className={theme.root.target}
-        {...getReferenceProps({ ref: reference })}
-        data-testid="flowbite-tooltip-target"
-      >
+      <div className={theme.target} {...getReferenceProps({ ref: reference })} data-testid="flowbite-tooltip-target">
         {children}
       </div>
       <div
         data-testid="flowbite-tooltip"
         {...getFloatingProps({
           className: classNames(
-            theme.root.base,
-            animation && `${theme.root.animation} ${animation}`,
-            !open && theme.root.hidden,
-            theme.root.style[style],
+            theme.base,
+            animation && `${theme.animation} ${animation}`,
+            !open && theme.hidden,
+            theme.style[style],
             className,
           ),
           ref: floating,
@@ -139,7 +131,7 @@ export const Floating: FC<FloatingProps> = ({
           ...props,
         })}
       >
-        <div className={theme.root.content}>{content}</div>
+        <div className={theme.content}>{content}</div>
         {arrow && (
           <div
             className={classNames(theme.arrow.base, {
