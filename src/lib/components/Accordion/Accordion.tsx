@@ -28,7 +28,7 @@ export interface AccordionProps extends PropsWithChildren<ComponentProps<'div'>>
   children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];
   flush?: boolean;
   collapseAll?: boolean;
-  theme?: DeepPartial<FlowbiteAccordionRootTheme>;
+  theme?: DeepPartial<FlowbiteAccordionTheme>;
 }
 
 const AccordionComponent: FC<AccordionProps> = ({
