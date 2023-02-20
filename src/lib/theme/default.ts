@@ -33,20 +33,8 @@ const theme: FlowbiteTheme = {
     },
   },
   alert: {
-    root: {
-      base: 'flex flex-col gap-2 p-4 text-sm',
-      borderAccent: 'border-t-4',
-      wrapper: 'flex items-center',
-      color: {
-        info: 'text-blue-700 bg-blue-100 border-blue-500 dark:bg-blue-200 dark:text-blue-800',
-        gray: 'text-gray-700 bg-gray-100 border-gray-500 dark:bg-gray-700 dark:text-gray-300',
-        failure: 'text-red-700 bg-red-100 border-red-500 dark:bg-red-200 dark:text-red-800',
-        success: 'text-green-700 bg-green-100 border-green-500 dark:bg-green-200 dark:text-green-800',
-        warning: 'text-yellow-700 bg-yellow-100 border-yellow-500 dark:bg-yellow-200 dark:text-yellow-800',
-      },
-      icon: 'mr-3 inline h-5 w-5 flex-shrink-0',
-      rounded: 'rounded-lg',
-    },
+    base: 'flex flex-col gap-2 p-4 text-sm',
+    borderAccent: 'border-t-4',
     closeButton: {
       base: '-mx-1.5 -my-1.5 ml-auto inline-flex h-8 w-8 rounded-lg p-1.5 focus:ring-2',
       icon: 'w-5 h-5',
@@ -61,6 +49,16 @@ const theme: FlowbiteTheme = {
           'bg-yellow-100 text-yellow-500 hover:bg-yellow-200 focus:ring-yellow-400 dark:bg-yellow-200 dark:text-yellow-600 dark:hover:bg-yellow-300',
       },
     },
+    color: {
+      info: 'text-blue-700 bg-blue-100 border-blue-500 dark:bg-blue-200 dark:text-blue-800',
+      gray: 'text-gray-700 bg-gray-100 border-gray-500 dark:bg-gray-700 dark:text-gray-300',
+      failure: 'text-red-700 bg-red-100 border-red-500 dark:bg-red-200 dark:text-red-800',
+      success: 'text-green-700 bg-green-100 border-green-500 dark:bg-green-200 dark:text-green-800',
+      warning: 'text-yellow-700 bg-yellow-100 border-yellow-500 dark:bg-yellow-200 dark:text-yellow-800',
+    },
+    icon: 'mr-3 inline h-5 w-5 flex-shrink-0',
+    rounded: 'rounded-lg',
+    wrapper: 'flex items-center',
   },
   avatar: {
     root: {
@@ -77,6 +75,11 @@ const theme: FlowbiteTheme = {
         success: 'ring-green-500 dark:ring-green-500',
         warning: 'ring-yellow-300 dark:ring-yellow-500',
         pink: 'ring-pink-500 dark:ring-pink-500',
+      },
+      img: {
+        off: 'rounded relative overflow-hidden bg-gray-100 dark:bg-gray-600',
+        on: 'rounded',
+        placeholder: 'absolute w-auto h-auto text-gray-400 -bottom-1',
       },
       size: {
         xs: 'w-6 h-6',
@@ -97,32 +100,23 @@ const theme: FlowbiteTheme = {
         center: 'center center',
         'center-left': 'center -left-1',
       },
+      status: {
+        away: 'bg-yellow-400',
+        base: 'absolute h-3.5 w-3.5 rounded-full border-2 border-white dark:border-gray-800',
+        busy: 'bg-red-400',
+        offline: 'bg-gray-400',
+        online: 'bg-green-400',
+      },
+      initials: {
+        text: 'font-medium text-gray-600 dark:text-gray-300',
+        base: 'inline-flex overflow-hidden relative justify-center items-center w-10 h-10 bg-gray-100 dark:bg-gray-600',
+      },
     },
-    img: {
-      off: 'rounded relative overflow-hidden bg-gray-100 dark:bg-gray-600',
-      on: 'rounded',
-      placeholder: 'absolute w-auto h-auto text-gray-400 -bottom-1',
-    },
-    status: {
-      away: 'bg-yellow-400',
-      base: 'absolute h-3.5 w-3.5 rounded-full border-2 border-white dark:border-gray-800',
-      busy: 'bg-red-400',
-      offline: 'bg-gray-400',
-      online: 'bg-green-400',
-    },
-    initials: {
-      text: 'font-medium text-gray-600 dark:text-gray-300',
-      base: 'inline-flex overflow-hidden relative justify-center items-center w-10 h-10 bg-gray-100 dark:bg-gray-600',
-    },
-  },
-  avatarGroupCounter: {
-    root: {
-      base: 'relative flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 rounded-full ring-2 ring-gray-300 hover:bg-gray-600 dark:ring-gray-500',
-    },
-  },
-  avatarGroup: {
-    root: {
+    group: {
       base: 'flex -space-x-4',
+    },
+    groupCounter: {
+      base: 'relative flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 rounded-full ring-2 ring-gray-300 hover:bg-gray-600 dark:ring-gray-500',
     },
   },
   badge: {
@@ -287,7 +281,11 @@ const theme: FlowbiteTheme = {
     },
   },
   carousel: {
-    base: 'relative h-full w-full',
+    root: {
+      base: 'relative h-full w-full',
+      leftControl: 'absolute top-0 left-0 flex h-full items-center justify-center px-4 focus:outline-none',
+      rightControl: 'absolute top-0 right-0 flex h-full items-center justify-center px-4 focus:outline-none',
+    },
     indicators: {
       active: {
         off: 'bg-white/50 hover:bg-white dark:bg-gray-800/50 dark:hover:bg-gray-800',
@@ -304,30 +302,27 @@ const theme: FlowbiteTheme = {
       base: 'inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/30 group-hover:bg-white/50 group-focus:outline-none group-focus:ring-4 group-focus:ring-white dark:bg-gray-800/30 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 sm:h-10 sm:w-10',
       icon: 'h-5 w-5 text-white dark:text-gray-800 sm:h-6 sm:w-6',
     },
-    leftControl: 'absolute top-0 left-0 flex h-full items-center justify-center px-4 focus:outline-none',
-    rightControl: 'absolute top-0 right-0 flex h-full items-center justify-center px-4 focus:outline-none',
     scrollContainer: {
       base: 'flex h-full snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg',
       snap: 'snap-x',
     },
   },
+  checkbox: {
+    root: {
+      base: 'h-4 w-4 rounded border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600',
+    },
+  },
   darkThemeToggle: {
-    base: 'rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700',
-    icon: 'h-5 w-5',
+    root: {
+      base: 'rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700',
+      icon: 'h-5 w-5',
+    },
   },
   dropdown: {
+    arrowIcon: 'ml-2 h-4 w-4',
+    content: 'py-1',
     floating: {
-      target: 'w-fit',
-      base: 'z-10 w-fit rounded-lg divide-y divide-gray-100 shadow',
       animation: 'transition-opacity',
-      hidden: 'invisible opacity-0',
-      style: {
-        dark: 'bg-gray-900 text-white dark:bg-gray-700',
-        light: 'border border-gray-200 bg-white text-gray-900',
-        auto: 'border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-gray-700 dark:text-white',
-      },
-      header: 'block py-2 px-4 text-sm text-gray-700 dark:text-gray-200',
-      content: 'py-1 text-sm text-gray-700 dark:text-gray-200',
       arrow: {
         base: 'absolute z-10 h-2 w-2 rotate-45',
         style: {
@@ -337,20 +332,56 @@ const theme: FlowbiteTheme = {
         },
         placement: '-4px',
       },
+      base: 'z-10 w-fit rounded divide-y divide-gray-100 shadow',
+      content: 'py-1 text-sm text-gray-700 dark:text-gray-200',
+      divider: 'my-1 h-px bg-gray-100 dark:bg-gray-600',
+      header: 'block py-2 px-4 text-sm text-gray-700 dark:text-gray-200',
+      hidden: 'invisible opacity-0',
       item: {
         base: 'flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white',
         icon: 'mr-2 h-4 w-4',
       },
-      divider: 'my-1 h-px bg-gray-100 dark:bg-gray-600',
+      style: {
+        dark: 'bg-gray-900 text-white dark:bg-gray-700',
+        light: 'border border-gray-200 bg-white text-gray-900',
+        auto: 'border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-gray-700 dark:text-white',
+      },
+      target: 'w-fit',
     },
-    arrowIcon: 'ml-2 h-4 w-4',
     inlineWrapper: 'flex items-center',
-    content: 'py-1',
+  },
+  fileInput: {
+    root: {
+      base: 'flex',
+    },
+    field: {
+      base: 'relative w-full',
+      input: {
+        base: 'rounded-lg overflow-hidden block w-full border disabled:cursor-not-allowed disabled:opacity-50',
+        sizes: {
+          sm: 'sm:text-xs',
+          md: 'text-sm',
+          lg: 'sm:text-md',
+        },
+        colors: {
+          gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500',
+          info: 'border-blue-500 bg-blue-50 text-blue-900 placeholder-blue-700 focus:border-blue-500 focus:ring-blue-500 dark:border-blue-400 dark:bg-blue-100 dark:focus:border-blue-500 dark:focus:ring-blue-500',
+          failure:
+            'border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-100 dark:focus:border-red-500 dark:focus:ring-red-500',
+          warning:
+            'border-yellow-500 bg-yellow-50 text-yellow-900 placeholder-yellow-700 focus:border-yellow-500 focus:ring-yellow-500 dark:border-yellow-400 dark:bg-yellow-100 dark:focus:border-yellow-500 dark:focus:ring-yellow-500',
+          success:
+            'border-green-500 bg-green-50 text-green-900 placeholder-green-700 focus:border-green-500 focus:ring-green-500 dark:border-green-400 dark:bg-green-100 dark:focus:border-green-500 dark:focus:ring-green-500',
+        },
+      },
+    },
   },
   footer: {
-    base: 'w-full rounded-lg bg-white shadow dark:bg-gray-800 md:flex md:items-center md:justify-between',
-    container: 'w-full p-6',
-    bgDark: 'bg-gray-800',
+    root: {
+      base: 'w-full rounded-lg bg-white shadow dark:bg-gray-800 md:flex md:items-center md:justify-between',
+      container: 'w-full p-6',
+      bgDark: 'bg-gray-800',
+    },
     groupLink: {
       base: 'flex flex-wrap text-sm text-gray-500 dark:text-white',
       link: {
@@ -380,45 +411,195 @@ const theme: FlowbiteTheme = {
       span: 'self-center whitespace-nowrap text-2xl font-semibold text-gray-800 dark:text-white',
     },
   },
-  checkbox: {
+  helperText: {
     root: {
-      base: 'h-4 w-4 rounded border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600',
-    },
-  },
-  fileInput: {
-    base: 'flex',
-    field: {
-      base: 'relative w-full',
-      input: {
-        base: 'rounded-lg overflow-hidden block w-full border disabled:cursor-not-allowed disabled:opacity-50',
-        sizes: {
-          sm: 'sm:text-xs',
-          md: 'text-sm',
-          lg: 'sm:text-md',
-        },
-        colors: {
-          gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500',
-          info: 'border-blue-500 bg-blue-50 text-blue-900 placeholder-blue-700 focus:border-blue-500 focus:ring-blue-500 dark:border-blue-400 dark:bg-blue-100 dark:focus:border-blue-500 dark:focus:ring-blue-500',
-          failure:
-            'border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-100 dark:focus:border-red-500 dark:focus:ring-red-500',
-          warning:
-            'border-yellow-500 bg-yellow-50 text-yellow-900 placeholder-yellow-700 focus:border-yellow-500 focus:ring-yellow-500 dark:border-yellow-400 dark:bg-yellow-100 dark:focus:border-yellow-500 dark:focus:ring-yellow-500',
-          success:
-            'border-green-500 bg-green-50 text-green-900 placeholder-green-700 focus:border-green-500 focus:ring-green-500 dark:border-green-400 dark:bg-green-100 dark:focus:border-green-500 dark:focus:ring-green-500',
-        },
+      base: 'mt-2 text-sm',
+      colors: {
+        gray: 'text-gray-500 dark:text-gray-400',
+        info: 'text-blue-700 dark:text-blue-800',
+        success: 'text-green-600 dark:text-green-500',
+        failure: 'text-red-600 dark:text-red-500',
+        warning: 'text-yellow-500 dark:text-yellow-600',
       },
     },
   },
   label: {
-    base: 'text-sm font-medium',
-    colors: {
-      default: 'text-gray-900 dark:text-gray-300',
-      info: 'text-blue-500 dark:text-blue-600',
-      failure: 'text-red-700 dark:text-red-500',
-      warning: 'text-yellow-500 dark:text-yellow-600',
-      success: 'text-green-700 dark:text-green-500',
+    root: {
+      base: 'text-sm font-medium',
+      disabled: 'opacity-50',
+      colors: {
+        default: 'text-gray-900 dark:text-gray-300',
+        info: 'text-blue-500 dark:text-blue-600',
+        failure: 'text-red-700 dark:text-red-500',
+        warning: 'text-yellow-500 dark:text-yellow-600',
+        success: 'text-green-700 dark:text-green-500',
+      },
     },
-    disabled: 'opacity-50',
+  },
+  listGroup: {
+    root: {
+      base: 'list-none rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white',
+    },
+    item: {
+      base: 'flex w-full cursor-pointer border-b border-gray-200 py-2 px-4 first:rounded-t-lg last:rounded-b-lg last:border-b-0 dark:border-gray-600',
+      link: {
+        base: '',
+        active: {
+          off: 'hover:bg-gray-100 hover:text-blue-700 focus:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-500',
+          on: 'bg-blue-700 text-white dark:bg-gray-800',
+        },
+        href: {
+          off: '',
+          on: '',
+        },
+        icon: 'mr-2 h-4 w-4 fill-current',
+      },
+    },
+  },
+  modal: {
+    root: {
+      base: 'fixed top-0 right-0 left-0 z-50 h-modal overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
+      show: {
+        on: 'flex bg-gray-900 bg-opacity-50 dark:bg-opacity-80',
+        off: 'hidden',
+      },
+      sizes: {
+        sm: 'max-w-sm',
+        md: 'max-w-md',
+        lg: 'max-w-lg',
+        xl: 'max-w-xl',
+        '2xl': 'max-w-2xl',
+        '3xl': 'max-w-3xl',
+        '4xl': 'max-w-4xl',
+        '5xl': 'max-w-5xl',
+        '6xl': 'max-w-6xl',
+        '7xl': 'max-w-7xl',
+      },
+      positions: {
+        'top-left': 'items-start justify-start',
+        'top-center': 'items-start justify-center',
+        'top-right': 'items-start justify-end',
+        'center-left': 'items-center justify-start',
+        center: 'items-center justify-center',
+        'center-right': 'items-center justify-end',
+        'bottom-right': 'items-end justify-end',
+        'bottom-center': 'items-end justify-center',
+        'bottom-left': 'items-end justify-start',
+      },
+    },
+    content: {
+      base: 'relative h-full w-full p-4 md:h-auto',
+      inner: 'relative rounded-lg bg-white shadow dark:bg-gray-700',
+    },
+    body: {
+      base: 'p-6',
+      popup: 'pt-0',
+    },
+    header: {
+      base: 'flex items-start justify-between rounded-t dark:border-gray-600 border-b p-5',
+      popup: '!p-2 !border-b-0',
+      title: 'text-xl font-medium text-gray-900 dark:text-white',
+      close: {
+        base: 'ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white',
+        icon: 'h-5 w-5',
+      },
+    },
+    footer: {
+      base: 'flex items-center space-x-2 rounded-b border-gray-200 p-6 dark:border-gray-600',
+      popup: 'border-t',
+    },
+  },
+  navbar: {
+    root: {
+      base: 'border-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
+      rounded: {
+        on: 'rounded',
+        off: '',
+      },
+      bordered: {
+        on: 'border',
+        off: '',
+      },
+      inner: {
+        base: 'mx-auto flex flex-wrap items-center justify-between',
+        fluid: {
+          on: '',
+          off: 'container',
+        },
+      },
+    },
+    brand: {
+      base: 'flex items-center',
+    },
+    collapse: {
+      base: 'w-full md:block md:w-auto',
+      list: 'mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium',
+      hidden: {
+        on: 'hidden',
+        off: '',
+      },
+    },
+    link: {
+      base: 'block py-2 pr-4 pl-3 md:p-0',
+      active: {
+        on: 'bg-blue-700 text-white dark:text-white md:bg-transparent md:text-blue-700',
+        off: 'border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white',
+      },
+      disabled: {
+        on: 'text-gray-400 hover:cursor-not-allowed dark:text-gray-600',
+        off: '',
+      },
+    },
+    toggle: {
+      base: 'inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden',
+      icon: 'h-6 w-6 shrink-0',
+    },
+  },
+  pagination: {
+    base: '',
+    layout: {
+      table: {
+        base: 'text-sm text-gray-700 dark:text-gray-400',
+        span: 'font-semibold text-gray-900 dark:text-white',
+      },
+    },
+    pages: {
+      base: 'xs:mt-0 mt-2 inline-flex items-center -space-x-px',
+      showIcon: 'inline-flex',
+      previous: {
+        base: 'ml-0 rounded-l-lg border border-gray-300 bg-white py-2 px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
+        icon: 'h-5 w-5',
+      },
+      next: {
+        base: 'rounded-r-lg border border-gray-300 bg-white py-2 px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
+        icon: 'h-5 w-5',
+      },
+      selector: {
+        base: 'w-12 border border-gray-300 bg-white py-2 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
+        active:
+          'bg-blue-50 text-blue-600 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white',
+      },
+    },
+  },
+  progress: {
+    base: 'w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
+    label: 'mb-1 flex justify-between font-medium dark:text-white',
+    bar: 'flex items-center justify-center rounded-full text-center font-medium leading-none text-blue-100',
+    color: {
+      dark: 'bg-gray-600 dark:bg-gray-300',
+      blue: 'bg-blue-600',
+      red: 'bg-red-600 dark:bg-red-500',
+      green: 'bg-green-600 dark:bg-green-500',
+      yellow: 'bg-yellow-400',
+      indigo: 'bg-indigo-600 dark:bg-indigo-500',
+      purple: 'bg-purple-600 dark:bg-purple-500',
+    },
+    size: {
+      sm: 'h-1.5',
+      md: 'h-2.5',
+      lg: 'h-4',
+      xl: 'h-6',
+    },
   },
   radio: {
     root: {
@@ -426,7 +607,9 @@ const theme: FlowbiteTheme = {
     },
   },
   rangeSlider: {
-    base: 'flex',
+    root: {
+      base: 'flex',
+    },
     field: {
       base: 'relative w-full',
       input: {
@@ -436,6 +619,29 @@ const theme: FlowbiteTheme = {
           md: 'h-2',
           lg: 'h-3 range-lg',
         },
+      },
+    },
+  },
+  rating: {
+    root: {
+      base: 'flex items-center',
+    },
+    advanced: {
+      base: 'flex items-center',
+      label: 'text-sm font-medium text-blue-600 dark:text-blue-500',
+      progress: {
+        base: 'mx-4 h-5 w-2/4 rounded bg-gray-200 dark:bg-gray-700',
+        fill: 'h-5 rounded bg-yellow-400',
+        label: 'text-sm font-medium text-blue-600 dark:text-blue-500',
+      },
+    },
+    star: {
+      empty: 'text-gray-300 dark:text-gray-500',
+      filled: 'text-yellow-400',
+      sizes: {
+        sm: 'w-5 h-5',
+        md: 'w-7 h-7',
+        lg: 'w-10 h-10',
       },
     },
   },
@@ -584,181 +790,14 @@ const theme: FlowbiteTheme = {
       },
     },
   },
-  helperText: {
-    base: 'mt-2 text-sm',
-    colors: {
-      gray: 'text-gray-500 dark:text-gray-400',
-      info: 'text-blue-700 dark:text-blue-800',
-      success: 'text-green-600 dark:text-green-500',
-      failure: 'text-red-600 dark:text-red-500',
-      warning: 'text-yellow-500 dark:text-yellow-600',
-    },
-  },
-  listGroup: {
-    base: 'list-none rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white',
-    item: {
-      active: {
-        off: 'hover:bg-gray-100 hover:text-blue-700 focus:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-500',
-        on: 'bg-blue-700 text-white dark:bg-gray-800',
-      },
-      base: 'flex w-full cursor-pointer border-b border-gray-200 py-2 px-4 first:rounded-t-lg last:rounded-b-lg last:border-b-0 dark:border-gray-600',
-      href: {
-        off: '',
-        on: '',
-      },
-      icon: 'mr-2 h-4 w-4 fill-current',
-    },
-  },
-  modal: {
-    base: 'fixed top-0 right-0 left-0 z-50 h-modal overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
-    show: {
-      on: 'flex bg-gray-900 bg-opacity-50 dark:bg-opacity-80',
-      off: 'hidden',
-    },
-    content: {
-      base: 'relative h-full w-full p-4 md:h-auto',
-      inner: 'relative rounded-lg bg-white shadow dark:bg-gray-700',
-    },
-    body: {
-      base: 'p-6',
-      popup: 'pt-0',
-    },
-    header: {
-      base: 'flex items-start justify-between rounded-t dark:border-gray-600 border-b p-5',
-      popup: '!p-2 !border-b-0',
-      title: 'text-xl font-medium text-gray-900 dark:text-white',
-      close: {
-        base: 'ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white',
-        icon: 'h-5 w-5',
-      },
-    },
-    footer: {
-      base: 'flex items-center space-x-2 rounded-b border-gray-200 p-6 dark:border-gray-600',
-      popup: 'border-t',
-    },
-    sizes: {
-      sm: 'max-w-sm',
-      md: 'max-w-md',
-      lg: 'max-w-lg',
-      xl: 'max-w-xl',
-      '2xl': 'max-w-2xl',
-      '3xl': 'max-w-3xl',
-      '4xl': 'max-w-4xl',
-      '5xl': 'max-w-5xl',
-      '6xl': 'max-w-6xl',
-      '7xl': 'max-w-7xl',
-    },
-    positions: {
-      'top-left': 'items-start justify-start',
-      'top-center': 'items-start justify-center',
-      'top-right': 'items-start justify-end',
-      'center-left': 'items-center justify-start',
-      center: 'items-center justify-center',
-      'center-right': 'items-center justify-end',
-      'bottom-right': 'items-end justify-end',
-      'bottom-center': 'items-end justify-center',
-      'bottom-left': 'items-end justify-start',
-    },
-  },
-  navbar: {
-    root: {
-      base: 'border-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
-      rounded: {
-        on: 'rounded',
-        off: '',
-      },
-      bordered: {
-        on: 'border',
-        off: '',
-      },
-      inner: {
-        base: 'mx-auto flex flex-wrap items-center justify-between',
-        fluid: {
-          on: '',
-          off: 'container',
-        },
-      },
-    },
-    brand: {
-      base: 'flex items-center',
-    },
-    collapse: {
-      base: 'w-full md:block md:w-auto',
-      list: 'mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium',
-      hidden: {
-        on: 'hidden',
-        off: '',
-      },
-    },
-    link: {
-      base: 'block py-2 pr-4 pl-3 md:p-0',
-      active: {
-        on: 'bg-blue-700 text-white dark:text-white md:bg-transparent md:text-blue-700',
-        off: 'border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-blue-700 md:dark:hover:bg-transparent md:dark:hover:text-white',
-      },
-      disabled: {
-        on: 'text-gray-400 hover:cursor-not-allowed dark:text-gray-600',
-        off: '',
-      },
-    },
-    toggle: {
-      base: 'inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden',
-      icon: 'h-6 w-6 shrink-0',
-    },
-  },
-  rating: {
-    base: 'flex items-center',
-    star: {
-      sizes: {
-        sm: 'w-5 h-5',
-        md: 'w-7 h-7',
-        lg: 'w-10 h-10',
-      },
-      filled: 'text-yellow-400',
-      empty: 'text-gray-300 dark:text-gray-500',
-    },
-    advanced: {
-      base: 'flex items-center',
-      label: 'text-sm font-medium text-blue-600 dark:text-blue-500',
-      progress: {
-        base: 'mx-4 h-5 w-2/4 rounded bg-gray-200 dark:bg-gray-700',
-        fill: 'h-5 rounded bg-yellow-400',
-        label: 'text-sm font-medium text-blue-600 dark:text-blue-500',
-      },
-    },
-  },
-  pagination: {
-    base: '',
-    layout: {
-      table: {
-        base: 'text-sm text-gray-700 dark:text-gray-400',
-        span: 'font-semibold text-gray-900 dark:text-white',
-      },
-    },
-    pages: {
-      base: 'xs:mt-0 mt-2 inline-flex items-center -space-x-px',
-      showIcon: 'inline-flex',
-      previous: {
-        base: 'ml-0 rounded-l-lg border border-gray-300 bg-white py-2 px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-        icon: 'h-5 w-5',
-      },
-      next: {
-        base: 'rounded-r-lg border border-gray-300 bg-white py-2 px-3 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-        icon: 'h-5 w-5',
-      },
-      selector: {
-        base: 'w-12 border border-gray-300 bg-white py-2 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
-        active:
-          'bg-blue-50 text-blue-600 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white',
-      },
-    },
-  },
   sidebar: {
-    base: 'h-full',
-    inner: 'h-full overflow-y-auto overflow-x-hidden rounded bg-white py-4 px-3 dark:bg-gray-800',
-    collapsed: {
-      on: 'w-16',
-      off: 'w-64',
+    root: {
+      base: 'h-full',
+      collapsed: {
+        on: 'w-16',
+        off: 'w-64',
+      },
+      inner: 'h-full overflow-y-auto overflow-x-hidden rounded bg-white py-4 px-3 dark:bg-gray-800',
     },
     collapse: {
       button:
@@ -818,26 +857,6 @@ const theme: FlowbiteTheme = {
         off: 'self-center whitespace-nowrap text-xl font-semibold dark:text-white',
       },
       img: 'mr-3 h-6 sm:h-7',
-    },
-  },
-  progress: {
-    base: 'w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
-    label: 'mb-1 flex justify-between font-medium dark:text-white',
-    bar: 'flex items-center justify-center rounded-full text-center font-medium leading-none text-blue-100',
-    color: {
-      dark: 'bg-gray-600 dark:bg-gray-300',
-      blue: 'bg-blue-600',
-      red: 'bg-red-600 dark:bg-red-500',
-      green: 'bg-green-600 dark:bg-green-500',
-      yellow: 'bg-yellow-400',
-      indigo: 'bg-indigo-600 dark:bg-indigo-500',
-      purple: 'bg-purple-600 dark:bg-purple-500',
-    },
-    size: {
-      sm: 'h-1.5',
-      md: 'h-2.5',
-      lg: 'h-4',
-      xl: 'h-6',
     },
   },
   spinner: {
@@ -933,39 +952,14 @@ const theme: FlowbiteTheme = {
     },
     tabpanel: 'p-4',
   },
-  toast: {
-    base: 'flex w-full max-w-xs items-center rounded-lg bg-white p-4 text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400',
-    closed: 'opacity-0 ease-out',
-    removed: 'hidden',
-    toggle: {
-      base: '-mx-1.5 -my-1.5 ml-auto inline-flex h-8 w-8 rounded-lg bg-white p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-900 focus:ring-2 focus:ring-gray-300 dark:bg-gray-800 dark:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white',
-      icon: 'h-5 w-5 shrink-0',
-    },
-  },
-  tooltip: {
-    target: 'w-fit',
-    base: 'absolute inline-block z-10 rounded-lg py-2 px-3 text-sm font-medium shadow-sm',
-    animation: 'transition-opacity',
-    hidden: 'invisible opacity-0',
-    style: {
-      dark: 'bg-gray-900 text-white dark:bg-gray-700',
-      light: 'border border-gray-200 bg-white text-gray-900',
-      auto: 'border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-gray-700 dark:text-white',
-    },
-    content: 'relative z-20',
-    arrow: {
-      base: 'absolute z-10 h-2 w-2 rotate-45',
-      style: {
-        dark: 'bg-gray-900 dark:bg-gray-700',
-        light: 'bg-white',
-        auto: 'bg-white dark:bg-gray-700',
-      },
-      placement: '-4px',
-    },
-  },
   table: {
-    wrapper: 'relative overflow-x-auto shadow-md sm:rounded-lg',
-    base: 'w-full text-left text-sm text-gray-500 dark:text-gray-400',
+    root: {
+      base: 'w-full text-left text-sm text-gray-500 dark:text-gray-400',
+      wrapper: 'relative overflow-x-auto shadow-md sm:rounded-lg',
+    },
+    cell: {
+      base: 'px-6 py-4',
+    },
     head: {
       base: 'bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400',
       cell: {
@@ -976,25 +970,30 @@ const theme: FlowbiteTheme = {
       hovered: 'hover:bg-gray-50 dark:hover:bg-gray-600',
       striped: 'odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700',
     },
-    cell: {
-      base: 'px-6 py-4',
-    },
   },
   timeline: {
-    direction: {
-      horizontal: 'items-base sm:flex',
-      vertical: 'relative border-l border-gray-200 dark:border-gray-700',
+    root: {
+      direction: {
+        horizontal: 'items-base sm:flex',
+        vertical: 'relative border-l border-gray-200 dark:border-gray-700',
+      },
     },
     item: {
-      base: {
+      root: {
         horizontal: 'relative mb-6 sm:mb-0',
         vertical: 'mb-10 ml-6',
       },
-      point: {
-        base: {
-          horizontal: 'flex items-center',
-          vertical: '',
+      content: {
+        root: {
+          base: 'mt-3 sm:pr-8',
         },
+        body: 'mb-4 text-base font-normal text-gray-500 dark:text-gray-400',
+        time: 'mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500',
+        title: 'text-lg font-semibold text-gray-900 dark:text-white',
+      },
+      point: {
+        horizontal: 'flex items-center',
+        line: 'hidden h-0.5 w-full bg-gray-200 dark:bg-gray-700 sm:flex',
         marker: {
           base: {
             horizontal:
@@ -1003,20 +1002,46 @@ const theme: FlowbiteTheme = {
               'absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700',
           },
           icon: {
+            base: 'h-3 w-3 text-blue-600 dark:text-blue-300',
             wrapper:
               'absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-blue-200 ring-8 ring-white dark:bg-blue-900 dark:ring-gray-900',
-            base: 'h-3 w-3 text-blue-600 dark:text-blue-300',
           },
         },
-        line: 'hidden h-0.5 w-full bg-gray-200 dark:bg-gray-700 sm:flex',
-      },
-      content: {
-        base: 'mt-3 sm:pr-8',
-        time: 'mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500',
-        title: 'text-lg font-semibold text-gray-900 dark:text-white',
-        body: 'mb-4 text-base font-normal text-gray-500 dark:text-gray-400',
+        vertical: '',
       },
     },
+  },
+  toast: {
+    root: {
+      base: 'flex w-full max-w-xs items-center rounded-lg bg-white p-4 text-gray-500 shadow dark:bg-gray-800 dark:text-gray-400',
+      closed: 'opacity-0 ease-out',
+      removed: 'hidden',
+    },
+    toggle: {
+      base: '-mx-1.5 -my-1.5 ml-auto inline-flex h-8 w-8 rounded-lg bg-white p-1.5 text-gray-400 hover:bg-gray-100 hover:text-gray-900 focus:ring-2 focus:ring-gray-300 dark:bg-gray-800 dark:text-gray-500 dark:hover:bg-gray-700 dark:hover:text-white',
+      icon: 'h-5 w-5 shrink-0',
+    },
+  },
+  tooltip: {
+    target: 'w-fit',
+    animation: 'transition-opacity',
+    arrow: {
+      base: 'absolute z-10 h-2 w-2 rotate-45',
+      style: {
+        dark: 'bg-gray-900 dark:bg-gray-700',
+        light: 'bg-white',
+        auto: 'bg-white dark:bg-gray-700',
+      },
+      placement: '-4px',
+    },
+    base: 'absolute inline-block z-10 rounded-lg py-2 px-3 text-sm font-medium shadow-sm',
+    hidden: 'invisible opacity-0',
+    style: {
+      dark: 'bg-gray-900 text-white dark:bg-gray-700',
+      light: 'border border-gray-200 bg-white text-gray-900',
+      auto: 'border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-gray-700 dark:text-white',
+    },
+    content: 'relative z-20',
   },
 };
 

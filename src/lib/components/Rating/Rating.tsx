@@ -1,43 +1,33 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import type { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
+import type { FlowbiteRatingAdvancedTheme } from './RatingAdvanced';
 import { RatingAdvanced } from './RatingAdvanced';
 import { RatingContext } from './RatingContext';
+import type { FlowbiteRatingStarTheme, FlowbiteStarSizes } from './RatingStar';
 import { RatingStar } from './RatingStar';
 
 export interface FlowbiteRatingTheme {
-  base: string;
-  star: {
-    sizes: StarSizes;
-    filled: string;
-    empty: string;
-  };
-  advanced: {
+  root: {
     base: string;
-    label: string;
-    progress: {
-      base: string;
-      fill: string;
-      label: string;
-    };
   };
-}
-
-export interface StarSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
-  [key: string]: string;
+  star: FlowbiteRatingStarTheme;
+  advanced: FlowbiteRatingAdvancedTheme;
 }
 
 export interface RatingProps extends PropsWithChildren<ComponentProps<'div'>> {
-  size?: keyof StarSizes;
+  size?: keyof FlowbiteStarSizes;
+  theme?: DeepPartial<FlowbiteRatingTheme>;
 }
 
-const RatingComponent: FC<RatingProps> = ({ children, size = 'sm', className, ...props }) => {
-  const theme = useTheme().theme.rating;
+const RatingComponent: FC<RatingProps> = ({ children, className, size = 'sm', theme: customTheme = {}, ...props }) => {
+  const theme = mergeDeep(useTheme().theme.rating, customTheme);
 
   return (
     <RatingContext.Provider value={{ size }}>
-      <div className={classNames(theme.base, className)} {...props}>
+      <div className={classNames(theme.root.base, className)} {...props}>
         {children}
       </div>
     </RatingContext.Provider>

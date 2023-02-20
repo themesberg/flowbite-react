@@ -18,7 +18,7 @@ export const Default = (): JSX.Element => (
 );
 
 export const SolidBackground = (): JSX.Element => (
-  <Breadcrumb className="px-5 py-3 bg-gray-50 dark:bg-gray-800">
+  <Breadcrumb className="bg-gray-50 px-5 py-3 dark:bg-gray-800">
     <Breadcrumb.Item href="#" icon={HiHome}>
       Home
     </Breadcrumb.Item>
