@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteCardTheme {
@@ -39,7 +39,7 @@ export const Card: FC<CardProps> = ({
   imgSrc,
   theme: customTheme = {},
   ...props
-}): JSX.Element => {
+}) => {
   const Component = typeof href === 'undefined' ? 'div' : 'a';
   const theirProps = props as object;
 
@@ -47,21 +47,21 @@ export const Card: FC<CardProps> = ({
 
   return (
     <Component
+      data-testid="flowbite-card"
+      href={href}
       className={classNames(
         theme.root.base,
         theme.root.horizontal[horizontal ? 'on' : 'off'],
         href && theme.root.href,
         className,
       )}
-      data-testid="flowbite-card"
-      href={href}
       {...theirProps}
     >
       {imgSrc && (
         <img
           alt={imgAlt ?? ''}
-          className={classNames(theme.img.base, theme.img.horizontal[horizontal ? 'on' : 'off'])}
           src={imgSrc}
+          className={classNames(theme.img.base, theme.img.horizontal[horizontal ? 'on' : 'off'])}
         />
       )}
       <div className={theme.root.children}>{children}</div>

@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { FlowbiteStarSizes } from './RatingStar';
+import type { FlowbiteStarSizes } from './RatingStar';
 
 export type RatingContext = {
   size?: keyof FlowbiteStarSizes;

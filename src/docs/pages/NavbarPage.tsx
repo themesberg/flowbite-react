@@ -43,7 +43,7 @@ const NavbarPage: FC = () => {
             <Navbar.Toggle />
           </div>
           <Navbar.Collapse>
-            <Navbar.Link as={Link} to="/test" active>
+            <Navbar.Link href="/navbars" active>
               Home
             </Navbar.Link>
             <Navbar.Link href="/navbars">About</Navbar.Link>

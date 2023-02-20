@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean, FlowbiteHeadingLevel } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -29,7 +29,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   className,
   theme: customTheme = {},
   ...props
-}): JSX.Element => {
+}) => {
   const { arrowIcon: ArrowIcon, flush, isOpen, setOpen } = useAccordionContext();
   const onClick = () => typeof setOpen !== 'undefined' && setOpen();
 

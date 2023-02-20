@@ -1,10 +1,11 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { HiChartPie, HiInbox, HiShoppingBag } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { DeepPartial } from '..';
-import { Flowbite, FlowbiteTheme } from '../Flowbite';
+import type { DeepPartial } from '..';
+import type { FlowbiteTheme } from '../Flowbite';
+import { Flowbite } from '../Flowbite';
 import type { SidebarProps } from './Sidebar';
 import { Sidebar } from './Sidebar';
 

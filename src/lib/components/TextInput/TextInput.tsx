@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -54,14 +54,14 @@ export interface TextInputProps extends Omit<ComponentProps<'input'>, 'ref' | 'c
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (
     {
-      sizing = 'md',
-      shadow,
-      helperText,
       addon,
+      className,
+      color = 'gray',
+      helperText,
       icon: Icon,
       rightIcon: RightIcon,
-      color = 'gray',
-      className,
+      shadow,
+      sizing = 'md',
       theme: customTheme = {},
       ...props
     },

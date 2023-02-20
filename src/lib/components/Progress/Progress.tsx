@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useId } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -23,7 +23,7 @@ export interface ProgressSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg' | 
   [key: string]: string;
 }
 
-export interface ProgressProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface ProgressProps extends PropsWithChildren, ComponentProps<'div'> {
   size?: keyof ProgressSizes;
   label?: string;
   labelPosition?: 'inside' | 'outside' | 'none';
@@ -33,22 +33,22 @@ export interface ProgressProps extends PropsWithChildren<ComponentProps<'div'>> 
 }
 
 export const Progress: FC<ProgressProps> = ({
+  className,
   color = 'blue',
   label = 'progressbar',
   labelPosition = 'none',
   labelProgress = false,
   progress,
   size = 'md',
-  className,
   theme: customTheme = {},
   ...props
-}): JSX.Element => {
-  const theme = mergeDeep(useTheme().theme.progress, customTheme);
+}) => {
   const id = useId();
+  const theme = mergeDeep(useTheme().theme.progress, customTheme);
 
   return (
     <>
-      <div id={id} aria-label={label} aria-valuenow={progress} role="progressbar" {...props}>
+      <div aria-label={label} aria-valuenow={progress} id={id} role="progressbar" {...props}>
         {label && labelPosition === 'outside' && (
           <div className={theme.label}>
             <span>{label}</span>
@@ -57,8 +57,8 @@ export const Progress: FC<ProgressProps> = ({
         )}
         <div className={classNames(theme.base, theme.size[size], className)}>
           <div
-            className={classNames(theme.bar, theme.color[color], theme.size[size])}
             style={{ width: `${progress}%` }}
+            className={classNames(theme.bar, theme.color[color], theme.size[size])}
           >
             {label && labelPosition === 'inside' && label}
           </div>

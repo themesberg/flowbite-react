@@ -5,7 +5,7 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import windowExists from '../../helpers/window-exists';
-import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteCarouselTheme {
@@ -62,7 +62,7 @@ export const Carousel: FC<CarouselProps> = ({
   className,
   theme: customTheme = {},
   ...props
-}): JSX.Element => {
+}) => {
   const theme = mergeDeep(useTheme().theme.carousel, customTheme);
 
   const isDeviceMobile = windowExists() && navigator.userAgent.indexOf('IEMobile') !== -1;
@@ -121,34 +121,30 @@ export const Carousel: FC<CarouselProps> = ({
         onStartScroll={handleDragging(true)}
         vertical={false}
       >
-        {items?.map(
-          (item, index): JSX.Element => (
-            <div
-              key={index}
-              className={theme.item.wrapper}
-              data-active={activeItem === index}
-              data-testid="carousel-item"
-            >
-              {item}
-            </div>
-          ),
-        )}
+        {items?.map((item, index) => (
+          <div
+            key={index}
+            className={theme.item.wrapper}
+            data-active={activeItem === index}
+            data-testid="carousel-item"
+          >
+            {item}
+          </div>
+        ))}
       </ScrollContainer>
       {indicators && (
         <div className={theme.indicators.wrapper}>
-          {items?.map(
-            (_, index): JSX.Element => (
-              <button
-                key={index}
-                className={classNames(
-                  theme.indicators.base,
-                  theme.indicators.active[index === activeItem ? 'on' : 'off'],
-                )}
-                onClick={navigateTo(index)}
-                data-testid="carousel-indicator"
-              />
-            ),
-          )}
+          {items?.map((_, index) => (
+            <button
+              key={index}
+              className={classNames(
+                theme.indicators.base,
+                theme.indicators.active[index === activeItem ? 'on' : 'off'],
+              )}
+              onClick={navigateTo(index)}
+              data-testid="carousel-indicator"
+            />
+          ))}
         </div>
       )}
 

@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
 import { HiStar } from 'react-icons/hi';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useRatingContext } from './RatingContext';
 

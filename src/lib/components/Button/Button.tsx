@@ -60,12 +60,12 @@ export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'x
 
 export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'ref'> {
   color?: keyof ButtonColors;
+  fullSized?: boolean;
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
   gradientMonochrome?: keyof ButtonGradientColors;
   href?: string;
   label?: ReactNode;
   outline?: boolean;
-  fullSized?: boolean;
   pill?: boolean;
   positionInGroup?: keyof PositionInButtonGroup;
   size?: keyof ButtonSizes;
@@ -76,18 +76,18 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
   (
     {
       children,
+      className,
       color = 'info',
       disabled = false,
+      fullSized,
       gradientDuoTone,
       gradientMonochrome,
       href,
       label,
       outline = false,
       pill = false,
-      fullSized,
       positionInGroup = 'none',
       size = 'md',
-      className,
       theme: customTheme = {},
       ...props
     },
@@ -101,6 +101,10 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
 
     return (
       <Component
+        disabled={disabled}
+        href={href}
+        type={isLink ? undefined : 'button'}
+        ref={ref as never}
         className={classNames(
           disabled && theme.disabled,
           !gradientDuoTone && !gradientMonochrome && theme.color[color],
@@ -113,10 +117,6 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
           fullSized && theme.fullSized,
           className,
         )}
-        disabled={disabled}
-        href={href}
-        type={isLink ? undefined : 'button'}
-        ref={ref as never}
         {...theirProps}
       >
         <span
@@ -132,7 +132,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
           <>
             {typeof children !== 'undefined' && children}
             {typeof label !== 'undefined' && (
-              <span className={theme.label} data-testid="flowbite-button-label">
+              <span data-testid="flowbite-button-label" className={theme.label}>
                 {label}
               </span>
             )}

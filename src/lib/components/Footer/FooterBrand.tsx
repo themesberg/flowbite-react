@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -10,15 +10,16 @@ export interface FlowbiteFooterBrandTheme {
   span: string;
 }
 
-export interface FooterBrandProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface FooterBrandProps extends PropsWithChildren {
   alt?: string;
+  className?: string;
   href?: string;
   name?: string;
   src: string;
   theme?: DeepPartial<FlowbiteFooterBrandTheme>;
 }
 
-export const FooterBrand: FC<FooterBrandProps> = ({
+export const FooterBrand: FC<FooterBrandProps & ComponentProps<'a'> & ComponentProps<'img'>> = ({
   alt,
   className,
   children,
@@ -26,13 +27,14 @@ export const FooterBrand: FC<FooterBrandProps> = ({
   name,
   src,
   theme: customTheme = {},
+  ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.footer.brand, customTheme);
 
   return (
     <div>
       {href ? (
-        <a data-testid="flowbite-footer-brand" href={href} className={classNames(theme.base, className)}>
+        <a data-testid="flowbite-footer-brand" href={href} className={classNames(theme.base, className)} {...props}>
           <img alt={alt} src={src} className={theme.img} />
           <span data-testid="flowbite-footer-brand-span" className={theme.span}>
             {name}
@@ -40,7 +42,13 @@ export const FooterBrand: FC<FooterBrandProps> = ({
           {children}
         </a>
       ) : (
-        <img alt={alt} data-testid="flowbite-footer-brand" src={src} className={classNames(theme.img, className)} />
+        <img
+          alt={alt}
+          data-testid="flowbite-footer-brand"
+          src={src}
+          className={classNames(theme.img, className)}
+          {...props}
+        />
       )}
     </div>
   );

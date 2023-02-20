@@ -1,6 +1,7 @@
 import classNames from 'classnames';
-import { ComponentProps, ElementType, FC, forwardRef, PropsWithChildren, ReactNode, useId } from 'react';
-import { DeepPartial } from '..';
+import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from 'react';
+import { forwardRef, useId } from 'react';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { Badge } from '../Badge';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
 import { useTableContext } from './TableContext';
@@ -15,8 +15,8 @@ export interface TableRowProps extends PropsWithChildren, ComponentProps<'tr'> {
 }
 
 export const TableRow: FC<TableRowProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const theme = mergeDeep(useTheme().theme.table.row, customTheme);
   const { hoverable, striped } = useTableContext();
+  const theme = mergeDeep(useTheme().theme.table.row, customTheme);
 
   return (
     <tr

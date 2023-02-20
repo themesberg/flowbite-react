@@ -1,11 +1,13 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FC, useState } from 'react';
+import type { FC } from 'react';
+import { useState } from 'react';
 import { HiEye, HiHeart, HiInformationCircle } from 'react-icons/hi';
 import { describe, expect, it, vi } from 'vitest';
 import { Flowbite } from '../Flowbite';
 
-import { Alert, AlertProps } from './Alert';
+import type { AlertProps } from './Alert';
+import { Alert } from './Alert';
 
 describe.concurrent('Components / Alert', () => {
   describe.concurrent('A11y', () => {

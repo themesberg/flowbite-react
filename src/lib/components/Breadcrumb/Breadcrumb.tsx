@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
-import BreadcrumbItem, { FlowbiteBreadcrumbItemTheme } from './BreadcrumbItem';
+import type { FlowbiteBreadcrumbItemTheme } from './BreadcrumbItem';
+import BreadcrumbItem from './BreadcrumbItem';
 
 export interface FlowbiteBreadcrumbTheme {
   root: FlowbiteBreadcrumbRootTheme;

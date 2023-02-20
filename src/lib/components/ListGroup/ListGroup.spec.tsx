@@ -3,8 +3,9 @@ import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { HiCloudDownload } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { DeepPartial } from '..';
-import { Flowbite, FlowbiteTheme } from '../Flowbite';
+import type { DeepPartial } from '..';
+import type { FlowbiteTheme } from '../Flowbite';
+import { Flowbite } from '../Flowbite';
 import { ListGroup } from './ListGroup';
 
 describe('Components / List group', () => {
@@ -46,6 +47,7 @@ describe('Components / List group', () => {
 
     await user.tab();
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     for (const _ of items()) {
       await user.tab();
     }

@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteListGroupItemTheme {
@@ -15,48 +15,44 @@ export interface FlowbiteListGroupItemTheme {
   };
 }
 
-export type ListGroupItemProps = (
-  | PropsWithChildren<ComponentProps<'a'>>
-  | PropsWithChildren<ComponentProps<'button'>>
-) & {
+export interface ListGroupItemProps extends PropsWithChildren {
   active?: boolean;
   disabled?: boolean;
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   onClick?: () => void;
   theme?: DeepPartial<FlowbiteListGroupItemTheme>;
-};
+}
 
-export const ListGroupItem: FC<ListGroupItemProps> = ({
+export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<'a'> & ComponentProps<'button'>> = ({
   active: isActive,
   children,
+  className,
   href,
   icon: Icon,
   onClick,
-  className,
   theme: customTheme = {},
   ...props
-}): JSX.Element => {
+}) => {
   const theme = mergeDeep(useTheme().theme.listGroup.item, customTheme);
 
   const isLink = typeof href !== 'undefined';
   const Component = isLink ? 'a' : 'button';
-  const theirProps = props as object;
 
   return (
     <li className={classNames(theme.base, className)}>
       <Component
+        href={href}
+        onClick={onClick}
+        type={isLink ? undefined : 'button'}
         className={classNames(
           theme.link.active[isActive ? 'on' : 'off'],
           theme.link.base,
           theme.link.href[isLink ? 'on' : 'off'],
         )}
-        href={href}
-        onClick={onClick}
-        type={isLink ? undefined : 'button'}
-        {...theirProps}
+        {...props}
       >
-        {Icon && <Icon aria-hidden className={theme.link.icon} data-testid="flowbite-list-group-item-icon" />}
+        {Icon && <Icon aria-hidden data-testid="flowbite-list-group-item-icon" className={theme.link.icon} />}
         {children}
       </Component>
     </li>

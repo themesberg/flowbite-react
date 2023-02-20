@@ -1,5 +1,5 @@
 import { cleanup, render, screen } from '@testing-library/react';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { describe, expect, it } from 'vitest';
 import { Flowbite } from '../Flowbite';
@@ -188,10 +188,6 @@ describe('Components / Footer', () => {
         expect(screen.getByRole('link')).toHaveClass('text-gray-200');
       });
     });
-
-    it('should use `divider` classes', () => {});
-
-    it('should use `groupLink` classes', () => {});
 
     describe('`Footer.Icon`', () => {
       it('should use `icon` classes', () => {

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -20,16 +20,16 @@ export interface HelperColors extends Pick<FlowbiteColors, 'gray' | 'info' | 'fa
 
 export interface HelperTextProps extends PropsWithChildren<Omit<ComponentProps<'p'>, 'color'>> {
   color?: keyof HelperColors;
-  value?: string;
   theme?: DeepPartial<FlowbiteHelperTextTheme>;
+  value?: string;
 }
 
 export const HelperText: FC<HelperTextProps> = ({
-  value,
   children,
-  color = 'default',
   className,
+  color = 'default',
   theme: customTheme = {},
+  value,
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.helperText, customTheme);

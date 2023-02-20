@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
 import { HiX } from 'react-icons/hi';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useToastContext } from './ToastContext';
@@ -22,8 +22,8 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   xIcon: XIcon = HiX,
   ...props
 }) => {
-  const { duration, isClosed, isRemoved, setIsClosed, setIsRemoved } = useToastContext();
   const theme = mergeDeep(useTheme().theme.toast.toggle, customTheme);
+  const { duration, isClosed, isRemoved, setIsClosed, setIsRemoved } = useToastContext();
 
   const handleClick = () => {
     setIsClosed(!isClosed);
@@ -38,7 +38,7 @@ export const ToastToggle: FC<ToastToggleProps> = ({
       className={classNames(theme.base, className)}
       {...props}
     >
-      <XIcon className={theme.icon} />
+      <XIcon aria-hidden className={theme.icon} />
     </button>
   );
 };

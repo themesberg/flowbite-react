@@ -1,14 +1,18 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
 import { TableBody } from './TableBody';
-import { FlowbiteTableCellTheme, TableCell } from './TableCell';
-import { TableContext, TableContextType } from './TableContext';
-import { FlowbiteTableHeadTheme, TableHead } from './TableHead';
+import type { FlowbiteTableCellTheme } from './TableCell';
+import { TableCell } from './TableCell';
+import type { TableContextType } from './TableContext';
+import { TableContext } from './TableContext';
+import type { FlowbiteTableHeadTheme } from './TableHead';
+import { TableHead } from './TableHead';
 import { TableHeadCell } from './TableHeadCell';
-import { FlowbiteTableRowTheme, TableRow } from './TableRow';
+import type { FlowbiteTableRowTheme } from './TableRow';
+import { TableRow } from './TableRow';
 
 export interface FlowbiteTableTheme {
   root: FlowbiteTableRootTheme;

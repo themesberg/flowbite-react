@@ -1,15 +1,19 @@
 import classNames from 'classnames';
-import { ComponentProps, FC, MouseEvent, PropsWithChildren, useEffect, useRef } from 'react';
+import type { ComponentProps, FC, MouseEvent, PropsWithChildren } from 'react';
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useKeyDown } from '../../hooks';
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { FlowbiteModalBodyTheme, ModalBody } from './ModalBody';
+import type { FlowbiteModalBodyTheme } from './ModalBody';
+import { ModalBody } from './ModalBody';
 import { ModalContext } from './ModalContext';
-import { FlowbiteModalFooterTheme, ModalFooter } from './ModalFooter';
-import { FlowbiteModalHeaderTheme, ModalHeader } from './ModalHeader';
+import type { FlowbiteModalFooterTheme } from './ModalFooter';
+import { ModalFooter } from './ModalFooter';
+import type { FlowbiteModalHeaderTheme } from './ModalHeader';
+import { ModalHeader } from './ModalHeader';
 
 export interface FlowbiteModalTheme {
   root: FlowbiteModalRootTheme;
@@ -52,14 +56,14 @@ export interface ModalProps extends PropsWithChildren<ComponentProps<'div'>> {
 
 const ModalComponent: FC<ModalProps> = ({
   children,
-  show,
-  root = document.body,
-  popup,
-  size = '2xl',
-  position = 'center',
+  className,
   dismissible = false,
   onClose,
-  className,
+  popup,
+  position = 'center',
+  root,
+  show,
+  size = '2xl',
   theme: customTheme = {},
   ...props
 }) => {
@@ -110,8 +114,8 @@ const ModalComponent: FC<ModalProps> = ({
       <div
         aria-hidden={!show}
         data-testid="modal"
-        role="dialog"
         onClick={handleOnClick}
+        role="dialog"
         className={classNames(
           theme.root.base,
           theme.root.positions[position],

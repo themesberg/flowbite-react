@@ -1,12 +1,13 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
 import { TimelineBody } from './TimelineBody';
 import { TimelineContent } from './TimelineContent';
 import { TimelineContext } from './TimelineContext';
-import { FlowbiteTimelineItemTheme, TimelineItem } from './TimelineItem';
+import type { FlowbiteTimelineItemTheme } from './TimelineItem';
+import { TimelineItem } from './TimelineItem';
 import { TimelinePoint } from './TimelinePoint';
 import { TimelineTime } from './TimelineTime';
 import { TimelineTitle } from './TimelineTitle';
@@ -26,7 +27,13 @@ export interface TimelineProps extends PropsWithChildren, ComponentProps<'ol'> {
   theme?: DeepPartial<FlowbiteTimelineTheme>;
 }
 
-const TimelineComponent: FC<TimelineProps> = ({ children, className, horizontal, theme: customTheme = {} }) => {
+const TimelineComponent: FC<TimelineProps> = ({
+  children,
+  className,
+  horizontal,
+  theme: customTheme = {},
+  ...props
+}) => {
   const theme = mergeDeep(useTheme().theme.timeline, customTheme);
 
   return (
@@ -38,6 +45,7 @@ const TimelineComponent: FC<TimelineProps> = ({ children, className, horizontal,
           !horizontal && theme.root.direction.vertical,
           className,
         )}
+        {...props}
       >
         {children}
       </ol>

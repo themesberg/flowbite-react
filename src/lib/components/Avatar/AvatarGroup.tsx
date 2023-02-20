@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, PropsWithChildren } from 'react';
 import React from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
 

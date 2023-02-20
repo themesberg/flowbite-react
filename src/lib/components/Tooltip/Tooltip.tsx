@@ -1,20 +1,21 @@
 import type { Placement } from '@floating-ui/core';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { Floating, FlowbiteFloatingTheme } from '../Floating';
+import type { FlowbiteFloatingTheme } from '../Floating';
+import { Floating } from '../Floating';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export interface FlowbiteTooltipTheme extends FlowbiteFloatingTheme {}
+export type FlowbiteTooltipTheme = FlowbiteFloatingTheme;
 
 export interface TooltipProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
-  content: ReactNode;
-  placement?: 'auto' | Placement;
-  trigger?: 'hover' | 'click';
-  style?: 'dark' | 'light' | 'auto';
   animation?: false | `duration-${number}`;
   arrow?: boolean;
+  content: ReactNode;
+  placement?: 'auto' | Placement;
+  style?: 'dark' | 'light' | 'auto';
   theme?: DeepPartial<FlowbiteTooltipTheme>;
+  trigger?: 'hover' | 'click';
 }
 
 /**
@@ -24,25 +25,25 @@ export const Tooltip: FC<TooltipProps> = ({
   animation = 'duration-300',
   arrow = true,
   children,
+  className,
   content,
   placement = 'top',
   style = 'dark',
-  trigger = 'hover',
-  className,
   theme: customTheme = {},
+  trigger = 'hover',
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.tooltip, customTheme);
 
   return (
     <Floating
-      content={content}
-      style={style}
       animation={animation}
-      placement={placement}
       arrow={arrow}
-      trigger={trigger}
+      content={content}
+      placement={placement}
+      style={style}
       theme={theme}
+      trigger={trigger}
       className={className}
       {...props}
     >

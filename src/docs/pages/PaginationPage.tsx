@@ -1,10 +1,10 @@
 import type { FC } from 'react';
 import { useState } from 'react';
-import { Pagination } from '../../lib/components/Pagination';
+import { Pagination } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
 
-const PaginationPage: FC = (): JSX.Element => {
+const PaginationPage: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const onPageChange = (page: number) => {

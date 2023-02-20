@@ -1,25 +1,12 @@
 import classNames from 'classnames';
-import {
-  Children,
-  ComponentProps,
-  ForwardedRef,
-  forwardRef,
-  KeyboardEvent,
-  PropsWithChildren,
-  ReactElement,
-  useEffect,
-  useId,
-  useImperativeHandle,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
-import { DeepPartial } from '..';
+import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, ReactElement } from 'react';
+import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { TabItemProps } from './TabItem';
-import { TabItem } from './TabItem';
+import TabItem from './TabItem';
 
 export interface FlowbiteTabTheme {
   base: string;
@@ -37,9 +24,9 @@ export interface FlowbiteTabTheme {
 
 export interface TabStyles {
   default: string;
-  underline: string;
-  pills: string;
   fullWidth: string;
+  pills: string;
+  underline: string;
 }
 
 export interface TabStyleItemProps {
@@ -188,5 +175,4 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
 );
 
 TabsComponent.displayName = 'Tabs.Group';
-TabItem.displayName = 'Tabs.Item';
 export const Tabs = { Group: TabsComponent, Item: TabItem };

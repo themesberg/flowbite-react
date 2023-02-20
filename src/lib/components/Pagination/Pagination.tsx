@@ -1,11 +1,12 @@
 import classNames from 'classnames';
-import type { ComponentProps, PropsWithChildren, ReactNode } from 'react';
+import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import range from '../../helpers/range';
 import { useTheme } from '../Flowbite/ThemeContext';
-import PaginationButton, { FlowbitePaginationButtonTheme, PaginationButtonProps } from './PaginationButton';
+import type { FlowbitePaginationButtonTheme, PaginationButtonProps } from './PaginationButton';
+import PaginationButton from './PaginationButton';
 
 export interface FlowbitePaginationTheme {
   base: string;
@@ -37,34 +38,31 @@ export interface FlowbitePaginationNavigationTheme {
   icon: string;
 }
 
-export interface PaginationProps extends PropsWithChildren<Pagination> {
-  theme?: DeepPartial<FlowbitePaginationTheme>;
-}
-
-interface Pagination extends ComponentProps<'nav'> {
+export interface PaginationProps extends PropsWithChildren, ComponentProps<'nav'> {
   currentPage: number;
   layout?: 'navigation' | 'pagination' | 'table';
-  onPageChange: (page: number) => void;
-  showIcons?: boolean;
-  totalPages: number;
-  previousLabel?: string;
   nextLabel?: string;
+  onPageChange: (page: number) => void;
+  previousLabel?: string;
   renderPaginationButton?: (props: PaginationButtonProps) => ReactNode;
+  showIcons?: boolean;
+  theme?: DeepPartial<FlowbitePaginationTheme>;
+  totalPages: number;
 }
 
-export const Pagination = ({
+const PaginationComponent: FC<PaginationProps> = ({
+  className,
   currentPage,
   layout = 'pagination',
-  onPageChange,
-  showIcons: showIcon = false,
-  totalPages,
-  previousLabel = 'Previous',
   nextLabel = 'Next',
-  className,
+  onPageChange,
+  previousLabel = 'Previous',
   renderPaginationButton = (props) => <PaginationButton {...props} />,
+  showIcons: showIcon = false,
   theme: customTheme = {},
+  totalPages,
   ...props
-}: PaginationProps): JSX.Element => {
+}) => {
   const theme = mergeDeep(useTheme().theme.pagination, customTheme);
 
   const firstPage = Math.max(1, currentPage - 3);
@@ -101,20 +99,18 @@ export const Pagination = ({
           })}
         </li>
         {layout === 'pagination' &&
-          range(firstPage, lastPage).map(
-            (page: number): JSX.Element => (
-              <li aria-current={page === currentPage ? 'page' : undefined} key={page}>
-                {renderPaginationButton({
-                  className: classNames(theme.pages.selector.base, {
-                    [theme.pages.selector.active]: currentPage === page,
-                  }),
-                  active: page === currentPage,
-                  onClick: () => onPageChange(page),
-                  children: page,
-                })}
-              </li>
-            ),
-          )}
+          range(firstPage, lastPage).map((page: number) => (
+            <li aria-current={page === currentPage ? 'page' : undefined} key={page}>
+              {renderPaginationButton({
+                className: classNames(theme.pages.selector.base, {
+                  [theme.pages.selector.active]: currentPage === page,
+                }),
+                active: page === currentPage,
+                onClick: () => onPageChange(page),
+                children: page,
+              })}
+            </li>
+          ))}
         <li>
           {renderPaginationButton({
             className: classNames(theme.pages.next.base, showIcon && theme.pages.showIcon),
@@ -132,4 +128,7 @@ export const Pagination = ({
   );
 };
 
-Pagination.Button = PaginationButton;
+PaginationComponent.displayName = 'Pagination';
+export const Pagination = Object.assign(PaginationComponent, {
+  Button: PaginationButton,
+});

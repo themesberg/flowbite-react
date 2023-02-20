@@ -1,7 +1,9 @@
-import { FC, useRef, useState } from 'react';
+import type { FC } from 'react';
+import { useRef, useState } from 'react';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
-import { Button, Tabs, TabsRef } from '../../lib';
+import type { TabsRef } from '../../lib';
+import { Button, Tabs } from '../../lib';
 import type { CodeExample } from './DemoPage';
 import { DemoPage } from './DemoPage';
 

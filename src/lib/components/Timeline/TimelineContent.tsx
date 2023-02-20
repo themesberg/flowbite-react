@@ -1,12 +1,12 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
-import { FlowbiteTimelineBodyTheme } from './TimelineBody';
+import type { FlowbiteTimelineBodyTheme } from './TimelineBody';
 import { useTimelineContext } from './TimelineContext';
-import { FlowbiteTimelineTimeTheme } from './TimelineTime';
-import { FlowbiteTimelineTitleTheme } from './TimelineTitle';
+import type { FlowbiteTimelineTimeTheme } from './TimelineTime';
+import type { FlowbiteTimelineTitleTheme } from './TimelineTitle';
 
 export interface FlowbiteTimelineContentTheme
   extends FlowbiteTimelineBodyTheme,

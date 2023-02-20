@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { ButtonProps } from '../Button';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -32,7 +32,7 @@ const ButtonGroup: FC<ButtonGroupProps> = ({
   pill,
   theme: customTheme = {},
   ...props
-}: ButtonGroupProps): JSX.Element => {
+}: ButtonGroupProps) => {
   const items = useMemo(
     () =>
       Children.map(children as ReactElement<ButtonProps>[], (child, index) =>

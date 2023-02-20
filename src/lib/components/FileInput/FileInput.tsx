@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { HelperText } from '../HelperText';
@@ -23,19 +23,19 @@ export interface FlowbiteFileInputFieldTheme {
 
 export interface FlowbiteFileInputFieldInputTheme {
   base: string;
-  sizes: TextInputSizes;
   colors: TextInputColors;
+  sizes: TextInputSizes;
 }
 
 export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | 'ref' | 'color'> {
-  sizing?: keyof TextInputSizes;
-  helperText?: ReactNode;
   color?: keyof TextInputColors;
+  helperText?: ReactNode;
+  sizing?: keyof TextInputSizes;
   theme?: DeepPartial<FlowbiteFileInputTheme>;
 }
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ sizing = 'md', helperText, color = 'gray', className, theme: customTheme = {}, ...props }, ref) => {
+  ({ className, color = 'gray', helperText, sizing = 'md', theme: customTheme = {}, ...props }, ref) => {
     const theme = mergeDeep(useTheme().theme.fileInput, customTheme);
 
     return (
@@ -59,5 +59,3 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
     );
   },
 );
-
-FileInput.displayName = 'FileInput';

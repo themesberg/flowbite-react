@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
-import React, { Children, useMemo, useState } from 'react';
+import React, { Children, useCallback, useMemo, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { uuid } from '../../helpers/uuid';
 import type { ButtonProps } from '../Button';
@@ -9,9 +10,12 @@ import { Button } from '../Button';
 import type { FloatingProps, FlowbiteFloatingTheme } from '../Floating';
 import { Floating } from '../Floating';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { DropdownDivider, FlowbiteDropdownDividerTheme } from './DropdownDivider';
-import { DropdownHeader, FlowbiteDropdownHeaderTheme } from './DropdownHeader';
-import { DropdownItem, FlowbiteDropdownItemTheme } from './DropdownItem';
+import type { FlowbiteDropdownDividerTheme } from './DropdownDivider';
+import { DropdownDivider } from './DropdownDivider';
+import type { FlowbiteDropdownHeaderTheme } from './DropdownHeader';
+import { DropdownHeader } from './DropdownHeader';
+import type { FlowbiteDropdownItemTheme } from './DropdownItem';
+import { DropdownItem } from './DropdownItem';
 
 export interface FlowbiteDropdownFloatingTheme
   extends FlowbiteFloatingTheme,
@@ -73,30 +77,35 @@ const DropdownComponent: FC<DropdownProps> = ({
   const [closeRequestKey, setCloseRequestKey] = useState<string | undefined>(undefined);
 
   // Extends DropdownItem's onClick to trigger a close request to the Floating component
-  const attachCloseListener: any = (node: ReactNode) => {
-    if (!React.isValidElement(node)) return node;
-    if ((node as ReactElement).type === DropdownItem)
-      return React.cloneElement(node, {
-        onClick: () => {
-          node.props.onClick?.();
-          dismissOnClick && setCloseRequestKey(uuid());
-        },
-      } as any);
-    if (node.props.children && typeof node.props.children === 'object') {
-      return React.cloneElement(node, {
-        // @ts-ignore
-        children: Children.map(node.props.children, attachCloseListener),
-      });
-    }
-    return node;
-  };
+  const attachCloseListener = useCallback(
+    // @ts-ignore TODO: Rewrite Dropdown
+    (node: ReactNode) => {
+      if (!React.isValidElement(node)) return node;
+      if ((node as ReactElement).type === DropdownItem)
+        return React.cloneElement(node, {
+          // @ts-ignore TODO: Rewrite Dropdown
+          onClick: () => {
+            node.props.onClick?.();
+            dismissOnClick && setCloseRequestKey(uuid());
+          },
+        });
+      if (node.props.children && typeof node.props.children === 'object') {
+        return React.cloneElement(node, {
+          // @ts-ignore TODO: Rewrite Dropdown
+          children: Children.map(node.props.children, attachCloseListener),
+        });
+      }
+      return node;
+    },
+    [dismissOnClick],
+  );
 
   const content = useMemo(
     () => <ul className={theme.content}>{Children.map(children, attachCloseListener)}</ul>,
-    [children, theme],
+    [attachCloseListener, children, theme.content],
   );
 
-  const TriggerWrapper: FC<ButtonProps> = ({ children }): JSX.Element =>
+  const TriggerWrapper: FC<ButtonProps> = ({ children }) =>
     inline ? <button className={theme.inlineWrapper}>{children}</button> : <Button {...buttonProps}>{children}</Button>;
 
   return (
@@ -119,7 +128,6 @@ const DropdownComponent: FC<DropdownProps> = ({
   );
 };
 
-DropdownComponent.displayName = 'Dropdown';
 DropdownItem.displayName = 'Dropdown.Item';
 DropdownHeader.displayName = 'Dropdown.Header';
 DropdownDivider.displayName = 'Dropdown.Divider';

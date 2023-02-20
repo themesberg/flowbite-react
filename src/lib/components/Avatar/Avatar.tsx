@@ -1,11 +1,13 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
-import AvatarGroup, { FlowbiteAvatarGroupTheme } from './AvatarGroup';
-import AvatarGroupCounter, { FlowbiteAvatarGroupCounterTheme } from './AvatarGroupCounter';
+import type { FlowbiteAvatarGroupTheme } from './AvatarGroup';
+import AvatarGroup from './AvatarGroup';
+import type { FlowbiteAvatarGroupCounterTheme } from './AvatarGroupCounter';
+import AvatarGroupCounter from './AvatarGroupCounter';
 
 export interface FlowbiteAvatarTheme {
   root: FlowbiteAvatarRootTheme;
@@ -76,15 +78,15 @@ const AvatarComponent: FC<AvatarProps> = ({
   alt = '',
   bordered = false,
   children,
-  img,
+  className,
   color = 'light',
+  img,
+  placeholderInitials = '',
   rounded = false,
   size = 'md',
   stacked = false,
   status,
   statusPosition = 'top-left',
-  placeholderInitials = '',
-  className,
   theme: customTheme = {},
   ...props
 }) => {

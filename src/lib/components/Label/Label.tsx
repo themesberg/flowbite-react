@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteStateColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -22,20 +22,20 @@ export interface LabelColors extends FlowbiteStateColors {
 
 export interface LabelProps extends PropsWithChildren<Omit<ComponentProps<'label'>, 'color'>> {
   color?: keyof LabelColors;
-  value?: string;
   disabled?: boolean;
   theme?: DeepPartial<FlowbiteLabelTheme>;
+  value?: string;
 }
 
 export const Label: FC<LabelProps> = ({
   children,
+  className,
   color = 'default',
   disabled = false,
-  value,
-  className,
   theme: customTheme = {},
+  value,
   ...props
-}): JSX.Element => {
+}) => {
   const theme = mergeDeep(useTheme().theme.label, customTheme);
 
   return (

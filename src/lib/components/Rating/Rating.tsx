@@ -1,11 +1,13 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { FlowbiteRatingAdvancedTheme, RatingAdvanced } from './RatingAdvanced';
+import type { FlowbiteRatingAdvancedTheme } from './RatingAdvanced';
+import { RatingAdvanced } from './RatingAdvanced';
 import { RatingContext } from './RatingContext';
-import { FlowbiteRatingStarTheme, FlowbiteStarSizes, RatingStar } from './RatingStar';
+import type { FlowbiteRatingStarTheme, FlowbiteStarSizes } from './RatingStar';
+import { RatingStar } from './RatingStar';
 
 export interface FlowbiteRatingTheme {
   root: {

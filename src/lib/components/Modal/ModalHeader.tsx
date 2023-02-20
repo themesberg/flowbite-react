@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import { HiOutlineX } from 'react-icons/hi';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useModalContext } from './ModalContext';
@@ -17,15 +17,17 @@ export interface FlowbiteModalHeaderTheme {
 }
 
 export interface ModalHeaderProps extends PropsWithChildren<ComponentProps<'div'>> {
+  as?: ElementType;
   theme?: DeepPartial<FlowbiteModalHeaderTheme>;
 }
 
 export const ModalHeader: FC<ModalHeaderProps> = ({
+  as: Component = 'h3',
   children,
   className,
   theme: customTheme = {},
   ...props
-}): JSX.Element => {
+}) => {
   const theme = mergeDeep(useTheme().theme.modal.header, customTheme);
   const { popup, onClose } = useModalContext();
 
@@ -40,7 +42,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
       )}
       {...props}
     >
-      <h3 className={theme.title}>{children}</h3>
+      <Component className={theme.title}>{children}</Component>
       <button aria-label="Close" className={theme.close.base} type="button" onClick={onClose}>
         <HiOutlineX aria-hidden className={theme.close.icon} />
       </button>

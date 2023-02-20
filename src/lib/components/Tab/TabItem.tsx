@@ -7,4 +7,7 @@ export interface TabItemProps extends PropsWithChildren, Omit<ComponentProps<'di
   title: ReactNode;
 }
 
-export const TabItem: FC<TabItemProps> = ({ children, className }) => <div className={className}>{children}</div>;
+const TabItem: FC<TabItemProps> = ({ children, className }) => <div className={className}>{children}</div>;
+
+TabItem.displayName = 'Tabs.Item';
+export default TabItem;

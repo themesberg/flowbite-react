@@ -1,15 +1,21 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { FlowbiteFooterBrandTheme, FooterBrand } from './FooterBrand';
-import { FlowbiteFooterCopyrightTheme, FooterCopyright } from './FooterCopyright';
-import { FlowbiteFooterDividerTheme, FooterDivider } from './FooterDivider';
-import { FlowbiteFooterIconTheme, FooterIcon } from './FooterIcon';
+import type { FlowbiteFooterBrandTheme } from './FooterBrand';
+import { FooterBrand } from './FooterBrand';
+import type { FlowbiteFooterCopyrightTheme } from './FooterCopyright';
+import { FooterCopyright } from './FooterCopyright';
+import type { FlowbiteFooterDividerTheme } from './FooterDivider';
+import { FooterDivider } from './FooterDivider';
+import type { FlowbiteFooterIconTheme } from './FooterIcon';
+import { FooterIcon } from './FooterIcon';
 import { FooterLink } from './FooterLink';
-import { FlowbiteFooterLinkGroupTheme, FooterLinkGroup } from './FooterLinkGroup';
-import { FlowbiteFooterTitleTheme, FooterTitle } from './FooterTitle';
+import type { FlowbiteFooterLinkGroupTheme } from './FooterLinkGroup';
+import { FooterLinkGroup } from './FooterLinkGroup';
+import type { FlowbiteFooterTitleTheme } from './FooterTitle';
+import { FooterTitle } from './FooterTitle';
 
 export interface FlowbiteFooterTheme {
   brand: FlowbiteFooterBrandTheme;
@@ -39,13 +45,15 @@ export const FooterComponent: FC<FooterProps> = ({
   className,
   container = false,
   theme: customTheme = {},
-}): JSX.Element => {
+  ...props
+}) => {
   const theme = mergeDeep(useTheme().theme.footer, customTheme);
 
   return (
     <footer
       data-testid="flowbite-footer"
       className={classNames(theme.root.base, bgDark && theme.root.bgDark, container && theme.root.container, className)}
+      {...props}
     >
       {children}
     </footer>

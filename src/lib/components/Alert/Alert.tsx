@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { HiX } from 'react-icons/hi';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -46,6 +46,7 @@ export const Alert: FC<AlertProps> = ({
   rounded = true,
   theme: customTheme = {},
   withBorderAccent,
+  ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.alert, customTheme);
 
@@ -59,6 +60,7 @@ export const Alert: FC<AlertProps> = ({
         className,
       )}
       role="alert"
+      {...props}
     >
       <div className={theme.wrapper} data-testid="flowbite-alert-wrapper">
         {Icon && <Icon className={theme.icon} data-testid="flowbite-alert-icon" />}

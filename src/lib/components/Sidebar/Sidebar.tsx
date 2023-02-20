@@ -4,13 +4,17 @@ import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
-import SidebarCollapse, { FlowbiteSidebarCollapseTheme } from './SidebarCollapse';
+import type { FlowbiteSidebarCollapseTheme } from './SidebarCollapse';
+import SidebarCollapse from './SidebarCollapse';
 import { SidebarContext } from './SidebarContext';
-import SidebarCTA, { FlowbiteSidebarCTATheme } from './SidebarCTA';
-import SidebarItem, { FlowbiteSidebarItemTheme } from './SidebarItem';
+import type { FlowbiteSidebarCTATheme } from './SidebarCTA';
+import SidebarCTA from './SidebarCTA';
+import type { FlowbiteSidebarItemTheme } from './SidebarItem';
+import SidebarItem from './SidebarItem';
 import SidebarItemGroup from './SidebarItemGroup';
 import SidebarItems from './SidebarItems';
-import SidebarLogo, { FlowbiteSidebarLogoTheme } from './SidebarLogo';
+import type { FlowbiteSidebarLogoTheme } from './SidebarLogo';
+import SidebarLogo from './SidebarLogo';
 
 export interface FlowbiteSidebarTheme {
   root: {
