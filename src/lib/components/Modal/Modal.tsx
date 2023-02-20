@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
+import windowExists from '../../helpers/window-exists';
 import { useKeyDown } from '../../hooks';
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
@@ -80,7 +81,8 @@ const ModalComponent: FC<ModalProps> = ({
 
   // If the current value of the ref is not already a child of the root element,
   // append it or replace its parent.
-  if (containerRef.current.parentNode !== root) {
+  if (containerRef.current.parentNode !== root && windowExists()) {
+    root = root || document.body;
     root.appendChild(containerRef.current);
   }
 
