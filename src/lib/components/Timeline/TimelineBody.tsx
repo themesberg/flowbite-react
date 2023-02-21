@@ -16,8 +16,8 @@ export const TimelineBody: FC<TimelineBodyProps> = ({ children, className, theme
   const theme = mergeDeep(useTheme().theme.timeline.item.content, customTheme).body;
 
   return (
-    <p className={classNames(theme, className)} {...props}>
+    <div className={classNames(theme, className)} {...props}>
       {children}
-    </p>
+    </div>
   );
 };
