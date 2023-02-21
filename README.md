@@ -57,21 +57,19 @@ If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite
 
 ## Getting started
 
-To use `flowbite-react`, you just need to setup `flowbite` normally and install `flowbite-react` from `npm`.
+Make sure you have [Node.js](https://nodejs.org/en/) installed.
+
+To use `flowbite-react`, you need to setup [`flowbite`](https://github.com/themesberg/flowbite) and also install `flowbite-react` from `npm` or `yarn`.
 
 `flowbite` can be included as a plugin into an existing Tailwind CSS project.
-
-### Require via `npm`
-
-Make sure that you have <a href="https://nodejs.org/en/" rel="nofollow" >Node.js</a> and <a href="https://tailwindcss.com/" rel="nofollow" >Tailwind CSS</a> installed.
 
 1. Install `flowbite` as a dependency using `npm` by running the following command:
 
 ```bash
-npm i flowbite flowbite-react
+npm i flowbite flowbite-react # or yarn add flowbite flowbite-react
 ```
 
-2. Require `flowbite` as a plugin inside the `tailwind.config.js` file:
+2. Require `flowbite` as a plugin inside the `tailwind.config.js` file, and include content from `flowbite-react`:
 
 ```javascript
 module.exports = {
@@ -80,8 +78,15 @@ module.exports = {
     'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
   ],
   plugins: [..., require('flowbite/plugin')],
+  ...
 };
 ```
+
+## Customize components
+
+You can customize every component in `flowbite-react`. We've provided a few different methods so just about any use case you have should be covered for now. 
+
+See [https://flowbite-react.com/theme](https://flowbite-react.com/theme)
 
 ## Components
 
