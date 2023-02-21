@@ -33,6 +33,8 @@ const theme: FlowbiteTheme = {
     },
   },
   alert: {
+    base: 'flex flex-col gap-2 p-4 text-sm',
+    borderAccent: 'border-t-4',
     closeButton: {
       base: '-mx-1.5 -my-1.5 ml-auto inline-flex h-8 w-8 rounded-lg p-1.5 focus:ring-2',
       icon: 'w-5 h-5',
