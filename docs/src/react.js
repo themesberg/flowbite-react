@@ -39,12 +39,11 @@ const renderExample = () => {
   const Example = getObjProp(mappedExamples, path, null)
   if (!Example) {
     console(`${path} not does not exists at the mapped examples.`)
-    console.log(mappedExamples)
     return
   }
 
   const root = createRoot(container)
-  let store = {} // this is a hack for state
+  // let store = {} // this is a hack for state - not sure if we will need
 
   root.render(
     <Flowbite>

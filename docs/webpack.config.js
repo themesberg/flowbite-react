@@ -50,7 +50,14 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css']
+    extensions: ['', '.js', '.jsx', '.css'],
+    alias: {
+      // @TODO improve this
+      flowbite: path.resolve(__dirname, '../node_modules/flowbite'),
+      "flowbite-react": path.resolve(__dirname, '../lib/esm/index.js'),
+      react: path.resolve(__dirname, '../node_modules/react'),
+      "react-dom": path.resolve(__dirname, '../node_modules/react-dom'),
+    },
   },
   plugins: [
     new MiniCssExtractPlugin(),
