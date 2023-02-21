@@ -1,40 +1,46 @@
 import classNames from 'classnames';
 import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { TextInputSizes } from '../TextInput';
 
 export interface FlowbiteRangeSliderTheme {
+  root: FlowbiteRangeSliderRootTheme;
+  field: FlowbiteRangeSliderFieldTheme;
+}
+
+export interface FlowbiteRangeSliderRootTheme {
   base: string;
-  field: {
+}
+
+export interface FlowbiteRangeSliderFieldTheme {
+  base: string;
+  input: {
     base: string;
-    input: {
-      base: string;
-      sizes: TextInputSizes;
-    };
+    sizes: TextInputSizes;
   };
 }
 
-export interface RangeSliderProps extends Omit<ComponentProps<'input'>, 'type' | 'ref'> {
+export interface RangeSliderProps extends Omit<ComponentProps<'input'>, 'ref' | 'type'> {
   sizing?: keyof TextInputSizes;
   theme?: DeepPartial<FlowbiteRangeSliderTheme>;
 }
 
 export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
-  ({ theme: customTheme = {}, sizing = 'md', className, ...props }, ref) => {
+  ({ className, sizing = 'md', theme: customTheme = {}, ...props }, ref) => {
     const theme = mergeDeep(useTheme().theme.rangeSlider, customTheme);
 
     return (
       <>
-        <div data-testid="flowbite-range-slider" className={classNames(theme.base, className)}>
+        <div data-testid="flowbite-range-slider" className={classNames(theme.root.base, className)}>
           <div className={theme.field.base}>
             <input
+              ref={ref}
+              type="range"
               className={classNames(theme.field.input.base, theme.field.input.sizes[sizing])}
               {...props}
-              type="range"
-              ref={ref}
             />
           </div>
         </div>
@@ -42,5 +48,3 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
     );
   },
 );
-
-RangeSlider.displayName = 'RangeSlider';

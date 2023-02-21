@@ -11,14 +11,14 @@ export default {
   component: ToggleSwitch,
 } as Meta;
 
-const Template: Story<ToggleSwitchProps> = ({ checked, onChange, ...args }) => {
+const Template: Story<ToggleSwitchProps> = ({ checked, ...args }) => {
   const [switchChecked, setSwitchChecked] = useState(checked);
 
   const handleChange = () => {
     setSwitchChecked((currentCheck) => !currentCheck);
   };
 
-  return <ToggleSwitch checked={switchChecked} onChange={handleChange} {...args} />;
+  return <ToggleSwitch {...args} checked={switchChecked} onChange={handleChange} />;
 };
 
 export const DefaultToggleSwitch = Template.bind({});

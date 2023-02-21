@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { ButtonProps } from '../Button';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -16,15 +18,21 @@ export interface PositionInButtonGroup {
   end: string;
 }
 
-export type ButtonGroupProps = PropsWithChildren<ComponentProps<'div'> & Pick<ButtonProps, 'outline' | 'pill'>>;
+export interface ButtonGroupProps
+  extends ComponentProps<'div'>,
+    PropsWithChildren,
+    Pick<ButtonProps, 'outline' | 'pill'> {
+  theme?: DeepPartial<FlowbiteButtonGroupTheme>;
+}
 
 const ButtonGroup: FC<ButtonGroupProps> = ({
   children,
+  className,
   outline,
   pill,
-  className,
+  theme: customTheme = {},
   ...props
-}: ButtonGroupProps): JSX.Element => {
+}: ButtonGroupProps) => {
   const items = useMemo(
     () =>
       Children.map(children as ReactElement<ButtonProps>[], (child, index) =>
@@ -37,7 +45,7 @@ const ButtonGroup: FC<ButtonGroupProps> = ({
       ),
     [children, outline, pill],
   );
-  const theme = useTheme().theme.buttonGroup;
+  const theme = mergeDeep(useTheme().theme.buttonGroup, customTheme);
 
   return (
     <div className={classNames(theme.base, className)} role="group" {...props}>

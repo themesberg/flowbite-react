@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import defaultTheme from '../../theme/default';
 import { Flowbite, useTheme } from '../Flowbite';
-import { ThemeContextProps } from './ThemeContext';
+import type { ThemeContextProps } from './ThemeContext';
 
 describe('Components / Flowbite', () => {
   describe('hook / useTheme', () => {
