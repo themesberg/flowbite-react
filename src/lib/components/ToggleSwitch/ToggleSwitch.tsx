@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, KeyboardEvent, MouseEvent } from 'react';
 import { useId } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteToggleSwitchTheme {
@@ -26,25 +26,25 @@ export interface FlowbiteToggleSwitchToggleTheme {
 
 export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
   checked: boolean;
-  label: string;
   color?: FlowbiteColors;
+  label: string;
   onChange: (checked: boolean) => void;
   theme?: DeepPartial<FlowbiteToggleSwitchTheme>;
 };
 
 export const ToggleSwitch: FC<ToggleSwitchProps> = ({
   checked,
+  className,
+  color = 'blue',
   disabled,
   label,
   name,
   onChange,
-  className,
-  color = 'blue',
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.toggleSwitch, customTheme);
   const id = useId();
+  const theme = mergeDeep(useTheme().theme.toggleSwitch, customTheme);
 
   const toggle = (): void => onChange(!checked);
 

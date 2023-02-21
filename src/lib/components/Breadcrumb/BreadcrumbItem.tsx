@@ -1,17 +1,16 @@
 import classNames from 'classnames';
-import { ComponentProps, FC, forwardRef, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { forwardRef } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
+import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteBreadcrumbItemTheme {
   base: string;
   chevron: string;
-  href: {
-    off: string;
-    on: string;
-  };
+  href: FlowbiteBoolean;
   icon: string;
 }
 
@@ -22,7 +21,7 @@ export interface BreadcrumbItemProps extends PropsWithChildren<Omit<ComponentPro
 }
 
 const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, BreadcrumbItemProps>(
-  ({ children, className, href, icon: Icon, theme: customTheme = {}, ...props }, ref): JSX.Element => {
+  ({ children, className, href, icon: Icon, theme: customTheme = {}, ...props }, ref) => {
     const isLink = typeof href !== 'undefined';
     const Component = isLink ? 'a' : 'span';
 

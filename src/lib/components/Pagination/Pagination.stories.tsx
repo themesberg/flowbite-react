@@ -15,12 +15,7 @@ export default {
   ],
 } as Meta;
 
-const Template: Story<PaginationProps> = ({
-  currentPage = 1,
-  layout = 'pagination',
-  totalPages = 100,
-  ...rest
-}): JSX.Element => {
+const Template: Story<PaginationProps> = ({ currentPage = 1, layout = 'pagination', totalPages = 100, ...rest }) => {
   const [page, setPage] = useState(currentPage);
 
   const onPageChange = (page: number) => {

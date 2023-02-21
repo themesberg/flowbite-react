@@ -103,12 +103,9 @@
     "cypress-axe": "^1.0.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.21.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.4",
-    "eslint-plugin-tailwindcss": "^3.6.0",
     "flowbite": "^1.5.4",
     "husky": "^8.0.1",
     "jsdom": "^20.0.1",
@@ -116,6 +113,7 @@
     "postcss": "^8.4.18",
     "prettier": "^2.7.1",
     "prettier-plugin-organize-imports": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.2.2",
     "react": "^18.2.0",
     "react-app-rewired": "^2.2.1",
     "react-dom": "^18.2.0",
@@ -164,6 +162,43 @@
     "@mdx-js/react": {
       "react": "^18.2.0",
       "react-dom": "^18.2.0"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:storybook/recommended"
+    ],
+    "ignorePatterns": [
+      "/build",
+      "/docs",
+      "/lib",
+      "commitlint.config.js",
+      "config-overrides.js",
+      "lint-staged.js",
+      "postcss.config.js",
+      "tailwind.config.js"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "project": [
+        "tsconfig.json",
+        "cypress/tsconfig.json"
+      ]
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "react-hooks",
+      "storybook"
+    ],
+    "root": true,
+    "rules": {
+      "@typescript-eslint/consistent-type-imports": "warn"
     }
   }
 }
