@@ -9,7 +9,7 @@ export default {
   component: Alert,
   argTypes: {
     color: {
-      options: Object.keys(theme.alert.root.color),
+      options: Object.keys(theme.alert.color),
       control: { type: 'inline-radio' },
     },
   },
