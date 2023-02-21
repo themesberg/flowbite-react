@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type {
   FlowbiteBoolean,
   FlowbiteColors,
@@ -18,19 +19,29 @@ export interface FlowbiteButtonTheme {
   disabled: string;
   gradient: ButtonGradientColors;
   gradientDuoTone: ButtonGradientDuoToneColors;
-  inner: {
-    base: string;
-    position: PositionInButtonGroup;
-    outline: string;
-  };
+  inner: FlowbiteButtonInnerTheme;
   label: string;
-  outline: FlowbiteBoolean & {
-    color: ButtonOutlineColors;
-    pill: FlowbiteBoolean;
-  };
+  outline: FlowbiteButtonOutlineTheme;
   pill: FlowbiteBoolean;
   size: ButtonSizes;
 }
+
+export interface FlowbiteButtonInnerTheme {
+  base: string;
+  position: PositionInButtonGroup;
+  outline: string;
+}
+
+export interface FlowbiteButtonOutlineTheme extends FlowbiteBoolean {
+  color: ButtonOutlineColors;
+  pill: FlowbiteBoolean;
+}
+
+export interface ButtonColors
+  extends Pick<FlowbiteColors, 'dark' | 'failure' | 'gray' | 'info' | 'light' | 'purple' | 'success' | 'warning'> {
+  [key: string]: string;
+}
+
 export interface ButtonGradientColors extends FlowbiteGradientColors {
   [key: string]: string;
 }
@@ -49,46 +60,51 @@ export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'x
 
 export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'ref'> {
   color?: keyof FlowbiteColors;
+  fullSized?: boolean;
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
   gradientMonochrome?: keyof ButtonGradientColors;
   href?: string;
   label?: ReactNode;
   outline?: boolean;
-  fullSized?: boolean;
   pill?: boolean;
   positionInGroup?: keyof PositionInButtonGroup;
   size?: keyof ButtonSizes;
+  theme?: FlowbiteButtonTheme;
 }
 
 const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   (
     {
       children,
+      className,
       color = 'info',
       disabled = false,
+      fullSized,
       gradientDuoTone,
       gradientMonochrome,
       href,
       label,
       outline = false,
       pill = false,
-      fullSized,
       positionInGroup = 'none',
       size = 'md',
-      className,
+      theme: customTheme = {},
       ...props
     },
     ref,
   ) => {
+    const { buttonGroup: groupTheme, button: theme } = mergeDeep(useTheme().theme, customTheme);
+
     const isLink = typeof href !== 'undefined';
-
-    const { buttonGroup: groupTheme, button: theme } = useTheme().theme;
-
     const Component = isLink ? 'a' : 'button';
     const theirProps = props as object;
 
     return (
       <Component
+        disabled={disabled}
+        href={href}
+        type={isLink ? undefined : 'button'}
+        ref={ref as never}
         className={classNames(
           disabled && theme.disabled,
           !gradientDuoTone && !gradientMonochrome && theme.color[color],
@@ -101,10 +117,6 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
           fullSized && theme.fullSized,
           className,
         )}
-        disabled={disabled}
-        href={href}
-        type={isLink ? undefined : 'button'}
-        ref={ref as never}
         {...theirProps}
       >
         <span
@@ -120,7 +132,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
           <>
             {typeof children !== 'undefined' && children}
             {typeof label !== 'undefined' && (
-              <span className={theme.label} data-testid="flowbite-button-label">
+              <span data-testid="flowbite-button-label" className={theme.label}>
                 {label}
               </span>
             )}

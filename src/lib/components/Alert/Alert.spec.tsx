@@ -1,11 +1,13 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FC, useState } from 'react';
+import type { FC } from 'react';
+import { useState } from 'react';
 import { HiEye, HiHeart, HiInformationCircle } from 'react-icons/hi';
 import { describe, expect, it, vi } from 'vitest';
 import { Flowbite } from '../Flowbite';
 
-import { Alert, AlertProps } from './Alert';
+import type { AlertProps } from './Alert';
+import { Alert } from './Alert';
 
 describe.concurrent('Components / Alert', () => {
   describe.concurrent('A11y', () => {
@@ -19,9 +21,7 @@ describe.concurrent('Components / Alert', () => {
       it('should use custom `base` classes', () => {
         const theme = {
           alert: {
-            root: {
-              base: 'text-purple-100',
-            },
+            base: 'text-purple-100',
           },
         };
         render(
@@ -36,9 +36,7 @@ describe.concurrent('Components / Alert', () => {
       it('should use custom `borderAccent` classes', () => {
         const theme = {
           alert: {
-            root: {
-              borderAccent: 'border-t-4 border-purple-500',
-            },
+            borderAccent: 'border-t-4 border-purple-500',
           },
         };
         render(
@@ -53,9 +51,7 @@ describe.concurrent('Components / Alert', () => {
       it('should use custom `wrapper` classes', () => {
         const theme = {
           alert: {
-            root: {
-              wrapper: 'flex items-center',
-            },
+            wrapper: 'flex items-center',
           },
         };
         render(
@@ -70,15 +66,13 @@ describe.concurrent('Components / Alert', () => {
       it('should use custom `color` classes', () => {
         const theme = {
           alert: {
-            root: {
-              color: {
-                info: 'text-purple-700 bg-purple-100 border-purple-500 dark:bg-purple-200 dark:text-purple-800',
-              },
-            },
             closeButton: {
               color: {
                 info: 'text-purple-500 hover:bg-purple-200 dark:text-purple-600 dark:hover:text-purple-300',
               },
+            },
+            color: {
+              info: 'text-purple-700 bg-purple-100 border-purple-500 dark:bg-purple-200 dark:text-purple-800',
             },
           },
         };
@@ -99,9 +93,7 @@ describe.concurrent('Components / Alert', () => {
       it('should use custom `icon`', () => {
         const theme = {
           alert: {
-            root: {
-              icon: 'alert-custom-icon',
-            },
+            icon: 'alert-custom-icon',
           },
         };
         render(
@@ -116,9 +108,7 @@ describe.concurrent('Components / Alert', () => {
       it('should show custom `rounded` class', () => {
         const theme = {
           alert: {
-            root: {
-              rounded: 'rounded',
-            },
+            rounded: 'rounded',
           },
         };
         render(

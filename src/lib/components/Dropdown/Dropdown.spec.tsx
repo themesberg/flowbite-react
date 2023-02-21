@@ -1,6 +1,6 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { describe, expect, it } from 'vitest';
 import { Dropdown } from './Dropdown';
 
@@ -61,7 +61,7 @@ const TestDropdown: FC<{ dismissOnClick?: boolean }> = ({ dismissOnClick = true 
   <Dropdown label="Dropdown button" placement="right" dismissOnClick={dismissOnClick}>
     <Dropdown.Header>
       <span className="block text-sm">Bonnie Green</span>
-      <span className="block text-sm font-medium truncate">name@flowbite.com</span>
+      <span className="block truncate text-sm font-medium">name@flowbite.com</span>
     </Dropdown.Header>
     <Dropdown.Item>Dashboard</Dropdown.Item>
     <Dropdown.Item>Settings</Dropdown.Item>
