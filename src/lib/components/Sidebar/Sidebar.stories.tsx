@@ -107,7 +107,6 @@ MultiLevelDropdown.args = {
 };
 
 export const DefaultExpandedDropdown = Template.bind({});
-DefaultExpandedDropdown.storyName = 'Default Expanded Dropdown';
 DefaultExpandedDropdown.args = {
   children: (
     <>

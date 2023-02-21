@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import type { LinkProps } from 'react-router-dom';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -10,16 +10,16 @@ export interface FlowbiteNavbarBrandTheme {
 }
 
 export interface NavbarBrandProps extends PropsWithChildren<ComponentProps<'a'>>, Partial<Pick<LinkProps, 'to'>> {
-  theme?: DeepPartial<FlowbiteNavbarBrandTheme>;
   as?: ElementType;
   href?: string;
+  theme?: DeepPartial<FlowbiteNavbarBrandTheme>;
 }
 
 export const NavbarBrand: FC<NavbarBrandProps> = ({
-  theme: customTheme = {},
+  as: Component = 'a',
   children,
   className,
-  as: Component = 'a',
+  theme: customTheme = {},
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.navbar.brand, customTheme);

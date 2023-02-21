@@ -8,7 +8,7 @@ export interface AccordionPanelProps extends PropsWithChildren<AccordionProps> {
   setOpen?: () => void;
 }
 
-export const AccordionPanel: FC<AccordionPanelProps> = ({ children, ...props }): JSX.Element => {
+export const AccordionPanel: FC<AccordionPanelProps> = ({ children, ...props }) => {
   const { alwaysOpen } = props;
   const [isOpen, setOpen] = useState(props.isOpen);
 
