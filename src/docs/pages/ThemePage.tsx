@@ -246,7 +246,7 @@ const ReadTheThemeSection: FC = () => {
           {`const theme = useTheme().theme.button; // -> { base: "..", color: { ... }, ... }`}
         </SyntaxHighlighter>
         <SyntaxHighlighter language="tsx" style={dracula}>
-          {`const [mode, setMode, toggleMode] = useThemeMode(usePreferences); // -> ["light", ..]`}
+          {`const [mode, setMode, toggleMode] = useThemeMode(); // -> ["light", ..]`}
         </SyntaxHighlighter>
       </Card>
     </section>
