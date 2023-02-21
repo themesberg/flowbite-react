@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useNavbarContext } from './NavbarContext';
 
@@ -16,20 +16,14 @@ export interface NavbarCollapseProps extends PropsWithChildren<ComponentProps<'d
   theme?: DeepPartial<FlowbiteNavbarCollapseTheme>;
 }
 
-export const NavbarCollapse: FC<NavbarCollapseProps> = ({
-  theme: customTheme = {},
-  children,
-  className,
-  ...props
-}): JSX.Element => {
+export const NavbarCollapse: FC<NavbarCollapseProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
   const { isOpen } = useNavbarContext();
-
   const theme = mergeDeep(useTheme().theme.navbar.collapse, customTheme);
 
   return (
     <div
-      className={classNames(theme.base, theme.hidden[!isOpen ? 'on' : 'off'], className)}
       data-testid="flowbite-navbar-collapse"
+      className={classNames(theme.base, theme.hidden[!isOpen ? 'on' : 'off'], className)}
       {...props}
     >
       <ul className={theme.list}>{children}</ul>

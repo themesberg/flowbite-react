@@ -1,11 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { createRef, FC, forwardRef } from 'react';
+import type { FC } from 'react';
+import { createRef, forwardRef } from 'react';
 import { act } from 'react-dom/test-utils';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
 import { describe, expect, it, vi } from 'vitest';
-import { Tabs, TabsRef } from './Tabs';
+import type { TabsRef } from './Tabs';
+import { Tabs } from './Tabs';
 
 describe('Components / Tabs', () => {
   it('should open tab when clicked', async () => {
@@ -88,7 +90,7 @@ describe('Components / Tabs', () => {
   it('should call onActiveTabChanged when clicked', async () => {
     const user = userEvent.setup();
 
-    const helper = { onActiveTabChange: (_activeTab: number) => {} };
+    const helper = { onActiveTabChange: () => void 0 };
     const spy = vi.spyOn(helper, 'onActiveTabChange');
 
     render(<TestTabs onActiveTabChange={helper.onActiveTabChange} />);
@@ -110,7 +112,7 @@ describe('Components / Tabs', () => {
   it('should open tab and call onActiveTabChanged when setActiveTab is called', async () => {
     const ref = createRef<TabsRef>();
 
-    const helper = { onActiveTabChange: (_activeTab: number) => {} };
+    const helper = { onActiveTabChange: () => void 0 };
     const spy = vi.spyOn(helper, 'onActiveTabChange');
 
     render(<TestTabs ref={ref} onActiveTabChange={helper.onActiveTabChange} />);

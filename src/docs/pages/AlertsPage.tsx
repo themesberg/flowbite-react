@@ -36,7 +36,7 @@ const AlertsPage: FC = () => {
     {
       title: 'Rounded',
       code: (
-        <Alert color="warning" rounded={false}>
+        <Alert color="warning" rounded>
           {alertText}
         </Alert>
       ),

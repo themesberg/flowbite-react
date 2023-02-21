@@ -1,28 +1,29 @@
 import classNames from 'classnames';
-import type { ComponentProps, PropsWithChildren } from 'react';
-import React from 'react';
-import { DeepPartial } from '..';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
 
 export interface FlowbiteAvatarGroupCounterTheme {
-  root: FlowbiteAvatarGroupCounterRootTheme;
-}
-
-export interface FlowbiteAvatarGroupCounterRootTheme {
   base: string;
 }
 
 export interface AvatarGroupCounterProps extends PropsWithChildren<ComponentProps<'a'>> {
+  theme?: DeepPartial<FlowbiteAvatarGroupCounterTheme>;
   total?: number;
-  theme?: DeepPartial<FlowbiteAvatarGroupCounterRootTheme>;
 }
 
-const AvatarGroupCounter: React.FC<AvatarGroupCounterProps> = ({ total, href, className, theme: customTheme = {} }) => {
-  const theme = mergeDeep(useTheme().theme.avatarGroupCounter.root, customTheme);
+const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({
+  className,
+  href,
+  theme: customTheme = {},
+  total,
+  ...props
+}) => {
+  const theme = mergeDeep(useTheme().theme.avatar.groupCounter, customTheme);
 
   return (
-    <a className={classNames(theme.base, className)} href={href}>
+    <a href={href} className={classNames(theme.base, className)} {...props}>
       +{total}
     </a>
   );

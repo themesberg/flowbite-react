@@ -1,32 +1,34 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import type { FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
+import type { FlowbiteAvatarGroupTheme } from './AvatarGroup';
 import AvatarGroup from './AvatarGroup';
+import type { FlowbiteAvatarGroupCounterTheme } from './AvatarGroupCounter';
 import AvatarGroupCounter from './AvatarGroupCounter';
 
 export interface FlowbiteAvatarTheme {
   root: FlowbiteAvatarRootTheme;
-  img: FlowbiteAvatarImageTheme;
-  status: FlowbiteAvatarStatusTheme;
-  initials: FlowbiteAvatarInitialsTheme;
+  group: FlowbiteAvatarGroupTheme;
+  groupCounter: FlowbiteAvatarGroupCounterTheme;
 }
 
 export interface FlowbiteAvatarRootTheme {
   base: string;
   bordered: string;
   color: AvatarColors;
+  img: FlowbiteAvatarImageTheme;
+  initials: FlowbiteAvatarInitialsTheme;
   rounded: string;
   size: AvatarSizes;
   stacked: string;
+  status: FlowbiteAvatarStatusTheme;
   statusPosition: FlowbitePositions;
 }
 
-export interface FlowbiteAvatarImageTheme {
-  off: string;
-  on: string;
+export interface FlowbiteAvatarImageTheme extends FlowbiteBoolean {
   placeholder: string;
 }
 
@@ -76,15 +78,15 @@ const AvatarComponent: FC<AvatarProps> = ({
   alt = '',
   bordered = false,
   children,
-  img,
+  className,
   color = 'light',
+  img,
+  placeholderInitials = '',
   rounded = false,
   size = 'md',
   stacked = false,
   status,
   statusPosition = 'top-left',
-  placeholderInitials = '',
-  className,
   theme: customTheme = {},
   ...props
 }) => {
@@ -95,11 +97,15 @@ const AvatarComponent: FC<AvatarProps> = ({
     bordered && theme.root.color[color],
     rounded && theme.root.rounded,
     stacked && theme.root.stacked,
-    theme.img.on,
+    theme.root.img.on,
     theme.root.size[size],
   );
 
-  const imgProps = { alt, className: classNames(imgClassName, theme.img.on), 'data-testid': 'flowbite-avatar-img' };
+  const imgProps = {
+    alt,
+    className: classNames(imgClassName, theme.root.img.on),
+    'data-testid': 'flowbite-avatar-img',
+  };
   return (
     <div className={classNames(theme.root.base, className)} data-testid="flowbite-avatar" {...props}>
       <div className="relative">
@@ -112,8 +118,8 @@ const AvatarComponent: FC<AvatarProps> = ({
         ) : placeholderInitials ? (
           <div
             className={classNames(
-              theme.img.off,
-              theme.initials.base,
+              theme.root.img.off,
+              theme.root.initials.base,
               rounded && theme.root.rounded,
               stacked && theme.root.stacked,
               bordered && theme.root.bordered,
@@ -121,14 +127,17 @@ const AvatarComponent: FC<AvatarProps> = ({
             )}
             data-testid="flowbite-avatar-initials-placeholder"
           >
-            <span className={classNames(theme.initials.text)} data-testid="flowbite-avatar-initials-placeholder-text">
+            <span
+              className={classNames(theme.root.initials.text)}
+              data-testid="flowbite-avatar-initials-placeholder-text"
+            >
               {placeholderInitials}
             </span>
           </div>
         ) : (
-          <div className={classNames(imgClassName, theme.img.off)} data-testid="flowbite-avatar-img">
+          <div className={classNames(imgClassName, theme.root.img.off)} data-testid="flowbite-avatar-img">
             <svg
-              className={theme.img.placeholder}
+              className={theme.root.img.placeholder}
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +149,11 @@ const AvatarComponent: FC<AvatarProps> = ({
         {status && (
           <span
             data-testid="flowbite-avatar-status"
-            className={classNames(theme.status.base, theme.status[status], theme.root.statusPosition[statusPosition])}
+            className={classNames(
+              theme.root.status.base,
+              theme.root.status[status],
+              theme.root.statusPosition[statusPosition],
+            )}
           />
         )}
       </div>

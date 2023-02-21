@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import type { ComponentProps, ReactNode } from 'react';
 import { forwardRef } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { HelperText } from '../HelperText';
@@ -16,14 +18,16 @@ export interface TextareaColors extends Pick<FlowbiteColors, 'gray' | 'info' | '
 }
 
 export interface TextareaProps extends Omit<ComponentProps<'textarea'>, 'color' | 'ref'> {
-  shadow?: boolean;
-  helperText?: ReactNode;
   color?: keyof TextareaColors;
+  helperText?: ReactNode;
+  shadow?: boolean;
+  theme?: DeepPartial<FlowbiteTextareaTheme>;
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ shadow, helperText, color = 'gray', className, ...props }, ref) => {
-    const theme = useTheme().theme.textarea;
+  ({ className, color = 'gray', helperText, shadow, theme: customTheme = {}, ...props }, ref) => {
+    const theme = mergeDeep(useTheme().theme.textarea, customTheme);
+
     return (
       <>
         <textarea
