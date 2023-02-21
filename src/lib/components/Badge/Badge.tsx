@@ -12,7 +12,7 @@ export interface FlowbiteBadgeTheme {
 
 export interface FlowbiteBadgeRootTheme {
   base: string;
-  color: BadgeColors;
+  color: FlowbiteColors;
   href: string;
   size: BadgeSizes;
 }
@@ -21,17 +21,12 @@ export interface FlowbiteBadgeIconTheme extends FlowbiteBoolean {
   size: BadgeSizes;
 }
 
-export interface BadgeColors
-  extends Pick<FlowbiteColors, 'failure' | 'gray' | 'indigo' | 'info' | 'pink' | 'purple' | 'success'> {
-  [key: string]: string;
-}
-
 export interface BadgeSizes extends Pick<FlowbiteSizes, 'xs' | 'sm'> {
   [key: string]: string;
 }
 
 export interface BadgeProps extends PropsWithChildren<Omit<ComponentProps<'span'>, 'color'>> {
-  color?: keyof BadgeColors;
+  color?: keyof FlowbiteColors;
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   size?: keyof BadgeSizes;
