@@ -1,11 +1,19 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
 
-export type TableCellProps = PropsWithChildren<ComponentProps<'td'>>;
+export interface FlowbiteTableCellTheme {
+  base: string;
+}
 
-export const TableCell: FC<TableCellProps> = ({ children, className, ...props }) => {
-  const theme = useTheme().theme.table.cell;
+export interface TableCellProps extends PropsWithChildren, ComponentProps<'td'> {
+  theme?: DeepPartial<FlowbiteTableCellTheme>;
+}
+
+export const TableCell: FC<TableCellProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
+  const theme = mergeDeep(useTheme().theme.table.cell, customTheme);
 
   return (
     <td className={classNames(theme.base, className)} {...props}>
