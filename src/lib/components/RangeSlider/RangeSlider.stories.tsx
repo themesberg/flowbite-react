@@ -8,7 +8,7 @@ export default {
   component: RangeSlider,
   decorators: [
     (Story): JSX.Element => (
-      <div className="flex flex-col w-1/2">
+      <div className="flex w-1/2 flex-col">
         <Story />
       </div>
     ),

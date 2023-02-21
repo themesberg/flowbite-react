@@ -140,7 +140,9 @@ describe('Components / Button', () => {
     it('should use `base` classes', () => {
       const theme = {
         rangeSlider: {
-          base: 'dummy-range-slider-base-classes',
+          root: {
+            base: 'dummy-range-slider-base-classes',
+          },
         },
       };
 
@@ -217,7 +219,9 @@ describe('Components / Button', () => {
   describe('Theme as a prop', () => {
     it('should use `base` classes', () => {
       const theme = {
-        base: 'dummy-range-slider-base-classes',
+        root: {
+          base: 'dummy-range-slider-base-classes',
+        },
       };
 
       render(<RangeSlider theme={theme} />);

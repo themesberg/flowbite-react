@@ -1,29 +1,25 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { HiX } from 'react-icons/hi';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteAlertTheme {
-  root: FlowbiteAlertRootTheme;
-  closeButton: FlowbiteAlertCloseButtonTheme;
-}
-
-export interface FlowbiteAlertRootTheme {
   base: string;
   borderAccent: string;
-  wrapper: string;
+  closeButton: FlowbiteAlertCloseButtonTheme;
   color: FlowbiteColors;
   icon: string;
   rounded: string;
+  wrapper: string;
 }
 
 export interface FlowbiteAlertCloseButtonTheme {
   base: string;
-  icon: string;
   color: FlowbiteColors;
+  icon: string;
 }
 
 export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
@@ -32,36 +28,38 @@ export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>
   icon?: FC<ComponentProps<'svg'>>;
   onDismiss?: boolean | (() => void);
   rounded?: boolean;
-  withBorderAccent?: boolean;
   theme?: DeepPartial<FlowbiteAlertTheme>;
+  withBorderAccent?: boolean;
 }
 
 export const Alert: FC<AlertProps> = ({
   additionalContent,
   children,
+  className,
   color = 'info',
   icon: Icon,
   onDismiss,
   rounded = true,
-  withBorderAccent,
-  className,
   theme: customTheme = {},
+  withBorderAccent,
+  ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.alert, customTheme);
 
   return (
     <div
       className={classNames(
-        theme.root.base,
-        theme.root.color[color],
-        rounded && theme.root.rounded,
-        withBorderAccent && theme.root.borderAccent,
+        theme.base,
+        theme.color[color],
+        rounded && theme.rounded,
+        withBorderAccent && theme.borderAccent,
         className,
       )}
       role="alert"
+      {...props}
     >
-      <div className={theme.root.wrapper} data-testid="flowbite-alert-wrapper">
-        {Icon && <Icon className={theme.root.icon} data-testid="flowbite-alert-icon" />}
+      <div className={theme.wrapper} data-testid="flowbite-alert-wrapper">
+        {Icon && <Icon className={theme.icon} data-testid="flowbite-alert-icon" />}
         <div>{children}</div>
         {typeof onDismiss === 'function' && (
           <button

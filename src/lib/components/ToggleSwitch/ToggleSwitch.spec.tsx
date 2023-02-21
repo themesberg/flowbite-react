@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FC, useState } from 'react';
+import type { FC } from 'react';
+import { useState } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { Flowbite } from '../Flowbite';
 import { TextInput } from '../TextInput';

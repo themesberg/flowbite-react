@@ -1,16 +1,29 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
 import { HiX } from 'react-icons/hi';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useToastContext } from './ToastContext';
 
-type ToastToggleProps = ComponentProps<'button'> & {
-  xIcon?: FC<ComponentProps<'svg'>>;
-};
+export interface FlowbiteToastToggleTheme {
+  base: string;
+  icon: string;
+}
 
-export const ToastToggle: FC<ToastToggleProps> = ({ className, xIcon: XIcon = HiX }) => {
+export interface ToastToggleProps extends ComponentProps<'button'> {
+  theme?: DeepPartial<FlowbiteToastToggleTheme>;
+  xIcon?: FC<ComponentProps<'svg'>>;
+}
+
+export const ToastToggle: FC<ToastToggleProps> = ({
+  className,
+  theme: customTheme = {},
+  xIcon: XIcon = HiX,
+  ...props
+}) => {
+  const theme = mergeDeep(useTheme().theme.toast.toggle, customTheme);
   const { duration, isClosed, isRemoved, setIsClosed, setIsRemoved } = useToastContext();
-  const theme = useTheme().theme.toast.toggle;
 
   const handleClick = () => {
     setIsClosed(!isClosed);
@@ -18,8 +31,14 @@ export const ToastToggle: FC<ToastToggleProps> = ({ className, xIcon: XIcon = Hi
   };
 
   return (
-    <button aria-label="Close" onClick={handleClick} type="button" className={classNames(theme.base, className)}>
-      <XIcon className={theme.icon} />
+    <button
+      aria-label="Close"
+      onClick={handleClick}
+      type="button"
+      className={classNames(theme.base, className)}
+      {...props}
+    >
+      <XIcon aria-hidden className={theme.icon} />
     </button>
   );
 };
