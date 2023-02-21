@@ -39,7 +39,7 @@ export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>
 export const Alert: FC<AlertProps> = ({
   additionalContent,
   children,
-  color = 'pink',
+  color = 'info',
   icon: Icon,
   onDismiss,
   rounded = true,
