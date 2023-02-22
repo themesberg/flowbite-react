@@ -67,7 +67,7 @@ PopUp.args = {
         </h3>
         <div className="flex justify-center gap-4">
           <Button color="red" onClick={action('close')}>
-            {"Yes, I'm sure"}
+            Yes, I&apos;m sure
           </Button>
           <Button color="gray" onClick={action('close')}>
             No, cancel
@@ -112,7 +112,7 @@ FormElements.args = {
             <Button>Log in to your account</Button>
           </div>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Not registered?{' '}
+            Not registered?&nbsp;
             <a href="/modal" className="text-blue-700 hover:underline dark:text-blue-500">
               Create account
             </a>
