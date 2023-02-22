@@ -80,15 +80,15 @@ You can also use SVG icons inside the grouped buttons.
 <Button.Group>
   <Button color="gray">
     <HiUserCircle className="mr-3 h-4 w-4" />
-    {' '}Profile
+    Profile
   </Button>
   <Button color="gray">
     <HiAdjustments className="mr-3 h-4 w-4" />
-    {' '}Settings
+    Settings
   </Button>
   <Button color="gray">
     <HiCloudDownload className="mr-3 h-4 w-4" />
-    {' '}Messages
+    Messages
   </Button>
 </Button.Group>
 {{< /example >}}
@@ -144,43 +144,43 @@ Group a series of buttons together on a single line or stack them in a vertical 
   <Button.Group outline={true}>
     <Button color="gray">
       <HiUserCircle className="mr-3 h-4 w-4" />
-      {' '}Profile
+      Profile
     </Button>
     <Button color="gray">
       <HiAdjustments className="mr-3 h-4 w-4" />
-      {' '}Settings
+      Settings
     </Button>
     <Button color="gray">
       <HiCloudDownload className="mr-3 h-4 w-4" />
-      {' '}Messages
+      Messages
     </Button>
   </Button.Group>
   <Button.Group outline={true}>
     <Button gradientMonochrome="info">
       <HiUserCircle className="mr-3 h-4 w-4" />
-      {' '}Profile
+      Profile
     </Button>
     <Button gradientMonochrome="info">
       <HiAdjustments className="mr-3 h-4 w-4" />
-      {' '}Settings
+      Settings
     </Button>
     <Button gradientMonochrome="info">
       <HiCloudDownload className="mr-3 h-4 w-4" />
-      {' '}Messages
+      Messages
     </Button>
   </Button.Group>
   <Button.Group outline={true}>
     <Button gradientDuoTone="cyanToBlue">
       <HiUserCircle className="mr-3 h-4 w-4" />
-      {' '}Profile
+      Profile
     </Button>
     <Button gradientDuoTone="cyanToBlue">
       <HiAdjustments className="mr-3 h-4 w-4" />
-      {' '}Settings
+      Settings
     </Button>
     <Button gradientDuoTone="cyanToBlue">
       <HiCloudDownload className="mr-3 h-4 w-4" />
-      {' '}Messages
+      Messages
     </Button>
   </Button.Group>
 </div>

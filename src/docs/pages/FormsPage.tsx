@@ -104,7 +104,7 @@ const FormsPage: FC = () => {
           <div className="flex items-center gap-2">
             <Checkbox id="agree" />
             <Label htmlFor="agree">
-              I agree with the{' '}
+              I agree with the&nbsp;
               <a href="/forms" className="text-blue-600 hover:underline dark:text-blue-500">
                 terms and conditions
               </a>
@@ -128,7 +128,7 @@ const FormsPage: FC = () => {
             required
             helperText={
               <>
-                We’ll never share your details. Read our{' '}
+                We’ll never share your details. Read our
                 <a href="/forms" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
                   Privacy Policy
                 </a>
@@ -300,7 +300,7 @@ const FormsPage: FC = () => {
           <div className="flex items-center gap-2">
             <Checkbox id="accept" defaultChecked />
             <Label htmlFor="accept">
-              I agree to the{' '}
+              I agree to the&nbsp;
               <a href="/forms" className="text-blue-600 hover:underline dark:text-blue-500">
                 terms and conditions
               </a>
@@ -322,7 +322,7 @@ const FormsPage: FC = () => {
               <Label htmlFor="shipping">Free shipping via Flowbite</Label>
               <div className="text-gray-500 dark:text-gray-300">
                 <span className="text-xs font-normal">
-                  For orders shipped from Flowbite from <span className="font-medium">€ 25</span> in books or{' '}
+                  For orders shipped from Flowbite from <span className="font-medium">€ 25</span> in books or&nbsp;
                   <span>€ 29</span> on other categories
                 </span>
               </div>
