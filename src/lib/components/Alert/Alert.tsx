@@ -10,7 +10,7 @@ export interface FlowbiteAlertTheme {
   base: string;
   borderAccent: string;
   closeButton: FlowbiteAlertCloseButtonTheme;
-  color: AlertColors;
+  color: FlowbiteColors;
   icon: string;
   rounded: string;
   wrapper: string;
@@ -18,17 +18,13 @@ export interface FlowbiteAlertTheme {
 
 export interface FlowbiteAlertCloseButtonTheme {
   base: string;
-  color: AlertColors;
+  color: FlowbiteColors;
   icon: string;
-}
-
-export interface AlertColors extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'success' | 'warning'> {
-  [key: string]: string;
 }
 
 export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
   additionalContent?: ReactNode;
-  color?: keyof AlertColors;
+  color?: keyof FlowbiteColors;
   icon?: FC<ComponentProps<'svg'>>;
   onDismiss?: boolean | (() => void);
   rounded?: boolean;
