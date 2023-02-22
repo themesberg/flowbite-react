@@ -8,6 +8,7 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "node",
+    "noEmit": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
@@ -17,5 +18,7 @@
     "strict": true,
     "target": "ESNext",
     "types": ["@testing-library/jest-dom", "node", "vitest"]
-  }
+  },
+  "exclude": ["/build", "/lib"],
+  "include": ["**/*.js", "**/*.ts", "**/*.tsx"]
 }

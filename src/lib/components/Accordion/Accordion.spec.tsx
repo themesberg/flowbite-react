@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
 import { Flowbite } from '../Flowbite';
@@ -48,6 +48,7 @@ describe('Components / Accordion', () => {
       const user = userEvent.setup();
       render(<TestAccordion />);
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       for (const _ of titles()) {
         await user.tab();
       }
@@ -61,6 +62,7 @@ describe('Components / Accordion', () => {
       const user = userEvent.setup();
       render(<TestAccordion alwaysOpen />);
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       for (const _ of titles()) {
         await user.tab();
       }

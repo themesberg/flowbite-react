@@ -1,40 +1,39 @@
 import classNames from 'classnames';
-import { ComponentProps, FC, MouseEvent, PropsWithChildren, useEffect, useRef } from 'react';
+import type { ComponentProps, FC, MouseEvent, PropsWithChildren } from 'react';
+import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
+import windowExists from '../../helpers/window-exists';
 import { useKeyDown } from '../../hooks';
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
+import type { FlowbiteModalBodyTheme } from './ModalBody';
 import { ModalBody } from './ModalBody';
 import { ModalContext } from './ModalContext';
+import type { FlowbiteModalFooterTheme } from './ModalFooter';
 import { ModalFooter } from './ModalFooter';
+import type { FlowbiteModalHeaderTheme } from './ModalHeader';
 import { ModalHeader } from './ModalHeader';
 
 export interface FlowbiteModalTheme {
+  root: FlowbiteModalRootTheme;
+  content: FlowbiteModalContentTheme;
+  body: FlowbiteModalBodyTheme;
+  header: FlowbiteModalHeaderTheme;
+  footer: FlowbiteModalFooterTheme;
+}
+
+export interface FlowbiteModalRootTheme {
   base: string;
   show: FlowbiteBoolean;
-  content: {
-    base: string;
-    inner: string;
-  };
-  body: {
-    base: string;
-    popup: string;
-  };
-  header: {
-    base: string;
-    popup: string;
-    title: string;
-    close: {
-      base: string;
-      icon: string;
-    };
-  };
-  footer: {
-    base: string;
-    popup: string;
-  };
   sizes: ModalSizes;
   positions: ModalPositions;
+}
+
+export interface FlowbiteModalContentTheme {
+  base: string;
+  inner: string;
 }
 
 export interface ModalPositions extends FlowbitePositions {
@@ -53,21 +52,24 @@ export interface ModalProps extends PropsWithChildren<ComponentProps<'div'>> {
   show?: boolean;
   size?: keyof ModalSizes;
   dismissible?: boolean;
+  theme?: DeepPartial<FlowbiteModalTheme>;
 }
 
 const ModalComponent: FC<ModalProps> = ({
   children,
-  show,
-  root = document.body,
-  popup,
-  size = '2xl',
-  position = 'center',
+  className,
   dismissible = false,
   onClose,
-  className,
+  popup,
+  position = 'center',
+  root,
+  show,
+  size = '2xl',
+  theme: customTheme = {},
   ...props
 }) => {
-  const theme = useTheme().theme.modal;
+  const theme = mergeDeep(useTheme().theme.modal, customTheme);
+
   // Declare a ref to store a reference to a div element.
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -79,7 +81,8 @@ const ModalComponent: FC<ModalProps> = ({
 
   // If the current value of the ref is not already a child of the root element,
   // append it or replace its parent.
-  if (containerRef.current.parentNode !== root) {
+  if (containerRef.current.parentNode !== root && windowExists()) {
+    root = root || document.body;
     root.appendChild(containerRef.current);
   }
 
@@ -112,13 +115,18 @@ const ModalComponent: FC<ModalProps> = ({
     <ModalContext.Provider value={{ popup, onClose }}>
       <div
         aria-hidden={!show}
-        className={classNames(theme.base, theme.positions[position], show ? theme.show.on : theme.show.off, className)}
         data-testid="modal"
-        role="dialog"
         onClick={handleOnClick}
+        role="dialog"
+        className={classNames(
+          theme.root.base,
+          theme.root.positions[position],
+          show ? theme.root.show.on : theme.root.show.off,
+          className,
+        )}
         {...props}
       >
-        <div className={classNames(theme.content.base, theme.sizes[size])}>
+        <div className={classNames(theme.content.base, theme.root.sizes[size])}>
           <div className={theme.content.inner}>{children}</div>
         </div>
       </div>

@@ -1,13 +1,32 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export interface RatingAdvancedProps extends PropsWithChildren<ComponentProps<'div'>> {
-  percentFilled?: number;
+export interface FlowbiteRatingAdvancedTheme {
+  base: string;
+  label: string;
+  progress: {
+    base: string;
+    fill: string;
+    label: string;
+  };
 }
 
-export const RatingAdvanced: FC<RatingAdvancedProps> = ({ percentFilled = 0, children, className, ...props }) => {
-  const theme = useTheme().theme.rating.advanced;
+export interface RatingAdvancedProps extends PropsWithChildren, ComponentProps<'div'> {
+  percentFilled?: number;
+  theme?: DeepPartial<FlowbiteRatingAdvancedTheme>;
+}
+
+export const RatingAdvanced: FC<RatingAdvancedProps> = ({
+  children,
+  className,
+  percentFilled = 0,
+  theme: customTheme = {},
+  ...props
+}) => {
+  const theme = mergeDeep(useTheme().theme.rating.advanced, customTheme);
 
   return (
     <div className={classNames(theme.base, className)} {...props}>

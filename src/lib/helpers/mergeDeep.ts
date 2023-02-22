@@ -32,7 +32,7 @@ export function mergeDeep<T extends object, S extends object>(target: T, source:
     return cloneDeep({ ...target, ...source });
   }
 
-  let output = { ...target, ...source };
+  const output = { ...target, ...source };
 
   if (isObject(source) && isObject(target)) {
     Object.keys(source).forEach((key) => {

@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.8](https://github.com/themesberg/flowbite-react/compare/v0.3.7...v0.3.8) (2023-01-26)
+
+
+### Features
+
+* **accordion:** add collapseAll prop ([#515](https://github.com/themesberg/flowbite-react/issues/515)) ([#524](https://github.com/themesberg/flowbite-react/issues/524)) ([d2206b5](https://github.com/themesberg/flowbite-react/commit/d2206b558f7d3a096f17226361d1c8b0aa52ce52))
+* add theme prop ([#488](https://github.com/themesberg/flowbite-react/issues/488)) ([fb34230](https://github.com/themesberg/flowbite-react/commit/fb34230be5093d2dd5700b7253c08f3ab622f667))
+* **Avatar:** Support overriding the Avatar img element. Fixes [#482](https://github.com/themesberg/flowbite-react/issues/482) ([#483](https://github.com/themesberg/flowbite-react/issues/483)) ([8f87019](https://github.com/themesberg/flowbite-react/commit/8f87019e58a320bc78c07b6a04fd6a99d6376d39))
+* **Navbar:** add as prop ([#526](https://github.com/themesberg/flowbite-react/issues/526)) ([#528](https://github.com/themesberg/flowbite-react/issues/528)) ([21dab1f](https://github.com/themesberg/flowbite-react/commit/21dab1fe576a09d33c8ecd35cd10cf93eb332e9a))
+* **RangeSlider:** range slider with custom theme, storybook, unit test and docs ([#548](https://github.com/themesberg/flowbite-react/issues/548)) ([5f01946](https://github.com/themesberg/flowbite-react/commit/5f0194679a0d6e2d75f7cbe8bdd05ac34d5ad873))
+* TextInput with RightIcon ([#437](https://github.com/themesberg/flowbite-react/issues/437)) ([7d72e1e](https://github.com/themesberg/flowbite-react/commit/7d72e1eef07baf870a84a3e2eca950bb1814a316)), closes [#436](https://github.com/themesberg/flowbite-react/issues/436) [#436](https://github.com/themesberg/flowbite-react/issues/436) [#436](https://github.com/themesberg/flowbite-react/issues/436) [#436](https://github.com/themesberg/flowbite-react/issues/436)
+* **theme:** add tests for alert component ([#549](https://github.com/themesberg/flowbite-react/issues/549)) ([a62e84f](https://github.com/themesberg/flowbite-react/commit/a62e84fed43c0ee39e7b40f4e223ebcb11edd14a))
+* **theme:** add theme support for Checkbox, Radio and ToggleSwitch ([#551](https://github.com/themesberg/flowbite-react/issues/551)) ([05c934a](https://github.com/themesberg/flowbite-react/commit/05c934adb2abf6af44784069388f13af2966ba38))
+* **theme:** adding theme support per component ([#500](https://github.com/themesberg/flowbite-react/issues/500)) ([2f58ae2](https://github.com/themesberg/flowbite-react/commit/2f58ae2139359ef1acf7a417a1ffa337570ce221)), closes [#467](https://github.com/themesberg/flowbite-react/issues/467)
+
+
+### Bug Fixes
+
+* **helpers/mergedeep:** fix potential cases when source or target obects can be mutated ([#476](https://github.com/themesberg/flowbite-react/issues/476)) ([765fedb](https://github.com/themesberg/flowbite-react/commit/765fedb3c966ea93e384339f6e121beda320c22f))
+* **modal:** clear modal container ref on unmount ([#514](https://github.com/themesberg/flowbite-react/issues/514)) ([3387128](https://github.com/themesberg/flowbite-react/commit/338712844bf5d4831004ca3c0660a4180f14202b))
+* **modal:** fix initial focus inside a modal ([#495](https://github.com/themesberg/flowbite-react/issues/495)) ([6965074](https://github.com/themesberg/flowbite-react/commit/69650741dcd0bdde710e6e2a6f3687431e44deaf))
+* render border colors in Avatar with placeholder initials ([#521](https://github.com/themesberg/flowbite-react/issues/521)) ([3aa12c6](https://github.com/themesberg/flowbite-react/commit/3aa12c660a4327c043fae26966b273bbae28ba66))
+* **sidebaritem:** fix sidebar item with next link ([#438](https://github.com/themesberg/flowbite-react/issues/438)) ([32f337b](https://github.com/themesberg/flowbite-react/commit/32f337bea352909b18d803cd7d39b1af46069945))
+* **textinput:** merge issue ([#499](https://github.com/themesberg/flowbite-react/issues/499)) ([f8eca21](https://github.com/themesberg/flowbite-react/commit/f8eca210c85adacd018e9ce9010295858b21251d))
+* timeline-horizontal ([#510](https://github.com/themesberg/flowbite-react/issues/510)) ([89d2ff8](https://github.com/themesberg/flowbite-react/commit/89d2ff8ae64ddf334ec0d718ca9fa3ff3605be85))
+
 ### [0.3.7](https://github.com/themesberg/flowbite-react/compare/v0.3.6...v0.3.7) (2022-12-06)
 
 
