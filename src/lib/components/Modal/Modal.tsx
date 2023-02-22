@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, MouseEvent, PropsWithChildren } from 'react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
@@ -69,6 +69,13 @@ const ModalComponent: FC<ModalProps> = ({
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.modal, customTheme);
+  const [rootUsed, setRootUsed] = useState(root);
+
+  useEffect(() => {
+    if (!rootUsed && document?.body) {
+      setRootUsed(document.body);
+    }
+  }, [rootUsed]);
 
   // Declare a ref to store a reference to a div element.
   const containerRef = useRef<HTMLDivElement | null>(null);
