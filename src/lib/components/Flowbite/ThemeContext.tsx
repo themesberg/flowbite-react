@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import type { FC, ReactNode } from 'react';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import windowExists from '../../helpers/window-exists';
@@ -29,20 +30,17 @@ export function useTheme(): ThemeContextProps {
   return useContext(ThemeContext);
 }
 
-export const useThemeMode = (
-  usePreferences: boolean,
-): [Mode, React.Dispatch<React.SetStateAction<Mode>>, () => void] => {
-  const [mode, setModeState] = useState<Mode>('light');
-
-  const savePreference = (mode: Mode) => localStorage.setItem('theme', mode);
+export const useThemeMode = (): [Mode, React.Dispatch<React.SetStateAction<Mode>>, () => void] => {
   const userPreferenceIsDark = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-  const toggleMode = () => {
+  const getPrefersColorScheme = (): Mode => (userPreferenceIsDark() ? 'dark' : 'light');
+  const onToggleMode = () => {
     const newMode = mode === 'dark' ? 'light' : 'dark';
     setMode(newMode);
     setModeState(newMode);
   };
+  const { mode: contextMode, toggleMode = onToggleMode } = useContext(ThemeContext);
+  const [mode, setModeState] = useState<Mode>(contextMode ? contextMode : getPrefersColorScheme());
   const setMode = useCallback((mode: Mode) => {
-    savePreference(mode);
     if (!windowExists()) {
       return;
     }
@@ -56,19 +54,11 @@ export const useThemeMode = (
   }, []);
 
   useEffect(() => {
-    if (usePreferences) {
-      const getPreference = (): Mode => (localStorage.getItem('theme') as Mode) || getPrefersColorScheme();
-      const getPrefersColorScheme = (): Mode => (userPreferenceIsDark() ? 'dark' : 'light');
-
-      setModeState(getPreference());
+    if (contextMode) {
+      setMode(contextMode);
+      setModeState(contextMode);
     }
-  }, [usePreferences]);
-
-  useEffect(() => {
-    if (usePreferences) {
-      setMode(mode);
-    }
-  }, [mode, setMode, usePreferences]);
+  }, [contextMode, setMode, setModeState]);
 
   return [mode, setModeState, toggleMode];
 };
