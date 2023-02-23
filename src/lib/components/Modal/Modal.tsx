@@ -110,9 +110,8 @@ const ModalComponent: FC<ModalProps> = ({
 
   // If the current value of the ref is not already a child of the root element,
   // append it or replace its parent.
-
   if (containerRef.current.parentNode !== rootUsed && windowExists()) {
-    (rootUsed || document.body).appendChild(containerRef.current);
+    rootUsed.appendChild(containerRef.current);
   }
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
