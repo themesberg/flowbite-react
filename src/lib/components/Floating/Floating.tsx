@@ -125,7 +125,7 @@ export const Floating: FC<FloatingProps> = ({
           ref: floating,
           style: {
             position: strategy,
-            top: y ?? ' ',
+            top: open ? y ?? ' ' : 0,
             left: open ? x ?? ' ' : 0,
           },
           ...props,
