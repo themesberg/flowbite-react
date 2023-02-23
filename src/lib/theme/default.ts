@@ -1020,7 +1020,7 @@ const theme: FlowbiteTheme = {
     head: {
       base: 'group/head text-xs uppercase text-gray-700 dark:text-gray-400',
       cell: {
-        base: 'group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg bg-gray-500 dark:bg-gray-700 px-6 py-3',
+        base: 'group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg bg-gray-50 dark:bg-gray-700 px-6 py-3',
       },
     },
     row: {
