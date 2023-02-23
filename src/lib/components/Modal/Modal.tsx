@@ -70,28 +70,14 @@ const ModalComponent: FC<ModalProps> = ({
 }) => {
   const theme = mergeDeep(useTheme().theme.modal, customTheme);
   const [rootUsed, setRootUsed] = useState(root);
+  // Declare a ref to store a reference to a div element.
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!rootUsed && document?.body) {
       setRootUsed(document.body);
     }
   }, [rootUsed]);
-
-  // Declare a ref to store a reference to a div element.
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  // If the current value of the ref is falsy (e.g. null), set it to a new div
-  // element.
-  if (!containerRef.current) {
-    containerRef.current = document.createElement('div');
-  }
-
-  // If the current value of the ref is not already a child of the root element,
-  // append it or replace its parent.
-  if (containerRef.current.parentNode !== root && windowExists()) {
-    root = root || document.body;
-    root.appendChild(containerRef.current);
-  }
 
   useEffect(() => {
     return () => {
@@ -111,6 +97,23 @@ const ModalComponent: FC<ModalProps> = ({
       onClose();
     }
   });
+
+  if (!rootUsed) {
+    return null;
+  }
+
+  // If the current value of the ref is falsy (e.g. null), set it to a new div
+  // element.
+  if (!containerRef.current) {
+    containerRef.current = document.createElement('div');
+  }
+
+  // If the current value of the ref is not already a child of the root element,
+  // append it or replace its parent.
+
+  if (containerRef.current.parentNode !== rootUsed && windowExists()) {
+    (rootUsed || document.body).appendChild(containerRef.current);
+  }
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
     if (dismissible && e.target === e.currentTarget && onClose) {
