@@ -126,7 +126,7 @@ export const Floating: FC<FloatingProps> = ({
           style: {
             position: strategy,
             top: y ?? ' ',
-            left: x ?? ' ',
+            left: open ? x ?? ' ' : 0,
           },
           ...props,
         })}
