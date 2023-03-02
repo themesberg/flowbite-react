@@ -51,7 +51,8 @@
     "@floating-ui/react": "^0.16.0",
     "classnames": "^2.3.2",
     "react-icons": "^4.6.0",
-    "react-indiana-drag-scroll": "^2.2.0"
+    "react-indiana-drag-scroll": "^2.2.0",
+    "tailwind-merge": "^1.10.0"
   },
   "peerDependencies": {
     "flowbite": "^1",
