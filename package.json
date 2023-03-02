@@ -1,39 +1,39 @@
 {
   "name": "flowbite-react",
   "version": "0.3.8",
+  "description": "Official React components built for Flowbite and Tailwind CSS",
+  "keywords": [
+    "design-system",
+    "flowbite",
+    "flowbite-react",
+    "react",
+    "tailwind",
+    "tailwindcss",
+    "tailwind-css"
+  ],
+  "homepage": "https://flowbite-react.com",
+  "bugs": "https://github.com/themesberg/flowbite-react/issues",
+  "license": "MIT",
+  "files": [
+    "./lib/"
+  ],
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",
-  "files": [
-    "lib"
-  ],
-  "author": {
-    "name": "Nasreddine Bac Ali",
-    "email": "nasreddine.bacali95@gmail.com",
-    "url": "https://github.com/bacali95"
-  },
-  "bugs": {
-    "url": "https://github.com/themesberg/flowbite-react/issues"
-  },
   "repository": {
-    "url": "https://github.com/themesberg/flowbite-react",
-    "type": "git"
+    "type": "git",
+    "url": "https://github.com/themesberg/flowbite-react"
   },
-  "license": "MIT",
-  "private": false,
-  "homepage": "https://flowbite-react.com",
   "scripts": {
     "build": "react-app-rewired build --profile",
-    "build:lib": "rimraf lib && yarn build:lib:esm && yarn build:lib:cjs",
+    "build:lib": "rm -rf ./lib/ && yarn build:lib:esm && yarn build:lib:cjs",
     "build:lib:cjs": "tsc -p tsconfig.lib.json",
-    "build:lib:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir lib/esm",
-    "build:storybook": "build-storybook -o build/storybook",
+    "build:lib:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
+    "build:storybook": "build-storybook -o ./build/storybook",
     "commit": "cz",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "eject": "react-app-rewired eject",
     "lint": "eslint --color .",
-    "lint:staged": "lint-staged --config lint-staged.js",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "prepare": "husky install",
@@ -47,17 +47,16 @@
     "test:e2e": "start-test 3000 cypress:run",
     "test:e2e:open": "start-test 3000 cypress:open"
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
   "dependencies": {
     "@floating-ui/react": "^0.20.1",
     "classnames": "^2.3.2",
     "react-icons": "^4.7.1",
     "react-indiana-drag-scroll": "^2.2.0"
-  },
-  "peerDependencies": {
-    "flowbite": "^1",
-    "react": "^18",
-    "react-dom": "^18",
-    "tailwindcss": "^3"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
@@ -132,6 +131,19 @@
     "vitest": "^0.29.2",
     "webpack": "^5.75.0"
   },
+  "peerDependencies": {
+    "flowbite": "^1",
+    "react": "^18",
+    "react-dom": "^18",
+    "tailwindcss": "^3"
+  },
+  "overrides": {
+    "@mdx-js/react": {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    }
+  },
+  "private": false,
   "browserslist": {
     "production": [
       ">0.2%",
@@ -143,26 +155,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "keywords": [
-    "react",
-    "design-system",
-    "tailwind",
-    "tailwindcss",
-    "flowbite",
-    "flowbite-react",
-    "flowbite-react-components"
-  ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "overrides": {
-    "@mdx-js/react": {
-      "react": "^18.2.0",
-      "react-dom": "^18.2.0"
-    }
   },
   "eslintConfig": {
     "extends": [
