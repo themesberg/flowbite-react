@@ -56,6 +56,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.20.1",
     "classnames": "^2.3.2",
+    "flowbite": "^1.6.3",
     "react-icons": "^4.8.0",
     "react-indiana-drag-scroll": "^2.2.0"
   },
@@ -97,10 +98,11 @@
     "cypress-axe": "^1.4.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^8.35.0",
+    "eslint-config-next": "^13.2.3",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.11",
-    "flowbite": "^1.6.3",
     "jsdom": "^21.1.0",
     "next": "^13.2.3",
     "postcss": "^8.4.21",
@@ -122,7 +124,6 @@
     "vitest": "^0.29.2"
   },
   "peerDependencies": {
-    "flowbite": "^1",
     "react": "^18",
     "react-dom": "^18",
     "tailwindcss": "^3"
@@ -138,11 +139,15 @@
     "extends": [
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended",
+      "plugin:jsx-a11y/recommended",
+      "plugin:react/recommended",
       "plugin:react-hooks/recommended",
-      "plugin:storybook/recommended"
+      "plugin:storybook/recommended",
+      "next"
     ],
     "ignorePatterns": [
       "/build/",
+      "/coverage/",
       "/docs/",
       "/lib/",
       "/postcss.config.js",
@@ -160,6 +165,8 @@
     },
     "plugins": [
       "@typescript-eslint",
+      "jsx-a11y",
+      "react",
       "react-hooks",
       "storybook"
     ],
