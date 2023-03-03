@@ -8,7 +8,7 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "node",
-    "noEmit": true,
+    "noEmit": false,
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
