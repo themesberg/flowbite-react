@@ -13,6 +13,7 @@ export interface FlowbiteFooterCopyrightTheme {
 export interface CopyrightProps extends PropsWithChildren, ComponentProps<'div'> {
   by: string;
   href?: string;
+  target?: string;
   theme?: DeepPartial<FlowbiteFooterCopyrightTheme>;
   year?: number;
 }
@@ -21,6 +22,7 @@ export const FooterCopyright: FC<CopyrightProps> = ({
   by,
   className,
   href,
+  target,
   theme: customTheme = {},
   year,
   ...props
@@ -31,7 +33,7 @@ export const FooterCopyright: FC<CopyrightProps> = ({
     <div data-testid="flowbite-footer-copyright" className={classNames(theme.base, className)} {...props}>
       © {year}
       {href ? (
-        <a href={href} className={theme.href}>
+        <a href={href} target={target} className={theme.href}>
           {by}
         </a>
       ) : (
