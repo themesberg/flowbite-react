@@ -64,6 +64,7 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'r
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
   gradientMonochrome?: keyof ButtonGradientColors;
   href?: string;
+  target?: string;
   label?: ReactNode;
   outline?: boolean;
   pill?: boolean;
