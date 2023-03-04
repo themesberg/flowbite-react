@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { mergeDeep } from './mergeDeep';
 
-describe('Helper / mergeDeep (Deeply merge two objects)', () => {
+describe('Helpers / Merge deep', () => {
   it('should merge keys that do not exist in target', () => {
     const target = {};
     const source = { foo: 'bar' };
