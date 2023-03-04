@@ -39,6 +39,20 @@ describe('Components / Dropdown', () => {
 
       expect(dropdown()).toHaveClass('invisible');
     });
+    it('should collapse if clicked outside of the dropdown but dismissOnClick = false', async () => {
+      const user = userEvent.setup();
+      render(<TestDropdown />);
+
+      expect(dropdown()).toHaveClass('invisible');
+
+      await user.click(button());
+
+      expect(dropdown()).not.toHaveClass('invisible');
+
+      await user.click(document.body);
+
+      expect(dropdown()).toHaveClass('invisible');
+    });
 
     it('should not collapse in case item is clicked if dismissOnClick = false', async () => {
       const user = userEvent.setup();
@@ -53,6 +67,20 @@ describe('Components / Dropdown', () => {
       await user.click(dropdownItem());
 
       expect(dropdown()).not.toHaveClass('invisible');
+    });
+    it('should collapse if clicked outside of the dropdown but dismissOnClick = false', async () => {
+      const user = userEvent.setup();
+      render(<TestDropdown dismissOnClick={false} />);
+
+      expect(dropdown()).toHaveClass('invisible');
+
+      await user.click(button());
+
+      expect(dropdown()).not.toHaveClass('invisible');
+
+      await user.click(document.body);
+
+      expect(dropdown()).toHaveClass('invisible');
     });
   });
 });

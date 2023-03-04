@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
-import React, { Children, useCallback, useMemo, useState } from 'react';
+import React, { Children, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
@@ -75,6 +75,17 @@ const DropdownComponent: FC<DropdownProps> = ({
   }, [placement]);
 
   const [closeRequestKey, setCloseRequestKey] = useState<string | undefined>(undefined);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const handleOutsideClick = useCallback(
+    (event: MouseEvent) => {
+      if (dismissOnClick) return;
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setCloseRequestKey(uuid());
+      }
+    },
+    [dismissOnClick],
+  );
 
   // Extends DropdownItem's onClick to trigger a close request to the Floating component
   const attachCloseListener = useCallback(
@@ -100,6 +111,15 @@ const DropdownComponent: FC<DropdownProps> = ({
     [dismissOnClick],
   );
 
+  useEffect(() => {
+    if (dismissOnClick) return;
+    document.addEventListener('mousedown', handleOutsideClick);
+    return () => {
+      if (dismissOnClick) return;
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, [handleOutsideClick, dismissOnClick]);
+
   const content = useMemo(
     () => <ul className={theme.content}>{Children.map(children, attachCloseListener)}</ul>,
     [attachCloseListener, children, theme.content],
@@ -109,22 +129,24 @@ const DropdownComponent: FC<DropdownProps> = ({
     inline ? <button className={theme.inlineWrapper}>{children}</button> : <Button {...buttonProps}>{children}</Button>;
 
   return (
-    <Floating
-      content={content}
-      style="auto"
-      animation="duration-100"
-      placement={placement}
-      arrow={floatingArrow}
-      trigger={trigger}
-      theme={theme.floating}
-      closeRequestKey={closeRequestKey}
-      className={className}
-    >
-      <TriggerWrapper>
-        {label}
-        {arrowIcon && <Icon className={theme.arrowIcon} />}
-      </TriggerWrapper>
-    </Floating>
+    <div ref={wrapperRef}>
+      <Floating
+        content={content}
+        style="auto"
+        animation="duration-100"
+        placement={placement}
+        arrow={floatingArrow}
+        trigger={trigger}
+        theme={theme.floating}
+        closeRequestKey={closeRequestKey}
+        className={className}
+      >
+        <TriggerWrapper>
+          {label}
+          {arrowIcon && <Icon className={theme.arrowIcon} />}
+        </TriggerWrapper>
+      </Floating>
+    </div>
   );
 };
 
