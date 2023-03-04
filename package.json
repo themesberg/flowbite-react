@@ -25,7 +25,7 @@
     "url": "https://github.com/themesberg/flowbite-react"
   },
   "scripts": {
-    "build": "react-app-rewired build --profile",
+    "build": "next build",
     "build:lib": "rm -rf ./lib/ && yarn build:lib:esm && yarn build:lib:cjs",
     "build:lib:cjs": "tsc -p tsconfig.lib.json",
     "build:lib:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
@@ -33,19 +33,20 @@
     "commit": "cz",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
+    "dev": "next dev",
     "lint": "eslint --color .",
-    "prettier": "prettier --check .",
-    "prettier:fix": "prettier --write .",
-    "prepare": "husky install",
     "prepublishOnly": "yarn build:lib",
+    "prettier": "prettier --check --ignore-path .gitignore .",
+    "prettier:fix": "prettier --write --ignore-path .gitignore .",
     "release": "standard-version -a",
-    "start": "react-app-rewired start",
+    "start": "next start",
     "start:storybook": "start-storybook -p 6006",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:open": "vitest --ui",
     "test:e2e": "start-test 3000 cypress:run",
-    "test:e2e:open": "start-test 3000 cypress:open"
+    "test:e2e:open": "start-test 3000 cypress:open",
+    "typecheck": "tsc"
   },
   "config": {
     "commitizen": {
@@ -55,15 +56,10 @@
   "dependencies": {
     "@floating-ui/react": "^0.20.1",
     "classnames": "^2.3.2",
-    "react-icons": "^4.7.1",
+    "react-icons": "^4.8.0",
     "react-indiana-drag-scroll": "^2.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.0",
-    "@babel/plugin-syntax-flow": "^7.18.6",
-    "@babel/plugin-transform-react-jsx": "^7.21.0",
-    "@commitlint/cli": "^17.4.4",
-    "@commitlint/config-conventional": "^17.4.4",
     "@mdx-js/react": "^2.3.0",
     "@storybook/addon-a11y": "^6.5.16",
     "@storybook/addon-actions": "^6.5.16",
@@ -85,7 +81,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
-    "@types/node": "^18.14.3",
+    "@types/node": "^18.14.5",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@types/react-syntax-highlighter": "^15.5.6",
@@ -96,7 +92,6 @@
     "@vitest/ui": "^0.29.2",
     "autoprefixer": "^10.4.13",
     "axe-core": "^4.6.3",
-    "babel-loader": "^9.1.2",
     "commitizen": "^4.3.0",
     "cypress": "^12.7.0",
     "cypress-axe": "^1.4.0",
@@ -106,21 +101,17 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.11",
     "flowbite": "^1.6.3",
-    "husky": "^8.0.3",
     "jsdom": "^21.1.0",
-    "lint-staged": "^13.1.2",
+    "next": "^13.2.3",
     "postcss": "^8.4.21",
     "prettier": "^2.8.4",
     "prettier-plugin-organize-imports": "^3.2.2",
-    "prettier-plugin-tailwindcss": "^0.2.3",
+    "prettier-plugin-tailwindcss": "^0.2.4",
     "react": "^18.2.0",
-    "react-app-rewired": "^2.2.1",
     "react-dom": "^18.2.0",
     "react-element-to-jsx-string": "^15.0.0",
     "react-router-dom": "^6.8.2",
-    "react-scripts": "^5.0.1",
     "react-syntax-highlighter": "^15.5.0",
-    "require-from-string": "^2.0.2",
     "resize-observer-polyfill": "^1.5.1",
     "standard-version": "^9.5.0",
     "start-server-and-test": "^2.0.0",
@@ -128,8 +119,7 @@
     "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5",
     "vite": "^4.1.4",
-    "vitest": "^0.29.2",
-    "webpack": "^5.75.0"
+    "vitest": "^0.29.2"
   },
   "peerDependencies": {
     "flowbite": "^1",
@@ -144,18 +134,6 @@
     }
   },
   "private": false,
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "eslintConfig": {
     "extends": [
       "eslint:recommended",
@@ -164,14 +142,11 @@
       "plugin:storybook/recommended"
     ],
     "ignorePatterns": [
-      "/build",
-      "/docs",
-      "/lib",
-      "commitlint.config.js",
-      "config-overrides.js",
-      "lint-staged.js",
-      "postcss.config.js",
-      "tailwind.config.js"
+      "/build/",
+      "/docs/",
+      "/lib/",
+      "/postcss.config.js",
+      "/tailwind.config.js"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -179,8 +154,8 @@
         "jsx": true
       },
       "project": [
-        "tsconfig.json",
-        "cypress/tsconfig.json"
+        "./tsconfig.json",
+        "./cypress/tsconfig.json"
       ]
     },
     "plugins": [
