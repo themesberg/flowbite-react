@@ -3,6 +3,7 @@ import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } f
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import windowExists from '../../helpers/window-exists';
 import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
@@ -49,7 +50,7 @@ export interface CarouselProps extends PropsWithChildren<ComponentProps<'div'>> 
   rightControl?: ReactNode;
   slide?: boolean;
   slideInterval?: number;
-  theme?: FlowbiteCarouselTheme;
+  theme?: DeepPartial<FlowbiteCarouselTheme>;
 }
 
 export const Carousel: FC<CarouselProps> = ({

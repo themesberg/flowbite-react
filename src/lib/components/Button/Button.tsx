@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type {
   FlowbiteBoolean,
@@ -70,7 +71,7 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'r
   pill?: boolean;
   positionInGroup?: keyof PositionInButtonGroup;
   size?: keyof ButtonSizes;
-  theme?: FlowbiteButtonTheme;
+  theme?: DeepPartial<FlowbiteButtonTheme>;
 }
 
 const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
