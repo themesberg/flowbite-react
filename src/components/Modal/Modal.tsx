@@ -1,10 +1,12 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import classNames from 'classnames';
 import type { ComponentProps, FC, MouseEvent, PropsWithChildren } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { DeepPartial } from '..';
-import { mergeDeep } from '../../lib/helpers/mergeDeep';
-import windowExists from '../../lib/helpers/window-exists';
+import isClient from '../../helpers/is-client';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { FlowbiteModalBodyTheme } from './ModalBody';
@@ -89,6 +91,7 @@ const ModalComponent: FC<ModalProps> = ({
     };
   }, []);
 
+  // Close modal when escape key is pressed
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && onClose) {
@@ -115,7 +118,7 @@ const ModalComponent: FC<ModalProps> = ({
 
   // If the current value of the ref is not already a child of the root element,
   // append it or replace its parent.
-  if (containerRef.current.parentNode !== root && windowExists()) {
+  if (isClient() && containerRef.current.parentNode !== root) {
     root ||= document.body;
     root.appendChild(containerRef.current);
 
@@ -129,30 +132,28 @@ const ModalComponent: FC<ModalProps> = ({
     }
   };
 
-  return containerRef.current
-    ? createPortal(
-        <ModalContext.Provider value={{ popup, onClose }}>
-          <div
-            aria-hidden={!show}
-            data-testid="modal"
-            onClick={handleOnClick}
-            role="dialog"
-            className={classNames(
-              theme.root.base,
-              theme.root.positions[position],
-              show ? theme.root.show.on : theme.root.show.off,
-              className,
-            )}
-            {...props}
-          >
-            <div className={classNames(theme.content.base, theme.root.sizes[size])}>
-              <div className={theme.content.inner}>{children}</div>
-            </div>
-          </div>
-        </ModalContext.Provider>,
-        containerRef.current,
-      )
-    : null;
+  return createPortal(
+    <ModalContext.Provider value={{ popup, onClose }}>
+      <div
+        aria-hidden={!show}
+        data-testid="modal"
+        onClick={handleOnClick}
+        role="dialog"
+        className={classNames(
+          theme.root.base,
+          theme.root.positions[position],
+          show ? theme.root.show.on : theme.root.show.off,
+          className,
+        )}
+        {...props}
+      >
+        <div className={classNames(theme.content.base, theme.root.sizes[size])}>
+          <div className={theme.content.inner}>{children}</div>
+        </div>
+      </div>
+    </ModalContext.Provider>,
+    containerRef.current,
+  );
 };
 
 ModalComponent.displayName = 'Modal';
