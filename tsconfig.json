@@ -3,8 +3,9 @@
     "allowJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "incremental": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "node",
@@ -19,6 +20,6 @@
     "target": "ESNext",
     "types": ["@testing-library/jest-dom", "node", "vitest"]
   },
-  "exclude": ["/build", "/lib", "./cypress.config.ts"],
-  "include": ["**/*.js", "**/*.ts", "**/*.tsx"]
+  "exclude": ["./build/", "./lib/"],
+  "include": ["**/*.ts", "**/*.tsx", "postcss.config.js", "tailwindcss.config.js"]
 }

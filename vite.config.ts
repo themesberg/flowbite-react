@@ -15,8 +15,8 @@ export default defineConfig({
       reporter: ['html', 'json', 'text'],
     },
     environment: 'jsdom',
-    exclude: ['cypress', 'lib', 'node_modules', 'docs'],
+    exclude: ['cypress', 'lib', 'node_modules'],
     globals: true,
-    setupFiles: 'src/setup-tests.ts',
+    setupFiles: './src/setup-tests.ts',
   },
 });
