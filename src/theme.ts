@@ -1,4 +1,4 @@
-import type { FlowbiteTheme } from '../components';
+import type { FlowbiteTheme } from './components';
 
 const theme: FlowbiteTheme = {
   accordion: {
