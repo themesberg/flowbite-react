@@ -5,7 +5,6 @@ import React, { Children, useCallback, useEffect, useMemo, useRef, useState } fr
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { uuid } from '../../helpers/uuid';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 import type { FloatingProps, FlowbiteFloatingTheme } from '../Floating';
@@ -62,6 +61,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
+  const id = useId();
   const theme = mergeDeep(useTheme().theme.dropdown, customTheme);
   const theirProps = props as Omit<DropdownProps, 'theme'>;
   const {
@@ -92,7 +92,7 @@ const DropdownComponent: FC<DropdownProps> = ({
           // @ts-ignore TODO: Rewrite Dropdown
           onClick: () => {
             node.props.onClick?.();
-            dismissOnClick && setCloseRequestKey(uuid());
+            dismissOnClick && setCloseRequestKey(id);
           },
         });
       if (node.props.children && typeof node.props.children === 'object') {
@@ -103,7 +103,7 @@ const DropdownComponent: FC<DropdownProps> = ({
       }
       return node;
     },
-    [dismissOnClick],
+    [dismissOnClick, id],
   );
 
   const content = useMemo(

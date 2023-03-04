@@ -3,9 +3,8 @@ import type { ComponentProps, FC, MouseEvent, PropsWithChildren } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import windowExists from '../../helpers/window-exists';
-import { useKeyDown } from '../../hooks';
+import { mergeDeep } from '../../lib/helpers/mergeDeep';
+import windowExists from '../../lib/helpers/window-exists';
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { FlowbiteModalBodyTheme } from './ModalBody';
@@ -90,11 +89,19 @@ const ModalComponent: FC<ModalProps> = ({
     };
   }, []);
 
-  useKeyDown('Escape', () => {
-    if (dismissible && onClose) {
-      onClose();
-    }
-  });
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && onClose) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
 
   if (!mounted) {
     return null;
@@ -122,28 +129,30 @@ const ModalComponent: FC<ModalProps> = ({
     }
   };
 
-  return createPortal(
-    <ModalContext.Provider value={{ popup, onClose }}>
-      <div
-        aria-hidden={!show}
-        data-testid="modal"
-        onClick={handleOnClick}
-        role="dialog"
-        className={classNames(
-          theme.root.base,
-          theme.root.positions[position],
-          show ? theme.root.show.on : theme.root.show.off,
-          className,
-        )}
-        {...props}
-      >
-        <div className={classNames(theme.content.base, theme.root.sizes[size])}>
-          <div className={theme.content.inner}>{children}</div>
-        </div>
-      </div>
-    </ModalContext.Provider>,
-    containerRef.current,
-  );
+  return containerRef.current
+    ? createPortal(
+        <ModalContext.Provider value={{ popup, onClose }}>
+          <div
+            aria-hidden={!show}
+            data-testid="modal"
+            onClick={handleOnClick}
+            role="dialog"
+            className={classNames(
+              theme.root.base,
+              theme.root.positions[position],
+              show ? theme.root.show.on : theme.root.show.off,
+              className,
+            )}
+            {...props}
+          >
+            <div className={classNames(theme.content.base, theme.root.sizes[size])}>
+              <div className={theme.content.inner}>{children}</div>
+            </div>
+          </div>
+        </ModalContext.Provider>,
+        containerRef.current,
+      )
+    : null;
 };
 
 ModalComponent.displayName = 'Modal';

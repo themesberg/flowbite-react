@@ -1,7 +1,7 @@
 import { act, render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import defaultTheme from '../../theme/default';
+import defaultTheme from '../../theme';
 import { Flowbite, useTheme } from '../Flowbite';
 import type { ThemeContextProps } from './ThemeContext';
 

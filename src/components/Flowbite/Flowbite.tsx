@@ -1,9 +1,9 @@
 import type { FC, HTMLAttributes } from 'react';
 import { useEffect, useMemo } from 'react';
 import type { DeepPartial } from '..';
+import isClient from '../../helpers/is-client';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import windowExists from '../../helpers/window-exists';
-import defaultTheme from '../../theme/default';
+import defaultTheme from '../../theme';
 import type { FlowbiteTheme } from './FlowbiteTheme';
 import { ThemeContext, useTheme, useThemeMode } from './ThemeContext';
 
@@ -29,7 +29,7 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
         setMode('dark');
       }
 
-      if (windowExists()) {
+      if (isClient()) {
         document.documentElement.classList.add('dark');
       }
     } else {
@@ -37,7 +37,7 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
         setMode('light');
       }
 
-      if (windowExists()) {
+      if (isClient()) {
         document.documentElement.classList.remove('dark');
       }
     }

@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import type { FC, ReactNode } from 'react';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import windowExists from '../../helpers/window-exists';
-import defaultTheme from '../../theme/default';
+import isClient from '../../helpers/is-client';
+import defaultTheme from '../../theme';
 import type { FlowbiteTheme } from './FlowbiteTheme';
 
 export type Mode = 'light' | 'dark';
@@ -31,7 +31,7 @@ export function useTheme(): ThemeContextProps {
 }
 
 export const useThemeMode = (): [Mode, React.Dispatch<React.SetStateAction<Mode>>, () => void] => {
-  const userPreferenceIsDark = () => windowExists() && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+  const userPreferenceIsDark = () => isClient() && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
   const getPrefersColorScheme = (): Mode => (userPreferenceIsDark() ? 'dark' : 'light');
   const onToggleMode = () => {
     const newMode = mode === 'dark' ? 'light' : 'dark';
@@ -41,7 +41,7 @@ export const useThemeMode = (): [Mode, React.Dispatch<React.SetStateAction<Mode>
   const { mode: contextMode, toggleMode = onToggleMode } = useContext(ThemeContext);
   const [mode, setModeState] = useState<Mode>(contextMode ? contextMode : getPrefersColorScheme());
   const setMode = useCallback((mode: Mode) => {
-    if (!windowExists()) {
+    if (!isClient()) {
       return;
     }
 

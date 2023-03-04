@@ -4,8 +4,8 @@ import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useSta
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import type { DeepPartial } from '..';
+import isClient from '../../helpers/is-client';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import windowExists from '../../helpers/window-exists';
 import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -66,7 +66,7 @@ export const Carousel: FC<CarouselProps> = ({
 }) => {
   const theme = mergeDeep(useTheme().theme.carousel, customTheme);
 
-  const isDeviceMobile = windowExists() && navigator.userAgent.indexOf('IEMobile') !== -1;
+  const isDeviceMobile = isClient() && navigator.userAgent.indexOf('IEMobile') !== -1;
   const carouselContainer = useRef<HTMLDivElement>(null);
   const [activeItem, setActiveItem] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
