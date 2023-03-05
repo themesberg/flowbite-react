@@ -3,7 +3,7 @@ import { Button } from '~/src';
 
 const HomePage: FC = () => {
   return (
-    <div className="mx-auto max-w-screen-xl p-4 lg:p-12 lg:text-center">
+    <div className="mx-auto min-h-screen max-w-screen-xl p-4 lg:p-12 lg:text-center">
       <ReactAdminDashboardAlert />
       <h2 className="mb-6 text-xl font-bold text-gray-900 dark:text-white lg:text-center lg:text-6xl lg:font-extrabold lg:leading-tight 2xl:px-48">
         Build websites even faster with components on top of Tailwind CSS and React
