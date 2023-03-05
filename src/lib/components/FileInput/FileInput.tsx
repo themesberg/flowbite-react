@@ -34,7 +34,7 @@ export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | '
   theme?: DeepPartial<FlowbiteFileInputTheme>;
 }
 
-export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
+const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
   ({ className, color = 'gray', helperText, sizing = 'md', theme: customTheme = {}, ...props }, ref) => {
     const theme = mergeDeep(useTheme().theme.fileInput, customTheme);
 
@@ -59,3 +59,6 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
     );
   },
 );
+
+FileInput.displayName = 'FileInput';
+export { FileInput };
