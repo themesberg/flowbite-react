@@ -5,9 +5,9 @@ import { useRef, useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1 } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
-import type { CustomFlowbiteTheme } from '../src';
-import { DarkThemeToggle, Flowbite, Navbar, Sidebar } from '../src';
-import '../styles/globals.css';
+import type { CustomFlowbiteTheme } from '~/src';
+import { DarkThemeToggle, Flowbite, Navbar, Sidebar } from '~/src';
+import '~/styles/globals.css';
 
 const theme: CustomFlowbiteTheme = {
   sidebar: {

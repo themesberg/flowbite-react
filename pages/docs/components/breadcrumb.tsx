@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { HiHome } from 'react-icons/hi';
-import { Breadcrumb } from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+import type { CodeExample } from '~/pages/docs/components/demo';
+import DemoPage from '~/pages/docs/components/demo';
+import { Breadcrumb } from '~/src';
 
 const BreadcrumbPage: FC = () => {
   const examples: CodeExample[] = [

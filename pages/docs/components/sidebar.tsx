@@ -1,9 +1,9 @@
 import type { FC } from 'react';
 import { BiBuoy } from 'react-icons/bi';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
-import { Badge, Sidebar } from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+import type { CodeExample } from '~/pages/docs/components/demo';
+import DemoPage from '~/pages/docs/components/demo';
+import { Badge, Sidebar } from '~/src';
 
 const SidebarPage: FC = () => {
   const examples: CodeExample[] = [

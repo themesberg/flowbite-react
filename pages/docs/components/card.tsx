@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import type { FC } from 'react';
-import { Button, Card, Checkbox, Dropdown, Label, TextInput } from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+import type { CodeExample } from '~/pages/docs/components/demo';
+import DemoPage from '~/pages/docs/components/demo';
+import { Button, Card, Checkbox, Dropdown, Label, TextInput } from '~/src';
 
 const CardPage: FC = () => {
   const examples: CodeExample[] = [
@@ -53,7 +53,7 @@ const CardPage: FC = () => {
       title: 'Card with decorative image',
       code: (
         <div className="max-w-sm">
-          <Card imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg">
+          <Card imgSrc="/images/blog/image-1.jpg">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
@@ -71,7 +71,7 @@ const CardPage: FC = () => {
         <div className="max-w-sm">
           <Card
             imgAlt="Meaningful alt text for an image that is not purely decorative"
-            imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg"
+            imgSrc="/images/blog/image-1.jpg"
           >
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
@@ -88,7 +88,7 @@ const CardPage: FC = () => {
       title: 'Horizontal card',
       code: (
         <div className="max-w-sm">
-          <Card horizontal imgSrc="https://flowbite.com/docs/images/blog/image-4.jpg">
+          <Card horizontal imgSrc="/images/blog/image-4.jpg">
             <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
@@ -136,8 +136,10 @@ const CardPage: FC = () => {
             <div className="flex flex-col items-center pb-10">
               <Image
                 alt="Bonnie image"
-                src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
-                className="mb-3 h-24 w-24 rounded-full shadow-lg"
+                height="96"
+                src="/images/people/profile-picture-3.jpg"
+                width="96"
+                className="mb-3 rounded-full shadow-lg"
               />
               <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
               <span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
@@ -194,10 +196,7 @@ const CardPage: FC = () => {
       title: 'E-commerce card',
       code: (
         <div className="max-w-sm">
-          <Card
-            imgAlt="Apple Watch Series 7 in colors pink, silver, and black"
-            imgSrc="https://flowbite.com/docs/images/products/product-1.png"
-          >
+          <Card imgAlt="Apple Watch Series 7 in colors pink, silver, and black" imgSrc="/images/products/product-1.png">
             <a href="#">
               <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
                 Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
@@ -342,8 +341,10 @@ const CardPage: FC = () => {
                     <div className="shrink-0">
                       <Image
                         alt="Neil image"
-                        src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                        className="h-8 w-8 rounded-full"
+                        height="32"
+                        src="/images/people/profile-picture-1.jpg"
+                        width="32"
+                        className="rounded-full"
                       />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -360,8 +361,10 @@ const CardPage: FC = () => {
                     <div className="shrink-0">
                       <Image
                         alt="Bonnie image"
-                        src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
-                        className="h-8 w-8 rounded-full"
+                        height="32"
+                        src="/images/people/profile-picture-3.jpg"
+                        width="32"
+                        className="rounded-full"
                       />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -378,8 +381,10 @@ const CardPage: FC = () => {
                     <div className="shrink-0">
                       <Image
                         alt="Michael image"
-                        src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-                        className="h-8 w-8 rounded-full"
+                        height="32"
+                        src="/images/people/profile-picture-2.jpg"
+                        width="32"
+                        className="rounded-full"
                       />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -396,8 +401,10 @@ const CardPage: FC = () => {
                     <div className="shrink-0">
                       <Image
                         alt="Lana image"
-                        src="https://flowbite.com/docs/images/people/profile-picture-4.jpg"
-                        className="h-8 w-8 rounded-full"
+                        height="32"
+                        src="/images/people/profile-picture-4.jpg"
+                        width="32"
+                        className="rounded-full"
                       />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -414,8 +421,10 @@ const CardPage: FC = () => {
                     <div className="shrink-0">
                       <Image
                         alt="Thomas image"
-                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                        className="h-8 w-8 rounded-full"
+                        height="32"
+                        src="/images/people/profile-picture-5.jpg"
+                        width="32"
+                        className="rounded-full"
                       />
                     </div>
                     <div className="min-w-0 flex-1">

@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
-import { Dropdown } from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+import type { CodeExample } from '~/pages/docs/components/demo';
+import DemoPage from '~/pages/docs/components/demo';
+import { Dropdown } from '~/src';
 
 const DropdownPage: FC = () => {
   const examples: CodeExample[] = [

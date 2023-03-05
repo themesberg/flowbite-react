@@ -2,9 +2,9 @@ import Link from 'next/link';
 import type { FC, SetStateAction } from 'react';
 import { useState } from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { Button, Checkbox, Label, Modal, Select, TextInput } from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+import type { CodeExample } from '~/pages/docs/components/demo';
+import DemoPage from '~/pages/docs/components/demo';
+import { Button, Checkbox, Label, Modal, Select, TextInput } from '~/src';
 
 const ModalPage: FC = () => {
   const [openModal, setOpenModal] = useState<string | undefined>();
@@ -17,7 +17,7 @@ const ModalPage: FC = () => {
       code: (
         <>
           <Button onClick={() => setOpenModal('default')}>Toggle modal</Button>
-          <Modal show={true} onClose={() => setOpenModal(undefined)}>
+          <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)}>
             <Modal.Header>Terms of Service</Modal.Header>
             <Modal.Body>
               <div className="space-y-6">

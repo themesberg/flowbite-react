@@ -1,11 +1,11 @@
-import type { FC } from 'react';
+import type { FC, SetStateAction } from 'react';
 import { useRef, useState } from 'react';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
-import type { TabsRef } from '../src';
-import { Button, Tabs } from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+import type { CodeExample } from '~/pages/docs/components/demo';
+import DemoPage from '~/pages/docs/components/demo';
+import type { TabsRef } from '~/src';
+import { Button, Tabs } from '~/src';
 
 const TabsPage: FC = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
@@ -106,7 +106,7 @@ const TabsPage: FC = () => {
             aria-label="Default tabs"
             style="default"
             ref={tabsRef}
-            onActiveTabChange={(tab) => setActiveTab(tab)}
+            onActiveTabChange={(tab: SetStateAction<number>) => setActiveTab(tab)}
           >
             <Tabs.Item active title="Profile">
               Profile content

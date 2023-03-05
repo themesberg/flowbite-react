@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import type { FC } from 'react';
-import { Avatar, Button, Dropdown, Navbar } from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+import type { CodeExample } from '~/pages/docs/components/demo';
+import DemoPage from '~/pages/docs/components/demo';
+import { Avatar, Button, Dropdown, Navbar } from '~/src';
 
 const NavbarPage: FC = () => {
   const examples: CodeExample[] = [
     {
       title: 'Default navbar',
       code: (
-        <Navbar fluid rounded className="!bg-pink-700">
+        <Navbar fluid rounded>
           <Navbar.Brand as={Link} href="/navbars">
             <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>

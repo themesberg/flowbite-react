@@ -2,6 +2,8 @@ import Link from 'next/link';
 import type { FC } from 'react';
 import { useState } from 'react';
 import { HiMail } from 'react-icons/hi';
+import type { CodeExample } from '~/pages/docs/components/demo';
+import DemoPage from '~/pages/docs/components/demo';
 import {
   Button,
   Checkbox,
@@ -13,9 +15,7 @@ import {
   Textarea,
   TextInput,
   ToggleSwitch,
-} from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+} from '~/src';
 
 const FormsPage: FC = () => {
   const [switch1, setSwitch1] = useState(false);

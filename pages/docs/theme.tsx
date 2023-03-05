@@ -2,7 +2,7 @@ import type { FC, PropsWithChildren } from 'react';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 import { HiInformationCircle } from 'react-icons/hi';
-import { Alert, Card, DarkThemeToggle, Flowbite, Table } from '../src';
+import { Alert, Card, DarkThemeToggle, Flowbite, Table } from '~/src';
 
 const ThemePage: FC = () => {
   return (

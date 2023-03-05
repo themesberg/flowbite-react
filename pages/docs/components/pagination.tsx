@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { useState } from 'react';
-import { Pagination } from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+import type { CodeExample } from '~/pages/docs/components/demo';
+import DemoPage from '~/pages/docs/components/demo';
+import { Pagination } from '~/src';
 
 const PaginationPage: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);

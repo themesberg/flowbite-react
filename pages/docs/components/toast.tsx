@@ -3,9 +3,9 @@ import type { FC } from 'react';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { HiCheck, HiExclamation, HiFire, HiX } from 'react-icons/hi';
 import { MdLoop } from 'react-icons/md';
-import { Button, Toast } from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+import type { CodeExample } from '~/pages/docs/components/demo';
+import DemoPage from '~/pages/docs/components/demo';
+import { Button, Toast } from '~/src';
 
 const ToastPage: FC = () => {
   const examples: CodeExample[] = [

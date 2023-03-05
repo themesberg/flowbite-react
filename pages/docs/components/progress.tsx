@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Progress } from '../src';
+import { Progress } from '~/src';
 import type { CodeExample } from './demo';
 import DemoPage from './demo';
 

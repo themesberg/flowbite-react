@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from 'react';
-import { Card } from '../src';
+import { Card } from '~/src';
 
 export type CodeExample = {
   title: string;

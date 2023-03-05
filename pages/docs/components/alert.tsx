@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
-import { Alert } from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+import type { CodeExample } from '~/pages/docs/components/demo';
+import DemoPage from '~/pages/docs/components/demo';
+import { Alert } from '~/src';
 
 const AlertsPage: FC = () => {
   const alertText = (

@@ -1,7 +1,7 @@
 import type { FC } from 'react';
-import { Rating } from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+import type { CodeExample } from '~/pages/docs/components/demo';
+import DemoPage from '~/pages/docs/components/demo';
+import { Rating } from '~/src';
 
 const RatingPage: FC = () => {
   const examples: CodeExample[] = [
