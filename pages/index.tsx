@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { Button } from '~/src';
 
 const HomePage: FC = () => {
   return (
@@ -11,7 +12,14 @@ const HomePage: FC = () => {
         Start developing with an open-source library of over 100+ UI components built in React with the utility classes
         from Tailwind CSS and designed in Figma.
       </p>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+      <div className="flex items-center justify-center gap-5">
+        <Button color="info" href="https://flowbite.com/docs/getting-started/react/" size="lg">
+          Get started
+        </Button>
+        <Button color="gray" href="/docs/components/accordion" outline size="lg">
+          Explore components
+        </Button>
+      </div>
     </div>
   );
 };
