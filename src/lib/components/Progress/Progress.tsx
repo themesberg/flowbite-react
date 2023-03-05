@@ -24,22 +24,26 @@ export interface ProgressSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg' | 
 }
 
 export interface ProgressProps extends PropsWithChildren, ComponentProps<'div'> {
-  size?: keyof ProgressSizes;
-  label?: string;
-  labelPosition?: 'inside' | 'outside' | 'none';
   labelProgress?: boolean;
+  labelText?: boolean;
   progress: number;
+  progressLabelPosition?: 'inside' | 'outside';
+  size?: keyof ProgressSizes;
+  textLabel?: string;
+  textLabelPosition?: 'inside' | 'outside';
   theme?: DeepPartial<FlowbiteProgressTheme>;
 }
 
 export const Progress: FC<ProgressProps> = ({
   className,
   color = 'blue',
-  label = 'progressbar',
-  labelPosition = 'none',
   labelProgress = false,
+  labelText = false,
   progress,
+  progressLabelPosition = 'inside',
   size = 'md',
+  textLabel = 'progressbar',
+  textLabelPosition = 'inside',
   theme: customTheme = {},
   ...props
 }) => {
@@ -48,11 +52,16 @@ export const Progress: FC<ProgressProps> = ({
 
   return (
     <>
-      <div aria-label={label} aria-valuenow={progress} id={id} role="progressbar" {...props}>
-        {label && labelPosition === 'outside' && (
-          <div className={theme.label}>
-            <span>{label}</span>
-            {labelProgress && <span>{progress}%</span>}
+      <div id={id} aria-label={textLabel} aria-valuenow={progress} role="progressbar" {...props}>
+        {((textLabel && labelText && textLabelPosition === 'outside') ||
+          (progress && labelProgress && progressLabelPosition === 'outside')) && (
+          <div className={theme.label} data-testid="flowbite-progress-outer-label-container">
+            {textLabel && labelText && textLabelPosition === 'outside' && (
+              <span data-testid="flowbite-progress-outer-text-label">{textLabel}</span>
+            )}
+            {progress && labelProgress && progressLabelPosition === 'outside' && (
+              <span data-testid="flowbite-progress-outer-progress-label">{progress}%</span>
+            )}
           </div>
         )}
         <div className={classNames(theme.base, theme.size[size], className)}>
@@ -60,7 +69,12 @@ export const Progress: FC<ProgressProps> = ({
             style={{ width: `${progress}%` }}
             className={classNames(theme.bar, theme.color[color], theme.size[size])}
           >
-            {label && labelPosition === 'inside' && label}
+            {textLabel && labelText && textLabelPosition === 'inside' && (
+              <span data-testid="flowbite-progress-inner-text-label">{textLabel}</span>
+            )}
+            {progress && labelProgress && progressLabelPosition === 'inside' && (
+              <span data-testid="flowbite-progress-inner-progress-label">{progress}%</span>
+            )}
           </div>
         </div>
       </div>
