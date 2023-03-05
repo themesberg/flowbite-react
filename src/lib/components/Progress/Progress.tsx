@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useId } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
@@ -21,30 +23,32 @@ export interface ProgressSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg' | 
   [key: string]: string;
 }
 
-export interface ProgressProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface ProgressProps extends PropsWithChildren, ComponentProps<'div'> {
+  labelProgress?: boolean;
+  labelText?: boolean;
+  progress: number;
+  progressLabelPosition?: 'inside' | 'outside';
   size?: keyof ProgressSizes;
   textLabel?: string;
-  labelText?: boolean;
   textLabelPosition?: 'inside' | 'outside';
-  progress: number;
-  labelProgress?: boolean;
-  progressLabelPosition?: 'inside' | 'outside';
+  theme?: DeepPartial<FlowbiteProgressTheme>;
 }
 
 export const Progress: FC<ProgressProps> = ({
+  className,
   color = 'blue',
-  textLabel = 'progressbar',
-  labelText = false,
-  textLabelPosition = 'inside',
-  progress,
   labelProgress = false,
+  labelText = false,
+  progress,
   progressLabelPosition = 'inside',
   size = 'md',
-  className,
+  textLabel = 'progressbar',
+  textLabelPosition = 'inside',
+  theme: customTheme = {},
   ...props
-}): JSX.Element => {
+}) => {
   const id = useId();
-  const theme = useTheme().theme.progress;
+  const theme = mergeDeep(useTheme().theme.progress, customTheme);
 
   return (
     <>
@@ -62,8 +66,8 @@ export const Progress: FC<ProgressProps> = ({
         )}
         <div className={classNames(theme.base, theme.size[size], className)}>
           <div
-            className={classNames(theme.bar, theme.color[color], theme.size[size])}
             style={{ width: `${progress}%` }}
+            className={classNames(theme.bar, theme.color[color], theme.size[size])}
           >
             {textLabel && labelText && textLabelPosition === 'inside' && (
               <span data-testid="flowbite-progress-inner-text-label">{textLabel}</span>

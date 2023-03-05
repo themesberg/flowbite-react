@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import type { LinkProps } from 'react-router-dom';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteNavbarLinkTheme {
@@ -14,19 +14,19 @@ export interface FlowbiteNavbarLinkTheme {
 
 export interface NavbarLinkProps extends PropsWithChildren<ComponentProps<'a'>>, Partial<Pick<LinkProps, 'to'>> {
   active?: boolean;
+  as?: ElementType;
   disabled?: boolean;
   href?: string;
   theme?: DeepPartial<FlowbiteNavbarLinkTheme>;
-  as?: ElementType;
 }
 
 export const NavbarLink: FC<NavbarLinkProps> = ({
   active,
+  as: Component = 'a',
   disabled,
-  theme: customTheme = {},
   children,
   className,
-  as: Component = 'a',
+  theme: customTheme = {},
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.navbar.link, customTheme);

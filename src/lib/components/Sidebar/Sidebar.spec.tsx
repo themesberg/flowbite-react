@@ -1,8 +1,10 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { HiChartPie, HiInbox, HiShoppingBag } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
+import type { DeepPartial } from '..';
+import type { FlowbiteTheme } from '../Flowbite';
 import { Flowbite } from '../Flowbite';
 import type { SidebarProps } from './Sidebar';
 import { Sidebar } from './Sidebar';
@@ -122,14 +124,16 @@ describe('Props', () => {
 
 describe('Theme', () => {
   it('should use custom classes', () => {
-    const theme = {
+    const theme: DeepPartial<FlowbiteTheme> = {
       sidebar: {
-        base: 'bg-gray-100',
-        collapsed: {
-          off: 'text-gray-200',
-          on: 'text-gray-300',
+        root: {
+          base: 'bg-gray-100',
+          collapsed: {
+            off: 'text-gray-200',
+            on: 'text-gray-300',
+          },
+          inner: 'bg-gray-200',
         },
-        inner: 'bg-gray-200',
       },
     };
 

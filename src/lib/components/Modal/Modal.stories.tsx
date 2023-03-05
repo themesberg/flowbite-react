@@ -61,13 +61,13 @@ PopUp.args = {
   children: (
     <Modal.Body>
       <div className="text-center">
-        <HiOutlineExclamationCircle className="mx-auto mb-4 text-gray-400 h-14 w-14 dark:text-gray-200" />
+        <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
         <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
           Are you sure you want to delete this product?
         </h3>
         <div className="flex justify-center gap-4">
           <Button color="red" onClick={action('close')}>
-            {"Yes, I'm sure"}
+            Yes, I&apos;m sure
           </Button>
           <Button color="gray" onClick={action('close')}>
             No, cancel
@@ -85,16 +85,16 @@ FormElements.args = {
     <>
       <Modal.Header />
       <Modal.Body>
-        <div className="px-6 pb-4 space-y-6 sm:pb-6 lg:px-8 xl:pb-8">
+        <div className="space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8">
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
           <div>
-            <div className="block mb-2">
+            <div className="mb-2 block">
               <Label htmlFor="email" value="Your email" />
             </div>
             <TextInput id="email" placeholder="name@company.com" required />
           </div>
           <div>
-            <div className="block mb-2">
+            <div className="mb-2 block">
               <Label htmlFor="password" value="Your password" />
             </div>
             <TextInput id="password" type="password" required />
@@ -112,7 +112,7 @@ FormElements.args = {
             <Button>Log in to your account</Button>
           </div>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
-            Not registered?{' '}
+            Not registered?&nbsp;
             <a href="/modal" className="text-blue-700 hover:underline dark:text-blue-500">
               Create account
             </a>

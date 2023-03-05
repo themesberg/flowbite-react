@@ -1,23 +1,45 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
 import { useTimelineContext } from './TimelineContext';
 
-export type TimelnePointProps = PropsWithChildren<
-  ComponentProps<'div'> & {
-    icon?: FC<ComponentProps<'svg'>>;
-    className?: string;
-  }
->;
+export interface FlowbiteTimelinePointTheme {
+  horizontal: string;
+  line: string;
+  marker: {
+    base: {
+      horizontal: string;
+      vertical: string;
+    };
+    icon: {
+      base: string;
+      wrapper: string;
+    };
+  };
+  vertical: string;
+}
 
-export const TimelinePoint: FC<TimelnePointProps> = ({ children, className, icon: Icon, ...props }) => {
-  const theme = useTheme().theme.timeline.item.point;
+export interface TimelnePointProps extends PropsWithChildren, ComponentProps<'div'> {
+  icon?: FC<ComponentProps<'svg'>>;
+  theme?: DeepPartial<FlowbiteTimelinePointTheme>;
+}
+
+export const TimelinePoint: FC<TimelnePointProps> = ({
+  children,
+  className,
+  icon: Icon,
+  theme: customTheme = {},
+  ...props
+}) => {
+  const theme = mergeDeep(useTheme().theme.timeline.item.point, customTheme);
   const { horizontal } = useTimelineContext();
 
   return (
     <div
       data-testid="timeline-point"
-      className={classNames(horizontal && theme.base.horizontal, !horizontal && theme.base.vertical, className)}
+      className={classNames(horizontal && theme.horizontal, !horizontal && theme.vertical, className)}
       {...props}
     >
       {children}
@@ -28,7 +50,7 @@ export const TimelinePoint: FC<TimelnePointProps> = ({ children, className, icon
       ) : (
         <div
           className={classNames(horizontal && theme.marker.base.horizontal, !horizontal && theme.marker.base.vertical)}
-        ></div>
+        />
       )}
       {horizontal && <div className={classNames(theme.line)} />}
     </div>
