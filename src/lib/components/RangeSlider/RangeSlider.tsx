@@ -28,7 +28,7 @@ export interface RangeSliderProps extends Omit<ComponentProps<'input'>, 'ref' | 
   theme?: DeepPartial<FlowbiteRangeSliderTheme>;
 }
 
-const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
+export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
   ({ className, sizing = 'md', theme: customTheme = {}, ...props }, ref) => {
     const theme = mergeDeep(useTheme().theme.rangeSlider, customTheme);
 
@@ -50,4 +50,3 @@ const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
 );
 
 RangeSlider.displayName = 'RangeSlider';
-export { RangeSlider };

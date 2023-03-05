@@ -16,7 +16,7 @@ export interface CheckboxProps extends Omit<ComponentProps<'input'>, 'type' | 'r
   theme?: DeepPartial<FlowbiteCheckboxTheme>;
 }
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ className, theme: customTheme = {}, ...props }, ref) => {
     const theme = mergeDeep(useTheme().theme.checkbox, customTheme);
 
@@ -25,4 +25,3 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 );
 
 Checkbox.displayName = 'Checkbox';
-export { Checkbox };

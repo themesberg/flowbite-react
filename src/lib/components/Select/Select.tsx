@@ -45,7 +45,7 @@ export interface SelectProps extends PropsWithChildren, Omit<ComponentProps<'sel
   theme?: DeepPartial<FlowbiteSelectTheme>;
 }
 
-const Select = forwardRef<HTMLSelectElement, SelectProps>(
+export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   (
     {
       addon,
@@ -94,4 +94,3 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
 );
 
 Select.displayName = 'Select';
-export { Select };
