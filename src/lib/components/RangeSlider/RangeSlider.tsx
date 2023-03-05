@@ -48,3 +48,5 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
     );
   },
 );
+
+RangeSlider.displayName = 'RangeSlider';
