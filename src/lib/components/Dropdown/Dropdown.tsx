@@ -128,6 +128,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   );
 };
 
+DropdownComponent.displayName = 'Dropdown';
 DropdownItem.displayName = 'Dropdown.Item';
 DropdownHeader.displayName = 'Dropdown.Header';
 DropdownDivider.displayName = 'Dropdown.Divider';

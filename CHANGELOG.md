@@ -2,6 +2,182 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/themesberg/flowbite-react/compare/v0.3.8...v0.4.1) (2023-03-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **/lib/components/flowbite:** ThemeProps no longer includes usePreferences
+* **theme:** Like in #500, this version permanently changes the `FlowbiteTheme` for numerous
+components.
+
+The philosophy is that themes will more clearly reflect the component's structure.
+
+For example, an `<Accordion>` can contain any number of `<Accordion.Title>` or `<Accordion.Content>`
+sections. The theme used to look like:
+
+```js
+accordion: {
+  base: "..",
+  content: "..",
+  flush: "..",
+  title: "..",
+}
+```
+
+And now, the theme for an `<Accordion>` looks like:
+
+```
+js
+accordion: {
+  root: {
+    base: "..",
+    flush: "..",
+  },
+  content: "..",
+  title: "..",
+}
+```
+
+So now the options in the theme which apply to the `<Accordion>` itself will always be found under
+`root`. Likewise, `<Accordion.Content>` can be themed via the `content` subsection.
+
+This ultimately will apply to all components.
+
+* ci(eslint): remove `prettier` plugins for `eslint`
+
+Instead, use `prettier-plugin-tailwindcss`, which is sufficient.
+
+* refactor(/lib/*): use `yarn prettier` with `prettier-plugin-tailwindcss`
+
+* fix(/lib/components/*.spec): resolve test errors caused by migrating theme
+
+* feat(/lib/components/*): add `theme={}` attribute to components that need it
+
+### Features
+
+* **/lib/components/flowbite:** remove `usePreferences` ([#582](https://github.com/themesberg/flowbite-react/issues/582)) ([77cbc27](https://github.com/themesberg/flowbite-react/commit/77cbc27aa5d42bcff1bdd54c3b5c35e37ff039a0)), closes [#581](https://github.com/themesberg/flowbite-react/issues/581) [#565](https://github.com/themesberg/flowbite-react/issues/565) [#581](https://github.com/themesberg/flowbite-react/issues/581) [#565](https://github.com/themesberg/flowbite-react/issues/565)
+* **/lib/components/timeline:** change `<Timeline.Body>` to a `<div>` ([#603](https://github.com/themesberg/flowbite-react/issues/603)) ([720c8ef](https://github.com/themesberg/flowbite-react/commit/720c8ef6c707837372dddf33e9e4a73d42caea1e)), closes [#602](https://github.com/themesberg/flowbite-react/issues/602)
+* **/lib/theme:** add Tailwind CSS colors to  `<Alert>`s ([#586](https://github.com/themesberg/flowbite-react/issues/586)) ([05bde49](https://github.com/themesberg/flowbite-react/commit/05bde49a7fe27e456b7e3da631424705beeaabb8)), closes [#473](https://github.com/themesberg/flowbite-react/issues/473) [#473](https://github.com/themesberg/flowbite-react/issues/473) [#473](https://github.com/themesberg/flowbite-react/issues/473)
+* **/lib/theme:** add Tailwind CSS colors to  `<Badge>`s ([#617](https://github.com/themesberg/flowbite-react/issues/617)) ([f00628f](https://github.com/themesberg/flowbite-react/commit/f00628f95059f7e4e18bbe069ceb5573471dc36d))
+* **/lib/theme:** add Tailwind CSS colors to `<Button>`s ([#598](https://github.com/themesberg/flowbite-react/issues/598)) ([e88cdab](https://github.com/themesberg/flowbite-react/commit/e88cdab07f481e6a8ca8a4d4bdd2b723ec3516f4)), closes [#473](https://github.com/themesberg/flowbite-react/issues/473) [#473](https://github.com/themesberg/flowbite-react/issues/473) [#473](https://github.com/themesberg/flowbite-react/issues/473) [#473](https://github.com/themesberg/flowbite-react/issues/473) [#473](https://github.com/themesberg/flowbite-react/issues/473)
+* **theme:** add `theme={}` attribute to components that need it  ([#611](https://github.com/themesberg/flowbite-react/issues/611)) ([005d78a](https://github.com/themesberg/flowbite-react/commit/005d78ac281ab14876b3b528cf3f51976d4fa349)), closes [#500](https://github.com/themesberg/flowbite-react/issues/500) [#566](https://github.com/themesberg/flowbite-react/issues/566) [#594](https://github.com/themesberg/flowbite-react/issues/594) [#124](https://github.com/themesberg/flowbite-react/issues/124) [#609](https://github.com/themesberg/flowbite-react/issues/609)
+
+
+### Bug Fixes
+
+* **/components/modal:** Prevent `<Modal.Content>` from being truncated ([#601](https://github.com/themesberg/flowbite-react/issues/601)) ([dd19f33](https://github.com/themesberg/flowbite-react/commit/dd19f330831bf83ace4a353cfda09d4f21979703)), closes [#600](https://github.com/themesberg/flowbite-react/issues/600)
+* **/docs:** remove `{' '}` literals from code examples ([#614](https://github.com/themesberg/flowbite-react/issues/614)) ([2f46d90](https://github.com/themesberg/flowbite-react/commit/2f46d90473470bd4b2fa7233fc2b6e87f8055fd6))
+* **tsconfig:** noEmit is false ([44f4cd7](https://github.com/themesberg/flowbite-react/commit/44f4cd73dbddcc9812ca17993d1e0ec33cb3a65e))
+
+## [0.4.0](https://github.com/themesberg/flowbite-react/compare/v0.1.0...v0.4.0) (2023-03-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **/lib/components/flowbite:** ThemeProps no longer includes usePreferences
+* **theme:** Like in #500, this version permanently changes the `FlowbiteTheme` for numerous
+components.
+
+The philosophy is that themes will more clearly reflect the component's structure.
+
+For example, an `<Accordion>` can contain any number of `<Accordion.Title>` or `<Accordion.Content>`
+sections. The theme used to look like:
+
+```js
+accordion: {
+  base: "..",
+  content: "..",
+  flush: "..",
+  title: "..",
+}
+```
+
+And now, the theme for an `<Accordion>` looks like:
+
+```
+js
+accordion: {
+  root: {
+    base: "..",
+    flush: "..",
+  },
+  content: "..",
+  title: "..",
+}
+```
+
+So now the options in the theme which apply to the `<Accordion>` itself will always be found under
+`root`. Likewise, `<Accordion.Content>` can be themed via the `content` subsection.
+
+This ultimately will apply to all components.
+
+* ci(eslint): remove `prettier` plugins for `eslint`
+
+Instead, use `prettier-plugin-tailwindcss`, which is sufficient.
+
+* refactor(/lib/*): use `yarn prettier` with `prettier-plugin-tailwindcss`
+
+* fix(/lib/components/*.spec): resolve test errors caused by migrating theme
+
+* feat(/lib/components/*): add `theme={}` attribute to components that need it
+
+### Features
+
+* **/lib/components/flowbite:** remove `usePreferences` ([#582](https://github.com/themesberg/flowbite-react/issues/582)) ([77cbc27](https://github.com/themesberg/flowbite-react/commit/77cbc27aa5d42bcff1bdd54c3b5c35e37ff039a0)), closes [#581](https://github.com/themesberg/flowbite-react/issues/581) [#565](https://github.com/themesberg/flowbite-react/issues/565) [#581](https://github.com/themesberg/flowbite-react/issues/581) [#565](https://github.com/themesberg/flowbite-react/issues/565)
+* **/lib/components/timeline:** change `<Timeline.Body>` to a `<div>` ([#603](https://github.com/themesberg/flowbite-react/issues/603)) ([720c8ef](https://github.com/themesberg/flowbite-react/commit/720c8ef6c707837372dddf33e9e4a73d42caea1e)), closes [#602](https://github.com/themesberg/flowbite-react/issues/602)
+* **/lib/theme:** add Tailwind CSS colors to  `<Alert>`s ([#586](https://github.com/themesberg/flowbite-react/issues/586)) ([05bde49](https://github.com/themesberg/flowbite-react/commit/05bde49a7fe27e456b7e3da631424705beeaabb8)), closes [#473](https://github.com/themesberg/flowbite-react/issues/473) [#473](https://github.com/themesberg/flowbite-react/issues/473) [#473](https://github.com/themesberg/flowbite-react/issues/473)
+* **/lib/theme:** add Tailwind CSS colors to  `<Badge>`s ([#617](https://github.com/themesberg/flowbite-react/issues/617)) ([f00628f](https://github.com/themesberg/flowbite-react/commit/f00628f95059f7e4e18bbe069ceb5573471dc36d))
+* **/lib/theme:** add Tailwind CSS colors to `<Button>`s ([#598](https://github.com/themesberg/flowbite-react/issues/598)) ([e88cdab](https://github.com/themesberg/flowbite-react/commit/e88cdab07f481e6a8ca8a4d4bdd2b723ec3516f4)), closes [#473](https://github.com/themesberg/flowbite-react/issues/473) [#473](https://github.com/themesberg/flowbite-react/issues/473) [#473](https://github.com/themesberg/flowbite-react/issues/473) [#473](https://github.com/themesberg/flowbite-react/issues/473) [#473](https://github.com/themesberg/flowbite-react/issues/473)
+* **accordion:** add collapseAll prop ([#515](https://github.com/themesberg/flowbite-react/issues/515)) ([#524](https://github.com/themesberg/flowbite-react/issues/524)) ([d2206b5](https://github.com/themesberg/flowbite-react/commit/d2206b558f7d3a096f17226361d1c8b0aa52ce52))
+* add theme prop ([#488](https://github.com/themesberg/flowbite-react/issues/488)) ([fb34230](https://github.com/themesberg/flowbite-react/commit/fb34230be5093d2dd5700b7253c08f3ab622f667))
+* allow using initials as `Avatar` placeholder ([#375](https://github.com/themesberg/flowbite-react/issues/375)) ([e349d82](https://github.com/themesberg/flowbite-react/commit/e349d82ca1d0933ea037655022b38aa1b9836a33)), closes [#357](https://github.com/themesberg/flowbite-react/issues/357) [#357](https://github.com/themesberg/flowbite-react/issues/357) [#357](https://github.com/themesberg/flowbite-react/issues/357) [#357](https://github.com/themesberg/flowbite-react/issues/357)
+* **avatar:** adds color prop and test case for it ([#439](https://github.com/themesberg/flowbite-react/issues/439)) ([104d6fb](https://github.com/themesberg/flowbite-react/commit/104d6fb83bd48de696c2b79138640e747e5b020f)), closes [#409](https://github.com/themesberg/flowbite-react/issues/409) [#409](https://github.com/themesberg/flowbite-react/issues/409)
+* **Avatar:** Support overriding the Avatar img element. Fixes [#482](https://github.com/themesberg/flowbite-react/issues/482) ([#483](https://github.com/themesberg/flowbite-react/issues/483)) ([8f87019](https://github.com/themesberg/flowbite-react/commit/8f87019e58a320bc78c07b6a04fd6a99d6376d39))
+* **breadcrumbitem:** add forwardRef to breadcrumb item ([#421](https://github.com/themesberg/flowbite-react/issues/421)) ([0e4ae62](https://github.com/themesberg/flowbite-react/commit/0e4ae62b2b93561c4857bea63df45fe9170f546e))
+* **button:** added forwardRef to button component ([#391](https://github.com/themesberg/flowbite-react/issues/391)) ([3278c84](https://github.com/themesberg/flowbite-react/commit/3278c84ba15bc754032c4e248eb31e64d8bb53ff)), closes [#341](https://github.com/themesberg/flowbite-react/issues/341)
+* **classname:** all components with classname access ([#405](https://github.com/themesberg/flowbite-react/issues/405)) ([99b4ceb](https://github.com/themesberg/flowbite-react/commit/99b4cebf5f92e8f3eb15851dcb0b6997c8606c47))
+* **classname:** more missing classnames access ([#406](https://github.com/themesberg/flowbite-react/issues/406)) ([9e40115](https://github.com/themesberg/flowbite-react/commit/9e4011554cc132fd24bff286955b5f2d6861e1f8))
+* **components:** export components types ([#434](https://github.com/themesberg/flowbite-react/issues/434)) ([45ea65a](https://github.com/themesberg/flowbite-react/commit/45ea65a4e1e376b398f462d07b9a1f1ea2ca114b)), closes [#433](https://github.com/themesberg/flowbite-react/issues/433)
+* **Navbar:** add as prop ([#526](https://github.com/themesberg/flowbite-react/issues/526)) ([#528](https://github.com/themesberg/flowbite-react/issues/528)) ([21dab1f](https://github.com/themesberg/flowbite-react/commit/21dab1fe576a09d33c8ecd35cd10cf93eb332e9a))
+* **RangeSlider:** range slider with custom theme, storybook, unit test and docs ([#548](https://github.com/themesberg/flowbite-react/issues/548)) ([5f01946](https://github.com/themesberg/flowbite-react/commit/5f0194679a0d6e2d75f7cbe8bdd05ac34d5ad873))
+* **sidebaritem:** add forwardRef to sidebar item ([#420](https://github.com/themesberg/flowbite-react/issues/420)) ([faca797](https://github.com/themesberg/flowbite-react/commit/faca797b0b8ce7a94b40a44019c7323e721af5e5)), closes [#397](https://github.com/themesberg/flowbite-react/issues/397)
+* TextInput with RightIcon ([#437](https://github.com/themesberg/flowbite-react/issues/437)) ([7d72e1e](https://github.com/themesberg/flowbite-react/commit/7d72e1eef07baf870a84a3e2eca950bb1814a316)), closes [#436](https://github.com/themesberg/flowbite-react/issues/436) [#436](https://github.com/themesberg/flowbite-react/issues/436) [#436](https://github.com/themesberg/flowbite-react/issues/436) [#436](https://github.com/themesberg/flowbite-react/issues/436)
+* **theme:** add `theme={}` attribute to components that need it  ([#611](https://github.com/themesberg/flowbite-react/issues/611)) ([005d78a](https://github.com/themesberg/flowbite-react/commit/005d78ac281ab14876b3b528cf3f51976d4fa349)), closes [#500](https://github.com/themesberg/flowbite-react/issues/500) [#566](https://github.com/themesberg/flowbite-react/issues/566) [#594](https://github.com/themesberg/flowbite-react/issues/594) [#124](https://github.com/themesberg/flowbite-react/issues/124) [#609](https://github.com/themesberg/flowbite-react/issues/609)
+* **theme:** add tests for alert component ([#549](https://github.com/themesberg/flowbite-react/issues/549)) ([a62e84f](https://github.com/themesberg/flowbite-react/commit/a62e84fed43c0ee39e7b40f4e223ebcb11edd14a))
+* **theme:** add theme support for Checkbox, Radio and ToggleSwitch ([#551](https://github.com/themesberg/flowbite-react/issues/551)) ([05c934a](https://github.com/themesberg/flowbite-react/commit/05c934adb2abf6af44784069388f13af2966ba38))
+* **theme:** adding theme support per component ([#500](https://github.com/themesberg/flowbite-react/issues/500)) ([2f58ae2](https://github.com/themesberg/flowbite-react/commit/2f58ae2139359ef1acf7a417a1ffa337570ce221)), closes [#467](https://github.com/themesberg/flowbite-react/issues/467)
+* **themecontext:** exported theme hooks and updated docs ([#390](https://github.com/themesberg/flowbite-react/issues/390)) ([37644b7](https://github.com/themesberg/flowbite-react/commit/37644b7247a35ce15df0379425139585bc8ae27f)), closes [#389](https://github.com/themesberg/flowbite-react/issues/389)
+
+
+### Bug Fixes
+
+* **/components/modal:** Prevent `<Modal.Content>` from being truncated ([#601](https://github.com/themesberg/flowbite-react/issues/601)) ([dd19f33](https://github.com/themesberg/flowbite-react/commit/dd19f330831bf83ace4a353cfda09d4f21979703)), closes [#600](https://github.com/themesberg/flowbite-react/issues/600)
+* **/docs:** remove `{' '}` literals from code examples ([#614](https://github.com/themesberg/flowbite-react/issues/614)) ([2f46d90](https://github.com/themesberg/flowbite-react/commit/2f46d90473470bd4b2fa7233fc2b6e87f8055fd6))
+* **avatar:** center avatar correctly ([#404](https://github.com/themesberg/flowbite-react/issues/404)) ([1027212](https://github.com/themesberg/flowbite-react/commit/1027212dc5e3d030c65b418c3710d07d577e4016))
+* Button doesn't fit to its parent width ([#370](https://github.com/themesberg/flowbite-react/issues/370)) ([15571aa](https://github.com/themesberg/flowbite-react/commit/15571aa27e7fe96b8aae6e6eaec22e03cab17814))
+* **button:** reduce the thickness of button outline ([#376](https://github.com/themesberg/flowbite-react/issues/376)) ([5ef0aef](https://github.com/themesberg/flowbite-react/commit/5ef0aeff0e90d4de47d1d1e9a954a792a473860d))
+* **component:** add missing display name for checkbox, radio and select ([#328](https://github.com/themesberg/flowbite-react/issues/328)) ([8c307aa](https://github.com/themesberg/flowbite-react/commit/8c307aa1b072d82c2779d5de2dabb5609759689e))
+* **component:** display text only on Sidebar.Item tooltip ([#315](https://github.com/themesberg/flowbite-react/issues/315)) ([9af5d13](https://github.com/themesberg/flowbite-react/commit/9af5d136a95cadd91c3212080bb060091ce3453d)), closes [#258](https://github.com/themesberg/flowbite-react/issues/258)
+* **component:** remove "All Rights Reserved" from `<Footer.Copyright>` ([#317](https://github.com/themesberg/flowbite-react/issues/317)) ([c6524ee](https://github.com/themesberg/flowbite-react/commit/c6524eea31491480fe85870f22829a96c819c414))
+* **component:** Remove `type="button"` when not a `<button>` ([#217](https://github.com/themesberg/flowbite-react/issues/217)) ([8c7012e](https://github.com/themesberg/flowbite-react/commit/8c7012e77b5ca2abde0b8d30ca1ad38cf70cbdd0))
+* **component:** use 1st letter of text in collapsed Sidebar.Item with no icon ([#338](https://github.com/themesberg/flowbite-react/issues/338)) ([103d173](https://github.com/themesberg/flowbite-react/commit/103d17324d388fe60898697ed42811428af169bb)), closes [#81](https://github.com/themesberg/flowbite-react/issues/81)
+* **DarkThemeToggle:** should toggle the theme with `usePreferences` is false ([#417](https://github.com/themesberg/flowbite-react/issues/417)) ([#424](https://github.com/themesberg/flowbite-react/issues/424)) ([37244ff](https://github.com/themesberg/flowbite-react/commit/37244ff2bbdaecbea8a0bcce0243c8d6f2ee9151))
+* **dropdown:** close dropdown when item is selected ([#392](https://github.com/themesberg/flowbite-react/issues/392)) ([05f5534](https://github.com/themesberg/flowbite-react/commit/05f5534e972c750b979f6eaa225a5f0f98738ffb)), closes [#349](https://github.com/themesberg/flowbite-react/issues/349) [#349](https://github.com/themesberg/flowbite-react/issues/349) [#349](https://github.com/themesberg/flowbite-react/issues/349)
+* **helpers/mergedeep:** fix potential cases when source or target obects can be mutated ([#476](https://github.com/themesberg/flowbite-react/issues/476)) ([765fedb](https://github.com/themesberg/flowbite-react/commit/765fedb3c966ea93e384339f6e121beda320c22f))
+* **modal:** clear modal container ref on unmount ([#514](https://github.com/themesberg/flowbite-react/issues/514)) ([3387128](https://github.com/themesberg/flowbite-react/commit/338712844bf5d4831004ca3c0660a4180f14202b))
+* **modal:** fix initial focus inside a modal ([#495](https://github.com/themesberg/flowbite-react/issues/495)) ([6965074](https://github.com/themesberg/flowbite-react/commit/69650741dcd0bdde710e6e2a6f3687431e44deaf))
+* **package:** minimal react version is 18 ([#344](https://github.com/themesberg/flowbite-react/issues/344)) ([bc4fea7](https://github.com/themesberg/flowbite-react/commit/bc4fea7ecbc83dcbff61a5d01805008993a66a71))
+* **pagination:** fix next button icon misalignment ([#346](https://github.com/themesberg/flowbite-react/issues/346)) ([0dd10d3](https://github.com/themesberg/flowbite-react/commit/0dd10d339a17961743c6d8a4ceb5c8e06677c0df)), closes [#330](https://github.com/themesberg/flowbite-react/issues/330)
+* render border colors in Avatar with placeholder initials ([#521](https://github.com/themesberg/flowbite-react/issues/521)) ([3aa12c6](https://github.com/themesberg/flowbite-react/commit/3aa12c660a4327c043fae26966b273bbae28ba66))
+* **sidebaritem:** fix sidebar item with next link ([#438](https://github.com/themesberg/flowbite-react/issues/438)) ([32f337b](https://github.com/themesberg/flowbite-react/commit/32f337bea352909b18d803cd7d39b1af46069945))
+* **storybook:** fix welcome page ([#377](https://github.com/themesberg/flowbite-react/issues/377)) ([d2518ad](https://github.com/themesberg/flowbite-react/commit/d2518adf4ace2d062a2f370b18994cd44cebbb42))
+* **textinput:** merge issue ([#499](https://github.com/themesberg/flowbite-react/issues/499)) ([f8eca21](https://github.com/themesberg/flowbite-react/commit/f8eca210c85adacd018e9ce9010295858b21251d))
+* **theme:** add z-index to Dropdown floating component ([#314](https://github.com/themesberg/flowbite-react/issues/314)) ([77cb356](https://github.com/themesberg/flowbite-react/commit/77cb3560538751aa256b7c24e71df9fd6bec0c36)), closes [#308](https://github.com/themesberg/flowbite-react/issues/308)
+* timeline-horizontal ([#510](https://github.com/themesberg/flowbite-react/issues/510)) ([89d2ff8](https://github.com/themesberg/flowbite-react/commit/89d2ff8ae64ddf334ec0d718ca9fa3ff3605be85))
+* **toast:** ToastToggle must have className ([#471](https://github.com/themesberg/flowbite-react/issues/471)) ([5618b21](https://github.com/themesberg/flowbite-react/commit/5618b21626afa92fe64b99ef9b1f178724b61d4a))
+* typo in navbar theme typedef ([#327](https://github.com/themesberg/flowbite-react/issues/327)) ([459a864](https://github.com/themesberg/flowbite-react/commit/459a8648f054b80fc4499ecd68689bc3d3d0c244))
+
 ### [0.3.8](https://github.com/themesberg/flowbite-react/compare/v0.3.7...v0.3.8) (2023-01-26)
 
 
