@@ -20,7 +20,7 @@ export interface BreadcrumbItemProps extends PropsWithChildren<Omit<ComponentPro
   theme?: DeepPartial<FlowbiteBreadcrumbItemTheme>;
 }
 
-const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, BreadcrumbItemProps>(
+export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, BreadcrumbItemProps>(
   ({ children, className, href, icon: Icon, theme: customTheme = {}, ...props }, ref) => {
     const isLink = typeof href !== 'undefined';
     const Component = isLink ? 'a' : 'span';
@@ -45,4 +45,3 @@ const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, Breadcrum
 );
 
 BreadcrumbItem.displayName = 'Breadcrumb.Item';
-export default BreadcrumbItem;

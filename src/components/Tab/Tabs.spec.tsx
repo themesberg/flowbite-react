@@ -145,6 +145,7 @@ interface TestTabsProps {
   onActiveTabChange?: (activeTab: number) => void;
 }
 
+// eslint-disable-next-line react/display-name
 const TestTabs = forwardRef<TabsRef, TestTabsProps>(({ onActiveTabChange }, ref) => (
   <Tabs.Group aria-label="Test tabs" onActiveTabChange={onActiveTabChange} ref={ref}>
     <Tabs.Item title="Profile" icon={HiUserCircle}>

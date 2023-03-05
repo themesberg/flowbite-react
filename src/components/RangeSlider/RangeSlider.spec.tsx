@@ -15,6 +15,7 @@ describe('Components / Button', () => {
     });
 
     it('should be able to use any other role permitted for `RangeSlider`', () => {
+      // eslint-disable-next-line jsx-a11y/aria-role
       render(<RangeSlider role="rangeinput" />);
 
       expect(rangeSlider('rangeinput')).toBeInTheDocument();

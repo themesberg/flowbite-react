@@ -5,7 +5,7 @@ import { SidebarItemContext } from './SidebarItemContext';
 
 export interface SidebarItemGroupProps extends PropsWithChildren, ComponentProps<'ul'> {}
 
-const SidebarItemGroup: FC<SidebarItemGroupProps> = ({ children, className, ...props }) => {
+export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({ children, className, ...props }) => {
   const theme = useTheme().theme.sidebar.itemGroup;
 
   return (
@@ -16,4 +16,3 @@ const SidebarItemGroup: FC<SidebarItemGroupProps> = ({ children, className, ...p
 };
 
 SidebarItemGroup.displayName = 'Sidebar.ItemGroup';
-export default SidebarItemGroup;

@@ -4,7 +4,7 @@ import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { FlowbiteBreadcrumbItemTheme } from './BreadcrumbItem';
-import BreadcrumbItem from './BreadcrumbItem';
+import { BreadcrumbItem } from './BreadcrumbItem';
 
 export interface FlowbiteBreadcrumbTheme {
   root: FlowbiteBreadcrumbRootTheme;

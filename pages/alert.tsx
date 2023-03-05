@@ -31,7 +31,7 @@ const AlertsPage: FC = () => {
           {alertText}
         </Alert>
       ),
-      codeStringifierOptions: { functionValue: (fn: any) => fn },
+      codeStringifierOptions: { functionValue: (fn: () => unknown) => fn },
     },
     {
       title: 'Rounded',

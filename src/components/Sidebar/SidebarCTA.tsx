@@ -24,7 +24,7 @@ export interface FlowbiteSidebarCTAColors
   [key: string]: string;
 }
 
-const SidebarCTA: FC<SidebarCTAProps> = ({
+export const SidebarCTA: FC<SidebarCTAProps> = ({
   children,
   color = 'info',
   className,
@@ -47,4 +47,3 @@ const SidebarCTA: FC<SidebarCTAProps> = ({
 };
 
 SidebarCTA.displayName = 'Sidebar.CTA';
-export default SidebarCTA;

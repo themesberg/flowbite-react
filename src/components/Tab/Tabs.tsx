@@ -6,7 +6,7 @@ import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { TabItemProps } from './TabItem';
-import TabItem from './TabItem';
+import { TabItem } from './TabItem';
 
 export interface FlowbiteTabTheme {
   base: string;

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import AvatarGroupCounter from './AvatarGroupCounter';
+import { AvatarGroupCounter } from './AvatarGroupCounter';
 
 describe('AvatarGroupCounter', () => {
   it('renders the counter element with the correct classname', () => {

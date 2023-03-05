@@ -3,7 +3,7 @@ import { Button, Tooltip } from '../src';
 import type { CodeExample } from './demo';
 import DemoPage from './demo';
 
-const TooltipsPage: FC = () => {
+const TooltipPage: FC = () => {
   const examples: CodeExample[] = [
     {
       title: 'Using tooltips',
@@ -93,4 +93,4 @@ const TooltipsPage: FC = () => {
   return <DemoPage examples={examples} />;
 };
 
-export default TooltipsPage;
+export default TooltipPage;

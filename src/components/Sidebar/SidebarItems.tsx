@@ -4,7 +4,7 @@ import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface SidebarItemsProps extends PropsWithChildren, ComponentProps<'div'> {}
 
-const SidebarItems: FC<SidebarItemsProps> = ({ children, className, ...props }) => {
+export const SidebarItems: FC<SidebarItemsProps> = ({ children, className, ...props }) => {
   const theme = useTheme().theme.sidebar.items;
 
   return (
@@ -15,4 +15,3 @@ const SidebarItems: FC<SidebarItemsProps> = ({ children, className, ...props }) 
 };
 
 SidebarItems.displayName = 'Sidebar.Items';
-export default SidebarItems;

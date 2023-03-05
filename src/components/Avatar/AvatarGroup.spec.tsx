@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import AvatarGroup from './AvatarGroup';
+import { AvatarGroup } from './AvatarGroup';
 
-describe('AvatarGroup', () => {
+describe('Components / Avatar.Group', () => {
   it('renders the avatar group element with the correct classname', () => {
     render(
       <AvatarGroup className="test-class">

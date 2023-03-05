@@ -13,7 +13,7 @@ export interface AvatarGroupCounterProps extends PropsWithChildren<ComponentProp
   total?: number;
 }
 
-const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({
+export const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({
   className,
   href,
   theme: customTheme = {},
@@ -30,4 +30,3 @@ const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({
 };
 
 AvatarGroupCounter.displayName = 'Avatar.GroupCounter';
-export default AvatarGroupCounter;

@@ -1,4 +1,5 @@
-import type { FC } from 'react';
+import Link from 'next/link';
+import type { FC, SetStateAction } from 'react';
 import { useState } from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { Button, Checkbox, Label, Modal, Select, TextInput } from '../src';
@@ -16,7 +17,7 @@ const ModalPage: FC = () => {
       code: (
         <>
           <Button onClick={() => setOpenModal('default')}>Toggle modal</Button>
-          <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)}>
+          <Modal show={true} onClose={() => setOpenModal(undefined)}>
             <Modal.Header>Terms of Service</Modal.Header>
             <Modal.Body>
               <div className="space-y-6">
@@ -125,18 +126,18 @@ const ModalPage: FC = () => {
                     <Checkbox id="remember" />
                     <Label htmlFor="remember">Remember me</Label>
                   </div>
-                  <a href="/modal" className="text-sm text-blue-700 hover:underline dark:text-blue-500">
+                  <Link href="/modal" className="text-sm text-blue-700 hover:underline dark:text-blue-500">
                     Lost Password?
-                  </a>
+                  </Link>
                 </div>
                 <div className="w-full">
                   <Button>Log in to your account</Button>
                 </div>
                 <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                   Not registered?&nbsp;
-                  <a href="/modal" className="text-blue-700 hover:underline dark:text-blue-500">
+                  <Link href="/modal" className="text-blue-700 hover:underline dark:text-blue-500">
                     Create account
-                  </a>
+                  </Link>
                 </div>
               </div>
             </Modal.Body>
@@ -150,7 +151,10 @@ const ModalPage: FC = () => {
         <>
           <div className="flex flex-wrap gap-4">
             <div className="w-40">
-              <Select defaultValue="md" onChange={(event) => setModalSize(event.target.value)}>
+              <Select
+                defaultValue="md"
+                onChange={(event: { target: { value: SetStateAction<string> } }) => setModalSize(event.target.value)}
+              >
                 <option value="sm">sm</option>
                 <option value="md">md</option>
                 <option value="lg">lg</option>
@@ -196,7 +200,12 @@ const ModalPage: FC = () => {
         <>
           <div className="flex flex-wrap gap-4">
             <div className="w-40">
-              <Select defaultValue="center" onChange={(event) => setModalPlacement(event.target.value)}>
+              <Select
+                defaultValue="center"
+                onChange={(event: { target: { value: SetStateAction<string> } }) =>
+                  setModalPlacement(event.target.value)
+                }
+              >
                 <option value="center">Center</option>
                 <option value="top-left">Top left</option>
                 <option value="top-center">Top center</option>

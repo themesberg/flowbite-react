@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { FC } from 'react';
 import { useState } from 'react';
 import { HiMail } from 'react-icons/hi';
@@ -107,9 +108,9 @@ const FormsPage: FC = () => {
             <Checkbox id="agree" />
             <Label htmlFor="agree">
               I agree with the&nbsp;
-              <a href="/forms" className="text-blue-600 hover:underline dark:text-blue-500">
+              <Link href="/forms" className="text-blue-600 hover:underline dark:text-blue-500">
                 terms and conditions
-              </a>
+              </Link>
             </Label>
           </div>
           <Button type="submit">Register new account</Button>
@@ -131,9 +132,9 @@ const FormsPage: FC = () => {
             helperText={
               <>
                 We’ll never share your details. Read our
-                <a href="/forms" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
+                <Link href="/forms" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
                   Privacy Policy
-                </a>
+                </Link>
                 .
               </>
             }
@@ -303,9 +304,9 @@ const FormsPage: FC = () => {
             <Checkbox id="accept" defaultChecked />
             <Label htmlFor="accept">
               I agree to the&nbsp;
-              <a href="/forms" className="text-blue-600 hover:underline dark:text-blue-500">
+              <Link href="/forms" className="text-blue-600 hover:underline dark:text-blue-500">
                 terms and conditions
-              </a>
+              </Link>
             </Label>
           </div>
           <div className="flex items-center gap-2">

@@ -112,7 +112,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-element-to-jsx-string": "^15.0.0",
-    "react-router-dom": "^6.8.2",
     "react-syntax-highlighter": "^15.5.0",
     "resize-observer-polyfill": "^1.5.1",
     "standard-version": "^9.5.0",
@@ -172,7 +171,9 @@
     ],
     "root": true,
     "rules": {
-      "@typescript-eslint/consistent-type-imports": "warn"
+      "@typescript-eslint/consistent-type-imports": "warn",
+      "@next/next/no-img-element": "off",
+      "jsx-a11y/anchor-is-valid": "off"
     }
   }
 }

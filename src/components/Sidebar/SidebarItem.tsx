@@ -79,7 +79,7 @@ const Children: FC<PropsWithChildren<{ id: string }>> = ({ id, children }) => {
   );
 };
 
-const SidebarItem = forwardRef<Element, SidebarItemProps>(
+export const SidebarItem = forwardRef<Element, SidebarItemProps>(
   (
     {
       active: isActive,
@@ -135,4 +135,3 @@ const SidebarItem = forwardRef<Element, SidebarItemProps>(
 );
 
 SidebarItem.displayName = 'Sidebar.Item';
-export default SidebarItem;

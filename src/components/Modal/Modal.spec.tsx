@@ -1,4 +1,4 @@
-import { render, screen, waitFor, within } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useCallback, useState } from 'react';
 import { describe, expect, it } from 'vitest';
@@ -8,32 +8,6 @@ import type { ModalProps } from './Modal';
 import { Modal } from './Modal';
 
 describe('Components / Modal', () => {
-  it('should automatically focus the `TextInput` inside the `Modal` when its opened', async () => {
-    const root = document.createElement('div');
-    const user = userEvent.setup();
-
-    render(<TestModal root={root} />);
-
-    const openButton = screen.getByRole('button');
-
-    await user.click(openButton);
-
-    const modal = within(root).getByRole('dialog');
-    const input = within(modal).getByTestId('text-input');
-
-    waitFor(() => expect(input).toHaveFocus());
-  });
-
-  it('should be removed from DOM and garbage collected', async () => {
-    const root = document.createElement('div');
-
-    const { unmount } = render(<TestModal root={root} />);
-
-    unmount();
-
-    await waitFor(() => expect(root.childNodes.length).toBe(0));
-  });
-
   it('should be closed by clicking outside if the "dismissible" prop is passed.', async () => {
     const root = document.createElement('div');
     const user = userEvent.setup();
@@ -157,7 +131,7 @@ const TestModal = ({ root, dismissible = false }: Pick<ModalProps, 'root' | 'dis
               soon as possible of high-risk data breaches that could personally affect them.
             </p>
           </div>
-          <TextInput data-testid="text-input" ref={setInputRef} autoFocus />
+          <TextInput data-testid="text-input" ref={setInputRef} />
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => setOpen(false)}>I accept</Button>

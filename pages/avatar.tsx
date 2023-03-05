@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { FC } from 'react';
 import { Avatar, Dropdown } from '../src';
 import type { CodeExample } from './demo';
@@ -66,7 +67,8 @@ const AvatarPage: FC = () => {
         <div className="flex flex-wrap gap-2">
           <Avatar
             img={(props) => (
-              <img
+              <Image
+                alt=""
                 referrerPolicy="no-referrer"
                 src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
                 {...props}
@@ -84,7 +86,7 @@ const AvatarPage: FC = () => {
                   media="(min-width: 480px)"
                   srcSet="https://flowbite.com/docs/images/people/profile-picture-4.jpg"
                 />
-                <img src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" {...props} />
+                <Image alt="" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" {...props} />
               </picture>
             )}
           />

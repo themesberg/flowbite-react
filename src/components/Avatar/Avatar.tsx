@@ -5,9 +5,9 @@ import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { FlowbiteAvatarGroupTheme } from './AvatarGroup';
-import AvatarGroup from './AvatarGroup';
+import { AvatarGroup } from './AvatarGroup';
 import type { FlowbiteAvatarGroupCounterTheme } from './AvatarGroupCounter';
-import AvatarGroupCounter from './AvatarGroupCounter';
+import { AvatarGroupCounter } from './AvatarGroupCounter';
 
 export interface FlowbiteAvatarTheme {
   root: FlowbiteAvatarRootTheme;
@@ -102,7 +102,6 @@ const AvatarComponent: FC<AvatarProps> = ({
   );
 
   const imgProps = {
-    alt,
     className: classNames(imgClassName, theme.root.img.on),
     'data-testid': 'flowbite-avatar-img',
   };
@@ -111,9 +110,9 @@ const AvatarComponent: FC<AvatarProps> = ({
       <div className="relative">
         {img ? (
           typeof img === 'string' ? (
-            <img {...imgProps} src={img} />
+            <img alt={alt} src={img} {...imgProps} />
           ) : (
-            img(imgProps)
+            img({ alt, ...imgProps })
           )
         ) : placeholderInitials ? (
           <div

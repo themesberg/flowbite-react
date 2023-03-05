@@ -33,7 +33,7 @@ export interface SidebarCollapseProps
   theme?: DeepPartial<FlowbiteSidebarCollapseTheme>;
 }
 
-const SidebarCollapse: FC<SidebarCollapseProps> = ({
+export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   children,
   className,
   icon: Icon,
@@ -97,4 +97,3 @@ const SidebarCollapse: FC<SidebarCollapseProps> = ({
 };
 
 SidebarCollapse.displayName = 'Sidebar.Collapse';
-export default SidebarCollapse;

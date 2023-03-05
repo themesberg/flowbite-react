@@ -121,10 +121,10 @@ const BenefitsAndDrawbacks: FC = () => {
       </h3>
       <ul className="list-none [&>li]:mb-2">
         <Benefit>You can customize with very little effort and code</Benefit>
-        <Benefit>You don't need to learn how to use the theme API</Benefit>
+        <Benefit>You don&rsquo;t need to learn how to use the theme API</Benefit>
         <Drawback>
           <span>
-            Some components have nested elements, and you can't customize all of them with one&nbsp;
+            Some components have nested elements, and you can&rsquo;t customize all of them with one&nbsp;
             <strong>className</strong>
           </span>
         </Drawback>
@@ -158,11 +158,12 @@ const BenefitsAndDrawbacks: FC = () => {
           <span className="sr-only">Disclaimer:</span>
           <span aria-hidden>*</span>
         </strong>
-        &nbsp;We haven't tested performance at any scale. The <strong>theme=&#123;&#125;</strong> attribute merges the
-        necessary part of the global theme with what is provided in the attribute, which is a deep object merge &mdash;
-        and it isn't fast. It is safe to assume that <strong>theme=&#123;&#125;</strong> attribute will degrade
-        performance with enough components using that technique. It is safe to assume performance won't degrade
-        meaningfully at scale if you just use a global theme and/or <strong>className=&#123;&#125;</strong> attributes.
+        &nbsp;We haven&rsquo;t tested performance at any scale. The <strong>theme=&#123;&#125;</strong> attribute merges
+        the necessary part of the global theme with what is provided in the attribute, which is a deep object merge
+        &mdash; and it isn&rsquo;t fast. It is safe to assume that <strong>theme=&#123;&#125;</strong> attribute will
+        degrade performance with enough components using that technique. It is safe to assume performance won&rsquo;t
+        degrade meaningfully at scale if you just use a global theme and/or <strong>className=&#123;&#125;</strong>{' '}
+        attributes.
       </p>
     </div>
   );

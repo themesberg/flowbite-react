@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { FC } from 'react';
 import { Button, Card, Checkbox, Dropdown, Label, TextInput } from '../src';
 import type { CodeExample } from './demo';
@@ -133,10 +134,10 @@ const CardPage: FC = () => {
               </Dropdown>
             </div>
             <div className="flex flex-col items-center pb-10">
-              <img
-                className="mb-3 h-24 w-24 rounded-full shadow-lg"
-                src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
+              <Image
                 alt="Bonnie image"
+                src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
+                className="mb-3 h-24 w-24 rounded-full shadow-lg"
               />
               <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
               <span className="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
@@ -339,10 +340,10 @@ const CardPage: FC = () => {
                 <li className="py-3 sm:py-4">
                   <div className="flex items-center space-x-4">
                     <div className="shrink-0">
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
+                      <Image
                         alt="Neil image"
+                        src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
+                        className="h-8 w-8 rounded-full"
                       />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -357,10 +358,10 @@ const CardPage: FC = () => {
                 <li className="py-3 sm:py-4">
                   <div className="flex items-center space-x-4">
                     <div className="shrink-0">
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
+                      <Image
                         alt="Bonnie image"
+                        src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
+                        className="h-8 w-8 rounded-full"
                       />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -375,10 +376,10 @@ const CardPage: FC = () => {
                 <li className="py-3 sm:py-4">
                   <div className="flex items-center space-x-4">
                     <div className="shrink-0">
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+                      <Image
                         alt="Michael image"
+                        src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+                        className="h-8 w-8 rounded-full"
                       />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -393,10 +394,10 @@ const CardPage: FC = () => {
                 <li className="py-3 sm:py-4">
                   <div className="flex items-center space-x-4">
                     <div className="shrink-0">
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://flowbite.com/docs/images/people/profile-picture-4.jpg"
+                      <Image
                         alt="Lana image"
+                        src="https://flowbite.com/docs/images/people/profile-picture-4.jpg"
+                        className="h-8 w-8 rounded-full"
                       />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -411,10 +412,10 @@ const CardPage: FC = () => {
                 <li className="pt-3 pb-0 sm:pt-4">
                   <div className="flex items-center space-x-4">
                     <div className="shrink-0">
-                      <img
-                        className="h-8 w-8 rounded-full"
-                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                      <Image
                         alt="Thomas image"
+                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                        className="h-8 w-8 rounded-full"
                       />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -444,7 +445,7 @@ const CardPage: FC = () => {
               <span className="text-5xl font-extrabold tracking-tight">49</span>
               <span className="ml-1 text-xl font-normal text-gray-500 dark:text-gray-400">/month</span>
             </div>
-            <ul role="list" className="my-7 space-y-5">
+            <ul className="my-7 space-y-5">
               <li className="flex space-x-3">
                 <svg
                   className="h-5 w-5 shrink-0 text-blue-600 dark:text-blue-500"

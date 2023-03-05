@@ -83,7 +83,7 @@ describe('Components / Avatar', () => {
     it('should support custom image elements', () => {
       render(
         <Flowbite>
-          <Avatar img={(props) => <img referrerPolicy="no-referrer" {...props} />} />
+          <Avatar img={(props) => <img alt="" referrerPolicy="no-referrer" {...props} />} />
         </Flowbite>,
       );
 

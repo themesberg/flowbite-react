@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import type { FC } from 'react';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { HiCheck, HiExclamation, HiFire, HiX } from 'react-icons/hi';
@@ -68,12 +69,12 @@ const ToastPage: FC = () => {
         <Toast>
           <div className="text-sm font-normal">Conversation archived.</div>
           <div className="ml-auto flex items-center space-x-2">
-            <a
-              className="rounded-lg p-1.5 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-700"
+            <Link
               href="/toast"
+              className="rounded-lg p-1.5 text-sm font-medium text-blue-600 hover:bg-blue-100 dark:text-blue-500 dark:hover:bg-gray-700"
             >
               Undo
-            </a>
+            </Link>
             <Toast.Toggle />
           </div>
         </Toast>

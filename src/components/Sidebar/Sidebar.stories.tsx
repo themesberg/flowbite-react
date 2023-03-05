@@ -239,8 +239,8 @@ CTAButton.args = {
           profile.
         </p>
         <a
-          className="text-sm text-blue-900 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
           href="#"
+          className="text-sm text-blue-900 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
         >
           Turn new navigation off
         </a>

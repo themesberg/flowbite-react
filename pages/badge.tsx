@@ -4,7 +4,7 @@ import { Badge } from '../src';
 import type { CodeExample } from './demo';
 import DemoPage from './demo';
 
-const BadgesPage: FC = () => {
+const BadgePage: FC = () => {
   const examples: CodeExample[] = [
     {
       title: 'Default badge',
@@ -90,4 +90,4 @@ const BadgesPage: FC = () => {
   return <DemoPage examples={examples} />;
 };
 
-export default BadgesPage;
+export default BadgePage;

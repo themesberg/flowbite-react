@@ -4,7 +4,7 @@ import { Button } from '../src';
 import type { CodeExample } from './demo';
 import DemoPage from './demo';
 
-const ButtonsPage: FC = () => {
+const ButtonPage: FC = () => {
   const examples: CodeExample[] = [
     {
       title: 'Default button',
@@ -297,4 +297,4 @@ const ButtonsPage: FC = () => {
   return <DemoPage examples={examples} />;
 };
 
-export default ButtonsPage;
+export default ButtonPage;
