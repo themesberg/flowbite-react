@@ -4,5 +4,8 @@ module.exports = {
   plugins: [require('flowbite/plugin')],
   theme: {
     extend: {},
+    fontFamily: {
+      sans: ['Inter', 'sans-serif'],
+    },
   },
 };
