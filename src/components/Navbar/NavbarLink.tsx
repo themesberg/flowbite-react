@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
-import type { LinkProps } from 'react-router-dom';
 import type { DeepPartial, FlowbiteBoolean } from '~/src';
 import { useTheme } from '~/src';
 import { mergeDeep } from '~/src/helpers/merge-deep';
@@ -11,7 +10,7 @@ export interface FlowbiteNavbarLinkTheme {
   disabled: FlowbiteBoolean;
 }
 
-export interface NavbarLinkProps extends PropsWithChildren<ComponentProps<'a'>>, Partial<Pick<LinkProps, 'to'>> {
+export interface NavbarLinkProps extends PropsWithChildren, ComponentProps<'a'>, Record<string, unknown> {
   active?: boolean;
   as?: ElementType;
   disabled?: boolean;
