@@ -31,7 +31,7 @@ export function useTheme(): ThemeContextProps {
 }
 
 export const useThemeMode = (): [Mode, React.Dispatch<React.SetStateAction<Mode>>, () => void] => {
-  const userPreferenceIsDark = () => window.matchMedia?.('(prefers-color-scheme: dark)').matches;
+  const userPreferenceIsDark = () => windowExists() && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
   const getPrefersColorScheme = (): Mode => (userPreferenceIsDark() ? 'dark' : 'light');
   const onToggleMode = () => {
     const newMode = mode === 'dark' ? 'light' : 'dark';
