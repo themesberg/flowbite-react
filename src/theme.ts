@@ -566,7 +566,7 @@ export const theme: FlowbiteTheme = {
   },
   navbar: {
     root: {
-      base: 'border-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
+      base: 'border-gray-200 border-y-2 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
       rounded: {
         on: 'rounded',
         off: '',
