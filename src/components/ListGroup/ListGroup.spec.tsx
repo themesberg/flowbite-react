@@ -3,9 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { HiCloudDownload } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import type { DeepPartial } from '..';
-import type { FlowbiteTheme } from '../Flowbite';
-import { Flowbite } from '../Flowbite';
+import type { DeepPartial, FlowbiteTheme } from '~/src';
+import { Flowbite } from '~/src';
 import { ListGroup } from './ListGroup';
 
 describe('Components / List group', () => {

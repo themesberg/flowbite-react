@@ -1,10 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
 import { HiStar } from 'react-icons/hi';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import type { FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
-import { useTheme } from '../Flowbite/ThemeContext';
+import type { DeepPartial, FlowbiteSizes } from '~/src';
+import { useTheme } from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { useRatingContext } from './RatingContext';
 
 export interface FlowbiteRatingStarTheme {

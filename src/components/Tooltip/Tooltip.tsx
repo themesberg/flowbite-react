@@ -1,10 +1,10 @@
 import type { Placement } from '@floating-ui/core';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import type { FlowbiteFloatingTheme } from '../Floating';
-import { Floating } from '../Floating';
-import { useTheme } from '../Flowbite/ThemeContext';
+import type { DeepPartial } from '~/src';
+import { useTheme } from '~/src';
+import type { FlowbiteFloatingTheme } from '~/src/components/Floating';
+import { Floating } from '~/src/components/Floating';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 
 export type FlowbiteTooltipTheme = FlowbiteFloatingTheme;
 

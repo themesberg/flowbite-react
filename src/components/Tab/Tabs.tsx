@@ -1,10 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, ReactElement } from 'react';
 import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
-import { useTheme } from '../Flowbite/ThemeContext';
+import type { DeepPartial, FlowbiteBoolean } from '~/src';
+import { useTheme } from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import type { TabItemProps } from './TabItem';
 import { TabItem } from './TabItem';
 

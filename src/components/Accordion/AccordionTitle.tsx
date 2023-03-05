@@ -1,9 +1,8 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import type { FlowbiteBoolean, FlowbiteHeadingLevel } from '../Flowbite/FlowbiteTheme';
-import { useTheme } from '../Flowbite/ThemeContext';
+import type { DeepPartial, FlowbiteBoolean, FlowbiteHeadingLevel } from '~/src';
+import { useTheme } from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { useAccordionContext } from './AccordionPanelContext';
 
 export interface FlowbiteAccordionTitleTheme {

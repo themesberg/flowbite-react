@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { useTheme } from '../Flowbite/ThemeContext';
+import { useTheme } from '~/src';
 import { SidebarItemContext } from './SidebarItemContext';
 
 export interface SidebarItemGroupProps extends PropsWithChildren, ComponentProps<'ul'> {}

@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import type { LinkProps } from 'react-router-dom';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import { useTheme } from '../Flowbite/ThemeContext';
+import type { DeepPartial } from '~/src';
+import { useTheme } from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 
 export interface FlowbiteNavbarBrandTheme {
   base: string;

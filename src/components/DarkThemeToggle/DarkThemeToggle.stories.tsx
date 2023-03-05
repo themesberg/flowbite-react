@@ -1,5 +1,5 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
-import { Flowbite } from '../Flowbite';
+import { Flowbite } from '~/src';
 import { DarkThemeToggle } from './DarkThemeToggle';
 
 export default {

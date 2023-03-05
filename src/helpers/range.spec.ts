@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import range from './range';
+import { range } from './range';
 
 describe('Helpers / Range', () => {
   it('should return the empty list, given start >= end', () => {

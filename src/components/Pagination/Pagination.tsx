@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import range from '../../helpers/range';
-import { useTheme } from '../Flowbite/ThemeContext';
+import type { DeepPartial } from '~/src';
+import { useTheme } from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { range } from '~/src/helpers/range';
 import type { FlowbitePaginationButtonTheme, PaginationButtonProps } from './PaginationButton';
 import { PaginationButton, PaginationNavigation } from './PaginationButton';
 

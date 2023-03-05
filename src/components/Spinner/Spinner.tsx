@@ -1,9 +1,8 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
-import { useTheme } from '../Flowbite/ThemeContext';
+import type { DeepPartial, FlowbiteColors, FlowbiteSizes } from '~/src';
+import { useTheme } from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 
 export interface FlowbiteSpinnerTheme {
   base: string;

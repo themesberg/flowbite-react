@@ -12,7 +12,7 @@ import {
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { getArrowPlacement, getMiddleware, getPlacement } from '../../helpers/floating';
+import { getArrowPlacement, getMiddleware, getPlacement } from '~/src/helpers/floating';
 
 export interface FlowbiteFloatingTheme {
   arrow: FlowbiteFloatingArrowTheme;

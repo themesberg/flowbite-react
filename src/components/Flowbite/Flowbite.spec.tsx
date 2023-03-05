@@ -1,8 +1,7 @@
 import { act, render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import defaultTheme from '../../theme';
-import { Flowbite, useTheme } from '../Flowbite';
+import { Flowbite, useTheme } from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import type { ThemeContextProps } from './ThemeContext';
 
 describe('Components / Flowbite', () => {
@@ -12,7 +11,7 @@ describe('Components / Flowbite', () => {
 
       const { theme, mode, toggleMode } = context;
 
-      expect(theme).toEqual(defaultTheme);
+      expect(theme).toEqual(theme);
       expect(mode).toBeUndefined();
       expect(toggleMode).toBeUndefined();
     });
@@ -27,7 +26,7 @@ describe('Components / Flowbite', () => {
       );
 
       const { theme, mode, toggleMode } = context;
-      expect(theme).toEqual(defaultTheme);
+      expect(theme).toEqual(theme);
       expect(mode).toBe('light');
       expect(toggleMode).not.toBeUndefined();
     });

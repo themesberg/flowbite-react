@@ -2,9 +2,10 @@ import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
 import { useContext } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import { ThemeContext, useTheme } from '../Flowbite/ThemeContext';
+import type { DeepPartial } from '~/src';
+import { useTheme } from '~/src';
+import { ThemeContext } from '~/src/components/Flowbite/ThemeContext';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 
 export interface FlowbiteDarkThemeToggleTheme {
   root: FlowbiteDarkThemeToggleRootTheme;

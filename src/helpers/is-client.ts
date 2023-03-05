@@ -1,5 +1,3 @@
-const isClient: () => boolean = function () {
+export const isClient: () => boolean = function () {
   return typeof window !== 'undefined';
 };
-
-export default isClient;

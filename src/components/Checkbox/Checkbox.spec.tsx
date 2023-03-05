@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../Flowbite';
+import { Flowbite } from '~/src';
 import { Checkbox } from './Checkbox';
 
 describe.concurrent('Components / Checkbox', () => {

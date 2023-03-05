@@ -1,11 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
-import { useTheme } from '../Flowbite/ThemeContext';
-import { HelperText } from '../HelperText';
+import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '~/src';
+import { HelperText, useTheme } from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 
 export interface FlowbiteSelectTheme {
   base: string;

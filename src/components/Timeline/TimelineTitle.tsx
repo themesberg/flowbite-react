@@ -1,9 +1,8 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import { useTheme } from '../Flowbite';
-import type { FlowbiteHeadingLevel } from '../Flowbite/FlowbiteTheme';
+import type { DeepPartial, FlowbiteHeadingLevel } from '~/src';
+import { useTheme } from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 
 export interface FlowbiteTimelineTitleTheme {
   title: string;

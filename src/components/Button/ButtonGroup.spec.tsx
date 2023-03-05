@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import { Button } from '.';
-import defaultTheme from '../../theme';
-import { Flowbite } from '../Flowbite';
+import { Flowbite, theme } from '~/src';
+import { Button } from './Button';
 
 describe('Components / Button group', () => {
   describe('A11y', () => {
@@ -82,7 +81,7 @@ describe('Components / Button group', () => {
         </Button.Group>,
       );
 
-      const positionClasses = defaultTheme.buttonGroup.position;
+      const positionClasses = theme.buttonGroup.position;
 
       expect(buttons()[0]).toHaveClass(positionClasses.start);
       expect(buttons()[1]).toHaveClass(positionClasses.middle);

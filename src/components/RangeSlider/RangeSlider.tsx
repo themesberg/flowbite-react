@@ -1,10 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import { useTheme } from '../Flowbite/ThemeContext';
-import type { TextInputSizes } from '../TextInput';
+import type { DeepPartial, FlowbiteTextInputSizes } from '~/src';
+import { useTheme } from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 
 export interface FlowbiteRangeSliderTheme {
   root: FlowbiteRangeSliderRootTheme;
@@ -19,12 +18,12 @@ export interface FlowbiteRangeSliderFieldTheme {
   base: string;
   input: {
     base: string;
-    sizes: TextInputSizes;
+    sizes: FlowbiteTextInputSizes;
   };
 }
 
 export interface RangeSliderProps extends Omit<ComponentProps<'input'>, 'ref' | 'type'> {
-  sizing?: keyof TextInputSizes;
+  sizing?: keyof FlowbiteTextInputSizes;
   theme?: DeepPartial<FlowbiteRangeSliderTheme>;
 }
 

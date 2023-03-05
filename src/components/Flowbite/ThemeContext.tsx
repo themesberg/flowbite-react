@@ -1,20 +1,19 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import type { FC, ReactNode } from 'react';
+import type { Dispatch, FC, ReactNode, SetStateAction } from 'react';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import isClient from '../../helpers/is-client';
-import defaultTheme from '../../theme';
+import { isClient } from '~/src/helpers/is-client';
+import { theme } from '~/src/theme';
 import type { FlowbiteTheme } from './FlowbiteTheme';
 
 export type Mode = 'light' | 'dark';
 
 export interface ThemeContextProps {
-  theme: FlowbiteTheme;
   mode?: Mode;
+  theme: FlowbiteTheme;
   toggleMode?: () => void | null;
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({
-  theme: defaultTheme,
+  theme,
 });
 
 interface ThemeProviderProps {
@@ -26,39 +25,47 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children, value }) => {
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
 
-export function useTheme(): ThemeContextProps {
+export const useTheme: () => ThemeContextProps = () => {
   return useContext(ThemeContext);
-}
+};
 
-export const useThemeMode = (): [Mode, React.Dispatch<React.SetStateAction<Mode>>, () => void] => {
-  const userPreferenceIsDark = () => isClient() && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-  const getPrefersColorScheme = (): Mode => (userPreferenceIsDark() ? 'dark' : 'light');
+const prefersColorScheme: () => Mode = () => {
+  if (!isClient()) {
+    return 'light';
+  }
+
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+export const useThemeMode: () => [Mode, Dispatch<SetStateAction<Mode>>, () => void] = () => {
   const onToggleMode = () => {
     const newMode = mode === 'dark' ? 'light' : 'dark';
+
+    setModeOnBody(newMode);
     setMode(newMode);
-    setModeState(newMode);
   };
-  const { mode: contextMode, toggleMode = onToggleMode } = useContext(ThemeContext);
-  const [mode, setModeState] = useState<Mode>(contextMode ? contextMode : getPrefersColorScheme());
-  const setMode = useCallback((mode: Mode) => {
+
+  const setModeOnBody = useCallback((mode: Mode) => {
     if (!isClient()) {
       return;
     }
 
     if (mode === 'dark') {
       document.documentElement.classList.add('dark');
-      return;
+    } else {
+      document.documentElement.classList.remove('dark');
     }
-
-    document.documentElement.classList.remove('dark');
   }, []);
 
-  useEffect(() => {
-    if (contextMode) {
-      setMode(contextMode);
-      setModeState(contextMode);
-    }
-  }, [contextMode, setMode, setModeState]);
+  const { mode: initialMode, toggleMode = onToggleMode } = useContext(ThemeContext);
+  const [mode, setMode] = useState<Mode>(initialMode ?? prefersColorScheme());
 
-  return [mode, setModeState, toggleMode];
+  useEffect(() => {
+    if (initialMode) {
+      setModeOnBody(initialMode);
+      setMode(initialMode);
+    }
+  }, [initialMode, setModeOnBody, setMode]);
+
+  return [mode, setMode, toggleMode];
 };

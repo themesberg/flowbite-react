@@ -1,11 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
-import { useTheme } from '../Flowbite/ThemeContext';
-import { HelperText } from '../HelperText';
+import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '~/src';
+import { HelperText, useTheme } from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 
 export interface FlowbiteTextInputTheme {
   base: string;
@@ -22,8 +20,8 @@ export interface FlowbiteTextInputTheme {
     };
     input: {
       base: string;
-      sizes: TextInputSizes;
-      colors: TextInputColors;
+      sizes: FlowbiteTextInputSizes;
+      colors: FlowbiteTextInputColors;
       withIcon: FlowbiteBoolean;
       withRightIcon: FlowbiteBoolean;
       withAddon: FlowbiteBoolean;
@@ -32,22 +30,23 @@ export interface FlowbiteTextInputTheme {
   };
 }
 
-export interface TextInputColors extends Pick<FlowbiteColors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
+export interface FlowbiteTextInputColors
+  extends Pick<FlowbiteColors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
   [key: string]: string;
 }
 
-export interface TextInputSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
+export interface FlowbiteTextInputSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
   [key: string]: string;
 }
 
 export interface TextInputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
-  sizing?: keyof TextInputSizes;
-  shadow?: boolean;
-  helperText?: ReactNode;
   addon?: ReactNode;
+  color?: keyof FlowbiteTextInputColors;
+  helperText?: ReactNode;
   icon?: FC<ComponentProps<'svg'>>;
   rightIcon?: FC<ComponentProps<'svg'>>;
-  color?: keyof TextInputColors;
+  shadow?: boolean;
+  sizing?: keyof FlowbiteTextInputSizes;
   theme?: DeepPartial<FlowbiteTextInputTheme>;
 }
 

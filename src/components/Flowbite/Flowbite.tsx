@@ -1,9 +1,8 @@
 import type { FC, HTMLAttributes } from 'react';
 import { useEffect, useMemo } from 'react';
-import type { DeepPartial } from '..';
-import isClient from '../../helpers/is-client';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import defaultTheme from '../../theme';
+import type { DeepPartial } from '~/src';
+import { theme as defaultTheme } from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import type { FlowbiteTheme } from './FlowbiteTheme';
 import { ThemeContext, useTheme, useThemeMode } from './ThemeContext';
 
@@ -25,21 +24,11 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
 
   useEffect(() => {
     if (dark) {
-      if (setMode != null) {
-        setMode('dark');
-      }
-
-      if (isClient()) {
-        document.documentElement.classList.add('dark');
-      }
+      setMode('dark');
+      document.documentElement.classList.add('dark');
     } else {
-      if (setMode != null) {
-        setMode('light');
-      }
-
-      if (isClient()) {
-        document.documentElement.classList.remove('dark');
-      }
+      setMode('light');
+      document.documentElement.classList.remove('dark');
     }
   }, [dark, setMode]);
 
@@ -55,5 +44,17 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
   return <ThemeContext.Provider value={themeContextValue}>{children}</ThemeContext.Provider>;
 };
 
-export type { FlowbiteTheme } from './FlowbiteTheme';
+export type {
+  CustomFlowbiteTheme,
+  FlowbiteBoolean,
+  FlowbiteColors,
+  FlowbiteContentPositions,
+  FlowbiteGradientColors,
+  FlowbiteGradientDuoToneColors,
+  FlowbiteHeadingLevel,
+  FlowbitePositions,
+  FlowbiteSizes,
+  FlowbiteStateColors,
+  FlowbiteTheme,
+} from './FlowbiteTheme';
 export { useTheme, useThemeMode };

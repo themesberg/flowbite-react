@@ -1,6 +1,6 @@
-import type { FlowbiteTheme } from './components';
+import type { FlowbiteTheme } from '~/src';
 
-const theme: FlowbiteTheme = {
+export const theme: FlowbiteTheme = {
   accordion: {
     root: {
       base: 'divide-y divide-gray-200 border-gray-200 dark:divide-gray-700 dark:border-gray-700',
@@ -1105,5 +1105,3 @@ const theme: FlowbiteTheme = {
     content: 'relative z-20',
   },
 };
-
-export default theme;

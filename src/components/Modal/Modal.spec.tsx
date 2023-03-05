@@ -2,8 +2,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useCallback, useState } from 'react';
 import { describe, expect, it } from 'vitest';
-import { Button } from '../Button';
-import { TextInput } from '../TextInput';
+import { Button, TextInput } from '~/src';
 import type { ModalProps } from './Modal';
 import { Modal } from './Modal';
 

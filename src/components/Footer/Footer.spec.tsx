@@ -2,7 +2,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 import type { FC } from 'react';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../Flowbite';
+import { Flowbite } from '~/src';
 import { Footer } from './Footer';
 
 describe('Components / Footer', () => {

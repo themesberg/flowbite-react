@@ -1,16 +1,16 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
-import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import type {
+import {
+  DeepPartial,
   FlowbiteBoolean,
   FlowbiteColors,
   FlowbiteGradientColors,
   FlowbiteGradientDuoToneColors,
   FlowbiteSizes,
-} from '../Flowbite/FlowbiteTheme';
-import { useTheme } from '../Flowbite/ThemeContext';
-import { Spinner } from '../Spinner';
+  Spinner,
+  useTheme,
+} from '~/src';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import type { PositionInButtonGroup } from './ButtonGroup';
 import ButtonGroup from './ButtonGroup';
 

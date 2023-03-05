@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { mergeDeep } from './mergeDeep';
+import { mergeDeep } from './merge-deep';
 
 describe('Helpers / Merge deep', () => {
   it('should merge keys that do not exist in target', () => {
