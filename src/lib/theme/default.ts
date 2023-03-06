@@ -138,7 +138,7 @@ const theme: FlowbiteTheme = {
       },
       initials: {
         text: 'font-medium text-gray-600 dark:text-gray-300',
-        base: 'inline-flex overflow-hidden relative justify-center items-center w-10 h-10 bg-gray-100 dark:bg-gray-600',
+        base: 'inline-flex overflow-hidden relative justify-center items-center bg-gray-100 dark:bg-gray-600',
       },
     },
     group: {
