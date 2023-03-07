@@ -60,6 +60,15 @@ describe('Components / Avatar', () => {
       expect(initialsPlaceholderText()).toHaveTextContent('RR');
     });
 
+    it('should support explicit sizes with placeholder initials', () => {
+      render(
+        <Flowbite>
+          <Avatar placeholderInitials="RR" size="xl" />
+        </Flowbite>,
+      );
+
+      expect(initialsPlaceholder()).toHaveClass('h-36 w-36');
+    });
     it('should support border color with placeholder initials', () => {
       render(
         <Flowbite>
