@@ -39,6 +39,7 @@ describe('Components / Dropdown', () => {
 
       expect(dropdown()).toHaveClass('invisible');
     });
+
     it('should collapse if clicked outside of the dropdown but dismissOnClick = false', async () => {
       const user = userEvent.setup();
       render(<TestDropdown />);
@@ -68,6 +69,7 @@ describe('Components / Dropdown', () => {
 
       expect(dropdown()).not.toHaveClass('invisible');
     });
+
     it('should collapse if clicked outside of the dropdown but dismissOnClick = false', async () => {
       const user = userEvent.setup();
       render(<TestDropdown dismissOnClick={false} />);

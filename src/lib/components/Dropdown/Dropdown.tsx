@@ -79,7 +79,9 @@ const DropdownComponent: FC<DropdownProps> = ({
 
   const handleOutsideClick = useCallback(
     (event: MouseEvent) => {
-      if (dismissOnClick) return;
+      if (dismissOnClick) {
+        return;
+      }
       if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
         setCloseRequestKey(uuid());
       }
@@ -112,11 +114,13 @@ const DropdownComponent: FC<DropdownProps> = ({
   );
 
   useEffect(() => {
-    if (dismissOnClick) return;
-    document.addEventListener('mousedown', handleOutsideClick);
+    if (!dismissOnClick) {
+      document.addEventListener('mousedown', handleOutsideClick);
+    }
     return () => {
-      if (dismissOnClick) return;
-      document.removeEventListener('mousedown', handleOutsideClick);
+      if (!dismissOnClick) {
+        document.removeEventListener('mousedown', handleOutsideClick);
+      }
     };
   }, [handleOutsideClick, dismissOnClick]);
 
