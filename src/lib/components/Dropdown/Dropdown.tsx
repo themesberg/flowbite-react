@@ -77,17 +77,11 @@ const DropdownComponent: FC<DropdownProps> = ({
   const [closeRequestKey, setCloseRequestKey] = useState<string | undefined>(undefined);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const handleOutsideClick = useCallback(
-    (event: MouseEvent) => {
-      if (dismissOnClick) {
-        return;
-      }
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
-        setCloseRequestKey(uuid());
-      }
-    },
-    [dismissOnClick],
-  );
+  const handleOutsideClick = useCallback((event: MouseEvent) => {
+    if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+      setCloseRequestKey(uuid());
+    }
+  }, []);
 
   // Extends DropdownItem's onClick to trigger a close request to the Floating component
   const attachCloseListener = useCallback(
