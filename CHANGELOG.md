@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.2](https://github.com/themesberg/flowbite-react/compare/v0.4.1...v0.4.2) (2023-03-08)
+
+
+### Features
+
+* **/src/components/avatar:** allow custom sizes for `placeholderInitials` ([#659](https://github.com/themesberg/flowbite-react/issues/659)) ([#660](https://github.com/themesberg/flowbite-react/issues/660)) ([525b90d](https://github.com/themesberg/flowbite-react/commit/525b90dfd374f38e1c0a8527fcb92eabc849c186))
+* **/src/components/progress:** fix unclear label usage ([#468](https://github.com/themesberg/flowbite-react/issues/468)) ([#547](https://github.com/themesberg/flowbite-react/issues/547)) ([f9cad02](https://github.com/themesberg/flowbite-react/commit/f9cad02d6d9b0f699c420167ccb0e373913ef1ce))
+
+
+### Bug Fixes
+
+* **/src/lib/components/*:** add `displayName` to Forms components ([#656](https://github.com/themesberg/flowbite-react/issues/656)) ([329cb5a](https://github.com/themesberg/flowbite-react/commit/329cb5ad6383244f38e11cac57050dc684d6c3c5)), closes [#641](https://github.com/themesberg/flowbite-react/issues/641)
+* **/src/lib/components/*:** allow `theme={}` to contain partials ([#649](https://github.com/themesberg/flowbite-react/issues/649)) ([863a789](https://github.com/themesberg/flowbite-react/commit/863a789ed169cbfcbe05d5de7e9021a074872063)), closes [#646](https://github.com/themesberg/flowbite-react/issues/646)
+* **/src/lib/components/Flowbite:** fix `window is not defined` in `next.js` ([#652](https://github.com/themesberg/flowbite-react/issues/652)) ([8fd9ddc](https://github.com/themesberg/flowbite-react/commit/8fd9ddcc5fcd8d5926c0e871dd25493d5d2c255f))
+* **/src/theme:** fix `<Modal>` vertical positioning ([#658](https://github.com/themesberg/flowbite-react/issues/658)) ([5fec3ca](https://github.com/themesberg/flowbite-react/commit/5fec3ca0710b1883a4de622453c896346c8ab8c0)), closes [#601](https://github.com/themesberg/flowbite-react/issues/601)
+* **button:** fixes outline button ([#654](https://github.com/themesberg/flowbite-react/issues/654)) ([eab6bbb](https://github.com/themesberg/flowbite-react/commit/eab6bbb6f78b46fb298e75344442b75f028d5cff))
+* **lib/components/buttons:** Add `target` to `Button` props to open a link in new tab ([#631](https://github.com/themesberg/flowbite-react/issues/631)) ([ed74d13](https://github.com/themesberg/flowbite-react/commit/ed74d1361d03fd01f5eac2b3ca8faa382718afba))
+* **sidebar:** adds missing className ([#657](https://github.com/themesberg/flowbite-react/issues/657)) ([12fce11](https://github.com/themesberg/flowbite-react/commit/12fce11aad6bb0d2ca5058ce9fffee629038e542))
+
 ### [0.4.1](https://github.com/themesberg/flowbite-react/compare/v0.3.8...v0.4.1) (2023-03-03)
 
 
