@@ -43,11 +43,22 @@ const AccordionComponent: FC<AccordionProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
+
   const [isOpen, setOpen] = useState(collapseAll ? -1 : 0);
+  
+  const toggleOpen = (i: number) => {
+    if (isOpen === i) {
+      setOpen(-1);
+    } else {
+      setOpen(i);
+    }
+  }
+  
   const panels = useMemo(
     () =>
       Children.map(children, (child, i) =>
-        cloneElement(child, { alwaysOpen, arrowIcon, flush, isOpen: isOpen === i, setOpen: () => setOpen(i) }),
+
+        cloneElement(child, { alwaysOpen, arrowIcon, flush, isOpen: isOpen === i, setOpen: () => toggleOpen(i) }),
       ),
     [alwaysOpen, arrowIcon, children, flush, isOpen],
   );
