@@ -275,7 +275,7 @@ const DrawerPage: FC = () => {
         <>
           <Button onClick={() => setOpenDrawer('pop-up')}>Toggle drawer</Button>
 
-          <Drawer placement={"right"} show={openDrawer === 'pop-up'} onClose={() => setOpenDrawer(undefined)}>
+          <Drawer placement={'right'} show={openDrawer === 'pop-up'} onClose={() => setOpenDrawer(undefined)}>
             <Drawer.Header />
             <Drawer.Body>
               <div className="text-center">
