@@ -34,11 +34,11 @@ describe('Components / Drawer', () => {
     await waitFor(() => expect(root.childNodes.length).toBe(0));
   });
 
-  it('should be closed by clicking outside if the "dismissible" prop is passed.', async () => {
+  it('should be closed by clicking outside if the "backdrop" prop is passed.', async () => {
     const root = document.createElement('div');
     const user = userEvent.setup();
 
-    render(<TestDrawer root={root} dismissible />);
+    render(<TestDrawer root={root} backdrop />);
 
     const openButton = screen.getByRole('button');
 
@@ -57,7 +57,7 @@ describe('Components / Drawer', () => {
     const root = document.createElement('div');
     const user = userEvent.setup();
 
-    render(<TestDrawer root={root} dismissible />);
+    render(<TestDrawer root={root} backdrop />);
 
     const openButton = screen.getByRole('button');
 
@@ -128,7 +128,7 @@ describe('Components / Drawer', () => {
   });
 });
 
-const TestDrawer = ({ root, dismissible = false }: Pick<DrawerProps, 'root' | 'dismissible'>): JSX.Element => {
+const TestDrawer = ({ root, backdrop = false }: Pick<DrawerProps, 'root' | 'backdrop'>): JSX.Element => {
   const [open, setOpen] = useState(false);
 
   const setInputRef = useCallback(
@@ -143,7 +143,7 @@ const TestDrawer = ({ root, dismissible = false }: Pick<DrawerProps, 'root' | 'd
   return (
     <>
       <Button onClick={() => setOpen(true)}>Toggle drawer</Button>
-      <Drawer dismissible={dismissible} root={root} show={open} onClose={() => setOpen(false)}>
+      <Drawer backdrop={backdrop} root={root} show={open} onClose={() => setOpen(false)}>
         <Drawer.Header>Terms of Service</Drawer.Header>
         <Drawer.Body>
           <div className="space-y-6">

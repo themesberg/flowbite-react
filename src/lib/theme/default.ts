@@ -565,23 +565,24 @@ const theme: FlowbiteTheme = {
   drawer: {
     root: {
       // base: 'fixed top-0 right-0 left-0 z-50 h-modal overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
-      base: 'fixed top-0 left-0 z-40 h-screen p-0 overflow-y-auto bg-white w-80 dark:bg-gray-800 shadow',
+      base: 'fixed bg-white dark:bg-gray-800 p-0 shadow',
       placements: {
         left: {
-          on: 'overflow-x-hidden ',
-          off: '-translate-x-full overflow-x-hidden transition-transform',
+          on: 'top-0 w-80 left-0 z-40 h-screen p-0 overflow-y-auto overflow-x-hidden transition-transform',
+          off: 'overflow-y-auto translate-x-full overflow-x-hidden transition-transform',
         },
         right: {
-          on: 'overflow-x-hidden ',
-          off: '-translate-x-full overflow-x-hidden transition-transform',
+          on: 'top-0 w-80 right-0 z-40 h-screen overflow-x-hidden transition-transform',
+          off: 'translate-x-full transition-transform',
         },
         top: {
-          on: 'overflow-x-hidden ',
-          off: '-translate-x-full overflow-x-hidden transition-transform',
+          on: 'top-0 left-0 right-0 z-40 w-full p-0 transition-transform',
+          off: 'translate-y-full transition-transform',
         },
         bottom: {
-          on: 'overflow-x-hidden ',
-          off: '-translate-x-full overflow-x-hidden transition-transform',
+          on: 'bottom-0 left-0 right-0 z-40 w-full p-0 overflow-y-auto transition-transform',
+          off: 'translate-y-full transition-transform',
+          // fixed bottom-0 left-0 right-0 z-40 w-full p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 transform-none
         },
       },
     },

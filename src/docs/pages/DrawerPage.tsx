@@ -43,7 +43,7 @@ const DrawerPage: FC = () => {
       code: (
         <>
           <Button onClick={() => setOpenDrawer('navigation')}>Show navigation</Button>
-          <Drawer dismissible show={openDrawer === 'navigation'} onClose={() => setOpenDrawer(undefined)}>
+          <Drawer backdrop show={openDrawer === 'navigation'} onClose={() => setOpenDrawer(undefined)}>
             <Drawer.Header>Menu</Drawer.Header>
             <Drawer.Body>
               <ul className="space-y-2">
@@ -80,14 +80,14 @@ const DrawerPage: FC = () => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
                       ></path>
                     </svg>
                     <span className="ml-3 flex-1 whitespace-nowrap text-left">E-commerce</span>
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
                       ></path>
                     </svg>
@@ -167,45 +167,18 @@ const DrawerPage: FC = () => {
       ),
     },
     {
-      title: 'Dismissable drawer',
+      title: 'Backdrop drawer',
       code: (
         <>
-          <Button onClick={() => setOpenDrawer('dismissible')}>Toggle dismissable drawer</Button>
-          <Drawer dismissible={false} show={openDrawer === 'dismissible'} onClose={() => setOpenDrawer(undefined)}>
-            <Drawer.Header>Dismissable</Drawer.Header>
+          <Button onClick={() => setOpenDrawer('backdrop')}>Toggle backdrop drawer</Button>
+          <Drawer backdrop={true} show={openDrawer === 'backdrop'} onClose={() => setOpenDrawer(undefined)}>
+            <Drawer.Header>Backdrop</Drawer.Header>
             <Drawer.Body>
               <div className="space-y-6">
                 <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                   Incididunt cupidatat ut minim ea deserunt aute aliqua et adipisicing minim id. Amet esse dolore ipsum
                   nostrud irure nostrud ipsum. Velit irure anim occaecat duis deserunt do ut.
                 </p>
-              </div>
-            </Drawer.Body>
-          </Drawer>
-        </>
-      ),
-    },
-    {
-      title: 'Pop-up drawer',
-      code: (
-        <>
-          <Button onClick={() => setOpenDrawer('pop-up')}>Toggle drawer</Button>
-          <Drawer show={openDrawer === 'pop-up'} onClose={() => setOpenDrawer(undefined)}>
-            <Drawer.Header />
-            <Drawer.Body>
-              <div className="text-center">
-                <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
-                <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                  Are you sure you want to delete this product?
-                </h3>
-                <div className="flex justify-center gap-4">
-                  <Button color="failure" onClick={() => setOpenDrawer(undefined)}>
-                    {"Yes, I'm sure"}
-                  </Button>
-                  <Button color="gray" onClick={() => setOpenDrawer(undefined)}>
-                    No, cancel
-                  </Button>
-                </div>
               </div>
             </Drawer.Body>
           </Drawer>
@@ -290,6 +263,34 @@ const DrawerPage: FC = () => {
                   meant to ensure a common set of data rights in the European Union. It requires organizations to notify
                   users as soon as possible of high-risk data breaches that could personally affect them.
                 </p>
+              </div>
+            </Drawer.Body>
+          </Drawer>
+        </>
+      ),
+    },
+    {
+      title: 'Pop-up drawer',
+      code: (
+        <>
+          <Button onClick={() => setOpenDrawer('pop-up')}>Toggle drawer</Button>
+
+          <Drawer placement={"right"} show={openDrawer === 'pop-up'} onClose={() => setOpenDrawer(undefined)}>
+            <Drawer.Header />
+            <Drawer.Body>
+              <div className="text-center">
+                <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
+                <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                  Are you sure you want to delete this product?
+                </h3>
+                <div className="flex justify-center gap-4">
+                  <Button color="failure" onClick={() => setOpenDrawer(undefined)}>
+                    {"Yes, I'm sure"}
+                  </Button>
+                  <Button color="gray" onClick={() => setOpenDrawer(undefined)}>
+                    No, cancel
+                  </Button>
+                </div>
               </div>
             </Drawer.Body>
           </Drawer>

@@ -40,14 +40,14 @@ export interface DrawerProps extends PropsWithChildren<ComponentProps<'div'>> {
   placement?: keyof DrawerPlacements;
   root?: HTMLElement;
   show?: boolean;
-  dismissible?: boolean;
+  backdrop?: boolean;
   theme?: DeepPartial<FlowbiteDrawerTheme>;
 }
 
 const DrawerComponent: FC<DrawerProps> = ({
   children,
   className,
-  dismissible = false,
+  backdrop = false,
   onClose,
   placement = 'left',
   root,
@@ -87,15 +87,15 @@ const DrawerComponent: FC<DrawerProps> = ({
   }, []);
 
   useKeyDown('Escape', () => {
-    if (dismissible && onClose) {
+    if (backdrop && onClose) {
       onClose();
     }
   });
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
     console.log('...handleOnClick');
-    console.log('dismissible:', dismissible);
-    if (dismissible && e.target === e.currentTarget && onClose) {
+    console.log('backdrop:', backdrop);
+    if (backdrop && e.target === e.currentTarget && onClose) {
       onClose();
     }
   };
@@ -106,6 +106,7 @@ const DrawerComponent: FC<DrawerProps> = ({
         aria-hidden={!show}
         data-testid="drawer"
         onClick={handleOnClick}
+        data-drawer-placement="top"
         role="dialog"
         className={classNames(
           theme.root.base,
