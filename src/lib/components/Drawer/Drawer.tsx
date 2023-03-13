@@ -23,7 +23,6 @@ export interface FlowbiteDrawerTheme {
 
 export interface FlowbiteDrawerRootTheme {
   base: string;
-  show: FlowbiteBoolean;
   placements: DrawerPlacements;
 }
 
@@ -33,7 +32,7 @@ export interface FlowbiteDrawerContentTheme {
 }
 
 export interface DrawerPlacements extends FlowbitePlacements {
-  [key: string]: string;
+  [key: string]: FlowbiteBoolean;
 }
 
 export interface DrawerProps extends PropsWithChildren<ComponentProps<'div'>> {
@@ -94,6 +93,8 @@ const DrawerComponent: FC<DrawerProps> = ({
   });
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
+    console.log("...handleOnClick")
+    console.log("dismissible:", dismissible)
     if (dismissible && e.target === e.currentTarget && onClose) {
       onClose();
     }
@@ -108,8 +109,7 @@ const DrawerComponent: FC<DrawerProps> = ({
         role="dialog"
         className={classNames(
           theme.root.base,
-          theme.root.placements[placement],
-          show ? theme.root.show.on : theme.root.show.off,
+          show ? theme.root.placements[placement].on : theme.root.placements[placement].off,
           className,
         )}
         {...props}

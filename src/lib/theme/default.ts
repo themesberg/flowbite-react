@@ -566,15 +566,23 @@ const theme: FlowbiteTheme = {
     root: {
       // base: 'fixed top-0 right-0 left-0 z-50 h-modal overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
       base: 'fixed top-0 left-0 z-40 h-screen p-0 overflow-y-auto bg-white w-80 dark:bg-gray-800 shadow',
-      show: {
-        on: 'overflow-x-hidden ',
-        off: '-translate-x-full overflow-x-hidden transition-transform',
-      },
       placements: {
-        left: 'items-center justify-start',
-        right: 'items-start justify-center',
-        top: 'items-start justify-start',
-        bottom: 'items-end justify-end',
+        left: {
+          on: 'overflow-x-hidden ',
+          off: '-translate-x-full overflow-x-hidden transition-transform',
+        },
+        right: {
+          on: 'overflow-x-hidden ',
+          off: '-translate-x-full overflow-x-hidden transition-transform',
+        },
+        top: {
+          on: 'overflow-x-hidden ',
+          off: '-translate-x-full overflow-x-hidden transition-transform',
+        },
+        bottom: {
+          on: 'overflow-x-hidden ',
+          off: '-translate-x-full overflow-x-hidden transition-transform',
+        },
       },
     },
     content: {
