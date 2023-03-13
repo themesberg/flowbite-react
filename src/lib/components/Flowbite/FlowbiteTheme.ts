@@ -139,10 +139,10 @@ export interface FlowbitePositions {
 }
 
 export interface FlowbitePlacements {
-  left: {on: string, off: string};
-  right: {on: string, off: string};
-  top: {on: string, off: string};
-  bottom: {on: string, off: string};
+  left: { on: string; off: string };
+  right: { on: string; off: string };
+  top: { on: string; off: string };
+  bottom: { on: string; off: string };
 }
 
 export interface FlowbiteSizes {

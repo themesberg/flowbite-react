@@ -93,8 +93,8 @@ const DrawerComponent: FC<DrawerProps> = ({
   });
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
-    console.log("...handleOnClick")
-    console.log("dismissible:", dismissible)
+    console.log('...handleOnClick');
+    console.log('dismissible:', dismissible);
     if (dismissible && e.target === e.currentTarget && onClose) {
       onClose();
     }
