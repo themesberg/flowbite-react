@@ -562,6 +562,39 @@ const theme: FlowbiteTheme = {
       popup: 'border-t',
     },
   },
+  drawer: {
+    root: {
+      // base: 'fixed top-0 right-0 left-0 z-50 h-modal overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
+      base: 'fixed top-0 left-0 z-40 h-screen p-0 overflow-y-auto bg-white w-80 dark:bg-gray-800 shadow',
+      show: {
+        on: 'overflow-x-hidden ',
+        off: '-translate-x-full overflow-x-hidden transition-transform',
+      },
+      placements: {
+        left: 'items-center justify-start',
+        right: 'items-start justify-center',
+        top: 'items-start justify-start',
+        bottom: 'items-end justify-end',
+      },
+    },
+    content: {
+      // base: 'relative h-full w-full p-4 md:h-auto',
+      // inner: 'relative rounded-lg bg-white shadow dark:bg-gray-700',
+      base: 'relative',
+      inner: 'relative',
+    },
+    body: {
+      base: 'px-5',
+    },
+    header: {
+      base: 'flex items-start justify-between rounded-t p-5',
+      title: 'text-xl font-medium text-gray-600 dark:text-white',
+      close: {
+        base: 'ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white',
+        icon: 'h-5 w-5',
+      },
+    },
+  },
   navbar: {
     root: {
       base: 'border-gray-200 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
