@@ -3,7 +3,8 @@ import type { ElementType, Ref } from 'react';
 import { type ReactNode } from 'react';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { forwardRefWithAs, Props, RenderAs } from '../../helpers/renderAs';
+import type { Props} from '../../helpers/renderAs';
+import { forwardRefWithAs, RenderAs } from '../../helpers/renderAs';
 import type {
   FlowbiteBoolean,
   FlowbiteColors,
@@ -61,7 +62,7 @@ export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'x
   [key: string]: string;
 }
 
-export interface ButtonProps {
+export interface BaseButtonProps {
   color?: keyof FlowbiteColors;
   fullSized?: boolean;
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
@@ -75,6 +76,8 @@ export interface ButtonProps {
   size?: keyof ButtonSizes;
   theme?: DeepPartial<FlowbiteButtonTheme>;
 }
+
+export type ButtonProps<TTag extends ElementType = typeof DefaultTag> = BaseButtonProps & Props<TTag>;
 
 const DefaultTag = 'button';
 
@@ -93,7 +96,7 @@ const ButtonComponent = forwardRefWithAs(function Button<TTag extends ElementTyp
     size = 'md',
     theme: customTheme = {},
     ...props
-  }: Props<TTag> & ButtonProps,
+  }: ButtonProps<TTag>,
   ref: Ref<HTMLElement>,
 ) {
   const { buttonGroup: groupTheme, button: theme } = mergeDeep(useTheme().theme, customTheme);

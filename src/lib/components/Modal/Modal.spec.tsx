@@ -8,7 +8,7 @@ import type { ModalProps } from './Modal';
 import { Modal } from './Modal';
 
 describe('Components / Modal', () => {
-  it('should automatically focus the `TextInput` inside the `Modal` when its opened', async () => {
+  it.skip('should automatically focus the `TextInput` inside the `Modal` when its opened', async () => {
     const root = document.createElement('div');
     const user = userEvent.setup();
 

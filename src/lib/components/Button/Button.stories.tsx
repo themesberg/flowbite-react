@@ -1,5 +1,4 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
-import type { Props } from '../../helpers/renderAs';
 import theme from '../../theme/default';
 import type { ButtonProps } from './Button';
 import { Button } from './Button';
@@ -15,11 +14,11 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ButtonProps & Props<'button'>> = (args) => <Button {...args} />;
+const Template: Story<ButtonProps> = (args) => <Button {...args} />;
 
 export const DefaultButton = Template.bind({});
 DefaultButton.storyName = 'Default';
 DefaultButton.args = {
   children: 'Button',
-  role: "banner"
+  role: 'banner',
 };
