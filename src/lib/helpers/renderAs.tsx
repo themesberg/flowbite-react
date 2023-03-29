@@ -27,8 +27,6 @@ export function RenderAs<TTag extends ElementType>({
 
   const props = mergeProps(passedProps, rest);
 
-  console.log('props', props);
-
   if (Component === Fragment) {
     if (Object.keys(props).length > 0) {
       if (!isValidElement(props.children) || (Array.isArray(props.children) && props.children.length > 1)) {

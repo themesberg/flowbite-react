@@ -3,7 +3,7 @@ import type { ElementType, Ref } from 'react';
 import { type ReactNode } from 'react';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import type { Props} from '../../helpers/renderAs';
+import type { Props } from '../../helpers/renderAs';
 import { forwardRefWithAs, RenderAs } from '../../helpers/renderAs';
 import type {
   FlowbiteBoolean,
