@@ -1,7 +1,9 @@
 import classNames from 'classnames';
-import { forwardRef, type ComponentProps, type ReactNode } from 'react';
+import type { ElementType, Ref } from 'react';
+import { type ReactNode } from 'react';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
+import { forwardRefWithAs, Props, RenderAs } from '../../helpers/renderAs';
 import type {
   FlowbiteBoolean,
   FlowbiteColors,
@@ -59,7 +61,7 @@ export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'x
   [key: string]: string;
 }
 
-export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'ref'> {
+export interface ButtonProps {
   color?: keyof FlowbiteColors;
   fullSized?: boolean;
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
@@ -74,76 +76,75 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'r
   theme?: DeepPartial<FlowbiteButtonTheme>;
 }
 
-const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
-  (
-    {
-      children,
-      className,
-      color = 'info',
-      disabled = false,
-      fullSized,
-      gradientDuoTone,
-      gradientMonochrome,
-      href,
-      label,
-      outline = false,
-      pill = false,
-      positionInGroup = 'none',
-      size = 'md',
-      theme: customTheme = {},
-      ...props
-    },
-    ref,
-  ) => {
-    const { buttonGroup: groupTheme, button: theme } = mergeDeep(useTheme().theme, customTheme);
+const DefaultTag = 'button';
 
-    const isLink = typeof href !== 'undefined';
-    const Component = isLink ? 'a' : 'button';
-    const theirProps = props as object;
+const ButtonComponent = forwardRefWithAs(function Button<TTag extends ElementType = typeof DefaultTag>(
+  {
+    children,
+    color = 'info',
+    disabled = false,
+    fullSized,
+    gradientDuoTone,
+    gradientMonochrome,
+    label,
+    outline = false,
+    pill = false,
+    positionInGroup = 'none',
+    size = 'md',
+    theme: customTheme = {},
+    ...props
+  }: Props<TTag> & ButtonProps,
+  ref: Ref<HTMLElement>,
+) {
+  const { buttonGroup: groupTheme, button: theme } = mergeDeep(useTheme().theme, customTheme);
 
-    return (
-      <Component
-        disabled={disabled}
-        href={href}
-        type={isLink ? undefined : 'button'}
-        ref={ref as never}
+  if (props.href && !props.as) {
+    // No idea why this needs to be casted to any
+    (props as any).as = 'a';
+  }
+
+  if (props.as === 'button' || !props.as) (props as any).type = props.type ?? 'button';
+
+  return (
+    <RenderAs
+      disabled={disabled}
+      ref={ref as never}
+      passedProps={props}
+      defaultTag={DefaultTag}
+      className={classNames(
+        disabled && theme.disabled,
+        !gradientDuoTone && !gradientMonochrome && theme.color[color],
+        gradientDuoTone && !gradientMonochrome && theme.gradientDuoTone[gradientDuoTone],
+        !gradientDuoTone && gradientMonochrome && theme.gradient[gradientMonochrome],
+        groupTheme.position[positionInGroup],
+        outline && (theme.outline.color[color] ?? theme.outline.color.default),
+        theme.base,
+        theme.pill[pill ? 'on' : 'off'],
+        fullSized && theme.fullSized,
+      )}
+    >
+      <span
         className={classNames(
-          disabled && theme.disabled,
-          !gradientDuoTone && !gradientMonochrome && theme.color[color],
-          gradientDuoTone && !gradientMonochrome && theme.gradientDuoTone[gradientDuoTone],
-          !gradientDuoTone && gradientMonochrome && theme.gradient[gradientMonochrome],
-          groupTheme.position[positionInGroup],
-          outline && (theme.outline.color[color] ?? theme.outline.color.default),
-          theme.base,
-          theme.pill[pill ? 'on' : 'off'],
-          fullSized && theme.fullSized,
-          className,
+          theme.inner.base,
+          theme.inner.position[positionInGroup],
+          theme.outline[outline ? 'on' : 'off'],
+          theme.outline.pill[outline && pill ? 'on' : 'off'],
+          theme.size[size],
+          outline && !theme.outline.color[color] && theme.inner.outline,
         )}
-        {...theirProps}
       >
-        <span
-          className={classNames(
-            theme.inner.base,
-            theme.inner.position[positionInGroup],
-            theme.outline[outline ? 'on' : 'off'],
-            theme.outline.pill[outline && pill ? 'on' : 'off'],
-            theme.size[size],
-            outline && !theme.outline.color[color] && theme.inner.outline,
+        <>
+          {typeof children !== 'undefined' && children}
+          {typeof label !== 'undefined' && (
+            <span data-testid="flowbite-button-label" className={theme.label}>
+              {label}
+            </span>
           )}
-        >
-          <>
-            {typeof children !== 'undefined' && children}
-            {typeof label !== 'undefined' && (
-              <span data-testid="flowbite-button-label" className={theme.label}>
-                {label}
-              </span>
-            )}
-          </>
-        </span>
-      </Component>
-    );
-  },
-);
+        </>
+      </span>
+    </RenderAs>
+  );
+});
 
 ButtonComponent.displayName = 'Button';
 export const Button = Object.assign(ButtonComponent, {
