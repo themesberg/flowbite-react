@@ -81,22 +81,17 @@ export function useFloatingHook({
   const dismiss = useDismiss(context);
   const role = useRole(context);
 
-  let interactions: {};
-  if (trigger === 'hover') {
-    const hover = useHover(context, {
-      move: false,
-      enabled: controlledOpen == null,
-    });
-    const focus = useFocus(context, {
-      enabled: controlledOpen == null,
-    });
-    interactions = useInteractions([hover, focus, dismiss, role]);
-  } else {
-    const click = useClick(context, {
-      enabled: controlledOpen == null,
-    });
-    interactions = useInteractions([click, dismiss, role]);
-  }
+  const hover = useHover(context, {
+    move: false,
+    enabled: controlledOpen == null && trigger === 'hover',
+  });
+  const focus = useFocus(context, {
+    enabled: controlledOpen == null && trigger === 'hover',
+  });
+  const click = useClick(context, {
+    enabled: (controlledOpen == null && trigger === undefined) || trigger === 'click',
+  });
+  const interactions = useInteractions([hover, focus, click, dismiss, role]);
 
   return useMemo(
     () => ({
@@ -111,6 +106,6 @@ export function useFloatingHook({
       setDescriptionId,
       theme,
     }),
-    [open, setOpen, interactions, data, modal, labelId, descriptionId],
+    [open, setOpen, interactions, data, modal, labelId, descriptionId, theme],
   );
 }
