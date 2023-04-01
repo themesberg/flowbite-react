@@ -1,8 +1,10 @@
-import { useMergeRefs, FloatingPortal, FloatingFocusManager, Placement } from "@floating-ui/react";
+import type { Placement } from '@floating-ui/react';
+import { FloatingFocusManager, FloatingPortal, useMergeRefs } from '@floating-ui/react';
 import classNames from 'classnames';
-import React, { ComponentProps, PropsWithChildren, ReactNode } from "react";
+import type { ComponentProps, PropsWithChildren, ReactNode } from 'react';
+import React from 'react';
+import style from 'styled-jsx/style';
 import { useFloatingContext } from './FloatingContext';
-import style from "styled-jsx/style";
 
 export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
   animation?: false | `duration-${number}`;
@@ -15,10 +17,10 @@ export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'di
   initialOpen?: boolean;
 }
 
-export const FloatingContent = React.forwardRef<
-  HTMLElement,
-  React.HTMLProps<HTMLElement>
->(function(props: FloatingProps, propRef) {
+export const FloatingContent = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(function (
+  props: FloatingProps,
+  propRef,
+) {
   const { context: floatingContext, ...context } = useFloatingContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
 
@@ -33,8 +35,8 @@ export const FloatingContent = React.forwardRef<
               position: context.strategy,
               top: context.y ?? 0,
               left: context.x ?? 0,
-              width: "max-content",
-              ...style
+              width: 'max-content',
+              ...style,
             }}
             aria-labelledby={context.labelId}
             aria-describedby={context.descriptionId}
@@ -60,4 +62,4 @@ export const FloatingContent = React.forwardRef<
       )}
     </FloatingPortal>
   );
-} );
+});

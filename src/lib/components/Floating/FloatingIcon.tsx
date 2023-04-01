@@ -1,7 +1,8 @@
-import { ComponentProps, FC, useMemo } from 'react';
-import { useFloatingContext } from './FloatingContext';
-import { HiOutlineChevronUp, HiOutlineChevronRight, HiOutlineChevronDown, HiOutlineChevronLeft } from 'react-icons/hi';
 import { useTheme } from 'flowbite-react';
+import type { ComponentProps, FC } from 'react';
+import { useMemo } from 'react';
+import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
+import { useFloatingContext } from './FloatingContext';
 
 const icons: Record<string, FC<ComponentProps<'svg'>>> = {
   top: HiOutlineChevronUp,
@@ -11,16 +12,12 @@ const icons: Record<string, FC<ComponentProps<'svg'>>> = {
 };
 
 export const FloatingIcon: FC = () => {
-  const theme = useTheme().theme.dropdown
+  const theme = useTheme().theme.dropdown;
   const { placement } = useFloatingContext();
 
   const Icon = useMemo(() => {
     return icons[placement] ?? HiOutlineChevronDown;
   }, [placement]);
 
-  return (
-    <>
-      {Icon && <Icon className={theme.arrowIcon} />}
-    </>
-  );
+  return <>{Icon && <Icon className={theme.arrowIcon} />}</>;
 };

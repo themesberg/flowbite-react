@@ -2,8 +2,8 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { useTheme } from '../Flowbite/ThemeContext';
 import { useFloatingContext } from '../Floating/FloatingContext';
+import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteDropdownItemTheme {
   base: string;
@@ -31,7 +31,7 @@ export const DropdownItem: FC<DropdownItemProps> = ({
     if (onClick) {
       onClick();
     }
-    setOpen(false)
+    // setOpen(false)
   };
 
   return (

@@ -1,12 +1,9 @@
-import * as React from "react";
-import {
-  Placement
-} from "@floating-ui/react";
-import { FloatingContent } from "./FloatingContent";
-import { FloatingTrigger } from "./FloatingTrigger";
-import { useFloatingHook } from "./FloatingContext";
-import { FloatingContext } from "./FloatingContext";
-import { FloatingIcon } from "./FloatingIcon";
+import type { Placement } from '@floating-ui/react';
+import * as React from 'react';
+import { FloatingContent } from './FloatingContent';
+import { FloatingContext, useFloatingHook } from './FloatingContext';
+import { FloatingIcon } from './FloatingIcon';
+import { FloatingTrigger } from './FloatingTrigger';
 
 export interface FlowbiteFloatingTheme {
   arrow: FlowbiteFloatingArrowTheme;
@@ -52,12 +49,8 @@ const FloatingComponent = ({
 } & FloatingOptions) => {
   const floating = useFloatingHook({ modal, theme, ...restOptions });
 
-  return (
-    <FloatingContext.Provider value={floating}>
-      {children}
-    </FloatingContext.Provider>
-  );
-}
+  return <FloatingContext.Provider value={floating}>{children}</FloatingContext.Provider>;
+};
 
 FloatingComponent.displayName = 'Floating';
 FloatingContent.displayName = 'Floating.Content';
@@ -69,5 +62,3 @@ export const Floating = Object.assign(FloatingComponent, {
   Trigger: FloatingTrigger,
   Icon: FloatingIcon,
 });
-
-

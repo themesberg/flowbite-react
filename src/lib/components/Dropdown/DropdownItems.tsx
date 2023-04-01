@@ -1,6 +1,6 @@
 import classNames from 'classnames';
-import { FC, ComponentProps } from "react"
-import { Floating } from "../Floating"
+import type { ComponentProps, FC } from 'react';
+import { Floating } from '../Floating';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export const DropdownItems: FC<ComponentProps<'div'>> = ({ children, className }) => {
@@ -8,10 +8,8 @@ export const DropdownItems: FC<ComponentProps<'div'>> = ({ children, className }
   return (
     <Floating.Content>
       <div className={classNames(theme.base, className)}>
-        <ul >
-          {children}
-        </ul>
+        <ul>{children}</ul>
       </div>
     </Floating.Content>
-  )
-}
+  );
+};

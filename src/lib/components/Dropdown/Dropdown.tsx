@@ -1,19 +1,18 @@
-
-import { FC, PropsWithChildren } from 'react';
+import type { FC, PropsWithChildren } from 'react';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { ButtonProps } from '../Button';
-import { Floating, FloatingOptions } from '../Floating';
+import type { FloatingOptions, FlowbiteFloatingTheme } from '../Floating';
+import { Floating } from '../Floating';
+import { useTheme } from '../Flowbite/ThemeContext';
 import type { FlowbiteDropdownDividerTheme } from './DropdownDivider';
 import { DropdownDivider } from './DropdownDivider';
 import type { FlowbiteDropdownHeaderTheme } from './DropdownHeader';
 import { DropdownHeader } from './DropdownHeader';
+import { DropdownIcon } from './DropdownIcon';
 import type { FlowbiteDropdownItemTheme } from './DropdownItem';
 import { DropdownItem } from './DropdownItem';
 import { DropdownItems } from './DropdownItems';
-import {DropdownTrigger} from './DropdownTrigger';
-import { DropdownIcon } from './DropdownIcon';
-import { FlowbiteFloatingTheme } from '../Floating';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import { useTheme } from '../Flowbite/ThemeContext';
+import { DropdownTrigger } from './DropdownTrigger';
 
 export interface FlowbiteDropdownFloatingTheme
   extends FlowbiteFloatingTheme,
@@ -59,13 +58,8 @@ const DropdownComponent: FC<DropdownProps> = ({
     arrowIcon = true,
     ...buttonProps
   } = theirProps;
-  return (
-    <Floating theme={theme.floating}>
-      {children}
-    </Floating>
-  )
-}
-
+  return <Floating theme={theme.floating}>{children}</Floating>;
+};
 
 DropdownComponent.displayName = 'Dropdown';
 DropdownItem.displayName = 'Dropdown.Item';
@@ -83,4 +77,3 @@ export const Dropdown = Object.assign(DropdownComponent, {
   Trigger: DropdownTrigger,
   Icon: DropdownIcon,
 });
-

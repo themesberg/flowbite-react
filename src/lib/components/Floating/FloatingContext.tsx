@@ -1,6 +1,19 @@
-import { useFloating, autoUpdate, offset, flip, shift, useClick, useFocus, useHover, useDismiss, useRole, useInteractions } from "@floating-ui/react";
-import { Dispatch, SetStateAction, createContext, useContext, useMemo, useState } from "react";
-import { FloatingOptions } from "./Floating";
+import {
+  autoUpdate,
+  flip,
+  offset,
+  shift,
+  useClick,
+  useDismiss,
+  useFloating,
+  useFocus,
+  useHover,
+  useInteractions,
+  useRole,
+} from '@floating-ui/react';
+import type { Dispatch, SetStateAction } from 'react';
+import { createContext, useContext, useMemo, useState } from 'react';
+import type { FloatingOptions } from './Floating';
 
 type FloatingContextType = {
   open: boolean;
@@ -9,17 +22,17 @@ type FloatingContextType = {
   descriptionId?: string;
   placement: string;
   context: ReturnType<typeof useFloating>;
-  refs: ReturnType<typeof useFloating>["refs"];
-  strategy: ReturnType<typeof useFloating>["strategy"];
-  x: ReturnType<typeof useFloating>["x"];
-  y: ReturnType<typeof useFloating>["y"];
+  refs: ReturnType<typeof useFloating>['refs'];
+  strategy: ReturnType<typeof useFloating>['strategy'];
+  x: ReturnType<typeof useFloating>['x'];
+  y: ReturnType<typeof useFloating>['y'];
   modal: boolean;
   setDescriptionId: Dispatch<SetStateAction<string | undefined>>;
-  middlewareData: ReturnType<typeof useFloating>["middlewareData"];
+  middlewareData: ReturnType<typeof useFloating>['middlewareData'];
   setLabelId: Dispatch<SetStateAction<string | undefined>>;
-  getReferenceProps: ReturnType<typeof useInteractions>["getReferenceProps"];
-  getFloatingProps: ReturnType<typeof useInteractions>["getFloatingProps"];
-  theme: FloatingOptions["theme"];
+  getReferenceProps: ReturnType<typeof useInteractions>['getReferenceProps'];
+  getFloatingProps: ReturnType<typeof useInteractions>['getFloatingProps'];
+  theme: FloatingOptions['theme'];
 };
 
 export const FloatingContext = createContext<FloatingContextType | undefined>(undefined);
@@ -36,18 +49,16 @@ export function useFloatingContext(): FloatingContextType {
 
 export function useFloatingHook({
   initialOpen = false,
-  placement = "bottom",
+  placement = 'bottom',
   modal,
   open: controlledOpen,
   onOpenChange: setControlledOpen,
   theme,
-  trigger
+  trigger,
 }: FloatingOptions = {}) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
   const [labelId, setLabelId] = useState<string | undefined>();
-  const [descriptionId, setDescriptionId] = useState<
-    string | undefined
-  >();
+  const [descriptionId, setDescriptionId] = useState<string | undefined>();
 
   const open = controlledOpen ?? uncontrolledOpen;
   const setOpen = setControlledOpen ?? setUncontrolledOpen;
@@ -60,10 +71,10 @@ export function useFloatingHook({
     middleware: [
       offset(5),
       flip({
-        fallbackAxisSideDirection: "end"
+        fallbackAxisSideDirection: 'end',
       }),
-      shift({ padding: 5 })
-    ]
+      shift({ padding: 5 }),
+    ],
   });
 
   const context = data.context;
@@ -71,19 +82,18 @@ export function useFloatingHook({
   const role = useRole(context);
 
   let interactions: {};
-  if (trigger === "hover") {
+  if (trigger === 'hover') {
     const hover = useHover(context, {
       move: false,
-      enabled: controlledOpen == null
+      enabled: controlledOpen == null,
     });
     const focus = useFocus(context, {
-      enabled: controlledOpen == null
+      enabled: controlledOpen == null,
     });
     interactions = useInteractions([hover, focus, dismiss, role]);
-  }
-  else {
+  } else {
     const click = useClick(context, {
-      enabled: controlledOpen == null
+      enabled: controlledOpen == null,
     });
     interactions = useInteractions([click, dismiss, role]);
   }
@@ -99,8 +109,8 @@ export function useFloatingHook({
       descriptionId,
       setLabelId,
       setDescriptionId,
-      theme
+      theme,
     }),
-    [open, setOpen, interactions, data, modal, labelId, descriptionId]
+    [open, setOpen, interactions, data, modal, labelId, descriptionId],
   );
 }
