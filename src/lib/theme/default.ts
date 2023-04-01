@@ -391,7 +391,7 @@ const theme: FlowbiteTheme = {
       header: 'block py-2 px-4 text-sm text-gray-700 dark:text-gray-200',
       hidden: 'invisible opacity-0',
       item: {
-        base: 'flex items-center justify-start py-2 px-4 text-sm text-gray-700 cursor-pointer hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white',
+        base: 'flex items-center justify-start gap-2 py-2 px-4 text-sm text-gray-700 cursor-pointer hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white',
         icon: 'mr-2 h-4 w-4',
       },
       style: {
