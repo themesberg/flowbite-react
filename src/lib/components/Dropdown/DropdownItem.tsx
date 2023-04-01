@@ -31,7 +31,7 @@ export const DropdownItem: FC<DropdownItemProps> = ({
     if (onClick) {
       onClick();
     }
-    setOpen(false)
+    setOpen(false);
   };
 
   return (
