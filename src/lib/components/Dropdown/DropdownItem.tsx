@@ -25,13 +25,13 @@ export const DropdownItem: FC<DropdownItemProps> = ({
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.dropdown.floating.item, customTheme);
-  const { setOpen } = useFloatingContext();
+  const { setOpen, dismissOnClick } = useFloatingContext();
 
   const handleClick = () => {
     if (onClick) {
       onClick();
     }
-    setOpen(false);
+    dismissOnClick && setOpen(false);
   };
 
   return (

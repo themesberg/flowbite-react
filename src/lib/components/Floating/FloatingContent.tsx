@@ -1,26 +1,11 @@
-import type { Placement } from '@floating-ui/react';
-import { FloatingFocusManager, FloatingPortal, useMergeRefs } from '@floating-ui/react';
+import { FloatingArrow, FloatingFocusManager, FloatingPortal, useMergeRefs } from '@floating-ui/react';
 import classNames from 'classnames';
-import type { ComponentProps, PropsWithChildren, ReactNode } from 'react';
 import React from 'react';
 import style from 'styled-jsx/style';
+import type { FloatingProps } from './Floating';
 import { useFloatingContext } from './FloatingContext';
 
-export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
-  animation?: false | `duration-${number}`;
-  arrow?: boolean;
-  closeRequestKey?: string;
-  content: ReactNode;
-  placement?: 'auto' | Placement;
-  style?: 'dark' | 'light' | 'auto';
-  trigger?: 'hover' | 'click';
-  initialOpen?: boolean;
-}
-
-export const FloatingContent = React.forwardRef<HTMLElement, React.HTMLProps<HTMLElement>>(function (
-  props: FloatingProps,
-  propRef,
-) {
+export const FloatingContent = React.forwardRef(function (props: FloatingProps, propRef) {
   const { context: floatingContext, ...context } = useFloatingContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
 
@@ -43,20 +28,21 @@ export const FloatingContent = React.forwardRef<HTMLElement, React.HTMLProps<HTM
             {...context.getFloatingProps({
               className: classNames(
                 context.theme.base,
-                props.animation && `${context.theme.animation} ${props.animation}`,
+                context.animation && `${context.theme.animation} ${context.animation}`,
                 !open && context.theme.hidden,
-                context.theme.style[props.style || 'auto'],
+                context.theme.style[context.style || 'auto'],
                 props.className,
               ),
-              // style: {
-              //   position: context.strategy,
-              //   top: context.y ?? '0',
-              //   left: context.x ?? '0',
-              // },
-              ...props,
             })}
           >
             {props.children}
+            {context.arrow && (
+              <FloatingArrow
+                ref={context.arrowRef}
+                context={floatingContext}
+                className={classNames(context.theme.arrow.base, context.theme.arrow.style[context.style || 'auto'])}
+              />
+            )}
           </div>
         </FloatingFocusManager>
       )}

@@ -1,5 +1,5 @@
 import type { Placement } from '@floating-ui/core';
-import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteFloatingTheme } from '../Floating';
@@ -8,11 +8,13 @@ import { useTheme } from '../Flowbite/ThemeContext';
 
 export type FlowbiteTooltipTheme = FlowbiteFloatingTheme;
 
-export interface TooltipProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
+export interface TooltipProps {
   animation?: false | `duration-${number}`;
   arrow?: boolean;
+  children: ReactNode;
+  className?: string;
   content: ReactNode;
-  placement?: 'auto' | Placement;
+  placement?: Placement;
   style?: 'dark' | 'light' | 'auto';
   theme?: DeepPartial<FlowbiteTooltipTheme>;
   trigger?: 'hover' | 'click';
@@ -39,7 +41,6 @@ export const Tooltip: FC<TooltipProps> = ({
     <Floating
       animation={animation}
       arrow={arrow}
-      content={content}
       placement={placement}
       style={style}
       theme={theme}
@@ -47,7 +48,8 @@ export const Tooltip: FC<TooltipProps> = ({
       className={className}
       {...props}
     >
-      {children}
+      <Floating.Content theme={theme}>{content}</Floating.Content>
+      <Floating.Trigger>{children}</Floating.Trigger>
     </Floating>
   );
 };

@@ -372,18 +372,16 @@ const theme: FlowbiteTheme = {
     },
   },
   dropdown: {
-    arrowIcon: 'ml-2 h-4 w-4',
     content: 'py-1',
     floating: {
       animation: 'transition-opacity',
       arrow: {
-        base: 'absolute z-10 h-2 w-2 rotate-45',
+        base: 'border-none',
         style: {
-          dark: 'bg-gray-900 dark:bg-gray-700',
-          light: 'bg-white',
-          auto: 'bg-white dark:bg-gray-700',
+          dark: 'fill-gray-900 dark:fill-gray-700',
+          light: 'fill-white',
+          auto: 'fill-white dark:fill-gray-700',
         },
-        placement: '-4px',
       },
       base: 'z-10 w-fit rounded divide-y divide-gray-100 shadow',
       content: 'py-1 text-sm text-gray-700 dark:text-gray-200',
@@ -401,7 +399,6 @@ const theme: FlowbiteTheme = {
       },
       target: 'w-fit',
     },
-    inlineWrapper: 'flex items-center',
   },
   fileInput: {
     root: {
@@ -1079,13 +1076,12 @@ const theme: FlowbiteTheme = {
     target: 'w-fit',
     animation: 'transition-opacity',
     arrow: {
-      base: 'absolute z-10 h-2 w-2 rotate-45',
+      base: 'border-none',
       style: {
-        dark: 'bg-gray-900 dark:bg-gray-700',
-        light: 'bg-white',
-        auto: 'bg-white dark:bg-gray-700',
+        dark: 'fill-gray-900 dark:fill-gray-700',
+        light: 'fill-white',
+        auto: 'fill-white dark:fill-gray-700',
       },
-      placement: '-4px',
     },
     base: 'absolute inline-block z-10 rounded-lg py-2 px-3 text-sm font-medium shadow-sm',
     hidden: 'invisible opacity-0',

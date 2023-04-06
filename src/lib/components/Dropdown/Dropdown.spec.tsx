@@ -2,6 +2,7 @@ import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { describe, expect, it } from 'vitest';
+import { Button } from '../Button';
 import { Dropdown } from './Dropdown';
 
 describe('Components / Dropdown', () => {
@@ -58,20 +59,25 @@ describe('Components / Dropdown', () => {
 });
 
 const TestDropdown: FC<{ dismissOnClick?: boolean }> = ({ dismissOnClick = true }) => (
-  <Dropdown label="Dropdown button" placement="right" dismissOnClick={dismissOnClick}>
-    <Dropdown.Header>
-      <span className="block text-sm">Bonnie Green</span>
-      <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-    </Dropdown.Header>
-    <Dropdown.Item>Dashboard</Dropdown.Item>
-    <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>Earnings</Dropdown.Item>
-    <Dropdown.Divider />
-    <Dropdown.Item>Sign out</Dropdown.Item>
-  </Dropdown>
+  <>
+    <Dropdown placement="right" dismissOnClick={dismissOnClick}>
+      <Dropdown.Trigger>
+        <Button data-testid="trigger">
+          <span className="flex gap-10">Dropdown button</span>
+        </Button>
+      </Dropdown.Trigger>
+      <Dropdown.Items>
+        <Dropdown.Item>Dashboard</Dropdown.Item>
+        <Dropdown.Item>Settings</Dropdown.Item>
+        <Dropdown.Item>Earnings</Dropdown.Item>
+        <Dropdown.Divider />
+        <Dropdown.Item>Sign out</Dropdown.Item>
+      </Dropdown.Items>
+    </Dropdown>
+  </>
 );
 
-const button = () => screen.getByRole('button');
+const button = () => screen.getByTestId('trigger');
 
 const dropdown = () => screen.getByTestId('flowbite-tooltip');
 

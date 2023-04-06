@@ -21,7 +21,6 @@ export interface FlowbiteFloatingTheme {
 
 export interface FlowbiteFloatingArrowTheme {
   base: string;
-  placement: string;
   style: {
     dark: string;
     light: string;
@@ -29,25 +28,32 @@ export interface FlowbiteFloatingArrowTheme {
   };
 }
 
-export interface FloatingOptions {
+export interface FloatingProps {
+  animation?: false | `duration-${number}`;
+  arrow?: boolean;
+  arrowRef?: React.Ref<SVGSVGElement>;
+  children?: React.ReactNode;
+  className?: string;
+  closeRequestKey?: string;
+  dismissOnClick?: boolean;
   initialOpen?: boolean;
-  placement?: Placement;
   modal?: boolean;
-  open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  open?: boolean;
+  placement?: Placement;
+  style?: 'dark' | 'light' | 'auto';
   theme: FlowbiteFloatingTheme;
-  trigger?: 'click' | 'hover';
+  trigger?: 'hover' | 'click';
 }
 
 const FloatingComponent = ({
   children,
   modal = false,
-  theme,
   ...restOptions
 }: {
   children: React.ReactNode;
-} & FloatingOptions) => {
-  const floating = useFloatingHook({ modal, theme, ...restOptions });
+} & FloatingProps) => {
+  const floating = useFloatingHook({ modal, ...restOptions });
 
   return <FloatingContext.Provider value={floating}>{children}</FloatingContext.Provider>;
 };

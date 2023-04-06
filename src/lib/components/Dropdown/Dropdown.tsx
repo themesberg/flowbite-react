@@ -1,7 +1,8 @@
+import type { Placement } from '@floating-ui/react';
 import type { FC, PropsWithChildren } from 'react';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { ButtonProps } from '../Button';
-import type { FloatingOptions, FlowbiteFloatingTheme } from '../Floating';
+import type { FloatingProps, FlowbiteFloatingTheme } from '../Floating';
 import { Floating } from '../Floating';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { FlowbiteDropdownDividerTheme } from './DropdownDivider';
@@ -24,41 +25,42 @@ export interface FlowbiteDropdownFloatingTheme
 export interface FlowbiteDropdownTheme {
   floating: FlowbiteDropdownFloatingTheme;
   content: string;
-  inlineWrapper: string;
-  arrowIcon: string;
 }
 
 export interface DropdownProps
   extends PropsWithChildren,
-    Pick<FloatingOptions, 'placement' | 'trigger'>,
+    Pick<FloatingProps, 'placement' | 'trigger'>,
     Omit<ButtonProps, 'theme'> {
-  arrowIcon?: boolean;
   dismissOnClick?: boolean;
-  floatingArrow?: boolean;
-  inline?: boolean;
-  initialOpen?: boolean;
-  theme: FlowbiteDropdownTheme;
+  placement?: Placement;
+  theme?: FlowbiteDropdownTheme;
+  trigger?: 'click' | 'hover';
+  arrow?: boolean;
 }
 
 const DropdownComponent: FC<DropdownProps> = ({
+  arrow = false,
   children,
   className,
   dismissOnClick = true,
+  placement = 'bottom',
   theme: customTheme = {},
-  ...props
+  trigger = 'click',
 }) => {
   const theme = mergeDeep(useTheme().theme.dropdown, customTheme);
-  const theirProps = props as Omit<DropdownProps, 'theme'>;
-  const {
-    placement = props.inline ? 'bottom-start' : 'bottom',
-    trigger: triggerEventType = 'click',
-    label,
-    inline,
-    floatingArrow = false,
-    arrowIcon = true,
-    ...buttonProps
-  } = theirProps;
-  return <Floating theme={theme.floating}>{children}</Floating>;
+
+  return (
+    <Floating
+      arrow={arrow}
+      className={className}
+      dismissOnClick={dismissOnClick}
+      placement={placement}
+      theme={theme.floating}
+      trigger={trigger}
+    >
+      {children}
+    </Floating>
+  );
 };
 
 DropdownComponent.displayName = 'Dropdown';

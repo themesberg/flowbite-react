@@ -16,7 +16,7 @@ export const FloatingIcon: FC = () => {
   const { placement } = useFloatingContext();
 
   const Icon = useMemo(() => {
-    return icons[placement] ?? HiOutlineChevronDown;
+    return placement ? icons[placement] : HiOutlineChevronDown;
   }, [placement]);
 
   return <>{Icon && <Icon className={theme.arrowIcon} />}</>;

@@ -1,4 +1,5 @@
 import {
+  arrow,
   autoUpdate,
   flip,
   offset,
@@ -12,28 +13,25 @@ import {
   useRole,
 } from '@floating-ui/react';
 import type { Dispatch, SetStateAction } from 'react';
-import { createContext, useContext, useMemo, useState } from 'react';
-import type { FloatingOptions } from './Floating';
+import { createContext, useContext, useMemo, useRef, useState } from 'react';
+import type { FloatingProps } from './Floating';
 
-type FloatingContextType = {
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-  labelId?: string;
+interface FloatingContextType extends FloatingProps {
+  context: ReturnType<typeof useFloating>['context'];
   descriptionId?: string;
-  placement: string;
-  context: ReturnType<typeof useFloating>;
+  dismissOnClick?: boolean;
+  getReferenceProps: ReturnType<typeof useInteractions>['getReferenceProps'];
+  getFloatingProps: ReturnType<typeof useInteractions>['getFloatingProps'];
+  labelId?: string;
+  middlewareData: ReturnType<typeof useFloating>['middlewareData'];
   refs: ReturnType<typeof useFloating>['refs'];
+  setDescriptionId: Dispatch<SetStateAction<string | undefined>>;
+  setOpen: ((open: boolean) => void) | Dispatch<SetStateAction<boolean>>;
+  setLabelId: Dispatch<SetStateAction<string | undefined>>;
   strategy: ReturnType<typeof useFloating>['strategy'];
   x: ReturnType<typeof useFloating>['x'];
   y: ReturnType<typeof useFloating>['y'];
-  modal: boolean;
-  setDescriptionId: Dispatch<SetStateAction<string | undefined>>;
-  middlewareData: ReturnType<typeof useFloating>['middlewareData'];
-  setLabelId: Dispatch<SetStateAction<string | undefined>>;
-  getReferenceProps: ReturnType<typeof useInteractions>['getReferenceProps'];
-  getFloatingProps: ReturnType<typeof useInteractions>['getFloatingProps'];
-  theme: FloatingOptions['theme'];
-};
+}
 
 export const FloatingContext = createContext<FloatingContextType | undefined>(undefined);
 
@@ -48,14 +46,18 @@ export function useFloatingContext(): FloatingContextType {
 }
 
 export function useFloatingHook({
+  arrow: arrowProp,
   initialOpen = false,
-  placement = 'bottom',
+  placement = undefined,
   modal,
+  dismissOnClick = true,
   open: controlledOpen,
   onOpenChange: setControlledOpen,
+  style,
   theme,
   trigger,
-}: FloatingOptions = {}) {
+}: FloatingProps) {
+  const arrowRef = useRef(null);
   const [uncontrolledOpen, setUncontrolledOpen] = useState(initialOpen);
   const [labelId, setLabelId] = useState<string | undefined>();
   const [descriptionId, setDescriptionId] = useState<string | undefined>();
@@ -74,11 +76,16 @@ export function useFloatingHook({
         fallbackAxisSideDirection: 'end',
       }),
       shift({ padding: 5 }),
+      arrow({
+        element: arrowRef,
+      }),
     ],
   });
 
   const context = data.context;
-  const dismiss = useDismiss(context);
+  const dismiss = useDismiss(context, {
+    outsidePress: dismissOnClick,
+  });
   const role = useRole(context);
 
   const hover = useHover(context, {
@@ -95,17 +102,20 @@ export function useFloatingHook({
 
   return useMemo(
     () => ({
+      arrow: arrowProp,
+      arrowRef,
+      descriptionId,
+      labelId,
+      modal,
       open,
+      setDescriptionId,
+      setLabelId,
       setOpen,
+      style,
+      theme,
       ...interactions,
       ...data,
-      modal,
-      labelId,
-      descriptionId,
-      setLabelId,
-      setDescriptionId,
-      theme,
     }),
-    [open, setOpen, interactions, data, modal, labelId, descriptionId, theme],
+    [arrowProp, data, descriptionId, interactions, labelId, modal, open, setOpen, style, theme],
   );
 }

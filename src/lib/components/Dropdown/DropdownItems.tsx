@@ -6,7 +6,7 @@ import { useTheme } from '../Flowbite/ThemeContext';
 export const DropdownItems: FC<ComponentProps<'div'>> = ({ children, className }) => {
   const theme = useTheme().theme.dropdown.floating;
   return (
-    <Floating.Content>
+    <Floating.Content theme={theme}>
       <div className={classNames(theme.base, className)}>
         <ul>{children}</ul>
       </div>
