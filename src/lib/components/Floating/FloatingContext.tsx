@@ -83,9 +83,7 @@ export function useFloatingHook({
   });
 
   const context = data.context;
-  const dismiss = useDismiss(context, {
-    outsidePress: dismissOnClick,
-  });
+  const dismiss = useDismiss(context);
   const role = useRole(context);
 
   const hover = useHover(context, {

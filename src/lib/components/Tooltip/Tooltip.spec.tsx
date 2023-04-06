@@ -66,7 +66,7 @@ const TooltipTests = (): JSX.Element => {
       <Tooltip content="Tooltip content" placement="right" trigger="click">
         <Button>Right placed tooltip</Button>
       </Tooltip>
-      <Tooltip content="Tooltip content" placement="auto" trigger="click">
+      <Tooltip content="Tooltip content" trigger="click">
         <Button>Auto placed tooltip</Button>
       </Tooltip>
     </div>
