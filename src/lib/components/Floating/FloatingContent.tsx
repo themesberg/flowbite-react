@@ -1,7 +1,6 @@
 import { FloatingArrow, FloatingFocusManager, FloatingPortal, useMergeRefs } from '@floating-ui/react';
 import classNames from 'classnames';
 import React from 'react';
-import style from 'styled-jsx/style';
 import type { FloatingProps } from './Floating';
 import { useFloatingContext } from './FloatingContext';
 
@@ -20,7 +19,6 @@ export const FloatingContent = React.forwardRef(function (props: FloatingProps, 
             top: context.y ?? 0,
             left: context.x ?? 0,
             width: 'max-content',
-            ...style,
           }}
           aria-labelledby={context.labelId}
           aria-describedby={context.descriptionId}
