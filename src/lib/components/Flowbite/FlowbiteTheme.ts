@@ -138,11 +138,16 @@ export interface FlowbitePositions {
   'center-right': string;
 }
 
+export interface FlowbitePlacementsOnOff {
+  on: string;
+  off: string;
+}
+
 export interface FlowbitePlacements {
-  left: { on: string; off: string };
-  right: { on: string; off: string };
-  top: { on: string; off: string };
-  bottom: { on: string; off: string };
+  left: FlowbitePlacementsOnOff;
+  right: FlowbitePlacementsOnOff;
+  top: FlowbitePlacementsOnOff;
+  bottom: FlowbitePlacementsOnOff;
 }
 
 export interface FlowbiteSizes {

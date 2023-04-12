@@ -564,7 +564,6 @@ const theme: FlowbiteTheme = {
   },
   drawer: {
     root: {
-      // base: 'fixed top-0 right-0 left-0 z-50 h-modal overflow-y-auto overflow-x-hidden md:inset-0 md:h-full',
       base: 'fixed bg-white dark:bg-gray-800 p-0 shadow',
       placements: {
         left: {

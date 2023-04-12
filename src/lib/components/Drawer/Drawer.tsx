@@ -93,8 +93,6 @@ const DrawerComponent: FC<DrawerProps> = ({
   });
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
-    console.log('...handleOnClick');
-    console.log('backdrop:', backdrop);
     if (backdrop && e.target === e.currentTarget && onClose) {
       onClose();
     }
