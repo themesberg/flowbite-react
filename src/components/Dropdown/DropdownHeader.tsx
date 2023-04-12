@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useTheme } from '~/src';

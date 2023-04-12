@@ -1,16 +1,15 @@
 {
   "files.exclude": {
     "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true,
     "**/.next": true,
     "**/.vercel": true,
     "**/build": true,
     "**/coverage": true,
     "**/lib": true,
-    "**/node_modules": true
-  }
+    "**/node_modules": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

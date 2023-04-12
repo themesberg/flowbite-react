@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';

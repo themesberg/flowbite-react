@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import type { ComponentProps, PropsWithChildren } from 'react';
 import React from 'react';

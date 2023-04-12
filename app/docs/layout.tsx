@@ -1,62 +1,47 @@
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import type { NextPage } from 'next/types';
-import type { FC } from 'react';
+import type { FC, PropsWithChildren } from 'react';
 import { useRef, useState } from 'react';
 import { BsDiscord, BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
+import '~/app/style.css';
 import { DarkThemeToggle, Flowbite, Footer, Navbar, Sidebar, Tooltip } from '~/src';
-import '~/styles/globals.css';
 
-interface AppState {
+interface LayoutState {
   collapsed: boolean;
   setCollapsed: (collapsed: boolean) => void;
 }
 
-const App: NextPage<AppProps> = function ({ Component, pageProps }) {
+const DocsLayout: NextPage<PropsWithChildren> = function ({ children }) {
   const mainRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
 
-  const isHomepage = router.pathname === '/';
-  const state: AppState = {
+  const state: LayoutState = {
     collapsed,
     setCollapsed,
   };
 
   return (
-    <>
-      <Head>
-        <link rel="icon" href="/favicon.svg" />
-        <meta charSet="utf-8" />
-        <meta lang="en" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
-      <Flowbite>
-        <div className="flex w-full flex-col overflow-hidden">
-          <AppNavbar {...state} />
-          <div className="flex overflow-hidden bg-white pt-6 dark:bg-gray-900">
-            {!isHomepage && <AppSidebar {...state} />}
-            <main className="flex-1 overflow-auto p-4" ref={mainRef}>
-              <Component {...pageProps} />
-            </main>
-          </div>
-          <AppFooter />
+    <Flowbite>
+      <div className="flex w-full flex-col overflow-hidden">
+        <DocsNavbar {...state} />
+        <div className="flex overflow-hidden bg-white pt-6 dark:bg-gray-900">
+          <DocsSidebar {...state} />
+          <main className="flex-1 overflow-auto p-4" ref={mainRef}>
+            {children}
+          </main>
         </div>
-      </Flowbite>
-    </>
+        <DocsFooter />
+      </div>
+    </Flowbite>
   );
 };
 
-const AppNavbar: FC<AppState> = function ({ collapsed, setCollapsed }) {
-  const router = useRouter();
-
-  const isHomepage = router.pathname === '/';
-
+const DocsNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
   return (
     <Navbar
       fluid
@@ -65,7 +50,7 @@ const AppNavbar: FC<AppState> = function ({ collapsed, setCollapsed }) {
       }}
     >
       <div className="flex items-center gap-3">
-        {!isHomepage && collapsed && (
+        {collapsed ? (
           <span className="p-2 lg:hidden">
             <HiMenuAlt1
               aria-label="Open sidebar"
@@ -73,8 +58,7 @@ const AppNavbar: FC<AppState> = function ({ collapsed, setCollapsed }) {
               onClick={() => setCollapsed(!collapsed)}
             />
           </span>
-        )}
-        {!isHomepage && !collapsed && (
+        ) : (
           <span className="rounded p-2 dark:bg-gray-700 lg:hidden">
             <HiX
               aria-label="Close sidebar"
@@ -96,14 +80,6 @@ const AppNavbar: FC<AppState> = function ({ collapsed, setCollapsed }) {
         </Link>
       </div>
       <div className="hidden items-center gap-1 lg:flex">
-        {isHomepage && (
-          <Link
-            href="/docs"
-            className="rounded-lg p-2.5 text-gray-500 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500"
-          >
-            Docs
-          </Link>
-        )}
         <a
           href="https://flowbite.com/docs/getting-started/react/"
           className="rounded-lg p-2.5 text-gray-500 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500"
@@ -166,7 +142,7 @@ const AppNavbar: FC<AppState> = function ({ collapsed, setCollapsed }) {
   );
 };
 
-const AppSidebar: FC<AppState> = function ({ collapsed }) {
+const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
   return (
     <Sidebar
       collapsed={collapsed}
@@ -271,7 +247,7 @@ const AppSidebar: FC<AppState> = function ({ collapsed }) {
   );
 };
 
-const AppFooter: FC = () => {
+const DocsFooter: FC = () => {
   return (
     <Footer className="rounded-none px-5 pb-8 pt-16">
       <div className="w-full">
@@ -333,4 +309,4 @@ const AppFooter: FC = () => {
   );
 };
 
-export default App;
+export default DocsLayout;

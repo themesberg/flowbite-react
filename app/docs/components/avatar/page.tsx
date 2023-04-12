@@ -1,41 +1,39 @@
 import Image from 'next/image';
 import type { FC } from 'react';
-import type { CodeExample } from '~/pages/docs/components/demo';
-import DemoPage from '~/pages/docs/components/demo';
+import { CodePreview } from '~/app/components/code-preview';
 import { Avatar, Dropdown } from '~/src';
 
 const AvatarPage: FC = () => {
-  const examples: CodeExample[] = [
-    {
-      title: 'Default Avatar',
-      code: (
+  return (
+    <>
+    <CodePreview>
+      <CodePreview.Title>Default avatar</CodePreview.Title>
+      <CodePreview.Card>
         <div className="flex flex-wrap gap-2">
           <Avatar img="/images/people/profile-picture-5.jpg" rounded />
           <Avatar img="/images/people/profile-picture-5.jpg" />
         </div>
-      ),
-    },
-    {
-      title: 'Bordered Avatar',
-      code: (
+      </CodePreview.Card>
+    </CodePreview>
+<CodePreview>
+      <CodePreview.Title>Bordered avatar</CodePreview.Title>
+      <CodePreview.Card>
         <div className="flex flex-wrap gap-2">
           <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered />
           <Avatar img="/images/people/profile-picture-5.jpg" bordered />
         </div>
-      ),
-    },
-    {
-      title: 'Colored Avatar',
-      code: (
-        <>
-          <div className="flex flex-wrap gap-2">
+      </CodePreview.Card>
+    </CodePreview>
+<CodePreview>
+      <CodePreview.Title>Colored avatar</CodePreview.Title>
+      <CodePreview.Card>
+        <div className="flex flex-wrap gap-2">
             <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="gray" />
             <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="light" />
             <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="purple" />
             <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="success" />
             <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="pink" />
           </div>
-
           <div className="flex flex-wrap gap-2">
             <Avatar img="/images/people/profile-picture-5.jpg" bordered color="gray" />
             <Avatar img="/images/people/profile-picture-5.jpg" bordered color="light" />
@@ -43,12 +41,11 @@ const AvatarPage: FC = () => {
             <Avatar img="/images/people/profile-picture-5.jpg" bordered color="success" />
             <Avatar img="/images/people/profile-picture-5.jpg" bordered color="pink" />
           </div>
-        </>
-      ),
-    },
-    {
-      title: 'Override Image Element',
-      code: (
+      </CodePreview.Card>
+    </CodePreview>
+<CodePreview>
+      <CodePreview.Title>Override image element</CodePreview.Title>
+      <CodePreview.Card>
         <div className="flex flex-wrap gap-2">
           <Avatar
             img={(props) => (
@@ -72,37 +69,9 @@ const AvatarPage: FC = () => {
             )}
           />
         </div>
-      ),
-      rawCode: `<div className="flex flex-wrap gap-2">
-  <Avatar
-    img={(props) => (
-      <img
-        referrerPolicy="no-referrer"
-        src="/images/people/profile-picture-5.jpg"
-        {...props}
-      />
-    )}
-  />
-  <Avatar
-    img={(props) => (
-      <picture>
-        <source
-          media="(min-width: 900px)"
-          srcSet="/images/people/profile-picture-3.jpg"
-        />
-        <source
-          media="(min-width: 480px)"
-          srcSet="/images/people/profile-picture-4.jpg"
-        />
-        <img 
-          src="/images/people/profile-picture-5.jpg" 
-          {...props} 
-        />
-      </picture>
-    )}
-  />
-</div>`,
-    },
+      </CodePreview.Card>
+    </CodePreview>
+    </>
     {
       title: 'Placeholder',
       code: (

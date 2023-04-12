@@ -1,3 +1,5 @@
+'use client';
+
 import type { FC, HTMLAttributes } from 'react';
 import { useEffect, useMemo } from 'react';
 import type { DeepPartial } from '~/src';
