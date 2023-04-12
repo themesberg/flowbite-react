@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { FC } from 'react';
 
-const DocsPage: FC = function () {
+const DocsPage: FC = () => {
   return (
     <div className="dark:text-gray-100">
       <p>

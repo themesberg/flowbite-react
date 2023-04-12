@@ -128,12 +128,6 @@
     "react-dom": "^18",
     "tailwindcss": "^3"
   },
-  "overrides": {
-    "@mdx-js/react": {
-      "react": "^18.2.0",
-      "react-dom": "^18.2.0"
-    }
-  },
   "private": false,
   "eslintConfig": {
     "extends": [

@@ -277,7 +277,7 @@ const AppSidebar: FC<AppState> = function ({ collapsed }) {
   );
 };
 
-const AppFooter: FC = function () {
+const AppFooter: FC = () => {
   return (
     <Footer className="rounded-none px-5 pb-8 pt-16">
       <div className="w-full">
