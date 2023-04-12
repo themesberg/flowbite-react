@@ -327,7 +327,7 @@ describe('Theme', () => {
 
 const TestSidebar: FC<SidebarProps> = ({ ...props }) => (
   <Sidebar {...props}>
-    <Sidebar.Logo href="#" img="favicon.png" imgAlt="Flowbite logo">
+    <Sidebar.Logo href="#" img="favicon.svg" imgAlt="Flowbite logo">
       Flowbite
     </Sidebar.Logo>
     <Sidebar.Items>

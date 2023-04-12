@@ -254,7 +254,7 @@ LogoBranding.storyName = 'Logo branding';
 LogoBranding.args = {
   children: (
     <>
-      <Sidebar.Logo href="#" img="favicon.png" imgAlt="Flowbite logo">
+      <Sidebar.Logo href="#" img="favicon.svg" imgAlt="Flowbite logo">
         Flowbite
       </Sidebar.Logo>
       <Sidebar.Items>

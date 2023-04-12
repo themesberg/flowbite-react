@@ -9,30 +9,8 @@ import { useRef, useState } from 'react';
 import { BsDiscord, BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
-import type { CustomFlowbiteTheme } from '~/src';
 import { DarkThemeToggle, Flowbite, Footer, Navbar, Sidebar, Tooltip } from '~/src';
 import '~/styles/globals.css';
-
-const theme: CustomFlowbiteTheme = {
-  navbar: {
-    root: {
-      base: 'border-transparent border-y-2 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
-    },
-  },
-  sidebar: {
-    root: {
-      base: 'h-full bg-inherit',
-      inner: 'h-full overflow-y-auto overflow-x-hidden rounded bg-inherit py-4 px-5',
-    },
-    item: {
-      base: 'flex items-center justify-center pb-1 rounded-lg text-gray-600 hover:text-gray-800 dark:text-gray-100 dark:hover:text-gray-300',
-      content: {
-        base: 'flex-1 whitespace-nowrap',
-      },
-    },
-    itemGroup: 'mt-4 space-y-2 pt-4 first:mt-0 first:pt-0',
-  },
-};
 
 interface AppState {
   collapsed: boolean;
@@ -51,24 +29,26 @@ const App: NextPage<AppProps> = function ({ Component, pageProps }) {
   };
 
   return (
-    <Flowbite theme={{ theme }}>
+    <>
       <Head>
         <link rel="icon" href="/favicon.svg" />
         <meta charSet="utf-8" />
         <meta lang="en" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div className="flex w-full flex-col overflow-hidden">
-        <AppNavbar {...state} />
-        <div className="flex overflow-hidden bg-white pt-6 dark:bg-gray-900">
-          {!isHomepage && <AppSidebar {...state} />}
-          <main className="flex-1 overflow-auto p-4" ref={mainRef}>
-            <Component {...pageProps} />
-          </main>
+      <Flowbite>
+        <div className="flex w-full flex-col overflow-hidden">
+          <AppNavbar {...state} />
+          <div className="flex overflow-hidden bg-white pt-6 dark:bg-gray-900">
+            {!isHomepage && <AppSidebar {...state} />}
+            <main className="flex-1 overflow-auto p-4" ref={mainRef}>
+              <Component {...pageProps} />
+            </main>
+          </div>
+          <AppFooter />
         </div>
-        <AppFooter />
-      </div>
-    </Flowbite>
+      </Flowbite>
+    </>
   );
 };
 
@@ -78,7 +58,12 @@ const AppNavbar: FC<AppState> = function ({ collapsed, setCollapsed }) {
   const isHomepage = router.pathname === '/';
 
   return (
-    <Navbar fluid>
+    <Navbar
+      fluid
+      theme={{
+        base: 'border-transparent border-y-2 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
+      }}
+    >
       <div className="flex items-center gap-3">
         {!isHomepage && collapsed && (
           <span className="p-2 lg:hidden">
@@ -183,7 +168,16 @@ const AppNavbar: FC<AppState> = function ({ collapsed, setCollapsed }) {
 
 const AppSidebar: FC<AppState> = function ({ collapsed }) {
   return (
-    <Sidebar collapsed={collapsed} collapseBehavior="hide">
+    <Sidebar
+      collapsed={collapsed}
+      collapseBehavior="hide"
+      theme={{
+        root: {
+          base: 'h-full bg-inherit',
+          inner: 'h-full overflow-y-auto overflow-x-hidden rounded bg-inherit py-4 px-5',
+        },
+      }}
+    >
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <span className="font-bold uppercase text-gray-800 dark:text-gray-200">Getting started</span>
