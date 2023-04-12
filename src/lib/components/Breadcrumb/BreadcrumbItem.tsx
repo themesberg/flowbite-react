@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren, ElementType } from 'react';
 import { forwardRef } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import type { DeepPartial } from '..';
@@ -18,12 +18,13 @@ export interface BreadcrumbItemProps extends PropsWithChildren<Omit<ComponentPro
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   theme?: DeepPartial<FlowbiteBreadcrumbItemTheme>;
+  as?: ElementType;
 }
 
 const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, BreadcrumbItemProps>(
-  ({ children, className, href, icon: Icon, theme: customTheme = {}, ...props }, ref) => {
+  ({ children, className, href, icon: Icon, theme: customTheme = {}, as: CustomComponent = 'a', ...props }, ref) => {
     const isLink = typeof href !== 'undefined';
-    const Component = isLink ? 'a' : 'span';
+    const Component = isLink ? CustomComponent : 'span';
 
     const theme = mergeDeep(useTheme().theme.breadcrumb.item, customTheme);
 
