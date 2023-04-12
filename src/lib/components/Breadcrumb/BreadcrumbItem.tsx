@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { ComponentProps, FC, PropsWithChildren, ElementType } from 'react';
+import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import { forwardRef } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import type { DeepPartial } from '..';
