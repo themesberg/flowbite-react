@@ -23,3 +23,5 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     return <input ref={ref} type="checkbox" className={classNames(theme.root.base, className)} {...props} />;
   },
 );
+
+Checkbox.displayName = 'Checkbox';

@@ -24,3 +24,5 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
     return <input ref={ref} type="radio" className={classNames(theme.root.base, className)} {...props} />;
   },
 );
+
+Radio.displayName = 'Radio';

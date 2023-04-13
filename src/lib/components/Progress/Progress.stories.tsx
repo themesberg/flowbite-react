@@ -54,18 +54,23 @@ export const Colors = (): JSX.Element => (
 );
 
 export const WithLabelInside = Template.bind({});
-WithLabelInside.storyName = 'With label inside';
+WithLabelInside.storyName = 'With labels';
 WithLabelInside.args = {
-  label: 'Flowbite',
+  textLabel: 'Flowbite',
+  labelText: true,
   progress: 45,
+  labelProgress: true,
   size: 'lg',
 };
 
 export const WithLabelOutside = Template.bind({});
-WithLabelOutside.storyName = 'With label outside';
+WithLabelOutside.storyName = 'Label positions';
 WithLabelOutside.args = {
-  label: 'Flowbite',
-  labelPosition: 'outside',
-  labelProgress: true,
+  textLabel: 'Flowbite',
+  labelText: true,
+  textLabelPosition: 'outside',
   progress: 45,
+  labelProgress: true,
+  progressLabelPosition: 'inside',
+  size: 'lg',
 };

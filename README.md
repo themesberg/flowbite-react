@@ -37,10 +37,10 @@
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Documentation](#documentation)
 - [Getting started](#getting-started)
-  - [Require via `npm`](#require-via--npm-)
-  - [Include via CDN](#include-via-cdn)
+- [Customize components](#customize-components)
 - [Components](#components)
 - [Community](#community)
 - [Contributing](#contributing)
@@ -392,3 +392,4 @@ If you need the Figma files for the components you can check out our website for
 The Flowbite name and logos are trademarks of Crafty Dwarf Inc.
 
 📝 [Read about the licensing terms](https://flowbite.com/docs/getting-started/license/)
+📀 [Brand guideline and trademark usage agreement](https://flowbite.com/brand/)

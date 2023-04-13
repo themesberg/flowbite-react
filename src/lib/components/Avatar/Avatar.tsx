@@ -124,6 +124,7 @@ const AvatarComponent: FC<AvatarProps> = ({
               stacked && theme.root.stacked,
               bordered && theme.root.bordered,
               bordered && theme.root.color[color],
+              theme.root.size[size],
             )}
             data-testid="flowbite-avatar-initials-placeholder"
           >

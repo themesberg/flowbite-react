@@ -138,7 +138,7 @@ const theme: FlowbiteTheme = {
       },
       initials: {
         text: 'font-medium text-gray-600 dark:text-gray-300',
-        base: 'inline-flex overflow-hidden relative justify-center items-center w-10 h-10 bg-gray-100 dark:bg-gray-600',
+        base: 'inline-flex overflow-hidden relative justify-center items-center bg-gray-100 dark:bg-gray-600',
       },
     },
     group: {
@@ -288,7 +288,7 @@ const theme: FlowbiteTheme = {
         light: '',
       },
       off: '',
-      on: '!block bg-white text-gray-900 transition-all duration-75 ease-in group-hover:bg-opacity-0 group-hover:text-inherit dark:bg-gray-900 dark:text-white w-full',
+      on: 'flex justify-center bg-white text-gray-900 transition-all duration-75 ease-in group-hover:bg-opacity-0 group-hover:text-inherit dark:bg-gray-900 dark:text-white w-full',
       pill: {
         off: 'rounded-md',
         on: 'rounded-full',
@@ -491,12 +491,12 @@ const theme: FlowbiteTheme = {
   },
   listGroup: {
     root: {
-      base: 'list-none rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white',
+      base: 'list-none rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white text-left',
     },
     item: {
-      base: 'flex w-full cursor-pointer border-b border-gray-200 py-2 px-4 first:rounded-t-lg last:rounded-b-lg last:border-b-0 dark:border-gray-600',
+      base: '[&>*]:first:rounded-t-lg [&>*]:last:rounded-b-lg [&>*]:last:border-b-0',
       link: {
-        base: '',
+        base: 'flex w-full border-b border-gray-200 py-2 px-4 dark:border-gray-600',
         active: {
           off: 'hover:bg-gray-100 hover:text-blue-700 focus:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-500',
           on: 'bg-blue-700 text-white dark:bg-gray-800',
@@ -541,7 +541,7 @@ const theme: FlowbiteTheme = {
       },
     },
     content: {
-      base: 'relative h-full w-full p-4',
+      base: 'relative h-full w-full p-4 md:h-auto',
       inner: 'relative rounded-lg bg-white shadow dark:bg-gray-700',
     },
     body: {
@@ -637,7 +637,7 @@ const theme: FlowbiteTheme = {
   progress: {
     base: 'w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
     label: 'mb-1 flex justify-between font-medium dark:text-white',
-    bar: 'flex items-center justify-center rounded-full text-center font-medium leading-none text-blue-100',
+    bar: 'flex items-center justify-center rounded-full text-center font-medium leading-none text-blue-100 space-x-2',
     color: {
       dark: 'bg-gray-600 dark:bg-gray-300',
       blue: 'bg-blue-600',
