@@ -53,8 +53,8 @@ export const Progress: FC<ProgressProps> = ({
   return (
     <>
       <div id={id} aria-label={textLabel} aria-valuenow={progress} role="progressbar" {...props}>
-        {((textLabel && labelText && textLabelPosition === 'outside') ||
-          (progress && labelProgress && progressLabelPosition === 'outside')) ? (
+        {(textLabel && labelText && textLabelPosition === 'outside') ||
+        (progress && labelProgress && progressLabelPosition === 'outside') ? (
           <div className={theme.label} data-testid="flowbite-progress-outer-label-container">
             {textLabel && labelText && textLabelPosition === 'outside' && (
               <span data-testid="flowbite-progress-outer-text-label">{textLabel}</span>
@@ -71,10 +71,14 @@ export const Progress: FC<ProgressProps> = ({
             className={classNames(theme.bar, theme.color[color], theme.size[size])}
           >
             {textLabel && labelText && textLabelPosition === 'inside' && (
-              <span className='whitespace-nowrap' data-testid="flowbite-progress-inner-text-label">{textLabel}</span>
+              <span className="whitespace-nowrap" data-testid="flowbite-progress-inner-text-label">
+                {textLabel}
+              </span>
             )}
             {labelProgress && progressLabelPosition === 'inside' && (
-              <span className='whitespace-nowrap' data-testid="flowbite-progress-inner-progress-label">{progress}%</span>
+              <span className="whitespace-nowrap" data-testid="flowbite-progress-inner-progress-label">
+                {progress}%
+              </span>
             )}
           </div>
         </div>
