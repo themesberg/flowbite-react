@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import type { FlowbiteTableCellTheme } from './TableCell';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
+import type { FlowbiteTableCellTheme } from './TableCell';
 
 export interface FlowbiteTableBodyTheme {
   base: string;
