@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.3](https://github.com/themesberg/flowbite-react/compare/v0.4.2...v0.4.3) (2023-04-05)
+
+
+### Features
+
+* **Toast:** add onClick prop to Toast.Toggle ([#607](https://github.com/themesberg/flowbite-react/issues/607)) ([#666](https://github.com/themesberg/flowbite-react/issues/666)) ([9be39d0](https://github.com/themesberg/flowbite-react/commit/9be39d0f4c2f8da9bdd54003d9a6f2d983d16345))
+
 ### [0.4.2](https://github.com/themesberg/flowbite-react/compare/v0.4.1...v0.4.2) (2023-03-08)
 
 
