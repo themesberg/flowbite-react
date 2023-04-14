@@ -95,13 +95,6 @@ const ModalComponent: FC<ModalProps> = ({
       onClose();
     }
   });
-  
-  // Prevent scrolling of the root element when the modal is shown
-  useEffect(() => {
-    if (root) {
-      root.style.overflow = show ? 'hidden' : 'auto'
-    }
-  }, [show, root])
 
   if (!mounted) {
     return null;
@@ -118,6 +111,9 @@ const ModalComponent: FC<ModalProps> = ({
   if (containerRef.current.parentNode !== root && windowExists()) {
     root ||= document.body;
     root.appendChild(containerRef.current);
+
+    // Prevent scrolling of the root element when the modal is shown
+    root.style.overflow = show ? 'hidden' : 'auto';
   }
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
