@@ -6,6 +6,7 @@ import { useTheme } from '../Flowbite';
 import { useTableContext } from './TableContext';
 
 export interface FlowbiteTableRowTheme {
+  base: string;
   hovered: string;
   striped: string;
 }
@@ -21,7 +22,7 @@ export const TableRow: FC<TableRowProps> = ({ children, className, theme: custom
   return (
     <tr
       data-testid="table-row-element"
-      className={classNames(striped && theme.striped, hoverable && theme.hovered, className)}
+      className={classNames(theme.base, striped && theme.striped, hoverable && theme.hovered, className)}
       {...props}
     >
       {children}

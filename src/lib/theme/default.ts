@@ -538,7 +538,7 @@ const theme: FlowbiteTheme = {
       },
     },
     content: {
-      base: 'relative h-full w-full p-4 md:h-auto',
+      base: 'relative h-full w-full m-auto p-4 md:h-auto',
       inner: 'relative rounded-lg bg-white shadow dark:bg-gray-700',
     },
     body: {
@@ -634,7 +634,7 @@ const theme: FlowbiteTheme = {
   progress: {
     base: 'w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
     label: 'mb-1 flex justify-between font-medium dark:text-white',
-    bar: 'flex items-center justify-center rounded-full text-center font-medium leading-none text-blue-100 space-x-2',
+    bar: 'rounded-full text-center font-medium leading-none text-blue-300 dark:text-blue-100 space-x-2',
     color: {
       dark: 'bg-gray-600 dark:bg-gray-300',
       blue: 'bg-blue-600',
@@ -1005,18 +1005,23 @@ const theme: FlowbiteTheme = {
   table: {
     root: {
       base: 'w-full text-left text-sm text-gray-500 dark:text-gray-400',
-      wrapper: 'relative overflow-x-auto shadow-md sm:rounded-lg',
+      shadow: 'absolute bg-white dark:bg-black w-full h-full top-0 left-0 rounded-lg drop-shadow-md -z-10',
+      wrapper: 'relative',
     },
-    cell: {
-      base: 'px-6 py-4',
+    body: {
+      base: 'group/body',
+      cell: {
+        base: 'group-first/body:group-first/row:first:rounded-tl-lg group-first/body:group-first/row:last:rounded-tr-lg group-last/body:group-last/row:first:rounded-bl-lg group-last/body:group-last/row:last:rounded-br-lg px-6 py-4',
+      },
     },
     head: {
-      base: 'bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400',
+      base: 'group/head text-xs uppercase text-gray-700 dark:text-gray-400',
       cell: {
-        base: 'px-6 py-3',
+        base: 'group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg bg-gray-50 dark:bg-gray-700 px-6 py-3',
       },
     },
     row: {
+      base: 'group/row',
       hovered: 'hover:bg-gray-50 dark:hover:bg-gray-600',
       striped: 'odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700',
     },
