@@ -637,7 +637,7 @@ const theme: FlowbiteTheme = {
   progress: {
     base: 'w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
     label: 'mb-1 flex justify-between font-medium dark:text-white',
-    bar: 'flex items-center justify-center rounded-full text-center font-medium leading-none text-blue-100 space-x-2',
+    bar: 'rounded-full text-center font-medium leading-none text-blue-300 dark:text-blue-100 space-x-2',
     color: {
       dark: 'bg-gray-600 dark:bg-gray-300',
       blue: 'bg-blue-600',
