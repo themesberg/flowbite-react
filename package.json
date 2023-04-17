@@ -26,7 +26,7 @@
   },
   "scripts": {
     "build": "react-app-rewired build --profile",
-    "build:lib": "rm -rf ./lib/ && yarn build:lib:esm && yarn build:lib:cjs",
+    "build:lib": "rimraf ./lib/ && yarn build:lib:esm && yarn build:lib:cjs",
     "build:lib:cjs": "tsc -p tsconfig.lib.json",
     "build:lib:esm": "tsc -p tsconfig.lib.json --module esnext --declaration --outDir ./lib/esm",
     "build:storybook": "build-storybook -o ./build/storybook",
@@ -56,7 +56,8 @@
     "@floating-ui/react": "^0.20.1",
     "classnames": "^2.3.2",
     "react-icons": "^4.7.1",
-    "react-indiana-drag-scroll": "^2.2.0"
+    "react-indiana-drag-scroll": "^2.2.0",
+    "react-merge-refs": "^2.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.21.0",
@@ -122,6 +123,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "require-from-string": "^2.0.2",
     "resize-observer-polyfill": "^1.5.1",
+    "rimraf": "^4.4.1",
     "standard-version": "^9.5.0",
     "start-server-and-test": "^2.0.0",
     "storybook-dark-mode": "^2.1.1",

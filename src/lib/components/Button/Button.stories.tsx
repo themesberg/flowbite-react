@@ -20,4 +20,5 @@ export const DefaultButton = Template.bind({});
 DefaultButton.storyName = 'Default';
 DefaultButton.args = {
   children: 'Button',
+  role: 'banner',
 };
