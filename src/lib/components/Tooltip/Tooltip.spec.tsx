@@ -32,6 +32,7 @@ describe('Tooltip', () => {
 
   describe('Rendering', () => {
     it('should invert placement so it stays on screen if it would normally be placed off screen', async () => {
+      // Normal placement
       const user = userEvent.setup();
       render(<TooltipTests />);
 
@@ -39,14 +40,16 @@ describe('Tooltip', () => {
       let arrow = arrows()[2];
 
       await user.click(tooltip);
-      expect(arrow).toHaveStyle('top: -4px');
+      expect(arrow).toHaveStyle('bottom: 100%');
 
       tooltip = tooltips()[3];
       arrow = arrows()[3];
 
       await user.click(tooltip);
 
-      expect(arrow).toHaveStyle('left: -4px');
+      expect(arrow).toHaveStyle('right: 100%');
+
+      // TODO: Resize the window to test the inverted placement
     });
   });
 });

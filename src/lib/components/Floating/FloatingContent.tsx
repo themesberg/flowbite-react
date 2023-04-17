@@ -7,7 +7,7 @@ import { useFloatingContext } from './FloatingContext';
 export const FloatingContent = React.forwardRef(function (props: FloatingProps, propRef) {
   const { context: floatingContext, ...context } = useFloatingContext();
   const ref = useMergeRefs([context.refs.setFloating, propRef]);
-  console.log(context.theme);
+
   return (
     <FloatingPortal>
       <FloatingFocusManager context={floatingContext} modal={context.modal}>
