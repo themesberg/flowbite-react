@@ -13,7 +13,7 @@ export interface TableCellProps extends PropsWithChildren, ComponentProps<'td'> 
 }
 
 export const TableCell: FC<TableCellProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const theme = mergeDeep(useTheme().theme.table.cell, customTheme);
+  const theme = mergeDeep(useTheme().theme.table.body.cell, customTheme);
 
   return (
     <td className={classNames(theme.base, className)} {...props}>
