@@ -3,8 +3,8 @@ import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
+import type { FlowbiteTableBodyTheme } from './TableBody';
 import { TableBody } from './TableBody';
-import type { FlowbiteTableCellTheme } from './TableCell';
 import { TableCell } from './TableCell';
 import type { TableContextType } from './TableContext';
 import { TableContext } from './TableContext';
@@ -16,13 +16,14 @@ import { TableRow } from './TableRow';
 
 export interface FlowbiteTableTheme {
   root: FlowbiteTableRootTheme;
-  cell: FlowbiteTableCellTheme;
   head: FlowbiteTableHeadTheme;
   row: FlowbiteTableRowTheme;
+  body: FlowbiteTableBodyTheme;
 }
 
 export interface FlowbiteTableRootTheme {
   base: string;
+  shadow: string;
   wrapper: string;
 }
 
@@ -43,6 +44,7 @@ const TableComponent: FC<TableProps> = ({
   return (
     <div data-testid="table-element" className={classNames(theme.root.wrapper)}>
       <TableContext.Provider value={{ striped, hoverable }}>
+        <div className={classNames(theme.root.shadow, className)}></div>
         <table className={classNames(theme.root.base, className)} {...props}>
           {children}
         </table>
