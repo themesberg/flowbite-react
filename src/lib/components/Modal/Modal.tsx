@@ -109,8 +109,11 @@ const ModalComponent: FC<ModalProps> = ({
   // If the current value of the ref is not already a child of the root element,
   // append it or replace its parent.
   if (containerRef.current.parentNode !== root && windowExists()) {
-    root = root || document.body;
+    root ||= document.body;
     root.appendChild(containerRef.current);
+
+    // Prevent scrolling of the root element when the modal is shown
+    root.style.overflow = show ? 'hidden' : 'auto';
   }
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
