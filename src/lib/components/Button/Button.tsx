@@ -20,11 +20,7 @@ export interface FlowbiteButtonTheme {
   color: FlowbiteColors;
   disabled: string;
   isProcessing: string;
-  processing: {
-    spinnerSize: string;
-    spinnerLight: string;
-    spinnerClassName: string;
-  };
+  spinnerSlot: string;
   gradient: ButtonGradientColors;
   gradientDuoTone: ButtonGradientDuoToneColors;
   inner: FlowbiteButtonInnerTheme;
@@ -74,11 +70,8 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'r
   href?: string;
   target?: string;
   isProcessing?: boolean;
-  processing?: {
-    spinnerSize?: string;
-    spinnerLight?: boolean;
-    spinnerClassName?: string;
-  };
+  processingLabel?: string;
+  processingSpinner?: ReactNode;
   label?: ReactNode;
   outline?: boolean;
   pill?: boolean;
@@ -96,11 +89,8 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
       disabled = false,
       fullSized,
       isProcessing = false,
-      processing = {
-        spinnerSize: 'sm',
-        spinnerLight: true,
-        spinnerClassName: 'mr-3',
-      },
+      processingLabel = 'Loading...',
+      processingSpinner: SpinnerComponent = <Spinner />,
       gradientDuoTone,
       gradientMonochrome,
       href,
@@ -148,20 +138,16 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
             theme.outline.pill[outline && pill ? 'on' : 'off'],
             theme.size[size],
             outline && !theme.outline.color[color] && theme.inner.outline,
+            isProcessing && theme.isProcessing,
           )}
         >
           <>
-            {isProcessing && (
-              <Spinner
-                size={processing.spinnerSize}
-                light={processing.spinnerLight}
-                className={processing.spinnerClassName}
-              />
-            )}
-            {typeof children !== 'undefined' && children}
-            {typeof label !== 'undefined' && (
+            {isProcessing && <span className={theme.spinnerSlot}>{SpinnerComponent}</span>}
+            {typeof children !== 'undefined' ? (
+              children
+            ) : (
               <span data-testid="flowbite-button-label" className={theme.label}>
-                {label}
+                {isProcessing ? processingLabel : label}
               </span>
             )}
           </>

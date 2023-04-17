@@ -239,12 +239,8 @@ const theme: FlowbiteTheme = {
         'text-yellow-900 bg-white border border-yellow-300 hover:bg-yellow-100 focus:ring-4 focus:ring-yellow-300 disabled:hover:bg-white dark:bg-yellow-600 dark:text-white dark:border-yellow-600 dark:hover:bg-yellow-700 dark:hover:border-yellow-700 dark:focus:ring-yellow-700',
     },
     disabled: 'cursor-not-allowed opacity-50',
-    isProcessing: 'cursor-wait',
-    processing: {
-      spinnerSize: '',
-      spinnerLight: '',
-      spinnerClassName: '',
-    },
+    isProcessing: '!cursor-wait',
+    spinnerSlot: 'mr-3',
     gradient: {
       cyan: 'text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800',
       failure:

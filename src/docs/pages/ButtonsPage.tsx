@@ -271,11 +271,11 @@ const ButtonsPage: FC = () => {
         <div className="flex flex-wrap items-center gap-2">
           <div className="flex flex-wrap items-center gap-2">
             <div>
-              <Button isProcessing={true}>Loading ...</Button>
+              <Button isProcessing={true}>Click me!</Button>
             </div>
             <div>
               <Button isProcessing={true} outline>
-                Loading ...
+                Click me!
               </Button>
             </div>
           </div>
