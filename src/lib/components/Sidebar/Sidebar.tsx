@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
@@ -31,6 +31,7 @@ export interface FlowbiteSidebarTheme {
 }
 
 export interface SidebarProps extends PropsWithChildren, ComponentProps<'div'> {
+  as?: ElementType;
   collapseBehavior?: 'collapse' | 'hide';
   collapsed?: boolean;
   theme?: DeepPartial<FlowbiteSidebarTheme>;
@@ -38,6 +39,7 @@ export interface SidebarProps extends PropsWithChildren, ComponentProps<'div'> {
 
 const SidebarComponent: FC<SidebarProps> = ({
   children,
+  as: Component = 'aside',
   collapseBehavior = 'collapse',
   collapsed: isCollapsed = false,
   theme: customTheme = {},
@@ -48,14 +50,14 @@ const SidebarComponent: FC<SidebarProps> = ({
 
   return (
     <SidebarContext.Provider value={{ isCollapsed }}>
-      <aside
+      <Component
         aria-label="Sidebar"
         hidden={isCollapsed && collapseBehavior === 'hide'}
         className={classNames(theme.root.base, theme.root.collapsed[isCollapsed ? 'on' : 'off'], className)}
         {...props}
       >
         <div className={theme.root.inner}>{children}</div>
-      </aside>
+      </Component>
     </SidebarContext.Provider>
   );
 };
