@@ -83,7 +83,9 @@ export function useFloatingHook({
   });
 
   const context = data.context;
-  const dismiss = useDismiss(context);
+  const dismiss = useDismiss(context, {
+    enabled: dismissOnClick,
+  });
   const role = useRole(context);
 
   const hover = useHover(context, {
@@ -96,6 +98,7 @@ export function useFloatingHook({
   const click = useClick(context, {
     enabled: (controlledOpen == null && trigger === undefined) || trigger === 'click',
   });
+
   const interactions = useInteractions([hover, focus, click, dismiss, role]);
 
   return useMemo(
