@@ -16,13 +16,17 @@ export interface FlowbiteBreadcrumbItemTheme {
 
 export interface BreadcrumbItemProps extends PropsWithChildren<Omit<ComponentProps<'li'>, 'ref'>> {
   href?: string;
+  to?: string;
   icon?: FC<ComponentProps<'svg'>>;
   theme?: DeepPartial<FlowbiteBreadcrumbItemTheme>;
   as?: ElementType;
 }
 
 const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, BreadcrumbItemProps>(
-  ({ children, className, href, icon: Icon, theme: customTheme = {}, as: CustomComponent = 'a', ...props }, ref) => {
+  (
+    { children, className, href, to, icon: Icon, theme: customTheme = {}, as: CustomComponent = 'a', ...props },
+    ref,
+  ) => {
     const isLink = typeof href !== 'undefined';
     const Component = isLink ? CustomComponent : 'span';
 
@@ -36,6 +40,7 @@ const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, Breadcrum
           className={theme.href[isLink ? 'on' : 'off']}
           data-testid="flowbite-breadcrumb-item"
           href={href}
+          to={to}
         >
           {Icon && <Icon aria-hidden className={theme.icon} />}
           {children}
