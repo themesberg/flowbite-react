@@ -39,7 +39,7 @@ export interface SidebarProps extends PropsWithChildren, ComponentProps<'div'> {
 
 const SidebarComponent: FC<SidebarProps> = ({
   children,
-  as: Component = 'aside',
+  as: Component = 'nav',
   collapseBehavior = 'collapse',
   collapsed: isCollapsed = false,
   theme: customTheme = {},
