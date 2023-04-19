@@ -58,7 +58,7 @@ describe('Components / Accordion', () => {
       expect(content()[1]).toBeVisible();
     });
 
-    it('should open focused panel, and close others when `Space` is pressed on an `Accordion.Panel`', async () => {
+    it('it should open and close self when `Space is pressed on the same`Accordion.Panel`', async () => {
       const user = userEvent.setup();
       render(<TestAccordion />);
 
@@ -251,7 +251,7 @@ describe('Components / Accordion', () => {
       });
     });
   });
-    describe('Click to toggle open', () => {
+  describe('Click to toggle open', () => {
     beforeEach(() => {
       render(<TestAccordion />);
     });
@@ -261,10 +261,8 @@ describe('Components / Accordion', () => {
 
       await userEvent.click(titleElements[1]); // open second panel
       await userEvent.click(titleElements[1]); // close second panel
-      expect(content()[0]).not.toBeVisible()// content should not be visible
-      expect(content()[1]).not.toBeVisible()// content should not be visible
-
-
+      expect(content()[0]).not.toBeVisible(); // content should not be visible
+      expect(content()[1]).not.toBeVisible(); // content should not be visible
     });
   });
 });
