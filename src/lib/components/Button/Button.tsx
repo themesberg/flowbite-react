@@ -10,6 +10,7 @@ import type {
   FlowbiteSizes,
 } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
+import { Spinner } from '../Spinner';
 import type { PositionInButtonGroup } from './ButtonGroup';
 import ButtonGroup from './ButtonGroup';
 
@@ -18,6 +19,8 @@ export interface FlowbiteButtonTheme {
   fullSized: string;
   color: FlowbiteColors;
   disabled: string;
+  isProcessing: string;
+  spinnerSlot: string;
   gradient: ButtonGradientColors;
   gradientDuoTone: ButtonGradientDuoToneColors;
   inner: FlowbiteButtonInnerTheme;
@@ -66,6 +69,9 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'r
   gradientMonochrome?: keyof ButtonGradientColors;
   href?: string;
   target?: string;
+  isProcessing?: boolean;
+  processingLabel?: string;
+  processingSpinner?: ReactNode;
   label?: ReactNode;
   outline?: boolean;
   pill?: boolean;
@@ -82,6 +88,9 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
       color = 'info',
       disabled = false,
       fullSized,
+      isProcessing = false,
+      processingLabel = 'Loading...',
+      processingSpinner: SpinnerComponent = <Spinner />,
       gradientDuoTone,
       gradientMonochrome,
       href,
@@ -129,13 +138,16 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
             theme.outline.pill[outline && pill ? 'on' : 'off'],
             theme.size[size],
             outline && !theme.outline.color[color] && theme.inner.outline,
+            isProcessing && theme.isProcessing,
           )}
         >
           <>
-            {typeof children !== 'undefined' && children}
-            {typeof label !== 'undefined' && (
+            {isProcessing && <span className={theme.spinnerSlot}>{SpinnerComponent}</span>}
+            {typeof children !== 'undefined' ? (
+              children
+            ) : (
               <span data-testid="flowbite-button-label" className={theme.label}>
-                {label}
+                {isProcessing ? processingLabel : label}
               </span>
             )}
           </>
