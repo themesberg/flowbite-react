@@ -58,6 +58,20 @@ describe('Components / Accordion', () => {
       expect(content()[1]).toBeVisible();
     });
 
+    it('should open focused panel, and close others when `Space` is pressed on an `Accordion.Panel`', async () => {
+      const user = userEvent.setup();
+      render(<TestAccordion />);
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      for (const _ of titles()) {
+        await user.tab();
+      }
+      await user.keyboard('[Space]');
+      await user.keyboard('[Space]');
+
+      expect(content()[0]).not.toBeVisible();
+      expect(content()[1]).not.toBeVisible();
+    });
     it('should open focused panel without closing others on an `Accordion.Panel` with `alwaysOpen={true}`', async () => {
       const user = userEvent.setup();
       render(<TestAccordion alwaysOpen />);
@@ -235,6 +249,22 @@ describe('Components / Accordion', () => {
           expect(title).toHaveClass('text-gray-400');
         });
       });
+    });
+  });
+    describe('Click to toggle open', () => {
+    beforeEach(() => {
+      render(<TestAccordion />);
+    });
+
+    it('should open and close the accordion when title is clicked', async () => {
+      const titleElements = titles();
+
+      await userEvent.click(titleElements[1]); // open second panel
+      await userEvent.click(titleElements[1]); // close second panel
+      expect(content()[0]).not.toBeVisible()// content should not be visible
+      expect(content()[1]).not.toBeVisible()// content should not be visible
+
+
     });
   });
 });
