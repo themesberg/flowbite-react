@@ -45,13 +45,7 @@ const AccordionComponent: FC<AccordionProps> = ({
 }) => {
   const [isOpen, setOpen] = useState(collapseAll ? -1 : 0);
 
-  const toggleOpen = (i: number) => {
-    if (isOpen === i) {
-      setOpen(-1);
-    } else {
-      setOpen(i);
-    }
-  };
+  const toggleOpen = (i: number) => setOpen(isOpen === i ? -1 : i);
 
   const panels = useMemo(
     () =>
