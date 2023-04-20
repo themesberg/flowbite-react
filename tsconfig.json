@@ -19,6 +19,6 @@
     "target": "ESNext",
     "types": ["@testing-library/jest-dom", "node", "vitest"]
   },
-  "exclude": ["/build", "/lib"],
+  "exclude": ["/build", "/lib", "./cypress.config.ts"],
   "include": ["**/*.js", "**/*.ts", "**/*.tsx"]
 }
