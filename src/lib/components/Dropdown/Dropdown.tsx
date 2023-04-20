@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
-import React, { Children, useCallback, useMemo, useState } from 'react';
+import React, { Children, useCallback, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
@@ -75,6 +75,8 @@ const DropdownComponent: FC<DropdownProps> = ({
   }, [placement]);
 
   const [closeRequestKey, setCloseRequestKey] = useState<string | undefined>(undefined);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const buttonWidth = triggerRef.current?.offsetWidth;
 
   // Extends DropdownItem's onClick to trigger a close request to the Floating component
   const attachCloseListener = useCallback(
@@ -101,12 +103,24 @@ const DropdownComponent: FC<DropdownProps> = ({
   );
 
   const content = useMemo(
-    () => <ul className={theme.content}>{Children.map(children, attachCloseListener)}</ul>,
-    [attachCloseListener, children, theme.content],
+    () => (
+      <ul className={theme.content} style={{ minWidth: buttonWidth ? `${buttonWidth}px` : 'auto' }}>
+        {Children.map(children, attachCloseListener)}
+      </ul>
+    ),
+    [children, theme, triggerRef.current, attachCloseListener, buttonWidth],
   );
 
   const TriggerWrapper: FC<ButtonProps> = ({ children }) =>
-    inline ? <button className={theme.inlineWrapper}>{children}</button> : <Button {...buttonProps}>{children}</Button>;
+    inline ? (
+      <button ref={triggerRef} className={theme.inlineWrapper}>
+        {children}
+      </button>
+    ) : (
+      <Button ref={triggerRef} {...buttonProps}>
+        {children}
+      </Button>
+    );
 
   return (
     <Floating
