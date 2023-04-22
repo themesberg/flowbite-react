@@ -9,7 +9,7 @@ export default {
   argTypes: {
     color: {
       options: Object.keys(theme.button.color),
-      control: { type: 'radio' },
+      control: { type: 'inline-radio' },
     },
   },
 } as Meta;

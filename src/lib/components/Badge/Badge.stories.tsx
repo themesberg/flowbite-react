@@ -1,11 +1,18 @@
 import type { Meta, Story } from '@storybook/react/types-6-0';
 import { HiCheck } from 'react-icons/hi';
+import theme from '../../theme/default';
 import type { BadgeProps } from './Badge';
 import { Badge } from './Badge';
 
 export default {
   title: 'Components/Badge',
   component: Badge,
+  argTypes: {
+    color: {
+      options: Object.keys(theme.badge.root.color),
+      control: { type: 'inline-radio' },
+    },
+  },
 } as Meta;
 
 const Template: Story<BadgeProps> = (args) => (

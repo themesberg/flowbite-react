@@ -25,14 +25,14 @@ const Template: Story<AccordionProps> = (args) => (
           dropdowns, modals, navbars, and more.
         </p>
         <p className="text-gray-500 dark:text-gray-400">
-          Check out this guide to learn how to{' '}
+          Check out this guide to learn how to&nbsp;
           <a
             href="https://flowbite.com/docs/getting-started/introduction/"
             className="text-blue-600 hover:underline dark:text-blue-500"
           >
             get started
-          </a>{' '}
-          and start developing websites even faster with components on top of Tailwind CSS.
+          </a>
+          &nbsp;and start developing websites even faster with components on top of Tailwind CSS.
         </p>
       </Accordion.Content>
     </Accordion.Panel>
@@ -44,11 +44,11 @@ const Template: Story<AccordionProps> = (args) => (
           has a design equivalent in our Figma file.
         </p>
         <p className="text-gray-500 dark:text-gray-400">
-          Check out the{' '}
+          Check out the&nbsp;
           <a href="https://flowbite.com/figma/" className="text-blue-600 hover:underline dark:text-blue-500">
             Figma design system
-          </a>{' '}
-          based on the utility classes from Tailwind CSS and components from Flowbite.
+          </a>
+          &nbsp;based on the utility classes from Tailwind CSS and components from Flowbite.
         </p>
       </Accordion.Content>
     </Accordion.Panel>

@@ -6,6 +6,7 @@ import { Checkbox } from '../../lib/components/Checkbox';
 import { FileInput } from '../../lib/components/FileInput';
 import { Label } from '../../lib/components/Label';
 import { Radio } from '../../lib/components/Radio';
+import { RangeSlider } from '../../lib/components/RangeSlider';
 import { Select } from '../../lib/components/Select';
 import { Textarea } from '../../lib/components/Textarea';
 import { TextInput } from '../../lib/components/TextInput';
@@ -103,7 +104,7 @@ const FormsPage: FC = () => {
           <div className="flex items-center gap-2">
             <Checkbox id="agree" />
             <Label htmlFor="agree">
-              I agree with the{' '}
+              I agree with the&nbsp;
               <a href="/forms" className="text-blue-600 hover:underline dark:text-blue-500">
                 terms and conditions
               </a>
@@ -127,7 +128,7 @@ const FormsPage: FC = () => {
             required
             helperText={
               <>
-                We’ll never share your details. Read our{' '}
+                We’ll never share your details. Read our
                 <a href="/forms" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
                   Privacy Policy
                 </a>
@@ -195,13 +196,13 @@ const FormsPage: FC = () => {
         <div className="flex flex-col gap-4">
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="username3" color="green" value="Your name" />
+              <Label htmlFor="username3" color="success" value="Your name" />
             </div>
             <TextInput
               id="username"
               placeholder="Bonnie Green"
               required
-              color="green"
+              color="success"
               helperText={
                 <>
                   <span className="font-medium">Alright!</span> Username available!
@@ -211,19 +212,56 @@ const FormsPage: FC = () => {
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="username4" color="red" value="Your name" />
+              <Label htmlFor="username4" color="failure" value="Your name" />
             </div>
             <TextInput
               id="username4"
               placeholder="Bonnie Green"
               required
-              color="red"
+              color="failure"
               helperText={
                 <>
                   <span className="font-medium">Oops!</span> Username already taken!
                 </>
               }
             />
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: 'Input colors',
+      code: (
+        <div className="flex flex-col gap-4">
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="input-gray" color="gray" value="Gray" />
+            </div>
+            <TextInput id="input-gray" placeholder="Input Gray" required color="gray" />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="input-info" color="info" value="Info" />
+            </div>
+            <TextInput id="input-info" placeholder="Input Info" required color="info" />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="input-success" color="success" value="Success" />
+            </div>
+            <TextInput id="input-success" placeholder="Input Success" required color="success" />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="input-failure" color="failure" value="Failure" />
+            </div>
+            <TextInput id="input-failure" placeholder="Input Failure" required color="failure" />
+          </div>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="input-warning" color="warning" value="Warning" />
+            </div>
+            <TextInput id="input-warning" placeholder="Input Warning" required color="warning" />
           </div>
         </div>
       ),
@@ -262,7 +300,7 @@ const FormsPage: FC = () => {
           <div className="flex items-center gap-2">
             <Checkbox id="accept" defaultChecked />
             <Label htmlFor="accept">
-              I agree to the{' '}
+              I agree to the&nbsp;
               <a href="/forms" className="text-blue-600 hover:underline dark:text-blue-500">
                 terms and conditions
               </a>
@@ -284,7 +322,7 @@ const FormsPage: FC = () => {
               <Label htmlFor="shipping">Free shipping via Flowbite</Label>
               <div className="text-gray-500 dark:text-gray-300">
                 <span className="text-xs font-normal">
-                  For orders shipped from Flowbite from <span className="font-medium">€ 25</span> in books or{' '}
+                  For orders shipped from Flowbite from <span className="font-medium">€ 25</span> in books or&nbsp;
                   <span>€ 29</span> on other categories
                 </span>
               </div>
@@ -347,6 +385,43 @@ const FormsPage: FC = () => {
           <ToggleSwitch checked={switch1} label="Toggle me" onChange={setSwitch1} />
           <ToggleSwitch checked={switch2} label="Toggle me (checked)" onChange={setSwitch2} />
           <ToggleSwitch checked={false} disabled label="Toggle me (disabled)" onChange={() => undefined} />
+        </div>
+      ),
+    },
+    {
+      title: 'Range Slider',
+      code: (
+        <div className="flex flex-col gap-4">
+          <div>
+            <div className="mb-1 block">
+              <Label htmlFor="default-range" value="Default" />
+            </div>
+            <RangeSlider id="default-range" />
+          </div>
+          <div>
+            <div className="mb-1 block">
+              <Label htmlFor="disbaled-range" value="Disabled" />
+            </div>
+            <RangeSlider id="disabled-range" disabled={true} />
+          </div>
+          <div>
+            <div className="mb-1 block">
+              <Label htmlFor="sm-range" value="Small" />
+            </div>
+            <RangeSlider id="sm-range" sizing="sm" />
+          </div>
+          <div>
+            <div className="mb-1 block">
+              <Label htmlFor="md-range" value="Medium" />
+            </div>
+            <RangeSlider id="md-range" sizing="md" />
+          </div>
+          <div>
+            <div className="mb-1 block">
+              <Label htmlFor="lg-range" value="Large" />
+            </div>
+            <RangeSlider id="lg-range" sizing="lg" />
+          </div>
         </div>
       ),
     },

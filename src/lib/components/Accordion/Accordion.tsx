@@ -2,14 +2,16 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { AccordionContent, FlowbiteAccordionComponentTheme } from './AccordionContent';
+import type { FlowbiteAccordionComponentTheme } from './AccordionContent';
+import { AccordionContent } from './AccordionContent';
 import type { AccordionPanelProps } from './AccordionPanel';
 import { AccordionPanel } from './AccordionPanel';
-import { AccordionTitle, FlowbiteAccordionTitleTheme } from './AccordionTitle';
+import type { FlowbiteAccordionTitleTheme } from './AccordionTitle';
+import { AccordionTitle } from './AccordionTitle';
 
 export interface FlowbiteAccordionTheme {
   root: FlowbiteAccordionRootTheme;
@@ -28,7 +30,7 @@ export interface AccordionProps extends PropsWithChildren<ComponentProps<'div'>>
   children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];
   flush?: boolean;
   collapseAll?: boolean;
-  theme?: DeepPartial<FlowbiteAccordionRootTheme>;
+  theme?: DeepPartial<FlowbiteAccordionTheme>;
 }
 
 const AccordionComponent: FC<AccordionProps> = ({
@@ -40,12 +42,19 @@ const AccordionComponent: FC<AccordionProps> = ({
   className,
   theme: customTheme = {},
   ...props
-}): JSX.Element => {
+}) => {
   const [isOpen, setOpen] = useState(collapseAll ? -1 : 0);
+
   const panels = useMemo(
     () =>
       Children.map(children, (child, i) =>
-        cloneElement(child, { alwaysOpen, arrowIcon, flush, isOpen: isOpen === i, setOpen: () => setOpen(i) }),
+        cloneElement(child, {
+          alwaysOpen,
+          arrowIcon,
+          flush,
+          isOpen: isOpen === i,
+          setOpen: () => setOpen(isOpen === i ? -1 : i),
+        }),
       ),
     [alwaysOpen, arrowIcon, children, flush, isOpen],
   );

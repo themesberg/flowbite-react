@@ -1,15 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Toast } from './Toast';
 
 describe.concurrent('Components / Toast', () => {
   describe.concurrent('Keyboard interactions', () => {
     it('should close `Toast` when `Space` is pressed on `Toast.Toggle`', async () => {
       const user = userEvent.setup();
+      const handleClick = vi.fn();
+
       render(
         <Toast>
-          <Toast.Toggle />
+          <Toast.Toggle onClick={handleClick} />
         </Toast>,
       );
 
@@ -17,6 +19,8 @@ describe.concurrent('Components / Toast', () => {
       await user.keyboard('[Space]');
 
       expect(toast().className).toContain('opacity-0');
+
+      expect(handleClick).toHaveBeenCalled();
     });
   });
 });
