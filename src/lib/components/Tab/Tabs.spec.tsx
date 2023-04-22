@@ -12,6 +12,7 @@ describe('Components / Tabs', () => {
     const user = userEvent.setup();
     render(<TestTabs />);
 
+    await user.click(firstTab());
     expect(firstTab()).toHaveFocus();
 
     const nextTab = tabs()[1];
@@ -27,6 +28,7 @@ describe('Components / Tabs', () => {
     const user = userEvent.setup();
     render(<TestTabs />);
 
+    await user.click(firstTab());
     expect(firstTab()).toHaveFocus();
 
     await user.keyboard('[ArrowRight]');
@@ -44,6 +46,7 @@ describe('Components / Tabs', () => {
     const user = userEvent.setup();
     render(<TestTabs />);
 
+    await user.click(firstTab());
     expect(firstTab()).toHaveFocus();
 
     await user.keyboard('[ArrowLeft]');
@@ -55,6 +58,7 @@ describe('Components / Tabs', () => {
     const user = userEvent.setup();
     render(<TestTabsDifferentActiveItem />);
 
+    await user.click(firstTab());
     expect(activeTab()).toHaveFocus();
 
     await user.keyboard('[ArrowLeft]');
@@ -65,6 +69,8 @@ describe('Components / Tabs', () => {
   it('should do nothing when Right Arrow is pressed and last tab is already focused', async () => {
     const user = userEvent.setup();
     render(<TestTabsLastActiveItem />);
+
+    await user.click(lastTab());
 
     expect(lastTab()).toHaveAttribute('aria-selected', 'true');
     expect(lastTab()).toHaveFocus();
@@ -77,6 +83,8 @@ describe('Components / Tabs', () => {
   it('should focus next tab when Right Arrow is pressed', async () => {
     const user = userEvent.setup();
     render(<TestTabs />);
+
+    await user.click(firstTab());
 
     await user.keyboard('[ArrowRight]');
 
@@ -93,6 +101,7 @@ describe('Components / Tabs', () => {
 
     render(<TestTabs onActiveTabChange={helper.onActiveTabChange} />);
 
+    await user.click(firstTab());
     expect(firstTab()).toHaveFocus();
 
     const nextTab = tabs()[1];
@@ -103,7 +112,7 @@ describe('Components / Tabs', () => {
     expect(nextTab).toHaveFocus();
     expect(nextTab).toHaveAttribute('aria-selected', 'true');
 
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledTimes(2);
     expect(spy).toHaveBeenCalledWith(1);
   });
 
