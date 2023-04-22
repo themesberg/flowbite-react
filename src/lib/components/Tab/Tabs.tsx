@@ -84,12 +84,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
         tabs.findIndex((tab) => tab.active),
       ),
     );
-    const [focusedTab, setFocusedTab] = useState(
-      Math.max(
-        0,
-        tabs.findIndex((tab) => tab.active),
-      ),
-    );
+    const [focusedTab, setFocusedTab] = useState(-1);
 
     const setActiveTabWithCallback = (activeTab: number) => {
       setActiveTab(activeTab);
