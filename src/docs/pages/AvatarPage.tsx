@@ -130,19 +130,22 @@ const AvatarPage: FC = () => {
       ),
     },
     {
-      title: 'Placeholder',
-      code: (
-        <div className="flex flex-wrap gap-2">
-          <Avatar />
-          <Avatar rounded />
-        </div>
-      ),
-    },
-    {
       title: 'Placeholder Initials',
       code: (
         <div className="flex flex-wrap gap-2">
           <Avatar placeholderInitials="RR" />
+        </div>
+      ),
+    },
+    {
+      title: 'Placeholder Initials - Sizing',
+      code: (
+        <div className="flex flex-wrap items-center gap-2">
+          <Avatar placeholderInitials="RR" size="xs" />
+          <Avatar placeholderInitials="RR" size="sm" />
+          <Avatar placeholderInitials="RR" size="md" />
+          <Avatar placeholderInitials="RR" size="lg" />
+          <Avatar placeholderInitials="RR" size="xl" />
         </div>
       ),
     },

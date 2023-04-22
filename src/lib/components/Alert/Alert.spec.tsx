@@ -1,8 +1,12 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FC, useState } from 'react';
-import { HiEye, HiInformationCircle } from 'react-icons/hi';
+import type { FC } from 'react';
+import { useState } from 'react';
+import { HiEye, HiHeart, HiInformationCircle } from 'react-icons/hi';
 import { describe, expect, it, vi } from 'vitest';
+import { Flowbite } from '../Flowbite';
+
+import type { AlertProps } from './Alert';
 import { Alert } from './Alert';
 
 describe.concurrent('Components / Alert', () => {
@@ -11,6 +15,110 @@ describe.concurrent('Components / Alert', () => {
       render(<TestAlert />);
 
       expect(alert()).toBeInTheDocument();
+    });
+
+    describe('Theme', () => {
+      it('should use custom `base` classes', () => {
+        const theme = {
+          alert: {
+            base: 'text-purple-100',
+          },
+        };
+        render(
+          <Flowbite theme={{ theme }}>
+            <TestAlert />
+          </Flowbite>,
+        );
+
+        expect(alert()).toHaveClass('text-purple-100');
+      });
+
+      it('should use custom `borderAccent` classes', () => {
+        const theme = {
+          alert: {
+            borderAccent: 'border-t-4 border-purple-500',
+          },
+        };
+        render(
+          <Flowbite theme={{ theme }}>
+            <TestAlert withBorderAccent />
+          </Flowbite>,
+        );
+
+        expect(alert()).toHaveClass('border-t-4 border-purple-500');
+      });
+
+      it('should use custom `wrapper` classes', () => {
+        const theme = {
+          alert: {
+            wrapper: 'flex items-center',
+          },
+        };
+        render(
+          <Flowbite theme={{ theme }}>
+            <TestAlert />
+          </Flowbite>,
+        );
+
+        expect(wrapper()).toHaveClass('flex items-center');
+      });
+
+      it('should use custom `color` classes', () => {
+        const theme = {
+          alert: {
+            closeButton: {
+              color: {
+                info: 'text-purple-500 hover:bg-purple-200 dark:text-purple-600 dark:hover:text-purple-300',
+              },
+            },
+            color: {
+              info: 'text-purple-700 bg-purple-100 border-purple-500 dark:bg-purple-200 dark:text-purple-800',
+            },
+          },
+        };
+        render(
+          <Flowbite theme={{ theme }}>
+            <TestAlert />
+          </Flowbite>,
+        );
+
+        expect(alert()).toHaveClass(
+          'text-purple-700 bg-purple-100 border-purple-500 dark:bg-purple-200 dark:text-purple-800',
+        );
+        expect(dismiss()).toHaveClass(
+          'text-purple-500 hover:bg-purple-200 dark:text-purple-600 dark:hover:text-purple-300',
+        );
+      });
+
+      it('should use custom `icon`', () => {
+        const theme = {
+          alert: {
+            icon: 'alert-custom-icon',
+          },
+        };
+        render(
+          <Flowbite theme={{ theme }}>
+            <TestAlert icon={HiHeart} />
+          </Flowbite>,
+        );
+
+        expect(icon()).toHaveClass('alert-custom-icon');
+      });
+
+      it('should show custom `rounded` class', () => {
+        const theme = {
+          alert: {
+            rounded: 'rounded',
+          },
+        };
+        render(
+          <Flowbite theme={{ theme }}>
+            <TestAlert />
+          </Flowbite>,
+        );
+
+        expect(alert()).toHaveClass('rounded');
+      });
     });
   });
 
@@ -45,11 +153,12 @@ describe.concurrent('Components / Alert', () => {
   });
 });
 
-const TestAlert: FC = () => {
+const TestAlert: FC<AlertProps> = (props: AlertProps) => {
   const [isDismissed, setDismissed] = useState(false);
 
   return (
     <Alert
+      {...props}
       additionalContent={
         <>
           <div className="mt-2 mb-4 text-sm text-blue-700 dark:text-blue-800">
@@ -85,5 +194,9 @@ const TestAlert: FC = () => {
 };
 
 const alert = () => screen.getByRole('alert');
+
+const wrapper = () => screen.getByTestId('flowbite-alert-wrapper');
+
+const icon = () => screen.getByTestId('flowbite-alert-icon');
 
 const dismiss = () => screen.getByLabelText('Dismiss');

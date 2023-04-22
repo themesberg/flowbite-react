@@ -1,83 +1,63 @@
 import classNames from 'classnames';
-import { ComponentProps, FC, PropsWithChildren } from 'react';
-import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
+import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
+import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
+import type { FlowbiteSidebarCollapseTheme } from './SidebarCollapse';
 import SidebarCollapse from './SidebarCollapse';
 import { SidebarContext } from './SidebarContext';
-import SidebarCTA, { SidebarCTAColors } from './SidebarCTA';
+import type { FlowbiteSidebarCTATheme } from './SidebarCTA';
+import SidebarCTA from './SidebarCTA';
+import type { FlowbiteSidebarItemTheme } from './SidebarItem';
 import SidebarItem from './SidebarItem';
 import SidebarItemGroup from './SidebarItemGroup';
 import SidebarItems from './SidebarItems';
+import type { FlowbiteSidebarLogoTheme } from './SidebarLogo';
 import SidebarLogo from './SidebarLogo';
 
 export interface FlowbiteSidebarTheme {
-  base: string;
-  collapsed: FlowbiteBoolean;
-  inner: string;
-  collapse: {
-    button: string;
-    icon: {
-      base: string;
-      open: FlowbiteBoolean;
-    };
-    label: {
-      base: string;
-      icon: string;
-    };
-    list: string;
-  };
-  cta: {
-    base: string;
-    color: SidebarCTAColors;
-  };
-  item: {
-    active: string;
-    base: string;
-    collapsed: {
-      insideCollapse: string;
-      noIcon: string;
-    };
-    content: {
-      base: string;
-    };
-    label: string;
-    icon: {
-      base: string;
-      active: string;
-    };
-  };
-  items: string;
-  itemGroup: string;
-  logo: {
+  root: {
     base: string;
     collapsed: FlowbiteBoolean;
-    img: string;
+    inner: string;
   };
+  collapse: FlowbiteSidebarCollapseTheme;
+  cta: FlowbiteSidebarCTATheme;
+  item: FlowbiteSidebarItemTheme;
+  items: string;
+  itemGroup: string;
+  logo: FlowbiteSidebarLogoTheme;
 }
 
-export interface SidebarProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface SidebarProps extends PropsWithChildren, ComponentProps<'div'> {
+  as?: ElementType;
   collapseBehavior?: 'collapse' | 'hide';
   collapsed?: boolean;
+  theme?: DeepPartial<FlowbiteSidebarTheme>;
 }
 
 const SidebarComponent: FC<SidebarProps> = ({
   children,
+  as: Component = 'nav',
   collapseBehavior = 'collapse',
   collapsed: isCollapsed = false,
+  theme: customTheme = {},
+  className,
   ...props
-}): JSX.Element => {
-  const theme = useTheme().theme.sidebar;
+}) => {
+  const theme = mergeDeep(useTheme().theme.sidebar, customTheme);
 
   return (
     <SidebarContext.Provider value={{ isCollapsed }}>
-      <aside
+      <Component
         aria-label="Sidebar"
-        className={classNames(theme.base, theme.collapsed[isCollapsed ? 'on' : 'off'])}
         hidden={isCollapsed && collapseBehavior === 'hide'}
+        className={classNames(theme.root.base, theme.root.collapsed[isCollapsed ? 'on' : 'off'], className)}
         {...props}
       >
-        <div className={theme.inner}>{children}</div>
-      </aside>
+        <div className={theme.root.inner}>{children}</div>
+      </Component>
     </SidebarContext.Provider>
   );
 };

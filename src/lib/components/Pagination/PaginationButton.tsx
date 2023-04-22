@@ -1,16 +1,32 @@
 import classNames from 'classnames';
-import { ReactEventHandler, ReactNode } from 'react';
+import type { ComponentProps, FC, ReactEventHandler, ReactNode } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 
-export type PaginationButtonProps = {
+export interface FlowbitePaginationButtonTheme {
+  base: string;
+  active: string;
+}
+
+export interface PaginationButtonProps extends ComponentProps<'button'> {
   active?: boolean;
   children?: ReactNode;
-  onClick?: ReactEventHandler<HTMLButtonElement>;
   className?: string;
-};
+  onClick?: ReactEventHandler<HTMLButtonElement>;
+  theme?: DeepPartial<FlowbitePaginationButtonTheme>;
+}
 
-const PaginationButton = ({ active, onClick, children, className }: PaginationButtonProps) => {
-  const theme = useTheme().theme.pagination;
+const PaginationButton: FC<PaginationButtonProps> = ({
+  active,
+  children,
+  className,
+  onClick,
+  theme: customTheme = {},
+  ...props
+}) => {
+  const theme = mergeDeep(useTheme().theme.pagination, customTheme);
+
   return (
     <button
       className={classNames(
@@ -20,10 +36,12 @@ const PaginationButton = ({ active, onClick, children, className }: PaginationBu
         className,
       )}
       onClick={onClick}
+      {...props}
     >
       {children}
     </button>
   );
 };
 
+PaginationButton.displayName = 'Pagination.Button';
 export default PaginationButton;

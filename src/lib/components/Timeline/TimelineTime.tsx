@@ -1,17 +1,22 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
 
-export type TimelineTimeProps = PropsWithChildren<
-  ComponentProps<'time'> & {
-    className?: string;
-  }
->;
+export interface FlowbiteTimelineTimeTheme {
+  time: string;
+}
 
-export const TimelineTime: FC<TimelineTimeProps> = ({ children, className, ...props }) => {
-  const theme = useTheme().theme.timeline.item.content;
+export interface TimelineTimeProps extends PropsWithChildren, ComponentProps<'time'> {
+  theme?: DeepPartial<FlowbiteTimelineTimeTheme>;
+}
+
+export const TimelineTime: FC<TimelineTimeProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
+  const theme = mergeDeep(useTheme().theme.timeline.item.content, customTheme).time;
+
   return (
-    <time className={classNames(theme.time, className)} {...props}>
+    <time className={classNames(theme, className)} {...props}>
       {children}
     </time>
   );

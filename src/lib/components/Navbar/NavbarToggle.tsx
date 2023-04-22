@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
 import { GoThreeBars } from 'react-icons/go';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useNavbarContext } from './NavbarContext';
@@ -18,27 +18,26 @@ export interface NavbarToggleProps extends ComponentProps<'button'> {
 
 export const NavbarToggle: FC<NavbarToggleProps> = ({
   barIcon: BarIcon = GoThreeBars,
-  theme: customTheme = {},
   className,
+  theme: customTheme = {},
   ...props
 }) => {
   const { isOpen, setIsOpen } = useNavbarContext();
+  const theme = mergeDeep(useTheme().theme.navbar.toggle, customTheme);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
 
-  const theme = mergeDeep(useTheme().theme.navbar.toggle, customTheme);
-
   return (
     <button
-      className={classNames(theme.base, className)}
       data-testid="flowbite-navbar-toggle"
       onClick={handleClick}
+      className={classNames(theme.base, className)}
       {...props}
     >
       <span className="sr-only">Open main menu</span>
-      <BarIcon className={theme.icon} />
+      <BarIcon aria-hidden className={theme.icon} />
     </button>
   );
 };

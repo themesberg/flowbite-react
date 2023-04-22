@@ -1,6 +1,1 @@
-*.md
-.gitignore
-build/
-coverage/
-lib/
-docs/
+cypress.config.ts

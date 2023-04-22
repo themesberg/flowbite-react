@@ -7,7 +7,7 @@ export default {
   component: Card,
   decorators: [
     (Story): JSX.Element => (
-      <div className="w-1/2 h-1/2">
+      <div className="h-1/2 w-1/2">
         <Story />
       </div>
     ),

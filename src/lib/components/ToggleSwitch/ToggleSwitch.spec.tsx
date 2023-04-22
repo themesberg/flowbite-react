@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FC, useState } from 'react';
+import type { FC } from 'react';
+import { useState } from 'react';
 import { describe, expect, it, vi } from 'vitest';
+import { Flowbite } from '../Flowbite';
 import { TextInput } from '../TextInput';
 import { ToggleSwitch } from './ToggleSwitch';
 
@@ -127,6 +129,94 @@ describe('Components / Toggle switch', () => {
       expect(toggleSwitch()).toHaveAttribute('type', 'submit');
     });
   });
+
+  describe('Theme', () => {
+    it('should use `base` classes', () => {
+      const theme = {
+        toggleSwitch: {
+          root: {
+            base: 'text-blue-100',
+          },
+        },
+      };
+      render(
+        <Flowbite theme={{ theme }}>
+          <ToggleSwitch checked={false} label="Enable" onChange={console.log} type="submit" />
+        </Flowbite>,
+      );
+
+      expect(toggleSwitch()).toHaveClass('text-blue-100');
+    });
+
+    it('should use `active` classes', () => {
+      const theme = {
+        toggleSwitch: {
+          root: {
+            active: {
+              off: 'text-blue-200',
+              on: 'text-blue-300',
+            },
+          },
+        },
+      };
+      render(
+        <Flowbite theme={{ theme }}>
+          <ToggleSwitch checked={false} label="Enable" onChange={console.log} type="submit" />
+          <ToggleSwitch disabled checked={false} label="Enable" onChange={console.log} type="submit" />
+        </Flowbite>,
+      );
+      const activeToggleSwitch = toggleSwitches()[0];
+      const disabledToggleSwitch = toggleSwitches()[1];
+
+      expect(activeToggleSwitch).toHaveClass('text-blue-300');
+      expect(disabledToggleSwitch).toHaveClass('text-blue-200');
+    });
+
+    it('should use `label` classes', () => {
+      const theme = {
+        toggleSwitch: {
+          root: {
+            label: 'test-label',
+          },
+        },
+      };
+      render(
+        <Flowbite theme={{ theme }}>
+          <ToggleSwitch checked={false} label="Enable" onChange={console.log} type="submit" />
+        </Flowbite>,
+      );
+
+      expect(label()).toHaveClass('test-label');
+    });
+
+    it('should use `toggle` classes', () => {
+      const theme = {
+        toggleSwitch: {
+          toggle: {
+            base: 'h-6 w-11',
+            checked: {
+              color: {
+                blue: 'bg-pink-700',
+              },
+            },
+          },
+        },
+      };
+      render(
+        <Flowbite theme={{ theme }}>
+          <ToggleSwitch checked label="Enable" onChange={console.log} type="submit" />
+        </Flowbite>,
+      );
+
+      expect(toggle()).toHaveClass('h-6 w-11 bg-pink-700');
+    });
+  });
 });
 
 const toggleSwitch = () => screen.getByRole('switch');
+
+const toggleSwitches = () => screen.getAllByRole('switch');
+
+const label = () => screen.getByTestId('flowbite-toggleswitch-label');
+
+const toggle = () => screen.getByTestId('flowbite-toggleswitch-toggle');

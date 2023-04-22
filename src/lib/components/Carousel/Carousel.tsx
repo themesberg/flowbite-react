@@ -3,33 +3,45 @@ import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } f
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import windowExists from '../../helpers/window-exists';
+import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteCarouselTheme {
+  root: FlowbiteCarouselRootTheme;
+  indicators: FlowbiteCarouselIndicatorsTheme;
+  item: FlowbiteCarouselItemTheme;
+  control: FlowbiteCarouselControlTheme;
+  scrollContainer: FlowbiteCarouselScrollContainer;
+}
+
+export interface FlowbiteCarouselRootTheme {
   base: string;
-  indicators: {
-    active: {
-      off: string;
-      on: string;
-    };
-    base: string;
-    wrapper: string;
-  };
-  item: {
-    base: string;
-    wrapper: string;
-  };
-  control: {
-    base: string;
-    icon: string;
-  };
   leftControl: string;
   rightControl: string;
-  scrollContainer: {
-    base: string;
-    snap: string;
-  };
+}
+
+export interface FlowbiteCarouselIndicatorsTheme {
+  active: FlowbiteBoolean;
+  base: string;
+  wrapper: string;
+}
+
+export interface FlowbiteCarouselItemTheme {
+  base: string;
+  wrapper: string;
+}
+
+export interface FlowbiteCarouselControlTheme {
+  base: string;
+  icon: string;
+}
+
+export interface FlowbiteCarouselScrollContainer {
+  base: string;
+  snap: string;
 }
 
 export interface CarouselProps extends PropsWithChildren<ComponentProps<'div'>> {
@@ -38,6 +50,7 @@ export interface CarouselProps extends PropsWithChildren<ComponentProps<'div'>> 
   rightControl?: ReactNode;
   slide?: boolean;
   slideInterval?: number;
+  theme?: DeepPartial<FlowbiteCarouselTheme>;
 }
 
 export const Carousel: FC<CarouselProps> = ({
@@ -48,14 +61,15 @@ export const Carousel: FC<CarouselProps> = ({
   slide = true,
   slideInterval,
   className,
+  theme: customTheme = {},
   ...props
-}): JSX.Element => {
-  const isDeviceMobile = windowExists() && navigator.userAgent.indexOf('IEMobile') !== -1;
+}) => {
+  const theme = mergeDeep(useTheme().theme.carousel, customTheme);
 
+  const isDeviceMobile = windowExists() && navigator.userAgent.indexOf('IEMobile') !== -1;
   const carouselContainer = useRef<HTMLDivElement>(null);
   const [activeItem, setActiveItem] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const theme = useTheme().theme.carousel;
 
   const items = useMemo(
     () =>
@@ -96,7 +110,7 @@ export const Carousel: FC<CarouselProps> = ({
   const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
 
   return (
-    <div className={classNames(theme.base, className)} data-testid="carousel" {...props}>
+    <div className={classNames(theme.root.base, className)} data-testid="carousel" {...props}>
       <ScrollContainer
         className={classNames(
           theme.scrollContainer.base,
@@ -108,40 +122,36 @@ export const Carousel: FC<CarouselProps> = ({
         onStartScroll={handleDragging(true)}
         vertical={false}
       >
-        {items?.map(
-          (item, index): JSX.Element => (
-            <div
-              key={index}
-              className={theme.item.wrapper}
-              data-active={activeItem === index}
-              data-testid="carousel-item"
-            >
-              {item}
-            </div>
-          ),
-        )}
+        {items?.map((item, index) => (
+          <div
+            key={index}
+            className={theme.item.wrapper}
+            data-active={activeItem === index}
+            data-testid="carousel-item"
+          >
+            {item}
+          </div>
+        ))}
       </ScrollContainer>
       {indicators && (
         <div className={theme.indicators.wrapper}>
-          {items?.map(
-            (_, index): JSX.Element => (
-              <button
-                key={index}
-                className={classNames(
-                  theme.indicators.base,
-                  theme.indicators.active[index === activeItem ? 'on' : 'off'],
-                )}
-                onClick={navigateTo(index)}
-                data-testid="carousel-indicator"
-              />
-            ),
-          )}
+          {items?.map((_, index) => (
+            <button
+              key={index}
+              className={classNames(
+                theme.indicators.base,
+                theme.indicators.active[index === activeItem ? 'on' : 'off'],
+              )}
+              onClick={navigateTo(index)}
+              data-testid="carousel-indicator"
+            />
+          ))}
         </div>
       )}
 
       {items && (
         <>
-          <div className={theme.leftControl}>
+          <div className={theme.root.leftControl}>
             <button
               className="group"
               data-testid="carousel-left-control"
@@ -151,7 +161,7 @@ export const Carousel: FC<CarouselProps> = ({
               {leftControl ? leftControl : <DefaultLeftControl />}
             </button>
           </div>
-          <div className={theme.rightControl}>
+          <div className={theme.root.rightControl}>
             <button
               className="group"
               data-testid="carousel-right-control"

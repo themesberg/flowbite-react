@@ -1,67 +1,51 @@
 import classNames from 'classnames';
-import type { FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
 import { TimelineBody } from './TimelineBody';
 import { TimelineContent } from './TimelineContent';
 import { TimelineContext } from './TimelineContext';
+import type { FlowbiteTimelineItemTheme } from './TimelineItem';
 import { TimelineItem } from './TimelineItem';
 import { TimelinePoint } from './TimelinePoint';
 import { TimelineTime } from './TimelineTime';
 import { TimelineTitle } from './TimelineTitle';
 
 export interface FlowbiteTimelineTheme {
-  direction: {
-    horizontal: string;
-    vertical: string;
-  };
-  item: {
-    base: {
+  root: {
+    direction: {
       horizontal: string;
       vertical: string;
     };
-    point: {
-      base: {
-        horizontal: string;
-        vertical: string;
-      };
-      marker: {
-        base: {
-          horizontal: string;
-          vertical: string;
-        };
-        icon: {
-          wrapper: string;
-          base: string;
-        };
-      };
-      line: string;
-    };
-    content: {
-      base: string;
-      time: string;
-      title: string;
-      body: string;
-    };
   };
+  item: FlowbiteTimelineItemTheme;
 }
 
-export type TimelineProps = PropsWithChildren<{
-  className?: string;
+export interface TimelineProps extends PropsWithChildren, ComponentProps<'ol'> {
   horizontal?: boolean;
-}>;
+  theme?: DeepPartial<FlowbiteTimelineTheme>;
+}
 
-const TimelineComponent: FC<TimelineProps> = ({ children, horizontal, className }) => {
-  const theme = useTheme().theme.timeline;
+const TimelineComponent: FC<TimelineProps> = ({
+  children,
+  className,
+  horizontal,
+  theme: customTheme = {},
+  ...props
+}) => {
+  const theme = mergeDeep(useTheme().theme.timeline, customTheme);
 
   return (
     <TimelineContext.Provider value={{ horizontal }}>
       <ol
         data-testid="timeline-component"
         className={classNames(
-          horizontal && theme.direction.horizontal,
-          !horizontal && theme.direction.vertical,
+          horizontal && theme.root.direction.horizontal,
+          !horizontal && theme.root.direction.vertical,
           className,
         )}
+        {...props}
       >
         {children}
       </ol>
