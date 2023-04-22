@@ -11,6 +11,7 @@ import type { FlowbiteFooterDividerTheme } from './FooterDivider';
 import { FooterDivider } from './FooterDivider';
 import type { FlowbiteFooterIconTheme } from './FooterIcon';
 import { FooterIcon } from './FooterIcon';
+import type { FlowbiteFooterLinkTheme } from './FooterLink';
 import { FooterLink } from './FooterLink';
 import type { FlowbiteFooterLinkGroupTheme } from './FooterLinkGroup';
 import { FooterLinkGroup } from './FooterLinkGroup';
@@ -23,6 +24,7 @@ export interface FlowbiteFooterTheme {
   divider: FlowbiteFooterDividerTheme;
   groupLink: FlowbiteFooterLinkGroupTheme;
   icon: FlowbiteFooterIconTheme;
+  link: FlowbiteFooterLinkTheme;
   root: FlowbiteFooterRootTheme;
   title: FlowbiteFooterTitleTheme;
 }
