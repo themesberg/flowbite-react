@@ -16,6 +16,7 @@ import {
   HiDeviceTablet,
   HiDuplicate,
   HiHome,
+  HiLogout,
   HiMinus,
   HiOutlineChevronDoubleRight,
   HiOutlineClock,
@@ -35,6 +36,7 @@ import ButtonsPage from './pages/ButtonsPage';
 import CardPage from './pages/CardPage';
 import CarouselPage from './pages/CarouselPage';
 import DashboardPage from './pages/DashboardPage';
+import DrawerPage from './pages/DrawerPage';
 import DropdownPage from './pages/DropdownPage';
 import FooterPage from './pages/FooterPage';
 import FormsPage from './pages/FormsPage';
@@ -227,6 +229,17 @@ export const routes: RouteProps[] = [
     card: {
       className: 'w-36',
       images: { light: 'modal-light.svg', dark: 'modal-dark.svg' },
+    },
+  },
+  {
+    title: 'Drawer',
+    icon: HiLogout,
+    href: '/drawer',
+    component: <DrawerPage />,
+    group: false,
+    card: {
+      className: 'w-36',
+      images: { light: 'drawer-light.svg', dark: 'drawer-dark.svg' },
     },
   },
   {

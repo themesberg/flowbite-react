@@ -8,6 +8,7 @@ export * from './Card';
 export * from './Carousel';
 export * from './Checkbox';
 export * from './DarkThemeToggle/DarkThemeToggle';
+export * from './Drawer';
 export * from './Dropdown';
 export * from './FileInput';
 export * from './Flowbite';

@@ -9,6 +9,7 @@ import type { FlowbiteCardTheme } from '../Card';
 import type { FlowbiteCarouselTheme } from '../Carousel';
 import type { FlowbiteCheckboxTheme } from '../Checkbox';
 import type { FlowbiteDarkThemeToggleTheme } from '../DarkThemeToggle';
+import type { FlowbiteDrawerTheme } from '../Drawer';
 import type { FlowbiteDropdownTheme } from '../Dropdown';
 import type { FlowbiteFileInputTheme } from '../FileInput';
 import type { FlowbiteFooterTheme } from '../Footer';
@@ -50,6 +51,7 @@ export interface FlowbiteTheme {
   footer: FlowbiteFooterTheme;
   listGroup: FlowbiteListGroupTheme;
   modal: FlowbiteModalTheme;
+  drawer: FlowbiteDrawerTheme;
   navbar: FlowbiteNavbarTheme;
   rating: FlowbiteRatingTheme;
   pagination: FlowbitePaginationTheme;
@@ -134,6 +136,18 @@ export interface FlowbitePositions {
   'center-left': string;
   center: string;
   'center-right': string;
+}
+
+export interface FlowbitePlacementsOnOff {
+  on: string;
+  off: string;
+}
+
+export interface FlowbitePlacements {
+  left: FlowbitePlacementsOnOff;
+  right: FlowbitePlacementsOnOff;
+  top: FlowbitePlacementsOnOff;
+  bottom: FlowbitePlacementsOnOff;
 }
 
 export interface FlowbiteSizes {
