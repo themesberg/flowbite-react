@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, MouseEvent, PropsWithChildren } from 'react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
@@ -70,23 +70,14 @@ const ModalComponent: FC<ModalProps> = ({
 }) => {
   const theme = mergeDeep(useTheme().theme.modal, customTheme);
 
+  const [mounted, setMounted] = useState(false);
+
   // Declare a ref to store a reference to a div element.
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  // If the current value of the ref is falsy (e.g. null), set it to a new div
-  // element.
-  if (!containerRef.current) {
-    containerRef.current = document.createElement('div');
-  }
-
-  // If the current value of the ref is not already a child of the root element,
-  // append it or replace its parent.
-  if (containerRef.current.parentNode !== root && windowExists()) {
-    root = root || document.body;
-    root.appendChild(containerRef.current);
-  }
-
   useEffect(() => {
+    setMounted(true);
+
     return () => {
       const container = containerRef.current;
 
@@ -104,6 +95,26 @@ const ModalComponent: FC<ModalProps> = ({
       onClose();
     }
   });
+
+  if (!mounted) {
+    return null;
+  }
+
+  // If the current value of the ref is falsy (e.g. null), set it to a new div
+  // element.
+  if (!containerRef.current) {
+    containerRef.current = document.createElement('div');
+  }
+
+  // If the current value of the ref is not already a child of the root element,
+  // append it or replace its parent.
+  if (containerRef.current.parentNode !== root && windowExists()) {
+    root ||= document.body;
+    root.appendChild(containerRef.current);
+
+    // Prevent scrolling of the root element when the modal is shown
+    root.style.overflow = show ? 'hidden' : 'auto';
+  }
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
     if (dismissible && e.target === e.currentTarget && onClose) {

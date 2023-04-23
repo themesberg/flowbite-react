@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { ComponentProps, FC } from 'react';
+import type { ComponentProps, FC, MouseEvent } from 'react';
 import { HiX } from 'react-icons/hi';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
@@ -18,6 +18,7 @@ export interface ToastToggleProps extends ComponentProps<'button'> {
 
 export const ToastToggle: FC<ToastToggleProps> = ({
   className,
+  onClick,
   theme: customTheme = {},
   xIcon: XIcon = HiX,
   ...props
@@ -25,7 +26,8 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   const theme = mergeDeep(useTheme().theme.toast.toggle, customTheme);
   const { duration, isClosed, isRemoved, setIsClosed, setIsRemoved } = useToastContext();
 
-  const handleClick = () => {
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    if (onClick) onClick(e);
     setIsClosed(!isClosed);
     setTimeout(() => setIsRemoved(!isRemoved), duration);
   };
