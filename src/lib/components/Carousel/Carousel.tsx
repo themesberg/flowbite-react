@@ -144,6 +144,7 @@ export const Carousel: FC<CarouselProps> = ({
               )}
               onClick={navigateTo(index)}
               data-testid="carousel-indicator"
+              aria-label={`Slide ${index + 1}`}
             />
           ))}
         </div>
@@ -157,6 +158,7 @@ export const Carousel: FC<CarouselProps> = ({
               data-testid="carousel-left-control"
               onClick={navigateTo(activeItem - 1)}
               type="button"
+              aria-label="Previous slide"
             >
               {leftControl ? leftControl : <DefaultLeftControl />}
             </button>
@@ -167,6 +169,7 @@ export const Carousel: FC<CarouselProps> = ({
               data-testid="carousel-right-control"
               onClick={navigateTo(activeItem + 1)}
               type="button"
+              aria-label="Next slide"
             >
               {rightControl ? rightControl : <DefaultRightControl />}
             </button>
