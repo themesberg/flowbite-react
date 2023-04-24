@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.4](https://github.com/themesberg/flowbite-react/compare/v0.4.1...v0.4.4) (2023-04-24)
+
+
+### Features
+
+* **/src/components/avatar:** allow custom sizes for `placeholderInitials` ([#659](https://github.com/themesberg/flowbite-react/issues/659)) ([#660](https://github.com/themesberg/flowbite-react/issues/660)) ([525b90d](https://github.com/themesberg/flowbite-react/commit/525b90dfd374f38e1c0a8527fcb92eabc849c186))
+* **/src/components/progress:** fix unclear label usage ([#468](https://github.com/themesberg/flowbite-react/issues/468)) ([#547](https://github.com/themesberg/flowbite-react/issues/547)) ([f9cad02](https://github.com/themesberg/flowbite-react/commit/f9cad02d6d9b0f699c420167ccb0e373913ef1ce))
+* **sidebar:** Allow to customize the Sidebar component with 'as' ([#703](https://github.com/themesberg/flowbite-react/issues/703)) ([54fc3c2](https://github.com/themesberg/flowbite-react/commit/54fc3c2046f45698542bb14fb95af467eafffa99))
+* **Toast:** add onClick prop to Toast.Toggle ([#607](https://github.com/themesberg/flowbite-react/issues/607)) ([#666](https://github.com/themesberg/flowbite-react/issues/666)) ([9be39d0](https://github.com/themesberg/flowbite-react/commit/9be39d0f4c2f8da9bdd54003d9a6f2d983d16345))
+
+
+### Bug Fixes
+
+* **/lib/components/table:** prevent scrollbars around `<Table>`s ([#608](https://github.com/themesberg/flowbite-react/issues/608)) ([6f1869b](https://github.com/themesberg/flowbite-react/commit/6f1869bac86c1dcbda622413a197f67536803f53))
+* **/src/lib/components/*:** add `displayName` to Forms components ([#656](https://github.com/themesberg/flowbite-react/issues/656)) ([329cb5a](https://github.com/themesberg/flowbite-react/commit/329cb5ad6383244f38e11cac57050dc684d6c3c5)), closes [#641](https://github.com/themesberg/flowbite-react/issues/641)
+* **/src/lib/components/*:** allow `theme={}` to contain partials ([#649](https://github.com/themesberg/flowbite-react/issues/649)) ([863a789](https://github.com/themesberg/flowbite-react/commit/863a789ed169cbfcbe05d5de7e9021a074872063)), closes [#646](https://github.com/themesberg/flowbite-react/issues/646)
+* **/src/lib/components/Flowbite:** fix `window is not defined` in `next.js` ([#652](https://github.com/themesberg/flowbite-react/issues/652)) ([8fd9ddc](https://github.com/themesberg/flowbite-react/commit/8fd9ddcc5fcd8d5926c0e871dd25493d5d2c255f))
+* **/src/theme:** fix `<Modal>` vertical positioning ([#658](https://github.com/themesberg/flowbite-react/issues/658)) ([5fec3ca](https://github.com/themesberg/flowbite-react/commit/5fec3ca0710b1883a4de622453c896346c8ab8c0)), closes [#601](https://github.com/themesberg/flowbite-react/issues/601)
+* added aria-label to solve Buttons do not have an accessible name… ([#711](https://github.com/themesberg/flowbite-react/issues/711)) ([65b0aef](https://github.com/themesberg/flowbite-react/commit/65b0aef13143d5efc0bb00bd2ab221573ec4c2ef))
+* **button:** fixes outline button ([#654](https://github.com/themesberg/flowbite-react/issues/654)) ([eab6bbb](https://github.com/themesberg/flowbite-react/commit/eab6bbb6f78b46fb298e75344442b75f028d5cff))
+* **component/models:** prevent scrolling of body when modal is shown ([#700](https://github.com/themesberg/flowbite-react/issues/700)) ([ab6e96a](https://github.com/themesberg/flowbite-react/commit/ab6e96a58bc5b39b0b80cdc898c634f9fbab7462)), closes [#604](https://github.com/themesberg/flowbite-react/issues/604)
+* **component/progressbar:**  fix progressbar showing label when progress == 0 ([#698](https://github.com/themesberg/flowbite-react/issues/698)) ([1fa7542](https://github.com/themesberg/flowbite-react/commit/1fa7542c687fc164f1cdbd6362fd35ac978942f1)), closes [#668](https://github.com/themesberg/flowbite-react/issues/668)
+* **components/accordion:** allow opened panel to be closed [#684](https://github.com/themesberg/flowbite-react/issues/684) - add accordion tests ([#705](https://github.com/themesberg/flowbite-react/issues/705)) ([7de751e](https://github.com/themesberg/flowbite-react/commit/7de751e4a80b144edd7f3fdc7eaa4ca2ea655dad)), closes [#618](https://github.com/themesberg/flowbite-react/issues/618)
+* group list styling ([#668](https://github.com/themesberg/flowbite-react/issues/668)) ([a4f39f5](https://github.com/themesberg/flowbite-react/commit/a4f39f5608a46f6c0d4661fa383e70583ab7d592))
+* **lib/components/buttons:** Add `target` to `Button` props to open a link in new tab ([#631](https://github.com/themesberg/flowbite-react/issues/631)) ([ed74d13](https://github.com/themesberg/flowbite-react/commit/ed74d1361d03fd01f5eac2b3ca8faa382718afba))
+* **sidebar:** adds missing className ([#657](https://github.com/themesberg/flowbite-react/issues/657)) ([12fce11](https://github.com/themesberg/flowbite-react/commit/12fce11aad6bb0d2ca5058ce9fffee629038e542))
+* **tabs:** remove tab auto focus ([#712](https://github.com/themesberg/flowbite-react/issues/712)) ([6942943](https://github.com/themesberg/flowbite-react/commit/6942943639025a7310606af7fa6c2ffa68755d84)), closes [#612](https://github.com/themesberg/flowbite-react/issues/612) [#612](https://github.com/themesberg/flowbite-react/issues/612)
+
 ### [0.4.3](https://github.com/themesberg/flowbite-react/compare/v0.4.2...v0.4.3) (2023-04-05)
 
 
