@@ -1,5 +1,5 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
-import React, { Children, useMemo, useState } from 'react';
+import React, { Children, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import { uuid } from '../../helpers/uuid';
 import type { ButtonProps } from '../Button';
@@ -35,6 +35,10 @@ export interface DropdownProps extends PropsWithChildren<Pick<FloatingProps, 'pl
   dismissOnClick?: boolean;
 }
 
+export interface TriggerWrapperProps extends ButtonProps {
+  getWidth?: (width: number) => void;
+}
+
 const icons: Record<string, FC<ComponentProps<'svg'>>> = {
   top: HiOutlineChevronUp,
   right: HiOutlineChevronRight,
@@ -61,6 +65,7 @@ const DropdownComponent: FC<DropdownProps> = ({ children, className, dismissOnCl
   }, [placement]);
 
   const [closeRequestKey, setCloseRequestKey] = useState<string | undefined>(undefined);
+  const [buttonWidth, setButtonWidth] = useState<number | undefined>(undefined);
 
   // Extends DropdownItem's onClick to trigger a close request to the Floating component
   const attachCloseListener: any = (node: ReactNode) => {
@@ -86,8 +91,25 @@ const DropdownComponent: FC<DropdownProps> = ({ children, className, dismissOnCl
     [children, theme],
   );
 
-  const TriggerWrapper: FC<ButtonProps> = ({ children }): JSX.Element =>
-    inline ? <button className={theme.inlineWrapper}>{children}</button> : <Button {...buttonProps}>{children}</Button>;
+  const TriggerWrapper: FC<TriggerWrapperProps> = ({ children, getWidth }): JSX.Element => {
+    const inlineRef = useRef<HTMLButtonElement | null>(null);
+    const ref = useRef<HTMLButtonElement | HTMLAnchorElement | null>(null);
+
+    useEffect(() => {
+      if (ref.current) getWidth?.(ref.current.clientWidth);
+      else if (inlineRef.current) getWidth?.(inlineRef.current.offsetWidth);
+    }, [ref]);
+
+    return inline ? (
+      <button ref={inlineRef} className={theme.inlineWrapper}>
+        {children}
+      </button>
+    ) : (
+      <Button ref={ref} {...buttonProps}>
+        {children}
+      </Button>
+    );
+  };
 
   return (
     <Floating
@@ -100,8 +122,9 @@ const DropdownComponent: FC<DropdownProps> = ({ children, className, dismissOnCl
       theme={theme.floating}
       closeRequestKey={closeRequestKey}
       className={className}
+      minWidth={buttonWidth}
     >
-      <TriggerWrapper>
+      <TriggerWrapper getWidth={setButtonWidth}>
         {label}
         {arrowIcon && <Icon className={theme.arrowIcon} />}
       </TriggerWrapper>

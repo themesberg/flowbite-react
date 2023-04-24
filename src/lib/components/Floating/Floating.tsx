@@ -45,6 +45,7 @@ export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'di
   animation?: false | `duration-${number}`;
   arrow?: boolean;
   closeRequestKey?: string;
+  minWidth?: number;
 }
 
 /**
@@ -61,6 +62,7 @@ export const Floating: FC<FloatingProps> = ({
   trigger = 'hover',
   closeRequestKey,
   className,
+  minWidth,
   ...props
 }) => {
   const arrowRef = useRef<HTMLDivElement>(null);
@@ -124,6 +126,7 @@ export const Floating: FC<FloatingProps> = ({
             position: strategy,
             top: y ?? ' ',
             left: x ?? ' ',
+            minWidth,
           },
           ...props,
         })}
