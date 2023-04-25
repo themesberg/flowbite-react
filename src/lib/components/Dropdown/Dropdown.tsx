@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
-import React, { Children, useCallback, useMemo, useState } from 'react';
+import type { ComponentProps, Dispatch, FC, PropsWithChildren, ReactElement, ReactNode, SetStateAction } from 'react';
+import React, { Children, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
@@ -43,6 +44,10 @@ export interface DropdownProps
   theme?: DeepPartial<FlowbiteDropdownTheme>;
 }
 
+export interface TriggerWrapperProps extends ButtonProps {
+  setButtonWidth?: Dispatch<SetStateAction<number | undefined>>;
+}
+
 const icons: Record<string, FC<ComponentProps<'svg'>>> = {
   top: HiOutlineChevronUp,
   right: HiOutlineChevronRight,
@@ -75,6 +80,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   }, [placement]);
 
   const [closeRequestKey, setCloseRequestKey] = useState<string | undefined>(undefined);
+  const [buttonWidth, setButtonWidth] = useState<number | undefined>(undefined);
 
   // Extends DropdownItem's onClick to trigger a close request to the Floating component
   const attachCloseListener = useCallback(
@@ -105,8 +111,23 @@ const DropdownComponent: FC<DropdownProps> = ({
     [attachCloseListener, children, theme.content],
   );
 
-  const TriggerWrapper: FC<ButtonProps> = ({ children }) =>
-    inline ? <button className={theme.inlineWrapper}>{children}</button> : <Button {...buttonProps}>{children}</Button>;
+  const TriggerWrapper: FC<TriggerWrapperProps> = ({ children, setButtonWidth }): JSX.Element => {
+    const ref = useRef<HTMLButtonElement | null>(null);
+
+    useEffect(() => {
+      if (ref.current) setButtonWidth?.(ref.current.clientWidth);
+    }, [ref]);
+
+    return inline ? (
+      <button ref={ref} className={theme.inlineWrapper}>
+        {children}
+      </button>
+    ) : (
+      <Button ref={ref} {...buttonProps}>
+        {children}
+      </Button>
+    );
+  };
 
   return (
     <Floating
@@ -119,8 +140,9 @@ const DropdownComponent: FC<DropdownProps> = ({
       theme={theme.floating}
       closeRequestKey={closeRequestKey}
       className={className}
+      minWidth={buttonWidth}
     >
-      <TriggerWrapper>
+      <TriggerWrapper setButtonWidth={setButtonWidth}>
         {label}
         {arrowIcon && <Icon className={theme.arrowIcon} />}
       </TriggerWrapper>
