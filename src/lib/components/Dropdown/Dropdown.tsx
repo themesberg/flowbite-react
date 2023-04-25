@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { ComponentProps, Dispatch, FC, PropsWithChildren, ReactElement, ReactNode, SetStateAction } from 'react';
 import React, { Children, useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -115,7 +116,6 @@ const DropdownComponent: FC<DropdownProps> = ({
 
     useEffect(() => {
       if (ref.current) setButtonWidth?.(ref.current.clientWidth);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ref]);
 
     return inline ? (
