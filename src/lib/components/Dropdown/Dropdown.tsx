@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
+import type { ComponentProps, Dispatch, FC, PropsWithChildren, ReactElement, ReactNode, SetStateAction } from 'react';
 import React, { Children, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import { uuid } from '../../helpers/uuid';
@@ -36,7 +36,7 @@ export interface DropdownProps extends PropsWithChildren<Pick<FloatingProps, 'pl
 }
 
 export interface TriggerWrapperProps extends ButtonProps {
-  getWidth?: (width: number) => void;
+  setButtonWidth?: Dispatch<SetStateAction<number | undefined>>;
 }
 
 const icons: Record<string, FC<ComponentProps<'svg'>>> = {
@@ -91,17 +91,15 @@ const DropdownComponent: FC<DropdownProps> = ({ children, className, dismissOnCl
     [children, theme],
   );
 
-  const TriggerWrapper: FC<TriggerWrapperProps> = ({ children, getWidth }): JSX.Element => {
-    const inlineRef = useRef<HTMLButtonElement | null>(null);
-    const ref = useRef<HTMLButtonElement | HTMLAnchorElement | null>(null);
+  const TriggerWrapper: FC<TriggerWrapperProps> = ({ children, setButtonWidth }): JSX.Element => {
+    const ref = useRef<HTMLButtonElement | null>(null);
 
     useEffect(() => {
-      if (ref.current) getWidth?.(ref.current.clientWidth);
-      else if (inlineRef.current) getWidth?.(inlineRef.current.offsetWidth);
+      if (ref.current) setButtonWidth?.(ref.current.clientWidth);
     }, [ref]);
 
     return inline ? (
-      <button ref={inlineRef} className={theme.inlineWrapper}>
+      <button ref={ref} className={theme.inlineWrapper}>
         {children}
       </button>
     ) : (
@@ -124,7 +122,7 @@ const DropdownComponent: FC<DropdownProps> = ({ children, className, dismissOnCl
       className={className}
       minWidth={buttonWidth}
     >
-      <TriggerWrapper getWidth={setButtonWidth}>
+      <TriggerWrapper setButtonWidth={setButtonWidth}>
         {label}
         {arrowIcon && <Icon className={theme.arrowIcon} />}
       </TriggerWrapper>
