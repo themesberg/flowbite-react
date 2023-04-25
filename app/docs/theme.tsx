@@ -97,7 +97,7 @@ const FlowbiteCustomizationOptionsTable: FC = () => {
 const BenefitsAndDrawbacks: FC = () => {
   return (
     <div>
-      <h3 className="mt-6 mb-3 text-lg font-bold">
+      <h3 className="mb-3 mt-6 text-lg font-bold">
         Benefits &amp; drawbacks of <strong>custom themes</strong>
       </h3>
       <ul className="list-none [&>li]:mb-2">
@@ -115,7 +115,7 @@ const BenefitsAndDrawbacks: FC = () => {
         </Benefit>
         <Drawback>Customizations can quickly become complex and hard to maintain in one large JSON file</Drawback>
       </ul>
-      <h3 className="mt-6 mb-3 text-lg font-bold">
+      <h3 className="mb-3 mt-6 text-lg font-bold">
         Benefits &amp; drawbacks of&nbsp;
         <strong>custom components with className=&#123;&#125;</strong>
       </h3>
@@ -133,7 +133,7 @@ const BenefitsAndDrawbacks: FC = () => {
           component of your own
         </Drawback>
       </ul>
-      <h3 className="mt-6 mb-3 text-lg font-bold">
+      <h3 className="mb-3 mt-6 text-lg font-bold">
         Benefits &amp; drawbacks of&nbsp;
         <strong>custom components with theme=&#123;&#125;</strong>
       </h3>

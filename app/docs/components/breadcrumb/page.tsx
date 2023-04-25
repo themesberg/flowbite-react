@@ -17,7 +17,7 @@ const BreadcrumbPage: FC = () => (
       </Breadcrumb>
     </CodePreview>
     <CodePreview title="Solid background">
-      <Breadcrumb aria-label="Solid background breadcrumb example" className="bg-gray-50 py-3 px-5 dark:bg-gray-900">
+      <Breadcrumb aria-label="Solid background breadcrumb example" className="bg-gray-50 px-5 py-3 dark:bg-gray-900">
         <Breadcrumb.Item href="#" icon={HiHome}>
           Home
         </Breadcrumb.Item>
