@@ -42,12 +42,12 @@ export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'di
   animation?: false | `duration-${number}`;
   arrow?: boolean;
   closeRequestKey?: string;
-  minWidth?: number;
   content: ReactNode;
   placement?: 'auto' | Placement;
   style?: 'dark' | 'light' | 'auto';
   theme: FlowbiteFloatingTheme;
   trigger?: 'hover' | 'click';
+  minWidth?: number;
 }
 
 /**
@@ -64,8 +64,6 @@ export const Floating: FC<FloatingProps> = ({
   style = 'dark',
   theme,
   trigger = 'hover',
-  closeRequestKey,
-  className,
   minWidth,
   ...props
 }) => {
