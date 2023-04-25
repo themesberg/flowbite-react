@@ -1,9 +1,10 @@
+'use client';
+
 import type { FC, SetStateAction } from 'react';
 import { useRef, useState } from 'react';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
-import type { CodeExample } from '~/pages/docs/components/demo';
-import DemoPage from '~/pages/docs/components/demo';
+import { CodePreview } from '~/app/components/code-preview';
 import type { TabsRef } from '~/src';
 import { Button, Tabs } from '~/src';
 
@@ -11,10 +12,9 @@ const TabsPage: FC = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
   const tabsRef = useRef<TabsRef>(null);
 
-  const examples: CodeExample[] = [
-    {
-      title: 'Default tabs',
-      code: (
+  return (
+    <>
+      <CodePreview title="Default tabs">
         <Tabs.Group aria-label="Default tabs" style="default">
           <Tabs.Item active title="Profile">
             Profile content
@@ -26,12 +26,8 @@ const TabsPage: FC = () => {
             Disabled content
           </Tabs.Item>
         </Tabs.Group>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Tabs with underline',
-      code: (
+      </CodePreview>
+      <CodePreview title="Tabs with underline">
         <Tabs.Group aria-label="Tabs with underline" style="underline">
           <Tabs.Item title="Profile">Profile content</Tabs.Item>
           <Tabs.Item active title="Dashboard">
@@ -43,12 +39,8 @@ const TabsPage: FC = () => {
             Disabled content
           </Tabs.Item>
         </Tabs.Group>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Tabs with icons',
-      code: (
+      </CodePreview>
+      <CodePreview title="Tabs with icons">
         <Tabs.Group aria-label="Tabs with icons" style="underline">
           <Tabs.Item title="Profile" icon={HiUserCircle}>
             Profile content
@@ -66,12 +58,8 @@ const TabsPage: FC = () => {
             Disabled content
           </Tabs.Item>
         </Tabs.Group>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Pills tabs',
-      code: (
+      </CodePreview>
+      <CodePreview title="Pills tabs">
         <Tabs.Group aria-label="Pills" style="pills">
           <Tabs.Item active title="Tab 1">
             Content 1
@@ -83,56 +71,17 @@ const TabsPage: FC = () => {
             Content 5
           </Tabs.Item>
         </Tabs.Group>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Full width tabs',
-      code: (
+      </CodePreview>
+      <CodePreview title="Full width tabs">
         <Tabs.Group aria-label="Full width tabs" style="fullWidth">
           <Tabs.Item title="Profile">Profile content</Tabs.Item>
           <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
           <Tabs.Item title="Settings">Settings content</Tabs.Item>
           <Tabs.Item title="Invoice">Invoice content</Tabs.Item>
         </Tabs.Group>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Set active tab programmatically',
-      code: (
-        <>
-          <Tabs.Group
-            aria-label="Default tabs"
-            style="default"
-            ref={tabsRef}
-            onActiveTabChange={(tab: SetStateAction<number>) => setActiveTab(tab)}
-          >
-            <Tabs.Item active title="Profile">
-              Profile content
-            </Tabs.Item>
-            <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
-            <Tabs.Item title="Settings">Settings content</Tabs.Item>
-            <Tabs.Item title="Contacts">Contacts content</Tabs.Item>
-          </Tabs.Group>
-          <div>Active tab: {activeTab}</div>
-          <Button.Group>
-            <Button color="gray" onClick={() => tabsRef.current?.setActiveTab(0)}>
-              Profile
-            </Button>
-            <Button color="gray" onClick={() => tabsRef.current?.setActiveTab(1)}>
-              Dashboard
-            </Button>
-            <Button color="gray" onClick={() => tabsRef.current?.setActiveTab(2)}>
-              Settings
-            </Button>
-            <Button color="gray" onClick={() => tabsRef.current?.setActiveTab(3)}>
-              Contacts
-            </Button>
-          </Button.Group>
-        </>
-      ),
-      rawCode: `const Tabs: FC = () => {
+      </CodePreview>
+      <CodePreview
+        code={`const Tabs: FC = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
   const tabsRef = useRef<TabsRef>(null);
 
@@ -168,10 +117,40 @@ const TabsPage: FC = () => {
       </Button.Group>
     </>
   );
-};`,
-      codeClassName: 'dark:!bg-gray-900',
-    },
-  ];
-  return <DemoPage examples={examples} />;
+};`}
+        title="Set active tab programmatically"
+      >
+        <Tabs.Group
+          aria-label="Default tabs"
+          style="default"
+          ref={tabsRef}
+          onActiveTabChange={(tab: SetStateAction<number>) => setActiveTab(tab)}
+        >
+          <Tabs.Item active title="Profile">
+            Profile content
+          </Tabs.Item>
+          <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
+          <Tabs.Item title="Settings">Settings content</Tabs.Item>
+          <Tabs.Item title="Contacts">Contacts content</Tabs.Item>
+        </Tabs.Group>
+        <div>Active tab: {activeTab}</div>
+        <Button.Group>
+          <Button color="gray" onClick={() => tabsRef.current?.setActiveTab(0)}>
+            Profile
+          </Button>
+          <Button color="gray" onClick={() => tabsRef.current?.setActiveTab(1)}>
+            Dashboard
+          </Button>
+          <Button color="gray" onClick={() => tabsRef.current?.setActiveTab(2)}>
+            Settings
+          </Button>
+          <Button color="gray" onClick={() => tabsRef.current?.setActiveTab(3)}>
+            Contacts
+          </Button>
+        </Button.Group>
+      </CodePreview>
+    </>
+  );
 };
+
 export default TabsPage;

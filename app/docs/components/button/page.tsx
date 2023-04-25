@@ -1,300 +1,137 @@
+'use client';
+
 import type { FC } from 'react';
 import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
-import { Button } from '../src';
-import type { CodeExample } from './demo';
-import DemoPage from './demo';
+import { CodePreview } from '~/app/components/code-preview';
+import { Button } from '~/src';
 
-const ButtonPage: FC = () => {
-  const examples: CodeExample[] = [
-    {
-      title: 'Default button',
-      code: (
-        <div className="flex flex-wrap gap-2">
-          <div>
-            <Button>Default</Button>
-          </div>
-          <div>
-            <Button color="gray">Gray</Button>
-          </div>
-          <div>
-            <Button color="dark">Dark</Button>
-          </div>
-          <div>
-            <Button color="light">Light</Button>
-          </div>
-          <div>
-            <Button color="success">Success</Button>
-          </div>
-          <div>
-            <Button color="failure">Failure</Button>
-          </div>
-          <div>
-            <Button color="warning">Warning</Button>
-          </div>
-          <div>
-            <Button color="purple">Purple</Button>
-          </div>
+const ButtonPage: FC = () => (
+  <>
+    <CodePreview title="Default buttons" className="flex flex-wrap gap-2">
+      <Button>Default</Button>
+      <Button color="gray">Gray</Button>
+      <Button color="dark">Dark</Button>
+      <Button color="light">Light</Button>
+      <Button color="success">Success</Button>
+      <Button color="failure">Failure</Button>
+      <Button color="warning">Warning</Button>
+      <Button color="purple">Purple</Button>
+    </CodePreview>
+    <CodePreview title="Button pills" className="flex flex-wrap gap-2">
+      <Button color="gray" pill>
+        Gray
+      </Button>
+      <Button color="dark" pill>
+        Dark
+      </Button>
+      <Button color="light" pill>
+        Light
+      </Button>
+      <Button color="success" pill>
+        Success
+      </Button>
+      <Button color="failure" pill>
+        Failure
+      </Button>
+      <Button color="warning" pill>
+        Warning
+      </Button>
+      <Button color="purple" pill>
+        Purple
+      </Button>
+    </CodePreview>
+    <CodePreview title="Gradient monochrome" className="flex flex-wrap gap-2">
+      <Button gradientMonochrome="info">Info</Button>
+      <Button gradientMonochrome="success">Success</Button>
+      <Button gradientMonochrome="cyan">Cyan</Button>
+      <Button gradientMonochrome="teal">Teal</Button>
+      <Button gradientMonochrome="lime">Lime</Button>
+      <Button gradientMonochrome="failure">Failure</Button>
+      <Button gradientMonochrome="pink">Pink</Button>
+      <Button gradientMonochrome="purple">Purple</Button>
+    </CodePreview>
+    <CodePreview title="Gradient duo-tone" className="flex flex-wrap gap-2">
+      <Button gradientDuoTone="purpleToBlue">Purple to Blue</Button>
+      <Button gradientDuoTone="cyanToBlue">Cyan to Blue</Button>
+      <Button gradientDuoTone="greenToBlue">Green to Blue</Button>
+      <Button gradientDuoTone="purpleToPink">Purple to Pink</Button>
+      <Button gradientDuoTone="pinkToOrange">Pink to Orange</Button>
+      <Button gradientDuoTone="tealToLime">Teal to Lime</Button>
+      <Button gradientDuoTone="redToYellow">Red to Yellow</Button>
+    </CodePreview>
+    <CodePreview title="Outline" className="flex flex-wrap gap-2">
+      <Button outline gradientDuoTone="purpleToBlue">
+        Purple to Blue
+      </Button>
+      <Button outline gradientDuoTone="cyanToBlue">
+        Cyan to Blue
+      </Button>
+      <Button outline gradientDuoTone="greenToBlue">
+        Green to Blue
+      </Button>
+      <Button outline gradientDuoTone="purpleToPink">
+        Purple to Pink
+      </Button>
+      <Button outline gradientDuoTone="pinkToOrange">
+        Pink to Orange
+      </Button>
+      <Button outline gradientDuoTone="tealToLime">
+        Teal to Lime
+      </Button>
+      <Button outline gradientDuoTone="redToYellow">
+        Red to Yellow
+      </Button>
+    </CodePreview>
+    <CodePreview title="Button sizes" className="flex flex-wrap gap-2">
+      <Button size="xs">Extra small</Button>
+      <Button size="sm">Small</Button>
+      <Button size="md">Base</Button>
+      <Button size="lg">Large</Button>
+      <Button size="xl">Extra large</Button>
+    </CodePreview>
+    <CodePreview title="Buttons with icon" className="flex flex-wrap gap-2">
+      <Button>
+        <HiShoppingCart className="mr-2 h-5 w-5" />
+        Buy now
+      </Button>
+      <Button>
+        Choose plan
+        <HiOutlineArrowRight className="ml-2 h-5 w-5" />
+      </Button>
+    </CodePreview>
+    <CodePreview title="Button with label">
+      <Button label="2">Messages</Button>
+    </CodePreview>
+    <CodePreview title="Icon buttons" className="flex flex-wrap items-center gap-2">
+      <Button>
+        <HiOutlineArrowRight className="h-6 w-6" />
+      </Button>
+      <Button pill>
+        <HiOutlineArrowRight className="h-6 w-6" />
+      </Button>
+      <Button outline>
+        <HiOutlineArrowRight className="h-6 w-6" />
+      </Button>
+      <Button outline pill>
+        <HiOutlineArrowRight className="h-6 w-6" />
+      </Button>
+    </CodePreview>
+    <CodePreview title="Loader" className="flex flex-wrap items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
+        <div>
+          <Button isProcessing={true}>Click me!</Button>
         </div>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Button pills',
-      code: (
-        <div className="flex flex-wrap gap-2">
-          <div>
-            <Button color="gray" pill>
-              Gray
-            </Button>
-          </div>
-          <div>
-            <Button color="dark" pill>
-              Dark
-            </Button>
-          </div>
-          <div>
-            <Button color="light" pill>
-              Light
-            </Button>
-          </div>
-          <div>
-            <Button color="success" pill>
-              Success
-            </Button>
-          </div>
-          <div>
-            <Button color="failure" pill>
-              Failure
-            </Button>
-          </div>
-          <div>
-            <Button color="warning" pill>
-              Warning
-            </Button>
-          </div>
-          <div>
-            <Button color="purple" pill>
-              Purple
-            </Button>
-          </div>
+        <div>
+          <Button isProcessing={true} outline>
+            Click me!
+          </Button>
         </div>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Gradient Monochrome',
-      code: (
-        <div className="flex flex-wrap gap-2">
-          <div>
-            <Button gradientMonochrome="info">Info</Button>
-          </div>
-          <div>
-            <Button gradientMonochrome="success">Success</Button>
-          </div>
-          <div>
-            <Button gradientMonochrome="cyan">Cyan</Button>
-          </div>
-          <div>
-            <Button gradientMonochrome="teal">Teal</Button>
-          </div>
-          <div>
-            <Button gradientMonochrome="lime">Lime</Button>
-          </div>
-          <div>
-            <Button gradientMonochrome="failure">Failure</Button>
-          </div>
-          <div>
-            <Button gradientMonochrome="pink">Pink</Button>
-          </div>
-          <div>
-            <Button gradientMonochrome="purple">Purple</Button>
-          </div>
-        </div>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Gradient duo-tone',
-      code: (
-        <div className="flex flex-wrap gap-2">
-          <div>
-            <Button gradientDuoTone="purpleToBlue">Purple to Blue</Button>
-          </div>
-          <div>
-            <Button gradientDuoTone="cyanToBlue">Cyan to Blue</Button>
-          </div>
-          <div>
-            <Button gradientDuoTone="greenToBlue">Green to Blue</Button>
-          </div>
-          <div>
-            <Button gradientDuoTone="purpleToPink">Purple to Pink</Button>
-          </div>
-          <div>
-            <Button gradientDuoTone="pinkToOrange">Pink to Orange</Button>
-          </div>
-          <div>
-            <Button gradientDuoTone="tealToLime">Teal to Lime</Button>
-          </div>
-          <div>
-            <Button gradientDuoTone="redToYellow">Red to Yellow</Button>
-          </div>
-        </div>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Outline',
-      code: (
-        <div className="flex flex-wrap items-center gap-2">
-          <div>
-            <Button outline gradientDuoTone="purpleToBlue">
-              Purple to Blue
-            </Button>
-          </div>
-          <div>
-            <Button outline gradientDuoTone="cyanToBlue">
-              Cyan to Blue
-            </Button>
-          </div>
-          <div>
-            <Button outline gradientDuoTone="greenToBlue">
-              Green to Blue
-            </Button>
-          </div>
-          <div>
-            <Button outline gradientDuoTone="purpleToPink">
-              Purple to Pink
-            </Button>
-          </div>
-          <div>
-            <Button outline gradientDuoTone="pinkToOrange">
-              Pink to Orange
-            </Button>
-          </div>
-          <div>
-            <Button outline gradientDuoTone="tealToLime">
-              Teal to Lime
-            </Button>
-          </div>
-          <div>
-            <Button outline gradientDuoTone="redToYellow">
-              Red to Yellow
-            </Button>
-          </div>
-        </div>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Button sizes',
-      code: (
-        <div className="flex flex-wrap items-center gap-2">
-          <div>
-            <Button size="xs">Extra small</Button>
-          </div>
-          <div>
-            <Button size="sm">Small</Button>
-          </div>
-          <div>
-            <Button size="md">Base</Button>
-          </div>
-          <div>
-            <Button size="lg">Large</Button>
-          </div>
-          <div>
-            <Button size="xl">Extra large</Button>
-          </div>
-        </div>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Buttons with icon',
-      code: (
-        <div className="flex flex-wrap items-center gap-2">
-          <div>
-            <Button>
-              <HiShoppingCart className="mr-2 h-5 w-5" />
-              Buy now
-            </Button>
-          </div>
-          <div>
-            <Button>
-              Choose plan
-              <HiOutlineArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
-        </div>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Button with label',
-      code: (
-        <div className="w-3/12">
-          <Button label="2">Messages</Button>
-        </div>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Icon buttons',
-      code: (
-        <div className="flex flex-wrap items-center gap-2">
-          <div>
-            <Button>
-              <HiOutlineArrowRight className="h-6 w-6" />
-            </Button>
-          </div>
-          <div>
-            <Button pill>
-              <HiOutlineArrowRight className="h-6 w-6" />
-            </Button>
-          </div>
-          <div>
-            <Button outline>
-              <HiOutlineArrowRight className="h-6 w-6" />
-            </Button>
-          </div>
-          <div>
-            <Button outline pill>
-              <HiOutlineArrowRight className="h-6 w-6" />
-            </Button>
-          </div>
-        </div>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Loader',
-      code: (
-        <div className="flex flex-wrap items-center gap-2">
-          <div className="flex flex-wrap items-center gap-2">
-            <div>
-              <Button isProcessing={true}>Click me!</Button>
-            </div>
-            <div>
-              <Button isProcessing={true} outline>
-                Click me!
-              </Button>
-            </div>
-          </div>
-        </div>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-    {
-      title: 'Disabled',
-      code: (
-        <div className="w-3/12">
-          <Button disabled>Disabled button</Button>
-        </div>
-      ),
-      codeClassName: 'dark:!bg-gray-900',
-    },
-  ];
-
-  return <DemoPage examples={examples} />;
-};
+      </div>
+    </CodePreview>
+    <CodePreview title="Disabled">
+      <Button disabled>Disabled button</Button>
+    </CodePreview>
+  </>
+);
 
 export default ButtonPage;

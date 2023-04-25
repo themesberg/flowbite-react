@@ -1,12 +1,12 @@
-import { GetServerSideProps } from 'next';
+import { NextPage } from 'next';
+import Link from 'next/link';
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  return {
-    redirect: {
-      destination: '/docs',
-      permanent: false,
-    },
-  };
+const HomePage: NextPage = () => {
+  return (
+    <p>
+      Under construction! Check out the docs at <Link href="/docs">https://flowbite-react.com/docs/</Link>.
+    </p>
+  );
 };
 
-export default () => {};
+export default HomePage;

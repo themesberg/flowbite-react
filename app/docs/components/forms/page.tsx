@@ -1,9 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import type { FC } from 'react';
 import { useState } from 'react';
 import { HiMail } from 'react-icons/hi';
-import type { CodeExample } from '~/pages/docs/components/demo';
-import DemoPage from '~/pages/docs/components/demo';
+import { CodePreview } from '~/app/components/code-preview';
 import {
   Button,
   Checkbox,
@@ -21,10 +22,9 @@ const FormsPage: FC = () => {
   const [switch1, setSwitch1] = useState(false);
   const [switch2, setSwitch2] = useState(true);
 
-  const examples: CodeExample[] = [
-    {
-      title: 'Form example',
-      code: (
+  return (
+    <>
+      <CodePreview title="Default form">
         <form className="flex flex-col gap-4">
           <div>
             <div className="mb-2 block">
@@ -44,11 +44,8 @@ const FormsPage: FC = () => {
           </div>
           <Button type="submit">Submit</Button>
         </form>
-      ),
-    },
-    {
-      title: 'Input Sizing',
-      code: (
+      </CodePreview>
+      <CodePreview title="Input sizing">
         <div className="flex flex-col gap-4">
           <div>
             <div className="mb-2 block">
@@ -69,22 +66,16 @@ const FormsPage: FC = () => {
             <TextInput id="large" type="text" sizing="lg" />
           </div>
         </div>
-      ),
-    },
-    {
-      title: 'Disabled inputs',
-      code: (
+      </CodePreview>
+      <CodePreview title="Disabled inputs">
         <div className="flex flex-col gap-4">
           <Label htmlFor="disabledInput1">API token</Label>
           <TextInput type="text" id="disabledInput1" placeholder="Disabled input" disabled />
           <Label htmlFor="disabledInput2">Personal access token</Label>
           <TextInput type="text" id="disabledInput2" placeholder="Disabled readonly input" disabled readOnly />
         </div>
-      ),
-    },
-    {
-      title: 'Shadow inputs',
-      code: (
+      </CodePreview>
+      <CodePreview title="Shadow inputs">
         <form className="flex flex-col gap-4">
           <div>
             <div className="mb-2 block">
@@ -115,11 +106,8 @@ const FormsPage: FC = () => {
           </div>
           <Button type="submit">Register new account</Button>
         </form>
-      ),
-    },
-    {
-      title: 'Helper text',
-      code: (
+      </CodePreview>
+      <CodePreview title="Helper text">
         <div>
           <div className="mb-2 block">
             <Label htmlFor="email3" value="Your email" />
@@ -140,33 +128,24 @@ const FormsPage: FC = () => {
             }
           />
         </div>
-      ),
-    },
-    {
-      title: 'Input element with icon on the left side',
-      code: (
+      </CodePreview>
+      <CodePreview title="Input element with icon on the left side">
         <div>
           <div className="mb-2 block">
             <Label htmlFor="email4" value="Your email" />
           </div>
           <TextInput id="email4" type="email" icon={HiMail} placeholder="name@flowbite.com" required />
         </div>
-      ),
-    },
-    {
-      title: 'Input element with icon on the right side',
-      code: (
+      </CodePreview>
+      <CodePreview title="Input element with icon on the right side">
         <div>
           <div className="mb-2 block">
             <Label htmlFor="email4" value="Your email" />
           </div>
           <TextInput id="email4" type="email" rightIcon={HiMail} placeholder="name@flowbite.com" required />
         </div>
-      ),
-    },
-    {
-      title: 'Input element with icon on both sides',
-      code: (
+      </CodePreview>
+      <CodePreview title="Input element with icon on both sides">
         <div>
           <div className="mb-2 block">
             <Label htmlFor="email4" value="Your email" />
@@ -180,22 +159,16 @@ const FormsPage: FC = () => {
             required
           />
         </div>
-      ),
-    },
-    {
-      title: 'Input element with addon',
-      code: (
+      </CodePreview>
+      <CodePreview title="Input element with addon">
         <div>
           <div className="mb-2 block">
             <Label htmlFor="username" value="Username" />
           </div>
           <TextInput id="username3" placeholder="Bonnie Green" required addon="@" />
         </div>
-      ),
-    },
-    {
-      title: 'Success and error validation',
-      code: (
+      </CodePreview>
+      <CodePreview title="Success and error validation">
         <div className="flex flex-col gap-4">
           <div>
             <div className="mb-2 block">
@@ -230,11 +203,8 @@ const FormsPage: FC = () => {
             />
           </div>
         </div>
-      ),
-    },
-    {
-      title: 'Input colors',
-      code: (
+      </CodePreview>
+      <CodePreview title="Input colors">
         <div className="flex flex-col gap-4">
           <div>
             <div className="mb-2 block">
@@ -267,22 +237,16 @@ const FormsPage: FC = () => {
             <TextInput id="input-warning" placeholder="Input Warning" required color="warning" />
           </div>
         </div>
-      ),
-    },
-    {
-      title: 'Textarea',
-      code: (
+      </CodePreview>
+      <CodePreview title="Textarea">
         <div id="textarea">
           <div className="mb-2 block">
             <Label htmlFor="comment" value="Your message" />
           </div>
           <Textarea id="comment" placeholder="Leave a comment..." required rows={4} />
         </div>
-      ),
-    },
-    {
-      title: 'Select input',
-      code: (
+      </CodePreview>
+      <CodePreview title="Select input">
         <div id="select">
           <div className="mb-2 block">
             <Label htmlFor="countries" value="Select your country" />
@@ -294,11 +258,8 @@ const FormsPage: FC = () => {
             <option>Germany</option>
           </Select>
         </div>
-      ),
-    },
-    {
-      title: 'Checkbox',
-      code: (
+      </CodePreview>
+      <CodePreview title="Checkbox">
         <div className="flex flex-col gap-4" id="checkbox">
           <div className="flex items-center gap-2">
             <Checkbox id="accept" defaultChecked />
@@ -338,11 +299,8 @@ const FormsPage: FC = () => {
             </Label>
           </div>
         </div>
-      ),
-    },
-    {
-      title: 'Radio',
-      code: (
+      </CodePreview>
+      <CodePreview title="Radio">
         <fieldset className="flex flex-col gap-4" id="radio">
           <legend>Choose your favorite country</legend>
           <div className="flex items-center gap-2">
@@ -368,32 +326,23 @@ const FormsPage: FC = () => {
             </Label>
           </div>
         </fieldset>
-      ),
-    },
-    {
-      title: 'File upload',
-      code: (
+      </CodePreview>
+      <CodePreview title="File upload">
         <div id="fileUpload">
           <div className="mb-2 block">
             <Label htmlFor="file" value="Upload file" />
           </div>
           <FileInput id="file" helperText="A profile picture is useful to confirm your are logged into your account" />
         </div>
-      ),
-    },
-    {
-      title: 'Toggle Switch',
-      code: (
+      </CodePreview>
+      <CodePreview title="Toggle switch">
         <div className="flex flex-col gap-4" id="toggle">
           <ToggleSwitch checked={switch1} label="Toggle me" onChange={setSwitch1} />
           <ToggleSwitch checked={switch2} label="Toggle me (checked)" onChange={setSwitch2} />
           <ToggleSwitch checked={false} disabled label="Toggle me (disabled)" onChange={() => undefined} />
         </div>
-      ),
-    },
-    {
-      title: 'Range Slider',
-      code: (
+      </CodePreview>
+      <CodePreview title="Range slider">
         <div className="flex flex-col gap-4">
           <div>
             <div className="mb-1 block">
@@ -426,11 +375,9 @@ const FormsPage: FC = () => {
             <RangeSlider id="lg-range" sizing="lg" />
           </div>
         </div>
-      ),
-    },
-  ];
-
-  return <DemoPage examples={examples} />;
+      </CodePreview>
+    </>
+  );
 };
 
 export default FormsPage;

@@ -1,7 +1,8 @@
+'use client';
+
 import type { FC } from 'react';
 import { useState } from 'react';
-import type { CodeExample } from '~/pages/docs/components/demo';
-import DemoPage from '~/pages/docs/components/demo';
+import { CodePreview } from '~/app/components/code-preview';
 import { Pagination } from '~/src';
 
 const PaginationPage: FC = () => {
@@ -11,22 +12,18 @@ const PaginationPage: FC = () => {
     setCurrentPage(page);
   };
 
-  const examples: CodeExample[] = [
-    {
-      title: 'Default pagination',
-      code: <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />,
-    },
-    {
-      title: 'Pagination with icons',
-      code: <Pagination currentPage={currentPage} onPageChange={onPageChange} showIcons totalPages={100} />,
-    },
-    {
-      title: 'Previous and next',
-      code: <Pagination currentPage={currentPage} layout="navigation" totalPages={100} onPageChange={onPageChange} />,
-    },
-    {
-      title: 'Previous and next with icons',
-      code: (
+  return (
+    <>
+      <CodePreview title="Default pagination">
+        <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />
+      </CodePreview>
+      <CodePreview title="Pagination with icons">
+        <Pagination currentPage={currentPage} onPageChange={onPageChange} showIcons totalPages={100} />
+      </CodePreview>
+      <CodePreview title="Previous and next">
+        <Pagination currentPage={currentPage} layout="navigation" totalPages={100} onPageChange={onPageChange} />
+      </CodePreview>
+      <CodePreview title="Previous and next with icons">
         <Pagination
           currentPage={currentPage}
           layout="navigation"
@@ -34,19 +31,13 @@ const PaginationPage: FC = () => {
           showIcons
           totalPages={100}
         />
-      ),
-    },
-    {
-      title: 'Table data navigation',
-      code: (
+      </CodePreview>
+      <CodePreview title="Table data navigation">
         <div className="flex items-center justify-center text-center">
           <Pagination currentPage={currentPage} layout="table" onPageChange={onPageChange} totalPages={1000} />
         </div>
-      ),
-    },
-    {
-      title: 'Table data navigation with icons',
-      code: (
+      </CodePreview>
+      <CodePreview title="Table data navigation with icons">
         <div className="flex items-center justify-center text-center">
           <Pagination
             currentPage={currentPage}
@@ -56,11 +47,8 @@ const PaginationPage: FC = () => {
             totalPages={1000}
           />
         </div>
-      ),
-    },
-    {
-      title: "Change 'Previous' and 'Next' text",
-      code: (
+      </CodePreview>
+      <CodePreview title="Change 'Previous' and 'Next' text">
         <div className="flex items-center justify-center text-center">
           <Pagination
             currentPage={currentPage}
@@ -70,13 +58,11 @@ const PaginationPage: FC = () => {
             totalPages={1000}
             previousLabel="Go back"
             nextLabel="Go forward"
-          ></Pagination>
+          />
         </div>
-      ),
-    },
-  ];
-
-  return <DemoPage examples={examples} />;
+      </CodePreview>
+    </>
+  );
 };
 
 export default PaginationPage;

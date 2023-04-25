@@ -1,28 +1,19 @@
+import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { Card } from '~/src';
 
-const CodePreviewContainer: FC<PropsWithChildren> = function ({ children }) {
-  return <div className="flex flex-col gap-2">{children}</div>;
-};
+interface CodePreviewProps extends PropsWithChildren, ComponentProps<'div'> {
+  code?: string;
+  title: string;
+}
 
-const CodePreviewCard: FC<PropsWithChildren & ComponentProps<'div'>> = function ({ children, className }) {
+export const CodePreview: FC<CodePreviewProps> = function ({ children, className, title }) {
   return (
-    <div className={className}>
-      <Card>{children}</Card>
+    <div className="flex flex-col gap-2">
+      <span className="text-2xl font-bold">{title}</span>
+      <div className={classNames('py-4', className)}>
+        <Card>{children}</Card>
+      </div>
     </div>
   );
 };
-
-const CodePreviewContent: FC<PropsWithChildren> = function ({ children }) {
-  return <div className="py-4">{children}</div>;
-};
-
-const CodePreviewTitle: FC<PropsWithChildren> = function ({ children }) {
-  return <span className="text-2xl font-bold">{children}</span>;
-};
-
-export const CodePreview = Object.assign(CodePreviewContainer, {
-  Card: CodePreviewCard,
-  Content: CodePreviewContent,
-  Title: CodePreviewTitle,
-});
