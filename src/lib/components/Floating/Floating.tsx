@@ -47,6 +47,7 @@ export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'di
   style?: 'dark' | 'light' | 'auto';
   theme: FlowbiteFloatingTheme;
   trigger?: 'hover' | 'click';
+  minWidth?: number;
 }
 
 /**
@@ -63,6 +64,7 @@ export const Floating: FC<FloatingProps> = ({
   style = 'dark',
   theme,
   trigger = 'hover',
+  minWidth,
   ...props
 }) => {
   const arrowRef = useRef<HTMLDivElement>(null);
@@ -127,6 +129,7 @@ export const Floating: FC<FloatingProps> = ({
             position: strategy,
             top: y ?? ' ',
             left: x ?? ' ',
+            minWidth,
           },
           ...props,
         })}
