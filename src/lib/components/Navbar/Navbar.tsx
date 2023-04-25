@@ -1,15 +1,19 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useState } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
-import { FlowbiteNavbarBrandTheme, NavbarBrand } from './NavbarBrand';
-import { FlowbiteNavbarCollapseTheme, NavbarCollapse } from './NavbarCollapse';
+import type { FlowbiteNavbarBrandTheme } from './NavbarBrand';
+import { NavbarBrand } from './NavbarBrand';
+import type { FlowbiteNavbarCollapseTheme } from './NavbarCollapse';
+import { NavbarCollapse } from './NavbarCollapse';
 import { NavbarContext } from './NavbarContext';
-import { FlowbiteNavbarLinkTheme, NavbarLink } from './NavbarLink';
-import { FlowbiteNavbarToggleTheme, NavbarToggle } from './NavbarToggle';
+import type { FlowbiteNavbarLinkTheme } from './NavbarLink';
+import { NavbarLink } from './NavbarLink';
+import type { FlowbiteNavbarToggleTheme } from './NavbarToggle';
+import { NavbarToggle } from './NavbarToggle';
 
 export interface FlowbiteNavbarTheme {
   root: FlowbiteNavbarRootTheme;
@@ -29,7 +33,7 @@ export interface FlowbiteNavbarRootTheme {
   };
 }
 
-export interface NavbarComponentProps extends PropsWithChildren<ComponentProps<'nav'>> {
+export interface NavbarComponentProps extends PropsWithChildren, ComponentProps<'nav'> {
   menuOpen?: boolean;
   fluid?: boolean;
   rounded?: boolean;
@@ -38,12 +42,12 @@ export interface NavbarComponentProps extends PropsWithChildren<ComponentProps<'
 }
 
 const NavbarComponent: FC<NavbarComponentProps> = ({
-  children,
-  menuOpen,
-  fluid = false,
-  rounded,
   border,
+  children,
   className,
+  fluid = false,
+  menuOpen,
+  rounded,
   theme: customTheme = {},
   ...props
 }) => {

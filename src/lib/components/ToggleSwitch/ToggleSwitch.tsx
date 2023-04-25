@@ -1,44 +1,50 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, KeyboardEvent, MouseEvent } from 'react';
 import { useId } from 'react';
-import { DeepPartial } from '..';
+import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
-import { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
+import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteToggleSwitchTheme {
+  root: FlowbiteToggleSwitchRootTheme;
+  toggle: FlowbiteToggleSwitchToggleTheme;
+}
+
+export interface FlowbiteToggleSwitchRootTheme {
   base: string;
   active: FlowbiteBoolean;
-  toggle: {
-    base: string;
-    checked: FlowbiteBoolean & {
-      color: FlowbiteColors;
-    };
-  };
   label: string;
+}
+
+export interface FlowbiteToggleSwitchToggleTheme {
+  base: string;
+  checked: FlowbiteBoolean & {
+    color: FlowbiteColors;
+  };
 }
 
 export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
   checked: boolean;
-  label: string;
   color?: FlowbiteColors;
+  label: string;
   onChange: (checked: boolean) => void;
   theme?: DeepPartial<FlowbiteToggleSwitchTheme>;
 };
 
 export const ToggleSwitch: FC<ToggleSwitchProps> = ({
   checked,
+  className,
+  color = 'blue',
   disabled,
   label,
   name,
   onChange,
-  className,
-  color = 'blue',
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.toggleSwitch, customTheme);
   const id = useId();
+  const theme = mergeDeep(useTheme().theme.toggleSwitch, customTheme);
 
   const toggle = (): void => onChange(!checked);
 
@@ -64,20 +70,21 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
         role="switch"
         tabIndex={0}
         type="button"
-        className={classNames(theme.base, theme.active[disabled ? 'off' : 'on'], className)}
+        className={classNames(theme.root.base, theme.root.active[disabled ? 'off' : 'on'], className)}
         {...props}
       >
         <div
+          data-testid="flowbite-toggleswitch-toggle"
           className={classNames(
             theme.toggle.base,
             theme.toggle.checked[checked ? 'on' : 'off'],
-            !disabled && theme.toggle.checked.color[color],
+            !disabled && checked && theme.toggle.checked.color[color],
           )}
         />
         <span
           data-testid="flowbite-toggleswitch-label"
           id={`${id}-flowbite-toggleswitch-label`}
-          className={theme.label}
+          className={theme.root.label}
         >
           {label}
         </span>

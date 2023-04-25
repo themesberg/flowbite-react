@@ -46,12 +46,22 @@ const ProgressPage: FC = () => {
       ),
     },
     {
-      title: 'With label inside',
-      code: <Progress progress={50} label="Flowbite" labelPosition="inside" size="lg" />,
+      title: 'With labels',
+      code: <Progress progress={50} labelProgress={true} textLabel="Flowbite" labelText={true} size="lg" />,
     },
     {
-      title: 'With label outside',
-      code: <Progress progress={45} label="Flowbite" labelPosition="outside" labelProgress={true} />,
+      title: 'Label positions',
+      code: (
+        <Progress
+          progress={45}
+          labelProgress={true}
+          progressLabelPosition="inside"
+          textLabel="Flowbite"
+          labelText={true}
+          textLabelPosition="outside"
+          size="lg"
+        />
+      ),
     },
   ];
 

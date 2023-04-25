@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import type { FC } from 'react';
 import { describe, expect, it } from 'vitest';
-import { Timeline, TimelineProps } from './Timeline';
+import type { TimelineProps } from './Timeline';
+import { Timeline } from './Timeline';
 
 describe.concurrent('Components / Timeline', () => {
   describe('Rendering horizontal mode', () => {

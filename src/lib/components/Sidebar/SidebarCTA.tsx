@@ -1,14 +1,22 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteColors } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { useSidebarContext } from './SidebarContext';
 
-export interface SidebarCTAProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
-  color?: keyof SidebarCTAColors;
+export interface FlowbiteSidebarCTATheme {
+  base: string;
+  color: FlowbiteSidebarCTAColors;
 }
 
-export interface SidebarCTAColors
+export interface SidebarCTAProps extends PropsWithChildren, Omit<ComponentProps<'div'>, 'color'> {
+  color?: keyof FlowbiteSidebarCTAColors;
+  theme?: DeepPartial<FlowbiteSidebarCTATheme>;
+}
+
+export interface FlowbiteSidebarCTAColors
   extends Pick<
     FlowbiteColors,
     'blue' | 'dark' | 'failure' | 'gray' | 'green' | 'light' | 'purple' | 'red' | 'success' | 'warning' | 'yellow'
@@ -16,15 +24,21 @@ export interface SidebarCTAColors
   [key: string]: string;
 }
 
-const SidebarCTA: FC<SidebarCTAProps> = ({ children, color = 'info', className, ...props }): JSX.Element => {
+const SidebarCTA: FC<SidebarCTAProps> = ({
+  children,
+  color = 'info',
+  className,
+  theme: customTheme = {},
+  ...props
+}) => {
   const { isCollapsed } = useSidebarContext();
-  const theme = useTheme().theme.sidebar.cta;
+  const theme = mergeDeep(useTheme().theme.sidebar.cta, customTheme);
 
   return (
     <div
-      className={classNames(theme.base, theme.color[color], className)}
       data-testid="sidebar-cta"
       hidden={isCollapsed}
+      className={classNames(theme.base, theme.color[color], className)}
       {...props}
     >
       {children}

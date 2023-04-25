@@ -1,23 +1,12 @@
 import classNames from 'classnames';
-import {
-  Children,
-  ComponentProps,
-  ForwardedRef,
-  forwardRef,
-  KeyboardEvent,
-  PropsWithChildren,
-  ReactElement,
-  useEffect,
-  useId,
-  useImperativeHandle,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, ReactElement } from 'react';
+import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { TabItemProps } from './TabItem';
-import { TabItem } from './TabItem';
+import TabItem from './TabItem';
 
 export interface FlowbiteTabTheme {
   base: string;
@@ -35,9 +24,9 @@ export interface FlowbiteTabTheme {
 
 export interface TabStyles {
   default: string;
-  underline: string;
-  pills: string;
   fullWidth: string;
+  pills: string;
+  underline: string;
 }
 
 export interface TabStyleItemProps {
@@ -59,9 +48,10 @@ interface TabKeyboardEventProps extends TabEventProps {
   event: KeyboardEvent<HTMLButtonElement>;
 }
 
-export interface TabsProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style' | 'ref'>> {
-  style?: keyof TabStyles;
+export interface TabsProps extends PropsWithChildren, Omit<ComponentProps<'div'>, 'ref' | 'style'> {
   onActiveTabChange?: (activeTab: number) => void;
+  style?: keyof TabStyles;
+  theme?: DeepPartial<FlowbiteTabTheme>;
 }
 
 export interface TabsRef {
@@ -69,8 +59,11 @@ export interface TabsRef {
 }
 
 export const TabsComponent = forwardRef<TabsRef, TabsProps>(
-  ({ children, style = 'default', className, onActiveTabChange, ...rest }, ref: ForwardedRef<TabsRef>) => {
-    const theme = useTheme().theme.tab;
+  (
+    { children, className, onActiveTabChange, style = 'default', theme: customTheme = {}, ...props },
+    ref: ForwardedRef<TabsRef>,
+  ) => {
+    const theme = mergeDeep(useTheme().theme.tab, customTheme);
 
     const id = useId();
     const tabs = useMemo(
@@ -84,12 +77,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
         tabs.findIndex((tab) => tab.active),
       ),
     );
-    const [focusedTab, setFocusedTab] = useState(
-      Math.max(
-        0,
-        tabs.findIndex((tab) => tab.active),
-      ),
-    );
+    const [focusedTab, setFocusedTab] = useState(-1);
 
     const setActiveTabWithCallback = (activeTab: number) => {
       setActiveTab(activeTab);
@@ -132,7 +120,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
           aria-label="Tabs"
           role="tablist"
           className={classNames(theme.tablist.base, theme.tablist.styles[style], className)}
-          {...rest}
+          {...props}
         >
           {tabs.map((tab, index) => (
             <button
@@ -182,5 +170,4 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
 );
 
 TabsComponent.displayName = 'Tabs.Group';
-TabItem.displayName = 'Tabs.Item';
 export const Tabs = { Group: TabsComponent, Item: TabItem };

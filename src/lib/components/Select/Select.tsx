@@ -1,6 +1,8 @@
 import classNames from 'classnames';
-import type { ComponentProps, FC, ReactNode } from 'react';
+import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { forwardRef } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import { HelperText } from '../HelperText';
@@ -33,18 +35,33 @@ export interface SelectSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
   [key: string]: string;
 }
 
-export interface SelectProps extends Omit<ComponentProps<'select'>, 'color' | 'ref'> {
-  sizing?: keyof SelectSizes;
-  shadow?: boolean;
-  helperText?: ReactNode;
+export interface SelectProps extends PropsWithChildren, Omit<ComponentProps<'select'>, 'color' | 'ref'> {
   addon?: ReactNode;
-  icon?: FC<ComponentProps<'svg'>>;
   color?: keyof SelectColors;
+  helperText?: ReactNode;
+  icon?: FC<ComponentProps<'svg'>>;
+  shadow?: boolean;
+  sizing?: keyof SelectSizes;
+  theme?: DeepPartial<FlowbiteSelectTheme>;
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  ({ children, sizing = 'md', shadow, helperText, addon, icon: Icon, color = 'gray', className, ...props }, ref) => {
-    const theme = useTheme().theme.select;
+  (
+    {
+      addon,
+      children,
+      className,
+      color = 'gray',
+      helperText,
+      icon: Icon,
+      shadow,
+      sizing = 'md',
+      theme: customTheme = {},
+      ...props
+    },
+    ref,
+  ) => {
+    const theme = mergeDeep(useTheme().theme.select, customTheme);
 
     return (
       <div className={classNames(theme.base, className)}>

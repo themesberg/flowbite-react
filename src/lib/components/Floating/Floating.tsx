@@ -15,50 +15,54 @@ import { useEffect, useRef, useState } from 'react';
 import { getArrowPlacement, getMiddleware, getPlacement } from '../../helpers/floating';
 
 export interface FlowbiteFloatingTheme {
-  target: string;
-  base: string;
+  arrow: FlowbiteFloatingArrowTheme;
   animation: string;
+  base: string;
+  content: string;
   hidden: string;
+  style: {
+    auto: string;
+    dark: string;
+    light: string;
+  };
+  target: string;
+}
+
+export interface FlowbiteFloatingArrowTheme {
+  base: string;
+  placement: string;
   style: {
     dark: string;
     light: string;
     auto: string;
   };
-  content: string;
-  arrow: {
-    base: string;
-    style: {
-      dark: string;
-      light: string;
-      auto: string;
-    };
-    placement: string;
-  };
 }
 
 export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
-  content: ReactNode;
-  theme: FlowbiteFloatingTheme;
-  placement?: 'auto' | Placement;
-  trigger?: 'hover' | 'click';
-  style?: 'dark' | 'light' | 'auto';
   animation?: false | `duration-${number}`;
   arrow?: boolean;
   closeRequestKey?: string;
   minWidth?: number;
+  content: ReactNode;
+  placement?: 'auto' | Placement;
+  style?: 'dark' | 'light' | 'auto';
+  theme: FlowbiteFloatingTheme;
+  trigger?: 'hover' | 'click';
 }
 
 /**
  * @see https://floating-ui.com/docs/react-dom-interactions
  */
 export const Floating: FC<FloatingProps> = ({
-  children,
-  content,
-  theme,
   animation = 'duration-300',
   arrow = true,
+  children,
+  className,
+  closeRequestKey,
+  content,
   placement = 'top',
   style = 'dark',
+  theme,
   trigger = 'hover',
   closeRequestKey,
   className,
@@ -74,6 +78,7 @@ export const Floating: FC<FloatingProps> = ({
     open,
     placement: getPlacement({ placement }),
   });
+
   const {
     context,
     floating,

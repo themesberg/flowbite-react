@@ -1,40 +1,51 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { DeepPartial } from '..';
+import { mergeDeep } from '../../helpers/mergeDeep';
 import { useTheme } from '../Flowbite';
+import type { FlowbiteTableBodyTheme } from './TableBody';
 import { TableBody } from './TableBody';
 import { TableCell } from './TableCell';
-import { TableContext, TableContextType } from './TableContext';
+import type { TableContextType } from './TableContext';
+import { TableContext } from './TableContext';
+import type { FlowbiteTableHeadTheme } from './TableHead';
 import { TableHead } from './TableHead';
 import { TableHeadCell } from './TableHeadCell';
+import type { FlowbiteTableRowTheme } from './TableRow';
 import { TableRow } from './TableRow';
 
 export interface FlowbiteTableTheme {
-  base: string;
-  wrapper: string;
-  head: {
-    base: string;
-    cell: {
-      base: string;
-    };
-  };
-  row: {
-    hovered: string;
-    striped: string;
-  };
-  cell: {
-    base: string;
-  };
+  root: FlowbiteTableRootTheme;
+  head: FlowbiteTableHeadTheme;
+  row: FlowbiteTableRowTheme;
+  body: FlowbiteTableBodyTheme;
 }
 
-export type TableProps = PropsWithChildren<ComponentProps<'table'> & TableContextType>;
+export interface FlowbiteTableRootTheme {
+  base: string;
+  shadow: string;
+  wrapper: string;
+}
 
-const TableComponent: FC<TableProps> = ({ children, striped, hoverable, className, ...props }) => {
-  const theme = useTheme().theme.table;
+export interface TableProps extends PropsWithChildren, ComponentProps<'table'>, TableContextType {
+  theme?: DeepPartial<FlowbiteTableTheme>;
+}
+
+const TableComponent: FC<TableProps> = ({
+  children,
+  className,
+  hoverable,
+  striped,
+  theme: customTheme = {},
+  ...props
+}) => {
+  const theme = mergeDeep(useTheme().theme.table, customTheme);
 
   return (
-    <div data-testid="table-element" className={classNames(theme.wrapper)}>
+    <div data-testid="table-element" className={classNames(theme.root.wrapper)}>
       <TableContext.Provider value={{ striped, hoverable }}>
-        <table className={classNames(theme.base, className)} {...props}>
+        <div className={classNames(theme.root.shadow, className)}></div>
+        <table className={classNames(theme.root.base, className)} {...props}>
           {children}
         </table>
       </TableContext.Provider>

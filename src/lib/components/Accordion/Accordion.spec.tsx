@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { FC } from 'react';
+import type { FC } from 'react';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
 import { Flowbite } from '../Flowbite';
@@ -48,6 +48,7 @@ describe('Components / Accordion', () => {
       const user = userEvent.setup();
       render(<TestAccordion />);
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       for (const _ of titles()) {
         await user.tab();
       }
@@ -57,10 +58,25 @@ describe('Components / Accordion', () => {
       expect(content()[1]).toBeVisible();
     });
 
+    it('it should open and close self when `Space is pressed on the same`Accordion.Panel`', async () => {
+      const user = userEvent.setup();
+      render(<TestAccordion />);
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      for (const _ of titles()) {
+        await user.tab();
+      }
+      await user.keyboard('[Space]');
+      await user.keyboard('[Space]');
+
+      expect(content()[0]).not.toBeVisible();
+      expect(content()[1]).not.toBeVisible();
+    });
     it('should open focused panel without closing others on an `Accordion.Panel` with `alwaysOpen={true}`', async () => {
       const user = userEvent.setup();
       render(<TestAccordion alwaysOpen />);
 
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       for (const _ of titles()) {
         await user.tab();
       }
@@ -233,6 +249,20 @@ describe('Components / Accordion', () => {
           expect(title).toHaveClass('text-gray-400');
         });
       });
+    });
+  });
+  describe('Click to toggle open', () => {
+    beforeEach(() => {
+      render(<TestAccordion />);
+    });
+
+    it('should open and close the accordion when title is clicked', async () => {
+      const titleElements = titles();
+
+      await userEvent.click(titleElements[1]); // open second panel
+      await userEvent.click(titleElements[1]); // close second panel
+      expect(content()[0]).not.toBeVisible(); // content should not be visible
+      expect(content()[1]).not.toBeVisible(); // content should not be visible
     });
   });
 });
