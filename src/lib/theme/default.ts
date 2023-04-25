@@ -544,10 +544,10 @@ const theme: FlowbiteTheme = {
     },
     content: {
       base: 'relative h-full w-full m-auto p-4 md:h-auto',
-      inner: 'relative rounded-lg bg-white shadow dark:bg-gray-700',
+      inner: 'relative rounded-lg bg-white shadow dark:bg-gray-700 flex flex-col max-h-[90vh]',
     },
     body: {
-      base: 'p-6',
+      base: 'p-6 flex-1 overflow-auto',
       popup: 'pt-0',
     },
     header: {
