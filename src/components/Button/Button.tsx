@@ -2,13 +2,14 @@
 
 import classNames from 'classnames';
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
-import {
+import type {
   DeepPartial,
   FlowbiteBoolean,
   FlowbiteColors,
   FlowbiteGradientColors,
   FlowbiteGradientDuoToneColors,
-  FlowbiteSizes,
+  FlowbiteSizes} from '~/src';
+import {
   Spinner,
   useTheme,
 } from '~/src';
