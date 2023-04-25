@@ -115,6 +115,7 @@ const DropdownComponent: FC<DropdownProps> = ({
 
     useEffect(() => {
       if (ref.current) setButtonWidth?.(ref.current.clientWidth);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ref]);
 
     return inline ? (
