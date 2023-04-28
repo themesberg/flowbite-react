@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { Card } from '~/src';
@@ -9,7 +11,7 @@ interface CodePreviewProps extends PropsWithChildren, ComponentProps<'div'> {
 
 export const CodePreview: FC<CodePreviewProps> = function ({ children, className, title }) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 w-full">
       <span className="text-2xl font-bold">{title}</span>
       <div className={classNames('py-4', className)}>
         <Card>{children}</Card>

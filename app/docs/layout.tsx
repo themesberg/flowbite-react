@@ -27,12 +27,36 @@ const DocsLayout: NextPage<PropsWithChildren> = function ({ children }) {
 
   return (
     <Flowbite>
-      <div className="flex w-full flex-col overflow-hidden">
+      <div className="max-h-screen overflow-auto relative w-full bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 antialiased">
         <DocsNavbar {...state} />
-        <div className="flex overflow-hidden bg-white pt-6 dark:bg-gray-900">
+        <div className="lg:flex">
           <DocsSidebar {...state} />
-          <main className="flex-1 overflow-auto p-4" ref={mainRef}>
-            {children}
+          <main className="flex-auto w-full min-w-0 lg:static lg:max-h-full lg:overflow-visible" ref={mainRef}>
+            <div className='flex w-full'>
+              <div className='flex flex-col max-w-4xl mx-auto w-full px-4 min-w-0 pt-6 lg:px-8 lg:pt-8 pb:12 xl:pb-24 lg:pb-16 divide-y divide-gray-200 dark:divide-gray-800'>
+                <div className='pb-8'>
+                  <h1 className='text-3xl text-gray-900 dark:text-white w-full inline-block mb-2 font-extrabold tracking-tight'>Flowbite React - UI Component Library</h1>
+                  <p className='text-lg text-gray-600 dark:text-gray-400'>Learn more about the free and open-source Flowbite React UI components and start building modern web applications using native React components based on Tailwind CSS</p>
+                </div>
+                <div id='mainContent' className='py-8'>
+                  {children}
+                </div>
+              </div>
+              <div className='flex-none hidden w-64 pl-8 xl:text-sm xl:block right-0'>
+                <div className='flex overflow-y-auto sticky top-20 flex-col justify-between pb-6 h-[calc(100vh-5rem)]'>
+                  <div className="mb-8">
+                    <h4 className='pl-2.5 my-4 text-sm font-semibold tracking-wide text-gray-900 uppercase dark:text-white'>On this page</h4>
+                    <nav>
+                      <ul className='overflow-x-hidden font-medium text-gray-500 dark:text-gray-400 space-y-2.5'>
+                        <li>
+                          <a href="#" className='pl-2.5 inline-block border-l border-white duration-200 hover:text-gray-900 transition-none dark:hover:text-white hover:border-gray-300 after:content-["#"] after:text-primary-700 dark:after:text-primary-700 dark:border-gray-900 dark:hover:border-gray-700 after:ml-2 after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-100'>Getting started</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
           </main>
         </div>
         <DocsFooter />
@@ -46,9 +70,9 @@ const DocsNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
     <Navbar
       fluid
       theme={{
-        base: 'border-transparent border-y-2 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
+        base: 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-3 px-4',
         inner: {
-          base: 'mx-auto w-full flex justify-between'
+          base: 'mx-auto flex flex-wrap justify-between items-center w-full'
         }
       }}
     >
@@ -152,14 +176,30 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
       collapseBehavior="hide"
       theme={{
         root: {
-          base: 'h-full bg-inherit',
-          inner: 'h-full overflow-y-auto overflow-x-hidden rounded bg-inherit py-4 px-5',
+          base: 'fixed inset-0 z-30 flex-none h-full w-64 lg:static lg:h-auto border-r border-gray-200 dark:border-gray-600 lg:overflow-y-visible lg:pt-0 lg:block hidden',
+          inner: 'overflow-y-auto px-4 pt-20 lg:pt-0 h-full bg-white scrolling-touch max-w-2xs lg:h-[calc(100vh-8rem)] lg:block dark:bg-gray-900 lg:mr-0 lg:sticky top-20 font-normal text-base lg:text-sm',
         },
+        item: {
+          base: 'transition-colors duration-200 relative flex items-center flex-wrap font-medium hover:text-gray-900 hover:cursor-pointer text-gray-500 dark:text-gray-400 dark:hover:text-white',
+          active: 'bg-gray-100 dark:bg-gray-700',
+          collapsed: {
+            insideCollapse: 'group w-full pl-8 transition duration-75',
+            noIcon: 'font-bold',
+          },
+          content: {
+            base: 'px-3 flex-1 whitespace-nowrap',
+          },
+          icon: {
+            base: 'h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
+            active: 'text-gray-700 dark:text-gray-100',
+          },
+          label: '',
+        }
       }}
     >
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          <span className="font-bold uppercase text-gray-800 dark:text-gray-200">Getting started</span>
+          <span className="flex items-center justify-between w-full my-4 text-sm font-semibold tracking-wide uppercase hover:text-primary-700 dark:hover:text-primary-600 text-gray-900 dark:text-white">Getting started</span>
           <Sidebar.Item as={Link} href="/docs">
             Introduction
           </Sidebar.Item>
@@ -167,7 +207,7 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
           <Sidebar.Item href="https://github.com/themesberg/flowbite-react/releases">Changelog</Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
-          <span className="font-bold uppercase text-gray-800 dark:text-gray-200">Customize</span>
+          <span className="flex items-center justify-between w-full my-4 text-sm font-semibold tracking-wide uppercase hover:text-primary-700 dark:hover:text-primary-600 text-gray-900 dark:text-white">Customize</span>
           <Sidebar.Item as={Link} href="/docs/theme">
             Theme
           </Sidebar.Item>
@@ -176,7 +216,7 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
-          <span className="font-bold uppercase text-gray-800 dark:text-gray-200">Components</span>
+          <span className="flex items-center justify-between w-full my-4 text-sm font-semibold tracking-wide uppercase hover:text-primary-700 dark:hover:text-primary-600 text-gray-900 dark:text-white">Components</span>
           <Sidebar.Item as={Link} href="/docs/components/accordion">
             Accordion
           </Sidebar.Item>

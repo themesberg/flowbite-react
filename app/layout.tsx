@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
   return (
-    <html lang="en" className='antialiased'>
+    <html lang="en">
       <body>{children}</body>
     </html>
   );
