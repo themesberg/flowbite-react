@@ -47,6 +47,9 @@ const DocsNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
       fluid
       theme={{
         base: 'border-transparent border-y-2 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
+        inner: {
+          base: 'max-w-8xl mx-auto w-full flex justify-between'
+        }
       }}
     >
       <div className="flex items-center gap-3">
@@ -82,31 +85,31 @@ const DocsNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
       <div className="hidden items-center gap-1 lg:flex">
         <a
           href="https://flowbite.com/docs/getting-started/react/"
-          className="rounded-lg p-2.5 text-gray-500 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
         >
           Quickstart
         </a>
         <Link
           href="/docs/theme"
-          className="rounded-lg p-2.5 text-gray-500 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
         >
           Customize
         </Link>
         <a
           href="https://flowbite.com/figma/"
-          className="rounded-lg p-2.5 text-gray-500 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
         >
           Figma
         </a>
         <a
           href="https://flowbite.com/blog/"
-          className="rounded-lg p-2.5 text-gray-500 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
         >
           Blog
         </a>
         <a
           href="https://flowbite.com"
-          className="rounded-lg p-2.5 text-gray-500 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
         >
           Flowbite
         </a>
