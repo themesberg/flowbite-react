@@ -42,6 +42,7 @@ const DocsLayout: NextPage<PropsWithChildren> = function ({ children }) {
                 <div id='mainContent' className='py-8'>
                   {children}
                 </div>
+                <DocsFooter />
               </div>
               <div className='flex-none hidden w-64 pl-8 xl:text-sm xl:block right-0'>
                 <div className='flex overflow-y-auto sticky top-20 flex-col justify-between pb-6 h-[calc(100vh-5rem)]'>
@@ -60,7 +61,6 @@ const DocsLayout: NextPage<PropsWithChildren> = function ({ children }) {
             </div>
           </main>
         </div>
-        <DocsFooter />
       </div>
     </Flowbite>
   );
@@ -71,7 +71,7 @@ const DocsNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
     <Navbar
       fluid
       theme={{
-        base: 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-3 px-4',
+        base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-3 px-4',
         inner: {
           base: 'mx-auto flex flex-wrap justify-between items-center w-full'
         }
@@ -293,54 +293,50 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
 
 const DocsFooter: FC = () => {
   return (
-    <Footer className="rounded-none px-5 pb-8 pt-16">
+    <Footer className="rounded-none px-4 lg:px-0 pb-8 pt-16 shadow-none">
       <div className="w-full">
-        <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-          <div>
+        <div className="grid w-full justify-between md:grid-cols-2">
+          <div className='max-w-sm mb-4 lg:mb-0'>
             <Link href="/" className="flex items-center gap-3">
               <Image alt="" height="32" src="/favicon.svg" width="32" />
-              <span className="text-xl font-bold text-gray-800 dark:text-gray-100">Flowbite React</span>
+              <span className="text-xl font-semibold text-gray-900 dark:text-gray-100">Flowbite React</span>
             </Link>
-            <p className="mt-6 max-w-lg text-gray-600 dark:text-gray-200">
+            <p className="max-w-sm mb-3 text-gray-600 dark:text-gray-400 mt-4">
               Flowbite is an ecosystem built on top of Tailwind CSS including a component library, block sections, a
               Figma design system and other resources.
             </p>
+            <p className="max-w-sm mb-3 text-gray-600 dark:text-gray-400 mt-4">
+              Code licensed <a href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE" className='text-primary-600 hover:underline'>MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" rel='nofollow noopener noreferrer' className='text-primary-600 hover:underline'>CC BY 3.0</a>
+            </p>
           </div>
-          <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-4 sm:gap-6">
+          <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
             <div>
-              <Footer.Title title="Resources" />
-              <Footer.LinkGroup col>
-                <Footer.Link href="/docs">Documentation</Footer.Link>
+              <Footer.Title title="Resources" className='mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white' />
+              <Footer.LinkGroup col className='text-gray-600 dark:text-gray-400'>
+                <Footer.Link href="https://github.com/themesberg/flowbite-react" className='text-base'>GitHub</Footer.Link>
+                <Footer.Link href="https://flowbite.com/" className='text-base'>Flowbite</Footer.Link>
+                <Footer.Link href="https://tailwindcss.com/" className='text-base'>Tailwind CSS</Footer.Link>
+                <Footer.Link href="https://flowbite.com/figma/" className='text-base'>Figma</Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
-              <Footer.Title title="Help & support" />
+              <Footer.Title title="Help & Support" className='mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white' />
               <Footer.LinkGroup col>
-                <Footer.Link href="https://flowbite.com/contact/">Contact us</Footer.Link>
-                <Footer.Link href="https://flowbite.com/dashboard/support/">Support Center</Footer.Link>
+                <Footer.Link href="https://discord.gg/4eeurUVvTy" className='text-base'>Discord</Footer.Link>
+                <Footer.Link href="https://github.com/themesberg/flowbite-react/discussions" className='text-base'>Github Discussions</Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
-              <Footer.Title title="Follow us" />
+              <Footer.Title title="Legal" className='mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white' />
               <Footer.LinkGroup col>
-                <Footer.Link href="https://discord.gg/4eeurUVvTy">Discord</Footer.Link>
-                <Footer.Link href="https://github.com/themesberg">Github</Footer.Link>
-                <Footer.Link href="https://twitter.com/zoltanszogyenyi">Twitter</Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <Footer.Title title="Legal" />
-              <Footer.LinkGroup col>
-                <Footer.Link href="https://flowbite.com/license/">License (EULA)</Footer.Link>
-                <Footer.Link href="https://flowbite.com/privacy-policy/">Privacy policy</Footer.Link>
-                <Footer.Link href="https://flowbite.com/terms-and-conditions/">Terms & Conditions</Footer.Link>
-                <Footer.Link href="https://flowbite.com/brand/">Brand guideline</Footer.Link>
+                <Footer.Link href="https://flowbite.com/license/" className='text-base'>License</Footer.Link>
+                <Footer.Link href="https://flowbite.com/brand/" className='text-base'>Brand guideline</Footer.Link>
               </Footer.LinkGroup>
             </div>
           </div>
         </div>
         <Footer.Divider />
-        <div className="w-full sm:flex sm:items-center sm:justify-center">
+        <div className="w-full sm:flex sm:items-center sm:justify-center text-center">
           <Footer.Copyright
             by="All Rights Reserved. Flowbite™ is a registered trademark."
             href="/"
