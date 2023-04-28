@@ -35,13 +35,7 @@ const DocsLayout: NextPage<PropsWithChildren> = function ({ children }) {
           <main className="flex-auto w-full min-w-0 lg:static lg:max-h-full lg:overflow-visible" ref={mainRef}>
             <div className='flex w-full'>
               <div className='flex flex-col max-w-4xl mx-auto w-full px-4 min-w-0 pt-6 lg:px-8 lg:pt-8 pb:12 xl:pb-24 lg:pb-16 divide-y divide-gray-200 dark:divide-gray-800'>
-                <div className='pb-8'>
-                  <h1 className='text-3xl text-gray-900 dark:text-white w-full inline-block mb-2 font-extrabold tracking-tight'>Flowbite React - UI Component Library</h1>
-                  <p className='text-lg text-gray-600 dark:text-gray-400'>Learn more about the free and open-source Flowbite React UI components and start building modern web applications using native React components based on Tailwind CSS</p>
-                </div>
-                <div id='mainContent' className='py-8'>
-                  {children}
-                </div>
+                {children}
                 <DocsFooter />
               </div>
               <div className='flex-none hidden w-64 pl-8 xl:text-sm xl:block right-0'>
