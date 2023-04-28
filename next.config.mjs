@@ -6,4 +6,5 @@ export default {
   },
   reactStrictMode: true,
   swcMinify: true,
+  styledComponents: true
 };
