@@ -9,6 +9,7 @@ import { BsDiscord, BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
 import '~/app/style.css';
+import '~/app/docs.css';
 import { DarkThemeToggle, Flowbite, Footer, Navbar, Sidebar, Tooltip } from '~/src';
 
 interface LayoutState {
