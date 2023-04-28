@@ -82,31 +82,31 @@ const DocsNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
       <div className="hidden items-center gap-1 lg:flex">
         <a
           href="https://flowbite.com/docs/getting-started/react/"
-          className="rounded-lg p-2.5 text-gray-500 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500"
+          className="rounded-lg p-2.5 text-gray-500 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
         >
           Quickstart
         </a>
         <Link
           href="/docs/theme"
-          className="rounded-lg p-2.5 text-gray-500 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500"
+          className="rounded-lg p-2.5 text-gray-500 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
         >
           Customize
         </Link>
         <a
           href="https://flowbite.com/figma/"
-          className="rounded-lg p-2.5 text-gray-500 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500"
+          className="rounded-lg p-2.5 text-gray-500 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
         >
           Figma
         </a>
         <a
           href="https://flowbite.com/blog/"
-          className="rounded-lg p-2.5 text-gray-500 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500"
+          className="rounded-lg p-2.5 text-gray-500 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
         >
           Blog
         </a>
         <a
           href="https://flowbite.com"
-          className="rounded-lg p-2.5 text-gray-500 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-500"
+          className="rounded-lg p-2.5 text-gray-500 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
         >
           Flowbite
         </a>

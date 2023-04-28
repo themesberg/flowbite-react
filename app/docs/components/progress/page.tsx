@@ -25,7 +25,7 @@ const ProgressPage: FC = () => (
       <div className="flex flex-col gap-2">
         <div className="text-base font-medium">Dark</div>
         <Progress progress={45} color="dark" />
-        <div className="text-base font-medium text-blue-700">Blue</div>
+        <div className="text-base font-medium text-primary-700">Blue</div>
         <Progress progress={45} color="blue" />
         <div className="text-base font-medium text-red-700">Red</div>
         <Progress progress={45} color="red" />

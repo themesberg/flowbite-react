@@ -44,7 +44,7 @@ describe('Components / Card', () => {
       const theme = {
         card: {
           root: {
-            base: 'text-blue-100',
+            base: 'text-primary-100',
           },
         },
       };
@@ -54,14 +54,14 @@ describe('Components / Card', () => {
         </Flowbite>,
       );
 
-      expect(card()).toHaveClass('text-blue-100');
+      expect(card()).toHaveClass('text-primary-100');
     });
 
     it('should use `children` classes', () => {
       const theme = {
         card: {
           root: {
-            children: 'text-blue-900',
+            children: 'text-primary-900',
           },
         },
       };
@@ -74,7 +74,7 @@ describe('Components / Card', () => {
       );
       const children = screen.getByLabelText('The content');
 
-      expect(children.parentElement).toHaveClass('text-blue-900');
+      expect(children.parentElement).toHaveClass('text-primary-900');
     });
 
     it('should use `horizontal` classes', () => {
@@ -82,8 +82,8 @@ describe('Components / Card', () => {
         card: {
           root: {
             horizontal: {
-              off: 'text-blue-200',
-              on: 'text-blue-300',
+              off: 'text-primary-200',
+              on: 'text-primary-300',
             },
           },
         },
@@ -97,15 +97,15 @@ describe('Components / Card', () => {
       const normalCard = cards()[0];
       const horizontalCard = cards()[1];
 
-      expect(normalCard).toHaveClass('text-blue-200');
-      expect(horizontalCard).toHaveClass('text-blue-300');
+      expect(normalCard).toHaveClass('text-primary-200');
+      expect(horizontalCard).toHaveClass('text-primary-300');
     });
 
     it('should use `href` classes', () => {
       const theme = {
         card: {
           root: {
-            href: 'text-blue-700',
+            href: 'text-primary-700',
           },
         },
       };
@@ -115,17 +115,17 @@ describe('Components / Card', () => {
         </Flowbite>,
       );
 
-      expect(card()).toHaveClass('text-blue-700');
+      expect(card()).toHaveClass('text-primary-700');
     });
 
     it('should use `img` classes', () => {
       const theme = {
         card: {
           img: {
-            base: 'text-blue-400',
+            base: 'text-primary-400',
             horizontal: {
-              off: 'bg-blue-500',
-              on: 'bg-blue-600',
+              off: 'bg-primary-500',
+              on: 'bg-primary-600',
             },
           },
         },
@@ -143,8 +143,8 @@ describe('Components / Card', () => {
       const cardWithImage = screen.getByAltText('Card with image');
       const horizontalCardWithImage = screen.getByAltText('Horizontal card with image');
 
-      expect(cardWithImage).toHaveClass('text-blue-400 bg-blue-500');
-      expect(horizontalCardWithImage).toHaveClass('bg-blue-600');
+      expect(cardWithImage).toHaveClass('text-primary-400 bg-primary-500');
+      expect(horizontalCardWithImage).toHaveClass('bg-primary-600');
     });
   });
 });

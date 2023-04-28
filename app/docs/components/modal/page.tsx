@@ -110,7 +110,7 @@ const ModalPage: FC = () => {
                   <Checkbox id="remember" />
                   <Label htmlFor="remember">Remember me</Label>
                 </div>
-                <Link href="/modal" className="text-sm text-blue-700 hover:underline dark:text-blue-500">
+                <Link href="/modal" className="text-sm text-primary-700 hover:underline dark:text-primary-500">
                   Lost Password?
                 </Link>
               </div>
@@ -119,7 +119,7 @@ const ModalPage: FC = () => {
               </div>
               <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                 Not registered?&nbsp;
-                <Link href="/modal" className="text-blue-700 hover:underline dark:text-blue-500">
+                <Link href="/modal" className="text-primary-700 hover:underline dark:text-primary-500">
                   Create account
                 </Link>
               </div>

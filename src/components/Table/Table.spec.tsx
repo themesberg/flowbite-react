@@ -50,7 +50,7 @@ const TestTable: FC<TableProps> = (props) => (
         <Table.Cell>Laptop</Table.Cell>
         <Table.Cell>$2999</Table.Cell>
         <Table.Cell>
-          <a href="/tables" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
+          <a href="/tables" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
             Edit
           </a>
         </Table.Cell>
@@ -63,7 +63,7 @@ const TestTable: FC<TableProps> = (props) => (
         <Table.Cell>Laptop PC</Table.Cell>
         <Table.Cell>$1999</Table.Cell>
         <Table.Cell>
-          <a href="/tables" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
+          <a href="/tables" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
             Edit
           </a>
         </Table.Cell>
@@ -74,7 +74,7 @@ const TestTable: FC<TableProps> = (props) => (
         <Table.Cell>Accessories</Table.Cell>
         <Table.Cell>$99</Table.Cell>
         <Table.Cell>
-          <a href="/tables" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
+          <a href="/tables" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
             Edit
           </a>
         </Table.Cell>
@@ -87,7 +87,7 @@ const TestTable: FC<TableProps> = (props) => (
         <Table.Cell>Phone</Table.Cell>
         <Table.Cell>$799</Table.Cell>
         <Table.Cell>
-          <a href="/tables" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
+          <a href="/tables" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
             Edit
           </a>
         </Table.Cell>
@@ -98,7 +98,7 @@ const TestTable: FC<TableProps> = (props) => (
         <Table.Cell>Wearables</Table.Cell>
         <Table.Cell>$999</Table.Cell>
         <Table.Cell>
-          <a href="/tables" className="font-medium text-blue-600 hover:underline dark:text-blue-500">
+          <a href="/tables" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
             Edit
           </a>
         </Table.Cell>

@@ -28,7 +28,7 @@ const Template: Story<AccordionProps> = (args) => (
           Check out this guide to learn how to&nbsp;
           <a
             href="https://flowbite.com/docs/getting-started/introduction/"
-            className="text-blue-600 hover:underline dark:text-blue-500"
+            className="text-primary-600 hover:underline dark:text-primary-500"
           >
             get started
           </a>
@@ -45,7 +45,7 @@ const Template: Story<AccordionProps> = (args) => (
         </p>
         <p className="text-gray-500 dark:text-gray-400">
           Check out the&nbsp;
-          <a href="https://flowbite.com/figma/" className="text-blue-600 hover:underline dark:text-blue-500">
+          <a href="https://flowbite.com/figma/" className="text-primary-600 hover:underline dark:text-primary-500">
             Figma design system
           </a>
           &nbsp;based on the utility classes from Tailwind CSS and components from Flowbite.
@@ -67,7 +67,7 @@ const Template: Story<AccordionProps> = (args) => (
         <p className="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
         <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400">
           <li>
-            <a href="https://flowbite.com/pro/" className="text-blue-600 hover:underline dark:text-blue-500">
+            <a href="https://flowbite.com/pro/" className="text-primary-600 hover:underline dark:text-primary-500">
               Flowbite Pro
             </a>
           </li>
@@ -75,7 +75,7 @@ const Template: Story<AccordionProps> = (args) => (
             <a
               href="https://tailwindui.com/"
               rel="nofollow"
-              className="text-blue-600 hover:underline dark:text-blue-500"
+              className="text-primary-600 hover:underline dark:text-primary-500"
             >
               Tailwind UI
             </a>
