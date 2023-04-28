@@ -48,7 +48,7 @@ const DocsNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
       theme={{
         base: 'border-transparent border-y-2 bg-white px-2 py-2.5 dark:border-gray-700 dark:bg-gray-800 sm:px-4',
         inner: {
-          base: 'max-w-8xl mx-auto w-full flex justify-between'
+          base: 'mx-auto w-full flex justify-between'
         }
       }}
     >
@@ -76,7 +76,7 @@ const DocsNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
         <Link
           aria-hidden
           href="/"
-          className="flex items-center gap-3 text-2xl font-semibold text-gray-800 dark:text-white"
+          className="flex items-center gap-3 text-2xl font-semibold text-gray-900 dark:text-white"
         >
           <Image alt="" aria-hidden height="32" src="/favicon.svg" width="32" />
           <span>Flowbite React</span>
