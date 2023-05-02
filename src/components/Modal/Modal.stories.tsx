@@ -102,7 +102,7 @@ FormElements.args = {
               <Checkbox id="remember" />
               <Label htmlFor="remember">Remember me</Label>
             </div>
-            <Link href="/modal" className="text-sm text-primary-700 hover:underline dark:text-primary-500">
+            <Link href="/modal" className="text-sm text-cyan-700 hover:underline dark:text-cyan-500">
               Lost Password?
             </Link>
           </div>
@@ -111,7 +111,7 @@ FormElements.args = {
           </div>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?&nbsp;
-            <Link href="/modal" className="text-primary-700 hover:underline dark:text-primary-500">
+            <Link href="/modal" className="text-cyan-700 hover:underline dark:text-cyan-500">
               Create account
             </Link>
           </div>

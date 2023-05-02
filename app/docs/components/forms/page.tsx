@@ -99,7 +99,7 @@ const FormsPage: FC = () => {
             <Checkbox id="agree" />
             <Label htmlFor="agree">
               I agree with the&nbsp;
-              <Link href="/forms" className="text-primary-600 hover:underline dark:text-primary-500">
+              <Link href="/forms" className="text-cyan-600 hover:underline dark:text-cyan-500">
                 terms and conditions
               </Link>
             </Label>
@@ -120,7 +120,7 @@ const FormsPage: FC = () => {
             helperText={
               <>
                 We’ll never share your details. Read our
-                <Link href="/forms" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
+                <Link href="/forms" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
                   Privacy Policy
                 </Link>
                 .
@@ -265,7 +265,7 @@ const FormsPage: FC = () => {
             <Checkbox id="accept" defaultChecked />
             <Label htmlFor="accept">
               I agree to the&nbsp;
-              <Link href="/forms" className="text-primary-600 hover:underline dark:text-primary-500">
+              <Link href="/forms" className="text-cyan-600 hover:underline dark:text-cyan-500">
                 terms and conditions
               </Link>
             </Label>

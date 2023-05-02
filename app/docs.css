@@ -24,7 +24,7 @@
 #mainContent > p > a,
 #mainContent > ul > li > a,
 #mainContent > ol > li > a {
-	@apply font-medium text-gray-900 underline dark:text-white decoration-1 underline-offset-2 decoration-primary-700 dark:decoration-primary-700;
+	@apply font-medium text-gray-900 underline dark:text-white decoration-1 underline-offset-2 decoration-cyan-700 dark:decoration-cyan-700;
 }
 
 #mainContent > p > a:hover,
@@ -177,7 +177,7 @@ pre[class*="language-"] {
 }
 
 .token.url {
-	@apply text-primary-600 dark:text-primary-500;
+	@apply text-cyan-600 dark:text-cyan-500;
 }
 
 .language-css .token.string,
@@ -187,7 +187,7 @@ pre[class*="language-"] {
 
 .token.atrule,
 .token.attr-value {
-	@apply text-primary-600 dark:text-primary-500;
+	@apply text-cyan-600 dark:text-cyan-500;
 }
 
 .token.function {
@@ -214,11 +214,11 @@ pre[class*="language-"] {
 
 code.language-bash,
 pre.language-bash {
-	@apply text-primary-600 dark:text-primary-400;
+	@apply text-cyan-600 dark:text-cyan-400;
 }
 
 code.language-javascript {
-	@apply text-primary-600 dark:text-primary-400;
+	@apply text-cyan-600 dark:text-cyan-400;
 }
 
 code.language-javascript .token.function{
@@ -258,7 +258,7 @@ code.language-html .token.attr-name {
 	@apply text-gray-600 dark:text-gray-400;
 }
 code.language-html .token.attr-value{
-	@apply text-primary-600 dark:text-primary-400;
+	@apply text-cyan-600 dark:text-cyan-400;
 }
 code.language-html .token.punctuation{
 	@apply text-gray-400 dark:text-gray-500;
@@ -281,7 +281,7 @@ pre.language-svelte .token.punctuation{
 	@apply text-gray-400 dark:text-gray-500;
 }
 pre.language-svelte .token.attr-name{
-	@apply text-primary-600 dark:text-primary-500;
+	@apply text-cyan-600 dark:text-cyan-500;
 }
 pre.language-svelte .token.comment{
 	@apply text-gray-400 dark:text-gray-500;
@@ -390,11 +390,11 @@ pre.language-svelte .token.comment{
 }
 
 .DocSearch-Hits mark {
-	@apply text-primary-600 dark:text-white decoration-2 underline-offset-2 decoration-primary-600 dark:decoration-white;
+	@apply text-cyan-600 dark:text-white decoration-2 underline-offset-2 decoration-cyan-600 dark:decoration-white;
 }
 
 .DocSearch-Hit[aria-selected=true] a {
-	@apply bg-primary-700 dark:bg-primary-600;
+	@apply bg-cyan-700 dark:bg-cyan-600;
 }
 
 .DocSearch-Hit-source {
@@ -442,7 +442,7 @@ pre.language-svelte .token.comment{
 }
 
 .DocSearch-Hit a {
-	@apply bg-gray-50 rounded-lg shadow-none dark:bg-gray-600 dark:hover:bg-primary-600;
+	@apply bg-gray-50 rounded-lg shadow-none dark:bg-gray-600 dark:hover:bg-cyan-600;
 }
 
 .DocSearch-Hit[aria-selected=true] .DocSearch-Hit-Select-Icon,

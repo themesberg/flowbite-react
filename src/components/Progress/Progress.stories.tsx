@@ -38,7 +38,7 @@ export const Colors = (): JSX.Element => (
   <>
     <div className="text-base font-medium">Dark</div>
     <Progress progress={45} color="dark" />
-    <div className="mt-3 text-base font-medium text-primary-700">Blue</div>
+    <div className="mt-3 text-base font-medium text-cyan-700">Blue</div>
     <Progress progress={45} color="info" />
     <div className="mt-3 text-base font-medium text-red-700">Red</div>
     <Progress progress={45} color="red" />

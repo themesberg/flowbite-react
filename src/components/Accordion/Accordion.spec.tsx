@@ -271,10 +271,10 @@ describe('Components / Accordion', () => {
 const TestAccordion: FC<Omit<AccordionProps, 'children'>> = (props) => (
   <Accordion arrowIcon={HiOutlineArrowCircleDown} {...props}>
     <Accordion.Panel>
-      <Accordion.Title as="h3" className="text-primary-300" id="accordion-title">
+      <Accordion.Title as="h3" className="text-cyan-300" id="accordion-title">
         Title
       </Accordion.Title>
-      <Accordion.Content aria-labelledby="accordion-title" className="text-primary-300">
+      <Accordion.Content aria-labelledby="accordion-title" className="text-cyan-300">
         <p>Content</p>
       </Accordion.Content>
     </Accordion.Panel>

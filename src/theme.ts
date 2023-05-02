@@ -39,7 +39,7 @@ export const theme: FlowbiteTheme = {
       base: '-mx-1.5 -my-1.5 ml-auto inline-flex h-8 w-8 rounded-lg p-1.5 focus:ring-2',
       icon: 'w-5 h-5',
       color: {
-        info: 'bg-primary-100 text-primary-500 hover:bg-primary-200 focus:ring-primary-400 dark:bg-primary-200 dark:text-primary-600 dark:hover:bg-primary-300',
+        info: 'bg-cyan-100 text-cyan-500 hover:bg-cyan-200 focus:ring-cyan-400 dark:bg-cyan-200 dark:text-cyan-600 dark:hover:bg-cyan-300',
         gray: 'bg-gray-100 text-gray-500 hover:bg-gray-200 focus:ring-gray-400 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white',
         failure:
           'bg-red-100 text-red-500 hover:bg-red-200 focus:ring-red-400 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300',
@@ -52,7 +52,7 @@ export const theme: FlowbiteTheme = {
           'bg-green-100 text-green-500 hover:bg-green-200 focus:ring-green-400 dark:bg-green-200 dark:text-green-600 dark:hover:bg-green-300',
         yellow:
           'bg-yellow-100 text-yellow-500 hover:bg-yellow-200 focus:ring-yellow-400 dark:bg-yellow-200 dark:text-yellow-600 dark:hover:bg-yellow-300',
-        blue: 'bg-primary-100 text-primary-500 hover:bg-primary-200 focus:ring-primary-400 dark:bg-primary-200 dark:text-primary-600 dark:hover:bg-primary-300',
+        blue: 'bg-cyan-100 text-cyan-500 hover:bg-cyan-200 focus:ring-cyan-400 dark:bg-cyan-200 dark:text-cyan-600 dark:hover:bg-cyan-300',
         cyan: 'bg-cyan-100 text-cyan-500 hover:bg-cyan-200 focus:ring-cyan-400 dark:bg-cyan-200 dark:text-cyan-600 dark:hover:bg-cyan-300',
         pink: 'bg-pink-100 text-pink-500 hover:bg-pink-200 focus:ring-pink-400 dark:bg-pink-200 dark:text-pink-600 dark:hover:bg-pink-300',
         lime: 'bg-lime-100 text-lime-500 hover:bg-lime-200 focus:ring-lime-400 dark:bg-lime-200 dark:text-lime-600 dark:hover:bg-lime-300',
@@ -67,7 +67,7 @@ export const theme: FlowbiteTheme = {
       },
     },
     color: {
-      info: 'text-primary-700 bg-primary-100 border-primary-500 dark:bg-primary-200 dark:text-primary-800',
+      info: 'text-cyan-700 bg-cyan-100 border-cyan-500 dark:bg-cyan-200 dark:text-cyan-800',
       gray: 'text-gray-700 bg-gray-100 border-gray-500 dark:bg-gray-700 dark:text-gray-300',
       failure: 'text-red-700 bg-red-100 border-red-500 dark:bg-red-200 dark:text-red-800',
       success: 'text-green-700 bg-green-100 border-green-500 dark:bg-green-200 dark:text-green-800',
@@ -75,7 +75,7 @@ export const theme: FlowbiteTheme = {
       red: 'text-red-700 bg-red-100 border-red-500 dark:bg-red-200 dark:text-red-800',
       green: 'text-green-700 bg-green-100 border-green-500 dark:bg-green-200 dark:text-green-800',
       yellow: 'text-yellow-700 bg-yellow-100 border-yellow-500 dark:bg-yellow-200 dark:text-yellow-800',
-      blue: 'text-primary-700 bg-primary-100 border-primary-500 dark:bg-primary-200 dark:text-primary-800',
+      blue: 'text-cyan-700 bg-cyan-100 border-cyan-500 dark:bg-cyan-200 dark:text-cyan-800',
       cyan: 'text-cyan-700 bg-cyan-100 border-cyan-500 dark:bg-cyan-200 dark:text-cyan-800',
       pink: 'text-pink-700 bg-pink-100 border-pink-500 dark:bg-pink-200 dark:text-pink-800',
       lime: 'text-lime-700 bg-lime-100 border-lime-500 dark:bg-lime-200 dark:text-lime-800',
@@ -98,7 +98,7 @@ export const theme: FlowbiteTheme = {
         dark: 'ring-gray-800 dark:ring-gray-800',
         failure: 'ring-red-500 dark:ring-red-700',
         gray: 'ring-gray-500 dark:ring-gray-400',
-        info: 'ring-primary-400 dark:ring-primary-800',
+        info: 'ring-cyan-400 dark:ring-cyan-800',
         light: 'ring-gray-300 dark:ring-gray-500',
         purple: 'ring-purple-500 dark:ring-purple-600',
         success: 'ring-green-500 dark:ring-green-500',
@@ -152,7 +152,7 @@ export const theme: FlowbiteTheme = {
     root: {
       base: 'flex h-fit items-center gap-1 font-semibold',
       color: {
-        info: 'bg-primary-100 text-primary-800 dark:bg-primary-200 dark:text-primary-800 group-hover:bg-primary-200 dark:group-hover:bg-primary-300',
+        info: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-200 dark:text-cyan-800 group-hover:bg-cyan-200 dark:group-hover:bg-cyan-300',
         gray: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300 group-hover:bg-gray-200 dark:group-hover:bg-gray-600',
         failure:
           'bg-red-100 text-red-800 dark:bg-red-200 dark:text-red-900 group-hover:bg-red-200 dark:group-hover:bg-red-300',
@@ -165,7 +165,7 @@ export const theme: FlowbiteTheme = {
         purple:
           'bg-purple-100 text-purple-800 dark:bg-purple-200 dark:text-purple-900 group-hover:bg-purple-200 dark:group-hover:bg-purple-300',
         pink: 'bg-pink-100 text-pink-800 dark:bg-pink-200 dark:text-pink-900 group-hover:bg-pink-200 dark:group-hover:bg-pink-300',
-        blue: 'bg-primary-100 text-primary-800 dark:bg-primary-200 dark:text-primary-900 group-hover:bg-primary-200 dark:group-hover:bg-primary-300',
+        blue: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-200 dark:text-cyan-900 group-hover:bg-cyan-200 dark:group-hover:bg-cyan-300',
         cyan: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-200 dark:text-cyan-900 group-hover:bg-cyan-200 dark:group-hover:bg-cyan-300',
         dark: 'bg-gray-600 text-gray-100 dark:bg-gray-900 dark:text-gray-200 group-hover:bg-gray-500 dark:group-hover:bg-gray-700',
         light:
@@ -215,17 +215,17 @@ export const theme: FlowbiteTheme = {
       dark: 'text-white bg-gray-800 border border-transparent hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 disabled:hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700 dark:disabled:hover:bg-gray-800',
       failure:
         'text-white bg-red-700 border border-transparent hover:bg-red-800 focus:ring-4 focus:ring-red-300 disabled:hover:bg-red-800 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 dark:disabled:hover:bg-red-600',
-      gray: 'text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-primary-700 disabled:hover:bg-white focus:ring-primary-700 focus:text-primary-700 dark:bg-transparent dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-2 dark:disabled:hover:bg-gray-800',
-      info: 'text-white bg-primary-700 border border-transparent hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 disabled:hover:bg-primary-700 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 dark:disabled:hover:bg-primary-600',
+      gray: 'text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-cyan-700 disabled:hover:bg-white focus:ring-cyan-700 focus:text-cyan-700 dark:bg-transparent dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-2 dark:disabled:hover:bg-gray-800',
+      info: 'text-white bg-cyan-700 border border-transparent hover:bg-cyan-800 focus:ring-4 focus:ring-cyan-300 disabled:hover:bg-cyan-700 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800 dark:disabled:hover:bg-cyan-600',
       light:
-        'text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-primary-300 disabled:hover:bg-white dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700',
+        'text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-cyan-300 disabled:hover:bg-white dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700',
       purple:
         'text-white bg-purple-700 border border-transparent hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 disabled:hover:bg-purple-700 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900 dark:disabled:hover:bg-purple-600',
       success:
         'text-white bg-green-700 border border-transparent hover:bg-green-800 focus:ring-4 focus:ring-green-300 disabled:hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 dark:disabled:hover:bg-green-600',
       warning:
         'text-white bg-yellow-400 border border-transparent hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 disabled:hover:bg-yellow-400 dark:focus:ring-yellow-900 dark:disabled:hover:bg-yellow-400',
-      blue: 'text-primary-900 bg-white border border-primary-300 hover:bg-primary-100 focus:ring-4 focus:ring-primary-300 disabled:hover:bg-white dark:bg-primary-600 dark:text-white dark:border-primary-600 dark:hover:bg-primary-700 dark:hover:border-primary-700 dark:focus:ring-primary-700',
+      blue: 'text-cyan-900 bg-white border border-cyan-300 hover:bg-cyan-100 focus:ring-4 focus:ring-cyan-300 disabled:hover:bg-white dark:bg-cyan-600 dark:text-white dark:border-cyan-600 dark:hover:bg-cyan-700 dark:hover:border-cyan-700 dark:focus:ring-cyan-700',
       cyan: 'text-cyan-900 bg-white border border-cyan-300 hover:bg-cyan-100 focus:ring-4 focus:ring-cyan-300 disabled:hover:bg-white dark:bg-cyan-600 dark:text-white dark:border-cyan-600 dark:hover:bg-cyan-700 dark:hover:border-cyan-700 dark:focus:ring-cyan-700',
       green:
         'text-green-900 bg-white border border-green-300 hover:bg-green-100 focus:ring-4 focus:ring-green-300 disabled:hover:bg-white dark:bg-green-600 dark:text-white dark:border-green-600 dark:hover:bg-green-700 dark:hover:border-green-700 dark:focus:ring-green-700',
@@ -245,7 +245,7 @@ export const theme: FlowbiteTheme = {
       cyan: 'text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800',
       failure:
         'text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800',
-      info: 'text-white bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 hover:bg-gradient-to-br focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800 ',
+      info: 'text-white bg-gradient-to-r from-cyan-500 via-cyan-600 to-cyan-700 hover:bg-gradient-to-br focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800 ',
       lime: 'text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:ring-lime-300 dark:focus:ring-lime-800',
 
       pink: 'text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:ring-pink-300 dark:focus:ring-pink-800',
@@ -257,13 +257,13 @@ export const theme: FlowbiteTheme = {
     },
     gradientDuoTone: {
       cyanToBlue:
-        'text-white bg-gradient-to-r from-cyan-500 to-primary-500 hover:bg-gradient-to-bl focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800',
+        'text-white bg-gradient-to-r from-cyan-500 to-cyan-500 hover:bg-gradient-to-bl focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800',
       greenToBlue:
-        'text-white bg-gradient-to-br from-green-400 to-primary-600 hover:bg-gradient-to-bl focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800',
+        'text-white bg-gradient-to-br from-green-400 to-cyan-600 hover:bg-gradient-to-bl focus:ring-4 focus:ring-green-200 dark:focus:ring-green-800',
       pinkToOrange:
         'text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:ring-pink-200 dark:focus:ring-pink-800',
       purpleToBlue:
-        'text-white bg-gradient-to-br from-purple-600 to-primary-500 hover:bg-gradient-to-bl focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800',
+        'text-white bg-gradient-to-br from-purple-600 to-cyan-500 hover:bg-gradient-to-bl focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800',
       purpleToPink:
         'text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:ring-purple-200 dark:focus:ring-purple-800',
       redToYellow:
@@ -282,7 +282,7 @@ export const theme: FlowbiteTheme = {
       outline: 'border border-transparent',
     },
     label:
-      'ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-primary-200 text-xs font-semibold text-primary-800',
+      'ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cyan-200 text-xs font-semibold text-cyan-800',
     outline: {
       color: {
         gray: 'border border-gray-900 dark:border-white',
@@ -364,7 +364,7 @@ export const theme: FlowbiteTheme = {
   },
   checkbox: {
     root: {
-      base: 'h-4 w-4 rounded border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600',
+      base: 'h-4 w-4 rounded border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-cyan-600',
     },
   },
   darkThemeToggle: {
@@ -419,8 +419,8 @@ export const theme: FlowbiteTheme = {
           lg: 'sm:text-md',
         },
         colors: {
-          gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500',
-          info: 'border-primary-500 bg-primary-50 text-primary-900 placeholder-primary-700 focus:border-primary-500 focus:ring-primary-500 dark:border-primary-400 dark:bg-primary-100 dark:focus:border-primary-500 dark:focus:ring-primary-500',
+          gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
+          info: 'border-cyan-500 bg-cyan-50 text-cyan-900 placeholder-cyan-700 focus:border-cyan-500 focus:ring-cyan-500 dark:border-cyan-400 dark:bg-cyan-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
           failure:
             'border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-100 dark:focus:border-red-500 dark:focus:ring-red-500',
           warning:
@@ -471,7 +471,7 @@ export const theme: FlowbiteTheme = {
       base: 'mt-2 text-sm',
       colors: {
         gray: 'text-gray-500 dark:text-gray-400',
-        info: 'text-primary-700 dark:text-primary-800',
+        info: 'text-cyan-700 dark:text-cyan-800',
         success: 'text-green-600 dark:text-green-500',
         failure: 'text-red-600 dark:text-red-500',
         warning: 'text-yellow-500 dark:text-yellow-600',
@@ -484,7 +484,7 @@ export const theme: FlowbiteTheme = {
       disabled: 'opacity-50',
       colors: {
         default: 'text-gray-900 dark:text-gray-300',
-        info: 'text-primary-500 dark:text-primary-600',
+        info: 'text-cyan-500 dark:text-cyan-600',
         failure: 'text-red-700 dark:text-red-500',
         warning: 'text-yellow-500 dark:text-yellow-600',
         success: 'text-green-700 dark:text-green-500',
@@ -500,8 +500,8 @@ export const theme: FlowbiteTheme = {
       link: {
         base: 'flex w-full border-b border-gray-200 py-2 px-4 dark:border-gray-600',
         active: {
-          off: 'hover:bg-gray-100 hover:text-primary-700 focus:text-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-500',
-          on: 'bg-primary-700 text-white dark:bg-gray-800',
+          off: 'hover:bg-gray-100 hover:text-cyan-700 focus:text-cyan-700 focus:outline-none focus:ring-2 focus:ring-cyan-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-500',
+          on: 'bg-cyan-700 text-white dark:bg-gray-800',
         },
         href: {
           off: '',
@@ -597,8 +597,8 @@ export const theme: FlowbiteTheme = {
     link: {
       base: 'block py-2 pr-4 pl-3 md:p-0',
       active: {
-        on: 'bg-primary-700 text-white dark:text-white md:bg-transparent md:text-primary-700',
-        off: 'border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-primary-700 md:dark:hover:bg-transparent md:dark:hover:text-white',
+        on: 'bg-cyan-700 text-white dark:text-white md:bg-transparent md:text-cyan-700',
+        off: 'border-b border-gray-100  text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:border-0 md:hover:bg-transparent md:hover:text-cyan-700 md:dark:hover:bg-transparent md:dark:hover:text-white',
       },
       disabled: {
         on: 'text-gray-400 hover:cursor-not-allowed dark:text-gray-600',
@@ -632,7 +632,7 @@ export const theme: FlowbiteTheme = {
       selector: {
         base: 'w-12 border border-gray-300 bg-white py-2 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
         active:
-          '!bg-blue-50 text-blue-600 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:!bg-gray-700 dark:text-white',
+          '!bg-cyan-50 text-cyan-600 hover:bg-cyan-100 hover:text-cyan-700 dark:border-gray-700 dark:!bg-gray-700 dark:text-white',
         disabled: 'opacity-50 cursor-normal',
       },
     },
@@ -640,10 +640,10 @@ export const theme: FlowbiteTheme = {
   progress: {
     base: 'w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
     label: 'mb-1 flex justify-between font-medium dark:text-white',
-    bar: 'rounded-full text-center font-medium leading-none text-primary-300 dark:text-primary-100 space-x-2',
+    bar: 'rounded-full text-center font-medium leading-none text-cyan-300 dark:text-cyan-100 space-x-2',
     color: {
       dark: 'bg-gray-600 dark:bg-gray-300',
-      blue: 'bg-primary-600',
+      blue: 'bg-cyan-600',
       red: 'bg-red-600 dark:bg-red-500',
       green: 'bg-green-600 dark:bg-green-500',
       yellow: 'bg-yellow-400',
@@ -659,7 +659,7 @@ export const theme: FlowbiteTheme = {
   },
   radio: {
     root: {
-      base: 'h-4 w-4 border border-gray-300 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-primary-600 dark:focus:ring-primary-600',
+      base: 'h-4 w-4 border border-gray-300 focus:ring-2 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-cyan-600 dark:focus:ring-cyan-600',
     },
   },
   rangeSlider: {
@@ -684,11 +684,11 @@ export const theme: FlowbiteTheme = {
     },
     advanced: {
       base: 'flex items-center',
-      label: 'text-sm font-medium text-primary-600 dark:text-primary-500',
+      label: 'text-sm font-medium text-cyan-600 dark:text-cyan-500',
       progress: {
         base: 'mx-4 h-5 w-2/4 rounded bg-gray-200 dark:bg-gray-700',
         fill: 'h-5 rounded bg-yellow-400',
-        label: 'text-sm font-medium text-primary-600 dark:text-primary-500',
+        label: 'text-sm font-medium text-cyan-600 dark:text-cyan-500',
       },
     },
     star: {
@@ -731,8 +731,8 @@ export const theme: FlowbiteTheme = {
           lg: 'sm:text-md p-4',
         },
         colors: {
-          gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500',
-          info: 'border-primary-500 bg-primary-50 text-primary-900 placeholder-primary-700 focus:border-primary-500 focus:ring-primary-500 dark:border-primary-400 dark:bg-primary-100 dark:focus:border-primary-500 dark:focus:ring-primary-500',
+          gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
+          info: 'border-cyan-500 bg-cyan-50 text-cyan-900 placeholder-cyan-700 focus:border-cyan-500 focus:ring-cyan-500 dark:border-cyan-400 dark:bg-cyan-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
           failure:
             'border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-100 dark:focus:border-red-500 dark:focus:ring-red-500',
           warning:
@@ -765,8 +765,8 @@ export const theme: FlowbiteTheme = {
           lg: 'sm:text-md p-4',
         },
         colors: {
-          gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500',
-          info: 'border-primary-500 bg-primary-50 text-primary-900 placeholder-primary-700 focus:border-primary-500 focus:ring-primary-500 dark:border-primary-400 dark:bg-primary-100 dark:focus:border-primary-500 dark:focus:ring-primary-500',
+          gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
+          info: 'border-cyan-500 bg-cyan-50 text-cyan-900 placeholder-cyan-700 focus:border-cyan-500 focus:ring-cyan-500 dark:border-cyan-400 dark:bg-cyan-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
           failure:
             'border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-100 dark:focus:border-red-500 dark:focus:ring-red-500',
           warning:
@@ -796,8 +796,8 @@ export const theme: FlowbiteTheme = {
   textarea: {
     base: 'block w-full rounded-lg border disabled:cursor-not-allowed disabled:opacity-50',
     colors: {
-      gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500',
-      info: 'border-primary-500 bg-primary-50 text-primary-900 placeholder-primary-700 focus:border-primary-500 focus:ring-primary-500 dark:border-primary-400 dark:bg-primary-100 dark:focus:border-primary-500 dark:focus:ring-primary-500',
+      gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
+      info: 'border-cyan-500 bg-cyan-50 text-cyan-900 placeholder-cyan-700 focus:border-cyan-500 focus:ring-cyan-500 dark:border-cyan-400 dark:bg-cyan-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
       failure:
         'border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-100 dark:focus:border-red-500 dark:focus:ring-red-500',
       warning:
@@ -820,12 +820,12 @@ export const theme: FlowbiteTheme = {
       label: 'ml-3 text-sm font-medium text-gray-900 dark:text-gray-300',
     },
     toggle: {
-      base: 'toggle-bg h-6 w-11 rounded-full border group-focus:ring-4 group-focus:ring-primary-500/25',
+      base: 'toggle-bg h-6 w-11 rounded-full border group-focus:ring-4 group-focus:ring-cyan-500/25',
       checked: {
         on: 'after:translate-x-full after:border-white',
         off: 'border-gray-200 bg-gray-200 dark:border-gray-600 dark:bg-gray-700',
         color: {
-          blue: ' bg-primary-700 border-primary-700',
+          blue: ' bg-cyan-700 border-cyan-700',
           dark: 'bg-dark-700 border-dark-900',
           failure: 'bg-red-700 border-red-900',
           gray: 'bg-gray-500 border-gray-600',
@@ -840,7 +840,7 @@ export const theme: FlowbiteTheme = {
           lime: 'bg-lime-400 border-lime-400',
           indigo: 'bg-indigo-400 border-indigo-400',
           teal: 'bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4',
-          info: 'bg-primary-600 border-primary-600',
+          info: 'bg-cyan-600 border-cyan-600',
           pink: 'bg-pink-600 border-pink-600',
         },
       },
@@ -874,7 +874,7 @@ export const theme: FlowbiteTheme = {
     cta: {
       base: 'mt-6 rounded-lg p-4',
       color: {
-        blue: 'bg-primary-50 dark:bg-primary-900',
+        blue: 'bg-cyan-50 dark:bg-cyan-900',
         dark: 'bg-dark-50 dark:bg-dark-900',
         failure: 'bg-red-50 dark:bg-red-900',
         gray: 'bg-alternative-50 dark:bg-alternative-900',
@@ -920,7 +920,7 @@ export const theme: FlowbiteTheme = {
     color: {
       failure: 'fill-red-600',
       gray: 'fill-gray-600',
-      info: 'fill-primary-600',
+      info: 'fill-cyan-600',
       pink: 'fill-pink-600',
       purple: 'fill-purple-600',
       success: 'fill-green-500',
@@ -977,29 +977,29 @@ export const theme: FlowbiteTheme = {
           default: {
             base: 'rounded-t-lg',
             active: {
-              on: 'bg-gray-100 text-primary-600 dark:bg-gray-800 dark:text-primary-500',
+              on: 'bg-gray-100 text-cyan-600 dark:bg-gray-800 dark:text-cyan-500',
               off: 'text-gray-500 hover:bg-gray-50 hover:text-gray-600 dark:text-gray-400 dark:hover:bg-gray-800  dark:hover:text-gray-300',
             },
           },
           underline: {
             base: 'rounded-t-lg',
             active: {
-              on: 'text-primary-600 rounded-t-lg border-b-2 border-primary-600 active dark:text-primary-500 dark:border-primary-500',
+              on: 'text-cyan-600 rounded-t-lg border-b-2 border-cyan-600 active dark:text-cyan-500 dark:border-cyan-500',
               off: 'border-b-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300',
             },
           },
           pills: {
             base: '',
             active: {
-              on: 'rounded-lg bg-primary-600 text-white',
+              on: 'rounded-lg bg-cyan-600 text-white',
               off: 'rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white',
             },
           },
           fullWidth: {
             base: 'ml-2 first:ml-0 w-full first:rounded-l-lg last:rounded-r-lg',
             active: {
-              on: 'inline-block p-4 w-full text-gray-900 bg-gray-100 focus:ring-4 focus:ring-primary-300 active focus:outline-none dark:bg-gray-700 dark:text-white',
-              off: 'bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-primary-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700',
+              on: 'inline-block p-4 w-full text-gray-900 bg-gray-100 focus:ring-4 focus:ring-cyan-300 active focus:outline-none dark:bg-gray-700 dark:text-white',
+              off: 'bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-cyan-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700',
             },
           },
         },
@@ -1063,9 +1063,9 @@ export const theme: FlowbiteTheme = {
               'absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full border border-white bg-gray-200 dark:border-gray-900 dark:bg-gray-700',
           },
           icon: {
-            base: 'h-3 w-3 text-primary-600 dark:text-primary-300',
+            base: 'h-3 w-3 text-cyan-600 dark:text-cyan-300',
             wrapper:
-              'absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary-200 ring-8 ring-white dark:bg-primary-900 dark:ring-gray-900',
+              'absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-cyan-200 ring-8 ring-white dark:bg-cyan-900 dark:ring-gray-900',
           },
         },
         vertical: '',

@@ -45,7 +45,7 @@ const DocsLayout: NextPage<PropsWithChildren> = function ({ children }) {
                     <nav>
                       <ul className='overflow-x-hidden font-medium text-gray-500 dark:text-gray-400 space-y-2.5'>
                         <li>
-                          <a href="#" className='pl-2.5 inline-block border-l border-white duration-200 hover:text-gray-900 transition-none dark:hover:text-white hover:border-gray-300 after:content-["#"] after:text-primary-700 dark:after:text-primary-700 dark:border-gray-900 dark:hover:border-gray-700 after:ml-2 after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-100'>Getting started</a>
+                          <a href="#" className='pl-2.5 inline-block border-l border-white duration-200 hover:text-gray-900 transition-none dark:hover:text-white hover:border-gray-300 after:content-["#"] after:text-cyan-700 dark:after:text-cyan-700 dark:border-gray-900 dark:hover:border-gray-700 after:ml-2 after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-100'>Getting started</a>
                         </li>
                       </ul>
                     </nav>
@@ -104,31 +104,31 @@ const DocsNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
       <div className="hidden items-center gap-1 lg:flex">
         <a
           href="https://flowbite.com/docs/getting-started/react/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
         >
           Quickstart
         </a>
         <Link
           href="/docs/theme"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
         >
           Customize
         </Link>
         <a
           href="https://flowbite.com/figma/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
         >
           Figma
         </a>
         <a
           href="https://flowbite.com/blog/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
         >
           Blog
         </a>
         <a
           href="https://flowbite.com"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
         >
           Flowbite
         </a>
@@ -194,7 +194,7 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
     >
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          <span className="flex items-center justify-between w-full my-4 text-sm font-semibold tracking-wide uppercase hover:text-primary-700 dark:hover:text-primary-600 text-gray-900 dark:text-white">Getting started</span>
+          <span className="flex items-center justify-between w-full my-4 text-sm font-semibold tracking-wide uppercase hover:text-cyan-700 dark:hover:text-cyan-600 text-gray-900 dark:text-white">Getting started</span>
           <Sidebar.Item as={Link} href="/docs">
             Introduction
           </Sidebar.Item>
@@ -202,7 +202,7 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
           <Sidebar.Item href="https://github.com/themesberg/flowbite-react/releases">Changelog</Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
-          <span className="flex items-center justify-between w-full my-4 text-sm font-semibold tracking-wide uppercase hover:text-primary-700 dark:hover:text-primary-600 text-gray-900 dark:text-white">Customize</span>
+          <span className="flex items-center justify-between w-full my-4 text-sm font-semibold tracking-wide uppercase hover:text-cyan-700 dark:hover:text-cyan-600 text-gray-900 dark:text-white">Customize</span>
           <Sidebar.Item as={Link} href="/docs/theme">
             Theme
           </Sidebar.Item>
@@ -211,7 +211,7 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
-          <span className="flex items-center justify-between w-full my-4 text-sm font-semibold tracking-wide uppercase hover:text-primary-700 dark:hover:text-primary-600 text-gray-900 dark:text-white">Components</span>
+          <span className="flex items-center justify-between w-full my-4 text-sm font-semibold tracking-wide uppercase hover:text-cyan-700 dark:hover:text-cyan-600 text-gray-900 dark:text-white">Components</span>
           <Sidebar.Item as={Link} href="/docs/components/accordion">
             Accordion
           </Sidebar.Item>
@@ -300,7 +300,7 @@ const DocsFooter: FC = () => {
               Figma design system and other resources.
             </p>
             <p className="max-w-sm mb-3 text-gray-600 dark:text-gray-400 mt-4">
-              Code licensed <a href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE" className='text-primary-600 hover:underline'>MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" rel='nofollow noopener noreferrer' className='text-primary-600 hover:underline'>CC BY 3.0</a>
+              Code licensed <a href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE" className='text-cyan-600 hover:underline'>MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" rel='nofollow noopener noreferrer' className='text-cyan-600 hover:underline'>CC BY 3.0</a>
             </p>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">

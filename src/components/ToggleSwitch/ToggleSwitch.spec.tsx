@@ -134,7 +134,7 @@ describe('Components / Toggle switch', () => {
       const theme = {
         toggleSwitch: {
           root: {
-            base: 'text-primary-100',
+            base: 'text-cyan-100',
           },
         },
       };
@@ -144,7 +144,7 @@ describe('Components / Toggle switch', () => {
         </Flowbite>,
       );
 
-      expect(toggleSwitch()).toHaveClass('text-primary-100');
+      expect(toggleSwitch()).toHaveClass('text-cyan-100');
     });
 
     it('should use `active` classes', () => {
@@ -152,8 +152,8 @@ describe('Components / Toggle switch', () => {
         toggleSwitch: {
           root: {
             active: {
-              off: 'text-primary-200',
-              on: 'text-primary-300',
+              off: 'text-cyan-200',
+              on: 'text-cyan-300',
             },
           },
         },
@@ -167,8 +167,8 @@ describe('Components / Toggle switch', () => {
       const activeToggleSwitch = toggleSwitches()[0];
       const disabledToggleSwitch = toggleSwitches()[1];
 
-      expect(activeToggleSwitch).toHaveClass('text-primary-300');
-      expect(disabledToggleSwitch).toHaveClass('text-primary-200');
+      expect(activeToggleSwitch).toHaveClass('text-cyan-300');
+      expect(disabledToggleSwitch).toHaveClass('text-cyan-200');
     });
 
     it('should use `label` classes', () => {

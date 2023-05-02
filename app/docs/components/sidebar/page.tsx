@@ -138,7 +138,7 @@ const SidebarPage: FC = () => (
             <Badge color="warning">Beta</Badge>
             <button
               aria-label="Close"
-              className="-m-1.5 ml-auto inline-flex h-6 w-6 rounded-lg bg-primary-50 p-1 text-primary-900 hover:bg-primary-200 focus:ring-2 focus:ring-primary-400 dark:bg-primary-900 dark:text-primary-400 dark:hover:bg-primary-800"
+              className="-m-1.5 ml-auto inline-flex h-6 w-6 rounded-lg bg-cyan-50 p-1 text-cyan-900 hover:bg-cyan-200 focus:ring-2 focus:ring-cyan-400 dark:bg-cyan-900 dark:text-cyan-400 dark:hover:bg-cyan-800"
               type="button"
             >
               <svg
@@ -156,12 +156,12 @@ const SidebarPage: FC = () => (
               </svg>
             </button>
           </div>
-          <p className="mb-3 text-sm text-primary-900 dark:text-primary-400">
+          <p className="mb-3 text-sm text-cyan-900 dark:text-cyan-400">
             Preview the new Flowbite dashboard navigation! You can turn the new navigation off for a limited time in
             your profile.
           </p>
           <a
-            className="text-sm text-primary-900 underline hover:text-primary-800 dark:text-primary-400 dark:hover:text-primary-300"
+            className="text-sm text-cyan-900 underline hover:text-cyan-800 dark:text-cyan-400 dark:hover:text-cyan-300"
             href="#"
           >
             Turn new navigation off

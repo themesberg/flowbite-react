@@ -12,7 +12,7 @@ const ToastPage: FC = () => (
   <>
     <CodePreview title="Default toast">
       <Toast>
-        <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-100 text-primary-500 dark:bg-primary-800 dark:text-primary-200">
+        <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-100 text-cyan-500 dark:bg-cyan-800 dark:text-cyan-200">
           <HiFire className="h-5 w-5" />
         </div>
         <div className="ml-3 text-sm font-normal">Set yourself free.</div>
@@ -47,7 +47,7 @@ const ToastPage: FC = () => (
     <CodePreview title="Simple toast">
       <div className="space-x-4 divide-x divide-gray-200 dark:divide-gray-700">
         <Toast>
-          <FaTelegramPlane className="h-5 w-5 text-primary-600 dark:text-primary-500" />
+          <FaTelegramPlane className="h-5 w-5 text-cyan-600 dark:text-cyan-500" />
           <div className="pl-4 text-sm font-normal">Message sent successfully.</div>
         </Toast>
       </div>
@@ -58,7 +58,7 @@ const ToastPage: FC = () => (
         <div className="ml-auto flex items-center space-x-2">
           <Link
             href="/toast"
-            className="rounded-lg p-1.5 text-sm font-medium text-primary-600 hover:bg-primary-100 dark:text-primary-500 dark:hover:bg-gray-700"
+            className="rounded-lg p-1.5 text-sm font-medium text-cyan-600 hover:bg-cyan-100 dark:text-cyan-500 dark:hover:bg-gray-700"
           >
             Undo
           </Link>
@@ -69,7 +69,7 @@ const ToastPage: FC = () => (
     <CodePreview title="Interactive toast">
       <Toast>
         <div className="flex !items-start">
-          <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-100 text-primary-500 dark:bg-primary-900 dark:text-primary-300">
+          <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-100 text-cyan-500 dark:bg-cyan-900 dark:text-cyan-300">
             <MdLoop className="h-5 w-5" />
           </div>
           <div className="ml-3 text-sm font-normal">
