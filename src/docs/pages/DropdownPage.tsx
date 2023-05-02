@@ -152,7 +152,7 @@ const DropdownPage: FC = () => {
     {
       title: 'Dropdown disabled',
       code: (
-        <Dropdown  label="Dropdown button" dismissOnClick={false} disabled>
+        <Dropdown label="Dropdown button" dismissOnClick={false} disabled>
           <Dropdown.Item>Dashboard</Dropdown.Item>
           <Dropdown.Item>Settings</Dropdown.Item>
           <Dropdown.Item>Earnings</Dropdown.Item>

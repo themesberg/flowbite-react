@@ -48,7 +48,7 @@ export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'di
   theme: FlowbiteFloatingTheme;
   trigger?: 'hover' | 'click';
   minWidth?: number;
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 /**

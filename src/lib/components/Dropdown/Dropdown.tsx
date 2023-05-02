@@ -124,7 +124,7 @@ const DropdownComponent: FC<DropdownProps> = ({
         {children}
       </button>
     ) : (
-      <Button  ref={ref} disabled={disabled} {...buttonProps}>
+      <Button ref={ref} disabled={disabled} {...buttonProps}>
         {children}
       </Button>
     );
