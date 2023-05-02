@@ -71,6 +71,7 @@ const DropdownComponent: FC<DropdownProps> = ({
     inline,
     floatingArrow = false,
     arrowIcon = true,
+    disabled,
     ...buttonProps
   } = theirProps;
 
@@ -119,11 +120,11 @@ const DropdownComponent: FC<DropdownProps> = ({
     }, [ref]);
 
     return inline ? (
-      <button ref={ref} className={theme.inlineWrapper}>
+      <button ref={ref} disabled={disabled} className={theme.inlineWrapper}>
         {children}
       </button>
     ) : (
-      <Button ref={ref} {...buttonProps}>
+      <Button  ref={ref} disabled={disabled} {...buttonProps}>
         {children}
       </Button>
     );
@@ -141,6 +142,7 @@ const DropdownComponent: FC<DropdownProps> = ({
       closeRequestKey={closeRequestKey}
       className={className}
       minWidth={buttonWidth}
+      disabled={disabled}
     >
       <TriggerWrapper setButtonWidth={setButtonWidth}>
         {label}

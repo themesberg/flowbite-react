@@ -48,6 +48,7 @@ export interface FloatingProps extends PropsWithChildren<Omit<ComponentProps<'di
   theme: FlowbiteFloatingTheme;
   trigger?: 'hover' | 'click';
   minWidth?: number;
+  disabled?: boolean
 }
 
 /**
@@ -65,6 +66,7 @@ export const Floating: FC<FloatingProps> = ({
   theme,
   trigger = 'hover',
   minWidth,
+  disabled,
   ...props
 }) => {
   const arrowRef = useRef<HTMLDivElement>(null);
@@ -90,10 +92,10 @@ export const Floating: FC<FloatingProps> = ({
   } = floatingTooltip;
 
   const { getFloatingProps, getReferenceProps } = useInteractions([
-    useClick(context, { enabled: trigger === 'click' }),
+    useClick(context, { enabled: trigger === 'click' && !disabled }),
     useFocus(context),
     useHover(context, {
-      enabled: trigger === 'hover',
+      enabled: trigger === 'hover' && !disabled,
       handleClose: safePolygon(),
     }),
     useRole(context, { role: 'tooltip' }),

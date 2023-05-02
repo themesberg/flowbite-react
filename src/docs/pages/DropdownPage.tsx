@@ -149,6 +149,17 @@ const DropdownPage: FC = () => {
         </div>
       ),
     },
+    {
+      title: 'Dropdown disabled',
+      code: (
+        <Dropdown  label="Dropdown button" dismissOnClick={false} disabled>
+          <Dropdown.Item>Dashboard</Dropdown.Item>
+          <Dropdown.Item>Settings</Dropdown.Item>
+          <Dropdown.Item>Earnings</Dropdown.Item>
+          <Dropdown.Item>Sign out</Dropdown.Item>
+        </Dropdown>
+      ),
+    },
   ];
 
   return <DemoPage examples={examples} />;
