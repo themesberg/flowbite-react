@@ -11,3 +11,5 @@ npm-debug.log*
 tsconfig.tsbuildinfo
 yarn-debug.log*
 yarn-error.log*
+yarn.lock
+package-lock.json
