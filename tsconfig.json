@@ -29,5 +29,5 @@
     "types": ["@testing-library/jest-dom", "node", "vitest"]
   },
   "exclude": ["./build/", "./lib/", "./.next/"],
-  "include": [".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "postcss.config.js", "tailwindcss.config.js"]
+  "include": [".next/types/**/*.ts", "**/*.js", "**/*.mjs", "**/*.ts", "**/*.tsx"]
 }
