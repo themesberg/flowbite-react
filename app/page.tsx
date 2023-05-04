@@ -35,40 +35,7 @@ const HomePage: NextPage = () => {
             className="min-w-0 flex-auto divide-y dark:divide-gray-700 lg:static lg:max-h-full lg:overflow-visible"
             ref={mainRef}
           >
-            <section className="mx-auto flex max-w-8xl flex-col overflow-hidden px-4 pb-6 pt-6 sm:pb-8 sm:pt-8 lg:px-20 lg:pb-24 lg:pt-16">
-              <div className="flex flex-col gap-20">
-                <div className="flex items-center gap-10">
-                  <div className="flex max-w-[676px] flex-col justify-start gap-4">
-                    <div className="flex flex-col gap-4 text-left lg:gap-6">
-                      <h1 className="max-w-xl text-4xl font-extrabold leading-none text-gray-900 dark:text-white lg:text-6xl">
-                        <span className="xl:inline">Speed up your web development with</span>
-                        <span className="ml-2 text-primary-700 dark:text-primary-700 xl:inline">Flowbite React</span>
-                      </h1>
-                      <p className="max-w-xl text-lg leading-normal text-gray-500 dark:text-gray-400 lg:text-xl">
-                        Flowbite React is an official Flowbite component library for React. All interactivities are
-                        handled by React.
-                      </p>
-                      <div className="mt-4 justify-center sm:flex sm:justify-start md:mt-5">
-                        <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
-                          <Button href="/docs/components/accordion" size="lg">
-                            Get started <HiOutlineArrowRight className="ml-2 h-5 w-5" />
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="hidden p-0 xl:block">
-                    <div className="relative dark:hidden">
-                      <img className="max-w-2xl" src="/images/gallery.png" alt="Header" />
-                    </div>
-                    <div className="relative hidden dark:block">
-                      <img className="max-w-2xl" src="/images/gallery-dark.png" alt="Header" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+            <HeroSection />
             <MainFooter />
           </main>
         </div>
@@ -76,6 +43,45 @@ const HomePage: NextPage = () => {
     </Flowbite>
   );
 };
+
+const HeroSection: FC = () => {
+  return (
+    <section className="mx-auto flex max-w-8xl flex-col overflow-hidden px-4 pb-6 pt-6 sm:pb-8 sm:pt-8 lg:px-20 lg:pb-24 lg:pt-16">
+      <div className="flex flex-col gap-20">
+        <div className="flex items-center gap-10">
+          <div className="flex max-w-[676px] flex-col justify-start gap-4">
+            <div className="flex flex-col gap-4 text-left lg:gap-6">
+              <h1 className="max-w-xl text-4xl font-extrabold leading-none text-gray-900 dark:text-white lg:text-6xl">
+                <span className="xl:inline">Speed up your web development with</span>
+                <span className="ml-2 text-primary-700 dark:text-primary-700 xl:inline">Flowbite React</span>
+              </h1>
+              <p className="max-w-xl text-lg leading-normal text-gray-500 dark:text-gray-400 lg:text-xl">
+                Flowbite React is an official Flowbite component library for React. All interactivities are
+                handled by React.
+              </p>
+              <div className="mt-4 justify-center sm:flex sm:justify-start md:mt-5">
+                <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
+                  <Button href="/docs/components/accordion" size="lg">
+                    Get started <HiOutlineArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden p-0 xl:block">
+            <div className="relative dark:hidden">
+              <img className="max-w-2xl" src="/images/gallery.png" alt="Header" />
+            </div>
+            <div className="relative hidden dark:block">
+              <img className="max-w-2xl" src="/images/gallery-dark.png" alt="Header" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 const MainNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
   return (
