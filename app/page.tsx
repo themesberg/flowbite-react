@@ -6,12 +6,11 @@ import type { NextPage } from 'next/types';
 import type { FC } from 'react';
 import { useRef, useState } from 'react';
 import { BsDiscord, BsGithub } from 'react-icons/bs';
-import { HiMenuAlt1, HiX } from 'react-icons/hi';
+import { HiMenuAlt1, HiOutlineArrowRight, HiX } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { DarkThemeToggle, Flowbite, Footer, Navbar, Tooltip, Button } from '~/src';
-import { HiOutlineArrowRight } from 'react-icons/hi';
+import { Button, DarkThemeToggle, Flowbite, Footer, Navbar, Tooltip } from '~/src';
 
 interface LayoutState {
   collapsed: boolean;
@@ -39,7 +38,7 @@ const HomePage: NextPage = () => {
             <section className="mx-auto flex max-w-8xl flex-col overflow-hidden px-4 pb-6 pt-6 sm:pb-8 sm:pt-8 lg:px-20 lg:pb-24 lg:pt-16">
               <div className="flex flex-col gap-20">
                 <div className="flex items-center gap-10">
-                  <div className="flex flex-col justify-start gap-4 max-w-[676px]">
+                  <div className="flex max-w-[676px] flex-col justify-start gap-4">
                     <div className="flex flex-col gap-4 text-left lg:gap-6">
                       <h1 className="max-w-xl text-4xl font-extrabold leading-none text-gray-900 dark:text-white lg:text-6xl">
                         <span className="xl:inline">Speed up your web development with</span>
@@ -51,7 +50,9 @@ const HomePage: NextPage = () => {
                       </p>
                       <div className="mt-4 justify-center sm:flex sm:justify-start md:mt-5">
                         <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
-                          <Button href='/docs/components/accordion' size='lg'>Get started  <HiOutlineArrowRight className="ml-2 h-5 w-5" /></Button>
+                          <Button href="/docs/components/accordion" size="lg">
+                            Get started <HiOutlineArrowRight className="ml-2 h-5 w-5" />
+                          </Button>
                         </div>
                       </div>
                     </div>
@@ -185,16 +186,16 @@ const MainFooter: FC = () => {
     <Footer className="rounded-none pb-8 pt-16 shadow-none">
       <div className="mx-auto w-full max-w-8xl px-4 lg:px-20">
         <div className="grid w-full justify-between gap-8 md:grid-cols-2">
-          <div className="max-w-sm mb-4 lg:mb-0">
+          <div className="mb-4 max-w-sm lg:mb-0">
             <Link href="/" className="flex items-center gap-3">
               <Image alt="" height="32" src="/favicon.svg" width="32" />
               <span className="text-xl font-semibold text-gray-900 dark:text-gray-100">Flowbite React</span>
             </Link>
-            <p className="max-w-sm mb-3 mt-4 text-gray-600 dark:text-gray-400">
+            <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">
               Flowbite is an ecosystem built on top of Tailwind CSS including a component library, block sections, a
               Figma design system and other resources.
             </p>
-            <p className="max-w-sm mb-3 mt-4 text-gray-600 dark:text-gray-400">
+            <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">
               Code licensed{' '}
               <a
                 href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE"
