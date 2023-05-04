@@ -11,7 +11,7 @@ interface CodePreviewProps extends PropsWithChildren, ComponentProps<'div'> {
 
 export const CodePreview: FC<CodePreviewProps> = function ({ children, className, title }) {
   return (
-    <div className="flex flex-col gap-2 w-full">
+    <div className="flex w-full flex-col gap-2">
       <h2 className="text-2xl font-bold">{title}</h2>
       <div className={classNames('py-4', className)}>
         <Card>{children}</Card>

@@ -1,9 +1,9 @@
 'use client';
 
-import type { Metadata, NextPage } from 'next/types';
+import type { NextPage } from 'next/types';
 import type { PropsWithChildren } from 'react';
-import '~/app/style.css';
 import '~/app/docs.css';
+import '~/app/style.css';
 
 // export const metadata: Metadata = {
 //   icons: '/favicon.svg',
@@ -17,9 +17,7 @@ import '~/app/docs.css';
 // };
 
 const RootLayout: NextPage<PropsWithChildren> = function ({ children }) {
-  return (
-    <div>{children}</div>
-  );
+  return <div>{children}</div>;
 };
 
 export default RootLayout;

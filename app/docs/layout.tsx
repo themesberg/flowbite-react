@@ -8,8 +8,8 @@ import { useRef, useState } from 'react';
 import { BsDiscord, BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
-import '~/app/style.css';
 import '~/app/docs.css';
+import '~/app/style.css';
 import { DarkThemeToggle, Flowbite, Footer, Navbar, Sidebar, Tooltip } from '~/src';
 
 interface LayoutState {
@@ -28,24 +28,31 @@ const DocsLayout: NextPage<PropsWithChildren> = function ({ children }) {
 
   return (
     <Flowbite>
-      <div className="max-h-screen overflow-auto relative w-full bg-white dark:bg-gray-900 text-gray-600 dark:text-gray-400 antialiased">
+      <div className="relative max-h-screen w-full overflow-auto bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
         <DocsNavbar {...state} />
         <div className="lg:flex">
           <DocsSidebar {...state} />
-          <main className="flex-auto w-full min-w-0 lg:static lg:max-h-full lg:overflow-visible" ref={mainRef}>
-            <div className='flex w-full'>
-              <div className='flex flex-col max-w-4xl mx-auto w-full px-4 min-w-0 pt-6 lg:px-8 lg:pt-8 pb:12 xl:pb-24 lg:pb-16 divide-y divide-gray-200 dark:divide-gray-800'>
+          <main className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible" ref={mainRef}>
+            <div className="flex w-full">
+              <div className="pb:12 mx-auto flex w-full min-w-0 max-w-4xl flex-col divide-y divide-gray-200 px-4 pt-6 dark:divide-gray-800 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
                 {children}
                 <DocsFooter />
               </div>
-              <div className='flex-none hidden w-64 pl-8 xl:text-sm xl:block right-0'>
-                <div className='flex overflow-y-auto sticky top-20 flex-col justify-between pb-6 h-[calc(100vh-5rem)]'>
+              <div className="right-0 hidden w-64 flex-none pl-8 xl:block xl:text-sm">
+                <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-between overflow-y-auto pb-6">
                   <div className="mb-8">
-                    <h4 className='pl-2.5 my-4 text-sm font-semibold tracking-wide text-gray-900 uppercase dark:text-white'>On this page</h4>
+                    <h4 className="my-4 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
+                      On this page
+                    </h4>
                     <nav>
-                      <ul className='overflow-x-hidden font-medium text-gray-500 dark:text-gray-400 space-y-2.5'>
+                      <ul className="space-y-2.5 overflow-x-hidden font-medium text-gray-500 dark:text-gray-400">
                         <li>
-                          <a href="#" className='pl-2.5 inline-block border-l border-white duration-200 hover:text-gray-900 transition-none dark:hover:text-white hover:border-gray-300 after:content-["#"] after:text-cyan-700 dark:after:text-cyan-700 dark:border-gray-900 dark:hover:border-gray-700 after:ml-2 after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-100'>Getting started</a>
+                          <a
+                            href="#"
+                            className='inline-block border-l border-white pl-2.5 transition-none duration-200 after:ml-2 after:text-cyan-700 after:opacity-0 after:transition-opacity after:duration-100 after:content-["#"] hover:border-gray-300 hover:text-gray-900 hover:after:opacity-100 dark:border-gray-900 dark:after:text-cyan-700 dark:hover:border-gray-700 dark:hover:text-white'
+                          >
+                            Getting started
+                          </a>
                         </li>
                       </ul>
                     </nav>
@@ -67,8 +74,8 @@ const DocsNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
       theme={{
         base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-3 px-4',
         inner: {
-          base: 'mx-auto flex flex-wrap justify-between items-center w-full'
-        }
+          base: 'mx-auto flex flex-wrap justify-between items-center w-full',
+        },
       }}
     >
       <div className="flex items-center gap-3">
@@ -172,7 +179,8 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
       theme={{
         root: {
           base: 'fixed inset-0 z-30 flex-none h-full w-64 lg:static lg:h-auto border-r border-gray-200 dark:border-gray-600 lg:overflow-y-visible lg:pt-0 lg:block hidden',
-          inner: 'overflow-y-auto px-4 pt-20 lg:pt-0 h-full bg-white scrolling-touch max-w-2xs lg:h-[calc(100vh-8rem)] lg:block dark:bg-gray-900 lg:mr-0 lg:sticky top-20 font-normal text-base lg:text-sm',
+          inner:
+            'overflow-y-auto px-4 pt-20 lg:pt-0 h-full bg-white scrolling-touch max-w-2xs lg:h-[calc(100vh-8rem)] lg:block dark:bg-gray-900 lg:mr-0 lg:sticky top-20 font-normal text-base lg:text-sm',
         },
         item: {
           base: 'transition-colors duration-200 relative flex items-center flex-wrap font-medium hover:text-gray-900 hover:cursor-pointer text-gray-500 dark:text-gray-400 dark:hover:text-white',
@@ -189,12 +197,14 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
             active: 'text-gray-700 dark:text-gray-100',
           },
           label: '',
-        }
+        },
       }}
     >
       <Sidebar.Items>
         <Sidebar.ItemGroup>
-          <span className="flex items-center justify-between w-full my-4 text-sm font-semibold tracking-wide uppercase hover:text-cyan-700 dark:hover:text-cyan-600 text-gray-900 dark:text-white">Getting started</span>
+          <span className="my-4 flex w-full items-center justify-between text-sm font-semibold uppercase tracking-wide text-gray-900 hover:text-cyan-700 dark:text-white dark:hover:text-cyan-600">
+            Getting started
+          </span>
           <Sidebar.Item as={Link} href="/docs">
             Introduction
           </Sidebar.Item>
@@ -202,7 +212,9 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
           <Sidebar.Item href="https://github.com/themesberg/flowbite-react/releases">Changelog</Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
-          <span className="flex items-center justify-between w-full my-4 text-sm font-semibold tracking-wide uppercase hover:text-cyan-700 dark:hover:text-cyan-600 text-gray-900 dark:text-white">Customize</span>
+          <span className="my-4 flex w-full items-center justify-between text-sm font-semibold uppercase tracking-wide text-gray-900 hover:text-cyan-700 dark:text-white dark:hover:text-cyan-600">
+            Customize
+          </span>
           <Sidebar.Item as={Link} href="/docs/theme">
             Theme
           </Sidebar.Item>
@@ -211,7 +223,9 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
           </Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
-          <span className="flex items-center justify-between w-full my-4 text-sm font-semibold tracking-wide uppercase hover:text-cyan-700 dark:hover:text-cyan-600 text-gray-900 dark:text-white">Components</span>
+          <span className="my-4 flex w-full items-center justify-between text-sm font-semibold uppercase tracking-wide text-gray-900 hover:text-cyan-700 dark:text-white dark:hover:text-cyan-600">
+            Components
+          </span>
           <Sidebar.Item as={Link} href="/docs/components/accordion">
             Accordion
           </Sidebar.Item>
@@ -287,50 +301,89 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
 
 const DocsFooter: FC = () => {
   return (
-    <Footer className="rounded-none px-4 lg:px-0 pb-8 pt-16 shadow-none">
+    <Footer className="rounded-none px-4 pb-8 pt-16 shadow-none lg:px-0">
       <div className="w-full">
         <div className="grid w-full justify-between md:grid-cols-2">
-          <div className='max-w-sm mb-4 lg:mb-0'>
+          <div className="mb-4 max-w-sm lg:mb-0">
             <Link href="/" className="flex items-center gap-3">
               <Image alt="" height="32" src="/favicon.svg" width="32" />
               <span className="text-xl font-semibold text-gray-900 dark:text-gray-100">Flowbite React</span>
             </Link>
-            <p className="max-w-sm mb-3 text-gray-600 dark:text-gray-400 mt-4">
+            <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">
               Flowbite is an ecosystem built on top of Tailwind CSS including a component library, block sections, a
               Figma design system and other resources.
             </p>
-            <p className="max-w-sm mb-3 text-gray-600 dark:text-gray-400 mt-4">
-              Code licensed <a href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE" className='text-cyan-600 hover:underline'>MIT</a>, docs <a href="https://creativecommons.org/licenses/by/3.0/" rel='nofollow noopener noreferrer' className='text-cyan-600 hover:underline'>CC BY 3.0</a>
+            <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">
+              Code licensed{' '}
+              <a
+                href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE"
+                className="text-cyan-600 hover:underline"
+              >
+                MIT
+              </a>
+              , docs{' '}
+              <a
+                href="https://creativecommons.org/licenses/by/3.0/"
+                rel="nofollow noopener noreferrer"
+                className="text-cyan-600 hover:underline"
+              >
+                CC BY 3.0
+              </a>
             </p>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
             <div>
-              <Footer.Title title="Resources" className='mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white' />
-              <Footer.LinkGroup col className='text-gray-600 dark:text-gray-400'>
-                <Footer.Link href="https://github.com/themesberg/flowbite-react" className='text-base'>GitHub</Footer.Link>
-                <Footer.Link href="https://flowbite.com/" className='text-base'>Flowbite</Footer.Link>
-                <Footer.Link href="https://tailwindcss.com/" className='text-base'>Tailwind CSS</Footer.Link>
-                <Footer.Link href="https://flowbite.com/figma/" className='text-base'>Figma</Footer.Link>
+              <Footer.Title
+                title="Resources"
+                className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
+              />
+              <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
+                <Footer.Link href="https://github.com/themesberg/flowbite-react" className="text-base">
+                  GitHub
+                </Footer.Link>
+                <Footer.Link href="https://flowbite.com/" className="text-base">
+                  Flowbite
+                </Footer.Link>
+                <Footer.Link href="https://tailwindcss.com/" className="text-base">
+                  Tailwind CSS
+                </Footer.Link>
+                <Footer.Link href="https://flowbite.com/figma/" className="text-base">
+                  Figma
+                </Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
-              <Footer.Title title="Help & Support" className='mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white' />
+              <Footer.Title
+                title="Help & Support"
+                className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
+              />
               <Footer.LinkGroup col>
-                <Footer.Link href="https://discord.gg/4eeurUVvTy" className='text-base'>Discord</Footer.Link>
-                <Footer.Link href="https://github.com/themesberg/flowbite-react/discussions" className='text-base'>Github Discussions</Footer.Link>
+                <Footer.Link href="https://discord.gg/4eeurUVvTy" className="text-base">
+                  Discord
+                </Footer.Link>
+                <Footer.Link href="https://github.com/themesberg/flowbite-react/discussions" className="text-base">
+                  Github Discussions
+                </Footer.Link>
               </Footer.LinkGroup>
             </div>
             <div>
-              <Footer.Title title="Legal" className='mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white' />
+              <Footer.Title
+                title="Legal"
+                className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
+              />
               <Footer.LinkGroup col>
-                <Footer.Link href="https://flowbite.com/license/" className='text-base'>License</Footer.Link>
-                <Footer.Link href="https://flowbite.com/brand/" className='text-base'>Brand guideline</Footer.Link>
+                <Footer.Link href="https://flowbite.com/license/" className="text-base">
+                  License
+                </Footer.Link>
+                <Footer.Link href="https://flowbite.com/brand/" className="text-base">
+                  Brand guideline
+                </Footer.Link>
               </Footer.LinkGroup>
             </div>
           </div>
         </div>
         <Footer.Divider />
-        <div className="w-full sm:flex sm:items-center sm:justify-center text-center">
+        <div className="w-full text-center sm:flex sm:items-center sm:justify-center">
           <Footer.Copyright
             by="All Rights Reserved. Flowbite™ is a registered trademark."
             href="/"
