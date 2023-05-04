@@ -90,6 +90,7 @@ const PaginationComponent: FC<PaginationProps> = ({
           {renderPaginationButton({
             className: classNames(classNames(theme.pages.previous.base, showIcon && theme.pages.showIcon)),
             onClick: goToPreviousPage,
+            disabled: currentPage === 1,
             children: (
               <>
                 {showIcon && <HiChevronLeft aria-hidden className={theme.pages.previous.icon} />}
@@ -115,6 +116,7 @@ const PaginationComponent: FC<PaginationProps> = ({
           {renderPaginationButton({
             className: classNames(theme.pages.next.base, showIcon && theme.pages.showIcon),
             onClick: goToNextPage,
+            disabled: currentPage === totalPages,
             children: (
               <>
                 {nextLabel}

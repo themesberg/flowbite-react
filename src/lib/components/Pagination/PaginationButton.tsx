@@ -7,6 +7,7 @@ import { useTheme } from '../Flowbite/ThemeContext';
 export interface FlowbitePaginationButtonTheme {
   base: string;
   active: string;
+  disabled: string;
 }
 
 export interface PaginationButtonProps extends ComponentProps<'button'> {
@@ -15,6 +16,7 @@ export interface PaginationButtonProps extends ComponentProps<'button'> {
   className?: string;
   onClick?: ReactEventHandler<HTMLButtonElement>;
   theme?: DeepPartial<FlowbitePaginationButtonTheme>;
+  disabled?: boolean;
 }
 
 const PaginationButton: FC<PaginationButtonProps> = ({
@@ -23,6 +25,7 @@ const PaginationButton: FC<PaginationButtonProps> = ({
   className,
   onClick,
   theme: customTheme = {},
+  disabled,
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.pagination, customTheme);
@@ -32,9 +35,11 @@ const PaginationButton: FC<PaginationButtonProps> = ({
       className={classNames(
         {
           [theme.pages.selector.active]: active,
+          [theme.pages.selector.disabled]: disabled,
         },
         className,
       )}
+      disabled={disabled}
       onClick={onClick}
       {...props}
     >

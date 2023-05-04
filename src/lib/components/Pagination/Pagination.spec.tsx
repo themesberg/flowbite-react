@@ -61,6 +61,29 @@ describe('Pagination', () => {
       expect(pages()).toEqual([1, 2, 3, 4, 5]);
       expect(currentPage()).toEqual(4);
     });
+
+    it('should disable previous button when on 1st page', async () => {
+      render(<PaginationTest />);
+
+      const firstButton = buttons()[0];
+
+      expect(currentPage()).toEqual(1);
+      expect(firstButton).toBeDisabled();
+    });
+
+    it('should disable next button when on last page', async () => {
+      const user = userEvent.setup();
+      render(<PaginationTest />);
+
+      const lastButton = buttons()[buttons().length - 1];
+
+      for (let i = 0; i < 5; ++i) {
+        await user.click(nextButton());
+      }
+
+      expect(currentPage()).toEqual(5);
+      expect(lastButton).toBeDisabled();
+    });
   });
 
   describe('Props', () => {
