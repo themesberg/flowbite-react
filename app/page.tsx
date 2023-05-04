@@ -11,6 +11,8 @@ import { SiStorybook } from 'react-icons/si';
 import '~/app/docs.css';
 import '~/app/style.css';
 import { Button, DarkThemeToggle, Flowbite, Footer, Navbar, Tooltip } from '~/src';
+import { ComponentCard } from './components/component-card';
+import { COMPONENTS_DATA } from './data/components';
 
 interface LayoutState {
   collapsed: boolean;
@@ -37,6 +39,7 @@ const HomePage: NextPage = () => {
           >
             <HeroSection />
             <FeaturedSection />
+            <ComponentsSection />
             <MainFooter />
           </main>
         </div>
@@ -222,6 +225,35 @@ const FeaturedSection: FC = () => {
               </svg>
             </Link>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ComponentsSection: FC = () => {
+  return (
+    <section>
+      <div className="mx-auto flex max-w-8xl flex-col gap-8 px-4 py-8 sm:gap-12 lg:px-20 lg:pt-24">
+        <div className="flex flex-col items-center gap-4 sm:gap-4">
+          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white lg:text-4xl">
+            React UI Components
+          </h2>
+          <p className="mx-auto max-w-3xl text-center text-lg font-normal text-gray-500 dark:text-gray-400">
+            Explore the whole collection of{' '}
+            <span className="font-medium text-gray-900 dark:text-white">over 57 open-source UI components</span> and
+            interactive elements built with Svelte and Flowbiteƒ
+          </p>
+        </div>
+        <div className="grid grid-cols-1 items-center justify-center gap-4 sm:grid-cols-2 sm:gap-8 xl:grid-cols-3">
+          {COMPONENTS_DATA.map((component) => (
+            <ComponentCard {...component} />
+          ))}
+        </div>
+        <div className="mb-4 flex w-full justify-center text-center">
+          <Button href="/docs/components/accordion" color="light">
+            View all components
+          </Button>
         </div>
       </div>
     </section>
