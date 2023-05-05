@@ -1,15 +1,13 @@
 {
-  "files.exclude": {
-    "**/.git": true,
-    "**/.next": true,
-    "**/.vercel": true,
-    "**/build": true,
-    "**/coverage": true,
-    "**/lib": true,
-    "**/node_modules": true,
-    "**/.DS_Store": true,
-    "**/Thumbs.db": true
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
   },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }

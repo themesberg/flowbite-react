@@ -14,7 +14,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/alerts.svg',
     imageDark: '/images/components/alerts-dark.svg',
     link: `/docs/components/alert`,
-    classes: 'w-56'
+    classes: 'w-56',
   },
   {
     id: '2',
@@ -22,7 +22,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/accordion.svg',
     imageDark: '/images/components/accordion-dark.svg',
     link: `/docs/components/accordion`,
-    classes: 'w-56'
+    classes: 'w-56',
   },
   {
     id: '3',
@@ -30,7 +30,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/avatar.svg',
     imageDark: '/images/components/avatar-dark.svg',
     link: `/docs/components/avatar`,
-    classes: 'w-40'
+    classes: 'w-40',
   },
   {
     id: '4',
@@ -38,7 +38,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/badges.svg',
     imageDark: '/images/components/badges-dark.svg',
     link: `/docs/components/badge`,
-    classes: 'w-28'
+    classes: 'w-28',
   },
   {
     id: '5',
@@ -46,7 +46,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/breadcrumbs.svg',
     imageDark: '/images/components/breadcrumbs-dark.svg',
     link: `/docs/components/breadcrumb`,
-    classes: 'w-64'
+    classes: 'w-64',
   },
   {
     id: '6',
@@ -54,7 +54,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/buttons.svg',
     imageDark: '/images/components/buttons-dark.svg',
     link: `/docs/components/button`,
-    classes: 'w-24'
+    classes: 'w-24',
   },
   {
     id: '7',
@@ -62,7 +62,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/button-group.svg',
     imageDark: '/images/components/button-group-dark.svg',
     link: `/docs/components/button-group`,
-    classes: 'w-56'
+    classes: 'w-56',
   },
   {
     id: '8',
@@ -70,7 +70,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/cards.svg',
     imageDark: '/images/components/cards-dark.svg',
     link: `/docs/components/card`,
-    classes: 'w-36'
+    classes: 'w-36',
   },
   {
     id: '9',
@@ -78,7 +78,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/carousel.svg',
     imageDark: '/images/components/carousel-dark.svg',
     link: `/docs/components/carousel`,
-    classes: 'w-48'
+    classes: 'w-48',
   },
   {
     id: '10',
@@ -86,7 +86,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/dropdown.svg',
     imageDark: '/images/components/dropdown-dark.svg',
     link: `/docs/components/dropdown`,
-    classes: 'w-28'
+    classes: 'w-28',
   },
   {
     id: '11',
@@ -94,7 +94,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/forms.svg',
     imageDark: '/images/components/forms-dark.svg',
     link: `/docs/components/forms`,
-    classes: 'w-40'
+    classes: 'w-40',
   },
   {
     id: '12',
@@ -102,7 +102,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/list-group.svg',
     imageDark: '/images/components/list-group-dark.svg',
     link: `/docs/components/list-group`,
-    classes: 'w-36'
+    classes: 'w-36',
   },
   // {
   //   id: '13',
@@ -118,7 +118,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/modal.svg',
     imageDark: '/images/components/modal-dark.svg',
     link: `/docs/components/modal`,
-    classes: 'w-48'
+    classes: 'w-48',
   },
   {
     id: '15',
@@ -126,7 +126,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/tabs.svg',
     imageDark: '/images/components/tabs-dark.svg',
     link: `/docs/components/tabs`,
-    classes: 'w-64'
+    classes: 'w-64',
   },
   {
     id: '16',
@@ -134,7 +134,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/navbar.svg',
     imageDark: '/images/components/navbar-dark.svg',
     link: `/docs/components/navbar`,
-    classes: 'w-56'
+    classes: 'w-56',
   },
   {
     id: '17',
@@ -142,7 +142,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/footer.svg',
     imageDark: '/images/components/footer-dark.svg',
     link: `/docs/components/footer`,
-    classes: 'w-56'
+    classes: 'w-56',
   },
   {
     id: '18',
@@ -150,7 +150,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/sidebar.svg',
     imageDark: '/images/components/sidebar-dark.svg',
     link: `/docs/components/sidebar`,
-    classes: 'w-16'
+    classes: 'w-16',
   },
   {
     id: '19',
@@ -158,7 +158,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/pagination.svg',
     imageDark: '/images/components/pagination-dark.svg',
     link: `/docs/components/pagination`,
-    classes: 'w-48'
+    classes: 'w-48',
   },
   // {
   //   id: '20',
@@ -174,7 +174,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/rating.svg',
     imageDark: '/images/components/rating-dark.svg',
     link: `/docs/components/rating`,
-    classes: 'w-48'
+    classes: 'w-48',
   },
   {
     id: '22',
@@ -182,7 +182,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/timeline.svg',
     imageDark: '/images/components/timeline-dark.svg',
     link: `/docs/components/timeline`,
-    classes: 'w-24'
+    classes: 'w-24',
   },
   {
     id: '23',
@@ -190,7 +190,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/progress.svg',
     imageDark: '/images/components/progress-dark.svg',
     link: `/docs/components/progress`,
-    classes: 'w-48'
+    classes: 'w-48',
   },
   {
     id: '24',
@@ -198,7 +198,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/table.svg',
     imageDark: '/images/components/table-dark.svg',
     link: `/docs/components/table`,
-    classes: 'w-48'
+    classes: 'w-48',
   },
   {
     id: '25',
@@ -206,7 +206,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/spinner.svg',
     imageDark: '/images/components/spinner-dark.svg',
     link: `/docs/components/spinner`,
-    classes: 'w-32'
+    classes: 'w-32',
   },
   {
     id: '26',
@@ -214,7 +214,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/toast.svg',
     imageDark: '/images/components/toast-dark.svg',
     link: `/docs/components/toast`,
-    classes: 'w-48'
+    classes: 'w-48',
   },
   {
     id: '27',
@@ -222,7 +222,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/tooltips.svg',
     imageDark: '/images/components/tooltips-dark.svg',
     link: `/docs/components/tooltip`,
-    classes: 'w-24'
+    classes: 'w-24',
   },
   {
     id: '28',
@@ -230,7 +230,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/datepicker.svg',
     imageDark: '/images/components/datepicker-dark.svg',
     link: `/docs/plugins/datepicker`,
-    classes: 'w-28'
+    classes: 'w-28',
   },
   // {
   //   id: '29',
@@ -472,4 +472,4 @@ export const COMPONENTS_DATA: Component[] = [
   //   link: `/docs/components/jumbotron`,
   //   classes: 'w-64'
   // }
-]
+];
