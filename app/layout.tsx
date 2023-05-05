@@ -17,7 +17,11 @@ import '~/app/style.css';
 // };
 
 const RootLayout: NextPage<PropsWithChildren> = function ({ children }) {
-  return <div>{children}</div>;
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
 };
 
 export default RootLayout;
