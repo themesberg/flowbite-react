@@ -34,7 +34,7 @@ const DocsLayout: NextPage<PropsWithChildren> = function ({ children }) {
           <DocsSidebar {...state} />
           <main className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible" ref={mainRef}>
             <div className="flex w-full">
-              <div className="pb:12 mx-auto flex w-full min-w-0 max-w-4xl flex-col divide-y divide-gray-200 px-4 pt-6 dark:divide-gray-800 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
+              <div className="pb:12 mx-auto flex w-full min-w-0 max-w-4xl flex-col px-4 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
                 {children}
                 <DocsFooter />
               </div>
@@ -181,22 +181,6 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
           base: 'fixed inset-0 z-30 flex-none h-full w-64 lg:static lg:h-auto border-r border-gray-200 dark:border-gray-600 lg:overflow-y-visible lg:pt-0 lg:block hidden',
           inner:
             'overflow-y-auto px-4 pt-20 lg:pt-0 h-full bg-white scrolling-touch max-w-2xs lg:h-[calc(100vh-8rem)] lg:block dark:bg-gray-900 lg:mr-0 lg:sticky top-20 font-normal text-base lg:text-sm',
-        },
-        item: {
-          base: 'transition-colors duration-200 relative flex items-center flex-wrap font-medium hover:text-gray-900 hover:cursor-pointer text-gray-500 dark:text-gray-400 dark:hover:text-white',
-          active: 'bg-gray-100 dark:bg-gray-700',
-          collapsed: {
-            insideCollapse: 'group w-full pl-8 transition duration-75',
-            noIcon: 'font-bold',
-          },
-          content: {
-            base: 'px-3 flex-1 whitespace-nowrap',
-          },
-          icon: {
-            base: 'h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white',
-            active: 'text-gray-700 dark:text-gray-100',
-          },
-          label: '',
         },
       }}
     >

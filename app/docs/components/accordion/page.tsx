@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import AccordionDocs from './accordion.mdx';
 
 const AccordionPage: FC = () => (
-  <div>
+  <div className="divide-y divide-gray-200 dark:divide-gray-800">
     <div className="pb-8">
       <h1 className="mb-2 inline-block w-full text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
         Flowbite React - UI Component Library
