@@ -331,7 +331,7 @@ const ContributorsSection: FC<ContributorsSectionProps> = function ({ contributo
                 <h2 className="text-left text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                   Join the community
                 </h2>
-                <p>Become a member of a community of developers supporting by Flowbite</p>
+                <p>Become a member of a community of developers by supporting Flowbite</p>
               </div>
               <Link
                 href="https://github.com/themesberg/flowbite-react"
