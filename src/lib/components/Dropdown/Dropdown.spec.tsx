@@ -54,11 +54,22 @@ describe('Components / Dropdown', () => {
 
       expect(dropdown()).not.toHaveClass('invisible');
     });
+
+    it('should be disabled when `disabled={true}`', async () => {
+      const user = userEvent.setup();
+      render(<TestDropdown disabled />);
+
+      expect(button()).toBeDisabled();
+
+      await user.click(button());
+
+      expect(dropdown()).toHaveClass('invisible');
+    });
   });
 });
 
-const TestDropdown: FC<{ dismissOnClick?: boolean }> = ({ dismissOnClick = true }) => (
-  <Dropdown label="Dropdown button" placement="right" dismissOnClick={dismissOnClick}>
+const TestDropdown: FC<{ disabled?: boolean; dismissOnClick?: boolean }> = ({ disabled, dismissOnClick = true }) => (
+  <Dropdown label="Dropdown button" placement="right" disabled={disabled} dismissOnClick={dismissOnClick}>
     <Dropdown.Header>
       <span className="block text-sm">Bonnie Green</span>
       <span className="block truncate text-sm font-medium">name@flowbite.com</span>
