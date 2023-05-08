@@ -60,6 +60,7 @@ export default function HomePage() {
             <FeaturedSection />
             <ComponentsSection />
             <ReactSection />
+            <DarkModeSection />
             <ContributorsSection contributors={contributors} />
             <MainFooter />
           </main>
@@ -283,7 +284,7 @@ const ComponentsSection: FC = () => {
 
 const ReactSection: FC = () => {
   const feature_list = [
-    'Huge collection of React UI components',
+    'Huge collection of UI components built with React',
     'Open-source under the MIT License',
     'Compatible with Next.js 13',
     'Utility classes based on Tailwind CSS',
@@ -354,6 +355,89 @@ const ReactSection: FC = () => {
                 <Button href="https://github.com/themesberg/flowbite-react" color="gray">
                   View on GitHub
                 </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const DarkModeSection: FC = () => {
+  const feature_list = [
+    'Increased accessibility based on room brightness',
+    'Better visibility for users with low vision',
+    'Improved readability for users with light sensitivity',
+    'High quality UI/UX design for modern applications',
+  ];
+  return (
+    <section className="bg-gray-50 dark:bg-gray-800">
+      <div className="mx-auto w-full max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
+        <div className="flex w-full flex-row-reverse self-stretch py-6 lg:gap-16 lg:py-10">
+          <div className="hidden w-1/2 items-center lg:flex">
+            <img
+              src="/images/feature-sections/react-dark-mode.png"
+              className="dark:hidden"
+              alt="React dark mode preview"
+            />
+            <img
+              src="/images/feature-sections/react-dark-mode-dark.png"
+              className="hidden dark:block"
+              alt="React dark mode preview (inverted colors)"
+            />
+          </div>
+          <div className="flex w-1/2 flex-grow flex-col items-start gap-4 divide-y dark:divide-gray-700 lg:gap-8">
+            <div className="flex flex-col items-start gap-3 self-stretch sm:gap-4">
+              <DarkModeSwitcher />
+              <h2 className="text-3xl font-extrabold leading-tight text-gray-900 dark:text-white lg:text-4xl">
+                Dark mode integration
+              </h2>
+              <p className="text-lg text-gray-500 dark:text-gray-400">
+                Flowbite React has native built-in support for{' '}
+                <a href="#" className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white">
+                  dark mode
+                </a>{' '}
+                by using Tailwind CSS and the Flowbite design system.
+              </p>
+              <p className="text-lg text-gray-500 dark:text-gray-400">
+                All of the UI components from Flowbite React will automatically invert the colors when activating dark
+                mode via browser settings or using a custom switcher component.
+              </p>
+            </div>
+            <div className="flex flex-col items-start self-stretch pt-8">
+              <ul className="mb-6 list-inside list-none space-y-4 font-medium text-gray-900 dark:text-white lg:mb-8">
+                {feature_list.map((f, i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <svg
+                      className="h-5 w-5 rounded-full bg-cyan-100 p-1 text-cyan-700 dark:bg-gray-700"
+                      width="14"
+                      height="10"
+                      viewBox="0 0 14 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M4.99992 8.29289L4.64637 7.93934L1.35697 4.64995C1.26295 4.56044 1.13776 4.51096 1.00786 4.51209C0.876764 4.51323 0.751358 4.56582 0.658654 4.65852C0.56595 4.75122 0.513365 4.87663 0.512226 5.00773C0.511097 5.13763 0.560568 5.26282 0.650079 5.35684L4.64642 9.35318C4.64644 9.3532 4.64645 9.35322 4.64647 9.35323C4.74023 9.44693 4.86736 9.49957 4.99992 9.49957C5.13248 9.49957 5.25961 9.44693 5.35337 9.35323L4.99992 8.29289ZM4.99992 8.29289L5.35347 7.93934L12.6464 0.646393C12.6464 0.646376 12.6465 0.646358 12.6465 0.64634C12.7402 0.552638 12.8674 0.5 12.9999 0.5C13.1325 0.5 13.2597 0.552658 13.3534 0.646393C13.4471 0.740146 13.4997 0.867253 13.4997 0.999786C13.4997 1.13234 13.4471 1.25947 13.3534 1.35323C13.3533 1.35325 13.3533 1.35327 13.3533 1.35329L5.35342 9.35318L4.99992 8.29289Z"
+                        stroke="currentColor"
+                      ></path>
+                    </svg>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-row gap-4">
+                <a href="" className="flex items-center gap-4 font-medium text-cyan-600 hover:underline">
+                  Learn how to integrate dark mode in React{' '}
+                  <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M10.293 0.792787C10.4805 0.605316 10.7348 0.5 11 0.5C11.2652 0.5 11.5195 0.605316 11.707 0.792787L15.707 4.79279C15.8945 4.98031 15.9998 5.23462 15.9998 5.49979C15.9998 5.76495 15.8945 6.01926 15.707 6.20679L11.707 10.2068C11.5184 10.3889 11.2658 10.4897 11.0036 10.4875C10.7414 10.4852 10.4906 10.38 10.3052 10.1946C10.1198 10.0092 10.0146 9.75838 10.0123 9.49619C10.01 9.23399 10.1108 8.98139 10.293 8.79279L12.586 6.49979H1C0.734784 6.49979 0.48043 6.39443 0.292893 6.20689C0.105357 6.01936 0 5.765 0 5.49979C0 5.23457 0.105357 4.98022 0.292893 4.79268C0.48043 4.60514 0.734784 4.49979 1 4.49979H12.586L10.293 2.20679C10.1055 2.01926 10.0002 1.76495 10.0002 1.49979C10.0002 1.23462 10.1055 0.980314 10.293 0.792787Z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
@@ -637,5 +721,82 @@ const MainFooter: FC = () => {
         </div>
       </div>
     </Footer>
+  );
+};
+
+// to do: functionality needs to be integrated
+const DarkModeSwitcher: FC = () => {
+  return (
+    <div className="text-cyna-500 flex flex-row gap-8">
+      <div className="flex flex-col items-center gap-2 font-medium text-gray-900 dark:text-gray-400">
+        <button
+          aria-label="Dark mode"
+          type="button"
+          className="hidden rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:block dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        >
+          <span className="hidden dark:block">
+            <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1
+  0 100-2H3a1 1 0 000 2h1z"
+                fillRule="evenodd"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+          </span>{' '}
+          <span className="block dark:hidden">
+            <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+          </span>
+        </button>{' '}
+        <svg
+          className="h-11 w-11 rounded-lg bg-cyan-700 p-2 text-white dark:hidden  dark:bg-gray-700"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1
+  0 100-2H3a1 1 0 000 2h1z"
+            fillRule="evenodd"
+            clipRule="evenodd"
+          ></path>
+        </svg>
+        Light
+      </div>{' '}
+      <div className="flex flex-col items-center gap-2 font-medium text-gray-400 dark:text-white">
+        <svg
+          className="hidden h-11 w-11 rounded-lg bg-cyan-700 p-2 dark:block"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+        </svg>{' '}
+        <button
+          aria-label="Dark mode"
+          type="button"
+          className="rounded-lg bg-gray-100 p-2.5 text-sm text-gray-500 hover:bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hidden dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        >
+          <span className="hidden dark:block">
+            <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1
+  0 100-2H3a1 1 0 000 2h1z"
+                fillRule="evenodd"
+                clipRule="evenodd"
+              ></path>
+            </svg>
+          </span>{' '}
+          <span className="block dark:hidden">
+            <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+          </span>
+        </button>
+        Dark
+      </div>
+    </div>
   );
 };
