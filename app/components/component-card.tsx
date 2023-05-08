@@ -41,7 +41,7 @@ export const ComponentCard: FC<ComponentCardProps> = function ({ link, name, ima
         <div className={`relative dark:hidden ${classes}`}>
           <img src={image} alt={`${name} component thumbnail`} />
         </div>
-        <div className={`relative hidden w-56 dark:block ${classes}`}>
+        <div className={`relative hidden dark:block ${classes}`}>
           <img src={imageDark} alt={`${name} dark mode component thumbnail`} />
         </div>
       </div>
