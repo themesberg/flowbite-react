@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { BsDiscord, BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1, HiOutlineArrowRight, HiX } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
@@ -12,16 +12,6 @@ import '~/app/style.css';
 import { Button, DarkThemeToggle, Flowbite, Footer, Navbar, Tooltip } from '~/src';
 import { ComponentCard } from './components/component-card';
 import { COMPONENTS_DATA } from './data/components';
-
-async function getContributors() {
-  const res = await fetch('https://api.github.com/repos/themesberg/flowbite-react/contributors?per_page=21');
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-
-  return res.json();
-}
 
 interface LayoutState {
   collapsed: boolean;
@@ -39,10 +29,18 @@ interface ContributorsSectionProps {
   contributors: Contributor[];
 }
 
-export default async function HomePage() {
+export default function HomePage() {
   const mainRef = useRef<HTMLDivElement>(null);
   const [collapsed, setCollapsed] = useState(false);
-  const contributors = await getContributors();
+  const [contributors, setContributors] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.github.com/repos/themesberg/flowbite-react/contributors?per_page=21')
+      .then((res) => res.json())
+      .then((data) => {
+        setContributors(data);
+      });
+  }, []);
 
   const state: LayoutState = {
     collapsed,
@@ -298,17 +296,18 @@ const ContributorsSection: FC<ContributorsSectionProps> = function ({ contributo
           </div>
           <div className="flex max-w-5xl flex-col gap-3 px-4 lg:px-8">
             <div className="flex flex-wrap items-center justify-center gap-3">
-              {contributors.map((contributor) => (
-                <Tooltip key={contributor.id} content={contributor.login}>
-                  <Link href={contributor.html_url} rel="nofollow noreferrer noopener" target="_blank">
-                    <img
-                      src={contributor.avatar_url}
-                      alt={`${contributor.login} avatar`}
-                      className="h-10 w-10 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300 sm:h-12 sm:w-12 lg:h-16 lg:w-16"
-                    />
-                  </Link>
-                </Tooltip>
-              ))}
+              {contributors &&
+                contributors.map((contributor) => (
+                  <Tooltip key={contributor.id} content={contributor.login}>
+                    <Link href={contributor.html_url} rel="nofollow noreferrer noopener" target="_blank">
+                      <img
+                        src={contributor.avatar_url}
+                        alt={`${contributor.login} avatar`}
+                        className="h-10 w-10 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300 sm:h-12 sm:w-12 lg:h-16 lg:w-16"
+                      />
+                    </Link>
+                  </Tooltip>
+                ))}
             </div>
           </div>
           <div className="flex w-full max-w-5xl flex-row items-center justify-between lg:px-4">
