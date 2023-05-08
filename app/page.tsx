@@ -361,9 +361,9 @@ const MainNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
     <Navbar
       fluid
       theme={{
-        base: 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-2.5 px-4 max-w-8xl lg:px-20 px-4 sticky',
+        base: 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700 flex items-center justify-between sticky top-0 left-0 bg-white border-b border-gray-200 z-40',
         inner: {
-          base: 'mx-auto flex flex-wrap justify-between items-center w-full',
+          base: 'mx-auto flex flex-wrap justify-between items-center w-full mx-auto max-w-8xl w-full py-2.5 px-4 lg:px-20 px-4',
         },
       }}
     >
