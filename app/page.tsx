@@ -59,7 +59,7 @@ export default function HomePage() {
             <HeroSection />
             <FeaturedSection />
             <ComponentsSection />
-            <FeatureSections />
+            <ReactSection />
             <ContributorsSection contributors={contributors} />
             <MainFooter />
           </main>
@@ -281,7 +281,7 @@ const ComponentsSection: FC = () => {
   );
 };
 
-const FeatureSections: FC = () => {
+const ReactSection: FC = () => {
   const feature_list = [
     'Huge collection of React UI components',
     'Open-source under the MIT License',
