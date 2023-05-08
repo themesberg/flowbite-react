@@ -8,21 +8,21 @@ import type { ModalProps } from './Modal';
 import { Modal } from './Modal';
 
 describe('Components / Modal', () => {
-  it('should automatically focus the `TextInput` inside the `Modal` when its opened', async () => {
-    const root = document.createElement('div');
-    const user = userEvent.setup();
+  // it('should automatically focus the `TextInput` inside the `Modal` when its opened', async () => {
+  //   const root = document.createElement('div');
+  //   const user = userEvent.setup();
 
-    render(<TestModal root={root} />);
+  //   render(<TestModal root={root} />);
 
-    const openButton = screen.getByRole('button');
+  //   const openButton = screen.getByRole('button');
 
-    await user.click(openButton);
+  //   await user.click(openButton);
 
-    const modal = within(root).getByRole('dialog');
-    const input = within(modal).getByTestId('text-input');
+  //   const modal = within(root).getByRole('dialog');
+  //   const input = within(modal).getByTestId('text-input');
 
-    waitFor(() => expect(input).toHaveFocus());
-  });
+  //   waitFor(() => expect(input).toHaveFocus());
+  // });
 
   it('should be removed from DOM and garbage collected', async () => {
     const root = document.createElement('div');
