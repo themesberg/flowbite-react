@@ -106,12 +106,12 @@ const HeroSection: FC = () => {
           <div className="flex max-w-[676px] flex-col justify-start gap-4">
             <div className="flex flex-col gap-4 text-left lg:gap-6">
               <h1 className="max-w-xl text-4xl font-extrabold leading-none text-gray-900 dark:text-white lg:text-6xl">
-                <span className="xl:inline">Speed up your web development with</span>
+                <span className="xl:inline">Build modern web applications with</span>
                 <span className="ml-2 text-cyan-700 dark:text-cyan-700 xl:inline">Flowbite React</span>
               </h1>
               <p className="max-w-xl text-lg leading-normal text-gray-500 dark:text-gray-400 lg:text-xl">
-                Flowbite React is an official Flowbite component library for React. All interactivities are handled by
-                React.
+                Flowbite React is an open-source UI component library built on top of Tailwind CSS with React components
+                and based on the Flowbite Design System.
               </p>
               <div className="mt-4 justify-center sm:flex sm:justify-start md:mt-5">
                 <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
@@ -290,11 +290,11 @@ const ComponentsSection: FC = () => {
             React UI Components
           </h2>
           <p className="mx-auto max-w-3xl text-center text-lg font-normal text-gray-500 dark:text-gray-400">
-            Explore the whole collection of{' '}
+            Explore the entire collection of{' '}
             <span className="font-medium text-gray-900 dark:text-white">
               over {COMPONENTS_DATA.length} open-source UI components
             </span>{' '}
-            and interactive elements built with React and Flowbite
+            and interactive elements built with React, Flowbite and Tailwind CSS
           </p>
         </div>
         <div className="grid grid-cols-1 items-center justify-center gap-4 sm:grid-cols-2 sm:gap-8 xl:grid-cols-3">
