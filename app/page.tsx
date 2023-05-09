@@ -291,8 +291,10 @@ const ComponentsSection: FC = () => {
           </h2>
           <p className="mx-auto max-w-3xl text-center text-lg font-normal text-gray-500 dark:text-gray-400">
             Explore the whole collection of{' '}
-            <span className="font-medium text-gray-900 dark:text-white">over 57 open-source UI components</span> and
-            interactive elements built with Svelte and Flowbiteƒ
+            <span className="font-medium text-gray-900 dark:text-white">
+              over {COMPONENTS_DATA.length} open-source UI components
+            </span>{' '}
+            and interactive elements built with Svelte and Flowbiteƒ
           </p>
         </div>
         <div className="grid grid-cols-1 items-center justify-center gap-4 sm:grid-cols-2 sm:gap-8 xl:grid-cols-3">
