@@ -31,15 +31,14 @@ export function useTheme(): ThemeContextProps {
 }
 
 export const useThemeMode = (): [Mode, React.Dispatch<React.SetStateAction<Mode>>, () => void] => {
-  const userPreferenceIsDark = () => windowExists() && window.matchMedia?.('(prefers-color-scheme: dark)').matches;
-  const getPrefersColorScheme = (): Mode => (userPreferenceIsDark() ? 'dark' : 'light');
   const onToggleMode = () => {
     const newMode = mode === 'dark' ? 'light' : 'dark';
     setMode(newMode);
     setModeState(newMode);
   };
   const { mode: contextMode, toggleMode = onToggleMode } = useContext(ThemeContext);
-  const [mode, setModeState] = useState<Mode>(contextMode ? contextMode : getPrefersColorScheme());
+
+  const [mode, setModeState] = useState<Mode>(contextMode ? contextMode : 'light');
   const setMode = useCallback((mode: Mode) => {
     if (!windowExists()) {
       return;
