@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, MouseEvent, PropsWithChildren } from 'react';
-import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { DeepPartial } from '..';
 import { mergeDeep } from '../../helpers/mergeDeep';
@@ -70,53 +69,24 @@ const ModalComponent: FC<ModalProps> = ({
 }) => {
   const theme = mergeDeep(useTheme().theme.modal, customTheme);
 
-  const [mounted, setMounted] = useState(false);
-
-  // Declare a ref to store a reference to a div element.
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    setMounted(true);
-
-    return () => {
-      const container = containerRef.current;
-
-      // If a container exists on unmount, it is removed from the DOM and
-      // garbage collected.
-      if (container) {
-        container.parentNode?.removeChild(container);
-        containerRef.current = null;
-      }
-    };
-  }, []);
-
   useKeyDown('Escape', () => {
     if (dismissible && onClose) {
       onClose();
     }
   });
 
-  if (!mounted) {
+  // The modal is not rendered server-side.
+  // The modal is not rendered if `show` prop is false.
+  if (!show || !windowExists()) {
     return null;
   }
 
-  // If the current value of the ref is falsy (e.g. null), set it to a new div
-  // element.
-  if (!containerRef.current) {
-    containerRef.current = document.createElement('div');
-  }
+  root ??= document.body;
 
-  // If the current value of the ref is not already a child of the root element,
-  // append it or replace its parent.
-  if (containerRef.current.parentNode !== root && windowExists()) {
-    root ||= document.body;
-    root.appendChild(containerRef.current);
+  // Prevent scrolling of the root element when the modal is shown
+  root.style.overflow = show ? 'hidden' : '';
 
-    // Prevent scrolling of the root element when the modal is shown
-    root.style.overflow = show ? 'hidden' : 'auto';
-  }
-
-  const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
+  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     if (dismissible && e.target === e.currentTarget && onClose) {
       onClose();
     }
@@ -125,16 +95,10 @@ const ModalComponent: FC<ModalProps> = ({
   return createPortal(
     <ModalContext.Provider value={{ popup, onClose }}>
       <div
-        aria-hidden={!show}
         data-testid="modal"
-        onClick={handleOnClick}
+        onClick={handleClick}
         role="dialog"
-        className={classNames(
-          theme.root.base,
-          theme.root.positions[position],
-          show ? theme.root.show.on : theme.root.show.off,
-          className,
-        )}
+        className={classNames(theme.root.base, theme.root.positions[position], theme.root.show.on, className)}
         {...props}
       >
         <div className={classNames(theme.content.base, theme.root.sizes[size])}>
@@ -142,7 +106,7 @@ const ModalComponent: FC<ModalProps> = ({
         </div>
       </div>
     </ModalContext.Provider>,
-    containerRef.current,
+    root,
   );
 };
 

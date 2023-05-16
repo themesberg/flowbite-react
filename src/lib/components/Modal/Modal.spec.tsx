@@ -1,6 +1,6 @@
-import { render, screen, waitFor, within } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useCallback, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { describe, expect, it } from 'vitest';
 import { Button } from '../Button';
 import { TextInput } from '../TextInput';
@@ -9,19 +9,18 @@ import { Modal } from './Modal';
 
 describe('Components / Modal', () => {
   it('should automatically focus the `TextInput` inside the `Modal` when its opened', async () => {
-    const root = document.createElement('div');
     const user = userEvent.setup();
 
-    render(<TestModal root={root} />);
+    render(<TestModal />);
 
     const openButton = screen.getByRole('button');
 
     await user.click(openButton);
 
-    const modal = within(root).getByRole('dialog');
+    const modal = screen.getByRole('dialog');
     const input = within(modal).getByTestId('text-input');
 
-    waitFor(() => expect(input).toHaveFocus());
+    expect(input).toHaveFocus();
   });
 
   it('should be removed from DOM and garbage collected', async () => {
@@ -31,7 +30,7 @@ describe('Components / Modal', () => {
 
     unmount();
 
-    await waitFor(() => expect(root.childNodes.length).toBe(0));
+    expect(root.childNodes.length).toBe(0);
   });
 
   it('should be closed by clicking outside if the "dismissible" prop is passed.', async () => {
@@ -46,11 +45,11 @@ describe('Components / Modal', () => {
 
     const modal = within(root).getByRole('dialog');
 
-    expect(modal).toHaveAttribute('aria-hidden', 'false');
+    expect(root).toContainElement(modal);
 
     await user.click(modal);
 
-    expect(modal).toHaveAttribute('aria-hidden', 'true');
+    expect(root).not.toContainElement(modal);
   });
 
   it('should be closed by Esc key press.', async () => {
@@ -65,11 +64,9 @@ describe('Components / Modal', () => {
 
     const modal = within(root).getByRole('dialog');
 
-    expect(modal).toHaveAttribute('aria-hidden', 'false');
-
     await user.keyboard('[Escape]');
 
-    expect(modal).toHaveAttribute('aria-hidden', 'true');
+    expect(root).not.toContainElement(modal);
   });
 
   describe('A11y', () => {
@@ -103,7 +100,7 @@ describe('Components / Modal', () => {
       const modal = within(root).getByRole('dialog');
 
       expect(root).toContainElement(modal);
-      expect(modal).toHaveAttribute('aria-hidden', 'false');
+      expect(root).toContainElement(modal);
     });
 
     it('should close `Modal` when `Space` is pressed on any of its buttons', async () => {
@@ -119,26 +116,22 @@ describe('Components / Modal', () => {
       const modal = within(root).getByRole('dialog');
       const closeButton = within(modal).getAllByRole('button')[0];
 
-      expect(modal).toHaveAttribute('aria-hidden', 'false');
+      expect(root).toContainElement(modal);
 
       await user.click(closeButton);
 
-      expect(modal).toHaveAttribute('aria-hidden', 'true');
+      expect(root).not.toContainElement(modal);
     });
   });
 });
 
 const TestModal = ({ root, dismissible = false }: Pick<ModalProps, 'root' | 'dismissible'>): JSX.Element => {
   const [open, setOpen] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const setInputRef = useCallback(
-    (input: HTMLInputElement) => {
-      if (open && input) {
-        input.focus();
-      }
-    },
-    [open],
-  );
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [open]);
 
   return (
     <>
@@ -157,7 +150,7 @@ const TestModal = ({ root, dismissible = false }: Pick<ModalProps, 'root' | 'dis
               soon as possible of high-risk data breaches that could personally affect them.
             </p>
           </div>
-          <TextInput data-testid="text-input" ref={setInputRef} autoFocus />
+          <TextInput data-testid="text-input" ref={inputRef} />
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => setOpen(false)}>I accept</Button>
