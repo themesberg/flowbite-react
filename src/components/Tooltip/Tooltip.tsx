@@ -8,7 +8,7 @@ import { mergeDeep } from '~/src/helpers/merge-deep';
 
 export type FlowbiteTooltipTheme = FlowbiteFloatingTheme;
 
-export interface TooltipProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'style'>> {
+export interface TooltipProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'content' | 'style'>> {
   animation?: false | `duration-${number}`;
   arrow?: boolean;
   content: ReactNode;
