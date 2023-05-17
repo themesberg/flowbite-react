@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import type { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react';
 import Link from 'next/link';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { Button, Checkbox, Label, TextInput } from '~/src';

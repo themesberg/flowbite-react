@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react';
 import { theme } from '~/src';
 import type { ButtonProps } from './Button';
 import { Button } from './Button';

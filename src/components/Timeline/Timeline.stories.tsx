@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react';
 import type { TimelineProps } from './Timeline';
 import { Timeline } from './Timeline';
 

@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react';
 import { HiFire } from 'react-icons/hi';
 import type { ToastProps } from './Toast';
 import { Toast } from './Toast';

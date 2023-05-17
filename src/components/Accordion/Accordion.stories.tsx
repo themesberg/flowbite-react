@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { ComponentProps, FC } from 'react';
 import { HiChevronDown, HiOutlineArrowCircleDown } from 'react-icons/hi';
 import type { AccordionProps } from './Accordion';
@@ -15,7 +15,7 @@ export default {
 
 const icon: FC<ComponentProps<'svg'>> = HiChevronDown;
 
-const Template: Story<AccordionProps> = (args) => (
+const Template: StoryFn<AccordionProps> = (args) => (
   <Accordion arrowIcon={icon} {...args}>
     <Accordion.Panel>
       <Accordion.Title>What is Flowbite?</Accordion.Title>

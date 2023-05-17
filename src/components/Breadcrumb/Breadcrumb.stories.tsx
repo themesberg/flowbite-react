@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react/types-6-0';
+import type { Meta } from '@storybook/react';
 import { HiHome } from 'react-icons/hi';
 import { Breadcrumb } from './Breadcrumb';
 

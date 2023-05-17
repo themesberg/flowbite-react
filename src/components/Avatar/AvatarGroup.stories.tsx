@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react';
 import { Avatar } from './Avatar';
 import type { AvatarGroupProps } from './AvatarGroup';
 

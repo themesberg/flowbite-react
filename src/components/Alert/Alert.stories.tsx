@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react/types-6-0';
+import type { Meta, Story } from '@storybook/react';
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
 import { theme } from '~/src';
 import type { AlertProps } from './Alert';
