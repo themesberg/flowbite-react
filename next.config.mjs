@@ -4,6 +4,7 @@ import withMDX from '@next/mdx';
 const nextConfig = {
   experimental: {
     appDir: true,
+    mdxRs: true,
     swcFileReading: true,
   },
   pageExtensions: ['mdx', 'tsx'],
