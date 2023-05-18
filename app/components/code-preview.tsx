@@ -1,8 +1,19 @@
 'use client';
 
 import classNames from 'classnames';
+import prism from 'prismjs';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/themes/prism-tomorrow.css';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { Card } from '~/src';
+import { Children, useEffect } from 'react';
+import type { Options } from 'react-element-to-jsx-string';
+import reactElementToJSXString from 'react-element-to-jsx-string';
+
+const reactElementToJSXStringOptions: Options = {
+  filterProps: ['as', 'key'],
+  showFunctions: true,
+  sortProps: true,
+};
 
 interface CodePreviewProps extends PropsWithChildren, ComponentProps<'div'> {
   code?: string;
@@ -10,12 +21,41 @@ interface CodePreviewProps extends PropsWithChildren, ComponentProps<'div'> {
 }
 
 export const CodePreview: FC<CodePreviewProps> = function ({ children, className, title }) {
+  const childrenList = Children.toArray(children);
+  let code = childrenList.map((child) => reactElementToJSXString(child, reactElementToJSXStringOptions)).join('\n');
+  code = deleteJSXSpaces(code);
+  code = deleteSVGs(code);
+  code = replaceWebpackImportsOnComponents(code);
+  code = replaceWebpackImportsOnFunctions(code);
+
+  useEffect(() => {
+    // start syntax highlighting once the component has mounted
+    prism.highlightAll();
+  }, [code]);
+
   return (
-    <div className="flex w-full flex-col gap-2">
+    <div className="mb-12 flex w-full flex-col gap-2">
       <h2 className="text-2xl font-bold">{title}</h2>
-      <div className={classNames('py-4', className)}>
-        <Card>{children}</Card>
-      </div>
+      <div className={classNames('py-4', className)}>{children}</div>
+      <pre className="language-jsx">
+        <code className="!whitespace-pre-wrap">{code}</code>
+      </pre>
     </div>
   );
+};
+
+const deleteJSXSpaces = (str: string) => {
+  return str.replaceAll(/{' '}/g, '');
+};
+
+const replaceWebpackImportsOnFunctions = (str: string) => {
+  return str.replaceAll(/function (.*?) \(props\)(.*?);}/g, '<$1 />');
+};
+
+const replaceWebpackImportsOnComponents = (str: string) => {
+  return str.replaceAll(/(.*?)\(props\)=>\/\*__PURE__(.*)\}(?!.*\})/g, 'SeeSourceCodeForBrokenComponent');
+};
+
+const deleteSVGs = (str: string) => {
+  return str.replaceAll(/<svg[\s\S]*?<\/svg>/g, '<SeeSourceCodeForSVG />');
 };
