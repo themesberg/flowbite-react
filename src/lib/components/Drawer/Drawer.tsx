@@ -99,25 +99,31 @@ const DrawerComponent: FC<DrawerProps> = ({
   };
 
   return createPortal(
-    <DrawerContext.Provider value={{ onClose }}>
-      <div
-        aria-hidden={!show}
-        data-testid="drawer"
-        onClick={handleOnClick}
-        data-drawer-placement="top"
-        role="dialog"
-        className={classNames(
-          theme.root.base,
-          show ? theme.root.placements[placement].on : theme.root.placements[placement].off,
-          className,
-        )}
-        {...props}
-      >
-        <div className={classNames(theme.content.base)}>
-          <div className={theme.content.inner}>{children}</div>
-        </div>
-      </div>
-    </DrawerContext.Provider>,
+    show ? (
+      <>
+        <div className="fixed left-0 top-0 h-full w-full bg-black opacity-40" onClick={onClose} />
+        <DrawerContext.Provider value={{ onClose }}>
+          <div
+            aria-hidden={!show}
+            data-testid="drawer"
+            onClick={handleOnClick}
+            data-drawer-placement="top"
+            role="dialog"
+            style={{ boxShadow: `0 0 150px rgba(0, 0, 0, 0.2)`, ...(props?.style || {}) }}
+            className={classNames(
+              theme.root.base,
+              show ? theme.root.placements[placement].on : theme.root.placements[placement].off,
+              className,
+            )}
+            {...props}
+          >
+            <div className={classNames(theme.content.base)}>
+              <div className={theme.content.inner}>{children}</div>
+            </div>
+          </div>
+        </DrawerContext.Provider>
+      </>
+    ) : null,
     containerRef.current,
   );
 };
