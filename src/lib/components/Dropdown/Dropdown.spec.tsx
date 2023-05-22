@@ -55,10 +55,24 @@ describe('Components / Dropdown', () => {
       expect(dropdown()).not.toHaveClass('invisible');
     });
   });
+  describe('Type of button', async () => {
+    it('should be of type `button`', async () => {
+      render(<TestDropdown />);
+      expect(button()).toHaveAttribute('type', 'button');
+    });
+
+    it('should be of type `button` with inline', async () => {
+      render(<TestDropdown inline />);
+      expect(button()).toHaveAttribute('type', 'button');
+    });
+  });
 });
 
-const TestDropdown: FC<{ dismissOnClick?: boolean }> = ({ dismissOnClick = true }) => (
-  <Dropdown label="Dropdown button" placement="right" dismissOnClick={dismissOnClick}>
+const TestDropdown: FC<{ dismissOnClick?: boolean; inline?: boolean }> = ({
+  dismissOnClick = true,
+  inline = false,
+}) => (
+  <Dropdown label="Dropdown button" placement="right" dismissOnClick={dismissOnClick} inline={inline}>
     <Dropdown.Header>
       <span className="block text-sm">Bonnie Green</span>
       <span className="block truncate text-sm font-medium">name@flowbite.com</span>
