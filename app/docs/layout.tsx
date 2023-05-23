@@ -10,14 +10,14 @@ import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { DarkThemeToggle, Flowbite, Footer, Navbar, Sidebar, Tooltip } from '~/src';
+import { Badge, DarkThemeToggle, Flowbite, Footer, Navbar, Sidebar, Tooltip } from '~/src';
 
 interface LayoutState {
   collapsed: boolean;
   setCollapsed: (collapsed: boolean) => void;
 }
 
-const DocsLayout: NextPage<PropsWithChildren> = function ({ children }) {
+const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
   const mainRef = useRef<HTMLDivElement>(null);
   const [collapsed, setCollapsed] = useState(false);
 
@@ -35,7 +35,7 @@ const DocsLayout: NextPage<PropsWithChildren> = function ({ children }) {
           <main className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible" ref={mainRef}>
             <div className="flex w-full">
               <div className="pb:12 mx-auto flex w-full min-w-0 max-w-4xl flex-col px-4 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
-                {children}
+                <div id="mainContent">{children}</div>
                 <DocsFooter />
               </div>
               <div className="right-0 hidden w-64 flex-none pl-8 xl:block xl:text-sm">
@@ -67,7 +67,7 @@ const DocsLayout: NextPage<PropsWithChildren> = function ({ children }) {
   );
 };
 
-const DocsNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
+const DocsNavbar: FC<LayoutState> = ({ collapsed, setCollapsed }) => {
   return (
     <Navbar
       fluid
@@ -192,8 +192,26 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
           <Sidebar.Item as={Link} href="/docs">
             Introduction
           </Sidebar.Item>
-          <Sidebar.Item href="https://flowbite.com/docs/getting-started/react/">Quickstart</Sidebar.Item>
-          <Sidebar.Item href="https://github.com/themesberg/flowbite-react/releases">Changelog</Sidebar.Item>
+          <Sidebar.Item as={Link} href="/docs/getting-started/quickstart">
+            Quickstart
+          </Sidebar.Item>
+          <Sidebar.Item as={Link} href="/docs/getting-started/nextjs">
+            <span className="flex items-center gap-3">
+              Next.js <Badge color="success">New</Badge>
+            </span>
+          </Sidebar.Item>
+          <Sidebar.Item as={Link} href="/docs/getting-started/typescript">
+            TypeScript
+          </Sidebar.Item>
+          <Sidebar.Item as={Link} href="/docs/getting-started/license">
+            License
+          </Sidebar.Item>
+          <Sidebar.Item as={Link} href="https://github.com/themesberg/flowbite-react/releases">
+            Changelog
+          </Sidebar.Item>
+          <Sidebar.Item as={Link} href="/docs/getting-started/contributing">
+            Contributing
+          </Sidebar.Item>
         </Sidebar.ItemGroup>
         <Sidebar.ItemGroup>
           <span className="my-4 flex w-full items-center justify-between text-sm font-semibold uppercase tracking-wide text-gray-900 hover:text-cyan-700 dark:text-white dark:hover:text-cyan-600">
@@ -202,7 +220,7 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
           <Sidebar.Item as={Link} href="/docs/theme">
             Theme
           </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/dark-theme-toggle">
+          <Sidebar.Item as={Link} href="/docs/customize/dark-mode">
             Dark mode
           </Sidebar.Item>
         </Sidebar.ItemGroup>

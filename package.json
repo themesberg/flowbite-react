@@ -119,6 +119,7 @@
     "react-dom": "^18.2.0",
     "react-element-to-jsx-string": "^15.0.0",
     "react-syntax-highlighter": "^15.5.0",
+    "rehype-slug": "^5.1.0",
     "resize-observer-polyfill": "^1.5.1",
     "standard-version": "^9.5.0",
     "start-server-and-test": "^2.0.0",

@@ -2,6 +2,7 @@
 
 import type { NextPage } from 'next/types';
 import prism from 'prismjs';
+import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/themes/prism-tomorrow.css';
 import type { PropsWithChildren } from 'react';

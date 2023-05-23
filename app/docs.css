@@ -8,13 +8,20 @@
   @apply overflow-hidden;
 }
 
+#mainContent > h1 {
+  @apply mb-4 mt-8 text-3xl font-bold text-gray-900 dark:text-white;
+}
+
 #mainContent > h2 {
   @apply mb-4 mt-8 text-2xl font-bold text-gray-900 dark:text-white;
 }
 
-#mainContent > h3,
-#mainContent > h4 {
+#mainContent > h3 {
   @apply mb-4 mt-8 text-xl font-bold text-gray-900 dark:text-white;
+}
+
+#mainContent > h4 {
+  @apply mb-4 mt-8 text-lg font-bold text-gray-900 dark:text-white;
 }
 
 #mainContent > p {
@@ -34,11 +41,11 @@
 }
 
 #mainContent > ul {
-  list-style: disc;
+  @apply list-disc;
 }
 
 #mainContent > ol {
-  list-style: decimal;
+  @apply list-decimal;
 }
 
 #mainContent p > strong {
@@ -47,12 +54,12 @@
 
 #mainContent > ul,
 #mainContent > ol {
-  padding-left: 1rem;
+  @apply mb-4 pl-4;
 }
 
 #mainContent > ul > li,
 #mainContent > ol > li {
-  @apply mb-4 text-base font-normal text-gray-600 dark:text-gray-400;
+  @apply text-base font-normal text-gray-600 dark:text-gray-400;
 }
 
 /* prism styles */
@@ -229,35 +236,35 @@ pre.language-bash {
   @apply text-cyan-600 dark:text-cyan-400;
 }
 
-code.language-javascript {
+code.language-jsx {
   @apply text-cyan-600 dark:text-cyan-400;
 }
 
-code.language-javascript .token.function {
+code.language-jsx .token.function {
   @apply text-green-500 dark:text-green-300;
 }
 
-code.language-javascript .token.punctuation {
+code.language-jsx .token.punctuation {
   @apply text-gray-500 dark:text-gray-400;
 }
 
-code.language-javascript .token.keyword {
+code.language-jsx .token.keyword {
   @apply text-pink-500 dark:text-pink-400;
 }
 
-code.language-javascript .token.comment {
+code.language-jsx .token.comment {
   @apply text-gray-500 dark:text-gray-500;
 }
 
-code.language-javascript .token.string {
+code.language-jsx .token.string {
   @apply text-purple-600 dark:text-purple-400;
 }
 
-code.language-javascript .token.class-name {
+code.language-jsx .token.class-name {
   @apply text-orange-400 dark:text-orange-300;
 }
 
-code.language-javascript .token {
+code.language-jsx .token {
   /* @apply text-blue-900 dark:text-blue-500; */
   background: transparent;
 }
@@ -279,23 +286,6 @@ code.language-html .token.attr-name {
   @apply text-green-600 dark:text-green-400;
 }
 code.language-html .token.comment {
-  @apply text-gray-400 dark:text-gray-500;
-}
-
-/* language svelte */
-pre.language-svelte .token.tag {
-  @apply text-gray-700 dark:text-gray-400;
-}
-pre.language-svelte .token.attr-value {
-  @apply text-blue-600 dark:text-blue-500;
-}
-pre.language-svelte .token.punctuation {
-  @apply text-gray-400 dark:text-gray-500;
-}
-pre.language-svelte .token.attr-name {
-  @apply text-cyan-600 dark:text-cyan-500;
-}
-pre.language-svelte .token.comment {
   @apply text-gray-400 dark:text-gray-500;
 }
 
