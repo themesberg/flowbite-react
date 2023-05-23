@@ -115,7 +115,7 @@ const HeroSection: FC = () => {
               </p>
               <div className="mt-4 justify-center sm:flex sm:justify-start md:mt-5">
                 <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
-                  <Button href="#" size="lg">
+                  <Button href="/docs/getting-started/quickstart" size="lg">
                     Get started <HiOutlineArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </div>
@@ -1074,7 +1074,7 @@ const DarkModeSwitcher: FC = () => {
         <button
           aria-label="Dark mode"
           type="button"
-          className="rounded-lg bg-gray-100 p-2.5 text-sm text-gray-500 hover:bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hidden dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+          className="rounded-lg bg-gray-100 p-2.5 text-sm text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hidden dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         >
           <span className="hidden dark:block">
             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
