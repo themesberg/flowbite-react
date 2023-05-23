@@ -1,10 +1,10 @@
-import withMDX from '@next/mdx';
+import mdx from '@next/mdx';
+import slug from 'rehype-slug';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
     appDir: true,
-    mdxRs: true,
     swcFileReading: true,
   },
   pageExtensions: ['mdx', 'tsx'],
@@ -12,4 +12,11 @@ const nextConfig = {
   swcMinify: true,
 };
 
-export default withMDX()(nextConfig);
+const withMDX = mdx({
+  extension: /\.mdx?$/,
+  options: {
+    rehypePlugins: [slug],
+  },
+});
+
+export default withMDX(nextConfig);
