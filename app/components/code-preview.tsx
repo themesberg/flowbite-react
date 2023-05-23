@@ -2,8 +2,6 @@
 
 import classNames from 'classnames';
 import prism from 'prismjs';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/themes/prism-tomorrow.css';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { Children, useEffect } from 'react';
 import type { Options } from 'react-element-to-jsx-string';
