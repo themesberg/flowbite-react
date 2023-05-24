@@ -205,7 +205,7 @@ const HeroSection: FC = () => {
               </p>
               <div className="mt-4 justify-center sm:flex sm:justify-start md:mt-5">
                 <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
-                  <Button href="/docs/getting-started/quickstart" size="lg">
+                  <Button href="/docs/getting-started/introduction" size="lg">
                     Get started <HiOutlineArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </div>
