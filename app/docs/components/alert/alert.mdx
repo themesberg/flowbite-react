@@ -1,0 +1,76 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { ExampleAdditionalContent } from './additional-content.tsx';
+import { HiInformationCircle } from 'react-icons/hi';
+import { Alert } from '~/src';
+
+The accordion component can be used to provide information to your users such as success or error messages, but also highlighted information complementing the normal flow of paragraphs and headers on a page. Flowbite also includes dismissable accordions which can be hidden by the users by clicking on the close icon.
+
+## Set up.
+
+Import Accordion and set variables in the script tag.
+
+```react example
+<script>
+  import { Alert } from 'flowbite-svelte';
+</script>
+```
+
+## Default alert
+
+Use the following examples of accordion components to show messages as feedback to your users.
+
+<CodePreview title="Default alert">
+  <Alert color="info">
+    <span>
+      <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
+    </span>
+  </Alert>
+</CodePreview>
+<CodePreview title="Alert with icon">
+  <Alert color="failure" icon={HiInformationCircle}>
+    <span>
+      <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
+    </span>
+  </Alert>
+</CodePreview>
+<CodePreview title="Dismissable alert">
+  <Alert color="success" onDismiss={() => alert('Alert dismissed!')}>
+    <span>
+      <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
+    </span>
+  </Alert>
+</CodePreview>
+<CodePreview title="Rounded">
+  <Alert color="warning" rounded>
+    <span>
+      <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
+    </span>
+  </Alert>
+</CodePreview>
+<CodePreview title="Border accent">
+  <Alert color="warning" withBorderAccent>
+    <span>
+      <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
+    </span>
+  </Alert>
+</CodePreview>
+<CodePreview title="Additional content">
+  <Alert additionalContent={<ExampleAdditionalContent />} color="warning" icon={HiInformationCircle}>
+    <span>
+      <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
+    </span>
+  </Alert>
+</CodePreview>
+<CodePreview title="All options">
+  <Alert
+    additionalContent={<ExampleAdditionalContent />}
+    color="success"
+    icon={HiInformationCircle}
+    onDismiss={() => alert('Alert dismissed!')}
+    rounded
+  >
+    <span>
+      <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
+    </span>
+  </Alert>
+</CodePreview>
