@@ -4,87 +4,83 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { NextPage } from 'next/types';
 import type { FC, PropsWithChildren } from 'react';
-import { useRef, useState } from 'react';
-import { BsDiscord, BsGithub } from 'react-icons/bs';
+import { useState } from 'react';
+import { BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
-import { SiStorybook } from 'react-icons/si';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { Badge, DarkThemeToggle, Flowbite, Footer, Navbar, Sidebar, Tooltip } from '~/src';
+import { Badge, DarkThemeToggle, Footer, Navbar, Sidebar, Tooltip } from '~/src';
 
-interface LayoutState {
-  collapsed: boolean;
+interface DocsLayoutState {
+  isCollapsed: boolean;
   setCollapsed: (collapsed: boolean) => void;
 }
 
 const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
-  const mainRef = useRef<HTMLDivElement>(null);
-  const [collapsed, setCollapsed] = useState(false);
+  const [isCollapsed, setCollapsed] = useState(false);
 
-  const state: LayoutState = {
-    collapsed,
+  const state: DocsLayoutState = {
+    isCollapsed,
     setCollapsed,
   };
 
   return (
-    <Flowbite>
+    <main className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible">
       <div className="relative max-h-screen w-full overflow-auto bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
         <DocsNavbar {...state} />
         <div className="lg:flex">
           <DocsSidebar {...state} />
-          <main className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible" ref={mainRef}>
-            <div className="flex w-full">
-              <div className="pb:12 mx-auto flex w-full min-w-0 max-w-4xl flex-col px-4 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
-                <div id="mainContent">{children}</div>
-                <DocsFooter />
-              </div>
-              <div className="right-0 hidden w-64 flex-none pl-8 xl:block xl:text-sm">
-                <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-between overflow-y-auto pb-6">
-                  <div className="mb-8">
-                    <h4 className="my-4 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
-                      On this page
-                    </h4>
-                    <nav>
-                      <ul className="space-y-2.5 overflow-x-hidden font-medium text-gray-500 dark:text-gray-400">
-                        <li>
-                          <a
-                            href="#"
-                            className='inline-block border-l border-white pl-2.5 transition-none duration-200 after:ml-2 after:text-cyan-700 after:opacity-0 after:transition-opacity after:duration-100 after:content-["#"] hover:border-gray-300 hover:text-gray-900 hover:after:opacity-100 dark:border-gray-900 dark:after:text-cyan-700 dark:hover:border-gray-700 dark:hover:text-white'
-                          >
-                            Getting started
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
+          <div className="flex w-full">
+            <div className="pb:12 mx-auto flex w-full min-w-0 max-w-4xl flex-col px-4 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
+              <div id="mainContent">{children}</div>
+              <DocsFooter />
+            </div>
+            <div className="right-0 hidden w-64 flex-none pl-8 xl:block xl:text-sm">
+              <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-between overflow-y-auto pb-6">
+                <div className="mb-8">
+                  <h4 className="my-4 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
+                    On this page
+                  </h4>
+                  <nav>
+                    <ul className="space-y-2.5 overflow-x-hidden font-medium text-gray-500 dark:text-gray-400">
+                      <li>
+                        <a
+                          href="#"
+                          className='inline-block border-l border-white pl-2.5 transition-none duration-200 after:ml-2 after:text-cyan-700 after:opacity-0 after:transition-opacity after:duration-100 after:content-["#"] hover:border-gray-300 hover:text-gray-900 hover:after:opacity-100 dark:border-gray-900 dark:after:text-cyan-700 dark:hover:border-gray-700 dark:hover:text-white'
+                        >
+                          Getting started
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
                 </div>
               </div>
             </div>
-          </main>
+          </div>
         </div>
       </div>
-    </Flowbite>
+    </main>
   );
 };
 
-const DocsNavbar: FC<LayoutState> = ({ collapsed, setCollapsed }) => {
+const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
   return (
     <Navbar
       fluid
       theme={{
-        base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-3 px-4',
+        base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-4 px-4',
         inner: {
           base: 'mx-auto flex flex-wrap justify-between items-center w-full',
         },
       }}
     >
       <div className="flex items-center gap-3">
-        {collapsed ? (
+        {isCollapsed ? (
           <span className="p-2 lg:hidden">
             <HiMenuAlt1
               aria-label="Open sidebar"
               className="h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-300"
-              onClick={() => setCollapsed(!collapsed)}
+              onClick={() => setCollapsed(!isCollapsed)}
             />
           </span>
         ) : (
@@ -92,7 +88,7 @@ const DocsNavbar: FC<LayoutState> = ({ collapsed, setCollapsed }) => {
             <HiX
               aria-label="Close sidebar"
               className="h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-300"
-              onClick={() => setCollapsed(!collapsed)}
+              onClick={() => setCollapsed(!isCollapsed)}
             />
           </span>
         )}
@@ -109,6 +105,18 @@ const DocsNavbar: FC<LayoutState> = ({ collapsed, setCollapsed }) => {
         </Link>
       </div>
       <div className="hidden items-center gap-1 lg:flex">
+        <Link
+          href="/"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
+        >
+          Home
+        </Link>
+        <Link
+          href="/docs/getting-started/introduction"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
+        >
+          Docs
+        </Link>
         <a
           href="https://flowbite.com/docs/getting-started/react/"
           className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
@@ -116,7 +124,7 @@ const DocsNavbar: FC<LayoutState> = ({ collapsed, setCollapsed }) => {
           Quickstart
         </a>
         <Link
-          href="/docs/theme"
+          href="/docs/customize/theme"
           className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
         >
           Customize
@@ -139,42 +147,33 @@ const DocsNavbar: FC<LayoutState> = ({ collapsed, setCollapsed }) => {
         >
           Flowbite
         </a>
-        <Link
-          href="/storybook"
-          className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-        >
-          <Tooltip content="Browse Storybook">
-            <SiStorybook aria-hidden className="h-5 w-5" />
-          </Tooltip>
-        </Link>
+      </div>
+      <div className="flex items-center gap-1">
         <a
           href="https://github.com/themesberg/flowbite-react"
           className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         >
-          <Tooltip content="View on GitHub">
+          <Tooltip animation={false} content="View on GitHub">
             <BsGithub aria-hidden className="h-5 w-5" />
           </Tooltip>
         </a>
-        <a
-          href="https://discord.gg/4eeurUVvTy"
-          className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-        >
-          <Tooltip content="Join community on Discord">
-            <BsDiscord aria-hidden className="h-5 w-5" />
-          </Tooltip>
-        </a>
-        <Tooltip content="Toggle dark mode">
+        <Tooltip animation={false} content="Toggle dark mode">
           <DarkThemeToggle />
         </Tooltip>
+        <a href="https://npmjs.com/package/flowbite-react">
+          <Badge color="info" className="hidden !text-sm !font-normal lg:block">
+            v0.4.4
+          </Badge>
+        </a>
       </div>
     </Navbar>
   );
 };
 
-const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
+const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed }) => {
   return (
     <Sidebar
-      collapsed={collapsed}
+      collapsed={isCollapsed}
       collapseBehavior="hide"
       theme={{
         root: {
@@ -303,7 +302,7 @@ const DocsSidebar: FC<LayoutState> = function ({ collapsed }) {
 
 const DocsFooter: FC = () => {
   return (
-    <Footer className="rounded-none px-4 pb-8 pt-16 shadow-none lg:px-0">
+    <Footer className="rounded-none px-4 pb-8 pt-16 shadow-none dark:bg-gray-900 lg:px-0">
       <div className="w-full">
         <div className="grid w-full justify-between md:grid-cols-2">
           <div className="mb-4 max-w-sm lg:mb-0">

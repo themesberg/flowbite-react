@@ -5,18 +5,13 @@ import Link from 'next/link';
 import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { BsDiscord, BsGithub } from 'react-icons/bs';
-import { HiMenuAlt1, HiOutlineArrowRight, HiX } from 'react-icons/hi';
+import { HiOutlineArrowRight } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
 import '~/app/docs.css';
 import '~/app/style.css';
 import { Button, DarkThemeToggle, Flowbite, Footer, Navbar, Tooltip } from '~/src';
 import { ComponentCard } from './components/component-card';
 import { COMPONENTS_DATA } from './data/components';
-
-interface LayoutState {
-  collapsed: boolean;
-  setCollapsed: (collapsed: boolean) => void;
-}
 
 interface Contributor {
   id: number;
@@ -37,7 +32,6 @@ interface SocialProofSectionProps {
 
 export default function HomePage() {
   const mainRef = useRef<HTMLDivElement>(null);
-  const [collapsed, setCollapsed] = useState(false);
   const [contributors, setContributors] = useState([]);
   const [stargazers, setStargazers] = useState('');
   const [npmDownloads, setNpmDownloads] = useState('');
@@ -67,15 +61,10 @@ export default function HomePage() {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
-  const state: LayoutState = {
-    collapsed,
-    setCollapsed,
-  };
-
   return (
     <Flowbite>
       <div className="relative max-h-screen w-full overflow-auto bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
-        <MainNavbar {...state} />
+        <HomeNavbar />
         <div className="lg:flex">
           <main
             className="min-w-0 flex-auto divide-y dark:divide-gray-700 lg:static lg:max-h-full lg:overflow-visible"
@@ -97,6 +86,107 @@ export default function HomePage() {
     </Flowbite>
   );
 }
+
+const HomeNavbar: FC = () => {
+  return (
+    <Navbar
+      fluid
+      theme={{
+        base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-4 px-4',
+        inner: {
+          base: 'mx-auto flex flex-wrap justify-between items-center w-full',
+        },
+      }}
+    >
+      <div className="flex items-center gap-3">
+        <Link href="/" className="sr-only">
+          Flowbite React
+        </Link>
+        <Link
+          aria-hidden
+          href="/"
+          className="flex items-center gap-3 text-2xl font-semibold text-gray-900 dark:text-white"
+        >
+          <Image alt="" aria-hidden height="32" src="/favicon.svg" width="32" />
+          <span>Flowbite React</span>
+        </Link>
+      </div>
+      <div className="hidden items-center gap-1 lg:flex">
+        <Link
+          href="/"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
+        >
+          Home
+        </Link>
+        <Link
+          href="/docs/getting-started/introduction"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
+        >
+          Docs
+        </Link>
+        <a
+          href="https://flowbite.com/docs/getting-started/react/"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
+        >
+          Quickstart
+        </a>
+        <Link
+          href="/docs/customize/theme"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
+        >
+          Customize
+        </Link>
+        <a
+          href="https://flowbite.com/figma/"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
+        >
+          Figma
+        </a>
+        <a
+          href="https://flowbite.com/blog/"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
+        >
+          Blog
+        </a>
+        <a
+          href="https://flowbite.com"
+          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
+        >
+          Flowbite
+        </a>
+      </div>
+      <div className="flex items-center gap-1">
+        <Link
+          href="/storybook"
+          className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        >
+          <Tooltip content="Browse Storybook">
+            <SiStorybook aria-hidden className="h-5 w-5" />
+          </Tooltip>
+        </Link>
+        <a
+          href="https://github.com/themesberg/flowbite-react"
+          className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        >
+          <Tooltip content="View on GitHub">
+            <BsGithub aria-hidden className="h-5 w-5" />
+          </Tooltip>
+        </a>
+        <a
+          href="https://discord.gg/4eeurUVvTy"
+          className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        >
+          <Tooltip content="Join community on Discord">
+            <BsDiscord aria-hidden className="h-5 w-5" />
+          </Tooltip>
+        </a>
+        <Tooltip content="Toggle dark mode">
+          <DarkThemeToggle />
+        </Tooltip>
+      </div>
+    </Navbar>
+  );
+};
 
 const HeroSection: FC = () => {
   return (
@@ -1095,110 +1185,6 @@ const DarkModeSwitcher: FC = () => {
         Dark
       </div>
     </div>
-  );
-};
-
-const MainNavbar: FC<LayoutState> = function ({ collapsed, setCollapsed }) {
-  return (
-    <Navbar
-      fluid
-      theme={{
-        base: 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700 flex items-center justify-between sticky top-0 left-0 bg-white border-b border-gray-200 z-40',
-        inner: {
-          base: 'mx-auto flex flex-wrap justify-between items-center w-full mx-auto max-w-8xl w-full py-2.5 px-4 lg:px-20 px-4',
-        },
-      }}
-    >
-      <div className="flex items-center gap-3">
-        {collapsed ? (
-          <span className="p-2 lg:hidden">
-            <HiMenuAlt1
-              aria-label="Open sidebar"
-              className="h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-300"
-              onClick={() => setCollapsed(!collapsed)}
-            />
-          </span>
-        ) : (
-          <span className="rounded p-2 dark:bg-gray-700 lg:hidden">
-            <HiX
-              aria-label="Close sidebar"
-              className="h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-300"
-              onClick={() => setCollapsed(!collapsed)}
-            />
-          </span>
-        )}
-        <Link href="/" className="sr-only">
-          Flowbite React
-        </Link>
-        <Link
-          aria-hidden
-          href="/"
-          className="flex items-center gap-3 text-2xl font-semibold text-gray-900 dark:text-white"
-        >
-          <Image alt="" aria-hidden height="32" src="/favicon.svg" width="32" />
-          <span>Flowbite React</span>
-        </Link>
-      </div>
-      <div className="hidden items-center gap-1 lg:flex">
-        <a
-          href="https://flowbite.com/docs/getting-started/react/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Quickstart
-        </a>
-        <Link
-          href="/docs/theme"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Customize
-        </Link>
-        <a
-          href="https://flowbite.com/figma/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Figma
-        </a>
-        <a
-          href="https://flowbite.com/blog/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Blog
-        </a>
-        <a
-          href="https://flowbite.com"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Flowbite
-        </a>
-        <Link
-          href="/storybook"
-          className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-        >
-          <Tooltip content="Browse Storybook">
-            <SiStorybook aria-hidden className="h-5 w-5" />
-          </Tooltip>
-        </Link>
-        <a
-          href="https://github.com/themesberg/flowbite-react"
-          className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-        >
-          <Tooltip content="View on GitHub">
-            <BsGithub aria-hidden className="h-5 w-5" />
-          </Tooltip>
-        </a>
-        <a
-          href="https://discord.gg/4eeurUVvTy"
-          className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-        >
-          <Tooltip content="Join community on Discord">
-            <BsDiscord aria-hidden className="h-5 w-5" />
-          </Tooltip>
-        </a>
-        <Tooltip content="Toggle dark mode">
-          <DarkThemeToggle />
-        </Tooltip>
-      </div>
-    </Navbar>
   );
 };
 
