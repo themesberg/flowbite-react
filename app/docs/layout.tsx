@@ -29,7 +29,7 @@ interface DocsLayoutState {
 
 const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
   const pathname = usePathname();
-  const [isCollapsed, setCollapsed] = useState(isClient() ? window.innerWidth < 768 : true);
+  const [isCollapsed, setCollapsed] = useState(true);
 
   const state: DocsLayoutState = {
     isCollapsed,
@@ -40,6 +40,10 @@ const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
     // start syntax highlighting once the page is mounted
     prism.highlightAll();
   }, [pathname]);
+
+  useEffect(() => {
+    setCollapsed(window.innerWidth < 768);
+  }, [setCollapsed]);
 
   return (
     <main className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible">
@@ -117,7 +121,7 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
           href="/"
           className="flex items-center gap-3 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          <Image alt="" aria-hidden height="32" src="/favicon.svg" width="32" />
+          <Image alt="" height={32} src="/favicon.svg" width={32} className="h-8 w-8" />
           <span>Flowbite React</span>
         </Link>
       </div>
@@ -307,7 +311,7 @@ const DocsFooter: FC = () => {
         <div className="grid w-full justify-between md:grid-cols-2">
           <div className="mb-4 max-w-sm lg:mb-0">
             <Link href="/" className="flex items-center gap-3">
-              <Image alt="" height="32" src="/favicon.svg" width="32" />
+              <Image alt="" height="32" src="/favicon.svg" width="32" className="h-8 w-8" />
               <span className="text-xl font-semibold text-gray-900 dark:text-gray-100">Flowbite React</span>
             </Link>
             <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">

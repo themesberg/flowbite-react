@@ -57,7 +57,7 @@ export const NavbarIcons: FC = () => {
     <div className="flex items-center gap-1">
       <a
         href="https://github.com/themesberg/flowbite-react"
-        className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+        className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700 lg:block"
       >
         <Tooltip animation={false} content="View on GitHub">
           <BsGithub aria-hidden className="h-5 w-5" />
@@ -66,7 +66,7 @@ export const NavbarIcons: FC = () => {
       <Tooltip animation={false} content="Toggle dark mode">
         <DarkThemeToggle />
       </Tooltip>
-      <a href="https://npmjs.com/package/flowbite-react">
+      <a href="https://npmjs.com/package/flowbite-react" className="hidden lg:block">
         <Badge
           color="info"
           className="border-primary-700 !bg-primary-50 !text-sm !font-normal !text-primary-700 hover:!bg-primary-600 hover:!text-white dark:border-primary-700 dark:!bg-gray-700  dark:!text-primary-700 dark:hover:!bg-primary-800 dark:hover:!text-white lg:block"

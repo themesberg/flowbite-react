@@ -138,7 +138,7 @@ const HeroSection: FC = () => {
                 Flowbite React is an open-source UI component library built on top of Tailwind CSS with React components
                 and based on the Flowbite Design System.
               </p>
-              <div className="mt-6 flex items-center gap-6">
+              <div className="mt-6 grid grid-cols-1 items-center justify-center gap-6 lg:grid-cols-2 [&>div:first-child]:w-full">
                 <Tooltip content={isJustCopied ? 'Copied!' : 'Copy to clipboard'} className="[&_*]:cursor-pointer">
                   <TextInput
                     onClick={copyToClipboard}
@@ -164,7 +164,7 @@ const HeroSection: FC = () => {
                 </Tooltip>
                 <div className="justify-center sm:flex sm:justify-start">
                   <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
-                    <Button href="/docs/getting-started/introduction" size="lg" className="whitespace-nowrap">
+                    <Button href="/docs/getting-started/introduction" size="lg" className="w-full whitespace-nowrap">
                       Get started <HiOutlineArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </div>
