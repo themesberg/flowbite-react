@@ -14,7 +14,10 @@ const ModalPage: FC = () => {
   const [modalPlacement, setModalPlacement] = useState<string>('center');
 
   return (
-    <DocsContentLayout title="React Modal - Flowbite" description="description placeholder">
+    <DocsContentLayout
+      title="React Modal - Flowbite"
+      description="Use the modal component to show interactive dialogs and notifications to your website users available in multiple sizes, colors, and styles"
+    >
       <CodePreview title="Default modal">
         <Button onClick={() => setOpenModal('default')}>Toggle modal</Button>
         <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)}>

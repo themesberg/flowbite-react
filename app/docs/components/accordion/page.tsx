@@ -5,7 +5,10 @@ import { DocsContentLayout } from '../../../components/docs-content-layout';
 import AccordionDocs from './accordion.mdx';
 
 const AccordionPage: FC = () => (
-  <DocsContentLayout title="React Accordion - Flowbite" description="description placeholder">
+  <DocsContentLayout
+    title="React Accordion - Flowbite"
+    description="Use the accordion component to show hidden information based on the collapse and expand state of the child elements using data attribute options"
+  >
     <AccordionDocs />
   </DocsContentLayout>
 );

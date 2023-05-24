@@ -6,7 +6,10 @@ import { Checkbox, Table } from '~/src';
 import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const TablePage: FC = () => (
-  <DocsContentLayout title="React Tables - Flowbite" description="description placeholder">
+  <DocsContentLayout
+    title="React Tables - Flowbite"
+    description="Use the table component to show text, images, links, and other elements inside a structured set of data made up of rows and columns of table cells"
+  >
     <CodePreview title="Default table">
       <Table>
         <Table.Head>

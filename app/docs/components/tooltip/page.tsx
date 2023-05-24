@@ -6,7 +6,10 @@ import { Button, Tooltip } from '~/src';
 import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const TooltipPage: FC = () => (
-  <DocsContentLayout title="React Tooltip - Flowbite" description="description placeholder">
+  <DocsContentLayout
+    title="React Tooltip - Flowbite"
+    description="Use the following Tailwind CSS powered tooltips to show extra content when hovering or focusing on an element"
+  >
     <CodePreview title="Default tooltip">
       <Tooltip content="Tooltip content">
         <Button>Default tooltip</Button>

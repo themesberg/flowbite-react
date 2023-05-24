@@ -14,7 +14,10 @@ const TabsPage: FC = () => {
   const tabsRef = useRef<TabsRef>(null);
 
   return (
-    <DocsContentLayout title="React Tabs - Flowbite" description="description placeholder">
+    <DocsContentLayout
+      title="React Tabs - Flowbite"
+      description="Use these responsive tabs components to create a secondary navigational hierarchy for your website or toggle content inside a container"
+    >
       <CodePreview title="Default tabs">
         <Tabs.Group aria-label="Default tabs" style="default">
           <Tabs.Item active title="Profile">

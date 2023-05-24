@@ -14,7 +14,10 @@ const PaginationPage: FC = () => {
   };
 
   return (
-    <DocsContentLayout title="React Pagination - Flowbite" description="description placeholder">
+    <DocsContentLayout
+      title="React Pagination - Flowbite"
+      description="Use the Tailwind CSS pagination element to indicate a series of content across various pages"
+    >
       <CodePreview title="Default pagination">
         <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />
       </CodePreview>

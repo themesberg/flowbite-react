@@ -7,7 +7,10 @@ import { ListGroup } from '~/src';
 import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const ListGroupPage: FC = () => (
-  <DocsContentLayout title="React List Group - Flowbite" description="description placeholder">
+  <DocsContentLayout
+    title="React List Group - Flowbite"
+    description="Use the list group component to display a series of items, buttons or links inside a single element"
+  >
     <CodePreview title="Default list group" className="w-48">
       <ListGroup>
         <ListGroup.Item>Profile</ListGroup.Item>

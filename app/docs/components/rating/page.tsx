@@ -6,7 +6,10 @@ import { Rating } from '~/src';
 import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const RatingPage: FC = () => (
-  <DocsContentLayout title="React Rating - Flowbite" description="description placeholder">
+  <DocsContentLayout
+    title="React Rating - Flowbite"
+    description="Use the rating component to show reviews and testimonials from your users using stars and scores based on multiple styles and sizes"
+  >
     <CodePreview title="Default rating">
       <Rating>
         <Rating.Star />

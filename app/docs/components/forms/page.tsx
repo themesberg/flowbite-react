@@ -24,7 +24,10 @@ const FormsPage: FC = () => {
   const [switch2, setSwitch2] = useState(true);
 
   return (
-    <DocsContentLayout title="React Forms - Flowbite" description="description placeholder">
+    <DocsContentLayout
+      title="React Forms - Flowbite"
+      description="Use the Tailwind CSS form and input elements such as checkboxes, radios, textarea, text inputs to collect information from users with Flowbite"
+    >
       <CodePreview title="Default form">
         <form className="flex flex-col gap-4">
           <div>

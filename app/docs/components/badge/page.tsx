@@ -5,7 +5,10 @@ import { DocsContentLayout } from '../../../components/docs-content-layout';
 import BadgeDocs from './badge.mdx';
 
 const BadgePage: FC = () => (
-  <DocsContentLayout title="React Badge - Flowbite" description="description placeholder">
+  <DocsContentLayout
+    title="React Badge - Flowbite"
+    description="Use Tailwind CSS badges as elements to show counts or labels separately or inside other components"
+  >
     <BadgeDocs />
   </DocsContentLayout>
 );

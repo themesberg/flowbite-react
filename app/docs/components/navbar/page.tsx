@@ -7,7 +7,10 @@ import { Avatar, Button, Dropdown, Navbar } from '~/src';
 import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const NavbarPage: FC = () => (
-  <DocsContentLayout title="React Navbar - Flowbite" description="description placeholder">
+  <DocsContentLayout
+    title="React Navbar - Flowbite"
+    description="The navbar component can be used to show a list of navigation links positioned on the top side of your page based on multiple layouts, sizes, and dropdowns"
+  >
     <CodePreview title="Default navbar">
       <Navbar fluid rounded>
         <Navbar.Brand as={Link} href="/navbars">

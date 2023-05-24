@@ -6,7 +6,10 @@ import { Progress } from '~/src';
 import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const ProgressPage: FC = () => (
-  <DocsContentLayout title="React Progress Bar - Flowbite" description="description placeholder">
+  <DocsContentLayout
+    title="React Progress Bar - Flowbite"
+    description="Use the progress bar component to show the completion rate of a data indicator or use it as a loader element"
+  >
     <CodePreview title="Default progress">
       <Progress progress={45} />
     </CodePreview>

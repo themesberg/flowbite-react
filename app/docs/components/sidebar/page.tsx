@@ -8,7 +8,10 @@ import { Badge, Sidebar } from '~/src';
 import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const SidebarPage: FC = () => (
-  <DocsContentLayout title="React Sidebar - Flowbite" description="description placeholder">
+  <DocsContentLayout
+    title="React Sidebar - Flowbite"
+    description="Use the sidebar component to show a list of menu items and multi-level dropdown items on either side of the page to navigate on your website"
+  >
     <CodePreview title="Default sidebar" className="w-fit">
       <Sidebar aria-label="Default sidebar example">
         <Sidebar.Items>

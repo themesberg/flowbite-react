@@ -6,7 +6,10 @@ import { Button, Spinner } from '~/src';
 import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const SpinnersPage: FC = () => (
-  <DocsContentLayout title="React Spinner (Loader) - Flowbite" description="description placeholder">
+  <DocsContentLayout
+    title="React Spinner (Loader) - Flowbite"
+    description="Use the spinner component as a loader indicator in your projects when fetching data based on an animated SVG"
+  >
     <CodePreview title="Default spinner">
       <Spinner aria-label="Default status example" />
     </CodePreview>

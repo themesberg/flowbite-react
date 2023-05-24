@@ -5,7 +5,10 @@ import { DocsContentLayout } from '../../../components/docs-content-layout';
 import CarouselDocs from './carousel.mdx';
 
 const CarouselPage: FC = () => (
-  <DocsContentLayout title="React Carousel - Flowbite" description="description placeholder">
+  <DocsContentLayout
+    title="React Carousel - Flowbite"
+    description="Use the carousel component to slide through multiple elements and images using custom controls, indicators, intervals, and options"
+  >
     <CarouselDocs />
   </DocsContentLayout>
 );
