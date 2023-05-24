@@ -5,6 +5,7 @@ import slug from 'rehype-slug';
 const nextConfig = {
   experimental: {
     appDir: true,
+    scrollRestoration: true,
     swcFileReading: true,
   },
   pageExtensions: ['mdx', 'tsx'],
