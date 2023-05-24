@@ -20,6 +20,7 @@ import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import '~/app/docs.css';
 import '~/app/style.css';
 import { Accordion, Badge, DarkThemeToggle, Footer, Navbar, Sidebar, Tooltip } from '~/src';
+import { isClient } from '~/src/helpers/is-client';
 
 interface DocsLayoutState {
   isCollapsed: boolean;
@@ -28,7 +29,7 @@ interface DocsLayoutState {
 
 const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
   const pathname = usePathname();
-  const [isCollapsed, setCollapsed] = useState(false);
+  const [isCollapsed, setCollapsed] = useState(isClient() ? window.innerWidth < 768 : false);
 
   const state: DocsLayoutState = {
     isCollapsed,
@@ -173,9 +174,11 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
             <BsGithub aria-hidden className="h-5 w-5" />
           </Tooltip>
         </a>
-        <Tooltip animation={false} content="Toggle dark mode">
-          <DarkThemeToggle />
-        </Tooltip>
+        <div className="hidden lg:block">
+          <Tooltip animation={false} content="Toggle dark mode">
+            <DarkThemeToggle />
+          </Tooltip>
+        </div>
         <a href="https://npmjs.com/package/flowbite-react">
           <Badge color="info" className="hidden !text-sm !font-normal lg:block">
             v0.4.4
@@ -186,100 +189,164 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
   );
 };
 
-const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed }) => {
+const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (isClient() && window.innerWidth < 768) {
+      setCollapsed(true);
+    }
+  }, [pathname, setCollapsed]);
+
   return (
-    <Sidebar
-      collapsed={isCollapsed}
-      collapseBehavior="hide"
-      theme={{
-        root: {
-          base: 'fixed inset-0 z-30 flex-none h-full w-64 lg:static lg:h-auto border-r border-gray-200 dark:border-gray-600 lg:overflow-y-visible lg:pt-0 lg:block hidden',
-          inner:
-            'overflow-y-auto px-4 pt-20 lg:pt-0 h-full bg-white scrolling-touch max-w-2xs lg:h-[calc(100vh-8rem)] lg:block dark:bg-gray-900 lg:mr-0 lg:sticky top-20 font-normal text-base lg:text-sm',
-        },
-      }}
-    >
-      <Sidebar.Items>
-        <Sidebar.ItemGroup className="mt-0 border-none">
-          <Accordion className="border-none">
-            <Accordion.Panel>
-              <Accordion.Title className="mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
-                Getting started
-              </Accordion.Title>
-              <Accordion.Content className="space-y-0.5 border-none !p-0">
-                <SidebarLink href="/docs/getting-started/introduction">Introduction</SidebarLink>
-                <SidebarLink href="/docs/getting-started/quickstart">Quickstart</SidebarLink>
-                <SidebarLink href="/docs/getting-started/nextjs">
-                  <span className="flex items-center gap-2">
-                    Next.js <Badge color="cyan">New</Badge>
-                  </span>
-                </SidebarLink>
-                <SidebarLink href="/docs/getting-started/typescript">TypeScript</SidebarLink>
-                <SidebarLink href="/docs/getting-started/license">License</SidebarLink>
-                <SidebarLink href="https://github.com/themesberg/flowbite-react/releases">Changelog</SidebarLink>
-                <SidebarLink href="/docs/getting-started/contributing">Contributing</SidebarLink>
-              </Accordion.Content>
-            </Accordion.Panel>
-          </Accordion>
-        </Sidebar.ItemGroup>
-        <Sidebar.ItemGroup className="!mt-0 border-none">
-          <Accordion className="border-none">
-            <Accordion.Panel>
-              <Accordion.Title className="mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
-                Customize
-              </Accordion.Title>
-              <Accordion.Content className="space-y-0.5 border-none !p-0">
-                <SidebarLink href="/docs/customize/theme">Theme</SidebarLink>
-                <SidebarLink href="/docs/customize/dark-mode">Dark mode</SidebarLink>
-              </Accordion.Content>
-            </Accordion.Panel>
-          </Accordion>
-        </Sidebar.ItemGroup>
-        <Sidebar.ItemGroup className="!mt-0 border-none">
-          <Accordion className="border-none">
-            <Accordion.Panel className="focus:!outline-none focus:!ring-0">
-              <Accordion.Title className="mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
-                Components
-              </Accordion.Title>
-              <Accordion.Content className="space-y-0.5 border-none !p-0">
-                <SidebarLink href="/docs/components/accordion">Accordion</SidebarLink>
-                <SidebarLink href="/docs/components/alert">Alert</SidebarLink>
-                <SidebarLink href="/docs/components/avatar">Avatar</SidebarLink>
-                <SidebarLink href="/docs/components/badge">Badge</SidebarLink>
-                <SidebarLink href="/docs/components/breadcrumb">Breadcrumb</SidebarLink>
-                <SidebarLink href="/docs/components/button">Button</SidebarLink>
-                <SidebarLink href="/docs/components/button-group">Button group</SidebarLink>
-                <SidebarLink href="/docs/components/card">Card</SidebarLink>
-                <SidebarLink href="/docs/components/carousel">Carousel</SidebarLink>
-                <SidebarLink href="/docs/components/dropdown">Dropdown</SidebarLink>
-                <SidebarLink href="/docs/components/footer">Footer</SidebarLink>
-                <SidebarLink href="/docs/components/forms">Forms</SidebarLink>
-                <SidebarLink href="/docs/components/list-group">List group</SidebarLink>
-                <SidebarLink href="/docs/components/modal">Modal</SidebarLink>
-                <SidebarLink href="/docs/components/navbar">Navbar</SidebarLink>
-                <SidebarLink href="/docs/components/pagination">Pagination</SidebarLink>
-                <SidebarLink href="/docs/components/progress">Progress bar</SidebarLink>
-                <SidebarLink href="/docs/components/rating">Rating</SidebarLink>
-                <SidebarLink href="/docs/components/sidebar">Sidebar</SidebarLink>
-                <SidebarLink href="/docs/components/spinner">Spinner</SidebarLink>
-                <SidebarLink href="/docs/components/table">Table</SidebarLink>
-                <SidebarLink href="/docs/components/tabs">Tabs</SidebarLink>
-                <SidebarLink href="/docs/components/timeline">Timeline</SidebarLink>
-                <SidebarLink href="/docs/components/toast">Toast</SidebarLink>
-                <SidebarLink href="/docs/components/tooltip">Tooltip</SidebarLink>
-              </Accordion.Content>
-            </Accordion.Panel>
-          </Accordion>
-        </Sidebar.ItemGroup>
-        <span className="h-64">&nbsp;</span>
-      </Sidebar.Items>
-    </Sidebar>
+    <>
+      <div
+        className={classNames(
+          'fixed inset-0 z-30 h-full w-64 flex-none lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-0',
+          {
+            hidden: isCollapsed,
+          },
+        )}
+      >
+        <Sidebar
+          collapsed={false}
+          theme={{
+            root: {
+              base: 'h-full border-r border-gray-200 dark:border-gray-600',
+              inner:
+                'overflow-y-auto px-4 pt-20 lg:pt-0 h-full bg-white scrolling-touch max-w-2xs lg:h-[calc(100vh-8rem)] lg:block dark:bg-gray-900 lg:mr-0 lg:sticky top-20 font-normal text-base lg:text-sm',
+            },
+          }}
+        >
+          <Sidebar.Items className="grid grid-cols-1 gap-4">
+            <Accordion collapseAll={!pathname.includes('/getting-started/')} flush className="border-none">
+              <Accordion.Panel>
+                <Accordion.Title
+                  theme={{
+                    open: {
+                      on: 'text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600',
+                      off: 'text-gray-900 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300',
+                    },
+                  }}
+                  className={classNames(
+                    'mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide',
+                    pathname.includes('/getting-started/')
+                      ? 'text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600'
+                      : '',
+                  )}
+                >
+                  Getting started
+                </Accordion.Title>
+                <Accordion.Content className="border-none !p-0">
+                  <Sidebar.ItemGroup className="border-none">
+                    <SidebarLink href="/docs/getting-started/introduction">Introduction</SidebarLink>
+                    <SidebarLink href="/docs/getting-started/quickstart">Quickstart</SidebarLink>
+                    <SidebarLink href="/docs/getting-started/nextjs">
+                      <span className="flex items-center gap-2">
+                        Next.js <Badge color="cyan">New</Badge>
+                      </span>
+                    </SidebarLink>
+                    <SidebarLink href="/docs/getting-started/typescript">TypeScript</SidebarLink>
+                    <SidebarLink href="/docs/getting-started/license">License</SidebarLink>
+                    <SidebarLink href="https://github.com/themesberg/flowbite-react/releases">Changelog</SidebarLink>
+                    <SidebarLink href="/docs/getting-started/contributing">Contributing</SidebarLink>
+                  </Sidebar.ItemGroup>
+                </Accordion.Content>
+              </Accordion.Panel>
+            </Accordion>
+            <Accordion collapseAll={!pathname.includes('/customize/')} flush className="border-none">
+              <Accordion.Panel>
+                <Accordion.Title
+                  theme={{
+                    open: {
+                      on: 'text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600',
+                      off: 'text-gray-900 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300',
+                    },
+                  }}
+                  className={classNames(
+                    'mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide',
+                    pathname.includes('/customize/')
+                      ? 'text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600'
+                      : '',
+                  )}
+                >
+                  Customize
+                </Accordion.Title>
+                <Accordion.Content className="space-y-0.5 border-none !p-0">
+                  <Sidebar.ItemGroup className="border-none">
+                    <SidebarLink href="/docs/customize/theme">Theme</SidebarLink>
+                    <SidebarLink href="/docs/customize/dark-mode">Dark mode</SidebarLink>
+                  </Sidebar.ItemGroup>
+                </Accordion.Content>
+              </Accordion.Panel>
+            </Accordion>
+            <Accordion collapseAll={!pathname.includes('/components/')} flush className="border-none">
+              <Accordion.Panel className="focus:!outline-none focus:!ring-0">
+                <Accordion.Title
+                  theme={{
+                    open: {
+                      on: 'text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600',
+                      off: 'text-gray-900 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300',
+                    },
+                  }}
+                  className={classNames(
+                    'mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide',
+                    pathname.includes('/components/')
+                      ? 'text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600'
+                      : '',
+                  )}
+                >
+                  Components
+                </Accordion.Title>
+                <Accordion.Content className="border-none !p-0">
+                  <Sidebar.ItemGroup className="border-none">
+                    <SidebarLink href="/docs/components/accordion">Accordion</SidebarLink>
+                    <SidebarLink href="/docs/components/alert">Alert</SidebarLink>
+                    <SidebarLink href="/docs/components/avatar">Avatar</SidebarLink>
+                    <SidebarLink href="/docs/components/badge">Badge</SidebarLink>
+                    <SidebarLink href="/docs/components/breadcrumb">Breadcrumb</SidebarLink>
+                    <SidebarLink href="/docs/components/button">Button</SidebarLink>
+                    <SidebarLink href="/docs/components/button-group">Button group</SidebarLink>
+                    <SidebarLink href="/docs/components/card">Card</SidebarLink>
+                    <SidebarLink href="/docs/components/carousel">Carousel</SidebarLink>
+                    <SidebarLink href="/docs/components/dropdown">Dropdown</SidebarLink>
+                    <SidebarLink href="/docs/components/footer">Footer</SidebarLink>
+                    <SidebarLink href="/docs/components/forms">Forms</SidebarLink>
+                    <SidebarLink href="/docs/components/list-group">List group</SidebarLink>
+                    <SidebarLink href="/docs/components/modal">Modal</SidebarLink>
+                    <SidebarLink href="/docs/components/navbar">Navbar</SidebarLink>
+                    <SidebarLink href="/docs/components/pagination">Pagination</SidebarLink>
+                    <SidebarLink href="/docs/components/progress">Progress bar</SidebarLink>
+                    <SidebarLink href="/docs/components/rating">Rating</SidebarLink>
+                    <SidebarLink href="/docs/components/sidebar">Sidebar</SidebarLink>
+                    <SidebarLink href="/docs/components/spinner">Spinner</SidebarLink>
+                    <SidebarLink href="/docs/components/table">Table</SidebarLink>
+                    <SidebarLink href="/docs/components/tabs">Tabs</SidebarLink>
+                    <SidebarLink href="/docs/components/timeline">Timeline</SidebarLink>
+                    <SidebarLink href="/docs/components/toast">Toast</SidebarLink>
+                    <SidebarLink href="/docs/components/tooltip">Tooltip</SidebarLink>
+                  </Sidebar.ItemGroup>
+                </Accordion.Content>
+              </Accordion.Panel>
+            </Accordion>
+            <span className="h-64">&nbsp;</span>
+          </Sidebar.Items>
+        </Sidebar>
+      </div>
+      {!isCollapsed && (
+        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+        <div
+          onClick={() => setCollapsed(true)}
+          onKeyUp={(key) => key.code === 'Escape' && setCollapsed(true)}
+          className="fixed inset-0 z-20 bg-gray-900/50 dark:bg-gray-900/60 lg:hidden"
+        />
+      )}
+    </>
   );
 };
 
 const SidebarLink: FC<PropsWithChildren & { href: string }> = ({ children, href }) => {
   const pathname = usePathname();
-  console.log(pathname, href);
 
   return (
     <Sidebar.Item
