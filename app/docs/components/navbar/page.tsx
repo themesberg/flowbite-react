@@ -11,6 +11,11 @@ const NavbarPage: FC = () => (
     title="React Navbar - Flowbite"
     description="The navbar component can be used to show a list of navigation links positioned on the top side of your page based on multiple layouts, sizes, and dropdowns"
   >
+    <p>
+      Get started with the responsive navbar component from Flowbite to quickly set up a navigation menu for your
+      website and set up the logo, list of pages, CTA button, search input, user profile options with a dropdown, and
+      more.
+    </p>
     <CodePreview title="Default navbar">
       <Navbar fluid rounded>
         <Navbar.Brand as={Link} href="/navbars">

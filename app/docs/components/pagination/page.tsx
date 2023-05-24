@@ -18,6 +18,11 @@ const PaginationPage: FC = () => {
       title="React Pagination - Flowbite"
       description="Use the Tailwind CSS pagination element to indicate a series of content across various pages"
     >
+      <p>
+        The pagination component can be used to navigate across a series of content and data sets for various pages such
+        as blog posts, products, and more. You can use multiple variants of this component with or without icons and
+        even for paginating table data entries.
+      </p>
       <CodePreview title="Default pagination">
         <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />
       </CodePreview>

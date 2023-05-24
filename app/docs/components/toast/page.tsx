@@ -14,6 +14,10 @@ const ToastPage: FC = () => (
     title="React Toast - Flowbite"
     description="Push notifications to your users using the toast component and choose from multiple sizes, colors, styles, and positions"
   >
+    <p>
+      The toast component can be used to enhance your website’s interactivity by pushing notifications to your visitors.
+      You can choose from multiple styles, colors, sizes, and positions and even dismiss the component.
+    </p>
     <CodePreview title="Default toast">
       <Toast>
         <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-100 text-cyan-500 dark:bg-cyan-800 dark:text-cyan-200">

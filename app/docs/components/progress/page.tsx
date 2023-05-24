@@ -10,6 +10,10 @@ const ProgressPage: FC = () => (
     title="React Progress Bar - Flowbite"
     description="Use the progress bar component to show the completion rate of a data indicator or use it as a loader element"
   >
+    <p>
+      The progress bar component can be used as an indicator to show the completion rate of data sets or it can be used
+      as an animated loader component. There are multiple sizes, colors, and styles available.
+    </p>
     <CodePreview title="Default progress">
       <Progress progress={45} />
     </CodePreview>

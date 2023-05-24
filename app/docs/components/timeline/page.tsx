@@ -11,6 +11,10 @@ const TimelinePage: FC = () => (
     title="React Timeline - Flowbite"
     description="Get started with the responsive timeline component to show data in a chronological order with support for multiple styles, sizes, and variants"
   >
+    <p>
+      The timeline component can be used to show series of data in a chronological order for use cases such as activity
+      feeds, user actions, application updates, and more.
+    </p>
     <CodePreview title="Default timeline">
       <Timeline>
         <Timeline.Item>

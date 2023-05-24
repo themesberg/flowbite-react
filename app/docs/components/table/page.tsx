@@ -10,6 +10,11 @@ const TablePage: FC = () => (
     title="React Tables - Flowbite"
     description="Use the table component to show text, images, links, and other elements inside a structured set of data made up of rows and columns of table cells"
   >
+    <p>
+      The table component represents a set of structured elements made up of rows and columns as table cells that can be
+      used to show data sets to your website users.
+    </p>
+    <p>Get started with multiple variants and styles of these table components.</p>
     <CodePreview title="Default table">
       <Table>
         <Table.Head>

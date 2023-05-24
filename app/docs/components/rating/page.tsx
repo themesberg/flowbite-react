@@ -10,6 +10,13 @@ const RatingPage: FC = () => (
     title="React Rating - Flowbite"
     description="Use the rating component to show reviews and testimonials from your users using stars and scores based on multiple styles and sizes"
   >
+    <p>
+      Get started with the rating component to show an aggregate of reviews and scores in the forms of stars or numbers.
+    </p>
+    <p>
+      You can find multiple examples on this page including different styles, sizes, and variants of the rating
+      component and other associated elements such as a comment or card.
+    </p>
     <CodePreview title="Default rating">
       <Rating>
         <Rating.Star />

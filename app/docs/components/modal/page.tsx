@@ -18,6 +18,14 @@ const ModalPage: FC = () => {
       title="React Modal - Flowbite"
       description="Use the modal component to show interactive dialogs and notifications to your website users available in multiple sizes, colors, and styles"
     >
+      <p>
+        The modal component can be used as an interactive dialog on top of the main content area of the website to show
+        notifications and gather information using form elements from your website users.
+      </p>
+      <p>
+        Get started with multiple sizes, colors, and styles built with the utility classes from Tailwind CSS and the
+        components from Flowbite.
+      </p>
       <CodePreview title="Default modal">
         <Button onClick={() => setOpenModal('default')}>Toggle modal</Button>
         <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)}>

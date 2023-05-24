@@ -18,6 +18,11 @@ const TabsPage: FC = () => {
       title="React Tabs - Flowbite"
       description="Use these responsive tabs components to create a secondary navigational hierarchy for your website or toggle content inside a container"
     >
+      <p>
+        The tabs component can be used either as an extra navigational hierarchy complementing the main navbar or you
+        can also use it to change content inside a container just below the tabs using the data attributes from
+        Flowbite.
+      </p>
       <CodePreview title="Default tabs">
         <Tabs.Group aria-label="Default tabs" style="default">
           <Tabs.Item active title="Profile">

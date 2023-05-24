@@ -10,6 +10,10 @@ const TooltipPage: FC = () => (
     title="React Tooltip - Flowbite"
     description="Use the following Tailwind CSS powered tooltips to show extra content when hovering or focusing on an element"
   >
+    <p>
+      Flowbite React allows you to show extra information when hovering or focusing over an element in multiple
+      positions, styles, and animations.
+    </p>
     <CodePreview title="Default tooltip">
       <Tooltip content="Tooltip content">
         <Button>Default tooltip</Button>
