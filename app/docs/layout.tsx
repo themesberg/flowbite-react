@@ -252,17 +252,19 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed }) => {
                 <SidebarLink href="/docs/components/card">Card</SidebarLink>
                 <SidebarLink href="/docs/components/carousel">Carousel</SidebarLink>
                 <SidebarLink href="/docs/components/dropdown">Dropdown</SidebarLink>
+                <SidebarLink href="/docs/components/footer">Footer</SidebarLink>
                 <SidebarLink href="/docs/components/forms">Forms</SidebarLink>
                 <SidebarLink href="/docs/components/list-group">List group</SidebarLink>
                 <SidebarLink href="/docs/components/modal">Modal</SidebarLink>
                 <SidebarLink href="/docs/components/navbar">Navbar</SidebarLink>
                 <SidebarLink href="/docs/components/pagination">Pagination</SidebarLink>
-                <SidebarLink href="/docs/components/progress">Progress</SidebarLink>
+                <SidebarLink href="/docs/components/progress">Progress bar</SidebarLink>
                 <SidebarLink href="/docs/components/rating">Rating</SidebarLink>
                 <SidebarLink href="/docs/components/sidebar">Sidebar</SidebarLink>
                 <SidebarLink href="/docs/components/spinner">Spinner</SidebarLink>
                 <SidebarLink href="/docs/components/table">Table</SidebarLink>
                 <SidebarLink href="/docs/components/tabs">Tabs</SidebarLink>
+                <SidebarLink href="/docs/components/timeline">Timeline</SidebarLink>
                 <SidebarLink href="/docs/components/toast">Toast</SidebarLink>
                 <SidebarLink href="/docs/components/tooltip">Tooltip</SidebarLink>
               </Accordion.Content>
