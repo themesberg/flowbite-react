@@ -1,5 +1,6 @@
 'use client';
 
+import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -18,7 +19,7 @@ import { BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { Badge, DarkThemeToggle, Footer, Navbar, Sidebar, Tooltip } from '~/src';
+import { Accordion, Badge, DarkThemeToggle, Footer, Navbar, Sidebar, Tooltip } from '~/src';
 
 interface DocsLayoutState {
   isCollapsed: boolean;
@@ -199,119 +200,95 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed }) => {
       }}
     >
       <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          <span className="my-4 flex w-full items-center justify-between text-sm font-semibold uppercase tracking-wide text-gray-900 hover:text-cyan-700 dark:text-white dark:hover:text-cyan-600">
-            Getting started
-          </span>
-          <Sidebar.Item as={Link} href="/docs">
-            Introduction
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/getting-started/quickstart">
-            Quickstart
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/getting-started/nextjs">
-            <span className="flex items-center gap-3">
-              Next.js <Badge color="success">New</Badge>
-            </span>
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/getting-started/typescript">
-            TypeScript
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/getting-started/license">
-            License
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="https://github.com/themesberg/flowbite-react/releases">
-            Changelog
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/getting-started/contributing">
-            Contributing
-          </Sidebar.Item>
+        <Sidebar.ItemGroup className="mt-0 border-none">
+          <Accordion className="border-none">
+            <Accordion.Panel>
+              <Accordion.Title className="my-4 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
+                Getting started
+              </Accordion.Title>
+              <Accordion.Content className="border-none !p-0">
+                <SidebarLink href="/docs/getting-started/introduction">Introduction</SidebarLink>
+                <SidebarLink href="/docs/getting-started/quickstart">Quickstart</SidebarLink>
+                <SidebarLink href="/docs/getting-started/nextjs">
+                  <span className="flex items-center gap-2">
+                    Next.js <Badge color="success">New</Badge>
+                  </span>
+                </SidebarLink>
+                <SidebarLink href="/docs/getting-started/typescript">TypeScript</SidebarLink>
+                <SidebarLink href="/docs/getting-started/license">License</SidebarLink>
+                <SidebarLink href="https://github.com/themesberg/flowbite-react/releases">Changelog</SidebarLink>
+                <SidebarLink href="/docs/getting-started/contributing">Contributing</SidebarLink>
+              </Accordion.Content>
+            </Accordion.Panel>
+          </Accordion>
         </Sidebar.ItemGroup>
-        <Sidebar.ItemGroup>
-          <span className="my-4 flex w-full items-center justify-between text-sm font-semibold uppercase tracking-wide text-gray-900 hover:text-cyan-700 dark:text-white dark:hover:text-cyan-600">
-            Customize
-          </span>
-          <Sidebar.Item as={Link} href="/docs/theme">
-            Theme
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/customize/dark-mode">
-            Dark mode
-          </Sidebar.Item>
+        <Sidebar.ItemGroup className="mt-0 border-none">
+          <Accordion className="border-none">
+            <Accordion.Panel>
+              <Accordion.Title className="my-4 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
+                Customize
+              </Accordion.Title>
+              <Accordion.Content className="border-none !p-0">
+                <SidebarLink href="/docs/customize/theme">Theme</SidebarLink>
+                <SidebarLink href="/docs/customize/dark-mode">Dark mode</SidebarLink>
+              </Accordion.Content>
+            </Accordion.Panel>
+          </Accordion>
         </Sidebar.ItemGroup>
-        <Sidebar.ItemGroup>
-          <span className="my-4 flex w-full items-center justify-between text-sm font-semibold uppercase tracking-wide text-gray-900 hover:text-cyan-700 dark:text-white dark:hover:text-cyan-600">
-            Components
-          </span>
-          <Sidebar.Item as={Link} href="/docs/components/accordion">
-            Accordion
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/alert">
-            Alert
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/avatar">
-            Avatar
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/badge">
-            Badge
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/breadcrumb">
-            Breadcrumb
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/button">
-            Button
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/card">
-            Card
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/carousel">
-            Carousel
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/dropdown">
-            Dropdown
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/forms">
-            Forms
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/list-group">
-            List group
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/modal">
-            Modal
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/navbar">
-            Navbar
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/pagination">
-            Pagination
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/progress">
-            Progress
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/rating">
-            Rating
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/sidebar">
-            Sidebar
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/spinner">
-            Spinner
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/table">
-            Table
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/tabs">
-            Tabs
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/toast">
-            Toast
-          </Sidebar.Item>
-          <Sidebar.Item as={Link} href="/docs/components/tooltip">
-            Tooltip
-          </Sidebar.Item>
+        <Sidebar.ItemGroup className="mt-0 border-none">
+          <Accordion className="border-none">
+            <Accordion.Panel>
+              <Accordion.Title className="my-4 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
+                Components
+              </Accordion.Title>
+              <Accordion.Content className="border-none !p-0">
+                <SidebarLink href="/docs/components/accordion">Accordion</SidebarLink>
+                <SidebarLink href="/docs/components/alert">Alert</SidebarLink>
+                <SidebarLink href="/docs/components/avatar">Avatar</SidebarLink>
+                <SidebarLink href="/docs/components/badge">Badge</SidebarLink>
+                <SidebarLink href="/docs/components/breadcrumb">Breadcrumb</SidebarLink>
+                <SidebarLink href="/docs/components/button">Button</SidebarLink>
+                <SidebarLink href="/docs/components/card">Card</SidebarLink>
+                <SidebarLink href="/docs/components/carousel">Carousel</SidebarLink>
+                <SidebarLink href="/docs/components/dropdown">Dropdown</SidebarLink>
+                <SidebarLink href="/docs/components/forms">Forms</SidebarLink>
+                <SidebarLink href="/docs/components/list-group">List group</SidebarLink>
+                <SidebarLink href="/docs/components/modal">Modal</SidebarLink>
+                <SidebarLink href="/docs/components/navbar">Navbar</SidebarLink>
+                <SidebarLink href="/docs/components/pagination">Pagination</SidebarLink>
+                <SidebarLink href="/docs/components/progress">Progress</SidebarLink>
+                <SidebarLink href="/docs/components/rating">Rating</SidebarLink>
+                <SidebarLink href="/docs/components/sidebar">Sidebar</SidebarLink>
+                <SidebarLink href="/docs/components/spinner">Spinner</SidebarLink>
+                <SidebarLink href="/docs/components/table">Table</SidebarLink>
+                <SidebarLink href="/docs/components/tabs">Tabs</SidebarLink>
+                <SidebarLink href="/docs/components/toast">Toast</SidebarLink>
+                <SidebarLink href="/docs/components/tooltip">Tooltip</SidebarLink>
+              </Accordion.Content>
+            </Accordion.Panel>
+          </Accordion>
         </Sidebar.ItemGroup>
         <span className="h-64">&nbsp;</span>
       </Sidebar.Items>
     </Sidebar>
+  );
+};
+
+const SidebarLink: FC<PropsWithChildren & { href: string }> = ({ children, href }) => {
+  const pathname = usePathname();
+  console.log(pathname, href);
+
+  return (
+    <Sidebar.Item
+      as={Link}
+      href={href}
+      className={classNames(
+        '!px-0 !py-1 !text-sm !font-medium transition-all hover:!bg-transparent [&>*]:px-0',
+        pathname === href ? '!text-primary-700 hover:!text-primary-800' : '!text-gray-500 hover:!text-gray-900',
+      )}
+    >
+      {children}
+    </Sidebar.Item>
   );
 };
 
