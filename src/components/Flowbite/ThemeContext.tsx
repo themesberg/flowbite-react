@@ -58,12 +58,14 @@ export const useThemeMode: () => [Mode, Dispatch<SetStateAction<Mode>>, () => vo
   }, []);
 
   const { mode: initialMode, toggleMode = onToggleMode } = useContext(ThemeContext);
-  const [mode, setMode] = useState<Mode>(initialMode ?? prefersColorScheme());
+  const [mode, setMode] = useState<Mode>('light');
 
   useEffect(() => {
     if (initialMode) {
       setModeOnBody(initialMode);
       setMode(initialMode);
+    } else {
+      setMode(prefersColorScheme());
     }
   }, [initialMode, setModeOnBody, setMode]);
 
