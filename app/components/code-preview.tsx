@@ -9,6 +9,7 @@ import reactElementToJSXString from 'react-element-to-jsx-string';
 
 const reactElementToJSXStringOptions: Options = {
   filterProps: ['as', 'key'],
+  functionValue: (fn) => fn.name,
   showFunctions: true,
   sortProps: true,
 };
