@@ -1,15 +1,8 @@
 'use client';
 
-import { useRouter } from 'next/router';
 import type { NextPage } from 'next/types';
-import prism from 'prismjs';
-import 'prismjs/components/prism-bash';
-import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/themes/prism-tomorrow.css';
+
 import type { PropsWithChildren } from 'react';
-import { useEffect } from 'react';
 import '~/app/docs.css';
 import '~/app/style.css';
 import { Flowbite } from '~/src';
@@ -26,13 +19,6 @@ import { Flowbite } from '~/src';
 // };
 
 const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
-  const router = useRouter();
-
-  useEffect(() => {
-    // start syntax highlighting once the page is mounted
-    prism.highlightAll();
-  }, [router.pathname]);
-
   return (
     <html lang="en">
       <body>

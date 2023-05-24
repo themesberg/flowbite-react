@@ -2,9 +2,18 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import type { NextPage } from 'next/types';
+import prism from 'prismjs';
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-css';
+import 'prismjs/components/prism-javascript';
+import 'prismjs/components/prism-jsx';
+import 'prismjs/components/prism-tsx';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/themes/prism-tomorrow.css';
 import type { FC, PropsWithChildren } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import '~/app/docs.css';
@@ -17,12 +26,18 @@ interface DocsLayoutState {
 }
 
 const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
+  const pathname = usePathname();
   const [isCollapsed, setCollapsed] = useState(false);
 
   const state: DocsLayoutState = {
     isCollapsed,
     setCollapsed,
   };
+
+  useEffect(() => {
+    // start syntax highlighting once the page is mounted
+    prism.highlightAll();
+  }, [pathname]);
 
   return (
     <main className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible">
