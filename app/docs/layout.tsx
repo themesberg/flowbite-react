@@ -15,12 +15,12 @@ import 'prismjs/components/prism-typescript';
 import 'prismjs/themes/prism-tomorrow.css';
 import type { FC, PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
-import { BsGithub } from 'react-icons/bs';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { Accordion, Badge, DarkThemeToggle, Footer, Navbar, Sidebar, Tooltip } from '~/src';
+import { Accordion, Badge, Footer, Navbar, Sidebar } from '~/src';
 import { isClient } from '~/src/helpers/is-client';
+import { NavbarIcons, NavbarLinks } from '../components/navbar';
 
 interface DocsLayoutState {
   isCollapsed: boolean;
@@ -121,70 +121,8 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
           <span>Flowbite React</span>
         </Link>
       </div>
-      <div className="hidden items-center gap-1 lg:flex">
-        <Link
-          href="/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Home
-        </Link>
-        <Link
-          href="/docs/getting-started/introduction"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Docs
-        </Link>
-        <a
-          href="https://flowbite.com/docs/getting-started/react/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Quickstart
-        </a>
-        <Link
-          href="/docs/customize/theme"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Customize
-        </Link>
-        <a
-          href="https://flowbite.com/figma/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Figma
-        </a>
-        <a
-          href="https://flowbite.com/blog/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Blog
-        </a>
-        <a
-          href="https://flowbite.com"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Flowbite
-        </a>
-      </div>
-      <div className="flex items-center gap-1">
-        <a
-          href="https://github.com/themesberg/flowbite-react"
-          className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-        >
-          <Tooltip animation={false} content="View on GitHub">
-            <BsGithub aria-hidden className="h-5 w-5" />
-          </Tooltip>
-        </a>
-        <div className="hidden lg:block">
-          <Tooltip animation={false} content="Toggle dark mode">
-            <DarkThemeToggle />
-          </Tooltip>
-        </div>
-        <a href="https://npmjs.com/package/flowbite-react">
-          <Badge color="info" className="hidden !text-sm !font-normal lg:block">
-            v0.4.4
-          </Badge>
-        </a>
-      </div>
+      <NavbarLinks />
+      <NavbarIcons />
     </Navbar>
   );
 };
@@ -192,6 +130,7 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
 const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
   const pathname = usePathname();
 
+  // collapse sidebar on small screens when navigating to a new page
   useEffect(() => {
     if (isClient() && window.innerWidth < 768) {
       setCollapsed(true);

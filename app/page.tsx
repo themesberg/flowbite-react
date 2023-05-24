@@ -4,13 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import { BsDiscord, BsGithub } from 'react-icons/bs';
 import { HiClipboardCopy, HiOutlineArrowRight } from 'react-icons/hi';
-import { SiStorybook } from 'react-icons/si';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { Button, DarkThemeToggle, Flowbite, Footer, Navbar, TextInput, Tooltip } from '~/src';
+import { Button, Flowbite, Footer, Navbar, TextInput, Tooltip } from '~/src';
 import { ComponentCard } from './components/component-card';
+import { NavbarIcons, NavbarLinks } from './components/navbar';
 import { COMPONENTS_DATA } from './data/components';
 
 interface Contributor {
@@ -90,11 +89,10 @@ export default function HomePage() {
 const HomeNavbar: FC = () => {
   return (
     <Navbar
-      fluid
       theme={{
-        base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-4 px-4',
+        base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-4',
         inner: {
-          base: 'mx-auto flex flex-wrap justify-between items-center w-full',
+          base: 'mx-auto flex flex-wrap justify-between items-center w-full max-w-8xl px-4 lg:px-20',
         },
       }}
     >
@@ -111,79 +109,8 @@ const HomeNavbar: FC = () => {
           <span>Flowbite React</span>
         </Link>
       </div>
-      <div className="hidden items-center gap-1 lg:flex">
-        <Link
-          href="/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Home
-        </Link>
-        <Link
-          href="/docs/getting-started/introduction"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Docs
-        </Link>
-        <a
-          href="https://flowbite.com/docs/getting-started/react/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Quickstart
-        </a>
-        <Link
-          href="/docs/customize/theme"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Customize
-        </Link>
-        <a
-          href="https://flowbite.com/figma/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Figma
-        </a>
-        <a
-          href="https://flowbite.com/blog/"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Blog
-        </a>
-        <a
-          href="https://flowbite.com"
-          className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
-        >
-          Flowbite
-        </a>
-      </div>
-      <div className="flex items-center gap-1">
-        <Link
-          href="/storybook"
-          className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-        >
-          <Tooltip content="Browse Storybook">
-            <SiStorybook aria-hidden className="h-5 w-5" />
-          </Tooltip>
-        </Link>
-        <a
-          href="https://github.com/themesberg/flowbite-react"
-          className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-        >
-          <Tooltip content="View on GitHub">
-            <BsGithub aria-hidden className="h-5 w-5" />
-          </Tooltip>
-        </a>
-        <a
-          href="https://discord.gg/4eeurUVvTy"
-          className="rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-        >
-          <Tooltip content="Join community on Discord">
-            <BsDiscord aria-hidden className="h-5 w-5" />
-          </Tooltip>
-        </a>
-        <Tooltip content="Toggle dark mode">
-          <DarkThemeToggle />
-        </Tooltip>
-      </div>
+      <NavbarLinks />
+      <NavbarIcons />
     </Navbar>
   );
 };
