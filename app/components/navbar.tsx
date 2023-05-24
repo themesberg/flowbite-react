@@ -67,7 +67,10 @@ export const NavbarIcons: FC = () => {
         <DarkThemeToggle />
       </Tooltip>
       <a href="https://npmjs.com/package/flowbite-react">
-        <Badge color="info" className="!text-sm !font-normal lg:block">
+        <Badge
+          color="info"
+          className="border-primary-700 !bg-primary-50 !text-sm !font-normal !text-primary-700 hover:!bg-primary-600 hover:!text-white dark:border-primary-700 dark:!bg-gray-700  dark:!text-primary-700 dark:hover:!bg-primary-800 dark:hover:!text-white lg:block"
+        >
           v0.4.4
         </Badge>
       </a>
