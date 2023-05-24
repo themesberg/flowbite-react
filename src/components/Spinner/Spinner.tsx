@@ -74,3 +74,5 @@ export const Spinner: FC<SpinnerProps> = ({
     </span>
   );
 };
+
+Spinner.displayName = 'Spinner';

@@ -69,3 +69,5 @@ export const Card: FC<CardProps> = ({
     </Component>
   );
 };
+
+Card.displayName = 'Card';

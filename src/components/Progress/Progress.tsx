@@ -83,3 +83,5 @@ export const Progress: FC<ProgressProps> = ({
     </>
   );
 };
+
+Progress.displayName = 'Progress';

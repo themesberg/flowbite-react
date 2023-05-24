@@ -198,3 +198,5 @@ const DefaultRightControl: FC = () => {
     </span>
   );
 };
+
+Carousel.displayName = 'Carousel';

@@ -51,3 +51,5 @@ export const Tooltip: FC<TooltipProps> = ({
     </Floating>
   );
 };
+
+Tooltip.displayName = 'Tooltip';

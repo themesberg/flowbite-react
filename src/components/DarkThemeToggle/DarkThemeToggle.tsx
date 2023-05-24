@@ -44,3 +44,5 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({ className, theme: cu
     </button>
   );
 };
+
+DarkThemeToggle.displayName = 'DarkThemeToggle';

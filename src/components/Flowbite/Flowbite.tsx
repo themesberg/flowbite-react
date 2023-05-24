@@ -46,6 +46,8 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
   return <ThemeContext.Provider value={themeContextValue}>{children}</ThemeContext.Provider>;
 };
 
+Flowbite.displayName = 'Flowbite';
+
 export type {
   CustomFlowbiteTheme,
   FlowbiteBoolean,

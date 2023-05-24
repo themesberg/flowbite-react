@@ -49,3 +49,5 @@ export const Label: FC<LabelProps> = ({
     </label>
   );
 };
+
+Label.displayName = 'Label';

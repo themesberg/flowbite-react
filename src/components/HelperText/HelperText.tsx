@@ -41,3 +41,5 @@ export const HelperText: FC<HelperTextProps> = ({
     </p>
   );
 };
+
+HelperText.displayName = 'HelperText';
