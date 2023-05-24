@@ -1,9 +1,8 @@
 'use client';
 
 import classNames from 'classnames';
-import prism from 'prismjs';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { Children, useEffect } from 'react';
+import { Children } from 'react';
 import type { Options } from 'react-element-to-jsx-string';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 
@@ -26,11 +25,6 @@ export const CodePreview: FC<CodePreviewProps> = function ({ children, className
   code = deleteSVGs(code);
   code = replaceWebpackImportsOnComponents(code);
   code = replaceWebpackImportsOnFunctions(code);
-
-  useEffect(() => {
-    // start syntax highlighting once the component has mounted
-    prism.highlightAll();
-  }, [code]);
 
   return (
     <div className="mb-12 flex w-full flex-col gap-2">
