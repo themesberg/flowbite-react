@@ -1,0 +1,139 @@
+import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
+import { CodePreview } from '~/app/components/code-preview';
+import { Dropdown } from '~/src';
+
+The accordion component can be used to provide information to your users such as success or error messages, but also highlighted information complementing the normal flow of paragraphs and headers on a page. Flowbite also includes dismissable accordions which can be hidden by the users by clicking on the close icon.
+
+## Set up.
+
+Import Accordion and set variables in the script tag.
+
+```react example
+<script>
+  import { Avatar } from 'flowbite-svelte';
+</script>
+```
+
+## Default avatar
+
+Use the following examples of accordion components to show messages as feedback to your users.
+
+<CodePreview title="Default dropdown">
+  <Dropdown label="Dropdown button" dismissOnClick={false}>
+    <Dropdown.Item>Dashboard</Dropdown.Item>
+    <Dropdown.Item>Settings</Dropdown.Item>
+    <Dropdown.Item>Earnings</Dropdown.Item>
+    <Dropdown.Item>Sign out</Dropdown.Item>
+  </Dropdown>
+</CodePreview>
+<CodePreview title="Dropdown divider">
+  <Dropdown label="Dropdown button">
+    <Dropdown.Item>Dashboard</Dropdown.Item>
+    <Dropdown.Item>Settings</Dropdown.Item>
+    <Dropdown.Item>Earnings</Dropdown.Item>
+    <Dropdown.Divider />
+    <Dropdown.Item>Separated link</Dropdown.Item>
+  </Dropdown>
+</CodePreview>
+<CodePreview title="Dropdown header">
+  <Dropdown label="Dropdown button">
+    <Dropdown.Header>
+      <span className="block text-sm">Bonnie Green</span>
+      <span className="block truncate text-sm font-medium">bonnie@flowbite.com</span>
+    </Dropdown.Header>
+    <Dropdown.Item>Dashboard</Dropdown.Item>
+    <Dropdown.Item>Settings</Dropdown.Item>
+    <Dropdown.Item>Earnings</Dropdown.Item>
+    <Dropdown.Divider />
+    <Dropdown.Item>Sign out</Dropdown.Item>
+  </Dropdown>
+</CodePreview>
+<CodePreview title="Inline dropdown">
+  <Dropdown label="Dropdown" inline>
+    <Dropdown.Item>Dashboard</Dropdown.Item>
+    <Dropdown.Item>Settings</Dropdown.Item>
+    <Dropdown.Item>Earnings</Dropdown.Item>
+    <Dropdown.Item>Sign out</Dropdown.Item>
+  </Dropdown>
+</CodePreview>
+<CodePreview title="Dropdown items with icon">
+  <Dropdown label="Dropdown">
+    <Dropdown.Header>
+      <span className="block text-sm">Bonnie Green</span>
+      <span className="block truncate text-sm font-medium">bonnie@flowbite.com</span>
+    </Dropdown.Header>
+    <Dropdown.Item icon={HiViewGrid}>Dashboard</Dropdown.Item>
+    <Dropdown.Item icon={HiCog}>Settings</Dropdown.Item>
+    <Dropdown.Item icon={HiCurrencyDollar}>Earnings</Dropdown.Item>
+    <Dropdown.Divider />
+    <Dropdown.Item icon={HiLogout}>Sign out</Dropdown.Item>
+  </Dropdown>
+</CodePreview>
+<CodePreview title="Dropdown item on click handler">
+  <Dropdown label="Dropdown">
+    <Dropdown.Item onClick={() => alert('Dashboard!')}>Dashboard</Dropdown.Item>
+    <Dropdown.Item onClick={() => alert('Settings!')}>Settings</Dropdown.Item>
+    <Dropdown.Item onClick={() => alert('Earnings!')}>Earnings</Dropdown.Item>
+    <Dropdown.Item onClick={() => alert('Sign out!')}>Sign out</Dropdown.Item>
+  </Dropdown>
+</CodePreview>
+<CodePreview title="Sizing">
+  <div className="flex items-center gap-4">
+    <Dropdown label="Small dropdown" size="sm">
+      <Dropdown.Item>Dashboard</Dropdown.Item>
+      <Dropdown.Item>Settings</Dropdown.Item>
+      <Dropdown.Item>Earnings</Dropdown.Item>
+      <Dropdown.Item>Sign out</Dropdown.Item>
+    </Dropdown>
+    <Dropdown label="Large dropdown" size="lg">
+      <Dropdown.Item>Dashboard</Dropdown.Item>
+      <Dropdown.Item>Settings</Dropdown.Item>
+      <Dropdown.Item>Earnings</Dropdown.Item>
+      <Dropdown.Item>Sign out</Dropdown.Item>
+    </Dropdown>
+  </div>
+</CodePreview>
+<CodePreview title="Placement">
+  <div className="flex flex-col gap-4">
+    <div className="flex items-center gap-4">
+      <Dropdown label="Dropdown top" placement="top">
+        <Dropdown.Item>Dashboard</Dropdown.Item>
+        <Dropdown.Item>Settings</Dropdown.Item>
+        <Dropdown.Item>Earnings</Dropdown.Item>
+        <Dropdown.Item>Sign out</Dropdown.Item>
+      </Dropdown>
+      <Dropdown label="Dropdown right" placement="right">
+        <Dropdown.Item>Dashboard</Dropdown.Item>
+        <Dropdown.Item>Settings</Dropdown.Item>
+        <Dropdown.Item>Earnings</Dropdown.Item>
+        <Dropdown.Item>Sign out</Dropdown.Item>
+      </Dropdown>
+      <Dropdown label="Dropdown bottom" placement="bottom">
+        <Dropdown.Item>Dashboard</Dropdown.Item>
+        <Dropdown.Item>Settings</Dropdown.Item>
+        <Dropdown.Item>Earnings</Dropdown.Item>
+        <Dropdown.Item>Sign out</Dropdown.Item>
+      </Dropdown>
+      <Dropdown label="Dropdown left" placement="left">
+        <Dropdown.Item>Dashboard</Dropdown.Item>
+        <Dropdown.Item>Settings</Dropdown.Item>
+        <Dropdown.Item>Earnings</Dropdown.Item>
+        <Dropdown.Item>Sign out</Dropdown.Item>
+      </Dropdown>
+    </div>
+    <div className="flex items-center gap-4">
+      <Dropdown label="Dropdown left start" placement="left-start">
+        <Dropdown.Item>Dashboard</Dropdown.Item>
+        <Dropdown.Item>Settings</Dropdown.Item>
+        <Dropdown.Item>Earnings</Dropdown.Item>
+        <Dropdown.Item>Sign out</Dropdown.Item>
+      </Dropdown>
+      <Dropdown label="Dropdown right start" placement="right-start">
+        <Dropdown.Item>Dashboard</Dropdown.Item>
+        <Dropdown.Item>Settings</Dropdown.Item>
+        <Dropdown.Item>Earnings</Dropdown.Item>
+        <Dropdown.Item>Sign out</Dropdown.Item>
+      </Dropdown>
+    </div>
+  </div>
+</CodePreview>
