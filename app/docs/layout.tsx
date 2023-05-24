@@ -29,7 +29,7 @@ interface DocsLayoutState {
 
 const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
   const pathname = usePathname();
-  const [isCollapsed, setCollapsed] = useState(isClient() ? window.innerWidth < 768 : false);
+  const [isCollapsed, setCollapsed] = useState(isClient() ? window.innerWidth < 768 : true);
 
   const state: DocsLayoutState = {
     isCollapsed,
@@ -163,12 +163,12 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 <Accordion.Title
                   theme={{
                     open: {
-                      on: 'text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600',
-                      off: 'text-gray-900 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300',
+                      on: 'mb-4 text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600',
+                      off: 'mb-1 text-gray-900 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300',
                     },
                   }}
                   className={classNames(
-                    'mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide',
+                    'flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide',
                     pathname.includes('/getting-started/')
                       ? 'text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600'
                       : '',
@@ -198,12 +198,12 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 <Accordion.Title
                   theme={{
                     open: {
-                      on: 'text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600',
-                      off: 'text-gray-900 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300',
+                      on: 'mb-4 text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600',
+                      off: 'mb-1 text-gray-900 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300',
                     },
                   }}
                   className={classNames(
-                    'mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide',
+                    'flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide',
                     pathname.includes('/customize/')
                       ? 'text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600'
                       : '',
@@ -224,12 +224,12 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 <Accordion.Title
                   theme={{
                     open: {
-                      on: 'text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600',
-                      off: 'text-gray-900 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300',
+                      on: 'mb-4 text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600',
+                      off: 'mb-1 text-gray-900 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-300',
                     },
                   }}
                   className={classNames(
-                    'mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide',
+                    'flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide',
                     pathname.includes('/components/')
                       ? 'text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600'
                       : '',
@@ -292,7 +292,7 @@ const SidebarLink: FC<PropsWithChildren & { href: string }> = ({ children, href 
       as={Link}
       href={href}
       className={classNames(
-        '!px-0 !py-1 !text-sm !font-medium transition-all hover:!bg-transparent [&>*]:px-0',
+        '!p-0 !font-medium transition-all hover:!bg-transparent lg:text-sm [&>*]:px-0',
         pathname === href ? '!text-primary-700 hover:!text-primary-800' : '!text-gray-500 hover:!text-gray-900',
       )}
     >

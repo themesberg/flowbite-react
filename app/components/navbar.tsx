@@ -63,13 +63,11 @@ export const NavbarIcons: FC = () => {
           <BsGithub aria-hidden className="h-5 w-5" />
         </Tooltip>
       </a>
-      <div className="hidden lg:block">
-        <Tooltip animation={false} content="Toggle dark mode">
-          <DarkThemeToggle />
-        </Tooltip>
-      </div>
+      <Tooltip animation={false} content="Toggle dark mode">
+        <DarkThemeToggle />
+      </Tooltip>
       <a href="https://npmjs.com/package/flowbite-react">
-        <Badge color="info" className="hidden !text-sm !font-normal lg:block">
+        <Badge color="info" className="!text-sm !font-normal lg:block">
           v0.4.4
         </Badge>
       </a>
