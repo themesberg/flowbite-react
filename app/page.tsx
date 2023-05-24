@@ -5,11 +5,11 @@ import Link from 'next/link';
 import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { BsDiscord, BsGithub } from 'react-icons/bs';
-import { HiOutlineArrowRight } from 'react-icons/hi';
+import { HiClipboardCopy, HiOutlineArrowRight } from 'react-icons/hi';
 import { SiStorybook } from 'react-icons/si';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { Button, DarkThemeToggle, Flowbite, Footer, Navbar, Tooltip } from '~/src';
+import { Button, DarkThemeToggle, Flowbite, Footer, Navbar, TextInput, Tooltip } from '~/src';
 import { ComponentCard } from './components/component-card';
 import { COMPONENTS_DATA } from './data/components';
 
@@ -189,6 +189,14 @@ const HomeNavbar: FC = () => {
 };
 
 const HeroSection: FC = () => {
+  const [isJustCopied, setJustCopied] = useState(false);
+
+  const copyToClipboard = () => {
+    setJustCopied(true);
+    navigator.clipboard.writeText('npm i flowbite flowbite-react');
+    setTimeout(() => setJustCopied(false), 2000);
+  };
+
   return (
     <section className="mx-auto flex max-w-8xl flex-col overflow-hidden px-4 pb-6 pt-6 sm:pb-8 sm:pt-8 lg:px-20 lg:pb-24 lg:pt-16">
       <div className="flex flex-col gap-20">
@@ -203,16 +211,40 @@ const HeroSection: FC = () => {
                 Flowbite React is an open-source UI component library built on top of Tailwind CSS with React components
                 and based on the Flowbite Design System.
               </p>
-              <div className="mt-4 justify-center sm:flex sm:justify-start md:mt-5">
-                <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
-                  <Button href="/docs/getting-started/introduction" size="lg">
-                    Get started <HiOutlineArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
+              <div className="mt-6 flex items-center gap-6">
+                <Tooltip content={isJustCopied ? 'Copied!' : 'Copy to clipboard'} className="[&_*]:cursor-pointer">
+                  <TextInput
+                    onClick={copyToClipboard}
+                    placeholder="npm i flowbite flowbite-react"
+                    readOnly
+                    rightIcon={HiClipboardCopy}
+                    sizing="md"
+                    theme={{
+                      base: 'group flex',
+                      field: {
+                        input: {
+                          base: 'block w-full border cursor-pointer',
+                          sizes: {
+                            md: 'p-2.5 pr-11 text-sm',
+                          },
+                        },
+                        rightIcon: {
+                          svg: 'h-5 w-5 text-gray-500 dark:text-gray-400 group-hover:text-primary-700',
+                        },
+                      },
+                    }}
+                  />
+                </Tooltip>
+                <div className="justify-center sm:flex sm:justify-start">
+                  <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
+                    <Button href="/docs/getting-started/introduction" size="lg" className="whitespace-nowrap">
+                      Get started <HiOutlineArrowRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
           <div className="hidden p-0 xl:block">
             <div className="relative dark:hidden">
               <img className="max-w-2xl" src="/images/gallery.png" alt="Header" />
