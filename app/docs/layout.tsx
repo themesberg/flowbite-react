@@ -206,7 +206,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed }) => {
               <Accordion.Title className="mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
                 Getting started
               </Accordion.Title>
-              <Accordion.Content className="border-none !p-0">
+              <Accordion.Content className="space-y-0.5 border-none !p-0">
                 <SidebarLink href="/docs/getting-started/introduction">Introduction</SidebarLink>
                 <SidebarLink href="/docs/getting-started/quickstart">Quickstart</SidebarLink>
                 <SidebarLink href="/docs/getting-started/nextjs">
@@ -228,7 +228,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed }) => {
               <Accordion.Title className="mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
                 Customize
               </Accordion.Title>
-              <Accordion.Content className="border-none !p-0">
+              <Accordion.Content className="space-y-0.5 border-none !p-0">
                 <SidebarLink href="/docs/customize/theme">Theme</SidebarLink>
                 <SidebarLink href="/docs/customize/dark-mode">Dark mode</SidebarLink>
               </Accordion.Content>
@@ -241,7 +241,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed }) => {
               <Accordion.Title className="mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
                 Components
               </Accordion.Title>
-              <Accordion.Content className="border-none !p-0">
+              <Accordion.Content className="space-y-0.5 border-none !p-0">
                 <SidebarLink href="/docs/components/accordion">Accordion</SidebarLink>
                 <SidebarLink href="/docs/components/alert">Alert</SidebarLink>
                 <SidebarLink href="/docs/components/avatar">Avatar</SidebarLink>

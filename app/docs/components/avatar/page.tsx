@@ -6,135 +6,146 @@ import { CodePreview } from '~/app/components/code-preview';
 import { Avatar, Dropdown } from '~/src';
 
 const AvatarPage: FC = () => (
-  <>
-    <CodePreview title="Default avatar">
-      <div className="flex flex-wrap gap-2">
-        <Avatar img="/images/people/profile-picture-5.jpg" rounded />
-        <Avatar img="/images/people/profile-picture-5.jpg" />
-      </div>
-    </CodePreview>
-    <CodePreview title="Bordered avatar">
-      <div className="flex flex-wrap gap-2">
-        <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered />
-        <Avatar img="/images/people/profile-picture-5.jpg" bordered />
-      </div>
-    </CodePreview>
-    <CodePreview title="Colored avatar">
-      <div className="flex flex-wrap gap-2">
-        <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="gray" />
-        <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="light" />
-        <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="purple" />
-        <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="success" />
-        <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="pink" />
-      </div>
-      <div className="flex flex-wrap gap-2">
-        <Avatar img="/images/people/profile-picture-5.jpg" bordered color="gray" />
-        <Avatar img="/images/people/profile-picture-5.jpg" bordered color="light" />
-        <Avatar img="/images/people/profile-picture-5.jpg" bordered color="purple" />
-        <Avatar img="/images/people/profile-picture-5.jpg" bordered color="success" />
-        <Avatar img="/images/people/profile-picture-5.jpg" bordered color="pink" />
-      </div>
-    </CodePreview>
-    <CodePreview title="Override image element">
-      <div className="flex flex-wrap gap-2">
-        <Avatar
-          img={(props) => (
-            <Image
-              alt=""
-              height="48"
-              referrerPolicy="no-referrer"
-              src="/images/people/profile-picture-5.jpg"
-              width="48"
-              {...props}
-            />
-          )}
-        />
-        <Avatar
-          img={(props) => (
-            <picture>
-              <source media="(min-width: 900px)" srcSet="/images/people/profile-picture-3.jpg" />
-              <source media="(min-width: 480px)" srcSet="/images/people/profile-picture-4.jpg" />
-              <Image alt="" height="48" src="/images/people/profile-picture-5.jpg" width="48" {...props} />
-            </picture>
-          )}
-        />
-      </div>
-    </CodePreview>
-    <CodePreview title="Placeholder">
-      <div className="flex flex-wrap gap-2">
-        <Avatar />
-        <Avatar rounded />
-      </div>
-    </CodePreview>
-    <CodePreview title="Placeholder initials">
-      <div className="flex flex-wrap gap-2">
-        <Avatar placeholderInitials="RR" />
-      </div>
-    </CodePreview>
-    <CodePreview title="Dot indicator">
-      <div className="flex flex-wrap gap-2">
-        <Avatar img="/images/people/profile-picture-5.jpg" status="online" />
-        <Avatar img="/images/people/profile-picture-5.jpg" rounded status="busy" statusPosition="top-right" />
-        <Avatar img="/images/people/profile-picture-5.jpg" status="offline" statusPosition="bottom-left" />
-        <Avatar img="/images/people/profile-picture-5.jpg" rounded status="away" statusPosition="bottom-right" />
-      </div>
-    </CodePreview>
-    <CodePreview title="Stacked">
-      <div className="flex flex-wrap gap-2">
-        <Avatar.Group>
-          <Avatar img="/images/people/profile-picture-1.jpg" rounded stacked />
-          <Avatar img="/images/people/profile-picture-2.jpg" rounded stacked />
-          <Avatar img="/images/people/profile-picture-3.jpg" rounded stacked />
-          <Avatar img="/images/people/profile-picture-4.jpg" rounded stacked />
-          <Avatar img="/images/people/profile-picture-5.jpg" rounded stacked />
-        </Avatar.Group>
-        <Avatar.Group>
-          <Avatar img="/images/people/profile-picture-1.jpg" rounded stacked />
-          <Avatar img="/images/people/profile-picture-2.jpg" rounded stacked />
-          <Avatar img="/images/people/profile-picture-3.jpg" rounded stacked />
-          <Avatar img="/images/people/profile-picture-4.jpg" rounded stacked />
-          <Avatar.Counter total={99} href="#" />
-        </Avatar.Group>
-      </div>
-    </CodePreview>
-    <CodePreview title="Avatar text">
-      <Avatar img="/images/people/profile-picture-5.jpg" rounded>
-        <div className="space-y-1 font-medium dark:text-white">
-          <div>Jese Leos</div>
-          <div className="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>
+  <div className="divide-y divide-gray-200 dark:divide-gray-800">
+    <div className="pb-8">
+      <h1 className="mb-2 inline-block w-full text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+        React Avatar - Flowbite
+      </h1>
+      <p className="text-lg text-gray-600 dark:text-gray-400">
+        Learn more about the free and open-source Flowbite React UI components and start building modern web
+        applications using native React components based on Tailwind CSS
+      </p>
+    </div>
+    <div id="mainContent" className="py-8">
+      <CodePreview title="Default avatar">
+        <div className="flex flex-wrap gap-2">
+          <Avatar img="/images/people/profile-picture-5.jpg" rounded />
+          <Avatar img="/images/people/profile-picture-5.jpg" />
         </div>
-      </Avatar>
-    </CodePreview>
-    <CodePreview title="User dropdown">
-      <Dropdown
-        label={<Avatar alt="User settings" img="/images/people/profile-picture-5.jpg" rounded />}
-        arrowIcon={false}
-        inline
-      >
-        <Dropdown.Header>
-          <span className="block text-sm">Bonnie Green</span>
-          <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-        </Dropdown.Header>
-        <Dropdown.Item>Dashboard</Dropdown.Item>
-        <Dropdown.Item>Settings</Dropdown.Item>
-        <Dropdown.Item>Earnings</Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item>Sign out</Dropdown.Item>
-      </Dropdown>
-    </CodePreview>
-    <CodePreview title="Sizing">
-      <div className="flex flex-wrap items-center gap-2">
-        <Avatar img="/images/people/profile-picture-5.jpg" size="xs" />
-        <Avatar img="/images/people/profile-picture-5.jpg" size="sm" />
-        <Avatar img="/images/people/profile-picture-5.jpg" size="md" />
-        <Avatar img="/images/people/profile-picture-5.jpg" size="lg" />
-        <Avatar img="/images/people/profile-picture-5.jpg" size="xl" />
-      </div>
-    </CodePreview>
-    <CodePreview title="Alternative text">
-      <Avatar alt="Default avatar with alt text" img="/images/people/profile-picture-5.jpg" rounded />
-    </CodePreview>
-  </>
+      </CodePreview>
+      <CodePreview title="Bordered avatar">
+        <div className="flex flex-wrap gap-2">
+          <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered />
+          <Avatar img="/images/people/profile-picture-5.jpg" bordered />
+        </div>
+      </CodePreview>
+      <CodePreview title="Colored avatar">
+        <div className="flex flex-wrap gap-2">
+          <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="gray" />
+          <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="light" />
+          <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="purple" />
+          <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="success" />
+          <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="pink" />
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <Avatar img="/images/people/profile-picture-5.jpg" bordered color="gray" />
+          <Avatar img="/images/people/profile-picture-5.jpg" bordered color="light" />
+          <Avatar img="/images/people/profile-picture-5.jpg" bordered color="purple" />
+          <Avatar img="/images/people/profile-picture-5.jpg" bordered color="success" />
+          <Avatar img="/images/people/profile-picture-5.jpg" bordered color="pink" />
+        </div>
+      </CodePreview>
+      <CodePreview title="Override image element">
+        <div className="flex flex-wrap gap-2">
+          <Avatar
+            img={(props) => (
+              <Image
+                alt=""
+                height="48"
+                referrerPolicy="no-referrer"
+                src="/images/people/profile-picture-5.jpg"
+                width="48"
+                {...props}
+              />
+            )}
+          />
+          <Avatar
+            img={(props) => (
+              <picture>
+                <source media="(min-width: 900px)" srcSet="/images/people/profile-picture-3.jpg" />
+                <source media="(min-width: 480px)" srcSet="/images/people/profile-picture-4.jpg" />
+                <Image alt="" height="48" src="/images/people/profile-picture-5.jpg" width="48" {...props} />
+              </picture>
+            )}
+          />
+        </div>
+      </CodePreview>
+      <CodePreview title="Placeholder">
+        <div className="flex flex-wrap gap-2">
+          <Avatar />
+          <Avatar rounded />
+        </div>
+      </CodePreview>
+      <CodePreview title="Placeholder initials">
+        <div className="flex flex-wrap gap-2">
+          <Avatar placeholderInitials="RR" />
+        </div>
+      </CodePreview>
+      <CodePreview title="Dot indicator">
+        <div className="flex flex-wrap gap-2">
+          <Avatar img="/images/people/profile-picture-5.jpg" status="online" />
+          <Avatar img="/images/people/profile-picture-5.jpg" rounded status="busy" statusPosition="top-right" />
+          <Avatar img="/images/people/profile-picture-5.jpg" status="offline" statusPosition="bottom-left" />
+          <Avatar img="/images/people/profile-picture-5.jpg" rounded status="away" statusPosition="bottom-right" />
+        </div>
+      </CodePreview>
+      <CodePreview title="Stacked">
+        <div className="flex flex-wrap gap-2">
+          <Avatar.Group>
+            <Avatar img="/images/people/profile-picture-1.jpg" rounded stacked />
+            <Avatar img="/images/people/profile-picture-2.jpg" rounded stacked />
+            <Avatar img="/images/people/profile-picture-3.jpg" rounded stacked />
+            <Avatar img="/images/people/profile-picture-4.jpg" rounded stacked />
+            <Avatar img="/images/people/profile-picture-5.jpg" rounded stacked />
+          </Avatar.Group>
+          <Avatar.Group>
+            <Avatar img="/images/people/profile-picture-1.jpg" rounded stacked />
+            <Avatar img="/images/people/profile-picture-2.jpg" rounded stacked />
+            <Avatar img="/images/people/profile-picture-3.jpg" rounded stacked />
+            <Avatar img="/images/people/profile-picture-4.jpg" rounded stacked />
+            <Avatar.Counter total={99} href="#" />
+          </Avatar.Group>
+        </div>
+      </CodePreview>
+      <CodePreview title="Avatar text">
+        <Avatar img="/images/people/profile-picture-5.jpg" rounded>
+          <div className="space-y-1 font-medium dark:text-white">
+            <div>Jese Leos</div>
+            <div className="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>
+          </div>
+        </Avatar>
+      </CodePreview>
+      <CodePreview title="User dropdown">
+        <Dropdown
+          label={<Avatar alt="User settings" img="/images/people/profile-picture-5.jpg" rounded />}
+          arrowIcon={false}
+          inline
+        >
+          <Dropdown.Header>
+            <span className="block text-sm">Bonnie Green</span>
+            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+          </Dropdown.Header>
+          <Dropdown.Item>Dashboard</Dropdown.Item>
+          <Dropdown.Item>Settings</Dropdown.Item>
+          <Dropdown.Item>Earnings</Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item>Sign out</Dropdown.Item>
+        </Dropdown>
+      </CodePreview>
+      <CodePreview title="Sizing">
+        <div className="flex flex-wrap items-center gap-2">
+          <Avatar img="/images/people/profile-picture-5.jpg" size="xs" />
+          <Avatar img="/images/people/profile-picture-5.jpg" size="sm" />
+          <Avatar img="/images/people/profile-picture-5.jpg" size="md" />
+          <Avatar img="/images/people/profile-picture-5.jpg" size="lg" />
+          <Avatar img="/images/people/profile-picture-5.jpg" size="xl" />
+        </div>
+      </CodePreview>
+      <CodePreview title="Alternative text">
+        <Avatar alt="Default avatar with alt text" img="/images/people/profile-picture-5.jpg" rounded />
+      </CodePreview>
+    </div>
+  </div>
 );
 
 export default AvatarPage;
