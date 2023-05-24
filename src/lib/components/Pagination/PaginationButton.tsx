@@ -16,11 +16,41 @@ export interface PaginationButtonProps extends ComponentProps<'button'> {
   className?: string;
   onClick?: ReactEventHandler<HTMLButtonElement>;
   theme?: DeepPartial<FlowbitePaginationButtonTheme>;
+}
+
+export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, 'active'> {
   disabled?: boolean;
 }
 
-const PaginationButton: FC<PaginationButtonProps> = ({
+export const PaginationButton: FC<PaginationButtonProps> = ({
   active,
+  children,
+  className,
+  onClick,
+  theme: customTheme = {},
+  ...props
+}) => {
+  const theme = mergeDeep(useTheme().theme.pagination, customTheme);
+
+  return (
+    <button
+      className={classNames(
+        {
+          [theme.pages.selector.active]: active,
+        },
+        className,
+      )}
+      onClick={onClick}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
+PaginationButton.displayName = 'Pagination.Button';
+
+export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   children,
   className,
   onClick,
@@ -34,7 +64,6 @@ const PaginationButton: FC<PaginationButtonProps> = ({
     <button
       className={classNames(
         {
-          [theme.pages.selector.active]: active,
           [theme.pages.selector.disabled]: disabled,
         },
         className,
@@ -48,5 +77,4 @@ const PaginationButton: FC<PaginationButtonProps> = ({
   );
 };
 
-PaginationButton.displayName = 'Pagination.Button';
-export default PaginationButton;
+PaginationNavigation.displayName = 'Pagination.Navigation';

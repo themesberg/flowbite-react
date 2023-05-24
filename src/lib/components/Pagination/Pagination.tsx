@@ -6,7 +6,7 @@ import { mergeDeep } from '../../helpers/mergeDeep';
 import range from '../../helpers/range';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { FlowbitePaginationButtonTheme, PaginationButtonProps } from './PaginationButton';
-import PaginationButton from './PaginationButton';
+import { PaginationButton, PaginationNavigation } from './PaginationButton';
 
 export interface FlowbitePaginationTheme {
   base: string;
@@ -87,17 +87,14 @@ const PaginationComponent: FC<PaginationProps> = ({
       )}
       <ul className={theme.pages.base}>
         <li>
-          {renderPaginationButton({
-            className: classNames(classNames(theme.pages.previous.base, showIcon && theme.pages.showIcon)),
-            onClick: goToPreviousPage,
-            disabled: currentPage === 1,
-            children: (
-              <>
-                {showIcon && <HiChevronLeft aria-hidden className={theme.pages.previous.icon} />}
-                {previousLabel}
-              </>
-            ),
-          })}
+          <PaginationNavigation
+            className={classNames(theme.pages.previous.base, showIcon && theme.pages.showIcon)}
+            onClick={goToPreviousPage}
+            disabled={currentPage === 1}
+          >
+            {showIcon && <HiChevronLeft aria-hidden className={theme.pages.previous.icon} />}
+            {previousLabel}
+          </PaginationNavigation>
         </li>
         {layout === 'pagination' &&
           range(firstPage, lastPage).map((page: number) => (
@@ -113,17 +110,14 @@ const PaginationComponent: FC<PaginationProps> = ({
             </li>
           ))}
         <li>
-          {renderPaginationButton({
-            className: classNames(theme.pages.next.base, showIcon && theme.pages.showIcon),
-            onClick: goToNextPage,
-            disabled: currentPage === totalPages,
-            children: (
-              <>
-                {nextLabel}
-                {showIcon && <HiChevronRight aria-hidden className={theme.pages.next.icon} />}
-              </>
-            ),
-          })}
+          <PaginationNavigation
+            className={classNames(theme.pages.next.base, showIcon && theme.pages.showIcon)}
+            onClick={goToNextPage}
+            disabled={currentPage === totalPages}
+          >
+            {nextLabel}
+            {showIcon && <HiChevronRight aria-hidden className={theme.pages.next.icon} />}
+          </PaginationNavigation>
         </li>
       </ul>
     </nav>
