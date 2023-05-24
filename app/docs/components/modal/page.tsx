@@ -5,8 +5,8 @@ import type { FC, SetStateAction } from 'react';
 import { useState } from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
+import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import { Button, Checkbox, Label, Modal, Select, TextInput } from '~/src';
-import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const ModalPage: FC = () => {
   const [openModal, setOpenModal] = useState<string | undefined>();

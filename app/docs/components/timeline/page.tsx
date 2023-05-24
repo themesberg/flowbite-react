@@ -3,8 +3,8 @@
 import type { FC } from 'react';
 import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
+import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import { Button, Timeline } from '~/src';
-import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const TimelinePage: FC = () => (
   <DocsContentLayout

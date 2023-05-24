@@ -2,8 +2,8 @@
 
 import type { FC } from 'react';
 import { CodePreview } from '~/app/components/code-preview';
+import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import { Checkbox, Table } from '~/src';
-import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const TablePage: FC = () => (
   <DocsContentLayout

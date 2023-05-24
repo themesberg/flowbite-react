@@ -4,8 +4,8 @@ import type { FC } from 'react';
 import { BiBuoy } from 'react-icons/bi';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
+import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import { Badge, Sidebar } from '~/src';
-import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const SidebarPage: FC = () => (
   <DocsContentLayout

@@ -5,6 +5,7 @@ import type { FC } from 'react';
 import { useState } from 'react';
 import { HiMail } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
+import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import {
   Button,
   Checkbox,
@@ -17,7 +18,6 @@ import {
   TextInput,
   ToggleSwitch,
 } from '~/src';
-import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const FormsPage: FC = () => {
   const [switch1, setSwitch1] = useState(false);

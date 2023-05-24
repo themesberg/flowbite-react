@@ -3,8 +3,8 @@
 import type { FC } from 'react';
 import { useState } from 'react';
 import { CodePreview } from '~/app/components/code-preview';
+import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import { Pagination } from '~/src';
-import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const PaginationPage: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);

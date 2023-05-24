@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import { DocsContentLayout } from '../../../components/docs-content-layout';
+import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import DropdownDocs from './dropdown.mdx';
 
 const DropdownPage: FC = () => (

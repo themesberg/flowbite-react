@@ -2,7 +2,7 @@
 
 import type { FC } from 'react';
 
-import { DocsContentLayout } from '../../../components/docs-content-layout';
+import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import AlertDocs from './alert.mdx';
 
 const AlertPage: FC = () => (

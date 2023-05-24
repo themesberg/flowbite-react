@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import type { FC } from 'react';
 import { CodePreview } from '~/app/components/code-preview';
+import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import { Avatar, Button, Dropdown, Navbar } from '~/src';
-import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const NavbarPage: FC = () => (
   <DocsContentLayout
