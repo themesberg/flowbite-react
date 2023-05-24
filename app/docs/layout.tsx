@@ -84,7 +84,7 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
     <Navbar
       fluid
       theme={{
-        base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-4 px-4',
+        base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-2.5 px-4',
         inner: {
           base: 'mx-auto flex flex-wrap justify-between items-center w-full',
         },
@@ -203,7 +203,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed }) => {
         <Sidebar.ItemGroup className="mt-0 border-none">
           <Accordion className="border-none">
             <Accordion.Panel>
-              <Accordion.Title className="my-4 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
+              <Accordion.Title className="mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
                 Getting started
               </Accordion.Title>
               <Accordion.Content className="border-none !p-0">
@@ -211,7 +211,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed }) => {
                 <SidebarLink href="/docs/getting-started/quickstart">Quickstart</SidebarLink>
                 <SidebarLink href="/docs/getting-started/nextjs">
                   <span className="flex items-center gap-2">
-                    Next.js <Badge color="success">New</Badge>
+                    Next.js <Badge color="cyan">New</Badge>
                   </span>
                 </SidebarLink>
                 <SidebarLink href="/docs/getting-started/typescript">TypeScript</SidebarLink>
@@ -222,10 +222,10 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed }) => {
             </Accordion.Panel>
           </Accordion>
         </Sidebar.ItemGroup>
-        <Sidebar.ItemGroup className="mt-0 border-none">
+        <Sidebar.ItemGroup className="!mt-0 border-none">
           <Accordion className="border-none">
             <Accordion.Panel>
-              <Accordion.Title className="my-4 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
+              <Accordion.Title className="mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
                 Customize
               </Accordion.Title>
               <Accordion.Content className="border-none !p-0">
@@ -235,10 +235,10 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed }) => {
             </Accordion.Panel>
           </Accordion>
         </Sidebar.ItemGroup>
-        <Sidebar.ItemGroup className="mt-0 border-none">
+        <Sidebar.ItemGroup className="!mt-0 border-none">
           <Accordion className="border-none">
-            <Accordion.Panel>
-              <Accordion.Title className="my-4 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
+            <Accordion.Panel className="focus:!outline-none focus:!ring-0">
+              <Accordion.Title className="mb-2 flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide text-primary-700 hover:text-primary-700 dark:text-primary-700 dark:hover:text-primary-600">
                 Components
               </Accordion.Title>
               <Accordion.Content className="border-none !p-0">
