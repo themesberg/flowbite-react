@@ -8,20 +8,24 @@
   @apply overflow-hidden;
 }
 
+#mainContent > hr {
+  @apply my-8 border-gray-200 dark:border-gray-700;
+}
+
 #mainContent > h1 {
-  @apply mb-4 mt-8 text-3xl font-bold text-gray-900 dark:text-white;
+  @apply mb-2 inline-block w-full text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white;
 }
 
 #mainContent > h2 {
-  @apply mb-4 mt-8 text-2xl font-bold text-gray-900 dark:text-white;
+  @apply relative mb-4 mt-8 text-2xl font-bold leading-tight text-gray-900 dark:text-white;
 }
 
 #mainContent > h3 {
-  @apply mb-4 mt-8 text-xl font-bold text-gray-900 dark:text-white;
+  @apply relative mb-4 mt-8 text-xl font-bold leading-tight text-gray-900 dark:text-white;
 }
 
 #mainContent > h4 {
-  @apply mb-4 mt-8 text-lg font-bold text-gray-900 dark:text-white;
+  @apply relative mb-4 mt-8 text-lg font-bold text-gray-900 dark:text-white;
 }
 
 #mainContent > p {
