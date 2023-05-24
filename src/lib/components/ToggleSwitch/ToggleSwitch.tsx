@@ -26,7 +26,7 @@ export interface FlowbiteToggleSwitchToggleTheme {
 
 export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
   checked: boolean;
-  color?: FlowbiteColors;
+  color?: keyof FlowbiteColors;
   label: string;
   onChange: (checked: boolean) => void;
   theme?: DeepPartial<FlowbiteToggleSwitchTheme>;

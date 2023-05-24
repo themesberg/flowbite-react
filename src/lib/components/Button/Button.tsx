@@ -104,7 +104,8 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
     },
     ref,
   ) => {
-    const { buttonGroup: groupTheme, button: theme } = mergeDeep(useTheme().theme, customTheme);
+    const { buttonGroup: groupTheme, button: buttonTheme } = useTheme().theme;
+    const theme = mergeDeep(buttonTheme, customTheme);
 
     const isLink = typeof href !== 'undefined';
     const Component = isLink ? 'a' : 'button';
