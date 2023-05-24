@@ -21,6 +21,10 @@ import { Flowbite } from '~/src';
 const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <link rel="icon" href="/favicon.svg" />
+      </head>
       <body>
         <Flowbite>{children}</Flowbite>
       </body>
