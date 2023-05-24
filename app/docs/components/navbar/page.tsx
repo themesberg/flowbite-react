@@ -4,9 +4,10 @@ import Link from 'next/link';
 import type { FC } from 'react';
 import { CodePreview } from '~/app/components/code-preview';
 import { Avatar, Button, Dropdown, Navbar } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const NavbarPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Navbar - Flowbite" description="description placeholder">
     <CodePreview title="Default navbar">
       <Navbar fluid rounded>
         <Navbar.Brand as={Link} href="/navbars">
@@ -85,7 +86,7 @@ const NavbarPage: FC = () => (
         </Navbar.Collapse>
       </Navbar>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default NavbarPage;

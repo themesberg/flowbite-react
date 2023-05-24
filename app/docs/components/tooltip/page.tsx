@@ -3,9 +3,10 @@
 import type { FC } from 'react';
 import { CodePreview } from '~/app/components/code-preview';
 import { Button, Tooltip } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const TooltipPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Tooltip - Flowbite" description="description placeholder">
     <CodePreview title="Default tooltip">
       <Tooltip content="Tooltip content">
         <Button>Default tooltip</Button>
@@ -63,7 +64,7 @@ const TooltipPage: FC = () => (
         <Button>Default tooltip</Button>
       </Tooltip>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default TooltipPage;

@@ -5,9 +5,10 @@ import { BiBuoy } from 'react-icons/bi';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { Badge, Sidebar } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const SidebarPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Sidebar - Flowbite" description="description placeholder">
     <CodePreview title="Default sidebar" className="w-fit">
       <Sidebar aria-label="Default sidebar example">
         <Sidebar.Items>
@@ -201,7 +202,7 @@ const SidebarPage: FC = () => (
         </Sidebar.Items>
       </Sidebar>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default SidebarPage;

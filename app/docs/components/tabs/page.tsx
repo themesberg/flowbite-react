@@ -7,13 +7,14 @@ import { MdDashboard } from 'react-icons/md';
 import { CodePreview } from '~/app/components/code-preview';
 import type { TabsRef } from '~/src';
 import { Button, Tabs } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const TabsPage: FC = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
   const tabsRef = useRef<TabsRef>(null);
 
   return (
-    <>
+    <DocsContentLayout title="React Tabs - Flowbite" description="description placeholder">
       <CodePreview title="Default tabs">
         <Tabs.Group aria-label="Default tabs" style="default">
           <Tabs.Item active title="Profile">
@@ -149,7 +150,7 @@ const TabsPage: FC = () => {
           </Button>
         </Button.Group>
       </CodePreview>
-    </>
+    </DocsContentLayout>
   );
 };
 

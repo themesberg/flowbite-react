@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import { useState } from 'react';
 import { CodePreview } from '~/app/components/code-preview';
 import { Pagination } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const PaginationPage: FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,7 +14,7 @@ const PaginationPage: FC = () => {
   };
 
   return (
-    <>
+    <DocsContentLayout title="React Pagination - Flowbite" description="description placeholder">
       <CodePreview title="Default pagination">
         <Pagination currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />
       </CodePreview>
@@ -61,7 +62,7 @@ const PaginationPage: FC = () => {
           />
         </div>
       </CodePreview>
-    </>
+    </DocsContentLayout>
   );
 };
 

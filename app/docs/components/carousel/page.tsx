@@ -3,9 +3,10 @@
 import type { FC } from 'react';
 import { CodePreview } from '~/app/components/code-preview';
 import { Carousel } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const CarouselPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Carousel - Flowbite" description="description placeholder">
     <CodePreview title="Default carousel" className="h-56 sm:h-64 xl:h-80 2xl:h-96">
       <Carousel>
         <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
@@ -71,7 +72,7 @@ const CarouselPage: FC = () => (
         </div>
       </Carousel>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default CarouselPage;

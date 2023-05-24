@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { Button, Checkbox, Label, Modal, Select, TextInput } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const ModalPage: FC = () => {
   const [openModal, setOpenModal] = useState<string | undefined>();
@@ -13,7 +14,7 @@ const ModalPage: FC = () => {
   const [modalPlacement, setModalPlacement] = useState<string>('center');
 
   return (
-    <>
+    <DocsContentLayout title="React Modal - Flowbite" description="description placeholder">
       <CodePreview title="Default modal">
         <Button onClick={() => setOpenModal('default')}>Toggle modal</Button>
         <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)}>
@@ -214,7 +215,7 @@ const ModalPage: FC = () => {
           </Modal.Footer>
         </Modal>
       </CodePreview>
-    </>
+    </DocsContentLayout>
   );
 };
 

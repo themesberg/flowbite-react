@@ -3,9 +3,10 @@
 import type { FC } from 'react';
 import { CodePreview } from '~/app/components/code-preview';
 import { Progress } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const ProgressPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Progress Bar - Flowbite" description="description placeholder">
     <CodePreview title="Default progress">
       <Progress progress={45} />
     </CodePreview>
@@ -53,7 +54,7 @@ const ProgressPage: FC = () => (
         size="lg"
       />
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default ProgressPage;

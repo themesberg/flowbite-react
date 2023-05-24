@@ -3,9 +3,10 @@
 import type { FC } from 'react';
 import { CodePreview } from '~/app/components/code-preview';
 import { Rating } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const RatingPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Rating - Flowbite" description="description placeholder">
     <CodePreview title="Default rating">
       <Rating>
         <Rating.Star />
@@ -74,7 +75,7 @@ const RatingPage: FC = () => (
       <Rating.Advanced percentFilled={4}>2 star</Rating.Advanced>
       <Rating.Advanced percentFilled={1}>1 star</Rating.Advanced>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default RatingPage;

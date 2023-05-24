@@ -4,9 +4,10 @@ import type { FC } from 'react';
 import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { Button, Timeline } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const TimelinePage: FC = () => (
-  <>
+  <DocsContentLayout title="React Timeline - Flowbite" description="description placeholder">
     <CodePreview title="Default timeline">
       <Timeline>
         <Timeline.Item>
@@ -115,7 +116,7 @@ const TimelinePage: FC = () => (
         </Timeline.Item>
       </Timeline>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default TimelinePage;

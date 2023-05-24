@@ -4,9 +4,10 @@ import Image from 'next/image';
 import type { FC } from 'react';
 import { CodePreview } from '~/app/components/code-preview';
 import { Button, Card, Checkbox, Dropdown, Label, TextInput } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const CardPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Cards - Flowbite" description="description placeholder">
     <CodePreview title="Default card">
       <Card href="#">
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -761,7 +762,7 @@ const CardPage: FC = () => (
         </div>
       </Card>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default CardPage;

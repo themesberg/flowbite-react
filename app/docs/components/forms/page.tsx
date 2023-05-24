@@ -17,13 +17,14 @@ import {
   TextInput,
   ToggleSwitch,
 } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const FormsPage: FC = () => {
   const [switch1, setSwitch1] = useState(false);
   const [switch2, setSwitch2] = useState(true);
 
   return (
-    <>
+    <DocsContentLayout title="React Forms - Flowbite" description="description placeholder">
       <CodePreview title="Default form">
         <form className="flex flex-col gap-4">
           <div>
@@ -376,7 +377,7 @@ const FormsPage: FC = () => {
           </div>
         </div>
       </CodePreview>
-    </>
+    </DocsContentLayout>
   );
 };
 

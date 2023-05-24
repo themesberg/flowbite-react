@@ -4,9 +4,10 @@ import type { FC } from 'react';
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { Button } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const ButtonGroupPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Button Group - Flowbite" description="description placeholder">
     <CodePreview title="Default button group">
       <Button.Group>
         <Button color="gray">Profile</Button>
@@ -108,7 +109,7 @@ const ButtonGroupPage: FC = () => (
         </Button>
       </Button.Group>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default ButtonGroupPage;

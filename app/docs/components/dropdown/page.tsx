@@ -4,9 +4,10 @@ import type { FC } from 'react';
 import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { Dropdown } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const DropdownPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Dropdown - Flowbite" description="description placeholder">
     <CodePreview title="Default dropdown">
       <Dropdown label="Dropdown button" dismissOnClick={false}>
         <Dropdown.Item>Dashboard</Dropdown.Item>
@@ -126,7 +127,7 @@ const DropdownPage: FC = () => (
         </div>
       </div>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default DropdownPage;

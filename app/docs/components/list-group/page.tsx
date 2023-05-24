@@ -4,9 +4,10 @@ import type { FC } from 'react';
 import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { ListGroup } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const ListGroupPage: FC = () => (
-  <>
+  <DocsContentLayout title="React List Group - Flowbite" description="description placeholder">
     <CodePreview title="Default list group" className="w-48">
       <ListGroup>
         <ListGroup.Item>Profile</ListGroup.Item>
@@ -45,7 +46,7 @@ const ListGroupPage: FC = () => (
         <ListGroup.Item icon={HiCloudDownload}>Download</ListGroup.Item>
       </ListGroup>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default ListGroupPage;

@@ -4,9 +4,10 @@ import type { FC } from 'react';
 import { HiHome } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { Breadcrumb } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const BreadcrumbPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Breadcrumb - Flowbite" description="description placeholder">
     <CodePreview title="Default breadcrumb">
       <Breadcrumb aria-label="Default breadcrumb example">
         <Breadcrumb.Item href="#" icon={HiHome}>
@@ -25,7 +26,7 @@ const BreadcrumbPage: FC = () => (
         <Breadcrumb.Item>Flowbite React</Breadcrumb.Item>
       </Breadcrumb>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default BreadcrumbPage;

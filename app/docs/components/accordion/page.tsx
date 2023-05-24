@@ -5,7 +5,7 @@ import { DocsContentLayout } from '../../../components/docs-content-layout';
 import AccordionDocs from './accordion.mdx';
 
 const AccordionPage: FC = () => (
-  <DocsContentLayout title="React Accordion - Flowbite" description="plm">
+  <DocsContentLayout title="React Accordion - Flowbite" description="description placeholder">
     <AccordionDocs />
   </DocsContentLayout>
 );

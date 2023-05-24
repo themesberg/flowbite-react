@@ -4,9 +4,10 @@ import type { FC } from 'react';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { CodePreview } from '~/app/components/code-preview';
 import { Footer } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const FooterPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Footer - Flowbite" description="description placeholder">
     <CodePreview title="Default footer">
       <Footer container>
         <Footer.Copyright href="#" by="Flowbite™" year={2022} />
@@ -143,7 +144,7 @@ const FooterPage: FC = () => (
         </div>
       </Footer>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default FooterPage;

@@ -7,9 +7,10 @@ import { HiCheck, HiExclamation, HiFire, HiX } from 'react-icons/hi';
 import { MdLoop } from 'react-icons/md';
 import { CodePreview } from '~/app/components/code-preview';
 import { Button, Toast } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const ToastPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Toast - Flowbite" description="description placeholder">
     <CodePreview title="Default toast">
       <Toast>
         <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-100 text-cyan-500 dark:bg-cyan-800 dark:text-cyan-200">
@@ -90,7 +91,7 @@ const ToastPage: FC = () => (
         </div>
       </Toast>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default ToastPage;

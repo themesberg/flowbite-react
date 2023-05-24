@@ -3,9 +3,10 @@
 import type { FC } from 'react';
 import { CodePreview } from '~/app/components/code-preview';
 import { Checkbox, Table } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const TablePage: FC = () => (
-  <>
+  <DocsContentLayout title="React Tables - Flowbite" description="description placeholder">
     <CodePreview title="Default table">
       <Table>
         <Table.Head>
@@ -260,7 +261,7 @@ const TablePage: FC = () => (
         </Table.Body>
       </Table>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default TablePage;

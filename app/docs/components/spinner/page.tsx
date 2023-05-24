@@ -3,9 +3,10 @@
 import type { FC } from 'react';
 import { CodePreview } from '~/app/components/code-preview';
 import { Button, Spinner } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const SpinnersPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Spinner (Loader) - Flowbite" description="description placeholder">
     <CodePreview title="Default spinner">
       <Spinner aria-label="Default status example" />
     </CodePreview>
@@ -45,7 +46,7 @@ const SpinnersPage: FC = () => (
         <span className="pl-3">Loading...</span>
       </Button>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default SpinnersPage;

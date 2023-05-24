@@ -4,9 +4,10 @@ import type { FC } from 'react';
 import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { Button } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const ButtonPage: FC = () => (
-  <>
+  <DocsContentLayout title="React Buttons - Flowbite" description="description placeholder">
     <CodePreview title="Default buttons" className="flex flex-wrap gap-2">
       <Button>Default</Button>
       <Button color="gray">Gray</Button>
@@ -131,7 +132,7 @@ const ButtonPage: FC = () => (
     <CodePreview title="Disabled">
       <Button disabled>Disabled button</Button>
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default ButtonPage;

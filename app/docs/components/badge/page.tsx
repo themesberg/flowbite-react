@@ -4,9 +4,10 @@ import type { FC } from 'react';
 import { HiCheck, HiClock } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { Badge } from '~/src';
+import { DocsContentLayout } from '../../../components/docs-content-layout';
 
 const BadgePage: FC = () => (
-  <>
+  <DocsContentLayout title="React Badge - Flowbite" description="description placeholder">
     <CodePreview title="Default badges" className="flex flex-wrap gap-2">
       <Badge color="info">Default</Badge>
       <Badge color="gray">Dark</Badge>
@@ -61,7 +62,7 @@ const BadgePage: FC = () => (
       <Badge size="sm" icon={HiCheck} />
       <Badge color="gray" size="sm" icon={HiCheck} />
     </CodePreview>
-  </>
+  </DocsContentLayout>
 );
 
 export default BadgePage;
