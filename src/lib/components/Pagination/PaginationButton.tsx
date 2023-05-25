@@ -55,7 +55,7 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   className,
   onClick,
   theme: customTheme = {},
-  disabled,
+  disabled = false,
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.pagination, customTheme);
