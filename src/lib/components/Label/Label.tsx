@@ -40,7 +40,8 @@ export const Label: FC<LabelProps> = ({
 
   return (
     <label
-      className={classNames(theme.root.base, theme.root.colors[color], disabled ?? theme.root.disabled, className)}
+      className={classNames(theme.root.base, theme.root.colors[color], disabled && theme.root.disabled, className)}
+      data-testid="flowbite-label"
       {...props}
     >
       {value ?? children ?? ''}
