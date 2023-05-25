@@ -96,7 +96,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               </div>
             )}
 
-            {renderRightIcon && !Icon && (
+            {renderRightIcon && !RightIcon && (
               <div data-testid="rendered-right-icon" className={theme.field.rightIcon.base}>
                 {renderRightIcon(theme.field.rightIcon.svg)}
               </div>
