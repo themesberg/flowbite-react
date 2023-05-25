@@ -46,6 +46,8 @@ export interface TextInputProps extends Omit<ComponentProps<'input'>, 'ref' | 'c
   helperText?: ReactNode;
   addon?: ReactNode;
   icon?: FC<ComponentProps<'svg'>>;
+  renderIcon?: (style: string) => JSX.Element;
+  renderRightIcon?: (style: string) => JSX.Element;
   rightIcon?: FC<ComponentProps<'svg'>>;
   color?: keyof TextInputColors;
   theme?: DeepPartial<FlowbiteTextInputTheme>;
@@ -59,7 +61,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       color = 'gray',
       helperText,
       icon: Icon,
+      renderIcon,
       rightIcon: RightIcon,
+      renderRightIcon,
       shadow,
       sizing = 'md',
       theme: customTheme = {},
@@ -79,11 +83,25 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 <Icon className={theme.field.icon.svg} />
               </div>
             )}
+
+            {renderIcon && !Icon && (
+              <div className={theme.field.icon.base} data-testid="rendered-icon">
+                {renderIcon(theme.field.icon.svg)}
+              </div>
+            )}
+
             {RightIcon && (
               <div data-testid="right-icon" className={theme.field.rightIcon.base}>
                 <RightIcon className={theme.field.rightIcon.svg} />
               </div>
             )}
+
+            {renderRightIcon && !RightIcon && (
+              <div data-testid="rendered-right-icon" className={theme.field.rightIcon.base}>
+                {renderRightIcon(theme.field.rightIcon.svg)}
+              </div>
+            )}
+
             <input
               className={classNames(
                 theme.field.input.base,
