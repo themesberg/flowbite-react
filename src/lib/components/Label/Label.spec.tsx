@@ -1,9 +1,10 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { HiGlobe, HiLockClosed } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { FileInput } from '../FileInput';
+import { Flowbite } from '../Flowbite';
 import { Radio } from '../Radio';
 import { RangeSlider } from '../RangeSlider';
 import { Select } from '../Select';
@@ -30,8 +31,30 @@ describe.concurrent('Components / Label', () => {
 
       inputLabels.forEach((label) => expect(getByLabelText(label)).toHaveAccessibleName(label));
     });
+
+    describe('Theme', () => {
+      it('should use `disabled` classes', () => {
+        const theme = {
+          label: {
+            root: {
+              disabled: 'opacity-50',
+            },
+          },
+        };
+
+        render(
+          <Flowbite theme={{ theme }}>
+            <Label disabled />
+          </Flowbite>,
+        );
+
+        expect(label()).toHaveClass('opacity-50');
+      });
+    });
   });
 });
+
+const label = () => screen.getByTestId('flowbite-label');
 
 const TestForm = (): JSX.Element => (
   <form>
