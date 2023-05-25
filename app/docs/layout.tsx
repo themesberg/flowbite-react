@@ -161,13 +161,13 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
             },
           }}
         >
-          <Sidebar.Items className="grid grid-cols-1 gap-4">
+          <Sidebar.Items className="grid grid-cols-1 gap-2">
             <Accordion collapseAll={!pathname.includes('/getting-started/')} flush className="border-none">
               <Accordion.Panel>
                 <Accordion.Title
                   theme={{
                     open: {
-                      on: 'mb-4 text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
+                      on: 'mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
                       off: 'mb-1 text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200',
                     },
                   }}
@@ -179,7 +179,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 >
                   Getting started
                 </Accordion.Title>
-                <Accordion.Content className="border-none !p-0">
+                <Accordion.Content className="mb-2 border-none !p-0">
                   <Sidebar.ItemGroup className="border-none">
                     <SidebarLink href="/docs/getting-started/introduction">Introduction</SidebarLink>
                     <SidebarLink href="/docs/getting-started/quickstart">Quickstart</SidebarLink>
@@ -201,7 +201,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 <Accordion.Title
                   theme={{
                     open: {
-                      on: 'mb-4 text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
+                      on: 'mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
                       off: 'mb-1 text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200',
                     },
                   }}
@@ -213,7 +213,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 >
                   Customize
                 </Accordion.Title>
-                <Accordion.Content className="space-y-0.5 border-none !p-0">
+                <Accordion.Content className="mb-2 space-y-0.5 border-none !p-0">
                   <Sidebar.ItemGroup className="border-none">
                     <SidebarLink href="/docs/customize/theme">Theme</SidebarLink>
                     <SidebarLink href="/docs/customize/dark-mode">Dark mode</SidebarLink>
@@ -226,7 +226,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 <Accordion.Title
                   theme={{
                     open: {
-                      on: 'mb-4 text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
+                      on: 'mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
                       off: 'mb-1 text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200',
                     },
                   }}
@@ -238,7 +238,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 >
                   Components
                 </Accordion.Title>
-                <Accordion.Content className="border-none !p-0">
+                <Accordion.Content className="mb-2 border-none !p-0">
                   <Sidebar.ItemGroup className="border-none">
                     <SidebarLink href="/docs/components/accordion">Accordion</SidebarLink>
                     <SidebarLink href="/docs/components/alert">Alert</SidebarLink>
