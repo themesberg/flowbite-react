@@ -78,25 +78,30 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <div className={classNames(theme.base, className)}>
           {addon && <span className={theme.addon}>{addon}</span>}
           <div className={theme.field.base}>
-            {Icon ? (
+            {Icon && (
               <div className={theme.field.icon.base}>
                 <Icon className={theme.field.icon.svg} />
               </div>
-            ) : renderIcon ? (
-              <div data-testid="rendered-icon" className={theme.field.icon.base}>
+            )}
+
+            {renderIcon && !Icon && (
+              <div className={theme.field.icon.base} data-testid="rendered-icon">
                 {renderIcon(theme.field.icon.svg)}
               </div>
-            ) : null}
+            )}
 
-            {RightIcon ? (
+            {RightIcon && (
               <div data-testid="right-icon" className={theme.field.rightIcon.base}>
                 <RightIcon className={theme.field.rightIcon.svg} />
               </div>
-            ) : renderRightIcon ? (
+            )}
+
+            {renderRightIcon && !Icon && (
               <div data-testid="rendered-right-icon" className={theme.field.rightIcon.base}>
                 {renderRightIcon(theme.field.rightIcon.svg)}
               </div>
-            ) : null}
+            )}
+
             <input
               className={classNames(
                 theme.field.input.base,
