@@ -8,47 +8,61 @@
   @apply overflow-hidden;
 }
 
-#mainContent > hr {
+#mainContent > hr,
+#mainContent > div > hr {
   @apply my-8 border-gray-200 dark:border-gray-700;
 }
 
-#mainContent > h1 {
+#mainContent > h1,
+#mainContent > div > h1 {
   @apply mb-2 inline-block w-full text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white;
 }
 
-#mainContent > h2 {
+#mainContent > h2,
+#mainContent > div > h2 {
   @apply relative mb-4 mt-8 text-2xl font-bold leading-tight text-gray-900 dark:text-white;
 }
 
-#mainContent > h3 {
+#mainContent > h3,
+#mainContent > div > h3 {
   @apply relative mb-4 mt-8 text-xl font-bold leading-tight text-gray-900 dark:text-white;
 }
 
-#mainContent > h4 {
+#mainContent > h4,
+#mainContent > div > h4 {
   @apply relative mb-4 mt-8 text-lg font-bold text-gray-900 dark:text-white;
 }
 
-#mainContent > p {
+#mainContent > p,
+#mainContent > div > p {
   @apply /*text-gray-600 dark:text-gray-400*/ mb-4 text-base font-normal;
 }
 
 #mainContent > p > a,
+#mainContent > div > p > a,
 #mainContent > ul > li > a,
-#mainContent > ol > li > a {
+#mainContent > div > ul > li > a,
+#mainContent > ol > li > a,
+#mainContent > div > ol > li > a {
   @apply font-medium text-gray-900 underline decoration-cyan-700 decoration-1 underline-offset-2 dark:text-white dark:decoration-cyan-700;
 }
 
 #mainContent > p > a:hover,
+#mainContent > div > p > a:hover,
 #mainContent > ul > li > a:hover,
-#mainContent > ol > li > a:hover {
+#mainContent > div > ul > li > a:hover,
+#mainContent > ol > li > a:hover,
+#mainContent > div > ol > li > a:hover {
   @apply /*text-gray-900*/ decoration-2 dark:text-white;
 }
 
-#mainContent > ul {
+#mainContent > ul,
+#mainContent > div > ul {
   @apply list-disc;
 }
 
-#mainContent > ol {
+#mainContent > ol,
+#mainContent > div > ol {
   @apply list-decimal;
 }
 
@@ -57,12 +71,16 @@
 }
 
 #mainContent > ul,
-#mainContent > ol {
+#mainContent > div > ul,
+#mainContent > ol,
+#mainContent > div > ol {
   @apply mb-4 pl-4;
 }
 
 #mainContent > ul > li,
-#mainContent > ol > li {
+#mainContent > div > ul > li,
+#mainContent > ol > li,
+#mainContent > div > ol > li {
   @apply text-base font-normal text-gray-600 dark:text-gray-400;
 }
 
