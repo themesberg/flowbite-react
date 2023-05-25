@@ -30,7 +30,7 @@ export const CodePreview: FC<CodePreviewProps> = function ({ children, className
     <div className="mb-12 flex w-full flex-col gap-2">
       <h2 className="text-2xl font-bold">{title}</h2>
       <div className={classNames('py-4', className)}>{children}</div>
-      <pre className="language-jsx">
+      <pre className="language-tsx">
         <code>{code}</code>
       </pre>
     </div>
