@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.6](https://github.com/themesberg/flowbite-react/compare/v0.4.6-beta.1...v0.4.6) (2023-05-26)
+
 ### [0.4.5](https://github.com/themesberg/flowbite-react/compare/v0.4.4...v0.4.5) (2023-05-26)
 
 ### Features
