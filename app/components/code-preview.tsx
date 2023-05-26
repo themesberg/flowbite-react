@@ -18,7 +18,7 @@ interface CodePreviewProps extends PropsWithChildren, ComponentProps<'div'> {
   title: string;
 }
 
-export const CodePreview: FC<CodePreviewProps> = function ({ children, className, title }) {
+export const CodePreview: FC<CodePreviewProps> = function ({ children, className }) {
   const childrenList = Children.toArray(children);
   let code = childrenList.map((child) => reactElementToJSXString(child, reactElementToJSXStringOptions)).join('\n');
   code = deleteJSXSpaces(code);
