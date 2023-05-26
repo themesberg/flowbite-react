@@ -3,7 +3,8 @@ import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import BreadcrumbPageContent from '.';
 
 export const metadata: Metadata = {
-  description: 'Show the location of the current page in a hierarchical structure using the breadcrumb components',
+  description:
+    'Get started with the breadcrumb component to show the current page location based on the URL structure using React and Tailwind CSS',
   title: 'React Breadcrumb - Flowbite',
 };
 
