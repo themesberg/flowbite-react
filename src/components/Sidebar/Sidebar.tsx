@@ -1,5 +1,3 @@
-'use client';
-
 import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import type { DeepPartial, FlowbiteBoolean } from '~/src';

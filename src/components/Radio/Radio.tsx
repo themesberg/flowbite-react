@@ -1,5 +1,3 @@
-'use client';
-
 import classNames from 'classnames';
 import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
