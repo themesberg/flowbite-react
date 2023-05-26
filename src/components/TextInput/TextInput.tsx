@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import type { ComponentProps, FC, ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '~/src';
 import { HelperText, useTheme } from '~/src';
@@ -43,10 +43,8 @@ export interface TextInputProps extends Omit<ComponentProps<'input'>, 'ref' | 'c
   addon?: ReactNode;
   color?: keyof FlowbiteTextInputColors;
   helperText?: ReactNode;
-  icon?: FC<ComponentProps<'svg'>>;
   renderIcon?: (style: string) => JSX.Element;
   renderRightIcon?: (style: string) => JSX.Element;
-  rightIcon?: FC<ComponentProps<'svg'>>;
   shadow?: boolean;
   sizing?: keyof FlowbiteTextInputSizes;
   theme?: DeepPartial<FlowbiteTextInputTheme>;
@@ -59,9 +57,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       className,
       color = 'gray',
       helperText,
-      icon: Icon,
       renderIcon,
-      rightIcon: RightIcon,
       renderRightIcon,
       shadow,
       sizing = 'md',
@@ -77,26 +73,14 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <div className={classNames(theme.base, className)}>
           {addon && <span className={theme.addon}>{addon}</span>}
           <div className={theme.field.base}>
-            {Icon && (
-              <div className={theme.field.icon.base}>
-                <Icon className={theme.field.icon.svg} />
-              </div>
-            )}
-
-            {renderIcon && !Icon && (
-              <div className={theme.field.icon.base} data-testid="rendered-icon">
+            {renderIcon && (
+              <div className={theme.field.icon.base} data-testid="flowbite-textinput-icon">
                 {renderIcon(theme.field.icon.svg)}
               </div>
             )}
 
-            {RightIcon && (
-              <div data-testid="right-icon" className={theme.field.rightIcon.base}>
-                <RightIcon className={theme.field.rightIcon.svg} />
-              </div>
-            )}
-
-            {renderRightIcon && !RightIcon && (
-              <div data-testid="rendered-right-icon" className={theme.field.rightIcon.base}>
+            {renderRightIcon && (
+              <div data-testid="flowbite-textinput-righticon" className={theme.field.rightIcon.base}>
                 {renderRightIcon(theme.field.rightIcon.svg)}
               </div>
             )}
@@ -105,7 +89,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               className={classNames(
                 theme.field.input.base,
                 theme.field.input.colors[color],
-                theme.field.input.withIcon[Icon ? 'on' : 'off'],
+                theme.field.input.withIcon[renderIcon ? 'on' : 'off'],
+                theme.field.input.withRightIcon[renderRightIcon ? 'on' : 'off'],
                 theme.field.input.withAddon[addon ? 'on' : 'off'],
                 theme.field.input.withShadow[shadow ? 'on' : 'off'],
                 theme.field.input.sizes[sizing],

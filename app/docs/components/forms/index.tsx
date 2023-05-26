@@ -138,7 +138,13 @@ const FormsPageContent: FC = () => {
           <div className="mb-2 block">
             <Label htmlFor="email4" value="Your email" />
           </div>
-          <TextInput id="email4" type="email" icon={HiMail} placeholder="name@flowbite.com" required />
+          <TextInput
+            id="email4"
+            type="email"
+            renderIcon={(style) => <HiMail className={style} />}
+            placeholder="name@flowbite.com"
+            required
+          />
         </div>
       </CodePreview>
       <CodePreview title="Input element with icon on the right side">
@@ -146,7 +152,13 @@ const FormsPageContent: FC = () => {
           <div className="mb-2 block">
             <Label htmlFor="email4" value="Your email" />
           </div>
-          <TextInput id="email4" type="email" rightIcon={HiMail} placeholder="name@flowbite.com" required />
+          <TextInput
+            id="email4"
+            type="email"
+            renderRightIcon={(style) => <HiMail className={style} />}
+            placeholder="name@flowbite.com"
+            required
+          />
         </div>
       </CodePreview>
       <CodePreview title="Input element with icon on both sides">
@@ -157,8 +169,8 @@ const FormsPageContent: FC = () => {
           <TextInput
             id="email4"
             type="email"
-            icon={HiMail}
-            rightIcon={HiMail}
+            renderIcon={(style) => <HiMail className={style} />}
+            renderRightIcon={(style) => <HiMail className={style} />}
             placeholder="name@flowbite.com"
             required
           />

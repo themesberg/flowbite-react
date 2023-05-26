@@ -144,7 +144,7 @@ const HeroSection: FC = () => {
                     onClick={copyToClipboard}
                     placeholder="npm i flowbite flowbite-react"
                     readOnly
-                    rightIcon={HiClipboardCopy}
+                    renderRightIcon={(style) => <HiClipboardCopy className={style} />}
                     sizing="md"
                     theme={{
                       base: 'group flex',
