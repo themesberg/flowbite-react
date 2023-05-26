@@ -114,7 +114,7 @@ pre[class*='language-'] {
   -ms-hyphens: none;
   hyphens: none;
 
-  @apply my-6 rounded-lg font-normal;
+  @apply my-6 rounded-lg text-sm font-normal;
 }
 
 /* without preview */
