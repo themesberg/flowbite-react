@@ -123,7 +123,7 @@ const ModalComponent: FC<ModalProps> = ({
     root.appendChild(containerRef.current);
 
     // Prevent scrolling of the root element when the modal is shown
-    root.style.overflow = show ? 'hidden' : 'auto';
+    root.style.overflow = show ? 'hidden' : '';
   }
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
