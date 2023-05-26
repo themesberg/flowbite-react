@@ -7,9 +7,9 @@ import type {
   FlowbiteGradientColors,
   FlowbiteGradientDuoToneColors,
   FlowbiteSizes,
-} from '~/src';
-import { Spinner, useTheme } from '~/src';
-import { mergeDeep } from '~/src/helpers/merge-deep';
+} from '../../';
+import { Spinner, useTheme } from '../../';
+import { mergeDeep } from '../../helpers/merge-deep';
 import type { PositionInButtonGroup } from './ButtonGroup';
 import ButtonGroup from './ButtonGroup';
 

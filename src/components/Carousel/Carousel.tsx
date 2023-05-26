@@ -3,10 +3,10 @@ import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } f
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
-import type { DeepPartial, FlowbiteBoolean } from '~/src';
-import { useTheme } from '~/src';
-import { isClient } from '~/src/helpers/is-client';
-import { mergeDeep } from '~/src/helpers/merge-deep';
+import type { DeepPartial, FlowbiteBoolean } from '../../';
+import { useTheme } from '../../';
+import { isClient } from '../../helpers/is-client';
+import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteCarouselTheme {
   root: FlowbiteCarouselRootTheme;

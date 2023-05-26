@@ -4,11 +4,11 @@
 import type { ComponentProps, Dispatch, FC, PropsWithChildren, ReactElement, ReactNode, SetStateAction } from 'react';
 import React, { Children, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
-import type { ButtonProps, DeepPartial } from '~/src';
-import { Button, useTheme } from '~/src';
-import type { FloatingProps, FlowbiteFloatingTheme } from '~/src/components/Floating';
-import { Floating } from '~/src/components/Floating';
-import { mergeDeep } from '~/src/helpers/merge-deep';
+import type { ButtonProps, DeepPartial } from '../../';
+import { Button, useTheme } from '../../';
+import type { FloatingProps, FlowbiteFloatingTheme } from '../../components/Floating';
+import { Floating } from '../../components/Floating';
+import { mergeDeep } from '../../helpers/merge-deep';
 import type { FlowbiteDropdownDividerTheme } from './DropdownDivider';
 import { DropdownDivider } from './DropdownDivider';
 import type { FlowbiteDropdownHeaderTheme } from './DropdownHeader';

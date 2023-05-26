@@ -35,7 +35,7 @@ import type {
   FlowbiteToastTheme,
   FlowbiteToggleSwitchTheme,
   FlowbiteTooltipTheme,
-} from '~/src';
+} from '../../';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 

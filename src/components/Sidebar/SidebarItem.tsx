@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from 'react';
 import { forwardRef, useId } from 'react';
-import type { DeepPartial, FlowbiteColors } from '~/src';
-import { Badge, Tooltip, useTheme } from '~/src';
-import { mergeDeep } from '~/src/helpers/merge-deep';
+import type { DeepPartial, FlowbiteColors } from '../../';
+import { Badge, Tooltip, useTheme } from '../../';
+import { mergeDeep } from '../../helpers/merge-deep';
 import { useSidebarContext } from './SidebarContext';
 import { useSidebarItemContext } from './SidebarItemContext';
 
