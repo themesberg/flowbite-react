@@ -1,17 +1,19 @@
-'use client';
-
-import type { FC } from 'react';
-
+import type { Metadata, NextPage } from 'next';
 import { DocsContentLayout } from '~/app/components/docs-content-layout';
-import AvatarDocs from './avatar.mdx';
+import AvatarPageContent from '.';
 
-const AvatarPage: FC = () => (
-  <DocsContentLayout
-    title="React Avatar - Flowbite"
-    description="Use the avatar component to show a visual representation of a user profile using an image element or SVG object based on multiple styles and sizes"
-  >
-    <AvatarDocs />
-  </DocsContentLayout>
-);
+export const metadata: Metadata = {
+  description:
+    'Use the avatar component to show a visual representation of a user profile using an image element or SVG object based on multiple styles and sizes',
+  title: 'React Avatar - Flowbite',
+};
+
+const AvatarPage: NextPage = () => {
+  return (
+    <DocsContentLayout description={`${metadata.description}`} title={`${metadata.title}`}>
+      <AvatarPageContent />
+    </DocsContentLayout>
+  );
+};
 
 export default AvatarPage;

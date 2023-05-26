@@ -1,16 +1,19 @@
-'use client';
-
-import type { FC } from 'react';
+import type { Metadata, NextPage } from 'next';
 import { DocsContentLayout } from '~/app/components/docs-content-layout';
-import AccordionDocs from './accordion.mdx';
+import AccordionPageContent from '.';
 
-const AccordionPage: FC = () => (
-  <DocsContentLayout
-    title="React Accordion - Flowbite"
-    description="Use the accordion component to show hidden information based on the collapse and expand state of the child elements using data attribute options"
-  >
-    <AccordionDocs />
-  </DocsContentLayout>
-);
+export const metadata: Metadata = {
+  description:
+    'Use the accordion component to show hidden information based on the collapse and expand state of the child elements using data attribute options',
+  title: 'React Accordion - Flowbite',
+};
+
+const AccordionPage: NextPage = () => {
+  return (
+    <DocsContentLayout description={`${metadata.description}`} title={`${metadata.title}`}>
+      <AccordionPageContent />
+    </DocsContentLayout>
+  );
+};
 
 export default AccordionPage;

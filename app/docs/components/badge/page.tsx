@@ -1,16 +1,19 @@
-'use client';
-
-import type { FC } from 'react';
+import type { Metadata, NextPage } from 'next';
 import { DocsContentLayout } from '~/app/components/docs-content-layout';
-import BadgeDocs from './badge.mdx';
+import BadgePageContent from '.';
 
-const BadgePage: FC = () => (
-  <DocsContentLayout
-    title="React Badge - Flowbite"
-    description="Use Tailwind CSS badges as elements to show counts or labels separately or inside other components"
-  >
-    <BadgeDocs />
-  </DocsContentLayout>
-);
+export const metadata: Metadata = {
+  description:
+    'Use the avatar component to show a visual representation of a user profile using an image element or SVG object based on multiple styles and sizes',
+  title: 'React Badge - Flowbite',
+};
 
-export default BadgePage;
+const AvatarPage: NextPage = () => {
+  return (
+    <DocsContentLayout description={`${metadata.description}`} title={`${metadata.title}`}>
+      <BadgePageContent />
+    </DocsContentLayout>
+  );
+};
+
+export default AvatarPage;

@@ -1,17 +1,18 @@
-'use client';
-
-import type { FC } from 'react';
-
+import type { Metadata, NextPage } from 'next';
 import { DocsContentLayout } from '~/app/components/docs-content-layout';
-import CardDocs from './card.mdx';
+import CardPageContent from '.';
 
-const CardPage: FC = () => (
-  <DocsContentLayout
-    title="React Cards - Flowbite"
-    description="Get started with a large variety of Tailwind CSS card examples for your web project"
-  >
-    <CardDocs />
-  </DocsContentLayout>
-);
+export const metadata: Metadata = {
+  description: 'Get started with a large variety of Tailwind CSS card examples for your web project',
+  title: 'React Cards - Flowbite',
+};
+
+const CardPage: NextPage = () => {
+  return (
+    <DocsContentLayout description={`${metadata.description}`} title={`${metadata.title}`}>
+      <CardPageContent />
+    </DocsContentLayout>
+  );
+};
 
 export default CardPage;

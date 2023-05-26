@@ -1,16 +1,18 @@
-'use client';
-
-import type { FC } from 'react';
+import type { Metadata, NextPage } from 'next';
 import { DocsContentLayout } from '~/app/components/docs-content-layout';
-import ButtonGroupDocs from './button-group.mdx';
+import ButtonGroupPageContent from '.';
 
-const ButtonGroupPage: FC = () => (
-  <DocsContentLayout
-    title="React Button Group - Flowbite"
-    description="Button groups are a Tailwind CSS powered set of buttons sticked together in a horizontal line"
-  >
-    <ButtonGroupDocs />
-  </DocsContentLayout>
-);
+export const metadata: Metadata = {
+  description: 'Button groups are a Tailwind CSS powered set of buttons sticked together in a horizontal line',
+  title: 'React Button Group - Flowbite',
+};
+
+const ButtonGroupPage: NextPage = () => {
+  return (
+    <DocsContentLayout description={`${metadata.description}`} title={`${metadata.title}`}>
+      <ButtonGroupPageContent />
+    </DocsContentLayout>
+  );
+};
 
 export default ButtonGroupPage;
