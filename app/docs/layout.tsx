@@ -18,7 +18,7 @@ import { useEffect, useState } from 'react';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { Accordion, Badge, Footer, Navbar, Sidebar } from '~/src';
+import { Accordion, Badge, Flowbite, Footer, Navbar, Sidebar } from '~/src';
 import { isClient } from '~/src/helpers/is-client';
 import { NavbarIcons, NavbarLinks } from '../components/navbar';
 
@@ -46,41 +46,43 @@ const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
   }, [setCollapsed]);
 
   return (
-    <main className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible">
-      <div className="relative max-h-screen w-full overflow-auto bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
-        <DocsNavbar {...state} />
-        <div className="lg:flex">
-          <DocsSidebar {...state} />
-          <div className="flex w-full">
-            <div className="pb:12 mx-auto flex w-full min-w-0 max-w-4xl flex-col px-4 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
-              <div id="mainContent">{children}</div>
-              <DocsFooter />
-            </div>
-            <div className="right-0 hidden w-64 flex-none pl-8 xl:block xl:text-sm">
-              <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-between overflow-y-auto pb-6">
-                <div className="mb-8">
-                  <h4 className="my-4 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
-                    On this page
-                  </h4>
-                  <nav>
-                    <ul className="space-y-2.5 overflow-x-hidden font-medium text-gray-500 dark:text-gray-400">
-                      <li>
-                        <a
-                          href="#"
-                          className='inline-block border-l border-white pl-2.5 transition-none duration-200 after:ml-2 after:text-cyan-700 after:opacity-0 after:transition-opacity after:duration-100 after:content-["#"] hover:border-gray-300 hover:text-gray-900 hover:after:opacity-100 dark:border-gray-900 dark:after:text-cyan-700 dark:hover:border-gray-700 dark:hover:text-white'
-                        >
-                          Getting started
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
+    <Flowbite>
+      <main className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible">
+        <div className="relative max-h-screen w-full overflow-auto bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
+          <DocsNavbar {...state} />
+          <div className="lg:flex">
+            <DocsSidebar {...state} />
+            <div className="flex w-full">
+              <div className="pb:12 mx-auto flex w-full min-w-0 max-w-4xl flex-col px-4 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
+                <div id="mainContent">{children}</div>
+                <DocsFooter />
+              </div>
+              <div className="right-0 hidden w-64 flex-none pl-8 xl:block xl:text-sm">
+                <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-between overflow-y-auto pb-6">
+                  <div className="mb-8">
+                    <h4 className="my-4 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
+                      On this page
+                    </h4>
+                    <nav>
+                      <ul className="space-y-2.5 overflow-x-hidden font-medium text-gray-500 dark:text-gray-400">
+                        <li>
+                          <a
+                            href="#"
+                            className='inline-block border-l border-white pl-2.5 transition-none duration-200 after:ml-2 after:text-cyan-700 after:opacity-0 after:transition-opacity after:duration-100 after:content-["#"] hover:border-gray-300 hover:text-gray-900 hover:after:opacity-100 dark:border-gray-900 dark:after:text-cyan-700 dark:hover:border-gray-700 dark:hover:text-white'
+                          >
+                            Getting started
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </Flowbite>
   );
 };
 

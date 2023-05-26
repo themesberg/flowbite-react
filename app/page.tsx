@@ -29,7 +29,7 @@ interface SocialProofSectionProps {
   discordMembers: string;
 }
 
-export default function HomePage() {
+export default function HomePageContent() {
   const mainRef = useRef<HTMLDivElement>(null);
   const [contributors, setContributors] = useState([]);
   const [stargazers, setStargazers] = useState('');
