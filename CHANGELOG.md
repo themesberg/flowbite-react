@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.5](https://github.com/themesberg/flowbite-react/compare/v0.4.4...v0.4.5) (2023-05-26)
+
+
+### Features
+
+* **pagination.tsx:** next and previous buttons should disable when on 1 and last page respectively ([#731](https://github.com/themesberg/flowbite-react/issues/731)) ([8e8531b](https://github.com/themesberg/flowbite-react/commit/8e8531b2a1dfefcf7c9871dfa8fd441337baae6e)), closes [#726](https://github.com/themesberg/flowbite-react/issues/726) [#726](https://github.com/themesberg/flowbite-react/issues/726)
+
+
+### Bug Fixes
+
+* **button.tsx:** make prop theme work ([#746](https://github.com/themesberg/flowbite-react/issues/746)) ([1b07a76](https://github.com/themesberg/flowbite-react/commit/1b07a760e5b1394c036ae212403f49d2a631d4fb))
+* **component:** fix Label component disabled property not applying theme styles ([#763](https://github.com/themesberg/flowbite-react/issues/763)) ([8d6d79e](https://github.com/themesberg/flowbite-react/commit/8d6d79ef92ff4b3482151c5428ea3b4aa0b7e637)), closes [#762](https://github.com/themesberg/flowbite-react/issues/762)
+* **dropdown:** add type button in dropdown ([#757](https://github.com/themesberg/flowbite-react/issues/757)) ([974c126](https://github.com/themesberg/flowbite-react/commit/974c126e7e72833e2fde1bb9a631e4fcea6aa7af)), closes [#756](https://github.com/themesberg/flowbite-react/issues/756)
+* **dropdown:** fix dropdown menu items container width ([#714](https://github.com/themesberg/flowbite-react/issues/714)) ([d13c77c](https://github.com/themesberg/flowbite-react/commit/d13c77c68960ed97828b5f9592fdb6d870a8a74d)), closes [#575](https://github.com/themesberg/flowbite-react/issues/575) [#575](https://github.com/themesberg/flowbite-react/issues/575) [#575](https://github.com/themesberg/flowbite-react/issues/575) [#575](https://github.com/themesberg/flowbite-react/issues/575) [#575](https://github.com/themesberg/flowbite-react/issues/575)
+* making ToggleSwitch color prop as keyof FlowbiteColors ([#741](https://github.com/themesberg/flowbite-react/issues/741)) ([e3e2112](https://github.com/themesberg/flowbite-react/commit/e3e21126a4e38576c347f2815fb4ee51f1b1266b))
+* **Modal:** modal scrollbar overflow style issue fixed ([#769](https://github.com/themesberg/flowbite-react/issues/769)) ([746098d](https://github.com/themesberg/flowbite-react/commit/746098d26dd3da47982e43e7e6d27044dde4a05a))
+* **modal:** overflow bug fix ([#718](https://github.com/themesberg/flowbite-react/issues/718)) ([9e4e43a](https://github.com/themesberg/flowbite-react/commit/9e4e43abe17c7ea0d24b891003f41d11241f546f)), closes [#537](https://github.com/themesberg/flowbite-react/issues/537)
+* pagination button not being highlighted correctly ([#725](https://github.com/themesberg/flowbite-react/issues/725)) ([53c1280](https://github.com/themesberg/flowbite-react/commit/53c1280f7b93c91413f0fb9fc2992e184591c6b3))
+* **theme:** typo in bottom-center ([#717](https://github.com/themesberg/flowbite-react/issues/717)) ([89d58dc](https://github.com/themesberg/flowbite-react/commit/89d58dc03727d150e73ec753748eb98640bc84a3))
+
 ### [0.4.4](https://github.com/themesberg/flowbite-react/compare/v0.4.1...v0.4.4) (2023-04-24)
 
 ### Features
