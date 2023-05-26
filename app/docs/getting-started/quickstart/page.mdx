@@ -1,0 +1,100 @@
+# Quickstart - Flowbite React
+
+<div className="[&>p]:text-lg">
+  Learn how to get started with the free and open-source Flowbite React UI component library based on the utility
+  classes from Tailwind CSS
+</div>
+
+---
+
+You can install Flowbite React to any Node.js project.
+
+## Getting started
+
+Learn how to get started with Flowbite React and start leveraging the interactive React components coupled with Flowbite and Tailwind CSS.
+
+You'll need to be familiar with Node.js, and have it installed.
+
+### Setup Tailwind CSS
+
+Install Tailwind CSS:
+
+```bash
+npm i autoprefixer postcss tailwindcss
+npx tailwindcss init -p
+```
+
+Point Tailwind CSS to files you have `className=".."` in:
+
+```javascript
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}' /* src folder, for example */],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+Add Tailwind CSS to a CSS file:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Install Flowbite React
+
+1. Install Flowbite and Flowbite React:
+
+```bash
+npm i flowbite flowbite-react # or yarn add flowbite flowbite-react
+```
+
+2. Add the Flowbite plugin to `tailwind.config.js`, and include content from `flowbite-react`:
+
+```javascript
+module.exports = {
+  content: [
+    ...,
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
+  ],
+  plugins: [..., require('flowbite/plugin')],
+  ...
+};
+```
+
+### Try it out
+
+How you use Flowbite React depends on your project setup. In general, you can just import the components you want to use from `flowbite-react` and use them in a React `.jsx` file:
+
+```jsx
+import { Button } from 'flowbite-react';
+
+export default function MyPage() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  );
+}
+```
+
+### Next steps
+
+#### Next.js
+
+If you're using Next.js, you can follow the [Next.js install guide](/docs/getting-started/nextjs), which includes a [Next.js starter project](https://github.com/tulupinc/flowbite-next-starter) with Flowbite React already set up.
+
+#### Dark mode
+
+If you want to add a dark mode switcher to your app, you can follow the [dark mode guide](/docs/customize/dark-mode).
+
+#### Customization
+
+If you want to customize Flowbite React component, you can follow the [theme guide](/docs/customize/theme).
+
+#### Contributing
+
+If you want to contribute to Flowbite React, you can follow the [contributing guide](/docs/getting-started/contributing).

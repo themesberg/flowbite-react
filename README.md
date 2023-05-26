@@ -84,7 +84,7 @@ module.exports = {
 
 ## Customize components
 
-You can customize every component in `flowbite-react`. We've provided a few different methods so just about any use case you have should be covered for now. 
+You can customize every component in `flowbite-react`. We've provided a few different methods so just about any use case you have should be covered for now.
 
 See [https://flowbite-react.com/theme](https://flowbite-react.com/theme)
 

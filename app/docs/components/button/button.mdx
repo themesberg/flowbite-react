@@ -1,0 +1,132 @@
+import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
+import { CodePreview } from '~/app/components/code-preview';
+import { Button } from '~/src';
+
+The button component is probably the most widely used element in any user interface or website as it can be used to launch an action but also to link to other pages.
+
+Flowbite React provides a large variety of styles and sizes for the button component including outlined buttons, multiple colors, sizes, buttons with icons, and more.
+
+<CodePreview title="Default buttons" className="flex flex-wrap gap-2">
+  <Button>Default</Button>
+  <Button color="gray">Gray</Button>
+  <Button color="dark">Dark</Button>
+  <Button color="light">Light</Button>
+  <Button color="success">Success</Button>
+  <Button color="failure">Failure</Button>
+  <Button color="warning">Warning</Button>
+  <Button color="purple">Purple</Button>
+</CodePreview>
+<CodePreview title="Button pills" className="flex flex-wrap gap-2">
+  <Button color="gray" pill>
+    Gray
+  </Button>
+  <Button color="dark" pill>
+    Dark
+  </Button>
+  <Button color="light" pill>
+    Light
+  </Button>
+  <Button color="success" pill>
+    Success
+  </Button>
+  <Button color="failure" pill>
+    Failure
+  </Button>
+  <Button color="warning" pill>
+    Warning
+  </Button>
+  <Button color="purple" pill>
+    Purple
+  </Button>
+</CodePreview>
+<CodePreview title="Gradient monochrome" className="flex flex-wrap gap-2">
+  <Button gradientMonochrome="info">Info</Button>
+  <Button gradientMonochrome="success">Success</Button>
+  <Button gradientMonochrome="cyan">Cyan</Button>
+  <Button gradientMonochrome="teal">Teal</Button>
+  <Button gradientMonochrome="lime">Lime</Button>
+  <Button gradientMonochrome="failure">Failure</Button>
+  <Button gradientMonochrome="pink">Pink</Button>
+  <Button gradientMonochrome="purple">Purple</Button>
+</CodePreview>
+<CodePreview title="Gradient duo-tone" className="flex flex-wrap gap-2">
+  <Button gradientDuoTone="purpleToBlue">Purple to Blue</Button>
+  <Button gradientDuoTone="cyanToBlue">Cyan to Blue</Button>
+  <Button gradientDuoTone="greenToBlue">Green to Blue</Button>
+  <Button gradientDuoTone="purpleToPink">Purple to Pink</Button>
+  <Button gradientDuoTone="pinkToOrange">Pink to Orange</Button>
+  <Button gradientDuoTone="tealToLime">Teal to Lime</Button>
+  <Button gradientDuoTone="redToYellow">Red to Yellow</Button>
+</CodePreview>
+<CodePreview title="Outline" className="flex flex-wrap gap-2">
+  <Button outline gradientDuoTone="purpleToBlue">
+    Purple to Blue
+  </Button>
+  <Button outline gradientDuoTone="cyanToBlue">
+    Cyan to Blue
+  </Button>
+  <Button outline gradientDuoTone="greenToBlue">
+    Green to Blue
+  </Button>
+  <Button outline gradientDuoTone="purpleToPink">
+    Purple to Pink
+  </Button>
+  <Button outline gradientDuoTone="pinkToOrange">
+    Pink to Orange
+  </Button>
+  <Button outline gradientDuoTone="tealToLime">
+    Teal to Lime
+  </Button>
+  <Button outline gradientDuoTone="redToYellow">
+    Red to Yellow
+  </Button>
+</CodePreview>
+<CodePreview title="Button sizes" className="flex flex-wrap gap-2">
+  <Button size="xs">Extra small</Button>
+  <Button size="sm">Small</Button>
+  <Button size="md">Base</Button>
+  <Button size="lg">Large</Button>
+  <Button size="xl">Extra large</Button>
+</CodePreview>
+<CodePreview title="Buttons with icon" className="flex flex-wrap gap-2">
+  <Button>
+    <HiShoppingCart className="mr-2 h-5 w-5" />
+    Buy now
+  </Button>
+  <Button>
+    Choose plan
+    <HiOutlineArrowRight className="ml-2 h-5 w-5" />
+  </Button>
+</CodePreview>
+<CodePreview title="Button with label">
+  <Button label="2">Messages</Button>
+</CodePreview>
+<CodePreview title="Icon buttons" className="flex flex-wrap items-center gap-2">
+  <Button>
+    <HiOutlineArrowRight className="h-6 w-6" />
+  </Button>
+  <Button pill>
+    <HiOutlineArrowRight className="h-6 w-6" />
+  </Button>
+  <Button outline>
+    <HiOutlineArrowRight className="h-6 w-6" />
+  </Button>
+  <Button outline pill>
+    <HiOutlineArrowRight className="h-6 w-6" />
+  </Button>
+</CodePreview>
+<CodePreview title="Loader" className="flex flex-wrap items-center gap-2">
+  <div className="flex flex-wrap items-center gap-2">
+    <div>
+      <Button isProcessing={true}>Click me!</Button>
+    </div>
+    <div>
+      <Button isProcessing={true} outline>
+        Click me!
+      </Button>
+    </div>
+  </div>
+</CodePreview>
+<CodePreview title="Disabled">
+  <Button disabled>Disabled button</Button>
+</CodePreview>
