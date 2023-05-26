@@ -4,7 +4,7 @@ import AccordionPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Use the accordion component to show hidden information based on the collapse and expand state of the child elements using data attribute options',
+    'Use the accordion component and its options to expand and collapse the content inside each panel based on state reactivity from React and Tailwind CSS',
   title: 'React Accordion - Flowbite',
 };
 

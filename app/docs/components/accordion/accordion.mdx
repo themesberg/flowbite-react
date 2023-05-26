@@ -1,9 +1,21 @@
 import { Accordion } from '~/src/components/Accordion';
 import { CodePreview } from '~/app/components/code-preview';
 
-The accordion component is a collection of vertically collapsing header and body elements that can be used to show and hide information based on the Tailwind CSS utility classes and JavaScript from Flowbite.
+The accordion component from Flowbite React can be used to toggle the visibility of the content of each accordion panel tab by expanding the collapsing the trigger element based on multiple examples and styles.
 
-A popular use case would be the “Frequently Asked Questions” section of a website or page when you can show questions and answers for each child element.
+The reactivity and state is handled by React and the components is built using the Tailwind CSS framework meaning that you can easily customize the styles and colors of the accordion.
+
+To use the accordion component, you need to import the `<Accordion>` component from `flowbite-react`:
+
+```jsx
+'use client';
+
+import { Accordion } from 'flowbite-react';
+```
+
+## Default accordion
+
+Use this example of the `<Accordion>` component and the `<Accordion.Panel>` and `<Accordion.Title>` subcomponents to create an accordion with multiple panels.
 
 <CodePreview title="Default accordion" className="dark:bg-gray-900">
   <Accordion>
@@ -75,6 +87,11 @@ A popular use case would be the “Frequently Asked Questions” section of a we
     </Accordion.Panel>
   </Accordion>
 </CodePreview>
+
+## Collapse all
+
+Use this example to automatically collapse all of the accordion panels by passing the `collapseAll` prop to the `<Accordion>` component.
+
 <CodePreview title="Collapse all" className="dark:bg-gray-900">
   <Accordion collapseAll>
     <Accordion.Panel>
@@ -145,3 +162,7 @@ A popular use case would be the “Frequently Asked Questions” section of a we
     </Accordion.Panel>
   </Accordion>
 </CodePreview>
+
+## References
+
+[Flowbite Accordion](https://flowbite.com/docs/components/accordion/)
