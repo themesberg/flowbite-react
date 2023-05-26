@@ -50,12 +50,3 @@ jobs:
           fail_ci_if_error: false
           files: coverage/coverage-final.json
           verbose: false
-
-      - name: 📖 Build Storybook
-        run: yarn build:storybook
-
-      - name: 🚀 Deploy the website
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: build
