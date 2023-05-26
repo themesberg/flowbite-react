@@ -3,7 +3,8 @@ import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import ButtonGroupPageContent from '.';
 
 export const metadata: Metadata = {
-  description: 'Button groups are a Tailwind CSS powered set of buttons sticked together in a horizontal line',
+  description:
+    'Button groups allow you to stack together multiple buttons in a single line horziontally based on multiple styles and sizes using React and Tailwind CSS',
   title: 'React Button Group - Flowbite',
 };
 
