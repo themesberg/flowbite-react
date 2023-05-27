@@ -2,7 +2,23 @@ import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-
 import { CodePreview } from '~/app/components/code-preview';
 import { Footer } from '~/src';
 
-The footer is one of the most underestimated sections of a website being located at the very bottom of every page, however, it can be used as a way to try to convince users to stay on your website if they haven’t found the information they’ve been looking for inside the main content area.
+The footer component is an important section of a website where you should provide content such as sitemap links, copyright text, logo of your brand, social media account links, and more.
+
+Get started with the examples from Flowbite React based on multiple styles, sizes, and colors by using React components and the utility classes from Tailwind CSS.
+
+To start using the footer component you need to import it from `flowbite-react`:
+
+```jsx
+'use client';
+
+import { Footer } from 'flowbite-react';
+```
+
+## Default footer
+
+Use this example to create a simple and responsive footer component with copyright text and links by adding the `<Footer.Copyright>` and `<Footer.Link>` items inside the `<Footer>` component.
+
+Use the `href` prop to add a link to the footer link item and the `year` prop to add the current year.
 
 <CodePreview title="Default footer">
   <Footer container>
@@ -15,6 +31,11 @@ The footer is one of the most underestimated sections of a website being located
     </Footer.LinkGroup>
   </Footer>
 </CodePreview>
+
+## Footer with logo
+
+Use the `<Footer.Brand>` component to add a logo to the footer component.
+
 <CodePreview title="Footer with logo">
   <Footer container>
     <div className="w-full text-center">
@@ -37,6 +58,11 @@ The footer is one of the most underestimated sections of a website being located
     </div>
   </Footer>
 </CodePreview>
+
+## Social media icons
+
+Feature social media accounts by adding the `<Footer.Icon>` component inside the `<Footer>` component.
+
 <CodePreview title="Footer with social media icons">
   <Footer container>
     <div className="w-full">
@@ -87,6 +113,11 @@ The footer is one of the most underestimated sections of a website being located
     </div>
   </Footer>
 </CodePreview>
+
+## Sitemap links
+
+Add sitemap links to the footer component by using the `<Footer.LinkGroup>` and `<Footer.Link>` components. You can also use the `<Footer.Title>` component to add a title to the sitemap links and group links together.
+
 <CodePreview title="Footer sitemap links">
   <Footer bgDark>
     <div className="w-full">
@@ -140,3 +171,7 @@ The footer is one of the most underestimated sections of a website being located
     </div>
   </Footer>
 </CodePreview>
+
+## References
+
+- [Flowbite Footer](https://flowbite.com/docs/components/footer/)
