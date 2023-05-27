@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta, Story } from '@storybook/react/types-6-0';
 import type { ComponentProps, FC } from 'react';
 import { HiChevronDown, HiOutlineArrowCircleDown } from 'react-icons/hi';
 import type { AccordionProps } from './Accordion';
@@ -15,7 +15,7 @@ export default {
 
 const icon: FC<ComponentProps<'svg'>> = HiChevronDown;
 
-const Template: StoryFn<AccordionProps> = (args) => (
+const Template: Story<AccordionProps> = (args) => (
   <Accordion arrowIcon={icon} {...args}>
     <Accordion.Panel>
       <Accordion.Title>What is Flowbite?</Accordion.Title>
@@ -28,7 +28,7 @@ const Template: StoryFn<AccordionProps> = (args) => (
           Check out this guide to learn how to&nbsp;
           <a
             href="https://flowbite.com/docs/getting-started/introduction/"
-            className="text-cyan-600 hover:underline dark:text-cyan-500"
+            className="text-blue-600 hover:underline dark:text-blue-500"
           >
             get started
           </a>
@@ -45,7 +45,7 @@ const Template: StoryFn<AccordionProps> = (args) => (
         </p>
         <p className="text-gray-500 dark:text-gray-400">
           Check out the&nbsp;
-          <a href="https://flowbite.com/figma/" className="text-cyan-600 hover:underline dark:text-cyan-500">
+          <a href="https://flowbite.com/figma/" className="text-blue-600 hover:underline dark:text-blue-500">
             Figma design system
           </a>
           &nbsp;based on the utility classes from Tailwind CSS and components from Flowbite.
@@ -65,9 +65,9 @@ const Template: StoryFn<AccordionProps> = (args) => (
           technical reason stopping you from using the best of two worlds.
         </p>
         <p className="mb-2 text-gray-500 dark:text-gray-400">Learn more about these technologies:</p>
-        <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400">
+        <ul className="pl-5 text-gray-500 list-disc dark:text-gray-400">
           <li>
-            <a href="https://flowbite.com/pro/" className="text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="https://flowbite.com/pro/" className="text-blue-600 hover:underline dark:text-blue-500">
               Flowbite Pro
             </a>
           </li>
@@ -75,7 +75,7 @@ const Template: StoryFn<AccordionProps> = (args) => (
             <a
               href="https://tailwindui.com/"
               rel="nofollow"
-              className="text-cyan-600 hover:underline dark:text-cyan-500"
+              className="text-blue-600 hover:underline dark:text-blue-500"
             >
               Tailwind UI
             </a>

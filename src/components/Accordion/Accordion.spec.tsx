@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { useState, type FC } from 'react';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../../';
+import { Flowbite } from '../Flowbite';
 import type { AccordionProps } from './Accordion';
 import { Accordion } from './Accordion';
 
@@ -92,7 +92,6 @@ describe('Components / Accordion', () => {
       render(
         <>
           <TestAccordion />
-          {/* eslint-disable-next-line jsx-a11y/role-has-required-aria-props */}
           <button role="checkbox">Outside button</button>
         </>,
       );
@@ -287,10 +286,10 @@ describe('Components / Accordion', () => {
 const TestAccordion: FC<Omit<AccordionProps, 'children'>> = (props) => (
   <Accordion arrowIcon={HiOutlineArrowCircleDown} {...props}>
     <Accordion.Panel>
-      <Accordion.Title as="h3" className="text-cyan-300" id="accordion-title">
+      <Accordion.Title as="h3" className="text-blue-300" id="accordion-title">
         Title
       </Accordion.Title>
-      <Accordion.Content aria-labelledby="accordion-title" className="text-cyan-300">
+      <Accordion.Content aria-labelledby="accordion-title" className="text-blue-300">
         <p>Content</p>
       </Accordion.Content>
     </Accordion.Panel>
