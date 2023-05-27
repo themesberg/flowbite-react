@@ -5,7 +5,7 @@ import { AccordionPanelContext } from './AccordionPanelContext';
 
 export interface AccordionPanelProps extends PropsWithChildren<AccordionProps> {
   isOpen?: boolean;
-  setOpen?: () => void;
+  readonly setOpen?: () => void;
 }
 
 export const AccordionPanel: FC<AccordionPanelProps> = ({ children, ...props }) => {
