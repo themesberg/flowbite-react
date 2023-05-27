@@ -4,7 +4,7 @@ import ButtonGroupPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Button groups allow you to stack together multiple buttons in a single line horziontally based on multiple styles and sizes using React and Tailwind CSS',
+    'Button groups allow you to stack together multiple buttons in a single line horizontally based on multiple styles and sizes using React and Tailwind CSS',
   title: 'React Button Group - Flowbite',
 };
 
