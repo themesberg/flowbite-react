@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type { FC } from 'react';
+import { useState, type FC } from 'react';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
 import { Flowbite } from '../../';
@@ -266,6 +266,22 @@ describe('Components / Accordion', () => {
       expect(content()[1]).not.toBeVisible(); // content should not be visible
     });
   });
+
+  describe('Collapse/expand panel', () => {
+    beforeEach(() => {
+      render(<TestAccordionVariant />);
+    });
+
+    it('Should collapse/expand panel based on isOpen prop', async () => {
+      const button = screen.getByTestId('cta-button');
+
+      await userEvent.click(button);
+      expect(content()[1]).toBeVisible();
+
+      await userEvent.click(button);
+      expect(content()[1]).not.toBeVisible();
+    });
+  });
 });
 
 const TestAccordion: FC<Omit<AccordionProps, 'children'>> = (props) => (
@@ -287,6 +303,32 @@ const TestAccordion: FC<Omit<AccordionProps, 'children'>> = (props) => (
   </Accordion>
 );
 
+const TestAccordionVariant: FC<Omit<AccordionProps, 'children'>> = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <>
+      <Accordion arrowIcon={HiOutlineArrowCircleDown} {...props}>
+        <Accordion.Panel>
+          <Accordion.Title as="h3" className="text-blue-300" id="accordion-title">
+            Title
+          </Accordion.Title>
+          <Accordion.Content aria-labelledby="accordion-title" className="text-blue-300">
+            <p>Content</p>
+          </Accordion.Content>
+        </Accordion.Panel>
+        <Accordion.Panel isOpen={isOpen}>
+          <Accordion.Title>Title</Accordion.Title>
+          <Accordion.Content>
+            <p>Content</p>
+          </Accordion.Content>
+        </Accordion.Panel>
+      </Accordion>
+      <button onClick={() => setIsOpen(!isOpen)} data-testid="cta-button">
+        CTA
+      </button>
+    </>
+  );
+};
 const accordion = () => screen.getByTestId('flowbite-accordion');
 
 const content = () => screen.getAllByTestId('flowbite-accordion-content');
