@@ -10,8 +10,8 @@ import {
   Radio,
   RangeSlider,
   Select,
-  TextInput,
   Textarea,
+  TextInput,
   ToggleSwitch,
 } from '../../';
 
