@@ -51,6 +51,3 @@ jobs:
 
       - name: 🧰 Build code
         run: yarn build
-
-      - name: 📖 Build Storybook
-        run: yarn build:storybook

@@ -1,8 +1,0 @@
-**/*.md
-**/build/
-**/coverage/
-docs/
-lib/
-
-!src/docs/
-!src/lib/
