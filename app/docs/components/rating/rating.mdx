@@ -1,0 +1,119 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { Rating } from '~/src';
+
+The rating component can be used to show user reviews and testimonials in the form of stars, reviews, and labels based on multiple styles and layouts built with React and Tailwind CSS.
+
+Check out the rating components from Flowbite React and choose one that suits your needs and customize them using the custom props API and the utility classes from Tailwind CSS.
+
+Start using the rating component by importing it from the `flowbite-react` library:
+
+```jsx
+'use client';
+
+import { Rating } from 'flowbite-react';
+```
+
+## Default rating
+
+Use this example to show a list of star elements that can be either filled or not to indicate the average user reviews of a product by using the `filled` prop from React on the `<Rating>` component.
+
+<CodePreview title="Default rating">
+  <Rating>
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star filled={false} />
+  </Rating>
+</CodePreview>
+
+## Rating with text
+
+This example can be used to show a text label next to the user review stars to indicate the average score.
+
+<CodePreview title="Rating with text">
+  <Rating>
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star filled={false} />
+    <p className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">4.95 out of 5</p>
+  </Rating>
+</CodePreview>
+
+## Rating count
+
+Use this example to show the number of reviews a product received next to the average stars and scores.
+
+<CodePreview title="Rating count">
+  <Rating>
+    <Rating.Star />
+    <p className="ml-2 text-sm font-bold text-gray-900 dark:text-white">4.95</p>
+    <span className="mx-1.5 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400"></span>
+    <a href="#" className="text-sm font-medium text-gray-900 underline hover:no-underline dark:text-white">
+      73 reviews
+    </a>
+  </Rating>
+</CodePreview>
+
+## Star sizing
+
+The `size` prop can be used on the `<Rating>` component to customize the default size of the rating component. You can choose from `md` or `lg` and the default is `sm`.
+
+<CodePreview title="Star sizing">
+  <Rating>
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star filled={false} />
+  </Rating>
+  <Rating size="md">
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star filled={false} />
+  </Rating>
+  <Rating size="lg">
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star filled={false} />
+  </Rating>
+</CodePreview>
+
+## Advanced rating
+
+Use this component as an advanced layout for user ratings that include both the average score, total rating count, and a percentage filled progress bar to indicate in depth statistics of how many reviews were received for each score category.
+
+<CodePreview title="Advanced rating">
+  <Rating className="mb-2">
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star />
+    <Rating.Star filled={false} />
+    <p className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">4.95 out of 5</p>
+  </Rating>
+  <p className="mb-4 text-sm font-medium text-gray-500 dark:text-gray-400">1,745 global ratings</p>
+  <Rating.Advanced percentFilled={70} className="mb-2">
+    5 star
+  </Rating.Advanced>
+  <Rating.Advanced percentFilled={17} className="mb-2">
+    4 star
+  </Rating.Advanced>
+  <Rating.Advanced percentFilled={8} className="mb-2">
+    3 star
+  </Rating.Advanced>
+  <Rating.Advanced percentFilled={4} className="mb-2">
+    2 star
+  </Rating.Advanced>
+  <Rating.Advanced percentFilled={1}>1 star</Rating.Advanced>
+</CodePreview>
+
+## References
+
+- [Flowbite Rating](https://flowbite.com/docs/components/rating/)
