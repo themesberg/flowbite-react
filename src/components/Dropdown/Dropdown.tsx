@@ -119,11 +119,11 @@ const DropdownComponent: FC<DropdownProps> = ({
     }, [ref]);
 
     return inline ? (
-      <button ref={ref} disabled={disabled} className={theme.inlineWrapper}>
+      <button type="button" ref={ref} className={theme.inlineWrapper} disabled={disabled}>
         {children}
       </button>
     ) : (
-      <Button ref={ref} type="button" disabled={disabled} {...buttonProps}>
+      <Button type="button" ref={ref} disabled={disabled} {...buttonProps}>
         {children}
       </Button>
     );
