@@ -40,6 +40,7 @@ export interface DropdownProps
   inline?: boolean;
   label: ReactNode;
   theme?: DeepPartial<FlowbiteDropdownTheme>;
+  CustomTrigger?: ReactNode;
 }
 
 export interface TriggerWrapperProps extends ButtonProps {
@@ -58,6 +59,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   className,
   dismissOnClick = true,
   theme: customTheme = {},
+  CustomTrigger,
   ...props
 }) => {
   const id = useId();
@@ -141,10 +143,12 @@ const DropdownComponent: FC<DropdownProps> = ({
       className={className}
       minWidth={buttonWidth}
     >
-      <TriggerWrapper setButtonWidth={setButtonWidth}>
-        {label}
-        {arrowIcon && <Icon className={theme.arrowIcon} />}
-      </TriggerWrapper>
+      {CustomTrigger ?? (
+        <TriggerWrapper setButtonWidth={setButtonWidth}>
+          {label}
+          {arrowIcon && <Icon className={theme.arrowIcon} />}
+        </TriggerWrapper>
+      )}
     </Floating>
   );
 };
