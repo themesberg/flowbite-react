@@ -364,7 +364,7 @@ const DocsFooter: FC = () => {
                 title="Help & Support"
                 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
               />
-              <Footer.LinkGroup col>
+              <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
                 <Footer.Link href="https://discord.gg/4eeurUVvTy" className="text-base">
                   Discord
                 </Footer.Link>
@@ -378,7 +378,7 @@ const DocsFooter: FC = () => {
                 title="Legal"
                 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
               />
-              <Footer.LinkGroup col>
+              <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
                 <Footer.Link href="https://flowbite.com/license/" className="text-base">
                   License
                 </Footer.Link>
