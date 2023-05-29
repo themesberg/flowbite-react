@@ -3,7 +3,7 @@ import TimelinePageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Get started with the responsive timeline component to show data in a chronological order with support for multiple styles, sizes, and variants"',
+    'Use the timeline component from Flowbite React to display a list of items and events in a chronological order based on multiples styles, colors and layouts',
   title: 'React Timeline - Flowbite',
 };
 
