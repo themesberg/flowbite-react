@@ -66,7 +66,7 @@ export const Floating: FC<FloatingProps> = ({
   theme,
   trigger = 'hover',
   minWidth,
-  disabled,
+  disabled = false,
   ...props
 }) => {
   const arrowRef = useRef<HTMLDivElement>(null);

@@ -70,7 +70,7 @@ const DropdownComponent: FC<DropdownProps> = ({
     inline,
     floatingArrow = false,
     arrowIcon = true,
-    disabled,
+    disabled = false,
     ...buttonProps
   } = theirProps;
 
