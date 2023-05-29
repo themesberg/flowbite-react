@@ -853,7 +853,7 @@ export const theme: FlowbiteTheme = {
         on: 'w-16',
         off: 'w-64',
       },
-      inner: 'h-full overflow-y-auto overflow-x-hidden rounded bg-white py-4 px-3 dark:bg-gray-800',
+      inner: 'h-full overflow-y-auto overflow-x-hidden rounded bg-gray-50 py-4 px-3 dark:bg-gray-800',
     },
     collapse: {
       button:
