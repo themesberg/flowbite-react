@@ -17,6 +17,10 @@ import { Sidebar } from 'flowbite-react';
 
 ## Default sidebar
 
+Use this example to show a list of navigation menu items by adding `<Sidebar.Item>` children components inside the `<Sidebar>` component and pass the `href` prop to set a URL and `icon` to apply any icons from the `react-icons` icon library.
+
+You can also add a text label as a badge by using the `label` prop from React and the `labelColor` to set the color of the label background.
+
 <CodePreview title="Default sidebar" className="w-fit">
   <Sidebar aria-label="Default sidebar example">
     <Sidebar.Items>
@@ -24,7 +28,7 @@ import { Sidebar } from 'flowbite-react';
         <Sidebar.Item href="#" icon={HiChartPie}>
           Dashboard
         </Sidebar.Item>
-        <Sidebar.Item href="#" icon={HiViewBoards} label="Pro" labelColor="alternative">
+        <Sidebar.Item href="#" icon={HiViewBoards} label="Pro" labelColor="dark">
           Kanban
         </Sidebar.Item>
         <Sidebar.Item href="#" icon={HiInbox} label="3">
@@ -47,7 +51,9 @@ import { Sidebar } from 'flowbite-react';
   </Sidebar>
 </CodePreview>
 
-## Multi-levle dropdown
+## Multi-level dropdown
+
+Use this example to learn how to stack multiple sidebar menu items inside one dropdown menu by using the `<Sidebar.Collapse>` component.
 
 <CodePreview title="Multi-level dropdown" className="w-fit">
   <Sidebar aria-label="Sidebar with multi-level dropdown example">
@@ -58,6 +64,9 @@ import { Sidebar } from 'flowbite-react';
         </Sidebar.Item>
         <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
           <Sidebar.Item href="#">Products</Sidebar.Item>
+          <Sidebar.Item href="#">Sales</Sidebar.Item>
+          <Sidebar.Item href="#">Refunds</Sidebar.Item>
+          <Sidebar.Item href="#">Shipping</Sidebar.Item>
         </Sidebar.Collapse>
         <Sidebar.Item href="#" icon={HiInbox}>
           Inbox
@@ -80,6 +89,8 @@ import { Sidebar } from 'flowbite-react';
 </CodePreview>
 
 ## Content separator
+
+Use this example to separate content inside of the sidebar using a horizontal line.
 
 <CodePreview title="Content separator" className="w-fit">
   <Sidebar aria-label="Sidebar with content separator example">
@@ -123,6 +134,8 @@ import { Sidebar } from 'flowbite-react';
 </CodePreview>
 
 ## Sidebar with button
+
+This example can be used to show a call to action button inside the sidebar next to the menu items.
 
 <CodePreview title="CTA button" className="w-fit">
   <Sidebar aria-label="Sidebar with call to action button example">
@@ -189,6 +202,8 @@ import { Sidebar } from 'flowbite-react';
 </CodePreview>
 
 ## Sidebar with logo
+
+Feature the branded logo of your company on the top side of the sidebar using this example.
 
 <CodePreview title="Logo branding" className="w-fit">
   <Sidebar aria-label="Sidebar with logo branding example">
