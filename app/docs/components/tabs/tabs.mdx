@@ -1,0 +1,207 @@
+import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
+import { MdDashboard } from 'react-icons/md';
+import { CodePreview } from '~/app/components/code-preview';
+import { Button, Tabs } from '~/src';
+
+The tabs component can be used to show a list of tab items that you can click on to change the content inside of the main tabs component using React state reactivity.
+
+Choose one of the examples below based on various styles, layouts, and content types that you can customize with React components, props and the utility classes from Tailwind CSS.
+
+Make sure that you import the component from the `flowbite-react` library:
+
+```jsx
+'use client';
+
+import { Tabs } from 'flowbite-react';
+```
+
+## Default tabs
+
+<CodePreview title="Default tabs">
+  <Tabs.Group aria-label="Default tabs" style="default">
+    <Tabs.Item active title="Profile">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item title="Dashboard">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item title="Settings">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Settings tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item title="Contacts">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item disabled title="Disabled">
+      Disabled content
+    </Tabs.Item>
+  </Tabs.Group>
+</CodePreview>
+
+## Tabs with underline
+
+<CodePreview title="Tabs with underline">
+  <Tabs.Group aria-label="Tabs with underline" style="underline">
+    <Tabs.Item active title="Profile">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item title="Dashboard">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item title="Settings">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Settings tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item title="Contacts">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item disabled title="Disabled">
+      Disabled content
+    </Tabs.Item>
+  </Tabs.Group>
+</CodePreview>
+
+## Tabs with icons
+
+<CodePreview title="Tabs with icons">
+  <Tabs.Group aria-label="Tabs with icons" style="underline">
+    <Tabs.Item active title="Profile" icon={HiUserCircle}>
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item title="Dashboard" icon={MdDashboard}>
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item title="Settings" icon={HiAdjustments}>
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Settings tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item title="Contacts" icon={HiClipboardList}>
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item disabled title="Disabled">
+      Disabled content
+    </Tabs.Item>
+  </Tabs.Group>
+</CodePreview>
+
+## Tabs with pills
+
+<CodePreview title="Pills tabs">
+  <Tabs.Group aria-label="Pills" style="pills">
+    <Tabs.Item active title="Tab 1">
+      <p className="text-sm text-gray-500 dark:text-gray-400">Content 1</p>
+    </Tabs.Item>
+    <Tabs.Item title="Tab 2">
+      <p className="text-sm text-gray-500 dark:text-gray-400">Content 2</p>
+    </Tabs.Item>
+    <Tabs.Item title="Tab 3">
+      <p className="text-sm text-gray-500 dark:text-gray-400">Content 3</p>
+    </Tabs.Item>
+    <Tabs.Item title="Tab 4">
+      <p className="text-sm text-gray-500 dark:text-gray-400">Content 4</p>
+    </Tabs.Item>
+    <Tabs.Item disabled title="Tab 5">
+      <p className="text-sm text-gray-500 dark:text-gray-400">Content 5</p>
+    </Tabs.Item>
+  </Tabs.Group>
+</CodePreview>
+
+## Full width tabs
+
+<CodePreview title="Full width tabs">
+  <Tabs.Group aria-label="Full width tabs" style="fullWidth">
+    <Tabs.Item active title="Profile">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item title="Dashboard">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item title="Settings">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Settings tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+    <Tabs.Item title="Contacts">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the{' '}
+        <span className="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</span>. Clicking
+        another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+        content visibility and styling.
+      </p>
+    </Tabs.Item>
+  </Tabs.Group>
+</CodePreview>
+
+## References
+
+- [Flowbite Tabs](https://flowbite.com/docs/components/tabs/)

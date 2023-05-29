@@ -3,7 +3,7 @@ import TabsPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Use these responsive tabs components to create a secondary navigational hierarchy for your website or toggle content inside a container',
+    'Get started with the tabs component from Flowbite React to show a list of tab items where you can switch between them using multiple styles, colors and layouts',
   title: 'React Tabs - Flowbite',
 };
 

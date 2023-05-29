@@ -967,9 +967,9 @@ export const theme: FlowbiteTheme = {
       styles: {
         default: 'flex-wrap border-b border-gray-200 dark:border-gray-700',
         underline: 'flex-wrap -mb-px border-b border-gray-200 dark:border-gray-700',
-        pills: 'flex-wrap font-medium text-sm text-gray-500 dark:text-gray-400',
+        pills: 'flex-wrap font-medium text-sm text-gray-500 dark:text-gray-400 space-x-2',
         fullWidth:
-          'hidden text-sm font-medium rounded-lg divide-x divide-gray-200 shadow sm:flex dark:divide-gray-700 dark:text-gray-400',
+          'w-full text-sm font-medium divide-x divide-gray-200 shadow grid grid-cols-4 dark:divide-gray-700 dark:text-gray-400 rounded-none',
       },
       tabitem: {
         base: 'flex items-center justify-center p-4 rounded-t-lg text-sm font-medium first:ml-0 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500',
@@ -996,17 +996,17 @@ export const theme: FlowbiteTheme = {
             },
           },
           fullWidth: {
-            base: 'ml-2 first:ml-0 w-full first:rounded-l-lg last:rounded-r-lg',
+            base: 'ml-2 first:ml-0 w-full rounded-none inline-block',
             active: {
-              on: 'inline-block p-4 w-full text-gray-900 bg-gray-100 focus:ring-4 focus:ring-cyan-300 active focus:outline-none dark:bg-gray-700 dark:text-white',
-              off: 'bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-cyan-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700',
+              on: 'p-4 text-gray-900 bg-gray-100 focus:ring-4 focus:ring-cyan-300 active focus:outline-none dark:bg-gray-700 dark:text-white !rounded-none',
+              off: 'bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-cyan-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700 !rounded-none',
             },
           },
         },
         icon: 'mr-2 h-5 w-5',
       },
     },
-    tabpanel: 'p-4',
+    tabpanel: 'py-3',
   },
   table: {
     root: {
