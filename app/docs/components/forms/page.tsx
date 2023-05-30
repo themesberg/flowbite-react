@@ -3,7 +3,7 @@ import FormsPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Use the Tailwind CSS form and input elements such as checkboxes, radios, textarea, text inputs to collect information from users with Flowbite',
+    'Use the forms elements from Flowbite React to start receiving user input data based on input elements, checkboxes, radio buttons, file uploads based on multiple sizes, colors, and styles',
   title: 'React Forms - Flowbite',
 };
 
