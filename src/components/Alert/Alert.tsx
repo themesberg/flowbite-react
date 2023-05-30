@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { HiX } from 'react-icons/hi';
-import type { DeepPartial, FlowbiteColors } from '~/src';
-import { useTheme } from '~/src';
-import { mergeDeep } from '~/src/helpers/merge-deep';
+import type { DeepPartial, FlowbiteColors } from '../../';
+import { useTheme } from '../../';
+import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteAlertTheme {
   base: string;

@@ -13,7 +13,7 @@ import {
   TextInput,
   Textarea,
   ToggleSwitch,
-} from '~/src';
+} from '../../';
 
 describe.concurrent('Components / Label', () => {
   describe.concurrent('A11y', () => {

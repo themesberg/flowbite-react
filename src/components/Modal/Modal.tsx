@@ -5,10 +5,10 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, MouseEvent, PropsWithChildren } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import type { DeepPartial, FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '~/src';
-import { useTheme } from '~/src';
-import { isClient } from '~/src/helpers/is-client';
-import { mergeDeep } from '~/src/helpers/merge-deep';
+import type { DeepPartial, FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../../';
+import { useTheme } from '../../';
+import { isClient } from '../../helpers/is-client';
+import { mergeDeep } from '../../helpers/merge-deep';
 import type { FlowbiteModalBodyTheme } from './ModalBody';
 import { ModalBody } from './ModalBody';
 import { ModalContext } from './ModalContext';
@@ -123,7 +123,7 @@ const ModalComponent: FC<ModalProps> = ({
     root.appendChild(containerRef.current);
 
     // Prevent scrolling of the root element when the modal is shown
-    root.style.overflow = show ? 'hidden' : 'auto';
+    root.style.overflow = show ? 'hidden' : '';
   }
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {

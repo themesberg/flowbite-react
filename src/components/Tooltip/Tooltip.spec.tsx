@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it } from 'vitest';
-import { Button } from '~/src';
+import { Button } from '../../';
 import { Tooltip } from './index';
 
 describe('Tooltip', () => {

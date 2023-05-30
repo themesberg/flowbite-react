@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
 import { GoThreeBars } from 'react-icons/go';
-import type { DeepPartial } from '~/src';
-import { useTheme } from '~/src';
-import { mergeDeep } from '~/src/helpers/merge-deep';
+import type { DeepPartial } from '../../';
+import { useTheme } from '../../';
+import { mergeDeep } from '../../helpers/merge-deep';
 import { useNavbarContext } from './NavbarContext';
 
 export interface FlowbiteNavbarToggleTheme {

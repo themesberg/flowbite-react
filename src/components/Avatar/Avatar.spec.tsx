@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import type { CustomFlowbiteTheme } from '~/src';
-import { Flowbite } from '~/src';
 import { Avatar } from '.';
+import type { CustomFlowbiteTheme } from '../../';
+import { Flowbite } from '../../';
 
 describe('Components / Avatar', () => {
   describe('Theme', () => {

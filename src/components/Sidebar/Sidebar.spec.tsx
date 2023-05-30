@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { HiChartPie, HiInbox, HiShoppingBag } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import type { DeepPartial, FlowbiteTheme } from '~/src';
-import { Flowbite } from '~/src';
+import type { DeepPartial, FlowbiteTheme } from '../../';
+import { Flowbite } from '../../';
 import type { SidebarProps } from './Sidebar';
 import { Sidebar } from './Sidebar';
 

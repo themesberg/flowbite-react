@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useId } from 'react';
-import type { DeepPartial, FlowbiteBoolean } from '~/src';
-import { useTheme } from '~/src';
-import { mergeDeep } from '~/src/helpers/merge-deep';
+import type { DeepPartial, FlowbiteBoolean } from '../../';
+import { useTheme } from '../../';
+import { mergeDeep } from '../../helpers/merge-deep';
 import { useSidebarContext } from './SidebarContext';
 
 export interface FlowbiteSidebarLogoTheme {

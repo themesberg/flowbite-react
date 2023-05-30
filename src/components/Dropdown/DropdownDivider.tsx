@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
-import { useTheme } from '~/src';
+import { useTheme } from '../../';
 
 export interface FlowbiteDropdownDividerTheme {
   divider: string;

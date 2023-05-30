@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo } from 'react';
-import type { DeepPartial } from '~/src';
-import { useTheme } from '~/src';
-import { mergeDeep } from '~/src/helpers/merge-deep';
+import type { DeepPartial } from '../../';
+import { useTheme } from '../../';
+import { mergeDeep } from '../../helpers/merge-deep';
 import type { ButtonProps } from '../Button';
 
 export interface FlowbiteButtonGroupTheme {

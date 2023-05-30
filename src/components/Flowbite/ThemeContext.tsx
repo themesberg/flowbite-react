@@ -1,7 +1,7 @@
 import type { Dispatch, FC, ReactNode, SetStateAction } from 'react';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { isClient } from '~/src/helpers/is-client';
-import { theme } from '~/src/theme';
+import { isClient } from '../../helpers/is-client';
+import { theme } from '../../theme';
 import type { FlowbiteTheme } from './FlowbiteTheme';
 
 export type Mode = 'light' | 'dark';

@@ -1,6 +1,6 @@
 import type { Meta, Story } from '@storybook/react';
-import type { NavbarComponentProps } from '~/src';
-import { Avatar, Button, Dropdown, Navbar } from '~/src';
+import type { NavbarComponentProps } from '../../';
+import { Avatar, Button, Dropdown, Navbar } from '../../';
 
 export default {
   title: 'Components/Navbar',

@@ -1,7 +1,7 @@
 import type { RenderResult } from '@testing-library/react';
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '~/src';
+import { Flowbite } from '../../';
 import { Spinner } from './Spinner';
 
 describe('Components / Spinner', () => {

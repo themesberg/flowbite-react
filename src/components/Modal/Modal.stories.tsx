@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import type { Meta, Story } from '@storybook/react';
 import Link from 'next/link';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { Button, Checkbox, Label, TextInput } from '~/src';
+import { Button, Checkbox, Label, TextInput } from '../../';
 import type { ModalProps } from './Modal';
 import { Modal } from './Modal';
 

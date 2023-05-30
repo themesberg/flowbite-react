@@ -2,9 +2,9 @@ import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { forwardRef } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
-import type { DeepPartial, FlowbiteBoolean } from '~/src';
-import { useTheme } from '~/src';
-import { mergeDeep } from '~/src/helpers/merge-deep';
+import type { DeepPartial, FlowbiteBoolean } from '../../';
+import { useTheme } from '../../';
+import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteBreadcrumbItemTheme {
   base: string;

@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
-import type { DeepPartial, FlowbiteTextInputSizes } from '~/src';
-import { useTheme } from '~/src';
-import { mergeDeep } from '~/src/helpers/merge-deep';
+import type { DeepPartial, FlowbiteTextInputSizes } from '../../';
+import { useTheme } from '../../';
+import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteRangeSliderTheme {
   root: FlowbiteRangeSliderRootTheme;

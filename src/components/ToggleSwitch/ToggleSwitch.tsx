@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, KeyboardEvent, MouseEvent } from 'react';
 import { useId } from 'react';
-import type { DeepPartial, FlowbiteBoolean, FlowbiteColors } from '~/src';
-import { useTheme } from '~/src';
-import { mergeDeep } from '~/src/helpers/merge-deep';
+import type { DeepPartial, FlowbiteBoolean, FlowbiteColors } from '../../';
+import { useTheme } from '../../';
+import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteToggleSwitchTheme {
   root: FlowbiteToggleSwitchRootTheme;
