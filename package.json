@@ -56,6 +56,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.24.1",
     "classnames": "^2.3.2",
+    "fathom-client": "^3.5.0",
     "flowbite": "^1.6.5",
     "react-icons": "^4.8.0",
     "react-indiana-drag-scroll": "^2.2.0"

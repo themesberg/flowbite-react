@@ -3,6 +3,7 @@ import type { Metadata, NextPage } from 'next/types';
 import type { PropsWithChildren } from 'react';
 import '~/app/docs.css';
 import '~/app/style.css';
+import Fathom from './components/fathom';
 
 export const metadata: Metadata = {
   icons: '/favicon.svg',
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
 const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
+      <Fathom />
       <body>{children}</body>
     </html>
   );
