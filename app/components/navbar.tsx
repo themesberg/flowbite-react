@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import type { FC } from 'react';
+import { type FC } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { Badge, DarkThemeToggle, Tooltip } from '~/src';
+import pkg from './../../package.json' assert { type: 'json' };
 
 export const NavbarLinks: FC = () => {
   return (
@@ -53,6 +54,7 @@ export const NavbarLinks: FC = () => {
 };
 
 export const NavbarIcons: FC = () => {
+  const version = pkg?.version ?? 'latest';
   return (
     <div className="flex items-center gap-1">
       <a
@@ -71,7 +73,7 @@ export const NavbarIcons: FC = () => {
           color="info"
           className="border-primary-700 !bg-primary-50 !text-sm !font-normal !text-primary-700 hover:!bg-primary-600 hover:!text-white dark:border-primary-700 dark:!bg-gray-700  dark:!text-primary-700 dark:hover:!bg-primary-800 dark:hover:!text-white lg:block"
         >
-          v0.4.4
+          {version}
         </Badge>
       </a>
     </div>
