@@ -3,7 +3,7 @@ import ModalPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Use the modal component to show interactive dialogs and notifications to your website users available in multiple sizes, colors, and styles',
+    'Use the modal component to show an interactive dialog to your website users that overlays the main content based on multiple sizes, layouts, and styles',
   title: 'React Modal - Flowbite',
 };
 

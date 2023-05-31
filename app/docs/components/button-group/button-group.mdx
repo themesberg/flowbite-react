@@ -2,7 +2,21 @@ import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { Button } from '~/src';
 
-The button group component from Flowbite React can be used to stack together multiple buttons and links inside a single element.
+The button group component from Flowbite React can be used to stack multiple button elements and group them visually together. It can often be used to create a navigation menu or a toolbar.
+
+Choose from multiple examples and you can update properties such as the color, size, and appearance using the props from React and utility classes from Tailwind CSS.
+
+To start using the component you need to import it from the Flowbite React library:
+
+```jsx
+'use client';
+
+import { Button } from 'flowbite';
+```
+
+## Default button group
+
+Use this example of the `<Button.Group>` component by adding the `Button` component as a child element and stack them together. You can also use the `color` prop to change the color of the buttons.
 
 <CodePreview title="Default button group">
   <Button.Group>
@@ -11,6 +25,11 @@ The button group component from Flowbite React can be used to stack together mul
     <Button color="gray">Messages</Button>
   </Button.Group>
 </CodePreview>
+
+## Button group with icons
+
+Import one of the icons from the `react-icons` library and add it as a child element to the `<Button>` component to create multiple buttons with icons grouped together.
+
 <CodePreview title="With icons">
   <Button.Group>
     <Button color="gray">
@@ -27,23 +46,11 @@ The button group component from Flowbite React can be used to stack together mul
     </Button>
   </Button.Group>
 </CodePreview>
-<CodePreview title="All colors" className="flex flex-wrap gap-2">
-  <Button.Group>
-    <Button color="info">Profile</Button>
-    <Button color="info">Settings</Button>
-    <Button color="info">Messages</Button>
-  </Button.Group>
-  <Button.Group>
-    <Button gradientMonochrome="info">Profile</Button>
-    <Button gradientMonochrome="info">Settings</Button>
-    <Button gradientMonochrome="info">Messages</Button>
-  </Button.Group>
-  <Button.Group>
-    <Button gradientDuoTone="greenToBlue">Profile</Button>
-    <Button gradientDuoTone="greenToBlue">Settings</Button>
-    <Button gradientDuoTone="greenToBlue">Messages</Button>
-  </Button.Group>
-</CodePreview>
+
+## Outline button group
+
+By passing the outline prop to the `<Button.Group>` component you can create a button group with outline buttons with no background and solid borders.
+
 <CodePreview title="Outline" className="flex flex-wrap gap-2">
   <Button.Group outline>
     <Button color="gray">Profile</Button>
@@ -61,6 +68,33 @@ The button group component from Flowbite React can be used to stack together mul
     <Button gradientDuoTone="cyanToBlue">Messages</Button>
   </Button.Group>
 </CodePreview>
+
+## Color options
+
+Use the `color` prop to change the color of the buttons. You can also use the `gradientMonochrome` and `gradientDuoTone` props to apply a gradient color to the buttons.
+
+<CodePreview title="All colors" className="flex flex-wrap gap-2">
+  <Button.Group>
+    <Button color="info">Profile</Button>
+    <Button color="info">Settings</Button>
+    <Button color="info">Messages</Button>
+  </Button.Group>
+  <Button.Group>
+    <Button gradientMonochrome="info">Profile</Button>
+    <Button gradientMonochrome="info">Settings</Button>
+    <Button gradientMonochrome="info">Messages</Button>
+  </Button.Group>
+  <Button.Group>
+    <Button gradientDuoTone="greenToBlue">Profile</Button>
+    <Button gradientDuoTone="greenToBlue">Settings</Button>
+    <Button gradientDuoTone="greenToBlue">Messages</Button>
+  </Button.Group>
+</CodePreview>
+
+## Outline button group with icons
+
+Here's an example on how you can use both the outline and icon props together.
+
 <CodePreview title="Outline with icons" className="flex flex-wrap gap-2">
   <Button.Group outline>
     <Button color="gray">
@@ -105,3 +139,7 @@ The button group component from Flowbite React can be used to stack together mul
     </Button>
   </Button.Group>
 </CodePreview>
+
+## References
+
+- [Flowbite Button Group](https://flowbite.com/docs/components/button-group/)

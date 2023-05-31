@@ -3,7 +3,8 @@ import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import AlertPageContent from '.';
 
 export const metadata: Metadata = {
-  description: 'Show contextual information to your users using alert elements based on Tailwind CSS',
+  description:
+    'Get started with the alert component to show contextual information to the user such as when validating forms or showing errors based on React and Tailwind CSS',
   title: 'React Alert - Flowbite',
 };
 

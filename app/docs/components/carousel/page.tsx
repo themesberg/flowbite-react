@@ -4,7 +4,7 @@ import CarouselPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Use the carousel component to slide through multiple elements and images using custom controls, indicators, intervals, and options',
+    'Get started with the carousel component to showcase images and content and slide through them using custom controls, intervals, and indicators with React and Tailwind CSS',
   title: 'React Carousel - Flowbite',
 };
 

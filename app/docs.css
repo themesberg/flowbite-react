@@ -47,6 +47,12 @@
   @apply font-medium text-gray-900 underline decoration-cyan-700 decoration-1 underline-offset-2 dark:text-white dark:decoration-cyan-700;
 }
 
+#mainContent > p > code,
+#mainContent > ul > li > code,
+#mainContent > ol > li > code {
+  @apply break-all px-1 font-mono text-sm text-primary-600 dark:text-primary-400;
+}
+
 #mainContent > p > a:hover,
 #mainContent > div > p > a:hover,
 #mainContent > ul > li > a:hover,
@@ -108,7 +114,7 @@ pre[class*='language-'] {
   -ms-hyphens: none;
   hyphens: none;
 
-  @apply font-normal;
+  @apply my-6 rounded-lg text-sm font-normal;
 }
 
 /* without preview */

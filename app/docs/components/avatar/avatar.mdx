@@ -2,20 +2,140 @@ import { CodePreview } from '~/app/components/code-preview';
 import { Avatar, Dropdown } from '~/src';
 import Image from 'next/image';
 
-The avatar component can be used as a visual identifier for a user profile on your website and you can use the examples from Flowbite to modify the styles and sizes of these components using the utility classes from Tailwind CSS.
+The avatar component from Flowbite React can be used to show a visual representation of a user or team account for your application based on multiple examples, colors, sizes and shapes.
+
+All of the example are built as React components and you can access custom props and methods to customize the component and you can also use Tailwind CSS classes to style the component.
+
+To start using the avatar component you need to import it from the `flowbite-react` package:
+
+```jsx
+'use client';
+
+import { Avatar } from 'flowbite-react';
+```
+
+## Default avatar
+
+Here's a default example of the `<Avatar>` component where you can use the `img` prop to pass the image URL, the `alt` prop to pass a description of the image for accessibility and the `rounded` prop to make the avatar rounded.
 
 <CodePreview title="Default avatar">
   <div className="flex flex-wrap gap-2">
-    <Avatar img="/images/people/profile-picture-5.jpg" rounded />
+    <Avatar img="/images/people/profile-picture-5.jpg" alt="avatar of Jese" rounded />
     <Avatar img="/images/people/profile-picture-5.jpg" />
   </div>
 </CodePreview>
+
+## Avatar with border
+
+Use the `bordered` prop to add a border style to the avatar.
+
 <CodePreview title="Bordered avatar">
   <div className="flex flex-wrap gap-2">
     <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered />
     <Avatar img="/images/people/profile-picture-5.jpg" bordered />
   </div>
 </CodePreview>
+
+## Avatar placeholder
+
+If the user doesn't have an image you can use the `placeholder` prop to show a placeholder image and you can still pass the `rounded` prop to make the avatar rounded and other options.
+
+<CodePreview title="Placeholder">
+  <div className="flex flex-wrap gap-2">
+    <Avatar />
+    <Avatar rounded />
+  </div>
+</CodePreview>
+
+## Placeholder initials
+
+Alternatively to the placeholder image you can use the `placeholderInitials` prop to show the user initials.
+
+<CodePreview title="Placeholder initials">
+  <div className="flex flex-wrap gap-2">
+    <Avatar placeholderInitials="RR" />
+  </div>
+</CodePreview>
+
+## Dot indicator
+
+You can use the `status` prop to show a dot indicator on the avatar and you can use the `statusPosition` prop to change the position of the dot indicator.
+
+This is useful to show the user status like online, offline, busy, away, and more.
+
+<CodePreview title="Dot indicator">
+  <div className="flex flex-wrap gap-2">
+    <Avatar img="/images/people/profile-picture-5.jpg" status="online" />
+    <Avatar img="/images/people/profile-picture-5.jpg" rounded status="busy" statusPosition="top-right" />
+    <Avatar img="/images/people/profile-picture-5.jpg" status="offline" statusPosition="bottom-left" />
+    <Avatar img="/images/people/profile-picture-5.jpg" rounded status="away" statusPosition="bottom-right" />
+  </div>
+</CodePreview>
+
+## Stacked layout
+
+Stack multiple avatars together by using the `<Avatar.Group>` component and by passing the `stacked` prop to the child components of the group.
+
+The `<Avatar.Counter>` component can be used to show the total number of avatars in the group by passing the `total` prop and a link to the `href` prop to view all users.
+
+<CodePreview title="Stacked">
+  <div className="flex flex-wrap gap-2">
+    <Avatar.Group>
+      <Avatar img="/images/people/profile-picture-1.jpg" rounded stacked />
+      <Avatar img="/images/people/profile-picture-2.jpg" rounded stacked />
+      <Avatar img="/images/people/profile-picture-3.jpg" rounded stacked />
+      <Avatar img="/images/people/profile-picture-4.jpg" rounded stacked />
+      <Avatar img="/images/people/profile-picture-5.jpg" rounded stacked />
+    </Avatar.Group>
+    <Avatar.Group>
+      <Avatar img="/images/people/profile-picture-1.jpg" rounded stacked />
+      <Avatar img="/images/people/profile-picture-2.jpg" rounded stacked />
+      <Avatar img="/images/people/profile-picture-3.jpg" rounded stacked />
+      <Avatar img="/images/people/profile-picture-4.jpg" rounded stacked />
+      <Avatar.Counter total={99} href="#" />
+    </Avatar.Group>
+  </div>
+</CodePreview>
+
+## Avatar with text
+
+Use this example to show an avatar with text (ie. user name, email, etc) by passing the custom markup inside the `<Avatar>` component. This is useful for admin dashboard interfaces while the user is logged in.
+
+<CodePreview title="Avatar text">
+  <Avatar img="/images/people/profile-picture-5.jpg" rounded>
+    <div className="space-y-1 font-medium dark:text-white">
+      <div>Jese Leos</div>
+      <div className="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>
+    </div>
+  </Avatar>
+</CodePreview>
+
+## Avatar dropdown
+
+Use the `<Dropdown>` component to show a dropdown menu when clicking on the avatar component. This example is often used to show the user settings, account settings, and more.
+
+<CodePreview title="User dropdown">
+  <Dropdown
+    label={<Avatar alt="User settings" img="/images/people/profile-picture-5.jpg" rounded />}
+    arrowIcon={false}
+    inline
+  >
+    <Dropdown.Header>
+      <span className="block text-sm">Bonnie Green</span>
+      <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+    </Dropdown.Header>
+    <Dropdown.Item>Dashboard</Dropdown.Item>
+    <Dropdown.Item>Settings</Dropdown.Item>
+    <Dropdown.Item>Earnings</Dropdown.Item>
+    <Dropdown.Divider />
+    <Dropdown.Item>Sign out</Dropdown.Item>
+  </Dropdown>
+</CodePreview>
+
+## Colors
+
+If you want to change the default color of the avatar component you can pass the `color` prop. Colors that you can choose from are gray, light, purple, success, pink, and more.
+
 <CodePreview title="Colored avatar">
   <div className="flex flex-wrap gap-2">
     <Avatar img="/images/people/profile-picture-5.jpg" rounded bordered color="gray" />
@@ -32,6 +152,25 @@ The avatar component can be used as a visual identifier for a user profile on yo
     <Avatar img="/images/people/profile-picture-5.jpg" bordered color="pink" />
   </div>
 </CodePreview>
+
+## Sizes
+
+Change the default size of the avatar component by passing the `size` prop. Sizes that you can choose from are xs, sm, md, lg, and xl.
+
+<CodePreview title="Sizing">
+  <div className="flex flex-wrap items-center gap-2">
+    <Avatar img="/images/people/profile-picture-5.jpg" size="xs" />
+    <Avatar img="/images/people/profile-picture-5.jpg" size="sm" />
+    <Avatar img="/images/people/profile-picture-5.jpg" size="md" />
+    <Avatar img="/images/people/profile-picture-5.jpg" size="lg" />
+    <Avatar img="/images/people/profile-picture-5.jpg" size="xl" />
+  </div>
+</CodePreview>
+
+## Override image element
+
+You can override the default image element by passing the `img` prop to the `<Avatar>` component. This is useful if you want to use a different image element like `<Image>` from Next.js.
+
 <CodePreview title="Override image element">
   <div className="flex flex-wrap gap-2">
     <Avatar
@@ -57,77 +196,7 @@ The avatar component can be used as a visual identifier for a user profile on yo
     />
   </div>
 </CodePreview>
-<CodePreview title="Placeholder">
-  <div className="flex flex-wrap gap-2">
-    <Avatar />
-    <Avatar rounded />
-  </div>
-</CodePreview>
-<CodePreview title="Placeholder initials">
-  <div className="flex flex-wrap gap-2">
-    <Avatar placeholderInitials="RR" />
-  </div>
-</CodePreview>
-<CodePreview title="Dot indicator">
-  <div className="flex flex-wrap gap-2">
-    <Avatar img="/images/people/profile-picture-5.jpg" status="online" />
-    <Avatar img="/images/people/profile-picture-5.jpg" rounded status="busy" statusPosition="top-right" />
-    <Avatar img="/images/people/profile-picture-5.jpg" status="offline" statusPosition="bottom-left" />
-    <Avatar img="/images/people/profile-picture-5.jpg" rounded status="away" statusPosition="bottom-right" />
-  </div>
-</CodePreview>
-<CodePreview title="Stacked">
-  <div className="flex flex-wrap gap-2">
-    <Avatar.Group>
-      <Avatar img="/images/people/profile-picture-1.jpg" rounded stacked />
-      <Avatar img="/images/people/profile-picture-2.jpg" rounded stacked />
-      <Avatar img="/images/people/profile-picture-3.jpg" rounded stacked />
-      <Avatar img="/images/people/profile-picture-4.jpg" rounded stacked />
-      <Avatar img="/images/people/profile-picture-5.jpg" rounded stacked />
-    </Avatar.Group>
-    <Avatar.Group>
-      <Avatar img="/images/people/profile-picture-1.jpg" rounded stacked />
-      <Avatar img="/images/people/profile-picture-2.jpg" rounded stacked />
-      <Avatar img="/images/people/profile-picture-3.jpg" rounded stacked />
-      <Avatar img="/images/people/profile-picture-4.jpg" rounded stacked />
-      <Avatar.Counter total={99} href="#" />
-    </Avatar.Group>
-  </div>
-</CodePreview>
-<CodePreview title="Avatar text">
-  <Avatar img="/images/people/profile-picture-5.jpg" rounded>
-    <div className="space-y-1 font-medium dark:text-white">
-      <div>Jese Leos</div>
-      <div className="text-sm text-gray-500 dark:text-gray-400">Joined in August 2014</div>
-    </div>
-  </Avatar>
-</CodePreview>
-<CodePreview title="User dropdown">
-  <Dropdown
-    label={<Avatar alt="User settings" img="/images/people/profile-picture-5.jpg" rounded />}
-    arrowIcon={false}
-    inline
-  >
-    <Dropdown.Header>
-      <span className="block text-sm">Bonnie Green</span>
-      <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-    </Dropdown.Header>
-    <Dropdown.Item>Dashboard</Dropdown.Item>
-    <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>Earnings</Dropdown.Item>
-    <Dropdown.Divider />
-    <Dropdown.Item>Sign out</Dropdown.Item>
-  </Dropdown>
-</CodePreview>
-<CodePreview title="Sizing">
-  <div className="flex flex-wrap items-center gap-2">
-    <Avatar img="/images/people/profile-picture-5.jpg" size="xs" />
-    <Avatar img="/images/people/profile-picture-5.jpg" size="sm" />
-    <Avatar img="/images/people/profile-picture-5.jpg" size="md" />
-    <Avatar img="/images/people/profile-picture-5.jpg" size="lg" />
-    <Avatar img="/images/people/profile-picture-5.jpg" size="xl" />
-  </div>
-</CodePreview>
-<CodePreview title="Alternative text">
-  <Avatar alt="Default avatar with alt text" img="/images/people/profile-picture-5.jpg" rounded />
-</CodePreview>
+
+## References
+
+- [Flowbite Avatar](https://flowbite.com/docs/components/avatar/)

@@ -3,7 +3,7 @@ import TablePageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Use the table component to show text, images, links, and other elements inside a structured set of data made up of rows and columns of table cells',
+    'Get started with the table component to show data such as text, numbers, images, and links using a structured set of data based on rows and columns based on React',
   title: 'React Tables - Flowbite',
 };
 

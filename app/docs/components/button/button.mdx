@@ -2,9 +2,21 @@ import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { Button } from '~/src';
 
-The button component is probably the most widely used element in any user interface or website as it can be used to launch an action but also to link to other pages.
+The button component is a common UI component found on the web that allows users to trigger certain actions on your website such as submitting a form, navigating to a new page, or downloading a file.
 
-Flowbite React provides a large variety of styles and sizes for the button component including outlined buttons, multiple colors, sizes, buttons with icons, and more.
+The examples from the Flowbite React library allows you to customise the buttons with different colors, sizes, icons, and more. All examples are built with React and Tailwind CSS.
+
+In order to start using the button component you need to import it from Flowbite React:
+
+```jsx
+'use client';
+
+import { Button } from 'flowbite';
+```
+
+## Default buttons
+
+Use this example to create a default button by using the `<Button>` component from React and by adding the `color` property you can change the color of the button.
 
 <CodePreview title="Default buttons" className="flex flex-wrap gap-2">
   <Button>Default</Button>
@@ -16,6 +28,11 @@ Flowbite React provides a large variety of styles and sizes for the button compo
   <Button color="warning">Warning</Button>
   <Button color="purple">Purple</Button>
 </CodePreview>
+
+## Button pills
+
+Add the `pill` property to the `<Button>` component to create a button with rounded corners.
+
 <CodePreview title="Button pills" className="flex flex-wrap gap-2">
   <Button color="gray" pill>
     Gray
@@ -39,6 +56,11 @@ Flowbite React provides a large variety of styles and sizes for the button compo
     Purple
   </Button>
 </CodePreview>
+
+## Gradient monochrome
+
+By adding the `gradientMonochrome` property to the `<Button>` component you can create a button with a gradient background.
+
 <CodePreview title="Gradient monochrome" className="flex flex-wrap gap-2">
   <Button gradientMonochrome="info">Info</Button>
   <Button gradientMonochrome="success">Success</Button>
@@ -49,6 +71,11 @@ Flowbite React provides a large variety of styles and sizes for the button compo
   <Button gradientMonochrome="pink">Pink</Button>
   <Button gradientMonochrome="purple">Purple</Button>
 </CodePreview>
+
+## Gradient duotone
+
+Use the `gradientDuoTone` property to create a button with a gradient background with two colors.
+
 <CodePreview title="Gradient duo-tone" className="flex flex-wrap gap-2">
   <Button gradientDuoTone="purpleToBlue">Purple to Blue</Button>
   <Button gradientDuoTone="cyanToBlue">Cyan to Blue</Button>
@@ -58,6 +85,11 @@ Flowbite React provides a large variety of styles and sizes for the button compo
   <Button gradientDuoTone="tealToLime">Teal to Lime</Button>
   <Button gradientDuoTone="redToYellow">Red to Yellow</Button>
 </CodePreview>
+
+## Outline buttons
+
+Use the `outline` property to create an outline button with transparent background and colored border.
+
 <CodePreview title="Outline" className="flex flex-wrap gap-2">
   <Button outline gradientDuoTone="purpleToBlue">
     Purple to Blue
@@ -81,6 +113,13 @@ Flowbite React provides a large variety of styles and sizes for the button compo
     Red to Yellow
   </Button>
 </CodePreview>
+
+## Button sizes
+
+You can update the size of the button by adding the `size` property to the `<Button>` component.
+
+Choose from `xs`, `sm`, `md`, `lg`, and `xl` as the value.
+
 <CodePreview title="Button sizes" className="flex flex-wrap gap-2">
   <Button size="xs">Extra small</Button>
   <Button size="sm">Small</Button>
@@ -88,6 +127,11 @@ Flowbite React provides a large variety of styles and sizes for the button compo
   <Button size="lg">Large</Button>
   <Button size="xl">Extra large</Button>
 </CodePreview>
+
+## Buttons with icon
+
+You can add icons to the buttons by adding it inside the `<Button>` component near the text.
+
 <CodePreview title="Buttons with icon" className="flex flex-wrap gap-2">
   <Button>
     <HiShoppingCart className="mr-2 h-5 w-5" />
@@ -98,9 +142,19 @@ Flowbite React provides a large variety of styles and sizes for the button compo
     <HiOutlineArrowRight className="ml-2 h-5 w-5" />
   </Button>
 </CodePreview>
+
+## Button with label
+
+You can add a label to the button by adding the `label` property to the `<Button>` component.
+
 <CodePreview title="Button with label">
   <Button label="2">Messages</Button>
 </CodePreview>
+
+## Button with only icons
+
+Create a button with only icons by adding the `iconOnly` property to the `<Button>` component. These are useful when you want to show buttons in a small space and for things like pagination.
+
 <CodePreview title="Icon buttons" className="flex flex-wrap items-center gap-2">
   <Button>
     <HiOutlineArrowRight className="h-6 w-6" />
@@ -115,6 +169,11 @@ Flowbite React provides a large variety of styles and sizes for the button compo
     <HiOutlineArrowRight className="h-6 w-6" />
   </Button>
 </CodePreview>
+
+## Button with loading state
+
+Add a loading state to the button element by adding the `isProcessing` property to the `<Button>` component.
+
 <CodePreview title="Loader" className="flex flex-wrap items-center gap-2">
   <div className="flex flex-wrap items-center gap-2">
     <div>
@@ -127,6 +186,15 @@ Flowbite React provides a large variety of styles and sizes for the button compo
     </div>
   </div>
 </CodePreview>
+
+## Disabled buttons
+
+You can disable the button by adding the `disabled` property to the `<Button>` component.
+
 <CodePreview title="Disabled">
   <Button disabled>Disabled button</Button>
 </CodePreview>
+
+## References
+
+- [Flowbite Buttons](https://flowbite.com/docs/components/buttons/)
