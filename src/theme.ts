@@ -543,7 +543,7 @@ export const theme: FlowbiteTheme = {
       },
     },
     content: {
-      base: 'relative h-full w-full m-auto p-4 md:h-auto',
+      base: 'relative h-full w-full p-4 md:h-auto',
       inner: 'relative rounded-lg bg-white shadow dark:bg-gray-700 flex flex-col max-h-[90vh]',
     },
     body: {
