@@ -4,7 +4,7 @@ import ButtonPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Use the button component inside forms, as links, social login, payment options with support for multiple styles, colors, sizes, gradients, and shadows',
+    'Enable user interaction with the button component to perform actions on your website as links, for payment, form submission, social buttons and more based on React and Tailwind CSS',
   title: 'React Buttons - Flowbite',
 };
 

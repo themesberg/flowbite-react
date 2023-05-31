@@ -1,0 +1,77 @@
+import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
+import { CodePreview } from '~/app/components/code-preview';
+import { ListGroup } from '~/src';
+
+The list group component can be used to show a list of items inside of an unordered list for website navigation, show a list of items inside of a card, and more.
+
+You can choose from one of the examples below based on various styles and options and you can customize the component with React props and the classes from Tailwind CSS.
+
+Start using the list group component by first importing it from Flowbite React:
+
+```jsx
+'use client';
+
+import { ListGroup } from 'flowbite-react';
+```
+
+## Default list group
+
+Use the default example to create a simple list of items inside of a menu by using the `ListGroup` component with `ListGroup.Item` child components inside of it.
+
+<CodePreview title="Default list group" className="w-48">
+  <ListGroup>
+    <ListGroup.Item>Profile</ListGroup.Item>
+    <ListGroup.Item>Settings</ListGroup.Item>
+    <ListGroup.Item>Messages</ListGroup.Item>
+    <ListGroup.Item>Download</ListGroup.Item>
+  </ListGroup>
+</CodePreview>
+
+## List items as links
+
+Convert the list items into links by adding the `href` prop to the `ListGroup.Item` component.
+
+<CodePreview title="List group with links" className="w-48">
+  <ListGroup>
+    <ListGroup.Item active href="/list-group">
+      Profile
+    </ListGroup.Item>
+    <ListGroup.Item href="/list-group">Settings</ListGroup.Item>
+    <ListGroup.Item href="/list-group">Messages</ListGroup.Item>
+    <ListGroup.Item href="/list-group">Download</ListGroup.Item>
+  </ListGroup>
+</CodePreview>
+
+## List group with buttons
+
+To create custom actions inside of the list group, use the `onClick` prop on the `ListGroup.Item` component.
+
+<CodePreview title="List group with buttons" className="w-48">
+  <ListGroup>
+    <ListGroup.Item active onClick={() => alert('Profile clicked!')}>
+      Profile
+    </ListGroup.Item>
+    <ListGroup.Item>Settings</ListGroup.Item>
+    <ListGroup.Item>Messages</ListGroup.Item>
+    <ListGroup.Item>Download</ListGroup.Item>
+  </ListGroup>
+</CodePreview>
+
+## List group with icons
+
+Add icons to the list group items by using the `icon` prop on the `ListGroup.Item` component.
+
+<CodePreview title="List group with icons" className="w-48">
+  <ListGroup>
+    <ListGroup.Item active icon={HiUserCircle}>
+      Profile
+    </ListGroup.Item>
+    <ListGroup.Item icon={HiOutlineAdjustments}>Settings</ListGroup.Item>
+    <ListGroup.Item icon={HiInbox}>Messages</ListGroup.Item>
+    <ListGroup.Item icon={HiCloudDownload}>Download</ListGroup.Item>
+  </ListGroup>
+</CodePreview>
+
+## References
+
+- [Flowbite List Group](https://flowbite.com/docs/components/list-group/)

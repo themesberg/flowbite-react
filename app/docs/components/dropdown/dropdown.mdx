@@ -2,7 +2,21 @@ import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { Dropdown } from '~/src';
 
-The dropdown component can be used to show a list of menu items when clicking on an element such as a button and hiding it when clicking outside of the triggering element.
+The dropdown component is a UI component built with React that allows you to show a list of items when clicking on a trigger element (ie. a button) that you can use to build dropdown menus, lists, and more.
+
+The default styles are built with the utility classes from Tailwind CSS and you can use the custom props from React to customize the behaviour and positioning of the dropdowns.
+
+To start using the component make sure that you have imported it from Flowbite React:
+
+```jsx
+'use client';
+
+import { Dropdown } from 'flowbite';
+```
+
+## Default dropdown
+
+Use this example to create a simple dropdown with a list of menu items by adding child `<Dropdown.Item>` components inside of the main `<Dropdown>` component.
 
 <CodePreview title="Default dropdown">
   <Dropdown label="Dropdown button" dismissOnClick={false}>
@@ -12,6 +26,11 @@ The dropdown component can be used to show a list of menu items when clicking on
     <Dropdown.Item>Sign out</Dropdown.Item>
   </Dropdown>
 </CodePreview>
+
+## Dropdown divider
+
+Use the `<Dropdown.Divider>` component to add a divider between the dropdown items.
+
 <CodePreview title="Dropdown divider">
   <Dropdown label="Dropdown button">
     <Dropdown.Item>Dashboard</Dropdown.Item>
@@ -21,6 +40,11 @@ The dropdown component can be used to show a list of menu items when clicking on
     <Dropdown.Item>Separated link</Dropdown.Item>
   </Dropdown>
 </CodePreview>
+
+## Dropdown header
+
+Use the `<Dropdown.Header>` component to add a header to the dropdown. You can use this to add a user profile image and name, for example.
+
 <CodePreview title="Dropdown header">
   <Dropdown label="Dropdown button">
     <Dropdown.Header>
@@ -34,14 +58,11 @@ The dropdown component can be used to show a list of menu items when clicking on
     <Dropdown.Item>Sign out</Dropdown.Item>
   </Dropdown>
 </CodePreview>
-<CodePreview title="Inline dropdown">
-  <Dropdown label="Dropdown" inline>
-    <Dropdown.Item>Dashboard</Dropdown.Item>
-    <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>Earnings</Dropdown.Item>
-    <Dropdown.Item>Sign out</Dropdown.Item>
-  </Dropdown>
-</CodePreview>
+
+## Dropdown items with icon
+
+Add custom icons next to the menu items by using the `icon` prop on the `<Dropdown.Item>` component.
+
 <CodePreview title="Dropdown items with icon">
   <Dropdown label="Dropdown">
     <Dropdown.Header>
@@ -55,14 +76,24 @@ The dropdown component can be used to show a list of menu items when clicking on
     <Dropdown.Item icon={HiLogout}>Sign out</Dropdown.Item>
   </Dropdown>
 </CodePreview>
-<CodePreview title="Dropdown item on click handler">
-  <Dropdown label="Dropdown">
-    <Dropdown.Item onClick={() => alert('Dashboard!')}>Dashboard</Dropdown.Item>
-    <Dropdown.Item onClick={() => alert('Settings!')}>Settings</Dropdown.Item>
-    <Dropdown.Item onClick={() => alert('Earnings!')}>Earnings</Dropdown.Item>
-    <Dropdown.Item onClick={() => alert('Sign out!')}>Sign out</Dropdown.Item>
+
+## Inline dropdown
+
+Use the `inline` prop to make the dropdown appear inline with the trigger element.
+
+<CodePreview title="Inline dropdown">
+  <Dropdown label="Dropdown" inline>
+    <Dropdown.Item>Dashboard</Dropdown.Item>
+    <Dropdown.Item>Settings</Dropdown.Item>
+    <Dropdown.Item>Earnings</Dropdown.Item>
+    <Dropdown.Item>Sign out</Dropdown.Item>
   </Dropdown>
 </CodePreview>
+
+## Dropdown sizes
+
+You can use the `size` prop to change the size of the dropdown. The default size is `md`.
+
 <CodePreview title="Sizing">
   <div className="flex items-center gap-4">
     <Dropdown label="Small dropdown" size="sm">
@@ -79,6 +110,11 @@ The dropdown component can be used to show a list of menu items when clicking on
     </Dropdown>
   </div>
 </CodePreview>
+
+## Placement options
+
+Use the `placement` prop to change the placement of the dropdown by choosing one of the following options: `top`, `right`, `bottom` or `left`. If there is not enough space then the dropdown will be automatically repositioned.
+
 <CodePreview title="Placement">
   <div className="flex flex-col gap-4">
     <div className="flex items-center gap-4">
@@ -123,3 +159,20 @@ The dropdown component can be used to show a list of menu items when clicking on
     </div>
   </div>
 </CodePreview>
+
+## Click event handler
+
+Add a custom `onClick` event handler to the `<Dropdown.Item>` component to handle the click event.
+
+<CodePreview title="Dropdown item on click handler">
+  <Dropdown label="Dropdown">
+    <Dropdown.Item onClick={() => alert('Dashboard!')}>Dashboard</Dropdown.Item>
+    <Dropdown.Item onClick={() => alert('Settings!')}>Settings</Dropdown.Item>
+    <Dropdown.Item onClick={() => alert('Earnings!')}>Earnings</Dropdown.Item>
+    <Dropdown.Item onClick={() => alert('Sign out!')}>Sign out</Dropdown.Item>
+  </Dropdown>
+</CodePreview>
+
+## References
+
+- [Flowbite Dropdown](https://flowbite.com/docs/components/dropdowns/)

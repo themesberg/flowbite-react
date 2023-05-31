@@ -4,7 +4,7 @@ import AvatarPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Use the avatar component to show a visual representation of a user profile using an image element or SVG object based on multiple styles and sizes',
+    'Use the avatar component to show user profile images and placeholders in different sizes, colors and shapes based on React and Tailwind CSS',
   title: 'React Avatar - Flowbite',
 };
 

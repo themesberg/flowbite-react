@@ -4,7 +4,7 @@ import BadgePageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Use the avatar component to show a visual representation of a user profile using an image element or SVG object based on multiple styles and sizes',
+    'Get started with the badge component to add labels or counters inside paragraphs, buttons, and inputs based on multiple colors and sizes from React and Tailwind CSS',
   title: 'React Badge - Flowbite',
 };
 

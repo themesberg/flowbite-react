@@ -1,0 +1,100 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { Pagination } from '~/src';
+
+The pagination component can be used to show a list of pages with numbers and links to allow the users to navigate through multiple pages, data from tables, and more.
+
+Choose one of the examples below based on various styles and sizes and customize them using the React props API and the utility classes from Tailwind CSS.
+
+You need to import the pagination component from the `flowbite-react` library before using it:
+
+```jsx
+'use client';
+
+import { Pagination } from 'flowbite-react';
+```
+
+## Default pagination
+
+Use the `<Pagination>` component to create a default pagination element and use the `currentPage` prop to set the currently active page, the `totalPages` prop to set how many pages there are in total and update the `onPageChange` even listener to set the state of the pagination component via React.
+
+<CodePreview title="Default pagination">
+  <Pagination currentPage={props.currentPage} totalPages={100} onPageChange={props.onPageChange} />
+</CodePreview>
+
+## Pagination with icons
+
+Add next and previous icons to the pagination component by passing the `showIcons` prop via React.
+
+<CodePreview title="Pagination with icons">
+  <Pagination currentPage={props.currentPage} onPageChange={props.onPageChange} showIcons totalPages={100} />
+</CodePreview>
+
+## Previous and next
+
+Show only the next and previous control buttons by passing the `layout="navigation"` prop from React.
+
+<CodePreview title="Previous and next">
+  <Pagination currentPage={props.currentPage} layout="navigation" totalPages={100} onPageChange={props.onPageChange} />
+</CodePreview>
+
+## Control button icons
+
+Show the control buttons with icons by passing both the `layout="navigation"` and `showIcons` props.
+
+<CodePreview title="Previous and next with icons">
+  <Pagination
+    currentPage={props.currentPage}
+    layout="navigation"
+    onPageChange={props.onPageChange}
+    showIcons
+    totalPages={100}
+  />
+</CodePreview>
+
+## Table data navigation
+
+Use this example show table data navigation by using the `layout="table"` prop from React.
+
+<CodePreview title="Table data navigation">
+  <div className="flex items-center justify-center text-center">
+    <Pagination currentPage={props.currentPage} layout="table" onPageChange={props.onPageChange} totalPages={1000} />
+  </div>
+</CodePreview>
+
+## Table data navigation with icons
+
+Show icons for the next and previous control buttons for table navigation by passing the `showIcons` prop.
+
+<CodePreview title="Table data navigation with icons">
+  <div className="flex items-center justify-center text-center">
+    <Pagination
+      currentPage={props.currentPage}
+      layout="table"
+      onPageChange={props.onPageChange}
+      showIcons
+      totalPages={1000}
+    />
+  </div>
+</CodePreview>
+
+## Control button text
+
+Customize the text for the next and previous buttons by passing the `previousLabel` and `nextLabel` props.
+
+<CodePreview title="Change 'Previous' and 'Next' text">
+  <div className="flex items-center justify-center text-center">
+    <Pagination
+      currentPage={props.currentPage}
+      layout="pagination"
+      onPageChange={props.onPageChange}
+      showIcons
+      totalPages={1000}
+      previousLabel="Go back"
+      nextLabel="Go forward"
+    />
+  </div>
+</CodePreview>
+
+## References
+
+- [Flowbite Pagination](https://flowbite.com/docs/components/pagination/)

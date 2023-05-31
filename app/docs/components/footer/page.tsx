@@ -4,7 +4,7 @@ import CarouselPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Use the footer section at the bottom of every page to show valuable information to your users, such as sitemap links, a copyright notice, and a logo',
+    'Use the footer component at the end of your page to show content such as sitemap links, brand logo, social icons and more using React and Tailwind CSS',
   title: 'React Footer - Flowbite',
 };
 
