@@ -72,6 +72,19 @@ Inline.args = {
   ),
 };
 
+export const CustomTrigger = Template.bind({});
+CustomTrigger.args = {
+  renderTrigger: () => <button>Custom button</button>,
+  children: (
+    <>
+      <Dropdown.Item>Dashboard</Dropdown.Item>
+      <Dropdown.Item>Settings</Dropdown.Item>
+      <Dropdown.Item>Earnings</Dropdown.Item>
+      <Dropdown.Item>Sign out</Dropdown.Item>
+    </>
+  ),
+};
+
 export const ItemClickHandler = Template.bind({});
 ItemClickHandler.storyName = 'Item click handlers';
 ItemClickHandler.args = {
