@@ -56,7 +56,7 @@ export const CodePreview: FC<CodePreviewProps> = function ({ children, className
           <div className="ml-auto">
             <button
               type="button"
-              className="toggle-dark-state-example mr-2 flex items-center rounded-lg border border-gray-200 bg-white p-2 text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
+              className="toggle-dark-state-example mr-2 flex items-center rounded-lg border border-gray-200 bg-white p-2 text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
             >
               <svg
                 aria-hidden="true"
@@ -76,7 +76,9 @@ export const CodePreview: FC<CodePreviewProps> = function ({ children, className
       <div className="code-preview-wrapper">
         <div className="code-preview flex border-x border-gray-200 bg-white bg-gradient-to-r p-0 dark:border-gray-600 dark:bg-gray-900">
           <div className="code-responsive-wrapper w-full">
-            <div className={classNames('py-4', className)}>{children}</div>
+            <div className="mx-auto w-full bg-white bg-gradient-to-r p-2 dark:bg-gray-900 sm:p-6">
+              <div className={classNames('py-4', className)}>{children}</div>
+            </div>
           </div>
         </div>
       </div>
