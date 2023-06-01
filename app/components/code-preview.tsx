@@ -29,7 +29,7 @@ export const CodePreview: FC<CodePreviewProps> = function ({ children, className
   code = replaceWebpackImportsOnComponents(code);
   code = replaceWebpackImportsOnFunctions(code);
 
-  const onCodeCopy = (_: React.MouseEvent<HTMLButtonElement>, success: boolean) => {
+  const onCodeCopy = (_: string, success: boolean) => {
     if (success) {
       setCopied(true);
       setTimeout(() => setCopied(false), 3000);
@@ -123,6 +123,12 @@ export const CodePreview: FC<CodePreviewProps> = function ({ children, className
           <pre className="language-tsx !my-0">
             <code>{code}</code>
           </pre>
+          <button
+            type="button"
+            className="absolute bottom-0 left-0 w-full border-t border-gray-200 bg-gray-100 px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+          >
+            Expand code
+          </button>
         </div>
       </div>
     </div>
