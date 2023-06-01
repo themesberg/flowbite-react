@@ -41,10 +41,10 @@ export const CodePreview: FC<CodePreviewProps> = function ({ children, className
       <div className="w-full rounded-t-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
         <div className="grid grid-cols-2">
           <a
-            href="#"
+            href={`https://github.com/themesberg/flowbite-react/`}
             className="inline-flex w-fit items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-center text-xs font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-600 hover:text-primary-700 focus:text-primary-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:!bg-gray-900 dark:bg-gray-800 dark:bg-transparent dark:text-gray-400 dark:hover:border-gray-700 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-700"
             target="_blank"
-            rel="noreferrer"
+            rel="noreferrer nofollow noopener"
           >
             <svg
               className="h-4 w-4"
@@ -98,7 +98,7 @@ export const CodePreview: FC<CodePreviewProps> = function ({ children, className
             <ul className="flex text-center text-sm font-medium text-gray-500 dark:text-gray-400">
               <li>
                 <span className="inline-block w-full border-r border-gray-200 bg-gray-100 p-2 px-3 text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
-                  React
+                  React JSX
                 </span>
               </li>
             </ul>
