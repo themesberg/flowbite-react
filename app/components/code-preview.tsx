@@ -29,7 +29,7 @@ export const CodePreview: FC<CodePreviewProps> = function ({ children, className
   code = replaceWebpackImportsOnComponents(code);
   code = replaceWebpackImportsOnFunctions(code);
 
-  const onCodeCopy = (_, success) => {
+  const onCodeCopy = (_: React.MouseEvent<HTMLButtonElement>, success: boolean) => {
     if (success) {
       setCopied(true);
       setTimeout(() => setCopied(false), 3000);
