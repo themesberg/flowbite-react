@@ -184,7 +184,6 @@ pre[class*='language-'] {
 
 .token.class-name {
   @apply text-purple-600 dark:text-purple-400;
-  text-decoration: underline;
 }
 
 .token.boolean,
