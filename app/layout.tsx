@@ -6,7 +6,7 @@ import '~/app/docs.css';
 import '~/app/style.css';
 import Fathom from './components/fathom';
 
-const inter = Inter({
+Inter({
   subsets: ['latin'],
   variable: '--font-inter',
 });
