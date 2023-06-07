@@ -96,8 +96,7 @@
 
 code[class*='language-'],
 pre[class*='language-'] {
-  color: #c5c8c6;
-  @apply text-pink-500 dark:text-pink-400;
+  @apply my-0 rounded-lg text-sm font-normal text-pink-500 dark:text-pink-400;
   font-family: Menlo, ui-monospace, SFMono-Regular, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   direction: ltr;
   text-align: left;
@@ -115,8 +114,6 @@ pre[class*='language-'] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-
-  @apply my-6 rounded-lg text-sm font-normal;
 }
 
 /* without preview */
