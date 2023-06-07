@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 export default function Fathom() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
   useEffect(() => {
     load('UXMSXUQI', {
       includedDomains: ['flowbite-react.com'],
