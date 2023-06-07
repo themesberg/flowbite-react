@@ -3,7 +3,6 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { Children, useState } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import type { Options } from 'react-element-to-jsx-string';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { BsCheckLg, BsFillClipboardFill } from 'react-icons/bs';
@@ -21,20 +20,21 @@ interface CodePreviewProps extends PropsWithChildren, ComponentProps<'div'> {
 }
 
 export const CodePreview: FC<CodePreviewProps> = function ({ children, className }) {
+  const [isJustCopied, setJustCopied] = useState(false);
+
+  const copyToClipboard = (toCopy: string) => {
+    setJustCopied(true);
+    navigator.clipboard.writeText(toCopy);
+    setTimeout(() => setJustCopied(false), 2000);
+  };
+
   const childrenList = Children.toArray(children);
-  const [copied, setCopied] = useState(false);
+
   let code = childrenList.map((child) => reactElementToJSXString(child, reactElementToJSXStringOptions)).join('\n');
   code = deleteJSXSpaces(code);
   code = deleteSVGs(code);
   code = replaceWebpackImportsOnComponents(code);
   code = replaceWebpackImportsOnFunctions(code);
-
-  const onCodeCopy = (_: string, success: boolean) => {
-    if (success) {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 3000);
-    }
-  };
 
   return (
     <div className="code-example mt-8">
@@ -103,21 +103,18 @@ export const CodePreview: FC<CodePreviewProps> = function ({ children, className
               </li>
             </ul>
             <div className="flex justify-end">
-              <CopyToClipboard text={code} onCopy={onCodeCopy}>
-                <button
-                  type="button"
-                  onClick={(e) => e.preventDefault()}
-                  className="copy-to-clipboard-button flex items-center border-l border-gray-200 bg-gray-100 px-3 py-2 text-xs font-medium text-gray-600 hover:text-primary-700 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white"
-                >
-                  {copied ? (
-                    <BsCheckLg className="mr-2 h-4 w-4 text-green-500 dark:text-green-400" />
-                  ) : (
-                    <BsFillClipboardFill className="mr-2 h-3 w-3" />
-                  )}
+              <button
+                onClick={() => copyToClipboard(code)}
+                className="copy-to-clipboard-button flex items-center border-l border-gray-200 bg-gray-100 px-3 py-2 text-xs font-medium text-gray-600 hover:text-primary-700 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white"
+              >
+                {isJustCopied ? (
+                  <BsCheckLg className="mr-2 h-4 w-4 text-green-500 dark:text-green-400" />
+                ) : (
+                  <BsFillClipboardFill className="mr-2 h-3 w-3" />
+                )}
 
-                  {copied ? 'Code copied!' : 'Copy code'}
-                </button>
-              </CopyToClipboard>
+                {isJustCopied ? 'Code copied!' : 'Copy code'}
+              </button>
             </div>
           </div>
           <pre className="language-tsx !my-0">
