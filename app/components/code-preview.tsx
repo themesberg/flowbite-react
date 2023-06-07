@@ -25,7 +25,7 @@ interface CodePreviewState {
   isJustCopied?: boolean;
 }
 
-export const CodePreview: FC<CodePreviewProps> = function ({ children, className }) {
+export const CodePreview: FC<CodePreviewProps> = function ({ children, className, title }) {
   const [isDarkMode, setDarkMode] = useState(false);
   const [isJustCopied, setJustCopied] = useState(false);
 
@@ -42,6 +42,19 @@ export const CodePreview: FC<CodePreviewProps> = function ({ children, className
   code = deleteSVGs(code);
   code = replaceWebpackImportsOnComponents(code);
   code = replaceWebpackImportsOnFunctions(code);
+  code = `
+'use client';
+
+import { ${code.substring(1, code.indexOf(' ') - 1)} } from 'flowbite-react';
+
+export default function ${title.replace(/(?:^\w|[A-Z]|\b\w)/g, (word) => word.toUpperCase()).replace(/\s+/g, '')}() {
+  return (
+    ${code.replaceAll(/\n/g, '\n    ')}
+  )
+}
+
+
+`;
 
   return (
     <div className="code-example mt-8">
