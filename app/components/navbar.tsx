@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { type FC } from 'react';
+import type { FC } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { Badge, DarkThemeToggle, Tooltip } from '~/src';
 import pkg from './../../package.json' assert { type: 'json' };
