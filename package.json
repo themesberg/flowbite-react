@@ -1,6 +1,6 @@
 {
   "name": "flowbite-react",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "Official React components built for Flowbite and Tailwind CSS",
   "keywords": [
     "design-system",
@@ -35,8 +35,8 @@
     "dev": "next dev",
     "lint": "eslint --color .",
     "prepublishOnly": "yarn build:lib",
-    "prettier": "prettier --check --ignore-path .gitignore .",
-    "prettier:fix": "prettier --write --ignore-path .gitignore .",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write .",
     "release": "standard-version -a",
     "start": "next start",
     "storybook": "storybook dev -p 3001",

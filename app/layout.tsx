@@ -1,9 +1,15 @@
 import type { Metadata, NextPage } from 'next/types';
 
+import { Inter } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
 import '~/app/docs.css';
 import '~/app/style.css';
 import Fathom from './components/fathom';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
 
 export const metadata: Metadata = {
   icons: '/favicon.svg',
