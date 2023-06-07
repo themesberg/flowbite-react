@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
 import '~/app/docs.css';
 import '~/app/style.css';
+import Fathom from './components/fathom';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
 const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en" className={`${inter.variable} font-sans`}>
+      <Fathom />
       <body>{children}</body>
     </html>
   );
