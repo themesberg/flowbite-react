@@ -12,7 +12,6 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-tsx';
 import 'prismjs/components/prism-typescript';
-import 'prismjs/themes/prism-tomorrow.css';
 import type { FC, PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
