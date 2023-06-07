@@ -35,7 +35,7 @@ Use the default `<Toast>` React component to show a simple toast message with an
 
 Choose one of the following toast examples based on form submission messages to update the color of the component by using the `bg` and `text` utility classes from Tailwind CSS.
 
-<CodePreview title="Colors">
+<CodePreview importFlowbiteReact="Toast" title="Colors">
   <div className="flex flex-col gap-4">
     <Toast>
       <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-green-500 dark:bg-green-800 dark:text-green-200">
@@ -65,7 +65,7 @@ Choose one of the following toast examples based on form submission messages to 
 
 Use this example to show a message based on form submission to indicate errors or successful actions.
 
-<CodePreview title="Simple toast">
+<CodePreview importFlowbiteReact="Toast" title="Simple toast">
   <div className="space-x-4 divide-x divide-gray-200 dark:divide-gray-700">
     <Toast>
       <FaTelegramPlane className="h-5 w-5 text-cyan-600 dark:text-cyan-500" />
@@ -82,12 +82,12 @@ Add a button to the toast component to allow the user to perform an action or cl
   <Toast>
     <div className="text-sm font-normal">Conversation archived.</div>
     <div className="ml-auto flex items-center space-x-2">
-      <Link
+      <a
         href="/toast"
         className="rounded-lg p-1.5 text-sm font-medium text-cyan-600 hover:bg-cyan-100 dark:text-cyan-500 dark:hover:bg-gray-700"
       >
         Undo
-      </Link>
+      </a>
       <Toast.Toggle />
     </div>
   </Toast>
@@ -97,7 +97,7 @@ Add a button to the toast component to allow the user to perform an action or cl
 
 This component can be used to show more complex messages with buttons and other elements that can be used to perform actions and use the `<Toast.Toggle>` component to allow the user to close the toast component.
 
-<CodePreview title="Interactive toast">
+<CodePreview importFlowbiteReact="Button, Toast" title="Interactive toast">
   <Toast>
     <div className="flex !items-start">
       <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-100 text-cyan-500 dark:bg-cyan-900 dark:text-cyan-300">

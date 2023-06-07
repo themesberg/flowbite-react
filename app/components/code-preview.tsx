@@ -17,6 +17,7 @@ const reactElementToJSXStringOptions: Options = {
 
 interface CodePreviewProps extends PropsWithChildren, ComponentProps<'div'> {
   code?: string;
+  importFlowbiteReact?: string;
   title: string;
 }
 
@@ -25,7 +26,12 @@ interface CodePreviewState {
   isJustCopied?: boolean;
 }
 
-export const CodePreview: FC<CodePreviewProps> = function ({ children, className, title }) {
+export const CodePreview: FC<CodePreviewProps> = function ({
+  children,
+  className,
+  importFlowbiteReact: displayName,
+  title,
+}) {
   const [isDarkMode, setDarkMode] = useState(false);
   const [isJustCopied, setJustCopied] = useState(false);
 
@@ -45,11 +51,17 @@ export const CodePreview: FC<CodePreviewProps> = function ({ children, className
   code = `
 'use client';
 
-import { ${code.substring(1, code.indexOf(' ') - 1)} } from 'flowbite-react';
+import { ${displayName ?? firstComponentDisplayName(code)} } from 'flowbite-react';
 
-export default function ${title.replace(/(?:^\w|[A-Z]|\b\w)/g, (word) => word.toUpperCase()).replace(/\s+/g, '')}() {
+export default function ${title
+    .replaceAll(/(?:^\w|[A-Z]|\b\w)/g, (word) => word.toUpperCase())
+    .replaceAll(/\s+/g, '')
+    .replaceAll(/-/g, '')}() {
   return (
-    ${code.replaceAll(/\n/g, '\n    ')}
+    ${childrenList.length > 1 ? '<>\n      ' : ''}${code.replaceAll(
+    /\n/g,
+    childrenList.length > 1 ? '\n      ' : '\n    ',
+  )}${childrenList.length > 1 ? '\n    </>' : ''}
   )
 }
 
@@ -159,6 +171,13 @@ const CopyToClipboardButton: FC<ComponentProps<'button'> & CodePreviewState> = (
       {isJustCopied ? 'Code copied!' : 'Copy code'}
     </button>
   );
+};
+
+const firstComponentDisplayName = (str: string) => {
+  const firstClosingTag = str.indexOf('>');
+  const firstSpace = str.indexOf(' ');
+
+  return str.substring(1, firstSpace > firstClosingTag ? firstClosingTag : firstSpace).replaceAll(/\s/g, '');
 };
 
 const deleteJSXSpaces = (str: string) => {

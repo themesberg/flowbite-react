@@ -23,7 +23,7 @@ The visibility of the component can be set by passing a boolean value to the `sh
 
 Using a `openModal` and `setOpenModal` state for the main React component should allow you to easily manage the state of the Modal component and use inline functions on event listeners such as `onClick` or `onClose`.
 
-<CodePreview title="Default modal">
+<CodePreview importFlowbiteReact="Button, Modal" title="Default modal">
   <Button onClick={() => props.setOpenModal('default')}>Toggle modal</Button>
   <Modal show={props.openModal === 'default'} onClose={() => props.setOpenModal(undefined)}>
     <Modal.Header>Terms of Service</Modal.Header>
@@ -53,7 +53,7 @@ Using a `openModal` and `setOpenModal` state for the main React component should
 
 To enable the modal to be dismissed when clicking outside of the component (ie. the backdrop) then you can pass the `dismissible` prop to the `<Modal>` component frm React.
 
-<CodePreview title="Dismissable modal">
+<CodePreview importFlowbiteReact="Button, Modal" title="Dismissable modal">
   <Button onClick={() => props.setOpenModal('dismissible')}>Toggle modal</Button>
   <Modal dismissible show={props.openModal === 'dismissible'} onClose={() => props.setOpenModal(undefined)}>
     <Modal.Header>Terms of Service</Modal.Header>
@@ -83,7 +83,7 @@ To enable the modal to be dismissed when clicking outside of the component (ie. 
 
 Use this example by passing the `popup` prop from React to the modal component to show a dialog to the user asking for a decision such as when confirming an item deletion from the database.
 
-<CodePreview title="Pop-up modal">
+<CodePreview importFlowbiteReact="Button, Modal" title="Pop-up modal">
   <Button onClick={() => props.setOpenModal('pop-up')}>Toggle modal</Button>
   <Modal show={props.openModal === 'pop-up'} size="md" popup onClose={() => props.setOpenModal(undefined)}>
     <Modal.Header />
@@ -110,7 +110,7 @@ Use this example by passing the `popup` prop from React to the modal component t
 
 You can also add form elements inside of the modal component by adding the markup that you want inside the `<Modal.Body>` component. Form elements can be used to show user authentication or surveys modal elements.
 
-<CodePreview title="Form elements">
+<CodePreview importFlowbiteReact="Button, Checkbox, Label, Modal, TextInput" title="Form elements">
   <Button onClick={() => props.setOpenModal('form-elements')}>Toggle modal</Button>
   <Modal show={props.openModal === 'form-elements'} size="md" popup onClose={() => props.setOpenModal(undefined)}>
     <Modal.Header />
@@ -134,18 +134,18 @@ You can also add form elements inside of the modal component by adding the marku
             <Checkbox id="remember" />
             <Label htmlFor="remember">Remember me</Label>
           </div>
-          <Link href="/modal" className="text-sm text-cyan-700 hover:underline dark:text-cyan-500">
+          <a href="/modal" className="text-sm text-cyan-700 hover:underline dark:text-cyan-500">
             Lost Password?
-          </Link>
+          </a>
         </div>
         <div className="w-full">
           <Button>Log in to your account</Button>
         </div>
         <div className="flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300">
           Not registered?&nbsp;
-          <Link href="/modal" className="text-cyan-700 hover:underline dark:text-cyan-500">
+          <a href="/modal" className="text-cyan-700 hover:underline dark:text-cyan-500">
             Create account
-          </Link>
+          </a>
         </div>
       </div>
     </Modal.Body>
@@ -156,7 +156,7 @@ You can also add form elements inside of the modal component by adding the marku
 
 To make the modal component smaller or larger you can pass the `size` prop to the `<Modal>` React component and you can choose from `sm`, `md`, `lg`, `xl` and all the way to `7xl`.
 
-<CodePreview title="Sizing">
+<CodePreview importFlowbiteReact="Button, Modal, Select" title="Sizing">
   <div className="flex flex-wrap gap-4">
     <div className="w-40">
       <Select defaultValue="md" onChange={(event) => props.setModalSize(event.value)}>
@@ -202,7 +202,7 @@ To make the modal component smaller or larger you can pass the `size` prop to th
 
 To set the position of the modal component relative to the page you can use the `position` prop on the modal component and you can choose from `center`, `top-left`, `top-center`, `bottom-right`, and more based on the selector options below.
 
-<CodePreview title="Placement">
+<CodePreview importFlowbiteReact="Button, Modal, Select" title="Placement">
   <div className="flex flex-wrap gap-4">
     <div className="w-40">
       <Select defaultValue="center" onChange={(event) => props.setModalPlacement(event.value)}>
