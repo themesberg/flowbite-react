@@ -9,7 +9,6 @@ export default function Fathom() {
 
   useEffect(() => {
     load('UXMSXUQI', {
-      includedDomains: ['flowbite-react.com'],
       spa: 'auto',
     });
 
