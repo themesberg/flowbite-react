@@ -6,11 +6,14 @@ const nextConfig = {
   experimental: {
     appDir: true,
     scrollRestoration: true,
-    swcFileReading: true,
   },
   pageExtensions: ['mdx', 'tsx'],
   reactStrictMode: true,
-  swcMinify: true,
+  webpack(config) {
+    // Retain React FC display names and anonymous function bodies for docs
+    config.optimization.minimize = false;
+    return config;
+  },
   async redirects() {
     return [
       {
