@@ -17,6 +17,7 @@ const reactElementToJSXStringOptions: Options = {
 };
 
 interface CodePreviewProps extends PropsWithChildren, ComponentProps<'div'> {
+  code?: string;
   functionBody?: string[];
   githubPage?: string;
   importExternal?: string;
@@ -33,6 +34,7 @@ interface CodePreviewState {
 export const CodePreview: FC<CodePreviewProps> = function ({
   children,
   className,
+  code = '',
   functionBody,
   githubPage,
   importExternal,
@@ -52,7 +54,10 @@ export const CodePreview: FC<CodePreviewProps> = function ({
   const childrenList = Children.toArray(children);
   const isFragment = childrenList.length > 1;
 
-  let code = childrenList.map((child) => reactElementToJSXString(child, reactElementToJSXStringOptions)).join('\n');
+  if (code === '') {
+    code = childrenList.map((child) => reactElementToJSXString(child, reactElementToJSXStringOptions)).join('\n');
+  }
+
   code = deleteJSXSpaces(code);
   code = deleteSVGs(code);
   code = replaceWebpackImportsOnFunctions(code);
