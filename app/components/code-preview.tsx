@@ -23,6 +23,7 @@ interface CodePreviewProps extends PropsWithChildren, ComponentProps<'div'> {
 
 interface CodePreviewState {
   isDarkMode?: boolean;
+  isExpanded?: boolean;
   isJustCopied?: boolean;
 }
 
@@ -33,6 +34,7 @@ export const CodePreview: FC<CodePreviewProps> = function ({
   title,
 }) {
   const [isDarkMode, setDarkMode] = useState(false);
+  const [isExpanded, setExpanded] = useState(false);
   const [isJustCopied, setJustCopied] = useState(false);
 
   const copyToClipboard = (toCopy: string) => {
@@ -46,10 +48,7 @@ export const CodePreview: FC<CodePreviewProps> = function ({
   let code = childrenList.map((child) => reactElementToJSXString(child, reactElementToJSXStringOptions)).join('\n');
   code = deleteJSXSpaces(code);
   code = deleteSVGs(code);
-  code = replaceWebpackImportsOnComponents(code);
-  code = replaceWebpackImportsOnFunctions(code);
-  code = `
-'use client';
+  code = `'use client';
 
 import { ${displayName ?? firstComponentDisplayName(code)} } from 'flowbite-react';
 
@@ -63,10 +62,7 @@ export default function ${title
     childrenList.length > 1 ? '\n      ' : '\n    ',
   )}${childrenList.length > 1 ? '\n    </>' : ''}
   )
-}
-
-
-`;
+}\n\n\n`;
 
   return (
     <div className="code-example mt-8">
@@ -101,15 +97,10 @@ export default function ${title
               <CopyToClipboardButton isJustCopied={isJustCopied} onClick={() => copyToClipboard(code)} />
             </div>
           </div>
-          <pre className="language-tsx">
+          <pre className={classNames('language-tsx', !isExpanded && 'max-h-72')}>
             <code>{code}</code>
           </pre>
-          <button
-            type="button"
-            className="absolute bottom-0 left-0 w-full border-t border-gray-200 bg-gray-100 px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-          >
-            Expand code
-          </button>
+          <CollapseExpandButton isExpanded={isExpanded} onClick={() => setExpanded(!isExpanded)} />
         </div>
       </div>
     </div>
@@ -173,6 +164,17 @@ const CopyToClipboardButton: FC<ComponentProps<'button'> & CodePreviewState> = (
   );
 };
 
+const CollapseExpandButton: FC<ComponentProps<'button'> & CodePreviewState> = ({ isExpanded, onClick }) => {
+  return (
+    <button
+      onClick={onClick}
+      className="absolute bottom-0 left-0 w-full border-t border-gray-200 bg-gray-100 px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+    >
+      {isExpanded ? 'Collapse code' : 'Expand code'}
+    </button>
+  );
+};
+
 const firstComponentDisplayName = (str: string) => {
   const firstClosingTag = str.indexOf('>');
   const firstSpace = str.indexOf(' ');
@@ -182,14 +184,6 @@ const firstComponentDisplayName = (str: string) => {
 
 const deleteJSXSpaces = (str: string) => {
   return str.replaceAll(/{' '}/g, '');
-};
-
-const replaceWebpackImportsOnFunctions = (str: string) => {
-  return str.replaceAll(/function (.*?) \(props\)(.*?);}/g, '<$1 />');
-};
-
-const replaceWebpackImportsOnComponents = (str: string) => {
-  return str.replaceAll(/(.*?)\(props\)=>\/\*__PURE__(.*)\}(?!.*\})/g, 'SeeSourceCodeForBrokenComponent');
 };
 
 const deleteSVGs = (str: string) => {
