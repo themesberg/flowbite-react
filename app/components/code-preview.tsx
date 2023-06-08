@@ -2,8 +2,9 @@
 
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
+import prismjs from 'prismjs';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { Children, useState } from 'react';
+import { Children, useEffect, useState } from 'react';
 import type { Options } from 'react-element-to-jsx-string';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { BsCheckLg, BsFillClipboardFill } from 'react-icons/bs';
@@ -65,14 +66,19 @@ export const CodePreview: FC<CodePreviewProps> = function ({
 
 import { ${importFlowbiteReact ?? firstComponentDisplayName(code)} } from 'flowbite-react';
 ${importExternal ? `${importExternal}\n` : ''}
-export default function ${titleCaseToUpperCamelCase(title)}() {
-${functionBody ? functionBody.map((line) => `  ${line}\n`).join('') : ''}
+export default function ${titleCaseToUpperCamelCase(title)}() {${
+    functionBody ? `${functionBody.map((line) => `\n  ${line}`).join('')}\n` : ''
+  }
   return (
     ${isFragment ? '<>\n      ' : ''}${code.replaceAll(/\n/g, isFragment ? '\n      ' : '\n    ')}${
     isFragment ? '\n    </>' : ''
   }
   )
 }\n\n\n`;
+
+  useEffect(() => {
+    prismjs.highlightAll();
+  }, [code]);
 
   return (
     <div className="code-example mt-8">
