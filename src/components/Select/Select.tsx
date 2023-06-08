@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../../';
 import { HelperText, useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -62,7 +62,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     const theme = mergeDeep(useTheme().theme.select, customTheme);
 
     return (
-      <div className={classNames(theme.base, className)}>
+      <div className={twMerge(theme.base, className)}>
         {addon && <span className={theme.addon}>{addon}</span>}
         <div className={theme.field.base}>
           {Icon && (
@@ -71,7 +71,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             </div>
           )}
           <select
-            className={classNames(
+            className={twMerge(
               theme.field.select.base,
               theme.field.select.colors[color],
               theme.field.select.withIcon[Icon ? 'on' : 'off'],

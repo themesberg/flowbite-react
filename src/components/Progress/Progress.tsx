@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useId } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteColors, FlowbiteSizes } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -64,11 +64,8 @@ export const Progress: FC<ProgressProps> = ({
           </div>
         )}
 
-        <div className={classNames(theme.base, theme.size[size], className)}>
-          <div
-            style={{ width: `${progress}%` }}
-            className={classNames(theme.bar, theme.color[color], theme.size[size])}
-          >
+        <div className={twMerge(theme.base, theme.size[size], className)}>
+          <div style={{ width: `${progress}%` }} className={twMerge(theme.bar, theme.color[color], theme.size[size])}>
             {textLabel && labelText && textLabelPosition === 'inside' && (
               <span data-testid="flowbite-progress-inner-text-label">{textLabel}</span>
             )}

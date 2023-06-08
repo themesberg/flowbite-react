@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -23,7 +23,7 @@ export const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({
   const theme = mergeDeep(useTheme().theme.avatar.groupCounter, customTheme);
 
   return (
-    <a href={href} className={classNames(theme.base, className)} {...props}>
+    <a href={href} className={twMerge(theme.base, className)} {...props}>
       +{total}
     </a>
   );

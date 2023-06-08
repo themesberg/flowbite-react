@@ -9,9 +9,9 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react';
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 import { getArrowPlacement, getMiddleware, getPlacement } from '../../helpers/floating';
 
 export interface FlowbiteFloatingTheme {
@@ -121,7 +121,7 @@ export const Floating: FC<FloatingProps> = ({
         ref={refs.setFloating}
         data-testid="flowbite-tooltip"
         {...getFloatingProps({
-          className: classNames(
+          className: twMerge(
             theme.base,
             animation && `${theme.animation} ${animation}`,
             !open && theme.hidden,
@@ -140,11 +140,12 @@ export const Floating: FC<FloatingProps> = ({
         <div className={theme.content}>{content}</div>
         {arrow && (
           <div
-            className={classNames(theme.arrow.base, {
-              [theme.arrow.style.dark]: style === 'dark',
-              [theme.arrow.style.light]: style === 'light',
-              [theme.arrow.style.auto]: style === 'auto',
-            })}
+            className={twMerge(
+              theme.arrow.base,
+              style === 'dark' && theme.arrow.style.dark,
+              style === 'light' && theme.arrow.style.light,
+              style === 'auto' && theme.arrow.style.auto,
+            )}
             data-testid="flowbite-tooltip-arrow"
             ref={arrowRef}
             style={{

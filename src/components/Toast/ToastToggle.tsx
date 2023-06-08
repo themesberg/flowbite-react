@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, MouseEvent } from 'react';
 import { HiX } from 'react-icons/hi';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -37,7 +37,7 @@ export const ToastToggle: FC<ToastToggleProps> = ({
       aria-label="Close"
       onClick={handleClick}
       type="button"
-      className={classNames(theme.base, className)}
+      className={twMerge(theme.base, className)}
       {...props}
     >
       <XIcon aria-hidden className={theme.icon} />

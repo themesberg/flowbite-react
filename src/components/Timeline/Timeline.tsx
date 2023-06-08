@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -40,7 +40,7 @@ const TimelineComponent: FC<TimelineProps> = ({
     <TimelineContext.Provider value={{ horizontal }}>
       <ol
         data-testid="timeline-component"
-        className={classNames(
+        className={twMerge(
           horizontal && theme.root.direction.horizontal,
           !horizontal && theme.root.direction.vertical,
           className,

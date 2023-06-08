@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -39,20 +39,20 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   return (
     <div
       data-testid="timeline-point"
-      className={classNames(horizontal && theme.horizontal, !horizontal && theme.vertical, className)}
+      className={twMerge(horizontal && theme.horizontal, !horizontal && theme.vertical, className)}
       {...props}
     >
       {children}
       {Icon ? (
-        <span className={classNames(theme.marker.icon.wrapper)}>
-          <Icon aria-hidden className={classNames(theme.marker.icon.base)} />
+        <span className={twMerge(theme.marker.icon.wrapper)}>
+          <Icon aria-hidden className={twMerge(theme.marker.icon.base)} />
         </span>
       ) : (
         <div
-          className={classNames(horizontal && theme.marker.base.horizontal, !horizontal && theme.marker.base.vertical)}
+          className={twMerge(horizontal && theme.marker.base.horizontal, !horizontal && theme.marker.base.vertical)}
         />
       )}
-      {horizontal && <div className={classNames(theme.line)} />}
+      {horizontal && <div className={twMerge(theme.line)} />}
     </div>
   );
 };

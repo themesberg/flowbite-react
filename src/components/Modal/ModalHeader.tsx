@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import { HiOutlineX } from 'react-icons/hi';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -32,16 +32,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   const { popup, onClose } = useModalContext();
 
   return (
-    <div
-      className={classNames(
-        theme.base,
-        {
-          [theme.popup]: popup,
-        },
-        className,
-      )}
-      {...props}
-    >
+    <div className={twMerge(theme.base, popup && theme.popup, className)} {...props}>
       <Component className={theme.title}>{children}</Component>
       <button aria-label="Close" className={theme.close.base} type="button" onClick={onClose}>
         <HiOutlineX aria-hidden className={theme.close.icon} />

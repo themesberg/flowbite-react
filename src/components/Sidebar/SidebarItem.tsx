@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from 'react';
 import { forwardRef, useId } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteColors } from '../../';
 import { Badge, Tooltip, useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -69,7 +69,7 @@ const Children: FC<PropsWithChildren<{ id: string }>> = ({ id, children }) => {
     <span
       data-testid="flowbite-sidebar-item-content"
       id={`flowbite-sidebar-item-${id}`}
-      className={classNames(theme.content.base)}
+      className={twMerge(theme.content.base)}
     >
       {children}
     </span>
@@ -101,7 +101,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
         <Component
           aria-labelledby={`flowbite-sidebar-item-${id}`}
           ref={ref}
-          className={classNames(
+          className={twMerge(
             theme.base,
             isActive && theme.active,
             !isCollapsed && isInsideCollapse && theme.collapsed?.insideCollapse,
@@ -113,7 +113,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
             <Icon
               aria-hidden
               data-testid="flowbite-sidebar-item-icon"
-              className={classNames(theme.icon?.base, isActive && theme.icon?.active)}
+              className={twMerge(theme.icon?.base, isActive && theme.icon?.active)}
             />
           )}
           {isCollapsed && !Icon && (

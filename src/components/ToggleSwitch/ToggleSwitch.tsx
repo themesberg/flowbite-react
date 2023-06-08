@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, KeyboardEvent, MouseEvent } from 'react';
 import { useId } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -69,12 +69,12 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
         role="switch"
         tabIndex={0}
         type="button"
-        className={classNames(theme.root.base, theme.root.active[disabled ? 'off' : 'on'], className)}
+        className={twMerge(theme.root.base, theme.root.active[disabled ? 'off' : 'on'], className)}
         {...props}
       >
         <div
           data-testid="flowbite-toggleswitch-toggle"
-          className={classNames(
+          className={twMerge(
             theme.toggle.base,
             theme.toggle.checked[checked ? 'on' : 'off'],
             !disabled && checked && theme.toggle.checked.color[color],

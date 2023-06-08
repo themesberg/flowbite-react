@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteStateColors } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -39,7 +39,7 @@ export const Label: FC<LabelProps> = ({
 
   return (
     <label
-      className={classNames(theme.root.base, theme.root.colors[color], disabled && theme.root.disabled, className)}
+      className={twMerge(theme.root.base, theme.root.colors[color], disabled && theme.root.disabled, className)}
       data-testid="flowbite-label"
       {...props}
     >

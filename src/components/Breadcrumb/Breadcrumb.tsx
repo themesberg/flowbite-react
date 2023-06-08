@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -29,7 +29,7 @@ const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
   const theme = mergeDeep(useTheme().theme.breadcrumb.root, customTheme);
 
   return (
-    <nav aria-label="Breadcrumb" className={classNames(theme.base, className)} {...props}>
+    <nav aria-label="Breadcrumb" className={twMerge(theme.base, className)} {...props}>
       <ol className={theme.list}>{children}</ol>
     </nav>
   );

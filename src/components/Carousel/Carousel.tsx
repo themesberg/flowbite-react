@@ -1,8 +1,8 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
 import { useTheme } from '../../';
 import { isClient } from '../../helpers/is-client';
@@ -74,7 +74,7 @@ export const Carousel: FC<CarouselProps> = ({
     () =>
       Children.map(children as ReactElement[], (child: ReactElement) =>
         cloneElement(child, {
-          className: classNames(theme.item.base, child.props.className),
+          className: twMerge(theme.item.base, child.props.className),
         }),
       ),
     [children, theme.item.base],
@@ -109,12 +109,9 @@ export const Carousel: FC<CarouselProps> = ({
   const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
 
   return (
-    <div className={classNames(theme.root.base, className)} data-testid="carousel" {...props}>
+    <div className={twMerge(theme.root.base, className)} data-testid="carousel" {...props}>
       <ScrollContainer
-        className={classNames(
-          theme.scrollContainer.base,
-          (isDeviceMobile || !isDragging) && theme.scrollContainer.snap,
-        )}
+        className={twMerge(theme.scrollContainer.base, (isDeviceMobile || !isDragging) && theme.scrollContainer.snap)}
         draggingClassName="cursor-grab"
         innerRef={carouselContainer}
         onEndScroll={handleDragging(false)}
@@ -137,10 +134,7 @@ export const Carousel: FC<CarouselProps> = ({
           {items?.map((_, index) => (
             <button
               key={index}
-              className={classNames(
-                theme.indicators.base,
-                theme.indicators.active[index === activeItem ? 'on' : 'off'],
-              )}
+              className={twMerge(theme.indicators.base, theme.indicators.active[index === activeItem ? 'on' : 'off'])}
               onClick={navigateTo(index)}
               data-testid="carousel-indicator"
               aria-label={`Slide ${index + 1}`}

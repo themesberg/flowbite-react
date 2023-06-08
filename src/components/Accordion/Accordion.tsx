@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -62,7 +62,7 @@ const AccordionComponent: FC<AccordionProps> = ({
 
   return (
     <div
-      className={classNames(theme.base, theme.flush[flush ? 'on' : 'off'], className)}
+      className={twMerge(theme.base, theme.flush[flush ? 'on' : 'off'], className)}
       data-testid="flowbite-accordion"
       {...props}
     >

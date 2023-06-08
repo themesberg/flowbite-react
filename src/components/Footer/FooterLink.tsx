@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -26,7 +26,7 @@ export const FooterLink: FC<FooterLinkProps> = ({
   const theme = mergeDeep(useTheme().theme.footer.groupLink.link, customTheme);
 
   return (
-    <li className={classNames(theme.base, className)}>
+    <li className={twMerge(theme.base, className)}>
       <Component href={href} className={theme.href} {...props}>
         {children}
       </Component>

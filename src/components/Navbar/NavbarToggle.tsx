@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
 import { GoThreeBars } from 'react-icons/go';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -33,7 +33,7 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({
     <button
       data-testid="flowbite-navbar-toggle"
       onClick={handleClick}
-      className={classNames(theme.base, className)}
+      className={twMerge(theme.base, className)}
       {...props}
     >
       <span className="sr-only">Open main menu</span>

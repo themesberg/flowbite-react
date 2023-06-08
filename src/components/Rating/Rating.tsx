@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -27,7 +27,7 @@ const RatingComponent: FC<RatingProps> = ({ children, className, size = 'sm', th
 
   return (
     <RatingContext.Provider value={{ size }}>
-      <div className={classNames(theme.root.base, className)} {...props}>
+      <div className={twMerge(theme.root.base, className)} {...props}>
         {children}
       </div>
     </RatingContext.Provider>

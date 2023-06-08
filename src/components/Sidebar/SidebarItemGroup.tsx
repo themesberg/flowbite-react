@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import { useTheme } from '../../';
 import { SidebarItemContext } from './SidebarItemContext';
 
@@ -9,7 +9,7 @@ export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({ children, classNam
   const theme = useTheme().theme.sidebar.itemGroup;
 
   return (
-    <ul data-testid="flowbite-sidebar-item-group" className={classNames(theme, className)} {...props}>
+    <ul data-testid="flowbite-sidebar-item-group" className={twMerge(theme, className)} {...props}>
       <SidebarItemContext.Provider value={{ isInsideCollapse: false }}>{children}</SidebarItemContext.Provider>
     </ul>
   );

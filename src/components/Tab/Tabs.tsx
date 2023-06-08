@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, ReactElement } from 'react';
 import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -114,11 +114,11 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
     }));
 
     return (
-      <div className={classNames(theme.base, className)}>
+      <div className={twMerge(theme.base, className)}>
         <div
           aria-label="Tabs"
           role="tablist"
-          className={classNames(theme.tablist.base, theme.tablist.styles[style], className)}
+          className={twMerge(theme.tablist.base, theme.tablist.styles[style], className)}
           {...props}
         >
           {tabs.map((tab, index) => (
@@ -127,13 +127,11 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
               type="button"
               aria-controls={`${id}-tabpanel-${index}`}
               aria-selected={index === activeTab}
-              className={classNames(
+              className={twMerge(
                 theme.tablist.tabitem.base,
-                { ...tabItemStyle },
-                {
-                  [tabItemStyle.active.on]: index === activeTab,
-                  [tabItemStyle.active.off]: index !== activeTab && !tab.disabled,
-                },
+                tabItemStyle.base,
+                index === activeTab && tabItemStyle.active.on,
+                index !== activeTab && !tab.disabled && tabItemStyle.active.off,
               )}
               disabled={tab.disabled}
               id={`${id}-tab-${index}`}

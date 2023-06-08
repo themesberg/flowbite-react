@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import twMerge from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useId } from 'react';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
@@ -36,7 +36,7 @@ const SidebarLogo: FC<SidebarLogoProps> = ({
     <a
       aria-labelledby={`flowbite-sidebar-logo-${id}`}
       href={href}
-      className={classNames(theme.base, className)}
+      className={twMerge(theme.base, className)}
       {...props}
     >
       <img alt={imgAlt} src={img} className={theme.img} />

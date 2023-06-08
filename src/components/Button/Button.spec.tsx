@@ -126,7 +126,7 @@ describe('Components / Button', () => {
       const theme = {
         button: {
           color: {
-            primary: 'font-extralight',
+            primary: 'bg-red-300',
           },
         },
       };
@@ -137,13 +137,13 @@ describe('Components / Button', () => {
         </Flowbite>,
       );
 
-      expect(button()).toHaveClass('font-extralight');
+      expect(button()).toHaveClass('bg-red-300');
     });
 
     it('should use `disabled` classes', () => {
       const theme = {
         button: {
-          disabled: 'font-extralight',
+          disabled: 'opacity-10',
         },
       };
 
@@ -153,14 +153,15 @@ describe('Components / Button', () => {
         </Flowbite>,
       );
 
-      expect(button()).toHaveClass('font-extralight');
+      expect(button()).toHaveClass('opacity-10');
     });
 
     it('should use `gradient` classes', () => {
       const theme = {
         button: {
           gradient: {
-            yellowToPink: 'font-extralight',
+            // FIXME Overwrite class from other props is a problem
+            yellowToPink: '!font-extralight',
           },
         },
       };
@@ -171,14 +172,15 @@ describe('Components / Button', () => {
         </Flowbite>,
       );
 
-      expect(button()).toHaveClass('font-extralight');
+      expect(button()).toHaveClass('!font-extralight');
     });
 
     it('should use `gradientDuoTone` classes', () => {
       const theme = {
         button: {
           gradientDuoTone: {
-            yellowToPink: 'font-extralight',
+            // FIXME Overwrite class from other props is a problem
+            yellowToPink: '!font-extralight',
           },
         },
       };
@@ -189,7 +191,7 @@ describe('Components / Button', () => {
         </Flowbite>,
       );
 
-      expect(button()).toHaveClass('font-extralight');
+      expect(button()).toHaveClass('!font-extralight');
     });
 
     it('should use `inner` classes', () => {

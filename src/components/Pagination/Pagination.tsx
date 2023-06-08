@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -77,7 +77,7 @@ const PaginationComponent: FC<PaginationProps> = ({
   };
 
   return (
-    <nav className={classNames(theme.base, className)} {...props}>
+    <nav className={twMerge(theme.base, className)} {...props}>
       {layout === 'table' && (
         <div className={theme.layout.table.base}>
           Showing <span className={theme.layout.table.span}>{firstPage}</span> to&nbsp;
@@ -88,7 +88,7 @@ const PaginationComponent: FC<PaginationProps> = ({
       <ul className={theme.pages.base}>
         <li>
           <PaginationNavigation
-            className={classNames(theme.pages.previous.base, showIcon && theme.pages.showIcon)}
+            className={twMerge(theme.pages.previous.base, showIcon && theme.pages.showIcon)}
             onClick={goToPreviousPage}
             disabled={currentPage === 1}
           >
@@ -100,9 +100,7 @@ const PaginationComponent: FC<PaginationProps> = ({
           range(firstPage, lastPage).map((page: number) => (
             <li aria-current={page === currentPage ? 'page' : undefined} key={page}>
               {renderPaginationButton({
-                className: classNames(theme.pages.selector.base, {
-                  [theme.pages.selector.active]: currentPage === page,
-                }),
+                className: twMerge(theme.pages.selector.base, currentPage === page && theme.pages.selector.active),
                 active: page === currentPage,
                 onClick: () => onPageChange(page),
                 children: page,
@@ -111,7 +109,7 @@ const PaginationComponent: FC<PaginationProps> = ({
           ))}
         <li>
           <PaginationNavigation
-            className={classNames(theme.pages.next.base, showIcon && theme.pages.showIcon)}
+            className={twMerge(theme.pages.next.base, showIcon && theme.pages.showIcon)}
             onClick={goToNextPage}
             disabled={currentPage === totalPages}
           >
