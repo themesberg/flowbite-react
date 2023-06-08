@@ -21,7 +21,11 @@ Use this example to show a list of navigation menu items by adding `<Sidebar.Ite
 
 You can also add a text label as a badge by using the `label` prop from React and the `labelColor` to set the color of the label background.
 
-<CodePreview title="Default sidebar" className="w-fit">
+<CodePreview
+  importExternal="import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';"
+  title="Default sidebar"
+  className="w-fit"
+>
   <Sidebar aria-label="Default sidebar example">
     <Sidebar.Items>
       <Sidebar.ItemGroup>
@@ -55,7 +59,11 @@ You can also add a text label as a badge by using the `label` prop from React an
 
 Use this example to learn how to stack multiple sidebar menu items inside one dropdown menu by using the `<Sidebar.Collapse>` component.
 
-<CodePreview title="Multi-level dropdown" className="w-fit">
+<CodePreview
+  importExternal="import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';"
+  title="Multi-level dropdown"
+  className="w-fit"
+>
   <Sidebar aria-label="Sidebar with multi-level dropdown example">
     <Sidebar.Items>
       <Sidebar.ItemGroup>
@@ -92,7 +100,11 @@ Use this example to learn how to stack multiple sidebar menu items inside one dr
 
 Use this example to separate content inside of the sidebar using a horizontal line.
 
-<CodePreview title="Content separator" className="w-fit">
+<CodePreview
+  importExternal="import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';"
+  title="Content separator"
+  className="w-fit"
+>
   <Sidebar aria-label="Sidebar with content separator example">
     <Sidebar.Items>
       <Sidebar.ItemGroup>
@@ -137,7 +149,12 @@ Use this example to separate content inside of the sidebar using a horizontal li
 
 This example can be used to show a call to action button inside the sidebar next to the menu items.
 
-<CodePreview importFlowbiteReact="Badge, Button, Sidebar" title="CTA button" className="w-fit">
+<CodePreview
+  importExternal="import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';"
+  importFlowbiteReact="Badge, Sidebar"
+  title="CTA button"
+  className="w-fit"
+>
   <Sidebar aria-label="Sidebar with call to action button example">
     <Sidebar.Items>
       <Sidebar.ItemGroup>
@@ -187,10 +204,10 @@ This example can be used to show a call to action button inside the sidebar next
           </svg>
         </button>
       </div>
-      <p className="mb-3 text-sm text-cyan-900 dark:text-cyan-400">
+      <div className="mb-3 text-sm text-cyan-900 dark:text-cyan-400">
         Preview the new Flowbite dashboard navigation! You can turn the new navigation off for a limited time in your
         profile.
-      </p>
+      </div>
       <a
         className="text-sm text-cyan-900 underline hover:text-cyan-800 dark:text-cyan-400 dark:hover:text-cyan-300"
         href="#"
@@ -205,7 +222,11 @@ This example can be used to show a call to action button inside the sidebar next
 
 Feature the branded logo of your company on the top side of the sidebar using this example.
 
-<CodePreview title="Logo branding" className="w-fit">
+<CodePreview
+  importExternal="import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';"
+  title="Logo branding"
+  className="w-fit"
+>
   <Sidebar aria-label="Sidebar with logo branding example">
     <Sidebar.Logo href="#" img="/favicon.svg" imgAlt="Flowbite logo">
       Flowbite

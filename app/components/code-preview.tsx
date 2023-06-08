@@ -9,14 +9,14 @@ import { BsCheckLg, BsFillClipboardFill } from 'react-icons/bs';
 import { HiMoon, HiSun } from 'react-icons/hi';
 
 const reactElementToJSXStringOptions: Options = {
-  filterProps: ['as', 'key'],
-  functionValue: (fn) => fn.name,
+  filterProps: ['key', 'ref'],
   showFunctions: true,
   sortProps: true,
 };
 
 interface CodePreviewProps extends PropsWithChildren, ComponentProps<'div'> {
   code?: string;
+  importExternal?: string;
   importFlowbiteReact?: string;
   title: string;
 }
@@ -30,7 +30,8 @@ interface CodePreviewState {
 export const CodePreview: FC<CodePreviewProps> = function ({
   children,
   className,
-  importFlowbiteReact: displayName,
+  importExternal = '',
+  importFlowbiteReact,
   title,
 }) {
   const [isDarkMode, setDarkMode] = useState(false);
@@ -44,23 +45,21 @@ export const CodePreview: FC<CodePreviewProps> = function ({
   };
 
   const childrenList = Children.toArray(children);
+  const isFragment = childrenList.length > 1;
 
   let code = childrenList.map((child) => reactElementToJSXString(child, reactElementToJSXStringOptions)).join('\n');
   code = deleteJSXSpaces(code);
   code = deleteSVGs(code);
+  code = replaceWebpackImportsOnFunctions(code);
   code = `'use client';
 
-import { ${displayName ?? firstComponentDisplayName(code)} } from 'flowbite-react';
-
-export default function ${title
-    .replaceAll(/(?:^\w|[A-Z]|\b\w)/g, (word) => word.toUpperCase())
-    .replaceAll(/\s+/g, '')
-    .replaceAll(/-/g, '')}() {
+import { ${importFlowbiteReact ?? firstComponentDisplayName(code)} } from 'flowbite-react';
+${importExternal === '' ? '' : `${importExternal}\n`}
+export default function ${titleCaseToUpperCamelCase(title)}() {
   return (
-    ${childrenList.length > 1 ? '<>\n      ' : ''}${code.replaceAll(
-    /\n/g,
-    childrenList.length > 1 ? '\n      ' : '\n    ',
-  )}${childrenList.length > 1 ? '\n    </>' : ''}
+    ${isFragment ? '<>\n      ' : ''}${code.replaceAll(/\n/g, isFragment ? '\n      ' : '\n    ')}${
+    isFragment ? '\n    </>' : ''
+  }
   )
 }\n\n\n`;
 
@@ -188,4 +187,15 @@ const deleteJSXSpaces = (str: string) => {
 
 const deleteSVGs = (str: string) => {
   return str.replaceAll(/<svg[\s\S]*?<\/svg>/g, '<SeeSourceCodeForSVG />');
+};
+
+const replaceWebpackImportsOnFunctions = (str: string) => {
+  return str.replaceAll(/function (.*?) \((.*)\)(.*)}/g, '$1}');
+};
+
+const titleCaseToUpperCamelCase = (str: string) => {
+  return str
+    .replaceAll(/(?:^\w|[A-Z]|\b\w)/g, (word) => word.toUpperCase())
+    .replaceAll(/\s+/g, '')
+    .replaceAll(/-/g, '');
 };

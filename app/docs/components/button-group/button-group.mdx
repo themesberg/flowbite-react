@@ -30,7 +30,11 @@ Use this example of the `<Button.Group>` component by adding the `Button` compon
 
 Import one of the icons from the `react-icons` library and add it as a child element to the `<Button>` component to create multiple buttons with icons grouped together.
 
-<CodePreview importFlowbiteReact="Button" title="With icons">
+<CodePreview
+  importExternal="import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';"
+  importFlowbiteReact="Button"
+  title="With icons"
+>
   <Button.Group>
     <Button color="gray">
       <HiUserCircle className="mr-3 h-4 w-4" />
@@ -95,7 +99,12 @@ Use the `color` prop to change the color of the buttons. You can also use the `g
 
 Here's an example on how you can use both the outline and icon props together.
 
-<CodePreview importFlowbiteReact="Button" title="Outline with icons" className="flex flex-wrap gap-2">
+<CodePreview
+  importExternal="import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';"
+  importFlowbiteReact="Button"
+  title="Outline with icons"
+  className="flex flex-wrap gap-2"
+>
   <Button.Group outline>
     <Button color="gray">
       <HiUserCircle className="mr-3 h-4 w-4" />

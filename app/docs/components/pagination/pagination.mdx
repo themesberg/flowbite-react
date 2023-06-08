@@ -55,7 +55,7 @@ Show the control buttons with icons by passing both the `layout="navigation"` an
 
 Use this example show table data navigation by using the `layout="table"` prop from React.
 
-<CodePreview title="Table data navigation">
+<CodePreview importFlowbiteReact="Pagination" title="Table data navigation">
   <div className="flex items-center justify-center text-center">
     <Pagination currentPage={props.currentPage} layout="table" onPageChange={props.onPageChange} totalPages={1000} />
   </div>
@@ -65,7 +65,7 @@ Use this example show table data navigation by using the `layout="table"` prop f
 
 Show icons for the next and previous control buttons for table navigation by passing the `showIcons` prop.
 
-<CodePreview title="Table data navigation with icons">
+<CodePreview importFlowbiteReact="Pagination" title="Table data navigation with icons">
   <div className="flex items-center justify-center text-center">
     <Pagination
       currentPage={props.currentPage}
@@ -81,7 +81,7 @@ Show icons for the next and previous control buttons for table navigation by pas
 
 Customize the text for the next and previous buttons by passing the `previousLabel` and `nextLabel` props.
 
-<CodePreview title="Change 'Previous' and 'Next' text">
+<CodePreview importFlowbiteReact="Pagination" title="Control button text">
   <div className="flex items-center justify-center text-center">
     <Pagination
       currentPage={props.currentPage}
