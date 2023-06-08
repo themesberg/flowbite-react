@@ -18,6 +18,16 @@ describe('Components / Badge', () => {
     });
   });
 
+  describe('Classname', () => {
+    it('should merge not overwrite', () => {
+      render(<Badge className="bg-red-500">A badge with custom background</Badge>);
+
+      expect(badge()).toHaveClass(
+        'bg-red-500 text-cyan-800 dark:bg-cyan-200 dark:text-cyan-800 group-hover:bg-cyan-200 dark:group-hover:bg-cyan-300',
+      );
+    });
+  });
+
   describe('Theme', () => {
     it('should use custom colors', () => {
       const theme = {
