@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -23,7 +23,7 @@ const ListGroupComponent: FC<ListGroupProps> = ({ children, className, theme: cu
   const theme = mergeDeep(useTheme().theme.listGroup, customTheme);
 
   return (
-    <ul className={classNames(theme.root.base, className)} {...props}>
+    <ul className={twMerge(theme.root.base, className)} {...props}>
       {children}
     </ul>
   );

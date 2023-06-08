@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, ReactNode } from 'react';
 import { forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors } from '../../';
 import { HelperText, useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -30,7 +30,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       <>
         <textarea
           ref={ref}
-          className={classNames(theme.base, theme.colors[color], theme.withShadow[shadow ? 'on' : 'off'], className)}
+          className={twMerge(theme.base, theme.colors[color], theme.withShadow[shadow ? 'on' : 'off'], className)}
           {...props}
         />
         {helperText && <HelperText color={color}>{helperText}</HelperText>}

@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -22,7 +22,7 @@ export const NavbarCollapse: FC<NavbarCollapseProps> = ({ children, className, t
   return (
     <div
       data-testid="flowbite-navbar-collapse"
-      className={classNames(theme.base, theme.hidden[!isOpen ? 'on' : 'off'], className)}
+      className={twMerge(theme.base, theme.hidden[!isOpen ? 'on' : 'off'], className)}
       {...props}
     >
       <ul className={theme.list}>{children}</ul>

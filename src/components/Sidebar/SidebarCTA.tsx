@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteColors } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -37,7 +37,7 @@ export const SidebarCTA: FC<SidebarCTAProps> = ({
     <div
       data-testid="sidebar-cta"
       hidden={isCollapsed}
-      className={classNames(theme.base, theme.color[color], className)}
+      className={twMerge(theme.base, theme.color[color], className)}
       {...props}
     >
       {children}

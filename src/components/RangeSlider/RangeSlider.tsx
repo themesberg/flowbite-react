@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteTextInputSizes } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -33,12 +33,12 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
 
     return (
       <>
-        <div data-testid="flowbite-range-slider" className={classNames(theme.root.base, className)}>
+        <div data-testid="flowbite-range-slider" className={twMerge(theme.root.base, className)}>
           <div className={theme.field.base}>
             <input
               ref={ref}
               type="range"
-              className={classNames(theme.field.input.base, theme.field.input.sizes[sizing])}
+              className={twMerge(theme.field.input.base, theme.field.input.sizes[sizing])}
               {...props}
             />
           </div>

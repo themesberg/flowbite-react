@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, ReactNode } from 'react';
 import { forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteTextInputColors, FlowbiteTextInputSizes } from '../../';
 import { HelperText, useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -38,10 +38,10 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 
     return (
       <>
-        <div className={classNames(theme.root.base, className)}>
+        <div className={twMerge(theme.root.base, className)}>
           <div className={theme.field.base}>
             <input
-              className={classNames(
+              className={twMerge(
                 theme.field.input.base,
                 theme.field.input.colors[color],
                 theme.field.input.sizes[sizing],

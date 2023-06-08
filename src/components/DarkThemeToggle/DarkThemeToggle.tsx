@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
 import { useContext } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { ThemeContext } from '../../components/Flowbite/ThemeContext';
@@ -31,7 +31,7 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({ className, theme: cu
       data-testid="dark-theme-toggle"
       onClick={toggleMode}
       type="button"
-      className={classNames(theme.root.base, className)}
+      className={twMerge(theme.root.base, className)}
       {...props}
     >
       {mode === 'dark' ? (

@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { HiX } from 'react-icons/hi';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteColors } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -47,7 +47,7 @@ export const Alert: FC<AlertProps> = ({
 
   return (
     <div
-      className={classNames(
+      className={twMerge(
         theme.base,
         theme.color[color],
         rounded && theme.rounded,
@@ -63,7 +63,7 @@ export const Alert: FC<AlertProps> = ({
         {typeof onDismiss === 'function' && (
           <button
             aria-label="Dismiss"
-            className={classNames(theme.closeButton.base, theme.closeButton.color[color])}
+            className={twMerge(theme.closeButton.base, theme.closeButton.color[color])}
             onClick={onDismiss}
             type="button"
           >

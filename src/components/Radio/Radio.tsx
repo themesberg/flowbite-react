@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -21,7 +21,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ({ className, theme: customTheme = {}, ...props }, ref) => {
     const theme = mergeDeep(useTheme().theme.radio, customTheme);
 
-    return <input ref={ref} type="radio" className={classNames(theme.root.base, className)} {...props} />;
+    return <input ref={ref} type="radio" className={twMerge(theme.root.base, className)} {...props} />;
   },
 );
 

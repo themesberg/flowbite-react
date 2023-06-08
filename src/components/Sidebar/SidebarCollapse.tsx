@@ -1,7 +1,7 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useEffect, useId, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
 import { Tooltip, useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -66,14 +66,14 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
         onClick={() => setOpen(!isOpen)}
         title={label}
         type="button"
-        className={classNames(theme.button, className)}
+        className={twMerge(theme.button, className)}
         {...props}
       >
         {Icon && (
           <Icon
             aria-hidden
             data-testid="flowbite-sidebar-collapse-icon"
-            className={classNames(theme.icon.base, theme.icon.open[isOpen ? 'on' : 'off'])}
+            className={twMerge(theme.icon.base, theme.icon.open[isOpen ? 'on' : 'off'])}
           />
         )}
         {isCollapsed ? (

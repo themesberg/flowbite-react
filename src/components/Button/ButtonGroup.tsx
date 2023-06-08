@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -48,7 +48,7 @@ const ButtonGroup: FC<ButtonGroupProps> = ({
   const theme = mergeDeep(useTheme().theme.buttonGroup, customTheme);
 
   return (
-    <div className={classNames(theme.base, className)} role="group" {...props}>
+    <div className={twMerge(theme.base, className)} role="group" {...props}>
       {items}
     </div>
   );

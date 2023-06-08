@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -46,11 +46,11 @@ const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300, t
     <ToastContext.Provider value={{ duration, isClosed, isRemoved, setIsClosed, setIsRemoved }}>
       <div
         data-testid="flowbite-toast"
-        className={classNames(
+        className={twMerge(
           theme.root.base,
           durationClasses[duration],
-          { [theme.root.closed]: isClosed },
-          { [theme.root.removed]: isRemoved },
+          isClosed && theme.root.closed,
+          isRemoved && theme.root.removed,
           className,
         )}
         {...props}

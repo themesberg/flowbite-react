@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -34,7 +34,7 @@ export const FooterIcon: FC<FooterIconProps & ComponentProps<'a'> & ComponentPro
           aria-label={ariaLabel}
           data-testid="flowbite-footer-icon"
           href={href}
-          className={classNames(theme.base, className)}
+          className={twMerge(theme.base, className)}
           {...props}
         >
           <Icon className={theme.size} />

@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, ReactEventHandler, ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -35,12 +35,7 @@ export const PaginationButton: FC<PaginationButtonProps> = ({
   return (
     <button
       type="button"
-      className={classNames(
-        {
-          [theme.pages.selector.active]: active,
-        },
-        className,
-      )}
+      className={twMerge(active && theme.pages.selector.active, className)}
       onClick={onClick}
       {...props}
     >
@@ -64,12 +59,7 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   return (
     <button
       type="button"
-      className={classNames(
-        {
-          [theme.pages.selector.disabled]: disabled,
-        },
-        className,
-      )}
+      className={twMerge(disabled && theme.pages.selector.disabled, className)}
       disabled={disabled}
       onClick={onClick}
       {...props}

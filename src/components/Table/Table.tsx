@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -42,10 +42,10 @@ const TableComponent: FC<TableProps> = ({
   const theme = mergeDeep(useTheme().theme.table, customTheme);
 
   return (
-    <div data-testid="table-element" className={classNames(theme.root.wrapper)}>
+    <div data-testid="table-element" className={twMerge(theme.root.wrapper)}>
       <TableContext.Provider value={{ striped, hoverable }}>
-        <div className={classNames(theme.root.shadow, className)}></div>
-        <table className={classNames(theme.root.base, className)} {...props}>
+        <div className={twMerge(theme.root.shadow, className)}></div>
+        <table className={twMerge(theme.root.base, className)} {...props}>
           {children}
         </table>
       </TableContext.Provider>

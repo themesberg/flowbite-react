@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -34,7 +34,7 @@ export const FooterBrand: FC<FooterBrandProps & ComponentProps<'a'> & ComponentP
   return (
     <div>
       {href ? (
-        <a data-testid="flowbite-footer-brand" href={href} className={classNames(theme.base, className)} {...props}>
+        <a data-testid="flowbite-footer-brand" href={href} className={twMerge(theme.base, className)} {...props}>
           <img alt={alt} src={src} className={theme.img} />
           <span data-testid="flowbite-footer-brand-span" className={theme.span}>
             {name}
@@ -46,7 +46,7 @@ export const FooterBrand: FC<FooterBrandProps & ComponentProps<'a'> & ComponentP
           alt={alt}
           data-testid="flowbite-footer-brand"
           src={src}
-          className={classNames(theme.img, className)}
+          className={twMerge(theme.img, className)}
           {...props}
         />
       )}

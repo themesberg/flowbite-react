@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { forwardRef, type ComponentProps, type ReactNode } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type {
   DeepPartial,
   FlowbiteBoolean,
@@ -116,7 +116,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
         href={href}
         type={isLink ? undefined : 'button'}
         ref={ref as never}
-        className={classNames(
+        className={twMerge(
           disabled && theme.disabled,
           !gradientDuoTone && !gradientMonochrome && theme.color[color],
           gradientDuoTone && !gradientMonochrome && theme.gradientDuoTone[gradientDuoTone],
@@ -131,7 +131,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
         {...theirProps}
       >
         <span
-          className={classNames(
+          className={twMerge(
             theme.inner.base,
             theme.inner.position[positionInGroup],
             theme.outline[outline ? 'on' : 'off'],
@@ -142,11 +142,11 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
           )}
         >
           <>
-            {isProcessing && <span className={theme.spinnerSlot}>{SpinnerComponent}</span>}
+            {isProcessing && <span className={twMerge(theme.spinnerSlot)}>{SpinnerComponent}</span>}
             {typeof children !== 'undefined' ? (
               children
             ) : (
-              <span data-testid="flowbite-button-label" className={theme.label}>
+              <span data-testid="flowbite-button-label" className={twMerge(theme.label)}>
                 {isProcessing ? processingLabel : label}
               </span>
             )}

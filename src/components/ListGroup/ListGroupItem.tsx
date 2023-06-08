@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -39,12 +39,12 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<'a'> & Compon
   const Component = isLink ? 'a' : 'button';
 
   return (
-    <li className={classNames(theme.base, className)}>
+    <li className={twMerge(theme.base, className)}>
       <Component
         href={href}
         onClick={onClick}
         type={isLink ? undefined : 'button'}
-        className={classNames(
+        className={twMerge(
           theme.link.active[isActive ? 'on' : 'off'],
           theme.link.base,
           theme.link.href[isLink ? 'on' : 'off'],

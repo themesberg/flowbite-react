@@ -215,8 +215,9 @@ describe('Components / Accordion', () => {
                 on: 'text-3xl',
               },
               open: {
-                off: 'text-gray-400',
-                on: 'text-gray-600',
+                // FIXME Overwrite class from other props is a problem
+                off: '!text-gray-400',
+                on: '!text-gray-600',
               },
             },
           },
@@ -244,10 +245,10 @@ describe('Components / Accordion', () => {
           expect(title).toHaveClass('text-3xl');
         });
         openTitles.forEach((title) => {
-          expect(title).toHaveClass('text-gray-600');
+          expect(title).toHaveClass('!text-gray-600');
         });
         closedTitles.forEach((title) => {
-          expect(title).toHaveClass('text-gray-400');
+          expect(title).toHaveClass('!text-gray-400');
         });
       });
     });

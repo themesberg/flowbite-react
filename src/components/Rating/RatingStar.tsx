@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
 import { HiStar } from 'react-icons/hi';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteSizes } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -35,7 +35,7 @@ export const RatingStar: FC<RatingStarProps> = ({
   return (
     <Icon
       data-testid="flowbite-rating-star"
-      className={classNames(theme.sizes[size], theme[filled ? 'filled' : 'empty'], className)}
+      className={twMerge(theme.sizes[size], theme[filled ? 'filled' : 'empty'], className)}
       {...props}
     />
   );

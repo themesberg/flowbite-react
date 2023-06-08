@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -48,7 +48,7 @@ export const Card: FC<CardProps> = ({
     <Component
       data-testid="flowbite-card"
       href={href}
-      className={classNames(
+      className={twMerge(
         theme.root.base,
         theme.root.horizontal[horizontal ? 'on' : 'off'],
         href && theme.root.href,
@@ -60,7 +60,7 @@ export const Card: FC<CardProps> = ({
         <img
           alt={imgAlt ?? ''}
           src={imgSrc}
-          className={classNames(theme.img.base, theme.img.horizontal[horizontal ? 'on' : 'off'])}
+          className={twMerge(theme.img.base, theme.img.horizontal[horizontal ? 'on' : 'off'])}
         />
       )}
       <div className={theme.root.children}>{children}</div>
