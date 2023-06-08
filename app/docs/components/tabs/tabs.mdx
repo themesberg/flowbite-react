@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
 import { CodePreview } from '~/app/components/code-preview';
@@ -23,7 +24,13 @@ You can also choose to add the `active` prop to the `<Tabs.Item>` component to m
 
 Additionally, if you pass the `disabled` prop to the `<Tabs.Item>` component, it will be disabled and you won't be able to click on it.
 
-<CodePreview importFlowbiteReact="Tabs" title="Default tabs">
+<CodePreview
+  githubPage="Tab/Tabs"
+  importExternal="import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
+import { MdDashboard } from 'react-icons/md';"
+  importFlowbiteReact="Tabs"
+  title="Default tabs"
+>
   <Tabs.Group aria-label="Default tabs" style="default">
     <Tabs.Item active title="Profile" icon={HiUserCircle}>
       This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
@@ -55,7 +62,13 @@ Additionally, if you pass the `disabled` prop to the `<Tabs.Item>` component, it
 
 Pass the `style="underline"` prop to the `<Tabs.Group>` component to make the tabs have an underline style.
 
-<CodePreview importFlowbiteReact="Tabs" title="Tabs with underline">
+<CodePreview
+  githubPage="Tab/Tabs"
+  importExternal="import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
+import { MdDashboard } from 'react-icons/md';"
+  importFlowbiteReact="Tabs"
+  title="Tabs with underline"
+>
   <Tabs.Group aria-label="Tabs with underline" style="underline">
     <Tabs.Item active title="Profile" icon={HiUserCircle}>
       This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
@@ -88,7 +101,8 @@ Pass the `style="underline"` prop to the `<Tabs.Group>` component to make the ta
 Pass the `icon` prop to the `<Tabs.Item>` component to add an icon to the tab item.
 
 <CodePreview
-  importExternal="import { HiAdjustments, HiClipboardList } from 'react-icons/hi';
+  githubPage="Tab/Tabs"
+  importExternal="import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';"
   importFlowbiteReact="Tabs"
   title="Tabs with icons"
@@ -124,7 +138,7 @@ import { MdDashboard } from 'react-icons/md';"
 
 Add the `style="pills"` prop to the `<Tabs.Group>` component to make the tabs have a pills style with rounded corners as an alternative style.
 
-<CodePreview importFlowbiteReact="Tabs" title="Pills tabs">
+<CodePreview githubPage="Tab/Tabs" importFlowbiteReact="Tabs" title="Pills tabs">
   <Tabs.Group aria-label="Pills" style="pills">
     <Tabs.Item active title="Tab 1">
       <p className="text-sm text-gray-500 dark:text-gray-400">Content 1</p>
@@ -149,7 +163,8 @@ Add the `style="pills"` prop to the `<Tabs.Group>` component to make the tabs ha
 Make the tabs span the full width of their container, pass the `style="fullWidth"` prop to the `<Tabs.Group>`
 
 <CodePreview
-  importExternal="import { HiAdjustments, HiClipboardList } from 'react-icons/hi';
+  githubPage="Tab/Tabs"
+  importExternal="import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';"
   importFlowbiteReact="Tabs"
   title="Full width tabs"
@@ -186,9 +201,15 @@ import { MdDashboard } from 'react-icons/md';"
 Here's an example on how you can set the activate tab programatically using the React state variables and functions of `activateTab` and `setActivateTab`.
 
 <CodePreview
-  importExternal="import { HiAdjustments, HiClipboardList } from 'react-icons/hi';
+  githubPage="Tab/Tabs"
+  functionBody={[
+    'const [activeTab, setActiveTab] = useState<number>(0);',
+    'const tabsRef = useRef<TabsRef>(null);',
+    'const props = { setActiveTab, tabsRef };',
+  ]}
+  importExternal="import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';"
-  importFlowbiteReact="Button, Tabs"
+  importFlowbiteReact="Button, Tabs, type TabsRef"
   title="Set active tab programmatically"
 >
   <Tabs.Group
