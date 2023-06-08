@@ -50,6 +50,7 @@ export interface CarouselProps extends PropsWithChildren<ComponentProps<'div'>> 
   slide?: boolean;
   slideInterval?: number;
   theme?: DeepPartial<FlowbiteCarouselTheme>;
+  onSlide?: (activeIndex: number) => void;
 }
 
 export const Carousel: FC<CarouselProps> = ({
@@ -61,6 +62,7 @@ export const Carousel: FC<CarouselProps> = ({
   slideInterval,
   className,
   theme: customTheme = {},
+  onSlide = () => {},
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.carousel, customTheme);
@@ -108,6 +110,9 @@ export const Carousel: FC<CarouselProps> = ({
 
   const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
 
+  useEffect(() => {
+    !!onSlide && onSlide(activeItem);
+  }, [activeItem]);
   return (
     <div className={classNames(theme.root.base, className)} data-testid="carousel" {...props}>
       <ScrollContainer
