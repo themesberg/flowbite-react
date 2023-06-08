@@ -1,5 +1,6 @@
 import mdx from '@next/mdx';
 import slug from 'rehype-slug';
+import TerserPlugin from 'terser-webpack-plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -11,7 +12,15 @@ const nextConfig = {
   reactStrictMode: true,
   webpack(config) {
     // Retain React FC display names and anonymous function bodies for docs
-    config.optimization.minimize = false;
+    config.optimization.minimizer = [
+      new TerserPlugin({
+        terserOptions: {
+          keep_classnames: true,
+          keep_fnames: true,
+          mangle: false,
+        },
+      }),
+    ];
     return config;
   },
   async redirects() {
