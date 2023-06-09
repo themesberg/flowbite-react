@@ -118,7 +118,6 @@ pre[class*='language-'] {
 
 /* without preview */
 .highlight pre[class*='language-'] {
-  overflow: auto;
   @apply m-0 mb-8 mt-4 rounded-xl bg-gray-50 p-6 pt-6 text-sm dark:bg-gray-800;
 }
 
@@ -131,7 +130,6 @@ pre[class*='language-'] {
   > .highlight
   pre[class*='language-'],
 .code-preview-wrapper + .code-syntax-wrapper > .code-syntax {
-  overflow: auto;
   @apply mt-0 rounded-none;
 }
 
