@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { useState, type FC } from 'react';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../Flowbite';
+import { Flowbite } from '../../';
 import type { AccordionProps } from './Accordion';
 import { Accordion } from './Accordion';
 
@@ -92,6 +92,7 @@ describe('Components / Accordion', () => {
       render(
         <>
           <TestAccordion />
+          {/* eslint-disable-next-line jsx-a11y/role-has-required-aria-props */}
           <button role="checkbox">Outside button</button>
         </>,
       );
@@ -267,11 +268,8 @@ describe('Components / Accordion', () => {
   });
 
   describe('Collapse/expand panel', () => {
-    beforeEach(() => {
+    it('Should collapse panel if isOpen and expand if not after a user toggle event', async () => {
       render(<TestAccordionVariant />);
-    });
-
-    it('Should collapse/expand panel based on isOpen prop', async () => {
       const button = screen.getByTestId('cta-button');
 
       await userEvent.click(button);
@@ -286,10 +284,10 @@ describe('Components / Accordion', () => {
 const TestAccordion: FC<Omit<AccordionProps, 'children'>> = (props) => (
   <Accordion arrowIcon={HiOutlineArrowCircleDown} {...props}>
     <Accordion.Panel>
-      <Accordion.Title as="h3" className="text-blue-300" id="accordion-title">
+      <Accordion.Title as="h3" className="text-cyan-300" id="accordion-title">
         Title
       </Accordion.Title>
-      <Accordion.Content aria-labelledby="accordion-title" className="text-blue-300">
+      <Accordion.Content aria-labelledby="accordion-title" className="text-cyan-300">
         <p>Content</p>
       </Accordion.Content>
     </Accordion.Panel>
@@ -328,6 +326,7 @@ const TestAccordionVariant: FC<Omit<AccordionProps, 'children'>> = (props) => {
     </>
   );
 };
+
 const accordion = () => screen.getByTestId('flowbite-accordion');
 
 const content = () => screen.getAllByTestId('flowbite-accordion-content');
