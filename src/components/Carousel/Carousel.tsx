@@ -62,7 +62,7 @@ export const Carousel: FC<CarouselProps> = ({
   slideInterval,
   className,
   theme: customTheme = {},
-  onSlide = () => {},
+  onSlide,
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.carousel, customTheme);
@@ -112,7 +112,8 @@ export const Carousel: FC<CarouselProps> = ({
 
   useEffect(() => {
     !!onSlide && onSlide(activeItem);
-  }, [activeItem]);
+  }, [activeItem, onSlide]);
+  
   return (
     <div className={classNames(theme.root.base, className)} data-testid="carousel" {...props}>
       <ScrollContainer
