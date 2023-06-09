@@ -113,7 +113,7 @@ export default function ${titleCaseToUpperCamelCase(title)}() {${
               <CopyToClipboardButton isJustCopied={isJustCopied} onClick={() => copyToClipboard(code)} />
             </div>
           </div>
-          <pre className={classNames('language-tsx !overflow-hidden', !isExpanded && 'max-h-72')}>
+          <pre className={classNames('language-tsx !overflow-y-hidden', !isExpanded && 'max-h-72')}>
             <code>{code}</code>
           </pre>
           <CollapseExpandButton isExpanded={isExpanded} onClick={() => setExpanded(!isExpanded)} />
