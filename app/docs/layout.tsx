@@ -46,14 +46,14 @@ const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
 
   return (
     <Flowbite>
-      <main className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible">
+      <div className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible">
         <div className="relative max-h-screen w-full overflow-auto bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
           <DocsNavbar {...state} />
           <div className="lg:flex">
             <DocsSidebar {...state} />
             <div className="flex w-full">
               <div className="pb:12 mx-auto flex w-full min-w-0 max-w-4xl flex-col px-4 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
-                <div id="mainContent">{children}</div>
+                <main>{children}</main>
                 <DocsFooter />
               </div>
               <div className="right-0 hidden w-64 flex-none pl-8 xl:block xl:text-sm">
@@ -80,7 +80,7 @@ const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </Flowbite>
   );
 };
