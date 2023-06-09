@@ -10,6 +10,26 @@
   @apply overflow-hidden;
 }
 
+#mainContent > h2:first-child {
+  @apply mt-0;
+}
+
+#mainContent > #table-of-contents + ul {
+  @apply -ml-3 list-outside list-none pl-0;
+}
+
+#mainContent > #table-of-contents + ul ul {
+  @apply hidden;
+}
+
+#mainContent > #table-of-contents + ul li {
+  @apply pb-3;
+}
+
+#mainContent > #table-of-contents + ul li a {
+  @apply border-l-2 border-transparent pl-3 text-gray-600 no-underline hover:border-primary-700 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-300;
+}
+
 #mainContent > hr,
 #mainContent > div > hr {
   @apply my-8 border-gray-200 dark:border-gray-700;
