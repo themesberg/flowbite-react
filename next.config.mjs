@@ -1,5 +1,6 @@
 import mdx from '@next/mdx';
 import slug from 'rehype-slug';
+import tableOfContents from 'remark-toc';
 import TerserPlugin from 'terser-webpack-plugin';
 
 /** @type {import('next').NextConfig} */
@@ -158,6 +159,7 @@ const withMDX = mdx({
   extension: /\.mdx?$/,
   options: {
     rehypePlugins: [slug],
+    remarkPlugins: [tableOfContents],
   },
 });
 
