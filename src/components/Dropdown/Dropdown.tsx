@@ -60,7 +60,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const id = useId();
+  const id = Math.random().toString(8);
   const theme = mergeDeep(useTheme().theme.dropdown, customTheme);
   const theirProps = props as Omit<DropdownProps, 'theme'>;
   const {
