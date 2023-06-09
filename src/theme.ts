@@ -872,7 +872,7 @@ export const theme: FlowbiteTheme = {
       list: 'space-y-2 py-2',
     },
     cta: {
-      base: 'mt-6 rounded-lg p-4',
+      base: 'mt-6 rounded-lg p-4 bg-gray-100 dark:bg-gray-700',
       color: {
         blue: 'bg-cyan-50 dark:bg-cyan-900',
         dark: 'bg-dark-50 dark:bg-dark-900',
