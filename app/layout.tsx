@@ -1,19 +1,18 @@
 import type { Metadata, NextPage } from 'next/types';
 
-import { Inter } from 'next/font/google';
-import type { PropsWithChildren } from 'react';
+import { Inter as InterFont } from 'next/font/google';
+import type { FC, PropsWithChildren } from 'react';
 import '~/app/docs.css';
 import '~/app/style.css';
-import Fathom from './components/fathom';
 
-const inter = Inter({
+const interFont = InterFont({
   subsets: ['latin'],
   variable: '--font-inter',
 });
 
 export const metadata: Metadata = {
-  icons: '/favicon.svg',
   description: 'Official React components built for Flowbite and Tailwind CSS',
+  icons: '/favicon.svg',
   other: {
     charSet: 'utf-8',
     lang: 'en',
@@ -30,11 +29,17 @@ export const metadata: Metadata = {
 
 const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
   return (
-    <html lang="en" className={`${inter.variable} font-sans`}>
-      <Fathom />
-      <body>{children}</body>
+    <html lang="en" className={`${interFont.variable} font-sans`}>
+      <body>
+        {children}
+        <FathomScript />
+      </body>
     </html>
   );
+};
+
+const FathomScript: FC = () => {
+  return <script data-site="UXMSXUQI" defer src="https://cdn.usefathom.com/script.js" />;
 };
 
 export default RootLayout;

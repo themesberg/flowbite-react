@@ -33,7 +33,7 @@ Inside of the `<Alert>` component you can add any type of content such as text, 
 
 Use the `icon` prop to add an icon to the alert box and you can use any icon from the [React Icons](https://react-icons.github.io/react-icons/) library.
 
-<CodePreview title="Alert with icon">
+<CodePreview importExternal="import { HiInformationCircle } from 'react-icons/hi';" title="Alert with icon">
   <Alert color="failure" icon={HiInformationCircle}>
     <span>
       <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
@@ -81,7 +81,7 @@ Add a border accent to the alert box by applying the `withBorderAccent` prop on 
 
 Add additional content by using the `additionalContent` prop and add any type of content inside of it.
 
-<CodePreview title="Additional content">
+<CodePreview importExternal="import { HiInformationCircle } from 'react-icons/hi';" title="Additional content">
   <Alert additionalContent={<ExampleAdditionalContent />} color="warning" icon={HiInformationCircle}>
     <span>
       <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
@@ -93,7 +93,7 @@ Add additional content by using the `additionalContent` prop and add any type of
 
 This is an example with all of the available options and props for the alert component.
 
-<CodePreview title="All options">
+<CodePreview importExternal="import { HiInformationCircle } from 'react-icons/hi';" title="All options">
   <Alert
     additionalContent={<ExampleAdditionalContent />}
     color="success"

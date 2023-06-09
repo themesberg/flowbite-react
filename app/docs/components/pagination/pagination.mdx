@@ -17,7 +17,13 @@ import { Pagination } from 'flowbite-react';
 
 Use the `<Pagination>` component to create a default pagination element and use the `currentPage` prop to set the currently active page, the `totalPages` prop to set how many pages there are in total and update the `onPageChange` even listener to set the state of the pagination component via React.
 
-<CodePreview title="Default pagination">
+<CodePreview
+  functionBody={[
+    'const [currentPage, setCurrentPage] = useState(1);',
+    'const onPageChange = (page: number) => setCurrentPage(page);',
+  ]}
+  title="Default pagination"
+>
   <Pagination currentPage={props.currentPage} totalPages={100} onPageChange={props.onPageChange} />
 </CodePreview>
 
@@ -25,7 +31,13 @@ Use the `<Pagination>` component to create a default pagination element and use 
 
 Add next and previous icons to the pagination component by passing the `showIcons` prop via React.
 
-<CodePreview title="Pagination with icons">
+<CodePreview
+  functionBody={[
+    'const [currentPage, setCurrentPage] = useState(1);',
+    'const onPageChange = (page: number) => setCurrentPage(page);',
+  ]}
+  title="Pagination with icons"
+>
   <Pagination currentPage={props.currentPage} onPageChange={props.onPageChange} showIcons totalPages={100} />
 </CodePreview>
 
@@ -33,7 +45,13 @@ Add next and previous icons to the pagination component by passing the `showIcon
 
 Show only the next and previous control buttons by passing the `layout="navigation"` prop from React.
 
-<CodePreview title="Previous and next">
+<CodePreview
+  functionBody={[
+    'const [currentPage, setCurrentPage] = useState(1);',
+    'const onPageChange = (page: number) => setCurrentPage(page);',
+  ]}
+  title="Previous and next"
+>
   <Pagination currentPage={props.currentPage} layout="navigation" totalPages={100} onPageChange={props.onPageChange} />
 </CodePreview>
 
@@ -41,7 +59,13 @@ Show only the next and previous control buttons by passing the `layout="navigati
 
 Show the control buttons with icons by passing both the `layout="navigation"` and `showIcons` props.
 
-<CodePreview title="Previous and next with icons">
+<CodePreview
+  functionBody={[
+    'const [currentPage, setCurrentPage] = useState(1);',
+    'const onPageChange = (page: number) => setCurrentPage(page);',
+  ]}
+  title="Previous and next with icons"
+>
   <Pagination
     currentPage={props.currentPage}
     layout="navigation"
@@ -55,7 +79,14 @@ Show the control buttons with icons by passing both the `layout="navigation"` an
 
 Use this example show table data navigation by using the `layout="table"` prop from React.
 
-<CodePreview title="Table data navigation">
+<CodePreview
+  functionBody={[
+    'const [currentPage, setCurrentPage] = useState(1);',
+    'const onPageChange = (page: number) => setCurrentPage(page);',
+  ]}
+  importFlowbiteReact="Pagination"
+  title="Table data navigation"
+>
   <div className="flex items-center justify-center text-center">
     <Pagination currentPage={props.currentPage} layout="table" onPageChange={props.onPageChange} totalPages={1000} />
   </div>
@@ -65,7 +96,14 @@ Use this example show table data navigation by using the `layout="table"` prop f
 
 Show icons for the next and previous control buttons for table navigation by passing the `showIcons` prop.
 
-<CodePreview title="Table data navigation with icons">
+<CodePreview
+  functionBody={[
+    'const [currentPage, setCurrentPage] = useState(1);',
+    'const onPageChange = (page: number) => setCurrentPage(page);',
+  ]}
+  importFlowbiteReact="Pagination"
+  title="Table data navigation with icons"
+>
   <div className="flex items-center justify-center text-center">
     <Pagination
       currentPage={props.currentPage}
@@ -81,7 +119,14 @@ Show icons for the next and previous control buttons for table navigation by pas
 
 Customize the text for the next and previous buttons by passing the `previousLabel` and `nextLabel` props.
 
-<CodePreview title="Change 'Previous' and 'Next' text">
+<CodePreview
+  functionBody={[
+    'const [currentPage, setCurrentPage] = useState(1);',
+    'const onPageChange = (page: number) => setCurrentPage(page);',
+  ]}
+  importFlowbiteReact="Pagination"
+  title="Control button text"
+>
   <div className="flex items-center justify-center text-center">
     <Pagination
       currentPage={props.currentPage}
