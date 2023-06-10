@@ -113,7 +113,7 @@ export const Carousel: FC<CarouselProps> = ({
   useEffect(() => {
     !!onSlide && onSlide(activeItem);
   }, [activeItem, onSlide]);
-  
+
   return (
     <div className={classNames(theme.root.base, className)} data-testid="carousel" {...props}>
       <ScrollContainer
