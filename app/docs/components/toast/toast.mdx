@@ -1,9 +1,9 @@
 import { FaTelegramPlane } from 'react-icons/fa';
 import { HiCheck, HiExclamation, HiFire, HiX } from 'react-icons/hi';
 import { MdLoop } from 'react-icons/md';
-import { CodePreview } from '~/app/components/code-preview';
-import { Button, Toast } from '~/src';
 import Link from 'next/link';
+import { CodePreview } from '~/app/components/code-preview';
+import { Button, Toast, theme } from '~/src';
 
 The toast component can be used to show notifications to your users in a non-intrusive way by positioning it to the corner of the screen. It can be used to show simple messages or more complex ones with buttons and other elements.
 
@@ -121,6 +121,14 @@ This component can be used to show more complex messages with buttons and other 
     </div>
   </Toast>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.toast, null, 2)}</code>
+</pre>
 
 ## References
 

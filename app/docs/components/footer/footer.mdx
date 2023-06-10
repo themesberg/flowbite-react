@@ -1,6 +1,6 @@
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { CodePreview } from '~/app/components/code-preview';
-import { Footer } from '~/src';
+import { Footer, theme } from '~/src';
+import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 
 The footer component is an important section of a website where you should provide content such as sitemap links, copyright text, logo of your brand, social media account links, and more.
 
@@ -177,6 +177,14 @@ Add sitemap links to the footer component by using the `<Footer.LinkGroup>` and 
     </div>
   </Footer>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.footer, null, 2)}</code>
+</pre>
 
 ## References
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
 import { CodePreview } from '~/app/components/code-preview';
-import { Button, Tabs } from '~/src';
+import { Button, Tabs, theme } from '~/src';
 
 The tabs component can be used to show a list of tab items that you can click on to change the content inside of the main tabs component using React state reactivity.
 
@@ -303,6 +303,14 @@ import { MdDashboard } from 'react-icons/md';"
     </Button>
   </Button.Group>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.tab, null, 2)}</code>
+</pre>
 
 ## References
 

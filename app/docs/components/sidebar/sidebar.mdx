@@ -1,7 +1,7 @@
 import { BiBuoy } from 'react-icons/bi';
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
-import { Badge, Sidebar } from '~/src';
+import { Badge, Sidebar, theme } from '~/src';
 
 The sidebar component is an UI component that you can use for the navigation mechanism in your website or application that you would position to the left or right side of your page.
 
@@ -258,6 +258,14 @@ Feature the branded logo of your company on the top side of the sidebar using th
     </Sidebar.Items>
   </Sidebar>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.sidebar, null, 2)}</code>
+</pre>
 
 ## References
 

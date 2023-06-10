@@ -1,6 +1,6 @@
-import { HiHome } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
-import { Breadcrumb } from '~/src';
+import { Breadcrumb, theme } from '~/src';
+import { HiHome } from 'react-icons/hi';
 
 The breadcrumb component can be used to indicate the current page's location within a navigational hierarchy and you can choose from multiple examples, colors, and sizes built with React and based on the utility classes from Tailwind CSS.
 
@@ -41,6 +41,14 @@ You can add a solid background style to the breadcrumb component by adding the `
     <Breadcrumb.Item>Flowbite React</Breadcrumb.Item>
   </Breadcrumb>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.breadcrumb, null, 2)}</code>
+</pre>
 
 ## References
 

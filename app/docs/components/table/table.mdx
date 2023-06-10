@@ -1,5 +1,5 @@
 import { CodePreview } from '~/app/components/code-preview';
-import { Checkbox, Table } from '~/src';
+import { Checkbox, Table, theme } from '~/src';
 
 The table component is an important UI component that you can use to effectively show complex amounts of data in the form of numbers, text, images, buttons, and links inside a structured layout of rows and columns.
 
@@ -276,6 +276,14 @@ Use this example to show multiple checkbox form elements for each table row that
     </Table.Body>
   </Table>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.table, null, 2)}</code>
+</pre>
 
 ## References
 

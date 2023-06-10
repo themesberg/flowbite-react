@@ -1,6 +1,6 @@
-import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
-import { Button } from '~/src';
+import { Button, theme } from '~/src';
+import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
 
 The button group component from Flowbite React can be used to stack multiple button elements and group them visually together. It can often be used to create a navigation menu or a toolbar.
 
@@ -160,6 +160,14 @@ Here's an example on how you can use both the outline and icon props together.
     </Button>
   </Button.Group>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.buttonGroup, null, 2)}</code>
+</pre>
 
 ## References
 

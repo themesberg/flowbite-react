@@ -1,5 +1,5 @@
 import { CodePreview } from '~/app/components/code-preview';
-import { Progress } from '~/src';
+import { Progress, theme } from '~/src';
 
 Use the progress bar component from Flowbite React to show the percentage and completion rate of a given task using a visually friendly bar meter based on multiple styles and sizes.
 
@@ -84,6 +84,14 @@ Set your own custom colors for the progress bar component by using the `color` p
     <Progress progress={45} color="purple" />
   </div>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.progress, null, 2)}</code>
+</pre>
 
 ## References
 

@@ -1,7 +1,7 @@
-import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
-import { Button, Checkbox, Label, Modal, Select, TextInput } from '~/src';
+import { Button, Checkbox, Label, Modal, Select, TextInput, theme } from '~/src';
 import Link from 'next/link';
+import { HiOutlineExclamationCircle } from 'react-icons/hi';
 
 The modal component can be used to show any type of content such as text, form elements, and notifications to your website visitors by creating an off-canvas box on top of the main content area of your website.
 
@@ -476,6 +476,14 @@ To set the position of the modal component relative to the page you can use the 
     </Modal.Footer>
   </Modal>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.modal, null, 2)}</code>
+</pre>
 
 ## References
 

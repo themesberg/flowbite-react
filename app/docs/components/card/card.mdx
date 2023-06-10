@@ -1,5 +1,5 @@
 import { CodePreview } from '~/app/components/code-preview';
-import { Button, Card, Checkbox, Dropdown, Label, TextInput } from '~/src';
+import { Button, Card, Checkbox, Dropdown, Label, TextInput, theme } from '~/src';
 import Image from 'next/image';
 
 The card component can be used to show a wide variety of content such as previews of blog posts, user profiles, pricing plans, and more. Choose from one of the many examples built with React and the utility classes from Tailwind CSS.
@@ -792,6 +792,14 @@ This component can be used for crypto and web3 related projects where you can ch
     </div>
   </Card>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.card, null, 2)}</code>
+</pre>
 
 ## References
 
