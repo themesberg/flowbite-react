@@ -117,15 +117,15 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
         type={isLink ? undefined : 'button'}
         ref={ref as never}
         className={twMerge(
+          theme.base,
           disabled && theme.disabled,
           !gradientDuoTone && !gradientMonochrome && theme.color[color],
           gradientDuoTone && !gradientMonochrome && theme.gradientDuoTone[gradientDuoTone],
           !gradientDuoTone && gradientMonochrome && theme.gradient[gradientMonochrome],
-          groupTheme.position[positionInGroup],
           outline && (theme.outline.color[color] ?? theme.outline.color.default),
-          theme.base,
           theme.pill[pill ? 'on' : 'off'],
           fullSized && theme.fullSized,
+          groupTheme.position[positionInGroup],
           className,
         )}
         {...theirProps}
@@ -133,12 +133,12 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
         <span
           className={twMerge(
             theme.inner.base,
-            theme.inner.position[positionInGroup],
             theme.outline[outline ? 'on' : 'off'],
             theme.outline.pill[outline && pill ? 'on' : 'off'],
             theme.size[size],
             outline && !theme.outline.color[color] && theme.inner.outline,
             isProcessing && theme.isProcessing,
+            theme.inner.position[positionInGroup],
           )}
         >
           <>
