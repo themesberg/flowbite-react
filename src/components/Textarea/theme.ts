@@ -1,4 +1,4 @@
-import type { FlowbiteTextareaTheme } from "./Textarea";
+import type { FlowbiteTextareaTheme } from './Textarea';
 
 export const textareaTheme: FlowbiteTextareaTheme = {
   base: 'block w-full rounded-lg border disabled:cursor-not-allowed disabled:opacity-50',
@@ -16,4 +16,4 @@ export const textareaTheme: FlowbiteTextareaTheme = {
     on: 'shadow-sm dark:shadow-sm-light',
     off: '',
   },
-}
+};

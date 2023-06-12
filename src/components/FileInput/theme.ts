@@ -1,4 +1,4 @@
-import type { FlowbiteFileInputTheme } from "./FileInput";
+import type { FlowbiteFileInputTheme } from './FileInput';
 
 export const fileInputTheme: FlowbiteFileInputTheme = {
   root: {
@@ -25,4 +25,4 @@ export const fileInputTheme: FlowbiteFileInputTheme = {
       },
     },
   },
-}
+};

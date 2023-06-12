@@ -1,4 +1,4 @@
-import type { FlowbitePaginationTheme } from "./Pagination";
+import type { FlowbitePaginationTheme } from './Pagination';
 
 export const paginationTheme: FlowbitePaginationTheme = {
   base: '',
@@ -26,4 +26,4 @@ export const paginationTheme: FlowbitePaginationTheme = {
       disabled: 'opacity-50 cursor-normal',
     },
   },
-}
+};

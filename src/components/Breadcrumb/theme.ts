@@ -1,4 +1,4 @@
-import type { FlowbiteBreadcrumbTheme } from "./Breadcrumb";
+import type { FlowbiteBreadcrumbTheme } from './Breadcrumb';
 
 export const breadcrumbTheme: FlowbiteBreadcrumbTheme = {
   root: {
@@ -14,4 +14,4 @@ export const breadcrumbTheme: FlowbiteBreadcrumbTheme = {
     },
     icon: 'mr-2 h-4 w-4',
   },
-}
+};

@@ -1,4 +1,4 @@
-import type { FlowbiteTableTheme } from "./Table";
+import type { FlowbiteTableTheme } from './Table';
 
 export const tableTheme: FlowbiteTableTheme = {
   root: {
@@ -23,4 +23,4 @@ export const tableTheme: FlowbiteTableTheme = {
     hovered: 'hover:bg-gray-50 dark:hover:bg-gray-600',
     striped: 'odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700',
   },
-}
+};

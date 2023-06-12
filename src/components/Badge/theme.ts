@@ -1,4 +1,4 @@
-import type { FlowbiteBadgeTheme } from "./Badge";
+import type { FlowbiteBadgeTheme } from './Badge';
 
 export const badgeTheme: FlowbiteBadgeTheme = {
   root: {
@@ -44,4 +44,4 @@ export const badgeTheme: FlowbiteBadgeTheme = {
       sm: 'w-3.5 h-3.5',
     },
   },
-}
+};

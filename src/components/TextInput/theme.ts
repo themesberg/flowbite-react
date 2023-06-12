@@ -1,4 +1,4 @@
-import type { FlowbiteTextInputTheme } from "./TextInput";
+import type { FlowbiteTextInputTheme } from './TextInput';
 
 export const textInputTheme: FlowbiteTextInputTheme = {
   base: 'flex',
@@ -49,4 +49,4 @@ export const textInputTheme: FlowbiteTextInputTheme = {
       },
     },
   },
-}
+};

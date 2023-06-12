@@ -1,4 +1,4 @@
-import type { FlowbiteAccordionTheme } from "./Accordion";
+import type { FlowbiteAccordionTheme } from './Accordion';
 
 export const accordionTheme: FlowbiteAccordionTheme = {
   root: {

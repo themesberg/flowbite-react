@@ -1,4 +1,4 @@
-import type { FlowbiteSidebarTheme } from "./Sidebar";
+import type { FlowbiteSidebarTheme } from './Sidebar';
 
 export const sidebarTheme: FlowbiteSidebarTheme = {
   root: {
@@ -58,8 +58,7 @@ export const sidebarTheme: FlowbiteSidebarTheme = {
     label: '',
   },
   items: '',
-  itemGroup:
-    'mt-4 space-y-2 border-t border-gray-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 dark:border-gray-700',
+  itemGroup: 'mt-4 space-y-2 border-t border-gray-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 dark:border-gray-700',
   logo: {
     base: 'mb-5 flex items-center pl-2.5',
     collapsed: {
@@ -68,4 +67,4 @@ export const sidebarTheme: FlowbiteSidebarTheme = {
     },
     img: 'mr-3 h-6 sm:h-7',
   },
-}
+};

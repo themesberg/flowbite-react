@@ -1,4 +1,4 @@
-import type { FlowbiteAlertTheme } from "./Alert";
+import type { FlowbiteAlertTheme } from './Alert';
 
 export const alertTheme: FlowbiteAlertTheme = {
   base: 'flex flex-col gap-2 p-4 text-sm',

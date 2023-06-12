@@ -1,4 +1,4 @@
-import type { FlowbiteSpinnerTheme } from "./Spinner";
+import type { FlowbiteSpinnerTheme } from './Spinner';
 
 export const spinnerTheme: FlowbiteSpinnerTheme = {
   base: 'inline animate-spin text-gray-200',
@@ -44,4 +44,4 @@ export const spinnerTheme: FlowbiteSpinnerTheme = {
     lg: 'w-8 h-8',
     xl: 'w-10 h-10',
   },
-}
+};

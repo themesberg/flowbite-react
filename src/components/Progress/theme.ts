@@ -1,4 +1,4 @@
-import type { FlowbiteProgressTheme } from "./Progress";
+import type { FlowbiteProgressTheme } from './Progress';
 
 export const progressTheme: FlowbiteProgressTheme = {
   base: 'w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700',
@@ -19,4 +19,4 @@ export const progressTheme: FlowbiteProgressTheme = {
     lg: 'h-4',
     xl: 'h-6',
   },
-}
+};

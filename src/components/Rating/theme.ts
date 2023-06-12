@@ -1,4 +1,4 @@
-import type { FlowbiteRatingTheme } from "./Rating";
+import type { FlowbiteRatingTheme } from './Rating';
 
 export const ratingTheme: FlowbiteRatingTheme = {
   root: {
@@ -22,4 +22,4 @@ export const ratingTheme: FlowbiteRatingTheme = {
       lg: 'w-10 h-10',
     },
   },
-}
+};

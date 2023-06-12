@@ -1,4 +1,4 @@
-import type { FlowbiteCarouselTheme } from "./Carousel";
+import type { FlowbiteCarouselTheme } from './Carousel';
 
 export const carouselTheme: FlowbiteCarouselTheme = {
   root: {
@@ -26,4 +26,4 @@ export const carouselTheme: FlowbiteCarouselTheme = {
     base: 'flex h-full snap-mandatory overflow-y-hidden overflow-x-scroll scroll-smooth rounded-lg',
     snap: 'snap-x',
   },
-}
+};
