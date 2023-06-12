@@ -2,9 +2,9 @@ import type { FlowbiteAvatarTheme } from "./Avatar";
 
 export const avatarTheme: FlowbiteAvatarTheme = {
   root: {
-    base: 'flex justify-center items-center space-x-4',
+    base: 'flex justify-center items-center space-x-4 rounded',
     bordered: 'p-1 ring-2',
-    rounded: '!rounded-full',
+    rounded: 'rounded-full',
     color: {
       dark: 'ring-gray-800 dark:ring-gray-800',
       failure: 'ring-red-500 dark:ring-red-700',
@@ -17,8 +17,9 @@ export const avatarTheme: FlowbiteAvatarTheme = {
       pink: 'ring-pink-500 dark:ring-pink-500',
     },
     img: {
-      off: 'rounded relative overflow-hidden bg-gray-100 dark:bg-gray-600',
-      on: 'rounded',
+      base: 'rounded',
+      off: 'relative overflow-hidden bg-gray-100 dark:bg-gray-600',
+      on: '',
       placeholder: 'absolute w-auto h-auto text-gray-400 -bottom-1',
     },
     size: {

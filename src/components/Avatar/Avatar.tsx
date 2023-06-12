@@ -28,6 +28,7 @@ export interface FlowbiteAvatarRootTheme {
 }
 
 export interface FlowbiteAvatarImageTheme extends FlowbiteBoolean {
+  base: string;
   placeholder: string;
 }
 
@@ -92,6 +93,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   const theme = mergeDeep(useTheme().theme.avatar, customTheme);
 
   const imgClassName = twMerge(
+    theme.root.img.base,
     bordered && theme.root.bordered,
     bordered && theme.root.color[color],
     rounded && theme.root.rounded,
@@ -118,11 +120,11 @@ const AvatarComponent: FC<AvatarProps> = ({
             className={twMerge(
               theme.root.img.off,
               theme.root.initials.base,
-              rounded && theme.root.rounded,
               stacked && theme.root.stacked,
               bordered && theme.root.bordered,
               bordered && theme.root.color[color],
               theme.root.size[size],
+              rounded && theme.root.rounded,
             )}
             data-testid="flowbite-avatar-initials-placeholder"
           >
