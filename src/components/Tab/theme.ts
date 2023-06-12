@@ -9,10 +9,10 @@ export const tabTheme: FlowbiteTabTheme = {
       underline: 'flex-wrap -mb-px border-b border-gray-200 dark:border-gray-700',
       pills: 'flex-wrap font-medium text-sm text-gray-500 dark:text-gray-400 space-x-2',
       fullWidth:
-        'w-full text-sm font-medium divide-x divide-gray-200 shadow grid grid-cols-4 dark:divide-gray-700 dark:text-gray-400 rounded-none',
+        'w-full text-sm font-medium divide-x divide-gray-200 shadow grid grid-flow-col dark:divide-gray-700 dark:text-gray-400 rounded-none',
     },
     tabitem: {
-      base: 'flex items-center justify-center p-4 rounded-t-lg text-sm font-medium first:ml-0 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500',
+      base: 'flex items-center justify-center p-4 rounded-t-lg text-sm font-medium first:ml-0 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500 focus:ring-4 focus:ring-cyan-300 focus:outline-none',
       styles: {
         default: {
           base: 'rounded-t-lg',
@@ -36,10 +36,10 @@ export const tabTheme: FlowbiteTabTheme = {
           },
         },
         fullWidth: {
-          base: 'ml-2 first:ml-0 w-full rounded-none inline-block',
+          base: 'ml-0 first:ml-0 w-full rounded-none flex',
           active: {
-            on: 'p-4 text-gray-900 bg-gray-100 focus:ring-4 focus:ring-cyan-300 active focus:outline-none dark:bg-gray-700 dark:text-white !rounded-none',
-            off: 'bg-white hover:text-gray-700 hover:bg-gray-50 focus:ring-4 focus:ring-cyan-300 focus:outline-none dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700 !rounded-none',
+            on: 'p-4 text-gray-900 bg-gray-100 active dark:bg-gray-700 dark:text-white !rounded-none',
+            off: 'bg-white hover:text-gray-700 hover:bg-gray-50 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700 !rounded-none',
           },
         },
       },
