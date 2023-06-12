@@ -22,7 +22,7 @@ export const accordionTheme: FlowbiteAccordionTheme = {
     base: 'flex w-full items-center justify-between first:rounded-t-lg last:rounded-b-lg py-5 px-5 text-left font-medium text-gray-500 dark:text-gray-400',
     flush: {
       off: 'hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-800',
-      on: '!bg-transparent dark:!bg-transparent',
+      on: 'bg-transparent dark:bg-transparent',
     },
     heading: '',
     open: {
