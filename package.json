@@ -57,7 +57,6 @@
     "@floating-ui/react": "^0.24.1",
     "classnames": "^2.3.2",
     "flowbite": "^1.6.5",
-    "flowbite-react": "^0.4.7",
     "react-icons": "^4.8.0",
     "react-indiana-drag-scroll": "^2.2.0"
   },

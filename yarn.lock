@@ -6728,17 +6728,6 @@
   "resolved" "https://registry.npmjs.org/flow-parser/-/flow-parser-0.206.0.tgz"
   "version" "0.206.0"
 
-"flowbite-react@^0.4.7":
-  "integrity" "sha512-DzVXuXZWBBLh6ZS08xLbIg3zR8/wU8pY/IqmunIAQgjGoSw1EfcLQdqmL2h/GnirlVo1NqF4y/CPALqGsdhW8A=="
-  "resolved" "https://registry.npmjs.org/flowbite-react/-/flowbite-react-0.4.7.tgz"
-  "version" "0.4.7"
-  dependencies:
-    "@floating-ui/react" "^0.24.1"
-    "classnames" "^2.3.2"
-    "flowbite" "^1.6.5"
-    "react-icons" "^4.8.0"
-    "react-indiana-drag-scroll" "^2.2.0"
-
 "flowbite@^1.6.5":
   "integrity" "sha512-eI4h3pIRI9d7grlYq14r0A01KUtw7189sPLLx/O2i7JyPEWpbleScfYuEc48XTeNjk1xxm/JHgZkD9kjyOWAlA=="
   "resolved" "https://registry.npmjs.org/flowbite/-/flowbite-1.6.5.tgz"
