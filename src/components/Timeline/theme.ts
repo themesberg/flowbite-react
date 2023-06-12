@@ -1,4 +1,4 @@
-import type { FlowbiteTimelineTheme } from "./Timeline";
+import type { FlowbiteTimelineTheme } from './Timeline';
 
 export const timelineTheme: FlowbiteTimelineTheme = {
   root: {
@@ -39,4 +39,4 @@ export const timelineTheme: FlowbiteTimelineTheme = {
       vertical: '',
     },
   },
-}
+};

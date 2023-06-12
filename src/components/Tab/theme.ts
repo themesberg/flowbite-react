@@ -1,4 +1,4 @@
-import type { FlowbiteTabTheme } from "./Tabs";
+import type { FlowbiteTabTheme } from './Tabs';
 
 export const tabTheme: FlowbiteTabTheme = {
   base: 'flex flex-col gap-2',
@@ -47,4 +47,4 @@ export const tabTheme: FlowbiteTabTheme = {
     },
   },
   tabpanel: 'py-3',
-}
+};

@@ -1,4 +1,4 @@
-import type { FlowbiteSelectTheme } from "./Select";
+import type { FlowbiteSelectTheme } from './Select';
 
 export const selectTheme: FlowbiteSelectTheme = {
   base: 'flex',
@@ -41,4 +41,4 @@ export const selectTheme: FlowbiteSelectTheme = {
       },
     },
   },
-}
+};

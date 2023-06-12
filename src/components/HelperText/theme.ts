@@ -1,4 +1,4 @@
-import type { FlowbiteHelperTextTheme } from "./HelperText";
+import type { FlowbiteHelperTextTheme } from './HelperText';
 
 export const helperTextTheme: FlowbiteHelperTextTheme = {
   root: {
@@ -11,4 +11,4 @@ export const helperTextTheme: FlowbiteHelperTextTheme = {
       warning: 'text-yellow-500 dark:text-yellow-600',
     },
   },
-}
+};

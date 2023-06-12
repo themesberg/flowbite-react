@@ -1,4 +1,4 @@
-import type { FlowbiteFooterTheme } from "./Footer";
+import type { FlowbiteFooterTheme } from './Footer';
 
 export const footerTheme: FlowbiteFooterTheme = {
   root: {
@@ -34,4 +34,4 @@ export const footerTheme: FlowbiteFooterTheme = {
     img: 'mr-3 h-8',
     span: 'self-center whitespace-nowrap text-2xl font-semibold text-gray-800 dark:text-white',
   },
-}
+};

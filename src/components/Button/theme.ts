@@ -1,5 +1,5 @@
-import type { FlowbiteButtonTheme } from "./Button";
-import type { FlowbiteButtonGroupTheme } from "./ButtonGroup";
+import type { FlowbiteButtonTheme } from './Button';
+import type { FlowbiteButtonGroupTheme } from './ButtonGroup';
 
 export const buttonTheme: FlowbiteButtonTheme = {
   base: 'group flex h-min items-center justify-center p-0.5 text-center font-medium focus:z-10',
@@ -100,14 +100,14 @@ export const buttonTheme: FlowbiteButtonTheme = {
     lg: 'text-base px-5 py-2.5',
     xl: 'text-base px-6 py-3',
   },
-}
+};
 
 export const buttonGroupTheme: FlowbiteButtonGroupTheme = {
-    base: 'inline-flex',
-    position: {
-      none: 'focus:ring-2',
-      start: 'rounded-r-none',
-      middle: 'rounded-none border-l-0 pl-0',
-      end: 'rounded-l-none border-l-0 pl-0',
-    },
-  }
+  base: 'inline-flex',
+  position: {
+    none: 'focus:ring-2',
+    start: 'rounded-r-none',
+    middle: 'rounded-none border-l-0 pl-0',
+    end: 'rounded-l-none border-l-0 pl-0',
+  },
+};

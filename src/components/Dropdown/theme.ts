@@ -1,4 +1,4 @@
-import type { FlowbiteDropdownTheme } from "./Dropdown";
+import type { FlowbiteDropdownTheme } from './Dropdown';
 
 export const dropdownTheme: FlowbiteDropdownTheme = {
   arrowIcon: 'ml-2 h-4 w-4',
@@ -31,4 +31,4 @@ export const dropdownTheme: FlowbiteDropdownTheme = {
     target: 'w-fit',
   },
   inlineWrapper: 'flex items-center',
-}
+};

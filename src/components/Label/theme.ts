@@ -1,4 +1,4 @@
-import type { FlowbiteLabelTheme } from "./Label";
+import type { FlowbiteLabelTheme } from './Label';
 
 export const labelTheme: FlowbiteLabelTheme = {
   root: {
@@ -12,4 +12,4 @@ export const labelTheme: FlowbiteLabelTheme = {
       success: 'text-green-700 dark:text-green-500',
     },
   },
-}
+};

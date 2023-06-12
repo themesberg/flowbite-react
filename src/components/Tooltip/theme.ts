@@ -1,4 +1,4 @@
-import type { FlowbiteTooltipTheme } from "./Tooltip";
+import type { FlowbiteTooltipTheme } from './Tooltip';
 
 export const tooltipTheme: FlowbiteTooltipTheme = {
   target: 'w-fit',
@@ -20,4 +20,4 @@ export const tooltipTheme: FlowbiteTooltipTheme = {
     auto: 'border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-gray-700 dark:text-white',
   },
   content: 'relative z-20',
-}
+};

@@ -1,4 +1,4 @@
-import type { FlowbiteRangeSliderTheme } from "./RangeSlider";
+import type { FlowbiteRangeSliderTheme } from './RangeSlider';
 
 export const rangeSliderTheme: FlowbiteRangeSliderTheme = {
   root: {
@@ -15,4 +15,4 @@ export const rangeSliderTheme: FlowbiteRangeSliderTheme = {
       },
     },
   },
-}
+};

@@ -1,4 +1,4 @@
-import type { FlowbiteCardTheme } from "./Card";
+import type { FlowbiteCardTheme } from './Card';
 
 export const cardTheme: FlowbiteCardTheme = {
   root: {
@@ -17,4 +17,4 @@ export const cardTheme: FlowbiteCardTheme = {
       on: 'h-96 w-full rounded-t-lg object-cover md:h-auto md:w-48 md:rounded-none md:rounded-l-lg',
     },
   },
-}
+};

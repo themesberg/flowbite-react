@@ -1,4 +1,4 @@
-import type { FlowbiteModalTheme } from "./Modal";
+import type { FlowbiteModalTheme } from './Modal';
 
 export const modalTheme: FlowbiteModalTheme = {
   root: {
@@ -52,4 +52,4 @@ export const modalTheme: FlowbiteModalTheme = {
     base: 'flex items-center space-x-2 rounded-b border-gray-200 p-6 dark:border-gray-600',
     popup: 'border-t',
   },
-}
+};

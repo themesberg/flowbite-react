@@ -1,4 +1,4 @@
-import type { FlowbiteListGroupTheme } from "./ListGroup";
+import type { FlowbiteListGroupTheme } from './ListGroup';
 
 export const listGroupTheme: FlowbiteListGroupTheme = {
   root: {
@@ -19,4 +19,4 @@ export const listGroupTheme: FlowbiteListGroupTheme = {
       icon: 'mr-2 h-4 w-4 fill-current',
     },
   },
-}
+};

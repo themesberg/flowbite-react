@@ -1,4 +1,4 @@
-import type { FlowbiteToggleSwitchTheme } from "./ToggleSwitch";
+import type { FlowbiteToggleSwitchTheme } from './ToggleSwitch';
 
 export const toggleSwitchTheme: FlowbiteToggleSwitchTheme = {
   root: {
@@ -35,4 +35,4 @@ export const toggleSwitchTheme: FlowbiteToggleSwitchTheme = {
       },
     },
   },
-}
+};
