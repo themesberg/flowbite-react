@@ -38,8 +38,8 @@ export const tabTheme: FlowbiteTabTheme = {
         fullWidth: {
           base: 'ml-0 first:ml-0 w-full rounded-none flex',
           active: {
-            on: 'p-4 text-gray-900 bg-gray-100 active dark:bg-gray-700 dark:text-white !rounded-none',
-            off: 'bg-white hover:text-gray-700 hover:bg-gray-50 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700 !rounded-none',
+            on: 'p-4 text-gray-900 bg-gray-100 active dark:bg-gray-700 dark:text-white rounded-none',
+            off: 'bg-white hover:text-gray-700 hover:bg-gray-50 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700 rounded-none',
           },
         },
       },
