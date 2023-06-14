@@ -215,9 +215,8 @@ describe('Components / Accordion', () => {
                 on: 'text-3xl',
               },
               open: {
-                // FIXME Overwrite class from other props is a problem
-                off: '!text-gray-400',
-                on: '!text-gray-600',
+                off: 'text-gray-400',
+                on: 'text-gray-600',
               },
             },
           },
@@ -245,10 +244,11 @@ describe('Components / Accordion', () => {
           expect(title).toHaveClass('text-3xl');
         });
         openTitles.forEach((title) => {
-          expect(title).toHaveClass('!text-gray-600');
+          // Note: it is being overwrited by the className prop which is expected
+          expect(title).toHaveClass('text-cyan-300');
         });
         closedTitles.forEach((title) => {
-          expect(title).toHaveClass('!text-gray-400');
+          expect(title).toHaveClass('text-gray-400');
         });
       });
     });
