@@ -160,8 +160,7 @@ describe('Components / Button', () => {
       const theme = {
         button: {
           gradient: {
-            // FIXME Overwrite class from other props is a problem
-            yellowToPink: '!font-extralight',
+            yellowToPink: 'font-extralight',
           },
         },
       };
@@ -172,15 +171,14 @@ describe('Components / Button', () => {
         </Flowbite>,
       );
 
-      expect(button()).toHaveClass('!font-extralight');
+      expect(button()).toHaveClass('font-extralight');
     });
 
     it('should use `gradientDuoTone` classes', () => {
       const theme = {
         button: {
           gradientDuoTone: {
-            // FIXME Overwrite class from other props is a problem
-            yellowToPink: '!font-extralight',
+            yellowToPink: 'font-extralight',
           },
         },
       };
@@ -191,7 +189,7 @@ describe('Components / Button', () => {
         </Flowbite>,
       );
 
-      expect(button()).toHaveClass('!font-extralight');
+      expect(button()).toHaveClass('font-extralight');
     });
 
     it('should use `inner` classes', () => {
