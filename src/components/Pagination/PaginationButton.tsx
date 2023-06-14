@@ -62,6 +62,7 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
 
   return (
     <button
+      type="button"
       className={classNames(
         {
           [theme.pages.selector.disabled]: disabled,
