@@ -22,7 +22,7 @@ export const paginationTheme: FlowbitePaginationTheme = {
     selector: {
       base: 'w-12 border border-gray-300 bg-white py-2 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white',
       active:
-        '!bg-cyan-50 text-cyan-600 hover:bg-cyan-100 hover:text-cyan-700 dark:border-gray-700 dark:!bg-gray-700 dark:text-white',
+        'bg-cyan-50 text-cyan-600 hover:bg-cyan-100 hover:text-cyan-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white',
       disabled: 'opacity-50 cursor-normal',
     },
   },
