@@ -41,7 +41,7 @@ export const modalTheme: FlowbiteModalTheme = {
   },
   header: {
     base: 'flex items-start justify-between rounded-t dark:border-gray-600 border-b p-5',
-    popup: '!p-2 !border-b-0',
+    popup: 'p-2 border-b-0',
     title: 'text-xl font-medium text-gray-900 dark:text-white',
     close: {
       base: 'ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white',
