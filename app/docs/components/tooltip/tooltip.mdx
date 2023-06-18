@@ -19,7 +19,7 @@ Wrap the trigger component with the `<Tooltip>` component and pass the tooltip c
 
 This will render the tooltip whenever you hover over the trigger component.
 
-<CodePreview title="Default tooltip">
+<CodePreview importFlowbiteReact="Button, Tooltip" title="Default tooltip">
   <Tooltip content="Tooltip content">
     <Button>Default tooltip</Button>
   </Tooltip>
@@ -29,7 +29,7 @@ This will render the tooltip whenever you hover over the trigger component.
 
 Use the `style` prop to change the style of the tooltip. The default style is `light` and you can also use `dark`.
 
-<CodePreview title="Tooltip styles" className="flex gap-2">
+<CodePreview importFlowbiteReact="Button, Tooltip" title="Tooltip styles" className="flex gap-2">
   <Tooltip content="Tooltip content" style="light">
     <Button>Light tooltip</Button>
   </Tooltip>
@@ -42,7 +42,7 @@ Use the `style` prop to change the style of the tooltip. The default style is `l
 
 Update the placement of the tooltip using the `placement` prop. The default placement is `top` and you can also use `right`, `bottom`, and `left`.
 
-<CodePreview title="Placement" className="flex gap-2">
+<CodePreview importFlowbiteReact="Button, Tooltip" title="Placement" className="flex gap-2">
   <Tooltip content="Tooltip content" placement="top">
     <Button>Tooltip top</Button>
   </Tooltip>
@@ -63,7 +63,7 @@ Use the `trigger` prop to change the trigger type of the tooltip if you want to 
 
 The default trigger type is `hover` and you can also use `click`.
 
-<CodePreview title="Triggering" className="flex gap-2">
+<CodePreview importFlowbiteReact="Button, Tooltip" title="Triggering" className="flex gap-2">
   <Tooltip content="Tooltip content" trigger="hover">
     <Button>Tooltip hover</Button>
   </Tooltip>
@@ -76,7 +76,7 @@ The default trigger type is `hover` and you can also use `click`.
 
 Update the default animation of the tooltip component by using the `animation` prop. The default animation is `duration-300` and you can also use `duration-150`, `duration-500`, and `duration-1000`.
 
-<CodePreview title="Animation" className="flex flex-wrap gap-2">
+<CodePreview importFlowbiteReact="Button, Tooltip" title="Animation" className="flex flex-wrap gap-2">
   <Tooltip content="Tooltip content" animation={false}>
     <Button>Not animated tooltip</Button>
   </Tooltip>
@@ -98,7 +98,7 @@ Update the default animation of the tooltip component by using the `animation` p
 
 You can disable the arrow of the tooltip component by passing the `arrow` prop with a value of `false`.
 
-<CodePreview title="Disable arrow">
+<CodePreview importFlowbiteReact="Button, Tooltip" title="Disable arrow">
   <Tooltip content="Tooltip content" arrow={false}>
     <Button>Default tooltip</Button>
   </Tooltip>

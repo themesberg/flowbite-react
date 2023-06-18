@@ -10,6 +10,8 @@ const ModalPage: FC = () => {
   const [modalSize, setModalSize] = useState<string>('md');
   const [modalPlacement, setModalPlacement] = useState<string>('center');
 
+  console.log(modalSize, modalPlacement);
+
   const state = {
     openModal,
     setOpenModal,

@@ -364,7 +364,7 @@ export const theme: FlowbiteTheme = {
   },
   checkbox: {
     root: {
-      base: 'h-4 w-4 rounded border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-cyan-600',
+      base: 'h-4 w-4 rounded border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-cyan-600 text-cyan-600',
     },
   },
   darkThemeToggle: {
@@ -659,7 +659,7 @@ export const theme: FlowbiteTheme = {
   },
   radio: {
     root: {
-      base: 'h-4 w-4 border border-gray-300 focus:ring-2 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-cyan-600 dark:focus:ring-cyan-600',
+      base: 'h-4 w-4 border border-gray-300 focus:ring-2 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:focus:bg-cyan-600 dark:focus:ring-cyan-600 text-cyan-600',
     },
   },
   rangeSlider: {
@@ -872,7 +872,7 @@ export const theme: FlowbiteTheme = {
       list: 'space-y-2 py-2',
     },
     cta: {
-      base: 'mt-6 rounded-lg p-4',
+      base: 'mt-6 rounded-lg p-4 bg-gray-100 dark:bg-gray-700',
       color: {
         blue: 'bg-cyan-50 dark:bg-cyan-900',
         dark: 'bg-dark-50 dark:bg-dark-900',

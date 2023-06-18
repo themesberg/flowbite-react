@@ -61,7 +61,11 @@ To create custom actions inside of the list group, use the `onClick` prop on the
 
 Add icons to the list group items by using the `icon` prop on the `ListGroup.Item` component.
 
-<CodePreview title="List group with icons" className="w-48">
+<CodePreview
+  importExternal="import { HiCloudDownload, HiInbox, HiOutlineAdjustments } from 'react-icons/hi';"
+  title="List group with icons"
+  className="w-48"
+>
   <ListGroup>
     <ListGroup.Item active icon={HiUserCircle}>
       Profile

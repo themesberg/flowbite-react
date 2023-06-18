@@ -44,7 +44,11 @@ import {
 
 Use this example of a form component with `<TextInput>`, `<Checkbox>`, `<Label>` and `<Button>` elements to create a basic user authentication form and access the value of the component by accessing the `value` attribute.
 
-<CodePreview title="Default form">
+<CodePreview
+  githubPage="TextInput/TextInput"
+  importFlowbiteReact="Button, Checkbox, Label, TextInput"
+  title="Default form"
+>
   <form className="flex max-w-md flex-col gap-4">
     <div>
       <div className="mb-2 block">
@@ -70,7 +74,7 @@ Use this example of a form component with `<TextInput>`, `<Checkbox>`, `<Label>`
 
 Use the `sizing` prop on the `<TextInput>` form component from React to set the size of the input fields. You can hoose from the `sm`, `md`, and `lg` size options.
 
-<CodePreview title="Input sizing">
+<CodePreview githubPage="TextInput/TextInput" importFlowbiteReact="Label, TextInput" title="Input sizing">
   <div className="flex max-w-md flex-col gap-4">
     <div>
       <div className="mb-2 block">
@@ -97,7 +101,7 @@ Use the `sizing` prop on the `<TextInput>` form component from React to set the 
 
 Disable the input fields by passing the `disabled` and `readOnly` props to the `<TextInput>` React component.
 
-<CodePreview title="Disabled inputs">
+<CodePreview githubPage="TextInput/TextInput" importFlowbiteReact="Label, TextInput" title="Disabled inputs">
   <div className="flex max-w-md flex-col gap-4">
     <Label htmlFor="disabledInput1">API token</Label>
     <TextInput type="text" id="disabledInput1" placeholder="Disabled input" disabled />
@@ -110,7 +114,11 @@ Disable the input fields by passing the `disabled` and `readOnly` props to the `
 
 Pass the `shadow` prop to the form components from React to automatically add a shadow style.
 
-<CodePreview title="Shadow inputs">
+<CodePreview
+  githubPage="TextInput/TextInput"
+  importFlowbiteReact="Button, Checkbox, Label, TextInput"
+  title="Shadow inputs"
+>
   <form className="flex max-w-md flex-col gap-4">
     <div>
       <div className="mb-2 block">
@@ -147,7 +155,7 @@ Pass the `shadow` prop to the form components from React to automatically add a 
 
 Show a helper and descriptive text next to the input field to improve UI/UX when submitting forms by passing the `helperText` prop to the input component from React.
 
-<CodePreview title="Helper text">
+<CodePreview githubPage="TextInput/TextInput" importFlowbiteReact="Label, TextInput" title="Helper text">
   <div className="max-w-md">
     <div className="mb-2 block">
       <Label htmlFor="email3" value="Your email" />
@@ -160,9 +168,9 @@ Show a helper and descriptive text next to the input field to improve UI/UX when
       helperText={
         <>
           We’ll never share your details. Read our
-          <Link href="/forms" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+          <a href="/forms" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
             Privacy Policy
-          </Link>.
+          </a>.
         </>
       }
     />
@@ -173,7 +181,12 @@ Show a helper and descriptive text next to the input field to improve UI/UX when
 
 Use this example to show an icon inside the input component by passing the `icon` prop.
 
-<CodePreview title="Input element with icon on the left side">
+<CodePreview
+  githubPage="TextInput/TextInput"
+  importExternal="import { HiMail } from 'react-icons/hi';"
+  importFlowbiteReact="Label, TextInput"
+  title="Input element with icon on the left side"
+>
   <div className="max-w-md">
     <div className="mb-2 block">
       <Label htmlFor="email4" value="Your email" />
@@ -184,7 +197,12 @@ Use this example to show an icon inside the input component by passing the `icon
 
 Show the icon on the right side of the input element by passing the `rightIcon` property.
 
-<CodePreview title="Input element with icon on the right side">
+<CodePreview
+  githubPage="TextInput/TextInput"
+  importExternal="import { HiMail } from 'react-icons/hi';"
+  importFlowbiteReact="Label, TextInput"
+  title="Input element with icon on the right side"
+>
   <div className="max-w-md">
     <div className="mb-2 block">
       <Label htmlFor="email4" value="Your email" />
@@ -195,7 +213,12 @@ Show the icon on the right side of the input element by passing the `rightIcon` 
 
 Show an icon both on the left and right side of the component by passing both the `icon` and `rightIcon` props to the input field component from React.
 
-<CodePreview title="Input element with icon on both sides">
+<CodePreview
+  githubPage="TextInput/TextInput"
+  importExternal="import { HiMail } from 'react-icons/hi';"
+  importFlowbiteReact="Label, TextInput"
+  title="Input element with icon on both sides"
+>
   <div className="max-w-md">
     <div className="mb-2 block">
       <Label htmlFor="email4" value="Your email" />
@@ -206,7 +229,7 @@ Show an icon both on the left and right side of the component by passing both th
 
 Use this example to show an input element with an alternatively style for showing icons.
 
-<CodePreview title="Input element with addon">
+<CodePreview githubPage="TextInput/TextInput" importFlowbiteReact="Label, TextInput" title="Input element with addon">
   <div className="max-w-md">
     <div className="mb-2 block">
       <Label htmlFor="username" value="Username" />
@@ -219,7 +242,11 @@ Use this example to show an input element with an alternatively style for showin
 
 Show form validation for success and error messages by using the `color` prop on the input field element and label components.
 
-<CodePreview title="Success and error validation">
+<CodePreview
+  githubPage="TextInput/TextInput"
+  importFlowbiteReact="Label, TextInput"
+  title="Success and error validation"
+>
   <div className="flex max-w-md flex-col gap-4">
     <div>
       <div className="mb-2 block">
@@ -260,7 +287,7 @@ Show form validation for success and error messages by using the `color` prop on
 
 Update the color of the form elements by passing the `color` props to the input field components from React.
 
-<CodePreview title="Input colors">
+<CodePreview githubPage="TextInput/TextInput" importFlowbiteReact="Label, TextInput" title="Input colors">
   <div className="flex max-w-md flex-col gap-4">
     <div>
       <div className="mb-2 block">
@@ -299,7 +326,7 @@ Update the color of the form elements by passing the `color` props to the input 
 
 Use this example to show a textarea component in React and receive longer text from your users.
 
-<CodePreview title="Textarea">
+<CodePreview githubPage="Textarea/Textarea" importFlowbiteReact="Label, Textarea" title="Textarea element">
   <div id="textarea" className="max-w-md">
     <div className="mb-2 block">
       <Label htmlFor="comment" value="Your message" />
@@ -312,7 +339,7 @@ Use this example to show a textarea component in React and receive longer text f
 
 This component can be used to allow users to select from multiple options based on the `<Select>` component.
 
-<CodePreview title="Select input">
+<CodePreview githubPage="Select/Select" importFlowbiteReact="Label, Select" title="Select input">
   <div id="select" className="max-w-md">
     <div className="mb-2 block">
       <Label htmlFor="countries" value="Select your country" />
@@ -330,15 +357,15 @@ This component can be used to allow users to select from multiple options based 
 
 Use this example to show a list of options to your users that they can choose from by using the `<Checkbox> component.`
 
-<CodePreview title="Checkbox">
+<CodePreview githubPage="Checkbox/Checkbox" importFlowbiteReact="Checkbox, Label" title="Checkbox element">
   <div className="flex max-w-md flex-col gap-4" id="checkbox">
     <div className="flex items-center gap-2">
       <Checkbox id="accept" defaultChecked />
       <Label htmlFor="agree" className="flex">
         I agree with the&nbsp;
-        <Link href="/forms" className="text-cyan-600 hover:underline dark:text-cyan-500">
+        <a href="/forms" className="text-cyan-600 hover:underline dark:text-cyan-500">
           terms and conditions
-        </Link>
+        </a>
       </Label>
     </div>
     <div className="flex items-center gap-2">
@@ -376,7 +403,7 @@ Use this example to show a list of options to your users that they can choose fr
 
 Ask your users to choose only one value from multiple options based on the `<Radio>` component from React.
 
-<CodePreview title="Radio">
+<CodePreview githubPage="Radio/Radio" importFlowbiteReact="Label, Radio" title="Radio button">
   <fieldset className="flex max-w-md flex-col gap-4" id="radio">
     <legend className="mb-4">Choose your favorite country</legend>
     <div className="flex items-center gap-2">
@@ -408,7 +435,7 @@ Ask your users to choose only one value from multiple options based on the `<Rad
 
 Use the `<FileInput>` component to allow users to upload files from their browser.
 
-<CodePreview title="File upload">
+<CodePreview githubPage="FileInput/FileInput" importFlowbiteReact="FileInput, Label" title="File upload">
   <div id="fileUpload" className="max-w-md">
     <div className="mb-2 block">
       <Label htmlFor="file" value="Upload file" />
@@ -421,7 +448,7 @@ Use the `<FileInput>` component to allow users to upload files from their browse
 
 Use the `<ToggleSwitch>` component to ask users to enable or disable an option such as newsletter settings.
 
-<CodePreview title="Toggle switch">
+<CodePreview githubPage="ToggleSwitch/ToggleSwitch" importFlowbiteReact="ToggleSwitch" title="Toggle switch element">
   <div className="flex max-w-md flex-col gap-4" id="toggle">
     <ToggleSwitch checked={props.switch1} label="Toggle me" onChange={props.setSwitch1} />
     <ToggleSwitch checked={props.switch2} label="Toggle me (checked)" onChange={props.setSwitch2} />
@@ -433,7 +460,7 @@ Use the `<ToggleSwitch>` component to ask users to enable or disable an option s
 
 The `<RangeSlider>` component ca be used to allow users to select a number based on a minimum and maximum value.
 
-<CodePreview title="Range slider">
+<CodePreview githubPage="RangeSlider/RangeSlider" importFlowbiteReact="Label, RangeSlider" title="Range slider element">
   <div className="flex max-w-md flex-col gap-4">
     <div>
       <div className="mb-1 block">
@@ -445,7 +472,7 @@ The `<RangeSlider>` component ca be used to allow users to select a number based
       <div className="mb-1 block">
         <Label htmlFor="disbaled-range" value="Disabled" />
       </div>
-      <RangeSlider id="disabled-range" disabled={true} />
+      <RangeSlider id="disabled-range" disabled />
     </div>
     <div>
       <div className="mb-1 block">

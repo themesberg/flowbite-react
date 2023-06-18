@@ -11,7 +11,7 @@ In order to start using the button component you need to import it from Flowbite
 ```jsx
 'use client';
 
-import { Button } from 'flowbite';
+import { Button } from 'flowbite-react';
 ```
 
 ## Default buttons
@@ -132,7 +132,11 @@ Choose from `xs`, `sm`, `md`, `lg`, and `xl` as the value.
 
 You can add icons to the buttons by adding it inside the `<Button>` component near the text.
 
-<CodePreview title="Buttons with icon" className="flex flex-wrap gap-2">
+<CodePreview
+  importExternal="import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';"
+  title="Buttons with icon"
+  className="flex flex-wrap gap-2"
+>
   <Button>
     <HiShoppingCart className="mr-2 h-5 w-5" />
     Buy now
@@ -155,7 +159,11 @@ You can add a label to the button by adding the `label` property to the `<Button
 
 Create a button with only icons by adding the `iconOnly` property to the `<Button>` component. These are useful when you want to show buttons in a small space and for things like pagination.
 
-<CodePreview title="Icon buttons" className="flex flex-wrap items-center gap-2">
+<CodePreview
+  importExternal="import { HiOutlineArrowRight } from 'react-icons/hi';"
+  title="Icon buttons"
+  className="flex flex-wrap items-center gap-2"
+>
   <Button>
     <HiOutlineArrowRight className="h-6 w-6" />
   </Button>
@@ -174,13 +182,13 @@ Create a button with only icons by adding the `iconOnly` property to the `<Butto
 
 Add a loading state to the button element by adding the `isProcessing` property to the `<Button>` component.
 
-<CodePreview title="Loader" className="flex flex-wrap items-center gap-2">
+<CodePreview importFlowbiteReact="Button" title="Loader" className="flex flex-wrap items-center gap-2">
   <div className="flex flex-wrap items-center gap-2">
     <div>
-      <Button isProcessing={true}>Click me!</Button>
+      <Button isProcessing>Click me!</Button>
     </div>
     <div>
-      <Button isProcessing={true} outline>
+      <Button isProcessing outline>
         Click me!
       </Button>
     </div>

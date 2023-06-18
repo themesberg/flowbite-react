@@ -17,7 +17,7 @@ import { Card } from 'flowbite-react';
 Use this example to show a simple card component with a title and description and apply the `href` tag to the `<Card>` component to set a hyperlink to the card.
 
 <CodePreview title="Default card">
-  <Card href="#">
+  <Card href="#" className="max-w-sm">
     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
       Noteworthy technology acquisitions 2021
     </h5>
@@ -31,8 +31,8 @@ Use this example to show a simple card component with a title and description an
 
 By also importing the `<Button>` component you can add it inside the card to show a call to action button.
 
-<CodePreview title="Card with action button">
-  <Card>
+<CodePreview importFlowbiteReact="Button, Card" title="Card with action button">
+  <Card className="max-w-sm">
     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
       Noteworthy technology acquisitions 2021
     </h5>
@@ -86,7 +86,7 @@ Use the `horizontal` prop to show the card in a horizontal layout.
 
 Use this example to show a user card with a profile picture, name, job title, buttons and a dropdown menu.
 
-<CodePreview title="User profile card" className="max-w-sm">
+<CodePreview importFlowbiteReact="Card, Dropdown" title="User profile card" className="max-w-sm">
   <Card>
     <div className="flex justify-end px-4 pt-4">
       <Dropdown inline label="">
@@ -148,7 +148,11 @@ Use this example to show a user card with a profile picture, name, job title, bu
 
 You can also add form elements inside of the card component such as for sign up or login forms.
 
-<CodePreview title="Card with form inputs" className="max-w-sm">
+<CodePreview
+  importFlowbiteReact="Button, Card, Checkbox, Label, TextInput"
+  title="Card with form inputs"
+  className="max-w-sm"
+>
   <Card>
     <form className="flex flex-col gap-4">
       <div>
@@ -177,7 +181,7 @@ You can also add form elements inside of the card component such as for sign up 
 Use this example to show a product card with an image (product preview), title, price, rating stars and buttons built for E-commerce websites.
 
 <CodePreview title="E-commerce card" className="max-w-sm">
-  <Card imgAlt="Apple Watch Series 7 in colors pink, silver, and black" imgSrc="/images/products/product-1.png">
+  <Card imgAlt="Apple Watch Series 7 in colors pink, silver, and black" imgSrc="/images/products/apple-watch.png">
     <a href="#">
       <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
         Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport

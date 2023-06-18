@@ -26,7 +26,7 @@ Use this example to show a progress bar where you can set the progress rate usin
 Use this example to show a progress bar with a label. You can set the label text using the `textLabel` prop and the progress text using the `labelText` prop.
 
 <CodePreview title="With labels">
-  <Progress progress={50} labelProgress={true} textLabel="Flowbite" labelText={true} size="lg" />
+  <Progress progress={50} labelProgress textLabel="Flowbite" labelText size="lg" />
 </CodePreview>
 
 ## Label positioning
@@ -36,10 +36,10 @@ This example shows how you can position the label text inside the progress bar b
 <CodePreview title="Label positions">
   <Progress
     progress={45}
-    labelProgress={true}
+    labelProgress
     progressLabelPosition="inside"
     textLabel="Flowbite"
-    labelText={true}
+    labelText
     textLabelPosition="outside"
     size="lg"
   />
@@ -49,7 +49,7 @@ This example shows how you can position the label text inside the progress bar b
 
 The `size` prop from React can be used on the `<Progress>` component to set the size of the progress bar. You can choose from `sm`, `md`, `lg` and `xl`.
 
-<CodePreview title="Sizing">
+<CodePreview importFlowbiteReact="Progress" title="Sizing">
   <div className="flex flex-col gap-2">
     <div className="text-base font-medium dark:text-white">Small</div>
     <Progress progress={45} size="sm" color="dark" />
@@ -66,7 +66,7 @@ The `size` prop from React can be used on the `<Progress>` component to set the 
 
 Set your own custom colors for the progress bar component by using the `color` prop from React and the utility classes from Tailwind CSS.
 
-<CodePreview title="Colors">
+<CodePreview importFlowbiteReact="Progress" title="Colors">
   <div className="flex flex-col gap-2">
     <div className="text-base font-medium">Dark</div>
     <Progress progress={45} color="dark" />

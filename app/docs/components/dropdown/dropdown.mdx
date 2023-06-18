@@ -11,7 +11,7 @@ To start using the component make sure that you have imported it from Flowbite R
 ```jsx
 'use client';
 
-import { Dropdown } from 'flowbite';
+import { Dropdown } from 'flowbite-react';
 ```
 
 ## Default dropdown
@@ -63,7 +63,10 @@ Use the `<Dropdown.Header>` component to add a header to the dropdown. You can u
 
 Add custom icons next to the menu items by using the `icon` prop on the `<Dropdown.Item>` component.
 
-<CodePreview title="Dropdown items with icon">
+<CodePreview
+  importExternal="import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';"
+  title="Dropdown items with icon"
+>
   <Dropdown label="Dropdown">
     <Dropdown.Header>
       <span className="block text-sm">Bonnie Green</span>
