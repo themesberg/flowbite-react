@@ -34,6 +34,7 @@ export const PaginationButton: FC<PaginationButtonProps> = ({
 
   return (
     <button
+      type="button"
       className={classNames(
         {
           [theme.pages.selector.active]: active,
@@ -62,6 +63,7 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
 
   return (
     <button
+      type="button"
       className={classNames(
         {
           [theme.pages.selector.disabled]: disabled,

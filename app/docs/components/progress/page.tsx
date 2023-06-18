@@ -3,7 +3,7 @@ import ProgressPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Use the progress bar component to show the completion rate of a data indicator or use it as a loader element',
+    'The progress bar component is used to show the completion rate of a given task in the form of a filled bar where you can also add a label indicating percentage',
   title: 'React Progress Bar - Flowbite',
 };
 

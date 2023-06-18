@@ -3,7 +3,7 @@ import RatingPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Use the rating component to show reviews and testimonials from your users using stars and scores based on multiple styles and sizes',
+    'Get started with the rating component from Flowbite React to show testimonials and user reviews of your products using stars, labels and advanced layouts',
   title: 'React Rating - Flowbite',
 };
 

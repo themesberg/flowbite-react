@@ -3,7 +3,23 @@ import { ExampleAdditionalContent } from './additional-content.tsx';
 import { HiInformationCircle } from 'react-icons/hi';
 import { Alert } from '~/src';
 
-The alert component can be used to provide information to your users such as success or error messages, but also highlighted information complementing the normal flow of paragraphs and headers on a page. Flowbite also includes dismissable alerts which can be hidden by the users by clicking on the close icon.
+The alert component can be used to show a contextual text to the user such as a success or error message after form validation inside an alert box where you can choose from multiple colors, sizes, and styles.
+
+The examples below are styled with Tailwind CSS and the reactivity is handled by React and you can also add any type of content inside the alert box.
+
+To start using the alert box you need to import the `<Alert>` component from the `flowbite-react` package:
+
+```jsx
+'use client';
+
+import { Alert } from 'flowbite-react';
+```
+
+## Default alert
+
+The default alert component is a simple alert box with a text inside it and you can use the `color` prop to change the color of the alert box and the `title` prop to add a title to the alert box.
+
+Inside of the `<Alert>` component you can add any type of content such as text, images, or other components as they will be considered children of the alert box.
 
 <CodePreview title="Default alert">
   <Alert color="info">
@@ -12,13 +28,23 @@ The alert component can be used to provide information to your users such as suc
     </span>
   </Alert>
 </CodePreview>
-<CodePreview title="Alert with icon">
+
+## Alert with icon
+
+Use the `icon` prop to add an icon to the alert box and you can use any icon from the [React Icons](https://react-icons.github.io/react-icons/) library.
+
+<CodePreview importExternal="import { HiInformationCircle } from 'react-icons/hi';" title="Alert with icon">
   <Alert color="failure" icon={HiInformationCircle}>
     <span>
       <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
     </span>
   </Alert>
 </CodePreview>
+
+## Dismissable alert
+
+You can use the `onDismiss` prop on the `<Alert>` component to add a dismiss button to the alert box by adding a function inside of it that will be called when the user clicks on the dismiss button.
+
 <CodePreview title="Dismissable alert">
   <Alert color="success" onDismiss={() => alert('Alert dismissed!')}>
     <span>
@@ -26,6 +52,11 @@ The alert component can be used to provide information to your users such as suc
     </span>
   </Alert>
 </CodePreview>
+
+## Rounded alert
+
+To make the alert box rounded you can use the `rounded` prop on the `<Alert>` component.
+
 <CodePreview title="Rounded">
   <Alert color="warning" rounded>
     <span>
@@ -33,6 +64,11 @@ The alert component can be used to provide information to your users such as suc
     </span>
   </Alert>
 </CodePreview>
+
+## Border accent
+
+Add a border accent to the alert box by applying the `withBorderAccent` prop on the `<Alert>` component.
+
 <CodePreview title="Border accent">
   <Alert color="warning" withBorderAccent>
     <span>
@@ -40,14 +76,24 @@ The alert component can be used to provide information to your users such as suc
     </span>
   </Alert>
 </CodePreview>
-<CodePreview title="Additional content">
+
+## Additional content
+
+Add additional content by using the `additionalContent` prop and add any type of content inside of it.
+
+<CodePreview importExternal="import { HiInformationCircle } from 'react-icons/hi';" title="Additional content">
   <Alert additionalContent={<ExampleAdditionalContent />} color="warning" icon={HiInformationCircle}>
     <span>
       <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
     </span>
   </Alert>
 </CodePreview>
-<CodePreview title="All options">
+
+## All options
+
+This is an example with all of the available options and props for the alert component.
+
+<CodePreview importExternal="import { HiInformationCircle } from 'react-icons/hi';" title="All options">
   <Alert
     additionalContent={<ExampleAdditionalContent />}
     color="success"
@@ -60,3 +106,7 @@ The alert component can be used to provide information to your users such as suc
     </span>
   </Alert>
 </CodePreview>
+
+## References
+
+- [Flowbite Alerts](https://flowbite.com/docs/components/alerts/)

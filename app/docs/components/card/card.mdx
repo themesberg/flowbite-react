@@ -2,10 +2,22 @@ import { CodePreview } from '~/app/components/code-preview';
 import { Button, Card, Checkbox, Dropdown, Label, TextInput } from '~/src';
 import Image from 'next/image';
 
-Use these responsive card components to show data entries and information to your users in multiple forms and contexts such as for your blog, application, user profiles, and more.
+The card component can be used to show a wide variety of content such as previews of blog posts, user profiles, pricing plans, and more. Choose from one of the many examples built with React and the utility classes from Tailwind CSS.
+
+To start using the card component you will need to import it from `flowbite-react`:
+
+```jsx
+'use client';
+
+import { Card } from 'flowbite-react';
+```
+
+## Default card
+
+Use this example to show a simple card component with a title and description and apply the `href` tag to the `<Card>` component to set a hyperlink to the card.
 
 <CodePreview title="Default card">
-  <Card href="#">
+  <Card href="#" className="max-w-sm">
     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
       Noteworthy technology acquisitions 2021
     </h5>
@@ -14,8 +26,13 @@ Use these responsive card components to show data entries and information to you
     </p>
   </Card>
 </CodePreview>
-<CodePreview title="Card with action button">
-  <Card>
+
+## Card with CTA button
+
+By also importing the `<Button>` component you can add it inside the card to show a call to action button.
+
+<CodePreview importFlowbiteReact="Button, Card" title="Card with action button">
+  <Card className="max-w-sm">
     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
       Noteworthy technology acquisitions 2021
     </h5>
@@ -34,17 +51,12 @@ Use these responsive card components to show data entries and information to you
     </Button>
   </Card>
 </CodePreview>
+
+## Card with image
+
+Add an image to the card by using the `imgSrc` prop and set the `imgAlt` prop to add an alt text to the image.
+
 <CodePreview title="Card with decorative image" className="max-w-sm">
-  <Card imgSrc="/images/blog/image-1.jpg">
-    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-      Noteworthy technology acquisitions 2021
-    </h5>
-    <p className="font-normal text-gray-700 dark:text-gray-400">
-      Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-    </p>
-  </Card>
-</CodePreview>
-<CodePreview title="Card with image with alt text" className="max-w-sm">
   <Card imgAlt="Meaningful alt text for an image that is not purely decorative" imgSrc="/images/blog/image-1.jpg">
     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
       Noteworthy technology acquisitions 2021
@@ -54,6 +66,11 @@ Use these responsive card components to show data entries and information to you
     </p>
   </Card>
 </CodePreview>
+
+## Horizontal card
+
+Use the `horizontal` prop to show the card in a horizontal layout.
+
 <CodePreview title="Horizontal card" className="max-w-sm">
   <Card horizontal imgSrc="/images/blog/image-4.jpg">
     <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -64,7 +81,12 @@ Use these responsive card components to show data entries and information to you
     </p>
   </Card>
 </CodePreview>
-<CodePreview title="User profile card" className="max-w-sm">
+
+## User profile card
+
+Use this example to show a user card with a profile picture, name, job title, buttons and a dropdown menu.
+
+<CodePreview importFlowbiteReact="Card, Dropdown" title="User profile card" className="max-w-sm">
   <Card>
     <div className="flex justify-end px-4 pt-4">
       <Dropdown inline label="">
@@ -121,7 +143,16 @@ Use these responsive card components to show data entries and information to you
     </div>
   </Card>
 </CodePreview>
-<CodePreview title="Card with form inputs" className="max-w-sm">
+
+## Card with form
+
+You can also add form elements inside of the card component such as for sign up or login forms.
+
+<CodePreview
+  importFlowbiteReact="Button, Card, Checkbox, Label, TextInput"
+  title="Card with form inputs"
+  className="max-w-sm"
+>
   <Card>
     <form className="flex flex-col gap-4">
       <div>
@@ -144,8 +175,13 @@ Use these responsive card components to show data entries and information to you
     </form>
   </Card>
 </CodePreview>
+
+## E-commerce card
+
+Use this example to show a product card with an image (product preview), title, price, rating stars and buttons built for E-commerce websites.
+
 <CodePreview title="E-commerce card" className="max-w-sm">
-  <Card imgAlt="Apple Watch Series 7 in colors pink, silver, and black" imgSrc="/images/products/product-1.png">
+  <Card imgAlt="Apple Watch Series 7 in colors pink, silver, and black" imgSrc="/images/products/apple-watch.png">
     <a href="#">
       <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
         Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport
@@ -207,6 +243,11 @@ Use these responsive card components to show data entries and information to you
     </div>
   </Card>
 </CodePreview>
+
+## CTA card
+
+Use this component to display a call to action card for mobile applications where you feature download buttons for App Store and Google Play.
+
 <CodePreview title="Call to action card">
   <Card>
     <h5 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">Work fast from anywhere</h5>
@@ -265,6 +306,11 @@ Use these responsive card components to show data entries and information to you
     </div>
   </Card>
 </CodePreview>
+
+## Card with list
+
+Use this component to display a card with a list of items such as your latest customers or latest orders that include an image, descriptive text and a link to view more.
+
 <CodePreview title="Card with list" className="max-w-sm">
   <Card>
     <div className="mb-4 flex items-center justify-between">
@@ -369,6 +415,11 @@ Use these responsive card components to show data entries and information to you
     </div>
   </Card>
 </CodePreview>
+
+## Pricing card
+
+Use the pricing card component to show the pricing of your product or service.
+
 <CodePreview title="Pricing card" className="max-w-sm">
   <Card>
     <h5 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Standard plan</h5>
@@ -492,6 +543,11 @@ Use these responsive card components to show data entries and information to you
     </button>
   </Card>
 </CodePreview>
+
+## Crypto card (web3)
+
+This component can be used for crypto and web3 related projects where you can choose which wallet you want to connect with (ie. Metamask, Coinbase).
+
 <CodePreview title="Crypto card" className="max-w-sm">
   <Card>
     <h5 className="mb-3 text-base font-semibold text-gray-900 dark:text-white lg:text-xl">Connect wallet</h5>
@@ -736,3 +792,7 @@ Use these responsive card components to show data entries and information to you
     </div>
   </Card>
 </CodePreview>
+
+## References
+
+- [Flowbite Card](https://flowbite.com/docs/components/card/)

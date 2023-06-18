@@ -4,7 +4,7 @@ import DropdownPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Get started with the dropdown component to show a list of menu items when clicking on the trigger element based on multiple layouts, styles, and placements',
+    'Use the dropdown component to trigger a list of menu items when clicking on an element such as a button or link based on multiple styles, sizes, and placements with React',
   title: 'React Dropdown - Flowbite',
 };
 

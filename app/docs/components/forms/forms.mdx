@@ -1,0 +1,500 @@
+import Link from 'next/link';
+import { HiMail } from 'react-icons/hi';
+import { CodePreview } from '~/app/components/code-preview';
+import {
+  Button,
+  Checkbox,
+  FileInput,
+  Label,
+  Radio,
+  RangeSlider,
+  Select,
+  Textarea,
+  TextInput,
+  ToggleSwitch,
+} from '~/src';
+
+The form elements from Flowbite React can help you to collect input data from your website visitors by using input field elements, checkboxes, radios, file upload elements, and more based on React and Tailwind CSS.
+
+These components can be used to create form submission pages, authentication features for your users and you can use the elements together with other components from Flowbite React such as with modals, cards, and more.
+
+Check out the form elements from Flowbite React on this page and customize the value and options using the React props API and customize the styles using Tailwind CSS.
+
+Make sure that you import the appropiate components from the `flowbite-react` library:
+
+```jsx
+'use client';
+
+// only import what you want to use
+import {
+  Button,
+  Checkbox,
+  FileInput,
+  Label,
+  Radio,
+  RangeSlider,
+  Select,
+  Textarea,
+  TextInput,
+  ToggleSwitch,
+} from 'flowbite-react';
+```
+
+## Default form
+
+Use this example of a form component with `<TextInput>`, `<Checkbox>`, `<Label>` and `<Button>` elements to create a basic user authentication form and access the value of the component by accessing the `value` attribute.
+
+<CodePreview
+  githubPage="TextInput/TextInput"
+  importFlowbiteReact="Button, Checkbox, Label, TextInput"
+  title="Default form"
+>
+  <form className="flex max-w-md flex-col gap-4">
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="email1" value="Your email" />
+      </div>
+      <TextInput id="email1" type="email" placeholder="name@flowbite.com" required />
+    </div>
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="password1" value="Your password" />
+      </div>
+      <TextInput id="password1" type="password" required />
+    </div>
+    <div className="flex items-center gap-2">
+      <Checkbox id="remember" />
+      <Label htmlFor="remember">Remember me</Label>
+    </div>
+    <Button type="submit">Submit</Button>
+  </form>
+</CodePreview>
+
+## Input sizing
+
+Use the `sizing` prop on the `<TextInput>` form component from React to set the size of the input fields. You can hoose from the `sm`, `md`, and `lg` size options.
+
+<CodePreview githubPage="TextInput/TextInput" importFlowbiteReact="Label, TextInput" title="Input sizing">
+  <div className="flex max-w-md flex-col gap-4">
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="small" value="Small input" />
+      </div>
+      <TextInput id="small" type="text" sizing="sm" />
+    </div>
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="base" value="Base input" />
+      </div>
+      <TextInput id="base" type="text" sizing="md" />
+    </div>
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="large" value="Large input" />
+      </div>
+      <TextInput id="large" type="text" sizing="lg" />
+    </div>
+  </div>
+</CodePreview>
+
+## Disabled inputs
+
+Disable the input fields by passing the `disabled` and `readOnly` props to the `<TextInput>` React component.
+
+<CodePreview githubPage="TextInput/TextInput" importFlowbiteReact="Label, TextInput" title="Disabled inputs">
+  <div className="flex max-w-md flex-col gap-4">
+    <Label htmlFor="disabledInput1">API token</Label>
+    <TextInput type="text" id="disabledInput1" placeholder="Disabled input" disabled />
+    <Label htmlFor="disabledInput2">Personal access token</Label>
+    <TextInput type="text" id="disabledInput2" placeholder="Disabled readonly input" disabled readOnly />
+  </div>
+</CodePreview>
+
+## Inputs with shadow
+
+Pass the `shadow` prop to the form components from React to automatically add a shadow style.
+
+<CodePreview
+  githubPage="TextInput/TextInput"
+  importFlowbiteReact="Button, Checkbox, Label, TextInput"
+  title="Shadow inputs"
+>
+  <form className="flex max-w-md flex-col gap-4">
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="email2" value="Your email" />
+      </div>
+      <TextInput id="email2" type="email" placeholder="name@flowbite.com" required shadow />
+    </div>
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="password2" value="Your password" />
+      </div>
+      <TextInput id="password2" type="password" required shadow />
+    </div>
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="repeat-password" value="Repeat password" />
+      </div>
+      <TextInput id="repeat-password" type="password" required shadow />
+    </div>
+    <div className="flex items-center gap-2">
+      <Checkbox id="agree" />
+      <Label htmlFor="agree" className="flex">
+        I agree with the&nbsp;
+        <Link href="/forms" className="text-cyan-600 hover:underline dark:text-cyan-500">
+          terms and conditions
+        </Link>
+      </Label>
+    </div>
+    <Button type="submit">Register new account</Button>
+  </form>
+</CodePreview>
+
+## Form helper text
+
+Show a helper and descriptive text next to the input field to improve UI/UX when submitting forms by passing the `helperText` prop to the input component from React.
+
+<CodePreview githubPage="TextInput/TextInput" importFlowbiteReact="Label, TextInput" title="Helper text">
+  <div className="max-w-md">
+    <div className="mb-2 block">
+      <Label htmlFor="email3" value="Your email" />
+    </div>
+    <TextInput
+      id="email3"
+      type="email"
+      placeholder="name@flowbite.com"
+      required
+      helperText={
+        <>
+          We’ll never share your details. Read our
+          <a href="/forms" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Privacy Policy
+          </a>.
+        </>
+      }
+    />
+  </div>
+</CodePreview>
+
+## Input groups with icon
+
+Use this example to show an icon inside the input component by passing the `icon` prop.
+
+<CodePreview
+  githubPage="TextInput/TextInput"
+  importExternal="import { HiMail } from 'react-icons/hi';"
+  importFlowbiteReact="Label, TextInput"
+  title="Input element with icon on the left side"
+>
+  <div className="max-w-md">
+    <div className="mb-2 block">
+      <Label htmlFor="email4" value="Your email" />
+    </div>
+    <TextInput id="email4" type="email" icon={HiMail} placeholder="name@flowbite.com" required />
+  </div>
+</CodePreview>
+
+Show the icon on the right side of the input element by passing the `rightIcon` property.
+
+<CodePreview
+  githubPage="TextInput/TextInput"
+  importExternal="import { HiMail } from 'react-icons/hi';"
+  importFlowbiteReact="Label, TextInput"
+  title="Input element with icon on the right side"
+>
+  <div className="max-w-md">
+    <div className="mb-2 block">
+      <Label htmlFor="email4" value="Your email" />
+    </div>
+    <TextInput id="email4" type="email" rightIcon={HiMail} placeholder="name@flowbite.com" required />
+  </div>
+</CodePreview>
+
+Show an icon both on the left and right side of the component by passing both the `icon` and `rightIcon` props to the input field component from React.
+
+<CodePreview
+  githubPage="TextInput/TextInput"
+  importExternal="import { HiMail } from 'react-icons/hi';"
+  importFlowbiteReact="Label, TextInput"
+  title="Input element with icon on both sides"
+>
+  <div className="max-w-md">
+    <div className="mb-2 block">
+      <Label htmlFor="email4" value="Your email" />
+    </div>
+    <TextInput id="email4" type="email" icon={HiMail} rightIcon={HiMail} placeholder="name@flowbite.com" required />
+  </div>
+</CodePreview>
+
+Use this example to show an input element with an alternatively style for showing icons.
+
+<CodePreview githubPage="TextInput/TextInput" importFlowbiteReact="Label, TextInput" title="Input element with addon">
+  <div className="max-w-md">
+    <div className="mb-2 block">
+      <Label htmlFor="username" value="Username" />
+    </div>
+    <TextInput id="username3" placeholder="Bonnie Green" required addon="@" />
+  </div>
+</CodePreview>
+
+## Form validation
+
+Show form validation for success and error messages by using the `color` prop on the input field element and label components.
+
+<CodePreview
+  githubPage="TextInput/TextInput"
+  importFlowbiteReact="Label, TextInput"
+  title="Success and error validation"
+>
+  <div className="flex max-w-md flex-col gap-4">
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="username3" color="success" value="Your name" />
+      </div>
+      <TextInput
+        id="username"
+        placeholder="Bonnie Green"
+        required
+        color="success"
+        helperText={
+          <>
+            <span className="font-medium">Alright!</span> Username available!
+          </>
+        }
+      />
+    </div>
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="username4" color="failure" value="Your name" />
+      </div>
+      <TextInput
+        id="username4"
+        placeholder="Bonnie Green"
+        required
+        color="failure"
+        helperText={
+          <>
+            <span className="font-medium">Oops!</span> Username already taken!
+          </>
+        }
+      />
+    </div>
+  </div>
+</CodePreview>
+
+## Input element colors
+
+Update the color of the form elements by passing the `color` props to the input field components from React.
+
+<CodePreview githubPage="TextInput/TextInput" importFlowbiteReact="Label, TextInput" title="Input colors">
+  <div className="flex max-w-md flex-col gap-4">
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="input-gray" color="gray" value="Gray" />
+      </div>
+      <TextInput id="input-gray" placeholder="Input Gray" required color="gray" />
+    </div>
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="input-info" color="info" value="Info" />
+      </div>
+      <TextInput id="input-info" placeholder="Input Info" required color="info" />
+    </div>
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="input-success" color="success" value="Success" />
+      </div>
+      <TextInput id="input-success" placeholder="Input Success" required color="success" />
+    </div>
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="input-failure" color="failure" value="Failure" />
+      </div>
+      <TextInput id="input-failure" placeholder="Input Failure" required color="failure" />
+    </div>
+    <div>
+      <div className="mb-2 block">
+        <Label htmlFor="input-warning" color="warning" value="Warning" />
+      </div>
+      <TextInput id="input-warning" placeholder="Input Warning" required color="warning" />
+    </div>
+  </div>
+</CodePreview>
+
+## Textarea element
+
+Use this example to show a textarea component in React and receive longer text from your users.
+
+<CodePreview githubPage="Textarea/Textarea" importFlowbiteReact="Label, Textarea" title="Textarea element">
+  <div id="textarea" className="max-w-md">
+    <div className="mb-2 block">
+      <Label htmlFor="comment" value="Your message" />
+    </div>
+    <Textarea id="comment" placeholder="Leave a comment..." required rows={4} />
+  </div>
+</CodePreview>
+
+## Select input
+
+This component can be used to allow users to select from multiple options based on the `<Select>` component.
+
+<CodePreview githubPage="Select/Select" importFlowbiteReact="Label, Select" title="Select input">
+  <div id="select" className="max-w-md">
+    <div className="mb-2 block">
+      <Label htmlFor="countries" value="Select your country" />
+    </div>
+    <Select id="countries" required>
+      <option>United States</option>
+      <option>Canada</option>
+      <option>France</option>
+      <option>Germany</option>
+    </Select>
+  </div>
+</CodePreview>
+
+## Checkbox
+
+Use this example to show a list of options to your users that they can choose from by using the `<Checkbox> component.`
+
+<CodePreview githubPage="Checkbox/Checkbox" importFlowbiteReact="Checkbox, Label" title="Checkbox element">
+  <div className="flex max-w-md flex-col gap-4" id="checkbox">
+    <div className="flex items-center gap-2">
+      <Checkbox id="accept" defaultChecked />
+      <Label htmlFor="agree" className="flex">
+        I agree with the&nbsp;
+        <a href="/forms" className="text-cyan-600 hover:underline dark:text-cyan-500">
+          terms and conditions
+        </a>
+      </Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <Checkbox id="promotion" />
+      <Label htmlFor="promotion">I want to get promotional offers</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <Checkbox id="age" />
+      <Label htmlFor="age">I am 18 years or older</Label>
+    </div>
+    <div className="flex gap-2">
+      <div className="flex h-5 items-center">
+        <Checkbox id="shipping" />
+      </div>
+      <div className="flex flex-col">
+        <Label htmlFor="shipping">Free shipping via Flowbite</Label>
+        <div className="text-gray-500 dark:text-gray-300">
+          <span className="text-xs font-normal">
+            For orders shipped from Flowbite from <span className="font-medium">€ 25</span> in books or&nbsp;
+            <span>€ 29</span> on other categories
+          </span>
+        </div>
+      </div>
+    </div>
+    <div className="flex items-center gap-2">
+      <Checkbox id="disabled" disabled />
+      <Label htmlFor="disabled" disabled>
+        Eligible for international shipping (disabled)
+      </Label>
+    </div>
+  </div>
+</CodePreview>
+
+## Radio button
+
+Ask your users to choose only one value from multiple options based on the `<Radio>` component from React.
+
+<CodePreview githubPage="Radio/Radio" importFlowbiteReact="Label, Radio" title="Radio button">
+  <fieldset className="flex max-w-md flex-col gap-4" id="radio">
+    <legend className="mb-4">Choose your favorite country</legend>
+    <div className="flex items-center gap-2">
+      <Radio id="united-state" name="countries" value="USA" defaultChecked />
+      <Label htmlFor="united-state">United States</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <Radio id="germany" name="countries" value="Germany" />
+      <Label htmlFor="germany">Germany</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <Radio id="spain" name="countries" value="Spain" />
+      <Label htmlFor="spain">Spain</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <Radio id="uk" name="countries" value="United Kingdom" />
+      <Label htmlFor="uk">United Kingdom</Label>
+    </div>
+    <div className="flex items-center gap-2">
+      <Radio id="china" name="countries" value="China" disabled />
+      <Label htmlFor="china" disabled>
+        China (disabled)
+      </Label>
+    </div>
+  </fieldset>
+</CodePreview>
+
+## File upload
+
+Use the `<FileInput>` component to allow users to upload files from their browser.
+
+<CodePreview githubPage="FileInput/FileInput" importFlowbiteReact="FileInput, Label" title="File upload">
+  <div id="fileUpload" className="max-w-md">
+    <div className="mb-2 block">
+      <Label htmlFor="file" value="Upload file" />
+    </div>
+    <FileInput id="file" helperText="A profile picture is useful to confirm your are logged into your account" />
+  </div>
+</CodePreview>
+
+## Toggle switch
+
+Use the `<ToggleSwitch>` component to ask users to enable or disable an option such as newsletter settings.
+
+<CodePreview githubPage="ToggleSwitch/ToggleSwitch" importFlowbiteReact="ToggleSwitch" title="Toggle switch element">
+  <div className="flex max-w-md flex-col gap-4" id="toggle">
+    <ToggleSwitch checked={props.switch1} label="Toggle me" onChange={props.setSwitch1} />
+    <ToggleSwitch checked={props.switch2} label="Toggle me (checked)" onChange={props.setSwitch2} />
+    <ToggleSwitch checked={false} disabled label="Toggle me (disabled)" onChange={() => undefined} />
+  </div>
+</CodePreview>
+
+## Range slider
+
+The `<RangeSlider>` component ca be used to allow users to select a number based on a minimum and maximum value.
+
+<CodePreview githubPage="RangeSlider/RangeSlider" importFlowbiteReact="Label, RangeSlider" title="Range slider element">
+  <div className="flex max-w-md flex-col gap-4">
+    <div>
+      <div className="mb-1 block">
+        <Label htmlFor="default-range" value="Default" />
+      </div>
+      <RangeSlider id="default-range" />
+    </div>
+    <div>
+      <div className="mb-1 block">
+        <Label htmlFor="disbaled-range" value="Disabled" />
+      </div>
+      <RangeSlider id="disabled-range" disabled />
+    </div>
+    <div>
+      <div className="mb-1 block">
+        <Label htmlFor="sm-range" value="Small" />
+      </div>
+      <RangeSlider id="sm-range" sizing="sm" />
+    </div>
+    <div>
+      <div className="mb-1 block">
+        <Label htmlFor="md-range" value="Medium" />
+      </div>
+      <RangeSlider id="md-range" sizing="md" />
+    </div>
+    <div>
+      <div className="mb-1 block">
+        <Label htmlFor="lg-range" value="Large" />
+      </div>
+      <RangeSlider id="lg-range" sizing="lg" />
+    </div>
+  </div>
+</CodePreview>
+
+## References
+
+- [Flowbite Forms](https://flowbite.com/docs/components/forms/)
