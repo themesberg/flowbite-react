@@ -1,5 +1,5 @@
 import { CodePreview } from '~/app/components/code-preview';
-import { Rating } from '~/src';
+import { Rating, theme } from '~/src';
 
 The rating component can be used to show user reviews and testimonials in the form of stars, reviews, and labels based on multiple styles and layouts built with React and Tailwind CSS.
 
@@ -113,6 +113,14 @@ Use this component as an advanced layout for user ratings that include both the 
   </Rating.Advanced>
   <Rating.Advanced percentFilled={1}>1 star</Rating.Advanced>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.rating, null, 2)}</code>
+</pre>
 
 ## References
 

@@ -1,6 +1,6 @@
 import { HiCheck, HiClock } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
-import { Badge } from '~/src';
+import { Badge, theme } from '~/src';
 
 The badge component can be used to show text, labels, and counters inside a small box or circle element which can be placed inside paragraphs, buttons, dropdowns, menu items, and more.
 
@@ -102,6 +102,14 @@ You can choose from `xs` and `sm` sizes.
     Pink
   </Badge>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.badge, null, 2)}</code>
+</pre>
 
 ## References
 

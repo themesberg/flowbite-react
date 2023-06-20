@@ -1,6 +1,6 @@
-import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
-import { Button } from '~/src';
+import { Button, theme } from '~/src';
+import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
 
 The button component is a common UI component found on the web that allows users to trigger certain actions on your website such as submitting a form, navigating to a new page, or downloading a file.
 
@@ -202,6 +202,14 @@ You can disable the button by adding the `disabled` property to the `<Button>` c
 <CodePreview title="Disabled">
   <Button disabled>Disabled button</Button>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.button, null, 2)}</code>
+</pre>
 
 ## References
 

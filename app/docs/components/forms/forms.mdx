@@ -12,6 +12,7 @@ import {
   Textarea,
   TextInput,
   ToggleSwitch,
+  theme,
 } from '~/src';
 
 The form elements from Flowbite React can help you to collect input data from your website visitors by using input field elements, checkboxes, radios, file upload elements, and more based on React and Tailwind CSS.
@@ -494,6 +495,26 @@ The `<RangeSlider>` component ca be used to allow users to select a number based
     </div>
   </div>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>
+    {JSON.stringify(
+      Object.fromEntries(
+        Object.entries(theme).filter(([key]) =>
+          ['checkbox', 'fileInput', 'label', 'radio', 'rangeSlider', 'textarea', 'textInput', 'toggleSwitch'].includes(
+            key,
+          ),
+        ),
+      ),
+      null,
+      2,
+    )}
+  </code>
+</pre>
 
 ## References
 

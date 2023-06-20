@@ -1,5 +1,5 @@
 import { CodePreview } from '~/app/components/code-preview';
-import { Avatar, Dropdown } from '~/src';
+import { Avatar, Dropdown, theme } from '~/src';
 import Image from 'next/image';
 
 The avatar component from Flowbite React can be used to show a visual representation of a user or team account for your application based on multiple examples, colors, sizes and shapes.
@@ -196,6 +196,14 @@ You can override the default image element by passing the `img` prop to the `<Av
     />
   </div>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.avatar, null, 2)}</code>
+</pre>
 
 ## References
 

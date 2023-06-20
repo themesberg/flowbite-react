@@ -1,5 +1,5 @@
 import { CodePreview } from '~/app/components/code-preview';
-import { Pagination } from '~/src';
+import { Pagination, theme } from '~/src';
 
 The pagination component can be used to show a list of pages with numbers and links to allow the users to navigate through multiple pages, data from tables, and more.
 
@@ -139,6 +139,14 @@ Customize the text for the next and previous buttons by passing the `previousLab
     />
   </div>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.pagination, null, 2)}</code>
+</pre>
 
 ## References
 

@@ -1,5 +1,5 @@
 import { CodePreview } from '~/app/components/code-preview';
-import { Button, Spinner } from '~/src';
+import { Button, Spinner, theme } from '~/src';
 
 The spinner component should be used to indicate a loading status of the content that you're fetching from your database and you can choose from multiple styles, colors, sizes, and animations based on React and Tailwind CSS.
 
@@ -74,6 +74,14 @@ Add the loading spinner inside a button to indicate fetching status directly ins
     <span className="pl-3">Loading...</span>
   </Button>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.spinner, null, 2)}</code>
+</pre>
 
 ## References
 

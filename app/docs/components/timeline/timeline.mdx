@@ -1,6 +1,6 @@
 import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
-import { Button, Timeline } from '~/src';
+import { Button, Timeline, theme } from '~/src';
 
 The timeline component can be used to show a list of events and items in a chronological order with a vertical or horizontal alignment based on multiple examples, styles, layouts, and colors.
 
@@ -136,6 +136,14 @@ Use the `horizontal` prop to show the timeline component and the child component
     </Timeline.Item>
   </Timeline>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.timeline, null, 2)}</code>
+</pre>
 
 ## References
 
