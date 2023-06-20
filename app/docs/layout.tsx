@@ -1,6 +1,5 @@
 'use client';
 
-import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -15,6 +14,7 @@ import 'prismjs/components/prism-typescript';
 import type { FC, PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
+import { twMerge } from 'tailwind-merge';
 import '~/app/docs.css';
 import '~/app/style.css';
 import { Accordion, Badge, Flowbite, Footer, Navbar, Sidebar } from '~/src';
@@ -145,11 +145,9 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
   return (
     <>
       <div
-        className={classNames(
+        className={twMerge(
           'fixed inset-0 z-30 h-full w-64 flex-none lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-0',
-          {
-            hidden: isCollapsed,
-          },
+          isCollapsed && 'hidden',
         )}
       >
         <Sidebar
@@ -172,21 +170,24 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                       off: 'mb-1 text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200',
                     },
                   }}
-                  className={classNames(
-                    'flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide',
+                  className={twMerge(
+                    'flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide',
                     pathname.includes('/getting-started/') &&
                       'text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
                   )}
                 >
                   Getting started
                 </Accordion.Title>
-                <Accordion.Content className="mb-2 border-none !p-0">
+                <Accordion.Content className="mb-2 border-none p-0">
                   <Sidebar.ItemGroup className="border-none">
                     <SidebarLink href="/docs/getting-started/introduction">Introduction</SidebarLink>
                     <SidebarLink href="/docs/getting-started/quickstart">Quickstart</SidebarLink>
                     <SidebarLink href="/docs/getting-started/nextjs">
                       <span className="flex items-center gap-2">
-                        Next.js <Badge color="cyan">New</Badge>
+                        Next.js{' '}
+                        <Badge color="cyan" className="px-2">
+                          New
+                        </Badge>
                       </span>
                     </SidebarLink>
                     <SidebarLink href="/docs/getting-started/typescript">TypeScript</SidebarLink>
@@ -206,15 +207,15 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                       off: 'mb-1 text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200',
                     },
                   }}
-                  className={classNames(
-                    'flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide',
+                  className={twMerge(
+                    'flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide',
                     pathname.includes('/customize/') &&
                       'text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
                   )}
                 >
                   Customize
                 </Accordion.Title>
-                <Accordion.Content className="mb-2 space-y-0.5 border-none !p-0">
+                <Accordion.Content className="mb-2 space-y-0.5 border-none p-0">
                   <Sidebar.ItemGroup className="border-none">
                     <SidebarLink href="/docs/customize/theme">Theme</SidebarLink>
                     <SidebarLink href="/docs/customize/dark-mode">Dark mode</SidebarLink>
@@ -223,7 +224,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
               </Accordion.Panel>
             </Accordion>
             <Accordion collapseAll={!pathname.includes('/components/')} flush className="border-none">
-              <Accordion.Panel className="focus:!outline-none focus:!ring-0">
+              <Accordion.Panel className="focus:outline-none focus:ring-0">
                 <Accordion.Title
                   theme={{
                     open: {
@@ -231,15 +232,15 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                       off: 'mb-1 text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200',
                     },
                   }}
-                  className={classNames(
-                    'flex w-full items-center justify-between !bg-transparent !p-0 text-sm font-semibold uppercase tracking-wide',
+                  className={twMerge(
+                    'flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide',
                     pathname.includes('/components/') &&
                       'text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
                   )}
                 >
                   Components
                 </Accordion.Title>
-                <Accordion.Content className="mb-2 border-none !p-0">
+                <Accordion.Content className="mb-2 border-none p-0">
                   <Sidebar.ItemGroup className="border-none">
                     <SidebarLink href="/docs/components/accordion">Accordion</SidebarLink>
                     <SidebarLink href="/docs/components/alert">Alert</SidebarLink>
@@ -293,11 +294,11 @@ const SidebarLink: FC<PropsWithChildren & { href: string }> = ({ children, href 
     <Sidebar.Item
       as={Link}
       href={href}
-      className={classNames(
-        '!p-0 !font-medium transition-all hover:!bg-transparent lg:text-sm [&>*]:px-0',
+      className={twMerge(
+        'p-0 font-medium transition-all hover:bg-transparent lg:text-sm [&>*]:px-0',
         pathname === href
-          ? '!text-primary-700 hover:!text-primary-800 dark:!text-primary-200'
-          : '!text-gray-500 hover:!text-gray-900 dark:hover:!text-gray-200',
+          ? 'text-primary-700 hover:text-primary-800 dark:text-primary-200'
+          : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-200',
       )}
     >
       {children}
@@ -394,7 +395,7 @@ const DocsFooter: FC = () => {
             by="All Rights Reserved. Flowbite™ is a registered trademark."
             href="/"
             year={2023}
-            className="!text-base"
+            className="text-base"
           />
         </div>
       </div>
