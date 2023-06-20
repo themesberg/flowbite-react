@@ -1,7 +1,7 @@
-import { CodePreview } from '~/app/components/code-preview';
-import { ExampleAdditionalContent } from './additional-content.tsx';
 import { HiInformationCircle } from 'react-icons/hi';
-import { Alert } from '~/src';
+import { CodePreview } from '~/app/components/code-preview';
+import { Alert, theme } from '~/src';
+import { ExampleAdditionalContent } from './additional-content.tsx';
 
 The alert component can be used to show a contextual text to the user such as a success or error message after form validation inside an alert box where you can choose from multiple colors, sizes, and styles.
 
@@ -106,6 +106,14 @@ This is an example with all of the available options and props for the alert com
     </span>
   </Alert>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.alert, null, 2)}</code>
+</pre>
 
 ## References
 

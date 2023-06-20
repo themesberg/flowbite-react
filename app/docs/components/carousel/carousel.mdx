@@ -1,5 +1,5 @@
 import { CodePreview } from '~/app/components/code-preview';
-import { Carousel } from '~/src';
+import { Carousel, theme } from '~/src';
 
 Use the responsive carousel component to allow users to slide through multiple items and navigate between them using the control buttons and indicators.
 
@@ -101,6 +101,14 @@ Instead of images you can also use any type of markup and content inside the car
     <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 3</div>
   </Carousel>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.carousel, null, 2)}</code>
+</pre>
 
 ## References
 

@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import { CodePreview } from '~/app/components/code-preview';
-import { Avatar, Button, Dropdown, Navbar } from '~/src';
+import { Avatar, Button, Dropdown, Navbar, theme } from '~/src';
+import Link from 'next/link';
 
 The navbar component is an important section of any website as it is the first section that appears on any page and it serves the purpose of allowing your users to navigate throughout your website.
 
@@ -110,6 +110,14 @@ Use this example to feature a dropdown menu when clicking on the user avatar ins
     </Navbar.Collapse>
   </Navbar>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.navbar, null, 2)}</code>
+</pre>
 
 ## References
 

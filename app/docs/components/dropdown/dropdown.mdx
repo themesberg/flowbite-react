@@ -1,6 +1,6 @@
-import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
-import { Dropdown } from '~/src';
+import { Dropdown, theme } from '~/src';
+import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
 
 The dropdown component is a UI component built with React that allows you to show a list of items when clicking on a trigger element (ie. a button) that you can use to build dropdown menus, lists, and more.
 
@@ -175,6 +175,14 @@ Add a custom `onClick` event handler to the `<Dropdown.Item>` component to handl
     <Dropdown.Item onClick={() => alert('Sign out!')}>Sign out</Dropdown.Item>
   </Dropdown>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.dropdown, null, 2)}</code>
+</pre>
 
 ## References
 
