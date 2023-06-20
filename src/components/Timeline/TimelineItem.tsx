@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -27,7 +27,7 @@ export const TimelineItem: FC<TimelineItemProps> = ({ children, className, theme
   return (
     <li
       data-testid="timeline-item"
-      className={classNames(horizontal && theme.root.horizontal, !horizontal && theme.root.vertical, className)}
+      className={twMerge(horizontal && theme.root.horizontal, !horizontal && theme.root.vertical, className)}
       {...props}
     >
       {children}

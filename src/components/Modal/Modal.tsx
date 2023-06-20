@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
-import classNames from 'classnames';
 import type { ComponentProps, FC, MouseEvent, PropsWithChildren } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../../';
 import { useTheme } from '../../';
 import { isClient } from '../../helpers/is-client';
@@ -139,7 +139,7 @@ const ModalComponent: FC<ModalProps> = ({
         data-testid="modal"
         onClick={handleOnClick}
         role="dialog"
-        className={classNames(
+        className={twMerge(
           theme.root.base,
           theme.root.positions[position],
           show ? theme.root.show.on : theme.root.show.off,
@@ -147,7 +147,7 @@ const ModalComponent: FC<ModalProps> = ({
         )}
         {...props}
       >
-        <div className={classNames(theme.content.base, theme.root.sizes[size])}>
+        <div className={twMerge(theme.content.base, theme.root.sizes[size])}>
           <div className={theme.content.inner}>{children}</div>
         </div>
       </div>

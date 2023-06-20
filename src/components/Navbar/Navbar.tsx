@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useState } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -57,7 +57,7 @@ const NavbarComponent: FC<NavbarComponentProps> = ({
   return (
     <NavbarContext.Provider value={{ isOpen, setIsOpen }}>
       <nav
-        className={classNames(
+        className={twMerge(
           theme.base,
           theme.bordered[border ? 'on' : 'off'],
           theme.rounded[rounded ? 'on' : 'off'],
@@ -65,7 +65,7 @@ const NavbarComponent: FC<NavbarComponentProps> = ({
         )}
         {...props}
       >
-        <div className={classNames(theme.inner.base, theme.inner.fluid[fluid ? 'on' : 'off'])}>{children}</div>
+        <div className={twMerge(theme.inner.base, theme.inner.fluid[fluid ? 'on' : 'off'])}>{children}</div>
       </nav>
     </NavbarContext.Provider>
   );

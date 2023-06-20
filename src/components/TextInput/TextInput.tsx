@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, ReactNode } from 'react';
 import { forwardRef } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../../';
 import { HelperText, useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -70,7 +70,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 
     return (
       <>
-        <div className={classNames(theme.base, className)}>
+        <div className={twMerge(theme.base, className)}>
           {addon && <span className={theme.addon}>{addon}</span>}
           <div className={theme.field.base}>
             {Icon && (
@@ -84,7 +84,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               </div>
             )}
             <input
-              className={classNames(
+              className={twMerge(
                 theme.field.input.base,
                 theme.field.input.colors[color],
                 theme.field.input.withIcon[Icon ? 'on' : 'off'],

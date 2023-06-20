@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteColors, FlowbiteSizes } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -51,7 +51,7 @@ export const Spinner: FC<SpinnerProps> = ({
       <svg
         fill="none"
         viewBox="0 0 100 101"
-        className={classNames(
+        className={twMerge(
           theme.base,
           theme.color[color],
           theme.light[light ? 'on' : 'off'].base,

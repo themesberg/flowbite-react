@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -25,7 +25,7 @@ export const AccordionContent: FC<AccordionContentProps> = ({
 
   return (
     <div
-      className={classNames(theme.base, className)}
+      className={twMerge(theme.base, className)}
       data-testid="flowbite-accordion-content"
       hidden={!isOpen}
       {...props}

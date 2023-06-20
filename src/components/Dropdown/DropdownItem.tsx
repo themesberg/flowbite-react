@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -29,7 +29,7 @@ export const DropdownItem: FC<DropdownItemProps> = ({
   const theme = mergeDeep(useTheme().theme.dropdown.floating.item, customTheme);
 
   return (
-    <li className={classNames(theme.base, className)} onClick={onClick} {...props}>
+    <li className={twMerge(theme.base, className)} onClick={onClick} {...props}>
       {Icon && <Icon className={theme.icon} />}
       {children}
     </li>

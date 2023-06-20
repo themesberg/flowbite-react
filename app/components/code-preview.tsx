@@ -1,6 +1,5 @@
 'use client';
 
-import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 import prismjs from 'prismjs';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
@@ -9,6 +8,7 @@ import type { Options } from 'react-element-to-jsx-string';
 import reactElementToJSXString from 'react-element-to-jsx-string';
 import { BsCheckLg, BsFillClipboardFill } from 'react-icons/bs';
 import { HiMoon, HiSun } from 'react-icons/hi';
+import { twMerge } from 'tailwind-merge';
 import { Tooltip } from '~/src';
 
 const reactElementToJSXStringOptions: Options = {
@@ -90,11 +90,11 @@ export default function ${titleCaseToUpperCamelCase(title)}() {${
           </div>
         </div>
       </div>
-      <div className={classNames('code-preview-wrapper', isDarkMode && 'dark')}>
+      <div className={twMerge('code-preview-wrapper', isDarkMode && 'dark')}>
         <div className="code-preview flex border-x border-gray-200 bg-white bg-gradient-to-r p-0 dark:border-gray-600 dark:bg-gray-900">
           <div className="code-responsive-wrapper w-full">
             <div className="mx-auto w-full bg-white bg-gradient-to-r p-2 dark:bg-gray-900 sm:p-6">
-              <div className={classNames('py-4', className)}>{children}</div>
+              <div className={twMerge('py-4', className)}>{children}</div>
             </div>
           </div>
         </div>
@@ -113,7 +113,7 @@ export default function ${titleCaseToUpperCamelCase(title)}() {${
               <CopyToClipboardButton isJustCopied={isJustCopied} onClick={() => copyToClipboard(code)} />
             </div>
           </div>
-          <pre className={classNames('language-tsx !overflow-y-hidden', !isExpanded && 'max-h-72')}>
+          <pre className={twMerge('language-tsx !overflow-y-hidden', !isExpanded && 'max-h-72')}>
             <code>{code}</code>
           </pre>
           <CollapseExpandButton isExpanded={isExpanded} onClick={() => setExpanded(!isExpanded)} />

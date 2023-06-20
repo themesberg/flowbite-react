@@ -21,7 +21,9 @@ describe.concurrent('Components / Alert', () => {
       it('should use custom `base` classes', () => {
         const theme = {
           alert: {
-            base: 'text-purple-100',
+            color: {
+              info: 'text-purple-100',
+            },
           },
         };
         render(

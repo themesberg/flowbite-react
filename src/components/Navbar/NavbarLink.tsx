@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -32,12 +32,10 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   return (
     <li>
       <Component
-        className={classNames(
+        className={twMerge(
           theme.base,
-          {
-            [theme.active.on]: active,
-            [theme.active.off]: !active && !disabled,
-          },
+          active && theme.active.on,
+          !active && !disabled && theme.active.off,
           theme.disabled[disabled ? 'on' : 'off'],
           className,
         )}

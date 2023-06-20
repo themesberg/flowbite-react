@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -24,7 +24,7 @@ export const NavbarBrand: FC<NavbarBrandProps> = ({
   const theme = mergeDeep(useTheme().theme.navbar.brand, customTheme);
 
   return (
-    <Component className={classNames(theme.base, className)} {...props}>
+    <Component className={twMerge(theme.base, className)} {...props}>
       {children}
     </Component>
   );

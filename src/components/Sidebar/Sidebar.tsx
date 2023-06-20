@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -52,7 +52,7 @@ const SidebarComponent: FC<SidebarProps> = ({
       <Component
         aria-label="Sidebar"
         hidden={isCollapsed && collapseBehavior === 'hide'}
-        className={classNames(theme.root.base, theme.root.collapsed[isCollapsed ? 'on' : 'off'], className)}
+        className={twMerge(theme.root.base, theme.root.collapsed[isCollapsed ? 'on' : 'off'], className)}
         {...props}
       >
         <div className={theme.root.inner}>{children}</div>

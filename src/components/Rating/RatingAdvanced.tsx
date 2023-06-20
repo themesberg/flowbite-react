@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -29,7 +29,7 @@ export const RatingAdvanced: FC<RatingAdvancedProps> = ({
   const theme = mergeDeep(useTheme().theme.rating.advanced, customTheme);
 
   return (
-    <div className={classNames(theme.base, className)} {...props}>
+    <div className={twMerge(theme.base, className)} {...props}>
       <span className={theme.label}>{children}</span>
       <div className={theme.progress.base}>
         <div

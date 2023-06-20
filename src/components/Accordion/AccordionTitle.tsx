@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteHeadingLevel } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -36,12 +36,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
 
   return (
     <button
-      className={classNames(
-        theme.base,
-        theme.flush[flush ? 'on' : 'off'],
-        theme.open[isOpen ? 'on' : 'off'],
-        className,
-      )}
+      className={twMerge(theme.base, theme.flush[flush ? 'on' : 'off'], theme.open[isOpen ? 'on' : 'off'], className)}
       onClick={onClick}
       type="button"
       {...props}
@@ -52,7 +47,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
       {ArrowIcon && (
         <ArrowIcon
           aria-hidden
-          className={classNames(theme.arrow.base, theme.arrow.open[isOpen ? 'on' : 'off'])}
+          className={twMerge(theme.arrow.base, theme.arrow.open[isOpen ? 'on' : 'off'])}
           data-testid="flowbite-accordion-arrow"
         />
       )}

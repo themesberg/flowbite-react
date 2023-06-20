@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -46,7 +46,7 @@ export const Badge: FC<BadgeProps> = ({
 
   const Content: FC = () => (
     <span
-      className={classNames(
+      className={twMerge(
         theme.root.base,
         theme.root.color[color],
         theme.icon[Icon ? 'on' : 'off'],

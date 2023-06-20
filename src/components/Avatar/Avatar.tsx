@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -28,6 +28,7 @@ export interface FlowbiteAvatarRootTheme {
 }
 
 export interface FlowbiteAvatarImageTheme extends FlowbiteBoolean {
+  base: string;
   placeholder: string;
 }
 
@@ -91,7 +92,8 @@ const AvatarComponent: FC<AvatarProps> = ({
 }) => {
   const theme = mergeDeep(useTheme().theme.avatar, customTheme);
 
-  const imgClassName = classNames(
+  const imgClassName = twMerge(
+    theme.root.img.base,
     bordered && theme.root.bordered,
     bordered && theme.root.color[color],
     rounded && theme.root.rounded,
@@ -101,11 +103,11 @@ const AvatarComponent: FC<AvatarProps> = ({
   );
 
   const imgProps = {
-    className: classNames(imgClassName, theme.root.img.on),
+    className: twMerge(imgClassName, theme.root.img.on),
     'data-testid': 'flowbite-avatar-img',
   };
   return (
-    <div className={classNames(theme.root.base, className)} data-testid="flowbite-avatar" {...props}>
+    <div className={twMerge(theme.root.base, className)} data-testid="flowbite-avatar" {...props}>
       <div className="relative">
         {img ? (
           typeof img === 'string' ? (
@@ -115,26 +117,23 @@ const AvatarComponent: FC<AvatarProps> = ({
           )
         ) : placeholderInitials ? (
           <div
-            className={classNames(
+            className={twMerge(
               theme.root.img.off,
               theme.root.initials.base,
-              rounded && theme.root.rounded,
               stacked && theme.root.stacked,
               bordered && theme.root.bordered,
               bordered && theme.root.color[color],
               theme.root.size[size],
+              rounded && theme.root.rounded,
             )}
             data-testid="flowbite-avatar-initials-placeholder"
           >
-            <span
-              className={classNames(theme.root.initials.text)}
-              data-testid="flowbite-avatar-initials-placeholder-text"
-            >
+            <span className={twMerge(theme.root.initials.text)} data-testid="flowbite-avatar-initials-placeholder-text">
               {placeholderInitials}
             </span>
           </div>
         ) : (
-          <div className={classNames(imgClassName, theme.root.img.off)} data-testid="flowbite-avatar-img">
+          <div className={twMerge(imgClassName, theme.root.img.off)} data-testid="flowbite-avatar-img">
             <svg
               className={theme.root.img.placeholder}
               fill="currentColor"
@@ -148,7 +147,7 @@ const AvatarComponent: FC<AvatarProps> = ({
         {status && (
           <span
             data-testid="flowbite-avatar-status"
-            className={classNames(
+            className={twMerge(
               theme.root.status.base,
               theme.root.status[status],
               theme.root.statusPosition[statusPosition],

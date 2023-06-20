@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -16,7 +16,7 @@ export const TableHeadCell: FC<TableHeadCellProps> = ({ children, className, the
   const theme = mergeDeep(useTheme().theme.table.head.cell, customTheme);
 
   return (
-    <th className={classNames(theme.base, className)} {...props}>
+    <th className={twMerge(theme.base, className)} {...props}>
       {children}
     </th>
   );

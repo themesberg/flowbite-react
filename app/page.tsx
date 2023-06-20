@@ -1236,7 +1236,7 @@ const MainFooter: FC = () => {
             by="All Rights Reserved. Flowbite™ is a registered trademark."
             href="/"
             year={2023}
-            className="!text-base"
+            className="text-base"
           />
         </div>
       </div>

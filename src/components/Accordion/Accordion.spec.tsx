@@ -244,7 +244,8 @@ describe('Components / Accordion', () => {
           expect(title).toHaveClass('text-3xl');
         });
         openTitles.forEach((title) => {
-          expect(title).toHaveClass('text-gray-600');
+          // Note: it is being overwrited by the className prop which is expected
+          expect(title).toHaveClass('text-cyan-300');
         });
         closedTitles.forEach((title) => {
           expect(title).toHaveClass('text-gray-400');

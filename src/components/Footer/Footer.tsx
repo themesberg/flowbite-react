@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -52,7 +52,7 @@ export const FooterComponent: FC<FooterProps> = ({
   return (
     <footer
       data-testid="flowbite-footer"
-      className={classNames(theme.root.base, bgDark && theme.root.bgDark, container && theme.root.container, className)}
+      className={twMerge(theme.root.base, bgDark && theme.root.bgDark, container && theme.root.container, className)}
       {...props}
     >
       {children}

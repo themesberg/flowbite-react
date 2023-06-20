@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -22,7 +22,7 @@ export const TableRow: FC<TableRowProps> = ({ children, className, theme: custom
   return (
     <tr
       data-testid="table-row-element"
-      className={classNames(theme.base, striped && theme.striped, hoverable && theme.hovered, className)}
+      className={twMerge(theme.base, striped && theme.striped, hoverable && theme.hovered, className)}
       {...props}
     >
       {children}
