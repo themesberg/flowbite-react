@@ -5,8 +5,12 @@
 @layer base {
   @font-face {
     font-family: 'Inter';
-    src: url(/public/inter.woff2) format('woff2');
+    src: url(inter.woff2) format('woff2');
     font-weight: 100 200 300 400 500 600 700 800 900;
     font-display: swap;
+  }
+
+  html {
+    font-family: 'Inter', sans-serif;
   }
 }
