@@ -10,9 +10,13 @@
   "eslint.format.enable": true,
   "files.exclude": {
     ".next/": true,
+    ".vercel/": true,
     "build/": true,
+    "coverage/": true,
     "lib/": true,
     "node_modules": true,
+    "storybook-static/": true,
+    "tsconfig.tsbuildinfo": true,
     "yarn-error.log": true,
     "yarn.lock": true
   },
