@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.9](https://github.com/themesberg/flowbite-react/compare/v0.4.7...v0.4.9) (2023-06-22)
+
+
+### Features
+
+* replace `classnames` by `tailwind-merge` ([#816](https://github.com/themesberg/flowbite-react/issues/816)) ([7461173](https://github.com/themesberg/flowbite-react/commit/7461173ddb2afae9f66b9a4475b4333adef1e163))
+
+
+### Bug Fixes
+
+* **paginationbutton.tsx:** button now has type button ([#811](https://github.com/themesberg/flowbite-react/issues/811)) ([470c359](https://github.com/themesberg/flowbite-react/commit/470c3594c26706fff17a4e9932850e51d6e3e4a5)), closes [#809](https://github.com/themesberg/flowbite-react/issues/809)
+* **src/components/navbar:** change default `<Navbar.Toggle/>` icon ([#819](https://github.com/themesberg/flowbite-react/issues/819)) ([6bc0de9](https://github.com/themesberg/flowbite-react/commit/6bc0de946c093863eab6386c26efc38779cb48fe)), closes [#818](https://github.com/themesberg/flowbite-react/issues/818) [/stackoverflow.com/questions/72146352/vitest-defineconfig-test-does-not-exist-in-type-userconfigexport/73106019#73106019](https://github.com/themesberg//stackoverflow.com/questions/72146352/vitest-defineconfig-test-does-not-exist-in-type-userconfigexport/73106019/issues/73106019)
+
 ### [0.4.8](https://github.com/themesberg/flowbite-react/compare/v0.4.7...v0.4.8) (2023-06-22)
 
 
