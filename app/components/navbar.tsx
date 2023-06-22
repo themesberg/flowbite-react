@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import type { FC } from 'react';
 import { BsGithub } from 'react-icons/bs';
+import { SiStorybook } from 'react-icons/si';
 import { Badge, DarkThemeToggle, Tooltip } from '~/src';
 import pkg from './../../package.json' assert { type: 'json' };
 
@@ -57,6 +58,14 @@ export const NavbarIcons: FC = () => {
   const version = pkg?.version ?? 'latest';
   return (
     <div className="flex items-center gap-1">
+      <a
+        href="https://flowbite-react-git-storybook-themesberg.vercel.app"
+        className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700 lg:block"
+      >
+        <Tooltip animation={false} content="View Storybook">
+          <SiStorybook aria-hidden className="h-5 w-5" />
+        </Tooltip>
+      </a>
       <a
         href="https://github.com/themesberg/flowbite-react"
         className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700 lg:block"
