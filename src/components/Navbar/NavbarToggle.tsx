@@ -1,5 +1,5 @@
 import type { ComponentProps, FC } from 'react';
-import { GoThreeBars } from 'react-icons/go';
+import { FaBars } from 'react-icons/fa';
 import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
@@ -17,7 +17,7 @@ export interface NavbarToggleProps extends ComponentProps<'button'> {
 }
 
 export const NavbarToggle: FC<NavbarToggleProps> = ({
-  barIcon: BarIcon = GoThreeBars,
+  barIcon: BarIcon = FaBars,
   className,
   theme: customTheme = {},
   ...props
