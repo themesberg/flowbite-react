@@ -16,7 +16,7 @@ const config: ViteConfig = {
       reporter: ['html', 'json', 'text'],
     },
     environment: 'jsdom',
-    exclude: ['cypress', 'lib', 'node_modules'],
+    exclude: ['cypress', 'lib/**/*', 'node_modules'],
     globals: true,
     setupFiles: './src/setup-tests.ts',
   },
