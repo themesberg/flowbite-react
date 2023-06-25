@@ -56,6 +56,7 @@ export const sidebarTheme: FlowbiteSidebarTheme = {
       active: 'text-gray-700 dark:text-gray-100',
     },
     label: '',
+    listItem: '',
   },
   items: '',
   itemGroup: 'mt-4 space-y-2 border-t border-gray-200 pt-4 first:mt-0 first:border-t-0 first:pt-0 dark:border-gray-700',
