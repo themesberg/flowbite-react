@@ -22,6 +22,7 @@ export interface FlowbiteSidebarItemTheme {
     active: string;
   };
   label: string;
+  listItem: string;
 }
 
 export interface SidebarItemProps
@@ -41,13 +42,10 @@ export interface SidebarItemLabelColors extends Pick<FlowbiteColors, 'gray'> {
   [key: string]: string;
 }
 
-const ListItem: FC<PropsWithChildren<{ id: string; isCollapsed: boolean; tooltipChildren: ReactNode | undefined }>> = ({
-  id,
-  isCollapsed,
-  tooltipChildren,
-  children: wrapperChildren,
-}) => (
-  <li>
+const ListItem: FC<
+  PropsWithChildren<{ id: string; isCollapsed: boolean; tooltipChildren: ReactNode | undefined; className?: string }>
+> = ({ id, isCollapsed, tooltipChildren, children: wrapperChildren, ...props }) => (
+  <li {...props}>
     {isCollapsed ? (
       <Tooltip content={<TooltipContent id={id}>{tooltipChildren}</TooltipContent>} placement="right">
         {wrapperChildren}
@@ -97,7 +95,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
     const theme = mergeDeep(useTheme().theme.sidebar.item, customTheme);
 
     return (
-      <ListItem id={id} isCollapsed={isCollapsed} tooltipChildren={children}>
+      <ListItem className={theme.listItem} id={id} isCollapsed={isCollapsed} tooltipChildren={children}>
         <Component
           aria-labelledby={`flowbite-sidebar-item-${id}`}
           ref={ref}
