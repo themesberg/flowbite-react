@@ -37,7 +37,7 @@ export interface NavbarComponentProps extends PropsWithChildren, ComponentProps<
   fluid?: boolean;
   rounded?: boolean;
   border?: boolean;
-  theme?: DeepPartial<FlowbiteNavbarRootTheme>;
+  theme?: DeepPartial<FlowbiteNavbarTheme>;
 }
 
 const NavbarComponent: FC<NavbarComponentProps> = ({
