@@ -90,9 +90,11 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
     <Navbar
       fluid
       theme={{
-        base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-2.5 px-4',
-        inner: {
-          base: 'mx-auto flex flex-wrap justify-between items-center w-full',
+        root: {
+          base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-2.5 px-4',
+          inner: {
+            base: 'mx-auto flex flex-wrap justify-between items-center w-full',
+          },
         },
       }}
     >
