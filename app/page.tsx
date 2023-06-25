@@ -90,9 +90,11 @@ const HomeNavbar: FC = () => {
   return (
     <Navbar
       theme={{
-        base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-4',
-        inner: {
-          base: 'mx-auto flex flex-wrap justify-between items-center w-full max-w-8xl px-4 lg:px-20',
+        root: {
+          base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-4',
+          inner: {
+            base: 'mx-auto flex flex-wrap justify-between items-center w-full max-w-8xl px-4 lg:px-20',
+          },
         },
       }}
     >
@@ -1097,7 +1099,7 @@ const DarkModeSwitcher: FC = () => {
           </span>
         </button>{' '}
         <svg
-          className="h-11 w-11 rounded-lg bg-cyan-700 p-2 text-white dark:hidden  dark:bg-gray-700"
+          className="h-11 w-11 rounded-lg bg-cyan-700 p-2 text-white dark:hidden dark:bg-gray-700"
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
