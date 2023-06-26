@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import type { PropsWithChildren } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { Flowbite } from '../../';
 import { Button } from './Button';
@@ -98,10 +99,51 @@ describe('Components / Button', () => {
       expect(button()).toHaveTextContent('Something or other');
     });
 
-    it('should render an anchor `<a>` when `href=".."`', () => {
-      render(<Button href="#" label="Something or other" />);
+    describe('`as` and `href` props', () => {
+      it('should render an anchor `<a>` when `href=".."`', () => {
+        render(<Button href="#" label="Something or other" />);
 
-      expect(buttonLink()).toBeInTheDocument();
+        expect(buttonLink()).toBeInTheDocument();
+      });
+
+      it('should render an anchor `<a>` when `href=".."` even though `as` is defined', () => {
+        render(<Button href="#" as="label" label="Something or other" />);
+
+        expect(buttonLink()).toBeInTheDocument();
+      });
+
+      it('should render tag element defined in `as`', () => {
+        render(
+          <ul>
+            <Button as="li" label="Something or other" />
+          </ul>,
+        );
+
+        expect(buttonListItem()).toBeInTheDocument();
+      });
+
+      it('should render component defined in `as`', () => {
+        const CustomComponent = ({ children }: PropsWithChildren) => {
+          return <li>{children}</li>;
+        };
+
+        render(
+          <ul>
+            <Button as={CustomComponent} label="Something or other" />
+          </ul>,
+        );
+
+        const button = buttonListItem();
+
+        expect(button).toBeInTheDocument();
+        expect(button).toHaveTextContent('Something or other');
+      });
+
+      it('should render as button when `as`={null}', () => {
+        render(<Button as={null} label="Something or other" />);
+
+        expect(button()).toBeInTheDocument();
+      });
     });
   });
 
@@ -312,5 +354,7 @@ describe('Components / Button', () => {
 const button = () => screen.getByRole('button');
 
 const buttonLink = () => screen.getByRole('link');
+
+const buttonListItem = () => screen.getByRole('listitem');
 
 const buttons = () => screen.getAllByRole('button');

@@ -1,4 +1,5 @@
-import { forwardRef, type ComponentProps, type ReactNode } from 'react';
+import type { ElementType } from 'react';
+import { createElement, forwardRef, type ComponentProps, type ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
 import type {
   DeepPartial,
@@ -61,11 +62,12 @@ export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'x
   [key: string]: string;
 }
 
-export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'ref'> {
+export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'ref'>, Record<string, unknown> {
   color?: keyof FlowbiteColors;
   fullSized?: boolean;
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
   gradientMonochrome?: keyof ButtonGradientColors;
+  as?: ElementType;
   href?: string;
   target?: string;
   isProcessing?: boolean;
@@ -92,6 +94,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
       processingSpinner: SpinnerComponent = <Spinner />,
       gradientDuoTone,
       gradientMonochrome,
+      as: Component = 'button',
       href,
       label,
       outline = false,
@@ -106,17 +109,18 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
     const { buttonGroup: groupTheme, button: buttonTheme } = useTheme().theme;
     const theme = mergeDeep(buttonTheme, customTheme);
 
-    const isLink = typeof href !== 'undefined';
-    const Component = isLink ? 'a' : 'button';
+    const BaseComponent = href ? 'a' : Component ?? 'button';
+
     const theirProps = props as object;
 
-    return (
-      <Component
-        disabled={disabled}
-        href={href}
-        type={isLink ? undefined : 'button'}
-        ref={ref as never}
-        className={twMerge(
+    return createElement(
+      BaseComponent,
+      {
+        disabled,
+        href,
+        type: Component === 'button' ? 'button' : undefined,
+        ref: ref as never,
+        className: twMerge(
           theme.base,
           disabled && theme.disabled,
           !gradientDuoTone && !gradientMonochrome && theme.color[color],
@@ -127,32 +131,31 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Button
           fullSized && theme.fullSized,
           groupTheme.position[positionInGroup],
           className,
+        ),
+        ...theirProps,
+      },
+      <span
+        className={twMerge(
+          theme.inner.base,
+          theme.outline[outline ? 'on' : 'off'],
+          theme.outline.pill[outline && pill ? 'on' : 'off'],
+          theme.size[size],
+          outline && !theme.outline.color[color] && theme.inner.outline,
+          isProcessing && theme.isProcessing,
+          theme.inner.position[positionInGroup],
         )}
-        {...theirProps}
       >
-        <span
-          className={twMerge(
-            theme.inner.base,
-            theme.outline[outline ? 'on' : 'off'],
-            theme.outline.pill[outline && pill ? 'on' : 'off'],
-            theme.size[size],
-            outline && !theme.outline.color[color] && theme.inner.outline,
-            isProcessing && theme.isProcessing,
-            theme.inner.position[positionInGroup],
+        <>
+          {isProcessing && <span className={twMerge(theme.spinnerSlot)}>{SpinnerComponent}</span>}
+          {typeof children !== 'undefined' ? (
+            children
+          ) : (
+            <span data-testid="flowbite-button-label" className={twMerge(theme.label)}>
+              {isProcessing ? processingLabel : label}
+            </span>
           )}
-        >
-          <>
-            {isProcessing && <span className={twMerge(theme.spinnerSlot)}>{SpinnerComponent}</span>}
-            {typeof children !== 'undefined' ? (
-              children
-            ) : (
-              <span data-testid="flowbite-button-label" className={twMerge(theme.label)}>
-                {isProcessing ? processingLabel : label}
-              </span>
-            )}
-          </>
-        </span>
-      </Component>
+        </>
+      </span>,
     );
   },
 );
