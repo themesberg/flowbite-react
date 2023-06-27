@@ -61,7 +61,7 @@ export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'x
   [key: string]: string;
 }
 
-export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'ref'>, Record<string, unknown> {
+export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'ref'> {
   color?: keyof FlowbiteColors;
   fullSized?: boolean;
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
@@ -80,7 +80,9 @@ export interface ButtonProps extends Omit<ComponentProps<'button'>, 'color' | 'r
   theme?: DeepPartial<FlowbiteButtonTheme>;
 }
 
-const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+interface Props extends ButtonProps, Record<string, unknown> {}
+
+const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
   (
     {
       children,
