@@ -214,7 +214,7 @@ The `as` prop provides you the ability to transform the `<Button />` component i
   importFlowbiteReact="Button"
   code={`<div className="flex flex-wrap items-center gap-2">
   <div>
-    <Button as="span">Span Button</Button>
+    <Button as="span" className="cursor-pointer">Span Button</Button>
   </div>
   <div>
     <Button as={Link} href="#">
@@ -225,7 +225,9 @@ The `as` prop provides you the ability to transform the `<Button />` component i
 >
   <div className="flex flex-wrap items-center gap-2">
     <div>
-      <Button as="span">Span Button</Button>
+      <Button as="span" className="cursor-pointer">
+        Span Button
+      </Button>
     </div>
     <div>
       <Button as={Link} href="#">
