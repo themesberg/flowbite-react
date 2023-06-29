@@ -178,8 +178,10 @@ Add a custom `onClick` event handler to the `<Dropdown.Item>` component to handl
 
 ## Custom trigger
 
+To customize the trigger element you can use `renderTrigger` property.
+
 <CodePreview title="Custom trigger dropdown">
-  <Dropdown dismissOnClick={false} renderTrigger={() => <button>Custom Dropdown button</button>}>
+  <Dropdown dismissOnClick={false} renderTrigger={() => <span>My custom trigger</span>}>
     <Dropdown.Item>Dashboard</Dropdown.Item>
     <Dropdown.Item>Settings</Dropdown.Item>
     <Dropdown.Item>Earnings</Dropdown.Item>

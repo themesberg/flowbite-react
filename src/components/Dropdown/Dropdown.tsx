@@ -143,7 +143,9 @@ const DropdownComponent: FC<DropdownProps> = ({
       className={className}
       minWidth={buttonWidth}
     >
-      {renderTrigger?.(theme) ?? (
+      {renderTrigger ? (
+        renderTrigger(theme)
+      ) : (
         <TriggerWrapper setButtonWidth={setButtonWidth}>
           {label}
           {arrowIcon && <Icon className={theme.arrowIcon} />}
