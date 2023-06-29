@@ -12,6 +12,9 @@ export default {
       control: { type: 'inline-radio' },
     },
   },
+  args: {
+    disabled: false,
+  },
 } as Meta;
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />;
