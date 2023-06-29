@@ -87,10 +87,11 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               className={twMerge(
                 theme.field.input.base,
                 theme.field.input.colors[color],
+                theme.field.input.sizes[sizing],
                 theme.field.input.withIcon[Icon ? 'on' : 'off'],
+                theme.field.input.withRightIcon[RightIcon ? 'on' : 'off'],
                 theme.field.input.withAddon[addon ? 'on' : 'off'],
                 theme.field.input.withShadow[shadow ? 'on' : 'off'],
-                theme.field.input.sizes[sizing],
               )}
               {...props}
               ref={ref}
