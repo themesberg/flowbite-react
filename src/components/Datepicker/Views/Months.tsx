@@ -1,36 +1,52 @@
-import { useContext } from 'react';
+import type { FC } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { addMonths } from '../../../helpers/date';
-import { DatePickerContext } from '../DatepickerProvider';
+import { mergeDeep } from '../../../helpers/merge-deep';
+import { useTheme } from '../../Flowbite';
+import { useDatePickerContext } from '../DatepickerContext';
+import { Views, addMonths, getFormattedDate } from '../helpers';
 
-const Months = () => {
-  const { selectedDate, showSelectedDate, changeSelectedDate, getFormattedDate, setView, options } =
-    useContext(DatePickerContext);
+export interface FlowbiteDatepickerViewsMonthsTheme {
+  items: {
+    base: string;
+    item: {
+      base: string;
+      selected: string;
+    };
+  };
+}
+
+export interface DatepickerViewsMonthsProps {
+  selectedDate: Date;
+  theme?: FlowbiteDatepickerViewsMonthsTheme;
+}
+
+export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ selectedDate, theme: customTheme = {} }) => {
+  const theme = mergeDeep(useTheme().theme.datepicker.views.months, customTheme);
+  const { language, changeSelectedDate, setView } = useDatePickerContext();
+
+  const isSelectedMonth = (value: Date, month: string) =>
+    value.getTime() > 0 && getFormattedDate(language, value, { month: 'short' }) === month;
+
   return (
-    <div className="grid w-64 grid-cols-4">
+    <div className={theme.items.base}>
       {[...Array(12)].map((_month, index) => {
-        const month = getFormattedDate(new Date(selectedDate.getFullYear(), index), { month: 'short' });
+        const month = getFormattedDate(language, new Date(selectedDate.getFullYear(), index), { month: 'short' });
         return (
-          <span
+          <button
             key={index}
-            className={`block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9  text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600 ${
-              showSelectedDate &&
-              selectedDate.getTime() > 0 &&
-              getFormattedDate(selectedDate, { month: 'short' }) === month
-                ? twMerge('bg-blue-700 text-white hover:bg-blue-600', options?.theme?.selected)
-                : ''
-            }`}
+            className={twMerge(
+              theme.items.item.base,
+              isSelectedMonth(selectedDate, month) && theme.items.item.selected,
+            )}
             onClick={() => {
               changeSelectedDate('date', new Date(addMonths(selectedDate, index - selectedDate.getMonth())));
-              setView('days');
+              setView(Views.Days);
             }}
           >
             {month}
-          </span>
+          </button>
         );
       })}
     </div>
   );
 };
-
-export default Months;

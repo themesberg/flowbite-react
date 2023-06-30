@@ -36,6 +36,8 @@ import type {
   FlowbiteToggleSwitchTheme,
   FlowbiteTooltipTheme,
 } from '../../';
+// @TODO Fix this import
+import type { FlowbiteDatepickerTheme } from '../Datepicker';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
@@ -49,6 +51,7 @@ export interface FlowbiteTheme {
   buttonGroup: FlowbiteButtonGroupTheme;
   card: FlowbiteCardTheme;
   carousel: FlowbiteCarouselTheme;
+  datepicker: FlowbiteDatepickerTheme;
   darkThemeToggle: FlowbiteDarkThemeToggleTheme;
   footer: FlowbiteFooterTheme;
   listGroup: FlowbiteListGroupTheme;

@@ -1,0 +1,33 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { Datepicker, theme } from '~/src';
+import Image from 'next/image';
+
+@TODO Introduction
+
+To start using the card component you will need to import it from `flowbite-react`:
+
+```jsx
+'use client';
+
+import { Datepicker } from 'flowbite-react';
+```
+
+## Default Datepicker
+
+Use this example to show a simple datepicker component.
+
+<CodePreview title="Default card">
+  <Datepicker />
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.datepicker, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Card](https://flowbite.com/docs/components/card/)

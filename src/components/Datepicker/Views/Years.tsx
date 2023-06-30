@@ -1,41 +1,55 @@
-import { useContext } from 'react';
+import type { FC } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { addYears, startOfYearPeriod } from '../../../helpers/date';
-import { DatePickerContext } from '../DatepickerProvider';
+import { mergeDeep } from '../../../helpers/merge-deep';
+import { useTheme } from '../../Flowbite';
+import { useDatePickerContext } from '../DatepickerContext';
+import { Views, addYears, getFormattedDate, startOfYearPeriod } from '../helpers';
 
-const Years = () => {
-  const { selectedDate, showSelectedDate, changeSelectedDate, setView, getFormattedDate, options } =
-    useContext(DatePickerContext);
+export interface FlowbiteDatepickerViewsYearsTheme {
+  items: {
+    base: string;
+    item: {
+      base: string;
+      disabled: string;
+      selected: string;
+    };
+  };
+}
+
+export interface DatepickerViewsYearsProps {
+  selectedDate: Date;
+  theme?: FlowbiteDatepickerViewsYearsTheme;
+}
+
+export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({ selectedDate, theme: customTheme = {} }) => {
+  const theme = mergeDeep(useTheme().theme.datepicker.views.years, customTheme);
+  const { changeSelectedDate, language, setView } = useDatePickerContext();
+
+  const isSelectedYear = (value: Date, year: number) =>
+    value.getTime() > 0 && Number(getFormattedDate(language, value, { year: 'numeric' })) === year;
+
   return (
-    <div className="grid w-64 grid-cols-4">
+    <div className={theme.items.base}>
       {[...Array(12)].map((_year, index) => {
         const first = startOfYearPeriod(selectedDate, 10);
         const year = first - 1 + index * 1;
         return (
-          <span
+          <button
             key={index}
-            className={`block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600 ${
-              showSelectedDate &&
-              selectedDate.getTime() > 0 &&
-              Number(getFormattedDate(selectedDate, { year: 'numeric' })) === year
-                ? twMerge('bg-blue-700 text-white hover:bg-blue-600', options?.theme?.selected)
-                : ''
-            } ${
-              index == 0 || index == 11
-                ? twMerge('text-gray-500', options?.theme?.disabledText)
-                : twMerge('text-gray-900', options?.theme?.text)
-            }`}
+            className={twMerge(
+              theme.items.item.base,
+              isSelectedYear(selectedDate, year) && theme.items.item.selected,
+              (index == 0 || index == 11) && theme.items.item.disabled,
+            )}
             onClick={() => {
               changeSelectedDate('date', new Date(addYears(selectedDate, year - selectedDate.getFullYear())));
-              setView('months');
+              setView(Views.Months);
             }}
           >
             {year}
-          </span>
+          </button>
         );
       })}
     </div>
   );
 };
-
-export default Years;

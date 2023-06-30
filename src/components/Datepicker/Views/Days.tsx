@@ -1,69 +1,91 @@
-import { useContext } from 'react';
+import type { FC } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { addDays } from '../../../helpers/date';
-import { DatePickerContext } from '../DatepickerProvider';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { useTheme, type DeepPartial } from '../..';
+import { useDatePickerContext } from '../DatepickerContext';
+import { addDays, getFormattedDate } from '../helpers';
 
-interface IDaysProps {
-  start: number;
+export interface FlowbiteDatepickerViewsDaysTheme {
+  header: {
+    base: string;
+    title: string;
+  };
+  items: {
+    base: string;
+    item: {
+      base: string;
+      selected: string;
+      disabled: string;
+    };
+  };
 }
 
-const Days = ({ start }: IDaysProps) => {
+export interface DatepickerViewsDaysProps {
+  startDay: number;
+  selectedDate: Date;
+  minDate?: Date;
+  maxDate?: Date;
+  theme?: DeepPartial<FlowbiteDatepickerViewsDaysTheme>;
+}
+
+export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({
+  startDay,
+  selectedDate,
+  minDate,
+  maxDate,
+  theme: customTheme = {},
+}) => {
+  const theme = mergeDeep(useTheme().theme.datepicker.views.days, customTheme);
+
   const weekDays: string[] = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
-  const { selectedDate, changeSelectedDate, showSelectedDate, getFormattedDate, options } =
-    useContext(DatePickerContext);
+  const { setSelectedDate, language } = useDatePickerContext();
+
+  const isSelectedDate = (value: number): boolean =>
+    selectedDate.getTime() > 0 && getFormattedDate(language, selectedDate) == getFormattedDate(language, value);
+  const isDateInRange = (value: number): boolean => {
+    const currentDate = new Date(value);
+    if (minDate && maxDate) {
+      return minDate >= currentDate && maxDate <= currentDate;
+    }
+    if (minDate) {
+      return minDate >= currentDate;
+    }
+    if (maxDate) {
+      return maxDate <= currentDate;
+    }
+    return false;
+  };
+
   return (
     <>
-      <div className="mb-1 grid grid-cols-7">
+      <div className={theme.header.base}>
         {weekDays.map((day, index) => (
-          <span
-            key={index}
-            className="dow h-6 text-center text-sm font-medium leading-6 text-gray-500 dark:text-gray-400"
-          >
+          <span key={index} className={theme.header.title}>
             {day}
           </span>
         ))}
       </div>
-      <div className="grid w-64 grid-cols-7">
+      <div className={theme.items.base}>
         {[...Array(42)].map((_date, index) => {
-          const current = addDays(start, index);
-          const day = getFormattedDate(current, { day: 'numeric' });
-          const month = getFormattedDate(current, { month: 'long' });
-          const year = getFormattedDate(current, { year: 'numeric' });
+          const current = addDays(startDay, index);
+          const day = getFormattedDate(language, current, { day: 'numeric' });
           return (
-            <span
+            <button
               key={index}
-              className={`block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600 ${
-                showSelectedDate &&
-                selectedDate.getTime() > 0 &&
-                getFormattedDate(selectedDate) === getFormattedDate(current)
-                  ? twMerge('bg-blue-700 text-white hover:bg-blue-600', options?.theme?.selected)
-                  : ''
-              } ${
-                month == getFormattedDate(selectedDate, { month: 'long' }) &&
-                year == getFormattedDate(selectedDate, { year: 'numeric' })
-                  ? twMerge('text-gray-900', options?.theme?.text)
-                  : twMerge('text-gray-500', options?.theme?.disabledText)
-              } ${
-                options?.minDate && new Date(current) < options?.minDate
-                  ? twMerge('text-gray-500', options?.theme?.disabledText)
-                  : ''
-              } ${
-                options?.maxDate && new Date(current) > options?.maxDate
-                  ? twMerge('text-gray-500', options?.theme?.disabledText)
-                  : ''
-              }
-                            `}
+              className={twMerge(
+                theme.items.item.base,
+                isSelectedDate(current) && theme.items.item.selected,
+                !isDateInRange(current) && theme.items.item.disabled,
+              )}
               onClick={() => {
-                changeSelectedDate('date', new Date(current));
+                setSelectedDate(new Date(current));
               }}
             >
               {day}
-            </span>
+            </button>
           );
         })}
       </div>
     </>
   );
 };
-
-export default Days;

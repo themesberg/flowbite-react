@@ -1,115 +1,236 @@
-import type { ReactElement } from 'react';
-import { forwardRef, useContext, useEffect, useRef } from 'react';
+import type { FC, ReactNode, RefObject } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { HiArrowLeft, HiArrowRight, HiCalendar } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import DatePickerPopup from './DatepickerPopup';
-import DatePickerProvider, { DatePickerContext } from './DatepickerProvider';
-import type { IOptions } from './options';
+import type { DeepPartial } from '..';
+import { useTheme } from '../..';
+// @TODO It would be nice to not depende on TextInput
+import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from '..';
+import { mergeDeep } from '../../helpers/merge-deep';
+import { DatepickerContext } from './DatepickerContext';
+import { getFormattedDate, goToPrevNext, startOfYearPeriod, Views } from './helpers';
+import type { FlowbiteDatepickerViewsDaysTheme } from './Views/Days';
+import { DatepickerViewsDays } from './Views/Days';
+import { DatepickerViewsMonth, type FlowbiteDatepickerViewsMonthsTheme } from './Views/Months';
+import { DatepickerViewsYears, type FlowbiteDatepickerViewsYearsTheme } from './Views/Years';
 
-export interface IDatePickerProps {
-  children?: ReactElement;
-  options?: IOptions;
-  onChange?: (date: Date) => void;
-  show: boolean;
-  setShow: (show: boolean) => void;
-  classNames?: string;
-  selectedDateState?: [Date, (date: Date) => void];
+export interface FlowbiteDatepickerTheme {
+  root: {
+    base: string;
+    input?: FlowbiteTextInputTheme;
+  };
+  popup: FlowbiteDatepickerPopupTheme;
+  views: {
+    days: FlowbiteDatepickerViewsDaysTheme;
+    months: FlowbiteDatepickerViewsMonthsTheme;
+    years: FlowbiteDatepickerViewsYearsTheme;
+  };
 }
 
-export const DatePicker: React.FC<IDatePickerProps> = ({
-  children,
-  options,
-  onChange,
-  classNames,
-  show,
-  setShow,
-  selectedDateState,
-}: IDatePickerProps) => (
-  <div className={twMerge('w-full', classNames)}>
-    <DatePickerProvider
-      options={options}
-      onChange={onChange}
-      show={show}
-      setShow={setShow}
-      selectedDateState={selectedDateState}
-    >
-      <DatePickerMain>{children}</DatePickerMain>
-    </DatePickerProvider>
-  </div>
-);
+export interface FlowbiteDatepickerPopupTheme {
+  root: {
+    base: string;
+    inner: string;
+  };
+  header: {
+    base: string;
+    title: string;
+    selectors: {
+      base: string;
+      button: {
+        base: string;
+        prev: string;
+        next: string;
+        view: string;
+      };
+    };
+  };
+  view: {
+    base: string;
+  };
+  footer: {
+    base: string;
+    button: {
+      base: string;
+      today: string;
+      clear: string;
+    };
+  };
+}
 
-const DatePickerMain = ({ children }: { children?: ReactElement }) => {
-  const { setShow, show } = useContext(DatePickerContext);
-  const InputRef = useRef<HTMLInputElement>(null);
-  const DatePickerRef = useRef<HTMLDivElement>(null);
+export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
+  open?: boolean;
+  autoHide?: boolean;
+  showClearButton?: boolean;
+  showTodayButton?: boolean;
+  defaultDate?: Date;
+  minDate?: Date;
+  maxDate?: Date;
+  language?: string;
+  // selectedDateState?: [Date, (date: Date) => void];
+  // onChange?: (date: Date) => void;
+  theme?: DeepPartial<FlowbiteDatepickerTheme>;
+}
+
+const DatepickerComponent: FC<DatepickerProps> = ({
+  title,
+  open,
+  autoHide = true,
+  showClearButton = true,
+  showTodayButton = true,
+  defaultDate = new Date(),
+  minDate,
+  maxDate,
+  language = 'en',
+  className,
+  theme: customTheme = {},
+  ...props
+}) => {
+  const theme = mergeDeep(useTheme().theme.datepicker, customTheme);
+
+  const [isOpen, setIsOpen] = useState(open);
+  const [view, setView] = useState<Views>(Views.Days);
+  const [selectedDate, setSelectedDate] = useState<Date>(defaultDate);
+
+  const inputRef = useRef<HTMLInputElement>(null);
+  const datepickerRef = useRef<HTMLDivElement>(null);
+
+  const refContainsEvent = (ref: RefObject<HTMLInputElement | HTMLDivElement>, event: MouseEvent) =>
+    ref.current?.contains(event.target as Node);
+
+  const changeSelectedDate = (action: 'prev' | 'next' | 'date' | 'today', date: Date) => {
+    console.log(action);
+    setSelectedDate(date);
+    console.log(selectedDate);
+  };
+
+  const renderView = (type: Views): ReactNode => {
+    switch (type) {
+      case Views.Decades:
+        return 'Decades';
+      case Views.Years:
+        return <DatepickerViewsYears selectedDate={selectedDate} />;
+      case Views.Months:
+        return <DatepickerViewsMonth selectedDate={selectedDate} />;
+      case Views.Days:
+      default:
+        return <DatepickerViewsDays startDay={1} selectedDate={selectedDate} minDate={minDate} maxDate={maxDate} />;
+    }
+  };
+
+  const getNextView = (): Views => {
+    switch (view) {
+      case Views.Days:
+        return Views.Months;
+      case Views.Months:
+        return Views.Years;
+      case Views.Years:
+        return Views.Decades;
+    }
+    return view;
+  };
+
+  const getViewTitle = (): string => {
+    switch (view) {
+      case Views.Decades:
+        return `${startOfYearPeriod(selectedDate, 100)} - ${startOfYearPeriod(selectedDate, 100) + 90}`;
+      case Views.Years:
+        return `${startOfYearPeriod(selectedDate, 10)} - ${startOfYearPeriod(selectedDate, 10) + 9}`;
+      case Views.Months:
+        return getFormattedDate(language, selectedDate, { year: 'numeric' });
+      case Views.Days:
+      default:
+        return getFormattedDate(language, selectedDate, { month: 'long', year: 'numeric' });
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (!(InputRef?.current && DatePickerRef?.current)) return;
-      if (!InputRef.current.contains(event.target as Node) && !DatePickerRef.current.contains(event.target as Node)) {
-        setShow(false);
+      if (!inputRef?.current && datepickerRef?.current) return;
+      if (!refContainsEvent(inputRef, event) && !refContainsEvent(datepickerRef, event)) {
+        setIsOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', (event) => handleClickOutside(event));
+    document.addEventListener('mousedown', (event: MouseEvent) => handleClickOutside(event));
 
     return () => {
-      document.removeEventListener('mousedown', (event) => handleClickOutside(event));
+      document.removeEventListener('mousedown', (event: MouseEvent) => handleClickOutside(event));
     };
-  }, [DatePickerRef, InputRef, setShow]);
+  }, [inputRef, datepickerRef, setIsOpen]);
+
+  // when mount set the default date
+  useEffect(() => {
+    setSelectedDate(defaultDate);
+  }, [defaultDate, setSelectedDate]);
 
   return (
-    <>
-      {children ? (
-        { ...children }
-      ) : (
-        <div className="relative">
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <CalendarIcon />
+    <DatepickerContext.Provider
+      value={{ language, selectedDate, isOpen, setIsOpen, view, setView, setSelectedDate, changeSelectedDate }}
+    >
+      <TextInput
+        className={twMerge(theme.root.base, className)}
+        icon={HiCalendar}
+        ref={inputRef}
+        onFocus={() => setIsOpen(true)}
+        value={selectedDate && (selectedDate.getTime() > 0 && true ? getFormattedDate(language, selectedDate) : '')}
+        readOnly
+        {...props}
+      />
+      {isOpen && (
+        <div ref={datepickerRef} className={theme.popup.root.base}>
+          <div className={theme.popup.root.inner}>
+            <div className={theme.popup.header.base}>
+              {title && <div className={theme.popup.header.title}>Title</div>}
+              <div className={theme.popup.header.selectors.base}>
+                <button
+                  className={twMerge(
+                    theme.popup.header.selectors.button.base,
+                    theme.popup.header.selectors.button.prev,
+                  )}
+                  onClick={() => changeSelectedDate('next', new Date(goToPrevNext(view, selectedDate, 1)))}
+                >
+                  <HiArrowLeft />
+                </button>
+                <button
+                  className={twMerge(
+                    theme.popup.header.selectors.button.base,
+                    theme.popup.header.selectors.button.view,
+                  )}
+                  onClick={() => setView(getNextView())}
+                >
+                  {getViewTitle()}
+                </button>
+                <button
+                  className={twMerge(
+                    theme.popup.header.selectors.button.base,
+                    theme.popup.header.selectors.button.next,
+                  )}
+                >
+                  <HiArrowRight />
+                </button>
+              </div>
+            </div>
+            <div className={theme.popup.view.base}>{renderView(view)}</div>
+            {(showClearButton || showTodayButton) && (
+              <div className={theme.popup.footer.base}>
+                {showTodayButton && (
+                  <button className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.today)}>
+                    Today
+                  </button>
+                )}
+                {showClearButton && (
+                  <button className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}>
+                    Clear
+                  </button>
+                )}
+              </div>
+            )}
           </div>
-          <Input ref={InputRef} />
         </div>
       )}
-      {show && <DatePickerPopup ref={DatePickerRef} />}
-    </>
+    </DatepickerContext.Provider>
   );
 };
 
-const Input = forwardRef<HTMLInputElement>((_props, ref) => {
-  const { setShow, selectedDate, showSelectedDate, options, getFormattedDate } = useContext(DatePickerContext);
-  return (
-    <input
-      ref={ref}
-      type="text"
-      name="date"
-      id="date"
-      className={twMerge(
-        'block w-full rounded-lg border border-gray-300 bg-gray-50 py-2.5 pl-9 pr-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500',
-        options?.theme?.input,
-      )}
-      placeholder="Select Date"
-      value={selectedDate.getTime() > 0 && showSelectedDate ? getFormattedDate(selectedDate) : ''}
-      onFocus={() => setShow(true)}
-      readOnly
-    />
-  );
-});
-Input.displayName = 'Input';
-
-const CalendarIcon = () => {
-  const { options } = useContext(DatePickerContext);
-  return (
-    <svg
-      aria-hidden="true"
-      className={twMerge('h-5 w-5 text-gray-500 dark:text-gray-400', options?.theme?.inputIcon)}
-      fill="currentColor"
-      viewBox="0 0 20 20"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fillRule="evenodd"
-        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-        clipRule="evenodd"
-      ></path>
-    </svg>
-  );
-};
+export const Datepicker = Object.assign(DatepickerComponent, {});
