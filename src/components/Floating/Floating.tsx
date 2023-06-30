@@ -3,8 +3,8 @@ import { autoUpdate, useFocus } from '@floating-ui/react';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { getArrowPlacement } from '../../helpers/floating';
 import { useBaseFLoating, useFloatingInteractions } from '../../helpers/use-floating';
+import { getArrowPlacement } from './helpers';
 
 export interface FlowbiteFloatingTheme {
   arrow: FlowbiteFloatingArrowTheme;
