@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
+import { mergeDeep } from '../../helpers/merge-deep';
 import { useTheme } from '../Flowbite/ThemeContext';
 
 export interface FlowbiteDrawerBodyTheme {

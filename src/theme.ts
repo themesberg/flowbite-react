@@ -33,6 +33,7 @@ import { timelineTheme } from './components/Timeline/theme';
 import { toastTheme } from './components/Toast/theme';
 import { toggleSwitchTheme } from './components/ToggleSwitch/theme';
 import { tooltipTheme } from './components/Tooltip/theme';
+import { drawerTheme } from './components/Drawer/theme';
 
 export const theme: FlowbiteTheme = {
   accordion: accordionTheme,
@@ -70,4 +71,5 @@ export const theme: FlowbiteTheme = {
   timeline: timelineTheme,
   toast: toastTheme,
   tooltip: tooltipTheme,
+  drawer: drawerTheme,
 };
