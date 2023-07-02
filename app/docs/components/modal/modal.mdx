@@ -1,0 +1,490 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { Button, Checkbox, Label, Modal, Select, TextInput, theme } from '~/src';
+import Link from 'next/link';
+import { HiOutlineExclamationCircle } from 'react-icons/hi';
+
+The modal component can be used to show any type of content such as text, form elements, and notifications to your website visitors by creating an off-canvas box on top of the main content area of your website.
+
+You can choose from multiple examples based on various styles, layouts, and elements inside the modal component and you can customize the behaviour, placement, and sizing using our custom React props and the utility classes from Tailwind CSS.
+
+To get started with the modal component you first need to import it from Flowbite React:
+
+```jsx
+'use client';
+
+import { Modal } from 'flowbite-react';
+```
+
+## Default modal
+
+Use the `<Modal>` React component to show a dialog element to the user with a header, body, and footer where you can add any type of content such as text or form elements.
+
+The visibility of the component can be set by passing a boolean value to the `show` prop on the `<Modal>` component and we recommend you to do this via the React state.
+
+Using a `openModal` and `setOpenModal` state for the main React component should allow you to easily manage the state of the Modal component and use inline functions on event listeners such as `onClick` or `onClose`.
+
+<CodePreview
+  code={`<Button onClick={() => props.setOpenModal('default')}>Toggle modal</Button>
+<Modal show={props.openModal === 'default'} onClose={() => props.setOpenModal(undefined)}>
+  <Modal.Header>Terms of Service</Modal.Header>
+  <Modal.Body>
+    <div className="space-y-6">
+      <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+        With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
+        companies around the world are updating their terms of service agreements to comply.
+      </p>
+      <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+        The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to
+        ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as
+        possible of high-risk data breaches that could personally affect them.
+      </p>
+    </div>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button onClick={() => props.setOpenModal(undefined)}>I accept</Button>
+    <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+      Decline
+    </Button>
+  </Modal.Footer>
+</Modal>`}
+  functionBody={[
+    'const [openModal, setOpenModal] = useState<string | undefined>();',
+    'const props = { openModal, setOpenModal };',
+  ]}
+  importFlowbiteReact="Button, Modal"
+  title="Default modal"
+>
+  <Button onClick={() => props.setOpenModal('default')}>Toggle modal</Button>
+  <Modal show={props.openModal === 'default'} onClose={() => props.setOpenModal(undefined)}>
+    <Modal.Header>Terms of Service</Modal.Header>
+    <Modal.Body>
+      <div className="space-y-6">
+        <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
+          companies around the world are updating their terms of service agreements to comply.
+        </p>
+        <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to
+          ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as
+          possible of high-risk data breaches that could personally affect them.
+        </p>
+      </div>
+    </Modal.Body>
+    <Modal.Footer>
+      <Button onClick={() => props.setOpenModal(undefined)}>I accept</Button>
+      <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+        Decline
+      </Button>
+    </Modal.Footer>
+  </Modal>
+</CodePreview>
+
+## Backdrop dismissible
+
+To enable the modal to be dismissed when clicking outside of the component (ie. the backdrop) then you can pass the `dismissible` prop to the `<Modal>` component frm React.
+
+<CodePreview
+  code={`<Button onClick={() => props.setOpenModal('dismissible')}>Toggle modal</Button>
+<Modal dismissible show={props.openModal === 'dismissible'} onClose={() => props.setOpenModal(undefined)}>
+  <Modal.Header>Terms of Service</Modal.Header>
+  <Modal.Body>
+    <div className="space-y-6">
+      <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+        With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
+        companies around the world are updating their terms of service agreements to comply.
+      </p>
+      <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+        The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to
+        ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as
+        possible of high-risk data breaches that could personally affect them.
+      </p>
+    </div>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button onClick={() => props.setOpenModal(undefined)}>I accept</Button>
+    <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+      Decline
+    </Button>
+  </Modal.Footer>
+</Modal>`}
+  functionBody={[
+    'const [openModal, setOpenModal] = useState<string | undefined>();',
+    'const props = { openModal, setOpenModal };',
+  ]}
+  importFlowbiteReact="Button, Modal"
+  title="Dismissable modal"
+>
+  <Button onClick={() => props.setOpenModal('dismissible')}>Toggle modal</Button>
+  <Modal dismissible show={props.openModal === 'dismissible'} onClose={() => props.setOpenModal(undefined)}>
+    <Modal.Header>Terms of Service</Modal.Header>
+    <Modal.Body>
+      <div className="space-y-6">
+        <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
+          companies around the world are updating their terms of service agreements to comply.
+        </p>
+        <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to
+          ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as
+          possible of high-risk data breaches that could personally affect them.
+        </p>
+      </div>
+    </Modal.Body>
+    <Modal.Footer>
+      <Button onClick={() => props.setOpenModal(undefined)}>I accept</Button>
+      <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+        Decline
+      </Button>
+    </Modal.Footer>
+  </Modal>
+</CodePreview>
+
+## Pop-up modal
+
+Use this example by passing the `popup` prop from React to the modal component to show a dialog to the user asking for a decision such as when confirming an item deletion from the database.
+
+<CodePreview
+  code={`<Button onClick={() => props.setOpenModal('pop-up')}>Toggle modal</Button>
+<Modal show={props.openModal === 'pop-up'} size="md" popup onClose={() => props.setOpenModal(undefined)}>
+  <Modal.Header />
+  <Modal.Body>
+    <div className="text-center">
+      <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
+      <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+        Are you sure you want to delete this product?
+      </h3>
+      <div className="flex justify-center gap-4">
+        <Button color="failure" onClick={() => props.setOpenModal(undefined)}>
+          Yes, I'm sure
+        </Button>
+        <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+          No, cancel
+        </Button>
+      </div>
+    </div>
+  </Modal.Body>
+</Modal>`}
+  functionBody={[
+    'const [openModal, setOpenModal] = useState<string | undefined>();',
+    'const props = { openModal, setOpenModal };',
+  ]}
+  importFlowbiteReact="Button, Modal"
+  title="Pop-up modal"
+>
+  <Button onClick={() => props.setOpenModal('pop-up')}>Toggle modal</Button>
+  <Modal show={props.openModal === 'pop-up'} size="md" popup onClose={() => props.setOpenModal(undefined)}>
+    <Modal.Header />
+    <Modal.Body>
+      <div className="text-center">
+        <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200" />
+        <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+          Are you sure you want to delete this product?
+        </h3>
+        <div className="flex justify-center gap-4">
+          <Button color="failure" onClick={() => props.setOpenModal(undefined)}>
+            {"Yes, I'm sure"}
+          </Button>
+          <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+            No, cancel
+          </Button>
+        </div>
+      </div>
+    </Modal.Body>
+  </Modal>
+</CodePreview>
+
+## Modal with form elements
+
+You can also add form elements inside of the modal component by adding the markup that you want inside the `<Modal.Body>` component. Form elements can be used to show user authentication or surveys modal elements.
+
+<CodePreview
+  code={`<Button onClick={() => props.setOpenModal('form-elements')}>Toggle modal</Button>
+<Modal show={props.openModal === 'form-elements'} size="md" popup onClose={() => props.setOpenModal(undefined)}>
+  <Modal.Header />
+  <Modal.Body>
+    <div className="space-y-6">
+      <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="email" value="Your email" />
+        </div>
+        <TextInput id="email" placeholder="name@company.com" required />
+      </div>
+      <div>
+        <div className="mb-2 block">
+          <Label htmlFor="password" value="Your password" />
+        </div>
+        <TextInput id="password" type="password" required />
+      </div>
+      <div className="flex justify-between">
+        <div className="flex items-center gap-2">
+          <Checkbox id="remember" />
+          <Label htmlFor="remember">Remember me</Label>
+        </div>
+        <a href="/modal" className="text-sm text-cyan-700 hover:underline dark:text-cyan-500">
+          Lost Password?
+        </a>
+      </div>
+      <div className="w-full">
+        <Button>Log in to your account</Button>
+      </div>
+      <div className="flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300">
+        Not registered?&nbsp;
+        <a href="/modal" className="text-cyan-700 hover:underline dark:text-cyan-500">
+          Create account
+        </a>
+      </div>
+    </div>
+  </Modal.Body>
+</Modal>`}
+  functionBody={[
+    'const [openModal, setOpenModal] = useState<string | undefined>();',
+    'const props = { openModal, setOpenModal };',
+  ]}
+  importFlowbiteReact="Button, Checkbox, Label, Modal, TextInput"
+  title="Form elements"
+>
+  <Button onClick={() => props.setOpenModal('form-elements')}>Toggle modal</Button>
+  <Modal show={props.openModal === 'form-elements'} size="md" popup onClose={() => props.setOpenModal(undefined)}>
+    <Modal.Header />
+    <Modal.Body>
+      <div className="space-y-6">
+        <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="email" value="Your email" />
+          </div>
+          <TextInput id="email" placeholder="name@company.com" required />
+        </div>
+        <div>
+          <div className="mb-2 block">
+            <Label htmlFor="password" value="Your password" />
+          </div>
+          <TextInput id="password" type="password" required />
+        </div>
+        <div className="flex justify-between">
+          <div className="flex items-center gap-2">
+            <Checkbox id="remember" />
+            <Label htmlFor="remember">Remember me</Label>
+          </div>
+          <a href="/modal" className="text-sm text-cyan-700 hover:underline dark:text-cyan-500">
+            Lost Password?
+          </a>
+        </div>
+        <div className="w-full">
+          <Button>Log in to your account</Button>
+        </div>
+        <div className="flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300">
+          Not registered?&nbsp;
+          <a href="/modal" className="text-cyan-700 hover:underline dark:text-cyan-500">
+            Create account
+          </a>
+        </div>
+      </div>
+    </Modal.Body>
+  </Modal>
+</CodePreview>
+
+## Sizing options
+
+To make the modal component smaller or larger you can pass the `size` prop to the `<Modal>` React component and you can choose from `sm`, `md`, `lg`, `xl` and all the way to `7xl`.
+
+<CodePreview
+  code={`<div className="flex flex-wrap gap-4">
+  <div className="w-40">
+    <Select defaultValue="md" onChange={(event) => props.setModalSize(event.target.value)}>
+      <option value="sm">sm</option>
+      <option value="md">md</option>
+      <option value="lg">lg</option>
+      <option value="xl">xl</option>
+      <option value="2xl">2xl</option>
+      <option value="3xl">3xl</option>
+      <option value="4xl">4xl</option>
+      <option value="5xl">5xl</option>
+      <option value="6xl">6xl</option>
+      <option value="7xl">7xl</option>
+    </Select>
+  </div>
+  <Button onClick={() => props.setOpenModal('size')}>Toggle modal</Button>
+</div>
+<Modal show={props.openModal === 'size'} size={props.modalSize} onClose={() => props.setOpenModal(undefined)}>
+  <Modal.Header>Small modal</Modal.Header>
+  <Modal.Body>
+    <div className="space-y-6 p-6">
+      <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+        With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
+        companies around the world are updating their terms of service agreements to comply.
+      </p>
+      <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+        The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to
+        ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as
+        possible of high-risk data breaches that could personally affect them.
+      </p>
+    </div>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button onClick={() => props.setOpenModal(undefined)}>I accept</Button>
+    <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+      Decline
+    </Button>
+  </Modal.Footer>
+</Modal>`}
+  functionBody={[
+    'const [openModal, setOpenModal] = useState<string | undefined>();',
+    "const [modalSize, setModalSize] = useState<string>('md');",
+    'const props = { modalSize, openModal, setModalSize, setOpenModal };',
+  ]}
+  importFlowbiteReact="Button, Modal, Select"
+  title="Sizing"
+>
+  <div className="flex flex-wrap gap-4">
+    <div className="w-40">
+      <Select defaultValue="md" onChange={(event) => props.setModalSize(event.target.value)}>
+        <option value="sm">sm</option>
+        <option value="md">md</option>
+        <option value="lg">lg</option>
+        <option value="xl">xl</option>
+        <option value="2xl">2xl</option>
+        <option value="3xl">3xl</option>
+        <option value="4xl">4xl</option>
+        <option value="5xl">5xl</option>
+        <option value="6xl">6xl</option>
+        <option value="7xl">7xl</option>
+      </Select>
+    </div>
+    <Button onClick={() => props.setOpenModal('size')}>Toggle modal</Button>
+  </div>
+  <Modal show={props.openModal === 'size'} size={props.modalSize} onClose={() => props.setOpenModal(undefined)}>
+    <Modal.Header>Small modal</Modal.Header>
+    <Modal.Body>
+      <div className="space-y-6 p-6">
+        <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
+          companies around the world are updating their terms of service agreements to comply.
+        </p>
+        <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to
+          ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as
+          possible of high-risk data breaches that could personally affect them.
+        </p>
+      </div>
+    </Modal.Body>
+    <Modal.Footer>
+      <Button onClick={() => props.setOpenModal(undefined)}>I accept</Button>
+      <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+        Decline
+      </Button>
+    </Modal.Footer>
+  </Modal>
+</CodePreview>
+
+## Placement options
+
+To set the position of the modal component relative to the page you can use the `position` prop on the modal component and you can choose from `center`, `top-left`, `top-center`, `bottom-right`, and more based on the selector options below.
+
+<CodePreview
+  code={`<div className="flex flex-wrap gap-4">
+  <div className="w-40">
+    <Select defaultValue="center" onChange={(event) => props.setModalPlacement(event.target.value)}>
+      <option value="center">Center</option>
+      <option value="top-left">Top left</option>
+      <option value="top-center">Top center</option>
+      <option value="top-right">Top right</option>
+      <option value="center-left">Center left</option>
+      <option value="center-right">Center right</option>
+      <option value="bottom-right">Bottom right</option>
+      <option value="bottom-center">Bottom center</option>
+      <option value="bottom-left">Bottom left</option>
+    </Select>
+  </div>
+  <Button onClick={() => props.setOpenModal('placement')}>Toggle modal</Button>
+</div>
+<Modal
+  show={props.openModal === 'placement'}
+  position={props.modalPlacement}
+  onClose={() => props.setOpenModal(undefined)}
+>
+  <Modal.Header>Small modal</Modal.Header>
+  <Modal.Body>
+    <div className="space-y-6 p-6">
+      <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+        With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
+        companies around the world are updating their terms of service agreements to comply.
+      </p>
+      <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+        The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to
+        ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as
+        possible of high-risk data breaches that could personally affect them.
+      </p>
+    </div>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button onClick={() => props.setOpenModal(undefined)}>I accept</Button>
+    <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+      Decline
+    </Button>
+  </Modal.Footer>
+</Modal>`}
+  functionBody={[
+    'const [openModal, setOpenModal] = useState<string | undefined>();',
+    "const [modalPlacement, setModalPlacement] = useState<string>('center');",
+    'const props = { modalPlacement, openModal, setModalPlacement, setOpenModal };',
+  ]}
+  importFlowbiteReact="Button, Modal, Select"
+  title="Placement"
+>
+  <div className="flex flex-wrap gap-4">
+    <div className="w-40">
+      <Select defaultValue="center" onChange={(event) => props.setModalPlacement(event.target.value)}>
+        <option value="center">Center</option>
+        <option value="top-left">Top left</option>
+        <option value="top-center">Top center</option>
+        <option value="top-right">Top right</option>
+        <option value="center-left">Center left</option>
+        <option value="center-right">Center right</option>
+        <option value="bottom-right">Bottom right</option>
+        <option value="bottom-center">Bottom center</option>
+        <option value="bottom-left">Bottom left</option>
+      </Select>
+    </div>
+    <Button onClick={() => props.setOpenModal('placement')}>Toggle modal</Button>
+  </div>
+  <Modal
+    show={props.openModal === 'placement'}
+    position={props.modalPlacement}
+    onClose={() => props.setOpenModal(undefined)}
+  >
+    <Modal.Header>Small modal</Modal.Header>
+    <Modal.Body>
+      <div className="space-y-6 p-6">
+        <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
+          companies around the world are updating their terms of service agreements to comply.
+        </p>
+        <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+          The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to
+          ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as
+          possible of high-risk data breaches that could personally affect them.
+        </p>
+      </div>
+    </Modal.Body>
+    <Modal.Footer>
+      <Button onClick={() => props.setOpenModal(undefined)}>I accept</Button>
+      <Button color="gray" onClick={() => props.setOpenModal(undefined)}>
+        Decline
+      </Button>
+    </Modal.Footer>
+  </Modal>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.modal, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Modal](https://flowbite.com/docs/components/modal/)

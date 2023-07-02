@@ -1,8 +1,18 @@
-**/*.md
-**/build/
-**/coverage/
-docs/
-lib/
+# Changelog is autogenerate, doesn't make sense to prettier it.
+CHANGELOG.md
 
-!src/docs/
-!src/lib/
+# Ignore the same files from .gitignore as well
+.next
+.vercel
+build
+coverage
+cypress/screenshots
+cypress/videos
+lib
+node_modules
+storybook-static
+.DS_Store
+npm-debug.log*
+tsconfig.tsbuildinfo
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,174 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { Button, theme } from '~/src';
+import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
+
+The button group component from Flowbite React can be used to stack multiple button elements and group them visually together. It can often be used to create a navigation menu or a toolbar.
+
+Choose from multiple examples and you can update properties such as the color, size, and appearance using the props from React and utility classes from Tailwind CSS.
+
+To start using the component you need to import it from the Flowbite React library:
+
+```jsx
+'use client';
+
+import { Button } from 'flowbite-react';
+```
+
+## Default button group
+
+Use this example of the `<Button.Group>` component by adding the `Button` component as a child element and stack them together. You can also use the `color` prop to change the color of the buttons.
+
+<CodePreview githubPage="Button/ButtonGroup" importFlowbiteReact="Button" title="Default button group">
+  <Button.Group>
+    <Button color="gray">Profile</Button>
+    <Button color="gray">Settings</Button>
+    <Button color="gray">Messages</Button>
+  </Button.Group>
+</CodePreview>
+
+## Button group with icons
+
+Import one of the icons from the `react-icons` library and add it as a child element to the `<Button>` component to create multiple buttons with icons grouped together.
+
+<CodePreview
+  githubPage="Button/ButtonGroup"
+  importExternal="import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';"
+  importFlowbiteReact="Button"
+  title="With icons"
+>
+  <Button.Group>
+    <Button color="gray">
+      <HiUserCircle className="mr-3 h-4 w-4" />
+      Profile
+    </Button>
+    <Button color="gray">
+      <HiAdjustments className="mr-3 h-4 w-4" />
+      Settings
+    </Button>
+    <Button color="gray">
+      <HiCloudDownload className="mr-3 h-4 w-4" />
+      Messages
+    </Button>
+  </Button.Group>
+</CodePreview>
+
+## Outline button group
+
+By passing the outline prop to the `<Button.Group>` component you can create a button group with outline buttons with no background and solid borders.
+
+<CodePreview
+  githubPage="Button/ButtonGroup"
+  importFlowbiteReact="Button"
+  title="Outline"
+  className="flex flex-wrap gap-2"
+>
+  <Button.Group outline>
+    <Button color="gray">Profile</Button>
+    <Button color="gray">Settings</Button>
+    <Button color="gray">Messages</Button>
+  </Button.Group>
+  <Button.Group outline>
+    <Button gradientMonochrome="info">Profile</Button>
+    <Button gradientMonochrome="info">Settings</Button>
+    <Button gradientMonochrome="info">Messages</Button>
+  </Button.Group>
+  <Button.Group outline>
+    <Button gradientDuoTone="cyanToBlue">Profile</Button>
+    <Button gradientDuoTone="cyanToBlue">Settings</Button>
+    <Button gradientDuoTone="cyanToBlue">Messages</Button>
+  </Button.Group>
+</CodePreview>
+
+## Color options
+
+Use the `color` prop to change the color of the buttons. You can also use the `gradientMonochrome` and `gradientDuoTone` props to apply a gradient color to the buttons.
+
+<CodePreview
+  githubPage="Button/ButtonGroup"
+  importFlowbiteReact="Button"
+  title="All colors"
+  className="flex flex-wrap gap-2"
+>
+  <Button.Group>
+    <Button color="info">Profile</Button>
+    <Button color="info">Settings</Button>
+    <Button color="info">Messages</Button>
+  </Button.Group>
+  <Button.Group>
+    <Button gradientMonochrome="info">Profile</Button>
+    <Button gradientMonochrome="info">Settings</Button>
+    <Button gradientMonochrome="info">Messages</Button>
+  </Button.Group>
+  <Button.Group>
+    <Button gradientDuoTone="greenToBlue">Profile</Button>
+    <Button gradientDuoTone="greenToBlue">Settings</Button>
+    <Button gradientDuoTone="greenToBlue">Messages</Button>
+  </Button.Group>
+</CodePreview>
+
+## Outline button group with icons
+
+Here's an example on how you can use both the outline and icon props together.
+
+<CodePreview
+  githubPage="Button/ButtonGroup"
+  importExternal="import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';"
+  importFlowbiteReact="Button"
+  title="Outline with icons"
+  className="flex flex-wrap gap-2"
+>
+  <Button.Group outline>
+    <Button color="gray">
+      <HiUserCircle className="mr-3 h-4 w-4" />
+      Profile
+    </Button>
+    <Button color="gray">
+      <HiAdjustments className="mr-3 h-4 w-4" />
+      Settings
+    </Button>
+    <Button color="gray">
+      <HiCloudDownload className="mr-3 h-4 w-4" />
+      Messages
+    </Button>
+  </Button.Group>
+  <Button.Group outline>
+    <Button gradientMonochrome="info">
+      <HiUserCircle className="mr-3 h-4 w-4" />
+      Profile
+    </Button>
+    <Button gradientMonochrome="info">
+      <HiAdjustments className="mr-3 h-4 w-4" />
+      Settings
+    </Button>
+    <Button gradientMonochrome="info">
+      <HiCloudDownload className="mr-3 h-4 w-4" />
+      Messages
+    </Button>
+  </Button.Group>
+  <Button.Group outline>
+    <Button gradientDuoTone="cyanToBlue">
+      <HiUserCircle className="mr-3 h-4 w-4" />
+      Profile
+    </Button>
+    <Button gradientDuoTone="cyanToBlue">
+      <HiAdjustments className="mr-3 h-4 w-4" />
+      Settings
+    </Button>
+    <Button gradientDuoTone="cyanToBlue">
+      <HiCloudDownload className="mr-3 h-4 w-4" />
+      Messages
+    </Button>
+  </Button.Group>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.buttonGroup, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Button Group](https://flowbite.com/docs/components/button-group/)

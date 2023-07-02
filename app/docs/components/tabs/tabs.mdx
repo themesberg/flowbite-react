@@ -1,0 +1,317 @@
+import { useState } from 'react';
+import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
+import { MdDashboard } from 'react-icons/md';
+import { CodePreview } from '~/app/components/code-preview';
+import { Button, Tabs, theme } from '~/src';
+
+The tabs component can be used to show a list of tab items that you can click on to change the content inside of the main tabs component using React state reactivity.
+
+Choose one of the examples below based on various styles, layouts, and content types that you can customize with React components, props and the utility classes from Tailwind CSS.
+
+Make sure that you import the component from the `flowbite-react` library:
+
+```jsx
+'use client';
+
+import { Tabs } from 'flowbite-react';
+```
+
+## Default tabs
+
+Add the `<Tabs.Item>` child component to the `<Tabs.Group>` component to create a tab item and you can add any type of markup and React components inside of it and it will be shown when clicking on the associated tab item.
+
+You can also choose to add the `active` prop to the `<Tabs.Item>` component to make it active by default and set the title of the tab item using the `title` prop.
+
+Additionally, if you pass the `disabled` prop to the `<Tabs.Item>` component, it will be disabled and you won't be able to click on it.
+
+<CodePreview
+  githubPage="Tab/Tabs"
+  importExternal="import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
+import { MdDashboard } from 'react-icons/md';"
+  importFlowbiteReact="Tabs"
+  title="Default tabs"
+>
+  <Tabs.Group aria-label="Default tabs" style="default">
+    <Tabs.Item active title="Profile" icon={HiUserCircle}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Dashboard" icon={MdDashboard}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Settings" icon={HiAdjustments}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Settings tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Contacts" icon={HiClipboardList}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item disabled title="Disabled">
+      Disabled content
+    </Tabs.Item>
+  </Tabs.Group>
+</CodePreview>
+
+## Tabs with underline
+
+Pass the `style="underline"` prop to the `<Tabs.Group>` component to make the tabs have an underline style.
+
+<CodePreview
+  githubPage="Tab/Tabs"
+  importExternal="import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
+import { MdDashboard } from 'react-icons/md';"
+  importFlowbiteReact="Tabs"
+  title="Tabs with underline"
+>
+  <Tabs.Group aria-label="Tabs with underline" style="underline">
+    <Tabs.Item active title="Profile" icon={HiUserCircle}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Dashboard" icon={MdDashboard}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Settings" icon={HiAdjustments}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Settings tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Contacts" icon={HiClipboardList}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item disabled title="Disabled">
+      Disabled content
+    </Tabs.Item>
+  </Tabs.Group>
+</CodePreview>
+
+## Tabs with icons
+
+Pass the `icon` prop to the `<Tabs.Item>` component to add an icon to the tab item.
+
+<CodePreview
+  githubPage="Tab/Tabs"
+  importExternal="import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
+import { MdDashboard } from 'react-icons/md';"
+  importFlowbiteReact="Tabs"
+  title="Tabs with icons"
+>
+  <Tabs.Group aria-label="Tabs with icons" style="underline">
+    <Tabs.Item active title="Profile" icon={HiUserCircle}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Dashboard" icon={MdDashboard}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Settings" icon={HiAdjustments}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Settings tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Contacts" icon={HiClipboardList}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item disabled title="Disabled">
+      Disabled content
+    </Tabs.Item>
+  </Tabs.Group>
+</CodePreview>
+
+## Tabs with pills
+
+Add the `style="pills"` prop to the `<Tabs.Group>` component to make the tabs have a pills style with rounded corners as an alternative style.
+
+<CodePreview githubPage="Tab/Tabs" importFlowbiteReact="Tabs" title="Pills tabs">
+  <Tabs.Group aria-label="Pills" style="pills">
+    <Tabs.Item active title="Tab 1">
+      <p className="text-sm text-gray-500 dark:text-gray-400">Content 1</p>
+    </Tabs.Item>
+    <Tabs.Item title="Tab 2">
+      <p className="text-sm text-gray-500 dark:text-gray-400">Content 2</p>
+    </Tabs.Item>
+    <Tabs.Item title="Tab 3">
+      <p className="text-sm text-gray-500 dark:text-gray-400">Content 3</p>
+    </Tabs.Item>
+    <Tabs.Item title="Tab 4">
+      <p className="text-sm text-gray-500 dark:text-gray-400">Content 4</p>
+    </Tabs.Item>
+    <Tabs.Item disabled title="Tab 5">
+      <p className="text-sm text-gray-500 dark:text-gray-400">Content 5</p>
+    </Tabs.Item>
+  </Tabs.Group>
+</CodePreview>
+
+## Full width tabs
+
+Make the tabs span the full width of their container, pass the `style="fullWidth"` prop to the `<Tabs.Group>`
+
+<CodePreview
+  githubPage="Tab/Tabs"
+  importExternal="import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
+import { MdDashboard } from 'react-icons/md';"
+  importFlowbiteReact="Tabs"
+  title="Full width tabs"
+>
+  <Tabs.Group aria-label="Full width tabs" style="fullWidth">
+    <Tabs.Item active title="Profile" icon={HiUserCircle}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Dashboard" icon={MdDashboard}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Settings" icon={HiAdjustments}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Settings tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Contacts" icon={HiClipboardList}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item disabled title="Disabled">
+      Disabled content
+    </Tabs.Item>
+  </Tabs.Group>
+</CodePreview>
+
+## React state options
+
+Here's an example on how you can set the activate tab programatically using the React state variables and functions of `activateTab` and `setActivateTab`.
+
+<CodePreview
+  code={`<Tabs.Group
+  aria-label="Default tabs"
+  style="default"
+  ref={props.tabsRef}
+  onActiveTabChange={(tab) => props.setActiveTab(tab)}
+>
+  <Tabs.Item active title="Profile" icon={HiUserCircle}>
+    This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
+    Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+    control the content visibility and styling.
+  </Tabs.Item>
+  <Tabs.Item title="Dashboard" icon={MdDashboard}>
+    This is <span className="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</span>.
+    Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+    control the content visibility and styling.
+  </Tabs.Item>
+  <Tabs.Item title="Settings" icon={HiAdjustments}>
+    This is <span className="font-medium text-gray-800 dark:text-white">Settings tab's associated content</span>.
+    Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+    control the content visibility and styling.
+  </Tabs.Item>
+  <Tabs.Item title="Contacts" icon={HiClipboardList}>
+    This is <span className="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</span>.
+    Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+    control the content visibility and styling.
+  </Tabs.Item>
+  <Tabs.Item disabled title="Disabled">
+    Disabled content
+  </Tabs.Item>
+</Tabs.Group>
+<div className="pb-4 pt-2 text-sm text-gray-500 dark:text-gray-400">Active tab: {props.activeTab}</div>
+<Button.Group>
+  <Button color="gray" onClick={() => props.tabsRef.current?.setActiveTab(0)}>
+    Profile
+  </Button>
+  <Button color="gray" onClick={() => props.tabsRef.current?.setActiveTab(1)}>
+    Dashboard
+  </Button>
+  <Button color="gray" onClick={() => props.tabsRef.current?.setActiveTab(2)}>
+    Settings
+  </Button>
+  <Button color="gray" onClick={() => props.tabsRef.current?.setActiveTab(3)}>
+    Contacts
+  </Button>
+</Button.Group>`}
+  githubPage="Tab/Tabs"
+  functionBody={[
+    'const [activeTab, setActiveTab] = useState<number>(0);',
+    'const tabsRef = useRef<TabsRef>(null);',
+    'const props = { setActiveTab, tabsRef };',
+  ]}
+  importExternal="import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
+import { MdDashboard } from 'react-icons/md';"
+  importFlowbiteReact="Button, Tabs, type TabsRef"
+  title="Set active tab programmatically"
+>
+  <Tabs.Group
+    aria-label="Default tabs"
+    style="default"
+    ref={props.tabsRef}
+    onActiveTabChange={(tab) => props.setActiveTab(tab)}
+  >
+    <Tabs.Item active title="Profile" icon={HiUserCircle}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Dashboard" icon={MdDashboard}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Settings" icon={HiAdjustments}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Settings tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item title="Contacts" icon={HiClipboardList}>
+      This is <span className="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</span>.
+      Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
+      control the content visibility and styling.
+    </Tabs.Item>
+    <Tabs.Item disabled title="Disabled">
+      Disabled content
+    </Tabs.Item>
+  </Tabs.Group>
+  <div className="pb-4 pt-2 text-sm text-gray-500 dark:text-gray-400">Active tab: {props.activeTab}</div>
+  <Button.Group>
+    <Button color="gray" onClick={() => props.tabsRef.current?.setActiveTab(0)}>
+      Profile
+    </Button>
+    <Button color="gray" onClick={() => props.tabsRef.current?.setActiveTab(1)}>
+      Dashboard
+    </Button>
+    <Button color="gray" onClick={() => props.tabsRef.current?.setActiveTab(2)}>
+      Settings
+    </Button>
+    <Button color="gray" onClick={() => props.tabsRef.current?.setActiveTab(3)}>
+      Contacts
+    </Button>
+  </Button.Group>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.tab, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Tabs](https://flowbite.com/docs/components/tabs/)

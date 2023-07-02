@@ -1,0 +1,124 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { Avatar, Button, Dropdown, Navbar, theme } from '~/src';
+import Link from 'next/link';
+
+The navbar component is an important section of any website as it is the first section that appears on any page and it serves the purpose of allowing your users to navigate throughout your website.
+
+Generally, the navigation bar consists of the logo of your website, a list of menu items for navigation and other secondary elements such as buttons, dropdowns, and a hamburger menu for mobile devices.
+
+All interactivity and options are handled by using React properties and you can customise the appearance of the navbar using the classes from Tailwind CSS.
+
+To start using the navbar component you need to import it from Flowbite React:
+
+```jsx
+'use client';
+
+import { Navbar } from `flowbite-react`;
+```
+
+## Default navbar
+
+Use the default navbar component to showcase the logo and a list of menu items with links to other pages of your website by adding the `<Navbar.Brand>` and `<Navbar.Link>` components inside the `<Navbar>` component.
+
+On mobile device the navigation bar will be collapsed and you will be able to use the hamburger menu to toggle the menu items by adding the `<Navbar.Toggle>` component.
+
+<CodePreview title="Default navbar">
+  <Navbar fluid rounded>
+    <Navbar.Brand as={Link} href="https://flowbite-react.com">
+      <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+      <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
+    </Navbar.Brand>
+    <Navbar.Toggle />
+    <Navbar.Collapse>
+      <Navbar.Link href="#" active>
+        Home
+      </Navbar.Link>
+      <Navbar.Link as={Link} href="#">
+        About
+      </Navbar.Link>
+      <Navbar.Link href="#">Services</Navbar.Link>
+      <Navbar.Link href="#">Pricing</Navbar.Link>
+      <Navbar.Link href="#">Contact</Navbar.Link>
+    </Navbar.Collapse>
+  </Navbar>
+</CodePreview>
+
+## Navbar with CTA button
+
+Use this example to show a CTA button inside the navbar component for marketing advantages and to increase the conversion rate of your website.
+
+<CodePreview importFlowbiteReact="Button, Navbar" title="Navbar with CTA button">
+  <Navbar fluid rounded>
+    <Navbar.Brand href="https://flowbite-react.com">
+      <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+      <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
+    </Navbar.Brand>
+    <div className="flex md:order-2">
+      <Button>Get started</Button>
+      <Navbar.Toggle />
+    </div>
+    <Navbar.Collapse>
+      <Navbar.Link href="#" active>
+        Home
+      </Navbar.Link>
+      <Navbar.Link href="#">About</Navbar.Link>
+      <Navbar.Link href="#">Services</Navbar.Link>
+      <Navbar.Link href="#">Pricing</Navbar.Link>
+      <Navbar.Link href="#">Contact</Navbar.Link>
+    </Navbar.Collapse>
+  </Navbar>
+</CodePreview>
+
+## Navbar with dropdown
+
+Use this example to feature a dropdown menu when clicking on the user avatar inside the navbar by importing the `<Avatar>` and `<Dropdown>` components.
+
+<CodePreview importFlowbiteReact="Dropdown, Navbar" title="Navbar with dropdown">
+  <Navbar fluid rounded>
+    <Navbar.Brand href="https://flowbite-react.com">
+      <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
+      <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
+    </Navbar.Brand>
+    <div className="flex md:order-2">
+      <Dropdown
+        arrowIcon={false}
+        inline
+        label={
+          <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
+        }
+      >
+        <Dropdown.Header>
+          <span className="block text-sm">Bonnie Green</span>
+          <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+        </Dropdown.Header>
+        <Dropdown.Item>Dashboard</Dropdown.Item>
+        <Dropdown.Item>Settings</Dropdown.Item>
+        <Dropdown.Item>Earnings</Dropdown.Item>
+        <Dropdown.Divider />
+        <Dropdown.Item>Sign out</Dropdown.Item>
+      </Dropdown>
+      <Navbar.Toggle />
+    </div>
+    <Navbar.Collapse>
+      <Navbar.Link href="#" active>
+        Home
+      </Navbar.Link>
+      <Navbar.Link href="#">About</Navbar.Link>
+      <Navbar.Link href="#">Services</Navbar.Link>
+      <Navbar.Link href="#">Pricing</Navbar.Link>
+      <Navbar.Link href="#">Contact</Navbar.Link>
+    </Navbar.Collapse>
+  </Navbar>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.navbar, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Navbar](https://flowbite.com/docs/components/navbar/)
