@@ -1,39 +1,41 @@
-import type { DeepPartial } from '..';
-import type { FlowbiteAccordionTheme } from '../Accordion';
-import type { FlowbiteAlertTheme } from '../Alert';
-import type { FlowbiteAvatarTheme } from '../Avatar';
-import type { FlowbiteBadgeTheme } from '../Badge';
-import type { FlowbiteBreadcrumbTheme } from '../Breadcrumb';
-import type { FlowbiteButtonGroupTheme, FlowbiteButtonTheme } from '../Button';
-import type { FlowbiteCardTheme } from '../Card';
-import type { FlowbiteCarouselTheme } from '../Carousel';
-import type { FlowbiteCheckboxTheme } from '../Checkbox';
-import type { FlowbiteDarkThemeToggleTheme } from '../DarkThemeToggle';
-import type { FlowbiteDrawerTheme } from '../Drawer';
-import type { FlowbiteDropdownTheme } from '../Dropdown';
-import type { FlowbiteFileInputTheme } from '../FileInput';
-import type { FlowbiteFooterTheme } from '../Footer';
-import type { FlowbiteHelperTextTheme } from '../HelperText';
-import type { FlowbiteLabelTheme } from '../Label';
-import type { FlowbiteListGroupTheme } from '../ListGroup';
-import type { FlowbiteModalTheme } from '../Modal';
-import type { FlowbiteNavbarTheme } from '../Navbar';
-import type { FlowbitePaginationTheme } from '../Pagination';
-import type { FlowbiteProgressTheme } from '../Progress';
-import type { FlowbiteRadioTheme } from '../Radio';
-import type { FlowbiteRangeSliderTheme } from '../RangeSlider';
-import type { FlowbiteRatingTheme } from '../Rating';
-import type { FlowbiteSelectTheme } from '../Select';
-import type { FlowbiteSidebarTheme } from '../Sidebar';
-import type { FlowbiteSpinnerTheme } from '../Spinner';
-import type { FlowbiteTabTheme } from '../Tab';
-import type { FlowbiteTableTheme } from '../Table';
-import type { FlowbiteTextareaTheme } from '../Textarea';
-import type { FlowbiteTextInputTheme } from '../TextInput';
-import type { FlowbiteTimelineTheme } from '../Timeline';
-import type { FlowbiteToastTheme } from '../Toast';
-import type { FlowbiteToggleSwitchTheme } from '../ToggleSwitch';
-import type { FlowbiteTooltipTheme } from '../Tooltip';
+import type {
+  DeepPartial,
+  FlowbiteAccordionTheme,
+  FlowbiteAlertTheme,
+  FlowbiteAvatarTheme,
+  FlowbiteBadgeTheme,
+  FlowbiteBreadcrumbTheme,
+  FlowbiteButtonGroupTheme,
+  FlowbiteCardTheme,
+  FlowbiteCarouselTheme,
+  FlowbiteCheckboxTheme,
+  FlowbiteDarkThemeToggleTheme,
+  FlowbiteDrawerTheme,
+  FlowbiteDropdownTheme,
+  FlowbiteFileInputTheme,
+  FlowbiteFooterTheme,
+  FlowbiteHelperTextTheme,
+  FlowbiteLabelTheme,
+  FlowbiteListGroupTheme,
+  FlowbiteModalTheme,
+  FlowbiteNavbarTheme,
+  FlowbitePaginationTheme,
+  FlowbiteProgressTheme,
+  FlowbiteRadioTheme,
+  FlowbiteRangeSliderTheme,
+  FlowbiteRatingTheme,
+  FlowbiteSelectTheme,
+  FlowbiteSidebarTheme,
+  FlowbiteSpinnerTheme,
+  FlowbiteTabTheme,
+  FlowbiteTableTheme,
+  FlowbiteTextareaTheme,
+  FlowbiteTextInputTheme,
+  FlowbiteTimelineTheme,
+  FlowbiteToastTheme,
+  FlowbiteToggleSwitchTheme,
+  FlowbiteTooltipTheme,
+} from '../../'
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 

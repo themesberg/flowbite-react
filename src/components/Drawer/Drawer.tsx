@@ -3,9 +3,7 @@ import type { ComponentProps, FC, MouseEvent, PropsWithChildren } from 'react';
 import { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import type { DeepPartial } from '..';
-import { mergeDeep } from '../../helpers/mergeDeep';
-import windowExists from '../../helpers/window-exists';
-import { useKeyDown } from '../../hooks';
+import { mergeDeep } from '../../helpers/merge-deep';
 import type { FlowbiteBoolean, FlowbitePlacements } from '../Flowbite/FlowbiteTheme';
 import { useTheme } from '../Flowbite/ThemeContext';
 import type { FlowbiteDrawerBodyTheme } from './DrawerBody';
@@ -68,7 +66,7 @@ const DrawerComponent: FC<DrawerProps> = ({
 
   // If the current value of the ref is not already a child of the root element,
   // append it or replace its parent.
-  if (containerRef.current.parentNode !== root && windowExists()) {
+  if (containerRef.current.parentNode !== root) {
     root = root || document.body;
     root.appendChild(containerRef.current);
   }
@@ -86,11 +84,19 @@ const DrawerComponent: FC<DrawerProps> = ({
     };
   }, []);
 
-  useKeyDown('Escape', () => {
-    if (backdrop && onClose) {
-      onClose();
-    }
-  });
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && onClose) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
 
   const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
     if (backdrop && e.target === e.currentTarget && onClose) {
