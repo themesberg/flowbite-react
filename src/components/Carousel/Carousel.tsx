@@ -50,6 +50,7 @@ export interface CarouselProps extends PropsWithChildren<ComponentProps<'div'>> 
   slide?: boolean;
   slideInterval?: number;
   theme?: DeepPartial<FlowbiteCarouselTheme>;
+  onSlideChange?: (slide: number) => void;
 }
 
 export const Carousel: FC<CarouselProps> = ({
@@ -61,6 +62,7 @@ export const Carousel: FC<CarouselProps> = ({
   slideInterval,
   className,
   theme: customTheme = {},
+  onSlideChange = null,
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.carousel, customTheme);
@@ -69,6 +71,8 @@ export const Carousel: FC<CarouselProps> = ({
   const carouselContainer = useRef<HTMLDivElement>(null);
   const [activeItem, setActiveItem] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+
+  const didMountRef = useRef(false);
 
   const items = useMemo(
     () =>
@@ -105,6 +109,14 @@ export const Carousel: FC<CarouselProps> = ({
       return () => clearInterval(intervalId);
     }
   }, [activeItem, isDragging, navigateTo, slide, slideInterval]);
+
+  useEffect(() => {
+    if (didMountRef.current) {
+      onSlideChange && onSlideChange(activeItem);
+    } else {
+      didMountRef.current = true;
+    }
+  }, [onSlideChange, activeItem]);
 
   const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
 

@@ -102,6 +102,18 @@ Instead of images you can also use any type of markup and content inside the car
   </Carousel>
 </CodePreview>
 
+## Handle `onSlideChanged` event
+
+To hook events to slide changed you can use `onSlideChange` property.
+
+<CodePreview title="Slide change event" className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+  <Carousel onSlideChange={(slideIdx) => console.log(slideIdx)}>
+    <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 1</div>
+    <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 2</div>
+    <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 3</div>
+  </Carousel>
+</CodePreview>
+
 ## Theme
 
 To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
