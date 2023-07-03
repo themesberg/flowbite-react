@@ -1,7 +1,8 @@
 import { act, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import { describe, expect, it } from 'vitest';
+import type { FlowbiteDropdownTheme } from './Dropdown';
 import { Dropdown } from './Dropdown';
 
 describe('Components / Dropdown', () => {
@@ -39,6 +40,17 @@ describe('Components / Dropdown', () => {
 
       expect(dropdown()).toHaveClass('invisible');
     });
+    it('should collapse if CustomTriggerItem is clicked', async () => {
+      const user = userEvent.setup();
+      render(<TestDropdown renderTrigger={() => <button type="button"></button>} />);
+
+      act(() => {
+        user.click(button());
+        userEvent.click(dropdownItem());
+      });
+
+      expect(dropdown()).toHaveClass('invisible');
+    });
 
     it('should not collapse in case item is clicked if dismissOnClick = false', async () => {
       const user = userEvent.setup();
@@ -68,11 +80,18 @@ describe('Components / Dropdown', () => {
   });
 });
 
-const TestDropdown: FC<{ dismissOnClick?: boolean; inline?: boolean }> = ({
-  dismissOnClick = true,
-  inline = false,
-}) => (
-  <Dropdown label="Dropdown button" placement="right" dismissOnClick={dismissOnClick} inline={inline}>
+const TestDropdown: FC<{
+  dismissOnClick?: boolean;
+  inline?: boolean;
+  renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactNode;
+}> = ({ dismissOnClick = true, inline = false, renderTrigger }) => (
+  <Dropdown
+    label="Dropdown button"
+    placement="right"
+    dismissOnClick={dismissOnClick}
+    inline={inline}
+    renderTrigger={renderTrigger}
+  >
     <Dropdown.Header>
       <span className="block text-sm">Bonnie Green</span>
       <span className="block truncate text-sm font-medium">name@flowbite.com</span>
