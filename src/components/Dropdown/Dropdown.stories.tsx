@@ -36,7 +36,9 @@ WithDivider.args = {
       <Dropdown.Item>Settings</Dropdown.Item>
       <Dropdown.Item>Earnings</Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item>Separated link</Dropdown.Item>
+      <Dropdown.Item href="https://flowbite.com/" target="_blank">
+        Separated link
+      </Dropdown.Item>
     </>
   ),
 };

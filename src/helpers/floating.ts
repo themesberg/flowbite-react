@@ -1,6 +1,8 @@
 import type { Middleware, Placement } from '@floating-ui/react';
 import { arrow, autoPlacement, flip, offset, shift } from '@floating-ui/react';
 import type { RefObject } from 'react';
+import { twMerge } from 'tailwind-merge';
+import type { FloatingStyle, FlowbiteFloatingTheme } from '../components/Floating';
 
 /**
  * @see https://floating-ui.com/docs/middleware
@@ -36,4 +38,26 @@ export const getArrowPlacement = ({ placement }: { placement: Placement }): Plac
     bottom: 'top',
     left: 'right',
   }[placement.split('-')[0]] as Placement;
+};
+
+export const mergeWrapperClassName = ({
+  theme,
+  animation,
+  open,
+  style,
+  className,
+}: {
+  animation?: false | string;
+  style: FloatingStyle;
+  theme: FlowbiteFloatingTheme;
+  className?: string;
+  open?: boolean;
+}): string => {
+  return twMerge(
+    theme.base,
+    animation && `${theme.animation} ${animation}`,
+    !open && theme.hidden,
+    theme.style[style],
+    className,
+  );
 };
