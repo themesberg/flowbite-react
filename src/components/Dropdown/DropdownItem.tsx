@@ -10,6 +10,7 @@ import { ButtonBase } from '../Button/ButtonBase';
 import { DropdownContext } from './Dropdown';
 
 export interface FlowbiteDropdownItemTheme {
+  container: string;
   base: string;
   icon: string;
 }
@@ -36,7 +37,7 @@ export const DropdownItem: FC<Props> = ({
   const theme = mergeDeep(useTheme().theme.dropdown.floating.item, customTheme);
 
   return (
-    <li role="menuitem">
+    <li role="menuitem" className={theme.container}>
       <ButtonBase
         ref={ref}
         className={twMerge(theme.base, className)}
