@@ -69,14 +69,13 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   minDate?: Date;
   maxDate?: Date;
   language?: string;
-  // selectedDateState?: [Date, (date: Date) => void];
-  // onChange?: (date: Date) => void;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
 }
 
 const DatepickerComponent: FC<DatepickerProps> = ({
   title,
   open,
+  // @TODO autoHide is missing
   autoHide = true,
   showClearButton = true,
   showTodayButton = true,
@@ -160,11 +159,6 @@ const DatepickerComponent: FC<DatepickerProps> = ({
       document.removeEventListener('mousedown', (event: MouseEvent) => handleClickOutside(event));
     };
   }, [inputRef, datepickerRef, setIsOpen]);
-
-  // when mount set the default date
-  useEffect(() => {
-    setSelectedDate(defaultDate);
-  }, [defaultDate, setSelectedDate]);
 
   return (
     <DatepickerContext.Provider
