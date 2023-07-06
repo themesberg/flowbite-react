@@ -120,7 +120,7 @@ const DatepickerComponent: FC<DatepickerProps> = ({
         return <DatepickerViewsMonth />;
       case Views.Days:
       default:
-        return <DatepickerViewsDays startDay={1} minDate={minDate} maxDate={maxDate} />;
+        return <DatepickerViewsDays minDate={minDate} maxDate={maxDate} />;
     }
   };
 
@@ -197,7 +197,7 @@ const DatepickerComponent: FC<DatepickerProps> = ({
         icon={HiCalendar}
         ref={inputRef}
         onFocus={() => setIsOpen(true)}
-        value={selectedDate && (selectedDate.getTime() > 0 && true ? getFormattedDate(language, selectedDate) : '')}
+        value={selectedDate && getFormattedDate(language, selectedDate)}
         readOnly
         {...props}
       />
@@ -212,7 +212,7 @@ const DatepickerComponent: FC<DatepickerProps> = ({
                     theme.popup.header.selectors.button.base,
                     theme.popup.header.selectors.button.prev,
                   )}
-                  onClick={() => changeSelectedDate(getViewDatePage(view, selectedDate, -1))}
+                  onClick={() => changeSelectedDate(getViewDatePage(view, selectedDate, -1), false)}
                 >
                   <HiArrowLeft />
                 </button>
@@ -230,7 +230,7 @@ const DatepickerComponent: FC<DatepickerProps> = ({
                     theme.popup.header.selectors.button.base,
                     theme.popup.header.selectors.button.next,
                   )}
-                  onClick={() => changeSelectedDate(getViewDatePage(view, selectedDate, 1))}
+                  onClick={() => changeSelectedDate(getViewDatePage(view, selectedDate, 1), false)}
                 >
                   <HiArrowRight />
                 </button>
@@ -242,7 +242,7 @@ const DatepickerComponent: FC<DatepickerProps> = ({
                 {showTodayButton && (
                   <button
                     className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.today)}
-                    onClick={() => changeSelectedDate(new Date())}
+                    onClick={() => changeSelectedDate(new Date(), true)}
                   >
                     Today
                   </button>
@@ -250,7 +250,7 @@ const DatepickerComponent: FC<DatepickerProps> = ({
                 {showClearButton && (
                   <button
                     className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
-                    onClick={() => changeSelectedDate(defaultDate)}
+                    onClick={() => changeSelectedDate(defaultDate, true)}
                   >
                     Clear
                   </button>

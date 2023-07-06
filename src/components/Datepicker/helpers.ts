@@ -18,50 +18,49 @@ export const isDateInRange = (date: Date, minDate?: Date, maxDate?: Date): boole
   return true;
 };
 
-export const firstDateOfMonth = (selectedYear: number, selectedMonth: number, date: number): number => {
-  const newDate = new Date(0);
-  newDate.setFullYear(selectedYear, selectedMonth, date);
-  return newDate.setHours(0, 0, 0, 0);
+export const getFirstDayOfMonth = (date: Date): Date => {
+  const initDate = new Date(date);
+  initDate.setDate(1);
+  const dayOfWeek = initDate.getDay();
+
+  if (dayOfWeek > 0) {
+    initDate.setDate(initDate.getDate() - dayOfWeek + 1);
+  }
+
+  return initDate;
 };
 
-export const addDays = (date: number, amount: number): number => {
+export const addDays = (date: Date, amount: number): Date => {
   const newDate = new Date(date);
-  return newDate.setDate(newDate.getDate() + amount);
+  newDate.setDate(newDate.getDate() + amount);
+  return newDate;
 };
 
+// @TODO There is a better way to do it
 export const dayDiff = (day: number, from: number): number => {
   return (day - from + 7) % 7;
 };
 
-export const dayOfTheWeekOf = (baseDate: number, dayOfWeek: number, weekStart = 0): number => {
+export const dayOfTheWeekOf = (baseDate: Date, dayOfWeek: number, weekStart = 0): Date => {
   const baseDay = new Date(baseDate).getDay();
   return addDays(baseDate, dayDiff(dayOfWeek, weekStart) - dayDiff(baseDay, weekStart));
 };
 
-export const addMonths = (date: Date, amount: number): number => {
-  const newDate = date;
-  const monthsToSet = newDate.getMonth() + amount;
-  
-  let expectedMonth = monthsToSet % 12;  
-  if (expectedMonth < 0) {
-    expectedMonth += 12;
-  }
-
-  const time = newDate.setMonth(monthsToSet);
-  return newDate.getMonth() !== expectedMonth ? newDate.setDate(0) : time;
+export const addMonths = (date: Date, amount: number): Date => {
+  const newDate = new Date(date);
+  newDate.setMonth(newDate.getMonth() + amount);
+  return newDate;
 };
 
-export const addYears = (date: Date, amount: number): number => {
-  const newDate = date;
-  const expectedMonth = newDate.getMonth();
-  const time = newDate.setFullYear(newDate.getFullYear() + amount);
-
-  return expectedMonth === 1 && newDate.getMonth() === 2 ? newDate.setDate(0) : time;
+export const addYears = (date: Date, amount: number): Date => {
+  const newDate = new Date(date);
+  newDate.setFullYear(newDate.getFullYear() + amount);
+  return newDate;
 };
 
 export const getFormattedDate = (
   language: string,
-  date: Date | number,
+  date: Date,
   options?: Intl.DateTimeFormatOptions,
 ): string => {
   let defaultOptions: Intl.DateTimeFormatOptions = {
@@ -77,8 +76,7 @@ export const getFormattedDate = (
   return new Intl.DateTimeFormat(language, defaultOptions).format(date);
 };
 
-
-
+// @TODO Validate this function
 export const startOfYearPeriod = (date: Date, years: number): number => {
   const year = date.getFullYear();
   return Math.floor(year / years) * years;
