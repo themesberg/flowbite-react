@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '~/src/helpers/merge-deep';
 import { useTheme, type DeepPartial } from '../..';
 import { useDatePickerContext } from '../DatepickerContext';
-import { addDays, getFormattedDate } from '../helpers';
+import { addDays, getFormattedDate, isDateInRange } from '../helpers';
 
 export interface FlowbiteDatepickerViewsDaysTheme {
   header: {
@@ -40,19 +40,6 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({
 
   const isSelectedDate = (value: number): boolean =>
     selectedDate.getTime() > 0 && getFormattedDate(language, selectedDate) == getFormattedDate(language, value);
-  const isDateInRange = (value: number): boolean => {
-    const currentDate = new Date(value);
-    if (minDate && maxDate) {
-      return minDate >= currentDate && maxDate <= currentDate;
-    }
-    if (minDate) {
-      return minDate >= currentDate;
-    }
-    if (maxDate) {
-      return maxDate <= currentDate;
-    }
-    return false;
-  };
 
   return (
     <>
@@ -74,7 +61,7 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({
               className={twMerge(
                 theme.items.item.base,
                 isSelectedDate(current) && theme.items.item.selected,
-                !isDateInRange(current) && theme.items.item.disabled,
+                !isDateInRange(new Date(current), minDate, maxDate) && theme.items.item.disabled,
               )}
               onClick={() => {
                 setSelectedDate(new Date(current));

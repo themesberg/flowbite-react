@@ -4,7 +4,7 @@ import { HiArrowLeft, HiArrowRight, HiCalendar } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '..';
 import { useTheme } from '../..';
-// @TODO It would be nice to not depende on TextInput
+// @TODO Do we want this dependency?
 import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from '..';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { DatepickerContext } from './DatepickerContext';
@@ -13,7 +13,7 @@ import { DatepickerViewsDays } from './Views/Days';
 import { DatepickerViewsDecades, type FlowbiteDatepickerViewsDecadesTheme } from './Views/Decades';
 import { DatepickerViewsMonth, type FlowbiteDatepickerViewsMonthsTheme } from './Views/Months';
 import { DatepickerViewsYears, type FlowbiteDatepickerViewsYearsTheme } from './Views/Years';
-import { Views, getFormattedDate, goToPrevNext, startOfYearPeriod } from './helpers';
+import { Views, addMonths, addYears, getFormattedDate, isDateInRange, startOfYearPeriod } from './helpers';
 
 export interface FlowbiteDatepickerTheme {
   root: {
@@ -99,12 +99,17 @@ const DatepickerComponent: FC<DatepickerProps> = ({
   const refContainsEvent = (ref: RefObject<HTMLInputElement | HTMLDivElement>, event: MouseEvent) =>
     ref.current?.contains(event.target as Node);
 
-  const changeSelectedDate = (action: 'prev' | 'next' | 'date' | 'today', date: Date) => {
-    console.log(action);
+  const changeSelectedDate = (date: Date, close: boolean) => {
+    if (!isDateInRange(date, minDate, maxDate)) return;
+
     setSelectedDate(date);
-    console.log(selectedDate);
+
+    if (autoHide && view === Views.Days && close == true) {
+      setIsOpen(false);
+    }
   };
 
+  // Render the DatepickerView* node
   const renderView = (type: Views): ReactNode => {
     switch (type) {
       case Views.Decades:
@@ -119,6 +124,7 @@ const DatepickerComponent: FC<DatepickerProps> = ({
     }
   };
 
+  // Coordinate the next view based on current view (statemachine-like)
   const getNextView = (): Views => {
     switch (view) {
       case Views.Days:
@@ -131,6 +137,7 @@ const DatepickerComponent: FC<DatepickerProps> = ({
     return view;
   };
 
+  // Get the view title based on active View
   const getViewTitle = (): string => {
     switch (view) {
       case Views.Decades:
@@ -142,6 +149,23 @@ const DatepickerComponent: FC<DatepickerProps> = ({
       case Views.Days:
       default:
         return getFormattedDate(language, selectedDate, { month: 'long', year: 'numeric' });
+    }
+  };
+
+  // Navigate to prev/next for given view's date by value
+  // @TODO This need some work, it can be simplified
+  const getViewDatePage = (view: Views, date: Date, value: number): Date => {
+    switch (view) {
+      case Views.Days:
+        return new Date(addMonths(date, value));
+      case Views.Months:
+        return new Date(addYears(date, value));
+      case Views.Years:
+        return new Date(addYears(date, value * 10));
+      case Views.Decades:
+        return new Date(addYears(date, value * 100));
+      default:
+        return new Date(addYears(date, value * 10));
     }
   };
 
@@ -159,6 +183,10 @@ const DatepickerComponent: FC<DatepickerProps> = ({
       document.removeEventListener('mousedown', (event: MouseEvent) => handleClickOutside(event));
     };
   }, [inputRef, datepickerRef, setIsOpen]);
+
+  useEffect(() => {
+    console.log(defaultDate, selectedDate);
+  }, [defaultDate, selectedDate]);
 
   return (
     <DatepickerContext.Provider
@@ -184,7 +212,7 @@ const DatepickerComponent: FC<DatepickerProps> = ({
                     theme.popup.header.selectors.button.base,
                     theme.popup.header.selectors.button.prev,
                   )}
-                  onClick={() => changeSelectedDate('next', new Date(goToPrevNext(view, selectedDate, 1)))}
+                  onClick={() => changeSelectedDate(getViewDatePage(view, selectedDate, -1))}
                 >
                   <HiArrowLeft />
                 </button>
@@ -202,6 +230,7 @@ const DatepickerComponent: FC<DatepickerProps> = ({
                     theme.popup.header.selectors.button.base,
                     theme.popup.header.selectors.button.next,
                   )}
+                  onClick={() => changeSelectedDate(getViewDatePage(view, selectedDate, 1))}
                 >
                   <HiArrowRight />
                 </button>
@@ -211,12 +240,18 @@ const DatepickerComponent: FC<DatepickerProps> = ({
             {(showClearButton || showTodayButton) && (
               <div className={theme.popup.footer.base}>
                 {showTodayButton && (
-                  <button className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.today)}>
+                  <button
+                    className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.today)}
+                    onClick={() => changeSelectedDate(new Date())}
+                  >
                     Today
                   </button>
                 )}
                 {showClearButton && (
-                  <button className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}>
+                  <button
+                    className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
+                    onClick={() => changeSelectedDate(defaultDate)}
+                  >
                     Clear
                   </button>
                 )}

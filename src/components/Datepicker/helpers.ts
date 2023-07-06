@@ -1,11 +1,22 @@
-// export type Views = 'days' | 'months' | 'years' | 'decades';
-
 export enum Views {
   Days,
   Months,
   Years,
   Decades,
 }
+
+export const isDateInRange = (date: Date, minDate?: Date, maxDate?: Date): boolean => {
+  if (minDate && maxDate) {
+    return minDate >= date && maxDate <= date;
+  }
+  if (minDate) {
+    return minDate >= date;
+  }
+  if (maxDate) {
+    return maxDate <= date;
+  }
+  return true;
+};
 
 export const firstDateOfMonth = (selectedYear: number, selectedMonth: number, date: number): number => {
   const newDate = new Date(0);
@@ -30,7 +41,8 @@ export const dayOfTheWeekOf = (baseDate: number, dayOfWeek: number, weekStart = 
 export const addMonths = (date: Date, amount: number): number => {
   const newDate = date;
   const monthsToSet = newDate.getMonth() + amount;
-  let expectedMonth = monthsToSet % 12;
+  
+  let expectedMonth = monthsToSet % 12;  
   if (expectedMonth < 0) {
     expectedMonth += 12;
   }
@@ -43,6 +55,7 @@ export const addYears = (date: Date, amount: number): number => {
   const newDate = date;
   const expectedMonth = newDate.getMonth();
   const time = newDate.setFullYear(newDate.getFullYear() + amount);
+
   return expectedMonth === 1 && newDate.getMonth() === 2 ? newDate.setDate(0) : time;
 };
 
@@ -56,25 +69,15 @@ export const getFormattedDate = (
     month: 'long',
     year: 'numeric',
   };
-  if (options) defaultOptions = options;
+    
+  if (options) {
+    defaultOptions = options;
+  }
 
   return new Intl.DateTimeFormat(language, defaultOptions).format(date);
 };
 
-export const goToPrevNext = (view: Views, date: Date, direction: number): number => {
-  switch (view) {
-    case Views.Days:
-      return addMonths(date, direction);
-    case Views.Months:
-      return addYears(date, direction);
-    case Views.Years:
-      return addYears(date, direction * 10);
-    case Views.Decades:
-      return addYears(date, direction * 100);
-    default:
-      return addYears(date, direction * 10);
-  }
-};
+
 
 export const startOfYearPeriod = (date: Date, years: number): number => {
   const year = date.getFullYear();
