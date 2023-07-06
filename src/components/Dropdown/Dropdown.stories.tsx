@@ -37,9 +37,7 @@ WithDivider.args = {
       <Dropdown.Item>Settings</Dropdown.Item>
       <Dropdown.Item>Earnings</Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item href="https://flowbite.com/" target="_blank">
-        Separated link
-      </Dropdown.Item>
+      <Dropdown.Item>Separated link</Dropdown.Item>
     </>
   ),
 };
@@ -84,6 +82,20 @@ CustomTrigger.args = {
       <Dropdown.Item>Settings</Dropdown.Item>
       <Dropdown.Item>Earnings</Dropdown.Item>
       <Dropdown.Item>Sign out</Dropdown.Item>
+    </>
+  ),
+};
+
+export const CustomItem = Template.bind({});
+CustomItem.args = {
+  children: (
+    <>
+      <Dropdown.Item>Default button</Dropdown.Item>
+      <Dropdown.Item as="span">As span</Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item href="https://flowbite.com/" target="_blank">
+        As link
+      </Dropdown.Item>
     </>
   ),
 };

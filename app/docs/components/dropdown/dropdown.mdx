@@ -1,6 +1,7 @@
 import { CodePreview } from '~/app/components/code-preview';
 import { Dropdown, theme } from '~/src';
 import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
+import Link from 'next/link';
 
 The dropdown component is a UI component built with React that allows you to show a list of items when clicking on a trigger element (ie. a button) that you can use to build dropdown menus, lists, and more.
 
@@ -186,6 +187,32 @@ To customize the trigger element you can use `renderTrigger` property.
     <Dropdown.Item>Settings</Dropdown.Item>
     <Dropdown.Item>Earnings</Dropdown.Item>
     <Dropdown.Item>Sign out</Dropdown.Item>
+  </Dropdown>
+</CodePreview>
+
+## Custom item
+
+To customize the `Dropdown.Item` base element you can use the `as` property.
+
+<CodePreview
+  title="Custom dropdown item"
+  importExternal="import Link from 'next/link';"
+  code={`<Dropdown label="My custom item">
+  <Dropdown.Item as={Link} href="/">
+    Home
+  </Dropdown.Item>
+  <Dropdown.Item href="https://flowbite.com/" target="_blank">
+    External link
+  </Dropdown.Item>
+</Dropdown>`}
+>
+  <Dropdown dismissOnClick={false} label="My custom item">
+    <Dropdown.Item as={Link} href="/">
+      Home
+    </Dropdown.Item>
+    <Dropdown.Item href="https://flowbite.com/" target="_blank">
+      External link
+    </Dropdown.Item>
   </Dropdown>
 </CodePreview>
 
