@@ -1,7 +1,16 @@
-import type { useInteractions } from '@floating-ui/react';
+import type { ExtendedRefs, useInteractions } from '@floating-ui/react';
 import { FloatingFocusManager, FloatingList, useListNavigation, useTypeahead } from '@floating-ui/react';
-import type { ComponentProps, Dispatch, FC, PropsWithChildren, ReactNode, SetStateAction } from 'react';
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import type {
+  ComponentProps,
+  Dispatch,
+  FC,
+  HTMLProps,
+  MutableRefObject,
+  PropsWithChildren,
+  ReactNode,
+  SetStateAction,
+} from 'react';
+import { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import type { ButtonProps, DeepPartial } from '../../';
 import { Button, useTheme } from '../../';
@@ -14,6 +23,7 @@ import { DropdownHeader } from './DropdownHeader';
 import type { FlowbiteDropdownItemTheme } from './DropdownItem';
 import { DropdownItem } from './DropdownItem';
 
+import { twMerge } from 'tailwind-merge';
 import { mergeWrapperClassName } from '~/src/helpers/floating';
 import { useBaseFLoating, useFloatingInteractions } from '~/src/helpers/use-floating';
 
@@ -45,17 +55,54 @@ export interface DropdownProps
   'data-testid'?: string;
 }
 
-export interface TriggerWrapperProps extends Omit<ButtonProps, 'theme'> {
-  inline?: boolean;
-  theme?: DeepPartial<FlowbiteDropdownTheme>;
-  setButtonWidth?: Dispatch<SetStateAction<number | undefined>>;
-}
-
 const icons: Record<string, FC<ComponentProps<'svg'>>> = {
   top: HiOutlineChevronUp,
   right: HiOutlineChevronRight,
   bottom: HiOutlineChevronDown,
   left: HiOutlineChevronLeft,
+};
+
+export interface TriggerProps extends Omit<ButtonProps, 'theme'> {
+  refs: ExtendedRefs<HTMLButtonElement>;
+  inline?: boolean;
+  theme?: DeepPartial<FlowbiteDropdownTheme>;
+  setButtonWidth?: Dispatch<SetStateAction<number | undefined>>;
+  getReferenceProps: (userProps?: HTMLProps<Element> | undefined) => Record<string, unknown>;
+}
+
+const Trigger = ({
+  refs,
+  children,
+  inline,
+  theme,
+  disabled,
+  setButtonWidth,
+  getReferenceProps,
+  ...buttonProps
+}: TriggerProps): JSX.Element => {
+  const ref = refs.reference as MutableRefObject<HTMLButtonElement>;
+
+  useEffect(() => {
+    if (ref.current) {
+      setButtonWidth?.(ref.current.clientWidth);
+    }
+  }, [ref, setButtonWidth]);
+
+  return inline ? (
+    <button
+      type="button"
+      ref={refs.setReference}
+      className={theme?.inlineWrapper}
+      disabled={disabled}
+      {...getReferenceProps()}
+    >
+      {children}
+    </button>
+  ) : (
+    <Button {...buttonProps} disabled={disabled} type="button" ref={refs.setReference} {...getReferenceProps()}>
+      {children}
+    </Button>
+  );
 };
 
 interface DropdownContextValue {
@@ -65,32 +112,7 @@ interface DropdownContextValue {
   handleSelect: (index: number | null) => void;
 }
 
-const TriggerWrapper = ({
-  children,
-  setButtonWidth,
-  inline,
-  theme,
-  disabled,
-  ...buttonProps
-}: TriggerWrapperProps): JSX.Element => {
-  const ref = useRef<HTMLButtonElement | null>(null);
-
-  useEffect(() => {
-    if (ref.current) setButtonWidth?.(ref.current.clientWidth);
-  }, [setButtonWidth]);
-
-  return inline ? (
-    <button type="button" ref={ref} className={theme?.inlineWrapper} disabled={disabled}>
-      {children}
-    </button>
-  ) : (
-    <Button {...buttonProps} disabled={disabled} type="button" ref={ref}>
-      {children}
-    </Button>
-  );
-};
-
-export const DropdownContext = React.createContext<DropdownContextValue>({} as DropdownContextValue);
+export const DropdownContext = createContext<DropdownContextValue>({} as DropdownContextValue);
 
 const DropdownComponent: FC<DropdownProps> = ({
   children,
@@ -100,12 +122,12 @@ const DropdownComponent: FC<DropdownProps> = ({
   renderTrigger,
   ...props
 }) => {
-  const [open, setOpen] = React.useState(false);
-  const [activeIndex, setActiveIndex] = React.useState<number | null>(null);
-  const [selectedIndex, setSelectedIndex] = React.useState<number | null>(null);
+  const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [buttonWidth, setButtonWidth] = useState<number | undefined>(undefined);
-  const elementsRef = React.useRef<Array<HTMLElement | null>>([]);
-  const labelsRef = React.useRef<Array<string | null>>([]);
+  const elementsRef = useRef<Array<HTMLElement | null>>([]);
+  const labelsRef = useRef<Array<string | null>>([]);
 
   const theme = mergeDeep(useTheme().theme.dropdown, customTheme);
   const theirProps = props as Omit<DropdownProps, 'theme'>;
@@ -135,7 +157,7 @@ const DropdownComponent: FC<DropdownProps> = ({
     [open, handleSelect],
   );
 
-  const { context, floatingStyles, refs } = useBaseFLoating({
+  const { context, floatingStyles, refs } = useBaseFLoating<HTMLButtonElement>({
     open,
     setOpen,
     placement,
@@ -169,12 +191,19 @@ const DropdownComponent: FC<DropdownProps> = ({
 
   return (
     <>
-      <div ref={refs.setReference} className={theme.floating.target} data-testid={dataTestId} {...getReferenceProps()}>
-        <TriggerWrapper setButtonWidth={setButtonWidth} inline={inline} theme={theme} {...buttonProps}>
-          {label}
-          {arrowIcon && <Icon className={theme.arrowIcon} />}
-        </TriggerWrapper>
-      </div>
+      <Trigger
+        {...buttonProps}
+        refs={refs}
+        inline={inline}
+        theme={theme}
+        data-testid={dataTestId}
+        className={twMerge(theme.floating.target, buttonProps.className)}
+        setButtonWidth={setButtonWidth}
+        getReferenceProps={getReferenceProps}
+      >
+        {label}
+        {arrowIcon && <Icon className={theme.arrowIcon} />}
+      </Trigger>
       <DropdownContext.Provider
         value={{
           activeIndex,
@@ -183,31 +212,31 @@ const DropdownComponent: FC<DropdownProps> = ({
           handleSelect,
         }}
       >
-        <FloatingFocusManager context={context} modal={false}>
-          <div
-            ref={refs.setFloating}
-            style={{ ...floatingStyles, minWidth: buttonWidth }}
-            data-testid="flowbite-dropdown"
-            aria-expanded={open}
-            {...getFloatingProps({
-              className: mergeWrapperClassName({
-                theme: theme.floating,
-                animation: 'duration-100',
-                className,
-                style: 'auto',
-                open,
-              }),
-            })}
-          >
-            {open && (
+        {open && (
+          <FloatingFocusManager context={context} modal={false}>
+            <div
+              ref={refs.setFloating}
+              style={{ ...floatingStyles, minWidth: buttonWidth }}
+              data-testid="flowbite-dropdown"
+              aria-expanded={open}
+              {...getFloatingProps({
+                className: mergeWrapperClassName({
+                  theme: theme.floating,
+                  animation: 'duration-100',
+                  className,
+                  style: 'auto',
+                  open,
+                }),
+              })}
+            >
               <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
                 <ul className={theme.content} tabIndex={-1}>
                   {children}
                 </ul>
               </FloatingList>
-            )}
-          </div>
-        </FloatingFocusManager>
+            </div>
+          </FloatingFocusManager>
+        )}
       </DropdownContext.Provider>
     </>
   );
