@@ -5,6 +5,8 @@ import { describe, expect, it } from 'vitest';
 import type { DropdownProps } from './Dropdown';
 import { Dropdown } from './Dropdown';
 
+const delay = async (delayTime: number) => await new Promise((r) => setTimeout(r, delayTime));
+
 describe('Components / Dropdown', () => {
   describe('A11y', async () => {
     it('should use `role="menu"` in menu container', async () => {
@@ -82,6 +84,7 @@ describe('Components / Dropdown', () => {
       expect(dropdown()).toBeInTheDocument();
 
       await act(() => fireEvent.keyDown(button(), { key: 'S', code: 'KeyS' }));
+      await delay(20);
 
       const item = screen.getByText('Settings');
       expect(item).toHaveFocus();
