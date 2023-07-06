@@ -10,24 +10,23 @@ import {
   useRole,
 } from '@floating-ui/react';
 
-import type { Dispatch, SetStateAction } from 'react';
-import { useRef } from 'react';
+import type { Dispatch, RefObject, SetStateAction } from 'react';
 
 import { getMiddleware, getPlacement } from './floating';
 
 export type UseBaseFloatingParams = {
   placement?: 'auto' | Placement;
   open: boolean;
+  arrowRef?: RefObject<HTMLDivElement>;
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 export const useBaseFLoating = <Type extends ReferenceType>({
   open,
-  setOpen,
+  arrowRef,
   placement = 'top',
+  setOpen,
 }: UseBaseFloatingParams) => {
-  const arrowRef = useRef<HTMLDivElement>(null);
-
   return useFloating<Type>({
     placement: getPlacement({ placement }),
     open,

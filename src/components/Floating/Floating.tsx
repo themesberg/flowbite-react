@@ -65,8 +65,9 @@ export const Floating: FC<FloatingProps> = ({
 
   const floatingProperties = useBaseFLoating({
     open,
-    setOpen,
     placement,
+    arrowRef,
+    setOpen,
   });
 
   const {
