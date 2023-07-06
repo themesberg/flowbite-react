@@ -3,7 +3,7 @@ import { autoUpdate, useFocus } from '@floating-ui/react';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { getArrowPlacement, mergeWrapperClassName } from '../../helpers/floating';
+import { getArrowPlacement } from '../../helpers/floating';
 import { useBaseFLoating, useFloatingInteractions } from '../../helpers/use-floating';
 
 export interface FlowbiteFloatingTheme {
@@ -107,13 +107,13 @@ export const Floating: FC<FloatingProps> = ({
         ref={refs.setFloating}
         data-testid="flowbite-tooltip"
         {...getFloatingProps({
-          className: mergeWrapperClassName({
-            theme,
-            animation,
-            open,
-            style,
+          className: twMerge(
+            theme.base,
+            animation && `${theme.animation} ${animation}`,
+            !open && theme.hidden,
+            theme.style[style],
             className,
-          }),
+          ),
           style: {
             position: strategy,
             top: y ?? ' ',

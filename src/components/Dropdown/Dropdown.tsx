@@ -25,7 +25,6 @@ import type { FlowbiteDropdownItemTheme } from './DropdownItem';
 import { DropdownItem } from './DropdownItem';
 
 import { twMerge } from 'tailwind-merge';
-import { mergeWrapperClassName } from '../../helpers/floating';
 import { useBaseFLoating, useFloatingInteractions } from '../../helpers/use-floating';
 
 export interface FlowbiteDropdownFloatingTheme
@@ -224,13 +223,14 @@ const DropdownComponent: FC<DropdownProps> = ({
               data-testid="flowbite-dropdown"
               aria-expanded={open}
               {...getFloatingProps({
-                className: mergeWrapperClassName({
-                  theme: theme.floating,
-                  animation: 'duration-100',
+                className: twMerge(
+                  theme.floating.base,
+                  theme.floating.animation,
+                  'duration-100',
+                  !open && theme.floating.hidden,
+                  theme.floating.style.auto,
                   className,
-                  style: 'auto',
-                  open,
-                }),
+                ),
               })}
             >
               <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
