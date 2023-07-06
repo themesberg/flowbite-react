@@ -1,52 +1,55 @@
-// import { useContext } from 'react';
-// import { twMerge } from 'tailwind-merge';
-// import { addYears, startOfYearPeriod } from '../../../helpers/date';
-// import { DatePickerContext } from '../DatepickerContext';
+import type { FC } from 'react';
+import { twMerge } from 'tailwind-merge';
+import { useTheme } from '../..';
+import { mergeDeep } from '../../../helpers/merge-deep';
+import { useDatePickerContext } from '../DatepickerContext';
+import { Views, addYears, getFormattedDate, startOfYearPeriod } from '../helpers';
 
-// const Decades = () => {
-//   const { selectedDate, showSelectedDate, changeSelectedDate, setView, getFormattedDate, options } =
-//     useContext(DatePickerContext);
-//   return (
-//     <div className="grid w-64 grid-cols-4">
-//       {[...Array(12)].map((_year, index) => {
-//         const first = startOfYearPeriod(selectedDate, 100);
-//         const year = first - 10 + index * 10;
-//         return (
-//           <span
-//             key={index}
-//             className={`block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600 ${
-//               showSelectedDate &&
-//               selectedDate.getTime() > 0 &&
-//               Number(getFormattedDate(selectedDate, { year: 'numeric' })) === year
-//                 ? twMerge('bg-blue-700 text-white hover:bg-blue-600', options?.theme?.selected)
-//                 : ''
-//             } ${
-//               index == 0 || index == 11
-//                 ? twMerge('text-gray-500', options?.theme?.disabledText)
-//                 : twMerge('text-gray-900', options?.theme?.text)
-//             }
-//                             ${
-//                               options?.minDate && year < Number(getFormattedDate(options?.minDate, { year: 'numeric' }))
-//                                 ? twMerge('text-gray-500', options?.theme?.disabledText)
-//                                 : ''
-//                             }
-//                             ${
-//                               options?.maxDate && year > Number(getFormattedDate(options?.maxDate, { year: 'numeric' }))
-//                                 ? twMerge('text-gray-500', options?.theme?.disabledText)
-//                                 : ''
-//                             }
-//                             `}
-//             onClick={() => {
-//               changeSelectedDate('date', new Date(addYears(selectedDate, year - selectedDate.getFullYear())));
-//               setView('years');
-//             }}
-//           >
-//             {year}
-//           </span>
-//         );
-//       })}
-//     </div>
-//   );
-// };
+export interface FlowbiteDatepickerViewsDecadesTheme {
+  items: {
+    base: string;
+    item: {
+      base: string;
+      selected: string;
+      disabled: string;
+    };
+  };
+}
 
-// export default Decades;
+export interface DatepickerViewsDecadesProps {
+  theme?: FlowbiteDatepickerViewsDecadesTheme;
+}
+
+export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({ theme: customTheme = {} }) => {
+  const theme = mergeDeep(useTheme().theme.datepicker.views.decades, customTheme);
+  const { selectedDate, changeSelectedDate, setView, language } = useDatePickerContext();
+
+  const isSelectedDecade = (value: Date, year: number) =>
+    value.getTime() > 0 && Number(getFormattedDate(language, value, { year: 'numeric' })) === year;
+
+  return (
+    <div className={theme.items.base}>
+      {[...Array(12)].map((_year, index) => {
+        const first = startOfYearPeriod(selectedDate, 100);
+        const year = first - 10 + index * 10;
+        return (
+          <button
+            key={index}
+            type="button"
+            className={twMerge(
+              theme.items.item.base,
+              isSelectedDecade(selectedDate, year) && theme.items.item.selected,
+              (index == 0 || index == 11) && theme.items.item.disabled,
+            )}
+            onClick={() => {
+              changeSelectedDate('date', new Date(addYears(selectedDate, year - selectedDate.getFullYear())));
+              setView(Views.Days);
+            }}
+          >
+            {year}
+          </button>
+        );
+      })}
+    </div>
+  );
+};

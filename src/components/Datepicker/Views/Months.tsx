@@ -16,13 +16,12 @@ export interface FlowbiteDatepickerViewsMonthsTheme {
 }
 
 export interface DatepickerViewsMonthsProps {
-  selectedDate: Date;
   theme?: FlowbiteDatepickerViewsMonthsTheme;
 }
 
-export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ selectedDate, theme: customTheme = {} }) => {
+export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: customTheme = {} }) => {
   const theme = mergeDeep(useTheme().theme.datepicker.views.months, customTheme);
-  const { language, changeSelectedDate, setView } = useDatePickerContext();
+  const { selectedDate, language, changeSelectedDate, setView } = useDatePickerContext();
 
   const isSelectedMonth = (value: Date, month: string) =>
     value.getTime() > 0 && getFormattedDate(language, value, { month: 'short' }) === month;
@@ -34,6 +33,7 @@ export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ selectedD
         return (
           <button
             key={index}
+            type="button"
             className={twMerge(
               theme.items.item.base,
               isSelectedMonth(selectedDate, month) && theme.items.item.selected,

@@ -22,7 +22,6 @@ export interface FlowbiteDatepickerViewsDaysTheme {
 
 export interface DatepickerViewsDaysProps {
   startDay: number;
-  selectedDate: Date;
   minDate?: Date;
   maxDate?: Date;
   theme?: DeepPartial<FlowbiteDatepickerViewsDaysTheme>;
@@ -30,7 +29,6 @@ export interface DatepickerViewsDaysProps {
 
 export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({
   startDay,
-  selectedDate,
   minDate,
   maxDate,
   theme: customTheme = {},
@@ -38,7 +36,7 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({
   const theme = mergeDeep(useTheme().theme.datepicker.views.days, customTheme);
 
   const weekDays: string[] = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
-  const { setSelectedDate, language } = useDatePickerContext();
+  const { selectedDate, setSelectedDate, language } = useDatePickerContext();
 
   const isSelectedDate = (value: number): boolean =>
     selectedDate.getTime() > 0 && getFormattedDate(language, selectedDate) == getFormattedDate(language, value);
@@ -72,6 +70,7 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({
           return (
             <button
               key={index}
+              type="button"
               className={twMerge(
                 theme.items.item.base,
                 isSelectedDate(current) && theme.items.item.selected,

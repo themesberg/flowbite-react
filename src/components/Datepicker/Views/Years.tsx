@@ -17,13 +17,12 @@ export interface FlowbiteDatepickerViewsYearsTheme {
 }
 
 export interface DatepickerViewsYearsProps {
-  selectedDate: Date;
   theme?: FlowbiteDatepickerViewsYearsTheme;
 }
 
-export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({ selectedDate, theme: customTheme = {} }) => {
+export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({ theme: customTheme = {} }) => {
   const theme = mergeDeep(useTheme().theme.datepicker.views.years, customTheme);
-  const { changeSelectedDate, language, setView } = useDatePickerContext();
+  const { selectedDate, changeSelectedDate, language, setView } = useDatePickerContext();
 
   const isSelectedYear = (value: Date, year: number) =>
     value.getTime() > 0 && Number(getFormattedDate(language, value, { year: 'numeric' })) === year;
@@ -36,6 +35,7 @@ export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({ selectedDa
         return (
           <button
             key={index}
+            type="button"
             className={twMerge(
               theme.items.item.base,
               isSelectedYear(selectedDate, year) && theme.items.item.selected,

@@ -10,10 +10,6 @@ type DatepickerContextProps = {
   setView: (value: Views) => void;
   setSelectedDate: (date: Date) => void;
   changeSelectedDate: (action: 'prev' | 'next' | 'date' | 'today', date: Date) => void;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
   // showSelectedDate: boolean;
   // setShowSelectedDate: Dispatch<SetStateAction<boolean>>;
   // selectedMonth: number;

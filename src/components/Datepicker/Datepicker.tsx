@@ -8,11 +8,12 @@ import { useTheme } from '../..';
 import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from '..';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { DatepickerContext } from './DatepickerContext';
-import { getFormattedDate, goToPrevNext, startOfYearPeriod, Views } from './helpers';
 import type { FlowbiteDatepickerViewsDaysTheme } from './Views/Days';
 import { DatepickerViewsDays } from './Views/Days';
+import { DatepickerViewsDecades, type FlowbiteDatepickerViewsDecadesTheme } from './Views/Decades';
 import { DatepickerViewsMonth, type FlowbiteDatepickerViewsMonthsTheme } from './Views/Months';
 import { DatepickerViewsYears, type FlowbiteDatepickerViewsYearsTheme } from './Views/Years';
+import { Views, getFormattedDate, goToPrevNext, startOfYearPeriod } from './helpers';
 
 export interface FlowbiteDatepickerTheme {
   root: {
@@ -24,6 +25,7 @@ export interface FlowbiteDatepickerTheme {
     days: FlowbiteDatepickerViewsDaysTheme;
     months: FlowbiteDatepickerViewsMonthsTheme;
     years: FlowbiteDatepickerViewsYearsTheme;
+    decades: FlowbiteDatepickerViewsDecadesTheme;
   };
 }
 
@@ -107,14 +109,14 @@ const DatepickerComponent: FC<DatepickerProps> = ({
   const renderView = (type: Views): ReactNode => {
     switch (type) {
       case Views.Decades:
-        return 'Decades';
+        return <DatepickerViewsDecades />;
       case Views.Years:
-        return <DatepickerViewsYears selectedDate={selectedDate} />;
+        return <DatepickerViewsYears />;
       case Views.Months:
-        return <DatepickerViewsMonth selectedDate={selectedDate} />;
+        return <DatepickerViewsMonth />;
       case Views.Days:
       default:
-        return <DatepickerViewsDays startDay={1} selectedDate={selectedDate} minDate={minDate} maxDate={maxDate} />;
+        return <DatepickerViewsDays startDay={1} minDate={minDate} maxDate={maxDate} />;
     }
   };
 

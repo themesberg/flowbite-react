@@ -68,6 +68,16 @@ export const datePickerTheme: FlowbiteDatepickerTheme = {
           selected: 'bg-blue-700 text-white hover:bg-blue-600',
         }
       }
+    },
+    decades: {
+      items: {
+        base: 'grid w-64 grid-cols-4',
+        item: {
+          base: 'block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600 text-gray-900',
+          selected: 'bg-blue-700 text-white hover:bg-blue-600',
+          disabled: 'text-gray-500',
+        }
+      }
     }
   }
 }
