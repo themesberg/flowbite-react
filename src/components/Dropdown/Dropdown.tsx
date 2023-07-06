@@ -7,10 +7,11 @@ import type {
   HTMLProps,
   MutableRefObject,
   PropsWithChildren,
+  ReactElement,
   ReactNode,
   SetStateAction,
 } from 'react';
-import { createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { cloneElement, createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import type { ButtonProps, DeepPartial } from '../../';
 import { Button, useTheme } from '../../';
@@ -51,7 +52,7 @@ export interface DropdownProps
   inline?: boolean;
   label: ReactNode;
   theme?: DeepPartial<FlowbiteDropdownTheme>;
-  renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactNode;
+  renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactElement;
   'data-testid'?: string;
 }
 
@@ -63,11 +64,12 @@ const icons: Record<string, FC<ComponentProps<'svg'>>> = {
 };
 
 export interface TriggerProps extends Omit<ButtonProps, 'theme'> {
-  refs: ExtendedRefs<HTMLButtonElement>;
+  refs: ExtendedRefs<HTMLElement>;
   inline?: boolean;
-  theme?: DeepPartial<FlowbiteDropdownTheme>;
+  theme: FlowbiteDropdownTheme;
   setButtonWidth?: Dispatch<SetStateAction<number | undefined>>;
   getReferenceProps: (userProps?: HTMLProps<Element> | undefined) => Record<string, unknown>;
+  renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactElement;
 }
 
 const Trigger = ({
@@ -78,9 +80,11 @@ const Trigger = ({
   disabled,
   setButtonWidth,
   getReferenceProps,
+  renderTrigger,
   ...buttonProps
-}: TriggerProps): JSX.Element => {
-  const ref = refs.reference as MutableRefObject<HTMLButtonElement>;
+}: TriggerProps) => {
+  const ref = refs.reference as MutableRefObject<HTMLElement>;
+  const a11yProps = getReferenceProps();
 
   useEffect(() => {
     if (ref.current) {
@@ -88,18 +92,16 @@ const Trigger = ({
     }
   }, [ref, setButtonWidth]);
 
+  if (renderTrigger) {
+    return cloneElement(renderTrigger(theme), { ref: refs.setReference, disabled, ...a11yProps });
+  }
+
   return inline ? (
-    <button
-      type="button"
-      ref={refs.setReference}
-      className={theme?.inlineWrapper}
-      disabled={disabled}
-      {...getReferenceProps()}
-    >
+    <button type="button" ref={refs.setReference} className={theme?.inlineWrapper} disabled={disabled} {...a11yProps}>
       {children}
     </button>
   ) : (
-    <Button {...buttonProps} disabled={disabled} type="button" ref={refs.setReference} {...getReferenceProps()}>
+    <Button {...buttonProps} disabled={disabled} type="button" ref={refs.setReference} {...a11yProps}>
       {children}
     </Button>
   );
@@ -200,6 +202,7 @@ const DropdownComponent: FC<DropdownProps> = ({
         className={twMerge(theme.floating.target, buttonProps.className)}
         setButtonWidth={setButtonWidth}
         getReferenceProps={getReferenceProps}
+        renderTrigger={renderTrigger}
       >
         {label}
         {arrowIcon && <Icon className={theme.arrowIcon} />}
