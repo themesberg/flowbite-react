@@ -1,5 +1,5 @@
 import type { Placement } from '@floating-ui/core';
-import { autoUpdate } from '@floating-ui/react';
+import { autoUpdate, useFocus } from '@floating-ui/react';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
@@ -35,7 +35,6 @@ export type FloatingStyle = 'dark' | 'light' | 'auto';
 export interface FloatingProps extends PropsWithChildren, Omit<ComponentProps<'div'>, 'content' | 'style'> {
   animation?: false | `duration-${number}`;
   arrow?: boolean;
-  closeRequestKey?: string;
   content: ReactNode;
   placement?: 'auto' | Placement;
   style?: FloatingStyle;
@@ -80,10 +79,12 @@ export const Floating: FC<FloatingProps> = ({
     y,
   } = floatingProperties;
 
+  const focus = useFocus(context);
   const { getFloatingProps, getReferenceProps } = useFloatingInteractions({
     context,
     role: 'tooltip',
     trigger,
+    interactions: [focus],
   });
 
   useEffect(() => {
