@@ -139,6 +139,9 @@
     "react-dom": "^18",
     "tailwindcss": "^3"
   },
+  "resolutions": {
+    "nwsapi": "2.2.2"
+  },
   "private": false,
   "eslintConfig": {
     "extends": [

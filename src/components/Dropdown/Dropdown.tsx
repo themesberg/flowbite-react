@@ -25,8 +25,8 @@ import type { FlowbiteDropdownItemTheme } from './DropdownItem';
 import { DropdownItem } from './DropdownItem';
 
 import { twMerge } from 'tailwind-merge';
-import { mergeWrapperClassName } from '~/src/helpers/floating';
-import { useBaseFLoating, useFloatingInteractions } from '~/src/helpers/use-floating';
+import { mergeWrapperClassName } from '../../helpers/floating';
+import { useBaseFLoating, useFloatingInteractions } from '../../helpers/use-floating';
 
 export interface FlowbiteDropdownFloatingTheme
   extends FlowbiteFloatingTheme,
@@ -93,7 +93,8 @@ const Trigger = ({
   }, [ref, setButtonWidth]);
 
   if (renderTrigger) {
-    return cloneElement(renderTrigger(theme), { ref: refs.setReference, disabled, ...a11yProps });
+    const triggerElement = renderTrigger(theme);
+    return cloneElement(triggerElement, { ref: refs.setReference, disabled, ...a11yProps, ...triggerElement.props });
   }
 
   return inline ? (

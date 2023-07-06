@@ -10,6 +10,7 @@ export default {
     title: 'Dropdown example',
     label: 'Dropdown button',
     placement: 'auto',
+    disabled: false,
   },
 } as Meta;
 
