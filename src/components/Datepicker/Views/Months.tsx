@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../../helpers/merge-deep';
 import { useTheme } from '../../Flowbite';
 import { useDatePickerContext } from '../DatepickerContext';
-import { Views, addMonths, getFormattedDate } from '../helpers';
+import { Views, getFormattedDate } from '../helpers';
 
 export interface FlowbiteDatepickerViewsMonthsTheme {
   items: {
@@ -39,7 +39,9 @@ export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: cu
               isSelectedMonth(selectedDate, month) && theme.items.item.selected,
             )}
             onClick={() => {
-              changeSelectedDate('date', new Date(addMonths(selectedDate, index - selectedDate.getMonth())));
+              const newDate = new Date(selectedDate);
+              newDate.setMonth(index + 1);
+              changeSelectedDate(newDate, false);
               setView(Views.Days);
             }}
           >
