@@ -11,6 +11,7 @@ import type {
   FlowbiteCarouselTheme,
   FlowbiteCheckboxTheme,
   FlowbiteDarkThemeToggleTheme,
+  FlowbiteDatepickerTheme,
   FlowbiteDropdownTheme,
   FlowbiteFileInputTheme,
   FlowbiteFooterTheme,
@@ -27,15 +28,14 @@ import type {
   FlowbiteSelectTheme,
   FlowbiteSidebarTheme,
   FlowbiteSpinnerTheme,
-  FlowbiteTableTheme,
   FlowbiteTabTheme,
-  FlowbiteTextareaTheme,
+  FlowbiteTableTheme,
   FlowbiteTextInputTheme,
+  FlowbiteTextareaTheme,
   FlowbiteTimelineTheme,
   FlowbiteToastTheme,
   FlowbiteToggleSwitchTheme,
   FlowbiteTooltipTheme,
-  FlowbiteDatepickerTheme
 } from '../../';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
