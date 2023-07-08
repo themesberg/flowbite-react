@@ -3,7 +3,7 @@ import type { FlowbiteDatepickerTheme } from ".";
 
 export const datePickerTheme: FlowbiteDatepickerTheme = {
   root: {
-    base: '',
+    base: 'relative',
   },
   popup: {
     root: {

@@ -192,76 +192,80 @@ const DatepickerComponent: FC<DatepickerProps> = ({
     <DatepickerContext.Provider
       value={{ language, selectedDate, isOpen, setIsOpen, view, setView, setSelectedDate, changeSelectedDate }}
     >
-      <TextInput
-        className={twMerge(theme.root.base, className)}
-        icon={HiCalendar}
-        ref={inputRef}
-        onFocus={() => setIsOpen(true)}
-        value={selectedDate && getFormattedDate(language, selectedDate)}
-        readOnly
-        {...props}
-      />
-      {isOpen && (
-        <div ref={datepickerRef} className={theme.popup.root.base}>
-          <div className={theme.popup.root.inner}>
-            <div className={theme.popup.header.base}>
-              {title && <div className={theme.popup.header.title}>Title</div>}
-              <div className={theme.popup.header.selectors.base}>
-                <button
-                  className={twMerge(
-                    theme.popup.header.selectors.button.base,
-                    theme.popup.header.selectors.button.prev,
-                  )}
-                  onClick={() => changeSelectedDate(getViewDatePage(view, selectedDate, -1), false)}
-                >
-                  <HiArrowLeft />
-                </button>
-                <button
-                  className={twMerge(
-                    theme.popup.header.selectors.button.base,
-                    theme.popup.header.selectors.button.view,
-                  )}
-                  onClick={() => setView(getNextView())}
-                >
-                  {getViewTitle()}
-                </button>
-                <button
-                  className={twMerge(
-                    theme.popup.header.selectors.button.base,
-                    theme.popup.header.selectors.button.next,
-                  )}
-                  onClick={() => changeSelectedDate(getViewDatePage(view, selectedDate, 1), false)}
-                >
-                  <HiArrowRight />
-                </button>
+      <div className={twMerge(theme.root.base, className)}>
+        <TextInput
+          theme={theme.root.input}
+          icon={HiCalendar}
+          ref={inputRef}
+          onFocus={() => setIsOpen(true)}
+          value={selectedDate && getFormattedDate(language, selectedDate)}
+          readOnly
+          {...props}
+        />
+        {isOpen && (
+          <div ref={datepickerRef} className={theme.popup.root.base}>
+            <div className={theme.popup.root.inner}>
+              <div className={theme.popup.header.base}>
+                {title && <div className={theme.popup.header.title}>Title</div>}
+                <div className={theme.popup.header.selectors.base}>
+                  <button
+                    className={twMerge(
+                      theme.popup.header.selectors.button.base,
+                      theme.popup.header.selectors.button.prev,
+                    )}
+                    onClick={() => changeSelectedDate(getViewDatePage(view, selectedDate, -1), false)}
+                  >
+                    <HiArrowLeft />
+                  </button>
+                  <button
+                    className={twMerge(
+                      theme.popup.header.selectors.button.base,
+                      theme.popup.header.selectors.button.view,
+                    )}
+                    onClick={() => setView(getNextView())}
+                  >
+                    {getViewTitle()}
+                  </button>
+                  <button
+                    className={twMerge(
+                      theme.popup.header.selectors.button.base,
+                      theme.popup.header.selectors.button.next,
+                    )}
+                    onClick={() => changeSelectedDate(getViewDatePage(view, selectedDate, 1), false)}
+                  >
+                    <HiArrowRight />
+                  </button>
+                </div>
               </div>
+              <div className={theme.popup.view.base}>{renderView(view)}</div>
+              {(showClearButton || showTodayButton) && (
+                <div className={theme.popup.footer.base}>
+                  {showTodayButton && (
+                    <button
+                      className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.today)}
+                      onClick={() => changeSelectedDate(new Date(), true)}
+                    >
+                      Today
+                    </button>
+                  )}
+                  {showClearButton && (
+                    <button
+                      className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
+                      onClick={() => changeSelectedDate(defaultDate, true)}
+                    >
+                      Clear
+                    </button>
+                  )}
+                </div>
+              )}
             </div>
-            <div className={theme.popup.view.base}>{renderView(view)}</div>
-            {(showClearButton || showTodayButton) && (
-              <div className={theme.popup.footer.base}>
-                {showTodayButton && (
-                  <button
-                    className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.today)}
-                    onClick={() => changeSelectedDate(new Date(), true)}
-                  >
-                    Today
-                  </button>
-                )}
-                {showClearButton && (
-                  <button
-                    className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
-                    onClick={() => changeSelectedDate(defaultDate, true)}
-                  >
-                    Clear
-                  </button>
-                )}
-              </div>
-            )}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </DatepickerContext.Provider>
   );
 };
+
+DatepickerComponent.displayName = 'Datepicker';
 
 export const Datepicker = Object.assign(DatepickerComponent, {});
