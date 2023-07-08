@@ -9,10 +9,8 @@ import {
   useInteractions,
   useRole,
 } from '@floating-ui/react';
-
 import type { Dispatch, RefObject, SetStateAction } from 'react';
-
-import { getMiddleware, getPlacement } from './floating';
+import { getMiddleware, getPlacement } from '../components/Floating/helpers';
 
 export type UseBaseFloatingParams = {
   placement?: 'auto' | Placement;
