@@ -3,9 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { HiArrowLeft, HiArrowRight, HiCalendar } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
 import type { DeepPartial } from '..';
-import { useTheme } from '../..';
-// @TODO Do we want this dependency?
 import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from '..';
+import { useTheme } from '../..';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { DatepickerContext } from './DatepickerContext';
 import type { FlowbiteDatepickerViewsDaysTheme } from './Views/Days';
@@ -75,7 +74,6 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
 const DatepickerComponent: FC<DatepickerProps> = ({
   title,
   open,
-  // @TODO autoHide is missing
   autoHide = true,
   showClearButton = true,
   showTodayButton = true,
@@ -153,7 +151,6 @@ const DatepickerComponent: FC<DatepickerProps> = ({
   };
 
   // Navigate to prev/next for given view's date by value
-  // @TODO This need some work, it can be simplified
   const getViewDatePage = (view: Views, date: Date, value: number): Date => {
     switch (view) {
       case Views.Days:

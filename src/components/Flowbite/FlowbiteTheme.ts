@@ -35,9 +35,8 @@ import type {
   FlowbiteToastTheme,
   FlowbiteToggleSwitchTheme,
   FlowbiteTooltipTheme,
+  FlowbiteDatepickerTheme
 } from '../../';
-// @TODO Fix this import
-import type { FlowbiteDatepickerTheme } from '../Datepicker';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 

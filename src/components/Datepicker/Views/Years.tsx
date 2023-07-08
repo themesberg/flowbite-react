@@ -42,7 +42,7 @@ export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({ theme: cus
               (index == 0 || index == 11) && theme.items.item.disabled,
             )}
             onClick={() => {
-              changeSelectedDate('date', new Date(addYears(selectedDate, year - selectedDate.getFullYear())));
+              changeSelectedDate(addYears(selectedDate, year - selectedDate.getFullYear()), false);
               setView(Views.Months);
             }}
           >

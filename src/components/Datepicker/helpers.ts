@@ -36,7 +36,6 @@ export const addDays = (date: Date, amount: number): Date => {
   return newDate;
 };
 
-// @TODO There is a better way to do it
 export const dayDiff = (day: number, from: number): number => {
   return (day - from + 7) % 7;
 };
@@ -76,7 +75,6 @@ export const getFormattedDate = (
   return new Intl.DateTimeFormat(language, defaultOptions).format(date);
 };
 
-// @TODO Validate this function
 export const startOfYearPeriod = (date: Date, years: number): number => {
   const year = date.getFullYear();
   return Math.floor(year / years) * years;
