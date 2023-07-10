@@ -4,8 +4,8 @@ import CardPageContent from '.';
 
 export const metadata: Metadata = {
   description:
-    'Get started with the card component to show content in a box such as titles, descriptions, and images based on multiple styles and sizes built with React',
-  title: 'React Cards - Flowbite',
+    'Use the datepicker component to select a date from a calendar view based on an input element by selecting the day, month, and year values using React and Tailwind CSS',
+  title: 'React Datepicker - Flowbite',
 };
 
 const CardPage: NextPage = () => {
