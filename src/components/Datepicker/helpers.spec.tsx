@@ -148,7 +148,7 @@ describe('addMonths', () => {
     const date = new Date(2023, 0, 1); // January 1st, 2023
     const newDate = addMonths(date, 2);
     expect(date.getMonth()).toBe(0); // January
-    expect(newDate.getMonth()).toBe(3); // March
+    expect(newDate.getMonth()).toBe(2); // March
   });
 });
 

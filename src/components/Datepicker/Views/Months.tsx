@@ -11,6 +11,7 @@ export interface FlowbiteDatepickerViewsMonthsTheme {
     item: {
       base: string;
       selected: string;
+      disabled: string;
     };
   };
 }
