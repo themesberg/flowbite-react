@@ -71,7 +71,7 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
 }
 
-const DatepickerComponent: FC<DatepickerProps> = ({
+export const Datepicker: FC<DatepickerProps> = ({
   title,
   open,
   autoHide = true,
@@ -168,22 +168,20 @@ const DatepickerComponent: FC<DatepickerProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (!inputRef?.current && datepickerRef?.current) return;
-      if (!refContainsEvent(inputRef, event) && !refContainsEvent(datepickerRef, event)) {
+      const clickedInsideDatepicker = datepickerRef?.current?.contains(event.target as Node);
+      const clickedInsideInput = inputRef?.current?.contains(event.target as Node);
+
+      if (!clickedInsideDatepicker && !clickedInsideInput) {
         setIsOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', (event: MouseEvent) => handleClickOutside(event));
+    document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', (event: MouseEvent) => handleClickOutside(event));
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [inputRef, datepickerRef, setIsOpen]);
-
-  useEffect(() => {
-    console.log(defaultDate, selectedDate);
-  }, [defaultDate, selectedDate]);
 
   return (
     <DatepickerContext.Provider
@@ -263,6 +261,4 @@ const DatepickerComponent: FC<DatepickerProps> = ({
   );
 };
 
-DatepickerComponent.displayName = 'Datepicker';
-
-export const Datepicker = Object.assign(DatepickerComponent, {});
+Datepicker.displayName = 'Datepicker';
