@@ -1,6 +1,6 @@
 import type { Metadata, NextPage } from 'next';
 import { DocsContentLayout } from '~/app/components/docs-content-layout';
-import CardPageContent from '.';
+import DatepickerPageContent from '.';
 
 export const metadata: Metadata = {
   description:
@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   title: 'React Datepicker - Flowbite',
 };
 
-const CardPage: NextPage = () => {
+const DatepickerPage: NextPage = () => {
   return (
     <DocsContentLayout description={`${metadata.description}`} title={`${metadata.title}`}>
-      <CardPageContent />
+      <DatepickerPageContent />
     </DocsContentLayout>
   );
 };
 
-export default CardPage;
+export default DatepickerPage;
