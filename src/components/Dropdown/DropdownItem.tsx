@@ -15,14 +15,13 @@ export interface FlowbiteDropdownItemTheme {
   icon: string;
 }
 
-export interface DropdownItemProps extends PropsWithChildren, ButtonBaseProps {
+export interface DropdownItemProps extends PropsWithChildren, ButtonBaseProps, Record<string, unknown> {
   icon?: FC<ComponentProps<'svg'>>;
   onClick?: () => void;
   theme?: DeepPartial<FlowbiteDropdownItemTheme>;
 }
-interface Props extends DropdownItemProps, Record<string, unknown> {}
 
-export const DropdownItem: FC<Props> = ({
+export const DropdownItem: FC<DropdownItemProps> = ({
   children,
   className,
   icon: Icon,
