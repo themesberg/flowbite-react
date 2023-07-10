@@ -40,7 +40,7 @@ export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: cu
             )}
             onClick={() => {
               const newDate = new Date(selectedDate);
-              newDate.setMonth(index + 1);
+              newDate.setMonth(index);
               changeSelectedDate(newDate, false);
               setView(Views.Days);
             }}
