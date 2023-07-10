@@ -28,9 +28,22 @@ export interface DatepickerViewsDaysProps {
 
 export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ minDate, maxDate, theme: customTheme = {} }) => {
   const theme = mergeDeep(useTheme().theme.datepicker.views.days, customTheme);
-
-  const weekDays: string[] = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
   const { selectedDate, setSelectedDate, language } = useDatePickerContext();
+
+  const weekDays = ((lang: string): string[] => {
+    const weekdays = [];
+    const date = new Date();
+
+    const formatter = new Intl.DateTimeFormat(lang, { weekday: 'short' });
+
+    for (let i = 1; i <= 7; i++) {
+      date.setDate(i);
+      const formattedWeekday = formatter.format(date);
+      weekdays.push(formattedWeekday.slice(0, 2).charAt(0).toUpperCase() + formattedWeekday.slice(1, 3));
+    }
+
+    return weekdays;
+  })(language);
 
   const isSelectedDate = (value: Date): boolean =>
     selectedDate.getTime() > 0 && getFormattedDate(language, selectedDate) == getFormattedDate(language, value);

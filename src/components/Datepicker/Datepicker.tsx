@@ -63,7 +63,9 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   open?: boolean;
   autoHide?: boolean;
   showClearButton?: boolean;
+  labelClearButton?: string;
   showTodayButton?: boolean;
+  labelTodayButton?: string;
   defaultDate?: Date;
   minDate?: Date;
   maxDate?: Date;
@@ -76,7 +78,9 @@ export const Datepicker: FC<DatepickerProps> = ({
   open,
   autoHide = true,
   showClearButton = true,
+  labelClearButton = 'Clear',
   showTodayButton = true,
+  labelTodayButton = 'Today',
   defaultDate = new Date(),
   minDate,
   maxDate,
@@ -237,7 +241,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                       className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.today)}
                       onClick={() => changeSelectedDate(new Date(), true)}
                     >
-                      Today
+                      {labelTodayButton}
                     </button>
                   )}
                   {showClearButton && (
@@ -245,7 +249,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                       className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
                       onClick={() => changeSelectedDate(defaultDate, true)}
                     >
-                      Clear
+                      {labelClearButton}
                     </button>
                   )}
                 </div>
