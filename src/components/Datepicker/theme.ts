@@ -15,7 +15,7 @@ export const datePickerTheme: FlowbiteDatepickerTheme = {
       selectors: {
         base: 'flex justify-between mb-2',
         button: {
-          base: 'rounded-lg bg-white p-2.5 text-lg text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:hover:text-white',
+          base: 'text-sm rounded-lg text-gray-900 dark:text-white bg-white dark:bg-gray-700 font-semibold py-2.5 px-5 hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-200 view-switch',
           prev: '',
           next: '',
           view: '',
