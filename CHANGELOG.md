@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.11](https://github.com/themesberg/flowbite-react/compare/v0.4.10...v0.4.11) (2023-07-10)
+
+
+### Features
+
+* **dropdown.tsx:** Dropdown Accessibility ([#840](https://github.com/themesberg/flowbite-react/issues/840)) ([65b13e7](https://github.com/themesberg/flowbite-react/commit/65b13e7dd5def51076348bd9e06b6505419167cd)), closes [#648](https://github.com/themesberg/flowbite-react/issues/648) [#793](https://github.com/themesberg/flowbite-react/issues/793)
+
+
+### Bug Fixes
+
+* **dropdown:** fix build ([2c0f9e5](https://github.com/themesberg/flowbite-react/commit/2c0f9e55b2210a4b4b28237fa25193580521e7f9))
+* **modal:** backdrop height ([#839](https://github.com/themesberg/flowbite-react/issues/839)) ([e6e1b83](https://github.com/themesberg/flowbite-react/commit/e6e1b834ccd87b32f685c8e1c4f268f75274e1a7))
+
 ### [0.4.10](https://github.com/themesberg/flowbite-react/compare/v0.4.9...v0.4.10) (2023-07-03)
 
 
