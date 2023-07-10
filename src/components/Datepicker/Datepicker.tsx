@@ -1,4 +1,4 @@
-import type { FC, ReactNode, RefObject } from 'react';
+import type { FC, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { HiArrowLeft, HiArrowRight, HiCalendar } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
@@ -93,9 +93,6 @@ export const Datepicker: FC<DatepickerProps> = ({
 
   const inputRef = useRef<HTMLInputElement>(null);
   const datepickerRef = useRef<HTMLDivElement>(null);
-
-  const refContainsEvent = (ref: RefObject<HTMLInputElement | HTMLDivElement>, event: MouseEvent) =>
-    ref.current?.contains(event.target as Node);
 
   const changeSelectedDate = (date: Date, close: boolean) => {
     if (!isDateInRange(date, minDate, maxDate)) return;
