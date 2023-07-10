@@ -6,17 +6,26 @@ export enum Views {
 }
 
 export const isDateInRange = (date: Date, minDate?: Date, maxDate?: Date): boolean => {
+  const dateWithoutTime = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
   if (minDate && maxDate) {
-    return minDate >= date && maxDate <= date;
+    const minWithoutTime = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate());
+    const maxWithoutTime = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
+    return dateWithoutTime >= minWithoutTime && dateWithoutTime <= maxWithoutTime;
   }
+
   if (minDate) {
-    return minDate >= date;
+    const minWithoutTime = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate());
+    return dateWithoutTime >= minWithoutTime;
   }
+
   if (maxDate) {
-    return maxDate <= date;
+    const maxWithoutTime = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
+    return dateWithoutTime <= maxWithoutTime;
   }
+
   return true;
-};
+}
 
 export const getFirstDayOfMonth = (date: Date): Date => {
   const initDate = new Date(date);
