@@ -1,9 +1,45 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { Flowbite } from '../../';
 import { Card } from './Card';
 
 describe('Components / Card', () => {
+  describe('Functionality', () => {
+    it('should render an image when `imgSrc` is provided', () => {
+      render(<Card imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg" />);
+      expect(screen.queryAllByTestId('flowbite-card-image')).toHaveLength(1);
+      expect(screen.queryByTestId('flowbite-card-image')).toHaveAttribute(
+        'src',
+        'https://flowbite.com/docs/images/blog/image-1.jpg',
+      );
+    });
+    it('should not render an `<img>` given an undefined `imgSrc`', () => {
+      render(<Card imgSrc={undefined} />);
+      expect(screen.queryAllByTestId('flowbite-card-image')).toHaveLength(0);
+    });
+
+    it('should render the image from the `renderImage` prop', () => {
+      render(<Card renderImage={() => <div data-testid="dummy-div" />} />);
+
+      expect(screen.queryAllByTestId('dummy-div')).toHaveLength(1);
+    });
+    it('should use the `renderImage` prop even if the user provides an `imgSrc`', () => {
+      render(
+        /* @ts-expect-error should be illegal to use `renderImage` and `imgSrc` at the same time */
+        <Card
+          renderImage={() => <div data-testid="dummy-div2" />}
+          imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg"
+        />,
+      );
+      expect(screen.queryAllByTestId('dummy-div2')).toHaveLength(1);
+      expect(screen.queryAllByTestId('flowbite-card-image')).toHaveLength(0);
+    });
+    it('should provide the theme and horizontal flag to the `renderImage` function', () => {
+      const spy = vi.fn(() => <div data-testid="dummy-div2" />);
+      render(<Card renderImage={spy} />);
+      expect(spy).toHaveBeenCalledWith(expect.any(Object), false);
+    });
+  });
   describe('A11y', () => {
     it('should allow `aria-label`', () => {
       render(<Card aria-label="My card" />);

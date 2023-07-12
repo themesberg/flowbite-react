@@ -67,6 +67,35 @@ Add an image to the card by using the `imgSrc` prop and set the `imgAlt` prop to
   </Card>
 </CodePreview>
 
+## Card with custom image render function
+
+Specify your own render function for the image component for the card by using the `renderImage` prop. This is especially useful when
+using the component with NextJS or Gatsby.
+
+<CodePreview
+  importFlowbiteReact="Card"
+  importExternal="import Image from 'next/image';"
+  title="Card with decorative image"
+  className="max-w-sm"
+  code={`<Card renderImage={() => {<Image width={500} height={500} src="/images/blog/image-1.jpg" />}}>
+  <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+  Noteworthy technology acquisitions 2021
+  </h5>
+  <p className="font-normal text-gray-700 dark:text-gray-400">
+  Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+  </p>
+</Card>`}
+>
+  <Card renderImage={() => <Image width={500} height={500} src="/images/blog/image-1.jpg" />}>
+    <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      Noteworthy technology acquisitions 2021
+    </h5>
+    <p className="font-normal text-gray-700 dark:text-gray-400">
+      Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+    </p>
+  </Card>
+</CodePreview>
+
 ## Horizontal card
 
 Use the `horizontal` prop to show the card in a horizontal layout.
