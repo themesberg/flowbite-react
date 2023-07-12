@@ -7,7 +7,6 @@ import TerserPlugin from 'terser-webpack-plugin';
 const nextConfig = {
   experimental: {
     appDir: true,
-    scrollRestoration: true,
   },
   pageExtensions: ['mdx', 'tsx'],
   reactStrictMode: true,
