@@ -10,24 +10,49 @@
   @apply overflow-hidden;
 }
 
-#mainContent > h2:first-child {
+#mainContent > #table-of-contents + ul + h2 {
   @apply mt-0;
 }
 
-#mainContent > #table-of-contents + ul {
-  @apply -ml-3 list-outside list-none pl-0;
+#mainContent > h2::before,
+#mainContent > h3::before {
+  @apply invisible -mt-20 block h-20 content-[''];
 }
 
-#mainContent > #table-of-contents + ul ul {
+#mainContent > #table-of-contents {
   @apply hidden;
 }
 
-#mainContent > #table-of-contents + ul li {
+#mainContent > #table-of-contents + ul {
+  @apply hidden;
+}
+
+#visible-table-of-contents {
+  @apply list-none pl-0;
+}
+
+#visible-table-of-contents ul ul li a {
+  @apply pl-6;
+}
+
+#visible-table-of-contents ul ul ul li a {
+  @apply pl-9;
+}
+
+#visible-table-of-contents + ul {
+  @apply -ml-3 list-outside list-none pl-0;
+}
+
+#visible-table-of-contents ul ul {
+  @apply pt-3;
+}
+
+#visible-table-of-contents li {
   @apply pb-3;
 }
 
-#mainContent > #table-of-contents + ul li a {
-  @apply border-l-2 border-transparent pl-3 text-gray-600 no-underline hover:border-primary-700 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-300;
+#visible-table-of-contents a {
+  @apply inline-block border-l border-white pl-2.5 font-medium transition-none duration-200 after:ml-2 after:text-primary-700 after:opacity-0 after:transition-opacity after:duration-100 after:content-['#'] hover:border-gray-300 hover:text-gray-900 hover:after:opacity-100 dark:border-gray-900 dark:after:text-primary-700 dark:hover:border-gray-700 dark:hover:text-white;
 }
 
 #mainContent > hr,
