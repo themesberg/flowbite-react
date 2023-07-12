@@ -78,9 +78,9 @@ export default function HomePageContent() {
             <SocialProofSection stargazers={stargazers} npmDownloads={npmDownloads} discordMembers={discordMembers} />
             <FigmaSection />
             <ContributorsSection contributors={contributors} />
-            <MainFooter />
           </main>
         </div>
+        <MainFooter />
       </div>
     </Flowbite>
   );
