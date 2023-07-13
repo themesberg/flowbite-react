@@ -97,7 +97,8 @@
 #mainContent > p > code,
 #mainContent > ul > li > code,
 #mainContent > ol > li > code {
-  @apply break-all px-1 font-mono text-sm text-primary-600 dark:text-primary-400;
+  @apply whitespace-nowrap break-all px-1 font-mono text-sm text-primary-600 dark:text-primary-400;
+  font-family: Menlo, ui-monospace, SFMono-Regular, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 }
 
 #mainContent > p > a:hover,
