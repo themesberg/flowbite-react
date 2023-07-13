@@ -9,9 +9,9 @@ export const useMDXComponents: (components: MDXComponents) => MDXComponents = (c
       >
         {props.children}
         <a
-          className="ml-2 text-primary-700 opacity-0 transition-opacity group-hover:opacity-100 dark:text-primary-500"
-          href={`#${props.id}`}
           aria-label={`Link to this section: ${props.children}`}
+          href={`#${props.id}`}
+          className="ml-2 text-primary-700 opacity-0 transition-opacity group-hover:opacity-100 dark:text-primary-500"
         >
           #
         </a>
@@ -24,9 +24,9 @@ export const useMDXComponents: (components: MDXComponents) => MDXComponents = (c
       >
         {props.children}
         <a
-          className="ml-2 text-primary-700 opacity-0 transition-opacity group-hover:opacity-100 dark:text-primary-500"
-          href={`#${props.id}`}
           aria-label={`Link to this section: ${props.children}`}
+          href={`#${props.id}`}
+          className="ml-2 text-primary-700 opacity-0 transition-opacity group-hover:opacity-100 dark:text-primary-500"
         >
           #
         </a>
