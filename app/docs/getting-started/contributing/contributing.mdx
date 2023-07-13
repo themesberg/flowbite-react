@@ -94,9 +94,15 @@ Don't forget to:
 
 ### Your First Code Contribution
 
-Please note you will need to understand how to use a terminal/command prompt, Git and Node.js to be able to contribute.
+#### Prerequisites
 
-The library is written in React TypeScript, and uses Tailwind CSS. You should be familiar with all of them. You should also understand CI/CD, because contributions you make will be automatically verified with tools like ESLint and Prettier.
+- You need to understand how to use a terminal, Git, Node.js, and Yarn
+- You should be able to write Markdown and React TypeScript
+- You should be familiar with Tailwind CSS, ESLint, and Prettier
+- You should understand what [vitest](https://vitest.dev/) is, and be able to write tests if your contribution changes the behavior of the library in some way
+- You should strongly consider using [Visual Studio Code](https://code.visualstudio.com/) as your editor, as it has plugins for Tailwind CSS, ESLint, and Prettier which will automatically fix most style issues for you, and offer suggestions for how to fix the rest
+
+#### Creating a Pull Request
 
 1. [Fork the repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
 2. Clone the fork and add a remote called `upstream`:
@@ -143,7 +149,15 @@ yarn format && yarn lint && yarn test && yarn build
 git push -u origin fix/accordion-alwaysopen
 ```
 
-9. Go to [the repository](https://github.com/themesberg/flowbite-react) and [create a Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request). Don't forget to follow the Pull Request template, which will be available automatically to fill out.
+9. Go to [the repository](https://github.com/themesberg/flowbite-react) and [create a Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
+
+10. Fill out the Pull Request template, which will be available automatically
+
+#### What Happens Next?
+
+If you have followed the steps above, your Pull Request will be reviewed by a maintainer soon. If it passes review, it will be merged into the `main` branch and will be included in the next release. If not, you will receive feedback about what needs to be improved until it is ready to be merged.
+
+Please note that you will be expected to update the [documentation](https://flowbite-react.com/docs/getting-started/introduction) and write appropriate unit tests if your contribution changes the behavior of the library in some way.
 
 ### Improving The Documentation
 
@@ -151,9 +165,21 @@ The [documentation at flowbite-react.com](https://flowbite.com) can all be found
 
 ## Styleguides
 
-### Commit Messages
+### Files
+
+We use [Prettier](https://prettier.io/) to format all of our code. Please make sure to run `yarn format` before committing any changes. You can also use VS Code as your editor, and install the Prettier and Tailwind CSS IntelliSense plugins to automatically format your code each time you save.
+
+Please refer to the code written already in the project to see how we format our code, what naming conventions we use, and so on. The more consistent your code is with the rest of the project, the easier it will be to review and merge your Pull Request.
+
+### Commits
 
 We use [commitizen](https://github.com/commitizen/cz-cli) to format commit messages. Please use `yarn commit` instead of `git commit` when committing changes.
+
+### Branches &amp; Pull Requests
+
+Please follow the same guidelines published by [commitizen](https://github.com/commitizen/cz-cli) when you name a branch that will be used for a Pull Request. The branch name should be prefixed with the most significant change that will be introduced in the Pull Request.
+
+For example, if you are fixing a bug in the accordion component, the branch name should be something like, `fix/accordion-does-x-wrong`.
 
 ## Attribution
 
