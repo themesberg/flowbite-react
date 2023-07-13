@@ -14,11 +14,6 @@
   @apply mt-0;
 }
 
-#mainContent > h2::before,
-#mainContent > h3::before {
-  @apply invisible -mt-20 block h-20 content-[''];
-}
-
 #mainContent > #table-of-contents {
   @apply hidden;
 }
