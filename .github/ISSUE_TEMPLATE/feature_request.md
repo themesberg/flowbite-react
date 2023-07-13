@@ -1,19 +1,15 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: ''
-labels: ''
-assignees: ''
+about: Suggest an idea for Flowbite React
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+- [ ] I have searched the [Issues](https://github.com/themesberg/flowbite-react/issues) to see if this bug has already been reported
+- [ ] I have tested the latest version
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+## Summary
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
+Describe how it should work, and provide examples of the solution, which might include screenshots or code snippets.
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+## Context
+
+What are you trying to accomplish? How is your use case affected by not having this feature?
