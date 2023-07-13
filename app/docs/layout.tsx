@@ -88,7 +88,7 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
     <Navbar
       fluid
       theme={{
-        base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-2.5 px-4',
+        base: 'sticky top-0 z-[60] bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-2.5 px-4',
         inner: {
           base: 'mx-auto flex flex-wrap justify-between items-center w-full',
         },
@@ -144,7 +144,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
     <>
       <div
         className={twMerge(
-          'fixed inset-0 z-30 h-full w-64 flex-none lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-0',
+          'fixed inset-0 z-50 h-full w-64 flex-none lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-0',
           isCollapsed && 'hidden',
         )}
       >
@@ -278,7 +278,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
         <div
           onClick={() => setCollapsed(true)}
           onKeyUp={(key) => key.code === 'Escape' && setCollapsed(true)}
-          className="fixed inset-0 z-20 bg-gray-900/50 dark:bg-gray-900/60 lg:hidden"
+          className="fixed inset-0 z-40 bg-gray-900/50 dark:bg-gray-900/60 lg:hidden"
         />
       )}
     </>
