@@ -192,7 +192,7 @@ const CollapseExpandButton: FC<ComponentProps<'button'> & CodePreviewState> = ({
   return (
     <button
       onClick={onClick}
-      className="absolute bottom-0 left-0 w-full border-t border-gray-200 bg-gray-100 px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+      className="absolute bottom-0 left-0 z-10 w-full border-t border-gray-200 bg-gray-100 px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
     >
       {isExpanded ? 'Collapse code' : 'Expand code'}
     </button>
