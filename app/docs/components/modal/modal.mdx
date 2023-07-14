@@ -352,9 +352,9 @@ The `initialFocus` property in the `<Modal />` component sets the initial focus 
   importFlowbiteReact="Button, Checkbox, Label, Modal, TextInput"
   title="Form elements"
 >
-  <Button onClick={() => props.setOpenModal('form-elements')}>Toggle modal</Button>
+  <Button onClick={() => props.setOpenModal('initial-focus')}>Toggle modal</Button>
   <Modal
-    show={props.openModal === 'form-elements'}
+    show={props.openModal === 'initial-focus'}
     size="md"
     popup
     onClose={() => props.setOpenModal(undefined)}
