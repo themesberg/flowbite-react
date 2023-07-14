@@ -299,9 +299,9 @@ You can also add form elements inside of the modal component by adding the marku
 The `initialFocus` property in the `<Modal />` component sets the initial focus on a specific element when the modal opens, enhancing user experience by directing attention to key inputs such as those in authentication forms or surveys.
 
 <CodePreview
-  code={`<Button onClick={() => props.setOpenModal('form-elements')}>Toggle modal</Button>
+  code={`<Button onClick={() => props.setOpenModal('initial-focus')}>Toggle modal</Button>
 <Modal
-  show={props.openModal === 'form-elements'}
+  show={props.openModal === 'initial-focus'}
   size="md"
   popup
   onClose={() => props.setOpenModal(undefined)}

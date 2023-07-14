@@ -91,10 +91,7 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
 
     const ref = useMergeRefs([context.refs.setFloating, theirRef]);
 
-    const click = useClick(context, {
-      enabled: open == null,
-    });
-
+    const click = useClick(context);
     const dismiss = useDismiss(context, { outsidePressEvent: 'mousedown', enabled: dismissible });
     const role = useRole(context);
 
