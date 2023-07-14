@@ -1,6 +1,7 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useCallback, useState } from 'react';
+import type { RefObject } from 'react';
+import { createRef, useState } from 'react';
 import { describe, expect, it } from 'vitest';
 import { Button, TextInput } from '../../';
 import type { ModalProps } from './Modal';
@@ -8,116 +9,189 @@ import { Modal } from './Modal';
 
 describe('Components / Modal', () => {
   it('should be closed by clicking outside if the "dismissible" prop is passed.', async () => {
-    const root = document.createElement('div');
     const user = userEvent.setup();
 
-    render(<TestModal root={root} dismissible />);
+    render(<TestModal dismissible />);
 
-    const openButton = screen.getByRole('button');
+    await user.click(triggerButton());
 
-    await user.click(openButton);
+    const modal = dialog();
+    expect(modal).toBeInTheDocument();
 
-    const modal = within(root).getByRole('dialog');
-
-    expect(modal).toHaveAttribute('aria-hidden', 'false');
-
-    await user.click(modal);
-
-    expect(modal).toHaveAttribute('aria-hidden', 'true');
+    await user.click(dialogOverlay());
+    expect(modal).not.toBeInTheDocument();
   });
 
-  it('should be closed by Esc key press.', async () => {
+  it('should append to root element when root prop is provided', async () => {
     const root = document.createElement('div');
     const user = userEvent.setup();
 
-    render(<TestModal root={root} dismissible />);
+    render(<TestModal root={root} />);
 
-    const openButton = screen.getByRole('button');
+    const openButton = triggerButton();
 
     await user.click(openButton);
 
-    const modal = within(root).getByRole('dialog');
-
-    expect(modal).toHaveAttribute('aria-hidden', 'false');
-
-    await user.keyboard('[Escape]');
-
-    expect(modal).toHaveAttribute('aria-hidden', 'true');
+    expect(within(root).getByRole('dialog')).toBeTruthy();
   });
 
   describe('A11y', () => {
     it('should have `role="dialog"`', async () => {
       const user = userEvent.setup();
-      const root = document.createElement('div');
 
-      render(<TestModal root={root} />);
+      render(<TestModal />);
 
-      const openButton = screen.getByRole('button');
+      const openButton = triggerButton();
 
       await user.click(openButton);
 
-      const modal = within(root).getByRole('dialog');
+      expect(dialog()).toBeDefined();
+    });
 
-      expect(modal).toBeDefined();
+    it('should have `aria-labelledby` equals to modal header id', async () => {
+      const user = userEvent.setup();
+
+      render(<TestModal />);
+
+      const openButton = triggerButton();
+
+      await user.click(openButton);
+
+      expect(dialog()).toHaveAttribute('aria-labelledby', 'test-dialog-header');
     });
   });
 
   describe('Keyboard interactions', () => {
     it('should open `Modal` when `Space` is pressed on its toggle button', async () => {
-      const root = document.createElement('div');
       const user = userEvent.setup();
 
-      render(<TestModal root={root} />);
+      render(<TestModal />);
 
-      const openButton = screen.getByRole('button');
+      const openButton = triggerButton();
 
       await user.click(openButton);
 
-      const modal = within(root).getByRole('dialog');
-
-      expect(root).toContainElement(modal);
-      expect(modal).toHaveAttribute('aria-hidden', 'false');
+      const modal = dialog();
+      expect(modal).toBeInTheDocument();
     });
 
     it('should close `Modal` when `Space` is pressed on any of its buttons', async () => {
-      const root = document.createElement('div');
       const user = userEvent.setup();
 
-      render(<TestModal root={root} />);
+      render(<TestModal />);
 
-      const openButton = screen.getByRole('button');
+      const openButton = triggerButton();
 
       await user.click(openButton);
 
-      const modal = within(root).getByRole('dialog');
+      const modal = dialog();
       const closeButton = within(modal).getAllByRole('button')[0];
 
-      expect(modal).toHaveAttribute('aria-hidden', 'false');
+      expect(modal).toBeInTheDocument();
 
       await user.click(closeButton);
 
-      expect(modal).toHaveAttribute('aria-hidden', 'true');
+      expect(modal).not.toBeInTheDocument();
+    });
+
+    it('should be closed by Esc key press.', async () => {
+      const user = userEvent.setup();
+
+      render(<TestModal dismissible />);
+
+      await user.click(triggerButton());
+
+      const modal = dialog();
+      expect(modal).toBeInTheDocument();
+
+      await user.keyboard('[Escape]');
+
+      expect(modal).not.toBeInTheDocument();
+    });
+
+    it('should have focus trapped inside Modal', async () => {
+      const user = userEvent.setup();
+
+      render(<TestModal dismissible />);
+
+      await user.click(triggerButton());
+      const modal = dialog();
+      expect(modal).toBeInTheDocument();
+
+      await waitFor(() => expect(document.activeElement).toEqual(closeButton()));
+
+      await user.tab();
+      expect(document.activeElement).toEqual(input());
+
+      await user.tab();
+      expect(document.activeElement).toEqual(acceptButton());
+
+      await user.tab();
+      expect(document.activeElement).toEqual(declineButton());
+
+      // The following 2 elements are only focusable in the testing environment
+      await user.tab();
+      expect(document.activeElement).toEqual(document.querySelector('span[data-floating-ui-focus-guard=""]'));
+      await user.tab();
+      expect(document.activeElement).toEqual(document.body);
+
+      await user.tab();
+      expect(document.activeElement).toEqual(closeButton());
+    });
+
+    it('should initially focus element provided by ref when `initialFocus={elementRef}`', async () => {
+      const user = userEvent.setup();
+      const inputRef = createRef<HTMLInputElement>();
+
+      render(<TestModal dismissible inputRef={inputRef} />);
+
+      await user.click(triggerButton());
+      const modal = dialog();
+      expect(modal).toBeInTheDocument();
+
+      await waitFor(() => expect(document.activeElement).toEqual(input()));
+    });
+
+    it('should focus back to button toggle when closing Modal', async () => {
+      const user = userEvent.setup();
+
+      render(
+        <div>
+          <TestModal dismissible />
+          <button>Second button</button>
+        </div>,
+      );
+
+      await user.click(triggerButton());
+      const modal = dialog();
+      expect(modal).toBeInTheDocument();
+
+      await waitFor(() => expect(document.activeElement).toEqual(closeButton()));
+
+      await user.click(dialogOverlay());
+      expect(modal).not.toBeInTheDocument();
+
+      // The following element is only focusable in the testing environment
+      expect(document.activeElement).toEqual(document.body);
+      await user.tab();
+
+      expect(document.activeElement).toEqual(triggerButton());
     });
   });
 });
 
-const TestModal = ({ root, dismissible = false }: Pick<ModalProps, 'root' | 'dismissible'>): JSX.Element => {
+const TestModal = ({
+  root,
+  dismissible = false,
+  inputRef,
+}: Pick<ModalProps, 'root' | 'dismissible'> & { inputRef?: RefObject<HTMLInputElement> }): JSX.Element => {
   const [open, setOpen] = useState(false);
-
-  const setInputRef = useCallback(
-    (input: HTMLInputElement) => {
-      if (open && input) {
-        input.focus();
-      }
-    },
-    [open],
-  );
 
   return (
     <>
       <Button onClick={() => setOpen(true)}>Toggle modal</Button>
-      <Modal dismissible={dismissible} root={root} show={open} onClose={() => setOpen(false)}>
-        <Modal.Header>Terms of Service</Modal.Header>
+      <Modal dismissible={dismissible} root={root} show={open} onClose={() => setOpen(false)} initialFocus={inputRef}>
+        <Modal.Header id="test-dialog-header">Terms of Service</Modal.Header>
         <Modal.Body>
           <div className="space-y-6">
             <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
@@ -130,7 +204,7 @@ const TestModal = ({ root, dismissible = false }: Pick<ModalProps, 'root' | 'dis
               soon as possible of high-risk data breaches that could personally affect them.
             </p>
           </div>
-          <TextInput data-testid="text-input" ref={setInputRef} />
+          <TextInput ref={inputRef} data-testid="text-input" />
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={() => setOpen(false)}>I accept</Button>
@@ -142,3 +216,12 @@ const TestModal = ({ root, dismissible = false }: Pick<ModalProps, 'root' | 'dis
     </>
   );
 };
+
+const dialog = () => screen.getByRole('dialog');
+const dialogOverlay = () => screen.getByTestId('modal-overlay');
+const triggerButton = () => screen.getByRole('button', { name: 'Toggle modal' });
+
+const input = () => screen.getByTestId('text-input');
+const acceptButton = () => screen.getByText('I accept').closest('button');
+const declineButton = () => screen.getByText('Decline').closest('button');
+const closeButton = () => screen.getByLabelText('Close');

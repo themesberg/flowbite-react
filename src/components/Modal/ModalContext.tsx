@@ -2,6 +2,7 @@ import { createContext, useContext } from 'react';
 
 type ModalContext = {
   popup?: boolean;
+  setHeaderId: (id: string | undefined) => void;
   onClose?: () => void;
 };
 
