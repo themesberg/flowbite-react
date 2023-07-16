@@ -115,18 +115,16 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
             )}
             {...props}
           >
-            {show && (
-              <FloatingFocusManager context={context} initialFocus={initialFocus}>
-                <div
-                  ref={ref}
-                  {...getFloatingProps(props)}
-                  aria-labelledby={headerId}
-                  className={twMerge(theme.content.base, theme.root.sizes[size])}
-                >
-                  <div className={theme.content.inner}>{children}</div>
-                </div>
-              </FloatingFocusManager>
-            )}
+            <FloatingFocusManager context={context} initialFocus={initialFocus}>
+              <div
+                ref={ref}
+                {...getFloatingProps(props)}
+                aria-labelledby={headerId}
+                className={twMerge(theme.content.base, theme.root.sizes[size])}
+              >
+                <div className={theme.content.inner}>{children}</div>
+              </div>
+            </FloatingFocusManager>
           </FloatingOverlay>
         </FloatingPortal>
       </ModalContext.Provider>
