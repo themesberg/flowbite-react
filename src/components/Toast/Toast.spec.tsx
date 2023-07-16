@@ -60,6 +60,17 @@ describe('Components / Toast', () => {
     expect(toast()).toBeInTheDocument();
   });
 
+  describe('A11y', () => {
+    it('should have `role=alert`', async () => {
+      render(
+        <Toast>
+          <Toast.Toggle />
+        </Toast>,
+      );
+      expect(toast()).toBeInTheDocument();
+    });
+  });
+
   describe('Keyboard interactions', () => {
     it('should close `Toast` when `Space` is pressed on `Toast.Toggle`', async () => {
       const user = userEvent.setup();
@@ -80,5 +91,5 @@ describe('Components / Toast', () => {
   });
 });
 
-const toast = () => screen.queryByTestId('flowbite-toast');
+const toast = () => screen.queryByRole('alert');
 const toggle = () => screen.getByRole('button');
