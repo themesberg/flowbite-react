@@ -35,10 +35,9 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({
   theme: customTheme = {},
 }) => {
   const theme = mergeDeep(useTheme().theme.datepicker.views.days, customTheme);
-  const { selectedDate, setSelectedDate, language } = useDatePickerContext();
+  const { selectedDate, changeSelectedDate, language } = useDatePickerContext();
 
   const weekDays = getWeekDays(language, weekStart);
-  console.log(weekStart, weekDays);
 
   const isSelectedDate = (value: Date): boolean =>
     selectedDate.getTime() > 0 && getFormattedDate(language, selectedDate) == getFormattedDate(language, value);
@@ -68,7 +67,7 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({
                 !isDateInRange(new Date(currentDate), minDate, maxDate) && theme.items.item.disabled,
               )}
               onClick={() => {
-                setSelectedDate(new Date(currentDate));
+                changeSelectedDate(new Date(currentDate), true);
               }}
             >
               {day}

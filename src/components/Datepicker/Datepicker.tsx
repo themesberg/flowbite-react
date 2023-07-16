@@ -31,6 +31,7 @@ export interface FlowbiteDatepickerTheme {
 export interface FlowbiteDatepickerPopupTheme {
   root: {
     base: string;
+    inline: string;
     inner: string;
   };
   header: {
@@ -61,6 +62,7 @@ export interface FlowbiteDatepickerPopupTheme {
 
 export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   open?: boolean;
+  inline?: boolean;
   autoHide?: boolean;
   showClearButton?: boolean;
   labelClearButton?: string;
@@ -77,7 +79,8 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
 export const Datepicker: FC<DatepickerProps> = ({
   title,
   open,
-  autoHide = true,
+  inline = false,
+  autoHide = true, // Hide when selected the day
   showClearButton = true,
   labelClearButton = 'Clear',
   showTodayButton = true,
@@ -100,12 +103,12 @@ export const Datepicker: FC<DatepickerProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const datepickerRef = useRef<HTMLDivElement>(null);
 
-  const changeSelectedDate = (date: Date, close: boolean) => {
+  const changeSelectedDate = (date: Date, useAutohide: boolean) => {
     if (!isDateInRange(date, minDate, maxDate)) return;
 
     setSelectedDate(date);
 
-    if (autoHide && view === Views.Days && close == true) {
+    if (autoHide && view === Views.Days && useAutohide == true && !inline) {
       setIsOpen(false);
     }
   };
@@ -191,17 +194,19 @@ export const Datepicker: FC<DatepickerProps> = ({
       value={{ language, selectedDate, isOpen, setIsOpen, view, setView, setSelectedDate, changeSelectedDate }}
     >
       <div className={twMerge(theme.root.base, className)}>
-        <TextInput
-          theme={theme.root.input}
-          icon={HiCalendar}
-          ref={inputRef}
-          onFocus={() => setIsOpen(true)}
-          value={selectedDate && getFormattedDate(language, selectedDate)}
-          readOnly
-          {...props}
-        />
-        {isOpen && (
-          <div ref={datepickerRef} className={theme.popup.root.base}>
+        {!inline && (
+          <TextInput
+            theme={theme.root.input}
+            icon={HiCalendar}
+            ref={inputRef}
+            onFocus={() => setIsOpen(true)}
+            value={selectedDate && getFormattedDate(language, selectedDate)}
+            readOnly
+            {...props}
+          />
+        )}
+        {(isOpen || inline) && (
+          <div ref={datepickerRef} className={twMerge(theme.popup.root.base, inline && theme.popup.root.inline)}>
             <div className={theme.popup.root.inner}>
               <div className={theme.popup.header.base}>
                 {title && <div className={theme.popup.header.title}>{title}</div>}

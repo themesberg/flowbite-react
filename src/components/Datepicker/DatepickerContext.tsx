@@ -9,7 +9,7 @@ type DatepickerContextProps = {
   setView: (value: Views) => void;
   selectedDate: Date;
   setSelectedDate: (date: Date) => void;
-  changeSelectedDate: (date: Date, close: boolean) => void;
+  changeSelectedDate: (date: Date, useAutohide: boolean) => void;
 };
 
 export const DatepickerContext = createContext<DatepickerContextProps | undefined>(undefined);
