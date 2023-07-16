@@ -1,6 +1,8 @@
 import { CodePreview } from '~/app/components/code-preview';
 import { Carousel, theme } from '~/src';
 
+## Table of Contents
+
 Use the responsive carousel component to allow users to slide through multiple items and navigate between them using the control buttons and indicators.
 
 Choose from multiple examples and options to update the intervals, make the carousel static and set custom control button and indicator by configuring React and the utility classes from Tailwind CSS.
@@ -96,6 +98,18 @@ Instead of images you can also use any type of markup and content inside the car
 
 <CodePreview title="Slide as anything" className="h-56 sm:h-64 xl:h-80 2xl:h-96">
   <Carousel>
+    <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 1</div>
+    <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 2</div>
+    <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 3</div>
+  </Carousel>
+</CodePreview>
+
+## Handle `onSlideChanged` event
+
+To hook events to slide changed you can use `onSlideChange` property.
+
+<CodePreview title="Slide change event" className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+  <Carousel onSlideChange={(slideIdx) => console.log(slideIdx)}>
     <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 1</div>
     <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 2</div>
     <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 3</div>

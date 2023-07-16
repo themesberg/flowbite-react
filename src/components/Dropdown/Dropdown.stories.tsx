@@ -10,6 +10,7 @@ export default {
     title: 'Dropdown example',
     label: 'Dropdown button',
     placement: 'auto',
+    disabled: false,
   },
 } as Meta;
 
@@ -68,6 +69,33 @@ Inline.args = {
       <Dropdown.Item>Settings</Dropdown.Item>
       <Dropdown.Item>Earnings</Dropdown.Item>
       <Dropdown.Item>Sign out</Dropdown.Item>
+    </>
+  ),
+};
+
+export const CustomTrigger = Template.bind({});
+CustomTrigger.args = {
+  renderTrigger: () => <button>Custom button</button>,
+  children: (
+    <>
+      <Dropdown.Item>Dashboard</Dropdown.Item>
+      <Dropdown.Item>Settings</Dropdown.Item>
+      <Dropdown.Item>Earnings</Dropdown.Item>
+      <Dropdown.Item>Sign out</Dropdown.Item>
+    </>
+  ),
+};
+
+export const CustomItem = Template.bind({});
+CustomItem.args = {
+  children: (
+    <>
+      <Dropdown.Item>Default button</Dropdown.Item>
+      <Dropdown.Item as="span">As span</Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item href="https://flowbite.com/" target="_blank">
+        As link
+      </Dropdown.Item>
     </>
   ),
 };

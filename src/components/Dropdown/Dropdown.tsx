@@ -1,13 +1,21 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-
-import type { ComponentProps, Dispatch, FC, PropsWithChildren, ReactElement, ReactNode, SetStateAction } from 'react';
-import React, { Children, useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import type { ExtendedRefs, useInteractions } from '@floating-ui/react';
+import { FloatingFocusManager, FloatingList, useListNavigation, useTypeahead } from '@floating-ui/react';
+import type {
+  ComponentProps,
+  Dispatch,
+  FC,
+  HTMLProps,
+  MutableRefObject,
+  PropsWithChildren,
+  ReactElement,
+  ReactNode,
+  SetStateAction,
+} from 'react';
+import { cloneElement, createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import type { ButtonProps, DeepPartial } from '../../';
 import { Button, useTheme } from '../../';
 import type { FloatingProps, FlowbiteFloatingTheme } from '../../components/Floating';
-import { Floating } from '../../components/Floating';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { FlowbiteDropdownDividerTheme } from './DropdownDivider';
 import { DropdownDivider } from './DropdownDivider';
@@ -15,6 +23,9 @@ import type { FlowbiteDropdownHeaderTheme } from './DropdownHeader';
 import { DropdownHeader } from './DropdownHeader';
 import type { FlowbiteDropdownItemTheme } from './DropdownItem';
 import { DropdownItem } from './DropdownItem';
+
+import { twMerge } from 'tailwind-merge';
+import { useBaseFLoating, useFloatingInteractions } from '../../helpers/use-floating';
 
 export interface FlowbiteDropdownFloatingTheme
   extends FlowbiteFloatingTheme,
@@ -40,10 +51,8 @@ export interface DropdownProps
   inline?: boolean;
   label: ReactNode;
   theme?: DeepPartial<FlowbiteDropdownTheme>;
-}
-
-export interface TriggerWrapperProps extends ButtonProps {
-  setButtonWidth?: Dispatch<SetStateAction<number | undefined>>;
+  renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactElement;
+  'data-testid'?: string;
 }
 
 const icons: Record<string, FC<ComponentProps<'svg'>>> = {
@@ -53,99 +62,187 @@ const icons: Record<string, FC<ComponentProps<'svg'>>> = {
   left: HiOutlineChevronLeft,
 };
 
+export interface TriggerProps extends Omit<ButtonProps, 'theme'> {
+  refs: ExtendedRefs<HTMLElement>;
+  inline?: boolean;
+  theme: FlowbiteDropdownTheme;
+  setButtonWidth?: Dispatch<SetStateAction<number | undefined>>;
+  getReferenceProps: (userProps?: HTMLProps<Element> | undefined) => Record<string, unknown>;
+  renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactElement;
+}
+
+const Trigger = ({
+  refs,
+  children,
+  inline,
+  theme,
+  disabled,
+  setButtonWidth,
+  getReferenceProps,
+  renderTrigger,
+  ...buttonProps
+}: TriggerProps) => {
+  const ref = refs.reference as MutableRefObject<HTMLElement>;
+  const a11yProps = getReferenceProps();
+
+  useEffect(() => {
+    if (ref.current) {
+      setButtonWidth?.(ref.current.clientWidth);
+    }
+  }, [ref, setButtonWidth]);
+
+  if (renderTrigger) {
+    const triggerElement = renderTrigger(theme);
+    return cloneElement(triggerElement, { ref: refs.setReference, disabled, ...a11yProps, ...triggerElement.props });
+  }
+
+  return inline ? (
+    <button type="button" ref={refs.setReference} className={theme?.inlineWrapper} disabled={disabled} {...a11yProps}>
+      {children}
+    </button>
+  ) : (
+    <Button {...buttonProps} disabled={disabled} type="button" ref={refs.setReference} {...a11yProps}>
+      {children}
+    </Button>
+  );
+};
+
+interface DropdownContextValue {
+  activeIndex: number | null;
+  dismissOnClick?: boolean;
+  getItemProps: ReturnType<typeof useInteractions>['getItemProps'];
+  handleSelect: (index: number | null) => void;
+}
+
+export const DropdownContext = createContext<DropdownContextValue>({} as DropdownContextValue);
+
 const DropdownComponent: FC<DropdownProps> = ({
   children,
   className,
   dismissOnClick = true,
   theme: customTheme = {},
+  renderTrigger,
   ...props
 }) => {
-  const id = useId();
+  const [open, setOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [buttonWidth, setButtonWidth] = useState<number | undefined>(undefined);
+  const elementsRef = useRef<Array<HTMLElement | null>>([]);
+  const labelsRef = useRef<Array<string | null>>([]);
+
   const theme = mergeDeep(useTheme().theme.dropdown, customTheme);
   const theirProps = props as Omit<DropdownProps, 'theme'>;
+  const dataTestId = props['data-testid'] || 'flowbite-dropdown-target';
   const {
     placement = props.inline ? 'bottom-start' : 'bottom',
     trigger = 'click',
     label,
     inline,
-    floatingArrow = false,
     arrowIcon = true,
     ...buttonProps
   } = theirProps;
+
+  const handleSelect = useCallback((index: number | null) => {
+    setSelectedIndex(index);
+    setOpen(false);
+  }, []);
+
+  const handleTypeaheadMatch = useCallback(
+    (index: number | null) => {
+      if (open) {
+        setActiveIndex(index);
+      } else {
+        handleSelect(index);
+      }
+    },
+    [open, handleSelect],
+  );
+
+  const { context, floatingStyles, refs } = useBaseFLoating<HTMLButtonElement>({
+    open,
+    setOpen,
+    placement,
+  });
+
+  const listNav = useListNavigation(context, {
+    listRef: elementsRef,
+    activeIndex,
+    selectedIndex,
+    onNavigate: setActiveIndex,
+  });
+
+  const typeahead = useTypeahead(context, {
+    listRef: labelsRef,
+    activeIndex,
+    selectedIndex,
+    onMatch: handleTypeaheadMatch,
+  });
+
+  const { getReferenceProps, getFloatingProps, getItemProps } = useFloatingInteractions({
+    context,
+    role: 'menu',
+    trigger,
+    interactions: [listNav, typeahead],
+  });
 
   const Icon = useMemo(() => {
     const [p] = placement.split('-');
     return icons[p] ?? HiOutlineChevronDown;
   }, [placement]);
 
-  const [closeRequestKey, setCloseRequestKey] = useState<string | undefined>(undefined);
-  const [buttonWidth, setButtonWidth] = useState<number | undefined>(undefined);
-
-  // Extends DropdownItem's onClick to trigger a close request to the Floating component
-  const attachCloseListener = useCallback(
-    // @ts-ignore TODO: Rewrite Dropdown
-    (node: ReactNode) => {
-      if (!React.isValidElement(node)) return node;
-      if ((node as ReactElement).type === DropdownItem)
-        return React.cloneElement(node, {
-          // @ts-ignore TODO: Rewrite Dropdown
-          onClick: () => {
-            node.props.onClick?.();
-            dismissOnClick && setCloseRequestKey(id);
-          },
-        });
-      if (node.props.children && typeof node.props.children === 'object') {
-        return React.cloneElement(node, {
-          // @ts-ignore TODO: Rewrite Dropdown
-          children: Children.map(node.props.children, attachCloseListener),
-        });
-      }
-      return node;
-    },
-    [dismissOnClick, id],
-  );
-
-  const content = useMemo(
-    () => <ul className={theme.content}>{Children.map(children, attachCloseListener)}</ul>,
-    [attachCloseListener, children, theme.content],
-  );
-
-  const TriggerWrapper: FC<TriggerWrapperProps> = ({ children, setButtonWidth }): JSX.Element => {
-    const ref = useRef<HTMLButtonElement | null>(null);
-
-    useEffect(() => {
-      if (ref.current) setButtonWidth?.(ref.current.clientWidth);
-    }, [ref]);
-
-    return inline ? (
-      <button type="button" ref={ref} className={theme.inlineWrapper}>
-        {children}
-      </button>
-    ) : (
-      <Button type="button" ref={ref} {...buttonProps}>
-        {children}
-      </Button>
-    );
-  };
-
   return (
-    <Floating
-      content={content}
-      style="auto"
-      animation="duration-100"
-      placement={placement}
-      arrow={floatingArrow}
-      trigger={trigger}
-      theme={theme.floating}
-      closeRequestKey={closeRequestKey}
-      className={className}
-      minWidth={buttonWidth}
-    >
-      <TriggerWrapper setButtonWidth={setButtonWidth}>
+    <>
+      <Trigger
+        {...buttonProps}
+        refs={refs}
+        inline={inline}
+        theme={theme}
+        data-testid={dataTestId}
+        className={twMerge(theme.floating.target, buttonProps.className)}
+        setButtonWidth={setButtonWidth}
+        getReferenceProps={getReferenceProps}
+        renderTrigger={renderTrigger}
+      >
         {label}
         {arrowIcon && <Icon className={theme.arrowIcon} />}
-      </TriggerWrapper>
-    </Floating>
+      </Trigger>
+      <DropdownContext.Provider
+        value={{
+          activeIndex,
+          dismissOnClick,
+          getItemProps,
+          handleSelect,
+        }}
+      >
+        {open && (
+          <FloatingFocusManager context={context} modal={false}>
+            <div
+              ref={refs.setFloating}
+              style={{ ...floatingStyles, minWidth: buttonWidth }}
+              data-testid="flowbite-dropdown"
+              aria-expanded={open}
+              {...getFloatingProps({
+                className: twMerge(
+                  theme.floating.base,
+                  theme.floating.animation,
+                  'duration-100',
+                  !open && theme.floating.hidden,
+                  theme.floating.style.auto,
+                  className,
+                ),
+              })}
+            >
+              <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
+                <ul className={theme.content} tabIndex={-1}>
+                  {children}
+                </ul>
+              </FloatingList>
+            </div>
+          </FloatingFocusManager>
+        )}
+      </DropdownContext.Provider>
+    </>
   );
 };
 

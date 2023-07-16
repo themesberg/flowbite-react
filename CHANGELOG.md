@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.11](https://github.com/themesberg/flowbite-react/compare/v0.4.10...v0.4.11) (2023-07-10)
+
+
+### Features
+
+* **dropdown.tsx:** Dropdown Accessibility ([#840](https://github.com/themesberg/flowbite-react/issues/840)) ([65b13e7](https://github.com/themesberg/flowbite-react/commit/65b13e7dd5def51076348bd9e06b6505419167cd)), closes [#648](https://github.com/themesberg/flowbite-react/issues/648) [#793](https://github.com/themesberg/flowbite-react/issues/793)
+
+
+### Bug Fixes
+
+* **dropdown:** fix build ([2c0f9e5](https://github.com/themesberg/flowbite-react/commit/2c0f9e55b2210a4b4b28237fa25193580521e7f9))
+* **modal:** backdrop height ([#839](https://github.com/themesberg/flowbite-react/issues/839)) ([e6e1b83](https://github.com/themesberg/flowbite-react/commit/e6e1b834ccd87b32f685c8e1c4f268f75274e1a7))
+
+### [0.4.10](https://github.com/themesberg/flowbite-react/compare/v0.4.9...v0.4.10) (2023-07-03)
+
+
+### Features
+
+* **button.tsx:** Added as prop to button component ([#826](https://github.com/themesberg/flowbite-react/issues/826)) ([6384882](https://github.com/themesberg/flowbite-react/commit/6384882b754465aac2829dc9e634b0c30efce621)), closes [#655](https://github.com/themesberg/flowbite-react/issues/655)
+* **carousel:** adds onSlideChange property ([#833](https://github.com/themesberg/flowbite-react/issues/833)) ([c80fb37](https://github.com/themesberg/flowbite-react/commit/c80fb37ca59d1a7ceff3fef978bea934baf43c46))
+* **components/darkthemetoggle:** supports custom icons ([1d615c0](https://github.com/themesberg/flowbite-react/commit/1d615c0bfbef4fdc48d9f19c18c069a15c74e228))
+* **components/sidebar:** theme access to list item element ([d7262ba](https://github.com/themesberg/flowbite-react/commit/d7262bab7c97c6e215431ff7d6ca6711e23570de))
+* **dropdown:** adding custom trigger ([#834](https://github.com/themesberg/flowbite-react/issues/834)) ([70c7aec](https://github.com/themesberg/flowbite-react/commit/70c7aec813f208c179a74b6b49343faf18369964)), closes [#624](https://github.com/themesberg/flowbite-react/issues/624)
+
+
+### Bug Fixes
+
+* **button.tsx:** Disable Button hover state when button is disabled ([#830](https://github.com/themesberg/flowbite-react/issues/830)) ([2b45084](https://github.com/themesberg/flowbite-react/commit/2b45084a82851d7e96e21cf75a2c8a1d1fa94e10)), closes [#827](https://github.com/themesberg/flowbite-react/issues/827)
+* **components/navbar:** fix theme interface ([bc280fc](https://github.com/themesberg/flowbite-react/commit/bc280fc4fc380ec61aa67b57090a1d8bed43a488))
+* **textinput.tsx:** TextInput padding when having right/left icons ([#832](https://github.com/themesberg/flowbite-react/issues/832)) ([d616e66](https://github.com/themesberg/flowbite-react/commit/d616e66e894bd80d5c95965047ea5c67ba45df91)), closes [#828](https://github.com/themesberg/flowbite-react/issues/828)
+
 ### [0.4.9](https://github.com/themesberg/flowbite-react/compare/v0.4.7...v0.4.9) (2023-06-22)
 
 

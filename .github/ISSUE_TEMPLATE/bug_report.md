@@ -1,42 +1,27 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
+about: Report a bug in Flowbite React
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+- [ ] I have searched the [Issues](https://github.com/themesberg/flowbite-react/issues) to see if this bug has already been reported
+- [ ] I have tested the latest version
 
-**To Reproduce**
-Steps to reproduce the behavior:
+## Steps to reproduce
 
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
-4. See error
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+## Current behavior
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+Describe what is currently happening and why it's a problem.
 
-**System information:**
+## Expected behavior
 
-- Device:
-- Resolution:
-- OS:
-- Browser:
-- Version:
+Describe what you expected to happen.
 
-**Project information:**
+## Context
 
-- Tailwind: 3.0.0
-- Flowbite: 1.4.7
-- Flowbite React: 0.1.2
-- Type: CRA
+What are you trying to accomplish? Does this only happen on a specific browser, screen size, or operating system?
 
-**Additional context**
-Add any other context about the problem here.
+If possible, provide a live example URL, screenshot, video, or a repository with the minimal reproduction of the issue.

@@ -1,18 +1,10 @@
 import type { Placement } from '@floating-ui/core';
-import {
-  autoUpdate,
-  safePolygon,
-  useClick,
-  useFloating,
-  useFocus,
-  useHover,
-  useInteractions,
-  useRole,
-} from '@floating-ui/react';
+import { autoUpdate, useFocus } from '@floating-ui/react';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { getArrowPlacement, getMiddleware, getPlacement } from '../../helpers/floating';
+import { getArrowPlacement } from '../../helpers/floating';
+import { useBaseFLoating, useFloatingInteractions } from '../../helpers/use-floating';
 
 export interface FlowbiteFloatingTheme {
   arrow: FlowbiteFloatingArrowTheme;
@@ -38,13 +30,14 @@ export interface FlowbiteFloatingArrowTheme {
   };
 }
 
+export type FloatingStyle = 'dark' | 'light' | 'auto';
+
 export interface FloatingProps extends PropsWithChildren, Omit<ComponentProps<'div'>, 'content' | 'style'> {
   animation?: false | `duration-${number}`;
   arrow?: boolean;
-  closeRequestKey?: string;
   content: ReactNode;
   placement?: 'auto' | Placement;
-  style?: 'dark' | 'light' | 'auto';
+  style?: FloatingStyle;
   theme: FlowbiteFloatingTheme;
   trigger?: 'hover' | 'click';
   minWidth?: number;
@@ -58,7 +51,6 @@ export const Floating: FC<FloatingProps> = ({
   arrow = true,
   children,
   className,
-  closeRequestKey,
   content,
   placement = 'top',
   style = 'dark',
@@ -70,11 +62,11 @@ export const Floating: FC<FloatingProps> = ({
   const arrowRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
 
-  const floatingTooltip = useFloating<HTMLElement>({
-    middleware: getMiddleware({ arrowRef, placement }),
-    onOpenChange: setOpen,
+  const floatingProperties = useBaseFLoating({
     open,
-    placement: getPlacement({ placement }),
+    placement,
+    arrowRef,
+    setOpen,
   });
 
   const {
@@ -85,27 +77,21 @@ export const Floating: FC<FloatingProps> = ({
     update,
     x,
     y,
-  } = floatingTooltip;
+  } = floatingProperties;
 
-  const { getFloatingProps, getReferenceProps } = useInteractions([
-    useClick(context, { enabled: trigger === 'click' }),
-    useFocus(context),
-    useHover(context, {
-      enabled: trigger === 'hover',
-      handleClose: safePolygon(),
-    }),
-    useRole(context, { role: 'tooltip' }),
-  ]);
+  const focus = useFocus(context);
+  const { getFloatingProps, getReferenceProps } = useFloatingInteractions({
+    context,
+    role: 'tooltip',
+    trigger,
+    interactions: [focus],
+  });
 
   useEffect(() => {
     if (refs.reference.current && refs.floating.current && open) {
       return autoUpdate(refs.reference.current, refs.floating.current, update);
     }
   }, [open, refs.floating, refs.reference, update]);
-
-  useEffect(() => {
-    if (closeRequestKey !== undefined) setOpen(false);
-  }, [closeRequestKey]);
 
   return (
     <>
@@ -153,7 +139,7 @@ export const Floating: FC<FloatingProps> = ({
               left: arrowX ?? ' ',
               right: ' ',
               bottom: ' ',
-              [getArrowPlacement({ placement: floatingTooltip.placement })]: theme.arrow.placement,
+              [getArrowPlacement({ placement: floatingProperties.placement })]: theme.arrow.placement,
             }}
           >
             &nbsp;

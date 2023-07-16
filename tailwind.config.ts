@@ -1,6 +1,7 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['./app/**/*.{js,jsx,md,mdx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
+import { type Config } from 'tailwindcss';
+
+const config: Config = {
+  content: ['./app/**/*.{js,jsx,md,mdx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}', './mdx-components.tsx'],
   plugins: [require('flowbite/plugin')],
   theme: {
     extend: {
@@ -72,3 +73,5 @@ module.exports = {
     },
   },
 };
+
+export default config;

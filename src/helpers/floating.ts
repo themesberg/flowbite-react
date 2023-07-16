@@ -9,7 +9,7 @@ export const getMiddleware = ({
   arrowRef,
   placement,
 }: {
-  arrowRef: RefObject<HTMLDivElement>;
+  arrowRef?: RefObject<HTMLDivElement>;
   placement: 'auto' | Placement;
 }): Middleware[] => {
   const middleware = [];
@@ -18,7 +18,7 @@ export const getMiddleware = ({
   middleware.push(placement === 'auto' ? autoPlacement() : flip());
   middleware.push(shift({ padding: 8 }));
 
-  if (arrowRef.current) {
+  if (arrowRef?.current) {
     middleware.push(arrow({ element: arrowRef.current }));
   }
 

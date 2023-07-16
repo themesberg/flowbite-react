@@ -29,7 +29,12 @@
 
 ---
 
-[![Screenshot of flowbite-react.com](https://i.postimg.cc/hjdhcF2t/Screen-Shot-2022-05-01-at-19-34-39-fullpage.png)](https://postimg.cc/bDqq95X7)
+<div align="center">
+  <p />
+  <p>
+    <img alt="https://flowbite-react.com" src="https://i.postimg.cc/d0DwHMJZ/Screenshot-2023-07-12-at-16-36-54-Flowbite-React-UI-Component-Library.png" />
+  </p>
+</div>
 
 ---
 
@@ -40,7 +45,6 @@
 - [Table of Contents](#table-of-contents)
 - [Documentation](#documentation)
 - [Getting started](#getting-started)
-- [Customize components](#customize-components)
 - [Components](#components)
 - [Community](#community)
 - [Contributing](#contributing)
@@ -57,19 +61,48 @@ If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite
 
 ## Getting started
 
-Make sure you have [Node.js](https://nodejs.org/en/) installed.
+Learn how to get started with Flowbite React and start leveraging the interactive React components coupled with Flowbite and Tailwind CSS.
 
-To use `flowbite-react`, you need to setup [`flowbite`](https://github.com/themesberg/flowbite) and also install `flowbite-react` from `npm` or `yarn`.
+You'll need to be familiar with Node.js and `npm`, and have `npm` installed. You should be comfortable installing packages with `npm`, and experience creating web apps with React and Tailwind CSS will be very helpful.
 
-`flowbite` can be included as a plugin into an existing Tailwind CSS project.
+### Setup Tailwind CSS
 
-1. Install `flowbite` as a dependency using `npm` by running the following command:
+Install Tailwind CSS:
+
+```bash
+npm i autoprefixer postcss tailwindcss
+npx tailwindcss init -p
+```
+
+Point Tailwind CSS to files you have `className=".."` in:
+
+```javascript
+module.exports = {
+  content: ['./src/**/*.{js,jsx,ts,tsx}' /* src folder, for example */],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+Add Tailwind CSS to a CSS file:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Install Flowbite React
+
+1. Install Flowbite and Flowbite React:
 
 ```bash
 npm i flowbite flowbite-react # or yarn add flowbite flowbite-react
 ```
 
-2. Require `flowbite` as a plugin inside the `tailwind.config.js` file, and include content from `flowbite-react`:
+2. Add the Flowbite plugin to `tailwind.config.js`, and include content from `flowbite-react`:
 
 ```javascript
 module.exports = {
@@ -82,286 +115,228 @@ module.exports = {
 };
 ```
 
-## Customize components
+### Try it out
 
-You can customize every component in `flowbite-react`. We've provided a few different methods so just about any use case you have should be covered for now.
+How you use Flowbite React depends on your project setup. In general, you can just import the components you want to use from `flowbite-react` and use them in a React `.jsx` file:
 
-See [https://flowbite-react.com/theme](https://flowbite-react.com/theme)
+```jsx
+import { Button } from 'flowbite-react';
+
+export default function MyPage() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  );
+}
+```
+
+### Next steps
+
+#### Next.js
+
+If you're using Next.js, you can follow the [Next.js install guide](/docs/getting-started/nextjs), which includes a [Next.js starter project](https://github.com/tulupinc/flowbite-next-starter) with Flowbite React already set up.
+
+#### Dark mode
+
+If you want to add a dark mode switcher to your app, you can follow the [dark mode guide](/docs/customize/dark-mode).
+
+#### Customization
+
+If you want to customize Flowbite React component, you can follow the [theme guide](/docs/customize/theme).
+
+#### Contributing
+
+If you want to contribute to Flowbite React, you can follow the [contributing guide](/docs/getting-started/contributing).
 
 ## Components
 
+**Please note that some components in the vanilla Flowbite library are not yet available in Flowbite React.**
+
 <table>
   <tr>
-    <td width="33.3333%">Alerts</td>
-    <td width="33.3333%">Badge</td>
-    <td width="33.3333%">Breadcrumbs</td>
+    <td width="33.3333%">Accordion</td>
+    <td width="33.3333%">Alert</td>
+    <td width="33.3333%">Avatar</td>
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/alerts/">
-            <img alt="Tailwind CSS Alerts" src="https://flowbite.s3.amazonaws.com/github/alerts.jpg">
+        <a href="https://flowbite-react.com/docs/components/accordion">
+            <img alt="Tailwind CSS Accordion" src="https://flowbite.s3.amazonaws.com/github/accordion.jpg">
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/badges/">
+        <a href="https://flowbite-react.com/docs/components/alert">
+            <img alt="Tailwind CSS Alert" src="https://flowbite.s3.amazonaws.com/github/alerts.jpg">
+        </a>
+    </td>
+    <td width="33.3333%">
+        <a href="https://flowbite-react.com/docs/components/avatar">
+            <img alt="Tailwind CSS Avatar" src="https://flowbite.s3.amazonaws.com/github/avatar.jpg">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td width="33.3333%">Badge</td>
+    <td width="33.3333%">Breadcrumb</td>
+    <td width="33.3333%">Button</td>
+  </tr>
+  <tr>
+    <td width="33.3333%">
+        <a href="https://flowbite-react.com/docs/components/badge">
             <img alt="Tailwind CSS Badge" src="https://flowbite.s3.amazonaws.com/github/badge.jpg">
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/breadcrumb/">
-            <img alt="Tailwind CSS Breadcrumbs" src="https://flowbite.s3.amazonaws.com/github/breadcrumbs.jpg">
+        <a href="https://flowbite-react.com/docs/components/breadcrumb">
+            <img alt="Tailwind CSS Breadcrumb" src="https://flowbite.s3.amazonaws.com/github/breadcrumbs.jpg">
+        </a>
+    </td>
+    <td width="33.3333%">
+        <a href="https://flowbite-react.com/docs/components/button">
+            <img alt="Tailwind CSS Button" src="https://flowbite.s3.amazonaws.com/github/buttons.jpg">
         </a>
     </td>
   </tr>
   <tr>
-    <td width="33.3333%">Buttons</td>
     <td width="33.3333%">Button group</td>
-    <td width="33.3333%">Cards</td>
+    <td width="33.3333%">Card</td>
+    <td width="33.3333%">Carousel</td>
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/buttons/">
-            <img alt="Tailwind CSS Buttons" src="https://flowbite.s3.amazonaws.com/github/buttons.jpg">
+        <a href="https://flowbite-react.com/docs/components/button-group">
+            <img alt="Tailwind CSS Button group" src="https://flowbite.s3.amazonaws.com/github/button-group.jpg">
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/button-group/">
-            <img alt="Tailwind CSS Button Group" src="https://flowbite.s3.amazonaws.com/github/button-group.jpg">
+        <a href="https://flowbite-react.com/docs/components/card">
+            <img alt="Tailwind CSS Card" src="https://flowbite.s3.amazonaws.com/github/cards.jpg">
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/card/">
-            <img alt="Tailwind CSS Cards" src="https://flowbite.s3.amazonaws.com/github/cards.jpg">
+        <a href="https://flowbite-react.com/docs/components/carousel/">
+            <img alt="Tailwind CSS Carousel" src="https://flowbite.s3.amazonaws.com/github/carousel.jpg">
         </a>
     </td>
   </tr>
   <tr>
     <td width="33.3333%">Dropdown</td>
+    <td width="33.3333%">Footer</td>
     <td width="33.3333%">Forms</td>
-    <td width="33.3333%">List group</td>
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/dropdown/">
+        <a href="https://flowbite-react.com/docs/components/dropdown">
             <img alt="Tailwind CSS Dropdown" src="https://flowbite.s3.amazonaws.com/github/dropdown.jpg">
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/forms/">
-            <img alt="Tailwind CSS Forms" src="https://flowbite.s3.amazonaws.com/github/forms.jpg">
-        </a>
-    </td>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/list-group/">
-            <img alt="Tailwind CSS List group" src="https://flowbite.s3.amazonaws.com/github/list-group.jpg">
-        </a>
-    </td>
-  </tr>
-  <tr>
-    <td width="33.3333%">:construction: Typography</td>
-    <td width="33.3333%">Modal</td>
-    <td width="33.3333%">Tabs</td>
-  </tr>
-  <tr>
-    <td width="33.3333%">
-        <a href="https://flowbite.com/docs/components/typography/">
-            <img alt="Tailwind CSS Typography" src="https://flowbite.s3.amazonaws.com/github/typography.jpg">
-        </a>
-    </td>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/modal/">
-            <img alt="Tailwind CSS Modal" src="https://flowbite.s3.amazonaws.com/github/modal.jpg">
-        </a>
-    </td>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/tabs/">
-            <img alt="Tailwind CSS Tabs" src="https://flowbite.s3.amazonaws.com/github/tabs.jpg">
-        </a>
-    </td>
-  </tr>
-  <tr>
-    <td width="33.3333%">Navbar</td>
-    <td width="33.3333%">Pagination</td>
-    <td width="33.3333%">Timeline</td>
-  </tr>
-  <tr>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/navbars/">
-            <img alt="Tailwind CSS Navbar" src="https://flowbite.s3.amazonaws.com/github/navbar.jpg">
-        </a>
-    </td>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/pagination/">
-            <img alt="Tailwind CSS Pagination" src="https://flowbite.s3.amazonaws.com/github/pagination.jpg">
-        </a>
-    </td>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/timeline/">
-            <img alt="Tailwind CSS Timeline" src="https://flowbite.s3.amazonaws.com/github/timeline.jpg">
-        </a>
-    </td>
-  </tr>
-  <tr>
-    <td width="33.3333%">Progress bar</td>
-    <td width="33.3333%">Tables</td>
-    <td width="33.3333%">Toast</td>
-  </tr>
-  <tr>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/progress/">
-            <img alt="Tailwind CSS Progress Bar" src="https://flowbite.s3.amazonaws.com/github/progress.jpg">
-        </a>
-    </td>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/tables/">
-            <img alt="Tailwind CSS Tables" src="https://flowbite.s3.amazonaws.com/github/tables.jpg">
-        </a>
-    </td>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/toast/">
-            <img alt="Tailwind CSS Toast" src="https://flowbite.s3.amazonaws.com/github/toast.jpg">
-        </a>
-    </td>
-  </tr>
-  <tr>
-    <td width="33.3333%">Tooltips</td>
-    <td width="33.3333%">:construction: Datepicker</td>
-    <td width="33.3333%">Spinner</td>
-  </tr>
-  <tr>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/tooltips/">
-            <img alt="Tailwind CSS Tooltips" src="https://flowbite.s3.amazonaws.com/github/tooltips.jpg">
-        </a>
-    </td>
-    <td width="33.3333%">
-        <a href="https://flowbite.com/docs/plugins/datepicker/">
-            <img alt="Tailwind CSS Datepicker" src="https://flowbite.s3.amazonaws.com/github/datepicker.jpg">
-        </a>
-    </td>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/spinners/">
-            <img alt="Tailwind CSS Spinner" src="https://flowbite.s3.amazonaws.com/github/spinner.jpg">
-        </a>
-    </td>
-  </tr>
-  <tr>
-    <td width="33.3333%">Footer</td>
-    <td width="33.3333%">Accordion</td>
-    <td width="33.3333%">Sidebar</td>
-  </tr>
-  <tr>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/footer/">
+        <a href="https://flowbite-react.com/docs/components/footer">
             <img alt="Tailwind CSS Footer" src="https://flowbite.s3.amazonaws.com/github/footer.jpg">
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/accordion/">
-            <img alt="Tailwind CSS Accordion" src="https://flowbite.s3.amazonaws.com/github/accordion.jpg">
-        </a>
-    </td>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/sidebar/">
-            <img alt="Tailwind CSS Sidebar" src="https://flowbite.s3.amazonaws.com/github/sidebar.jpg">
+        <a href="https://flowbite-react.com/docs/components/forms">
+            <img alt="Tailwind CSS Forms" src="https://flowbite.s3.amazonaws.com/github/input-field.jpg">
         </a>
     </td>
   </tr>
   <tr>
-    <td width="33.3333%">Carousel</td>
-    <td width="33.3333%">Avatar</td>
+    <td width="33.3333%">List group</td>
+    <td width="33.3333%">Modal</td>
+    <td width="33.3333%">Navbar</td>
+  </tr>
+  <tr>
+    <td width="33.3333%">
+        <a href="https://flowbite-react.com/docs/components/list-group">
+            <img alt="Tailwind CSS List group" src="https://flowbite.s3.amazonaws.com/github/list-group.jpg">
+        </a>
+    </td>
+    <td width="33.3333%">
+        <a href="https://flowbite-react.com/docs/components/modal">
+            <img alt="Tailwind CSS Modal" src="https://flowbite.s3.amazonaws.com/github/modal.jpg">
+        </a>
+    </td>
+    <td width="33.3333%">
+        <a href="https://flowbite-react.com/docs/components/navbar">
+            <img alt="Tailwind CSS Navbar" src="https://flowbite.s3.amazonaws.com/github/navbar.jpg">
+        </a>
+    </td>
+  </tr>
+  <tr>
+    <td width="33.3333%">Pagination</td>
+    <td width="33.3333%">Progress bar</td>
     <td width="33.3333%">Rating</td>
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/carousel/">
-            <img alt="Tailwind CSS Carousel" src="https://flowbite.s3.amazonaws.com/github/carousel.jpg">
+        <a href="https://flowbite-react.com/docs/components/pagination">
+            <img alt="Tailwind CSS Pagination" src="https://flowbite.s3.amazonaws.com/github/pagination.jpg">
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/avatar/">
-            <img alt="Tailwind CSS Avatar" src="https://flowbite.s3.amazonaws.com/github/avatar.jpg">
+        <a href="https://flowbite-react.com/docs/components/progress-bar">
+            <img alt="Tailwind CSS Progress bar" src="https://flowbite.s3.amazonaws.com/github/progress.jpg">
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/rating/">
+        <a href="https://flowbite-react.com/docs/components/rating">
             <img alt="Tailwind CSS Rating" src="https://flowbite.s3.amazonaws.com/github/rating.jpg">
         </a>
     </td>
   </tr>
   <tr>
-    <td width="33.3333%">Input Field</td>
-    <td width="33.3333%">File Input</td>
-    <td width="33.3333%">:construction: Search Input</td>
+    <td width="33.3333%">Sidebar</td>
+    <td width="33.3333%">Spinner</td>
+    <td width="33.3333%">Table</td>
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/forms">
-            <img alt="Tailwind CSS Input Field" src="https://flowbite.s3.amazonaws.com/github/input-field.jpg">
+        <a href="https://flowbite-react.com/docs/components/sidebar">
+            <img alt="Tailwind CSS Sidebar" src="https://flowbite.s3.amazonaws.com/github/sidebar.jpg">
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/forms#fileUpload">
-            <img alt="Tailwind CSS File Input" src="https://flowbite.s3.amazonaws.com/github/file-input.jpg">
+        <a href="https://flowbite-react.com/docs/components/spinner">
+            <img alt="Tailwind CSS Spinner" src="https://flowbite.s3.amazonaws.com/github/spinner.jpg">
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite.com/docs/forms/search-input/">
-            <img alt="Tailwind CSS Search Input" src="https://flowbite.s3.amazonaws.com/github/search-input.jpg">
-        </a>
-    </td>
-  </tr>
-  <tr>
-    <td width="33.3333%">Select</td>
-    <td width="33.3333%">Textarea</td>
-    <td width="33.3333%">Checkbox</td>
-  </tr>
-  <tr>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/forms#select">
-            <img alt="Tailwind CSS Select" src="https://flowbite.s3.amazonaws.com/github/select.jpg">
-        </a>
-    </td>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/forms#textarea">
-            <img alt="Tailwind CSS Textarea" src="https://flowbite.s3.amazonaws.com/github/textarea.jpg">
-        </a>
-    </td>
-    <td width="33.3333%">
-        <a href="https://flowbite-react.com/forms#checkbox">
-            <img alt="Tailwind CSS Checkbox" src="https://flowbite.s3.amazonaws.com/github/checkbox.jpg">
+        <a href="https://flowbite-react.com/docs/components/table">
+            <img alt="Tailwind CSS Table" src="https://flowbite.s3.amazonaws.com/github/tables.jpg">
         </a>
     </td>
   </tr>
   <tr>
-    <td width="33.3333%">Radio</td>
-    <td width="33.3333%">Toggle</td>
-    <td width="33.3333%">Range Slider</td>
+    <td width="33.3333%">Tabs</td>
+    <td width="33.3333%">Timeline</td>
+    <td width="33.3333%">Toast</td>
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/forms#radio">
-            <img alt="Tailwind CSS Radio" src="https://flowbite.s3.amazonaws.com/github/radio.jpg">
+        <a href="https://flowbite-react.com/docs/components/tabs">
+            <img alt="Tailwind CSS Tabs" src="https://flowbite.s3.amazonaws.com/github/tabs.jpg">
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite-react.com/forms#toggle">
-            <img alt="Tailwind CSS Toggle" src="https://flowbite.s3.amazonaws.com/github/toggle.jpg">
+        <a href="https://flowbite-react.com/docs/components/timeline">
+            <img alt="Tailwind CSS Timeline" src="https://flowbite.s3.amazonaws.com/github/timeline.jpg">
         </a>
     </td>
     <td width="33.3333%">
-        <a href="https://flowbite.com/docs/forms/range/">
-            <img alt="Tailwind CSS Range Slider" src="https://flowbite.s3.amazonaws.com/github/range-slider.jpg">
+        <a href="https://flowbite-react.com/docs/components/toast">
+            <img alt="Tailwind CSS Toast" src="https://flowbite.s3.amazonaws.com/github/toast.jpg">
         </a>
     </td>
   </tr>
   <tr>
-    <td width="33.3333%">:construction: Floating Label</td>
+    <td width="33.3333%">Tooltip</td>
   </tr>
   <tr>
     <td width="33.3333%">
-        <a href="https://flowbite.com/docs/forms/floating-label/">
-            <img alt="Tailwind CSS Floating Label" src="https://flowbite.s3.amazonaws.com/github/floating-label.jpg">
+        <a href="https://flowbite-react.com/docs/components/tooltip">
+            <img alt="Tailwind CSS Tooltip" src="https://flowbite.s3.amazonaws.com/github/tooltips.jpg">
         </a>
     </td>
   </tr>
@@ -389,7 +364,7 @@ If you need the Figma files for the components you can check out our website for
 
 ## Copyright and license
 
-The Flowbite name and logos are trademarks of Crafty Dwarf Inc.
+The Flowbite name and logos are trademarks of Bergside Srl.
 
 📝 [Read about the licensing terms](https://flowbite.com/docs/getting-started/license/)
 📀 [Brand guideline and trademark usage agreement](https://flowbite.com/brand/)

@@ -1,8 +1,13 @@
-'use client';
+import type { Metadata, NextPage } from 'next';
+import ThemePageContent from '.';
 
-import type { FC } from 'react';
-import CustomizeThemeDocs from './theme.mdx';
+export const metadata: Metadata = {
+  description: 'Learn how you can change the Tailwind CSS classes used by the components in Flowbite React',
+  title: 'React Theme - Flowbite',
+};
 
-const CustomizeThemePage: FC = () => <CustomizeThemeDocs />;
+const ThemePage: NextPage = () => {
+  return <ThemePageContent />;
+};
 
-export default CustomizeThemePage;
+export default ThemePage;
