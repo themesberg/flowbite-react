@@ -3,9 +3,7 @@ import {
   addDays,
   addMonths,
   addYears,
-  dayDiff,
-  dayOfTheWeekOf,
-  getFirstDayOfMonth,
+  getFirstDayOfTheMonth,
   getFormattedDate,
   isDateInRange,
   startOfYearPeriod,
@@ -44,29 +42,49 @@ describe('isDateInRange', () => {
   });
 });
 
-describe('getFirstDayOfMonth', () => {
-  it('returns the first day of the month', () => {
-    const date = new Date(2023, 1, 15); // February 15th, 2023
-    const firstDayOfMonth = getFirstDayOfMonth(date);
-    expect(firstDayOfMonth.getDate()).toBe(1);
+describe('getFirstDayOfTheMonth', () => {
+  it('should return the first day of the first week for the given month (week starting on Sunday)', () => {
+    // July 2023, where the 1st is a Saturday
+    const date = new Date(2023, 6, 1);
+    const firstDayOfTheWeekSunday = getFirstDayOfTheMonth(date, 0);
+
+    const weekDaysSunday: Date[] = [];
+    for (let i = 0; i < 7; i++) {
+      const day = addDays(firstDayOfTheWeekSunday, i);
+      weekDaysSunday.push(day);
+    }
+
+    expect(weekDaysSunday).toEqual([
+      new Date(2023, 5, 25), // Sunday, June 25th, 2023
+      new Date(2023, 5, 26), // Monday, June 26th, 2023
+      new Date(2023, 5, 27), // Tuesday, June 27th, 2023
+      new Date(2023, 5, 28), // Wednesday, June 28th, 2023
+      new Date(2023, 5, 29), // Thursday, June 29th, 2023
+      new Date(2023, 5, 30), // Friday, June 30th, 2023
+      new Date(2023, 6, 1), // Saturday, July 1st, 2023
+    ]);
   });
 
-  it('returns the first day of the month when the provided date is already the first day', () => {
-    const date = new Date(2023, 2, 1); // March 1st, 2023
-    const firstDayOfMonth = getFirstDayOfMonth(date);
-    expect(firstDayOfMonth.getDate()).toBe(1);
-  });
+  it('should return the first day of the first week for the given month (week starting on Monday)', () => {
+    // July 2023, where the 1st is a Saturday
+    const date = new Date(2023, 6, 1);
+    const firstDayOfTheWeekMonday = getFirstDayOfTheMonth(date, 1);
 
-  it('returns the first day of the month when the provided date is a Sunday', () => {
-    const date = new Date(2023, 4, 21); // May 21st, 2023 (Sunday)
-    const firstDayOfMonth = getFirstDayOfMonth(date);
-    expect(firstDayOfMonth.getDate()).toBe(1);
-  });
+    const weekDaysMonday: Date[] = [];
+    for (let i = 0; i < 7; i++) {
+      const day = addDays(firstDayOfTheWeekMonday, i);
+      weekDaysMonday.push(day);
+    }
 
-  it('returns the first day of the month when the provided date is a Saturday', () => {
-    const date = new Date(2023, 6, 29); // July 29th, 2023 (Saturday)
-    const firstDayOfMonth = getFirstDayOfMonth(date);
-    expect(firstDayOfMonth.getDate()).toBe(1);
+    expect(weekDaysMonday).toEqual([
+      new Date(2023, 5, 26), // Monday, June 26th, 2023
+      new Date(2023, 5, 27), // Tuesday, June 27th, 2023
+      new Date(2023, 5, 28), // Wednesday, June 28th, 2023
+      new Date(2023, 5, 29), // Thursday, June 29th, 2023
+      new Date(2023, 5, 30), // Friday, June 30th, 2023
+      new Date(2023, 6, 1), // Saturday, July 1st, 2023
+      new Date(2023, 6, 2), // Sunday, July 2nd, 2023
+    ]);
   });
 });
 
@@ -88,46 +106,6 @@ describe('addDays', () => {
     const newDate = addDays(date, 5);
     expect(date.getDate()).toBe(1);
     expect(newDate.getDate()).toBe(6);
-  });
-});
-
-describe('dayDiff', () => {
-  it('returns the difference between two days of the week', () => {
-    expect(dayDiff(2, 5)).toBe(4); // 5 (Fri) to 2 (Tue) = 4
-    expect(dayDiff(0, 6)).toBe(1); // 6 (Sun) to 0 (Mon) = 1
-    expect(dayDiff(3, 3)).toBe(0); // 3 (Wed) to 3 (Wed) = 0
-    expect(dayDiff(1, 4)).toBe(3); // 4 (Thu) to 1 (Tue) = 3
-  });
-});
-
-describe('dayOfTheWeekOf', () => {
-  it('returns the date of the specified day of the week', () => {
-    const baseDate = new Date(2023, 0, 15); // January 15th, 2023 (Sun)
-    const dayOfWeek = 1; // Monday
-    const resultDate = dayOfTheWeekOf(baseDate, dayOfWeek);
-    expect(resultDate.getDate()).toBe(16); // January 16th, 2023 (Mon)
-  });
-
-  it('returns the date of the specified day of the week when the base date is the same day', () => {
-    const baseDate = new Date(2023, 3, 5); // April 5th, 2023 (Wed)
-    const dayOfWeek = 3; // Friday
-    const resultDate = dayOfTheWeekOf(baseDate, dayOfWeek);
-    expect(resultDate.getDate()).toBe(7); // April 7th, 2023 (Fri)
-  });
-
-  it('returns the date of the specified day of the week when the base date is before the target day', () => {
-    const baseDate = new Date(2023, 6, 30); // July 30th, 2023 (Sun)
-    const dayOfWeek = 6; // Saturday
-    const resultDate = dayOfTheWeekOf(baseDate, dayOfWeek);
-    expect(resultDate.getDate()).toBe(5); // July 5th, 2023 (Wed)
-  });
-
-  it('returns the date of the specified day of the week when the weekStart is different', () => {
-    const baseDate = new Date(2023, 6, 30); // July 30th, 2023 (Sun)
-    const dayOfWeek = 0; // Sunday
-    const weekStart = 1; // Monday
-    const resultDate = dayOfTheWeekOf(baseDate, dayOfWeek, weekStart);
-    expect(resultDate.getDate()).toBe(31); // July 31st, 2023 (Mon)
   });
 });
 

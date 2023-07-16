@@ -5,6 +5,12 @@ export enum Views {
   Decades,
 }
 
+export enum WeekStart {
+  Saturday = 0,
+  Sunday,
+  Monday,
+}
+
 export const isDateInRange = (date: Date, minDate?: Date, maxDate?: Date): boolean => {
   const dateWithoutTime = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 
@@ -27,31 +33,34 @@ export const isDateInRange = (date: Date, minDate?: Date, maxDate?: Date): boole
   return true;
 }
 
-export const getFirstDayOfMonth = (date: Date): Date => {
-  const initDate = new Date(date);
-  initDate.setDate(1);
-  const dayOfWeek = initDate.getDay();
+export const getFirstDayOfTheMonth = (date: Date, weekStart: WeekStart): Date => {
+  const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+  const dayOfWeek = firstDayOfMonth.getDay();
 
-  if (dayOfWeek > 0) {
-    initDate.setDate(initDate.getDate() - dayOfWeek + 1);
+  const diff = (dayOfWeek - weekStart + 7) % 7;
+  return addDays(firstDayOfMonth, -diff);
+};
+
+export const getWeekDays = (lang: string, weekStart: WeekStart): string[] => {
+  const weekdays: string[] = [];
+  const date = new Date();
+
+  const formatter = new Intl.DateTimeFormat(lang, { weekday: 'short' });
+
+  for (let i = 0; i < 7; i++) {
+    const dayIndex = (i + weekStart) % 7; // Calculate the correct day index based on weekStart
+    date.setDate(dayIndex + 1);
+    const formattedWeekday = formatter.format(date);
+    weekdays.push(formattedWeekday.slice(0, 2).charAt(0).toUpperCase() + formattedWeekday.slice(1, 3));
   }
 
-  return initDate;
+  return weekdays;
 };
 
 export const addDays = (date: Date, amount: number): Date => {
   const newDate = new Date(date);
   newDate.setDate(newDate.getDate() + amount);
   return newDate;
-};
-
-export const dayDiff = (day: number, from: number): number => {
-  return (day - from + 7) % 7;
-};
-
-export const dayOfTheWeekOf = (baseDate: Date, dayOfWeek: number, weekStart = 0): Date => {
-  const baseDay = new Date(baseDate).getDay();
-  return addDays(baseDate, dayDiff(dayOfWeek, weekStart) - dayDiff(baseDay, weekStart));
 };
 
 export const addMonths = (date: Date, amount: number): Date => {

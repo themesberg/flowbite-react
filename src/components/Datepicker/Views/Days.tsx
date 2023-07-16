@@ -3,7 +3,8 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '~/src/helpers/merge-deep';
 import { useTheme, type DeepPartial } from '../..';
 import { useDatePickerContext } from '../DatepickerContext';
-import { addDays, getFirstDayOfMonth, getFormattedDate, isDateInRange } from '../helpers';
+import type { WeekStart } from '../helpers';
+import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateInRange } from '../helpers';
 
 export interface FlowbiteDatepickerViewsDaysTheme {
   header: {
@@ -23,32 +24,26 @@ export interface FlowbiteDatepickerViewsDaysTheme {
 export interface DatepickerViewsDaysProps {
   minDate?: Date;
   maxDate?: Date;
+  weekStart: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerViewsDaysTheme>;
 }
 
-export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ minDate, maxDate, theme: customTheme = {} }) => {
+export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({
+  minDate,
+  maxDate,
+  weekStart,
+  theme: customTheme = {},
+}) => {
   const theme = mergeDeep(useTheme().theme.datepicker.views.days, customTheme);
   const { selectedDate, setSelectedDate, language } = useDatePickerContext();
 
-  const weekDays = ((lang: string): string[] => {
-    const weekdays = [];
-    const date = new Date();
-
-    const formatter = new Intl.DateTimeFormat(lang, { weekday: 'short' });
-
-    for (let i = 1; i <= 7; i++) {
-      date.setDate(i);
-      const formattedWeekday = formatter.format(date);
-      weekdays.push(formattedWeekday.slice(0, 2).charAt(0).toUpperCase() + formattedWeekday.slice(1, 3));
-    }
-
-    return weekdays;
-  })(language);
+  const weekDays = getWeekDays(language, weekStart);
+  console.log(weekStart, weekDays);
 
   const isSelectedDate = (value: Date): boolean =>
     selectedDate.getTime() > 0 && getFormattedDate(language, selectedDate) == getFormattedDate(language, value);
 
-  const startDate = getFirstDayOfMonth(selectedDate);
+  const startDate = getFirstDayOfTheMonth(selectedDate, weekStart);
 
   return (
     <>

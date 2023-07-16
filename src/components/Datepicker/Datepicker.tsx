@@ -12,7 +12,7 @@ import { DatepickerViewsDays } from './Views/Days';
 import { DatepickerViewsDecades, type FlowbiteDatepickerViewsDecadesTheme } from './Views/Decades';
 import { DatepickerViewsMonth, type FlowbiteDatepickerViewsMonthsTheme } from './Views/Months';
 import { DatepickerViewsYears, type FlowbiteDatepickerViewsYearsTheme } from './Views/Years';
-import { Views, addMonths, addYears, getFormattedDate, isDateInRange, startOfYearPeriod } from './helpers';
+import { Views, WeekStart, addMonths, addYears, getFormattedDate, isDateInRange, startOfYearPeriod } from './helpers';
 
 export interface FlowbiteDatepickerTheme {
   root: {
@@ -70,6 +70,7 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   minDate?: Date;
   maxDate?: Date;
   language?: string;
+  weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
 }
 
@@ -85,6 +86,7 @@ export const Datepicker: FC<DatepickerProps> = ({
   minDate,
   maxDate,
   language = 'en',
+  weekStart = WeekStart.Sunday,
   className,
   theme: customTheme = {},
   ...props
@@ -119,7 +121,7 @@ export const Datepicker: FC<DatepickerProps> = ({
         return <DatepickerViewsMonth />;
       case Views.Days:
       default:
-        return <DatepickerViewsDays minDate={minDate} maxDate={maxDate} />;
+        return <DatepickerViewsDays weekStart={weekStart} minDate={minDate} maxDate={maxDate} />;
     }
   };
 

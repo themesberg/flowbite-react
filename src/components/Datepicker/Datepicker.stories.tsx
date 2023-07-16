@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import type { DatepickerProps } from './Datepicker';
 import { Datepicker } from './Datepicker';
+import { WeekStart } from './helpers';
 
 export default {
   title: 'Components/Datepicker',
@@ -10,6 +11,16 @@ export default {
       control: {
         type: 'select',
         options: ['en', 'pt-BR'],
+      },
+    },
+    weekStart: {
+      options: Object.values(WeekStart).filter((x) => typeof x === 'string'),
+      mapping: WeekStart,
+      control: {
+        type: 'select',
+        labels: Object.entries(WeekStart)
+          .filter(([, value]) => typeof value !== 'string')
+          .reduce((acc, [key, value]) => ({ ...acc, [value]: key }), {}),
       },
     },
   },
@@ -27,5 +38,6 @@ Default.args = {
   minDate: undefined,
   maxDate: undefined,
   language: 'en',
+  weekStart: WeekStart.Sunday,
   theme: {},
 };

@@ -1,5 +1,5 @@
 import { CodePreview } from '~/app/components/code-preview';
-import { Datepicker, theme } from '~/src';
+import { Datepicker, WeekStart, theme } from '~/src';
 import Image from 'next/image';
 
 The Datepicker component from Flowbite React is an advanced UI element that you can use to allow users to pick a date from a calendar view by selecting the day, month, and year values which then will be available in the input field and state of the component.
@@ -36,6 +36,26 @@ Use this example to show a simple datepicker component.
 
 <CodePreview title="Datepicker component">
   <Datepicker minDate={new Date(2023, 0, 1)} maxDate={new Date(2023, 2, 1)} />
+</CodePreview>
+
+## Week start
+
+Use this example to show a simple datepicker component.
+
+<pre className="language-ts">
+  <code>
+    {JSON.stringify(
+      Object.entries(WeekStart)
+        .filter(([, value]) => typeof value !== 'string')
+        .reduce((acc, [key, value]) => ({ ...acc, [value]: key }), {}),
+      null,
+      2,
+    )}
+  </code>
+</pre>
+
+<CodePreview title="Datepicker component">
+  <Datepicker weekStart={WeekStart.Monday} />
 </CodePreview>
 
 ## Theme
