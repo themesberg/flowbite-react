@@ -12,8 +12,6 @@ const ModalPage: FC = () => {
   const [modalPlacement, setModalPlacement] = useState<string>('center');
   const emailInputRef = useRef<HTMLInputElement>(null);
 
-  console.log(modalSize, modalPlacement);
-
   const state = {
     openModal,
     setOpenModal,
