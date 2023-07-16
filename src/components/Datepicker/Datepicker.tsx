@@ -204,7 +204,7 @@ export const Datepicker: FC<DatepickerProps> = ({
           <div ref={datepickerRef} className={theme.popup.root.base}>
             <div className={theme.popup.root.inner}>
               <div className={theme.popup.header.base}>
-                {title && <div className={theme.popup.header.title}>Title</div>}
+                {title && <div className={theme.popup.header.title}>{title}</div>}
                 <div className={theme.popup.header.selectors.base}>
                   <button
                     className={twMerge(
