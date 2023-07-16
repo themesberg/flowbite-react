@@ -14,6 +14,7 @@ export interface FlowbiteToastToggleTheme {
 export interface ToastToggleProps extends ComponentProps<'button'> {
   theme?: DeepPartial<FlowbiteToastToggleTheme>;
   xIcon?: FC<ComponentProps<'svg'>>;
+  onDismiss?: () => void;
 }
 
 export const ToastToggle: FC<ToastToggleProps> = ({
@@ -21,6 +22,7 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   onClick,
   theme: customTheme = {},
   xIcon: XIcon = HiX,
+  onDismiss,
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.toast.toggle, customTheme);
@@ -28,6 +30,12 @@ export const ToastToggle: FC<ToastToggleProps> = ({
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     if (onClick) onClick(e);
+
+    if (onDismiss) {
+      onDismiss();
+      return;
+    }
+
     setIsClosed(!isClosed);
     setTimeout(() => setIsRemoved(!isRemoved), duration);
   };
