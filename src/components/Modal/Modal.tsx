@@ -1,13 +1,19 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-
-import type { ComponentProps, FC, MouseEvent, PropsWithChildren } from 'react';
-import { useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import {
+  FloatingFocusManager,
+  FloatingOverlay,
+  FloatingPortal,
+  useClick,
+  useDismiss,
+  useFloating,
+  useInteractions,
+  useMergeRefs,
+  useRole,
+} from '@floating-ui/react';
+import type { MutableRefObject } from 'react';
+import { forwardRef, useState, type ComponentPropsWithoutRef, type PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../../';
 import { useTheme } from '../../';
-import { isClient } from '../../helpers/is-client';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { FlowbiteModalBodyTheme } from './ModalBody';
 import { ModalBody } from './ModalBody';
@@ -45,7 +51,7 @@ export interface ModalSizes extends Omit<FlowbiteSizes, 'xs'> {
   [key: string]: string;
 }
 
-export interface ModalProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface ModalProps extends PropsWithChildren<ComponentPropsWithoutRef<'div'>> {
   onClose?: () => void;
   position?: keyof ModalPositions;
   popup?: boolean;
@@ -54,107 +60,77 @@ export interface ModalProps extends PropsWithChildren<ComponentProps<'div'>> {
   size?: keyof ModalSizes;
   dismissible?: boolean;
   theme?: DeepPartial<FlowbiteModalTheme>;
+  initialFocus?: number | MutableRefObject<HTMLElement | null>;
 }
 
-const ModalComponent: FC<ModalProps> = ({
-  children,
-  className,
-  dismissible = false,
-  onClose,
-  popup,
-  position = 'center',
-  root,
-  show,
-  size = '2xl',
-  theme: customTheme = {},
-  ...props
-}) => {
-  const theme = mergeDeep(useTheme().theme.modal, customTheme);
+const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
+  (
+    {
+      children,
+      className,
+      dismissible = false,
+      onClose,
+      popup,
+      position = 'center',
+      root,
+      show,
+      size = '2xl',
+      theme: customTheme = {},
+      initialFocus,
+      ...props
+    },
+    theirRef,
+  ) => {
+    const [headerId, setHeaderId] = useState<string | undefined>(undefined);
+    const theme = mergeDeep(useTheme().theme.modal, customTheme);
 
-  const [mounted, setMounted] = useState(false);
+    const { context } = useFloating({
+      open: show,
+      onOpenChange: () => onClose && onClose(),
+    });
 
-  // Declare a ref to store a reference to a div element.
-  const containerRef = useRef<HTMLDivElement | null>(null);
+    const ref = useMergeRefs([context.refs.setFloating, theirRef]);
 
-  useEffect(() => {
-    setMounted(true);
+    const click = useClick(context);
+    const dismiss = useDismiss(context, { outsidePressEvent: 'mousedown', enabled: dismissible });
+    const role = useRole(context);
 
-    return () => {
-      const container = containerRef.current;
+    const { getFloatingProps } = useInteractions([click, dismiss, role]);
 
-      // If a container exists on unmount, it is removed from the DOM and
-      // garbage collected.
-      if (container) {
-        container.parentNode?.removeChild(container);
-        containerRef.current = null;
-      }
-    };
-  }, []);
-
-  // Close modal when escape key is pressed
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape' && onClose) {
-        onClose();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [onClose]);
-
-  if (!mounted) {
-    return null;
-  }
-
-  // If the current value of the ref is falsy (e.g. null), set it to a new div
-  // element.
-  if (!containerRef.current) {
-    containerRef.current = document.createElement('div');
-  }
-
-  // If the current value of the ref is not already a child of the root element,
-  // append it or replace its parent.
-  if (isClient() && containerRef.current.parentNode !== root) {
-    root ||= document.body;
-    root.appendChild(containerRef.current);
-
-    // Prevent scrolling of the root element when the modal is shown
-    root.style.overflow = show ? 'hidden' : '';
-  }
-
-  const handleOnClick = (e: MouseEvent<HTMLDivElement>) => {
-    if (dismissible && e.target === e.currentTarget && onClose) {
-      onClose();
+    if (!show) {
+      return null;
     }
-  };
 
-  return createPortal(
-    <ModalContext.Provider value={{ popup, onClose }}>
-      <div
-        aria-hidden={!show}
-        data-testid="modal"
-        onClick={handleOnClick}
-        role="dialog"
-        className={twMerge(
-          theme.root.base,
-          theme.root.positions[position],
-          show ? theme.root.show.on : theme.root.show.off,
-          className,
-        )}
-        {...props}
-      >
-        <div className={twMerge(theme.content.base, theme.root.sizes[size])}>
-          <div className={theme.content.inner}>{children}</div>
-        </div>
-      </div>
-    </ModalContext.Provider>,
-    containerRef.current,
-  );
-};
+    return (
+      <ModalContext.Provider value={{ popup, onClose, setHeaderId }}>
+        <FloatingPortal root={root}>
+          <FloatingOverlay
+            lockScroll
+            data-testid="modal-overlay"
+            className={twMerge(
+              theme.root.base,
+              theme.root.positions[position],
+              show ? theme.root.show.on : theme.root.show.off,
+              className,
+            )}
+            {...props}
+          >
+            <FloatingFocusManager context={context} initialFocus={initialFocus}>
+              <div
+                ref={ref}
+                {...getFloatingProps(props)}
+                aria-labelledby={headerId}
+                className={twMerge(theme.content.base, theme.root.sizes[size])}
+              >
+                <div className={theme.content.inner}>{children}</div>
+              </div>
+            </FloatingFocusManager>
+          </FloatingOverlay>
+        </FloatingPortal>
+      </ModalContext.Provider>
+    );
+  },
+);
 
 ModalComponent.displayName = 'Modal';
 ModalHeader.displayName = 'Modal.Header';
