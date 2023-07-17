@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import type { DatepickerProps } from './Datepicker';
 import { Datepicker } from './Datepicker';
-import { WeekStart } from './helpers';
+import { WeekStart, getFirstDateInRange } from './helpers';
 
 export default {
   title: 'Components/Datepicker',
@@ -26,7 +26,24 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<DatepickerProps> = (args) => <Datepicker {...args} />;
+const Template: StoryFn<DatepickerProps> = (args) => {
+  // https://github.com/storybookjs/storybook/issues/11822
+  if (args.minDate) {
+    args.minDate = new Date(args.minDate);
+  }
+  if (args.maxDate) {
+    args.maxDate = new Date(args.maxDate);
+  }
+
+  // update defaultDate based on the range
+  if (args.minDate && args.maxDate) {
+    if (args.defaultDate) {
+      args.defaultDate = getFirstDateInRange(args.defaultDate, args.minDate, args.maxDate);
+    }
+  }
+
+  return <Datepicker {...args} />;
+};
 
 export const Default = Template.bind({});
 Default.args = {

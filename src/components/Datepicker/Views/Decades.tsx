@@ -22,7 +22,7 @@ export interface DatepickerViewsDecadesProps {
 
 export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({ theme: customTheme = {} }) => {
   const theme = mergeDeep(useTheme().theme.datepicker.views.decades, customTheme);
-  const { selectedDate, changeSelectedDate, setView, language } = useDatePickerContext();
+  const { selectedDate, viewDate, setViewDate, setView, language } = useDatePickerContext();
 
   const isSelectedDecade = (value: Date, year: number) =>
     value.getTime() > 0 && Number(getFormattedDate(language, value, { year: 'numeric' })) === year;
@@ -30,7 +30,7 @@ export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({ theme:
   return (
     <div className={theme.items.base}>
       {[...Array(12)].map((_year, index) => {
-        const first = startOfYearPeriod(selectedDate, 100);
+        const first = startOfYearPeriod(viewDate, 100);
         const year = first - 10 + index * 10;
         return (
           <button
@@ -42,8 +42,8 @@ export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({ theme:
               (index == 0 || index == 11) && theme.items.item.disabled,
             )}
             onClick={() => {
-              changeSelectedDate(addYears(selectedDate, year - selectedDate.getFullYear()), false);
-              setView(Views.Days);
+              setViewDate(addYears(viewDate, year - selectedDate.getFullYear()));
+              setView(Views.Years);
             }}
           >
             {year}

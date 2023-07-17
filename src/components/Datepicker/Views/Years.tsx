@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../../helpers/merge-deep';
 import { useTheme } from '../../Flowbite';
 import { useDatePickerContext } from '../DatepickerContext';
-import { Views, addYears, getFormattedDate, startOfYearPeriod } from '../helpers';
+import { Views, isDateEqual, isDateInRange, startOfYearPeriod } from '../helpers';
 
 export interface FlowbiteDatepickerViewsYearsTheme {
   items: {
@@ -22,27 +22,31 @@ export interface DatepickerViewsYearsProps {
 
 export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({ theme: customTheme = {} }) => {
   const theme = mergeDeep(useTheme().theme.datepicker.views.years, customTheme);
-  const { selectedDate, changeSelectedDate, language, setView } = useDatePickerContext();
-
-  const isSelectedYear = (value: Date, year: number) =>
-    value.getTime() > 0 && Number(getFormattedDate(language, value, { year: 'numeric' })) === year;
+  const { selectedDate, minDate, maxDate, viewDate, setViewDate, setView } = useDatePickerContext();
 
   return (
     <div className={theme.items.base}>
       {[...Array(12)].map((_year, index) => {
-        const first = startOfYearPeriod(selectedDate, 10);
+        const first = startOfYearPeriod(viewDate, 10);
         const year = first - 1 + index * 1;
+        const newDate = new Date(viewDate.getTime());
+        newDate.setFullYear(year);
+        const inRange = isDateInRange(newDate, minDate, maxDate);
+
         return (
           <button
+            disabled={!inRange}
             key={index}
             type="button"
             className={twMerge(
               theme.items.item.base,
-              isSelectedYear(selectedDate, year) && theme.items.item.selected,
-              (index == 0 || index == 11) && theme.items.item.disabled,
+              isDateEqual(selectedDate, newDate) && theme.items.item.selected,
+              !inRange && theme.items.item.disabled,
             )}
             onClick={() => {
-              changeSelectedDate(addYears(selectedDate, year - selectedDate.getFullYear()), false);
+              if (!inRange) return;
+
+              setViewDate(newDate);
               setView(Views.Months);
             }}
           >

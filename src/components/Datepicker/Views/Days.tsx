@@ -3,8 +3,7 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '~/src/helpers/merge-deep';
 import { useTheme, type DeepPartial } from '../..';
 import { useDatePickerContext } from '../DatepickerContext';
-import type { WeekStart } from '../helpers';
-import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateInRange } from '../helpers';
+import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateEqual, isDateInRange } from '../helpers';
 
 export interface FlowbiteDatepickerViewsDaysTheme {
   header: {
@@ -22,27 +21,16 @@ export interface FlowbiteDatepickerViewsDaysTheme {
 }
 
 export interface DatepickerViewsDaysProps {
-  minDate?: Date;
-  maxDate?: Date;
-  weekStart: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerViewsDaysTheme>;
 }
 
-export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({
-  minDate,
-  maxDate,
-  weekStart,
-  theme: customTheme = {},
-}) => {
+export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: customTheme = {} }) => {
   const theme = mergeDeep(useTheme().theme.datepicker.views.days, customTheme);
-  const { selectedDate, changeSelectedDate, language } = useDatePickerContext();
+
+  const { weekStart, minDate, maxDate, viewDate, selectedDate, changeSelectedDate, language } = useDatePickerContext();
 
   const weekDays = getWeekDays(language, weekStart);
-
-  const isSelectedDate = (value: Date): boolean =>
-    selectedDate.getTime() > 0 && getFormattedDate(language, selectedDate) == getFormattedDate(language, value);
-
-  const startDate = getFirstDayOfTheMonth(selectedDate, weekStart);
+  const startDate = getFirstDayOfTheMonth(viewDate, weekStart);
 
   return (
     <>
@@ -57,17 +45,22 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({
         {[...Array(42)].map((_date, index) => {
           const currentDate = addDays(startDate, index);
           const day = getFormattedDate(language, currentDate, { day: 'numeric' });
+          const inRange = isDateInRange(currentDate, minDate, maxDate);
+
           return (
             <button
+              disabled={!inRange}
               key={index}
               type="button"
               className={twMerge(
                 theme.items.item.base,
-                isSelectedDate(currentDate) && theme.items.item.selected,
-                !isDateInRange(new Date(currentDate), minDate, maxDate) && theme.items.item.disabled,
+                isDateEqual(selectedDate, currentDate) && theme.items.item.selected,
+                !inRange && theme.items.item.disabled,
               )}
               onClick={() => {
-                changeSelectedDate(new Date(currentDate), true);
+                if (!inRange) return;
+
+                changeSelectedDate(currentDate, true);
               }}
             >
               {day}

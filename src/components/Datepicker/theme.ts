@@ -45,7 +45,7 @@ export const datePickerTheme: FlowbiteDatepickerTheme = {
       items: {
         base: 'grid w-64 grid-cols-7',
         item: {
-          base: 'block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600',
+          base: 'block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600 ',
           selected: 'bg-cyan-700 text-white hover:bg-cyan-600',
           disabled: 'text-gray-500',
         },
@@ -57,7 +57,7 @@ export const datePickerTheme: FlowbiteDatepickerTheme = {
         item: {
           base: 'block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600',
           selected: 'bg-cyan-700 text-white hover:bg-cyan-600',
-          disabled: '',
+          disabled: 'text-gray-500',
         },
       },
     },
@@ -67,7 +67,7 @@ export const datePickerTheme: FlowbiteDatepickerTheme = {
         item: {
           base: 'block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600 text-gray-900',
           selected: 'bg-cyan-700 text-white hover:bg-cyan-600',
-          disabled: 'text-gray-500',          
+          disabled: 'text-gray-500',
         },
       },
     },

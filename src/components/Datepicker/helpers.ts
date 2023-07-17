@@ -12,26 +12,44 @@ export enum WeekStart {
 }
 
 export const isDateInRange = (date: Date, minDate?: Date, maxDate?: Date): boolean => {
-  const dateWithoutTime = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const dateTime = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
 
   if (minDate && maxDate) {
-    const minWithoutTime = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate());
-    const maxWithoutTime = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
-    return dateWithoutTime >= minWithoutTime && dateWithoutTime <= maxWithoutTime;
+    const minDateTime = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate()).getTime();
+    const maxDateTime = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate()).getTime();
+    return dateTime >= minDateTime && dateTime <= maxDateTime;
   }
 
   if (minDate) {
-    const minWithoutTime = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate());
-    return dateWithoutTime >= minWithoutTime;
+    const minDateTime = new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate()).getTime();
+    return dateTime >= minDateTime;
   }
 
   if (maxDate) {
-    const maxWithoutTime = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate());
-    return dateWithoutTime <= maxWithoutTime;
+    const maxDateTime = new Date(maxDate.getFullYear(), maxDate.getMonth(), maxDate.getDate()).getTime();
+    return dateTime <= maxDateTime;
   }
 
   return true;
-}
+};
+
+export const isDateEqual = (date: Date, selectedDate: Date): boolean => {
+  date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
+
+  return date.getTime() === selectedDate.getTime();
+};
+
+export const getFirstDateInRange = (date: Date, minDate?: Date, maxDate?: Date): Date => {
+  if (!isDateInRange(date, minDate, maxDate)) {
+    if (minDate && date < minDate) {
+      date = minDate;
+    } else if (maxDate && date > maxDate) {
+      date = maxDate;
+    }
+  }
+  return date;
+};
 
 export const getFirstDayOfTheMonth = (date: Date, weekStart: WeekStart): Date => {
   const firstDayOfMonth = new Date(date.getFullYear(), date.getMonth(), 1);

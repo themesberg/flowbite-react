@@ -12,7 +12,16 @@ import { DatepickerViewsDays } from './Views/Days';
 import { DatepickerViewsDecades, type FlowbiteDatepickerViewsDecadesTheme } from './Views/Decades';
 import { DatepickerViewsMonth, type FlowbiteDatepickerViewsMonthsTheme } from './Views/Months';
 import { DatepickerViewsYears, type FlowbiteDatepickerViewsYearsTheme } from './Views/Years';
-import { Views, WeekStart, addMonths, addYears, getFormattedDate, isDateInRange, startOfYearPeriod } from './helpers';
+import {
+  Views,
+  WeekStart,
+  addMonths,
+  addYears,
+  getFirstDateInRange,
+  getFormattedDate,
+  isDateEqual,
+  startOfYearPeriod,
+} from './helpers';
 
 export interface FlowbiteDatepickerTheme {
   root: {
@@ -96,16 +105,21 @@ export const Datepicker: FC<DatepickerProps> = ({
 }) => {
   const theme = mergeDeep(useTheme().theme.datepicker, customTheme);
 
+  // Default date should respect the range
+  defaultDate = getFirstDateInRange(defaultDate, minDate, maxDate);
+
   const [isOpen, setIsOpen] = useState(open);
   const [view, setView] = useState<Views>(Views.Days);
+  // selectedDate is the date selected by the user
   const [selectedDate, setSelectedDate] = useState<Date>(defaultDate);
+  // viewDate is only for navigation
+  const [viewDate, setViewDate] = useState<Date>(defaultDate);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const datepickerRef = useRef<HTMLDivElement>(null);
 
+  // Triggers when user select the date
   const changeSelectedDate = (date: Date, useAutohide: boolean) => {
-    if (!isDateInRange(date, minDate, maxDate)) return;
-
     setSelectedDate(date);
 
     if (autoHide && view === Views.Days && useAutohide == true && !inline) {
@@ -124,7 +138,7 @@ export const Datepicker: FC<DatepickerProps> = ({
         return <DatepickerViewsMonth />;
       case Views.Days:
       default:
-        return <DatepickerViewsDays weekStart={weekStart} minDate={minDate} maxDate={maxDate} />;
+        return <DatepickerViewsDays />;
     }
   };
 
@@ -145,14 +159,14 @@ export const Datepicker: FC<DatepickerProps> = ({
   const getViewTitle = (): string => {
     switch (view) {
       case Views.Decades:
-        return `${startOfYearPeriod(selectedDate, 100)} - ${startOfYearPeriod(selectedDate, 100) + 90}`;
+        return `${startOfYearPeriod(viewDate, 100)} - ${startOfYearPeriod(viewDate, 100) + 90}`;
       case Views.Years:
-        return `${startOfYearPeriod(selectedDate, 10)} - ${startOfYearPeriod(selectedDate, 10) + 9}`;
+        return `${startOfYearPeriod(viewDate, 10)} - ${startOfYearPeriod(viewDate, 10) + 9}`;
       case Views.Months:
-        return getFormattedDate(language, selectedDate, { year: 'numeric' });
+        return getFormattedDate(language, viewDate, { year: 'numeric' });
       case Views.Days:
       default:
-        return getFormattedDate(language, selectedDate, { month: 'long', year: 'numeric' });
+        return getFormattedDate(language, viewDate, { month: 'long', year: 'numeric' });
     }
   };
 
@@ -191,7 +205,21 @@ export const Datepicker: FC<DatepickerProps> = ({
 
   return (
     <DatepickerContext.Provider
-      value={{ language, selectedDate, isOpen, setIsOpen, view, setView, setSelectedDate, changeSelectedDate }}
+      value={{
+        language,
+        minDate,
+        maxDate,
+        weekStart,
+        isOpen,
+        setIsOpen,
+        view,
+        setView,
+        viewDate,
+        setViewDate,
+        selectedDate,
+        setSelectedDate,
+        changeSelectedDate,
+      }}
     >
       <div className={twMerge(theme.root.base, className)}>
         {!inline && (
@@ -199,7 +227,12 @@ export const Datepicker: FC<DatepickerProps> = ({
             theme={theme.root.input}
             icon={HiCalendar}
             ref={inputRef}
-            onFocus={() => setIsOpen(true)}
+            onFocus={() => {
+              if (!isDateEqual(viewDate, selectedDate)) {
+                setViewDate(selectedDate);
+              }
+              setIsOpen(true);
+            }}
             value={selectedDate && getFormattedDate(language, selectedDate)}
             readOnly
             {...props}
@@ -216,7 +249,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                       theme.popup.header.selectors.button.base,
                       theme.popup.header.selectors.button.prev,
                     )}
-                    onClick={() => changeSelectedDate(getViewDatePage(view, selectedDate, -1), false)}
+                    onClick={() => setViewDate(getViewDatePage(view, viewDate, -1))}
                   >
                     <HiArrowLeft />
                   </button>
@@ -234,7 +267,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                       theme.popup.header.selectors.button.base,
                       theme.popup.header.selectors.button.next,
                     )}
-                    onClick={() => changeSelectedDate(getViewDatePage(view, selectedDate, 1), false)}
+                    onClick={() => setViewDate(getViewDatePage(view, viewDate, 1))}
                   >
                     <HiArrowRight />
                   </button>
@@ -246,7 +279,11 @@ export const Datepicker: FC<DatepickerProps> = ({
                   {showTodayButton && (
                     <button
                       className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.today)}
-                      onClick={() => changeSelectedDate(new Date(), true)}
+                      onClick={() => {
+                        const today = new Date();
+                        changeSelectedDate(today, true);
+                        setViewDate(today);
+                      }}
                     >
                       {labelTodayButton}
                     </button>
@@ -254,7 +291,12 @@ export const Datepicker: FC<DatepickerProps> = ({
                   {showClearButton && (
                     <button
                       className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
-                      onClick={() => changeSelectedDate(defaultDate, true)}
+                      onClick={() => {
+                        changeSelectedDate(defaultDate, true);
+                        if (defaultDate) {
+                          setViewDate(defaultDate);
+                        }
+                      }}
                     >
                       {labelClearButton}
                     </button>
