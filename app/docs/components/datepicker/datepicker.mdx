@@ -24,7 +24,9 @@ Use this example to show a simple datepicker component.
 
 ## Localization
 
-Use this example to show a simple datepicker component.
+Use the `language` prop to set the language of the datepicker component.
+
+The `labelTodayButton` and `labelClearButton` can also be used to update the text of the buttons.
 
 <CodePreview title="Datepicker component">
   <Datepicker language="pt-BR" labelTodayButton="Hoje" labelClearButton="Limpar" />
@@ -32,7 +34,7 @@ Use this example to show a simple datepicker component.
 
 ## Limit the date
 
-Use this example to show a simple datepicker component.
+By using the `minDate` and `maxDate` props you can limit the date range that the user can select.
 
 <CodePreview title="Datepicker component">
   <Datepicker minDate={new Date(2023, 0, 1)} maxDate={new Date(2023, 3, 30)} />
@@ -40,7 +42,7 @@ Use this example to show a simple datepicker component.
 
 ## Week start
 
-Use this example to show a simple datepicker component.
+The `weekStart` prop can be used to set the first day of the week inside the datepicker component.
 
 <pre className="language-ts">
   <code>
@@ -60,7 +62,7 @@ Use this example to show a simple datepicker component.
 
 ## Autohide
 
-Use this example to show a simple datepicker component.
+By setting the `autoHide` prop you can either enable or disable automatically hiding the datepicker component when selecting a value.
 
 <CodePreview title="Datepicker component">
   <Datepicker autoHide={false} />
@@ -68,7 +70,7 @@ Use this example to show a simple datepicker component.
 
 ## Title
 
-Use this example to show a simple datepicker component.
+You can use the `title` prop to set a title for the datepicker component.
 
 <CodePreview title="Datepicker component">
   <Datepicker title="Flowbite Datepicker" />
@@ -76,7 +78,7 @@ Use this example to show a simple datepicker component.
 
 ## Inline
 
-Use this example to show a simple datepicker component.
+Use the `inline` prop to show the datepicker component without having to click inside an input field.
 
 <CodePreview title="Datepicker component">
   <Datepicker inline />
