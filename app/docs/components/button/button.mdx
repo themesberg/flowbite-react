@@ -2,6 +2,7 @@ import { CodePreview } from '~/app/components/code-preview';
 import { Button, theme } from '~/src';
 import { HiOutlineArrowRight, HiShoppingCart } from 'react-icons/hi';
 import Link from 'next/link';
+import { AiOutlineLoading } from 'react-icons/ai';
 
 ## Table of Contents
 
@@ -185,16 +186,39 @@ Create a button with only icons by adding the `iconOnly` property to the `<Butto
 
 Add a loading state to the button element by adding the `isProcessing` property to the `<Button>` component.
 
-<CodePreview importFlowbiteReact="Button" title="Loader" className="flex flex-wrap items-center gap-2">
+<CodePreview title="Loader" className="flex flex-wrap items-center gap-2" importFlowbiteReact="Button">
   <div className="flex flex-wrap items-center gap-2">
-    <div>
-      <Button isProcessing>Click me!</Button>
-    </div>
-    <div>
-      <Button isProcessing outline>
-        Click me!
-      </Button>
-    </div>
+    <Button size="xs" isProcessing>
+      Click me!
+    </Button>
+    <Button size="sm" isProcessing gradientDuoTone="purpleToBlue">
+      Click me!
+    </Button>
+    <Button size="md" isProcessing color="red">
+      Click me!
+    </Button>
+    <Button size="lg" isProcessing pill>
+      Click me!
+    </Button>
+    <Button size="xl" isProcessing outline>
+      Click me!
+    </Button>
+  </div>
+</CodePreview>
+
+<br />
+You can also customize the spinner icon by passing a React node to the `processingSpinner` prop.
+
+<CodePreview
+  importFlowbiteReact="Button"
+  title="Loader"
+  className="flex flex-wrap items-center gap-2"
+  importExternal="import { AiOutlineLoading } from 'react-icons/ai';"
+>
+  <div className="flex flex-wrap items-center gap-2">
+    <Button size="md" isProcessing processingSpinner={<AiOutlineLoading className="h-6 w-6 animate-spin" />}>
+      Click me!
+    </Button>
   </div>
 </CodePreview>
 
