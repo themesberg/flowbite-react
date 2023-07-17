@@ -11,9 +11,14 @@ export default {
       options: Object.keys(theme.button.color),
       control: { type: 'inline-radio' },
     },
+    size: {
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      control: { type: 'inline-radio' },
+    },
   },
   args: {
     disabled: false,
+    isProcessing: false,
   },
 } as Meta;
 

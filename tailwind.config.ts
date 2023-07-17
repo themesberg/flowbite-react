@@ -22,6 +22,15 @@ const config: Config = {
       maxWidth: {
         '8xl': '90rem',
       },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+      },
+      animation: {
+        'fade-in': 'fadeIn 200ms ease-in-out',
+      },
     },
     fontFamily: {
       sans: [

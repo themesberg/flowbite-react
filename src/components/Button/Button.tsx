@@ -21,6 +21,7 @@ export interface FlowbiteButtonTheme {
   disabled: string;
   isProcessing: string;
   spinnerSlot: string;
+  spinnerLeftPosition: ButtonSizes;
   gradient: ButtonGradientColors;
   gradientDuoTone: ButtonGradientDuoToneColors;
   inner: FlowbiteButtonInnerTheme;
@@ -34,6 +35,7 @@ export interface FlowbiteButtonInnerTheme {
   base: string;
   position: PositionInButtonGroup;
   outline: string;
+  isProcessingPadding: ButtonSizes;
 }
 
 export interface FlowbiteButtonOutlineTheme extends FlowbiteBoolean {
@@ -91,7 +93,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>
       fullSized,
       isProcessing = false,
       processingLabel = 'Loading...',
-      processingSpinner: SpinnerComponent = <Spinner />,
+      processingSpinner,
       gradientDuoTone,
       gradientMonochrome,
       label,
@@ -135,11 +137,16 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>
             theme.size[size],
             outline && !theme.outline.color[color] && theme.inner.outline,
             isProcessing && theme.isProcessing,
+            isProcessing && theme.inner.isProcessingPadding[size],
             theme.inner.position[positionInGroup],
           )}
         >
           <>
-            {isProcessing && <span className={twMerge(theme.spinnerSlot)}>{SpinnerComponent}</span>}
+            {isProcessing && (
+              <span className={twMerge(theme.spinnerSlot, theme.spinnerLeftPosition[size])}>
+                {processingSpinner || <Spinner size={size}/>}
+              </span>
+            )}
             {typeof children !== 'undefined' ? (
               children
             ) : (
@@ -153,8 +160,8 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>
     );
   },
 );
+ButtonComponent.displayName = 'ButtonComponent';
 
-ButtonComponent.displayName = 'Button';
 export const Button = Object.assign(ButtonComponent, {
   Group: ButtonGroup,
 });
