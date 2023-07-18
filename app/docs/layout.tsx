@@ -154,7 +154,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
             root: {
               base: 'h-full border-r border-gray-200 dark:border-gray-600',
               inner:
-                'overflow-y-auto px-4 pt-20 lg:pt-0 h-full bg-white scrolling-touch max-w-2xs lg:h-[calc(100vh-8rem)] lg:block dark:bg-gray-900 lg:mr-0 lg:sticky top-20 font-normal text-base lg:text-sm',
+                'overflow-y-auto px-4 pt-20 lg:pt-0 h-full bg-white scrolling-touch max-w-2xs lg:h-[calc(100vh-8rem)] lg:block dark:bg-gray-900 dark:hover:bg-transparent lg:mr-0 lg:sticky top-20 font-normal text-base lg:text-sm',
             },
           }}
         >
@@ -164,14 +164,14 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 <Accordion.Title
                   theme={{
                     open: {
-                      on: 'mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
-                      off: 'mb-1 text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200',
+                      on: 'mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500',
+                      off: 'mb-1 text-gray-900 dark:text-white hover:text-primary-700 dark:hover:text-primary-500',
                     },
                   }}
                   className={twMerge(
                     'flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide',
                     pathname.includes('/getting-started/') &&
-                      'text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
+                      'text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500',
                   )}
                 >
                   Getting started
@@ -201,14 +201,14 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 <Accordion.Title
                   theme={{
                     open: {
-                      on: 'mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
-                      off: 'mb-1 text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200',
+                      on: 'mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500',
+                      off: 'mb-1 text-gray-900 dark:text-white hover:text-primary-700 dark:hover:text-primary-500',
                     },
                   }}
                   className={twMerge(
                     'flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide',
                     pathname.includes('/customize/') &&
-                      'text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
+                      'text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500',
                   )}
                 >
                   Customize
@@ -226,14 +226,14 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 <Accordion.Title
                   theme={{
                     open: {
-                      on: 'mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
-                      off: 'mb-1 text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200',
+                      on: 'mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500',
+                      off: 'mb-1 text-gray-900 dark:text-white hover:text-primary-700 dark:hover:text-primary-500',
                     },
                   }}
                   className={twMerge(
                     'flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide',
                     pathname.includes('/components/') &&
-                      'text-primary-700 hover:text-primary-700 dark:text-primary-300 dark:hover:text-primary-200',
+                      'text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500',
                   )}
                 >
                   Components
@@ -293,10 +293,10 @@ const SidebarLink: FC<PropsWithChildren & { href: string }> = ({ children, href 
       as={Link}
       href={href}
       className={twMerge(
-        'p-0 font-medium transition-all hover:bg-transparent lg:text-sm [&>*]:px-0',
+        'p-0 font-medium transition-all hover:bg-transparent dark:hover:bg-transparent lg:text-sm [&>*]:px-0',
         pathname === href
-          ? 'text-primary-700 hover:text-primary-800 dark:text-primary-200'
-          : 'text-gray-500 hover:text-gray-900 dark:hover:text-gray-200',
+          ? 'text-primary-700 hover:text-primary-700 dark:text-primary-500'
+          : 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white',
       )}
     >
       {children}
