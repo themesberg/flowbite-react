@@ -137,7 +137,7 @@
 
 code[class*='language-'],
 pre[class*='language-'] {
-  @apply my-0 rounded-lg text-sm font-normal text-pink-500 dark:text-pink-400;
+  @apply mb-5 mt-0 rounded-lg text-sm font-normal text-pink-500 dark:text-pink-400;
   font-family: Menlo, ui-monospace, SFMono-Regular, Monaco, Consolas, Liberation Mono, Courier New, monospace;
   direction: ltr;
   text-align: left;
@@ -155,6 +155,10 @@ pre[class*='language-'] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+}
+
+div + pre[class*='language-'] {
+  @apply mb-0;
 }
 
 /* without preview */
