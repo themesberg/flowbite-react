@@ -12,7 +12,6 @@ export interface FlowbiteToastTheme {
   root: {
     base: string;
     closed: string;
-    removed: string;
   };
   toggle: {
     base: string;
@@ -42,17 +41,16 @@ const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300, t
 
   const theme = mergeDeep(useTheme().theme.toast, customTheme);
 
+  if (isRemoved) {
+    return null;
+  }
+
   return (
     <ToastContext.Provider value={{ duration, isClosed, isRemoved, setIsClosed, setIsRemoved }}>
       <div
         data-testid="flowbite-toast"
-        className={twMerge(
-          theme.root.base,
-          durationClasses[duration],
-          isClosed && theme.root.closed,
-          isRemoved && theme.root.removed,
-          className,
-        )}
+        role="alert"
+        className={twMerge(theme.root.base, durationClasses[duration], isClosed && theme.root.closed, className)}
         {...props}
       >
         {children}
