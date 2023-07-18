@@ -152,7 +152,7 @@ const HeroSection: FC = () => {
                         input: {
                           base: 'block w-full border cursor-pointer',
                           sizes: {
-                            md: 'p-2.5 pr-11 text-sm',
+                            md: 'p-3.5 pr-11 text-sm',
                           },
                         },
                         rightIcon: {
