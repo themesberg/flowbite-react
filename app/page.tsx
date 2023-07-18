@@ -428,7 +428,7 @@ const ReactSection: FC = () => {
                 ))}
               </ul>
               <div className="flex flex-row gap-4">
-                <Button href="#">
+                <Button href="/docs/getting-started/quickstart">
                   Start building <HiOutlineArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button href="https://github.com/themesberg/flowbite-react" color="gray">
@@ -506,7 +506,10 @@ const DarkModeSection: FC = () => {
                 ))}
               </ul>
               <div className="flex flex-row gap-4">
-                <a href="" className="flex items-center gap-4 font-medium text-cyan-600 hover:underline">
+                <a
+                  href="/docs/customize/dark-mode"
+                  className="flex items-center gap-4 font-medium text-cyan-600 hover:underline"
+                >
                   Learn how to integrate dark mode in React{' '}
                   <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -550,7 +553,10 @@ const TailwindSection: FC = () => {
               </h2>
               <p className="text-lg text-gray-500 dark:text-gray-400">
                 Flowbite React uses the utility classes from Tailwind CSS under the hood and provides an advanced{' '}
-                <a href="" className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white">
+                <a
+                  href="/docs/customize/theme"
+                  className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white"
+                >
                   theming system
                 </a>{' '}
                 that you can use to apply classes to UI components and their underlying HTML elements structure.
@@ -576,7 +582,10 @@ const TailwindSection: FC = () => {
                 uses this framework in all of the libraries including the vanilla JS, Svelte, Vue, and React one.
               </p>
               <div className="flex flex-row gap-4">
-                <a href="" className="flex items-center gap-4 font-medium text-cyan-600 hover:underline">
+                <a
+                  href="/docs/customize/theme"
+                  className="flex items-center gap-4 font-medium text-cyan-600 hover:underline"
+                >
                   Learn more about the theming system{' '}
                   <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
