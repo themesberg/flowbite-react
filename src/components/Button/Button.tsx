@@ -144,7 +144,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>
           <>
             {isProcessing && (
               <span className={twMerge(theme.spinnerSlot, theme.spinnerLeftPosition[size])}>
-                {processingSpinner || <Spinner size={size}/>}
+                {processingSpinner || <Spinner size={size} />}
               </span>
             )}
             {typeof children !== 'undefined' ? (
