@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { PropsWithChildren } from 'react';
+import { AiOutlineLoading } from 'react-icons/ai';
 import { describe, expect, it, vi } from 'vitest';
 import { Flowbite } from '../../';
 import { Button } from './Button';
@@ -83,6 +84,24 @@ describe('Components / Button', () => {
       render(<Button disabled>Hi there</Button>);
 
       expect(button()).toBeDisabled();
+    });
+
+    it('should show <Spinner /> when `isProcessing={true}`', () => {
+      render(<Button isProcessing>Hi there</Button>);
+
+      expect(screen.getByText(/Hi there/)).toBeInTheDocument();
+      expect(screen.getByRole('status')).toBeInTheDocument();
+    });
+
+    it('should show custom spinner when `isProcessing={true}` and `processingSpinner` is present', () => {
+      render(
+        <Button isProcessing processingSpinner={<AiOutlineLoading data-testid="spinner" />}>
+          Hi there
+        </Button>,
+      );
+
+      expect(screen.getByText(/Hi there/)).toBeInTheDocument();
+      expect(screen.getByTestId('spinner')).toBeInTheDocument();
     });
   });
 
