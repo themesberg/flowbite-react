@@ -51,18 +51,18 @@ const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
 
   return (
     <Flowbite>
-      <div className="flex-auto w-full min-w-0 lg:static lg:max-h-full lg:overflow-visible">
-        <div className="relative w-full max-h-screen overflow-auto antialiased text-gray-600 bg-white dark:bg-gray-900 dark:text-gray-400">
+      <div className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible">
+        <div className="relative max-h-screen w-full overflow-auto bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
           <DocsNavbar {...state} />
           <div className="lg:flex">
             <DocsSidebar {...state} />
-            <div className="flex-auto w-full min-w-0 lg:static lg:max-h-full lg:overflow-visible">
+            <div className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible">
               <div className="flex w-full">
-                <div className="flex flex-col max-w-4xl min-w-0 px-4 pt-6 mx-auto divide-y divide-gray-200 pb:12 dark:divide-gray-800 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
+                <div className="pb:12 mx-auto flex min-w-0 max-w-4xl flex-col divide-y divide-gray-200 px-4 pt-6 dark:divide-gray-800 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
                   <main>{children}</main>
                   <DocsFooter />
                 </div>
-                <div className="right-0 flex-none hidden w-64 pl-8 xl:block xl:text-sm">
+                <div className="right-0 hidden w-64 flex-none pl-8 xl:block xl:text-sm">
                   <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-between overflow-y-auto pb-6">
                     <div className="mb-8">
                       <h4 className="my-4 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
@@ -99,15 +99,15 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
           <span className="p-2 lg:hidden">
             <HiMenuAlt1
               aria-label="Open sidebar"
-              className="w-6 h-6 text-gray-600 cursor-pointer dark:text-gray-300"
+              className="h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-300"
               onClick={() => setCollapsed(!isCollapsed)}
             />
           </span>
         ) : (
-          <span className="p-2 rounded dark:bg-gray-700 lg:hidden">
+          <span className="rounded p-2 dark:bg-gray-700 lg:hidden">
             <HiX
               aria-label="Close sidebar"
-              className="w-6 h-6 text-gray-600 cursor-pointer dark:text-gray-300"
+              className="h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-300"
               onClick={() => setCollapsed(!isCollapsed)}
             />
           </span>
@@ -120,7 +120,7 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
           href="/"
           className="flex items-center gap-3 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          <Image alt="" height={32} src="/favicon.svg" width={32} className="w-8 h-8" />
+          <Image alt="" height={32} src="/favicon.svg" width={32} className="h-8 w-8" />
           <span>Flowbite React</span>
         </Link>
       </div>
@@ -176,7 +176,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 >
                   Getting started
                 </Accordion.Title>
-                <Accordion.Content className="p-0 mb-2 border-none">
+                <Accordion.Content className="mb-2 border-none p-0">
                   <Sidebar.ItemGroup className="border-none">
                     <SidebarLink href="/docs/getting-started/introduction">Introduction</SidebarLink>
                     <SidebarLink href="/docs/getting-started/quickstart">Quickstart</SidebarLink>
@@ -238,7 +238,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 >
                   Components
                 </Accordion.Title>
-                <Accordion.Content className="p-0 mb-2 border-none">
+                <Accordion.Content className="mb-2 border-none p-0">
                   <Sidebar.ItemGroup className="border-none">
                     <SidebarLink href="/docs/components/accordion">Accordion</SidebarLink>
                     <SidebarLink href="/docs/components/alert">Alert</SidebarLink>
@@ -307,19 +307,19 @@ const SidebarLink: FC<PropsWithChildren & { href: string }> = ({ children, href 
 
 const DocsFooter: FC = () => {
   return (
-    <Footer className="px-4 pt-16 pb-8 rounded-none shadow-none dark:bg-gray-900 lg:px-0">
+    <Footer className="rounded-none px-4 pb-8 pt-16 shadow-none dark:bg-gray-900 lg:px-0">
       <div className="w-full">
-        <div className="grid justify-between w-full md:grid-cols-2">
-          <div className="max-w-sm mb-4 lg:mb-0">
+        <div className="grid w-full justify-between md:grid-cols-2">
+          <div className="mb-4 max-w-sm lg:mb-0">
             <Link href="/" className="flex items-center gap-3">
-              <Image alt="" height="32" src="/favicon.svg" width="32" className="w-8 h-8" />
+              <Image alt="" height="32" src="/favicon.svg" width="32" className="h-8 w-8" />
               <span className="text-xl font-semibold text-gray-900 dark:text-gray-100">Flowbite React</span>
             </Link>
-            <p className="max-w-sm mt-4 mb-3 text-gray-600 dark:text-gray-400">
+            <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">
               Flowbite is an ecosystem built on top of Tailwind CSS including a component library, block sections, a
               Figma design system and other resources.
             </p>
-            <p className="max-w-sm mt-4 mb-3 text-gray-600 dark:text-gray-400">
+            <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">
               Code licensed{' '}
               <a
                 href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE"
@@ -341,7 +341,7 @@ const DocsFooter: FC = () => {
             <div>
               <Footer.Title
                 title="Resources"
-                className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+                className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
               />
               <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
                 <Footer.Link href="https://github.com/themesberg/flowbite-react" className="text-base">
@@ -361,7 +361,7 @@ const DocsFooter: FC = () => {
             <div>
               <Footer.Title
                 title="Help & Support"
-                className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+                className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
               />
               <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
                 <Footer.Link href="https://discord.gg/4eeurUVvTy" className="text-base">
@@ -375,7 +375,7 @@ const DocsFooter: FC = () => {
             <div>
               <Footer.Title
                 title="Legal"
-                className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+                className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
               />
               <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
                 <Footer.Link href="https://flowbite.com/license/" className="text-base">
