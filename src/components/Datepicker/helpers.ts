@@ -111,3 +111,38 @@ export const startOfYearPeriod = (date: Date, years: number): number => {
   const year = date.getFullYear();
   return Math.floor(year / years) * years;
 };
+
+export const isDateInDecade = (date: Date, startYear: number): boolean => {
+  const year = date.getFullYear();
+  const endYear = startYear + 9;
+  return year >= startYear && year <= endYear;
+};
+
+export const isDateRangeInDecade = (
+  startDate: Date,
+  endDate: Date,
+  decadeStart: number,
+  decadeEnd: number,
+): boolean => {
+  const startYear = startDate.getFullYear();
+  const endYear = endDate.getFullYear();
+
+  if (decadeStart && decadeEnd) {
+    // Check if the start and end years of the date range are within the decade
+    const isStartYearInRange = isDateInRange(
+      new Date(startYear, 0, 1),
+      new Date(decadeStart, 0, 1),
+      new Date(decadeEnd, 11, 31),
+    );
+    const isEndYearInRange = isDateInRange(
+      new Date(endYear, 11, 31),
+      new Date(decadeStart, 0, 1),
+      new Date(decadeEnd, 11, 31),
+    );
+
+    return isStartYearInRange && isEndYearInRange;
+  }
+
+  // If decadeStart or decadeEnd is not provided, treat it as an open-ended range
+  return true;
+};

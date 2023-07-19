@@ -31,20 +31,22 @@ export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: cu
         const newDate = new Date(viewDate.getTime());
         newDate.setMonth(index);
         const month = getFormattedDate(language, newDate, { month: 'short' });
-        const inRange = isDateInRange(newDate, minDate, maxDate);
+
+        const isSelected = isDateEqual(selectedDate, newDate);
+        const isDisabled = !isDateInRange(newDate, minDate, maxDate);
 
         return (
           <button
-            disabled={!inRange}
+            disabled={isDisabled}
             key={index}
             type="button"
             className={twMerge(
               theme.items.item.base,
-              isDateEqual(selectedDate, newDate) && theme.items.item.selected,
-              !inRange && theme.items.item.disabled,
+              isSelected && theme.items.item.selected,
+              isDisabled && theme.items.item.disabled,
             )}
             onClick={() => {
-              if (!inRange) return;
+              if (isDisabled) return;
 
               setViewDate(newDate);
               setView(Views.Days);

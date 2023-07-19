@@ -45,20 +45,22 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: custo
         {[...Array(42)].map((_date, index) => {
           const currentDate = addDays(startDate, index);
           const day = getFormattedDate(language, currentDate, { day: 'numeric' });
-          const inRange = isDateInRange(currentDate, minDate, maxDate);
+
+          const isSelected = isDateEqual(selectedDate, currentDate);
+          const isDisabled = !isDateInRange(currentDate, minDate, maxDate);
 
           return (
             <button
-              disabled={!inRange}
+              disabled={isDisabled}
               key={index}
               type="button"
               className={twMerge(
                 theme.items.item.base,
-                isDateEqual(selectedDate, currentDate) && theme.items.item.selected,
-                !inRange && theme.items.item.disabled,
+                isSelected && theme.items.item.selected,
+                isDisabled && theme.items.item.disabled,
               )}
               onClick={() => {
-                if (!inRange) return;
+                if (isDisabled) return;
 
                 changeSelectedDate(currentDate, true);
               }}
