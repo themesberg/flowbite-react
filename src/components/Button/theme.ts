@@ -2,7 +2,7 @@ import type { FlowbiteButtonTheme } from './Button';
 import type { FlowbiteButtonGroupTheme } from './ButtonGroup';
 
 export const buttonTheme: FlowbiteButtonTheme = {
-  base: 'group flex h-min items-center justify-center p-0.5 text-center font-medium focus:z-10 focus:outline-none',
+  base: 'group flex h-min items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none',
   fullSized: 'w-full',
   color: {
     dark: 'text-white bg-gray-800 border border-transparent enabled:hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:enabled:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700',
@@ -33,7 +33,14 @@ export const buttonTheme: FlowbiteButtonTheme = {
   },
   disabled: 'cursor-not-allowed opacity-50',
   isProcessing: 'cursor-wait',
-  spinnerSlot: 'mr-3',
+  spinnerSlot: 'absolute h-full top-0 flex items-center animate-fade-in',
+  spinnerLeftPosition: {
+    xs: 'left-2',
+    sm: 'left-3',
+    md: 'left-4',
+    lg: 'left-5',
+    xl: 'left-6',
+  },
   gradient: {
     cyan: 'text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 enabled:hover:bg-gradient-to-br focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800',
     failure:
@@ -65,7 +72,7 @@ export const buttonTheme: FlowbiteButtonTheme = {
       'text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 enabled:hover:bg-gradient-to-l enabled:hover:from-teal-200 enabled:hover:to-lime-200 enabled:hover:text-gray-900 focus:ring-4 focus:ring-lime-200 dark:focus:ring-teal-700',
   },
   inner: {
-    base: 'flex items-center',
+    base: 'flex items-stretch transition-all duration-200',
     position: {
       none: '',
       start: 'rounded-r-none',
@@ -73,6 +80,13 @@ export const buttonTheme: FlowbiteButtonTheme = {
       end: 'rounded-l-none',
     },
     outline: 'border border-transparent',
+    isProcessingPadding: {
+      xs: 'pl-8',
+      sm: 'pl-10',
+      md: 'pl-12',
+      lg: 'pl-16',
+      xl: 'pl-20',
+    },
   },
   label:
     'ml-2 inline-flex h-4 w-4 items-center justify-center rounded-full bg-cyan-200 text-xs font-semibold text-cyan-800',
