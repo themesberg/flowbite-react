@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/themesberg/flowbite-react/compare/v0.4.11...v0.5.0) (2023-07-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **toast.tsx:** Removing "removed" theme support
+
+### Features
+
+* **card:** support custom renderImage functions for Card ([#730](https://github.com/themesberg/flowbite-react/issues/730)) ([594f187](https://github.com/themesberg/flowbite-react/commit/594f1870d7fc964521e8e9b56c1e64f39124248e)), closes [#706](https://github.com/themesberg/flowbite-react/issues/706)
+* **modal.tsx:** Modal Accessibility ([#858](https://github.com/themesberg/flowbite-react/issues/858)) ([2b4a3ec](https://github.com/themesberg/flowbite-react/commit/2b4a3ec8b1243bde08a1211d5c48126f68fedf4a)), closes [#647](https://github.com/themesberg/flowbite-react/issues/647) [#701](https://github.com/themesberg/flowbite-react/issues/701)
+* **toast.tsx:** Stateless Toast ([#860](https://github.com/themesberg/flowbite-react/issues/860)) ([bd4ad89](https://github.com/themesberg/flowbite-react/commit/bd4ad890c23c1c4446a2d8962ad3f694cc3dbb7a)), closes [#848](https://github.com/themesberg/flowbite-react/issues/848)
+
+
+### Bug Fixes
+
+* **button.tsx:** Relative Spinner size ([#868](https://github.com/themesberg/flowbite-react/issues/868)) ([3662d5e](https://github.com/themesberg/flowbite-react/commit/3662d5ec0f6318773524ddb8c2a55702574d1963)), closes [#850](https://github.com/themesberg/flowbite-react/issues/850)
+* **modal.mdx:** fix spelling in modal documentation ([#862](https://github.com/themesberg/flowbite-react/issues/862)) ([380aa63](https://github.com/themesberg/flowbite-react/commit/380aa63752050858062cc61bd91bc4f6b691671c))
+* **pagination theme file:** added enabled attribute for pagination ba… ([#856](https://github.com/themesberg/flowbite-react/issues/856)) ([ecc3f6e](https://github.com/themesberg/flowbite-react/commit/ecc3f6ef0156533f2eeb337aad913e0a8182b58d)), closes [#849](https://github.com/themesberg/flowbite-react/issues/849)
+
 ### [0.4.11](https://github.com/themesberg/flowbite-react/compare/v0.4.10...v0.4.11) (2023-07-10)
 
 
