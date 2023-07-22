@@ -153,6 +153,54 @@ describe.concurrent('Components / Alert', () => {
       expect(onDismiss).toHaveBeenCalled();
     });
   });
+
+  // https://flowbite.com/docs/components/alerts/#default-alert
+  describe('Classname', async () => {
+    it('should have info classes', () => {
+      render(<Alert color="info" />);
+      expect(alert()).toHaveClass(
+        'p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400',
+      );
+    });
+
+    it('should have danger classes', () => {
+      render(<Alert color="failure" />);
+      expect(alert()).toHaveClass(
+        'p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400',
+      );
+    });
+
+    it('should have success classes', () => {
+      render(<Alert color="success" />);
+      expect(alert()).toHaveClass(
+        'p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400',
+      );
+    });
+
+    it('should have warning classes', () => {
+      render(<Alert color="warning" />);
+      expect(alert()).toHaveClass(
+        'p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300',
+      );
+    });
+
+    it('should have dark classes', () => {
+      render(<Alert color="dark" />);
+      expect(alert()).toHaveClass(
+        'p-4 text-sm text-gray-800 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300',
+      );
+    });
+
+    it('should have top border', () => {
+      render(<Alert withBorderAccent />);
+      expect(alert()).toHaveClass('border-t-4');
+    });
+
+    it('should not have rounded border', () => {
+      render(<Alert rounded={false} />);
+      expect(alert()).not.toHaveClass('rounded-lg');
+    });
+  });
 });
 
 const TestAlert: FC<AlertProps> = (props: AlertProps) => {
