@@ -12,6 +12,10 @@ export default {
       options: Object.keys(theme.badge.root.color),
       control: { type: 'inline-radio' },
     },
+    size: {
+      options: Object.keys(theme.badge.root.size),
+      control: { type: 'inline-radio' },
+    },
   },
 } as Meta;
 
