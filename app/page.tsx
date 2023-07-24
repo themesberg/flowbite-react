@@ -12,6 +12,8 @@ import { ComponentCard } from './components/component-card';
 import { NavbarIcons, NavbarLinks } from './components/navbar';
 import { COMPONENTS_DATA } from './data/components';
 
+import CarbonAds from './components/carbon-ads';
+
 interface Contributor {
   id: number;
   login: string;
@@ -170,6 +172,7 @@ const HeroSection: FC = () => {
                   </div>
                 </div>
               </div>
+              <CarbonAds />
             </div>
           </div>
           <div className="hidden p-0 xl:block">

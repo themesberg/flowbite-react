@@ -1,5 +1,9 @@
+'use client';
+
 import type { FC } from 'react';
 import React from 'react';
+
+import CarbonAds from '../components/carbon-ads';
 
 interface DocsContentLayoutProps {
   title: string;
@@ -15,6 +19,7 @@ export const DocsContentLayout: FC<DocsContentLayoutProps> = function ({ title, 
           {title}
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-400">{description}</p>
+        <CarbonAds />
       </div>
       <div id="mainContent" className="py-8">
         {children}
