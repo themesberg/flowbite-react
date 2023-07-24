@@ -13,9 +13,9 @@ const CarbonAds = () => {
   }, []);
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 hidden sm:block">
+    <aside className="fixed bottom-5 right-5 z-50 hidden sm:block">
       <div id="carbon-container"></div>
-    </div>
+    </aside>
   );
 };
 
