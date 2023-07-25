@@ -74,10 +74,10 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
             className={twMerge(
               theme.field.select.base,
               theme.field.select.colors[color],
+              theme.field.select.sizes[sizing],
               theme.field.select.withIcon[Icon ? 'on' : 'off'],
               theme.field.select.withAddon[addon ? 'on' : 'off'],
               theme.field.select.withShadow[shadow ? 'on' : 'off'],
-              theme.field.select.sizes[sizing],
             )}
             {...props}
             ref={ref}

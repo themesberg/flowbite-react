@@ -49,8 +49,8 @@ export const Badge: FC<BadgeProps> = ({
       className={twMerge(
         theme.root.base,
         theme.root.color[color],
-        theme.icon[Icon ? 'on' : 'off'],
         theme.root.size[size],
+        theme.icon[Icon ? 'on' : 'off'],
         className,
       )}
       data-testid="flowbite-badge"
