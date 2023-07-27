@@ -1,5 +1,7 @@
-import { forwardRef, type ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, ElementType, ForwardedRef } from 'react';
+import { type ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
+import genericForwardRef from '~/src/helpers/generic-forward-ref';
 import type {
   DeepPartial,
   FlowbiteBoolean,
@@ -64,7 +66,9 @@ export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'x
   [key: string]: string;
 }
 
-export interface ButtonProps extends ButtonBaseProps {
+export type ButtonProps<T extends ElementType = 'button'> = {
+  as?: T;
+  href?: string;
   color?: keyof FlowbiteColors;
   fullSized?: boolean;
   gradientDuoTone?: keyof ButtonGradientDuoToneColors;
@@ -79,88 +83,85 @@ export interface ButtonProps extends ButtonBaseProps {
   positionInGroup?: keyof PositionInButtonGroup;
   size?: keyof ButtonSizes;
   theme?: DeepPartial<FlowbiteButtonTheme>;
-}
+} & ComponentPropsWithoutRef<T>;
 
-interface Props extends ButtonProps, Record<string, unknown> {}
+const ButtonComponentFn = <T extends ElementType = 'button'>(
+  {
+    children,
+    className,
+    color = 'info',
+    disabled,
+    fullSized,
+    isProcessing = false,
+    processingLabel = 'Loading...',
+    processingSpinner,
+    gradientDuoTone,
+    gradientMonochrome,
+    label,
+    outline = false,
+    pill = false,
+    positionInGroup = 'none',
+    size = 'md',
+    theme: customTheme = {},
+    ...props
+  }: ButtonProps<T>,
+  ref: ForwardedRef<T>,
+) => {
+  const { buttonGroup: groupTheme, button: buttonTheme } = useTheme().theme;
+  const theme = mergeDeep(buttonTheme, customTheme);
 
-const ButtonComponent = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
-  (
-    {
-      children,
-      className,
-      color = 'info',
-      disabled = false,
-      fullSized,
-      isProcessing = false,
-      processingLabel = 'Loading...',
-      processingSpinner,
-      gradientDuoTone,
-      gradientMonochrome,
-      label,
-      outline = false,
-      pill = false,
-      positionInGroup = 'none',
-      size = 'md',
-      theme: customTheme = {},
-      ...props
-    },
-    ref,
-  ) => {
-    const { buttonGroup: groupTheme, button: buttonTheme } = useTheme().theme;
-    const theme = mergeDeep(buttonTheme, customTheme);
+  const theirProps = props as ButtonBaseProps<T>;
 
-    const theirProps = props as object;
-
-    return (
-      <ButtonBase
-        disabled={disabled}
-        ref={ref as never}
+  return (
+    <ButtonBase
+      ref={ref}
+      disabled={disabled}
+      className={twMerge(
+        theme.base,
+        disabled && theme.disabled,
+        !gradientDuoTone && !gradientMonochrome && theme.color[color],
+        gradientDuoTone && !gradientMonochrome && theme.gradientDuoTone[gradientDuoTone],
+        !gradientDuoTone && gradientMonochrome && theme.gradient[gradientMonochrome],
+        outline && (theme.outline.color[color] ?? theme.outline.color.default),
+        theme.pill[pill ? 'on' : 'off'],
+        fullSized && theme.fullSized,
+        groupTheme.position[positionInGroup],
+        className,
+      )}
+      {...theirProps}
+    >
+      <span
         className={twMerge(
-          theme.base,
-          disabled && theme.disabled,
-          !gradientDuoTone && !gradientMonochrome && theme.color[color],
-          gradientDuoTone && !gradientMonochrome && theme.gradientDuoTone[gradientDuoTone],
-          !gradientDuoTone && gradientMonochrome && theme.gradient[gradientMonochrome],
-          outline && (theme.outline.color[color] ?? theme.outline.color.default),
-          theme.pill[pill ? 'on' : 'off'],
-          fullSized && theme.fullSized,
-          groupTheme.position[positionInGroup],
-          className,
+          theme.inner.base,
+          theme.outline[outline ? 'on' : 'off'],
+          theme.outline.pill[outline && pill ? 'on' : 'off'],
+          theme.size[size],
+          outline && !theme.outline.color[color] && theme.inner.outline,
+          isProcessing && theme.isProcessing,
+          isProcessing && theme.inner.isProcessingPadding[size],
+          theme.inner.position[positionInGroup],
         )}
-        {...theirProps}
       >
-        <span
-          className={twMerge(
-            theme.inner.base,
-            theme.outline[outline ? 'on' : 'off'],
-            theme.outline.pill[outline && pill ? 'on' : 'off'],
-            theme.size[size],
-            outline && !theme.outline.color[color] && theme.inner.outline,
-            isProcessing && theme.isProcessing,
-            isProcessing && theme.inner.isProcessingPadding[size],
-            theme.inner.position[positionInGroup],
+        <>
+          {isProcessing && (
+            <span className={twMerge(theme.spinnerSlot, theme.spinnerLeftPosition[size])}>
+              {processingSpinner || <Spinner size={size} />}
+            </span>
           )}
-        >
-          <>
-            {isProcessing && (
-              <span className={twMerge(theme.spinnerSlot, theme.spinnerLeftPosition[size])}>
-                {processingSpinner || <Spinner size={size} />}
-              </span>
-            )}
-            {typeof children !== 'undefined' ? (
-              children
-            ) : (
-              <span data-testid="flowbite-button-label" className={twMerge(theme.label)}>
-                {isProcessing ? processingLabel : label}
-              </span>
-            )}
-          </>
-        </span>
-      </ButtonBase>
-    );
-  },
-);
-ButtonComponent.displayName = 'ButtonComponent';
+          {typeof children !== 'undefined' ? (
+            children
+          ) : (
+            <span data-testid="flowbite-button-label" className={twMerge(theme.label)}>
+              {isProcessing ? processingLabel : label}
+            </span>
+          )}
+        </>
+      </span>
+    </ButtonBase>
+  );
+};
+
+const ButtonComponent = genericForwardRef(ButtonComponentFn);
 
 export const Button = Object.assign(ButtonComponent, {
   Group: ButtonGroup,
