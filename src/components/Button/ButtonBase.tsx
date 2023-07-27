@@ -8,11 +8,10 @@ export interface ButtonBaseProps extends Omit<ComponentProps<'button'>, 'color' 
 interface Props extends ButtonBaseProps, Record<string, unknown> {}
 
 export const ButtonBase = forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(
-  ({ children, as: Component = 'button', href, ...props }, ref) => {
-    const BaseComponent = href ? 'a' : Component ?? 'button';
-    const type = Component === 'button' ? 'button' : undefined;
+  ({ children, as: Component = 'button', type = 'button', href, ...props }, ref) => {
+    const BaseComponent = Component || (href ? 'a' : 'button');
 
     return createElement(BaseComponent, { ref, href, type, ...props }, children);
   },
 );
-ButtonBase.displayName = 'Button';
+ButtonBase.displayName = 'ButtonBase';
