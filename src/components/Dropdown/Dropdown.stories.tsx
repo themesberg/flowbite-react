@@ -93,7 +93,7 @@ CustomItem.args = {
       <Dropdown.Item>Default button</Dropdown.Item>
       <Dropdown.Item as="span">As span</Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item href="https://flowbite.com/" target="_blank">
+      <Dropdown.Item as="a" href="https://flowbite.com/" target="_blank">
         As link
       </Dropdown.Item>
     </>

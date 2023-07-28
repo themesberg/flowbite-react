@@ -125,10 +125,37 @@ describe('Components / Button', () => {
         expect(buttonLink()).toBeInTheDocument();
       });
 
-      it('should render an anchor `<a>` when `href=".."` even though `as` is defined', () => {
-        render(<Button href="#" as="label" label="Something or other" />);
+      it('should render component defined in `as`', () => {
+        const CustomComponent = ({ children }: PropsWithChildren<{ uniqueProp: boolean }>) => {
+          return <li>{children}</li>;
+        };
 
-        expect(buttonLink()).toBeInTheDocument();
+        render(
+          <ul>
+            <Button as={CustomComponent} uniqueProp>
+              Something or other
+            </Button>
+          </ul>,
+        );
+
+        const button = buttonListItem();
+
+        expect(button).toBeInTheDocument();
+        expect(button).toHaveTextContent('Something or other');
+      });
+
+      it('should render component defined in `as` prop even though `href` is defined', () => {
+        const CustomComponent = ({ children }: PropsWithChildren) => {
+          return <li>{children}</li>;
+        };
+
+        render(
+          <ul>
+            <Button href="#" as={CustomComponent} label="Something or other" />
+          </ul>,
+        );
+
+        expect(buttonListItem()).toBeInTheDocument();
       });
 
       it('should render tag element defined in `as`', () => {
@@ -141,25 +168,12 @@ describe('Components / Button', () => {
         expect(buttonListItem()).toBeInTheDocument();
       });
 
-      it('should render component defined in `as`', () => {
-        const CustomComponent = ({ children }: PropsWithChildren) => {
-          return <li>{children}</li>;
-        };
-
+      it('should render as button `as={null}`', () => {
         render(
           <ul>
-            <Button as={CustomComponent} label="Something or other" />
+            <Button as={null as any} label="Something or other" />
           </ul>,
         );
-
-        const button = buttonListItem();
-
-        expect(button).toBeInTheDocument();
-        expect(button).toHaveTextContent('Something or other');
-      });
-
-      it('should render as button when `as`={null}', () => {
-        render(<Button as={null} label="Something or other" />);
 
         expect(button()).toBeInTheDocument();
       });
