@@ -161,6 +161,8 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
   );
 };
 
+ButtonComponentFn.displayName = 'Button';
+
 const ButtonComponent = genericForwardRef(ButtonComponentFn);
 
 export const Button = Object.assign(ButtonComponent, {
