@@ -169,7 +169,13 @@ describe('Theme', () => {
             },
             label: {
               base: 'text-gray-300',
-              icon: 'text-gray-400',
+              icon: {
+                base: 'text-gray-400',
+                open: {
+                  on: '',
+                  off: '',
+                },
+              },
             },
             list: 'bg-gray-300',
           },
