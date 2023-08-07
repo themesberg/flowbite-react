@@ -147,7 +147,7 @@ If you want to customize Flowbite React component, you can follow the [theme gui
 
 #### Contributing
 
-If you want to contribute to Flowbite React, you can follow the [contributing guide](/docs/getting-started/contributing).
+If you want to contribute to Flowbite React, you can follow the [contributing guide](https://github.com/themesberg/flowbite-react/blob/main/CONTRIBUTING.md).
 
 ## Components
 
