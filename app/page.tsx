@@ -849,7 +849,7 @@ const FigmaSection: FC = () => {
   );
 };
 
-const ContributorsSection: FC<ContributorsSectionProps> = function ({ contributors }) {
+const ContributorsSection: FC<ContributorsSectionProps> = ({ contributors }) => {
   return (
     <section>
       <div className="mx-auto max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
