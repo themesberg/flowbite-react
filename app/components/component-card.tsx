@@ -11,7 +11,7 @@ interface ComponentCardProps extends PropsWithChildren, ComponentProps<'div'> {
   classes: string;
 }
 
-export const ComponentCard: FC<ComponentCardProps> = function ({ link, name, image, imageDark, classes }) {
+export const ComponentCard: FC<ComponentCardProps> = ({ link, name, image, imageDark, classes }) => {
   return (
     <Link
       href={link}

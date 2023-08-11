@@ -32,7 +32,7 @@ interface CodePreviewState {
   isJustCopied?: boolean;
 }
 
-export const CodePreview: FC<CodePreviewProps> = function ({
+export const CodePreview: FC<CodePreviewProps> = ({
   children,
   className,
   code = '',
@@ -41,7 +41,7 @@ export const CodePreview: FC<CodePreviewProps> = function ({
   importExternal,
   importFlowbiteReact,
   title,
-}) {
+}) => {
   const [isDarkMode, setDarkMode] = useState(false);
   const [isExpanded, setExpanded] = useState(false);
   const [isJustCopied, setJustCopied] = useState(false);
