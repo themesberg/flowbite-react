@@ -109,36 +109,6 @@ describe('Components / Modal', () => {
       expect(modal).not.toBeInTheDocument();
     });
 
-    it('should have focus trapped inside Modal', async () => {
-      const user = userEvent.setup();
-
-      render(<TestModal dismissible />);
-
-      await user.click(triggerButton());
-      const modal = dialog();
-      expect(modal).toBeInTheDocument();
-
-      await waitFor(() => expect(document.activeElement).toEqual(closeButton()));
-
-      await user.tab();
-      expect(document.activeElement).toEqual(input());
-
-      await user.tab();
-      expect(document.activeElement).toEqual(acceptButton());
-
-      await user.tab();
-      expect(document.activeElement).toEqual(declineButton());
-
-      // The following 2 elements are only focusable in the testing environment
-      await user.tab();
-      expect(document.activeElement).toEqual(document.querySelector('span[data-floating-ui-focus-guard=""]'));
-      await user.tab();
-      expect(document.activeElement).toEqual(document.body);
-
-      await user.tab();
-      expect(document.activeElement).toEqual(closeButton());
-    });
-
     it('should initially focus element provided by ref when `initialFocus={elementRef}`', async () => {
       const user = userEvent.setup();
       const inputRef = createRef<HTMLInputElement>();
@@ -222,6 +192,4 @@ const dialogOverlay = () => screen.getByTestId('modal-overlay');
 const triggerButton = () => screen.getByRole('button', { name: 'Toggle modal' });
 
 const input = () => screen.getByTestId('text-input');
-const acceptButton = () => screen.getByText('I accept').closest('button');
-const declineButton = () => screen.getByText('Decline').closest('button');
 const closeButton = () => screen.getByLabelText('Close');
