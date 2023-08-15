@@ -1,5 +1,6 @@
 'use client';
 
+import { DocSearch } from '@docsearch/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
@@ -92,7 +93,7 @@ const HomeNavbar: FC = () => {
       theme={{
         base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-4',
         inner: {
-          base: 'mx-auto flex flex-wrap justify-between items-center w-full max-w-8xl px-4 lg:px-20',
+          base: 'mx-auto flex flex-wrap justify-between items-center w-full xl:max-w-8xl px-4 xl:px-20 max-w-none',
         },
       }}
     >
@@ -108,9 +109,14 @@ const HomeNavbar: FC = () => {
           <Image alt="" aria-hidden height="32" src="/favicon.svg" width="32" />
           <span>Flowbite React</span>
         </Link>
+        <div className="ml-4 hidden lg:flex">
+          <DocSearch appId="JUWZAHYJQ9" indexName="flowbite" apiKey="63250f7f96b4ea48c49dbd149aab687c" />
+        </div>
       </div>
-      <NavbarLinks />
-      <NavbarIcons />
+      <div className="flex items-center">
+        <NavbarLinks />
+        <NavbarIcons />
+      </div>
     </Navbar>
   );
 };
@@ -127,18 +133,18 @@ const HeroSection: FC = () => {
   return (
     <section className="mx-auto flex max-w-8xl flex-col overflow-hidden px-4 pb-6 pt-6 sm:pb-8 sm:pt-8 lg:px-20 lg:pb-24 lg:pt-16">
       <div className="flex flex-col gap-20">
-        <div className="flex items-center gap-10">
-          <div className="flex max-w-[676px] flex-col justify-start gap-4">
+        <div className="grid gap-10 md:grid-cols-2">
+          <div className="flex flex-col justify-start gap-4 xl:max-w-[676px]">
             <div className="flex flex-col gap-4 text-left lg:gap-6">
-              <h1 className="max-w-xl text-4xl font-extrabold leading-none text-gray-900 dark:text-white lg:text-6xl">
+              <h1 className="max-w-3xl text-4xl font-extrabold leading-none text-gray-900 dark:text-white lg:text-5xl xl:text-6xl">
                 <span className="xl:inline">Build modern web applications with</span>
                 <span className="ml-2 text-cyan-700 dark:text-cyan-700 xl:inline">Flowbite React</span>
               </h1>
-              <p className="max-w-xl text-lg leading-normal text-gray-500 dark:text-gray-400 lg:text-xl">
+              <p className="max-w-3xl text-lg leading-normal text-gray-500 dark:text-gray-400 lg:text-xl">
                 Flowbite React is an open-source UI component library built on top of Tailwind CSS with React components
                 and based on the Flowbite Design System.
               </p>
-              <div className="mt-6 grid grid-cols-1 items-center justify-center gap-6 lg:grid-cols-2 [&>div:first-child]:w-full">
+              <div className="mt-2 grid grid-cols-1 items-center justify-center gap-4 sm:grid-cols-2 sm:gap-6 [&>div:first-child]:w-full">
                 <Tooltip content={isJustCopied ? 'Copied!' : 'Copy to clipboard'} className="[&_*]:cursor-pointer">
                   <TextInput
                     onClick={copyToClipboard}
@@ -165,19 +171,19 @@ const HeroSection: FC = () => {
                 <div className="justify-center sm:flex sm:justify-start">
                   <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
                     <Button href="/docs/getting-started/introduction" size="lg" className="w-full whitespace-nowrap">
-                      Get started <HiOutlineArrowRight className="ml-2 h-5 w-5" />
+                      Get started <HiOutlineArrowRight className="ml-2 mt-1 h-4 w-4" />
                     </Button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="hidden p-0 xl:block">
+          <div className="hidden items-center p-0 md:flex">
             <div className="relative dark:hidden">
-              <img className="max-w-2xl" src="/images/gallery.png" alt="Header" />
+              <img className="h-auto max-w-full" src="/images/gallery.png" alt="Header" />
             </div>
             <div className="relative hidden dark:block">
-              <img className="max-w-2xl" src="/images/gallery-dark.png" alt="Header" />
+              <img className="h-auto max-w-full" src="/images/gallery-dark.png" alt="Header" />
             </div>
           </div>
         </div>
