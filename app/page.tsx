@@ -110,7 +110,7 @@ const HomeNavbar: FC = () => {
           <span>Flowbite React</span>
         </Link>
         <div className="ml-4 hidden lg:flex">
-          <DocSearch appId="JUWZAHYJQ9" indexName="flowbite" apiKey="63250f7f96b4ea48c49dbd149aab687c" />
+          <DocSearch appId="4ECQXWXLSO" indexName="flowbite-react" apiKey="9c32f687c9058e3d3f27adff654d48d9" />
         </div>
       </div>
       <div className="flex items-center">
