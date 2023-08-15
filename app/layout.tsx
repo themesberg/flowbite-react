@@ -1,5 +1,6 @@
 import type { Metadata, NextPage } from 'next/types';
 
+import '@docsearch/css';
 import { Inter as InterFont } from 'next/font/google';
 import type { FC, PropsWithChildren } from 'react';
 import '~/app/docs.css';
