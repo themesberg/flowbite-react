@@ -61,6 +61,7 @@
     "tailwind-merge": "^1.13.2"
   },
   "devDependencies": {
+    "@docsearch/react": "^3.5.1",
     "@mdx-js/loader": "^2.3.0",
     "@next/mdx": "^13.4.7",
     "@storybook/addon-a11y": "^7.0.23",

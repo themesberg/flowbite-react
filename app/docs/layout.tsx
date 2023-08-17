@@ -1,5 +1,6 @@
 'use client';
 
+import { DocSearch } from '@docsearch/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -125,9 +126,14 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
           <Image alt="" height={32} src="/favicon.svg" width={32} className="h-8 w-8" />
           <span>Flowbite React</span>
         </Link>
+        <div className="ml-4 hidden lg:flex">
+          <DocSearch appId="4ECQXWXLSO" indexName="flowbite-react" apiKey="9c32f687c9058e3d3f27adff654d48d9" />
+        </div>
       </div>
-      <NavbarLinks />
-      <NavbarIcons />
+      <div className="flex items-center">
+        <NavbarLinks />
+        <NavbarIcons />
+      </div>
     </Navbar>
   );
 };
