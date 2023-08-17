@@ -438,7 +438,7 @@ code.language-html .token.comment {
 /* Search */
 
 .DocSearch.DocSearch-Button {
-  @apply m-0 ml-0 flex h-[40px] w-[40px] items-center justify-center rounded-lg border p-2 shadow-none hover:bg-gray-100 hover:shadow-none focus:shadow-none focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:ring-gray-700 md:mr-0 md:w-52 md:justify-between md:border-solid md:border-gray-300 md:bg-gray-50 xl:w-64 xl:pl-4;
+  @apply m-0 ml-0 flex h-[40px] w-[40px] items-center justify-center rounded-lg border p-2 shadow-none hover:bg-gray-100 hover:shadow-none focus:shadow-none focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:ring-gray-700 md:mr-0 md:w-52 md:justify-between md:border-solid md:border-gray-300 md:bg-gray-50 dark:md:bg-gray-700 xl:w-64 xl:pl-4;
 }
 
 .DocSearch .DocSearch-Button-Placeholder {
