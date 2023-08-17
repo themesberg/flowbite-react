@@ -97,23 +97,23 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
         },
       }}
     >
-      <div className="flex items-center gap-3">
+      <div className="flex items-center">
         {isCollapsed ? (
-          <span className="p-2 lg:hidden">
-            <HiMenuAlt1
-              aria-label="Open sidebar"
-              className="h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-300"
-              onClick={() => setCollapsed(!isCollapsed)}
-            />
-          </span>
+          <button
+            type="button"
+            className="-ml-3 mr-1 p-2 lg:ml-0 lg:mr-0 lg:hidden"
+            onClick={() => setCollapsed(!isCollapsed)}
+          >
+            <HiMenuAlt1 aria-label="Open sidebar" className="h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-300" />
+          </button>
         ) : (
-          <span className="rounded p-2 dark:bg-gray-700 lg:hidden">
-            <HiX
-              aria-label="Close sidebar"
-              className="h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-300"
-              onClick={() => setCollapsed(!isCollapsed)}
-            />
-          </span>
+          <button
+            type="button"
+            className="-ml-3 mr-1 rounded p-2 dark:bg-gray-700 lg:ml-0 lg:mr-0 lg:hidden"
+            onClick={() => setCollapsed(!isCollapsed)}
+          >
+            <HiX aria-label="Close sidebar" className="h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-300" />
+          </button>
         )}
         <Link href="/" className="sr-only">
           Flowbite React
