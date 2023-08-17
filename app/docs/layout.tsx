@@ -20,7 +20,7 @@ import '~/app/docs.css';
 import '~/app/style.css';
 import { Accordion, Badge, Flowbite, Footer, Navbar, Sidebar } from '~/src';
 import { isClient } from '~/src/helpers/is-client';
-// import { CarbonAds } from '../components/carbon-ads';
+import { CarbonAds } from '../components/carbon-ads';
 import { NavbarIcons, NavbarLinks } from '../components/navbar';
 
 interface DocsLayoutState {
@@ -63,7 +63,7 @@ const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
                 <div className="pb:12 mx-auto flex min-w-0 max-w-4xl flex-col divide-y divide-gray-200 px-4 pt-6 dark:divide-gray-800 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
                   <main>{children}</main>
                   <DocsFooter />
-                  {/* <CarbonAds /> */}
+                  <CarbonAds />
                 </div>
                 <div className="right-0 hidden w-64 flex-none pl-8 xl:block xl:text-sm">
                   <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-between overflow-y-auto pb-6">
