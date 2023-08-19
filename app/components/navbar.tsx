@@ -2,7 +2,7 @@ import { DocSearch } from '@docsearch/react';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { BsGithub } from 'react-icons/bs';
-import { SiStorybook } from 'react-icons/si';
+import { SiDiscord, SiStorybook } from 'react-icons/si';
 import { Badge, DarkThemeToggle, Tooltip } from '~/src';
 import pkg from './../../package.json' assert { type: 'json' };
 
@@ -45,11 +45,19 @@ export const NavbarIcons: FC = () => {
         <DocSearch appId="4ECQXWXLSO" indexName="flowbite-react" apiKey="9c32f687c9058e3d3f27adff654d48d9" />
       </div>
       <a
-        href="https://flowbite-react-git-storybook-themesberg.vercel.app"
+        href="https://storybook.flowbite-react.com/"
         className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700 lg:block"
       >
         <Tooltip animation={false} content="View Storybook">
           <SiStorybook aria-hidden className="h-5 w-5" />
+        </Tooltip>
+      </a>
+      <a
+        href="https://discord.gg/4eeurUVvTy"
+        className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700 lg:block"
+      >
+        <Tooltip animation={false} content="Join Discord Community">
+          <SiDiscord aria-hidden className="h-5 w-5" />
         </Tooltip>
       </a>
       <a
