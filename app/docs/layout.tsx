@@ -154,7 +154,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
     <>
       <div
         className={twMerge(
-          'fixed inset-0 z-50 h-full w-64 flex-none lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-6',
+          'fixed inset-0 z-50 h-full w-64 flex-none border-r border-gray-200 dark:border-gray-600 lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-6',
           isCollapsed && 'hidden',
         )}
       >
