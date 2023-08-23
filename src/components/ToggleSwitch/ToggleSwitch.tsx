@@ -26,7 +26,7 @@ export interface FlowbiteToggleSwitchToggleTheme {
 export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
   checked: boolean;
   color?: keyof FlowbiteColors;
-  label: string;
+  label?: string;
   onChange: (checked: boolean) => void;
   theme?: DeepPartial<FlowbiteToggleSwitchTheme>;
 };
@@ -80,13 +80,15 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
             !disabled && checked && theme.toggle.checked.color[color],
           )}
         />
-        <span
-          data-testid="flowbite-toggleswitch-label"
-          id={`${id}-flowbite-toggleswitch-label`}
-          className={theme.root.label}
-        >
-          {label}
-        </span>
+        {label && (
+          <span
+            data-testid="flowbite-toggleswitch-label"
+            id={`${id}-flowbite-toggleswitch-label`}
+            className={theme.root.label}
+          >
+            {label}
+          </span>
+        )}
       </button>
     </>
   );
