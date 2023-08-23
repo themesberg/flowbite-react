@@ -9,6 +9,7 @@ import { HiClipboardCopy, HiOutlineArrowRight } from 'react-icons/hi';
 import '~/app/docs.css';
 import '~/app/style.css';
 import { Button, Flowbite, Footer, Navbar, TextInput, Tooltip } from '~/src';
+import { Banner } from './components/banner';
 import { ComponentCard } from './components/component-card';
 import { NavbarIcons, NavbarLinks } from './components/navbar';
 import { COMPONENTS_DATA } from './data/components';
@@ -64,6 +65,7 @@ export default function HomePageContent() {
   return (
     <Flowbite>
       <div className="relative max-h-screen w-full overflow-auto bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
+        <Banner />
         <HomeNavbar />
         <div className="lg:flex">
           <main
@@ -126,7 +128,7 @@ const HeroSection: FC = () => {
 
   const copyToClipboard = () => {
     setJustCopied(true);
-    navigator.clipboard.writeText('npm i flowbite flowbite-react');
+    navigator.clipboard.writeText('npm i flowbite-react');
     setTimeout(() => setJustCopied(false), 2000);
   };
 
@@ -148,7 +150,7 @@ const HeroSection: FC = () => {
                 <Tooltip content={isJustCopied ? 'Copied!' : 'Copy to clipboard'} className="[&_*]:cursor-pointer">
                   <TextInput
                     onClick={copyToClipboard}
-                    placeholder="npm i flowbite flowbite-react"
+                    placeholder="npm i flowbite-react"
                     readOnly
                     rightIcon={HiClipboardCopy}
                     sizing="md"

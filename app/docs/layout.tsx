@@ -20,6 +20,7 @@ import '~/app/docs.css';
 import '~/app/style.css';
 import { Accordion, Badge, Flowbite, Footer, Navbar, Sidebar } from '~/src';
 import { isClient } from '~/src/helpers/is-client';
+import { Banner } from '../components/banner';
 import { CarbonAds } from '../components/carbon-ads';
 import { NavbarIcons, NavbarLinks } from '../components/navbar';
 
@@ -55,6 +56,7 @@ const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
     <Flowbite>
       <div className="w-full min-w-0 flex-auto lg:static lg:max-h-full lg:overflow-visible">
         <div className="relative max-h-screen w-full overflow-auto bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
+          <Banner />
           <DocsNavbar {...state} />
           <div className="lg:flex">
             <DocsSidebar {...state} />
@@ -152,7 +154,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
     <>
       <div
         className={twMerge(
-          'fixed inset-0 z-50 h-full w-64 flex-none lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-0',
+          'fixed inset-0 z-50 h-full w-64 flex-none lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-6',
           isCollapsed && 'hidden',
         )}
       >

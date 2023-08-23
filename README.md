@@ -45,9 +45,17 @@
 - [Table of Contents](#table-of-contents)
 - [Documentation](#documentation)
 - [Getting started](#getting-started)
+  - [Setup Tailwind CSS](#setup-tailwind-css)
+  - [Install Flowbite React](#install-flowbite-react)
+  - [Try it out](#try-it-out)
+  - [Next steps](#next-steps)
+    - [Next.js](#nextjs)
+    - [Dark mode](#dark-mode)
+    - [Customization](#customization)
+    - [Contributing](#contributing)
 - [Components](#components)
 - [Community](#community)
-- [Contributing](#contributing)
+- [Contributing](#contributing-1)
 - [Figma](#figma)
 - [Copyright and license](#copyright-and-license)
 
@@ -99,7 +107,7 @@ Add Tailwind CSS to a CSS file:
 1. Install Flowbite and Flowbite React:
 
 ```bash
-npm i flowbite flowbite-react # or yarn add flowbite flowbite-react
+npm i flowbite-react # or yarn add flowbite flowbite-react
 ```
 
 2. Add the Flowbite plugin to `tailwind.config.js`, and include content from `flowbite-react`:
