@@ -152,7 +152,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
             </button>
           ))}
         </div>
-        <div className={twMerge(tabItemContainerStyle)}>
+        <div className={twMerge(theme.tablist.tabitemcontainer.base, tabItemContainerStyle)}>
           {tabs.map((tab, index) => (
             <div
               key={index}
