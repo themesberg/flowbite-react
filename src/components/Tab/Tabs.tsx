@@ -145,6 +145,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
               ref={(element) => (tabRefs.current[index] = element as HTMLButtonElement)}
               role="tab"
               tabIndex={index === focusedTab ? 0 : -1}
+              style={{ zIndex: index === focusedTab ? 2 : 1 }}
             >
               {tab.icon && <tab.icon className={theme.tablist.tabitem.icon} />}
               {tab.title}
