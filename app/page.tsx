@@ -128,7 +128,7 @@ const HeroSection: FC = () => {
 
   const copyToClipboard = () => {
     setJustCopied(true);
-    navigator.clipboard.writeText('npm i flowbite flowbite-react');
+    navigator.clipboard.writeText('npm i flowbite-react');
     setTimeout(() => setJustCopied(false), 2000);
   };
 
@@ -150,7 +150,7 @@ const HeroSection: FC = () => {
                 <Tooltip content={isJustCopied ? 'Copied!' : 'Copy to clipboard'} className="[&_*]:cursor-pointer">
                   <TextInput
                     onClick={copyToClipboard}
-                    placeholder="npm i flowbite flowbite-react"
+                    placeholder="npm i flowbite-react"
                     readOnly
                     rightIcon={HiClipboardCopy}
                     sizing="md"
