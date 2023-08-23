@@ -3,7 +3,7 @@ import type { FC } from 'react';
 export const Banner: FC = () => {
   return (
     <div
-      tabindex="-1"
+      tabIndex={-1}
       className="z-50 hidden w-full justify-center border border-b border-gray-200 bg-gray-50 px-4 py-3 dark:border-gray-600 dark:bg-gray-700 lg:flex lg:py-4"
     >
       <div className="items-center md:flex">
