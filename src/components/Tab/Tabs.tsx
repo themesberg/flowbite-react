@@ -12,6 +12,10 @@ export interface FlowbiteTabTheme {
   tablist: {
     base: string;
     styles: TabStyles;
+    tabitemcontainer: {
+      base: string;
+      styles: TabStyles;
+    };
     tabitem: {
       base: string;
       styles: TabStyleItem<TabStyles>;
@@ -104,6 +108,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
     };
 
     const tabItemStyle = theme.tablist.tabitem.styles[style];
+    const tabItemContainerStyle = theme.tablist.tabitemcontainer.styles[style];
 
     useEffect(() => {
       tabRefs.current[focusedTab]?.focus();
@@ -146,7 +151,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
             </button>
           ))}
         </div>
-        <div>
+        <div className={twMerge(tabItemContainerStyle)}>
           {tabs.map((tab, index) => (
             <div
               key={index}
