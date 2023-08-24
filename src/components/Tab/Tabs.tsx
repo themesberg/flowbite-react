@@ -12,15 +12,15 @@ export interface FlowbiteTabTheme {
   tablist: {
     base: string;
     styles: TabStyles;
-    tabitemcontainer: {
-      base: string;
-      styles: TabStyles;
-    };
     tabitem: {
       base: string;
       styles: TabStyleItem<TabStyles>;
       icon: string;
     };
+  };
+  tabitemcontainer: {
+    base: string;
+    styles: TabStyles;
   };
   tabpanel: string;
 }
@@ -108,7 +108,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
     };
 
     const tabItemStyle = theme.tablist.tabitem.styles[style];
-    const tabItemContainerStyle = theme.tablist.tabitemcontainer.styles[style];
+    const tabItemContainerStyle = theme.tabitemcontainer.styles[style];
 
     useEffect(() => {
       tabRefs.current[focusedTab]?.focus();
