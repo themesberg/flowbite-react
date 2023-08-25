@@ -21,7 +21,13 @@ export const sidebarTheme: FlowbiteSidebarTheme = {
     },
     label: {
       base: 'ml-3 flex-1 whitespace-nowrap text-left',
-      icon: 'h-6 w-6',
+      icon: {
+        base: 'h-6 w-6 transition ease-in-out delay-0',
+        open: {
+          on: 'rotate-180',
+          off: '',
+        },
+      },
     },
     list: 'space-y-2 py-2',
   },

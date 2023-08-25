@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { useEffect, useId, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
@@ -17,7 +17,10 @@ export interface FlowbiteSidebarCollapseTheme {
   };
   label: {
     base: string;
-    icon: string;
+    icon: {
+      base: string;
+      open: FlowbiteBoolean;
+    };
   };
   list: string;
 }
@@ -28,6 +31,8 @@ export interface SidebarCollapseProps
     ComponentProps<'button'> {
   onClick?: ComponentProps<'button'>['onClick'];
   open?: boolean;
+  chevronIcon?: FC<ComponentProps<'svg'>>;
+  renderChevronIcon?: (theme: DeepPartial<FlowbiteSidebarCollapseTheme>, open: boolean) => ReactElement;
   theme?: DeepPartial<FlowbiteSidebarCollapseTheme>;
 }
 
@@ -36,6 +41,8 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   className,
   icon: Icon,
   label,
+  chevronIcon: ChevronIcon = HiChevronDown,
+  renderChevronIcon,
   open = false,
   theme: customTheme = {},
   ...props
@@ -83,7 +90,14 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
             <span data-testid="flowbite-sidebar-collapse-label" className={theme.label.base}>
               {label}
             </span>
-            <HiChevronDown aria-hidden className={theme.label.icon} />
+            {renderChevronIcon ? (
+              renderChevronIcon(theme, isOpen)
+            ) : (
+              <ChevronIcon
+                aria-hidden
+                className={twMerge(theme.label.icon.base, theme.label.icon.open[isOpen ? 'on' : 'off'])}
+              />
+            )}
           </>
         )}
       </button>
