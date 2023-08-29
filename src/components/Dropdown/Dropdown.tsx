@@ -1,5 +1,5 @@
 import type { ExtendedRefs, useInteractions } from '@floating-ui/react';
-import { FloatingFocusManager, FloatingList, useListNavigation, useTypeahead } from '@floating-ui/react';
+import { FloatingFocusManager, FloatingList, useListNavigation } from '@floating-ui/react';
 import type {
   ComponentProps,
   Dispatch,
@@ -155,17 +155,6 @@ const DropdownComponent: FC<DropdownProps> = ({
     setOpen(false);
   }, []);
 
-  const handleTypeaheadMatch = useCallback(
-    (index: number | null) => {
-      if (open) {
-        setActiveIndex(index);
-      } else {
-        handleSelect(index);
-      }
-    },
-    [open, handleSelect],
-  );
-
   const { context, floatingStyles, refs } = useBaseFloating<HTMLButtonElement>({
     open,
     setOpen,
@@ -179,18 +168,18 @@ const DropdownComponent: FC<DropdownProps> = ({
     onNavigate: setActiveIndex,
   });
 
-  const typeahead = useTypeahead(context, {
-    listRef: labelsRef,
-    activeIndex,
-    selectedIndex,
-    onMatch: handleTypeaheadMatch,
-  });
+  // const typeahead = useTypeahead(context, {
+  //   listRef: labelsRef,
+  //   activeIndex,
+  //   selectedIndex,
+  //   onMatch: handleTypeaheadMatch,
+  // });
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useFloatingInteractions({
     context,
     role: 'menu',
     trigger,
-    interactions: [listNav, typeahead],
+    interactions: [listNav],
   });
 
   const Icon = useMemo(() => {
