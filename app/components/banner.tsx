@@ -11,10 +11,10 @@ export const Banner: FC = () => {
           <span className="mr-2 hidden rounded bg-cyan-100 px-2.5 py-0.5 text-xs font-semibold text-cyan-800 dark:bg-cyan-200 dark:text-cyan-800 md:inline">
             Community
           </span>
-          We need your feedback and help to support Server Components with Next.js.
+          🗳️ Help us by voting and providing feedback for supporting Server Components in Next.js!
           <a
             className="ml-2 inline-flex items-center text-sm font-medium text-cyan-600 hover:underline dark:text-cyan-500 md:ml-2"
-            href="https://github.com/themesberg/flowbite-react/discussions/923"
+            href="https://github.com/themesberg/flowbite-react/discussions/940"
             target="_blank"
             rel="nofollow noreferred noopener"
           >
