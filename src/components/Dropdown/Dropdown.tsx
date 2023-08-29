@@ -26,7 +26,7 @@ import type { FlowbiteDropdownItemTheme } from './DropdownItem';
 import { DropdownItem } from './DropdownItem';
 
 import { twMerge } from 'tailwind-merge';
-import { useBaseFLoating, useFloatingInteractions } from '../../helpers/use-floating';
+import { useBaseFloating, useFloatingInteractions } from '../../helpers/use-floating';
 
 export interface FlowbiteDropdownFloatingTheme
   extends FlowbiteFloatingTheme,
@@ -166,7 +166,7 @@ const DropdownComponent: FC<DropdownProps> = ({
     [open, handleSelect],
   );
 
-  const { context, floatingStyles, refs } = useBaseFLoating<HTMLButtonElement>({
+  const { context, floatingStyles, refs } = useBaseFloating<HTMLButtonElement>({
     open,
     setOpen,
     placement,
