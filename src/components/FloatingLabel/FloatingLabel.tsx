@@ -1,448 +1,128 @@
-import type { ComponentProps } from 'react';
-import { forwardRef, useId } from 'react';
+import type { ComponentProps, FC, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '~/src/helpers/merge-deep';
-import type { FlowbiteSizes } from '../../';
-import { DeepPartial, useTheme } from '../../';
+import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../../';
+import { HelperText, useTheme } from '../../';
+import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteFloatingLabelTheme {
-  filled_error?: string;
-  outlined_error?: string;
-  standard_error?: string;
-  filled_success?: string;
-  outlined_success?: string;
-  standard_success?: string;
-  filled_error_sm?: string;
-  outlined_error_sm?: string;
-  standard_error_sm?: string;
-  filled_success_sm?: string;
-  outlined_success_sm?: string;
-  standard_success_sm?: string;
-  filled_success_label?: string;
-  outlined_success_label?: string;
-  standard_success_label?: string;
-  filled_success_label_sm?: string;
-  outlined_success_label_sm?: string;
-  standard_success_label_sm?: string;
-  filled_error_label?: string;
-  outlined_error_label?: string;
-  standard_error_label?: string;
-  filled_error_label_sm?: string;
-  outlined_error_label_sm?: string;
-  standard_error_label_sm?: string;
-  success_helptext?: string;
-  error_helptext?: string;
-  default_filled?: string;
-  default_filled_label?: string;
-  default_outlined?: string;
-  default_outlined_label?: string;
-  default_standard?: string;
-  default_standard_label?: string;
-  default_helperText?: string;
-  default_filled_sm?: string;
-  default_filled_label_sm?: string;
-  default_outlined_sm?: string;
-  default_outlined_label_sm?: string;
-  default_standard_sm?: string;
-  default_standard_label_sm?: string;
+    base: string;
+    addon: string;
+    field: {
+        base: string;
+        icon: {
+            base: string;
+            svg: string;
+        };
+        rightIcon: {
+            base: string;
+            svg: string;
+        };
+        input: {
+            base: string;
+            sizes: FlowbiteFloatingLabelSizes;
+            colors: FlowbiteFloatingLabelColors;
+            withIcon: FlowbiteBoolean;
+            withRightIcon: FlowbiteBoolean;
+            withAddon: FlowbiteBoolean;
+            withShadow: FlowbiteBoolean;
+        };
+    };
 }
 
-export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md'> {
-  [key: string]: string;
+export interface FlowbiteFloatingLabelColors
+    extends Pick<FlowbiteColors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
+    [key: string]: string;
+}
+
+export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
+    [key: string]: string;
 }
 
 export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
-  color?: string | null;
-  helperText?: string;
-  sizing?: keyof FlowbiteFloatingLabelSizes;
-  variant: string;
-  label: string;
-  disabled?: boolean;
-  theme?: DeepPartial<FlowbiteFloatingLabelTheme>;
+    addon?: ReactNode;
+    color?: keyof FlowbiteFloatingLabelColors;
+    helperText?: ReactNode;
+    icon?: FC<ComponentProps<'svg'>>;
+    rightIcon?: FC<ComponentProps<'svg'>>;
+    shadow?: boolean;
+    sizing?: keyof FlowbiteFloatingLabelSizes;
+    theme?: DeepPartial<FlowbiteFloatingLabelTheme>;
+    placeholder?: string;
 }
 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
-  (
-    {
-      color = null,
-      helperText,
-      sizing = 'md',
-      variant,
-      label,
-      disabled = false,
-      className,
-      theme: customTheme = {},
-      ...props
+    (
+        {
+            addon,
+            className,
+            color = 'gray',
+            helperText,
+            icon: Icon,
+            rightIcon: RightIcon,
+            shadow,
+            sizing = 'md',
+            theme: customTheme = {},
+            placeholder,
+            ...props
+        },
+        ref,
+    ) => {
+        const theme = mergeDeep(useTheme().theme.textInput, customTheme);
+
+        return (
+            <>
+                <div className={twMerge(theme.base, className, "relative")}>
+                    {addon && <span className={theme.addon}>{addon}</span>}
+                    <div className={theme.field.base}>
+                        {Icon && (
+                            <div className={theme.field.icon.base}>
+                                <Icon className={theme.field.icon.svg} />
+                            </div>
+                        )}
+                        {RightIcon && (
+                            <div data-testid="right-icon" className={theme.field.rightIcon.base}>
+                                <RightIcon className={theme.field.rightIcon.svg} />
+                            </div>
+                        )}
+                        <input
+                            id="filled_success"
+                            className={twMerge(
+                                theme.field.input.base,
+                                theme.field.input.colors[color],
+                                theme.field.input.sizes[sizing],
+                                theme.field.input.withIcon[Icon ? 'on' : 'off'],
+                                theme.field.input.withRightIcon[RightIcon ? 'on' : 'off'],
+                                theme.field.input.withAddon[addon ? 'on' : 'off'],
+                                theme.field.input.withShadow[shadow ? 'on' : 'off'],
+                            )}
+                            {...props}
+                            ref={ref}
+                        />
+                        {
+                            placeholder  && (
+                                <label htmlFor="filled_success"
+                                       className="absolute text-sm text-green-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+                                    {placeholder}
+                                </label>
+                            )
+                        }
+                    </div>
+
+                </div>
+                {helperText && <HelperText color={color}>{helperText}</HelperText>}
+
+                <div className="grid items-end gap-6 mb-6 md:grid-cols-3">
+                    <div>
+                        <div className="relative">
+                            <input type="text" id="filled_success1" aria-describedby="filled_success_help" className="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-green-600 dark:border-green-500 appearance-none dark:text-white dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
+                            <label htmlFor="filled_success1" className="absolute text-sm text-green-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Filled success</label>
+                        </div>
+                    </div>
+                </div>
+            </>
+        );
     },
-    ref,
-  ) => {
-    const theme = mergeDeep(useTheme().theme.floatingLabel, customTheme);
-    const randomId = useId();
-
-    if (sizing === 'md') {
-      return (
-        <>
-          {color === null && (
-            <div>
-              {variant === 'filled' && (
-                <div className="relative">
-                  <input
-                    type="text"
-                    id={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={twMerge(theme.default_filled, className)}
-                    placeholder=" "
-                    data-testid="floating-label-1"
-                    disabled={disabled}
-                    {...props}
-                    ref={ref}
-                  />
-                  <label
-                    htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={twMerge(theme.default_filled_label, className)}
-                  >
-                    {label}
-                  </label>
-                </div>
-              )}
-              {variant === 'outlined' && (
-                <div className="relative">
-                  <input
-                    type="text"
-                    id={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={twMerge(theme.default_outlined, className)}
-                    placeholder=" "
-                    data-testid="floating-label-2"
-                    disabled={disabled}
-                    {...props}
-                    ref={ref}
-                  />
-                  <label
-                    htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={twMerge(theme.default_outlined_label, className)}
-                  >
-                    {label}
-                  </label>
-                </div>
-              )}
-              {variant === 'standard' && (
-                <div className="relative z-0">
-                  <input
-                    type="text"
-                    id={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={twMerge(theme.default_standard, className)}
-                    placeholder=" "
-                    data-testid="floating-label-3"
-                    disabled={disabled}
-                    {...props}
-                    ref={ref}
-                  />
-                  <label
-                    htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={twMerge(theme.default_standard_label, className)}
-                  >
-                    {label}
-                  </label>
-                </div>
-              )}
-              <p id={'helper_text' + randomId} className={twMerge(theme.default_helperText, className)}>
-                {' '}
-                {helperText}
-              </p>
-            </div>
-          )}
-
-          {color !== null && (
-            <div>
-              {variant === 'filled' && (
-                <div>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id={props.id ? props.id : 'floatingLabel' + randomId}
-                      aria-describedby="filled_success_help"
-                      className={twMerge(color === 'success' ? theme.filled_success : theme.filled_error, className)}
-                      placeholder=" "
-                      data-testid="floating-label-4"
-                      disabled={disabled}
-                      {...props}
-                      ref={ref}
-                    />
-                    <label
-                      htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                      className={twMerge(
-                        color === 'success' ? theme.filled_success_label : theme.filled_error_label,
-                        className,
-                      )}
-                    >
-                      {label}
-                    </label>
-                  </div>
-                  <p
-                    id={'filled_helper_text' + randomId}
-                    className={twMerge(color === 'success' ? theme.success_helptext : theme.error_helptext, className)}
-                  >
-                    {helperText}
-                  </p>
-                </div>
-              )}
-              {variant === 'outlined' && (
-                <div>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id={props.id ? props.id : 'floatingLabel' + randomId}
-                      aria-describedby="outlined_success_help"
-                      className={twMerge(
-                        color === 'success' ? theme.outlined_success : theme.outlined_error,
-                        className,
-                      )}
-                      placeholder=" "
-                      data-testid="floating-label-5"
-                      disabled={disabled}
-                      {...props}
-                      ref={ref}
-                    />
-                    <label
-                      htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                      className={twMerge(
-                        color === 'success' ? theme.outlined_success_label : theme.outlined_error_label,
-                        className,
-                      )}
-                    >
-                      {label}
-                    </label>
-                  </div>
-                  <p
-                    id={'outlined_helper_text' + randomId}
-                    className={twMerge(color === 'success' ? theme.success_helptext : theme.error_helptext, className)}
-                  >
-                    {helperText}
-                  </p>
-                </div>
-              )}
-              {variant === 'standard' && (
-                <div>
-                  <div className="relative z-0">
-                    <input
-                      type="text"
-                      id={props.id ? props.id : 'floatingLabel' + randomId}
-                      aria-describedby="standard_success_help"
-                      className={twMerge(
-                        color === 'success' ? theme.standard_success : theme.standard_error,
-                        className,
-                      )}
-                      placeholder=" "
-                      data-testid="floating-label-6"
-                      disabled={disabled}
-                      {...props}
-                      ref={ref}
-                    />
-                    <label
-                      htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                      className={twMerge(
-                        color === 'success' ? theme.standard_success_label : theme.standard_error_label,
-                        className,
-                      )}
-                    >
-                      {label}
-                    </label>
-                  </div>
-                  <p
-                    id={'standard_helper_text' + randomId}
-                    className={twMerge(color === 'success' ? theme.success_helptext : theme.error_helptext, className)}
-                  >
-                    {helperText}
-                  </p>
-                </div>
-              )}
-            </div>
-          )}
-        </>
-      );
-    } else {
-      return (
-        <>
-          {color === null && (
-            <div>
-              {variant === 'filled' && (
-                <div className="relative">
-                  <input
-                    type="text"
-                    id={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={twMerge(theme.default_filled_sm, className)}
-                    placeholder=" "
-                    data-testid="floating-label-1"
-                    disabled={disabled}
-                    {...props}
-                    ref={ref}
-                  />
-                  <label
-                    htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={twMerge(theme.default_filled_label_sm, className)}
-                  >
-                    {label}
-                  </label>
-                </div>
-              )}
-              {variant === 'outlined' && (
-                <div className="relative">
-                  <input
-                    type="text"
-                    id={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={twMerge(theme.default_outlined_sm, className)}
-                    placeholder=" "
-                    data-testid="floating-label-2"
-                    disabled={disabled}
-                    {...props}
-                    ref={ref}
-                  />
-                  <label
-                    htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={twMerge(theme.default_outlined_label_sm, className)}
-                  >
-                    {label}
-                  </label>
-                </div>
-              )}
-              {variant === 'standard' && (
-                <div className="relative z-0">
-                  <input
-                    type="text"
-                    id={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={twMerge(theme.default_standard_sm, className)}
-                    placeholder=" "
-                    data-testid="floating-label-3"
-                    disabled={disabled}
-                    {...props}
-                    ref={ref}
-                  />
-                  <label
-                    htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={twMerge(theme.default_standard_label_sm, className)}
-                  >
-                    {label}
-                  </label>
-                </div>
-              )}
-              <p id={'helper_text' + randomId} className={twMerge(theme.default_helperText, className)}>
-                {helperText}
-              </p>
-            </div>
-          )}
-
-          {color !== null && (
-            <div>
-              {variant === 'filled' && (
-                <div>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id={props.id ? props.id : 'floatingLabel' + randomId}
-                      aria-describedby="filled_success_help"
-                      className={twMerge(
-                        color === 'success' ? theme.filled_success_sm : theme.filled_error_sm,
-                        className,
-                      )}
-                      placeholder=" "
-                      data-testid="floating-label-4"
-                      disabled={disabled}
-                      {...props}
-                      ref={ref}
-                    />
-                    <label
-                      htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                      className={twMerge(
-                        color === 'success' ? theme.filled_success_label_sm : theme.filled_error_label_sm,
-                        className,
-                      )}
-                    >
-                      {label}
-                    </label>
-                  </div>
-                  <p
-                    id={'filled_helper_text' + randomId}
-                    className={twMerge(color === 'success' ? theme.success_helptext : theme.error_helptext, className)}
-                  >
-                    {helperText}
-                  </p>
-                </div>
-              )}
-              {variant === 'outlined' && (
-                <div>
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id={props.id ? props.id : 'floatingLabel' + randomId}
-                      aria-describedby="outlined_success_help"
-                      className={twMerge(
-                        color === 'success' ? theme.outlined_success_sm : theme.outlined_error_sm,
-                        className,
-                      )}
-                      placeholder=" "
-                      data-testid="floating-label-5"
-                      disabled={disabled}
-                      {...props}
-                      ref={ref}
-                    />
-                    <label
-                      htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                      className={twMerge(
-                        color === 'success' ? theme.outlined_success_label_sm : theme.outlined_error_label_sm,
-                        className,
-                      )}
-                    >
-                      {label}
-                    </label>
-                  </div>
-                  <p
-                    id={'outlined_helper_text' + randomId}
-                    className={twMerge(color === 'success' ? theme.success_helptext : theme.error_helptext, className)}
-                  >
-                    {helperText}
-                  </p>
-                </div>
-              )}
-              {variant === 'standard' && (
-                <div>
-                  <div className="relative z-0">
-                    <input
-                      type="text"
-                      id={props.id ? props.id : 'floatingLabel' + randomId}
-                      aria-describedby="standard_success_help"
-                      className={twMerge(
-                        color === 'success' ? theme.standard_success_sm : theme.standard_error_sm,
-                        className,
-                      )}
-                      placeholder=" "
-                      data-testid="floating-label-6"
-                      disabled={disabled}
-                      {...props}
-                      ref={ref}
-                    />
-                    <label
-                      htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                      className={twMerge(
-                        color === 'success' ? theme.standard_success_label_sm : theme.standard_error_label_sm,
-                        className,
-                      )}
-                    >
-                      {label}
-                    </label>
-                  </div>
-                  <p
-                    id={'standard_helper_text' + randomId}
-                    className={twMerge(color === 'success' ? theme.success_helptext : theme.error_helptext, className)}
-                  >
-                    {helperText}
-                  </p>
-                </div>
-              )}
-            </div>
-          )}
-        </>
-      );
-    }
-  },
 );
 
 FloatingLabel.displayName = 'FloatingLabel';
