@@ -1,199 +1,128 @@
-import type { ComponentProps } from 'react';
+import type { ComponentProps, FC, ReactNode } from 'react';
 import { forwardRef } from 'react';
-import type { FlowbiteSizes } from '../../';
+import { twMerge } from 'tailwind-merge';
+import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../../';
+import { HelperText, useTheme } from '../../';
+import { mergeDeep } from '../../helpers/merge-deep';
 
-export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md'> {
-  [key: string]: string;
+export interface FlowbiteFloatingLabelTheme {
+    base: string;
+    addon: string;
+    field: {
+        base: string;
+        icon: {
+            base: string;
+            svg: string;
+        };
+        rightIcon: {
+            base: string;
+            svg: string;
+        };
+        input: {
+            base: string;
+            sizes: FlowbiteFloatingLabelSizes;
+            colors: FlowbiteFloatingLabelColors;
+            withIcon: FlowbiteBoolean;
+            withRightIcon: FlowbiteBoolean;
+            withAddon: FlowbiteBoolean;
+            withShadow: FlowbiteBoolean;
+        };
+    };
+}
+
+export interface FlowbiteFloatingLabelColors
+    extends Pick<FlowbiteColors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
+    [key: string]: string;
+}
+
+export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
+    [key: string]: string;
 }
 
 export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
-  color?: string | null;
-  helperText?: string;
-  sizing?: keyof FlowbiteFloatingLabelSizes;
-  variant: string;
-  label: string;
-  disabled?: boolean;
+    addon?: ReactNode;
+    color?: keyof FlowbiteFloatingLabelColors;
+    helperText?: ReactNode;
+    icon?: FC<ComponentProps<'svg'>>;
+    rightIcon?: FC<ComponentProps<'svg'>>;
+    shadow?: boolean;
+    sizing?: keyof FlowbiteFloatingLabelSizes;
+    theme?: DeepPartial<FlowbiteFloatingLabelTheme>;
+    placeholder?: string;
 }
 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
-  ({ color = null, helperText, sizing = 'md', variant, label, disabled = false, ...props }, ref) => {
-    const inputColor = color === 'success' ? 'green' : 'red';
+    (
+        {
+            addon,
+            className,
+            color = 'gray',
+            helperText,
+            icon: Icon,
+            rightIcon: RightIcon,
+            shadow,
+            sizing = 'md',
+            theme: customTheme = {},
+            placeholder,
+            ...props
+        },
+        ref,
+    ) => {
+        const theme = mergeDeep(useTheme().theme.textInput, customTheme);
 
-    const size_class = sizing === 'md' ? 'text-sm' : sizing !== null ? 'text-xs' : 'text-sm';
-    const randomId = Math.random().toString(36).substring(6);
+        return (
+            <>
+                <div className={twMerge(theme.base, className, "relative")}>
+                    {addon && <span className={theme.addon}>{addon}</span>}
+                    <div className={theme.field.base}>
+                        {Icon && (
+                            <div className={theme.field.icon.base}>
+                                <Icon className={theme.field.icon.svg} />
+                            </div>
+                        )}
+                        {RightIcon && (
+                            <div data-testid="right-icon" className={theme.field.rightIcon.base}>
+                                <RightIcon className={theme.field.rightIcon.svg} />
+                            </div>
+                        )}
+                        <input
+                            id="filled_success"
+                            className={twMerge(
+                                theme.field.input.base,
+                                theme.field.input.colors[color],
+                                theme.field.input.sizes[sizing],
+                                theme.field.input.withIcon[Icon ? 'on' : 'off'],
+                                theme.field.input.withRightIcon[RightIcon ? 'on' : 'off'],
+                                theme.field.input.withAddon[addon ? 'on' : 'off'],
+                                theme.field.input.withShadow[shadow ? 'on' : 'off'],
+                            )}
+                            {...props}
+                            ref={ref}
+                        />
+                        {
+                            placeholder  && (
+                                <label htmlFor="filled_success"
+                                       className="absolute text-sm text-green-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+                                    {placeholder}
+                                </label>
+                            )
+                        }
+                    </div>
 
-    const filled_error = `block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full ${size_class} text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 appearance-none dark:text-white dark:border-red-500 focus:outline-none focus:ring-0 border-red-600 focus:border-red-600 dark:focus-border-red-500 peer`;
-    const outlined_error = `block px-2.5 pb-2.5 pt-4 w-full ${size_class} text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer`;
-    const standard_error = `block py-2.5 px-0 w-full ${size_class} text-gray-900 bg-transparent border-0 border-b-2 border-red-600 appearance-none dark:text-white dark:border-red-500 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer`;
-
-    const filled_success = `block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full ${size_class} text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-green-600 dark:border-green-500 appearance-none dark:text-white dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer`;
-    const outlined_success = `block px-2.5 pb-2.5 pt-4 w-full ${size_class} text-gray-900 bg-transparent rounded-lg border-1 border-green-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer`;
-    const standard_success = `block py-2.5 px-0 w-full ${size_class} text-gray-900 bg-transparent border-0 border-b-2 border-green-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer`;
-    return (
-      <>
-        {color === null && (
-          <div>
-            {variant === 'filled' && (
-              <div className="relative">
-                <input
-                  type="text"
-                  id={props.id ? props.id : 'floatingLabel' + randomId}
-                  className={`peer block w-full appearance-none rounded-t-lg border-0 border-b-2 border-gray-300 bg-gray-50 px-2.5 pb-2.5 pt-5 ${size_class} text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500`}
-                  placeholder=" "
-                  data-testid="floating-label-1"
-                  disabled={disabled}
-                  {...props}
-                  ref={ref}
-                />
-                <label
-                  htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                  className={`absolute left-2.5 top-4 z-10 origin-[0] -translate-y-4 scale-75 transform ${size_class} text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500`}
-                >
-                  {label}
-                </label>
-              </div>
-            )}
-            {variant === 'outlined' && (
-              <div className="relative">
-                <input
-                  type="text"
-                  id={props.id ? props.id : 'floatingLabel' + randomId}
-                  className={`border-1 peer block w-full appearance-none rounded-lg border-gray-300 bg-transparent px-2.5 pb-2.5 pt-4 ${size_class} text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500`}
-                  placeholder=" "
-                  data-testid="floating-label-2"
-                  disabled={disabled}
-                  {...props}
-                  ref={ref}
-                />
-                <label
-                  htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                  className={`absolute left-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 ${size_class} text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-blue-600 dark:bg-gray-900 dark:text-gray-400 peer-focus:dark:text-blue-500`}
-                >
-                  {label}
-                </label>
-              </div>
-            )}
-            {variant === 'standard' && (
-              <div className="relative z-0">
-                <input
-                  type="text"
-                  id={props.id ? props.id : 'floatingLabel' + randomId}
-                  className={`peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 ${size_class} text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500`}
-                  placeholder=" "
-                  data-testid="floating-label-3"
-                  disabled={disabled}
-                  {...props}
-                  ref={ref}
-                />
-                <label
-                  htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                  className={`absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform ${size_class} text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500`}
-                >
-                  {label}
-                </label>
-              </div>
-            )}
-            <p id="floatingLabelInputHelp" className={`mt-2 text-xs text-${inputColor} dark:text-${inputColor}`}>
-              {' '}
-              {helperText}
-            </p>
-          </div>
-        )}
-
-        {color !== null && (
-          <div>
-            {variant === 'filled' && (
-              <div>
-                <div className="relative">
-                  <input
-                    type="text"
-                    id={props.id ? props.id : 'floatingLabel' + randomId}
-                    aria-describedby="filled_success_help"
-                    className={color === 'success' ? filled_success : filled_error}
-                    placeholder=" "
-                    data-testid="floating-label-4"
-                    disabled={disabled}
-                    {...props}
-                    ref={ref}
-                  />
-                  <label
-                    htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={`absolute left-2.5 top-4 z-10 origin-[0] -translate-y-4 scale-75 transform ${size_class} text-${inputColor}-600 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 dark:text-${inputColor}-500`}
-                  >
-                    {label}
-                  </label>
                 </div>
-                <p
-                  id="filled_success_help"
-                  className={`mt-2 text-xs text-${inputColor}-600 dark:text-${inputColor}-400`}
-                >
-                  {helperText}
-                </p>
-              </div>
-            )}
-            {variant === 'outlined' && (
-              <div>
-                <div className="relative">
-                  <input
-                    type="text"
-                    id={props.id ? props.id : 'floatingLabel' + randomId}
-                    aria-describedby="outlined_success_help"
-                    className={color === 'success' ? outlined_success : outlined_error}
-                    placeholder=" "
-                    data-testid="floating-label-5"
-                    disabled={disabled}
-                    {...props}
-                    ref={ref}
-                  />
-                  <label
-                    htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={`absolute left-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 ${size_class} text-${inputColor}-600 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 dark:bg-gray-900 dark:text-${inputColor}-500`}
-                  >
-                    {label}
-                  </label>
+                {helperText && <HelperText color={color}>{helperText}</HelperText>}
+
+                <div className="grid items-end gap-6 mb-6 md:grid-cols-3">
+                    <div>
+                        <div className="relative">
+                            <input type="text" id="filled_success1" aria-describedby="filled_success_help" className="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-green-600 dark:border-green-500 appearance-none dark:text-white dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
+                            <label htmlFor="filled_success1" className="absolute text-sm text-green-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Filled success</label>
+                        </div>
+                    </div>
                 </div>
-                <p
-                  id="outlined_success_help"
-                  className={`mt-2 text-xs text-${inputColor}-600 dark:text-${inputColor}-400`}
-                >
-                  {helperText}
-                </p>
-              </div>
-            )}
-            {variant === 'standard' && (
-              <div>
-                <div className="relative z-0">
-                  <input
-                    type="text"
-                    id={props.id ? props.id : 'floatingLabel' + randomId}
-                    aria-describedby="standard_success_help"
-                    className={color === 'success' ? standard_success : standard_error}
-                    placeholder=" "
-                    data-testid="floating-label-6"
-                    disabled={disabled}
-                    {...props}
-                    ref={ref}
-                  />
-                  <label
-                    htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-                    className={`absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform ${size_class} text-${inputColor}-600 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 dark:text-${inputColor}-500`}
-                  >
-                    {label}
-                  </label>
-                </div>
-                <p
-                  id="standard_success_help"
-                  className={`mt-2 text-xs text-${inputColor}-600 dark:text-${inputColor}-400`}
-                >
-                  {helperText}
-                </p>
-              </div>
-            )}
-          </div>
-        )}
-      </>
-    );
-  },
+            </>
+        );
+    },
 );
 
 FloatingLabel.displayName = 'FloatingLabel';
