@@ -2,8 +2,8 @@ import type { ComponentProps } from 'react';
 import { forwardRef, useId } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '~/src/helpers/merge-deep';
-import type { FlowbiteSizes } from '../../';
-import { DeepPartial, useTheme } from '../../';
+import type { DeepPartial, FlowbiteSizes } from '../../';
+import { useTheme } from '../../';
 
 export interface FlowbiteFloatingLabelTheme {
   filled_error?: string;
