@@ -65,8 +65,8 @@ const PaginationComponent: FC<PaginationProps> = ({
 }) => {
   const theme = mergeDeep(useTheme().theme.pagination, customTheme);
 
-  const firstPage = Math.max(1, currentPage - 3);
-  const lastPage = Math.min(currentPage + 3, totalPages);
+  const lastPage = Math.min(Math.max(currentPage + 2, 5), totalPages);
+  const firstPage = Math.max(1, lastPage - 4);
 
   const goToNextPage = (): void => {
     onPageChange(Math.min(currentPage + 1, totalPages));

@@ -7,7 +7,7 @@ interface DocsContentLayoutProps {
   children: React.ReactNode;
 }
 
-export const DocsContentLayout: FC<DocsContentLayoutProps> = function ({ title, description, children }) {
+export const DocsContentLayout: FC<DocsContentLayoutProps> = ({ title, description, children }) => {
   return (
     <div className="divide-y divide-gray-200 dark:divide-gray-800">
       <div className="pb-8">
