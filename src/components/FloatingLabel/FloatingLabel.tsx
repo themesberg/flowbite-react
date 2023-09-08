@@ -1,5 +1,5 @@
-import type { ComponentProps, FC, ReactNode } from 'react';
-import { forwardRef } from 'react';
+import type { ComponentProps } from 'react';
+import {forwardRef} from 'react';
 import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../../';
 import { HelperText, useTheme } from '../../';
@@ -40,83 +40,61 @@ export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | '
 }
 
 export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
-    addon?: ReactNode;
-    color?: keyof FlowbiteFloatingLabelColors;
-    helperText?: ReactNode;
-    icon?: FC<ComponentProps<'svg'>>;
-    rightIcon?: FC<ComponentProps<'svg'>>;
-    shadow?: boolean;
+    color?: string;
+    helperText?: string;
     sizing?: keyof FlowbiteFloatingLabelSizes;
     theme?: DeepPartial<FlowbiteFloatingLabelTheme>;
-    placeholder?: string;
+    buttonStyle: string;
+    label: string;
 }
 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
     (
         {
-            addon,
             className,
             color = 'gray',
             helperText,
-            icon: Icon,
-            rightIcon: RightIcon,
-            shadow,
-            sizing = 'md',
             theme: customTheme = {},
-            placeholder,
+            buttonStyle,
+            label,
             ...props
         },
         ref,
     ) => {
         const theme = mergeDeep(useTheme().theme.textInput, customTheme);
+        const inputColor = (color === "success") ? "green-600" : "red-600"
+        console.log(inputColor, "input color")
 
+        const filledStyles = `block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-${inputColor} dark:border-${inputColor} appearance-none dark:text-white dark:focus:border-${inputColor} focus:outline-none focus:ring-0 focus:border-${inputColor} peer`
+        const outlinedStyles = `block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-${inputColor} appearance-none dark:text-white dark:border-${inputColor} dark:focus:border-${inputColor} focus:outline-none focus:ring-0 focus:border-${inputColor} peer`
+        const standardStyles = `block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-${inputColor} appearance-none dark:text-white dark:border-${inputColor} dark:focus:border-${inputColor} focus:outline-none focus:ring-0 focus:border-${inputColor} peer`
+
+        let buttonTheme;
+
+        if (buttonStyle === 'filled') {
+            buttonTheme = filledStyles;
+        } else if (buttonStyle === 'outlined') {
+            buttonTheme = outlinedStyles;
+        } else {
+            buttonTheme = standardStyles;
+        }
         return (
             <>
                 <div className={twMerge(theme.base, className, "relative")}>
-                    {addon && <span className={theme.addon}>{addon}</span>}
                     <div className={theme.field.base}>
-                        {Icon && (
-                            <div className={theme.field.icon.base}>
-                                <Icon className={theme.field.icon.svg} />
-                            </div>
-                        )}
-                        {RightIcon && (
-                            <div data-testid="right-icon" className={theme.field.rightIcon.base}>
-                                <RightIcon className={theme.field.rightIcon.svg} />
-                            </div>
-                        )}
-                        <input
-                            id="filled_success"
-                            className={twMerge(
-                                theme.field.input.base,
-                                theme.field.input.colors[color],
-                                theme.field.input.sizes[sizing],
-                                theme.field.input.withIcon[Icon ? 'on' : 'off'],
-                                theme.field.input.withRightIcon[RightIcon ? 'on' : 'off'],
-                                theme.field.input.withAddon[addon ? 'on' : 'off'],
-                                theme.field.input.withShadow[shadow ? 'on' : 'off'],
-                            )}
-                            {...props}
-                            ref={ref}
-                        />
-                        {
-                            placeholder  && (
+                        <div>
+                            <div className="relative">
+                                <input type="text" id="filled_success" aria-describedby="filled_success_help"
+                                       className={`${buttonTheme}`}
+                                       placeholder=" "
+                                       {...props}
+                                       ref={ref}/>
                                 <label htmlFor="filled_success"
-                                       className="absolute text-sm text-green-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
-                                    {placeholder}
+                                       className={`absolute text-sm text-${inputColor} dark:text-${inputColor} duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4`}>
+                                    {label}
                                 </label>
-                            )
-                        }
-                    </div>
-
-                </div>
-                {helperText && <HelperText color={color}>{helperText}</HelperText>}
-
-                <div className="grid items-end gap-6 mb-6 md:grid-cols-3">
-                    <div>
-                        <div className="relative">
-                            <input type="text" id="filled_success1" aria-describedby="filled_success_help" className="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-green-600 dark:border-green-500 appearance-none dark:text-white dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
-                            <label htmlFor="filled_success1" className="absolute text-sm text-green-600 dark:text-green-500 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Filled success</label>
+                            </div>
+                            <p id="filled_success_help" className={`mt-2 text-xs text-${inputColor} dark:text-${inputColor}`}> {helperText}</p>
                         </div>
                     </div>
                 </div>
