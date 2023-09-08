@@ -9,6 +9,7 @@ import { cardTheme } from './components/Card/theme';
 import { carouselTheme } from './components/Carousel/theme';
 import { checkboxTheme } from './components/Checkbox/theme';
 import { darkThemeToggleTheme } from './components/DarkThemeToggle/theme';
+import { datePickerTheme } from './components/Datepicker/theme';
 import { dropdownTheme } from './components/Dropdown/theme';
 import { fileInputTheme } from './components/FileInput/theme';
 import { footerTheme } from './components/Footer/theme';
@@ -45,6 +46,7 @@ export const theme: FlowbiteTheme = {
   card: cardTheme,
   carousel: carouselTheme,
   checkbox: checkboxTheme,
+  datepicker: datePickerTheme,
   darkThemeToggle: darkThemeToggleTheme,
   dropdown: dropdownTheme,
   fileInput: fileInputTheme,
