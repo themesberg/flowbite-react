@@ -20,7 +20,11 @@ import { Timeline } from 'flowbite-react';
 
 Use the `<Timeline>` React component and the child components to create a list of items inside the timeline component featuring the date, title, description and even a button.
 
-<CodePreview importFlowbiteReact="Button, Timeline" title="Default timeline">
+<CodePreview
+  importExternal="import { HiArrowNarrowRight } from 'react-icons/hi';"
+  importFlowbiteReact="Button, Timeline"
+  title="Default timeline"
+>
   <Timeline>
     <Timeline.Item>
       <Timeline.Point />
@@ -65,7 +69,11 @@ Use the `<Timeline>` React component and the child components to create a list o
 
 Use this example to show the timeline component and the child components in a vertical alignment.
 
-<CodePreview importFlowbiteReact="Button, Timeline" title="Vertical timeline">
+<CodePreview
+  importExternal="import { HiCalendar } from 'react-icons/hi';"
+  importFlowbiteReact="Button, Timeline"
+  title="Vertical timeline"
+>
   <Timeline>
     <Timeline.Item>
       <Timeline.Point icon={HiCalendar} />
@@ -110,7 +118,7 @@ Use this example to show the timeline component and the child components in a ve
 
 Use the `horizontal` prop to show the timeline component and the child components in a horizontal alignment.
 
-<CodePreview title="Stepper timeline">
+<CodePreview importExternal="import { HiCalendar } from 'react-icons/hi';" title="Stepper timeline">
   <Timeline horizontal>
     <Timeline.Item>
       <Timeline.Point icon={HiCalendar} />
