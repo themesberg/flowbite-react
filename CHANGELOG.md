@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.0](https://github.com/themesberg/flowbite-react/compare/v0.5.0...v0.6.0) (2023-09-09)
+
+### Features
+
+* add `<Banner>` component ([#949](https://github.com/themesberg/flowbite-react/issues/949)) ([ce05949](https://github.com/themesberg/flowbite-react/commit/ce059497cc8512db841fae4fdda82857c3b92911))
+* add `<Datepicker>` component ([#835](https://github.com/themesberg/flowbite-react/issues/835)) ([ff12d41](https://github.com/themesberg/flowbite-react/commit/ff12d41e7f940ac2033f38df7951d1352933c3a0)), closes [#626](https://github.com/themesberg/flowbite-react/issues/626)
+* **component:** new pauseOnHover prop to <Carousel>, provide quick information with chance to pause ([#918](https://github.com/themesberg/flowbite-react/issues/918)) ([f69e1a4](https://github.com/themesberg/flowbite-react/commit/f69e1a4e13047a552e31281fb9faadd956e899d8))
+* **sidebar:** add custom chevron icon to collapse ([#891](https://github.com/themesberg/flowbite-react/issues/891)) ([d92c2cc](https://github.com/themesberg/flowbite-react/commit/d92c2cc690dd8f6886e35de84e6c1e3b93ef96ee))
+
+
+### Bug Fixes
+
+* **button.tsx:** Adding back displayName ([#890](https://github.com/themesberg/flowbite-react/issues/890)) ([8e24575](https://github.com/themesberg/flowbite-react/commit/8e245754b5057eb0b7cd27d95814f695c708a3de))
+* **button.tsx:** Button `as` prop internal logic + TS props ([#885](https://github.com/themesberg/flowbite-react/issues/885)) ([942735e](https://github.com/themesberg/flowbite-react/commit/942735e7dcd2ceea00927a0420c9e92a6998926c)), closes [#865](https://github.com/themesberg/flowbite-react/issues/865)
+* **pagination:** center selected page ([#931](https://github.com/themesberg/flowbite-react/issues/931)) ([cc1292d](https://github.com/themesberg/flowbite-react/commit/cc1292d1dc4aeb39b3e91b1243944121f456f49f)), closes [#908](https://github.com/themesberg/flowbite-react/issues/908)
+* **select.tsx/badge.tsx:** With icon classes preference ([#877](https://github.com/themesberg/flowbite-react/issues/877)) ([ebe605e](https://github.com/themesberg/flowbite-react/commit/ebe605edd2a541ab542a45c51d776a3dd92b9c00)), closes [#869](https://github.com/themesberg/flowbite-react/issues/869)
+
 ## [0.5.0](https://github.com/themesberg/flowbite-react/compare/v0.4.11...v0.5.0) (2023-07-21)
 
 
