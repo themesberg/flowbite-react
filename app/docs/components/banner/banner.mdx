@@ -23,7 +23,8 @@ import { Banner } from 'flowbite-react';
 Use this free example to show a text message for announcement with a CTA link, an icon element and a close button to dismiss the banner.
 
 <CodePreview
-  importExternal="import { MdAnnouncement } from 'react-icons/md';"
+  importExternal="import { HiX } from 'react-icons/hi';
+import { MdAnnouncement } from 'react-icons/md';"
   title="Default sticky banner"
   code={`<Banner>
   <div className="fixed top-0 left-0 z-50 flex justify-between w-full p-4 border-b border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
@@ -67,7 +68,8 @@ Use this free example to show a text message for announcement with a CTA link, a
 This example can be used to position the sticky banner to the bottom side of the page instead of the top side.
 
 <CodePreview
-  importExternal="import { MdPercent } from 'react-icons/md';"
+  importExternal="import { HiArrowRight, HiX } from 'react-icons/hi';
+import { MdPercent } from 'react-icons/md';"
   title="Bottom banner position"
   code={`<Banner>
   <div className="fixed bottom-0 left-0 z-50 flex justify-between w-full p-4 border-t border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
@@ -122,6 +124,7 @@ This example can be used to position the sticky banner to the bottom side of the
 Use this free example to show a text message for announcement with a CTA link, an icon element and a close button to dismiss the banner. Set a different width by using the `max-w-{*}` utility classes from Tailwind CSS.
 
 <CodePreview
+  importExternal="import { HiX } from 'react-icons/hi';"
   importFlowbiteReact="Banner, Button"
   title="Marketing CTA banner"
   code={`<Banner>
@@ -176,6 +179,7 @@ Use this free example to show a text message for announcement with a CTA link, a
 This example can be used to encourage your website visitors to sign up to your email newsletter by showing an inline form inside the sticky banner on the top side of your page.
 
 <CodePreview
+  importExternal="import { HiX } from 'react-icons/hi';"
   importFlowbiteReact="Banner, Button, Label, TextInput"
   title="Newsletter sign-up banner"
   code={`<Banner>
