@@ -1,7 +1,6 @@
 import type { ComponentPropsWithoutRef, ElementType, ForwardedRef } from 'react';
 import { type ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
-import genericForwardRef from '~/src/helpers/generic-forward-ref';
 import type {
   DeepPartial,
   FlowbiteBoolean,
@@ -11,6 +10,7 @@ import type {
   FlowbiteSizes,
 } from '../../';
 import { Spinner, useTheme } from '../../';
+import genericForwardRef from '../../helpers/generic-forward-ref';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
 import type { PositionInButtonGroup } from './ButtonGroup';
