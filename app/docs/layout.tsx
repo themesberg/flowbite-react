@@ -254,6 +254,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                     <SidebarLink href="/docs/components/alert">Alert</SidebarLink>
                     <SidebarLink href="/docs/components/avatar">Avatar</SidebarLink>
                     <SidebarLink href="/docs/components/badge">Badge</SidebarLink>
+                    <SidebarLink href="/docs/components/banner">Banner</SidebarLink>
                     <SidebarLink href="/docs/components/breadcrumb">Breadcrumb</SidebarLink>
                     <SidebarLink href="/docs/components/button">Button</SidebarLink>
                     <SidebarLink href="/docs/components/button-group">Button group</SidebarLink>
