@@ -2,7 +2,7 @@ import type { ComponentProps } from 'react';
 import {forwardRef} from 'react';
 import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../../';
-import { HelperText, useTheme } from '../../';
+import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteFloatingLabelTheme {
@@ -31,43 +31,45 @@ export interface FlowbiteFloatingLabelTheme {
 }
 
 export interface FlowbiteFloatingLabelColors
-    extends Pick<FlowbiteColors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
+    extends Pick<FlowbiteColors, 'gray' | 'failure' | 'success'> {
     [key: string]: string;
 }
 
-export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
+export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md' > {
     [key: string]: string;
 }
 
 export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
-    color?: string;
+    error?: boolean;
     helperText?: string;
     sizing?: keyof FlowbiteFloatingLabelSizes;
     theme?: DeepPartial<FlowbiteFloatingLabelTheme>;
     buttonStyle: string;
     label: string;
+    disabled?: boolean;
 }
 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
     (
         {
             className,
-            color = 'gray',
+            error = null,
             helperText,
             theme: customTheme = {},
+            sizing= "md",
             buttonStyle,
             label,
+            disabled= false,
             ...props
         },
         ref,
     ) => {
         const theme = mergeDeep(useTheme().theme.textInput, customTheme);
-        const inputColor = (color === "success") ? "green-600" : "red-600"
-        console.log(inputColor, "input color")
+        const inputColor = (error === false) ? "green-600" : (error === null ? "gray-400" : "red-600");
 
-        const filledStyles = `block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-${inputColor} dark:border-${inputColor} appearance-none dark:text-white dark:focus:border-${inputColor} focus:outline-none focus:ring-0 focus:border-${inputColor} peer`
-        const outlinedStyles = `block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-${inputColor} appearance-none dark:text-white dark:border-${inputColor} dark:focus:border-${inputColor} focus:outline-none focus:ring-0 focus:border-${inputColor} peer`
-        const standardStyles = `block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-${inputColor} appearance-none dark:text-white dark:border-${inputColor} dark:focus:border-${inputColor} focus:outline-none focus:ring-0 focus:border-${inputColor} peer`
+        const filledStyles = `block rounded-t-lg px-2.5 pb-2.5 pt-${sizing === "sm"?"4":"5"} w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-${inputColor} dark:border-${inputColor} appearance-none dark:text-white dark:focus:border-${inputColor} focus:outline-none focus:ring-0 focus:border-${inputColor} peer`
+        const outlinedStyles = `block px-2.5 pb-2.5 pt-${sizing === "sm"?"3":"4"} w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-${inputColor} appearance-none dark:text-white dark:border-${inputColor} dark:focus:border-${inputColor} focus:outline-none focus:ring-0 focus:border-${inputColor} peer`
+        const standardStyles = `block py-${sizing === "sm"?"2":"2.5"} px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-${inputColor} appearance-none dark:text-white dark:border-${inputColor} dark:focus:border-${inputColor} focus:outline-none focus:ring-0 focus:border-${inputColor} peer`
 
         let buttonTheme;
 
@@ -84,17 +86,18 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
                     <div className={theme.field.base}>
                         <div>
                             <div className="relative">
-                                <input type="text" id="filled_success" aria-describedby="filled_success_help"
+                                <input type="text" id="floatingLabelInput" aria-describedby="floatingLabelInputHelp"
                                        className={`${buttonTheme}`}
                                        placeholder=" "
+                                       disabled={disabled}
                                        {...props}
                                        ref={ref}/>
-                                <label htmlFor="filled_success"
+                                <label htmlFor="floatingLabelInput"
                                        className={`absolute text-sm text-${inputColor} dark:text-${inputColor} duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4`}>
                                     {label}
                                 </label>
                             </div>
-                            <p id="filled_success_help" className={`mt-2 text-xs text-${inputColor} dark:text-${inputColor}`}> {helperText}</p>
+                            <p id="floatingLabelInputHelp" className={`mt-2 text-xs text-${inputColor} dark:text-${inputColor}`}> {helperText}</p>
                         </div>
                     </div>
                 </div>
