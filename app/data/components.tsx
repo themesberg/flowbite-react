@@ -232,14 +232,6 @@ export const COMPONENTS_DATA: Component[] = [
     link: `/docs/components/tooltip`,
     classes: 'w-24',
   },
-  {
-    id: '29',
-    name: 'Datepicker',
-    image: '/images/components/datepicker.svg',
-    imageDark: '/images/components/datepicker-dark.svg',
-    link: `/docs/plugins/datepicker`,
-    classes: 'w-28',
-  },
   // {
   //   id: '30',
   //   name: 'Input Field',
@@ -456,14 +448,14 @@ export const COMPONENTS_DATA: Component[] = [
   //   link: `/docs/components/bottom-navigation`,
   //   classes: 'w-64'
   // },
-  // {
-  //   id: '57',
-  //   name: 'Sticky Banner',
-  //   image: '/images/components/banner.svg',
-  //   imageDark: '/images/components/banner-dark.svg',
-  //   link: `/docs/components/banner`,
-  //   classes: 'w-64'
-  // },
+  {
+    id: '57',
+    name: 'Sticky Banner',
+    image: '/images/components/banner.svg',
+    imageDark: '/images/components/banner-dark.svg',
+    link: `/docs/components/banner`,
+    classes: 'w-64',
+  },
   // {
   //   id: '58',
   //   name: 'Gallery (Masonry)',
