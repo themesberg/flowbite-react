@@ -9,43 +9,8 @@ export default {
 
 const Template: Story<FloatingLabelProps> = (args) => <FloatingLabel {...args} />;
 
-export const DefaultFilled = Template.bind({});
-DefaultFilled.args = {
-  buttonStyle: 'filled',
-  label: 'Label',
-};
-export const DefaultOutlined = Template.bind({});
-DefaultOutlined.args = {
-  buttonStyle: 'outlined',
-  label: 'Label',
-};
-export const DefaultStandard = Template.bind({});
-DefaultStandard.args = {
-  buttonStyle: 'standard',
-  label: 'Label',
-};
-
-export const DisabledFilled = Template.bind({});
-DisabledFilled.args = {
-  buttonStyle: 'filled',
-  label: 'Label',
-  disabled: true,
-};
-export const DisabledOutlined = Template.bind({});
-DisabledOutlined.args = {
-  buttonStyle: 'outlined',
-  label: 'Label',
-  disabled: true,
-};
-
-export const DisabledStandard = Template.bind({});
-DisabledStandard.args = {
-  buttonStyle: 'standard',
-  label: 'Label',
-  disabled: true,
-};
-
 export const FilledSuccess = Template.bind({});
+FilledSuccess.storyName = 'Filled success';
 FilledSuccess.args = {
   error: false,
   buttonStyle: 'filled',
