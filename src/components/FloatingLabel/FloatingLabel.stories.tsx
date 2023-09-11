@@ -5,9 +5,45 @@ import { FloatingLabel } from './FloatingLabel';
 export default {
   title: 'Components/FloatingLabel',
   component: FloatingLabel,
+  tags: ['autodocs'],
 } as Meta;
 
 const Template: Story<FloatingLabelProps> = (args) => <FloatingLabel {...args} />;
+
+export const DefaultFilled = Template.bind({});
+DefaultFilled.args = {
+  variant: 'filled',
+  label: 'Label',
+};
+export const DefaultOutlined = Template.bind({});
+DefaultOutlined.args = {
+  variant: 'outlined',
+  label: 'Label',
+};
+export const DefaultStandard = Template.bind({});
+DefaultStandard.args = {
+  variant: 'standard',
+  label: 'Label',
+};
+
+export const DisabledFilled = Template.bind({});
+DisabledFilled.args = {
+  variant: 'filled',
+  label: 'Label',
+  disabled: true,
+};
+export const DisabledOutlined = Template.bind({});
+DisabledOutlined.args = {
+  variant: 'outlined',
+  label: 'Label',
+  disabled: true,
+};
+export const DisabledStandard = Template.bind({});
+DisabledStandard.args = {
+  variant: 'standard',
+  label: 'Label',
+  disabled: true,
+};
 
 export const FilledSuccess = Template.bind({});
 FilledSuccess.args = {
