@@ -276,6 +276,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                       </span>
                     </SidebarLink>
                     <SidebarLink href="/docs/components/dropdown">Dropdown</SidebarLink>
+                    <SidebarLink href="/docs/components/floating-label">Floating Label</SidebarLink>
                     <SidebarLink href="/docs/components/footer">Footer</SidebarLink>
                     <SidebarLink href="/docs/components/forms">Forms</SidebarLink>
                     <SidebarLink href="/docs/components/kbd">KBD</SidebarLink>
