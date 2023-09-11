@@ -254,13 +254,27 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                     <SidebarLink href="/docs/components/alert">Alert</SidebarLink>
                     <SidebarLink href="/docs/components/avatar">Avatar</SidebarLink>
                     <SidebarLink href="/docs/components/badge">Badge</SidebarLink>
-                    <SidebarLink href="/docs/components/banner">Banner</SidebarLink>
+                    <SidebarLink href="/docs/components/banner">
+                      <span className="flex items-center gap-2">
+                        Banner{' '}
+                        <Badge color="cyan" className="px-2">
+                          New
+                        </Badge>
+                      </span>
+                    </SidebarLink>
                     <SidebarLink href="/docs/components/breadcrumb">Breadcrumb</SidebarLink>
                     <SidebarLink href="/docs/components/button">Button</SidebarLink>
                     <SidebarLink href="/docs/components/button-group">Button group</SidebarLink>
                     <SidebarLink href="/docs/components/card">Card</SidebarLink>
                     <SidebarLink href="/docs/components/carousel">Carousel</SidebarLink>
-                    <SidebarLink href="/docs/components/datepicker">Datepicker</SidebarLink>
+                    <SidebarLink href="/docs/components/datepicker">
+                      <span className="flex items-center gap-2">
+                        Datepicker{' '}
+                        <Badge color="cyan" className="px-2">
+                          New
+                        </Badge>
+                      </span>
+                    </SidebarLink>
                     <SidebarLink href="/docs/components/dropdown">Dropdown</SidebarLink>
                     <SidebarLink href="/docs/components/footer">Footer</SidebarLink>
                     <SidebarLink href="/docs/components/forms">Forms</SidebarLink>
