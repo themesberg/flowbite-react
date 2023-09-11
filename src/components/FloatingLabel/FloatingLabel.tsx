@@ -1,9 +1,9 @@
 import type { ComponentProps } from 'react';
 import {forwardRef} from 'react';
-import { twMerge } from 'tailwind-merge';
+// import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../../';
-import { useTheme } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+// import { useTheme } from '../../';
+// import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteFloatingLabelTheme {
     base: string;
@@ -64,7 +64,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
         },
         ref,
     ) => {
-        const theme = mergeDeep(useTheme().theme.textInput, customTheme);
+        // const theme = mergeDeep(useTheme().theme.textInput, customTheme);
         const inputColor = (error === false) ? "green-600" : (error === null ? "gray-400" : "red-600");
 
         const filledStyles = `block rounded-t-lg px-2.5 pb-2.5 pt-${sizing === "sm"?"4":"5"} w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-${inputColor} dark:border-${inputColor} appearance-none dark:text-white dark:focus:border-${inputColor} focus:outline-none focus:ring-0 focus:border-${inputColor} peer`
@@ -81,27 +81,21 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
             buttonTheme = standardStyles;
         }
         return (
-            <>
-                <div className={twMerge(theme.base, className, "relative")}>
-                    <div className={theme.field.base}>
-                        <div>
-                            <div className="relative">
-                                <input type="text" id="floatingLabelInput" aria-describedby="floatingLabelInputHelp"
-                                       className={`${buttonTheme}`}
-                                       placeholder=" "
-                                       disabled={disabled}
-                                       {...props}
-                                       ref={ref}/>
-                                <label htmlFor="floatingLabelInput"
-                                       className={`absolute text-sm text-${inputColor} dark:text-${inputColor} duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4`}>
-                                    {label}
-                                </label>
-                            </div>
-                            <p id="floatingLabelInputHelp" className={`mt-2 text-xs text-${inputColor} dark:text-${inputColor}`}> {helperText}</p>
-                        </div>
-                    </div>
+            <div>
+                <div className="relative">
+                    <input type="text" id="floatingLabelInput" aria-describedby="floatingLabelInputHelp"
+                           className={`${buttonTheme}`}
+                           placeholder=" "
+                           disabled={disabled}
+                           {...props}
+                           ref={ref}/>
+                    <label htmlFor="floatingLabelInput"
+                           className={`absolute text-sm text-${inputColor} dark:text-${inputColor} duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1`}>
+                        {label}
+                    </label>
                 </div>
-            </>
+                <p id="floatingLabelInputHelp" className={`mt-2 text-xs text-${inputColor} dark:text-${inputColor}`}> {helperText}</p>
+            </div>
         );
     },
 );
