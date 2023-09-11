@@ -6,7 +6,6 @@ import type {Meta, Story} from "@storybook/react";
 export default {
     title: 'Components/FloatingLabel',
     component: FloatingLabel,
-    tags: ['autodocs'],
 } as Meta;
 
 const Template: Story<FloatingLabelProps> = (args) => <FloatingLabel {...args} />;
