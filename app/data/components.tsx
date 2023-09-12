@@ -310,7 +310,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/floating-label.svg',
     imageDark: '/images/components/floating-label-dark.svg',
     link: `/docs/forms/floating-label`,
-    classes: 'w-40'
+    classes: 'w-40',
   },
   // {
   //   id: '40',
