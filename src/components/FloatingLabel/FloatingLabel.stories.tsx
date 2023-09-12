@@ -1,129 +1,114 @@
-import type {FloatingLabelProps} from "~/src/components/FloatingLabel/FloatingLabel";
-import { FloatingLabel } from './FloatingLabel';
-import type {Meta, Story} from "@storybook/react";
+import type { FloatingLabelProps } from "~/src/components/FloatingLabel/FloatingLabel";
+import { FloatingLabel } from "./FloatingLabel";
+import type { Meta, Story } from "@storybook/react";
 
 
 export default {
-    title: 'Components/FloatingLabel',
-    component: FloatingLabel,
+  title: "Components/FloatingLabel",
+  component: FloatingLabel
 } as Meta;
 
 const Template: Story<FloatingLabelProps> = (args) => <FloatingLabel {...args} />;
 
-export const DefaultFilled = Template.bind({})
-DefaultFilled.storyName = "Default Filled"
+export const DefaultFilled = Template.bind({});
 DefaultFilled.args = {
-    buttonStyle: "filled",
-    label: "Label"
-}
-export const DefaultOutlined = Template.bind({})
-DefaultOutlined.storyName = "Default Outlined"
+  buttonStyle: "filled",
+  label: "Label"
+};
+export const DefaultOutlined = Template.bind({});
 DefaultOutlined.args = {
-    buttonStyle: "outlined",
-    label: "Label"
-}
-export const DefaultStandard = Template.bind({})
-DefaultStandard.storyName = "Default Standard"
+  buttonStyle: "outlined",
+  label: "Label"
+};
+export const DefaultStandard = Template.bind({});
 DefaultStandard.args = {
-    buttonStyle: "standard",
-    label: "Label"
-}
+  buttonStyle: "standard",
+  label: "Label"
+};
 
-export const DisabledFilled = Template.bind({})
-DisabledFilled.storyName = "Disabled Filled"
+export const DisabledFilled = Template.bind({});
 DisabledFilled.args = {
-    buttonStyle: "filled",
-    label: "Label",
-    disabled: true
-}
-export const DisabledOutlined = Template.bind({})
-DisabledOutlined.storyName = "Disabled Outlined"
+  buttonStyle: "filled",
+  label: "Label",
+  disabled: true
+};
+export const DisabledOutlined = Template.bind({});
 DisabledOutlined.args = {
-    buttonStyle: "outlined",
-    label: "Label",
-    disabled: true
-}
-export const DisabledStandard = Template.bind({})
-DisabledStandard.storyName = "Disabled Standard"
+  buttonStyle: "outlined",
+  label: "Label",
+  disabled: true
+};
+export const DisabledStandard = Template.bind({});
 DisabledStandard.args = {
-    buttonStyle: "standard",
-    label: "Label",
-    disabled: true
-}
+  buttonStyle: "standard",
+  label: "Label",
+  disabled: true
+};
 
-export const FilledSuccess = Template.bind({})
-FilledSuccess.storyName = 'Filled success'
+export const FilledSuccess = Template.bind({});
 FilledSuccess.args = {
-    error: false,
-    buttonStyle: "filled",
-    label: "Label"
-}
-export const OutlinedSuccess = Template.bind({})
-OutlinedSuccess.storyName = 'Outlined success'
+  error: false,
+  buttonStyle: "filled",
+  label: "Label"
+};
+export const OutlinedSuccess = Template.bind({});
 OutlinedSuccess.args = {
-    error: false,
-    buttonStyle: "outlined",
-    label: "Label"
-}
-export const StandardSuccess = Template.bind({})
-StandardSuccess.storyName = 'Standard success'
+  error: false,
+  buttonStyle: "outlined",
+  label: "Label"
+};
+export const StandardSuccess = Template.bind({});
 StandardSuccess.args = {
-    error: false,
-    buttonStyle: "standard",
-    label: "Label"
-}
-export const FilledError = Template.bind({})
-FilledError.storyName = 'Filled Error '
+  error: false,
+  buttonStyle: "standard",
+  label: "Label"
+};
+export const FilledError = Template.bind({});
+FilledError.storyName = "Filled Error ";
 FilledError.args = {
-    error: true,
-    buttonStyle: "filled",
-    label: "Label"
-}
-export const OutlinedError = Template.bind({})
-OutlinedError.storyName = 'Outlined Error'
+  error: true,
+  buttonStyle: "filled",
+  label: "Label"
+};
+export const OutlinedError = Template.bind({});
 OutlinedError.args = {
-    error: true,
-    buttonStyle: "outlined",
-    label: "Label"
-}
-export const StandardError = Template.bind({})
-
+  error: true,
+  buttonStyle: "outlined",
+  label: "Label"
+};
+export const StandardError = Template.bind({});
 StandardError.args = {
-    error: true,
-    buttonStyle: "standard",
-    label: "Label"
-}
+  error: true,
+  buttonStyle: "standard",
+  label: "Label"
+};
 
-export const SmallFilled = Template.bind({})
-SmallFilled.storyName = "Small Filled"
+export const SmallFilled = Template.bind({});
 SmallFilled.args = {
-    buttonStyle: "filled",
-    label: "Small Filled",
-    sizing: "sm"
-}
-export const SmallOutlined = Template.bind({})
-SmallOutlined.storyName = "Small Outlined"
+  buttonStyle: "filled",
+  label: "Small Filled",
+  sizing: "sm"
+};
+export const SmallOutlined = Template.bind({});
 SmallOutlined.args = {
-    buttonStyle: "outlined",
-    label: "Small Outlined",
-    sizing: "sm"
-}
+  buttonStyle: "outlined",
+  label: "Small Outlined",
+  sizing: "sm"
+};
 
-export const SmallStandard = Template.bind({})
-SmallStandard.storyName="Small Standard"
+export const SmallStandard = Template.bind({});
 SmallStandard.args = {
-    buttonStyle: "standard",
-    label: "Small Standard",
-    sizing: "sm"
-}
+  buttonStyle: "standard",
+  label: "Small Standard",
+  sizing: "sm"
+};
 
-export const HelperText = Template.bind({})
-HelperText.storyName = "Helper Text"
+export const HelperText = Template.bind({});
 HelperText.args = {
-    buttonStyle: "filled",
-    label: "Floating Helper",
-    helperText: "Remember, contributions to this topic should follow our Community Guidelines."
-}
+  buttonStyle: "filled",
+  label: "Floating Helper",
+  helperText: "Remember, contributions to this topic should follow our Community Guidelines."
+};
 
 
 
