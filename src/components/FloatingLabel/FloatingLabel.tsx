@@ -23,11 +23,11 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
 import {forwardRef} from 'react';
 import type {FlowbiteSizes } from '../../';
 
-export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, "sm" | "md"> {
+export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md'> {
   [key: string]: string;
 }
 
-export interface FloatingLabelProps extends Omit<ComponentProps<"input">, "ref" | "color"> {
+export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
   error?: boolean;
   helperText?: string;
   sizing?: keyof FlowbiteFloatingLabelSizes;
@@ -256,4 +256,4 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
   },
 );
 
-FloatingLabel.displayName = "FloatingLabel";
+FloatingLabel.displayName = 'FloatingLabel';
