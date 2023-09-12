@@ -17,6 +17,7 @@ FilledSuccess.args = {
   label: 'Label',
 };
 export const OutlinedSuccess = Template.bind({});
+OutlinedSuccess.storyName = 'Outlined success';
 OutlinedSuccess.args = {
   error: false,
   buttonStyle: 'outlined',
