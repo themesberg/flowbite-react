@@ -1,4 +1,5 @@
 import type { ComponentProps } from 'react';
+<<<<<<< HEAD
 import { forwardRef } from 'react';
 import type { FlowbiteSizes } from '../../';
 
@@ -18,6 +19,38 @@ export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
   ({ color = null, helperText, sizing = 'md', variant, label, disabled = false, ...props }, ref) => {
     const inputColor = color === 'success' ? 'green' : 'red';
+=======
+import {forwardRef} from 'react';
+import type {FlowbiteSizes } from '../../';
+
+export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md' > {
+    [key: string]: string;
+}
+
+export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
+    error?: boolean;
+    helperText?: string;
+    sizing?: keyof FlowbiteFloatingLabelSizes;
+    buttonStyle: string;
+    label: string;
+    disabled?: boolean;
+}
+
+export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
+    (
+        {
+            error = null,
+            helperText,
+            sizing= "md",
+            buttonStyle,
+            label,
+            disabled= false,
+            ...props
+        },
+        ref,
+    ) => {
+        const inputColor = (error === false) ? "green-600" : (error === null ? "gray-400" : "red-600");
+>>>>>>> 4dc011c (feat: wrote tests for the the Floating label component)
 
     const size_class = sizing === 'md' ? 'text-sm' : sizing !== null ? 'text-xs' : 'text-sm';
     const randomId = Math.random().toString(36).substring(6);
@@ -26,6 +59,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
     const outlined_error = `block px-2.5 pb-2.5 pt-4 w-full ${size_class} text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer`;
     const standard_error = `block py-2.5 px-0 w-full ${size_class} text-gray-900 bg-transparent border-0 border-b-2 border-red-600 appearance-none dark:text-white dark:border-red-500 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer`;
 
+<<<<<<< HEAD
     const filled_success = `block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full ${size_class} text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-green-600 dark:border-green-500 appearance-none dark:text-white dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer`;
     const outlined_success = `block px-2.5 pb-2.5 pt-4 w-full ${size_class} text-gray-900 bg-transparent rounded-lg border-1 border-green-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer`;
     const standard_success = `block py-2.5 px-0 w-full ${size_class} text-gray-900 bg-transparent border-0 border-b-2 border-green-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer`;
@@ -122,6 +156,32 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
                   >
                     {label}
                   </label>
+=======
+        if (buttonStyle === 'filled') {
+            buttonTheme = filledStyles;
+        } else if (buttonStyle === 'outlined') {
+            buttonTheme = outlinedStyles;
+        } else {
+            buttonTheme = standardStyles;
+        }
+        const randomId = Math.random().toString(36).substring(6);
+        return (
+            <div>
+                <div className="relative">
+                    <input type="text"
+                           id={props.id? props.id : "floatingLabel"+ randomId }
+                           aria-describedby="floatingLabelInputHelp"
+                           className={`${buttonTheme}`}
+                           placeholder=" "
+                           data-testid="floating-label"
+                           disabled={disabled}
+                           {...props}
+                           ref={ref}/>
+                    <label htmlFor={props.id? props.id : "floatingLabel" + randomId}
+                           className={`absolute text-sm text-${inputColor} dark:text-${inputColor} duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1`}>
+                        {label}
+                    </label>
+>>>>>>> 4dc011c (feat: wrote tests for the the Floating label component)
                 </div>
                 <p
                   id="filled_success_help"
