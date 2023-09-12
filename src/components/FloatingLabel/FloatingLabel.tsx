@@ -1,39 +1,6 @@
 import type { ComponentProps } from 'react';
 import {forwardRef} from 'react';
-// import { twMerge } from 'tailwind-merge';
-import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../../';
-// import { useTheme } from '../../';
-// import { mergeDeep } from '../../helpers/merge-deep';
-
-export interface FlowbiteFloatingLabelTheme {
-    base: string;
-    addon: string;
-    field: {
-        base: string;
-        icon: {
-            base: string;
-            svg: string;
-        };
-        rightIcon: {
-            base: string;
-            svg: string;
-        };
-        input: {
-            base: string;
-            sizes: FlowbiteFloatingLabelSizes;
-            colors: FlowbiteFloatingLabelColors;
-            withIcon: FlowbiteBoolean;
-            withRightIcon: FlowbiteBoolean;
-            withAddon: FlowbiteBoolean;
-            withShadow: FlowbiteBoolean;
-        };
-    };
-}
-
-export interface FlowbiteFloatingLabelColors
-    extends Pick<FlowbiteColors, 'gray' | 'failure' | 'success'> {
-    [key: string]: string;
-}
+import type {FlowbiteSizes } from '../../';
 
 export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md' > {
     [key: string]: string;
@@ -43,7 +10,6 @@ export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' 
     error?: boolean;
     helperText?: string;
     sizing?: keyof FlowbiteFloatingLabelSizes;
-    theme?: DeepPartial<FlowbiteFloatingLabelTheme>;
     buttonStyle: string;
     label: string;
     disabled?: boolean;
@@ -52,10 +18,8 @@ export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
     (
         {
-            className,
             error = null,
             helperText,
-            theme: customTheme = {},
             sizing= "md",
             buttonStyle,
             label,
@@ -64,7 +28,6 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
         },
         ref,
     ) => {
-        // const theme = mergeDeep(useTheme().theme.textInput, customTheme);
         const inputColor = (error === false) ? "green-600" : (error === null ? "gray-400" : "red-600");
 
         const filledStyles = `block rounded-t-lg px-2.5 pb-2.5 pt-${sizing === "sm"?"4":"5"} w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-${inputColor} dark:border-${inputColor} appearance-none dark:text-white dark:focus:border-${inputColor} focus:outline-none focus:ring-0 focus:border-${inputColor} peer`
@@ -80,16 +43,20 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
         } else {
             buttonTheme = standardStyles;
         }
+        const randomId = Math.random().toString(36).substring(6);
         return (
             <div>
                 <div className="relative">
-                    <input type="text" id="floatingLabelInput" aria-describedby="floatingLabelInputHelp"
+                    <input type="text"
+                           id={props.id? props.id : "floatingLabel"+ randomId }
+                           aria-describedby="floatingLabelInputHelp"
                            className={`${buttonTheme}`}
                            placeholder=" "
+                           data-testid="floating-label"
                            disabled={disabled}
                            {...props}
                            ref={ref}/>
-                    <label htmlFor="floatingLabelInput"
+                    <label htmlFor={props.id? props.id : "floatingLabel" + randomId}
                            className={`absolute text-sm text-${inputColor} dark:text-${inputColor} duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1`}>
                         {label}
                     </label>
