@@ -1,59 +1,66 @@
-import {FloatingLabel} from "~/src/components/FloatingLabel/FloatingLabel";
-import {CodePreview} from "~/app/components/code-preview";
+import { FloatingLabel } from '~/src/components/FloatingLabel/FloatingLabel';
+import { CodePreview } from '~/app/components/code-preview';
 
 ## Table of Contents
 
 The floating label style was first pioneered by Google in its infamous Material UI design system and it’s basically a label tag which floats just above the input field when it is being focused or already has content inside.
 
 On this page you will find a three different input field styles including a standard, outlined, and filled style including validation styles and sizes coded with Tailwind CSS and supported for dark mod
+
 ## Floating label example
+
 Get started with the following three styles for the floating label component and use the label tag as a visual placeholder using the peer-placeholder-shown and peer-focus utility classes from Tailwind CSS.
 
 <CodePreview title="Floating Label" className="grid grid-flow-col justify-stretch space-x-4">
-    <FloatingLabel buttonStyle="filled" label="Label" />
-    <FloatingLabel buttonStyle="outlined" label="Label" />
-    <FloatingLabel buttonStyle="standard" label="Label" />
+  <FloatingLabel buttonStyle="filled" label="Label" />
+  <FloatingLabel buttonStyle="outlined" label="Label" />
+  <FloatingLabel buttonStyle="standard" label="Label" />
 </CodePreview>
 
 ## Disabled state
+
 Apply the disabled attribute to the input fields to disallow the user from changing the content.
 
 <CodePreview title="Floating Label" className="grid grid-flow-col justify-stretch space-x-4">
-    <FloatingLabel buttonStyle="filled" label="Label" disabled={true} />
-    <FloatingLabel buttonStyle="outlined" label="Label" disabled={true}/>
-    <FloatingLabel buttonStyle="standard" label="Label" disabled={true}/>
+  <FloatingLabel buttonStyle="filled" label="Label" disabled={true} />
+  <FloatingLabel buttonStyle="outlined" label="Label" disabled={true} />
+  <FloatingLabel buttonStyle="standard" label="Label" disabled={true} />
 </CodePreview>
 
 ## Validation
+
 Use the following examples of input validation for the success and error messages by applying the validation text below the input field and using the green or red color classes from Tailwind CSS.
+
 <CodePreview title="Floating Label" className="flex flex-col">
-    <div className="grid grid-flow-col justify-stretch space-x-4">
-        <FloatingLabel buttonStyle="filled" label="Filled Success" error={false} />
-        <FloatingLabel buttonStyle="outlined" label="Outlined Success" error={false}/>
-        <FloatingLabel buttonStyle="standard" label="Standard Success" error={false}/>
-    </div>
-    <div className="grid grid-flow-col justify-stretch space-x-4">
-        <FloatingLabel buttonStyle="filled" label="Filled Error" error={true} />
-        <FloatingLabel buttonStyle="outlined" label="Outlined Error" error={true}/>
-        <FloatingLabel buttonStyle="standard" label="Standard Error" error={true}/>
-    </div>
+  <div className="grid grid-flow-col justify-stretch space-x-4">
+    <FloatingLabel buttonStyle="filled" label="Filled Success" error={false} />
+    <FloatingLabel buttonStyle="outlined" label="Outlined Success" error={false} />
+    <FloatingLabel buttonStyle="standard" label="Standard Success" error={false} />
+  </div>
+  <div className="grid grid-flow-col justify-stretch space-x-4">
+    <FloatingLabel buttonStyle="filled" label="Filled Error" error={true} />
+    <FloatingLabel buttonStyle="outlined" label="Outlined Error" error={true} />
+    <FloatingLabel buttonStyle="standard" label="Standard Error" error={true} />
+  </div>
 </CodePreview>
-## Sizes
-Use the small and default sizes of the floating label input fields from the following example.
+## Sizes Use the small and default sizes of the floating label input fields from the following example.
 <CodePreview title="Floating Label" className="flex flex-col">
-    <div className="grid grid-flow-col justify-stretch space-x-4">
-        <FloatingLabel buttonStyle="filled" label="Small Filled" sizing="sm" />
-        <FloatingLabel buttonStyle="outlined" label="Small Outlined" sizing="sm"/>
-        <FloatingLabel buttonStyle="standard" label="Small Standard" sizing="sm"/>
-    </div>
-    <div className="grid grid-flow-col justify-stretch space-x-4">
-        <FloatingLabel buttonStyle="filled" label="Default Filled"/>
-        <FloatingLabel buttonStyle="outlined" label="Default Outlined"/>
-        <FloatingLabel buttonStyle="standard" label="Default Standard"/>
-    </div>
+  <div className="grid grid-flow-col justify-stretch space-x-4">
+    <FloatingLabel buttonStyle="filled" label="Small Filled" sizing="sm" />
+    <FloatingLabel buttonStyle="outlined" label="Small Outlined" sizing="sm" />
+    <FloatingLabel buttonStyle="standard" label="Small Standard" sizing="sm" />
+  </div>
+  <div className="grid grid-flow-col justify-stretch space-x-4">
+    <FloatingLabel buttonStyle="filled" label="Default Filled" />
+    <FloatingLabel buttonStyle="outlined" label="Default Outlined" />
+    <FloatingLabel buttonStyle="standard" label="Default Standard" />
+  </div>
 </CodePreview>
-## Helper text
-Add a helper text in addition to the label if you want to show more information below the input field.
+## Helper text Add a helper text in addition to the label if you want to show more information below the input field.
 <CodePreview title="Floating Label" className="grid grid-flow-col justify-stretch space-x-4">
-    <FloatingLabel buttonStyle="filled" label="Floating Helper"  helperText="Remember, contributions to this topic should follow our Community Guidelines."/>
+  <FloatingLabel
+    buttonStyle="filled"
+    label="Floating Helper"
+    helperText="Remember, contributions to this topic should follow our Community Guidelines."
+  />
 </CodePreview>
