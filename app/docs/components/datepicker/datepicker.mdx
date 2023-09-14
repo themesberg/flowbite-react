@@ -1,0 +1,99 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { Datepicker, WeekStart, theme } from '~/src';
+import Image from 'next/image';
+
+The Datepicker component from Flowbite React is an advanced UI element that you can use to allow users to pick a date from a calendar view by selecting the day, month, and year values which then will be available in the input field and state of the component.
+
+Follow the examples below to see how you can use the Datepicker component by importing it from the Flowbite React library, customize the colors and behaviour of the component by overriding the default theme variables and using the props from React.
+
+Import the component from `flowbite-react` to use the datepicker element:
+
+```jsx
+'use client';
+
+import { Datepicker } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## Default Datepicker
+
+Use this example to show a simple datepicker component.
+
+<CodePreview title="Datepicker component">
+  <Datepicker />
+</CodePreview>
+
+## Localization
+
+Use the `language` prop to set the language of the datepicker component.
+
+The `labelTodayButton` and `labelClearButton` can also be used to update the text of the buttons.
+
+<CodePreview title="Datepicker component">
+  <Datepicker language="pt-BR" labelTodayButton="Hoje" labelClearButton="Limpar" />
+</CodePreview>
+
+## Limit the date
+
+By using the `minDate` and `maxDate` props you can limit the date range that the user can select.
+
+<CodePreview title="Datepicker component">
+  <Datepicker minDate={new Date(2023, 0, 1)} maxDate={new Date(2023, 3, 30)} />
+</CodePreview>
+
+## Week start
+
+The `weekStart` prop can be used to set the first day of the week inside the datepicker component.
+
+<pre className="language-ts">
+  <code>
+    {JSON.stringify(
+      Object.entries(WeekStart)
+        .filter(([, value]) => typeof value !== 'string')
+        .reduce((acc, [key, value]) => ({ ...acc, [value]: key }), {}),
+      null,
+      2,
+    )}
+  </code>
+</pre>
+
+<CodePreview title="Datepicker component">
+  <Datepicker weekStart={WeekStart.Monday} />
+</CodePreview>
+
+## Autohide
+
+By setting the `autoHide` prop you can either enable or disable automatically hiding the datepicker component when selecting a value.
+
+<CodePreview title="Datepicker component">
+  <Datepicker autoHide={false} />
+</CodePreview>
+
+## Title
+
+You can use the `title` prop to set a title for the datepicker component.
+
+<CodePreview title="Datepicker component">
+  <Datepicker title="Flowbite Datepicker" />
+</CodePreview>
+
+## Inline
+
+Use the `inline` prop to show the datepicker component without having to click inside an input field.
+
+<CodePreview title="Datepicker component">
+  <Datepicker inline />
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.datepicker, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Datepicker](https://flowbite.com/docs/plugins/datepicker/)

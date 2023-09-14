@@ -11,6 +11,7 @@ import type {
   FlowbiteCarouselTheme,
   FlowbiteCheckboxTheme,
   FlowbiteDarkThemeToggleTheme,
+  FlowbiteDatepickerTheme,
   FlowbiteDropdownTheme,
   FlowbiteFileInputTheme,
   FlowbiteFooterTheme,
@@ -27,10 +28,10 @@ import type {
   FlowbiteSelectTheme,
   FlowbiteSidebarTheme,
   FlowbiteSpinnerTheme,
-  FlowbiteTableTheme,
   FlowbiteTabTheme,
-  FlowbiteTextareaTheme,
+  FlowbiteTableTheme,
   FlowbiteTextInputTheme,
+  FlowbiteTextareaTheme,
   FlowbiteTimelineTheme,
   FlowbiteToastTheme,
   FlowbiteToggleSwitchTheme,
@@ -49,6 +50,7 @@ export interface FlowbiteTheme {
   buttonGroup: FlowbiteButtonGroupTheme;
   card: FlowbiteCardTheme;
   carousel: FlowbiteCarouselTheme;
+  datepicker: FlowbiteDatepickerTheme;
   darkThemeToggle: FlowbiteDarkThemeToggleTheme;
   footer: FlowbiteFooterTheme;
   listGroup: FlowbiteListGroupTheme;

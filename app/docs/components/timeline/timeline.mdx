@@ -2,8 +2,6 @@ import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
 import { CodePreview } from '~/app/components/code-preview';
 import { Button, Timeline, theme } from '~/src';
 
-## Table of Contents
-
 The timeline component can be used to show a list of events and items in a chronological order with a vertical or horizontal alignment based on multiple examples, styles, layouts, and colors.
 
 You can customize the content and options of the timeline component by using the custom React props API from Flowbite React and the utility classes from Tailwind CSS for quick style changes.
@@ -16,11 +14,17 @@ In order to use the timeline component make sure to import it first from Flowbit
 import { Timeline } from 'flowbite-react';
 ```
 
+## Table of Contents
+
 ## Default timeline
 
 Use the `<Timeline>` React component and the child components to create a list of items inside the timeline component featuring the date, title, description and even a button.
 
-<CodePreview importFlowbiteReact="Button, Timeline" title="Default timeline">
+<CodePreview
+  importExternal="import { HiArrowNarrowRight } from 'react-icons/hi';"
+  importFlowbiteReact="Button, Timeline"
+  title="Default timeline"
+>
   <Timeline>
     <Timeline.Item>
       <Timeline.Point />
@@ -65,7 +69,11 @@ Use the `<Timeline>` React component and the child components to create a list o
 
 Use this example to show the timeline component and the child components in a vertical alignment.
 
-<CodePreview importFlowbiteReact="Button, Timeline" title="Vertical timeline">
+<CodePreview
+  importExternal="import { HiCalendar } from 'react-icons/hi';"
+  importFlowbiteReact="Button, Timeline"
+  title="Vertical timeline"
+>
   <Timeline>
     <Timeline.Item>
       <Timeline.Point icon={HiCalendar} />
@@ -110,7 +118,7 @@ Use this example to show the timeline component and the child components in a ve
 
 Use the `horizontal` prop to show the timeline component and the child components in a horizontal alignment.
 
-<CodePreview title="Stepper timeline">
+<CodePreview importExternal="import { HiCalendar } from 'react-icons/hi';" title="Stepper timeline">
   <Timeline horizontal>
     <Timeline.Item>
       <Timeline.Point icon={HiCalendar} />

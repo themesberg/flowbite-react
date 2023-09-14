@@ -1,0 +1,309 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { Badge, Banner, Button, Label, TextInput, theme } from '~/src';
+import { FaBookOpen } from 'react-icons/fa';
+import { HiArrowRight, HiCalendar, HiExternalLink, HiHome, HiInformationCircle, HiX } from 'react-icons/hi';
+import { MdAnnouncement, MdPercent } from 'react-icons/md';
+
+Get started with the sticky banner component coded with Tailwind CSS and Flowbite to show marketing, informational and CTA messages to your website visitors fixed to the top or bottom part of the page as the user scroll down the main content area.
+
+Explore the following examples based on various styles, sizes, and positionings to leverage the sticky banner component and increase marketing conversions with a responsive element supporting dark mode.
+
+To start using the banner component you need to import it from `flowbite-react`:
+
+```jsx
+'use client';
+
+import { Banner } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## Default sticky banner
+
+Use this free example to show a text message for announcement with a CTA link, an icon element and a close button to dismiss the banner.
+
+<CodePreview
+  importExternal="import { HiX } from 'react-icons/hi';
+import { MdAnnouncement } from 'react-icons/md';"
+  title="Default sticky banner"
+  code={`<Banner>
+  <div className="fixed top-0 left-0 z-50 flex justify-between w-full p-4 border-b border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+    <div className="flex items-center mx-auto">
+      <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+        <MdAnnouncement />
+        <span>New brand identity has been launched for the <a href="https://flowbite.com" className="inline font-medium text-cyan-600 underline dark:text-cyan-500 underline-offset-2 decoration-600 dark:decoration-500 decoration-solid hover:no-underline">Flowbite Library</a></span>
+      </p>
+    </div>
+    <Banner.CollapseButton color="gray" className="border-0 bg-transparent px-0">
+      <HiX className="h-4 w-4" />
+    </Banner.CollapseButton>
+  </div>
+</Banner>`}
+>
+  <Banner>
+    <div className="flex w-full justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
+      <div className="mx-auto flex items-center">
+        <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+          <MdAnnouncement className="mr-4 h-4 w-4" />
+          <span className="[&_p]:inline">
+            New brand identity has been launched for the&nbsp;
+            <a
+              href="https://flowbite.com"
+              className="decoration-600 dark:decoration-500 inline font-medium text-cyan-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-cyan-500"
+            >
+              Flowbite Library
+            </a>
+          </span>
+        </p>
+      </div>
+      <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
+        <HiX className="h-4 w-4" />
+      </Banner.CollapseButton>
+    </div>
+  </Banner>
+</CodePreview>
+
+## Bottom banner position
+
+This example can be used to position the sticky banner to the bottom side of the page instead of the top side.
+
+<CodePreview
+  importExternal="import { HiArrowRight, HiX } from 'react-icons/hi';
+import { MdPercent } from 'react-icons/md';"
+  title="Bottom banner position"
+  code={`<Banner>
+  <div className="fixed bottom-0 left-0 z-50 flex justify-between w-full p-4 border-t border-gray-200 bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+    <div className="flex items-center mx-auto">
+      <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+        <span className="inline-flex p-1 mr-3 bg-gray-200 rounded-full dark:bg-gray-600 w-6 h-6 items-center justify-center">
+          <MdPercent className="h-4 w-4" />
+        </span>
+        <span>
+          Get 5% commision per sale&nbsp;
+          <a href="https://flowbite.com" className="flex items-center ml-0 text-sm font-medium text-cyan-600 md:ml-1 md:inline-flex dark:text-cyan-500 hover:underline">
+            Become a partner
+            <HiArrowRight className="ml-2" />
+          </a>
+        </span>
+      </p>
+    </div>
+    <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
+      <HiX className="h-4 w-4" />
+    </Banner.CollapseButton>
+  </div>
+</Banner>`}
+>
+  <Banner>
+    <div className="flex w-full justify-between border-t border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
+      <div className="mx-auto flex items-center">
+        <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+          <span className="mr-3 inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-200 p-1 dark:bg-gray-600">
+            <MdPercent className="h-4 w-4" />
+          </span>
+          <span className="[&_p]:inline">
+            Get 5% commision per sale&nbsp;
+            <a
+              href="https://flowbite.com"
+              className="ml-0 flex items-center text-sm font-medium text-cyan-600 hover:underline dark:text-cyan-500 md:ml-1 md:inline-flex"
+            >
+              Become a partner
+              <HiArrowRight className="ml-2" />
+            </a>
+          </span>
+        </p>
+      </div>
+      <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
+        <HiX className="h-4 w-4" />
+      </Banner.CollapseButton>
+    </div>
+  </Banner>
+</CodePreview>
+
+## Marketing CTA banner
+
+Use this free example to show a text message for announcement with a CTA link, an icon element and a close button to dismiss the banner. Set a different width by using the `max-w-{*}` utility classes from Tailwind CSS.
+
+<CodePreview
+  importExternal="import { HiX } from 'react-icons/hi';"
+  importFlowbiteReact="Banner, Button"
+  title="Marketing CTA banner"
+  code={`<Banner>
+  <div className="fixed left-1/2 top-6 z-50 flex w-[calc(100%-2rem)] -translate-x-1/2 flex-col justify-between rounded-lg border border-gray-100 bg-white p-4 shadow-sm dark:border-gray-600 dark:bg-gray-700 md:flex-row lg:max-w-7xl">
+    <div className="mb-3 mr-4 flex flex-col items-start md:mb-0 md:flex-row md:items-center">
+      <a
+        href="https://flowbite.com/"
+        className="mb-2 flex items-center border-gray-200 dark:border-gray-600 md:mb-0 md:mr-4 md:border-r md:pr-4"
+      >
+        <img src="https://flowbite.com/docs/images/logo.svg" className="mr-2 h-6" alt="Flowbite Logo" />
+        <span className="self-center whitespace-nowrap text-lg font-semibold dark:text-white">Flowbite</span>
+      </a>
+      <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+        Build websites even faster with components on top of Tailwind CSS
+      </p>
+    </div>
+    <div className="flex flex-shrink-0 items-center">
+      <Button href="#" size="sm">Sign up</Button>
+      <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
+        <HiX className="h-4 w-4" />
+      </Banner.CollapseButton>
+    </div>
+  </div>
+</Banner>`}
+>
+  <Banner>
+    <div className="flex w-[calc(100%-2rem)] flex-col justify-between rounded-lg border border-gray-100 bg-white p-4 shadow-sm dark:border-gray-600 dark:bg-gray-700 md:flex-row lg:max-w-7xl">
+      <div className="mb-3 mr-4 flex flex-col items-start md:mb-0 md:flex-row md:items-center">
+        <a
+          href="https://flowbite.com/"
+          className="mb-2 flex items-center border-gray-200 dark:border-gray-600 md:mb-0 md:mr-4 md:border-r md:pr-4"
+        >
+          <img src="https://flowbite.com/docs/images/logo.svg" className="mr-2 h-6" alt="Flowbite Logo" />
+          <span className="self-center whitespace-nowrap text-lg font-semibold dark:text-white md:pr-6">Flowbite</span>
+        </a>
+        <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+          Build websites even faster with components on top of Tailwind CSS
+        </p>
+      </div>
+      <div className="flex flex-shrink-0 items-center">
+        <Button href="#">Sign up</Button>
+        <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
+          <HiX className="h-4 w-4" />
+        </Banner.CollapseButton>
+      </div>
+    </div>
+  </Banner>
+</CodePreview>
+
+## Newsletter sign-up banner
+
+This example can be used to encourage your website visitors to sign up to your email newsletter by showing an inline form inside the sticky banner on the top side of your page.
+
+<CodePreview
+  importExternal="import { HiX } from 'react-icons/hi';"
+  importFlowbiteReact="Banner, Button, Label, TextInput"
+  title="Newsletter sign-up banner"
+  code={`<Banner>
+  <div className="fixed top-0 left-0 z-50 flex w-full items-center justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
+    <div className="mx-auto flex w-full flex-shrink-0 items-center sm:w-auto">
+      <form action="#" className="flex w-full flex-col items-center md:flex-row md:gap-x-3">
+        <Label
+          htmlFor="email"
+          className="mb-2 mr-auto flex-shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400 md:m-0 md:mb-0"
+        >
+          Sign up for our newsletter
+        </Label>
+        <TextInput id="email" placeholder="Enter your email" required type="email" />
+        <Button type="submit">Subscribe</Button>
+      </form>
+    </div>
+    <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
+      <HiX className="h-4 w-4" />
+    </Banner.CollapseButton>
+  </div>
+</Banner>`}
+>
+  <Banner>
+    <div className="flex w-full items-center justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
+      <div className="mx-auto flex w-full flex-shrink-0 items-center sm:w-auto">
+        <form action="#" className="flex w-full flex-col items-center md:flex-row md:gap-x-3">
+          <Label
+            htmlFor="email"
+            className="mb-2 mr-auto flex-shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400 md:m-0 md:mb-0"
+          >
+            Sign up for our newsletter
+          </Label>
+          <TextInput id="email" placeholder="Enter your email" required type="email" />
+          <Button type="submit">Subscribe</Button>
+        </form>
+      </div>
+      <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
+        <HiX className="h-4 w-4" />
+      </Banner.CollapseButton>
+    </div>
+  </Banner>
+</CodePreview>
+
+## Informational banner
+
+This example can be used to share important information with your website visitors by showing a heading and a paragraph inside the sticky banner and two CTA buttons with links.
+
+<CodePreview
+  importExternal="import { FaBookOpen } from 'react-icons/fa';
+import { HiArrowRight, HiX } from 'react-icons/hi';"
+  title="Informational banner"
+  code={`<Banner>
+  <div className="fixed left-0 top-0 z-50 flex w-full flex-col justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700 md:flex-row">
+    <div className="mb-4 md:mb-0 md:mr-4">
+      <h2 className="mb-1 text-base font-semibold text-gray-900 dark:text-white">Integration is the key</h2>
+      <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+        You can integrate Flowbite with many tools to make your work even more efficient and lightning fast based on
+        Tailwind CSS.
+      </p>
+    </div>
+    <div className="flex flex-shrink-0 items-center">
+      <a
+        href="#"
+        className="mr-3 inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-900 hover:bg-gray-100 hover:text-cyan-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+      >
+        <FaBookOpen />
+        Learn more
+      </a>
+      <a
+        href="#"
+        className="mr-2 inline-flex items-center justify-center rounded-lg bg-cyan-700 px-3 py-2 text-xs font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
+      >
+        Get started
+        <HiArrowRight />
+      </a>
+      <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
+        <HiX className="h-4 w-4" />
+      </Banner.CollapseButton>
+    </div>
+  </div>
+</Banner>`}
+>
+  <Banner>
+    <div className="flex w-full flex-col justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700 md:flex-row">
+      <div className="mb-4 md:mb-0 md:mr-4">
+        <h2 className="mb-1 text-base font-semibold text-gray-900 dark:text-white">Integration is the key</h2>
+        <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+          You can integrate Flowbite with many tools to make your work even more efficient and lightning fast based on
+          Tailwind CSS.
+        </p>
+      </div>
+      <div className="flex flex-shrink-0 items-center">
+        <a
+          href="#"
+          className="mr-3 inline-flex items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-900 hover:bg-gray-100 hover:text-cyan-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700"
+        >
+          <FaBookOpen className="mr-2 h-4 w-4" />
+          Learn more
+        </a>
+        <a
+          href="#"
+          className="mr-2 inline-flex items-center justify-center rounded-lg bg-cyan-700 px-3 py-2 text-xs font-medium text-white hover:bg-cyan-800 focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
+        >
+          Get started
+          <HiArrowRight className="ml-2 h-4 w-4" />
+        </a>
+        <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
+          <HiX className="h-4 w-4" />
+        </Banner.CollapseButton>
+      </div>
+    </div>
+  </Banner>
+</CodePreview>
+
+## Theme
+
+**This component is a work in progress, and currently doesn't have a theme.** It may in future updates.
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.banner, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Banner](https://flowbite.com/docs/components/banner/)
