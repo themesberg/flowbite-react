@@ -93,7 +93,7 @@ export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' 
 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
   ({ error = null, helperText, sizing = 'md', buttonStyle, label, disabled = false, ...props }, ref) => {
-    const inputColor = error === false ? 'green-600' : error === null ? 'gray-400' : 'red-600';
+    const inputColor = error === false ? 'green' : 'red';
 
     const filledStyles = `block rounded-t-lg px-2.5 pb-2.5 pt-${
       sizing === 'sm' ? '4' : '5'
