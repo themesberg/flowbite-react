@@ -33,6 +33,7 @@ describe('Components / Floating Label', () => {
       expect(input).toBeInTheDocument();
     });
   });
+
   it('should update the input value correctly', () => {
     const input: HTMLInputElement | null = render(
       <FloatingLabel buttonStyle={'filled'} label={'Label'} defaultValue={'my name is'} />,
