@@ -10,14 +10,12 @@ export default {
 const Template: Story<FloatingLabelProps> = (args) => <FloatingLabel {...args} />;
 
 export const FilledSuccess = Template.bind({});
-FilledSuccess.storyName = 'Filled success';
 FilledSuccess.args = {
   error: false,
   buttonStyle: 'filled',
   label: 'Label',
 };
 export const OutlinedSuccess = Template.bind({});
-OutlinedSuccess.storyName = 'Outlined success';
 OutlinedSuccess.args = {
   error: false,
   buttonStyle: 'outlined',
