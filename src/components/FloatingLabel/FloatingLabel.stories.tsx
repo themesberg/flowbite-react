@@ -46,14 +46,12 @@ DisabledStandard.args = {
 };
 
 export const FilledSuccess = Template.bind({});
-FilledSuccess.storyName = 'Filled success';
 FilledSuccess.args = {
   color: 'success',
   variant: 'filled',
   label: 'Label',
 };
 export const OutlinedSuccess = Template.bind({});
-OutlinedSuccess.storyName = 'Outlined success';
 OutlinedSuccess.args = {
   color: 'success',
   variant: 'outlined',
