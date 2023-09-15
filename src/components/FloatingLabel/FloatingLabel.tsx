@@ -73,47 +73,18 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
   ({ error = null, helperText, sizing = 'md', buttonStyle, label, disabled = false, ...props }, ref) => {
     const inputColor = error === false ? 'green' : 'red';
 
+    const size_class = sizing === 'md' ? 'text-sm' : sizing !== null ? 'text-xs' : 'text-sm';
     const randomId = Math.random().toString(36).substring(6);
-    const filled_error =
-      'block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 appearance-none dark:text-white dark:border-red-500 focus:outline-none focus:ring-0 border-red-600 focus:border-red-600 dark:focus-border-red-500 peer';
-    const outlined_error =
-      'block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer';
-    const standard_error =
-      'block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-red-600 appearance-none dark:text-white dark:border-red-500 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer';
 
-    const filled_success =
-      'block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-green-600 dark:border-green-500 appearance-none dark:text-white dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer';
-    const outlined_success =
-      'block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-green-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer';
-    const standard_success =
-      'block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-green-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer';
+    const filled_error = `block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full ${size_class} text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 appearance-none dark:text-white dark:border-red-500 focus:outline-none focus:ring-0 border-red-600 focus:border-red-600 dark:focus-border-red-500 peer`;
+    const outlined_error = `block px-2.5 pb-2.5 pt-4 w-full ${size_class} text-gray-900 bg-transparent rounded-lg border-1 appearance-none dark:text-white dark:border-red-500 border-red-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer`;
+    const standard_error = `block py-2.5 px-0 w-full ${size_class} text-gray-900 bg-transparent border-0 border-b-2 border-red-600 appearance-none dark:text-white dark:border-red-500 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer`;
+
+    const filled_success = `block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full ${size_class} text-gray-900 bg-gray-50 dark:bg-gray-700 border-0 border-b-2 border-green-600 dark:border-green-500 appearance-none dark:text-white dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer`;
+    const outlined_success = `block px-2.5 pb-2.5 pt-4 w-full ${size_class} text-gray-900 bg-transparent rounded-lg border-1 border-green-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer`;
+    const standard_success = `block py-2.5 px-0 w-full ${size_class} text-gray-900 bg-transparent border-0 border-b-2 border-green-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer`;
     return (
       <>
-        {/* <div>
-          <div className="relative">
-            <input
-              type="text"
-              id={props.id ? props.id : 'floatingLabel' + randomId}
-              aria-describedby="floatingLabelInputHelp"
-              className={`${buttonTheme}`}
-              placeholder=" "
-              data-testid="floating-label"
-              disabled={disabled}
-              {...props}
-              ref={ref}
-            />
-            <label
-              htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-              className={`absolute text-sm text-${inputColor} dark:text-${inputColor} left-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-transparent px-2 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 dark:bg-gray-900`}
-            >
-              {label}
-            </label>
-          </div>
-          <p id="floatingLabelInputHelp" className={`mt-2 text-xs text-${inputColor} dark:text-${inputColor}`}>
-            {' '}
-            {helperText}
-          </p>
-        </div> */}
         {error === null && (
           <div>
             {buttonStyle === 'filled' && (
