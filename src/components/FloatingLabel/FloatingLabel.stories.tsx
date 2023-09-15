@@ -37,6 +37,7 @@ DisabledOutlined.args = {
   label: 'Label',
   disabled: true,
 };
+
 export const DisabledStandard = Template.bind({});
 DisabledStandard.args = {
   buttonStyle: 'standard',
@@ -45,14 +46,12 @@ DisabledStandard.args = {
 };
 
 export const FilledSuccess = Template.bind({});
-FilledSuccess.storyName = 'Filled success';
 FilledSuccess.args = {
   error: false,
   buttonStyle: 'filled',
   label: 'Label',
 };
 export const OutlinedSuccess = Template.bind({});
-OutlinedSuccess.storyName = 'Outlined success';
 OutlinedSuccess.args = {
   error: false,
   buttonStyle: 'outlined',
