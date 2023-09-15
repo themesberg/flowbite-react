@@ -50,14 +50,12 @@ DisabledStandard.args = {
 =======
 >>>>>>> 6170479 (feat: added more stories, for different cases, implementation for disabled and sizes)
 export const FilledSuccess = Template.bind({});
-FilledSuccess.storyName = 'Filled success';
 FilledSuccess.args = {
   color: 'success',
   variant: 'filled',
   label: 'Label',
 };
 export const OutlinedSuccess = Template.bind({});
-OutlinedSuccess.storyName = 'Outlined success';
 OutlinedSuccess.args = {
   color: 'success',
   variant: 'outlined',
