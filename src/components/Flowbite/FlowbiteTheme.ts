@@ -16,6 +16,7 @@ import type {
   FlowbiteFileInputTheme,
   FlowbiteFooterTheme,
   FlowbiteHelperTextTheme,
+  FlowbiteKbdTheme,
   FlowbiteLabelTheme,
   FlowbiteListGroupTheme,
   FlowbiteModalTheme,
@@ -53,6 +54,7 @@ export interface FlowbiteTheme {
   datepicker: FlowbiteDatepickerTheme;
   darkThemeToggle: FlowbiteDarkThemeToggleTheme;
   footer: FlowbiteFooterTheme;
+  kbd: FlowbiteKbdTheme;
   listGroup: FlowbiteListGroupTheme;
   modal: FlowbiteModalTheme;
   navbar: FlowbiteNavbarTheme;
