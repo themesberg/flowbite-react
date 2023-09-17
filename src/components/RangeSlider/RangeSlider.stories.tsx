@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { theme } from '../../';
 import type { RangeSliderProps } from './RangeSlider';
 import { RangeSlider } from './RangeSlider';
@@ -24,7 +24,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<RangeSliderProps> = (args) => <RangeSlider {...args} />;
+const Template: StoryFn<RangeSliderProps> = (args) => <RangeSlider {...args} />;
 
 export const DefaultRangeSlider = Template.bind({});
 DefaultRangeSlider.storyName = 'RangeSlider';

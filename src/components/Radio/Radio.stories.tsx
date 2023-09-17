@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { RadioProps } from './Radio';
 import { Radio } from './Radio';
 
@@ -7,7 +7,7 @@ export default {
   component: Radio,
 } as Meta;
 
-const Template: Story<RadioProps> = (args) => <Radio {...args} />;
+const Template: StoryFn<RadioProps> = (args) => <Radio {...args} />;
 
 export const DefaultRadio = Template.bind({});
 DefaultRadio.storyName = 'Radio';

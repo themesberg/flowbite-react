@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { DropdownProps } from './Dropdown';
 import { Dropdown } from './Dropdown';
 
@@ -14,7 +14,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<DropdownProps> = (args) => <Dropdown {...args} />;
+const Template: StoryFn<DropdownProps> = (args) => <Dropdown {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

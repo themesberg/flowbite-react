@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { Footer } from './Footer';
 
@@ -7,7 +7,7 @@ export default {
   component: Footer,
 } as Meta;
 
-const Template: Story = ({ children }) => <Footer>{children}</Footer>;
+const Template: StoryFn = ({ children }) => <Footer>{children}</Footer>;
 
 export const DefaultFooter = Template.bind({});
 DefaultFooter.storyName = 'Default';

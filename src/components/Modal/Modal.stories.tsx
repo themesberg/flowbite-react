@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import Link from 'next/link';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import { Button, Checkbox, Label, TextInput } from '../../';
@@ -14,7 +14,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ModalProps> = ({ children, ...rest }): JSX.Element => {
+const Template: StoryFn<ModalProps> = ({ children, ...rest }): JSX.Element => {
   return (
     <>
       <Button onClick={action('open')}>Toggle modal</Button>

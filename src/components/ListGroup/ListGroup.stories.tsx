@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
 import type { ListGroupProps } from './ListGroup';
 import { ListGroup } from './ListGroup';
@@ -8,7 +8,7 @@ export default {
   component: ListGroup,
 } as Meta;
 
-const Template: Story<ListGroupProps> = (args) => <ListGroup {...args} />;
+const Template: StoryFn<ListGroupProps> = (args) => <ListGroup {...args} />;
 
 export const DefaultListGroup = Template.bind({});
 DefaultListGroup.storyName = 'Default';
