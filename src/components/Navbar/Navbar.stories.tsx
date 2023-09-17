@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { NavbarComponentProps } from '../../';
 import { Avatar, Button, Dropdown, Navbar } from '../../';
 
@@ -7,7 +7,7 @@ export default {
   component: Navbar,
 } as Meta;
 
-const Template: Story<NavbarComponentProps> = (args) => (
+const Template: StoryFn<NavbarComponentProps> = (args) => (
   <div className="w-4/5">
     <Navbar {...args} />
   </div>

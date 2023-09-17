@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from '../../';
 import type { TooltipProps } from './Tooltip';
 import { Tooltip } from './Tooltip';
@@ -8,7 +8,7 @@ export default {
   component: Tooltip,
 } as Meta;
 
-const Template: Story<TooltipProps> = (args) => <Tooltip {...args} />;
+const Template: StoryFn<TooltipProps> = (args) => <Tooltip {...args} />;
 
 export const DefaultTooltip = Template.bind({});
 DefaultTooltip.storyName = 'Default';

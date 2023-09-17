@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
 import { theme } from '../../';
 import type { AlertProps } from './Alert';
@@ -15,7 +15,7 @@ export default {
   },
 } as Meta;
 
-const Template: Story<AlertProps> = (props) => <Alert {...props} />;
+const Template: StoryFn<AlertProps> = (props) => <Alert {...props} />;
 
 export const DefaultAlert = Template.bind({});
 DefaultAlert.storyName = 'Default';

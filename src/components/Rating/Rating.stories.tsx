@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { RatingProps } from './Rating';
 import { Rating } from './Rating';
 
@@ -7,7 +7,7 @@ export default {
   component: Rating,
 } as Meta;
 
-const Template: Story<RatingProps> = (args) => <Rating {...args} />;
+const Template: StoryFn<RatingProps> = (args) => <Rating {...args} />;
 
 export const DefaultRating = Template.bind({});
 DefaultRating.storyName = 'Default';

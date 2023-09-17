@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { AvatarProps } from './Avatar';
 import { Avatar } from './Avatar';
 
@@ -7,7 +7,7 @@ export default {
   component: Avatar,
 } as Meta;
 
-const Template: Story<AvatarProps> = (args) => <Avatar {...args} />;
+const Template: StoryFn<AvatarProps> = (args) => <Avatar {...args} />;
 
 export const DefaultAvatar = Template.bind({});
 DefaultAvatar.storyName = 'Default';
@@ -16,7 +16,7 @@ DefaultAvatar.args = {
   img: 'https://flowbite.com/docs/images/people/profile-picture-5.jpg',
 };
 
-export const CustomImage: Story<AvatarProps> = (props) => (
+export const CustomImage: StoryFn<AvatarProps> = (props) => (
   <>
     <Avatar
       {...props}

@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from '.';
 import type { ButtonGroupProps } from './ButtonGroup';
 
@@ -7,7 +7,7 @@ export default {
   component: Button.Group,
 } as Meta;
 
-const Template: Story<ButtonGroupProps> = (args) => (
+const Template: StoryFn<ButtonGroupProps> = (args) => (
   <Button.Group {...args}>
     <Button color="gray">Profile</Button>
     <Button color="gray">Settings</Button>

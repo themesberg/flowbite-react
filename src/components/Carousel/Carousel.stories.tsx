@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { CarouselProps } from './Carousel';
 import { Carousel } from './Carousel';
 
@@ -7,7 +7,7 @@ export default {
   component: Carousel,
 } as Meta;
 
-const Template: Story<CarouselProps> = (args) => (
+const Template: StoryFn<CarouselProps> = (args) => (
   <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
     <Carousel {...args}>
       <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />

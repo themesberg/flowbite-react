@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { useEffect, useState } from 'react';
 import type { PaginationProps } from './Pagination';
 import { Pagination } from './Pagination';
@@ -15,7 +15,7 @@ export default {
   ],
 } as Meta;
 
-const Template: Story<PaginationProps> = ({ currentPage = 1, layout = 'pagination', totalPages = 100, ...rest }) => {
+const Template: StoryFn<PaginationProps> = ({ currentPage = 1, layout = 'pagination', totalPages = 100, ...rest }) => {
   const [page, setPage] = useState(currentPage);
 
   const onPageChange = (page: number) => {

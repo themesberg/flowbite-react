@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Button } from '../../';
 import { Spinner } from './Spinner';
 
@@ -7,7 +7,7 @@ export default {
   component: Spinner,
 } as Meta;
 
-const Template: Story = (args) => <Spinner {...args} />;
+const Template: StoryFn = (args) => <Spinner {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
