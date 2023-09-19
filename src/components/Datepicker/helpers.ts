@@ -66,7 +66,7 @@ export const getWeekDays = (lang: string, weekStart: WeekStart): string[] => {
   const formatter = new Intl.DateTimeFormat(lang, { weekday: 'short' });
 
   for (let i = 0; i < 7; i++) {
-    const dayIndex = (i + weekStart) % 7; // Calculate the correct day index based on weekStart
+    const dayIndex = (i + weekStart + 1) % 7; // Calculate the correct day index based on weekStart
     date.setDate(dayIndex + 1);
     const formattedWeekday = formatter.format(date);
     weekdays.push(formattedWeekday.slice(0, 2).charAt(0).toUpperCase() + formattedWeekday.slice(1, 3));
