@@ -83,6 +83,7 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   language?: string;
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
+  onSelectedDateChanged?: (date: Date) => void;
 }
 
 export const Datepicker: FC<DatepickerProps> = ({
@@ -101,6 +102,7 @@ export const Datepicker: FC<DatepickerProps> = ({
   weekStart = WeekStart.Sunday,
   className,
   theme: customTheme = {},
+  onSelectedDateChanged,
   ...props
 }) => {
   const theme = mergeDeep(useTheme().theme.datepicker, customTheme);
@@ -122,6 +124,10 @@ export const Datepicker: FC<DatepickerProps> = ({
   const changeSelectedDate = (date: Date, useAutohide: boolean) => {
     setSelectedDate(date);
 
+    if (onSelectedDateChanged) {
+      onSelectedDateChanged(date);
+    }
+
     if (autoHide && view === Views.Days && useAutohide == true && !inline) {
       setIsOpen(false);
     }
@@ -131,14 +137,14 @@ export const Datepicker: FC<DatepickerProps> = ({
   const renderView = (type: Views): ReactNode => {
     switch (type) {
       case Views.Decades:
-        return <DatepickerViewsDecades />;
+        return <DatepickerViewsDecades theme={theme.views.decades} />;
       case Views.Years:
-        return <DatepickerViewsYears />;
+        return <DatepickerViewsYears theme={theme.views.years} />;
       case Views.Months:
-        return <DatepickerViewsMonth />;
+        return <DatepickerViewsMonth theme={theme.views.months} />;
       case Views.Days:
       default:
-        return <DatepickerViewsDays />;
+        return <DatepickerViewsDays theme={theme.views.days} />;
     }
   };
 
