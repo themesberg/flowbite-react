@@ -7,17 +7,17 @@ export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | '
 }
 
 export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
-  error?: boolean;
+  color?: string | null;
   helperText?: string;
   sizing?: keyof FlowbiteFloatingLabelSizes;
-  buttonStyle: string;
+  variant: string;
   label: string;
   disabled?: boolean;
 }
 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
-  ({ error = null, helperText, sizing = 'md', buttonStyle, label, disabled = false, ...props }, ref) => {
-    const inputColor = error === false ? 'green' : 'red';
+  ({ color = null, helperText, sizing = 'md', variant, label, disabled = false, ...props }, ref) => {
+    const inputColor = color === 'success' ? 'green' : 'red';
 
     const size_class = sizing === 'md' ? 'text-sm' : sizing !== null ? 'text-xs' : 'text-sm';
     const randomId = Math.random().toString(36).substring(6);
@@ -31,16 +31,16 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
     const standard_success = `block py-2.5 px-0 w-full ${size_class} text-gray-900 bg-transparent border-0 border-b-2 border-green-600 appearance-none dark:text-white dark:border-green-500 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer`;
     return (
       <>
-        {error === null && (
+        {color === null && (
           <div>
-            {buttonStyle === 'filled' && (
+            {variant === 'filled' && (
               <div className="relative">
                 <input
                   type="text"
                   id={props.id ? props.id : 'floatingLabel' + randomId}
                   className={`peer block w-full appearance-none rounded-t-lg border-0 border-b-2 border-gray-300 bg-gray-50 px-2.5 pb-2.5 pt-5 ${size_class} text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500`}
                   placeholder=" "
-                  data-testid="floating-label"
+                  data-testid="floating-label-1"
                   disabled={disabled}
                   {...props}
                   ref={ref}
@@ -53,14 +53,14 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
                 </label>
               </div>
             )}
-            {buttonStyle === 'outlined' && (
+            {variant === 'outlined' && (
               <div className="relative">
                 <input
                   type="text"
                   id={props.id ? props.id : 'floatingLabel' + randomId}
                   className={`border-1 peer block w-full appearance-none rounded-lg border-gray-300 bg-transparent px-2.5 pb-2.5 pt-4 ${size_class} text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500`}
                   placeholder=" "
-                  data-testid="floating-label"
+                  data-testid="floating-label-2"
                   disabled={disabled}
                   {...props}
                   ref={ref}
@@ -73,14 +73,14 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
                 </label>
               </div>
             )}
-            {buttonStyle === 'standard' && (
+            {variant === 'standard' && (
               <div className="relative z-0">
                 <input
                   type="text"
                   id={props.id ? props.id : 'floatingLabel' + randomId}
                   className={`peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 ${size_class} text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500`}
                   placeholder=" "
-                  data-testid="floating-label"
+                  data-testid="floating-label-3"
                   disabled={disabled}
                   {...props}
                   ref={ref}
@@ -100,18 +100,18 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
           </div>
         )}
 
-        {error !== null && (
+        {color !== null && (
           <div>
-            {buttonStyle === 'filled' && (
+            {variant === 'filled' && (
               <div>
                 <div className="relative">
                   <input
                     type="text"
                     id={props.id ? props.id : 'floatingLabel' + randomId}
                     aria-describedby="filled_success_help"
-                    className={error ? filled_error : filled_success}
+                    className={color === 'success' ? filled_success : filled_error}
                     placeholder=" "
-                    data-testid="floating-label"
+                    data-testid="floating-label-4"
                     disabled={disabled}
                     {...props}
                     ref={ref}
@@ -131,16 +131,16 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
                 </p>
               </div>
             )}
-            {buttonStyle === 'outlined' && (
+            {variant === 'outlined' && (
               <div>
                 <div className="relative">
                   <input
                     type="text"
                     id={props.id ? props.id : 'floatingLabel' + randomId}
                     aria-describedby="outlined_success_help"
-                    className={error ? outlined_error : outlined_success}
+                    className={color === 'success' ? outlined_success : outlined_error}
                     placeholder=" "
-                    data-testid="floating-label"
+                    data-testid="floating-label-5"
                     disabled={disabled}
                     {...props}
                     ref={ref}
@@ -160,16 +160,16 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
                 </p>
               </div>
             )}
-            {buttonStyle === 'standard' && (
+            {variant === 'standard' && (
               <div>
                 <div className="relative z-0">
                   <input
                     type="text"
                     id={props.id ? props.id : 'floatingLabel' + randomId}
                     aria-describedby="standard_success_help"
-                    className={error ? standard_error : standard_success}
+                    className={color === 'success' ? standard_success : standard_error}
                     placeholder=" "
-                    data-testid="floating-label"
+                    data-testid="floating-label-6"
                     disabled={disabled}
                     {...props}
                     ref={ref}
