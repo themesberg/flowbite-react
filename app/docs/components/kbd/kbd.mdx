@@ -2,7 +2,7 @@ import { CodePreview } from '~/app/components/code-preview';
 import { Kbd, Table, theme } from '~/src';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 
-The Kbd (Keyboard) component can be used to indicate a textual user input from the keyboard inside other elements such as in text, tables, cards, and more.
+The KBD (Keyboard) component can be used to indicate a textual user input from the keyboard inside other elements such as in text, tables, cards, and more.
 
 Use the semantic `<Kbd>` keyboard input tag to use the default monospace font which is best suited for representing input keys.
 
@@ -20,7 +20,7 @@ import { Kbd } from 'flowbite-react';
 
 Here’s a list of KBD components that you can use inside any other element.
 
-<CodePreview importFlowbiteReact="Kbd" title="Default Kbd">
+<CodePreview importFlowbiteReact="Kbd" title="Default KBD">
   <Kbd>Shift</Kbd>
   <Kbd>Ctrl</Kbd>
   <Kbd>Tab</Kbd>
@@ -34,7 +34,7 @@ Here’s a list of KBD components that you can use inside any other element.
 
 Use this example by nesting an inline KBD component inside a paragraph.
 
-<CodePreview importFlowbiteReact="Kbd" title="Inside Text Kbd">
+<CodePreview importFlowbiteReact="Kbd" title="Inside Text KBD">
   Please press <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>R</Kbd> to re-render an MDN page.
 </CodePreview>
 
@@ -45,7 +45,7 @@ The KBD component can also be used inside table components to denote what type o
 <CodePreview
   importFlowbiteReact="Kbd, Table"
   importExternal="import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowDown, MdKeyboardArrowUp  } from 'react-icons/md';"
-  title="Table Kbd"
+  title="Table KBD"
 >
   <Table>
     <Table.Head>
@@ -86,7 +86,7 @@ Use this example to show arrow keys inside the KBD styled element.
 <CodePreview
   importFlowbiteReact="Kbd"
   importExternal="import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowDown, MdKeyboardArrowUp  } from 'react-icons/md';"
-  title="Arrow Keys Kbd"
+  title="Arrow Keys KBD"
 >
   <Kbd icon={MdKeyboardArrowUp}></Kbd>
   <Kbd icon={MdKeyboardArrowDown}></Kbd>
@@ -98,7 +98,7 @@ Use this example to show arrow keys inside the KBD styled element.
 
 Use this example to show arrow keys inside the KBD styled element.
 
-<CodePreview importFlowbiteReact="Kbd" title="Letter Keys Kbd">
+<CodePreview importFlowbiteReact="Kbd" title="Letter Keys KBD">
   <div className="flex flex-wrap">
     <Kbd>Q</Kbd>
     <Kbd>W</Kbd>
@@ -132,7 +132,7 @@ Use this example to show arrow keys inside the KBD styled element.
 
 Use this example to show a key inside a KBD component from the english numeral system.
 
-<CodePreview importFlowbiteReact="Kbd" title="Number Keys Kbd">
+<CodePreview importFlowbiteReact="Kbd" title="Number Keys KBD">
   <Kbd>1</Kbd>
   <Kbd>2</Kbd>
   <Kbd>3</Kbd>
@@ -149,19 +149,21 @@ Use this example to show a key inside a KBD component from the english numeral s
 
 This example can be used to denote function keys inside the KBD component.
 
-<CodePreview importFlowbiteReact="Kbd" title="Function Keys Kbd">
-  <Kbd>F1</Kbd>
-  <Kbd>F2</Kbd>
-  <Kbd>F3</Kbd>
-  <Kbd>F4</Kbd>
-  <Kbd>F5</Kbd>
-  <Kbd>F6</Kbd>
-  <Kbd>F7</Kbd>
-  <Kbd>F8</Kbd>
-  <Kbd>F9</Kbd>
-  <Kbd>F10</Kbd>
-  <Kbd>F11</Kbd>
-  <Kbd>F12</Kbd>
+<CodePreview importFlowbiteReact="Kbd" title="Function Keys KBD">
+  <div className="flex flex-wrap">
+    <Kbd>F1</Kbd>
+    <Kbd>F2</Kbd>
+    <Kbd>F3</Kbd>
+    <Kbd>F4</Kbd>
+    <Kbd>F5</Kbd>
+    <Kbd>F6</Kbd>
+    <Kbd>F7</Kbd>
+    <Kbd>F8</Kbd>
+    <Kbd>F9</Kbd>
+    <Kbd>F10</Kbd>
+    <Kbd>F11</Kbd>
+    <Kbd>F12</Kbd>
+  </div>
 </CodePreview>
 
 ## Theme
