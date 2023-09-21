@@ -8,12 +8,15 @@ import FormDocs from './forms.mdx';
 const FormsPageContent: FC = () => {
   const [switch1, setSwitch1] = useState(false);
   const [switch2, setSwitch2] = useState(true);
+  const [switch3, setSwitch3] = useState(true);
 
   const state = {
     switch1,
     setSwitch1,
     switch2,
     setSwitch2,
+    switch3,
+    setSwitch3,
   };
 
   return (
