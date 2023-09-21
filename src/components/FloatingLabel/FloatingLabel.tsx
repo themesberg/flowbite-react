@@ -83,17 +83,17 @@ export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | '
 }
 
 export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
-  error?: boolean;
+  color?: string | null;
   helperText?: string;
   sizing?: keyof FlowbiteFloatingLabelSizes;
-  buttonStyle: string;
+  variant: string;
   label: string;
   disabled?: boolean;
 }
 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
-  ({ error = null, helperText, sizing = 'md', buttonStyle, label, disabled = false, ...props }, ref) => {
-    const inputColor = error === false ? 'green' : 'red';
+  ({ color = null, helperText, sizing = 'md', variant, label, disabled = false, ...props }, ref) => {
+    const inputColor = color === 'success' ? 'green' : 'red';
 
     const filledStyles = `block rounded-t-lg px-2.5 pb-2.5 pt-${
       sizing === 'sm' ? '4' : '5'
