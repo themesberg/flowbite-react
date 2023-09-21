@@ -54,6 +54,10 @@ export interface CarouselProps extends PropsWithChildren<ComponentProps<'div'>> 
   pauseOnHover?: boolean;
 }
 
+export interface DefaultLeftRightControlProps extends PropsWithChildren<ComponentProps<'div'>> {
+  theme?: DeepPartial<FlowbiteCarouselTheme>;
+}
+
 export const Carousel: FC<CarouselProps> = ({
   children,
   indicators = true,
@@ -179,7 +183,7 @@ export const Carousel: FC<CarouselProps> = ({
               type="button"
               aria-label="Previous slide"
             >
-              {leftControl ? leftControl : <DefaultLeftControl />}
+              {leftControl ? leftControl : <DefaultLeftControl theme={customTheme} />}
             </button>
           </div>
           <div className={theme.root.rightControl}>
@@ -190,7 +194,7 @@ export const Carousel: FC<CarouselProps> = ({
               type="button"
               aria-label="Next slide"
             >
-              {rightControl ? rightControl : <DefaultRightControl />}
+              {rightControl ? rightControl : <DefaultRightControl theme={customTheme} />}
             </button>
           </div>
         </>
@@ -199,8 +203,8 @@ export const Carousel: FC<CarouselProps> = ({
   );
 };
 
-const DefaultLeftControl: FC = () => {
-  const theme = useTheme().theme.carousel;
+const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme = {} }) => {
+  const theme = mergeDeep(useTheme().theme.carousel, customTheme);
   return (
     <span className={theme.control.base}>
       <HiOutlineChevronLeft className={theme.control.icon} />
@@ -208,8 +212,8 @@ const DefaultLeftControl: FC = () => {
   );
 };
 
-const DefaultRightControl: FC = () => {
-  const theme = useTheme().theme.carousel;
+const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme = {} }) => {
+  const theme = mergeDeep(useTheme().theme.carousel, customTheme);
   return (
     <span className={theme.control.base}>
       <HiOutlineChevronRight className={theme.control.icon} />
