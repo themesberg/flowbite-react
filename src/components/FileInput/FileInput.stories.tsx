@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { FileInputProps } from './FileInput';
 import { FileInput } from './FileInput';
 
@@ -7,7 +7,7 @@ export default {
   component: FileInput,
 } as Meta;
 
-const Template: Story<FileInputProps> = (args) => <FileInput {...args} />;
+const Template: StoryFn<FileInputProps> = (args) => <FileInput {...args} />;
 
 export const DefaultFileInput = Template.bind({});
 DefaultFileInput.storyName = 'FileInput';

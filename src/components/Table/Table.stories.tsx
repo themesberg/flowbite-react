@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { TableProps } from './Table';
 import { Table } from './Table';
 
@@ -7,7 +7,7 @@ export default {
   component: Table,
 } as Meta;
 
-const Template: Story<TableProps> = (args) => (
+const Template: StoryFn<TableProps> = (args) => (
   <Table {...args}>
     <Table.Head>
       <Table.HeadCell>Product name</Table.HeadCell>

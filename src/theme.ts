@@ -14,6 +14,7 @@ import { dropdownTheme } from './components/Dropdown/theme';
 import { fileInputTheme } from './components/FileInput/theme';
 import { footerTheme } from './components/Footer/theme';
 import { helperTextTheme } from './components/HelperText/theme';
+import { kbdTheme } from './components/Kbd/theme';
 import { labelTheme } from './components/Label/theme';
 import { listGroupTheme } from './components/ListGroup/theme';
 import { modalTheme } from './components/Modal/theme';
@@ -52,6 +53,7 @@ export const theme: FlowbiteTheme = {
   fileInput: fileInputTheme,
   footer: footerTheme,
   helperText: helperTextTheme,
+  kbd: kbdTheme,
   label: labelTheme,
   listGroup: listGroupTheme,
   modal: modalTheme,

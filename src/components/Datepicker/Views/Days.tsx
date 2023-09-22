@@ -43,7 +43,7 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: custo
       </div>
       <div className={theme.items.base}>
         {[...Array(42)].map((_date, index) => {
-          const currentDate = addDays(startDate, index);
+          const currentDate = addDays(startDate, index - 1);
           const day = getFormattedDate(language, currentDate, { day: 'numeric' });
 
           const isSelected = isDateEqual(selectedDate, currentDate);

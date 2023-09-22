@@ -46,5 +46,14 @@ export const tabTheme: FlowbiteTabTheme = {
       icon: 'mr-2 h-5 w-5',
     },
   },
+  tabitemcontainer: {
+    base: '',
+    styles: {
+      default: '',
+      underline: '',
+      pills: '',
+      fullWidth: '',
+    },
+  },
   tabpanel: 'py-3',
 };

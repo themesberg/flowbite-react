@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import type { TimelineProps } from './Timeline';
 import { Timeline } from './Timeline';
 
@@ -7,7 +7,7 @@ export default {
   component: Timeline,
 } as Meta;
 
-const Template: Story<TimelineProps> = (args) => <Timeline {...args} />;
+const Template: StoryFn<TimelineProps> = (args) => <Timeline {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

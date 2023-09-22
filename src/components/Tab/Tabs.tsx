@@ -18,6 +18,10 @@ export interface FlowbiteTabTheme {
       icon: string;
     };
   };
+  tabitemcontainer: {
+    base: string;
+    styles: TabStyles;
+  };
   tabpanel: string;
 }
 
@@ -104,6 +108,7 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
     };
 
     const tabItemStyle = theme.tablist.tabitem.styles[style];
+    const tabItemContainerStyle = theme.tabitemcontainer.styles[style];
 
     useEffect(() => {
       tabRefs.current[focusedTab]?.focus();
@@ -140,13 +145,14 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
               ref={(element) => (tabRefs.current[index] = element as HTMLButtonElement)}
               role="tab"
               tabIndex={index === focusedTab ? 0 : -1}
+              style={{ zIndex: index === focusedTab ? 2 : 1 }}
             >
               {tab.icon && <tab.icon className={theme.tablist.tabitem.icon} />}
               {tab.title}
             </button>
           ))}
         </div>
-        <div>
+        <div className={twMerge(theme.tabitemcontainer.base, tabItemContainerStyle)}>
           {tabs.map((tab, index) => (
             <div
               key={index}

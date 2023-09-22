@@ -1,4 +1,4 @@
-import type { Meta, Story } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
 import { theme } from '../../';
 import type { ToggleSwitchProps } from './ToggleSwitch';
@@ -11,7 +11,7 @@ export default {
   component: ToggleSwitch,
 } as Meta;
 
-const Template: Story<ToggleSwitchProps> = ({ checked, ...args }) => {
+const Template: StoryFn<ToggleSwitchProps> = ({ checked, ...args }) => {
   const [switchChecked, setSwitchChecked] = useState(checked);
 
   const handleChange = () => {
