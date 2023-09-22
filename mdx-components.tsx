@@ -3,10 +3,7 @@ import type { MDXComponents } from 'mdx/types';
 export const useMDXComponents: (components: MDXComponents) => MDXComponents = (components) => {
   return {
     h2: (props) => (
-      <h2
-        className="group relative z-20 text-2xl font-bold text-gray-900 before:invisible before:-mt-20 before:block before:h-20 before:content-[''] before:dark:text-white"
-        {...props}
-      >
+      <h2 className="group relative z-20 scroll-mt-20 text-2xl font-bold text-gray-900" {...props}>
         {props.children}
         <a
           aria-label={`Link to this section: ${props.children}`}
@@ -18,10 +15,7 @@ export const useMDXComponents: (components: MDXComponents) => MDXComponents = (c
       </h2>
     ),
     h3: (props) => (
-      <h3
-        className="group relative z-10 text-2xl font-bold text-gray-900 before:invisible before:-mt-20 before:block before:h-20 before:content-[''] before:dark:text-white"
-        {...props}
-      >
+      <h3 className="group relative z-10 scroll-mt-20 text-2xl font-bold text-gray-900" {...props}>
         {props.children}
         <a
           aria-label={`Link to this section: ${props.children}`}
