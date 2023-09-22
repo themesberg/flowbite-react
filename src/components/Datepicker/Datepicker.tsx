@@ -251,6 +251,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                 {title && <div className={theme.popup.header.title}>{title}</div>}
                 <div className={theme.popup.header.selectors.base}>
                   <button
+                    type="button"
                     className={twMerge(
                       theme.popup.header.selectors.button.base,
                       theme.popup.header.selectors.button.prev,
@@ -260,6 +261,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                     <HiArrowLeft />
                   </button>
                   <button
+                    type="button"
                     className={twMerge(
                       theme.popup.header.selectors.button.base,
                       theme.popup.header.selectors.button.view,
@@ -269,6 +271,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                     {getViewTitle()}
                   </button>
                   <button
+                    type="button"
                     className={twMerge(
                       theme.popup.header.selectors.button.base,
                       theme.popup.header.selectors.button.next,
@@ -284,6 +287,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                 <div className={theme.popup.footer.base}>
                   {showTodayButton && (
                     <button
+                      type="button"
                       className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.today)}
                       onClick={() => {
                         const today = new Date();
@@ -296,6 +300,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                   )}
                   {showClearButton && (
                     <button
+                      type="button"
                       className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
                       onClick={() => {
                         changeSelectedDate(defaultDate, true);
