@@ -13,5 +13,18 @@ describe('Components / Floating Label', () => {
       const input = render(<FloatingLabel variant={'filled'} label={'Label'} />).getByLabelText('Label');
       expect(input).toBeInTheDocument();
     });
+    it('should update the input value correctly', () => {
+      const input: HTMLInputElement | null = render(
+        <FloatingLabel variant={'filled'} label={'Label'} defaultValue={'my name is'} />,
+      ).getByTestId('floating-label-1') as HTMLInputElement;
+      expect(input.value).toBe('my name is');
+    });
+
+    it('should be disabled', () => {
+      const input = render(<FloatingLabel variant={'filled'} label={'Label'} disabled={true} />).getByTestId(
+        'floating-label-1',
+      );
+      expect(input).toBeDisabled();
+    });
   });
 });

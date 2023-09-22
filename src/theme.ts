@@ -1,3 +1,4 @@
+import { floatingLabelTheme } from '~/src/components/FloatingLabel/theme';
 import type { FlowbiteTheme } from '.';
 import { accordionTheme } from './components/Accordion/theme';
 import { alertTheme } from './components/Alert/theme';
@@ -51,6 +52,7 @@ export const theme: FlowbiteTheme = {
   darkThemeToggle: darkThemeToggleTheme,
   dropdown: dropdownTheme,
   fileInput: fileInputTheme,
+  floatingLabel: floatingLabelTheme,
   footer: footerTheme,
   helperText: helperTextTheme,
   kbd: kbdTheme,
