@@ -186,7 +186,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
                 </label>
               </div>
             )}
-            <p id="floatingLabelInputHelp" className={`mt-2 text-xs text-${inputColor} dark:text-${inputColor}`}>
+            <p id={`helperText-${randomId}`} className={`mt-2 text-xs text-${inputColor} dark:text-${inputColor}`}>
               {' '}
               {helperText}
             </p>
@@ -262,7 +262,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
 >>>>>>> 7e8cf5d (fix: updated code to fix the validation styles)
                 </div>
                 <p
-                  id="filled_success_help"
+                  id={`helperText-filled-${randomId}`}
                   className={`mt-2 text-xs text-${inputColor}-600 dark:text-${inputColor}-400`}
                 >
                   {helperText}
@@ -305,7 +305,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
                   </label>
                 </div>
                 <p
-                  id="outlined_success_help"
+                  id={`helperText-outlined-${randomId}`}
                   className={`mt-2 text-xs text-${inputColor}-600 dark:text-${inputColor}-400`}
                 >
                   {helperText}
@@ -348,7 +348,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
                   </label>
                 </div>
                 <p
-                  id="standard_success_help"
+                  id={`helperText-standard-${randomId}`}
                   className={`mt-2 text-xs text-${inputColor}-600 dark:text-${inputColor}-400`}
                 >
                   {helperText}
