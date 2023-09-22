@@ -5,12 +5,10 @@ import { FloatingLabel } from './FloatingLabel';
 export default {
   title: 'Components/FloatingLabel',
   component: FloatingLabel,
-  tags: ['autodocs'],
 } as Meta;
 
 const Template: Story<FloatingLabelProps> = (args) => <FloatingLabel {...args} />;
 
-<<<<<<< HEAD
 export const DefaultFilled = Template.bind({});
 DefaultFilled.args = {
   variant: 'filled',
@@ -47,8 +45,6 @@ DisabledStandard.args = {
   disabled: true,
 };
 
-=======
->>>>>>> 6170479 (feat: added more stories, for different cases, implementation for disabled and sizes)
 export const FilledSuccess = Template.bind({});
 FilledSuccess.args = {
   color: 'success',
