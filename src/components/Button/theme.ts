@@ -2,7 +2,7 @@ import type { FlowbiteButtonTheme } from './Button';
 import type { FlowbiteButtonGroupTheme } from './ButtonGroup';
 
 export const buttonTheme: FlowbiteButtonTheme = {
-  base: 'group flex h-min items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none',
+  base: 'group flex items-stretch items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none',
   fullSized: 'w-full',
   color: {
     dark: 'text-white bg-gray-800 border border-transparent enabled:hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:enabled:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700',
