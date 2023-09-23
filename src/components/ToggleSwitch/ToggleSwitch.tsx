@@ -1,5 +1,5 @@
 import type { ComponentProps, FC, KeyboardEvent } from 'react';
-import { useId, useRef } from 'react';
+import { useId } from 'react';
 import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors } from '../../';
 import { useTheme } from '../../';
@@ -44,7 +44,6 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
 }) => {
   const id = useId();
   const theme = mergeDeep(useTheme().theme.toggleSwitch, customTheme);
-  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const toggle = (): void => onChange(!checked);
 
@@ -64,7 +63,6 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
         <input checked={checked} hidden name={name} readOnly type="checkbox" className="sr-only" />
       ) : null}
       <button
-        ref={buttonRef}
         aria-checked={checked}
         aria-labelledby={`${id}-flowbite-toggleswitch-label`}
         disabled={disabled}
