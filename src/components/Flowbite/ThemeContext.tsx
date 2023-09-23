@@ -9,7 +9,7 @@ export type Mode = 'light' | 'dark';
 export interface ThemeContextProps {
   mode?: Mode;
   theme: FlowbiteTheme;
-  toggleMode?: () => void | null;
+  toggleMode?: (mode?: Mode) => void;
 }
 
 export const ThemeContext = createContext<ThemeContextProps>({
@@ -26,7 +26,13 @@ export const ThemeProvider: FC<ThemeProviderProps> = ({ children, value }) => {
 };
 
 export const useTheme: () => ThemeContextProps = () => {
-  return useContext(ThemeContext);
+  const context = useContext(ThemeContext);
+
+  if (!context) {
+    throw new Error('useTheme should be used within the ThemeContext provider!');
+  }
+
+  return context;
 };
 
 const prefersColorScheme: () => Mode = () => {
@@ -38,8 +44,8 @@ const prefersColorScheme: () => Mode = () => {
 };
 
 export const useThemeMode: () => [Mode, Dispatch<SetStateAction<Mode>>, () => void] = () => {
-  const onToggleMode = () => {
-    const newMode = mode === 'dark' ? 'light' : 'dark';
+  const onToggleMode = (value?: Mode) => {
+    const newMode = value ?? (mode === 'dark' ? 'light' : 'dark');
 
     setModeOnBody(newMode);
     setMode(newMode);
@@ -57,7 +63,7 @@ export const useThemeMode: () => [Mode, Dispatch<SetStateAction<Mode>>, () => vo
     }
   }, []);
 
-  const { mode: initialMode, toggleMode = onToggleMode } = useContext(ThemeContext);
+  const { mode: initialMode, toggleMode = onToggleMode } = useTheme();
   const [mode, setMode] = useState<Mode>('light');
 
   useEffect(() => {

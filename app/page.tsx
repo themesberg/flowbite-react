@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import { HiClipboardCopy, HiOutlineArrowRight } from 'react-icons/hi';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { Button, Flowbite, Footer, Navbar, TextInput, Tooltip } from '~/src';
+import { Button, Flowbite, Footer, Navbar, TextInput, Tooltip, useTheme } from '~/src';
 import { Banner } from './components/banner';
 import { ComponentCard } from './components/component-card';
 import { NavbarIcons, NavbarLinks } from './components/navbar';
@@ -1087,14 +1087,16 @@ const SocialProofSection: FC<SocialProofSectionProps> = ({ stargazers, npmDownlo
   );
 };
 
-// to do: functionality needs to be integrated
 const DarkModeSwitcher: FC = () => {
+  const { toggleMode } = useTheme();
+
   return (
     <div className="text-cyna-500 flex flex-row gap-8">
       <div className="flex flex-col items-center gap-2 font-medium text-gray-900 dark:text-gray-400">
         <button
-          aria-label="Dark mode"
+          aria-label="Light mode"
           type="button"
+          onClick={() => toggleMode?.('light')}
           className="hidden rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:block dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         >
           <span className="hidden dark:block">
@@ -1140,6 +1142,7 @@ const DarkModeSwitcher: FC = () => {
         <button
           aria-label="Dark mode"
           type="button"
+          onClick={() => toggleMode?.('dark')}
           className="rounded-lg bg-gray-100 p-2.5 text-sm text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hidden dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         >
           <span className="hidden dark:block">
