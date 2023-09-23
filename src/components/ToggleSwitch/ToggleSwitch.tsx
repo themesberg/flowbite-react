@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, KeyboardEvent, MouseEvent } from 'react';
+import type { ComponentProps, FC, KeyboardEvent } from 'react';
 import { useId, useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors } from '../../';
@@ -48,7 +48,7 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
 
   const toggle = (): void => onChange(!checked);
 
-  const handleClick = (event: MouseEvent<HTMLButtonElement>): void => {
+  const handleClick = (): void => {
     toggle();
   };
 
