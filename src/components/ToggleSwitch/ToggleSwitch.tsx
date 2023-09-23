@@ -1,5 +1,5 @@
 import type { ComponentProps, FC, KeyboardEvent, MouseEvent } from 'react';
-import { useId } from 'react';
+import { useId, useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors } from '../../';
 import { useTheme } from '../../';
@@ -44,16 +44,18 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
 }) => {
   const id = useId();
   const theme = mergeDeep(useTheme().theme.toggleSwitch, customTheme);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const toggle = (): void => onChange(!checked);
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
     toggle();
   };
 
-  const handleKeyPress = (event: KeyboardEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
+  const handleOnKeyDown = (event: KeyboardEvent<HTMLButtonElement>): void => {
+    if (event.code == 'Enter') {
+      event.preventDefault();
+    }
   };
 
   return (
@@ -62,12 +64,13 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
         <input checked={checked} hidden name={name} readOnly type="checkbox" className="sr-only" />
       ) : null}
       <button
+        ref={buttonRef}
         aria-checked={checked}
         aria-labelledby={`${id}-flowbite-toggleswitch-label`}
         disabled={disabled}
         id={`${id}-flowbite-toggleswitch`}
         onClick={handleClick}
-        onKeyPress={handleKeyPress}
+        onKeyDown={handleOnKeyDown}
         role="switch"
         tabIndex={0}
         type="button"
@@ -79,7 +82,7 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
           className={twMerge(
             theme.toggle.base,
             theme.toggle.checked[checked ? 'on' : 'off'],
-            !disabled && checked && theme.toggle.checked.color[color],
+            checked && theme.toggle.checked.color[color],
           )}
         />
         {label?.length ? (
