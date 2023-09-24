@@ -1,3 +1,5 @@
+'use client';
+
 import type { FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { getTheme } from '~/src/theme-store';
