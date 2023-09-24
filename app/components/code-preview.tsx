@@ -32,6 +32,12 @@ interface CodePreviewState {
   isJustCopied?: boolean;
 }
 
+const responsiveSize: { [key: string]: string } = {
+  mobile: 'max-w-sm',
+  tablet: 'max-w-lg',
+  desktop: 'w-full',
+};
+
 export const CodePreview: FC<CodePreviewProps> = ({
   children,
   className,
@@ -45,6 +51,7 @@ export const CodePreview: FC<CodePreviewProps> = ({
   const [isDarkMode, setDarkMode] = useState(false);
   const [isExpanded, setExpanded] = useState(false);
   const [isJustCopied, setJustCopied] = useState(false);
+  const [toggleMode, setToggleMode] = useState<string>('desktop');
 
   const copyToClipboard = (toCopy: string) => {
     setJustCopied(true);
@@ -84,8 +91,11 @@ export default function ${titleCaseToUpperCamelCase(title)}() {${
   return (
     <div className="code-example mt-8">
       <div className="w-full rounded-t-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-3">
           <EditOnGithubButton githubPage={githubPage} title={title} />
+          <div className="m-auto">
+            <ToggleModeButton onClick={(e) => setToggleMode(e.currentTarget.dataset.toggleMode || 'desktop')} />
+          </div>
           <div className="ml-auto">
             <ToggleDarkModeButton isDarkMode={isDarkMode} onClick={() => setDarkMode(!isDarkMode)} />
           </div>
@@ -93,7 +103,7 @@ export default function ${titleCaseToUpperCamelCase(title)}() {${
       </div>
       <div className={twMerge('code-preview-wrapper', isDarkMode && 'dark')}>
         <div className="code-preview flex border-x border-gray-200 bg-white bg-gradient-to-r p-0 dark:border-gray-600 dark:bg-gray-900">
-          <div className="code-responsive-wrapper w-full">
+          <div className={twMerge('code-responsive-wrapper mx-auto', responsiveSize[toggleMode])}>
             <div className="mx-auto w-full bg-white bg-gradient-to-r p-2 dark:bg-gray-900 sm:p-6">
               <div className={twMerge('py-4', className)}>{children}</div>
             </div>
@@ -197,6 +207,80 @@ const CollapseExpandButton: FC<ComponentProps<'button'> & CodePreviewState> = ({
     >
       {isExpanded ? 'Collapse code' : 'Expand code'}
     </button>
+  );
+};
+
+const ToggleModeButton: FC<ComponentProps<'button'>> = ({ onClick }) => {
+  return (
+    <div className="hidden md:flex">
+      <button
+        className="flex items-center rounded-lg border border-gray-200 bg-white p-2 text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
+        data-toggle-mode="desktop"
+        onClick={onClick}
+      >
+        <span className="sr-only">Toggle full view</span>
+        <svg
+          className="h-3.5 w-3.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 20 20"
+        >
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M10 14v4m-4 1h8M1 10h18M2 1h16a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z"
+          ></path>
+        </svg>
+      </button>
+      <button
+        className="ml-2 flex items-center rounded-lg border border-gray-200 bg-white p-2 text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
+        onClick={onClick}
+        data-toggle-mode="tablet"
+      >
+        <span className="sr-only">Toggle tablet view</span>
+        <svg
+          className="h-3.5 w-3.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 18 20"
+        >
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M7.5 16.5h3M2 1h14a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z"
+          ></path>
+        </svg>
+      </button>
+
+      <button
+        className="ml-2 flex items-center rounded-lg border border-gray-200 bg-white p-2 text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
+        onClick={onClick}
+        data-toggle-mode="mobile"
+      >
+        <span className="sr-only">Toggle mobile view</span>
+        <svg
+          className="h-3.5 w-3.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 20"
+        >
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M1 14h12M1 4h12M6.5 16.5h1M2 1h10a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z"
+          ></path>
+        </svg>
+      </button>
+    </div>
   );
 };
 
