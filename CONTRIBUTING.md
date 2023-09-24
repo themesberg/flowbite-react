@@ -152,7 +152,7 @@ yarn commit
 7. Make sure your changes work and don't break anything else:
 
 ```bash
-yarn format && yarn lint && yarn test && yarn build
+yarn prettier:fix && yarn lint && yarn test && yarn build
 ```
 
 8. Push to your forked repository
