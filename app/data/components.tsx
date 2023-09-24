@@ -376,14 +376,14 @@ export const COMPONENTS_DATA: Component[] = [
   //   link: `/docs/typography/paragraphs`,
   //   classes: 'w-64'
   // },
-  // {
-  //   id: '48',
-  //   name: 'Blockquote',
-  //   image: '/images/components/blockquote.svg',
-  //   imageDark: '/images/components/blockquote-dark.svg',
-  //   link: `/docs/typography/blockquote`,
-  //   classes: 'w-64'
-  // },
+  {
+    id: '48',
+    name: 'Blockquote',
+    image: '/images/components/blockquote.svg',
+    imageDark: '/images/components/blockquote-dark.svg',
+    link: `/docs/typography/blockquote`,
+    classes: 'w-64',
+  },
   // {
   //   id: '49',
   //   name: 'Image',

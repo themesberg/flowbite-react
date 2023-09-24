@@ -262,6 +262,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                         </Badge>
                       </span>
                     </SidebarLink>
+                    <SidebarLink href="/docs/components/blockquote">Blockquote</SidebarLink>
                     <SidebarLink href="/docs/components/breadcrumb">Breadcrumb</SidebarLink>
                     <SidebarLink href="/docs/components/button">Button</SidebarLink>
                     <SidebarLink href="/docs/components/button-group">Button group</SidebarLink>

@@ -1,0 +1,220 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { Blockquote, Avatar, Rating } from '~/src';
+
+Get started with a collection of blockquote components when quoting external sources such as quotes inside an article, user reviews, and testimonials based on multiple examples of layouts, styles, and contexts.
+
+The main `<Blockquote>` component can be used together with the `<cite>` tag or attribute to also mention the source of the quote content.
+
+## Default blockquote
+
+Use this example to quote an external source inside a `<Blockquote>` component.
+
+<CodePreview importFlowbiteReact="Blockquote" title="Default Blockquote">
+  <Blockquote>
+    "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
+    complex dashboard. Perfect choice for your next SaaS application."
+  </Blockquote>
+</CodePreview>
+
+## Solid background
+
+This example can be used as an alternative style to the default one by applying a solid background color.
+
+<CodePreview importFlowbiteReact="Blockquote" title="Solid background Blockquote">
+  <p className="text-gray-500 dark:text-gray-400">
+    Does your user know how to exit out of screens? Can they follow your intended user journey and buy something from
+    the site you’ve designed? By running a usability test, you’ll be able to see how users will interact with your
+    design once it’s live.
+  </p>
+  <Blockquote className="my-4 border-l-4 border-gray-300 bg-gray-50 p-4 dark:border-gray-500 dark:bg-gray-800">
+    "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
+    complex dashboard. Perfect choice for your next SaaS application."
+  </Blockquote>
+  First of all you need to understand how Flowbite works. This library is not another framework. Rather, it is a set of
+  components based on Tailwind CSS that you can just copy-paste from the documentation.
+</CodePreview>
+
+## Blockquote icon
+
+Use this example to show an icon above the blockquote text content.
+
+<CodePreview importFlowbiteReact="Blockquote" title="Blockquote icon">
+  <Blockquote>
+    <svg
+      className="mb-4 h-8 w-8 text-gray-400 dark:text-gray-600"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 18 14"
+    >
+      <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
+    </svg>
+    "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to complex
+    dashboard. Perfect choice for your next SaaS application."
+  </Blockquote>
+</CodePreview>
+
+## Paragraph context
+
+Use this example to show a `<Blockquote>` component between multiple paragraph elements.
+
+<CodePreview importFlowbiteReact="Blockquote" title="Paragraph context Blockquote">
+  <p className="mb-3 text-gray-500 dark:text-gray-400">
+    Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data
+    from other software development tools, so your IT support and operations teams have richer contextual information to
+    rapidly respond to requests, incidents, and changes.
+  </p>
+  <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6">
+    <p className="mb-3 text-gray-500 dark:text-gray-400">
+      Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data
+      from other software development tools, so your IT support and operations teams have richer contextual information
+      to rapidly respond to requests, incidents, and changes.
+    </p>
+    <Blockquote className="mb-3">
+      <p className="text-xl font-semibold italic text-gray-900 dark:text-white">
+        " Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
+        complex dashboard. Perfect choice for your next SaaS application. "
+      </p>
+    </Blockquote>
+  </div>
+  <p className="mb-3 text-gray-500 dark:text-gray-400">
+    Deliver great service experiences fast - without the complexity of traditional ITSM solutions.Accelerate critical
+    development work, eliminate toil, and deploy changes with ease, with a complete audit trail for every change.
+  </p>
+</CodePreview>
+
+## User testimonial
+
+This example can be used for user testimonials by mentioning the author and occupation of the author.
+
+<CodePreview importFlowbiteReact="Blockquote, Avatar" title="User testimonial Blockquote">
+  <figure className="mx-auto max-w-screen-md text-center">
+    <svg
+      className="mx-auto mb-3 h-10 w-10 text-gray-400 dark:text-gray-600"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      viewBox="0 0 18 14"
+    >
+      <path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z" />
+    </svg>
+    <blockquote>
+      <p className="text-2xl font-medium italic text-gray-900 dark:text-white">
+        "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
+        complex dashboard. Perfect choice for your next SaaS application."
+      </p>
+    </blockquote>
+    <figcaption className="mt-6 flex items-center justify-center space-x-3">
+      <Avatar rounded size="xs" img="/images/people/profile-picture-5.jpg" alt="profile picture" />
+      <div className="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
+        <cite className="pr-3 font-medium text-gray-900 dark:text-white">Micheal Gough</cite>
+        <cite className="pl-3 text-sm text-gray-500 dark:text-gray-400">CEO at Google</cite>
+      </div>
+    </figcaption>
+  </figure>
+</CodePreview>
+
+## User Review
+
+Use this example to show a user review with rating stars and the name and occupation of the author.
+
+<CodePreview importFlowbiteReact="Blockquote, Avatar, Rating" title="User Review Blockquote">
+  <figure className="max-w-screen-md">
+    <div className="mb-4 flex items-center">
+      <Rating size="md">
+        <Rating.Star />
+        <Rating.Star />
+        <Rating.Star />
+        <Rating.Star />
+        <Rating.Star />
+      </Rating>
+    </div>
+    <Blockquote>
+      <p className="text-2xl font-semibold text-gray-900 dark:text-white">
+        "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
+        complex dashboard. Perfect choice for your next SaaS application."
+      </p>
+    </Blockquote>
+    <figcaption className="mt-6 flex items-center space-x-3">
+      <Avatar rounded size="xs" img="/images/people/profile-picture-3.jpg" alt="profile picture" />
+      <div className="flex items-center divide-x-2 divide-gray-300 dark:divide-gray-700">
+        <cite className="pr-3 font-medium text-gray-900 dark:text-white">Bonnie Green</cite>
+        <cite className="pl-3 text-sm text-gray-500 dark:text-gray-400">CTO at Flowbite</cite>
+      </div>
+    </figcaption>
+  </figure>
+</CodePreview>
+
+## Alignment
+
+Choose from the following examples the blockquote text alignment from starting from left, center to right based on the utility classes from Tailwind CSS.
+
+## Left
+
+The default alignment of the blockquote text content is the left side of the document.
+
+<CodePreview importFlowbiteReact="Blockquote" title="Left Blockquote">
+  <Blockquote>
+    "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
+    complex dashboard. Perfect choice for your next SaaS application."
+  </Blockquote>
+</CodePreview>
+
+## Center
+
+Use the text-center class from Tailwind CSS to align the text content inside the blockquote to the center.
+
+<CodePreview importFlowbiteReact="Blockquote" title="Center Blockquote">
+  <Blockquote className="text-center">
+    "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
+    complex dashboard. Perfect choice for your next SaaS application."
+  </Blockquote>
+</CodePreview>
+
+## Right
+
+Use the text-right utility class from Tailwind CSS to align the blockquote text content to the right side of the page.
+
+<CodePreview importFlowbiteReact="Blockquote" title="Right Blockquote">
+  <Blockquote className="text-right">
+    "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
+    complex dashboard. Perfect choice for your next SaaS application."
+  </Blockquote>
+</CodePreview>
+
+## Sizes
+
+Choose from one of the multiple sizes for the default blockquote component based on the surrounding elements and sizes.
+
+## Small
+
+Use the text-lg font size class from Tailwind CSS to apply the small size for the blockquote component.
+
+<CodePreview importFlowbiteReact="Blockquote" title="Small Blockquote">
+  <Blockquote className="text-lg">
+    "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
+    complex dashboard. Perfect choice for your next SaaS application."
+  </Blockquote>
+</CodePreview>
+
+## Medium
+
+Use the text-xl utility class to set the default size for the blockquote element.
+
+<CodePreview importFlowbiteReact="Blockquote" title="Medium Blockquote">
+  <Blockquote className="text-xl">
+    "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
+    complex dashboard. Perfect choice for your next SaaS application."
+  </Blockquote>
+</CodePreview>
+
+## Large
+
+The text-2xl class can be used to set a large size for the blockquote component.
+
+<CodePreview importFlowbiteReact="Blockquote" title="Large Blockquote">
+  <Blockquote className="text-2xl">
+    "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
+    complex dashboard. Perfect choice for your next SaaS application."
+  </Blockquote>
+</CodePreview>
