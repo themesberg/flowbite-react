@@ -1,7 +1,7 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { TimelineBody } from './TimelineBody';
 import { TimelineContent } from './TimelineContent';
@@ -34,7 +34,7 @@ const TimelineComponent: FC<TimelineProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.timeline, customTheme);
+  const theme = mergeDeep(getTheme().timeline, customTheme);
 
   return (
     <TimelineContext.Provider value={{ horizontal }}>

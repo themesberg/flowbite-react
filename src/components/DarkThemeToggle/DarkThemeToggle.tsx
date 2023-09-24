@@ -1,6 +1,9 @@
+'use client';
+
 import type { ComponentProps, FC } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -27,9 +30,9 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   iconLight: IconLight = HiMoon,
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.darkThemeToggle, customTheme);
-
   const { mode, toggleMode } = useTheme();
+
+  const theme = mergeDeep(getTheme().darkThemeToggle, customTheme);
 
   return (
     <button

@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useContext } from 'react';
 
 export type TableContextType = {
@@ -7,6 +9,7 @@ export type TableContextType = {
 
 export const TableContext = createContext<TableContextType | undefined>(undefined);
 
+// TODO: deprecate this in favor for vanilla CSS class targetting and enable full SSR
 export function useTableContext(): TableContextType {
   const context = useContext(TableContext);
 

@@ -1,7 +1,7 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial, FlowbiteHeadingLevel } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteTimelineTitleTheme {
@@ -20,7 +20,7 @@ export const TimelineTitle: FC<TimelineTitleProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.timeline.item.content, customTheme).title;
+  const theme = mergeDeep(getTheme().timeline.item.content, customTheme).title;
 
   return (
     <Tag className={twMerge(theme, className)} {...props}>

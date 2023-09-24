@@ -1,8 +1,10 @@
+'use client';
+
 import type { ComponentProps, FC, MouseEvent } from 'react';
 import { HiX } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { useToastContext } from './ToastContext';
 
@@ -25,7 +27,7 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   onDismiss,
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.toast.toggle, customTheme);
+  const theme = mergeDeep(getTheme().toast.toggle, customTheme);
   const { duration, isClosed, isRemoved, setIsClosed, setIsRemoved } = useToastContext();
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {

@@ -1,7 +1,7 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteFooterCopyrightTheme {
@@ -25,7 +25,7 @@ export const FooterCopyright: FC<CopyrightProps> = ({
   year,
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.footer.copyright, customTheme);
+  const theme = mergeDeep(getTheme().footer.copyright, customTheme);
 
   return (
     <div data-testid="flowbite-footer-copyright" className={twMerge(theme.base, className)} {...props}>

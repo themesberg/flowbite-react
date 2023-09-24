@@ -1,4 +1,4 @@
-import type { Dispatch, FC, ReactNode, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { isClient } from '../../helpers/is-client';
 import { theme } from '../../theme';
@@ -15,15 +15,6 @@ export interface ThemeContextProps {
 export const ThemeContext = createContext<ThemeContextProps>({
   theme,
 });
-
-interface ThemeProviderProps {
-  children: ReactNode;
-  value: ThemeContextProps;
-}
-
-export const ThemeProvider: FC<ThemeProviderProps> = ({ children, value }) => {
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
-};
 
 export const useTheme: () => ThemeContextProps = () => {
   const context = useContext(ThemeContext);

@@ -1,3 +1,5 @@
+'use client';
+
 import {
   FloatingFocusManager,
   FloatingOverlay,
@@ -12,8 +14,8 @@ import {
 import type { MutableRefObject } from 'react';
 import { forwardRef, useState, type ComponentPropsWithoutRef, type PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial, FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { FlowbiteModalBodyTheme } from './ModalBody';
 import { ModalBody } from './ModalBody';
@@ -82,7 +84,7 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
     theirRef,
   ) => {
     const [headerId, setHeaderId] = useState<string | undefined>(undefined);
-    const theme = mergeDeep(useTheme().theme.modal, customTheme);
+    const theme = mergeDeep(getTheme().modal, customTheme);
 
     const { context } = useFloating({
       open: show,

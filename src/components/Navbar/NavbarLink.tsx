@@ -1,7 +1,7 @@
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteNavbarLinkTheme {
@@ -27,7 +27,7 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.navbar.link, customTheme);
+  const theme = mergeDeep(getTheme().navbar.link, customTheme);
 
   return (
     <li>

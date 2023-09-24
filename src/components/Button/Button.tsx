@@ -1,6 +1,7 @@
 import type { ComponentPropsWithoutRef, ElementType, ForwardedRef } from 'react';
 import { type ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type {
   DeepPartial,
   FlowbiteBoolean,
@@ -9,7 +10,7 @@ import type {
   FlowbiteGradientDuoToneColors,
   FlowbiteSizes,
 } from '../../';
-import { Spinner, useTheme } from '../../';
+import { Spinner } from '../../';
 import genericForwardRef from '../../helpers/generic-forward-ref';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
@@ -107,7 +108,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
   }: ButtonProps<T>,
   ref: ForwardedRef<T>,
 ) => {
-  const { buttonGroup: groupTheme, button: buttonTheme } = useTheme().theme;
+  const { buttonGroup: groupTheme, button: buttonTheme } = getTheme();
   const theme = mergeDeep(buttonTheme, customTheme);
 
   const theirProps = props as ButtonBaseProps<T>;

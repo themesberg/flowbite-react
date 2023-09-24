@@ -1,10 +1,12 @@
+'use client';
+
 import type { FC, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { HiArrowLeft, HiArrowRight, HiCalendar } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '..';
 import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from '..';
-import { useTheme } from '../..';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { DatepickerContext } from './DatepickerContext';
 import type { FlowbiteDatepickerViewsDaysTheme } from './Views/Days';
@@ -105,7 +107,7 @@ export const Datepicker: FC<DatepickerProps> = ({
   onSelectedDateChanged,
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.datepicker, customTheme);
+  const theme = mergeDeep(getTheme().datepicker, customTheme);
 
   // Default date should respect the range
   defaultDate = getFirstDateInRange(defaultDate, minDate, maxDate);

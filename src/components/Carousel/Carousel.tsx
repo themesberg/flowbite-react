@@ -1,10 +1,12 @@
+'use client';
+
 import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
-import { useTheme } from '../../';
 import { isClient } from '../../helpers/is-client';
 import { mergeDeep } from '../../helpers/merge-deep';
 
@@ -71,7 +73,7 @@ export const Carousel: FC<CarouselProps> = ({
   pauseOnHover = false,
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.carousel, customTheme);
+  const theme = mergeDeep(getTheme().carousel, customTheme);
 
   const isDeviceMobile = isClient() && navigator.userAgent.indexOf('IEMobile') !== -1;
   const carouselContainer = useRef<HTMLDivElement>(null);
@@ -204,7 +206,7 @@ export const Carousel: FC<CarouselProps> = ({
 };
 
 const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme = {} }) => {
-  const theme = mergeDeep(useTheme().theme.carousel, customTheme);
+  const theme = mergeDeep(getTheme().carousel, customTheme);
   return (
     <span className={theme.control.base}>
       <HiOutlineChevronLeft className={theme.control.icon} />
@@ -213,7 +215,7 @@ const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customThe
 };
 
 const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme = {} }) => {
-  const theme = mergeDeep(useTheme().theme.carousel, customTheme);
+  const theme = mergeDeep(getTheme().carousel, customTheme);
   return (
     <span className={theme.control.base}>
       <HiOutlineChevronRight className={theme.control.icon} />

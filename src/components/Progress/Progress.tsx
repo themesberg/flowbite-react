@@ -1,8 +1,8 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useId } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial, FlowbiteColors, FlowbiteSizes } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteProgressTheme {
@@ -47,7 +47,7 @@ export const Progress: FC<ProgressProps> = ({
   ...props
 }) => {
   const id = useId();
-  const theme = mergeDeep(useTheme().theme.progress, customTheme);
+  const theme = mergeDeep(getTheme().progress, customTheme);
 
   return (
     <>

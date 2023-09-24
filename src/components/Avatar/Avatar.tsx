@@ -1,7 +1,7 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { FlowbiteAvatarGroupTheme } from './AvatarGroup';
 import { AvatarGroup } from './AvatarGroup';
@@ -90,7 +90,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.avatar, customTheme);
+  const theme = mergeDeep(getTheme().avatar, customTheme);
 
   const imgClassName = twMerge(
     theme.root.img.base,

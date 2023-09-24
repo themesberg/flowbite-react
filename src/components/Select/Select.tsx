@@ -1,8 +1,9 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../../';
-import { HelperText, useTheme } from '../../';
+import { HelperText } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteSelectTheme {
@@ -59,7 +60,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     },
     ref,
   ) => {
-    const theme = mergeDeep(useTheme().theme.select, customTheme);
+    const theme = mergeDeep(getTheme().select, customTheme);
 
     return (
       <div className={twMerge(theme.base, className)}>

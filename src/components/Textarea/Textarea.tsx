@@ -1,8 +1,9 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors } from '../../';
-import { HelperText, useTheme } from '../../';
+import { HelperText } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteTextareaTheme {
@@ -24,7 +25,7 @@ export interface TextareaProps extends Omit<ComponentProps<'textarea'>, 'color' 
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, color = 'gray', helperText, shadow, theme: customTheme = {}, ...props }, ref) => {
-    const theme = mergeDeep(useTheme().theme.textarea, customTheme);
+    const theme = mergeDeep(getTheme().textarea, customTheme);
 
     return (
       <>

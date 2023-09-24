@@ -1,9 +1,11 @@
+'use client';
+
 import { useListItem } from '@floating-ui/react';
 import type { ComponentProps, ComponentPropsWithoutRef, ElementType, FC, RefCallback } from 'react';
 import { useContext } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { ButtonBaseProps } from '../Button/ButtonBase';
 import { ButtonBase } from '../Button/ButtonBase';
@@ -34,7 +36,7 @@ export const DropdownItem = <T extends ElementType = 'button'>({
   const { ref, index } = useListItem({ label: typeof children === 'string' ? children : undefined });
   const { activeIndex, dismissOnClick, getItemProps, handleSelect } = useContext(DropdownContext);
   const isActive = activeIndex === index;
-  const theme = mergeDeep(useTheme().theme.dropdown.floating.item, customTheme);
+  const theme = mergeDeep(getTheme().dropdown.floating.item, customTheme);
 
   const theirProps = props as ButtonBaseProps<T>;
 

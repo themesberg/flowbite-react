@@ -1,8 +1,10 @@
+'use client';
+
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { ButtonProps } from '../Button';
 
@@ -45,7 +47,7 @@ const ButtonGroup: FC<ButtonGroupProps> = ({
       ),
     [children, outline, pill],
   );
-  const theme = mergeDeep(useTheme().theme.buttonGroup, customTheme);
+  const theme = mergeDeep(getTheme().buttonGroup, customTheme);
 
   return (
     <div className={twMerge(theme.base, className)} role="group" {...props}>

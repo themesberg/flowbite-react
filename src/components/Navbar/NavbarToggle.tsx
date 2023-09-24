@@ -1,8 +1,10 @@
+'use client';
+
 import type { ComponentProps, FC } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { useNavbarContext } from './NavbarContext';
 
@@ -23,7 +25,7 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({
   ...props
 }) => {
   const { isOpen, setIsOpen } = useNavbarContext();
-  const theme = mergeDeep(useTheme().theme.navbar.toggle, customTheme);
+  const theme = mergeDeep(getTheme().navbar.toggle, customTheme);
 
   const handleClick = () => {
     setIsOpen(!isOpen);

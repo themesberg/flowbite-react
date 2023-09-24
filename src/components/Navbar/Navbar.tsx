@@ -1,8 +1,10 @@
+'use client';
+
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial, FlowbiteBoolean } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { FlowbiteNavbarBrandTheme } from './NavbarBrand';
 import { NavbarBrand } from './NavbarBrand';
@@ -52,7 +54,7 @@ const NavbarComponent: FC<NavbarComponentProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
-  const theme = mergeDeep(useTheme().theme.navbar.root, customTheme);
+  const theme = mergeDeep(getTheme().navbar.root, customTheme);
 
   return (
     <NavbarContext.Provider value={{ isOpen, setIsOpen }}>

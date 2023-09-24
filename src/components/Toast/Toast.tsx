@@ -1,8 +1,10 @@
+'use client';
+
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { Duration } from './ToastContext';
 import { ToastContext } from './ToastContext';
@@ -39,7 +41,7 @@ const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300, t
   const [isClosed, setIsClosed] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
 
-  const theme = mergeDeep(useTheme().theme.toast, customTheme);
+  const theme = mergeDeep(getTheme().toast, customTheme);
 
   if (isRemoved) {
     return null;

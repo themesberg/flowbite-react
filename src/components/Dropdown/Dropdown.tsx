@@ -1,3 +1,5 @@
+'use client';
+
 import type { ExtendedRefs, useInteractions } from '@floating-ui/react';
 import { FloatingFocusManager, FloatingList, useListNavigation, useTypeahead } from '@floating-ui/react';
 import type {
@@ -15,7 +17,7 @@ import type {
 import { cloneElement, createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import type { ButtonProps, DeepPartial } from '../../';
-import { Button, useTheme } from '../../';
+import { Button } from '../../';
 import type { FloatingProps, FlowbiteFloatingTheme } from '../../components/Floating';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { FlowbiteDropdownDividerTheme } from './DropdownDivider';
@@ -26,6 +28,7 @@ import type { FlowbiteDropdownItemTheme } from './DropdownItem';
 import { DropdownItem } from './DropdownItem';
 
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import { useBaseFLoating, useFloatingInteractions } from '../../helpers/use-floating';
 
 export interface FlowbiteDropdownFloatingTheme
@@ -138,7 +141,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   const elementsRef = useRef<Array<HTMLElement | null>>([]);
   const labelsRef = useRef<Array<string | null>>([]);
 
-  const theme = mergeDeep(useTheme().theme.dropdown, customTheme);
+  const theme = mergeDeep(getTheme().dropdown, customTheme);
   const theirProps = props as Omit<DropdownProps, 'theme'>;
   const dataTestId = props['data-testid'] || 'flowbite-dropdown-target';
   const {

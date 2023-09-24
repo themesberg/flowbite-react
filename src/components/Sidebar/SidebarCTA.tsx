@@ -1,7 +1,9 @@
+'use client';
+
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial, FlowbiteColors } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { useSidebarContext } from './SidebarContext';
 
@@ -31,7 +33,7 @@ export const SidebarCTA: FC<SidebarCTAProps> = ({
   ...props
 }) => {
   const { isCollapsed } = useSidebarContext();
-  const theme = mergeDeep(useTheme().theme.sidebar.cta, customTheme);
+  const theme = mergeDeep(getTheme().sidebar.cta, customTheme);
 
   return (
     <div

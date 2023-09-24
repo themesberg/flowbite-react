@@ -1,7 +1,9 @@
+'use client';
+
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { useModalContext } from './ModalContext';
 
@@ -15,7 +17,7 @@ export interface ModalBodyProps extends PropsWithChildren<ComponentProps<'div'>>
 }
 
 export const ModalBody: FC<ModalBodyProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const theme = mergeDeep(useTheme().theme.modal.body, customTheme);
+  const theme = mergeDeep(getTheme().modal.body, customTheme);
   const { popup } = useModalContext();
 
   return (

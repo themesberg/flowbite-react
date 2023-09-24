@@ -1,7 +1,7 @@
 import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { FlowbiteBreadcrumbItemTheme } from './BreadcrumbItem';
 import { BreadcrumbItem } from './BreadcrumbItem';
@@ -26,7 +26,7 @@ const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.breadcrumb.root, customTheme);
+  const theme = mergeDeep(getTheme().breadcrumb.root, customTheme);
 
   return (
     <nav aria-label="Breadcrumb" className={twMerge(theme.base, className)} {...props}>
