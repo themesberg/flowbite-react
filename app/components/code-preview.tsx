@@ -24,6 +24,7 @@ interface CodePreviewProps extends PropsWithChildren, ComponentProps<'div'> {
   importExternal?: string;
   importFlowbiteReact?: string;
   title: string;
+  hideResponsiveButtons?: boolean;
 }
 
 interface CodePreviewState {
@@ -47,6 +48,7 @@ export const CodePreview: FC<CodePreviewProps> = ({
   importExternal,
   importFlowbiteReact,
   title,
+  hideResponsiveButtons = false,
 }) => {
   const [isDarkMode, setDarkMode] = useState(false);
   const [isExpanded, setExpanded] = useState(false);
@@ -94,7 +96,11 @@ export default function ${titleCaseToUpperCamelCase(title)}() {${
         <div className="grid grid-cols-3">
           <EditOnGithubButton githubPage={githubPage} title={title} />
           <div className="m-auto">
-            <ToggleModeButton onClick={(e) => setToggleMode(e.currentTarget.dataset.toggleMode || 'desktop')} />
+            {!hideResponsiveButtons ? (
+              <ToggleModeButton onClick={(e) => setToggleMode(e.currentTarget.dataset.toggleMode || 'desktop')} />
+            ) : (
+              ''
+            )}
           </div>
           <div className="ml-auto">
             <ToggleDarkModeButton isDarkMode={isDarkMode} onClick={() => setDarkMode(!isDarkMode)} />
@@ -103,7 +109,12 @@ export default function ${titleCaseToUpperCamelCase(title)}() {${
       </div>
       <div className={twMerge('code-preview-wrapper', isDarkMode && 'dark')}>
         <div className="code-preview flex border-x border-gray-200 bg-white bg-gradient-to-r p-0 dark:border-gray-600 dark:bg-gray-900">
-          <div className={twMerge('code-responsive-wrapper mx-auto', responsiveSize[toggleMode])}>
+          <div
+            className={twMerge(
+              'code-responsive-wrapper',
+              !hideResponsiveButtons ? ['mx-auto', responsiveSize[toggleMode]] : '',
+            )}
+          >
             <div className="mx-auto w-full bg-white bg-gradient-to-r p-2 dark:bg-gray-900 sm:p-6">
               <div className={twMerge('py-4', className)}>{children}</div>
             </div>
