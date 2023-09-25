@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import { Flowbite, theme } from '../../';
+import { theme } from '~/src/theme';
+import { Flowbite } from '../Flowbite';
 import { Button } from './Button';
 
 describe('Components / Button group', () => {

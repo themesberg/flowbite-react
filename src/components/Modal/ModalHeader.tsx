@@ -3,9 +3,9 @@
 import { useId, useLayoutEffect, type ComponentProps, type ElementType, type FC, type PropsWithChildren } from 'react';
 import { HiOutlineX } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
 import { useModalContext } from './ModalContext';
 
 export interface FlowbiteModalHeaderTheme {

@@ -1,4 +1,4 @@
-import { CustomFlowbiteTheme } from '~/src/components';
+import type { CustomFlowbiteTheme } from '~/src/components/Flowbite';
 import { ClientInit } from './client';
 import { ServerInit } from './server';
 

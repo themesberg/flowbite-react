@@ -1,8 +1,9 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../Flowbite';
 import type { FlowbiteAvatarGroupTheme } from './AvatarGroup';
 import { AvatarGroup } from './AvatarGroup';
 import type { FlowbiteAvatarGroupCounterTheme } from './AvatarGroupCounter';

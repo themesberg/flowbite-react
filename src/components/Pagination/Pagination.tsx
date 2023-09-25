@@ -1,9 +1,9 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
 import type { FlowbitePaginationButtonTheme, PaginationButtonProps } from './PaginationButton';
 import { PaginationButton, PaginationNavigation } from './PaginationButton';
 import { range } from './helpers';

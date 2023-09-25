@@ -3,9 +3,10 @@
 import type { ComponentProps, FC } from 'react';
 import { HiStar } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial, FlowbiteSizes } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteSizes } from '../Flowbite';
 import { useRatingContext } from './RatingContext';
 
 export interface FlowbiteRatingStarTheme {

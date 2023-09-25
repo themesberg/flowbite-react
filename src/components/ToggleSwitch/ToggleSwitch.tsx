@@ -1,9 +1,11 @@
 import type { ComponentProps, FC, KeyboardEvent } from 'react';
 import { useId } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteTextInputSizes } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite';
+import type { FlowbiteTextInputSizes } from '../TextInput';
 
 export interface FlowbiteToggleSwitchTheme {
   root: FlowbiteToggleSwitchRootTheme;

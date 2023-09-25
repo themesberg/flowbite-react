@@ -3,10 +3,10 @@
 import type { ComponentProps, FC } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { useThemeMode } from '~/src/helpers/use-theme-mode';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
 
 export interface FlowbiteDarkThemeToggleTheme {
   root: FlowbiteDarkThemeToggleRootTheme;

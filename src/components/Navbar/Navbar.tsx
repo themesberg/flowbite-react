@@ -3,9 +3,10 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial, FlowbiteBoolean } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteBoolean } from '../Flowbite';
 import type { FlowbiteNavbarBrandTheme } from './NavbarBrand';
 import { NavbarBrand } from './NavbarBrand';
 import type { FlowbiteNavbarCollapseTheme } from './NavbarCollapse';

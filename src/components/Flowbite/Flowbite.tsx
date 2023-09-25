@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { ThemeInit } from '~/src/theme-store/init';
-import type { DeepPartial } from '../../';
+import type { DeepPartial } from '~/src/types';
 import type { FlowbiteTheme } from './FlowbiteTheme';
 
 export interface ThemeProps {

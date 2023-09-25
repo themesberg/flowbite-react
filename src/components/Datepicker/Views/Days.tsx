@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import { type DeepPartial } from '../..';
-import { mergeDeep } from '../../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
 import { useDatePickerContext } from '../DatepickerContext';
 import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateEqual, isDateInRange } from '../helpers';
 

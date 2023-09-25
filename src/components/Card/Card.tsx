@@ -1,9 +1,10 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { omit } from '~/src/helpers/omit';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial, FlowbiteBoolean } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { omit } from '../../helpers/omit';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteBoolean } from '../Flowbite';
 
 export interface FlowbiteCardTheme {
   root: FlowbiteCardRootTheme;

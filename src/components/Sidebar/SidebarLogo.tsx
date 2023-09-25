@@ -3,9 +3,10 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { useId } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial, FlowbiteBoolean } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteBoolean } from '../Flowbite';
 import { useSidebarContext } from './SidebarContext';
 
 export interface FlowbiteSidebarLogoTheme {

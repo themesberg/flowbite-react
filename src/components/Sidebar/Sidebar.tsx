@@ -1,8 +1,9 @@
 import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial, FlowbiteBoolean } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteBoolean } from '../Flowbite';
 import type { FlowbiteSidebarCTATheme } from './SidebarCTA';
 import { SidebarCTA } from './SidebarCTA';
 import type { FlowbiteSidebarCollapseTheme } from './SidebarCollapse';

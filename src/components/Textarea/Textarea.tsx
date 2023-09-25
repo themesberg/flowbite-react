@@ -1,10 +1,11 @@
 import type { ComponentProps, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial, FlowbiteBoolean, FlowbiteColors } from '../../';
-import { HelperText } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite';
+import { HelperText } from '../HelperText';
 
 export interface FlowbiteTextareaTheme {
   base: string;

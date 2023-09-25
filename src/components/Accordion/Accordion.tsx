@@ -4,9 +4,10 @@ import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react'
 import { Children, cloneElement, useMemo, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial, FlowbiteBoolean } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
+import { FlowbiteBoolean } from '../Flowbite';
 import type { FlowbiteAccordionComponentTheme } from './AccordionContent';
 import { AccordionContent } from './AccordionContent';
 import type { AccordionPanelProps } from './AccordionPanel';

@@ -3,10 +3,12 @@
 import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from 'react';
 import { forwardRef, useId } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial, FlowbiteColors } from '../../';
-import { Badge, Tooltip } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
+import { Badge } from '../Badge';
+import type { FlowbiteColors } from '../Flowbite';
+import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
 import { useSidebarItemContext } from './SidebarItemContext';
 

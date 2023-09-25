@@ -1,4 +1,4 @@
-import { CustomFlowbiteTheme, FlowbiteTheme } from '../components';
+import type { CustomFlowbiteTheme, FlowbiteTheme } from '../components/Flowbite';
 import { mergeDeep } from '../helpers/merge-deep';
 import { theme as defaultTheme } from '../theme';
 

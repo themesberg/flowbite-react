@@ -1,6 +1,6 @@
 'use client';
 
-import type { CustomFlowbiteTheme } from '~/src/components';
+import type { CustomFlowbiteTheme } from '~/src/components/Flowbite';
 import { createTheme } from '..';
 
 interface Props {

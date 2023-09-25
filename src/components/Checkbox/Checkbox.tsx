@@ -1,9 +1,10 @@
 import type { ComponentProps } from 'react';
 import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import type { DeepPartial, FlowbiteColors } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteColors } from '../Flowbite';
 
 export interface FlowbiteCheckboxTheme {
   root: FlowbiteCheckboxRootTheme;

@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { useState } from 'react';
 import { HiEye, HiHeart, HiInformationCircle } from 'react-icons/hi';
 import { describe, expect, it, vi } from 'vitest';
-import { Flowbite } from '../../';
+import { Flowbite } from '../Flowbite';
 
 import type { AlertProps } from './Alert';
 import { Alert } from './Alert';

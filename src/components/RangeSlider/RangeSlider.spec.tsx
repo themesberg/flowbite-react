@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { createRef } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
-import { Flowbite } from '../../';
+import { Flowbite } from '../Flowbite';
 import { RangeSlider } from './RangeSlider';
 
 describe('Components / Button', () => {
