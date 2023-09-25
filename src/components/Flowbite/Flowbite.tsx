@@ -1,6 +1,5 @@
 import type { FC, HTMLAttributes } from 'react';
-import { ClientInit } from '~/src/theme-store/init/client';
-import { ServerInit } from '~/src/theme-store/init/server';
+import { ThemeInit } from '~/src/theme-store/init';
 import type { DeepPartial } from '../../';
 import type { FlowbiteTheme } from './FlowbiteTheme';
 
@@ -23,8 +22,7 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
 
   return (
     <>
-      <ServerInit theme={customTheme} />
-      <ClientInit theme={customTheme} />
+      <ThemeInit theme={customTheme} />
       {children}
     </>
   );
