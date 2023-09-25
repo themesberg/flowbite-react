@@ -17,7 +17,7 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
   const {
     theme: customTheme,
     // TODO: deal with it
-    dark,
+    // dark,
   } = theme;
 
   return (
