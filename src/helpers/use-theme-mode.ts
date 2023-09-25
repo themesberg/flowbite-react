@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
-import { isClient } from './is-client';
+'use client';
 
-const LS_THEME_MODE = 'theme-mode';
+import { useEffect, useState } from 'react';
+
+const LS_THEME_MODE = 'flowbite-theme-mode';
 
 // TODO: add `system` as well
 export type Mode = 'light' | 'dark';
@@ -27,8 +28,6 @@ export const useThemeMode = () => {
    * Sets `mode` to a specific value (`light | dark`)
    */
   const handleSetMode = (mode: Mode) => {
-    if (!isClient()) return;
-
     setMode(mode);
     setModeInLS(mode);
     setModeOnBody(mode);
@@ -50,16 +49,10 @@ const setModeOnBody = (mode: Mode) => {
 };
 
 const prefersColorScheme: () => Mode = () => {
-  if (!isClient()) {
-    return 'light';
-  }
-
   return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
 
 const getInitialMode: () => Mode = () => {
-  if (!isClient()) return 'light';
-
   const LSMode = localStorage.getItem(LS_THEME_MODE) as Mode | undefined;
 
   return LSMode ?? prefersColorScheme();
