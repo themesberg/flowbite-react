@@ -1,4 +1,4 @@
-import type { FC, HTMLAttributes } from 'react';
+import type { FC } from 'react';
 import { ThemeInit } from '~/src/theme-store/init';
 import type { DeepPartial } from '../../';
 import type { FlowbiteTheme } from './FlowbiteTheme';
@@ -8,7 +8,7 @@ export interface ThemeProps {
   theme?: DeepPartial<FlowbiteTheme>;
 }
 
-interface FlowbiteProps extends HTMLAttributes<HTMLDivElement> {
+interface FlowbiteProps {
   children: React.ReactNode;
   theme?: ThemeProps;
 }
