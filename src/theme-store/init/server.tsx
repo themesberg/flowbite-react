@@ -1,4 +1,4 @@
-import { CustomFlowbiteTheme } from '~/src/components';
+import type { CustomFlowbiteTheme } from '~/src/components';
 import { createTheme } from '..';
 
 interface Props {
