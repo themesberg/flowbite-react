@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { isClient } from './is-client';
+import { useWatchLSValue } from './use-watch-LS-value';
 
 const LS_THEME_MODE = 'flowbite-theme-mode';
 
@@ -69,18 +70,4 @@ const getInitialMode: () => Mode = () => {
   const LSMode = localStorage.getItem(LS_THEME_MODE) as Mode | undefined;
 
   return LSMode ?? prefersColorScheme();
-};
-
-/**
- * Triggers `onChange` when another browser tab instance mutates the LS value.
- */
-const useWatchLSValue = ({ key: watchKey, onChange }: { key: string; onChange(newValue: string | null): void }) => {
-  function handleStorageChange({ key, newValue }: StorageEvent) {
-    if (key === watchKey) onChange(newValue);
-  }
-
-  useEffect(() => {
-    window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
-  }, []);
 };
