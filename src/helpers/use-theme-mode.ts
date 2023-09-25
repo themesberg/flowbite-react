@@ -5,6 +5,7 @@ import { isClient } from './is-client';
 import { useWatchLSValue } from './use-watch-LS-value';
 
 const LS_THEME_MODE = 'flowbite-theme-mode';
+const SYNC_EVENT = 'flowbite-theme-mode-sync';
 
 // TODO: add `system` as well
 export type Mode = 'light' | 'dark';
@@ -21,6 +22,19 @@ export const useThemeMode = () => {
       if (newValue) handleSetMode(newValue as Mode);
     },
   });
+
+  /**
+   * Keep the other instances of the hook in sync (bi-directional)
+   */
+  useEffect(() => {
+    function handleSync(e: Event) {
+      const mode = (e as CustomEvent<Mode>).detail;
+      setMode(mode);
+    }
+
+    document.addEventListener(SYNC_EVENT, handleSync);
+    return () => document.removeEventListener(SYNC_EVENT, handleSync);
+  }, []);
 
   useEffect(() => {
     setModeInLS(mode);
@@ -43,6 +57,7 @@ export const useThemeMode = () => {
     setMode(mode);
     setModeInLS(mode);
     setModeOnBody(mode);
+    document.dispatchEvent(new CustomEvent(SYNC_EVENT, { detail: mode }));
   };
 
   return { mode, setMode: handleSetMode, toggleMode };
