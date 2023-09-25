@@ -1,9 +1,19 @@
 import { CodePreview } from '~/app/components/code-preview';
-import { Blockquote, Avatar, Rating } from '~/src';
+import { Blockquote, Avatar, Rating, theme } from '~/src';
 
 Get started with a collection of blockquote components when quoting external sources such as quotes inside an article, user reviews, and testimonials based on multiple examples of layouts, styles, and contexts.
 
 The main `<Blockquote>` component can be used together with the `<cite>` tag or attribute to also mention the source of the quote content.
+
+To start using the component make sure that you have imported it from Flowbite React:
+
+```jsx
+'use client';
+
+import { Blockquote } from 'flowbite-react';
+```
+
+## Table of Contents
 
 ## Default blockquote
 
@@ -218,3 +228,15 @@ The text-2xl class can be used to set a large size for the blockquote component.
     complex dashboard. Perfect choice for your next SaaS application."
   </Blockquote>
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.blockquote, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Blockquote](https://flowbite.com/docs/typography/blockquote/)
