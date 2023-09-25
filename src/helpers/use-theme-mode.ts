@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { isClient } from './is-client';
 
 const LS_THEME_MODE = 'flowbite-theme-mode';
 
@@ -53,6 +54,8 @@ const prefersColorScheme: () => Mode = () => {
 };
 
 const getInitialMode: () => Mode = () => {
+  if (!isClient()) return 'light';
+
   const LSMode = localStorage.getItem(LS_THEME_MODE) as Mode | undefined;
 
   return LSMode ?? prefersColorScheme();
