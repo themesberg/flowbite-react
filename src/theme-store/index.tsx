@@ -4,7 +4,7 @@ import { theme as defaultTheme } from '../theme';
 
 const _theme: { current: FlowbiteTheme } = { current: { ...defaultTheme } };
 
-export function createTheme(theme: CustomFlowbiteTheme) {
+export function createTheme(theme?: CustomFlowbiteTheme) {
   if (theme) _theme.current = mergeDeep(defaultTheme, theme);
 }
 

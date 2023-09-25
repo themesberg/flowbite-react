@@ -3,9 +3,9 @@
 import type { ComponentProps, FC } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
+import { useThemeMode } from '~/src/helpers/use-theme-mode';
 import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteDarkThemeToggleTheme {
@@ -30,7 +30,7 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   iconLight: IconLight = HiMoon,
   ...props
 }) => {
-  const { mode, toggleMode } = useTheme();
+  const { mode, toggleMode } = useThemeMode();
 
   const theme = mergeDeep(getTheme().darkThemeToggle, customTheme);
 

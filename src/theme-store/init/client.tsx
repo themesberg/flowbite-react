@@ -1,10 +1,10 @@
 'use client';
 
-import { FlowbiteTheme } from '~/src/components';
+import { CustomFlowbiteTheme } from '~/src/components';
 import { createTheme } from '..';
 
 interface Props {
-  theme?: FlowbiteTheme;
+  theme?: CustomFlowbiteTheme;
 }
 
 export function ClientInit({ theme }: Props) {

@@ -1,3 +1,5 @@
+// TODO: fix test
+
 import { act, render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Flowbite, useTheme } from '../../';

@@ -1,10 +1,8 @@
 import type { FC, HTMLAttributes } from 'react';
-import { useEffect, useMemo } from 'react';
+import { ClientInit } from '~/src/theme-store/init/client';
+import { ServerInit } from '~/src/theme-store/init/server';
 import type { DeepPartial } from '../../';
-import { theme as defaultTheme } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
 import type { FlowbiteTheme } from './FlowbiteTheme';
-import { ThemeContext, useTheme, useThemeMode } from './ThemeContext';
 
 export interface ThemeProps {
   dark?: boolean;
@@ -17,31 +15,19 @@ interface FlowbiteProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
-  const { theme: customTheme = {}, dark } = theme;
-  const [mode, setMode, toggleMode] = useThemeMode();
+  const {
+    theme: customTheme,
+    // TODO: deal with it
+    dark,
+  } = theme;
 
-  const mergedTheme = mergeDeep(defaultTheme, customTheme);
-
-  useEffect(() => {
-    if (dark) {
-      setMode('dark');
-      document.documentElement.classList.add('dark');
-    } else {
-      setMode('light');
-      document.documentElement.classList.remove('dark');
-    }
-  }, [dark, setMode]);
-
-  const themeContextValue = useMemo(
-    () => ({
-      theme: mergedTheme,
-      mode,
-      toggleMode,
-    }),
-    [mode, toggleMode, mergedTheme],
+  return (
+    <>
+      <ServerInit theme={customTheme} />
+      <ClientInit theme={customTheme} />
+      {children}
+    </>
   );
-
-  return <ThemeContext.Provider value={themeContextValue}>{children}</ThemeContext.Provider>;
 };
 
 Flowbite.displayName = 'Flowbite';
@@ -59,4 +45,3 @@ export type {
   FlowbiteStateColors,
   FlowbiteTheme,
 } from './FlowbiteTheme';
-export { useTheme, useThemeMode };
