@@ -29,17 +29,3 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
 };
 
 Flowbite.displayName = 'Flowbite';
-
-export type {
-  CustomFlowbiteTheme,
-  FlowbiteBoolean,
-  FlowbiteColors,
-  FlowbiteContentPositions,
-  FlowbiteGradientColors,
-  FlowbiteGradientDuoToneColors,
-  FlowbiteHeadingLevel,
-  FlowbitePositions,
-  FlowbiteSizes,
-  FlowbiteStateColors,
-  FlowbiteTheme,
-} from './FlowbiteTheme';
