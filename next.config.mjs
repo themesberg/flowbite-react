@@ -5,9 +5,6 @@ import TerserPlugin from 'terser-webpack-plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
   pageExtensions: ['mdx', 'tsx'],
   reactStrictMode: true,
   webpack(config) {
