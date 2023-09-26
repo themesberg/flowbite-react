@@ -183,9 +183,11 @@ const HeroSection: FC = () => {
                 </Tooltip>
                 <div className="justify-center sm:flex sm:justify-start">
                   <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
-                    <Button href="/docs/getting-started/introduction" size="lg" className="w-full whitespace-nowrap">
-                      Get started <HiOutlineArrowRight className="ml-2 mt-1 h-4 w-4" />
-                    </Button>
+                    <Link href="/docs/getting-started/introduction" tabIndex={-1}>
+                      <Button size="lg" className="w-full whitespace-nowrap">
+                        Get started <HiOutlineArrowRight className="ml-2 mt-1 h-4 w-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -371,9 +373,9 @@ const ComponentsSection: FC = () => {
           ))}
         </div>
         <div className="mb-4 flex w-full justify-center text-center">
-          <Button href="/docs/components/accordion" color="light">
-            View all components
-          </Button>
+          <Link href="/docs/components/accordion" tabIndex={-1}>
+            <Button color="light">View all components</Button>
+          </Link>
         </div>
       </div>
     </section>
@@ -447,12 +449,14 @@ const ReactSection: FC = () => {
                 ))}
               </ul>
               <div className="flex flex-row gap-4">
-                <Button href="/docs/getting-started/quickstart">
-                  Start building <HiOutlineArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button href="https://github.com/themesberg/flowbite-react" color="gray">
-                  View on GitHub
-                </Button>
+                <Link href="/docs/getting-started/quickstart" tabIndex={-1}>
+                  <Button>
+                    Start building <HiOutlineArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link href="https://github.com/themesberg/flowbite-react" tabIndex={-1}>
+                  <Button color="gray">View on GitHub</Button>
+                </Link>
               </div>
             </div>
           </div>
