@@ -164,7 +164,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
             root: {
               base: 'h-full border-r border-gray-200 dark:border-gray-600',
               inner:
-                'overflow-y-auto px-4 pt-20 lg:pt-0 h-full bg-white scrolling-touch max-w-2xs lg:h-[calc(100vh-8rem)] lg:block dark:bg-gray-900 dark:hover:bg-transparent lg:mr-0 lg:sticky top-20 font-normal text-base lg:text-sm',
+                'overflow-y-auto px-4 pt-20 lg:pt-0 h-full bg-white scrolling-touch max-w-2xs lg:h-[calc(100vh-8rem)] lg:block dark:bg-gray-900 lg:mr-0 lg:sticky top-20 font-normal text-base lg:text-sm',
             },
           }}
         >

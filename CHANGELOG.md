@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.1](https://github.com/themesberg/flowbite-react/compare/v0.6.0...v0.6.1) (2023-09-23)
+
+
+### Bug Fixes
+
+* `CodePreview` - show explicit false props ([#985](https://github.com/themesberg/flowbite-react/issues/985)) ([b1357c6](https://github.com/themesberg/flowbite-react/commit/b1357c6e44607fb1383393ec54ad37bd98712879))
+* **button:** allow height of buttons stretch ([#906](https://github.com/themesberg/flowbite-react/issues/906)) ([10b54e3](https://github.com/themesberg/flowbite-react/commit/10b54e345b355201405bf948eae943b5cca94354))
+* **button:** fix error Button cannot be used as a JSX component ([#974](https://github.com/themesberg/flowbite-react/issues/974)) ([b621601](https://github.com/themesberg/flowbite-react/commit/b62160116b26180023f15ed07804e9a48600180b)), closes [#962](https://github.com/themesberg/flowbite-react/issues/962)
+* **component:** add custom theme to the carousel's default left and r… ([#910](https://github.com/themesberg/flowbite-react/issues/910)) ([ddff0e5](https://github.com/themesberg/flowbite-react/commit/ddff0e5e4353dbbeaba0312a317fe40e777b79f9))
+* **datepicker.tsx:** fix theme and add onSelectedDate callback ([#970](https://github.com/themesberg/flowbite-react/issues/970)) ([fe9f63f](https://github.com/themesberg/flowbite-react/commit/fe9f63f0cdb04f5ed64baa9ff8755182ef6c8fce)), closes [#968](https://github.com/themesberg/flowbite-react/issues/968) [#964](https://github.com/themesberg/flowbite-react/issues/964)
+* **datepicker:** button type ([#984](https://github.com/themesberg/flowbite-react/issues/984)) ([496ed1e](https://github.com/themesberg/flowbite-react/commit/496ed1e9e066edae1eec021d0f7a042a82467c55))
+* **datepiker:** incorrect names of days of the week in the datepicker ([#963](https://github.com/themesberg/flowbite-react/issues/963)) ([e09a22a](https://github.com/themesberg/flowbite-react/commit/e09a22a4dc28aecefe7e09a2b6ac78a775083a9b)), closes [#960](https://github.com/themesberg/flowbite-react/issues/960)
+* **labels:** default dark color of the input labels should be white ([#978](https://github.com/themesberg/flowbite-react/issues/978)) ([3d1d62e](https://github.com/themesberg/flowbite-react/commit/3d1d62eb80fa9475e0db70f05e8670bd8a6a9c9b))
+* scroll to section blocking above content ([#983](https://github.com/themesberg/flowbite-react/issues/983)) ([5a9589b](https://github.com/themesberg/flowbite-react/commit/5a9589bd39dd39cfddc149ae509c1caa98a4ee24))
+* **tabs:** added tabs container div style and theme ([#929](https://github.com/themesberg/flowbite-react/issues/929)) ([c0e9d66](https://github.com/themesberg/flowbite-react/commit/c0e9d66b88c259ef7cebfb67b44705aee7491fbc)), closes [#924](https://github.com/themesberg/flowbite-react/issues/924)
+* **textarea:** default font size should be `text-sm` ([#958](https://github.com/themesberg/flowbite-react/issues/958)) ([ecf271a](https://github.com/themesberg/flowbite-react/commit/ecf271a8dcb64c7c25e24ad1cfb7c33b8ea3d3bd))
+
 ### [0.6.0](https://github.com/themesberg/flowbite-react/compare/v0.5.0...v0.6.0) (2023-09-09)
 
 ### Features

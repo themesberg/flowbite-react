@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, KeyboardEvent, MouseEvent } from 'react';
+import type { ComponentProps, FC, KeyboardEvent } from 'react';
 import { useId } from 'react';
 import { twMerge } from 'tailwind-merge';
 import type { DeepPartial, FlowbiteBoolean, FlowbiteColors } from '../../';
@@ -47,13 +47,14 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
 
   const toggle = (): void => onChange(!checked);
 
-  const handleClick = (event: MouseEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
+  const handleClick = (): void => {
     toggle();
   };
 
-  const handleKeyPress = (event: KeyboardEvent<HTMLButtonElement>): void => {
-    event.preventDefault();
+  const handleOnKeyDown = (event: KeyboardEvent<HTMLButtonElement>): void => {
+    if (event.code == 'Enter') {
+      event.preventDefault();
+    }
   };
 
   return (
@@ -67,7 +68,7 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
         disabled={disabled}
         id={`${id}-flowbite-toggleswitch`}
         onClick={handleClick}
-        onKeyPress={handleKeyPress}
+        onKeyDown={handleOnKeyDown}
         role="switch"
         tabIndex={0}
         type="button"
@@ -79,7 +80,7 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
           className={twMerge(
             theme.toggle.base,
             theme.toggle.checked[checked ? 'on' : 'off'],
-            !disabled && checked && theme.toggle.checked.color[color],
+            checked && theme.toggle.checked.color[color],
           )}
         />
         {label?.length ? (

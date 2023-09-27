@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react';
 import { HiClipboardCopy, HiOutlineArrowRight } from 'react-icons/hi';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { Button, Flowbite, Footer, Navbar, TextInput, Tooltip } from '~/src';
+import { Button, Flowbite, Footer, Navbar, TextInput, Tooltip, useTheme } from '~/src';
 import { Banner } from './components/banner';
 import { ComponentCard } from './components/component-card';
 import { NavbarIcons, NavbarLinks } from './components/navbar';
@@ -482,9 +482,12 @@ const DarkModeSection: FC = () => {
               </h2>
               <p className="text-lg text-gray-500 dark:text-gray-400">
                 Flowbite React has native built-in support for{' '}
-                <a href="#" className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white">
+                <Link
+                  href="/docs/customize/dark-mode"
+                  className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white"
+                >
                   dark mode
-                </a>{' '}
+                </Link>{' '}
                 by using Tailwind CSS and the Flowbite design system.
               </p>
               <p className="text-lg text-gray-500 dark:text-gray-400">
@@ -514,7 +517,7 @@ const DarkModeSection: FC = () => {
                 ))}
               </ul>
               <div className="flex flex-row gap-4">
-                <a
+                <Link
                   href="/docs/customize/dark-mode"
                   className="flex items-center gap-4 font-medium text-cyan-600 hover:underline"
                 >
@@ -527,7 +530,7 @@ const DarkModeSection: FC = () => {
                       fill="currentColor"
                     ></path>
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -561,12 +564,12 @@ const TailwindSection: FC = () => {
               </h2>
               <p className="text-lg text-gray-500 dark:text-gray-400">
                 Flowbite React uses the utility classes from Tailwind CSS under the hood and provides an advanced{' '}
-                <a
+                <Link
                   href="/docs/customize/theme"
                   className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white"
                 >
                   theming system
-                </a>{' '}
+                </Link>{' '}
                 that you can use to apply classes to UI components and their underlying HTML elements structure.
               </p>
               <p className="text-lg text-gray-500 dark:text-gray-400">
@@ -590,7 +593,7 @@ const TailwindSection: FC = () => {
                 uses this framework in all of the libraries including the vanilla JS, Svelte, Vue, and React one.
               </p>
               <div className="flex flex-row gap-4">
-                <a
+                <Link
                   href="/docs/customize/theme"
                   className="flex items-center gap-4 font-medium text-cyan-600 hover:underline"
                 >
@@ -603,7 +606,7 @@ const TailwindSection: FC = () => {
                       fill="currentColor"
                     ></path>
                   </svg>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -1087,14 +1090,16 @@ const SocialProofSection: FC<SocialProofSectionProps> = ({ stargazers, npmDownlo
   );
 };
 
-// to do: functionality needs to be integrated
 const DarkModeSwitcher: FC = () => {
+  const { toggleMode } = useTheme();
+
   return (
     <div className="text-cyna-500 flex flex-row gap-8">
       <div className="flex flex-col items-center gap-2 font-medium text-gray-900 dark:text-gray-400">
         <button
-          aria-label="Dark mode"
+          aria-label="Light mode"
           type="button"
+          onClick={() => toggleMode?.('light')}
           className="hidden rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:block dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         >
           <span className="hidden dark:block">
@@ -1140,6 +1145,7 @@ const DarkModeSwitcher: FC = () => {
         <button
           aria-label="Dark mode"
           type="button"
+          onClick={() => toggleMode?.('dark')}
           className="rounded-lg bg-gray-100 p-2.5 text-sm text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hidden dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         >
           <span className="hidden dark:block">
