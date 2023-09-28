@@ -34,9 +34,9 @@ DefaultToggleSwitch.argTypes = {
   },
 };
 
-export const SmallToggleSwtich = Template.bind({});
-SmallToggleSwtich.storyName = 'Small Toggle switch';
-SmallToggleSwtich.args = {
+export const SmallToggleSwitch = Template.bind({});
+SmallToggleSwitch.storyName = 'Small Toggle switch';
+SmallToggleSwitch.args = {
   sizing: 'sm',
   label: 'small toggle switch',
 };
