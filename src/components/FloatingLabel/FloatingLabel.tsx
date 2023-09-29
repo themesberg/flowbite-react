@@ -11,7 +11,7 @@ export interface FlowbiteFloatingLabelTheme {
   helperText: any;
 }
 
-export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
+export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md'> {
   [key: string]: string;
 }
 
@@ -52,7 +52,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
               type="text"
               id={props.id ? props.id : 'floatingLabel' + randomId}
               aria-describedby="outlined_success_help"
-              className={twMerge(theme.input[color][variant][sizing], className)}
+              className={twMerge(theme.input[color]?.[variant]?.[sizing], className)}
               placeholder=" "
               data-testid="floating-label"
               disabled={disabled}
@@ -61,7 +61,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
             />
             <label
               htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-              className={twMerge(theme.label?.[color]?.[variant]?.[sizing], className)}
+              className={twMerge(theme.label[color]?.[variant]?.[sizing], className)}
             >
               {label}
             </label>
