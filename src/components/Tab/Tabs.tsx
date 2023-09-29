@@ -70,7 +70,11 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
 
     const id = useId();
     const tabs = useMemo(
-      () => Children.map(children as ReactElement<PropsWithChildren<TabItemProps>>[], ({ props }) => props),
+      () =>
+        Children.map(
+          Children.toArray(children) as ReactElement<PropsWithChildren<TabItemProps>>[],
+          ({ props }) => props,
+        ),
       [children],
     );
     const tabRefs = useRef<HTMLButtonElement[]>([]);
