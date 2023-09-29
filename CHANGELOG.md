@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.2](https://github.com/themesberg/flowbite-react/compare/v0.6.1...v0.6.2) (2023-09-29)
+
+
+### Features
+
+* adds floating label ([#955](https://github.com/themesberg/flowbite-react/issues/955)) ([3fc7b88](https://github.com/themesberg/flowbite-react/commit/3fc7b88d8633977b4e1d5c9eadcb4ed25116d86f))
+* **component:** toggleSwitch add sizing prop (sm|md|lg) ([#1009](https://github.com/themesberg/flowbite-react/issues/1009)) ([c3bf704](https://github.com/themesberg/flowbite-react/commit/c3bf704dd9775390a5efac638d84192b588fcbbd))
+
+
+### Bug Fixes
+
+* docs - avatar - render properly code example ([#1006](https://github.com/themesberg/flowbite-react/issues/1006)) ([48ce786](https://github.com/themesberg/flowbite-react/commit/48ce7863fcbc7d98b29c80b1c95c7f99a377ab95))
+* documentation regressions ([#1021](https://github.com/themesberg/flowbite-react/issues/1021)) ([dbfb019](https://github.com/themesberg/flowbite-react/commit/dbfb01958e47b04de08b9c88a259bc54f0eb1b36))
+* homepage - missing dark mode section functionality ([#989](https://github.com/themesberg/flowbite-react/issues/989)) ([63e04e2](https://github.com/themesberg/flowbite-react/commit/63e04e2ae52248adc86ead5298f11161af563cc9))
+* issue [#846](https://github.com/themesberg/flowbite-react/issues/846) - docs dropdown - `custom trigger` section not render… ([#1005](https://github.com/themesberg/flowbite-react/issues/1005)) ([409c01c](https://github.com/themesberg/flowbite-react/commit/409c01c9a5831b444702c252cd6086c7caaddfe8))
+* **toggleswitch:** disable + checked state and deprecated html event replacement ([#987](https://github.com/themesberg/flowbite-react/issues/987)) ([ce55df1](https://github.com/themesberg/flowbite-react/commit/ce55df1fc4b7a4c20a12957b052d8f359e8234a7)), closes [#986](https://github.com/themesberg/flowbite-react/issues/986)
+
 ### [0.6.1](https://github.com/themesberg/flowbite-react/compare/v0.6.0...v0.6.1) (2023-09-23)
 
 
