@@ -278,7 +278,14 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                     <SidebarLink href="/docs/components/dropdown">Dropdown</SidebarLink>
                     <SidebarLink href="/docs/components/footer">Footer</SidebarLink>
                     <SidebarLink href="/docs/components/forms">Forms</SidebarLink>
-                    <SidebarLink href="/docs/components/kbd">KBD</SidebarLink>
+                    <SidebarLink href="/docs/components/kbd">
+                      <span className="flex items-center gap-2">
+                        KDB{' '}
+                        <Badge color="cyan" className="px-2">
+                          New
+                        </Badge>
+                      </span>
+                    </SidebarLink>
                     <SidebarLink href="/docs/components/list-group">List group</SidebarLink>
                     <SidebarLink href="/docs/components/modal">Modal</SidebarLink>
                     <SidebarLink href="/docs/components/navbar">Navbar</SidebarLink>
@@ -315,7 +322,14 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 </Accordion.Title>
                 <Accordion.Content className="mb-2 border-none p-0">
                   <Sidebar.ItemGroup className="border-none">
-                    <SidebarLink href="/docs/forms/floating-label">Floating Label</SidebarLink>
+                    <SidebarLink href="/docs/forms/floating-label">
+                      <span className="flex items-center gap-2">
+                        Floating Label{' '}
+                        <Badge color="cyan" className="px-2">
+                          New
+                        </Badge>
+                      </span>
+                    </SidebarLink>
                   </Sidebar.ItemGroup>
                 </Accordion.Content>
               </Accordion.Panel>

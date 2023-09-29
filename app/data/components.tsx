@@ -328,14 +328,14 @@ export const COMPONENTS_DATA: Component[] = [
   //   link: `/docs/components/skeleton`,
   //   classes: 'w-40'
   // },
-  // {
-  //   id: '42',
-  //   name: 'KBD (Keyboard)',
-  //   image: '/images/components/keyboard.svg',
-  //   imageDark: '/images/components/keyboard-dark.svg',
-  //   link: `/docs/components/kbd`,
-  //   classes: 'w-40'
-  // },
+  {
+    id: '42',
+    name: 'KBD (Keyboard)',
+    image: '/images/components/keyboard.svg',
+    imageDark: '/images/components/keyboard-dark.svg',
+    link: `/docs/components/kbd`,
+    classes: 'w-40',
+  },
   // {
   //   id: '43',
   //   name: 'Drawer (offcanvas)',
