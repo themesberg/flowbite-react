@@ -296,6 +296,31 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 </Accordion.Content>
               </Accordion.Panel>
             </Accordion>
+            <Accordion collapseAll={!pathname.includes('/forms/')} flush className="border-none">
+              <Accordion.Panel>
+                <Accordion.Title
+                  theme={{
+                    open: {
+                      on: 'mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500',
+                      off: 'mb-1 text-gray-900 dark:text-white hover:text-primary-700 dark:hover:text-primary-500',
+                    },
+                  }}
+                  className={twMerge(
+                    'flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide',
+                    pathname.includes('/forms/') &&
+                      'text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500',
+                  )}
+                >
+                  Forms
+                </Accordion.Title>
+                <Accordion.Content className="mb-2 border-none p-0">
+                  <Sidebar.ItemGroup className="border-none">
+                    <SidebarLink href="/docs/forms/floating-label">Floating Label</SidebarLink>
+                  </Sidebar.ItemGroup>
+                </Accordion.Content>
+              </Accordion.Panel>
+            </Accordion>
+
             <span className="h-64">&nbsp;</span>
           </Sidebar.Items>
         </Sidebar>
