@@ -1,4 +1,3 @@
-import { floatingLabelTheme } from '~/src/components/FloatingLabel/theme';
 import type { FlowbiteTheme } from '.';
 import { accordionTheme } from './components/Accordion/theme';
 import { alertTheme } from './components/Alert/theme';
@@ -13,6 +12,7 @@ import { darkThemeToggleTheme } from './components/DarkThemeToggle/theme';
 import { datePickerTheme } from './components/Datepicker/theme';
 import { dropdownTheme } from './components/Dropdown/theme';
 import { fileInputTheme } from './components/FileInput/theme';
+import { floatingLabelTheme } from './components/FloatingLabel/theme';
 import { footerTheme } from './components/Footer/theme';
 import { helperTextTheme } from './components/HelperText/theme';
 import { kbdTheme } from './components/Kbd/theme';
