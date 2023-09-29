@@ -174,6 +174,7 @@ const TestTabs = forwardRef<TabsRef, TestTabsProps>(({ onActiveTabChange }, ref)
   </Tabs.Group>
 ));
 
+// eslint-disable-next-line react/display-name
 const TestConditionalTabs = forwardRef<TabsRef, TestTabsProps>(({ condition }) => (
   <Tabs.Group aria-label="Test tabs">
     {condition && (
