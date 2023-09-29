@@ -33,3 +33,24 @@ DefaultToggleSwitch.argTypes = {
     },
   },
 };
+
+export const SmallToggleSwitch = Template.bind({});
+SmallToggleSwitch.storyName = 'Small Toggle switch';
+SmallToggleSwitch.args = {
+  sizing: 'sm',
+  label: 'small toggle switch',
+};
+
+export const MediumToggleSwitch = Template.bind({});
+MediumToggleSwitch.storyName = 'Medium Toggle switch';
+MediumToggleSwitch.args = {
+  sizing: 'md',
+  label: 'default toggle switch',
+};
+
+export const LargeToggleSwitch = Template.bind({});
+LargeToggleSwitch.storyName = 'Large Toggle switch';
+LargeToggleSwitch.args = {
+  sizing: 'lg',
+  label: 'large toggle switch',
+};

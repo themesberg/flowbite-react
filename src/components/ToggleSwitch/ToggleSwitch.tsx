@@ -1,7 +1,7 @@
 import type { ComponentProps, FC, KeyboardEvent } from 'react';
 import { useId } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial, FlowbiteBoolean, FlowbiteColors } from '../../';
+import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteTextInputSizes } from '../../';
 import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
 
@@ -18,6 +18,7 @@ export interface FlowbiteToggleSwitchRootTheme {
 
 export interface FlowbiteToggleSwitchToggleTheme {
   base: string;
+  sizes: FlowbiteTextInputSizes;
   checked: FlowbiteBoolean & {
     color: FlowbiteColors;
   };
@@ -26,6 +27,7 @@ export interface FlowbiteToggleSwitchToggleTheme {
 export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange'> & {
   checked: boolean;
   color?: keyof FlowbiteColors;
+  sizing?: keyof FlowbiteTextInputSizes;
   label?: string;
   onChange: (checked: boolean) => void;
   theme?: DeepPartial<FlowbiteToggleSwitchTheme>;
@@ -35,6 +37,7 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
   checked,
   className,
   color = 'blue',
+  sizing = 'md',
   disabled,
   label,
   name,
@@ -81,6 +84,7 @@ export const ToggleSwitch: FC<ToggleSwitchProps> = ({
             theme.toggle.base,
             theme.toggle.checked[checked ? 'on' : 'off'],
             checked && theme.toggle.checked.color[color],
+            theme.toggle.sizes[sizing],
           )}
         />
         {label?.length ? (

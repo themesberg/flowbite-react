@@ -304,14 +304,14 @@ export const COMPONENTS_DATA: Component[] = [
   //   link: `/docs/forms/range`,
   //   classes: 'w-56'
   // },
-  // {
-  //   id: '39',
-  //   name: 'Floating Label',
-  //   image: '/images/components/floating-label.svg',
-  //   imageDark: '/images/components/floating-label-dark.svg',
-  //   link: `/docs/forms/floating-label`,
-  //   classes: 'w-40'
-  // },
+  {
+    id: '38',
+    name: 'Floating Label',
+    image: '/images/components/floating-label.svg',
+    imageDark: '/images/components/floating-label-dark.svg',
+    link: `/docs/forms/floating-label`,
+    classes: 'w-40',
+  },
   // {
   //   id: '40',
   //   name: 'Mega menu',
