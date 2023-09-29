@@ -16,7 +16,7 @@ export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | '
 }
 
 export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
-  color?: string;
+  color?: string | null | undefined;
   helperText?: string;
   sizing?: keyof FlowbiteFloatingLabelSizes;
   variant: string;
@@ -28,7 +28,7 @@ export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
   (
     {
-      color = 'default',
+      color,
       helperText,
       sizing = 'md',
       variant,
@@ -42,11 +42,12 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
   ) => {
     const theme = mergeDeep(useTheme().theme.floatingLabel, customTheme);
     const randomId = useId();
+    if (color === null || color === undefined) color = 'default';
 
     return (
       <>
         <div>
-          <div className="relative">
+          <div className={twMerge('relative', variant === 'standard' ? 'z-0' : '')}>
             <input
               type="text"
               id={props.id ? props.id : 'floatingLabel' + randomId}
@@ -60,7 +61,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
             />
             <label
               htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-              className={twMerge(theme.label[color][variant][sizing], className)}
+              className={twMerge(theme.label?.[color]?.[variant]?.[sizing], className)}
             >
               {label}
             </label>
