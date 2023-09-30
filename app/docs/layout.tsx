@@ -355,7 +355,14 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 </Accordion.Title>
                 <Accordion.Content className="mb-2 space-y-0.5 border-none p-0">
                   <Sidebar.ItemGroup className="border-none">
-                    <SidebarLink href="/docs/typography/blockquote">Blockquote</SidebarLink>
+                    <SidebarLink href="/docs/typography/blockquote">
+                      <span className="flex items-center gap-2">
+                        Blockquote{' '}
+                        <Badge color="cyan" className="px-2">
+                          New
+                        </Badge>
+                      </span>
+                    </SidebarLink>
                   </Sidebar.ItemGroup>
                 </Accordion.Content>
               </Accordion.Panel>
