@@ -1,4 +1,5 @@
 import { FloatingLabel } from '~/src/components/FloatingLabel/FloatingLabel';
+import { theme } from '~/src';
 import { CodePreview } from '~/app/components/code-preview';
 
 ## Table of Contents
@@ -72,3 +73,15 @@ Add a helper text in addition to the label if you want to show more information 
     helperText="Remember, contributions to this topic should follow our Community Guidelines."
   />
 </CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.floatingLabel, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Floating Label](https://flowbite.com/docs/forms/floating-label/)
