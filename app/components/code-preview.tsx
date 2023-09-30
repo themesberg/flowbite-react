@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import prismjs from 'prismjs';
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, Dispatch, FC, PropsWithChildren, SetStateAction } from 'react';
 import { Children, useEffect, useState } from 'react';
 import type { Options } from 'react-element-to-jsx-string';
 import reactElementToJSXString from 'react-element-to-jsx-string';
@@ -31,6 +31,10 @@ interface CodePreviewState {
   isDarkMode?: boolean;
   isExpanded?: boolean;
   isJustCopied?: boolean;
+}
+
+interface ToggleModeState {
+  setToggleMode: Dispatch<SetStateAction<string>>;
 }
 
 const responsiveSize: { [key: string]: string } = {
@@ -96,11 +100,7 @@ export default function ${titleCaseToUpperCamelCase(title)}() {${
         <div className="grid grid-cols-3">
           <EditOnGithubButton githubPage={githubPage} title={title} />
           <div className="m-auto">
-            {!hideResponsiveButtons ? (
-              <ToggleModeButton onClick={(e) => setToggleMode(e.currentTarget.dataset.toggleMode || 'desktop')} />
-            ) : (
-              ''
-            )}
+            {!hideResponsiveButtons ? <ToggleModeButton setToggleMode={setToggleMode} /> : ''}
           </div>
           <div className="ml-auto">
             <ToggleDarkModeButton isDarkMode={isDarkMode} onClick={() => setDarkMode(!isDarkMode)} />
@@ -221,13 +221,13 @@ const CollapseExpandButton: FC<ComponentProps<'button'> & CodePreviewState> = ({
   );
 };
 
-const ToggleModeButton: FC<ComponentProps<'button'>> = ({ onClick }) => {
+const ToggleModeButton: FC<ComponentProps<'button'> & ToggleModeState> = ({ setToggleMode }) => {
   return (
     <div className="hidden md:flex">
       <button
         className="flex items-center rounded-lg border border-gray-200 bg-white p-2 text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
         data-toggle-mode="desktop"
-        onClick={onClick}
+        onClick={() => setToggleMode('desktop')}
       >
         <span className="sr-only">Toggle full view</span>
         <svg
@@ -248,8 +248,7 @@ const ToggleModeButton: FC<ComponentProps<'button'>> = ({ onClick }) => {
       </button>
       <button
         className="ml-2 flex items-center rounded-lg border border-gray-200 bg-white p-2 text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
-        onClick={onClick}
-        data-toggle-mode="tablet"
+        onClick={() => setToggleMode('tablet')}
       >
         <span className="sr-only">Toggle tablet view</span>
         <svg
@@ -271,8 +270,7 @@ const ToggleModeButton: FC<ComponentProps<'button'>> = ({ onClick }) => {
 
       <button
         className="ml-2 flex items-center rounded-lg border border-gray-200 bg-white p-2 text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
-        onClick={onClick}
-        data-toggle-mode="mobile"
+        onClick={() => setToggleMode('mobile')}
       >
         <span className="sr-only">Toggle mobile view</span>
         <svg
