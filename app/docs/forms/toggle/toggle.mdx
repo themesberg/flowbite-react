@@ -68,12 +68,12 @@ Get started with small, default, or large sizes of the `<ToggleSwitch>` componen
 <CodePreview importFlowbiteReact="ToggleSwitch" title="Sizes toggle">
   <div className="items-center">
     <div className="mb-4">
-      <ToggleSwitch label="Small toggle" />
+      <ToggleSwitch sizing="sm" label="Small toggle" checked={props.small} onChange={props.setSmall} />
     </div>
     <div className="mb-4">
-      <ToggleSwitch label="Default toggle" />
+      <ToggleSwitch label="Default toggle" checked={props.medium} onChange={props.setMedium} />
     </div>
-    <ToggleSwitch label="Large toggle" />
+    <ToggleSwitch sizing="lg" label="Large toggle" checked={props.large} onChange={props.setLarge} />
   </div>
 </CodePreview>
 

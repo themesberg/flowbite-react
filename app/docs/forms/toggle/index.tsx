@@ -13,6 +13,9 @@ const ToggleSwitchPageContent: FC = () => {
   const [yellow, setYellow] = useState(true);
   const [teal, setTeal] = useState(true);
   const [orange, setOrange] = useState(true);
+  const [small, setSmall] = useState(false);
+  const [medium, setMedium] = useState(false);
+  const [large, setLarge] = useState(false);
 
   const state = {
     switch1,
@@ -31,6 +34,12 @@ const ToggleSwitchPageContent: FC = () => {
     setTeal,
     orange,
     setOrange,
+    small,
+    setSmall,
+    medium,
+    setMedium,
+    large,
+    setLarge,
   };
 
   return <ToggleSwitchDocs {...state} />;

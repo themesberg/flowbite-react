@@ -1,5 +1,6 @@
 import { CodePreview } from '~/app/components/code-preview';
 import { Checkbox, Label, theme } from '~/src';
+import Link from 'next/link';
 
 The `<Checkbox>` component can be used to receive one or more selected options from the user in the form of a square box available in multiple styles, sizes, colors, and variants coded with the utility classes from Tailwind CSS and with support for dark mode.
 
@@ -46,6 +47,22 @@ This example can be used for the disabled state of the checkbox component by app
 ## Checkbox link
 
 Use this example if you want to add an anchor link inside the label of the `<Checkbox>` component.
+
+<CodePreview
+  importExternal="import Link from 'next/link';"
+  importFlowbiteReact="Checkbox, Label"
+  title="Disabled state checkbox"
+>
+  <div className="flex items-center gap-2">
+    <Checkbox id="agree" />
+    <Label htmlFor="agree" className="flex">
+      I agree with the&nbsp;
+      <Link href="/forms" className="text-cyan-600 hover:underline dark:text-cyan-500">
+        terms and conditions.
+      </Link>
+    </Label>
+  </div>
+</CodePreview>
 
 ## Helper text
 
