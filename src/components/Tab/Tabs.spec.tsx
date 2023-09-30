@@ -139,10 +139,18 @@ describe('Components / Tabs', () => {
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(1);
   });
+
+  it('should have no tab item rendered when condition is false', async () => {
+    render(<TestConditionalTabs condition={false} />);
+    const tabsLength = tabs().length;
+
+    expect(tabsLength).toBe(0);
+  });
 });
 
 interface TestTabsProps {
   onActiveTabChange?: (activeTab: number) => void;
+  condition?: boolean;
 }
 
 // eslint-disable-next-line react/display-name
@@ -163,6 +171,17 @@ const TestTabs = forwardRef<TabsRef, TestTabsProps>(({ onActiveTabChange }, ref)
     <Tabs.Item disabled title="Disabled">
       Disabled content
     </Tabs.Item>
+  </Tabs.Group>
+));
+
+// eslint-disable-next-line react/display-name
+const TestConditionalTabs = forwardRef<TabsRef, TestTabsProps>(({ condition }) => (
+  <Tabs.Group aria-label="Test tabs">
+    {condition && (
+      <Tabs.Item title="Profile" icon={HiUserCircle}>
+        Profile content
+      </Tabs.Item>
+    )}
   </Tabs.Group>
 ));
 
@@ -206,7 +225,7 @@ const TestTabsLastActiveItem: FC = () => (
   </Tabs.Group>
 );
 
-const tabs = () => screen.getAllByRole('tab');
+const tabs = () => screen.queryAllByRole('tab');
 
 const activeTab = () => tabs().find((tab) => tab.getAttribute('aria-selected') === 'true');
 
