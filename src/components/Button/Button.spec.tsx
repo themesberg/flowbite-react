@@ -118,6 +118,16 @@ describe('Components / Button', () => {
       expect(button()).toHaveTextContent('Something or other');
     });
 
+    it('should render children first then label', () => {
+      render(<Button label="2">Messages</Button>);
+
+      expect(button()).toBeInTheDocument();
+      expect(button()).toHaveTextContent('Messages');
+
+      expect(label()).toBeInTheDocument();
+      expect(label()).toHaveTextContent('2');
+    });
+
     describe('`as` and `href` props', () => {
       it('should render an anchor `<a>` when `href=".."`', () => {
         render(<Button href="#" label="Something or other" />);
@@ -385,6 +395,8 @@ describe('Components / Button', () => {
 });
 
 const button = () => screen.getByRole('button');
+
+const label = () => screen.getByTestId('flowbite-button-label');
 
 const buttonLink = () => screen.getByRole('link');
 

@@ -112,6 +112,8 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
 
   const theirProps = props as ButtonBaseProps<T>;
 
+  console.log(label);
+
   return (
     <ButtonBase
       ref={ref}
@@ -148,12 +150,13 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
               {processingSpinner || <Spinner size={size} />}
             </span>
           )}
-          {typeof children !== 'undefined' ? (
-            children
-          ) : (
+          {typeof children !== 'undefined' ? children : ''}
+          {typeof label !== 'undefined' ? (
             <span data-testid="flowbite-button-label" className={twMerge(theme.label)}>
               {isProcessing ? processingLabel : label}
             </span>
+          ) : (
+            ''
           )}
         </>
       </span>
