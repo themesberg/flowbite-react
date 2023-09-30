@@ -5,7 +5,7 @@ import FloatingLabelContent from '.';
 export const metadata: Metadata = {
   description:
     'Use the floating label style for the input field elements to replicate the Material UI design system from Google and choose from multiple styles and sizes',
-  title: 'Tailwind CSS Floating Label - Flowbite',
+  title: 'React Floating Label - Flowbite',
 };
 const FloatingLabelPage: NextPage = () => {
   return (
