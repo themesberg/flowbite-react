@@ -32,6 +32,7 @@ export const toggleSwitchTheme: FlowbiteToggleSwitchTheme = {
         teal: 'bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4',
         info: 'bg-cyan-600 border-cyan-600',
         pink: 'bg-pink-600 border-pink-600',
+        orange: 'bg-orange-500 border-orange-500',
       },
     },
     sizes: {

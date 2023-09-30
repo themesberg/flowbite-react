@@ -303,7 +303,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                 </Accordion.Content>
               </Accordion.Panel>
             </Accordion>
-            <Accordion collapseAll={!pathname.includes('/forms/')} flush className="border-none">
+            <Accordion collapseAll={!pathname.includes('/docs/forms/')} flush className="border-none">
               <Accordion.Panel>
                 <Accordion.Title
                   theme={{
@@ -314,12 +314,13 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                   }}
                   className={twMerge(
                     'flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide',
-                    pathname.includes('/forms/') &&
+                    pathname.includes('/docs/forms/') &&
                       'text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500',
                   )}
                 >
                   Forms
                 </Accordion.Title>
+<<<<<<< HEAD
                 <Accordion.Content className="mb-2 border-none p-0">
                   <Sidebar.ItemGroup className="border-none">
                     <SidebarLink href="/docs/forms/floating-label">
@@ -330,11 +331,25 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                         </Badge>
                       </span>
                     </SidebarLink>
+=======
+                <Accordion.Content className="mb-2 space-y-0.5 border-none p-0">
+                  <Sidebar.ItemGroup className="border-none">
+                    <SidebarLink href="/docs/forms/checkbox">Checkbox</SidebarLink>
+                    <SidebarLink href="/docs/forms/file-input">File Input</SidebarLink>
+<<<<<<< HEAD
+>>>>>>> d98472b (docs: fileInput add theme + references. Add sidebar forms section under components)
+=======
+                    <SidebarLink href="/docs/forms/textarea">Textarea</SidebarLink>
+                    <SidebarLink href="/docs/forms/toggle">Toggle</SidebarLink>
+>>>>>>> 7a3178e (docs: textarea, checkbox, toggle form pages)
                   </Sidebar.ItemGroup>
                 </Accordion.Content>
               </Accordion.Panel>
             </Accordion>
+<<<<<<< HEAD
 
+=======
+>>>>>>> d98472b (docs: fileInput add theme + references. Add sidebar forms section under components)
             <span className="h-64">&nbsp;</span>
           </Sidebar.Items>
         </Sidebar>

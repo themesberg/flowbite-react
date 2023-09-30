@@ -1,0 +1,92 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { Checkbox, Label, theme } from '~/src';
+
+The `<Checkbox>` component can be used to receive one or more selected options from the user in the form of a square box available in multiple styles, sizes, colors, and variants coded with the utility classes from Tailwind CSS and with support for dark mode.
+
+To start using the component make sure that you have imported it from Flowbite React:
+
+```jsx
+'use client';
+
+import { Checkbox } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## Checkbox example
+
+Use this default example of a `<Checkbox>` element in a checked and unchecked state.
+
+<CodePreview importFlowbiteReact="Checkbox, Label" title="Checkbox example">
+  <div className="mb-4 flex items-center gap-2">
+    <Checkbox id="default-checkbox" />
+    <Label htmlFor="default-checkbox">Default checkbox</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <Checkbox id="checked-state-checkbox" checked />
+    <Label htmlFor="checked-state-checkbox">Checked state</Label>
+  </div>
+</CodePreview>
+
+## Disabled state
+
+This example can be used for the disabled state of the checkbox component by applying the disabled attribute to the input element.
+
+<CodePreview importFlowbiteReact="Checkbox, Label" title="Disabled state checkbox">
+  <div className="mb-4 flex items-center gap-2">
+    <Checkbox id="disabled-checkbox" disabled />
+    <Label htmlFor="disabled-checkbox">Default checkbox</Label>
+  </div>
+  <div className="flex items-center gap-2">
+    <Checkbox id="disabled-checked-state-checkbox" disabled checked />
+    <Label htmlFor="disabled-checked-state-checkbox">Disabled checked</Label>
+  </div>
+</CodePreview>
+
+## Checkbox link
+
+Use this example if you want to add an anchor link inside the label of the `<Checkbox>` component.
+
+## Helper text
+
+Get started with this example if you want to add a secondary helper text for the `<Checkbox>` component.
+
+## Bordered
+
+Use this example of a `<Checkbox>` inside a card element to enable a larger area of clicking activation.
+
+## Checkbox list group
+
+Use this example to show a list of `<Checkbox>` items grouped inside a card.
+
+## Horizontal list group
+
+Use this example to show a list of `<Checkbox>` items inside a card horizontally.
+
+## Checkbox dropdown
+
+Use this example to show a list of `<Checkbox>` items inside a dropdown menu.
+
+## Inline layout
+
+You can align the checkbox elements horizontally by using a wrapper tag and applying the flex class.
+
+## Colors
+
+Use the `text-{color}-{shade}` classes from Tailwind CSS to change the color of the `<Checkbox>` component.
+
+## Advanced layout
+
+Use this example of an advanced layout of checkbox elements where the label parent element can be styled when the checkbox is checked.
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.checkbox, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite File Input](https://flowbite.com/docs/forms/checkbox/)

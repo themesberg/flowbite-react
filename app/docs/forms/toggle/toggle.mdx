@@ -1,0 +1,90 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { ToggleSwitch, Label, theme } from '~/src';
+
+The `<ToggleSwitch>` component can be used to receive a simple “yes” or “no” type of answer from the user by choosing a single option from two options available in multiple sizes, styles, and colors coded with the utility classes from Tailwind CSS and with dark mode support.
+
+To start using the component make sure that you have imported it from Flowbite React:
+
+```jsx
+'use client';
+
+import { ToggleSwitch } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## Toggle Example
+
+Get started with the default `<ToggleSwitch>` component example as a checkbox element to receive a true or false selection from the user.
+
+<CodePreview importFlowbiteReact="ToggleSwitch" title="Toggle example">
+  <ToggleSwitch checked={props.switch1} label="Toggle Me" onChange={props.setSwitch1} />
+</CodePreview>
+
+## Checked state
+
+Apply the checked attribute to the `<ToggleSwitch>` component to activate the selection by default.
+
+<CodePreview importFlowbiteReact="ToggleSwitch" title="Checked toggle">
+  <div className="inline-flex items-center">
+    <ToggleSwitch label="Checked toggle" checked={props.switch2} onChange={props.setSwitch2} />
+  </div>
+</CodePreview>
+
+## Disabled state
+
+Apply the disabled attribute to disallow the users from making any further selections.
+
+<CodePreview importFlowbiteReact="ToggleSwitch" title="Disabled toggle">
+  <div className="items-center">
+    <div className="mb-4">
+      <ToggleSwitch label="Disabled toggle" disabled />
+    </div>
+    <div>
+      <ToggleSwitch label="Disabled checked" disabled checked />
+    </div>
+  </div>
+</CodePreview>
+
+## Colors
+
+Change the color of the `<ToggleSwitch>` component by updating the color prop.
+
+<CodePreview importFlowbiteReact="ToggleSwitch" title="Colors toggle">
+  <div className="inline-flex flex-wrap items-center gap-2">
+    <ToggleSwitch label="Red" color="red" checked={props.red} onChange={props.setRed} />
+    <ToggleSwitch label="Green" color="green" checked={props.green} onChange={props.setGreen} />
+    <ToggleSwitch label="Purple" color="purple" checked={props.purple} onChange={props.setPurple} />
+    <ToggleSwitch label="Yellow" color="yellow" checked={props.yellow} onChange={props.setYellow} />
+    <ToggleSwitch label="Teal" color="teal" checked={props.teal} onChange={props.setTeal} />
+    <ToggleSwitch label="Orange" color="orange" checked={props.orange} onChange={props.setOrange} />
+  </div>
+</CodePreview>
+
+## Sizes
+
+Get started with small, default, or large sizes of the `<ToggleSwitch>` component based on your needs.
+
+<CodePreview importFlowbiteReact="ToggleSwitch" title="Sizes toggle">
+  <div className="items-center">
+    <div className="mb-4">
+      <ToggleSwitch label="Small toggle" />
+    </div>
+    <div className="mb-4">
+      <ToggleSwitch label="Default toggle" />
+    </div>
+    <ToggleSwitch label="Large toggle" />
+  </div>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.toggleSwitch, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite File Input](https://flowbite.com/docs/forms/toggle/)

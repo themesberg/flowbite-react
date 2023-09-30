@@ -1,0 +1,132 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { FileInput, Label, theme } from '~/src';
+
+The `<FileInput>` component can be used to upload one or more files from the device storage of the user available in multiple sizes, styles, and variants and built with the utility-first classes from Tailwind CSS including support for dark mode.
+
+Make sure that you have included Flowbite as a plugin inside your Tailwind CSS project to apply all the necessary styles for the `<FileInput>` component.
+
+To start using the component make sure that you have imported it from Flowbite React:
+
+```jsx
+'use client';
+
+import { FileInput } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## File upload example
+
+Get started with a simple `<FileInput>` component to let users upload one single file.
+
+<CodePreview githubPage="FileInput/FileInput" importFlowbiteReact="FileInput, Label" title="File upload">
+  <div>
+    <div className="mb-2 block">
+      <Label htmlFor="file-upload" value="Upload file" />
+    </div>
+    <FileInput id="file-upload" />
+  </div>
+</CodePreview>
+
+## Helper text
+
+Add a descriptive helper text to inform users the allowed extensions and sizes of the files.
+
+<CodePreview
+  githubPage="FileInput/FileInput"
+  importFlowbiteReact="FileInput, Label"
+  title="File upload with Helper Text"
+>
+  <div>
+    <div>
+      <Label htmlFor="file-upload-helper-text" value="Upload file" />
+    </div>
+    <FileInput id="file-upload-helper-text" helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
+  </div>
+</CodePreview>
+
+## Multiple files
+
+Apply the multiple attribute to the `<FileInput>` component to allow more files to be uploaded.
+
+<CodePreview githubPage="FileInput/FileInput" importFlowbiteReact="FileInput, Label" title="Multiple File upload">
+  <div>
+    <div>
+      <Label htmlFor="multiple-file-upload" value="Upload multiple files" />
+    </div>
+    <FileInput id="multiple-file-upload" multiple />
+  </div>
+</CodePreview>
+
+## Sizes
+
+Choose from the small, default, and large `<FileInput>` sizing options.
+
+<CodePreview githubPage="FileInput/FileInput" importFlowbiteReact="FileInput, Label" title="Sizes File upload">
+  <div className="mb-2">
+    <div>
+      <Label htmlFor="small-file-upload" value="Small file input" />
+    </div>
+    <FileInput id="small-file-upload" sizing="sm" />
+  </div>
+  <div className="mb-2">
+    <div>
+      <Label htmlFor="default-file-upload" value="Default size file input" />
+    </div>
+    <FileInput id="default-file-upload" />
+  </div>
+  <div>
+    <div>
+      <Label htmlFor="large-file-upload" value="Large file input" />
+    </div>
+    <FileInput id="large-file-upload" sizing="lg" />
+  </div>
+</CodePreview>
+
+## Dropzone
+
+The dropzone `<FileInput>` component can be used to upload one or more files by clicking anywhere in the area.
+
+<CodePreview githubPage="FileInput/FileInput" importFlowbiteReact="FileInput, Label" title="Multiple File upload">
+  <div className="flex w-full items-center justify-center">
+    <Label
+      htmlFor="dropzone-file"
+      className="dark:hover:bg-bray-800 flex h-64 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+    >
+      <div className="flex flex-col items-center justify-center pb-6 pt-5">
+        <svg
+          className="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 20 16"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+          />
+        </svg>
+        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+          <span className="font-semibold">Click to upload</span> or drag and drop
+        </p>
+        <p className="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+      </div>
+      <FileInput id="dropzone-file" className="hidden" />
+    </Label>
+  </div>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.fileInput, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite File Input](https://flowbite.com/docs/forms/file-input/)
