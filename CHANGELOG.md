@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.3](https://github.com/themesberg/flowbite-react/compare/v0.6.2...v0.6.3) (2023-09-30)
+
+
+### Bug Fixes
+
+* Button color blue theme ([#1024](https://github.com/themesberg/flowbite-react/issues/1024)) ([11d8510](https://github.com/themesberg/flowbite-react/commit/11d8510875c0285e7634185ae05555ef64da3dcd))
+* Floating Label theme import ([#1023](https://github.com/themesberg/flowbite-react/issues/1023)) ([160c24e](https://github.com/themesberg/flowbite-react/commit/160c24e0004b0c430a60493620c1dec4cdbdfedc))
+
 ### [0.6.2](https://github.com/themesberg/flowbite-react/compare/v0.6.1...v0.6.2) (2023-09-29)
 
 
