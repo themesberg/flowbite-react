@@ -1,6 +1,7 @@
 import { CodePreview } from '~/app/components/code-preview';
 import { Checkbox, Label, Dropdown, TextInput, theme } from '~/src';
 import Link from 'next/link';
+import { MdSearch } from 'react-icons/md';
 
 The `<Checkbox>` component can be used to receive one or more selected options from the user in the form of a square box available in multiple styles, sizes, colors, and variants coded with the utility classes from Tailwind CSS and with support for dark mode.
 
@@ -181,11 +182,15 @@ Use this example to show a list of `<Checkbox>` items inside a card horizontally
 
 Use this example to show a list of `<Checkbox>` items inside a dropdown menu.
 
-<CodePreview importFlowbiteReact="Checkbox, Label, Dropdown, TextInput" title="Dropdown search">
+<CodePreview
+  importExternal="import { MdSearch } from 'react-icons/md';"
+  importFlowbiteReact="Checkbox, Label, Dropdown, TextInput"
+  title="Dropdown search"
+>
   <div className="flex items-center justify-center">
     <Dropdown label="Dropdown search" dismissOnClick={false} className="z-50">
       <Dropdown.Item>
-        <TextInput />
+        <TextInput placeholder="Search user" icon={MdSearch} />
       </Dropdown.Item>
       <Dropdown.Item>
         <Checkbox id="bonnie-green-checkbox" />
@@ -230,7 +235,18 @@ Use this example to show a list of `<Checkbox>` items inside a dropdown menu.
         </Label>
       </Dropdown.Item>
       <Dropdown.Divider />
-      <Dropdown.Item>Delete user</Dropdown.Item>
+      <Dropdown.Item className="font-medium text-red-600">
+        <svg
+          className="mr-2 h-4 w-4"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 18"
+        >
+          <path d="M6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Zm11-3h-6a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2Z"></path>
+        </svg>
+        Delete user
+      </Dropdown.Item>
     </Dropdown>
   </div>
 </CodePreview>
