@@ -17,6 +17,7 @@ export * from './Flowbite';
 export type { CustomFlowbiteTheme } from './Flowbite/FlowbiteTheme';
 export * from './Footer';
 export * from './HelperText';
+export * from './Indicator';
 export * from './Kbd';
 export * from './Label';
 export * from './ListGroup/ListGroup';

@@ -1,4 +1,4 @@
-import { FlowbiteFloatingLabelTheme } from '~/src/components/FloatingLabel/FloatingLabel';
+import type { FlowbiteFloatingLabelTheme } from '~/src/components/FloatingLabel/FloatingLabel';
 import type {
   DeepPartial,
   FlowbiteAccordionTheme,
@@ -18,6 +18,7 @@ import type {
   FlowbiteFileInputTheme,
   FlowbiteFooterTheme,
   FlowbiteHelperTextTheme,
+  FlowbiteIndicatorTheme,
   FlowbiteKbdTheme,
   FlowbiteLabelTheme,
   FlowbiteListGroupTheme,
@@ -57,6 +58,7 @@ export interface FlowbiteTheme {
   datepicker: FlowbiteDatepickerTheme;
   darkThemeToggle: FlowbiteDarkThemeToggleTheme;
   footer: FlowbiteFooterTheme;
+  indicator: FlowbiteIndicatorTheme;
   kbd: FlowbiteKbdTheme;
   listGroup: FlowbiteListGroupTheme;
   modal: FlowbiteModalTheme;

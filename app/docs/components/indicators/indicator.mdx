@@ -1,0 +1,428 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { Indicator, Button, Avatar, Card, theme } from '~/src';
+
+The indicator component can be used as a small element positioned absolutely relative to another component such as a button or card and show a number count, account status (red for offline, green for online) and other useful information.
+
+Check out the following examples for multiple sizes, colors, positionings, styles, and more all coded with Tailwind CSS and Flowbite.
+
+To start using the indicator component you need to import it from `flowbite-react`:
+
+```jsx
+'use client';
+
+import { Indicator } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## Default indicator
+
+Use this example to create a simple indicator with mulitple colors and position it anywhere on the website.
+
+<CodePreview importFlowbiteReact="Indicator" title="Default indicator">
+  <div className="flex justify-center gap-2">
+    <Indicator />
+    <Indicator color="dark" />
+    <Indicator color="gray" />
+    <Indicator color="light" />
+    <Indicator color="purple" />
+    <Indicator color="success" />
+    <Indicator color="warning" />
+    <Indicator color="blue" />
+    <Indicator color="cyan" />
+    <Indicator color="green" />
+    <Indicator color="indigo" />
+    <Indicator color="lime" />
+    <Indicator color="pink" />
+    <Indicator color="red" />
+    <Indicator color="teal" />
+    <Indicator color="yellow" />
+  </div>
+</CodePreview>
+
+## Legend indicator
+
+This example can be used as a legend indicator for charts to also add a text next to the bullet point.
+
+<CodePreview importFlowbiteReact="Indicator" title="Legend indicator">
+  <div className="flex justify-center gap-2">
+    <span className="flex items-center text-sm font-medium text-gray-900 dark:text-white">
+      <Indicator color="blue" className="mr-1.5" />
+      {'Visitors'}
+    </span>
+    <span className="flex items-center text-sm font-medium text-gray-900 dark:text-white">
+      <Indicator color="purple" className="mr-1.5" />
+      {'Sessions'}
+    </span>
+    <span className="flex items-center text-sm font-medium text-gray-900 dark:text-white">
+      <Indicator color="indigo" className="mr-1.5" />
+      {'Customers'}
+    </span>
+    <span className="flex items-center text-sm font-medium text-gray-900 dark:text-white">
+      <Indicator color="teal" className="mr-1.5" />
+      {'Revenue'}
+    </span>
+  </div>
+</CodePreview>
+
+## Indicator count
+
+This example can be used to show a number count inside the indicator and position it relative to a button component.
+
+<CodePreview importFlowbiteReact="Indicator, Button" title="Indicator count">
+  <div className="flex justify-center gap-2">
+    <Button color="blue">
+      <svg
+        className="mr-2 h-4 w-4"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 20 16"
+      >
+        <path d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
+        <path d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
+      </svg>
+      <span className="sr-only">Notifications</span>
+      {'Messages'}
+      <Indicator
+        color="red"
+        sizing="xl"
+        className="absolute -right-2 -top-2 inline-flex h-6 w-6 items-center justify-center border-2 border-white text-xs font-bold text-white dark:border-gray-900"
+      >
+        {'8'}
+      </Indicator>
+    </Button>
+  </div>
+</CodePreview>
+
+## Status indicator
+
+Use this example to show a status indicator for the currently logged in user by showing red for offline and green for online.
+
+<CodePreview importFlowbiteReact="Indicator" title="Status indicator">
+  <div className="flex justify-center gap-2">
+    <div className="relative">
+      <img className="h-10 w-10 rounded-full" src="/images/people/profile-picture-5.jpg" alt="profile image" />
+      <Indicator
+        color="green"
+        className="absolute left-7 top-0 h-3.5 w-3.5 border-2 border-white dark:border-gray-800"
+      />
+    </div>
+    <div className="relative">
+      <img className="h-10 w-10 rounded-full" src="/images/people/profile-picture-5.jpg" alt="profile image" />
+      <Indicator color="red" className="absolute left-7 top-0 h-3.5 w-3.5 border-2 border-white dark:border-gray-800" />
+    </div>
+  </div>
+</CodePreview>
+
+## Badge indicator
+
+This example can be used to add an indicator inside of a badge component.
+
+<CodePreview importFlowbiteReact="Indicator, Avatar" title="Badge indicator">
+  <ul role="list" className="m-auto max-w-sm divide-y divide-gray-200 dark:divide-gray-700">
+    <li className="py-3 sm:py-4">
+      <div className="flex items-center space-x-3">
+        <div className="flex-shrink-0">
+          <Avatar img="/images/people/profile-picture-5.jpg" alt="Neil image" rounded />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-semibold text-gray-900 dark:text-white">Neil Sims</p>
+          <p className="truncate text-sm text-gray-500 dark:text-gray-400">email@flowbite.com</p>
+        </div>
+        <span className="mr-2 inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300">
+          <Indicator color="green" sizing="xs" className="mr-1" />
+          {'Available'}
+        </span>
+      </div>
+    </li>
+    <li className="py-3 sm:py-4">
+      <div className="flex items-center space-x-3">
+        <div className="flex-shrink-0">
+          <Avatar img="/images/people/profile-picture-4.jpg" alt="Neil image" rounded />
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-semibold text-gray-900 dark:text-white">Bonnie Green</p>
+          <p className="truncate text-sm text-gray-500 dark:text-gray-400">email@flowbite.com</p>
+        </div>
+        <span className="mr-2 inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:bg-red-900 dark:text-red-300">
+          <Indicator color="red" sizing="xs" className="mr-1" />
+          {'Unavailable'}
+        </span>
+      </div>
+    </li>
+  </ul>
+</CodePreview>
+
+## Stepper indicator
+
+You can also use the indicators inside of a stepper component when completing a form element.
+
+<CodePreview importFlowbiteReact="Indicator" title="Stepper indicator">
+  <div>
+    <ol className="flex items-center">
+      <li className="relative mb-6 w-full">
+        <div className="flex items-center">
+          <Indicator color="blue" sizing="xl" className="z-10 flex shrink-0 items-center justify-center">
+            <svg
+              className="h-2.5 w-2.5 text-blue-100 dark:text-blue-300"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 16 12"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M1 5.917 5.724 10.5 15 1.5"
+              />
+            </svg>
+          </Indicator>
+          <div className="flex h-0.5 w-full bg-gray-200 dark:bg-gray-700"></div>
+        </div>
+        <div className="mt-3">
+          <h3 className="font-medium text-gray-900 dark:text-white">Step 1</h3>
+        </div>
+      </li>
+      <li className="relative mb-6 w-full">
+        <div className="flex items-center">
+          <Indicator color="blue" sizing="xl" className="z-10 flex shrink-0 items-center justify-center">
+            <svg
+              className="h-2.5 w-2.5 text-blue-100 dark:text-blue-300"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 16 12"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M1 5.917 5.724 10.5 15 1.5"
+              />
+            </svg>
+          </Indicator>
+          <div className="flex h-0.5 w-full bg-gray-200 dark:bg-gray-700"></div>
+        </div>
+        <div className="mt-3">
+          <h3 className="font-medium text-gray-900 dark:text-white">Step 2</h3>
+        </div>
+      </li>
+      <li className="relative mb-6 w-full">
+        <div className="flex items-center">
+          <Indicator color="blue" sizing="xl" className="z-10 flex shrink-0 items-center justify-center">
+            <svg
+              className="h-2.5 w-2.5 text-blue-100 dark:text-blue-300"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 16 12"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M1 5.917 5.724 10.5 15 1.5"
+              />
+            </svg>
+          </Indicator>
+          <div className="flex h-0.5 w-full bg-gray-200 dark:bg-gray-700"></div>
+        </div>
+        <div className="mt-3">
+          <h3 className="font-medium text-gray-900 dark:text-white">Step 2</h3>
+        </div>
+      </li>
+      <li className="relative mb-6 w-full">
+        <div className="flex items-center">
+          <Indicator color="light" sizing="xl" className="z-10 flex shrink-0 items-center justify-center">
+            <svg
+              className="h-2.5 w-2.5 text-gray-900 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 16 12"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M1 5.917 5.724 10.5 15 1.5"
+              />
+            </svg>
+          </Indicator>
+        </div>
+        <div className="mt-3">
+          <h3 className="font-medium text-gray-900 dark:text-white">Step 3</h3>
+        </div>
+      </li>
+    </ol>
+    <ol className="flex items-center">
+      <li className="relative mb-6 w-full">
+        <div className="flex items-center">
+          <div className="z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-200 ring-0 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:ring-8">
+            <Indicator sizing="sm" color="blue" />
+          </div>
+          <div className="flex h-0.5 w-full bg-gray-200 dark:bg-gray-700"></div>
+        </div>
+        <div className="mt-3">
+          <h3 className="font-medium text-gray-900 dark:text-white">Step 1</h3>
+        </div>
+      </li>
+      <li className="relative mb-6 w-full">
+        <div className="flex items-center">
+          <div className="z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-200 ring-0 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:ring-8">
+            <Indicator sizing="sm" color="blue" />
+          </div>
+          <div className="flex h-0.5 w-full bg-gray-200 dark:bg-gray-700"></div>
+        </div>
+        <div className="mt-3">
+          <h3 className="font-medium text-gray-900 dark:text-white">Step 2</h3>
+        </div>
+      </li>
+      <li className="relative mb-6 w-full">
+        <div className="flex items-center">
+          <div className="z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-200 ring-0 ring-white dark:bg-blue-900 dark:ring-gray-900 sm:ring-8">
+            <Indicator sizing="sm" color="blue" />
+          </div>
+          <div className="flex h-0.5 w-full bg-gray-200 dark:bg-gray-700"></div>
+        </div>
+        <div className="mt-3">
+          <h3 className="font-medium text-gray-900 dark:text-white">Step 2</h3>
+        </div>
+      </li>
+      <li className="relative mb-6 w-full">
+        <div className="flex items-center">
+          <div className="z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-200 ring-0 ring-white dark:bg-gray-700 dark:ring-gray-900 sm:ring-8">
+            <Indicator sizing="sm" color="dark" />
+          </div>
+        </div>
+        <div className="mt-3">
+          <h3 className="font-medium text-gray-900 dark:text-white">Step 3</h3>
+        </div>
+      </li>
+    </ol>
+  </div>
+</CodePreview>
+
+## Loading indicator
+
+Use this animated loading indicator when content inside of a card is still loading.
+
+<CodePreview importFlowbiteReact="Indicator" title="Loading indicator">
+  <Card className="m-auto flex h-56 w-56 items-center justify-center rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
+    <Indicator
+      sizing="full"
+      className="animate-pulse rounded-full bg-blue-200 px-3 py-1 text-center text-xs font-medium leading-none text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+    >
+      loading...
+    </Indicator>
+  </Card>
+</CodePreview>
+
+## Spinner indicator
+
+Use this animated spinner component inside of a card component that hasn’t loaded yet.
+
+<CodePreview importFlowbiteReact="Indicator, Card" title="Spinner indicator">
+  <Card className="m-auto flex h-56 w-56 items-center justify-center rounded-lg border border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
+    <Indicator sizing="full">
+      <svg
+        aria-hidden="true"
+        className="mr-2 h-8 w-8 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600"
+        viewBox="0 0 100 101"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+          fill="currentColor"
+        />
+        <path
+          d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+          fill="currentFill"
+        />
+      </svg>
+      <span className="sr-only">Loading...</span>
+    </Indicator>
+  </Card>
+</CodePreview>
+
+## Indicator position
+
+Use these examples to position the indicator component anywhere relative to the parent element.
+
+<CodePreview importFlowbiteReact="Indicator" title="Default indicator">
+  <div className="relative m-auto h-56 w-56 rounded-lg border border-gray-200 bg-gray-100 dark:border-gray-700 dark:bg-gray-800">
+    <Indicator
+      className="absolute right-1/2 -translate-y-1/2 translate-x-1/2 rounded-full bg-blue-200 p-0.5 px-2 text-center text-xs font-medium leading-none text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+      sizing="full"
+    >
+      {'top-center'}
+    </Indicator>
+    <Indicator
+      className="absolute left-0 right-auto top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-200 p-0.5 px-2 text-center text-xs font-medium leading-none text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+      sizing="full"
+    >
+      {'top-left'}
+    </Indicator>
+    <Indicator
+      className="absolute left-auto right-0 top-0 -translate-y-1/2 translate-x-1/2 rounded-full bg-blue-200 p-0.5 px-2 text-center text-xs font-medium leading-none text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+      sizing="full"
+    >
+      {'top-right'}
+    </Indicator>
+    <Indicator
+      className="absolute left-1/2 top-2/4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-200 p-0.5 px-2 text-center text-xs font-medium leading-none text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+      sizing="full"
+    >
+      {'middle-center'}
+    </Indicator>
+    <Indicator
+      className="absolute left-0 right-auto top-2/4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-200 p-0.5 px-2 text-center text-xs font-medium leading-none text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+      sizing="full"
+    >
+      {'middle-left'}
+    </Indicator>
+    <Indicator
+      className="absolute left-auto right-0 top-2/4 -translate-y-1/2 translate-x-1/2 rounded-full bg-blue-200 p-0.5 px-2 text-center text-xs font-medium leading-none text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+      sizing="full"
+    >
+      {'middle-right'}
+    </Indicator>
+    <Indicator
+      className="absolute bottom-0 right-1/2 translate-x-1/2 translate-y-1/2 rounded-full bg-blue-200 p-0.5 px-2 text-center text-xs font-medium leading-none text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+      sizing="full"
+    >
+      {'bottom-center'}
+    </Indicator>
+    <Indicator
+      className="absolute bottom-0 left-0 right-auto -translate-x-1/2 translate-y-1/2 rounded-full bg-blue-200 p-0.5 px-2 text-center text-xs font-medium leading-none text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+      sizing="full"
+    >
+      {'bottom-left'}
+    </Indicator>
+    <Indicator
+      className="absolute bottom-0 left-auto right-0 translate-x-1/2 translate-y-1/2 rounded-full bg-blue-200 p-0.5 px-2 text-center text-xs font-medium leading-none text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+      sizing="full"
+    >
+      {'bottom-right'}
+    </Indicator>
+  </div>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.indicator, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Indicators](https://flowbite.com/docs/components/indicators/)

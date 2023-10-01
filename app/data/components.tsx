@@ -432,14 +432,14 @@ export const COMPONENTS_DATA: Component[] = [
   //   link: `/docs/components/stepper`,
   //   classes: 'w-64'
   // },
-  // {
-  //   id: '55',
-  //   name: 'Indicators',
-  //   image: '/images/components/indicators.svg',
-  //   imageDark: '/images/components/indicators-dark.svg',
-  //   link: `/docs/components/indicators`,
-  //   classes: 'w-64'
-  // },
+  {
+    id: '55',
+    name: 'Indicators',
+    image: '/images/components/indicators.svg',
+    imageDark: '/images/components/indicators-dark.svg',
+    link: `/docs/components/indicators`,
+    classes: 'w-64',
+  },
   // {
   //   id: '56',
   //   name: 'Bottom Navigation',
