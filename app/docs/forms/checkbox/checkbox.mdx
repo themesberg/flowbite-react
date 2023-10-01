@@ -1,5 +1,5 @@
 import { CodePreview } from '~/app/components/code-preview';
-import { Checkbox, Label, theme } from '~/src';
+import { Checkbox, Label, Dropdown, TextInput, theme } from '~/src';
 import Link from 'next/link';
 
 The `<Checkbox>` component can be used to receive one or more selected options from the user in the form of a square box available in multiple styles, sizes, colors, and variants coded with the utility classes from Tailwind CSS and with support for dark mode.
@@ -180,6 +180,60 @@ Use this example to show a list of `<Checkbox>` items inside a card horizontally
 ## Checkbox dropdown
 
 Use this example to show a list of `<Checkbox>` items inside a dropdown menu.
+
+<CodePreview importFlowbiteReact="Checkbox, Label, Dropdown, TextInput" title="Dropdown search">
+  <div className="flex items-center justify-center">
+    <Dropdown label="Dropdown search" dismissOnClick={false} className="z-50">
+      <Dropdown.Item>
+        <TextInput />
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Checkbox id="bonnie-green-checkbox" />
+        <Label htmlFor="bonnie-green-checkbox" className="w-100 ml-2 flex">
+          {'Bonnie Green'}
+        </Label>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Checkbox id="jese-leos-checkbox" />
+        <Label htmlFor="jese-leos-checkbox" className="w-100 ml-2 flex">
+          {'Jese Leos'}
+        </Label>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Checkbox id="michael-gough-checkbox" />
+        <Label htmlFor="michael-gough-checkbox" className="w-100 ml-2 flex">
+          {'Michael Gough'}
+        </Label>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Checkbox id="robert-wall-checkbox" />
+        <Label htmlFor="robert-wall-checkbox" className="w-100 ml-2 flex">
+          {'Robert Wall'}
+        </Label>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Checkbox id="joseph-mcfall-checkbox" />
+        <Label htmlFor="joseph-mcfall-checkbox" className="w-100 ml-2 flex">
+          {'Joseph Mcfall'}
+        </Label>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Checkbox id="leslie-livingston-checkbox" />
+        <Label htmlFor="leslie-livingston-checkbox" className="w-100 ml-2 flex">
+          {'Leslie Livingston'}
+        </Label>
+      </Dropdown.Item>
+      <Dropdown.Item>
+        <Checkbox id="roberta-casas-checkbox" />
+        <Label htmlFor="roberta-casas-checkbox" className="w-100 ml-2 flex">
+          {'Roberta Casas'}
+        </Label>
+      </Dropdown.Item>
+      <Dropdown.Divider />
+      <Dropdown.Item>Delete user</Dropdown.Item>
+    </Dropdown>
+  </div>
+</CodePreview>
 
 ## Inline layout
 
