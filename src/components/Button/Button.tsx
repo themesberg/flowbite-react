@@ -68,7 +68,7 @@ export interface ButtonSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'lg' | 'x
 }
 
 export type ButtonProps<T extends ElementType = 'button'> = {
-  as?: T;
+  as?: T | null;
   href?: string;
   color?: keyof FlowbiteColors;
   fullSized?: boolean;
