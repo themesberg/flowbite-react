@@ -29,7 +29,7 @@ export const toggleSwitchTheme: FlowbiteToggleSwitchTheme = {
         cyan: 'bg-cyan-500 border-cyan-500',
         lime: 'bg-lime-400 border-lime-400',
         indigo: 'bg-indigo-400 border-indigo-400',
-        teal: 'bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4',
+        teal: 'bg-teal-600 border-teal-600',
         info: 'bg-cyan-600 border-cyan-600',
         pink: 'bg-pink-600 border-pink-600',
         orange: 'bg-orange-500 border-orange-500',
