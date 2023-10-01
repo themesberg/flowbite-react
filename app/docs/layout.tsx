@@ -280,7 +280,7 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                     <SidebarLink href="/docs/components/forms">Forms</SidebarLink>
                     <SidebarLink href="/docs/components/kbd">
                       <span className="flex items-center gap-2">
-                        KDB{' '}
+                        KBD{' '}
                         <Badge color="cyan" className="px-2">
                           New
                         </Badge>
