@@ -1,25 +1,5 @@
-/**
- * Check if provided parameter is plain object
- * @param item
- * @returns boolean
- */
-function isObject(item: unknown): item is Record<string, unknown> {
-  return item !== null && typeof item === 'object' && item.constructor === Object;
-}
-
-function cloneDeep<T>(source: T) {
-  if (!isObject(source)) {
-    return source;
-  }
-
-  const output = { ...source };
-
-  Object.keys(source).forEach((key) => {
-    (output as Record<string, unknown>)[key] = cloneDeep(source[key]);
-  });
-
-  return output;
-}
+import { cloneDeep } from './clone-deep';
+import { isObject } from './is-object';
 
 /**
  * Merge and deep copy the values of all of the enumerable own properties of target object from source object to a new object
