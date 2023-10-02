@@ -2,8 +2,9 @@ import type { ComponentProps } from 'react';
 import { forwardRef, useId } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '~/src/helpers/merge-deep';
-import type { DeepPartial, FlowbiteSizes } from '../../';
-import { useTheme } from '../../';
+import { getTheme } from '~/src/theme-store';
+import { DeepPartial } from '~/src/types';
+import { FlowbiteSizes } from '../Flowbite';
 
 export interface FlowbiteFloatingLabelTheme {
   input: any;
@@ -40,7 +41,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
     },
     ref,
   ) => {
-    const theme = mergeDeep(useTheme().theme.floatingLabel, customTheme);
+    const theme = mergeDeep(getTheme().floatingLabel, customTheme);
     const randomId = useId();
     if (color === null || color === undefined) color = 'default';
 
