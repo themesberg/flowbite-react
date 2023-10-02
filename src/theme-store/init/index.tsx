@@ -1,6 +1,6 @@
 import type { CustomFlowbiteTheme } from '~/src/components/Flowbite';
-import { ClientInit } from './client';
-import { ServerInit } from './server';
+import { ThemeClientInit } from './client';
+import { ThemeServerInit } from './server';
 
 interface Props {
   theme?: CustomFlowbiteTheme;
@@ -9,8 +9,8 @@ interface Props {
 export function ThemeInit({ theme }: Props) {
   return (
     <>
-      <ServerInit theme={theme} />
-      <ClientInit theme={theme} />
+      <ThemeServerInit theme={theme} />
+      <ThemeClientInit theme={theme} />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { Alert, FileInput, Flowbite } from '~/src';
+import { Alert, DarkThemeToggle, FileInput, Flowbite } from '~/src';
 
 export default function ServerComponent() {
   console.log('RSC powar');
@@ -11,6 +11,7 @@ export default function ServerComponent() {
         <Alert theme={{ rounded: 'rounded-sm' }}>alert 2 (custom theme)</Alert>
         <FileInput />
       </div>
+      <DarkThemeToggle />
     </Flowbite>
   );
 }

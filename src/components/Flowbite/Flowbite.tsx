@@ -1,11 +1,12 @@
 import type { FC } from 'react';
+import type { ThemeMode } from '~/src/helpers/use-theme-mode';
 import { ThemeInit } from '~/src/theme-store/init';
-import type { DeepPartial } from '~/src/types';
-import type { FlowbiteTheme } from './FlowbiteTheme';
+import { ThemeModeInit } from '~/src/theme-store/mode';
+import type { CustomFlowbiteTheme } from './FlowbiteTheme';
 
 export interface ThemeProps {
-  dark?: boolean;
-  theme?: DeepPartial<FlowbiteTheme>;
+  mode?: ThemeMode;
+  theme?: CustomFlowbiteTheme;
 }
 
 interface FlowbiteProps {
@@ -13,16 +14,11 @@ interface FlowbiteProps {
   theme?: ThemeProps;
 }
 
-export const Flowbite: FC<FlowbiteProps> = ({ children, theme = {} }) => {
-  const {
-    theme: customTheme,
-    // TODO: deal with it
-    // dark,
-  } = theme;
-
+export const Flowbite: FC<FlowbiteProps> = ({ children, theme }) => {
   return (
     <>
-      <ThemeInit theme={customTheme} />
+      <ThemeInit theme={theme?.theme} />
+      <ThemeModeInit mode={theme?.mode} />
       {children}
     </>
   );

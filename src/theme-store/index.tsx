@@ -1,14 +1,30 @@
 import type { CustomFlowbiteTheme, FlowbiteTheme } from '../components/Flowbite';
 import { cloneDeep } from '../helpers/clone-deep';
 import { mergeDeep } from '../helpers/merge-deep';
+import { ThemeMode } from '../helpers/use-theme-mode';
 import { theme as defaultTheme } from '../theme';
 
-const _theme: { current: FlowbiteTheme } = { current: cloneDeep(defaultTheme) };
+interface ThemeStore {
+  mode?: ThemeMode;
+  theme: FlowbiteTheme;
+}
 
-export function createTheme(theme?: CustomFlowbiteTheme) {
-  if (theme) _theme.current = mergeDeep(defaultTheme, theme);
+const store: ThemeStore = {
+  theme: cloneDeep(defaultTheme),
+};
+
+export function setThemeMode(mode?: ThemeMode) {
+  store.mode = mode;
+}
+
+export function getThemeMode(): ThemeMode | undefined {
+  return store.mode;
+}
+
+export function setTheme(theme?: CustomFlowbiteTheme) {
+  if (theme) store.theme = mergeDeep(defaultTheme, theme);
 }
 
 export function getTheme(): FlowbiteTheme {
-  return cloneDeep(_theme.current);
+  return cloneDeep(store.theme);
 }

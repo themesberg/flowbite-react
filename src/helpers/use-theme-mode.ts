@@ -1,17 +1,26 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { getThemeMode } from '../theme-store';
 import { isClient } from './is-client';
 import { useWatchLSValue } from './use-watch-LS-value';
 
+const DEFAULT_MODE: ThemeMode = 'light';
 const LS_THEME_MODE = 'flowbite-theme-mode';
-const SYNC_EVENT = 'flowbite-theme-mode-sync';
+const SYNC_THEME_MODE = 'flowbite-theme-mode-sync';
 
-// TODO: add `system` as well
-export type Mode = 'light' | 'dark';
+export type ThemeMode = 'light' | 'dark' | 'auto';
 
 export const useThemeMode = () => {
-  const [mode, setMode] = useState<Mode>(getInitialMode());
+  const [mode, setMode] = useState<ThemeMode>(getInitialMode(getThemeMode()));
+
+  /**
+   * Persist `mode` in local storage and add/remove `dark` class on `html`
+   */
+  useEffect(() => {
+    setModeInLS(mode);
+    setModeInDOM(mode);
+  }, []);
 
   /**
    * Sync all tabs with the latest theme mode value
@@ -19,70 +28,107 @@ export const useThemeMode = () => {
   useWatchLSValue({
     key: LS_THEME_MODE,
     onChange(newValue) {
-      if (newValue) handleSetMode(newValue as Mode);
+      if (newValue) return handleSetMode(newValue as ThemeMode);
     },
   });
 
   /**
    * Keep the other instances of the hook in sync (bi-directional)
    */
-  useEffect(() => {
-    function handleSync(e: Event) {
-      const mode = (e as CustomEvent<Mode>).detail;
-      setMode(mode);
-    }
-
-    document.addEventListener(SYNC_EVENT, handleSync);
-    return () => document.removeEventListener(SYNC_EVENT, handleSync);
-  }, []);
-
-  useEffect(() => {
-    setModeInLS(mode);
-    setModeOnBody(mode);
-  }, []);
+  useSyncMode((mode) => setMode(mode));
 
   /**
-   * Toggles  between `light | dark`
+   * Sets `mode` to a given value: `light | dark` | `auto`
+   */
+  const handleSetMode = (mode: ThemeMode) => {
+    setMode(mode);
+    setModeInLS(mode);
+    setModeInDOM(mode);
+    document.dispatchEvent(new CustomEvent(SYNC_THEME_MODE, { detail: mode }));
+  };
+
+  /**
+   * Toggles between: `light | dark`
    */
   const toggleMode = () => {
-    const newMode = mode === 'dark' ? 'light' : 'dark';
+    let newMode = mode;
+
+    if (newMode === 'auto') newMode = computeModeValue(newMode);
+
+    newMode = newMode === 'dark' ? 'light' : 'dark';
 
     handleSetMode(newMode);
   };
 
   /**
-   * Sets `mode` to a specific value (`light | dark`)
+   * Sets the value to `<Flowbite theme={{ mode }}>` prop
    */
-  const handleSetMode = (mode: Mode) => {
-    setMode(mode);
-    setModeInLS(mode);
-    setModeOnBody(mode);
-    document.dispatchEvent(new CustomEvent(SYNC_EVENT, { detail: mode }));
+  const clearMode = () => {
+    const newMode = getThemeMode() ?? DEFAULT_MODE;
+
+    handleSetMode(newMode);
   };
 
-  return { mode, setMode: handleSetMode, toggleMode };
+  return { mode, computedMode: computeModeValue(mode), setMode: handleSetMode, toggleMode, clearMode };
 };
 
-const setModeInLS = (mode: Mode) => {
-  localStorage.setItem(LS_THEME_MODE, mode);
+/**
+ * Custom event listener on `SYNC_THEME_MODE`
+ */
+const useSyncMode = (onChange: (mode: ThemeMode) => void) => {
+  useEffect(() => {
+    function handleSync(e: Event) {
+      const mode = (e as CustomEvent<ThemeMode>).detail;
+
+      onChange(mode);
+    }
+
+    document.addEventListener(SYNC_THEME_MODE, handleSync);
+    return () => document.removeEventListener(SYNC_THEME_MODE, handleSync);
+  }, []);
 };
 
-const setModeOnBody = (mode: Mode) => {
-  if (mode === 'dark') {
+/**
+ * Sets the give value in local storage
+ */
+const setModeInLS = (mode: ThemeMode) => localStorage.setItem(LS_THEME_MODE, mode);
+
+/**
+ * Add or remove class `dark` on `html` element
+ */
+const setModeInDOM = (mode: ThemeMode) => {
+  const computedMode = computeModeValue(mode);
+
+  if (computedMode === 'dark') {
     document.documentElement.classList.add('dark');
   } else {
     document.documentElement.classList.remove('dark');
   }
 };
 
-const prefersColorScheme: () => Mode = () => {
-  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+const getInitialMode = (defaultMode?: ThemeMode): ThemeMode => {
+  if (!isClient()) return DEFAULT_MODE;
+
+  const LSMode = localStorage.getItem(LS_THEME_MODE) as ThemeMode | undefined;
+
+  if (LSMode) return LSMode;
+  if (defaultMode) return defaultMode;
+
+  return DEFAULT_MODE;
 };
 
-const getInitialMode: () => Mode = () => {
-  if (!isClient()) return 'light';
+/**
+ * Parse `auto` mode value to either `light` or `dark`
+ * @returns `light` | `dark`
+ */
+const computeModeValue = (mode: ThemeMode): ThemeMode => {
+  return mode === 'auto' ? prefersColorScheme() : mode;
+};
 
-  const LSMode = localStorage.getItem(LS_THEME_MODE) as Mode | undefined;
-
-  return LSMode ?? prefersColorScheme();
+/**
+ * Get browser prefered color scheme
+ * @returns `light` | `dark`
+ */
+const prefersColorScheme = (): ThemeMode => {
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
