@@ -111,10 +111,7 @@ const getInitialMode = (defaultMode?: ThemeMode): ThemeMode => {
 
   const LSMode = localStorage.getItem(LS_THEME_MODE) as ThemeMode | undefined;
 
-  if (LSMode) return LSMode;
-  if (defaultMode) return defaultMode;
-
-  return DEFAULT_MODE;
+  return LSMode ?? defaultMode ?? DEFAULT_MODE;
 };
 
 /**
