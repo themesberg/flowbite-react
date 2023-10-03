@@ -41,37 +41,36 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
     },
     ref,
   ) => {
-    const theme = mergeDeep(getTheme().floatingLabel, customTheme);
     const randomId = useId();
+    const theme = mergeDeep(getTheme().floatingLabel, customTheme);
+
     if (color === null || color === undefined) color = 'default';
 
     return (
-      <>
-        <div>
-          <div className={twMerge('relative', variant === 'standard' ? 'z-0' : '')}>
-            <input
-              type="text"
-              id={props.id ? props.id : 'floatingLabel' + randomId}
-              aria-describedby="outlined_success_help"
-              className={twMerge(theme.input[color][variant][sizing], className)}
-              placeholder=" "
-              data-testid="floating-label"
-              disabled={disabled}
-              {...props}
-              ref={ref}
-            />
-            <label
-              htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-              className={twMerge(theme.label?.[color]?.[variant]?.[sizing], className)}
-            >
-              {label}
-            </label>
-          </div>
-          <p id={'outlined_helper_text' + randomId} className={twMerge(theme.helperText[color], className)}>
-            {helperText}
-          </p>
+      <div>
+        <div className={twMerge('relative', variant === 'standard' ? 'z-0' : '')}>
+          <input
+            type="text"
+            id={props.id ? props.id : 'floatingLabel' + randomId}
+            aria-describedby="outlined_success_help"
+            className={twMerge(theme.input[color][variant][sizing], className)}
+            placeholder=" "
+            data-testid="floating-label"
+            disabled={disabled}
+            {...props}
+            ref={ref}
+          />
+          <label
+            htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
+            className={twMerge(theme.label?.[color]?.[variant]?.[sizing], className)}
+          >
+            {label}
+          </label>
         </div>
-      </>
+        <p id={'outlined_helper_text' + randomId} className={twMerge(theme.helperText[color], className)}>
+          {helperText}
+        </p>
+      </div>
     );
   },
 );

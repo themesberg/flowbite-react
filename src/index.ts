@@ -12,6 +12,7 @@ export * from './components/DarkThemeToggle';
 export * from './components/Datepicker';
 export * from './components/Dropdown';
 export * from './components/FileInput';
+export * from './components/FloatingLabel';
 export * from './components/Flowbite';
 export type { CustomFlowbiteTheme } from './components/Flowbite/FlowbiteTheme';
 export * from './components/Footer';
