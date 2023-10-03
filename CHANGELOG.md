@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.4](https://github.com/themesberg/flowbite-react/compare/v0.6.3...v0.6.4) (2023-10-03)
+
+
+### Features
+
+* Blockquote Component ([#997](https://github.com/themesberg/flowbite-react/issues/997)) ([9b91c29](https://github.com/themesberg/flowbite-react/commit/9b91c299dbf4ea22dc3b1617633cdb837552776d))
+* checkbox colors ([#1032](https://github.com/themesberg/flowbite-react/issues/1032)) ([8ae697e](https://github.com/themesberg/flowbite-react/commit/8ae697ea50f8c35da4c3f746f8e2fa19bb78b249))
+
+
+### Bug Fixes
+
+* fix getWeekDays function ([#1040](https://github.com/themesberg/flowbite-react/issues/1040)) ([8822223](https://github.com/themesberg/flowbite-react/commit/8822223eb7417f34dbbe18d561858591cfaf420f))
+
 ### [0.6.3](https://github.com/themesberg/flowbite-react/compare/v0.6.2...v0.6.3) (2023-09-30)
 
 
