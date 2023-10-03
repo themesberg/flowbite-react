@@ -6,9 +6,13 @@ export enum Views {
 }
 
 export enum WeekStart {
-  Saturday = 0,
+  Saturday,
   Sunday,
   Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
 }
 
 export const isDateInRange = (date: Date, minDate?: Date, maxDate?: Date): boolean => {
@@ -61,14 +65,13 @@ export const getFirstDayOfTheMonth = (date: Date, weekStart: WeekStart): Date =>
 
 export const getWeekDays = (lang: string, weekStart: WeekStart): string[] => {
   const weekdays: string[] = [];
-  const date = new Date();
+  const date = new Date(0);
 
   const formatter = new Intl.DateTimeFormat(lang, { weekday: 'short' });
 
   for (let i = 0; i < 7; i++) {
-    const dayIndex = (i + weekStart + 1) % 7; // Calculate the correct day index based on weekStart
-    date.setDate(dayIndex + 1);
-    const formattedWeekday = formatter.format(date);
+    const dayIndex = (i + weekStart + 1) % 7;
+    const formattedWeekday = formatter.format(addDays(date, dayIndex + 1));
     weekdays.push(formattedWeekday.slice(0, 2).charAt(0).toUpperCase() + formattedWeekday.slice(1, 3));
   }
 
