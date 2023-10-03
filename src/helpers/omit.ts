@@ -2,13 +2,15 @@ export const omit =
   <T extends object, K extends string>(keys: readonly K[]) =>
   (obj: T): Omit<T, K> => {
     const result = {} as Omit<T, K>;
-    Object.keys(obj).forEach((key) => {
-      //@ts-expect-error - Somehow TS does not like this.
+
+    for (const key in obj) {
+      // @ts-expect-error
       if (keys.includes(key)) {
-        return;
+        continue;
       }
-      //@ts-expect-error - Somehow TS does not like this.
+      // @ts-expect-error
       result[key] = obj[key];
-    });
+    }
+
     return result;
   };
