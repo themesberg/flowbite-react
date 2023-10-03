@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import type { ThemeMode } from '~/src/helpers/use-theme-mode';
 import { ThemeInit } from '~/src/theme-store/init';
-import { ThemeModeInit } from '~/src/theme-store/mode';
 import type { CustomFlowbiteTheme } from './FlowbiteTheme';
 
 export interface ThemeProps {
@@ -17,8 +16,7 @@ interface FlowbiteProps {
 export const Flowbite: FC<FlowbiteProps> = ({ children, theme }) => {
   return (
     <>
-      <ThemeInit theme={theme?.theme} />
-      <ThemeModeInit mode={theme?.mode} />
+      <ThemeInit mode={theme?.mode} theme={theme?.theme} />
       {children}
     </>
   );
