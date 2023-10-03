@@ -7,7 +7,7 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
 import type { DeepPartial } from '~/src/types';
-import { FlowbiteBoolean } from '../Flowbite';
+import type { FlowbiteBoolean } from '../Flowbite';
 import type { FlowbiteAccordionComponentTheme } from './AccordionContent';
 import { AccordionContent } from './AccordionContent';
 import type { AccordionPanelProps } from './AccordionPanel';
