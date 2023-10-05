@@ -5,6 +5,7 @@ import type {
   FlowbiteAlertTheme,
   FlowbiteAvatarTheme,
   FlowbiteBadgeTheme,
+  FlowbiteBlockquoteTheme,
   FlowbiteBreadcrumbTheme,
   FlowbiteButtonGroupTheme,
   FlowbiteButtonTheme,
@@ -47,6 +48,7 @@ export interface FlowbiteTheme {
   alert: FlowbiteAlertTheme;
   avatar: FlowbiteAvatarTheme;
   badge: FlowbiteBadgeTheme;
+  blockquote: FlowbiteBlockquoteTheme;
   breadcrumb: FlowbiteBreadcrumbTheme;
   button: FlowbiteButtonTheme;
   buttonGroup: FlowbiteButtonGroupTheme;

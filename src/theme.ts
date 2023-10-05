@@ -1,9 +1,9 @@
-import { floatingLabelTheme } from '~/src/components/FloatingLabel/theme';
 import type { FlowbiteTheme } from '.';
 import { accordionTheme } from './components/Accordion/theme';
 import { alertTheme } from './components/Alert/theme';
 import { avatarTheme } from './components/Avatar/theme';
 import { badgeTheme } from './components/Badge/theme';
+import { blockquoteTheme } from './components/Blockquote/theme';
 import { breadcrumbTheme } from './components/Breadcrumb/theme';
 import { buttonGroupTheme, buttonTheme } from './components/Button/theme';
 import { cardTheme } from './components/Card/theme';
@@ -13,6 +13,7 @@ import { darkThemeToggleTheme } from './components/DarkThemeToggle/theme';
 import { datePickerTheme } from './components/Datepicker/theme';
 import { dropdownTheme } from './components/Dropdown/theme';
 import { fileInputTheme } from './components/FileInput/theme';
+import { floatingLabelTheme } from './components/FloatingLabel/theme';
 import { footerTheme } from './components/Footer/theme';
 import { helperTextTheme } from './components/HelperText/theme';
 import { kbdTheme } from './components/Kbd/theme';
@@ -42,6 +43,7 @@ export const theme: FlowbiteTheme = {
   alert: alertTheme,
   avatar: avatarTheme,
   badge: badgeTheme,
+  blockquote: blockquoteTheme,
   breadcrumb: breadcrumbTheme,
   button: buttonTheme,
   buttonGroup: buttonGroupTheme,
