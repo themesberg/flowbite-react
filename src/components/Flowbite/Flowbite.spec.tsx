@@ -57,7 +57,7 @@ describe('Components / Flowbite', () => {
 
     it('should return darkmode', () => {
       render(
-        <Flowbite theme={{ dark: true }}>
+        <Flowbite theme={{ mode: 'dark' }}>
           <TestComponent />
         </Flowbite>,
       );
