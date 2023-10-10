@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 /**
  * Triggers `onChange` when another browser tab instance mutates the LS value.
  */
-export const useWatchLSValue = ({
+export const useWatchLocalStorageValue = ({
   key: watchKey,
   onChange,
 }: {

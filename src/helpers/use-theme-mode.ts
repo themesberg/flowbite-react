@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { getThemeMode } from '../theme-store';
 import { isClient } from './is-client';
-import { useWatchLSValue } from './use-watch-LS-value';
+import { useWatchLocalStorageValue } from './use-watch-localstorage-value';
 
 const DEFAULT_MODE: ThemeMode = 'light';
 const LS_THEME_MODE = 'flowbite-theme-mode';
@@ -25,7 +25,7 @@ export const useThemeMode = () => {
   /**
    * Sync all tabs with the latest theme mode value
    */
-  useWatchLSValue({
+  useWatchLocalStorageValue({
     key: LS_THEME_MODE,
     onChange(newValue) {
       if (newValue) return handleSetMode(newValue as ThemeMode);
