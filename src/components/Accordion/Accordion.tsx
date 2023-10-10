@@ -1,10 +1,13 @@
+'use client';
+
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial, FlowbiteBoolean } from '../../';
-import { useTheme } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { getTheme } from '~/src/theme-store';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteBoolean } from '../Flowbite';
 import type { FlowbiteAccordionComponentTheme } from './AccordionContent';
 import { AccordionContent } from './AccordionContent';
 import type { AccordionPanelProps } from './AccordionPanel';
@@ -58,7 +61,7 @@ const AccordionComponent: FC<AccordionProps> = ({
     [alwaysOpen, arrowIcon, children, flush, isOpen],
   );
 
-  const theme = mergeDeep(useTheme().theme.accordion.root, customTheme);
+  const theme = mergeDeep(getTheme().accordion.root, customTheme);
 
   return (
     <div

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../../';
+import { Flowbite } from '../Flowbite';
 import { Radio } from './Radio';
 
 describe.concurrent('Components / Radio', () => {

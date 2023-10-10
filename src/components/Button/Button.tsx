@@ -1,17 +1,18 @@
 import type { ComponentPropsWithoutRef, ElementType, ForwardedRef } from 'react';
 import { type ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
+import genericForwardRef from '~/src/helpers/generic-forward-ref';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { getTheme } from '~/src/theme-store';
+import type { DeepPartial } from '~/src/types';
 import type {
-  DeepPartial,
   FlowbiteBoolean,
   FlowbiteColors,
   FlowbiteGradientColors,
   FlowbiteGradientDuoToneColors,
   FlowbiteSizes,
-} from '../../';
-import { Spinner, useTheme } from '../../';
-import genericForwardRef from '../../helpers/generic-forward-ref';
-import { mergeDeep } from '../../helpers/merge-deep';
+} from '../Flowbite';
+import { Spinner } from '../Spinner';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
 import type { PositionInButtonGroup } from './ButtonGroup';
 import ButtonGroup from './ButtonGroup';
@@ -107,7 +108,7 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
   }: ButtonProps<T>,
   ref: ForwardedRef<T>,
 ) => {
-  const { buttonGroup: groupTheme, button: buttonTheme } = useTheme().theme;
+  const { buttonGroup: groupTheme, button: buttonTheme } = getTheme();
   const theme = mergeDeep(buttonTheme, customTheme);
 
   const theirProps = props as ButtonBaseProps<T>;

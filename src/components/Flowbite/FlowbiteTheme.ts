@@ -1,45 +1,42 @@
-import { FlowbiteFloatingLabelTheme } from '~/src/components/FloatingLabel/FloatingLabel';
-import type {
-  DeepPartial,
-  FlowbiteAccordionTheme,
-  FlowbiteAlertTheme,
-  FlowbiteAvatarTheme,
-  FlowbiteBadgeTheme,
-  FlowbiteBlockquoteTheme,
-  FlowbiteBreadcrumbTheme,
-  FlowbiteButtonGroupTheme,
-  FlowbiteButtonTheme,
-  FlowbiteCardTheme,
-  FlowbiteCarouselTheme,
-  FlowbiteCheckboxTheme,
-  FlowbiteDarkThemeToggleTheme,
-  FlowbiteDatepickerTheme,
-  FlowbiteDropdownTheme,
-  FlowbiteFileInputTheme,
-  FlowbiteFooterTheme,
-  FlowbiteHelperTextTheme,
-  FlowbiteKbdTheme,
-  FlowbiteLabelTheme,
-  FlowbiteListGroupTheme,
-  FlowbiteModalTheme,
-  FlowbiteNavbarTheme,
-  FlowbitePaginationTheme,
-  FlowbiteProgressTheme,
-  FlowbiteRadioTheme,
-  FlowbiteRangeSliderTheme,
-  FlowbiteRatingTheme,
-  FlowbiteSelectTheme,
-  FlowbiteSidebarTheme,
-  FlowbiteSpinnerTheme,
-  FlowbiteTabTheme,
-  FlowbiteTableTheme,
-  FlowbiteTextInputTheme,
-  FlowbiteTextareaTheme,
-  FlowbiteTimelineTheme,
-  FlowbiteToastTheme,
-  FlowbiteToggleSwitchTheme,
-  FlowbiteTooltipTheme,
-} from '../../';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteAccordionTheme } from '../Accordion';
+import type { FlowbiteAlertTheme } from '../Alert';
+import type { FlowbiteAvatarTheme } from '../Avatar';
+import type { FlowbiteBadgeTheme } from '../Badge';
+import type { FlowbiteBlockquoteTheme } from '../Blockquote';
+import type { FlowbiteBreadcrumbTheme } from '../Breadcrumb';
+import type { FlowbiteButtonGroupTheme, FlowbiteButtonTheme } from '../Button';
+import type { FlowbiteCardTheme } from '../Card';
+import type { FlowbiteCarouselTheme } from '../Carousel';
+import type { FlowbiteCheckboxTheme } from '../Checkbox';
+import type { FlowbiteDarkThemeToggleTheme } from '../DarkThemeToggle';
+import type { FlowbiteDatepickerTheme } from '../Datepicker';
+import type { FlowbiteDropdownTheme } from '../Dropdown';
+import type { FlowbiteFileInputTheme } from '../FileInput';
+import type { FlowbiteFloatingLabelTheme } from '../FloatingLabel/FloatingLabel';
+import type { FlowbiteFooterTheme } from '../Footer';
+import type { FlowbiteHelperTextTheme } from '../HelperText';
+import type { FlowbiteKbdTheme } from '../Kbd';
+import type { FlowbiteLabelTheme } from '../Label';
+import type { FlowbiteListGroupTheme } from '../ListGroup';
+import type { FlowbiteModalTheme } from '../Modal';
+import type { FlowbiteNavbarTheme } from '../Navbar';
+import type { FlowbitePaginationTheme } from '../Pagination';
+import type { FlowbiteProgressTheme } from '../Progress';
+import type { FlowbiteRadioTheme } from '../Radio';
+import type { FlowbiteRangeSliderTheme } from '../RangeSlider';
+import type { FlowbiteRatingTheme } from '../Rating';
+import type { FlowbiteSelectTheme } from '../Select';
+import type { FlowbiteSidebarTheme } from '../Sidebar';
+import type { FlowbiteSpinnerTheme } from '../Spinner';
+import type { FlowbiteTabTheme } from '../Tab';
+import type { FlowbiteTableTheme } from '../Table';
+import type { FlowbiteTextInputTheme } from '../TextInput';
+import type { FlowbiteTextareaTheme } from '../Textarea';
+import type { FlowbiteTimelineTheme } from '../Timeline';
+import type { FlowbiteToastTheme } from '../Toast';
+import type { FlowbiteToggleSwitchTheme } from '../ToggleSwitch';
+import type { FlowbiteTooltipTheme } from '../Tooltip';
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 

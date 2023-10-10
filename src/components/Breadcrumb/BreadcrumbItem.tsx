@@ -2,9 +2,10 @@ import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { forwardRef } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial, FlowbiteBoolean } from '../../';
-import { useTheme } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { getTheme } from '~/src/theme-store';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteBoolean } from '../Flowbite';
 
 export interface FlowbiteBreadcrumbItemTheme {
   base: string;
@@ -24,7 +25,7 @@ export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, Br
     const isLink = typeof href !== 'undefined';
     const Component = isLink ? 'a' : 'span';
 
-    const theme = mergeDeep(useTheme().theme.breadcrumb.item, customTheme);
+    const theme = mergeDeep(getTheme().breadcrumb.item, customTheme);
 
     return (
       <li className={twMerge(theme.base, className)} {...props}>

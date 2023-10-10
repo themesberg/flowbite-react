@@ -1,9 +1,12 @@
+'use client';
+
 import type { ComponentProps, FC } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { useThemeMode } from '~/src/helpers/use-theme-mode';
+import { getTheme } from '~/src/theme-store';
+import type { DeepPartial } from '~/src/types';
 
 export interface FlowbiteDarkThemeToggleTheme {
   root: FlowbiteDarkThemeToggleRootTheme;
@@ -27,23 +30,25 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   iconLight: IconLight = HiMoon,
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.darkThemeToggle, customTheme);
+  const { computedMode, toggleMode } = useThemeMode();
 
-  const { mode, toggleMode } = useTheme();
+  const theme = mergeDeep(getTheme().darkThemeToggle, customTheme);
 
   return (
     <button
+      type="button"
       aria-label="Toggle dark mode"
       data-testid="dark-theme-toggle"
-      onClick={() => toggleMode?.()}
-      type="button"
       className={twMerge(theme.root.base, className)}
+      onClick={toggleMode}
       {...props}
     >
-      {mode === 'dark' ? (
-        <IconLight aria-label="Currently dark mode" className={theme.root.icon} />
+      {computedMode === 'dark' ? (
+        <span>
+          <IconDark aria-label="Currently dark mode" className={theme.root.icon} />
+        </span>
       ) : (
-        <IconDark aria-label="Currently light mode" className={theme.root.icon} />
+        <IconLight aria-label="Currently light mode" className={theme.root.icon} />
       )}
     </button>
   );

@@ -1,8 +1,9 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial, FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../../';
-import { useTheme } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { getTheme } from '~/src/theme-store';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../Flowbite';
 
 export interface FlowbiteBadgeTheme {
   root: FlowbiteBadgeRootTheme;
@@ -42,7 +43,7 @@ export const Badge: FC<BadgeProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.badge, customTheme);
+  const theme = mergeDeep(getTheme().badge, customTheme);
 
   const Content: FC = () => (
     <span

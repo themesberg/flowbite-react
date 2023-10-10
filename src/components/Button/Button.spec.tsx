@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { PropsWithChildren } from 'react';
 import { AiOutlineLoading } from 'react-icons/ai';
 import { describe, expect, it, vi } from 'vitest';
-import { Flowbite } from '../../';
+import { Flowbite } from '../Flowbite';
 import { Button } from './Button';
 
 describe('Components / Button', () => {

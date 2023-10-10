@@ -1,4 +1,4 @@
-import type { FlowbiteFloatingLabelTheme } from '~/src/components/FloatingLabel/FloatingLabel';
+import type { FlowbiteFloatingLabelTheme } from './FloatingLabel';
 
 export const floatingLabelTheme: FlowbiteFloatingLabelTheme = {
   input: {

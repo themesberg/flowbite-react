@@ -1,8 +1,10 @@
+'use client';
+
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { getTheme } from '~/src/theme-store';
+import type { DeepPartial } from '~/src/types';
 import type { FlowbiteTimelineContentTheme } from './TimelineContent';
 import { useTimelineContext } from './TimelineContext';
 import type { FlowbiteTimelinePointTheme } from './TimelinePoint';
@@ -21,7 +23,7 @@ export interface TimelineItemProps extends PropsWithChildren, ComponentProps<'li
 }
 
 export const TimelineItem: FC<TimelineItemProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const theme = mergeDeep(useTheme().theme.timeline.item, customTheme);
+  const theme = mergeDeep(getTheme().timeline.item, customTheme);
   const { horizontal } = useTimelineContext();
 
   return (

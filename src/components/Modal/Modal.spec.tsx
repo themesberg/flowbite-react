@@ -3,7 +3,8 @@ import userEvent from '@testing-library/user-event';
 import type { RefObject } from 'react';
 import { createRef, useState } from 'react';
 import { describe, expect, it } from 'vitest';
-import { Button, TextInput } from '../../';
+import { Button } from '../Button';
+import { TextInput } from '../TextInput';
 import type { ModalProps } from './Modal';
 import { Modal } from './Modal';
 

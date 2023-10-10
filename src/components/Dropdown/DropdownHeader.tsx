@@ -1,6 +1,6 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { useTheme } from '../../';
+import { getTheme } from '~/src/theme-store';
 import { DropdownDivider } from './DropdownDivider';
 
 export interface FlowbiteDropdownHeaderTheme {
@@ -8,7 +8,7 @@ export interface FlowbiteDropdownHeaderTheme {
 }
 
 export const DropdownHeader: FC<PropsWithChildren & ComponentProps<'div'>> = ({ children, className, ...props }) => {
-  const theme = useTheme().theme.dropdown.floating.header;
+  const theme = getTheme().dropdown.floating.header;
 
   return (
     <>

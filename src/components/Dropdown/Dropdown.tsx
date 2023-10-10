@@ -1,3 +1,5 @@
+'use client';
+
 import type { ExtendedRefs, useInteractions } from '@floating-ui/react';
 import { FloatingFocusManager, FloatingList, useListNavigation, useTypeahead } from '@floating-ui/react';
 import type {
@@ -14,19 +16,20 @@ import type {
 } from 'react';
 import { cloneElement, createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
-import type { ButtonProps, DeepPartial } from '../../';
-import { Button, useTheme } from '../../';
-import type { FloatingProps, FlowbiteFloatingTheme } from '../../components/Floating';
-import { mergeDeep } from '../../helpers/merge-deep';
+import { twMerge } from 'tailwind-merge';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { useBaseFLoating, useFloatingInteractions } from '~/src/helpers/use-floating';
+import { getTheme } from '~/src/theme-store';
+import type { DeepPartial } from '~/src/types';
+import type { ButtonProps } from '../Button';
+import { Button } from '../Button';
+import type { FloatingProps, FlowbiteFloatingTheme } from '../Floating';
 import type { FlowbiteDropdownDividerTheme } from './DropdownDivider';
 import { DropdownDivider } from './DropdownDivider';
 import type { FlowbiteDropdownHeaderTheme } from './DropdownHeader';
 import { DropdownHeader } from './DropdownHeader';
 import type { FlowbiteDropdownItemTheme } from './DropdownItem';
 import { DropdownItem } from './DropdownItem';
-
-import { twMerge } from 'tailwind-merge';
-import { useBaseFLoating, useFloatingInteractions } from '../../helpers/use-floating';
 
 export interface FlowbiteDropdownFloatingTheme
   extends FlowbiteFloatingTheme,
@@ -138,7 +141,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   const elementsRef = useRef<Array<HTMLElement | null>>([]);
   const labelsRef = useRef<Array<string | null>>([]);
 
-  const theme = mergeDeep(useTheme().theme.dropdown, customTheme);
+  const theme = mergeDeep(getTheme().dropdown, customTheme);
   const theirProps = props as Omit<DropdownProps, 'theme'>;
   const dataTestId = props['data-testid'] || 'flowbite-dropdown-target';
   const {

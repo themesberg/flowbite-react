@@ -1,8 +1,10 @@
+'use client';
+
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { getTheme } from '~/src/theme-store';
+import type { DeepPartial } from '~/src/types';
 import { useModalContext } from './ModalContext';
 
 export interface FlowbiteModalFooterTheme {
@@ -15,7 +17,7 @@ export interface ModalFooterProps extends PropsWithChildren<ComponentProps<'div'
 }
 
 export const ModalFooter: FC<ModalFooterProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const theme = mergeDeep(useTheme().theme.modal.footer, customTheme);
+  const theme = mergeDeep(getTheme().modal.footer, customTheme);
   const { popup } = useModalContext();
 
   return (

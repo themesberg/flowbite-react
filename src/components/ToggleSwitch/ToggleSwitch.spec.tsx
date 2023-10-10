@@ -3,7 +3,8 @@ import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { useState } from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import { Flowbite, TextInput } from '../../';
+import { Flowbite } from '../Flowbite';
+import { TextInput } from '../TextInput';
 import { ToggleSwitch } from './ToggleSwitch';
 
 describe('Components / Toggle switch', () => {

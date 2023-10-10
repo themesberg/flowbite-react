@@ -1,22 +1,11 @@
 import { act, render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Flowbite, useTheme } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { ThemeContextProps } from './ThemeContext';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { useThemeMode } from '~/src/helpers/use-theme-mode';
+import { getTheme } from '~/src/theme-store';
+import { Flowbite } from '../Flowbite';
 
 describe('Components / Flowbite', () => {
-  describe('hook / useTheme', () => {
-    it('should return default values', () => {
-      render(<TestComponent />);
-
-      const { theme, mode, toggleMode } = context;
-
-      expect(theme).toEqual(theme);
-      expect(mode).toBeUndefined();
-      expect(toggleMode).toBeUndefined();
-    });
-  });
-
   describe('Flowbite', () => {
     it('should return default values', () => {
       render(
@@ -25,8 +14,8 @@ describe('Components / Flowbite', () => {
         </Flowbite>,
       );
 
-      const { theme, mode, toggleMode } = context;
-      expect(theme).toEqual(theme);
+      const { mode, toggleMode } = themeMode;
+
       expect(mode).toBe('light');
       expect(toggleMode).not.toBeUndefined();
     });
@@ -38,7 +27,7 @@ describe('Components / Flowbite', () => {
         </Flowbite>,
       );
 
-      const { theme } = context;
+      const theme = getTheme();
       const mergedTheme = mergeDeep(theme, customTheme);
 
       expect(theme).toEqual(mergedTheme);
@@ -51,7 +40,7 @@ describe('Components / Flowbite', () => {
         </Flowbite>,
       );
 
-      const { mode, toggleMode } = context;
+      const { mode, toggleMode } = themeMode;
 
       expect(mode).toBe('light');
       expect(documentEl()).not.toHaveClass('dark');
@@ -60,7 +49,7 @@ describe('Components / Flowbite', () => {
         if (toggleMode) toggleMode();
       });
 
-      const { mode: mode2 } = context;
+      const { mode: mode2 } = themeMode;
 
       expect(mode2).toBe('dark');
       expect(documentEl()).toHaveClass('dark');
@@ -68,12 +57,12 @@ describe('Components / Flowbite', () => {
 
     it('should return darkmode', () => {
       render(
-        <Flowbite theme={{ dark: true }}>
+        <Flowbite theme={{ mode: 'dark' }}>
           <TestComponent />
         </Flowbite>,
       );
 
-      const { mode } = context;
+      const { mode } = themeMode;
 
       expect(mode).toBe('dark');
       expect(documentEl()).toHaveClass('dark');
@@ -81,9 +70,10 @@ describe('Components / Flowbite', () => {
   });
 });
 
-let context: ThemeContextProps;
+let themeMode: ReturnType<typeof useThemeMode>;
+
 const TestComponent = () => {
-  context = useTheme();
+  themeMode = useThemeMode();
   return null;
 };
 

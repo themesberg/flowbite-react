@@ -8,7 +8,8 @@ import { useEffect, useRef, useState } from 'react';
 import { HiClipboardCopy, HiOutlineArrowRight } from 'react-icons/hi';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { Button, Flowbite, Footer, Navbar, TextInput, Tooltip, useTheme } from '~/src';
+import { Button, Flowbite, Footer, Navbar, TextInput, Tooltip } from '~/src';
+import { useThemeMode } from '~/src/helpers/use-theme-mode';
 import { Banner } from './components/banner';
 import { ComponentCard } from './components/component-card';
 import { NavbarIcons, NavbarLinks } from './components/navbar';
@@ -1088,7 +1089,7 @@ const SocialProofSection: FC<SocialProofSectionProps> = ({ stargazers, npmDownlo
 };
 
 const DarkModeSwitcher: FC = () => {
-  const { toggleMode } = useTheme();
+  const { setMode } = useThemeMode();
 
   return (
     <div className="text-cyna-500 flex flex-row gap-8">
@@ -1096,7 +1097,7 @@ const DarkModeSwitcher: FC = () => {
         <button
           aria-label="Light mode"
           type="button"
-          onClick={() => toggleMode?.('light')}
+          onClick={() => setMode('light')}
           className="hidden rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:block dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         >
           <span className="hidden dark:block">
@@ -1142,7 +1143,7 @@ const DarkModeSwitcher: FC = () => {
         <button
           aria-label="Dark mode"
           type="button"
-          onClick={() => toggleMode?.('dark')}
+          onClick={() => setMode('dark')}
           className="rounded-lg bg-gray-100 p-2.5 text-sm text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hidden dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         >
           <span className="hidden dark:block">

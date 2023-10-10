@@ -3,8 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { HiChartPie, HiInbox, HiShoppingBag } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import type { DeepPartial, FlowbiteTheme } from '../../';
-import { Flowbite } from '../../';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import type { SidebarProps } from './Sidebar';
 import { Sidebar } from './Sidebar';
 
@@ -124,7 +123,7 @@ describe('Props', () => {
 
 describe('Theme', () => {
   it('should use custom classes', () => {
-    const theme: DeepPartial<FlowbiteTheme> = {
+    const theme: CustomFlowbiteTheme = {
       sidebar: {
         root: {
           base: 'bg-gray-100',

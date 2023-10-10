@@ -1,8 +1,11 @@
+'use client';
+
 import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial, FlowbiteBoolean, FlowbiteHeadingLevel } from '../../';
-import { useTheme } from '../../';
-import { mergeDeep } from '../../helpers/merge-deep';
+import { mergeDeep } from '~/src/helpers/merge-deep';
+import { getTheme } from '~/src/theme-store';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteBoolean, FlowbiteHeadingLevel } from '../Flowbite';
 import { useAccordionContext } from './AccordionPanelContext';
 
 export interface FlowbiteAccordionTitleTheme {
@@ -32,7 +35,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   const { arrowIcon: ArrowIcon, flush, isOpen, setOpen } = useAccordionContext();
   const onClick = () => typeof setOpen !== 'undefined' && setOpen();
 
-  const theme = mergeDeep(useTheme().theme.accordion.title, customTheme);
+  const theme = mergeDeep(getTheme().accordion.title, customTheme);
 
   return (
     <button
