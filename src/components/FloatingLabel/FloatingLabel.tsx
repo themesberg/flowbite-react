@@ -3,8 +3,8 @@ import { forwardRef, useId } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '~/src/helpers/merge-deep';
 import { getTheme } from '~/src/theme-store';
-import { DeepPartial } from '~/src/types';
-import { FlowbiteSizes } from '../Flowbite';
+import type { DeepPartial } from '~/src/types';
+import type { FlowbiteSizes } from '../Flowbite';
 
 export interface FlowbiteFloatingLabelTheme {
   input: any;
