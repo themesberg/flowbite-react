@@ -64,14 +64,11 @@ export default function HomePageContent() {
 
   return (
     <Flowbite>
-      <div className="relative max-h-screen w-full overflow-auto bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
+      <div className="relative bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
         <Banner />
         <HomeNavbar />
         <div className="lg:flex">
-          <main
-            className="min-w-0 flex-auto divide-y dark:divide-gray-700 lg:static lg:max-h-full lg:overflow-visible"
-            ref={mainRef}
-          >
+          <main className="min-w-0 flex-auto divide-y dark:divide-gray-700" ref={mainRef}>
             <HeroSection />
             <FeaturedSection />
             <ComponentsSection />
