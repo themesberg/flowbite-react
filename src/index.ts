@@ -41,3 +41,4 @@ export * from './components/ToggleSwitch';
 export * from './components/Tooltip';
 
 export * from './theme';
+export * from './theme-mode-script';

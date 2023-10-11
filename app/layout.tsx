@@ -5,6 +5,7 @@ import { Inter as InterFont } from 'next/font/google';
 import type { FC, PropsWithChildren } from 'react';
 import '~/app/docs.css';
 import '~/app/style.css';
+import { ThemeModeScript } from '~/src/theme-mode-script';
 
 const interFont = InterFont({
   subsets: ['latin'],
@@ -56,6 +57,9 @@ export const metadata: Metadata = {
 const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en" className={`${interFont.variable} font-sans`}>
+      <head>
+        <ThemeModeScript />
+      </head>
       <body>
         {children}
         <FathomScript />
