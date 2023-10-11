@@ -14,9 +14,9 @@ import {
 import type { MutableRefObject } from 'react';
 import { forwardRef, useState, type ComponentPropsWithoutRef, type PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '~/src/helpers/merge-deep';
-import { getTheme } from '~/src/theme-store';
-import type { DeepPartial } from '~/src/types';
+import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from '../Flowbite';
 import type { FlowbiteModalBodyTheme } from './ModalBody';
 import { ModalBody } from './ModalBody';

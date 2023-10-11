@@ -17,10 +17,10 @@ import type {
 import { cloneElement, createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '~/src/helpers/merge-deep';
-import { useBaseFLoating, useFloatingInteractions } from '~/src/helpers/use-floating';
-import { getTheme } from '~/src/theme-store';
-import type { DeepPartial } from '~/src/types';
+import { mergeDeep } from '../../helpers/merge-deep';
+import { useBaseFLoating, useFloatingInteractions } from '../../helpers/use-floating';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
 import type { ButtonProps } from '../Button';
 import { Button } from '../Button';
 import type { FloatingProps, FlowbiteFloatingTheme } from '../Floating';

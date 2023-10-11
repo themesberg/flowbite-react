@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import { theme } from '~/src/theme';
+import { theme } from '../../theme';
 import { Flowbite } from '../Flowbite';
 import { Button } from './Button';
 

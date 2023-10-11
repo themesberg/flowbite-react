@@ -3,9 +3,9 @@
 import type { ComponentProps, FC } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '~/src/helpers/merge-deep';
-import { getTheme } from '~/src/theme-store';
-import type { DeepPartial } from '~/src/types';
+import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
 import { useNavbarContext } from './NavbarContext';
 
 export interface FlowbiteNavbarToggleTheme {

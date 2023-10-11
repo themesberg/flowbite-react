@@ -1,4 +1,4 @@
-import type { DeepPartial } from '~/src/types';
+import type { DeepPartial } from '../../types';
 import type { FlowbiteAccordionTheme } from '../Accordion';
 import type { FlowbiteAlertTheme } from '../Alert';
 import type { FlowbiteAvatarTheme } from '../Avatar';

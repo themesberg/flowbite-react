@@ -1,6 +1,6 @@
 import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { getTheme } from '~/src/theme-store';
+import { getTheme } from '../../theme-store';
 
 export interface FlowbiteDropdownDividerTheme {
   divider: string;

@@ -4,9 +4,9 @@ import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react'
 import { useEffect, useId, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '~/src/helpers/merge-deep';
-import { getTheme } from '~/src/theme-store';
-import type { DeepPartial } from '~/src/types';
+import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
 import type { FlowbiteBoolean } from '../Flowbite';
 import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';

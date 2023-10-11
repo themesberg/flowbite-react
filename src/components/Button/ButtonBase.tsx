@@ -1,5 +1,5 @@
 import { createElement, type ComponentPropsWithoutRef, type ElementType, type ForwardedRef } from 'react';
-import genericForwardRef from '~/src/helpers/generic-forward-ref';
+import genericForwardRef from '../../helpers/generic-forward-ref';
 
 export type ButtonBaseProps<T extends ElementType = 'button'> = {
   as?: T;

@@ -5,10 +5,10 @@ import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useSta
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import { twMerge } from 'tailwind-merge';
-import { isClient } from '~/src/helpers/is-client';
-import { mergeDeep } from '~/src/helpers/merge-deep';
-import { getTheme } from '~/src/theme-store';
-import type { DeepPartial } from '~/src/types';
+import { isClient } from '../../helpers/is-client';
+import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
 import type { FlowbiteBoolean } from '../Flowbite';
 
 export interface FlowbiteCarouselTheme {
