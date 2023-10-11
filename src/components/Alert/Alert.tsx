@@ -1,9 +1,9 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { HiX } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '~/src/helpers/merge-deep';
-import { getTheme } from '~/src/theme-store';
-import type { DeepPartial } from '~/src/types';
+import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
 import type { FlowbiteColors } from '../Flowbite';
 
 export interface FlowbiteAlertTheme {

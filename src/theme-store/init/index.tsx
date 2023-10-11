@@ -1,5 +1,5 @@
-import type { CustomFlowbiteTheme } from '~/src/components/Flowbite';
-import type { ThemeMode } from '~/src/helpers/use-theme-mode';
+import type { CustomFlowbiteTheme } from '../../components/Flowbite';
+import type { ThemeMode } from '../../helpers/use-theme-mode';
 import { ThemeClientInit } from './client';
 import { ThemeModeInit } from './mode';
 import { ThemeServerInit } from './server';

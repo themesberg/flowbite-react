@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { HiCheck } from 'react-icons/hi';
-import { theme } from '~/src/theme';
+import { theme } from '../../theme';
 import type { BadgeProps } from './Badge';
 import { Badge } from './Badge';
 

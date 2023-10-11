@@ -1,7 +1,7 @@
 'use client';
 
-import { useThemeMode, type ThemeMode } from '~/src/helpers/use-theme-mode';
 import { setThemeMode } from '..';
+import { useThemeMode, type ThemeMode } from '../../helpers/use-theme-mode';
 
 interface Props {
   mode?: ThemeMode;

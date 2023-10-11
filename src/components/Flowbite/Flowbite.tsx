@@ -1,6 +1,6 @@
 import type { FC } from 'react';
-import type { ThemeMode } from '~/src/helpers/use-theme-mode';
-import { ThemeInit } from '~/src/theme-store/init';
+import type { ThemeMode } from '../../helpers/use-theme-mode';
+import { ThemeInit } from '../../theme-store/init';
 import type { CustomFlowbiteTheme } from './FlowbiteTheme';
 
 export interface ThemeProps {

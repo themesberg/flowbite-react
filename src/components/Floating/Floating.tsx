@@ -5,7 +5,7 @@ import { autoUpdate, useFocus } from '@floating-ui/react';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { useBaseFLoating, useFloatingInteractions } from '~/src/helpers/use-floating';
+import { useBaseFLoating, useFloatingInteractions } from '../../helpers/use-floating';
 import { getArrowPlacement } from './helpers';
 
 export interface FlowbiteFloatingTheme {

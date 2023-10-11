@@ -1,10 +1,10 @@
 import type { ComponentPropsWithoutRef, ElementType, ForwardedRef } from 'react';
 import { type ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
-import genericForwardRef from '~/src/helpers/generic-forward-ref';
-import { mergeDeep } from '~/src/helpers/merge-deep';
-import { getTheme } from '~/src/theme-store';
-import type { DeepPartial } from '~/src/types';
+import genericForwardRef from '../../helpers/generic-forward-ref';
+import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
 import type {
   FlowbiteBoolean,
   FlowbiteColors,

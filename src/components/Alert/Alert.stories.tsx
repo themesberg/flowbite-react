@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { HiEye, HiInformationCircle } from 'react-icons/hi';
-import { theme } from '~/src/theme';
+import { theme } from '../../theme';
 import type { AlertProps } from './Alert';
 import { Alert } from './Alert';
 
