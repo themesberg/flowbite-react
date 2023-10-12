@@ -1,2 +1,4 @@
 export * from './Dropdown';
-export type { DropdownItemProps } from './DropdownItem';
+export * from './DropdownDivider';
+export * from './DropdownHeader';
+export * from './DropdownItem';

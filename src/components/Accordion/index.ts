@@ -1,3 +1,4 @@
 export * from './Accordion';
-export type { AccordionPanelProps } from './AccordionPanel';
-export type { AccordionTitleProps } from './AccordionTitle';
+export * from './AccordionContent';
+export * from './AccordionPanel';
+export * from './AccordionTitle';
