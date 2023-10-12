@@ -874,18 +874,17 @@ const ContributorsSection: FC<ContributorsSectionProps> = ({ contributors }) => 
           </div>
           <div className="flex max-w-5xl flex-col gap-3 px-4 lg:px-8">
             <div className="flex flex-wrap items-center justify-center gap-3">
-              {contributors &&
-                contributors.map((contributor) => (
-                  <Tooltip key={contributor.id} content={contributor.login}>
-                    <Link href={contributor.html_url} rel="nofollow noreferrer noopener" target="_blank">
-                      <img
-                        src={contributor.avatar_url}
-                        alt={`${contributor.login} avatar`}
-                        className="h-10 w-10 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300 sm:h-12 sm:w-12 lg:h-16 lg:w-16"
-                      />
-                    </Link>
-                  </Tooltip>
-                ))}
+              {contributors.map((contributor) => (
+                <Tooltip key={contributor.id} content={contributor.login}>
+                  <Link href={contributor.html_url} rel="nofollow noreferrer noopener" target="_blank">
+                    <img
+                      src={contributor.avatar_url}
+                      alt={`${contributor.login} avatar`}
+                      className="h-10 w-10 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300 sm:h-12 sm:w-12 lg:h-16 lg:w-16"
+                    />
+                  </Link>
+                </Tooltip>
+              ))}
             </div>
           </div>
           <div className="flex w-full max-w-5xl flex-row items-center justify-between lg:px-4">
