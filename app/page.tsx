@@ -9,6 +9,7 @@ import { HiClipboardCopy, HiOutlineArrowRight } from 'react-icons/hi';
 import '~/app/docs.css';
 import '~/app/style.css';
 import { Button, Flowbite, Footer, Navbar, TextInput, Tooltip } from '~/src';
+import { safeResJson } from '~/src/helpers/http';
 import { useThemeMode } from '~/src/helpers/use-theme-mode';
 import { Banner } from './components/banner';
 import { ComponentCard } from './components/component-card';
@@ -41,22 +42,34 @@ export default function HomePageContent() {
 
   useEffect(() => {
     fetch('https://api.github.com/repos/themesberg/flowbite-react/contributors?per_page=21')
-      .then((res) => res.json())
+      .then((res) => safeResJson(res))
       .then((data) => {
         setContributors(data);
+      })
+      .catch((err) => {
+        console.error(err);
       });
 
     fetch('https://api.github.com/repos/themesberg/flowbite-react')
-      .then((res) => res.json())
-      .then((data) => setStargazers(numberWithCommas(data.stargazers_count)));
+      .then((res) => safeResJson(res))
+      .then((data) => setStargazers(numberWithCommas(data.stargazers_count)))
+      .catch((err) => {
+        console.error(err);
+      });
 
     fetch('https://api.npmjs.org/downloads/point/2021-01-01:2100-01-01/flowbite-react')
-      .then((res) => res.json())
-      .then((data) => setNpmDownloads(numberWithCommas(data.downloads)));
+      .then((res) => safeResJson(res))
+      .then((data) => setNpmDownloads(numberWithCommas(data.downloads)))
+      .catch((err) => {
+        console.error(err);
+      });
 
     fetch('https://discord.com/api/v9/invites/4eeurUVvTy?with_counts=true&with_expiration=true')
-      .then((res) => res.json())
-      .then((data) => setDiscordMembers(numberWithCommas(data.approximate_presence_count)));
+      .then((res) => safeResJson(res))
+      .then((data) => setDiscordMembers(numberWithCommas(data.approximate_presence_count)))
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   const numberWithCommas = (x: string | number) => {
