@@ -1,6 +1,6 @@
 'use client';
 
-import type { ExtendedRefs, useInteractions } from '@floating-ui/react';
+import type { ExtendedRefs } from '@floating-ui/react';
 import { FloatingFocusManager, FloatingList, useListNavigation, useTypeahead } from '@floating-ui/react';
 import type {
   ComponentProps,
@@ -14,22 +14,19 @@ import type {
   RefCallback,
   SetStateAction,
 } from 'react';
-import { cloneElement, createContext, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { useBaseFLoating, useFloatingInteractions } from '../../helpers/use-floating';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
-import type { ButtonProps } from '../Button';
-import { Button } from '../Button';
+import { Button, type ButtonProps } from '../Button';
 import type { FloatingProps, FlowbiteFloatingTheme } from '../Floating';
-import type { FlowbiteDropdownDividerTheme } from './DropdownDivider';
-import { DropdownDivider } from './DropdownDivider';
-import type { FlowbiteDropdownHeaderTheme } from './DropdownHeader';
-import { DropdownHeader } from './DropdownHeader';
-import type { FlowbiteDropdownItemTheme } from './DropdownItem';
-import { DropdownItem } from './DropdownItem';
+import { DropdownContext } from './DropdownContext';
+import { DropdownDivider, type FlowbiteDropdownDividerTheme } from './DropdownDivider';
+import { DropdownHeader, type FlowbiteDropdownHeaderTheme } from './DropdownHeader';
+import { DropdownItem, type FlowbiteDropdownItemTheme } from './DropdownItem';
 
 export interface FlowbiteDropdownFloatingTheme
   extends FlowbiteFloatingTheme,
@@ -116,15 +113,6 @@ const Trigger = ({
     </Button>
   );
 };
-
-interface DropdownContextValue {
-  activeIndex: number | null;
-  dismissOnClick?: boolean;
-  getItemProps: ReturnType<typeof useInteractions>['getItemProps'];
-  handleSelect: (index: number | null) => void;
-}
-
-export const DropdownContext = createContext<DropdownContextValue>({} as DropdownContextValue);
 
 const DropdownComponent: FC<DropdownProps> = ({
   children,
@@ -219,6 +207,7 @@ const DropdownComponent: FC<DropdownProps> = ({
       </Trigger>
       <DropdownContext.Provider
         value={{
+          theme,
           activeIndex,
           dismissOnClick,
           getItemProps,
