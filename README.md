@@ -301,7 +301,7 @@ If you want to contribute to Flowbite React, you can follow the [contributing gu
   </tr>
   <tr>
   <td width="33.3333%">
-        <a href="https://flowbite-react.com/docs/components/progress-bar">
+        <a href="https://www.flowbite-react.com/docs/components/progress">
             <img alt="React Progress bar" src="https://flowbite.s3.amazonaws.com/github/progress.jpg">
         </a>
     </td>
