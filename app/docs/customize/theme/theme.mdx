@@ -65,6 +65,10 @@ const customTheme: CustomFlowbiteTheme['button'] = {
 };
 
 export default function MyPage() {
-  return <Button theme={customTheme}>Click me</Button>;
+  return (
+    <Button theme={customTheme} color="primary">
+      Click me
+    </Button>
+  );
 }
 ```
