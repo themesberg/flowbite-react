@@ -171,7 +171,7 @@ describe('Components / Button', () => {
       it('should render as button `as={null}`', () => {
         render(
           <ul>
-            <Button as={null as null} label="Something or other" />
+            <Button as={null} label="Something or other" />
           </ul>,
         );
 
