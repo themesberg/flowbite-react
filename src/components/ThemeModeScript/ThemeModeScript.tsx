@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ThemeMode } from './helpers/use-theme-mode';
+import type { ThemeMode } from '../../helpers/use-theme-mode';
 
 export interface ThemeModeScriptProps extends React.ComponentPropsWithoutRef<'script'> {
   mode?: ThemeMode;

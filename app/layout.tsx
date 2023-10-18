@@ -5,7 +5,7 @@ import { Inter as InterFont } from 'next/font/google';
 import type { FC, PropsWithChildren } from 'react';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { ThemeModeScript } from '~/src/theme-mode-script';
+import { ThemeModeScript } from '~/src';
 
 const interFont = InterFont({
   subsets: ['latin'],

@@ -35,10 +35,10 @@ export * from './components/Tab';
 export * from './components/Table';
 export * from './components/TextInput';
 export * from './components/Textarea';
+export * from './components/ThemeModeScript';
 export * from './components/Timeline';
 export * from './components/Toast';
 export * from './components/ToggleSwitch';
 export * from './components/Tooltip';
 
 export * from './theme';
-export * from './theme-mode-script';
