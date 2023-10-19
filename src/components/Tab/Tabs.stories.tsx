@@ -2,11 +2,11 @@ import type { Meta } from '@storybook/react';
 import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
 import { MdDashboard } from 'react-icons/md';
 import type { TabsProps } from './Tabs';
-import { Tabs, TabsComponent } from './Tabs';
+import { Tabs } from './Tabs';
 
 export default {
   title: 'Components/Tabs',
-  component: TabsComponent,
+  component: Tabs,
   args: {
     className: 'bg-white rounded-lg dark:bg-gray-800 dark:text-white',
   },
@@ -22,7 +22,7 @@ export default {
 } as Meta;
 
 export const Default = (args: TabsProps): JSX.Element => (
-  <Tabs.Group {...args}>
+  <Tabs {...args}>
     <Tabs.Item title="Profile">Profile content</Tabs.Item>
     <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
     <Tabs.Item title="Settings">Settings content</Tabs.Item>
@@ -30,11 +30,11 @@ export const Default = (args: TabsProps): JSX.Element => (
     <Tabs.Item disabled title="Disabled">
       Disabled content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 );
 
 export const WithUnderline = (args: TabsProps): JSX.Element => (
-  <Tabs.Group {...args}>
+  <Tabs {...args}>
     <Tabs.Item title="Profile">Profile content</Tabs.Item>
     <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
     <Tabs.Item title="Settings">Settings content</Tabs.Item>
@@ -42,7 +42,7 @@ export const WithUnderline = (args: TabsProps): JSX.Element => (
     <Tabs.Item disabled title="Disabled">
       Disabled content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 );
 WithUnderline.args = {
   style: 'underline',
@@ -50,7 +50,7 @@ WithUnderline.args = {
 WithUnderline.storyName = 'With underline';
 
 export const WithIcons = (args: TabsProps): JSX.Element => (
-  <Tabs.Group {...args}>
+  <Tabs {...args}>
     <Tabs.Item title="Profile" icon={HiUserCircle}>
       Profile content
     </Tabs.Item>
@@ -66,7 +66,7 @@ export const WithIcons = (args: TabsProps): JSX.Element => (
     <Tabs.Item disabled={true} title="Disabled">
       Disabled content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 );
 WithIcons.args = {
   style: 'underline',
@@ -74,7 +74,7 @@ WithIcons.args = {
 WithIcons.storyName = 'With icons';
 
 export const Pills = (args: TabsProps): JSX.Element => (
-  <Tabs.Group {...args}>
+  <Tabs {...args}>
     <Tabs.Item title="Profile">Profile content</Tabs.Item>
     <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
     <Tabs.Item title="Settings">Settings content</Tabs.Item>
@@ -82,14 +82,14 @@ export const Pills = (args: TabsProps): JSX.Element => (
     <Tabs.Item disabled title="Disabled">
       Disabled content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 );
 Pills.args = {
   style: 'pills',
 };
 
 export const FullWidth = (args: TabsProps): JSX.Element => (
-  <Tabs.Group {...args}>
+  <Tabs {...args}>
     <Tabs.Item title="Profile">Profile content</Tabs.Item>
     <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
     <Tabs.Item title="Settings">Settings content</Tabs.Item>
@@ -97,7 +97,7 @@ export const FullWidth = (args: TabsProps): JSX.Element => (
     <Tabs.Item disabled title="Disabled">
       Disabled content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 );
 FullWidth.args = {
   style: 'fullWidth',

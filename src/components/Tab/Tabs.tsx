@@ -64,7 +64,7 @@ export interface TabsRef {
   setActiveTab: (activeTab: number) => void;
 }
 
-export const TabsComponent = forwardRef<TabsRef, TabsProps>(
+const TabsComponent = forwardRef<TabsRef, TabsProps>(
   (
     { children, className, onActiveTabChange, style = 'default', theme: customTheme = {}, ...props },
     ref: ForwardedRef<TabsRef>,
@@ -179,5 +179,8 @@ export const TabsComponent = forwardRef<TabsRef, TabsProps>(
   },
 );
 
-TabsComponent.displayName = 'Tabs.Group';
-export const Tabs = { Group: TabsComponent, Item: TabItem };
+TabsComponent.displayName = 'Tabs';
+
+export const Tabs = Object.assign(TabsComponent, {
+  Item: TabItem,
+});

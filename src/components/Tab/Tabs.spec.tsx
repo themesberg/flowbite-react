@@ -155,7 +155,7 @@ interface TestTabsProps {
 
 // eslint-disable-next-line react/display-name
 const TestTabs = forwardRef<TabsRef, TestTabsProps>(({ onActiveTabChange }, ref) => (
-  <Tabs.Group aria-label="Test tabs" onActiveTabChange={onActiveTabChange} ref={ref}>
+  <Tabs aria-label="Test tabs" onActiveTabChange={onActiveTabChange} ref={ref}>
     <Tabs.Item title="Profile" icon={HiUserCircle}>
       Profile content
     </Tabs.Item>
@@ -171,22 +171,22 @@ const TestTabs = forwardRef<TabsRef, TestTabsProps>(({ onActiveTabChange }, ref)
     <Tabs.Item disabled title="Disabled">
       Disabled content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 ));
 
 // eslint-disable-next-line react/display-name
 const TestConditionalTabs = forwardRef<TabsRef, TestTabsProps>(({ condition }) => (
-  <Tabs.Group aria-label="Test tabs">
+  <Tabs aria-label="Test tabs">
     {condition && (
       <Tabs.Item title="Profile" icon={HiUserCircle}>
         Profile content
       </Tabs.Item>
     )}
-  </Tabs.Group>
+  </Tabs>
 ));
 
 const TestTabsDifferentActiveItem: FC = () => (
-  <Tabs.Group aria-label="Test tabs">
+  <Tabs aria-label="Test tabs">
     <Tabs.Item title="Profile" icon={HiUserCircle}>
       Profile content
     </Tabs.Item>
@@ -202,11 +202,11 @@ const TestTabsDifferentActiveItem: FC = () => (
     <Tabs.Item disabled title="Disabled">
       Disabled content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 );
 
 const TestTabsLastActiveItem: FC = () => (
-  <Tabs.Group aria-label="Test tabs">
+  <Tabs aria-label="Test tabs">
     <Tabs.Item title="Profile" icon={HiUserCircle}>
       Profile content
     </Tabs.Item>
@@ -222,7 +222,7 @@ const TestTabsLastActiveItem: FC = () => (
     <Tabs.Item active title="Still working">
       Completely functional content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 );
 
 const tabs = () => screen.queryAllByRole('tab');
