@@ -7,9 +7,9 @@ import type { DeepPartial } from '../../types';
 import type { FlowbiteSizes } from '../Flowbite';
 
 export interface FlowbiteFloatingLabelTheme {
-  input: any;
-  label: any;
-  helperText: any;
+  input: any; // eslint-disable-line
+  label: any; // eslint-disable-line
+  helperText: any; // eslint-disable-line
 }
 
 export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
