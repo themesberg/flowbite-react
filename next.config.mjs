@@ -3,8 +3,8 @@ import TerserPlugin from 'terser-webpack-plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ['mdx', 'tsx'],
   reactStrictMode: true,
+  swcMinify: true,
   webpack(config) {
     // Retain React FC display names and anonymous function bodies for docs
     config.optimization.minimizer = [
