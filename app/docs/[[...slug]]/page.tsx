@@ -1,6 +1,7 @@
 import { allDocs } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import { Mdx } from '~/app/components/mdx';
 
 interface Props {
@@ -35,5 +36,9 @@ export default function DocPage({ params }: Props) {
 
   if (!doc) notFound();
 
-  return <Mdx code={doc.body.code} />;
+  return (
+    <DocsContentLayout title={doc.title} description={doc.description}>
+      <Mdx code={doc.body.code} />
+    </DocsContentLayout>
+  );
 }
