@@ -1,0 +1,123 @@
+---
+title: React Badge - Flowbite'
+description: Get started with the badge component to add labels or counters inside paragraphs, buttons, and inputs based on multiple colors and sizes from React and Tailwind CSS
+---
+
+import { HiCheck, HiClock } from 'react-icons/hi';
+import { CodePreview } from '~/app/components/code-preview';
+import { Badge, theme } from '~/src';
+
+The badge component can be used to show text, labels, and counters inside a small box or circle element which can be placed inside paragraphs, buttons, dropdowns, menu items, and more.
+
+You can choose from multiple examples of badges based on the color, size, and icon and even use it as a link component by leveraging the properties from React and classes from Tailwind CSS.
+
+To start using the badge component you need to import it from `flowbite-react`:
+
+```jsx
+'use client';
+
+import { Badge } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## Default badges
+
+Here's a list of default `<Badge>` component examples where you can use the `color` property to change the color of the badge based on contextual colors such as info, gray, success, and more.
+
+<CodePreview title="Default badges" className="flex flex-wrap gap-2">
+  <Badge color="info">Default</Badge>
+  <Badge color="gray">Dark</Badge>
+  <Badge color="failure">Failure</Badge>
+  <Badge color="success">Success</Badge>
+  <Badge color="warning">Warning</Badge>
+  <Badge color="indigo">Indigo</Badge>
+  <Badge color="purple">Purple</Badge>
+  <Badge color="pink">Pink</Badge>
+</CodePreview>
+
+## Badge as link
+
+Use the badge as a link component by adding the `href` property and passing the URL as a value.
+
+<CodePreview title="Badge as link" className="flex flex-wrap gap-2">
+  <Badge href="/badges">Default</Badge>
+  <Badge size="sm" href="/badges">
+    Default
+  </Badge>
+</CodePreview>
+
+## Badge with icon
+
+Add an icon to the badge by using the `icon` property and pass the icon component as a value. This can be used to show the status of a task or a notification often used for admin dashboards and user feeds.
+
+<CodePreview
+  importExternal="import { HiCheck, HiClock } from 'react-icons/hi';"
+  title="Badge with icon"
+  className="flex flex-wrap gap-2"
+>
+  <Badge icon={HiCheck}>2 minutes ago</Badge>
+  <Badge color="gray" icon={HiClock}>
+    3 days ago
+  </Badge>
+</CodePreview>
+
+## Badge with icon only
+
+An alternative style for the badge component is by only showing an icon without any text. You can do this by removing the children from the component and only using the `icon` property.
+
+<CodePreview
+  importExternal="import { HiCheck } from 'react-icons/hi';"
+  title="Badge with icon only"
+  className="flex flex-wrap gap-2"
+>
+  <Badge icon={HiCheck} />
+  <Badge color="gray" icon={HiCheck} />
+  <Badge size="sm" icon={HiCheck} />
+  <Badge color="gray" size="sm" icon={HiCheck} />
+</CodePreview>
+
+## Sizes
+
+Update the size of the badge component by using the `size` property and passing the size as a value.
+
+You can choose from `xs` and `sm` sizes.
+
+<CodePreview title="Large badges" className="flex flex-wrap gap-2">
+  <Badge color="info" size="sm">
+    Default
+  </Badge>
+  <Badge color="gray" size="sm">
+    Dark
+  </Badge>
+  <Badge color="failure" size="sm">
+    Failure
+  </Badge>
+  <Badge color="success" size="sm">
+    Success
+  </Badge>
+  <Badge color="warning" size="sm">
+    Warning
+  </Badge>
+  <Badge color="indigo" size="sm">
+    Indigo
+  </Badge>
+  <Badge color="purple" size="sm">
+    Purple
+  </Badge>
+  <Badge color="pink" size="sm">
+    Pink
+  </Badge>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.badge, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Badge](https://flowbite.com/docs/components/badge/)

@@ -1,3 +1,5 @@
+'use client';
+
 import { usePathname } from 'next/navigation';
 import type { FC } from 'react';
 import { useEffect } from 'react';

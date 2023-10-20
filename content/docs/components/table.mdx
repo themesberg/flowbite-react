@@ -1,0 +1,297 @@
+---
+title: React Tables - Flowbite'
+description: Get started with the table component to show data such as text, numbers, images, and links using a structured set of data based on rows and columns based on React
+---
+
+import { CodePreview } from '~/app/components/code-preview';
+import { Checkbox, Table, theme } from '~/src';
+
+The table component is an important UI component that you can use to effectively show complex amounts of data in the form of numbers, text, images, buttons, and links inside a structured layout of rows and columns.
+
+Use the custom React components from Flowbite and the API reference of props to customize the table layout and content and the utility classes from Tailwind CSS to update the styles.
+
+Start using the table component by importing it from the `flowbite-react` library:
+
+```jsx
+'use client';
+
+import { Table } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## Default table
+
+Use this example to show a responsive table component with table head and body featuring cells and rows on multiple levels by using the `<Table>` React component and the children components such as `<Table.Head>`, `<Table.Body>`, `<Table.Row>` and `<Table.Cell>`.
+
+<CodePreview title="Default table">
+  <Table>
+    <Table.Head>
+      <Table.HeadCell>Product name</Table.HeadCell>
+      <Table.HeadCell>Color</Table.HeadCell>
+      <Table.HeadCell>Category</Table.HeadCell>
+      <Table.HeadCell>Price</Table.HeadCell>
+      <Table.HeadCell>
+        <span className="sr-only">Edit</span>
+      </Table.HeadCell>
+    </Table.Head>
+    <Table.Body className="divide-y">
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          {'Apple MacBook Pro 17"'}
+        </Table.Cell>
+        <Table.Cell>Sliver</Table.Cell>
+        <Table.Cell>Laptop</Table.Cell>
+        <Table.Cell>$2999</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          Microsoft Surface Pro
+        </Table.Cell>
+        <Table.Cell>White</Table.Cell>
+        <Table.Cell>Laptop PC</Table.Cell>
+        <Table.Cell>$1999</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">Magic Mouse 2</Table.Cell>
+        <Table.Cell>Black</Table.Cell>
+        <Table.Cell>Accessories</Table.Cell>
+        <Table.Cell>$99</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+</CodePreview>
+
+## Striped rows
+
+Use the `striped` React prop on the `<Table>` component to alternate the background of every second row of the table to increase contrast and readability.
+
+<CodePreview title="Striped rows">
+  <Table striped>
+    <Table.Head>
+      <Table.HeadCell>Product name</Table.HeadCell>
+      <Table.HeadCell>Color</Table.HeadCell>
+      <Table.HeadCell>Category</Table.HeadCell>
+      <Table.HeadCell>Price</Table.HeadCell>
+      <Table.HeadCell>
+        <span className="sr-only">Edit</span>
+      </Table.HeadCell>
+    </Table.Head>
+    <Table.Body className="divide-y">
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          {'Apple MacBook Pro 17"'}
+        </Table.Cell>
+        <Table.Cell>Sliver</Table.Cell>
+        <Table.Cell>Laptop</Table.Cell>
+        <Table.Cell>$2999</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          Microsoft Surface Pro
+        </Table.Cell>
+        <Table.Cell>White</Table.Cell>
+        <Table.Cell>Laptop PC</Table.Cell>
+        <Table.Cell>$1999</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">Magic Mouse 2</Table.Cell>
+        <Table.Cell>Black</Table.Cell>
+        <Table.Cell>Accessories</Table.Cell>
+        <Table.Cell>$99</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          Google Pixel Phone
+        </Table.Cell>
+        <Table.Cell>Gray</Table.Cell>
+        <Table.Cell>Phone</Table.Cell>
+        <Table.Cell>$799</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">Apple Watch 5</Table.Cell>
+        <Table.Cell>Red</Table.Cell>
+        <Table.Cell>Wearables</Table.Cell>
+        <Table.Cell>$999</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+</CodePreview>
+
+## Table hover state
+
+Add the `hoverable` prop to the `<Table>` React component to show a hover effect when moving the mouse over a table row. This also helps with readability.
+
+<CodePreview title="Hover state">
+  <Table hoverable>
+    <Table.Head>
+      <Table.HeadCell>Product name</Table.HeadCell>
+      <Table.HeadCell>Color</Table.HeadCell>
+      <Table.HeadCell>Category</Table.HeadCell>
+      <Table.HeadCell>Price</Table.HeadCell>
+      <Table.HeadCell>
+        <span className="sr-only">Edit</span>
+      </Table.HeadCell>
+    </Table.Head>
+    <Table.Body className="divide-y">
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          {'Apple MacBook Pro 17"'}
+        </Table.Cell>
+        <Table.Cell>Sliver</Table.Cell>
+        <Table.Cell>Laptop</Table.Cell>
+        <Table.Cell>$2999</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          Microsoft Surface Pro
+        </Table.Cell>
+        <Table.Cell>White</Table.Cell>
+        <Table.Cell>Laptop PC</Table.Cell>
+        <Table.Cell>$1999</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">Magic Mouse 2</Table.Cell>
+        <Table.Cell>Black</Table.Cell>
+        <Table.Cell>Accessories</Table.Cell>
+        <Table.Cell>$99</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+</CodePreview>
+
+## Table with checkboxes
+
+Use this example to show multiple checkbox form elements for each table row that you can use when performing bulk actions.
+
+<CodePreview importFlowbiteReact="Checkbox, Table" title="Checkbox">
+  <Table hoverable>
+    <Table.Head>
+      <Table.HeadCell className="p-4">
+        <Checkbox />
+      </Table.HeadCell>
+      <Table.HeadCell>Product name</Table.HeadCell>
+      <Table.HeadCell>Color</Table.HeadCell>
+      <Table.HeadCell>Category</Table.HeadCell>
+      <Table.HeadCell>Price</Table.HeadCell>
+      <Table.HeadCell>
+        <span className="sr-only">Edit</span>
+      </Table.HeadCell>
+    </Table.Head>
+    <Table.Body className="divide-y">
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="p-4">
+          <Checkbox />
+        </Table.Cell>
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          {'Apple MacBook Pro 17"'}
+        </Table.Cell>
+        <Table.Cell>Sliver</Table.Cell>
+        <Table.Cell>Laptop</Table.Cell>
+        <Table.Cell>$2999</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="p-4">
+          <Checkbox />
+        </Table.Cell>
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+          Microsoft Surface Pro
+        </Table.Cell>
+        <Table.Cell>White</Table.Cell>
+        <Table.Cell>Laptop PC</Table.Cell>
+        <Table.Cell>$1999</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <Table.Cell className="p-4">
+          <Checkbox />
+        </Table.Cell>
+        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">Magic Mouse 2</Table.Cell>
+        <Table.Cell>Black</Table.Cell>
+        <Table.Cell>Accessories</Table.Cell>
+        <Table.Cell>$99</Table.Cell>
+        <Table.Cell>
+          <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            Edit
+          </a>
+        </Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.table, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Table](https://flowbite.com/docs/components/tables/)

@@ -1,0 +1,95 @@
+---
+title: React Spinner (Loader) - Flowbite'
+description: Indicate a loading status when fetching data by using the spinner component built with React and animated with Tailwind CSS based on multiple colors and sizes
+---
+
+import { CodePreview } from '~/app/components/code-preview';
+import { Button, Spinner, theme } from '~/src';
+
+The spinner component should be used to indicate a loading status of the content that you're fetching from your database and you can choose from multiple styles, colors, sizes, and animations based on React and Tailwind CSS.
+
+Import the spinner component from Flowbite React to start using it in your project:
+
+```jsx
+'use client';
+
+import { Spinner } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## Default spinner
+
+Use the default spinner element by adding the `<Spinner>` React component inside your code and integrate the `aria-label` attribute to allow screen readers parse the component for accessibility.
+
+<CodePreview title="Default spinner">
+  <Spinner aria-label="Default status example" />
+</CodePreview>
+
+## Spinner colors
+
+Update the colors of the loading spinner by using the `color` React prop.
+
+<CodePreview title="Colors" className="flex flex-wrap gap-2">
+  <Spinner color="info" aria-label="Info spinner example" />
+  <Spinner color="success" aria-label="Success spinner example" />
+  <Spinner color="failure" aria-label="Failure spinner example" />
+  <Spinner color="warning" aria-label="Warning spinner example" />
+  <Spinner color="pink" aria-label="Pink spinner example" />
+  <Spinner color="purple" aria-label="Purple spinner example" />
+</CodePreview>
+
+## Sizing options
+
+Make the size of the spinner smaller or larger by using the `size` prop. Choose from `xs`, `sm`, `md`, `lg`, or `xl`.
+
+<CodePreview title="Sizing" className="flex flex-wrap items-center gap-2">
+  <Spinner aria-label="Extra small spinner example" size="xs" />
+  <Spinner aria-label="Small spinner example" size="sm" />
+  <Spinner aria-label="Medium sized spinner example" size="md" />
+  <Spinner aria-label="Large spinner example" size="lg" />
+  <Spinner aria-label="Extra large spinner example" size="xl" />
+</CodePreview>
+
+## Alignment
+
+Align the spinner to the left, center or right side of the page by using the utility classes from Tailwind CSS.
+
+<CodePreview importFlowbiteReact="Spinner" title="Alignment" className="flex flex-col gap-2">
+  <div className="text-left">
+    <Spinner aria-label="Left-aligned spinner example" />
+  </div>
+  <div className="text-center">
+    <Spinner aria-label="Center-aligned spinner example" />
+  </div>
+  <div className="text-right">
+    <Spinner aria-label="Right-aligned spinner example" />
+  </div>
+</CodePreview>
+
+## Loading buttons
+
+Add the loading spinner inside a button to indicate fetching status directly inside form submission buttons.
+
+<CodePreview importFlowbiteReact="Button, Spinner" title="Buttons" className="flex flex-row gap-3">
+  <Button>
+    <Spinner aria-label="Spinner button example" size="sm" />
+    <span className="pl-3">Loading...</span>
+  </Button>
+  <Button color="gray">
+    <Spinner aria-label="Alternate spinner button example" size="sm" />
+    <span className="pl-3">Loading...</span>
+  </Button>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.spinner, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Spinner](https://flowbite.com/docs/components/spinner/)

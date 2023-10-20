@@ -1,0 +1,377 @@
+---
+title: React Sidebar - Flowbite'
+description: Use the sidebar component to show a list of menu items including multi-level dropdown menu on the left or right side of your page for admin dashboards and applications
+---
+
+import { BiBuoy } from 'react-icons/bi';
+import {
+  HiOutlineMinusSm,
+  HiOutlinePlusSm,
+  HiArrowSmRight,
+  HiChartPie,
+  HiInbox,
+  HiShoppingBag,
+  HiTable,
+  HiUser,
+  HiViewBoards,
+} from 'react-icons/hi';
+import { twMerge } from 'tailwind-merge';
+import { CodePreview } from '~/app/components/code-preview';
+import { Badge, Sidebar, theme } from '~/src';
+
+The sidebar component is an UI component that you can use for the navigation mechanism in your website or application that you would position to the left or right side of your page.
+
+A sidebar can include content such as menu list items, dropdown, user profile information, CTA buttons, and more - you can use the custom props from React to customize the options and the utility classes from Tailwind CSS to update the styles.
+
+To start using the sidebar component make sure you import it from the Flowbite React library:
+
+```jsx
+'use client';
+
+import { Sidebar } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## Default sidebar
+
+Use this example to show a list of navigation menu items by adding `<Sidebar.Item>` children components inside the `<Sidebar>` component and pass the `href` prop to set a URL and `icon` to apply any icons from the `react-icons` icon library.
+
+You can also add a text label as a badge by using the `label` prop from React and the `labelColor` to set the color of the label background.
+
+<CodePreview
+  importExternal="import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';"
+  title="Default sidebar"
+  className="w-fit"
+>
+  <Sidebar aria-label="Default sidebar example">
+    <Sidebar.Items>
+      <Sidebar.ItemGroup>
+        <Sidebar.Item href="#" icon={HiChartPie}>
+          Dashboard
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiViewBoards} label="Pro" labelColor="dark">
+          Kanban
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiInbox} label="3">
+          Inbox
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiUser}>
+          Users
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiShoppingBag}>
+          Products
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          Sign In
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiTable}>
+          Sign Up
+        </Sidebar.Item>
+      </Sidebar.ItemGroup>
+    </Sidebar.Items>
+  </Sidebar>
+</CodePreview>
+
+## Multi-level dropdown
+
+Use this example to learn how to stack multiple sidebar menu items inside one dropdown menu by using the `<Sidebar.Collapse>` component.
+
+<CodePreview
+  importExternal="import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';"
+  title="Multi-level dropdown"
+  className="w-fit"
+>
+  <Sidebar aria-label="Sidebar with multi-level dropdown example">
+    <Sidebar.Items>
+      <Sidebar.ItemGroup>
+        <Sidebar.Item href="#" icon={HiChartPie}>
+          Dashboard
+        </Sidebar.Item>
+        <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
+          <Sidebar.Item href="#">Products</Sidebar.Item>
+          <Sidebar.Item href="#">Sales</Sidebar.Item>
+          <Sidebar.Item href="#">Refunds</Sidebar.Item>
+          <Sidebar.Item href="#">Shipping</Sidebar.Item>
+        </Sidebar.Collapse>
+        <Sidebar.Item href="#" icon={HiInbox}>
+          Inbox
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiUser}>
+          Users
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiShoppingBag}>
+          Products
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          Sign In
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiTable}>
+          Sign Up
+        </Sidebar.Item>
+      </Sidebar.ItemGroup>
+    </Sidebar.Items>
+  </Sidebar>
+</CodePreview>
+
+## Multi-level dropdown with custom chevron
+
+The `chevronIcon` property offers customization for the chevron icon. Alternatively, for more complex scenarios, the `renderChevronIcon` option can be utilized. Here's an example:
+
+<CodePreview
+  importExternal="import { twMerge } from 'tailwind-merge';
+    import { HiOutlineMinusSm, HiOutlinePlusSm, HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';"
+  title="Multi-level dropdown custom chevronIcon"
+  importFlowbiteReact="Sidebar"
+  className="w-fit"
+  code={`<Sidebar aria-label="Sidebar with multi-level dropdown example">
+      <Sidebar.Items>
+        <Sidebar.ItemGroup>
+          <Sidebar.Item href="#" icon={HiChartPie}>
+            Dashboard
+          </Sidebar.Item>
+          <Sidebar.Collapse 
+            icon={HiShoppingBag} 
+            label="E-commerce"
+            renderChevronIcon={(theme, open) => {
+              const IconComponent =  open ? HiOutlineMinusSm : HiOutlinePlusSm; 
+              return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />
+            }}
+          >
+            <Sidebar.Item href="#">Products</Sidebar.Item>
+            <Sidebar.Item href="#">Sales</Sidebar.Item>
+            <Sidebar.Item href="#">Refunds</Sidebar.Item>
+            <Sidebar.Item href="#">Shipping</Sidebar.Item>
+          </Sidebar.Collapse>
+          <Sidebar.Item href="#" icon={HiInbox}>
+            Inbox
+          </Sidebar.Item>
+          <Sidebar.Item href="#" icon={HiUser}>
+            Users
+          </Sidebar.Item>
+          <Sidebar.Item href="#" icon={HiShoppingBag}>
+            Products
+          </Sidebar.Item>
+          <Sidebar.Item href="#" icon={HiArrowSmRight}>
+            Sign In
+          </Sidebar.Item>
+          <Sidebar.Item href="#" icon={HiTable}>
+            Sign Up
+          </Sidebar.Item>
+        </Sidebar.ItemGroup>
+      </Sidebar.Items>
+    </Sidebar>`}
+>
+  <Sidebar aria-label="Sidebar with multi-level dropdown example">
+    <Sidebar.Items>
+      <Sidebar.ItemGroup>
+        <Sidebar.Item href="#" icon={HiChartPie}>
+          Dashboard
+        </Sidebar.Item>
+        <Sidebar.Collapse
+          icon={HiShoppingBag}
+          label="E-commerce"
+          renderChevronIcon={(theme, open) => {
+            const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
+            return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+          }}
+        >
+          <Sidebar.Item href="#">Products</Sidebar.Item>
+          <Sidebar.Item href="#">Sales</Sidebar.Item>
+          <Sidebar.Item href="#">Refunds</Sidebar.Item>
+          <Sidebar.Item href="#">Shipping</Sidebar.Item>
+        </Sidebar.Collapse>
+        <Sidebar.Item href="#" icon={HiInbox}>
+          Inbox
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiUser}>
+          Users
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiShoppingBag}>
+          Products
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          Sign In
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiTable}>
+          Sign Up
+        </Sidebar.Item>
+      </Sidebar.ItemGroup>
+    </Sidebar.Items>
+  </Sidebar>
+</CodePreview>
+
+## Content separator
+
+Use this example to separate content inside of the sidebar using a horizontal line.
+
+<CodePreview
+  importExternal="import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';"
+  title="Content separator"
+  className="w-fit"
+>
+  <Sidebar aria-label="Sidebar with content separator example">
+    <Sidebar.Items>
+      <Sidebar.ItemGroup>
+        <Sidebar.Item href="#" icon={HiChartPie}>
+          Dashboard
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiViewBoards}>
+          Kanban
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiInbox}>
+          Inbox
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiUser}>
+          Users
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiShoppingBag}>
+          Products
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          Sign In
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiTable}>
+          Sign Up
+        </Sidebar.Item>
+      </Sidebar.ItemGroup>
+      <Sidebar.ItemGroup>
+        <Sidebar.Item href="#" icon={HiChartPie}>
+          Upgrade to Pro
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiViewBoards}>
+          Documentation
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={BiBuoy}>
+          Help
+        </Sidebar.Item>
+      </Sidebar.ItemGroup>
+    </Sidebar.Items>
+  </Sidebar>
+</CodePreview>
+
+## Sidebar with button
+
+This example can be used to show a call to action button inside the sidebar next to the menu items.
+
+<CodePreview
+  importExternal="import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';"
+  importFlowbiteReact="Badge, Sidebar"
+  title="CTA button"
+  className="w-fit"
+>
+  <Sidebar aria-label="Sidebar with call to action button example">
+    <Sidebar.Items>
+      <Sidebar.ItemGroup>
+        <Sidebar.Item href="#" icon={HiChartPie}>
+          Dashboard
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiViewBoards}>
+          Kanban
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiInbox}>
+          Inbox
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiUser}>
+          Users
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiShoppingBag}>
+          Products
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          Sign In
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiTable}>
+          Sign Up
+        </Sidebar.Item>
+      </Sidebar.ItemGroup>
+    </Sidebar.Items>
+    <Sidebar.CTA>
+      <div className="mb-3 flex items-center">
+        <Badge color="warning">Beta</Badge>
+        <button
+          aria-label="Close"
+          className="-m-1.5 ml-auto inline-flex h-6 w-6 rounded-lg bg-gray-100 p-1 text-cyan-900 hover:bg-gray-200 focus:ring-2 focus:ring-gray-400 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-600"
+          type="button"
+        >
+          <svg
+            aria-hidden
+            className="h-4 w-4"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
+      <div className="mb-3 text-sm text-cyan-900 dark:text-gray-400">
+        Preview the new Flowbite dashboard navigation! You can turn the new navigation off for a limited time in your
+        profile.
+      </div>
+      <a
+        className="text-sm text-cyan-900 underline hover:text-cyan-800 dark:text-gray-400 dark:hover:text-gray-300"
+        href="#"
+      >
+        Turn new navigation off
+      </a>
+    </Sidebar.CTA>
+  </Sidebar>
+</CodePreview>
+
+## Sidebar with logo
+
+Feature the branded logo of your company on the top side of the sidebar using this example.
+
+<CodePreview
+  importExternal="import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';"
+  title="Logo branding"
+  className="w-fit"
+>
+  <Sidebar aria-label="Sidebar with logo branding example">
+    <Sidebar.Logo href="#" img="/favicon.svg" imgAlt="Flowbite logo">
+      Flowbite
+    </Sidebar.Logo>
+    <Sidebar.Items>
+      <Sidebar.ItemGroup>
+        <Sidebar.Item href="#" icon={HiChartPie}>
+          Dashboard
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiViewBoards}>
+          Kanban
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiInbox}>
+          Inbox
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiUser}>
+          Users
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiShoppingBag}>
+          Products
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          Sign In
+        </Sidebar.Item>
+        <Sidebar.Item href="#" icon={HiTable}>
+          Sign Up
+        </Sidebar.Item>
+      </Sidebar.ItemGroup>
+    </Sidebar.Items>
+  </Sidebar>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.sidebar, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Sidebar](https://flowbite.com/docs/components/sidebar/)

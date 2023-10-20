@@ -1,0 +1,148 @@
+---
+title: React Carousel - Flowbite'
+description: Get started with the carousel component to showcase images and content and slide through them using custom controls, intervals, and indicators with React and Tailwind CSS
+---
+
+import { CodePreview } from '~/app/components/code-preview';
+import { Carousel, theme } from '~/src';
+
+Use the responsive carousel component to allow users to slide through multiple items and navigate between them using the control buttons and indicators.
+
+Choose from multiple examples and options to update the intervals, make the carousel static and set custom control button and indicator by configuring React and the utility classes from Tailwind CSS.
+
+To start using the carousel component you first need to import it from Flowbite React:
+
+```jsx
+'use client';
+
+import { Carousel } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## Default carousel
+
+Use this example by adding a series of images inside of the `<Carousel>` component.
+
+<CodePreview title="Default carousel" className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+  <Carousel>
+    <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+  </Carousel>
+</CodePreview>
+
+## Static carousel
+
+Pass the `slide` prop to the carousel component to make it static and disable the automatic sliding functionality. This does not disable the control or indicator buttons.
+
+<CodePreview title="Static carousel" className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+  <Carousel slide={false}>
+    <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+  </Carousel>
+</CodePreview>
+
+## Sliding interval
+
+Use the `slideInterval` prop to set the interval between slides in milliseconds. The default value is `3000`.
+
+<CodePreview title="Sliding interval" className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+  <Carousel slideInterval={5000}>
+    <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+  </Carousel>
+</CodePreview>
+
+## Custom controls
+
+Use the `leftControl` and `rightControl` props to set custom control buttons.
+
+<CodePreview title="Custom controls" className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+  <Carousel leftControl="left" rightControl="right">
+    <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+  </Carousel>
+</CodePreview>
+
+## Indicators
+
+Add custom indicators or disable them by passing the `indicators` prop to the `<Carousel>` component.
+
+<CodePreview title="Indicators" className="grid h-56 grid-cols-2 gap-4 sm:h-64 xl:h-80 2xl:h-96">
+  <Carousel>
+    <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+  </Carousel>
+  <Carousel indicators={false}>
+    <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+  </Carousel>
+</CodePreview>
+
+## Pause On Hover
+
+To conditionally pause the carousel on mouse hover (desktop), or touch and hold (mobile), you can use the `pauseOnHover` property on the `<Carousel>` component. Default value is `false`.
+
+<CodePreview title="Pause on hovering" className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+  <Carousel pauseOnHover>
+    <img src="https://flowbite.com/docs/images/carousel/carousel-1.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-2.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
+    <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+  </Carousel>
+</CodePreview>
+
+## Slider content
+
+Instead of images you can also use any type of markup and content inside the carousel such as simple text.
+
+<CodePreview title="Slide as anything" className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+  <Carousel>
+    <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 1</div>
+    <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 2</div>
+    <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 3</div>
+  </Carousel>
+</CodePreview>
+
+## Handle `onSlideChanged` event
+
+To hook events to slide changed you can use `onSlideChange` property.
+
+<CodePreview title="Slide change event" className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+  <Carousel onSlideChange={(slideIdx) => console.log(slideIdx)}>
+    <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 1</div>
+    <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 2</div>
+    <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">Slide 3</div>
+  </Carousel>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.carousel, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Carousel](https://flowbite.com/docs/components/carousel/)

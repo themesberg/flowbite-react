@@ -1,0 +1,124 @@
+---
+title: React Tooltip - Flowbite'
+description: Use the tooltip component to show a descriptive text when hovering over an element such as a button and customize the content and style with React and Tailwind CSS
+---
+
+import { CodePreview } from '~/app/components/code-preview';
+import { Button, Tooltip, theme } from '~/src';
+
+Use the tooltip component from Flowbite React to indicate helpful information when hovering over an element such as a button or link to improve the UI/UX of your website.
+
+Choose from multiple options, layouts, styles, colors, and animations from the examples below and customize the content and options using the custom React API props and the utility classes from Tailwind CSS.
+
+Before using the tooltip component, make sure to import the component in your React project:
+
+```jsx
+'use client';
+
+import { Tooltip } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## Default tooltip
+
+Wrap the trigger component with the `<Tooltip>` component and pass the tooltip content to the `content` prop of the `<Tooltip>` component.
+
+This will render the tooltip whenever you hover over the trigger component.
+
+<CodePreview importFlowbiteReact="Button, Tooltip" title="Default tooltip">
+  <Tooltip content="Tooltip content">
+    <Button>Default tooltip</Button>
+  </Tooltip>
+</CodePreview>
+
+## Tooltip styles
+
+Use the `style` prop to change the style of the tooltip. The default style is `light` and you can also use `dark`.
+
+<CodePreview importFlowbiteReact="Button, Tooltip" title="Tooltip styles" className="flex gap-2">
+  <Tooltip content="Tooltip content" style="light">
+    <Button>Light tooltip</Button>
+  </Tooltip>
+  <Tooltip content="Tooltip content" style="dark">
+    <Button>Dark tooltip</Button>
+  </Tooltip>
+</CodePreview>
+
+## Placement
+
+Update the placement of the tooltip using the `placement` prop. The default placement is `top` and you can also use `right`, `bottom`, and `left`.
+
+<CodePreview importFlowbiteReact="Button, Tooltip" title="Placement" className="flex gap-2">
+  <Tooltip content="Tooltip content" placement="top">
+    <Button>Tooltip top</Button>
+  </Tooltip>
+  <Tooltip content="Tooltip content" placement="right">
+    <Button>Tooltip right</Button>
+  </Tooltip>
+  <Tooltip content="Tooltip content" placement="bottom">
+    <Button>Tooltip bottom</Button>
+  </Tooltip>
+  <Tooltip content="Tooltip content" placement="left">
+    <Button>Tooltip left</Button>
+  </Tooltip>
+</CodePreview>
+
+## Trigger type
+
+Use the `trigger` prop to change the trigger type of the tooltip if you want to show the tooltip when clicking on the trigger element instead of hovering over it.
+
+The default trigger type is `hover` and you can also use `click`.
+
+<CodePreview importFlowbiteReact="Button, Tooltip" title="Triggering" className="flex gap-2">
+  <Tooltip content="Tooltip content" trigger="hover">
+    <Button>Tooltip hover</Button>
+  </Tooltip>
+  <Tooltip content="Tooltip content" trigger="click">
+    <Button>Tooltip click</Button>
+  </Tooltip>
+</CodePreview>
+
+## Animation
+
+Update the default animation of the tooltip component by using the `animation` prop. The default animation is `duration-300` and you can also use `duration-150`, `duration-500`, and `duration-1000`.
+
+<CodePreview importFlowbiteReact="Button, Tooltip" title="Animation" className="flex flex-wrap gap-2">
+  <Tooltip content="Tooltip content" animation={false}>
+    <Button>Not animated tooltip</Button>
+  </Tooltip>
+  <Tooltip content="Tooltip content" animation="duration-150">
+    <Button>Fast animation</Button>
+  </Tooltip>
+  <Tooltip content="Tooltip content" animation="duration-300">
+    <Button>Normal speed animation</Button>
+  </Tooltip>
+  <Tooltip content="Tooltip content" animation="duration-500">
+    <Button>Slow animation</Button>
+  </Tooltip>
+  <Tooltip content="Tooltip content" animation="duration-1000">
+    <Button>Really slow animation</Button>
+  </Tooltip>
+</CodePreview>
+
+## Disable arrow
+
+You can disable the arrow of the tooltip component by passing the `arrow` prop with a value of `false`.
+
+<CodePreview importFlowbiteReact="Button, Tooltip" title="Disable arrow">
+  <Tooltip content="Tooltip content" arrow={false}>
+    <Button>Default tooltip</Button>
+  </Tooltip>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.tooltip, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite Tooltip](https://flowbite.com/docs/components/tooltips/)
