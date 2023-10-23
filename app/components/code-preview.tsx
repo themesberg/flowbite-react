@@ -9,7 +9,7 @@ import reactElementToJSXString from 'react-element-to-jsx-string';
 import { BsCheckLg, BsFillClipboardFill } from 'react-icons/bs';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import { Tooltip } from '~/src';
+import { Button, Tooltip } from '~/src';
 
 const reactElementToJSXStringOptions: Options = {
   filterProps: ['key', 'ref'],
@@ -111,6 +111,14 @@ export default function ${titleCaseToUpperCamelCase(title)}() {${
               </li>
             </ul>
             <div className="flex justify-end">
+              <Button.Group className="h-[34px]">
+                <Button size="sm" color="gray">
+                  client
+                </Button>
+                <Button size="sm" color="gray">
+                  server
+                </Button>
+              </Button.Group>
               <CopyToClipboardButton isJustCopied={isJustCopied} onClick={() => copyToClipboard(code)} />
             </div>
           </div>
