@@ -17,6 +17,7 @@ export interface CodeItem {
   fileName: string;
   code: string | CodeVariant[];
   language: Language;
+  // TODO: rethink this
   githubSlug: string;
   component: React.ReactNode;
 }
