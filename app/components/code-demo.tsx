@@ -42,10 +42,12 @@ export function CodeDemo({ code }: CodeDemoProps) {
     setTimeout(() => setJustCopied(false), 2000);
   }
 
-  function getCurrent(code: CodeDemoProps['code'], index: number) {
-    const computed = Array.isArray(code) ? code : [code];
+  function getComputed(code: CodeDemoProps['code']) {
+    return Array.isArray(code) ? code : [code];
+  }
 
-    return computed[index];
+  function getCurrent(code: CodeDemoProps['code'], index: number) {
+    return getComputed(code)[index];
   }
 
   function getCodeValue(item: CodeItem) {
@@ -67,14 +69,20 @@ export function CodeDemo({ code }: CodeDemoProps) {
       </div>
       <CodePreview isDarkMode={isDarkMode}>{current.component}</CodePreview>
       <div className="code-syntax-wrapper">
-        <div className="code-syntax relative border-x border-y border-gray-200 dark:border-gray-600">
+        <div className="code-syntax relative border-x border-y border-gray-200 pb-[41px] dark:border-gray-600">
           <div className="grid w-full grid-cols-2 rounded-t-md border-b border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
             <ul className="flex text-center text-sm font-medium text-gray-500 dark:text-gray-400">
-              <li>
-                <span className="inline-block w-full border-r border-gray-200 bg-gray-100 p-2 px-3 text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
-                  {current.fileName + `.${current.language}`}
-                </span>
-              </li>
+              {getComputed(code).map((item, index, items) => (
+                <li
+                  key={item.fileName}
+                  onClick={() => setIndex(index)}
+                  className={twMerge(items.length > 1 && 'cursor-pointer')}
+                >
+                  <span className="inline-block w-full border-r border-gray-200 bg-gray-100 p-2 px-3 text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                    {item.fileName + `.${item.language}`}
+                  </span>
+                </li>
+              ))}
             </ul>
             <div className="flex justify-end">
               <CopyToClipboardButton
@@ -84,7 +92,7 @@ export function CodeDemo({ code }: CodeDemoProps) {
             </div>
           </div>
           <div className={twMerge('!overflow-y-hidden', !isExpanded && 'max-h-72')}>
-            <CodeHighlight code={getCodeValue(current)} language={current.language} />
+            <CodeHighlight className="!mb-0 !rounded-none" code={getCodeValue(current)} language={current.language} />
           </div>
           {/* TODO: show only when height > X */}
           <CollapseExpandButton isExpanded={isExpanded} onClick={() => setExpanded(!isExpanded)} />
