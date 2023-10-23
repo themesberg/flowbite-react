@@ -5,24 +5,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { NextPage } from 'next/types';
-import prism from 'prismjs';
-import 'prismjs/components/prism-bash';
-import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-tsx';
-import 'prismjs/components/prism-typescript';
 import type { FC, PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import '~/app/docs.css';
-import '~/app/style.css';
 import { Accordion, Badge, Flowbite, Footer, Navbar, Sidebar } from '~/src';
 import { isClient } from '~/src/helpers/is-client';
 import { Banner } from '../components/banner';
 import { CarbonAds } from '../components/carbon-ads';
 import { NavbarIcons, NavbarLinks } from '../components/navbar';
+
+import '~/app/docs.css';
 
 interface DocsLayoutState {
   isCollapsed: boolean;
@@ -39,10 +32,8 @@ const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
     setCollapsed,
   };
 
+  // TODO: revisit - extract from `page.doc` OR move logic to `DocsContentLayout`
   useEffect(() => {
-    // syntax-highlight on each re-render, since user may interact with the page
-    prism.highlightAll();
-
     // update client-rendered Table of Contents on each new page
     const toc = document.querySelector('#table-of-contents + ul')?.innerHTML;
     setTableOfContents(toc ?? '');

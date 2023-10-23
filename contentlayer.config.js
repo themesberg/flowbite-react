@@ -1,3 +1,4 @@
+import rehypePrism from '@mapbox/rehype-prism';
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
@@ -29,7 +30,7 @@ export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Doc],
   mdx: {
-    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings],
     remarkPlugins: [remarkToc],
+    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypePrism],
   },
 });

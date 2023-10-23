@@ -64,6 +64,7 @@
   },
   "devDependencies": {
     "@docsearch/react": "^3.5.1",
+    "@mapbox/rehype-prism": "^0.8.0",
     "@storybook/addon-a11y": "^7.0.23",
     "@storybook/addon-actions": "^7.0.23",
     "@storybook/addon-docs": "^7.0.23",
