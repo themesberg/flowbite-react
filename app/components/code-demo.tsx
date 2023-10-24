@@ -29,7 +29,7 @@ interface CodeDemoProps {
 }
 
 export function CodeDemo({ code }: CodeDemoProps) {
-  const [index, setIndex] = useState(0);
+  const [tabIndex, setTabIndex] = useState(0);
   const [variant, setVariant] = useState(0);
 
   const [isDarkMode, setDarkMode] = useState(false);
@@ -54,7 +54,7 @@ export function CodeDemo({ code }: CodeDemoProps) {
     return typeof item.code === 'string' ? item.code : item.code[variant].value;
   }
 
-  const current = getCurrent(code, index);
+  const current = getCurrent(code, tabIndex);
 
   // TODO: cleanup
   return (
@@ -70,18 +70,8 @@ export function CodeDemo({ code }: CodeDemoProps) {
       <CodePreview isDarkMode={isDarkMode}>{current.component}</CodePreview>
       <div className="code-syntax-wrapper">
         <div className="code-syntax relative border-x border-y border-gray-200 pb-[41px] dark:border-gray-600">
-          <div className="grid w-full grid-cols-2 rounded-t-md border-b border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
-            <ul className="flex text-center text-sm font-medium text-gray-500 dark:text-gray-400">
-              {getComputed(code).map((item, index) => (
-                <li key={item.fileName}>
-                  <button type="button" onClick={() => setIndex(index)}>
-                    <span className="inline-block w-full border-r border-gray-200 bg-gray-100 p-2 px-3 text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
-                      {item.fileName + `.${item.language}`}
-                    </span>
-                  </button>
-                </li>
-              ))}
-            </ul>
+          <div className="flex w-full rounded-t-md border-b border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
+            <Tabs tabIndex={tabIndex} items={getComputed(code)} onSelect={setTabIndex} />
             <div className="flex justify-end">
               <CopyToClipboardButton
                 isJustCopied={isJustCopied}
@@ -97,6 +87,27 @@ export function CodeDemo({ code }: CodeDemoProps) {
         </div>
       </div>
     </div>
+  );
+}
+
+function Tabs({ tabIndex, items, onSelect }: { tabIndex: number; items: CodeItem[]; onSelect(index: number): void }) {
+  return (
+    <ul className="flex flex-1 text-center text-sm font-medium text-gray-500 dark:text-gray-400">
+      {items.map((item, index) => (
+        <li key={item.fileName}>
+          <button type="button" onClick={() => onSelect(index)}>
+            <span
+              className={twMerge(
+                'inline-block w-full border-r border-gray-200 bg-gray-100 p-2 px-3 dark:border-gray-600 dark:bg-gray-800',
+                index === tabIndex ? 'text-gray-800 dark:text-white' : 'hover:text-gray-600 hover:dark:text-gray-300',
+              )}
+            >
+              {item.fileName + `.${item.language}`}
+            </span>
+          </button>
+        </li>
+      ))}
+    </ul>
   );
 }
 
