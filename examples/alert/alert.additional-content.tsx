@@ -83,6 +83,6 @@ export const additionalContent: CodeData = {
   fileName: 'AdditionalContent',
   code,
   language: 'tsx',
-  githubSlug: '',
+  githubSlug: 'components/alert.md#additional-content',
   component: <Component />,
 };

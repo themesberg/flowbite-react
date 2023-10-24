@@ -29,6 +29,6 @@ export const root: CodeData = {
   fileName: 'Alert',
   code,
   language: 'tsx',
-  githubSlug: '',
+  githubSlug: 'components/alert.md#default-alert',
   component: <Component />,
 };

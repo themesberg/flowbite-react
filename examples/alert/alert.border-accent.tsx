@@ -29,6 +29,6 @@ export const borderAccent: CodeData = {
   fileName: 'BorderAccent',
   code,
   language: 'tsx',
-  githubSlug: '',
+  githubSlug: 'components/alert.md#border-accent',
   component: <Component />,
 };

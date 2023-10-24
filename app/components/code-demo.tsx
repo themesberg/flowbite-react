@@ -30,7 +30,7 @@ interface CodeDemoProps {
 
 export function CodeDemo({ code }: CodeDemoProps) {
   const [tabIndex, setTabIndex] = useState(0);
-  const [variant, setVariant] = useState(0);
+  const [variant] = useState(0);
 
   const [isDarkMode, setDarkMode] = useState(false);
   const [isExpanded, setExpanded] = useState(false);
@@ -61,7 +61,7 @@ export function CodeDemo({ code }: CodeDemoProps) {
     <div className="code-example mt-8">
       <div className="w-full rounded-t-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
         <div className="grid grid-cols-2">
-          <EditOnGithubButton githubPage={current.githubSlug} />
+          <EditOnGithubButton githubSlug={current.githubSlug} />
           <div className="ml-auto">
             <ToggleDarkModeButton isDarkMode={isDarkMode} onClick={() => setDarkMode(!isDarkMode)} />
           </div>
@@ -125,9 +125,9 @@ function CodePreview({ isDarkMode, children }: PropsWithChildren<{ isDarkMode: b
   );
 }
 
-function EditOnGithubButton({ githubPage }: { githubPage: string }) {
-  const githubSrcHref = 'https://github.com/themesberg/flowbite-react/blob/main/src/components/';
-  const href = `${githubSrcHref}${githubPage}.tsx`;
+function EditOnGithubButton({ githubSlug }: { githubSlug: string }) {
+  const githubSrcHref = 'https://github.com/themesberg/flowbite-react/blob/main/content/docs/';
+  const href = `${githubSrcHref}${githubSlug}`;
 
   return (
     <a
