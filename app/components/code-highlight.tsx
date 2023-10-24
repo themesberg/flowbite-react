@@ -9,7 +9,7 @@ import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-tsx';
 import 'prismjs/components/prism-typescript';
 
-const languages = ['bash', 'css', 'javascript', 'json', 'jsx', 'tsx', 'typescript'] as const;
+const languages = ['bash', 'css', 'javascript', 'js', 'json', 'jsx', 'ts', 'tsx', 'typescript'] as const;
 
 export type Language = (typeof languages)[number];
 
