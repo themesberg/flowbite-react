@@ -95,7 +95,7 @@ function Tabs({ tabIndex, items, onSelect }: { tabIndex: number; items: CodeItem
     <ul className="flex flex-1 text-center text-sm font-medium text-gray-500 dark:text-gray-400">
       {items.map((item, index) => (
         <li key={item.fileName}>
-          <button type="button" onClick={() => onSelect(index)}>
+          <button type="button" role="tab" onClick={() => onSelect(index)}>
             <span
               className={twMerge(
                 'inline-block w-full border-r border-gray-200 bg-gray-100 p-2 px-3 dark:border-gray-600 dark:bg-gray-800',
