@@ -1,12 +1,12 @@
 'use client';
 
-import type { ComponentProps } from 'react';
-import { PropsWithChildren, useState } from 'react';
+import type { ComponentProps, PropsWithChildren } from 'react';
+import { useState } from 'react';
 import { BsCheckLg, BsFillClipboardFill } from 'react-icons/bs';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
 import { Tooltip } from '~/src';
-import { CodeHighlight, Language } from './code-highlight';
+import { CodeHighlight, type Language } from './code-highlight';
 
 interface CodeVariant {
   name: string;
@@ -72,15 +72,13 @@ export function CodeDemo({ code }: CodeDemoProps) {
         <div className="code-syntax relative border-x border-y border-gray-200 pb-[41px] dark:border-gray-600">
           <div className="grid w-full grid-cols-2 rounded-t-md border-b border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
             <ul className="flex text-center text-sm font-medium text-gray-500 dark:text-gray-400">
-              {getComputed(code).map((item, index, items) => (
-                <li
-                  key={item.fileName}
-                  onClick={() => setIndex(index)}
-                  className={twMerge(items.length > 1 && 'cursor-pointer')}
-                >
-                  <span className="inline-block w-full border-r border-gray-200 bg-gray-100 p-2 px-3 text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
-                    {item.fileName + `.${item.language}`}
-                  </span>
+              {getComputed(code).map((item, index) => (
+                <li key={item.fileName}>
+                  <button type="button" onClick={() => setIndex(index)}>
+                    <span className="inline-block w-full border-r border-gray-200 bg-gray-100 p-2 px-3 text-gray-800 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
+                      {item.fileName + `.${item.language}`}
+                    </span>
+                  </button>
                 </li>
               ))}
             </ul>

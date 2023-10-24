@@ -1,6 +1,6 @@
 'use client';
 
-import { CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/app/components/code-demo';
 import { Alert } from '~/src';
 
 const code = `

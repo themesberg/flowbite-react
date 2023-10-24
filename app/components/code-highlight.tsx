@@ -22,7 +22,7 @@ export function CodeHighlight({ code, language, className, ...props }: CodeHighl
   const highlightedCode = Prism.highlight(code.trim(), Prism.languages[language], language);
 
   return (
-    <pre className={twMerge(`language-${language}`, className)} tabIndex={0} {...props}>
+    <pre className={twMerge(`language-${language}`, className)} {...props}>
       <code className={`language-${language}`} dangerouslySetInnerHTML={{ __html: highlightedCode }} />
     </pre>
   );
