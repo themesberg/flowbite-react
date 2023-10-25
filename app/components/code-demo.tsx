@@ -107,13 +107,15 @@ export function CodeDemo({ data }: CodeDemoProps) {
           <div className="flex w-full rounded-t-md border-b border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
             <Tabs tabIndex={tabIndex} items={codeItems} onSelect={setTabIndex} />
             {/* TODO: style */}
-            <Select className="mr-2" onChange={(e) => handleSelectVariant(e.target.value)}>
-              {variants.map((v) => (
-                <option key={v} value={v} selected={v === variant}>
-                  {v}
-                </option>
-              ))}
-            </Select>
+            {variants.length > 0 && (
+              <Select className="mr-2" onChange={(e) => handleSelectVariant(e.target.value)}>
+                {variants.map((v) => (
+                  <option key={v} value={v} selected={v === variant}>
+                    {v}
+                  </option>
+                ))}
+              </Select>
+            )}
             <div className="flex justify-end">
               <CopyToClipboardButton isJustCopied={isJustCopied} onClick={() => copyToClipboard(current.code)} />
             </div>
