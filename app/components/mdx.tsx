@@ -35,9 +35,10 @@ const components: MDXComponents = {
   Example: ({ name }: { name: string }) => {
     function pick<T extends object>(obj: T, path: string): CodeData | undefined {
       if (!path) return obj as CodeData;
-      if (!(path in obj)) return;
       const properties = path.split('.');
-      return pick(obj[properties.shift() as keyof typeof obj], properties.join('.'));
+      const key = properties.shift() as keyof typeof obj;
+      if (!(key in obj)) return;
+      return pick(obj[key], properties.join('.'));
     }
 
     const codeData = pick(examples, name);
