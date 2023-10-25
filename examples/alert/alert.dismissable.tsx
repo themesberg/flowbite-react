@@ -28,9 +28,11 @@ function Component() {
 }
 
 export const dismissable: CodeData = {
-  fileName: 'DismissableAlert',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'DismissableAlert',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/alert.md#dismissable-alert',
   component: <Component />,
 };

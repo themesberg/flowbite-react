@@ -30,9 +30,11 @@ function Component() {
 }
 
 export const sizes: CodeData = {
-  fileName: 'AvatarSizes',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'AvatarSizes',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/avatar.md#sizes',
   component: <Component />,
 };

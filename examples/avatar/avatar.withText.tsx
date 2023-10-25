@@ -28,9 +28,11 @@ function Component() {
 }
 
 export const withText: CodeData = {
-  fileName: 'AvatarWithText',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'AvatarWithText',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/avatar.md#avatar-with-text',
   component: <Component />,
 };

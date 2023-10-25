@@ -45,7 +45,7 @@ const components: MDXComponents = {
 
     if (!codeData) return <>{`<Example name="${name}" />`}</>;
 
-    return <CodeDemo code={codeData} />;
+    return <CodeDemo data={codeData} />;
   },
   Theme: ({ name }: { name: keyof typeof theme }) => {
     if (!(name in theme)) return <>{`<Theme name="${name}" />`}</>;

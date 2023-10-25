@@ -64,9 +64,11 @@ function Component() {
 }
 
 export const overrideImage: CodeData = {
-  fileName: 'AvatarOverrideImage',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'AvatarOverrideImage',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/avatar.md#override-image-element',
   component: <Component />,
 };

@@ -28,9 +28,11 @@ function Component() {
 }
 
 export const dotIndicator: CodeData = {
-  fileName: 'AvatarDotIndicator',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'AvatarDotIndicator',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/avatar.md#dot-indicator',
   component: <Component />,
 };

@@ -26,9 +26,11 @@ function Component() {
 }
 
 export const root: CodeData = {
-  fileName: 'Alert',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'Alert',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/alert.md#default-alert',
   component: <Component />,
 };

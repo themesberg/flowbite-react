@@ -80,9 +80,11 @@ function ExampleAdditionalContent() {
 }
 
 export const additionalContent: CodeData = {
-  fileName: 'AdditionalContent',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'AdditionalContent',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/alert.md#additional-content',
   component: <Component />,
 };

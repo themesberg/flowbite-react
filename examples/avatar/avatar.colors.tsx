@@ -48,9 +48,11 @@ function Component() {
 }
 
 export const colors: CodeData = {
-  fileName: 'AvatarColors',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'AvatarColors',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/avatar.md#colors',
   component: <Component />,
 };

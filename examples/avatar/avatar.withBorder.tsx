@@ -24,9 +24,11 @@ function Component() {
 }
 
 export const withBorder: CodeData = {
-  fileName: 'AvatarWithBorder',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'AvatarWithBorder',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/avatar.md#avatar-with-border',
   component: <Component />,
 };

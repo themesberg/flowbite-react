@@ -24,9 +24,11 @@ function Component() {
 }
 
 export const placeholder: CodeData = {
-  fileName: 'AvatarPlaceholder',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'AvatarPlaceholder',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/avatar.md#avatar-placeholder',
   component: <Component />,
 };

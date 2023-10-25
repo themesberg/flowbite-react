@@ -24,9 +24,11 @@ function Component() {
 }
 
 export const placeholderInitials: CodeData = {
-  fileName: 'AvatarPlaceholderInitials',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'AvatarPlaceholderInitials',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/avatar.md#placeholder-initials',
   component: <Component />,
 };

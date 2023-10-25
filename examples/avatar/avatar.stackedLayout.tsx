@@ -48,9 +48,11 @@ function Component() {
 }
 
 export const stackedLayout: CodeData = {
-  fileName: 'AvatarStackedLayout',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'AvatarStackedLayout',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/avatar.md#stacked-layout',
   component: <Component />,
 };

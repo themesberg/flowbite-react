@@ -68,9 +68,11 @@ function ExampleAdditionalContent() {
 }
 
 export const allOptions: CodeData = {
-  fileName: 'AllOptions',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'AllOptions',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/alert.md#all-options',
   component: <Component />,
 };

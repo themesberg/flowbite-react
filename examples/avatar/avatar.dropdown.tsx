@@ -71,19 +71,19 @@ function Component() {
   );
 }
 
-export const dropdown: CodeData = [
-  {
-    fileName: 'client',
-    code,
-    language: 'tsx',
-    githubSlug: 'components/avatar.md#avatar-dropdown',
-    component: <Component />,
-  },
-  {
-    fileName: 'server',
-    code: codeRSC,
-    language: 'tsx',
-    githubSlug: 'components/avatar.md#avatar-dropdown',
-    component: <Component />,
-  },
-];
+export const dropdown: CodeData = {
+  code: [
+    {
+      fileName: 'client',
+      language: 'tsx',
+      code,
+    },
+    {
+      fileName: 'server',
+      language: 'tsx',
+      code: codeRSC,
+    },
+  ],
+  githubSlug: 'components/avatar.md#avatar-dropdown',
+  component: <Component />,
+};

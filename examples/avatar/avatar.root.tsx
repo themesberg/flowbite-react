@@ -24,9 +24,11 @@ function Component() {
 }
 
 export const root: CodeData = {
-  fileName: 'Avatar',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'Avatar',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/avatar.md#default-avatar',
   component: <Component />,
 };

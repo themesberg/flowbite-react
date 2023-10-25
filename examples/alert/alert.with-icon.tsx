@@ -28,9 +28,11 @@ function Component() {
 }
 
 export const withIcon: CodeData = {
-  fileName: 'AlertWithIcon',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'AlertWithIcon',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/alert.md#alert-with-icon',
   component: <Component />,
 };

@@ -26,9 +26,11 @@ function Component() {
 }
 
 export const borderAccent: CodeData = {
-  fileName: 'BorderAccent',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'BorderAccent',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/alert.md#border-accent',
   component: <Component />,
 };

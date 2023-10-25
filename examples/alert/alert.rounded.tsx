@@ -26,9 +26,11 @@ function Component() {
 }
 
 export const rounded: CodeData = {
-  fileName: 'RoundedAlert',
-  code,
-  language: 'tsx',
+  code: {
+    fileName: 'RoundedAlert',
+    language: 'tsx',
+    code,
+  },
   githubSlug: 'components/alert.md#rounded-alert',
   component: <Component />,
 };

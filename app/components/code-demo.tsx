@@ -13,22 +13,25 @@ interface CodeVariant {
   value: string;
 }
 
-export interface CodeItem {
+interface CodeItem {
   fileName: string;
-  code: string | CodeVariant[];
   language: Language;
-  // TODO: rethink this
+  code: string | CodeVariant[];
+}
+
+type Code = CodeItem | CodeItem[];
+
+export interface CodeData {
+  code: Code;
   githubSlug: string;
   component: React.ReactNode;
 }
 
-export type CodeData = CodeItem | CodeItem[];
-
 interface CodeDemoProps {
-  code: CodeData;
+  data: CodeData;
 }
 
-export function CodeDemo({ code }: CodeDemoProps) {
+export function CodeDemo({ data }: CodeDemoProps) {
   const [tabIndex, setTabIndex] = useState(0);
   const [variant] = useState(0);
 
@@ -42,36 +45,36 @@ export function CodeDemo({ code }: CodeDemoProps) {
     setTimeout(() => setJustCopied(false), 2000);
   }
 
-  function getComputed(code: CodeDemoProps['code']) {
+  function getComputed(code: Code): CodeItem[] {
     return Array.isArray(code) ? code : [code];
   }
 
-  function getCurrent(code: CodeDemoProps['code'], index: number) {
+  function getCurrent(code: Code, index: number): CodeItem {
     return getComputed(code)[index];
   }
 
-  function getCodeValue(item: CodeItem) {
+  function getCodeValue(item: CodeItem): string {
     return typeof item.code === 'string' ? item.code : item.code[variant].value;
   }
 
-  const current = getCurrent(code, tabIndex);
+  const current = getCurrent(data.code, tabIndex);
 
   // TODO: cleanup
   return (
     <div className="code-example mt-8">
       <div className="w-full rounded-t-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
         <div className="grid grid-cols-2">
-          <EditOnGithubButton githubSlug={current.githubSlug} />
+          <EditOnGithubButton githubSlug={data.githubSlug} />
           <div className="ml-auto">
             <ToggleDarkModeButton isDarkMode={isDarkMode} onClick={() => setDarkMode(!isDarkMode)} />
           </div>
         </div>
       </div>
-      <CodePreview isDarkMode={isDarkMode}>{current.component}</CodePreview>
+      <CodePreview isDarkMode={isDarkMode}>{data.component}</CodePreview>
       <div className="code-syntax-wrapper">
         <div className="code-syntax relative border-x border-y border-gray-200 pb-[41px] dark:border-gray-600">
           <div className="flex w-full rounded-t-md border-b border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
-            <Tabs tabIndex={tabIndex} items={getComputed(code)} onSelect={setTabIndex} />
+            <Tabs tabIndex={tabIndex} items={getComputed(data.code)} onSelect={setTabIndex} />
             <div className="flex justify-end">
               <CopyToClipboardButton
                 isJustCopied={isJustCopied}
