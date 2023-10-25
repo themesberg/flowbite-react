@@ -64,6 +64,7 @@ function Component() {
 }
 
 export const overrideImage: CodeData = {
+  type: 'single',
   code: {
     fileName: 'AvatarOverrideImage',
     language: 'tsx',

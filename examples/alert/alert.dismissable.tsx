@@ -28,6 +28,7 @@ function Component() {
 }
 
 export const dismissable: CodeData = {
+  type: 'single',
   code: {
     fileName: 'DismissableAlert',
     language: 'tsx',

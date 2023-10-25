@@ -30,6 +30,7 @@ function Component() {
 }
 
 export const sizes: CodeData = {
+  type: 'single',
   code: {
     fileName: 'AvatarSizes',
     language: 'tsx',

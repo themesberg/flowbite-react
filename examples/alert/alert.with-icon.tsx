@@ -28,6 +28,7 @@ function Component() {
 }
 
 export const withIcon: CodeData = {
+  type: 'single',
   code: {
     fileName: 'AlertWithIcon',
     language: 'tsx',

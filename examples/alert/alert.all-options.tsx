@@ -68,6 +68,7 @@ function ExampleAdditionalContent() {
 }
 
 export const allOptions: CodeData = {
+  type: 'single',
   code: {
     fileName: 'AllOptions',
     language: 'tsx',

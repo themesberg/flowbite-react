@@ -24,6 +24,7 @@ function Component() {
 }
 
 export const root: CodeData = {
+  type: 'single',
   code: {
     fileName: 'Avatar',
     language: 'tsx',

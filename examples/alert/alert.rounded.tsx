@@ -26,6 +26,7 @@ function Component() {
 }
 
 export const rounded: CodeData = {
+  type: 'single',
   code: {
     fileName: 'RoundedAlert',
     language: 'tsx',

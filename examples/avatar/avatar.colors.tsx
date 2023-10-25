@@ -48,6 +48,7 @@ function Component() {
 }
 
 export const colors: CodeData = {
+  type: 'single',
   code: {
     fileName: 'AvatarColors',
     language: 'tsx',

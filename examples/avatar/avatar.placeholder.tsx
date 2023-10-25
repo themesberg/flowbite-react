@@ -24,6 +24,7 @@ function Component() {
 }
 
 export const placeholder: CodeData = {
+  type: 'single',
   code: {
     fileName: 'AvatarPlaceholder',
     language: 'tsx',

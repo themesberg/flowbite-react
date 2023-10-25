@@ -80,6 +80,7 @@ function ExampleAdditionalContent() {
 }
 
 export const additionalContent: CodeData = {
+  type: 'single',
   code: {
     fileName: 'AdditionalContent',
     language: 'tsx',

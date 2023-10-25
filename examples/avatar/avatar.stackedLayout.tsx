@@ -48,6 +48,7 @@ function Component() {
 }
 
 export const stackedLayout: CodeData = {
+  type: 'single',
   code: {
     fileName: 'AvatarStackedLayout',
     language: 'tsx',

@@ -72,6 +72,7 @@ function Component() {
 }
 
 export const dropdown: CodeData = {
+  type: 'single',
   code: [
     {
       fileName: 'client',

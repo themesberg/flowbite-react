@@ -26,6 +26,7 @@ function Component() {
 }
 
 export const borderAccent: CodeData = {
+  type: 'single',
   code: {
     fileName: 'BorderAccent',
     language: 'tsx',

@@ -28,6 +28,7 @@ function Component() {
 }
 
 export const dotIndicator: CodeData = {
+  type: 'single',
   code: {
     fileName: 'AvatarDotIndicator',
     language: 'tsx',

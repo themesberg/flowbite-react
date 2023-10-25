@@ -28,6 +28,7 @@ function Component() {
 }
 
 export const withText: CodeData = {
+  type: 'single',
   code: {
     fileName: 'AvatarWithText',
     language: 'tsx',

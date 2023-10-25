@@ -24,6 +24,7 @@ function Component() {
 }
 
 export const withBorder: CodeData = {
+  type: 'single',
   code: {
     fileName: 'AvatarWithBorder',
     language: 'tsx',
