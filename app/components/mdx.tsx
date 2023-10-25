@@ -33,21 +33,24 @@ const components: MDXComponents = {
     </h3>
   ),
   Example: ({ name }: { name: string }) => {
-    function pick<T>(obj: T, path: string): CodeData | undefined {
+    function pick<T extends object>(obj: T, path: string): CodeData | undefined {
       if (!path) return obj as CodeData;
+      if (!(path in obj)) return;
       const properties = path.split('.');
       return pick(obj[properties.shift() as keyof typeof obj], properties.join('.'));
     }
 
     const codeData = pick(examples, name);
 
-    if (!codeData) return null;
+    if (!codeData) return <>{`<Example name="${name}" />`}</>;
 
     return <CodeDemo code={codeData} />;
   },
-  Theme: ({ name }: { name: keyof typeof theme }) => (
-    <CodeHighlight code={JSON.stringify(theme[name], null, 2)} language="json" />
-  ),
+  Theme: ({ name }: { name: keyof typeof theme }) => {
+    if (!(name in theme)) return <>{`<Theme name="${name}" />`}</>;
+
+    return <CodeHighlight code={JSON.stringify(theme[name], null, 2)} language="json" />;
+  },
 };
 
 export function Mdx({ code }: { code: string }) {
