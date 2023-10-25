@@ -8,24 +8,33 @@ import { twMerge } from 'tailwind-merge';
 import { Tooltip } from '~/src';
 import { CodeHighlight, type Language } from './code-highlight';
 
-interface CodeVariant {
-  name: string;
-  value: string;
+interface BaseCodeData<T extends 'single' | 'variant'> {
+  type: T;
+  githubSlug: string;
+  component: React.ReactNode;
+}
+
+interface VariantCodeData extends BaseCodeData<'variant'> {
+  // TODO: type safety against keyof `code`
+  variant: string;
+  code: CodeVariant;
+}
+
+interface SingleCodeData extends BaseCodeData<'single'> {
+  code: Code;
 }
 
 interface CodeItem {
   fileName: string;
   language: Language;
-  code: string | CodeVariant[];
+  code: string;
 }
 
+type Variant = string;
+type CodeVariant = Record<Variant, Code>;
 type Code = CodeItem | CodeItem[];
 
-export interface CodeData {
-  code: Code;
-  githubSlug: string;
-  component: React.ReactNode;
-}
+export type CodeData = SingleCodeData | VariantCodeData;
 
 interface CodeDemoProps {
   data: CodeData;
@@ -33,7 +42,7 @@ interface CodeDemoProps {
 
 export function CodeDemo({ data }: CodeDemoProps) {
   const [tabIndex, setTabIndex] = useState(0);
-  const [variant] = useState(0);
+  const [variant] = useState(getInitialVariant(data));
 
   const [isDarkMode, setDarkMode] = useState(false);
   const [isExpanded, setExpanded] = useState(false);
@@ -45,19 +54,29 @@ export function CodeDemo({ data }: CodeDemoProps) {
     setTimeout(() => setJustCopied(false), 2000);
   }
 
-  function getComputed(code: Code): CodeItem[] {
+  function getInitialVariant(data: CodeData): Variant {
+    if (data.type === 'variant') return data.variant;
+
+    return '';
+  }
+
+  function getCode(data: CodeData, variant: string): Code {
+    if (data.type === 'variant') return data.code[variant];
+
+    return data.code;
+  }
+
+  function getCodeItems(code: Code): CodeItem[] {
     return Array.isArray(code) ? code : [code];
   }
 
-  function getCurrent(code: Code, index: number): CodeItem {
-    return getComputed(code)[index];
+  function getCurrent(items: CodeItem[], index: number): CodeItem {
+    return items[index];
   }
 
-  function getCodeValue(item: CodeItem): string {
-    return typeof item.code === 'string' ? item.code : item.code[variant].value;
-  }
-
-  const current = getCurrent(data.code, tabIndex);
+  const code = getCode(data, variant);
+  const codeItems = getCodeItems(code);
+  const current = getCurrent(codeItems, tabIndex);
 
   // TODO: cleanup
   return (
@@ -74,16 +93,13 @@ export function CodeDemo({ data }: CodeDemoProps) {
       <div className="code-syntax-wrapper">
         <div className="code-syntax relative border-x border-y border-gray-200 pb-[41px] dark:border-gray-600">
           <div className="flex w-full rounded-t-md border-b border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
-            <Tabs tabIndex={tabIndex} items={getComputed(data.code)} onSelect={setTabIndex} />
+            <Tabs tabIndex={tabIndex} items={codeItems} onSelect={setTabIndex} />
             <div className="flex justify-end">
-              <CopyToClipboardButton
-                isJustCopied={isJustCopied}
-                onClick={() => copyToClipboard(getCodeValue(current))}
-              />
+              <CopyToClipboardButton isJustCopied={isJustCopied} onClick={() => copyToClipboard(current.code)} />
             </div>
           </div>
           <div className={twMerge('!overflow-y-hidden', !isExpanded && 'max-h-72')}>
-            <CodeHighlight className="!mb-0 !rounded-none" code={getCodeValue(current)} language={current.language} />
+            <CodeHighlight className="!mb-0 !rounded-none" code={current.code} language={current.language} />
           </div>
           {/* TODO: show only when height > X */}
           <CollapseExpandButton isExpanded={isExpanded} onClick={() => setExpanded(!isExpanded)} />
