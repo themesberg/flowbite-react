@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { BsCheckLg, BsFillClipboardFill } from 'react-icons/bs';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import { Tooltip } from '~/src';
+import { Select, Tooltip } from '~/src';
 import { CodeHighlight, type Language } from './code-highlight';
 
 interface BaseCodeData<T extends 'single' | 'variant'> {
@@ -42,7 +42,7 @@ interface CodeDemoProps {
 
 export function CodeDemo({ data }: CodeDemoProps) {
   const [tabIndex, setTabIndex] = useState(0);
-  const [variant] = useState(getInitialVariant(data));
+  const [variant, setVariant] = useState(getInitialVariant(data));
 
   const [isDarkMode, setDarkMode] = useState(false);
   const [isExpanded, setExpanded] = useState(false);
@@ -60,6 +60,12 @@ export function CodeDemo({ data }: CodeDemoProps) {
     return '';
   }
 
+  function getVariants(data: CodeData): Variant[] {
+    if (data.type === 'variant') return Object.keys(data.code);
+
+    return [];
+  }
+
   function getCode(data: CodeData, variant: string): Code {
     if (data.type === 'variant') return data.code[variant];
 
@@ -74,6 +80,12 @@ export function CodeDemo({ data }: CodeDemoProps) {
     return items[index];
   }
 
+  function handleSelectVariant(variant: string) {
+    setTabIndex(0);
+    setVariant(variant);
+  }
+
+  const variants = getVariants(data);
   const code = getCode(data, variant);
   const codeItems = getCodeItems(code);
   const current = getCurrent(codeItems, tabIndex);
@@ -94,6 +106,14 @@ export function CodeDemo({ data }: CodeDemoProps) {
         <div className="code-syntax relative border-x border-y border-gray-200 pb-[41px] dark:border-gray-600">
           <div className="flex w-full rounded-t-md border-b border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
             <Tabs tabIndex={tabIndex} items={codeItems} onSelect={setTabIndex} />
+            {/* TODO: style */}
+            <Select className="mr-2" onChange={(e) => handleSelectVariant(e.target.value)}>
+              {variants.map((v) => (
+                <option key={v} value={v} selected={v === variant}>
+                  {v}
+                </option>
+              ))}
+            </Select>
             <div className="flex justify-end">
               <CopyToClipboardButton isJustCopied={isJustCopied} onClick={() => copyToClipboard(current.code)} />
             </div>
