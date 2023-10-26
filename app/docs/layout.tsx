@@ -1,6 +1,5 @@
 'use client';
 
-import { DocSearch } from '@docsearch/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -9,12 +8,13 @@ import type { FC, PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import { Accordion, Badge, Flowbite, Navbar, Sidebar } from '~/src';
+import { Accordion, Badge, Navbar, Sidebar } from '~/src';
 import { isClient } from '~/src/helpers/is-client';
 import { Banner } from '../components/banner';
+import { DocSearchInput } from '../components/doc-search-input';
 import { NavbarIcons, NavbarLinks } from '../components/navbar';
 
-import '~/app/docs.css';
+import '~/styles/docs.css';
 
 interface DocsLayoutState {
   isCollapsed: boolean;
@@ -30,18 +30,16 @@ const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
   };
 
   return (
-    <Flowbite>
-      <div className="w-full min-w-0 flex-auto">
-        <div className="relative bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
-          <Banner />
-          <DocsNavbar {...state} />
-          <div className="lg:flex">
-            <DocsSidebar {...state} />
-            <div className="w-full">{children}</div>
-          </div>
+    <div className="w-full min-w-0 flex-auto">
+      <div className="relative bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
+        <Banner />
+        <DocsNavbar {...state} />
+        <div className="lg:flex">
+          <DocsSidebar {...state} />
+          <div className="w-full">{children}</div>
         </div>
       </div>
-    </Flowbite>
+    </div>
   );
 };
 
@@ -86,7 +84,7 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
           <span>Flowbite React</span>
         </Link>
         <div className="ml-4 hidden lg:flex">
-          <DocSearch appId="4ECQXWXLSO" indexName="flowbite-react" apiKey="9c32f687c9058e3d3f27adff654d48d9" />
+          <DocSearchInput />
         </div>
       </div>
       <div className="flex items-center">

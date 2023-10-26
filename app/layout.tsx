@@ -3,9 +3,7 @@ import type { Metadata, NextPage } from 'next/types';
 import type { FC, PropsWithChildren } from 'react';
 import { ThemeModeScript } from '~/src';
 
-import '@docsearch/css';
-import '~/app/doc-search.css';
-import '~/app/style.css';
+import '~/styles/globals.css';
 
 const interFont = InterFont({
   subsets: ['latin'],

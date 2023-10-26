@@ -1,10 +1,10 @@
-import { DocSearch } from '@docsearch/react';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { SiDiscord, SiStorybook } from 'react-icons/si';
 import { Badge, DarkThemeToggle, Tooltip } from '~/src';
 import pkg from './../../package.json' assert { type: 'json' };
+import { DocSearchInput } from './doc-search-input';
 
 export const NavbarLinks: FC = () => {
   return (
@@ -42,7 +42,7 @@ export const NavbarIcons: FC = () => {
   return (
     <div className="flex items-center gap-1">
       <div className="lg:hidden">
-        <DocSearch appId="4ECQXWXLSO" indexName="flowbite-react" apiKey="9c32f687c9058e3d3f27adff654d48d9" />
+        <DocSearchInput />
       </div>
       <a
         href="https://storybook.flowbite-react.com/"
