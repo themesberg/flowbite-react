@@ -22,7 +22,7 @@
       <img alt="Latest release" src="https://badge.fury.io/js/flowbite-react.svg">
     </a>
     <a href="https://flowbite.com/getting-started/license/">
-      <img src="https://img.shields.io/badge/license-MIT-blue" alt="Licenese">
+      <img src="https://img.shields.io/badge/license-MIT-blue" alt="License">
     </a>
   </p>
 </div>
@@ -143,15 +143,15 @@ export default function MyPage() {
 
 #### Next.js
 
-If you're using Next.js, you can follow the [Next.js install guide](/docs/getting-started/nextjs), which includes a [Next.js starter project](https://github.com/tulupinc/flowbite-next-starter) with Flowbite React already set up.
+If you're using Next.js, you can follow the [Next.js install guide](https://flowbite.com/docs/getting-started/next-js/), which includes a [Next.js starter project](https://github.com/tulupinc/flowbite-next-starter) with Flowbite React already set up.
 
 #### Dark mode
 
-If you want to add a dark mode switcher to your app, you can follow the [dark mode guide](/docs/customize/dark-mode).
+If you want to add a dark mode switcher to your app, you can follow the [dark mode guide](https://flowbite.com/docs/customize/dark-mode/).
 
 #### Customization
 
-If you want to customize Flowbite React component, you can follow the [theme guide](/docs/customize/theme).
+If you want to customize Flowbite React component, you can follow the [theme guide](https://flowbite.com/docs/customize/theming/).
 
 #### Contributing
 
