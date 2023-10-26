@@ -6,7 +6,6 @@ import Link from 'next/link';
 import type { FC } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { HiClipboardCopy, HiOutlineArrowRight } from 'react-icons/hi';
-import '~/app/style.css';
 import { Button, Flowbite, Footer, Navbar, TextInput, Tooltip } from '~/src';
 import { safeResJson } from '~/src/helpers/http';
 import { useThemeMode } from '~/src/helpers/use-theme-mode';

@@ -4,6 +4,7 @@ import type { FC, PropsWithChildren } from 'react';
 import { ThemeModeScript } from '~/src';
 
 import '@docsearch/css';
+import '~/app/doc-search.css';
 import '~/app/style.css';
 
 const interFont = InterFont({
