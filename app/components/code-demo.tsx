@@ -14,10 +14,9 @@ interface BaseCodeData<T extends 'single' | 'variant'> {
   component: React.ReactNode;
 }
 
-interface VariantCodeData extends BaseCodeData<'variant'> {
-  // TODO: type safety against keyof `code`
-  variant: string;
-  code: CodeVariant;
+interface VariantCodeData<V extends Variant> extends BaseCodeData<'variant'> {
+  variant: V;
+  code: CodeVariant<V>;
 }
 
 interface SingleCodeData extends BaseCodeData<'single'> {
@@ -31,10 +30,10 @@ interface CodeItem {
 }
 
 type Variant = string;
-type CodeVariant = Record<Variant, Code>;
+type CodeVariant<V extends Variant> = Record<V, Code>;
 type Code = CodeItem | [CodeItem, ...CodeItem[]];
 
-export type CodeData = SingleCodeData | VariantCodeData;
+export type CodeData<V extends Variant = Variant> = SingleCodeData | VariantCodeData<V>;
 
 interface CodeDemoProps {
   data: CodeData;
@@ -66,7 +65,7 @@ export function CodeDemo({ data }: CodeDemoProps) {
     return [];
   }
 
-  function getCode(data: CodeData, variant: string): Code {
+  function getCode(data: CodeData, variant: Variant): Code {
     if (data.type === 'variant') return data.code[variant];
 
     return data.code;
@@ -80,7 +79,7 @@ export function CodeDemo({ data }: CodeDemoProps) {
     return items[index];
   }
 
-  function handleSelectVariant(variant: string) {
+  function handleSelectVariant(variant: Variant) {
     setTabIndex(0);
     setVariant(variant);
   }
