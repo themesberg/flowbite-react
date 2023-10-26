@@ -1,2 +1,2 @@
 export * from './Breadcrumb';
-export type { BreadcrumbItemProps } from './BreadcrumbItem';
+export * from './BreadcrumbItem';
