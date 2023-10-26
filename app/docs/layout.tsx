@@ -11,7 +11,7 @@ import { twMerge } from 'tailwind-merge';
 import { Accordion, Badge, Navbar, Sidebar } from '~/src';
 import { isClient } from '~/src/helpers/is-client';
 import { Banner } from '../components/banner';
-import { DocSearchInput } from '../components/doc-search-input';
+import { DocSearchInput } from '../components/docsearch-input';
 import { NavbarIcons, NavbarLinks } from '../components/navbar';
 
 import '~/styles/docs.css';

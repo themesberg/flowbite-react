@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { Navbar } from '~/src';
-import { DocSearchInput } from '../doc-search-input';
+import { DocSearchInput } from '../docsearch-input';
 import { NavbarIcons, NavbarLinks } from '../navbar';
 
 export const HomeNavbar: FC = () => {
