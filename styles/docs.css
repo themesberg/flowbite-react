@@ -10,16 +10,8 @@
   @apply overflow-hidden;
 }
 
-#mainContent > #table-of-contents + ul + h2 {
+#mainContent > ul + h2 {
   @apply mt-0;
-}
-
-#mainContent > #table-of-contents {
-  @apply hidden;
-}
-
-#mainContent > #table-of-contents + ul {
-  @apply hidden;
 }
 
 #visible-table-of-contents {

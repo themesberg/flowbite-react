@@ -3,7 +3,6 @@ import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import toc from 'markdown-toc';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
-import remarkToc from 'remark-toc';
 
 export const Doc = defineDocumentType(() => ({
   name: 'Doc',
@@ -26,13 +25,7 @@ export const Doc = defineDocumentType(() => ({
     },
     toc: {
       type: 'markdown',
-      resolve: (doc) => {
-        function filterInlineToc(_, element) {
-          return element.slug !== 'table-of-contents';
-        }
-
-        return toc(doc.body.raw, { filter: filterInlineToc }).content;
-      },
+      resolve: (doc) => toc(doc.body.raw).content,
     },
   },
 }));
@@ -41,7 +34,6 @@ export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Doc],
   mdx: {
-    remarkPlugins: [remarkToc],
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypePrism],
   },
 });
