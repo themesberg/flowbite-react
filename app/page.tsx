@@ -11,7 +11,7 @@ import {
   ReactSection,
   SocialProofSection,
   TailwindSection,
-} from './components/landing';
+} from './components/homepage';
 
 export default function HomePageContent() {
   return (
