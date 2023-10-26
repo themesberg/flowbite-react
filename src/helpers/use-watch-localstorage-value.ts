@@ -19,5 +19,5 @@ export const useWatchLocalStorageValue = ({
   useEffect(() => {
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
-  });
+  }, []); // eslint-disable-line
 };
