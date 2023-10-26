@@ -4,12 +4,30 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
-import type { FlowbiteSizes } from '../Flowbite';
+import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite';
+
+export interface FlowbiteFloatingLabelHelperText extends Partial<FlowbiteColors> {
+  default: string
+  success: string
+  error: string
+}
 
 export interface FlowbiteFloatingLabelTheme {
-  input: any; // eslint-disable-line
-  label: any; // eslint-disable-line
-  helperText: any; // eslint-disable-line
+  input: {
+    [key: string]: {
+      [key: string]: {
+        [key: string]: string
+      }
+    }
+  };
+  label: {
+    [key: string]: {
+      [key: string]: {
+        [key: string]: string
+      }
+    }
+  };
+  helperText: FlowbiteFloatingLabelHelperText;
 }
 
 export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
