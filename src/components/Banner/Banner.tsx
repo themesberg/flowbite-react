@@ -1,9 +1,11 @@
-import type { ComponentProps, FC } from 'react';
-import { BannerCollapseButton } from './BannerCollapseButton';
+import React, { FC, ReactNode } from 'react';
+import PropTypes from 'prop-types';
 
-export type BannerComponentProps = ComponentProps<'div'>;
-
-const BannerComponent: FC<BannerComponentProps> = ({ children, ...props }) => {
+/**
+ * Banner component for displaying important information.
+ * @component
+ */
+const Banner: FC<BannerProps> = ({ children, ...props }) => {
   return (
     <div data-testid="flowbite-banner" role="banner" tabIndex={-1} {...props}>
       {children}
@@ -11,7 +13,23 @@ const BannerComponent: FC<BannerComponentProps> = ({ children, ...props }) => {
   );
 };
 
-BannerComponent.displayName = 'Banner';
-export const Banner = Object.assign(BannerComponent, {
-  CollapseButton: BannerCollapseButton,
-});
+/**
+ * PropTypes for Banner component.
+ */
+Banner.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+/**
+ * Display name for Banner component.
+ */
+Banner.displayName = 'Banner';
+
+/**
+ * Props for the Banner component.
+ */
+interface BannerProps {
+  children: ReactNode;
+}
+
+export default Banner;
