@@ -244,6 +244,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/accordionmd#default-accordion',
+  githubSlug: 'components/accordion.md#default-accordion',
   component: <Component />,
 };

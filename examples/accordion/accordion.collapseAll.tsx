@@ -244,6 +244,6 @@ export const collapseAll: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/accordionmd#collapse-all',
+  githubSlug: 'components/accordion.md#collapse-all',
   component: <Component />,
 };

@@ -5,3 +5,4 @@ export * as badge from './badge';
 export * as breadcrumb from './breadcrumb';
 export * as footer from './footer';
 export * as navbar from './navbar';
+export * as timeline from './timeline';
