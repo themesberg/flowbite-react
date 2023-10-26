@@ -32,7 +32,7 @@ interface CodeItem {
 
 type Variant = string;
 type CodeVariant = Record<Variant, Code>;
-type Code = CodeItem | CodeItem[];
+type Code = CodeItem | [CodeItem, ...CodeItem[]];
 
 export type CodeData = SingleCodeData | VariantCodeData;
 
