@@ -6,7 +6,6 @@ import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
 import { Doc } from '~/.contentlayer/generated';
 import { CarbonAds } from '~/app/components/carbon-ads';
-import { DocsContentLayout } from '~/app/components/docs-content-layout';
 import { Mdx } from '~/app/components/mdx';
 import { Footer } from '~/src';
 
@@ -46,14 +45,36 @@ export default function DocPage({ params }: Props) {
     <div className="flex">
       <div className="pb:12 mx-auto flex min-w-0 max-w-4xl flex-col px-4 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
         <main>
-          <DocsContentLayout title={doc.title} description={doc.description}>
+          <ContentLayout title={doc.title} description={doc.description}>
             <Mdx code={doc.body.code} />
-          </DocsContentLayout>
+          </ContentLayout>
         </main>
         <DocFooter />
         <CarbonAds />
       </div>
       <ToC doc={doc} />
+    </div>
+  );
+}
+
+interface ContentLayoutProps {
+  title: string;
+  description: string;
+  children: React.ReactNode;
+}
+
+function ContentLayout({ title, description, children }: ContentLayoutProps) {
+  return (
+    <div className="divide-y divide-gray-200 dark:divide-gray-800">
+      <div className="pb-8">
+        <h1 className="mb-2 inline-block w-full text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">
+          {title}
+        </h1>
+        <p className="text-lg text-gray-600 dark:text-gray-400">{description}</p>
+      </div>
+      <div id="mainContent" className="py-8">
+        {children}
+      </div>
     </div>
   );
 }
