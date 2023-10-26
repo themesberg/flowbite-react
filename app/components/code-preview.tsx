@@ -1,3 +1,5 @@
+// TODO: remove when all docs are converted to use `CodeDemo`
+
 'use client';
 
 import { usePathname } from 'next/navigation';
