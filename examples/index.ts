@@ -2,6 +2,7 @@ export * as accordion from './accordion';
 export * as alert from './alert';
 export * as avatar from './avatar';
 export * as badge from './badge';
+export * as banner from './banner';
 // export * as blockquote from './blockquote';
 export * as breadcrumb from './breadcrumb';
 // export * as button from './button';
