@@ -14,7 +14,7 @@ export * as buttonGroup from './buttonGroup';
 // export * as datepicker from './datepicker';
 // export * as dropdown from './dropdown';
 // export * as fileInput from './fileInput';
-// export * as floatingLabel from './floatingLabel';
+export * as floatingLabel from './floatingLabel';
 export * as footer from './footer';
 // export * as helperText from './helperText';
 // export * as kbd from './kbd';

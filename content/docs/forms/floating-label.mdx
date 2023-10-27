@@ -3,11 +3,6 @@ title: React Floating Label - Flowbite
 description: Use the floating label style for the input field elements to replicate the Material UI design system from Google and choose from multiple styles and sizes
 ---
 
-import { CodePreview } from '~/app/components/code-preview';
-import { theme, FloatingLabel } from '~/src';
-
-## Table of Contents
-
 The floating label style was first pioneered by Google in its infamous Material UI design system and it’s basically a label tag which floats just above the input field when it is being focused or already has content inside.
 
 On this page you will find a three different input field styles including a standard, outlined, and filled style including validation styles and sizes coded with Tailwind CSS and supported for dark mod
@@ -16,75 +11,37 @@ On this page you will find a three different input field styles including a stan
 
 Get started with the following three styles for the floating label component and use the label tag as a visual placeholder using the peer-placeholder-shown and peer-focus utility classes from Tailwind CSS.
 
-<CodePreview title="Floating Label" className="grid grid-flow-col justify-stretch space-x-4">
-  <FloatingLabel variant="filled" label="Label" />
-  <FloatingLabel variant="outlined" label="Label" />
-  <FloatingLabel variant="standard" label="Label" />
-</CodePreview>
+<Example name="floatingLabel.root" />
 
 ## Disabled state
 
 Apply the disabled attribute to the input fields to disallow the user from changing the content.
 
-<CodePreview title="Floating Label" className="grid grid-flow-col justify-stretch space-x-4">
-  <FloatingLabel variant="filled" label="Label" disabled={true} />
-  <FloatingLabel variant="outlined" label="Label" disabled={true} />
-  <FloatingLabel variant="standard" label="Label" disabled={true} />
-</CodePreview>
+<Example name="floatingLabel.disabled" />
 
 ## Validation
 
 Use the following examples of input validation for the success and error messages by applying the validation text below the input field and using the green or red color classes from Tailwind CSS.
 
-<CodePreview title="Floating Label" className="flex flex-col">
-  <div className="grid grid-flow-col justify-stretch space-x-4">
-    <FloatingLabel variant="filled" label="Filled Success" color="error" />
-    <FloatingLabel variant="outlined" label="Outlined Success" color="error" />
-    <FloatingLabel variant="standard" label="Standard Success" color="error" />
-  </div>
-  <div className="grid grid-flow-col justify-stretch space-x-4">
-    <FloatingLabel variant="filled" label="Filled Error" color="success" />
-    <FloatingLabel variant="outlined" label="Outlined Error" color="success" />
-    <FloatingLabel variant="standard" label="Standard Error" color="success" />
-  </div>
-</CodePreview>
+<Example name="floatingLabel.validation" />
 
 ## Sizes
 
 Use the small and default sizes of the floating label input fields from the following example.
 
-<CodePreview title="Floating Label" className="flex flex-col">
-  <div className="grid grid-flow-col justify-stretch space-x-4">
-    <FloatingLabel variant="filled" label="Small Filled" sizing="sm" />
-    <FloatingLabel variant="outlined" label="Small Outlined" sizing="sm" />
-    <FloatingLabel variant="standard" label="Small Standard" sizing="sm" />
-  </div>
-  <div className="grid grid-flow-col justify-stretch space-x-4">
-    <FloatingLabel variant="filled" label="Default Filled" />
-    <FloatingLabel variant="outlined" label="Default Outlined" />
-    <FloatingLabel variant="standard" label="Default Standard" />
-  </div>
-</CodePreview>
+<Example name="floatingLabel.sizes" />
 
 ## Helper text
 
 Add a helper text in addition to the label if you want to show more information below the input field.
 
-<CodePreview title="Floating Label" className="grid grid-flow-col justify-stretch space-x-4">
-  <FloatingLabel
-    variant="filled"
-    label="Floating Helper"
-    helperText="Remember, contributions to this topic should follow our Community Guidelines."
-  />
-</CodePreview>
+<Example name="floatingLabel.helperText" />
 
 ## Theme
 
 To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
 
-<pre className="language-tsx">
-  <code>{JSON.stringify(theme.floatingLabel, null, 2)}</code>
-</pre>
+<Theme name="floatingLabel" />
 
 ## References
 
