@@ -21,6 +21,7 @@ import type {
   FlowbiteKbdTheme,
   FlowbiteLabelTheme,
   FlowbiteListGroupTheme,
+  FlowbiteListTheme,
   FlowbiteModalTheme,
   FlowbiteNavbarTheme,
   FlowbitePaginationTheme,
@@ -59,6 +60,7 @@ export interface FlowbiteTheme {
   footer: FlowbiteFooterTheme;
   kbd: FlowbiteKbdTheme;
   listGroup: FlowbiteListGroupTheme;
+  list: FlowbiteListTheme;
   modal: FlowbiteModalTheme;
   navbar: FlowbiteNavbarTheme;
   rating: FlowbiteRatingTheme;

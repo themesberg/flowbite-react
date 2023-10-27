@@ -1,0 +1,73 @@
+import { CodePreview } from '~/app/components/code-preview';
+import { List, theme } from '~/src';
+import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from 'react-icons/hi';
+
+Get started with a collection of list components built with Tailwind CSS for ordered and unordered lists with bullets, numbers, or icons and other styles and layouts to show a list of items inside an article or throughout your web page.
+
+```jsx
+'use client';
+
+import { List } from 'flowbite-react';
+```
+
+## Table of Contents
+
+## Unordered list
+
+Use this example to create a default unordered list of items using the `List` component with `List.Item` child components inside of it.
+
+<CodePreview title="Default list group">
+  <List>
+    <List.Item>At least 10 characters (and up to 100 characters)</List.Item>
+    <List.Item>At least one lowercase character</List.Item>
+    <List.Item>Inclusion of at least one special character, e.g., ! @ # ?</List.Item>
+  </List>
+</CodePreview>
+
+## Icons 
+
+This example can be used to apply custom icons instead of the default bullets for the list items.
+
+<CodePreview title="Default list group">
+  <List>
+    <List.Item>At least 10 characters (and up to 100 characters)</List.Item>
+    <List.Item>At least one lowercase character</List.Item>
+    <List.Item>Inclusion of at least one special character, e.g., ! @ # ?</List.Item>
+  </List>
+</CodePreview>
+
+## Nested 
+
+Use this example to nested another list of items inside the parent list element.
+
+<CodePreview title="Default list group">
+  <List>
+    <List.Item>At least 10 characters (and up to 100 characters)</List.Item>
+    <List.Item>At least one lowercase character</List.Item>
+    <List.Item>Inclusion of at least one special character, e.g., ! @ # ?</List.Item>
+  </List>
+</CodePreview>
+
+## Unstyled
+
+Use the `unstyled` prop to disable the list style bullets or numbers.
+
+<CodePreview title="Default list group">
+  <List>
+    <List.Item>At least 10 characters (and up to 100 characters)</List.Item>
+    <List.Item>At least one lowercase character</List.Item>
+    <List.Item>Inclusion of at least one special character, e.g., ! @ # ?</List.Item>
+  </List>
+</CodePreview>
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<pre className="language-tsx">
+  <code>{JSON.stringify(theme.listGroup, null, 2)}</code>
+</pre>
+
+## References
+
+- [Flowbite List](https://flowbite.com/docs/typography/list/)

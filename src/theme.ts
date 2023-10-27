@@ -19,6 +19,7 @@ import { helperTextTheme } from './components/HelperText/theme';
 import { kbdTheme } from './components/Kbd/theme';
 import { labelTheme } from './components/Label/theme';
 import { listGroupTheme } from './components/ListGroup/theme';
+import { ListTheme } from './components/List/theme';
 import { modalTheme } from './components/Modal/theme';
 import { navbarTheme } from './components/Navbar/theme';
 import { paginationTheme } from './components/Pagination/theme';
@@ -60,6 +61,7 @@ export const theme: FlowbiteTheme = {
   kbd: kbdTheme,
   label: labelTheme,
   listGroup: listGroupTheme,
+  list: ListTheme,
   modal: modalTheme,
   navbar: navbarTheme,
   pagination: paginationTheme,

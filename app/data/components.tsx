@@ -112,6 +112,14 @@ export const COMPONENTS_DATA: Component[] = [
     link: `/docs/components/list-group`,
     classes: 'w-36',
   },
+  {
+    id: '14',
+    name: 'List',
+    image: '/images/components/list.svg',
+    imageDark: '/images/components/list-dark.svg',
+    link: `/docs/typography/list`,
+    classes: 'w-64',
+  },
   // {
   //   id: '14',
   //   name: 'Typography',

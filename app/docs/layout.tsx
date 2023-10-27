@@ -363,6 +363,14 @@ const DocsSidebar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
                         </Badge>
                       </span>
                     </SidebarLink>
+                    <SidebarLink href="/docs/typography/list">
+                      <span className="flex items-center gap-2">
+                        List{' '}
+                        <Badge color="cyan" className="px-2">
+                          New
+                        </Badge>
+                      </span>
+                    </SidebarLink>
                   </Sidebar.ItemGroup>
                 </Accordion.Content>
               </Accordion.Panel>
