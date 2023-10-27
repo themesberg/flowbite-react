@@ -1,0 +1,42 @@
+import { type CodeData } from '~/app/components/code-demo';
+import { Progress } from '~/src';
+
+const code = `
+'use client';
+
+import { Progress } from 'flowbite-react';
+
+function Component() {
+  return <Progress progress={45} />;
+}
+`;
+
+const codeRSC = `
+import { Progress } from 'flowbite-react';
+
+function Component() {
+  return <Progress progress={45} />;
+}
+`;
+
+function Component() {
+  return <Progress progress={45} />;
+}
+
+export const root: CodeData = {
+  type: 'single',
+  code: [
+    {
+      fileName: 'client',
+      language: 'tsx',
+      code,
+    },
+    {
+      fileName: 'server',
+      language: 'tsx',
+      code: codeRSC,
+    },
+  ],
+  githubSlug: 'components/progress.md#default-progress-bar',
+  component: <Component />,
+};
