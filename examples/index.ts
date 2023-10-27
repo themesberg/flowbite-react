@@ -30,7 +30,7 @@ export * as navbar from './navbar';
 // export * as sidebar from './sidebar';
 // export * as spinner from './spinner';
 // export * as tab from './tab';
-// export * as table from './table';
+export * as table from './table';
 // export * as textInput from './textInput';
 // export * as textarea from './textarea';
 export * as timeline from './timeline';
