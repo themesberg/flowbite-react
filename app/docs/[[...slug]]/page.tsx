@@ -1,10 +1,9 @@
-import { allDocs } from 'contentlayer/generated';
+import { allDocs, type Doc } from 'contentlayer/generated';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
-import { Doc } from '~/.contentlayer/generated';
 import { CarbonAds } from '~/app/components/carbon-ads';
 import { Mdx } from '~/app/components/mdx';
 import { Footer } from '~/src';
