@@ -1,10 +1,7 @@
 ---
-title: React Progress Bar - Flowbite'
+title: React Progress Bar - Flowbite
 description: The progress bar component is used to show the completion rate of a given task in the form of a filled bar where you can also add a label indicating percentage
 ---
-
-import { CodePreview } from '~/app/components/code-preview';
-import { Progress, theme } from '~/src';
 
 Use the progress bar component from Flowbite React to show the percentage and completion rate of a given task using a visually friendly bar meter based on multiple styles and sizes.
 
@@ -18,87 +15,41 @@ To start using the progress bar component make sure you import it first from Flo
 import { Progress } from 'flowbite-react';
 ```
 
-## Table of Contents
-
 ## Default progress bar
 
 Use this example to show a progress bar where you can set the progress rate using the `progress` prop from React which should be a number from 1 to 100.
 
-<CodePreview title="Default progress">
-  <Progress progress={45} />
-</CodePreview>
+<Example name="progress.root" />
 
 ## Progress bar with labels
 
 Use this example to show a progress bar with a label. You can set the label text using the `textLabel` prop and the progress text using the `labelText` prop.
 
-<CodePreview title="With labels">
-  <Progress progress={50} labelProgress textLabel="Flowbite" labelText size="lg" />
-</CodePreview>
+<Example name="progress.withLabels" />
 
 ## Label positioning
 
 This example shows how you can position the label text inside the progress bar by using the React props called `progressLabelPosition` and `textLabelPosition` on the `<Progress>` component in React.
 
-<CodePreview title="Label positions">
-  <Progress
-    progress={45}
-    labelProgress
-    progressLabelPosition="inside"
-    textLabel="Flowbite"
-    labelText
-    textLabelPosition="outside"
-    size="lg"
-  />
-</CodePreview>
+<Example name="progress.positioning" />
 
 ## Sizing
 
 The `size` prop from React can be used on the `<Progress>` component to set the size of the progress bar. You can choose from `sm`, `md`, `lg` and `xl`.
 
-<CodePreview importFlowbiteReact="Progress" title="Sizing">
-  <div className="flex flex-col gap-2">
-    <div className="text-base font-medium dark:text-white">Small</div>
-    <Progress progress={45} size="sm" color="dark" />
-    <div className="text-base font-medium dark:text-white">Default</div>
-    <Progress progress={45} size="md" color="dark" />
-    <div className="text-lg font-medium dark:text-white">Large</div>
-    <Progress progress={45} size="lg" color="dark" />
-    <div className="text-lg font-medium dark:text-white">Extra Large</div>
-    <Progress progress={45} size="xl" color="dark" />
-  </div>
-</CodePreview>
+<Example name="progress.sizing" />
 
 ## Colors
 
 Set your own custom colors for the progress bar component by using the `color` prop from React and the utility classes from Tailwind CSS.
 
-<CodePreview importFlowbiteReact="Progress" title="Colors">
-  <div className="flex flex-col gap-2">
-    <div className="text-base font-medium">Dark</div>
-    <Progress progress={45} color="dark" />
-    <div className="text-base font-medium text-cyan-700">Blue</div>
-    <Progress progress={45} color="blue" />
-    <div className="text-base font-medium text-red-700">Red</div>
-    <Progress progress={45} color="red" />
-    <div className="text-base font-medium text-green-700">Green</div>
-    <Progress progress={45} color="green" />
-    <div className="text-base font-medium text-yellow-700">Yellow</div>
-    <Progress progress={45} color="yellow" />
-    <div className="text-base font-medium text-indigo-700">Indigo</div>
-    <Progress progress={45} color="indigo" />
-    <div className="text-base font-medium text-purple-700">Purple</div>
-    <Progress progress={45} color="purple" />
-  </div>
-</CodePreview>
+<Example name="progress.colors" />
 
 ## Theme
 
 To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
 
-<pre className="language-tsx">
-  <code>{JSON.stringify(theme.progress, null, 2)}</code>
-</pre>
+<Theme name="progress" />
 
 ## References
 
