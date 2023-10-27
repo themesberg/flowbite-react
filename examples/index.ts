@@ -28,7 +28,7 @@ export * as progress from './progress';
 // export * as rangeSlider from './rangeSlider';
 export * as rating from './rating';
 // export * as select from './select';
-// export * as sidebar from './sidebar';
+export * as sidebar from './sidebar';
 export * as spinner from './spinner';
 // export * as tab from './tab';
 export * as table from './table';
