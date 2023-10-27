@@ -29,7 +29,7 @@ export * as progress from './progress';
 export * as rating from './rating';
 // export * as select from './select';
 // export * as sidebar from './sidebar';
-// export * as spinner from './spinner';
+export * as spinner from './spinner';
 // export * as tab from './tab';
 export * as table from './table';
 // export * as textInput from './textInput';
