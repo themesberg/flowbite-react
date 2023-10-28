@@ -37,4 +37,4 @@ export * as table from './table';
 export * as timeline from './timeline';
 // export * as toast from './toast';
 // export * as toggleSwitch from './toggleSwitch';
-// export * as tooltip from './tooltip';
+export * as tooltip from './tooltip';
