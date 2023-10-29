@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import type { FC } from 'react';
 import { HiHome } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../../';
+import { Flowbite } from '../Flowbite';
 import { Breadcrumb } from './Breadcrumb';
 
 describe('Components / Breadcrumb', () => {

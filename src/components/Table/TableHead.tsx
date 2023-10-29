@@ -1,8 +1,8 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
 import type { FlowbiteTableHeadCellTheme } from './TableHeadCell';
 
 export interface FlowbiteTableHeadTheme {
@@ -15,7 +15,7 @@ export interface TableHeadProps extends PropsWithChildren, ComponentProps<'thead
 }
 
 export const TableHead: FC<TableHeadProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const theme = mergeDeep(useTheme().theme.table, customTheme);
+  const theme = mergeDeep(getTheme().table, customTheme);
 
   return (
     <thead className={twMerge(theme.head.base, className)} {...props}>

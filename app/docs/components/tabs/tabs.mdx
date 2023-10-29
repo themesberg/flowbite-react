@@ -20,7 +20,7 @@ import { Tabs } from 'flowbite-react';
 
 ## Default tabs
 
-Add the `<Tabs.Item>` child component to the `<Tabs.Group>` component to create a tab item and you can add any type of markup and React components inside of it and it will be shown when clicking on the associated tab item.
+Add the `<Tabs.Item>` child component to the `<Tabs>` component to create a tab item and you can add any type of markup and React components inside of it and it will be shown when clicking on the associated tab item.
 
 You can also choose to add the `active` prop to the `<Tabs.Item>` component to make it active by default and set the title of the tab item using the `title` prop.
 
@@ -33,7 +33,7 @@ import { MdDashboard } from 'react-icons/md';"
   importFlowbiteReact="Tabs"
   title="Default tabs"
 >
-  <Tabs.Group aria-label="Default tabs" style="default">
+  <Tabs aria-label="Default tabs" style="default">
     <Tabs.Item active title="Profile" icon={HiUserCircle}>
       This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
       Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
@@ -57,12 +57,12 @@ import { MdDashboard } from 'react-icons/md';"
     <Tabs.Item disabled title="Disabled">
       Disabled content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 </CodePreview>
 
 ## Tabs with underline
 
-Pass the `style="underline"` prop to the `<Tabs.Group>` component to make the tabs have an underline style.
+Pass the `style="underline"` prop to the `<Tabs>` component to make the tabs have an underline style.
 
 <CodePreview
   githubPage="Tab/Tabs"
@@ -71,7 +71,7 @@ import { MdDashboard } from 'react-icons/md';"
   importFlowbiteReact="Tabs"
   title="Tabs with underline"
 >
-  <Tabs.Group aria-label="Tabs with underline" style="underline">
+  <Tabs aria-label="Tabs with underline" style="underline">
     <Tabs.Item active title="Profile" icon={HiUserCircle}>
       This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
       Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
@@ -95,7 +95,7 @@ import { MdDashboard } from 'react-icons/md';"
     <Tabs.Item disabled title="Disabled">
       Disabled content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 </CodePreview>
 
 ## Tabs with icons
@@ -109,7 +109,7 @@ import { MdDashboard } from 'react-icons/md';"
   importFlowbiteReact="Tabs"
   title="Tabs with icons"
 >
-  <Tabs.Group aria-label="Tabs with icons" style="underline">
+  <Tabs aria-label="Tabs with icons" style="underline">
     <Tabs.Item active title="Profile" icon={HiUserCircle}>
       This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
       Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
@@ -133,15 +133,15 @@ import { MdDashboard } from 'react-icons/md';"
     <Tabs.Item disabled title="Disabled">
       Disabled content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 </CodePreview>
 
 ## Tabs with pills
 
-Add the `style="pills"` prop to the `<Tabs.Group>` component to make the tabs have a pills style with rounded corners as an alternative style.
+Add the `style="pills"` prop to the `<Tabs>` component to make the tabs have a pills style with rounded corners as an alternative style.
 
 <CodePreview githubPage="Tab/Tabs" importFlowbiteReact="Tabs" title="Pills tabs">
-  <Tabs.Group aria-label="Pills" style="pills">
+  <Tabs aria-label="Pills" style="pills">
     <Tabs.Item active title="Tab 1">
       <p className="text-sm text-gray-500 dark:text-gray-400">Content 1</p>
     </Tabs.Item>
@@ -157,12 +157,12 @@ Add the `style="pills"` prop to the `<Tabs.Group>` component to make the tabs ha
     <Tabs.Item disabled title="Tab 5">
       <p className="text-sm text-gray-500 dark:text-gray-400">Content 5</p>
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 </CodePreview>
 
 ## Full width tabs
 
-Make the tabs span the full width of their container, pass the `style="fullWidth"` prop to the `<Tabs.Group>`
+Make the tabs span the full width of their container, pass the `style="fullWidth"` prop to the `<Tabs>`
 
 <CodePreview
   githubPage="Tab/Tabs"
@@ -171,7 +171,7 @@ import { MdDashboard } from 'react-icons/md';"
   importFlowbiteReact="Tabs"
   title="Full width tabs"
 >
-  <Tabs.Group aria-label="Full width tabs" style="fullWidth">
+  <Tabs aria-label="Full width tabs" style="fullWidth">
     <Tabs.Item active title="Profile" icon={HiUserCircle}>
       This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
       Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
@@ -195,7 +195,7 @@ import { MdDashboard } from 'react-icons/md';"
     <Tabs.Item disabled title="Disabled">
       Disabled content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
 </CodePreview>
 
 ## React state options
@@ -203,7 +203,7 @@ import { MdDashboard } from 'react-icons/md';"
 Here's an example on how you can set the activate tab programatically using the React state variables and functions of `activateTab` and `setActivateTab`.
 
 <CodePreview
-  code={`<Tabs.Group
+  code={`<Tabs
   aria-label="Default tabs"
   style="default"
   ref={props.tabsRef}
@@ -232,7 +232,7 @@ Here's an example on how you can set the activate tab programatically using the 
   <Tabs.Item disabled title="Disabled">
     Disabled content
   </Tabs.Item>
-</Tabs.Group>
+</Tabs>
 <div className="pb-4 pt-2 text-sm text-gray-500 dark:text-gray-400">Active tab: {props.activeTab}</div>
 <Button.Group>
   <Button color="gray" onClick={() => props.tabsRef.current?.setActiveTab(0)}>
@@ -259,7 +259,7 @@ import { MdDashboard } from 'react-icons/md';"
   importFlowbiteReact="Button, Tabs, type TabsRef"
   title="Set active tab programmatically"
 >
-  <Tabs.Group
+  <Tabs
     aria-label="Default tabs"
     style="default"
     ref={props.tabsRef}
@@ -288,7 +288,7 @@ import { MdDashboard } from 'react-icons/md';"
     <Tabs.Item disabled title="Disabled">
       Disabled content
     </Tabs.Item>
-  </Tabs.Group>
+  </Tabs>
   <div className="pb-4 pt-2 text-sm text-gray-500 dark:text-gray-400">Active tab: {props.activeTab}</div>
   <Button.Group>
     <Button color="gray" onClick={() => props.tabsRef.current?.setActiveTab(0)}>

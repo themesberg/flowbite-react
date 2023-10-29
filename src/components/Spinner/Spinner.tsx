@@ -1,8 +1,9 @@
 import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial, FlowbiteColors, FlowbiteSizes } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
+import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite';
 
 export interface FlowbiteSpinnerTheme {
   base: string;
@@ -44,7 +45,7 @@ export const Spinner: FC<SpinnerProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.spinner, customTheme);
+  const theme = mergeDeep(getTheme().spinner, customTheme);
 
   return (
     <span role="status" {...props}>

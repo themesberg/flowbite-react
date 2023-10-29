@@ -1,5 +1,7 @@
 export * from './Sidebar';
-export type { SidebarCTAProps } from './SidebarCTA';
-export type { SidebarCollapseProps } from './SidebarCollapse';
-export type { SidebarItemProps } from './SidebarItem';
-export type { SidebarLogoProps } from './SidebarLogo';
+export * from './SidebarCTA';
+export * from './SidebarCollapse';
+export * from './SidebarItem';
+export * from './SidebarItemGroup';
+export * from './SidebarItems';
+export * from './SidebarLogo';

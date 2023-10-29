@@ -1,8 +1,8 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
 
 export interface FlowbiteFooterIconTheme {
   base: string;
@@ -25,7 +25,7 @@ export const FooterIcon: FC<FooterIconProps & ComponentProps<'a'> & ComponentPro
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(useTheme().theme.footer.icon, customTheme);
+  const theme = mergeDeep(getTheme().footer.icon, customTheme);
 
   return (
     <div>

@@ -1,8 +1,11 @@
+'use client';
+
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial, FlowbiteBoolean } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
+import type { FlowbiteBoolean } from '../Flowbite';
 import { useNavbarContext } from './NavbarContext';
 
 export interface FlowbiteNavbarCollapseTheme {
@@ -17,7 +20,7 @@ export interface NavbarCollapseProps extends PropsWithChildren<ComponentProps<'d
 
 export const NavbarCollapse: FC<NavbarCollapseProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
   const { isOpen } = useNavbarContext();
-  const theme = mergeDeep(useTheme().theme.navbar.collapse, customTheme);
+  const theme = mergeDeep(getTheme().navbar.collapse, customTheme);
 
   return (
     <div

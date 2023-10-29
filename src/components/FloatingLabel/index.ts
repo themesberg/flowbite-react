@@ -1,1 +1,1 @@
-export * from '../FloatingLabel';
+export * from './FloatingLabel';

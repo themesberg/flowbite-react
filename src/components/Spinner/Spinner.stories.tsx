@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { Button } from '../../';
+import { Button } from '../Button';
 import { Spinner } from './Spinner';
 
 export default {

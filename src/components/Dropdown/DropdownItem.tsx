@@ -1,13 +1,12 @@
+'use client';
+
 import { useListItem } from '@floating-ui/react';
 import type { ComponentProps, ComponentPropsWithoutRef, ElementType, FC, RefCallback } from 'react';
-import { useContext } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
-import type { ButtonBaseProps } from '../Button/ButtonBase';
-import { ButtonBase } from '../Button/ButtonBase';
-import { DropdownContext } from './Dropdown';
+import type { DeepPartial } from '../../types';
+import { ButtonBase, type ButtonBaseProps } from '../Button/ButtonBase';
+import { useDropdownContext } from './DropdownContext';
 
 export interface FlowbiteDropdownItemTheme {
   container: string;
@@ -32,9 +31,9 @@ export const DropdownItem = <T extends ElementType = 'button'>({
   ...props
 }: DropdownItemProps<T>) => {
   const { ref, index } = useListItem({ label: typeof children === 'string' ? children : undefined });
-  const { activeIndex, dismissOnClick, getItemProps, handleSelect } = useContext(DropdownContext);
+  const { theme: dropdownTheme, activeIndex, dismissOnClick, getItemProps, handleSelect } = useDropdownContext();
   const isActive = activeIndex === index;
-  const theme = mergeDeep(useTheme().theme.dropdown.floating.item, customTheme);
+  const theme = mergeDeep(dropdownTheme?.floating?.item ?? {}, customTheme);
 
   const theirProps = props as ButtonBaseProps<T>;
 

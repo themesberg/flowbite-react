@@ -1,3 +1,5 @@
+'use client';
+
 import type { Placement } from '@floating-ui/core';
 import { autoUpdate, useFocus } from '@floating-ui/react';
 import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';

@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import { useState } from 'react';
-import { theme } from '../../';
+import { theme } from '../../theme';
 import type { ToggleSwitchProps } from './ToggleSwitch';
 import { ToggleSwitch } from './ToggleSwitch';
 

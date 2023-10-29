@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event';
 import { useState } from 'react';
 import { HiCloudDownload } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import type { DeepPartial, FlowbiteTheme } from '../../';
-import { Flowbite } from '../../';
+import type { CustomFlowbiteTheme } from '../Flowbite';
+import { Flowbite } from '../Flowbite';
 import { ListGroup } from './ListGroup';
 
 describe('Components / List group', () => {
@@ -73,7 +73,7 @@ describe('Components / List group', () => {
     });
 
     it('should use custom classes on `ListGroup.Item`', () => {
-      const theme: DeepPartial<FlowbiteTheme> = {
+      const theme: CustomFlowbiteTheme = {
         listGroup: {
           item: {
             base: 'text-gray-100',

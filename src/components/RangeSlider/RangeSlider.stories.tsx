@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from '@storybook/react';
-import { theme } from '../../';
+import { theme } from '../../theme';
 import type { RangeSliderProps } from './RangeSlider';
 import { RangeSlider } from './RangeSlider';
 

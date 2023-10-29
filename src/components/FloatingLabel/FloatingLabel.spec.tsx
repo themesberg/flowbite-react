@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { FloatingLabel } from '~/src/components/FloatingLabel/FloatingLabel';
+import { FloatingLabel } from './FloatingLabel';
 
 describe('Components / Floating Label', () => {
   describe('Floating Label properties', () => {

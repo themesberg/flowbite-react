@@ -1,9 +1,12 @@
+'use client';
+
 import type { ComponentProps, FC } from 'react';
 import { HiStar } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial, FlowbiteSizes } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
+import type { FlowbiteSizes } from '../Flowbite';
 import { useRatingContext } from './RatingContext';
 
 export interface FlowbiteRatingStarTheme {
@@ -30,7 +33,7 @@ export const RatingStar: FC<RatingStarProps> = ({
   ...props
 }) => {
   const { size = 'sm' } = useRatingContext();
-  const theme = mergeDeep(useTheme().theme.rating.star, customTheme);
+  const theme = mergeDeep(getTheme().rating.star, customTheme);
 
   return (
     <Icon

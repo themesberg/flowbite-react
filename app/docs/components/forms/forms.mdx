@@ -451,7 +451,23 @@ Use the `<FileInput>` component to allow users to upload files from their browse
 
 Use the `<ToggleSwitch>` component to ask users to enable or disable an option such as newsletter settings.
 
-<CodePreview githubPage="ToggleSwitch/ToggleSwitch" importFlowbiteReact="ToggleSwitch" title="Toggle switch element">
+<CodePreview
+  githubPage="ToggleSwitch/ToggleSwitch"
+  importFlowbiteReact="ToggleSwitch"
+  title="Toggle switch element"
+  functionBody={[
+    'const [switch1, setSwitch1] = useState(false);',
+    'const [switch2, setSwitch2] = useState(true);',
+    'const [switch3, setSwitch3] = useState(true);',
+  ]}
+  code={`<div className="flex max-w-md flex-col gap-4" id="toggle">
+  <ToggleSwitch checked={switch1} label="Toggle me" onChange={setSwitch1} />
+  <ToggleSwitch checked={switch2} label="Toggle me (checked)" onChange={setSwitch2} />
+  <ToggleSwitch checked={false} disabled label="Toggle me (disabled)" onChange={() => undefined} />
+  <ToggleSwitch checked={true} disabled label="Toggle me (disabled)" onChange={() => undefined} />
+  <ToggleSwitch checked={switch3} onChange={setSwitch3} />
+</div>`}
+>
   <div className="flex max-w-md flex-col gap-4" id="toggle">
     <ToggleSwitch checked={props.switch1} label="Toggle me" onChange={props.setSwitch1} />
     <ToggleSwitch checked={props.switch2} label="Toggle me (checked)" onChange={props.setSwitch2} />

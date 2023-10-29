@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MdKeyboardArrowLeft, MdKeyboardCommandKey } from 'react-icons/md';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../../';
+import { Flowbite } from '../Flowbite';
 import { Kbd } from './Kbd';
 
 describe('Components / Kbd', () => {

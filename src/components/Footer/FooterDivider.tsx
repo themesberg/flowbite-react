@@ -1,8 +1,8 @@
 import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial } from '../../';
-import { useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
 
 export interface FlowbiteFooterDividerTheme {
   base: string;
@@ -13,7 +13,7 @@ export interface FooterDividerProps extends ComponentProps<'hr'> {
 }
 
 export const FooterDivider: FC<FooterDividerProps> = ({ className, theme: customTheme = {}, ...props }) => {
-  const theme = mergeDeep(useTheme().theme.footer.divider, customTheme);
+  const theme = mergeDeep(getTheme().footer.divider, customTheme);
 
   return <hr data-testid="footer-divider" className={twMerge(theme.base, className)} {...props} />;
 };

@@ -8,7 +8,9 @@ import { useEffect, useRef, useState } from 'react';
 import { HiClipboardCopy, HiOutlineArrowRight } from 'react-icons/hi';
 import '~/app/docs.css';
 import '~/app/style.css';
-import { Button, Flowbite, Footer, Navbar, TextInput, Tooltip, useTheme } from '~/src';
+import { Button, Flowbite, Footer, Navbar, TextInput, Tooltip } from '~/src';
+import { safeResJson } from '~/src/helpers/http';
+import { useThemeMode } from '~/src/helpers/use-theme-mode';
 import { Banner } from './components/banner';
 import { ComponentCard } from './components/component-card';
 import { NavbarIcons, NavbarLinks } from './components/navbar';
@@ -40,22 +42,34 @@ export default function HomePageContent() {
 
   useEffect(() => {
     fetch('https://api.github.com/repos/themesberg/flowbite-react/contributors?per_page=21')
-      .then((res) => res.json())
+      .then((res) => safeResJson(res))
       .then((data) => {
         setContributors(data);
+      })
+      .catch((err) => {
+        console.error(err);
       });
 
     fetch('https://api.github.com/repos/themesberg/flowbite-react')
-      .then((res) => res.json())
-      .then((data) => setStargazers(numberWithCommas(data.stargazers_count)));
+      .then((res) => safeResJson(res))
+      .then((data) => setStargazers(numberWithCommas(data.stargazers_count)))
+      .catch((err) => {
+        console.error(err);
+      });
 
     fetch('https://api.npmjs.org/downloads/point/2021-01-01:2100-01-01/flowbite-react')
-      .then((res) => res.json())
-      .then((data) => setNpmDownloads(numberWithCommas(data.downloads)));
+      .then((res) => safeResJson(res))
+      .then((data) => setNpmDownloads(numberWithCommas(data.downloads)))
+      .catch((err) => {
+        console.error(err);
+      });
 
     fetch('https://discord.com/api/v9/invites/4eeurUVvTy?with_counts=true&with_expiration=true')
-      .then((res) => res.json())
-      .then((data) => setDiscordMembers(numberWithCommas(data.approximate_presence_count)));
+      .then((res) => safeResJson(res))
+      .then((data) => setDiscordMembers(numberWithCommas(data.approximate_presence_count)))
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   const numberWithCommas = (x: string | number) => {
@@ -64,14 +78,11 @@ export default function HomePageContent() {
 
   return (
     <Flowbite>
-      <div className="relative max-h-screen w-full overflow-auto bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
+      <div className="relative bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
         <Banner />
         <HomeNavbar />
         <div className="lg:flex">
-          <main
-            className="min-w-0 flex-auto divide-y dark:divide-gray-700 lg:static lg:max-h-full lg:overflow-visible"
-            ref={mainRef}
-          >
+          <main className="min-w-0 flex-auto divide-y dark:divide-gray-700" ref={mainRef}>
             <HeroSection />
             <FeaturedSection />
             <ComponentsSection />
@@ -876,18 +887,17 @@ const ContributorsSection: FC<ContributorsSectionProps> = ({ contributors }) => 
           </div>
           <div className="flex max-w-5xl flex-col gap-3 px-4 lg:px-8">
             <div className="flex flex-wrap items-center justify-center gap-3">
-              {contributors &&
-                contributors.map((contributor) => (
-                  <Tooltip key={contributor.id} content={contributor.login}>
-                    <Link href={contributor.html_url} rel="nofollow noreferrer noopener" target="_blank">
-                      <img
-                        src={contributor.avatar_url}
-                        alt={`${contributor.login} avatar`}
-                        className="h-10 w-10 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300 sm:h-12 sm:w-12 lg:h-16 lg:w-16"
-                      />
-                    </Link>
-                  </Tooltip>
-                ))}
+              {contributors.map((contributor) => (
+                <Tooltip key={contributor.id} content={contributor.login}>
+                  <Link href={contributor.html_url} rel="nofollow noreferrer noopener" target="_blank">
+                    <img
+                      src={contributor.avatar_url}
+                      alt={`${contributor.login} avatar`}
+                      className="h-10 w-10 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300 sm:h-12 sm:w-12 lg:h-16 lg:w-16"
+                    />
+                  </Link>
+                </Tooltip>
+              ))}
             </div>
           </div>
           <div className="flex w-full max-w-5xl flex-row items-center justify-between lg:px-4">
@@ -1091,7 +1101,7 @@ const SocialProofSection: FC<SocialProofSectionProps> = ({ stargazers, npmDownlo
 };
 
 const DarkModeSwitcher: FC = () => {
-  const { toggleMode } = useTheme();
+  const { setMode } = useThemeMode();
 
   return (
     <div className="text-cyna-500 flex flex-row gap-8">
@@ -1099,7 +1109,7 @@ const DarkModeSwitcher: FC = () => {
         <button
           aria-label="Light mode"
           type="button"
-          onClick={() => toggleMode?.('light')}
+          onClick={() => setMode('light')}
           className="hidden rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:block dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         >
           <span className="hidden dark:block">
@@ -1145,7 +1155,7 @@ const DarkModeSwitcher: FC = () => {
         <button
           aria-label="Dark mode"
           type="button"
-          onClick={() => toggleMode?.('dark')}
+          onClick={() => setMode('dark')}
           className="rounded-lg bg-gray-100 p-2.5 text-sm text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hidden dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         >
           <span className="hidden dark:block">

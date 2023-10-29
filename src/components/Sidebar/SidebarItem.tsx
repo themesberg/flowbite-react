@@ -1,9 +1,14 @@
+'use client';
+
 import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from 'react';
 import { forwardRef, useId } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial, FlowbiteColors } from '../../';
-import { Badge, Tooltip, useTheme } from '../../';
 import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import type { DeepPartial } from '../../types';
+import { Badge } from '../Badge';
+import type { FlowbiteColors } from '../Flowbite';
+import { Tooltip } from '../Tooltip';
 import { useSidebarContext } from './SidebarContext';
 import { useSidebarItemContext } from './SidebarItemContext';
 
@@ -61,7 +66,7 @@ const TooltipContent: FC<PropsWithChildren<{ id: string }>> = ({ id, children })
 );
 
 const Children: FC<PropsWithChildren<{ id: string }>> = ({ id, children }) => {
-  const theme = useTheme().theme.sidebar.item;
+  const theme = getTheme().sidebar.item;
 
   return (
     <span
@@ -92,7 +97,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
     const id = useId();
     const { isCollapsed } = useSidebarContext();
     const { isInsideCollapse } = useSidebarItemContext();
-    const theme = mergeDeep(useTheme().theme.sidebar.item, customTheme);
+    const theme = mergeDeep(getTheme().sidebar.item, customTheme);
 
     return (
       <ListItem className={theme.listItem} id={id} isCollapsed={isCollapsed} tooltipChildren={children}>
