@@ -1,11 +1,7 @@
 ---
-title: React KBD (Keyboard) - Flowbite'
+title: React KBD (Keyboard) - Flowbite
 description: Use the KBD component as an inline element to denote textual user input from the keyboard inside paragraphs, tables, and other components
 ---
-
-import { CodePreview } from '~/app/components/code-preview';
-import { Kbd, Table, theme } from '~/src';
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 
 The KBD (Keyboard) component can be used to indicate a textual user input from the keyboard inside other elements such as in text, tables, cards, and more.
 
@@ -19,165 +15,53 @@ To start using the `<Kbd>` component you need to import it from `flowbite-react`
 import { Kbd } from 'flowbite-react';
 ```
 
-## Table of Contents
-
 ## Default KBD
 
 Here’s a list of KBD components that you can use inside any other element.
 
-<CodePreview importFlowbiteReact="Kbd" title="Default KBD">
-  <Kbd>Shift</Kbd>
-  <Kbd>Ctrl</Kbd>
-  <Kbd>Tab</Kbd>
-  <Kbd>Caps Lock</Kbd>
-  <Kbd>Esc</Kbd>
-  <Kbd>Spacebar</Kbd>
-  <Kbd>Enter</Kbd>
-</CodePreview>
+<Example name="kbd.root" />
 
 ## KBD inside text
 
 Use this example by nesting an inline KBD component inside a paragraph.
 
-<CodePreview importFlowbiteReact="Kbd" title="Inside Text KBD">
-  Please press <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>R</Kbd> to re-render an MDN page.
-</CodePreview>
+<Example name="kbd.insideText" />
 
 ## KBD inside table
 
 The KBD component can also be used inside table components to denote what type of key can be pressed for certain descriptions.
 
-<CodePreview
-  importFlowbiteReact="Kbd, Table"
-  importExternal="import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowDown, MdKeyboardArrowUp  } from 'react-icons/md';"
-  title="Table KBD"
->
-  <Table>
-    <Table.Head>
-      <Table.HeadCell>Key</Table.HeadCell>
-      <Table.HeadCell>Description</Table.HeadCell>
-    </Table.Head>
-    <Table.Body className="divide-y">
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-          <Kbd>Shift</Kbd> <span className="pr-1">or</span> <Kbd>Tab</Kbd>
-        </Table.Cell>
-        <Table.Cell>Navigate to interactive elements</Table.Cell>
-      </Table.Row>
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-          <Kbd>Enter</Kbd> <span className="pr-1">or</span> <Kbd>Spacebar</Kbd>
-        </Table.Cell>
-        <Table.Cell>Ensure elements with ARIA role="button" can be activated with both key commands.</Table.Cell>
-      </Table.Row>
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-          <Kbd icon={MdKeyboardArrowUp}></Kbd>
-          <Kbd icon={MdKeyboardArrowDown}></Kbd>
-          <span className="pr-1">or</span>
-          <Kbd icon={MdKeyboardArrowLeft}></Kbd>
-          <Kbd icon={MdKeyboardArrowRight}></Kbd>
-        </Table.Cell>
-        <Table.Cell>Choose and activate previous/next tab.</Table.Cell>
-      </Table.Row>
-    </Table.Body>
-  </Table>
-</CodePreview>
+<Example name="kbd.insideTable" />
 
 ## Arrow keys
 
 Use this example to show arrow keys inside the KBD styled element.
 
-<CodePreview
-  importFlowbiteReact="Kbd"
-  importExternal="import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowDown, MdKeyboardArrowUp  } from 'react-icons/md';"
-  title="Arrow Keys KBD"
->
-  <Kbd icon={MdKeyboardArrowUp}></Kbd>
-  <Kbd icon={MdKeyboardArrowDown}></Kbd>
-  <Kbd icon={MdKeyboardArrowLeft}></Kbd>
-  <Kbd icon={MdKeyboardArrowRight}></Kbd>
-</CodePreview>
+<Example name="kbd.arrowKeys" />
 
 ## Letter Keys
 
 Use this example to show arrow keys inside the KBD styled element.
 
-<CodePreview importFlowbiteReact="Kbd" title="Letter Keys KBD">
-  <div className="flex flex-wrap">
-    <Kbd>Q</Kbd>
-    <Kbd>W</Kbd>
-    <Kbd>E</Kbd>
-    <Kbd>R</Kbd>
-    <Kbd>T</Kbd>
-    <Kbd>Y</Kbd>
-    <Kbd>I</Kbd>
-    <Kbd>O</Kbd>
-    <Kbd>P</Kbd>
-    <Kbd>A</Kbd>
-    <Kbd>S</Kbd>
-    <Kbd>D</Kbd>
-    <Kbd>F</Kbd>
-    <Kbd>G</Kbd>
-    <Kbd>H</Kbd>
-    <Kbd>J</Kbd>
-    <Kbd>K</Kbd>
-    <Kbd>L</Kbd>
-    <Kbd>Z</Kbd>
-    <Kbd>X</Kbd>
-    <Kbd>C</Kbd>
-    <Kbd>V</Kbd>
-    <Kbd>B</Kbd>
-    <Kbd>N</Kbd>
-    <Kbd>M</Kbd>
-  </div>
-</CodePreview>
+<Example name="kbd.letterKeys" />
 
 ## Number Keys
 
 Use this example to show a key inside a KBD component from the english numeral system.
 
-<CodePreview importFlowbiteReact="Kbd" title="Number Keys KBD">
-  <Kbd>1</Kbd>
-  <Kbd>2</Kbd>
-  <Kbd>3</Kbd>
-  <Kbd>4</Kbd>
-  <Kbd>5</Kbd>
-  <Kbd>6</Kbd>
-  <Kbd>7</Kbd>
-  <Kbd>8</Kbd>
-  <Kbd>9</Kbd>
-  <Kbd>0</Kbd>
-</CodePreview>
+<Example name="kbd.numberKeys" />
 
 ## Function keys
 
 This example can be used to denote function keys inside the KBD component.
 
-<CodePreview importFlowbiteReact="Kbd" title="Function Keys KBD">
-  <div className="flex flex-wrap">
-    <Kbd>F1</Kbd>
-    <Kbd>F2</Kbd>
-    <Kbd>F3</Kbd>
-    <Kbd>F4</Kbd>
-    <Kbd>F5</Kbd>
-    <Kbd>F6</Kbd>
-    <Kbd>F7</Kbd>
-    <Kbd>F8</Kbd>
-    <Kbd>F9</Kbd>
-    <Kbd>F10</Kbd>
-    <Kbd>F11</Kbd>
-    <Kbd>F12</Kbd>
-  </div>
-</CodePreview>
+<Example name="kbd.functionKeys" />
 
 ## Theme
 
 To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
 
-<pre className="language-tsx">
-  <code>{JSON.stringify(theme.kbd, null, 2)}</code>
-</pre>
+<Theme name="kbd" />
 
 ## References
 

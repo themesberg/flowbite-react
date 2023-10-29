@@ -17,7 +17,7 @@ export * as buttonGroup from './buttonGroup';
 export * as floatingLabel from './floatingLabel';
 export * as footer from './footer';
 // export * as helperText from './helperText';
-// export * as kbd from './kbd';
+export * as kbd from './kbd';
 // export * as label from './label';
 export * as listGroup from './listGroup';
 // export * as modal from './modal';
