@@ -35,6 +35,6 @@ export * as tabs from './tabs';
 // export * as textInput from './textInput';
 // export * as textarea from './textarea';
 export * as timeline from './timeline';
-// export * as toast from './toast';
+export * as toast from './toast';
 // export * as toggleSwitch from './toggleSwitch';
 export * as tooltip from './tooltip';
