@@ -90,6 +90,6 @@ export const dropdown: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/sidebar.md#multi-level-dropdown',
+  githubSlug: 'sidebar/sidebar.dropdown.tsx',
   component: <Component />,
 };

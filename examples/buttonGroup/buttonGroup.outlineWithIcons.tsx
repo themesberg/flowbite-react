@@ -175,6 +175,6 @@ export const outlineWithIcons: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/button-group.md#outline-button-group-with-icons',
+  githubSlug: 'buttonGroup/buttonGroup.outlineWithIcons.tsx',
   component: <Component />,
 };

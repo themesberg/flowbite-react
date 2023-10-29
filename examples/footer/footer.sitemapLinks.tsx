@@ -196,6 +196,6 @@ export const sitemapLinks: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/footer.md#sitemap-links',
+  githubSlug: 'footer/footer.sitemapLinks.tsx',
   component: <Component />,
 };

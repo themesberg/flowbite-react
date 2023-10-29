@@ -64,6 +64,6 @@ export const count: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/rating.md#rating-count',
+  githubSlug: 'rating/rating.count.tsx',
   component: <Component />,
 };

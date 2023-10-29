@@ -67,6 +67,6 @@ export const positioning: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/progress.md#label-positioning',
+  githubSlug: 'progress/progress.positioning.tsx',
   component: <Component />,
 };

@@ -49,6 +49,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/tooltip.md#default-tooltip',
+  githubSlug: 'tooltip/tooltip.root.tsx',
   component: <Component />,
 };

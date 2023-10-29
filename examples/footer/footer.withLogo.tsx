@@ -100,6 +100,6 @@ export const withLogo: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/footer.md#footer-with-logo',
+  githubSlug: 'footer/footer.withLogo.tsx',
   component: <Component />,
 };

@@ -46,6 +46,6 @@ export const withButtons: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/list-group.md#list-group-with-buttons',
+  githubSlug: 'listGroup/listGroup.withButtons.tsx',
   component: <Component />,
 };

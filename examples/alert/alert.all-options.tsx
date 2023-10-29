@@ -74,6 +74,6 @@ export const allOptions: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/alert.md#all-options',
+  githubSlug: 'alert/alert.allOptions.tsx',
   component: <Component />,
 };

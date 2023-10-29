@@ -30,6 +30,6 @@ export const placeholderInitials: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/avatar.md#placeholder-initials',
+  githubSlug: 'avatar/avatar.placeholderInitials.tsx',
   component: <Component />,
 };

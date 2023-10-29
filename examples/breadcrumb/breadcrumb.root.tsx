@@ -64,6 +64,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/breadcrumb.md#default-breadcrumb',
+  githubSlug: 'breadcrumb/breadcrumb.root.tsx',
   component: <Component />,
 };

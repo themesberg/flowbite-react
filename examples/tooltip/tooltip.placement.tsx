@@ -82,6 +82,6 @@ export const placement: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/tooltip.md#placement',
+  githubSlug: 'tooltip/tooltip.placement.tsx',
   component: <Component />,
 };

@@ -76,6 +76,6 @@ export const validation: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'forms/floating-label.md#validation',
+  githubSlug: 'floatingLabel/floatingLabel.validation.tsx',
   component: <Component />,
 };

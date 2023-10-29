@@ -70,6 +70,6 @@ export const overrideImage: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/avatar.md#override-image-element',
+  githubSlug: 'avatar/avatar.overrideImage.tsx',
   component: <Component />,
 };

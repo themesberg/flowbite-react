@@ -64,6 +64,6 @@ export const withText: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/rating.md#rating-with-text',
+  githubSlug: 'rating/rating.withText.tsx',
   component: <Component />,
 };

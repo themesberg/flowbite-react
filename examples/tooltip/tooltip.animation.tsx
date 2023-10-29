@@ -91,6 +91,6 @@ export const animation: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/tooltip.md#animation',
+  githubSlug: 'tooltip/tooltip.animation.tsx',
   component: <Component />,
 };

@@ -34,6 +34,6 @@ export const asLink: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/badge.md#badge-as-link',
+  githubSlug: 'badge/badge.asLink.tsx',
   component: <Component />,
 };

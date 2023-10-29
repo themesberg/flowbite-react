@@ -64,6 +64,6 @@ export const backgroundColor: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/breadcrumb.md#background-color',
+  githubSlug: 'breadcrumb/breadcrumb.backgroundColor.tsx',
   component: <Component />,
 };

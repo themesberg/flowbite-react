@@ -85,6 +85,6 @@ export const dropdown: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/avatar.md#avatar-dropdown',
+  githubSlug: 'avatar/avatar.dropdown.tsx',
   component: <Component />,
 };

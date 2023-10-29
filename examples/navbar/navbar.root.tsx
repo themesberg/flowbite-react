@@ -97,6 +97,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/navbar.md#default-navbar',
+  githubSlug: 'navbar/navbar.root.tsx',
   component: <Component />,
 };

@@ -85,6 +85,6 @@ export const withIcons: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/button-group.md#button-group-with-icons',
+  githubSlug: 'buttonGroup/buttonGroup.withIcons.tsx',
   component: <Component />,
 };

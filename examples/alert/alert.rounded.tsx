@@ -32,6 +32,6 @@ export const rounded: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/alert.md#rounded-alert',
+  githubSlug: 'alert/alert.rounded.tsx',
   component: <Component />,
 };

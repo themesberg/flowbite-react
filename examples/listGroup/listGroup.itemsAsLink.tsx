@@ -70,6 +70,6 @@ export const itemsAsLink: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components#.md#list-items-as-links',
+  githubSlug: 'listGroup/listGroup.itemsAsLink.tsx',
   component: <Component />,
 };

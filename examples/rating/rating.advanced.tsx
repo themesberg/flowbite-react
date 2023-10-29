@@ -112,6 +112,6 @@ export const advanced: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/rating.md#advanced-rating',
+  githubSlug: 'rating/rating.advanced.tsx',
   component: <Component />,
 };

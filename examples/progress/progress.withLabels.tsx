@@ -37,6 +37,6 @@ export const withLabels: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/progress.md#progress-bar-with-labels',
+  githubSlug: 'progress/progress.withLabels.tsx',
   component: <Component />,
 };

@@ -190,6 +190,6 @@ export const hover: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/tablemd#table-hover-state',
+  githubSlug: 'table/table.hover.tsx',
   component: <Component />,
 };

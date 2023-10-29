@@ -64,6 +64,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/list-group.md#default-list-group',
+  githubSlug: 'listGroup/listGroup.root.tsx',
   component: <Component />,
 };

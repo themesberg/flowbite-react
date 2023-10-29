@@ -152,6 +152,6 @@ export const withButton: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/sidebar.md#sidebar-with-button',
+  githubSlug: 'sidebar/sidebar.withButton.tsx',
   component: <Component />,
 };

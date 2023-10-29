@@ -73,6 +73,6 @@ export const alignment: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/spinner.md#alignment',
+  githubSlug: 'spinner/spinner.alignment.tsx',
   component: <Component />,
 };

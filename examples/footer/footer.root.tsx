@@ -67,6 +67,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/footer.md#default-footer',
+  githubSlug: 'footer/footer.root.tsx',
   component: <Component />,
 };

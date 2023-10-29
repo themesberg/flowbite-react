@@ -226,6 +226,6 @@ export const withCheckboxes: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/tablemd#table-with-checkboxes',
+  githubSlug: 'table/table.withCheckboxes.tsx',
   component: <Component />,
 };

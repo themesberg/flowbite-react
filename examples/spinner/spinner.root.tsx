@@ -37,6 +37,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/spinner.md#default-spinner',
+  githubSlug: 'spinner/spinner.root.tsx',
   component: <Component />,
 };

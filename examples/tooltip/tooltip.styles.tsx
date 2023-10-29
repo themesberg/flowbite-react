@@ -64,6 +64,6 @@ export const styles: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/tooltip.md#tooltip-styles',
+  githubSlug: 'tooltip/tooltip.styles.tsx',
   component: <Component />,
 };

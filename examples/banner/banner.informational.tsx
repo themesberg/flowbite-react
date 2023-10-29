@@ -136,6 +136,6 @@ export const informational: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/banner.md#informational-banner',
+  githubSlug: 'banner/banner.informational.tsx',
   component: <Component />,
 };

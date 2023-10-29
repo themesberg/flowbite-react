@@ -61,6 +61,6 @@ export const sizing: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/spinner.md#sizing-options',
+  githubSlug: 'spinner/spinner.sizing.tsx',
   component: <Component />,
 };

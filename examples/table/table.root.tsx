@@ -190,6 +190,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/table.md#default-table',
+  githubSlug: 'table/table.root.tsx',
   component: <Component />,
 };

@@ -108,6 +108,6 @@ export const separator: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/sidebar.md#content-separator',
+  githubSlug: 'sidebar/sidebar.separator.tsx',
   component: <Component />,
 };

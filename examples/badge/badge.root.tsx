@@ -42,6 +42,6 @@ export const root: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/badge.md#default-badges',
+  githubSlug: 'badge/badge.root.tsx',
   component: <Component />,
 };

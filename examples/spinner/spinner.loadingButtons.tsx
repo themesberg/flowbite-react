@@ -70,6 +70,6 @@ export const loadingButtons: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/spinner.md#loading-buttons',
+  githubSlug: 'spinner/spinner.loadingButtons.tsx',
   component: <Component />,
 };

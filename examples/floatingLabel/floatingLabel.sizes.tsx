@@ -76,6 +76,6 @@ export const sizes: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'forms/floating-label.md#sizes',
+  githubSlug: 'floatingLabel/floatingLabel.sizes.tsx',
   component: <Component />,
 };

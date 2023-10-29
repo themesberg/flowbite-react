@@ -49,6 +49,6 @@ export const disableArrow: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/tooltip.md#disable-arrow',
+  githubSlug: 'tooltip/tooltip.disableArrow.tsx',
   component: <Component />,
 };

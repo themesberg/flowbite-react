@@ -238,6 +238,6 @@ export const striped: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/table.md#striped-rows',
+  githubSlug: 'table/table.striped.tsx',
   component: <Component />,
 };

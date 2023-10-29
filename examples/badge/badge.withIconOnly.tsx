@@ -36,6 +36,6 @@ export const withIconOnly: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/badge.md#badge-with-icon-only',
+  githubSlug: 'badge/badge.withIconOnly.tsx',
   component: <Component />,
 };

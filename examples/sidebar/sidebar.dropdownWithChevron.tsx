@@ -126,6 +126,6 @@ export const dropdownWithChevron: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/sidebar.md#multi-level-dropdown-with-custom-chevron',
+  githubSlug: 'sidebar/sidebar.dropdownWithChevron.tsx',
   component: <Component />,
 };

@@ -55,6 +55,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/button-group.md#default-button-group',
+  githubSlug: 'buttonGroup/buttonGroup.root.tsx',
   component: <Component />,
 };

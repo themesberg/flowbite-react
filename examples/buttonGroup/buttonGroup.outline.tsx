@@ -91,6 +91,6 @@ export const outline: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/button-group.md#outline-button-group',
+  githubSlug: 'buttonGroup/buttonGroup.outline.tsx',
   component: <Component />,
 };

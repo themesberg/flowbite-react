@@ -55,6 +55,6 @@ export const helperText: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'forms/floating-label.md#helper-text',
+  githubSlug: 'floatingLabel/floatingLabel.helperText.tsx',
   component: <Component />,
 };

@@ -179,6 +179,6 @@ export const vertical: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/timeline.md#vertical-timeline',
+  githubSlug: 'timeline/timeline.vertical.tsx',
   component: <Component />,
 };

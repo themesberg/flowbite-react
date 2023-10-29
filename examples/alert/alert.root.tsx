@@ -32,6 +32,6 @@ export const root: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/alert.md#default-alert',
+  githubSlug: 'alert/alert.root.tsx',
   component: <Component />,
 };

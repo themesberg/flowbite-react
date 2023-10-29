@@ -115,6 +115,6 @@ export const marketingCTA: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/banner.md#marketing-cta-banner',
+  githubSlug: 'banner/banner.marketingCTA.tsx',
   component: <Component />,
 };

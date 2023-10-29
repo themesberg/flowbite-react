@@ -175,6 +175,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/timeline.md#default-timeline',
+  githubSlug: 'timeline/timeline.root.tsx',
   component: <Component />,
 };

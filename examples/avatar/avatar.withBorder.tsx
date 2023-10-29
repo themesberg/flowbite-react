@@ -30,6 +30,6 @@ export const withBorder: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/avatar.md#avatar-with-border',
+  githubSlug: 'avatar/avatar.withBorder.tsx',
   component: <Component />,
 };

@@ -88,6 +88,6 @@ export const colors: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/progress.md#colors',
+  githubSlug: 'progress/progress.colors.tsx',
   component: <Component />,
 };

@@ -34,6 +34,6 @@ export const dotIndicator: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/avatar.md#dot-indicator',
+  githubSlug: 'avatar/avatar.dotIndicator.tsx',
   component: <Component />,
 };

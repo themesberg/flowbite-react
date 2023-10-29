@@ -64,6 +64,6 @@ export const trigger: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/tooltip.md#trigger-type',
+  githubSlug: 'tooltip/tooltip.trigger.tsx',
   component: <Component />,
 };

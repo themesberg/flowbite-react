@@ -30,6 +30,6 @@ export const root: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/avatar.md#default-avatar',
+  githubSlug: 'avatar/avatar.root.tsx',
   component: <Component />,
 };

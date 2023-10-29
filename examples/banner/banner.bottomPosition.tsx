@@ -118,6 +118,6 @@ export const bottomPosition: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/banner.md#bottom-banner-position',
+  githubSlug: 'banner/banner.bottomPosition.tsx',
   component: <Component />,
 };

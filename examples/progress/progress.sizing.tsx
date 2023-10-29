@@ -70,6 +70,6 @@ export const sizing: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/progress.md#sizing',
+  githubSlug: 'progress/progress.sizing.tsx',
   component: <Component />,
 };

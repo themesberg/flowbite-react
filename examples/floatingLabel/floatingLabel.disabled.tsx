@@ -55,6 +55,6 @@ export const disabled: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'forms/floating-label.md#disabled-state',
+  githubSlug: 'floatingLabel/floatingLabel.disabled.tsx',
   component: <Component />,
 };

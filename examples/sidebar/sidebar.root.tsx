@@ -84,6 +84,6 @@ export const root: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/sidebar.md#default-sidebar',
+  githubSlug: 'sidebar/sidebar.root.tsx',
   component: <Component />,
 };

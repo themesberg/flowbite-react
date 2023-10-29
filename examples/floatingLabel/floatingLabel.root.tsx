@@ -55,6 +55,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'forms/floating-label.md#floating-label-example',
+  githubSlug: 'floatingLabel/floatingLabel.root.tsx',
   component: <Component />,
 };

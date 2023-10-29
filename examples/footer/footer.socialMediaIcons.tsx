@@ -205,6 +205,6 @@ export const socialMediaIcons: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/footer.md#social-media-icons',
+  githubSlug: 'footer/footer.socialMediaIcons.tsx',
   component: <Component />,
 };

@@ -97,6 +97,6 @@ export const withCTAButton: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/navbar.md#navbar-with-cta-button',
+  githubSlug: 'navbar/navbar.withCTAButton.tsx',
   component: <Component />,
 };

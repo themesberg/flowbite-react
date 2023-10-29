@@ -100,6 +100,6 @@ export const newsletter: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/banner.md#newsletter-sign-up-banner',
+  githubSlug: 'banner/banner.newsletter.tsx',
   component: <Component />,
 };

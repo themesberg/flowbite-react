@@ -73,6 +73,6 @@ export const withIcons: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/list-group.md#list-group-with-icons',
+  githubSlug: 'listGroup/listGroup.withIcons.tsx',
   component: <Component />,
 };

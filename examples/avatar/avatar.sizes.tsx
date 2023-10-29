@@ -36,6 +36,6 @@ export const sizes: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/avatar.md#sizes',
+  githubSlug: 'avatar/avatar.sizes.tsx',
   component: <Component />,
 };

@@ -54,6 +54,6 @@ export const colors: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/avatar.md#colors',
+  githubSlug: 'avatar/avatar.colors.tsx',
   component: <Component />,
 };

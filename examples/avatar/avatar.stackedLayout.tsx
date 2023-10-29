@@ -54,6 +54,6 @@ export const stackedLayout: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/avatar.md#stacked-layout',
+  githubSlug: 'avatar/avatar.stackedLayout.tsx',
   component: <Component />,
 };

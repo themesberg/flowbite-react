@@ -34,6 +34,6 @@ export const withText: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/avatar.md#avatar-with-text',
+  githubSlug: 'avatar/avatar.withText.tsx',
   component: <Component />,
 };

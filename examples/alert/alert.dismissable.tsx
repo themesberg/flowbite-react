@@ -34,6 +34,6 @@ export const dismissable: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/alert.md#dismissable-alert',
+  githubSlug: 'alert/alert.dismissable.tsx',
   component: <Component />,
 };

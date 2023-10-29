@@ -37,6 +37,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/progress.md#default-progress-bar',
+  githubSlug: 'progress/progress.root.tsx',
   component: <Component />,
 };

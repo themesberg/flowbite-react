@@ -74,6 +74,6 @@ export const sizes: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/badge.md#sizes',
+  githubSlug: 'badge/badge.sizes.tsx',
   component: <Component />,
 };

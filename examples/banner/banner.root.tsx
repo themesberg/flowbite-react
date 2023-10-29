@@ -109,6 +109,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/banner.md#default-sticky-banner',
+  githubSlug: 'banner/banner.root.tsx',
   component: <Component />,
 };

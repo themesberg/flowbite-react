@@ -64,6 +64,6 @@ export const colors: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/spinner.md#spinner-colors',
+  githubSlug: 'spinner/spinner.colors.tsx',
   component: <Component />,
 };

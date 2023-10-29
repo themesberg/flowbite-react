@@ -91,6 +91,6 @@ export const colorOptions: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/button-group.md#color-options',
+  githubSlug: 'buttonGroup/buttonGroup.colorOptions.tsx',
   component: <Component />,
 };

@@ -167,6 +167,6 @@ export const withDropdown: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/navbarmd#navbar-with-dropdown',
+  githubSlug: 'navbar/navbar.withDropdown.tsx',
   component: <Component />,
 };

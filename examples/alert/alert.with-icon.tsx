@@ -34,6 +34,6 @@ export const withIcon: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/alert.md#alert-with-icon',
+  githubSlug: 'alert/alert.withIcon.tsx',
   component: <Component />,
 };

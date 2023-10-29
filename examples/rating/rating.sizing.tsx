@@ -109,6 +109,6 @@ export const sizing: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/rating.md#star-sizing',
+  githubSlug: 'rating/rating.sizing.tsx',
   component: <Component />,
 };

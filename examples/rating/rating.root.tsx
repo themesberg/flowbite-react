@@ -61,6 +61,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'components/rating.md#default-rating',
+  githubSlug: 'rating/rating.root.tsx',
   component: <Component />,
 };

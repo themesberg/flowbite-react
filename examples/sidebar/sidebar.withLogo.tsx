@@ -90,6 +90,6 @@ export const withLogo: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'components/sidebar.md#sidebar-with-logo',
+  githubSlug: 'sidebar/sidebar.withLogo.tsx',
   component: <Component />,
 };
