@@ -1,12 +1,7 @@
 ---
-title: React Dropdown - Flowbite'
+title: React Dropdown - Flowbite
 description: Use the dropdown component to trigger a list of menu items when clicking on an element such as a button or link based on multiple styles, sizes, and placements with React
 ---
-
-import { CodePreview } from '~/app/components/code-preview';
-import { Dropdown, theme } from '~/src';
-import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
-import Link from 'next/link';
 
 The dropdown component is a UI component built with React that allows you to show a list of items when clicking on a trigger element (ie. a button) that you can use to build dropdown menus, lists, and more.
 
@@ -20,341 +15,71 @@ To start using the component make sure that you have imported it from Flowbite R
 import { Dropdown } from 'flowbite-react';
 ```
 
-## Table of Contents
-
 ## Default dropdown
 
 Use this example to create a simple dropdown with a list of menu items by adding child `<Dropdown.Item>` components inside of the main `<Dropdown>` component.
 
-<CodePreview
-  title="Default dropdown"
-  code={`<Dropdown label="Dropdown button" dismissOnClick={false}>
-  <Dropdown.Item>Dashboard</Dropdown.Item>
-  <Dropdown.Item>Settings</Dropdown.Item>
-  <Dropdown.Item>Earnings</Dropdown.Item>
-  <Dropdown.Item>Sign out</Dropdown.Item>
-</Dropdown>`}
->
-  <Dropdown label="Dropdown button" dismissOnClick={false}>
-    <Dropdown.Item>Dashboard</Dropdown.Item>
-    <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>Earnings</Dropdown.Item>
-    <Dropdown.Item>Sign out</Dropdown.Item>
-  </Dropdown>
-</CodePreview>
+<Example name="dropdown.root" />
 
 ## Dropdown divider
 
 Use the `<Dropdown.Divider>` component to add a divider between the dropdown items.
 
-<CodePreview
-  title="Dropdown divider"
-  code={`<Dropdown label="Dropdown button">
-  <Dropdown.Item>Dashboard</Dropdown.Item>
-  <Dropdown.Item>Settings</Dropdown.Item>
-  <Dropdown.Item>Earnings</Dropdown.Item>
-  <Dropdown.Divider />
-  <Dropdown.Item>Separated link</Dropdown.Item>
-</Dropdown>`}
->
-  <Dropdown label="Dropdown button">
-    <Dropdown.Item>Dashboard</Dropdown.Item>
-    <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>Earnings</Dropdown.Item>
-    <Dropdown.Divider />
-    <Dropdown.Item>Separated link</Dropdown.Item>
-  </Dropdown>
-</CodePreview>
+<Example name="dropdown.divider" />
 
 ## Dropdown header
 
 Use the `<Dropdown.Header>` component to add a header to the dropdown. You can use this to add a user profile image and name, for example.
 
-<CodePreview
-  title="Dropdown header"
-  code={`<Dropdown label="Dropdown button">
-  <Dropdown.Header>
-    <span className="block text-sm">Bonnie Green</span>
-    <span className="block truncate text-sm font-medium">bonnie@flowbite.com</span>
-  </Dropdown.Header>
-  <Dropdown.Item>Dashboard</Dropdown.Item>
-  <Dropdown.Item>Settings</Dropdown.Item>
-  <Dropdown.Item>Earnings</Dropdown.Item>
-  <Dropdown.Divider />
-  <Dropdown.Item>Sign out</Dropdown.Item>
-</Dropdown>`}
->
-  <Dropdown label="Dropdown button">
-    <Dropdown.Header>
-      <span className="block text-sm">Bonnie Green</span>
-      <span className="block truncate text-sm font-medium">bonnie@flowbite.com</span>
-    </Dropdown.Header>
-    <Dropdown.Item>Dashboard</Dropdown.Item>
-    <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>Earnings</Dropdown.Item>
-    <Dropdown.Divider />
-    <Dropdown.Item>Sign out</Dropdown.Item>
-  </Dropdown>
-</CodePreview>
+<Example name="dropdown.header" />
 
 ## Dropdown items with icon
 
 Add custom icons next to the menu items by using the `icon` prop on the `<Dropdown.Item>` component.
 
-<CodePreview
-  importExternal="import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';"
-  title="Dropdown items with icon"
-  code={`<Dropdown label="Dropdown">
-  <Dropdown.Header>
-    <span className="block text-sm">Bonnie Green</span>
-    <span className="block truncate text-sm font-medium">bonnie@flowbite.com</span>
-  </Dropdown.Header>
-  <Dropdown.Item icon={HiViewGrid}>Dashboard</Dropdown.Item>
-  <Dropdown.Item icon={HiCog}>Settings</Dropdown.Item>
-  <Dropdown.Item icon={HiCurrencyDollar}>Earnings</Dropdown.Item>
-  <Dropdown.Divider />
-  <Dropdown.Item icon={HiLogout}>Sign out</Dropdown.Item>
-</Dropdown>`}
->
-  <Dropdown label="Dropdown">
-    <Dropdown.Header>
-      <span className="block text-sm">Bonnie Green</span>
-      <span className="block truncate text-sm font-medium">bonnie@flowbite.com</span>
-    </Dropdown.Header>
-    <Dropdown.Item icon={HiViewGrid}>Dashboard</Dropdown.Item>
-    <Dropdown.Item icon={HiCog}>Settings</Dropdown.Item>
-    <Dropdown.Item icon={HiCurrencyDollar}>Earnings</Dropdown.Item>
-    <Dropdown.Divider />
-    <Dropdown.Item icon={HiLogout}>Sign out</Dropdown.Item>
-  </Dropdown>
-</CodePreview>
+<Example name="dropdown.itemsWithIcon" />
 
 ## Inline dropdown
 
 Use the `inline` prop to make the dropdown appear inline with the trigger element.
 
-<CodePreview
-  title="Inline dropdown"
-  code={`<Dropdown label="Dropdown" inline>
-  <Dropdown.Item>Dashboard</Dropdown.Item>
-  <Dropdown.Item>Settings</Dropdown.Item>
-  <Dropdown.Item>Earnings</Dropdown.Item>
-  <Dropdown.Item>Sign out</Dropdown.Item>
-</Dropdown>`}
->
-  <Dropdown label="Dropdown" inline>
-    <Dropdown.Item>Dashboard</Dropdown.Item>
-    <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>Earnings</Dropdown.Item>
-    <Dropdown.Item>Sign out</Dropdown.Item>
-  </Dropdown>
-</CodePreview>
+<Example name="dropdown.inline" />
 
 ## Dropdown sizes
 
 You can use the `size` prop to change the size of the dropdown. The default size is `md`.
 
-<CodePreview
-  title="Sizing"
-  code={`<div className="flex items-center gap-4">
-  <Dropdown label="Small dropdown" size="sm">
-    <Dropdown.Item>Dashboard</Dropdown.Item>
-    <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>Earnings</Dropdown.Item>
-    <Dropdown.Item>Sign out</Dropdown.Item>
-  </Dropdown>
-  <Dropdown label="Large dropdown" size="lg">
-    <Dropdown.Item>Dashboard</Dropdown.Item>
-    <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>Earnings</Dropdown.Item>
-    <Dropdown.Item>Sign out</Dropdown.Item>
-  </Dropdown>
-</div>`}
->
-  <div className="flex items-center gap-4">
-    <Dropdown label="Small dropdown" size="sm">
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
-    </Dropdown>
-    <Dropdown label="Large dropdown" size="lg">
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
-    </Dropdown>
-  </div>
-</CodePreview>
+<Example name="dropdown.sizes" />
 
 ## Placement options
 
 Use the `placement` prop to change the placement of the dropdown by choosing one of the following options: `top`, `right`, `bottom` or `left`. If there is not enough space then the dropdown will be automatically repositioned.
 
-<CodePreview
-  title="Placement"
-  code={`<div className="flex flex-col gap-4">
-  <div className="flex items-center gap-4">
-    <Dropdown label="Dropdown top" placement="top">
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
-    </Dropdown>
-    <Dropdown label="Dropdown right" placement="right">
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
-    </Dropdown>
-    <Dropdown label="Dropdown bottom" placement="bottom">
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
-    </Dropdown>
-    <Dropdown label="Dropdown left" placement="left">
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
-    </Dropdown>
-  </div>
-  <div className="flex items-center gap-4">
-    <Dropdown label="Dropdown left start" placement="left-start">
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
-    </Dropdown>
-    <Dropdown label="Dropdown right start" placement="right-start">
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
-    </Dropdown>
-  </div>
-</div>`}
->
-  <div className="flex flex-col gap-4">
-    <div className="flex items-center gap-4">
-      <Dropdown label="Dropdown top" placement="top">
-        <Dropdown.Item>Dashboard</Dropdown.Item>
-        <Dropdown.Item>Settings</Dropdown.Item>
-        <Dropdown.Item>Earnings</Dropdown.Item>
-        <Dropdown.Item>Sign out</Dropdown.Item>
-      </Dropdown>
-      <Dropdown label="Dropdown right" placement="right">
-        <Dropdown.Item>Dashboard</Dropdown.Item>
-        <Dropdown.Item>Settings</Dropdown.Item>
-        <Dropdown.Item>Earnings</Dropdown.Item>
-        <Dropdown.Item>Sign out</Dropdown.Item>
-      </Dropdown>
-      <Dropdown label="Dropdown bottom" placement="bottom">
-        <Dropdown.Item>Dashboard</Dropdown.Item>
-        <Dropdown.Item>Settings</Dropdown.Item>
-        <Dropdown.Item>Earnings</Dropdown.Item>
-        <Dropdown.Item>Sign out</Dropdown.Item>
-      </Dropdown>
-      <Dropdown label="Dropdown left" placement="left">
-        <Dropdown.Item>Dashboard</Dropdown.Item>
-        <Dropdown.Item>Settings</Dropdown.Item>
-        <Dropdown.Item>Earnings</Dropdown.Item>
-        <Dropdown.Item>Sign out</Dropdown.Item>
-      </Dropdown>
-    </div>
-    <div className="flex items-center gap-4">
-      <Dropdown label="Dropdown left start" placement="left-start">
-        <Dropdown.Item>Dashboard</Dropdown.Item>
-        <Dropdown.Item>Settings</Dropdown.Item>
-        <Dropdown.Item>Earnings</Dropdown.Item>
-        <Dropdown.Item>Sign out</Dropdown.Item>
-      </Dropdown>
-      <Dropdown label="Dropdown right start" placement="right-start">
-        <Dropdown.Item>Dashboard</Dropdown.Item>
-        <Dropdown.Item>Settings</Dropdown.Item>
-        <Dropdown.Item>Earnings</Dropdown.Item>
-        <Dropdown.Item>Sign out</Dropdown.Item>
-      </Dropdown>
-    </div>
-  </div>
-</CodePreview>
+<Example name="dropdown.placement" />
 
 ## Click event handler
 
 Add a custom `onClick` event handler to the `<Dropdown.Item>` component to handle the click event.
 
-<CodePreview
-  title="Dropdown item on click handler"
-  code={`<Dropdown label="Dropdown">
-  <Dropdown.Item onClick={() => alert('Dashboard!')}>Dashboard</Dropdown.Item>
-  <Dropdown.Item onClick={() => alert('Settings!')}>Settings</Dropdown.Item>
-  <Dropdown.Item onClick={() => alert('Earnings!')}>Earnings</Dropdown.Item>
-  <Dropdown.Item onClick={() => alert('Sign out!')}>Sign out</Dropdown.Item>
-</Dropdown>`}
->
-  <Dropdown label="Dropdown">
-    <Dropdown.Item onClick={() => alert('Dashboard!')}>Dashboard</Dropdown.Item>
-    <Dropdown.Item onClick={() => alert('Settings!')}>Settings</Dropdown.Item>
-    <Dropdown.Item onClick={() => alert('Earnings!')}>Earnings</Dropdown.Item>
-    <Dropdown.Item onClick={() => alert('Sign out!')}>Sign out</Dropdown.Item>
-  </Dropdown>
-</CodePreview>
+<Example name="dropdown.events" />
 
 ## Custom trigger
 
 To customize the trigger element you can use `renderTrigger` property.
 
-<CodePreview
-  title="Custom trigger dropdown"
-  code={`<Dropdown dismissOnClick={false} renderTrigger={() => <span>My custom trigger</span>}>
-  <Dropdown.Item>Dashboard</Dropdown.Item>
-  <Dropdown.Item>Settings</Dropdown.Item>
-  <Dropdown.Item>Earnings</Dropdown.Item>
-  <Dropdown.Item>Sign out</Dropdown.Item>
-</Dropdown>`}
->
-  <Dropdown dismissOnClick={false} renderTrigger={() => <span>My custom trigger</span>}>
-    <Dropdown.Item>Dashboard</Dropdown.Item>
-    <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>Earnings</Dropdown.Item>
-    <Dropdown.Item>Sign out</Dropdown.Item>
-  </Dropdown>
-</CodePreview>
+<Example name="dropdown.customTrigger" />
 
 ## Custom item
 
 To customize the `Dropdown.Item` base element you can use the `as` property.
 
-<CodePreview
-  title="Custom dropdown item"
-  importExternal="import Link from 'next/link';"
-  code={`<Dropdown dismissOnClick={false} label="My custom item">
-  <Dropdown.Item as={Link} href="/">
-    Home
-  </Dropdown.Item>
-  <Dropdown.Item as="a" href="https://flowbite.com/" target="_blank">
-    External link
-  </Dropdown.Item>
-</Dropdown>`}
->
-  <Dropdown dismissOnClick={false} label="My custom item">
-    <Dropdown.Item as={Link} href="/">
-      Home
-    </Dropdown.Item>
-    <Dropdown.Item as="a" href="https://flowbite.com/" target="_blank">
-      External link
-    </Dropdown.Item>
-  </Dropdown>
-</CodePreview>
+<Example name="dropdown.customItem" />
 
 ## Theme
 
 To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
 
-<pre className="language-tsx">
-  <code>{JSON.stringify(theme.dropdown, null, 2)}</code>
-</pre>
+<Theme name="dropdown" />
 
 ## References
 

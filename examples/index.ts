@@ -10,7 +10,7 @@ export * as buttonGroup from './buttonGroup';
 // export * as card from './card';
 export * as carousel from './carousel';
 export * as datepicker from './datepicker';
-// export * as dropdown from './dropdown';
+export * as dropdown from './dropdown';
 export * as floatingLabel from './floatingLabel';
 export * as footer from './footer';
 // export * as forms from './forms';
