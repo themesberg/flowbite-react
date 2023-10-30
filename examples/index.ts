@@ -20,7 +20,7 @@ export * as footer from './footer';
 export * as kbd from './kbd';
 // export * as label from './label';
 export * as listGroup from './listGroup';
-// export * as modal from './modal';
+export * as modal from './modal';
 export * as navbar from './navbar';
 export * as pagination from './pagination';
 export * as progress from './progress';
