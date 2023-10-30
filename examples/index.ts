@@ -13,7 +13,7 @@ export * as datepicker from './datepicker';
 export * as dropdown from './dropdown';
 export * as floatingLabel from './floatingLabel';
 export * as footer from './footer';
-// export * as forms from './forms';
+export * as forms from './forms';
 export * as kbd from './kbd';
 export * as listGroup from './listGroup';
 export * as modal from './modal';
