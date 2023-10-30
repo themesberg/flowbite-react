@@ -8,7 +8,7 @@ import { Kbd } from 'flowbite-react';
 
 function Component() {
   return (
-    <>
+    <div className="flex flex-wrap gap-1">
       <Kbd>1</Kbd>
       <Kbd>2</Kbd>
       <Kbd>3</Kbd>
@@ -19,7 +19,7 @@ function Component() {
       <Kbd>8</Kbd>
       <Kbd>9</Kbd>
       <Kbd>0</Kbd>
-    </>
+    </div>
   );
 }
 `;
@@ -29,7 +29,7 @@ import { Kbd } from 'flowbite-react';
 
 function Component() {
   return (
-    <>
+    <div className="flex flex-wrap gap-1">
       <Kbd>1</Kbd>
       <Kbd>2</Kbd>
       <Kbd>3</Kbd>
@@ -40,14 +40,14 @@ function Component() {
       <Kbd>8</Kbd>
       <Kbd>9</Kbd>
       <Kbd>0</Kbd>
-    </>
+    </div>
   );
 }
 `;
 
 function Component() {
   return (
-    <>
+    <div className="flex flex-wrap gap-1">
       <Kbd>1</Kbd>
       <Kbd>2</Kbd>
       <Kbd>3</Kbd>
@@ -58,7 +58,7 @@ function Component() {
       <Kbd>8</Kbd>
       <Kbd>9</Kbd>
       <Kbd>0</Kbd>
-    </>
+    </div>
   );
 }
 

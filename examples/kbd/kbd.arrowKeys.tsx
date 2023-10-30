@@ -10,12 +10,12 @@ import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeybo
 
 function Component() {
   return (
-    <>
+    <div className="flex flex-wrap gap-1">
       <Kbd icon={MdKeyboardArrowUp} />
       <Kbd icon={MdKeyboardArrowDown} />
       <Kbd icon={MdKeyboardArrowLeft} />
       <Kbd icon={MdKeyboardArrowRight} />
-    </>
+    </div>
   );
 }
 `;
@@ -26,24 +26,24 @@ import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeybo
 
 function Component() {
   return (
-    <>
+    <div className="flex flex-wrap gap-1">
       <Kbd icon={MdKeyboardArrowUp} />
       <Kbd icon={MdKeyboardArrowDown} />
       <Kbd icon={MdKeyboardArrowLeft} />
       <Kbd icon={MdKeyboardArrowRight} />
-    </>
+    </div>
   );
 }
 `;
 
 function Component() {
   return (
-    <>
+    <div className="flex flex-wrap gap-1">
       <Kbd icon={MdKeyboardArrowUp} />
       <Kbd icon={MdKeyboardArrowDown} />
       <Kbd icon={MdKeyboardArrowLeft} />
       <Kbd icon={MdKeyboardArrowRight} />
-    </>
+    </div>
   );
 }
 
