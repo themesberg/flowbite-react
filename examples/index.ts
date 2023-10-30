@@ -22,7 +22,7 @@ export * as kbd from './kbd';
 export * as listGroup from './listGroup';
 // export * as modal from './modal';
 export * as navbar from './navbar';
-// export * as pagination from './pagination';
+export * as pagination from './pagination';
 export * as progress from './progress';
 // export * as radio from './radio';
 // export * as rangeSlider from './rangeSlider';
