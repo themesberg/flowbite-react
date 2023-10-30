@@ -8,7 +8,7 @@ export * as breadcrumb from './breadcrumb';
 // export * as button from './button';
 export * as buttonGroup from './buttonGroup';
 // export * as card from './card';
-// export * as carousel from './carousel';
+export * as carousel from './carousel';
 // export * as checkbox from './checkbox';
 // export * as darkThemeToggle from './darkThemeToggle';
 export * as datepicker from './datepicker';
