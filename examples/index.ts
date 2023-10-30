@@ -11,7 +11,7 @@ export * as buttonGroup from './buttonGroup';
 // export * as carousel from './carousel';
 // export * as checkbox from './checkbox';
 // export * as darkThemeToggle from './darkThemeToggle';
-// export * as datepicker from './datepicker';
+export * as datepicker from './datepicker';
 // export * as dropdown from './dropdown';
 // export * as fileInput from './fileInput';
 export * as floatingLabel from './floatingLabel';
