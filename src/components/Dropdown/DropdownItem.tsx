@@ -12,6 +12,7 @@ export interface FlowbiteDropdownItemTheme {
   container: string;
   base: string;
   icon: string;
+  input: string;
 }
 
 export type DropdownItemProps<T extends ElementType = 'button'> = {

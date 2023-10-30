@@ -186,6 +186,50 @@ describe('Components / Dropdown', () => {
       expect(screen.getByRole('link')).toBe(item);
     });
   });
+
+  describe('Dropdown item radio', async () => {
+    it('should toggle radio item to checked when clicked', async () => {
+      const user = userEvent.setup();
+      render(<TestDropdownInputs dismissOnClick={false} />);
+
+      await act(() => user.click(button()));
+      expect(screen.getByRole('radio', { name: 'Berlin' })).not.toBeChecked();
+      await act(() => userEvent.click(screen.getByText('Berlin')));
+
+      expect(screen.getByRole('radio', { name: 'Berlin' })).toBeChecked();
+    });
+
+    it('should toggle radio when another radio in group in checked', async () => {
+      const user = userEvent.setup();
+      render(<TestDropdownInputs dismissOnClick={false} />);
+
+      await act(() => user.click(button()));
+      expect(screen.getByRole('radio', { name: 'Berlin' })).not.toBeChecked();
+      await act(() => userEvent.click(screen.getByText('Berlin')));
+
+      expect(screen.getByRole('radio', { name: 'Berlin' })).toBeChecked();
+      await act(() => userEvent.click(screen.getByText('Tokyo')));
+      expect(screen.getByRole('radio', { name: 'Berlin' })).not.toBeChecked();
+      expect(screen.getByRole('radio', { name: 'Tokyo' })).toBeChecked();
+    });
+  });
+
+  describe('Dropdown item checkbox', async () => {
+    it('should toggle checkbox item to checked/unchecked when clicked', async () => {
+      const user = userEvent.setup();
+      render(<TestDropdownInputs dismissOnClick={false} />);
+
+      await act(() => user.click(button()));
+      expect(dropdown()).toBeInTheDocument();
+      expect(screen.getByRole('checkbox', { name: 'House' })).not.toBeChecked();
+
+      await act(() => userEvent.click(screen.getByText('House')));
+      expect(screen.getByRole('checkbox', { name: 'House' })).toBeChecked();
+
+      await act(() => userEvent.click(screen.getByText('House')));
+      expect(screen.getByRole('checkbox', { name: 'House' })).not.toBeChecked();
+    });
+  });
 });
 
 const TestDropdown: FC<Partial<DropdownProps>> = ({
@@ -213,6 +257,44 @@ const TestDropdown: FC<Partial<DropdownProps>> = ({
     <Dropdown.Item>Earnings</Dropdown.Item>
     <Dropdown.Divider />
     <Dropdown.Item>Sign out</Dropdown.Item>
+  </Dropdown>
+);
+
+const TestDropdownInputs: FC<Partial<DropdownProps>> = ({
+  dismissOnClick = false,
+  inline = false,
+  disabled,
+  trigger,
+  renderTrigger,
+}) => (
+  <Dropdown
+    label="Dropdown button"
+    placement="right"
+    dismissOnClick={dismissOnClick}
+    inline={inline}
+    trigger={trigger}
+    disabled={disabled}
+    renderTrigger={renderTrigger}
+  >
+    <Dropdown.Header>
+      <span className="block text-sm">Select City</span>
+    </Dropdown.Header>
+    <Dropdown.ItemRadio label="berlin" name="city">
+      Berlin
+    </Dropdown.ItemRadio>
+    <Dropdown.ItemRadio label="chicago" name="city">
+      Chicago
+    </Dropdown.ItemRadio>
+    <Dropdown.ItemRadio label="lagos" name="city">
+      Lagos
+    </Dropdown.ItemRadio>
+    <Dropdown.ItemRadio label="tokyo" name="city">
+      Tokyo
+    </Dropdown.ItemRadio>
+    <Dropdown.Divider />
+    <Dropdown.ItemCheckbox label="apartment">Apartment</Dropdown.ItemCheckbox>
+    <Dropdown.ItemCheckbox label="house">House</Dropdown.ItemCheckbox>
+    <Dropdown.ItemCheckbox label="hotel">Hotel</Dropdown.ItemCheckbox>
   </Dropdown>
 );
 
