@@ -36,7 +36,7 @@ const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
         <DocsNavbar {...state} />
         <div className="lg:flex">
           <DocsSidebar {...state} />
-          <div className="w-full">{children}</div>
+          <div className="w-full min-w-0">{children}</div>
         </div>
       </div>
     </div>
