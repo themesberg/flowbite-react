@@ -122,8 +122,6 @@
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-element-to-jsx-string": "^15.0.0",
-    "react-syntax-highlighter": "^15.5.0",
     "rehype-autolink-headings": "^7.0.0",
     "rehype-slug": "^5.1.0",
     "resize-observer-polyfill": "^1.5.1",
