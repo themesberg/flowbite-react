@@ -84,12 +84,32 @@ export function CodeDemo({ data }: CodeDemoProps) {
     setVariant(variant);
   }
 
+  function getShouldExpand(rawCode: string) {
+    const rem = 16;
+    const offset = 41; // expand/collapse button height
+    const maxHeight = 18 * rem + offset; // mirror `max-h-72`
+    const codeHeight = getTextHeight(rawCode);
+
+    return codeHeight > maxHeight;
+  }
+
+  function getTextHeight(value: string) {
+    const fontSize = 16.5;
+    const lineHeight = 1.25;
+
+    return countLines(value) * fontSize * lineHeight;
+  }
+
+  function countLines(value: string) {
+    return (value.match(/\n/g) || '').length + 1;
+  }
+
   const variants = getVariants(data);
   const code = getCode(data, variant);
   const codeItems = getCodeItems(code);
   const current = getCurrent(codeItems, tabIndex);
+  const shouldExpand = getShouldExpand(current.code.trim());
 
-  // TODO: cleanup
   return (
     <div className="code-example mt-8">
       <div className="w-full rounded-t-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
@@ -102,7 +122,12 @@ export function CodeDemo({ data }: CodeDemoProps) {
       </div>
       <CodePreview isDarkMode={isDarkMode}>{data.component}</CodePreview>
       <div className="code-syntax-wrapper">
-        <div className="code-syntax relative border-x border-y border-gray-200 pb-[41px] dark:border-gray-600">
+        <div
+          className={twMerge(
+            'code-syntax relative border-x border-y border-gray-200 dark:border-gray-600',
+            shouldExpand && 'pb-[41px]',
+          )}
+        >
           <div className="flex w-full rounded-t-md border-b border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
             <Tabs tabIndex={tabIndex} items={codeItems} onSelect={setTabIndex} />
             {/* TODO: style */}
@@ -119,11 +144,12 @@ export function CodeDemo({ data }: CodeDemoProps) {
               <CopyToClipboardButton isJustCopied={isJustCopied} onClick={() => copyToClipboard(current.code)} />
             </div>
           </div>
-          <div className={twMerge('!overflow-y-hidden', !isExpanded && 'max-h-72')}>
+          <div className={twMerge('!overflow-y-hidden', shouldExpand && !isExpanded && 'max-h-72')}>
             <CodeHighlight className="!mb-0 !rounded-none" code={current.code} language={current.language} />
           </div>
-          {/* TODO: show only when height > X */}
-          <CollapseExpandButton isExpanded={isExpanded} onClick={() => setExpanded(!isExpanded)} />
+          {shouldExpand && (
+            <CollapseExpandButton isExpanded={isExpanded} onClick={() => setExpanded((state) => !state)} />
+          )}
         </div>
       </div>
     </div>
