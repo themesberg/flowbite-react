@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { HiFire } from 'react-icons/hi';
-import { type CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/components/code-demo';
 import { Button, Toast } from '~/src';
 
 const code = `

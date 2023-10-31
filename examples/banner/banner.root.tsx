@@ -1,6 +1,6 @@
 import { HiX } from 'react-icons/hi';
 import { MdAnnouncement } from 'react-icons/md';
-import { type CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/components/code-demo';
 import { Banner, BannerCollapseButton } from '~/src';
 
 const code = `

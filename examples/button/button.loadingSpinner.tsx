@@ -1,5 +1,5 @@
 import { AiOutlineLoading } from 'react-icons/ai';
-import { type CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/components/code-demo';
 import { Button } from '~/src';
 
 const code = `

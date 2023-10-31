@@ -1,5 +1,5 @@
 import { FaTelegramPlane } from 'react-icons/fa';
-import { type CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/components/code-demo';
 import { Toast } from '~/src';
 
 const code = `

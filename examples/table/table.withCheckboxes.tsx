@@ -1,4 +1,4 @@
-import { type CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/components/code-demo';
 import { Checkbox, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from '~/src';
 
 const code = `

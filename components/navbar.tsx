@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import { BsGithub } from 'react-icons/bs';
 import { SiDiscord, SiStorybook } from 'react-icons/si';
 import { Badge, DarkThemeToggle, Tooltip } from '~/src';
-import pkg from './../../package.json' assert { type: 'json' };
+import pkg from './../package.json' assert { type: 'json' };
 import { DocSearchInput } from './docsearch-input';
 
 export const NavbarLinks: FC = () => {

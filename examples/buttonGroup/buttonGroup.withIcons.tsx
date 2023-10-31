@@ -1,5 +1,5 @@
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
-import { type CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/components/code-demo';
 import { Button, ButtonGroup } from '~/src';
 
 const code = `

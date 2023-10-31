@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { type CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/components/code-demo';
 import { Button, Checkbox, Label, Modal, TextInput } from '~/src';
 
 const code = `

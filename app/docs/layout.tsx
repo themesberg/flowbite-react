@@ -8,11 +8,11 @@ import type { FC, PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
+import { Banner } from '~/components/banner';
+import { DocSearchInput } from '~/components/docsearch-input';
+import { NavbarIcons, NavbarLinks } from '~/components/navbar';
 import { Accordion, Badge, Navbar, Sidebar } from '~/src';
 import { isClient } from '~/src/helpers/is-client';
-import { Banner } from '../components/banner';
-import { DocSearchInput } from '../components/docsearch-input';
-import { NavbarIcons, NavbarLinks } from '../components/navbar';
 
 import '~/styles/docs.css';
 

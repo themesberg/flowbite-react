@@ -1,4 +1,4 @@
-import { type CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/components/code-demo';
 import { Rating, RatingAdvanced, RatingStar } from '~/src';
 
 const code = `

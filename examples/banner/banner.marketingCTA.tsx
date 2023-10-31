@@ -1,5 +1,5 @@
 import { HiX } from 'react-icons/hi';
-import { type CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/components/code-demo';
 import { Banner, BannerCollapseButton, Button } from '~/src';
 
 const code = `

@@ -4,8 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
-import { CarbonAds } from '~/app/components/carbon-ads';
-import { Mdx } from '~/app/components/mdx';
+import { CarbonAds } from '~/components/carbon-ads';
+import { Mdx } from '~/components/mdx';
 import { Footer } from '~/src';
 
 interface Props {

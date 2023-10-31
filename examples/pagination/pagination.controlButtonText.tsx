@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { type CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/components/code-demo';
 import { Pagination } from '~/src';
 
 const code = `

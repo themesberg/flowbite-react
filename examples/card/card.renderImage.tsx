@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { type CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/components/code-demo';
 import { Card } from '~/src';
 
 const code = `

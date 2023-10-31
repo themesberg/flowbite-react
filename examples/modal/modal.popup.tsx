@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { type CodeData } from '~/app/components/code-demo';
+import { type CodeData } from '~/components/code-demo';
 import { Button, Modal } from '~/src';
 
 const code = `
