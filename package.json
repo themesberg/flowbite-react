@@ -185,7 +185,8 @@
     "rules": {
       "@typescript-eslint/consistent-type-imports": "warn",
       "@next/next/no-img-element": "off",
-      "jsx-a11y/anchor-is-valid": "off"
+      "jsx-a11y/anchor-is-valid": "off",
+      "react/no-unescaped-entities": "off"
     }
   }
 }

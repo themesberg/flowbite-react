@@ -41,8 +41,7 @@ function Component() {
 function Component() {
   return (
     <Dropdown dismissOnClick={false} label="My custom item">
-      {/* TODO: fix it */}
-      {/* @ts-ignore */}
+      {/* @ts-expect-error TODO: fix `as` inference */}
       <DropdownItem as={Link} href="#">
         Home
       </DropdownItem>
