@@ -1,5 +1,5 @@
 export const range: (start: number, end: number) => number[] = (start, end) => {
-  if (start > end) {
+  if (start >= end) {
     return [];
   }
 
