@@ -1,7 +1,7 @@
 import type { FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { DeepPartial } from '../..';
-import { useTheme } from '../..';
+import type { DeepPartial } from '../../types';
+import { getTheme } from '../../theme-store';
 import { mergeDeep } from '../../helpers/merge-deep';
 
 export interface FlowbiteListItemTheme {
@@ -14,7 +14,7 @@ export interface ListItemProps extends PropsWithChildren {
 }
 
 export const ListItem: FC<ListItemProps> = ({ children, className, theme: customTheme = {} }) => {
-  const theme = mergeDeep(useTheme().theme.listGroup.item, customTheme);
+  const theme = mergeDeep(getTheme().listGroup.item, customTheme);
 
   return <li className={twMerge(theme.base, className)}>{children}</li>;
 };
