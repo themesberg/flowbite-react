@@ -87,8 +87,9 @@ export function CodeDemo({ data }: CodeDemoProps) {
   function getShouldExpand(rawCode: string) {
     const rem = 16;
     const offset = 41; // expand/collapse button height
+    const padding = 28;
     const maxHeight = 18 * rem + offset; // mirror `max-h-72`
-    const codeHeight = getTextHeight(rawCode);
+    const codeHeight = getTextHeight(rawCode) + padding;
 
     return codeHeight > maxHeight;
   }
