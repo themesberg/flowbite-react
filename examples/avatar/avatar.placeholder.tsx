@@ -2,6 +2,21 @@ import { type CodeData } from '~/app/components/code-demo';
 import { Avatar } from '~/src';
 
 const code = `
+'use client';
+
+import { Avatar } from 'flowbite-react';
+
+function Component() {
+  return (
+    <div className="flex flex-wrap gap-2">
+      <Avatar />
+      <Avatar rounded />
+    </div>
+  );
+}
+`;
+
+const codeRSC = `
 import { Avatar } from 'flowbite-react';
 
 function Component() {
@@ -25,11 +40,18 @@ function Component() {
 
 export const placeholder: CodeData = {
   type: 'single',
-  code: {
-    fileName: 'AvatarPlaceholder',
-    language: 'tsx',
-    code,
-  },
+  code: [
+    {
+      fileName: 'client',
+      language: 'tsx',
+      code,
+    },
+    {
+      fileName: 'server',
+      language: 'tsx',
+      code: codeRSC,
+    },
+  ],
   githubSlug: 'avatar/avatar.placeholder.tsx',
   component: <Component />,
 };

@@ -2,6 +2,22 @@ import { type CodeData } from '~/app/components/code-demo';
 import { Alert } from '~/src';
 
 const code = `
+'use client';
+
+import { Alert } from 'flowbite-react';
+
+function Component() {
+  return (
+    <Alert color="warning" withBorderAccent>
+      <span>
+        <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
+      </span>
+    </Alert>
+  );
+}
+`;
+
+const codeRSC = `
 import { Alert } from 'flowbite-react';
 
 function Component() {
@@ -18,20 +34,25 @@ function Component() {
 function Component() {
   return (
     <Alert color="warning" withBorderAccent>
-      <span>
-        <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
-      </span>
+      <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
     </Alert>
   );
 }
 
 export const borderAccent: CodeData = {
   type: 'single',
-  code: {
-    fileName: 'BorderAccent',
-    language: 'tsx',
-    code,
-  },
+  code: [
+    {
+      fileName: 'client',
+      language: 'tsx',
+      code,
+    },
+    {
+      fileName: 'server',
+      language: 'tsx',
+      code: codeRSC,
+    },
+  ],
   githubSlug: 'alert/alert.borderAccent.tsx',
   component: <Component />,
 };

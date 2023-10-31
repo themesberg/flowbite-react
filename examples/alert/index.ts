@@ -1,7 +1,7 @@
-export { additionalContent } from './alert.additional-content';
-export { allOptions } from './alert.all-options';
-export { borderAccent } from './alert.border-accent';
-export { dismissable } from './alert.dismissable';
+export { additionalContent } from './alert.additionalContent';
+export { allOptions } from './alert.allOptions';
+export { borderAccent } from './alert.borderAccent';
+export { dismissible } from './alert.dismissible';
 export { root } from './alert.root';
 export { rounded } from './alert.rounded';
-export { withIcon } from './alert.with-icon';
+export { withIcon } from './alert.withIcon';
