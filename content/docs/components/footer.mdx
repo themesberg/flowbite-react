@@ -1,0 +1,50 @@
+---
+title: React Footer - Flowbite
+description: Use the footer component at the end of your page to show content such as sitemap links, brand logo, social icons and more using React and Tailwind CSS
+---
+
+The footer component is an important section of a website where you should provide content such as sitemap links, copyright text, logo of your brand, social media account links, and more.
+
+Get started with the examples from Flowbite React based on multiple styles, sizes, and colors by using React components and the utility classes from Tailwind CSS.
+
+To start using the footer component you need to import it from `flowbite-react`:
+
+```jsx
+import { Footer } from 'flowbite-react';
+```
+
+## Default footer
+
+Use this example to create a simple and responsive footer component with copyright text and links by adding the `<Footer.Copyright>` and `<Footer.Link>` items inside the `<Footer>` component.
+
+Use the `href` prop to add a link to the footer link item and the `year` prop to add the current year.
+
+<Example name="footer.root" />
+
+## Footer with logo
+
+Use the `<Footer.Brand>` component to add a logo to the footer component.
+
+<Example name="footer.withLogo" />
+
+## Social media icons
+
+Feature social media accounts by adding the `<Footer.Icon>` component inside the `<Footer>` component.
+
+<Example name="footer.socialMediaIcons" />
+
+## Sitemap links
+
+Add sitemap links to the footer component by using the `<Footer.LinkGroup>` and `<Footer.Link>` components. You can also use the `<Footer.Title>` component to add a title to the sitemap links and group links together.
+
+<Example name="footer.sitemapLinks" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="footer" />
+
+## References
+
+- [Flowbite Footer](https://flowbite.com/docs/components/footer/)

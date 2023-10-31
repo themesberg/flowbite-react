@@ -1,0 +1,64 @@
+---
+title: React Tabs - Flowbite
+description: Get started with the tabs component from Flowbite React to show a list of tab items where you can switch between them using multiple styles, colors and layouts
+---
+
+The tabs component can be used to show a list of tab items that you can click on to change the content inside of the main tabs component using React state reactivity.
+
+Choose one of the examples below based on various styles, layouts, and content types that you can customize with React components, props and the utility classes from Tailwind CSS.
+
+Make sure that you import the component from the `flowbite-react` library:
+
+```jsx
+import { Tabs } from 'flowbite-react';
+```
+
+## Default tabs
+
+Add the `<Tabs.Item>` child component to the `<Tabs>` component to create a tab item and you can add any type of markup and React components inside of it and it will be shown when clicking on the associated tab item.
+
+You can also choose to add the `active` prop to the `<Tabs.Item>` component to make it active by default and set the title of the tab item using the `title` prop.
+
+Additionally, if you pass the `disabled` prop to the `<Tabs.Item>` component, it will be disabled and you won't be able to click on it.
+
+<Example name="tabs.root" />
+
+## Tabs with underline
+
+Pass the `style="underline"` prop to the `<Tabs>` component to make the tabs have an underline style.
+
+<Example name="tabs.withUnderline" />
+
+## Tabs with icons
+
+Pass the `icon` prop to the `<Tabs.Item>` component to add an icon to the tab item.
+
+<Example name="tabs.withIcons" />
+
+## Tabs with pills
+
+Add the `style="pills"` prop to the `<Tabs>` component to make the tabs have a pills style with rounded corners as an alternative style.
+
+<Example name="tabs.withPills" />
+
+## Full width tabs
+
+Make the tabs span the full width of their container, pass the `style="fullWidth"` prop to the `<Tabs>`
+
+<Example name="tabs.fullWidth" />
+
+## React state options
+
+Here's an example on how you can set the activate tab programatically using the React state variables and functions of `activateTab` and `setActivateTab`.
+
+<Example name="tabs.stateOptions" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="tabs" />
+
+## References
+
+- [Flowbite Tabs](https://flowbite.com/docs/components/tabs/)

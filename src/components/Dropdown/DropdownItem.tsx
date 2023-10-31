@@ -15,6 +15,7 @@ export interface FlowbiteDropdownItemTheme {
 }
 
 export type DropdownItemProps<T extends ElementType = 'button'> = {
+  // TODO: make it work with `Link` from Next.js
   as?: T;
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;

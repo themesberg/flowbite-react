@@ -1,5 +1,3 @@
-'use client';
-
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
 import { Children, cloneElement, useMemo } from 'react';
 import { twMerge } from 'tailwind-merge';
@@ -27,7 +25,7 @@ export interface ButtonGroupProps
   theme?: DeepPartial<FlowbiteButtonGroupTheme>;
 }
 
-const ButtonGroup: FC<ButtonGroupProps> = ({
+export const ButtonGroup: FC<ButtonGroupProps> = ({
   children,
   className,
   outline,
@@ -57,4 +55,3 @@ const ButtonGroup: FC<ButtonGroupProps> = ({
 };
 
 ButtonGroup.displayName = 'Button.Group';
-export default ButtonGroup;

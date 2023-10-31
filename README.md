@@ -127,7 +127,7 @@ module.exports = {
 
 How you use Flowbite React depends on your project setup. In general, you can just import the components you want to use from `flowbite-react` and use them in a React `.jsx` file:
 
-```jsx
+```tsx
 import { Button } from 'flowbite-react';
 
 export default function MyPage() {

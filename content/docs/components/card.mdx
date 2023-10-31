@@ -1,0 +1,95 @@
+---
+title: React Cards - Flowbite
+description: Get started with the card component to show content in a box such as titles, descriptions, and images based on multiple styles and sizes built with React
+---
+
+The card component can be used to show a wide variety of content such as previews of blog posts, user profiles, pricing plans, and more. Choose from one of the many examples built with React and the utility classes from Tailwind CSS.
+
+To start using the card component you will need to import it from `flowbite-react`:
+
+```jsx
+import { Card } from 'flowbite-react';
+```
+
+## Default card
+
+Use this example to show a simple card component with a title and description and apply the `href` tag to the `<Card>` component to set a hyperlink to the card.
+
+<Example name="card.root" />
+
+## Card with CTA button
+
+By also importing the `<Button>` component you can add it inside the card to show a call to action button.
+
+<Example name="card.CTAButton" />
+
+## Card with image
+
+Add an image to the card by using the `imgSrc` prop and set the `imgAlt` prop to add an alt text to the image.
+
+<Example name="card.withImage" />
+
+## Card with custom image render function
+
+Specify your own render function for the image component for the card by using the `renderImage` prop. This is especially useful when
+using the component with NextJS or Gatsby.
+
+<Example name="card.renderImage" />
+
+## Horizontal card
+
+Use the `horizontal` prop to show the card in a horizontal layout.
+
+<Example name="card.horizontal" />
+
+## User profile card
+
+Use this example to show a user card with a profile picture, name, job title, buttons and a dropdown menu.
+
+<Example name="card.userProfile" />
+
+## Card with form
+
+You can also add form elements inside of the card component such as for sign up or login forms.
+
+<Example name="card.withForm" />
+
+## E-commerce card
+
+Use this example to show a product card with an image (product preview), title, price, rating stars and buttons built for E-commerce websites.
+
+<Example name="card.eCommerce" />
+
+## CTA card
+
+Use this component to display a call to action card for mobile applications where you feature download buttons for App Store and Google Play.
+
+<Example name="card.CTA" />
+
+## Card with list
+
+Use this component to display a card with a list of items such as your latest customers or latest orders that include an image, descriptive text and a link to view more.
+
+<Example name="card.withList" />
+
+## Pricing card
+
+Use the pricing card component to show the pricing of your product or service.
+
+<Example name="card.pricing" />
+
+## Crypto card (web3)
+
+This component can be used for crypto and web3 related projects where you can choose which wallet you want to connect with (ie. Metamask, Coinbase).
+
+<Example name="card.crypto" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="card" />
+
+## References
+
+- [Flowbite Card](https://flowbite.com/docs/components/card/)

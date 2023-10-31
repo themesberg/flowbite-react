@@ -1,12 +1,10 @@
-import mdx from '@next/mdx';
-import slug from 'rehype-slug';
-import tableOfContents from 'remark-toc';
+import { withContentlayer } from 'next-contentlayer';
 import TerserPlugin from 'terser-webpack-plugin';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  pageExtensions: ['mdx', 'tsx'],
   reactStrictMode: true,
+  swcMinify: true,
   webpack(config) {
     // Retain React FC display names and anonymous function bodies for docs
     config.optimization.minimizer = [
@@ -151,12 +149,4 @@ const nextConfig = {
   },
 };
 
-const withMDX = mdx({
-  extension: /\.mdx?$/,
-  options: {
-    rehypePlugins: [slug],
-    remarkPlugins: [tableOfContents],
-  },
-});
-
-export default withMDX(nextConfig);
+export default withContentlayer(nextConfig);
