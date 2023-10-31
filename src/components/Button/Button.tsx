@@ -15,7 +15,7 @@ import type {
 import { Spinner } from '../Spinner';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
 import type { PositionInButtonGroup } from './ButtonGroup';
-import ButtonGroup from './ButtonGroup';
+import { ButtonGroup } from './ButtonGroup';
 
 export interface FlowbiteButtonTheme {
   base: string;

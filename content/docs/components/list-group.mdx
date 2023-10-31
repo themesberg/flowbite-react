@@ -1,0 +1,48 @@
+---
+title: React List Group - Flowbite
+description: Use the list group component to display a series of items, buttons or links inside a single element
+---
+
+The list group component can be used to show a list of items inside of an unordered list for website navigation, show a list of items inside of a card, and more.
+
+You can choose from one of the examples below based on various styles and options and you can customize the component with React props and the classes from Tailwind CSS.
+
+Start using the list group component by first importing it from Flowbite React:
+
+```jsx
+import { ListGroup } from 'flowbite-react';
+```
+
+## Default list group
+
+Use the default example to create a simple list of items inside of a menu by using the `ListGroup` component with `ListGroup.Item` child components inside of it.
+
+<Example name="listGroup.root" />
+
+## List items as links
+
+Convert the list items into links by adding the `href` prop to the `ListGroup.Item` component.
+
+<Example name="listGroup.itemsAsLink" />
+
+## List group with buttons
+
+To create custom actions inside of the list group, use the `onClick` prop on the `ListGroup.Item` component.
+
+<Example name="listGroup.withButtons" />
+
+## List group with icons
+
+Add icons to the list group items by using the `icon` prop on the `ListGroup.Item` component.
+
+<Example name="listGroup.withIcons" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="listGroup" />
+
+## References
+
+- [Flowbite List Group](https://flowbite.com/docs/components/list-group/)

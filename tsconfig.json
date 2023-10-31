@@ -16,7 +16,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
-      "~/*": ["./*"]
+      "~/*": ["./*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [
       {
@@ -30,5 +31,13 @@
     "types": ["@testing-library/jest-dom", "node", "vitest"]
   },
   "exclude": ["./build/", "./lib/", "./.next/"],
-  "include": [".next/types/**/*.ts", "**/*.js", "**/*.mdx", "**/*.mjs", "**/*.ts", "**/*.tsx"]
+  "include": [
+    ".next/types/**/*.ts",
+    "**/*.js",
+    "**/*.mdx",
+    "**/*.mjs",
+    "**/*.ts",
+    "**/*.tsx",
+    ".contentlayer/generated"
+  ]
 }

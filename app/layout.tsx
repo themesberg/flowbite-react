@@ -1,11 +1,9 @@
-import type { Metadata, NextPage } from 'next/types';
-
-import '@docsearch/css';
 import { Inter as InterFont } from 'next/font/google';
+import type { Metadata, NextPage } from 'next/types';
 import type { FC, PropsWithChildren } from 'react';
-import '~/app/docs.css';
-import '~/app/style.css';
 import { ThemeModeScript } from '~/src';
+
+import '~/styles/globals.css';
 
 const interFont = InterFont({
   subsets: ['latin'],

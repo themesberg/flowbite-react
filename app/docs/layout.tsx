@@ -1,28 +1,20 @@
 'use client';
 
-import { DocSearch } from '@docsearch/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { NextPage } from 'next/types';
-import prism from 'prismjs';
-import 'prismjs/components/prism-bash';
-import 'prismjs/components/prism-css';
-import 'prismjs/components/prism-javascript';
-import 'prismjs/components/prism-jsx';
-import 'prismjs/components/prism-tsx';
-import 'prismjs/components/prism-typescript';
 import type { FC, PropsWithChildren } from 'react';
 import { useEffect, useState } from 'react';
 import { HiMenuAlt1, HiX } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import '~/app/docs.css';
-import '~/app/style.css';
-import { Accordion, Badge, Flowbite, Footer, Navbar, Sidebar } from '~/src';
+import { Banner } from '~/components/banner';
+import { DocSearchInput } from '~/components/docsearch-input';
+import { NavbarIcons, NavbarLinks } from '~/components/navbar';
+import { Accordion, Badge, Navbar, Sidebar } from '~/src';
 import { isClient } from '~/src/helpers/is-client';
-import { Banner } from '../components/banner';
-import { CarbonAds } from '../components/carbon-ads';
-import { NavbarIcons, NavbarLinks } from '../components/navbar';
+
+import '~/styles/docs.css';
 
 interface DocsLayoutState {
   isCollapsed: boolean;
@@ -30,61 +22,24 @@ interface DocsLayoutState {
 }
 
 const DocsLayout: NextPage<PropsWithChildren> = ({ children }) => {
-  const pathname = usePathname();
   const [isCollapsed, setCollapsed] = useState(true);
-  const [tableOfContents, setTableOfContents] = useState('');
 
   const state: DocsLayoutState = {
     isCollapsed,
     setCollapsed,
   };
 
-  useEffect(() => {
-    // syntax-highlight on each re-render, since user may interact with the page
-    prism.highlightAll();
-
-    // update client-rendered Table of Contents on each new page
-    const toc = document.querySelector('#table-of-contents + ul')?.innerHTML;
-    setTableOfContents(toc ?? '');
-  }, [pathname]);
-
-  useEffect(() => {
-    setCollapsed(window.innerWidth < 768);
-  }, [setCollapsed]);
-
   return (
-    <Flowbite>
-      <div className="w-full min-w-0 flex-auto">
-        <div className="relative bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
-          <Banner />
-          <DocsNavbar {...state} />
-          <div className="lg:flex">
-            <DocsSidebar {...state} />
-            <div className="w-full min-w-0 flex-auto">
-              <div className="flex w-full">
-                <div className="pb:12 mx-auto flex min-w-0 max-w-4xl flex-col divide-y divide-gray-200 px-4 pt-6 dark:divide-gray-800 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
-                  <main>{children}</main>
-                  <DocsFooter />
-                  <CarbonAds />
-                </div>
-                <div className="right-0 hidden w-64 flex-none pl-8 xl:block xl:text-sm">
-                  <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-between overflow-y-auto pb-6">
-                    <div className="mb-8">
-                      <h4 className="my-4 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 dark:text-white">
-                        On this page
-                      </h4>
-                      <nav id="visible-table-of-contents">
-                        <ul dangerouslySetInnerHTML={{ __html: tableOfContents }} />
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="w-full min-w-0 flex-auto">
+      <div className="relative bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
+        <Banner />
+        <DocsNavbar {...state} />
+        <div className="lg:flex">
+          <DocsSidebar {...state} />
+          <div className="w-full min-w-0">{children}</div>
         </div>
       </div>
-    </Flowbite>
+    </div>
   );
 };
 
@@ -129,7 +84,7 @@ const DocsNavbar: FC<DocsLayoutState> = ({ isCollapsed, setCollapsed }) => {
           <span>Flowbite React</span>
         </Link>
         <div className="ml-4 hidden lg:flex">
-          <DocSearch appId="4ECQXWXLSO" indexName="flowbite-react" apiKey="9c32f687c9058e3d3f27adff654d48d9" />
+          <DocSearchInput />
         </div>
       </div>
       <div className="flex items-center">
@@ -406,103 +361,6 @@ const SidebarLink: FC<PropsWithChildren & { href: string }> = ({ children, href 
     >
       {children}
     </Sidebar.Item>
-  );
-};
-
-const DocsFooter: FC = () => {
-  return (
-    <Footer className="rounded-none px-4 pb-8 pt-16 shadow-none dark:bg-gray-900 lg:px-0">
-      <div className="w-full">
-        <div className="grid w-full justify-between md:grid-cols-2">
-          <div className="mb-4 max-w-sm lg:mb-0">
-            <Link href="/" className="flex items-center gap-3">
-              <Image alt="" height="32" src="/favicon.svg" width="32" className="h-8 w-8" />
-              <span className="text-xl font-semibold text-gray-900 dark:text-gray-100">Flowbite React</span>
-            </Link>
-            <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">
-              Flowbite is an ecosystem built on top of Tailwind CSS including a component library, block sections, a
-              Figma design system and other resources.
-            </p>
-            <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">
-              Code licensed{' '}
-              <a
-                href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE"
-                className="text-cyan-600 hover:underline"
-              >
-                MIT
-              </a>
-              , docs{' '}
-              <a
-                href="https://creativecommons.org/licenses/by/3.0/"
-                rel="nofollow noopener noreferrer"
-                className="text-cyan-600 hover:underline"
-              >
-                CC BY 3.0
-              </a>
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
-            <div>
-              <Footer.Title
-                title="Resources"
-                className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
-              />
-              <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
-                <Footer.Link href="https://github.com/themesberg/flowbite-react" className="text-base">
-                  GitHub
-                </Footer.Link>
-                <Footer.Link href="https://flowbite.com/" className="text-base">
-                  Flowbite
-                </Footer.Link>
-                <Footer.Link href="https://tailwindcss.com/" className="text-base">
-                  Tailwind CSS
-                </Footer.Link>
-                <Footer.Link href="https://flowbite.com/figma/" className="text-base">
-                  Figma
-                </Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <Footer.Title
-                title="Help & Support"
-                className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
-              />
-              <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
-                <Footer.Link href="https://discord.gg/4eeurUVvTy" className="text-base">
-                  Discord
-                </Footer.Link>
-                <Footer.Link href="https://github.com/themesberg/flowbite-react/discussions" className="text-base">
-                  Github Discussions
-                </Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-            <div>
-              <Footer.Title
-                title="Legal"
-                className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
-              />
-              <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
-                <Footer.Link href="https://flowbite.com/license/" className="text-base">
-                  License
-                </Footer.Link>
-                <Footer.Link href="https://flowbite.com/brand/" className="text-base">
-                  Brand guideline
-                </Footer.Link>
-              </Footer.LinkGroup>
-            </div>
-          </div>
-        </div>
-        <Footer.Divider />
-        <div className="w-full text-center sm:flex sm:items-center sm:justify-center">
-          <Footer.Copyright
-            by="All Rights Reserved. Flowbite™ is a registered trademark."
-            href="/"
-            year={2023}
-            className="text-base"
-          />
-        </div>
-      </div>
-    </Footer>
   );
 };
 

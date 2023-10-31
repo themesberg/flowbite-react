@@ -1,7 +1,13 @@
 import { type Config } from 'tailwindcss';
 
 const config: Config = {
-  content: ['./app/**/*.{js,jsx,md,mdx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}', './mdx-components.tsx'],
+  content: [
+    './app/**/*.{js,jsx,md,mdx,ts,tsx}',
+    './components/**/*.{js,jsx,md,mdx,ts,tsx}',
+    './data/**/*.{js,jsx,ts,tsx}',
+    './examples/**/*.{js,jsx,ts,tsx}',
+    './src/**/*.{js,jsx,ts,tsx}',
+  ],
   plugins: [require('flowbite/plugin')],
   theme: {
     extend: {

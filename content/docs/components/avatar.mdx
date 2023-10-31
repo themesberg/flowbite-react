@@ -1,0 +1,94 @@
+---
+title: React Avatar - Flowbite
+description: Use the avatar component to show user profile images and placeholders in different sizes, colors and shapes based on React and Tailwind CSS
+---
+
+The avatar component from Flowbite React can be used to show a visual representation of a user or team account for your application based on multiple examples, colors, sizes and shapes.
+
+All of the example are built as React components and you can access custom props and methods to customize the component and you can also use Tailwind CSS classes to style the component.
+
+To start using the avatar component you need to import it from the `flowbite-react` package:
+
+```jsx
+import { Avatar } from 'flowbite-react';
+```
+
+## Default avatar
+
+Here's a default example of the `<Avatar>` component where you can use the `img` prop to pass the image URL, the `alt` prop to pass a description of the image for accessibility and the `rounded` prop to make the avatar rounded.
+
+<Example name="avatar.root" />
+
+## Avatar with border
+
+Use the `bordered` prop to add a border style to the avatar.
+
+<Example name="avatar.withBorder" />
+
+## Avatar placeholder
+
+If the user doesn't have an image you can use the `placeholder` prop to show a placeholder image and you can still pass the `rounded` prop to make the avatar rounded and other options.
+
+<Example name="avatar.placeholder" />
+
+## Placeholder initials
+
+Alternatively to the placeholder image you can use the `placeholderInitials` prop to show the user initials.
+
+<Example name="avatar.placeholderInitials" />
+
+## Dot indicator
+
+You can use the `status` prop to show a dot indicator on the avatar and you can use the `statusPosition` prop to change the position of the dot indicator.
+
+This is useful to show the user status like online, offline, busy, away, and more.
+
+<Example name="avatar.dotIndicator" />
+
+## Stacked layout
+
+Stack multiple avatars together by using the `<Avatar.Group>` component and by passing the `stacked` prop to the child components of the group.
+
+The `<Avatar.Counter>` component can be used to show the total number of avatars in the group by passing the `total` prop and a link to the `href` prop to view all users.
+
+<Example name="avatar.stackedLayout" />
+
+## Avatar with text
+
+Use this example to show an avatar with text (ie. user name, email, etc) by passing the custom markup inside the `<Avatar>` component. This is useful for admin dashboard interfaces while the user is logged in.
+
+<Example name="avatar.withText" />
+
+## Avatar dropdown
+
+Use the `<Dropdown>` component to show a dropdown menu when clicking on the avatar component. This example is often used to show the user settings, account settings, and more.
+
+<Example name="avatar.dropdown" />
+
+## Colors
+
+If you want to change the default color of the avatar component you can pass the `color` prop. Colors that you can choose from are gray, light, purple, success, pink, and more.
+
+<Example name="avatar.colors" />
+
+## Sizes
+
+Change the default size of the avatar component by passing the `size` prop. Sizes that you can choose from are xs, sm, md, lg, and xl.
+
+<Example name="avatar.sizes" />
+
+## Override image element
+
+You can override the default image element by passing the `img` prop to the `<Avatar>` component. This is useful if you want to use a different image element like `<Image>` from Next.js.
+
+<Example name="avatar.overrideImage" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="avatar" />
+
+## References
+
+- [Flowbite Avatar](https://flowbite.com/docs/components/avatar/)

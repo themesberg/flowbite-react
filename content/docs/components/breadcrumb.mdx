@@ -1,0 +1,36 @@
+---
+title: React Breadcrumb - Flowbite
+description: Get started with the breadcrumb component to show the current page location based on the URL structure using React and Tailwind CSS
+---
+
+The breadcrumb component can be used to indicate the current page's location within a navigational hierarchy and you can choose from multiple examples, colors, and sizes built with React and based on the utility classes from Tailwind CSS.
+
+To start using the breadcrumb component you need to import it from `flowbite-react`:
+
+```jsx
+import { Breadcrumb } from 'flowbite-react';
+```
+
+## Default breadcrumb
+
+Use the `<Breadcrumb>` component and the child `<Breadcrumb.Item>` components to create and indicate a series of page structure and URLs to help the user navigate through the website.
+
+You can use the `href` prop from React to make the breadcrumb items clickable and the `icon` prop to add an icon to the breadcrumb item such as for the homepage.
+
+<Example name="breadcrumb.root" />
+
+## Background color
+
+You can add a solid background style to the breadcrumb component by adding the `bg-gray-50` class to the component from Tailwind CSS.
+
+<Example name="breadcrumb.backgroundColor" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="breadcrumb" />
+
+## References
+
+- [Flowbite Breadcrumbs](https://flowbite.com/docs/components/breadcrumb/)
