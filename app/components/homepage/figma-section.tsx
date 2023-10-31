@@ -48,7 +48,7 @@ export const FigmaSection: FC = () => {
                     </g>
                     <defs>
                       <clipPath id="clip0_18_290731">
-                        <rect width="17.5273" height="24" fill="white" transform="translate(0 0.895508)"></rect>
+                        <rect width="17.5273" height="24" fill="white" transform="translate(0 0.895508)" />
                       </clipPath>
                     </defs>
                   </svg>
@@ -114,8 +114,8 @@ export const FigmaSection: FC = () => {
                         y2="10.5006"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop stopColor="#1724C9"></stop>
-                        <stop offset="1" stopColor="#1C64F2"></stop>
+                        <stop stopColor="#1724C9" />
+                        <stop offset="1" stopColor="#1C64F2" />
                       </linearGradient>
                       <linearGradient
                         id="paint1_linear_18_290714"
@@ -125,8 +125,8 @@ export const FigmaSection: FC = () => {
                         y2="2.50785"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop stopColor="#1C64F2"></stop>
-                        <stop offset="1" stopColor="#0092FF"></stop>
+                        <stop stopColor="#1C64F2" />
+                        <stop offset="1" stopColor="#0092FF" />
                       </linearGradient>
                       <linearGradient
                         id="paint2_linear_18_290714"
@@ -136,8 +136,8 @@ export const FigmaSection: FC = () => {
                         y2="5.25331"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop stopColor="#0092FF"></stop>
-                        <stop offset="1" stopColor="#45B2FF"></stop>
+                        <stop stopColor="#0092FF" />
+                        <stop offset="1" stopColor="#45B2FF" />
                       </linearGradient>
                       <linearGradient
                         id="paint3_linear_18_290714"
@@ -147,8 +147,8 @@ export const FigmaSection: FC = () => {
                         y2="20.1226"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop stopColor="#1C64F2"></stop>
-                        <stop offset="1" stopColor="#0092FF"></stop>
+                        <stop stopColor="#1C64F2" />
+                        <stop offset="1" stopColor="#0092FF" />
                       </linearGradient>
                       <linearGradient
                         id="paint4_linear_18_290714"
@@ -158,8 +158,8 @@ export const FigmaSection: FC = () => {
                         y2="18.8469"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop stopColor="#1724C9"></stop>
-                        <stop offset="1" stopColor="#1C64F2"></stop>
+                        <stop stopColor="#1724C9" />
+                        <stop offset="1" stopColor="#1C64F2" />
                       </linearGradient>
                       <linearGradient
                         id="paint5_linear_18_290714"
@@ -169,8 +169,8 @@ export const FigmaSection: FC = () => {
                         y2="8.72159"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop stopColor="#0092FF"></stop>
-                        <stop offset="1" stopColor="#45B2FF"></stop>
+                        <stop stopColor="#0092FF" />
+                        <stop offset="1" stopColor="#45B2FF" />
                       </linearGradient>
                       <linearGradient
                         id="paint6_linear_18_290714"
@@ -180,8 +180,8 @@ export const FigmaSection: FC = () => {
                         y2="16.1258"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop stopColor="#1C64F2"></stop>
-                        <stop offset="1" stopColor="#0092FF"></stop>
+                        <stop stopColor="#1C64F2" />
+                        <stop offset="1" stopColor="#0092FF" />
                       </linearGradient>
                       <linearGradient
                         id="paint7_linear_18_290714"
@@ -191,8 +191,8 @@ export const FigmaSection: FC = () => {
                         y2="9.37416"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop stopColor="#1724C9"></stop>
-                        <stop offset="1" stopColor="#1C64F2"></stop>
+                        <stop stopColor="#1724C9" />
+                        <stop offset="1" stopColor="#1C64F2" />
                       </linearGradient>
                       <linearGradient
                         id="paint8_linear_18_290714"
@@ -202,8 +202,8 @@ export const FigmaSection: FC = () => {
                         y2="24.7267"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop stopColor="#0092FF"></stop>
-                        <stop offset="1" stopColor="#45B2FF"></stop>
+                        <stop stopColor="#0092FF" />
+                        <stop offset="1" stopColor="#45B2FF" />
                       </linearGradient>
                     </defs>
                   </svg>

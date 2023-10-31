@@ -157,7 +157,7 @@ export const SocialProofSection: FC = async () => {
                   </g>
                   <defs>
                     <clipPath id="clip0_18_290731">
-                      <rect width="17.5273" height="24" fill="white" transform="translate(0 0.895508)"></rect>
+                      <rect width="17.5273" height="24" fill="white" transform="translate(0 0.895508)" />
                     </clipPath>
                   </defs>
                 </svg>
