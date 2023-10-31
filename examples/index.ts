@@ -7,7 +7,7 @@ export * as blockquote from './blockquote';
 export * as breadcrumb from './breadcrumb';
 export * as button from './button';
 export * as buttonGroup from './buttonGroup';
-// export * as card from './card';
+export * as card from './card';
 export * as carousel from './carousel';
 export * as datepicker from './datepicker';
 export * as dropdown from './dropdown';
