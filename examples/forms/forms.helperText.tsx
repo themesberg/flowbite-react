@@ -20,7 +20,7 @@ function Component() {
         helperText={
           <>
             We’ll never share your details. Read our
-            <a href="/forms" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="#" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
               Privacy Policy
             </a>
             .
@@ -49,7 +49,7 @@ function Component() {
         helperText={
           <>
             We’ll never share your details. Read our
-            <a href="/forms" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="#" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
               Privacy Policy
             </a>
             .
@@ -75,7 +75,7 @@ function Component() {
         helperText={
           <>
             We’ll never share your details. Read our
-            <a href="/forms" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="#" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
               Privacy Policy
             </a>
             .

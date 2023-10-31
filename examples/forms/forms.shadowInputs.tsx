@@ -33,7 +33,7 @@ function Component() {
         <Checkbox id="agree" />
         <Label htmlFor="agree" className="flex">
           I agree with the&nbsp;
-          <Link href="/forms" className="text-cyan-600 hover:underline dark:text-cyan-500">
+          <Link href="#" className="text-cyan-600 hover:underline dark:text-cyan-500">
             terms and conditions
           </Link>
         </Label>
@@ -73,7 +73,7 @@ function Component() {
         <Checkbox id="agree" />
         <Label htmlFor="agree" className="flex">
           I agree with the&nbsp;
-          <Link href="/forms" className="text-cyan-600 hover:underline dark:text-cyan-500">
+          <Link href="#" className="text-cyan-600 hover:underline dark:text-cyan-500">
             terms and conditions
           </Link>
         </Label>
@@ -109,7 +109,7 @@ function Component() {
         <Checkbox id="agree" />
         <Label htmlFor="agree" className="flex">
           I agree with the&nbsp;
-          <Link href="/forms" className="text-cyan-600 hover:underline dark:text-cyan-500">
+          <Link href="#" className="text-cyan-600 hover:underline dark:text-cyan-500">
             terms and conditions
           </Link>
         </Label>

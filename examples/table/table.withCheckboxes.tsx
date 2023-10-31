@@ -33,7 +33,7 @@ function Component() {
           <Table.Cell>Laptop</Table.Cell>
           <Table.Cell>$2999</Table.Cell>
           <Table.Cell>
-            <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
               Edit
             </a>
           </Table.Cell>
@@ -49,7 +49,7 @@ function Component() {
           <Table.Cell>Laptop PC</Table.Cell>
           <Table.Cell>$1999</Table.Cell>
           <Table.Cell>
-            <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
               Edit
             </a>
           </Table.Cell>
@@ -63,7 +63,7 @@ function Component() {
           <Table.Cell>Accessories</Table.Cell>
           <Table.Cell>$99</Table.Cell>
           <Table.Cell>
-            <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
               Edit
             </a>
           </Table.Cell>
@@ -104,7 +104,7 @@ function Component() {
           <TableCell>Laptop</TableCell>
           <TableCell>$2999</TableCell>
           <TableCell>
-            <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
               Edit
             </a>
           </TableCell>
@@ -120,7 +120,7 @@ function Component() {
           <TableCell>Laptop PC</TableCell>
           <TableCell>$1999</TableCell>
           <TableCell>
-            <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
               Edit
             </a>
           </TableCell>
@@ -134,7 +134,7 @@ function Component() {
           <TableCell>Accessories</TableCell>
           <TableCell>$99</TableCell>
           <TableCell>
-            <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
               Edit
             </a>
           </TableCell>
@@ -172,7 +172,7 @@ function Component() {
           <TableCell>Laptop</TableCell>
           <TableCell>$2999</TableCell>
           <TableCell>
-            <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
               Edit
             </a>
           </TableCell>
@@ -188,7 +188,7 @@ function Component() {
           <TableCell>Laptop PC</TableCell>
           <TableCell>$1999</TableCell>
           <TableCell>
-            <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
               Edit
             </a>
           </TableCell>
@@ -202,7 +202,7 @@ function Component() {
           <TableCell>Accessories</TableCell>
           <TableCell>$99</TableCell>
           <TableCell>
-            <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+            <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
               Edit
             </a>
           </TableCell>
