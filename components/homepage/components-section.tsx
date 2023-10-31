@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { COMPONENTS_DATA } from '~/app/data/components';
+import { COMPONENTS_DATA } from '~/data/components';
 import { Button } from '~/src';
 
 export const ComponentsSection: FC = () => {
