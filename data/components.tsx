@@ -1,5 +1,4 @@
 interface Component {
-  id: string;
   name: string;
   image: string;
   imageDark: string;
@@ -9,7 +8,6 @@ interface Component {
 
 export const COMPONENTS_DATA: Component[] = [
   {
-    id: '1',
     name: 'Alerts',
     image: '/images/components/alerts.svg',
     imageDark: '/images/components/alerts-dark.svg',
@@ -17,7 +15,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-56',
   },
   {
-    id: '2',
     name: 'Accordion',
     image: '/images/components/accordion.svg',
     imageDark: '/images/components/accordion-dark.svg',
@@ -25,7 +22,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-56',
   },
   {
-    id: '3',
     name: 'Avatar',
     image: '/images/components/avatar.svg',
     imageDark: '/images/components/avatar-dark.svg',
@@ -33,7 +29,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-40',
   },
   {
-    id: '4',
     name: 'Badges',
     image: '/images/components/badges.svg',
     imageDark: '/images/components/badges-dark.svg',
@@ -41,7 +36,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-28',
   },
   {
-    id: '5',
     name: 'Breadcrumbs',
     image: '/images/components/breadcrumbs.svg',
     imageDark: '/images/components/breadcrumbs-dark.svg',
@@ -49,7 +43,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-64',
   },
   {
-    id: '6',
     name: 'Buttons',
     image: '/images/components/buttons.svg',
     imageDark: '/images/components/buttons-dark.svg',
@@ -57,7 +50,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-24',
   },
   {
-    id: '7',
     name: 'Button group',
     image: '/images/components/button-group.svg',
     imageDark: '/images/components/button-group-dark.svg',
@@ -65,7 +57,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-56',
   },
   {
-    id: '8',
     name: 'Cards',
     image: '/images/components/cards.svg',
     imageDark: '/images/components/cards-dark.svg',
@@ -73,7 +64,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-36',
   },
   {
-    id: '9',
     name: 'Carousel',
     image: '/images/components/carousel.svg',
     imageDark: '/images/components/carousel-dark.svg',
@@ -81,7 +71,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-48',
   },
   {
-    id: '10',
     name: 'Datepicker',
     image: '/images/components/datepicker.svg',
     imageDark: '/images/components/datepicker-dark.svg',
@@ -89,7 +78,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-28',
   },
   {
-    id: '11',
     name: 'Dropdown',
     image: '/images/components/dropdown.svg',
     imageDark: '/images/components/dropdown-dark.svg',
@@ -97,7 +85,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-28',
   },
   {
-    id: '12',
     name: 'Forms',
     image: '/images/components/forms.svg',
     imageDark: '/images/components/forms-dark.svg',
@@ -105,7 +92,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-40',
   },
   {
-    id: '13',
     name: 'List group',
     image: '/images/components/list-group.svg',
     imageDark: '/images/components/list-group-dark.svg',
@@ -113,7 +99,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-36',
   },
   // {
-  //   id: '14',
   //   name: 'Typography',
   //   image: '/images/components/typography.svg',
   //   imageDark: '/images/components/typography-dark.svg',
@@ -121,7 +106,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-36'
   // },
   {
-    id: '15',
     name: 'Modal',
     image: '/images/components/modal.svg',
     imageDark: '/images/components/modal-dark.svg',
@@ -129,7 +113,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-48',
   },
   {
-    id: '16',
     name: 'Tabs',
     image: '/images/components/tabs.svg',
     imageDark: '/images/components/tabs-dark.svg',
@@ -137,7 +120,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-64',
   },
   {
-    id: '17',
     name: 'Navbar',
     image: '/images/components/navbar.svg',
     imageDark: '/images/components/navbar-dark.svg',
@@ -145,7 +127,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-56',
   },
   {
-    id: '18',
     name: 'Footer',
     image: '/images/components/footer.svg',
     imageDark: '/images/components/footer-dark.svg',
@@ -153,7 +134,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-56',
   },
   {
-    id: '19',
     name: 'Sidebar',
     image: '/images/components/sidebar.svg',
     imageDark: '/images/components/sidebar-dark.svg',
@@ -161,7 +141,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-16',
   },
   {
-    id: '20',
     name: 'Pagination',
     image: '/images/components/pagination.svg',
     imageDark: '/images/components/pagination-dark.svg',
@@ -169,7 +148,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-48',
   },
   // {
-  //   id: '21',
   //   name: 'Speed Dial',
   //   image: '/images/components/dial.svg',
   //   imageDark: '/images/components/dial-dark.svg',
@@ -177,7 +155,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-72'
   // },
   {
-    id: '22',
     name: 'Rating',
     image: '/images/components/rating.svg',
     imageDark: '/images/components/rating-dark.svg',
@@ -185,7 +162,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-48',
   },
   {
-    id: '23',
     name: 'Timeline',
     image: '/images/components/timeline.svg',
     imageDark: '/images/components/timeline-dark.svg',
@@ -193,7 +169,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-24',
   },
   {
-    id: '24',
     name: 'Progress bar',
     image: '/images/components/progress.svg',
     imageDark: '/images/components/progress-dark.svg',
@@ -201,7 +176,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-48',
   },
   {
-    id: '25',
     name: 'Table',
     image: '/images/components/table.svg',
     imageDark: '/images/components/table-dark.svg',
@@ -209,7 +183,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-48',
   },
   {
-    id: '26',
     name: 'Spinner',
     image: '/images/components/spinner.svg',
     imageDark: '/images/components/spinner-dark.svg',
@@ -217,7 +190,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-32',
   },
   {
-    id: '27',
     name: 'Toast',
     image: '/images/components/toast.svg',
     imageDark: '/images/components/toast-dark.svg',
@@ -225,7 +197,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-48',
   },
   {
-    id: '28',
     name: 'Tooltips',
     image: '/images/components/tooltips.svg',
     imageDark: '/images/components/tooltips-dark.svg',
@@ -233,7 +204,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-24',
   },
   // {
-  //   id: '30',
   //   name: 'Input Field',
   //   image: '/images/components/input-field.svg',
   //   imageDark: '/images/components/input-field-dark.svg',
@@ -241,7 +211,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-40'
   // },
   // {
-  //   id: '31',
   //   name: 'File Input',
   //   image: '/images/components/file-input.svg',
   //   imageDark: '/images/components/file-input-dark.svg',
@@ -249,7 +218,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-48'
   // },
   // {
-  //   id: '32',
   //   name: 'Search Input',
   //   image: '/images/components/search-input.svg',
   //   imageDark: '/images/components/search-input-dark.svg',
@@ -257,7 +225,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-56'
   // },
   // {
-  //   id: '33',
   //   name: 'Select',
   //   image: '/images/components/select.svg',
   //   imageDark: '/images/components/select-dark.svg',
@@ -265,7 +232,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-56'
   // },
   // {
-  //   id: '34',
   //   name: 'Textarea',
   //   image: '/images/components/textarea.svg',
   //   imageDark: '/images/components/textarea-dark.svg',
@@ -273,7 +239,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-56'
   // },
   // {
-  //   id: '35',
   //   name: 'Checkbox',
   //   image: '/images/components/checkbox.svg',
   //   imageDark: '/images/components/checkbox.svg',
@@ -281,7 +246,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-40'
   // },
   // {
-  //   id: '36',
   //   name: 'Radio',
   //   image: '/images/components/radio.svg',
   //   imageDark: '/images/components/radio-dark.svg',
@@ -289,7 +253,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-36'
   // },
   // {
-  //   id: '37',
   //   name: 'Toggle',
   //   image: '/images/components/toggle.svg',
   //   imageDark: '/images/components/toggle-dark.svg',
@@ -297,7 +260,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-40'
   // },
   // {
-  //   id: '38',
   //   name: 'Range Slider',
   //   image: '/images/components/range-slider.svg',
   //   imageDark: '/images/components/range-slider-dark.svg',
@@ -305,7 +267,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-56'
   // },
   {
-    id: '38',
     name: 'Floating Label',
     image: '/images/components/floating-label.svg',
     imageDark: '/images/components/floating-label-dark.svg',
@@ -313,7 +274,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-40',
   },
   // {
-  //   id: '40',
   //   name: 'Mega menu',
   //   image: '/images/components/mega-menu.svg',
   //   imageDark: '/images/components/mega-menu-dark.svg',
@@ -321,7 +281,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-40'
   // },
   // {
-  //   id: '41',
   //   name: 'Skeleton',
   //   image: '/images/components/skeleton.svg',
   //   imageDark: '/images/components/skeleton-dark.svg',
@@ -329,7 +288,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-40'
   // },
   {
-    id: '42',
     name: 'KBD (Keyboard)',
     image: '/images/components/keyboard.svg',
     imageDark: '/images/components/keyboard-dark.svg',
@@ -337,7 +295,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-40',
   },
   // {
-  //   id: '43',
   //   name: 'Drawer (offcanvas)',
   //   image: '/images/components/drawer.svg',
   //   imageDark: '/images/components/drawer-dark.svg',
@@ -345,7 +302,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-56'
   // },
   // {
-  //   id: '44',
   //   name: 'Popover',
   //   image: '/images/components/popover.svg',
   //   imageDark: '/images/components/popover-dark.svg',
@@ -353,7 +309,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-56'
   // },
   // {
-  //   id: '45',
   //   name: 'Video',
   //   image: '/images/components/video.svg',
   //   imageDark: '/images/components/video-dark.svg',
@@ -361,7 +316,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-64'
   // },
   // {
-  //   id: '46',
   //   name: 'Heading',
   //   image: '/images/components/heading.svg',
   //   imageDark: '/images/components/heading-dark.svg',
@@ -369,7 +323,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-72'
   // },
   // {
-  //   id: '47',
   //   name: 'Paragraph',
   //   image: '/images/components/paragraph.svg',
   //   imageDark: '/images/components/paragraph-dark.svg',
@@ -377,7 +330,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-64'
   // },
   {
-    id: '48',
     name: 'Blockquote',
     image: '/images/components/blockquote.svg',
     imageDark: '/images/components/blockquote-dark.svg',
@@ -385,7 +337,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-64',
   },
   // {
-  //   id: '49',
   //   name: 'Image',
   //   image: '/images/components/image.svg',
   //   imageDark: '/images/components/image-dark.svg',
@@ -393,7 +344,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-64'
   // },
   // {
-  //   id: '50',
   //   name: 'List',
   //   image: '/images/components/list.svg',
   //   imageDark: '/images/components/list-dark.svg',
@@ -401,7 +351,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-64'
   // },
   // {
-  //   id: '51',
   //   name: 'Link',
   //   image: '/images/components/link.svg',
   //   imageDark: '/images/components/link-dark.svg',
@@ -409,7 +358,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-64'
   // },
   // {
-  //   id: '52',
   //   name: 'Text',
   //   image: '/images/components/text.svg',
   //   imageDark: '/images/components/text-dark.svg',
@@ -417,7 +365,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-64'
   // },
   // {
-  //   id: '53',
   //   name: 'Horizontal line (HR)',
   //   image: '/images/components/hr.svg',
   //   imageDark: '/images/components/hr-dark.svg',
@@ -425,7 +372,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-64'
   // },
   // {
-  //   id: '54',
   //   name: 'Stepper',
   //   image: '/images/components/stepper.svg',
   //   imageDark: '/images/components/stepper-dark.svg',
@@ -433,7 +379,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-64'
   // },
   // {
-  //   id: '55',
   //   name: 'Indicators',
   //   image: '/images/components/indicators.svg',
   //   imageDark: '/images/components/indicators-dark.svg',
@@ -441,7 +386,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-64'
   // },
   // {
-  //   id: '56',
   //   name: 'Bottom Navigation',
   //   image: '/images/components/bottom-bar.svg',
   //   imageDark: '/images/components/bottom-bar-dark.svg',
@@ -449,7 +393,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-64'
   // },
   {
-    id: '57',
     name: 'Sticky Banner',
     image: '/images/components/banner.svg',
     imageDark: '/images/components/banner-dark.svg',
@@ -457,7 +400,6 @@ export const COMPONENTS_DATA: Component[] = [
     classes: 'w-64',
   },
   // {
-  //   id: '58',
   //   name: 'Gallery (Masonry)',
   //   image: '/images/components/gallery.svg',
   //   imageDark: '/images/components/gallery-dark.svg',
@@ -465,7 +407,6 @@ export const COMPONENTS_DATA: Component[] = [
   //   classes: 'w-64'
   // },
   // {
-  //   id: '59',
   //   name: 'Jumbotron',
   //   image: '/images/components/jumbotron.svg',
   //   imageDark: '/images/components/jumbotron-dark.svg',
