@@ -10,7 +10,7 @@ import { twMerge } from 'tailwind-merge';
 import { Banner } from '~/components/banner';
 import { DocSearchInput } from '~/components/docsearch-input';
 import { NavbarIcons, NavbarLinks } from '~/components/navbar';
-import { DOCS_SIDEBAR, DocsSidebarItem } from '~/data/docs-sidebar';
+import { DOCS_SIDEBAR, type DocsSidebarItem } from '~/data/docs-sidebar';
 import { Accordion, Badge, Navbar, Sidebar } from '~/src';
 import { isClient } from '~/src/helpers/is-client';
 
