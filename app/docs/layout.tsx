@@ -174,32 +174,22 @@ function SidebarSection({ title, href, children }: PropsWithChildren<{ title: st
   );
 }
 
-function SidebarItem({ title, href, isNew }: DocsSidebarItem) {
+function SidebarItem({ title, href, isNew, isExternal }: DocsSidebarItem) {
   return (
-    <SidebarLink href={href}>
-      {isNew ? (
-        <span className="flex items-center gap-2">
-          {`${title} `}
-          <Badge color="cyan" className="px-2">
-            New
-          </Badge>
-        </span>
-      ) : (
-        title
-      )}
+    <SidebarLink href={href} isExternal={isExternal}>
+      {isNew ? <NewBadge>{title}</NewBadge> : title}
     </SidebarLink>
   );
 }
 
-// TODO: rethink
-function SidebarLink({ children, href }: PropsWithChildren<{ href: string }>) {
-  // TODO: maybe move this?
+function SidebarLink({ children, href, isExternal }: PropsWithChildren<{ href: string; isExternal?: boolean }>) {
   const pathname = usePathname();
 
   return (
     <Sidebar.Item
       as={Link}
       href={href}
+      target={isExternal && '_blank'}
       className={twMerge(
         'p-0 font-medium transition-all hover:bg-transparent dark:hover:bg-transparent lg:text-sm [&>*]:px-0',
         pathname === href
@@ -209,5 +199,16 @@ function SidebarLink({ children, href }: PropsWithChildren<{ href: string }>) {
     >
       {children}
     </Sidebar.Item>
+  );
+}
+
+function NewBadge({ children }: PropsWithChildren) {
+  return (
+    <span className="flex items-center gap-2">
+      {children}
+      <Badge color="cyan" className="px-2">
+        New
+      </Badge>
+    </span>
   );
 }

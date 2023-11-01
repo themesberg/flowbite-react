@@ -8,6 +8,7 @@ export interface DocsSidebarItem {
   title: string;
   href: string;
   isNew?: boolean;
+  isExternal?: boolean;
 }
 
 export const DOCS_SIDEBAR: DocsSidebarSection[] = [
@@ -20,7 +21,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: 'Next.js', href: '/docs/getting-started/nextjs', isNew: true },
       { title: 'TypeScript', href: '/docs/getting-started/typescript' },
       { title: 'License', href: '/docs/getting-started/license' },
-      { title: 'Changelog', href: 'https://github.com/themesberg/flowbite-react/releases' },
+      { title: 'Changelog', href: 'https://github.com/themesberg/flowbite-react/releases', isExternal: true },
       { title: 'Contributing', href: '/docs/getting-started/contributing' },
     ],
   },
