@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import Markdown from 'react-markdown';
 import { CarbonAds } from '~/components/carbon-ads';
 import { Mdx } from '~/components/mdx';
+import { DOCS_SIDEBAR } from '~/data/docs-sidebar';
 import { Footer } from '~/src';
 
 interface Props {
@@ -48,6 +49,7 @@ export default function DocPage({ params }: Props) {
             <Mdx code={doc.body.code} />
           </ContentLayout>
         </main>
+        <DocsPager doc={doc} />
         <DocFooter />
         <CarbonAds />
       </div>
@@ -75,6 +77,64 @@ function ContentLayout({ title, description, children }: ContentLayoutProps) {
         {children}
       </div>
     </div>
+  );
+}
+
+function DocsPager({ doc }: { doc: Doc }) {
+  const DOCS_SIDEBAR_ITEMS = DOCS_SIDEBAR.flatMap((section) => section.items);
+  const currentDocIndex = DOCS_SIDEBAR_ITEMS.findIndex((item) => item.href === `/${doc._raw.flattenedPath}`);
+  const prevDoc = DOCS_SIDEBAR_ITEMS[currentDocIndex - 1];
+  const nextDoc = DOCS_SIDEBAR_ITEMS[currentDocIndex + 1];
+
+  return (
+    <aside className="flex font-medium leading-6" aria-label="Previous and next page navigation">
+      {prevDoc && (
+        <Link
+          className="mr-8 flex items-center justify-center text-gray-500 transition-colors duration-200 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+          href={prevDoc.href}
+        >
+          <svg
+            className="mr-2 h-3.5 w-3.5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M13 5H1m0 0 4 4M1 5l4-4"
+            />
+          </svg>
+          {prevDoc.title}
+        </Link>
+      )}
+      {nextDoc && (
+        <Link
+          className="ml-auto flex items-center justify-center text-right text-gray-500 transition-colors duration-200 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+          href={nextDoc.href}
+        >
+          {nextDoc.title}
+          <svg
+            className="ml-2 h-3.5 w-3.5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+        </Link>
+      )}
+    </aside>
   );
 }
 
