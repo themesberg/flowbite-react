@@ -70,7 +70,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
   {
     title: 'forms',
     href: '/forms/',
-    items: [{ title: 'Floating Labe', href: '/docs/forms/floating-label', isNew: true }],
+    items: [{ title: 'Floating Label', href: '/docs/forms/floating-label', isNew: true }],
   },
   {
     title: 'typography',
