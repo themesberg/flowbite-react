@@ -76,6 +76,6 @@ export const withButton: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'tabs/toast.withButton.tsx',
+  githubSlug: 'toast/toast.withButton.tsx',
   component: <Component />,
 };

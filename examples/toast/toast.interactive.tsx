@@ -109,6 +109,6 @@ export const interactive: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'tabs/toast.interactive.tsx',
+  githubSlug: 'toast/toast.interactive.tsx',
   component: <Component />,
 };

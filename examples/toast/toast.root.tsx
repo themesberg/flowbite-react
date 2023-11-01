@@ -64,6 +64,6 @@ export const root: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'tabs/toast.root.tsx',
+  githubSlug: 'toast/toast.root.tsx',
   component: <Component />,
 };
