@@ -55,6 +55,6 @@ export const feedback: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'tabs/toast.feedback.tsx',
+  githubSlug: 'toast/toast.feedback.tsx',
   component: <Component />,
 };

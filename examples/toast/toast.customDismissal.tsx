@@ -58,6 +58,6 @@ export const customDismissal: CodeData = {
     language: 'tsx',
     code,
   },
-  githubSlug: 'tabs/toast.customDismissal.tsx',
+  githubSlug: 'toast/toast.customDismissal.tsx',
   component: <Component />,
 };

@@ -112,6 +112,6 @@ export const colors: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'tabs/toast.colors.tsx',
+  githubSlug: 'toast/toast.colors.tsx',
   component: <Component />,
 };
