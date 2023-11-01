@@ -21,7 +21,7 @@ export const ComponentsSection: FC = () => {
         </div>
         <div className="grid grid-cols-1 items-center justify-center gap-4 sm:grid-cols-2 sm:gap-8 xl:grid-cols-3">
           {COMPONENTS_DATA.map((component) => (
-            <ComponentCard key={component.id} {...component} />
+            <ComponentCard key={component.name} {...component} />
           ))}
         </div>
         <div className="mb-4 flex w-full justify-center text-center">
