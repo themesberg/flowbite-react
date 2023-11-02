@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 
@@ -7,15 +8,19 @@ export const TailwindSection: FC = () => {
       <div className="mx-auto w-full max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
         <div className="flex w-full flex-row self-stretch py-6 lg:gap-16 lg:py-10">
           <div className="hidden w-1/2 items-center lg:flex">
-            <img
+            <Image
               src="/images/feature-sections/tailwind-css-react.png"
               className="dark:hidden"
               alt="Tailwind CSS with React code"
+              width={549}
+              height={496}
             />
-            <img
+            <Image
               src="/images/feature-sections/tailwind-css-react-dark.png"
               className="hidden dark:block"
               alt="Tailwind CSS with React code (dark mode)"
+              width={549}
+              height={496}
             />
           </div>
           <div className="flex w-1/2 flex-grow flex-col items-start gap-4 divide-y dark:divide-gray-700 lg:gap-8">
