@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from 'react';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
-import { useThemeMode } from '../../helpers/use-theme-mode';
+import { useThemeMode } from '../../hooks/use-theme-mode';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 

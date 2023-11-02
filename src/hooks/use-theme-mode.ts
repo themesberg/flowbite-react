@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { isClient } from '../helpers/is-client';
+import { useWatchLocalStorageValue } from '../hooks/use-watch-localstorage-value';
 import { getThemeMode } from '../theme-store';
-import { isClient } from './is-client';
-import { useWatchLocalStorageValue } from './use-watch-localstorage-value';
 
 const DEFAULT_MODE: ThemeMode = 'light';
 const LS_THEME_MODE = 'flowbite-theme-mode';
