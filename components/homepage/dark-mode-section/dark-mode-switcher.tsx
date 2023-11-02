@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC } from 'react';
-import { useThemeMode } from '~/src/helpers/use-theme-mode';
+import { useThemeMode } from '~/src';
 
 export const DarkModeSwitcher: FC = () => {
   const { setMode } = useThemeMode();

@@ -41,4 +41,6 @@ export * from './components/Toast';
 export * from './components/ToggleSwitch';
 export * from './components/Tooltip';
 
+export * from './hooks/use-theme-mode';
+
 export * from './theme';
