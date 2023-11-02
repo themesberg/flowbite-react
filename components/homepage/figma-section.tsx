@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { FC } from 'react';
 
 export const FigmaSection: FC = () => {
@@ -224,17 +225,21 @@ export const FigmaSection: FC = () => {
           </div>
           <div className="hidden h-full flex-col items-center justify-center lg:flex">
             <div className="relative rounded-xl dark:hidden">
-              <img
+              <Image
                 src="/images/feature-sections/flowbite-react-figma.png"
                 className="max-w-auto w-full"
                 alt="Flowbite Figma Design System mockup"
+                width={592}
+                height={364}
               />
             </div>
             <div className="relative hidden dark:block">
-              <img
+              <Image
                 src="/images/feature-sections/flowbite-react-figma-dark.png"
                 className="max-w-auto w-full rounded-xl"
                 alt="Flowbite Figma Design System mockup (dark mode)"
+                width={592}
+                height={364}
               />
             </div>
           </div>

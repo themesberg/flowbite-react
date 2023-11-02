@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { FC } from 'react';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import { Button } from '~/src';
@@ -17,15 +18,19 @@ export const ReactSection: FC = () => {
       <div className="mx-auto w-full max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
         <div className="flex w-full flex-row self-stretch py-6 lg:gap-16 lg:py-10">
           <div className="hidden w-1/2 items-center lg:flex">
-            <img
+            <Image
               src="/images/feature-sections/react-ui-components.png"
               className="dark:hidden"
               alt="React UI component code preview"
+              width={608}
+              height={535}
             />
-            <img
+            <Image
               src="/images/feature-sections/react-ui-components-dark.png"
               className="hidden dark:block"
               alt="React UI component code preview (dark mode)"
+              width={608}
+              height={535}
             />
           </div>
           <div className="flex w-1/2 flex-grow flex-col items-start gap-4 divide-y dark:divide-gray-700 lg:gap-8">

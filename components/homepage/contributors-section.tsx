@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
 import { Tooltip } from '~/src';
@@ -41,10 +42,12 @@ export const ContributorsSection: FC = async () => {
               {contributors.map((contributor) => (
                 <Tooltip key={contributor.id} content={contributor.login}>
                   <Link href={contributor.html_url} rel="nofollow noreferrer noopener" target="_blank">
-                    <img
+                    <Image
                       src={contributor.avatar_url}
                       alt={`${contributor.login} avatar`}
                       className="h-10 w-10 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300 sm:h-12 sm:w-12 lg:h-16 lg:w-16"
+                      width={64}
+                      height={64}
                     />
                   </Link>
                 </Tooltip>

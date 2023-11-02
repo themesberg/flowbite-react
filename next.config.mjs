@@ -5,6 +5,14 @@ import TerserPlugin from 'terser-webpack-plugin';
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+      },
+    ],
+  },
   webpack(config) {
     // Retain React FC display names and anonymous function bodies for docs
     config.optimization.minimizer = [

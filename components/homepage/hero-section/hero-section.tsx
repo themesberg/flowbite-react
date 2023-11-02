@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import type { FC } from 'react';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import { Button } from '~/src';
@@ -32,10 +33,16 @@ export const HeroSection: FC = () => {
           </div>
           <div className="hidden items-center p-0 md:flex">
             <div className="relative dark:hidden">
-              <img className="h-auto max-w-full" src="/images/gallery.png" alt="Header" />
+              <Image className="h-auto max-w-full" src="/images/gallery.png" alt="Header" width={620} height={416} />
             </div>
             <div className="relative hidden dark:block">
-              <img className="h-auto max-w-full" src="/images/gallery-dark.png" alt="Header" />
+              <Image
+                className="h-auto max-w-full"
+                src="/images/gallery-dark.png"
+                alt="Header"
+                width={620}
+                height={416}
+              />
             </div>
           </div>
         </div>
