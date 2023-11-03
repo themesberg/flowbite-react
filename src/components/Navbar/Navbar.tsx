@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -35,12 +35,12 @@ export interface FlowbiteNavbarRootTheme {
   };
 }
 
-export interface NavbarComponentProps extends PropsWithChildren, ComponentProps<'nav'> {
+export interface NavbarComponentProps extends ComponentProps<'nav'> {
   menuOpen?: boolean;
   fluid?: boolean;
   rounded?: boolean;
   border?: boolean;
-  theme?: DeepPartial<FlowbiteNavbarRootTheme>;
+  theme?: DeepPartial<FlowbiteNavbarTheme>;
 }
 
 const NavbarComponent: FC<NavbarComponentProps> = ({
@@ -55,20 +55,20 @@ const NavbarComponent: FC<NavbarComponentProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
-  const theme = mergeDeep(getTheme().navbar.root, customTheme);
+  const theme = mergeDeep(getTheme().navbar, customTheme);
 
   return (
-    <NavbarContext.Provider value={{ isOpen, setIsOpen }}>
+    <NavbarContext.Provider value={{ theme, isOpen, setIsOpen }}>
       <nav
         className={twMerge(
-          theme.base,
-          theme.bordered[border ? 'on' : 'off'],
-          theme.rounded[rounded ? 'on' : 'off'],
+          theme.root.base,
+          theme.root.bordered[border ? 'on' : 'off'],
+          theme.root.rounded[rounded ? 'on' : 'off'],
           className,
         )}
         {...props}
       >
-        <div className={twMerge(theme.inner.base, theme.inner.fluid[fluid ? 'on' : 'off'])}>{children}</div>
+        <div className={twMerge(theme.root.inner.base, theme.root.inner.fluid[fluid ? 'on' : 'off'])}>{children}</div>
       </nav>
     </NavbarContext.Provider>
   );

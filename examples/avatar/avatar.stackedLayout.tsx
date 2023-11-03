@@ -1,5 +1,5 @@
 import { type CodeData } from '~/components/code-demo';
-import { Avatar } from '~/src';
+import { Avatar, AvatarGroup } from '~/src';
 
 const code = `
 'use client';
@@ -29,25 +29,25 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Avatar } from 'flowbite-react';
+import { Avatar, AvatarGroup } from 'flowbite-react';
 
 function Component() {
   return (
     <div className="flex flex-wrap gap-2">
-      <Avatar.Group>
+      <AvatarGroup>
         <Avatar img="/images/people/profile-picture-1.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-2.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-3.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-4.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-5.jpg" rounded stacked />
-      </Avatar.Group>
-      <Avatar.Group>
+      </AvatarGroup>
+      <AvatarGroup>
         <Avatar img="/images/people/profile-picture-1.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-2.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-3.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-4.jpg" rounded stacked />
         <Avatar.Counter total={99} href="#" />
-      </Avatar.Group>
+      </AvatarGroup>
     </div>
   );
 }
@@ -56,20 +56,20 @@ function Component() {
 function Component() {
   return (
     <div className="flex flex-wrap gap-2">
-      <Avatar.Group>
+      <AvatarGroup>
         <Avatar img="/images/people/profile-picture-1.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-2.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-3.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-4.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-5.jpg" rounded stacked />
-      </Avatar.Group>
-      <Avatar.Group>
+      </AvatarGroup>
+      <AvatarGroup>
         <Avatar img="/images/people/profile-picture-1.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-2.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-3.jpg" rounded stacked />
         <Avatar img="/images/people/profile-picture-4.jpg" rounded stacked />
         <Avatar.Counter total={99} href="#" />
-      </Avatar.Group>
+      </AvatarGroup>
     </div>
   );
 }

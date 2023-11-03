@@ -1,14 +1,15 @@
 'use client';
 
 import { createContext, useContext } from 'react';
+import type { FlowbiteTimelineTheme } from './Timeline';
 
 export type TimelineContext = {
+  theme: FlowbiteTimelineTheme;
   horizontal?: boolean;
 };
 
 export const TimelineContext = createContext<TimelineContext | undefined>(undefined);
 
-// TODO: deprecate this in favor for vanilla CSS class targetting and enable full SSR
 export function useTimelineContext(): TimelineContext {
   const context = useContext(TimelineContext);
 

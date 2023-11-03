@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { forwardRef } from 'react';
 import { HiOutlineChevronRight } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
@@ -14,7 +14,7 @@ export interface FlowbiteBreadcrumbItemTheme {
   icon: string;
 }
 
-export interface BreadcrumbItemProps extends PropsWithChildren<Omit<ComponentProps<'li'>, 'ref'>> {
+export interface BreadcrumbItemProps extends Omit<ComponentProps<'li'>, 'ref'> {
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   theme?: DeepPartial<FlowbiteBreadcrumbItemTheme>;

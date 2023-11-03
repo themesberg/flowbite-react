@@ -14,9 +14,9 @@ export type DropdownDividerProps = {
 } & ComponentProps<'div'>;
 
 export const DropdownDivider: FC<DropdownDividerProps> = ({ className, theme: customTheme = {}, ...props }) => {
-  const { theme: dropdownTheme } = useDropdownContext();
+  const { theme: rootTheme } = useDropdownContext();
 
-  const theme = customTheme.divider ?? dropdownTheme?.floating?.divider;
+  const theme = customTheme.divider ?? rootTheme.floating.divider;
 
   return <div className={twMerge(theme, className)} {...props} />;
 };

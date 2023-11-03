@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -21,7 +21,7 @@ export interface FlowbiteToastTheme {
   };
 }
 
-export interface ToastProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface ToastProps extends ComponentProps<'div'> {
   duration?: Duration;
   theme?: DeepPartial<FlowbiteToastTheme>;
 }
@@ -48,7 +48,7 @@ const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300, t
   }
 
   return (
-    <ToastContext.Provider value={{ duration, isClosed, isRemoved, setIsClosed, setIsRemoved }}>
+    <ToastContext.Provider value={{ theme, duration, isClosed, isRemoved, setIsClosed, setIsRemoved }}>
       <div
         data-testid="flowbite-toast"
         role="alert"

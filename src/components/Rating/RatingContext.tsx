@@ -1,9 +1,11 @@
 'use client';
 
 import { createContext, useContext } from 'react';
+import type { FlowbiteRatingTheme } from './Rating';
 import type { FlowbiteStarSizes } from './RatingStar';
 
 export type RatingContext = {
+  theme: FlowbiteRatingTheme;
   size?: keyof FlowbiteStarSizes;
 };
 

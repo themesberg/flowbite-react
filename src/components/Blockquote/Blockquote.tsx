@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -12,7 +12,7 @@ export interface FlowbiteBlockquoteRootTheme {
   base: string;
 }
 
-export interface BlockquoteProps extends PropsWithChildren<ComponentProps<'blockquote'>> {
+export interface BlockquoteProps extends ComponentProps<'blockquote'> {
   theme?: DeepPartial<FlowbiteBlockquoteTheme>;
 }
 

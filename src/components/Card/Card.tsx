@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { omit } from '../../helpers/omit';
@@ -23,7 +23,7 @@ export interface FlowbiteCardImageTheme {
   horizontal: FlowbiteBoolean;
 }
 
-interface CommonCardProps extends PropsWithChildren<ComponentProps<'div'>> {
+interface CommonCardProps extends ComponentProps<'div'> {
   horizontal?: boolean;
   href?: string;
   /** Overwrites the theme. Will be merged with the context theme.

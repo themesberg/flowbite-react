@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -20,7 +20,7 @@ export interface LabelColors extends FlowbiteStateColors {
   default: string;
 }
 
-export interface LabelProps extends PropsWithChildren<Omit<ComponentProps<'label'>, 'color'>> {
+export interface LabelProps extends Omit<ComponentProps<'label'>, 'color'> {
   color?: keyof LabelColors;
   disabled?: boolean;
   theme?: DeepPartial<FlowbiteLabelTheme>;

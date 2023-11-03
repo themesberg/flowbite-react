@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { COMPONENTS_DATA } from '~/data/components';
 import { Button } from '~/src';
 
@@ -34,7 +34,7 @@ export const ComponentsSection: FC = () => {
   );
 };
 
-interface ComponentCardProps extends PropsWithChildren, ComponentProps<'div'> {
+interface ComponentCardProps extends ComponentProps<'div'> {
   link: string;
   name?: string;
   image?: string;

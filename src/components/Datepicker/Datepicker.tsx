@@ -214,6 +214,7 @@ export const Datepicker: FC<DatepickerProps> = ({
   return (
     <DatepickerContext.Provider
       value={{
+        theme,
         language,
         minDate,
         maxDate,

@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -11,7 +11,7 @@ export interface FlowbiteAccordionComponentTheme {
   base: string;
 }
 
-export interface AccordionContentProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface AccordionContentProps extends ComponentProps<'div'> {
   theme?: DeepPartial<FlowbiteAccordionComponentTheme>;
 }
 

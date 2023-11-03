@@ -8,7 +8,6 @@ import type {
   FC,
   HTMLProps,
   MutableRefObject,
-  PropsWithChildren,
   ReactElement,
   ReactNode,
   RefCallback,
@@ -42,10 +41,7 @@ export interface FlowbiteDropdownTheme {
   arrowIcon: string;
 }
 
-export interface DropdownProps
-  extends PropsWithChildren,
-    Pick<FloatingProps, 'placement' | 'trigger'>,
-    Omit<ButtonProps, 'theme'> {
+export interface DropdownProps extends Pick<FloatingProps, 'placement' | 'trigger'>, Omit<ButtonProps, 'theme'> {
   arrowIcon?: boolean;
   dismissOnClick?: boolean;
   floatingArrow?: boolean;
@@ -190,7 +186,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   }, [placement]);
 
   return (
-    <>
+    <DropdownContext.Provider value={{ theme, activeIndex, dismissOnClick, getItemProps, handleSelect }}>
       <Trigger
         {...buttonProps}
         refs={refs}
@@ -205,43 +201,33 @@ const DropdownComponent: FC<DropdownProps> = ({
         {label}
         {arrowIcon && <Icon className={theme.arrowIcon} />}
       </Trigger>
-      <DropdownContext.Provider
-        value={{
-          theme,
-          activeIndex,
-          dismissOnClick,
-          getItemProps,
-          handleSelect,
-        }}
-      >
-        {open && (
-          <FloatingFocusManager context={context} modal={false}>
-            <div
-              ref={refs.setFloating}
-              style={{ ...floatingStyles, minWidth: buttonWidth }}
-              data-testid="flowbite-dropdown"
-              aria-expanded={open}
-              {...getFloatingProps({
-                className: twMerge(
-                  theme.floating.base,
-                  theme.floating.animation,
-                  'duration-100',
-                  !open && theme.floating.hidden,
-                  theme.floating.style.auto,
-                  className,
-                ),
-              })}
-            >
-              <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
-                <ul className={theme.content} tabIndex={-1}>
-                  {children}
-                </ul>
-              </FloatingList>
-            </div>
-          </FloatingFocusManager>
-        )}
-      </DropdownContext.Provider>
-    </>
+      {open && (
+        <FloatingFocusManager context={context} modal={false}>
+          <div
+            ref={refs.setFloating}
+            style={{ ...floatingStyles, minWidth: buttonWidth }}
+            data-testid="flowbite-dropdown"
+            aria-expanded={open}
+            {...getFloatingProps({
+              className: twMerge(
+                theme.floating.base,
+                theme.floating.animation,
+                'duration-100',
+                !open && theme.floating.hidden,
+                theme.floating.style.auto,
+                className,
+              ),
+            })}
+          >
+            <FloatingList elementsRef={elementsRef} labelsRef={labelsRef}>
+              <ul className={theme.content} tabIndex={-1}>
+                {children}
+              </ul>
+            </FloatingList>
+          </div>
+        </FloatingFocusManager>
+      )}
+    </DropdownContext.Provider>
   );
 };
 

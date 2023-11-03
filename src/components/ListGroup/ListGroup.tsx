@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -15,7 +15,7 @@ export interface FlowbiteListGroupRootTheme {
   base: string;
 }
 
-export interface ListGroupProps extends PropsWithChildren, ComponentProps<'ul'> {
+export interface ListGroupProps extends ComponentProps<'ul'> {
   theme?: DeepPartial<FlowbiteListGroupTheme>;
 }
 
@@ -32,4 +32,6 @@ const ListGroupComponent: FC<ListGroupProps> = ({ children, className, theme: cu
 ListGroupComponent.displayName = 'ListGroup';
 ListGroupItem.displayName = 'ListGroup.Item';
 
-export const ListGroup = Object.assign(ListGroupComponent, { Item: ListGroupItem });
+export const ListGroup = Object.assign(ListGroupComponent, {
+  Item: ListGroupItem,
+});

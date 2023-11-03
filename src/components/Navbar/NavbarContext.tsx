@@ -1,8 +1,10 @@
 'use client';
 
 import { createContext, useContext } from 'react';
+import type { FlowbiteNavbarTheme } from './Navbar';
 
 type NavbarContext = {
+  theme: FlowbiteNavbarTheme;
   isOpen?: boolean;
   setIsOpen: (isOpen: boolean) => void;
 };

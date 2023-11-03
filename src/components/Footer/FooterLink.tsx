@@ -1,4 +1,4 @@
-import type { ComponentProps, ElementType, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, ElementType, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -9,7 +9,7 @@ export interface FlowbiteFooterLinkTheme {
   href: string;
 }
 
-export interface FooterLinkProps extends PropsWithChildren, ComponentProps<'a'> {
+export interface FooterLinkProps extends ComponentProps<'a'> {
   as?: ElementType;
   href: string;
   theme?: DeepPartial<FlowbiteFooterLinkTheme>;
