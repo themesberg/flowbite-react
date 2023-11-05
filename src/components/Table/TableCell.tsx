@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
-import { useTableContext } from './TableContext';
+import { useTableBodyContext } from './TableBodyContext';
 
 export interface FlowbiteTableCellTheme {
   base: string;
@@ -15,9 +15,9 @@ export interface TableCellProps extends ComponentProps<'td'> {
 }
 
 export const TableCell: FC<TableCellProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const { theme: rootTheme } = useTableContext();
+  const { theme: rootTheme } = useTableBodyContext();
 
-  const theme = mergeDeep(rootTheme.body.cell, customTheme);
+  const theme = mergeDeep(rootTheme.cell, customTheme);
 
   return (
     <td className={twMerge(theme.base, className)} {...props}>

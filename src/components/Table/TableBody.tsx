@@ -4,6 +4,7 @@ import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
+import { TableBodyContext } from './TableBodyContext';
 import type { FlowbiteTableCellTheme } from './TableCell';
 import { useTableContext } from './TableContext';
 
@@ -13,7 +14,7 @@ export interface FlowbiteTableBodyTheme {
 }
 
 export interface TableBodyProps extends ComponentProps<'tbody'> {
-  theme?: DeepPartial<FlowbiteTableCellTheme>;
+  theme?: DeepPartial<FlowbiteTableBodyTheme>;
 }
 
 export const TableBody: FC<TableBodyProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
@@ -22,8 +23,10 @@ export const TableBody: FC<TableBodyProps> = ({ children, className, theme: cust
   const theme = mergeDeep(rootTheme.body, customTheme);
 
   return (
-    <tbody className={twMerge(theme.base, className)} {...props}>
-      {children}
-    </tbody>
+    <TableBodyContext.Provider value={{ theme }}>
+      <tbody className={twMerge(theme.base, className)} {...props}>
+        {children}
+      </tbody>
+    </TableBodyContext.Provider>
   );
 };

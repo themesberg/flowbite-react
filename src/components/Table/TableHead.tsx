@@ -6,6 +6,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import { useTableContext } from './TableContext';
 import type { FlowbiteTableHeadCellTheme } from './TableHeadCell';
+import { TableHeadContext } from './TableHeadContext';
 
 export interface FlowbiteTableHeadTheme {
   base: string;
@@ -22,8 +23,10 @@ export const TableHead: FC<TableHeadProps> = ({ children, className, theme: cust
   const theme = mergeDeep(rootTheme.head, customTheme);
 
   return (
-    <thead className={twMerge(theme.base, className)} {...props}>
-      <tr>{children}</tr>
-    </thead>
+    <TableHeadContext.Provider value={{ theme }}>
+      <thead className={twMerge(theme.base, className)} {...props}>
+        <tr>{children}</tr>
+      </thead>
+    </TableHeadContext.Provider>
   );
 };
