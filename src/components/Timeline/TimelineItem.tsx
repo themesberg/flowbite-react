@@ -6,6 +6,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import type { FlowbiteTimelineContentTheme } from './TimelineContent';
 import { useTimelineContext } from './TimelineContext';
+import { TimelineItemContext } from './TimelineItemContext';
 import type { FlowbiteTimelinePointTheme } from './TimelinePoint';
 
 export interface FlowbiteTimelineItemTheme {
@@ -27,12 +28,14 @@ export const TimelineItem: FC<TimelineItemProps> = ({ children, className, theme
   const theme = mergeDeep(rootTheme.item, customTheme);
 
   return (
-    <li
-      data-testid="timeline-item"
-      className={twMerge(horizontal && theme.root.horizontal, !horizontal && theme.root.vertical, className)}
-      {...props}
-    >
-      {children}
-    </li>
+    <TimelineItemContext.Provider value={{ theme }}>
+      <li
+        data-testid="timeline-item"
+        className={twMerge(horizontal && theme.root.horizontal, !horizontal && theme.root.vertical, className)}
+        {...props}
+      >
+        {children}
+      </li>
+    </TimelineItemContext.Provider>
   );
 };

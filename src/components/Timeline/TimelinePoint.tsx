@@ -5,6 +5,7 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import { useTimelineContext } from './TimelineContext';
+import { useTimelineItemContext } from './TimelineItemContext';
 
 export interface FlowbiteTimelinePointTheme {
   horizontal: string;
@@ -34,9 +35,10 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const { theme: rootTheme, horizontal } = useTimelineContext();
+  const { horizontal } = useTimelineContext();
+  const { theme: itemTheme } = useTimelineItemContext();
 
-  const theme = mergeDeep(rootTheme.item.point, customTheme);
+  const theme = mergeDeep(itemTheme.point, customTheme);
 
   return (
     <div

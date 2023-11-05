@@ -5,10 +5,10 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import type { FlowbiteHeadingLevel } from '../Flowbite';
-import { useTimelineContext } from './TimelineContext';
+import { useTimelineContentContext } from './TimelineContentContext';
 
 export interface FlowbiteTimelineTitleTheme {
-  title: string;
+  base: string;
 }
 
 export interface TimelineTitleProps extends ComponentProps<'h1'> {
@@ -23,12 +23,12 @@ export const TimelineTitle: FC<TimelineTitleProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const { theme: rootTheme } = useTimelineContext();
+  const { theme: contentTheme } = useTimelineContentContext();
 
-  const theme = mergeDeep(rootTheme.item.content, customTheme).title;
+  const theme = mergeDeep(contentTheme.title, customTheme);
 
   return (
-    <Tag className={twMerge(theme, className)} {...props}>
+    <Tag className={twMerge(theme.base, className)} {...props}>
       {children}
     </Tag>
   );

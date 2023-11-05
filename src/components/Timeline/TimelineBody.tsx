@@ -4,10 +4,10 @@ import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
-import { useTimelineContext } from './TimelineContext';
+import { useTimelineContentContext } from './TimelineContentContext';
 
 export interface FlowbiteTimelineBodyTheme {
-  body: string;
+  base: string;
 }
 
 export interface TimelineBodyProps extends ComponentProps<'p'> {
@@ -15,12 +15,12 @@ export interface TimelineBodyProps extends ComponentProps<'p'> {
 }
 
 export const TimelineBody: FC<TimelineBodyProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const { theme: rootTheme } = useTimelineContext();
+  const { theme: contentTheme } = useTimelineContentContext();
 
-  const theme = mergeDeep(rootTheme.item.content, customTheme).body;
+  const theme = mergeDeep(contentTheme.body, customTheme);
 
   return (
-    <div className={twMerge(theme, className)} {...props}>
+    <div className={twMerge(theme.base, className)} {...props}>
       {children}
     </div>
   );
