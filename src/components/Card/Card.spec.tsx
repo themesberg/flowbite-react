@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import { Flowbite } from '../Flowbite';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import { Card } from './Card';
 
 describe('Components / Card', () => {
@@ -77,7 +77,7 @@ describe('Components / Card', () => {
 
   describe('Theme', () => {
     it('should use `base` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         card: {
           root: {
             base: 'text-cyan-100',
@@ -94,7 +94,7 @@ describe('Components / Card', () => {
     });
 
     it('should use `children` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         card: {
           root: {
             children: 'text-cyan-900',
@@ -114,7 +114,7 @@ describe('Components / Card', () => {
     });
 
     it('should use `horizontal` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         card: {
           root: {
             horizontal: {
@@ -138,7 +138,7 @@ describe('Components / Card', () => {
     });
 
     it('should use `href` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         card: {
           root: {
             href: 'text-cyan-700',
@@ -155,7 +155,7 @@ describe('Components / Card', () => {
     });
 
     it('should use `img` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         card: {
           img: {
             base: 'text-cyan-400',

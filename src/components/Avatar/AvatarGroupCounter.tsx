@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -8,7 +8,7 @@ export interface FlowbiteAvatarGroupCounterTheme {
   base: string;
 }
 
-export interface AvatarGroupCounterProps extends PropsWithChildren<ComponentProps<'a'>> {
+export interface AvatarGroupCounterProps extends ComponentProps<'a'> {
   theme?: DeepPartial<FlowbiteAvatarGroupCounterTheme>;
   total?: number;
 }

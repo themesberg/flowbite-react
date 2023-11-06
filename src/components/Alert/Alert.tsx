@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren, ReactNode } from 'react';
+import type { ComponentProps, FC, ReactNode } from 'react';
 import { HiX } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -22,7 +22,7 @@ export interface FlowbiteAlertCloseButtonTheme {
   icon: string;
 }
 
-export interface AlertProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
+export interface AlertProps extends Omit<ComponentProps<'div'>, 'color'> {
   additionalContent?: ReactNode;
   color?: keyof FlowbiteColors;
   icon?: FC<ComponentProps<'svg'>>;

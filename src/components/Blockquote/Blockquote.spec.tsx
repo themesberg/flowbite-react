@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../../';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import { Blockquote } from './Blockquote';
 
 describe('Components / Blockquote', () => {
   describe('Theme', () => {
     it('should use custom `base` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         blockquote: {
           root: {
             base: 'bg-yellow-400 dark:bg-yellow-40',

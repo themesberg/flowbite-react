@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -18,7 +18,7 @@ export interface HelperColors extends Pick<FlowbiteColors, 'gray' | 'info' | 'fa
   [key: string]: string;
 }
 
-export interface HelperTextProps extends PropsWithChildren<Omit<ComponentProps<'p'>, 'color'>> {
+export interface HelperTextProps extends Omit<ComponentProps<'p'>, 'color'> {
   color?: keyof HelperColors;
   theme?: DeepPartial<FlowbiteHelperTextTheme>;
   value?: string;

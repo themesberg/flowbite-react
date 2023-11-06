@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -13,7 +13,7 @@ export interface FlowbiteKbdRootTheme {
   icon: string;
 }
 
-export interface KbdProps extends PropsWithChildren<ComponentProps<'span'>> {
+export interface KbdProps extends ComponentProps<'span'> {
   icon?: FC<ComponentProps<'svg'>>;
   theme?: DeepPartial<FlowbiteKbdTheme>;
 }

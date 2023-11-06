@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentProps, FC, PropsWithChildren, ReactElement, ReactNode } from 'react';
+import type { ComponentProps, FC, ReactElement, ReactNode } from 'react';
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 import ScrollContainer from 'react-indiana-drag-scroll';
@@ -46,7 +46,7 @@ export interface FlowbiteCarouselScrollContainer {
   snap: string;
 }
 
-export interface CarouselProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface CarouselProps extends ComponentProps<'div'> {
   indicators?: boolean;
   leftControl?: ReactNode;
   rightControl?: ReactNode;
@@ -57,7 +57,7 @@ export interface CarouselProps extends PropsWithChildren<ComponentProps<'div'>> 
   pauseOnHover?: boolean;
 }
 
-export interface DefaultLeftRightControlProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface DefaultLeftRightControlProps extends ComponentProps<'div'> {
   theme?: DeepPartial<FlowbiteCarouselTheme>;
 }
 

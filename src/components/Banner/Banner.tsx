@@ -12,6 +12,7 @@ const BannerComponent: FC<BannerComponentProps> = ({ children, ...props }) => {
 };
 
 BannerComponent.displayName = 'Banner';
+
 export const Banner = Object.assign(BannerComponent, {
   CollapseButton: BannerCollapseButton,
 });

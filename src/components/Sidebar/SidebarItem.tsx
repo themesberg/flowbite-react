@@ -4,7 +4,6 @@ import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } fr
 import { forwardRef, useId } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import { Badge } from '../Badge';
 import type { FlowbiteColors } from '../Flowbite';
@@ -30,10 +29,7 @@ export interface FlowbiteSidebarItemTheme {
   listItem: string;
 }
 
-export interface SidebarItemProps
-  extends PropsWithChildren,
-    Omit<ComponentProps<'div'>, 'ref'>,
-    Record<string, unknown> {
+export interface SidebarItemProps extends Omit<ComponentProps<'div'>, 'ref'>, Record<string, unknown> {
   active?: boolean;
   as?: ElementType;
   href?: string;
@@ -48,11 +44,24 @@ export interface SidebarItemLabelColors extends Pick<FlowbiteColors, 'gray'> {
 }
 
 const ListItem: FC<
-  PropsWithChildren<{ id: string; isCollapsed: boolean; tooltipChildren: ReactNode | undefined; className?: string }>
-> = ({ id, isCollapsed, tooltipChildren, children: wrapperChildren, ...props }) => (
+  PropsWithChildren<{
+    id: string;
+    theme: FlowbiteSidebarItemTheme;
+    isCollapsed: boolean;
+    tooltipChildren: ReactNode | undefined;
+    className?: string;
+  }>
+> = ({ id, theme, isCollapsed, tooltipChildren, children: wrapperChildren, ...props }) => (
   <li {...props}>
     {isCollapsed ? (
-      <Tooltip content={<TooltipContent id={id}>{tooltipChildren}</TooltipContent>} placement="right">
+      <Tooltip
+        content={
+          <Children id={id} theme={theme}>
+            {tooltipChildren}
+          </Children>
+        }
+        placement="right"
+      >
         {wrapperChildren}
       </Tooltip>
     ) : (
@@ -61,13 +70,7 @@ const ListItem: FC<
   </li>
 );
 
-const TooltipContent: FC<PropsWithChildren<{ id: string }>> = ({ id, children }) => (
-  <Children id={id}>{children}</Children>
-);
-
-const Children: FC<PropsWithChildren<{ id: string }>> = ({ id, children }) => {
-  const theme = getTheme().sidebar.item;
-
+const Children: FC<PropsWithChildren<{ id: string; theme: FlowbiteSidebarItemTheme }>> = ({ id, theme, children }) => {
   return (
     <span
       data-testid="flowbite-sidebar-item-content"
@@ -95,12 +98,13 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
     ref,
   ) => {
     const id = useId();
-    const { isCollapsed } = useSidebarContext();
+    const { theme: rootTheme, isCollapsed } = useSidebarContext();
     const { isInsideCollapse } = useSidebarItemContext();
-    const theme = mergeDeep(getTheme().sidebar.item, customTheme);
+
+    const theme = mergeDeep(rootTheme.item, customTheme);
 
     return (
-      <ListItem className={theme.listItem} id={id} isCollapsed={isCollapsed} tooltipChildren={children}>
+      <ListItem theme={theme} className={theme.listItem} id={id} isCollapsed={isCollapsed} tooltipChildren={children}>
         <Component
           aria-labelledby={`flowbite-sidebar-item-${id}`}
           ref={ref}
@@ -122,7 +126,11 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
           {isCollapsed && !Icon && (
             <span className={theme.collapsed?.noIcon}>{(children as string).charAt(0).toLocaleUpperCase() ?? '?'}</span>
           )}
-          {!isCollapsed && <Children id={id}>{children}</Children>}
+          {!isCollapsed && (
+            <Children id={id} theme={theme}>
+              {children}
+            </Children>
+          )}
           {!isCollapsed && label && (
             <Badge color={labelColor} data-testid="flowbite-sidebar-label" hidden={isCollapsed} className={theme.label}>
               {label}

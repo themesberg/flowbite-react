@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import { MdKeyboardArrowLeft, MdKeyboardCommandKey } from 'react-icons/md';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../Flowbite';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import { Kbd } from './Kbd';
 
 describe('Components / Kbd', () => {
   describe('Theme', () => {
     it('should use custom `base` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         kbd: {
           root: {
             base: 'bg-yellow-400 dark:bg-yellow-40',

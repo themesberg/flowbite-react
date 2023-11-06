@@ -16,9 +16,15 @@ export const timelineTheme: FlowbiteTimelineTheme = {
       root: {
         base: 'mt-3 sm:pr-8',
       },
-      body: 'mb-4 text-base font-normal text-gray-500 dark:text-gray-400',
-      time: 'mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500',
-      title: 'text-lg font-semibold text-gray-900 dark:text-white',
+      body: {
+        base: 'mb-4 text-base font-normal text-gray-500 dark:text-gray-400',
+      },
+      time: {
+        base: 'mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500',
+      },
+      title: {
+        base: 'text-lg font-semibold text-gray-900 dark:text-white',
+      },
     },
     point: {
       horizontal: 'flex items-center',

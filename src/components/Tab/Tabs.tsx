@@ -54,7 +54,7 @@ interface TabKeyboardEventProps extends TabEventProps {
   event: KeyboardEvent<HTMLButtonElement>;
 }
 
-export interface TabsProps extends PropsWithChildren, Omit<ComponentProps<'div'>, 'ref' | 'style'> {
+export interface TabsProps extends Omit<ComponentProps<'div'>, 'ref' | 'style'> {
   onActiveTabChange?: (activeTab: number) => void;
   style?: keyof TabStyles;
   theme?: DeepPartial<FlowbiteTabTheme>;

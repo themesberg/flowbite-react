@@ -1,14 +1,26 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+'use client';
+
+import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { getTheme } from '../../theme-store';
+import { mergeDeep } from '../../helpers/merge-deep';
+import type { DeepPartial } from '../../types';
+import { useSidebarContext } from './SidebarContext';
 
-export interface SidebarItemsProps extends PropsWithChildren, ComponentProps<'div'> {}
+export interface FlowbiteSidebarItemsTheme {
+  base: string;
+}
 
-export const SidebarItems: FC<SidebarItemsProps> = ({ children, className, ...props }) => {
-  const theme = getTheme().sidebar.items;
+export interface SidebarItemsProps extends ComponentProps<'div'> {
+  theme?: DeepPartial<FlowbiteSidebarItemsTheme>;
+}
+
+export const SidebarItems: FC<SidebarItemsProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
+  const { theme: rootTheme } = useSidebarContext();
+
+  const theme = mergeDeep(rootTheme.items, customTheme);
 
   return (
-    <div className={twMerge(theme, className)} data-testid="flowbite-sidebar-items" {...props}>
+    <div className={twMerge(theme.base, className)} data-testid="flowbite-sidebar-items" {...props}>
       {children}
     </div>
   );

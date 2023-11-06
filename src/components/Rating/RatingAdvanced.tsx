@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
+import type { ComponentProps, FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -14,7 +14,7 @@ export interface FlowbiteRatingAdvancedTheme {
   };
 }
 
-export interface RatingAdvancedProps extends PropsWithChildren, ComponentProps<'div'> {
+export interface RatingAdvancedProps extends ComponentProps<'div'> {
   percentFilled?: number;
   theme?: DeepPartial<FlowbiteRatingAdvancedTheme>;
 }

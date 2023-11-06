@@ -1,4 +1,4 @@
-import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
+import type { ComponentProps, FC, ReactElement } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -61,7 +61,7 @@ export interface AvatarImageProps {
   'data-testid': string;
 }
 
-export interface AvatarProps extends PropsWithChildren<Omit<ComponentProps<'div'>, 'color'>> {
+export interface AvatarProps extends Omit<ComponentProps<'div'>, 'color'> {
   alt?: string;
   bordered?: boolean;
   img?: string | ((props: AvatarImageProps) => ReactElement);
@@ -162,6 +162,7 @@ const AvatarComponent: FC<AvatarProps> = ({
 };
 
 AvatarComponent.displayName = 'Avatar';
+
 export const Avatar = Object.assign(AvatarComponent, {
   Group: AvatarGroup,
   Counter: AvatarGroupCounter,

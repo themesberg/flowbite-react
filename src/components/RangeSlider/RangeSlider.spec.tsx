@@ -2,8 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef } from 'react';
 import { describe, expect, it, vi } from 'vitest';
-
-import { Flowbite } from '../Flowbite';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import { RangeSlider } from './RangeSlider';
 
 describe('Components / Button', () => {
@@ -139,7 +138,7 @@ describe('Components / Button', () => {
 
   describe('Theme', () => {
     it('should use `base` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         rangeSlider: {
           root: {
             base: 'dummy-range-slider-base-classes',
@@ -157,7 +156,7 @@ describe('Components / Button', () => {
     });
 
     it('should use `base` classes of field', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         rangeSlider: {
           field: {
             base: 'dummy-range-slider-field-base-classes',
@@ -175,7 +174,7 @@ describe('Components / Button', () => {
     });
 
     it('should use `base` classes of input', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         rangeSlider: {
           field: {
             input: {
@@ -195,7 +194,7 @@ describe('Components / Button', () => {
     });
 
     it('should use `sizes` classes of input', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         rangeSlider: {
           field: {
             input: {
@@ -219,7 +218,7 @@ describe('Components / Button', () => {
 
   describe('Theme as a prop', () => {
     it('should use `base` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         root: {
           base: 'dummy-range-slider-base-classes',
         },
@@ -231,7 +230,7 @@ describe('Components / Button', () => {
     });
 
     it('should use `base` classes of field', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         field: {
           base: 'dummy-range-slider-field-base-classes',
         },
@@ -243,7 +242,7 @@ describe('Components / Button', () => {
     });
 
     it('should use `base` classes of input', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         field: {
           input: {
             base: 'dummy-range-slider-field-input-base-classes',
@@ -257,7 +256,7 @@ describe('Components / Button', () => {
     });
 
     it('should use `sizes` classes of input', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         field: {
           input: {
             sizes: {

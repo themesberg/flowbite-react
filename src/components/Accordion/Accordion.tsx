@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
+import type { ComponentProps, FC, ReactElement } from 'react';
 import { Children, cloneElement, useMemo, useState } from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
@@ -26,7 +26,7 @@ export interface FlowbiteAccordionRootTheme {
   flush: FlowbiteBoolean;
 }
 
-export interface AccordionProps extends PropsWithChildren<ComponentProps<'div'>> {
+export interface AccordionProps extends ComponentProps<'div'> {
   alwaysOpen?: boolean;
   arrowIcon?: FC<ComponentProps<'svg'>>;
   children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];

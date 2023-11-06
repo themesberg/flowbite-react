@@ -4,7 +4,7 @@ import type { FC } from 'react';
 import { useState } from 'react';
 import { HiEye, HiHeart, HiInformationCircle } from 'react-icons/hi';
 import { describe, expect, it, vi } from 'vitest';
-import { Flowbite } from '../Flowbite';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 
 import type { AlertProps } from './Alert';
 import { Alert } from './Alert';
@@ -19,7 +19,7 @@ describe.concurrent('Components / Alert', () => {
 
     describe('Theme', () => {
       it('should use custom `base` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           alert: {
             color: {
               info: 'text-purple-100',
@@ -36,7 +36,7 @@ describe.concurrent('Components / Alert', () => {
       });
 
       it('should use custom `borderAccent` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           alert: {
             borderAccent: 'border-t-4 border-purple-500',
           },
@@ -51,7 +51,7 @@ describe.concurrent('Components / Alert', () => {
       });
 
       it('should use custom `wrapper` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           alert: {
             wrapper: 'flex items-center',
           },
@@ -66,7 +66,7 @@ describe.concurrent('Components / Alert', () => {
       });
 
       it('should use custom `color` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           alert: {
             closeButton: {
               color: {
@@ -93,7 +93,7 @@ describe.concurrent('Components / Alert', () => {
       });
 
       it('should use custom `icon`', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           alert: {
             icon: 'alert-custom-icon',
           },
@@ -108,7 +108,7 @@ describe.concurrent('Components / Alert', () => {
       });
 
       it('should show custom `rounded` class', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           alert: {
             rounded: 'rounded',
           },

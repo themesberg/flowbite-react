@@ -1,10 +1,12 @@
 'use client';
 
 import { createContext, useContext } from 'react';
+import type { FlowbiteToastTheme } from './Toast';
 
 export type Duration = 75 | 100 | 150 | 200 | 300 | 500 | 700 | 1000;
 
 type ToastContext = {
+  theme: FlowbiteToastTheme;
   duration?: Duration;
   isClosed?: boolean;
   isRemoved?: boolean;

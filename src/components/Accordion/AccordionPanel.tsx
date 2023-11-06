@@ -1,11 +1,11 @@
 'use client';
 
-import type { FC, PropsWithChildren } from 'react';
+import type { FC } from 'react';
 import { useState } from 'react';
 import type { AccordionProps } from './Accordion';
 import { AccordionPanelContext } from './AccordionPanelContext';
 
-export interface AccordionPanelProps extends PropsWithChildren<AccordionProps> {
+export interface AccordionPanelProps extends AccordionProps {
   isOpen?: boolean;
   setOpen?: () => void;
 }

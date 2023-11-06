@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../Flowbite';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import type { AccordionProps } from './Accordion';
 import { Accordion } from './Accordion';
 
@@ -130,7 +130,7 @@ describe('Components / Accordion', () => {
   describe('Theme', () => {
     describe('`Accordion`', () => {
       it('should use custom `base` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           accordion: {
             root: {
               base: 'text-4xl',
@@ -148,7 +148,7 @@ describe('Components / Accordion', () => {
       });
 
       it('should use custom `flush` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           accordion: {
             root: {
               flush: {
@@ -177,7 +177,7 @@ describe('Components / Accordion', () => {
 
     describe('`Accordion.Content`', () => {
       it('should use custom `content` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           accordion: {
             content: {
               base: 'text-4xl',
@@ -199,7 +199,7 @@ describe('Components / Accordion', () => {
 
     describe('`Accordion.Title`', () => {
       it('should use custom `title` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           accordion: {
             title: {
               arrow: {

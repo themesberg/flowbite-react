@@ -37,7 +37,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Rating, RatingStar } from 'flowbite-react';
+import { Rating, RatingAdvanced, RatingStar } from 'flowbite-react';
 
 function Component() {
   return (

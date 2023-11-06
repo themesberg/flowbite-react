@@ -1,8 +1,10 @@
 'use client';
 
 import { createContext, useContext } from 'react';
+import type { FlowbiteSidebarTheme } from './Sidebar';
 
 export type SidebarContext = {
+  theme: FlowbiteSidebarTheme;
   isCollapsed: boolean;
 };
 

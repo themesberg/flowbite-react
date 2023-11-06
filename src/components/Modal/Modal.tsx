@@ -12,7 +12,7 @@ import {
   useRole,
 } from '@floating-ui/react';
 import type { MutableRefObject } from 'react';
-import { forwardRef, useState, type ComponentPropsWithoutRef, type PropsWithChildren } from 'react';
+import { forwardRef, useState, type ComponentPropsWithoutRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -54,7 +54,7 @@ export interface ModalSizes extends Omit<FlowbiteSizes, 'xs'> {
   [key: string]: string;
 }
 
-export interface ModalProps extends PropsWithChildren<ComponentPropsWithoutRef<'div'>> {
+export interface ModalProps extends ComponentPropsWithoutRef<'div'> {
   onClose?: () => void;
   position?: keyof ModalPositions;
   popup?: boolean;
@@ -105,7 +105,7 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
     }
 
     return (
-      <ModalContext.Provider value={{ popup, onClose, setHeaderId }}>
+      <ModalContext.Provider value={{ theme, popup, onClose, setHeaderId }}>
         <FloatingPortal root={root}>
           <FloatingOverlay
             lockScroll
@@ -140,4 +140,8 @@ ModalHeader.displayName = 'Modal.Header';
 ModalBody.displayName = 'Modal.Body';
 ModalFooter.displayName = 'Modal.Footer';
 
-export const Modal = Object.assign(ModalComponent, { Header: ModalHeader, Body: ModalBody, Footer: ModalFooter });
+export const Modal = Object.assign(ModalComponent, {
+  Header: ModalHeader,
+  Body: ModalBody,
+  Footer: ModalFooter,
+});
