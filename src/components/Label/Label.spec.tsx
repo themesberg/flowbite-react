@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { Button } from '../Button';
 import { Checkbox } from '../Checkbox';
 import { FileInput } from '../FileInput';
-import { Flowbite } from '../Flowbite';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import { Radio } from '../Radio';
 import { RangeSlider } from '../RangeSlider';
 import { Select } from '../Select';
@@ -34,7 +34,7 @@ describe.concurrent('Components / Label', () => {
 
     describe('Theme', () => {
       it('should use `disabled` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           label: {
             root: {
               disabled: 'opacity-50',

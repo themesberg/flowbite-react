@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { useState } from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import { Flowbite } from '../Flowbite';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import { TextInput } from '../TextInput';
 import { ToggleSwitch } from './ToggleSwitch';
 
@@ -132,7 +132,7 @@ describe('Components / Toggle switch', () => {
 
   describe('Theme', () => {
     it('should use `base` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         toggleSwitch: {
           root: {
             base: 'text-cyan-100',
@@ -149,7 +149,7 @@ describe('Components / Toggle switch', () => {
     });
 
     it('should use `active` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         toggleSwitch: {
           root: {
             active: {
@@ -173,7 +173,7 @@ describe('Components / Toggle switch', () => {
     });
 
     it('should use `label` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         toggleSwitch: {
           root: {
             label: 'test-label',
@@ -190,7 +190,7 @@ describe('Components / Toggle switch', () => {
     });
 
     it('should use `toggle` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         toggleSwitch: {
           toggle: {
             base: 'h-6 w-11',

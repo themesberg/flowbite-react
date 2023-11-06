@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../Flowbite';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import { Radio } from './Radio';
 
 describe.concurrent('Components / Radio', () => {
@@ -14,7 +14,7 @@ describe.concurrent('Components / Radio', () => {
 
   describe('Theme', () => {
     it('should use custom `base` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         radio: {
           root: {
             base: 'bg-yellow-400 dark:bg-yellow-40',

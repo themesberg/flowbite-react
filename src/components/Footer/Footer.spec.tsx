@@ -2,7 +2,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 import type { FC } from 'react';
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
 import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../Flowbite';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import { Footer } from './Footer';
 
 describe('Components / Footer', () => {
@@ -61,7 +61,7 @@ describe('Components / Footer', () => {
 
   describe('Theme', () => {
     it('should use `base` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         footer: {
           root: {
             base: 'text-gray-100',
@@ -78,7 +78,7 @@ describe('Components / Footer', () => {
     });
 
     it('should use `bgDark` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         footer: {
           root: {
             bgDark: 'text-gray-100',
@@ -95,7 +95,7 @@ describe('Components / Footer', () => {
     });
 
     it('should use `container` classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         footer: {
           root: {
             container: 'text-gray-100',
@@ -113,7 +113,7 @@ describe('Components / Footer', () => {
 
     describe('`Footer.Brand`', () => {
       it('should use `brand` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           footer: {
             brand: {
               base: 'text-gray-100',
@@ -152,7 +152,7 @@ describe('Components / Footer', () => {
 
     describe('`Footer.Copyright`', () => {
       it('should use `copyright` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           footer: {
             copyright: {
               base: 'text-gray-100',
@@ -191,7 +191,7 @@ describe('Components / Footer', () => {
 
     describe('`Footer.Icon`', () => {
       it('should use `icon` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           footer: {
             icon: {
               base: 'text-gray-800',
@@ -224,7 +224,7 @@ describe('Components / Footer', () => {
 
     describe('`Footer.Title`', () => {
       it('should use `title` classes', () => {
-        const theme = {
+        const theme: CustomFlowbiteTheme = {
           footer: {
             title: {
               base: 'text-gray-100',

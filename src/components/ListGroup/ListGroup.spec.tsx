@@ -56,7 +56,7 @@ describe('Components / List group', () => {
 
   describe('Theme', () => {
     it('should use custom classes', () => {
-      const theme = {
+      const theme: CustomFlowbiteTheme = {
         listGroup: {
           root: {
             base: 'text-gray-100',
