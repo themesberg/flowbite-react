@@ -25,7 +25,7 @@ import type { FlowbitePaginationTheme } from '../Pagination';
 import type { FlowbiteProgressTheme } from '../Progress';
 import type { FlowbiteRadioTheme } from '../Radio';
 import type { FlowbiteRangeSliderTheme } from '../RangeSlider';
-import type { FlowbiteRatingTheme } from '../Rating';
+import type { FlowbiteRatingAdvancedTheme, FlowbiteRatingTheme } from '../Rating';
 import type { FlowbiteSelectTheme } from '../Select';
 import type { FlowbiteSidebarTheme } from '../Sidebar';
 import type { FlowbiteSpinnerTheme } from '../Spinner';
@@ -59,6 +59,7 @@ export interface FlowbiteTheme {
   modal: FlowbiteModalTheme;
   navbar: FlowbiteNavbarTheme;
   rating: FlowbiteRatingTheme;
+  ratingAdvanced: FlowbiteRatingAdvancedTheme;
   pagination: FlowbitePaginationTheme;
   sidebar: FlowbiteSidebarTheme;
   progress: FlowbiteProgressTheme;

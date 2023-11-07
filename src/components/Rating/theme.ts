@@ -1,17 +1,9 @@
 import type { FlowbiteRatingTheme } from './Rating';
+import { FlowbiteRatingAdvancedTheme } from './RatingAdvanced';
 
 export const ratingTheme: FlowbiteRatingTheme = {
   root: {
     base: 'flex items-center',
-  },
-  advanced: {
-    base: 'flex items-center',
-    label: 'text-sm font-medium text-cyan-600 dark:text-cyan-500',
-    progress: {
-      base: 'mx-4 h-5 w-2/4 rounded bg-gray-200 dark:bg-gray-700',
-      fill: 'h-5 rounded bg-yellow-400',
-      label: 'text-sm font-medium text-cyan-600 dark:text-cyan-500',
-    },
   },
   star: {
     empty: 'text-gray-300 dark:text-gray-500',
@@ -21,5 +13,15 @@ export const ratingTheme: FlowbiteRatingTheme = {
       md: 'w-7 h-7',
       lg: 'w-10 h-10',
     },
+  },
+};
+
+export const ratingAdvancedTheme: FlowbiteRatingAdvancedTheme = {
+  base: 'flex items-center',
+  label: 'text-sm font-medium text-cyan-600 dark:text-cyan-500',
+  progress: {
+    base: 'mx-4 h-5 w-2/4 rounded bg-gray-200 dark:bg-gray-700',
+    fill: 'h-5 rounded bg-yellow-400',
+    label: 'text-sm font-medium text-cyan-600 dark:text-cyan-500',
   },
 };
