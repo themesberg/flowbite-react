@@ -26,7 +26,7 @@ export const RatingAdvanced: FC<RatingAdvancedProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().rating.advanced, customTheme);
+  const theme = mergeDeep(getTheme().ratingAdvanced, customTheme);
 
   return (
     <div className={twMerge(theme.base, className)} {...props}>

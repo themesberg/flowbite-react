@@ -25,7 +25,7 @@ import { paginationTheme } from './components/Pagination/theme';
 import { progressTheme } from './components/Progress/theme';
 import { radioTheme } from './components/Radio/theme';
 import { rangeSliderTheme } from './components/RangeSlider/theme';
-import { ratingTheme } from './components/Rating/theme';
+import { ratingAdvancedTheme, ratingTheme } from './components/Rating/theme';
 import { selectTheme } from './components/Select/theme';
 import { sidebarTheme } from './components/Sidebar/theme';
 import { spinnerTheme } from './components/Spinner/theme';
@@ -67,6 +67,7 @@ export const theme: FlowbiteTheme = {
   radio: radioTheme,
   rangeSlider: rangeSliderTheme,
   rating: ratingTheme,
+  ratingAdvanced: ratingAdvancedTheme,
   select: selectTheme,
   textInput: textInputTheme,
   textarea: textareaTheme,
