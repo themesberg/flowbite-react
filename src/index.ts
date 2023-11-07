@@ -44,3 +44,4 @@ export * from './components/Tooltip';
 export * from './hooks/use-theme-mode';
 
 export * from './theme';
+export { getTheme, getThemeMode } from './theme-store';
