@@ -43,13 +43,16 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
       onClick={toggleMode}
       {...props}
     >
-      {computedMode === 'dark' ? (
-        <span>
-          <IconDark aria-label="Currently dark mode" className={theme.root.icon} />
-        </span>
-      ) : (
-        <IconLight aria-label="Currently light mode" className={theme.root.icon} />
-      )}
+      <IconDark
+        aria-label="Currently dark mode"
+        data-active={computedMode === 'dark'}
+        className={twMerge(theme.root.icon, 'hidden dark:block')}
+      />
+      <IconLight
+        aria-label="Currently light mode"
+        data-active={computedMode === 'light'}
+        className={twMerge(theme.root.icon, 'dark:hidden')}
+      />
     </button>
   );
 };
