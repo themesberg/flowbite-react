@@ -30,7 +30,7 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   iconLight: IconLight = HiMoon,
   ...props
 }) => {
-  const { computedMode, toggleMode } = useThemeMode();
+  const { toggleMode } = useThemeMode();
 
   const theme = mergeDeep(getTheme().darkThemeToggle, customTheme);
 
@@ -43,13 +43,8 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
       onClick={toggleMode}
       {...props}
     >
-      {computedMode === 'dark' ? (
-        <span>
-          <IconDark aria-label="Currently dark mode" className={theme.root.icon} />
-        </span>
-      ) : (
-        <IconLight aria-label="Currently light mode" className={theme.root.icon} />
-      )}
+      <IconDark aria-label="Currently dark mode" className={twMerge(theme.root.icon, 'hidden dark:block')} />
+      <IconLight aria-label="Currently light mode" className={twMerge(theme.root.icon, 'dark:hidden')} />
     </button>
   );
 };
