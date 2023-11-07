@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import { type FC } from 'react';
-import { safeResJson } from '~/src/helpers/http';
+import { type JsonResponseType, safeResJson } from '~/src/helpers/http';
 
-async function fetchSafe(endpoint: string): Promise<any> {
+async function fetchSafe(endpoint: string): Promise<JsonResponseType> {
   return safeResJson(await fetch(endpoint));
 }
 
