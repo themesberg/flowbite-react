@@ -85,7 +85,15 @@
 #mainContent > ul > li > code,
 #mainContent > ol > li > code {
   @apply whitespace-nowrap break-all px-1 font-mono text-sm text-primary-600 dark:text-primary-400;
-  font-family: Menlo, ui-monospace, SFMono-Regular, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  font-family:
+    Menlo,
+    ui-monospace,
+    SFMono-Regular,
+    Monaco,
+    Consolas,
+    Liberation Mono,
+    Courier New,
+    monospace;
 }
 
 #mainContent > p > a:hover,
@@ -130,7 +138,15 @@
 code[class*='language-'],
 pre[class*='language-'] {
   @apply mb-5 mt-0 rounded-lg text-sm font-normal text-pink-500 dark:text-pink-400;
-  font-family: Menlo, ui-monospace, SFMono-Regular, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  font-family:
+    Menlo,
+    ui-monospace,
+    SFMono-Regular,
+    Monaco,
+    Consolas,
+    Liberation Mono,
+    Courier New,
+    monospace;
   direction: ltr;
   text-align: left;
   white-space: pre;

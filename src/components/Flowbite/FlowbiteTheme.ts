@@ -13,7 +13,7 @@ import type { FlowbiteDarkThemeToggleTheme } from '../DarkThemeToggle';
 import type { FlowbiteDatepickerTheme } from '../Datepicker';
 import type { FlowbiteDropdownTheme } from '../Dropdown';
 import type { FlowbiteFileInputTheme } from '../FileInput';
-import type { FlowbiteFloatingLabelTheme } from '../FloatingLabel/FloatingLabel';
+import type { FlowbiteFloatingLabelTheme } from '../FloatingLabel';
 import type { FlowbiteFooterTheme } from '../Footer';
 import type { FlowbiteHelperTextTheme } from '../HelperText';
 import type { FlowbiteKbdTheme } from '../Kbd';

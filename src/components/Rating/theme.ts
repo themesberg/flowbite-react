@@ -1,5 +1,5 @@
 import type { FlowbiteRatingTheme } from './Rating';
-import { FlowbiteRatingAdvancedTheme } from './RatingAdvanced';
+import type { FlowbiteRatingAdvancedTheme } from './RatingAdvanced';
 
 export const ratingTheme: FlowbiteRatingTheme = {
   root: {

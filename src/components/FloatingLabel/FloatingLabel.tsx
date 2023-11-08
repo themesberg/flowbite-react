@@ -1,27 +1,21 @@
-import type { ComponentProps } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 import { forwardRef, useId } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
-import type { FlowbiteSizes } from '../Flowbite';
+import type { FlowbiteFloatingLabelTheme } from './theme';
 
-export interface FlowbiteFloatingLabelTheme {
-  input: any;
-  label: any;
-  helperText: any;
-}
+export type FloatingLabelColor = 'default' | 'success' | 'error';
+export type FloatingLabelSizing = 'sm' | 'md';
+export type FloatingLabelVariant = 'filled' | 'outlined' | 'standard';
 
-export interface FlowbiteFloatingLabelSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
-  [key: string]: string;
-}
-
-export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
-  color?: string | null | undefined;
-  helperText?: string;
-  sizing?: keyof FlowbiteFloatingLabelSizes;
-  variant: string;
+export interface FloatingLabelProps extends ComponentPropsWithoutRef<'input'> {
   label: string;
+  helperText?: string;
+  color?: FloatingLabelColor;
+  sizing?: FloatingLabelSizing;
+  variant: FloatingLabelVariant;
   disabled?: boolean;
   theme?: DeepPartial<FlowbiteFloatingLabelTheme>;
 }
@@ -29,22 +23,20 @@ export interface FloatingLabelProps extends Omit<ComponentProps<'input'>, 'ref' 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
   (
     {
-      color,
+      label,
       helperText,
+      color = 'default',
       sizing = 'md',
       variant,
-      label,
       disabled = false,
-      className,
       theme: customTheme = {},
+      className,
       ...props
     },
     ref,
   ) => {
     const randomId = useId();
     const theme = mergeDeep(getTheme().floatingLabel, customTheme);
-
-    if (color === null || color === undefined) color = 'default';
 
     return (
       <div>
@@ -62,7 +54,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
           />
           <label
             htmlFor={props.id ? props.id : 'floatingLabel' + randomId}
-            className={twMerge(theme.label?.[color]?.[variant]?.[sizing], className)}
+            className={twMerge(theme.label[color][variant][sizing], className)}
           >
             {label}
           </label>

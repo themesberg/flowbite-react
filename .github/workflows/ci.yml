@@ -16,10 +16,10 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: 💿 Setup NodeJS 16
+      - name: 💿 Setup NodeJS 20
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 20
 
       - name: ⏳ Setup Cache
         uses: actions/cache@v3
@@ -42,7 +42,7 @@ jobs:
         run: yarn test:coverage
 
       - name: 📊 Upload coverage to Codecov
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
         with:
           fail_ci_if_error: true
           files: coverage/coverage-final.json
