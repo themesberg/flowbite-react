@@ -32,18 +32,17 @@ interface CommonCardProps extends ComponentProps<'div'> {
   theme?: DeepPartial<FlowbiteCardTheme>;
 }
 
-export type CardProps =
-  | (
-      | { imgAlt?: string; imgSrc?: string; renderImage?: never }
-      | {
-          /** Allows to provide a custom render function for the image component. Useful in Next.JS and Gatsby. **Setting this will disable `imgSrc` and `imgAlt`**.
-           */
-          renderImage?: (theme: DeepPartial<FlowbiteCardTheme>, horizontal: boolean) => JSX.Element;
-          imgAlt?: never;
-          imgSrc?: never;
-        }
-    ) &
-      CommonCardProps;
+export type CardProps = (
+  | { imgAlt?: string; imgSrc?: string; renderImage?: never }
+  | {
+      /** Allows to provide a custom render function for the image component. Useful in Next.JS and Gatsby. **Setting this will disable `imgSrc` and `imgAlt`**.
+       */
+      renderImage?: (theme: DeepPartial<FlowbiteCardTheme>, horizontal: boolean) => JSX.Element;
+      imgAlt?: never;
+      imgSrc?: never;
+    }
+) &
+  CommonCardProps;
 
 export const Card: FC<CardProps> = (props) => {
   const { children, className, horizontal, href, theme: customTheme = {} } = props;
