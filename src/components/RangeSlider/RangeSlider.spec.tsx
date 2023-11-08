@@ -218,7 +218,7 @@ describe('Components / Button', () => {
 
   describe('Theme as a prop', () => {
     it('should use `base` classes', () => {
-      const theme: CustomFlowbiteTheme = {
+      const theme: CustomFlowbiteTheme['rangeSlider'] = {
         root: {
           base: 'dummy-range-slider-base-classes',
         },
@@ -230,7 +230,7 @@ describe('Components / Button', () => {
     });
 
     it('should use `base` classes of field', () => {
-      const theme: CustomFlowbiteTheme = {
+      const theme: CustomFlowbiteTheme['rangeSlider'] = {
         field: {
           base: 'dummy-range-slider-field-base-classes',
         },
@@ -242,7 +242,7 @@ describe('Components / Button', () => {
     });
 
     it('should use `base` classes of input', () => {
-      const theme: CustomFlowbiteTheme = {
+      const theme: CustomFlowbiteTheme['rangeSlider'] = {
         field: {
           input: {
             base: 'dummy-range-slider-field-input-base-classes',
@@ -256,7 +256,7 @@ describe('Components / Button', () => {
     });
 
     it('should use `sizes` classes of input', () => {
-      const theme: CustomFlowbiteTheme = {
+      const theme: CustomFlowbiteTheme['rangeSlider'] = {
         field: {
           input: {
             sizes: {
