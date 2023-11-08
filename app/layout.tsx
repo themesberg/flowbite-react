@@ -1,5 +1,5 @@
 import { Inter as InterFont } from 'next/font/google';
-import type { Metadata, NextPage } from 'next/types';
+import type { Metadata, NextPage, Viewport } from 'next/types';
 import type { FC, PropsWithChildren } from 'react';
 import { ThemeModeScript } from '~/src';
 
@@ -21,21 +21,12 @@ export const metadata: Metadata = {
     shortcut: '/favicon.ico',
     apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
   },
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#1f2937' },
-  ],
   manifest: '/site.webmanifest',
   other: {
     charSet: 'utf-8',
     lang: 'en',
   },
   title: 'Flowbite React - UI Component Library',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
   openGraph: {
     description:
       'Flowbite React is an open-source UI component library built with React components, Tailwind CSS utility classes and based on the Flowbite design system and components.',
@@ -50,6 +41,16 @@ export const metadata: Metadata = {
     creator: '@zoltanszogyenyi',
     images: ['https://flowbite.s3.amazonaws.com/github/flowbite-react.png'],
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#1f2937' },
+  ],
 };
 
 const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
