@@ -1,6 +1,4 @@
-import type { FlowbiteFloatingLabelTheme } from './FloatingLabel';
-
-export const floatingLabelTheme: FlowbiteFloatingLabelTheme = {
+export const floatingLabelTheme = {
   input: {
     default: {
       filled: {
@@ -95,3 +93,5 @@ export const floatingLabelTheme: FlowbiteFloatingLabelTheme = {
     error: 'mt-2 text-xs text-red-600 dark:text-red-400',
   },
 };
+
+export type FlowbiteFloatingLabelTheme = typeof floatingLabelTheme;
