@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom/vitest';
 import { cleanup } from '@testing-library/react';
 import ResizeObserver from 'resize-observer-polyfill';
 import { afterEach } from 'vitest';
