@@ -38,7 +38,7 @@ const components: MDXComponents = {
       const properties = path.split('.');
       const key = properties.shift() as keyof typeof obj;
       if (!(key in obj)) return;
-      return pick(obj[key], properties.join('.'));
+      return pick(obj[key] as T, properties.join('.'));
     }
 
     const codeData = pick(examples, name);
