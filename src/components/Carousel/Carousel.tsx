@@ -50,6 +50,7 @@ export interface CarouselProps extends ComponentProps<'div'> {
   indicators?: boolean;
   leftControl?: ReactNode;
   rightControl?: ReactNode;
+  draggable?: boolean;
   slide?: boolean;
   slideInterval?: number;
   theme?: DeepPartial<FlowbiteCarouselTheme>;
@@ -67,6 +68,7 @@ export const Carousel: FC<CarouselProps> = ({
   leftControl,
   rightControl,
   slide = true,
+  draggable = true,
   slideInterval,
   className,
   theme: customTheme = {},
@@ -145,10 +147,10 @@ export const Carousel: FC<CarouselProps> = ({
     >
       <ScrollContainer
         className={twMerge(theme.scrollContainer.base, (isDeviceMobile || !isDragging) && theme.scrollContainer.snap)}
-        draggingClassName="cursor-grab"
+        draggingClassName={draggable ? "cursor-grab" : ""}
         innerRef={carouselContainer}
         onEndScroll={handleDragging(false)}
-        onStartScroll={handleDragging(true)}
+        onStartScroll={handleDragging(draggable)}
         vertical={false}
       >
         {items?.map((item, index) => (
