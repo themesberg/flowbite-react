@@ -147,16 +147,17 @@ export const Carousel: FC<CarouselProps> = ({
     >
       <ScrollContainer
         className={twMerge(theme.scrollContainer.base, (isDeviceMobile || !isDragging) && theme.scrollContainer.snap)}
-        draggingClassName={draggable ? 'cursor-grab' : ''}
+        draggingClassName={'cursor-grab'}
         innerRef={carouselContainer}
         onEndScroll={handleDragging(false)}
         onStartScroll={handleDragging(draggable)}
         vertical={false}
+        horizontal={draggable}
       >
         {items?.map((item, index) => (
           <div
             key={index}
-            className={theme.item.wrapper}
+            className={theme.item.wrapper + (draggable ? '' : ' cursor-default')}
             data-active={activeItem === index}
             data-testid="carousel-item"
           >
