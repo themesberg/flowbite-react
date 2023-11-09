@@ -147,7 +147,7 @@ export const Carousel: FC<CarouselProps> = ({
     >
       <ScrollContainer
         className={twMerge(theme.scrollContainer.base, (isDeviceMobile || !isDragging) && theme.scrollContainer.snap)}
-        draggingClassName={draggable ? "cursor-grab" : ""}
+        draggingClassName={draggable ? 'cursor-grab' : ''}
         innerRef={carouselContainer}
         onEndScroll={handleDragging(false)}
         onStartScroll={handleDragging(draggable)}
