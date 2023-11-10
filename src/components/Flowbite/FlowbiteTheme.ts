@@ -19,6 +19,7 @@ import type { FlowbiteHelperTextTheme } from '../HelperText';
 import type { FlowbiteKbdTheme } from '../Kbd';
 import type { FlowbiteLabelTheme } from '../Label';
 import type { FlowbiteListGroupTheme } from '../ListGroup';
+import type { FlowbiteListTheme } from '../List';
 import type { FlowbiteModalTheme } from '../Modal';
 import type { FlowbiteNavbarTheme } from '../Navbar';
 import type { FlowbitePaginationTheme } from '../Pagination';
@@ -56,6 +57,7 @@ export interface FlowbiteTheme {
   footer: FlowbiteFooterTheme;
   kbd: FlowbiteKbdTheme;
   listGroup: FlowbiteListGroupTheme;
+  list: FlowbiteListTheme;
   modal: FlowbiteModalTheme;
   navbar: FlowbiteNavbarTheme;
   rating: FlowbiteRatingTheme;

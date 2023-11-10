@@ -343,13 +343,13 @@ export const COMPONENTS_DATA: Component[] = [
   //   link: `/docs/typography/images`,
   //   classes: 'w-64'
   // },
-  // {
-  //   name: 'List',
-  //   image: '/images/components/list.svg',
-  //   imageDark: '/images/components/list-dark.svg',
-  //   link: `/docs/typography/lists`,
-  //   classes: 'w-64'
-  // },
+  {
+    name: 'List',
+    image: '/images/components/list.svg',
+    imageDark: '/images/components/list-dark.svg',
+    link: `/docs/typography/list`,
+    classes: 'w-64'
+  },
   // {
   //   name: 'Link',
   //   image: '/images/components/link.svg',
