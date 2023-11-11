@@ -17,7 +17,6 @@ export interface FlowbiteListGroupItemTheme {
 
 export interface ListGroupItemProps extends PropsWithChildren {
   active?: boolean;
-  disabled?: boolean;
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   onClick?: () => void;
