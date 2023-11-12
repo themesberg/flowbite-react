@@ -29,3 +29,10 @@ DefaultButton.storyName = 'Default';
 DefaultButton.args = {
   children: 'Button',
 };
+
+export const ButtonWithLabel = Template.bind({});
+ButtonWithLabel.storyName = 'Button with a label';
+ButtonWithLabel.args = {
+  children: 'Messages',
+  label: '2',
+};

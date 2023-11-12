@@ -118,6 +118,24 @@ describe('Components / Button', () => {
       expect(button()).toHaveTextContent('Something or other');
     });
 
+    it('should render children then label', () => {
+      render(<Button label="2">Messages</Button>);
+      const buttonLabel = screen.getByText('2');
+      expect(button()).toHaveTextContent('Messages');
+      expect(buttonLabel).toHaveTextContent('2');
+      expect(buttonLabel).toBeInTheDocument();
+    });
+
+    it('should render children and exclude `label=""`', () => {
+      render(<Button label="">Messages</Button>);
+      expect(button()).toHaveTextContent('Messages');
+    });
+
+    it('should render children and exclude `label={null}`', () => {
+      render(<Button label="">Messages</Button>);
+      expect(button()).toHaveTextContent('Messages');
+    });
+
     describe('`as` and `href` props', () => {
       it('should render an anchor `<a>` when `href=".."`', () => {
         render(<Button href="#" label="Something or other" />);
