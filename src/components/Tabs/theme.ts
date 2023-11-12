@@ -1,6 +1,6 @@
-import type { FlowbiteTabTheme } from './Tabs';
+import type { FlowbiteTabsTheme } from './Tabs';
 
-export const tabTheme: FlowbiteTabTheme = {
+export const tabTheme: FlowbiteTabsTheme = {
   base: 'flex flex-col gap-2',
   tablist: {
     base: 'flex text-center',

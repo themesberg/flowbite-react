@@ -29,8 +29,8 @@ import type { FlowbiteRatingAdvancedTheme, FlowbiteRatingTheme } from '../Rating
 import type { FlowbiteSelectTheme } from '../Select';
 import type { FlowbiteSidebarTheme } from '../Sidebar';
 import type { FlowbiteSpinnerTheme } from '../Spinner';
-import type { FlowbiteTabTheme } from '../Tab';
 import type { FlowbiteTableTheme } from '../Table';
+import type { FlowbiteTabsTheme } from '../Tabs';
 import type { FlowbiteTextInputTheme } from '../TextInput';
 import type { FlowbiteTextareaTheme } from '../Textarea';
 import type { FlowbiteTimelineTheme } from '../Timeline';
@@ -64,7 +64,7 @@ export interface FlowbiteTheme {
   sidebar: FlowbiteSidebarTheme;
   progress: FlowbiteProgressTheme;
   spinner: FlowbiteSpinnerTheme;
-  tab: FlowbiteTabTheme;
+  tabs: FlowbiteTabsTheme;
   toast: FlowbiteToastTheme;
   tooltip: FlowbiteTooltipTheme;
   dropdown: FlowbiteDropdownTheme;

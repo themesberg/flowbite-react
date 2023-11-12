@@ -29,8 +29,8 @@ import { ratingAdvancedTheme, ratingTheme } from './components/Rating/theme';
 import { selectTheme } from './components/Select/theme';
 import { sidebarTheme } from './components/Sidebar/theme';
 import { spinnerTheme } from './components/Spinner/theme';
-import { tabTheme } from './components/Tab/theme';
 import { tableTheme } from './components/Table/theme';
+import { tabTheme } from './components/Tabs/theme';
 import { textInputTheme } from './components/TextInput/theme';
 import { textareaTheme } from './components/Textarea/theme';
 import { timelineTheme } from './components/Timeline/theme';
@@ -74,8 +74,8 @@ export const theme: FlowbiteTheme = {
   toggleSwitch: toggleSwitchTheme,
   sidebar: sidebarTheme,
   spinner: spinnerTheme,
-  tab: tabTheme,
   table: tableTheme,
+  tabs: tabTheme,
   timeline: timelineTheme,
   toast: toastTheme,
   tooltip: tooltipTheme,
