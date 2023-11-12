@@ -15,7 +15,10 @@ export interface FlowbiteProgressTheme {
 }
 
 export interface ProgressColor
-  extends Pick<FlowbiteColors, 'dark' | 'blue' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple'> {
+  extends Pick<
+    FlowbiteColors,
+    'dark' | 'blue' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple' | 'cyan' | 'gray' | 'lime' | 'pink' | 'teal'
+  > {
   [key: string]: string;
 }
 
@@ -36,7 +39,7 @@ export interface ProgressProps extends ComponentProps<'div'> {
 
 export const Progress: FC<ProgressProps> = ({
   className,
-  color = 'blue',
+  color = 'cyan',
   labelProgress = false,
   labelText = false,
   progress,

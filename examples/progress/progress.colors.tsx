@@ -11,7 +11,7 @@ function Component() {
     <div className="flex flex-col gap-2">
       <div className="text-base font-medium">Dark</div>
       <Progress progress={45} color="dark" />
-      <div className="text-base font-medium text-cyan-700">Blue</div>
+      <div className="text-base font-medium text-blue-700">Blue</div>
       <Progress progress={45} color="blue" />
       <div className="text-base font-medium text-red-700">Red</div>
       <Progress progress={45} color="red" />
@@ -23,6 +23,16 @@ function Component() {
       <Progress progress={45} color="indigo" />
       <div className="text-base font-medium text-purple-700">Purple</div>
       <Progress progress={45} color="purple" />
+      <div className="text-base font-medium text-cyan-700">Cyan</div>
+      <Progress progress={45} color="cyan" />
+      <div className="text-base font-medium text-gray-700">Gray</div>
+      <Progress progress={45} color="gray" />
+      <div className="text-base font-medium text-lime-700">Lime</div>
+      <Progress progress={45} color="lime" />
+      <div className="text-base font-medium text-pink-700">Pink</div>
+      <Progress progress={45} color="pink" />
+      <div className="text-base font-medium text-teal-700">Teal</div>
+      <Progress progress={45} color="teal" />
     </div>
   );
 }
@@ -36,7 +46,7 @@ function Component() {
     <div className="flex flex-col gap-2">
       <div className="text-base font-medium">Dark</div>
       <Progress progress={45} color="dark" />
-      <div className="text-base font-medium text-cyan-700">Blue</div>
+      <div className="text-base font-medium text-blue-700">Blue</div>
       <Progress progress={45} color="blue" />
       <div className="text-base font-medium text-red-700">Red</div>
       <Progress progress={45} color="red" />
@@ -48,6 +58,16 @@ function Component() {
       <Progress progress={45} color="indigo" />
       <div className="text-base font-medium text-purple-700">Purple</div>
       <Progress progress={45} color="purple" />
+      <div className="text-base font-medium text-cyan-700">Cyan</div>
+      <Progress progress={45} color="cyan" />
+      <div className="text-base font-medium text-gray-700">Gray</div>
+      <Progress progress={45} color="gray" />
+      <div className="text-base font-medium text-lime-700">Lime</div>
+      <Progress progress={45} color="lime" />
+      <div className="text-base font-medium text-pink-700">Pink</div>
+      <Progress progress={45} color="pink" />
+      <div className="text-base font-medium text-teal-700">Teal</div>
+      <Progress progress={45} color="teal" />
     </div>
   );
 }
@@ -58,7 +78,7 @@ function Component() {
     <div className="flex flex-col gap-2">
       <div className="text-base font-medium">Dark</div>
       <Progress progress={45} color="dark" />
-      <div className="text-base font-medium text-cyan-700">Blue</div>
+      <div className="text-base font-medium text-blue-700">Blue</div>
       <Progress progress={45} color="blue" />
       <div className="text-base font-medium text-red-700">Red</div>
       <Progress progress={45} color="red" />
@@ -70,6 +90,16 @@ function Component() {
       <Progress progress={45} color="indigo" />
       <div className="text-base font-medium text-purple-700">Purple</div>
       <Progress progress={45} color="purple" />
+      <div className="text-base font-medium text-cyan-700">Cyan</div>
+      <Progress progress={45} color="cyan" />
+      <div className="text-base font-medium text-gray-700">Gray</div>
+      <Progress progress={45} color="gray" />
+      <div className="text-base font-medium text-lime-700">Lime</div>
+      <Progress progress={45} color="lime" />
+      <div className="text-base font-medium text-pink-700">Pink</div>
+      <Progress progress={45} color="pink" />
+      <div className="text-base font-medium text-teal-700">Teal</div>
+      <Progress progress={45} color="teal" />
     </div>
   );
 }
