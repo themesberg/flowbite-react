@@ -348,7 +348,7 @@ export const COMPONENTS_DATA: Component[] = [
     image: '/images/components/list.svg',
     imageDark: '/images/components/list-dark.svg',
     link: `/docs/typography/list`,
-    classes: 'w-64'
+    classes: 'w-64',
   },
   // {
   //   name: 'Link',
