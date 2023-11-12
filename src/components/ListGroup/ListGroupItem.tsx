@@ -10,6 +10,7 @@ export interface FlowbiteListGroupItemTheme {
   link: {
     base: string;
     active: FlowbiteBoolean;
+    disabled: FlowbiteBoolean;
     href: FlowbiteBoolean;
     icon: string;
   };
@@ -17,6 +18,7 @@ export interface FlowbiteListGroupItemTheme {
 
 export interface ListGroupItemProps extends PropsWithChildren {
   active?: boolean;
+  disabled?: boolean;
   href?: string;
   icon?: FC<ComponentProps<'svg'>>;
   onClick?: () => void;
@@ -31,6 +33,7 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<'a'> & Compon
   icon: Icon,
   onClick,
   theme: customTheme = {},
+  disabled,
   ...props
 }) => {
   const theme = mergeDeep(getTheme().listGroup.item, customTheme);
@@ -44,8 +47,10 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<'a'> & Compon
         href={href}
         onClick={onClick}
         type={isLink ? undefined : 'button'}
+        disabled={disabled}
         className={twMerge(
           theme.link.active[isActive ? 'on' : 'off'],
+          theme.link.disabled[disabled ? 'on' : 'off'],
           theme.link.base,
           theme.link.href[isLink ? 'on' : 'off'],
         )}
