@@ -13,7 +13,7 @@ function Component() {
         <ListGroup.Item>Profile</ListGroup.Item>
         <ListGroup.Item>Settings</ListGroup.Item>
         <ListGroup.Item>Messages</ListGroup.Item>
-        <ListGroup.Item>Download</ListGroup.Item>
+        <ListGroup.Item disabled>Download</ListGroup.Item>
       </ListGroup>
     </div>
   );
@@ -30,7 +30,7 @@ function Component() {
         <ListGroupItem>Profile</ListGroupItem>
         <ListGroupItem>Settings</ListGroupItem>
         <ListGroupItem>Messages</ListGroupItem>
-        <ListGroupItem>Download</ListGroupItem>
+        <ListGroupItem disabled>Download</ListGroupItem>
       </ListGroup>
     </div>
   );
@@ -44,7 +44,7 @@ function Component() {
         <ListGroupItem>Profile</ListGroupItem>
         <ListGroupItem>Settings</ListGroupItem>
         <ListGroupItem>Messages</ListGroupItem>
-        <ListGroupItem>Download</ListGroupItem>
+        <ListGroupItem disabled>Download</ListGroupItem>
       </ListGroup>
     </div>
   );
