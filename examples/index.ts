@@ -9,6 +9,7 @@ export * as button from './button';
 export * as buttonGroup from './buttonGroup';
 export * as card from './card';
 export * as carousel from './carousel';
+export * as checkbox from './checkbox';
 export * as datepicker from './datepicker';
 export * as dropdown from './dropdown';
 export * as fileInput from './fileInput';
