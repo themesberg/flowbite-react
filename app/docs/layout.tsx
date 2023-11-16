@@ -208,7 +208,7 @@ function NewBadge({ children }: PropsWithChildren) {
   return (
     <span className="flex items-center gap-2">
       {children}
-      <Badge color="cyan" className="px-2">
+      <Badge color="cyan" className="px-1.5 h-4">
         New
       </Badge>
     </span>
