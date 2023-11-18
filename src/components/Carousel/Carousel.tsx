@@ -33,7 +33,7 @@ export interface FlowbiteCarouselIndicatorsTheme {
 
 export interface FlowbiteCarouselItemTheme {
   base: string;
-  wrapper: string;
+  wrapper: FlowbiteBoolean;
 }
 
 export interface FlowbiteCarouselControlTheme {
@@ -147,7 +147,7 @@ export const Carousel: FC<CarouselProps> = ({
     >
       <ScrollContainer
         className={twMerge(theme.scrollContainer.base, (isDeviceMobile || !isDragging) && theme.scrollContainer.snap)}
-        draggingClassName={'cursor-grab'}
+        draggingClassName="cursor-grab"
         innerRef={carouselContainer}
         onEndScroll={handleDragging(false)}
         onStartScroll={handleDragging(draggable)}
@@ -157,7 +157,7 @@ export const Carousel: FC<CarouselProps> = ({
         {items?.map((item, index) => (
           <div
             key={index}
-            className={theme.item.wrapper + (draggable ? '' : ' cursor-default')}
+            className={theme.item.wrapper[draggable ? 'on' : 'off']}
             data-active={activeItem === index}
             data-testid="carousel-item"
           >
