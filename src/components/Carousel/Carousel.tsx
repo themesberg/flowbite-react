@@ -33,7 +33,7 @@ export interface FlowbiteCarouselIndicatorsTheme {
 
 export interface FlowbiteCarouselItemTheme {
   base: string;
-  wrapper: string;
+  wrapper: FlowbiteBoolean;
 }
 
 export interface FlowbiteCarouselControlTheme {
@@ -50,6 +50,7 @@ export interface CarouselProps extends ComponentProps<'div'> {
   indicators?: boolean;
   leftControl?: ReactNode;
   rightControl?: ReactNode;
+  draggable?: boolean;
   slide?: boolean;
   slideInterval?: number;
   theme?: DeepPartial<FlowbiteCarouselTheme>;
@@ -67,6 +68,7 @@ export const Carousel: FC<CarouselProps> = ({
   leftControl,
   rightControl,
   slide = true,
+  draggable = true,
   slideInterval,
   className,
   theme: customTheme = {},
@@ -148,13 +150,14 @@ export const Carousel: FC<CarouselProps> = ({
         draggingClassName="cursor-grab"
         innerRef={carouselContainer}
         onEndScroll={handleDragging(false)}
-        onStartScroll={handleDragging(true)}
+        onStartScroll={handleDragging(draggable)}
         vertical={false}
+        horizontal={draggable}
       >
         {items?.map((item, index) => (
           <div
             key={index}
-            className={theme.item.wrapper}
+            className={theme.item.wrapper[draggable ? 'on' : 'off']}
             data-active={activeItem === index}
             data-testid="carousel-item"
           >
