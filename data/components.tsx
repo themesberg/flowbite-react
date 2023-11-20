@@ -210,13 +210,13 @@ export const COMPONENTS_DATA: Component[] = [
   //   link: `/docs/forms/input-field`,
   //   classes: 'w-40'
   // },
-  // {
-  //   name: 'File Input',
-  //   image: '/images/components/file-input.svg',
-  //   imageDark: '/images/components/file-input-dark.svg',
-  //   link: `/docs/forms/file-input`,
-  //   classes: 'w-48'
-  // },
+  {
+    name: 'File Input',
+    image: '/images/components/file-input.svg',
+    imageDark: '/images/components/file-input-dark.svg',
+    link: `/docs/forms/file-input`,
+    classes: 'w-48',
+  },
   // {
   //   name: 'Search Input',
   //   image: '/images/components/search-input.svg',
