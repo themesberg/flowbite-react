@@ -10,7 +10,7 @@ function Component() {
   return (
     <div className="flex items-center gap-6">
       <div className="flex flex-1 items-center rounded border border-gray-200 pl-4 dark:border-gray-700">
-        <Checkbox id="default-radio" checked />
+        <Checkbox id="default-radio" defaultChecked />
         <Label htmlFor="default-radio" className="w-100 ml-2 flex py-4">
           Default radio
         </Label>
@@ -33,7 +33,7 @@ function Component() {
   return (
     <div className="flex items-center gap-6">
       <div className="flex flex-1 items-center rounded border border-gray-200 pl-4 dark:border-gray-700">
-        <Checkbox id="default-radio" checked />
+        <Checkbox id="default-radio" defaultChecked />
         <Label htmlFor="default-radio" className="w-100 ml-2 flex py-4">
           Default radio
         </Label>
@@ -53,7 +53,7 @@ function Component() {
   return (
     <div className="flex items-center gap-6">
       <div className="flex flex-1 items-center rounded border border-gray-200 pl-4 dark:border-gray-700">
-        <Checkbox id="default-radio" checked />
+        <Checkbox id="default-radio" defaultChecked />
         <Label htmlFor="default-radio" className="w-100 ml-2 flex py-4">
           Default radio
         </Label>

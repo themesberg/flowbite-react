@@ -10,23 +10,23 @@ function Component() {
   return (
     <div className="flex items-center gap-2">
       <div className="flex items-center gap-2">
-        <Checkbox id="red-checkbox" color="red" checked />
+        <Checkbox id="red-checkbox" color="red" defaultChecked />
         <Label htmlFor="red-checkbox">Red</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="green-checkbox" color="green" checked />
+        <Checkbox id="green-checkbox" color="green" defaultChecked />
         <Label htmlFor="green-checkbo">Green</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="purple-checkbox" color="purple" checked />
+        <Checkbox id="purple-checkbox" color="purple" defaultChecked />
         <Label htmlFor="purple-checkbo">Purple</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="teal-checkbox" color="teal" checked />
+        <Checkbox id="teal-checkbox" color="teal" defaultChecked />
         <Label htmlFor="teal-checkbo">Teal</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="yellow-checkbox" color="yellow" checked />
+        <Checkbox id="yellow-checkbox" color="yellow" defaultChecked />
         <Label htmlFor="yellow-checkbo">Yellow</Label>
       </div>
     </div>
@@ -41,23 +41,23 @@ function Component() {
   return (
     <div className="flex items-center gap-2">
       <div className="flex items-center gap-2">
-        <Checkbox id="red-checkbox" color="red" checked />
+        <Checkbox id="red-checkbox" color="red" defaultChecked />
         <Label htmlFor="red-checkbox">Red</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="green-checkbox" color="green" checked />
+        <Checkbox id="green-checkbox" color="green" defaultChecked />
         <Label htmlFor="green-checkbo">Green</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="purple-checkbox" color="purple" checked />
+        <Checkbox id="purple-checkbox" color="purple" defaultChecked />
         <Label htmlFor="purple-checkbo">Purple</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="teal-checkbox" color="teal" checked />
+        <Checkbox id="teal-checkbox" color="teal" defaultChecked />
         <Label htmlFor="teal-checkbo">Teal</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="yellow-checkbox" color="yellow" checked />
+        <Checkbox id="yellow-checkbox" color="yellow" defaultChecked />
         <Label htmlFor="yellow-checkbo">Yellow</Label>
       </div>
     </div>
@@ -69,23 +69,23 @@ function Component() {
   return (
     <div className="flex items-center gap-2">
       <div className="flex items-center gap-2">
-        <Checkbox id="red-checkbox" color="red" checked />
+        <Checkbox id="red-checkbox" color="red" defaultChecked />
         <Label htmlFor="red-checkbox">Red</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="green-checkbox" color="green" checked />
+        <Checkbox id="green-checkbox" color="green" defaultChecked />
         <Label htmlFor="green-checkbo">Green</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="purple-checkbox" color="purple" checked />
+        <Checkbox id="purple-checkbox" color="purple" defaultChecked />
         <Label htmlFor="purple-checkbo">Purple</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="teal-checkbox" color="teal" checked />
+        <Checkbox id="teal-checkbox" color="teal" defaultChecked />
         <Label htmlFor="teal-checkbo">Teal</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="yellow-checkbox" color="yellow" checked />
+        <Checkbox id="yellow-checkbox" color="yellow" defaultChecked />
         <Label htmlFor="yellow-checkbo">Yellow</Label>
       </div>
     </div>

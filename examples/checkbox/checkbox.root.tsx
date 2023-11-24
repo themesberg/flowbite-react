@@ -14,7 +14,7 @@ function Component() {
         <Label htmlFor="default-checkbox">Default checkbox</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="checked-state-checkbox" checked />
+        <Checkbox id="checked-state-checkbox" defaultChecked />
         <Label htmlFor="checked-state-checkbox">Checked state</Label>
       </div>
     </div>
@@ -33,7 +33,7 @@ function Component() {
         <Label htmlFor="default-checkbox">Default checkbox</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="checked-state-checkbox" checked />
+        <Checkbox id="checked-state-checkbox" defaultChecked />
         <Label htmlFor="checked-state-checkbox">Checked state</Label>
       </div>
     </div>
@@ -49,7 +49,7 @@ function Component() {
         <Label htmlFor="default-checkbox">Default checkbox</Label>
       </div>
       <div className="flex items-center gap-2">
-        <Checkbox id="checked-state-checkbox" checked />
+        <Checkbox id="checked-state-checkbox" defaultChecked />
         <Label htmlFor="checked-state-checkbox">Checked state</Label>
       </div>
     </div>
