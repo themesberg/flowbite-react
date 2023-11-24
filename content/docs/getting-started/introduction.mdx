@@ -47,7 +47,7 @@ Add Tailwind CSS to a CSS file:
 1. Install Flowbite and Flowbite React:
 
 ```bash
-npm i flowbite-react # or yarn add flowbite flowbite-react
+npm i flowbite flowbite-react # or yarn add flowbite flowbite-react
 ```
 
 2. Add the Flowbite plugin to `tailwind.config.js`, and include content from `flowbite-react`:
@@ -56,7 +56,7 @@ npm i flowbite-react # or yarn add flowbite flowbite-react
 module.exports = {
   content: [
     ...,
-    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
+    'node_modules/flowbite-react/lib/esm/**/*.js',
   ],
   plugins: [..., require('flowbite/plugin')],
   ...
