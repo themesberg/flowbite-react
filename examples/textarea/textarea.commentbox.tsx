@@ -468,6 +468,6 @@ export const commentbox: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'textarea/textarea.wysiwyg.tsx',
+  githubSlug: 'textarea/textarea.commentbox.tsx',
   component: <Component />,
 };
