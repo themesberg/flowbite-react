@@ -1,3 +1,5 @@
+'use client';
+
 import type { ComponentProps, FC, ReactNode } from 'react';
 import { Dropdown } from '../Dropdown';
 

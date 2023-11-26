@@ -1,3 +1,5 @@
+'use client';
+
 import type { FC } from 'react';
 import type { NavbarComponentProps } from '../Navbar';
 import { Navbar } from '../Navbar';

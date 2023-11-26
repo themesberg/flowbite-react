@@ -1,3 +1,5 @@
+'use client';
+
 import type { FC, MouseEventHandler } from 'react';
 import { twMerge } from 'tailwind-merge';
 import type { ButtonProps } from '../Button';
