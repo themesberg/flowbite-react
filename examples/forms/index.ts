@@ -1,4 +1,5 @@
 export { checkbox } from './forms.checkbox';
+export { checkboxIndeterminate } from './forms.checkboxIndeterminate';
 export { disabledInputs } from './forms.disabledInputs';
 export { fileInput } from './forms.fileInput';
 export { helperText } from './forms.helperText';
