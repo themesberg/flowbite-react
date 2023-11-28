@@ -1,5 +1,7 @@
+'use client';
+
 import type { ComponentProps } from 'react';
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -17,15 +19,33 @@ export interface FlowbiteCheckboxRootTheme {
 export interface CheckboxProps extends Omit<ComponentProps<'input'>, 'type' | 'ref' | 'color'> {
   theme?: DeepPartial<FlowbiteCheckboxTheme>;
   color?: keyof FlowbiteColors;
+  indeterminate?: boolean;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, color = 'default', theme: customTheme = {}, ...props }, ref) => {
+  ({ className, color = 'default', theme: customTheme = {}, indeterminate, ...props }, ref) => {
     const theme = mergeDeep(getTheme().checkbox, customTheme);
+
+    const inputRef = useRef<HTMLInputElement | null>(null);
+
+    useEffect(() => {
+      if (inputRef.current && indeterminate !== inputRef.current.indeterminate) {
+        inputRef.current.indeterminate = !!indeterminate;
+      }
+    }, [indeterminate]);
 
     return (
       <input
-        ref={ref}
+        ref={(element) => {
+          inputRef.current = element;
+          if (ref) {
+            if (typeof ref === 'function') {
+              ref(element);
+            } else {
+              ref.current = element;
+            }
+          }
+        }}
         type="checkbox"
         className={twMerge(theme.root.base, theme.root.color[color], className)}
         {...props}
