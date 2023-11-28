@@ -46,6 +46,10 @@ function Component() {
           Eligible for international shipping (disabled)
         </Label>
       </div>
+      <div className="flex items-center gap-2">
+        <Checkbox id="indeterminate" indeterminate disabled />
+        <Label htmlFor="indeterminate">Branch A (indeterminate and disabled)</Label>
+      </div>
     </div>
   );
 }
@@ -94,6 +98,10 @@ function Component() {
           Eligible for international shipping (disabled)
         </Label>
       </div>
+      <div className="flex items-center gap-2">
+        <Checkbox id="indeterminate" indeterminate disabled />
+        <Label htmlFor="indeterminate">Branch A (indeterminate and disabled)</Label>
+      </div>
     </div>
   );
 }
@@ -138,6 +146,10 @@ function Component() {
         <Label htmlFor="disabled" disabled>
           Eligible for international shipping (disabled)
         </Label>
+      </div>
+      <div className="flex items-center gap-2">
+        <Checkbox id="indeterminate" indeterminate disabled />
+        <Label htmlFor="indeterminate">Branch A (indeterminate and disabled)</Label>
       </div>
     </div>
   );
