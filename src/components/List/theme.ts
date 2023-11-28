@@ -8,6 +8,6 @@ export const listTheme: FlowbiteListTheme = {
       on: 'list-decimal',
     },
     unstyled: 'list-none',
-    nested: 'ps-5 mt-2 space-y-1',
+    nested: 'ps-5 mt-2',
   },
 };
