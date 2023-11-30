@@ -13,6 +13,7 @@ const config: ViteConfig = {
   plugins: [react(), tsconfigPaths()],
   test: {
     coverage: {
+      enabled: true,
       reporter: ['html', 'json', 'text'],
     },
     environment: 'jsdom',
