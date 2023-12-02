@@ -54,6 +54,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: 'Forms', href: '/docs/components/forms' },
       { title: 'KBD', href: '/docs/components/kbd', isNew: true },
       { title: 'List group', href: '/docs/components/list-group' },
+      { title: 'Mega menu', href: '/docs/components/mega-menu', isNew: true },
       { title: 'Modal', href: '/docs/components/modal' },
       { title: 'Navbar', href: '/docs/components/navbar' },
       { title: 'Pagination', href: '/docs/components/pagination' },

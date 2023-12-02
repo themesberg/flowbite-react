@@ -22,6 +22,7 @@ export * from './components/Kbd';
 export * from './components/Label';
 export * from './components/ListGroup';
 export * from './components/List';
+export * from './components/MegaMenu';
 export * from './components/Modal';
 export * from './components/Navbar';
 export * from './components/Pagination';
