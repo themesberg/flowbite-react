@@ -9,12 +9,16 @@ import { Spinner } from 'flowbite-react';
 function Component() {
   return (
     <div className="flex flex-wrap gap-2">
-      <Spinner color="info" aria-label="Info spinner example" />
-      <Spinner color="success" aria-label="Success spinner example" />
-      <Spinner color="failure" aria-label="Failure spinner example" />
-      <Spinner color="warning" aria-label="Warning spinner example" />
+      <Spinner color="blue" aria-label="Blue spinner example" />
+      <Spinner color="cyan" aria-label="Cyan spinner example" />
+      <Spinner color="green" aria-label="Green spinner example" />
+      <Spinner color="indigo" aria-label="Indigo spinner example" />
+      <Spinner color="lime" aria-label="Lime spinner example" />
       <Spinner color="pink" aria-label="Pink spinner example" />
       <Spinner color="purple" aria-label="Purple spinner example" />
+      <Spinner color="red" aria-label="Red spinner example" />
+      <Spinner color="teal" aria-label="Teal spinner example" />
+      <Spinner color="yellow" aria-label="Yellow spinner example" />
     </div>
   );
 }
@@ -26,12 +30,16 @@ import { Spinner } from 'flowbite-react';
 function Component() {
   return (
     <div className="flex flex-wrap gap-2">
-      <Spinner color="info" aria-label="Info spinner example" />
-      <Spinner color="success" aria-label="Success spinner example" />
-      <Spinner color="failure" aria-label="Failure spinner example" />
-      <Spinner color="warning" aria-label="Warning spinner example" />
+      <Spinner color="blue" aria-label="Blue spinner example" />
+      <Spinner color="cyan" aria-label="Cyan spinner example" />
+      <Spinner color="green" aria-label="Green spinner example" />
+      <Spinner color="indigo" aria-label="Indigo spinner example" />
+      <Spinner color="lime" aria-label="Lime spinner example" />
       <Spinner color="pink" aria-label="Pink spinner example" />
       <Spinner color="purple" aria-label="Purple spinner example" />
+      <Spinner color="red" aria-label="Red spinner example" />
+      <Spinner color="teal" aria-label="Teal spinner example" />
+      <Spinner color="yellow" aria-label="Yellow spinner example" />
     </div>
   );
 }
@@ -40,12 +48,16 @@ function Component() {
 function Component() {
   return (
     <div className="flex flex-wrap gap-2">
-      <Spinner color="info" aria-label="Info spinner example" />
-      <Spinner color="success" aria-label="Success spinner example" />
-      <Spinner color="failure" aria-label="Failure spinner example" />
-      <Spinner color="warning" aria-label="Warning spinner example" />
+      <Spinner color="blue" aria-label="Blue spinner example" />
+      <Spinner color="cyan" aria-label="Cyan spinner example" />
+      <Spinner color="green" aria-label="Green spinner example" />
+      <Spinner color="indigo" aria-label="Indigo spinner example" />
+      <Spinner color="lime" aria-label="Lime spinner example" />
       <Spinner color="pink" aria-label="Pink spinner example" />
       <Spinner color="purple" aria-label="Purple spinner example" />
+      <Spinner color="red" aria-label="Red spinner example" />
+      <Spinner color="teal" aria-label="Teal spinner example" />
+      <Spinner color="yellow" aria-label="Yellow spinner example" />
     </div>
   );
 }

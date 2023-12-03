@@ -7,23 +7,18 @@ import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite';
 
 export interface FlowbiteSpinnerTheme {
   base: string;
-  color: SpinnerColors;
+  color: FlowbiteColors;
   light: {
     off: {
       base: string;
-      color: SpinnerColors;
+      color: FlowbiteColors;
     };
     on: {
       base: string;
-      color: SpinnerColors;
+      color: FlowbiteColors;
     };
   };
   size: SpinnerSizes;
-}
-
-export interface SpinnerColors
-  extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'pink' | 'purple' | 'success' | 'warning'> {
-  [key: string]: string;
 }
 
 export interface SpinnerSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> {
@@ -31,7 +26,7 @@ export interface SpinnerSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | '
 }
 
 export interface SpinnerProps extends Omit<ComponentProps<'span'>, 'color'> {
-  color?: keyof SpinnerColors;
+  color?: keyof FlowbiteColors;
   light?: boolean;
   size?: keyof SpinnerSizes;
   theme?: DeepPartial<FlowbiteSpinnerTheme>;
