@@ -9,7 +9,7 @@ import { Datepicker } from 'flowbite-react';
 function Component() {
   return (
     <Datepicker
-      weekStart={2} // Monday
+      weekStart={1} // Monday
     />
   );
 }
@@ -21,7 +21,7 @@ import { Datepicker } from 'flowbite-react';
 function Component() {
   return (
     <Datepicker
-      weekStart={2} // Monday
+      weekStart={1} // Monday
     />
   );
 }
@@ -30,7 +30,7 @@ function Component() {
 function Component() {
   return (
     <Datepicker
-      weekStart={2} // Monday
+      weekStart={1} // Monday
     />
   );
 }
