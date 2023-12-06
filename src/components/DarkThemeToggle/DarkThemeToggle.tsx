@@ -4,6 +4,7 @@ import type { ComponentProps, FC } from 'react';
 import type { IconBaseProps } from 'react-icons';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
+import { useIsMounted } from '~/src/hooks/use-is-mounted';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { useThemeMode } from '../../hooks/use-theme-mode';
 import { getTheme } from '../../theme-store';
@@ -31,6 +32,7 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   iconLight: IconLight = HiMoon,
   ...props
 }) => {
+  const isMounted = useIsMounted();
   const { computedMode, toggleMode } = useThemeMode();
 
   const theme = mergeDeep(getTheme().darkThemeToggle, customTheme);
@@ -46,12 +48,12 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
     >
       <IconDark
         aria-label="Currently dark mode"
-        data-active={computedMode === 'dark'}
+        data-active={isMounted && computedMode === 'dark'}
         className={twMerge(theme.root.icon, 'hidden dark:block')}
       />
       <IconLight
         aria-label="Currently light mode"
-        data-active={computedMode === 'light'}
+        data-active={isMounted && computedMode === 'light'}
         className={twMerge(theme.root.icon, 'dark:hidden')}
       />
     </button>
