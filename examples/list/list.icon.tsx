@@ -6,6 +6,7 @@ const code = `
 'use client';
 
 import { List } from 'flowbite-react';
+import { HiCheckCircle } from 'react-icons/hi';
 
 function Component() {
   return (
@@ -20,6 +21,7 @@ function Component() {
 
 const codeRSC = `
 import { List, ListItem } from 'flowbite-react';
+import { HiCheckCircle } from 'react-icons/hi';
 
 function Component() {
   return (
