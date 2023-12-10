@@ -16,6 +16,7 @@ export interface FlowbiteListRootTheme {
     on: string;
     off: string;
   };
+  horizontal: string;
   unstyled: string;
   nested: string;
 }
@@ -30,6 +31,7 @@ export interface ListProps extends PropsWithChildren<ComponentProps<'ul'> & Comp
   ordered?: boolean;
   unstyled?: boolean;
   nested?: boolean;
+  horizontal?: boolean;
 }
 
 const ListComponent: FC<ListProps> = ({
@@ -38,6 +40,7 @@ const ListComponent: FC<ListProps> = ({
   unstyled,
   nested,
   ordered,
+  horizontal,
   theme: customTheme = {},
   ...props
 }) => {
@@ -50,6 +53,7 @@ const ListComponent: FC<ListProps> = ({
         theme.root.ordered[ordered ? 'on' : 'off'],
         unstyled && theme.root.unstyled,
         nested && theme.root.nested,
+        horizontal && theme.root.horizontal,
         theme.root.base,
         className,
       )}
