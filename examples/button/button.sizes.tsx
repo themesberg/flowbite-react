@@ -8,7 +8,7 @@ import { Button } from 'flowbite-react';
 
 function Component() {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap items-start gap-2">
       <Button size="xs">Extra small</Button>
       <Button size="sm">Small</Button>
       <Button size="md">Base</Button>
@@ -24,7 +24,7 @@ import { Button } from 'flowbite-react';
 
 function Component() {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap items-start gap-2">
       <Button size="xs">Extra small</Button>
       <Button size="sm">Small</Button>
       <Button size="md">Base</Button>
@@ -37,7 +37,7 @@ function Component() {
 
 function Component() {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap items-start gap-2">
       <Button size="xs">Extra small</Button>
       <Button size="sm">Small</Button>
       <Button size="md">Base</Button>

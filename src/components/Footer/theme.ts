@@ -9,7 +9,7 @@ export const footerTheme: FlowbiteFooterTheme = {
   groupLink: {
     base: 'flex flex-wrap text-sm text-gray-500 dark:text-white',
     link: {
-      base: 'last:mr-0 md:mr-6',
+      base: 'last:mr-0 md:mr-6 me-4',
       href: 'hover:underline',
     },
     col: 'flex-col space-y-4',

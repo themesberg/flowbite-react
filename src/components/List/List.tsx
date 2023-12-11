@@ -17,6 +17,7 @@ export interface FlowbiteListRootTheme {
     on: string;
     off: string;
   };
+  horizontal: string;
   unstyled: string;
   nested: string;
 }
@@ -31,6 +32,7 @@ export interface ListProps extends PropsWithChildren<ComponentProps<'ul'> & Comp
   ordered?: boolean;
   unstyled?: boolean;
   nested?: boolean;
+  horizontal?: boolean;
 }
 
 const ListComponent: FC<ListProps> = ({
@@ -39,6 +41,7 @@ const ListComponent: FC<ListProps> = ({
   unstyled,
   nested,
   ordered,
+  horizontal,
   theme: customTheme = {},
   ...props
 }) => {
@@ -48,10 +51,11 @@ const ListComponent: FC<ListProps> = ({
   return (
     <Component
       className={twMerge(
+        theme.root.base,
         theme.root.ordered[ordered ? 'on' : 'off'],
         unstyled && theme.root.unstyled,
         nested && theme.root.nested,
-        theme.root.base,
+        horizontal && theme.root.horizontal,
         className,
       )}
       {...props}
