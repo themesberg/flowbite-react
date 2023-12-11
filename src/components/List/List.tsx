@@ -50,11 +50,11 @@ const ListComponent: FC<ListProps> = ({
   return (
     <Component
       className={twMerge(
+        theme.root.base,
         theme.root.ordered[ordered ? 'on' : 'off'],
         unstyled && theme.root.unstyled,
         nested && theme.root.nested,
         horizontal && theme.root.horizontal,
-        theme.root.base,
         className,
       )}
       {...props}

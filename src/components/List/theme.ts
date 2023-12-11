@@ -7,7 +7,7 @@ export const listTheme: FlowbiteListTheme = {
       off: 'list-disc',
       on: 'list-decimal',
     },
-    horizontal: 'flex flex-wrap items-center space-x-4 !space-y-0 justify-center list-none',
+    horizontal: 'flex flex-wrap items-center space-x-4 space-y-0 justify-center list-none',
     unstyled: 'list-none',
     nested: 'ps-5 mt-2',
   },
