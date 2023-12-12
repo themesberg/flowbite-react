@@ -14,14 +14,14 @@ export interface FlowbiteListItemTheme {
 
 export interface ListItemProps extends ComponentProps<"li"> {
   className?: string;
-  Icon?: FC<ComponentProps<"svg">>;
+  icon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteListItemTheme>;
 }
 
 export const ListItem: FC<ListItemProps> = ({
   children,
   className,
-  Icon: Icon,
+  icon: Icon,
   theme: customTheme = {},
   ...props
 }) => {
