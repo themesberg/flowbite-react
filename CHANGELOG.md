@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.2](https://github.com/themesberg/flowbite-react/compare/v0.7.1...v0.7.2) (2023-12-12)
+
+
+### Bug Fixes
+
+* absolute to relative import ([#1183](https://github.com/themesberg/flowbite-react/issues/1183)) ([3f0bebb](https://github.com/themesberg/flowbite-react/commit/3f0bebbdc863552a5d31c080c1d129a450870cc0))
+
+### [0.7.1](https://github.com/themesberg/flowbite-react/compare/v0.7.0...v0.7.1) (2023-12-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **datepicker:** As the WeekStart enum changed order to be aligned with Javascript Date object, now
+you have to change your weekStart attribute to be -1, so for Monday you should put 1, instead of 2.
+But it wasn't working before as the values were incorrectly rendered in the first place.
+
+### Features
+
+* **list component:** develop new horizontal state of list component ([#1178](https://github.com/themesberg/flowbite-react/issues/1178)) ([1fbe6ca](https://github.com/themesberg/flowbite-react/commit/1fbe6ca69346b090f9007e0ae904213977ad6d6e))
+* **list.stories.tsx:** add horizontal stories ([#1180](https://github.com/themesberg/flowbite-react/issues/1180)) ([7db683d](https://github.com/themesberg/flowbite-react/commit/7db683d939d08a465df6fbb1dc7cbfc5b7396bf4))
+
+
+### Bug Fixes
+
+* add empty space to `<Checkbox>` ring in dark mode ([#1160](https://github.com/themesberg/flowbite-react/issues/1160)) ([d0ccfde](https://github.com/themesberg/flowbite-react/commit/d0ccfde319642a9c62fcff8c04470e744d7ab7a7))
+* **component:** fix `<DarkThemeToggle>` console warning ([#1172](https://github.com/themesberg/flowbite-react/issues/1172)) ([bdd7cdf](https://github.com/themesberg/flowbite-react/commit/bdd7cdfadd33ce39408cf50cbc42b199e7469457))
+* **datepicker:** fix the inconsistent weekday labels ([#1173](https://github.com/themesberg/flowbite-react/issues/1173)) ([770ab9d](https://github.com/themesberg/flowbite-react/commit/770ab9db7fde1aca8c68a1c0e196841a3510039f)), closes [#1044](https://github.com/themesberg/flowbite-react/issues/1044)
+* **footer>theme.ts:** adding margin to right in footer links ([#1153](https://github.com/themesberg/flowbite-react/issues/1153)) ([7c1275e](https://github.com/themesberg/flowbite-react/commit/7c1275e255f8dcbefcd73a7acec21b17e043273f)), closes [#1085](https://github.com/themesberg/flowbite-react/issues/1085)
+* **pagination:** updating lastPage variable correctly for table layout ([#1151](https://github.com/themesberg/flowbite-react/issues/1151)) ([2259bf5](https://github.com/themesberg/flowbite-react/commit/2259bf55c720495ae72bb055f2fca8c3633e006c)), closes [#1150](https://github.com/themesberg/flowbite-react/issues/1150)
+
 ## [0.7.0](https://github.com/themesberg/flowbite-react/compare/v0.6.4...v0.7.0) (2023-11-24)
 
 
