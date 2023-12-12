@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from 'react';
 import type { IconBaseProps } from 'react-icons';
 import { HiMoon, HiSun } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
-import { useIsMounted } from '~/src/hooks/use-is-mounted';
+import { useIsMounted } from '../../hooks/use-is-mounted';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { useThemeMode } from '../../hooks/use-theme-mode';
 import { getTheme } from '../../theme-store';
