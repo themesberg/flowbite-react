@@ -12,17 +12,26 @@ export interface FlowbiteListItemTheme {
   };
 }
 
-export interface ListItemProps extends ComponentProps<'li'> {
-  theme?: DeepPartial<FlowbiteListItemTheme>;
+export interface ListItemProps extends ComponentProps<"li"> {
   className?: string;
-  Icon?: FC<ComponentProps<'svg'>>;
+  Icon?: FC<ComponentProps<"svg">>;
+  theme?: DeepPartial<FlowbiteListItemTheme>;
 }
 
-export const ListItem: FC<ListItemProps> = ({ children, className, theme: customTheme = {}, Icon }) => {
+export const ListItem: FC<ListItemProps> = ({
+  children,
+  className,
+  Icon: Icon,
+  theme: customTheme = {},
+  ...props
+}) => {
   const theme = mergeDeep(getTheme().list.item, customTheme);
 
   return (
-    <li className={twMerge(theme.withIcon[Icon ? 'on' : 'off'], className)}>
+    <li
+      className={twMerge(theme.withIcon[Icon ? "on" : "off"], className)}
+      {...props}
+    >
       {Icon && <Icon className={twMerge(theme.icon)} />}
       {children}
     </li>
