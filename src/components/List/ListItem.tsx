@@ -15,15 +15,15 @@ export interface FlowbiteListItemTheme {
 export interface ListItemProps extends ComponentProps<'li'> {
   theme?: DeepPartial<FlowbiteListItemTheme>;
   className?: string;
-  icon?: FC<ComponentProps<'svg'>>;
+  Icon?: FC<ComponentProps<'svg'>>;
 }
 
-export const ListItem: FC<ListItemProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
+export const ListItem: FC<ListItemProps> = ({ children, className, theme: customTheme = {}, Icon }) => {
   const theme = mergeDeep(getTheme().list.item, customTheme);
 
   return (
-    <li className={twMerge(theme.withIcon[props.icon ? 'on' : 'off'], className)}>
-      {props.icon && <props.icon className={twMerge(theme.icon)} />}
+    <li className={twMerge(theme.withIcon[Icon ? 'on' : 'off'], className)}>
+      {Icon && <Icon className={twMerge(theme.icon)} />}
       {children}
     </li>
   );

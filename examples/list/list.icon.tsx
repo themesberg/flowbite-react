@@ -11,9 +11,9 @@ import { HiCheckCircle } from 'react-icons/hi';
 function Component() {
   return (
     <List>
-      <List.Item icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</List.Item>
-      <List.Item icon={HiCheckCircle}>At least one lowercase character</List.Item>
-      <List.Item icon={HiCheckCircle}>Inclusion of at least one special character, e.g., ! @ # ?</List.Item>
+      <List.Item Icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</List.Item>
+      <List.Item Icon={HiCheckCircle}>At least one lowercase character</List.Item>
+      <List.Item Icon={HiCheckCircle}>Inclusion of at least one special character, e.g., ! @ # ?</List.Item>
     </List>
   );
 }
@@ -26,9 +26,9 @@ import { HiCheckCircle } from 'react-icons/hi';
 function Component() {
   return (
     <List>
-      <ListItem icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</ListItem>
-      <ListItem icon={HiCheckCircle}>At least one lowercase character</ListItem>
-      <ListItem icon={HiCheckCircle}>Inclusion of at least one special character, e.g., ! @ # ?</ListItem>
+      <ListItem Icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</ListItem>
+      <ListItem Icon={HiCheckCircle}>At least one lowercase character</ListItem>
+      <ListItem Icon={HiCheckCircle}>Inclusion of at least one special character, e.g., ! @ # ?</ListItem>
     </List>
   );
 }
@@ -37,9 +37,9 @@ function Component() {
 function Component() {
   return (
     <List>
-      <ListItem icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</ListItem>
-      <ListItem icon={HiCheckCircle}>At least one lowercase character</ListItem>
-      <ListItem icon={HiCheckCircle}>Inclusion of at least one special character, e.g., ! @ # ?</ListItem>
+      <ListItem Icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</ListItem>
+      <ListItem Icon={HiCheckCircle}>At least one lowercase character</ListItem>
+      <ListItem Icon={HiCheckCircle}>Inclusion of at least one special character, e.g., ! @ # ?</ListItem>
     </List>
   );
 }
