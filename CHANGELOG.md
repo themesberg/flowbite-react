@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.2](https://github.com/themesberg/flowbite-react/compare/v0.7.1...v0.7.2) (2023-12-12)
+
+
+### Bug Fixes
+
+* absolute to relative import ([#1183](https://github.com/themesberg/flowbite-react/issues/1183)) ([3f0bebb](https://github.com/themesberg/flowbite-react/commit/3f0bebbdc863552a5d31c080c1d129a450870cc0))
+
 ### [0.7.1](https://github.com/themesberg/flowbite-react/compare/v0.7.0...v0.7.1) (2023-12-12)
 
 
