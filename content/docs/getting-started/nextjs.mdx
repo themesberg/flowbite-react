@@ -30,13 +30,12 @@ module.exports = {
 3. Create `tailwind.config.js`:
 
 ```javascript
-/**
- * @type {import('@types/tailwindcss/tailwind-config').TailwindConfig}
- */
+/** @type {import('@types/tailwindcss/tailwind-config').TailwindConfig} */
 module.exports = {
-  content: ['./node_modules/flowbite-react/**/*.js', './pages/**/*.{ts,tsx}', './public/**/*.html'],
+  // note: if using Next.js 12 or earlier, you'll want to include ./pages/ instead of ./app/
+  content: ['./app/**/*.{ts,tsx}', './node_modules/flowbite-react/lib/**/*.js'],
   plugins: [require('flowbite/plugin')],
-  theme: {},
+  // ...
 };
 ```
 
@@ -51,6 +50,8 @@ module.exports = {
 5. Start using `flowbite-react`!
 
 ```jsx
+'use client';
+
 import { Alert } from 'flowbite-react';
 
 export default function MyPage() {
