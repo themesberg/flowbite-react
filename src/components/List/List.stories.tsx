@@ -79,3 +79,20 @@ OrderedList.args = {
     </>
   ),
 };
+
+export const HorizontalList = Template.bind({});
+HorizontalList.storyName = 'Horizontal';
+HorizontalList.args = {
+  horizontal: true,
+  children: (
+    <>
+      <List.Item>About</List.Item>
+      <List.Item>Premium</List.Item>
+      <List.Item>Campaigns</List.Item>
+      <List.Item>Blog</List.Item>
+      <List.Item>Affiliate Program</List.Item>
+      <List.Item>FAQs</List.Item>
+      <List.Item>Contact</List.Item>
+    </>
+  ),
+};
