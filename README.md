@@ -143,7 +143,7 @@ export default function MyPage() {
 
 #### Next.js
 
-If you're using Next.js, you can follow the [Next.js install guide](https://flowbite.com/docs/getting-started/next-js/), which includes a [Next.js starter project](https://github.com/tulupinc/flowbite-next-starter) with Flowbite React already set up.
+If you're using Next.js, you can follow the [Next.js install guide](https://flowbite.com/docs/guides/next-js/), which includes a [Next.js starter project](https://github.com/tulupinc/flowbite-next-starter) with Flowbite React already set up.
 
 #### Dark mode
 

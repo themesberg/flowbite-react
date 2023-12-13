@@ -18,13 +18,17 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
     items: [
       { title: 'Introduction', href: '/docs/getting-started/introduction' },
       { title: 'Quickstart', href: '/docs/getting-started/quickstart' },
-      { title: 'Next.js', href: '/docs/getting-started/nextjs', isNew: true },
       { title: 'Server Components', href: '/docs/getting-started/server-components', isNew: true },
       { title: 'TypeScript', href: '/docs/getting-started/typescript' },
       { title: 'License', href: '/docs/getting-started/license' },
       { title: 'Changelog', href: 'https://github.com/themesberg/flowbite-react/releases', isExternal: true },
       { title: 'Contributing', href: '/docs/getting-started/contributing' },
     ],
+  },
+  {
+    title: 'integration guides',
+    href: '/guides/',
+    items: [{ title: 'Next.js', href: '/docs/guides/next-js', isNew: true }],
   },
   {
     title: 'customize',
