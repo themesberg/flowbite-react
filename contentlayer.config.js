@@ -1,7 +1,7 @@
-import rehypePrism from '@mapbox/rehype-prism';
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
 import toc from 'markdown-toc';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypePrismPlus from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
 
 export const Doc = defineDocumentType(() => ({
@@ -34,6 +34,6 @@ export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Doc],
   mdx: {
-    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypePrism],
+    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypePrismPlus],
   },
 });
