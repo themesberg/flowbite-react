@@ -31,6 +31,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
     items: [
       { title: 'Next.js', href: '/docs/guides/next-js', isNew: true },
       { title: 'Vite', href: '/docs/guides/vite', isNew: true },
+      { title: 'Remix', href: '/docs/guides/remix', isNew: true },
     ],
   },
   {
