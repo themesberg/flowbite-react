@@ -45,14 +45,6 @@ export default {
 
 Add Flowbite React to an existing Next.js project:
 
-### Install Flowbite React
-
-Run the following command to install `flowbite` and `flowbite-react`:
-
-```bash
-npm i flowbite flowbite-react
-```
-
 ### Setup Tailwind CSS
 
 1. Install `tailwindcss` and its peer dependencies:
@@ -95,7 +87,15 @@ module.exports = {
 @tailwind utilities;
 ```
 
-5. Update `tailwind.config.js` to include Flowbite React:
+### Install Flowbite React
+
+1. Run the following command to install `flowbite` and `flowbite-react`:
+
+```bash
+npm i flowbite flowbite-react
+```
+
+2. Add the Flowbite plugin to `tailwind.config.js` and include content from `flowbite-react`:
 
 ```js {5,9}
 /** @type {import('tailwindcss').Config} */
