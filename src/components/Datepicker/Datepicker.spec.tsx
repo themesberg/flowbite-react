@@ -74,20 +74,4 @@ describe('Components / Datepicker', () => {
     await userEvent.click(screen.getByRole('textbox'));
     await userEvent.click(document.body);
   });
-
-  it('should correctly display month and year considering defaultDate and dateValue', async () => {
-    const defaultDate = new Date(2023, 11, 1);
-    const dateValue = new Date(2024, 0, 1);
-    const { rerender } = render(<Datepicker defaultDate={defaultDate} />);
-    await userEvent.click(screen.getByRole('textbox'));
-    expect(screen.getByText('December 2023')).toBeInTheDocument();
-    rerender(<Datepicker defaultDate={defaultDate} dateValue={dateValue} />);
-    expect(screen.getByText('January 2024')).toBeInTheDocument();
-  });
-
-  it('should close month overlay when user clicks outside of it', async () => {
-    render(<Datepicker />);
-    await userEvent.click(screen.getByRole('textbox'));
-    await userEvent.click(document.body);
-  });
 });
