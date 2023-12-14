@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC, ReactNode } from 'react';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { HiArrowLeft, HiArrowRight, HiCalendar } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -220,7 +220,7 @@ export const Datepicker: FC<DatepickerProps> = ({
     const pageCounter = -(yearDifference * 12 + monthDifference);
     setViewDate(getViewDatePage(view, viewDate, pageCounter));
     dateValue && changeSelectedDate(dateValue, false);
-  }, [dateValue]);
+  }, [dateValue, view, viewDate, changeSelectedDate, selectedDate]);
 
   return (
     <DatepickerContext.Provider
