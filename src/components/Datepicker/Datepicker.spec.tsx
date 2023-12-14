@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { Datepicker } from './Datepicker';
-import { getFormattedDate } from './helpers';
+import { WeekStart, getFormattedDate } from './helpers';
 import userEvent from '@testing-library/user-event';
 
 describe('Components / Datepicker', () => {
@@ -11,6 +11,15 @@ describe('Components / Datepicker', () => {
     render(<Datepicker />);
 
     expect(screen.getByDisplayValue(todaysDateInDefaultLanguage)).toBeInTheDocument();
+  });
+  it('should display dateValue as date', async () => {
+    const dateValue = new Date(2022, 11, 25); // Set dateValue to December 25, 2022
+
+    render(<Datepicker weekStart={WeekStart.Friday} dateValue={dateValue} />); // Render the Datepicker with the dateValue prop
+
+    await userEvent.click(screen.getByRole('textbox'));
+    screen.debug();
+    expect(screen.getByText('December 2022')).toBeInTheDocument(); // Check if the text "December 25" is found on the screen
   });
 
   it('should update date when a different day is clicked', async () => {
