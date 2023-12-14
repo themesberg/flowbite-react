@@ -245,6 +245,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
 
   useEffect(() => {
     if (!dateValue) return;
+    if (dateValue.getTime() === selectedDate.getTime()) return;
     const yearDifference = selectedDate.getFullYear() - dateValue.getFullYear();
     const monthDifference = selectedDate.getMonth() - dateValue.getMonth();
     const pageCounter = -(yearDifference * 12 + monthDifference);
