@@ -34,6 +34,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: 'Remix', href: '/docs/guides/remix', isNew: true },
       { title: 'Astro', href: '/docs/guides/astro', isNew: true },
       { title: 'Gatsby', href: '/docs/guides/gatsby', isNew: true },
+      { title: 'Laravel', href: '/docs/guides/laravel', isNew: true },
     ],
   },
   {
