@@ -80,7 +80,6 @@ describe('Components / Datepicker', () => {
     const dateValue = new Date(2024, 0, 1);
     const { rerender } = render(<Datepicker defaultDate={defaultDate} />);
     await userEvent.click(screen.getByRole('textbox'));
-    screen.debug();
     expect(screen.getByText('December 2023')).toBeInTheDocument();
     rerender(<Datepicker defaultDate={defaultDate} dateValue={dateValue} />);
     expect(screen.getByText('January 2024')).toBeInTheDocument();
