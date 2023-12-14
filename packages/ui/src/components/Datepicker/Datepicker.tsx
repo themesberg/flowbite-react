@@ -250,7 +250,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     const pageCounter = -(yearDifference * 12 + monthDifference);
     setViewDate(getViewDatePage(view, viewDate, pageCounter));
     dateValue && changeSelectedDate(dateValue, false);
-  }, [dateValue]);
+  }, [dateValue, view, viewDate, changeSelectedDate, selectedDate]);
 
   return (
     <DatepickerContext.Provider
