@@ -97,6 +97,7 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
   onSelectedDateChanged?: (date: Date) => void;
+  dateValue?: Date;
 }
 
 const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps> = (
@@ -117,9 +118,10 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     className,
     theme: customTheme = {},
     onSelectedDateChanged,
+  dateValue,
     ...props
-  },
   ref,
+  },
 ) => {
   const theme = mergeDeep(getTheme().datepicker, customTheme);
 
@@ -240,6 +242,15 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [inputRef, datepickerRef, setIsOpen]);
+
+  useEffect(() => {
+    if (!dateValue) return;
+    const yearDifference = selectedDate.getFullYear() - dateValue.getFullYear();
+    const monthDifference = selectedDate.getMonth() - dateValue.getMonth();
+    const pageCounter = -(yearDifference * 12 + monthDifference);
+    setViewDate(getViewDatePage(view, viewDate, pageCounter));
+    dateValue && changeSelectedDate(dateValue, false);
+  }, [dateValue]);
 
   return (
     <DatepickerContext.Provider

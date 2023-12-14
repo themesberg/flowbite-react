@@ -13,6 +13,7 @@ export default {
         options: ["en", "pt-BR"],
       },
     },
+    dateValue: { control: { type: 'date', format: 'MM/DD/YYYY' } },
     weekStart: {
       options: Object.values(WeekStart).filter((x) => typeof x === "string"),
       mapping: Object.entries(WeekStart)
@@ -37,6 +38,9 @@ const Template: StoryFn<DatepickerProps> = (args) => {
     args.maxDate = new Date(args.maxDate);
   }
 
+  if (args.dateValue) {
+    args.dateValue = new Date(args.dateValue);
+  }
   // update defaultDate based on the range
   if (args.minDate && args.maxDate) {
     if (args.defaultDate) {
@@ -55,6 +59,7 @@ Default.args = {
   showClearButton: true,
   showTodayButton: true,
   defaultDate: new Date(),
+  dateValue: new Date(),
   minDate: undefined,
   maxDate: undefined,
   language: "en",
