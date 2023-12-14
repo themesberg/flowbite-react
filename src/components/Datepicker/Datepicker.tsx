@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC, ReactNode } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { HiArrowLeft, HiArrowRight, HiCalendar } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -86,6 +86,7 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
   onSelectedDateChanged?: (date: Date) => void;
+  dateValue?: Date;
 }
 
 export const Datepicker: FC<DatepickerProps> = ({
@@ -105,6 +106,7 @@ export const Datepicker: FC<DatepickerProps> = ({
   className,
   theme: customTheme = {},
   onSelectedDateChanged,
+  dateValue,
   ...props
 }) => {
   const theme = mergeDeep(getTheme().datepicker, customTheme);
@@ -210,6 +212,15 @@ export const Datepicker: FC<DatepickerProps> = ({
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [inputRef, datepickerRef, setIsOpen]);
+
+  useEffect(() => {
+    if (!dateValue) return;
+    const yearDifference = selectedDate.getFullYear() - dateValue.getFullYear();
+    const monthDifference = selectedDate.getMonth() - dateValue.getMonth();
+    const pageCounter = -(yearDifference * 12 + monthDifference);
+    setViewDate(getViewDatePage(view, viewDate, pageCounter));
+    dateValue && changeSelectedDate(dateValue, false);
+  }, [dateValue]);
 
   return (
     <DatepickerContext.Provider
