@@ -13,13 +13,13 @@ describe('Components / Datepicker', () => {
     expect(screen.getByDisplayValue(todaysDateInDefaultLanguage)).toBeInTheDocument();
   });
   it('should display dateValue as date', async () => {
-    const dateValue = new Date(2022, 11, 25); // Set dateValue to December 25, 2022
+    const dateValue = new Date(2022, 11, 25);
 
-    render(<Datepicker weekStart={WeekStart.Friday} dateValue={dateValue} />); // Render the Datepicker with the dateValue prop
+    render(<Datepicker weekStart={WeekStart.Friday} dateValue={dateValue} />);
 
     await userEvent.click(screen.getByRole('textbox'));
     screen.debug();
-    expect(screen.getByText('December 2022')).toBeInTheDocument(); // Check if the text "December 25" is found on the screen
+    expect(screen.getByText('December 2022')).toBeInTheDocument();
   });
 
   it('should update date when a different day is clicked', async () => {
