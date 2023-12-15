@@ -244,14 +244,11 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   }, [inputRef, datepickerRef, setIsOpen]);
 
   useEffect(() => {
-    if (!dateValue) return;
-    if (dateValue.getTime() === selectedDate.getTime()) return;
-    const yearDifference = selectedDate.getFullYear() - dateValue.getFullYear();
-    const monthDifference = selectedDate.getMonth() - dateValue.getMonth();
-    const pageCounter = -(yearDifference * 12 + monthDifference);
-    setViewDate(getViewDatePage(view, viewDate, pageCounter));
-    dateValue && changeSelectedDate(dateValue, false);
-  }, [dateValue, view, viewDate, changeSelectedDate, selectedDate]);
+    if (dateValue) {
+      setSelectedDate(dateValue);
+      setViewDate(dateValue);
+    }
+  }, [dateValue, setSelectedDate]);
 
   return (
     <DatepickerContext.Provider
