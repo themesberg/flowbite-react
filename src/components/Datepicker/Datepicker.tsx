@@ -218,7 +218,7 @@ export const Datepicker: FC<DatepickerProps> = ({
       setSelectedDate(dateValue);
       setViewDate(dateValue);
     }
-  }, [dateValue, setSelectedDate]);
+  }, [dateValue, setSelectedDate, setViewDate]);
 
   return (
     <DatepickerContext.Provider
