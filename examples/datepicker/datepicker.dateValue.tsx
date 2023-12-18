@@ -21,7 +21,7 @@ import { Datepicker } from 'flowbite-react';
 function Component() {
   return (
     <Datepicker
-      weekStart={new Date(2022, 11, 25);} // 25th December 2022
+      dateValue={new Date(2022, 11, 25);} // 25th December 2022
     />
   );
 }
