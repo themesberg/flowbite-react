@@ -18,7 +18,7 @@ describe('Components / Datepicker', () => {
     render(<Datepicker weekStart={WeekStart.Friday} dateValue={dateValue} />);
 
     await userEvent.click(screen.getByRole('textbox'));
-    screen.debug();
+    
     expect(screen.getByText('December 2022')).toBeInTheDocument();
   });
 
