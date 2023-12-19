@@ -35,7 +35,7 @@ describe('Components / Datepicker', () => {
   });
 
   it("should reset to today's date when Clear button is clicked", async () => {
-    const labelEmptyDate = 'No date selected'; // Replace with your actual label for empty date
+    const labelEmptyDate = 'No date selected';
     const todaysDayOfMonth = new Date().getDate();
     const anotherDay = todaysDayOfMonth === 1 ? 2 : 1;
 
