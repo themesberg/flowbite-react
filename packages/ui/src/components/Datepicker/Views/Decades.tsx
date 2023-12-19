@@ -48,7 +48,8 @@ export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({ theme:
             )}
             onClick={() => {
               if (isDisabled) return;
-              setViewDate(newDate);
+
+              selectedDate && setViewDate(addYears(viewDate, year - selectedDate.getFullYear()));
               setView(Views.Years);
             }}
           >
