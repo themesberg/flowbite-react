@@ -1,0 +1,97 @@
+---
+title: Use with Remix - Flowbite React
+description: Learn how to install Flowbite React for your Remix project to leverage quicker page loads with a full-stack web framework built by Shopify
+---
+
+## Create project
+
+Run the following command to create a new Remix project:
+
+```bash
+npx create-remix@latest
+```
+
+## Setup Tailwind CSS
+
+1. Install `tailwindcss` and its peer dependencies:
+
+```bash
+npm i -D tailwindcss
+```
+
+2. Generate `tailwind.config.ts` file:
+
+```bash
+npx tailwindcss init --ts
+```
+
+3. Add the paths to all of your template files in your `tailwind.config.ts` file:
+
+```ts {4}
+import type { Config } from 'tailwindcss';
+
+export default {
+  content: ['./app/**/*.{js,jsx,ts,tsx}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+} satisfies Config;
+```
+
+4. Create a `./app/tailwind.css` file and add the `@tailwind` directives for each of Tailwind's layers:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+5. Import the newly-created `./app/tailwind.css` file in your `./app/root.tsx` file:
+
+```tsx {1,5}
+import stylesheet from '~/tailwind.css';
+
+export const links: LinksFunction = () => [
+  // ...
+  { rel: 'stylesheet', href: stylesheet },
+];
+```
+
+## Install Flowbite React
+
+1. Run the following command to install `flowbite-react`:
+
+```bash
+npm i flowbite-react
+```
+
+2. Add the Flowbite plugin to `tailwind.config.ts` and include content from `flowbite-react`:
+
+```ts {1,7,11}
+import flowbite from 'flowbite/plugin';
+import type { Config } from 'tailwindcss';
+
+export default {
+  content: [
+    // ...
+    'node_modules/flowbite-react/lib/esm/**/*.js',
+  ],
+  plugins: [
+    // ...
+    flowbite,
+  ],
+} satisfies Config;
+```
+
+## Try it out
+
+Now that you have successfully installed Flowbite React you can start using the components from the library.
+
+```tsx
+import { Button } from 'flowbite-react';
+
+export default function Index() {
+  return <Button>Click me</Button>;
+}
+```

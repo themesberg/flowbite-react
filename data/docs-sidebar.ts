@@ -18,12 +18,26 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
     items: [
       { title: 'Introduction', href: '/docs/getting-started/introduction' },
       { title: 'Quickstart', href: '/docs/getting-started/quickstart' },
-      { title: 'Next.js', href: '/docs/getting-started/nextjs', isNew: true },
       { title: 'Server Components', href: '/docs/getting-started/server-components', isNew: true },
       { title: 'TypeScript', href: '/docs/getting-started/typescript' },
       { title: 'License', href: '/docs/getting-started/license' },
       { title: 'Changelog', href: 'https://github.com/themesberg/flowbite-react/releases', isExternal: true },
       { title: 'Contributing', href: '/docs/getting-started/contributing' },
+    ],
+  },
+  {
+    title: 'integration guides',
+    href: '/guides/',
+    items: [
+      { title: 'Next.js', href: '/docs/guides/next-js', isNew: true },
+      { title: 'Vite', href: '/docs/guides/vite', isNew: true },
+      { title: 'Remix', href: '/docs/guides/remix', isNew: true },
+      { title: 'Astro', href: '/docs/guides/astro', isNew: true },
+      { title: 'Gatsby', href: '/docs/guides/gatsby', isNew: true },
+      { title: 'Laravel', href: '/docs/guides/laravel', isNew: true },
+      { title: 'Parcel', href: '/docs/guides/parcel', isNew: true },
+      { title: 'Create React App', href: '/docs/guides/create-react-app', isNew: true },
+      { title: 'RedwoodJS', href: '/docs/guides/redwood-js', isNew: true },
     ],
   },
   {

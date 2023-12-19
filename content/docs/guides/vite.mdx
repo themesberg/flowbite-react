@@ -1,0 +1,83 @@
+---
+title: Use with Vite - Flowbite React
+description: Learn how to install Flowbite React for your Vite project and start developing modern web applications with interactive components
+---
+
+## Create project
+
+Run the following command to create a new Vite project using React and Typescript:
+
+```bash
+npm create vite@latest -- --template react-ts
+```
+
+## Setup Tailwind CSS
+
+1. Install `tailwindcss` and its peer dependencies:
+
+```bash
+npm i -D tailwindcss postcss autoprefixer
+```
+
+2. Generate `tailwind.config.js` and `postcss.config.js` files:
+
+```bash
+npx tailwindcss init -p
+```
+
+3. Add the paths to all of your template files in your `tailwind.config.js` file:
+
+```js {3}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+4. Add the `@tailwind` directives for each of Tailwind's layers to your `./src/index.css` file:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+## Install Flowbite React
+
+1. Run the following command to install `flowbite-react`:
+
+```bash
+npm i flowbite-react
+```
+
+2. Add the Flowbite plugin to `tailwind.config.js` and include content from `flowbite-react`:
+
+```js {5,9}
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    // ...
+    'node_modules/flowbite-react/lib/esm/**/*.js',
+  ],
+  plugins: [
+    // ...
+    require('flowbite/plugin'),
+  ],
+};
+```
+
+## Try it out
+
+Now that you have successfully installed Flowbite React you can start using the components from the library.
+
+```tsx
+import { Button } from 'flowbite-react';
+
+export default function App() {
+  return <Button>Click me</Button>;
+}
+```

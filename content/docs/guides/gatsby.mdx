@@ -1,0 +1,82 @@
+---
+title: Use with Gatsby - Flowbite React
+description: Learn how to install Flowbite React for your Gatsby project and start building websites with an open-source static site generator built on top of React and GraphQL
+---
+
+## Create project
+
+1. Run the following command to create a new Gatsby project with Tailwind CSS:
+
+```bash
+npm init gatsby
+```
+
+2. Select `"Tailwind CSS"` to `"Would you like to install a styling system?"` question.
+
+## Install Flowbite React
+
+1. Run the following command to install `flowbite-react`:
+
+```bash
+npm i flowbite-react
+```
+
+2. Add the Flowbite plugin to `tailwind.config.js` and include content from `flowbite-react`:
+
+```js {5,9}
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    // ...
+    'node_modules/flowbite-react/lib/esm/**/*.js',
+  ],
+  plugins: [
+    // ...
+    require('flowbite/plugin'),
+  ],
+};
+```
+
+## Dark mode
+
+In server side rendered applications, such as Gatsby, to avoid page flicker (if `dark` mode is set) before Gatsby hydrates the content, `ThemeModeScript` component must be rendered in `Head` component (see implementation below).
+
+`ThemeModeScript` renders a script tag that sets `dark` or removes `dark` from `<html>` element before hydration occurs.
+
+### Configure
+
+To use the [Gatsby SSR APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/), create a file called `gatsby-ssr.js` in the root of your site. Export any of the APIs you wish to use in this file.
+
+1. Create `gatsby-ssr.js` file at the root folder of the project:
+
+```js
+// gatsby-ssr.js
+
+export const onRenderBody = ({ setPreBodyComponents }) => {
+  // ...
+};
+```
+
+2. Import `ThemeModeScript` and add it to `setPreBodyComponents` function inside an array:
+
+```js {3,6}
+// gatsby-ssr.js
+
+import { ThemeModeScript } from 'flowbite-react';
+
+export const onRenderBody = ({ setPreBodyComponents }) => {
+  setPreBodyComponents([ThemeModeScript]);
+};
+```
+
+## Try it out
+
+Now that you have successfully installed Flowbite React you can start using the components from the library.
+
+```tsx
+import { Button } from 'flowbite-react';
+
+export default function IndexPage() {
+  return <Button>Click me</Button>;
+}
+```

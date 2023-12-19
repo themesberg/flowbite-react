@@ -1,0 +1,180 @@
+---
+title: Use with Next.js - Flowbite React
+description: Learn how to install Flowbite React for your Next.js project and start developing with the most popular React-based framework built by Vercel
+---
+
+## New project
+
+Add Flowbite React to a new Next.js project:
+
+### Create project
+
+Run the following command to create a new Next.js project using `tailwind`:
+
+```bash
+npx create-next-app@latest --tailwind
+```
+
+### Install Flowbite React
+
+Run the following command to install `flowbite-react`:
+
+```bash
+npm i flowbite-react
+```
+
+### Configure Tailwind CSS
+
+Open `tailwind.config.js` and update `content` and `plugins` to include Flowbite React:
+
+```js {5,9}
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    // ...
+    'node_modules/flowbite-react/lib/esm/**/*.js',
+  ],
+  plugins: [
+    // ...
+    require('flowbite/plugin'),
+  ],
+};
+```
+
+## Existing project
+
+Add Flowbite React to an existing Next.js project:
+
+### Setup Tailwind CSS
+
+1. Install `tailwindcss` and its peer dependencies:
+
+```bash
+npm i -D tailwindcss postcss autoprefixer
+```
+
+2. Generate `tailwind.config.js` and `postcss.config.js` files:
+
+```bash
+npx tailwindcss init -p
+```
+
+3. Add the paths to all of your template files in your `tailwind.config.js` file:
+
+```js {4-9}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+
+    // Or if using `src` directory:
+    './src/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+4. Add the `@tailwind` directives for each of Tailwind's layers to your `globals.css` file:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+### Install Flowbite React
+
+1. Run the following command to install `flowbite-react`:
+
+```bash
+npm i flowbite-react
+```
+
+2. Add the Flowbite plugin to `tailwind.config.js` and include content from `flowbite-react`:
+
+```js {5,9}
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    // ...
+    'node_modules/flowbite-react/lib/esm/**/*.js',
+  ],
+  plugins: [
+    // ...
+    require('flowbite/plugin'),
+  ],
+};
+```
+
+## Dark mode
+
+In server side rendered applications, such as Next.js, to avoid page flicker (if `dark` mode is set) before Next.js hydrates the content, `ThemeModeScript` component must be rendered in `Head` component (see implementation below).
+
+`ThemeModeScript` renders a script tag that sets `dark` or removes `dark` from `<html>` element before hydration occurs.
+
+### App router
+
+```tsx {3,8-10}
+// app/layout.tsx
+
+import { ThemeModeScript } from 'flowbite-react';
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <head>
+        <ThemeModeScript />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+### Pages router
+
+```tsx {3,8-10}
+// pages/_document.tsx
+
+import { ThemeModeScript } from 'flowbite-react';
+
+export default function Document() {
+  return (
+    <Html>
+      <Head>
+        <ThemeModeScript />
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
+}
+```
+
+## Try it out
+
+Now that you have successfully installed Flowbite React you can start using the components from the library.
+
+```tsx
+import { Button } from 'flowbite-react';
+
+export default function MyPage() {
+  return (
+    <div>
+      <Button>Click me</Button>
+    </div>
+  );
+}
+```
+
+## Next.js starter project
+
+- [GitHub Repo](https://github.com/tulupinc/flowbite-next-starter)
+- [Demo](https://flowbite-next-starter.vercel.app/)

@@ -1,0 +1,208 @@
+---
+title: Use with Parcel - Flowbite React
+description: Learn how to install Flowbite React for your Parcel project and start developing modern web applications with interactive components
+---
+
+## Create project
+
+Follow the steps to create a Parcel project using React and Tailwind CSS.
+
+### Setup Parcel
+
+1. Create a directory for your project:
+
+```bash
+mkdir flowbite-react-parcel
+```
+
+2. Initialize `package.json` file:
+
+```bash
+npm init -y
+```
+
+3. Install `Parcel`:
+
+```bash
+npm i -D parcel
+```
+
+4. Create `src` directory:
+
+```bash
+mkdir src
+```
+
+5. Create `src/index.html` file:
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Parcel App</title>
+  </head>
+  <body></body>
+</html>
+```
+
+6. Configure `package.json` file, add `source` and update `scripts` with `start` and `build` steps:
+
+```json {6,8-9}
+{
+  "name": "flowbite-react-parcel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
+
+### Setup React
+
+1. Install `React`:
+
+```bash
+npm i react react-dom
+```
+
+2. Create `src/index.js` file:
+
+```js
+import { createRoot } from 'react-dom/client';
+import { App } from './app';
+
+const container = document.getElementById('app');
+const root = createRoot(container);
+root.render(<App />);
+```
+
+3. Create `src/app.js` file:
+
+```js
+export function App() {
+  return <h1>Hello world!</h1>;
+}
+```
+
+4. Update `src/index.html` file:
+
+```html {8,9}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Parcel App</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
+```
+
+## Setup Tailwind CSS
+
+1. Install `tailwindcss` and its peer dependencies:
+
+```bash
+npm i -D tailwindcss postcss
+```
+
+2. Generate `tailwind.config.js` file:
+
+```bash
+npx tailwindcss init
+```
+
+3. Create `.postcssrc` file and enable the tailwindcss plugin:
+
+```json
+{
+  "plugins": {
+    "tailwindcss": {}
+  }
+}
+```
+
+4. Add the paths to all of your template files in your `tailwind.config.js` file:
+
+```js {3}
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{html,js,ts,jsx,tsx}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+5. Create a `./src/index.css` file and add the `@tailwind` directives for each of Tailwind's layers:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+6. Update `src/index.html` to include `src/index.css` file in the `head`:
+
+```html {6}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Parcel App</title>
+    <link href="./index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
+```
+
+## Install Flowbite React
+
+1. Run the following command to install `flowbite-react`:
+
+```bash
+npm i flowbite-react
+```
+
+2. Add the Flowbite plugin to `tailwind.config.js` and include content from `flowbite-react`:
+
+```js {5,9}
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    // ...
+    'node_modules/flowbite-react/lib/esm/**/*.js',
+  ],
+  plugins: [
+    // ...
+    require('flowbite/plugin'),
+  ],
+};
+```
+
+## Try it out
+
+Now that you have successfully installed Flowbite React you can start using the components from the library.
+
+```tsx
+import { Button } from 'flowbite-react';
+
+export function App() {
+  return <Button>Click me</Button>;
+}
+```
