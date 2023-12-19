@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.2",
+    "contentlayer": "^0.3.4",
     "flowbite": "^2.0.0",
     "react-icons": "^4.11.0",
     "react-indiana-drag-scroll": "^2.2.0",
@@ -98,7 +99,6 @@
     "autoprefixer": "^10.4.16",
     "axe-core": "^4.8.2",
     "commitizen": "^4.3.0",
-    "contentlayer": "^0.3.4",
     "cypress": "^13.4.0",
     "cypress-axe": "^1.5.0",
     "cz-conventional-changelog": "3.3.0",
