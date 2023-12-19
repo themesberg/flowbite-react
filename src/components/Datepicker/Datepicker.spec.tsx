@@ -35,7 +35,7 @@ describe('Components / Datepicker', () => {
   });
 
   it("should reset to today's date when Clear button is clicked", async () => {
-    const todaysDateInDefaultLanguage = getFormattedDate('en', new Date());
+    const labelEmptyDate = 'No date selected'; // Replace with your actual label for empty date
     const todaysDayOfMonth = new Date().getDate();
     const anotherDay = todaysDayOfMonth === 1 ? 2 : 1;
 
@@ -46,7 +46,8 @@ describe('Components / Datepicker', () => {
     await userEvent.click(screen.getByRole('textbox'));
     await userEvent.click(screen.getByText('Clear'));
 
-    expect(screen.getByDisplayValue(todaysDateInDefaultLanguage)).toBeInTheDocument();
+    expect(screen.getByDisplayValue(labelEmptyDate)).toBeInTheDocument();
+    expect(screen.queryByRole('gridcell', { selected: true })).toBeNull();
   });
 
   it("should use today's date when Today button is clicked", async () => {

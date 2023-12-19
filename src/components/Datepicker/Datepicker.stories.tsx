@@ -60,6 +60,5 @@ Default.args = {
   minDate: undefined,
   maxDate: undefined,
   language: 'en',
-  weekStart: WeekStart.Sunday,
   theme: {},
 };

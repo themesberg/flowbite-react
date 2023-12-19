@@ -87,6 +87,7 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
   onSelectedDateChanged?: (date: Date) => void;
   dateValue?: Date;
+  labelEmptyDate?: string;
 }
 
 export const Datepicker: FC<DatepickerProps> = ({
@@ -107,6 +108,7 @@ export const Datepicker: FC<DatepickerProps> = ({
   theme: customTheme = {},
   onSelectedDateChanged,
   dateValue,
+  labelEmptyDate = 'No date selected',
   ...props
 }) => {
   const theme = mergeDeep(getTheme().datepicker, customTheme);
@@ -117,18 +119,18 @@ export const Datepicker: FC<DatepickerProps> = ({
   const [isOpen, setIsOpen] = useState(open);
   const [view, setView] = useState<Views>(Views.Days);
   // selectedDate is the date selected by the user
-  const [selectedDate, setSelectedDate] = useState<Date>(defaultDate);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(dateValue ?? defaultDate);
   // viewDate is only for navigation
-  const [viewDate, setViewDate] = useState<Date>(defaultDate);
+  const [viewDate, setViewDate] = useState<Date>(dateValue ?? defaultDate);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const datepickerRef = useRef<HTMLDivElement>(null);
 
   // Triggers when user select the date
-  const changeSelectedDate = (date: Date, useAutohide: boolean) => {
+  const changeSelectedDate = (date: Date | null, useAutohide: boolean) => {
     setSelectedDate(date);
 
-    if (onSelectedDateChanged) {
+    if (date && onSelectedDateChanged) {
       onSelectedDateChanged(date);
     }
 
@@ -246,12 +248,12 @@ export const Datepicker: FC<DatepickerProps> = ({
             icon={HiCalendar}
             ref={inputRef}
             onFocus={() => {
-              if (!isDateEqual(viewDate, selectedDate)) {
+              if (selectedDate && !isDateEqual(viewDate, selectedDate)) {
                 setViewDate(selectedDate);
               }
               setIsOpen(true);
             }}
-            value={selectedDate && getFormattedDate(language, selectedDate)}
+            value={selectedDate ? getFormattedDate(language, selectedDate) : labelEmptyDate}
             readOnly
             {...props}
           />
@@ -315,10 +317,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                       type="button"
                       className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
                       onClick={() => {
-                        changeSelectedDate(defaultDate, true);
-                        if (defaultDate) {
-                          setViewDate(defaultDate);
-                        }
+                        changeSelectedDate(null, true);
                       }}
                     >
                       {labelClearButton}
