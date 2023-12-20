@@ -14,6 +14,7 @@ export default {
       },
     },
     dateValue: { control: { type: 'date', format: 'MM/DD/YYYY' } },
+    labelEmptyDate: { control: { type: 'text' } },
     weekStart: {
       options: Object.values(WeekStart).filter((x) => typeof x === 'string'),
       mapping: WeekStart,
@@ -61,4 +62,5 @@ Default.args = {
   maxDate: undefined,
   language: 'en',
   theme: {},
+  labelEmptyDate: 'No date selected',
 };
