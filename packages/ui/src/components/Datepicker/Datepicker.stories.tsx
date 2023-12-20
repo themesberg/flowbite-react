@@ -14,6 +14,7 @@ export default {
       },
     },
     dateValue: { control: { type: 'date', format: 'MM/DD/YYYY' } },
+    labelEmptyDate: { control: { type: 'text' } },
     weekStart: {
       options: Object.values(WeekStart).filter((x) => typeof x === "string"),
       mapping: Object.entries(WeekStart)
@@ -64,4 +65,5 @@ Default.args = {
   language: "en",
   weekStart: WeekStart.Sunday,
   theme: {},
+  labelEmptyDate: 'No date selected',
 };
