@@ -86,6 +86,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
     title: 'forms',
     href: '/forms/',
     items: [
+      { title: 'Checkbox', href: '/docs/forms/checkbox' },
       { title: 'File Input', href: '/docs/forms/file-input' },
       { title: 'Floating Label', href: '/docs/forms/floating-label', isNew: true },
     ],
