@@ -231,13 +231,13 @@ export const COMPONENTS_DATA: Component[] = [
   //   link: `/docs/forms/select`,
   //   classes: 'w-56'
   // },
-  // {
-  //   name: 'Textarea',
-  //   image: '/images/components/textarea.svg',
-  //   imageDark: '/images/components/textarea-dark.svg',
-  //   link: `/docs/forms/textarea`,
-  //   classes: 'w-56'
-  // },
+  {
+    name: 'Textarea',
+    image: '/images/components/textarea.svg',
+    imageDark: '/images/components/textarea-dark.svg',
+    link: `/docs/forms/textarea`,
+    classes: 'w-56',
+  },
   // {
   //   name: 'Checkbox',
   //   image: '/images/components/checkbox.svg',

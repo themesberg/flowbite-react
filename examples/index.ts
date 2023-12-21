@@ -27,6 +27,7 @@ export * as sidebar from './sidebar';
 export * as spinner from './spinner';
 export * as table from './table';
 export * as tabs from './tabs';
+export * as textarea from './textarea';
 export * as timeline from './timeline';
 export * as toast from './toast';
 export * as tooltip from './tooltip';
