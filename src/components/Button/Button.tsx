@@ -149,9 +149,8 @@ const ButtonComponentFn = <T extends ElementType = 'button'>(
               {processingSpinner || <Spinner size={size} />}
             </span>
           )}
-          {typeof children !== 'undefined' ? (
-            children
-          ) : (
+          {children}
+          {label && (
             <span data-testid="flowbite-button-label" className={twMerge(theme.label)}>
               {isProcessing ? processingLabel : label}
             </span>
