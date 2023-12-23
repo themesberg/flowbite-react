@@ -53,6 +53,16 @@ You can disable the arrow of the tooltip component by passing the `arrow` prop w
 
 <Example name="tooltip.disableArrow" />
 
+## Hover delay
+
+When your tooltip uses the `hover` trigger type, use the `restMs` prop to specify the amount of time (in milliseconds) the user's cursor must be "resting" on the trigger before the tooltip appears.
+
+Use the `delay` prop as a fallback with `restMs` to ensure that the tooltip appears after a certain amount of time even if the user's cursor is still moving.
+
+If you want to specify different behavior delay behavior for `open` and `close`, you can pass an object to `delay` that allows both `open` and `close` properties.
+
+<Example name="tooltip.hoverDelay" />
+
 ## Theme
 
 To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).

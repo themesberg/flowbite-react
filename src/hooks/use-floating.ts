@@ -39,6 +39,8 @@ export type UseFloatingInteractionsParams = {
   trigger?: 'hover' | 'click';
   role?: UseRoleProps['role'];
   interactions?: ElementProps[];
+  delay?: number | Partial<{ open: number; close: number }>;
+  restMs?: number;
 };
 
 export const useFloatingInteractions = ({
@@ -46,12 +48,16 @@ export const useFloatingInteractions = ({
   trigger,
   role = 'tooltip',
   interactions = [],
+  delay,
+  restMs,
 }: UseFloatingInteractionsParams) => {
   return useInteractions([
     useClick(context, { enabled: trigger === 'click' }),
     useHover(context, {
+      delay,
       enabled: trigger === 'hover',
       handleClose: safePolygon(),
+      restMs,
     }),
     useDismiss(context),
     useRole(context, { role }),

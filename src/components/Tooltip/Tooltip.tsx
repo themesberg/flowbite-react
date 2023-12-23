@@ -11,7 +11,9 @@ export interface TooltipProps extends Omit<ComponentProps<'div'>, 'content' | 's
   animation?: false | `duration-${number}`;
   arrow?: boolean;
   content: ReactNode;
+  delay?: number | Partial<{ open: number; close: number }>;
   placement?: 'auto' | Placement;
+  restMs?: number;
   style?: 'dark' | 'light' | 'auto';
   theme?: DeepPartial<FlowbiteTooltipTheme>;
   trigger?: 'hover' | 'click';
@@ -26,7 +28,9 @@ export const Tooltip: FC<TooltipProps> = ({
   children,
   className,
   content,
+  delay,
   placement = 'top',
+  restMs,
   style = 'dark',
   theme: customTheme = {},
   trigger = 'hover',
@@ -39,7 +43,9 @@ export const Tooltip: FC<TooltipProps> = ({
       animation={animation}
       arrow={arrow}
       content={content}
+      delay={delay}
       placement={placement}
+      restMs={restMs}
       style={style}
       theme={theme}
       trigger={trigger}

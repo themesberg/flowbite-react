@@ -44,3 +44,16 @@ SlowAnimation.args = {
   placement: 'bottom',
   children: <Button>Tooltip with slow animation</Button>,
 };
+
+export const Delay = Template.bind({});
+Delay.storyName = 'Delay';
+Delay.args = {
+  delay: {
+    open: 1000,
+    close: 200,
+  },
+  restMs: 500,
+  content: 'Tooltip content',
+  placement: 'bottom',
+  children: <Button>Tooltip with delay</Button>,
+};
