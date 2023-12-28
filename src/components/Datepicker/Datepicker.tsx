@@ -221,7 +221,6 @@ export const Datepicker: FC<DatepickerProps> = ({
       setViewDate(dateValue);
     }
   }, [dateValue, setSelectedDate, setViewDate]);
-  console.log(selectedDate, labelEmptyDate);
   return (
     <DatepickerContext.Provider
       value={{
