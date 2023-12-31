@@ -56,6 +56,7 @@ export interface CarouselProps extends ComponentProps<'div'> {
   theme?: DeepPartial<FlowbiteCarouselTheme>;
   onSlideChange?: (slide: number) => void;
   pauseOnHover?: boolean;
+  autoHideControls?: boolean;
 }
 
 export interface DefaultLeftRightControlProps extends ComponentProps<'div'> {
@@ -74,6 +75,7 @@ export const Carousel: FC<CarouselProps> = ({
   theme: customTheme = {},
   onSlideChange = null,
   pauseOnHover = false,
+  autoHideControls = false,
   ...props
 }) => {
   const theme = mergeDeep(getTheme().carousel, customTheme);
@@ -181,7 +183,11 @@ export const Carousel: FC<CarouselProps> = ({
 
       {items && (
         <>
-          <div className={theme.root.leftControl}>
+          <div
+            className={`${theme.root.leftControl} transition-opacity duration-300 ${
+              activeItem === 0 && autoHideControls ? 'pointer-events-none opacity-0' : 'opacity-100'
+            }`}
+          >
             <button
               className="group"
               data-testid="carousel-left-control"
@@ -192,7 +198,11 @@ export const Carousel: FC<CarouselProps> = ({
               {leftControl ? leftControl : <DefaultLeftControl theme={customTheme} />}
             </button>
           </div>
-          <div className={theme.root.rightControl}>
+          <div
+            className={`${theme.root.rightControl} transition-opacity duration-300 ${
+              activeItem === items.length - 1 && autoHideControls ? 'pointer-events-none opacity-0' : 'opacity-100'
+            }`}
+          >
             <button
               className="group"
               data-testid="carousel-right-control"
