@@ -64,6 +64,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       shadow,
       sizing = 'md',
       theme: customTheme = {},
+      type = 'text',
       ...props
     },
     ref,
@@ -95,6 +96,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 theme.field.input.withAddon[addon ? 'on' : 'off'],
                 theme.field.input.withShadow[shadow ? 'on' : 'off'],
               )}
+              type={type}
               {...props}
               ref={ref}
             />
