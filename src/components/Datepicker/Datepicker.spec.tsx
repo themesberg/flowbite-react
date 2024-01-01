@@ -34,20 +34,30 @@ describe('Components / Datepicker', () => {
     expect((screen.getByRole('textbox') as HTMLInputElement).value?.includes(`${anotherDay}`)).toBeTruthy();
   });
 
-  it("should reset to today's date when Clear button is clicked", async () => {
-    const labelEmptyDate = 'No date selected';
-    const todaysDayOfMonth = new Date().getDate();
-    const anotherDay = todaysDayOfMonth === 1 ? 2 : 1;
+  describe('Clear button functionality', () => {
+    const testClearButton = async (labelEmptyDate?: string) => {
+      const todaysDayOfMonth = new Date().getDate();
+      const anotherDay = todaysDayOfMonth === 1 ? 2 : 1;
 
-    render(<Datepicker />);
+      render(<Datepicker labelEmptyDate={labelEmptyDate ? labelEmptyDate : undefined} />);
 
-    await userEvent.click(screen.getByRole('textbox'));
-    await userEvent.click(screen.getAllByText(anotherDay)[0]);
-    await userEvent.click(screen.getByRole('textbox'));
-    await userEvent.click(screen.getByText('Clear'));
+      await userEvent.click(screen.getByRole('textbox'));
+      await userEvent.click(screen.getAllByText(anotherDay)[0]);
+      await userEvent.click(screen.getByRole('textbox'));
+      await userEvent.click(screen.getByText('Clear'));
 
-    expect(screen.getByDisplayValue(labelEmptyDate)).toBeInTheDocument();
-    expect(screen.queryByRole('gridcell', { selected: true })).toBeNull();
+      expect(screen.getByDisplayValue(labelEmptyDate ? labelEmptyDate : 'No date selected')).toBeInTheDocument();
+      expect(screen.queryByRole('gridcell', { selected: true })).toBeNull();
+    };
+
+    it('should reset date to null and show default empty label when Clear button is clicked', async () => {
+      await testClearButton();
+    });
+
+    it('should reset date to null and show custom empty label when Clear button is clicked', async () => {
+      const labelEmptyDate = 'Custom empty label';
+      await testClearButton(labelEmptyDate);
+    });
   });
 
   it("should use today's date when Today button is clicked", async () => {
