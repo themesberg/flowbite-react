@@ -98,7 +98,7 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
   onSelectedDateChanged?: (date: Date) => void;
   dateValue?: Date;
-  labelEmptyDate?: string;
+  label?: string;
 }
 
 const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps> = (
@@ -246,11 +246,12 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   }, [inputRef, datepickerRef, setIsOpen]);
 
   useEffect(() => {
-    if (dateValue) {
+    if (dateValue !== undefined && dateValue !== selectedDate) {
       setSelectedDate(dateValue);
       setViewDate(dateValue);
     }
   }, [dateValue, setSelectedDate, setViewDate]);
+
   return (
     <DatepickerContext.Provider
       value={{
@@ -282,7 +283,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
               }
               setIsOpen(true);
             }}
-            value={selectedDate ? getFormattedDate(language, selectedDate) : labelEmptyDate}
+            value={selectedDate ? getFormattedDate(language, selectedDate) : label}
             readOnly
             {...props}
           />
