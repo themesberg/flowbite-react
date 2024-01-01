@@ -35,18 +35,18 @@ describe('Components / Datepicker', () => {
   });
 
   describe('Clear button functionality', () => {
-    const testClearButton = async (labelEmptyDate?: string) => {
+    const testClearButton = async (label?: string) => {
       const todaysDayOfMonth = new Date().getDate();
       const anotherDay = todaysDayOfMonth === 1 ? 2 : 1;
 
-      render(<Datepicker labelEmptyDate={labelEmptyDate ? labelEmptyDate : undefined} />);
+      render(<Datepicker label={label ? label : undefined} />);
 
       await userEvent.click(screen.getByRole('textbox'));
       await userEvent.click(screen.getAllByText(anotherDay)[0]);
       await userEvent.click(screen.getByRole('textbox'));
       await userEvent.click(screen.getByText('Clear'));
 
-      expect(screen.getByDisplayValue(labelEmptyDate ? labelEmptyDate : 'No date selected')).toBeInTheDocument();
+      expect(screen.getByDisplayValue(label ? label : 'No date selected')).toBeInTheDocument();
       expect(screen.queryByRole('gridcell', { selected: true })).toBeNull();
     };
 
@@ -55,8 +55,8 @@ describe('Components / Datepicker', () => {
     });
 
     it('should reset date to null and show custom empty label when Clear button is clicked', async () => {
-      const labelEmptyDate = 'Custom empty label';
-      await testClearButton(labelEmptyDate);
+      const label = 'Custom empty label';
+      await testClearButton(label);
     });
   });
 
