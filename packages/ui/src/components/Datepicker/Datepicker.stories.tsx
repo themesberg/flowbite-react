@@ -42,6 +42,10 @@ const Template: StoryFn<DatepickerProps> = (args) => {
   if (args.dateValue) {
     args.dateValue = new Date(args.dateValue);
   }
+
+  if (args.defaultDate) {
+    args.defaultDate = new Date(args.defaultDate);
+  }
   // update defaultDate based on the range
   if (args.minDate && args.maxDate) {
     if (args.defaultDate) {
@@ -59,8 +63,53 @@ Default.args = {
   autoHide: true,
   showClearButton: true,
   showTodayButton: true,
+  defaultDate: new Date(2023, 0, 15),
+  dateValue: undefined,
+  minDate: undefined,
+  maxDate: undefined,
+  language: 'en',
+  theme: {},
+  label: 'No date selected',
+};
+
+export const NullDateValue = Template.bind({});
+NullDateValue.args = {
+  open: false,
+  autoHide: true,
+  showClearButton: true,
+  showTodayButton: true,
   defaultDate: new Date(),
-  dateValue: new Date(),
+  dateValue: null,
+  minDate: undefined,
+  maxDate: undefined,
+  language: 'en',
+  theme: {},
+  label: 'No date selected',
+};
+
+export const DateValueSet = Template.bind({});
+DateValueSet.args = {
+  open: false,
+  autoHide: true,
+  showClearButton: true,
+  showTodayButton: true,
+  defaultDate: new Date(),
+  dateValue: new Date(2021, 0, 15),
+  minDate: undefined,
+  maxDate: undefined,
+  language: 'en',
+  theme: {},
+  label: 'No date selected',
+};
+
+export const EmptyDates = Template.bind({});
+EmptyDates.args = {
+  open: false,
+  autoHide: true,
+  showClearButton: true,
+  showTodayButton: true,
+  defaultDate: undefined,
+  dateValue: undefined,
   minDate: undefined,
   maxDate: undefined,
   language: "en",
