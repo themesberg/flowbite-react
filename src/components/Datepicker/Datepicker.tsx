@@ -86,7 +86,7 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
   onSelectedDateChanged?: (date: Date) => void;
-  dateValue?: Date;
+  dateValue?: Date | null;
   label?: string;
 }
 
@@ -218,9 +218,9 @@ export const Datepicker: FC<DatepickerProps> = ({
   useEffect(() => {
     if (dateValue !== undefined && dateValue !== selectedDate) {
       setSelectedDate(dateValue);
-      setViewDate(dateValue);
+      dateValue && setViewDate(dateValue);
     }
-  }, [dateValue, setSelectedDate, setViewDate]);
+  }, [dateValue, setSelectedDate, setViewDate, selectedDate]);
 
   return (
     <DatepickerContext.Provider
