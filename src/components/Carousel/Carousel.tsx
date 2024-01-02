@@ -185,7 +185,7 @@ export const Carousel: FC<CarouselProps> = ({
         <>
           <div
             className={`${theme.root.leftControl} transition-opacity duration-300 ${
-              activeItem === 0 && autoHideControls ? 'pointer-events-none opacity-0 hidden' : 'opacity-100 block'
+              activeItem === 0 && autoHideControls ? 'pointer-events-none hidden opacity-0' : 'block opacity-100'
             }`}
           >
             <button
@@ -200,7 +200,9 @@ export const Carousel: FC<CarouselProps> = ({
           </div>
           <div
             className={`${theme.root.rightControl} transition-opacity duration-300 ${
-              activeItem === items.length - 1 && autoHideControls ? 'pointer-events-none opacity-0 hidden' : 'opacity-100 block'
+              activeItem === items.length - 1 && autoHideControls
+                ? 'pointer-events-none hidden opacity-0'
+                : 'block opacity-100'
             }`}
           >
             <button
