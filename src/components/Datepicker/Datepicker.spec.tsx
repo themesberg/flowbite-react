@@ -12,10 +12,10 @@ describe('Components / Datepicker', () => {
 
     expect(screen.getByDisplayValue(todaysDateInDefaultLanguage)).toBeInTheDocument();
   });
-  it('should display dateValue as date', async () => {
+  it('should display value as date', async () => {
     const dateValue = new Date(2022, 11, 25);
 
-    render(<Datepicker weekStart={WeekStart.Friday} dateValue={dateValue} />);
+    render(<Datepicker weekStart={WeekStart.Friday} value={dateValue} />);
 
     await userEvent.click(screen.getByRole('textbox'));
 

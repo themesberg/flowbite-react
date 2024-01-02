@@ -5,4 +5,4 @@ export { range } from './datepicker.range';
 export { root } from './datepicker.root';
 export { title } from './datepicker.title';
 export { weekStart } from './datepicker.weekStart';
-export { dateValue } from './datepicker.dateValue';
+export { value } from './datepicker.value';

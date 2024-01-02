@@ -9,7 +9,7 @@ import { Datepicker } from 'flowbite-react';
 function Component() {
   return (
     <Datepicker
-      dateValue={new Date(2022, 11, 25)} // 25th December 2022
+      value={new Date(2022, 11, 25)} // 25th December 2022
     />
   );
 }
@@ -21,7 +21,7 @@ import { Datepicker } from 'flowbite-react';
 function Component() {
   return (
     <Datepicker
-      dateValue={new Date(2022, 11, 25);} // 25th December 2022
+      value={new Date(2022, 11, 25);} // 25th December 2022
     />
   );
 }
@@ -30,12 +30,12 @@ function Component() {
 function Component() {
   return (
     <Datepicker
-      dateValue={new Date(2022, 11, 25)} // 25th December 2022
+      value={new Date(2022, 11, 25)} // 25th December 2022
     />
   );
 }
 
-export const dateValue: CodeData = {
+export const value: CodeData = {
   type: 'single',
   code: [
     {
@@ -49,6 +49,6 @@ export const dateValue: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: 'datepicker/datepicker.dateValue.tsx',
+  githubSlug: 'datepicker/datepicker.value.tsx',
   component: <Component />,
 };
