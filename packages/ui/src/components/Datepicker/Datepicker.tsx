@@ -90,14 +90,14 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
   labelClearButton?: string;
   showTodayButton?: boolean;
   labelTodayButton?: string;
-  defaultDate?: Date;
+  defaultValue?: Date;
   minDate?: Date;
   maxDate?: Date;
   language?: string;
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
   onSelectedDateChanged?: (date: Date) => void;
-  dateValue?: Date | null;
+  value?: Date | null;
   label?: string;
 }
 
@@ -127,15 +127,16 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
 ) => {
   const theme = mergeDeep(getTheme().datepicker, customTheme);
 
-  // Default date should respect the range
-  defaultDate = getFirstDateInRange(defaultDate, minDate, maxDate);
+  const effectiveDefaultValue = useMemo(() => {
+    return getFirstDateInRange(defaultValue, minDate, maxDate);
+  }, []);
 
   const [isOpen, setIsOpen] = useState(open);
   const [view, setView] = useState<Views>(Views.Days);
   // selectedDate is the date selected by the user
-  const [selectedDate, setSelectedDate] = useState<Date | null>(dateValue ?? defaultDate);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(value ?? effectiveDefaultValue);
   // viewDate is only for navigation
-  const [viewDate, setViewDate] = useState<Date>(dateValue ?? defaultDate);
+  const [viewDate, setViewDate] = useState<Date>(value ?? effectiveDefaultValue);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const datepickerRef = useRef<HTMLDivElement>(null);
@@ -246,11 +247,11 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   }, [inputRef, datepickerRef, setIsOpen]);
 
   useEffect(() => {
-    if (dateValue !== undefined && dateValue !== selectedDate) {
-      setSelectedDate(dateValue);
-      dateValue && setViewDate(dateValue);
+    if (value !== undefined && value !== selectedDate) {
+      setSelectedDate(value);
+      value && setViewDate(value);
     }
-  }, [dateValue, setSelectedDate, setViewDate, selectedDate]);
+  }, [value, setSelectedDate, setViewDate, selectedDate]);
 
   return (
     <DatepickerContext.Provider
@@ -285,6 +286,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
             }}
             value={selectedDate ? getFormattedDate(language, selectedDate) : label}
             readOnly
+            defaultValue={getFormattedDate(language, effectiveDefaultValue)}
             {...props}
           />
         )}

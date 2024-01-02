@@ -13,7 +13,8 @@ export default {
         options: ["en", "pt-BR"],
       },
     },
-    dateValue: { control: { type: 'date', format: 'MM/DD/YYYY' } },
+    value: { control: { type: 'date', format: 'MM/DD/YYYY' } },
+    defaultValue: { control: { type: 'date', format: 'MM/DD/YYYY' } },
     label: { control: { type: 'text' } },
     weekStart: {
       options: Object.values(WeekStart).filter((x) => typeof x === "string"),
@@ -39,18 +40,17 @@ const Template: StoryFn<DatepickerProps> = (args) => {
     args.maxDate = new Date(args.maxDate);
   }
 
-  if (args.dateValue) {
-    args.dateValue = new Date(args.dateValue);
+  if (args.value) {
+    args.value = new Date(args.value);
   }
 
-  if (args.defaultDate) {
-    args.defaultDate = new Date(args.defaultDate);
+  if (args.defaultValue) {
+    args.defaultValue = new Date(args.defaultValue);
   }
-  // update defaultDate based on the range
+  // update defaultValue based on the range
   if (args.minDate && args.maxDate) {
-    if (args.defaultDate) {
-      // https://github.com/storybookjs/storybook/issues/11822
-      args.defaultDate = getFirstDateInRange(new Date(args.defaultDate), args.minDate, args.maxDate);
+    if (args.defaultValue) {
+      args.defaultValue = getFirstDateInRange(args.defaultValue, args.minDate, args.maxDate);
     }
   }
 
@@ -63,8 +63,8 @@ Default.args = {
   autoHide: true,
   showClearButton: true,
   showTodayButton: true,
-  defaultDate: new Date(2023, 0, 15),
-  dateValue: undefined,
+  defaultValue: new Date(2023, 0, 18),
+  value: undefined,
   minDate: undefined,
   maxDate: undefined,
   language: 'en',
@@ -78,8 +78,8 @@ NullDateValue.args = {
   autoHide: true,
   showClearButton: true,
   showTodayButton: true,
-  defaultDate: new Date(),
-  dateValue: null,
+  defaultValue: new Date(),
+  value: null,
   minDate: undefined,
   maxDate: undefined,
   language: 'en',
@@ -93,8 +93,8 @@ DateValueSet.args = {
   autoHide: true,
   showClearButton: true,
   showTodayButton: true,
-  defaultDate: new Date(),
-  dateValue: new Date(2021, 0, 15),
+  defaultValue: new Date(),
+  value: new Date(2021, 0, 15),
   minDate: undefined,
   maxDate: undefined,
   language: 'en',
@@ -108,8 +108,8 @@ EmptyDates.args = {
   autoHide: true,
   showClearButton: true,
   showTodayButton: true,
-  defaultDate: undefined,
-  dateValue: undefined,
+  defaultValue: undefined,
+  value: undefined,
   minDate: undefined,
   maxDate: undefined,
   language: "en",
