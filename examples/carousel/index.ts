@@ -6,3 +6,4 @@ export { root } from './carousel.root';
 export { slide } from './carousel.slide';
 export { slideInterval } from './carousel.slideInterval';
 export { sliderContent } from './carousel.sliderContent';
+export { activeSlide } from './carousel.activeSlide';
