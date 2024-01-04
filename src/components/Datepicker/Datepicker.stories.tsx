@@ -54,6 +54,19 @@ const Template: StoryFn<DatepickerProps> = (args) => {
 
   return <Datepicker {...args} />;
 };
+export const DefaultEmpty = Template.bind({});
+DefaultEmpty.args = {
+  open: false,
+  autoHide: true,
+  showClearButton: true,
+  showTodayButton: true,
+  defaultValue: undefined,
+  value: undefined,
+  minDate: undefined,
+  maxDate: undefined,
+  language: 'en',
+  theme: {},
+};
 
 export const Default = Template.bind({});
 Default.args = {
@@ -67,7 +80,6 @@ Default.args = {
   maxDate: undefined,
   language: 'en',
   theme: {},
-  label: 'No date selected',
 };
 
 export const NullDateValue = Template.bind({});
@@ -82,7 +94,6 @@ NullDateValue.args = {
   maxDate: undefined,
   language: 'en',
   theme: {},
-  label: 'No date selected',
 };
 
 export const DateValueSet = Template.bind({});
@@ -97,20 +108,4 @@ DateValueSet.args = {
   maxDate: undefined,
   language: 'en',
   theme: {},
-  label: 'No date selected',
-};
-
-export const EmptyDates = Template.bind({});
-EmptyDates.args = {
-  open: false,
-  autoHide: true,
-  showClearButton: true,
-  showTodayButton: true,
-  defaultValue: undefined,
-  value: undefined,
-  minDate: undefined,
-  maxDate: undefined,
-  language: 'en',
-  theme: {},
-  label: 'No date selected',
 };
