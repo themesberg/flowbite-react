@@ -127,6 +127,31 @@ describe('Components / Carousel', () => {
     expect(carouselIndicators()[0]).toHaveClass(activeIndicatorClasses);
     expect(carouselIndicators()[1]).toHaveClass(nonActiveIndicatorClasses);
   });
+
+  it('Should render and show third item', () => {
+    render(<TestCarousel activeSlide={2} />);
+
+    expect(carouselItems()[0]).toHaveAttribute('data-active', 'false');
+    expect(carouselItems()[1]).toHaveAttribute('data-active', 'false');
+    expect(carouselItems()[2]).toHaveAttribute('data-active', 'true');
+  });
+
+  it('Should render and show first item', () => {
+    render(<TestCarousel activeSlide={-1} />);
+
+    expect(carouselItems()[0]).toHaveAttribute('data-active', 'true');
+    expect(carouselItems()[1]).toHaveAttribute('data-active', 'false');
+    expect(carouselItems()[2]).toHaveAttribute('data-active', 'false');
+  });
+
+  it('Should render and show last item', () => {
+    render(<TestCarousel activeSlide={5} />);
+
+    expect(carouselItems()[0]).toHaveAttribute('data-active', 'false');
+    expect(carouselItems()[2]).toHaveAttribute('data-active', 'false');
+    expect(carouselItems()[3]).toHaveAttribute('data-active', 'false');
+    expect(carouselItems()[4]).toHaveAttribute('data-active', 'true');
+  });
 });
 
 const activeIndicatorClasses = 'bg-white dark:bg-gray-800';
