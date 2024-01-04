@@ -5,12 +5,17 @@ import { WeekStart, getFormattedDate } from './helpers';
 import userEvent from '@testing-library/user-event';
 
 describe('Components / Datepicker', () => {
-  it("should display today's date by default", () => {
-    const todaysDateInDefaultLanguage = getFormattedDate('en', new Date());
-
+  it("should display today's date when default is empty", () => {
     render(<Datepicker />);
 
-    expect(screen.getByDisplayValue(todaysDateInDefaultLanguage)).toBeInTheDocument();
+    expect(screen.getByDisplayValue('Select date')).toBeInTheDocument();
+  });
+  it('should display default value on mount when default is set ', async () => {
+    const defaultValue = new Date(2022, 11, 25);
+    render(<Datepicker defaultValue={defaultValue} />);
+
+    await userEvent.click(screen.getByRole('textbox'));
+    expect(screen.getByText('December 2022')).toBeInTheDocument();
   });
   it('should display value as date', async () => {
     const dateValue = new Date(2022, 11, 25);
@@ -46,7 +51,7 @@ describe('Components / Datepicker', () => {
       await userEvent.click(screen.getByRole('textbox'));
       await userEvent.click(screen.getByText('Clear'));
 
-      expect(screen.getByDisplayValue(label ? label : 'No date selected')).toBeInTheDocument();
+      expect(screen.getByDisplayValue(label ? label : 'Select date')).toBeInTheDocument();
       expect(screen.queryByRole('gridcell', { selected: true })).toBeNull();
     };
 
