@@ -128,7 +128,11 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   const theme = mergeDeep(getTheme().datepicker, customTheme);
 
   const effectiveDefaultValue = useMemo(() => {
-    return getFirstDateInRange(defaultValue, minDate, maxDate);
+    return defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : null;
+  }, []);
+
+  const effectiveDefaultView = useMemo(() => {
+    return defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : new Date();
   }, []);
 
   const [isOpen, setIsOpen] = useState(open);
@@ -136,7 +140,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   // selectedDate is the date selected by the user
   const [selectedDate, setSelectedDate] = useState<Date | null>(value ?? effectiveDefaultValue);
   // viewDate is only for navigation
-  const [viewDate, setViewDate] = useState<Date>(value ?? effectiveDefaultValue);
+  const [viewDate, setViewDate] = useState<Date>(value ?? effectiveDefaultView);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const datepickerRef = useRef<HTMLDivElement>(null);
@@ -286,7 +290,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
             }}
             value={selectedDate ? getFormattedDate(language, selectedDate) : label}
             readOnly
-            defaultValue={getFormattedDate(language, effectiveDefaultValue)}
+            defaultValue={effectiveDefaultValue ? getFormattedDate(language, effectiveDefaultValue) : label}
             {...props}
           />
         )}
