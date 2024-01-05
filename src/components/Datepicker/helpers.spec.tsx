@@ -134,20 +134,20 @@ describe('addYears', () => {
   it('returns a new date by adding the specified number of years', () => {
     const date = new Date(2023, 0, 1); // January 1st, 2023
     const newDate = addYears(date, 5);
-    expect(newDate.getFullYear()).toBe(2028);
+    expect(newDate.getFullYear()).toBe(date.getFullYear() + 5);
   });
 
   it('returns a new date by subtracting the specified number of years', () => {
     const date = new Date(2023, 0, 1); // January 1st, 2023
     const newDate = addYears(date, -2);
-    expect(newDate.getFullYear()).toBe(2021);
+    expect(newDate.getFullYear()).toBe(date.getFullYear() - 2);
   });
 
   it('does not modify the original date', () => {
     const date = new Date(2023, 0, 1); // January 1st, 2023
     const newDate = addYears(date, 5);
     expect(date.getFullYear()).toBe(2023);
-    expect(newDate.getFullYear()).toBe(2028);
+    expect(newDate.getFullYear()).toBe(date.getFullYear() + 5);
   });
 });
 
