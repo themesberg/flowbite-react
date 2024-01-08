@@ -18,11 +18,17 @@
     "lib"
   ],
   "exports": {
-    "./*": {
+    "./components/*": {
       "import": "./lib/esm/components/*/index.js",
       "require": "./lib/cjs/components/*/index.js",
       "default": "./lib/esm/components/*/index.js",
       "types": "./lib/esm/components/*/index.d.ts"
+    },
+    ".": {
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js",
+      "default": "./lib/esm/index.js",
+      "types": "./lib/esm/index.d.ts"
     }
   },
   "main": "./lib/cjs/index.js",
