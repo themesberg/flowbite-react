@@ -67,7 +67,6 @@
     "flowbite": "^2.0.0",
     "markdown-toc": "^1.2.0",
     "next-contentlayer": "^0.3.4",
-    "flowbite-react": "file:.yalc/flowbite-react",
     "react-icons": "^4.11.0",
     "react-indiana-drag-scroll": "^2.2.0",
     "react-markdown": "^9.0.0",
