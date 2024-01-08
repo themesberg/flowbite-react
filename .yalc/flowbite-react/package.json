@@ -65,9 +65,12 @@
     "@floating-ui/react": "^0.26.2",
     "contentlayer": "^0.3.4",
     "flowbite": "^2.0.0",
-    "flowbite-react": "file:.yalc/flowbite-react",
+    "markdown-toc": "^1.2.0",
+    "next-contentlayer": "^0.3.4",
     "react-icons": "^4.11.0",
     "react-indiana-drag-scroll": "^2.2.0",
+    "react-markdown": "^9.0.0",
+    "sharp": "^0.32.6",
     "tailwind-merge": "^2.0.0"
   },
   "peerDependencies": {
@@ -122,5 +125,5 @@
       "react/no-unescaped-entities": "off"
     }
   },
-  "yalcSig": "701598b702d6cd63dfe5ec40c494e7c2"
+  "yalcSig": "ce9643f5e772797e48ef26e980e7d754"
 }

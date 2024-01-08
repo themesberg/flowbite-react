@@ -65,6 +65,7 @@
     "@floating-ui/react": "^0.26.2",
     "contentlayer": "^0.3.4",
     "flowbite": "^2.0.0",
+    "flowbite-react": "file:.yalc/flowbite-react",
     "markdown-toc": "^1.2.0",
     "next-contentlayer": "^0.3.4",
     "react-icons": "^4.11.0",
