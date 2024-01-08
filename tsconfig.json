@@ -6,7 +6,7 @@
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "node",
@@ -17,6 +17,7 @@
     "noUnusedParameters": true,
     "paths": {
       "~/*": ["./*"],
+
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [
