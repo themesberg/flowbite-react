@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "flowbite-react": {
+      "version": "0.7.2",
+      "signature": "701598b702d6cd63dfe5ec40c494e7c2",
+      "file": true
+    }
+  }
+}
