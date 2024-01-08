@@ -1,4 +1,4 @@
-import type { FlowbiteTheme } from '.';
+import type { FlowbiteTheme } from './components/Flowbite';
 import { accordionTheme } from './components/Accordion/theme';
 import { alertTheme } from './components/Alert/theme';
 import { avatarTheme } from './components/Avatar/theme';

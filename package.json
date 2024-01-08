@@ -15,8 +15,16 @@
   "bugs": "https://github.com/themesberg/flowbite-react/issues",
   "license": "MIT",
   "files": [
-    "./lib/"
+    "lib"
   ],
+  "exports": {
+    "./*": {
+      "import": "./lib/esm/components/*/index.js",
+      "require": "./lib/cjs/components/*/index.js",
+      "default": "./lib/esm/components/*/index.js",
+      "types": "./lib/esm/components/*/index.d.ts"
+    }
+  },
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "./lib/esm/index.d.ts",

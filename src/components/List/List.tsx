@@ -1,6 +1,6 @@
 import type { ComponentProps, FC, PropsWithChildren } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { FlowbiteStateColors } from '../..';
+import type { FlowbiteStateColors } from '../Flowbite';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
