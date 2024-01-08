@@ -34,16 +34,13 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
 
     return (
       <>
-        <div data-testid="flowbite-range-slider" className={twMerge(theme.root.base, className)}>
-          <div className={theme.field.base}>
-            <input
-              ref={ref}
-              type="range"
-              className={twMerge(theme.field.input.base, theme.field.input.sizes[sizing])}
-              {...props}
-            />
-          </div>
-        </div>
+        <input
+          data-testid="flowbite-range-slider"
+          ref={ref}
+          type="range"
+          className={twMerge(theme.field.input.base, theme.field.input.sizes[sizing], className)}
+          {...props}
+        />
       </>
     );
   },
