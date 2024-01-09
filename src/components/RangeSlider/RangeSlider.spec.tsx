@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import { RangeSlider } from './RangeSlider';
 
-describe('Components / Button', () => {
+describe('Components / RangeSlider', () => {
   describe('A11y', () => {
     it('should have `role="progressbar"` by default', () => {
       render(<RangeSlider />);
