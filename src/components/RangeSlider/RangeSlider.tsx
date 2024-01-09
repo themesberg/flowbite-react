@@ -35,7 +35,6 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
     return (
       <>
         <input
-          data-testid="flowbite-range-slider"
           ref={ref}
           type="range"
           className={twMerge(theme.field.input.base, theme.field.input.sizes[sizing], className)}

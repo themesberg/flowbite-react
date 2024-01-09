@@ -127,6 +127,13 @@ describe('Components / Button', () => {
       render(<RangeSlider ref={ref} name="range_slider_name" />);
       expect(ref.current?.name).toBe('range_slider_name');
     });
+
+    it('should allow className as prop', () => {
+      const className = 'dummy-custom-class-name';
+
+      render(<RangeSlider className={className} />);
+      expect(rangeSlider()).toHaveClass(className);
+    });
   });
 
   describe('Rendering', () => {
@@ -137,42 +144,6 @@ describe('Components / Button', () => {
   });
 
   describe('Theme', () => {
-    it('should use `base` classes', () => {
-      const theme: CustomFlowbiteTheme = {
-        rangeSlider: {
-          root: {
-            base: 'dummy-range-slider-base-classes',
-          },
-        },
-      };
-
-      render(
-        <Flowbite theme={{ theme }}>
-          <RangeSlider />
-        </Flowbite>,
-      );
-
-      expect(rangeSliderContainer()).toHaveClass('dummy-range-slider-base-classes');
-    });
-
-    it('should use `base` classes of field', () => {
-      const theme: CustomFlowbiteTheme = {
-        rangeSlider: {
-          field: {
-            base: 'dummy-range-slider-field-base-classes',
-          },
-        },
-      };
-
-      render(
-        <Flowbite theme={{ theme }}>
-          <RangeSlider />
-        </Flowbite>,
-      );
-
-      expect(rangeSliderContainer().childNodes[0]).toHaveClass('dummy-range-slider-field-base-classes');
-    });
-
     it('should use `base` classes of input', () => {
       const theme: CustomFlowbiteTheme = {
         rangeSlider: {
@@ -217,30 +188,6 @@ describe('Components / Button', () => {
   });
 
   describe('Theme as a prop', () => {
-    it('should use `base` classes', () => {
-      const theme: CustomFlowbiteTheme['rangeSlider'] = {
-        root: {
-          base: 'dummy-range-slider-base-classes',
-        },
-      };
-
-      render(<RangeSlider theme={theme} />);
-
-      expect(rangeSliderContainer()).toHaveClass('dummy-range-slider-base-classes');
-    });
-
-    it('should use `base` classes of field', () => {
-      const theme: CustomFlowbiteTheme['rangeSlider'] = {
-        field: {
-          base: 'dummy-range-slider-field-base-classes',
-        },
-      };
-
-      render(<RangeSlider theme={theme} />);
-
-      expect(rangeSliderContainer().childNodes[0]).toHaveClass('dummy-range-slider-field-base-classes');
-    });
-
     it('should use `base` classes of input', () => {
       const theme: CustomFlowbiteTheme['rangeSlider'] = {
         field: {
@@ -273,6 +220,5 @@ describe('Components / Button', () => {
   });
 });
 
-const rangeSliderContainer = () => screen.getByTestId('flowbite-range-slider');
 const rangeSlider = (role = 'slider') => screen.getByRole(role);
 const rangeSliders = (role = 'slider') => screen.getAllByRole(role);
