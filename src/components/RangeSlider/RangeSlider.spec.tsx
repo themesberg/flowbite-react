@@ -144,14 +144,10 @@ describe('Components / RangeSlider', () => {
   });
 
   describe('Theme', () => {
-    it('should use `base` classes of input', () => {
+    it('should use `base` classes', () => {
       const theme: CustomFlowbiteTheme = {
         rangeSlider: {
-          field: {
-            input: {
-              base: 'dummy-range-slider-field-input-base-classes',
-            },
-          },
+          base: 'dummy-range-slider-field-input-base-classes',
         },
       };
 
@@ -164,15 +160,11 @@ describe('Components / RangeSlider', () => {
       expect(rangeSlider()).toHaveClass('dummy-range-slider-field-input-base-classes');
     });
 
-    it('should use `sizes` classes of input', () => {
+    it('should use `sizes` classes', () => {
       const theme: CustomFlowbiteTheme = {
         rangeSlider: {
-          field: {
-            input: {
-              sizes: {
-                lg: 'dummy-range-slider-field-input-sizes-lg-classes',
-              },
-            },
+          sizes: {
+            lg: 'dummy-range-slider-field-input-sizes-lg-classes',
           },
         },
       };
@@ -188,13 +180,9 @@ describe('Components / RangeSlider', () => {
   });
 
   describe('Theme as a prop', () => {
-    it('should use `base` classes of input', () => {
+    it('should use `base` classes', () => {
       const theme: CustomFlowbiteTheme['rangeSlider'] = {
-        field: {
-          input: {
-            base: 'dummy-range-slider-field-input-base-classes',
-          },
-        },
+        base: 'dummy-range-slider-field-input-base-classes',
       };
 
       render(<RangeSlider theme={theme} />);
@@ -202,14 +190,10 @@ describe('Components / RangeSlider', () => {
       expect(rangeSlider()).toHaveClass('dummy-range-slider-field-input-base-classes');
     });
 
-    it('should use `sizes` classes of input', () => {
+    it('should use `sizes` classes', () => {
       const theme: CustomFlowbiteTheme['rangeSlider'] = {
-        field: {
-          input: {
-            sizes: {
-              lg: 'dummy-range-slider-field-input-sizes-lg-classes',
-            },
-          },
+        sizes: {
+          lg: 'dummy-range-slider-field-input-sizes-lg-classes',
         },
       };
 

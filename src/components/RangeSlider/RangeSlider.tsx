@@ -7,20 +7,8 @@ import type { DeepPartial } from '../../types';
 import type { FlowbiteTextInputSizes } from '../TextInput';
 
 export interface FlowbiteRangeSliderTheme {
-  root: FlowbiteRangeSliderRootTheme;
-  field: FlowbiteRangeSliderFieldTheme;
-}
-
-export interface FlowbiteRangeSliderRootTheme {
   base: string;
-}
-
-export interface FlowbiteRangeSliderFieldTheme {
-  base: string;
-  input: {
-    base: string;
-    sizes: FlowbiteTextInputSizes;
-  };
+  sizes: FlowbiteTextInputSizes;
 }
 
 export interface RangeSliderProps extends Omit<ComponentProps<'input'>, 'ref' | 'type'> {
@@ -34,12 +22,7 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
 
     return (
       <>
-        <input
-          ref={ref}
-          type="range"
-          className={twMerge(theme.field.input.base, theme.field.input.sizes[sizing], className)}
-          {...props}
-        />
+        <input ref={ref} type="range" className={twMerge(theme.base, theme.sizes[sizing], className)} {...props} />
       </>
     );
   },
