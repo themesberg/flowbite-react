@@ -91,7 +91,7 @@ export const MainFooter: FC = () => {
           <Footer.Copyright
             by="All Rights Reserved. Flowbite™ is a registered trademark."
             href="/"
-            year={2023}
+            year={new Date().getFullYear()}
             className="text-base"
           />
         </div>
