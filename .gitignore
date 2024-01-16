@@ -1,16 +1,9 @@
-.next
-.vercel
-build
-coverage
-cypress/screenshots
-cypress/videos
-lib
+# dependencies
 node_modules
-storybook-static
+
+# misc
 .DS_Store
-npm-debug.log*
-tsconfig.tsbuildinfo
-yarn-debug.log*
-yarn-error.log*
-dist
-.contentlayer
+*.pem
+
+# turbo
+.turbo

@@ -1,0 +1,38 @@
+{
+  "name": "flowbite-react",
+  "version": "0.7.2",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/esm/index.d.ts",
+  "files": ["lib"],
+  "license": "MIT",
+  "scripts": {
+    "dev": "bun run build",
+    "build": "rm -rf lib && bun build:cjs && bun build:esm",
+    "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --outDir lib/cjs",
+    "build:esm": "tsc -p tsconfig.build.json --module ESNext --declaration --outDir lib/esm",
+    "lint": "biome lint --apply .",
+    "lint:check": "biome lint .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "check": "biome check .",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .turbo lib node_modules"
+  },
+  "dependencies": {
+    "@floating-ui/core": "1.5.3",
+    "@floating-ui/react": "0.26.2",
+    "flowbite": "2.0.0",
+    "react-icons": "4.11.0",
+    "react-indiana-drag-scroll": "2.2.0",
+    "tailwind-merge": "2.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.37",
+    "@types/react-dom": "18.2.15",
+    "typescript": "5.2.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}
