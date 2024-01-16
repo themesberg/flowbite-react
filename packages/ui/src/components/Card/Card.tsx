@@ -63,7 +63,6 @@ export const Card: FC<CardProps> = (props) => {
       )}
       {...theirProps}
     >
-      {/* eslint-disable-next-line jsx-a11y/alt-text -- jsx-ally/alt-text gives a false positive here. Since we use our own Image component, we cannot provide an "alt" prop.*/}
       <Image {...props} />
       <div className={theme.root.children}>{children}</div>
     </Component>

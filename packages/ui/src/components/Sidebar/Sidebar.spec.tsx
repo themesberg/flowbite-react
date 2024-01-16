@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { HiChartPie, HiInbox, HiShoppingBag } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
+import { type CustomFlowbiteTheme, Flowbite } from '../Flowbite';
 import type { SidebarProps } from './Sidebar';
 import { Sidebar } from './Sidebar';
 
@@ -76,7 +76,6 @@ describe('Keyboard interactions', () => {
     render(
       <>
         <TestSidebar />
-        {/* eslint-disable-next-line jsx-a11y/role-has-required-aria-props */}
         <button role="checkbox">Outside</button>
       </>,
     );

@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
+import { type CustomFlowbiteTheme, Flowbite } from '../Flowbite';
 import type { AccordionProps } from './Accordion';
 import { Accordion } from './Accordion';
 
@@ -48,7 +48,6 @@ describe('Components / Accordion', () => {
       const user = userEvent.setup();
       render(<TestAccordion />);
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       for (const _ of titles()) {
         await user.tab();
       }
@@ -62,7 +61,6 @@ describe('Components / Accordion', () => {
       const user = userEvent.setup();
       render(<TestAccordion />);
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       for (const _ of titles()) {
         await user.tab();
       }
@@ -76,7 +74,6 @@ describe('Components / Accordion', () => {
       const user = userEvent.setup();
       render(<TestAccordion alwaysOpen />);
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       for (const _ of titles()) {
         await user.tab();
       }
@@ -92,7 +89,6 @@ describe('Components / Accordion', () => {
       render(
         <>
           <TestAccordion />
-          {/* eslint-disable-next-line jsx-a11y/role-has-required-aria-props */}
           <button role="checkbox">Outside button</button>
         </>,
       );

@@ -135,7 +135,6 @@ function DocsSidebar({ isCollapsed, setCollapsed }: DocsLayoutState) {
         </Sidebar>
       </div>
       {!isCollapsed && (
-        // eslint-disable-next-line jsx-a11y/no-static-element-interactions
         <div
           onClick={() => setCollapsed(true)}
           onKeyUp={(key) => key.code === 'Escape' && setCollapsed(true)}

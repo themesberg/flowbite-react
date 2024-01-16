@@ -46,7 +46,6 @@ describe('Components / List group', () => {
 
     await user.tab();
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     for (const _ of items()) {
       await user.tab();
     }

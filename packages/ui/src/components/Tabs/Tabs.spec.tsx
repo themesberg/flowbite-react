@@ -153,7 +153,6 @@ interface TestTabsProps {
   condition?: boolean;
 }
 
-// eslint-disable-next-line react/display-name
 const TestTabs = forwardRef<TabsRef, TestTabsProps>(({ onActiveTabChange }, ref) => (
   <Tabs aria-label="Test tabs" onActiveTabChange={onActiveTabChange} ref={ref}>
     <Tabs.Item title="Profile" icon={HiUserCircle}>
@@ -174,7 +173,6 @@ const TestTabs = forwardRef<TabsRef, TestTabsProps>(({ onActiveTabChange }, ref)
   </Tabs>
 ));
 
-// eslint-disable-next-line react/display-name
 const TestConditionalTabs = forwardRef<TabsRef, TestTabsProps>(({ condition }) => (
   <Tabs aria-label="Test tabs">
     {condition && (
