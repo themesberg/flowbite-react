@@ -1,18 +1,18 @@
 export enum Views {
-  Days,
-  Months,
-  Years,
-  Decades,
+  Days = 0,
+  Months = 1,
+  Years = 2,
+  Decades = 3,
 }
 
 export enum WeekStart {
-  Sunday,
-  Monday,
-  Tuesday,
-  Wednesday,
-  Thursday,
-  Friday,
-  Saturday,
+  Sunday = 0,
+  Monday = 1,
+  Tuesday = 2,
+  Wednesday = 3,
+  Thursday = 4,
+  Friday = 5,
+  Saturday = 6,
 }
 
 export const isDateInRange = (date: Date, minDate?: Date, maxDate?: Date): boolean => {

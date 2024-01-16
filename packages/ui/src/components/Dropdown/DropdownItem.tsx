@@ -46,7 +46,7 @@ export const DropdownItem = <T extends ElementType = 'button'>({
         {...theirProps}
         {...getItemProps({
           onClick: () => {
-            onClick && onClick();
+            onClick?.();
             dismissOnClick && handleSelect(null);
           },
         })}
