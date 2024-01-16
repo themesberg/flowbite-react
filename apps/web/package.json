@@ -21,8 +21,6 @@
   },
   "devDependencies": {
     "@docsearch/react": "3.5.2",
-    "@testing-library/react": "14.1.2",
-    "@testing-library/user-event": "14.5.2",
     "@types/mdx": "2.0.10",
     "@types/prismjs": "1.26.3",
     "@types/react": "18.2.37",
