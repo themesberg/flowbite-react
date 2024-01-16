@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "contentlayer": "0.3.4",
-    "flowbite-react": "0.7.2",
+    "flowbite-react": "workspace:*",
     "react-icons": "4.11.0",
     "tailwind-merge": "2.0.0"
   },
