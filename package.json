@@ -1,8 +1,8 @@
 {
   "name": "root",
   "version": "0.0.0",
-  "packageManager": "bun@1.0.22",
   "private": true,
+  "workspaces": ["apps/*", "packages/*"],
   "scripts": {
     "dev": "turbo dev",
     "dev:web": "turbo --filter=web dev",
@@ -27,5 +27,5 @@
     "@types/web": "0.0.134",
     "turbo": "latest"
   },
-  "workspaces": ["apps/*", "packages/*"]
+  "packageManager": "bun@1.0.22"
 }

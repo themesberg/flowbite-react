@@ -1,11 +1,23 @@
 {
   "name": "flowbite-react",
   "version": "0.7.2",
+  "license": "MIT",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "types": "lib/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/esm/index.d.ts",
+      "import": "./lib/esm/index.js",
+      "require": "./lib/cjs/index.js"
+    },
+    "./components/*": {
+      "types": "./lib/esm/components/*/index.d.ts",
+      "import": "./lib/esm/components/*/index.js",
+      "require": "./lib/cjs/components/*/index.js"
+    }
+  },
   "files": ["lib"],
-  "license": "MIT",
   "scripts": {
     "dev": "bun run build",
     "build": "rm -rf lib && bun build:cjs && bun build:esm",
