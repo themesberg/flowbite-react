@@ -23,7 +23,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.5.2",
     "@happy-dom/global-registrator": "13.1.4",
-    "@types/bun": "1.0.1",
+    "@types/bun": "1.0.2",
     "@types/web": "0.0.134",
     "turbo": "latest"
   },
