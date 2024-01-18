@@ -2,9 +2,6 @@
   "name": "flowbite-react",
   "version": "0.7.2",
   "license": "MIT",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
-  "types": "lib/esm/index.d.ts",
   "exports": {
     ".": {
       "types": "./lib/esm/index.d.ts",
@@ -17,19 +14,23 @@
       "require": "./lib/cjs/components/*/index.js"
     }
   },
-  "files": ["lib"],
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/esm/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "scripts": {
-    "dev": "bun run build",
     "build": "rm -rf lib && bun build:cjs && bun build:esm",
     "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --outDir lib/cjs",
     "build:esm": "tsc -p tsconfig.build.json --module ESNext --declaration --outDir lib/esm",
+    "clean": "rm -rf .turbo lib node_modules",
+    "dev": "bun run build",
+    "format": "prettier --write .",
+    "format:check": "prettier .",
     "lint": "biome lint --apply .",
     "lint:check": "biome lint .",
-    "format": "biome format --write .",
-    "format:check": "biome format .",
-    "check": "biome check .",
-    "typecheck": "tsc --noEmit",
-    "clean": "rm -rf .turbo lib node_modules"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@floating-ui/core": "1.5.3",

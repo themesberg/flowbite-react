@@ -26,7 +26,7 @@ const components: MDXComponents = {
       <a
         href={`#${props.id}`}
         aria-label={`Link to this section: ${props.children}`}
-        className="ml-2 text-primary-700 opacity-0 transition-opacity group-hover:opacity-100 dark:text-primary-500"
+        className="text-primary-700 dark:text-primary-500 ml-2 opacity-0 transition-opacity group-hover:opacity-100"
       >
         #
       </a>
@@ -39,7 +39,7 @@ const components: MDXComponents = {
       <a
         href={`#${props.id}`}
         aria-label={`Link to this section: ${props.children}`}
-        className="ml-2 text-primary-700 opacity-0 transition-opacity group-hover:opacity-100 dark:text-primary-500"
+        className="text-primary-700 dark:text-primary-500 ml-2 opacity-0 transition-opacity group-hover:opacity-100"
       >
         #
       </a>

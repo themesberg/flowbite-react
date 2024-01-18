@@ -17,8 +17,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNext"
+    "target": "ESNext",
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["dist"]
+  "exclude": ["dist"],
 }

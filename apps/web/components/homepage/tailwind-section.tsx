@@ -5,7 +5,7 @@ import type { FC } from 'react';
 export const TailwindSection: FC = () => {
   return (
     <section className="bg-gray-50 dark:bg-gray-800">
-      <div className="mx-auto w-full max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
+      <div className="max-w-8xl mx-auto w-full px-4 py-8 lg:px-20 lg:py-24">
         <div className="flex w-full flex-row self-stretch py-6 lg:gap-16 lg:py-10">
           <div className="hidden w-1/2 items-center lg:flex">
             <Image
@@ -23,9 +23,9 @@ export const TailwindSection: FC = () => {
               height={496}
             />
           </div>
-          <div className="flex w-1/2 flex-grow flex-col items-start gap-4 divide-y dark:divide-gray-700 lg:gap-8">
+          <div className="flex w-1/2 flex-grow flex-col items-start gap-4 divide-y lg:gap-8 dark:divide-gray-700">
             <div className="flex flex-col items-start gap-3 self-stretch sm:gap-4">
-              <h2 className="text-3xl font-extrabold leading-tight text-gray-900 dark:text-white lg:text-4xl">
+              <h2 className="text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl dark:text-white">
                 Compatible with Tailwind CSS
               </h2>
               <p className="text-lg text-gray-500 dark:text-gray-400">

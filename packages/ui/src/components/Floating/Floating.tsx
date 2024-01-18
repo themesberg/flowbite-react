@@ -73,9 +73,7 @@ export const Floating: FC<FloatingProps> = ({
 
   const {
     context,
-    middlewareData: {
-      arrow: { x: arrowX, y: arrowY } = {},
-    },
+    middlewareData: { arrow: { x: arrowX, y: arrowY } = {} },
     refs,
     strategy,
     update,

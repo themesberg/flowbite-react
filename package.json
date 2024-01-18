@@ -11,7 +11,6 @@
     "build:storybook": "turbo --filter=storybook build",
     "build:ui": "turbo --filter=flowbite-react build",
     "build:web": "turbo --filter=web build",
-    "check": "turbo check",
     "clean": "turbo clean && rm -rf .turbo node_modules",
     "dev": "turbo dev",
     "dev:storybook": "turbo --filter=storybook dev",
@@ -26,8 +25,9 @@
   "devDependencies": {
     "@types/bun": "1.0.2",
     "@types/web": "0.0.134",
-    "prettier": "^3.2.4",
-    "prettier-plugin-packagejson": "^2.4.9",
+    "prettier": "3.2.4",
+    "prettier-plugin-packagejson": "2.4.9",
+    "prettier-plugin-tailwindcss": "0.5.11",
     "turbo": "latest"
   },
   "packageManager": "bun@1.0.23"

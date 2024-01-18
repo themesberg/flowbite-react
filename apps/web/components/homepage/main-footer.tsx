@@ -6,7 +6,7 @@ import type { FC } from 'react';
 export const MainFooter: FC = () => {
   return (
     <Footer className="rounded-none bg-gray-50 pb-8 pt-16 shadow-none">
-      <div className="mx-auto w-full max-w-8xl px-4 lg:px-20">
+      <div className="max-w-8xl mx-auto w-full px-4 lg:px-20">
         <div className="grid w-full justify-between gap-8 md:grid-cols-2">
           <div className="mb-4 max-w-sm lg:mb-0">
             <Link href="/" className="flex items-center gap-3">

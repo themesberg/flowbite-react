@@ -10,9 +10,9 @@ export const HomeNavbar: FC = () => {
     <Navbar
       theme={{
         root: {
-          base: 'sticky top-0 z-40 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between w-full mx-auto py-0',
+          base: 'sticky top-0 z-40 mx-auto flex w-full items-center justify-between border-b border-gray-200 bg-white py-0 text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400',
           inner: {
-            base: 'mx-auto flex flex-wrap justify-between items-center w-full xl:max-w-8xl px-4 py-2.5 xl:px-20 max-w-none',
+            base: 'xl:max-w-8xl mx-auto flex w-full max-w-none flex-wrap items-center justify-between px-4 py-2.5 xl:px-20',
           },
         },
       }}

@@ -26,10 +26,10 @@ export const ContributorsSection: FC = async () => {
 
   return (
     <section>
-      <div className="mx-auto max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
+      <div className="max-w-8xl mx-auto px-4 py-8 lg:px-20 lg:py-24">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-12">
           <div className="flex max-w-2xl flex-col items-center justify-center gap-4">
-            <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white lg:text-4xl">
+            <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl dark:text-white">
               Community contributors
             </h2>
             <p className="text-center text-lg font-normal">
@@ -45,7 +45,7 @@ export const ContributorsSection: FC = async () => {
                     <Image
                       src={contributor.avatar_url}
                       alt={`${contributor.login} avatar`}
-                      className="h-10 w-10 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300 sm:h-12 sm:w-12 lg:h-16 lg:w-16"
+                      className="h-10 w-10 rounded-full bg-gray-100 text-gray-600 sm:h-12 sm:w-12 lg:h-16 lg:w-16 dark:bg-gray-600 dark:text-gray-300"
                       width={64}
                       height={64}
                     />
@@ -55,7 +55,7 @@ export const ContributorsSection: FC = async () => {
             </div>
           </div>
           <div className="flex w-full max-w-5xl flex-row items-center justify-between lg:px-4">
-            <div className="flex w-full flex-col items-start justify-between gap-4 rounded-lg bg-gray-50 p-4 dark:bg-gray-800 sm:flex-row sm:items-center sm:gap-8">
+            <div className="flex w-full flex-col items-start justify-between gap-4 rounded-lg bg-gray-50 p-4 sm:flex-row sm:items-center sm:gap-8 dark:bg-gray-800">
               <div className="hidden lg:block lg:w-fit">
                 <svg width="30" height="25" viewBox="0 0 30 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path

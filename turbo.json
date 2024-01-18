@@ -18,9 +18,6 @@
     "format:check": {
       "cache": false
     },
-    "check": {
-      "cache": false
-    },
     "typecheck": {
       "cache": false
     },

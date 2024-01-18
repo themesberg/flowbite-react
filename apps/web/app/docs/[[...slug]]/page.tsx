@@ -152,7 +152,7 @@ function DocsPager({ doc }: { doc: Doc }) {
 
 function DocFooter() {
   return (
-    <Footer className="rounded-none px-4 pb-8 pt-16 shadow-none dark:bg-gray-900 lg:px-0">
+    <Footer className="rounded-none px-4 pb-8 pt-16 shadow-none lg:px-0 dark:bg-gray-900">
       <div className="w-full">
         <div className="grid w-full justify-between md:grid-cols-2">
           <div className="mb-4 max-w-sm lg:mb-0">

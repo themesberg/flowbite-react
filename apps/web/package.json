@@ -3,15 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "clean": "rm -rf .contentlayer .next .turbo node_modules",
+    "dev": "next dev",
+    "format": "prettier --write .",
+    "format:check": "prettier .",
     "lint": "next lint",
-    "format": "biome format --write .",
-    "format:check": "biome format .",
-    "check": "biome check .",
-    "typecheck": "tsc --noEmit",
-    "clean": "rm -rf .contentlayer .next .turbo node_modules"
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "contentlayer": "0.3.4",

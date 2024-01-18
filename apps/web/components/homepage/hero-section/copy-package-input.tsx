@@ -30,13 +30,13 @@ export const CopyPackageInput: FC<Props> = ({ value }) => {
           base: 'group flex',
           field: {
             input: {
-              base: 'block w-full border cursor-pointer',
+              base: 'block w-full cursor-pointer border',
               sizes: {
                 md: 'p-3.5 pr-11 text-sm',
               },
             },
             rightIcon: {
-              svg: 'h-5 w-5 text-gray-500 dark:text-gray-400 group-hover:text-primary-700',
+              svg: 'group-hover:text-primary-700 h-5 w-5 text-gray-500 dark:text-gray-400',
             },
           },
         }}
