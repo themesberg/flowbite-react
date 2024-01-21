@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, type ComponentProps } from 'react';
+import { forwardRef, type ComponentPropsWithRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
@@ -12,7 +12,7 @@ export interface FlowbiteTableRowTheme {
   striped: string;
 }
 
-export interface TableRowProps extends ComponentProps<'tr'> {
+export interface TableRowProps extends ComponentPropsWithRef<'tr'> {
   theme?: DeepPartial<FlowbiteTableRowTheme>;
 }
 

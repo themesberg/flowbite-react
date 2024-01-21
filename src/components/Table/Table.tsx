@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, type ComponentProps } from 'react';
+import { forwardRef, type ComponentPropsWithRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -25,7 +25,7 @@ export interface FlowbiteTableRootTheme {
   wrapper: string;
 }
 
-export interface TableProps extends ComponentProps<'table'> {
+export interface TableProps extends ComponentPropsWithRef<'table'> {
   striped?: boolean;
   hoverable?: boolean;
   theme?: DeepPartial<FlowbiteTableTheme>;
@@ -39,7 +39,7 @@ const TableComponent = forwardRef<HTMLTableElement, TableProps>(
       <div data-testid="table-element" className={twMerge(theme.root.wrapper)}>
         <TableContext.Provider value={{ theme, striped, hoverable }}>
           <div className={twMerge(theme.root.shadow, className)}></div>
-          <table className={twMerge(theme.root.base, className)} ref={ref} {...props}>
+          <table className={twMerge(theme.root.base, className)} {...props} ref={ref}>
             {children}
           </table>
         </TableContext.Provider>

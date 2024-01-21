@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef, type ComponentProps } from 'react';
+import { forwardRef, type ComponentPropsWithRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
@@ -10,7 +10,7 @@ export interface FlowbiteTableHeadCellTheme {
   base: string;
 }
 
-export interface TableHeadCellProps extends ComponentProps<'th'> {
+export interface TableHeadCellProps extends ComponentPropsWithRef<'th'> {
   theme?: DeepPartial<FlowbiteTableHeadCellTheme>;
 }
 
