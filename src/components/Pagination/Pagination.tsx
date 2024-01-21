@@ -90,7 +90,7 @@ const PaginationComponent: FC<PaginationProps> = ({
           <PaginationNavigation
             className={twMerge(theme.pages.previous.base, showIcon && theme.pages.showIcon)}
             onClick={goToPreviousPage}
-            disabled={currentPage === 1}
+            disabled={currentPage <= 1}
           >
             {showIcon && <HiChevronLeft aria-hidden className={theme.pages.previous.icon} />}
             {previousLabel}
