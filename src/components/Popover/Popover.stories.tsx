@@ -20,10 +20,13 @@ const Template: StoryFn<typeof Popover> = (args) => {
     <div className="flex h-96 w-full items-center justify-center">
       <Popover
         {...args}
+        aria-labelledby="popover-title"
         content={
           <div className="w-64 text-sm text-gray-500 dark:text-gray-400">
             <div className="border-b border-gray-200 bg-gray-100 px-3 py-2 dark:border-gray-600 dark:bg-gray-700">
-              <h3 className="font-semibold text-gray-900 dark:text-white">Popover title</h3>
+              <h3 id="popover-title" className="font-semibold text-gray-900 dark:text-white">
+                Popover title
+              </h3>
             </div>
             <div className="px-3 py-2">
               <p>And here's some amazing content. It's very engaging. Right?</p>
@@ -58,12 +61,15 @@ const ControlledTemplate: StoryFn<typeof Popover> = (args) => {
     <div className="flex h-96 w-full items-center justify-center">
       <Popover
         {...args}
+        aria-labelledby="popover-title"
         open={open}
         onOpenChange={setOpen}
         content={
           <div className="w-64 text-sm text-gray-500 dark:text-gray-400">
             <div className="border-b border-gray-200 bg-gray-100 px-3 py-2 dark:border-gray-600 dark:bg-gray-700">
-              <h3 className="font-semibold text-gray-900 dark:text-white">Popover title</h3>
+              <h3 id="popover-title" className="font-semibold text-gray-900 dark:text-white">
+                Popover title
+              </h3>
             </div>
             <div className="space-y-4 px-3 py-2">
               <p>And here's some amazing content. It's very engaging. Right?</p>

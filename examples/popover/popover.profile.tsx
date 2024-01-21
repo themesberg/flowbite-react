@@ -7,6 +7,7 @@ import { Button, Popover } from 'flowbite-react';
 function Component() {
   return (
     <Popover
+      aria-labelledby="profile-popover"
       content={
         <div className="w-64 p-3">
           <div className="mb-2 flex items-center justify-between">
@@ -26,7 +27,7 @@ function Component() {
               </button>
             </div>
           </div>
-          <p className="text-base font-semibold leading-none text-gray-900 dark:text-white">
+          <p id="profile-popover" className="text-base font-semibold leading-none text-gray-900 dark:text-white">
             <a href="#">Jese Leos</a>
           </p>
           <p className="mb-3 text-sm font-normal">
@@ -67,6 +68,7 @@ function Component() {
 function Component() {
   return (
     <Popover
+      aria-labelledby="profile-popover"
       content={
         <div className="w-64 p-3">
           <div className="mb-2 flex items-center justify-between">
@@ -86,7 +88,7 @@ function Component() {
               </button>
             </div>
           </div>
-          <p className="text-base font-semibold leading-none text-gray-900 dark:text-white">
+          <p id="profile-popover" className="text-base font-semibold leading-none text-gray-900 dark:text-white">
             <a href="#">Jese Leos</a>
           </p>
           <p className="mb-3 text-sm font-normal">

@@ -17,12 +17,13 @@ function Component() {
 
   return (
     <Popover
+      aria-labelledby="area-popover"
       open={open}
       onOpenChange={setOpen}
       content={
         <div className="flex w-64 flex-col gap-4 p-4 text-sm text-gray-500 dark:text-gray-400">
           <div>
-            <h2 className="text-base text-gray-500">Area (sqft)</h2>
+            <h2 id="area-popover" className="text-base text-gray-500">Area (sqft)</h2>
             <div className="mb-2 block">
               <Label htmlFor="minsqft" value="Minimum sqft" />
             </div>

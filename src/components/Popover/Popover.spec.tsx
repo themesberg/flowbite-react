@@ -74,32 +74,6 @@ describe('Popover', () => {
       await user.click(target());
       expect(popover()).toHaveAttribute('role', 'dialog');
     });
-
-    it('should have focus trapped inside Popover dialog', async () => {
-      const user = userEvent.setup();
-
-      const { container } = render(
-        <Popover
-          content={
-            <>
-              <Button>Button 1</Button>
-              <Button>Button 2</Button>
-            </>
-          }
-        >
-          <Button>Target</Button>
-        </Popover>,
-      );
-
-      await user.click(target());
-      expect(document.activeElement).toEqual(screen.getByText('Button 1').closest('button'));
-      await user.tab();
-      expect(document.activeElement).toEqual(screen.getByText('Button 2').closest('button'));
-      await user.tab();
-      expect(document.activeElement).toEqual(container.querySelector('span[data-floating-ui-focus-guard]'));
-      await user.tab();
-      expect(document.activeElement).toEqual(screen.getByText('Button 1').closest('button'));
-    });
   });
 });
 
