@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentProps, FC } from 'react';
+import { forwardRef, type ComponentProps } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -31,34 +31,24 @@ export interface TableProps extends ComponentProps<'table'> {
   theme?: DeepPartial<FlowbiteTableTheme>;
 }
 
-const TableComponent: FC<TableProps> = ({
-  children,
-  className,
-  striped,
-  hoverable,
-  theme: customTheme = {},
-  ...props
-}) => {
-  const theme = mergeDeep(getTheme().table, customTheme);
+const TableComponent = forwardRef<HTMLTableElement, TableProps>(
+  ({ children, className, striped, hoverable, theme: customTheme = {}, ...props }, ref) => {
+    const theme = mergeDeep(getTheme().table, customTheme);
 
-  return (
-    <div data-testid="table-element" className={twMerge(theme.root.wrapper)}>
-      <TableContext.Provider value={{ theme, striped, hoverable }}>
-        <div className={twMerge(theme.root.shadow, className)}></div>
-        <table className={twMerge(theme.root.base, className)} {...props}>
-          {children}
-        </table>
-      </TableContext.Provider>
-    </div>
-  );
-};
+    return (
+      <div data-testid="table-element" className={twMerge(theme.root.wrapper)}>
+        <TableContext.Provider value={{ theme, striped, hoverable }}>
+          <div className={twMerge(theme.root.shadow, className)}></div>
+          <table className={twMerge(theme.root.base, className)} ref={ref} {...props}>
+            {children}
+          </table>
+        </TableContext.Provider>
+      </div>
+    );
+  },
+);
 
 TableComponent.displayName = 'Table';
-TableHead.displayName = 'Table.Head';
-TableBody.displayName = 'Table.Body';
-TableRow.displayName = 'Table.Row';
-TableCell.displayName = 'Table.Cell';
-TableHeadCell.displayName = 'Table.HeadCell';
 
 export const Table = Object.assign(TableComponent, {
   Head: TableHead,
