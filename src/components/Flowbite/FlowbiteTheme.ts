@@ -69,6 +69,7 @@ export interface FlowbiteTheme {
   tabs: FlowbiteTabsTheme;
   toast: FlowbiteToastTheme;
   tooltip: FlowbiteTooltipTheme;
+  popover: FlowbiteTooltipTheme;
   dropdown: FlowbiteDropdownTheme;
   checkbox: FlowbiteCheckboxTheme;
   fileInput: FlowbiteFileInputTheme;
