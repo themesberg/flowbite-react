@@ -71,6 +71,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: 'Modal', href: '/docs/components/modal' },
       { title: 'Navbar', href: '/docs/components/navbar' },
       { title: 'Pagination', href: '/docs/components/pagination' },
+      { title: 'Popover', href: '/docs/components/popover' },
       { title: 'Progress bar', href: '/docs/components/progress' },
       { title: 'Rating', href: '/docs/components/rating' },
       { title: 'Sidebar', href: '/docs/components/sidebar' },

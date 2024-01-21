@@ -1,0 +1,76 @@
+---
+title: React Popover - Flowbite
+description: Use the popover component to show detailed information inside a pop-up box relative to the element that is being clicked or hovered based on multiple styles
+---
+
+Use the popover component to show detailed information inside a pop-up box relative to the element that is being clicked or hovered based on multiple styles
+
+Get started with the popover component to show any type of content inside a pop-up box when hovering or clicking over a trigger element. There are multiple examples that you can choose from, such as showing more information about a user profile, company profile, password strength, and more.
+
+Before using the popover component, make sure to import the component in your React project:
+
+```jsx
+import { Popover } from 'flowbite-react';
+```
+
+## Default popover
+
+Wrap the trigger component with the `<Popover>` component and pass the popover content to the `content` prop of the `<Popover>` component.
+
+This will render the popover whenever you click the trigger component.
+
+<Example name="popover.root" />
+
+## Company profile
+
+This example can be used to show more information about a company profile.
+
+<Example name="popover.profile" />
+
+## Image popover
+
+Use this example to trigger a popover component with detailed information and an image when hovering over a portion of highlighted text inspired by Wikipedia and other large news outlets.
+
+<Example name="popover.image" />
+
+## Password strength
+
+Dynamically show the password strength progress when creating a new password positioned relative to the input element.
+
+<Example name="popover.password" />
+
+## Controlled
+
+Manages visibility via `open` and `openOnChange` props, allowing fine-tuned control over its display. Ideal for scenarios where Popover behavior needs to align with specific application logic or user interactions.
+
+<Example name="popover.controlled" />
+
+## Placement
+
+Update the placement of the popover using the `placement` prop. The default placement is `bottom` and you can also use `right`, `top`, and `left`.
+
+<Example name="popover.placement" />
+
+## Trigger type
+
+Use the `trigger` prop to change the trigger type of the popover if you want to show the popover when clicking on the hover element instead of clicking on it.
+
+The default trigger type is `hover` and you can also use `click`.
+
+<Example name="popover.trigger" />
+
+## Disable arrow
+
+You can disable the arrow of the popover component by passing the `arrow` prop with a value of `false`.
+
+<Example name="popover.disableArrow" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="popover" />
+
+## References
+
+- [Flowbite Popover](https://flowbite.com/docs/components/popover/)
