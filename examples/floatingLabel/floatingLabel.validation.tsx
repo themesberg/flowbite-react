@@ -4,20 +4,20 @@ import { FloatingLabel } from '~/src';
 const code = `
 'use client';
 
-import { Spinner } from 'flowbite-react';
+import { FloatingLabel } from 'flowbite-react';
 
 function Component() {
   return (
     <>
       <div className="grid grid-flow-col justify-stretch space-x-4">
-        <FloatingLabel variant="filled" label="Filled Success" color="error" />
-        <FloatingLabel variant="outlined" label="Outlined Success" color="error" />
-        <FloatingLabel variant="standard" label="Standard Success" color="error" />
+        <FloatingLabel variant="filled" label="Filled Success" color="success" />
+        <FloatingLabel variant="outlined" label="Outlined Success" color="success" />
+        <FloatingLabel variant="standard" label="Standard Success" color="success" />
       </div>
       <div className="grid grid-flow-col justify-stretch space-x-4">
-        <FloatingLabel variant="filled" label="Filled Error" color="success" />
-        <FloatingLabel variant="outlined" label="Outlined Error" color="success" />
-        <FloatingLabel variant="standard" label="Standard Error" color="success" />
+        <FloatingLabel variant="filled" label="Filled Error" color="error" />
+        <FloatingLabel variant="outlined" label="Outlined Error" color="error" />
+        <FloatingLabel variant="standard" label="Standard Error" color="error" />
       </div>
     </>
   );
@@ -25,20 +25,20 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Spinner } from 'flowbite-react';
+import { FloatingLabel } from 'flowbite-react';
 
 function Component() {
   return (
     <>
       <div className="grid grid-flow-col justify-stretch space-x-4">
-        <FloatingLabel variant="filled" label="Filled Success" color="error" />
-        <FloatingLabel variant="outlined" label="Outlined Success" color="error" />
-        <FloatingLabel variant="standard" label="Standard Success" color="error" />
+        <FloatingLabel variant="filled" label="Filled Success" color="success" />
+        <FloatingLabel variant="outlined" label="Outlined Success" color="success" />
+        <FloatingLabel variant="standard" label="Standard Success" color="success" />
       </div>
       <div className="grid grid-flow-col justify-stretch space-x-4">
-        <FloatingLabel variant="filled" label="Filled Error" color="success" />
-        <FloatingLabel variant="outlined" label="Outlined Error" color="success" />
-        <FloatingLabel variant="standard" label="Standard Error" color="success" />
+        <FloatingLabel variant="filled" label="Filled Error" color="error" />
+        <FloatingLabel variant="outlined" label="Outlined Error" color="error" />
+        <FloatingLabel variant="standard" label="Standard Error" color="error" />
       </div>
     </>
   );
@@ -49,14 +49,14 @@ function Component() {
   return (
     <>
       <div className="grid grid-flow-col justify-stretch space-x-4">
-        <FloatingLabel variant="filled" label="Filled Success" color="error" />
-        <FloatingLabel variant="outlined" label="Outlined Success" color="error" />
-        <FloatingLabel variant="standard" label="Standard Success" color="error" />
+        <FloatingLabel variant="filled" label="Filled Success" color="success" />
+        <FloatingLabel variant="outlined" label="Outlined Success" color="success" />
+        <FloatingLabel variant="standard" label="Standard Success" color="success" />
       </div>
       <div className="grid grid-flow-col justify-stretch space-x-4">
-        <FloatingLabel variant="filled" label="Filled Error" color="success" />
-        <FloatingLabel variant="outlined" label="Outlined Error" color="success" />
-        <FloatingLabel variant="standard" label="Standard Error" color="success" />
+        <FloatingLabel variant="filled" label="Filled Error" color="error" />
+        <FloatingLabel variant="outlined" label="Outlined Error" color="error" />
+        <FloatingLabel variant="standard" label="Standard Error" color="error" />
       </div>
     </>
   );
