@@ -1,7 +1,7 @@
 'use client';
 
-import { type CodeData } from '~/components/code-demo';
-import { Button, Checkbox, Label, Popover, TextInput } from '~/src';
+import { type CodeData } from '../../components/code-demo';
+import { Button, Checkbox, Label, Popover, TextInput } from '../../src';
 
 const code = `
 'use client';

@@ -6,9 +6,9 @@ import type { Placement } from '@floating-ui/react';
 import { FloatingFocusManager, useMergeRefs } from '@floating-ui/react';
 import type { DeepPartial } from '../../types';
 import type { FlowbiteFloatingArrowTheme } from '../Floating';
-import { mergeDeep } from '~/src/helpers/merge-deep';
-import { getTheme } from '~/src/theme-store';
-import { useBaseFLoating, useFloatingInteractions } from '~/src/hooks/use-floating';
+import { mergeDeep } from '../../helpers/merge-deep';
+import { getTheme } from '../../theme-store';
+import { useBaseFLoating, useFloatingInteractions } from '../../hooks/use-floating';
 import { getArrowPlacement } from '../Floating/helpers';
 
 export interface FlowbitePopoverTheme {
