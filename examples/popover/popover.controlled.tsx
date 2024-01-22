@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { BiCaretDown } from 'react-icons/bi';
-import { type CodeData } from '../../components/code-demo';
-import { Button, Popover, Label, TextInput } from '../../src';
+import { type CodeData } from '~/components/code-demo';
+import { Button, Popover, Label, TextInput } from '~/src';
 
 const code = `
 'use client';

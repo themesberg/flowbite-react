@@ -1,5 +1,5 @@
-import { type CodeData } from '../../components/code-demo';
-import { Popover } from '../../src';
+import { type CodeData } from '~/components/code-demo';
+import { Popover } from '~/src';
 
 const code = `
 import { Popover } from 'flowbite-react';
