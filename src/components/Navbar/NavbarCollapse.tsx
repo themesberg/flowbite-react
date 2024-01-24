@@ -18,14 +18,19 @@ export interface NavbarCollapseProps extends ComponentProps<'div'> {
 }
 
 export const NavbarCollapse: FC<NavbarCollapseProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const { theme: rootTheme, isOpen } = useNavbarContext();
+  const { theme: rootTheme, isOpen, setIsOpen } = useNavbarContext();
 
   const theme = mergeDeep(rootTheme.collapse, customTheme);
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div
       data-testid="flowbite-navbar-collapse"
       className={twMerge(theme.base, theme.hidden[!isOpen ? 'on' : 'off'], className)}
+      onClick={handleClick}
       {...props}
     >
       <ul className={theme.list}>{children}</ul>
