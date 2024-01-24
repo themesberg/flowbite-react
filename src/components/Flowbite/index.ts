@@ -3,6 +3,8 @@ export type { ThemeProps } from './Flowbite';
 export type {
   CustomFlowbiteTheme,
   FlowbiteBoolean,
+  FlowbiteColorMap,
+  FlowbiteColorValue,
   FlowbiteColors,
   FlowbiteContentPositions,
   FlowbiteGradientColors,

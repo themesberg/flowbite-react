@@ -100,7 +100,6 @@ export interface FlowbiteStateColors {
 }
 
 export interface FlowbiteColors extends FlowbiteStateColors {
-  [key: string]: string;
   blue: string;
   cyan: string;
   dark: string;
@@ -117,7 +116,6 @@ export interface FlowbiteColors extends FlowbiteStateColors {
 }
 
 export interface FlowbiteGradientColors extends Omit<FlowbiteStateColors, 'warning'> {
-  [key: string]: string;
   cyan: string;
   lime: string;
   pink: string;
@@ -166,3 +164,10 @@ export interface FlowbiteSizes {
 export interface FlowbiteContentPositions {
   center: string;
 }
+
+type LooseString = string & NonNullable<unknown>;
+export type LooseValue<T> = keyof T | LooseString;
+export type LooseMap<T> = Record<keyof T | LooseString, string>;
+
+export type FlowbiteColorMap = LooseMap<FlowbiteColors>;
+export type FlowbiteColorValue = LooseValue<FlowbiteColors>;
