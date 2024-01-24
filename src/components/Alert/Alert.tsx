@@ -4,13 +4,13 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
-import type { FlowbiteColors } from '../Flowbite';
+import type { FlowbiteColorMap, FlowbiteColorValue } from '../Flowbite';
 
 export interface FlowbiteAlertTheme {
   base: string;
   borderAccent: string;
   closeButton: FlowbiteAlertCloseButtonTheme;
-  color: FlowbiteColors;
+  color: FlowbiteColorMap;
   icon: string;
   rounded: string;
   wrapper: string;
@@ -18,13 +18,13 @@ export interface FlowbiteAlertTheme {
 
 export interface FlowbiteAlertCloseButtonTheme {
   base: string;
-  color: FlowbiteColors;
+  color: FlowbiteColorMap;
   icon: string;
 }
 
 export interface AlertProps extends Omit<ComponentProps<'div'>, 'color'> {
   additionalContent?: ReactNode;
-  color?: keyof FlowbiteColors;
+  color?: FlowbiteColorValue;
   icon?: FC<ComponentProps<'svg'>>;
   onDismiss?: boolean | (() => void);
   rounded?: boolean;
