@@ -31,6 +31,9 @@ export const NavbarCollapse: FC<NavbarCollapseProps> = ({ children, className, t
       data-testid="flowbite-navbar-collapse"
       className={twMerge(theme.base, theme.hidden[!isOpen ? 'on' : 'off'], className)}
       onClick={handleClick}
+      onKeyDown={handleClick}
+      role="button"
+      tabIndex={0}
       {...props}
     >
       <ul className={theme.list}>{children}</ul>
