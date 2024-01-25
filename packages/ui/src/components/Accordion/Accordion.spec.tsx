@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { HiOutlineArrowCircleDown } from 'react-icons/hi';
 import { describe, expect, it } from 'vitest';
-import { type CustomFlowbiteTheme, Flowbite } from '../Flowbite';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import type { AccordionProps } from './Accordion';
 import { Accordion } from './Accordion';
 

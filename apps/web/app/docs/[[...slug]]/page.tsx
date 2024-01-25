@@ -1,4 +1,4 @@
-import { type Doc, allDocs } from 'contentlayer/generated';
+import { allDocs, type Doc } from 'contentlayer/generated';
 import { Footer } from 'flowbite-react';
 import type { Metadata } from 'next';
 import Image from 'next/image';

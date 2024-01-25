@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../../helpers/merge-deep';
 import { useDatePickerContext } from '../DatepickerContext';
-import { Views, getFormattedDate, isDateEqual, isDateInRange } from '../helpers';
+import { getFormattedDate, isDateEqual, isDateInRange, Views } from '../helpers';
 
 export interface FlowbiteDatepickerViewsMonthsTheme {
   items: {

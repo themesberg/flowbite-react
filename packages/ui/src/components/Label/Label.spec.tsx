@@ -8,8 +8,8 @@ import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import { Radio } from '../Radio';
 import { RangeSlider } from '../RangeSlider';
 import { Select } from '../Select';
-import { TextInput } from '../TextInput';
 import { Textarea } from '../Textarea';
+import { TextInput } from '../TextInput';
 import { ToggleSwitch } from '../ToggleSwitch';
 import { Label } from './Label';
 

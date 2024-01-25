@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import { Datepicker } from './Datepicker';
 import { getFormattedDate } from './helpers';
-import userEvent from '@testing-library/user-event';
 
 describe('Components / Datepicker', () => {
   it("should display today's date by default", () => {

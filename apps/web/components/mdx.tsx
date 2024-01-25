@@ -3,7 +3,7 @@ import type { MDXComponents } from 'mdx/types';
 import { getMDXComponent } from 'next-contentlayer/hooks';
 import Link from 'next/link';
 import * as examples from '~/examples';
-import { type CodeData, CodeDemo } from './code-demo';
+import { CodeDemo, type CodeData } from './code-demo';
 import { CodeHighlight } from './code-highlight';
 
 const components: MDXComponents = {

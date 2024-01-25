@@ -4,9 +4,9 @@ import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
+import { range } from './helpers';
 import type { FlowbitePaginationButtonTheme, PaginationButtonProps } from './PaginationButton';
 import { PaginationButton, PaginationNavigation } from './PaginationButton';
-import { range } from './helpers';
 
 export interface FlowbitePaginationTheme {
   base: string;
