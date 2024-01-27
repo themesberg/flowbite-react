@@ -2,13 +2,13 @@ import type { FlowbiteButtonTheme } from './Button';
 import type { FlowbiteButtonGroupTheme } from './ButtonGroup';
 
 export const buttonTheme: FlowbiteButtonTheme = {
-  base: 'group flex items-stretch items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none',
+  base: 'group flex items-stretch items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none transition-[color,background-color,border-color,text-decoration-color,fill,stroke,box-shadow]',
   fullSized: 'w-full',
   color: {
     dark: 'text-white bg-gray-800 border border-transparent enabled:hover:bg-gray-900 focus:ring-4 focus:ring-gray-300 dark:bg-gray-800 dark:enabled:hover:bg-gray-700 dark:focus:ring-gray-800 dark:border-gray-700',
     failure:
       'text-white bg-red-700 border border-transparent enabled:hover:bg-red-800 focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:enabled:hover:bg-red-700 dark:focus:ring-red-900',
-    gray: 'text-gray-900 bg-white border border-gray-200 enabled:hover:bg-gray-100 enabled:hover:text-cyan-700 :ring-cyan-700 focus:text-cyan-700 dark:bg-transparent dark:text-gray-400 dark:border-gray-600 dark:enabled:hover:text-white dark:enabled:hover:bg-gray-700 focus:ring-2',
+    gray: 'text-gray-900 bg-white border border-gray-200 enabled:hover:bg-gray-100 enabled:hover:text-cyan-700 :ring-cyan-700 focus:text-cyan-700 dark:bg-transparent dark:text-gray-400 dark:border-gray-600 dark:enabled:hover:text-white dark:enabled:hover:bg-gray-700 focus:ring-4',
     info: 'text-white bg-cyan-700 border border-transparent enabled:hover:bg-cyan-800 focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-600 dark:enabled:hover:bg-cyan-700 dark:focus:ring-cyan-800',
     light:
       'text-gray-900 bg-white border border-gray-300 enabled:hover:bg-gray-100 focus:ring-4 focus:ring-cyan-300 dark:bg-gray-600 dark:text-white dark:border-gray-600 dark:enabled:hover:bg-gray-700 dark:enabled:hover:border-gray-700 dark:focus:ring-gray-700',
@@ -119,9 +119,9 @@ export const buttonTheme: FlowbiteButtonTheme = {
 export const buttonGroupTheme: FlowbiteButtonGroupTheme = {
   base: 'inline-flex',
   position: {
-    none: 'focus:ring-2',
-    start: 'rounded-r-none',
-    middle: 'rounded-none border-l-0 pl-0',
-    end: 'rounded-l-none border-l-0 pl-0',
+    none: '',
+    start: 'rounded-r-none focus:ring-2',
+    middle: 'rounded-none border-l-0 pl-0 focus:ring-2',
+    end: 'rounded-l-none border-l-0 pl-0 focus:ring-2',
   },
 };
