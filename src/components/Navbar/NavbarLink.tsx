@@ -30,9 +30,13 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   theme: customTheme = {},
   ...props
 }) => {
-  const { theme: rootTheme } = useNavbarContext();
+  const { theme: rootTheme, isOpen, setIsOpen } = useNavbarContext();
 
   const theme = mergeDeep(rootTheme.link, customTheme);
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <li>
@@ -44,6 +48,7 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
           theme.disabled[disabled ? 'on' : 'off'],
           className,
         )}
+        onClick={handleClick}
         {...props}
       >
         {children}
