@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentProps, ElementType, FC } from 'react';
+import type { ComponentProps, ElementType, FC, MouseEvent } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
@@ -28,14 +28,16 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   children,
   className,
   theme: customTheme = {},
+  onClick: userOnClick,
   ...props
 }) => {
   const { theme: rootTheme, isOpen, setIsOpen } = useNavbarContext();
 
   const theme = mergeDeep(rootTheme.link, customTheme);
 
-  const handleClick = () => {
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     setIsOpen(!isOpen);
+    userOnClick && userOnClick(event);
   };
 
   return (
