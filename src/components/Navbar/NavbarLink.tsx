@@ -28,7 +28,7 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   children,
   className,
   theme: customTheme = {},
-  onClick: userOnClick,
+  onClick,
   ...props
 }) => {
   const { theme: rootTheme, isOpen, setIsOpen } = useNavbarContext();
@@ -37,7 +37,7 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     setIsOpen(!isOpen);
-    userOnClick && userOnClick(event);
+    onClick && onClick(event);
   };
 
   return (
