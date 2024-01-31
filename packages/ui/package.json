@@ -24,12 +24,14 @@
     "build": "rm -rf lib && bun build:cjs && bun build:esm",
     "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --outDir lib/cjs",
     "build:esm": "tsc -p tsconfig.build.json --module ESNext --declaration --outDir lib/esm",
-    "clean": "rm -rf .turbo lib node_modules",
+    "clean": "rm -rf .turbo coverage lib node_modules",
     "dev": "bun run build",
     "format": "prettier --write .",
     "format:check": "prettier .",
     "lint": "biome lint --apply .",
     "lint:check": "biome lint .",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -41,9 +43,15 @@
     "tailwind-merge": "2.2.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "6.4.0",
+    "@testing-library/react": "14.2.0",
+    "@testing-library/user-event": "14.5.2",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
-    "typescript": "5.3.3"
+    "@vitejs/plugin-react": "4.2.1",
+    "jsdom": "24.0.0",
+    "typescript": "5.3.3",
+    "vitest": "1.2.2"
   },
   "peerDependencies": {
     "react": "^18.2.0"
