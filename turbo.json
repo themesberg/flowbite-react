@@ -18,6 +18,12 @@
     "format:check": {
       "cache": false
     },
+    "test": {
+      "cache": false
+    },
+    "test:coverage": {
+      "cache": false
+    },
     "typecheck": {
       "cache": false
     },
