@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentProps, FC } from 'react';
+import { forwardRef, type ComponentPropsWithRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
@@ -12,22 +12,26 @@ export interface FlowbiteTableRowTheme {
   striped: string;
 }
 
-export interface TableRowProps extends ComponentProps<'tr'> {
+export interface TableRowProps extends ComponentPropsWithRef<'tr'> {
   theme?: DeepPartial<FlowbiteTableRowTheme>;
 }
 
-export const TableRow: FC<TableRowProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const { theme: rootTheme, hoverable, striped } = useTableContext();
+export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
+  ({ children, className, theme: customTheme = {}, ...props }, ref) => {
+    const { theme: rootTheme, hoverable, striped } = useTableContext();
 
-  const theme = mergeDeep(rootTheme.row, customTheme);
+    const theme = mergeDeep(rootTheme.row, customTheme);
 
-  return (
-    <tr
-      data-testid="table-row-element"
-      className={twMerge(theme.base, striped && theme.striped, hoverable && theme.hovered, className)}
-      {...props}
-    >
-      {children}
-    </tr>
-  );
-};
+    return (
+      <tr
+        ref={ref}
+        data-testid="table-row-element"
+        className={twMerge(theme.base, striped && theme.striped, hoverable && theme.hovered, className)}
+        {...props}
+      >
+        {children}
+      </tr>
+    );
+  },
+);
+TableRow.displayName = 'Table.Row';

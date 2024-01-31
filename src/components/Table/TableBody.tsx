@@ -1,6 +1,6 @@
 'use client';
 
-import type { ComponentProps, FC } from 'react';
+import { forwardRef, type ComponentPropsWithRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
@@ -13,20 +13,23 @@ export interface FlowbiteTableBodyTheme {
   cell: FlowbiteTableCellTheme;
 }
 
-export interface TableBodyProps extends ComponentProps<'tbody'> {
+export interface TableBodyProps extends ComponentPropsWithRef<'tbody'> {
   theme?: DeepPartial<FlowbiteTableBodyTheme>;
 }
 
-export const TableBody: FC<TableBodyProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const { theme: rootTheme } = useTableContext();
+export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
+  ({ children, className, theme: customTheme = {}, ...props }, ref) => {
+    const { theme: rootTheme } = useTableContext();
 
-  const theme = mergeDeep(rootTheme.body, customTheme);
+    const theme = mergeDeep(rootTheme.body, customTheme);
 
-  return (
-    <TableBodyContext.Provider value={{ theme }}>
-      <tbody className={twMerge(theme.base, className)} {...props}>
-        {children}
-      </tbody>
-    </TableBodyContext.Provider>
-  );
-};
+    return (
+      <TableBodyContext.Provider value={{ theme }}>
+        <tbody className={twMerge(theme.base, className)} ref={ref} {...props}>
+          {children}
+        </tbody>
+      </TableBodyContext.Provider>
+    );
+  },
+);
+TableBody.displayName = 'Table.Body';

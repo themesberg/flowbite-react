@@ -23,6 +23,7 @@ import type { FlowbiteListGroupTheme } from '../ListGroup';
 import type { FlowbiteModalTheme } from '../Modal';
 import type { FlowbiteNavbarTheme } from '../Navbar';
 import type { FlowbitePaginationTheme } from '../Pagination';
+import type { FlowbitePopoverTheme } from '../Popover';
 import type { FlowbiteProgressTheme } from '../Progress';
 import type { FlowbiteRadioTheme } from '../Radio';
 import type { FlowbiteRangeSliderTheme } from '../RangeSlider';
@@ -69,6 +70,7 @@ export interface FlowbiteTheme {
   tabs: FlowbiteTabsTheme;
   toast: FlowbiteToastTheme;
   tooltip: FlowbiteTooltipTheme;
+  popover: FlowbitePopoverTheme;
   dropdown: FlowbiteDropdownTheme;
   checkbox: FlowbiteCheckboxTheme;
   fileInput: FlowbiteFileInputTheme;

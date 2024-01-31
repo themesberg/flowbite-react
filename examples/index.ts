@@ -30,3 +30,4 @@ export * as tabs from './tabs';
 export * as timeline from './timeline';
 export * as toast from './toast';
 export * as tooltip from './tooltip';
+export * as popover from './popover';

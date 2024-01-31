@@ -10,7 +10,6 @@ import type {
   MutableRefObject,
   ReactElement,
   ReactNode,
-  RefCallback,
   SetStateAction,
 } from 'react';
 import { cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -98,13 +97,7 @@ const Trigger = ({
       {children}
     </button>
   ) : (
-    <Button
-      {...buttonProps}
-      disabled={disabled}
-      type="button"
-      ref={refs.setReference as RefCallback<'button'>}
-      {...a11yProps}
-    >
+    <Button {...buttonProps} disabled={disabled} type="button" ref={refs.setReference} {...a11yProps}>
       {children}
     </Button>
   );
