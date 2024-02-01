@@ -57,7 +57,7 @@ describe('Components / Accordion', () => {
       expect(content()[1]).toBeVisible();
     });
 
-    it('it should open and close self when `Space is pressed on the same`Accordion.Panel`', async () => {
+    it('should open and close self when `Space is pressed on the same`Accordion.Panel`', async () => {
       const user = userEvent.setup();
       render(<TestAccordion />);
 

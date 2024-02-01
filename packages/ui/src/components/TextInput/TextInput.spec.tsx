@@ -10,7 +10,7 @@ describe.concurrent('Components / Text input', () => {
 
       expect(textInput).toBeInTheDocument();
     });
-    it('should have Icon if selected ', () => {
+    it('should have Icon if selected', () => {
       const page = render(<TextInput rightIcon={HiEye} />).getByTestId('right-icon');
 
       expect(page).toBeInTheDocument();

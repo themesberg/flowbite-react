@@ -8,7 +8,7 @@ import { Dropdown } from './Dropdown';
 const delay = async (delayTime: number) => await new Promise((r) => setTimeout(r, delayTime));
 
 describe('Components / Dropdown', () => {
-  describe('A11y', async () => {
+  describe('A11y', () => {
     it('should use `role="menu"` in menu container', async () => {
       const user = userEvent.setup();
       render(<TestDropdown />);
@@ -154,7 +154,7 @@ describe('Components / Dropdown', () => {
     });
   });
 
-  describe('Type of button', async () => {
+  describe('Type of button', () => {
     it('should be of type `button`', async () => {
       render(<TestDropdown />);
       expect(button()).toHaveAttribute('type', 'button');
@@ -166,7 +166,7 @@ describe('Components / Dropdown', () => {
     });
   });
 
-  describe('Dropdown item render', async () => {
+  describe('Dropdown item render', () => {
     it('should override Dropdownn.Item base component when using `as` prop', async () => {
       const user = userEvent.setup();
 
