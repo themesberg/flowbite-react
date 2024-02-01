@@ -1,6 +1,7 @@
+import { createTheme } from '../../helpers/create-theme';
 import type { FlowbiteHelperTextTheme } from './HelperText';
 
-export const helperTextTheme: FlowbiteHelperTextTheme = {
+export const helperTextTheme: FlowbiteHelperTextTheme = createTheme({
   root: {
     base: 'mt-2 text-sm',
     colors: {
@@ -11,4 +12,4 @@ export const helperTextTheme: FlowbiteHelperTextTheme = {
       warning: 'text-yellow-500 dark:text-yellow-600',
     },
   },
-};
+});

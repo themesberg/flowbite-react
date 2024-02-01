@@ -1,21 +1,22 @@
+import { createTheme } from '../../helpers/create-theme';
 import type { FlowbiteTableTheme } from './Table';
 
-export const tableTheme: FlowbiteTableTheme = {
+export const tableTheme: FlowbiteTableTheme = createTheme({
   root: {
     base: 'w-full text-left text-sm text-gray-500 dark:text-gray-400',
-    shadow: 'absolute bg-white dark:bg-black w-full h-full top-0 left-0 rounded-lg drop-shadow-md -z-10',
+    shadow: 'absolute left-0 top-0 -z-10 h-full w-full rounded-lg bg-white drop-shadow-md dark:bg-black',
     wrapper: 'relative',
   },
   body: {
     base: 'group/body',
     cell: {
-      base: 'group-first/body:group-first/row:first:rounded-tl-lg group-first/body:group-first/row:last:rounded-tr-lg group-last/body:group-last/row:first:rounded-bl-lg group-last/body:group-last/row:last:rounded-br-lg px-6 py-4',
+      base: 'px-6 py-4 group-first/body:group-first/row:first:rounded-tl-lg group-first/body:group-first/row:last:rounded-tr-lg group-last/body:group-last/row:first:rounded-bl-lg group-last/body:group-last/row:last:rounded-br-lg',
     },
   },
   head: {
     base: 'group/head text-xs uppercase text-gray-700 dark:text-gray-400',
     cell: {
-      base: 'group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg bg-gray-50 dark:bg-gray-700 px-6 py-3',
+      base: 'bg-gray-50 px-6 py-3 group-first/head:first:rounded-tl-lg group-first/head:last:rounded-tr-lg dark:bg-gray-700',
     },
   },
   row: {
@@ -23,4 +24,4 @@ export const tableTheme: FlowbiteTableTheme = {
     hovered: 'hover:bg-gray-50 dark:hover:bg-gray-600',
     striped: 'odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700',
   },
-};
+});

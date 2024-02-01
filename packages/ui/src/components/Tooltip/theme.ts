@@ -1,6 +1,7 @@
+import { createTheme } from '../../helpers/create-theme';
 import type { FlowbiteTooltipTheme } from './Tooltip';
 
-export const tooltipTheme: FlowbiteTooltipTheme = {
+export const tooltipTheme: FlowbiteTooltipTheme = createTheme({
   target: 'w-fit',
   animation: 'transition-opacity',
   arrow: {
@@ -12,7 +13,7 @@ export const tooltipTheme: FlowbiteTooltipTheme = {
     },
     placement: '-4px',
   },
-  base: 'absolute inline-block z-10 rounded-lg py-2 px-3 text-sm font-medium shadow-sm',
+  base: 'absolute z-10 inline-block rounded-lg px-3 py-2 text-sm font-medium shadow-sm',
   hidden: 'invisible opacity-0',
   style: {
     dark: 'bg-gray-900 text-white dark:bg-gray-700',
@@ -20,4 +21,4 @@ export const tooltipTheme: FlowbiteTooltipTheme = {
     auto: 'border border-gray-200 bg-white text-gray-900 dark:border-none dark:bg-gray-700 dark:text-white',
   },
   content: 'relative z-20',
-};
+});

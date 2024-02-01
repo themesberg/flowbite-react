@@ -6,13 +6,6 @@ import { Timeline } from './Timeline';
 
 describe.concurrent('Components / Timeline', () => {
   describe('Rendering horizontal mode', () => {
-    it('should have className items-base', () => {
-      render(<TestTimelineNoIcon horizontal={true} />);
-
-      expect(timeline()).toBeInTheDocument();
-      expect(timeline()).toHaveClass('items-base');
-    });
-
     it('should remove margin-top when do not icon', () => {
       render(<TestTimelineNoIcon horizontal={true} />);
 

@@ -40,7 +40,12 @@ module.exports = {
       classRegex: '^(class(Name)|theme)?$',
     },
   },
+  ignorePatterns: ['lib'],
   rules: {
     'react/prop-types': 'off',
+    'react/display-name': 'off',
+    'react/no-unescaped-entities': 'off',
+    'tailwindcss/classnames-order': 'off',
+    'tailwindcss/enforces-shorthand': 'off',
   },
 };

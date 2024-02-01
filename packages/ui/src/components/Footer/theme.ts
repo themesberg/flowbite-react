@@ -1,15 +1,16 @@
+import { createTheme } from '../../helpers/create-theme';
 import type { FlowbiteFooterTheme } from './Footer';
 
-export const footerTheme: FlowbiteFooterTheme = {
+export const footerTheme: FlowbiteFooterTheme = createTheme({
   root: {
-    base: 'w-full rounded-lg bg-white shadow dark:bg-gray-800 md:flex md:items-center md:justify-between',
+    base: 'w-full rounded-lg bg-white shadow md:flex md:items-center md:justify-between dark:bg-gray-800',
     container: 'w-full p-6',
     bgDark: 'bg-gray-800',
   },
   groupLink: {
     base: 'flex flex-wrap text-sm text-gray-500 dark:text-white',
     link: {
-      base: 'last:mr-0 md:mr-6 me-4',
+      base: 'me-4 last:mr-0 md:mr-6',
       href: 'hover:underline',
     },
     col: 'flex-col space-y-4',
@@ -22,10 +23,10 @@ export const footerTheme: FlowbiteFooterTheme = {
     base: 'mb-6 text-sm font-semibold uppercase text-gray-500 dark:text-white',
   },
   divider: {
-    base: 'w-full my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8',
+    base: 'my-6 w-full border-gray-200 sm:mx-auto lg:my-8 dark:border-gray-700',
   },
   copyright: {
-    base: 'text-sm text-gray-500 dark:text-gray-400 sm:text-center',
+    base: 'text-sm text-gray-500 sm:text-center dark:text-gray-400',
     href: 'ml-1 hover:underline',
     span: 'ml-1',
   },
@@ -34,4 +35,4 @@ export const footerTheme: FlowbiteFooterTheme = {
     img: 'mr-3 h-8',
     span: 'self-center whitespace-nowrap text-2xl font-semibold text-gray-800 dark:text-white',
   },
-};
+});

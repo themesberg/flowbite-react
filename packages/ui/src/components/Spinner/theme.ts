@@ -1,6 +1,7 @@
+import { createTheme } from '../../helpers/create-theme';
 import type { FlowbiteSpinnerTheme } from './Spinner';
 
-export const spinnerTheme: FlowbiteSpinnerTheme = {
+export const spinnerTheme: FlowbiteSpinnerTheme = createTheme({
   base: 'inline animate-spin text-gray-200',
   color: {
     failure: 'fill-red-600',
@@ -38,10 +39,10 @@ export const spinnerTheme: FlowbiteSpinnerTheme = {
     },
   },
   size: {
-    xs: 'w-3 h-3',
-    sm: 'w-4 h-4',
-    md: 'w-6 h-6',
-    lg: 'w-8 h-8',
-    xl: 'w-10 h-10',
+    xs: 'h-3 w-3',
+    sm: 'h-4 w-4',
+    md: 'h-6 w-6',
+    lg: 'h-8 w-8',
+    xl: 'h-10 w-10',
   },
-};
+});

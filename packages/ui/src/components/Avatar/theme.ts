@@ -1,8 +1,9 @@
+import { createTheme } from '../../helpers/create-theme';
 import type { FlowbiteAvatarTheme } from './Avatar';
 
-export const avatarTheme: FlowbiteAvatarTheme = {
+export const avatarTheme: FlowbiteAvatarTheme = createTheme({
   root: {
-    base: 'flex justify-center items-center space-x-4 rounded',
+    base: 'flex items-center justify-center space-x-4 rounded',
     bordered: 'p-1 ring-2',
     rounded: 'rounded-full',
     color: {
@@ -20,26 +21,26 @@ export const avatarTheme: FlowbiteAvatarTheme = {
       base: 'rounded',
       off: 'relative overflow-hidden bg-gray-100 dark:bg-gray-600',
       on: '',
-      placeholder: 'absolute w-auto h-auto text-gray-400 -bottom-1',
+      placeholder: 'absolute -bottom-1 h-auto w-auto text-gray-400',
     },
     size: {
-      xs: 'w-6 h-6',
-      sm: 'w-8 h-8',
-      md: 'w-10 h-10',
-      lg: 'w-20 h-20',
-      xl: 'w-36 h-36',
+      xs: 'h-6 w-6',
+      sm: 'h-8 w-8',
+      md: 'h-10 w-10',
+      lg: 'h-20 w-20',
+      xl: 'h-36 w-36',
     },
     stacked: 'ring-2 ring-gray-300 dark:ring-gray-500',
     statusPosition: {
       'bottom-left': '-bottom-1 -left-1',
-      'bottom-center': '-bottom-1 center',
+      'bottom-center': '-bottom-1',
       'bottom-right': '-bottom-1 -right-1',
-      'top-left': '-top-1 -left-1',
-      'top-center': '-top-1 center',
-      'top-right': '-top-1 -right-1',
-      'center-right': 'center -right-1',
-      center: 'center center',
-      'center-left': 'center -left-1',
+      'top-left': '-left-1 -top-1',
+      'top-center': '-top-1',
+      'top-right': '-right-1 -top-1',
+      'center-right': '-right-1',
+      center: '',
+      'center-left': '-left-1',
     },
     status: {
       away: 'bg-yellow-400',
@@ -50,13 +51,13 @@ export const avatarTheme: FlowbiteAvatarTheme = {
     },
     initials: {
       text: 'font-medium text-gray-600 dark:text-gray-300',
-      base: 'inline-flex overflow-hidden relative justify-center items-center bg-gray-100 dark:bg-gray-600',
+      base: 'relative inline-flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-gray-600',
     },
   },
   group: {
     base: 'flex -space-x-4',
   },
   groupCounter: {
-    base: 'relative flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 rounded-full ring-2 ring-gray-300 hover:bg-gray-600 dark:ring-gray-500',
+    base: 'relative flex h-10 w-10 items-center justify-center rounded-full bg-gray-700 text-xs font-medium text-white ring-2 ring-gray-300 hover:bg-gray-600 dark:ring-gray-500',
   },
-};
+});

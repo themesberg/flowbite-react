@@ -1,6 +1,7 @@
+import { createTheme } from '../../helpers/create-theme';
 import type { FlowbiteTextInputTheme } from './TextInput';
 
-export const textInputTheme: FlowbiteTextInputTheme = {
+export const textInputTheme: FlowbiteTextInputTheme = createTheme({
   base: 'flex',
   addon:
     'inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-200 px-3 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-400',
@@ -19,10 +20,10 @@ export const textInputTheme: FlowbiteTextInputTheme = {
       sizes: {
         sm: 'p-2 sm:text-xs',
         md: 'p-2.5 text-sm',
-        lg: 'sm:text-md p-4',
+        lg: 'p-4 sm:text-base',
       },
       colors: {
-        gray: 'bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
+        gray: 'border-gray-300 bg-gray-50 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
         info: 'border-cyan-500 bg-cyan-50 text-cyan-900 placeholder-cyan-700 focus:border-cyan-500 focus:ring-cyan-500 dark:border-cyan-400 dark:bg-cyan-100 dark:focus:border-cyan-500 dark:focus:ring-cyan-500',
         failure:
           'border-red-500 bg-red-50 text-red-900 placeholder-red-700 focus:border-red-500 focus:ring-red-500 dark:border-red-400 dark:bg-red-100 dark:focus:border-red-500 dark:focus:ring-red-500',
@@ -44,9 +45,9 @@ export const textInputTheme: FlowbiteTextInputTheme = {
         off: 'rounded-lg',
       },
       withShadow: {
-        on: 'shadow-sm dark:shadow-sm-light',
+        on: 'dark:shadow-sm-light shadow-sm',
         off: '',
       },
     },
   },
-};
+});

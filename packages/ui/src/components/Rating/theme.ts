@@ -1,7 +1,8 @@
+import { createTheme } from '../../helpers/create-theme';
 import type { FlowbiteRatingTheme } from './Rating';
 import type { FlowbiteRatingAdvancedTheme } from './RatingAdvanced';
 
-export const ratingTheme: FlowbiteRatingTheme = {
+export const ratingTheme: FlowbiteRatingTheme = createTheme({
   root: {
     base: 'flex items-center',
   },
@@ -9,14 +10,14 @@ export const ratingTheme: FlowbiteRatingTheme = {
     empty: 'text-gray-300 dark:text-gray-500',
     filled: 'text-yellow-400',
     sizes: {
-      sm: 'w-5 h-5',
-      md: 'w-7 h-7',
-      lg: 'w-10 h-10',
+      sm: 'h-5 w-5',
+      md: 'h-7 w-7',
+      lg: 'h-10 w-10',
     },
   },
-};
+});
 
-export const ratingAdvancedTheme: FlowbiteRatingAdvancedTheme = {
+export const ratingAdvancedTheme: FlowbiteRatingAdvancedTheme = createTheme({
   base: 'flex items-center',
   label: 'text-sm font-medium text-cyan-600 dark:text-cyan-500',
   progress: {
@@ -24,4 +25,4 @@ export const ratingAdvancedTheme: FlowbiteRatingAdvancedTheme = {
     fill: 'h-5 rounded bg-yellow-400',
     label: 'text-sm font-medium text-cyan-600 dark:text-cyan-500',
   },
-};
+});

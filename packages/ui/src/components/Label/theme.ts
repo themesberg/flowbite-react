@@ -1,6 +1,7 @@
+import { createTheme } from '../../helpers/create-theme';
 import type { FlowbiteLabelTheme } from './Label';
 
-export const labelTheme: FlowbiteLabelTheme = {
+export const labelTheme: FlowbiteLabelTheme = createTheme({
   root: {
     base: 'text-sm font-medium',
     disabled: 'opacity-50',
@@ -12,4 +13,4 @@ export const labelTheme: FlowbiteLabelTheme = {
       success: 'text-green-700 dark:text-green-500',
     },
   },
-};
+});
