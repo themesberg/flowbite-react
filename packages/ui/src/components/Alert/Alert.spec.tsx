@@ -171,7 +171,7 @@ const TestAlert: FC<AlertProps> = (props: AlertProps) => {
               type="button"
               className="mr-2 inline-flex items-center rounded-lg bg-cyan-700 px-3 py-1.5 text-center text-xs font-medium text-white hover:bg-cyan-800 focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-800 dark:hover:bg-cyan-900"
             >
-              <HiEye className="-ml-0.5 mr-2 h-4 w-4" />
+              <HiEye className="-ml-0.5 mr-2 size-4" />
               View more
             </button>
             <button

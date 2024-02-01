@@ -6,7 +6,7 @@ import { Card } from './Card';
 export default {
   title: 'Components/Card',
   component: Card,
-  decorators: [(Story): JSX.Element => <div className="h-1/2 w-1/2">{Story()}</div>],
+  decorators: [(Story): JSX.Element => <div className="size-1/2">{Story()}</div>],
 } as Meta;
 
 const Template: StoryFn<CardProps> = (args: CardProps) => (

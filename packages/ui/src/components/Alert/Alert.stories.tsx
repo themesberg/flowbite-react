@@ -86,7 +86,7 @@ AlertWithAdditionalContent.args = {
           type="button"
           className="mr-2 inline-flex items-center rounded-lg bg-cyan-700 px-3 py-1.5 text-center text-xs font-medium text-white hover:bg-cyan-800 focus:ring-4 focus:ring-cyan-300 dark:bg-cyan-800 dark:hover:bg-cyan-900"
         >
-          <HiEye className="-ml-0.5 mr-2 h-4 w-4" />
+          <HiEye className="-ml-0.5 mr-2 size-4" />
           View more
         </button>
         <button
@@ -124,7 +124,7 @@ AlertWithAllOptions.args = {
           type="button"
           className="mr-2 inline-flex items-center rounded-lg bg-green-700 px-3 py-1.5 text-center text-xs font-medium text-white hover:bg-green-800 focus:ring-4 focus:ring-green-300 dark:bg-green-800 dark:hover:bg-green-900"
         >
-          <HiEye className="-ml-0.5 mr-2 h-4 w-4" />
+          <HiEye className="-ml-0.5 mr-2 size-4" />
           View more
         </button>
         <button

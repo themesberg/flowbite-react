@@ -31,7 +31,7 @@ DefaultBanner.args = {
         </p>
       </div>
       <Banner.CollapseButton color="gray" className="border-0 bg-transparent px-0">
-        <HiX className="h-4 w-4" />
+        <HiX className="size-4" />
       </Banner.CollapseButton>
     </div>
   ),
