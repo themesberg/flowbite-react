@@ -53,7 +53,7 @@ export const SocialProofSection: FC = async () => {
 
   return (
     <section>
-      <div className="max-w-8xl mx-auto px-4 py-8 lg:px-20">
+      <div className="mx-auto max-w-8xl px-4 py-8 lg:px-20">
         <div className="flex flex-col gap-4 lg:flex-row lg:gap-20">
           <div className="mb-4 flex w-full flex-col items-start justify-center gap-3 md:gap-5 lg:mb-0">
             <div className="flex w-full flex-col items-start justify-center gap-6">
@@ -96,7 +96,7 @@ export const SocialProofSection: FC = async () => {
             <div className="flex flex-row items-start gap-2 self-stretch md:justify-between md:gap-2 md:pr-16 lg:justify-end lg:gap-2 lg:pr-0">
               <a
                 href="https://github.com/themesberg/flowbite-react"
-                className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 lg:px-8 lg:py-6 dark:hover:bg-gray-800"
+                className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 lg:px-8 lg:py-6"
               >
                 <svg
                   className="h-6 w-6"
@@ -115,12 +115,12 @@ export const SocialProofSection: FC = async () => {
                 </svg>
                 <div className="flex flex-col items-start gap-2">
                   <p className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">{stargazers}</p>
-                  <p className="text-sm text-gray-500 md:text-base dark:text-gray-400">Stars on GitHub</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 md:text-base">Stars on GitHub</p>
                 </div>
               </a>
               <a
                 href="https://www.npmjs.com/package/flowbite-react"
-                className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 lg:px-8 lg:py-6 dark:hover:bg-gray-800"
+                className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 lg:px-8 lg:py-6"
               >
                 <svg width="18" height="18" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -130,14 +130,14 @@ export const SocialProofSection: FC = async () => {
                 </svg>
                 <div className="mt-1 flex flex-col items-start gap-2">
                   <p className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">{npmDownloads}</p>
-                  <p className="text-sm text-gray-500 md:text-base dark:text-gray-400">Downloads on NPM</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 md:text-base">Downloads on NPM</p>
                 </div>
               </a>
             </div>
             <div className="flex flex-row items-start gap-2 self-stretch md:justify-between md:gap-12 md:pr-16 lg:justify-end lg:gap-2 lg:pr-0">
               <a
                 href="https://www.figma.com/community/file/1179442320711977498"
-                className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 lg:px-8 lg:py-6 dark:hover:bg-gray-800"
+                className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 lg:px-8 lg:py-6"
               >
                 <svg width="18" height="25" viewBox="0 0 18 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clipPath="url(#clip0_18_290731)">
@@ -170,13 +170,13 @@ export const SocialProofSection: FC = async () => {
                 </svg>
                 <div className="flex flex-col items-start gap-2">
                   <p className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">5,400</p>
-                  <p className="text-sm text-gray-500 md:text-base dark:text-gray-400">Figma duplicates</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 md:text-base">Figma duplicates</p>
                 </div>
               </a>
               <a
                 href="https://discord.gg/4eeurUVvTy"
                 rel="nofollow"
-                className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 lg:px-8 lg:py-6 dark:hover:bg-gray-800"
+                className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 lg:px-8 lg:py-6"
               >
                 <svg
                   className="h-6 w-6"
@@ -195,7 +195,7 @@ export const SocialProofSection: FC = async () => {
                 </svg>
                 <div className="flex flex-col items-start gap-2">
                   <p className="text-2xl font-bold leading-tight text-gray-900 dark:text-white">{discordMembers}</p>
-                  <p className="text-sm text-gray-500 md:text-base dark:text-gray-400">Discord members online</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 md:text-base">Discord members online</p>
                 </div>
               </a>
             </div>

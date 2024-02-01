@@ -45,7 +45,7 @@ export const textInputTheme: FlowbiteTextInputTheme = createTheme({
         off: 'rounded-lg',
       },
       withShadow: {
-        on: 'dark:shadow-sm-light shadow-sm',
+        on: 'shadow-sm dark:shadow-sm-light',
         off: '',
       },
     },

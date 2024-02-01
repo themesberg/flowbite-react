@@ -36,7 +36,7 @@ export const CopyPackageInput: FC<Props> = ({ value }) => {
               },
             },
             rightIcon: {
-              svg: 'group-hover:text-primary-700 h-5 w-5 text-gray-500 dark:text-gray-400',
+              svg: 'h-5 w-5 text-gray-500 group-hover:text-primary-700 dark:text-gray-400',
             },
           },
         }}

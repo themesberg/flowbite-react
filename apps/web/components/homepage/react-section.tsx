@@ -15,7 +15,7 @@ const feature_list = [
 export const ReactSection: FC = () => {
   return (
     <section className="bg-gray-50 dark:bg-gray-800">
-      <div className="max-w-8xl mx-auto w-full px-4 py-8 lg:px-20 lg:py-24">
+      <div className="mx-auto w-full max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
         <div className="flex w-full flex-row self-stretch py-6 lg:gap-16 lg:py-10">
           <div className="hidden w-1/2 items-center lg:flex">
             <Image
@@ -33,9 +33,9 @@ export const ReactSection: FC = () => {
               height={535}
             />
           </div>
-          <div className="flex w-1/2 flex-grow flex-col items-start gap-4 divide-y lg:gap-8 dark:divide-gray-700">
+          <div className="flex w-1/2 flex-grow flex-col items-start gap-4 divide-y dark:divide-gray-700 lg:gap-8">
             <div className="flex flex-col items-start gap-3 self-stretch sm:gap-4">
-              <h2 className="text-3xl font-extrabold leading-tight text-gray-900 lg:text-4xl dark:text-white">
+              <h2 className="text-3xl font-extrabold leading-tight text-gray-900 dark:text-white lg:text-4xl">
                 React UI components
               </h2>
               <p className="text-lg text-gray-500 dark:text-gray-400">
@@ -54,7 +54,7 @@ export const ReactSection: FC = () => {
               </p>
             </div>
             <div className="flex flex-col items-start self-stretch pt-8">
-              <ul className="mb-6 list-inside list-none space-y-4 font-medium text-gray-900 lg:mb-8 dark:text-white">
+              <ul className="mb-6 list-inside list-none space-y-4 font-medium text-gray-900 dark:text-white lg:mb-8">
                 {feature_list.map((f, i) => (
                   <li key={i} className="flex items-center gap-2">
                     <svg

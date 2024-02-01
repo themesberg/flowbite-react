@@ -29,7 +29,7 @@ export const timelineTheme: FlowbiteTimelineTheme = createTheme({
     },
     point: {
       horizontal: 'flex items-center',
-      line: 'hidden h-0.5 w-full bg-gray-200 sm:flex dark:bg-gray-700',
+      line: 'hidden h-0.5 w-full bg-gray-200 dark:bg-gray-700 sm:flex',
       marker: {
         base: {
           horizontal:

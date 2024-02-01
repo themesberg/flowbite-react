@@ -40,7 +40,7 @@ function Component() {
 function Component() {
   return (
     <Card className="max-w-sm">
-      <h5 className="mb-3 text-base font-semibold text-gray-900 lg:text-xl dark:text-white">Connect wallet</h5>
+      <h5 className="mb-3 text-base font-semibold text-gray-900 dark:text-white lg:text-xl">Connect wallet</h5>
       <p className="text-sm font-normal text-gray-500 dark:text-gray-400">
         Connect with one of our available wallet providers or create a new one.
       </p>

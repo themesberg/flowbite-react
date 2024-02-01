@@ -14,7 +14,7 @@ export const textareaTheme: FlowbiteTextareaTheme = createTheme({
       'border-green-500 bg-green-50 text-green-900 placeholder-green-700 focus:border-green-500 focus:ring-green-500 dark:border-green-400 dark:bg-green-100 dark:focus:border-green-500 dark:focus:ring-green-500',
   },
   withShadow: {
-    on: 'dark:shadow-sm-light shadow-sm',
+    on: 'shadow-sm dark:shadow-sm-light',
     off: '',
   },
 });

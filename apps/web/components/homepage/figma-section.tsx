@@ -4,11 +4,11 @@ import type { FC } from 'react';
 export const FigmaSection: FC = () => {
   return (
     <section className="bg-gray-50 dark:bg-gray-800">
-      <div className="max-w-8xl mx-auto px-4 py-8 lg:px-20 lg:py-24">
-        <div className="max-w-8xl mx-auto grid grid-cols-1 items-start justify-between gap-24 py-1 lg:grid-cols-2">
+      <div className="mx-auto max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
+        <div className="mx-auto grid max-w-8xl grid-cols-1 items-start justify-between gap-24 py-1 lg:grid-cols-2">
           <div className="flex flex-col gap-8">
             <div className="flex w-full flex-col items-start justify-center gap-6">
-              <h2 className="text-3xl font-extrabold leading-none text-gray-900 lg:text-4xl dark:text-white">
+              <h2 className="text-3xl font-extrabold leading-none text-gray-900 dark:text-white lg:text-4xl">
                 Design with Figma
               </h2>
               <p className="text-lg">
@@ -22,7 +22,7 @@ export const FigmaSection: FC = () => {
               <div className="max-w-l isolate flex flex-col items-start gap-4 self-stretch">
                 <a
                   href="https://www.figma.com/file/xYaJr6UvThCW2LM2RjLeJf/flowbite-pro-figma-2.6.0?type=design&node-id=18-0&t=jKFrn2Dz5D8jhk7d-0"
-                  className="inline-flex max-w-lg items-center justify-start gap-5 self-stretch rounded-lg border border-gray-300 bg-white px-4 py-3.5 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 sm:gap-7 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                  className="inline-flex max-w-lg items-center justify-start gap-5 self-stretch rounded-lg border border-gray-300 bg-white px-4 py-3.5 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 sm:gap-7"
                 >
                   <svg width="18" height="25" viewBox="0 0 18 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_18_290731)">
@@ -67,7 +67,7 @@ export const FigmaSection: FC = () => {
                 </a>
                 <a
                   href="https://flowbite.com/figma/"
-                  className="inline-flex max-w-lg items-center justify-start gap-4 self-stretch rounded-lg border border-gray-300 bg-white px-4 py-3.5 text-center text-base font-medium text-gray-900 placeholder:py-3.5 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 sm:gap-6 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
+                  className="inline-flex max-w-lg items-center justify-start gap-4 self-stretch rounded-lg border border-gray-300 bg-white px-4 py-3.5 text-center text-base font-medium text-gray-900 placeholder:py-3.5 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 sm:gap-6"
                 >
                   <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path

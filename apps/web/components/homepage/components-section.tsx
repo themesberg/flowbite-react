@@ -6,9 +6,9 @@ import { COMPONENTS_DATA } from '~/data/components';
 export const ComponentsSection: FC = () => {
   return (
     <section>
-      <div className="max-w-8xl mx-auto flex flex-col gap-8 px-4 py-8 sm:gap-12 lg:px-20 lg:pt-24">
+      <div className="mx-auto flex max-w-8xl flex-col gap-8 px-4 py-8 sm:gap-12 lg:px-20 lg:pt-24">
         <div className="flex flex-col items-center gap-4 sm:gap-4">
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl dark:text-white">
+          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white lg:text-4xl">
             React UI Components
           </h2>
           <p className="mx-auto max-w-3xl text-center text-lg font-normal text-gray-500 dark:text-gray-400">

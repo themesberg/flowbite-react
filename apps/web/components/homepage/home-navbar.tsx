@@ -12,7 +12,7 @@ export const HomeNavbar: FC = () => {
         root: {
           base: 'sticky top-0 z-40 mx-auto flex w-full items-center justify-between border-b border-gray-200 bg-white py-0 text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400',
           inner: {
-            base: 'xl:max-w-8xl mx-auto flex w-full max-w-none flex-wrap items-center justify-between px-4 py-2.5 xl:px-20',
+            base: 'mx-auto flex w-full max-w-none flex-wrap items-center justify-between px-4 py-2.5 xl:max-w-8xl xl:px-20',
           },
         },
       }}

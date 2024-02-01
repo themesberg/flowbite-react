@@ -39,7 +39,7 @@
 }
 
 #visible-table-of-contents a {
-  @apply after:text-primary-700 dark:after:text-primary-700 inline-block border-l border-white pl-2.5 font-medium transition-none duration-200 after:ml-2 after:opacity-0 after:transition-opacity after:duration-100 after:content-['#'] hover:border-gray-300 hover:text-gray-900 hover:after:opacity-100 dark:border-gray-900 dark:hover:border-gray-700 dark:hover:text-white;
+  @apply inline-block border-l border-white pl-2.5 font-medium transition-none duration-200 after:ml-2 after:text-primary-700 after:opacity-0 after:transition-opacity after:duration-100 after:content-['#'] hover:border-gray-300 hover:text-gray-900 hover:after:opacity-100 dark:border-gray-900 dark:after:text-primary-700 dark:hover:border-gray-700 dark:hover:text-white;
 }
 
 #mainContent > hr,
@@ -84,7 +84,7 @@
 #mainContent > p > code,
 #mainContent > ul > li > code,
 #mainContent > ol > li > code {
-  @apply text-primary-600 dark:text-primary-400 whitespace-nowrap break-all px-1 font-mono text-sm;
+  @apply whitespace-nowrap break-all px-1 font-mono text-sm text-primary-600 dark:text-primary-400;
   font-family:
     Menlo,
     ui-monospace,

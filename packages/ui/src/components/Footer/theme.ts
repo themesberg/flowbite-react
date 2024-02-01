@@ -3,7 +3,7 @@ import type { FlowbiteFooterTheme } from './Footer';
 
 export const footerTheme: FlowbiteFooterTheme = createTheme({
   root: {
-    base: 'w-full rounded-lg bg-white shadow md:flex md:items-center md:justify-between dark:bg-gray-800',
+    base: 'w-full rounded-lg bg-white shadow dark:bg-gray-800 md:flex md:items-center md:justify-between',
     container: 'w-full p-6',
     bgDark: 'bg-gray-800',
   },
@@ -23,10 +23,10 @@ export const footerTheme: FlowbiteFooterTheme = createTheme({
     base: 'mb-6 text-sm font-semibold uppercase text-gray-500 dark:text-white',
   },
   divider: {
-    base: 'my-6 w-full border-gray-200 sm:mx-auto lg:my-8 dark:border-gray-700',
+    base: 'my-6 w-full border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-8',
   },
   copyright: {
-    base: 'text-sm text-gray-500 sm:text-center dark:text-gray-400',
+    base: 'text-sm text-gray-500 dark:text-gray-400 sm:text-center',
     href: 'ml-1 hover:underline',
     span: 'ml-1',
   },

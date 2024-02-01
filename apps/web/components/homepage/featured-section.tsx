@@ -4,7 +4,7 @@ import type { FC } from 'react';
 export const FeaturedSection: FC = () => {
   return (
     <section>
-      <div className="max-w-8xl mx-auto px-4 py-8 lg:px-20">
+      <div className="mx-auto max-w-8xl px-4 py-8 lg:px-20">
         <div className="flex flex-col items-center justify-center gap-2 lg:flex-row lg:gap-8">
           <div className="mx-auto mb-4 text-base tracking-tight lg:mx-0 lg:mb-0">Featured in:</div>
           <div className="flex flex-wrap items-center justify-center gap-8">

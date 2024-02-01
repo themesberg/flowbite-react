@@ -22,7 +22,7 @@ export const selectTheme: FlowbiteSelectTheme = createTheme({
         off: 'rounded-lg',
       },
       withShadow: {
-        on: 'dark:shadow-sm-light shadow-sm',
+        on: 'shadow-sm dark:shadow-sm-light',
         off: '',
       },
       sizes: {
