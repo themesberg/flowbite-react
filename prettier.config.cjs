@@ -5,7 +5,7 @@ module.exports = {
   singleQuote: true,
   // tailwindcss
   tailwindAttributes: ['theme'],
-  tailwindFunctions: ['twMerge'],
+  tailwindFunctions: ['twMerge', 'createTheme'],
   // sort-imports
   importOrder: ['<BUILTIN_MODULES>', '<THIRD_PARTY_MODULES>', '^~/(.*)$', '^[.]', '', '^(?!.*[.]css$)[./].*$', '.css$'],
 };
