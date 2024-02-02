@@ -13,10 +13,15 @@
     "yaml"
   ],
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
+  "eslint.workingDirectories": ["apps/web", "packages/ui"],
   "typescript.tsdk": "node_modules/typescript/lib",
   "tailwindCSS.classAttributes": ["class", "className", "theme"],
   "tailwindCSS.experimental.classRegex": [
     ["twMerge\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["createTheme\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
-  ]
+  ],
+  "tailwindCSS.experimental.configFile": {
+    "apps/web/tailwind.config.js": "apps/web/**",
+    "packages/ui/tailwind.config.js": "packages/ui/**"
+  }
 }

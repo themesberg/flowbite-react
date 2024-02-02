@@ -79,7 +79,7 @@ export const SocialProofSection: FC = async () => {
               <div className="flex flex-row items-center gap-3.5 self-stretch">
                 <Image
                   src="/images/feature-sections/eugene.jpg"
-                  className="h-6 w-6 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300"
+                  className="size-6 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300"
                   alt="Eugene Fedorenko Avatar"
                   width={24}
                   height={24}
@@ -99,7 +99,7 @@ export const SocialProofSection: FC = async () => {
                 className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 lg:px-8 lg:py-6"
               >
                 <svg
-                  className="h-6 w-6"
+                  className="size-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -179,7 +179,7 @@ export const SocialProofSection: FC = async () => {
                 className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 lg:px-8 lg:py-6"
               >
                 <svg
-                  className="h-6 w-6"
+                  className="size-6"
                   aria-hidden="true"
                   focusable="false"
                   data-prefix="fab"

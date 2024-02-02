@@ -19,7 +19,7 @@ export const FigmaSection: FC = () => {
             </div>
             <div className="flex flex-col items-center gap-4">
               <p className="self-stretch">Check out the following resources to learn more about Flowbite Figma:</p>
-              <div className="max-w-l isolate flex flex-col items-start gap-4 self-stretch">
+              <div className="isolate flex flex-col items-start gap-4 self-stretch">
                 <a
                   href="https://www.figma.com/file/xYaJr6UvThCW2LM2RjLeJf/flowbite-pro-figma-2.6.0?type=design&node-id=18-0&t=jKFrn2Dz5D8jhk7d-0"
                   className="inline-flex max-w-lg items-center justify-start gap-5 self-stretch rounded-lg border border-gray-300 bg-white px-4 py-3.5 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700 sm:gap-7"
@@ -227,7 +227,7 @@ export const FigmaSection: FC = () => {
             <div className="relative rounded-xl dark:hidden">
               <Image
                 src="/images/feature-sections/flowbite-react-figma.png"
-                className="max-w-auto w-full"
+                className="w-full"
                 alt="Flowbite Figma Design System mockup"
                 width={592}
                 height={364}
@@ -236,7 +236,7 @@ export const FigmaSection: FC = () => {
             <div className="relative hidden dark:block">
               <Image
                 src="/images/feature-sections/flowbite-react-figma-dark.png"
-                className="max-w-auto w-full rounded-xl"
+                className="w-full rounded-xl"
                 alt="Flowbite Figma Design System mockup (dark mode)"
                 width={592}
                 height={364}

@@ -49,7 +49,7 @@ export const NavbarIcons: FC = () => {
         className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 lg:block dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
       >
         <Tooltip animation={false} content="View Storybook">
-          <SiStorybook aria-hidden className="h-5 w-5" />
+          <SiStorybook aria-hidden className="size-5" />
         </Tooltip>
       </a>
       <a
@@ -57,7 +57,7 @@ export const NavbarIcons: FC = () => {
         className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 lg:block dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
       >
         <Tooltip animation={false} content="Join Discord Community">
-          <SiDiscord aria-hidden className="h-5 w-5" />
+          <SiDiscord aria-hidden className="size-5" />
         </Tooltip>
       </a>
       <a
@@ -65,7 +65,7 @@ export const NavbarIcons: FC = () => {
         className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 lg:block dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
       >
         <Tooltip animation={false} content="View on GitHub">
-          <BsGithub aria-hidden className="h-5 w-5" />
+          <BsGithub aria-hidden className="size-5" />
         </Tooltip>
       </a>
       <Tooltip animation={false} content="Toggle dark mode">

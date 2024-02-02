@@ -9,7 +9,7 @@
     "lint": {
       "cache": false
     },
-    "lint:check": {
+    "lint:fix": {
       "cache": false
     },
     "format": {

@@ -45,7 +45,7 @@ export const ContributorsSection: FC = async () => {
                     <Image
                       src={contributor.avatar_url}
                       alt={`${contributor.login} avatar`}
-                      className="h-10 w-10 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300 sm:h-12 sm:w-12 lg:h-16 lg:w-16"
+                      className="size-10 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-600 dark:text-gray-300 sm:size-12 lg:size-16"
                       width={64}
                       height={64}
                     />

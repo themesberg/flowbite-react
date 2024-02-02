@@ -46,7 +46,7 @@ const ComponentCard: FC<ComponentCardProps> = ({ link, name, image, imageDark, c
   return (
     <Link
       href={link}
-      className="dark:hover:shadow-lg-light flex flex-col rounded-lg border border-gray-200 bg-white p-0 text-gray-500 shadow-none hover:bg-gray-100 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
+      className="flex flex-col rounded-lg border border-gray-200 bg-white p-0 text-gray-500 shadow-none hover:bg-gray-100 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
     >
       <div className="flex items-center justify-between rounded-t-md border-b border-gray-200 bg-gray-50 px-5 py-2.5 dark:border-gray-700 dark:bg-gray-700">
         <span className="text-base font-medium text-gray-900 dark:text-white">{name}</span>
@@ -58,7 +58,7 @@ const ComponentCard: FC<ComponentCardProps> = ({ link, name, image, imageDark, c
             strokeWidth="2"
             stroke="currentColor"
             aria-hidden="true"
-            className="h-5 w-5"
+            className="size-5"
           >
             <path
               strokeLinecap="round"

@@ -1,3 +1,4 @@
+// components
 export * from './components/Accordion';
 export * from './components/Alert';
 export * from './components/Avatar';
@@ -41,7 +42,14 @@ export * from './components/Toast';
 export * from './components/ToggleSwitch';
 export * from './components/Tooltip';
 
+// hooks
 export * from './hooks/use-theme-mode';
 
+// theme
 export * from './theme';
+
+// helpers
+export { createTheme } from './helpers/create-theme';
+
+// theme store
 export { getTheme, getThemeMode } from './theme-store';

@@ -57,20 +57,16 @@ function DocsNavbar({ isCollapsed, setCollapsed }: DocsLayoutState) {
     >
       <div className="flex items-center">
         {isCollapsed ? (
-          <button
-            type="button"
-            className="-ml-3 mr-1 p-2 lg:ml-0 lg:mr-0 lg:hidden"
-            onClick={() => setCollapsed(!isCollapsed)}
-          >
-            <HiMenuAlt1 aria-label="Open sidebar" className="h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-300" />
+          <button type="button" className="-ml-3 mr-1 p-2 lg:mx-0 lg:hidden" onClick={() => setCollapsed(!isCollapsed)}>
+            <HiMenuAlt1 aria-label="Open sidebar" className="size-6 cursor-pointer text-gray-600 dark:text-gray-300" />
           </button>
         ) : (
           <button
             type="button"
-            className="-ml-3 mr-1 rounded p-2 dark:bg-gray-700 lg:ml-0 lg:mr-0 lg:hidden"
+            className="-ml-3 mr-1 rounded p-2 dark:bg-gray-700 lg:mx-0 lg:hidden"
             onClick={() => setCollapsed(!isCollapsed)}
           >
-            <HiX aria-label="Close sidebar" className="h-6 w-6 cursor-pointer text-gray-600 dark:text-gray-300" />
+            <HiX aria-label="Close sidebar" className="size-6 cursor-pointer text-gray-600 dark:text-gray-300" />
           </button>
         )}
         <Link href="/" className="sr-only">
@@ -81,7 +77,7 @@ function DocsNavbar({ isCollapsed, setCollapsed }: DocsLayoutState) {
           href="/"
           className="flex items-center gap-3 text-2xl font-semibold text-gray-900 dark:text-white"
         >
-          <Image alt="" height={32} src="/favicon.svg" width={32} className="h-8 w-8" />
+          <Image alt="" height={32} src="/favicon.svg" width={32} className="size-8" />
           <span>Flowbite React</span>
         </Link>
         <div className="ml-4 hidden lg:flex">
@@ -119,7 +115,7 @@ function DocsSidebar({ isCollapsed, setCollapsed }: DocsLayoutState) {
             root: {
               base: 'h-full border-r border-gray-200 dark:border-gray-600',
               inner:
-                'scrolling-touch max-w-2xs top-20 h-full overflow-y-auto bg-white px-4 pt-20 text-base font-normal dark:bg-gray-900 lg:sticky lg:mr-0 lg:block lg:h-[calc(100vh-8rem)] lg:pt-0 lg:text-sm',
+                'top-20 h-full overflow-y-auto bg-white px-4 pt-20 text-base font-normal dark:bg-gray-900 lg:sticky lg:mr-0 lg:block lg:h-[calc(100vh-8rem)] lg:pt-0 lg:text-sm',
             },
           }}
         >

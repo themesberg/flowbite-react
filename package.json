@@ -19,7 +19,7 @@
     "format": "turbo format",
     "format:check": "turbo format:check",
     "lint": "turbo lint",
-    "lint:check": "turbo lint:check",
+    "lint:fix": "turbo lint:fix",
     "test": "turbo test",
     "test:coverage": "turbo test:coverage",
     "typecheck": "turbo typecheck"
@@ -28,6 +28,9 @@
     "@ianvs/prettier-plugin-sort-imports": "4.1.1",
     "@types/bun": "1.0.2",
     "@types/web": "0.0.135",
+    "eslint": "8.56.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-tailwindcss": "3.14.1",
     "prettier": "3.2.4",
     "prettier-plugin-packagejson": "2.4.9",
     "prettier-plugin-tailwindcss": "0.5.11",

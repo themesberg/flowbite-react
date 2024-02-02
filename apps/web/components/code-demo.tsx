@@ -125,7 +125,7 @@ export function CodeDemo({ data }: CodeDemoProps) {
       <div className="code-syntax-wrapper">
         <div
           className={twMerge(
-            'code-syntax relative border-x border-y border-gray-200 dark:border-gray-600',
+            'code-syntax relative border border-gray-200 dark:border-gray-600',
             shouldExpand && 'pb-[41px]',
           )}
         >
@@ -209,7 +209,7 @@ function EditOnGithubButton({ githubSlug }: { githubSlug: string }) {
         focusable="false"
         data-icon="github"
         role="img"
-        className="h-4 w-4"
+        className="size-4"
       >
         <path
           fillRule="evenodd"
@@ -230,7 +230,7 @@ function ToggleDarkModeButton({ isDarkMode, onClick }: ComponentProps<'button'> 
         className="flex items-center rounded-lg border border-gray-200 bg-white p-2 text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
       >
         <span className="sr-only">Toggle dark/light mode</span>
-        {isDarkMode ? <HiSun className="h-4 w-4" /> : <HiMoon className="h-4 w-4" />}
+        {isDarkMode ? <HiSun className="size-4" /> : <HiMoon className="size-4" />}
       </button>
     </Tooltip>
   );
@@ -243,9 +243,9 @@ function CopyToClipboardButton({ isJustCopied, onClick }: ComponentProps<'button
       className="copy-to-clipboard-button flex items-center border-l border-gray-200 bg-gray-100 px-3 py-2 text-xs font-medium text-gray-600 hover:text-primary-700 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white"
     >
       {isJustCopied ? (
-        <BsCheckLg className="mr-2 h-4 w-4 text-green-500 dark:text-green-400" />
+        <BsCheckLg className="mr-2 size-4 text-green-500 dark:text-green-400" />
       ) : (
-        <BsFillClipboardFill className="mr-2 h-3 w-3" />
+        <BsFillClipboardFill className="mr-2 size-3" />
       )}
       {isJustCopied ? 'Code copied!' : 'Copy code'}
     </button>

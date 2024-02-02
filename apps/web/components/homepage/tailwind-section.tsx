@@ -23,7 +23,7 @@ export const TailwindSection: FC = () => {
               height={496}
             />
           </div>
-          <div className="flex w-1/2 flex-grow flex-col items-start gap-4 divide-y dark:divide-gray-700 lg:gap-8">
+          <div className="flex w-1/2 grow flex-col items-start gap-4 divide-y dark:divide-gray-700 lg:gap-8">
             <div className="flex flex-col items-start gap-3 self-stretch sm:gap-4">
               <h2 className="text-3xl font-extrabold leading-tight text-gray-900 dark:text-white lg:text-4xl">
                 Compatible with Tailwind CSS

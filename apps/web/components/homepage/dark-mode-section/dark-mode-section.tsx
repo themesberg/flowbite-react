@@ -31,7 +31,7 @@ export const DarkModeSection: FC = () => {
               height={443}
             />
           </div>
-          <div className="flex w-1/2 flex-grow flex-col items-start gap-4 divide-y dark:divide-gray-700 lg:gap-8">
+          <div className="flex w-1/2 grow flex-col items-start gap-4 divide-y dark:divide-gray-700 lg:gap-8">
             <div className="flex flex-col items-start gap-3 self-stretch sm:gap-4">
               <DarkModeSwitcher />
               <h2 className="text-3xl font-extrabold leading-tight text-gray-900 dark:text-white lg:text-4xl">
@@ -57,7 +57,7 @@ export const DarkModeSection: FC = () => {
                 {feature_list.map((f, i) => (
                   <li key={i} className="flex items-center gap-2">
                     <svg
-                      className="h-5 w-5 rounded-full bg-cyan-100 p-1 text-cyan-700 dark:bg-gray-700"
+                      className="size-5 rounded-full bg-cyan-100 p-1 text-cyan-700 dark:bg-gray-700"
                       width="14"
                       height="10"
                       viewBox="0 0 14 10"

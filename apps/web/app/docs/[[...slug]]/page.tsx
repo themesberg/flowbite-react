@@ -55,7 +55,7 @@ export default function DocPage({ params }: Props) {
 
   return (
     <div className="flex">
-      <div className="pb:12 mx-auto flex min-w-0 max-w-4xl flex-col px-4 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
+      <div className="mx-auto flex min-w-0 max-w-4xl flex-col px-4 pb-12 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
         <main>
           <ContentLayout title={doc.title} description={doc.description}>
             <Mdx code={doc.body.code} />
@@ -106,7 +106,7 @@ function DocsPager({ doc }: { doc: Doc }) {
           href={prevDoc.href}
         >
           <svg
-            className="mr-2 h-3.5 w-3.5"
+            className="mr-2 size-3.5"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -130,7 +130,7 @@ function DocsPager({ doc }: { doc: Doc }) {
         >
           {nextDoc.title}
           <svg
-            className="ml-2 h-3.5 w-3.5"
+            className="ml-2 size-3.5"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -157,7 +157,7 @@ function DocFooter() {
         <div className="grid w-full justify-between md:grid-cols-2">
           <div className="mb-4 max-w-sm lg:mb-0">
             <Link href="/" className="flex items-center gap-3">
-              <Image alt="" height="32" src="/favicon.svg" width="32" className="h-8 w-8" />
+              <Image alt="" height="32" src="/favicon.svg" width="32" className="size-8" />
               <span className="text-xl font-semibold text-gray-900 dark:text-gray-100">Flowbite React</span>
             </Link>
             <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">
