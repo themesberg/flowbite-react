@@ -26,7 +26,7 @@ function Component() {
             Build websites even faster with components on top of Tailwind CSS
           </p>
         </div>
-        <div className="flex flex-shrink-0 items-center">
+        <div className="flex shrink-0 items-center">
           <Button href="#">Sign up</Button>
           <Banner.CollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
             <HiX className="h-4 w-4" />
@@ -60,7 +60,7 @@ function Component() {
             Build websites even faster with components on top of Tailwind CSS
           </p>
         </div>
-        <div className="flex flex-shrink-0 items-center">
+        <div className="flex shrink-0 items-center">
           <Button href="#">Sign up</Button>
           <BannerCollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
             <HiX className="h-4 w-4" />
@@ -90,7 +90,7 @@ function Component() {
             Build websites even faster with components on top of Tailwind CSS
           </p>
         </div>
-        <div className="flex flex-shrink-0 items-center">
+        <div className="flex shrink-0 items-center">
           <Button href="#">Sign up</Button>
           <BannerCollapseButton color="gray" className="border-0 bg-transparent text-gray-500 dark:text-gray-400">
             <HiX className="h-4 w-4" />
