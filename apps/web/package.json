@@ -21,9 +21,9 @@
   },
   "devDependencies": {
     "@docsearch/react": "3.5.2",
-    "@types/mdx": "2.0.10",
+    "@types/mdx": "2.0.11",
     "@types/prismjs": "1.26.3",
-    "@types/react": "18.2.48",
+    "@types/react": "18.2.53",
     "@types/react-dom": "18.2.18",
     "autoprefixer": "10.4.17",
     "eslint-config-next": "14.1.0",

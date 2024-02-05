@@ -36,18 +36,18 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@floating-ui/core": "1.5.3",
-    "@floating-ui/react": "0.26.6",
+    "@floating-ui/core": "1.6.0",
+    "@floating-ui/react": "0.26.9",
     "flowbite": "2.2.1",
     "react-icons": "5.0.1",
     "react-indiana-drag-scroll": "2.2.0",
     "tailwind-merge": "2.2.1"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "6.4.0",
-    "@testing-library/react": "14.2.0",
+    "@testing-library/jest-dom": "6.4.1",
+    "@testing-library/react": "14.2.1",
     "@testing-library/user-event": "14.5.2",
-    "@types/react": "18.2.48",
+    "@types/react": "18.2.53",
     "@types/react-dom": "18.2.18",
     "@typescript-eslint/eslint-plugin": "6.20.0",
     "@typescript-eslint/parser": "6.20.0",

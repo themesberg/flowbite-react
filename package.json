@@ -26,15 +26,15 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.1.1",
-    "@types/bun": "1.0.2",
-    "@types/web": "0.0.135",
+    "@types/bun": "1.0.4",
+    "@types/web": "0.0.138",
     "eslint": "8.56.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-tailwindcss": "3.14.1",
-    "prettier": "3.2.4",
-    "prettier-plugin-packagejson": "2.4.9",
+    "prettier": "3.2.5",
+    "prettier-plugin-packagejson": "2.4.10",
     "prettier-plugin-tailwindcss": "0.5.11",
     "turbo": "latest"
   },
-  "packageManager": "bun@1.0.24"
+  "packageManager": "bun@1.0.26"
 }
