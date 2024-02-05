@@ -31,13 +31,13 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   onClick,
   ...props
 }) => {
-  const { theme: rootTheme, isOpen, setIsOpen } = useNavbarContext();
+  const { theme: rootTheme, setIsOpen } = useNavbarContext();
 
   const theme = mergeDeep(rootTheme.link, customTheme);
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    setIsOpen(!isOpen);
-    onClick && onClick(event);
+    setIsOpen(false);
+    onClick?.(event);
   };
 
   return (
