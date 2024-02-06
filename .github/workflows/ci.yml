@@ -5,52 +5,71 @@ on:
     branches:
       - main
 
-concurrency: ${{ github.ref }}
-
 jobs:
-  build:
+  format:
+    name: 💅 Format
     runs-on: ubuntu-latest
     steps:
-      - name: 📥 Check out the code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 2
+      - name: Checkout branch
+        uses: actions/checkout@v4
 
-      - name: 💿 Setup NodeJS 20
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20
+      - name: Setup
+        uses: ./.github/actions/setup
 
-      - name: ⏳ Setup Cache
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-modules-
+      - name: Run format
+        run: bun run format:check
 
-      - name: 🏭 Install packages
-        run: yarn install
+  lint:
+    name: 🕵 Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
 
-      - name: 🕵 Lint the code
-        run: yarn lint
+      - name: Setup
+        uses: ./.github/actions/setup
 
-      - name: 💅 Run Prettier
-        run: yarn prettier
+      - name: Run lint
+        run: bun run lint
 
-      - name: 🔬 Run unit tests
-        run: yarn test:coverage
+  typecheck:
+    name: ✅ Typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
 
-      - name: 📊 Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          fail_ci_if_error: true
-          files: coverage/coverage-final.json
-          token: ${{ secrets.CODECOV_TOKEN }}
-          verbose: true
+      - name: Setup
+        uses: ./.github/actions/setup
 
-      - name: 🧰 Build Library
-        run: yarn build:lib
+      - name: Run typecheck
+        run: bun run typecheck
 
-      - name: 🧰 Build NextJS
-        run: yarn build
+  test:
+    name: 🔬 Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Run unit tests
+        run: bun run test:coverage
+
+  build:
+    name: 🧰 Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Build UI
+        run: bun run build:ui
+
+      - name: Build WEB
+        run: bun run build:web
