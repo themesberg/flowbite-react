@@ -191,7 +191,7 @@ const DropdownComponent: FC<DropdownProps> = ({
         getReferenceProps={getReferenceProps}
         renderTrigger={renderTrigger}
       >
-        {label}
+        {label ?? 'Dropdown Button'}
         {arrowIcon && <Icon className={theme.arrowIcon} />}
       </Trigger>
       {open && (
