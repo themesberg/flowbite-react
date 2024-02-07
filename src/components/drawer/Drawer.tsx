@@ -64,6 +64,7 @@ const DrawerComponent: FC<DrawerProps> = ({
           theme.root.collapsed[isOpen ? 'on' : 'off'],
           className,
         )}
+        data-testid="flowbite-drawer"
         {...props}
       >
         <div>{children}</div>
