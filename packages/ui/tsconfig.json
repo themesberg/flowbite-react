@@ -20,5 +20,5 @@
     "target": "ESNext"
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["dist"]
+  "exclude": ["lib"]
 }
