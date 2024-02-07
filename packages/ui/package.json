@@ -1,6 +1,23 @@
 {
   "name": "flowbite-react",
   "version": "0.7.2",
+  "description": "Official React components built for Flowbite and Tailwind CSS",
+  "keywords": [
+    "design-system",
+    "flowbite",
+    "flowbite-react",
+    "react",
+    "tailwind",
+    "tailwindcss",
+    "tailwind-css"
+  ],
+  "homepage": "https://flowbite-react.com",
+  "bugs": "https://github.com/themesberg/flowbite-react/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/themesberg/flowbite-react.git",
+    "directory": "packages/ui"
+  },
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -61,6 +78,8 @@
     "vitest": "1.2.2"
   },
   "peerDependencies": {
-    "react": "^18.2.0"
+    "react": "^18",
+    "react-dom": "^18",
+    "tailwindcss": "^3"
   }
 }
