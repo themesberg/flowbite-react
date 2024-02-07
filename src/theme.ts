@@ -11,6 +11,7 @@ import { carouselTheme } from './components/Carousel/theme';
 import { checkboxTheme } from './components/Checkbox/theme';
 import { darkThemeToggleTheme } from './components/DarkThemeToggle/theme';
 import { datePickerTheme } from './components/Datepicker/theme';
+import { drawerTheme } from './components/drawer/theme';
 import { dropdownTheme } from './components/Dropdown/theme';
 import { fileInputTheme } from './components/FileInput/theme';
 import { floatingLabelTheme } from './components/FloatingLabel/theme';
@@ -54,6 +55,7 @@ export const theme: FlowbiteTheme = {
   checkbox: checkboxTheme,
   datepicker: datePickerTheme,
   darkThemeToggle: darkThemeToggleTheme,
+  drawer: drawerTheme,
   dropdown: dropdownTheme,
   fileInput: fileInputTheme,
   floatingLabel: floatingLabelTheme,
