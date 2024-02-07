@@ -124,7 +124,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   const {
     placement = props.inline ? 'bottom-start' : 'bottom',
     trigger = 'click',
-    label,
+    label = 'Dropdown Button',
     inline,
     arrowIcon = true,
     ...buttonProps
@@ -191,7 +191,7 @@ const DropdownComponent: FC<DropdownProps> = ({
         getReferenceProps={getReferenceProps}
         renderTrigger={renderTrigger}
       >
-        {label ?? 'Dropdown Button'}
+        {label}
         {arrowIcon && <Icon className={theme.arrowIcon} />}
       </Trigger>
       {open && (
