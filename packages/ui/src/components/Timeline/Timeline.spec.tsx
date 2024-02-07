@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import type { TimelineProps } from './Timeline';
 import { Timeline } from './Timeline';
 
-describe.concurrent('Components / Timeline', () => {
+describe('Components / Timeline', () => {
   describe('Rendering horizontal mode', () => {
     it('should remove margin-top when do not icon', () => {
       render(<TestTimelineNoIcon horizontal={true} />);

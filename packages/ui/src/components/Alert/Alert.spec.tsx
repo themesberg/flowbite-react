@@ -8,8 +8,8 @@ import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import type { AlertProps } from './Alert';
 import { Alert } from './Alert';
 
-describe.concurrent('Components / Alert', () => {
-  describe.concurrent('A11y', () => {
+describe('Components / Alert', () => {
+  describe('A11y', () => {
     it('should have `role="alert"`', () => {
       render(<TestAlert />);
 
@@ -123,7 +123,7 @@ describe.concurrent('Components / Alert', () => {
     });
   });
 
-  describe.concurrent('Keyboard interactions', () => {
+  describe('Keyboard interactions', () => {
     it('should dismiss when `Tab` is pressed to navigate to Dismiss button and `Space` is pressed', async () => {
       const onDismiss = vi.fn();
       const user = userEvent.setup();
@@ -141,7 +141,7 @@ describe.concurrent('Components / Alert', () => {
     });
   });
 
-  describe.concurrent('Props', () => {
+  describe('Props', () => {
     it('should call `onDismiss` when clicked', async () => {
       const onDismiss = vi.fn();
       const user = userEvent.setup();

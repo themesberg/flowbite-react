@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { Progress } from './Progress';
 
-describe.concurrent('Components / Progress', () => {
-  describe.concurrent('A11y', () => {
+describe('Components / Progress', () => {
+  describe('A11y', () => {
     it('should have `role="progressbar"`', () => {
       render(<Progress textLabel="Accessible name" progress={45} />);
 

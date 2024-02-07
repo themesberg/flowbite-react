@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 import type { TableProps } from './Table';
 import { Table } from './Table';
 
-describe.concurrent('Components / Table', () => {
+describe('Components / Table', () => {
   it('should be able to render a table', () => {
     render(<TestTable />);
 
