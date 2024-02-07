@@ -8,10 +8,12 @@ import type { DeepPartial } from '../../types';
 import { DrawerHeader, type FlowbiteDrawerHeaderTheme } from './DrawerHeader';
 import { DrawerContext } from './DrawerContext';
 import type { FlowbiteBoolean } from '../Flowbite';
+import { DrawerItems, type FlowbiteDrawerItemsTheme } from './DrawerItems';
 
 export interface FlowbiteDrawerTheme {
   root: FlowbiteDrawerRootTheme;
   header: FlowbiteDrawerHeaderTheme;
+  items: FlowbiteDrawerItemsTheme;
 }
 
 export interface FlowbiteDrawerRootTheme {
@@ -74,4 +76,5 @@ DrawerComponent.displayName = 'Drawer';
 
 export const Drawer = Object.assign(DrawerComponent, {
   Header: DrawerHeader,
+  Items: DrawerItems,
 });

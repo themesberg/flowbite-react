@@ -15,16 +15,19 @@ export const drawerTheme: FlowbiteDrawerTheme = {
     },
   },
   root: {
-    base: 'z-40 p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 border border-black rounded-r-md',
+    base: 'z-[99999] p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800',
     collapsed: {
       on: 'fixed',
       off: 'hidden',
     },
     position: {
-      bottom: 'bottom-0 left-0 right-0 w-full transform-none h-80',
-      left: 'top-0 left-0 h-screen -translate-x-[translateX(99%)] w-80',
-      right: 'top-0 right-0 h-screen translate-x-[translateX(99%)] w-80',
-      top: 'top-0 left-0 right-0 w-full -translate-y-[translateY(99%)] h-80',
+      bottom: 'bottom-0 left-0 right-0 w-full transform-none h-80 rounded-t-md',
+      left: 'top-0 left-0 h-screen -translate-x-[translateX(99%)] w-60 md:w-80 rounded-r-md',
+      right: 'top-0 right-0 h-screen translate-x-[translateX(99%)] w-60 md:w-80 rounded-l-md',
+      top: 'top-0 left-0 right-0 w-full -translate-y-[translateY(99%)] h-80 rounded-b-md',
     },
+  },
+  items: {
+    base: '',
   },
 };
