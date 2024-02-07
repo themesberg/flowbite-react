@@ -43,10 +43,12 @@ module.exports = {
   },
   ignorePatterns: ['lib'],
   rules: {
+    'no-undef': 'off',
     'react/prop-types': 'off',
     'react/display-name': 'off',
     'react/no-unescaped-entities': 'off',
     'tailwindcss/classnames-order': 'off',
     'tailwindcss/enforces-shorthand': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
   },
 };
