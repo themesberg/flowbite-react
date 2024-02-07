@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { useState, type FC } from 'react';
 import { describe, expect } from 'vitest';
 import { Drawer } from './Drawer';
@@ -7,8 +6,6 @@ import { Button } from '../Button';
 
 describe('Components / Drawer', () => {
   describe('Should have `data-testid="flowbite-drawer"`', async () => {
-    const user = userEvent.setup();
-
     render(<DrawerTest />);
 
     const drawerDiv = screen.getByTestId('flowbite-drawer');
