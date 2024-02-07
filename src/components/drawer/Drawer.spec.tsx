@@ -1,20 +1,26 @@
 import { render, screen } from '@testing-library/react';
 import { useState, type FC } from 'react';
-import { describe, expect } from 'vitest';
+import userEvent from '@testing-library/user-event';
+import { describe, expect, it } from 'vitest';
 import { Drawer } from './Drawer';
 import { Button } from '../Button';
 
 describe('Components / Drawer', () => {
   describe('Should have `data-testid="flowbite-drawer"`', async () => {
-    render(<DrawerTest />);
+    it('Drawer Toggle Button should be in Document', async () => {
+      const user = userEvent.setup();
 
-    const drawerDiv = screen.getByTestId('flowbite-drawer');
+      render(<DrawerTest />);
 
-    expect(drawerDiv).toHaveClass('hidden');
+      expect(button()).not.toBeInTheDocument();
+
+      await user.click(button());
+      expect(button()).toBeInTheDocument();
+    });
   });
 });
 
-// const drawerOpenButton = () => screen.getAllByRole('button');
+const button = () => screen.getByText('Drawer Toggle Button').closest('button') as HTMLButtonElement;
 
 const DrawerTest: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
