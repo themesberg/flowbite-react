@@ -1,6 +1,8 @@
 import { Button } from 'flowbite-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import type { ComponentProps, FC } from 'react';
+import { twMerge } from 'tailwind-merge';
 import { COMPONENTS_DATA } from '~/data/components';
 
 export const ComponentsSection: FC = () => {
@@ -36,9 +38,9 @@ export const ComponentsSection: FC = () => {
 
 interface ComponentCardProps extends ComponentProps<'div'> {
   link: string;
-  name?: string;
-  image?: string;
-  imageDark?: string;
+  name: string;
+  image: string;
+  imageDark: string;
   classes: string;
 }
 
@@ -69,11 +71,11 @@ const ComponentCard: FC<ComponentCardProps> = ({ link, name, image, imageDark, c
         </span>
       </div>
       <div className="flex h-52 items-center justify-center">
-        <div className={`relative dark:hidden ${classes}`}>
-          <img src={image} alt={`${name} component thumbnail`} />
+        <div className={twMerge('relative h-4/6 dark:hidden', classes)}>
+          <Image src={image} alt={`${name} component thumbnail`} fill />
         </div>
-        <div className={`relative hidden dark:block ${classes}`}>
-          <img src={imageDark} alt={`${name} dark mode component thumbnail`} />
+        <div className={twMerge('relative hidden h-4/6 dark:block', classes)}>
+          <Image src={imageDark} alt={`${name} dark mode component thumbnail`} fill />
         </div>
       </div>
     </Link>
