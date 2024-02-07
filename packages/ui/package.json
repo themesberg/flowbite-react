@@ -39,7 +39,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "rm -rf lib && bun build:cjs && bun build:esm",
+    "build": "rm -rf coverage lib && bun build:cjs && bun build:esm",
     "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --outDir lib/cjs",
     "build:esm": "tsc -p tsconfig.build.json --module ESNext --declaration --outDir lib/esm",
     "clean": "rm -rf .turbo coverage lib node_modules",
@@ -70,6 +70,7 @@
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "@vitejs/plugin-react": "4.2.1",
+    "@vitest/coverage-v8": "1.2.2",
     "eslint-plugin-react": "7.33.2",
     "eslint-plugin-storybook": "0.6.15",
     "eslint-plugin-vitest": "0.3.22",
