@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import type { FC } from 'react';
 import { useEffect, useState } from 'react';
-import { describe, expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { Pagination } from './Pagination';
 
 describe('Pagination', () => {

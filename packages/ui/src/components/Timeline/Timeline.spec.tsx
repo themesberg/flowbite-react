@@ -91,5 +91,4 @@ const IconSVG = () => (
   </svg>
 );
 
-const timeline = () => screen.getByTestId('timeline-component');
 const timelinePoint = () => screen.getByTestId('timeline-point');

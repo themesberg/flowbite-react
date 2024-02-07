@@ -25,7 +25,7 @@ export const ComponentsSection: FC = () => {
           ))}
         </div>
         <div className="mb-4 flex w-full justify-center text-center">
-          <Button href="/docs/components/accordion" color="light">
+          <Button as={Link} href="/docs/components/accordion" color="light">
             View all components
           </Button>
         </div>

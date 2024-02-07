@@ -23,7 +23,7 @@ import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
 
 function Component() {
   return (
-    <Timeline>
+    <Timeline horizontal>
       <Timeline.Item>
         <Timeline.Point icon={HiCalendar} />
         <Timeline.Content>

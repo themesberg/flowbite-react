@@ -1,5 +1,6 @@
 import { Button } from 'flowbite-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { FC } from 'react';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 import { CopyPackageInput } from './copy-package-input';
@@ -23,7 +24,12 @@ export const HeroSection: FC = () => {
                 <CopyPackageInput value="npm i flowbite-react" />
                 <div className="justify-center sm:flex sm:justify-start">
                   <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
-                    <Button href="/docs/getting-started/introduction" size="lg" className="w-full whitespace-nowrap">
+                    <Button
+                      as={Link}
+                      size="lg"
+                      className="w-full whitespace-nowrap"
+                      href="/docs/getting-started/introduction"
+                    >
                       Get started <HiOutlineArrowRight className="ml-2 mt-1 size-4" />
                     </Button>
                   </div>

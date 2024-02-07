@@ -1,5 +1,6 @@
 import { Button } from 'flowbite-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { FC } from 'react';
 import { HiOutlineArrowRight } from 'react-icons/hi';
 
@@ -75,10 +76,10 @@ export const ReactSection: FC = () => {
                 ))}
               </ul>
               <div className="flex flex-row gap-4">
-                <Button href="/docs/getting-started/quickstart">
+                <Button as={Link} href="/docs/getting-started/quickstart">
                   Start building <HiOutlineArrowRight className="ml-2 size-5" />
                 </Button>
-                <Button href="https://github.com/themesberg/flowbite-react" color="gray">
+                <Button as={Link} href="https://github.com/themesberg/flowbite-react" color="gray">
                   View on GitHub
                 </Button>
               </div>

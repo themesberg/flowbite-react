@@ -23,6 +23,7 @@ import { listGroupTheme } from './components/ListGroup/theme';
 import { modalTheme } from './components/Modal/theme';
 import { navbarTheme } from './components/Navbar/theme';
 import { paginationTheme } from './components/Pagination/theme';
+import { popoverTheme } from './components/Popover/theme';
 import { progressTheme } from './components/Progress/theme';
 import { radioTheme } from './components/Radio/theme';
 import { rangeSliderTheme } from './components/RangeSlider/theme';
@@ -65,6 +66,7 @@ export const theme: FlowbiteTheme = {
   modal: modalTheme,
   navbar: navbarTheme,
   pagination: paginationTheme,
+  popover: popoverTheme,
   progress: progressTheme,
   radio: radioTheme,
   rangeSlider: rangeSliderTheme,

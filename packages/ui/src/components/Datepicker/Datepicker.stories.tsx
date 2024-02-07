@@ -15,7 +15,9 @@ export default {
     },
     weekStart: {
       options: Object.values(WeekStart).filter((x) => typeof x === 'string'),
-      mapping: WeekStart,
+      mapping: Object.entries(WeekStart)
+        .filter(([, value]) => typeof value !== 'string')
+        .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {}),
       control: {
         type: 'select',
         labels: Object.entries(WeekStart)

@@ -21,7 +21,7 @@ function Component() {
               New brand identity has been launched for the&nbsp;
               <a
                 href="https://flowbite.com"
-                className="decoration-600 dark:decoration-500 inline font-medium text-cyan-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-cyan-500"
+                className="inline font-medium text-cyan-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-cyan-500"
               >
                 Flowbite Library
               </a>
@@ -53,7 +53,7 @@ function Component() {
               New brand identity has been launched for the&nbsp;
               <a
                 href="https://flowbite.com"
-                className="decoration-600 dark:decoration-500 inline font-medium text-cyan-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-cyan-500"
+                className="inline font-medium text-cyan-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-cyan-500"
               >
                 Flowbite Library
               </a>
@@ -80,7 +80,7 @@ function Component() {
               New brand identity has been launched for the&nbsp;
               <a
                 href="https://flowbite.com"
-                className="decoration-600 dark:decoration-500 inline font-medium text-cyan-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-cyan-500"
+                className="inline font-medium text-cyan-600 underline decoration-solid underline-offset-2 hover:no-underline dark:text-cyan-500"
               >
                 Flowbite Library
               </a>
