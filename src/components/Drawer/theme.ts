@@ -15,7 +15,7 @@ export const drawerTheme: FlowbiteDrawerTheme = {
     },
   },
   root: {
-    base: 'z-[99999] p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800',
+    base: 'z-[99999] p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 shadow',
     collapsed: {
       on: 'fixed',
       off: 'hidden',

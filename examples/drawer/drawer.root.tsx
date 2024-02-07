@@ -77,7 +77,7 @@ function Component() {
         <Button onClick={() => setIsOpen(true)}>Drawer Toggle Button</Button>
       </div>
 
-      <Drawer open={isOpen} position="left" onClose={handleClose}>
+      <Drawer open={isOpen} onClose={handleClose}>
         <Drawer.Header title="Drawer" />
         <Drawer.Items>
           <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
