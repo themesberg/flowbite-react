@@ -2,6 +2,7 @@
   "name": "flowbite-react",
   "version": "0.7.2",
   "license": "MIT",
+  "type": "module",
   "exports": {
     ".": {
       "types": "./lib/esm/index.d.ts",
