@@ -15,4 +15,5 @@ runs:
         node-version: '20'
 
     - name: Install packages
+      shell: bash
       run: bun install
