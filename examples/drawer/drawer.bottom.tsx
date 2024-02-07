@@ -19,7 +19,7 @@ const code = `
           <Button onClick={() => setIsOpen(true)}>Drawer Toggle Button</Button>
         </div>
       
-        <Drawer open={isOpen} position="left" onClose={handleClose}>
+        <Drawer open={isOpen} position="bottom" onClose={handleClose}>
           <Drawer.Header title="Drawer" />
           <Drawer.Items>
             <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
@@ -77,7 +77,7 @@ function Component() {
         <Button onClick={() => setIsOpen(true)}>Drawer Toggle Button</Button>
       </div>
 
-      <Drawer open={isOpen} position="left" onClose={handleClose}>
+      <Drawer open={isOpen} position="bottom" onClose={handleClose}>
         <Drawer.Header title="Drawer" />
         <Drawer.Items>
           <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
@@ -123,13 +123,13 @@ function Component() {
   );
 }
 
-export const root: CodeData = {
+export const bottom: CodeData = {
   type: 'single',
   code: {
     fileName: 'client',
     language: 'tsx',
     code,
   },
-  githubSlug: 'drawer/drawer.root.tsx',
+  githubSlug: 'drawer/drawer.bottom.tsx',
   component: <Component />,
 };

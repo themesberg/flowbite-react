@@ -123,13 +123,13 @@ function Component() {
   );
 }
 
-export const root: CodeData = {
+export const left: CodeData = {
   type: 'single',
   code: {
     fileName: 'client',
     language: 'tsx',
     code,
   },
-  githubSlug: 'drawer/drawer.root.tsx',
+  githubSlug: 'drawer/drawer.left.tsx',
   component: <Component />,
 };
