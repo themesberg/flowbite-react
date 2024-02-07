@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, type ComponentProps, type FC } from 'react';
+import type { ComponentProps, FC } from 'react';
+import { useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
