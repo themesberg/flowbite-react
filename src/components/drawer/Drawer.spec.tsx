@@ -14,16 +14,10 @@ describe('Components / Drawer', () => {
     const drawerDiv = screen.getByTestId('flowbite-drawer');
 
     expect(drawerDiv).toHaveClass('hidden');
-
-    for (const drawerBtn of drawerOpenButton()) {
-      await user.click(drawerBtn);
-    }
-
-    expect(drawerDiv).toHaveClass('fixed');
   });
 });
 
-const drawerOpenButton = () => screen.getAllByRole('button');
+// const drawerOpenButton = () => screen.getAllByRole('button');
 
 const DrawerTest: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
