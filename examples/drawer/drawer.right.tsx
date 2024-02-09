@@ -77,7 +77,12 @@ function Component() {
         <Button onClick={() => setIsOpen(true)}>Drawer Toggle Button</Button>
       </div>
 
-      <Drawer open={isOpen} position="right" onClose={handleClose}>
+      <Drawer
+        open={isOpen}
+        position="right"
+        onClose={handleClose}
+        theme={{ root: { collapsed: { on: 'absolute h-full' } } }}
+      >
         <Drawer.Header title="Drawer" />
         <Drawer.Items>
           <p className="mb-6 text-sm text-gray-500 dark:text-gray-400">
