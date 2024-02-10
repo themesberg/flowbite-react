@@ -23,6 +23,12 @@ function Component() {
       <Button outline pill>
         <HiOutlineArrowRight className="h-6 w-6" />
       </Button>
+      <Button color="ghost">
+        <HiOutlineArrowRight className="h-6 w-6" />
+      </Button>
+      <Button color="ghost" className="p-0" theme={{ size: { md: 'p-2.5' } }}>
+        <HiOutlineArrowRight className="h-6 w-6" />
+      </Button>
     </div>
   );
 }
@@ -47,6 +53,12 @@ function Component() {
       <Button outline pill>
         <HiOutlineArrowRight className="h-6 w-6" />
       </Button>
+      <Button color="ghost">
+        <HiOutlineArrowRight className="h-6 w-6" />
+      </Button>
+      <Button color="ghost" className="p-0" theme={{ size: { md: 'p-2.5' } }}>
+        <HiOutlineArrowRight className="h-6 w-6" />
+      </Button>
     </div>
   );
 }
@@ -65,6 +77,12 @@ function Component() {
         <HiOutlineArrowRight className="h-6 w-6" />
       </Button>
       <Button outline pill>
+        <HiOutlineArrowRight className="h-6 w-6" />
+      </Button>
+      <Button color="ghost">
+        <HiOutlineArrowRight className="h-6 w-6" />
+      </Button>
+      <Button color="ghost" className="p-0" theme={{ size: { md: 'p-2.5' } }}>
         <HiOutlineArrowRight className="h-6 w-6" />
       </Button>
     </div>
