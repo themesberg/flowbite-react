@@ -48,6 +48,7 @@ export interface FlowbiteButtonOutlineTheme extends FlowbiteBoolean {
 
 export interface ButtonColors
   extends Pick<FlowbiteColors, 'dark' | 'failure' | 'gray' | 'info' | 'light' | 'purple' | 'success' | 'warning'> {
+  ghost: string;
   [key: string]: string;
 }
 
