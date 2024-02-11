@@ -37,13 +37,13 @@ export const DrawerHeader: FC<DrawerHeaderProps> = ({
 }) => {
   const id = useId();
 
-  const { isOpen, onClose, theme: rootTheme } = useDrawerContext();
+  const { id: mainDivId, isOpen, onClose, theme: rootTheme } = useDrawerContext();
 
   const theme = mergeDeep(rootTheme.header, customTheme);
 
   return (
     <div className={twMerge(className)} {...props}>
-      <h5 className={twMerge(theme.inner.titleText)}>
+      <h5 className={twMerge(theme.inner.titleText)} id={mainDivId}>
         {TitleIcon ? (
           <TitleIcon aria-hidden className={twMerge(theme.inner.titleIcon)} />
         ) : (

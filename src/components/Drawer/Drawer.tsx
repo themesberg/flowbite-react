@@ -1,7 +1,7 @@
 'use client';
 
 import type { ComponentProps, FC } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useId } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
@@ -44,6 +44,8 @@ const DrawerComponent: FC<DrawerProps> = ({
   onClose,
   ...props
 }) => {
+  const id = useId();
+
   const theme = mergeDeep(getTheme().drawer, customTheme);
 
   useEffect(() => {
@@ -57,8 +59,10 @@ const DrawerComponent: FC<DrawerProps> = ({
   }, [onClose]);
 
   return (
-    <DrawerContext.Provider value={{ theme, onClose, isOpen }}>
+    <DrawerContext.Provider value={{ theme, onClose, isOpen, id }}>
       <div
+        role="dialog"
+        aria-describedby={`drawer-dialog-${id}`}
         className={twMerge(
           theme.root.base,
           theme.root.position[position],

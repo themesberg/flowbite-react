@@ -7,6 +7,7 @@ type DrawerContext = {
   theme: FlowbiteDrawerTheme;
   isOpen?: boolean;
   onClose?: () => void;
+  id?: string;
 };
 
 export const DrawerContext = createContext<DrawerContext | undefined>(undefined);
