@@ -3,7 +3,7 @@ import type { FlowbiteModalTheme } from "./Modal";
 
 export const modalTheme: FlowbiteModalTheme = createTheme({
   root: {
-    base: "fixed left-0 right-0 top-0 z-50 h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full",
+    base: "fixed inset-x-0 top-0 z-50 h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full",
     show: {
       on: "flex bg-gray-900 bg-opacity-50 dark:bg-opacity-80",
       off: "hidden",

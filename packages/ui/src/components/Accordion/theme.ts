@@ -10,7 +10,7 @@ export const accordionTheme: FlowbiteAccordionTheme = createTheme({
     },
   },
   content: {
-    base: "px-5 py-5 first:rounded-t-lg last:rounded-b-lg dark:bg-gray-900",
+    base: "p-5 first:rounded-t-lg last:rounded-b-lg dark:bg-gray-900",
   },
   title: {
     arrow: {
@@ -20,7 +20,7 @@ export const accordionTheme: FlowbiteAccordionTheme = createTheme({
         on: "rotate-180",
       },
     },
-    base: "flex w-full items-center justify-between px-5 py-5 text-left font-medium text-gray-500 first:rounded-t-lg last:rounded-b-lg dark:text-gray-400",
+    base: "flex w-full items-center justify-between p-5 text-left font-medium text-gray-500 first:rounded-t-lg last:rounded-b-lg dark:text-gray-400",
     flush: {
       off: "hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:hover:bg-gray-800 dark:focus:ring-gray-800",
       on: "bg-transparent dark:bg-transparent",

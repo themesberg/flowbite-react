@@ -5,7 +5,7 @@ export const alertTheme: FlowbiteAlertTheme = createTheme({
   base: "flex flex-col gap-2 p-4 text-sm",
   borderAccent: "border-t-4",
   closeButton: {
-    base: "-mx-1.5 -my-1.5 ml-auto inline-flex h-8 w-8 rounded-lg p-1.5 focus:ring-2",
+    base: "-m-1.5 ml-auto inline-flex h-8 w-8 rounded-lg p-1.5 focus:ring-2",
     icon: "h-5 w-5",
     color: {
       info: "bg-cyan-100 text-cyan-500 hover:bg-cyan-200 focus:ring-cyan-400 dark:bg-cyan-200 dark:text-cyan-600 dark:hover:bg-cyan-300",
