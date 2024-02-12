@@ -1,7 +1,7 @@
-import { Footer } from 'flowbite-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import type { FC } from 'react';
+import { Footer } from "flowbite-react";
+import Image from "next/image";
+import Link from "next/link";
+import type { FC } from "react";
 
 export const MainFooter: FC = () => {
   return (
@@ -18,14 +18,14 @@ export const MainFooter: FC = () => {
               Figma design system and other resources.
             </p>
             <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">
-              Code licensed{' '}
+              Code licensed{" "}
               <a
                 href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE"
                 className="text-cyan-600 hover:underline"
               >
                 MIT
               </a>
-              , docs{' '}
+              , docs{" "}
               <a
                 href="https://creativecommons.org/licenses/by/3.0/"
                 rel="nofollow noopener noreferrer"

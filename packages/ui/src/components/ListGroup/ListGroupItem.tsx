@@ -1,9 +1,9 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean } from '../Flowbite';
+import type { ComponentProps, FC, PropsWithChildren } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean } from "../Flowbite";
 
 export interface FlowbiteListGroupItemTheme {
   base: string;
@@ -20,12 +20,12 @@ export interface ListGroupItemProps extends PropsWithChildren {
   active?: boolean;
   disabled?: boolean;
   href?: string;
-  icon?: FC<ComponentProps<'svg'>>;
+  icon?: FC<ComponentProps<"svg">>;
   onClick?: () => void;
   theme?: DeepPartial<FlowbiteListGroupItemTheme>;
 }
 
-export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<'a'> & ComponentProps<'button'>> = ({
+export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & ComponentProps<"button">> = ({
   active: isActive,
   children,
   className,
@@ -38,21 +38,21 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<'a'> & Compon
 }) => {
   const theme = mergeDeep(getTheme().listGroup.item, customTheme);
 
-  const isLink = typeof href !== 'undefined';
-  const Component = isLink ? 'a' : 'button';
+  const isLink = typeof href !== "undefined";
+  const Component = isLink ? "a" : "button";
 
   return (
     <li className={twMerge(theme.base, className)}>
       <Component
         href={href}
         onClick={onClick}
-        type={isLink ? undefined : 'button'}
+        type={isLink ? undefined : "button"}
         disabled={disabled}
         className={twMerge(
-          theme.link.active[isActive ? 'on' : 'off'],
-          theme.link.disabled[disabled ? 'on' : 'off'],
+          theme.link.active[isActive ? "on" : "off"],
+          theme.link.disabled[disabled ? "on" : "off"],
           theme.link.base,
-          theme.link.href[isLink ? 'on' : 'off'],
+          theme.link.href[isLink ? "on" : "off"],
         )}
         {...props}
       >

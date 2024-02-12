@@ -1,8 +1,8 @@
-import type { CustomFlowbiteTheme, FlowbiteTheme } from '../components/Flowbite';
-import { cloneDeep } from '../helpers/clone-deep';
-import { mergeDeep } from '../helpers/merge-deep';
-import type { ThemeMode } from '../hooks/use-theme-mode';
-import { theme as defaultTheme } from '../theme';
+import type { CustomFlowbiteTheme, FlowbiteTheme } from "../components/Flowbite";
+import { cloneDeep } from "../helpers/clone-deep";
+import { mergeDeep } from "../helpers/merge-deep";
+import type { ThemeMode } from "../hooks/use-theme-mode";
+import { theme as defaultTheme } from "../theme";
 
 interface ThemeStore {
   mode?: ThemeMode;

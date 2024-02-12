@@ -1,21 +1,21 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC } from 'react';
-import { useState } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean } from '../Flowbite';
-import type { FlowbiteNavbarBrandTheme } from './NavbarBrand';
-import { NavbarBrand } from './NavbarBrand';
-import type { FlowbiteNavbarCollapseTheme } from './NavbarCollapse';
-import { NavbarCollapse } from './NavbarCollapse';
-import { NavbarContext } from './NavbarContext';
-import type { FlowbiteNavbarLinkTheme } from './NavbarLink';
-import { NavbarLink } from './NavbarLink';
-import type { FlowbiteNavbarToggleTheme } from './NavbarToggle';
-import { NavbarToggle } from './NavbarToggle';
+import type { ComponentProps, FC } from "react";
+import { useState } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean } from "../Flowbite";
+import type { FlowbiteNavbarBrandTheme } from "./NavbarBrand";
+import { NavbarBrand } from "./NavbarBrand";
+import type { FlowbiteNavbarCollapseTheme } from "./NavbarCollapse";
+import { NavbarCollapse } from "./NavbarCollapse";
+import { NavbarContext } from "./NavbarContext";
+import type { FlowbiteNavbarLinkTheme } from "./NavbarLink";
+import { NavbarLink } from "./NavbarLink";
+import type { FlowbiteNavbarToggleTheme } from "./NavbarToggle";
+import { NavbarToggle } from "./NavbarToggle";
 
 export interface FlowbiteNavbarTheme {
   root: FlowbiteNavbarRootTheme;
@@ -35,7 +35,7 @@ export interface FlowbiteNavbarRootTheme {
   };
 }
 
-export interface NavbarComponentProps extends ComponentProps<'nav'> {
+export interface NavbarComponentProps extends ComponentProps<"nav"> {
   menuOpen?: boolean;
   fluid?: boolean;
   rounded?: boolean;
@@ -62,23 +62,23 @@ const NavbarComponent: FC<NavbarComponentProps> = ({
       <nav
         className={twMerge(
           theme.root.base,
-          theme.root.bordered[border ? 'on' : 'off'],
-          theme.root.rounded[rounded ? 'on' : 'off'],
+          theme.root.bordered[border ? "on" : "off"],
+          theme.root.rounded[rounded ? "on" : "off"],
           className,
         )}
         {...props}
       >
-        <div className={twMerge(theme.root.inner.base, theme.root.inner.fluid[fluid ? 'on' : 'off'])}>{children}</div>
+        <div className={twMerge(theme.root.inner.base, theme.root.inner.fluid[fluid ? "on" : "off"])}>{children}</div>
       </nav>
     </NavbarContext.Provider>
   );
 };
 
-NavbarComponent.displayName = 'Navbar';
-NavbarBrand.displayName = 'Navbar.Brand';
-NavbarCollapse.displayName = 'Navbar.Collapse';
-NavbarLink.displayName = 'Navbar.Link';
-NavbarToggle.displayName = 'Navbar.Toggle';
+NavbarComponent.displayName = "Navbar";
+NavbarBrand.displayName = "Navbar.Brand";
+NavbarCollapse.displayName = "Navbar.Collapse";
+NavbarLink.displayName = "Navbar.Link";
+NavbarToggle.displayName = "Navbar.Toggle";
 
 export const Navbar = Object.assign(NavbarComponent, {
   Brand: NavbarBrand,

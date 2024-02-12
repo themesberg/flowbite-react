@@ -1,10 +1,10 @@
-import { FileInput, Label } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { FileInput, Label } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { FileInput, Label } from 'flowbite-react';
+import { FileInput, Label } from "flowbite-react";
 
 function Component() {
   return (
@@ -34,7 +34,7 @@ function Component() {
 
 const codeRSC = `
 
-import { FileInput, Label } from 'flowbite-react';
+import { FileInput, Label } from "flowbite-react";
 
 function Component() {
   return (
@@ -88,19 +88,19 @@ function Component() {
 }
 
 export const sizes: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'fileInput/fileInput.sizes.tsx',
+  githubSlug: "fileInput/fileInput.sizes.tsx",
   component: <Component />,
 };

@@ -1,25 +1,25 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FC } from 'react';
-import { HiChartPie, HiInbox, HiShoppingBag } from 'react-icons/hi';
-import { describe, expect, it } from 'vitest';
-import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
-import type { SidebarProps } from './Sidebar';
-import { Sidebar } from './Sidebar';
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import type { FC } from "react";
+import { HiChartPie, HiInbox, HiShoppingBag } from "react-icons/hi";
+import { describe, expect, it } from "vitest";
+import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import type { SidebarProps } from "./Sidebar";
+import { Sidebar } from "./Sidebar";
 
-describe('Components / Sidebar', () => {
-  describe('A11y', () => {
-    it('should use `aria-label` if provided', () => {
+describe("Components / Sidebar", () => {
+  describe("A11y", () => {
+    it("should use `aria-label` if provided", () => {
       render(<TestSidebar aria-label="My differently labelled sidebar" />);
 
-      const sidebar = screen.getByLabelText('My differently labelled sidebar');
+      const sidebar = screen.getByLabelText("My differently labelled sidebar");
 
-      expect(sidebar).toHaveAccessibleName('My differently labelled sidebar');
+      expect(sidebar).toHaveAccessibleName("My differently labelled sidebar");
     });
 
-    it('should use text content as accessible name in `Sidebar.Collapse` and `Sidebar.Item`', async () => {
+    it("should use text content as accessible name in `Sidebar.Collapse` and `Sidebar.Item`", async () => {
       const user = userEvent.setup();
-      const itemLabels = ['Dashboard', 'E-commerce', 'Products', 'Services', 'Inbox', 'My heading'];
+      const itemLabels = ["Dashboard", "E-commerce", "Products", "Services", "Inbox", "My heading"];
 
       render(<TestSidebar />);
 
@@ -32,24 +32,24 @@ describe('Components / Sidebar', () => {
       });
     });
 
-    it('should use text content as accessible name in `Sidebar.Logo`', () => {
+    it("should use text content as accessible name in `Sidebar.Logo`", () => {
       render(<TestSidebar />);
 
-      expect(logo()).toHaveAccessibleName('Flowbite');
+      expect(logo()).toHaveAccessibleName("Flowbite");
     });
 
     it('should use `imgAlt` as alternative text for image in `Sidebar.Logo` given `img=".." and imgAlt=".."`', () => {
       render(<TestSidebar />);
 
-      const logoImg = screen.getByAltText('Flowbite logo');
+      const logoImg = screen.getByAltText("Flowbite logo");
 
-      expect(logoImg).toHaveAccessibleName('Flowbite logo');
+      expect(logoImg).toHaveAccessibleName("Flowbite logo");
     });
   });
 });
 
-describe('Keyboard interactions', () => {
-  it('should expand/collapse when `Space` is pressed on a `Sidebar.Collapse`', async () => {
+describe("Keyboard interactions", () => {
+  it("should expand/collapse when `Space` is pressed on a `Sidebar.Collapse`", async () => {
     const user = userEvent.setup();
     render(<TestSidebar />);
 
@@ -65,13 +65,13 @@ describe('Keyboard interactions', () => {
   it('should follow link when `Space` is pressed on `Sidebar.Item` with `href=".."`', () => {
     render(<TestSidebar />);
 
-    const link = screen.getAllByRole('link')[1];
+    const link = screen.getAllByRole("link")[1];
 
-    expect(link).toHaveAccessibleName('Dashboard');
-    expect(link).toHaveAttribute('href', '#');
+    expect(link).toHaveAccessibleName("Dashboard");
+    expect(link).toHaveAttribute("href", "#");
   });
 
-  it('should be possible to `Tab` out', async () => {
+  it("should be possible to `Tab` out", async () => {
     const user = userEvent.setup();
     render(
       <>
@@ -80,7 +80,7 @@ describe('Keyboard interactions', () => {
       </>,
     );
 
-    const outside = screen.getByText('Outside');
+    const outside = screen.getByText("Outside");
 
     await waitFor(async () => {
       await user.tab();
@@ -90,11 +90,11 @@ describe('Keyboard interactions', () => {
   });
 });
 
-describe('Props', () => {
+describe("Props", () => {
   it('shouldn\'t display anything when `collapseBehavior="hide"`', () => {
     render(<TestSidebar collapseBehavior="hide" collapsed />);
 
-    const sidebar = screen.queryByLabelText('Sidebar');
+    const sidebar = screen.queryByLabelText("Sidebar");
 
     expect(sidebar).not.toBeVisible();
   });
@@ -108,29 +108,29 @@ describe('Props', () => {
   it("shouldn't display text content in `Sidebar.Logo` when `collapsed={true}`", () => {
     render(<TestSidebar collapsed />);
 
-    expect(logo().lastElementChild).toHaveClass('hidden');
+    expect(logo().lastElementChild).toHaveClass("hidden");
   });
 
   it('should use the HTML element provided in `Sidebar.Item as=".."`', () => {
     render(<TestSidebar />);
 
-    const asItem = screen.getByLabelText('My heading');
+    const asItem = screen.getByLabelText("My heading");
 
-    expect(asItem.tagName.toLocaleLowerCase()).toEqual('h3');
+    expect(asItem.tagName.toLocaleLowerCase()).toEqual("h3");
   });
 });
 
-describe('Theme', () => {
-  it('should use custom classes', () => {
+describe("Theme", () => {
+  it("should use custom classes", () => {
     const theme: CustomFlowbiteTheme = {
       sidebar: {
         root: {
-          base: 'bg-gray-100',
+          base: "bg-gray-100",
           collapsed: {
-            off: 'text-gray-200',
-            on: 'text-gray-300',
+            off: "text-gray-200",
+            on: "text-gray-300",
           },
-          inner: 'bg-gray-200',
+          inner: "bg-gray-200",
         },
       },
     };
@@ -141,41 +141,41 @@ describe('Theme', () => {
         <TestSidebar aria-label="collapsed" collapsed />
       </Flowbite>,
     );
-    const sidebar = getByLabelText('not-collapsed');
+    const sidebar = getByLabelText("not-collapsed");
     const inner = sidebar.firstElementChild;
-    const collapsedSidebar = getByLabelText('collapsed');
+    const collapsedSidebar = getByLabelText("collapsed");
 
-    expect(sidebar).toHaveClass('bg-gray-100');
-    expect(sidebar).toHaveClass('text-gray-200');
-    expect(inner).toHaveClass('bg-gray-200');
-    expect(collapsedSidebar).toHaveClass('text-gray-300');
+    expect(sidebar).toHaveClass("bg-gray-100");
+    expect(sidebar).toHaveClass("text-gray-200");
+    expect(inner).toHaveClass("bg-gray-200");
+    expect(collapsedSidebar).toHaveClass("text-gray-300");
   });
 
-  describe('`Sidebar.Collapse`', () => {
-    it('should use custom classes', async () => {
+  describe("`Sidebar.Collapse`", () => {
+    it("should use custom classes", async () => {
       const user = userEvent.setup();
       const theme: CustomFlowbiteTheme = {
         sidebar: {
           collapse: {
-            button: 'text-gray-100',
+            button: "text-gray-100",
             icon: {
-              base: 'text-gray-200',
+              base: "text-gray-200",
               open: {
-                off: 'bg-gray-100',
-                on: 'bg-gray-200',
+                off: "bg-gray-100",
+                on: "bg-gray-200",
               },
             },
             label: {
-              base: 'text-gray-300',
+              base: "text-gray-300",
               icon: {
-                base: 'text-gray-400',
+                base: "text-gray-400",
                 open: {
-                  on: '',
-                  off: '',
+                  on: "",
+                  off: "",
                 },
               },
             },
-            list: 'bg-gray-300',
+            list: "bg-gray-300",
           },
         },
       };
@@ -187,27 +187,27 @@ describe('Theme', () => {
       );
       const labelIcons = collapseLabels().map((label) => label.nextElementSibling);
 
-      collapseButtons().forEach((button) => expect(button).toHaveClass('text-gray-100'));
-      collapseIcons().forEach((icon) => expect(icon).toHaveClass('text-gray-200 bg-gray-100'));
-      collapseLabels().forEach((label) => expect(label).toHaveClass('text-gray-300'));
-      labelIcons.forEach((labelicon) => expect(labelicon).toHaveClass('text-gray-400'));
+      collapseButtons().forEach((button) => expect(button).toHaveClass("text-gray-100"));
+      collapseIcons().forEach((icon) => expect(icon).toHaveClass("text-gray-200 bg-gray-100"));
+      collapseLabels().forEach((label) => expect(label).toHaveClass("text-gray-300"));
+      labelIcons.forEach((labelicon) => expect(labelicon).toHaveClass("text-gray-400"));
 
       for (const button of collapseButtons()) {
         await user.click(button);
       }
 
-      collapseIcons().forEach((icon) => expect(icon).toHaveClass('bg-gray-200'));
+      collapseIcons().forEach((icon) => expect(icon).toHaveClass("bg-gray-200"));
     });
   });
 
-  describe('`Sidebar.CTA`', () => {
-    it('should use custom classes', () => {
+  describe("`Sidebar.CTA`", () => {
+    it("should use custom classes", () => {
       const theme: CustomFlowbiteTheme = {
         sidebar: {
           cta: {
-            base: 'bg-gray-100',
+            base: "bg-gray-100",
             color: {
-              primary: 'text-gray-100',
+              primary: "text-gray-100",
             },
           },
         },
@@ -219,26 +219,26 @@ describe('Theme', () => {
         </Flowbite>,
       );
 
-      expect(cta()).toHaveClass('bg-gray-100 text-gray-100');
+      expect(cta()).toHaveClass("bg-gray-100 text-gray-100");
     });
   });
 
-  describe('`Sidebar.Item`', () => {
-    it('should use custom classes', () => {
+  describe("`Sidebar.Item`", () => {
+    it("should use custom classes", () => {
       const theme: CustomFlowbiteTheme = {
         sidebar: {
           item: {
-            active: 'text-gray-100',
-            base: 'bg-gray-100',
+            active: "text-gray-100",
+            base: "bg-gray-100",
             collapsed: {
-              insideCollapse: 'text-gray-300',
+              insideCollapse: "text-gray-300",
             },
             content: {
-              base: 'bg-gray-200',
+              base: "bg-gray-200",
             },
             icon: {
-              base: 'text-gray-400',
-              active: 'bg-gray-300',
+              base: "text-gray-400",
+              active: "bg-gray-300",
             },
           },
         },
@@ -252,28 +252,28 @@ describe('Theme', () => {
       const theItems = items()
         .map((item) => item.firstElementChild)
         .map((item) => item?.firstElementChild)
-        .filter((item) => item?.tagName.toLocaleLowerCase() !== 'button') as HTMLElement[];
-      const activeItems = screen.getAllByTestId('active-item');
+        .filter((item) => item?.tagName.toLocaleLowerCase() !== "button") as HTMLElement[];
+      const activeItems = screen.getAllByTestId("active-item");
       const activeIcons = activeItems.map((item) => item.firstElementChild);
       const inactiveIcons = [...collapseIcons().filter((icon) => !activeIcons.includes(icon))];
       const inactiveItems = [...theItems.filter((item) => item !== null && !activeItems.includes(item))];
 
-      activeIcons.forEach((icon) => expect(icon).toHaveClass('bg-gray-300'));
-      activeItems.forEach((item) => expect(item).toHaveClass('text-gray-100'));
-      itemContents().forEach((content) => expect(content).toHaveClass('bg-gray-200'));
-      inactiveIcons.forEach((icon) => expect(icon).not.toHaveClass('bg-gray-300'));
-      inactiveItems.forEach((item) => expect(item).not.toHaveClass('text-gray-100'));
-      icons().forEach((icon) => expect(icon).toHaveClass('text-gray-400'));
-      theItems.forEach((item) => expect(item).toHaveClass('bg-gray-100'));
+      activeIcons.forEach((icon) => expect(icon).toHaveClass("bg-gray-300"));
+      activeItems.forEach((item) => expect(item).toHaveClass("text-gray-100"));
+      itemContents().forEach((content) => expect(content).toHaveClass("bg-gray-200"));
+      inactiveIcons.forEach((icon) => expect(icon).not.toHaveClass("bg-gray-300"));
+      inactiveItems.forEach((item) => expect(item).not.toHaveClass("text-gray-100"));
+      icons().forEach((icon) => expect(icon).toHaveClass("text-gray-400"));
+      theItems.forEach((item) => expect(item).toHaveClass("bg-gray-100"));
     });
   });
 
-  describe('`Sidebar.Items`', () => {
-    it('should use custom classes', () => {
+  describe("`Sidebar.Items`", () => {
+    it("should use custom classes", () => {
       const theme: CustomFlowbiteTheme = {
         sidebar: {
           items: {
-            base: 'text-gray-100',
+            base: "text-gray-100",
           },
         },
       };
@@ -284,16 +284,16 @@ describe('Theme', () => {
         </Flowbite>,
       );
 
-      itemsContainers().forEach((container) => expect(container).toHaveClass('text-gray-100'));
+      itemsContainers().forEach((container) => expect(container).toHaveClass("text-gray-100"));
     });
   });
 
-  describe('`Sidebar.ItemGroup`', () => {
-    it('should use custom classes', () => {
+  describe("`Sidebar.ItemGroup`", () => {
+    it("should use custom classes", () => {
       const theme: CustomFlowbiteTheme = {
         sidebar: {
           itemGroup: {
-            base: 'text-gray-100',
+            base: "text-gray-100",
           },
         },
       };
@@ -303,21 +303,21 @@ describe('Theme', () => {
           <TestSidebar />
         </Flowbite>,
       ),
-        itemGroups().forEach((group) => expect(group).toHaveClass('text-gray-100'));
+        itemGroups().forEach((group) => expect(group).toHaveClass("text-gray-100"));
     });
   });
 
-  describe('`Sidebar.Logo`', () => {
-    it('should use custom classes', () => {
+  describe("`Sidebar.Logo`", () => {
+    it("should use custom classes", () => {
       const theme: CustomFlowbiteTheme = {
         sidebar: {
           logo: {
-            base: 'text-gray-100',
+            base: "text-gray-100",
             collapsed: {
-              off: 'text-gray-300',
-              on: 'text-gray-400',
+              off: "text-gray-300",
+              on: "text-gray-400",
             },
-            img: 'text-gray-200',
+            img: "text-gray-200",
           },
         },
       };
@@ -327,7 +327,7 @@ describe('Theme', () => {
           <TestSidebar />
         </Flowbite>,
       ),
-        expect(logo()).toHaveClass('text-gray-100');
+        expect(logo()).toHaveClass("text-gray-100");
     });
   });
 });
@@ -356,24 +356,24 @@ const TestSidebar: FC<SidebarProps> = ({ ...props }) => (
   </Sidebar>
 );
 
-const collapseButtons = () => screen.getAllByRole('button');
+const collapseButtons = () => screen.getAllByRole("button");
 
-const collapses = () => screen.getAllByRole('list').slice(1);
+const collapses = () => screen.getAllByRole("list").slice(1);
 
-const collapseIcons = () => screen.getAllByTestId('flowbite-sidebar-collapse-icon');
+const collapseIcons = () => screen.getAllByTestId("flowbite-sidebar-collapse-icon");
 
-const collapseLabels = () => screen.getAllByTestId('flowbite-sidebar-collapse-label');
+const collapseLabels = () => screen.getAllByTestId("flowbite-sidebar-collapse-label");
 
-const cta = () => screen.getByText('Some content');
+const cta = () => screen.getByText("Some content");
 
-const itemContents = () => screen.getAllByTestId('flowbite-sidebar-item-content');
+const itemContents = () => screen.getAllByTestId("flowbite-sidebar-item-content");
 
-const itemGroups = () => screen.getAllByTestId('flowbite-sidebar-item-group');
+const itemGroups = () => screen.getAllByTestId("flowbite-sidebar-item-group");
 
-const icons = () => screen.getAllByTestId('flowbite-sidebar-item-icon');
+const icons = () => screen.getAllByTestId("flowbite-sidebar-item-icon");
 
-const items = () => screen.getAllByRole('listitem');
+const items = () => screen.getAllByRole("listitem");
 
-const itemsContainers = () => screen.getAllByTestId('flowbite-sidebar-items');
+const itemsContainers = () => screen.getAllByTestId("flowbite-sidebar-items");
 
-const logo = () => screen.getByLabelText('Flowbite');
+const logo = () => screen.getByLabelText("Flowbite");

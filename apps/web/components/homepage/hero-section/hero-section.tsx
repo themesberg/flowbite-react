@@ -1,9 +1,9 @@
-import { Button } from 'flowbite-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import type { FC } from 'react';
-import { HiOutlineArrowRight } from 'react-icons/hi';
-import { CopyPackageInput } from './copy-package-input';
+import { Button } from "flowbite-react";
+import Image from "next/image";
+import Link from "next/link";
+import type { FC } from "react";
+import { HiOutlineArrowRight } from "react-icons/hi";
+import { CopyPackageInput } from "./copy-package-input";
 
 export const HeroSection: FC = () => {
   return (

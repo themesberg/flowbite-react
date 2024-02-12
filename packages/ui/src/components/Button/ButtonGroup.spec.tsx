@@ -1,12 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
-import { theme } from '../../theme';
-import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
-import { Button } from './Button';
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
+import { theme } from "../../theme";
+import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { Button } from "./Button";
 
-describe('Components / Button group', () => {
-  describe('A11y', () => {
+describe("Components / Button group", () => {
+  describe("A11y", () => {
     it('should have `role="group"` by default', () => {
       render(
         <Button.Group>
@@ -19,7 +19,7 @@ describe('Components / Button group', () => {
       expect(group()).toBeInTheDocument();
     });
 
-    it('should allow `aria-label`', () => {
+    it("should allow `aria-label`", () => {
       render(
         <Button.Group aria-label="My group">
           <Button>One</Button>
@@ -27,12 +27,12 @@ describe('Components / Button group', () => {
           <Button>Three</Button>
         </Button.Group>,
       ),
-        expect(group()).toHaveAccessibleName('My group');
+        expect(group()).toHaveAccessibleName("My group");
     });
   });
 
-  describe('Keyboard interactions', () => {
-    it('should trigger `onClick` when `Space` is pressed on a `Button`', async () => {
+  describe("Keyboard interactions", () => {
+    it("should trigger `onClick` when `Space` is pressed on a `Button`", async () => {
       const user = userEvent.setup();
       const onClick = vi.fn();
 
@@ -52,7 +52,7 @@ describe('Components / Button group', () => {
       expect(onClick).toHaveBeenCalledTimes(1);
     });
 
-    it('should be possible to `Tab` out', async () => {
+    it("should be possible to `Tab` out", async () => {
       const user = userEvent.setup();
       render(
         <>
@@ -72,7 +72,7 @@ describe('Components / Button group', () => {
     });
   });
 
-  describe('Rendering', () => {
+  describe("Rendering", () => {
     it("should correctly set each `Button`'s position", () => {
       render(
         <Button.Group>
@@ -90,11 +90,11 @@ describe('Components / Button group', () => {
     });
   });
 
-  describe('Theme', () => {
-    it('should use `base` classes', () => {
+  describe("Theme", () => {
+    it("should use `base` classes", () => {
       const theme: CustomFlowbiteTheme = {
         buttonGroup: {
-          base: 'text-gray-400',
+          base: "text-gray-400",
         },
       };
 
@@ -108,13 +108,13 @@ describe('Components / Button group', () => {
         </Flowbite>,
       );
 
-      expect(group()).toHaveClass('text-gray-400');
+      expect(group()).toHaveClass("text-gray-400");
     });
 
-    it('should use `position` classes', () => {
+    it("should use `position` classes", () => {
       const theme: CustomFlowbiteTheme = {
         buttonGroup: {
-          base: 'text-gray-400',
+          base: "text-gray-400",
         },
       };
 
@@ -128,11 +128,11 @@ describe('Components / Button group', () => {
         </Flowbite>,
       );
 
-      expect(group()).toHaveClass('text-gray-400');
+      expect(group()).toHaveClass("text-gray-400");
     });
   });
 });
 
-const group = () => screen.getByRole('group');
+const group = () => screen.getByRole("group");
 
-const buttons = () => screen.getAllByRole('button');
+const buttons = () => screen.getAllByRole("button");

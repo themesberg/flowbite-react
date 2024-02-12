@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import type { ComponentProps, ElementType, FC, MouseEvent } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean } from '../Flowbite';
-import { useNavbarContext } from './NavbarContext';
+import type { ComponentProps, ElementType, FC, MouseEvent } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean } from "../Flowbite";
+import { useNavbarContext } from "./NavbarContext";
 
 export interface FlowbiteNavbarLinkTheme {
   base: string;
@@ -13,7 +13,7 @@ export interface FlowbiteNavbarLinkTheme {
   disabled: FlowbiteBoolean;
 }
 
-export interface NavbarLinkProps extends ComponentProps<'a'>, Record<string, unknown> {
+export interface NavbarLinkProps extends ComponentProps<"a">, Record<string, unknown> {
   active?: boolean;
   as?: ElementType;
   disabled?: boolean;
@@ -23,7 +23,7 @@ export interface NavbarLinkProps extends ComponentProps<'a'>, Record<string, unk
 
 export const NavbarLink: FC<NavbarLinkProps> = ({
   active,
-  as: Component = 'a',
+  as: Component = "a",
   disabled,
   children,
   className,
@@ -47,7 +47,7 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
           theme.base,
           active && theme.active.on,
           !active && !disabled && theme.active.off,
-          theme.disabled[disabled ? 'on' : 'off'],
+          theme.disabled[disabled ? "on" : "off"],
           className,
         )}
         onClick={handleClick}

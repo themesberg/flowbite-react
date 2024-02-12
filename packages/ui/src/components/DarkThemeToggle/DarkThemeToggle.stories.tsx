@@ -1,9 +1,9 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { Flowbite } from '../Flowbite';
-import { DarkThemeToggle } from './DarkThemeToggle';
+import type { Meta, StoryFn } from "@storybook/react";
+import { Flowbite } from "../Flowbite";
+import { DarkThemeToggle } from "./DarkThemeToggle";
 
 export default {
-  title: 'Components/DarkThemeToggle',
+  title: "Components/DarkThemeToggle",
   component: DarkThemeToggle,
 } as Meta;
 
@@ -14,5 +14,5 @@ const Template: StoryFn = (args) => (
 );
 
 export const DefaultDarkThemeToggle = Template.bind({});
-DefaultDarkThemeToggle.storyName = 'Default';
+DefaultDarkThemeToggle.storyName = "Default";
 DefaultDarkThemeToggle.args = {};

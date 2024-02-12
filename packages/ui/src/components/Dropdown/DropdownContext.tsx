@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import type { useInteractions } from '@floating-ui/react';
-import { createContext, useContext } from 'react';
-import type { FlowbiteDropdownTheme } from './Dropdown';
+import type { useInteractions } from "@floating-ui/react";
+import { createContext, useContext } from "react";
+import type { FlowbiteDropdownTheme } from "./Dropdown";
 
 type DropdownContext = {
   theme: FlowbiteDropdownTheme;
   activeIndex: number | null;
   dismissOnClick?: boolean;
-  getItemProps: ReturnType<typeof useInteractions>['getItemProps'];
+  getItemProps: ReturnType<typeof useInteractions>["getItemProps"];
   handleSelect: (index: number | null) => void;
 };
 
@@ -18,7 +18,7 @@ export function useDropdownContext(): DropdownContext {
   const context = useContext(DropdownContext);
 
   if (!context) {
-    throw new Error('useDropdownContext should be used within the DropdownContext provider!');
+    throw new Error("useDropdownContext should be used within the DropdownContext provider!");
   }
 
   return context;

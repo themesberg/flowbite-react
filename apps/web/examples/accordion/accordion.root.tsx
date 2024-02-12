@@ -1,10 +1,10 @@
-import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Accordion } from 'flowbite-react';
+import { Accordion } from "flowbite-react";
 
 function Component() {
   return (
@@ -81,7 +81,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from 'flowbite-react';
+import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react";
 
 function Component() {
   return (
@@ -231,19 +231,19 @@ function Component() {
 }
 
 export const root: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'accordion/accordion.root.tsx',
+  githubSlug: "accordion/accordion.root.tsx",
   component: <Component />,
 };

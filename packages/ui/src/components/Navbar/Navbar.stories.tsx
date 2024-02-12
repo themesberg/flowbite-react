@@ -1,11 +1,11 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { Avatar } from '../Avatar';
-import { Button } from '../Button';
-import { Dropdown } from '../Dropdown';
-import { Navbar, type NavbarComponentProps } from './Navbar';
+import type { Meta, StoryFn } from "@storybook/react";
+import { Avatar } from "../Avatar";
+import { Button } from "../Button";
+import { Dropdown } from "../Dropdown";
+import { Navbar, type NavbarComponentProps } from "./Navbar";
 
 export default {
-  title: 'Components/Navbar',
+  title: "Components/Navbar",
   component: Navbar,
 } as Meta;
 
@@ -16,7 +16,7 @@ const Template: StoryFn<NavbarComponentProps> = (args) => (
 );
 
 export const DefaultNavbar = Template.bind({});
-DefaultNavbar.storyName = 'Default';
+DefaultNavbar.storyName = "Default";
 DefaultNavbar.args = {
   children: (
     <>
@@ -64,7 +64,7 @@ WithCTA.args = {
 };
 
 export const WithDropdown = Template.bind({});
-WithDropdown.storyName = 'With dropdown';
+WithDropdown.storyName = "With dropdown";
 WithDropdown.args = {
   children: (
     <>

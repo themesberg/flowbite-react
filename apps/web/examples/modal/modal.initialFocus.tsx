@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { Button, Checkbox, Label, Modal, TextInput } from 'flowbite-react';
-import { useRef, useState } from 'react';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
+import { useRef, useState } from "react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Checkbox, Label, Modal, TextInput } from 'flowbite-react';
-import { useRef, useState } from 'react';
+import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
+import { useRef, useState } from "react";
 
 function Component() {
   const [openModal, setOpenModal] = useState(false);
@@ -110,12 +110,12 @@ function Component() {
 }
 
 export const initialFocus: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'modal/modal.initialFocus.tsx',
+  githubSlug: "modal/modal.initialFocus.tsx",
   component: <Component />,
 };

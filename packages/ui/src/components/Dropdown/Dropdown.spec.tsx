@@ -1,21 +1,21 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FC, PropsWithChildren } from 'react';
-import { describe, expect, it } from 'vitest';
-import type { DropdownProps } from './Dropdown';
-import { Dropdown } from './Dropdown';
+import { act, fireEvent, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import type { FC, PropsWithChildren } from "react";
+import { describe, expect, it } from "vitest";
+import type { DropdownProps } from "./Dropdown";
+import { Dropdown } from "./Dropdown";
 
 const delay = async (delayTime: number) => await new Promise((r) => setTimeout(r, delayTime));
 
-describe('Components / Dropdown', () => {
-  describe('A11y', () => {
+describe("Components / Dropdown", () => {
+  describe("A11y", () => {
     it('should use `role="menu"` in menu container', async () => {
       const user = userEvent.setup();
       render(<TestDropdown />);
 
       await act(() => user.click(button()));
 
-      expect(screen.getByRole('menu')).toBe(dropdown());
+      expect(screen.getByRole("menu")).toBe(dropdown());
     });
 
     it('should use `role="menuitem"` in dropdown items', async () => {
@@ -24,10 +24,10 @@ describe('Components / Dropdown', () => {
 
       await act(() => user.click(button()));
 
-      expect(screen.getAllByRole('menuitem')).toHaveLength(4);
+      expect(screen.getAllByRole("menuitem")).toHaveLength(4);
     });
 
-    it('should not open when `disabled={true}`', async () => {
+    it("should not open when `disabled={true}`", async () => {
       const user = userEvent.setup();
       const { rerender } = render(<TestDropdown disabled />);
 
@@ -43,8 +43,8 @@ describe('Components / Dropdown', () => {
     });
   });
 
-  describe('Keyboard interactions', () => {
-    it('should collapse if expanded when `Space` is pressed', async () => {
+  describe("Keyboard interactions", () => {
+    it("should collapse if expanded when `Space` is pressed", async () => {
       const user = userEvent.setup();
       render(<TestDropdown />);
       expect(dropdown()).not.toBeInTheDocument();
@@ -54,7 +54,7 @@ describe('Components / Dropdown', () => {
       expect(dropdown()).toBeInTheDocument();
     });
 
-    it('should expand if collapsed when `Space` is pressed', async () => {
+    it("should expand if collapsed when `Space` is pressed", async () => {
       const user = userEvent.setup();
       render(<TestDropdown />);
 
@@ -64,7 +64,7 @@ describe('Components / Dropdown', () => {
       expect(dropdown()).not.toBeInTheDocument();
     });
 
-    it('should expand when focus button and press arrow down key', async () => {
+    it("should expand when focus button and press arrow down key", async () => {
       const user = userEvent.setup();
       render(<TestDropdown />);
 
@@ -72,27 +72,27 @@ describe('Components / Dropdown', () => {
       expect(button()).toHaveFocus();
       expect(dropdown()).not.toBeInTheDocument();
 
-      await act(() => fireEvent.keyDown(button(), { key: 'ArrowDown', code: 'ArrowDown' }));
+      await act(() => fireEvent.keyDown(button(), { key: "ArrowDown", code: "ArrowDown" }));
       expect(dropdown()).toBeInTheDocument();
     });
 
-    it('should focus matching item when user types the first option char and dropdown is open', async () => {
+    it("should focus matching item when user types the first option char and dropdown is open", async () => {
       const user = userEvent.setup();
       render(<TestDropdown />);
 
       await act(() => user.click(button()));
       expect(dropdown()).toBeInTheDocument();
 
-      await act(() => fireEvent.keyDown(button(), { key: 'S', code: 'KeyS' }));
+      await act(() => fireEvent.keyDown(button(), { key: "S", code: "KeyS" }));
       await delay(20);
 
-      const item = screen.getByText('Settings');
+      const item = screen.getByText("Settings");
       expect(item).toHaveFocus();
     });
   });
 
-  describe('Mouse interactions', () => {
-    it('should collapse if item is clicked', async () => {
+  describe("Mouse interactions", () => {
+    it("should collapse if item is clicked", async () => {
       const user = userEvent.setup();
       render(<TestDropdown />);
 
@@ -102,17 +102,17 @@ describe('Components / Dropdown', () => {
       expect(dropdown()).not.toBeInTheDocument();
     });
 
-    it('should collapse if CustomTriggerItem is clicked', async () => {
+    it("should collapse if CustomTriggerItem is clicked", async () => {
       const user = userEvent.setup();
       render(<TestDropdown renderTrigger={() => <button type="button"></button>} />);
 
-      await act(() => user.click(screen.getByRole('button')));
+      await act(() => user.click(screen.getByRole("button")));
       await act(() => userEvent.click(dropdownItem()));
 
       expect(dropdown()).not.toBeInTheDocument();
     });
 
-    it('should always collapse when item is clicked', async () => {
+    it("should always collapse when item is clicked", async () => {
       const user = userEvent.setup();
       render(<TestDropdown />);
 
@@ -127,7 +127,7 @@ describe('Components / Dropdown', () => {
       expect(dropdown()).not.toBeInTheDocument();
     });
 
-    it('should not collapse in case item is clicked if dismissOnClick = false', async () => {
+    it("should not collapse in case item is clicked if dismissOnClick = false", async () => {
       const user = userEvent.setup();
       render(<TestDropdown dismissOnClick={false} />);
 
@@ -154,20 +154,20 @@ describe('Components / Dropdown', () => {
     });
   });
 
-  describe('Type of button', () => {
-    it('should be of type `button`', async () => {
+  describe("Type of button", () => {
+    it("should be of type `button`", async () => {
       render(<TestDropdown />);
-      expect(button()).toHaveAttribute('type', 'button');
+      expect(button()).toHaveAttribute("type", "button");
     });
 
-    it('should be of type `button` with inline', async () => {
+    it("should be of type `button` with inline", async () => {
       render(<TestDropdown inline />);
-      expect(button()).toHaveAttribute('type', 'button');
+      expect(button()).toHaveAttribute("type", "button");
     });
   });
 
-  describe('Dropdown item render', () => {
-    it('should override Dropdown.Item base component when using `as` prop', async () => {
+  describe("Dropdown item render", () => {
+    it("should override Dropdown.Item base component when using `as` prop", async () => {
       const user = userEvent.setup();
 
       const CustomBaseItem = ({ children }: PropsWithChildren) => {
@@ -182,8 +182,8 @@ describe('Components / Dropdown', () => {
 
       await act(() => user.click(button()));
 
-      const item = screen.getByText('Settings');
-      expect(screen.getByRole('link')).toBe(item);
+      const item = screen.getByText("Settings");
+      expect(screen.getByRole("link")).toBe(item);
     });
   });
 });
@@ -216,8 +216,8 @@ const TestDropdown: FC<Partial<DropdownProps>> = ({
   </Dropdown>
 );
 
-const button = () => screen.getByRole('button', { name: /Dropdown button/i });
+const button = () => screen.getByRole("button", { name: /Dropdown button/i });
 
-const dropdown = () => screen.queryByTestId('flowbite-dropdown');
+const dropdown = () => screen.queryByTestId("flowbite-dropdown");
 
-const dropdownItem = () => screen.getByText('Dashboard');
+const dropdownItem = () => screen.getByText("Dashboard");

@@ -1,19 +1,19 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { BsFlagFill } from 'react-icons/bs';
-import type { SelectProps } from './Select';
-import { Select } from './Select';
+import type { Meta, StoryFn } from "@storybook/react";
+import { BsFlagFill } from "react-icons/bs";
+import type { SelectProps } from "./Select";
+import { Select } from "./Select";
 
 export default {
-  title: 'Components/Select',
+  title: "Components/Select",
   component: Select,
 } as Meta;
 
 const Template: StoryFn<SelectProps> = (args) => <Select {...args} />;
 
 export const DefaultSelect = Template.bind({});
-DefaultSelect.storyName = 'Select';
+DefaultSelect.storyName = "Select";
 DefaultSelect.args = {
-  id: 'countries',
+  id: "countries",
   children: (
     <>
       <option>United States</option>
@@ -26,7 +26,7 @@ DefaultSelect.args = {
 
 export const WithIcon = Template.bind({});
 WithIcon.args = {
-  id: 'countries',
+  id: "countries",
   icon: BsFlagFill,
   children: (
     <>

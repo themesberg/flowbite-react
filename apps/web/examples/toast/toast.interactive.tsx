@@ -1,12 +1,12 @@
-import { Button, Toast, ToastToggle } from 'flowbite-react';
-import { MdLoop } from 'react-icons/md';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Toast, ToastToggle } from "flowbite-react";
+import { MdLoop } from "react-icons/md";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Toast } from 'flowbite-react';
-import { MdLoop } from 'react-icons/md';
+import { Button, Toast } from "flowbite-react";
+import { MdLoop } from "react-icons/md";
 
 function Component() {
   return (
@@ -37,8 +37,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button, Toast, ToastToggle } from 'flowbite-react';
-import { MdLoop } from 'react-icons/md';
+import { Button, Toast, ToastToggle } from "flowbite-react";
+import { MdLoop } from "react-icons/md";
 
 function Component() {
   return (
@@ -96,19 +96,19 @@ function Component() {
 }
 
 export const interactive: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'toast/toast.interactive.tsx',
+  githubSlug: "toast/toast.interactive.tsx",
   component: <Component />,
 };

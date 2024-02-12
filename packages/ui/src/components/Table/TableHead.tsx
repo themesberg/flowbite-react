@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { forwardRef, type ComponentPropsWithRef } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { useTableContext } from './TableContext';
-import type { FlowbiteTableHeadCellTheme } from './TableHeadCell';
-import { TableHeadContext } from './TableHeadContext';
+import { forwardRef, type ComponentPropsWithRef } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import { useTableContext } from "./TableContext";
+import type { FlowbiteTableHeadCellTheme } from "./TableHeadCell";
+import { TableHeadContext } from "./TableHeadContext";
 
 export interface FlowbiteTableHeadTheme {
   base: string;
   cell: FlowbiteTableHeadCellTheme;
 }
 
-export interface TableHeadProps extends ComponentPropsWithRef<'thead'> {
+export interface TableHeadProps extends ComponentPropsWithRef<"thead"> {
   theme?: DeepPartial<FlowbiteTableHeadTheme>;
 }
 
@@ -32,4 +32,4 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
     );
   },
 );
-TableHead.displayName = 'Table.Head';
+TableHead.displayName = "Table.Head";

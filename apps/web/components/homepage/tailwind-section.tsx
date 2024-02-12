@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import type { FC } from 'react';
+import Image from "next/image";
+import Link from "next/link";
+import type { FC } from "react";
 
 export const TailwindSection: FC = () => {
   return (
@@ -29,13 +29,13 @@ export const TailwindSection: FC = () => {
                 Compatible with Tailwind CSS
               </h2>
               <p className="text-lg text-gray-500 dark:text-gray-400">
-                Flowbite React uses the utility classes from Tailwind CSS under the hood and provides an advanced{' '}
+                Flowbite React uses the utility classes from Tailwind CSS under the hood and provides an advanced{" "}
                 <Link
                   href="/docs/customize/theme"
                   className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white"
                 >
                   theming system
-                </Link>{' '}
+                </Link>{" "}
                 that you can use to apply classes to UI components and their underlying HTML elements structure.
               </p>
               <p className="text-lg text-gray-500 dark:text-gray-400">
@@ -48,14 +48,14 @@ export const TailwindSection: FC = () => {
                   className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white"
                 >
                   Tailwind CSS
-                </a>{' '}
-                is the most popular and open-source utility-first CSS framework on the market and the{' '}
+                </a>{" "}
+                is the most popular and open-source utility-first CSS framework on the market and the{" "}
                 <a
                   href="https://flowbite.com"
                   className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white"
                 >
                   Flowbite ecosystem
-                </a>{' '}
+                </a>{" "}
                 uses this framework in all of the libraries including the vanilla JS, Svelte, Vue, and React one.
               </p>
               <div className="flex flex-row gap-4">
@@ -63,7 +63,7 @@ export const TailwindSection: FC = () => {
                   href="/docs/customize/theme"
                   className="flex items-center gap-4 font-medium text-cyan-600 hover:underline"
                 >
-                  Learn more about the theming system{' '}
+                  Learn more about the theming system{" "}
                   <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       fillRule="evenodd"

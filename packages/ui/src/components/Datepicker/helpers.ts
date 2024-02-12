@@ -72,7 +72,7 @@ export const getWeekDays = (lang: string, weekStart: WeekStart): string[] => {
   const date = new Date(0);
   date.setDate(date.getDate() - date.getDay() + weekStart);
 
-  const formatter = new Intl.DateTimeFormat(lang, { weekday: 'short' });
+  const formatter = new Intl.DateTimeFormat(lang, { weekday: "short" });
 
   for (let i = 0; i < 7; i++) {
     weekdays.push(formatter.format(addDays(date, i)));
@@ -101,9 +101,9 @@ export const addYears = (date: Date, amount: number): Date => {
 
 export const getFormattedDate = (language: string, date: Date, options?: Intl.DateTimeFormatOptions): string => {
   let defaultOptions: Intl.DateTimeFormatOptions = {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   };
 
   if (options) {

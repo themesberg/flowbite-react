@@ -1,10 +1,10 @@
-import { Label, TextInput } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Label, TextInput } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Label, TextInput } from 'flowbite-react';
+import { Label, TextInput } from "flowbite-react";
 
 function Component() {
   return (
@@ -45,7 +45,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Label, TextInput } from 'flowbite-react';
+import { Label, TextInput } from "flowbite-react";
 
 function Component() {
   return (
@@ -123,19 +123,19 @@ function Component() {
 }
 
 export const inputColors: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'forms/forms.inputColors.tsx',
+  githubSlug: "forms/forms.inputColors.tsx",
   component: <Component />,
 };

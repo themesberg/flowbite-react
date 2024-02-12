@@ -1,10 +1,10 @@
-import { Blockquote } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Blockquote } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Blockquote } from 'flowbite-react';
+import { Blockquote } from "flowbite-react";
 
 function Component() {
   return (
@@ -38,7 +38,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Blockquote } from 'flowbite-react';
+import { Blockquote } from "flowbite-react";
 
 function Component() {
   return (
@@ -102,19 +102,19 @@ function Component() {
 }
 
 export const paragraphContext: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'blockquote/blockquote.paragraphContext.tsx',
+  githubSlug: "blockquote/blockquote.paragraphContext.tsx",
   component: <Component />,
 };

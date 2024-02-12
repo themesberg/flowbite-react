@@ -1,10 +1,10 @@
-import { Toast, ToastToggle } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Toast, ToastToggle } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Toast } from 'flowbite-react';
+import { Toast } from "flowbite-react";
 
 function Component() {
   return (
@@ -25,7 +25,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Toast, ToastToggle } from 'flowbite-react';
+import { Toast, ToastToggle } from "flowbite-react";
 
 function Component() {
   return (
@@ -63,19 +63,19 @@ function Component() {
 }
 
 export const withButton: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'toast/toast.withButton.tsx',
+  githubSlug: "toast/toast.withButton.tsx",
   component: <Component />,
 };

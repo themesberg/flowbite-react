@@ -1,16 +1,16 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { useState } from 'react';
-import { Button } from '../Button';
-import { Popover } from './Popover';
+import type { Meta, StoryFn } from "@storybook/react";
+import { useState } from "react";
+import { Button } from "../Button";
+import { Popover } from "./Popover";
 
 export default {
-  title: 'Components/Popover',
+  title: "Components/Popover",
   component: Popover,
   argTypes: {
     trigger: {
-      options: ['click', 'hover'],
-      control: { type: 'inline-radio' },
-      defaultValue: 'click',
+      options: ["click", "hover"],
+      control: { type: "inline-radio" },
+      defaultValue: "click",
     },
   },
 } as Meta;
@@ -40,7 +40,7 @@ const Template: StoryFn<typeof Popover> = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-  placement: 'top',
+  placement: "top",
   onOpenChange: undefined,
   open: undefined,
   children: <Button>Default popover</Button>,
@@ -49,7 +49,7 @@ Default.args = {
 export const InitialOpen = Template.bind({});
 InitialOpen.args = {
   initialOpen: true,
-  placement: 'top',
+  placement: "top",
   onOpenChange: undefined,
   open: undefined,
   children: <Button>Initial open</Button>,
@@ -89,7 +89,7 @@ const ControlledTemplate: StoryFn<typeof Popover> = (args) => {
 export const Controlled = ControlledTemplate.bind({});
 Controlled.args = {
   initialOpen: true,
-  placement: 'top',
+  placement: "top",
   onOpenChange: undefined,
   open: undefined,
   children: <Button>Initial open</Button>,

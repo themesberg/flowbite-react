@@ -1,9 +1,9 @@
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteStateColors } from '../Flowbite';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteStateColors } from "../Flowbite";
 
 export interface FlowbiteLabelTheme {
   root: FlowbiteLabelRootTheme;
@@ -20,7 +20,7 @@ export interface LabelColors extends FlowbiteStateColors {
   default: string;
 }
 
-export interface LabelProps extends Omit<ComponentProps<'label'>, 'color'> {
+export interface LabelProps extends Omit<ComponentProps<"label">, "color"> {
   color?: keyof LabelColors;
   disabled?: boolean;
   theme?: DeepPartial<FlowbiteLabelTheme>;
@@ -30,7 +30,7 @@ export interface LabelProps extends Omit<ComponentProps<'label'>, 'color'> {
 export const Label: FC<LabelProps> = ({
   children,
   className,
-  color = 'default',
+  color = "default",
   disabled = false,
   theme: customTheme = {},
   value,
@@ -44,9 +44,9 @@ export const Label: FC<LabelProps> = ({
       data-testid="flowbite-label"
       {...props}
     >
-      {value ?? children ?? ''}
+      {value ?? children ?? ""}
     </label>
   );
 };
 
-Label.displayName = 'Label';
+Label.displayName = "Label";

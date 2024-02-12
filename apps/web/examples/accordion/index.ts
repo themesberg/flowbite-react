@@ -1,2 +1,2 @@
-export { collapseAll } from './accordion.collapseAll';
-export { root } from './accordion.root';
+export { collapseAll } from "./accordion.collapseAll";
+export { root } from "./accordion.root";

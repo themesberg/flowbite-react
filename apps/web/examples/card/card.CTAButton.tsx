@@ -1,10 +1,10 @@
-import { Button, Card } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Card } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Card } from 'flowbite-react';
+import { Button, Card } from "flowbite-react";
 
 function Component() {
   return (
@@ -31,7 +31,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button, Card } from 'flowbite-react';
+import { Button, Card } from "flowbite-react";
 
 function Component() {
   return (
@@ -81,19 +81,19 @@ function Component() {
 }
 
 export const CTAButton: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'card/card.CTAButton.tsx',
+  githubSlug: "card/card.CTAButton.tsx",
   component: <Component />,
 };

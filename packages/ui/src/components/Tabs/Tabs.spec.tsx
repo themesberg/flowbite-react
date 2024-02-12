@@ -1,16 +1,16 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FC } from 'react';
-import { createRef, forwardRef } from 'react';
-import { act } from 'react-dom/test-utils';
-import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
-import { MdDashboard } from 'react-icons/md';
-import { describe, expect, it, vi } from 'vitest';
-import type { TabsRef } from './Tabs';
-import { Tabs } from './Tabs';
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import type { FC } from "react";
+import { createRef, forwardRef } from "react";
+import { act } from "react-dom/test-utils";
+import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
+import { MdDashboard } from "react-icons/md";
+import { describe, expect, it, vi } from "vitest";
+import type { TabsRef } from "./Tabs";
+import { Tabs } from "./Tabs";
 
-describe('Components / Tabs', () => {
-  it('should open tab when clicked', async () => {
+describe("Components / Tabs", () => {
+  it("should open tab when clicked", async () => {
     const user = userEvent.setup();
     render(<TestTabs />);
 
@@ -21,85 +21,85 @@ describe('Components / Tabs', () => {
 
     await user.click(nextTab);
 
-    expect(firstTab()).toHaveAttribute('aria-selected', 'false');
+    expect(firstTab()).toHaveAttribute("aria-selected", "false");
     expect(nextTab).toHaveFocus();
-    expect(nextTab).toHaveAttribute('aria-selected', 'true');
+    expect(nextTab).toHaveAttribute("aria-selected", "true");
   });
 
-  it('should open focused tab when `Enter` is pressed', async () => {
+  it("should open focused tab when `Enter` is pressed", async () => {
     const user = userEvent.setup();
     render(<TestTabs />);
 
     await user.click(firstTab());
     expect(firstTab()).toHaveFocus();
 
-    await user.keyboard('[ArrowRight]');
+    await user.keyboard("[ArrowRight]");
 
     const nextTab = tabs()[1];
 
     expect(nextTab).toHaveFocus();
 
-    await user.keyboard('[Enter]');
+    await user.keyboard("[Enter]");
 
-    expect(nextTab).toHaveAttribute('aria-selected', 'true');
+    expect(nextTab).toHaveAttribute("aria-selected", "true");
   });
 
-  it('should do nothing when Left Arrow is pressed and first tab is already focused', async () => {
+  it("should do nothing when Left Arrow is pressed and first tab is already focused", async () => {
     const user = userEvent.setup();
     render(<TestTabs />);
 
     await user.click(firstTab());
     expect(firstTab()).toHaveFocus();
 
-    await user.keyboard('[ArrowLeft]');
+    await user.keyboard("[ArrowLeft]");
 
     expect(firstTab()).toHaveFocus();
   });
 
-  it('should focus previous tab when Left Arrow is pressed', async () => {
+  it("should focus previous tab when Left Arrow is pressed", async () => {
     const user = userEvent.setup();
     render(<TestTabsDifferentActiveItem />);
 
     await user.click(firstTab());
     expect(activeTab()).toHaveFocus();
 
-    await user.keyboard('[ArrowLeft]');
+    await user.keyboard("[ArrowLeft]");
 
     expect(firstTab()).toHaveFocus();
   });
 
-  it('should do nothing when Right Arrow is pressed and last tab is already focused', async () => {
+  it("should do nothing when Right Arrow is pressed and last tab is already focused", async () => {
     const user = userEvent.setup();
     render(<TestTabsLastActiveItem />);
 
     await user.click(lastTab());
 
-    expect(lastTab()).toHaveAttribute('aria-selected', 'true');
+    expect(lastTab()).toHaveAttribute("aria-selected", "true");
     expect(lastTab()).toHaveFocus();
 
-    await user.keyboard('[ArrowRight]');
+    await user.keyboard("[ArrowRight]");
 
     expect(lastTab()).toHaveFocus();
   });
 
-  it('should focus next tab when Right Arrow is pressed', async () => {
+  it("should focus next tab when Right Arrow is pressed", async () => {
     const user = userEvent.setup();
     render(<TestTabs />);
 
     await user.click(firstTab());
 
-    await user.keyboard('[ArrowRight]');
+    await user.keyboard("[ArrowRight]");
 
     const nextTab = tabs()[1];
 
     expect(nextTab).toHaveFocus();
   });
 
-  it('should call onActiveTabChanged when clicked', async () => {
+  it("should call onActiveTabChanged when clicked", async () => {
     const user = userEvent.setup();
 
     const helper = { onActiveTabChange: () => void 0 };
-    const spy = vi.spyOn(helper, 'onActiveTabChange');
+    const spy = vi.spyOn(helper, "onActiveTabChange");
 
     render(<TestTabs onActiveTabChange={helper.onActiveTabChange} />);
 
@@ -110,37 +110,37 @@ describe('Components / Tabs', () => {
 
     await user.click(nextTab);
 
-    expect(firstTab()).toHaveAttribute('aria-selected', 'false');
+    expect(firstTab()).toHaveAttribute("aria-selected", "false");
     expect(nextTab).toHaveFocus();
-    expect(nextTab).toHaveAttribute('aria-selected', 'true');
+    expect(nextTab).toHaveAttribute("aria-selected", "true");
 
     expect(spy).toHaveBeenCalledTimes(2);
     expect(spy).toHaveBeenCalledWith(1);
   });
 
-  it('should open tab and call onActiveTabChanged when setActiveTab is called', async () => {
+  it("should open tab and call onActiveTabChanged when setActiveTab is called", async () => {
     const ref = createRef<TabsRef>();
 
     const helper = { onActiveTabChange: () => void 0 };
-    const spy = vi.spyOn(helper, 'onActiveTabChange');
+    const spy = vi.spyOn(helper, "onActiveTabChange");
 
     render(<TestTabs ref={ref} onActiveTabChange={helper.onActiveTabChange} />);
 
-    expect(firstTab()).toHaveAttribute('aria-selected', 'true');
+    expect(firstTab()).toHaveAttribute("aria-selected", "true");
 
     act(() => {
       ref.current?.setActiveTab(1);
     });
 
     const nextTab = tabs()[1];
-    expect(firstTab()).toHaveAttribute('aria-selected', 'false');
-    expect(nextTab).toHaveAttribute('aria-selected', 'true');
+    expect(firstTab()).toHaveAttribute("aria-selected", "false");
+    expect(nextTab).toHaveAttribute("aria-selected", "true");
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(1);
   });
 
-  it('should have no tab item rendered when condition is false', async () => {
+  it("should have no tab item rendered when condition is false", async () => {
     render(<TestConditionalTabs condition={false} />);
     const tabsLength = tabs().length;
 
@@ -223,9 +223,9 @@ const TestTabsLastActiveItem: FC = () => (
   </Tabs>
 );
 
-const tabs = () => screen.queryAllByRole('tab');
+const tabs = () => screen.queryAllByRole("tab");
 
-const activeTab = () => tabs().find((tab) => tab.getAttribute('aria-selected') === 'true');
+const activeTab = () => tabs().find((tab) => tab.getAttribute("aria-selected") === "true");
 
 const firstTab = () => tabs()[0];
 

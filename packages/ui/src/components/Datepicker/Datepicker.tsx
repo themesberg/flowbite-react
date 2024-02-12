@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import type { FC, ReactNode } from 'react';
-import { useEffect, useRef, useState } from 'react';
-import { HiArrowLeft, HiArrowRight, HiCalendar } from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from '../TextInput';
-import { DatepickerContext } from './DatepickerContext';
+import type { FC, ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
+import { HiArrowLeft, HiArrowRight, HiCalendar } from "react-icons/hi";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from "../TextInput";
+import { DatepickerContext } from "./DatepickerContext";
 import {
   addMonths,
   addYears,
@@ -18,12 +18,12 @@ import {
   startOfYearPeriod,
   Views,
   WeekStart,
-} from './helpers';
-import type { FlowbiteDatepickerViewsDaysTheme } from './Views/Days';
-import { DatepickerViewsDays } from './Views/Days';
-import { DatepickerViewsDecades, type FlowbiteDatepickerViewsDecadesTheme } from './Views/Decades';
-import { DatepickerViewsMonth, type FlowbiteDatepickerViewsMonthsTheme } from './Views/Months';
-import { DatepickerViewsYears, type FlowbiteDatepickerViewsYearsTheme } from './Views/Years';
+} from "./helpers";
+import type { FlowbiteDatepickerViewsDaysTheme } from "./Views/Days";
+import { DatepickerViewsDays } from "./Views/Days";
+import { DatepickerViewsDecades, type FlowbiteDatepickerViewsDecadesTheme } from "./Views/Decades";
+import { DatepickerViewsMonth, type FlowbiteDatepickerViewsMonthsTheme } from "./Views/Months";
+import { DatepickerViewsYears, type FlowbiteDatepickerViewsYearsTheme } from "./Views/Years";
 
 export interface FlowbiteDatepickerTheme {
   root: {
@@ -71,7 +71,7 @@ export interface FlowbiteDatepickerPopupTheme {
   };
 }
 
-export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
+export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
   open?: boolean;
   inline?: boolean;
   autoHide?: boolean;
@@ -94,13 +94,13 @@ export const Datepicker: FC<DatepickerProps> = ({
   inline = false,
   autoHide = true, // Hide when selected the day
   showClearButton = true,
-  labelClearButton = 'Clear',
+  labelClearButton = "Clear",
   showTodayButton = true,
-  labelTodayButton = 'Today',
+  labelTodayButton = "Today",
   defaultDate = new Date(),
   minDate,
   maxDate,
-  language = 'en',
+  language = "en",
   weekStart = WeekStart.Sunday,
   className,
   theme: customTheme = {},
@@ -171,10 +171,10 @@ export const Datepicker: FC<DatepickerProps> = ({
       case Views.Years:
         return `${startOfYearPeriod(viewDate, 10)} - ${startOfYearPeriod(viewDate, 10) + 9}`;
       case Views.Months:
-        return getFormattedDate(language, viewDate, { year: 'numeric' });
+        return getFormattedDate(language, viewDate, { year: "numeric" });
       case Views.Days:
       default:
-        return getFormattedDate(language, viewDate, { month: 'long', year: 'numeric' });
+        return getFormattedDate(language, viewDate, { month: "long", year: "numeric" });
     }
   };
 
@@ -204,10 +204,10 @@ export const Datepicker: FC<DatepickerProps> = ({
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [inputRef, datepickerRef, setIsOpen]);
 
@@ -325,4 +325,4 @@ export const Datepicker: FC<DatepickerProps> = ({
   );
 };
 
-Datepicker.displayName = 'Datepicker';
+Datepicker.displayName = "Datepicker";

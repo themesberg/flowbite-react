@@ -1,10 +1,10 @@
-import { Button, Popover } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Popover } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Popover } from 'flowbite-react';
+import { Button, Popover } from "flowbite-react";
 
 function Component() {
   const content = (
@@ -32,7 +32,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button, Popover } from 'flowbite-react';
+import { Button, Popover } from "flowbite-react";
 
 function Component() {
   const content = (
@@ -84,19 +84,19 @@ function Component() {
 }
 
 export const trigger: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'popover/popover.trigger.tsx',
+  githubSlug: "popover/popover.trigger.tsx",
   component: <Component />,
 };

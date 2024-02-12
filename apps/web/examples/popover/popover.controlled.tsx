@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { Button, Label, Popover, TextInput } from 'flowbite-react';
-import { useState } from 'react';
-import { BiCaretDown } from 'react-icons/bi';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Label, Popover, TextInput } from "flowbite-react";
+import { useState } from "react";
+import { BiCaretDown } from "react-icons/bi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { BiCaretDown } from 'react-icons/bi';
-import { Button, Popover, Label, TextInput  } from 'flowbite-react';
+import { useState } from "react";
+import { BiCaretDown } from "react-icons/bi";
+import { Button, Popover, Label, TextInput  } from "flowbite-react";
 
 function Component() {
   const [open, setOpen] = useState(false);
@@ -91,14 +91,14 @@ function Component() {
 }
 
 export const controlled: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
   ],
-  githubSlug: 'popover/popover.controlled.tsx',
+  githubSlug: "popover/popover.controlled.tsx",
   component: <Component />,
 };

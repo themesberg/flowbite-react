@@ -1,7 +1,7 @@
-import React from 'react';
-import type { ThemeMode } from '../../hooks/use-theme-mode';
+import React from "react";
+import type { ThemeMode } from "../../hooks/use-theme-mode";
 
-export interface ThemeModeScriptProps extends React.ComponentPropsWithoutRef<'script'> {
+export interface ThemeModeScriptProps extends React.ComponentPropsWithoutRef<"script"> {
   mode?: ThemeMode;
 }
 
@@ -11,7 +11,7 @@ export const ThemeModeScript = ({ mode, ...others }: ThemeModeScriptProps) => {
       {...others}
       data-flowbite-theme-mode-script
       dangerouslySetInnerHTML={{
-        __html: getScript({ mode, defaultMode: 'light', localStorageKey: 'flowbite-theme-mode' }),
+        __html: getScript({ mode, defaultMode: "light", localStorageKey: "flowbite-theme-mode" }),
       }}
     />
   );
@@ -28,14 +28,14 @@ function getScript({
 }) {
   return `
     try {
-      const mode = window.localStorage.getItem('${localStorageKey}') ?? '${mode}' ?? '${defaultMode}';
+      const mode = window.localStorage.getItem("${localStorageKey}") ?? "${mode}" ?? "${defaultMode}";
       const computedMode =
-        mode === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : mode;
+        mode === "auto" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : mode;
 
-      if (computedMode === 'dark') {
-        document.documentElement.classList.add('dark');
+      if (computedMode === "dark") {
+        document.documentElement.classList.add("dark");
       } else {
-        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove("dark");
       }
     } catch (e) {}
   `;

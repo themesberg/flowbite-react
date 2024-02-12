@@ -7,15 +7,15 @@ import {
   FooterLink,
   FooterLinkGroup,
   FooterTitle,
-} from 'flowbite-react';
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
-import { type CodeData } from '~/components/code-demo';
+} from "flowbite-react";
+import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Footer } from 'flowbite-react';
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
+import { Footer } from "flowbite-react";
+import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 
 function Component() {
   return (
@@ -81,8 +81,8 @@ import {
   FooterLink,
   FooterLinkGroup,
   FooterTitle,
-} from 'flowbite-react';
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
+} from "flowbite-react";
+import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 
 function Component() {
   return (
@@ -192,19 +192,19 @@ function Component() {
 }
 
 export const socialMediaIcons: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'footer/footer.socialMediaIcons.tsx',
+  githubSlug: "footer/footer.socialMediaIcons.tsx",
   component: <Component />,
 };

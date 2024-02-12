@@ -1,12 +1,12 @@
-import { Card, Dropdown, DropdownItem } from 'flowbite-react';
-import Image from 'next/image';
-import { type CodeData } from '~/components/code-demo';
+import { Card, Dropdown, DropdownItem } from "flowbite-react";
+import Image from "next/image";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Card, Dropdown } from 'flowbite-react';
-import Image from 'next/image';
+import { Card, Dropdown } from "flowbite-react";
+import Image from "next/image";
 
 function Component() {
   return (
@@ -70,8 +70,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Card, Dropdown, DropdownItem } from 'flowbite-react';
-import Image from 'next/image';
+import { Card, Dropdown, DropdownItem } from "flowbite-react";
+import Image from "next/image";
 
 function Component() {
   return (
@@ -195,19 +195,19 @@ function Component() {
 }
 
 export const userProfile: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'card/card.userProfile.tsx',
+  githubSlug: "card/card.userProfile.tsx",
   component: <Component />,
 };

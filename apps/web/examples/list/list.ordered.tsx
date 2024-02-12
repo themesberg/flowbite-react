@@ -1,10 +1,10 @@
-import { List, ListItem } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { List, ListItem } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { List } from 'flowbite-react';
+import { List } from "flowbite-react";
 
 function Component() {
   return (
@@ -18,7 +18,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { List, ListItem } from 'flowbite-react';
+import { List, ListItem } from "flowbite-react";
 
 function Component() {
   return (
@@ -42,19 +42,19 @@ function Component() {
 }
 
 export const ordered: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'list/list.ordered.tsx',
+  githubSlug: "list/list.ordered.tsx",
   component: <Component />,
 };

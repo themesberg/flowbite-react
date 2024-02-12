@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { useSidebarContext } from './SidebarContext';
-import { SidebarItemContext } from './SidebarItemContext';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import { useSidebarContext } from "./SidebarContext";
+import { SidebarItemContext } from "./SidebarItemContext";
 
 export interface FlowbiteSidebarItemGroupTheme {
   base: string;
 }
 
-export interface SidebarItemGroupProps extends ComponentProps<'ul'> {
+export interface SidebarItemGroupProps extends ComponentProps<"ul"> {
   theme?: DeepPartial<FlowbiteSidebarItemGroupTheme>;
 }
 
@@ -32,4 +32,4 @@ export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({
   );
 };
 
-SidebarItemGroup.displayName = 'Sidebar.ItemGroup';
+SidebarItemGroup.displayName = "Sidebar.ItemGroup";

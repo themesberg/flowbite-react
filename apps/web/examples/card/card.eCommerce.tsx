@@ -1,10 +1,10 @@
-import { Card } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Card } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Card } from 'flowbite-react';
+import { Card } from "flowbite-react";
 
 function Component() {
   return (
@@ -78,7 +78,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Card } from 'flowbite-react';
+import { Card } from "flowbite-react";
 
 function Component() {
   return (
@@ -222,19 +222,19 @@ function Component() {
 }
 
 export const eCommerce: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'card/card.eCommerce.tsx',
+  githubSlug: "card/card.eCommerce.tsx",
   component: <Component />,
 };

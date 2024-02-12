@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import type { DeepPartial } from '../../types';
-import { useDropdownContext } from './DropdownContext';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import type { DeepPartial } from "../../types";
+import { useDropdownContext } from "./DropdownContext";
 
 export interface FlowbiteDropdownDividerTheme {
   divider: string;
@@ -11,7 +11,7 @@ export interface FlowbiteDropdownDividerTheme {
 
 export type DropdownDividerProps = {
   theme?: DeepPartial<FlowbiteDropdownDividerTheme>;
-} & ComponentProps<'div'>;
+} & ComponentProps<"div">;
 
 export const DropdownDivider: FC<DropdownDividerProps> = ({ className, theme: customTheme = {}, ...props }) => {
   const { theme: rootTheme } = useDropdownContext();

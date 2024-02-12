@@ -1,12 +1,12 @@
-import { Breadcrumb, BreadcrumbItem } from 'flowbite-react';
-import { HiHome } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
+import { HiHome } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Breadcrumb } from 'flowbite-react';
-import { HiHome } from 'react-icons/hi';
+import { Breadcrumb } from "flowbite-react";
+import { HiHome } from "react-icons/hi";
 
 function Component() {
   return (
@@ -22,8 +22,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Breadcrumb, BreadcrumbItem } from 'flowbite-react';
-import { HiHome } from 'react-icons/hi';
+import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
+import { HiHome } from "react-icons/hi";
 
 function Component() {
   return (
@@ -51,19 +51,19 @@ function Component() {
 }
 
 export const backgroundColor: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'breadcrumb/breadcrumb.backgroundColor.tsx',
+  githubSlug: "breadcrumb/breadcrumb.backgroundColor.tsx",
   component: <Component />,
 };

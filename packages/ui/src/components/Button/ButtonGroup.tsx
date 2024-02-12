@@ -1,10 +1,10 @@
-import type { ComponentProps, FC, ReactElement } from 'react';
-import { Children, cloneElement, useMemo } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { ButtonProps } from '../Button';
+import type { ComponentProps, FC, ReactElement } from "react";
+import { Children, cloneElement, useMemo } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { ButtonProps } from "../Button";
 
 export interface FlowbiteButtonGroupTheme {
   base: string;
@@ -18,7 +18,7 @@ export interface PositionInButtonGroup {
   end: string;
 }
 
-export interface ButtonGroupProps extends ComponentProps<'div'>, Pick<ButtonProps, 'outline' | 'pill'> {
+export interface ButtonGroupProps extends ComponentProps<"div">, Pick<ButtonProps, "outline" | "pill"> {
   theme?: DeepPartial<FlowbiteButtonGroupTheme>;
 }
 
@@ -37,7 +37,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
           outline,
           pill,
           positionInGroup:
-            index === 0 ? 'start' : index === (children as ReactElement<ButtonProps>[]).length - 1 ? 'end' : 'middle',
+            index === 0 ? "start" : index === (children as ReactElement<ButtonProps>[]).length - 1 ? "end" : "middle",
         }),
       ),
     [children, outline, pill],
@@ -51,4 +51,4 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   );
 };
 
-ButtonGroup.displayName = 'Button.Group';
+ButtonGroup.displayName = "Button.Group";

@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import { type FC } from 'react';
-import { safeResJson } from '~/helpers/http';
+import Image from "next/image";
+import { type FC } from "react";
+import { safeResJson } from "~/helpers/http";
 
 async function fetchSafe<T>(endpoint: string): Promise<T> {
   return safeResJson(await fetch(endpoint));
@@ -9,41 +9,41 @@ async function fetchSafe<T>(endpoint: string): Promise<T> {
 async function fetchStargazers(): Promise<string> {
   try {
     const result = await fetchSafe<{ stargazers_count: string }>(
-      'https://api.github.com/repos/themesberg/flowbite-react',
+      "https://api.github.com/repos/themesberg/flowbite-react",
     );
 
     return result.stargazers_count;
   } catch (error) {
-    return '';
+    return "";
   }
 }
 
 async function fetchNpmDownloads(): Promise<string> {
   try {
     const result = await fetchSafe<{ downloads: string }>(
-      'https://api.npmjs.org/downloads/point/2021-01-01:2100-01-01/flowbite-react',
+      "https://api.npmjs.org/downloads/point/2021-01-01:2100-01-01/flowbite-react",
     );
 
     return result.downloads;
   } catch (error) {
-    return '';
+    return "";
   }
 }
 
 async function fetchDiscordMembers(): Promise<string> {
   try {
     const result = await fetchSafe<{ approximate_presence_count: string }>(
-      'https://discord.com/api/v9/invites/4eeurUVvTy?with_counts=true&with_expiration=true',
+      "https://discord.com/api/v9/invites/4eeurUVvTy?with_counts=true&with_expiration=true",
     );
 
     return result.approximate_presence_count;
   } catch (error) {
-    return '';
+    return "";
   }
 }
 
 const numberWithCommas = (x: string | number) => {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
 export const SocialProofSection: FC = async () => {

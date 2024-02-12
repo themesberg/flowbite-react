@@ -1,9 +1,9 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { Avatar } from './Avatar';
-import type { AvatarGroupProps } from './AvatarGroup';
+import type { Meta, StoryFn } from "@storybook/react";
+import { Avatar } from "./Avatar";
+import type { AvatarGroupProps } from "./AvatarGroup";
 
 export default {
-  title: 'Components/Avatar',
+  title: "Components/Avatar",
   component: Avatar.Group,
 } as Meta;
 
@@ -18,5 +18,5 @@ const Template: StoryFn<AvatarGroupProps> = (args) => (
 );
 
 export const DefaultAvatarGroup = Template.bind({});
-DefaultAvatarGroup.storyName = 'Grouped';
+DefaultAvatarGroup.storyName = "Grouped";
 DefaultAvatarGroup.args = {};

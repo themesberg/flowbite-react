@@ -1,10 +1,10 @@
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBreadcrumbItemTheme } from './BreadcrumbItem';
-import { BreadcrumbItem } from './BreadcrumbItem';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBreadcrumbItemTheme } from "./BreadcrumbItem";
+import { BreadcrumbItem } from "./BreadcrumbItem";
 
 export interface FlowbiteBreadcrumbTheme {
   root: FlowbiteBreadcrumbRootTheme;
@@ -16,7 +16,7 @@ export interface FlowbiteBreadcrumbRootTheme {
   list: string;
 }
 
-export interface BreadcrumbComponentProps extends ComponentProps<'nav'> {
+export interface BreadcrumbComponentProps extends ComponentProps<"nav"> {
   theme?: DeepPartial<FlowbiteBreadcrumbRootTheme>;
 }
 
@@ -35,7 +35,7 @@ const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
   );
 };
 
-BreadcrumbComponent.displayName = 'Breadcrumb';
+BreadcrumbComponent.displayName = "Breadcrumb";
 
 export const Breadcrumb = Object.assign(BreadcrumbComponent, {
   Item: BreadcrumbItem,

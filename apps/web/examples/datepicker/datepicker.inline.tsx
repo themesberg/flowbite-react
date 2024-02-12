@@ -1,10 +1,10 @@
-import { Datepicker } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Datepicker } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Datepicker } from 'flowbite-react';
+import { Datepicker } from "flowbite-react";
 
 function Component() {
   return <Datepicker inline />;
@@ -12,7 +12,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Datepicker } from 'flowbite-react';
+import { Datepicker } from "flowbite-react";
 
 function Component() {
   return <Datepicker inline />;
@@ -24,19 +24,19 @@ function Component() {
 }
 
 export const inline: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'datepicker/datepicker.inline.tsx',
+  githubSlug: "datepicker/datepicker.inline.tsx",
   component: <Component />,
 };

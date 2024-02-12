@@ -1,15 +1,15 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import { Flowbite } from '../../';
-import { List } from './List';
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import { Flowbite } from "../../";
+import { List } from "./List";
 
-describe('Components / List group', () => {
-  describe('Theme', () => {
-    it('should use custom classes', () => {
+describe("Components / List group", () => {
+  describe("Theme", () => {
+    it("should use custom classes", () => {
       const theme = {
         list: {
           root: {
-            base: 'asd',
+            base: "asd",
           },
         },
       };
@@ -19,7 +19,7 @@ describe('Components / List group', () => {
           <TestList />
         </Flowbite>,
       ),
-        expect(listGroup()).toHaveClass('asd');
+        expect(listGroup()).toHaveClass("asd");
     });
   });
 });
@@ -34,4 +34,4 @@ const TestList = (): JSX.Element => {
   );
 };
 
-const listGroup = () => screen.getByRole('list');
+const listGroup = () => screen.getByRole("list");

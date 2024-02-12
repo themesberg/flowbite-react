@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteColors } from '../Flowbite';
-import { useSidebarContext } from './SidebarContext';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteColors } from "../Flowbite";
+import { useSidebarContext } from "./SidebarContext";
 
 export interface FlowbiteSidebarCTATheme {
   base: string;
   color: FlowbiteSidebarCTAColors;
 }
 
-export interface SidebarCTAProps extends Omit<ComponentProps<'div'>, 'color'> {
+export interface SidebarCTAProps extends Omit<ComponentProps<"div">, "color"> {
   color?: keyof FlowbiteSidebarCTAColors;
   theme?: DeepPartial<FlowbiteSidebarCTATheme>;
 }
@@ -20,14 +20,14 @@ export interface SidebarCTAProps extends Omit<ComponentProps<'div'>, 'color'> {
 export interface FlowbiteSidebarCTAColors
   extends Pick<
     FlowbiteColors,
-    'blue' | 'dark' | 'failure' | 'gray' | 'green' | 'light' | 'purple' | 'red' | 'success' | 'warning' | 'yellow'
+    "blue" | "dark" | "failure" | "gray" | "green" | "light" | "purple" | "red" | "success" | "warning" | "yellow"
   > {
   [key: string]: string;
 }
 
 export const SidebarCTA: FC<SidebarCTAProps> = ({
   children,
-  color = 'info',
+  color = "info",
   className,
   theme: customTheme = {},
   ...props
@@ -48,4 +48,4 @@ export const SidebarCTA: FC<SidebarCTAProps> = ({
   );
 };
 
-SidebarCTA.displayName = 'Sidebar.CTA';
+SidebarCTA.displayName = "Sidebar.CTA";

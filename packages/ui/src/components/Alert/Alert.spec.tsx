@@ -1,27 +1,27 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FC } from 'react';
-import { useState } from 'react';
-import { HiEye, HiHeart, HiInformationCircle } from 'react-icons/hi';
-import { describe, expect, it, vi } from 'vitest';
-import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
-import type { AlertProps } from './Alert';
-import { Alert } from './Alert';
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import type { FC } from "react";
+import { useState } from "react";
+import { HiEye, HiHeart, HiInformationCircle } from "react-icons/hi";
+import { describe, expect, it, vi } from "vitest";
+import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import type { AlertProps } from "./Alert";
+import { Alert } from "./Alert";
 
-describe('Components / Alert', () => {
-  describe('A11y', () => {
+describe("Components / Alert", () => {
+  describe("A11y", () => {
     it('should have `role="alert"`', () => {
       render(<TestAlert />);
 
       expect(alert()).toBeInTheDocument();
     });
 
-    describe('Theme', () => {
-      it('should use custom `base` classes', () => {
+    describe("Theme", () => {
+      it("should use custom `base` classes", () => {
         const theme: CustomFlowbiteTheme = {
           alert: {
             color: {
-              info: 'text-purple-100',
+              info: "text-purple-100",
             },
           },
         };
@@ -31,13 +31,13 @@ describe('Components / Alert', () => {
           </Flowbite>,
         );
 
-        expect(alert()).toHaveClass('text-purple-100');
+        expect(alert()).toHaveClass("text-purple-100");
       });
 
-      it('should use custom `borderAccent` classes', () => {
+      it("should use custom `borderAccent` classes", () => {
         const theme: CustomFlowbiteTheme = {
           alert: {
-            borderAccent: 'border-t-4 border-purple-500',
+            borderAccent: "border-t-4 border-purple-500",
           },
         };
         render(
@@ -46,13 +46,13 @@ describe('Components / Alert', () => {
           </Flowbite>,
         );
 
-        expect(alert()).toHaveClass('border-t-4 border-purple-500');
+        expect(alert()).toHaveClass("border-t-4 border-purple-500");
       });
 
-      it('should use custom `wrapper` classes', () => {
+      it("should use custom `wrapper` classes", () => {
         const theme: CustomFlowbiteTheme = {
           alert: {
-            wrapper: 'flex items-center',
+            wrapper: "flex items-center",
           },
         };
         render(
@@ -61,19 +61,19 @@ describe('Components / Alert', () => {
           </Flowbite>,
         );
 
-        expect(wrapper()).toHaveClass('flex items-center');
+        expect(wrapper()).toHaveClass("flex items-center");
       });
 
-      it('should use custom `color` classes', () => {
+      it("should use custom `color` classes", () => {
         const theme: CustomFlowbiteTheme = {
           alert: {
             closeButton: {
               color: {
-                info: 'text-purple-500 hover:bg-purple-200 dark:text-purple-600 dark:hover:text-purple-300',
+                info: "text-purple-500 hover:bg-purple-200 dark:text-purple-600 dark:hover:text-purple-300",
               },
             },
             color: {
-              info: 'text-purple-700 bg-purple-100 border-purple-500 dark:bg-purple-200 dark:text-purple-800',
+              info: "text-purple-700 bg-purple-100 border-purple-500 dark:bg-purple-200 dark:text-purple-800",
             },
           },
         };
@@ -84,17 +84,17 @@ describe('Components / Alert', () => {
         );
 
         expect(alert()).toHaveClass(
-          'text-purple-700 bg-purple-100 border-purple-500 dark:bg-purple-200 dark:text-purple-800',
+          "text-purple-700 bg-purple-100 border-purple-500 dark:bg-purple-200 dark:text-purple-800",
         );
         expect(dismiss()).toHaveClass(
-          'text-purple-500 hover:bg-purple-200 dark:text-purple-600 dark:hover:text-purple-300',
+          "text-purple-500 hover:bg-purple-200 dark:text-purple-600 dark:hover:text-purple-300",
         );
       });
 
-      it('should use custom `icon`', () => {
+      it("should use custom `icon`", () => {
         const theme: CustomFlowbiteTheme = {
           alert: {
-            icon: 'alert-custom-icon',
+            icon: "alert-custom-icon",
           },
         };
         render(
@@ -103,13 +103,13 @@ describe('Components / Alert', () => {
           </Flowbite>,
         );
 
-        expect(icon()).toHaveClass('alert-custom-icon');
+        expect(icon()).toHaveClass("alert-custom-icon");
       });
 
-      it('should show custom `rounded` class', () => {
+      it("should show custom `rounded` class", () => {
         const theme: CustomFlowbiteTheme = {
           alert: {
-            rounded: 'rounded',
+            rounded: "rounded",
           },
         };
         render(
@@ -118,13 +118,13 @@ describe('Components / Alert', () => {
           </Flowbite>,
         );
 
-        expect(alert()).toHaveClass('rounded');
+        expect(alert()).toHaveClass("rounded");
       });
     });
   });
 
-  describe('Keyboard interactions', () => {
-    it('should dismiss when `Tab` is pressed to navigate to Dismiss button and `Space` is pressed', async () => {
+  describe("Keyboard interactions", () => {
+    it("should dismiss when `Tab` is pressed to navigate to Dismiss button and `Space` is pressed", async () => {
       const onDismiss = vi.fn();
       const user = userEvent.setup();
       render(<Alert onDismiss={onDismiss} />);
@@ -135,14 +135,14 @@ describe('Components / Alert', () => {
         expect(dismiss()).toHaveFocus();
       });
 
-      await user.keyboard('[Space]');
+      await user.keyboard("[Space]");
 
       expect(onDismiss).toHaveBeenCalled();
     });
   });
 
-  describe('Props', () => {
-    it('should call `onDismiss` when clicked', async () => {
+  describe("Props", () => {
+    it("should call `onDismiss` when clicked", async () => {
       const onDismiss = vi.fn();
       const user = userEvent.setup();
       render(<Alert onDismiss={onDismiss} />);
@@ -189,15 +189,15 @@ const TestAlert: FC<AlertProps> = (props: AlertProps) => {
       rounded
       withBorderAccent
     >
-      {isDismissed ? 'dismissed' : 'waiting'}
+      {isDismissed ? "dismissed" : "waiting"}
     </Alert>
   );
 };
 
-const alert = () => screen.getByRole('alert');
+const alert = () => screen.getByRole("alert");
 
-const wrapper = () => screen.getByTestId('flowbite-alert-wrapper');
+const wrapper = () => screen.getByTestId("flowbite-alert-wrapper");
 
-const icon = () => screen.getByTestId('flowbite-alert-icon');
+const icon = () => screen.getByTestId("flowbite-alert-icon");
 
-const dismiss = () => screen.getByLabelText('Dismiss');
+const dismiss = () => screen.getByLabelText("Dismiss");

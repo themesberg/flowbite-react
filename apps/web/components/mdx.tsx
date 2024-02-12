@@ -1,21 +1,21 @@
-import { theme } from 'flowbite-react';
-import type { MDXComponents } from 'mdx/types';
-import { getMDXComponent } from 'next-contentlayer/hooks';
-import Link from 'next/link';
-import * as examples from '~/examples';
-import { CodeDemo, type CodeData } from './code-demo';
-import { CodeHighlight } from './code-highlight';
+import { theme } from "flowbite-react";
+import type { MDXComponents } from "mdx/types";
+import { getMDXComponent } from "next-contentlayer/hooks";
+import Link from "next/link";
+import * as examples from "~/examples";
+import { CodeDemo, type CodeData } from "./code-demo";
+import { CodeHighlight } from "./code-highlight";
 
 const components: MDXComponents = {
-  a: ({ ref, href = '', ...props }) => {
-    const isLocal = href.startsWith('/');
+  a: ({ ref, href = "", ...props }) => {
+    const isLocal = href.startsWith("/");
 
     return (
       <Link
         {...props}
         href={href}
         ref={ref as React.Ref<HTMLAnchorElement>}
-        {...(!isLocal && { target: '_blank', rel: 'noreferrer' })}
+        {...(!isLocal && { target: "_blank", rel: "noreferrer" })}
       />
     );
   },
@@ -48,10 +48,10 @@ const components: MDXComponents = {
   Example: ({ name }: { name: string }) => {
     function pick<T extends object>(obj: T, path: string): CodeData | undefined {
       if (!path) return obj as CodeData;
-      const properties = path.split('.');
+      const properties = path.split(".");
       const key = properties.shift() as keyof typeof obj;
       if (!(key in obj)) return;
-      return pick(obj[key] as T, properties.join('.'));
+      return pick(obj[key] as T, properties.join("."));
     }
 
     const codeData = pick(examples, name);

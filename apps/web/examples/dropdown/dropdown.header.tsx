@@ -1,10 +1,10 @@
-import { Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Dropdown } from 'flowbite-react';
+import { Dropdown } from "flowbite-react";
 
 function Component() {
   return (
@@ -24,7 +24,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from 'flowbite-react';
+import { Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from "flowbite-react";
 
 function Component() {
   return (
@@ -55,19 +55,19 @@ function Component() {
 }
 
 export const header: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'dropdown/dropdown.header.tsx',
+  githubSlug: "dropdown/dropdown.header.tsx",
   component: <Component />,
 };

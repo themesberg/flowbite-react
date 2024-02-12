@@ -1,16 +1,16 @@
-import { action } from '@storybook/addon-actions';
-import type { Meta, StoryFn } from '@storybook/react';
-import Link from 'next/link';
-import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { Button } from '../Button';
-import { Checkbox } from '../Checkbox';
-import { Label } from '../Label';
-import { TextInput } from '../TextInput';
-import type { ModalProps } from './Modal';
-import { Modal } from './Modal';
+import { action } from "@storybook/addon-actions";
+import type { Meta, StoryFn } from "@storybook/react";
+import Link from "next/link";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { Button } from "../Button";
+import { Checkbox } from "../Checkbox";
+import { Label } from "../Label";
+import { TextInput } from "../TextInput";
+import type { ModalProps } from "./Modal";
+import { Modal } from "./Modal";
 
 export default {
-  title: 'Components/Modal',
+  title: "Components/Modal",
   component: Modal,
   args: {
     show: false,
@@ -20,8 +20,8 @@ export default {
 const Template: StoryFn<ModalProps> = ({ children, ...rest }): JSX.Element => {
   return (
     <>
-      <Button onClick={action('open')}>Toggle modal</Button>
-      <Modal onClose={action('close')} {...rest}>
+      <Button onClick={action("open")}>Toggle modal</Button>
+      <Modal onClose={action("close")} {...rest}>
         {children}
       </Modal>
     </>
@@ -47,8 +47,8 @@ Default.args = {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={action('close')}>I accept</Button>
-        <Button color="gray" onClick={action('close')}>
+        <Button onClick={action("close")}>I accept</Button>
+        <Button color="gray" onClick={action("close")}>
           Decline
         </Button>
       </Modal.Footer>
@@ -57,7 +57,7 @@ Default.args = {
 };
 
 export const PopUp = Template.bind({});
-PopUp.storyName = 'Pop-up modal';
+PopUp.storyName = "Pop-up modal";
 PopUp.args = {
   children: (
     <Modal.Body>
@@ -67,10 +67,10 @@ PopUp.args = {
           Are you sure you want to delete this product?
         </h3>
         <div className="flex justify-center gap-4">
-          <Button color="red" onClick={action('close')}>
+          <Button color="red" onClick={action("close")}>
             Yes, I&apos;m sure
           </Button>
-          <Button color="gray" onClick={action('close')}>
+          <Button color="gray" onClick={action("close")}>
             No, cancel
           </Button>
         </div>
@@ -80,7 +80,7 @@ PopUp.args = {
 };
 
 export const FormElements = Template.bind({});
-FormElements.storyName = 'Form elements';
+FormElements.storyName = "Form elements";
 FormElements.args = {
   children: (
     <>

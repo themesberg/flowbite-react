@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC } from 'react';
-import { useState } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { Duration } from './ToastContext';
-import { ToastContext } from './ToastContext';
-import { ToastToggle } from './ToastToggle';
+import type { ComponentProps, FC } from "react";
+import { useState } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { Duration } from "./ToastContext";
+import { ToastContext } from "./ToastContext";
+import { ToastToggle } from "./ToastToggle";
 
 export interface FlowbiteToastTheme {
   root: {
@@ -21,20 +21,20 @@ export interface FlowbiteToastTheme {
   };
 }
 
-export interface ToastProps extends ComponentProps<'div'> {
+export interface ToastProps extends ComponentProps<"div"> {
   duration?: Duration;
   theme?: DeepPartial<FlowbiteToastTheme>;
 }
 
 const durationClasses: Record<Duration, string> = {
-  75: 'duration-75',
-  100: 'duration-100',
-  150: 'duration-150',
-  200: 'duration-200',
-  300: 'duration-300',
-  500: 'duration-500',
-  700: 'duration-700',
-  1000: 'duration-1000',
+  75: "duration-75",
+  100: "duration-100",
+  150: "duration-150",
+  200: "duration-200",
+  300: "duration-300",
+  500: "duration-500",
+  700: "duration-700",
+  1000: "duration-1000",
 };
 
 const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300, theme: customTheme = {}, ...props }) => {
@@ -61,8 +61,8 @@ const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300, t
   );
 };
 
-ToastComponent.displayName = 'Toast';
-ToastToggle.displayName = 'Toast.Toggle';
+ToastComponent.displayName = "Toast";
+ToastToggle.displayName = "Toast.Toggle";
 
 export const Toast = Object.assign(ToastComponent, {
   Toggle: ToastToggle,

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { usePathname } from 'next/navigation';
-import type { FC } from 'react';
-import { useEffect } from 'react';
+import { usePathname } from "next/navigation";
+import type { FC } from "react";
+import { useEffect } from "react";
 
 interface WindowWithCarbonAds extends Window {
   _carbonads: {
@@ -13,20 +13,20 @@ interface WindowWithCarbonAds extends Window {
 export const CarbonAds: FC = () => {
   const pathname = usePathname();
 
-  const isDevelopmentMode = process.env.NODE_ENV === 'development';
+  const isDevelopmentMode = process.env.NODE_ENV === "development";
 
   useEffect(() => {
-    const isCarbonAdsRendered = document.querySelector('#carbonads');
+    const isCarbonAdsRendered = document.querySelector("#carbonads");
 
     if (isCarbonAdsRendered) {
       (window as unknown as WindowWithCarbonAds)._carbonads.refresh();
     } else {
-      const script = document.createElement('script');
+      const script = document.createElement("script");
       script.async = true;
-      script.id = '_carbonads_js';
-      script.src = '//cdn.carbonads.com/carbon.js?serve=CEAIC53L&placement=flowbite-reactcom';
+      script.id = "_carbonads_js";
+      script.src = "//cdn.carbonads.com/carbon.js?serve=CEAIC53L&placement=flowbite-reactcom";
 
-      const container = document.querySelector('#carbon-container');
+      const container = document.querySelector("#carbon-container");
       if (container) {
         container.appendChild(script);
       }

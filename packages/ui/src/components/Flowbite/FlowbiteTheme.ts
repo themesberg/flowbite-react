@@ -1,44 +1,44 @@
-import type { DeepPartial } from '../../types';
-import type { FlowbiteAccordionTheme } from '../Accordion';
-import type { FlowbiteAlertTheme } from '../Alert';
-import type { FlowbiteAvatarTheme } from '../Avatar';
-import type { FlowbiteBadgeTheme } from '../Badge';
-import type { FlowbiteBlockquoteTheme } from '../Blockquote';
-import type { FlowbiteBreadcrumbTheme } from '../Breadcrumb';
-import type { FlowbiteButtonGroupTheme, FlowbiteButtonTheme } from '../Button';
-import type { FlowbiteCardTheme } from '../Card';
-import type { FlowbiteCarouselTheme } from '../Carousel';
-import type { FlowbiteCheckboxTheme } from '../Checkbox';
-import type { FlowbiteDarkThemeToggleTheme } from '../DarkThemeToggle';
-import type { FlowbiteDatepickerTheme } from '../Datepicker';
-import type { FlowbiteDropdownTheme } from '../Dropdown';
-import type { FlowbiteFileInputTheme } from '../FileInput';
-import type { FlowbiteFloatingLabelTheme } from '../FloatingLabel';
-import type { FlowbiteFooterTheme } from '../Footer';
-import type { FlowbiteHelperTextTheme } from '../HelperText';
-import type { FlowbiteKbdTheme } from '../Kbd';
-import type { FlowbiteLabelTheme } from '../Label';
-import type { FlowbiteListTheme } from '../List';
-import type { FlowbiteListGroupTheme } from '../ListGroup';
-import type { FlowbiteModalTheme } from '../Modal';
-import type { FlowbiteNavbarTheme } from '../Navbar';
-import type { FlowbitePaginationTheme } from '../Pagination';
-import type { FlowbitePopoverTheme } from '../Popover';
-import type { FlowbiteProgressTheme } from '../Progress';
-import type { FlowbiteRadioTheme } from '../Radio';
-import type { FlowbiteRangeSliderTheme } from '../RangeSlider';
-import type { FlowbiteRatingAdvancedTheme, FlowbiteRatingTheme } from '../Rating';
-import type { FlowbiteSelectTheme } from '../Select';
-import type { FlowbiteSidebarTheme } from '../Sidebar';
-import type { FlowbiteSpinnerTheme } from '../Spinner';
-import type { FlowbiteTableTheme } from '../Table';
-import type { FlowbiteTabsTheme } from '../Tabs';
-import type { FlowbiteTextareaTheme } from '../Textarea';
-import type { FlowbiteTextInputTheme } from '../TextInput';
-import type { FlowbiteTimelineTheme } from '../Timeline';
-import type { FlowbiteToastTheme } from '../Toast';
-import type { FlowbiteToggleSwitchTheme } from '../ToggleSwitch';
-import type { FlowbiteTooltipTheme } from '../Tooltip';
+import type { DeepPartial } from "../../types";
+import type { FlowbiteAccordionTheme } from "../Accordion";
+import type { FlowbiteAlertTheme } from "../Alert";
+import type { FlowbiteAvatarTheme } from "../Avatar";
+import type { FlowbiteBadgeTheme } from "../Badge";
+import type { FlowbiteBlockquoteTheme } from "../Blockquote";
+import type { FlowbiteBreadcrumbTheme } from "../Breadcrumb";
+import type { FlowbiteButtonGroupTheme, FlowbiteButtonTheme } from "../Button";
+import type { FlowbiteCardTheme } from "../Card";
+import type { FlowbiteCarouselTheme } from "../Carousel";
+import type { FlowbiteCheckboxTheme } from "../Checkbox";
+import type { FlowbiteDarkThemeToggleTheme } from "../DarkThemeToggle";
+import type { FlowbiteDatepickerTheme } from "../Datepicker";
+import type { FlowbiteDropdownTheme } from "../Dropdown";
+import type { FlowbiteFileInputTheme } from "../FileInput";
+import type { FlowbiteFloatingLabelTheme } from "../FloatingLabel";
+import type { FlowbiteFooterTheme } from "../Footer";
+import type { FlowbiteHelperTextTheme } from "../HelperText";
+import type { FlowbiteKbdTheme } from "../Kbd";
+import type { FlowbiteLabelTheme } from "../Label";
+import type { FlowbiteListTheme } from "../List";
+import type { FlowbiteListGroupTheme } from "../ListGroup";
+import type { FlowbiteModalTheme } from "../Modal";
+import type { FlowbiteNavbarTheme } from "../Navbar";
+import type { FlowbitePaginationTheme } from "../Pagination";
+import type { FlowbitePopoverTheme } from "../Popover";
+import type { FlowbiteProgressTheme } from "../Progress";
+import type { FlowbiteRadioTheme } from "../Radio";
+import type { FlowbiteRangeSliderTheme } from "../RangeSlider";
+import type { FlowbiteRatingAdvancedTheme, FlowbiteRatingTheme } from "../Rating";
+import type { FlowbiteSelectTheme } from "../Select";
+import type { FlowbiteSidebarTheme } from "../Sidebar";
+import type { FlowbiteSpinnerTheme } from "../Spinner";
+import type { FlowbiteTableTheme } from "../Table";
+import type { FlowbiteTabsTheme } from "../Tabs";
+import type { FlowbiteTextareaTheme } from "../Textarea";
+import type { FlowbiteTextInputTheme } from "../TextInput";
+import type { FlowbiteTimelineTheme } from "../Timeline";
+import type { FlowbiteToastTheme } from "../Toast";
+import type { FlowbiteToggleSwitchTheme } from "../ToggleSwitch";
+import type { FlowbiteTooltipTheme } from "../Tooltip";
 
 export type CustomFlowbiteTheme = DeepPartial<FlowbiteTheme>;
 
@@ -116,7 +116,7 @@ export interface FlowbiteColors extends FlowbiteStateColors {
   yellow: string;
 }
 
-export interface FlowbiteGradientColors extends Omit<FlowbiteStateColors, 'warning'> {
+export interface FlowbiteGradientColors extends Omit<FlowbiteStateColors, "warning"> {
   [key: string]: string;
   cyan: string;
   lime: string;
@@ -135,18 +135,18 @@ export interface FlowbiteGradientDuoToneColors {
   tealToLime: string;
 }
 
-export type FlowbiteHeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type FlowbiteHeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 export interface FlowbitePositions {
-  'bottom-left': string;
-  'bottom-right': string;
-  'bottom-center': string;
-  'top-left': string;
-  'top-center': string;
-  'top-right': string;
-  'center-left': string;
+  "bottom-left": string;
+  "bottom-right": string;
+  "bottom-center": string;
+  "top-left": string;
+  "top-center": string;
+  "top-right": string;
+  "center-left": string;
   center: string;
-  'center-right': string;
+  "center-right": string;
 }
 
 export interface FlowbiteSizes {
@@ -155,12 +155,12 @@ export interface FlowbiteSizes {
   md: string;
   lg: string;
   xl: string;
-  '2xl': string;
-  '3xl': string;
-  '4xl': string;
-  '5xl': string;
-  '6xl': string;
-  '7xl': string;
+  "2xl": string;
+  "3xl": string;
+  "4xl": string;
+  "5xl": string;
+  "6xl": string;
+  "7xl": string;
 }
 
 export interface FlowbiteContentPositions {

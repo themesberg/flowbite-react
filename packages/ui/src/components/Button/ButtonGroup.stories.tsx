@@ -1,9 +1,9 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { Button } from '.';
-import type { ButtonGroupProps } from './ButtonGroup';
+import type { Meta, StoryFn } from "@storybook/react";
+import { Button } from ".";
+import type { ButtonGroupProps } from "./ButtonGroup";
 
 export default {
-  title: 'Components/Button',
+  title: "Components/Button",
   component: Button.Group,
 } as Meta;
 
@@ -16,5 +16,5 @@ const Template: StoryFn<ButtonGroupProps> = (args) => (
 );
 
 export const DefaultAvatarGroup = Template.bind({});
-DefaultAvatarGroup.storyName = 'ButtonGroup';
+DefaultAvatarGroup.storyName = "ButtonGroup";
 DefaultAvatarGroup.args = {};

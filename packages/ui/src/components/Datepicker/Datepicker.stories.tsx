@@ -1,27 +1,27 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import type { DatepickerProps } from './Datepicker';
-import { Datepicker } from './Datepicker';
-import { getFirstDateInRange, WeekStart } from './helpers';
+import type { Meta, StoryFn } from "@storybook/react";
+import type { DatepickerProps } from "./Datepicker";
+import { Datepicker } from "./Datepicker";
+import { getFirstDateInRange, WeekStart } from "./helpers";
 
 export default {
-  title: 'Components/Datepicker',
+  title: "Components/Datepicker",
   component: Datepicker,
   argTypes: {
     language: {
       control: {
-        type: 'select',
-        options: ['en', 'pt-BR'],
+        type: "select",
+        options: ["en", "pt-BR"],
       },
     },
     weekStart: {
-      options: Object.values(WeekStart).filter((x) => typeof x === 'string'),
+      options: Object.values(WeekStart).filter((x) => typeof x === "string"),
       mapping: Object.entries(WeekStart)
-        .filter(([, value]) => typeof value !== 'string')
+        .filter(([, value]) => typeof value !== "string")
         .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {}),
       control: {
-        type: 'select',
+        type: "select",
         labels: Object.entries(WeekStart)
-          .filter(([, value]) => typeof value !== 'string')
+          .filter(([, value]) => typeof value !== "string")
           .reduce((acc, [key, value]) => ({ ...acc, [value]: key }), {}),
       },
     },
@@ -56,7 +56,7 @@ Default.args = {
   defaultDate: new Date(),
   minDate: undefined,
   maxDate: undefined,
-  language: 'en',
+  language: "en",
   weekStart: WeekStart.Sunday,
   theme: {},
 };

@@ -1,10 +1,10 @@
-import { Footer, FooterCopyright, FooterLink, FooterLinkGroup } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Footer, FooterCopyright, FooterLink, FooterLinkGroup } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Footer } from 'flowbite-react';
+import { Footer } from "flowbite-react";
 
 function Component() {
   return (
@@ -22,7 +22,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Footer, FooterCopyright, FooterLink, FooterLinkGroup } from 'flowbite-react';
+import { Footer, FooterCopyright, FooterLink, FooterLinkGroup } from "flowbite-react";
 
 function Component() {
   return (
@@ -54,19 +54,19 @@ function Component() {
 }
 
 export const root: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'footer/footer.root.tsx',
+  githubSlug: "footer/footer.root.tsx",
   component: <Component />,
 };

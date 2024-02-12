@@ -1,4 +1,4 @@
-import { Banner } from '~/components/banner';
+import { Banner } from "~/components/banner";
 import {
   ComponentsSection,
   ContributorsSection,
@@ -11,7 +11,7 @@ import {
   ReactSection,
   SocialProofSection,
   TailwindSection,
-} from '~/components/homepage';
+} from "~/components/homepage";
 
 export default function HomePage() {
   return (

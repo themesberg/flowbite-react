@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { forwardRef, type ComponentPropsWithRef } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import { TableBody, type FlowbiteTableBodyTheme } from './TableBody';
-import { TableCell } from './TableCell';
-import { TableContext } from './TableContext';
-import { TableHead, type FlowbiteTableHeadTheme } from './TableHead';
-import { TableHeadCell } from './TableHeadCell';
-import { TableRow, type FlowbiteTableRowTheme } from './TableRow';
+import { forwardRef, type ComponentPropsWithRef } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import { TableBody, type FlowbiteTableBodyTheme } from "./TableBody";
+import { TableCell } from "./TableCell";
+import { TableContext } from "./TableContext";
+import { TableHead, type FlowbiteTableHeadTheme } from "./TableHead";
+import { TableHeadCell } from "./TableHeadCell";
+import { TableRow, type FlowbiteTableRowTheme } from "./TableRow";
 
 export interface FlowbiteTableTheme {
   root: FlowbiteTableRootTheme;
@@ -25,7 +25,7 @@ export interface FlowbiteTableRootTheme {
   wrapper: string;
 }
 
-export interface TableProps extends ComponentPropsWithRef<'table'> {
+export interface TableProps extends ComponentPropsWithRef<"table"> {
   striped?: boolean;
   hoverable?: boolean;
   theme?: DeepPartial<FlowbiteTableTheme>;
@@ -48,7 +48,7 @@ const TableComponent = forwardRef<HTMLTableElement, TableProps>(
   },
 );
 
-TableComponent.displayName = 'Table';
+TableComponent.displayName = "Table";
 
 export const Table = Object.assign(TableComponent, {
   Head: TableHead,

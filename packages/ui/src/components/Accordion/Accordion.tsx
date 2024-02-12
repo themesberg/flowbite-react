@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC, ReactElement } from 'react';
-import { Children, cloneElement, useMemo, useState } from 'react';
-import { HiChevronDown } from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean } from '../Flowbite';
-import type { FlowbiteAccordionComponentTheme } from './AccordionContent';
-import { AccordionContent } from './AccordionContent';
-import type { AccordionPanelProps } from './AccordionPanel';
-import { AccordionPanel } from './AccordionPanel';
-import type { FlowbiteAccordionTitleTheme } from './AccordionTitle';
-import { AccordionTitle } from './AccordionTitle';
+import type { ComponentProps, FC, ReactElement } from "react";
+import { Children, cloneElement, useMemo, useState } from "react";
+import { HiChevronDown } from "react-icons/hi";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean } from "../Flowbite";
+import type { FlowbiteAccordionComponentTheme } from "./AccordionContent";
+import { AccordionContent } from "./AccordionContent";
+import type { AccordionPanelProps } from "./AccordionPanel";
+import { AccordionPanel } from "./AccordionPanel";
+import type { FlowbiteAccordionTitleTheme } from "./AccordionTitle";
+import { AccordionTitle } from "./AccordionTitle";
 
 export interface FlowbiteAccordionTheme {
   root: FlowbiteAccordionRootTheme;
@@ -26,9 +26,9 @@ export interface FlowbiteAccordionRootTheme {
   flush: FlowbiteBoolean;
 }
 
-export interface AccordionProps extends ComponentProps<'div'> {
+export interface AccordionProps extends ComponentProps<"div"> {
   alwaysOpen?: boolean;
-  arrowIcon?: FC<ComponentProps<'svg'>>;
+  arrowIcon?: FC<ComponentProps<"svg">>;
   children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];
   flush?: boolean;
   collapseAll?: boolean;
@@ -65,7 +65,7 @@ const AccordionComponent: FC<AccordionProps> = ({
 
   return (
     <div
-      className={twMerge(theme.base, theme.flush[flush ? 'on' : 'off'], className)}
+      className={twMerge(theme.base, theme.flush[flush ? "on" : "off"], className)}
       data-testid="flowbite-accordion"
       {...props}
     >
@@ -74,10 +74,10 @@ const AccordionComponent: FC<AccordionProps> = ({
   );
 };
 
-AccordionComponent.displayName = 'Accordion';
-AccordionPanel.displayName = 'Accordion.Panel';
-AccordionTitle.displayName = 'Accordion.Title';
-AccordionContent.displayName = 'Accordion.Content';
+AccordionComponent.displayName = "Accordion";
+AccordionPanel.displayName = "Accordion.Panel";
+AccordionTitle.displayName = "Accordion.Title";
+AccordionContent.displayName = "Accordion.Content";
 
 export const Accordion = Object.assign(AccordionComponent, {
   Panel: AccordionPanel,

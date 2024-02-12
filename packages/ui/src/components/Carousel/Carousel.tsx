@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC, ReactElement, ReactNode } from 'react';
-import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
-import ScrollContainer from 'react-indiana-drag-scroll';
-import { twMerge } from 'tailwind-merge';
-import { isClient } from '../../helpers/is-client';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean } from '../Flowbite';
+import type { ComponentProps, FC, ReactElement, ReactNode } from "react";
+import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
+import ScrollContainer from "react-indiana-drag-scroll";
+import { twMerge } from "tailwind-merge";
+import { isClient } from "../../helpers/is-client";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean } from "../Flowbite";
 
 export interface FlowbiteCarouselTheme {
   root: FlowbiteCarouselRootTheme;
@@ -46,7 +46,7 @@ export interface FlowbiteCarouselScrollContainer {
   snap: string;
 }
 
-export interface CarouselProps extends ComponentProps<'div'> {
+export interface CarouselProps extends ComponentProps<"div"> {
   indicators?: boolean;
   leftControl?: ReactNode;
   rightControl?: ReactNode;
@@ -58,7 +58,7 @@ export interface CarouselProps extends ComponentProps<'div'> {
   pauseOnHover?: boolean;
 }
 
-export interface DefaultLeftRightControlProps extends ComponentProps<'div'> {
+export interface DefaultLeftRightControlProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteCarouselTheme>;
 }
 
@@ -78,7 +78,7 @@ export const Carousel: FC<CarouselProps> = ({
 }) => {
   const theme = mergeDeep(getTheme().carousel, customTheme);
 
-  const isDeviceMobile = isClient() && navigator.userAgent.indexOf('IEMobile') !== -1;
+  const isDeviceMobile = isClient() && navigator.userAgent.indexOf("IEMobile") !== -1;
   const carouselContainer = useRef<HTMLDivElement>(null);
   const [activeItem, setActiveItem] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -157,7 +157,7 @@ export const Carousel: FC<CarouselProps> = ({
         {items?.map((item, index) => (
           <div
             key={index}
-            className={theme.item.wrapper[draggable ? 'on' : 'off']}
+            className={theme.item.wrapper[draggable ? "on" : "off"]}
             data-active={activeItem === index}
             data-testid="carousel-item"
           >
@@ -170,7 +170,7 @@ export const Carousel: FC<CarouselProps> = ({
           {items?.map((_, index) => (
             <button
               key={index}
-              className={twMerge(theme.indicators.base, theme.indicators.active[index === activeItem ? 'on' : 'off'])}
+              className={twMerge(theme.indicators.base, theme.indicators.active[index === activeItem ? "on" : "off"])}
               onClick={navigateTo(index)}
               data-testid="carousel-indicator"
               aria-label={`Slide ${index + 1}`}
@@ -227,4 +227,4 @@ const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTh
   );
 };
 
-Carousel.displayName = 'Carousel';
+Carousel.displayName = "Carousel";

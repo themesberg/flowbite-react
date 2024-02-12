@@ -1,4 +1,4 @@
-import type React from 'react';
+import type React from "react";
 
 export type AsProp<C extends React.ElementType> = {
   as?: C | null;
@@ -20,4 +20,4 @@ export type PolymorphicComponentPropWithRef<C extends React.ElementType, Props =
   ref?: PolymorphicRef<C>;
 };
 
-export type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>['ref'];
+export type PolymorphicRef<C extends React.ElementType> = React.ComponentPropsWithRef<C>["ref"];

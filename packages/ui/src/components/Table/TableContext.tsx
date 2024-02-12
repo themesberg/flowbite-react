@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { createContext, useContext } from 'react';
-import type { FlowbiteTableTheme } from './Table';
+import { createContext, useContext } from "react";
+import type { FlowbiteTableTheme } from "./Table";
 
 export type TableContext = {
   theme: FlowbiteTableTheme;
@@ -15,7 +15,7 @@ export function useTableContext(): TableContext {
   const context = useContext(TableContext);
 
   if (!context) {
-    throw new Error('useTableContext should be used within the TableContext provider!');
+    throw new Error("useTableContext should be used within the TableContext provider!");
   }
 
   return context;

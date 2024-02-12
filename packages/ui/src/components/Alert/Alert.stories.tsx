@@ -1,16 +1,16 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { HiEye, HiInformationCircle } from 'react-icons/hi';
-import { theme } from '../../theme';
-import type { AlertProps } from './Alert';
-import { Alert } from './Alert';
+import type { Meta, StoryFn } from "@storybook/react";
+import { HiEye, HiInformationCircle } from "react-icons/hi";
+import { theme } from "../../theme";
+import type { AlertProps } from "./Alert";
+import { Alert } from "./Alert";
 
 export default {
-  title: 'Components/Alert',
+  title: "Components/Alert",
   component: Alert,
   argTypes: {
     color: {
       options: Object.keys(theme.alert.color),
-      control: { type: 'inline-radio' },
+      control: { type: "inline-radio" },
     },
   },
 } as Meta;
@@ -18,7 +18,7 @@ export default {
 const Template: StoryFn<AlertProps> = (props) => <Alert {...props} />;
 
 export const DefaultAlert = Template.bind({});
-DefaultAlert.storyName = 'Default';
+DefaultAlert.storyName = "Default";
 DefaultAlert.args = {
   onDismiss: false,
   children: (
@@ -30,7 +30,7 @@ DefaultAlert.args = {
 };
 
 export const AlertWithIcons = Template.bind({});
-AlertWithIcons.storyName = 'With icons';
+AlertWithIcons.storyName = "With icons";
 AlertWithIcons.args = {
   icon: HiInformationCircle,
   onDismiss: false,
@@ -43,35 +43,35 @@ AlertWithIcons.args = {
 };
 
 export const AlertDismissible = Template.bind({});
-AlertDismissible.storyName = 'Dismissible';
+AlertDismissible.storyName = "Dismissible";
 AlertDismissible.args = {
-  color: 'success',
-  onDismiss: () => alert('Alert dismissed!'),
+  color: "success",
+  onDismiss: () => alert("Alert dismissed!"),
   children: <>Info alert! Change a few things up and try submitting again.</>,
 };
 
 export const AlertRounded = Template.bind({});
-AlertRounded.storyName = 'Not rounded';
+AlertRounded.storyName = "Not rounded";
 AlertRounded.args = {
-  color: 'warning',
+  color: "warning",
   rounded: false,
   onDismiss: false,
   children: <>Info alert! Change a few things up and try submitting again.</>,
 };
 
 export const AlertWithBorderAccent = Template.bind({});
-AlertWithBorderAccent.storyName = 'Border accent';
+AlertWithBorderAccent.storyName = "Border accent";
 AlertWithBorderAccent.args = {
-  color: 'warning',
+  color: "warning",
   onDismiss: false,
   withBorderAccent: true,
   children: <>Info alert! Change a few things up and try submitting again.</>,
 };
 
 export const AlertWithAdditionalContent = Template.bind({});
-AlertWithAdditionalContent.storyName = 'Additional content';
+AlertWithAdditionalContent.storyName = "Additional content";
 AlertWithAdditionalContent.args = {
-  color: 'info',
+  color: "info",
   icon: HiInformationCircle,
   onDismiss: false,
   withBorderAccent: true,
@@ -106,12 +106,12 @@ AlertWithAdditionalContent.args = {
 };
 
 export const AlertWithAllOptions = Template.bind({});
-AlertWithAllOptions.storyName = 'All options';
+AlertWithAllOptions.storyName = "All options";
 AlertWithAllOptions.args = {
-  color: 'success',
+  color: "success",
   rounded: false,
   withBorderAccent: true,
-  onDismiss: () => alert('Alert dismissed!'),
+  onDismiss: () => alert("Alert dismissed!"),
   icon: HiInformationCircle,
   additionalContent: (
     <>

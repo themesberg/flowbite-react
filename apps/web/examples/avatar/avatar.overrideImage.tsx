@@ -1,12 +1,12 @@
-import { Avatar } from 'flowbite-react';
-import Image from 'next/image';
-import { type CodeData } from '~/components/code-demo';
+import { Avatar } from "flowbite-react";
+import Image from "next/image";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { Avatar } from 'flowbite-react';
+import Image from "next/image";
+import { Avatar } from "flowbite-react";
 
 function Component() {
   return (
@@ -38,8 +38,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import Image from 'next/image';
-import { Avatar } from 'flowbite-react';
+import Image from "next/image";
+import { Avatar } from "flowbite-react";
 
 function Component() {
   return (
@@ -99,19 +99,19 @@ function Component() {
 }
 
 export const overrideImage: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'avatar/avatar.overrideImage.tsx',
+  githubSlug: "avatar/avatar.overrideImage.tsx",
   component: <Component />,
 };

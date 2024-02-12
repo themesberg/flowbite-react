@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { Dropdown } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Dropdown } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Dropdown } from 'flowbite-react';
+import { Dropdown } from "flowbite-react";
 
 function Component() {
   return (
@@ -32,12 +32,12 @@ function Component() {
 }
 
 export const customTrigger: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'dropdown/dropdown.customTrigger.tsx',
+  githubSlug: "dropdown/dropdown.customTrigger.tsx",
   component: <Component />,
 };

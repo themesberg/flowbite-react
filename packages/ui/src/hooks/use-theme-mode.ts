@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { isClient } from '../helpers/is-client';
-import { useWatchLocalStorageValue } from '../hooks/use-watch-localstorage-value';
-import { getThemeMode } from '../theme-store';
+import { useEffect, useState } from "react";
+import { isClient } from "../helpers/is-client";
+import { useWatchLocalStorageValue } from "../hooks/use-watch-localstorage-value";
+import { getThemeMode } from "../theme-store";
 
-const DEFAULT_MODE: ThemeMode = 'light';
-const LS_THEME_MODE = 'flowbite-theme-mode';
-const SYNC_THEME_MODE = 'flowbite-theme-mode-sync';
+const DEFAULT_MODE: ThemeMode = "light";
+const LS_THEME_MODE = "flowbite-theme-mode";
+const SYNC_THEME_MODE = "flowbite-theme-mode-sync";
 
-export type ThemeMode = 'light' | 'dark' | 'auto';
+export type ThemeMode = "light" | "dark" | "auto";
 
 export const useThemeMode = () => {
   const [mode, setMode] = useState<ThemeMode>(getInitialMode(getThemeMode()));
@@ -53,9 +53,9 @@ export const useThemeMode = () => {
   const toggleMode = () => {
     let newMode = mode;
 
-    if (newMode === 'auto') newMode = computeModeValue(newMode);
+    if (newMode === "auto") newMode = computeModeValue(newMode);
 
-    newMode = newMode === 'dark' ? 'light' : 'dark';
+    newMode = newMode === "dark" ? "light" : "dark";
 
     handleSetMode(newMode);
   };
@@ -99,10 +99,10 @@ const setModeInLS = (mode: ThemeMode) => localStorage.setItem(LS_THEME_MODE, mod
 const setModeInDOM = (mode: ThemeMode) => {
   const computedMode = computeModeValue(mode);
 
-  if (computedMode === 'dark') {
-    document.documentElement.classList.add('dark');
+  if (computedMode === "dark") {
+    document.documentElement.classList.add("dark");
   } else {
-    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.remove("dark");
   }
 };
 
@@ -119,7 +119,7 @@ const getInitialMode = (defaultMode?: ThemeMode): ThemeMode => {
  * @returns `light` | `dark`
  */
 const computeModeValue = (mode: ThemeMode): ThemeMode => {
-  return mode === 'auto' ? prefersColorScheme() : mode;
+  return mode === "auto" ? prefersColorScheme() : mode;
 };
 
 /**
@@ -127,5 +127,5 @@ const computeModeValue = (mode: ThemeMode): ThemeMode => {
  * @returns `light` | `dark`
  */
 const prefersColorScheme = (): ThemeMode => {
-  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 };

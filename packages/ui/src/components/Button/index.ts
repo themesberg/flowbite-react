@@ -1,4 +1,4 @@
-export { Button } from './Button';
+export { Button } from "./Button";
 export type {
   ButtonColors,
   ButtonGradientColors,
@@ -9,6 +9,6 @@ export type {
   FlowbiteButtonInnerTheme,
   FlowbiteButtonOutlineTheme,
   FlowbiteButtonTheme,
-} from './Button';
-export { ButtonGroup } from './ButtonGroup';
-export type { ButtonGroupProps, FlowbiteButtonGroupTheme, PositionInButtonGroup } from './ButtonGroup';
+} from "./Button";
+export { ButtonGroup } from "./ButtonGroup";
+export type { ButtonGroupProps, FlowbiteButtonGroupTheme, PositionInButtonGroup } from "./ButtonGroup";

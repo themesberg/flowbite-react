@@ -1,10 +1,10 @@
-import { Dropdown, DropdownItem } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Dropdown, DropdownItem } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Dropdown } from 'flowbite-react';
+import { Dropdown } from "flowbite-react";
 
 function Component() {
   return (
@@ -19,7 +19,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Dropdown, DropdownItem } from 'flowbite-react';
+import { Dropdown, DropdownItem } from "flowbite-react";
 
 function Component() {
   return (
@@ -45,19 +45,19 @@ function Component() {
 }
 
 export const inline: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'dropdown/dropdown.inline.tsx',
+  githubSlug: "dropdown/dropdown.inline.tsx",
   component: <Component />,
 };

@@ -1,7 +1,7 @@
-import type { ComponentProps, FC } from 'react';
-import { BannerCollapseButton } from './BannerCollapseButton';
+import type { ComponentProps, FC } from "react";
+import { BannerCollapseButton } from "./BannerCollapseButton";
 
-export type BannerComponentProps = ComponentProps<'div'>;
+export type BannerComponentProps = ComponentProps<"div">;
 
 const BannerComponent: FC<BannerComponentProps> = ({ children, ...props }) => {
   return (
@@ -11,7 +11,7 @@ const BannerComponent: FC<BannerComponentProps> = ({ children, ...props }) => {
   );
 };
 
-BannerComponent.displayName = 'Banner';
+BannerComponent.displayName = "Banner";
 
 export const Banner = Object.assign(BannerComponent, {
   CollapseButton: BannerCollapseButton,

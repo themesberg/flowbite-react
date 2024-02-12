@@ -1,12 +1,12 @@
-import { withThemeByClassName } from '@storybook/addon-themes';
-import type { Preview } from '@storybook/react';
+import { withThemeByClassName } from "@storybook/addon-themes";
+import type { Preview } from "@storybook/react";
 
-import './style.css';
+import "./style.css";
 
 const preview: Preview = {
   parameters: {
     actions: {
-      argTypesRegex: '^on[A-Z].*',
+      argTypesRegex: "^on[A-Z].*",
     },
     controls: {
       matchers: {
@@ -20,10 +20,10 @@ const preview: Preview = {
 export const decorators = [
   withThemeByClassName({
     themes: {
-      light: 'light',
-      dark: 'dark',
+      light: "light",
+      dark: "dark",
     },
-    defaultTheme: 'light',
+    defaultTheme: "light",
   }),
 ];
 

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { createContext, useContext } from 'react';
-import type { FlowbiteRatingTheme } from './Rating';
-import type { FlowbiteStarSizes } from './RatingStar';
+import { createContext, useContext } from "react";
+import type { FlowbiteRatingTheme } from "./Rating";
+import type { FlowbiteStarSizes } from "./RatingStar";
 
 export type RatingContext = {
   theme: FlowbiteRatingTheme;
@@ -15,7 +15,7 @@ export function useRatingContext(): RatingContext {
   const context = useContext(RatingContext);
 
   if (!context) {
-    throw new Error('useRatingContext should be used within the RatingContext provider!');
+    throw new Error("useRatingContext should be used within the RatingContext provider!");
   }
 
   return context;

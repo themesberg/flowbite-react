@@ -1,10 +1,10 @@
-import { Checkbox, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Checkbox, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Checkbox, Table } from 'flowbite-react';
+import { Checkbox, Table } from "flowbite-react";
 
 function Component() {
   return (
@@ -77,7 +77,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Checkbox, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react';
+import { Checkbox, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
 
 function Component() {
   return (
@@ -219,19 +219,19 @@ function Component() {
 }
 
 export const withCheckboxes: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'table/table.withCheckboxes.tsx',
+  githubSlug: "table/table.withCheckboxes.tsx",
   component: <Component />,
 };

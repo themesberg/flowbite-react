@@ -1,10 +1,10 @@
-import type { ComponentProps } from 'react';
-import { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteTextInputSizes } from '../TextInput';
+import type { ComponentProps } from "react";
+import { forwardRef } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteTextInputSizes } from "../TextInput";
 
 export interface FlowbiteRangeSliderTheme {
   root: FlowbiteRangeSliderRootTheme;
@@ -23,13 +23,13 @@ export interface FlowbiteRangeSliderFieldTheme {
   };
 }
 
-export interface RangeSliderProps extends Omit<ComponentProps<'input'>, 'ref' | 'type'> {
+export interface RangeSliderProps extends Omit<ComponentProps<"input">, "ref" | "type"> {
   sizing?: keyof FlowbiteTextInputSizes;
   theme?: DeepPartial<FlowbiteRangeSliderTheme>;
 }
 
 export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
-  ({ className, sizing = 'md', theme: customTheme = {}, ...props }, ref) => {
+  ({ className, sizing = "md", theme: customTheme = {}, ...props }, ref) => {
     const theme = mergeDeep(getTheme().rangeSlider, customTheme);
 
     return (
@@ -49,4 +49,4 @@ export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
   },
 );
 
-RangeSlider.displayName = 'RangeSlider';
+RangeSlider.displayName = "RangeSlider";

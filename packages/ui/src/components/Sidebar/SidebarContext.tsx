@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { createContext, useContext } from 'react';
-import type { FlowbiteSidebarTheme } from './Sidebar';
+import { createContext, useContext } from "react";
+import type { FlowbiteSidebarTheme } from "./Sidebar";
 
 export type SidebarContext = {
   theme: FlowbiteSidebarTheme;
@@ -14,7 +14,7 @@ export function useSidebarContext(): SidebarContext {
   const context = useContext(SidebarContext);
 
   if (!context) {
-    throw new Error('useSidebarContext should be used within the SidebarContext provider!');
+    throw new Error("useSidebarContext should be used within the SidebarContext provider!");
   }
 
   return context;

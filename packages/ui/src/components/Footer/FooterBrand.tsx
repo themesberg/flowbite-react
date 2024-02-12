@@ -1,8 +1,8 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
+import type { ComponentProps, FC, PropsWithChildren } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
 
 export interface FlowbiteFooterBrandTheme {
   base: string;
@@ -19,7 +19,7 @@ export interface FooterBrandProps extends PropsWithChildren {
   theme?: DeepPartial<FlowbiteFooterBrandTheme>;
 }
 
-export const FooterBrand: FC<FooterBrandProps & ComponentProps<'a'> & ComponentProps<'img'>> = ({
+export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentProps<"img">> = ({
   alt,
   className,
   children,

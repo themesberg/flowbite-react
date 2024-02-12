@@ -1,38 +1,38 @@
-import type { Placement } from '@floating-ui/core';
-import type { ComponentProps, FC, ReactNode } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { createTheme } from '../../helpers/create-theme';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import { Button } from '../Button';
-import { Floating, type FlowbiteFloatingTheme } from '../Floating';
+import type { Placement } from "@floating-ui/core";
+import type { ComponentProps, FC, ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
+import { createTheme } from "../../helpers/create-theme";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import { Button } from "../Button";
+import { Floating, type FlowbiteFloatingTheme } from "../Floating";
 
 export type FlowbiteTooltipTheme = FlowbiteFloatingTheme;
 
-export interface TooltipProps extends Omit<ComponentProps<'div'>, 'content' | 'style'> {
+export interface TooltipProps extends Omit<ComponentProps<"div">, "content" | "style"> {
   animation?: false | `duration-${number}`;
   arrow?: boolean;
   content: ReactNode;
-  placement?: 'auto' | Placement;
-  style?: 'dark' | 'light' | 'auto';
+  placement?: "auto" | Placement;
+  style?: "dark" | "light" | "auto";
   theme?: DeepPartial<FlowbiteTooltipTheme>;
-  trigger?: 'hover' | 'click';
+  trigger?: "hover" | "click";
 }
 
 /**
  * @see https://floating-ui.com/docs/react-dom-interactions
  */
 export const Tooltip: FC<TooltipProps> = ({
-  animation = 'duration-300',
+  animation = "duration-300",
   arrow = true,
   children,
   className,
   content,
-  placement = 'top',
-  style = 'dark',
+  placement = "top",
+  style = "dark",
   theme: customTheme = {},
-  trigger = 'hover',
+  trigger = "hover",
   ...props
 }) => {
   const theme = mergeDeep(getTheme().tooltip, customTheme);
@@ -54,7 +54,7 @@ export const Tooltip: FC<TooltipProps> = ({
   );
 };
 
-Tooltip.displayName = 'Tooltip';
+Tooltip.displayName = "Tooltip";
 
 // developer
 
@@ -62,8 +62,8 @@ Tooltip.displayName = 'Tooltip';
 // 2. formatting
 // 3. linting
 
-twMerge('m-3 flex p-3');
-createTheme('m-3 flex p-3');
+twMerge("m-3 flex p-3");
+createTheme("m-3 flex p-3");
 
 // user
-<Button className="inline-flex min-w-4 bg-slate-100 p-3" theme={{ base: 'flex p-3' }}></Button>;
+<Button className="inline-flex min-w-4 bg-slate-100 p-3" theme={{ base: "flex p-3" }}></Button>;

@@ -1,11 +1,11 @@
-import type { ComponentProps, ReactNode } from 'react';
-import { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import { HelperText } from '../HelperText';
-import type { FlowbiteTextInputColors, FlowbiteTextInputSizes } from '../TextInput';
+import type { ComponentProps, ReactNode } from "react";
+import { forwardRef } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import { HelperText } from "../HelperText";
+import type { FlowbiteTextInputColors, FlowbiteTextInputSizes } from "../TextInput";
 
 export interface FlowbiteFileInputTheme {
   root: FlowbiteFileInputRootTheme;
@@ -27,7 +27,7 @@ export interface FlowbiteFileInputFieldInputTheme {
   sizes: FlowbiteTextInputSizes;
 }
 
-export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | 'ref' | 'color'> {
+export interface FileInputProps extends Omit<ComponentProps<"input">, "type" | "ref" | "color"> {
   color?: keyof FlowbiteTextInputColors;
   helperText?: ReactNode;
   sizing?: keyof FlowbiteTextInputSizes;
@@ -35,7 +35,7 @@ export interface FileInputProps extends Omit<ComponentProps<'input'>, 'type' | '
 }
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ className, color = 'gray', helperText, sizing = 'md', theme: customTheme = {}, ...props }, ref) => {
+  ({ className, color = "gray", helperText, sizing = "md", theme: customTheme = {}, ...props }, ref) => {
     const theme = mergeDeep(getTheme().fileInput, customTheme);
 
     return (
@@ -60,4 +60,4 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
   },
 );
 
-FileInput.displayName = 'FileInput';
+FileInput.displayName = "FileInput";

@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import type { FC, MouseEventHandler } from 'react';
-import type { ButtonProps } from '../Button';
-import { Button } from '../Button';
+import type { FC, MouseEventHandler } from "react";
+import type { ButtonProps } from "../Button";
+import { Button } from "../Button";
 
 export type BannerCollapseButtonProps = ButtonProps;
 
@@ -21,4 +21,4 @@ export const BannerCollapseButton: FC<BannerCollapseButtonProps> = ({ children, 
   );
 };
 
-BannerCollapseButton.displayName = 'Banner.CollapseButton';
+BannerCollapseButton.displayName = "Banner.CollapseButton";

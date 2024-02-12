@@ -1,12 +1,12 @@
-import { Toast } from 'flowbite-react';
-import { FaTelegramPlane } from 'react-icons/fa';
-import { type CodeData } from '~/components/code-demo';
+import { Toast } from "flowbite-react";
+import { FaTelegramPlane } from "react-icons/fa";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Toast } from 'flowbite-react';
-import { FaTelegramPlane } from 'react-icons/fa';
+import { Toast } from "flowbite-react";
+import { FaTelegramPlane } from "react-icons/fa";
 
 function Component() {
   return (
@@ -19,8 +19,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Toast } from 'flowbite-react';
-import { FaTelegramPlane } from 'react-icons/fa';
+import { Toast } from "flowbite-react";
+import { FaTelegramPlane } from "react-icons/fa";
 
 function Component() {
   return (
@@ -42,19 +42,19 @@ function Component() {
 }
 
 export const feedback: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'toast/toast.feedback.tsx',
+  githubSlug: "toast/toast.feedback.tsx",
   component: <Component />,
 };

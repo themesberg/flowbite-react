@@ -77,10 +77,10 @@ npm i react react-dom
 2. Create `src/index.js` file:
 
 ```js
-import { createRoot } from 'react-dom/client';
-import { App } from './app';
+import { createRoot } from "react-dom/client";
+import { App } from "./app";
 
-const container = document.getElementById('app');
+const container = document.getElementById("app");
 const root = createRoot(container);
 root.render(<App />);
 ```
@@ -138,7 +138,7 @@ npx tailwindcss init
 ```js {3}
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,js,ts,jsx,tsx}'],
+  content: ["./src/**/*.{html,js,ts,jsx,tsx}"],
   theme: {
     extend: {},
   },
@@ -186,11 +186,11 @@ npm i flowbite-react
 export default {
   content: [
     // ...
-    'node_modules/flowbite-react/lib/esm/**/*.js',
+    "node_modules/flowbite-react/lib/esm/**/*.js",
   ],
   plugins: [
     // ...
-    require('flowbite/plugin'),
+    require("flowbite/plugin"),
   ],
 };
 ```
@@ -200,7 +200,7 @@ export default {
 Now that you have successfully installed Flowbite React you can start using the components from the library.
 
 ```tsx
-import { Button } from 'flowbite-react';
+import { Button } from "flowbite-react";
 
 export function App() {
   return <Button>Click me</Button>;

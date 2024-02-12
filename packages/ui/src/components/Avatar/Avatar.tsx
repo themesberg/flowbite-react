@@ -1,13 +1,13 @@
-import type { ComponentProps, FC, ReactElement } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from '../Flowbite';
-import type { FlowbiteAvatarGroupTheme } from './AvatarGroup';
-import { AvatarGroup } from './AvatarGroup';
-import type { FlowbiteAvatarGroupCounterTheme } from './AvatarGroupCounter';
-import { AvatarGroupCounter } from './AvatarGroupCounter';
+import type { ComponentProps, FC, ReactElement } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from "../Flowbite";
+import type { FlowbiteAvatarGroupTheme } from "./AvatarGroup";
+import { AvatarGroup } from "./AvatarGroup";
+import type { FlowbiteAvatarGroupCounterTheme } from "./AvatarGroupCounter";
+import { AvatarGroupCounter } from "./AvatarGroupCounter";
 
 export interface FlowbiteAvatarTheme {
   root: FlowbiteAvatarRootTheme;
@@ -47,21 +47,21 @@ export interface FlowbiteAvatarInitialsTheme {
 }
 
 export interface AvatarColors
-  extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'pink' | 'purple' | 'success' | 'warning'> {
+  extends Pick<FlowbiteColors, "failure" | "gray" | "info" | "pink" | "purple" | "success" | "warning"> {
   [key: string]: string;
 }
 
-export interface AvatarSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> {
+export interface AvatarSizes extends Pick<FlowbiteSizes, "xs" | "sm" | "md" | "lg" | "xl"> {
   [key: string]: string;
 }
 
 export interface AvatarImageProps {
   alt?: string;
   className: string;
-  'data-testid': string;
+  "data-testid": string;
 }
 
-export interface AvatarProps extends Omit<ComponentProps<'div'>, 'color'> {
+export interface AvatarProps extends Omit<ComponentProps<"div">, "color"> {
   alt?: string;
   bordered?: boolean;
   img?: string | ((props: AvatarImageProps) => ReactElement);
@@ -69,25 +69,25 @@ export interface AvatarProps extends Omit<ComponentProps<'div'>, 'color'> {
   rounded?: boolean;
   size?: keyof AvatarSizes;
   stacked?: boolean;
-  status?: 'away' | 'busy' | 'offline' | 'online';
+  status?: "away" | "busy" | "offline" | "online";
   statusPosition?: keyof FlowbitePositions;
   placeholderInitials?: string;
   theme?: DeepPartial<FlowbiteAvatarTheme>;
 }
 
 const AvatarComponent: FC<AvatarProps> = ({
-  alt = '',
+  alt = "",
   bordered = false,
   children,
   className,
-  color = 'light',
+  color = "light",
   img,
-  placeholderInitials = '',
+  placeholderInitials = "",
   rounded = false,
-  size = 'md',
+  size = "md",
   stacked = false,
   status,
-  statusPosition = 'top-left',
+  statusPosition = "top-left",
   theme: customTheme = {},
   ...props
 }) => {
@@ -105,13 +105,13 @@ const AvatarComponent: FC<AvatarProps> = ({
 
   const imgProps = {
     className: twMerge(imgClassName, theme.root.img.on),
-    'data-testid': 'flowbite-avatar-img',
+    "data-testid": "flowbite-avatar-img",
   };
   return (
     <div className={twMerge(theme.root.base, className)} data-testid="flowbite-avatar" {...props}>
       <div className="relative">
         {img ? (
-          typeof img === 'string' ? (
+          typeof img === "string" ? (
             <img alt={alt} src={img} {...imgProps} />
           ) : (
             img({ alt, ...imgProps })
@@ -161,7 +161,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   );
 };
 
-AvatarComponent.displayName = 'Avatar';
+AvatarComponent.displayName = "Avatar";
 
 export const Avatar = Object.assign(AvatarComponent, {
   Group: AvatarGroup,

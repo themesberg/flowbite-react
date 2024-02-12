@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { Button, Modal } from 'flowbite-react';
-import { useState } from 'react';
-import { HiOutlineExclamationCircle } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Modal } from "flowbite-react";
+import { useState } from "react";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Modal } from 'flowbite-react';
-import { useState } from 'react';
-import { HiOutlineExclamationCircle } from 'react-icons/hi';
+import { Button, Modal } from "flowbite-react";
+import { useState } from "react";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
 
 function Component() {
   const [openModal, setOpenModal] = useState(false);
@@ -72,12 +72,12 @@ function Component() {
 }
 
 export const popup: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'modal/modal.popup.tsx',
+  githubSlug: "modal/modal.popup.tsx",
   component: <Component />,
 };

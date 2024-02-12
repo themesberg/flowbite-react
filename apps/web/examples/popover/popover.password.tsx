@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { Button, Checkbox, Label, Popover, TextInput } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Checkbox, Label, Popover, TextInput } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Checkbox, Label, Popover, TextInput } from 'flowbite-react';
+import { Button, Checkbox, Label, Popover, TextInput } from "flowbite-react";
 
 function Component() {
   return (
@@ -202,14 +202,14 @@ function Component() {
 }
 
 export const password: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
   ],
-  githubSlug: 'popover/popover.password.tsx',
+  githubSlug: "popover/popover.password.tsx",
   component: <Component />,
 };

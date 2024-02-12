@@ -1,10 +1,10 @@
-import { Button } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Button } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button } from 'flowbite-react';
+import { Button } from "flowbite-react";
 
 function Component() {
   return (
@@ -23,7 +23,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button } from 'flowbite-react';
+import { Button } from "flowbite-react";
 
 function Component() {
   return (
@@ -57,19 +57,19 @@ function Component() {
 }
 
 export const gradientMono: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'button/button.gradientMono.tsx',
+  githubSlug: "button/button.gradientMono.tsx",
   component: <Component />,
 };

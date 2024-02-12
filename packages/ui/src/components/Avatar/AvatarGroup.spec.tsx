@@ -1,26 +1,26 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import { AvatarGroup } from './AvatarGroup';
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import { AvatarGroup } from "./AvatarGroup";
 
-describe('Components / Avatar.Group', () => {
-  it('renders the avatar group element with the correct classname', () => {
+describe("Components / Avatar.Group", () => {
+  it("renders the avatar group element with the correct classname", () => {
     render(
       <AvatarGroup className="test-class">
         <div>Test child</div>
       </AvatarGroup>,
     );
-    const avatarGroupElement = screen.getByTestId('avatar-group-element');
+    const avatarGroupElement = screen.getByTestId("avatar-group-element");
     expect(avatarGroupElement).toBeInTheDocument();
-    expect(avatarGroupElement).toHaveClass('test-class');
+    expect(avatarGroupElement).toHaveClass("test-class");
   });
 
-  it('merges the custom theme with the default theme', () => {
+  it("merges the custom theme with the default theme", () => {
     render(
-      <AvatarGroup theme={{ base: 'custom-base-class' }}>
+      <AvatarGroup theme={{ base: "custom-base-class" }}>
         <div>Test child</div>
       </AvatarGroup>,
     );
-    const avatarGroupElement = screen.getByTestId('avatar-group-element');
-    expect(avatarGroupElement).toHaveClass('custom-base-class');
+    const avatarGroupElement = screen.getByTestId("avatar-group-element");
+    expect(avatarGroupElement).toHaveClass("custom-base-class");
   });
 });

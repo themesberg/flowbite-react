@@ -1,4 +1,4 @@
-export { Carousel } from './Carousel';
+export { Carousel } from "./Carousel";
 export type {
   CarouselProps,
   DefaultLeftRightControlProps,
@@ -8,4 +8,4 @@ export type {
   FlowbiteCarouselRootTheme,
   FlowbiteCarouselScrollContainer,
   FlowbiteCarouselTheme,
-} from './Carousel';
+} from "./Carousel";

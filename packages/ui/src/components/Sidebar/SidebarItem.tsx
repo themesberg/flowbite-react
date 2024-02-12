@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from 'react';
-import { forwardRef, useId } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { Badge } from '../Badge';
-import type { FlowbiteColors } from '../Flowbite';
-import { Tooltip } from '../Tooltip';
-import { useSidebarContext } from './SidebarContext';
-import { useSidebarItemContext } from './SidebarItemContext';
+import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from "react";
+import { forwardRef, useId } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import { Badge } from "../Badge";
+import type { FlowbiteColors } from "../Flowbite";
+import { Tooltip } from "../Tooltip";
+import { useSidebarContext } from "./SidebarContext";
+import { useSidebarItemContext } from "./SidebarItemContext";
 
 export interface FlowbiteSidebarItemTheme {
   active: string;
@@ -29,17 +29,17 @@ export interface FlowbiteSidebarItemTheme {
   listItem: string;
 }
 
-export interface SidebarItemProps extends Omit<ComponentProps<'div'>, 'ref'>, Record<string, unknown> {
+export interface SidebarItemProps extends Omit<ComponentProps<"div">, "ref">, Record<string, unknown> {
   active?: boolean;
   as?: ElementType;
   href?: string;
-  icon?: FC<ComponentProps<'svg'>>;
+  icon?: FC<ComponentProps<"svg">>;
   label?: string;
   labelColor?: keyof SidebarItemLabelColors;
   theme?: DeepPartial<FlowbiteSidebarItemTheme>;
 }
 
-export interface SidebarItemLabelColors extends Pick<FlowbiteColors, 'gray'> {
+export interface SidebarItemLabelColors extends Pick<FlowbiteColors, "gray"> {
   [key: string]: string;
 }
 
@@ -86,12 +86,12 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
   (
     {
       active: isActive,
-      as: Component = 'a',
+      as: Component = "a",
       children,
       className,
       icon: Icon,
       label,
-      labelColor = 'info',
+      labelColor = "info",
       theme: customTheme = {},
       ...props
     },
@@ -124,7 +124,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
             />
           )}
           {isCollapsed && !Icon && (
-            <span className={theme.collapsed?.noIcon}>{(children as string).charAt(0).toLocaleUpperCase() ?? '?'}</span>
+            <span className={theme.collapsed?.noIcon}>{(children as string).charAt(0).toLocaleUpperCase() ?? "?"}</span>
           )}
           {!isCollapsed && (
             <Children id={id} theme={theme}>
@@ -142,4 +142,4 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
   },
 );
 
-SidebarItem.displayName = 'Sidebar.Item';
+SidebarItem.displayName = "Sidebar.Item";

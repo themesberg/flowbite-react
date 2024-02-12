@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, ReactElement } from 'react';
-import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean } from '../Flowbite';
-import type { TabItemProps } from './TabItem';
-import { TabItem } from './TabItem';
+import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, ReactElement } from "react";
+import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean } from "../Flowbite";
+import type { TabItemProps } from "./TabItem";
+import { TabItem } from "./TabItem";
 
 export interface FlowbiteTabsTheme {
   base: string;
@@ -44,7 +44,7 @@ export type TabStyleItem<Type> = {
   [K in keyof Type]: TabStyleItemProps;
 };
 
-export type TabItemStatus = 'active' | 'notActive';
+export type TabItemStatus = "active" | "notActive";
 
 interface TabEventProps {
   target: number;
@@ -54,7 +54,7 @@ interface TabKeyboardEventProps extends TabEventProps {
   event: KeyboardEvent<HTMLButtonElement>;
 }
 
-export interface TabsProps extends Omit<ComponentProps<'div'>, 'ref' | 'style'> {
+export interface TabsProps extends Omit<ComponentProps<"div">, "ref" | "style"> {
   onActiveTabChange?: (activeTab: number) => void;
   style?: keyof TabStyles;
   theme?: DeepPartial<FlowbiteTabsTheme>;
@@ -66,7 +66,7 @@ export interface TabsRef {
 
 const TabsComponent = forwardRef<TabsRef, TabsProps>(
   (
-    { children, className, onActiveTabChange, style = 'default', theme: customTheme = {}, ...props },
+    { children, className, onActiveTabChange, style = "default", theme: customTheme = {}, ...props },
     ref: ForwardedRef<TabsRef>,
   ) => {
     const theme = mergeDeep(getTheme().tabs, customTheme);
@@ -100,15 +100,15 @@ const TabsComponent = forwardRef<TabsRef, TabsProps>(
     };
 
     const handleKeyboard = ({ event, target }: TabKeyboardEventProps): void => {
-      if (event.key === 'ArrowLeft') {
+      if (event.key === "ArrowLeft") {
         setFocusedTab(Math.max(0, focusedTab - 1));
       }
 
-      if (event.key === 'ArrowRight') {
+      if (event.key === "ArrowRight") {
         setFocusedTab(Math.min(tabs.length - 1, focusedTab + 1));
       }
 
-      if (event.key === 'Enter') {
+      if (event.key === "Enter") {
         setActiveTabWithCallback(target);
         setFocusedTab(target);
       }
@@ -179,7 +179,7 @@ const TabsComponent = forwardRef<TabsRef, TabsProps>(
   },
 );
 
-TabsComponent.displayName = 'Tabs';
+TabsComponent.displayName = "Tabs";
 
 export const Tabs = Object.assign(TabsComponent, {
   Item: TabItem,

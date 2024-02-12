@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { Carousel } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Carousel } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Carousel } from 'flowbite-react';
+import { Carousel } from "flowbite-react";
 
 function Component() {
   return (
@@ -30,7 +30,7 @@ function Component() {
 function Component() {
   return (
     <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
-      <Carousel onSlideChange={(index) => console.log('onSlideChange()', index)}>
+      <Carousel onSlideChange={(index) => console.log("onSlideChange()", index)}>
         <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
           Slide 1
         </div>
@@ -46,12 +46,12 @@ function Component() {
 }
 
 export const events: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'carousel/carousel.events.tsx',
+  githubSlug: "carousel/carousel.events.tsx",
   component: <Component />,
 };

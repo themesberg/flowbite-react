@@ -1,38 +1,38 @@
-import { render, screen } from '@testing-library/react';
-import type { FC } from 'react';
-import { describe, expect, it } from 'vitest';
-import type { TimelineProps } from './Timeline';
-import { Timeline } from './Timeline';
+import { render, screen } from "@testing-library/react";
+import type { FC } from "react";
+import { describe, expect, it } from "vitest";
+import type { TimelineProps } from "./Timeline";
+import { Timeline } from "./Timeline";
 
-describe('Components / Timeline', () => {
-  describe('Rendering horizontal mode', () => {
-    it('should remove margin-top when do not icon', () => {
+describe("Components / Timeline", () => {
+  describe("Rendering horizontal mode", () => {
+    it("should remove margin-top when do not icon", () => {
       render(<TestTimelineNoIcon horizontal={true} />);
 
       expect(timelinePoint()).toBeInTheDocument();
-      expect(timelinePoint().childNodes[0]).not.toHaveClass('mt-1.5');
+      expect(timelinePoint().childNodes[0]).not.toHaveClass("mt-1.5");
     });
 
-    it('should show icon when render', () => {
+    it("should show icon when render", () => {
       render(<TestTimelineWithIcon horizontal={true} />);
 
       expect(timelinePoint()).toBeInTheDocument();
-      expect(timelinePoint().childNodes[0]).toContainHTML('svg');
+      expect(timelinePoint().childNodes[0]).toContainHTML("svg");
     });
   });
-  describe('Rendering vertical mode', () => {
-    it('should have margin-top when do not icon', () => {
+  describe("Rendering vertical mode", () => {
+    it("should have margin-top when do not icon", () => {
       render(<TestTimelineNoIcon horizontal={false} />);
 
       expect(timelinePoint()).toBeInTheDocument();
-      expect(timelinePoint().childNodes[0]).toHaveClass('mt-1.5');
+      expect(timelinePoint().childNodes[0]).toHaveClass("mt-1.5");
     });
 
-    it('should show icon when render', () => {
+    it("should show icon when render", () => {
       render(<TestTimelineWithIcon horizontal={false} />);
 
       expect(timelinePoint()).toBeInTheDocument();
-      expect(timelinePoint().childNodes[0]).toContainHTML('svg');
+      expect(timelinePoint().childNodes[0]).toContainHTML("svg");
     });
   });
 });
@@ -91,4 +91,4 @@ const IconSVG = () => (
   </svg>
 );
 
-const timelinePoint = () => screen.getByTestId('timeline-point');
+const timelinePoint = () => screen.getByTestId("timeline-point");

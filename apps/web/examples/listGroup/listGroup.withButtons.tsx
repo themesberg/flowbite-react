@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { ListGroup } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { ListGroup } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { ListGroup } from 'flowbite-react';
+import { ListGroup } from "flowbite-react";
 
 function Component() {
   return (
@@ -28,7 +28,7 @@ function Component() {
   return (
     <div className="flex justify-center">
       <ListGroup className="w-48">
-        <ListGroup.Item onClick={() => alert('Profile clicked!')} active>
+        <ListGroup.Item onClick={() => alert("Profile clicked!")} active>
           Profile
         </ListGroup.Item>
         <ListGroup.Item>Settings</ListGroup.Item>
@@ -40,12 +40,12 @@ function Component() {
 }
 
 export const withButtons: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'listGroup/listGroup.withButtons.tsx',
+  githubSlug: "listGroup/listGroup.withButtons.tsx",
   component: <Component />,
 };

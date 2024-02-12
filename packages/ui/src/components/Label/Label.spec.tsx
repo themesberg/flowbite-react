@@ -1,30 +1,30 @@
-import { render, screen } from '@testing-library/react';
-import { HiGlobe, HiLockClosed } from 'react-icons/hi';
-import { describe, expect, it } from 'vitest';
-import { Button } from '../Button';
-import { Checkbox } from '../Checkbox';
-import { FileInput } from '../FileInput';
-import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
-import { Radio } from '../Radio';
-import { RangeSlider } from '../RangeSlider';
-import { Select } from '../Select';
-import { Textarea } from '../Textarea';
-import { TextInput } from '../TextInput';
-import { ToggleSwitch } from '../ToggleSwitch';
-import { Label } from './Label';
+import { render, screen } from "@testing-library/react";
+import { HiGlobe, HiLockClosed } from "react-icons/hi";
+import { describe, expect, it } from "vitest";
+import { Button } from "../Button";
+import { Checkbox } from "../Checkbox";
+import { FileInput } from "../FileInput";
+import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { Radio } from "../Radio";
+import { RangeSlider } from "../RangeSlider";
+import { Select } from "../Select";
+import { Textarea } from "../Textarea";
+import { TextInput } from "../TextInput";
+import { ToggleSwitch } from "../ToggleSwitch";
+import { Label } from "./Label";
 
-describe.concurrent('Components / Label', () => {
-  describe.concurrent('A11y', () => {
-    it('should provide accessible name to any form control associated by `htmlFor`', () => {
+describe.concurrent("Components / Label", () => {
+  describe.concurrent("A11y", () => {
+    it("should provide accessible name to any form control associated by `htmlFor`", () => {
       const inputLabels = [
-        'Your email',
-        'Your password',
-        'Remember me',
-        'Enable notifications',
-        'Upload file',
-        'United States',
-        'Your message',
-        'Price',
+        "Your email",
+        "Your password",
+        "Remember me",
+        "Enable notifications",
+        "Upload file",
+        "United States",
+        "Your message",
+        "Price",
       ];
 
       const { getByLabelText } = render(<TestForm />);
@@ -32,12 +32,12 @@ describe.concurrent('Components / Label', () => {
       inputLabels.forEach((label) => expect(getByLabelText(label)).toHaveAccessibleName(label));
     });
 
-    describe('Theme', () => {
-      it('should use `disabled` classes', () => {
+    describe("Theme", () => {
+      it("should use `disabled` classes", () => {
         const theme: CustomFlowbiteTheme = {
           label: {
             root: {
-              disabled: 'opacity-50',
+              disabled: "opacity-50",
             },
           },
         };
@@ -48,13 +48,13 @@ describe.concurrent('Components / Label', () => {
           </Flowbite>,
         );
 
-        expect(label()).toHaveClass('opacity-50');
+        expect(label()).toHaveClass("opacity-50");
       });
     });
   });
 });
 
-const label = () => screen.getByTestId('flowbite-label');
+const label = () => screen.getByTestId("flowbite-label");
 
 const TestForm = (): JSX.Element => (
   <form>

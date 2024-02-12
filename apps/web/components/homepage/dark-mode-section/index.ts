@@ -1,1 +1,1 @@
-export { DarkModeSection } from './dark-mode-section';
+export { DarkModeSection } from "./dark-mode-section";

@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { Tabs } from 'flowbite-react';
-import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
-import { MdDashboard } from 'react-icons/md';
-import { type CodeData } from '~/components/code-demo';
+import { Tabs } from "flowbite-react";
+import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
+import { MdDashboard } from "react-icons/md";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-import { Tabs } from 'flowbite-react';
-import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
-import { MdDashboard } from 'react-icons/md';
+import { Tabs } from "flowbite-react";
+import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
+import { MdDashboard } from "react-icons/md";
 
 function Component() {
   return (
@@ -72,12 +72,12 @@ function Component() {
 }
 
 export const withIcons: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'tabs/tabs.withIcons.tsx',
+  githubSlug: "tabs/tabs.withIcons.tsx",
   component: <Component />,
 };

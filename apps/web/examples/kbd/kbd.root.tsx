@@ -1,10 +1,10 @@
-import { Kbd } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Kbd } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Kbd } from 'flowbite-react';
+import { Kbd } from "flowbite-react";
 
 function Component() {
   return (
@@ -22,7 +22,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Kbd } from 'flowbite-react';
+import { Kbd } from "flowbite-react";
 
 function Component() {
   return (
@@ -54,19 +54,19 @@ function Component() {
 }
 
 export const root: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'kbd/kbd.root.tsx',
+  githubSlug: "kbd/kbd.root.tsx",
   component: <Component />,
 };

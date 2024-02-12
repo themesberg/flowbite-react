@@ -1,34 +1,34 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FC } from 'react';
-import { describe, expect, it } from 'vitest';
-import { Navbar } from './Navbar';
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import type { FC } from "react";
+import { describe, expect, it } from "vitest";
+import { Navbar } from "./Navbar";
 
-describe.concurrent('Navbar', () => {
-  describe.concurrent('A11y', () => {
+describe.concurrent("Navbar", () => {
+  describe.concurrent("A11y", () => {
     it('should have `role="navigation"`', () => {
       render(<Navbar />);
 
-      expect(screen.getByRole('navigation')).toBeInTheDocument();
+      expect(screen.getByRole("navigation")).toBeInTheDocument();
     });
   });
 
-  describe.concurrent('Keyboard interactions', () => {
-    it('should hide/show `Navbar.Menu` when `Space` is pressed on `Navbar.Toggle`', async () => {
+  describe.concurrent("Keyboard interactions", () => {
+    it("should hide/show `Navbar.Menu` when `Space` is pressed on `Navbar.Toggle`", async () => {
       const user = userEvent.setup();
       render(<NavbarTest />);
-      const collapse = screen.getByTestId('flowbite-navbar-collapse');
-      const toggle = screen.getByTestId('flowbite-navbar-toggle');
+      const collapse = screen.getByTestId("flowbite-navbar-collapse");
+      const toggle = screen.getByTestId("flowbite-navbar-toggle");
 
-      expect(collapse).toHaveClass('hidden');
-
-      await user.click(toggle);
-
-      expect(collapse).not.toHaveClass('hidden');
+      expect(collapse).toHaveClass("hidden");
 
       await user.click(toggle);
 
-      expect(collapse).toHaveClass('hidden');
+      expect(collapse).not.toHaveClass("hidden");
+
+      await user.click(toggle);
+
+      expect(collapse).toHaveClass("hidden");
     });
   });
 });

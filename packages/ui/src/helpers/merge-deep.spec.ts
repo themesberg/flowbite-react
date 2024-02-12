@@ -1,35 +1,35 @@
-import { describe, expect, it } from 'vitest';
-import { mergeDeep } from './merge-deep';
+import { describe, expect, it } from "vitest";
+import { mergeDeep } from "./merge-deep";
 
-describe('Helpers / Merge deep', () => {
-  it('should merge keys that do not exist in target', () => {
+describe("Helpers / Merge deep", () => {
+  it("should merge keys that do not exist in target", () => {
     const target = {};
-    const source = { foo: 'bar' };
+    const source = { foo: "bar" };
 
     const result = mergeDeep(target, source);
 
-    expect(result).toEqual({ foo: 'bar' });
+    expect(result).toEqual({ foo: "bar" });
   });
 
-  it('should merge keys that do not exist in source', () => {
-    const target = { foo: 'bar' };
+  it("should merge keys that do not exist in source", () => {
+    const target = { foo: "bar" };
     const source = {};
 
     const result = mergeDeep(target, source);
 
-    expect(result).toEqual({ foo: 'bar' });
+    expect(result).toEqual({ foo: "bar" });
   });
 
-  it('should override target key if source key is identical', () => {
-    const target = { foo: { bar: 'baz' } };
-    const source = { foo: { bar: 'foobar' } };
+  it("should override target key if source key is identical", () => {
+    const target = { foo: { bar: "baz" } };
+    const source = { foo: { bar: "foobar" } };
 
     const result = mergeDeep(target, source);
 
-    expect(result).toEqual({ foo: { bar: 'foobar' } });
+    expect(result).toEqual({ foo: { bar: "foobar" } });
   });
 
-  it('should merge keys and do not mutate target and source', () => {
+  it("should merge keys and do not mutate target and source", () => {
     const target = {
       foo: { a: 1, b: { c: 2, f: { g: 3 } } },
       baz: 5,

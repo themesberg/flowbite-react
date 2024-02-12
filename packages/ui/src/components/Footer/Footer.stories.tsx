@@ -1,16 +1,16 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
-import { Footer } from './Footer';
+import type { Meta, StoryFn } from "@storybook/react";
+import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
+import { Footer } from "./Footer";
 
 export default {
-  title: 'Components/Footer',
+  title: "Components/Footer",
   component: Footer,
 } as Meta;
 
 const Template: StoryFn = ({ children }) => <Footer>{children}</Footer>;
 
 export const DefaultFooter = Template.bind({});
-DefaultFooter.storyName = 'Default';
+DefaultFooter.storyName = "Default";
 DefaultFooter.args = {
   children: (
     <div className="flex w-full justify-between p-6">
@@ -26,7 +26,7 @@ DefaultFooter.args = {
 };
 
 export const WithLogoFooter = Template.bind({});
-WithLogoFooter.storyName = 'With Logo';
+WithLogoFooter.storyName = "With Logo";
 WithLogoFooter.args = {
   children: (
     <div className="w-full p-6 text-center">
@@ -51,7 +51,7 @@ WithLogoFooter.args = {
 };
 
 export const WithSocialMediaFooter = Template.bind({});
-WithSocialMediaFooter.storyName = 'Social Media Icons';
+WithSocialMediaFooter.storyName = "Social Media Icons";
 WithSocialMediaFooter.args = {
   container: true,
   children: (
@@ -105,7 +105,7 @@ WithSocialMediaFooter.args = {
 };
 
 export const SitemapLinksFooter = Template.bind({});
-SitemapLinksFooter.storyName = 'Sitemap Links';
+SitemapLinksFooter.storyName = "Sitemap Links";
 SitemapLinksFooter.args = {
   children: (
     <div className="w-full bg-gray-800">

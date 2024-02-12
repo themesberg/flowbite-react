@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { Button, Toast } from 'flowbite-react';
-import { useState } from 'react';
-import { HiFire } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Toast } from "flowbite-react";
+import { useState } from "react";
+import { HiFire } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Toast } from 'flowbite-react';
-import { useState } from 'react';
-import { HiFire } from 'react-icons/hi';
+import { Button, Toast } from "flowbite-react";
+import { useState } from "react";
+import { HiFire } from "react-icons/hi";
 
 function Component() {
   const [showToast, setShowToast] = useState(false);
@@ -52,12 +52,12 @@ function Component() {
 }
 
 export const customDismissal: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'toast/toast.customDismissal.tsx',
+  githubSlug: "toast/toast.customDismissal.tsx",
   component: <Component />,
 };

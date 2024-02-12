@@ -1,12 +1,12 @@
-import { cleanup, render, screen } from '@testing-library/react';
-import type { FC } from 'react';
-import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from 'react-icons/bs';
-import { describe, expect, it } from 'vitest';
-import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
-import { Footer } from './Footer';
+import { cleanup, render, screen } from "@testing-library/react";
+import type { FC } from "react";
+import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
+import { describe, expect, it } from "vitest";
+import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { Footer } from "./Footer";
 
-describe('Components / Footer', () => {
-  describe('Rendering', () => {
+describe("Components / Footer", () => {
+  describe("Rendering", () => {
     it('should render an `<a>` with an `<img>` on `Footer.Brand href=".."`', () => {
       render(
         <Footer>
@@ -15,8 +15,8 @@ describe('Components / Footer', () => {
           </Footer.Brand>
         </Footer>,
       );
-      const a = screen.getByTestId('flowbite-footer-brand');
-      const img = screen.getByAltText('Flowbite');
+      const a = screen.getByTestId("flowbite-footer-brand");
+      const img = screen.getByAltText("Flowbite");
 
       expect(a).toBeInTheDocument();
       expect(a).toContainElement(img);
@@ -31,7 +31,7 @@ describe('Components / Footer', () => {
         </Footer.Brand>
       </Footer>,
     );
-    const img = screen.getByAltText('Flowbite');
+    const img = screen.getByAltText("Flowbite");
 
     expect(img).toBeInTheDocument();
   });
@@ -45,7 +45,7 @@ describe('Components / Footer', () => {
       </Footer>,
     );
 
-    expect(copyright()).toContainElement(screen.getByRole('link'));
+    expect(copyright()).toContainElement(screen.getByRole("link"));
   });
 
   it('should render an `<a>` on `Footer.Icon href=".."`', () => {
@@ -54,17 +54,17 @@ describe('Components / Footer', () => {
         <Footer.Icon ariaLabel="Icon" href="/" icon={BsFacebook} />
       </Footer>,
     );
-    const iconLink = screen.getAllByRole('link')[0];
+    const iconLink = screen.getAllByRole("link")[0];
 
     expect(iconLink).toContainElement(icon());
   });
 
-  describe('Theme', () => {
-    it('should use `base` classes', () => {
+  describe("Theme", () => {
+    it("should use `base` classes", () => {
       const theme: CustomFlowbiteTheme = {
         footer: {
           root: {
-            base: 'text-gray-100',
+            base: "text-gray-100",
           },
         },
       };
@@ -74,14 +74,14 @@ describe('Components / Footer', () => {
         </Flowbite>,
       );
 
-      expect(footer()).toHaveClass('text-gray-100');
+      expect(footer()).toHaveClass("text-gray-100");
     });
 
-    it('should use `bgDark` classes', () => {
+    it("should use `bgDark` classes", () => {
       const theme: CustomFlowbiteTheme = {
         footer: {
           root: {
-            bgDark: 'text-gray-100',
+            bgDark: "text-gray-100",
           },
         },
       };
@@ -91,14 +91,14 @@ describe('Components / Footer', () => {
         </Flowbite>,
       );
 
-      expect(footer()).toHaveClass('text-gray-100');
+      expect(footer()).toHaveClass("text-gray-100");
     });
 
-    it('should use `container` classes', () => {
+    it("should use `container` classes", () => {
       const theme: CustomFlowbiteTheme = {
         footer: {
           root: {
-            container: 'text-gray-100',
+            container: "text-gray-100",
           },
         },
       };
@@ -108,17 +108,17 @@ describe('Components / Footer', () => {
         </Flowbite>,
       );
 
-      expect(footer()).toHaveClass('text-gray-100');
+      expect(footer()).toHaveClass("text-gray-100");
     });
 
-    describe('`Footer.Brand`', () => {
-      it('should use `brand` classes', () => {
+    describe("`Footer.Brand`", () => {
+      it("should use `brand` classes", () => {
         const theme: CustomFlowbiteTheme = {
           footer: {
             brand: {
-              base: 'text-gray-100',
-              img: 'text-gray-200',
-              span: 'text-gray-300',
+              base: "text-gray-100",
+              img: "text-gray-200",
+              span: "text-gray-300",
             },
           },
         };
@@ -132,8 +132,8 @@ describe('Components / Footer', () => {
           </Flowbite>,
         );
 
-        expect(brand()).toHaveClass('text-gray-100');
-        expect(screen.getByRole('img')).toHaveClass('text-gray-200');
+        expect(brand()).toHaveClass("text-gray-100");
+        expect(screen.getByRole("img")).toHaveClass("text-gray-200");
 
         cleanup();
         render(
@@ -146,18 +146,18 @@ describe('Components / Footer', () => {
           </Flowbite>,
         );
 
-        expect(screen.getByTestId('flowbite-footer-brand-span')).toHaveClass('text-gray-300');
+        expect(screen.getByTestId("flowbite-footer-brand-span")).toHaveClass("text-gray-300");
       });
     });
 
-    describe('`Footer.Copyright`', () => {
-      it('should use `copyright` classes', () => {
+    describe("`Footer.Copyright`", () => {
+      it("should use `copyright` classes", () => {
         const theme: CustomFlowbiteTheme = {
           footer: {
             copyright: {
-              base: 'text-gray-100',
-              href: 'text-gray-200',
-              span: 'text-gray-300',
+              base: "text-gray-100",
+              href: "text-gray-200",
+              span: "text-gray-300",
             },
           },
         };
@@ -171,8 +171,8 @@ describe('Components / Footer', () => {
           </Flowbite>,
         );
 
-        expect(copyright()).toHaveClass('text-gray-100');
-        expect(screen.getByTestId('flowbite-footer-copyright-span')).toHaveClass('text-gray-300');
+        expect(copyright()).toHaveClass("text-gray-100");
+        expect(screen.getByTestId("flowbite-footer-copyright-span")).toHaveClass("text-gray-300");
 
         cleanup();
         render(
@@ -185,17 +185,17 @@ describe('Components / Footer', () => {
           </Flowbite>,
         );
 
-        expect(screen.getByRole('link')).toHaveClass('text-gray-200');
+        expect(screen.getByRole("link")).toHaveClass("text-gray-200");
       });
     });
 
-    describe('`Footer.Icon`', () => {
-      it('should use `icon` classes', () => {
+    describe("`Footer.Icon`", () => {
+      it("should use `icon` classes", () => {
         const theme: CustomFlowbiteTheme = {
           footer: {
             icon: {
-              base: 'text-gray-800',
-              size: 'text-gray-900',
+              base: "text-gray-800",
+              size: "text-gray-900",
             },
           },
         };
@@ -207,7 +207,7 @@ describe('Components / Footer', () => {
           </Flowbite>,
         );
 
-        expect(icon()).toHaveClass('text-gray-800');
+        expect(icon()).toHaveClass("text-gray-800");
 
         cleanup();
         render(
@@ -218,16 +218,16 @@ describe('Components / Footer', () => {
           </Flowbite>,
         );
 
-        expect(icon()).toHaveClass('text-gray-900');
+        expect(icon()).toHaveClass("text-gray-900");
       });
     });
 
-    describe('`Footer.Title`', () => {
-      it('should use `title` classes', () => {
+    describe("`Footer.Title`", () => {
+      it("should use `title` classes", () => {
         const theme: CustomFlowbiteTheme = {
           footer: {
             title: {
-              base: 'text-gray-100',
+              base: "text-gray-100",
             },
           },
         };
@@ -237,7 +237,7 @@ describe('Components / Footer', () => {
           </Flowbite>,
         );
 
-        expect(title()).toHaveClass('text-gray-100');
+        expect(title()).toHaveClass("text-gray-100");
       });
     });
   });
@@ -294,12 +294,12 @@ const TestFooter: FC = () => (
   </Footer>
 );
 
-const brand = () => screen.getByTestId('flowbite-footer-brand');
+const brand = () => screen.getByTestId("flowbite-footer-brand");
 
-const copyright = () => screen.getByTestId('flowbite-footer-copyright');
+const copyright = () => screen.getByTestId("flowbite-footer-copyright");
 
-const footer = () => screen.getByTestId('flowbite-footer');
+const footer = () => screen.getByTestId("flowbite-footer");
 
-const icon = () => screen.getByTestId('flowbite-footer-icon');
+const icon = () => screen.getByTestId("flowbite-footer-icon");
 
-const title = () => screen.getByTestId('flowbite-footer-title');
+const title = () => screen.getByTestId("flowbite-footer-title");

@@ -1,16 +1,16 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import type { ListProps } from './List';
-import { List } from './List';
+import type { Meta, StoryFn } from "@storybook/react";
+import type { ListProps } from "./List";
+import { List } from "./List";
 
 export default {
-  title: 'Components/List',
+  title: "Components/List",
   component: List,
 } as Meta;
 
 const Template: StoryFn<ListProps> = (args) => <List {...args} />;
 
 export const DefaultList = Template.bind({});
-DefaultList.storyName = 'Default';
+DefaultList.storyName = "Default";
 DefaultList.args = {
   children: (
     <>
@@ -22,7 +22,7 @@ DefaultList.args = {
 };
 
 export const UnstyledList = Template.bind({});
-UnstyledList.storyName = 'Unstyled';
+UnstyledList.storyName = "Unstyled";
 UnstyledList.args = {
   unstyled: true,
   children: (
@@ -35,7 +35,7 @@ UnstyledList.args = {
 };
 
 export const NestedList = Template.bind({});
-NestedList.storyName = 'Nested';
+NestedList.storyName = "Nested";
 NestedList.args = {
   children: (
     <>
@@ -68,7 +68,7 @@ NestedList.args = {
 };
 
 export const OrderedList = Template.bind({});
-OrderedList.storyName = 'Ordered';
+OrderedList.storyName = "Ordered";
 OrderedList.args = {
   ordered: true,
   children: (
@@ -81,7 +81,7 @@ OrderedList.args = {
 };
 
 export const HorizontalList = Template.bind({});
-HorizontalList.storyName = 'Horizontal';
+HorizontalList.storyName = "Horizontal";
 HorizontalList.args = {
   horizontal: true,
   children: (

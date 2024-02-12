@@ -1,5 +1,5 @@
-import { setTheme } from '..';
-import type { CustomFlowbiteTheme } from '../../components/Flowbite';
+import { setTheme } from "..";
+import type { CustomFlowbiteTheme } from "../../components/Flowbite";
 
 interface Props {
   theme?: CustomFlowbiteTheme;

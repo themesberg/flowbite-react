@@ -1,9 +1,9 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import type { CarouselProps } from './Carousel';
-import { Carousel } from './Carousel';
+import type { Meta, StoryFn } from "@storybook/react";
+import type { CarouselProps } from "./Carousel";
+import { Carousel } from "./Carousel";
 
 export default {
-  title: 'Components/Carousel',
+  title: "Components/Carousel",
   component: Carousel,
 } as Meta;
 
@@ -23,7 +23,7 @@ export const Default = Template.bind({});
 Default.args = {};
 
 export const SlideInterval = Template.bind({});
-SlideInterval.storyName = 'Slide interval';
+SlideInterval.storyName = "Slide interval";
 SlideInterval.args = {
   slideInterval: 5000,
 };
@@ -34,14 +34,14 @@ Static.args = {
 };
 
 export const CustomControls = Template.bind({});
-CustomControls.storyName = 'With custom controls';
+CustomControls.storyName = "With custom controls";
 CustomControls.args = {
-  leftControl: '<',
-  rightControl: '>',
+  leftControl: "<",
+  rightControl: ">",
 };
 
 export const WithNoIndicators = Template.bind({});
-WithNoIndicators.storyName = 'With no indicators';
+WithNoIndicators.storyName = "With no indicators";
 WithNoIndicators.args = {
   indicators: false,
 };

@@ -1,9 +1,9 @@
-import type { ComponentProps } from 'react';
-import { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
+import type { ComponentProps } from "react";
+import { forwardRef } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
 
 export interface FlowbiteRadioTheme {
   root: FlowbiteRadioRootTheme;
@@ -13,7 +13,7 @@ export interface FlowbiteRadioRootTheme {
   base: string;
 }
 
-export interface RadioProps extends Omit<ComponentProps<'input'>, 'ref' | 'type'> {
+export interface RadioProps extends Omit<ComponentProps<"input">, "ref" | "type"> {
   theme?: DeepPartial<FlowbiteRadioTheme>;
 }
 
@@ -25,4 +25,4 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   },
 );
 
-Radio.displayName = 'Radio';
+Radio.displayName = "Radio";

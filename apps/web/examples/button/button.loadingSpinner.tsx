@@ -1,12 +1,12 @@
-import { Button } from 'flowbite-react';
-import { AiOutlineLoading } from 'react-icons/ai';
-import { type CodeData } from '~/components/code-demo';
+import { Button } from "flowbite-react";
+import { AiOutlineLoading } from "react-icons/ai";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button } from 'flowbite-react';
-import { AiOutlineLoading } from 'react-icons/ai';
+import { Button } from "flowbite-react";
+import { AiOutlineLoading } from "react-icons/ai";
 
 function Component() {
   return (
@@ -18,8 +18,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button } from 'flowbite-react';
-import { AiOutlineLoading } from 'react-icons/ai';
+import { Button } from "flowbite-react";
+import { AiOutlineLoading } from "react-icons/ai";
 
 function Component() {
   return (
@@ -39,19 +39,19 @@ function Component() {
 }
 
 export const loadingSpinner: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'button/button.loadingSpinner.tsx',
+  githubSlug: "button/button.loadingSpinner.tsx",
   component: <Component />,
 };

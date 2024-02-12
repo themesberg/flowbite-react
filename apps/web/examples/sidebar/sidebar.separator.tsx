@@ -1,18 +1,18 @@
 // TODO: try to make it RSC - failing because of `<SidebarItem />` icon prop
 
-'use client';
+"use client";
 
-import { Sidebar } from 'flowbite-react';
-import { BiBuoy } from 'react-icons/bi';
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import { Sidebar } from "flowbite-react";
+import { BiBuoy } from "react-icons/bi";
+import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Sidebar } from 'flowbite-react';
-import { BiBuoy } from 'react-icons/bi';
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
+import { Sidebar } from "flowbite-react";
+import { BiBuoy } from "react-icons/bi";
+import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
 
 function Component() {
   return (
@@ -102,12 +102,12 @@ function Component() {
 }
 
 export const separator: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'sidebar/sidebar.separator.tsx',
+  githubSlug: "sidebar/sidebar.separator.tsx",
   component: <Component />,
 };

@@ -1,9 +1,9 @@
-import type { FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../../helpers/merge-deep';
-import type { DeepPartial } from '../../../types';
-import { useDatePickerContext } from '../DatepickerContext';
-import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateEqual, isDateInRange } from '../helpers';
+import type { FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../../helpers/merge-deep";
+import type { DeepPartial } from "../../../types";
+import { useDatePickerContext } from "../DatepickerContext";
+import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateEqual, isDateInRange } from "../helpers";
 
 export interface FlowbiteDatepickerViewsDaysTheme {
   header: {
@@ -53,7 +53,7 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: custo
       <div className={theme.items.base}>
         {[...Array(42)].map((_date, index) => {
           const currentDate = addDays(startDate, index);
-          const day = getFormattedDate(language, currentDate, { day: 'numeric' });
+          const day = getFormattedDate(language, currentDate, { day: "numeric" });
 
           const isSelected = isDateEqual(selectedDate, currentDate);
           const isDisabled = !isDateInRange(currentDate, minDate, maxDate);

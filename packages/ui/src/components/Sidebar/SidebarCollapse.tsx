@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC, PropsWithChildren, ReactElement } from 'react';
-import { useEffect, useId, useState } from 'react';
-import { HiChevronDown } from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean } from '../Flowbite';
-import { Tooltip } from '../Tooltip';
-import { useSidebarContext } from './SidebarContext';
-import type { SidebarItemProps } from './SidebarItem';
-import { SidebarItemContext } from './SidebarItemContext';
+import type { ComponentProps, FC, PropsWithChildren, ReactElement } from "react";
+import { useEffect, useId, useState } from "react";
+import { HiChevronDown } from "react-icons/hi";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean } from "../Flowbite";
+import { Tooltip } from "../Tooltip";
+import { useSidebarContext } from "./SidebarContext";
+import type { SidebarItemProps } from "./SidebarItem";
+import { SidebarItemContext } from "./SidebarItemContext";
 
 export interface FlowbiteSidebarCollapseTheme {
   button: string;
@@ -29,11 +29,11 @@ export interface FlowbiteSidebarCollapseTheme {
 }
 
 export interface SidebarCollapseProps
-  extends Pick<SidebarItemProps, 'active' | 'as' | 'href' | 'icon' | 'label' | 'labelColor'>,
-    ComponentProps<'button'> {
-  onClick?: ComponentProps<'button'>['onClick'];
+  extends Pick<SidebarItemProps, "active" | "as" | "href" | "icon" | "label" | "labelColor">,
+    ComponentProps<"button"> {
+  onClick?: ComponentProps<"button">["onClick"];
   open?: boolean;
-  chevronIcon?: FC<ComponentProps<'svg'>>;
+  chevronIcon?: FC<ComponentProps<"svg">>;
   renderChevronIcon?: (theme: FlowbiteSidebarCollapseTheme, open: boolean) => ReactElement;
   theme?: DeepPartial<FlowbiteSidebarCollapseTheme>;
 }
@@ -83,7 +83,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
           <Icon
             aria-hidden
             data-testid="flowbite-sidebar-collapse-icon"
-            className={twMerge(theme.icon.base, theme.icon.open[isOpen ? 'on' : 'off'])}
+            className={twMerge(theme.icon.base, theme.icon.open[isOpen ? "on" : "off"])}
           />
         )}
         {isCollapsed ? (
@@ -98,7 +98,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
             ) : (
               <ChevronIcon
                 aria-hidden
-                className={twMerge(theme.label.icon.base, theme.label.icon.open[isOpen ? 'on' : 'off'])}
+                className={twMerge(theme.label.icon.base, theme.label.icon.open[isOpen ? "on" : "off"])}
               />
             )}
           </>
@@ -111,4 +111,4 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   );
 };
 
-SidebarCollapse.displayName = 'Sidebar.Collapse';
+SidebarCollapse.displayName = "Sidebar.Collapse";

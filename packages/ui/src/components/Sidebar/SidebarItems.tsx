@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { useSidebarContext } from './SidebarContext';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import { useSidebarContext } from "./SidebarContext";
 
 export interface FlowbiteSidebarItemsTheme {
   base: string;
 }
 
-export interface SidebarItemsProps extends ComponentProps<'div'> {
+export interface SidebarItemsProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteSidebarItemsTheme>;
 }
 
@@ -26,4 +26,4 @@ export const SidebarItems: FC<SidebarItemsProps> = ({ children, className, theme
   );
 };
 
-SidebarItems.displayName = 'Sidebar.Items';
+SidebarItems.displayName = "Sidebar.Items";

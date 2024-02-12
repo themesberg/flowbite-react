@@ -1,13 +1,13 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { useState } from 'react';
-import { describe, expect, it } from 'vitest';
-import { Button } from '../Button';
-import { Popover } from './index';
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { useState } from "react";
+import { describe, expect, it } from "vitest";
+import { Button } from "../Button";
+import { Popover } from "./index";
 
-describe('Popover', () => {
-  describe('Rendering', () => {
-    it('should display when target is clicked', async () => {
+describe("Popover", () => {
+  describe("Rendering", () => {
+    it("should display when target is clicked", async () => {
       const user = userEvent.setup();
       render(
         <Popover content="Default">
@@ -34,7 +34,7 @@ describe('Popover', () => {
       expect(popover()).toBeInTheDocument();
     });
 
-    it('should hide arrow when `arrow={false}`', async () => {
+    it("should hide arrow when `arrow={false}`", async () => {
       const user = userEvent.setup();
       render(
         <Popover content="Default" arrow={false}>
@@ -47,7 +47,7 @@ describe('Popover', () => {
       expect(arrow()).not.toBeInTheDocument();
     });
 
-    it('should programmatically open/close', async () => {
+    it("should programmatically open/close", async () => {
       const user = userEvent.setup();
       render(<ControlledPopover />);
 
@@ -61,7 +61,7 @@ describe('Popover', () => {
     });
   });
 
-  describe('A11y', () => {
+  describe("A11y", () => {
     it('should have `role="dialog"`', async () => {
       const user = userEvent.setup();
 
@@ -72,7 +72,7 @@ describe('Popover', () => {
       );
 
       await user.click(target());
-      expect(popover()).toHaveAttribute('role', 'dialog');
+      expect(popover()).toHaveAttribute("role", "dialog");
     });
   });
 });
@@ -92,7 +92,7 @@ function ControlledPopover() {
   );
 }
 
-const arrow = () => screen.queryByTestId('flowbite-popover-arrow');
-const target = () => screen.getByText('Target').closest('button') as HTMLButtonElement;
-const popover = () => screen.queryByRole('dialog');
-const closePopoverButton = () => screen.getByText('Close popover').closest('button') as HTMLButtonElement;
+const arrow = () => screen.queryByTestId("flowbite-popover-arrow");
+const target = () => screen.getByText("Target").closest("button") as HTMLButtonElement;
+const popover = () => screen.queryByRole("dialog");
+const closePopoverButton = () => screen.getByText("Close popover").closest("button") as HTMLButtonElement;

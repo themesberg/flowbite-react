@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { Dropdown } from 'flowbite-react';
-import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import { Dropdown } from "flowbite-react";
+import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Dropdown } from 'flowbite-react';
-import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from 'react-icons/hi';
+import { Dropdown } from "flowbite-react";
+import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from "react-icons/hi";
 
 function Component() {
   return (
@@ -44,12 +44,12 @@ function Component() {
 }
 
 export const itemsWithIcon: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'dropdown/dropdown.itemsWithIcon.tsx',
+  githubSlug: "dropdown/dropdown.itemsWithIcon.tsx",
   component: <Component />,
 };

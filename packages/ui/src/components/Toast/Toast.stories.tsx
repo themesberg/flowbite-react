@@ -1,10 +1,10 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { HiFire } from 'react-icons/hi';
-import type { ToastProps } from './Toast';
-import { Toast } from './Toast';
+import type { Meta, StoryFn } from "@storybook/react";
+import { HiFire } from "react-icons/hi";
+import type { ToastProps } from "./Toast";
+import { Toast } from "./Toast";
 
 export default {
-  title: 'Components/Toast',
+  title: "Components/Toast",
   component: Toast,
 } as Meta;
 
@@ -20,4 +20,4 @@ export const DefaultToast: StoryFn<ToastProps> = (args) => {
   );
 };
 
-DefaultToast.storyName = 'Default';
+DefaultToast.storyName = "Default";

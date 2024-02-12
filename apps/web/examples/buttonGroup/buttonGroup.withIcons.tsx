@@ -1,12 +1,12 @@
-import { Button, ButtonGroup } from 'flowbite-react';
-import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import { Button, ButtonGroup } from "flowbite-react";
+import { HiAdjustments, HiCloudDownload, HiUserCircle } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button } from 'flowbite-react';
-import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
+import { Button } from "flowbite-react";
+import { HiAdjustments, HiCloudDownload, HiUserCircle } from "react-icons/hi";
 
 function Component() {
   return (
@@ -29,8 +29,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button, ButtonGroup } from 'flowbite-react';
-import { HiAdjustments, HiCloudDownload, HiUserCircle } from 'react-icons/hi';
+import { Button, ButtonGroup } from "flowbite-react";
+import { HiAdjustments, HiCloudDownload, HiUserCircle } from "react-icons/hi";
 
 function Component() {
   return (
@@ -72,19 +72,19 @@ function Component() {
 }
 
 export const withIcons: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'buttonGroup/buttonGroup.withIcons.tsx',
+  githubSlug: "buttonGroup/buttonGroup.withIcons.tsx",
   component: <Component />,
 };

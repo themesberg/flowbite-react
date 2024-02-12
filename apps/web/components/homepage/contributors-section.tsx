@@ -1,8 +1,8 @@
-import { Tooltip } from 'flowbite-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import type { FC } from 'react';
-import { safeResJson } from '~/helpers/http';
+import { Tooltip } from "flowbite-react";
+import Image from "next/image";
+import Link from "next/link";
+import type { FC } from "react";
+import { safeResJson } from "~/helpers/http";
 
 interface Contributor {
   id: number;
@@ -13,7 +13,7 @@ interface Contributor {
 
 async function fetchContributors(): Promise<Contributor[]> {
   try {
-    const result = await fetch('https://api.github.com/repos/themesberg/flowbite-react/contributors?per_page=21');
+    const result = await fetch("https://api.github.com/repos/themesberg/flowbite-react/contributors?per_page=21");
 
     return safeResJson(result);
   } catch (error) {
@@ -74,7 +74,7 @@ export const ContributorsSection: FC = async () => {
                 href="https://github.com/themesberg/flowbite-react"
                 className="flex items-center gap-2 whitespace-nowrap text-base font-medium text-cyan-700 hover:underline"
               >
-                See our repository{' '}
+                See our repository{" "}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"

@@ -1,10 +1,10 @@
-import { Avatar, Blockquote } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Avatar, Blockquote } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Avatar, Blockquote } from 'flowbite-react';
+import { Avatar, Blockquote } from "flowbite-react";
 
 function Component() {
   return (
@@ -37,7 +37,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Avatar, Blockquote } from 'flowbite-react';
+import { Avatar, Blockquote } from "flowbite-react";
 
 function Component() {
   return (
@@ -99,19 +99,19 @@ function Component() {
 }
 
 export const userTestimonial: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'blockquote/blockquote.userTestimonial.tsx',
+  githubSlug: "blockquote/blockquote.userTestimonial.tsx",
   component: <Component />,
 };

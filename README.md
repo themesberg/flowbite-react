@@ -86,7 +86,7 @@ Point Tailwind CSS to files you have `className=".."` in:
 
 ```javascript
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}' /* src folder, for example */],
+  content: ["./src/**/*.{js,jsx,ts,tsx}" /* src folder, for example */],
   theme: {
     extend: {},
   },
@@ -117,11 +117,11 @@ npm i flowbite-react
 export default {
   content: [
     // ...
-    'node_modules/flowbite-react/lib/esm/**/*.js',
+    "node_modules/flowbite-react/lib/esm/**/*.js",
   ],
   plugins: [
     // ...
-    require('flowbite/plugin'),
+    require("flowbite/plugin"),
   ],
 };
 ```
@@ -131,7 +131,7 @@ export default {
 How you use Flowbite React depends on your project setup. In general, you can just import the components you want to use from `flowbite-react` and use them in a React `.jsx` file:
 
 ```tsx
-import { Button } from 'flowbite-react';
+import { Button } from "flowbite-react";
 
 export default function MyPage() {
   return (

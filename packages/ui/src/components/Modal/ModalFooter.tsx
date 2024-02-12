@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { useModalContext } from './ModalContext';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import { useModalContext } from "./ModalContext";
 
 export interface FlowbiteModalFooterTheme {
   base: string;
   popup: string;
 }
 
-export interface ModalFooterProps extends ComponentProps<'div'> {
+export interface ModalFooterProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteModalFooterTheme>;
 }
 

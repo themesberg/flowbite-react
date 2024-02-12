@@ -1,10 +1,10 @@
-import { Datepicker } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Datepicker } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Datepicker } from 'flowbite-react';
+import { Datepicker } from "flowbite-react";
 
 function Component() {
   return <Datepicker language="pt-BR" labelTodayButton="Hoje" labelClearButton="Limpar" />;
@@ -12,7 +12,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Datepicker } from 'flowbite-react';
+import { Datepicker } from "flowbite-react";
 
 function Component() {
   return <Datepicker language="pt-BR" labelTodayButton="Hoje" labelClearButton="Limpar" />;
@@ -24,19 +24,19 @@ function Component() {
 }
 
 export const localization: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'datepicker/datepicker.localization.tsx',
+  githubSlug: "datepicker/datepicker.localization.tsx",
   component: <Component />,
 };

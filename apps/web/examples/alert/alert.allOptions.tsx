@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { Alert } from 'flowbite-react';
-import { HiEye, HiInformationCircle } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import { Alert } from "flowbite-react";
+import { HiEye, HiInformationCircle } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-import { HiEye, HiInformationCircle } from 'react-icons/hi';
-import { Alert } from 'flowbite-react';
+import { HiEye, HiInformationCircle } from "react-icons/hi";
+import { Alert } from "flowbite-react";
 
 function Component() {
   return (
@@ -29,7 +29,7 @@ function Component() {
       additionalContent={<ExampleAdditionalContent />}
       color="success"
       icon={HiInformationCircle}
-      onDismiss={() => alert('Alert dismissed!')}
+      onDismiss={() => alert("Alert dismissed!")}
       rounded
     >
       <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.
@@ -64,12 +64,12 @@ function ExampleAdditionalContent() {
 }
 
 export const allOptions: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'alert/alert.allOptions.tsx',
+  githubSlug: "alert/alert.allOptions.tsx",
   component: <Component />,
 };

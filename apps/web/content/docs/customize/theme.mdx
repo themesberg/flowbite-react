@@ -3,8 +3,8 @@ title: React Theme - Flowbite
 description: Learn how you can change the Tailwind CSS classes used by the components in Flowbite React
 ---
 
-import { Alert } from 'flowbite-react/components/Alert';
-import { HiInformationCircle } from 'react-icons/hi';
+import { Alert } from "flowbite-react/components/Alert";
+import { HiInformationCircle } from "react-icons/hi";
 
 <Alert color="warning" icon={HiInformationCircle} className="mb-6">
   This feature is highly experimental. In the future, it could be deprecated or even suffer several changes.
@@ -19,7 +19,7 @@ You have a few options, and each has its own pros and cons.
 This is the easiest way to customize the components. You can change the Tailwind CSS classes directly in the component via the `className` prop.
 
 ```jsx
-import { Button } from 'flowbite-react';
+import { Button } from "flowbite-react";
 
 export default function MyPage() {
   return <Button className="bg-red-500 hover:bg-red-600">Click me</Button>;
@@ -33,13 +33,13 @@ The downside of this approach is that you have to change the `className` prop in
 You can create a custom theme and pass it to the `<Flowbite>` component. The custom theme will be merged with the default theme, and the resulting theme will be used by the components.
 
 ```tsx
-import type { CustomFlowbiteTheme } from 'flowbite-react';
-import { Flowbite } from 'flowbite-react';
+import type { CustomFlowbiteTheme } from "flowbite-react";
+import { Flowbite } from "flowbite-react";
 
 const customTheme: CustomFlowbiteTheme = {
   button: {
     color: {
-      primary: 'bg-red-500 hover:bg-red-600',
+      primary: "bg-red-500 hover:bg-red-600",
     },
   },
 };
@@ -58,12 +58,12 @@ export default function MyPage() {
 You can also pass `theme={}` directly to any component, which will override the theme for that component, but not its children. This is useful if you want to create a reusable component with a custom theme.
 
 ```tsx
-import type { CustomFlowbiteTheme } from 'flowbite-react';
-import { Button } from 'flowbite-react';
+import type { CustomFlowbiteTheme } from "flowbite-react";
+import { Button } from "flowbite-react";
 
-const customTheme: CustomFlowbiteTheme['button'] = {
+const customTheme: CustomFlowbiteTheme["button"] = {
   color: {
-    primary: 'bg-red-500 hover:bg-red-600',
+    primary: "bg-red-500 hover:bg-red-600",
   },
 };
 

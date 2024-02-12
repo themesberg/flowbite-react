@@ -1,8 +1,8 @@
-import type { ComponentProps, FC, ReactEventHandler, ReactNode } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
+import type { ComponentProps, FC, ReactEventHandler, ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
 
 export interface FlowbitePaginationButtonTheme {
   base: string;
@@ -10,7 +10,7 @@ export interface FlowbitePaginationButtonTheme {
   disabled: string;
 }
 
-export interface PaginationButtonProps extends ComponentProps<'button'> {
+export interface PaginationButtonProps extends ComponentProps<"button"> {
   active?: boolean;
   children?: ReactNode;
   className?: string;
@@ -18,7 +18,7 @@ export interface PaginationButtonProps extends ComponentProps<'button'> {
   theme?: DeepPartial<FlowbitePaginationButtonTheme>;
 }
 
-export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, 'active'> {
+export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, "active"> {
   disabled?: boolean;
 }
 
@@ -44,7 +44,7 @@ export const PaginationButton: FC<PaginationButtonProps> = ({
   );
 };
 
-PaginationButton.displayName = 'Pagination.Button';
+PaginationButton.displayName = "Pagination.Button";
 
 export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   children,
@@ -69,4 +69,4 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   );
 };
 
-PaginationNavigation.displayName = 'Pagination.Navigation';
+PaginationNavigation.displayName = "Pagination.Navigation";

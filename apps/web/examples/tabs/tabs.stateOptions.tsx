@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { Button, Tabs, type TabsRef } from 'flowbite-react';
-import { useRef, useState } from 'react';
-import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
-import { MdDashboard } from 'react-icons/md';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Tabs, type TabsRef } from "flowbite-react";
+import { useRef, useState } from "react";
+import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
+import { MdDashboard } from "react-icons/md";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Tabs, TabsRef } from 'flowbite-react';
-import { useRef, useState } from 'react';
-import { HiAdjustments, HiClipboardList, HiUserCircle } from 'react-icons/hi';
-import { MdDashboard } from 'react-icons/md';
+import { Button, Tabs, TabsRef } from "flowbite-react";
+import { useRef, useState } from "react";
+import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
+import { MdDashboard } from "react-icons/md";
 
 function Component() {
   const tabsRef = useRef<TabsRef>(null);
@@ -116,12 +116,12 @@ function Component() {
 }
 
 export const stateOptions: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'tabs/tabs.stateOptions.tsx',
+  githubSlug: "tabs/tabs.stateOptions.tsx",
   component: <Component />,
 };

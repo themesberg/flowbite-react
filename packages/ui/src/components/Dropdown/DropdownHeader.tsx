@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import type { DeepPartial } from '../../types';
-import { useDropdownContext } from './DropdownContext';
-import { DropdownDivider } from './DropdownDivider';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import type { DeepPartial } from "../../types";
+import { useDropdownContext } from "./DropdownContext";
+import { DropdownDivider } from "./DropdownDivider";
 
 export interface FlowbiteDropdownHeaderTheme {
   header: string;
 }
 
-export interface DropdownHeaderProps extends ComponentProps<'div'> {
+export interface DropdownHeaderProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteDropdownHeaderTheme>;
 }
 

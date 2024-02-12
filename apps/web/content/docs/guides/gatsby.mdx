@@ -28,11 +28,11 @@ npm i flowbite-react
 export default {
   content: [
     // ...
-    'node_modules/flowbite-react/lib/esm/**/*.js',
+    "node_modules/flowbite-react/lib/esm/**/*.js",
   ],
   plugins: [
     // ...
-    require('flowbite/plugin'),
+    require("flowbite/plugin"),
   ],
 };
 ```
@@ -62,7 +62,7 @@ export const onRenderBody = ({ setPreBodyComponents }) => {
 ```js {3,6}
 // gatsby-ssr.js
 
-import { ThemeModeScript } from 'flowbite-react';
+import { ThemeModeScript } from "flowbite-react";
 
 export const onRenderBody = ({ setPreBodyComponents }) => {
   setPreBodyComponents([ThemeModeScript]);
@@ -74,7 +74,7 @@ export const onRenderBody = ({ setPreBodyComponents }) => {
 Now that you have successfully installed Flowbite React you can start using the components from the library.
 
 ```tsx
-import { Button } from 'flowbite-react';
+import { Button } from "flowbite-react";
 
 export default function IndexPage() {
   return <Button>Click me</Button>;

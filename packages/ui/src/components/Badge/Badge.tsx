@@ -1,9 +1,9 @@
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../Flowbite';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite";
 
 export interface FlowbiteBadgeTheme {
   root: FlowbiteBadgeRootTheme;
@@ -21,24 +21,24 @@ export interface FlowbiteBadgeIconTheme extends FlowbiteBoolean {
   size: BadgeSizes;
 }
 
-export interface BadgeSizes extends Pick<FlowbiteSizes, 'xs' | 'sm'> {
+export interface BadgeSizes extends Pick<FlowbiteSizes, "xs" | "sm"> {
   [key: string]: string;
 }
 
-export interface BadgeProps extends Omit<ComponentProps<'span'>, 'color'> {
+export interface BadgeProps extends Omit<ComponentProps<"span">, "color"> {
   color?: keyof FlowbiteColors;
   href?: string;
-  icon?: FC<ComponentProps<'svg'>>;
+  icon?: FC<ComponentProps<"svg">>;
   size?: keyof BadgeSizes;
   theme?: DeepPartial<FlowbiteBadgeTheme>;
 }
 
 export const Badge: FC<BadgeProps> = ({
   children,
-  color = 'info',
+  color = "info",
   href,
   icon: Icon,
-  size = 'xs',
+  size = "xs",
   className,
   theme: customTheme = {},
   ...props
@@ -51,7 +51,7 @@ export const Badge: FC<BadgeProps> = ({
         theme.root.base,
         theme.root.color[color],
         theme.root.size[size],
-        theme.icon[Icon ? 'on' : 'off'],
+        theme.icon[Icon ? "on" : "off"],
         className,
       )}
       data-testid="flowbite-badge"
@@ -71,4 +71,4 @@ export const Badge: FC<BadgeProps> = ({
   );
 };
 
-Badge.displayName = 'Badge';
+Badge.displayName = "Badge";

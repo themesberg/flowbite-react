@@ -1,14 +1,14 @@
-import { Banner, BannerCollapseButton } from 'flowbite-react';
-import { FaBookOpen } from 'react-icons/fa';
-import { HiArrowRight, HiX } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import { Banner, BannerCollapseButton } from "flowbite-react";
+import { FaBookOpen } from "react-icons/fa";
+import { HiArrowRight, HiX } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Banner } from 'flowbite-react';
-import { FaBookOpen } from 'react-icons/fa';
-import { HiArrowRight, HiX } from 'react-icons/hi';
+import { Banner } from "flowbite-react";
+import { FaBookOpen } from "react-icons/fa";
+import { HiArrowRight, HiX } from "react-icons/hi";
 
 function Component() {
   return (
@@ -47,9 +47,9 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Banner, BannerCollapseButton } from 'flowbite-react';
-import { FaBookOpen } from 'react-icons/fa';
-import { HiArrowRight, HiX } from 'react-icons/hi';
+import { Banner, BannerCollapseButton } from "flowbite-react";
+import { FaBookOpen } from "react-icons/fa";
+import { HiArrowRight, HiX } from "react-icons/hi";
 
 function Component() {
   return (
@@ -123,19 +123,19 @@ function Component() {
 }
 
 export const informational: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'banner/banner.informational.tsx',
+  githubSlug: "banner/banner.informational.tsx",
   component: <Component />,
 };

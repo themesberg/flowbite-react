@@ -1,9 +1,9 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import type { TableProps } from './Table';
-import { Table } from './Table';
+import type { Meta, StoryFn } from "@storybook/react";
+import type { TableProps } from "./Table";
+import { Table } from "./Table";
 
 export default {
-  title: 'Components/Tables',
+  title: "Components/Tables",
   component: Table,
 } as Meta;
 
@@ -85,4 +85,4 @@ const Template: StoryFn<TableProps> = (args) => (
 );
 
 export const DefaultTable = Template.bind({});
-DefaultTable.storyName = 'Default';
+DefaultTable.storyName = "Default";

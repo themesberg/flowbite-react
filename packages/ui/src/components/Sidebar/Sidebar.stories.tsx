@@ -1,12 +1,12 @@
-import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import { BiBuoy } from 'react-icons/bi';
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
-import { Badge } from '../Badge';
-import { Button } from '../Button';
-import { Sidebar } from './Sidebar';
+import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import { BiBuoy } from "react-icons/bi";
+import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
+import { Badge } from "../Badge";
+import { Button } from "../Button";
+import { Sidebar } from "./Sidebar";
 
 export default {
-  title: 'Components/Sidebar',
+  title: "Components/Sidebar",
   component: Sidebar,
 } as ComponentMeta<typeof Sidebar>;
 
@@ -47,7 +47,7 @@ Default.args = {
 };
 
 export const WithoutIcons = Template.bind({});
-WithoutIcons.storyName = 'No icons';
+WithoutIcons.storyName = "No icons";
 WithoutIcons.args = {
   children: (
     <>
@@ -72,7 +72,7 @@ WithoutIcons.args = {
 };
 
 export const MultiLevelDropdown = Template.bind({});
-MultiLevelDropdown.storyName = 'Multi-level dropdown';
+MultiLevelDropdown.storyName = "Multi-level dropdown";
 MultiLevelDropdown.args = {
   children: (
     <>
@@ -144,7 +144,7 @@ DefaultExpandedDropdown.args = {
 };
 
 export const ContentSeparator = Template.bind({});
-ContentSeparator.storyName = 'Content separator';
+ContentSeparator.storyName = "Content separator";
 ContentSeparator.args = {
   children: (
     <>
@@ -190,7 +190,7 @@ ContentSeparator.args = {
 };
 
 export const CTAButton = Template.bind({});
-CTAButton.storyName = 'CTA button';
+CTAButton.storyName = "CTA button";
 CTAButton.args = {
   children: (
     <>
@@ -251,7 +251,7 @@ CTAButton.args = {
 };
 
 export const LogoBranding = Template.bind({});
-LogoBranding.storyName = 'Logo branding';
+LogoBranding.storyName = "Logo branding";
 LogoBranding.args = {
   children: (
     <>

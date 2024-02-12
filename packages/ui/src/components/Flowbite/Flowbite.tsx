@@ -1,7 +1,7 @@
-import type { FC } from 'react';
-import type { ThemeMode } from '../../hooks/use-theme-mode';
-import { ThemeInit } from '../../theme-store/init';
-import type { CustomFlowbiteTheme } from './FlowbiteTheme';
+import type { FC } from "react";
+import type { ThemeMode } from "../../hooks/use-theme-mode";
+import { ThemeInit } from "../../theme-store/init";
+import type { CustomFlowbiteTheme } from "./FlowbiteTheme";
 
 export interface ThemeProps {
   mode?: ThemeMode;
@@ -22,4 +22,4 @@ export const Flowbite: FC<FlowbiteProps> = ({ children, theme }) => {
   );
 };
 
-Flowbite.displayName = 'Flowbite';
+Flowbite.displayName = "Flowbite";

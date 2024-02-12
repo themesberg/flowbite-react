@@ -1,12 +1,12 @@
-import type { ComponentProps, FC, ReactNode } from 'react';
-import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import { range } from './helpers';
-import type { FlowbitePaginationButtonTheme, PaginationButtonProps } from './PaginationButton';
-import { PaginationButton, PaginationNavigation } from './PaginationButton';
+import type { ComponentProps, FC, ReactNode } from "react";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import { range } from "./helpers";
+import type { FlowbitePaginationButtonTheme, PaginationButtonProps } from "./PaginationButton";
+import { PaginationButton, PaginationNavigation } from "./PaginationButton";
 
 export interface FlowbitePaginationTheme {
   base: string;
@@ -38,9 +38,9 @@ export interface FlowbitePaginationNavigationTheme {
   icon: string;
 }
 
-export interface PaginationProps extends ComponentProps<'nav'> {
+export interface PaginationProps extends ComponentProps<"nav"> {
   currentPage: number;
-  layout?: 'navigation' | 'pagination' | 'table';
+  layout?: "navigation" | "pagination" | "table";
   nextLabel?: string;
   onPageChange: (page: number) => void;
   previousLabel?: string;
@@ -53,10 +53,10 @@ export interface PaginationProps extends ComponentProps<'nav'> {
 const PaginationComponent: FC<PaginationProps> = ({
   className,
   currentPage,
-  layout = 'pagination',
-  nextLabel = 'Next',
+  layout = "pagination",
+  nextLabel = "Next",
   onPageChange,
-  previousLabel = 'Previous',
+  previousLabel = "Previous",
   renderPaginationButton = (props) => <PaginationButton {...props} />,
   showIcons: showIcon = false,
   theme: customTheme = {},
@@ -65,7 +65,7 @@ const PaginationComponent: FC<PaginationProps> = ({
 }) => {
   const theme = mergeDeep(getTheme().pagination, customTheme);
 
-  const lastPage = Math.min(Math.max(layout === 'pagination' ? currentPage + 2 : currentPage + 4, 5), totalPages);
+  const lastPage = Math.min(Math.max(layout === "pagination" ? currentPage + 2 : currentPage + 4, 5), totalPages);
   const firstPage = Math.max(1, lastPage - 4);
 
   const goToNextPage = (): void => {
@@ -78,7 +78,7 @@ const PaginationComponent: FC<PaginationProps> = ({
 
   return (
     <nav className={twMerge(theme.base, className)} {...props}>
-      {layout === 'table' && (
+      {layout === "table" && (
         <div className={theme.layout.table.base}>
           Showing <span className={theme.layout.table.span}>{firstPage}</span> to&nbsp;
           <span className={theme.layout.table.span}>{lastPage}</span> of&nbsp;
@@ -96,9 +96,9 @@ const PaginationComponent: FC<PaginationProps> = ({
             {previousLabel}
           </PaginationNavigation>
         </li>
-        {layout === 'pagination' &&
+        {layout === "pagination" &&
           range(firstPage, lastPage).map((page: number) => (
-            <li aria-current={page === currentPage ? 'page' : undefined} key={page}>
+            <li aria-current={page === currentPage ? "page" : undefined} key={page}>
               {renderPaginationButton({
                 className: twMerge(theme.pages.selector.base, currentPage === page && theme.pages.selector.active),
                 active: page === currentPage,
@@ -122,7 +122,7 @@ const PaginationComponent: FC<PaginationProps> = ({
   );
 };
 
-PaginationComponent.displayName = 'Pagination';
+PaginationComponent.displayName = "Pagination";
 
 export const Pagination = Object.assign(PaginationComponent, {
   Button: PaginationButton,

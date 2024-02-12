@@ -1,10 +1,10 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { twMerge } from 'tailwind-merge';
-import type { FlowbiteStateColors } from '../..';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import { ListItem } from './ListItem';
+import type { ComponentProps, FC, PropsWithChildren } from "react";
+import { twMerge } from "tailwind-merge";
+import type { FlowbiteStateColors } from "../..";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import { ListItem } from "./ListItem";
 
 export interface FlowbiteListTheme {
   root: FlowbiteListRootTheme;
@@ -26,7 +26,7 @@ export interface ListColors extends FlowbiteStateColors {
   default: string;
 }
 
-export interface ListProps extends PropsWithChildren<ComponentProps<'ul'> & ComponentProps<'ol'>> {
+export interface ListProps extends PropsWithChildren<ComponentProps<"ul"> & ComponentProps<"ol">> {
   theme?: DeepPartial<FlowbiteListTheme>;
   ordered?: boolean;
   unstyled?: boolean;
@@ -45,13 +45,13 @@ const ListComponent: FC<ListProps> = ({
   ...props
 }) => {
   const theme = mergeDeep(getTheme().list, customTheme);
-  const Component = ordered ? 'ol' : 'ul';
+  const Component = ordered ? "ol" : "ul";
 
   return (
     <Component
       className={twMerge(
         theme.root.base,
-        theme.root.ordered[ordered ? 'on' : 'off'],
+        theme.root.ordered[ordered ? "on" : "off"],
         unstyled && theme.root.unstyled,
         nested && theme.root.nested,
         horizontal && theme.root.horizontal,
@@ -64,7 +64,7 @@ const ListComponent: FC<ListProps> = ({
   );
 };
 
-ListComponent.displayName = 'List';
-ListItem.displayName = 'List.Item';
+ListComponent.displayName = "List";
+ListItem.displayName = "List.Item";
 
 export const List = Object.assign(ListComponent, { Item: ListItem });

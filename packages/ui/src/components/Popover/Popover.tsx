@@ -1,28 +1,28 @@
-'use client';
+"use client";
 
-import type { Placement } from '@floating-ui/react';
-import { FloatingFocusManager, useMergeRefs } from '@floating-ui/react';
-import type { ComponentProps, ComponentPropsWithRef, Dispatch, ReactNode, SetStateAction } from 'react';
-import { cloneElement, isValidElement, useMemo, useRef, useState } from 'react';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { useBaseFLoating, useFloatingInteractions } from '../../hooks/use-floating';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteFloatingArrowTheme } from '../Floating';
-import { getArrowPlacement } from '../Floating/helpers';
+import type { Placement } from "@floating-ui/react";
+import { FloatingFocusManager, useMergeRefs } from "@floating-ui/react";
+import type { ComponentProps, ComponentPropsWithRef, Dispatch, ReactNode, SetStateAction } from "react";
+import { cloneElement, isValidElement, useMemo, useRef, useState } from "react";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteFloatingArrowTheme } from "../Floating";
+import { getArrowPlacement } from "../Floating/helpers";
 
 export interface FlowbitePopoverTheme {
-  arrow: Omit<FlowbiteFloatingArrowTheme, 'style'>;
+  arrow: Omit<FlowbiteFloatingArrowTheme, "style">;
   base: string;
   content: string;
 }
 
-export interface PopoverProps extends Omit<ComponentProps<'div'>, 'content' | 'style'> {
+export interface PopoverProps extends Omit<ComponentProps<"div">, "content" | "style"> {
   arrow?: boolean;
   content: ReactNode;
-  placement?: 'auto' | Placement;
+  placement?: "auto" | Placement;
   theme?: DeepPartial<FlowbitePopoverTheme>;
-  trigger?: 'hover' | 'click';
+  trigger?: "hover" | "click";
   initialOpen?: boolean;
   open?: boolean;
   onOpenChange?: Dispatch<SetStateAction<boolean>>;
@@ -33,11 +33,11 @@ export function Popover({
   content,
   theme: customTheme = {},
   arrow = true,
-  trigger = 'click',
+  trigger = "click",
   initialOpen,
   open: controlledOpen,
   onOpenChange: setControlledOpen,
-  placement: theirPlacement = 'bottom',
+  placement: theirPlacement = "bottom",
   ...props
 }: PopoverProps) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState<boolean>(Boolean(initialOpen));
@@ -65,15 +65,15 @@ export function Popover({
 
   const { getFloatingProps, getReferenceProps } = useFloatingInteractions({
     context,
-    role: 'dialog',
+    role: "dialog",
     trigger,
   });
 
-  const childrenRef = (children as ComponentPropsWithRef<'button'>).ref;
+  const childrenRef = (children as ComponentPropsWithRef<"button">).ref;
   const ref = useMergeRefs([context.refs.setReference, childrenRef]);
 
   if (!isValidElement(children)) {
-    throw Error('Invalid target element');
+    throw Error("Invalid target element");
   }
 
   const target = useMemo(() => {
@@ -81,7 +81,7 @@ export function Popover({
       children,
       getReferenceProps({
         ref,
-        'data-testid': 'flowbite-popover-target',
+        "data-testid": "flowbite-popover-target",
         ...children?.props,
       }),
     );
@@ -107,10 +107,10 @@ export function Popover({
                   data-testid="flowbite-popover-arrow"
                   ref={arrowRef}
                   style={{
-                    top: arrowY ?? ' ',
-                    left: arrowX ?? ' ',
-                    right: ' ',
-                    bottom: ' ',
+                    top: arrowY ?? " ",
+                    left: arrowX ?? " ",
+                    right: " ",
+                    bottom: " ",
                     [getArrowPlacement({ placement })]: theme.arrow.placement,
                   }}
                 >

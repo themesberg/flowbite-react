@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { Button, Checkbox, Label, Modal, TextInput } from 'flowbite-react';
-import { useState } from 'react';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
+import { useState } from "react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Checkbox, Label, Modal, TextInput } from 'flowbite-react';
-import { useState } from 'react';
+import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
+import { useState } from "react";
 
 function Component() {
   const [openModal, setOpenModal] = useState(false);
@@ -73,11 +73,11 @@ function Component() {
 
 function Component() {
   const [openModal, setOpenModal] = useState(false);
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   function onCloseModal() {
     setOpenModal(false);
-    setEmail('');
+    setEmail("");
   }
 
   return (
@@ -132,12 +132,12 @@ function Component() {
 }
 
 export const withFormElements: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'modal/modal.withFormElements.tsx',
+  githubSlug: "modal/modal.withFormElements.tsx",
   component: <Component />,
 };

@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC } from 'react';
-import { useId } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean } from '../Flowbite';
-import { useSidebarContext } from './SidebarContext';
+import type { ComponentProps, FC } from "react";
+import { useId } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean } from "../Flowbite";
+import { useSidebarContext } from "./SidebarContext";
 
 export interface FlowbiteSidebarLogoTheme {
   base: string;
@@ -14,7 +14,7 @@ export interface FlowbiteSidebarLogoTheme {
   img: string;
 }
 
-export interface SidebarLogoProps extends ComponentProps<'a'> {
+export interface SidebarLogoProps extends ComponentProps<"a"> {
   href: string;
   img: string;
   imgAlt?: string;
@@ -26,7 +26,7 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
   className,
   href,
   img,
-  imgAlt = '',
+  imgAlt = "",
   theme: customTheme = {},
   ...props
 }) => {
@@ -43,11 +43,11 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
       {...props}
     >
       <img alt={imgAlt} src={img} className={theme.img} />
-      <span className={theme.collapsed[isCollapsed ? 'on' : 'off']} id={`flowbite-sidebar-logo-${id}`}>
+      <span className={theme.collapsed[isCollapsed ? "on" : "off"]} id={`flowbite-sidebar-logo-${id}`}>
         {children}
       </span>
     </a>
   );
 };
 
-SidebarLogo.displayName = 'Sidebar.Logo';
+SidebarLogo.displayName = "Sidebar.Logo";

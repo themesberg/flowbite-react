@@ -1,8 +1,8 @@
 // TODO: try to make it RSC - failing because of `<SidebarItem />` icon prop
 
-'use client';
+"use client";
 
-import { Sidebar } from 'flowbite-react';
+import { Sidebar } from "flowbite-react";
 import {
   HiArrowSmRight,
   HiChartPie,
@@ -12,14 +12,14 @@ import {
   HiShoppingBag,
   HiTable,
   HiUser,
-} from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { type CodeData } from '~/components/code-demo';
+} from "react-icons/hi";
+import { twMerge } from "tailwind-merge";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Sidebar } from 'flowbite-react';
+import { Sidebar } from "flowbite-react";
 import {
   HiArrowSmRight,
   HiChartPie,
@@ -29,8 +29,8 @@ import {
   HiShoppingBag,
   HiTable,
   HiUser,
-} from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
+} from "react-icons/hi";
+import { twMerge } from "tailwind-merge";
 
 function Component() {
   return (
@@ -90,7 +90,7 @@ function Component() {
             renderChevronIcon={(theme, open) => {
               const IconComponent = open ? HiOutlineMinusSm : HiOutlinePlusSm;
 
-              return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? 'on' : 'off'])} />;
+              return <IconComponent aria-hidden className={twMerge(theme.label.icon.open[open ? "on" : "off"])} />;
             }}
           >
             <Sidebar.Item href="#">Products</Sidebar.Item>
@@ -120,12 +120,12 @@ function Component() {
 }
 
 export const dropdownWithChevron: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'sidebar/sidebar.dropdownWithChevron.tsx',
+  githubSlug: "sidebar/sidebar.dropdownWithChevron.tsx",
   component: <Component />,
 };

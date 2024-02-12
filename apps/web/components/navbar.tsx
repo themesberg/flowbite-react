@@ -1,10 +1,10 @@
-import { Badge, DarkThemeToggle, Tooltip } from 'flowbite-react';
-import Link from 'next/link';
-import type { FC } from 'react';
-import { BsGithub } from 'react-icons/bs';
-import { SiDiscord, SiStorybook } from 'react-icons/si';
-import pkg from './../package.json';
-import { DocSearchInput } from './docsearch-input';
+import { Badge, DarkThemeToggle, Tooltip } from "flowbite-react";
+import Link from "next/link";
+import type { FC } from "react";
+import { BsGithub } from "react-icons/bs";
+import { SiDiscord, SiStorybook } from "react-icons/si";
+import pkg from "./../package.json";
+import { DocSearchInput } from "./docsearch-input";
 
 export const NavbarLinks: FC = () => {
   return (
@@ -38,7 +38,7 @@ export const NavbarLinks: FC = () => {
 };
 
 export const NavbarIcons: FC = () => {
-  const version = pkg?.version ?? 'latest';
+  const version = pkg?.version ?? "latest";
   return (
     <div className="flex items-center gap-1">
       <div className="lg:hidden">

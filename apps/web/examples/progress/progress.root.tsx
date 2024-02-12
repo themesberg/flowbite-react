@@ -1,10 +1,10 @@
-import { Progress } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Progress } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Progress } from 'flowbite-react';
+import { Progress } from "flowbite-react";
 
 function Component() {
   return <Progress progress={45} />;
@@ -12,7 +12,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Progress } from 'flowbite-react';
+import { Progress } from "flowbite-react";
 
 function Component() {
   return <Progress progress={45} />;
@@ -24,19 +24,19 @@ function Component() {
 }
 
 export const root: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'progress/progress.root.tsx',
+  githubSlug: "progress/progress.root.tsx",
   component: <Component />,
 };

@@ -1,11 +1,11 @@
-import type { ComponentProps, KeyboardEvent } from 'react';
-import { forwardRef, useId } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean, FlowbiteColors } from '../Flowbite';
-import type { FlowbiteTextInputSizes } from '../TextInput';
+import type { ComponentProps, KeyboardEvent } from "react";
+import { forwardRef, useId } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite";
+import type { FlowbiteTextInputSizes } from "../TextInput";
 
 export interface FlowbiteToggleSwitchTheme {
   root: FlowbiteToggleSwitchRootTheme;
@@ -26,7 +26,7 @@ export interface FlowbiteToggleSwitchToggleTheme {
   };
 }
 
-export type ToggleSwitchProps = Omit<ComponentProps<'button'>, 'onChange' | 'ref'> & {
+export type ToggleSwitchProps = Omit<ComponentProps<"button">, "onChange" | "ref"> & {
   checked: boolean;
   color?: keyof FlowbiteColors;
   sizing?: keyof FlowbiteTextInputSizes;
@@ -40,8 +40,8 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
     {
       checked,
       className,
-      color = 'blue',
-      sizing = 'md',
+      color = "blue",
+      sizing = "md",
       disabled,
       label,
       name,
@@ -61,7 +61,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
     };
 
     const handleOnKeyDown = (event: KeyboardEvent<HTMLButtonElement>): void => {
-      if (event.code == 'Enter') {
+      if (event.code == "Enter") {
         event.preventDefault();
       }
     };
@@ -81,14 +81,14 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
           role="switch"
           tabIndex={0}
           type="button"
-          className={twMerge(theme.root.base, theme.root.active[disabled ? 'off' : 'on'], className)}
+          className={twMerge(theme.root.base, theme.root.active[disabled ? "off" : "on"], className)}
           {...props}
         >
           <div
             data-testid="flowbite-toggleswitch-toggle"
             className={twMerge(
               theme.toggle.base,
-              theme.toggle.checked[checked ? 'on' : 'off'],
+              theme.toggle.checked[checked ? "on" : "off"],
               checked && theme.toggle.checked.color[color],
               theme.toggle.sizes[sizing],
             )}
@@ -108,4 +108,4 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
   },
 );
 
-ToggleSwitch.displayName = 'ToggleSwitch';
+ToggleSwitch.displayName = "ToggleSwitch";

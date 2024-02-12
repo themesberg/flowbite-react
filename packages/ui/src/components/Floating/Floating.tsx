@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import type { Placement } from '@floating-ui/core';
-import { autoUpdate, useFocus } from '@floating-ui/react';
-import type { ComponentProps, FC, ReactNode } from 'react';
-import { useEffect, useRef, useState } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { useBaseFLoating, useFloatingInteractions } from '../../hooks/use-floating';
-import { getArrowPlacement } from './helpers';
+import type { Placement } from "@floating-ui/core";
+import { autoUpdate, useFocus } from "@floating-ui/react";
+import type { ComponentProps, FC, ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
+import { twMerge } from "tailwind-merge";
+import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
+import { getArrowPlacement } from "./helpers";
 
 export interface FlowbiteFloatingTheme {
   arrow: FlowbiteFloatingArrowTheme;
@@ -32,16 +32,16 @@ export interface FlowbiteFloatingArrowTheme {
   };
 }
 
-export type FloatingStyle = 'dark' | 'light' | 'auto';
+export type FloatingStyle = "dark" | "light" | "auto";
 
-export interface FloatingProps extends Omit<ComponentProps<'div'>, 'content' | 'style'> {
+export interface FloatingProps extends Omit<ComponentProps<"div">, "content" | "style"> {
   animation?: false | `duration-${number}`;
   arrow?: boolean;
   content: ReactNode;
-  placement?: 'auto' | Placement;
+  placement?: "auto" | Placement;
   style?: FloatingStyle;
   theme: FlowbiteFloatingTheme;
-  trigger?: 'hover' | 'click';
+  trigger?: "hover" | "click";
   minWidth?: number;
 }
 
@@ -49,15 +49,15 @@ export interface FloatingProps extends Omit<ComponentProps<'div'>, 'content' | '
  * @see https://floating-ui.com/docs/react-dom-interactions
  */
 export const Floating: FC<FloatingProps> = ({
-  animation = 'duration-300',
+  animation = "duration-300",
   arrow = true,
   children,
   className,
   content,
-  placement = 'top',
-  style = 'dark',
+  placement = "top",
+  style = "dark",
   theme,
-  trigger = 'hover',
+  trigger = "hover",
   minWidth,
   ...props
 }) => {
@@ -84,7 +84,7 @@ export const Floating: FC<FloatingProps> = ({
   const focus = useFocus(context);
   const { getFloatingProps, getReferenceProps } = useFloatingInteractions({
     context,
-    role: 'tooltip',
+    role: "tooltip",
     trigger,
     interactions: [focus],
   });
@@ -118,8 +118,8 @@ export const Floating: FC<FloatingProps> = ({
           ),
           style: {
             position: strategy,
-            top: y ?? ' ',
-            left: x ?? ' ',
+            top: y ?? " ",
+            left: x ?? " ",
             minWidth,
           },
           ...props,
@@ -130,17 +130,17 @@ export const Floating: FC<FloatingProps> = ({
           <div
             className={twMerge(
               theme.arrow.base,
-              style === 'dark' && theme.arrow.style.dark,
-              style === 'light' && theme.arrow.style.light,
-              style === 'auto' && theme.arrow.style.auto,
+              style === "dark" && theme.arrow.style.dark,
+              style === "light" && theme.arrow.style.light,
+              style === "auto" && theme.arrow.style.auto,
             )}
             data-testid="flowbite-tooltip-arrow"
             ref={arrowRef}
             style={{
-              top: arrowY ?? ' ',
-              left: arrowX ?? ' ',
-              right: ' ',
-              bottom: ' ',
+              top: arrowY ?? " ",
+              left: arrowX ?? " ",
+              right: " ",
+              bottom: " ",
               [getArrowPlacement({ placement: floatingProperties.placement })]: theme.arrow.placement,
             }}
           >

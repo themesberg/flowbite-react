@@ -1,9 +1,9 @@
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteColors, FlowbiteSizes } from '../Flowbite';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite";
 
 export interface FlowbiteSpinnerTheme {
   base: string;
@@ -22,15 +22,15 @@ export interface FlowbiteSpinnerTheme {
 }
 
 export interface SpinnerColors
-  extends Pick<FlowbiteColors, 'failure' | 'gray' | 'info' | 'pink' | 'purple' | 'success' | 'warning'> {
+  extends Pick<FlowbiteColors, "failure" | "gray" | "info" | "pink" | "purple" | "success" | "warning"> {
   [key: string]: string;
 }
 
-export interface SpinnerSizes extends Pick<FlowbiteSizes, 'xs' | 'sm' | 'md' | 'lg' | 'xl'> {
+export interface SpinnerSizes extends Pick<FlowbiteSizes, "xs" | "sm" | "md" | "lg" | "xl"> {
   [key: string]: string;
 }
 
-export interface SpinnerProps extends Omit<ComponentProps<'span'>, 'color'> {
+export interface SpinnerProps extends Omit<ComponentProps<"span">, "color"> {
   color?: keyof SpinnerColors;
   light?: boolean;
   size?: keyof SpinnerSizes;
@@ -39,9 +39,9 @@ export interface SpinnerProps extends Omit<ComponentProps<'span'>, 'color'> {
 
 export const Spinner: FC<SpinnerProps> = ({
   className,
-  color = 'info',
+  color = "info",
   light,
-  size = 'md',
+  size = "md",
   theme: customTheme = {},
   ...props
 }) => {
@@ -55,8 +55,8 @@ export const Spinner: FC<SpinnerProps> = ({
         className={twMerge(
           theme.base,
           theme.color[color],
-          theme.light[light ? 'on' : 'off'].base,
-          theme.light[light ? 'on' : 'off'].color[color],
+          theme.light[light ? "on" : "off"].base,
+          theme.light[light ? "on" : "off"].color[color],
           theme.size[size],
           className,
         )}
@@ -74,4 +74,4 @@ export const Spinner: FC<SpinnerProps> = ({
   );
 };
 
-Spinner.displayName = 'Spinner';
+Spinner.displayName = "Spinner";

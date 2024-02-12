@@ -1,10 +1,10 @@
-import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Table } from 'flowbite-react';
+import { Table } from "flowbite-react";
 
 function Component() {
   return (
@@ -65,7 +65,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react';
+import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
 
 function Component() {
   return (
@@ -183,19 +183,19 @@ function Component() {
 }
 
 export const root: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'table/table.root.tsx',
+  githubSlug: "table/table.root.tsx",
   component: <Component />,
 };

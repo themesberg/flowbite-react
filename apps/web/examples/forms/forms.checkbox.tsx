@@ -1,10 +1,10 @@
-import { Checkbox, Label } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Checkbox, Label } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Checkbox, Label } from 'flowbite-react';
+import { Checkbox, Label } from "flowbite-react";
 
 function Component() {
   return (
@@ -52,7 +52,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Checkbox, Label } from 'flowbite-react';
+import { Checkbox, Label } from "flowbite-react";
 
 function Component() {
   return (
@@ -144,19 +144,19 @@ function Component() {
 }
 
 export const checkbox: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'forms/forms.checkbox.tsx',
+  githubSlug: "forms/forms.checkbox.tsx",
   component: <Component />,
 };

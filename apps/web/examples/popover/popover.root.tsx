@@ -1,8 +1,8 @@
-import { Button, Popover } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Popover } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-import { Button, Popover } from 'flowbite-react';
+import { Button, Popover } from "flowbite-react";
 
 function Component() {
   return (
@@ -48,14 +48,14 @@ function Component() {
 }
 
 export const root: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
   ],
-  githubSlug: 'popover/popover.root.tsx',
+  githubSlug: "popover/popover.root.tsx",
   component: <Component />,
 };

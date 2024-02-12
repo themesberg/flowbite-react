@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { Button, Modal, Select } from 'flowbite-react';
-import { useState } from 'react';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Modal, Select } from "flowbite-react";
+import { useState } from "react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Modal, Select } from 'flowbite-react';
-import { useState } from 'react';
+import { Button, Modal, Select } from "flowbite-react";
+import { useState } from "react";
 
 function Component() {
   const [openModal, setOpenModal] = useState(false);
@@ -62,7 +62,7 @@ function Component() {
 
 function Component() {
   const [openModal, setOpenModal] = useState(false);
-  const [modalSize, setModalSize] = useState<string>('md');
+  const [modalSize, setModalSize] = useState<string>("md");
 
   return (
     <>
@@ -110,12 +110,12 @@ function Component() {
 }
 
 export const sizes: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'modal/modal.sizes.tsx',
+  githubSlug: "modal/modal.sizes.tsx",
   component: <Component />,
 };

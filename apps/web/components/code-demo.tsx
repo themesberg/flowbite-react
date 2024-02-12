@@ -1,25 +1,25 @@
-'use client';
+"use client";
 
-import { Select, Tooltip } from 'flowbite-react';
-import type { ComponentProps, PropsWithChildren } from 'react';
-import { useState } from 'react';
-import { BsCheckLg, BsFillClipboardFill } from 'react-icons/bs';
-import { HiMoon, HiSun } from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { CodeHighlight, type Language } from './code-highlight';
+import { Select, Tooltip } from "flowbite-react";
+import type { ComponentProps, PropsWithChildren } from "react";
+import { useState } from "react";
+import { BsCheckLg, BsFillClipboardFill } from "react-icons/bs";
+import { HiMoon, HiSun } from "react-icons/hi";
+import { twMerge } from "tailwind-merge";
+import { CodeHighlight, type Language } from "./code-highlight";
 
-interface BaseCodeData<T extends 'single' | 'variant'> {
+interface BaseCodeData<T extends "single" | "variant"> {
   type: T;
   githubSlug: string;
   component: React.ReactNode;
 }
 
-interface VariantCodeData<V extends Variant> extends BaseCodeData<'variant'> {
+interface VariantCodeData<V extends Variant> extends BaseCodeData<"variant"> {
   variant: V;
   code: CodeVariant<V>;
 }
 
-interface SingleCodeData extends BaseCodeData<'single'> {
+interface SingleCodeData extends BaseCodeData<"single"> {
   code: Code;
 }
 
@@ -54,19 +54,19 @@ export function CodeDemo({ data }: CodeDemoProps) {
   }
 
   function getInitialVariant(data: CodeData): Variant {
-    if (data.type === 'variant') return data.variant;
+    if (data.type === "variant") return data.variant;
 
-    return '';
+    return "";
   }
 
   function getVariants(data: CodeData): Variant[] {
-    if (data.type === 'variant') return Object.keys(data.code);
+    if (data.type === "variant") return Object.keys(data.code);
 
     return [];
   }
 
   function getCode(data: CodeData, variant: Variant): Code {
-    if (data.type === 'variant') return data.code[variant];
+    if (data.type === "variant") return data.code[variant];
 
     return data.code;
   }
@@ -102,7 +102,7 @@ export function CodeDemo({ data }: CodeDemoProps) {
   }
 
   function countLines(value: string) {
-    return (value.match(/\n/g) || '').length + 1;
+    return (value.match(/\n/g) || "").length + 1;
   }
 
   const variants = getVariants(data);
@@ -125,8 +125,8 @@ export function CodeDemo({ data }: CodeDemoProps) {
       <div className="code-syntax-wrapper">
         <div
           className={twMerge(
-            'code-syntax relative border border-gray-200 dark:border-gray-600',
-            shouldExpand && 'pb-[41px]',
+            "code-syntax relative border border-gray-200 dark:border-gray-600",
+            shouldExpand && "pb-[41px]",
           )}
         >
           <div className="flex w-full rounded-t-md border-b border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700">
@@ -145,7 +145,7 @@ export function CodeDemo({ data }: CodeDemoProps) {
               <CopyToClipboardButton isJustCopied={isJustCopied} onClick={() => copyToClipboard(current.code)} />
             </div>
           </div>
-          <div className={twMerge('!overflow-y-hidden', shouldExpand && !isExpanded && 'max-h-72')}>
+          <div className={twMerge("!overflow-y-hidden", shouldExpand && !isExpanded && "max-h-72")}>
             <CodeHighlight className="!mb-0 !rounded-none" code={current.code} language={current.language} />
           </div>
           {shouldExpand && (
@@ -165,8 +165,8 @@ function Tabs({ tabIndex, items, onSelect }: { tabIndex: number; items: CodeItem
           <button type="button" role="tab" onClick={() => onSelect(index)}>
             <span
               className={twMerge(
-                'inline-block w-full border-r border-gray-200 bg-gray-100 p-2 px-3 dark:border-gray-600 dark:bg-gray-800',
-                index === tabIndex ? 'text-gray-800 dark:text-white' : 'hover:text-gray-600 hover:dark:text-gray-300',
+                "inline-block w-full border-r border-gray-200 bg-gray-100 p-2 px-3 dark:border-gray-600 dark:bg-gray-800",
+                index === tabIndex ? "text-gray-800 dark:text-white" : "hover:text-gray-600 hover:dark:text-gray-300",
               )}
             >
               {item.fileName + `.${item.language}`}
@@ -180,7 +180,7 @@ function Tabs({ tabIndex, items, onSelect }: { tabIndex: number; items: CodeItem
 
 function CodePreview({ isDarkMode, children }: PropsWithChildren<{ isDarkMode: boolean }>) {
   return (
-    <div className={twMerge('code-preview-wrapper', isDarkMode && 'dark')}>
+    <div className={twMerge("code-preview-wrapper", isDarkMode && "dark")}>
       <div className="code-preview flex border-x border-gray-200 bg-white bg-gradient-to-r p-0 dark:border-gray-600 dark:bg-gray-900">
         <div className="code-responsive-wrapper w-full">
           <div className="mx-auto w-full bg-white bg-gradient-to-r p-2 dark:bg-gray-900 sm:p-6">
@@ -193,7 +193,7 @@ function CodePreview({ isDarkMode, children }: PropsWithChildren<{ isDarkMode: b
 }
 
 function EditOnGithubButton({ githubSlug }: { githubSlug: string }) {
-  const githubSrcHref = 'https://github.com/themesberg/flowbite-react/blob/main/examples/';
+  const githubSrcHref = "https://github.com/themesberg/flowbite-react/blob/main/examples/";
   const href = `${githubSrcHref}${githubSlug}`;
 
   return (
@@ -222,9 +222,9 @@ function EditOnGithubButton({ githubSlug }: { githubSlug: string }) {
   );
 }
 
-function ToggleDarkModeButton({ isDarkMode, onClick }: ComponentProps<'button'> & { isDarkMode: boolean }) {
+function ToggleDarkModeButton({ isDarkMode, onClick }: ComponentProps<"button"> & { isDarkMode: boolean }) {
   return (
-    <Tooltip content={isDarkMode ? 'Toggle light mode' : 'Toggle dark mode'}>
+    <Tooltip content={isDarkMode ? "Toggle light mode" : "Toggle dark mode"}>
       <button
         onClick={onClick}
         className="flex items-center rounded-lg border border-gray-200 bg-white p-2 text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
@@ -236,7 +236,7 @@ function ToggleDarkModeButton({ isDarkMode, onClick }: ComponentProps<'button'> 
   );
 }
 
-function CopyToClipboardButton({ isJustCopied, onClick }: ComponentProps<'button'> & { isJustCopied: boolean }) {
+function CopyToClipboardButton({ isJustCopied, onClick }: ComponentProps<"button"> & { isJustCopied: boolean }) {
   return (
     <button
       onClick={onClick}
@@ -247,18 +247,18 @@ function CopyToClipboardButton({ isJustCopied, onClick }: ComponentProps<'button
       ) : (
         <BsFillClipboardFill className="mr-2 size-3" />
       )}
-      {isJustCopied ? 'Code copied!' : 'Copy code'}
+      {isJustCopied ? "Code copied!" : "Copy code"}
     </button>
   );
 }
 
-function CollapseExpandButton({ isExpanded, onClick }: ComponentProps<'button'> & { isExpanded: boolean }) {
+function CollapseExpandButton({ isExpanded, onClick }: ComponentProps<"button"> & { isExpanded: boolean }) {
   return (
     <button
       onClick={onClick}
       className="absolute bottom-0 left-0 z-30 w-full border-t border-gray-200 bg-gray-100 px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
     >
-      {isExpanded ? 'Collapse code' : 'Expand code'}
+      {isExpanded ? "Collapse code" : "Expand code"}
     </button>
   );
 }

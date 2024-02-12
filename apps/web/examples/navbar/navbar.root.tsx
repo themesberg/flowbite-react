@@ -1,12 +1,12 @@
-import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from 'flowbite-react';
-import Link from 'next/link';
-import { type CodeData } from '~/components/code-demo';
+import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
+import Link from "next/link";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { Navbar } from 'flowbite-react';
+import Link from "next/link";
+import { Navbar } from "flowbite-react";
 
 function Component() {
   return (
@@ -33,8 +33,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import Link from 'next/link';
-import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from 'flowbite-react';
+import Link from "next/link";
+import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
 
 function Component() {
   return (
@@ -84,19 +84,19 @@ function Component() {
 }
 
 export const root: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'navbar/navbar.root.tsx',
+  githubSlug: "navbar/navbar.root.tsx",
   component: <Component />,
 };

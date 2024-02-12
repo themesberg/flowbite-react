@@ -1,6 +1,6 @@
 // TODO: try to make it RSC - failing because of `<TimelinePoint icon={HiCalendar} />` icon prop
 
-'use client';
+"use client";
 
 import {
   Button,
@@ -11,15 +11,15 @@ import {
   TimelinePoint,
   TimelineTime,
   TimelineTitle,
-} from 'flowbite-react';
-import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+} from "flowbite-react";
+import { HiArrowNarrowRight, HiCalendar } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Timeline } from 'flowbite-react';
-import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
+import { Button, Timeline } from "flowbite-react";
+import { HiArrowNarrowRight, HiCalendar } from "react-icons/hi";
 
 function Component() {
   return (
@@ -75,8 +75,8 @@ function Component() {
 //   TimelinePoint,
 //   TimelineTime,
 //   TimelineTitle,
-// } from 'flowbite-react';
-// import { HiArrowNarrowRight, HiCalendar } from 'react-icons/hi';
+// } from "flowbite-react";
+// import { HiArrowNarrowRight, HiCalendar } from "react-icons/hi";
 
 // function Component() {
 //   return (
@@ -166,11 +166,11 @@ function Component() {
 }
 
 export const vertical: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     // {
@@ -179,6 +179,6 @@ export const vertical: CodeData = {
     //   code: codeRSC,
     // },
   ],
-  githubSlug: 'timeline/timeline.vertical.tsx',
+  githubSlug: "timeline/timeline.vertical.tsx",
   component: <Component />,
 };

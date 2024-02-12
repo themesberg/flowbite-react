@@ -1,12 +1,12 @@
-import { Card } from 'flowbite-react';
-import Image from 'next/image';
-import { type CodeData } from '~/components/code-demo';
+import { Card } from "flowbite-react";
+import Image from "next/image";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Card } from 'flowbite-react';
-import Image from 'next/image';
+import { Card } from "flowbite-react";
+import Image from "next/image";
 
 function Component() {
   return (
@@ -26,8 +26,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Card } from 'flowbite-react';
-import Image from 'next/image';
+import { Card } from "flowbite-react";
+import Image from "next/image";
 
 function Component() {
   return (
@@ -63,19 +63,19 @@ function Component() {
 }
 
 export const renderImage: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'card/card.renderImage.tsx',
+  githubSlug: "card/card.renderImage.tsx",
   component: <Component />,
 };

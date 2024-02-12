@@ -1,10 +1,10 @@
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { omit } from '../../helpers/omit';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean } from '../Flowbite';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { omit } from "../../helpers/omit";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean } from "../Flowbite";
 
 export interface FlowbiteCardTheme {
   root: FlowbiteCardRootTheme;
@@ -23,7 +23,7 @@ export interface FlowbiteCardImageTheme {
   horizontal: FlowbiteBoolean;
 }
 
-interface CommonCardProps extends ComponentProps<'div'> {
+interface CommonCardProps extends ComponentProps<"div"> {
   horizontal?: boolean;
   href?: string;
   /** Overwrites the theme. Will be merged with the context theme.
@@ -46,7 +46,7 @@ export type CardProps = (
 
 export const Card: FC<CardProps> = (props) => {
   const { children, className, horizontal, href, theme: customTheme = {} } = props;
-  const Component = typeof href === 'undefined' ? 'div' : 'a';
+  const Component = typeof href === "undefined" ? "div" : "a";
   const theirProps = removeCustomProps(props);
 
   const theme = mergeDeep(getTheme().card, customTheme);
@@ -57,7 +57,7 @@ export const Card: FC<CardProps> = (props) => {
       href={href}
       className={twMerge(
         theme.root.base,
-        theme.root.horizontal[horizontal ? 'on' : 'off'],
+        theme.root.horizontal[horizontal ? "on" : "off"],
         href && theme.root.href,
         className,
       )}
@@ -78,9 +78,9 @@ const Image: FC<CardProps> = ({ theme: customTheme = {}, ...props }) => {
     return (
       <img
         data-testid="flowbite-card-image"
-        alt={props.imgAlt ?? ''}
+        alt={props.imgAlt ?? ""}
         src={props.imgSrc}
-        className={twMerge(theme.img.base, theme.img.horizontal[props.horizontal ? 'on' : 'off'])}
+        className={twMerge(theme.img.base, theme.img.horizontal[props.horizontal ? "on" : "off"])}
       />
     );
   }
@@ -88,12 +88,12 @@ const Image: FC<CardProps> = ({ theme: customTheme = {}, ...props }) => {
 };
 
 const removeCustomProps = omit([
-  'renderImage',
-  'imgSrc',
-  'imgAlt',
-  'children',
-  'className',
-  'horizontal',
-  'href',
-  'theme',
+  "renderImage",
+  "imgSrc",
+  "imgAlt",
+  "children",
+  "className",
+  "horizontal",
+  "href",
+  "theme",
 ]);

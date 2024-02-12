@@ -12,7 +12,7 @@ RSCs can help reduce the size of the client-side JavaScript bundle and improve l
 Without `'use client'` directive:
 
 ```jsx
-import { Button } from 'flowbite-react';
+import { Button } from "flowbite-react";
 
 function Component() {
   return <Button>Default</Button>;
@@ -22,12 +22,12 @@ function Component() {
 With `'use client'` directive:
 
 ```jsx
-'use client';
+"use client";
 
-import { Button } from 'flowbite-react';
+import { Button } from "flowbite-react";
 
 function Component() {
-  return <Button onClick={() => console.log('clicked!')}>Default</Button>;
+  return <Button onClick={() => console.log("clicked!")}>Default</Button>;
 }
 ```
 
@@ -36,10 +36,10 @@ Incorrect: without `'use client'` directive and user event passed as prop (`onCl
 ```jsx
 // errors
 
-import { Button } from 'flowbite-react';
+import { Button } from "flowbite-react";
 
 function Component() {
-  return <Button onClick={() => console.log('clicked!')}>Default</Button>;
+  return <Button onClick={() => console.log("clicked!")}>Default</Button>;
 }
 ```
 
@@ -52,7 +52,7 @@ Incorrect usage:
 ```jsx
 // errors
 
-import { Button } from 'flowbite-react';
+import { Button } from "flowbite-react";
 
 function Component() {
   return (
@@ -70,7 +70,7 @@ Correct usage:
 ```jsx
 // works
 
-import { Button, ButtonGroup } from 'flowbite-react';
+import { Button, ButtonGroup } from "flowbite-react";
 
 function Component() {
   return (

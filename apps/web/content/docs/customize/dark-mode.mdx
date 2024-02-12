@@ -8,7 +8,7 @@ description: Learn how to configure and build a dark mode switcher for Flowbite 
 Surround the contents of your app with the `<Flowbite>` component, and add the `<DarkThemeToggle>` component inside it. The `<DarkThemeToggle>` component will automatically detect the current theme and display the correct icon, and allow the user to switch between themes as they like.
 
 ```jsx
-import { DarkThemeToggle, Flowbite } from 'flowbite-react';
+import { DarkThemeToggle, Flowbite } from "flowbite-react";
 
 export default function MyPage() {
   return (
@@ -32,7 +32,7 @@ In server side rendered applications, such as NextJS, to avoid page flicker (if 
 ```tsx
 // app/layout.tsx
 
-import { ThemeModeScript } from 'flowbite-react';
+import { ThemeModeScript } from "flowbite-react";
 
 export default function RootLayout({ children }) {
   return (
@@ -51,7 +51,7 @@ export default function RootLayout({ children }) {
 ```tsx
 // pages/_document.tsx
 
-import { ThemeModeScript } from 'flowbite-react';
+import { ThemeModeScript } from "flowbite-react";
 
 export default function Document() {
   return (

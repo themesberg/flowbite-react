@@ -1,8 +1,8 @@
-import type { ComponentProps, FC, PropsWithChildren } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
+import type { ComponentProps, FC, PropsWithChildren } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
 
 export interface FlowbiteFooterIconTheme {
   base: string;
@@ -13,11 +13,11 @@ export interface FooterIconProps extends PropsWithChildren {
   ariaLabel?: string;
   className?: string;
   href?: string;
-  icon: FC<ComponentProps<'svg'>>;
+  icon: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteFooterIconTheme>;
 }
 
-export const FooterIcon: FC<FooterIconProps & ComponentProps<'a'> & ComponentProps<'svg'>> = ({
+export const FooterIcon: FC<FooterIconProps & ComponentProps<"a"> & ComponentProps<"svg">> = ({
   ariaLabel,
   className,
   href,

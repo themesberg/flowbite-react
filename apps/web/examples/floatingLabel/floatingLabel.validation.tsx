@@ -1,10 +1,10 @@
-import { FloatingLabel } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { FloatingLabel } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { FloatingLabel } from 'flowbite-react';
+import { FloatingLabel } from "flowbite-react";
 
 function Component() {
   return (
@@ -25,7 +25,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { FloatingLabel } from 'flowbite-react';
+import { FloatingLabel } from "flowbite-react";
 
 function Component() {
   return (
@@ -63,19 +63,19 @@ function Component() {
 }
 
 export const validation: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'floatingLabel/floatingLabel.validation.tsx',
+  githubSlug: "floatingLabel/floatingLabel.validation.tsx",
   component: <Component />,
 };

@@ -1,23 +1,23 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
-import { Checkbox } from './Checkbox';
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { Checkbox } from "./Checkbox";
 
-describe.concurrent('Components / Checkbox', () => {
-  describe.concurrent('A11y', () => {
+describe.concurrent("Components / Checkbox", () => {
+  describe.concurrent("A11y", () => {
     it('should have role="checkbox" by default', () => {
-      const checkbox = render(<Checkbox />).getByRole('checkbox');
+      const checkbox = render(<Checkbox />).getByRole("checkbox");
 
       expect(checkbox).toBeInTheDocument();
     });
   });
 
-  describe('Theme', () => {
-    it('should use custom `base` classes', () => {
+  describe("Theme", () => {
+    it("should use custom `base` classes", () => {
       const theme: CustomFlowbiteTheme = {
         checkbox: {
           root: {
-            base: 'bg-yellow-400 dark:bg-yellow-40',
+            base: "bg-yellow-400 dark:bg-yellow-40",
           },
         },
       };
@@ -27,9 +27,9 @@ describe.concurrent('Components / Checkbox', () => {
         </Flowbite>,
       );
 
-      expect(checkbox()).toHaveClass('bg-yellow-400 dark:bg-yellow-40');
+      expect(checkbox()).toHaveClass("bg-yellow-400 dark:bg-yellow-40");
     });
   });
 });
 
-const checkbox = () => screen.getByRole('checkbox');
+const checkbox = () => screen.getByRole("checkbox");

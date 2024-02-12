@@ -1,16 +1,16 @@
-import { Button } from 'flowbite-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import type { FC } from 'react';
-import { HiOutlineArrowRight } from 'react-icons/hi';
+import { Button } from "flowbite-react";
+import Image from "next/image";
+import Link from "next/link";
+import type { FC } from "react";
+import { HiOutlineArrowRight } from "react-icons/hi";
 
 const feature_list = [
-  'Huge collection of UI components built with React',
-  'Open-source under the MIT License',
-  'Compatible with Next.js 13',
-  'Utility classes based on Tailwind CSS',
-  'Based on the Flowbite ecosystem and design',
-  'Fully accessible UI components',
+  "Huge collection of UI components built with React",
+  "Open-source under the MIT License",
+  "Compatible with Next.js 13",
+  "Utility classes based on Tailwind CSS",
+  "Based on the Flowbite ecosystem and design",
+  "Fully accessible UI components",
 ];
 
 export const ReactSection: FC = () => {
@@ -42,7 +42,7 @@ export const ReactSection: FC = () => {
               <p className="text-lg text-gray-500 dark:text-gray-400">
                 <a href="" className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white">
                   Flowbite React
-                </a>{' '}
+                </a>{" "}
                 is a free and open-source UI component library based on accessible React components and Tailwind CSS.
               </p>
               <p className="text-lg text-gray-500 dark:text-gray-400">

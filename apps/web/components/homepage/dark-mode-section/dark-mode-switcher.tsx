@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useThemeMode } from 'flowbite-react';
-import type { FC } from 'react';
+import { useThemeMode } from "flowbite-react";
+import type { FC } from "react";
 
 export const DarkModeSwitcher: FC = () => {
   const { setMode } = useThemeMode();
@@ -12,7 +12,7 @@ export const DarkModeSwitcher: FC = () => {
         <button
           aria-label="Light mode"
           type="button"
-          onClick={() => setMode('light')}
+          onClick={() => setMode("light")}
           className="hidden rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:block dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         >
           <span className="hidden dark:block">
@@ -24,13 +24,13 @@ export const DarkModeSwitcher: FC = () => {
                 clipRule="evenodd"
               />
             </svg>
-          </span>{' '}
+          </span>{" "}
           <span className="block dark:hidden">
             <svg className="size-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
             </svg>
           </span>
-        </button>{' '}
+        </button>{" "}
         <svg
           className="size-11 rounded-lg bg-cyan-700 p-2 text-white dark:hidden dark:bg-gray-700"
           fill="currentColor"
@@ -45,7 +45,7 @@ export const DarkModeSwitcher: FC = () => {
           />
         </svg>
         Light
-      </div>{' '}
+      </div>{" "}
       <div className="flex flex-col items-center gap-2 font-medium text-gray-400 dark:text-white">
         <svg
           className="hidden size-11 rounded-lg bg-cyan-700 p-2 dark:block"
@@ -54,11 +54,11 @@ export const DarkModeSwitcher: FC = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-        </svg>{' '}
+        </svg>{" "}
         <button
           aria-label="Dark mode"
           type="button"
-          onClick={() => setMode('dark')}
+          onClick={() => setMode("dark")}
           className="rounded-lg bg-gray-100 p-2.5 text-sm text-gray-500 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:hidden dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
         >
           <span className="hidden dark:block">
@@ -70,7 +70,7 @@ export const DarkModeSwitcher: FC = () => {
                 clipRule="evenodd"
               />
             </svg>
-          </span>{' '}
+          </span>{" "}
           <span className="block dark:hidden">
             <svg className="size-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />

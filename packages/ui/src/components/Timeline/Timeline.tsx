@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import { TimelineBody } from './TimelineBody';
-import { TimelineContent } from './TimelineContent';
-import { TimelineContext } from './TimelineContext';
-import { TimelineItem, type FlowbiteTimelineItemTheme } from './TimelineItem';
-import { TimelinePoint } from './TimelinePoint';
-import { TimelineTime } from './TimelineTime';
-import { TimelineTitle } from './TimelineTitle';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import { TimelineBody } from "./TimelineBody";
+import { TimelineContent } from "./TimelineContent";
+import { TimelineContext } from "./TimelineContext";
+import { TimelineItem, type FlowbiteTimelineItemTheme } from "./TimelineItem";
+import { TimelinePoint } from "./TimelinePoint";
+import { TimelineTime } from "./TimelineTime";
+import { TimelineTitle } from "./TimelineTitle";
 
 export interface FlowbiteTimelineTheme {
   root: {
@@ -23,7 +23,7 @@ export interface FlowbiteTimelineTheme {
   item: FlowbiteTimelineItemTheme;
 }
 
-export interface TimelineProps extends ComponentProps<'ol'> {
+export interface TimelineProps extends ComponentProps<"ol"> {
   horizontal?: boolean;
   theme?: DeepPartial<FlowbiteTimelineTheme>;
 }
@@ -54,13 +54,13 @@ const TimelineComponent: FC<TimelineProps> = ({
   );
 };
 
-TimelineComponent.displayName = 'Timeline';
-TimelineItem.displayName = 'Timeline.Item';
-TimelinePoint.displayName = 'Timeline.Point';
-TimelineContent.displayName = 'Timeline.Content';
-TimelineTime.displayName = 'Timeline.Time';
-TimelineTitle.displayName = 'Timeline.Title';
-TimelineBody.displayName = 'Timeline.Body';
+TimelineComponent.displayName = "Timeline";
+TimelineItem.displayName = "Timeline.Item";
+TimelinePoint.displayName = "Timeline.Point";
+TimelineContent.displayName = "Timeline.Content";
+TimelineTime.displayName = "Timeline.Time";
+TimelineTitle.displayName = "Timeline.Title";
+TimelineBody.displayName = "Timeline.Body";
 
 export const Timeline = Object.assign(TimelineComponent, {
   Item: TimelineItem,

@@ -1,9 +1,9 @@
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteColors } from '../Flowbite';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteColors } from "../Flowbite";
 
 export interface FlowbiteHelperTextTheme {
   root: FlowbiteHelperTextRootTheme;
@@ -14,11 +14,11 @@ export interface FlowbiteHelperTextRootTheme {
   colors: HelperColors;
 }
 
-export interface HelperColors extends Pick<FlowbiteColors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
+export interface HelperColors extends Pick<FlowbiteColors, "gray" | "info" | "failure" | "warning" | "success"> {
   [key: string]: string;
 }
 
-export interface HelperTextProps extends Omit<ComponentProps<'p'>, 'color'> {
+export interface HelperTextProps extends Omit<ComponentProps<"p">, "color"> {
   color?: keyof HelperColors;
   theme?: DeepPartial<FlowbiteHelperTextTheme>;
   value?: string;
@@ -27,7 +27,7 @@ export interface HelperTextProps extends Omit<ComponentProps<'p'>, 'color'> {
 export const HelperText: FC<HelperTextProps> = ({
   children,
   className,
-  color = 'default',
+  color = "default",
   theme: customTheme = {},
   value,
   ...props
@@ -36,9 +36,9 @@ export const HelperText: FC<HelperTextProps> = ({
 
   return (
     <p className={twMerge(theme.root.base, theme.root.colors[color], className)} {...props}>
-      {value ?? children ?? ''}
+      {value ?? children ?? ""}
     </p>
   );
 };
 
-HelperText.displayName = 'HelperText';
+HelperText.displayName = "HelperText";

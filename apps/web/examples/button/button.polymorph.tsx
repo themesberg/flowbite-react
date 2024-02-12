@@ -1,12 +1,12 @@
-import { Button } from 'flowbite-react';
-import Link from 'next/link';
-import { type CodeData } from '~/components/code-demo';
+import { Button } from "flowbite-react";
+import Link from "next/link";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button } from 'flowbite-react';
-import Link from 'next/link';
+import { Button } from "flowbite-react";
+import Link from "next/link";
 
 function Component() {
   return (
@@ -23,8 +23,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button } from 'flowbite-react';
-import Link from 'next/link';
+import { Button } from "flowbite-react";
+import Link from "next/link";
 
 function Component() {
   return (
@@ -54,19 +54,19 @@ function Component() {
 }
 
 export const polymorph: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'button/button.polymorph.tsx',
+  githubSlug: "button/button.polymorph.tsx",
   component: <Component />,
 };

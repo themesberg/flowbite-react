@@ -1,12 +1,12 @@
-import { Label, TextInput } from 'flowbite-react';
-import { HiMail } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import { Label, TextInput } from "flowbite-react";
+import { HiMail } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Label, TextInput } from 'flowbite-react';
-import { HiMail } from 'react-icons/hi';
+import { Label, TextInput } from "flowbite-react";
+import { HiMail } from "react-icons/hi";
 
 function Component() {
   return (
@@ -21,8 +21,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Label, TextInput } from 'flowbite-react';
-import { HiMail } from 'react-icons/hi';
+import { Label, TextInput } from "flowbite-react";
+import { HiMail } from "react-icons/hi";
 
 function Component() {
   return (
@@ -48,19 +48,19 @@ function Component() {
 }
 
 export const inputLeftRightIcon: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'forms/forms.inputLeftRightIcon.tsx',
+  githubSlug: "forms/forms.inputLeftRightIcon.tsx",
   component: <Component />,
 };

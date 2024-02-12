@@ -1,16 +1,16 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import type { RatingProps } from './Rating';
-import { Rating } from './Rating';
+import type { Meta, StoryFn } from "@storybook/react";
+import type { RatingProps } from "./Rating";
+import { Rating } from "./Rating";
 
 export default {
-  title: 'Components/Rating',
+  title: "Components/Rating",
   component: Rating,
 } as Meta;
 
 const Template: StoryFn<RatingProps> = (args) => <Rating {...args} />;
 
 export const DefaultRating = Template.bind({});
-DefaultRating.storyName = 'Default';
+DefaultRating.storyName = "Default";
 DefaultRating.args = {
   children: (
     <>
@@ -24,7 +24,7 @@ DefaultRating.args = {
 };
 
 export const WithText = Template.bind({});
-WithText.storyName = 'With text';
+WithText.storyName = "With text";
 WithText.args = {
   children: (
     <>
@@ -39,7 +39,7 @@ WithText.args = {
 };
 
 export const RatingCount = Template.bind({});
-RatingCount.storyName = 'With rating count';
+RatingCount.storyName = "With rating count";
 RatingCount.args = {
   children: (
     <>

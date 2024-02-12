@@ -1,12 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
-import { Button } from '../Button';
-import { Tooltip } from './index';
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, expect, it } from "vitest";
+import { Button } from "../Button";
+import { Tooltip } from "./index";
 
-describe('Tooltip', () => {
-  describe('Keyboard interactions', () => {
-    it('should display when target is focused with `Tab`', async () => {
+describe("Tooltip", () => {
+  describe("Keyboard interactions", () => {
+    it("should display when target is focused with `Tab`", async () => {
       const user = userEvent.setup();
       render(<TooltipTests />);
 
@@ -14,10 +14,10 @@ describe('Tooltip', () => {
 
       const tooltip = tooltips()[0];
 
-      expect(tooltip).not.toHaveClass('invisible');
+      expect(tooltip).not.toHaveClass("invisible");
     });
 
-    it('should display when `Space` is pressed while target is focused', async () => {
+    it("should display when `Space` is pressed while target is focused", async () => {
       const user = userEvent.setup();
       render(<TooltipTests />);
 
@@ -26,12 +26,12 @@ describe('Tooltip', () => {
 
       await user.click(target);
 
-      expect(tooltip).not.toHaveClass('invisible');
+      expect(tooltip).not.toHaveClass("invisible");
     });
   });
 
-  describe('Rendering', () => {
-    it('should invert placement so it stays on screen if it would normally be placed off screen', async () => {
+  describe("Rendering", () => {
+    it("should invert placement so it stays on screen if it would normally be placed off screen", async () => {
       const user = userEvent.setup();
       render(<TooltipTests />);
 
@@ -39,14 +39,14 @@ describe('Tooltip', () => {
       let arrow = arrows()[2];
 
       await user.click(tooltip);
-      expect(arrow).toHaveStyle('top: -4px');
+      expect(arrow).toHaveStyle("top: -4px");
 
       tooltip = tooltips()[3];
       arrow = arrows()[3];
 
       await user.click(tooltip);
 
-      expect(arrow).toHaveStyle('left: -4px');
+      expect(arrow).toHaveStyle("left: -4px");
     });
   });
 });
@@ -73,8 +73,8 @@ const TooltipTests = (): JSX.Element => {
   );
 };
 
-const arrows = () => screen.getAllByTestId('flowbite-tooltip-arrow');
+const arrows = () => screen.getAllByTestId("flowbite-tooltip-arrow");
 
-const targets = () => screen.getAllByTestId('flowbite-tooltip-target');
+const targets = () => screen.getAllByTestId("flowbite-tooltip-target");
 
-const tooltips = () => screen.getAllByTestId('flowbite-tooltip');
+const tooltips = () => screen.getAllByTestId("flowbite-tooltip");

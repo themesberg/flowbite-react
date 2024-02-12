@@ -4,226 +4,202 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.7.2](https://github.com/themesberg/flowbite-react/compare/v0.7.1...v0.7.2) (2023-12-12)
 
-
 ### Bug Fixes
 
-* absolute to relative import ([#1183](https://github.com/themesberg/flowbite-react/issues/1183)) ([3f0bebb](https://github.com/themesberg/flowbite-react/commit/3f0bebbdc863552a5d31c080c1d129a450870cc0))
+- absolute to relative import ([#1183](https://github.com/themesberg/flowbite-react/issues/1183)) ([3f0bebb](https://github.com/themesberg/flowbite-react/commit/3f0bebbdc863552a5d31c080c1d129a450870cc0))
 
 ### [0.7.1](https://github.com/themesberg/flowbite-react/compare/v0.7.0...v0.7.1) (2023-12-12)
 
-
 ### ⚠ BREAKING CHANGES
 
-* **datepicker:** As the WeekStart enum changed order to be aligned with Javascript Date object, now
-you have to change your weekStart attribute to be -1, so for Monday you should put 1, instead of 2.
-But it wasn't working before as the values were incorrectly rendered in the first place.
+- **datepicker:** As the WeekStart enum changed order to be aligned with Javascript Date object, now
+  you have to change your weekStart attribute to be -1, so for Monday you should put 1, instead of 2.
+  But it wasn't working before as the values were incorrectly rendered in the first place.
 
 ### Features
 
-* **list component:** develop new horizontal state of list component ([#1178](https://github.com/themesberg/flowbite-react/issues/1178)) ([1fbe6ca](https://github.com/themesberg/flowbite-react/commit/1fbe6ca69346b090f9007e0ae904213977ad6d6e))
-* **list.stories.tsx:** add horizontal stories ([#1180](https://github.com/themesberg/flowbite-react/issues/1180)) ([7db683d](https://github.com/themesberg/flowbite-react/commit/7db683d939d08a465df6fbb1dc7cbfc5b7396bf4))
-
+- **list component:** develop new horizontal state of list component ([#1178](https://github.com/themesberg/flowbite-react/issues/1178)) ([1fbe6ca](https://github.com/themesberg/flowbite-react/commit/1fbe6ca69346b090f9007e0ae904213977ad6d6e))
+- **list.stories.tsx:** add horizontal stories ([#1180](https://github.com/themesberg/flowbite-react/issues/1180)) ([7db683d](https://github.com/themesberg/flowbite-react/commit/7db683d939d08a465df6fbb1dc7cbfc5b7396bf4))
 
 ### Bug Fixes
 
-* add empty space to `<Checkbox>` ring in dark mode ([#1160](https://github.com/themesberg/flowbite-react/issues/1160)) ([d0ccfde](https://github.com/themesberg/flowbite-react/commit/d0ccfde319642a9c62fcff8c04470e744d7ab7a7))
-* **component:** fix `<DarkThemeToggle>` console warning ([#1172](https://github.com/themesberg/flowbite-react/issues/1172)) ([bdd7cdf](https://github.com/themesberg/flowbite-react/commit/bdd7cdfadd33ce39408cf50cbc42b199e7469457))
-* **datepicker:** fix the inconsistent weekday labels ([#1173](https://github.com/themesberg/flowbite-react/issues/1173)) ([770ab9d](https://github.com/themesberg/flowbite-react/commit/770ab9db7fde1aca8c68a1c0e196841a3510039f)), closes [#1044](https://github.com/themesberg/flowbite-react/issues/1044)
-* **footer>theme.ts:** adding margin to right in footer links ([#1153](https://github.com/themesberg/flowbite-react/issues/1153)) ([7c1275e](https://github.com/themesberg/flowbite-react/commit/7c1275e255f8dcbefcd73a7acec21b17e043273f)), closes [#1085](https://github.com/themesberg/flowbite-react/issues/1085)
-* **pagination:** updating lastPage variable correctly for table layout ([#1151](https://github.com/themesberg/flowbite-react/issues/1151)) ([2259bf5](https://github.com/themesberg/flowbite-react/commit/2259bf55c720495ae72bb055f2fca8c3633e006c)), closes [#1150](https://github.com/themesberg/flowbite-react/issues/1150)
+- add empty space to `<Checkbox>` ring in dark mode ([#1160](https://github.com/themesberg/flowbite-react/issues/1160)) ([d0ccfde](https://github.com/themesberg/flowbite-react/commit/d0ccfde319642a9c62fcff8c04470e744d7ab7a7))
+- **component:** fix `<DarkThemeToggle>` console warning ([#1172](https://github.com/themesberg/flowbite-react/issues/1172)) ([bdd7cdf](https://github.com/themesberg/flowbite-react/commit/bdd7cdfadd33ce39408cf50cbc42b199e7469457))
+- **datepicker:** fix the inconsistent weekday labels ([#1173](https://github.com/themesberg/flowbite-react/issues/1173)) ([770ab9d](https://github.com/themesberg/flowbite-react/commit/770ab9db7fde1aca8c68a1c0e196841a3510039f)), closes [#1044](https://github.com/themesberg/flowbite-react/issues/1044)
+- **footer>theme.ts:** adding margin to right in footer links ([#1153](https://github.com/themesberg/flowbite-react/issues/1153)) ([7c1275e](https://github.com/themesberg/flowbite-react/commit/7c1275e255f8dcbefcd73a7acec21b17e043273f)), closes [#1085](https://github.com/themesberg/flowbite-react/issues/1085)
+- **pagination:** updating lastPage variable correctly for table layout ([#1151](https://github.com/themesberg/flowbite-react/issues/1151)) ([2259bf5](https://github.com/themesberg/flowbite-react/commit/2259bf55c720495ae72bb055f2fca8c3633e006c)), closes [#1150](https://github.com/themesberg/flowbite-react/issues/1150)
 
 ## [0.7.0](https://github.com/themesberg/flowbite-react/compare/v0.6.4...v0.7.0) (2023-11-24)
 
-
 ### Features
 
-* `ThemeModeScript` - avoid page flicker on reload on SSR application (NextJS, Remix) ([#1056](https://github.com/themesberg/flowbite-react/issues/1056)) ([4f0399b](https://github.com/themesberg/flowbite-react/commit/4f0399b50b23ec24ded67681f3290a8fbf653920))
-* **progress:** add missing colors for Progress component ([#1129](https://github.com/themesberg/flowbite-react/issues/1129)) ([f8853af](https://github.com/themesberg/flowbite-react/commit/f8853afb1cf404a0a07e446890bea92aa9ce22fb))
-
+- `ThemeModeScript` - avoid page flicker on reload on SSR application (NextJS, Remix) ([#1056](https://github.com/themesberg/flowbite-react/issues/1056)) ([4f0399b](https://github.com/themesberg/flowbite-react/commit/4f0399b50b23ec24ded67681f3290a8fbf653920))
+- **progress:** add missing colors for Progress component ([#1129](https://github.com/themesberg/flowbite-react/issues/1129)) ([f8853af](https://github.com/themesberg/flowbite-react/commit/f8853afb1cf404a0a07e446890bea92aa9ce22fb))
 
 ### Bug Fixes
 
-* **button/theme.ts:** add the missing dark modifier for Button bg color ([#1047](https://github.com/themesberg/flowbite-react/issues/1047)) ([0050aef](https://github.com/themesberg/flowbite-react/commit/0050aef25e93bd38bd517b5da54344099f7eb4bf)), closes [#1045](https://github.com/themesberg/flowbite-react/issues/1045)
-* docs dropdown - incorrect code preview ([#1059](https://github.com/themesberg/flowbite-react/issues/1059)) ([624932a](https://github.com/themesberg/flowbite-react/commit/624932a8ca34c74dba068415c6ccdbd695c77100))
-* docs forms toggle switch - incorrect code preview ([#1061](https://github.com/themesberg/flowbite-react/issues/1061)) ([5733b12](https://github.com/themesberg/flowbite-react/commit/5733b12796ae75cfd9ae29200c2a710e2405d199))
-* docs navbar - incorrect code preview ([#1062](https://github.com/themesberg/flowbite-react/issues/1062)) ([8c5bd0b](https://github.com/themesberg/flowbite-react/commit/8c5bd0bdceb466a4ac8b36b96e6a91b9c1fce83a))
-* docs/getting started/contributing - invalid "bug tracker" url ([#1073](https://github.com/themesberg/flowbite-react/issues/1073)) ([c357c4f](https://github.com/themesberg/flowbite-react/commit/c357c4f0d9d83c8f4b728f24a026eaed19c97a4a))
-* dropdown theme - granular control ([#1066](https://github.com/themesberg/flowbite-react/issues/1066)) ([cac6148](https://github.com/themesberg/flowbite-react/commit/cac614889e27ee95313dbe5a8af807eca6976649))
-* homepage dark mode `Floating Label` - missing svg ([#1074](https://github.com/themesberg/flowbite-react/issues/1074)) ([df71241](https://github.com/themesberg/flowbite-react/commit/df71241cc26fca900014fd163370bb680bc4e3d6))
-* layout overflow ([#1054](https://github.com/themesberg/flowbite-react/issues/1054)) ([7c5f136](https://github.com/themesberg/flowbite-react/commit/7c5f136035f20050fb14f97627b65fb86046873a))
-* listItem disabled property ([#1126](https://github.com/themesberg/flowbite-react/issues/1126)) ([0f274d6](https://github.com/themesberg/flowbite-react/commit/0f274d6318b7693ae79bb8ced2483e82085c9ed4))
-* remove alias import ([#1058](https://github.com/themesberg/flowbite-react/issues/1058)) ([bb60b18](https://github.com/themesberg/flowbite-react/commit/bb60b183b60e63f38eab7c711c0c775cd0739c55))
+- **button/theme.ts:** add the missing dark modifier for Button bg color ([#1047](https://github.com/themesberg/flowbite-react/issues/1047)) ([0050aef](https://github.com/themesberg/flowbite-react/commit/0050aef25e93bd38bd517b5da54344099f7eb4bf)), closes [#1045](https://github.com/themesberg/flowbite-react/issues/1045)
+- docs dropdown - incorrect code preview ([#1059](https://github.com/themesberg/flowbite-react/issues/1059)) ([624932a](https://github.com/themesberg/flowbite-react/commit/624932a8ca34c74dba068415c6ccdbd695c77100))
+- docs forms toggle switch - incorrect code preview ([#1061](https://github.com/themesberg/flowbite-react/issues/1061)) ([5733b12](https://github.com/themesberg/flowbite-react/commit/5733b12796ae75cfd9ae29200c2a710e2405d199))
+- docs navbar - incorrect code preview ([#1062](https://github.com/themesberg/flowbite-react/issues/1062)) ([8c5bd0b](https://github.com/themesberg/flowbite-react/commit/8c5bd0bdceb466a4ac8b36b96e6a91b9c1fce83a))
+- docs/getting started/contributing - invalid "bug tracker" url ([#1073](https://github.com/themesberg/flowbite-react/issues/1073)) ([c357c4f](https://github.com/themesberg/flowbite-react/commit/c357c4f0d9d83c8f4b728f24a026eaed19c97a4a))
+- dropdown theme - granular control ([#1066](https://github.com/themesberg/flowbite-react/issues/1066)) ([cac6148](https://github.com/themesberg/flowbite-react/commit/cac614889e27ee95313dbe5a8af807eca6976649))
+- homepage dark mode `Floating Label` - missing svg ([#1074](https://github.com/themesberg/flowbite-react/issues/1074)) ([df71241](https://github.com/themesberg/flowbite-react/commit/df71241cc26fca900014fd163370bb680bc4e3d6))
+- layout overflow ([#1054](https://github.com/themesberg/flowbite-react/issues/1054)) ([7c5f136](https://github.com/themesberg/flowbite-react/commit/7c5f136035f20050fb14f97627b65fb86046873a))
+- listItem disabled property ([#1126](https://github.com/themesberg/flowbite-react/issues/1126)) ([0f274d6](https://github.com/themesberg/flowbite-react/commit/0f274d6318b7693ae79bb8ced2483e82085c9ed4))
+- remove alias import ([#1058](https://github.com/themesberg/flowbite-react/issues/1058)) ([bb60b18](https://github.com/themesberg/flowbite-react/commit/bb60b183b60e63f38eab7c711c0c775cd0739c55))
 
 ### [0.6.4](https://github.com/themesberg/flowbite-react/compare/v0.6.3...v0.6.4) (2023-10-03)
 
-
 ### Features
 
-* Blockquote Component ([#997](https://github.com/themesberg/flowbite-react/issues/997)) ([9b91c29](https://github.com/themesberg/flowbite-react/commit/9b91c299dbf4ea22dc3b1617633cdb837552776d))
-* checkbox colors ([#1032](https://github.com/themesberg/flowbite-react/issues/1032)) ([8ae697e](https://github.com/themesberg/flowbite-react/commit/8ae697ea50f8c35da4c3f746f8e2fa19bb78b249))
-
+- Blockquote Component ([#997](https://github.com/themesberg/flowbite-react/issues/997)) ([9b91c29](https://github.com/themesberg/flowbite-react/commit/9b91c299dbf4ea22dc3b1617633cdb837552776d))
+- checkbox colors ([#1032](https://github.com/themesberg/flowbite-react/issues/1032)) ([8ae697e](https://github.com/themesberg/flowbite-react/commit/8ae697ea50f8c35da4c3f746f8e2fa19bb78b249))
 
 ### Bug Fixes
 
-* fix getWeekDays function ([#1040](https://github.com/themesberg/flowbite-react/issues/1040)) ([8822223](https://github.com/themesberg/flowbite-react/commit/8822223eb7417f34dbbe18d561858591cfaf420f))
+- fix getWeekDays function ([#1040](https://github.com/themesberg/flowbite-react/issues/1040)) ([8822223](https://github.com/themesberg/flowbite-react/commit/8822223eb7417f34dbbe18d561858591cfaf420f))
 
 ### [0.6.3](https://github.com/themesberg/flowbite-react/compare/v0.6.2...v0.6.3) (2023-09-30)
 
-
 ### Bug Fixes
 
-* Button color blue theme ([#1024](https://github.com/themesberg/flowbite-react/issues/1024)) ([11d8510](https://github.com/themesberg/flowbite-react/commit/11d8510875c0285e7634185ae05555ef64da3dcd))
-* Floating Label theme import ([#1023](https://github.com/themesberg/flowbite-react/issues/1023)) ([160c24e](https://github.com/themesberg/flowbite-react/commit/160c24e0004b0c430a60493620c1dec4cdbdfedc))
+- Button color blue theme ([#1024](https://github.com/themesberg/flowbite-react/issues/1024)) ([11d8510](https://github.com/themesberg/flowbite-react/commit/11d8510875c0285e7634185ae05555ef64da3dcd))
+- Floating Label theme import ([#1023](https://github.com/themesberg/flowbite-react/issues/1023)) ([160c24e](https://github.com/themesberg/flowbite-react/commit/160c24e0004b0c430a60493620c1dec4cdbdfedc))
 
 ### [0.6.2](https://github.com/themesberg/flowbite-react/compare/v0.6.1...v0.6.2) (2023-09-29)
 
-
 ### Features
 
-* adds floating label ([#955](https://github.com/themesberg/flowbite-react/issues/955)) ([3fc7b88](https://github.com/themesberg/flowbite-react/commit/3fc7b88d8633977b4e1d5c9eadcb4ed25116d86f))
-* **component:** toggleSwitch add sizing prop (sm|md|lg) ([#1009](https://github.com/themesberg/flowbite-react/issues/1009)) ([c3bf704](https://github.com/themesberg/flowbite-react/commit/c3bf704dd9775390a5efac638d84192b588fcbbd))
-
+- adds floating label ([#955](https://github.com/themesberg/flowbite-react/issues/955)) ([3fc7b88](https://github.com/themesberg/flowbite-react/commit/3fc7b88d8633977b4e1d5c9eadcb4ed25116d86f))
+- **component:** toggleSwitch add sizing prop (sm|md|lg) ([#1009](https://github.com/themesberg/flowbite-react/issues/1009)) ([c3bf704](https://github.com/themesberg/flowbite-react/commit/c3bf704dd9775390a5efac638d84192b588fcbbd))
 
 ### Bug Fixes
 
-* docs - avatar - render properly code example ([#1006](https://github.com/themesberg/flowbite-react/issues/1006)) ([48ce786](https://github.com/themesberg/flowbite-react/commit/48ce7863fcbc7d98b29c80b1c95c7f99a377ab95))
-* documentation regressions ([#1021](https://github.com/themesberg/flowbite-react/issues/1021)) ([dbfb019](https://github.com/themesberg/flowbite-react/commit/dbfb01958e47b04de08b9c88a259bc54f0eb1b36))
-* homepage - missing dark mode section functionality ([#989](https://github.com/themesberg/flowbite-react/issues/989)) ([63e04e2](https://github.com/themesberg/flowbite-react/commit/63e04e2ae52248adc86ead5298f11161af563cc9))
-* issue [#846](https://github.com/themesberg/flowbite-react/issues/846) - docs dropdown - `custom trigger` section not render… ([#1005](https://github.com/themesberg/flowbite-react/issues/1005)) ([409c01c](https://github.com/themesberg/flowbite-react/commit/409c01c9a5831b444702c252cd6086c7caaddfe8))
-* **toggleswitch:** disable + checked state and deprecated html event replacement ([#987](https://github.com/themesberg/flowbite-react/issues/987)) ([ce55df1](https://github.com/themesberg/flowbite-react/commit/ce55df1fc4b7a4c20a12957b052d8f359e8234a7)), closes [#986](https://github.com/themesberg/flowbite-react/issues/986)
+- docs - avatar - render properly code example ([#1006](https://github.com/themesberg/flowbite-react/issues/1006)) ([48ce786](https://github.com/themesberg/flowbite-react/commit/48ce7863fcbc7d98b29c80b1c95c7f99a377ab95))
+- documentation regressions ([#1021](https://github.com/themesberg/flowbite-react/issues/1021)) ([dbfb019](https://github.com/themesberg/flowbite-react/commit/dbfb01958e47b04de08b9c88a259bc54f0eb1b36))
+- homepage - missing dark mode section functionality ([#989](https://github.com/themesberg/flowbite-react/issues/989)) ([63e04e2](https://github.com/themesberg/flowbite-react/commit/63e04e2ae52248adc86ead5298f11161af563cc9))
+- issue [#846](https://github.com/themesberg/flowbite-react/issues/846) - docs dropdown - `custom trigger` section not render… ([#1005](https://github.com/themesberg/flowbite-react/issues/1005)) ([409c01c](https://github.com/themesberg/flowbite-react/commit/409c01c9a5831b444702c252cd6086c7caaddfe8))
+- **toggleswitch:** disable + checked state and deprecated html event replacement ([#987](https://github.com/themesberg/flowbite-react/issues/987)) ([ce55df1](https://github.com/themesberg/flowbite-react/commit/ce55df1fc4b7a4c20a12957b052d8f359e8234a7)), closes [#986](https://github.com/themesberg/flowbite-react/issues/986)
 
 ### [0.6.1](https://github.com/themesberg/flowbite-react/compare/v0.6.0...v0.6.1) (2023-09-23)
 
-
 ### Bug Fixes
 
-* `CodePreview` - show explicit false props ([#985](https://github.com/themesberg/flowbite-react/issues/985)) ([b1357c6](https://github.com/themesberg/flowbite-react/commit/b1357c6e44607fb1383393ec54ad37bd98712879))
-* **button:** allow height of buttons stretch ([#906](https://github.com/themesberg/flowbite-react/issues/906)) ([10b54e3](https://github.com/themesberg/flowbite-react/commit/10b54e345b355201405bf948eae943b5cca94354))
-* **button:** fix error Button cannot be used as a JSX component ([#974](https://github.com/themesberg/flowbite-react/issues/974)) ([b621601](https://github.com/themesberg/flowbite-react/commit/b62160116b26180023f15ed07804e9a48600180b)), closes [#962](https://github.com/themesberg/flowbite-react/issues/962)
-* **component:** add custom theme to the carousel's default left and r… ([#910](https://github.com/themesberg/flowbite-react/issues/910)) ([ddff0e5](https://github.com/themesberg/flowbite-react/commit/ddff0e5e4353dbbeaba0312a317fe40e777b79f9))
-* **datepicker.tsx:** fix theme and add onSelectedDate callback ([#970](https://github.com/themesberg/flowbite-react/issues/970)) ([fe9f63f](https://github.com/themesberg/flowbite-react/commit/fe9f63f0cdb04f5ed64baa9ff8755182ef6c8fce)), closes [#968](https://github.com/themesberg/flowbite-react/issues/968) [#964](https://github.com/themesberg/flowbite-react/issues/964)
-* **datepicker:** button type ([#984](https://github.com/themesberg/flowbite-react/issues/984)) ([496ed1e](https://github.com/themesberg/flowbite-react/commit/496ed1e9e066edae1eec021d0f7a042a82467c55))
-* **datepiker:** incorrect names of days of the week in the datepicker ([#963](https://github.com/themesberg/flowbite-react/issues/963)) ([e09a22a](https://github.com/themesberg/flowbite-react/commit/e09a22a4dc28aecefe7e09a2b6ac78a775083a9b)), closes [#960](https://github.com/themesberg/flowbite-react/issues/960)
-* **labels:** default dark color of the input labels should be white ([#978](https://github.com/themesberg/flowbite-react/issues/978)) ([3d1d62e](https://github.com/themesberg/flowbite-react/commit/3d1d62eb80fa9475e0db70f05e8670bd8a6a9c9b))
-* scroll to section blocking above content ([#983](https://github.com/themesberg/flowbite-react/issues/983)) ([5a9589b](https://github.com/themesberg/flowbite-react/commit/5a9589bd39dd39cfddc149ae509c1caa98a4ee24))
-* **tabs:** added tabs container div style and theme ([#929](https://github.com/themesberg/flowbite-react/issues/929)) ([c0e9d66](https://github.com/themesberg/flowbite-react/commit/c0e9d66b88c259ef7cebfb67b44705aee7491fbc)), closes [#924](https://github.com/themesberg/flowbite-react/issues/924)
-* **textarea:** default font size should be `text-sm` ([#958](https://github.com/themesberg/flowbite-react/issues/958)) ([ecf271a](https://github.com/themesberg/flowbite-react/commit/ecf271a8dcb64c7c25e24ad1cfb7c33b8ea3d3bd))
+- `CodePreview` - show explicit false props ([#985](https://github.com/themesberg/flowbite-react/issues/985)) ([b1357c6](https://github.com/themesberg/flowbite-react/commit/b1357c6e44607fb1383393ec54ad37bd98712879))
+- **button:** allow height of buttons stretch ([#906](https://github.com/themesberg/flowbite-react/issues/906)) ([10b54e3](https://github.com/themesberg/flowbite-react/commit/10b54e345b355201405bf948eae943b5cca94354))
+- **button:** fix error Button cannot be used as a JSX component ([#974](https://github.com/themesberg/flowbite-react/issues/974)) ([b621601](https://github.com/themesberg/flowbite-react/commit/b62160116b26180023f15ed07804e9a48600180b)), closes [#962](https://github.com/themesberg/flowbite-react/issues/962)
+- **component:** add custom theme to the carousel's default left and r… ([#910](https://github.com/themesberg/flowbite-react/issues/910)) ([ddff0e5](https://github.com/themesberg/flowbite-react/commit/ddff0e5e4353dbbeaba0312a317fe40e777b79f9))
+- **datepicker.tsx:** fix theme and add onSelectedDate callback ([#970](https://github.com/themesberg/flowbite-react/issues/970)) ([fe9f63f](https://github.com/themesberg/flowbite-react/commit/fe9f63f0cdb04f5ed64baa9ff8755182ef6c8fce)), closes [#968](https://github.com/themesberg/flowbite-react/issues/968) [#964](https://github.com/themesberg/flowbite-react/issues/964)
+- **datepicker:** button type ([#984](https://github.com/themesberg/flowbite-react/issues/984)) ([496ed1e](https://github.com/themesberg/flowbite-react/commit/496ed1e9e066edae1eec021d0f7a042a82467c55))
+- **datepiker:** incorrect names of days of the week in the datepicker ([#963](https://github.com/themesberg/flowbite-react/issues/963)) ([e09a22a](https://github.com/themesberg/flowbite-react/commit/e09a22a4dc28aecefe7e09a2b6ac78a775083a9b)), closes [#960](https://github.com/themesberg/flowbite-react/issues/960)
+- **labels:** default dark color of the input labels should be white ([#978](https://github.com/themesberg/flowbite-react/issues/978)) ([3d1d62e](https://github.com/themesberg/flowbite-react/commit/3d1d62eb80fa9475e0db70f05e8670bd8a6a9c9b))
+- scroll to section blocking above content ([#983](https://github.com/themesberg/flowbite-react/issues/983)) ([5a9589b](https://github.com/themesberg/flowbite-react/commit/5a9589bd39dd39cfddc149ae509c1caa98a4ee24))
+- **tabs:** added tabs container div style and theme ([#929](https://github.com/themesberg/flowbite-react/issues/929)) ([c0e9d66](https://github.com/themesberg/flowbite-react/commit/c0e9d66b88c259ef7cebfb67b44705aee7491fbc)), closes [#924](https://github.com/themesberg/flowbite-react/issues/924)
+- **textarea:** default font size should be `text-sm` ([#958](https://github.com/themesberg/flowbite-react/issues/958)) ([ecf271a](https://github.com/themesberg/flowbite-react/commit/ecf271a8dcb64c7c25e24ad1cfb7c33b8ea3d3bd))
 
 ### [0.6.0](https://github.com/themesberg/flowbite-react/compare/v0.5.0...v0.6.0) (2023-09-09)
 
 ### Features
 
-* add `<Banner>` component ([#949](https://github.com/themesberg/flowbite-react/issues/949)) ([ce05949](https://github.com/themesberg/flowbite-react/commit/ce059497cc8512db841fae4fdda82857c3b92911))
-* add `<Datepicker>` component ([#835](https://github.com/themesberg/flowbite-react/issues/835)) ([ff12d41](https://github.com/themesberg/flowbite-react/commit/ff12d41e7f940ac2033f38df7951d1352933c3a0)), closes [#626](https://github.com/themesberg/flowbite-react/issues/626)
-* **component:** new pauseOnHover prop to <Carousel>, provide quick information with chance to pause ([#918](https://github.com/themesberg/flowbite-react/issues/918)) ([f69e1a4](https://github.com/themesberg/flowbite-react/commit/f69e1a4e13047a552e31281fb9faadd956e899d8))
-* **sidebar:** add custom chevron icon to collapse ([#891](https://github.com/themesberg/flowbite-react/issues/891)) ([d92c2cc](https://github.com/themesberg/flowbite-react/commit/d92c2cc690dd8f6886e35de84e6c1e3b93ef96ee))
-
+- add `<Banner>` component ([#949](https://github.com/themesberg/flowbite-react/issues/949)) ([ce05949](https://github.com/themesberg/flowbite-react/commit/ce059497cc8512db841fae4fdda82857c3b92911))
+- add `<Datepicker>` component ([#835](https://github.com/themesberg/flowbite-react/issues/835)) ([ff12d41](https://github.com/themesberg/flowbite-react/commit/ff12d41e7f940ac2033f38df7951d1352933c3a0)), closes [#626](https://github.com/themesberg/flowbite-react/issues/626)
+- **component:** new pauseOnHover prop to <Carousel>, provide quick information with chance to pause ([#918](https://github.com/themesberg/flowbite-react/issues/918)) ([f69e1a4](https://github.com/themesberg/flowbite-react/commit/f69e1a4e13047a552e31281fb9faadd956e899d8))
+- **sidebar:** add custom chevron icon to collapse ([#891](https://github.com/themesberg/flowbite-react/issues/891)) ([d92c2cc](https://github.com/themesberg/flowbite-react/commit/d92c2cc690dd8f6886e35de84e6c1e3b93ef96ee))
 
 ### Bug Fixes
 
-* **button.tsx:** Adding back displayName ([#890](https://github.com/themesberg/flowbite-react/issues/890)) ([8e24575](https://github.com/themesberg/flowbite-react/commit/8e245754b5057eb0b7cd27d95814f695c708a3de))
-* **button.tsx:** Button `as` prop internal logic + TS props ([#885](https://github.com/themesberg/flowbite-react/issues/885)) ([942735e](https://github.com/themesberg/flowbite-react/commit/942735e7dcd2ceea00927a0420c9e92a6998926c)), closes [#865](https://github.com/themesberg/flowbite-react/issues/865)
-* **pagination:** center selected page ([#931](https://github.com/themesberg/flowbite-react/issues/931)) ([cc1292d](https://github.com/themesberg/flowbite-react/commit/cc1292d1dc4aeb39b3e91b1243944121f456f49f)), closes [#908](https://github.com/themesberg/flowbite-react/issues/908)
-* **select.tsx/badge.tsx:** With icon classes preference ([#877](https://github.com/themesberg/flowbite-react/issues/877)) ([ebe605e](https://github.com/themesberg/flowbite-react/commit/ebe605edd2a541ab542a45c51d776a3dd92b9c00)), closes [#869](https://github.com/themesberg/flowbite-react/issues/869)
+- **button.tsx:** Adding back displayName ([#890](https://github.com/themesberg/flowbite-react/issues/890)) ([8e24575](https://github.com/themesberg/flowbite-react/commit/8e245754b5057eb0b7cd27d95814f695c708a3de))
+- **button.tsx:** Button `as` prop internal logic + TS props ([#885](https://github.com/themesberg/flowbite-react/issues/885)) ([942735e](https://github.com/themesberg/flowbite-react/commit/942735e7dcd2ceea00927a0420c9e92a6998926c)), closes [#865](https://github.com/themesberg/flowbite-react/issues/865)
+- **pagination:** center selected page ([#931](https://github.com/themesberg/flowbite-react/issues/931)) ([cc1292d](https://github.com/themesberg/flowbite-react/commit/cc1292d1dc4aeb39b3e91b1243944121f456f49f)), closes [#908](https://github.com/themesberg/flowbite-react/issues/908)
+- **select.tsx/badge.tsx:** With icon classes preference ([#877](https://github.com/themesberg/flowbite-react/issues/877)) ([ebe605e](https://github.com/themesberg/flowbite-react/commit/ebe605edd2a541ab542a45c51d776a3dd92b9c00)), closes [#869](https://github.com/themesberg/flowbite-react/issues/869)
 
 ## [0.5.0](https://github.com/themesberg/flowbite-react/compare/v0.4.11...v0.5.0) (2023-07-21)
 
-
 ### ⚠ BREAKING CHANGES
 
-* **toast.tsx:** Removing "removed" theme support
+- **toast.tsx:** Removing "removed" theme support
 
 ### Features
 
-* **card:** support custom renderImage functions for Card ([#730](https://github.com/themesberg/flowbite-react/issues/730)) ([594f187](https://github.com/themesberg/flowbite-react/commit/594f1870d7fc964521e8e9b56c1e64f39124248e)), closes [#706](https://github.com/themesberg/flowbite-react/issues/706)
-* **modal.tsx:** Modal Accessibility ([#858](https://github.com/themesberg/flowbite-react/issues/858)) ([2b4a3ec](https://github.com/themesberg/flowbite-react/commit/2b4a3ec8b1243bde08a1211d5c48126f68fedf4a)), closes [#647](https://github.com/themesberg/flowbite-react/issues/647) [#701](https://github.com/themesberg/flowbite-react/issues/701)
-* **toast.tsx:** Stateless Toast ([#860](https://github.com/themesberg/flowbite-react/issues/860)) ([bd4ad89](https://github.com/themesberg/flowbite-react/commit/bd4ad890c23c1c4446a2d8962ad3f694cc3dbb7a)), closes [#848](https://github.com/themesberg/flowbite-react/issues/848)
-
+- **card:** support custom renderImage functions for Card ([#730](https://github.com/themesberg/flowbite-react/issues/730)) ([594f187](https://github.com/themesberg/flowbite-react/commit/594f1870d7fc964521e8e9b56c1e64f39124248e)), closes [#706](https://github.com/themesberg/flowbite-react/issues/706)
+- **modal.tsx:** Modal Accessibility ([#858](https://github.com/themesberg/flowbite-react/issues/858)) ([2b4a3ec](https://github.com/themesberg/flowbite-react/commit/2b4a3ec8b1243bde08a1211d5c48126f68fedf4a)), closes [#647](https://github.com/themesberg/flowbite-react/issues/647) [#701](https://github.com/themesberg/flowbite-react/issues/701)
+- **toast.tsx:** Stateless Toast ([#860](https://github.com/themesberg/flowbite-react/issues/860)) ([bd4ad89](https://github.com/themesberg/flowbite-react/commit/bd4ad890c23c1c4446a2d8962ad3f694cc3dbb7a)), closes [#848](https://github.com/themesberg/flowbite-react/issues/848)
 
 ### Bug Fixes
 
-* **button.tsx:** Relative Spinner size ([#868](https://github.com/themesberg/flowbite-react/issues/868)) ([3662d5e](https://github.com/themesberg/flowbite-react/commit/3662d5ec0f6318773524ddb8c2a55702574d1963)), closes [#850](https://github.com/themesberg/flowbite-react/issues/850)
-* **modal.mdx:** fix spelling in modal documentation ([#862](https://github.com/themesberg/flowbite-react/issues/862)) ([380aa63](https://github.com/themesberg/flowbite-react/commit/380aa63752050858062cc61bd91bc4f6b691671c))
-* **pagination theme file:** added enabled attribute for pagination ba… ([#856](https://github.com/themesberg/flowbite-react/issues/856)) ([ecc3f6e](https://github.com/themesberg/flowbite-react/commit/ecc3f6ef0156533f2eeb337aad913e0a8182b58d)), closes [#849](https://github.com/themesberg/flowbite-react/issues/849)
+- **button.tsx:** Relative Spinner size ([#868](https://github.com/themesberg/flowbite-react/issues/868)) ([3662d5e](https://github.com/themesberg/flowbite-react/commit/3662d5ec0f6318773524ddb8c2a55702574d1963)), closes [#850](https://github.com/themesberg/flowbite-react/issues/850)
+- **modal.mdx:** fix spelling in modal documentation ([#862](https://github.com/themesberg/flowbite-react/issues/862)) ([380aa63](https://github.com/themesberg/flowbite-react/commit/380aa63752050858062cc61bd91bc4f6b691671c))
+- **pagination theme file:** added enabled attribute for pagination ba… ([#856](https://github.com/themesberg/flowbite-react/issues/856)) ([ecc3f6e](https://github.com/themesberg/flowbite-react/commit/ecc3f6ef0156533f2eeb337aad913e0a8182b58d)), closes [#849](https://github.com/themesberg/flowbite-react/issues/849)
 
 ### [0.4.11](https://github.com/themesberg/flowbite-react/compare/v0.4.10...v0.4.11) (2023-07-10)
 
-
 ### Features
 
-* **dropdown.tsx:** Dropdown Accessibility ([#840](https://github.com/themesberg/flowbite-react/issues/840)) ([65b13e7](https://github.com/themesberg/flowbite-react/commit/65b13e7dd5def51076348bd9e06b6505419167cd)), closes [#648](https://github.com/themesberg/flowbite-react/issues/648) [#793](https://github.com/themesberg/flowbite-react/issues/793)
-
+- **dropdown.tsx:** Dropdown Accessibility ([#840](https://github.com/themesberg/flowbite-react/issues/840)) ([65b13e7](https://github.com/themesberg/flowbite-react/commit/65b13e7dd5def51076348bd9e06b6505419167cd)), closes [#648](https://github.com/themesberg/flowbite-react/issues/648) [#793](https://github.com/themesberg/flowbite-react/issues/793)
 
 ### Bug Fixes
 
-* **dropdown:** fix build ([2c0f9e5](https://github.com/themesberg/flowbite-react/commit/2c0f9e55b2210a4b4b28237fa25193580521e7f9))
-* **modal:** backdrop height ([#839](https://github.com/themesberg/flowbite-react/issues/839)) ([e6e1b83](https://github.com/themesberg/flowbite-react/commit/e6e1b834ccd87b32f685c8e1c4f268f75274e1a7))
+- **dropdown:** fix build ([2c0f9e5](https://github.com/themesberg/flowbite-react/commit/2c0f9e55b2210a4b4b28237fa25193580521e7f9))
+- **modal:** backdrop height ([#839](https://github.com/themesberg/flowbite-react/issues/839)) ([e6e1b83](https://github.com/themesberg/flowbite-react/commit/e6e1b834ccd87b32f685c8e1c4f268f75274e1a7))
 
 ### [0.4.10](https://github.com/themesberg/flowbite-react/compare/v0.4.9...v0.4.10) (2023-07-03)
 
-
 ### Features
 
-* **button.tsx:** Added as prop to button component ([#826](https://github.com/themesberg/flowbite-react/issues/826)) ([6384882](https://github.com/themesberg/flowbite-react/commit/6384882b754465aac2829dc9e634b0c30efce621)), closes [#655](https://github.com/themesberg/flowbite-react/issues/655)
-* **carousel:** adds onSlideChange property ([#833](https://github.com/themesberg/flowbite-react/issues/833)) ([c80fb37](https://github.com/themesberg/flowbite-react/commit/c80fb37ca59d1a7ceff3fef978bea934baf43c46))
-* **components/darkthemetoggle:** supports custom icons ([1d615c0](https://github.com/themesberg/flowbite-react/commit/1d615c0bfbef4fdc48d9f19c18c069a15c74e228))
-* **components/sidebar:** theme access to list item element ([d7262ba](https://github.com/themesberg/flowbite-react/commit/d7262bab7c97c6e215431ff7d6ca6711e23570de))
-* **dropdown:** adding custom trigger ([#834](https://github.com/themesberg/flowbite-react/issues/834)) ([70c7aec](https://github.com/themesberg/flowbite-react/commit/70c7aec813f208c179a74b6b49343faf18369964)), closes [#624](https://github.com/themesberg/flowbite-react/issues/624)
-
+- **button.tsx:** Added as prop to button component ([#826](https://github.com/themesberg/flowbite-react/issues/826)) ([6384882](https://github.com/themesberg/flowbite-react/commit/6384882b754465aac2829dc9e634b0c30efce621)), closes [#655](https://github.com/themesberg/flowbite-react/issues/655)
+- **carousel:** adds onSlideChange property ([#833](https://github.com/themesberg/flowbite-react/issues/833)) ([c80fb37](https://github.com/themesberg/flowbite-react/commit/c80fb37ca59d1a7ceff3fef978bea934baf43c46))
+- **components/darkthemetoggle:** supports custom icons ([1d615c0](https://github.com/themesberg/flowbite-react/commit/1d615c0bfbef4fdc48d9f19c18c069a15c74e228))
+- **components/sidebar:** theme access to list item element ([d7262ba](https://github.com/themesberg/flowbite-react/commit/d7262bab7c97c6e215431ff7d6ca6711e23570de))
+- **dropdown:** adding custom trigger ([#834](https://github.com/themesberg/flowbite-react/issues/834)) ([70c7aec](https://github.com/themesberg/flowbite-react/commit/70c7aec813f208c179a74b6b49343faf18369964)), closes [#624](https://github.com/themesberg/flowbite-react/issues/624)
 
 ### Bug Fixes
 
-* **button.tsx:** Disable Button hover state when button is disabled ([#830](https://github.com/themesberg/flowbite-react/issues/830)) ([2b45084](https://github.com/themesberg/flowbite-react/commit/2b45084a82851d7e96e21cf75a2c8a1d1fa94e10)), closes [#827](https://github.com/themesberg/flowbite-react/issues/827)
-* **components/navbar:** fix theme interface ([bc280fc](https://github.com/themesberg/flowbite-react/commit/bc280fc4fc380ec61aa67b57090a1d8bed43a488))
-* **textinput.tsx:** TextInput padding when having right/left icons ([#832](https://github.com/themesberg/flowbite-react/issues/832)) ([d616e66](https://github.com/themesberg/flowbite-react/commit/d616e66e894bd80d5c95965047ea5c67ba45df91)), closes [#828](https://github.com/themesberg/flowbite-react/issues/828)
+- **button.tsx:** Disable Button hover state when button is disabled ([#830](https://github.com/themesberg/flowbite-react/issues/830)) ([2b45084](https://github.com/themesberg/flowbite-react/commit/2b45084a82851d7e96e21cf75a2c8a1d1fa94e10)), closes [#827](https://github.com/themesberg/flowbite-react/issues/827)
+- **components/navbar:** fix theme interface ([bc280fc](https://github.com/themesberg/flowbite-react/commit/bc280fc4fc380ec61aa67b57090a1d8bed43a488))
+- **textinput.tsx:** TextInput padding when having right/left icons ([#832](https://github.com/themesberg/flowbite-react/issues/832)) ([d616e66](https://github.com/themesberg/flowbite-react/commit/d616e66e894bd80d5c95965047ea5c67ba45df91)), closes [#828](https://github.com/themesberg/flowbite-react/issues/828)
 
 ### [0.4.9](https://github.com/themesberg/flowbite-react/compare/v0.4.7...v0.4.9) (2023-06-22)
 
-
 ### Features
 
-* replace `classnames` by `tailwind-merge` ([#816](https://github.com/themesberg/flowbite-react/issues/816)) ([7461173](https://github.com/themesberg/flowbite-react/commit/7461173ddb2afae9f66b9a4475b4333adef1e163))
-
+- replace `classnames` by `tailwind-merge` ([#816](https://github.com/themesberg/flowbite-react/issues/816)) ([7461173](https://github.com/themesberg/flowbite-react/commit/7461173ddb2afae9f66b9a4475b4333adef1e163))
 
 ### Bug Fixes
 
-* **paginationbutton.tsx:** button now has type button ([#811](https://github.com/themesberg/flowbite-react/issues/811)) ([470c359](https://github.com/themesberg/flowbite-react/commit/470c3594c26706fff17a4e9932850e51d6e3e4a5)), closes [#809](https://github.com/themesberg/flowbite-react/issues/809)
-* **src/components/navbar:** change default `<Navbar.Toggle/>` icon ([#819](https://github.com/themesberg/flowbite-react/issues/819)) ([6bc0de9](https://github.com/themesberg/flowbite-react/commit/6bc0de946c093863eab6386c26efc38779cb48fe)), closes [#818](https://github.com/themesberg/flowbite-react/issues/818) [/stackoverflow.com/questions/72146352/vitest-defineconfig-test-does-not-exist-in-type-userconfigexport/73106019#73106019](https://github.com/themesberg//stackoverflow.com/questions/72146352/vitest-defineconfig-test-does-not-exist-in-type-userconfigexport/73106019/issues/73106019)
+- **paginationbutton.tsx:** button now has type button ([#811](https://github.com/themesberg/flowbite-react/issues/811)) ([470c359](https://github.com/themesberg/flowbite-react/commit/470c3594c26706fff17a4e9932850e51d6e3e4a5)), closes [#809](https://github.com/themesberg/flowbite-react/issues/809)
+- **src/components/navbar:** change default `<Navbar.Toggle/>` icon ([#819](https://github.com/themesberg/flowbite-react/issues/819)) ([6bc0de9](https://github.com/themesberg/flowbite-react/commit/6bc0de946c093863eab6386c26efc38779cb48fe)), closes [#818](https://github.com/themesberg/flowbite-react/issues/818) [/stackoverflow.com/questions/72146352/vitest-defineconfig-test-does-not-exist-in-type-userconfigexport/73106019#73106019](https://github.com/themesberg//stackoverflow.com/questions/72146352/vitest-defineconfig-test-does-not-exist-in-type-userconfigexport/73106019/issues/73106019)
 
 ### [0.4.8](https://github.com/themesberg/flowbite-react/compare/v0.4.7...v0.4.8) (2023-06-22)
 
-
 ### Features
 
-* replace `classnames` by `tailwind-merge` ([#816](https://github.com/themesberg/flowbite-react/issues/816)) ([7461173](https://github.com/themesberg/flowbite-react/commit/7461173ddb2afae9f66b9a4475b4333adef1e163))
-
+- replace `classnames` by `tailwind-merge` ([#816](https://github.com/themesberg/flowbite-react/issues/816)) ([7461173](https://github.com/themesberg/flowbite-react/commit/7461173ddb2afae9f66b9a4475b4333adef1e163))
 
 ### Bug Fixes
 
-* **paginationbutton.tsx:** button now has type button ([#811](https://github.com/themesberg/flowbite-react/issues/811)) ([470c359](https://github.com/themesberg/flowbite-react/commit/470c3594c26706fff17a4e9932850e51d6e3e4a5)), closes [#809](https://github.com/themesberg/flowbite-react/issues/809)
+- **paginationbutton.tsx:** button now has type button ([#811](https://github.com/themesberg/flowbite-react/issues/811)) ([470c359](https://github.com/themesberg/flowbite-react/commit/470c3594c26706fff17a4e9932850e51d6e3e4a5)), closes [#809](https://github.com/themesberg/flowbite-react/issues/809)
 
 ### [0.4.7](https://github.com/themesberg/flowbite-react/compare/v0.4.4...v0.4.7) (2023-06-01)
 
-
 ### Features
 
-* **pagination.tsx:** next and previous buttons should disable when on 1 and last page respectively ([#731](https://github.com/themesberg/flowbite-react/issues/731)) ([8e8531b](https://github.com/themesberg/flowbite-react/commit/8e8531b2a1dfefcf7c9871dfa8fd441337baae6e)), closes [#726](https://github.com/themesberg/flowbite-react/issues/726) [#726](https://github.com/themesberg/flowbite-react/issues/726)
-
+- **pagination.tsx:** next and previous buttons should disable when on 1 and last page respectively ([#731](https://github.com/themesberg/flowbite-react/issues/731)) ([8e8531b](https://github.com/themesberg/flowbite-react/commit/8e8531b2a1dfefcf7c9871dfa8fd441337baae6e)), closes [#726](https://github.com/themesberg/flowbite-react/issues/726) [#726](https://github.com/themesberg/flowbite-react/issues/726)
 
 ### Bug Fixes
 
-* **button.tsx:** make prop theme work ([#746](https://github.com/themesberg/flowbite-react/issues/746)) ([1b07a76](https://github.com/themesberg/flowbite-react/commit/1b07a760e5b1394c036ae212403f49d2a631d4fb))
-* **component:** fix Label component disabled property not applying theme styles ([#763](https://github.com/themesberg/flowbite-react/issues/763)) ([8d6d79e](https://github.com/themesberg/flowbite-react/commit/8d6d79ef92ff4b3482151c5428ea3b4aa0b7e637)), closes [#762](https://github.com/themesberg/flowbite-react/issues/762)
-* **dropdown:** add type button in dropdown ([#757](https://github.com/themesberg/flowbite-react/issues/757)) ([974c126](https://github.com/themesberg/flowbite-react/commit/974c126e7e72833e2fde1bb9a631e4fcea6aa7af)), closes [#756](https://github.com/themesberg/flowbite-react/issues/756)
-* **dropdown:** fix dropdown menu items container width ([#714](https://github.com/themesberg/flowbite-react/issues/714)) ([d13c77c](https://github.com/themesberg/flowbite-react/commit/d13c77c68960ed97828b5f9592fdb6d870a8a74d)), closes [#575](https://github.com/themesberg/flowbite-react/issues/575) [#575](https://github.com/themesberg/flowbite-react/issues/575) [#575](https://github.com/themesberg/flowbite-react/issues/575) [#575](https://github.com/themesberg/flowbite-react/issues/575) [#575](https://github.com/themesberg/flowbite-react/issues/575)
-* making ToggleSwitch color prop as keyof FlowbiteColors ([#741](https://github.com/themesberg/flowbite-react/issues/741)) ([e3e2112](https://github.com/themesberg/flowbite-react/commit/e3e21126a4e38576c347f2815fb4ee51f1b1266b))
-* **modal:** fixed a bug that disallowed users to set the position of a modal ([#766](https://github.com/themesberg/flowbite-react/issues/766)) ([5200ecd](https://github.com/themesberg/flowbite-react/commit/5200ecd9df760012eedb05cbe51359db2c60c8d1)), closes [#760](https://github.com/themesberg/flowbite-react/issues/760)
-* **Modal:** modal scrollbar overflow style issue fixed ([#769](https://github.com/themesberg/flowbite-react/issues/769)) ([746098d](https://github.com/themesberg/flowbite-react/commit/746098d26dd3da47982e43e7e6d27044dde4a05a))
-* **modal:** overflow bug fix ([#718](https://github.com/themesberg/flowbite-react/issues/718)) ([9e4e43a](https://github.com/themesberg/flowbite-react/commit/9e4e43abe17c7ea0d24b891003f41d11241f546f)), closes [#537](https://github.com/themesberg/flowbite-react/issues/537)
-* pagination button not being highlighted correctly ([#725](https://github.com/themesberg/flowbite-react/issues/725)) ([53c1280](https://github.com/themesberg/flowbite-react/commit/53c1280f7b93c91413f0fb9fc2992e184591c6b3))
-* **src/components/*:** replace `tsconfig.json` `paths` by relative paths ([6efd448](https://github.com/themesberg/flowbite-react/commit/6efd448ddfa647e52c3bb0927285006ba06cffc8)), closes [#772](https://github.com/themesberg/flowbite-react/issues/772)
-* **theme:** typo in bottom-center ([#717](https://github.com/themesberg/flowbite-react/issues/717)) ([89d58dc](https://github.com/themesberg/flowbite-react/commit/89d58dc03727d150e73ec753748eb98640bc84a3))
-* **tsconfig.lib:** compile to react-jsx for npm ([389dd1d](https://github.com/themesberg/flowbite-react/commit/389dd1d414feb7f96c28cfd8fb6b00efc55355a9))
+- **button.tsx:** make prop theme work ([#746](https://github.com/themesberg/flowbite-react/issues/746)) ([1b07a76](https://github.com/themesberg/flowbite-react/commit/1b07a760e5b1394c036ae212403f49d2a631d4fb))
+- **component:** fix Label component disabled property not applying theme styles ([#763](https://github.com/themesberg/flowbite-react/issues/763)) ([8d6d79e](https://github.com/themesberg/flowbite-react/commit/8d6d79ef92ff4b3482151c5428ea3b4aa0b7e637)), closes [#762](https://github.com/themesberg/flowbite-react/issues/762)
+- **dropdown:** add type button in dropdown ([#757](https://github.com/themesberg/flowbite-react/issues/757)) ([974c126](https://github.com/themesberg/flowbite-react/commit/974c126e7e72833e2fde1bb9a631e4fcea6aa7af)), closes [#756](https://github.com/themesberg/flowbite-react/issues/756)
+- **dropdown:** fix dropdown menu items container width ([#714](https://github.com/themesberg/flowbite-react/issues/714)) ([d13c77c](https://github.com/themesberg/flowbite-react/commit/d13c77c68960ed97828b5f9592fdb6d870a8a74d)), closes [#575](https://github.com/themesberg/flowbite-react/issues/575) [#575](https://github.com/themesberg/flowbite-react/issues/575) [#575](https://github.com/themesberg/flowbite-react/issues/575) [#575](https://github.com/themesberg/flowbite-react/issues/575) [#575](https://github.com/themesberg/flowbite-react/issues/575)
+- making ToggleSwitch color prop as keyof FlowbiteColors ([#741](https://github.com/themesberg/flowbite-react/issues/741)) ([e3e2112](https://github.com/themesberg/flowbite-react/commit/e3e21126a4e38576c347f2815fb4ee51f1b1266b))
+- **modal:** fixed a bug that disallowed users to set the position of a modal ([#766](https://github.com/themesberg/flowbite-react/issues/766)) ([5200ecd](https://github.com/themesberg/flowbite-react/commit/5200ecd9df760012eedb05cbe51359db2c60c8d1)), closes [#760](https://github.com/themesberg/flowbite-react/issues/760)
+- **Modal:** modal scrollbar overflow style issue fixed ([#769](https://github.com/themesberg/flowbite-react/issues/769)) ([746098d](https://github.com/themesberg/flowbite-react/commit/746098d26dd3da47982e43e7e6d27044dde4a05a))
+- **modal:** overflow bug fix ([#718](https://github.com/themesberg/flowbite-react/issues/718)) ([9e4e43a](https://github.com/themesberg/flowbite-react/commit/9e4e43abe17c7ea0d24b891003f41d11241f546f)), closes [#537](https://github.com/themesberg/flowbite-react/issues/537)
+- pagination button not being highlighted correctly ([#725](https://github.com/themesberg/flowbite-react/issues/725)) ([53c1280](https://github.com/themesberg/flowbite-react/commit/53c1280f7b93c91413f0fb9fc2992e184591c6b3))
+- **src/components/\*:** replace `tsconfig.json` `paths` by relative paths ([6efd448](https://github.com/themesberg/flowbite-react/commit/6efd448ddfa647e52c3bb0927285006ba06cffc8)), closes [#772](https://github.com/themesberg/flowbite-react/issues/772)
+- **theme:** typo in bottom-center ([#717](https://github.com/themesberg/flowbite-react/issues/717)) ([89d58dc](https://github.com/themesberg/flowbite-react/commit/89d58dc03727d150e73ec753748eb98640bc84a3))
+- **tsconfig.lib:** compile to react-jsx for npm ([389dd1d](https://github.com/themesberg/flowbite-react/commit/389dd1d414feb7f96c28cfd8fb6b00efc55355a9))
 
 ### [0.4.6](https://github.com/themesberg/flowbite-react/compare/v0.4.6-beta.1...v0.4.6) (2023-05-26)
 

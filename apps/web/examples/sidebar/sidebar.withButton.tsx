@@ -1,16 +1,16 @@
 // TODO: try to make it RSC - failing because of `<SidebarItem />` icon prop
 
-'use client';
+"use client";
 
-import { Badge, Sidebar } from 'flowbite-react';
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import { Badge, Sidebar } from "flowbite-react";
+import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Badge, Sidebar } from 'flowbite-react';
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from 'react-icons/hi';
+import { Badge, Sidebar } from "flowbite-react";
+import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
 
 function Component() {
   return (
@@ -146,12 +146,12 @@ function Component() {
 }
 
 export const withButton: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'sidebar/sidebar.withButton.tsx',
+  githubSlug: "sidebar/sidebar.withButton.tsx",
   component: <Component />,
 };

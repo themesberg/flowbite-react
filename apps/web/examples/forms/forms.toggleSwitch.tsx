@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { ToggleSwitch } from 'flowbite-react';
-import { useState } from 'react';
-import { type CodeData } from '~/components/code-demo';
+import { ToggleSwitch } from "flowbite-react";
+import { useState } from "react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { ToggleSwitch } from 'flowbite-react';
-import { useState } from 'react';
+import { ToggleSwitch } from "flowbite-react";
+import { useState } from "react";
 
 function Component() {
   const [switch1, setSwitch1] = useState(false);
@@ -44,12 +44,12 @@ function Component() {
 }
 
 export const toggleSwitch: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'forms/forms.toggleSwitch.tsx',
+  githubSlug: "forms/forms.toggleSwitch.tsx",
   component: <Component />,
 };

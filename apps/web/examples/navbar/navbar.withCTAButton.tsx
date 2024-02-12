@@ -1,10 +1,10 @@
-import { Button, Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Navbar } from 'flowbite-react';
+import { Button, Navbar } from "flowbite-react";
 
 function Component() {
   return (
@@ -32,7 +32,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Button, Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from 'flowbite-react';
+import { Button, Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
 
 function Component() {
   return (
@@ -84,19 +84,19 @@ function Component() {
 }
 
 export const withCTAButton: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'navbar/navbar.withCTAButton.tsx',
+  githubSlug: "navbar/navbar.withCTAButton.tsx",
   component: <Component />,
 };

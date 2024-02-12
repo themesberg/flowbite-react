@@ -1,10 +1,10 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { MdKeyboardArrowDown, MdKeyboardCommandKey } from 'react-icons/md';
-import type { KbdProps } from './Kbd';
-import { Kbd } from './Kbd';
+import type { Meta, StoryFn } from "@storybook/react";
+import { MdKeyboardArrowDown, MdKeyboardCommandKey } from "react-icons/md";
+import type { KbdProps } from "./Kbd";
+import { Kbd } from "./Kbd";
 
 export default {
-  title: 'Components/Kbd',
+  title: "Components/Kbd",
   component: Kbd,
 } as Meta;
 
@@ -15,13 +15,13 @@ Default.args = {
 };
 
 export const OnlyIcon = Template.bind({});
-OnlyIcon.storyName = 'Only icon';
+OnlyIcon.storyName = "Only icon";
 OnlyIcon.args = {
   icon: MdKeyboardArrowDown,
 };
 
 export const WithIcon = Template.bind({});
-WithIcon.storyName = 'With icon';
+WithIcon.storyName = "With icon";
 WithIcon.args = {
   icon: MdKeyboardCommandKey,
   children: <>command</>,

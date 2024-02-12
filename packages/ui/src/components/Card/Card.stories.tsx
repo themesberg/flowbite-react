@@ -1,10 +1,10 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import Image from 'next/image';
-import type { CardProps } from './Card';
-import { Card } from './Card';
+import type { Meta, StoryFn } from "@storybook/react";
+import Image from "next/image";
+import type { CardProps } from "./Card";
+import { Card } from "./Card";
 
 export default {
-  title: 'Components/Card',
+  title: "Components/Card",
   component: Card,
   decorators: [(Story): JSX.Element => <div className="size-1/2">{Story()}</div>],
 } as Meta;
@@ -29,20 +29,20 @@ Horizontal.args = {
 };
 
 export const WithA11yImage = Template.bind({});
-WithA11yImage.storyName = 'With image with alt text';
+WithA11yImage.storyName = "With image with alt text";
 WithA11yImage.args = {
-  imgAlt: 'Meaningful alt text for an image that is not purely decorative',
-  imgSrc: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+  imgAlt: "Meaningful alt text for an image that is not purely decorative",
+  imgSrc: "https://flowbite.com/docs/images/blog/image-1.jpg",
 };
 
 export const WithDecorativeImage = Template.bind({});
-WithDecorativeImage.storyName = 'With decorative image';
+WithDecorativeImage.storyName = "With decorative image";
 WithDecorativeImage.args = {
-  imgSrc: 'https://flowbite.com/docs/images/blog/image-1.jpg',
+  imgSrc: "https://flowbite.com/docs/images/blog/image-1.jpg",
 };
 
 export const WithNextImage = Template.bind({});
-WithNextImage.storyName = 'With Next.js Image component';
+WithNextImage.storyName = "With Next.js Image component";
 WithNextImage.args = {
   renderImage: () => (
     <Image
@@ -51,7 +51,7 @@ WithNextImage.args = {
       loader={({ src }) => src}
       width={1200}
       height={800}
-      src={'https://flowbite.com/docs/images/blog/image-1.jpg'}
+      src={"https://flowbite.com/docs/images/blog/image-1.jpg"}
     />
   ),
 };

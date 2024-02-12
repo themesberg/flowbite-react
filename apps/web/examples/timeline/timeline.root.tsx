@@ -7,15 +7,15 @@ import {
   TimelinePoint,
   TimelineTime,
   TimelineTitle,
-} from 'flowbite-react';
-import { HiArrowNarrowRight } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+} from "flowbite-react";
+import { HiArrowNarrowRight } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Button, Timeline } from 'flowbite-react';
-import { HiArrowNarrowRight } from 'react-icons/hi';
+import { Button, Timeline } from "flowbite-react";
+import { HiArrowNarrowRight } from "react-icons/hi";
 
 function Component() {
   return (
@@ -71,8 +71,8 @@ import {
   TimelinePoint,
   TimelineTime,
   TimelineTitle,
-} from 'flowbite-react';
-import { HiArrowNarrowRight } from 'react-icons/hi';
+} from "flowbite-react";
+import { HiArrowNarrowRight } from "react-icons/hi";
 
 function Component() {
   return (
@@ -162,19 +162,19 @@ function Component() {
 }
 
 export const root: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'timeline/timeline.root.tsx',
+  githubSlug: "timeline/timeline.root.tsx",
   component: <Component />,
 };

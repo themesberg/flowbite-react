@@ -1,12 +1,12 @@
-import { Kbd, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react';
-import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from 'react-icons/md';
-import { type CodeData } from '~/components/code-demo';
+import { Kbd, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
+import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from "react-icons/md";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Kbd, Table } from 'flowbite-react';
-import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from 'react-icons/md';
+import { Kbd, Table } from "flowbite-react";
+import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from "react-icons/md";
 
 function Component() {
   return (
@@ -49,8 +49,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Kbd, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from 'flowbite-react';
-import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from 'react-icons/md';
+import { Kbd, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
+import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from "react-icons/md";
 
 function Component() {
   return (
@@ -132,19 +132,19 @@ function Component() {
 }
 
 export const insideTable: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'kbd/kbd.insideTable.tsx',
+  githubSlug: "kbd/kbd.insideTable.tsx",
   component: <Component />,
 };

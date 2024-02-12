@@ -32,11 +32,11 @@ Open `tailwind.config.js` and update `content` and `plugins` to include Flowbite
 export default {
   content: [
     // ...
-    'node_modules/flowbite-react/lib/esm/**/*.js',
+    "node_modules/flowbite-react/lib/esm/**/*.js",
   ],
   plugins: [
     // ...
-    require('flowbite/plugin'),
+    require("flowbite/plugin"),
   ],
 };
 ```
@@ -65,12 +65,12 @@ npx tailwindcss init -p
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
 
     // Or if using `src` directory:
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {},
@@ -102,11 +102,11 @@ npm i flowbite-react
 export default {
   content: [
     // ...
-    'node_modules/flowbite-react/lib/esm/**/*.js',
+    "node_modules/flowbite-react/lib/esm/**/*.js",
   ],
   plugins: [
     // ...
-    require('flowbite/plugin'),
+    require("flowbite/plugin"),
   ],
 };
 ```
@@ -122,7 +122,7 @@ In server side rendered applications, such as Next.js, to avoid page flicker (if
 ```tsx {3,8-10}
 // app/layout.tsx
 
-import { ThemeModeScript } from 'flowbite-react';
+import { ThemeModeScript } from "flowbite-react";
 
 export default function RootLayout({ children }) {
   return (
@@ -141,7 +141,7 @@ export default function RootLayout({ children }) {
 ```tsx {3,8-10}
 // pages/_document.tsx
 
-import { ThemeModeScript } from 'flowbite-react';
+import { ThemeModeScript } from "flowbite-react";
 
 export default function Document() {
   return (
@@ -163,7 +163,7 @@ export default function Document() {
 Now that you have successfully installed Flowbite React you can start using the components from the library.
 
 ```tsx
-import { Button } from 'flowbite-react';
+import { Button } from "flowbite-react";
 
 export default function MyPage() {
   return (

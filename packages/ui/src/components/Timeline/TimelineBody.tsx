@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { useTimelineContentContext } from './TimelineContentContext';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import { useTimelineContentContext } from "./TimelineContentContext";
 
 export interface FlowbiteTimelineBodyTheme {
   base: string;
 }
 
-export interface TimelineBodyProps extends ComponentProps<'p'> {
+export interface TimelineBodyProps extends ComponentProps<"p"> {
   theme?: DeepPartial<FlowbiteTimelineBodyTheme>;
 }
 

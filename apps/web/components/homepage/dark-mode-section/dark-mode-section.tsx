@@ -1,13 +1,13 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import type { FC } from 'react';
-import { DarkModeSwitcher } from './dark-mode-switcher';
+import Image from "next/image";
+import Link from "next/link";
+import type { FC } from "react";
+import { DarkModeSwitcher } from "./dark-mode-switcher";
 
 const feature_list = [
-  'Increased accessibility based on room brightness',
-  'Better visibility for users with low vision',
-  'Improved readability for users with light sensitivity',
-  'High quality UI/UX design for modern applications',
+  "Increased accessibility based on room brightness",
+  "Better visibility for users with low vision",
+  "Improved readability for users with light sensitivity",
+  "High quality UI/UX design for modern applications",
 ];
 
 export const DarkModeSection: FC = () => {
@@ -38,13 +38,13 @@ export const DarkModeSection: FC = () => {
                 Dark mode integration
               </h2>
               <p className="text-lg text-gray-500 dark:text-gray-400">
-                Flowbite React has native built-in support for{' '}
+                Flowbite React has native built-in support for{" "}
                 <Link
                   href="/docs/customize/dark-mode"
                   className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white"
                 >
                   dark mode
-                </Link>{' '}
+                </Link>{" "}
                 by using Tailwind CSS and the Flowbite design system.
               </p>
               <p className="text-lg text-gray-500 dark:text-gray-400">
@@ -78,7 +78,7 @@ export const DarkModeSection: FC = () => {
                   href="/docs/customize/dark-mode"
                   className="flex items-center gap-4 font-medium text-cyan-600 hover:underline"
                 >
-                  Learn how to integrate dark mode in React{' '}
+                  Learn how to integrate dark mode in React{" "}
                   <svg width="16" height="11" viewBox="0 0 16 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                       fillRule="evenodd"

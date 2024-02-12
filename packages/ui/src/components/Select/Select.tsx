@@ -1,11 +1,11 @@
-import type { ComponentProps, FC, ReactNode } from 'react';
-import { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../Flowbite';
-import { HelperText } from '../HelperText';
+import type { ComponentProps, FC, ReactNode } from "react";
+import { forwardRef } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite";
+import { HelperText } from "../HelperText";
 
 export interface FlowbiteSelectTheme {
   base: string;
@@ -27,19 +27,19 @@ export interface FlowbiteSelectTheme {
   };
 }
 
-export interface SelectColors extends Pick<FlowbiteColors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
+export interface SelectColors extends Pick<FlowbiteColors, "gray" | "info" | "failure" | "warning" | "success"> {
   [key: string]: string;
 }
 
-export interface SelectSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
+export interface SelectSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg"> {
   [key: string]: string;
 }
 
-export interface SelectProps extends Omit<ComponentProps<'select'>, 'color' | 'ref'> {
+export interface SelectProps extends Omit<ComponentProps<"select">, "color" | "ref"> {
   addon?: ReactNode;
   color?: keyof SelectColors;
   helperText?: ReactNode;
-  icon?: FC<ComponentProps<'svg'>>;
+  icon?: FC<ComponentProps<"svg">>;
   shadow?: boolean;
   sizing?: keyof SelectSizes;
   theme?: DeepPartial<FlowbiteSelectTheme>;
@@ -51,11 +51,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       addon,
       children,
       className,
-      color = 'gray',
+      color = "gray",
       helperText,
       icon: Icon,
       shadow,
-      sizing = 'md',
+      sizing = "md",
       theme: customTheme = {},
       ...props
     },
@@ -77,9 +77,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
               theme.field.select.base,
               theme.field.select.colors[color],
               theme.field.select.sizes[sizing],
-              theme.field.select.withIcon[Icon ? 'on' : 'off'],
-              theme.field.select.withAddon[addon ? 'on' : 'off'],
-              theme.field.select.withShadow[shadow ? 'on' : 'off'],
+              theme.field.select.withIcon[Icon ? "on" : "off"],
+              theme.field.select.withAddon[addon ? "on" : "off"],
+              theme.field.select.withShadow[shadow ? "on" : "off"],
             )}
             {...props}
             ref={ref}
@@ -93,4 +93,4 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
   },
 );
 
-Select.displayName = 'Select';
+Select.displayName = "Select";

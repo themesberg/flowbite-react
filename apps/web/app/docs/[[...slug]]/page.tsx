@@ -1,13 +1,13 @@
-import { allDocs, type Doc } from 'contentlayer/generated';
-import { Footer } from 'flowbite-react';
-import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
-import Markdown from 'react-markdown';
-import { CarbonAds } from '~/components/carbon-ads';
-import { Mdx } from '~/components/mdx';
-import { DOCS_SIDEBAR } from '~/data/docs-sidebar';
+import { allDocs, type Doc } from "contentlayer/generated";
+import { Footer } from "flowbite-react";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import Markdown from "react-markdown";
+import { CarbonAds } from "~/components/carbon-ads";
+import { Mdx } from "~/components/mdx";
+import { DOCS_SIDEBAR } from "~/data/docs-sidebar";
 
 interface Props {
   params: {
@@ -16,7 +16,7 @@ interface Props {
 }
 
 function getDoc({ params }: Props) {
-  const slug = params.slug?.join('/') || '';
+  const slug = params.slug?.join("/") || "";
 
   return allDocs.find((doc) => doc.url === slug);
 }
@@ -30,22 +30,22 @@ export function generateMetadata({ params }: Props): Metadata {
     title: doc.title,
     description: doc.description,
     openGraph: {
-      type: 'article',
+      type: "article",
       title: doc.title,
       description: doc.description,
-      images: 'https://flowbite.s3.amazonaws.com/github/flowbite-react.png',
+      images: "https://flowbite.s3.amazonaws.com/github/flowbite-react.png",
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: doc.title,
       description: doc.description,
-      images: ['https://flowbite.s3.amazonaws.com/github/flowbite-react.png'],
+      images: ["https://flowbite.s3.amazonaws.com/github/flowbite-react.png"],
     },
   };
 }
 
 export function generateStaticParams() {
-  return allDocs.map((doc) => ({ slug: doc.url.split('/') }));
+  return allDocs.map((doc) => ({ slug: doc.url.split("/") }));
 }
 
 export default function DocPage({ params }: Props) {
@@ -165,14 +165,14 @@ function DocFooter() {
               Figma design system and other resources.
             </p>
             <p className="mb-3 mt-4 max-w-sm text-gray-600 dark:text-gray-400">
-              Code licensed{' '}
+              Code licensed{" "}
               <a
                 href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE"
                 className="text-cyan-600 hover:underline"
               >
                 MIT
               </a>
-              , docs{' '}
+              , docs{" "}
               <a
                 href="https://creativecommons.org/licenses/by/3.0/"
                 rel="nofollow noopener noreferrer"

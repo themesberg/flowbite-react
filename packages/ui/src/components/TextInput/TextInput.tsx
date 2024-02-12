@@ -1,11 +1,11 @@
-import type { ComponentProps, FC, ReactNode } from 'react';
-import { forwardRef } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from '../Flowbite';
-import { HelperText } from '../HelperText';
+import type { ComponentProps, FC, ReactNode } from "react";
+import { forwardRef } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite";
+import { HelperText } from "../HelperText";
 
 export interface FlowbiteTextInputTheme {
   base: string;
@@ -33,20 +33,20 @@ export interface FlowbiteTextInputTheme {
 }
 
 export interface FlowbiteTextInputColors
-  extends Pick<FlowbiteColors, 'gray' | 'info' | 'failure' | 'warning' | 'success'> {
+  extends Pick<FlowbiteColors, "gray" | "info" | "failure" | "warning" | "success"> {
   [key: string]: string;
 }
 
-export interface FlowbiteTextInputSizes extends Pick<FlowbiteSizes, 'sm' | 'md' | 'lg'> {
+export interface FlowbiteTextInputSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg"> {
   [key: string]: string;
 }
 
-export interface TextInputProps extends Omit<ComponentProps<'input'>, 'ref' | 'color'> {
+export interface TextInputProps extends Omit<ComponentProps<"input">, "ref" | "color"> {
   addon?: ReactNode;
   color?: keyof FlowbiteTextInputColors;
   helperText?: ReactNode;
-  icon?: FC<ComponentProps<'svg'>>;
-  rightIcon?: FC<ComponentProps<'svg'>>;
+  icon?: FC<ComponentProps<"svg">>;
+  rightIcon?: FC<ComponentProps<"svg">>;
   shadow?: boolean;
   sizing?: keyof FlowbiteTextInputSizes;
   theme?: DeepPartial<FlowbiteTextInputTheme>;
@@ -57,14 +57,14 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     {
       addon,
       className,
-      color = 'gray',
+      color = "gray",
       helperText,
       icon: Icon,
       rightIcon: RightIcon,
       shadow,
-      sizing = 'md',
+      sizing = "md",
       theme: customTheme = {},
-      type = 'text',
+      type = "text",
       ...props
     },
     ref,
@@ -91,10 +91,10 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
                 theme.field.input.base,
                 theme.field.input.colors[color],
                 theme.field.input.sizes[sizing],
-                theme.field.input.withIcon[Icon ? 'on' : 'off'],
-                theme.field.input.withRightIcon[RightIcon ? 'on' : 'off'],
-                theme.field.input.withAddon[addon ? 'on' : 'off'],
-                theme.field.input.withShadow[shadow ? 'on' : 'off'],
+                theme.field.input.withIcon[Icon ? "on" : "off"],
+                theme.field.input.withRightIcon[RightIcon ? "on" : "off"],
+                theme.field.input.withAddon[addon ? "on" : "off"],
+                theme.field.input.withShadow[shadow ? "on" : "off"],
               )}
               type={type}
               {...props}
@@ -108,4 +108,4 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   },
 );
 
-TextInput.displayName = 'TextInput';
+TextInput.displayName = "TextInput";

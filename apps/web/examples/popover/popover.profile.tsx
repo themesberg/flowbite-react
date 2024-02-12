@@ -1,8 +1,8 @@
-import { Button, Popover } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Button, Popover } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-import { Button, Popover } from 'flowbite-react';
+import { Button, Popover } from "flowbite-react";
 
 function Component() {
   return (
@@ -97,7 +97,7 @@ function Component() {
             </a>
           </p>
           <p className="mb-4 text-sm">
-            Open-source contributor. Building{' '}
+            Open-source contributor. Building{" "}
             <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">
               flowbite.com
             </a>
@@ -126,14 +126,14 @@ function Component() {
 }
 
 export const profile: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
   ],
-  githubSlug: 'popover/popover.profile.tsx',
+  githubSlug: "popover/popover.profile.tsx",
   component: <Component />,
 };

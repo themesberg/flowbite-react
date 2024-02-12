@@ -1,11 +1,11 @@
-import type { ComponentProps, FC } from 'react';
-import { forwardRef } from 'react';
-import { HiOutlineChevronRight } from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
-import type { FlowbiteBoolean } from '../Flowbite';
+import type { ComponentProps, FC } from "react";
+import { forwardRef } from "react";
+import { HiOutlineChevronRight } from "react-icons/hi";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean } from "../Flowbite";
 
 export interface FlowbiteBreadcrumbItemTheme {
   base: string;
@@ -14,16 +14,16 @@ export interface FlowbiteBreadcrumbItemTheme {
   icon: string;
 }
 
-export interface BreadcrumbItemProps extends Omit<ComponentProps<'li'>, 'ref'> {
+export interface BreadcrumbItemProps extends Omit<ComponentProps<"li">, "ref"> {
   href?: string;
-  icon?: FC<ComponentProps<'svg'>>;
+  icon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteBreadcrumbItemTheme>;
 }
 
 export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, BreadcrumbItemProps>(
   ({ children, className, href, icon: Icon, theme: customTheme = {}, ...props }, ref) => {
-    const isLink = typeof href !== 'undefined';
-    const Component = isLink ? 'a' : 'span';
+    const isLink = typeof href !== "undefined";
+    const Component = isLink ? "a" : "span";
 
     const theme = mergeDeep(getTheme().breadcrumb.item, customTheme);
 
@@ -32,7 +32,7 @@ export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, Br
         <HiOutlineChevronRight aria-hidden className={theme.chevron} data-testid="flowbite-breadcrumb-separator" />
         <Component
           ref={ref as never}
-          className={theme.href[isLink ? 'on' : 'off']}
+          className={theme.href[isLink ? "on" : "off"]}
           data-testid="flowbite-breadcrumb-item"
           href={href}
         >
@@ -44,4 +44,4 @@ export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, Br
   },
 );
 
-BreadcrumbItem.displayName = 'Breadcrumb.Item';
+BreadcrumbItem.displayName = "Breadcrumb.Item";

@@ -1,5 +1,5 @@
-export { Flowbite } from './Flowbite';
-export type { ThemeProps } from './Flowbite';
+export { Flowbite } from "./Flowbite";
+export type { ThemeProps } from "./Flowbite";
 export type {
   CustomFlowbiteTheme,
   FlowbiteBoolean,
@@ -12,4 +12,4 @@ export type {
   FlowbiteSizes,
   FlowbiteStateColors,
   FlowbiteTheme,
-} from './FlowbiteTheme';
+} from "./FlowbiteTheme";

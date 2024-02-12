@@ -1,14 +1,14 @@
-import { Banner, BannerCollapseButton } from 'flowbite-react';
-import { HiArrowRight, HiX } from 'react-icons/hi';
-import { MdPercent } from 'react-icons/md';
-import { type CodeData } from '~/components/code-demo';
+import { Banner, BannerCollapseButton } from "flowbite-react";
+import { HiArrowRight, HiX } from "react-icons/hi";
+import { MdPercent } from "react-icons/md";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Banner } from 'flowbite-react';
-import { HiArrowRight, HiX } from 'react-icons/hi';
-import { MdPercent } from 'react-icons/md';
+import { Banner } from "flowbite-react";
+import { HiArrowRight, HiX } from "react-icons/hi";
+import { MdPercent } from "react-icons/md";
 
 function Component() {
   return (
@@ -41,9 +41,9 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Banner, BannerCollapseButton } from 'flowbite-react';
-import { HiArrowRight, HiX } from 'react-icons/hi';
-import { MdPercent } from 'react-icons/md';
+import { Banner, BannerCollapseButton } from "flowbite-react";
+import { HiArrowRight, HiX } from "react-icons/hi";
+import { MdPercent } from "react-icons/md";
 
 function Component() {
   return (
@@ -105,19 +105,19 @@ function Component() {
 }
 
 export const bottomPosition: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'banner/banner.bottomPosition.tsx',
+  githubSlug: "banner/banner.bottomPosition.tsx",
   component: <Component />,
 };

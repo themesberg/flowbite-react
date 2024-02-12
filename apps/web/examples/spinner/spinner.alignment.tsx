@@ -1,10 +1,10 @@
-import { Spinner } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Spinner } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Spinner } from 'flowbite-react';
+import { Spinner } from "flowbite-react";
 
 function Component() {
   return (
@@ -24,7 +24,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Spinner } from 'flowbite-react';
+import { Spinner } from "flowbite-react";
 
 function Component() {
   return (
@@ -60,19 +60,19 @@ function Component() {
 }
 
 export const alignment: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'spinner/spinner.alignment.tsx',
+  githubSlug: "spinner/spinner.alignment.tsx",
   component: <Component />,
 };

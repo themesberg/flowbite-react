@@ -1,13 +1,13 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import { useState } from 'react';
-import { theme } from '../../theme';
-import type { ToggleSwitchProps } from './ToggleSwitch';
-import { ToggleSwitch } from './ToggleSwitch';
+import type { Meta, StoryFn } from "@storybook/react";
+import { useState } from "react";
+import { theme } from "../../theme";
+import type { ToggleSwitchProps } from "./ToggleSwitch";
+import { ToggleSwitch } from "./ToggleSwitch";
 
 const colors = Object.keys(theme.toggleSwitch.toggle.checked.color);
 
 export default {
-  title: 'Components/ToggleSwitch',
+  title: "Components/ToggleSwitch",
   component: ToggleSwitch,
 } as Meta;
 
@@ -22,35 +22,35 @@ const Template: StoryFn<ToggleSwitchProps> = ({ checked, ...args }) => {
 };
 
 export const DefaultToggleSwitch = Template.bind({});
-DefaultToggleSwitch.storyName = 'Toggle switch';
+DefaultToggleSwitch.storyName = "Toggle switch";
 DefaultToggleSwitch.args = {};
 DefaultToggleSwitch.argTypes = {
   color: {
-    description: 'Control defaults for colors',
+    description: "Control defaults for colors",
     control: {
-      type: 'radio',
+      type: "radio",
       options: [...colors],
     },
   },
 };
 
 export const SmallToggleSwitch = Template.bind({});
-SmallToggleSwitch.storyName = 'Small Toggle switch';
+SmallToggleSwitch.storyName = "Small Toggle switch";
 SmallToggleSwitch.args = {
-  sizing: 'sm',
-  label: 'small toggle switch',
+  sizing: "sm",
+  label: "small toggle switch",
 };
 
 export const MediumToggleSwitch = Template.bind({});
-MediumToggleSwitch.storyName = 'Medium Toggle switch';
+MediumToggleSwitch.storyName = "Medium Toggle switch";
 MediumToggleSwitch.args = {
-  sizing: 'md',
-  label: 'default toggle switch',
+  sizing: "md",
+  label: "default toggle switch",
 };
 
 export const LargeToggleSwitch = Template.bind({});
-LargeToggleSwitch.storyName = 'Large Toggle switch';
+LargeToggleSwitch.storyName = "Large Toggle switch";
 LargeToggleSwitch.args = {
-  sizing: 'lg',
-  label: 'large toggle switch',
+  sizing: "lg",
+  label: "large toggle switch",
 };

@@ -1,18 +1,18 @@
-import { createTheme } from '../../helpers/create-theme';
-import type { FlowbiteRangeSliderTheme } from './RangeSlider';
+import { createTheme } from "../../helpers/create-theme";
+import type { FlowbiteRangeSliderTheme } from "./RangeSlider";
 
 export const rangeSliderTheme: FlowbiteRangeSliderTheme = createTheme({
   root: {
-    base: 'flex',
+    base: "flex",
   },
   field: {
-    base: 'relative w-full',
+    base: "relative w-full",
     input: {
-      base: 'w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700',
+      base: "w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700",
       sizes: {
-        sm: 'h-1',
-        md: 'h-2',
-        lg: 'h-3',
+        sm: "h-1",
+        md: "h-2",
+        lg: "h-3",
       },
     },
   },

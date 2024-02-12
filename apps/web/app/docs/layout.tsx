@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { Accordion, Badge, Navbar, Sidebar } from 'flowbite-react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import type { PropsWithChildren } from 'react';
-import { useEffect, useState } from 'react';
-import { HiMenuAlt1, HiX } from 'react-icons/hi';
-import { twMerge } from 'tailwind-merge';
-import { Banner } from '~/components/banner';
-import { DocSearchInput } from '~/components/docsearch-input';
-import { NavbarIcons, NavbarLinks } from '~/components/navbar';
-import { DOCS_SIDEBAR, type DocsSidebarItem } from '~/data/docs-sidebar';
+import { Accordion, Badge, Navbar, Sidebar } from "flowbite-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import type { PropsWithChildren } from "react";
+import { useEffect, useState } from "react";
+import { HiMenuAlt1, HiX } from "react-icons/hi";
+import { twMerge } from "tailwind-merge";
+import { Banner } from "~/components/banner";
+import { DocSearchInput } from "~/components/docsearch-input";
+import { NavbarIcons, NavbarLinks } from "~/components/navbar";
+import { DOCS_SIDEBAR, type DocsSidebarItem } from "~/data/docs-sidebar";
 
-import '~/styles/docs.css';
+import "~/styles/docs.css";
 
 interface DocsLayoutState {
   isCollapsed: boolean;
@@ -48,9 +48,9 @@ function DocsNavbar({ isCollapsed, setCollapsed }: DocsLayoutState) {
       fluid
       theme={{
         root: {
-          base: 'sticky top-0 z-[60] mx-auto flex w-full items-center justify-between border-b border-gray-200 bg-white px-4 py-2.5 text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400',
+          base: "sticky top-0 z-[60] mx-auto flex w-full items-center justify-between border-b border-gray-200 bg-white px-4 py-2.5 text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400",
           inner: {
-            base: 'mx-auto flex w-full flex-wrap items-center justify-between',
+            base: "mx-auto flex w-full flex-wrap items-center justify-between",
           },
         },
       }}
@@ -97,7 +97,7 @@ function DocsSidebar({ isCollapsed, setCollapsed }: DocsLayoutState) {
 
   // collapse sidebar on small screens when navigating to a new page
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
       setCollapsed(true);
     }
   }, [pathname, setCollapsed]);
@@ -106,16 +106,16 @@ function DocsSidebar({ isCollapsed, setCollapsed }: DocsLayoutState) {
     <>
       <div
         className={twMerge(
-          'fixed inset-0 z-50 h-full w-64 flex-none border-r border-gray-200 dark:border-gray-600 lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-6',
-          isCollapsed && 'hidden',
+          "fixed inset-0 z-50 h-full w-64 flex-none border-r border-gray-200 dark:border-gray-600 lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-6",
+          isCollapsed && "hidden",
         )}
       >
         <Sidebar
           theme={{
             root: {
-              base: 'h-full border-r border-gray-200 dark:border-gray-600',
+              base: "h-full border-r border-gray-200 dark:border-gray-600",
               inner:
-                'top-20 h-full overflow-y-auto bg-white px-4 pt-20 text-base font-normal dark:bg-gray-900 lg:sticky lg:mr-0 lg:block lg:h-[calc(100vh-8rem)] lg:pt-0 lg:text-sm',
+                "top-20 h-full overflow-y-auto bg-white px-4 pt-20 text-base font-normal dark:bg-gray-900 lg:sticky lg:mr-0 lg:block lg:h-[calc(100vh-8rem)] lg:pt-0 lg:text-sm",
             },
           }}
         >
@@ -133,7 +133,7 @@ function DocsSidebar({ isCollapsed, setCollapsed }: DocsLayoutState) {
       {!isCollapsed && (
         <div
           onClick={() => setCollapsed(true)}
-          onKeyUp={(key) => key.code === 'Escape' && setCollapsed(true)}
+          onKeyUp={(key) => key.code === "Escape" && setCollapsed(true)}
           className="fixed inset-0 z-40 bg-gray-900/50 dark:bg-gray-900/60 lg:hidden"
         />
       )}
@@ -150,14 +150,14 @@ function SidebarSection({ title, href, children }: PropsWithChildren<{ title: st
         <Accordion.Title
           theme={{
             open: {
-              on: 'mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500',
-              off: 'mb-1 text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500',
+              on: "mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500",
+              off: "mb-1 text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500",
             },
           }}
           className={twMerge(
-            'flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide',
+            "flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide",
             pathname.includes(href) &&
-              'text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500',
+              "text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500",
           )}
         >
           {title}
@@ -185,12 +185,12 @@ function SidebarLink({ children, href, isExternal }: PropsWithChildren<{ href: s
     <Sidebar.Item
       as={Link}
       href={href}
-      target={isExternal && '_blank'}
+      target={isExternal && "_blank"}
       className={twMerge(
-        'p-0 font-medium transition-all hover:bg-transparent dark:hover:bg-transparent lg:text-sm [&>*]:px-0',
+        "p-0 font-medium transition-all hover:bg-transparent dark:hover:bg-transparent lg:text-sm [&>*]:px-0",
         pathname === href
-          ? 'text-primary-700 hover:text-primary-700 dark:text-primary-500'
-          : 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white',
+          ? "text-primary-700 hover:text-primary-700 dark:text-primary-500"
+          : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white",
       )}
     >
       {children}

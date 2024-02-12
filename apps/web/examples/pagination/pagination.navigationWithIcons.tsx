@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { Pagination } from 'flowbite-react';
-import { useState } from 'react';
-import { type CodeData } from '~/components/code-demo';
+import { Pagination } from "flowbite-react";
+import { useState } from "react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Pagination } from 'flowbite-react';
-import { useState } from 'react';
+import { Pagination } from "flowbite-react";
+import { useState } from "react";
 
 function Component() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,12 +48,12 @@ function Component() {
 }
 
 export const navigationWithIcons: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'pagination/pagination.navigationWithIcons.tsx',
+  githubSlug: "pagination/pagination.navigationWithIcons.tsx",
   component: <Component />,
 };

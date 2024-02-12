@@ -1,8 +1,8 @@
-import type { ComponentProps, FC } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import { getTheme } from '../../theme-store';
-import type { DeepPartial } from '../../types';
+import type { ComponentProps, FC } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import { getTheme } from "../../theme-store";
+import type { DeepPartial } from "../../types";
 
 export interface FlowbiteFooterCopyrightTheme {
   base: string;
@@ -10,7 +10,7 @@ export interface FlowbiteFooterCopyrightTheme {
   span: string;
 }
 
-export interface CopyrightProps extends ComponentProps<'div'> {
+export interface CopyrightProps extends ComponentProps<"div"> {
   by: string;
   href?: string;
   theme?: DeepPartial<FlowbiteFooterCopyrightTheme>;

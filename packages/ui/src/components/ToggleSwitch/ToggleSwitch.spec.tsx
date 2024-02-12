@@ -1,28 +1,28 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FC } from 'react';
-import { useState } from 'react';
-import { describe, expect, it, vi } from 'vitest';
-import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
-import { TextInput } from '../TextInput';
-import { ToggleSwitch } from './ToggleSwitch';
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import type { FC } from "react";
+import { useState } from "react";
+import { describe, expect, it, vi } from "vitest";
+import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { TextInput } from "../TextInput";
+import { ToggleSwitch } from "./ToggleSwitch";
 
-describe('Components / Toggle switch', () => {
-  describe('A11y', () => {
+describe("Components / Toggle switch", () => {
+  describe("A11y", () => {
     it('should have `role="switch"` by default', () => {
       render(<ToggleSwitch checked={false} label="Enable" onChange={console.log} />);
 
       expect(toggleSwitch()).toBeInTheDocument();
     });
 
-    it('should have an accessible name', () => {
+    it("should have an accessible name", () => {
       render(<ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />);
 
-      expect(toggleSwitch()).toHaveAccessibleName('Enable notifications');
+      expect(toggleSwitch()).toHaveAccessibleName("Enable notifications");
     });
   });
 
-  describe('Keyboard interaction', () => {
+  describe("Keyboard interaction", () => {
     it("shouldn't toggle when `Enter` is pressed", async () => {
       const user = userEvent.setup();
       const handleChange = vi.fn();
@@ -34,7 +34,7 @@ describe('Components / Toggle switch', () => {
 
       expect(toggleSwitch()).toHaveFocus();
 
-      await user.keyboard('[Enter]');
+      await user.keyboard("[Enter]");
 
       expect(handleChange).not.toHaveBeenCalled();
     });
@@ -57,12 +57,12 @@ describe('Components / Toggle switch', () => {
 
       expect(toggleSwitch()).toHaveFocus();
 
-      await user.keyboard('[Enter]');
+      await user.keyboard("[Enter]");
 
       expect(handleSubmit).not.toHaveBeenCalled();
     });
 
-    it('should toggle when `Space` is pressed', async () => {
+    it("should toggle when `Space` is pressed", async () => {
       const handleChange = vi.fn();
       const user = userEvent.setup();
 
@@ -87,16 +87,16 @@ describe('Components / Toggle switch', () => {
 
       expect(toggleSwitch()).toHaveFocus();
 
-      await user.keyboard('[Space]');
+      await user.keyboard("[Space]");
 
-      expect(toggleSwitch()).toHaveAttribute('aria-checked', 'true');
+      expect(toggleSwitch()).toHaveAttribute("aria-checked", "true");
 
-      await user.keyboard('[Space]');
+      await user.keyboard("[Space]");
 
-      expect(toggleSwitch()).toHaveAttribute('aria-checked', 'false');
+      expect(toggleSwitch()).toHaveAttribute("aria-checked", "false");
     });
 
-    it('should focus when `Tab` is pressed', async () => {
+    it("should focus when `Tab` is pressed", async () => {
       const user = userEvent.setup();
       render(<ToggleSwitch checked={false} label="Enable notifications" name="notifications" onChange={console.log} />);
 
@@ -105,7 +105,7 @@ describe('Components / Toggle switch', () => {
       expect(toggleSwitch()).toHaveFocus();
     });
 
-    it('should allow the user to `Tab` away', async () => {
+    it("should allow the user to `Tab` away", async () => {
       const user = userEvent.setup();
       render(
         <form>
@@ -118,24 +118,24 @@ describe('Components / Toggle switch', () => {
       await user.tab();
 
       expect(toggleSwitch()).not.toHaveFocus();
-      expect(screen.getByRole('textbox')).toHaveFocus();
+      expect(screen.getByRole("textbox")).toHaveFocus();
     });
   });
 
-  describe('Props', () => {
-    it('should allow HTML attributes for `<button>`s', () => {
+  describe("Props", () => {
+    it("should allow HTML attributes for `<button>`s", () => {
       render(<ToggleSwitch checked={false} label="Enable" onChange={console.log} type="submit" />);
 
-      expect(toggleSwitch()).toHaveAttribute('type', 'submit');
+      expect(toggleSwitch()).toHaveAttribute("type", "submit");
     });
   });
 
-  describe('Theme', () => {
-    it('should use `base` classes', () => {
+  describe("Theme", () => {
+    it("should use `base` classes", () => {
       const theme: CustomFlowbiteTheme = {
         toggleSwitch: {
           root: {
-            base: 'text-cyan-100',
+            base: "text-cyan-100",
           },
         },
       };
@@ -145,16 +145,16 @@ describe('Components / Toggle switch', () => {
         </Flowbite>,
       );
 
-      expect(toggleSwitch()).toHaveClass('text-cyan-100');
+      expect(toggleSwitch()).toHaveClass("text-cyan-100");
     });
 
-    it('should use `active` classes', () => {
+    it("should use `active` classes", () => {
       const theme: CustomFlowbiteTheme = {
         toggleSwitch: {
           root: {
             active: {
-              off: 'text-cyan-200',
-              on: 'text-cyan-300',
+              off: "text-cyan-200",
+              on: "text-cyan-300",
             },
           },
         },
@@ -168,15 +168,15 @@ describe('Components / Toggle switch', () => {
       const activeToggleSwitch = toggleSwitches()[0];
       const disabledToggleSwitch = toggleSwitches()[1];
 
-      expect(activeToggleSwitch).toHaveClass('text-cyan-300');
-      expect(disabledToggleSwitch).toHaveClass('text-cyan-200');
+      expect(activeToggleSwitch).toHaveClass("text-cyan-300");
+      expect(disabledToggleSwitch).toHaveClass("text-cyan-200");
     });
 
-    it('should use `label` classes', () => {
+    it("should use `label` classes", () => {
       const theme: CustomFlowbiteTheme = {
         toggleSwitch: {
           root: {
-            label: 'test-label',
+            label: "test-label",
           },
         },
       };
@@ -186,17 +186,17 @@ describe('Components / Toggle switch', () => {
         </Flowbite>,
       );
 
-      expect(label()).toHaveClass('test-label');
+      expect(label()).toHaveClass("test-label");
     });
 
-    it('should use `toggle` classes', () => {
+    it("should use `toggle` classes", () => {
       const theme: CustomFlowbiteTheme = {
         toggleSwitch: {
           toggle: {
-            base: 'h-6 w-11',
+            base: "h-6 w-11",
             checked: {
               color: {
-                blue: 'bg-pink-700',
+                blue: "bg-pink-700",
               },
             },
           },
@@ -208,15 +208,15 @@ describe('Components / Toggle switch', () => {
         </Flowbite>,
       );
 
-      expect(toggle()).toHaveClass('h-6 w-11 bg-pink-700');
+      expect(toggle()).toHaveClass("h-6 w-11 bg-pink-700");
     });
   });
 });
 
-const toggleSwitch = () => screen.getByRole('switch');
+const toggleSwitch = () => screen.getByRole("switch");
 
-const toggleSwitches = () => screen.getAllByRole('switch');
+const toggleSwitches = () => screen.getAllByRole("switch");
 
-const label = () => screen.getByTestId('flowbite-toggleswitch-label');
+const label = () => screen.getByTestId("flowbite-toggleswitch-label");
 
-const toggle = () => screen.getByTestId('flowbite-toggleswitch-toggle');
+const toggle = () => screen.getByTestId("flowbite-toggleswitch-toggle");

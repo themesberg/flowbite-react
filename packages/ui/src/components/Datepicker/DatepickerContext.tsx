@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { createContext, useContext } from 'react';
-import type { FlowbiteDatepickerTheme } from './Datepicker';
-import type { Views, WeekStart } from './helpers';
+import { createContext, useContext } from "react";
+import type { FlowbiteDatepickerTheme } from "./Datepicker";
+import type { Views, WeekStart } from "./helpers";
 
 type DatepickerContextProps = {
   theme: FlowbiteDatepickerTheme;
@@ -27,7 +27,7 @@ export function useDatePickerContext(): DatepickerContextProps {
   const context = useContext(DatepickerContext);
 
   if (!context) {
-    throw new Error('useDatePickerContext should be used within the DatePickerContext provider!');
+    throw new Error("useDatePickerContext should be used within the DatePickerContext provider!");
   }
 
   return context;

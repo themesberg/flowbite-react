@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { forwardRef, type ComponentPropsWithRef } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { useTableContext } from './TableContext';
+import { forwardRef, type ComponentPropsWithRef } from "react";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import { useTableContext } from "./TableContext";
 
 export interface FlowbiteTableRowTheme {
   base: string;
@@ -12,7 +12,7 @@ export interface FlowbiteTableRowTheme {
   striped: string;
 }
 
-export interface TableRowProps extends ComponentPropsWithRef<'tr'> {
+export interface TableRowProps extends ComponentPropsWithRef<"tr"> {
   theme?: DeepPartial<FlowbiteTableRowTheme>;
 }
 
@@ -34,4 +34,4 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
     );
   },
 );
-TableRow.displayName = 'Table.Row';
+TableRow.displayName = "Table.Row";

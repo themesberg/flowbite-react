@@ -1,3 +1,3 @@
-import { createTheme } from '../../helpers/create-theme';
+import { createTheme } from "../../helpers/create-theme";
 
 export const bannerTheme = createTheme({});

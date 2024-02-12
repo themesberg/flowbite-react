@@ -1,13 +1,13 @@
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type { FC } from 'react';
-import { useEffect, useState } from 'react';
-import { describe, expect, it } from 'vitest';
-import { Pagination } from './Pagination';
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import type { FC } from "react";
+import { useEffect, useState } from "react";
+import { describe, expect, it } from "vitest";
+import { Pagination } from "./Pagination";
 
-describe('Pagination', () => {
-  describe('Keyboard interactions', () => {
-    it('should do nothing when `Space` is pressed while Previous button is focused on 1st page', async () => {
+describe("Pagination", () => {
+  describe("Keyboard interactions", () => {
+    it("should do nothing when `Space` is pressed while Previous button is focused on 1st page", async () => {
       const user = userEvent.setup();
       render(<PaginationTestFiveElements />);
 
@@ -17,7 +17,7 @@ describe('Pagination', () => {
       expect(currentPage()).toEqual(1);
     });
 
-    it('should go to previous page when `Space` is pressed while Previous button is focused', async () => {
+    it("should go to previous page when `Space` is pressed while Previous button is focused", async () => {
       const user = userEvent.setup();
       render(<PaginationTestFiveElements />);
 
@@ -30,7 +30,7 @@ describe('Pagination', () => {
       expect(currentPage()).toEqual(1);
     });
 
-    it('should do nothing when `Space` is pressed while Next button is focused while on last page', async () => {
+    it("should do nothing when `Space` is pressed while Next button is focused while on last page", async () => {
       const user = userEvent.setup();
       render(<PaginationTestFiveElements />);
 
@@ -42,7 +42,7 @@ describe('Pagination', () => {
       expect(currentPage()).toEqual(5);
     });
 
-    it('should go to next page when `Space` is pressed while Next button is focused', async () => {
+    it("should go to next page when `Space` is pressed while Next button is focused", async () => {
       const user = userEvent.setup();
       render(<PaginationTestFiveElements />);
 
@@ -52,7 +52,7 @@ describe('Pagination', () => {
       expect(currentPage()).toEqual(2);
     });
 
-    it('should go to nth page when `Space` is pressed while Nth page button is focused', async () => {
+    it("should go to nth page when `Space` is pressed while Nth page button is focused", async () => {
       const user = userEvent.setup();
       render(<PaginationTestTenElements />);
 
@@ -62,7 +62,7 @@ describe('Pagination', () => {
       expect(pages()).toEqual([2, 3, 4, 5, 6]);
     });
 
-    it('should disable previous button when on 1st page', async () => {
+    it("should disable previous button when on 1st page", async () => {
       render(<PaginationTestFiveElements />);
 
       const firstButton = buttons()[0];
@@ -71,7 +71,7 @@ describe('Pagination', () => {
       expect(firstButton).toBeDisabled();
     });
 
-    it('should disable next button when on last page', async () => {
+    it("should disable next button when on last page", async () => {
       const user = userEvent.setup();
       render(<PaginationTestFiveElements />);
 
@@ -98,7 +98,7 @@ describe('Pagination', () => {
     expect(pages()).toEqual([3, 4, 5, 6, 7]);
   });
 
-  describe('Props', () => {
+  describe("Props", () => {
     it('should not display numbered buttons when `layout="navigation"`', () => {
       render(<Pagination currentPage={1} layout="navigation" onPageChange={() => undefined} totalPages={5} />);
 
@@ -111,7 +111,7 @@ describe('Pagination', () => {
       expect(pages()).toHaveLength(0);
     });
 
-    it('should change previous and next text when provided', () => {
+    it("should change previous and next text when provided", () => {
       render(
         <Pagination
           currentPage={1}
@@ -123,8 +123,8 @@ describe('Pagination', () => {
         ></Pagination>,
       );
 
-      expect(previousButton()).toHaveTextContent('Go back');
-      expect(nextButton()).toHaveTextContent('Go forward');
+      expect(previousButton()).toHaveTextContent("Go back");
+      expect(nextButton()).toHaveTextContent("Go forward");
     });
   });
 });
@@ -157,23 +157,23 @@ const PaginationTestTenElements: FC = () => {
   return <Pagination currentPage={page} onPageChange={onPageChange} showIcons totalPages={10} />;
 };
 
-const buttons = () => screen.getAllByRole('button');
+const buttons = () => screen.getAllByRole("button");
 
 const pages = () => {
   return screen
-    .getAllByRole('listitem')
-    .map((page) => page.textContent ?? '')
+    .getAllByRole("listitem")
+    .map((page) => page.textContent ?? "")
     .map((page) => parseInt(page))
     .filter((page) => Number.isInteger(page));
 };
 
 const currentPage = () => {
   const currentPageElement = screen
-    .getAllByRole('listitem')
-    .find((elem) => elem.getAttribute('aria-current') === 'page');
+    .getAllByRole("listitem")
+    .find((elem) => elem.getAttribute("aria-current") === "page");
 
   expect(currentPageElement).toBeInTheDocument();
-  return parseInt(currentPageElement?.textContent ?? '0');
+  return parseInt(currentPageElement?.textContent ?? "0");
 };
 
 const nextButton = () => buttons()[buttons().length - 1];

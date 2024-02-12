@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC } from 'react';
-import { FaBars } from 'react-icons/fa';
-import { twMerge } from 'tailwind-merge';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { useNavbarContext } from './NavbarContext';
+import type { ComponentProps, FC } from "react";
+import { FaBars } from "react-icons/fa";
+import { twMerge } from "tailwind-merge";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import { useNavbarContext } from "./NavbarContext";
 
 export interface FlowbiteNavbarToggleTheme {
   base: string;
   icon: string;
 }
 
-export interface NavbarToggleProps extends ComponentProps<'button'> {
-  barIcon?: FC<ComponentProps<'svg'>>;
+export interface NavbarToggleProps extends ComponentProps<"button"> {
+  barIcon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteNavbarToggleTheme>;
 }
 

@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Tabs } from 'flowbite-react';
-import { type CodeData } from '~/components/code-demo';
+import { Tabs } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-import { Tabs } from 'flowbite-react';
+import { Tabs } from "flowbite-react";
 
 function Component() {
   return (
@@ -52,12 +52,12 @@ function Component() {
 }
 
 export const withPills: CodeData = {
-  type: 'single',
+  type: "single",
   code: {
-    fileName: 'client',
-    language: 'tsx',
+    fileName: "client",
+    language: "tsx",
     code,
   },
-  githubSlug: 'tabs/tabs.withPills.tsx',
+  githubSlug: "tabs/tabs.withPills.tsx",
   component: <Component />,
 };

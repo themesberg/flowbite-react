@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { useListItem, useMergeRefs } from '@floating-ui/react';
-import { forwardRef, type ComponentProps, type ElementType, type FC, type RefCallback } from 'react';
-import { twMerge } from 'tailwind-merge';
-import type { PolymorphicComponentPropWithRef, PolymorphicRef } from '../../helpers/generic-as-prop';
-import { mergeDeep } from '../../helpers/merge-deep';
-import type { DeepPartial } from '../../types';
-import { ButtonBase, type ButtonBaseProps } from '../Button/ButtonBase';
-import { useDropdownContext } from './DropdownContext';
+import { useListItem, useMergeRefs } from "@floating-ui/react";
+import { forwardRef, type ComponentProps, type ElementType, type FC, type RefCallback } from "react";
+import { twMerge } from "tailwind-merge";
+import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
+import { mergeDeep } from "../../helpers/merge-deep";
+import type { DeepPartial } from "../../types";
+import { ButtonBase, type ButtonBaseProps } from "../Button/ButtonBase";
+import { useDropdownContext } from "./DropdownContext";
 
 export interface FlowbiteDropdownItemTheme {
   container: string;
@@ -15,26 +15,26 @@ export interface FlowbiteDropdownItemTheme {
   icon: string;
 }
 
-export type DropdownItemProps<T extends ElementType = 'button'> = PolymorphicComponentPropWithRef<
+export type DropdownItemProps<T extends ElementType = "button"> = PolymorphicComponentPropWithRef<
   T,
   {
     href?: string;
-    icon?: FC<ComponentProps<'svg'>>;
+    icon?: FC<ComponentProps<"svg">>;
     onClick?: () => void;
     theme?: DeepPartial<FlowbiteDropdownItemTheme>;
   }
 >;
 
-type DropdownItemComponentType = (<C extends React.ElementType = 'button'>(
+type DropdownItemComponentType = (<C extends React.ElementType = "button">(
   props: DropdownItemProps<C>,
 ) => React.ReactNode | null) & { displayName?: string };
 
 export const DropdownItem: DropdownItemComponentType = forwardRef(
-  <T extends ElementType = 'button'>(
+  <T extends ElementType = "button">(
     { children, className, icon: Icon, onClick, theme: customTheme = {}, ...props }: DropdownItemProps<T>,
     forwardedRef: PolymorphicRef<T>,
   ) => {
-    const { ref: listItemRef, index } = useListItem({ label: typeof children === 'string' ? children : undefined });
+    const { ref: listItemRef, index } = useListItem({ label: typeof children === "string" ? children : undefined });
     const ref = useMergeRefs([forwardedRef, listItemRef]);
     const { theme: rootTheme, activeIndex, dismissOnClick, getItemProps, handleSelect } = useDropdownContext();
     const isActive = activeIndex === index;
@@ -63,4 +63,4 @@ export const DropdownItem: DropdownItemComponentType = forwardRef(
     );
   },
 );
-DropdownItem.displayName = 'DropdownItem';
+DropdownItem.displayName = "DropdownItem";

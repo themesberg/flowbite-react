@@ -1,12 +1,12 @@
-import { Toast, ToastToggle } from 'flowbite-react';
-import { HiCheck, HiExclamation, HiX } from 'react-icons/hi';
-import { type CodeData } from '~/components/code-demo';
+import { Toast, ToastToggle } from "flowbite-react";
+import { HiCheck, HiExclamation, HiX } from "react-icons/hi";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
-import { Toast } from 'flowbite-react';
-import { HiCheck, HiExclamation, HiX } from 'react-icons/hi';
+import { Toast } from "flowbite-react";
+import { HiCheck, HiExclamation, HiX } from "react-icons/hi";
 
 function Component() {
   return (
@@ -38,8 +38,8 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Toast, ToastToggle} from 'flowbite-react';
-import { HiCheck, HiExclamation, HiX } from 'react-icons/hi';
+import { Toast, ToastToggle} from "flowbite-react";
+import { HiCheck, HiExclamation, HiX } from "react-icons/hi";
 
 function Component() {
   return (
@@ -99,19 +99,19 @@ function Component() {
 }
 
 export const colors: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'toast/toast.colors.tsx',
+  githubSlug: "toast/toast.colors.tsx",
   component: <Component />,
 };

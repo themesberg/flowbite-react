@@ -135,8 +135,8 @@
 
 /* prism styles */
 
-code[class*='language-'],
-pre[class*='language-'] {
+code[class*="language-"],
+pre[class*="language-"] {
   @apply mb-5 mt-0 rounded-lg text-sm font-normal text-pink-500 dark:text-pink-400;
   font-family:
     Menlo,
@@ -165,12 +165,12 @@ pre[class*='language-'] {
   hyphens: none;
 }
 
-div + pre[class*='language-'] {
+div + pre[class*="language-"] {
   @apply mb-0;
 }
 
 /* without preview */
-.highlight pre[class*='language-'] {
+.highlight pre[class*="language-"] {
   @apply m-0 mb-8 mt-4 rounded-xl bg-gray-50 p-6 pt-6 text-sm dark:bg-gray-800;
 }
 
@@ -181,7 +181,7 @@ div + pre[class*='language-'] {
   > .relative
   > [data-code-wrapper]
   > .highlight
-  pre[class*='language-'],
+  pre[class*="language-"],
 .code-preview-wrapper + .code-syntax-wrapper > .code-syntax {
   @apply mt-0 rounded-none;
 }
@@ -196,17 +196,17 @@ div + pre[class*='language-'] {
   > .relative
   > [data-code-wrapper]
   > .highlight
-  > pre[class*='language-'] {
+  > pre[class*="language-"] {
   @apply m-0 bg-gray-50 p-4 dark:bg-gray-800;
 }
 
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
   @apply bg-gray-50 dark:bg-gray-800;
 }
 
 /* Inline code */
-:not(pre) > code[class*='language-'] {
+:not(pre) > code[class*="language-"] {
   padding: 0.1em;
   border-radius: 0.3em;
 }
@@ -392,7 +392,7 @@ code.language-html .token.comment {
   padding: initial;
 }
 #carbonads {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
     Helvetica, Arial, sans-serif;
   @apply m-0;
 }

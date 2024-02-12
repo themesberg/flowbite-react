@@ -1,11 +1,11 @@
-import type { Meta, StoryFn } from '@storybook/react';
-import type { ComponentProps, FC } from 'react';
-import { HiChevronDown, HiOutlineArrowCircleDown } from 'react-icons/hi';
-import type { AccordionProps } from './Accordion';
-import { Accordion } from './Accordion';
+import type { Meta, StoryFn } from "@storybook/react";
+import type { ComponentProps, FC } from "react";
+import { HiChevronDown, HiOutlineArrowCircleDown } from "react-icons/hi";
+import type { AccordionProps } from "./Accordion";
+import { Accordion } from "./Accordion";
 
 export default {
-  title: 'Components/Accordion',
+  title: "Components/Accordion",
   component: Accordion,
   args: {
     alwaysOpen: false,
@@ -13,7 +13,7 @@ export default {
   },
 } as Meta;
 
-const icon: FC<ComponentProps<'svg'>> = HiChevronDown;
+const icon: FC<ComponentProps<"svg">> = HiChevronDown;
 
 const Template: StoryFn<AccordionProps> = (args) => (
   <Accordion arrowIcon={icon} {...args}>
@@ -87,7 +87,7 @@ const Template: StoryFn<AccordionProps> = (args) => (
 );
 
 export const AlwaysOpen = Template.bind({});
-AlwaysOpen.storyName = 'Always open';
+AlwaysOpen.storyName = "Always open";
 AlwaysOpen.args = {
   alwaysOpen: true,
 };
@@ -100,7 +100,7 @@ Flush.args = {
 };
 
 export const WithArrowIcon = Template.bind({});
-WithArrowIcon.storyName = 'With arrow icon';
+WithArrowIcon.storyName = "With arrow icon";
 WithArrowIcon.args = {
   arrowIcon: HiOutlineArrowCircleDown,
 };

@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { createContext, useContext } from 'react';
-import type { FlowbiteModalTheme } from './Modal';
+import { createContext, useContext } from "react";
+import type { FlowbiteModalTheme } from "./Modal";
 
 type ModalContext = {
   theme: FlowbiteModalTheme;
@@ -16,7 +16,7 @@ export function useModalContext(): ModalContext {
   const context = useContext(ModalContext);
 
   if (!context) {
-    throw new Error('useModalContext should be used within the ModalContext provider!');
+    throw new Error("useModalContext should be used within the ModalContext provider!");
   }
 
   return context;

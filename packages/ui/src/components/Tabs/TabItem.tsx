@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import type { ComponentProps, FC, ReactNode } from 'react';
+import type { ComponentProps, FC, ReactNode } from "react";
 
-export interface TabItemProps extends Omit<ComponentProps<'div'>, 'title'> {
+export interface TabItemProps extends Omit<ComponentProps<"div">, "title"> {
   active?: boolean;
   disabled?: boolean;
-  icon?: FC<ComponentProps<'svg'>>;
+  icon?: FC<ComponentProps<"svg">>;
   title: ReactNode;
 }
 
 export const TabItem: FC<TabItemProps> = ({ children, className }) => <div className={className}>{children}</div>;
 
-TabItem.displayName = 'Tabs.Item';
+TabItem.displayName = "Tabs.Item";
