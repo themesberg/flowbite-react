@@ -33,7 +33,7 @@ export const modalTheme: FlowbiteModalTheme = {
   },
   content: {
     base: 'relative h-full w-full p-4 md:h-auto',
-    inner: 'relative rounded-lg bg-white shadow dark:bg-gray-700 flex flex-col max-h-[90vh]',
+    inner: 'relative rounded-lg bg-white shadow dark:bg-gray-700 flex flex-col max-h-[90dvh]',
   },
   body: {
     base: 'p-6 flex-1 overflow-auto',
