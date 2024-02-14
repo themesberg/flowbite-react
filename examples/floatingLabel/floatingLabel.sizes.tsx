@@ -4,7 +4,7 @@ import { FloatingLabel } from '~/src';
 const code = `
 'use client';
 
-import { Spinner } from 'flowbite-react';
+import { FloatingLabel } from 'flowbite-react';
 
 function Component() {
   return (
@@ -25,7 +25,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { Spinner } from 'flowbite-react';
+import { FloatingLabel } from 'flowbite-react';
 
 function Component() {
   return (
