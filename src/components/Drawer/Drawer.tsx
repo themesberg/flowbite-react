@@ -51,17 +51,20 @@ const DrawerComponent: FC<DrawerProps> = ({
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        onClose?.();
+        if (isOpen) {
+          onClose?.();
+        }
       }
     };
 
     document.addEventListener('keydown', handleEscapeKey);
-  }, [onClose]);
+  }, [onClose, isOpen]);
 
   return (
     <DrawerContext.Provider value={{ theme, onClose, isOpen, id }}>
       <div
         role="dialog"
+        aria-modal="true"
         aria-describedby={`drawer-dialog-${id}`}
         className={twMerge(
           theme.root.base,
@@ -69,6 +72,7 @@ const DrawerComponent: FC<DrawerProps> = ({
           theme.root.collapsed[isOpen ? 'on' : 'off'],
           className,
         )}
+        tabIndex={-1}
         data-testid="flowbite-drawer"
         {...props}
       >
