@@ -1,0 +1,56 @@
+{
+  "name": "create-flowbite-react",
+  "version": "0.1.0",
+  "description": "Quickly scaffold Flowbite React application",
+  "keywords": [
+    "create-flowbite-react",
+    "flowbite-react-templates",
+    "flowbite-react-template",
+    "flowbite-react",
+    "flowbite",
+    "react",
+    "tailwind",
+    "template"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/themesberg/flowbite-react.git",
+    "directory": "packages/cli"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Sutu Sebastian",
+    "email": "sebastian.sutu@stainless-code.com",
+    "url": "https://github.com/SutuSebastian"
+  },
+  "type": "module",
+  "bin": {
+    "create-flowbite-react": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf .turbo node_modules",
+    "dev": "tsup --watch",
+    "format": "prettier . --write",
+    "format:check": "prettier .",
+    "start": "bun run dist/index.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@clack/prompts": "0.7.0",
+    "execa": "8.0.1",
+    "ora": "8.0.1",
+    "picocolors": "1.0.0",
+    "rimraf": "5.0.5"
+  },
+  "devDependencies": {
+    "tsup": "8.0.2",
+    "typescript": "5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

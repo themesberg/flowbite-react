@@ -8,11 +8,13 @@
   ],
   "scripts": {
     "build": "turbo build",
+    "build:cli": "turbo build --filter=create-flowbite-react",
     "build:storybook": "turbo build --filter=storybook",
     "build:ui": "turbo build --filter=flowbite-react",
     "build:web": "turbo build --filter=web",
     "clean": "turbo clean && rm -rf .turbo node_modules",
     "dev": "turbo dev",
+    "dev:cli": "turbo dev --filter=create-flowbite-react",
     "dev:storybook": "turbo dev --filter=storybook",
     "dev:ui": "turbo dev --filter=flowbite-react",
     "dev:web": "turbo dev --filter=web",
@@ -26,15 +28,15 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.1.1",
-    "@types/bun": "1.0.6",
-    "@types/web": "0.0.139",
-    "eslint": "8.56.0",
+    "@types/bun": "1.0.7",
+    "@types/web": "0.0.140",
+    "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-tailwindcss": "3.14.2",
+    "eslint-plugin-tailwindcss": "3.14.3",
     "prettier": "3.2.5",
-    "prettier-plugin-packagejson": "2.4.11",
+    "prettier-plugin-packagejson": "2.4.12",
     "prettier-plugin-tailwindcss": "0.5.11",
     "turbo": "latest"
   },
-  "packageManager": "bun@1.0.28"
+  "packageManager": "bun@1.0.29"
 }
