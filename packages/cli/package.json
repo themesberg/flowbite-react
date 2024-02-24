@@ -32,7 +32,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "clean": "rm -rf .turbo node_modules",
+    "clean": "rm -rf .turbo dist node_modules",
     "dev": "tsup --watch",
     "format": "prettier . --write",
     "format:check": "prettier .",
