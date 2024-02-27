@@ -10,7 +10,7 @@ Run any of the following commands and answer the command prompt questions:
 
 ### Interactive
 
-The CLI will prompt the directory name and the template to use:
+The CLI will prompt the directory name, what template to use and if it should initialize a new git repository:
 
 #### npm
 
