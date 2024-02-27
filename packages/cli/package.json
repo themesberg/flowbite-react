@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/themesberg/flowbite-react.git",
+    "url": "git+https://github.com/themesberg/flowbite-react.git",
     "directory": "packages/cli"
   },
   "license": "MIT",

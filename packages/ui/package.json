@@ -15,7 +15,7 @@
   "bugs": "https://github.com/themesberg/flowbite-react/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/themesberg/flowbite-react.git",
+    "url": "git+https://github.com/themesberg/flowbite-react.git",
     "directory": "packages/ui"
   },
   "license": "MIT",
