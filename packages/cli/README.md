@@ -62,11 +62,12 @@ Check out the full list of [official `flowbite-react` template examples](https:/
 
 ## Options
 
-| Name                | Description             |
-| ------------------- | ----------------------- |
-| `--help` (`-h`)     | Display available flags |
-| `--version` (`-v`)  | Display CLI version     |
-| `--template <name>` | Specify your template   |
+| Name                | Description                     |
+| ------------------- | ------------------------------- |
+| `--template <name>` | Specify your template           |
+| `--git`             | Initialize a new git repository |
+| `--help` (`-h`)     | Display available flags         |
+| `--version` (`-v`)  | Display CLI version             |
 
 ## Templates
 

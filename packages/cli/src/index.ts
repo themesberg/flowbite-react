@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { createProject } from "./actions/create-project.js";
+import { getGit, initGit } from "./actions/git.js";
 import { help } from "./actions/help.js";
 import { intro } from "./actions/intro.js";
 import { nextSteps } from "./actions/next-steps.js";
@@ -18,8 +19,10 @@ async function main(argv: string[]) {
 
   const projectName = await getProjectName(context);
   const template = await getTemplate(context);
+  const git = await getGit(context);
 
   await createProject({ projectName, template });
+  if (git) await initGit({ projectName });
   nextSteps({ projectName });
 }
 
