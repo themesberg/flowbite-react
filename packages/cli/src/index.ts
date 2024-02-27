@@ -5,12 +5,14 @@ import { intro } from "./actions/intro.js";
 import { nextSteps } from "./actions/next-steps.js";
 import { getProjectName } from "./actions/project-name.js";
 import { getTemplate } from "./actions/template.js";
+import { version } from "./actions/version.js";
 import { getContext } from "./context.js";
 
 async function main(argv: string[]) {
   const context = getContext(argv);
 
   if (context.help) return help();
+  if (context.version) return version();
 
   intro();
 
