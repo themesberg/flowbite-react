@@ -1,20 +1,10 @@
 {
-  "editor.codeActionsOnSave": { "source.fixAll.eslint": "explicit" },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "eslint.probe": [
-    "javascript",
-    "javascriptreact",
-    "json",
-    "jsonc",
-    "markdown",
-    "typescript",
-    "typescriptreact",
-    "yaml"
-  ],
-  "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
   "eslint.workingDirectories": ["apps/web", "packages/ui"],
-  "typescript.tsdk": "node_modules/typescript/lib",
   "tailwindCSS.classAttributes": ["class", "className", "theme"],
   "tailwindCSS.experimental.classRegex": [
     ["twMerge\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
@@ -23,5 +13,6 @@
   "tailwindCSS.experimental.configFile": {
     "apps/web/tailwind.config.js": "apps/web/**",
     "packages/ui/tailwind.config.js": "packages/ui/**"
-  }
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
