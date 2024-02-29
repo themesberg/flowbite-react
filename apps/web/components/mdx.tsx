@@ -21,7 +21,7 @@ const components: MDXComponents = {
   },
   // TODO: revisit
   h2: (props) => (
-    <h2 className="group relative z-20 scroll-mt-20 text-2xl font-bold text-gray-900" {...props}>
+    <h2 className="group relative z-20 scroll-mt-20 text-2xl font-bold text-gray-900 dark:text-white" {...props}>
       {props.children}
       <a
         href={`#${props.id}`}
@@ -34,7 +34,7 @@ const components: MDXComponents = {
   ),
   // TODO: revisit
   h3: (props) => (
-    <h3 className="group relative z-10 scroll-mt-20 text-2xl font-bold text-gray-900" {...props}>
+    <h3 className="group relative z-10 scroll-mt-20 text-2xl font-bold text-gray-900 dark:text-white" {...props}>
       {props.children}
       <a
         href={`#${props.id}`}
