@@ -1,10 +1,14 @@
 "use client";
 
-import { Select, Tooltip } from "flowbite-react";
+import { Select, Tooltip, useThemeMode } from "flowbite-react";
 import type { ComponentProps, PropsWithChildren } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import type { IconType } from "react-icons";
 import { BsCheckLg, BsFillClipboardFill } from "react-icons/bs";
 import { HiMoon, HiSun } from "react-icons/hi";
+import { HiMiniDeviceTablet } from "react-icons/hi2";
+import { PiDesktop } from "react-icons/pi";
+import { TfiMobile } from "react-icons/tfi";
 import { twMerge } from "tailwind-merge";
 import { CodeHighlight, type Language } from "./code-highlight";
 
@@ -35,17 +39,25 @@ type Code = CodeItem | [CodeItem, ...CodeItem[]];
 
 export type CodeData<V extends Variant = Variant> = SingleCodeData | VariantCodeData<V>;
 
+type View = "desktop" | "tablet" | "mobile";
+
 interface CodeDemoProps {
   data: CodeData;
 }
 
 export function CodeDemo({ data }: CodeDemoProps) {
+  const { computedMode } = useThemeMode();
+
   const [tabIndex, setTabIndex] = useState(0);
   const [variant, setVariant] = useState(getInitialVariant(data));
 
-  const [isDarkMode, setDarkMode] = useState(false);
+  const [view, setView] = useState<View>("desktop");
+  const [isRTL, setIsRTL] = useState(false);
+  const [isDarkMode, setDarkMode] = useState(computedMode === "dark");
   const [isExpanded, setExpanded] = useState(false);
   const [isJustCopied, setJustCopied] = useState(false);
+
+  useEffect(() => setDarkMode(computedMode === "dark"), [computedMode]);
 
   function copyToClipboard(value: string) {
     setJustCopied(true);
@@ -114,14 +126,18 @@ export function CodeDemo({ data }: CodeDemoProps) {
   return (
     <div className="code-example mt-8">
       <div className="w-full rounded-t-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3">
           <EditOnGithubButton githubSlug={data.githubSlug} />
-          <div className="ml-auto">
-            <ToggleDarkModeButton isDarkMode={isDarkMode} onClick={() => setDarkMode(!isDarkMode)} />
+          <ToggleViewButtons onSelect={setView} />
+          <div className="col-span-1 flex justify-end gap-3">
+            <ToggleRTLButton isRTL={isRTL} onClick={() => setIsRTL((state) => !state)} />
+            <ToggleDarkModeButton isDarkMode={isDarkMode} onClick={() => setDarkMode((state) => !state)} />
           </div>
         </div>
       </div>
-      <CodePreview isDarkMode={isDarkMode}>{data.component}</CodePreview>
+      <CodePreview view={view} isRTL={isRTL} isDarkMode={isDarkMode}>
+        {data.component}
+      </CodePreview>
       <div className="code-syntax-wrapper">
         <div
           className={twMerge(
@@ -178,13 +194,24 @@ function Tabs({ tabIndex, items, onSelect }: { tabIndex: number; items: CodeItem
   );
 }
 
-function CodePreview({ isDarkMode, children }: PropsWithChildren<{ isDarkMode: boolean }>) {
+function CodePreview({
+  view,
+  isRTL,
+  isDarkMode,
+  children,
+}: PropsWithChildren<{ view: View; isRTL: boolean; isDarkMode: boolean }>) {
   return (
-    <div className={twMerge("code-preview-wrapper", isDarkMode && "dark")}>
+    <div className={twMerge("code-preview-wrapper", isDarkMode && "dark")} {...(isRTL && { dir: "rtl" })}>
       <div className="code-preview flex border-x border-gray-200 bg-white bg-gradient-to-r p-0 dark:border-gray-600 dark:bg-gray-900">
         <div className="code-responsive-wrapper w-full">
-          <div className="mx-auto w-full bg-white bg-gradient-to-r p-2 dark:bg-gray-900 sm:p-6">
-            <div className="py-4">{children}</div>
+          <div
+            className={twMerge(
+              "mx-auto w-full bg-white bg-gradient-to-r p-5 dark:bg-gray-900",
+              view === "tablet" && "max-w-lg",
+              view === "mobile" && "max-w-sm",
+            )}
+          >
+            {children}
           </div>
         </div>
       </div>
@@ -209,7 +236,7 @@ function EditOnGithubButton({ githubSlug }: { githubSlug: string }) {
         focusable="false"
         data-icon="github"
         role="img"
-        className="size-4"
+        className="size-3.5"
       >
         <path
           fillRule="evenodd"
@@ -222,15 +249,56 @@ function EditOnGithubButton({ githubSlug }: { githubSlug: string }) {
   );
 }
 
+function ToggleViewButtons({ onSelect }: { onSelect(view: View): void }) {
+  const views: { name: View; title: string; icon: IconType }[] = [
+    { name: "desktop", title: "Toggle full screen", icon: PiDesktop },
+    { name: "tablet", title: "Toggle tablet view", icon: HiMiniDeviceTablet },
+    { name: "mobile", title: "Toggle mobile view", icon: TfiMobile },
+  ];
+
+  return (
+    <div className="hidden items-center justify-center space-x-2 sm:flex">
+      {views.map((v) => (
+        <Tooltip key={v.name} content={v.title}>
+          <button
+            onClick={() => onSelect(v.name)}
+            className="flex size-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
+          >
+            <span className="sr-only">{v.title}</span>
+            <v.icon className="size-4" />
+          </button>
+        </Tooltip>
+      ))}
+    </div>
+  );
+}
+
+function ToggleRTLButton({ isRTL, onClick }: ComponentProps<"button"> & { isRTL: boolean }) {
+  const dir = isRTL ? "LTR" : "RTL";
+  const title = `Toggle ${dir} mode`;
+
+  return (
+    <Tooltip content={title}>
+      <button
+        onClick={onClick}
+        className="flex size-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
+      >
+        <span className="sr-only">{title}</span>
+        {dir}
+      </button>
+    </Tooltip>
+  );
+}
+
 function ToggleDarkModeButton({ isDarkMode, onClick }: ComponentProps<"button"> & { isDarkMode: boolean }) {
   return (
     <Tooltip content={isDarkMode ? "Toggle light mode" : "Toggle dark mode"}>
       <button
         onClick={onClick}
-        className="flex items-center rounded-lg border border-gray-200 bg-white p-2 text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
+        className="flex size-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
       >
         <span className="sr-only">Toggle dark/light mode</span>
-        {isDarkMode ? <HiSun className="size-4" /> : <HiMoon className="size-4" />}
+        {isDarkMode ? <HiSun className="size-3.5" /> : <HiMoon className="size-3.5" />}
       </button>
     </Tooltip>
   );
@@ -243,9 +311,9 @@ function CopyToClipboardButton({ isJustCopied, onClick }: ComponentProps<"button
       className="copy-to-clipboard-button flex items-center border-l border-gray-200 bg-gray-100 px-3 py-2 text-xs font-medium text-gray-600 hover:text-primary-700 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white"
     >
       {isJustCopied ? (
-        <BsCheckLg className="mr-2 size-4 text-green-500 dark:text-green-400" />
+        <BsCheckLg className="mr-2 size-3.5 text-green-500 dark:text-green-400" />
       ) : (
-        <BsFillClipboardFill className="mr-2 size-3" />
+        <BsFillClipboardFill className="mr-2 size-3.5" />
       )}
       {isJustCopied ? "Code copied!" : "Copy code"}
     </button>
