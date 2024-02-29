@@ -21,7 +21,7 @@ export const HeroSection: FC = () => {
                 and based on the Flowbite Design System.
               </p>
               <div className="mt-2 grid grid-cols-1 items-center justify-center gap-4 sm:grid-cols-2 sm:gap-6 [&>div:first-child]:w-full">
-                <CopyPackageInput value="npm i flowbite-react" />
+                <CopyPackageInput value="npm create flowbite-react@latest" />
                 <div className="justify-center sm:flex sm:justify-start">
                   <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
                     <Button

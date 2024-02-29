@@ -5,8 +5,10 @@ import Link from "next/link";
 import * as examples from "~/examples";
 import { CodeDemo, type CodeData } from "./code-demo";
 import { CodeHighlight } from "./code-highlight";
+import { TextDivider } from "./text-divider";
 
 const components: MDXComponents = {
+  TextDivider,
   a: ({ ref, href = "", ...props }) => {
     const isLocal = href.startsWith("/");
 
