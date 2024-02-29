@@ -4,7 +4,7 @@ import { Select, Tooltip, useThemeMode } from "flowbite-react";
 import type { ComponentProps, PropsWithChildren } from "react";
 import { useEffect, useState } from "react";
 import type { IconType } from "react-icons";
-import { BsCheckLg, BsFillClipboardFill } from "react-icons/bs";
+import { FaCopy } from "react-icons/fa";
 import { HiMoon, HiSun } from "react-icons/hi";
 import { HiMiniDeviceTablet } from "react-icons/hi2";
 import { PiDesktop } from "react-icons/pi";
@@ -124,7 +124,7 @@ export function CodeDemo({ data }: CodeDemoProps) {
   const shouldExpand = getShouldExpand(current.code.trim());
 
   return (
-    <div className="code-example mt-8">
+    <div className="mt-8">
       <div className="w-full rounded-t-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
         <div className="grid grid-cols-2 sm:grid-cols-3">
           <EditOnGithubButton githubSlug={data.githubSlug} />
@@ -236,7 +236,7 @@ function EditOnGithubButton({ githubSlug }: { githubSlug: string }) {
         focusable="false"
         data-icon="github"
         role="img"
-        className="size-3.5"
+        className="size-4"
       >
         <path
           fillRule="evenodd"
@@ -291,14 +291,16 @@ function ToggleRTLButton({ isRTL, onClick }: ComponentProps<"button"> & { isRTL:
 }
 
 function ToggleDarkModeButton({ isDarkMode, onClick }: ComponentProps<"button"> & { isDarkMode: boolean }) {
+  const title = isDarkMode ? "Toggle light mode" : "Toggle dark mode";
+
   return (
-    <Tooltip content={isDarkMode ? "Toggle light mode" : "Toggle dark mode"}>
+    <Tooltip content={title}>
       <button
         onClick={onClick}
         className="flex size-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
       >
-        <span className="sr-only">Toggle dark/light mode</span>
-        {isDarkMode ? <HiSun className="size-3.5" /> : <HiMoon className="size-3.5" />}
+        <span className="sr-only">{title}</span>
+        {isDarkMode ? <HiSun className="size-4" /> : <HiMoon className="size-4" />}
       </button>
     </Tooltip>
   );
@@ -306,17 +308,15 @@ function ToggleDarkModeButton({ isDarkMode, onClick }: ComponentProps<"button"> 
 
 function CopyToClipboardButton({ isJustCopied, onClick }: ComponentProps<"button"> & { isJustCopied: boolean }) {
   return (
-    <button
-      onClick={onClick}
-      className="copy-to-clipboard-button flex items-center border-l border-gray-200 bg-gray-100 px-3 py-2 text-xs font-medium text-gray-600 hover:text-primary-700 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white"
-    >
-      {isJustCopied ? (
-        <BsCheckLg className="mr-2 size-3.5 text-green-500 dark:text-green-400" />
-      ) : (
-        <BsFillClipboardFill className="mr-2 size-3.5" />
-      )}
-      {isJustCopied ? "Code copied!" : "Copy code"}
-    </button>
+    <Tooltip content="Copy to clipboard" placement="bottom-end">
+      <button
+        onClick={onClick}
+        className="flex h-full items-center border-l border-gray-200 bg-gray-100 px-3 py-2 text-xs font-medium text-gray-600 hover:text-primary-700 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white"
+      >
+        <FaCopy className="mr-2 size-3.5" />
+        {isJustCopied ? "Copied" : "Copy"}
+      </button>
+    </Tooltip>
   );
 }
 
