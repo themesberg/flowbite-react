@@ -80,7 +80,7 @@ function DocsNavbar({ isCollapsed, setCollapsed }: DocsLayoutState) {
           <Image alt="" height={32} src="/favicon.svg" width={32} className="size-8" />
           <span>Flowbite React</span>
         </Link>
-        <div className="ml-4 hidden lg:flex">
+        <div className="ml-4 hidden lg:flex xl:ml-14">
           <DocSearchInput />
         </div>
       </div>
@@ -163,7 +163,7 @@ function SidebarSection({ title, href, children }: PropsWithChildren<{ title: st
           {title}
         </Accordion.Title>
         <Accordion.Content className="mb-2 border-none p-0">
-          <Sidebar.ItemGroup className="border-none">{children}</Sidebar.ItemGroup>
+          <Sidebar.ItemGroup className="space-y-3 border-none">{children}</Sidebar.ItemGroup>
         </Accordion.Content>
       </Accordion.Panel>
     </Accordion>
