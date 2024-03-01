@@ -99,11 +99,11 @@ Don't forget to:
 
 #### Prerequisites
 
-- You need to understand how to use a terminal, Git, Node.js, and Yarn
-- You should be able to write Markdown and React TypeScript
-- You should be familiar with Tailwind CSS, ESLint, and Prettier
+- You need to understand how to use a terminal, `Git`, `Node.js`, and `Bun`
+- You should be able to write `Markdown` and `React TypeScript`
+- You should be familiar with `Tailwind` `CSS`, `ESLint`, and `Prettier`
 - You should understand what [vitest](https://vitest.dev/) is, and be able to write tests if your contribution changes the behavior of the library in some way
-- You should strongly consider using [Visual Studio Code](https://code.visualstudio.com/) as your editor, as it has plugins for Tailwind CSS, ESLint, and Prettier which will automatically fix most style issues for you, and offer suggestions for how to fix the rest
+- You should strongly consider using [Visual Studio Code](https://code.visualstudio.com/) as your editor, as it has plugins for `Tailwind CSS`, `ESLint`, and `Prettier` which will automatically fix most style issues for you, and offer suggestions for how to fix the rest
 
 #### Creating a Pull Request
 
@@ -122,39 +122,33 @@ git remote add upstream https://github.com/themesberg/flowbite-react.git
 git checkout -b fix/accordion-alwaysopen
 ```
 
-4. Install dependencies with [`yarn`](https://classic.yarnpkg.com/en/docs/install#debian-stable):
+4. Install dependencies with [`bun`](https://bun.sh/):
 
 ```bash
-yarn install
+bun install
 ```
 
 5. Start a development server on your machine:
 
 ```bash
-yarn dev
+bun run dev
 ```
 
-6. Commit changes with `yarn commit` to follow the required [commitizen](https://github.com/commitizen/cz-cli) format:
+6. Make sure your changes work and don't break anything else:
 
 ```bash
-yarn commit
+bun run format && bun run lint:fix && bun run test && bun run build
 ```
 
-7. Make sure your changes work and don't break anything else:
-
-```bash
-yarn prettier:fix && yarn lint && yarn test && yarn build
-```
-
-8. Push to your forked repository
+7. Push to your forked repository
 
 ```bash
 git push -u origin fix/accordion-alwaysopen
 ```
 
-9. Go to [the repository](https://github.com/themesberg/flowbite-react) and [create a Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
+8. Go to [the repository](https://github.com/themesberg/flowbite-react) and [create a Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request)
 
-10. Fill out the Pull Request template, which will be available automatically
+9. Fill out the Pull Request template, which will be available automatically
 
 #### What Happens Next?
 
@@ -164,19 +158,15 @@ Please note that you will be expected to update the [documentation](https://flow
 
 ### Improving The Documentation
 
-The [documentation at flowbite-react.com](https://flowbite.com) can all be found inside the `app` folder of this repository. It's written in [Next.js](https://nextjs.org/), and we use [Markdown](https://www.markdownguide.org/cheat-sheet/) for almost all of the content, so you don't need to even be able to write React TypeScript to make documentation changes!
+The [documentation at flowbite-react.com](https://flowbite-react.com/docs/getting-started/introduction) can all be found inside the `app` folder of this repository. It's written in [Next.js](https://nextjs.org/), and we use [Markdown](https://www.markdownguide.org/cheat-sheet/) for almost all of the content, so you don't need to even be able to write React TypeScript to make documentation changes!
 
 ## Styleguides
 
 ### Files
 
-We use [Prettier](https://prettier.io/) to format all of our code. Please make sure to run `yarn format` before committing any changes. You can also use VS Code as your editor, and install the Prettier and Tailwind CSS IntelliSense plugins to automatically format your code each time you save.
+We use [Prettier](https://prettier.io/) to format all of our code. Please make sure to run `bun run format` before committing any changes. You can also use VS Code as your editor, and install the Prettier and Tailwind CSS IntelliSense plugins to automatically format your code each time you save.
 
 Please refer to the code written already in the project to see how we format our code, what naming conventions we use, and so on. The more consistent your code is with the rest of the project, the easier it will be to review and merge your Pull Request.
-
-### Commits
-
-We use [commitizen](https://github.com/commitizen/cz-cli) to format commit messages. Please use `yarn commit` instead of `git commit` when committing changes.
 
 ### Branches &amp; Pull Requests
 

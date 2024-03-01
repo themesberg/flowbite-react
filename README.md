@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>:construction: flowbite-react (unreleased) :construction:</h1>
+  <h1>🚧 flowbite-react (unreleased) 🚧</h1>
   <p>
     <a href="https://flowbite-react.com">
       <img alt="Flowbite - Tailwind CSS components" width="350" src=".github/assets/flowbite-react-github.png">
@@ -40,25 +40,6 @@
 
 ### `flowbite-react` is an open source collection of UI components, built in React, with utility classes from Tailwind CSS that you can use as a starting point for user interfaces and websites.
 
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [Documentation](#documentation)
-- [Getting started](#getting-started)
-  - [Setup Tailwind CSS](#setup-tailwind-css)
-  - [Install Flowbite React](#install-flowbite-react)
-  - [Try it out](#try-it-out)
-  - [Next steps](#next-steps)
-    - [Next.js](#nextjs)
-    - [Dark mode](#dark-mode)
-    - [Customization](#customization)
-    - [Contributing](#contributing)
-- [Components](#components)
-- [Community](#community)
-- [Contributing](#contributing-1)
-- [Figma](#figma)
-- [Copyright and license](#copyright-and-license)
-
 ## Documentation
 
 Documentation for `flowbite-react` is not yet finished.
@@ -69,96 +50,45 @@ If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite
 
 ## Getting started
 
-Learn how to get started with Flowbite React and start leveraging the interactive React components coupled with Flowbite and Tailwind CSS.
+Learn how to get started with `Flowbite React` and start leveraging the interactive React components coupled with `Flowbite` and `Tailwind CSS`.
 
-You'll need to be familiar with Node.js and `npm`, and have `npm` installed. You should be comfortable installing packages with `npm`, and experience creating web apps with React and Tailwind CSS will be very helpful.
+### Using the CLI
 
-### Setup Tailwind CSS
+Easily scaffold a Flowbite React application using the most popular React frameworks and technologies out there.
 
-Install Tailwind CSS:
-
-```bash
-npm i autoprefixer postcss tailwindcss
-npx tailwindcss init -p
-```
-
-Point Tailwind CSS to files you have `className=".."` in:
-
-```javascript
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}" /* src folder, for example */],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-```
-
-Add Tailwind CSS to a CSS file:
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-### Install Flowbite React
-
-1. Run the following command to install `flowbite-react`:
+Run any of the following commands and answer the command prompt questions:
 
 ```bash
-npm i flowbite-react
+# npm
+npm create flowbite-react@latest
+
+# yarn
+yarn create flowbite-react
+
+# pnpm
+pnpm create flowbite-react
+
+# bun
+bun create flowbite-react
 ```
 
-2. Add the Flowbite plugin to `tailwind.config.js`, and include content from `flowbite-react`:
+The CLI will prompt the directory name, what template to use and if it should initialize a new git repository.
 
-```js
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    // ...
-    "node_modules/flowbite-react/lib/esm/**/*.js",
-  ],
-  plugins: [
-    // ...
-    require("flowbite/plugin"),
-  ],
-};
-```
+For more details, see how [`create-flowbite-react`](https://www.npmjs.com/package/create-flowbite-react) works.
 
-### Try it out
+### Manual installation
 
-How you use Flowbite React depends on your project setup. In general, you can just import the components you want to use from `flowbite-react` and use them in a React `.jsx` file:
+To manually install `flowbite-react` into your application, here is a list of the official integration guides for the popular frameworks and technologies:
 
-```tsx
-import { Button } from "flowbite-react";
-
-export default function MyPage() {
-  return (
-    <div>
-      <Button>Click me</Button>
-    </div>
-  );
-}
-```
-
-### Next steps
-
-#### Next.js
-
-If you're using Next.js, you can follow the [Next.js install guide](https://flowbite.com/docs/guides/next-js/), which includes a [Next.js starter project](https://github.com/tulupinc/flowbite-next-starter) with Flowbite React already set up.
-
-#### Dark mode
-
-If you want to add a dark mode switcher to your app, you can follow the [dark mode guide](https://flowbite.com/docs/customize/dark-mode/).
-
-#### Customization
-
-If you want to customize Flowbite React component, you can follow the [theme guide](https://flowbite.com/docs/customize/theming/).
-
-#### Contributing
-
-If you want to contribute to Flowbite React, you can follow the [contributing guide](https://github.com/themesberg/flowbite-react/blob/main/CONTRIBUTING.md).
+- [Next.js](https://www.flowbite-react.com/docs/guides/next-js)
+- [Remix](https://www.flowbite-react.com/docs/guides/remix)
+- [Astro](https://www.flowbite-react.com/docs/guides/astro)
+- [Gatsby](https://www.flowbite-react.com/docs/guides/gatsby)
+- [RedwoodJS](https://www.flowbite-react.com/docs/guides/redwood-js)
+- [Laravel](https://www.flowbite-react.com/docs/guides/laravel)
+- [Vite](https://www.flowbite-react.com/docs/guides/vite)
+- [Parcel](https://www.flowbite-react.com/docs/guides/parcel)
+- [Create React App](https://www.flowbite-react.com/docs/guides/create-react-app)
 
 ## Components
 
