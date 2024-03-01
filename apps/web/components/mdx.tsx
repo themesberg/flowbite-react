@@ -5,10 +5,12 @@ import Link from "next/link";
 import * as examples from "~/examples";
 import { CodeDemo, type CodeData } from "./code-demo";
 import { CodeHighlight } from "./code-highlight";
+import { IntegrationGuides } from "./quickstart/integration-guides";
 import { TextDivider } from "./text-divider";
 
 const components: MDXComponents = {
   TextDivider,
+  IntegrationGuides,
   a: ({ ref, href = "", ...props }) => {
     const isLocal = href.startsWith("/");
 
