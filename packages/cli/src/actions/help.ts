@@ -5,9 +5,9 @@ import { REPOS } from "../data.js";
 export function help() {
   let help = color.bold("Usage:\n");
 
-  const options = ["--template [name]", "--git", "--version, -v", "--help, -h"];
+  const options = ["--template <name>", "--git", "--version, -v", "--help, -h"];
 
-  help += ` ${color.blue(packageJson.name)} ${color.yellow("[dir] [options]")}`;
+  help += ` ${color.blue(packageJson.name)} ${color.yellow("<project-directory> [options]")}`;
   help += "\n\n";
   help += color.bold("Options:");
   help += "\n";
