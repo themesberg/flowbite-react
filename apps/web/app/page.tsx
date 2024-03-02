@@ -15,7 +15,7 @@ import {
 
 export default function HomePage() {
   return (
-    <div className="relative bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
+    <div className="relative">
       <Banner />
       <HomeNavbar />
       <main className="min-w-0 flex-auto divide-y dark:divide-gray-700">

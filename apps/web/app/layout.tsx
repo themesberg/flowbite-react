@@ -59,7 +59,7 @@ const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
       <head>
         <ThemeModeScript />
       </head>
-      <body>
+      <body className="bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
         {children}
         <FathomScript />
       </body>

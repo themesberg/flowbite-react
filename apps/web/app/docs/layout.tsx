@@ -30,7 +30,7 @@ export default function DocsLayout({ children }: PropsWithChildren) {
 
   return (
     <div className="w-full min-w-0 flex-auto">
-      <div className="relative bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
+      <div className="relative">
         <Banner />
         <DocsNavbar {...state} />
         <div className="lg:flex">
