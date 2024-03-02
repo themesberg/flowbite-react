@@ -105,6 +105,33 @@ export default {
 } satisfies Config;
 ```
 
+## Dark mode
+
+In server side rendered applications, such as Remix, to avoid page flicker (if `dark` mode is set) before Remix hydrates the content, `ThemeModeScript` component must be rendered in `Head` component (see implementation below).
+
+`ThemeModeScript` renders a script tag that sets `dark` or removes `dark` from `<html>` element before hydration occurs.
+
+### Configure
+
+1. Import and render `ThemeModeScript` in the `<head>` tag:
+
+```tsx {3,10}
+// app/root.tsx
+
+import { ThemeModeScript } from "flowbite-react";
+
+export default function App() {
+  return (
+    <html lang="en">
+      <head>
+        // ...
+        <ThemeModeScript />
+      </head>
+    </html>
+  );
+}
+```
+
 ## Try it out
 
 Now that you have successfully installed Flowbite React you can start using the components from the library.
