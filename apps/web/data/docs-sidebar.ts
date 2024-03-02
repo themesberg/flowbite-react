@@ -19,6 +19,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: "Introduction", href: "/docs/getting-started/introduction" },
       { title: "Quickstart", href: "/docs/getting-started/quickstart" },
       { title: "CLI", href: "/docs/getting-started/cli", isNew: true },
+      { title: "Editor Setup", href: "/docs/getting-started/editor-setup", isNew: true },
       { title: "Server Components", href: "/docs/getting-started/server-components", isNew: true },
       { title: "License", href: "/docs/getting-started/license" },
       { title: "Changelog", href: "https://github.com/themesberg/flowbite-react/releases", isExternal: true },

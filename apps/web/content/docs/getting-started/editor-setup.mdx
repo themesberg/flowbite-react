@@ -1,0 +1,98 @@
+---
+title: Editor Setup - Flowbite React
+description: Learn how to setup intellisense, format and lint support for Flowbite React
+---
+
+To bring intellisense, format and lint support for the custom `theme` prop, we need to create the following IDE configuration files.
+
+## Visual Studio Code
+
+### Intellisense
+
+1. Install the official [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension for Visual Studio Code.
+
+<div />
+
+2. Create `.vscode` directory at the root level of the application:
+
+```bash
+mkdir .vscode
+```
+
+3. Create `settings.json` file in the `.vscode` directory:
+
+```bash
+touch .vscode/settings.json
+```
+
+4. Add the following content to `settings.json`:
+
+```json
+{
+  "tailwindCSS.classAttributes": ["class", "className", "theme"],
+  "tailwindCSS.experimental.classRegex": [
+    ["twMerge\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["createTheme\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
+}
+```
+
+### Format (Prettier)
+
+1. Install `prettier` and `prettier-plugin-tailwindcss` packages:
+
+```bash
+npm i -D prettier prettier-plugin-tailwindcss
+```
+
+2. Create a `prettier` configuration file named `prettier.config.js`:
+
+```bash
+touch prettier.config.js
+```
+
+3. Add `prettier-plugin-tailwindcss` to `plugins` list and configure target tailwind attributes and functions:
+
+```js
+/** @type {import('prettier').Config} */
+module.exports = {
+  plugins: ["prettier-plugin-tailwindcss"],
+  // tailwindcss
+  tailwindAttributes: ["theme"],
+  tailwindFunctions: ["twMerge", "createTheme"],
+};
+```
+
+### Lint (ESlint)
+
+1. Install and configure `eslint`
+
+```bash
+npm init @eslint/config
+```
+
+2. Install `eslint-plugin-tailwindcss` package:
+
+```bash
+npm i -D eslint-plugin-tailwindcss
+```
+
+3. Add `plugin:tailwindcss/recommended` to `extends` and configure `settings.tailwindcss`:
+
+```js {6,10-13}
+/** @type {import("eslint").Linter.Config} */
+module.exports = {
+  // ...
+  extends: [
+    // ...
+    "plugin:tailwindcss/recommended",
+  ],
+  settings: {
+    // ...
+    tailwindcss: {
+      callees: ["twMerge", "createTheme"],
+      classRegex: "^(class(Name)|theme)?$",
+    },
+  },
+};
+```
