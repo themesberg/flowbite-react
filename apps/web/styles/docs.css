@@ -84,7 +84,7 @@
 #mainContent > p > code,
 #mainContent > ul > li > code,
 #mainContent > ol > li > code {
-  @apply whitespace-nowrap break-all px-1 font-mono text-sm text-primary-600;
+  @apply whitespace-nowrap break-all rounded-sm bg-gray-50 px-1 font-mono text-sm text-primary-600;
   font-family:
     Menlo,
     ui-monospace,
@@ -485,7 +485,7 @@ code.language-html .token.comment {
   #mainContent > p > code,
   #mainContent > ul > li > code,
   #mainContent > ol > li > code {
-    @apply text-primary-400;
+    @apply bg-gray-800 text-primary-400;
   }
 
   #mainContent > p > a:hover,
