@@ -12,7 +12,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        current: 'currentColor',
         primary: {
           50: '#E7F2F6',
           100: '#CFE5ED',
