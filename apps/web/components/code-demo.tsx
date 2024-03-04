@@ -53,7 +53,7 @@ export function CodeDemo({ data }: CodeDemoProps) {
 
   const [view, setView] = useState<View>("desktop");
   const [isRTL, setIsRTL] = useState(false);
-  const [isDarkMode, setDarkMode] = useState(computedMode === "dark");
+  const [isDarkMode, setDarkMode] = useState<boolean | null>(null);
   const [isExpanded, setExpanded] = useState(false);
   const [isJustCopied, setJustCopied] = useState(false);
 
@@ -199,9 +199,12 @@ function CodePreview({
   isRTL,
   isDarkMode,
   children,
-}: PropsWithChildren<{ view: View; isRTL: boolean; isDarkMode: boolean }>) {
+}: PropsWithChildren<{ view: View; isRTL: boolean; isDarkMode: boolean | null }>) {
   return (
-    <div className={twMerge("code-preview-wrapper", isDarkMode && "dark")} {...(isRTL && { dir: "rtl" })}>
+    <div
+      {...(isRTL && { dir: "rtl" })}
+      className={twMerge("code-preview-wrapper", isDarkMode !== null && (isDarkMode ? "dark" : "light"))}
+    >
       <div className="code-preview flex border-x border-gray-200 bg-white bg-gradient-to-r p-0 dark:border-gray-600 dark:bg-gray-900">
         <div className="code-responsive-wrapper w-full">
           <div
@@ -290,8 +293,9 @@ function ToggleRTLButton({ isRTL, onClick }: ComponentProps<"button"> & { isRTL:
   );
 }
 
-function ToggleDarkModeButton({ isDarkMode, onClick }: ComponentProps<"button"> & { isDarkMode: boolean }) {
+function ToggleDarkModeButton({ isDarkMode, onClick }: ComponentProps<"button"> & { isDarkMode: boolean | null }) {
   const title = isDarkMode ? "Toggle light mode" : "Toggle dark mode";
+  const Icon = isDarkMode ? HiSun : HiMoon;
 
   return (
     <Tooltip content={title}>
@@ -300,7 +304,14 @@ function ToggleDarkModeButton({ isDarkMode, onClick }: ComponentProps<"button"> 
         className="flex size-9 items-center justify-center rounded-lg border border-gray-200 bg-white text-xs font-medium text-gray-700 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-500"
       >
         <span className="sr-only">{title}</span>
-        {isDarkMode ? <HiSun className="size-4" /> : <HiMoon className="size-4" />}
+        {isDarkMode !== null ? (
+          <Icon className="size-4" />
+        ) : (
+          <>
+            <HiSun className="hidden size-4 dark:block" />
+            <HiMoon className="size-4 dark:hidden" />
+          </>
+        )}
       </button>
     </Tooltip>
   );
