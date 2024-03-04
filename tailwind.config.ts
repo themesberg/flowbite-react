@@ -38,10 +38,6 @@ const config: Config = {
       animation: {
         'fade-in': 'fadeIn 200ms ease-in-out',
       },
-      backgroundImage: {
-        indeterminate:
-          'url("data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0ndHJ1ZScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyBmaWxsPSdub25lJyB2aWV3Qm94PScwIDAgMTYgMTInPgogIDxwYXRoIHN0cm9rZT0nd2hpdGUnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLXdpZHRoPSczJyBkPSdNMCA2SDE2Jy8+Cjwvc3ZnPg==")',
-      },
     },
     fontFamily: {
       sans: [

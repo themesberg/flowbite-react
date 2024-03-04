@@ -47,12 +47,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           }
         }}
         type="checkbox"
-        className={twMerge(
-          'indeterminate:bg-indeterminate dark:indeterminate:bg-current dark:indeterminate:border-gray-600',
-          theme.root.base,
-          theme.root.color[color],
-          className,
-        )}
+        className={twMerge(theme.root.base, theme.root.color[color], className)}
         {...props}
       />
     );
