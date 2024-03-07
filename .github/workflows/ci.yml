@@ -68,6 +68,12 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
+      - name: Build CLI
+        run: bun run build:cli
+
+      - name: Build STORYBOOK
+        run: bun run build:storybook
+
       - name: Build UI
         run: bun run build:ui
 
