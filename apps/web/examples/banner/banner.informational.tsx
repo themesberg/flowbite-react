@@ -90,7 +90,7 @@ function Component() {
 function Component() {
   return (
     <Banner>
-      <div className="flex w-full flex-col justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700 md:flex-row">
+      <div className="flex w-full flex-col justify-between border-b border-gray-200 bg-gray-50 p-4 md:flex-row dark:border-gray-600 dark:bg-gray-700">
         <div className="mb-4 md:mb-0 md:mr-4">
           <h2 className="mb-1 text-base font-semibold text-gray-900 dark:text-white">Integration is the key</h2>
           <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">

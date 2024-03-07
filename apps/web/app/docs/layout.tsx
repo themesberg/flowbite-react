@@ -63,7 +63,7 @@ function DocsNavbar({ isCollapsed, setCollapsed }: DocsLayoutState) {
         ) : (
           <button
             type="button"
-            className="-ml-3 mr-1 rounded p-2 dark:bg-gray-700 lg:mx-0 lg:hidden"
+            className="-ml-3 mr-1 rounded p-2 lg:mx-0 lg:hidden dark:bg-gray-700"
             onClick={() => setCollapsed(!isCollapsed)}
           >
             <HiX aria-label="Close sidebar" className="size-6 cursor-pointer text-gray-600 dark:text-gray-300" />
@@ -106,7 +106,7 @@ function DocsSidebar({ isCollapsed, setCollapsed }: DocsLayoutState) {
     <>
       <div
         className={twMerge(
-          "fixed inset-0 z-50 h-full w-64 flex-none border-r border-gray-200 dark:border-gray-600 lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-6",
+          "fixed inset-0 z-50 h-full w-64 flex-none border-r border-gray-200 lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-6 dark:border-gray-600",
           isCollapsed && "hidden",
         )}
       >
@@ -115,7 +115,7 @@ function DocsSidebar({ isCollapsed, setCollapsed }: DocsLayoutState) {
             root: {
               base: "h-full border-r border-gray-200 dark:border-gray-600",
               inner:
-                "top-20 h-full overflow-y-auto bg-white px-4 pt-20 text-base font-normal dark:bg-gray-900 lg:sticky lg:mr-0 lg:block lg:h-[calc(100vh-8rem)] lg:pt-0 lg:text-sm",
+                "top-20 h-full overflow-y-auto bg-white px-4 pt-20 text-base font-normal lg:sticky lg:mr-0 lg:block lg:h-[calc(100vh-8rem)] lg:pt-0 lg:text-sm dark:bg-gray-900",
             },
           }}
         >
@@ -134,7 +134,7 @@ function DocsSidebar({ isCollapsed, setCollapsed }: DocsLayoutState) {
         <div
           onClick={() => setCollapsed(true)}
           onKeyUp={(key) => key.code === "Escape" && setCollapsed(true)}
-          className="fixed inset-0 z-40 bg-gray-900/50 dark:bg-gray-900/60 lg:hidden"
+          className="fixed inset-0 z-40 bg-gray-900/50 lg:hidden dark:bg-gray-900/60"
         />
       )}
     </>
@@ -187,7 +187,7 @@ function SidebarLink({ children, href, isExternal }: PropsWithChildren<{ href: s
       href={href}
       target={isExternal && "_blank"}
       className={twMerge(
-        "p-0 font-medium transition-all hover:bg-transparent dark:hover:bg-transparent lg:text-sm [&>*]:px-0",
+        "p-0 font-medium transition-all hover:bg-transparent lg:text-sm dark:hover:bg-transparent [&>*]:px-0",
         pathname === href
           ? "text-primary-700 hover:text-primary-700 dark:text-primary-500"
           : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white",

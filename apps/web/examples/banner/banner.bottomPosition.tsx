@@ -88,7 +88,7 @@ function Component() {
               Get 5% commision per sale&nbsp;
               <a
                 href="https://flowbite.com"
-                className="ml-0 flex items-center text-sm font-medium text-cyan-600 hover:underline dark:text-cyan-500 md:ml-1 md:inline-flex"
+                className="ml-0 flex items-center text-sm font-medium text-cyan-600 hover:underline md:ml-1 md:inline-flex dark:text-cyan-500"
               >
                 Become a partner
                 <HiArrowRight className="ml-2" />

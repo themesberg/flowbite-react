@@ -46,7 +46,7 @@ export const NavbarIcons: FC = () => {
       </div>
       <a
         href="https://storybook.flowbite-react.com/"
-        className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700 lg:block"
+        className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 lg:block dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
       >
         <Tooltip animation={false} content="View Storybook">
           <SiStorybook aria-hidden className="size-5" />
@@ -54,7 +54,7 @@ export const NavbarIcons: FC = () => {
       </a>
       <a
         href="https://discord.gg/4eeurUVvTy"
-        className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700 lg:block"
+        className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 lg:block dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
       >
         <Tooltip animation={false} content="Join Discord Community">
           <SiDiscord aria-hidden className="size-5" />
@@ -62,7 +62,7 @@ export const NavbarIcons: FC = () => {
       </a>
       <a
         href="https://github.com/themesberg/flowbite-react"
-        className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700 lg:block"
+        className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 lg:block dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
       >
         <Tooltip animation={false} content="View on GitHub">
           <BsGithub aria-hidden className="size-5" />
@@ -74,7 +74,7 @@ export const NavbarIcons: FC = () => {
       <a href="https://npmjs.com/package/flowbite-react" className="ml-2 hidden lg:block">
         <Badge
           color="info"
-          className="border-primary-700 bg-primary-50 px-2 text-sm font-normal text-primary-700 hover:bg-primary-600 hover:text-white dark:border-primary-700 dark:bg-gray-700 dark:text-primary-700  dark:hover:bg-primary-800 dark:hover:text-white sm:block lg:block"
+          className="border-primary-700 bg-primary-50 px-2 text-sm font-normal text-primary-700 hover:bg-primary-600 hover:text-white sm:block lg:block dark:border-primary-700  dark:bg-gray-700 dark:text-primary-700 dark:hover:bg-primary-800 dark:hover:text-white"
         >
           v{version}
         </Badge>

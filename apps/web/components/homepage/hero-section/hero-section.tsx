@@ -12,11 +12,11 @@ export const HeroSection: FC = () => {
         <div className="grid gap-10 md:grid-cols-2">
           <div className="flex flex-col justify-start gap-4 xl:max-w-[676px]">
             <div className="flex flex-col gap-4 text-left lg:gap-6">
-              <h1 className="max-w-3xl text-4xl font-extrabold leading-none text-gray-900 dark:text-white lg:text-5xl xl:text-6xl">
+              <h1 className="max-w-3xl text-4xl font-extrabold leading-none text-gray-900 lg:text-5xl xl:text-6xl dark:text-white">
                 <span className="xl:inline">Build modern web applications with</span>
-                <span className="ml-2 text-cyan-700 dark:text-cyan-700 xl:inline">Flowbite React</span>
+                <span className="ml-2 text-cyan-700 xl:inline dark:text-cyan-700">Flowbite React</span>
               </h1>
-              <p className="max-w-3xl text-lg leading-normal text-gray-500 dark:text-gray-400 lg:text-xl">
+              <p className="max-w-3xl text-lg leading-normal text-gray-500 lg:text-xl dark:text-gray-400">
                 Flowbite React is an open-source UI component library built on top of Tailwind CSS with React components
                 and based on the Flowbite Design System.
               </p>
