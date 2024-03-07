@@ -1,34 +1,22 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "clean": {
+      "cache": false
+    },
     "dev": {
       "cache": false,
       "persistent": true
     },
-    "build": {},
-    "lint": {
-      "cache": false
-    },
-    "lint:fix": {
-      "cache": false
-    },
-    "format": {
-      "cache": false
-    },
-    "format:check": {
-      "cache": false
-    },
-    "test": {
-      "cache": false
-    },
-    "test:coverage": {
-      "cache": false
-    },
-    "typecheck": {
-      "cache": false
-    },
-    "clean": {
-      "cache": false
-    }
+    "format": {},
+    "format:check": {},
+    "lint": {},
+    "lint:fix": {},
+    "test": {},
+    "test:coverage": {},
+    "typecheck": {}
   }
 }
