@@ -32,10 +32,12 @@
   ],
   "scripts": {
     "build": "tsup",
-    "clean": "rm -rf .turbo dist node_modules",
+    "clean": "rimraf .turbo dist node_modules",
     "dev": "tsup --watch",
     "format": "prettier . --write",
     "format:check": "prettier .",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore",
     "start": "bun run dist/index.js",
     "typecheck": "tsc --noEmit"
   },
@@ -48,10 +50,18 @@
     "rimraf": "5.0.5"
   },
   "devDependencies": {
+    "clean-package": "2.2.0",
     "tsup": "8.0.2",
     "typescript": "5.3.3"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "clean-package": {
+    "remove": [
+      "scripts",
+      "devDependencies",
+      "clean-package"
+    ]
   }
 }

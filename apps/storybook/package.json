@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "storybook build",
-    "clean": "rm -rf .turbo node_modules storybook-static",
+    "clean": "rimraf .turbo node_modules storybook-static",
     "dev": "storybook dev -p 6006",
     "format": "prettier . --write",
     "format:check": "prettier .",

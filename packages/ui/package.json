@@ -39,16 +39,18 @@
     "lib"
   ],
   "scripts": {
-    "build": "rm -rf coverage lib && bun build:cjs && bun build:esm",
+    "build": "rimraf coverage lib && bun build:cjs && bun build:esm",
     "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --outDir lib/cjs",
     "build:esm": "tsc -p tsconfig.build.json --module ESNext --declaration --outDir lib/esm",
-    "clean": "rm -rf .turbo coverage lib node_modules",
+    "clean": "rimraf .turbo coverage lib node_modules tsconfig.tsbuildinfo",
     "dev": "",
     "format": "prettier . --write",
     "format:check": "prettier .",
     "postinstall": "bun run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit"
@@ -71,6 +73,7 @@
     "@typescript-eslint/parser": "7.1.1",
     "@vitejs/plugin-react": "4.2.1",
     "@vitest/coverage-v8": "1.3.1",
+    "clean-package": "2.2.0",
     "eslint-plugin-react": "7.34.0",
     "eslint-plugin-storybook": "0.8.0",
     "eslint-plugin-vitest": "0.3.22",
@@ -82,5 +85,12 @@
     "react": "^18",
     "react-dom": "^18",
     "tailwindcss": "^3"
+  },
+  "clean-package": {
+    "remove": [
+      "scripts",
+      "devDependencies",
+      "clean-package"
+    ]
   }
 }

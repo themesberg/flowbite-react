@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "clean": "rm -rf .contentlayer .next .turbo node_modules",
+    "clean": "rimraf .contentlayer .next .turbo node_modules tsconfig.tsbuildinfo",
     "dev": "next dev",
     "format": "prettier . --write",
     "format:check": "prettier .",
