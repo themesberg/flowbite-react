@@ -12,6 +12,8 @@
     "tailwind",
     "template"
   ],
+  "homepage": "https://flowbite-react.com",
+  "bugs": "https://github.com/themesberg/flowbite-react/issues",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/themesberg/flowbite-react.git",
