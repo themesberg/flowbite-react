@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .hide-scrollbars::-webkit-scrollbar {
+    display: none !important;
+    height: 0 !important;
+    width: 0 !important;
+    background: transparent !important;
+    -webkit-appearance: none !important;
+  }
+  .hide-scrollbars {
+    overflow: hidden;
+    overflow: -moz-scrollbars-none;
+    scrollbar-width: none;
+  }
+}
