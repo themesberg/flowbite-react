@@ -14,3 +14,5 @@ yarn-debug.log*
 yarn-error.log*
 dist
 .contentlayer
+yarn.lock
+package-lock.json
