@@ -66,10 +66,10 @@ npm create flowbite-react@latest
 yarn create flowbite-react
 
 # pnpm
-pnpm create flowbite-react
+pnpm create flowbite-react@latest
 
 # bun
-bun create flowbite-react
+bun create flowbite-react@latest
 ```
 
 The CLI will prompt the directory name, what template to use and if it should initialize a new git repository.

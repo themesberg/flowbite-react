@@ -27,13 +27,13 @@ yarn create flowbite-react
 #### pnpm
 
 ```bash
-pnpm create flowbite-react
+pnpm create flowbite-react@latest
 ```
 
 #### bun
 
 ```bash
-bun create flowbite-react
+bun create flowbite-react@latest
 ```
 
 ### Non-interactive
@@ -52,10 +52,10 @@ npm create flowbite-react@latest next-app -- --template nextjs
 yarn create flowbite-react remix-app --template remix
 
 # pnpm
-pnpm create flowbite-react astro-app --template astro
+pnpm create flowbite-react@latest astro-app --template astro
 
 # bun
-bun create flowbite-react vite-app --template vite
+bun create flowbite-react@latest vite-app --template vite
 ```
 
 Check out the full list of [official `flowbite-react` template examples](https://github.com/themesberg/flowbite-react-templates).
