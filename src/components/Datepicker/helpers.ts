@@ -119,8 +119,9 @@ export const getFormattedDate = (
 
   if (dateFormat) {
     return DateFNSFormat(new Intl.DateTimeFormat(language, defaultOptions).format(date), dateFormat);
+  } else {
+    return new Intl.DateTimeFormat(language, defaultOptions).format(date);
   }
-  return new Intl.DateTimeFormat(language, defaultOptions).format(date);
 };
 
 export const startOfYearPeriod = (date: Date, years: number): number => {

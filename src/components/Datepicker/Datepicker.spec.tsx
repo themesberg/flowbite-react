@@ -74,4 +74,12 @@ describe('Components / Datepicker', () => {
     await userEvent.click(screen.getByRole('textbox'));
     await userEvent.click(document.body);
   });
+
+  it("should display today's date in dd-MMM-yyyy format", () => {
+    const todaysDateInDefaultLanguage = getFormattedDate('en-US', new Date(), {}, 'dd-MMM-yyyy');
+
+    render(<Datepicker inputFormat="dd-MMM-yyyy" />);
+
+    expect(screen.getByDisplayValue(todaysDateInDefaultLanguage)).toBeInTheDocument();
+  });
 });
