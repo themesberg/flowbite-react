@@ -86,6 +86,7 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
   onSelectedDateChanged?: (date: Date) => void;
+  inputFormat?: string;
 }
 
 export const Datepicker: FC<DatepickerProps> = ({
@@ -105,6 +106,7 @@ export const Datepicker: FC<DatepickerProps> = ({
   className,
   theme: customTheme = {},
   onSelectedDateChanged,
+  inputFormat,
   ...props
 }) => {
   const theme = mergeDeep(getTheme().datepicker, customTheme);
@@ -242,7 +244,7 @@ export const Datepicker: FC<DatepickerProps> = ({
               }
               setIsOpen(true);
             }}
-            value={selectedDate && getFormattedDate(language, selectedDate)}
+            value={selectedDate && getFormattedDate(language, selectedDate, {}, inputFormat)}
             readOnly
             {...props}
           />

@@ -102,6 +102,7 @@
     "cypress": "^13.4.0",
     "cypress-axe": "^1.5.0",
     "cz-conventional-changelog": "3.3.0",
+    "date-fns": "^3.3.1",
     "eslint": "^8.53.0",
     "eslint-config-next": "^14.0.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
