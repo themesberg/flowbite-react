@@ -151,6 +151,9 @@ export const Carousel: FC<CarouselProps> = ({
         innerRef={carouselContainer}
         onEndScroll={handleDragging(false)}
         onStartScroll={handleDragging(draggable)}
+        style={{
+          overflowX: 'scroll'
+        }}
         vertical={false}
         horizontal={draggable}
       >
