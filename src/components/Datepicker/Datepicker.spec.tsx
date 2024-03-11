@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event';
 
 describe('Components / Datepicker', () => {
   it("should display today's date by default", () => {
-    const todaysDateInDefaultLanguage = getFormattedDate('en', new Date());
+    const todaysDateInDefaultLanguage = getFormattedDate('en-US', new Date(), {}, '');
 
     render(<Datepicker />);
 
@@ -26,7 +26,7 @@ describe('Components / Datepicker', () => {
   });
 
   it("should reset to today's date when Clear button is clicked", async () => {
-    const todaysDateInDefaultLanguage = getFormattedDate('en', new Date());
+    const todaysDateInDefaultLanguage = getFormattedDate('en', new Date(), {}, '');
     const todaysDayOfMonth = new Date().getDate();
     const anotherDay = todaysDayOfMonth === 1 ? 2 : 1;
 
@@ -41,7 +41,7 @@ describe('Components / Datepicker', () => {
   });
 
   it("should use today's date when Today button is clicked", async () => {
-    const todaysDateInDefaultLanguage = getFormattedDate('en', new Date());
+    const todaysDateInDefaultLanguage = getFormattedDate('en', new Date(), {}, '');
     const todaysDayOfMonth = new Date().getDate();
     const anotherDay = todaysDayOfMonth === 1 ? 2 : 1;
 
