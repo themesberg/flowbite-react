@@ -1,11 +1,8 @@
 import type { Placement } from "@floating-ui/core";
 import type { ComponentProps, FC, ReactNode } from "react";
-import { twMerge } from "tailwind-merge";
-import { createTheme } from "../../helpers/create-theme";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
 import type { DeepPartial } from "../../types";
-import { Button } from "../Button";
 import { Floating, type FlowbiteFloatingTheme } from "../Floating";
 
 export type FlowbiteTooltipTheme = FlowbiteFloatingTheme;
@@ -55,15 +52,3 @@ export const Tooltip: FC<TooltipProps> = ({
 };
 
 Tooltip.displayName = "Tooltip";
-
-// developer
-
-// 1. intellisense
-// 2. formatting
-// 3. linting
-
-twMerge("m-3 flex p-3");
-createTheme("m-3 flex p-3");
-
-// user
-<Button className="inline-flex min-w-4 bg-slate-100 p-3" theme={{ base: "flex p-3" }}></Button>;
