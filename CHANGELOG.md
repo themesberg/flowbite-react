@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.3](https://github.com/themesberg/flowbite-react/compare/v0.7.2...v0.7.3) (2024-03-12)
+
+
+### Features
+
+* **component:** default to `type="text"` on `<TextInput>` ([#1206](https://github.com/themesberg/flowbite-react/issues/1206)) ([fbd57c8](https://github.com/themesberg/flowbite-react/commit/fbd57c85906d31b47911910330b51656c546f2e1))
+* Popover component ([#1237](https://github.com/themesberg/flowbite-react/issues/1237)) ([dc48f2e](https://github.com/themesberg/flowbite-react/commit/dc48f2ee3edac79aae9399c22385b81f4cb683fa)), closes [#916](https://github.com/themesberg/flowbite-react/issues/916) [#878](https://github.com/themesberg/flowbite-react/issues/878)
+* **table:** Wrap table components with forwardRef ([#1239](https://github.com/themesberg/flowbite-react/issues/1239)) ([4a26a50](https://github.com/themesberg/flowbite-react/commit/4a26a504a9589415735251e4076a9e15d4ee9dce))
+
+
+### Bug Fixes
+
+* **alert:** blue color on alert is cyan ([#1282](https://github.com/themesberg/flowbite-react/issues/1282)) ([c52184e](https://github.com/themesberg/flowbite-react/commit/c52184e7bb706b9393f6ae93fbd73162547d8b98))
+* **badge:** blue color on badge is cyan ([#1227](https://github.com/themesberg/flowbite-react/issues/1227)) ([ee3749f](https://github.com/themesberg/flowbite-react/commit/ee3749f4173d99b15bcbd6a312ddc5da69ba6fcf))
+* **button:** Button ring on focus ([#1238](https://github.com/themesberg/flowbite-react/issues/1238)) ([406ebe5](https://github.com/themesberg/flowbite-react/commit/406ebe53228871cc0ef89282919e314414e7ad94))
+* **button:** Fixed Typescript error when using Next.js Link in the button `as` prop ([#1244](https://github.com/themesberg/flowbite-react/issues/1244)) ([a6698d4](https://github.com/themesberg/flowbite-react/commit/a6698d48474595f2ee05a3f817ecbdb322aa7807)), closes [#1002](https://github.com/themesberg/flowbite-react/issues/1002) [#1107](https://github.com/themesberg/flowbite-react/issues/1107)
+* **ButtonGroup:** dynamic generated button with group wasn't styled properly ([#1273](https://github.com/themesberg/flowbite-react/issues/1273)) ([d0dc810](https://github.com/themesberg/flowbite-react/commit/d0dc81073eb14f5620c70e4f4bd6e9216a7b1272)), closes [#1269](https://github.com/themesberg/flowbite-react/issues/1269) [#1269](https://github.com/themesberg/flowbite-react/issues/1269)
+* homepage - use Link for internal links ([#1246](https://github.com/themesberg/flowbite-react/issues/1246)) ([4fd01e5](https://github.com/themesberg/flowbite-react/commit/4fd01e5a5631c30ea65f90fd23856eae8014ccad))
+* **modal:** modal overflowing bottom in chrome on ios ([#1270](https://github.com/themesberg/flowbite-react/issues/1270)) ([3671ced](https://github.com/themesberg/flowbite-react/commit/3671ced4564a5aa7d823d8c09756bb455d2969c1))
+* **navbar:** on Mobile Screen Navbar remains open even page is changed ([#1247](https://github.com/themesberg/flowbite-react/issues/1247)) ([ce25791](https://github.com/themesberg/flowbite-react/commit/ce257913c9ee3c6d52b6acf829d5b4688f0a6fc4))
+* **storybook:** fix the `argTypes.weekStart.mapping` on `Datepicker.stories.tsx` ([#1254](https://github.com/themesberg/flowbite-react/issues/1254)) ([79f6316](https://github.com/themesberg/flowbite-react/commit/79f631634c528a4b06b80a027a463d82c72697eb)), closes [#1167](https://github.com/themesberg/flowbite-react/issues/1167)
+* **toggleswitch component:** added forwardRef to ToggleSwitch component ([#1198](https://github.com/themesberg/flowbite-react/issues/1198)) ([8e0b658](https://github.com/themesberg/flowbite-react/commit/8e0b658625cc29d729ce8ea19ee8afb6893c7f73)), closes [#1078](https://github.com/themesberg/flowbite-react/issues/1078)
+* typo in fileInput.dropzone.tsx ([#1291](https://github.com/themesberg/flowbite-react/issues/1291)) ([2c2fa52](https://github.com/themesberg/flowbite-react/commit/2c2fa52b5c2e76f3e2e73309c14d453753c0fe7b))
+
 ### [0.7.2](https://github.com/themesberg/flowbite-react/compare/v0.7.1...v0.7.2) (2023-12-12)
 
 
