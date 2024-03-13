@@ -37,6 +37,23 @@ Add custom icons next to the menu items by using the `icon` prop on the `<Dropdo
 
 <Example name="dropdown.itemsWithIcon" />
 
+## Dropdown items with radio input
+
+Add radio items to the dropdown with `<Dropdown.ItemRadio>` component.
+`<Dropdown.ItemRadio>` accepts a ref that will be passed to the underlying `Radio` component's input element.
+`<Dropdown.ItemRadio>` components with the same `name` prop will be treated as a radio group.
+Optionally pass `dismissOnClick={false}` to the parent `Dropdown` to keep the dropdown open after a radio is toggled.
+
+<Example name="dropdown.itemRadio" />
+
+## Dropdown items with checkbox input
+
+Add checkbox items to the dropdown with `<Dropdown.ItemCheckbox>` component.
+`<Dropdown.ItemCheckbox>` accepts a ref that will be passed to the underlying `Checkbox` component's input element.
+Optionally pass `dismissOnClick={false}` to the parent `Dropdown` to keep the dropdown open after a checkbox is checked.
+
+<Example name="dropdown.itemCheckbox" />
+
 ## Inline dropdown
 
 Use the `inline` prop to make the dropdown appear inline with the trigger element.

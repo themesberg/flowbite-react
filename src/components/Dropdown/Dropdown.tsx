@@ -25,6 +25,8 @@ import { DropdownContext } from './DropdownContext';
 import { DropdownDivider, type FlowbiteDropdownDividerTheme } from './DropdownDivider';
 import { DropdownHeader, type FlowbiteDropdownHeaderTheme } from './DropdownHeader';
 import { DropdownItem, type FlowbiteDropdownItemTheme } from './DropdownItem';
+import { DropdownItemCheckbox } from './DropdownItemCheckbox';
+import { DropdownItemRadio } from './DropdownItemRadio';
 
 export interface FlowbiteDropdownFloatingTheme
   extends FlowbiteFloatingTheme,
@@ -49,6 +51,13 @@ export interface DropdownProps extends Pick<FloatingProps, 'placement' | 'trigge
   theme?: DeepPartial<FlowbiteDropdownTheme>;
   renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactElement;
   'data-testid'?: string;
+}
+
+type RadioGroupId = string;
+
+export interface DropdownInputsState {
+  radios: { [key: RadioGroupId]: string | null };
+  checkboxes: string[];
 }
 
 const icons: Record<string, FC<ComponentProps<'svg'>>> = {
@@ -114,6 +123,13 @@ const DropdownComponent: FC<DropdownProps> = ({
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [checkedInputs, setCheckedInputs] = useState<{
+    radios: { [key: string]: string | null };
+    checkboxes: string[];
+  }>({
+    radios: {},
+    checkboxes: [],
+  });
   const [buttonWidth, setButtonWidth] = useState<number | undefined>(undefined);
   const elementsRef = useRef<Array<HTMLElement | null>>([]);
   const labelsRef = useRef<Array<string | null>>([]);
@@ -130,10 +146,13 @@ const DropdownComponent: FC<DropdownProps> = ({
     ...buttonProps
   } = theirProps;
 
-  const handleSelect = useCallback((index: number | null) => {
-    setSelectedIndex(index);
-    setOpen(false);
-  }, []);
+  const handleSelect = useCallback(
+    (index: number | null) => {
+      dismissOnClick ? setSelectedIndex(null) : setSelectedIndex(index);
+      dismissOnClick && setOpen(false);
+    },
+    [dismissOnClick],
+  );
 
   const handleTypeaheadMatch = useCallback(
     (index: number | null) => {
@@ -179,7 +198,17 @@ const DropdownComponent: FC<DropdownProps> = ({
   }, [placement]);
 
   return (
-    <DropdownContext.Provider value={{ theme, activeIndex, dismissOnClick, getItemProps, handleSelect }}>
+    <DropdownContext.Provider
+      value={{
+        theme,
+        activeIndex,
+        dismissOnClick,
+        getItemProps,
+        checkedInputs,
+        setCheckedInputs,
+        handleSelect,
+      }}
+    >
       <Trigger
         {...buttonProps}
         refs={refs}
@@ -230,6 +259,8 @@ DropdownDivider.displayName = 'Dropdown.Divider';
 
 export const Dropdown = Object.assign(DropdownComponent, {
   Item: DropdownItem,
+  ItemCheckbox: DropdownItemCheckbox,
+  ItemRadio: DropdownItemRadio,
   Header: DropdownHeader,
   Divider: DropdownDivider,
 });

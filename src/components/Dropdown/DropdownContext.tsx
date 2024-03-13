@@ -1,14 +1,17 @@
 'use client';
 
 import type { useInteractions } from '@floating-ui/react';
+import type { Dispatch, SetStateAction } from 'react';
 import { createContext, useContext } from 'react';
-import type { FlowbiteDropdownTheme } from './Dropdown';
+import type { DropdownInputsState, FlowbiteDropdownTheme } from './Dropdown';
 
 type DropdownContext = {
   theme: FlowbiteDropdownTheme;
   activeIndex: number | null;
   dismissOnClick?: boolean;
   getItemProps: ReturnType<typeof useInteractions>['getItemProps'];
+  checkedInputs: DropdownInputsState;
+  setCheckedInputs: Dispatch<SetStateAction<DropdownInputsState>>;
   handleSelect: (index: number | null) => void;
 };
 
