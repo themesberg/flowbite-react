@@ -31,8 +31,6 @@ function Component() {
   return (
     <div>
       <SkeletonList />
-      <SkeletonList />
-      <SkeletonList />
     </div>
   );
 }

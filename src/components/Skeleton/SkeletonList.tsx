@@ -33,6 +33,20 @@ export const SkeletonList: FC<SkeletonListProps> = ({ className, theme: customTh
         </div>
         <div className={theme.textList.list.textThree} />
       </div>
+      <div className={theme.textList.base}>
+        <div>
+          <div className={theme.textList.list.textOne} />
+          <div className={theme.textList.list.textTwo} />
+        </div>
+        <div className={theme.textList.list.textThree} />
+      </div>
+      <div className={theme.textList.base}>
+        <div>
+          <div className={theme.textList.list.textOne} />
+          <div className={theme.textList.list.textTwo} />
+        </div>
+        <div className={theme.textList.list.textThree} />
+      </div>
       <span className="sr-only">Loading...</span>
     </div>
   );
