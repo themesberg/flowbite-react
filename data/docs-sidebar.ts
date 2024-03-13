@@ -75,6 +75,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: 'Progress bar', href: '/docs/components/progress' },
       { title: 'Rating', href: '/docs/components/rating' },
       { title: 'Sidebar', href: '/docs/components/sidebar' },
+      { title: 'Skeleton', href: '/docs/components/skeleton', isNew: true },
       { title: 'Spinner', href: '/docs/components/spinner' },
       { title: 'Table', href: '/docs/components/table' },
       { title: 'Tabs', href: '/docs/components/tabs' },
