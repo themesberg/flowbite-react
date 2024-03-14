@@ -46,6 +46,7 @@ function Component() {
       <Button as="span" className="cursor-pointer">
         Span Button
       </Button>
+      {/* @ts-expect-error TODO: fix `as` inference */}
       <Button as={Link} href="#">
         Next Link Button
       </Button>

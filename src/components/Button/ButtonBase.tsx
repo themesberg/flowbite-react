@@ -1,19 +1,18 @@
-import { createElement, type ComponentPropsWithoutRef, type ElementType, type ForwardedRef, forwardRef } from 'react';
+import { createElement, type ComponentPropsWithoutRef, type ElementType, type ForwardedRef } from 'react';
+import genericForwardRef from '../../helpers/generic-forward-ref';
 
 export type ButtonBaseProps<T extends ElementType = 'button'> = {
   as?: T;
   href?: string;
 } & ComponentPropsWithoutRef<T>;
 
-export const ButtonBase = forwardRef(
-  <T extends ElementType = 'button'>(
-    { children, as: Component, href, type = 'button', ...props }: ButtonBaseProps<T>,
-    ref: ForwardedRef<T>,
-  ) => {
-    const BaseComponent = Component || (href ? 'a' : 'button');
+const ButtonBaseComponent = <T extends ElementType = 'button'>(
+  { children, as: Component, href, type = 'button', ...props }: ButtonBaseProps<T>,
+  ref: ForwardedRef<T>,
+) => {
+  const BaseComponent = Component || (href ? 'a' : 'button');
 
-    return createElement(BaseComponent, { ref, href, type, ...props }, children);
-  },
-);
+  return createElement(BaseComponent, { ref, href, type, ...props }, children);
+};
 
-ButtonBase.displayName = 'ButtonBaseComponent';
+export const ButtonBase = genericForwardRef(ButtonBaseComponent);
