@@ -30,7 +30,7 @@ function Component() {
 function Component() {
   return (
     <div>
-      <SkeletonImage className="h-48 w-48 text-gray-200 dark:text-gray-600" />
+      <SkeletonImage />
     </div>
   );
 }
