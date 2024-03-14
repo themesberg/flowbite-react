@@ -76,9 +76,11 @@ export const ReactSection: FC = () => {
                 ))}
               </ul>
               <div className="flex flex-row gap-4">
+                {/* @ts-expect-error TODO: fix `as` inference */}
                 <Button as={Link} href="/docs/getting-started/quickstart">
                   Start building <HiOutlineArrowRight className="ml-2 h-5 w-5" />
                 </Button>
+                {/* @ts-expect-error TODO: fix `as` inference */}
                 <Button as={Link} href="https://github.com/themesberg/flowbite-react" color="gray">
                   View on GitHub
                 </Button>

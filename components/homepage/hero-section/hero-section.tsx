@@ -24,6 +24,7 @@ export const HeroSection: FC = () => {
                 <CopyPackageInput value="npm i flowbite-react" />
                 <div className="justify-center sm:flex sm:justify-start">
                   <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
+                    {/* @ts-expect-error TODO: fix `as` inference */}
                     <Button
                       as={Link}
                       size="lg"
