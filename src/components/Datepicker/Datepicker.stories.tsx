@@ -13,6 +13,9 @@ export default {
         options: ['en', 'pt-BR'],
       },
     },
+    value: { control: { type: 'date', format: 'MM/DD/YYYY' } },
+    defaultValue: { control: { type: 'date', format: 'MM/DD/YYYY' } },
+    label: { control: { type: 'text' } },
     weekStart: {
       options: Object.values(WeekStart).filter((x) => typeof x === 'string'),
       mapping: Object.entries(WeekStart)
@@ -37,14 +40,34 @@ const Template: StoryFn<DatepickerProps> = (args) => {
     args.maxDate = new Date(args.maxDate);
   }
 
-  // update defaultDate based on the range
+  if (args.value) {
+    args.value = new Date(args.value);
+  }
+
+  if (args.defaultValue) {
+    args.defaultValue = new Date(args.defaultValue);
+  }
+  // update defaultValue based on the range
   if (args.minDate && args.maxDate) {
-    if (args.defaultDate) {
-      args.defaultDate = getFirstDateInRange(args.defaultDate, args.minDate, args.maxDate);
+    if (args.defaultValue) {
+      args.defaultValue = getFirstDateInRange(args.defaultValue, args.minDate, args.maxDate);
     }
   }
 
   return <Datepicker {...args} />;
+};
+export const DefaultEmpty = Template.bind({});
+DefaultEmpty.args = {
+  open: false,
+  autoHide: true,
+  showClearButton: true,
+  showTodayButton: true,
+  defaultValue: undefined,
+  value: undefined,
+  minDate: undefined,
+  maxDate: undefined,
+  language: 'en',
+  theme: {},
 };
 
 export const Default = Template.bind({});
@@ -53,10 +76,38 @@ Default.args = {
   autoHide: true,
   showClearButton: true,
   showTodayButton: true,
-  defaultDate: new Date(),
+  defaultValue: new Date(2023, 0, 18),
+  value: undefined,
   minDate: undefined,
   maxDate: undefined,
   language: 'en',
-  weekStart: WeekStart.Sunday,
+  theme: {},
+};
+
+export const NullDateValue = Template.bind({});
+NullDateValue.args = {
+  open: false,
+  autoHide: true,
+  showClearButton: true,
+  showTodayButton: true,
+  defaultValue: new Date(),
+  value: null,
+  minDate: undefined,
+  maxDate: undefined,
+  language: 'en',
+  theme: {},
+};
+
+export const DateValueSet = Template.bind({});
+DateValueSet.args = {
+  open: false,
+  autoHide: true,
+  showClearButton: true,
+  showTodayButton: true,
+  defaultValue: new Date(),
+  value: new Date(2021, 0, 15),
+  minDate: undefined,
+  maxDate: undefined,
+  language: 'en',
   theme: {},
 };

@@ -40,7 +40,7 @@ export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: cu
         newDate.setMonth(index);
         const month = getFormattedDate(language, newDate, { month: 'short' });
 
-        const isSelected = isDateEqual(selectedDate, newDate);
+        const isSelected = selectedDate && isDateEqual(selectedDate, newDate);
         const isDisabled = !isDateInRange(newDate, minDate, maxDate);
 
         return (

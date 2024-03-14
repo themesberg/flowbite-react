@@ -1,7 +1,7 @@
 'use client';
 
 import type { FC, ReactNode } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { HiArrowLeft, HiArrowRight, HiCalendar } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -71,7 +71,7 @@ export interface FlowbiteDatepickerPopupTheme {
   };
 }
 
-export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
+export interface DatepickerProps extends Omit<TextInputProps, 'theme' | 'defaultValue' | 'value'> {
   open?: boolean;
   inline?: boolean;
   autoHide?: boolean;
@@ -79,13 +79,15 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   labelClearButton?: string;
   showTodayButton?: boolean;
   labelTodayButton?: string;
-  defaultDate?: Date;
+  defaultValue?: Date;
   minDate?: Date;
   maxDate?: Date;
   language?: string;
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
   onSelectedDateChanged?: (date: Date) => void;
+  value?: Date | null;
+  label?: string;
 }
 
 export const Datepicker: FC<DatepickerProps> = ({
@@ -97,7 +99,7 @@ export const Datepicker: FC<DatepickerProps> = ({
   labelClearButton = 'Clear',
   showTodayButton = true,
   labelTodayButton = 'Today',
-  defaultDate = new Date(),
+  defaultValue,
   minDate,
   maxDate,
   language = 'en',
@@ -105,28 +107,35 @@ export const Datepicker: FC<DatepickerProps> = ({
   className,
   theme: customTheme = {},
   onSelectedDateChanged,
+  value,
+  label = 'Select date',
   ...props
 }) => {
   const theme = mergeDeep(getTheme().datepicker, customTheme);
 
-  // Default date should respect the range
-  defaultDate = getFirstDateInRange(defaultDate, minDate, maxDate);
+  const effectiveDefaultValue = useMemo(() => {
+    return defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : null;
+  }, []);
+
+  const effectiveDefaultView = useMemo(() => {
+    return defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : new Date();
+  }, []);
 
   const [isOpen, setIsOpen] = useState(open);
   const [view, setView] = useState<Views>(Views.Days);
   // selectedDate is the date selected by the user
-  const [selectedDate, setSelectedDate] = useState<Date>(defaultDate);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(value ?? effectiveDefaultValue);
   // viewDate is only for navigation
-  const [viewDate, setViewDate] = useState<Date>(defaultDate);
+  const [viewDate, setViewDate] = useState<Date>(value ?? effectiveDefaultView);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const datepickerRef = useRef<HTMLDivElement>(null);
 
   // Triggers when user select the date
-  const changeSelectedDate = (date: Date, useAutohide: boolean) => {
+  const changeSelectedDate = (date: Date | null, useAutohide: boolean) => {
     setSelectedDate(date);
 
-    if (onSelectedDateChanged) {
+    if (date && onSelectedDateChanged) {
       onSelectedDateChanged(date);
     }
 
@@ -211,6 +220,13 @@ export const Datepicker: FC<DatepickerProps> = ({
     };
   }, [inputRef, datepickerRef, setIsOpen]);
 
+  useEffect(() => {
+    if (value !== undefined && value !== selectedDate) {
+      setSelectedDate(value);
+      value && setViewDate(value);
+    }
+  }, [value, setSelectedDate, setViewDate, selectedDate]);
+
   return (
     <DatepickerContext.Provider
       value={{
@@ -237,13 +253,14 @@ export const Datepicker: FC<DatepickerProps> = ({
             icon={HiCalendar}
             ref={inputRef}
             onFocus={() => {
-              if (!isDateEqual(viewDate, selectedDate)) {
+              if (selectedDate && !isDateEqual(viewDate, selectedDate)) {
                 setViewDate(selectedDate);
               }
               setIsOpen(true);
             }}
-            value={selectedDate && getFormattedDate(language, selectedDate)}
+            value={selectedDate ? getFormattedDate(language, selectedDate) : label}
             readOnly
+            defaultValue={effectiveDefaultValue ? getFormattedDate(language, effectiveDefaultValue) : label}
             {...props}
           />
         )}
@@ -306,10 +323,7 @@ export const Datepicker: FC<DatepickerProps> = ({
                       type="button"
                       className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
                       onClick={() => {
-                        changeSelectedDate(defaultDate, true);
-                        if (defaultDate) {
-                          setViewDate(defaultDate);
-                        }
+                        changeSelectedDate(null, true);
                       }}
                     >
                       {labelClearButton}
