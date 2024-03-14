@@ -4,14 +4,14 @@ export type { FlowbiteSkeletonRootTheme, FlowbiteSkeletonTheme, SkeletonProps } 
 export { SkeletonImage } from './SkeletonImage';
 export type { FlowbiteSkeletonImageTheme, SkeletonImageProps } from './SkeletonImage';
 
-export { SkeletonVideo, type FlowbiteSkeletonVideoTheme, type SkeletonVideoProps } from './SkeletonVideo';
+export { SkeletonVideo } from './SkeletonVideo';
+export { type FlowbiteSkeletonVideoTheme, type SkeletonVideoProps } from './SkeletonVideo';
 
-export { type FlowbiteSkeletonCardTheme, type SkeletonCardProps, SkeletonCard } from './SkeletonCard';
+export { SkeletonCard } from './SkeletonCard';
+export { type FlowbiteSkeletonCardTheme, type SkeletonCardProps } from './SkeletonCard';
 
-export { type FlowbiteSkeletonListTheme, type SkeletonListProps, SkeletonList } from './SkeletonList';
+export { SkeletonList } from './SkeletonList';
+export { type FlowbiteSkeletonListTheme, type SkeletonListProps } from './SkeletonList';
 
-export {
-  type FlowbiteSkeletonTestimonialTheme,
-  type SkeletonTestimonialProps,
-  SkeletonTestimonial,
-} from './SkeletonTestimonial';
+export { SkeletonTestimonial } from './SkeletonTestimonial';
+export { type FlowbiteSkeletonTestimonialTheme, type SkeletonTestimonialProps } from './SkeletonTestimonial';

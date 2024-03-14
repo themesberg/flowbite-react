@@ -9,7 +9,7 @@ import { Skeleton } from 'flowbite-react';
 function Component() {
   return (
     <div>
-      <Skeleton variant='rectangular' />
+      <Skeleton variant="rectangular" />
     </div>
   )
 }
@@ -21,7 +21,7 @@ import { Skeleton } from 'flowbite-react';
 function Component() {
   return (
     <div>
-      <Skeleton variant='rectangular' />
+      <Skeleton variant="rectangular" />
     </div>
   )
 }

@@ -5,7 +5,7 @@ export const skeletonTheme: FlowbiteSkeletonTheme = {
     base: 'max-w-sm animate-pulse',
   },
   variant: {
-    base: 'block bg-[rgba(0,0,0,0.11)] h-[1.2em]',
+    base: 'block bg-gray-200 dark:bg-gray-700 h-[1.2em]',
     type: {
       default: 'rounded-sm transform origin-[0_55%] my-0 scale-100 text-[1rem]',
       rectangular: 'h-[60px]',

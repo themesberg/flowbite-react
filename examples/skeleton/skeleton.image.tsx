@@ -30,7 +30,7 @@ function Component() {
 function Component() {
   return (
     <div>
-      <SkeletonImage theme={{ base: 'w-48 h-48 text-gray-200 dark:text-gray-600' }} />
+      <SkeletonImage className="h-48 w-48 text-gray-200 dark:text-gray-600" />
     </div>
   );
 }

@@ -16,7 +16,7 @@ function Component() {
 `;
 
 const codeRSC = `
-import { SkeletonVideo } from 'flowbite-react';
+import { SkeletonList } from 'flowbite-react';
 
 function Component() {
   return (
