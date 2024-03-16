@@ -39,7 +39,7 @@ export const COMPONENTS_DATA: Component[] = [
     name: 'Bottom Navigation',
     image: '/images/components/bottom-bar.svg',
     imageDark: '/images/components/bottom-bar-dark.svg',
-    link: `/docs/components/badge`,
+    link: `/docs/components/bottom-navigation`,
     classes: 'w-28',
   },
   {
