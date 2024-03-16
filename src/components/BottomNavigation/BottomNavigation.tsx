@@ -6,6 +6,7 @@ import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
 import type { FlowbiteBoolean } from '../Flowbite';
+import { type FlowbiteBottomNavigationItemTheme, BottomNavigationItem } from './BottomNavigationItem';
 
 export interface FlowbiteBottomNavigationTheme {
   root: {
@@ -13,14 +14,17 @@ export interface FlowbiteBottomNavigationTheme {
     inner: string;
   };
   border: FlowbiteBoolean;
+  item: FlowbiteBottomNavigationItemTheme;
 }
 
 export interface BottomNavigationProps extends ComponentProps<'div'> {
+  bordered?: boolean;
   theme?: DeepPartial<FlowbiteBottomNavigationTheme>;
 }
 
 const BottomNavigationComponent: FC<BottomNavigationProps> = ({
   children,
+  bordered: isBordered = false,
   theme: customTheme = {},
   className,
   ...props
@@ -29,11 +33,13 @@ const BottomNavigationComponent: FC<BottomNavigationProps> = ({
 
   return (
     <div className={twMerge(theme.root.base, className)} data-testid="flowbite-bottom-navigation" {...props}>
-      {children}
+      <div className={twMerge(theme.root.inner, theme.border[isBordered ? 'on' : 'off'])}>{children}</div>
     </div>
   );
 };
 
 BottomNavigationComponent.displayName = 'BottomNavigation';
 
-export const BottomNavigation = Object.assign(BottomNavigationComponent, {});
+export const BottomNavigation = Object.assign(BottomNavigationComponent, {
+  Item: BottomNavigationItem,
+});
