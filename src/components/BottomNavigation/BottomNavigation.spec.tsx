@@ -48,6 +48,14 @@ describe.concurrent('BottomNavigation', async () => {
 
     expect(tooltips()).toBeInTheDocument();
   });
+
+  it('svg icons in the document by "role=img"', async () => {
+    render(<TestBottomNavigation />);
+
+    imgByTestId().forEach((imgTestId) => {
+      expect(imgTestId).toBeInTheDocument();
+    });
+  });
 });
 
 const bottomNavTestId = () => screen.getAllByTestId('flowbite-bottom-navigation');
@@ -55,6 +63,7 @@ const bottomNavItemTestId = () => screen.getAllByTestId('flowbite-bottom-nav-ite
 const bottomNavItemButton = () => screen.getAllByRole('button');
 const homeTextInButton = () => screen.getAllByText('Home');
 const tooltips = () => screen.getByTestId('flowbite-tooltip');
+const imgByTestId = () => screen.getAllByTestId('flowbite-bottom-nav-icon');
 
 const TestBottomNavigation = (): JSX.Element => {
   return (

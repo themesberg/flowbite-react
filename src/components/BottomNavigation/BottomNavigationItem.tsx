@@ -57,9 +57,19 @@ export const BottomNavigationItem: FC<BottomNavigationItemProps> = ({
             {...props}
           >
             {Icon ? (
-              <Icon className={theme.icon.base} fill="currentColor" aria-hidden="true" />
+              <Icon
+                className={theme.icon.base}
+                data-testid="flowbite-bottom-nav-icon"
+                fill="currentColor"
+                aria-hidden="true"
+              />
             ) : (
-              <IoMdHome className={theme.icon.base} fill="currentColor" aria-hidden="true" />
+              <IoMdHome
+                className={theme.icon.base}
+                data-testid="flowbite-bottom-nav-icon"
+                fill="currentColor"
+                aria-hidden="true"
+              />
             )}
             {showLabel ? <span className={theme.label}>{label}</span> : null}
           </button>
@@ -73,9 +83,19 @@ export const BottomNavigationItem: FC<BottomNavigationItemProps> = ({
           {...props}
         >
           {Icon ? (
-            <Icon className={theme.icon.base} fill="currentColor" aria-hidden="true" />
+            <Icon
+              className={theme.icon.base}
+              data-testid="flowbite-bottom-nav-icon"
+              fill="currentColor"
+              aria-hidden="true"
+            />
           ) : (
-            <IoMdHome className={theme.icon.base} fill="currentColor" aria-hidden="true" />
+            <IoMdHome
+              className={theme.icon.base}
+              data-testid="flowbite-bottom-nav-icon"
+              fill="currentColor"
+              aria-hidden="true"
+            />
           )}
           {showLabel ? <span className={theme.label}>{label}</span> : null}
         </button>
