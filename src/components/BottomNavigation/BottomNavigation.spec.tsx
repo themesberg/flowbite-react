@@ -56,6 +56,30 @@ describe.concurrent('BottomNavigation', async () => {
       expect(imgTestId).toBeInTheDocument();
     });
   });
+
+  it('first svg Icon in the Tooltip', async () => {
+    render(<TestBottomNavigation />);
+
+    expect(imgByTestId()[0]).toBeInTheDocument();
+  });
+
+  it('second svg Icon in the Tooltip', async () => {
+    render(<TestBottomNavigation />);
+
+    expect(imgByTestId()[1]).toBeInTheDocument();
+  });
+
+  it('third svg Icon outside of Tooltip', async () => {
+    render(<TestBottomNavigation />);
+
+    expect(imgByTestId()[2]).toBeInTheDocument();
+  });
+
+  it('fourth svg Icon outside of Tooltip', async () => {
+    render(<TestBottomNavigation />);
+
+    expect(imgByTestId()[3]).toBeInTheDocument();
+  });
 });
 
 const bottomNavTestId = () => screen.getAllByTestId('flowbite-bottom-navigation');
