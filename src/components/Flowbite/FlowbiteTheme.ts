@@ -4,6 +4,7 @@ import type { FlowbiteAlertTheme } from '../Alert';
 import type { FlowbiteAvatarTheme } from '../Avatar';
 import type { FlowbiteBadgeTheme } from '../Badge';
 import type { FlowbiteBlockquoteTheme } from '../Blockquote';
+import type { FlowbiteBottomNavigationTheme } from '../BottomNavigation';
 import type { FlowbiteBreadcrumbTheme } from '../Breadcrumb';
 import type { FlowbiteButtonGroupTheme, FlowbiteButtonTheme } from '../Button';
 import type { FlowbiteCardTheme } from '../Card';
@@ -48,6 +49,7 @@ export interface FlowbiteTheme {
   avatar: FlowbiteAvatarTheme;
   badge: FlowbiteBadgeTheme;
   blockquote: FlowbiteBlockquoteTheme;
+  bottomNavigation: FlowbiteBottomNavigationTheme;
   breadcrumb: FlowbiteBreadcrumbTheme;
   button: FlowbiteButtonTheme;
   buttonGroup: FlowbiteButtonGroupTheme;
