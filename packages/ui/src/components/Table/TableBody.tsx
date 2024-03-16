@@ -32,4 +32,5 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
     );
   },
 );
+
 TableBody.displayName = "Table.Body";

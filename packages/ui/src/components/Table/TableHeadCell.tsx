@@ -27,4 +27,5 @@ export const TableHeadCell = forwardRef<HTMLTableCellElement, TableHeadCellProps
     );
   },
 );
+
 TableHeadCell.displayName = "Table.HeadCell";

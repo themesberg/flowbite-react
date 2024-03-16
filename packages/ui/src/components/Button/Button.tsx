@@ -171,6 +171,7 @@ const ButtonComponentFn: ButtonComponentType = forwardRef(
 );
 
 ButtonComponentFn.displayName = "Button";
+
 export const Button = Object.assign(ButtonComponentFn, {
   Group: ButtonGroup,
 });
