@@ -49,7 +49,7 @@ describe.concurrent('BottomNavigation', async () => {
     expect(tooltips()).toBeInTheDocument();
   });
 
-  it('svg icons in the document by "role=img"', async () => {
+  it('svg icons in the document by "data-testid=flowbite-bottom-nav-icon"', async () => {
     render(<TestBottomNavigation />);
 
     imgByTestId().forEach((imgTestId) => {
@@ -72,13 +72,15 @@ describe.concurrent('BottomNavigation', async () => {
   it('third svg Icon outside of Tooltip', async () => {
     render(<TestBottomNavigation />);
 
-    expect(imgByTestId()[2]).toBeInTheDocument();
+    expect(imgByTestId()[2] as HTMLElement).toBeInTheDocument();
   });
 
-  it('fourth svg Icon outside of Tooltip', async () => {
+  it('all svg Icon should have className of w-5', async () => {
     render(<TestBottomNavigation />);
 
-    expect(imgByTestId()[3]).toBeInTheDocument();
+    imgByTestId().forEach((imgByTest) => {
+      expect(imgByTest).toHaveClass('w-5');
+    });
   });
 });
 
@@ -98,6 +100,10 @@ const TestBottomNavigation = (): JSX.Element => {
 
       <BottomNavigation>
         <BottomNavigation.Item label="Home" showTooltip />
+      </BottomNavigation>
+
+      <BottomNavigation bordered>
+        <BottomNavigation.Item label="Home" />
       </BottomNavigation>
     </div>
   );
