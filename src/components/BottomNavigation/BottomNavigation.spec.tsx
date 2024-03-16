@@ -82,6 +82,30 @@ describe.concurrent('BottomNavigation', async () => {
       expect(imgByTest).toHaveClass('w-5');
     });
   });
+
+  it('first svg element selector using "document.querySelector=svg"', async () => {
+    render(<TestBottomNavigation />);
+
+    const svgImg = document.querySelectorAll('svg')[0] as SVGElement;
+
+    expect(svgImg).toBeInTheDocument();
+  });
+
+  it('second svg element selector using "document.querySelector=svg"', async () => {
+    render(<TestBottomNavigation />);
+
+    const svgImg = document.querySelectorAll('svg')[1] as SVGElement;
+
+    expect(svgImg).toBeInTheDocument();
+  });
+
+  it('third svg element selector using "document.querySelector=svg"', async () => {
+    render(<TestBottomNavigation />);
+
+    const svgImg = document.querySelectorAll('svg')[2] as SVGElement;
+
+    expect(svgImg).toBeInTheDocument();
+  });
 });
 
 const bottomNavTestId = () => screen.getAllByTestId('flowbite-bottom-navigation');
