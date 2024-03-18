@@ -58,8 +58,8 @@
   "dependencies": {
     "@floating-ui/core": "1.6.0",
     "@floating-ui/react": "0.26.9",
-    "classnames": "^2.5.1",
-    "debounce": "^2.0.0",
+    "classnames": "2.5.1",
+    "debounce": "2.0.0",
     "flowbite": "2.3.0",
     "react-icons": "5.0.1",
     "react-indiana-drag-scroll": "2.2.0",
