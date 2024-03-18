@@ -1,6 +1,5 @@
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryFn } from "@storybook/react";
-import Link from "next/link";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
@@ -105,18 +104,18 @@ FormElements.args = {
               <Checkbox id="remember" />
               <Label htmlFor="remember">Remember me</Label>
             </div>
-            <Link href="/modal" className="text-sm text-cyan-700 hover:underline dark:text-cyan-500">
+            <a href="/modal" className="text-sm text-cyan-700 hover:underline dark:text-cyan-500">
               Lost Password?
-            </Link>
+            </a>
           </div>
           <div className="w-full">
             <Button>Log in to your account</Button>
           </div>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?&nbsp;
-            <Link href="/modal" className="text-cyan-700 hover:underline dark:text-cyan-500">
+            <a href="/modal" className="text-cyan-700 hover:underline dark:text-cyan-500">
               Create account
-            </Link>
+            </a>
           </div>
         </div>
       </Modal.Body>

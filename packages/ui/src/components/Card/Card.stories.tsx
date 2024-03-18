@@ -1,5 +1,4 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import Image from "next/image";
 import type { CardProps } from "./Card";
 import { Card } from "./Card";
 
@@ -39,19 +38,4 @@ export const WithDecorativeImage = Template.bind({});
 WithDecorativeImage.storyName = "With decorative image";
 WithDecorativeImage.args = {
   imgSrc: "https://flowbite.com/docs/images/blog/image-1.jpg",
-};
-
-export const WithNextImage = Template.bind({});
-WithNextImage.storyName = "With Next.js Image component";
-WithNextImage.args = {
-  renderImage: () => (
-    <Image
-      alt="Meaningful alt text for an image that is not purely decorative"
-      // a loader is necessary to make `Image` render a React Node
-      loader={({ src }) => src}
-      width={1200}
-      height={800}
-      src={"https://flowbite.com/docs/images/blog/image-1.jpg"}
-    />
-  ),
 };
