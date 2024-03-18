@@ -1,5 +1,5 @@
-import type { ComponentProps, FC, ReactElement } from "react";
-import { Children, cloneElement, useMemo } from "react";
+import type { ComponentProps, FC, ReactElement, ReactNode } from "react";
+import { Children, cloneElement, isValidElement, useMemo } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
@@ -22,6 +22,37 @@ export interface ButtonGroupProps extends ComponentProps<"div">, Pick<ButtonProp
   theme?: DeepPartial<FlowbiteButtonGroupTheme>;
 }
 
+const processChildren = (
+  children: React.ReactNode,
+  outline: boolean | undefined,
+  pill: boolean | undefined,
+): ReactNode => {
+  return Children.map(children as ReactElement<ButtonProps>[], (child, index) => {
+    if (isValidElement(child)) {
+      // Check if the child has nested children
+      if (child.props.children) {
+        // Recursively process nested children
+        return cloneElement(child, {
+          ...child.props,
+          children: processChildren(child.props.children, outline, pill),
+          positionInGroup: determinePosition(index, Children.count(children)),
+        });
+      } else {
+        return cloneElement(child, {
+          outline,
+          pill,
+          positionInGroup: determinePosition(index, Children.count(children)),
+        });
+      }
+    }
+    return child;
+  });
+};
+
+const determinePosition = (index: number, totalChildren: number) => {
+  return index === 0 ? "start" : index === totalChildren - 1 ? "end" : "middle";
+};
+
 export const ButtonGroup: FC<ButtonGroupProps> = ({
   children,
   className,
@@ -30,18 +61,8 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   theme: customTheme = {},
   ...props
 }: ButtonGroupProps) => {
-  const items = useMemo(
-    () =>
-      Children.map(children as ReactElement<ButtonProps>[], (child, index) =>
-        cloneElement(child, {
-          outline,
-          pill,
-          positionInGroup:
-            index === 0 ? "start" : index === (children as ReactElement<ButtonProps>[]).length - 1 ? "end" : "middle",
-        }),
-      ),
-    [children, outline, pill],
-  );
+  const items = useMemo(() => processChildren(children, outline, pill), [children, outline, pill]);
+
   const theme = mergeDeep(getTheme().buttonGroup, customTheme);
 
   return (
