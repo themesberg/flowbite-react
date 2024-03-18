@@ -1,7 +1,7 @@
 'use client';
 
-import type { FC, ReactNode } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import type { ForwardRefRenderFunction, ReactNode } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { HiArrowLeft, HiArrowRight, HiCalendar } from 'react-icons/hi';
 import { twMerge } from 'tailwind-merge';
 import { mergeDeep } from '../../helpers/merge-deep';
@@ -71,6 +71,17 @@ export interface FlowbiteDatepickerPopupTheme {
   };
 }
 
+export interface DatepickerRef {
+  /**
+   * Focus the datepicker input.
+   */
+  focus: () => void;
+  /**
+   * Clears the datepicker value back to the defaultDate.
+   */
+  clear: () => void;
+}
+
 export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   open?: boolean;
   inline?: boolean;
@@ -88,25 +99,28 @@ export interface DatepickerProps extends Omit<TextInputProps, 'theme'> {
   onSelectedDateChanged?: (date: Date) => void;
 }
 
-export const Datepicker: FC<DatepickerProps> = ({
-  title,
-  open,
-  inline = false,
-  autoHide = true, // Hide when selected the day
-  showClearButton = true,
-  labelClearButton = 'Clear',
-  showTodayButton = true,
-  labelTodayButton = 'Today',
-  defaultDate = new Date(),
-  minDate,
-  maxDate,
-  language = 'en',
-  weekStart = WeekStart.Sunday,
-  className,
-  theme: customTheme = {},
-  onSelectedDateChanged,
-  ...props
-}) => {
+const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps> = (
+  {
+    title,
+    open,
+    inline = false,
+    autoHide = true, // Hide when selected the day
+    showClearButton = true,
+    labelClearButton = 'Clear',
+    showTodayButton = true,
+    labelTodayButton = 'Today',
+    defaultDate = new Date(),
+    minDate,
+    maxDate,
+    language = 'en',
+    weekStart = WeekStart.Sunday,
+    className,
+    theme: customTheme = {},
+    onSelectedDateChanged,
+    ...props
+  },
+  ref,
+) => {
   const theme = mergeDeep(getTheme().datepicker, customTheme);
 
   // Default date should respect the range
@@ -134,6 +148,22 @@ export const Datepicker: FC<DatepickerProps> = ({
       setIsOpen(false);
     }
   };
+
+  const clearDate = () => {
+    changeSelectedDate(defaultDate, true);
+    if (defaultDate) {
+      setViewDate(defaultDate);
+    }
+  };
+
+  useImperativeHandle(ref, () => ({
+    focus() {
+      inputRef.current?.focus();
+    },
+    clear() {
+      clearDate();
+    },
+  }));
 
   // Render the DatepickerView* node
   const renderView = (type: Views): ReactNode => {
@@ -324,5 +354,7 @@ export const Datepicker: FC<DatepickerProps> = ({
     </DatepickerContext.Provider>
   );
 };
+
+export const Datepicker = forwardRef(DatepickerRender);
 
 Datepicker.displayName = 'Datepicker';
