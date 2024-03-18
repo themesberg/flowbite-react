@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import { useState } from "react";
 import { Button } from "../Button";
-import { Popover } from "./Popover";
+import { Popover, type PopoverProps } from "./Popover";
 
 export default {
   title: "Components/Popover",
@@ -15,7 +15,7 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<typeof Popover> = (args) => {
+const Template: StoryFn<PopoverProps> = (args) => {
   return (
     <div className="flex h-96 w-full items-center justify-center">
       <Popover
@@ -55,7 +55,7 @@ InitialOpen.args = {
   children: <Button>Initial open</Button>,
 };
 
-const ControlledTemplate: StoryFn<typeof Popover> = (args) => {
+const ControlledTemplate: StoryFn<PopoverProps> = (args) => {
   const [open, setOpen] = useState(false);
   return (
     <div className="flex h-96 w-full items-center justify-center">

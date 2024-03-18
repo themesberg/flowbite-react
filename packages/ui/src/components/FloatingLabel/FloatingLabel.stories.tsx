@@ -1,4 +1,4 @@
-import type { Meta, Story } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { FloatingLabel, type FloatingLabelProps } from "./FloatingLabel";
 
 export default {
@@ -6,7 +6,7 @@ export default {
   component: FloatingLabel,
 } as Meta;
 
-const Template: Story<FloatingLabelProps> = (args) => <FloatingLabel {...args} />;
+const Template: StoryFn<FloatingLabelProps> = (args) => <FloatingLabel {...args} />;
 
 export const DefaultFilled = Template.bind({});
 DefaultFilled.args = {

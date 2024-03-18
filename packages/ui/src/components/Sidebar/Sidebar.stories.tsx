@@ -1,16 +1,16 @@
-import type { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
 import { BiBuoy } from "react-icons/bi";
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
 import { Badge } from "../Badge";
 import { Button } from "../Button";
-import { Sidebar } from "./Sidebar";
+import { Sidebar, SidebarProps } from "./Sidebar";
 
 export default {
   title: "Components/Sidebar",
   component: Sidebar,
-} as ComponentMeta<typeof Sidebar>;
+} as Meta;
 
-const Template: ComponentStory<typeof Sidebar> = (args) => <Sidebar {...args} />;
+const Template: StoryFn<SidebarProps> = (props) => <Sidebar {...props} />;
 
 export const Default = Template.bind({});
 Default.args = {
