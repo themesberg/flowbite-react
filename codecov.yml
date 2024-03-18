@@ -1,7 +1,0 @@
-coverage:
-  status:
-    project:
-      default:
-        if_ci_failed: success
-        target: auto
-        threshold: 5%
