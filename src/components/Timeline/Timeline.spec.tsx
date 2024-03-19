@@ -3,6 +3,7 @@ import type { FC } from 'react';
 import { describe, expect, it } from 'vitest';
 import type { TimelineProps } from './Timeline';
 import { Timeline } from './Timeline';
+import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 
 describe.concurrent('Components / Timeline', () => {
   describe('Rendering horizontal mode', () => {
@@ -26,7 +27,28 @@ describe.concurrent('Components / Timeline', () => {
       expect(timelinePoint()).toBeInTheDocument();
       expect(timelinePoint().childNodes[0]).toContainHTML('svg');
     });
+
+    it('should use `horizontal` classes of content if provided', () => {
+      render(
+        <Flowbite theme={{ theme }}>
+          <TestTimelineNoIcon horizontal={true} />
+        </Flowbite>,
+      );
+
+      expect(timelineContent()).toHaveClass(horizontalContentClass);
+    });
+
+    it('should not use `vertical` classes of content if provided', () => {
+      render(
+        <Flowbite theme={{ theme }}>
+          <TestTimelineNoIcon horizontal={true} />
+        </Flowbite>,
+      );
+
+      expect(timelineContent()).not.toHaveClass(verticalContentClass);
+    });
   });
+
   describe('Rendering vertical mode', () => {
     it('should have margin-top when do not icon', () => {
       render(<TestTimelineNoIcon horizontal={false} />);
@@ -40,6 +62,48 @@ describe.concurrent('Components / Timeline', () => {
 
       expect(timelinePoint()).toBeInTheDocument();
       expect(timelinePoint().childNodes[0]).toContainHTML('svg');
+    });
+
+    it('should use `vertical` classes of content if provided', () => {
+      render(
+        <Flowbite theme={{ theme }}>
+          <TestTimelineNoIcon />
+        </Flowbite>,
+      );
+
+      expect(timelineContent()).toHaveClass(verticalContentClass);
+    });
+
+    it('should not use `horizontal` classes of content if provided', () => {
+      render(
+        <Flowbite theme={{ theme }}>
+          <TestTimelineNoIcon />
+        </Flowbite>,
+      );
+
+      expect(timelineContent()).not.toHaveClass(horizontalContentClass);
+    });
+  });
+
+  describe('Theme', () => {
+    it('should use `base` classes of content in horizontal mode', () => {
+      render(
+        <Flowbite theme={{ theme }}>
+          <TestTimelineNoIcon horizontal={true} />
+        </Flowbite>,
+      );
+
+      expect(timelineContent()).toHaveClass(baseContentClass);
+    });
+
+    it('should use `base` classes of content in vertical mode', () => {
+      render(
+        <Flowbite theme={{ theme }}>
+          <TestTimelineNoIcon />
+        </Flowbite>,
+      );
+
+      expect(timelineContent()).toHaveClass(baseContentClass);
     });
   });
 });
@@ -100,3 +164,22 @@ const IconSVG = () => (
 
 const timeline = () => screen.getByTestId('timeline-component');
 const timelinePoint = () => screen.getByTestId('timeline-point');
+const timelineContent = () => screen.getByTestId('timeline-content');
+
+const baseContentClass = 'dummy-base-content';
+const verticalContentClass = 'dummy-vertical-content';
+const horizontalContentClass = 'dummy-horizontal-content';
+
+const theme: CustomFlowbiteTheme = {
+  timeline: {
+    item: {
+      content: {
+        root: {
+          base: baseContentClass,
+          vertical: verticalContentClass,
+          horizontal: horizontalContentClass,
+        },
+      },
+    },
+  },
+};
