@@ -16,4 +16,4 @@ runs:
 
     - name: Install packages
       shell: bash
-      run: bun pm cache rm && bun install
+      run: bun install
