@@ -12,4 +12,11 @@ export const listTheme: FlowbiteListTheme = createTheme({
     unstyled: "list-none",
     nested: "mt-2 ps-5",
   },
+  item: {
+    withIcon: {
+      off: "",
+      on: "flex items-center",
+    },
+    icon: "me-2 h-3.5 w-3.5 flex-shrink-0",
+  },
 });
