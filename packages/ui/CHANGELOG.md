@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.4](https://github.com/themesberg/flowbite-react/compare/v0.7.3...v0.7.4) (2024-03-20)
+
+### Bug Fixes
+
+* **button:** fix: polymorphic component return types [button, dropdown item] ([#1308](https://github.com/themesberg/flowbite-react/issues/1308)) ([f8775d8](https://github.com/themesberg/flowbite-react/commit/a6698d48474595f2ee05a3f817ecbdb322aa7807)), closes [#962](https://github.com/themesberg/flowbite-react/issues/962)
+
 ### [0.7.3](https://github.com/themesberg/flowbite-react/compare/v0.7.2...v0.7.3) (2024-03-12)
 
 ### Features
