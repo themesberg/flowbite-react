@@ -88,11 +88,11 @@ export type ButtonProps<T extends ElementType = "button"> = PolymorphicComponent
   }
 >;
 
-type ButtonComponentType = (<C extends React.ElementType = "button">(
-  props: ButtonProps<C>,
-) => React.ReactNode | null) & { displayName?: string };
+type ButtonComponentType = (<C extends React.ElementType = "button">(props: ButtonProps<C>) => JSX.Element) & {
+  displayName?: string;
+};
 
-const ButtonComponentFn: ButtonComponentType = forwardRef(
+const ButtonComponent = forwardRef(
   <T extends ElementType = "button">(
     {
       children,
@@ -168,10 +168,10 @@ const ButtonComponentFn: ButtonComponentType = forwardRef(
       </ButtonBase>
     );
   },
-);
+) as ButtonComponentType;
 
-ButtonComponentFn.displayName = "Button";
+ButtonComponent.displayName = "Button";
 
-export const Button = Object.assign(ButtonComponentFn, {
+export const Button = Object.assign(ButtonComponent, {
   Group: ButtonGroup,
 });

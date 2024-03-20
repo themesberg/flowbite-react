@@ -25,11 +25,11 @@ export type DropdownItemProps<T extends ElementType = "button"> = PolymorphicCom
   }
 >;
 
-type DropdownItemComponentType = (<C extends React.ElementType = "button">(
-  props: DropdownItemProps<C>,
-) => React.ReactNode | null) & { displayName?: string };
+type DropdownItemType = (<C extends React.ElementType = "button">(props: DropdownItemProps<C>) => JSX.Element) & {
+  displayName?: string;
+};
 
-export const DropdownItem: DropdownItemComponentType = forwardRef(
+export const DropdownItem = forwardRef(
   <T extends ElementType = "button">(
     { children, className, icon: Icon, onClick, theme: customTheme = {}, ...props }: DropdownItemProps<T>,
     forwardedRef: PolymorphicRef<T>,
@@ -62,6 +62,6 @@ export const DropdownItem: DropdownItemComponentType = forwardRef(
       </li>
     );
   },
-);
+) as DropdownItemType;
 
 DropdownItem.displayName = "DropdownItem";
