@@ -33,7 +33,7 @@
     "@changesets/changelog-github": "0.5.0",
     "@changesets/cli": "2.27.1",
     "@ianvs/prettier-plugin-sort-imports": "4.2.1",
-    "@types/bun": "1.0.8",
+    "@types/bun": "1.0.10",
     "@types/web": "0.0.142",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
@@ -45,5 +45,5 @@
     "rimraf": "5.0.5",
     "turbo": "latest"
   },
-  "packageManager": "bun@1.0.33"
+  "packageManager": "bun@1.0.31"
 }
