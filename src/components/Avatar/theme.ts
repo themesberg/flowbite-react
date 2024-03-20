@@ -30,6 +30,7 @@ export const avatarTheme: FlowbiteAvatarTheme = {
       xl: 'w-36 h-36',
     },
     stacked: 'ring-2 ring-gray-300 dark:ring-gray-500',
+    tooltip: '-ml-2',
     statusPosition: {
       'bottom-left': '-bottom-1 -left-1',
       'bottom-center': '-bottom-1 center',
@@ -54,7 +55,7 @@ export const avatarTheme: FlowbiteAvatarTheme = {
     },
   },
   group: {
-    base: 'flex -space-x-4',
+    base: 'flex ml-4',
   },
   groupCounter: {
     base: 'relative flex items-center justify-center w-10 h-10 text-xs font-medium text-white bg-gray-700 rounded-full ring-2 ring-gray-300 hover:bg-gray-600 dark:ring-gray-500',

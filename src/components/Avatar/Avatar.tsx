@@ -24,6 +24,7 @@ export interface FlowbiteAvatarRootTheme {
   rounded: string;
   size: AvatarSizes;
   stacked: string;
+  tooltip: string;
   status: FlowbiteAvatarStatusTheme;
   statusPosition: FlowbitePositions;
 }
@@ -108,7 +109,11 @@ const AvatarComponent: FC<AvatarProps> = ({
     'data-testid': 'flowbite-avatar-img',
   };
   return (
-    <div className={twMerge(theme.root.base, className)} data-testid="flowbite-avatar" {...props}>
+    <div
+      className={twMerge(theme.root.base, stacked && theme.root.tooltip, className)}
+      data-testid="flowbite-avatar"
+      {...props}
+    >
       <div className="relative">
         {img ? (
           typeof img === 'string' ? (
