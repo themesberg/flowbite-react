@@ -124,7 +124,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   const {
     placement = props.inline ? 'bottom-start' : 'bottom',
     trigger = 'click',
-    label,
+    label = 'Dropdown Button',
     inline,
     arrowIcon = true,
     ...buttonProps
