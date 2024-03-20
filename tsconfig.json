@@ -17,6 +17,7 @@
     "noUnusedParameters": true,
     "paths": {
       "~/*": ["./*"],
+
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [

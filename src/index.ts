@@ -15,7 +15,6 @@ export * from './components/Dropdown';
 export * from './components/FileInput';
 export * from './components/FloatingLabel';
 export * from './components/Flowbite';
-export type { CustomFlowbiteTheme } from './components/Flowbite/FlowbiteTheme';
 export * from './components/Footer';
 export * from './components/HelperText';
 export * from './components/Kbd';
@@ -47,3 +46,4 @@ export * from './hooks/use-theme-mode';
 
 export * from './theme';
 export { getTheme, getThemeMode } from './theme-store';
+export type { CustomFlowbiteTheme } from './components/Flowbite/FlowbiteTheme';
