@@ -3,11 +3,11 @@
 import { useListItem, useMergeRefs } from '@floating-ui/react';
 import { forwardRef, type ComponentProps, type ElementType, type FC, type RefCallback } from 'react';
 import { twMerge } from 'tailwind-merge';
+import type { PolymorphicComponentPropWithRef, PolymorphicRef } from '~/src/helpers/generic-as-prop';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import { ButtonBase, type ButtonBaseProps } from '../Button/ButtonBase';
 import { useDropdownContext } from './DropdownContext';
-import type { PolymorphicComponentPropWithRef, PolymorphicRef } from '~/src/helpers/generic-as-prop';
 
 export interface FlowbiteDropdownItemTheme {
   container: string;
