@@ -1,6 +1,7 @@
 import type { ElementType } from 'react';
 import { forwardRef, type ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
+import type { PolymorphicComponentPropWithRef, PolymorphicRef } from '../../helpers/generic-as-prop';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
@@ -15,7 +16,6 @@ import { Spinner } from '../Spinner';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
 import type { PositionInButtonGroup } from './ButtonGroup';
 import { ButtonGroup } from './ButtonGroup';
-import type { PolymorphicComponentPropWithRef, PolymorphicRef } from '../../helpers/generic-as-prop';
 
 export interface FlowbiteButtonTheme {
   base: string;
