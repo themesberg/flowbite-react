@@ -95,3 +95,23 @@ export default function Index() {
   return <Button>Click me</Button>;
 }
 ```
+
+## Additional Info
+
+To ensure smooth navigation within your application while using Remix components, it's important to align with Remix's API layer. By following these guidelines, you can optimize your navigation experience for users.
+
+**Best Practices**
+
+1. **Consider** `to` **instead of** `href`: When incorporating Remix components such as **`Navbar.Link`** or **`Sidebar.Item`**, keep in mind the usage of to instead of href when employing `as={Link}`. This step ensures seamless integration with Remix's API layer, maintaining consistency in navigation across your application.
+2. **Leverage Remix's API Layer:** Embrace Remix's API layer for enhanced routing capabilities. Utilizing `Link` components with the `to` prop enables you to specify navigation destinations accurately.
+3. **Example:**
+
+```tsx
+// Before
+<Navbar.Link href="/about">About</Navbar.Link>
+
+// After
+<Navbar.Link as={Link} to="/about">About</Navbar.Link>
+```
+
+By making this simple adjustment, replacing **href** with **to** and employing `as={Link}`, you adhere to Remix's API conventions seamlessly.
