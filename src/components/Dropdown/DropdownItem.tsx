@@ -3,7 +3,7 @@
 import { useListItem, useMergeRefs } from '@floating-ui/react';
 import { forwardRef, type ComponentProps, type ElementType, type FC, type RefCallback } from 'react';
 import { twMerge } from 'tailwind-merge';
-import type { PolymorphicComponentPropWithRef, PolymorphicRef } from '~/src/helpers/generic-as-prop';
+import type { PolymorphicComponentPropWithRef, PolymorphicRef } from '../../helpers/generic-as-prop';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import { ButtonBase, type ButtonBaseProps } from '../Button/ButtonBase';
