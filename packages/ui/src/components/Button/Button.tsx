@@ -88,7 +88,7 @@ export type ButtonProps<T extends ElementType = "button"> = PolymorphicComponent
   }
 >;
 
-type ButtonComponentType = (<C extends React.ElementType = "button">(props: ButtonProps<C>) => JSX.Element) & {
+type ButtonComponentType = (<C extends ElementType = "button">(props: ButtonProps<C>) => JSX.Element) & {
   displayName?: string;
 };
 

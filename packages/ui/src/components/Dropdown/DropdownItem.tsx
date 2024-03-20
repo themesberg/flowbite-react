@@ -25,7 +25,7 @@ export type DropdownItemProps<T extends ElementType = "button"> = PolymorphicCom
   }
 >;
 
-type DropdownItemType = (<C extends React.ElementType = "button">(props: DropdownItemProps<C>) => JSX.Element) & {
+type DropdownItemType = (<C extends ElementType = "button">(props: DropdownItemProps<C>) => JSX.Element) & {
   displayName?: string;
 };
 
