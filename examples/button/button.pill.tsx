@@ -13,6 +13,9 @@ function Component() {
       <Button color="blue" pill>
         Blue
       </Button>
+      <Button color="ghost" pill>
+        Ghost
+      </Button>
       <Button color="gray" pill>
         Gray
       </Button>
@@ -49,6 +52,9 @@ function Component() {
       <Button color="blue" pill>
         Blue
       </Button>
+      <Button color="ghost" pill>
+        Ghost
+      </Button>
       <Button color="gray" pill>
         Gray
       </Button>
@@ -81,6 +87,9 @@ function Component() {
       <Button pill>Default</Button>
       <Button color="blue" pill>
         Blue
+      </Button>
+      <Button color="ghost" pill>
+        Ghost
       </Button>
       <Button color="gray" pill>
         Gray
