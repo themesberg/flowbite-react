@@ -7,7 +7,7 @@ export const rangeSliderTheme: FlowbiteRangeSliderTheme = {
   field: {
     base: 'relative w-full',
     input: {
-      base: 'w-full bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700',
+      base: 'w-full bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700 disabled:cursor-not-allowed',
       sizes: {
         sm: 'h-1 range-sm',
         md: 'h-2',
