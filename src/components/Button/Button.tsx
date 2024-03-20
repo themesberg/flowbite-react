@@ -1,6 +1,7 @@
 import type { ElementType } from 'react';
 import { forwardRef, type ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
+import type { PolymorphicComponentPropWithRef, PolymorphicRef } from '../../helpers/generic-as-prop';
 import { mergeDeep } from '../../helpers/merge-deep';
 import { getTheme } from '../../theme-store';
 import type { DeepPartial } from '../../types';
@@ -15,7 +16,6 @@ import { Spinner } from '../Spinner';
 import { ButtonBase, type ButtonBaseProps } from './ButtonBase';
 import type { PositionInButtonGroup } from './ButtonGroup';
 import { ButtonGroup } from './ButtonGroup';
-import type { PolymorphicComponentPropWithRef, PolymorphicRef } from '../../helpers/generic-as-prop';
 
 export interface FlowbiteButtonTheme {
   base: string;
@@ -88,11 +88,11 @@ export type ButtonProps<T extends ElementType = 'button'> = PolymorphicComponent
   }
 >;
 
-type ButtonComponentType = (<C extends React.ElementType = 'button'>(
-  props: ButtonProps<C>,
-) => React.ReactNode | null) & { displayName?: string };
+type ButtonComponentType = (<C extends ElementType = 'button'>(props: ButtonProps<C>) => JSX.Element) & {
+  displayName?: string;
+};
 
-const ButtonComponentFn: ButtonComponentType = forwardRef(
+const ButtonComponent = forwardRef(
   <T extends ElementType = 'button'>(
     {
       children,
@@ -168,9 +168,10 @@ const ButtonComponentFn: ButtonComponentType = forwardRef(
       </ButtonBase>
     );
   },
-);
+) as ButtonComponentType;
 
-ButtonComponentFn.displayName = 'Button';
-export const Button = Object.assign(ButtonComponentFn, {
+ButtonComponent.displayName = 'Button';
+
+export const Button = Object.assign(ButtonComponent, {
   Group: ButtonGroup,
 });

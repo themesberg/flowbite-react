@@ -3,11 +3,11 @@
 import { useListItem, useMergeRefs } from '@floating-ui/react';
 import { forwardRef, type ComponentProps, type ElementType, type FC, type RefCallback } from 'react';
 import { twMerge } from 'tailwind-merge';
+import type { PolymorphicComponentPropWithRef, PolymorphicRef } from '../../helpers/generic-as-prop';
 import { mergeDeep } from '../../helpers/merge-deep';
 import type { DeepPartial } from '../../types';
 import { ButtonBase, type ButtonBaseProps } from '../Button/ButtonBase';
 import { useDropdownContext } from './DropdownContext';
-import type { PolymorphicComponentPropWithRef, PolymorphicRef } from '~/src/helpers/generic-as-prop';
 
 export interface FlowbiteDropdownItemTheme {
   container: string;
@@ -25,11 +25,11 @@ export type DropdownItemProps<T extends ElementType = 'button'> = PolymorphicCom
   }
 >;
 
-type DropdownItemComponentType = (<C extends React.ElementType = 'button'>(
-  props: DropdownItemProps<C>,
-) => React.ReactNode | null) & { displayName?: string };
+type DropdownItemComponentType = (<C extends ElementType = 'button'>(props: DropdownItemProps<C>) => JSX.Element) & {
+  displayName?: string;
+};
 
-export const DropdownItem: DropdownItemComponentType = forwardRef(
+export const DropdownItem = forwardRef(
   <T extends ElementType = 'button'>(
     { children, className, icon: Icon, onClick, theme: customTheme = {}, ...props }: DropdownItemProps<T>,
     forwardedRef: PolymorphicRef<T>,
@@ -62,5 +62,6 @@ export const DropdownItem: DropdownItemComponentType = forwardRef(
       </li>
     );
   },
-);
+) as DropdownItemComponentType;
+
 DropdownItem.displayName = 'DropdownItem';
