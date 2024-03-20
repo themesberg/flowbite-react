@@ -15,7 +15,7 @@ export default {
   ],
   argTypes: {
     sizing: {
-      options: Object.keys(theme.rangeSlider.field.input.sizes),
+      options: Object.keys(theme.rangeSlider.sizes),
       control: { type: 'select' },
     },
     disabled: {

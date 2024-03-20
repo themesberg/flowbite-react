@@ -5,7 +5,7 @@ import { describe, expect, it, vi } from 'vitest';
 import { Flowbite, type CustomFlowbiteTheme } from '../Flowbite';
 import { RangeSlider } from './RangeSlider';
 
-describe('Components / Button', () => {
+describe('Components / RangeSlider', () => {
   describe('A11y', () => {
     it('should have `role="progressbar"` by default', () => {
       render(<RangeSlider />);
@@ -127,6 +127,13 @@ describe('Components / Button', () => {
       render(<RangeSlider ref={ref} name="range_slider_name" />);
       expect(ref.current?.name).toBe('range_slider_name');
     });
+
+    it('should allow className as prop', () => {
+      const className = 'dummy-custom-class-name';
+
+      render(<RangeSlider className={className} />);
+      expect(rangeSlider()).toHaveClass(className);
+    });
   });
 
   describe('Rendering', () => {
@@ -140,47 +147,7 @@ describe('Components / Button', () => {
     it('should use `base` classes', () => {
       const theme: CustomFlowbiteTheme = {
         rangeSlider: {
-          root: {
-            base: 'dummy-range-slider-base-classes',
-          },
-        },
-      };
-
-      render(
-        <Flowbite theme={{ theme }}>
-          <RangeSlider />
-        </Flowbite>,
-      );
-
-      expect(rangeSliderContainer()).toHaveClass('dummy-range-slider-base-classes');
-    });
-
-    it('should use `base` classes of field', () => {
-      const theme: CustomFlowbiteTheme = {
-        rangeSlider: {
-          field: {
-            base: 'dummy-range-slider-field-base-classes',
-          },
-        },
-      };
-
-      render(
-        <Flowbite theme={{ theme }}>
-          <RangeSlider />
-        </Flowbite>,
-      );
-
-      expect(rangeSliderContainer().childNodes[0]).toHaveClass('dummy-range-slider-field-base-classes');
-    });
-
-    it('should use `base` classes of input', () => {
-      const theme: CustomFlowbiteTheme = {
-        rangeSlider: {
-          field: {
-            input: {
-              base: 'dummy-range-slider-field-input-base-classes',
-            },
-          },
+          base: 'dummy-range-slider-field-input-base-classes',
         },
       };
 
@@ -193,15 +160,11 @@ describe('Components / Button', () => {
       expect(rangeSlider()).toHaveClass('dummy-range-slider-field-input-base-classes');
     });
 
-    it('should use `sizes` classes of input', () => {
+    it('should use `sizes` classes', () => {
       const theme: CustomFlowbiteTheme = {
         rangeSlider: {
-          field: {
-            input: {
-              sizes: {
-                lg: 'dummy-range-slider-field-input-sizes-lg-classes',
-              },
-            },
+          sizes: {
+            lg: 'dummy-range-slider-field-input-sizes-lg-classes',
           },
         },
       };
@@ -219,35 +182,7 @@ describe('Components / Button', () => {
   describe('Theme as a prop', () => {
     it('should use `base` classes', () => {
       const theme: CustomFlowbiteTheme['rangeSlider'] = {
-        root: {
-          base: 'dummy-range-slider-base-classes',
-        },
-      };
-
-      render(<RangeSlider theme={theme} />);
-
-      expect(rangeSliderContainer()).toHaveClass('dummy-range-slider-base-classes');
-    });
-
-    it('should use `base` classes of field', () => {
-      const theme: CustomFlowbiteTheme['rangeSlider'] = {
-        field: {
-          base: 'dummy-range-slider-field-base-classes',
-        },
-      };
-
-      render(<RangeSlider theme={theme} />);
-
-      expect(rangeSliderContainer().childNodes[0]).toHaveClass('dummy-range-slider-field-base-classes');
-    });
-
-    it('should use `base` classes of input', () => {
-      const theme: CustomFlowbiteTheme['rangeSlider'] = {
-        field: {
-          input: {
-            base: 'dummy-range-slider-field-input-base-classes',
-          },
-        },
+        base: 'dummy-range-slider-field-input-base-classes',
       };
 
       render(<RangeSlider theme={theme} />);
@@ -255,14 +190,10 @@ describe('Components / Button', () => {
       expect(rangeSlider()).toHaveClass('dummy-range-slider-field-input-base-classes');
     });
 
-    it('should use `sizes` classes of input', () => {
+    it('should use `sizes` classes', () => {
       const theme: CustomFlowbiteTheme['rangeSlider'] = {
-        field: {
-          input: {
-            sizes: {
-              lg: 'dummy-range-slider-field-input-sizes-lg-classes',
-            },
-          },
+        sizes: {
+          lg: 'dummy-range-slider-field-input-sizes-lg-classes',
         },
       };
 
@@ -273,6 +204,5 @@ describe('Components / Button', () => {
   });
 });
 
-const rangeSliderContainer = () => screen.getByTestId('flowbite-range-slider');
 const rangeSlider = (role = 'slider') => screen.getByRole(role);
 const rangeSliders = (role = 'slider') => screen.getAllByRole(role);
