@@ -4,6 +4,7 @@ export * as avatar from './avatar';
 export * as badge from './badge';
 export * as banner from './banner';
 export * as blockquote from './blockquote';
+export * as bottomNavigation from './bottomNavigation';
 export * as breadcrumb from './breadcrumb';
 export * as button from './button';
 export * as buttonGroup from './buttonGroup';
