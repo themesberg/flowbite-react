@@ -183,7 +183,7 @@ function CodePreview({ isDarkMode, children }: PropsWithChildren<{ isDarkMode: b
     <div className={twMerge('code-preview-wrapper', isDarkMode && 'dark')}>
       <div className="code-preview flex border-x border-gray-200 bg-white bg-gradient-to-r p-0 dark:border-gray-600 dark:bg-gray-900">
         <div className="code-responsive-wrapper w-full">
-          <div className="mx-auto w-full bg-white bg-gradient-to-r p-2 dark:bg-gray-900 sm:p-6">
+          <div className="relative mx-auto w-full bg-white bg-gradient-to-r p-2 dark:bg-gray-900 sm:p-6">
             <div className="py-4">{children}</div>
           </div>
         </div>

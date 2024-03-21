@@ -11,6 +11,7 @@ export * from './components/Carousel';
 export * from './components/Checkbox';
 export * from './components/DarkThemeToggle';
 export * from './components/Datepicker';
+export * from './components/Drawer';
 export * from './components/Dropdown';
 export * from './components/FileInput';
 export * from './components/FloatingLabel';
