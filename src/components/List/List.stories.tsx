@@ -1,6 +1,7 @@
 import type { Meta, StoryFn } from '@storybook/react';
 import type { ListProps } from './List';
 import { List } from './List';
+import { HiCheckCircle } from 'react-icons/hi';
 
 export default {
   title: 'Components/List',
@@ -93,6 +94,18 @@ HorizontalList.args = {
       <List.Item>Affiliate Program</List.Item>
       <List.Item>FAQs</List.Item>
       <List.Item>Contact</List.Item>
+    </>
+  ),
+};
+
+export const WithIconList = Template.bind({});
+WithIconList.storyName = 'With Icon';
+WithIconList.args = {
+  children: (
+    <>
+      <List.Item icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</List.Item>
+      <List.Item icon={HiCheckCircle}>At least one lowercase character</List.Item>
+      <List.Item icon={HiCheckCircle}>Inclusion of at least one special character, e.g., ! @ # ?</List.Item>
     </>
   ),
 };
