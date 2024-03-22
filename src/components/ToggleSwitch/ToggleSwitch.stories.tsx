@@ -54,3 +54,10 @@ LargeToggleSwitch.args = {
   sizing: 'lg',
   label: 'large toggle switch',
 };
+
+export const ToggleSwitchWithLongLabel = Template.bind({});
+ToggleSwitchWithLongLabel.storyName = 'Toggle switch with long label';
+ToggleSwitchWithLongLabel.args = {
+  sizing: 'lg',
+  label: 'Toggle switch with long label to check for problems if there are any',
+};

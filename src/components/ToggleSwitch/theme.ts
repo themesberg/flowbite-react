@@ -10,7 +10,7 @@ export const toggleSwitchTheme: FlowbiteToggleSwitchTheme = {
     label: 'ml-3 text-sm font-medium text-gray-900 dark:text-gray-300',
   },
   toggle: {
-    base: 'toggle-bg rounded-full border group-focus:ring-4 group-focus:ring-cyan-500/25',
+    base: 'relative shrink-0 toggle-bg rounded-full border group-focus:ring-4 group-focus:ring-cyan-500/25',
     checked: {
       on: 'after:translate-x-full after:border-white',
       off: 'border-gray-200 bg-gray-200 dark:border-gray-600 dark:bg-gray-700',
@@ -35,9 +35,9 @@ export const toggleSwitchTheme: FlowbiteToggleSwitchTheme = {
       },
     },
     sizes: {
-      sm: 'w-9 h-5 after:absolute after:top-[2px] after:left-[2px] after:h-4 after:w-4',
-      md: 'w-11 h-6 after:absolute after:top-[2px] after:left-[2px] after:h-5 after:w-5',
-      lg: 'w-14 h-7 after:absolute after:top-0.5 after:left-[4px] after:h-6 after:w-6',
+      sm: 'w-9 h-5 after:absolute after:top-[1px] after:left-[2px] after:h-4 after:w-4',
+      md: 'w-11 h-6 after:absolute after:top-[1px] after:left-[2px] after:h-5 after:w-5',
+      lg: 'w-14 h-7 after:absolute after:top-[1px] after:left-[4px] after:h-6 after:w-6',
     },
   },
 };
