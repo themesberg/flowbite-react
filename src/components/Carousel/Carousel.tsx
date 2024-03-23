@@ -56,6 +56,7 @@ export interface CarouselProps extends ComponentProps<'div'> {
   theme?: DeepPartial<FlowbiteCarouselTheme>;
   onSlideChange?: (slide: number) => void;
   pauseOnHover?: boolean;
+  activeSlide?: number;
 }
 
 export interface DefaultLeftRightControlProps extends ComponentProps<'div'> {
@@ -74,13 +75,14 @@ export const Carousel: FC<CarouselProps> = ({
   theme: customTheme = {},
   onSlideChange = null,
   pauseOnHover = false,
+  activeSlide = 0,
   ...props
 }) => {
   const theme = mergeDeep(getTheme().carousel, customTheme);
 
   const isDeviceMobile = isClient() && navigator.userAgent.indexOf('IEMobile') !== -1;
   const carouselContainer = useRef<HTMLDivElement>(null);
-  const [activeItem, setActiveItem] = useState(0);
+  const [activeItem, setActiveItem] = useState(activeSlide);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
 
@@ -107,6 +109,12 @@ export const Carousel: FC<CarouselProps> = ({
     },
     [items],
   );
+
+  useEffect(() => {
+    if (!items) return;
+    const validateActiveSlide = Math.max(0, Math.min(activeSlide, items.length - 1));
+    navigateTo(validateActiveSlide)();
+  }, [activeSlide, items, navigateTo]);
 
   useEffect(() => {
     if (carouselContainer.current && !isDragging && carouselContainer.current.scrollLeft !== 0) {
