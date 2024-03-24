@@ -1,0 +1,62 @@
+---
+title: React Sidebar - Flowbite
+description: Use the sidebar component to show a list of menu items including multi-level dropdown menu on the left or right side of your page for admin dashboards and applications
+---
+
+The sidebar component is an UI component that you can use for the navigation mechanism in your website or application that you would position to the left or right side of your page.
+
+A sidebar can include content such as menu list items, dropdown, user profile information, CTA buttons, and more - you can use the custom props from React to customize the options and the utility classes from Tailwind CSS to update the styles.
+
+To start using the sidebar component make sure you import it from the Flowbite React library:
+
+```jsx
+import { Sidebar } from "flowbite-react";
+```
+
+## Default sidebar
+
+Use this example to show a list of navigation menu items by adding `<Sidebar.Item>` children components inside the `<Sidebar>` component and pass the `href` prop to set a URL and `icon` to apply any icons from the `react-icons` icon library.
+
+You can also add a text label as a badge by using the `label` prop from React and the `labelColor` to set the color of the label background.
+
+<Example name="sidebar.root" />
+
+## Multi-level dropdown
+
+Use this example to learn how to stack multiple sidebar menu items inside one dropdown menu by using the `<Sidebar.Collapse>` component.
+
+<Example name="sidebar.dropdown" />
+
+## Multi-level dropdown with custom chevron
+
+The `chevronIcon` property offers customization for the chevron icon. Alternatively, for more complex scenarios, the `renderChevronIcon` option can be utilized. Here's an example:
+
+<Example name="sidebar.dropdownWithChevron" />
+
+## Content separator
+
+Use this example to separate content inside of the sidebar using a horizontal line.
+
+<Example name="sidebar.separator" />
+
+## Sidebar with button
+
+This example can be used to show a call to action button inside the sidebar next to the menu items.
+
+<Example name="sidebar.withButton" />
+
+## Sidebar with logo
+
+Feature the branded logo of your company on the top side of the sidebar using this example.
+
+<Example name="sidebar.withLogo" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="sidebar" />
+
+## References
+
+- [Flowbite Sidebar](https://flowbite.com/docs/components/sidebar/)

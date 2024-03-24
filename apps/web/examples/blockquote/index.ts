@@ -1,0 +1,12 @@
+export { center } from "./blockquote.center";
+export { icon } from "./blockquote.icon";
+export { large } from "./blockquote.large";
+export { left } from "./blockquote.left";
+export { medium } from "./blockquote.medium";
+export { paragraphContext } from "./blockquote.paragraphContext";
+export { right } from "./blockquote.right";
+export { root } from "./blockquote.root";
+export { small } from "./blockquote.small";
+export { solidBackground } from "./blockquote.solidBackground";
+export { userReview } from "./blockquote.userReview";
+export { userTestimonial } from "./blockquote.userTestimonial";

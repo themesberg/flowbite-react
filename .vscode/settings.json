@@ -1,27 +1,18 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
+    "source.fixAll.eslint": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
-  "editor.tabSize": 2,
-  "eslint.enable": true,
-  "eslint.format.enable": true,
-  "files.exclude": {
-    ".next/": true,
-    ".vercel/": true,
-    "build/": true,
-    "coverage/": true,
-    "lib/": true,
-    "node_modules": true,
-    "storybook-static/": true,
-    "tsconfig.tsbuildinfo": true,
-    "yarn-error.log": true,
-    "yarn.lock": true
+  "eslint.workingDirectories": ["apps/web", "packages/ui"],
+  "tailwindCSS.classAttributes": ["class", "className", "theme"],
+  "tailwindCSS.experimental.classRegex": [
+    ["twMerge\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["createTheme\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+  "tailwindCSS.experimental.configFile": {
+    "apps/web/tailwind.config.js": "apps/web/**",
+    "packages/ui/tailwind.config.js": "packages/ui/**"
   },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

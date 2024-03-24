@@ -1,0 +1,72 @@
+---
+title: React Carousel - Flowbite
+description: Get started with the carousel component to showcase images and content and slide through them using custom controls, intervals, and indicators with React and Tailwind CSS
+---
+
+Use the responsive carousel component to allow users to slide through multiple items and navigate between them using the control buttons and indicators.
+
+Choose from multiple examples and options to update the intervals, make the carousel static and set custom control button and indicator by configuring React and the utility classes from Tailwind CSS.
+
+To start using the carousel component you first need to import it from Flowbite React:
+
+```jsx
+import { Carousel } from "flowbite-react";
+```
+
+## Default carousel
+
+Use this example by adding a series of images inside of the `<Carousel>` component.
+
+<Example name="carousel.root" />
+
+## Static carousel
+
+Pass the `slide` prop to the carousel component to make it static and disable the automatic sliding functionality. This does not disable the control or indicator buttons.
+
+<Example name="carousel.slide" />
+
+## Sliding interval
+
+Use the `slideInterval` prop to set the interval between slides in milliseconds. The default value is `3000`.
+
+<Example name="carousel.slideInterval" />
+
+## Custom controls
+
+Use the `leftControl` and `rightControl` props to set custom control buttons.
+
+<Example name="carousel.controls" />
+
+## Indicators
+
+Add custom indicators or disable them by passing the `indicators` prop to the `<Carousel>` component.
+
+<Example name="carousel.indicators" />
+
+## Pause On Hover
+
+To conditionally pause the carousel on mouse hover (desktop), or touch and hold (mobile), you can use the `pauseOnHover` property on the `<Carousel>` component. Default value is `false`.
+
+<Example name="carousel.pauseOnHover" />
+
+## Slider content
+
+Instead of images you can also use any type of markup and content inside the carousel such as simple text.
+
+<Example name="carousel.sliderContent" />
+
+## Handle `onSlideChanged` event
+
+To hook events to slide changed you can use `onSlideChange` property.
+
+<Example name="carousel.events" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="carousel" />
+
+## References
+
+- [Flowbite Carousel](https://flowbite.com/docs/components/carousel/)

@@ -1,0 +1,16 @@
+export { Footer } from "./Footer";
+export type { FlowbiteFooterRootTheme, FlowbiteFooterTheme, FooterComponent, FooterProps } from "./Footer";
+export { FooterBrand } from "./FooterBrand";
+export type { FlowbiteFooterBrandTheme, FooterBrandProps } from "./FooterBrand";
+export { FooterCopyright } from "./FooterCopyright";
+export type { CopyrightProps, FlowbiteFooterCopyrightTheme } from "./FooterCopyright";
+export { FooterDivider } from "./FooterDivider";
+export type { FlowbiteFooterDividerTheme, FooterDividerProps } from "./FooterDivider";
+export { FooterIcon } from "./FooterIcon";
+export type { FlowbiteFooterIconTheme, FooterIconProps } from "./FooterIcon";
+export { FooterLink } from "./FooterLink";
+export type { FlowbiteFooterLinkTheme, FooterLinkProps } from "./FooterLink";
+export { FooterLinkGroup } from "./FooterLinkGroup";
+export type { FlowbiteFooterLinkGroupTheme, FooterLinkGroupProps } from "./FooterLinkGroup";
+export { FooterTitle } from "./FooterTitle";
+export type { FlowbiteFooterTitleTheme, FooterTitleProps } from "./FooterTitle";

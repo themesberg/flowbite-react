@@ -1,0 +1,68 @@
+---
+title: React Alert - Flowbite
+description: Get started with the alert component to show contextual information to the user such as when validating forms or showing errors based on React and Tailwind CSS
+---
+
+The alert component can be used to show a contextual text to the user such as a success or error message after form validation inside an alert box where you can choose from multiple colors, sizes, and styles.
+
+The examples below are styled with Tailwind CSS and the reactivity is handled by React and you can also add any type of content inside the alert box.
+
+To start using the alert box you need to import the `<Alert>` component from the `flowbite-react` package:
+
+```jsx
+import { Alert } from "flowbite-react";
+```
+
+## Default alert
+
+The default alert component is a simple alert box with a text inside it and you can use the `color` prop to change the color of the alert box and the `title` prop to add a title to the alert box.
+
+Inside of the `<Alert>` component you can add any type of content such as text, images, or other components as they will be considered children of the alert box.
+
+<Example name="alert.root" />
+
+## Alert with icon
+
+Use the `icon` prop to add an icon to the alert box and you can use any icon from the [React Icons](https://react-icons.github.io/react-icons/) library.
+
+<Example name="alert.withIcon" />
+
+## Dismissible alert
+
+You can use the `onDismiss` prop on the `<Alert>` component to add a dismiss button to the alert box by adding a function inside of it that will be called when the user clicks on the dismiss button.
+
+<Example name="alert.dismissible" />
+
+## Rounded alert
+
+To make the alert box rounded you can use the `rounded` prop on the `<Alert>` component.
+
+<Example name="alert.rounded" />
+
+## Border accent
+
+Add a border accent to the alert box by applying the `withBorderAccent` prop on the `<Alert>` component.
+
+<Example name="alert.borderAccent" />
+
+## Additional content
+
+Add additional content by using the `additionalContent` prop and add any type of content inside of it.
+
+<Example name="alert.additionalContent" />
+
+## All options
+
+This is an example with all of the available options and props for the alert component.
+
+<Example name="alert.allOptions" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="alert" />
+
+## References
+
+- [Flowbite Alerts](https://flowbite.com/docs/components/alerts/)

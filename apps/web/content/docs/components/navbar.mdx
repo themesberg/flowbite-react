@@ -1,0 +1,46 @@
+---
+title: React Navbar - Flowbite
+description: The navbar component can be used to show a list of navigation links positioned on the top side of your page based on multiple layouts, sizes, and dropdowns
+---
+
+The navbar component is an important section of any website as it is the first section that appears on any page and it serves the purpose of allowing your users to navigate throughout your website.
+
+Generally, the navigation bar consists of the logo of your website, a list of menu items for navigation and other secondary elements such as buttons, dropdowns, and a hamburger menu for mobile devices.
+
+All interactivity and options are handled by using React properties and you can customise the appearance of the navbar using the classes from Tailwind CSS.
+
+To start using the navbar component you need to import it from Flowbite React:
+
+```jsx
+import { Navbar } from "flowbite-react";
+```
+
+## Default navbar
+
+Use the default navbar component to showcase the logo and a list of menu items with links to other pages of your website by adding the `<Navbar.Brand>` and `<Navbar.Link>` components inside the `<Navbar>` component.
+
+On mobile device the navigation bar will be collapsed and you will be able to use the hamburger menu to toggle the menu items by adding the `<Navbar.Toggle>` component.
+
+<Example name="navbar.root" />
+
+## Navbar with CTA button
+
+Use this example to show a CTA button inside the navbar component for marketing advantages and to increase the conversion rate of your website.
+
+<Example name="navbar.withCTAButton" />
+
+## Navbar with dropdown
+
+Use this example to feature a dropdown menu when clicking on the user avatar inside the navbar by importing the `<Avatar>` and `<Dropdown>` components.
+
+<Example name="navbar.withDropdown" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="navbar" />
+
+## References
+
+- [Flowbite Navbar](https://flowbite.com/docs/components/navbar/)

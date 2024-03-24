@@ -1,0 +1,19 @@
+name: Setup
+description: Setup Bun, Node and install packages
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v1
+      with:
+        bun-version: 1.0.31
+
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    - name: Install packages
+      shell: bash
+      run: bun install

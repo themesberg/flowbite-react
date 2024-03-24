@@ -1,0 +1,56 @@
+---
+title: React Dark Mode - Flowbite
+description: Learn how to configure and build a dark mode switcher for Flowbite using Tailwind CSS and start developing with the components from the library
+---
+
+`Flowbite React` comes with dark mode support out of the box, it supports integration with all full-stack frameworks such as `Next.js`, `Remix`, `Astro`, `Gatsby` that are using server-side rendering (SSR).
+
+## Toggle dark mode
+
+Surround the contents of your app with the `<Flowbite>` component, and add the `<DarkThemeToggle>` component inside it. The `<DarkThemeToggle>` component will automatically detect the current theme and display the correct icon, and allow the user to switch between themes as they like.
+
+```jsx
+import { DarkThemeToggle, Flowbite } from "flowbite-react";
+
+export default function MyPage() {
+  return (
+    <Flowbite>
+      // ...
+      <DarkThemeToggle />
+    </Flowbite>
+  );
+}
+```
+
+### useThemeMode
+
+`useThemeMode` is the hook reponsible for changing, detecting and persisting the theme mode.
+
+Theme mode persistence is by default located in the browsers `LocalStorage`.
+
+The `<DarkThemeToggle>` component uses `useThemeMode` hook under the hood.
+
+```tsx
+type ThemeMode = "light" | "dark" | "auto";
+
+declare const useThemeMode: () => {
+  mode: ThemeMode;
+  computedMode: ThemeMode; // "light" | "dark"
+  setMode: (mode: ThemeMode) => void;
+  toggleMode: () => void;
+  clearMode: () => void;
+};
+```
+
+### Sync between tabs
+
+The `useThemeMode` hook automatically keeps all tab instances in sync, no extra configuration needed.
+
+## Framework guides
+
+Here's a list of step-by-step **dark mode** integration guide for the most popular full-stack frameworks:
+
+- [Next.js](/docs/guides/next-js#dark-mode)
+- [Remix](/docs/guides/remix#dark-mode)
+- [Astro](/docs/guides/astro#dark-mode)
+- [Gatsby](/docs/guides/gatsby#dark-mode)

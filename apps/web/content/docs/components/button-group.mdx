@@ -1,0 +1,54 @@
+---
+title: React Button Group - Flowbite
+description: Button groups allow you to stack together multiple buttons in a single line horizontally based on multiple styles and sizes using React and Tailwind CSS
+---
+
+The button group component from Flowbite React can be used to stack multiple button elements and group them visually together. It can often be used to create a navigation menu or a toolbar.
+
+Choose from multiple examples and you can update properties such as the color, size, and appearance using the props from React and utility classes from Tailwind CSS.
+
+To start using the component you need to import it from the Flowbite React library:
+
+```jsx
+import { Button } from "flowbite-react";
+```
+
+## Default button group
+
+Use this example of the `<Button.Group>` component by adding the `Button` component as a child element and stack them together. You can also use the `color` prop to change the color of the buttons.
+
+<Example name="buttonGroup.root" />
+
+## Button group with icons
+
+Import one of the icons from the `react-icons` library and add it as a child element to the `<Button>` component to create multiple buttons with icons grouped together.
+
+<Example name="buttonGroup.withIcons" />
+
+## Outline button group
+
+By passing the outline prop to the `<Button.Group>` component you can create a button group with outline buttons with no background and solid borders.
+
+<Example name="buttonGroup.outline" />
+
+## Color options
+
+Use the `color` prop to change the color of the buttons. You can also use the `gradientMonochrome` and `gradientDuoTone` props to apply a gradient color to the buttons.
+
+<Example name="buttonGroup.colorOptions" />
+
+## Outline button group with icons
+
+Here's an example on how you can use both the outline and icon props together.
+
+<Example name="buttonGroup.outlineWithIcons" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="buttonGroup" />
+
+## References
+
+- [Flowbite Button Group](https://flowbite.com/docs/components/button-group/)

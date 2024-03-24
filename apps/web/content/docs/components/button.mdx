@@ -1,0 +1,103 @@
+---
+title: React Buttons - Flowbite
+description: Enable user interaction with the button component to perform actions on your website as links, for payment, form submission, social buttons and more based on React and Tailwind CSS
+---
+
+The button component is a common UI component found on the web that allows users to trigger certain actions on your website such as submitting a form, navigating to a new page, or downloading a file.
+
+The examples from the Flowbite React library allows you to customise the buttons with different colors, sizes, icons, and more. All examples are built with React and Tailwind CSS.
+
+In order to start using the button component you need to import it from Flowbite React:
+
+```jsx
+import { Button } from "flowbite-react";
+```
+
+## Default buttons
+
+Use this example to create a default button by using the `<Button>` component from React and by adding the `color` property you can change the color of the button.
+
+<Example name="button.root" />
+
+## Button pills
+
+Add the `pill` property to the `<Button>` component to create a button with rounded corners.
+
+<Example name="button.pill" />
+
+## Gradient monochrome
+
+By adding the `gradientMonochrome` property to the `<Button>` component you can create a button with a gradient background.
+
+<Example name="button.gradientMono" />
+
+## Gradient duotone
+
+Use the `gradientDuoTone` property to create a button with a gradient background with two colors.
+
+<Example name="button.gradientDuo" />
+
+## Outline buttons
+
+Use the `outline` property to create an outline button with transparent background and colored border.
+
+<Example name="button.outline" />
+
+## Button sizes
+
+You can update the size of the button by adding the `size` property to the `<Button>` component.
+
+Choose from `xs`, `sm`, `md`, `lg`, and `xl` as the value.
+
+<Example name="button.sizes" />
+
+## Buttons with icon
+
+You can add icons to the buttons by adding it inside the `<Button>` component near the text.
+
+<Example name="button.withIcon" />
+
+## Button with label
+
+You can add a label to the button by adding the `label` property to the `<Button>` component.
+
+<Example name="button.withLabel" />
+
+## Button with only icons
+
+Create a button with only icons by adding the `iconOnly` property to the `<Button>` component. These are useful when you want to show buttons in a small space and for things like pagination.
+
+<Example name="button.iconOnly" />
+
+## Button with loading state
+
+Add a loading state to the button element by adding the `isProcessing` property to the `<Button>` component.
+
+<Example name="button.loading" />
+
+<br />
+You can also customize the spinner icon by passing a React node to the `processingSpinner` prop.
+
+<Example name="button.loadingSpinner" />
+
+## Disabled buttons
+
+You can disable the button by adding the `disabled` property to the `<Button>` component.
+
+<Example name="button.disabled" />
+
+## Override Button base component
+
+The `as` prop provides you the ability to transform the `<Button />` component into another component or HTML element. This prop accepts a string representing an HTML tag or a functional React component.
+
+<Example name="button.polymorph" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="button" />
+
+## References
+
+- [Flowbite Buttons](https://flowbite.com/docs/components/buttons/)
