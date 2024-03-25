@@ -48,7 +48,11 @@
     "clean": "rimraf .turbo coverage dist node_modules tsconfig.tsbuildinfo",
     "dev": "bun run build --watch",
     "format": "prettier . --write",
+<<<<<<< HEAD
     "format:check": "prettier . --check",
+=======
+    "format:check": "prettier .",
+>>>>>>> fb35e8c (feat: added support for the Formatting of the Date)
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",
@@ -76,6 +80,11 @@
     "@typescript-eslint/parser": "7.4.0",
     "@vitejs/plugin-react": "4.2.1",
     "@vitest/coverage-v8": "1.4.0",
+<<<<<<< HEAD
+=======
+    "clean-package": "2.2.0",
+    "date-fns": "^3.6.0",
+>>>>>>> fb35e8c (feat: added support for the Formatting of the Date)
     "eslint-plugin-react": "7.34.1",
     "eslint-plugin-storybook": "0.8.0",
     "eslint-plugin-vitest": "0.4.1",

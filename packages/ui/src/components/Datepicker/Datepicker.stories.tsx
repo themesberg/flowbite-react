@@ -60,3 +60,18 @@ Default.args = {
   weekStart: WeekStart.Sunday,
   theme: {},
 };
+
+export const FormattedDate = Template.bind({})
+FormattedDate.args = {
+  open: false,
+  autoHide: true,
+  showClearButton: true,
+  showTodayButton: true,
+  defaultDate: new Date(),
+  minDate: undefined,
+  maxDate: undefined,
+  language: "en",
+  weekStart: WeekStart.Sunday,
+  theme: {},
+  inputFormat: 'dd MMM yyyy'
+};
