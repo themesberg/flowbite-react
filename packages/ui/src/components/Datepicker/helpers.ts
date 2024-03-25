@@ -101,7 +101,7 @@ export const addYears = (date: Date, amount: number): Date => {
   return newDate;
 };
 
-export const getFormattedDate = (language: string, date: Date, dateFormat: string, options?: Intl.DateTimeFormatOptions,): string => {
+export const getFormattedDate = (language: string, date: Date,  options?: Intl.DateTimeFormatOptions, dateFormat: string = 'dd-MMM-yyyy'): string => {
   let defaultOptions: Intl.DateTimeFormatOptions = {
     day: "numeric",
     month: "long",
