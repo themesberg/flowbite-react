@@ -8,7 +8,7 @@ import { getFormattedDate } from "./helpers";
 
 describe("Components / Datepicker", () => {
   it("should display today's date by default", () => {
-    const todaysDateInDefaultLanguage = getFormattedDate("en", new Date());
+    const todaysDateInDefaultLanguage = getFormattedDate("en", new Date(), 'dd-MMM-yyy');
 
     render(<Datepicker />);
 
@@ -28,7 +28,7 @@ describe("Components / Datepicker", () => {
   });
 
   it("should reset to today's date when Clear button is clicked", async () => {
-    const todaysDateInDefaultLanguage = getFormattedDate("en", new Date());
+    const todaysDateInDefaultLanguage = getFormattedDate("en", new Date(), 'dd-MMM-yyy');
     const todaysDayOfMonth = new Date().getDate();
     const anotherDay = todaysDayOfMonth === 1 ? 2 : 1;
 
@@ -43,7 +43,7 @@ describe("Components / Datepicker", () => {
   });
 
   it("should use today's date when Today button is clicked", async () => {
-    const todaysDateInDefaultLanguage = getFormattedDate("en", new Date());
+    const todaysDateInDefaultLanguage = getFormattedDate("en", new Date(), 'dd-MMM-yyy');
     const todaysDayOfMonth = new Date().getDate();
     const anotherDay = todaysDayOfMonth === 1 ? 2 : 1;
 
@@ -90,7 +90,7 @@ describe("Components / Datepicker", () => {
   });
 
   it("should clear the value when ref.current.clear is called", async () => {
-    const todaysDateInDefaultLanguage = getFormattedDate("en", new Date());
+    const todaysDateInDefaultLanguage = getFormattedDate("en", new Date(), 'dd-MMM-yyyy');
     const todaysDayOfMonth = new Date().getDate();
     const anotherDay = todaysDayOfMonth === 1 ? 2 : 1;
 
@@ -102,6 +102,14 @@ describe("Components / Datepicker", () => {
     await userEvent.click(screen.getByRole("textbox"));
     await userEvent.click(screen.getAllByText(anotherDay)[0]);
     act(() => ref.current?.clear());
+
+    expect(screen.getByDisplayValue(todaysDateInDefaultLanguage)).toBeInTheDocument();
+  });
+
+  it("should display today's date in dd-MMM-yyyy format", () => {
+    const todaysDateInDefaultLanguage = getFormattedDate('en-US', new Date(), 'dd-MMM-yyyy');
+
+    render(<Datepicker inputFormat="dd-MMM-yyyy" />);
 
     expect(screen.getByDisplayValue(todaysDateInDefaultLanguage)).toBeInTheDocument();
   });

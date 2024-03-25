@@ -97,6 +97,7 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
   onSelectedDateChanged?: (date: Date) => void;
+  inputFormat?: string;
 }
 
 const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps> = (
@@ -117,6 +118,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     className,
     theme: customTheme = {},
     onSelectedDateChanged,
+    inputFormat = 'dd-MMM-yyyy',
     ...props
   },
   ref,
@@ -201,10 +203,10 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
       case Views.Years:
         return `${startOfYearPeriod(viewDate, 10)} - ${startOfYearPeriod(viewDate, 10) + 9}`;
       case Views.Months:
-        return getFormattedDate(language, viewDate, { year: "numeric" });
+        return getFormattedDate(language, viewDate, inputFormat, { year: "numeric" });
       case Views.Days:
       default:
-        return getFormattedDate(language, viewDate, { month: "long", year: "numeric" });
+        return getFormattedDate(language, viewDate, inputFormat, { month: "long", year: "numeric" });
     }
   };
 
@@ -272,7 +274,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
               }
               setIsOpen(true);
             }}
-            value={selectedDate && getFormattedDate(language, selectedDate)}
+            value={selectedDate && getFormattedDate(language, selectedDate, inputFormat, {})}
             readOnly
             {...props}
           />

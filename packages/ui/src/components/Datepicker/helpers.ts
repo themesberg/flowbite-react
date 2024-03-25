@@ -1,3 +1,5 @@
+import { format as DateFNSFormat } from 'date-fns';
+
 export enum Views {
   Days = 0,
   Months = 1,
@@ -99,7 +101,7 @@ export const addYears = (date: Date, amount: number): Date => {
   return newDate;
 };
 
-export const getFormattedDate = (language: string, date: Date, options?: Intl.DateTimeFormatOptions): string => {
+export const getFormattedDate = (language: string, date: Date, dateFormat: string, options?: Intl.DateTimeFormatOptions,): string => {
   let defaultOptions: Intl.DateTimeFormatOptions = {
     day: "numeric",
     month: "long",
@@ -110,7 +112,8 @@ export const getFormattedDate = (language: string, date: Date, options?: Intl.Da
     defaultOptions = options;
   }
 
-  return new Intl.DateTimeFormat(language, defaultOptions).format(date);
+    return DateFNSFormat(new Intl.DateTimeFormat(language, defaultOptions).format(date), dateFormat);
+  
 };
 
 export const startOfYearPeriod = (date: Date, years: number): number => {
