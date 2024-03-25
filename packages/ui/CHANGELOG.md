@@ -10,7 +10,7 @@ Re-publish, broken build in `0.7.4`.
 
 ### Bug Fixes
 
-* **button:** fix: polymorphic component return types [button, dropdown item] ([#1308](https://github.com/themesberg/flowbite-react/issues/1308)) ([f8775d8](https://github.com/themesberg/flowbite-react/commit/a6698d48474595f2ee05a3f817ecbdb322aa7807)), closes [#962](https://github.com/themesberg/flowbite-react/issues/962)
+- **button:** fix: polymorphic component return types [button, dropdown item] ([#1308](https://github.com/themesberg/flowbite-react/issues/1308)) ([f8775d8](https://github.com/themesberg/flowbite-react/commit/a6698d48474595f2ee05a3f817ecbdb322aa7807)), closes [#962](https://github.com/themesberg/flowbite-react/issues/962)
 
 ### [0.7.3](https://github.com/themesberg/flowbite-react/compare/v0.7.2...v0.7.3) (2024-03-12)
 
