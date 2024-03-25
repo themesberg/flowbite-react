@@ -46,6 +46,7 @@
     "dev": "",
     "format": "prettier . --write",
     "format:check": "prettier .",
+    "postinstall": "bun run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",
