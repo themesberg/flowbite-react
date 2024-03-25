@@ -203,10 +203,10 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
       case Views.Years:
         return `${startOfYearPeriod(viewDate, 10)} - ${startOfYearPeriod(viewDate, 10) + 9}`;
       case Views.Months:
-        return getFormattedDate(language, viewDate, inputFormat, { year: "numeric" });
+        return getFormattedDate(language, viewDate, { year: "numeric" });
       case Views.Days:
       default:
-        return getFormattedDate(language, viewDate, inputFormat, { month: "long", year: "numeric" });
+        return getFormattedDate(language, viewDate, { month: "long", year: "numeric" });
     }
   };
 
@@ -274,7 +274,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
               }
               setIsOpen(true);
             }}
-            value={selectedDate && getFormattedDate(language, selectedDate, inputFormat, {})}
+            value={selectedDate && getFormattedDate(language, selectedDate, {}, inputFormat)}
             readOnly
             {...props}
           />
