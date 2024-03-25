@@ -48,11 +48,8 @@
     "clean": "rimraf .turbo coverage dist node_modules tsconfig.tsbuildinfo",
     "dev": "bun run build --watch",
     "format": "prettier . --write",
-<<<<<<< HEAD
     "format:check": "prettier . --check",
-=======
-    "format:check": "prettier .",
->>>>>>> fb35e8c (feat: added support for the Formatting of the Date)
+    "postinstall": "bun run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",
