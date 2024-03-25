@@ -1,7 +1,7 @@
-import type { Meta, StoryFn } from "@storybook/react";
-import type { ListProps } from "./List";
-import { List } from "./List";
-import { HiCheckCircle } from "react-icons/hi";
+import type { Meta, StoryFn } from '@storybook/react';
+import type { ListProps } from './List';
+import { List } from './List';
+import { HiCheckCircle } from 'react-icons/hi';
 
 export default {
   title: "Components/List",
