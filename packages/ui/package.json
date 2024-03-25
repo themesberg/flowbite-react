@@ -45,7 +45,7 @@
     "clean": "rimraf .turbo coverage lib node_modules tsconfig.tsbuildinfo",
     "dev": "",
     "format": "prettier . --write",
-    "format:check": "prettier .",
+    "format:check": "prettier . --check",
     "postinstall": "bun run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
