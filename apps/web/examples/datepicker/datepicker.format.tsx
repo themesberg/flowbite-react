@@ -4,18 +4,18 @@ import { Datepicker } from 'flowbite-react';
 const code = `
 'use client';
 
-import { Datepicker } from 'flowbite-react';
+import { Datepicker } from "flowbite-react";
 
 function Component() {
-  return <Datepicker inputFormat='dd-MMM-yyyy' />;
+  return <Datepicker inputFormat="dd-MMM-yyyy" />;
 }
 `;
 
 const codeRSC = `
-import { Datepicker } from 'flowbite-react';
+import { Datepicker } from "flowbite-react";
 
 function Component() {
-  return <Datepicker inputFormat='dd-MMM-yyyy' />;
+  return <Datepicker inputFormat="dd-MMM-yyyy" />;
 }
 `;
 
