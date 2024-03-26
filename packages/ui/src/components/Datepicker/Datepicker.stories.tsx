@@ -61,7 +61,7 @@ Default.args = {
   theme: {},
 };
 
-export const FormattedDate = Template.bind({})
+export const FormattedDate = Template.bind({});
 FormattedDate.args = {
   open: false,
   autoHide: true,
@@ -73,5 +73,5 @@ FormattedDate.args = {
   language: "en",
   weekStart: WeekStart.Sunday,
   theme: {},
-  inputFormat: 'dd MMM yyyy'
+  inputFormat: "dd MMM yyyy",
 };
