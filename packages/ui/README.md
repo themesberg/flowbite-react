@@ -323,6 +323,12 @@ For casual chatting with others using the library:
 
 Thank you for your interest in helping! Visit our [guide on contributing](https://github.com/themesberg/flowbite-react/blob/main/CONTRIBUTING.md) to get started.
 
+### Contributors Wall:
+
+<a href="https://github.com/themesberg/flowbite-react/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=themesberg/flowbite-react" />
+</a>
+
 ## Figma
 
 If you need the Figma files for the components you can check out our website for more information:
