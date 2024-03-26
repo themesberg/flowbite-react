@@ -1,7 +1,7 @@
 import type { Meta, StoryFn } from "@storybook/react";
+import { HiCheckCircle } from "react-icons/hi";
 import type { ListProps } from "./List";
 import { List } from "./List";
-import { HiCheckCircle } from "react-icons/hi";
 
 export default {
   title: "Components/List",
@@ -99,7 +99,7 @@ HorizontalList.args = {
 };
 
 export const WithIconList = Template.bind({});
-WithIconList.storyName = 'With Icon';
+WithIconList.storyName = "With Icon";
 WithIconList.args = {
   children: (
     <>
