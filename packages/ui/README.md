@@ -321,7 +321,7 @@ For casual chatting with others using the library:
 
 ## Contributing
 
-Thank you for your interest in helping! Visit our [guide on contributing](https://github.com/themesberg/flowbite-react/blob/main/CONTRIBUTING.md) to get started.
+Thank you for your interest in helping! Visit our [guide on contributing](https://github.com/themesberg/flowbite-react/blob/main/.github/CONTRIBUTING.md) to get started.
 
 ## Figma
 
