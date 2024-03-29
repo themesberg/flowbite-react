@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.6
+
+### Patch Changes
+
+- [`7a8933d`](https://github.com/themesberg/flowbite-react/commit/7a8933da69b56a72f41442d6a1d77ba11f54bca5) - export `createTheme` API
+
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ### [0.7.5](https://github.com/themesberg/flowbite-react/compare/v0.7.4...v0.7.5) (2024-03-20)
