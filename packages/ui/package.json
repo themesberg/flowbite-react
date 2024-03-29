@@ -51,6 +51,7 @@
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",
     "postpack": "clean-package restore",
+    "prepublishOnly": "bun run build",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit"

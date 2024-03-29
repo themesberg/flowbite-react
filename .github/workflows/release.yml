@@ -18,9 +18,6 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Run build
-        run: bun run build
-
       - name: Create Release Pull Request or Publish to NPM
         id: changesets
         uses: changesets/action@v1
