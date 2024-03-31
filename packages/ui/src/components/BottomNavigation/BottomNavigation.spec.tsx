@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { BottomNavigation } from "./BottomNavigation";
 
-describe.concurrent("BottomNavigation", async () => {
+describe.concurrent("BottomNavigation", () => {
   it('BottomNavigation should have "data-testid=flowbite-bottom-navigation" in the document', async () => {
     render(<TestBottomNavigation />);
 
