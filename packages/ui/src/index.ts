@@ -25,6 +25,7 @@ export * from "./components/ListGroup";
 export * from "./components/Modal";
 export * from "./components/Navbar";
 export * from "./components/Pagination";
+export * from "./components/PhoneInput";
 export * from "./components/Popover";
 export * from "./components/Progress";
 export * from "./components/Radio";
