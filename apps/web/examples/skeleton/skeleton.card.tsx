@@ -2,14 +2,14 @@ import { SkeletonCard } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
 import { Skeleton } from "flowbite-react";
 
 function Component() {
   return (
     <div>
-      <Skeleton.Card />
+      <SkeletonCard />
     </div>
   )
 }
