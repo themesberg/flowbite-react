@@ -2,7 +2,6 @@
   "name": "storybook",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "build": "storybook build",
     "clean": "rimraf .turbo node_modules storybook-static",
