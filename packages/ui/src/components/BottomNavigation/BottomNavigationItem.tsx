@@ -25,6 +25,35 @@ export interface BottomNavigationItemProps extends Omit<ComponentProps<"button">
   showLabel?: boolean;
 }
 
+interface BottomNavItemBtnProps {
+  reactId: string;
+  customClassName: string;
+  icon: FC<ComponentProps<"svg">>;
+  theme: DeepPartial<FlowbiteBottomNavigationItemTheme>;
+  label: string;
+  showLabel: boolean;
+}
+
+const BottomNavItemBtn: FC<BottomNavItemBtnProps> = (props) => {
+  const { icon: Icon, customClassName = "", reactId, label, showLabel, theme: customTheme = {}, ...rest } = props;
+
+  const theme = mergeDeep(getTheme().bottomNavigation.item, customTheme);
+
+  return (
+    <button
+      type="button"
+      id={reactId}
+      data-testid="flowbite-bottom-nav-item"
+      className={twMerge(theme.base, customClassName)}
+      {...rest}
+    >
+      <Icon className={theme.icon.base} data-testid="flowbite-bottom-nav-icon" fill="currentColor" aria-hidden="true" />
+
+      {showLabel ? <span className={theme.label}>{label}</span> : null}
+    </button>
+  );
+};
+
 export const BottomNavigationItem: FC<BottomNavigationItemProps> = ({
   icon: Icon,
   label,
@@ -35,8 +64,6 @@ export const BottomNavigationItem: FC<BottomNavigationItemProps> = ({
   ...props
 }) => {
   const id = useId();
-
-  const theme = mergeDeep(getTheme().bottomNavigation.item, customTheme);
 
   return (
     <>
@@ -49,56 +76,26 @@ export const BottomNavigationItem: FC<BottomNavigationItemProps> = ({
           }
           placement="top"
         >
-          <button
-            type="button"
-            id={id}
-            data-testid="flowbite-bottom-nav-item"
-            className={twMerge(theme.base, className)}
+          <BottomNavItemBtn
+            icon={Icon ? Icon : IoMdHome}
+            customClassName={className as string}
+            label={label}
+            reactId={id}
+            showLabel={showLabel}
+            theme={customTheme}
             {...props}
-          >
-            {Icon ? (
-              <Icon
-                className={theme.icon.base}
-                data-testid="flowbite-bottom-nav-icon"
-                fill="currentColor"
-                aria-hidden="true"
-              />
-            ) : (
-              <IoMdHome
-                className={theme.icon.base}
-                data-testid="flowbite-bottom-nav-icon"
-                fill="currentColor"
-                aria-hidden="true"
-              />
-            )}
-            {showLabel ? <span className={theme.label}>{label}</span> : null}
-          </button>
+          />
         </Tooltip>
       ) : (
-        <button
-          type="button"
-          id={id}
-          data-testid="flowbite-bottom-nav-item"
-          className={twMerge(theme.base, className)}
+        <BottomNavItemBtn
+          icon={Icon ? Icon : IoMdHome}
+          customClassName={className as string}
+          label={label}
+          reactId={id}
+          showLabel={showLabel}
+          theme={customTheme}
           {...props}
-        >
-          {Icon ? (
-            <Icon
-              className={theme.icon.base}
-              data-testid="flowbite-bottom-nav-icon"
-              fill="currentColor"
-              aria-hidden="true"
-            />
-          ) : (
-            <IoMdHome
-              className={theme.icon.base}
-              data-testid="flowbite-bottom-nav-icon"
-              fill="currentColor"
-              aria-hidden="true"
-            />
-          )}
-          {showLabel ? <span className={theme.label}>{label}</span> : null}
-        </button>
+        />
       )}
     </>
   );
