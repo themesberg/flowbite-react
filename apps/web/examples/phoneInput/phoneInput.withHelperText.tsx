@@ -28,7 +28,12 @@ function Component() {
 function Component() {
   return (
     <form className="mx-auto max-w-sm">
-      <PhoneInput helperText="Select a phone number that matches the format." />
+      <PhoneInput
+        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+        required
+        placeholder="123-456-7890"
+        helperText="Select a phone number that matches the format."
+      />
     </form>
   );
 }
