@@ -7,7 +7,7 @@ import { GiSettingsKnobs, GiWallet } from "react-icons/gi";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
 import { BottomNavigation } from "flowbite-react";
 
