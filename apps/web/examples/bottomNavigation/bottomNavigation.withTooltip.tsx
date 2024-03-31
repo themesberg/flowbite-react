@@ -51,6 +51,6 @@ export const withTooltip: CodeData = {
       code,
     },
   ],
-  githubSlug: "bottomNavigation/bottomNavigation.withBorder.tsx",
+  githubSlug: "bottomNavigation/bottomNavigation.withTooltip.tsx",
   component: <Component />,
 };
