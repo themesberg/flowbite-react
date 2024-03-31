@@ -30,6 +30,7 @@ import { rangeSliderTheme } from "./components/RangeSlider/theme";
 import { ratingAdvancedTheme, ratingTheme } from "./components/Rating/theme";
 import { selectTheme } from "./components/Select/theme";
 import { sidebarTheme } from "./components/Sidebar/theme";
+import { skeletonTheme } from "./components/Skeleton/theme";
 import { spinnerTheme } from "./components/Spinner/theme";
 import { tableTheme } from "./components/Table/theme";
 import { tabTheme } from "./components/Tabs/theme";
@@ -77,6 +78,7 @@ export const theme: FlowbiteTheme = {
   textarea: textareaTheme,
   toggleSwitch: toggleSwitchTheme,
   sidebar: sidebarTheme,
+  skeleton: skeletonTheme,
   spinner: spinnerTheme,
   table: tableTheme,
   tabs: tabTheme,

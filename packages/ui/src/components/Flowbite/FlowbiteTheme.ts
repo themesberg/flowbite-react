@@ -30,6 +30,7 @@ import type { FlowbiteRangeSliderTheme } from "../RangeSlider";
 import type { FlowbiteRatingAdvancedTheme, FlowbiteRatingTheme } from "../Rating";
 import type { FlowbiteSelectTheme } from "../Select";
 import type { FlowbiteSidebarTheme } from "../Sidebar";
+import type { FlowbiteSkeletonTheme } from "../Skeleton";
 import type { FlowbiteSpinnerTheme } from "../Spinner";
 import type { FlowbiteTableTheme } from "../Table";
 import type { FlowbiteTabsTheme } from "../Tabs";
@@ -76,6 +77,7 @@ export interface FlowbiteTheme {
   ratingAdvanced: FlowbiteRatingAdvancedTheme;
   select: FlowbiteSelectTheme;
   sidebar: FlowbiteSidebarTheme;
+  skeleton: FlowbiteSkeletonTheme;
   spinner: FlowbiteSpinnerTheme;
   table: FlowbiteTableTheme;
   tabs: FlowbiteTabsTheme;
