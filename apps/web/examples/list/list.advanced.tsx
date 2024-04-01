@@ -21,9 +21,7 @@ function Component() {
       </ListItem>
       <ListItem className="py-3 sm:py-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
-          <div className="flex-shrink-0">
-            <img className="h-8 w-8 rounded-full" src="/images/people/profile-picture-3.jpg" alt="Neil image" />
-          </div>
+          <Avatar img="/images/people/profile-picture-3.jpg" alt="Neil image" rounded size="sm" />
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-medium text-gray-900 dark:text-white">Bonnie Green</p>
             <p className="truncate text-sm text-gray-500 dark:text-gray-400">email@flowbite.com</p>
@@ -84,9 +82,7 @@ function Component() {
       </ListItem>
       <ListItem className="py-3 sm:py-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
-          <div className="flex-shrink-0">
-            <img className="h-8 w-8 rounded-full" src="/images/people/profile-picture-3.jpg" alt="Neil image" />
-          </div>
+          <Avatar img="/images/people/profile-picture-3.jpg" alt="Neil image" rounded size="sm" />
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-medium text-gray-900 dark:text-white">Bonnie Green</p>
             <p className="truncate text-sm text-gray-500 dark:text-gray-400">email@flowbite.com</p>
@@ -144,9 +140,7 @@ function Component() {
       </ListItem>
       <ListItem className="py-3 sm:py-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
-          <div className="flex-shrink-0">
-            <img className="h-8 w-8 rounded-full" src="/images/people/profile-picture-3.jpg" alt="Neil image" />
-          </div>
+          <Avatar img="/images/people/profile-picture-3.jpg" alt="Neil image" rounded size="sm" />
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-medium text-gray-900 dark:text-white">Bonnie Green</p>
             <p className="truncate text-sm text-gray-500 dark:text-gray-400">email@flowbite.com</p>
