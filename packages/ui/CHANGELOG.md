@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.8
+
+### Patch Changes
+
+- [#1339](https://github.com/themesberg/flowbite-react/pull/1339) [`8430004`](https://github.com/themesberg/flowbite-react/commit/8430004736d16562598b3ec820b28b47dde8ff4a) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix package.json types path
+
 ## 0.7.7
 
 ### Patch Changes
