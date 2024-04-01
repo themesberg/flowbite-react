@@ -36,6 +36,7 @@
     "@ianvs/prettier-plugin-sort-imports": "4.2.1",
     "@types/bun": "1.0.10",
     "@types/web": "0.0.142",
+    "clean-package": "2.2.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-tailwindcss": "3.15.1",
