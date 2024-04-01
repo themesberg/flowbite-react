@@ -21,15 +21,16 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "types": "./lib/esm/index.d.ts",
+      "types": "./lib/types/index.d.ts",
       "import": "./lib/esm/index.js",
       "require": "./lib/cjs/index.js"
     },
     "./components/*": {
-      "types": "./lib/esm/components/*/index.d.ts",
+      "types": "./lib/types/components/*/index.d.ts",
       "import": "./lib/esm/components/*/index.js",
       "require": "./lib/cjs/components/*/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
@@ -38,14 +39,15 @@
     "lib"
   ],
   "scripts": {
-    "build": "rimraf coverage lib && bun build:cjs && bun build:esm",
+    "build": "rimraf lib && bun build:fast",
     "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --outDir lib/cjs",
-    "build:esm": "tsc -p tsconfig.build.json --module ESNext --declaration --outDir lib/esm",
+    "build:esm": "tsc -p tsconfig.build.json --module ESNext --outDir lib/esm",
+    "build:fast": "bun build:cjs && bun build:esm && bun build:types",
+    "build:types": "tsc -p tsconfig.build.json --declaration --emitDeclarationOnly --outDir lib/types",
     "clean": "rimraf .turbo coverage lib node_modules tsconfig.tsbuildinfo",
-    "dev": "",
+    "dev": "bun build:fast --watch",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "postinstall": "bun run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",
@@ -62,7 +64,6 @@
     "debounce": "2.0.0",
     "flowbite": "2.3.0",
     "react-icons": "5.0.1",
-    "react-indiana-drag-scroll": "2.2.0",
     "tailwind-merge": "2.2.2"
   },
   "devDependencies": {
@@ -84,8 +85,8 @@
     "vitest": "1.4.0"
   },
   "peerDependencies": {
-    "react": "^18",
-    "react-dom": "^18",
+    "react": ">=18",
+    "react-dom": ">=18",
     "tailwindcss": "^3"
   },
   "clean-package": {
