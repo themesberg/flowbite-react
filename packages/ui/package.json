@@ -19,7 +19,6 @@
     "directory": "packages/ui"
   },
   "license": "MIT",
-  "type": "module",
   "exports": {
     ".": {
       "types": "./lib/esm/index.d.ts",
