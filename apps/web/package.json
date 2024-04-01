@@ -21,16 +21,16 @@
   },
   "devDependencies": {
     "@docsearch/react": "3.6.0",
-    "@types/mdx": "2.0.11",
+    "@types/mdx": "2.0.12",
     "@types/prismjs": "1.26.3",
-    "@types/react": "18.2.67",
-    "@types/react-dom": "18.2.22",
-    "autoprefixer": "10.4.18",
+    "@types/react": "18.2.73",
+    "@types/react-dom": "18.2.23",
+    "autoprefixer": "10.4.19",
     "eslint-config-next": "14.1.4",
     "markdown-toc": "1.2.0",
     "next": "14.1.4",
     "next-contentlayer": "0.3.4",
-    "postcss": "8.4.37",
+    "postcss": "8.4.38",
     "prismjs": "1.29.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -38,8 +38,8 @@
     "rehype-autolink-headings": "7.1.0",
     "rehype-prism-plus": "2.0.0",
     "rehype-slug": "6.0.0",
-    "sharp": "0.33.2",
-    "tailwindcss": "3.4.1",
-    "typescript": "5.4.2"
+    "sharp": "0.33.3",
+    "tailwindcss": "3.4.3",
+    "typescript": "5.4.3"
   }
 }

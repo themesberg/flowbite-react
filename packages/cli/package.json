@@ -39,7 +39,6 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "prepack": "clean-package",
-    "postpack": "clean-package restore",
     "prepublishOnly": "bun run build",
     "start": "bun run dist/index.js",
     "typecheck": "tsc --noEmit"
@@ -53,18 +52,21 @@
     "rimraf": "5.0.5"
   },
   "devDependencies": {
-    "clean-package": "2.2.0",
     "tsup": "8.0.2",
-    "typescript": "5.4.2"
+    "typescript": "5.4.3"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "clean-package": {
     "remove": [
-      "scripts",
       "devDependencies",
       "clean-package"
-    ]
+    ],
+    "replace": {
+      "scripts": {
+        "postpublish": "clean-package restore"
+      }
+    }
   }
 }

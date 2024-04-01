@@ -2,8 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "incremental": false,
+    "sourceMap": true,
     "jsx": "react-jsx"
   },
   "include": ["src"],
-  "exclude": ["dist", "**/*.spec.ts", "**/*.spec.tsx", "**/*.stories.tsx"]
+  "exclude": ["lib", "**/*.spec.ts", "**/*.spec.tsx", "**/*.stories.tsx"]
 }
