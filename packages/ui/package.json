@@ -1,6 +1,6 @@
 {
   "name": "flowbite-react",
-  "version": "0.7.6",
+  "version": "0.7.8",
   "description": "Official React components built for Flowbite and Tailwind CSS",
   "keywords": [
     "design-system",
@@ -21,35 +21,36 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "types": "./lib/esm/index.d.ts",
+      "types": "./lib/types/index.d.ts",
       "import": "./lib/esm/index.js",
       "require": "./lib/cjs/index.js"
     },
     "./components/*": {
-      "types": "./lib/esm/components/*/index.d.ts",
+      "types": "./lib/types/components/*/index.d.ts",
       "import": "./lib/esm/components/*/index.js",
       "require": "./lib/cjs/components/*/index.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
-  "types": "lib/esm/index.d.ts",
+  "types": "lib/types/index.d.ts",
   "files": [
     "lib"
   ],
   "scripts": {
-    "build": "rimraf coverage lib && bun build:cjs && bun build:esm",
+    "build": "rimraf lib && bun build:fast",
     "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --outDir lib/cjs",
-    "build:esm": "tsc -p tsconfig.build.json --module ESNext --declaration --outDir lib/esm",
+    "build:esm": "tsc -p tsconfig.build.json --module ESNext --outDir lib/esm",
+    "build:fast": "bun build:cjs && bun build:esm && bun build:types",
+    "build:types": "tsc -p tsconfig.build.json --declaration --emitDeclarationOnly --outDir lib/types",
     "clean": "rimraf .turbo coverage lib node_modules tsconfig.tsbuildinfo",
-    "dev": "",
+    "dev": "bun build:fast --watch",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "postinstall": "bun run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",
-    "postpack": "clean-package restore",
     "prepublishOnly": "bun run build",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -57,42 +58,45 @@
   },
   "dependencies": {
     "@floating-ui/core": "1.6.0",
-    "@floating-ui/react": "0.26.9",
+    "@floating-ui/react": "0.26.10",
     "classnames": "2.5.1",
     "debounce": "2.0.0",
     "flowbite": "2.3.0",
     "react-icons": "5.0.1",
-    "react-indiana-drag-scroll": "2.2.0",
     "tailwind-merge": "2.2.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.2",
     "@testing-library/user-event": "14.5.2",
-    "@types/react": "18.2.67",
-    "@types/react-dom": "18.2.22",
-    "@typescript-eslint/eslint-plugin": "7.3.1",
-    "@typescript-eslint/parser": "7.3.1",
+    "@types/react": "18.2.73",
+    "@types/react-dom": "18.2.23",
+    "@typescript-eslint/eslint-plugin": "7.4.0",
+    "@typescript-eslint/parser": "7.4.0",
     "@vitejs/plugin-react": "4.2.1",
     "@vitest/coverage-v8": "1.4.0",
-    "clean-package": "2.2.0",
     "eslint-plugin-react": "7.34.1",
     "eslint-plugin-storybook": "0.8.0",
-    "eslint-plugin-vitest": "0.3.26",
+    "eslint-plugin-vitest": "0.4.1",
     "jsdom": "24.0.0",
-    "typescript": "5.4.2",
+    "mime": "^4.0.1",
+    "typescript": "5.4.3",
     "vitest": "1.4.0"
   },
   "peerDependencies": {
-    "react": "^18",
-    "react-dom": "^18",
+    "react": ">=18",
+    "react-dom": ">=18",
     "tailwindcss": "^3"
   },
   "clean-package": {
     "remove": [
-      "scripts",
       "devDependencies",
       "clean-package"
-    ]
+    ],
+    "replace": {
+      "scripts": {
+        "postpublish": "clean-package restore"
+      }
+    }
   }
 }

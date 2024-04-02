@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.7.8
+
+### Patch Changes
+
+- [#1339](https://github.com/themesberg/flowbite-react/pull/1339) [`8430004`](https://github.com/themesberg/flowbite-react/commit/8430004736d16562598b3ec820b28b47dde8ff4a) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix package.json types path
+
+## 0.7.7
+
+### Patch Changes
+
+- [#1336](https://github.com/themesberg/flowbite-react/pull/1336) [`b6ebb31`](https://github.com/themesberg/flowbite-react/commit/b6ebb312570630176bcc5adfed9b0d8598f93654) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix build step, export types and improve DX
+
 ## 0.7.6
 
 ### Patch Changes
