@@ -1,6 +1,6 @@
 import { $ } from "bun";
 import glob from "fast-glob";
-import del from "rollup-plugin-delete";
+import { rimraf } from "rimraf";
 // import dts from "rollup-plugin-dts";
 import esbuild from "rollup-plugin-esbuild";
 import { rollupPluginUseClient } from "rollup-plugin-use-client";
@@ -51,7 +51,7 @@ export default [
     ],
     external,
     plugins: [
-      del({ targets: "lib/*" }),
+      cleanOutputDir(),
       esbuild({
         sourceMap: false,
       }),
@@ -83,6 +83,15 @@ export default [
   //   ],
   // },
 ];
+
+function cleanOutputDir() {
+  return {
+    name: "clean-output-dir",
+    async buildStart() {
+      await rimraf(outputDir);
+    },
+  };
+}
 
 function generateDts() {
   return {

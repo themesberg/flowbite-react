@@ -78,7 +78,6 @@
     "jsdom": "24.0.0",
     "mime": "4.0.1",
     "rollup": "4.13.2",
-    "rollup-plugin-delete": "2.0.0",
     "rollup-plugin-esbuild": "6.1.1",
     "rollup-plugin-use-client": "1.4.0",
     "typescript": "5.4.3",
