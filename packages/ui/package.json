@@ -22,30 +22,26 @@
   "exports": {
     ".": {
       "types": "./lib/types/index.d.ts",
-      "import": "./lib/esm/index.js",
-      "require": "./lib/cjs/index.js"
+      "import": "./lib/esm/index.mjs",
+      "require": "./lib/cjs/index.cjs"
     },
     "./components/*": {
       "types": "./lib/types/components/*/index.d.ts",
-      "import": "./lib/esm/components/*/index.js",
-      "require": "./lib/cjs/components/*/index.js"
+      "import": "./lib/esm/components/*/index.mjs",
+      "require": "./lib/cjs/components/*/index.cjs"
     },
     "./package.json": "./package.json"
   },
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
+  "main": "lib/cjs/index.cjs",
+  "module": "lib/esm/index.mjs",
   "types": "lib/types/index.d.ts",
   "files": [
     "lib"
   ],
   "scripts": {
-    "build": "rimraf lib && bun build:fast",
-    "build:cjs": "tsc -p tsconfig.build.json --module CommonJS --outDir lib/cjs",
-    "build:esm": "tsc -p tsconfig.build.json --module ESNext --outDir lib/esm",
-    "build:fast": "bun build:cjs && bun build:esm && bun build:types",
-    "build:types": "tsc -p tsconfig.build.json --declaration --emitDeclarationOnly --outDir lib/types",
+    "build": "bun --bun rollup -c",
     "clean": "rimraf .turbo coverage lib node_modules tsconfig.tsbuildinfo",
-    "dev": "bun build:fast --watch",
+    "dev": "bun run build --watch",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint .",
@@ -78,8 +74,13 @@
     "eslint-plugin-react": "7.34.1",
     "eslint-plugin-storybook": "0.8.0",
     "eslint-plugin-vitest": "0.4.1",
+    "fast-glob": "3.3.2",
     "jsdom": "24.0.0",
-    "mime": "^4.0.1",
+    "mime": "4.0.1",
+    "rollup": "4.13.2",
+    "rollup-plugin-delete": "2.0.0",
+    "rollup-plugin-esbuild": "6.1.1",
+    "rollup-plugin-use-client": "1.4.0",
     "typescript": "5.4.3",
     "vitest": "1.4.0"
   },
