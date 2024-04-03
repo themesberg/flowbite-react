@@ -96,7 +96,7 @@ function cleanOutputDir() {
 function generateDts() {
   return {
     name: "generate-dts",
-    async buildEnd() {
+    async closeBundle() {
       await $`tsc -p tsconfig.build.json`;
     },
   };
