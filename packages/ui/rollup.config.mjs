@@ -74,13 +74,7 @@ export default [
   //       preserveModules: true,
   //     },
   //   ],
-  //   plugins: [
-  //     dts({
-  //       compilerOptions: {
-  //         incremental: false,
-  //       },
-  //     }),
-  //   ],
+  //   plugins: [dts()],
   // },
 ];
 
