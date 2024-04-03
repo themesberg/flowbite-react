@@ -18,15 +18,13 @@ export const HRTrimmed = forwardRef<HTMLHRElement, HRTrimmedProps>(
     const theme = mergeDeep(getTheme().hr.trimmed, customTheme);
 
     return (
-      <>
-        <hr
-          className={twMerge(theme.base, className)}
-          role="separator"
-          data-testid="flowbite-hr-trimmed"
-          ref={ref}
-          {...props}
-        />
-      </>
+      <hr
+        className={twMerge(theme.base, className)}
+        role="separator"
+        data-testid="flowbite-hr-trimmed"
+        ref={ref}
+        {...props}
+      />
     );
   },
 );

@@ -31,9 +31,7 @@ const HRComponent = forwardRef<HTMLHRElement, HRProps>(({ theme: customTheme = {
   const theme = mergeDeep(getTheme().hr.root, customTheme);
 
   return (
-    <>
-      <hr className={twMerge(theme.base, className)} role="separator" data-testid="flowbite-hr" ref={ref} {...props} />
-    </>
+    <hr className={twMerge(theme.base, className)} role="separator" data-testid="flowbite-hr" ref={ref} {...props} />
   );
 });
 

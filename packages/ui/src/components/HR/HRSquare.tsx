@@ -18,15 +18,13 @@ export const HRSquare = forwardRef<HTMLHRElement, HRSquareProps>(
     const theme = mergeDeep(getTheme().hr.square, customTheme);
 
     return (
-      <>
-        <hr
-          className={twMerge(theme.base, className)}
-          role="separator"
-          data-testid="flowbite-hr-square"
-          ref={ref}
-          {...props}
-        />
-      </>
+      <hr
+        className={twMerge(theme.base, className)}
+        role="separator"
+        data-testid="flowbite-hr-square"
+        ref={ref}
+        {...props}
+      />
     );
   },
 );
