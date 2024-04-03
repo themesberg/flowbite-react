@@ -26,6 +26,5 @@
     /* Completeness */
     "skipLibCheck": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["lib"]
+  "include": ["**/*.ts", "**/*.tsx"]
 }

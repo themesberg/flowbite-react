@@ -2,9 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "emitDeclarationOnly": true,
-    "outDir": "lib/types"
+    "emitDeclarationOnly": true
   },
   "include": ["src"],
-  "exclude": ["lib", "**/*.spec.ts", "**/*.spec.tsx", "**/*.stories.tsx"]
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.stories.tsx"]
 }

@@ -21,26 +21,31 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "types": "./lib/types/index.d.ts",
-      "import": "./lib/esm/index.mjs",
-      "require": "./lib/cjs/index.cjs"
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.mjs",
+      "require": "./dist/cjs/index.cjs"
     },
     "./components/*": {
-      "types": "./lib/types/components/*/index.d.ts",
-      "import": "./lib/esm/components/*/index.mjs",
-      "require": "./lib/cjs/components/*/index.cjs"
+      "types": "./dist/types/components/*/index.d.ts",
+      "import": "./dist/esm/components/*/index.mjs",
+      "require": "./dist/cjs/components/*/index.cjs"
+    },
+    "./plugin": {
+      "types": "./dist/types/plugin.d.ts",
+      "import": "./dist/esm/plugin.mjs",
+      "require": "./dist/cjs/plugin.cjs"
     },
     "./package.json": "./package.json"
   },
-  "main": "lib/cjs/index.cjs",
-  "module": "lib/esm/index.mjs",
-  "types": "lib/types/index.d.ts",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
     "build": "bun --bun rollup -c",
-    "clean": "rimraf .turbo coverage lib node_modules tsconfig.tsbuildinfo",
+    "clean": "rimraf .turbo coverage dist node_modules tsconfig.tsbuildinfo",
     "dev": "bun run build --watch",
     "format": "prettier . --write",
     "format:check": "prettier . --check",

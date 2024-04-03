@@ -6,7 +6,6 @@ module.exports = {
     "./components/**/*.{js,jsx,md,mdx,ts,tsx}",
     "./data/**/*.{js,jsx,ts,tsx}",
     "./examples/**/*.{js,jsx,ts,tsx}",
-    "../../node_modules/flowbite-react/lib/esm/**/*.mjs",
   ],
   theme: {
     extend: {
@@ -89,5 +88,5 @@ module.exports = {
       ],
     },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [require("flowbite-react/plugin")({ dir: "../../" })],
 };

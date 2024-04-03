@@ -7,7 +7,7 @@ import { rollupPluginUseClient } from "rollup-plugin-use-client";
 import packageJson from "./package.json";
 
 const componentEntries = await glob("src/components/**/index.ts");
-const entries = ["src/index.ts", ...componentEntries];
+const entries = ["src/index.ts", "src/plugin.ts", ...componentEntries];
 // const entriesDts = {
 //   index: entries[0],
 //   ...componentEntries.reduce((acc, entry) => {
@@ -17,15 +17,17 @@ const entries = ["src/index.ts", ...componentEntries];
 //   }, {}),
 // };
 const external = [
+  "flowbite/plugin",
   "react-icons/fa",
   "react-icons/hi",
   "react/jsx-runtime",
+  "tailwindcss/plugin",
   ...Object.keys({
     ...packageJson.dependencies,
     ...packageJson.peerDependencies,
   }),
 ];
-const outputDir = "lib";
+const outputDir = "dist";
 
 /**
  * @type {import('rollup').RollupOptions}
@@ -91,7 +93,7 @@ function generateDts() {
   return {
     name: "generate-dts",
     async closeBundle() {
-      await $`tsc -p tsconfig.build.json`;
+      await $`tsc -p tsconfig.build.json --outDir ${outputDir}/types`;
     },
   };
 }
