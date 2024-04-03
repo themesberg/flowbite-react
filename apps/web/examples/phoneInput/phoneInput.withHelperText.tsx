@@ -7,21 +7,21 @@ const code = `
 import { PhoneInput } from "flowbite-react";
 
 function Component() {
-    return (
-        <form className="max-w-sm mx-auto">
-            <PhoneInput helperText="Select a phone number that matches the format." />
-        </form>
-    )
+  return (
+    <form className="max-w-sm mx-auto">
+      <PhoneInput helperText="Select a phone number that matches the format." />
+    </form>
+  )
 }
 `;
 
 const codeRSC = `
 function Component() {
-    return (
-        <form className="max-w-sm mx-auto">
-            <PhoneInput helperText="Select a phone number that matches the format." />
-        </form>
-    )
+  return (
+    <form className="max-w-sm mx-auto">
+      <PhoneInput helperText="Select a phone number that matches the format." />
+    </form>
+  )
 }
 `;
 

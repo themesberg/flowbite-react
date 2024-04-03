@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
 import type { DeepPartial } from "../../types";
-import { FlowbiteSizes } from "../Flowbite";
+import type { FlowbiteSizes } from "../Flowbite";
 import { HelperText } from "../HelperText";
 
 export interface FlowbitePhoneInputTheme {
