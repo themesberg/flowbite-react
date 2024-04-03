@@ -18,6 +18,7 @@ export * from "./components/FloatingLabel";
 export * from "./components/Flowbite";
 export * from "./components/Footer";
 export * from "./components/HelperText";
+export * from "./components/HR";
 export * from "./components/Kbd";
 export * from "./components/Label";
 export * from "./components/List";

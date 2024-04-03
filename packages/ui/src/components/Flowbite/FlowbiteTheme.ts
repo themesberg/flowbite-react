@@ -16,6 +16,7 @@ import type { FlowbiteFileInputTheme } from "../FileInput";
 import type { FlowbiteFloatingLabelTheme } from "../FloatingLabel";
 import type { FlowbiteFooterTheme } from "../Footer";
 import type { FlowbiteHelperTextTheme } from "../HelperText";
+import type { FlowbiteHRTheme } from "../HR/HR";
 import type { FlowbiteKbdTheme } from "../Kbd";
 import type { FlowbiteLabelTheme } from "../Label";
 import type { FlowbiteListTheme } from "../List";
@@ -61,6 +62,7 @@ export interface FlowbiteTheme {
   floatingLabel: FlowbiteFloatingLabelTheme;
   footer: FlowbiteFooterTheme;
   helperText: FlowbiteHelperTextTheme;
+  hr: FlowbiteHRTheme;
   kbd: FlowbiteKbdTheme;
   label: FlowbiteLabelTheme;
   list: FlowbiteListTheme;

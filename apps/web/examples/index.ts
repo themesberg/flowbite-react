@@ -15,6 +15,7 @@ export * as fileInput from "./fileInput";
 export * as floatingLabel from "./floatingLabel";
 export * as footer from "./footer";
 export * as forms from "./forms";
+export * as hr from "./hr";
 export * as kbd from "./kbd";
 export * as list from "./list";
 export * as listGroup from "./listGroup";
