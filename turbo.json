@@ -11,12 +11,18 @@
       "cache": false,
       "persistent": true
     },
-    "format": {},
-    "format:check": {},
+    "format": {
+      "dependsOn": ["^build"]
+    },
+    "format:check": {
+      "dependsOn": ["^build"]
+    },
     "lint": {},
     "lint:fix": {},
     "test": {},
     "test:coverage": {},
-    "typecheck": {}
+    "typecheck": {
+      "dependsOn": ["^build"]
+    }
   }
 }
