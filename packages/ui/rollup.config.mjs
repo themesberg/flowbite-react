@@ -22,42 +22,40 @@ const outputDir = "dist";
 /**
  * @type {import('rollup').RollupOptions}
  */
-export default [
-  {
-    input: entries,
-    output: [
-      {
-        format: "es",
-        dir: `${outputDir}/esm`,
-        entryFileNames: "[name].mjs",
-        preserveModules: true,
-        sourcemap: true,
-      },
-      {
-        format: "cjs",
-        dir: `${outputDir}/cjs`,
-        entryFileNames: "[name].cjs",
-        preserveModules: true,
-        sourcemap: true,
-      },
-    ],
-    external,
-    plugins: [
-      cleanOutputDir(),
-      esbuild({
-        sourceMap: false,
-      }),
-      rollupPluginUseClient(),
-      generateDts(),
-    ],
-    onwarn(warning, warn) {
-      if (warning.code === "MODULE_LEVEL_DIRECTIVE") {
-        return;
-      }
-      warn(warning);
+export default {
+  input: entries,
+  output: [
+    {
+      format: "es",
+      dir: `${outputDir}/esm`,
+      entryFileNames: "[name].mjs",
+      preserveModules: true,
+      sourcemap: true,
     },
+    {
+      format: "cjs",
+      dir: `${outputDir}/cjs`,
+      entryFileNames: "[name].cjs",
+      preserveModules: true,
+      sourcemap: true,
+    },
+  ],
+  external,
+  plugins: [
+    cleanOutputDir(),
+    esbuild({
+      sourceMap: false,
+    }),
+    rollupPluginUseClient(),
+    generateDts(),
+  ],
+  onwarn(warning, warn) {
+    if (warning.code === "MODULE_LEVEL_DIRECTIVE") {
+      return;
+    }
+    warn(warning);
   },
-];
+};
 
 function cleanOutputDir() {
   return {
