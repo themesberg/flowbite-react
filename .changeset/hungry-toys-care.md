@@ -1,5 +1,5 @@
 ---
-"flowbite-react": patch
+"flowbite-react": minor
 ---
 
 ## Rework build process using `rollup` and `tsc`
