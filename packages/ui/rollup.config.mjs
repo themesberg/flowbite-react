@@ -7,7 +7,7 @@ import { rollupPluginUseClient } from "rollup-plugin-use-client";
 import packageJson from "./package.json";
 
 const componentEntries = await glob("src/components/**/index.ts");
-const entries = ["src/index.ts", "src/plugin.ts", ...componentEntries];
+const entries = ["src/index.ts", "src/tailwind.ts", ...componentEntries];
 // const entriesDts = {
 //   index: entries[0],
 //   ...componentEntries.reduce((acc, entry) => {

@@ -30,10 +30,10 @@
       "import": "./dist/esm/components/*/index.mjs",
       "require": "./dist/cjs/components/*/index.cjs"
     },
-    "./plugin": {
-      "types": "./dist/types/plugin.d.ts",
-      "import": "./dist/esm/plugin.mjs",
-      "require": "./dist/cjs/plugin.cjs"
+    "./tailwind": {
+      "types": "./dist/types/tailwind.d.ts",
+      "import": "./dist/esm/tailwind.mjs",
+      "require": "./dist/cjs/tailwind.cjs"
     },
     "./package.json": "./package.json"
   },
