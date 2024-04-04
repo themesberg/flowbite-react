@@ -21,7 +21,6 @@
     "dev:web": "turbo dev --filter=web",
     "format": "turbo format",
     "format:check": "turbo format:check",
-    "postinstall": "bun build:ui",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "release": "changeset publish",
@@ -47,8 +46,5 @@
     "rimraf": "5.0.5",
     "turbo": "latest"
   },
-  "packageManager": "bun@1.1.0",
-  "trustedDependencies": [
-    "flowbite-react"
-  ]
+  "packageManager": "bun@1.1.0"
 }
