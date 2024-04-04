@@ -67,7 +67,6 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: "Dropdown", href: "/docs/components/dropdown" },
       { title: "Footer", href: "/docs/components/footer" },
       { title: "Forms", href: "/docs/components/forms" },
-      { title: "HR", href: "/docs/components/hr", isNew: true },
       { title: "KBD", href: "/docs/components/kbd", isNew: true },
       { title: "List group", href: "/docs/components/list-group" },
       { title: "Modal", href: "/docs/components/modal" },
@@ -98,6 +97,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
     href: "/typography/",
     items: [
       { title: "Blockquote", href: "/docs/typography/blockquote", isNew: true },
+      { title: "HR", href: "/docs/components/hr", isNew: true },
       { title: "List", href: "/docs/typography/list", isNew: true },
     ],
   },
