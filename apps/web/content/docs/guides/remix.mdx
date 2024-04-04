@@ -86,21 +86,21 @@ export const links: LinksFunction = () => [
 npm i flowbite-react
 ```
 
-2. Add the Flowbite plugin to `tailwind.config.ts` and include content from `flowbite-react`:
+2. Add the Flowbite React `content` path and `plugin` to `tailwind.config.ts`:
 
 ```ts {1,8,12}
-import flowbite from "flowbite/plugin";
+import flowbite from "flowbite-react/tailwind";
 
 import type { Config } from "tailwindcss";
 
 export default {
   content: [
     // ...
-    "node_modules/flowbite-react/lib/esm/**/*.js",
+    flowbite.content(),
   ],
   plugins: [
     // ...
-    flowbite,
+    flowbite.plugin(),
   ],
 } satisfies Config;
 ```
