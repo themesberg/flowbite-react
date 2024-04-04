@@ -40,7 +40,7 @@ module.exports = {
       classRegex: "^(class(Name)|theme)?$",
     },
   },
-  ignorePatterns: ["lib"],
+  ignorePatterns: ["dist"],
   rules: {
     "no-undef": "off",
     "react/prop-types": "off",

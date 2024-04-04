@@ -21,7 +21,6 @@
     "dev:web": "turbo dev --filter=web",
     "format": "turbo format",
     "format:check": "turbo format:check",
-    "postinstall": "bun build:ui",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "release": "changeset publish",
