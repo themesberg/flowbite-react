@@ -27,20 +27,18 @@ export const HRIcon = forwardRef<HTMLHRElement, HRIconProps>(
     const SVGIcon = Icon ? Icon : FaQuoteRight;
 
     return (
-      <>
-        <div className={theme.base}>
-          <hr
-            className={twMerge(theme.hrLine, className)}
-            role="separator"
-            data-testid="flowbite-hr-icon"
-            ref={ref}
-            {...props}
-          />
-          <div className={theme.icon.base}>
-            <SVGIcon aria-hidden className={theme.icon.icon} />
-          </div>
+      <div className={theme.base}>
+        <hr
+          className={twMerge(theme.hrLine, className)}
+          role="separator"
+          data-testid="flowbite-hr-icon"
+          ref={ref}
+          {...props}
+        />
+        <div className={theme.icon.base}>
+          <SVGIcon aria-hidden className={theme.icon.icon} />
         </div>
-      </>
+      </div>
     );
   },
 );

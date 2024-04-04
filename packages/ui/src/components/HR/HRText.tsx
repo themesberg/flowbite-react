@@ -21,18 +21,16 @@ export const HRText = forwardRef<HTMLHRElement, HRTextProps>(
     const theme = mergeDeep(getTheme().hr.text, customTheme);
 
     return (
-      <>
-        <div className={theme.base}>
-          <hr
-            className={twMerge(theme.hrLine, className)}
-            data-testid="flowbite-hr-text"
-            role="separator"
-            ref={ref}
-            {...props}
-          />
-          <span className={theme.text}>{text}</span>
-        </div>
-      </>
+      <div className={theme.base}>
+        <hr
+          className={twMerge(theme.hrLine, className)}
+          data-testid="flowbite-hr-text"
+          role="separator"
+          ref={ref}
+          {...props}
+        />
+        <span className={theme.text}>{text}</span>
+      </div>
     );
   },
 );
