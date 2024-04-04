@@ -13,8 +13,8 @@ After evaluating various tools including `tsup`, `tshy`, and `bun build`, we cho
 ### Changes
 
 - added `rollup` + `esbuild` for transpiling files
-  - all files in the `cjs` directory now have `.cjs` extention
-  - all files in the `esm` directory now have `.mjs` extention
+  - all files in the `cjs` directory now have `.cjs` extension
+  - all files in the `esm` directory now have `.mjs` extension
   - declaration file types (`*.d.ts`) have been moved from `dist/esm` to `dist/types`
 - changed the build output dir from `lib` to `dist`
 - created a facade layer for easier management of the `content` path as well as the `plugin`
