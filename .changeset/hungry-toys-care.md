@@ -6,7 +6,7 @@
 
 ### Summary
 
-In order to bring more performance to the build process of `flowbite-react` package we have to consider transpiling the files using other tools rather than `tsc`, which is very slow.
+In order to bring more performance to the build process of `flowbite-react` package, we have to consider transpiling the files using other tools rather than `tsc`, which is very slow.
 
 After evaluating various tools including `tsup`, `tshy`, and `bun build`, we chose `rollup` with the `esbuild` plugin for transpiling due to its performance and flexibility. We continue to use `tsc` solely for generating `*.d.ts` declaration files.
 
