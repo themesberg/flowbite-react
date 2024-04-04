@@ -12,7 +12,6 @@ const external = [
   "react-icons/fa",
   "react-icons/hi",
   "react/jsx-runtime",
-  "tailwindcss/plugin",
   ...Object.keys({
     ...packageJson.dependencies,
     ...packageJson.peerDependencies,
