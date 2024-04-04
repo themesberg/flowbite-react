@@ -47,5 +47,8 @@
     "rimraf": "5.0.5",
     "turbo": "latest"
   },
-  "packageManager": "bun@1.1.0"
+  "packageManager": "bun@1.1.0",
+  "trustedDependencies": [
+    "flowbite-react"
+  ]
 }
