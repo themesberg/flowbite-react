@@ -1,21 +1,12 @@
 import { $ } from "bun";
 import glob from "fast-glob";
 import { rimraf } from "rimraf";
-// import dts from "rollup-plugin-dts";
 import esbuild from "rollup-plugin-esbuild";
 import { rollupPluginUseClient } from "rollup-plugin-use-client";
 import packageJson from "./package.json";
 
 const componentEntries = await glob("src/components/**/index.ts");
 const entries = ["src/index.ts", "src/tailwind.ts", ...componentEntries];
-// const entriesDts = {
-//   index: entries[0],
-//   ...componentEntries.reduce((acc, entry) => {
-//     const key = entry.replace("src/", "").replace(".ts", "");
-//     acc[key] = entry;
-//     return acc;
-//   }, {}),
-// };
 const external = [
   "flowbite/plugin",
   "react-icons/fa",
@@ -67,17 +58,6 @@ export default [
       warn(warning);
     },
   },
-  // {
-  //   input: entriesDts,
-  //   output: [
-  //     {
-  //       format: "es",
-  //       dir: `${outputDir}/types`,
-  //       preserveModules: true,
-  //     },
-  //   ],
-  //   plugins: [dts()],
-  // },
 ];
 
 function cleanOutputDir() {
