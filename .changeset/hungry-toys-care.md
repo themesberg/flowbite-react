@@ -18,7 +18,7 @@ After evaluating various tools including `tsup`, `tshy`, and `bun build`, we cho
   - declaration file types (`*.d.ts`) have been moved from `dist/esm` to `dist/types`
 - changed the build output dir from `lib` to `dist`
 - created a facade layer for easier management of the `content` path as well as the `plugin`
-- fixed turbo repo dependency tree configs in order for `apps/web` to properly pipe and require the build output of `packages/ui` in certain script steps (such as: `build`, `dev`)
+- fixed turbo repo dependency tree configs in order for `apps/web` to properly pipe and require the build output of `packages/ui` in certain script steps such as `build` and `dev`
 
 ### Breaking changes
 
