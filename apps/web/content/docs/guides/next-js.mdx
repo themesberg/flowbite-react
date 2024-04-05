@@ -45,18 +45,20 @@ npm i flowbite-react
 
 ### Configure Tailwind CSS
 
-Open `tailwind.config.js` and update `content` and `plugins` to include Flowbite React:
+Open `tailwind.config.ts` and update `content` and `plugins` to include Flowbite React:
 
-```js {5,9}
+```js {1,7,11}
+import flowbite from "flowbite-react/tailwind";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     // ...
-    "node_modules/flowbite-react/lib/esm/**/*.js",
+    flowbite.content(),
   ],
   plugins: [
     // ...
-    require("flowbite/plugin"),
+    flowbite.plugin(),
   ],
 };
 ```
@@ -115,18 +117,20 @@ module.exports = {
 npm i flowbite-react
 ```
 
-2. Add the Flowbite plugin to `tailwind.config.js` and include content from `flowbite-react`:
+2. Add the Flowbite React `content` path and `plugin` to `tailwind.config.js`:
 
-```js {5,9}
+```js {1,7,11}
+const flowbite = require("flowbite-react/tailwind");
+
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     // ...
-    "node_modules/flowbite-react/lib/esm/**/*.js",
+    flowbite.content(),
   ],
   plugins: [
     // ...
-    require("flowbite/plugin"),
+    flowbite.plugin(),
   ],
 };
 ```

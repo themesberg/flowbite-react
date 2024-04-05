@@ -3,11 +3,11 @@ module.exports = {
   root: true,
   env: {
     browser: true,
+    commonjs: true,
     es2021: true,
   },
   extends: [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
     "plugin:vitest/recommended",
@@ -17,21 +17,20 @@ module.exports = {
   ],
   overrides: [
     {
-      env: {
-        node: true,
-      },
-      files: [".eslintrc.{js,cjs}"],
-      parserOptions: {
-        sourceType: "script",
+      files: ["**/*.{ts,tsx}"],
+      plugins: ["@typescript-eslint"],
+      parser: "@typescript-eslint/parser",
+      extends: ["plugin:@typescript-eslint/recommended"],
+      rules: {
+        "@typescript-eslint/no-unused-vars": "off",
       },
     },
   ],
-  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["@typescript-eslint", "react", "vitest"],
+  plugins: ["react", "vitest"],
   settings: {
     react: {
       version: "detect",
@@ -41,7 +40,7 @@ module.exports = {
       classRegex: "^(class(Name)|theme)?$",
     },
   },
-  ignorePatterns: ["lib"],
+  ignorePatterns: ["dist"],
   rules: {
     "no-undef": "off",
     "react/prop-types": "off",
@@ -49,6 +48,5 @@ module.exports = {
     "react/no-unescaped-entities": "off",
     "tailwindcss/classnames-order": "off",
     "tailwindcss/enforces-shorthand": "off",
-    "@typescript-eslint/no-unused-vars": "off",
   },
 };
