@@ -92,7 +92,9 @@ function Component() {
         </Table.Body>
       </Table>
 
-      <Pagination layout="table" currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />
+      <div className="flex overflow-x-auto sm:justify-center mt-4">
+        <Pagination layout="table" currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />
+      </div>
     </div>
   );
 }
@@ -180,7 +182,9 @@ function Component() {
         </TableBody>
       </Table>
 
-      <Pagination layout="table" currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />
+      <div className="mt-4 flex overflow-x-auto sm:justify-center">
+        <Pagination layout="table" currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />
+      </div>
     </div>
   );
 }
