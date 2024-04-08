@@ -10,6 +10,7 @@ import { TableCell } from "./TableCell";
 import { TableContext } from "./TableContext";
 import { TableHead, type FlowbiteTableHeadTheme } from "./TableHead";
 import { TableHeadCell } from "./TableHeadCell";
+import { TablePagination, type FlowbiteTablePaginationTheme } from "./TablePagination";
 import { TableRow, type FlowbiteTableRowTheme } from "./TableRow";
 
 export interface FlowbiteTableTheme {
@@ -17,6 +18,7 @@ export interface FlowbiteTableTheme {
   head: FlowbiteTableHeadTheme;
   row: FlowbiteTableRowTheme;
   body: FlowbiteTableBodyTheme;
+  pagination: FlowbiteTablePaginationTheme;
 }
 
 export interface FlowbiteTableRootTheme {
@@ -56,4 +58,5 @@ export const Table = Object.assign(TableComponent, {
   Row: TableRow,
   Cell: TableCell,
   HeadCell: TableHeadCell,
+  Pagination: TablePagination,
 });

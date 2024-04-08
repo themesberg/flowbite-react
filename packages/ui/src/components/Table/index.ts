@@ -10,3 +10,5 @@ export { TableHeadCell } from "./TableHeadCell";
 export type { FlowbiteTableHeadCellTheme, TableHeadCellProps } from "./TableHeadCell";
 export { TableRow } from "./TableRow";
 export type { FlowbiteTableRowTheme, TableRowProps } from "./TableRow";
+export { TablePagination } from "./TablePagination";
+export type { FlowbiteTablePaginationTheme, TablePaginationProps } from "./TablePagination";
