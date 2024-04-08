@@ -1,3 +1,5 @@
+"use client";
+
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TablePagination, TableRow } from "flowbite-react";
 import { useState } from "react";
 import { type CodeData } from "~/components/code-demo";
