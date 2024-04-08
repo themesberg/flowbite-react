@@ -1,6 +1,6 @@
 "use client";
 
-import { Table, TableBody, TableCell, TableHead, TableHeadCell, TablePagination, TableRow } from "flowbite-react";
+import { Pagination, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
 import { useState } from "react";
 import { type CodeData } from "~/components/code-demo";
 
@@ -8,14 +8,12 @@ const code = `
 "use client";
 
 import { useState } from "react"
-import { Table } from "flowbite-react";
+import { Pagination, Table } from "flowbite-react";
 
 function Component() {
-  const [pageNo, setPageNo] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const [rowsPerPage] = useState(10);
-
-  const handlePageChange = (newPage: number) => setPageNo(newPage);
+  const onPageChange = (page: number) => setCurrentPage(page);
 
   return (
     <div className="overflow-x-auto">
@@ -94,18 +92,16 @@ function Component() {
         </Table.Body>
       </Table>
 
-      <Table.Pagination count={100} onPageChange={handlePageChange} page={pageNo} rowsPerPage={rowsPerPage} paginationType="numbers" />
+      <Pagination layout="table" currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />
     </div>
   );
 }
 `;
 
 function Component() {
-  const [pageNo, setPageNo] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const [rowsPerPage] = useState(10);
-
-  const handlePageChange = (newPage: number) => setPageNo(newPage);
+  const onPageChange = (page: number) => setCurrentPage(page);
 
   return (
     <div className="overflow-x-auto">
@@ -184,18 +180,12 @@ function Component() {
         </TableBody>
       </Table>
 
-      <TablePagination
-        count={100}
-        onPageChange={handlePageChange}
-        page={pageNo}
-        rowsPerPage={rowsPerPage}
-        paginationType="numbers"
-      />
+      <Pagination layout="table" currentPage={currentPage} totalPages={100} onPageChange={onPageChange} />
     </div>
   );
 }
 
-export const paginationNumber: CodeData = {
+export const pagination: CodeData = {
   type: "single",
   code: [
     {
@@ -204,6 +194,6 @@ export const paginationNumber: CodeData = {
       code,
     },
   ],
-  githubSlug: "table/table.paginationNumber.tsx",
+  githubSlug: "table/table.paginationButton.tsx",
   component: <Component />,
 };
