@@ -11,7 +11,7 @@ import { useState } from "react"
 import { Table } from "flowbite-react";
 
 function Component() {
-  const [pageNo, setPageNo] = useState(1);
+  const [pageNo, setPageNo] = useState(0);
 
   const [rowsPerPage] = useState(10);
 
@@ -101,7 +101,7 @@ function Component() {
 `;
 
 function Component() {
-  const [pageNo, setPageNo] = useState(1);
+  const [pageNo, setPageNo] = useState(0);
 
   const [rowsPerPage] = useState(10);
 

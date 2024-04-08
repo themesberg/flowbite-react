@@ -89,7 +89,7 @@ export const DefaultTable = Template.bind({});
 DefaultTable.storyName = "Default";
 
 const TPageNumberTemplate: StoryFn<TableProps> = (args) => {
-  const [pageNo, setPageNo] = useState(1);
+  const [pageNo, setPageNo] = useState(0);
   const [rowsPerPage] = useState(10);
 
   const handlePageChange = (newPage: number) => setPageNo(newPage);
@@ -189,7 +189,7 @@ export const PaginationNumberTable = TPageNumberTemplate.bind({});
 PaginationNumberTable.storyName = "Pagination with Numbers";
 
 const TPageButtonTemplate: StoryFn<TableProps> = (args) => {
-  const [pageNo, setPageNo] = useState(1);
+  const [pageNo, setPageNo] = useState(0);
   const [rowsPerPage] = useState(10);
 
   const handlePageChange = (newPage: number) => setPageNo(newPage);

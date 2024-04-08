@@ -50,7 +50,7 @@ export const TablePagination = forwardRef<HTMLDivElement, TablePaginationProps>(
     const pageNumbers = [...Array(nPages + 1).keys()].slice(1);
 
     const goToPrevPage = (): void => {
-      if (page !== 1) {
+      if (page !== 0) {
         onPageChange(page - 1);
       }
     };
@@ -87,7 +87,7 @@ export const TablePagination = forwardRef<HTMLDivElement, TablePaginationProps>(
         </span>
 
         <ul className={theme.page.base}>
-          <button onClick={goToPrevPage} className={theme.page.previous} disabled={page === 1}>
+          <button onClick={goToPrevPage} className={theme.page.previous} disabled={page === 0}>
             Previous
           </button>
           {paginationType === "numbers" ? (
@@ -95,11 +95,9 @@ export const TablePagination = forwardRef<HTMLDivElement, TablePaginationProps>(
               {pageNumbers.map((pgNumber, index) => {
                 return (
                   <button
-                    onClick={() => {
-                      directPageChange(index + 1);
-                    }}
-                    key={index + 1}
-                    className={twMerge(theme.page.pageNo, index + 1 === page ? "bg-blue-50 text-blue-600" : "")}
+                    onClick={() => directPageChange(index)}
+                    key={index}
+                    className={twMerge(theme.page.pageNo, index === page ? "bg-blue-50 text-blue-600" : "")}
                   >
                     {pgNumber}
                   </button>
