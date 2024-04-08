@@ -21,16 +21,29 @@ export interface FlowbiteTablePaginationTheme {
   };
 }
 
-export interface TablePaginationProps extends ComponentPropsWithRef<"tfoot"> {
+export interface TablePaginationProps extends ComponentPropsWithRef<"div"> {
   count: number;
   onPageChange: (newPage: number) => void;
   page: number;
   rowsPerPage: number;
+  paginationType: "numbers" | "prevNextButton";
   theme?: DeepPartial<FlowbiteTablePaginationTheme>;
 }
 
 export const TablePagination = forwardRef<HTMLDivElement, TablePaginationProps>(
-  ({ count, onPageChange, page, rowsPerPage, className, theme: customTheme = {}, ...props }, ref) => {
+  (
+    {
+      count,
+      onPageChange,
+      page,
+      rowsPerPage,
+      paginationType = "numbers",
+      className,
+      theme: customTheme = {},
+      ...props
+    },
+    ref,
+  ) => {
     const theme = mergeDeep(getTheme().table.pagination, customTheme);
 
     const nPages = Math.ceil(count / rowsPerPage);
@@ -77,19 +90,24 @@ export const TablePagination = forwardRef<HTMLDivElement, TablePaginationProps>(
           <button onClick={goToPrevPage} className={theme.page.previous} disabled={page === 1}>
             Previous
           </button>
-          {pageNumbers.map((pgNumber, index) => {
-            return (
-              <button
-                onClick={() => {
-                  directPageChange(index + 1);
-                }}
-                key={index + 1}
-                className={twMerge(theme.page.pageNo, index + 1 === page ? "bg-blue-50 text-blue-600" : "")}
-              >
-                {pgNumber}
-              </button>
-            );
-          })}
+          {paginationType === "numbers" ? (
+            <>
+              {pageNumbers.map((pgNumber, index) => {
+                return (
+                  <button
+                    onClick={() => {
+                      directPageChange(index + 1);
+                    }}
+                    key={index + 1}
+                    className={twMerge(theme.page.pageNo, index + 1 === page ? "bg-blue-50 text-blue-600" : "")}
+                  >
+                    {pgNumber}
+                  </button>
+                );
+              })}
+            </>
+          ) : null}
+
           <button
             role="button"
             onClick={goToNextPage}

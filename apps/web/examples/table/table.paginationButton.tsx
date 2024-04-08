@@ -94,7 +94,7 @@ function Component() {
         </Table.Body>
       </Table>
 
-      <Table.Pagination count={100} onPageChange={handlePageChange} page={pageNo} rowsPerPage={rowsPerPage} />
+      <Table.Pagination count={100} onPageChange={handlePageChange} page={pageNo} rowsPerPage={rowsPerPage} paginationType="prevNextButton" />
     </div>
   );
 }
@@ -184,12 +184,18 @@ function Component() {
         </TableBody>
       </Table>
 
-      <TablePagination count={100} onPageChange={handlePageChange} page={pageNo} rowsPerPage={rowsPerPage} />
+      <TablePagination
+        count={100}
+        onPageChange={handlePageChange}
+        page={pageNo}
+        rowsPerPage={rowsPerPage}
+        paginationType="prevNextButton"
+      />
     </div>
   );
 }
 
-export const pagination: CodeData = {
+export const paginationButton: CodeData = {
   type: "single",
   code: [
     {
@@ -198,6 +204,6 @@ export const pagination: CodeData = {
       code,
     },
   ],
-  githubSlug: "table/table.pagination.tsx",
+  githubSlug: "table/table.paginationButton.tsx",
   component: <Component />,
 };
