@@ -5,6 +5,7 @@ import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
 import type { DeepPartial } from "../../types";
+import type { FlowbiteBoolean } from "../Flowbite";
 
 export interface FlowbiteTablePaginationTheme {
   base: string;
@@ -18,6 +19,7 @@ export interface FlowbiteTablePaginationTheme {
     previous: string;
     pageNo: string;
     next: string;
+    active: FlowbiteBoolean;
   };
 }
 
@@ -97,7 +99,7 @@ export const TablePagination = forwardRef<HTMLDivElement, TablePaginationProps>(
                   <button
                     onClick={() => directPageChange(index)}
                     key={index}
-                    className={twMerge(theme.page.pageNo, index === page ? "bg-blue-50 text-blue-600" : "")}
+                    className={twMerge(theme.page.pageNo, theme.page.active[index === page ? "on" : "off"])}
                   >
                     {pgNumber}
                   </button>
