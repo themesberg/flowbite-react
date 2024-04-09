@@ -11,8 +11,8 @@
     ["createTheme\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
   "tailwindCSS.experimental.configFile": {
-    "apps/web/tailwind.config.js": "apps/web/**",
-    "packages/ui/tailwind.config.js": "packages/ui/**"
+    "apps/web/tailwind.config.cjs": "apps/web/**",
+    "packages/ui/tailwind.config.cjs": "packages/ui/**"
   },
   "typescript.tsdk": "node_modules/typescript/lib"
 }
