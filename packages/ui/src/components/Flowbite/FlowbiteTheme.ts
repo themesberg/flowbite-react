@@ -11,7 +11,7 @@ import type { FlowbiteCarouselTheme } from "../Carousel";
 import type { FlowbiteCheckboxTheme } from "../Checkbox";
 import type { FlowbiteDarkThemeToggleTheme } from "../DarkThemeToggle";
 import type { FlowbiteDatepickerTheme } from "../Datepicker";
-import { FlowbiteDrawerTheme } from "../Drawer";
+import type { FlowbiteDrawerTheme } from "../Drawer";
 import type { FlowbiteDropdownTheme } from "../Dropdown";
 import type { FlowbiteFileInputTheme } from "../FileInput";
 import type { FlowbiteFloatingLabelTheme } from "../FloatingLabel";
