@@ -3,7 +3,6 @@
 import type { ComponentProps, FC } from "react";
 import { useId } from "react";
 import { MdClose, MdHome } from "react-icons/md";
-import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite";
@@ -29,10 +28,10 @@ export interface DrawerHeaderProps extends ComponentProps<"div">, Record<string,
 export const DrawerHeader: FC<DrawerHeaderProps> = ({
   children,
   className,
-  closeIcon: CloseIcon,
+  closeIcon: CloseIcon = MdClose,
   theme: customTheme = {},
   title,
-  titleIcon: TitleIcon,
+  titleIcon: TitleIcon = MdHome,
   ...props
 }) => {
   const id = useId();
@@ -42,21 +41,13 @@ export const DrawerHeader: FC<DrawerHeaderProps> = ({
   const theme = mergeDeep(rootTheme.header, customTheme);
 
   return (
-    <div className={twMerge(className)} {...props}>
-      <h5 className={twMerge(theme.inner.titleText)} id={mainDivId}>
-        {TitleIcon ? (
-          <TitleIcon aria-hidden className={twMerge(theme.inner.titleIcon)} />
-        ) : (
-          <MdHome aria-hidden className={twMerge(theme.inner.titleIcon)} />
-        )}
+    <div className={className} {...props}>
+      <h5 className={theme.inner.titleText} id={mainDivId}>
+        <TitleIcon aria-hidden className={theme.inner.titleIcon} />
         {title}
       </h5>
-      <button onClick={onClose} data-testid="close-drawer" className={twMerge(theme.inner.closeButton)}>
-        {CloseIcon ? (
-          <CloseIcon aria-hidden className={twMerge(theme.inner.closeIcon)} />
-        ) : (
-          <MdClose aria-hidden className={twMerge(theme.inner.closeIcon)} />
-        )}
+      <button onClick={onClose} data-testid="close-drawer" className={theme.inner.closeButton}>
+        <CloseIcon aria-hidden className={theme.inner.closeIcon} />
         <span className="sr-only">Close menu</span>
       </button>
       <span className={theme.collapsed[isOpen ? "on" : "off"]} id={`flowbite-drawer-header-${id}`}>

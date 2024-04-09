@@ -81,7 +81,7 @@ const DrawerComponent: FC<DrawerProps> = ({
         )}
         {...props}
       >
-        <div>{children}</div>
+        {children}
       </div>
       {isOpen && backdrop && <div onClick={() => onClose()} className={theme.root.backdrop} />}
     </DrawerContext.Provider>
