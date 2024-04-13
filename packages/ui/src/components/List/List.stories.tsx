@@ -3,6 +3,10 @@ import { HiCheckCircle } from "react-icons/hi";
 import type { ListProps } from "./List";
 import { List } from "./List";
 
+
+
+
+
 export default {
   title: "Components/List",
   component: List,
@@ -101,6 +105,18 @@ HorizontalList.args = {
 export const WithIconList = Template.bind({});
 WithIconList.storyName = "With Icon";
 WithIconList.args = {
+  children: (
+    <>
+      <List.Item icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</List.Item>
+      <List.Item icon={HiCheckCircle}>At least one lowercase character</List.Item>
+      <List.Item icon={HiCheckCircle}>Inclusion of at least one special character, e.g., ! @ # ?</List.Item>
+    </>
+  ),
+};
+
+export const AdvancedList = Template.bind({});
+AdvancedList.storyName = "Advanced";
+AdvancedList.args = {
   children: (
     <>
       <List.Item icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</List.Item>
