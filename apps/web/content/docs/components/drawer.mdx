@@ -1,0 +1,114 @@
+---
+title: React Drawer (offcanvas) - Flowbite
+description: The Drawer component can be used as a hidden off-canvas sidebar for navigation and to show other information based on multiple styles and placements
+---
+
+Use the Drawer component (or "off-canvas") to show a fixed element relative to the document page from any side for navigation, contact forms, informational purposes or other user actions.
+
+You can set multiple options such as the placement, activate body scrolling, show or hide the backdrop and even use the swipeable edge functionality to show a small part of the drawer when it is not shown completely.
+
+To start using the drawer component you need to import it from `flowbite-react`:
+
+```jsx
+import { Drawer } from "flowbite-react";
+```
+
+## Default drawer
+
+<Example name="drawer.root" />
+
+## Drawer navigation
+
+Use this example to show a navigational sidebar inside the drawer component.
+
+<Example name="drawer.navigation" />
+
+## Contact form
+
+Use this example to show a contact form inside the drawer component.
+
+<Example name="drawer.contactForm" />
+
+## Form elements
+
+Use this example if you want to add form elements inside the drawer component including datepickers.
+
+<Example name="drawer.formElements" />
+
+## Placement
+
+Use the placement options to position the drawer component either on the top, right, bottom, or left side of the document page. This can be done using the `position="{top|right|bottom|left}"` attribute where the default value is "left".
+
+### Left drawer
+
+Use this example where you can position the drawer component on the left side of the page.
+
+<Example name="drawer.left" />
+
+### Right drawer
+
+Use this example to show the drawer component on the right side of the page.
+
+<Example name="drawer.right" />
+
+### Top drawer
+
+Use this example to show the drawer on the top side of the page.
+
+<Example name="drawer.top" />
+
+### Bottom drawer
+
+Use this example to show the drawer on the bottom side of the page.
+
+<Example name="drawer.bottom" />
+
+## Body scrolling
+
+By default, body scrolling is disabled when the drawer is visible, however, you can choose to enable it using the `bodyScrolling="{true|false}"` attribute.
+
+### Disabled (default)
+
+This is an example where the body scrolling behaviour is disabled when the drawer is visible.
+
+<Example name="drawer.noBodyScrolling" />
+
+### Enabled
+
+Get started with this example in order to enable body scrolling even if the drawer component is visible by applying `overflow-y: auto` to your `<body>`.
+
+<Example name="drawer.bodyScrolling" />
+
+## Backdrop
+
+The backdrop element can be used to dim out the background elements when the drawer is visible and also automatically hide the component when clicking outside of it.
+
+Use the `backdrop="{true|false}"` attribute where you can disable or enable the backdrop element.
+
+### Enabled (default)
+
+Use this example to enable the backdrop element by default.
+
+<Example name="drawer.backdrop" />
+
+### Disabled
+
+Use the `backdrop="false"` attribute to disable the backdrop element when the drawer is shown.
+
+<Example name="drawer.noBackdrop" />
+
+## Swipeable edge
+
+The drawer edge functionality allows you to show a small part of the drawer when it is not shown completely by applying the `edge="{true|false}"` attribute, specifying the edge you'd like to set with, e.g., `theme={{ edge: "bottom-16" }}`, and adding `onClick={() => setIsOpen(!isOpen)}` to `<DrawerHeader/>`.
+
+<Example name="drawer.swipeableEdge" />
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="drawer" />
+
+## References
+
+- [Flowbite Drawer](https://flowbite.com/docs/components/drawer/)
