@@ -2,7 +2,7 @@
 
 import { Select, Tooltip, useThemeMode } from "flowbite-react";
 import type { ComponentProps, PropsWithChildren } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { IconType } from "react-icons";
 import { FaCopy } from "react-icons/fa";
 import { HiMoon, HiSun } from "react-icons/hi";
@@ -12,10 +12,18 @@ import { TfiMobile } from "react-icons/tfi";
 import { twMerge } from "tailwind-merge";
 import { CodeHighlight, type Language } from "./code-highlight";
 
+type IFrameData = number | IFrameOptions;
+
+interface IFrameOptions {
+  height: number;
+  noPadding?: boolean;
+}
+
 interface BaseCodeData<T extends "single" | "variant"> {
   type: T;
   githubSlug: string;
   component: React.ReactNode;
+  iframe?: IFrameData;
 }
 
 interface VariantCodeData<V extends Variant> extends BaseCodeData<"variant"> {
@@ -135,8 +143,8 @@ export function CodeDemo({ data }: CodeDemoProps) {
           </div>
         </div>
       </div>
-      <CodePreview view={view} isRTL={isRTL} isDarkMode={isDarkMode}>
-        {data.component}
+      <CodePreview view={view} isRTL={isRTL} isDarkMode={isDarkMode} iframe={data.iframe}>
+        {data.iframe ? <IFrame data={data} isRTL={isRTL} isDarkMode={isDarkMode} /> : data.component}
       </CodePreview>
       <div className="code-syntax-wrapper">
         <div
@@ -173,6 +181,40 @@ export function CodeDemo({ data }: CodeDemoProps) {
   );
 }
 
+function IFrame({ data, isRTL, isDarkMode }: { data: CodeData; isRTL: boolean; isDarkMode: boolean | null }) {
+  const ref = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    const document = ref.current?.contentDocument;
+
+    if (!document) return;
+
+    document.documentElement.setAttribute("dir", isRTL ? "rtl" : "ltr");
+
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isRTL, isDarkMode]);
+
+  function getSrc() {
+    const base = "/examples";
+    const target = data.githubSlug.split("/")[1].replace(".tsx", "");
+    const noPadding = typeof data.iframe === "object" && data.iframe.noPadding ? `?noPadding` : "";
+
+    return `${base}/${target}${noPadding}`;
+  }
+
+  function getHeight(): number {
+    const payload = data.iframe!;
+
+    return typeof payload === "number" ? payload : payload.height;
+  }
+
+  return <iframe ref={ref} src={getSrc()} height={getHeight()} className="w-full" />;
+}
+
 function Tabs({ tabIndex, items, onSelect }: { tabIndex: number; items: CodeItem[]; onSelect(index: number): void }) {
   return (
     <ul className="flex flex-1 text-center text-sm font-medium text-gray-500 dark:text-gray-400">
@@ -198,20 +240,22 @@ function CodePreview({
   view,
   isRTL,
   isDarkMode,
+  iframe,
   children,
-}: PropsWithChildren<{ view: View; isRTL: boolean; isDarkMode: boolean | null }>) {
+}: PropsWithChildren<{ view: View; isRTL: boolean; isDarkMode: boolean | null; iframe?: IFrameData }>) {
   return (
     <div
       {...(isRTL && { dir: "rtl" })}
       className={twMerge("code-preview-wrapper", isDarkMode !== null && (isDarkMode ? "dark" : "light"))}
     >
-      <div className="code-preview flex border-x border-gray-200 bg-white bg-gradient-to-r p-0 dark:border-gray-600 dark:bg-gray-900">
+      <div className="flex border-x border-gray-200 bg-white bg-gradient-to-r p-0 dark:border-gray-600 dark:bg-gray-900">
         <div className="code-responsive-wrapper w-full">
           <div
             className={twMerge(
-              "mx-auto w-full bg-white bg-gradient-to-r p-5 dark:bg-gray-900",
+              "mx-auto w-full bg-white bg-gradient-to-r dark:bg-gray-900",
               view === "tablet" && "max-w-lg",
               view === "mobile" && "max-w-sm",
+              !iframe && "p-5",
             )}
           >
             {children}
