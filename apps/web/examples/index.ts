@@ -19,6 +19,7 @@ export * as forms from "./forms";
 export * as kbd from "./kbd";
 export * as list from "./list";
 export * as listGroup from "./listGroup";
+export * as megaMenu from "./megaMenu";
 export * as modal from "./modal";
 export * as navbar from "./navbar";
 export * as pagination from "./pagination";
