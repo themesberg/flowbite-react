@@ -6,7 +6,7 @@ import { type CodeData } from "~/components/code-demo";
 const code = `
 import { Tabs } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Tabs aria-label="Pills" style="pills">
       <Tabs.Item active title="Tab 1">
@@ -29,7 +29,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Tabs aria-label="Pills" style="pills">
       <Tabs.Item active title="Tab 1">

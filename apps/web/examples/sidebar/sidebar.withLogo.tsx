@@ -12,7 +12,7 @@ const code = `
 import { Sidebar } from "flowbite-react";
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Sidebar aria-label="Sidebar with logo branding example">
       <Sidebar.Logo href="#" img="/favicon.svg" imgAlt="Flowbite logo">
@@ -48,7 +48,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Sidebar aria-label="Sidebar with logo branding example">
       <Sidebar.Logo href="#" img="/favicon.svg" imgAlt="Flowbite logo">

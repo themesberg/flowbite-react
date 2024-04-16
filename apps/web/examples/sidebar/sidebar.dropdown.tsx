@@ -12,7 +12,7 @@ const code = `
 import { Sidebar } from "flowbite-react";
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Sidebar aria-label="Sidebar with multi-level dropdown example">
       <Sidebar.Items>
@@ -48,7 +48,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Sidebar aria-label="Sidebar with multi-level dropdown example">
       <Sidebar.Items>

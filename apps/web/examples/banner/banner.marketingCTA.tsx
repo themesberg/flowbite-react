@@ -8,7 +8,7 @@ const code = `
 import { Banner, Button } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Banner>
       <div className="flex w-[calc(100%-2rem)] flex-col justify-between rounded-lg border border-gray-100 bg-white p-4 shadow-sm dark:border-gray-600 dark:bg-gray-700 md:flex-row lg:max-w-7xl">
@@ -42,7 +42,7 @@ const codeRSC = `
 import { Banner, BannerCollapseButton } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Banner>
       <div className="flex w-[calc(100%-2rem)] flex-col justify-between rounded-lg border border-gray-100 bg-white p-4 shadow-sm dark:border-gray-600 dark:bg-gray-700 md:flex-row lg:max-w-7xl">
@@ -72,7 +72,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Banner>
       <div className="flex w-[calc(100%-2rem)] flex-col justify-between rounded-lg border border-gray-100 bg-white p-4 shadow-sm md:flex-row lg:max-w-7xl dark:border-gray-600 dark:bg-gray-700">

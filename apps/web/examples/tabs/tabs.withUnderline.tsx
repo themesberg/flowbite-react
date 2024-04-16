@@ -10,7 +10,7 @@ import { Tabs } from "flowbite-react";
 import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 
-function Component() {
+export function Component() {
   return (
     <Tabs aria-label="Tabs with underline" style="underline">
       <Tabs.Item active title="Profile" icon={HiUserCircle}>
@@ -41,7 +41,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Tabs aria-label="Tabs with underline" style="underline">
       <Tabs.Item active title="Profile" icon={HiUserCircle}>

@@ -8,7 +8,7 @@ const code = `
 import { Button } from "flowbite-react";
 import Link from "next/link";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button as="span" className="cursor-pointer">
@@ -26,7 +26,7 @@ const codeRSC = `
 import { Button } from "flowbite-react";
 import Link from "next/link";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button as="span" className="cursor-pointer">
@@ -40,7 +40,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button as="span" className="cursor-pointer">

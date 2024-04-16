@@ -4,7 +4,7 @@ import { type CodeData } from "~/components/code-demo";
 const code = `
 import { Button, Popover } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Popover
       aria-labelledby="default-popover"
@@ -25,7 +25,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Popover
       aria-labelledby="default-popover"

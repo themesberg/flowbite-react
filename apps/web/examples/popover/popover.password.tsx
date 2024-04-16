@@ -8,7 +8,7 @@ const code = `
 
 import { Button, Checkbox, Label, Popover, TextInput } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <form className="flex max-w-md flex-col gap-4">
       <div>
@@ -105,7 +105,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <form className="flex max-w-md flex-col gap-4">
       <div>

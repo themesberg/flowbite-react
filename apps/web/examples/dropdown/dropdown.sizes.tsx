@@ -6,7 +6,7 @@ const code = `
 
 import { Dropdown } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex items-center gap-4">
       <Dropdown label="Small dropdown" size="sm">
@@ -29,7 +29,7 @@ function Component() {
 const codeRSC = `
 import { Dropdown, DropdownItem } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex items-center gap-4">
       <Dropdown label="Small dropdown" size="sm">
@@ -49,7 +49,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex items-center gap-4">
       <Dropdown label="Small dropdown" size="sm">

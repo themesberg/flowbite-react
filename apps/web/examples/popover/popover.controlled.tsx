@@ -12,7 +12,7 @@ import { useState } from "react";
 import { BiCaretDown } from "react-icons/bi";
 import { Button, Popover, Label, TextInput  } from "flowbite-react";
 
-function Component() {
+export function Component() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -52,7 +52,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   const [open, setOpen] = useState(false);
 
   return (

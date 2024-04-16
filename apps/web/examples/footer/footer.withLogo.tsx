@@ -6,7 +6,7 @@ const code = `
 
 import { Footer } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Footer container>
       <div className="w-full text-center">
@@ -35,7 +35,7 @@ function Component() {
 const codeRSC = `
 import { Footer, FooterBrand, FooterCopyright, FooterDivider, FooterLink, FooterLinkGroup } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Footer container>
       <div className="w-full text-center">
@@ -61,7 +61,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Footer container>
       <div className="w-full text-center">
@@ -102,4 +102,5 @@ export const withLogo: CodeData = {
   ],
   githubSlug: "footer/footer.withLogo.tsx",
   component: <Component />,
+  iframe: 220,
 };

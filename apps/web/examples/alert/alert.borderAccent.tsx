@@ -6,7 +6,7 @@ const code = `
 
 import { Alert } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Alert color="warning" withBorderAccent>
       <span>
@@ -20,7 +20,7 @@ function Component() {
 const codeRSC = `
 import { Alert } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Alert color="warning" withBorderAccent>
       <span>
@@ -31,7 +31,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Alert color="warning" withBorderAccent>
       <span className="font-medium">Info alert!</span> Change a few things up and try submitting again.

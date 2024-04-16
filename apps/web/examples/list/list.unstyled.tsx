@@ -6,7 +6,7 @@ const code = `
 
 import { List } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <List unstyled>
       <List.Item>At least 10 characters (and up to 100 characters)</List.Item>
@@ -20,7 +20,7 @@ function Component() {
 const codeRSC = `
 import { List, ListItem } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <List unstyled>
       <ListItem>At least 10 characters (and up to 100 characters)</ListItem>
@@ -31,7 +31,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <List unstyled>
       <ListItem>At least 10 characters (and up to 100 characters)</ListItem>

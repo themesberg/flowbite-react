@@ -8,7 +8,7 @@ const code = `
 import { Kbd } from "flowbite-react";
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from "react-icons/md";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-1">
       <Kbd icon={MdKeyboardArrowUp} />
@@ -24,7 +24,7 @@ const codeRSC = `
 import { Kbd } from "flowbite-react";
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from "react-icons/md";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-1">
       <Kbd icon={MdKeyboardArrowUp} />
@@ -36,7 +36,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-1">
       <Kbd icon={MdKeyboardArrowUp} />

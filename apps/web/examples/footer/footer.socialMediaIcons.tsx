@@ -17,7 +17,7 @@ const code = `
 import { Footer } from "flowbite-react";
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 
-function Component() {
+export function Component() {
   return (
     <Footer container>
       <div className="w-full">
@@ -84,7 +84,7 @@ import {
 } from "flowbite-react";
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 
-function Component() {
+export function Component() {
   return (
     <Footer container>
       <div className="w-full">
@@ -138,7 +138,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Footer container>
       <div className="w-full">
@@ -207,4 +207,5 @@ export const socialMediaIcons: CodeData = {
   ],
   githubSlug: "footer/footer.socialMediaIcons.tsx",
   component: <Component />,
+  iframe: 470,
 };

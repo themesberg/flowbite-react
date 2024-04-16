@@ -6,7 +6,7 @@ const code = `
 
 import { List, Avatar } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <List unstyled className="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
       <List.Item className="pb-3 sm:pb-4">
@@ -67,7 +67,7 @@ function Component() {
 const codeRSC = `
 import { Avatar, List, ListItem } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <List unstyled className="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
       <ListItem className="pb-3 sm:pb-4">
@@ -125,7 +125,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <List unstyled className="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
       <ListItem className="pb-3 sm:pb-4">

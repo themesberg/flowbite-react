@@ -12,7 +12,7 @@ import { Button, Toast } from "flowbite-react";
 import { useState } from "react";
 import { HiFire } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   const [showToast, setShowToast] = useState(false);
 
   return (
@@ -32,7 +32,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   const [showToast, setShowToast] = useState(false);
 
   return (

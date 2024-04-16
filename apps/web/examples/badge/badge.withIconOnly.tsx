@@ -8,7 +8,7 @@ const code = `
 import { Badge } from "flowbite-react";
 import { HiCheck, HiClock } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Badge icon={HiCheck} />
@@ -24,7 +24,7 @@ const codeRSC = `
 import { Badge } from "flowbite-react";
 import { HiCheck, HiClock } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Badge icon={HiCheck} />
@@ -36,7 +36,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Badge icon={HiCheck} />

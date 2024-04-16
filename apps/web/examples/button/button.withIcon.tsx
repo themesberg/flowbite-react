@@ -8,7 +8,7 @@ const code = `
 import { Button } from "flowbite-react";
 import { HiOutlineArrowRight, HiShoppingCart } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button>
@@ -28,7 +28,7 @@ const codeRSC = `
 import { Button } from "flowbite-react";
 import { HiOutlineArrowRight, HiShoppingCart } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button>
@@ -44,7 +44,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button>

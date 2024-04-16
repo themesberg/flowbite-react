@@ -6,7 +6,7 @@ const code = `
 
 import { Button, Tooltip } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Tooltip content="Tooltip content" arrow={false}>
       <Button>Default tooltip</Button>
@@ -18,7 +18,7 @@ function Component() {
 const codeRSC = `
 import { Button, Tooltip } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Tooltip content="Tooltip content" arrow={false}>
       <Button>Default tooltip</Button>
@@ -27,7 +27,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Tooltip content="Tooltip content" arrow={false}>
       <Button>Default tooltip</Button>

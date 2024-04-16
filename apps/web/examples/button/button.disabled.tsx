@@ -6,7 +6,7 @@ const code = `
 
 import { Button } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Button disabled>Disabled button</Button>;
 }
 `;
@@ -14,12 +14,12 @@ function Component() {
 const codeRSC = `
 import { Button } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Button disabled>Disabled button</Button>;
 }
 `;
 
-function Component() {
+export function Component() {
   return <Button disabled>Disabled button</Button>;
 }
 

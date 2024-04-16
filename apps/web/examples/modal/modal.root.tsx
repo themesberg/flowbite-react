@@ -10,8 +10,8 @@ const code = `
 import { Button, Modal } from "flowbite-react";
 import { useState } from "react";
 
-function Component() {
-  const [openModal, setOpenModal] = useState(false);
+export function Component() {
+  const [openModal, setOpenModal] = useState(true);
 
   return (
     <>
@@ -43,8 +43,8 @@ function Component() {
 }
 `;
 
-function Component() {
-  const [openModal, setOpenModal] = useState(false);
+export function Component() {
+  const [openModal, setOpenModal] = useState(true);
 
   return (
     <>
@@ -84,4 +84,5 @@ export const root: CodeData = {
   },
   githubSlug: "modal/modal.root.tsx",
   component: <Component />,
+  iframe: 600,
 };

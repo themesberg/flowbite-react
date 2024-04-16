@@ -12,7 +12,7 @@ const code = `
 import { Badge, Sidebar } from "flowbite-react";
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Sidebar aria-label="Sidebar with call to action button example">
       <Sidebar.Items>
@@ -79,7 +79,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Sidebar aria-label="Sidebar with call to action button example">
       <Sidebar.Items>

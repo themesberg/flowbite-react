@@ -8,7 +8,7 @@ const code = `
 import { HiEye, HiInformationCircle } from "react-icons/hi";
 import { Alert } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Alert
       additionalContent={<ExampleAdditionalContent />}
@@ -23,7 +23,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Alert
       additionalContent={<ExampleAdditionalContent />}

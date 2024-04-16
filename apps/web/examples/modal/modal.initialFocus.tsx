@@ -10,8 +10,8 @@ const code = `
 import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
 import { useRef, useState } from "react";
 
-function Component() {
-  const [openModal, setOpenModal] = useState(false);
+export function Component() {
+  const [openModal, setOpenModal] = useState(true);
   const emailInputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -60,8 +60,8 @@ function Component() {
 }
 `;
 
-function Component() {
-  const [openModal, setOpenModal] = useState(false);
+export function Component() {
+  const [openModal, setOpenModal] = useState(true);
   const emailInputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -118,4 +118,5 @@ export const initialFocus: CodeData = {
   },
   githubSlug: "modal/modal.initialFocus.tsx",
   component: <Component />,
+  iframe: 600,
 };

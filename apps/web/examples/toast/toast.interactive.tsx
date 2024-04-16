@@ -8,7 +8,7 @@ const code = `
 import { Button, Toast } from "flowbite-react";
 import { MdLoop } from "react-icons/md";
 
-function Component() {
+export function Component() {
   return (
     <Toast>
       <div className="flex items-start">
@@ -40,7 +40,7 @@ const codeRSC = `
 import { Button, Toast, ToastToggle } from "flowbite-react";
 import { MdLoop } from "react-icons/md";
 
-function Component() {
+export function Component() {
   return (
     <Toast>
       <div className="flex items-start">
@@ -68,7 +68,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Toast>
       <div className="flex items-start">

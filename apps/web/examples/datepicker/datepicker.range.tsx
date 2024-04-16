@@ -6,7 +6,7 @@ const code = `
 
 import { Datepicker } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Datepicker minDate={new Date(2023, 0, 1)} maxDate={new Date(2023, 3, 30)} />;
 }
 `;
@@ -14,12 +14,12 @@ function Component() {
 const codeRSC = `
 import { Datepicker } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Datepicker minDate={new Date(2023, 0, 1)} maxDate={new Date(2023, 3, 30)} />;
 }
 `;
 
-function Component() {
+export function Component() {
   return <Datepicker minDate={new Date(2023, 0, 1)} maxDate={new Date(2023, 3, 30)} />;
 }
 

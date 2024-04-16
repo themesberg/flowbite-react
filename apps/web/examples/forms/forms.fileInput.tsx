@@ -6,7 +6,7 @@ const code = `
 
 import { FileInput, Label } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div id="fileUpload" className="max-w-md">
       <div className="mb-2 block">
@@ -21,7 +21,7 @@ function Component() {
 const codeRSC = `
 import { FileInput, Label } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div id="fileUpload" className="max-w-md">
       <div className="mb-2 block">
@@ -33,7 +33,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div id="fileUpload" className="max-w-md">
       <div className="mb-2 block">

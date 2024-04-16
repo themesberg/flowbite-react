@@ -8,7 +8,7 @@ const code = `
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Breadcrumb aria-label="Default breadcrumb example">
       <Breadcrumb.Item href="#" icon={HiHome}>
@@ -25,7 +25,7 @@ const codeRSC = `
 import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Breadcrumb aria-label="Default breadcrumb example">
       <BreadcrumbItem href="#" icon={HiHome}>
@@ -38,7 +38,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Breadcrumb aria-label="Default breadcrumb example">
       <BreadcrumbItem href="#" icon={HiHome}>

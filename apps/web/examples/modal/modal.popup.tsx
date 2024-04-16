@@ -12,8 +12,8 @@ import { Button, Modal } from "flowbite-react";
 import { useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
-function Component() {
-  const [openModal, setOpenModal] = useState(false);
+export function Component() {
+  const [openModal, setOpenModal] = useState(true);
 
   return (
     <>
@@ -42,8 +42,8 @@ function Component() {
 }
 `;
 
-function Component() {
-  const [openModal, setOpenModal] = useState(false);
+export function Component() {
+  const [openModal, setOpenModal] = useState(true);
 
   return (
     <>
@@ -80,4 +80,5 @@ export const popup: CodeData = {
   },
   githubSlug: "modal/modal.popup.tsx",
   component: <Component />,
+  iframe: 600,
 };

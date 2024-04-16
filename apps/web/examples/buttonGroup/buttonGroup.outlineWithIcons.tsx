@@ -8,7 +8,7 @@ const code = `
 import { Button } from "flowbite-react";
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button.Group outline>
@@ -62,7 +62,7 @@ const codeRSC = `
 import { Button, ButtonGroup } from "flowbite-react";
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <ButtonGroup outline>
@@ -112,7 +112,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <ButtonGroup outline>

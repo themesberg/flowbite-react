@@ -6,7 +6,7 @@ const code = `
 
 import { Button } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Button.Group>
       <Button color="gray">Profile</Button>
@@ -20,7 +20,7 @@ function Component() {
 const codeRSC = `
 import { Button, ButtonGroup } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <ButtonGroup>
       <Button color="gray">Profile</Button>
@@ -31,7 +31,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <ButtonGroup>
       <Button color="gray">Profile</Button>

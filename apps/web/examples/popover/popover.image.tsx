@@ -4,7 +4,7 @@ import { type CodeData } from "~/components/code-demo";
 const code = `
 import { Popover } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <p className="text-gray-500 dark:text-gray-400">
       Due to its central geographic location in Southern Europe,{' '}
@@ -65,7 +65,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <p className="text-gray-500 dark:text-gray-400">
       Due to its central geographic location in Southern Europe,{" "}
