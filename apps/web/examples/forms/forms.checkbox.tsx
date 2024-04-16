@@ -6,7 +6,7 @@ const code = `
 
 import { Checkbox, Label } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex max-w-md flex-col gap-4" id="checkbox">
       <div className="flex items-center gap-2">
@@ -54,7 +54,7 @@ function Component() {
 const codeRSC = `
 import { Checkbox, Label } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex max-w-md flex-col gap-4" id="checkbox">
       <div className="flex items-center gap-2">
@@ -99,7 +99,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex max-w-md flex-col gap-4" id="checkbox">
       <div className="flex items-center gap-2">

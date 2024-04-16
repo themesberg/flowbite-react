@@ -6,7 +6,7 @@ const code = `
 
 import { Button } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button outline gradientDuoTone="purpleToBlue">
@@ -38,7 +38,7 @@ function Component() {
 const codeRSC = `
 import { Button } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button outline gradientDuoTone="purpleToBlue">
@@ -67,7 +67,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button outline gradientDuoTone="purpleToBlue">

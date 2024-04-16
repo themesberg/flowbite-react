@@ -8,7 +8,7 @@ const code = `
 import { Card } from "flowbite-react";
 import Image from "next/image";
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <div className="mb-4 flex items-center justify-between">
@@ -124,7 +124,7 @@ const codeRSC = `
 import { Card } from "flowbite-react";
 import Image from "next/image";
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <div className="mb-4 flex items-center justify-between">
@@ -236,7 +236,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <div className="mb-4 flex items-center justify-between">

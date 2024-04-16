@@ -6,7 +6,7 @@ const code = `
 
 import { Blockquote } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <>
       <p className="text-gray-500 dark:text-gray-400">
@@ -28,7 +28,7 @@ function Component() {
 const codeRSC = `
 import { Blockquote } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <>
       <p className="text-gray-500 dark:text-gray-400">
@@ -47,7 +47,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <>
       <p className="text-gray-500 dark:text-gray-400">

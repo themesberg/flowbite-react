@@ -14,7 +14,7 @@ import { Sidebar } from "flowbite-react";
 import { BiBuoy } from "react-icons/bi";
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Sidebar aria-label="Sidebar with content separator example">
       <Sidebar.Items>
@@ -58,7 +58,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Sidebar aria-label="Sidebar with content separator example">
       <Sidebar.Items>

@@ -6,7 +6,7 @@ const code = `
 
 import { Progress } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Progress progress={45} />;
 }
 `;
@@ -14,12 +14,12 @@ function Component() {
 const codeRSC = `
 import { Progress } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Progress progress={45} />;
 }
 `;
 
-function Component() {
+export function Component() {
   return <Progress progress={45} />;
 }
 

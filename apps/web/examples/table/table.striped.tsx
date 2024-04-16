@@ -6,7 +6,7 @@ const code = `
 
 import { Table } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="overflow-x-auto">
       <Table striped>
@@ -91,7 +91,7 @@ function Component() {
 const codeRSC = `
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="overflow-x-auto">
       <Table striped>
@@ -173,7 +173,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="overflow-x-auto">
       <Table striped>

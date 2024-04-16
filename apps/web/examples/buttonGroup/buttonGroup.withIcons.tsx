@@ -8,7 +8,7 @@ const code = `
 import { Button } from "flowbite-react";
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Button.Group>
       <Button color="gray">
@@ -32,7 +32,7 @@ const codeRSC = `
 import { Button, ButtonGroup } from "flowbite-react";
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <ButtonGroup>
       <Button color="gray">
@@ -52,7 +52,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <ButtonGroup>
       <Button color="gray">

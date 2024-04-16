@@ -10,8 +10,8 @@ const code = `
 import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
 import { useState } from "react";
 
-function Component() {
-  const [openModal, setOpenModal] = useState(false);
+export function Component() {
+  const [openModal, setOpenModal] = useState(true);
   const [email, setEmail] = useState('');
 
   function onCloseModal() {
@@ -71,8 +71,8 @@ function Component() {
 }
 `;
 
-function Component() {
-  const [openModal, setOpenModal] = useState(false);
+export function Component() {
+  const [openModal, setOpenModal] = useState(true);
   const [email, setEmail] = useState("");
 
   function onCloseModal() {
@@ -140,4 +140,5 @@ export const withFormElements: CodeData = {
   },
   githubSlug: "modal/modal.withFormElements.tsx",
   component: <Component />,
+  iframe: 600,
 };

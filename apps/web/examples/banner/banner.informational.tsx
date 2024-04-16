@@ -10,7 +10,7 @@ import { Banner } from "flowbite-react";
 import { FaBookOpen } from "react-icons/fa";
 import { HiArrowRight, HiX } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Banner>
       <div className="flex w-full flex-col justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700 md:flex-row">
@@ -51,7 +51,7 @@ import { Banner, BannerCollapseButton } from "flowbite-react";
 import { FaBookOpen } from "react-icons/fa";
 import { HiArrowRight, HiX } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Banner>
       <div className="flex w-full flex-col justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700 md:flex-row">
@@ -87,7 +87,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Banner>
       <div className="flex w-full flex-col justify-between border-b border-gray-200 bg-gray-50 p-4 md:flex-row dark:border-gray-600 dark:bg-gray-700">

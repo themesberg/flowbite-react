@@ -8,7 +8,7 @@ const code = `
 
 import { Dropdown } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Dropdown label="Dropdown">
       <Dropdown.Item onClick={() => alert('Dashboard!')}>Dashboard</Dropdown.Item>
@@ -20,7 +20,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Dropdown label="Dropdown">
       <Dropdown.Item onClick={() => alert("Dashboard!")}>Dashboard</Dropdown.Item>

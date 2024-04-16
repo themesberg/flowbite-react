@@ -6,7 +6,7 @@ const code = `
 
 import { FloatingLabel } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <FloatingLabel
       variant="filled"
@@ -20,7 +20,7 @@ function Component() {
 const codeRSC = `
 import { FloatingLabel } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <FloatingLabel
       variant="filled"
@@ -31,7 +31,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <FloatingLabel
       variant="filled"

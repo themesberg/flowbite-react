@@ -6,7 +6,7 @@ const code = `
 
 import { Avatar, Dropdown } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Dropdown
       label={<Avatar alt="User settings" img="/images/people/profile-picture-5.jpg" rounded />}
@@ -30,7 +30,7 @@ function Component() {
 const codeRSC = `
 import { Avatar, Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Dropdown
       label={<Avatar alt="User settings" img="/images/people/profile-picture-5.jpg" rounded />}
@@ -51,7 +51,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Dropdown
       label={<Avatar alt="User settings" img="/images/people/profile-picture-5.jpg" rounded />}

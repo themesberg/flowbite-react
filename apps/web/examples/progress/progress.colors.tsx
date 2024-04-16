@@ -6,7 +6,7 @@ const code = `
 
 import { Progress } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-col gap-2">
       <div className="text-base font-medium">Dark</div>
@@ -41,7 +41,7 @@ function Component() {
 const codeRSC = `
 import { Progress } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-col gap-2">
       <div className="text-base font-medium">Dark</div>
@@ -73,7 +73,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-col gap-2">
       <div className="text-base font-medium">Dark</div>

@@ -6,7 +6,7 @@ const code = `
 
 import { FloatingLabel } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="grid grid-flow-col justify-stretch space-x-4">
       <FloatingLabel variant="filled" label="Label" />
@@ -20,7 +20,7 @@ function Component() {
 const codeRSC = `
 import { FloatingLabel } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="grid grid-flow-col justify-stretch space-x-4">
       <FloatingLabel variant="filled" label="Label" />
@@ -31,7 +31,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="grid grid-flow-col justify-stretch space-x-4">
       <FloatingLabel variant="filled" label="Label" />

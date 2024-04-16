@@ -32,7 +32,7 @@ import {
 } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
 
-function Component() {
+export function Component() {
   return (
     <Sidebar aria-label="Sidebar with multi-level dropdown example">
       <Sidebar.Items>
@@ -76,7 +76,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Sidebar aria-label="Sidebar with multi-level dropdown example">
       <Sidebar.Items>

@@ -8,7 +8,7 @@ const code = `
 import { Banner, Button, Label, TextInput } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Banner>
       <div className="flex w-full items-center justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
@@ -37,7 +37,7 @@ const codeRSC = `
 import { Banner, BannerCollapseButton, Button, Label, TextInput } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Banner>
       <div className="flex w-full items-center justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
@@ -62,7 +62,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Banner>
       <div className="flex w-full items-center justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">

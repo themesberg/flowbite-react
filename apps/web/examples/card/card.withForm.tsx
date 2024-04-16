@@ -6,7 +6,7 @@ const code = `
 
 import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <form className="flex flex-col gap-4">
@@ -36,7 +36,7 @@ function Component() {
 const codeRSC = `
 import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <form className="flex flex-col gap-4">
@@ -63,7 +63,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <form className="flex flex-col gap-4">

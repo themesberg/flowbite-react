@@ -8,7 +8,7 @@ const code = `
 import Link from "next/link";
 import { Navbar } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Navbar fluid rounded>
       <Navbar.Brand as={Link} href="https://flowbite-react.com">
@@ -36,7 +36,7 @@ const codeRSC = `
 import Link from "next/link";
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Navbar fluid rounded>
       <NavbarBrand as={Link} href="https://flowbite-react.com">
@@ -60,7 +60,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Navbar fluid rounded>
       <NavbarBrand as={Link} href="https://flowbite-react.com">
@@ -99,4 +99,8 @@ export const root: CodeData = {
   ],
   githubSlug: "navbar/navbar.root.tsx",
   component: <Component />,
+  iframe: {
+    height: 300,
+    noPadding: true,
+  },
 };

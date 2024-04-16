@@ -6,7 +6,7 @@ const code = `
 
 import { Blockquote } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Blockquote>
       <svg
@@ -28,7 +28,7 @@ function Component() {
 const codeRSC = `
 import { Blockquote } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Blockquote>
       <svg
@@ -47,7 +47,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Blockquote>
       <svg

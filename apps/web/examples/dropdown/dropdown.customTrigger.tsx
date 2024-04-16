@@ -8,7 +8,7 @@ const code = `
 
 import { Dropdown } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Dropdown label="" dismissOnClick={false} renderTrigger={() => <span>My custom trigger</span>}>
       <Dropdown.Item>Dashboard</Dropdown.Item>
@@ -20,7 +20,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Dropdown label="" dismissOnClick={false} renderTrigger={() => <span>My custom trigger</span>}>
       <Dropdown.Item>Dashboard</Dropdown.Item>

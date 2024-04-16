@@ -6,7 +6,7 @@ const code = `
 
 import { Datepicker } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Datepicker inline />;
 }
 `;
@@ -14,12 +14,12 @@ function Component() {
 const codeRSC = `
 import { Datepicker } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Datepicker inline />;
 }
 `;
 
-function Component() {
+export function Component() {
   return <Datepicker inline />;
 }
 

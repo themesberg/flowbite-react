@@ -8,7 +8,7 @@ const code = `
 import { Card, Dropdown } from "flowbite-react";
 import Image from "next/image";
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <div className="flex justify-end px-4 pt-4">
@@ -73,7 +73,7 @@ const codeRSC = `
 import { Card, Dropdown, DropdownItem } from "flowbite-react";
 import Image from "next/image";
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <div className="flex justify-end px-4 pt-4">
@@ -134,7 +134,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <div className="flex justify-end px-4 pt-4">
