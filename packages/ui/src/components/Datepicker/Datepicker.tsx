@@ -96,7 +96,7 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
   language?: string;
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
-  onSelectedDateChanged?: (date: Date) => void;
+  onSelectedDateChanged?: (date: Date, isClearAction: boolean) => void;
 }
 
 const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps> = (
@@ -137,11 +137,11 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   const datepickerRef = useRef<HTMLDivElement>(null);
 
   // Triggers when user select the date
-  const changeSelectedDate = (date: Date, useAutohide: boolean) => {
+  const changeSelectedDate = (date: Date, useAutohide: boolean, isClearAction?: boolean) => {
     setSelectedDate(date);
 
     if (onSelectedDateChanged) {
-      onSelectedDateChanged(date);
+      onSelectedDateChanged(date, isClearAction ?? false);
     }
 
     if (autoHide && view === Views.Days && useAutohide == true && !inline) {
@@ -150,7 +150,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   };
 
   const clearDate = () => {
-    changeSelectedDate(defaultDate, true);
+    changeSelectedDate(defaultDate, true, true);
     if (defaultDate) {
       setViewDate(defaultDate);
     }
@@ -336,7 +336,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
                       type="button"
                       className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
                       onClick={() => {
-                        changeSelectedDate(defaultDate, true);
+                        changeSelectedDate(defaultDate, true, true);
                         if (defaultDate) {
                           setViewDate(defaultDate);
                         }
