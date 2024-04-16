@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.9.0
+
+### Minor Changes
+
+- [#1368](https://github.com/themesberg/flowbite-react/pull/1368) [`1702f35`](https://github.com/themesberg/flowbite-react/commit/1702f35318313db85a6686b033d582e2cbe08c89) Thanks [@tulup-conner](https://github.com/tulup-conner)! - ## Introducing Drawer and Mega menu
+
+  ### Summary
+
+  Say hello to [Drawer](https://flowbite-react.com/docs/components/drawer) and [Mega menu](https://flowbite-react.com/docs/components/mega-menu)!
+
+  These long-awaited components from the [vanilla Flowbite library](https://flowbite.com) have finally made their way to Flowbite React. Everything you need to get started - including full theme support, and the full set of examples to match the main Flowbite library - are ready at your fingertips.
+
+  ### Changes
+
+  - added Drawer component
+  - added Mega menu component
+
 ## 0.8.0
 
 ### Minor Changes
