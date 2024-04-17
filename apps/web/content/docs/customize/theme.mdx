@@ -39,7 +39,7 @@ import { Flowbite } from "flowbite-react";
 const customTheme: CustomFlowbiteTheme = {
   button: {
     color: {
-      primary: "bg-red-500 hover:bg-red-600",
+      failure: "bg-red-500 hover:bg-red-600",
     },
   },
 };
@@ -47,7 +47,7 @@ const customTheme: CustomFlowbiteTheme = {
 export default function MyPage() {
   return (
     <Flowbite theme={{ theme: customTheme }}>
-      <Button color="primary">Click me</Button>
+      <Button color="failure">Click me</Button>
     </Flowbite>
   );
 }
@@ -63,13 +63,13 @@ import { Button } from "flowbite-react";
 
 const customTheme: CustomFlowbiteTheme["button"] = {
   color: {
-    primary: "bg-red-500 hover:bg-red-600",
+    failure: "bg-red-500 hover:bg-red-600",
   },
 };
 
 export default function MyPage() {
   return (
-    <Button theme={customTheme} color="primary">
+    <Button theme={customTheme} color="failure">
       Click me
     </Button>
   );
