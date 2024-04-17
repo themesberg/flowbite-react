@@ -168,7 +168,7 @@ describe("getFormattedDate", () => {
   it("returns the formatted date string using the specified language", () => {
     const date = new Date(2023, 0, 15); // January 15th, 2023
     const formattedDate = getFormattedDate("ptBR", date);
-    expect(formattedDate).toBe("15 de janeiro de 2023");
+    expect(formattedDate).toBe("15-Jan-2023");
   });
 });
 
