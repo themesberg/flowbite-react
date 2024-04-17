@@ -2,7 +2,7 @@ import { Datepicker } from "flowbite-react";
 import { type CodeData } from "~/components/code-demo";
 
 const code = `
-'use client';
+"use client";
 
 import { Datepicker } from "flowbite-react";
 

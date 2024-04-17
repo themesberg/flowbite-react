@@ -56,7 +56,7 @@ Default.args = {
   defaultDate: new Date(),
   minDate: undefined,
   maxDate: undefined,
-  language: "en",
+  language: "enUS",
   weekStart: WeekStart.Sunday,
   theme: {},
 };
@@ -70,7 +70,7 @@ FormattedDate.args = {
   defaultDate: new Date(),
   minDate: undefined,
   maxDate: undefined,
-  language: "en",
+  language: "enUS",
   weekStart: WeekStart.Sunday,
   theme: {},
   inputFormat: "dd MMM yyyy",
