@@ -120,6 +120,8 @@ export const getFormattedDate = (
   if (options) {
     defaultOptions = options;
   }
+  console.log(defaultOptions);
+  
 
   const getLocale =
     language === "enUS" ? DateFNSLocale["enUS"] : Object.values(DateFNSLocale).find((l) => l.code === language);
