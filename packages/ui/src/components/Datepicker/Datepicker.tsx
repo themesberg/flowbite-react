@@ -25,6 +25,9 @@ import { DatepickerViewsDecades, type FlowbiteDatepickerViewsDecadesTheme } from
 import { DatepickerViewsMonth, type FlowbiteDatepickerViewsMonthsTheme } from "./Views/Months";
 import { DatepickerViewsYears, type FlowbiteDatepickerViewsYearsTheme } from "./Views/Years";
 
+// Define a type that represents the available locales
+type AvailableLocales = keyof typeof import("date-fns/locale");
+
 export interface FlowbiteDatepickerTheme {
   root: {
     base: string;
@@ -93,7 +96,7 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
   defaultDate?: Date;
   minDate?: Date;
   maxDate?: Date;
-  language?: string;
+  language?: AvailableLocales;
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
   onSelectedDateChanged?: (date: Date) => void;
@@ -113,12 +116,12 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     defaultDate = new Date(),
     minDate,
     maxDate,
-    language = "en",
+    language = "enUS",
     weekStart = WeekStart.Sunday,
     className,
     theme: customTheme = {},
     onSelectedDateChanged,
-    inputFormat = 'dd-MMM-yyyy',
+    inputFormat = "dd-MMM-yyyy",
     ...props
   },
   ref,

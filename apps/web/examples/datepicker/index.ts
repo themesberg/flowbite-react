@@ -1,5 +1,5 @@
 export { autoHide } from "./datepicker.autoHide";
-export { format } from './datepicker.format';
+export { format } from "./datepicker.format";
 export { inline } from "./datepicker.inline";
 export { localization } from "./datepicker.localization";
 export { range } from "./datepicker.range";

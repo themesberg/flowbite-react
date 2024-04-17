@@ -1,5 +1,5 @@
-import { type CodeData } from '~/components/code-demo';
-import { Datepicker } from 'flowbite-react';
+import { Datepicker } from "flowbite-react";
+import { type CodeData } from "~/components/code-demo";
 
 const code = `
 'use client';
@@ -24,19 +24,19 @@ function Component() {
 }
 
 export const format: CodeData = {
-  type: 'single',
+  type: "single",
   code: [
     {
-      fileName: 'client',
-      language: 'tsx',
+      fileName: "client",
+      language: "tsx",
       code,
     },
     {
-      fileName: 'server',
-      language: 'tsx',
+      fileName: "server",
+      language: "tsx",
       code: codeRSC,
     },
   ],
-  githubSlug: 'datepicker/datepicker.format.tsx',
+  githubSlug: "datepicker/datepicker.format.tsx",
   component: <Component />,
 };

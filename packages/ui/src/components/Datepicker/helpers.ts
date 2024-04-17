@@ -1,4 +1,8 @@
-import { format as DateFNSFormat } from 'date-fns';
+import { format as DateFNSFormat } from "date-fns";
+import * as DateFNSLocale from "date-fns/locale";
+
+// Define a type that represents the available locales
+type AvailableLocales = keyof typeof import("date-fns/locale");
 
 export enum Views {
   Days = 0,
@@ -101,7 +105,12 @@ export const addYears = (date: Date, amount: number): Date => {
   return newDate;
 };
 
-export const getFormattedDate = (language: string, date: Date,  options?: Intl.DateTimeFormatOptions, dateFormat: string = 'dd-MMM-yyyy'): string => {
+export const getFormattedDate = (
+  language: AvailableLocales = "enUS",
+  date: Date,
+  options?: Intl.DateTimeFormatOptions,
+  dateFormat: string = "dd-MMM-yyyy",
+): string => {
   let defaultOptions: Intl.DateTimeFormatOptions = {
     day: "numeric",
     month: "long",
@@ -112,8 +121,10 @@ export const getFormattedDate = (language: string, date: Date,  options?: Intl.D
     defaultOptions = options;
   }
 
-    return DateFNSFormat(new Intl.DateTimeFormat(language, defaultOptions).format(date), dateFormat);
-  
+  const getLocale =
+    language === "enUS" ? DateFNSLocale["enUS"] : Object.values(DateFNSLocale).find((l) => l.code === language);
+
+  return DateFNSFormat(date, dateFormat, { locale: getLocale });
 };
 
 export const startOfYearPeriod = (date: Date, years: number): number => {
