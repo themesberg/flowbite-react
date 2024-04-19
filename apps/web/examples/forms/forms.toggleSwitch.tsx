@@ -10,7 +10,7 @@ const code = `
 import { ToggleSwitch } from "flowbite-react";
 import { useState } from "react";
 
-function Component() {
+export function Component() {
   const [switch1, setSwitch1] = useState(false);
   const [switch2, setSwitch2] = useState(true);
   const [switch3, setSwitch3] = useState(true);
@@ -27,7 +27,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   const [switch1, setSwitch1] = useState(false);
   const [switch2, setSwitch2] = useState(true);
   const [switch3, setSwitch3] = useState(true);

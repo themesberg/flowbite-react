@@ -14,7 +14,7 @@ import { useRef, useState } from "react";
 import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 
-function Component() {
+export function Component() {
   const tabsRef = useRef<TabsRef>(null);
   const [activeTab, setActiveTab] = useState(0);
 
@@ -65,7 +65,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   const tabsRef = useRef<TabsRef>(null);
   const [activeTab, setActiveTab] = useState(0);
 

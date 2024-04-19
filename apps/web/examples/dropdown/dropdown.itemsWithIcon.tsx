@@ -10,7 +10,7 @@ const code = `
 import { Dropdown } from "flowbite-react";
 import { HiCog, HiCurrencyDollar, HiLogout, HiViewGrid } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Dropdown label="Dropdown">
       <Dropdown.Header>
@@ -27,7 +27,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Dropdown label="Dropdown">
       <Dropdown.Header>

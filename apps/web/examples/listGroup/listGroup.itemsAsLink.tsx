@@ -6,7 +6,7 @@ const code = `
 
 import { ListGroup } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex justify-center">
       <ListGroup className="w-48">
@@ -25,7 +25,7 @@ function Component() {
 const codeRSC = `
 import { ListGroup, ListGroupItem } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex justify-center">
       <ListGroup className="w-48">
@@ -41,7 +41,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex justify-center">
       <ListGroup className="w-48">

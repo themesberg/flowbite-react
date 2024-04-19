@@ -6,7 +6,7 @@ const code = `
 
 import { Rating } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-col gap-2">
       <Rating>
@@ -38,7 +38,7 @@ function Component() {
 const codeRSC = `
 import { Rating, RatingStar } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-col gap-2">
       <Rating>
@@ -67,7 +67,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-col gap-2">
       <Rating>

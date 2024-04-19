@@ -17,7 +17,7 @@ const code = `
 import { Button, Timeline } from "flowbite-react";
 import { HiArrowNarrowRight } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Timeline>
       <Timeline.Item>
@@ -74,7 +74,7 @@ import {
 } from "flowbite-react";
 import { HiArrowNarrowRight } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Timeline>
       <TimelineItem>
@@ -118,7 +118,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Timeline>
       <TimelineItem>

@@ -6,7 +6,7 @@ const code = `
 
 import { Button, Navbar } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Navbar fluid rounded>
       <Navbar.Brand href="https://flowbite-react.com">
@@ -34,7 +34,7 @@ function Component() {
 const codeRSC = `
 import { Button, Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Navbar fluid rounded>
       <NavbarBrand href="https://flowbite-react.com">
@@ -59,7 +59,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Navbar fluid rounded>
       <NavbarBrand href="https://flowbite-react.com">
@@ -99,4 +99,8 @@ export const withCTAButton: CodeData = {
   ],
   githubSlug: "navbar/navbar.withCTAButton.tsx",
   component: <Component />,
+  iframe: {
+    height: 300,
+    noPadding: true,
+  },
 };

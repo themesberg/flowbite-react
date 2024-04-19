@@ -6,7 +6,7 @@ const code = `
 
 import { Datepicker } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Datepicker language="pt-BR" labelTodayButton="Hoje" labelClearButton="Limpar" />;
 }
 `;
@@ -14,12 +14,12 @@ function Component() {
 const codeRSC = `
 import { Datepicker } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Datepicker language="pt-BR" labelTodayButton="Hoje" labelClearButton="Limpar" />;
 }
 `;
 
-function Component() {
+export function Component() {
   return <Datepicker language="pt-BR" labelTodayButton="Hoje" labelClearButton="Limpar" />;
 }
 

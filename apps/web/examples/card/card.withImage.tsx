@@ -6,7 +6,7 @@ const code = `
 
 import { Card } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Card
       className="max-w-sm"
@@ -27,7 +27,7 @@ function Component() {
 const codeRSC = `
 import { Card } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Card
       className="max-w-sm"
@@ -45,7 +45,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Card
       className="max-w-sm"

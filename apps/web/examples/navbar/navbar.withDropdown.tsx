@@ -17,7 +17,7 @@ const code = `
 
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Navbar fluid rounded>
       <Navbar.Brand href="https://flowbite-react.com">
@@ -72,7 +72,7 @@ import {
   NavbarToggle,
 } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Navbar fluid rounded>
       <NavbarBrand href="https://flowbite-react.com">
@@ -113,7 +113,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Navbar fluid rounded>
       <NavbarBrand href="https://flowbite-react.com">
@@ -169,4 +169,8 @@ export const withDropdown: CodeData = {
   ],
   githubSlug: "navbar/navbar.withDropdown.tsx",
   component: <Component />,
+  iframe: {
+    height: 300,
+    noPadding: true,
+  },
 };

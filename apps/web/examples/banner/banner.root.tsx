@@ -10,7 +10,7 @@ import { Banner } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 import { MdAnnouncement } from "react-icons/md";
 
-function Component() {
+export function Component() {
   return (
     <Banner>
       <div className="flex w-full justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
@@ -42,7 +42,7 @@ import { Banner, BannerCollapseButton } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 import { MdAnnouncement } from "react-icons/md";
 
-function Component() {
+export function Component() {
   return (
     <Banner>
       <div className="flex w-full justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">
@@ -69,7 +69,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Banner>
       <div className="flex w-full justify-between border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700">

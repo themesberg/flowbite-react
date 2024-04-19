@@ -4,7 +4,7 @@ import { type CodeData } from "~/components/code-demo";
 const code = `
 import { Popover } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <p className="text-gray-500 dark:text-gray-400">
       Due to its central geographic location in Southern Europe,{' '}
@@ -34,9 +34,9 @@ function Component() {
                     >
                       <path
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="m1 9 4-4-4-4"
                       />
                     </svg>
@@ -65,7 +65,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <p className="text-gray-500 dark:text-gray-400">
       Due to its central geographic location in Southern Europe,{" "}
@@ -95,9 +95,9 @@ function Component() {
                     >
                       <path
                         stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="m1 9 4-4-4-4"
                       />
                     </svg>

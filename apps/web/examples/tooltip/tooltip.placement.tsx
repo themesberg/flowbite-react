@@ -6,7 +6,7 @@ const code = `
 
 import { Button, Tooltip } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex gap-2">
       <Tooltip content="Tooltip content" placement="top">
@@ -29,7 +29,7 @@ function Component() {
 const codeRSC = `
 import { Button, Tooltip } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex gap-2">
       <Tooltip content="Tooltip content" placement="top">
@@ -49,7 +49,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex gap-2">
       <Tooltip content="Tooltip content" placement="top">

@@ -8,7 +8,7 @@ const code = `
 import { Footer } from "flowbite-react";
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 
-function Component() {
+export function Component() {
   return (
     <Footer bgDark>
       <div className="w-full">
@@ -69,7 +69,7 @@ const codeRSC = `
 import { Footer, FooterCopyright, FooterIcon, FooterLink, FooterLinkGroup, FooterTitle } from "flowbite-react";
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 
-function Component() {
+export function Component() {
   return (
     <Footer bgDark>
       <div className="w-full">
@@ -126,7 +126,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Footer bgDark>
       <div className="w-full">
@@ -198,4 +198,5 @@ export const sitemapLinks: CodeData = {
   ],
   githubSlug: "footer/footer.sitemapLinks.tsx",
   component: <Component />,
+  iframe: 580,
 };

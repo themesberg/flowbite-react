@@ -21,7 +21,7 @@ const code = `
 import { Button, Timeline } from "flowbite-react";
 import { HiArrowNarrowRight, HiCalendar } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Timeline horizontal>
       <Timeline.Item>
@@ -78,7 +78,7 @@ function Component() {
 // } from "flowbite-react";
 // import { HiArrowNarrowRight, HiCalendar } from "react-icons/hi";
 
-// function Component() {
+// export function Component() {
 //   return (
 //     <Timeline horizontal>
 //       <TimelineItem>
@@ -122,7 +122,7 @@ function Component() {
 // }
 // `;
 
-function Component() {
+export function Component() {
   return (
     <Timeline horizontal>
       <TimelineItem>
@@ -181,4 +181,5 @@ export const horizontal: CodeData = {
   ],
   githubSlug: "timeline/timeline.horizontal.tsx",
   component: <Component />,
+  iframe: 500,
 };

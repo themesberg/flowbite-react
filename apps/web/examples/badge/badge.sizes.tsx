@@ -6,7 +6,7 @@ const code = `
 
 import { Badge } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Badge color="info" size="sm">
@@ -41,7 +41,7 @@ function Component() {
 const codeRSC = `
 import { Badge } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Badge color="info" size="sm">
@@ -73,7 +73,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Badge color="info" size="sm">

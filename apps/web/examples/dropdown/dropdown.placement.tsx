@@ -6,7 +6,7 @@ const code = `
 
 import { Dropdown } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-4">
       <Dropdown label="Dropdown top" placement="top">
@@ -53,7 +53,7 @@ function Component() {
 const codeRSC = `
 import { Dropdown, DropdownItem } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-4">
       <Dropdown label="Dropdown top" placement="top">
@@ -97,7 +97,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-4">
       <Dropdown label="Dropdown top" placement="top">

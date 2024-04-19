@@ -6,7 +6,7 @@ const code = `
 
 import { Spinner } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap items-center gap-2">
       <Spinner aria-label="Extra small spinner example" size="xs" />
@@ -22,7 +22,7 @@ function Component() {
 const codeRSC = `
 import { Spinner } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap items-center gap-2">
       <Spinner aria-label="Extra small spinner example" size="xs" />
@@ -35,7 +35,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap items-center gap-2">
       <Spinner aria-label="Extra small spinner example" size="xs" />

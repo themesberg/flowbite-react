@@ -6,7 +6,7 @@ const code = `
 
 import { Avatar, Blockquote, Rating } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <figure className="max-w-screen-md">
       <div className="mb-4 flex items-center">
@@ -39,7 +39,7 @@ function Component() {
 const codeRSC = `
 import { Avatar, Blockquote, Rating, RatingStar } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <figure className="max-w-screen-md">
       <div className="mb-4 flex items-center">
@@ -69,7 +69,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <figure className="max-w-screen-md">
       <div className="mb-4 flex items-center">

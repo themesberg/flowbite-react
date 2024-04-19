@@ -6,7 +6,7 @@ const code = `
 
 import { Spinner } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <div className="text-left">
@@ -26,7 +26,7 @@ function Component() {
 const codeRSC = `
 import { Spinner } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <div className="text-left">
@@ -43,7 +43,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-col gap-2">
       <div className="text-left">

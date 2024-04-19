@@ -6,7 +6,7 @@ const code = `
 
 import { Button } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap items-start gap-2">
       <Button size="xs">Extra small</Button>
@@ -22,7 +22,7 @@ function Component() {
 const codeRSC = `
 import { Button } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap items-start gap-2">
       <Button size="xs">Extra small</Button>
@@ -35,7 +35,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap items-start gap-2">
       <Button size="xs">Extra small</Button>

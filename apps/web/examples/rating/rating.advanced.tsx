@@ -6,7 +6,7 @@ const code = `
 
 import { Rating } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <>
       <Rating className="mb-2">
@@ -39,7 +39,7 @@ function Component() {
 const codeRSC = `
 import { Rating, RatingAdvanced, RatingStar } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <>
       <Rating className="mb-2">
@@ -69,7 +69,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <>
       <Rating className="mb-2">

@@ -6,7 +6,7 @@ const code = `
 
 import { Dropdown } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Dropdown label="Dropdown button">
       <Dropdown.Item>Dashboard</Dropdown.Item>
@@ -22,7 +22,7 @@ function Component() {
 const codeRSC = `
 import { Dropdown, DropdownDivider, DropdownItem } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Dropdown label="Dropdown button" dismissOnClick={false}>
       <DropdownItem>Dashboard</DropdownItem>
@@ -34,7 +34,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Dropdown label="Dropdown button">
       <DropdownItem>Dashboard</DropdownItem>

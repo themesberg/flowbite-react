@@ -9,9 +9,8 @@ const componentEntries = await glob("src/components/**/index.ts");
 const entries = ["src/index.ts", "src/tailwind.ts", ...componentEntries];
 const external = [
   "flowbite/plugin",
-  "react-icons/fa",
-  "react-icons/hi",
   "react/jsx-runtime",
+  new RegExp("react-icons/*"),
   ...Object.keys({
     ...packageJson.dependencies,
     ...packageJson.peerDependencies,

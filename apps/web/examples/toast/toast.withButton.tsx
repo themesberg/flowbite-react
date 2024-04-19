@@ -6,7 +6,7 @@ const code = `
 
 import { Toast } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Toast>
       <div className="text-sm font-normal">Conversation archived.</div>
@@ -27,7 +27,7 @@ function Component() {
 const codeRSC = `
 import { Toast, ToastToggle } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Toast>
       <div className="text-sm font-normal">Conversation archived.</div>
@@ -45,7 +45,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Toast>
       <div className="text-sm font-normal">Conversation archived.</div>

@@ -10,7 +10,7 @@ import { Tabs } from "flowbite-react";
 import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 
-function Component() {
+export function Component() {
   return (
     <div className="overflow-x-auto">
       <Tabs aria-label="Full width tabs" style="fullWidth">
@@ -43,7 +43,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="overflow-x-auto">
       <Tabs aria-label="Full width tabs" style="fullWidth">

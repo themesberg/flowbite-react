@@ -6,7 +6,7 @@ const code = `
 
 import { Avatar, Blockquote } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <figure className="mx-auto max-w-screen-md text-center">
       <svg
@@ -39,7 +39,7 @@ function Component() {
 const codeRSC = `
 import { Avatar, Blockquote } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <figure className="mx-auto max-w-screen-md text-center">
       <svg
@@ -69,7 +69,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <figure className="mx-auto max-w-screen-md text-center">
       <svg

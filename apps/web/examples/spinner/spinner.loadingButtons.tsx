@@ -6,7 +6,7 @@ const code = `
 
 import { Button, Spinner } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-row gap-3">
       <Button>
@@ -25,7 +25,7 @@ function Component() {
 const codeRSC = `
 import { Button, Spinner } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-row gap-3">
       <Button>
@@ -41,7 +41,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-row gap-3">
       <Button>

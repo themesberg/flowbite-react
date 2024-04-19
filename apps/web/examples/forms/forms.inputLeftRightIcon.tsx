@@ -8,7 +8,7 @@ const code = `
 import { Label, TextInput } from "flowbite-react";
 import { HiMail } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <div className="max-w-md">
       <div className="mb-2 block">
@@ -24,7 +24,7 @@ const codeRSC = `
 import { Label, TextInput } from "flowbite-react";
 import { HiMail } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <div className="max-w-md">
       <div className="mb-2 block">
@@ -36,7 +36,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="max-w-md">
       <div className="mb-2 block">

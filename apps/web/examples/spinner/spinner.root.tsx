@@ -6,7 +6,7 @@ const code = `
 
 import { Spinner } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Spinner aria-label="Default status example" />;
 }
 `;
@@ -14,12 +14,12 @@ function Component() {
 const codeRSC = `
 import { Spinner } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Spinner aria-label="Default status example" />;
 }
 `;
 
-function Component() {
+export function Component() {
   return <Spinner aria-label="Default status example" />;
 }
 

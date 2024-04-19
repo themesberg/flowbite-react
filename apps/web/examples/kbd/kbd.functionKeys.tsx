@@ -6,7 +6,7 @@ const code = `
 
 import { Kbd } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-1">
       <Kbd>F1</Kbd>
@@ -29,7 +29,7 @@ function Component() {
 const codeRSC = `
 import { Kbd } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-1">
       <Kbd>F1</Kbd>
@@ -49,7 +49,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-1">
       <Kbd>F1</Kbd>

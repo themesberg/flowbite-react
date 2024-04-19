@@ -6,7 +6,7 @@ const code = `
 
 import { Kbd } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <>
       Please press <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>R</Kbd> to re-render an MDN page.
@@ -18,7 +18,7 @@ function Component() {
 const codeRSC = `
 import { Kbd } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <>
       Please press <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>R</Kbd> to re-render an MDN page.
@@ -27,7 +27,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <>
       Please press <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>R</Kbd> to re-render an MDN page.
