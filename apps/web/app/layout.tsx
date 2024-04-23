@@ -1,7 +1,8 @@
 import { ThemeModeScript } from "flowbite-react";
 import { Inter as InterFont } from "next/font/google";
-import type { Metadata, NextPage, Viewport } from "next/types";
-import type { FC, PropsWithChildren } from "react";
+import type { Metadata, Viewport } from "next/types";
+import type { PropsWithChildren } from "react";
+import { FathomScript } from "~/components/fathom-script";
 
 import "~/styles/globals.css";
 
@@ -53,7 +54,7 @@ export const viewport: Viewport = {
   ],
 };
 
-const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" className={`${interFont.variable} font-sans`}>
       <head>
@@ -65,10 +66,4 @@ const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
       </body>
     </html>
   );
-};
-
-const FathomScript: FC = () => {
-  return <script data-site="UXMSXUQI" defer src="https://cdn.usefathom.com/script.js" />;
-};
-
-export default RootLayout;
+}
