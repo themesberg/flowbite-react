@@ -1,5 +1,6 @@
 import { ThemeModeScript } from "flowbite-react";
 import { Inter as InterFont } from "next/font/google";
+import { headers } from "next/headers";
 import type { Metadata, NextPage, Viewport } from "next/types";
 import type { FC, PropsWithChildren } from "react";
 
@@ -54,6 +55,9 @@ export const viewport: Viewport = {
 };
 
 const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
+  const pathname = headers().get("next-url");
+  const isExamplesPage = pathname?.startsWith("/examples/");
+
   return (
     <html lang="en" className={`${interFont.variable} font-sans`}>
       <head>
@@ -61,7 +65,7 @@ const RootLayout: NextPage<PropsWithChildren> = ({ children }) => {
       </head>
       <body className="bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
         {children}
-        <FathomScript />
+        {!isExamplesPage && <FathomScript />}
       </body>
     </html>
   );
