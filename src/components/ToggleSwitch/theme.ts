@@ -35,9 +35,9 @@ export const toggleSwitchTheme: FlowbiteToggleSwitchTheme = {
       },
     },
     sizes: {
-      sm: 'w-9 h-5 after:absolute after:top-[1px] after:left-[2px] after:h-4 after:w-4',
-      md: 'w-11 h-6 after:absolute after:top-[1px] after:left-[2px] after:h-5 after:w-5',
-      lg: 'w-14 h-7 after:absolute after:top-[1px] after:left-[4px] after:h-6 after:w-6',
+      sm: 'min-w-9 w-9 h-5 after:absolute after:top-[2px] after:left-[2px] after:h-4 after:w-4',
+      md: 'min-w-1 w-11 h-6 after:absolute after:top-[2px] after:left-[2px] after:h-5 after:w-5',
+      lg: 'min-w-14 w-14 h-7 after:absolute after:top-0.5 after:left-[4px] after:h-6 after:w-6',
     },
   },
 };
