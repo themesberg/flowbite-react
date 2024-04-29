@@ -2,7 +2,6 @@
 
 import type { ComponentProps, FC } from "react";
 import { FaBars } from "react-icons/fa";
-import { IoMdClose } from "react-icons/io";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import type { DeepPartial } from "../../types";
@@ -15,13 +14,11 @@ export interface FlowbiteNavbarToggleTheme {
 
 export interface NavbarToggleProps extends ComponentProps<"button"> {
   barIcon?: FC<ComponentProps<"svg">>;
-  closeIcon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteNavbarToggleTheme>;
 }
 
 export const NavbarToggle: FC<NavbarToggleProps> = ({
   barIcon: BarIcon = FaBars,
-  closeIcon: CloseIcon = IoMdClose,
   className,
   theme: customTheme = {},
   ...props
@@ -41,8 +38,8 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({
       className={twMerge(theme.base, className)}
       {...props}
     >
-      <span className="sr-only">{isOpen ? "Close" : "Open"} main menu</span>
-      {isOpen ? <CloseIcon aria-hidden className={theme.icon} /> : <BarIcon aria-hidden className={theme.icon} />}
+      <span className="sr-only">Open main menu</span>
+      <BarIcon aria-hidden className={theme.icon} />
     </button>
   );
 };
