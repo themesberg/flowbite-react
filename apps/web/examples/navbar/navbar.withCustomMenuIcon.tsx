@@ -1,3 +1,5 @@
+"use client";
+
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
 import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
