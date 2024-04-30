@@ -8,7 +8,7 @@ import { Tabs } from "flowbite-react";
 
 export function Component() {
   return (
-    <Tabs aria-label="Pills" style="vertical">
+    <Tabs aria-label="Vertical" style="vertical">
       <Tabs.Item active title="Tab 1">
         <p className="text-sm text-gray-500 dark:text-gray-400">Content 1</p>
       </Tabs.Item>
@@ -31,7 +31,7 @@ export function Component() {
 
 export function Component() {
   return (
-    <Tabs aria-label="Pills" style="vertical">
+    <Tabs aria-label="Vertical" style="vertical">
       <Tabs.Item active title="Tab 1">
         <p className="text-sm text-gray-500 dark:text-gray-400">Content 1</p>
       </Tabs.Item>
