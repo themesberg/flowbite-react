@@ -2,7 +2,7 @@ import { createTheme } from "../../helpers/create-theme";
 import type { FlowbiteTabsTheme } from "./Tabs";
 
 export const tabTheme: FlowbiteTabsTheme = createTheme({
-  base: "flex flex-col gap-2",
+  base: "flex flex-col gap-2 data-[tab-style=vertical]:flex-col md:data-[tab-style=vertical]:flex-row",
   tablist: {
     base: "flex text-center",
     styles: {
@@ -11,6 +11,8 @@ export const tabTheme: FlowbiteTabsTheme = createTheme({
       pills: "flex-wrap space-x-2 text-sm font-medium text-gray-500 dark:text-gray-400",
       fullWidth:
         "grid w-full grid-flow-col divide-x divide-gray-200 rounded-none text-sm font-medium shadow dark:divide-gray-700 dark:text-gray-400",
+      vertical:
+        "mb-4 flex w-full flex-col space-y-4 text-sm font-medium text-gray-500 dark:text-gray-400 md:mb-0 md:me-4 md:w-fit",
     },
     tabitem: {
       base: "flex items-center justify-center rounded-t-lg p-4 text-sm font-medium first:ml-0 focus:outline-none focus:ring-4 focus:ring-cyan-300 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500",
@@ -43,6 +45,13 @@ export const tabTheme: FlowbiteTabsTheme = createTheme({
             off: "rounded-none bg-white hover:bg-gray-50 hover:text-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white",
           },
         },
+        vertical: {
+          base: "",
+          active: {
+            on: "inline-flex w-full items-center rounded-lg bg-cyan-600 px-4 py-3 text-white",
+            off: "inline-flex w-full items-center rounded-lg px-4 py-3 hover:bg-gray-100 hover:text-gray-900 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white",
+          },
+        },
       },
       icon: "mr-2 h-5 w-5",
     },
@@ -54,6 +63,7 @@ export const tabTheme: FlowbiteTabsTheme = createTheme({
       underline: "",
       pills: "",
       fullWidth: "",
+      vertical: "",
     },
   },
   tabpanel: "py-3",
