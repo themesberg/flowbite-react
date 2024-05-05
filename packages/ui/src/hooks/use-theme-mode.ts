@@ -89,9 +89,17 @@ const useSyncMode = (onChange: (mode: ThemeMode) => void) => {
 };
 
 /**
- * Sets the give value in local storage
+ * Sets the give value in local storage.
+ * "auto" will remove the local storage value if present.
  */
-const setModeInLS = (mode: ThemeMode) => localStorage.setItem(LS_THEME_MODE, mode);
+const setModeInLS = (mode: ThemeMode) => {
+  if (mode === "auto") {
+    localStorage.deleteItem(LS_THEME_MODE);
+    return;
+  }
+
+  localStorage.setItem(LS_THEME_MODE, mode);
+};
 
 /**
  * Add or remove class `dark` on `html` element
@@ -123,7 +131,7 @@ const computeModeValue = (mode: ThemeMode): ThemeMode => {
 };
 
 /**
- * Get browser prefered color scheme
+ * Get browser preferred color scheme
  * @returns `light` | `dark`
  */
 const prefersColorScheme = (): ThemeMode => {
