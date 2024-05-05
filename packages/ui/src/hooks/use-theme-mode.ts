@@ -1,5 +1,6 @@
 "use client";
 
+import debounce from "debounce";
 import { useEffect, useState } from "react";
 import { isClient } from "../helpers/is-client";
 import { useWatchLocalStorageValue } from "../hooks/use-watch-localstorage-value";
@@ -40,12 +41,13 @@ export const useThemeMode = () => {
   /**
    * Sets `mode` to a given value: `light | dark` | `auto`
    */
-  const handleSetMode = (mode: ThemeMode) => {
+  const _handleSetMode = (mode: ThemeMode) => {
     setMode(mode);
     setModeInLS(mode);
     setModeInDOM(mode);
     document.dispatchEvent(new CustomEvent(SYNC_THEME_MODE, { detail: mode }));
   };
+  const handleSetMode = debounce(_handleSetMode, 25, { immediate: true });
 
   /**
    * Toggles between: `light | dark`
