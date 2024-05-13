@@ -60,6 +60,23 @@ WithHeader.args = {
   ),
 };
 
+export const WithUsableInputHeader = Template.bind({});
+WithUsableInputHeader.storyName = "With usable input header";
+WithUsableInputHeader.args = {
+  enableTypeAhead: false,
+  children: (
+    <>
+      <Dropdown.Header>
+        <input className="text-black" onChange={action("onChange")} />
+      </Dropdown.Header>
+      <Dropdown.Item>Dashboard</Dropdown.Item>
+      <Dropdown.Item>Settings</Dropdown.Item>
+      <Dropdown.Item>Earnings</Dropdown.Item>
+      <Dropdown.Item>Sign out</Dropdown.Item>
+    </>
+  ),
+};
+
 export const Inline = Template.bind({});
 Inline.args = {
   inline: true,
