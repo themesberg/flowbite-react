@@ -13,9 +13,9 @@ export default {
         options: ["en", "pt-BR"],
       },
     },
-    value: { control: { type: 'date', format: 'MM/DD/YYYY' } },
-    defaultValue: { control: { type: 'date', format: 'MM/DD/YYYY' } },
-    label: { control: { type: 'text' } },
+    value: { control: { type: "date", format: "MM/DD/YYYY" } },
+    defaultValue: { control: { type: "date", format: "MM/DD/YYYY" } },
+    label: { control: { type: "text" } },
     weekStart: {
       options: Object.values(WeekStart).filter((x) => typeof x === "string"),
       mapping: Object.entries(WeekStart)
@@ -66,7 +66,7 @@ DefaultEmpty.args = {
   value: undefined,
   minDate: undefined,
   maxDate: undefined,
-  language: 'en',
+  language: "en",
   theme: {},
 };
 
@@ -76,11 +76,10 @@ Default.args = {
   autoHide: true,
   showClearButton: true,
   showTodayButton: true,
-  defaultValue: new Date(2023, 0, 18),
   value: undefined,
   minDate: undefined,
   maxDate: undefined,
-  language: 'en',
+  language: "en",
   theme: {},
 };
 
@@ -94,7 +93,7 @@ NullDateValue.args = {
   value: null,
   minDate: undefined,
   maxDate: undefined,
-  language: 'en',
+  language: "en",
   theme: {},
 };
 
@@ -108,7 +107,7 @@ DateValueSet.args = {
   value: new Date(2021, 0, 15),
   minDate: undefined,
   maxDate: undefined,
-  language: 'en',
+  language: "en",
   theme: {},
 };
 
@@ -125,5 +124,5 @@ EmptyDates.args = {
   language: "en",
   weekStart: WeekStart.Sunday,
   theme: {},
-  label: 'No date selected',
+  label: "No date selected",
 };
