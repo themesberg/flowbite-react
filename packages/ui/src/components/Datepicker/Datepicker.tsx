@@ -91,7 +91,6 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
   labelClearButton?: string;
   showTodayButton?: boolean;
   labelTodayButton?: string;
-  defaultDateValue?: Date;
   minDate?: Date;
   maxDate?: Date;
   language?: string;
@@ -120,7 +119,6 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     className,
     theme: customTheme = {},
     onSelectedDateChanged,
-    defaultDateValue,
     label,
     customValue,
     ...props
@@ -130,11 +128,11 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   const theme = mergeDeep(getTheme().datepicker, customTheme);
 
   const effectiveDefaultValue = useMemo(() => {
-    return defaultDateValue ? getFirstDateInRange(defaultDateValue, minDate, maxDate) : null;
+    return getFirstDateInRange(defaultDate, minDate, maxDate);
   }, []);
 
   const effectiveDefaultView = useMemo(() => {
-    return defaultDateValue ? getFirstDateInRange(defaultDateValue, minDate, maxDate) : new Date();
+    return defaultDate ? getFirstDateInRange(defaultDate, minDate, maxDate) : new Date();
   }, []);
 
   const [isOpen, setIsOpen] = useState(open);
@@ -256,6 +254,10 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     if (customValue !== undefined && customValue !== selectedDate) {
       setSelectedDate(customValue);
       customValue && setViewDate(customValue);
+    }
+    if (selectedDate == null) {
+      setSelectedDate(effectiveDefaultValue);
+      setViewDate(effectiveDefaultView);
     }
   }, [customValue, setSelectedDate, setViewDate, selectedDate]);
 
