@@ -1,7 +1,7 @@
 "use client";
 
 import type { ForwardRefRenderFunction, ReactNode } from "react";
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { HiArrowLeft, HiArrowRight, HiCalendar } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
@@ -83,6 +83,7 @@ export interface DatepickerRef {
 }
 
 export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
+  defaultDate?: Date;
   open?: boolean;
   inline?: boolean;
   autoHide?: boolean;
@@ -90,14 +91,14 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
   labelClearButton?: string;
   showTodayButton?: boolean;
   labelTodayButton?: string;
-  defaultValue?: Date;
+  defaultDateValue?: Date;
   minDate?: Date;
   maxDate?: Date;
   language?: string;
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
   onSelectedDateChanged?: (date: Date) => void;
-  value?: Date | null;
+  customValue?: Date | null;
   label?: string;
 }
 
@@ -119,28 +120,29 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     className,
     theme: customTheme = {},
     onSelectedDateChanged,
-  dateValue,
-  labelEmptyDate = 'No date selected',
+    defaultDateValue,
+    label,
+    customValue,
     ...props
-  ref,
   },
+  ref,
 ) => {
   const theme = mergeDeep(getTheme().datepicker, customTheme);
 
   const effectiveDefaultValue = useMemo(() => {
-    return defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : null;
+    return defaultDateValue ? getFirstDateInRange(defaultDateValue, minDate, maxDate) : null;
   }, []);
 
   const effectiveDefaultView = useMemo(() => {
-    return defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : new Date();
+    return defaultDateValue ? getFirstDateInRange(defaultDateValue, minDate, maxDate) : new Date();
   }, []);
 
   const [isOpen, setIsOpen] = useState(open);
   const [view, setView] = useState<Views>(Views.Days);
   // selectedDate is the date selected by the user
-  const [selectedDate, setSelectedDate] = useState<Date | null>(value ?? effectiveDefaultValue);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(customValue ?? effectiveDefaultValue);
   // viewDate is only for navigation
-  const [viewDate, setViewDate] = useState<Date>(value ?? effectiveDefaultView);
+  const [viewDate, setViewDate] = useState<Date>(customValue ?? effectiveDefaultView);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const datepickerRef = useRef<HTMLDivElement>(null);
@@ -251,11 +253,11 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   }, [inputRef, datepickerRef, setIsOpen]);
 
   useEffect(() => {
-    if (value !== undefined && value !== selectedDate) {
-      setSelectedDate(value);
-      value && setViewDate(value);
+    if (customValue !== undefined && customValue !== selectedDate) {
+      setSelectedDate(customValue);
+      customValue && setViewDate(customValue);
     }
-  }, [value, setSelectedDate, setViewDate, selectedDate]);
+  }, [customValue, setSelectedDate, setViewDate, selectedDate]);
 
   return (
     <DatepickerContext.Provider
