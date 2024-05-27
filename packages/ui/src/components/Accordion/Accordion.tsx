@@ -49,15 +49,15 @@ const AccordionComponent: FC<AccordionProps> = ({
 
   const panels = useMemo(
     () =>
-      Children.map(children, (child, i) =>
-        cloneElement(child, {
-          alwaysOpen,
-          arrowIcon,
-          flush,
-          isOpen: isOpen === i,
-          setOpen: () => setOpen(isOpen === i ? -1 : i),
-        }),
-      ),
+      Children.map(children, (child, i) => {
+        return cloneElement(child, {
+          alwaysOpen: child.props.alwaysOpen ?? alwaysOpen,
+          arrowIcon: child.props.arrowIcon ?? arrowIcon,
+          flush: child.props.flush ?? flush,
+          isOpen: child.props.isOpen ?? isOpen === i,
+          setOpen: child.props.setOpen ?? (() => setOpen(isOpen === i ? -1 : i)),
+        });
+      }),
     [alwaysOpen, arrowIcon, children, flush, isOpen],
   );
 
