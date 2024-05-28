@@ -14,7 +14,7 @@ export default {
     className: {
       control: "text",
     },
-    style: {
+    variant: {
       control: "radio",
       options: ["default", "underline", "pills", "fullWidth"],
     },
@@ -45,7 +45,7 @@ export const WithUnderline = (args: TabsProps): JSX.Element => (
   </Tabs>
 );
 WithUnderline.args = {
-  style: "underline",
+  variant: "underline",
 };
 WithUnderline.storyName = "With underline";
 
@@ -69,7 +69,7 @@ export const WithIcons = (args: TabsProps): JSX.Element => (
   </Tabs>
 );
 WithIcons.args = {
-  style: "underline",
+  variant: "underline",
 };
 WithIcons.storyName = "With icons";
 
@@ -85,7 +85,7 @@ export const Pills = (args: TabsProps): JSX.Element => (
   </Tabs>
 );
 Pills.args = {
-  style: "pills",
+  variant: "pills",
 };
 
 export const FullWidth = (args: TabsProps): JSX.Element => (
@@ -100,6 +100,6 @@ export const FullWidth = (args: TabsProps): JSX.Element => (
   </Tabs>
 );
 FullWidth.args = {
-  style: "fullWidth",
+  variant: "fullWidth",
 };
 FullWidth.storyName = "Full width";
