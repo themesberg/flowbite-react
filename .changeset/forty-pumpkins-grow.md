@@ -4,4 +4,4 @@
 
 ---
 
-Renamed the Tabs - `style` to `variants` in order to allow the user to use style attribute which was blocking earlier.
+Renamed the `Tabs` attribute from `style` to `variant` to allow the use of the `style` attribute, which was previously blocked.
