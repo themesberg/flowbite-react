@@ -22,6 +22,7 @@ import { labelTheme } from "./components/Label/theme";
 import { listTheme } from "./components/List/theme";
 import { listGroupTheme } from "./components/ListGroup/theme";
 import { megaMenuTheme } from "./components/MegaMenu/theme";
+import { mockupTheme } from "./components/Mockup/theme";
 import { modalTheme } from "./components/Modal/theme";
 import { navbarTheme } from "./components/Navbar/theme";
 import { paginationTheme } from "./components/Pagination/theme";
@@ -54,8 +55,8 @@ export const theme: FlowbiteTheme = {
   card: cardTheme,
   carousel: carouselTheme,
   checkbox: checkboxTheme,
-  datepicker: datePickerTheme,
   darkThemeToggle: darkThemeToggleTheme,
+  datepicker: datePickerTheme,
   drawer: drawerTheme,
   dropdown: dropdownTheme,
   fileInput: fileInputTheme,
@@ -64,9 +65,10 @@ export const theme: FlowbiteTheme = {
   helperText: helperTextTheme,
   kbd: kbdTheme,
   label: labelTheme,
-  listGroup: listGroupTheme,
   list: listTheme,
+  listGroup: listGroupTheme,
   megaMenu: megaMenuTheme,
+  mockup: mockupTheme,
   modal: modalTheme,
   navbar: navbarTheme,
   pagination: paginationTheme,
@@ -77,14 +79,14 @@ export const theme: FlowbiteTheme = {
   rating: ratingTheme,
   ratingAdvanced: ratingAdvancedTheme,
   select: selectTheme,
-  textInput: textInputTheme,
-  textarea: textareaTheme,
-  toggleSwitch: toggleSwitchTheme,
   sidebar: sidebarTheme,
   spinner: spinnerTheme,
   table: tableTheme,
   tabs: tabTheme,
+  textarea: textareaTheme,
+  textInput: textInputTheme,
   timeline: timelineTheme,
   toast: toastTheme,
+  toggleSwitch: toggleSwitchTheme,
   tooltip: tooltipTheme,
 };

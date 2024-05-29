@@ -22,6 +22,7 @@ import type { FlowbiteLabelTheme } from "../Label";
 import type { FlowbiteListTheme } from "../List";
 import type { FlowbiteListGroupTheme } from "../ListGroup";
 import type { FlowbiteMegaMenuTheme } from "../MegaMenu";
+import type { FlowbiteMockupTheme } from "../Mockup/theme";
 import type { FlowbiteModalTheme } from "../Modal";
 import type { FlowbiteNavbarTheme } from "../Navbar";
 import type { FlowbitePaginationTheme } from "../Pagination";
@@ -69,6 +70,7 @@ export interface FlowbiteTheme {
   list: FlowbiteListTheme;
   listGroup: FlowbiteListGroupTheme;
   megaMenu: FlowbiteMegaMenuTheme;
+  mockup: FlowbiteMockupTheme;
   modal: FlowbiteModalTheme;
   navbar: FlowbiteNavbarTheme;
   pagination: FlowbitePaginationTheme;

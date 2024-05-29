@@ -64,6 +64,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: "Card", href: "/docs/components/card" },
       { title: "Carousel", href: "/docs/components/carousel" },
       { title: "Datepicker", href: "/docs/components/datepicker", isNew: true },
+      { title: "Device Mockups", href: "/docs/components/device-mockups", isNew: true },
       { title: "Drawer", href: "/docs/components/drawer", isNew: true },
       { title: "Dropdown", href: "/docs/components/dropdown" },
       { title: "Footer", href: "/docs/components/footer" },
