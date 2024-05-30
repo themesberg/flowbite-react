@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import type { ComponentProps } from "react";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
 import type { DeepPartial } from "../../types";
