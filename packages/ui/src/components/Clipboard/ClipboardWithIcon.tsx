@@ -1,3 +1,5 @@
+"use client";
+
 import { forwardRef, useState, type ComponentProps, type FC } from "react";
 import { FaCheck, FaClipboardList } from "react-icons/fa6";
 import { twMerge } from "tailwind-merge";

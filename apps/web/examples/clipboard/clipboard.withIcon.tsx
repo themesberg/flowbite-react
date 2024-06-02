@@ -18,7 +18,7 @@ export function Component() {
             disabled
             readOnly
             />
-         <Clipboard.WithIcon valueToCopy="npm install flowbite-react" label="Copy" />
+         <Clipboard.WithIcon valueToCopy="npm install flowbite-react" />
     </div>
   )
 }
@@ -38,7 +38,7 @@ export function Component() {
         disabled
         readOnly
       />
-      <Clipboard.WithIcon valueToCopy="npm install flowbite-react" label="Copy" />
+      <Clipboard.WithIcon valueToCopy="npm install flowbite-react" />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+"use client";
+
 import { forwardRef, useState, type ComponentProps, type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
