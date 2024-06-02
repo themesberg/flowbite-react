@@ -1,3 +1,5 @@
+"use client";
+
 import { Clipboard } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
