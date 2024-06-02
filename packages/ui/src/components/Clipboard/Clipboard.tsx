@@ -49,8 +49,8 @@ const ClipboardComponent = forwardRef<HTMLButtonElement, ClipboardProps>(
 );
 
 ClipboardComponent.displayName = "Clipboard";
-ClipboardWithIcon.displayName = "ClipboardWithIcon";
-ClipboardWithIconText.displayName = "ClipboardWithIconText";
+ClipboardWithIcon.displayName = "Clipboard.WithIcon";
+ClipboardWithIconText.displayName = "Clipboard.WithIconText";
 
 export const Clipboard = Object.assign(ClipboardComponent, {
   WithIcon: ClipboardWithIcon,
