@@ -2,8 +2,8 @@ import type { Meta, StoryFn } from "@storybook/react";
 // import { FaClipboardList } from "react-icons/fa6";
 import type { ClipboardProps } from "./Clipboard";
 import { Clipboard } from "./Clipboard";
-import { ClipboardWithIcon } from "./ClipboardWithIcon";
-import { ClipboardWithIconText } from "./ClipboardWithIconText";
+import type { ClipboardWithIconProps } from "./ClipboardWithIcon";
+import type { ClipboardWithIconTextProps } from "./ClipboardWithIconText";
 
 export default {
   title: "Components/Clipboard",
@@ -29,7 +29,7 @@ const DefaultTemplate: StoryFn<ClipboardProps> = () => (
 
 export const Default = DefaultTemplate.bind({});
 
-const CopyIconTemplate: StoryFn<ClipboardProps> = () => (
+const CopyIconTemplate: StoryFn<ClipboardWithIconProps> = () => (
   <div className="grid w-full max-w-64">
     <div className="relative">
       <label htmlFor="npm-install" className="sr-only">
@@ -43,14 +43,14 @@ const CopyIconTemplate: StoryFn<ClipboardProps> = () => (
         disabled
         readOnly
       />
-      <ClipboardWithIcon valueToCopy="npm install flowbite-react" />
+      <Clipboard.WithIcon valueToCopy="npm install flowbite-react" />
     </div>
   </div>
 );
 
 export const CopyIcon = CopyIconTemplate.bind({});
 
-const CopyIconTextTemplate: StoryFn<ClipboardProps> = () => (
+const CopyIconTextTemplate: StoryFn<ClipboardWithIconTextProps> = () => (
   <div className="grid w-full max-w-80">
     <div className="relative">
       <label htmlFor="npm-install" className="sr-only">
@@ -64,7 +64,7 @@ const CopyIconTextTemplate: StoryFn<ClipboardProps> = () => (
         disabled
         readOnly
       />
-      <ClipboardWithIconText valueToCopy="npm install flowbite-react" />
+      <Clipboard.WithIconText valueToCopy="npm install flowbite-react" />
     </div>
   </div>
 );
