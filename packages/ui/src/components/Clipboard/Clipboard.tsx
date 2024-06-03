@@ -10,6 +10,7 @@ import { ClipboardWithIcon } from "./ClipboardWithIcon";
 import type { FlowbiteClipboardWithIconTheme } from "./ClipboardWithIcon";
 import { ClipboardWithIconText } from "./ClipboardWithIconText";
 import type { FlowbiteClipboardWithIconTextTheme } from "./ClipboardWithIconText";
+import { copyToClipboard } from "./helpers";
 
 export interface FlowbiteClipboardTheme {
   button: {
@@ -32,15 +33,14 @@ const ClipboardComponent = forwardRef<HTMLButtonElement, ClipboardProps>(
 
     const theme = mergeDeep(getTheme().clipboard.button, customTheme);
 
-    const copyToClipboard = () => {
-      setIsJustCopied(true);
-      navigator?.clipboard?.writeText(valueToCopy);
-      setTimeout(() => setIsJustCopied(false), 4000);
-    };
-
     return (
       <Tooltip content={isJustCopied ? "Copied" : "Copy to clipboard"} className="[&_*]:cursor-pointer">
-        <button className={twMerge(theme.base, className)} onClick={copyToClipboard} {...rest} ref={ref}>
+        <button
+          className={twMerge(theme.base, className)}
+          onClick={() => copyToClipboard(valueToCopy, setIsJustCopied)}
+          {...rest}
+          ref={ref}
+        >
           <span className={theme.label}>{label}</span>
         </button>
       </Tooltip>

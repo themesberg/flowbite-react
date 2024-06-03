@@ -6,6 +6,7 @@ import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
 import type { DeepPartial } from "../../types";
+import { copyToClipboard } from "./helpers";
 
 export interface FlowbiteClipboardWithIconTextTheme {
   base: string;
@@ -33,14 +34,13 @@ export const ClipboardWithIconText = forwardRef<HTMLButtonElement, ClipboardWith
 
     const theme = mergeDeep(getTheme().clipboard.withIconText, customTheme);
 
-    const copyToClipboard = () => {
-      setIsJustCopied(true);
-      navigator?.clipboard?.writeText(valueToCopy);
-      setTimeout(() => setIsJustCopied(false), 4000);
-    };
-
     return (
-      <button className={twMerge(theme.base, className)} onClick={copyToClipboard} {...rest} ref={ref}>
+      <button
+        className={twMerge(theme.base, className)}
+        onClick={() => copyToClipboard(valueToCopy, setIsJustCopied)}
+        {...rest}
+        ref={ref}
+      >
         {isJustCopied ? (
           <span className={theme.label.base}>
             <FaCheck aria-hidden className={theme.icon.successIcon} />
