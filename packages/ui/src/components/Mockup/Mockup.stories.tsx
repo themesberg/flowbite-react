@@ -119,7 +119,17 @@ export const Smartwatch: StoryFn = () => (
 );
 
 export const Colors: StoryFn = () => (
-  <DefaultMockup theme={{ root: twMerge(getTheme().mockup.default.root, "border-gray-300") }}>
+  <DefaultMockup
+    theme={{
+      root: twMerge(getTheme().mockup.default.root, "border-gray-300"),
+      buttons: {
+        action: twMerge(getTheme().mockup.default.buttons.action, "bg-gray-300"),
+        volumeUp: twMerge(getTheme().mockup.default.buttons.volumeUp, "bg-gray-300"),
+        volumeDown: twMerge(getTheme().mockup.default.buttons.volumeDown, "bg-gray-300"),
+        power: twMerge(getTheme().mockup.default.buttons.power, "bg-gray-300"),
+      },
+    }}
+  >
     <img
       src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/hero/mockup-1-light.png"
       className="h-[572px] w-[272px] dark:hidden"
