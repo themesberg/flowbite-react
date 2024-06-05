@@ -46,13 +46,13 @@ export const tabletMockupTheme = createTheme({
 });
 
 export const laptopMockupTheme = createTheme({
-  display:
-    "relative mx-auto h-[172px] max-w-[301px] rounded-t-xl border-8 border-gray-800 bg-gray-800 dark:border-gray-800 md:h-[294px] md:max-w-[512px]",
+  root: "aspect-[2/1]",
+  display: "mx-[7%] h-full rounded-t-[2.2%_3.8%] bg-gray-800 p-[1.4%]",
   base: {
-    root: "relative mx-auto h-[17px] max-w-[351px] rounded-b-xl rounded-t-sm bg-gray-900 dark:bg-gray-700 md:h-[21px] md:max-w-[597px]",
-    inner: "absolute left-1/2 top-0 h-[5px] w-[56px] -translate-x-1/2 rounded-b-xl bg-gray-800 md:h-[8px] md:w-[96px]",
+    root: "relative h-[7%] rounded-b-[2%_50%] rounded-t-[0.2%_5%] bg-gray-900 dark:bg-gray-700",
+    inner: "absolute left-1/2 top-0 h-[35%] w-[16%] -translate-x-1/2 rounded-b-[8%_100%] bg-gray-800",
   },
-  content: "h-[156px] overflow-hidden rounded-lg bg-white dark:bg-gray-800 md:h-[278px]",
+  content: "h-full overflow-hidden rounded-[1.15%/2%] bg-white dark:bg-gray-700",
 });
 
 export const desktopMockupTheme = createTheme({

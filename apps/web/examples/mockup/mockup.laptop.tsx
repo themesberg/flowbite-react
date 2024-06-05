@@ -9,12 +9,12 @@ export function Component() {
     <LaptopMockup>
       <img
         src="https://flowbite.s3.amazonaws.com/docs/device-mockups/laptop-screen.png"
-        className="h-[156px] w-full rounded-lg md:h-[278px] dark:hidden"
+        className="dark:hidden"
         alt=""
       />
       <img
         src="https://flowbite.s3.amazonaws.com/docs/device-mockups/laptop-screen-dark.png"
-        className="hidden h-[156px] w-full rounded-lg md:h-[278px] dark:block"
+        className="hidden dark:block"
         alt=""
       />
     </LaptopMockup>
@@ -27,12 +27,12 @@ export function Component() {
     <LaptopMockup>
       <img
         src="https://flowbite.s3.amazonaws.com/docs/device-mockups/laptop-screen.png"
-        className="h-[156px] w-full rounded-lg md:h-[278px] dark:hidden"
+        className="dark:hidden"
         alt=""
       />
       <img
         src="https://flowbite.s3.amazonaws.com/docs/device-mockups/laptop-screen-dark.png"
-        className="hidden h-[156px] w-full rounded-lg md:h-[278px] dark:block"
+        className="hidden dark:block"
         alt=""
       />
     </LaptopMockup>
