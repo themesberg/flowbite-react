@@ -4,7 +4,7 @@ import { type CodeData } from "~/components/code-demo";
 const code = `
 "use client";
 
-import { DefaultMockup } from "flowbite-react";
+import { TabletMockup } from "flowbite-react";
 
 export function Component() {
   return (
@@ -25,7 +25,7 @@ export function Component() {
 `;
 
 const codeRSC = `
-import { DefaultMockup } from "flowbite-react";
+import { TabletMockup } from "flowbite-react";
 
 export function Component() {
   return (
