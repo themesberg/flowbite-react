@@ -1,12 +1,11 @@
 import { Badge, DarkThemeToggle, Tooltip } from "flowbite-react";
 import Link from "next/link";
-import type { FC } from "react";
 import { BsGithub } from "react-icons/bs";
 import { SiDiscord, SiStorybook } from "react-icons/si";
 import pkg from "../../../packages/ui/package.json";
 import { DocSearchInput } from "./docsearch-input";
 
-export const NavbarLinks: FC = () => {
+export function NavbarLinks() {
   return (
     <div className="hidden items-center gap-1 lg:flex">
       <Link
@@ -35,9 +34,9 @@ export const NavbarLinks: FC = () => {
       </a>
     </div>
   );
-};
+}
 
-export const NavbarIcons: FC = () => {
+export function NavbarIcons() {
   const version = pkg?.version ?? "latest";
   return (
     <div className="flex items-center gap-1">
@@ -74,11 +73,11 @@ export const NavbarIcons: FC = () => {
       <a href="https://npmjs.com/package/flowbite-react" className="ml-2 hidden lg:block">
         <Badge
           color="info"
-          className="border-primary-700 bg-primary-50 px-2 text-sm font-normal text-primary-700 hover:bg-primary-600 hover:text-white sm:block lg:block dark:border-primary-700  dark:bg-gray-700 dark:text-primary-700 dark:hover:bg-primary-800 dark:hover:text-white"
+          className="border-primary-700 bg-primary-50 px-2 text-sm font-normal text-primary-700 hover:bg-primary-600 hover:text-white sm:block lg:block dark:border-primary-700 dark:bg-gray-700 dark:text-primary-700 dark:hover:bg-primary-800 dark:hover:text-white"
         >
           v{version}
         </Badge>
       </a>
     </div>
   );
-};
+}

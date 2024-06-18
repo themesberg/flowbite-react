@@ -1,11 +1,10 @@
 import { Button } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { FC } from "react";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import { CopyPackageInput } from "./copy-package-input";
 
-export const HeroSection: FC = () => {
+export function HeroSection() {
   return (
     <section className="mx-auto flex max-w-8xl flex-col overflow-hidden px-4 py-6 sm:py-8 lg:px-20 lg:pb-24 lg:pt-16">
       <div className="flex flex-col gap-20">
@@ -55,4 +54,4 @@ export const HeroSection: FC = () => {
       </div>
     </section>
   );
-};
+}
