@@ -9,7 +9,7 @@ RSCs can help reduce the size of the client-side JavaScript bundle and improve l
 
 ## Usage
 
-Without `'use client'` directive:
+Without `"use client"` directive:
 
 ```jsx
 import { Button } from "flowbite-react";
@@ -19,7 +19,7 @@ function Component() {
 }
 ```
 
-With `'use client'` directive:
+With `"use client"` directive:
 
 ```jsx
 "use client";
@@ -31,7 +31,7 @@ function Component() {
 }
 ```
 
-Incorrect: without `'use client'` directive and user event passed as prop (`onClick`) resulting in error:
+Incorrect: without `"use client"` directive and user event passed as prop (`onClick`) resulting in error:
 
 ```jsx
 // errors
@@ -85,7 +85,7 @@ function Component() {
 
 ## Support
 
-All Flowbite React components are server-ready, meaning they can be rendered inside React Server Components without the need of `'use client'` directive at the top of the file.
+All Flowbite React components are server-ready, meaning they can be rendered inside React Server Components without the need of `"use client"` directive at the top of the file.
 
 Here's a list of all Flowbite React components that are fully rendered on the server:
 
@@ -95,6 +95,6 @@ Here's a list of all Flowbite React components that are fully rendered on the se
 
 User event props (such as `onClick`, `onBlur`, ...etc) DO NOT work in React Server Components.
 
-To pass any user events to a Flowbite React component (such as `onClick`, `onBlur`) the parent component must have the `'use client'` directive.
+To pass any user events to a Flowbite React component (such as `onClick`, `onBlur`) the parent component must have the `"use client"` directive.
 
 Only serializable data can be passed to a server component as props (eg: functions will not work).
