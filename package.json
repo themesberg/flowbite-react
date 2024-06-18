@@ -46,5 +46,5 @@
     "rimraf": "5.0.7",
     "turbo": "2.0.4"
   },
-  "packageManager": "bun@1.1.12"
+  "packageManager": "bun@1.1.0"
 }
