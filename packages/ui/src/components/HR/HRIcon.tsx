@@ -1,5 +1,5 @@
-import { forwardRef } from "react";
 import type { ComponentProps, FC } from "react";
+import { forwardRef } from "react";
 import { FaQuoteRight } from "react-icons/fa6";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
@@ -21,10 +21,8 @@ export interface HRIconProps extends Omit<ComponentProps<"hr">, "ref"> {
 }
 
 export const HRIcon = forwardRef<HTMLHRElement, HRIconProps>(
-  ({ theme: customTheme = {}, icon: Icon, className, ...props }, ref) => {
+  ({ theme: customTheme = {}, icon: Icon = FaQuoteRight, className, ...props }, ref) => {
     const theme = mergeDeep(getTheme().hr.icon, customTheme);
-
-    const SVGIcon = Icon ? Icon : FaQuoteRight;
 
     return (
       <div className={theme.base}>
@@ -36,7 +34,7 @@ export const HRIcon = forwardRef<HTMLHRElement, HRIconProps>(
           {...props}
         />
         <div className={theme.icon.base}>
-          <SVGIcon aria-hidden className={theme.icon.icon} />
+          <Icon aria-hidden className={theme.icon.icon} />
         </div>
       </div>
     );
