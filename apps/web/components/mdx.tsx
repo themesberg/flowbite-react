@@ -1,6 +1,6 @@
 import { theme } from "flowbite-react";
 import type { MDXComponents } from "mdx/types";
-import { getMDXComponent } from "next-contentlayer/hooks";
+import { getMDXComponent } from "next-contentlayer2/hooks";
 import Link from "next/link";
 import * as examples from "~/examples";
 import { CodeDemo, type CodeData } from "./code-demo";

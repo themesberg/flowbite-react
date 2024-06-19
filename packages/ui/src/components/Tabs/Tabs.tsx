@@ -14,16 +14,16 @@ export interface FlowbiteTabsTheme {
   base: string;
   tablist: {
     base: string;
-    styles: TabStyles;
+    variant: TabStyles;
     tabitem: {
       base: string;
-      styles: TabStyleItem<TabStyles>;
+      variant: TabStyleItem<TabStyles>;
       icon: string;
     };
   };
   tabitemcontainer: {
     base: string;
-    styles: TabStyles;
+    variant: TabStyles;
   };
   tabpanel: string;
 }
@@ -54,9 +54,9 @@ interface TabKeyboardEventProps extends TabEventProps {
   event: KeyboardEvent<HTMLButtonElement>;
 }
 
-export interface TabsProps extends Omit<ComponentProps<"div">, "ref" | "style"> {
+export interface TabsProps extends Omit<ComponentProps<"div">, "ref"> {
   onActiveTabChange?: (activeTab: number) => void;
-  style?: keyof TabStyles;
+  variant?: keyof TabStyles;
   theme?: DeepPartial<FlowbiteTabsTheme>;
 }
 
@@ -66,7 +66,7 @@ export interface TabsRef {
 
 const TabsComponent = forwardRef<TabsRef, TabsProps>(
   (
-    { children, className, onActiveTabChange, style = "default", theme: customTheme = {}, ...props },
+    { children, className, onActiveTabChange, variant = "default", theme: customTheme = {}, ...props },
     ref: ForwardedRef<TabsRef>,
   ) => {
     const theme = mergeDeep(getTheme().tabs, customTheme);
@@ -114,8 +114,8 @@ const TabsComponent = forwardRef<TabsRef, TabsProps>(
       }
     };
 
-    const tabItemStyle = theme.tablist.tabitem.styles[style];
-    const tabItemContainerStyle = theme.tabitemcontainer.styles[style];
+    const tabItemStyle = theme.tablist.tabitem.variant[variant];
+    const tabItemContainerStyle = theme.tabitemcontainer.variant[variant];
 
     useEffect(() => {
       tabRefs.current[focusedTab]?.focus();
@@ -130,7 +130,7 @@ const TabsComponent = forwardRef<TabsRef, TabsProps>(
         <div
           aria-label="Tabs"
           role="tablist"
-          className={twMerge(theme.tablist.base, theme.tablist.styles[style], className)}
+          className={twMerge(theme.tablist.base, theme.tablist.variant[variant], className)}
           {...props}
         >
           {tabs.map((tab, index) => (

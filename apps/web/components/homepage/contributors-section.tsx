@@ -1,7 +1,6 @@
 import { Tooltip } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { FC } from "react";
 import { safeResJson } from "~/helpers/http";
 
 interface Contributor {
@@ -21,7 +20,7 @@ async function fetchContributors(): Promise<Contributor[]> {
   }
 }
 
-export const ContributorsSection: FC = async () => {
+export async function ContributorsSection() {
   const contributors = await fetchContributors();
 
   return (
@@ -98,4 +97,4 @@ export const ContributorsSection: FC = async () => {
       </div>
     </section>
   );
-};
+}
