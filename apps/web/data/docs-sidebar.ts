@@ -100,8 +100,8 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
     href: "/typography/",
     items: [
       { title: "Blockquote", href: "/docs/typography/blockquote", isNew: true },
-      { title: "HR", href: "/docs/components/hr", isNew: true },
       { title: "List", href: "/docs/typography/list", isNew: true },
+      { title: "HR", href: "/docs/typography/hr", isNew: true },
     ],
   },
 ];
