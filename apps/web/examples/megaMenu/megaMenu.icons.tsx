@@ -369,10 +369,7 @@ function Component() {
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="group group flex items-center hover:text-primary-600 dark:hover:text-primary-500"
-                >
+                <a href="#" className="group flex items-center hover:text-primary-600 dark:hover:text-primary-500">
                   <svg
                     className="me-2 h-3 w-3 text-gray-400 group-hover:text-primary-600 dark:text-gray-500 dark:group-hover:text-primary-500"
                     aria-hidden="true"
