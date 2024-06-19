@@ -1,9 +1,8 @@
 import { Footer } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { FC } from "react";
 
-export const MainFooter: FC = () => {
+export function MainFooter() {
   return (
     <Footer className="rounded-none bg-gray-50 pb-8 pt-16 shadow-none">
       <div className="mx-auto w-full max-w-8xl px-4 lg:px-20">
@@ -98,4 +97,4 @@ export const MainFooter: FC = () => {
       </div>
     </Footer>
   );
-};
+}

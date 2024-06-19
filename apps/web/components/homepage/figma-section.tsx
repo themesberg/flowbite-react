@@ -1,7 +1,6 @@
 import Image from "next/image";
-import type { FC } from "react";
 
-export const FigmaSection: FC = () => {
+export function FigmaSection() {
   return (
     <section className="bg-gray-50 dark:bg-gray-800">
       <div className="mx-auto max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
@@ -247,4 +246,4 @@ export const FigmaSection: FC = () => {
       </div>
     </section>
   );
-};
+}

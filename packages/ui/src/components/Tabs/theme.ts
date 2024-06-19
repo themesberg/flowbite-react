@@ -19,7 +19,7 @@ export const tabTheme: FlowbiteTabsTheme = createTheme({
           base: "rounded-t-lg",
           active: {
             on: "bg-gray-100 text-cyan-600 dark:bg-gray-800 dark:text-cyan-500",
-            off: "text-gray-500 hover:bg-gray-50 hover:text-gray-600 dark:text-gray-400 dark:hover:bg-gray-800  dark:hover:text-gray-300",
+            off: "text-gray-500 hover:bg-gray-50 hover:text-gray-600 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-300",
           },
         },
         underline: {
