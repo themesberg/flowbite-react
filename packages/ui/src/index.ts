@@ -10,6 +10,7 @@ export * from "./components/Button";
 export * from "./components/Card";
 export * from "./components/Carousel";
 export * from "./components/Checkbox";
+export * from "./components/Clipboard";
 export * from "./components/DarkThemeToggle";
 export * from "./components/Datepicker";
 export * from "./components/Drawer";
