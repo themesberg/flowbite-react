@@ -70,8 +70,8 @@
     "@testing-library/jest-dom": "6.4.2",
     "@testing-library/react": "14.2.2",
     "@testing-library/user-event": "14.5.2",
-    "@types/react": "18.2.73",
-    "@types/react-dom": "18.2.23",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
     "@typescript-eslint/eslint-plugin": "7.4.0",
     "@typescript-eslint/parser": "7.4.0",
     "@vitejs/plugin-react": "4.2.1",
@@ -84,7 +84,7 @@
     "rollup": "4.13.2",
     "rollup-plugin-esbuild": "6.1.1",
     "rollup-plugin-use-client": "1.4.0",
-    "typescript": "5.4.3",
+    "typescript": "5.4.5",
     "vitest": "1.4.0"
   },
   "peerDependencies": {
