@@ -8,7 +8,7 @@ const code = `
 import { Toast } from "flowbite-react";
 import { HiFire } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Toast>
       <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-100 text-cyan-500 dark:bg-cyan-800 dark:text-cyan-200">
@@ -25,7 +25,7 @@ const codeRSC = `
 import { Toast, ToastToggle } from "flowbite-react";
 import { HiFire } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Toast>
       <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-100 text-cyan-500 dark:bg-cyan-800 dark:text-cyan-200">
@@ -38,7 +38,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Toast>
       <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-100 text-cyan-500 dark:bg-cyan-800 dark:text-cyan-200">

@@ -13,32 +13,7 @@ Learn how to get started with Flowbite React and start leveraging the interactiv
 
 ### Setup Tailwind CSS
 
-Install Tailwind CSS:
-
-```bash
-npm i autoprefixer postcss tailwindcss
-npx tailwindcss init -p
-```
-
-Point Tailwind CSS to files you have `className=".."` in:
-
-```javascript
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}" /* src folder, for example */],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-```
-
-Add Tailwind CSS to a CSS file:
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
+Install Tailwind CSS by following the [official installation guide](https://tailwindcss.com/docs/installation).
 
 ### Install Flowbite React
 
@@ -48,18 +23,20 @@ Add Tailwind CSS to a CSS file:
 npm i flowbite-react
 ```
 
-2. Add the Flowbite plugin to `tailwind.config.js`, and include content from `flowbite-react`:
+2. Add the Flowbite React `content` path and `plugin` to `tailwind.config.js`:
 
-```js {5,9}
+```js {1,7,11}
+const flowbite = require("flowbite-react/tailwind");
+
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     // ...
-    "node_modules/flowbite-react/lib/esm/**/*.js",
+    flowbite.content(),
   ],
   plugins: [
     // ...
-    require("flowbite/plugin"),
+    flowbite.plugin(),
   ],
 };
 ```

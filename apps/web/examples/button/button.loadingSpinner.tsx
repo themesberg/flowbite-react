@@ -8,7 +8,7 @@ const code = `
 import { Button } from "flowbite-react";
 import { AiOutlineLoading } from "react-icons/ai";
 
-function Component() {
+export function Component() {
   return (
     <Button size="md" isProcessing processingSpinner={<AiOutlineLoading className="h-6 w-6 animate-spin" />}>
       Click me!
@@ -21,7 +21,7 @@ const codeRSC = `
 import { Button } from "flowbite-react";
 import { AiOutlineLoading } from "react-icons/ai";
 
-function Component() {
+export function Component() {
   return (
     <Button size="md" isProcessing processingSpinner={<AiOutlineLoading className="h-6 w-6 animate-spin" />}>
       Click me!
@@ -30,7 +30,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Button size="md" isProcessing processingSpinner={<AiOutlineLoading className="h-6 w-6 animate-spin" />}>
       Click me!

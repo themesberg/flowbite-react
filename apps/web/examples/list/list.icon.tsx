@@ -8,7 +8,7 @@ const code = `
 import { List } from "flowbite-react";
 import { HiCheckCircle } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <List>
       <List.Item icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</List.Item>
@@ -23,7 +23,7 @@ const codeRSC = `
 import { List, ListItem } from "flowbite-react";
 import { HiCheckCircle } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <List>
       <ListItem icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</ListItem>
@@ -34,7 +34,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <List>
       <ListItem icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</ListItem>

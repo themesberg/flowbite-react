@@ -6,7 +6,7 @@ const code = `
 
 import { Label, Radio } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <fieldset className="flex max-w-md flex-col gap-4">
       <legend className="mb-4">Choose your favorite country</legend>
@@ -40,7 +40,7 @@ function Component() {
 const codeRSC = `
 import { Label, Radio } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <fieldset className="flex max-w-md flex-col gap-4">
       <legend className="mb-4">Choose your favorite country</legend>
@@ -71,7 +71,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <fieldset className="flex max-w-md flex-col gap-4">
       <legend className="mb-4">Choose your favorite country</legend>

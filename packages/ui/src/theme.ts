@@ -9,8 +9,10 @@ import { buttonGroupTheme, buttonTheme } from "./components/Button/theme";
 import { cardTheme } from "./components/Card/theme";
 import { carouselTheme } from "./components/Carousel/theme";
 import { checkboxTheme } from "./components/Checkbox/theme";
+import { clipboardTheme } from "./components/Clipboard/theme";
 import { darkThemeToggleTheme } from "./components/DarkThemeToggle/theme";
 import { datePickerTheme } from "./components/Datepicker/theme";
+import { drawerTheme } from "./components/Drawer/theme";
 import { dropdownTheme } from "./components/Dropdown/theme";
 import { fileInputTheme } from "./components/FileInput/theme";
 import { floatingLabelTheme } from "./components/FloatingLabel/theme";
@@ -21,6 +23,7 @@ import { kbdTheme } from "./components/Kbd/theme";
 import { labelTheme } from "./components/Label/theme";
 import { listTheme } from "./components/List/theme";
 import { listGroupTheme } from "./components/ListGroup/theme";
+import { megaMenuTheme } from "./components/MegaMenu/theme";
 import { modalTheme } from "./components/Modal/theme";
 import { navbarTheme } from "./components/Navbar/theme";
 import { paginationTheme } from "./components/Pagination/theme";
@@ -53,8 +56,10 @@ export const theme: FlowbiteTheme = {
   card: cardTheme,
   carousel: carouselTheme,
   checkbox: checkboxTheme,
+  clipboard: clipboardTheme,
   datepicker: datePickerTheme,
   darkThemeToggle: darkThemeToggleTheme,
+  drawer: drawerTheme,
   dropdown: dropdownTheme,
   fileInput: fileInputTheme,
   floatingLabel: floatingLabelTheme,
@@ -65,6 +70,7 @@ export const theme: FlowbiteTheme = {
   label: labelTheme,
   listGroup: listGroupTheme,
   list: listTheme,
+  megaMenu: megaMenuTheme,
   modal: modalTheme,
   navbar: navbarTheme,
   pagination: paginationTheme,

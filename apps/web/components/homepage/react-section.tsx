@@ -1,7 +1,6 @@
 import { Button } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { FC } from "react";
 import { HiOutlineArrowRight } from "react-icons/hi";
 
 const feature_list = [
@@ -13,7 +12,7 @@ const feature_list = [
   "Fully accessible UI components",
 ];
 
-export const ReactSection: FC = () => {
+export function ReactSection() {
   return (
     <section className="bg-gray-50 dark:bg-gray-800">
       <div className="mx-auto w-full max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
@@ -89,4 +88,4 @@ export const ReactSection: FC = () => {
       </div>
     </section>
   );
-};
+}

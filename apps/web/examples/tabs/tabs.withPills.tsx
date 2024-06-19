@@ -6,9 +6,9 @@ import { type CodeData } from "~/components/code-demo";
 const code = `
 import { Tabs } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
-    <Tabs aria-label="Pills" style="pills">
+    <Tabs aria-label="Pills" variant="pills">
       <Tabs.Item active title="Tab 1">
         <p className="text-sm text-gray-500 dark:text-gray-400">Content 1</p>
       </Tabs.Item>
@@ -29,9 +29,9 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
-    <Tabs aria-label="Pills" style="pills">
+    <Tabs aria-label="Pills" variant="pills">
       <Tabs.Item active title="Tab 1">
         <p className="text-sm text-gray-500 dark:text-gray-400">Content 1</p>
       </Tabs.Item>

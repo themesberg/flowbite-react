@@ -6,7 +6,7 @@ const code = `
 
 import { Footer } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Footer container>
       <Footer.Copyright href="#" by="Flowbite™" year={2022} />
@@ -24,7 +24,7 @@ function Component() {
 const codeRSC = `
 import { Footer, FooterCopyright, FooterLink, FooterLinkGroup } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Footer container>
       <FooterCopyright href="#" by="Flowbite™" year={2022} />
@@ -39,7 +39,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Footer container>
       <FooterCopyright href="#" by="Flowbite™" year={2022} />
@@ -69,4 +69,5 @@ export const root: CodeData = {
   ],
   githubSlug: "footer/footer.root.tsx",
   component: <Component />,
+  iframe: 130,
 };

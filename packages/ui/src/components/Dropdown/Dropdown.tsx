@@ -47,6 +47,7 @@ export interface DropdownProps extends Pick<FloatingProps, "placement" | "trigge
   inline?: boolean;
   label: ReactNode;
   theme?: DeepPartial<FlowbiteDropdownTheme>;
+  enableTypeAhead?: boolean;
   renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactElement;
   "data-testid"?: string;
 }
@@ -108,6 +109,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   className,
   dismissOnClick = true,
   theme: customTheme = {},
+  enableTypeAhead = true,
   renderTrigger,
   ...props
 }) => {
@@ -164,6 +166,7 @@ const DropdownComponent: FC<DropdownProps> = ({
     activeIndex,
     selectedIndex,
     onMatch: handleTypeaheadMatch,
+    enabled: enableTypeAhead,
   });
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useFloatingInteractions({

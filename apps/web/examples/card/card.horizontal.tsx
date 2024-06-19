@@ -6,7 +6,7 @@ const code = `
 
 import { Card } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm" imgSrc="/images/blog/image-4.jpg" horizontal>
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -23,7 +23,7 @@ function Component() {
 const codeRSC = `
 import { Card } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm" imgSrc="/images/blog/image-4.jpg" horizontal>
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -37,7 +37,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm" imgSrc="/images/blog/image-4.jpg" horizontal>
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -66,4 +66,5 @@ export const horizontal: CodeData = {
   ],
   githubSlug: "card/card.horizontal.tsx",
   component: <Component />,
+  iframe: 630,
 };

@@ -10,9 +10,9 @@ import { Tabs } from "flowbite-react";
 import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 
-function Component() {
+export function Component() {
   return (
-    <Tabs aria-label="Default tabs" style="default">
+    <Tabs aria-label="Default tabs" variant="default">
       <Tabs.Item active title="Profile" icon={HiUserCircle}>
         This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
         Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
@@ -41,9 +41,9 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
-    <Tabs aria-label="Default tabs" style="default">
+    <Tabs aria-label="Default tabs" variant="default">
       <Tabs.Item active title="Profile" icon={HiUserCircle}>
         This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
         Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to

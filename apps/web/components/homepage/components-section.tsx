@@ -1,11 +1,11 @@
 import { Button } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 import { COMPONENTS_DATA } from "~/data/components";
 
-export const ComponentsSection: FC = () => {
+export function ComponentsSection() {
   return (
     <section>
       <div className="mx-auto flex max-w-8xl flex-col gap-8 px-4 py-8 sm:gap-12 lg:px-20 lg:pt-24">
@@ -34,7 +34,7 @@ export const ComponentsSection: FC = () => {
       </div>
     </section>
   );
-};
+}
 
 interface ComponentCardProps extends ComponentProps<"div"> {
   link: string;
@@ -44,7 +44,7 @@ interface ComponentCardProps extends ComponentProps<"div"> {
   classes: string;
 }
 
-const ComponentCard: FC<ComponentCardProps> = ({ link, name, image, imageDark, classes }) => {
+function ComponentCard({ link, name, image, imageDark, classes }: ComponentCardProps) {
   return (
     <Link
       href={link}
@@ -80,4 +80,4 @@ const ComponentCard: FC<ComponentCardProps> = ({ link, name, image, imageDark, c
       </div>
     </Link>
   );
-};
+}

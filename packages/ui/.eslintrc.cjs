@@ -10,7 +10,6 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "plugin:vitest/recommended",
     "plugin:storybook/recommended",
     "plugin:tailwindcss/recommended",
     "prettier",
@@ -40,7 +39,7 @@ module.exports = {
       classRegex: "^(class(Name)|theme)?$",
     },
   },
-  ignorePatterns: ["lib"],
+  ignorePatterns: ["dist"],
   rules: {
     "no-undef": "off",
     "react/prop-types": "off",

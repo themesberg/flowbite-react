@@ -6,7 +6,7 @@ const code = `
 
 import { Button, Card } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -33,7 +33,7 @@ function Component() {
 const codeRSC = `
 import { Button, Card } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -57,7 +57,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

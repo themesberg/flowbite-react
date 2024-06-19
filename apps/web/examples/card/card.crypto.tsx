@@ -6,7 +6,7 @@ const code = `
 
 import { Card } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Card href="#" className="max-w-sm">
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -23,7 +23,7 @@ function Component() {
 const codeRSC = `
 import { Card } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Card href="#" className="max-w-sm">
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -37,7 +37,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Card className="max-w-sm">
       <h5 className="mb-3 text-base font-semibold text-gray-900 lg:text-xl dark:text-white">Connect wallet</h5>

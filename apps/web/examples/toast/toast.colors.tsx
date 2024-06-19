@@ -8,7 +8,7 @@ const code = `
 import { Toast } from "flowbite-react";
 import { HiCheck, HiExclamation, HiX } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-col gap-4">
       <Toast>
@@ -41,7 +41,7 @@ const codeRSC = `
 import { Toast, ToastToggle} from "flowbite-react";
 import { HiCheck, HiExclamation, HiX } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-col gap-4">
       <Toast>
@@ -70,7 +70,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-col gap-4">
       <Toast>

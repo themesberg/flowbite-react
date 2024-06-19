@@ -1,7 +1,6 @@
 "use client";
 
 import { TextInput, Tooltip } from "flowbite-react";
-import type { FC } from "react";
 import { useState } from "react";
 import { HiClipboardCopy } from "react-icons/hi";
 
@@ -9,7 +8,7 @@ interface Props {
   value: string;
 }
 
-export const CopyPackageInput: FC<Props> = ({ value }) => {
+export function CopyPackageInput({ value }: Props) {
   const [isJustCopied, setJustCopied] = useState(false);
 
   const copyToClipboard = () => {
@@ -43,4 +42,4 @@ export const CopyPackageInput: FC<Props> = ({ value }) => {
       />
     </Tooltip>
   );
-};
+}

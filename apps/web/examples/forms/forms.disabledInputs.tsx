@@ -6,7 +6,7 @@ const code = `
 
 import { Label, TextInput } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex max-w-md flex-col gap-4">
       <Label htmlFor="disabledInput1">API token</Label>
@@ -21,7 +21,7 @@ function Component() {
 const codeRSC = `
 import { Label, TextInput } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex max-w-md flex-col gap-4">
       <Label htmlFor="disabledInput1">API token</Label>
@@ -33,7 +33,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex max-w-md flex-col gap-4">
       <Label htmlFor="disabledInput1">API token</Label>

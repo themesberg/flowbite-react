@@ -6,7 +6,7 @@ const code = `
 
 import { Avatar } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Avatar img="/images/people/profile-picture-5.jpg" status="online" />
@@ -21,7 +21,7 @@ function Component() {
 const codeRSC = `
 import { Avatar } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Avatar img="/images/people/profile-picture-5.jpg" status="online" />
@@ -33,7 +33,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Avatar img="/images/people/profile-picture-5.jpg" status="online" />

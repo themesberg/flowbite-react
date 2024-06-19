@@ -36,13 +36,13 @@ npx create-remix@latest
 1. Install `tailwindcss` and its peer dependencies:
 
 ```bash
-npm i -D tailwindcss
+npm install -D tailwindcss postcss autoprefixer
 ```
 
-2. Generate `tailwind.config.ts` file:
+2. Generate `tailwind.config.ts` and `postcss.config.js` files:
 
 ```bash
-npx tailwindcss init --ts
+npx tailwindcss init --ts -p
 ```
 
 3. Add the paths to all of your template files in your `tailwind.config.ts` file:
@@ -69,8 +69,9 @@ export default {
 
 5. Import the newly-created `./app/tailwind.css` file in your `./app/root.tsx` file:
 
-```tsx {1,5}
-import stylesheet from "~/tailwind.css";
+```tsx {1,2,4-7}
+import { LinksFunction } from "@remix-run/node";
+import stylesheet from "~/tailwind.css?url";
 
 export const links: LinksFunction = () => [
   // ...
@@ -86,21 +87,21 @@ export const links: LinksFunction = () => [
 npm i flowbite-react
 ```
 
-2. Add the Flowbite plugin to `tailwind.config.ts` and include content from `flowbite-react`:
+2. Add the Flowbite React `content` path and `plugin` to `tailwind.config.ts`:
 
 ```ts {1,8,12}
-import flowbite from "flowbite/plugin";
+import flowbite from "flowbite-react/tailwind";
 
 import type { Config } from "tailwindcss";
 
 export default {
   content: [
     // ...
-    "node_modules/flowbite-react/lib/esm/**/*.js",
+    flowbite.content(),
   ],
   plugins: [
     // ...
-    flowbite,
+    flowbite.plugin(),
   ],
 } satisfies Config;
 ```
@@ -120,7 +121,7 @@ In server side rendered applications, such as Remix, to avoid page flicker (if `
 
 import { ThemeModeScript } from "flowbite-react";
 
-export default function App() {
+export default function Layout() {
   return (
     <html lang="en">
       <head>
@@ -137,6 +138,8 @@ export default function App() {
 Now that you have successfully installed Flowbite React you can start using the components from the library.
 
 ```tsx
+// app/routes/_index.tsx
+
 import { Button } from "flowbite-react";
 
 export default function Index() {

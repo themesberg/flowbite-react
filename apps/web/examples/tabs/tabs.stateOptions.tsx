@@ -14,13 +14,13 @@ import { useRef, useState } from "react";
 import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 
-function Component() {
+export function Component() {
   const tabsRef = useRef<TabsRef>(null);
   const [activeTab, setActiveTab] = useState(0);
 
   return (
     <div className="flex flex-col gap-3">
-      <Tabs aria-label="Default tabs" style="default" ref={tabsRef} onActiveTabChange={(tab) => setActiveTab(tab)}>
+      <Tabs aria-label="Default tabs" variant="default" ref={tabsRef} onActiveTabChange={(tab) => setActiveTab(tab)}>
         <Tabs.Item active title="Profile" icon={HiUserCircle}>
           This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
           Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
@@ -65,13 +65,13 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   const tabsRef = useRef<TabsRef>(null);
   const [activeTab, setActiveTab] = useState(0);
 
   return (
     <div className="flex flex-col gap-3">
-      <Tabs aria-label="Default tabs" style="default" ref={tabsRef} onActiveTabChange={(tab) => setActiveTab(tab)}>
+      <Tabs aria-label="Default tabs" variant="default" ref={tabsRef} onActiveTabChange={(tab) => setActiveTab(tab)}>
         <Tabs.Item active title="Profile" icon={HiUserCircle}>
           This is <span className="font-medium text-gray-800 dark:text-white">Profile tab's associated content</span>.
           Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to

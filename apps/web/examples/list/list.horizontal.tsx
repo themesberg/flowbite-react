@@ -6,7 +6,7 @@ const code = `
 
 import { List } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <List horizontal>
       <List.Item>About</List.Item>
@@ -24,7 +24,7 @@ function Component() {
 const codeRSC = `
 import { List, ListItem } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <List horizontal>
       <ListItem>About</ListItem>
@@ -39,7 +39,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <List horizontal>
       <ListItem>About</ListItem>

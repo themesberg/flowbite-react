@@ -8,7 +8,7 @@ const code = `
 import { Kbd, Table } from "flowbite-react";
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from "react-icons/md";
 
-function Component() {
+export function Component() {
   return (
     <Table>
       <Table.Head>
@@ -52,7 +52,7 @@ const codeRSC = `
 import { Kbd, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
 import { MdKeyboardArrowDown, MdKeyboardArrowLeft, MdKeyboardArrowRight, MdKeyboardArrowUp } from "react-icons/md";
 
-function Component() {
+export function Component() {
   return (
     <Table>
       <TableHead>
@@ -92,7 +92,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Table>
       <TableHead>

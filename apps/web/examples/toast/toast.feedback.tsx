@@ -8,7 +8,7 @@ const code = `
 import { Toast } from "flowbite-react";
 import { FaTelegramPlane } from "react-icons/fa";
 
-function Component() {
+export function Component() {
   return (
     <Toast>
       <FaTelegramPlane className="h-5 w-5 text-cyan-600 dark:text-cyan-500" />
@@ -22,7 +22,7 @@ const codeRSC = `
 import { Toast } from "flowbite-react";
 import { FaTelegramPlane } from "react-icons/fa";
 
-function Component() {
+export function Component() {
   return (
     <Toast>
       <FaTelegramPlane className="h-5 w-5 text-cyan-600 dark:text-cyan-500" />
@@ -32,7 +32,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Toast>
       <FaTelegramPlane className="h-5 w-5 text-cyan-600 dark:text-cyan-500" />

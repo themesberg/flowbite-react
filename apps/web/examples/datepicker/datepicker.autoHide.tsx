@@ -6,7 +6,7 @@ const code = `
 
 import { Datepicker } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Datepicker autoHide={false} />;
 }
 `;
@@ -14,12 +14,12 @@ function Component() {
 const codeRSC = `
 import { Datepicker } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return <Datepicker autoHide={false} />;
 }
 `;
 
-function Component() {
+export function Component() {
   return <Datepicker autoHide={false} />;
 }
 

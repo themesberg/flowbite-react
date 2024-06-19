@@ -1,7 +1,6 @@
 import Link from "next/link";
-import type { FC } from "react";
 
-export const FeaturedSection: FC = () => {
+export function FeaturedSection() {
   return (
     <section>
       <div className="mx-auto max-w-8xl px-4 py-8 lg:px-20">
@@ -143,4 +142,4 @@ export const FeaturedSection: FC = () => {
       </div>
     </section>
   );
-};
+}

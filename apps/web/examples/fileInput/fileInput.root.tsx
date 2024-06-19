@@ -6,7 +6,7 @@ const code = `
 
 import { FileInput, Label } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div>
       <div className="mb-2 block">
@@ -19,7 +19,7 @@ function Component() {
 `;
 
 const codeRSC = `
-function Component() {
+export function Component() {
 
   import { FileInput, Label } from "flowbite-react";
 
@@ -34,7 +34,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div>
       <div className="mb-2 block">

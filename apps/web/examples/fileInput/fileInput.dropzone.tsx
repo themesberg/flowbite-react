@@ -6,7 +6,7 @@ const code = `
 
 import { FileInput, Label } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex w-full items-center justify-center">
       <Label
@@ -45,7 +45,7 @@ const codeRSC = `
 
 import { FileInput, Label } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <div className="flex w-full items-center justify-center">
       <Label
@@ -80,7 +80,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <div className="flex w-full items-center justify-center">
       <Label

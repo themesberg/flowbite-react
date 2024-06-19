@@ -6,7 +6,7 @@ const code = `
 
 import { Avatar } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Avatar img="/images/people/profile-picture-5.jpg" rounded>
       <div className="space-y-1 font-medium dark:text-white">
@@ -21,7 +21,7 @@ function Component() {
 const codeRSC = `
 import { Avatar } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Avatar img="/images/people/profile-picture-5.jpg" rounded>
       <div className="space-y-1 font-medium dark:text-white">
@@ -33,7 +33,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Avatar img="/images/people/profile-picture-5.jpg" rounded>
       <div className="space-y-1 font-medium dark:text-white">

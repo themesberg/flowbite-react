@@ -6,10 +6,10 @@ const code = `
 
 import { List, Avatar } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <List unstyled className="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
-      <ListItem className="pb-3 sm:pb-4">
+      <List.Item className="pb-3 sm:pb-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
           <Avatar img="/images/people/profile-picture-1.jpg" alt="Neil image" rounded size="sm" />
           <div className="min-w-0 flex-1">
@@ -18,8 +18,8 @@ function Component() {
           </div>
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">$320</div>
         </div>
-      </ListItem>
-      <ListItem className="py-3 sm:py-4">
+      </List.Item>
+      <List.Item className="py-3 sm:py-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
           <Avatar img="/images/people/profile-picture-3.jpg" alt="Neil image" rounded size="sm" />
           <div className="min-w-0 flex-1">
@@ -28,8 +28,8 @@ function Component() {
           </div>
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">$3467</div>
         </div>
-      </ListItem>
-      <ListItem className="py-3 sm:py-4">
+      </List.Item>
+      <List.Item className="py-3 sm:py-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
           <Avatar img="/images/people/profile-picture-2.jpg" alt="Neil image" rounded size="sm" />
           <div className="min-w-0 flex-1">
@@ -38,8 +38,8 @@ function Component() {
           </div>
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">$67</div>
         </div>
-      </ListItem>
-      <ListItem className="py-3 sm:py-4">
+      </List.Item>
+      <List.Item className="py-3 sm:py-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
           <Avatar img="/images/people/profile-picture-5.jpg" alt="Neil image" rounded size="sm" />
           <div className="min-w-0 flex-1">
@@ -48,8 +48,8 @@ function Component() {
           </div>
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">$2367</div>
         </div>
-      </ListItem>
-      <ListItem className="pb-0 pt-3 sm:pt-4">
+      </List.Item>
+      <List.Item className="pb-0 pt-3 sm:pt-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
           <Avatar img="/images/people/profile-picture-4.jpg" alt="Neil image" rounded size="sm" />
           <div className="min-w-0 flex-1">
@@ -58,7 +58,7 @@ function Component() {
           </div>
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">$367</div>
         </div>
-      </ListItem>
+      </List.Item>
     </List>
   );
 }
@@ -67,7 +67,7 @@ function Component() {
 const codeRSC = `
 import { Avatar, List, ListItem } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <List unstyled className="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
       <ListItem className="pb-3 sm:pb-4">
@@ -125,7 +125,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <List unstyled className="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
       <ListItem className="pb-3 sm:pb-4">

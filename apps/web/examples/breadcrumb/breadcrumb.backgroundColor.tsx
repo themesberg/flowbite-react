@@ -8,7 +8,7 @@ const code = `
 import { Breadcrumb } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Breadcrumb aria-label="Solid background breadcrumb example" className="bg-gray-50 px-5 py-3 dark:bg-gray-800">
       <Breadcrumb.Item href="#" icon={HiHome}>
@@ -25,7 +25,7 @@ const codeRSC = `
 import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 
-function Component() {
+export function Component() {
   return (
     <Breadcrumb aria-label="Solid background breadcrumb example" className="bg-gray-50 px-5 py-3 dark:bg-gray-800">
       <BreadcrumbItem href="#" icon={HiHome}>
@@ -38,7 +38,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Breadcrumb aria-label="Solid background breadcrumb example" className="bg-gray-50 px-5 py-3 dark:bg-gray-800">
       <BreadcrumbItem href="#" icon={HiHome}>

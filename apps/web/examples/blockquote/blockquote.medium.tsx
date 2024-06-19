@@ -6,7 +6,7 @@ const code = `
 
 import { Blockquote } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Blockquote className="text-xl">
       "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
@@ -19,7 +19,7 @@ function Component() {
 const codeRSC = `
 import { Blockquote } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Blockquote className="text-xl">
       "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to
@@ -29,7 +29,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Blockquote className="text-xl">
       "Flowbite is just awesome. It contains tons of predesigned components and pages starting from login screen to

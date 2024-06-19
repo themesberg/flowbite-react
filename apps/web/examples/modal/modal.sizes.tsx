@@ -10,8 +10,8 @@ const code = `
 import { Button, Modal, Select } from "flowbite-react";
 import { useState } from "react";
 
-function Component() {
-  const [openModal, setOpenModal] = useState(false);
+export function Component() {
+  const [openModal, setOpenModal] = useState(true);
   const [modalSize, setModalSize] = useState<string>('md');
 
   return (
@@ -60,8 +60,8 @@ function Component() {
 }
 `;
 
-function Component() {
-  const [openModal, setOpenModal] = useState(false);
+export function Component() {
+  const [openModal, setOpenModal] = useState(true);
   const [modalSize, setModalSize] = useState<string>("md");
 
   return (
@@ -118,4 +118,5 @@ export const sizes: CodeData = {
   },
   githubSlug: "modal/modal.sizes.tsx",
   component: <Component />,
+  iframe: 600,
 };

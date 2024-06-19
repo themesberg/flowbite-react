@@ -6,7 +6,7 @@ const code = `
 
 import { Accordion } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Accordion collapseAll>
       <Accordion.Panel>
@@ -83,7 +83,7 @@ function Component() {
 const codeRSC = `
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle } from "flowbite-react";
 
-function Component() {
+export function Component() {
   return (
     <Accordion collapseAll>
       <AccordionPanel>
@@ -157,7 +157,7 @@ function Component() {
 }
 `;
 
-function Component() {
+export function Component() {
   return (
     <Accordion collapseAll>
       <AccordionPanel>
