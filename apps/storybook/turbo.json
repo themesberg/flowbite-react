@@ -1,8 +1,12 @@
 {
-  "extends": ["//"],
-  "pipeline": {
+  "extends": [
+    "//"
+  ],
+  "tasks": {
     "build": {
-      "outputs": ["storybook-static/**"]
+      "outputs": [
+        "storybook-static/**"
+      ]
     }
   }
 }
