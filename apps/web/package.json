@@ -11,10 +11,10 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "start": "next start",
-    "typecheck": "contentlayer build && tsc --noEmit"
+    "typecheck": "contentlayer2 build && tsc --noEmit"
   },
   "dependencies": {
-    "contentlayer": "0.3.4",
+    "contentlayer2": "0.4.6",
     "flowbite-react": "workspace:*",
     "react-icons": "5.2.1",
     "tailwind-merge": "2.3.0"
@@ -29,7 +29,7 @@
     "eslint-config-next": "14.2.4",
     "markdown-toc": "1.2.0",
     "next": "14.2.4",
-    "next-contentlayer": "0.3.4",
+    "next-contentlayer2": "0.4.6",
     "postcss": "8.4.38",
     "prismjs": "1.29.0",
     "react": "18.3.1",
