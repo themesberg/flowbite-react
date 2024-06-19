@@ -58,13 +58,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@floating-ui/core": "1.6.0",
-    "@floating-ui/react": "0.26.10",
+    "@floating-ui/core": "1.6.2",
+    "@floating-ui/react": "0.26.17",
     "classnames": "2.5.1",
-    "debounce": "2.0.0",
+    "debounce": "2.1.0",
     "flowbite": "2.3.0",
-    "react-icons": "5.0.1",
-    "tailwind-merge": "2.2.2"
+    "react-icons": "5.2.1",
+    "tailwind-merge": "2.3.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "6.4.2",
@@ -72,11 +72,11 @@
     "@testing-library/user-event": "14.5.2",
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
-    "@typescript-eslint/eslint-plugin": "7.4.0",
-    "@typescript-eslint/parser": "7.4.0",
+    "@typescript-eslint/eslint-plugin": "7.13.1",
+    "@typescript-eslint/parser": "7.13.1",
     "@vitejs/plugin-react": "4.2.1",
     "@vitest/coverage-v8": "1.4.0",
-    "eslint-plugin-react": "7.34.1",
+    "eslint-plugin-react": "7.34.3",
     "eslint-plugin-storybook": "0.8.0",
     "eslint-plugin-vitest": "0.4.1",
     "fast-glob": "3.3.2",
