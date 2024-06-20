@@ -1,5 +1,11 @@
 # create-flowbite-react
 
+## 1.0.7
+
+### Patch Changes
+
+- [#1423](https://github.com/themesberg/flowbite-react/pull/1423) [`4350ffb`](https://github.com/themesberg/flowbite-react/commit/4350ffb524cdecd23162c84b4222204bf8910b2c) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - update packages
+
 ## 1.0.6
 
 ### Patch Changes
