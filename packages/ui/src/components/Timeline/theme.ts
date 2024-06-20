@@ -15,7 +15,9 @@ export const timelineTheme: FlowbiteTimelineTheme = createTheme({
     },
     content: {
       root: {
-        base: "mt-3 sm:pr-8",
+        base: "",
+        horizontal: "mt-3 sm:pr-8",
+        vertical: "",
       },
       body: {
         base: "mb-4 text-base font-normal text-gray-500 dark:text-gray-400",
