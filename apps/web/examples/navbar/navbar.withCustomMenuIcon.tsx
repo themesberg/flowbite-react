@@ -1,20 +1,18 @@
 "use client";
 
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
-import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
 import { type CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";
 
-import Link from "next/link";
 import { Navbar } from "flowbite-react";
 
 export function Component() {
   return (
     <Navbar fluid rounded>
-      <Navbar.Brand as={Link} href="https://flowbite-react.com">
+      <Navbar.Brand href="https://flowbite-react.com">
         <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
       </Navbar.Brand>
@@ -23,7 +21,7 @@ export function Component() {
         <Navbar.Link href="#" active>
           Home
         </Navbar.Link>
-        <Navbar.Link as={Link} href="#">
+        <Navbar.Link href="#">
           About
         </Navbar.Link>
         <Navbar.Link href="#">Services</Navbar.Link>
@@ -36,13 +34,12 @@ export function Component() {
 `;
 
 const codeRSC = `
-import Link from "next/link";
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
 
 export function Component() {
   return (
     <Navbar fluid rounded>
-      <NavbarBrand as={Link} href="https://flowbite-react.com">
+      <NavbarBrand href="https://flowbite-react.com">
         <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
       </NavbarBrand>
@@ -51,7 +48,7 @@ export function Component() {
         <NavbarLink href="#" active>
           Home
         </NavbarLink>
-        <NavbarLink as={Link} href="#">
+        <NavbarLink href="#">
           About
         </NavbarLink>
         <NavbarLink href="#">Services</NavbarLink>
@@ -66,7 +63,7 @@ export function Component() {
 export function Component() {
   return (
     <Navbar fluid rounded>
-      <NavbarBrand as={Link} href="https://flowbite-react.com">
+      <NavbarBrand href="https://flowbite-react.com">
         <img src="/favicon.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite React Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite React</span>
       </NavbarBrand>
@@ -75,9 +72,7 @@ export function Component() {
         <NavbarLink href="#" active>
           Home
         </NavbarLink>
-        <NavbarLink as={Link} href="#">
-          About
-        </NavbarLink>
+        <NavbarLink href="#">About</NavbarLink>
         <NavbarLink href="#">Services</NavbarLink>
         <NavbarLink href="#">Pricing</NavbarLink>
         <NavbarLink href="#">Contact</NavbarLink>
