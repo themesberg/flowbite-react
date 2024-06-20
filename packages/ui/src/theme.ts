@@ -60,7 +60,6 @@ export const theme: FlowbiteTheme = {
   clipboard: clipboardTheme,
   darkThemeToggle: darkThemeToggleTheme,
   datepicker: datePickerTheme,
-  datepicker: datePickerTheme,
   drawer: drawerTheme,
   dropdown: dropdownTheme,
   fileInput: fileInputTheme,
