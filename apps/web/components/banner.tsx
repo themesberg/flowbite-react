@@ -1,7 +1,6 @@
 import Link from "next/link";
-import type { FC } from "react";
 
-export const Banner: FC = () => {
+export function Banner() {
   return (
     <div
       tabIndex={-1}
@@ -38,4 +37,4 @@ export const Banner: FC = () => {
       </div>
     </div>
   );
-};
+}
