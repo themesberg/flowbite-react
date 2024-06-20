@@ -58,6 +58,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: "Avatar", href: "/docs/components/avatar" },
       { title: "Badge", href: "/docs/components/badge" },
       { title: "Banner", href: "/docs/components/banner", isNew: true },
+      { title: "Bottom Navigation", href: "/docs/components/bottom-navigation", isNew: true },
       { title: "Breadcrumb", href: "/docs/components/breadcrumb" },
       { title: "Button", href: "/docs/components/button" },
       { title: "Button group", href: "/docs/components/button-group" },

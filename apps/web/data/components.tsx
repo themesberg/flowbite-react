@@ -36,6 +36,13 @@ export const COMPONENTS_DATA: Component[] = [
     classes: "w-28",
   },
   {
+    name: "Bottom Navigation",
+    image: "/images/components/bottom-bar.svg",
+    imageDark: "/images/components/bottom-bar-dark.svg",
+    link: `/docs/components/bottom-navigation`,
+    classes: "w-28",
+  },
+  {
     name: "Breadcrumbs",
     image: "/images/components/breadcrumbs.svg",
     imageDark: "/images/components/breadcrumbs-dark.svg",

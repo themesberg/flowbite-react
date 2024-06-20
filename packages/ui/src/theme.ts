@@ -4,6 +4,7 @@ import { alertTheme } from "./components/Alert/theme";
 import { avatarTheme } from "./components/Avatar/theme";
 import { badgeTheme } from "./components/Badge/theme";
 import { blockquoteTheme } from "./components/Blockquote/theme";
+import { bottomNavigationTheme } from "./components/BottomNavigation/theme";
 import { breadcrumbTheme } from "./components/Breadcrumb/theme";
 import { buttonGroupTheme, buttonTheme } from "./components/Button/theme";
 import { cardTheme } from "./components/Card/theme";
@@ -50,6 +51,7 @@ export const theme: FlowbiteTheme = {
   avatar: avatarTheme,
   badge: badgeTheme,
   blockquote: blockquoteTheme,
+  bottomNavigation: bottomNavigationTheme,
   breadcrumb: breadcrumbTheme,
   button: buttonTheme,
   buttonGroup: buttonGroupTheme,
