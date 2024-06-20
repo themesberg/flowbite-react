@@ -73,7 +73,7 @@ export const getFirstDayOfTheMonth = (date: Date, weekStart: WeekStart): Date =>
   return addDays(firstDayOfMonth, -diff);
 };
 
-export const getWeekDays = (lang: string = "en-US", weekStart: WeekStart): string[] => {
+export const getWeekDays = (lang: string, weekStart: WeekStart): string[] => {
   const weekdays: string[] = [];
   const date = new Date(0);
   date.setDate(date.getDate() - date.getDay() + weekStart);
