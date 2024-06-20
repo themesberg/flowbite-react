@@ -5,7 +5,7 @@ export const tabTheme: FlowbiteTabsTheme = createTheme({
   base: "flex flex-col gap-2",
   tablist: {
     base: "flex text-center",
-    styles: {
+    variant: {
       default: "flex-wrap border-b border-gray-200 dark:border-gray-700",
       underline: "-mb-px flex-wrap border-b border-gray-200 dark:border-gray-700",
       pills: "flex-wrap space-x-2 text-sm font-medium text-gray-500 dark:text-gray-400",
@@ -14,7 +14,7 @@ export const tabTheme: FlowbiteTabsTheme = createTheme({
     },
     tabitem: {
       base: "flex items-center justify-center rounded-t-lg p-4 text-sm font-medium first:ml-0 focus:outline-none focus:ring-4 focus:ring-cyan-300 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500",
-      styles: {
+      variant: {
         default: {
           base: "rounded-t-lg",
           active: {
@@ -49,7 +49,7 @@ export const tabTheme: FlowbiteTabsTheme = createTheme({
   },
   tabitemcontainer: {
     base: "",
-    styles: {
+    variant: {
       default: "",
       underline: "",
       pills: "",

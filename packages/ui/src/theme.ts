@@ -9,6 +9,7 @@ import { buttonGroupTheme, buttonTheme } from "./components/Button/theme";
 import { cardTheme } from "./components/Card/theme";
 import { carouselTheme } from "./components/Carousel/theme";
 import { checkboxTheme } from "./components/Checkbox/theme";
+import { clipboardTheme } from "./components/Clipboard/theme";
 import { darkThemeToggleTheme } from "./components/DarkThemeToggle/theme";
 import { datePickerTheme } from "./components/Datepicker/theme";
 import { drawerTheme } from "./components/Drawer/theme";
@@ -17,6 +18,7 @@ import { fileInputTheme } from "./components/FileInput/theme";
 import { floatingLabelTheme } from "./components/FloatingLabel/theme";
 import { footerTheme } from "./components/Footer/theme";
 import { helperTextTheme } from "./components/HelperText/theme";
+import { hrTheme } from "./components/HR/theme";
 import { kbdTheme } from "./components/Kbd/theme";
 import { labelTheme } from "./components/Label/theme";
 import { listTheme } from "./components/List/theme";
@@ -55,7 +57,9 @@ export const theme: FlowbiteTheme = {
   card: cardTheme,
   carousel: carouselTheme,
   checkbox: checkboxTheme,
+  clipboard: clipboardTheme,
   darkThemeToggle: darkThemeToggleTheme,
+  datepicker: datePickerTheme,
   datepicker: datePickerTheme,
   drawer: drawerTheme,
   dropdown: dropdownTheme,
@@ -63,6 +67,7 @@ export const theme: FlowbiteTheme = {
   floatingLabel: floatingLabelTheme,
   footer: footerTheme,
   helperText: helperTextTheme,
+  hr: hrTheme,
   kbd: kbdTheme,
   label: labelTheme,
   list: listTheme,

@@ -63,6 +63,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: "Button group", href: "/docs/components/button-group" },
       { title: "Card", href: "/docs/components/card" },
       { title: "Carousel", href: "/docs/components/carousel" },
+      { title: "Clipboard", href: "/docs/components/clipboard", isNew: true },
       { title: "Datepicker", href: "/docs/components/datepicker", isNew: true },
       { title: "Device Mockups", href: "/docs/components/device-mockups", isNew: true },
       { title: "Drawer", href: "/docs/components/drawer", isNew: true },
@@ -101,6 +102,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
     items: [
       { title: "Blockquote", href: "/docs/typography/blockquote", isNew: true },
       { title: "List", href: "/docs/typography/list", isNew: true },
+      { title: "HR", href: "/docs/typography/hr", isNew: true },
     ],
   },
 ];
