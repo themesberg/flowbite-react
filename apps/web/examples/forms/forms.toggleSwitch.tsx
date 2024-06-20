@@ -16,7 +16,7 @@ export function Component() {
   const [switch3, setSwitch3] = useState(true);
 
   return (
-    <div className="flex max-w-md flex-col gap-4">
+    <div className="flex max-w-md flex-col items-start gap-4">
       <ToggleSwitch checked={switch1} label="Toggle me" onChange={setSwitch1} />
       <ToggleSwitch checked={switch2} label="Toggle me (checked)" onChange={setSwitch2} />
       <ToggleSwitch checked={false} disabled label="Toggle me (disabled)" onChange={() => undefined} />
@@ -33,7 +33,7 @@ export function Component() {
   const [switch3, setSwitch3] = useState(true);
 
   return (
-    <div className="flex max-w-md flex-col gap-4">
+    <div className="flex max-w-md flex-col items-start gap-4">
       <ToggleSwitch checked={switch1} label="Toggle me" onChange={setSwitch1} />
       <ToggleSwitch checked={switch2} label="Toggle me (checked)" onChange={setSwitch2} />
       <ToggleSwitch checked={false} disabled label="Toggle me (disabled)" onChange={() => undefined} />
