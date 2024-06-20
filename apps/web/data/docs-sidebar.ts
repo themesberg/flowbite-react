@@ -93,6 +93,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
     items: [
       { title: "File Input", href: "/docs/forms/file-input" },
       { title: "Floating Label", href: "/docs/forms/floating-label", isNew: true },
+      { title: "Phone Input", href: "/docs/forms/phone-input", isNew: true },
     ],
   },
   {

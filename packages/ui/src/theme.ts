@@ -27,6 +27,7 @@ import { megaMenuTheme } from "./components/MegaMenu/theme";
 import { modalTheme } from "./components/Modal/theme";
 import { navbarTheme } from "./components/Navbar/theme";
 import { paginationTheme } from "./components/Pagination/theme";
+import { phoneInputTheme } from "./components/PhoneInput/theme";
 import { popoverTheme } from "./components/Popover/theme";
 import { progressTheme } from "./components/Progress/theme";
 import { radioTheme } from "./components/Radio/theme";
@@ -74,6 +75,7 @@ export const theme: FlowbiteTheme = {
   modal: modalTheme,
   navbar: navbarTheme,
   pagination: paginationTheme,
+  phoneInput: phoneInputTheme,
   popover: popoverTheme,
   progress: progressTheme,
   radio: radioTheme,

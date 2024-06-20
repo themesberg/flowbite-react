@@ -27,6 +27,7 @@ import type { FlowbiteMegaMenuTheme } from "../MegaMenu";
 import type { FlowbiteModalTheme } from "../Modal";
 import type { FlowbiteNavbarTheme } from "../Navbar";
 import type { FlowbitePaginationTheme } from "../Pagination";
+import type { FlowbitePhoneInputTheme } from "../PhoneInput/PhoneInput";
 import type { FlowbitePopoverTheme } from "../Popover";
 import type { FlowbiteProgressTheme } from "../Progress";
 import type { FlowbiteRadioTheme } from "../Radio";
@@ -76,6 +77,7 @@ export interface FlowbiteTheme {
   modal: FlowbiteModalTheme;
   navbar: FlowbiteNavbarTheme;
   pagination: FlowbitePaginationTheme;
+  phoneInput: FlowbitePhoneInputTheme;
   popover: FlowbitePopoverTheme;
   progress: FlowbiteProgressTheme;
   radio: FlowbiteRadioTheme;
