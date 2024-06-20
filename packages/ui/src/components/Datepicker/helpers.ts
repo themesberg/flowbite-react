@@ -73,7 +73,7 @@ export const getFirstDayOfTheMonth = (date: Date, weekStart: WeekStart): Date =>
   return addDays(firstDayOfMonth, -diff);
 };
 
-export const getWeekDays = (lang: string, weekStart: WeekStart): string[] => {
+export const getWeekDays = (lang: string = "en-US", weekStart: WeekStart): string[] => {
   const weekdays: string[] = [];
   const date = new Date(0);
   date.setDate(date.getDate() - date.getDay() + weekStart);
@@ -121,7 +121,6 @@ export const getFormattedDate = (
     defaultOptions = options;
   }
   console.log(defaultOptions);
-  
 
   const getLocale =
     language === "enUS" ? DateFNSLocale["enUS"] : Object.values(DateFNSLocale).find((l) => l.code === language);
