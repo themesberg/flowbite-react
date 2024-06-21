@@ -84,6 +84,7 @@ To manually install `flowbite-react` into your application, here is a list of th
 - [Remix](https://www.flowbite-react.com/docs/guides/remix)
 - [Astro](https://www.flowbite-react.com/docs/guides/astro)
 - [Gatsby](https://www.flowbite-react.com/docs/guides/gatsby)
+- [AdonisJS](https://www.flowbite-react.com/docs/guides/adonis-js)
 - [RedwoodJS](https://www.flowbite-react.com/docs/guides/redwood-js)
 - [Laravel](https://www.flowbite-react.com/docs/guides/laravel)
 - [Vite](https://www.flowbite-react.com/docs/guides/vite)

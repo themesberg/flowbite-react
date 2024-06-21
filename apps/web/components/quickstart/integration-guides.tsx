@@ -16,6 +16,7 @@ const GUIDES: Guide[] = [
   { name: "Remix", slug: "/docs/guides/remix", logo: "remix.svg", invert: true },
   { name: "Astro", slug: "/docs/guides/astro", logo: "astro.svg", invert: true },
   { name: "Gatsby", slug: "/docs/guides/gatsby", logo: "gatsby.svg" },
+  { name: "AdonisJS", slug: "/docs/guides/adonis-js", logo: "adonis-js.svg", className: "p-2", invert: true },
   { name: "RedwoodJS", slug: "/docs/guides/redwood-js", logo: "redwood-js.svg", className: "p-2" },
   { name: "Laravel", slug: "/docs/guides/laravel", logo: "laravel.svg" },
   { name: "Vite", slug: "/docs/guides/vite", logo: "vite.svg" },
