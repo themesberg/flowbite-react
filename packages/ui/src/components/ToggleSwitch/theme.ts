@@ -16,7 +16,7 @@ export const toggleSwitchTheme: FlowbiteToggleSwitchTheme = createTheme({
       on: "after:translate-x-full after:border-white rtl:after:-translate-x-full",
       off: "border-gray-200 bg-gray-200 dark:border-gray-600 dark:bg-gray-700",
       color: {
-        blue: "border-cyan-700 bg-cyan-700",
+        blue: "border-blue-600 bg-blue-600",
         dark: "bg-dark-700 border-dark-900",
         failure: "border-red-900 bg-red-700",
         gray: "border-gray-600 bg-gray-500",
