@@ -55,7 +55,7 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: custo
           const currentDate = addDays(startDate, index);
           const day = getFormattedDate(language, currentDate, { day: "numeric" });
 
-          const isSelected = isDateEqual(selectedDate, currentDate);
+          const isSelected = selectedDate && isDateEqual(selectedDate, currentDate);
           const isDisabled = !isDateInRange(currentDate, minDate, maxDate);
 
           return (
