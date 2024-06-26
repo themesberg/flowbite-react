@@ -33,6 +33,7 @@ export interface TabStyles {
   fullWidth: string;
   pills: string;
   underline: string;
+  vertical: string;
 }
 
 export interface TabStyleItemProps {
@@ -126,7 +127,7 @@ const TabsComponent = forwardRef<TabsRef, TabsProps>(
     }));
 
     return (
-      <div className={twMerge(theme.base, className)}>
+      <div className={twMerge(theme.base, className)} data-tab-style={style}>
         <div
           aria-label="Tabs"
           role="tablist"
