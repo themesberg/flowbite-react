@@ -61,6 +61,7 @@
     "@floating-ui/core": "1.6.2",
     "@floating-ui/react": "0.26.17",
     "classnames": "2.5.1",
+    "date-fns": "3.6.0",
     "debounce": "2.1.0",
     "flowbite": "2.3.0",
     "react-icons": "5.2.1",
