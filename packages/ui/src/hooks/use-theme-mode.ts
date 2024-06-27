@@ -1,5 +1,6 @@
 "use client";
 
+import debounce from "debounce";
 import { useEffect, useState } from "react";
 import { isClient } from "../helpers/is-client";
 import { useWatchLocalStorageValue } from "../hooks/use-watch-localstorage-value";
@@ -40,12 +41,13 @@ export const useThemeMode = () => {
   /**
    * Sets `mode` to a given value: `light | dark` | `auto`
    */
-  const handleSetMode = (mode: ThemeMode) => {
+  const _handleSetMode = (mode: ThemeMode) => {
     setMode(mode);
     setModeInLS(mode);
     setModeInDOM(mode);
     document.dispatchEvent(new CustomEvent(SYNC_THEME_MODE, { detail: mode }));
   };
+  const handleSetMode = debounce(_handleSetMode, 25, { immediate: true });
 
   /**
    * Toggles between: `light | dark`
@@ -89,9 +91,17 @@ const useSyncMode = (onChange: (mode: ThemeMode) => void) => {
 };
 
 /**
- * Sets the give value in local storage
+ * Sets the give value in local storage.
+ * "auto" will remove the local storage value if present.
  */
-const setModeInLS = (mode: ThemeMode) => localStorage.setItem(LS_THEME_MODE, mode);
+const setModeInLS = (mode: ThemeMode) => {
+  if (mode === "auto") {
+    localStorage.deleteItem(LS_THEME_MODE);
+    return;
+  }
+
+  localStorage.setItem(LS_THEME_MODE, mode);
+};
 
 /**
  * Add or remove class `dark` on `html` element
@@ -123,7 +133,7 @@ const computeModeValue = (mode: ThemeMode): ThemeMode => {
 };
 
 /**
- * Get browser prefered color scheme
+ * Get browser preferred color scheme
  * @returns `light` | `dark`
  */
 const prefersColorScheme = (): ThemeMode => {
