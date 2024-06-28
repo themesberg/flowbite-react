@@ -27,10 +27,8 @@ DefaultToggleSwitch.args = {};
 DefaultToggleSwitch.argTypes = {
   color: {
     description: "Control defaults for colors",
-    control: {
-      type: "radio",
-      options: [...colors],
-    },
+    control: "radio",
+    options: [...colors],
   },
 };
 
