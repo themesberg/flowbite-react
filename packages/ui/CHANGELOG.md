@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.10.1
+
+### Patch Changes
+
+- [#1433](https://github.com/themesberg/flowbite-react/pull/1433) [`a5d008e`](https://github.com/themesberg/flowbite-react/commit/a5d008eb62e216e7139ff26fc67a323bb6e54b32) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - add `AdonisJS` integration guide
+
+## 0.10.0
+
+### Minor Changes
+
+- [#1413](https://github.com/themesberg/flowbite-react/pull/1413) [`26401bc`](https://github.com/themesberg/flowbite-react/commit/26401bc5e88ae6a42621fce474236d7055a67516) Thanks [@dhavalveera](https://github.com/dhavalveera)! - feat(components): add "Clipboard"
+
+### Patch Changes
+
+- [#1405](https://github.com/themesberg/flowbite-react/pull/1405) [`c8dba76`](https://github.com/themesberg/flowbite-react/commit/c8dba76e20e101a54999bb477adcba967057ecb3) Thanks [@dhavalveera](https://github.com/dhavalveera)! - Renamed the `Tabs` attribute from `style` to `variant` to allow the use of the `style` attribute, which was previously blocked.
+
+- [#1430](https://github.com/themesberg/flowbite-react/pull/1430) [`83a055a`](https://github.com/themesberg/flowbite-react/commit/83a055ac66c5d3ac9f28b17361278465d87b5ddc) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(ui): timeline - content - separate `TimelineContent` base styles from horizontal/vertical styles
+
+- [#1428](https://github.com/themesberg/flowbite-react/pull/1428) [`b963b2c`](https://github.com/themesberg/flowbite-react/commit/b963b2c1be555522ea1a6bbc0d25c614ef75e17c) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(ui): Toggle Switch - styles
+
+  - RTL
+  - broken switch when label too long
+  - bring back animations
+
+- [#1371](https://github.com/themesberg/flowbite-react/pull/1371) [`92cec6f`](https://github.com/themesberg/flowbite-react/commit/92cec6ff58ae980f34e32ea2b2dc19b151452a0e) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - Mega Menu - export all entities
+
+- [#1423](https://github.com/themesberg/flowbite-react/pull/1423) [`4350ffb`](https://github.com/themesberg/flowbite-react/commit/4350ffb524cdecd23162c84b4222204bf8910b2c) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - update packages
+
+- [#1346](https://github.com/themesberg/flowbite-react/pull/1346) [`92f41fe`](https://github.com/themesberg/flowbite-react/commit/92f41fe30540e580b51bc031f51bfb57226b33dc) Thanks [@dhavalveera](https://github.com/dhavalveera)! - feat: add `HR` component
+
 ## 0.9.0
 
 ### Minor Changes

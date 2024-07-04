@@ -1,11 +1,10 @@
 import { Navbar } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
-import type { FC } from "react";
 import { DocSearchInput } from "../docsearch-input";
 import { NavbarIcons, NavbarLinks } from "../navbar";
 
-export const HomeNavbar: FC = () => {
+export function HomeNavbar() {
   return (
     <Navbar
       theme={{
@@ -39,4 +38,4 @@ export const HomeNavbar: FC = () => {
       </div>
     </Navbar>
   );
-};
+}

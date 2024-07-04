@@ -150,7 +150,7 @@ import { ThemeModeScript } from "flowbite-react";
 
 export default function RootLayout({ children }) {
   return (
-    <html>
+    <html suppressHydrationWarning>
       <head>
         <ThemeModeScript />
       </head>
@@ -169,7 +169,7 @@ import { ThemeModeScript } from "flowbite-react";
 
 export default function Document() {
   return (
-    <Html>
+    <Html suppressHydrationWarning>
       <Head>
         <ThemeModeScript />
       </Head>

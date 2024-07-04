@@ -1,9 +1,8 @@
 "use client";
 
 import { useThemeMode } from "flowbite-react";
-import type { FC } from "react";
 
-export const DarkModeSwitcher: FC = () => {
+export function DarkModeSwitcher() {
   const { setMode } = useThemeMode();
 
   return (
@@ -81,4 +80,4 @@ export const DarkModeSwitcher: FC = () => {
       </div>
     </div>
   );
-};
+}

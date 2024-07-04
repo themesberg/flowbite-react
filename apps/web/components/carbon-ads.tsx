@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import type { FC } from "react";
 import { useEffect } from "react";
 
 interface WindowWithCarbonAds extends Window {
@@ -10,7 +9,7 @@ interface WindowWithCarbonAds extends Window {
   };
 }
 
-export const CarbonAds: FC = () => {
+export function CarbonAds() {
   const pathname = usePathname();
 
   const isDevelopmentMode = process.env.NODE_ENV === "development";
@@ -38,4 +37,4 @@ export const CarbonAds: FC = () => {
       <div id="carbon-container" />
     </aside>
   );
-};
+}

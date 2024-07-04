@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { type FC } from "react";
 import { safeResJson } from "~/helpers/http";
 
 async function fetchSafe<T>(endpoint: string): Promise<T> {
@@ -46,7 +45,7 @@ const numberWithCommas = (x: string | number) => {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 
-export const SocialProofSection: FC = async () => {
+export async function SocialProofSection() {
   const stargazers = numberWithCommas(await fetchStargazers());
   const npmDownloads = numberWithCommas(await fetchNpmDownloads());
   const discordMembers = numberWithCommas(await fetchDiscordMembers());
@@ -204,4 +203,4 @@ export const SocialProofSection: FC = async () => {
       </div>
     </section>
   );
-};
+}
