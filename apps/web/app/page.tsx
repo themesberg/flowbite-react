@@ -16,7 +16,7 @@ import {
 export default function HomePage() {
   return (
     <div className="relative">
-      <Banner />
+      {/* <Banner /> */}
       <HomeNavbar />
       <main className="min-w-0 flex-auto divide-y dark:divide-gray-700">
         <HeroSection />

@@ -1,6 +1,5 @@
 export interface DocsSidebarSection {
   title: string;
-  href: string;
   items: DocsSidebarItem[];
 }
 
@@ -14,7 +13,6 @@ export interface DocsSidebarItem {
 export const DOCS_SIDEBAR: DocsSidebarSection[] = [
   {
     title: "getting started",
-    href: "/getting-started/",
     items: [
       { title: "Introduction", href: "/docs/getting-started/introduction" },
       { title: "Quickstart", href: "/docs/getting-started/quickstart" },
@@ -28,7 +26,6 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
   },
   {
     title: "integration guides",
-    href: "/guides/",
     items: [
       { title: "Next.js", href: "/docs/guides/next-js" },
       { title: "Remix", href: "/docs/guides/remix" },
@@ -44,7 +41,6 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
   },
   {
     title: "customize",
-    href: "/customize/",
     items: [
       { title: "Theme", href: "/docs/customize/theme" },
       { title: "Dark Mode", href: "/docs/customize/dark-mode" },
@@ -52,7 +48,6 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
   },
   {
     title: "components",
-    href: "/components/",
     items: [
       { title: "Accordion", href: "/docs/components/accordion" },
       { title: "Alert", href: "/docs/components/alert" },
@@ -90,7 +85,6 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
   },
   {
     title: "forms",
-    href: "/forms/",
     items: [
       { title: "File Input", href: "/docs/forms/file-input" },
       { title: "Floating Label", href: "/docs/forms/floating-label" },
@@ -98,7 +92,6 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
   },
   {
     title: "typography",
-    href: "/typography/",
     items: [
       { title: "Blockquote", href: "/docs/typography/blockquote" },
       { title: "List", href: "/docs/typography/list" },

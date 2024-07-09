@@ -3,7 +3,7 @@ import Image from "next/image";
 export function FigmaSection() {
   return (
     <section className="bg-gray-50 dark:bg-gray-800">
-      <div className="mx-auto max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
+      <div className="mx-auto max-w-8xl px-4 py-8 lg:py-24">
         <div className="mx-auto grid max-w-8xl grid-cols-1 items-start justify-between gap-24 py-1 lg:grid-cols-2">
           <div className="flex flex-col gap-8">
             <div className="flex w-full flex-col items-start justify-center gap-6">

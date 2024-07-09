@@ -1,6 +1,6 @@
 "use client";
 
-import { Accordion, Badge, Navbar, Sidebar } from "flowbite-react";
+import { Navbar } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -8,7 +8,6 @@ import type { PropsWithChildren } from "react";
 import { useEffect, useState } from "react";
 import { HiMenuAlt1, HiX } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
-import { Banner } from "~/components/banner";
 import { DocSearchInput } from "~/components/docsearch-input";
 import { NavbarIcons, NavbarLinks } from "~/components/navbar";
 import { DOCS_SIDEBAR, type DocsSidebarItem } from "~/data/docs-sidebar";
@@ -31,9 +30,9 @@ export default function DocsLayout({ children }: PropsWithChildren) {
   return (
     <div className="w-full min-w-0 flex-auto">
       <div className="relative">
-        <Banner />
+        {/* <Banner /> */}
         <DocsNavbar {...state} />
-        <div className="lg:flex">
+        <div className="mx-auto w-full max-w-8xl px-4 lg:flex">
           <DocsSidebar {...state} />
           <div className="w-full min-w-0">{children}</div>
         </div>
@@ -48,9 +47,9 @@ function DocsNavbar({ isCollapsed, setCollapsed }: DocsLayoutState) {
       fluid
       theme={{
         root: {
-          base: "sticky top-0 z-[60] mx-auto flex w-full items-center justify-between border-b border-gray-200 bg-white px-4 py-2.5 text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400",
+          base: "sticky top-0 z-[60] mx-auto flex w-full items-center justify-between border-b border-gray-200 bg-white text-gray-500 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400",
           inner: {
-            base: "mx-auto flex w-full flex-wrap items-center justify-between",
+            base: "mx-auto flex w-full max-w-8xl flex-wrap items-center justify-between px-4 py-2.5 lg:px-4",
           },
         },
       }}
@@ -80,7 +79,7 @@ function DocsNavbar({ isCollapsed, setCollapsed }: DocsLayoutState) {
           <Image alt="" height={32} src="/favicon.svg" width={32} className="size-8" />
           <span>Flowbite React</span>
         </Link>
-        <div className="ml-4 hidden lg:flex xl:ml-14">
+        <div className="hidden lg:ml-[4.5rem] lg:flex">
           <DocSearchInput />
         </div>
       </div>
@@ -106,29 +105,28 @@ function DocsSidebar({ isCollapsed, setCollapsed }: DocsLayoutState) {
     <>
       <div
         className={twMerge(
-          "fixed inset-0 z-50 h-full w-64 flex-none border-r border-gray-200 lg:static lg:block lg:h-auto lg:overflow-y-visible lg:pt-6 dark:border-gray-600",
+          "fixed inset-0 z-50 size-full max-w-64 overflow-y-auto bg-white lg:sticky lg:top-[61px] lg:block lg:h-[calc(100vh-4rem)] dark:bg-gray-900",
           isCollapsed && "hidden",
         )}
       >
-        <Sidebar
-          theme={{
-            root: {
-              base: "h-full border-r border-gray-200 dark:border-gray-600",
-              inner:
-                "top-20 h-full overflow-y-auto bg-white px-4 pt-20 text-base font-normal lg:sticky lg:mr-0 lg:block lg:h-[calc(100vh-8rem)] lg:pt-0 lg:text-sm dark:bg-gray-900",
-            },
-          }}
+        <nav
+          aria-label="Docs navigation"
+          className="px-1 pb-8 pl-3 pt-16 text-base font-normal lg:pl-0 lg:pt-2 lg:text-sm"
         >
-          <Sidebar.Items className="grid grid-cols-1 gap-2">
+          <ul>
             {DOCS_SIDEBAR.map((section) => (
-              <SidebarSection key={section.title} title={section.title} href={section.href}>
+              <SidebarSection key={section.title} title={section.title}>
                 {section.items.map((item) => (
-                  <SidebarItem key={`section-${section.title}_item-${item.title}`} {...item} />
+                  <SidebarItem
+                    key={`section-${section.title}_item-${item.title}`}
+                    onClick={() => setCollapsed(true)}
+                    {...item}
+                  />
                 ))}
               </SidebarSection>
             ))}
-          </Sidebar.Items>
-        </Sidebar>
+          </ul>
+        </nav>
       </div>
       {!isCollapsed && (
         <div
@@ -141,60 +139,49 @@ function DocsSidebar({ isCollapsed, setCollapsed }: DocsLayoutState) {
   );
 }
 
-function SidebarSection({ title, href, children }: PropsWithChildren<{ title: string; href: string }>) {
-  const pathname = usePathname();
-
+function SidebarSection({ title, children }: PropsWithChildren<{ title: string }>) {
   return (
-    <Accordion className="border-none" collapseAll={!pathname.includes(href)} flush>
-      <Accordion.Panel>
-        <Accordion.Title
-          theme={{
-            open: {
-              on: "mb-2 text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500",
-              off: "mb-1 text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500",
-            },
-          }}
-          className={twMerge(
-            "flex w-full items-center justify-between bg-transparent p-0 text-sm font-semibold uppercase tracking-wide",
-            pathname.includes(href) &&
-              "text-primary-700 hover:text-primary-700 dark:text-primary-500 dark:hover:text-primary-500",
-          )}
-        >
-          {title}
-        </Accordion.Title>
-        <Accordion.Content className="mb-2 border-none p-0">
-          <Sidebar.ItemGroup className="space-y-3 border-none">{children}</Sidebar.ItemGroup>
-        </Accordion.Content>
-      </Accordion.Panel>
-    </Accordion>
+    <li className="mt-8">
+      <h5 className="mb-2 text-sm font-semibold uppercase tracking-wide text-gray-900 lg:text-xs dark:text-white">
+        {title}
+      </h5>
+      <ul className="py-1">{children}</ul>
+    </li>
   );
 }
 
-function SidebarItem({ title, href, isNew, isExternal }: DocsSidebarItem) {
+function SidebarItem({ title, href, isNew, isExternal, onClick }: DocsSidebarItem & { onClick(): void }) {
   return (
-    <SidebarLink href={href} isExternal={isExternal}>
-      {isNew ? <NewBadge>{title}</NewBadge> : title}
-    </SidebarLink>
+    <li>
+      <SidebarLink href={href} isExternal={isExternal} onClick={onClick}>
+        {isNew ? <NewBadge>{title}</NewBadge> : title}
+      </SidebarLink>
+    </li>
   );
 }
 
-function SidebarLink({ children, href, isExternal }: PropsWithChildren<{ href: string; isExternal?: boolean }>) {
+function SidebarLink({
+  children,
+  href,
+  isExternal,
+  onClick,
+}: PropsWithChildren<{ href: string; isExternal?: boolean; onClick(): void }>) {
   const pathname = usePathname();
 
   return (
-    <Sidebar.Item
-      as={Link}
+    <Link
       href={href}
-      target={isExternal && "_blank"}
+      target={isExternal ? "_blank" : undefined}
       className={twMerge(
-        "p-0 font-medium transition-all hover:bg-transparent lg:text-sm dark:hover:bg-transparent [&>*]:px-0",
+        "flex flex-wrap items-center py-2 font-medium",
         pathname === href
           ? "text-primary-700 hover:text-primary-700 dark:text-primary-500"
           : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white",
       )}
+      onClick={onClick}
     >
       {children}
-    </Sidebar.Item>
+    </Link>
   );
 }
 
@@ -202,9 +189,9 @@ function NewBadge({ children }: PropsWithChildren) {
   return (
     <span className="flex items-center gap-2">
       {children}
-      <Badge color="cyan" className="h-4 px-1.5">
-        New
-      </Badge>
+      <span className="ml-2 inline-flex h-[1.1rem] items-center rounded border border-cyan-100 bg-cyan-100 px-1.5 text-[10px] font-semibold uppercase text-cyan-800 dark:border-cyan-400 dark:bg-gray-700 dark:text-cyan-400">
+        new
+      </span>
     </span>
   );
 }

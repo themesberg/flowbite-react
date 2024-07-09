@@ -7,7 +7,7 @@ import { DocSearchInput } from "./docsearch-input";
 
 export function NavbarLinks() {
   return (
-    <div className="hidden items-center gap-1 lg:flex">
+    <div className="hidden items-center gap-1 xl:flex">
       <Link
         href="/docs/getting-started/introduction"
         className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
