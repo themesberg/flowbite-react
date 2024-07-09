@@ -32,7 +32,7 @@ export default function DocsLayout({ children }: PropsWithChildren) {
       <div className="relative">
         {/* <Banner /> */}
         <DocsNavbar {...state} />
-        <div className="mx-auto w-full max-w-8xl px-4 lg:flex">
+        <div className="mx-auto w-full max-w-8xl lg:flex lg:px-4">
           <DocsSidebar {...state} />
           <div className="w-full min-w-0">{children}</div>
         </div>
