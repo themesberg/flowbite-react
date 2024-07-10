@@ -52,7 +52,7 @@ export async function SocialProofSection() {
 
   return (
     <section>
-      <div className="mx-auto max-w-8xl px-4 py-8 lg:px-20">
+      <div className="mx-auto max-w-8xl px-4 py-8 lg:py-24">
         <div className="flex flex-col gap-4 lg:flex-row lg:gap-20">
           <div className="mb-4 flex w-full flex-col items-start justify-center gap-3 md:gap-5 lg:mb-0">
             <div className="flex w-full flex-col items-start justify-center gap-6">

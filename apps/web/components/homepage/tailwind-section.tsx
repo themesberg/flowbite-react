@@ -4,7 +4,7 @@ import Link from "next/link";
 export function TailwindSection() {
   return (
     <section className="bg-gray-50 dark:bg-gray-800">
-      <div className="mx-auto w-full max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
+      <div className="mx-auto w-full max-w-8xl px-4 py-8 lg:py-24">
         <div className="flex w-full flex-row self-stretch py-6 lg:gap-16 lg:py-10">
           <div className="hidden w-1/2 items-center lg:flex">
             <Image

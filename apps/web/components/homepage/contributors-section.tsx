@@ -25,7 +25,7 @@ export async function ContributorsSection() {
 
   return (
     <section>
-      <div className="mx-auto max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
+      <div className="mx-auto max-w-8xl px-4 py-8 lg:py-24">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-12">
           <div className="flex max-w-2xl flex-col items-center justify-center gap-4">
             <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl dark:text-white">
