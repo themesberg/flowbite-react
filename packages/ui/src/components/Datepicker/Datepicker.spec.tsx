@@ -78,6 +78,22 @@ describe("Components / Datepicker", () => {
     await userEvent.click(document.body);
   });
 
+  it("should render 1990 - 2100 year range when selecting decade", async () => {
+    const testDate = new Date(2024, 6, 20);
+    render(<Datepicker value={testDate.getTime()} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    expect(titleButton.textContent).toBe("2024");
+    await userEvent.click(titleButton);
+    expect(titleButton.textContent).toBe("2020 - 2031");
+    await userEvent.click(titleButton);
+    expect(titleButton.textContent).toBe("1990 - 2100");
+  });
+
   it("should focus the input when ref.current.focus is called", () => {
     const {
       result: { current: ref },
