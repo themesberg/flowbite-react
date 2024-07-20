@@ -162,6 +162,30 @@ describe("Components / Datepicker", () => {
     expect(laterDecadeButton).toBeEnabled();
   });
 
+  it("should allow selecting decades within the range set by max date and min date and disallow selecting outside the range", async () => {
+    const minDate = new Date(2010, 1, 1);
+    const maxDate = new Date(2030, 1, 1);
+    const testDate = new Date(2024, 6, 1);
+
+    render(<Datepicker value={testDate.getTime()} minDate={minDate} maxDate={maxDate} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+
+    const inRange = screen.getByText("2010");
+    expect(inRange).instanceOf(HTMLButtonElement);
+    expect(inRange).toBeEnabled();
+
+    const outsideRange = screen.getByText("2000");
+    expect(outsideRange).instanceOf(HTMLButtonElement);
+    expect(outsideRange).toBeDisabled();
+  });
+
   it("should focus the input when ref.current.focus is called", () => {
     const {
       result: { current: ref },
