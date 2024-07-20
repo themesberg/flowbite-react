@@ -78,6 +78,114 @@ describe("Components / Datepicker", () => {
     await userEvent.click(document.body);
   });
 
+  it("should render 1990 - 2100 year range when selecting decade", async () => {
+    const testDate = new Date(2024, 6, 20);
+    render(<Datepicker value={testDate.getTime()} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    expect(titleButton.textContent).toBe("2024");
+    await userEvent.click(titleButton);
+    expect(titleButton.textContent).toBe("2020 - 2031");
+    await userEvent.click(titleButton);
+    expect(titleButton.textContent).toBe("1990 - 2100");
+  });
+
+  it("should allow selecting earlier decades when setting max date", async () => {
+    const testDate = new Date(2024, 6, 20);
+    render(<Datepicker value={testDate.getTime()} maxDate={testDate} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+
+    const earlierDecadeButton = screen.getByText("2010");
+    expect(earlierDecadeButton).instanceOf(HTMLButtonElement);
+    expect(earlierDecadeButton).toBeEnabled();
+  });
+
+  it("should disallow selecting later decades when setting max date", async () => {
+    const testDate = new Date(2024, 6, 20);
+    render(<Datepicker value={testDate.getTime()} maxDate={testDate} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+
+    const laterDecadeButton = screen.getByText("2030");
+    expect(laterDecadeButton).instanceOf(HTMLButtonElement);
+    expect(laterDecadeButton).toBeDisabled();
+  });
+
+  it("should disallow selecting earlier decades when setting min date", async () => {
+    const testDate = new Date(2024, 6, 20);
+    render(<Datepicker value={testDate.getTime()} minDate={testDate} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+
+    const earlierDecadeButton = screen.getByText("2010");
+    expect(earlierDecadeButton).instanceOf(HTMLButtonElement);
+    expect(earlierDecadeButton).toBeDisabled();
+  });
+
+  it("should allow selecting later decades when setting min date", async () => {
+    const testDate = new Date(2024, 6, 20);
+    render(<Datepicker value={testDate.getTime()} minDate={testDate} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+
+    const laterDecadeButton = screen.getByText("2030");
+    expect(laterDecadeButton).instanceOf(HTMLButtonElement);
+    expect(laterDecadeButton).toBeEnabled();
+  });
+
+  it("should allow selecting decades within the range set by max date and min date and disallow selecting outside the range", async () => {
+    const minDate = new Date(2010, 1, 1);
+    const maxDate = new Date(2030, 1, 1);
+    const testDate = new Date(2024, 6, 1);
+
+    render(<Datepicker value={testDate.getTime()} minDate={minDate} maxDate={maxDate} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+
+    const inRange = screen.getByText("2010");
+    expect(inRange).instanceOf(HTMLButtonElement);
+    expect(inRange).toBeEnabled();
+
+    const outsideRange = screen.getByText("2000");
+    expect(outsideRange).instanceOf(HTMLButtonElement);
+    expect(outsideRange).toBeDisabled();
+  });
+
   it("should focus the input when ref.current.focus is called", () => {
     const {
       result: { current: ref },

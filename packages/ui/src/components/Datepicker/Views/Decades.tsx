@@ -20,20 +20,21 @@ export interface DatepickerViewsDecadesProps {
 }
 
 export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({ theme: customTheme = {} }) => {
-  const { theme: rootTheme, selectedDate, viewDate, setViewDate, setView } = useDatePickerContext();
+  const { theme: rootTheme, viewDate, selectedDate, minDate, maxDate, setViewDate, setView } = useDatePickerContext();
 
   const theme = mergeDeep(rootTheme.views.decades, customTheme);
-
+  const first = startOfYearPeriod(viewDate, 100);
   return (
     <div className={theme.items.base}>
       {[...Array(12)].map((_year, index) => {
-        const first = startOfYearPeriod(viewDate, 100);
         const year = first - 10 + index * 10;
+        const newDate = new Date(viewDate.getTime());
+        newDate.setFullYear(year + (viewDate.getFullYear() % 10));
         const firstDate = new Date(year, 0, 1);
         const lastDate = addYears(firstDate, 9);
 
-        const isSelected = isDateInDecade(viewDate, year);
-        const isDisabled = !isDateInRange(viewDate, firstDate, lastDate);
+        const isSelected = isDateInDecade(selectedDate, year);
+        const isDisabled = !isDateInRange(firstDate, minDate, maxDate) && !isDateInRange(lastDate, minDate, maxDate);
 
         return (
           <button
@@ -47,8 +48,7 @@ export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({ theme:
             )}
             onClick={() => {
               if (isDisabled) return;
-
-              setViewDate(addYears(viewDate, year - selectedDate.getFullYear()));
+              setViewDate(newDate);
               setView(Views.Years);
             }}
           >
