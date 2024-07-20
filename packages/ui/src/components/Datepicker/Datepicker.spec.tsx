@@ -128,6 +128,40 @@ describe("Components / Datepicker", () => {
     expect(laterDecadeButton).toBeDisabled();
   });
 
+  it("should disallow selecting earlier decades when setting min date", async () => {
+    const testDate = new Date(2024, 6, 20);
+    render(<Datepicker value={testDate.getTime()} minDate={testDate} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+
+    const earlierDecadeButton = screen.getByText("2010");
+    expect(earlierDecadeButton).instanceOf(HTMLButtonElement);
+    expect(earlierDecadeButton).toBeDisabled();
+  });
+
+  it("should allow selecting later decades when setting min date", async () => {
+    const testDate = new Date(2024, 6, 20);
+    render(<Datepicker value={testDate.getTime()} minDate={testDate} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+
+    const laterDecadeButton = screen.getByText("2030");
+    expect(laterDecadeButton).instanceOf(HTMLButtonElement);
+    expect(laterDecadeButton).toBeEnabled();
+  });
+
   it("should focus the input when ref.current.focus is called", () => {
     const {
       result: { current: ref },
