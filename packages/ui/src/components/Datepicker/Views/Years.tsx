@@ -30,7 +30,7 @@ export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({ theme: cus
     <div className={theme.items.base}>
       {[...Array(12)].map((_year, index) => {
         const first = startOfYearPeriod(viewDate, 10);
-        const year = first - 1 + index * 1;
+        const year = first + index;
         const newDate = new Date(viewDate.getTime());
         newDate.setFullYear(year);
 
