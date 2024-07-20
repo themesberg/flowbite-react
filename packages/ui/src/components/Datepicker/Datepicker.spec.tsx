@@ -94,6 +94,40 @@ describe("Components / Datepicker", () => {
     expect(titleButton.textContent).toBe("1990 - 2100");
   });
 
+  it("should allow selecting earlier decades when setting max date", async () => {
+    const testDate = new Date(2024, 6, 20);
+    render(<Datepicker value={testDate.getTime()} maxDate={testDate} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+
+    const earlierDecadeButton = screen.getByText("2010");
+    expect(earlierDecadeButton).instanceOf(HTMLButtonElement);
+    expect(earlierDecadeButton).toBeEnabled();
+  });
+
+  it("should disallow selecting later decades when setting max date", async () => {
+    const testDate = new Date(2024, 6, 20);
+    render(<Datepicker value={testDate.getTime()} maxDate={testDate} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+
+    const laterDecadeButton = screen.getByText("2030");
+    expect(laterDecadeButton).instanceOf(HTMLButtonElement);
+    expect(laterDecadeButton).toBeDisabled();
+  });
+
   it("should focus the input when ref.current.focus is called", () => {
     const {
       result: { current: ref },
