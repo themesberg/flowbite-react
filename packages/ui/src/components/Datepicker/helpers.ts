@@ -44,6 +44,10 @@ export const isDateEqual = (date: Date, selectedDate: Date): boolean => {
   return date.getTime() === selectedDate.getTime();
 };
 
+export const isMonthEqual = (date: Date, selectedDate: Date): boolean => {
+  return date.getMonth() === selectedDate.getMonth();
+};
+
 export const getFirstDateInRange = (date: Date, minDate?: Date, maxDate?: Date): Date => {
   if (!isDateInRange(date, minDate, maxDate)) {
     if (minDate && date < minDate) {
