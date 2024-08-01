@@ -1,9 +1,5 @@
 import Image from "next/image";
-import { safeResJson } from "~/helpers/http";
-
-async function fetchSafe<T>(endpoint: string): Promise<T> {
-  return safeResJson(await fetch(endpoint));
-}
+import { fetchSafe } from "~/helpers/http";
 
 async function fetchStargazers(): Promise<string> {
   try {
