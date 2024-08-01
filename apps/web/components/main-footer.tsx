@@ -20,6 +20,8 @@ export function MainFooter() {
               Code licensed{" "}
               <a
                 href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE"
+                rel="nofollow noopener noreferrer"
+                target="_blank"
                 className="text-cyan-600 hover:underline"
               >
                 MIT
@@ -28,6 +30,7 @@ export function MainFooter() {
               <a
                 href="https://creativecommons.org/licenses/by/3.0/"
                 rel="nofollow noopener noreferrer"
+                target="_blank"
                 className="text-cyan-600 hover:underline"
               >
                 CC BY 3.0
@@ -41,16 +44,26 @@ export function MainFooter() {
                 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
               />
               <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
-                <Footer.Link href="https://github.com/themesberg/flowbite-react" className="text-base">
+                <Footer.Link
+                  href="https://github.com/themesberg/flowbite-react"
+                  rel="noopener"
+                  target="_blank"
+                  className="text-base"
+                >
                   GitHub
                 </Footer.Link>
-                <Footer.Link href="https://flowbite.com/" className="text-base">
+                <Footer.Link href="https://flowbite.com/" rel="noopener" target="_blank" className="text-base">
                   Flowbite
                 </Footer.Link>
-                <Footer.Link href="https://tailwindcss.com/" className="text-base">
+                <Footer.Link
+                  href="https://tailwindcss.com/"
+                  rel="nofollow noopener noreferrer"
+                  target="_blank"
+                  className="text-base"
+                >
                   Tailwind CSS
                 </Footer.Link>
-                <Footer.Link href="https://flowbite.com/figma/" className="text-base">
+                <Footer.Link href="https://flowbite.com/figma/" rel="noopener" target="_blank" className="text-base">
                   Figma
                 </Footer.Link>
               </Footer.LinkGroup>
@@ -61,10 +74,20 @@ export function MainFooter() {
                 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
               />
               <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
-                <Footer.Link href="https://discord.gg/4eeurUVvTy" className="text-base">
+                <Footer.Link
+                  href="https://discord.gg/4eeurUVvTy"
+                  rel="nofollow noopener noreferrer"
+                  target="_blank"
+                  className="text-base"
+                >
                   Discord
                 </Footer.Link>
-                <Footer.Link href="https://github.com/themesberg/flowbite-react/discussions" className="text-base">
+                <Footer.Link
+                  href="https://github.com/themesberg/flowbite-react/discussions"
+                  rel="noopener"
+                  target="_blank"
+                  className="text-base"
+                >
                   Github Discussions
                 </Footer.Link>
               </Footer.LinkGroup>
@@ -75,10 +98,10 @@ export function MainFooter() {
                 className="mb-6 text-sm font-semibold uppercase text-gray-900 dark:text-white"
               />
               <Footer.LinkGroup col className="text-gray-600 dark:text-gray-400">
-                <Footer.Link href="https://flowbite.com/license/" className="text-base">
+                <Footer.Link href="https://flowbite.com/license/" rel="noopener" target="_blank" className="text-base">
                   License
                 </Footer.Link>
-                <Footer.Link href="https://flowbite.com/brand/" className="text-base">
+                <Footer.Link href="https://flowbite.com/brand/" rel="noopener" target="_blank" className="text-base">
                   Brand guideline
                 </Footer.Link>
               </Footer.LinkGroup>
