@@ -80,7 +80,7 @@ describe("Components / Datepicker", () => {
 
   it("should render 1990 - 2100 year range when selecting decade", async () => {
     const testDate = new Date(2024, 6, 20);
-    render(<Datepicker value={testDate.getTime()} />);
+    render(<Datepicker defaultDate={testDate} />);
 
     const textBox = screen.getByRole("textbox");
     await userEvent.click(textBox);
@@ -96,7 +96,7 @@ describe("Components / Datepicker", () => {
 
   it("should allow selecting earlier decades when setting max date", async () => {
     const testDate = new Date(2024, 6, 20);
-    render(<Datepicker value={testDate.getTime()} maxDate={testDate} />);
+    render(<Datepicker defaultDate={testDate} maxDate={testDate} />);
 
     const textBox = screen.getByRole("textbox");
     await userEvent.click(textBox);
@@ -113,7 +113,7 @@ describe("Components / Datepicker", () => {
 
   it("should disallow selecting later decades when setting max date", async () => {
     const testDate = new Date(2024, 6, 20);
-    render(<Datepicker value={testDate.getTime()} maxDate={testDate} />);
+    render(<Datepicker defaultDate={testDate} maxDate={testDate} />);
 
     const textBox = screen.getByRole("textbox");
     await userEvent.click(textBox);
@@ -130,7 +130,7 @@ describe("Components / Datepicker", () => {
 
   it("should disallow selecting earlier decades when setting min date", async () => {
     const testDate = new Date(2024, 6, 20);
-    render(<Datepicker value={testDate.getTime()} minDate={testDate} />);
+    render(<Datepicker defaultDate={testDate} minDate={testDate} />);
 
     const textBox = screen.getByRole("textbox");
     await userEvent.click(textBox);
@@ -147,7 +147,7 @@ describe("Components / Datepicker", () => {
 
   it("should allow selecting later decades when setting min date", async () => {
     const testDate = new Date(2024, 6, 20);
-    render(<Datepicker value={testDate.getTime()} minDate={testDate} />);
+    render(<Datepicker defaultDate={testDate} minDate={testDate} />);
 
     const textBox = screen.getByRole("textbox");
     await userEvent.click(textBox);
@@ -167,7 +167,7 @@ describe("Components / Datepicker", () => {
     const maxDate = new Date(2030, 1, 1);
     const testDate = new Date(2024, 6, 1);
 
-    render(<Datepicker value={testDate.getTime()} minDate={minDate} maxDate={maxDate} />);
+    render(<Datepicker defaultDate={testDate} minDate={minDate} maxDate={maxDate} />);
 
     const textBox = screen.getByRole("textbox");
     await userEvent.click(textBox);
