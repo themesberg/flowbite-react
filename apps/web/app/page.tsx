@@ -1,4 +1,3 @@
-import { Banner } from "~/components/banner";
 import {
   ComponentsSection,
   ContributorsSection,
@@ -7,11 +6,11 @@ import {
   FigmaSection,
   HeroSection,
   HomeNavbar,
-  MainFooter,
   ReactSection,
   SocialProofSection,
   TailwindSection,
 } from "~/components/homepage";
+import { MainFooter } from "~/components/main-footer";
 
 export default function HomePage() {
   return (
