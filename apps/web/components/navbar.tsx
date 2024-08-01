@@ -45,6 +45,7 @@ export function NavbarIcons() {
       </div>
       <Tooltip animation={false} content="View Storybook">
         <a
+          rel="noopener"
           target="_blank"
           href="https://storybook.flowbite-react.com/"
           className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 lg:block dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
@@ -54,6 +55,7 @@ export function NavbarIcons() {
       </Tooltip>
       <Tooltip animation={false} content="Join Discord Community">
         <a
+          rel="nofollow noopener noreferrer"
           target="_blank"
           href="https://discord.gg/4eeurUVvTy"
           className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 lg:block dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
@@ -63,6 +65,7 @@ export function NavbarIcons() {
       </Tooltip>
       <Tooltip animation={false} content="View on GitHub">
         <a
+          rel="noopener"
           target="_blank"
           href="https://github.com/themesberg/flowbite-react"
           className="hidden rounded-lg p-2.5 text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 lg:block dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
@@ -73,7 +76,12 @@ export function NavbarIcons() {
       <Tooltip animation={false} content="Toggle dark mode">
         <DarkThemeToggle />
       </Tooltip>
-      <a target="_blank" href="https://npmjs.com/package/flowbite-react" className="ml-2 hidden lg:block">
+      <a
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+        href="https://npmjs.com/package/flowbite-react"
+        className="ml-2 hidden lg:block"
+      >
         <Badge className="bg-primary-50 px-2 text-sm font-medium text-primary-700 hover:bg-primary-600 hover:text-white sm:block lg:block dark:bg-gray-700 dark:text-primary-500 dark:hover:bg-primary-800 dark:hover:text-white">
           v{version}
         </Badge>

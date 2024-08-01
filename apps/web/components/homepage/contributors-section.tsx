@@ -1,7 +1,7 @@
 import { Tooltip } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
-import { safeResJson } from "~/helpers/http";
+import { fetchSafe } from "~/helpers/http";
 
 interface Contributor {
   id: number;
@@ -12,9 +12,11 @@ interface Contributor {
 
 async function fetchContributors(): Promise<Contributor[]> {
   try {
-    const result = await fetch("https://api.github.com/repos/themesberg/flowbite-react/contributors?per_page=21");
+    const result = await fetchSafe<Contributor[]>(
+      "https://api.github.com/repos/themesberg/flowbite-react/contributors?per_page=21",
+    );
 
-    return safeResJson(result);
+    return result.filter((contributor) => contributor.login !== "github-actions[bot]");
   } catch (error) {
     return [];
   }

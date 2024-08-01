@@ -244,12 +244,11 @@ function CodePreview({
   children,
 }: PropsWithChildren<{ view: View; isRTL: boolean; isDarkMode: boolean | null; iframe?: IFrameData }>) {
   return (
-    <div
-      {...(isRTL && { dir: "rtl" })}
-      className={twMerge("code-preview-wrapper", isDarkMode !== null && (isDarkMode ? "dark" : "light"))}
-    >
+    <div {...(isRTL && { dir: "rtl" })} className="code-preview-wrapper">
       <div className="flex border-x border-gray-200 bg-white bg-gradient-to-r p-0 dark:border-gray-600 dark:bg-gray-900">
-        <div className="code-responsive-wrapper w-full">
+        <div
+          className={twMerge("code-responsive-wrapper w-full", isDarkMode !== null && (isDarkMode ? "dark" : "light"))}
+        >
           <div
             className={twMerge(
               "mx-auto w-full bg-white bg-gradient-to-r dark:bg-gray-900",

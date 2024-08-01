@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { HiMenuAlt1, HiX } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
 import { DocSearchInput } from "~/components/docsearch-input";
+import { MainFooter } from "~/components/main-footer";
 import { NavbarIcons, NavbarLinks } from "~/components/navbar";
 import { DOCS_SIDEBAR, type DocsSidebarItem } from "~/data/docs-sidebar";
 
@@ -36,6 +37,7 @@ export default function DocsLayout({ children }: PropsWithChildren) {
           <DocsSidebar {...state} />
           <div className="w-full min-w-0">{children}</div>
         </div>
+        <MainFooter />
       </div>
     </div>
   );
