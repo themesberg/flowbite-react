@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../../helpers/merge-deep";
 import { useDatePickerContext } from "../DatepickerContext";
-import { getFormattedDate, isDateEqual, isDateInRange, Views } from "../helpers";
+import { getFormattedDate, isDateInRange, isMonthEqual, Views } from "../helpers";
 
 export interface FlowbiteDatepickerViewsMonthsTheme {
   items: {
@@ -20,27 +20,19 @@ export interface DatepickerViewsMonthsProps {
 }
 
 export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: customTheme = {} }) => {
-  const {
-    theme: rootTheme,
-    minDate,
-    maxDate,
-    selectedDate,
-    viewDate,
-    language,
-    setViewDate,
-    setView,
-  } = useDatePickerContext();
+  const { theme: rootTheme, minDate, maxDate, selectedDate, language, setViewDate, setView } = useDatePickerContext();
 
   const theme = mergeDeep(rootTheme.views.months, customTheme);
 
   return (
     <div className={theme.items.base}>
       {[...Array(12)].map((_month, index) => {
-        const newDate = new Date(viewDate.getTime());
-        newDate.setMonth(index);
+        const newDate = new Date();
+        // setting day to 1 to avoid overflow issues
+        newDate.setMonth(index, 1);
         const month = getFormattedDate(language, newDate, { month: "short" });
 
-        const isSelected = isDateEqual(selectedDate, newDate);
+        const isSelected = isMonthEqual(selectedDate, newDate);
         const isDisabled = !isDateInRange(newDate, minDate, maxDate);
 
         return (
