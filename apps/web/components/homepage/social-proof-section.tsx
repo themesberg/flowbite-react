@@ -90,6 +90,8 @@ export async function SocialProofSection() {
           <div className="flex w-full flex-col items-start gap-6 md:gap-3">
             <div className="flex flex-row items-start gap-2 self-stretch md:justify-between md:gap-2 md:pr-16 lg:justify-end lg:gap-2 lg:pr-0">
               <a
+                rel="noopener"
+                target="_blank"
                 href="https://github.com/themesberg/flowbite-react"
                 className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 lg:px-8 lg:py-6 dark:hover:bg-gray-800"
               >
@@ -114,6 +116,8 @@ export async function SocialProofSection() {
                 </div>
               </a>
               <a
+                rel="nofollow noopener noreferrer"
+                target="_blank"
                 href="https://www.npmjs.com/package/flowbite-react"
                 className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 lg:px-8 lg:py-6 dark:hover:bg-gray-800"
               >
@@ -131,6 +135,8 @@ export async function SocialProofSection() {
             </div>
             <div className="flex flex-row items-start gap-2 self-stretch md:justify-between md:gap-12 md:pr-16 lg:justify-end lg:gap-2 lg:pr-0">
               <a
+                rel="nofollow noopener noreferrer"
+                target="_blank"
                 href="https://www.figma.com/community/file/1179442320711977498"
                 className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 lg:px-8 lg:py-6 dark:hover:bg-gray-800"
               >
@@ -169,8 +175,9 @@ export async function SocialProofSection() {
                 </div>
               </a>
               <a
+                rel="nofollow noopener noreferrer"
+                target="_blank"
                 href="https://discord.gg/4eeurUVvTy"
-                rel="nofollow"
                 className="flex w-full max-w-[272px] flex-col items-start gap-4 rounded-lg px-4 py-2 text-gray-400 hover:bg-gray-50 lg:px-8 lg:py-6 dark:hover:bg-gray-800"
               >
                 <svg

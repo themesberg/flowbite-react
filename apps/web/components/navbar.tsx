@@ -21,12 +21,16 @@ export function NavbarLinks() {
         Quickstart
       </a>
       <a
+        rel="noopener"
+        target="_blank"
         href="https://flowbite.com/figma/"
         className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
       >
         Figma
       </a>
       <a
+        rel="noopener"
+        target="_blank"
         href="https://flowbite.com"
         className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-cyan-700 dark:text-gray-300 dark:hover:text-cyan-500"
       >

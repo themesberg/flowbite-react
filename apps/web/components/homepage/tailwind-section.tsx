@@ -43,6 +43,8 @@ export function TailwindSection() {
               </p>
               <p className="text-lg text-gray-500 dark:text-gray-400">
                 <a
+                  rel="nofollow noopener noreferrer"
+                  target="_blank"
                   href="https://tailwindcss.com"
                   className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white"
                 >
@@ -50,6 +52,8 @@ export function TailwindSection() {
                 </a>{" "}
                 is the most popular and open-source utility-first CSS framework on the market and the{" "}
                 <a
+                  rel="noopener"
+                  target="_blank"
                   href="https://flowbite.com"
                   className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white"
                 >

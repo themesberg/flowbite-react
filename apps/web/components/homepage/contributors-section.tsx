@@ -72,6 +72,8 @@ export async function ContributorsSection() {
                 <p>Become a member of a community of developers by supporting Flowbite</p>
               </div>
               <Link
+                rel="noopener"
+                target="_blank"
                 href="https://github.com/themesberg/flowbite-react"
                 className="flex items-center gap-2 whitespace-nowrap text-base font-medium text-cyan-700 hover:underline"
               >
