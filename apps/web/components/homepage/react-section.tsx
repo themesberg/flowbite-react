@@ -81,7 +81,13 @@ export function ReactSection() {
                 <Button as={Link} href="/docs/getting-started/quickstart">
                   Start building <HiOutlineArrowRight className="ml-2 size-5" />
                 </Button>
-                <Button as={Link} href="https://github.com/themesberg/flowbite-react" color="gray">
+                <Button
+                  as={Link}
+                  color="gray"
+                  href="https://github.com/themesberg/flowbite-react"
+                  rel="noopener"
+                  target="_blank"
+                >
                   View on GitHub
                 </Button>
               </div>
