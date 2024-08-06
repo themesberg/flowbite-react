@@ -70,15 +70,8 @@ function DocsNavbar({ isCollapsed, setCollapsed }: DocsLayoutState) {
             <HiX aria-label="Close sidebar" className="size-6 cursor-pointer text-gray-600 dark:text-gray-300" />
           </button>
         )}
-        <Link href="/" className="sr-only">
-          Flowbite React
-        </Link>
-        <Link
-          aria-hidden
-          href="/"
-          className="flex items-center gap-3 text-2xl font-semibold text-gray-900 dark:text-white"
-        >
-          <Image alt="" height={32} src="/favicon.svg" width={32} className="size-8" />
+        <Link href="/" className="flex items-center gap-3 text-2xl font-semibold text-gray-900 dark:text-white">
+          <Image alt="Flowbite React logo" src="/favicon.svg" height={32} width={32} className="size-8" />
           <span>Flowbite React</span>
         </Link>
         <div className="hidden lg:ml-[4.5rem] lg:flex">

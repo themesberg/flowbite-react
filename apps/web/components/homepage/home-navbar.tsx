@@ -17,15 +17,8 @@ export function HomeNavbar() {
       }}
     >
       <div className="flex items-center gap-3">
-        <Link href="/" className="sr-only">
-          Flowbite React
-        </Link>
-        <Link
-          aria-hidden
-          href="/"
-          className="flex items-center gap-3 text-2xl font-semibold text-gray-900 dark:text-white"
-        >
-          <Image alt="" aria-hidden height="32" src="/favicon.svg" width="32" />
+        <Link href="/" className="flex items-center gap-3 text-2xl font-semibold text-gray-900 dark:text-white">
+          <Image alt="Flowbite React logo" src="/favicon.svg" width="32" height="32" className="size-8" />
           <span>Flowbite React</span>
         </Link>
         <div className="ml-4 hidden lg:flex">
