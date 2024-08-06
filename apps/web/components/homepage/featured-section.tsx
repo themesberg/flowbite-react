@@ -7,7 +7,12 @@ export function FeaturedSection() {
         <div className="flex flex-col items-center justify-center gap-2 lg:flex-row lg:gap-8">
           <div className="mx-auto mb-4 text-base tracking-tight lg:mx-0 lg:mb-0">Featured in:</div>
           <div className="flex flex-wrap items-center justify-center gap-8">
-            <Link href="https://www.reddit.com/r/flowbite/" rel="nofollow noreferrer noopener">
+            <Link
+              aria-label="Reddit - Flowbite"
+              href="https://www.reddit.com/r/flowbite/"
+              rel="nofollow noopener noreferrer"
+              target="_blank"
+            >
               <svg width="105" height="36" viewBox="0 0 105 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M17.727 35.0829C27.2844 35.0829 35.0322 27.3351 35.0322 17.7778C35.0322 8.22043 27.2844 0.472656 17.727 0.472656C8.16966 0.472656 0.421875 8.22043 0.421875 17.7778C0.421875 27.3351 8.16966 35.0829 17.727 35.0829Z"
@@ -27,7 +32,12 @@ export function FeaturedSection() {
                 />
               </svg>
             </Link>
-            <Link href="https://dev.to/t/flowbite" rel="nofollow noreferrer noopener">
+            <Link
+              aria-label="DEV - Flowbite"
+              href="https://dev.to/t/flowbite"
+              rel="nofollow noopener noreferrer"
+              target="_blank"
+            >
               <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M9.8811 14.0207C9.57556 13.7923 9.26923 13.6781 8.96369 13.6781H7.59032V21.905H8.96447C9.27002 21.905 9.57634 21.7908 9.88189 21.5624C10.1874 21.334 10.3402 20.9915 10.3402 20.534V15.0492C10.3394 14.5924 10.1859 14.2491 9.8811 14.0207ZM32.244 0.138184H3.87892C1.97321 0.138184 0.4266 1.68086 0.421875 3.58735V31.9682C0.4266 33.8747 1.97321 35.4174 3.87892 35.4174H32.244C34.1505 35.4174 35.6963 33.8747 35.701 31.9682V3.58735C35.6963 1.68086 34.1497 0.138184 32.244 0.138184ZM12.5648 20.5489C12.5648 22.0302 11.6506 24.2745 8.75658 24.2698H5.10266V11.2401H8.83375C11.6246 11.2401 12.5633 13.4813 12.564 14.9633L12.5648 20.5489ZM20.4932 13.5671H16.2975V16.5926H18.8623V18.9212H16.2975V21.9459H20.494V24.2745H15.5974C14.7186 24.2973 13.9878 23.6028 13.9658 22.7239V12.8718C13.9445 11.9937 14.6398 11.2645 15.5179 11.2425H20.494L20.4932 13.5671ZM28.6547 22.646C27.6152 25.0675 25.7528 24.5856 24.9188 22.646L21.8847 11.2433H24.4495L26.7891 20.1985L29.1177 11.2433H31.6833L28.6547 22.646Z"
@@ -35,7 +45,12 @@ export function FeaturedSection() {
                 />
               </svg>
             </Link>
-            <Link href="https://www.producthunt.com/products/flowbite" rel="nofollow noreferrer noopener">
+            <Link
+              aria-label="Product Hunt - Flowbite"
+              href="https://www.producthunt.com/products/flowbite"
+              rel="nofollow noopener noreferrer"
+              target="_blank"
+            >
               <svg width="153" height="36" viewBox="0 0 153 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M36.257 17.7779C36.257 27.5959 28.2971 35.5558 18.4791 35.5558C8.65988 35.5558 0.701172 27.5959 0.701172 17.7779C0.701172 7.95871 8.66049 0 18.4791 0C28.2971 0 36.257 7.95932 36.257 17.7779Z"
@@ -51,7 +66,12 @@ export function FeaturedSection() {
                 />
               </svg>
             </Link>
-            <Link href="https://news.ycombinator.com/item?id=28561468" rel="nofollow noreferrer noopener">
+            <Link
+              aria-label="Y Combinator - Flowbite"
+              href="https://news.ycombinator.com/item?id=28561468"
+              rel="nofollow noopener noreferrer"
+              target="_blank"
+            >
               <svg width="161" height="34" viewBox="0 0 161 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M33.6816 0.226074H0.578125V33.3295H33.6816V0.226074Z" fill="#6B7280" />
                 <path
@@ -100,7 +120,12 @@ export function FeaturedSection() {
                 />
               </svg>
             </Link>
-            <Link href="https://www.youtube.com/channel/UC_Ms4V2kYDsh7F_CSsHyQ6A" rel="nofollow noreferrer noopener">
+            <Link
+              aria-label="YoutTube - Flowbite"
+              href="https://www.youtube.com/channel/UC_Ms4V2kYDsh7F_CSsHyQ6A"
+              rel="nofollow noopener noreferrer"
+              target="_blank"
+            >
               <svg width="113" height="24" viewBox="0 0 113 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M33.6752 3.75529C33.2799 2.28706 32.1223 1.12941 30.6541 0.734118C27.9717 0 17.2423 0 17.2423 0C17.2423 0 6.51292 0 3.83057 0.705882C2.39057 1.10118 1.20469 2.28706 0.809397 3.75529C0.103516 6.43765 0.103516 12 0.103516 12C0.103516 12 0.103516 17.5906 0.809397 20.2447C1.20469 21.7129 2.36234 22.8706 3.83057 23.2659C6.54116 24 17.2423 24 17.2423 24C17.2423 24 27.9717 24 30.6541 23.2941C32.1223 22.8988 33.2799 21.7412 33.6752 20.2729C34.3811 17.5906 34.3811 12.0282 34.3811 12.0282C34.3811 12.0282 34.4094 6.43765 33.6752 3.75529Z"
