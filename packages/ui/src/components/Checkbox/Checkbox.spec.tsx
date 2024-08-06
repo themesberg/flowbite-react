@@ -3,10 +3,11 @@ import { describe, expect, it } from "vitest";
 import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
 import { Checkbox } from "./Checkbox";
 
-describe.concurrent("Components / Checkbox", () => {
-  describe.concurrent("A11y", () => {
+describe("Components / Checkbox", () => {
+  describe("A11y", () => {
     it('should have role="checkbox" by default', () => {
-      const checkbox = render(<Checkbox />).getByRole("checkbox");
+      render(<Checkbox />);
+      const checkbox = screen.getByRole("checkbox");
 
       expect(checkbox).toBeInTheDocument();
     });
@@ -27,9 +28,8 @@ describe.concurrent("Components / Checkbox", () => {
         </Flowbite>,
       );
 
-      expect(checkbox()).toHaveClass("bg-yellow-400 dark:bg-yellow-40");
+      const checkbox = screen.getByRole("checkbox");
+      expect(checkbox).toHaveClass("bg-yellow-400 dark:bg-yellow-40");
     });
   });
 });
-
-const checkbox = () => screen.getByRole("checkbox");

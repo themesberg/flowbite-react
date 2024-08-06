@@ -4,30 +4,35 @@ import type { FC } from "react";
 import { describe, expect, it } from "vitest";
 import { Navbar } from "./Navbar";
 
-describe.concurrent("Navbar", () => {
-  describe.concurrent("A11y", () => {
+describe("Navbar", () => {
+  describe("A11y", () => {
     it('should have `role="navigation"`', () => {
-      render(<Navbar />);
+      render(<NavbarTest />);
 
       expect(screen.getByRole("navigation")).toBeInTheDocument();
     });
   });
 
-  describe.concurrent("Keyboard interactions", () => {
-    it("should hide/show `Navbar.Menu` when `Space` is pressed on `Navbar.Toggle`", async () => {
+  describe("Interactions", () => {
+    it("should hide/show `Navbar.Menu` when toggle is clicked", async () => {
       const user = userEvent.setup();
       render(<NavbarTest />);
       const collapse = screen.getByTestId("flowbite-navbar-collapse");
       const toggle = screen.getByTestId("flowbite-navbar-toggle");
 
+      // Initially the menu should be hidden
       expect(collapse).toHaveClass("hidden");
 
+      // Click the toggle to show the menu
       await user.click(toggle);
 
+      // The menu should be visible
       expect(collapse).not.toHaveClass("hidden");
 
+      // Click the toggle again to hide the menu
       await user.click(toggle);
 
+      // The menu should be hidden again
       expect(collapse).toHaveClass("hidden");
     });
   });

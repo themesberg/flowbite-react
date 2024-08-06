@@ -24,7 +24,7 @@ describe("Components / Datepicker", () => {
     await userEvent.click(screen.getByRole("textbox"));
     await userEvent.click(screen.getAllByText(anotherDay)[0]);
 
-    expect((screen.getByRole("textbox") as HTMLInputElement).value?.includes(`${anotherDay}`)).toBeTruthy();
+    expect((screen.getByRole("textbox") as HTMLInputElement).value.includes(`${anotherDay}`)).toBeTruthy();
   });
 
   it("should reset to today's date when Clear button is clicked", async () => {
@@ -107,7 +107,7 @@ describe("Components / Datepicker", () => {
     await userEvent.click(titleButton);
 
     const earlierDecadeButton = screen.getByText("2010");
-    expect(earlierDecadeButton).instanceOf(HTMLButtonElement);
+    expect(earlierDecadeButton).toBeInstanceOf(HTMLButtonElement);
     expect(earlierDecadeButton).toBeEnabled();
   });
 
@@ -124,7 +124,7 @@ describe("Components / Datepicker", () => {
     await userEvent.click(titleButton);
 
     const laterDecadeButton = screen.getByText("2030");
-    expect(laterDecadeButton).instanceOf(HTMLButtonElement);
+    expect(laterDecadeButton).toBeInstanceOf(HTMLButtonElement);
     expect(laterDecadeButton).toBeDisabled();
   });
 
@@ -141,7 +141,7 @@ describe("Components / Datepicker", () => {
     await userEvent.click(titleButton);
 
     const earlierDecadeButton = screen.getByText("2010");
-    expect(earlierDecadeButton).instanceOf(HTMLButtonElement);
+    expect(earlierDecadeButton).toBeInstanceOf(HTMLButtonElement);
     expect(earlierDecadeButton).toBeDisabled();
   });
 
@@ -158,7 +158,7 @@ describe("Components / Datepicker", () => {
     await userEvent.click(titleButton);
 
     const laterDecadeButton = screen.getByText("2030");
-    expect(laterDecadeButton).instanceOf(HTMLButtonElement);
+    expect(laterDecadeButton).toBeInstanceOf(HTMLButtonElement);
     expect(laterDecadeButton).toBeEnabled();
   });
 
@@ -178,11 +178,11 @@ describe("Components / Datepicker", () => {
     await userEvent.click(titleButton);
 
     const inRange = screen.getByText("2010");
-    expect(inRange).instanceOf(HTMLButtonElement);
+    expect(inRange).toBeInstanceOf(HTMLButtonElement);
     expect(inRange).toBeEnabled();
 
     const outsideRange = screen.getByText("2000");
-    expect(outsideRange).instanceOf(HTMLButtonElement);
+    expect(outsideRange).toBeInstanceOf(HTMLButtonElement);
     expect(outsideRange).toBeDisabled();
   });
 
