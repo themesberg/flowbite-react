@@ -16,7 +16,7 @@ export default {
     },
     variant: {
       control: "radio",
-      options: ["default", "underline", "pills", "fullWidth"],
+      options: ["default", "underline", "pills", "fullWidth", "vertical"],
     },
   },
 } as Meta;
@@ -103,3 +103,19 @@ FullWidth.args = {
   variant: "fullWidth",
 };
 FullWidth.storyName = "Full width";
+
+export const Vertical = (args: TabsProps): JSX.Element => (
+  <Tabs {...args}>
+    <Tabs.Item title="Profile">Profile content</Tabs.Item>
+    <Tabs.Item title="Dashboard">Dashboard content</Tabs.Item>
+    <Tabs.Item title="Settings">Settings content</Tabs.Item>
+    <Tabs.Item title="Contacts">Contacts content</Tabs.Item>
+    <Tabs.Item disabled title="Disabled">
+      Disabled content
+    </Tabs.Item>
+  </Tabs>
+);
+Vertical.args = {
+  style: "vertical",
+};
+Vertical.storyName = "Vertical Tabs";
