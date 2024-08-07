@@ -67,8 +67,8 @@ describe("Components / List group", () => {
         <Flowbite theme={{ theme }}>
           <TestListGroup />
         </Flowbite>,
-      ),
-        expect(listGroup()).toHaveClass("text-gray-100");
+      );
+      expect(listGroup()).toHaveClass("text-gray-100");
     });
 
     it("should use custom classes on `ListGroup.Item`", () => {

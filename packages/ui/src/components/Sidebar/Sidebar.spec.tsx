@@ -302,8 +302,8 @@ describe("Theme", () => {
         <Flowbite theme={{ theme }}>
           <TestSidebar />
         </Flowbite>,
-      ),
-        itemGroups().forEach((group) => expect(group).toHaveClass("text-gray-100"));
+      );
+      itemGroups().forEach((group) => expect(group).toHaveClass("text-gray-100"));
     });
   });
 
@@ -326,8 +326,8 @@ describe("Theme", () => {
         <Flowbite theme={{ theme }}>
           <TestSidebar />
         </Flowbite>,
-      ),
-        expect(logo()).toHaveClass("text-gray-100");
+      );
+      expect(logo()).toHaveClass("text-gray-100");
     });
   });
 });

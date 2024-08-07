@@ -18,8 +18,8 @@ describe("Components / List group", () => {
         <Flowbite theme={{ theme }}>
           <TestList />
         </Flowbite>,
-      ),
-        expect(listGroup()).toHaveClass("asd");
+      );
+      expect(listGroup()).toHaveClass("asd");
     });
   });
 });

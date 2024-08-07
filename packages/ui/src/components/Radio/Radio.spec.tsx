@@ -3,10 +3,11 @@ import { describe, expect, it } from "vitest";
 import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
 import { Radio } from "./Radio";
 
-describe.concurrent("Components / Radio", () => {
-  describe.concurrent("A11y", () => {
+describe("Components / Radio", () => {
+  describe("A11y", () => {
     it('should have role="radio" by default', () => {
-      const radio = render(<Radio />).getByRole("radio");
+      render(<Radio />);
+      const radio = screen.getByRole("radio");
 
       expect(radio).toBeInTheDocument();
     });
@@ -27,9 +28,8 @@ describe.concurrent("Components / Radio", () => {
         </Flowbite>,
       );
 
-      expect(radio()).toHaveClass("bg-yellow-400 dark:bg-yellow-40");
+      const radio = screen.getByRole("radio");
+      expect(radio).toHaveClass("bg-yellow-400 dark:bg-yellow-40");
     });
   });
 });
-
-const radio = () => screen.getByRole("radio");
