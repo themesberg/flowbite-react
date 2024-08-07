@@ -1,4 +1,5 @@
 import type { Meta, StoryFn } from "@storybook/react";
+import { CiMenuFries } from "react-icons/ci";
 import { Avatar } from "../Avatar";
 import { Button } from "../Button";
 import { Dropdown } from "../Dropdown";
@@ -92,6 +93,29 @@ WithDropdown.args = {
         </Dropdown>
         <Navbar.Toggle />
       </div>
+      <Navbar.Collapse>
+        <Navbar.Link href="/navbars" active>
+          Home
+        </Navbar.Link>
+        <Navbar.Link href="/navbars">About</Navbar.Link>
+        <Navbar.Link href="/navbars">Services</Navbar.Link>
+        <Navbar.Link href="/navbars">Pricing</Navbar.Link>
+        <Navbar.Link href="/navbars">Contact</Navbar.Link>
+      </Navbar.Collapse>
+    </>
+  ),
+};
+
+export const CustomToggleMenuIconNavbar = Template.bind({});
+CustomToggleMenuIconNavbar.storyName = "Custom Toggle Menu Icon";
+CustomToggleMenuIconNavbar.args = {
+  children: (
+    <>
+      <Navbar.Brand href="https://flowbite.com/">
+        <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+        <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
+      </Navbar.Brand>
+      <Navbar.Toggle barIcon={CiMenuFries} />
       <Navbar.Collapse>
         <Navbar.Link href="/navbars" active>
           Home
