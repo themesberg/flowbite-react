@@ -3,7 +3,7 @@
 import type { Placement } from "@floating-ui/core";
 import { autoUpdate, useFocus } from "@floating-ui/react";
 import type { ComponentProps, FC, ReactNode } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { getArrowPlacement } from "./helpers";
@@ -43,6 +43,7 @@ export interface FloatingProps extends Omit<ComponentProps<"div">, "content" | "
   theme: FlowbiteFloatingTheme;
   trigger?: "hover" | "click";
   minWidth?: number;
+  isOpen: boolean | null;
 }
 
 /**
@@ -59,10 +60,17 @@ export const Floating: FC<FloatingProps> = ({
   theme,
   trigger = "hover",
   minWidth,
+  isOpen = null,
   ...props
 }) => {
   const arrowRef = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState(false);
+  const [innerOpen, setOpen] = useState(false);
+
+  const open = useMemo(() => {
+    if (isOpen === null) return innerOpen;
+
+    return isOpen;
+  }, [innerOpen, isOpen]);
 
   const floatingProperties = useBaseFLoating({
     open,
