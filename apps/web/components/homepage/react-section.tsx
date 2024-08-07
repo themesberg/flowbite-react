@@ -15,7 +15,7 @@ const feature_list = [
 export function ReactSection() {
   return (
     <section className="bg-gray-50 dark:bg-gray-800">
-      <div className="mx-auto w-full max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
+      <div className="mx-auto w-full max-w-8xl px-4 py-8 lg:py-24">
         <div className="flex w-full flex-row self-stretch py-6 lg:gap-16 lg:py-10">
           <div className="hidden w-1/2 items-center lg:flex">
             <Image
@@ -39,9 +39,12 @@ export function ReactSection() {
                 React UI components
               </h2>
               <p className="text-lg text-gray-500 dark:text-gray-400">
-                <a href="" className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white">
+                <Link
+                  href="/"
+                  className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white"
+                >
                   Flowbite React
-                </a>{" "}
+                </Link>{" "}
                 is a free and open-source UI component library based on accessible React components and Tailwind CSS.
               </p>
               <p className="text-lg text-gray-500 dark:text-gray-400">
@@ -78,7 +81,13 @@ export function ReactSection() {
                 <Button as={Link} href="/docs/getting-started/quickstart">
                   Start building <HiOutlineArrowRight className="ml-2 size-5" />
                 </Button>
-                <Button as={Link} href="https://github.com/themesberg/flowbite-react" color="gray">
+                <Button
+                  as={Link}
+                  color="gray"
+                  href="https://github.com/themesberg/flowbite-react"
+                  rel="noopener"
+                  target="_blank"
+                >
                   View on GitHub
                 </Button>
               </div>

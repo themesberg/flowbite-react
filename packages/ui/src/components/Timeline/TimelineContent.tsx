@@ -14,6 +14,8 @@ import type { FlowbiteTimelineTitleTheme } from "./TimelineTitle";
 export interface FlowbiteTimelineContentTheme {
   root: {
     base: string;
+    horizontal: string;
+    vertical: string;
   };
   time: FlowbiteTimelineTitleTheme;
   title: FlowbiteTimelineTimeTheme;
@@ -37,7 +39,11 @@ export const TimelineContent: FC<TimelineContentProps> = ({
 
   return (
     <TimelineContentContext.Provider value={{ theme }}>
-      <div data-testid="timeline-content" className={twMerge(horizontal && theme.root.base, className)} {...props}>
+      <div
+        data-testid="timeline-content"
+        className={twMerge(theme.root.base, horizontal ? theme.root.horizontal : theme.root.vertical, className)}
+        {...props}
+      >
         {children}
       </div>
     </TimelineContentContext.Provider>

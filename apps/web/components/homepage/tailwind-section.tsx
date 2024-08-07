@@ -4,7 +4,7 @@ import Link from "next/link";
 export function TailwindSection() {
   return (
     <section className="bg-gray-50 dark:bg-gray-800">
-      <div className="mx-auto w-full max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
+      <div className="mx-auto w-full max-w-8xl px-4 py-8 lg:py-24">
         <div className="flex w-full flex-row self-stretch py-6 lg:gap-16 lg:py-10">
           <div className="hidden w-1/2 items-center lg:flex">
             <Image
@@ -43,6 +43,8 @@ export function TailwindSection() {
               </p>
               <p className="text-lg text-gray-500 dark:text-gray-400">
                 <a
+                  rel="nofollow noopener noreferrer"
+                  target="_blank"
                   href="https://tailwindcss.com"
                   className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white"
                 >
@@ -50,6 +52,8 @@ export function TailwindSection() {
                 </a>{" "}
                 is the most popular and open-source utility-first CSS framework on the market and the{" "}
                 <a
+                  rel="noopener"
+                  target="_blank"
                   href="https://flowbite.com"
                   className="text-lg font-medium text-gray-900 underline hover:no-underline dark:text-white"
                 >

@@ -1,7 +1,7 @@
 import { Tooltip } from "flowbite-react";
 import Image from "next/image";
 import Link from "next/link";
-import { safeResJson } from "~/helpers/http";
+import { fetchSafe } from "~/helpers/http";
 
 interface Contributor {
   id: number;
@@ -12,9 +12,11 @@ interface Contributor {
 
 async function fetchContributors(): Promise<Contributor[]> {
   try {
-    const result = await fetch("https://api.github.com/repos/themesberg/flowbite-react/contributors?per_page=21");
+    const result = await fetchSafe<Contributor[]>(
+      "https://api.github.com/repos/themesberg/flowbite-react/contributors?per_page=21",
+    );
 
-    return safeResJson(result);
+    return result.filter((contributor) => contributor.login !== "github-actions[bot]");
   } catch (error) {
     return [];
   }
@@ -25,7 +27,7 @@ export async function ContributorsSection() {
 
   return (
     <section>
-      <div className="mx-auto max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
+      <div className="mx-auto max-w-8xl px-4 py-8 lg:py-24">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-12">
           <div className="flex max-w-2xl flex-col items-center justify-center gap-4">
             <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 lg:text-4xl dark:text-white">
@@ -70,6 +72,8 @@ export async function ContributorsSection() {
                 <p>Become a member of a community of developers by supporting Flowbite</p>
               </div>
               <Link
+                rel="noopener"
+                target="_blank"
                 href="https://github.com/themesberg/flowbite-react"
                 className="flex items-center gap-2 whitespace-nowrap text-base font-medium text-cyan-700 hover:underline"
               >

@@ -13,8 +13,8 @@ import { TextInput } from "../TextInput";
 import { ToggleSwitch } from "../ToggleSwitch";
 import { Label } from "./Label";
 
-describe.concurrent("Components / Label", () => {
-  describe.concurrent("A11y", () => {
+describe("Components / Label", () => {
+  describe("A11y", () => {
     it("should provide accessible name to any form control associated by `htmlFor`", () => {
       const inputLabels = [
         "Your email",
@@ -22,39 +22,38 @@ describe.concurrent("Components / Label", () => {
         "Remember me",
         "Enable notifications",
         "Upload file",
+        "Select your country",
         "United States",
         "Your message",
         "Price",
       ];
 
-      const { getByLabelText } = render(<TestForm />);
+      render(<TestForm />);
 
-      inputLabels.forEach((label) => expect(getByLabelText(label)).toHaveAccessibleName(label));
+      inputLabels.forEach((label) => expect(screen.getByLabelText(label)).toHaveAccessibleName(label));
     });
+  });
 
-    describe("Theme", () => {
-      it("should use `disabled` classes", () => {
-        const theme: CustomFlowbiteTheme = {
-          label: {
-            root: {
-              disabled: "opacity-50",
-            },
+  describe("Theme", () => {
+    it("should use `disabled` classes", () => {
+      const theme: CustomFlowbiteTheme = {
+        label: {
+          root: {
+            disabled: "opacity-50",
           },
-        };
+        },
+      };
 
-        render(
-          <Flowbite theme={{ theme }}>
-            <Label disabled />
-          </Flowbite>,
-        );
+      render(
+        <Flowbite theme={{ theme }}>
+          <Label disabled data-testid="flowbite-label" />
+        </Flowbite>,
+      );
 
-        expect(label()).toHaveClass("opacity-50");
-      });
+      expect(screen.getByTestId("flowbite-label")).toHaveClass("opacity-50");
     });
   });
 });
-
-const label = () => screen.getByTestId("flowbite-label");
 
 const TestForm = (): JSX.Element => (
   <form>

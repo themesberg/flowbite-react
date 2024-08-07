@@ -6,9 +6,9 @@ import { CopyPackageInput } from "./copy-package-input";
 
 export function HeroSection() {
   return (
-    <section className="mx-auto flex max-w-8xl flex-col overflow-hidden px-4 py-6 sm:py-8 lg:px-20 lg:pb-24 lg:pt-16">
+    <section className="mx-auto flex max-w-8xl flex-col overflow-hidden px-4 py-6 sm:py-8 lg:pb-24 lg:pt-16">
       <div className="flex flex-col gap-20">
-        <div className="grid gap-10 md:grid-cols-2">
+        <div className="grid gap-10 lg:grid-cols-2">
           <div className="flex flex-col justify-start gap-4 xl:max-w-[676px]">
             <div className="flex flex-col gap-4 text-left lg:gap-6">
               <h1 className="max-w-3xl text-4xl font-extrabold leading-none text-gray-900 lg:text-5xl xl:text-6xl dark:text-white">
@@ -36,7 +36,7 @@ export function HeroSection() {
               </div>
             </div>
           </div>
-          <div className="hidden items-center p-0 md:flex">
+          <div className="hidden items-center p-0 lg:flex">
             <div className="relative dark:hidden">
               <Image className="h-auto max-w-full" src="/images/gallery.png" alt="Header" width={620} height={416} />
             </div>

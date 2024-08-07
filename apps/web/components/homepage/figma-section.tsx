@@ -3,7 +3,7 @@ import Image from "next/image";
 export function FigmaSection() {
   return (
     <section className="bg-gray-50 dark:bg-gray-800">
-      <div className="mx-auto max-w-8xl px-4 py-8 lg:px-20 lg:py-24">
+      <div className="mx-auto max-w-8xl px-4 py-8 lg:py-24">
         <div className="mx-auto grid max-w-8xl grid-cols-1 items-start justify-between gap-24 py-1 lg:grid-cols-2">
           <div className="flex flex-col gap-8">
             <div className="flex w-full flex-col items-start justify-center gap-6">
@@ -20,6 +20,8 @@ export function FigmaSection() {
               <p className="self-stretch">Check out the following resources to learn more about Flowbite Figma:</p>
               <div className="isolate flex flex-col items-start gap-4 self-stretch">
                 <a
+                  rel="nofollow noopener noreferrer"
+                  target="_blank"
                   href="https://www.figma.com/file/xYaJr6UvThCW2LM2RjLeJf/flowbite-pro-figma-2.6.0?type=design&node-id=18-0&t=jKFrn2Dz5D8jhk7d-0"
                   className="inline-flex max-w-lg items-center justify-start gap-5 self-stretch rounded-lg border border-gray-300 bg-white px-4 py-3.5 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 sm:gap-7 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                 >
@@ -65,6 +67,8 @@ export function FigmaSection() {
                   </div>
                 </a>
                 <a
+                  rel="noopener"
+                  target="_blank"
                   href="https://flowbite.com/figma/"
                   className="inline-flex max-w-lg items-center justify-start gap-4 self-stretch rounded-lg border border-gray-300 bg-white px-4 py-3.5 text-center text-base font-medium text-gray-900 placeholder:py-3.5 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 sm:gap-6 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                 >

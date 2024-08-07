@@ -1,4 +1,4 @@
-import { theme } from "flowbite-react";
+import { Alert, theme } from "flowbite-react";
 import type { MDXComponents } from "mdx/types";
 import { getMDXComponent } from "next-contentlayer2/hooks";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { IntegrationGuides } from "./quickstart/integration-guides";
 import { TextDivider } from "./text-divider";
 
 const components: MDXComponents = {
+  Alert,
   TextDivider,
   IntegrationGuides,
   a: ({ ref, href = "", ...props }) => {

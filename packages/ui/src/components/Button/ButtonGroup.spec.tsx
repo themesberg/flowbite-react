@@ -26,8 +26,8 @@ describe("Components / Button group", () => {
           <Button>Two</Button>
           <Button>Three</Button>
         </Button.Group>,
-      ),
-        expect(group()).toHaveAccessibleName("My group");
+      );
+      expect(group()).toHaveAccessibleName("My group");
     });
   });
 
@@ -61,8 +61,8 @@ describe("Components / Button group", () => {
           </Button.Group>
           <Button>Outside</Button>
         </>,
-      ),
-        await user.tab();
+      );
+      await user.tab();
 
       expect(buttons()[0]).toHaveFocus();
 

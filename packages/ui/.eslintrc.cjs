@@ -21,7 +21,16 @@ module.exports = {
       parser: "@typescript-eslint/parser",
       extends: ["plugin:@typescript-eslint/recommended"],
       rules: {
-        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-unused-expressions": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            argsIgnorePattern: "^_",
+            caughtErrorsIgnorePattern: "^_",
+            destructuredArrayIgnorePattern: "^_",
+            varsIgnorePattern: "^_",
+          },
+        ],
       },
     },
   ],
@@ -42,9 +51,10 @@ module.exports = {
   ignorePatterns: ["dist"],
   rules: {
     "no-undef": "off",
-    "react/prop-types": "off",
+    "no-unused-vars": "off",
     "react/display-name": "off",
     "react/no-unescaped-entities": "off",
+    "react/prop-types": "off",
     "tailwindcss/classnames-order": "off",
     "tailwindcss/enforces-shorthand": "off",
   },

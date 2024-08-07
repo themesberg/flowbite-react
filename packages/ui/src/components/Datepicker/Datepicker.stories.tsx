@@ -40,7 +40,8 @@ const Template: StoryFn<DatepickerProps> = (args) => {
   // update defaultDate based on the range
   if (args.minDate && args.maxDate) {
     if (args.defaultDate) {
-      args.defaultDate = getFirstDateInRange(args.defaultDate, args.minDate, args.maxDate);
+      // https://github.com/storybookjs/storybook/issues/11822
+      args.defaultDate = getFirstDateInRange(new Date(args.defaultDate), args.minDate, args.maxDate);
     }
   }
 

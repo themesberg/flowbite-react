@@ -244,12 +244,11 @@ function CodePreview({
   children,
 }: PropsWithChildren<{ view: View; isRTL: boolean; isDarkMode: boolean | null; iframe?: IFrameData }>) {
   return (
-    <div
-      {...(isRTL && { dir: "rtl" })}
-      className={twMerge("code-preview-wrapper", isDarkMode !== null && (isDarkMode ? "dark" : "light"))}
-    >
+    <div {...(isRTL && { dir: "rtl" })} className="code-preview-wrapper">
       <div className="flex border-x border-gray-200 bg-white bg-gradient-to-r p-0 dark:border-gray-600 dark:bg-gray-900">
-        <div className="code-responsive-wrapper w-full">
+        <div
+          className={twMerge("code-responsive-wrapper w-full", isDarkMode !== null && (isDarkMode ? "dark" : "light"))}
+        >
           <div
             className={twMerge(
               "mx-auto w-full bg-white bg-gradient-to-r dark:bg-gray-900",
@@ -273,7 +272,8 @@ function EditOnGithubButton({ githubSlug }: { githubSlug: string }) {
   return (
     <a
       href={href}
-      rel="noreferrer nofollow noopener"
+      target="_blank"
+      rel="nofollow noopener noreferrer"
       className="inline-flex w-fit items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-center text-xs font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:text-primary-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:text-white dark:focus:ring-gray-700"
     >
       <svg
