@@ -20,7 +20,7 @@ export interface DatepickerViewsMonthsProps {
 }
 
 export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: customTheme = {} }) => {
-  const { theme: rootTheme, minDate, maxDate, selectedDate, language, setViewDate, setView } = useDatePickerContext();
+  const { theme: rootTheme, minDate, maxDate, selectedDate, viewDate, language, setViewDate, setView } = useDatePickerContext();
 
   const theme = mergeDeep(rootTheme.views.months, customTheme);
 
@@ -30,6 +30,7 @@ export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: cu
         const newDate = new Date();
         // setting day to 1 to avoid overflow issues
         newDate.setMonth(index, 1);
+        newDate.setFullYear(viewDate.getFullYear());
         const month = getFormattedDate(language, newDate, { month: "short" });
 
         const isSelected = isMonthEqual(selectedDate, newDate);
