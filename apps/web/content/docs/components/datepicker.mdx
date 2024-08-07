@@ -19,11 +19,23 @@ Use this example to show a simple datepicker component.
 
 <Example name="datepicker.root" />
 
+## Formatted Date
+
+Use this `inputFormat` prop to set the format of the datepicker component to be displayed
+
+**Note:** don't use `DD` instead use `dd` and also for year don't use `YYYY` instead use `yyyy`
+
+**Note:** `Datepicker` component relies on `date-fns` for date formatting.
+
+<Example name="datepicker.format" />
+
 ## Localization
 
 Use the `language` prop to set the language of the datepicker component.
 
 The `labelTodayButton` and `labelClearButton` can also be used to update the text of the buttons.
+
+**Note:** `Datepicker` component relies on `date-fns` for localization. Please refer to available localization from `date-fns`.
 
 <Example name="datepicker.localization" />
 

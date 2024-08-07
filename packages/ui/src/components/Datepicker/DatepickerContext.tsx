@@ -4,9 +4,12 @@ import { createContext, useContext } from "react";
 import type { FlowbiteDatepickerTheme } from "./Datepicker";
 import type { Views, WeekStart } from "./helpers";
 
+// Define a type that represents the available locales
+type AvailableLocales = keyof typeof import("date-fns/locale");
+
 type DatepickerContextProps = {
   theme: FlowbiteDatepickerTheme;
-  language: string;
+  language: AvailableLocales;
   weekStart: WeekStart;
   minDate?: Date;
   maxDate?: Date;

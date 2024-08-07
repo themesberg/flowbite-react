@@ -7,7 +7,7 @@ const code = `
 import { Datepicker } from "flowbite-react";
 
 function Component() {
-  return <Datepicker language="ptBR" labelTodayButton="Hoje" labelClearButton="Limpar" />;
+  return <Datepicker inputFormat="dd-MMM-yyyy" />;
 }
 `;
 
@@ -15,15 +15,15 @@ const codeRSC = `
 import { Datepicker } from "flowbite-react";
 
 function Component() {
-  return <Datepicker language="ptBR" labelTodayButton="Hoje" labelClearButton="Limpar" />;
+  return <Datepicker inputFormat="dd-MMM-yyyy" />;
 }
 `;
 
 function Component() {
-  return <Datepicker language="ptBR" labelTodayButton="Hoje" labelClearButton="Limpar" />;
+  return <Datepicker inputFormat="dd-MMM-yyyy" />;
 }
 
-export const localization: CodeData = {
+export const format: CodeData = {
   type: "single",
   code: [
     {
@@ -37,6 +37,6 @@ export const localization: CodeData = {
       code: codeRSC,
     },
   ],
-  githubSlug: "datepicker/datepicker.localization.tsx",
+  githubSlug: "datepicker/datepicker.format.tsx",
   component: <Component />,
 };
