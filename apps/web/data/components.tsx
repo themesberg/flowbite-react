@@ -141,6 +141,13 @@ export const COMPONENTS_DATA: Component[] = [
     classes: "w-16",
   },
   {
+    name: "Skeleton",
+    image: "/images/components/skeleton.svg",
+    imageDark: "/images/components/skeleton-dark.svg",
+    link: "/docs/components/skeleton",
+    classes: "w-48",
+  },
+  {
     name: "Pagination",
     image: "/images/components/pagination.svg",
     imageDark: "/images/components/pagination-dark.svg",

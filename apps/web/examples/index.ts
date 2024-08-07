@@ -29,6 +29,7 @@ export * as popover from "./popover";
 export * as progress from "./progress";
 export * as rating from "./rating";
 export * as sidebar from "./sidebar";
+export * as skeleton from "./skeleton";
 export * as spinner from "./spinner";
 export * as table from "./table";
 export * as tabs from "./tabs";
