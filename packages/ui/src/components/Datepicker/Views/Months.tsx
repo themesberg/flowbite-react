@@ -20,7 +20,16 @@ export interface DatepickerViewsMonthsProps {
 }
 
 export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: customTheme = {} }) => {
-  const { theme: rootTheme, minDate, maxDate, selectedDate, viewDate, language, setViewDate, setView } = useDatePickerContext();
+  const {
+    theme: rootTheme,
+    minDate,
+    maxDate,
+    selectedDate,
+    viewDate,
+    language,
+    setViewDate,
+    setView,
+  } = useDatePickerContext();
 
   const theme = mergeDeep(rootTheme.views.months, customTheme);
 
