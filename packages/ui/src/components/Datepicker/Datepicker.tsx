@@ -82,7 +82,7 @@ export interface DatepickerRef {
   clear: () => void;
 }
 
-export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
+export interface DatepickerProps extends Omit<TextInputProps, "theme" | "onChange"> {
   defaultDate?: Date;
   open?: boolean;
   inline?: boolean;
@@ -96,7 +96,7 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
   language?: string;
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
-  onSelectedDateChanged?: (date: Date) => void;
+  onChange?: (date: Date) => void;
   customValue?: Date | null;
   label?: string;
 }
@@ -118,7 +118,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     weekStart = WeekStart.Sunday,
     className,
     theme: customTheme = {},
-    onSelectedDateChanged,
+    onChange,
     label,
     customValue,
     ...props
@@ -149,8 +149,8 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   const changeSelectedDate = (date: Date | null, useAutohide: boolean) => {
     setSelectedDate(date);
 
-    if (date && onSelectedDateChanged) {
-      onSelectedDateChanged(date);
+    if (date && onChange) {
+      onChange(date);
     }
 
     if (autoHide && view === Views.Days && useAutohide == true && !inline) {
