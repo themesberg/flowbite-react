@@ -45,7 +45,7 @@ export interface DropdownProps extends Pick<FloatingProps, "placement" | "trigge
   dismissOnClick?: boolean;
   floatingArrow?: boolean;
   inline?: boolean;
-  label: ReactNode;
+  label?: ReactNode;
   theme?: DeepPartial<FlowbiteDropdownTheme>;
   enableTypeAhead?: boolean;
   renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactElement;
