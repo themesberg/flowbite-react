@@ -10,6 +10,7 @@ import { TableHeadContext } from "./TableHeadContext";
 
 export interface FlowbiteTableHeadTheme {
   base: string;
+  row: string;
   cell: FlowbiteTableHeadCellTheme;
 }
 
@@ -26,7 +27,7 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
     return (
       <TableHeadContext.Provider value={{ theme }}>
         <thead className={twMerge(theme.base, className)} ref={ref} {...props}>
-          <tr>{children}</tr>
+          {children}
         </thead>
       </TableHeadContext.Provider>
     );
