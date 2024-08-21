@@ -40,7 +40,7 @@ const Template: StoryFn<DatepickerProps> = (args) => {
     args.maxDate = new Date(args.maxDate);
   }
 
-  // update defaultValue based on the range
+  // update defaultDate based on the range
   if (args.minDate && args.maxDate) {
     if (args.defaultDate) {
       args.defaultDate = getFirstDateInRange(args.defaultDate, args.minDate, args.maxDate);
@@ -82,7 +82,7 @@ NullDateValue.args = {
   autoHide: true,
   showClearButton: true,
   showTodayButton: true,
-  value: '',
+  value: "",
   minDate: undefined,
   maxDate: undefined,
   language: "en",

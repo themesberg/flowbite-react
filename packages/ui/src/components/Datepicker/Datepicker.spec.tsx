@@ -57,17 +57,17 @@ describe("Components / Datepicker", () => {
     expect(screen.getByDisplayValue(todaysDateInDefaultLanguage)).toBeInTheDocument();
   });
 
-  it("should call `onSelectedDateChange` when a new date is selected", async () => {
-    const onSelectedDateChange = vi.fn();
+  it("should call `onChange` when a new date is selected", async () => {
+    const onChange = vi.fn();
     const todaysDayOfMonth = new Date().getDate();
     const anotherDay = todaysDayOfMonth === 1 ? 2 : 1;
 
-    render(<Datepicker onSelectedDateChanged={onSelectedDateChange} />);
+    render(<Datepicker onChange={onChange} />);
 
     await userEvent.click(screen.getByRole("textbox"));
     await userEvent.click(screen.getAllByText(anotherDay)[0]);
 
-    expect(onSelectedDateChange).toHaveBeenCalledOnce();
+    expect(onChange).toHaveBeenCalledOnce();
   });
 
   // TODO: fix
