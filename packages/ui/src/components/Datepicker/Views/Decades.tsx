@@ -33,7 +33,7 @@ export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({ theme:
         const firstDate = new Date(year, 0, 1);
         const lastDate = addYears(firstDate, 9);
 
-        const isSelected = isDateInDecade(selectedDate, year);
+        const isSelected = selectedDate && isDateInDecade(selectedDate, year);
         const isDisabled = !isDateInRange(firstDate, minDate, maxDate) && !isDateInRange(lastDate, minDate, maxDate);
 
         return (
