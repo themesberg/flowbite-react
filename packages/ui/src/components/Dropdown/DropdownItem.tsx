@@ -1,7 +1,7 @@
 "use client";
 
 import { useListItem, useMergeRefs } from "@floating-ui/react";
-import { forwardRef, type ComponentProps, type ElementType, type FC, type RefCallback } from "react";
+import { forwardRef, type ComponentProps, type ElementType, type FC, type RefCallback, MouseEvent } from "react";
 import { twMerge } from "tailwind-merge";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
 import { mergeDeep } from "../../helpers/merge-deep";
@@ -20,7 +20,7 @@ export type DropdownItemProps<T extends ElementType = "button"> = PolymorphicCom
   {
     href?: string;
     icon?: FC<ComponentProps<"svg">>;
-    onClick?: () => void;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
     theme?: DeepPartial<FlowbiteDropdownItemTheme>;
   }
 >;
@@ -49,8 +49,8 @@ export const DropdownItem = forwardRef(
           className={twMerge(theme.base, className)}
           {...theirProps}
           {...getItemProps({
-            onClick: () => {
-              onClick?.();
+            onClick: (event) => {
+              onClick?.(event);
               dismissOnClick && handleSelect(null);
             },
           })}
