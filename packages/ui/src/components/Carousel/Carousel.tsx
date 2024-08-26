@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC, ReactElement, ReactNode } from "react";
-import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Children, cloneElement, isValidElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
 import ScrollContainer from "../../helpers/drag-scroll";
@@ -88,11 +88,15 @@ export const Carousel: FC<CarouselProps> = ({
 
   const items = useMemo(
     () =>
-      Children.map(children as ReactElement[], (child: ReactElement) =>
-        cloneElement(child, {
-          className: twMerge(theme.item.base, child.props.className),
-        }),
-      ),
+      Children.map(children as ReactElement[], (child: ReactElement<CarouselProps>) => {
+        if (isValidElement(child)) {
+          return cloneElement(child as ReactElement, {
+            className: twMerge(theme.item.base, child.props.className || ""),
+          });
+        }
+        // If child is not a valid React element, return it as-is or handle it accordingly
+        return child;
+      }),
     [children, theme.item.base],
   );
 
