@@ -1,7 +1,5 @@
 import { allDocs, type Doc } from "contentlayer/generated";
-import { Footer } from "flowbite-react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
