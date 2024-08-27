@@ -32,7 +32,7 @@ export default {
   },
 } as Meta;
 
-const Template: StoryFn<DatepickerProps> = (args) => {
+const ControlledTemplate: StoryFn<DatepickerProps> = (args) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(args.value ?? null);
 
   const handleChange = (date: Date | null) => {
@@ -57,8 +57,28 @@ const Template: StoryFn<DatepickerProps> = (args) => {
 
   return <Datepicker {...args} value={selectedDate} onChange={handleChange}/>;
 };
-export const DefaultEmpty = Template.bind({});
-DefaultEmpty.args = {
+
+const Template: StoryFn<DatepickerProps> = (args) => {
+  // https://github.com/storybookjs/storybook/issues/11822
+  if (args.minDate) {
+    args.minDate = new Date(args.minDate);
+  }
+  if (args.maxDate) {
+    args.maxDate = new Date(args.maxDate);
+  }
+
+  // update defaultDate based on the range
+  if (args.minDate && args.maxDate) {
+    if (args.defaultDate) {
+      args.defaultDate = getFirstDateInRange(args.defaultDate, args.minDate, args.maxDate);
+    }
+  }
+
+  return <Datepicker {...args}/>;
+};
+
+export const ControlledDefaultEmpty = ControlledTemplate.bind({});
+ControlledDefaultEmpty.args = {
   open: false,
   autoHide: true,
   showClearButton: true,
@@ -103,7 +123,6 @@ DateValueSet.args = {
   autoHide: true,
   showClearButton: true,
   showTodayButton: true,
-  customValue: new Date(2022, 11, 25),
   minDate: undefined,
   maxDate: undefined,
   language: "en",
