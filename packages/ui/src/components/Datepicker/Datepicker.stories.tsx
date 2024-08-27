@@ -2,6 +2,7 @@ import type { Meta, StoryFn } from "@storybook/react";
 import type { DatepickerProps } from "./Datepicker";
 import { Datepicker } from "./Datepicker";
 import { getFirstDateInRange, WeekStart } from "./helpers";
+import { useState } from "react";
 
 export default {
   title: "Components/Datepicker",
@@ -32,6 +33,13 @@ export default {
 } as Meta;
 
 const Template: StoryFn<DatepickerProps> = (args) => {
+  const [selectedDate, setSelectedDate] = useState<Date | null>(args.value ?? null);
+
+  const handleChange = (date: Date | null) => {
+    setSelectedDate(date);
+  };
+
+
   // https://github.com/storybookjs/storybook/issues/11822
   if (args.minDate) {
     args.minDate = new Date(args.minDate);
@@ -47,7 +55,7 @@ const Template: StoryFn<DatepickerProps> = (args) => {
     }
   }
 
-  return <Datepicker {...args} />;
+  return <Datepicker {...args} value={selectedDate} onChange={handleChange}/>;
 };
 export const DefaultEmpty = Template.bind({});
 DefaultEmpty.args = {
@@ -56,11 +64,12 @@ DefaultEmpty.args = {
   showClearButton: true,
   showTodayButton: true,
   defaultValue: undefined,
-  value: undefined,
+  value: null,
   minDate: undefined,
   maxDate: undefined,
   language: "en",
   theme: {},
+  label: "No date selected",
 };
 
 export const Default = Template.bind({});
@@ -82,7 +91,6 @@ NullDateValue.args = {
   autoHide: true,
   showClearButton: true,
   showTodayButton: true,
-  value: "",
   minDate: undefined,
   maxDate: undefined,
   language: "en",

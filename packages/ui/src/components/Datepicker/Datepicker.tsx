@@ -82,7 +82,7 @@ export interface DatepickerRef {
   clear: () => void;
 }
 
-export interface DatepickerProps extends Omit<TextInputProps, "theme" | "onChange"> {
+export interface DatepickerProps extends Omit<TextInputProps, "theme" | "onChange" | "value"> {
   defaultDate?: Date;
   open?: boolean;
   inline?: boolean;
@@ -97,7 +97,7 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme" | "onChang
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
   onChange?: (date: Date) => void;
-  customValue?: Date | null;
+  value?: Date | null;
   label?: string;
 }
 
@@ -120,7 +120,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     theme: customTheme = {},
     onChange,
     label,
-    customValue,
+    value,
     ...props
   },
   ref,
@@ -138,9 +138,9 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   const [isOpen, setIsOpen] = useState(open);
   const [view, setView] = useState<Views>(Views.Days);
   // selectedDate is the date selected by the user
-  const [selectedDate, setSelectedDate] = useState<Date | null>(customValue ?? effectiveDefaultValue);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(value ?? effectiveDefaultValue);
   // viewDate is only for navigation
-  const [viewDate, setViewDate] = useState<Date>(customValue ?? effectiveDefaultView);
+  const [viewDate, setViewDate] = useState<Date>(value ?? effectiveDefaultView);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const datepickerRef = useRef<HTMLDivElement>(null);
@@ -251,15 +251,17 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   }, [inputRef, datepickerRef, setIsOpen]);
 
   useEffect(() => {
-    if (customValue !== undefined && customValue !== selectedDate) {
-      setSelectedDate(customValue);
-      customValue && setViewDate(customValue);
+    const effectiveValue = value && getFirstDateInRange(new Date(value), minDate, maxDate);
+    const effectiveSelectedDate = selectedDate && getFirstDateInRange(new Date(selectedDate), minDate, maxDate);
+    if (effectiveSelectedDate && effectiveValue && !isDateEqual(effectiveValue, effectiveSelectedDate)) {
+      setSelectedDate(effectiveValue);
     }
     if (selectedDate == null) {
       setSelectedDate(effectiveDefaultValue);
-      setViewDate(effectiveDefaultView);
     }
-  }, [customValue, setSelectedDate, setViewDate, selectedDate]);
+  }, [value, setSelectedDate, setViewDate, selectedDate]);
+
+  const displayValue = value === null ? label : getFormattedDate(language, selectedDate || new Date());
 
   return (
     <DatepickerContext.Provider
@@ -292,7 +294,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
               }
               setIsOpen(true);
             }}
-            value={selectedDate ? getFormattedDate(language, selectedDate) : label}
+            value={displayValue}
             readOnly
             defaultValue={effectiveDefaultValue ? getFormattedDate(language, effectiveDefaultValue) : label}
             {...props}
