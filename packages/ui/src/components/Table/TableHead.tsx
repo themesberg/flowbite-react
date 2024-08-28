@@ -7,10 +7,11 @@ import type { DeepPartial } from "../../types";
 import { useTableContext } from "./TableContext";
 import type { FlowbiteTableHeadCellTheme } from "./TableHeadCell";
 import { TableHeadContext } from "./TableHeadContext";
+import { FlowbiteTableHeadRowTheme } from "./TableHeadRow";
 
 export interface FlowbiteTableHeadTheme {
   base: string;
-  row: string;
+  row: FlowbiteTableHeadRowTheme;
   cell: FlowbiteTableHeadCellTheme;
 }
 
