@@ -1,8 +1,8 @@
 import type { Meta, StoryFn } from "@storybook/react";
+import { useState } from "react";
 import type { DatepickerProps } from "./Datepicker";
 import { Datepicker } from "./Datepicker";
 import { getFirstDateInRange, WeekStart } from "./helpers";
-import { useState } from "react";
 
 export default {
   title: "Components/Datepicker",
@@ -39,7 +39,6 @@ const ControlledTemplate: StoryFn<DatepickerProps> = (args) => {
     setSelectedDate(date);
   };
 
-
   // https://github.com/storybookjs/storybook/issues/11822
   if (args.minDate) {
     args.minDate = new Date(args.minDate);
@@ -55,7 +54,7 @@ const ControlledTemplate: StoryFn<DatepickerProps> = (args) => {
     }
   }
 
-  return <Datepicker {...args} value={selectedDate} onChange={handleChange}/>;
+  return <Datepicker {...args} value={selectedDate} onChange={handleChange} />;
 };
 
 const Template: StoryFn<DatepickerProps> = (args) => {
@@ -74,7 +73,7 @@ const Template: StoryFn<DatepickerProps> = (args) => {
     }
   }
 
-  return <Datepicker {...args}/>;
+  return <Datepicker {...args} />;
 };
 
 export const ControlledDefaultEmpty = ControlledTemplate.bind({});
