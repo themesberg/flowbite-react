@@ -129,11 +129,11 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
 
   const effectiveDefaultValue = useMemo(() => {
     return getFirstDateInRange(defaultValue, minDate, maxDate);
-  }, []);
+  }, [defaultValue, minDate, maxDate]);
 
   const effectiveDefaultView = useMemo(() => {
     return defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : new Date();
-  }, []);
+  }, [defaultValue, minDate, maxDate]);
 
   const [isOpen, setIsOpen] = useState(open);
   const [view, setView] = useState<Views>(Views.Days);
