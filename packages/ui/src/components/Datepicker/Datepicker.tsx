@@ -77,13 +77,13 @@ export interface DatepickerRef {
    */
   focus: () => void;
   /**
-   * Clears the datepicker value back to the defaultDate.
+   * Clears the datepicker value back to the defaultValue.
    */
   clear: () => void;
 }
 
-export interface DatepickerProps extends Omit<TextInputProps, "theme" | "onChange" | "value"> {
-  defaultDate?: Date;
+export interface DatepickerProps extends Omit<TextInputProps, "theme" | "onChange" | "value" | "defaultValue"> {
+  defaultValue?: Date;
   open?: boolean;
   inline?: boolean;
   autoHide?: boolean;
@@ -111,7 +111,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     labelClearButton = "Clear",
     showTodayButton = true,
     labelTodayButton = "Today",
-    defaultDate = new Date(),
+    defaultValue = new Date(),
     minDate,
     maxDate,
     language = "en",
@@ -128,11 +128,11 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   const theme = mergeDeep(getTheme().datepicker, customTheme);
 
   const effectiveDefaultValue = useMemo(() => {
-    return getFirstDateInRange(defaultDate, minDate, maxDate);
+    return getFirstDateInRange(defaultValue, minDate, maxDate);
   }, []);
 
   const effectiveDefaultView = useMemo(() => {
-    return defaultDate ? getFirstDateInRange(defaultDate, minDate, maxDate) : new Date();
+    return defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : new Date();
   }, []);
 
   const [isOpen, setIsOpen] = useState(open);
@@ -159,9 +159,9 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   };
 
   const clearDate = () => {
-    changeSelectedDate(defaultDate, true);
-    if (defaultDate) {
-      setViewDate(defaultDate);
+    changeSelectedDate(defaultValue, true);
+    if (defaultValue) {
+      setViewDate(defaultValue);
     }
   };
 

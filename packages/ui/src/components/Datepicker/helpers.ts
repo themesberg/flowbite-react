@@ -38,7 +38,6 @@ export const isDateInRange = (date: Date, minDate?: Date, maxDate?: Date): boole
 };
 
 export const isDateEqual = (date: Date, selectedDate: Date): boolean => {
-  debugger
   date = new Date(date.getFullYear(), date.getMonth(), date.getDate());
   selectedDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
 

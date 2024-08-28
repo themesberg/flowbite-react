@@ -48,10 +48,10 @@ const ControlledTemplate: StoryFn<DatepickerProps> = (args) => {
     args.maxDate = new Date(args.maxDate);
   }
 
-  // update defaultDate based on the range
+  // update defaultValue based on the range
   if (args.minDate && args.maxDate) {
-    if (args.defaultDate) {
-      args.defaultDate = getFirstDateInRange(args.defaultDate, args.minDate, args.maxDate);
+    if (args.defaultValue) {
+      args.defaultValue = getFirstDateInRange(args.defaultValue, args.minDate, args.maxDate);
     }
   }
 
@@ -67,10 +67,10 @@ const Template: StoryFn<DatepickerProps> = (args) => {
     args.maxDate = new Date(args.maxDate);
   }
 
-  // update defaultDate based on the range
+  // update defaultValue based on the range
   if (args.minDate && args.maxDate) {
-    if (args.defaultDate) {
-      args.defaultDate = getFirstDateInRange(args.defaultDate, args.minDate, args.maxDate);
+    if (args.defaultValue) {
+      args.defaultValue = getFirstDateInRange(args.defaultValue, args.minDate, args.maxDate);
     }
   }
 
