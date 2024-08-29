@@ -96,7 +96,7 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme" | "onChang
   language?: string;
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
-  onChange?: (date: Date) => void;
+  onChange?: (date: Date | null) => void;
   value?: Date | null;
   label?: string;
 }
@@ -129,11 +129,11 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
 
   const effectiveDefaultValue = useMemo(() => {
     return getFirstDateInRange(defaultValue, minDate, maxDate);
-  }, [defaultValue, minDate, maxDate]);
+  }, []);
 
   const effectiveDefaultView = useMemo(() => {
     return defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : new Date();
-  }, [defaultValue, minDate, maxDate]);
+  }, []);
 
   const [isOpen, setIsOpen] = useState(open);
   const [view, setView] = useState<Views>(Views.Days);
@@ -149,7 +149,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   const changeSelectedDate = (date: Date | null, useAutohide: boolean) => {
     setSelectedDate(date);
 
-    if (date && onChange) {
+    if ((date === null || date) && onChange) {
       onChange(date);
     }
 
@@ -359,6 +359,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
                       type="button"
                       className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
                       onClick={() => {
+                        debugger;
                         changeSelectedDate(null, true);
                       }}
                     >

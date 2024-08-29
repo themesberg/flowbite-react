@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { DatepickerProps } from "./Datepicker";
 import { Datepicker } from "./Datepicker";
 import { getFirstDateInRange, WeekStart } from "./helpers";
@@ -38,6 +38,11 @@ const ControlledTemplate: StoryFn<DatepickerProps> = (args) => {
   const handleChange = (date: Date | null) => {
     setSelectedDate(date);
   };
+
+  useEffect(() => {
+    const date = args.value && new Date(args.value);
+    setSelectedDate(date ?? null);
+  }, [args.value]);
 
   // https://github.com/storybookjs/storybook/issues/11822
   if (args.minDate) {
@@ -82,7 +87,6 @@ ControlledDefaultEmpty.args = {
   autoHide: true,
   showClearButton: true,
   showTodayButton: true,
-  defaultValue: undefined,
   value: null,
   minDate: undefined,
   maxDate: undefined,
