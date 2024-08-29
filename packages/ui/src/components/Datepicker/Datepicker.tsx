@@ -359,7 +359,6 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
                       type="button"
                       className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
                       onClick={() => {
-                        debugger;
                         changeSelectedDate(null, true);
                       }}
                     >
