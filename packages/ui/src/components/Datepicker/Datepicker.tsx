@@ -111,7 +111,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     labelClearButton = "Clear",
     showTodayButton = true,
     labelTodayButton = "Today",
-    defaultValue = new Date(),
+    defaultValue,
     minDate,
     maxDate,
     language = "en",
@@ -126,10 +126,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   ref,
 ) => {
   const theme = mergeDeep(getTheme().datepicker, customTheme);
-
-  const effectiveDefaultValue = useMemo(() => {
-    return getFirstDateInRange(defaultValue, minDate, maxDate);
-  }, []);
+  const initialDate = defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : null;
 
   const effectiveDefaultView = useMemo(() => {
     return defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : new Date();
@@ -138,7 +135,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   const [isOpen, setIsOpen] = useState(open);
   const [view, setView] = useState<Views>(Views.Days);
   // selectedDate is the date selected by the user
-  const [selectedDate, setSelectedDate] = useState<Date | null>(value ?? effectiveDefaultValue);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(value ?? initialDate);
   // viewDate is only for navigation
   const [viewDate, setViewDate] = useState<Date>(value ?? effectiveDefaultView);
 
@@ -159,7 +156,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   };
 
   const clearDate = () => {
-    changeSelectedDate(defaultValue, true);
+    changeSelectedDate(initialDate, true);
     if (defaultValue) {
       setViewDate(defaultValue);
     }
@@ -257,7 +254,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
       setSelectedDate(effectiveValue);
     }
     if (selectedDate == null) {
-      setSelectedDate(effectiveDefaultValue);
+      setSelectedDate(initialDate);
     }
   }, [value, setSelectedDate, setViewDate, selectedDate]);
 
@@ -296,7 +293,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
             }}
             value={displayValue}
             readOnly
-            defaultValue={effectiveDefaultValue ? getFormattedDate(language, effectiveDefaultValue) : label}
+            defaultValue={initialDate ? getFormattedDate(language, initialDate) : label}
             {...props}
           />
         )}

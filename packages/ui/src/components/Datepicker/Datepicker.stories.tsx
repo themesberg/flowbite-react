@@ -129,6 +129,7 @@ DateValueSet.args = {
   minDate: undefined,
   maxDate: undefined,
   language: "en",
+  defaultValue: new Date(),
   theme: {},
 };
 
