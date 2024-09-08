@@ -1,9 +1,9 @@
 "use client";
 
 import { createContext, useContext } from "react";
+import { DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteRatingTheme } from "./Rating";
 import type { FlowbiteStarSizes } from "./RatingStar";
-import { DynamicStringEnumKeysOf } from "../../types";
 
 export type RatingContext = {
   theme: FlowbiteRatingTheme;
