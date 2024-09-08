@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import { HelperText } from "../HelperText";
 import type { FlowbiteTextInputColors, FlowbiteTextInputSizes } from "../TextInput";
 
@@ -28,9 +28,9 @@ export interface FlowbiteFileInputFieldInputTheme {
 }
 
 export interface FileInputProps extends Omit<ComponentProps<"input">, "type" | "ref" | "color"> {
-  color?: keyof FlowbiteTextInputColors;
+  color?: DynamicStringEnumKeysOf<FlowbiteTextInputColors>;
   helperText?: ReactNode;
-  sizing?: keyof FlowbiteTextInputSizes;
+  sizing?: DynamicStringEnumKeysOf<FlowbiteTextInputSizes>;
   theme?: DeepPartial<FlowbiteFileInputTheme>;
 }
 

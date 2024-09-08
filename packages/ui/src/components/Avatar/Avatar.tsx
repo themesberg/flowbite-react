@@ -65,9 +65,9 @@ export interface AvatarProps extends Omit<ComponentProps<"div">, "color"> {
   alt?: string;
   bordered?: boolean;
   img?: string | ((props: AvatarImageProps) => ReactElement);
-  color?: keyof AvatarColors;
+  color?: DynamicStringEnumKeysOf<AvatarColors>;
   rounded?: boolean;
-  size?: keyof AvatarSizes;
+  size?: DynamicStringEnumKeysOf<AvatarSizes>;
   stacked?: boolean;
   status?: "away" | "busy" | "offline" | "online";
   statusPosition?: keyof FlowbitePositions;

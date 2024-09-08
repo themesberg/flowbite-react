@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors } from "../Flowbite";
 
 export interface FlowbiteCheckboxTheme {
@@ -16,7 +16,7 @@ export interface FlowbiteCheckboxRootTheme {
 
 export interface CheckboxProps extends Omit<ComponentProps<"input">, "type" | "ref" | "color"> {
   theme?: DeepPartial<FlowbiteCheckboxTheme>;
-  color?: keyof FlowbiteColors;
+  color?: DynamicStringEnumKeysOf<FlowbiteColors>;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(

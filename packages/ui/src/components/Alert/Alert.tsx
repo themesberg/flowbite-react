@@ -3,7 +3,7 @@ import { HiX } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors } from "../Flowbite";
 
 export interface FlowbiteAlertTheme {
@@ -24,7 +24,7 @@ export interface FlowbiteAlertCloseButtonTheme {
 
 export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
   additionalContent?: ReactNode;
-  color?: keyof FlowbiteColors;
+  color?: DynamicStringEnumKeysOf<FlowbiteColors>;
   icon?: FC<ComponentProps<"svg">>;
   onDismiss?: boolean | (() => void);
   rounded?: boolean;

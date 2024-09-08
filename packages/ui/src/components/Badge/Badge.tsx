@@ -2,7 +2,7 @@ import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite";
 
 export interface FlowbiteBadgeTheme {
@@ -26,10 +26,10 @@ export interface BadgeSizes extends Pick<FlowbiteSizes, "xs" | "sm"> {
 }
 
 export interface BadgeProps extends Omit<ComponentProps<"span">, "color"> {
-  color?: keyof FlowbiteColors;
+  color?: DynamicStringEnumKeysOf<FlowbiteColors>;
   href?: string;
   icon?: FC<ComponentProps<"svg">>;
-  size?: keyof BadgeSizes;
+  size?: DynamicStringEnumKeysOf<BadgeSizes>;
   theme?: DeepPartial<FlowbiteBadgeTheme>;
 }
 

@@ -3,10 +3,11 @@
 import { createContext, useContext } from "react";
 import type { FlowbiteRatingTheme } from "./Rating";
 import type { FlowbiteStarSizes } from "./RatingStar";
+import { DynamicStringEnumKeysOf } from "../../types";
 
 export type RatingContext = {
   theme: FlowbiteRatingTheme;
-  size?: keyof FlowbiteStarSizes;
+  size?: DynamicStringEnumKeysOf<FlowbiteStarSizes>;
 };
 
 export const RatingContext = createContext<RatingContext | undefined>(undefined);

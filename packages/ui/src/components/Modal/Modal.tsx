@@ -16,7 +16,7 @@ import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from "../Flowbite";
 import type { FlowbiteModalBodyTheme } from "./ModalBody";
 import { ModalBody } from "./ModalBody";
@@ -56,11 +56,11 @@ export interface ModalSizes extends Omit<FlowbiteSizes, "xs"> {
 
 export interface ModalProps extends ComponentPropsWithoutRef<"div"> {
   onClose?: () => void;
-  position?: keyof ModalPositions;
+  position?: DynamicStringEnumKeysOf<ModalPositions>;
   popup?: boolean;
   root?: HTMLElement;
   show?: boolean;
-  size?: keyof ModalSizes;
+  size?: DynamicStringEnumKeysOf<ModalSizes>;
   dismissible?: boolean;
   theme?: DeepPartial<FlowbiteModalTheme>;
   initialFocus?: number | MutableRefObject<HTMLElement | null>;

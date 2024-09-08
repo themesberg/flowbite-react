@@ -4,7 +4,7 @@ import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } fr
 import { forwardRef, useId } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import { Badge } from "../Badge";
 import type { FlowbiteColors } from "../Flowbite";
 import { Tooltip } from "../Tooltip";
@@ -35,7 +35,7 @@ export interface SidebarItemProps extends Omit<ComponentProps<"div">, "ref">, Re
   href?: string;
   icon?: FC<ComponentProps<"svg">>;
   label?: string;
-  labelColor?: keyof SidebarItemLabelColors;
+  labelColor?: DynamicStringEnumKeysOf<SidebarItemLabelColors>;
   theme?: DeepPartial<FlowbiteSidebarItemTheme>;
 }
 

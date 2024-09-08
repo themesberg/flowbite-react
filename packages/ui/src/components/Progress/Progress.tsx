@@ -3,7 +3,7 @@ import { useId } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite";
 
 export interface FlowbiteProgressTheme {
@@ -31,7 +31,7 @@ export interface ProgressProps extends ComponentProps<"div"> {
   labelText?: boolean;
   progress: number;
   progressLabelPosition?: "inside" | "outside";
-  size?: keyof ProgressSizes;
+  size?: DynamicStringEnumKeysOf<ProgressSizes>;
   textLabel?: string;
   textLabelPosition?: "inside" | "outside";
   theme?: DeepPartial<FlowbiteProgressTheme>;

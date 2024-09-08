@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite";
 import { HelperText } from "../HelperText";
 
@@ -37,11 +37,11 @@ export interface SelectSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg"> {
 
 export interface SelectProps extends Omit<ComponentProps<"select">, "color" | "ref"> {
   addon?: ReactNode;
-  color?: keyof SelectColors;
+  color?: DynamicStringEnumKeysOf<SelectColors>;
   helperText?: ReactNode;
   icon?: FC<ComponentProps<"svg">>;
   shadow?: boolean;
-  sizing?: keyof SelectSizes;
+  sizing?: DynamicStringEnumKeysOf<SelectSizes>;
   theme?: DeepPartial<FlowbiteSelectTheme>;
 }
 

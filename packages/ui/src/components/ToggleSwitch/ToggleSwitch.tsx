@@ -3,7 +3,7 @@ import { forwardRef, useId } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite";
 import type { FlowbiteTextInputSizes } from "../TextInput";
 
@@ -28,8 +28,8 @@ export interface FlowbiteToggleSwitchToggleTheme {
 
 export type ToggleSwitchProps = Omit<ComponentProps<"button">, "onChange" | "ref"> & {
   checked: boolean;
-  color?: keyof FlowbiteColors;
-  sizing?: keyof FlowbiteTextInputSizes;
+  color?: DynamicStringEnumKeysOf<FlowbiteColors>;
+  sizing?: DynamicStringEnumKeysOf<FlowbiteTextInputSizes>;
   label?: string;
   onChange: (checked: boolean) => void;
   theme?: DeepPartial<FlowbiteToggleSwitchTheme>;

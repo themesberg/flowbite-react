@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite";
 import { HelperText } from "../HelperText";
 
@@ -18,7 +18,7 @@ export interface TextareaColors extends Pick<FlowbiteColors, "gray" | "info" | "
 }
 
 export interface TextareaProps extends Omit<ComponentProps<"textarea">, "color" | "ref"> {
-  color?: keyof TextareaColors;
+  color?: DynamicStringEnumKeysOf<TextareaColors>;
   helperText?: ReactNode;
   shadow?: boolean;
   theme?: DeepPartial<FlowbiteTextareaTheme>;
