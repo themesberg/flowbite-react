@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import { RatingAdvanced } from "./RatingAdvanced";
 import { RatingContext } from "./RatingContext";
 import type { FlowbiteRatingStarTheme, FlowbiteStarSizes } from "./RatingStar";
@@ -18,7 +18,7 @@ export interface FlowbiteRatingTheme {
 }
 
 export interface RatingProps extends ComponentProps<"div"> {
-  size?: keyof FlowbiteStarSizes;
+  size?: DynamicStringEnumKeysOf<FlowbiteStarSizes>;
   theme?: DeepPartial<FlowbiteRatingTheme>;
 }
 

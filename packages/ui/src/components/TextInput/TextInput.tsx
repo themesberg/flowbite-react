@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite";
 import { HelperText } from "../HelperText";
 
@@ -43,12 +43,12 @@ export interface FlowbiteTextInputSizes extends Pick<FlowbiteSizes, "sm" | "md" 
 
 export interface TextInputProps extends Omit<ComponentProps<"input">, "ref" | "color"> {
   addon?: ReactNode;
-  color?: keyof FlowbiteTextInputColors;
+  color?: DynamicStringEnumKeysOf<FlowbiteTextInputColors>;
   helperText?: ReactNode;
   icon?: FC<ComponentProps<"svg">>;
   rightIcon?: FC<ComponentProps<"svg">>;
   shadow?: boolean;
-  sizing?: keyof FlowbiteTextInputSizes;
+  sizing?: DynamicStringEnumKeysOf<FlowbiteTextInputSizes>;
   theme?: DeepPartial<FlowbiteTextInputTheme>;
 }
 

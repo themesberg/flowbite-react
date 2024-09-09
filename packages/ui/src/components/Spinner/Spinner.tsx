@@ -2,7 +2,7 @@ import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite";
 
 export interface FlowbiteSpinnerTheme {
@@ -31,9 +31,9 @@ export interface SpinnerSizes extends Pick<FlowbiteSizes, "xs" | "sm" | "md" | "
 }
 
 export interface SpinnerProps extends Omit<ComponentProps<"span">, "color"> {
-  color?: keyof SpinnerColors;
+  color?: DynamicStringEnumKeysOf<SpinnerColors>;
   light?: boolean;
-  size?: keyof SpinnerSizes;
+  size?: DynamicStringEnumKeysOf<SpinnerSizes>;
   theme?: DeepPartial<FlowbiteSpinnerTheme>;
 }
 

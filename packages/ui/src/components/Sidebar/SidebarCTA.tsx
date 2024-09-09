@@ -3,7 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors } from "../Flowbite";
 import { useSidebarContext } from "./SidebarContext";
 
@@ -13,7 +13,7 @@ export interface FlowbiteSidebarCTATheme {
 }
 
 export interface SidebarCTAProps extends Omit<ComponentProps<"div">, "color"> {
-  color?: keyof FlowbiteSidebarCTAColors;
+  color?: DynamicStringEnumKeysOf<FlowbiteSidebarCTAColors>;
   theme?: DeepPartial<FlowbiteSidebarCTATheme>;
 }
 

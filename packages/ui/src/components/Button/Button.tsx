@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type {
   FlowbiteBoolean,
   FlowbiteColors,
@@ -71,10 +71,10 @@ export type ButtonProps<T extends ElementType = "button"> = PolymorphicComponent
   T,
   {
     href?: string;
-    color?: keyof FlowbiteColors;
+    color?: DynamicStringEnumKeysOf<FlowbiteColors>;
     fullSized?: boolean;
-    gradientDuoTone?: keyof ButtonGradientDuoToneColors;
-    gradientMonochrome?: keyof ButtonGradientColors;
+    gradientDuoTone?: DynamicStringEnumKeysOf<ButtonGradientDuoToneColors>;
+    gradientMonochrome?: DynamicStringEnumKeysOf<ButtonGradientColors>;
     target?: string;
     isProcessing?: boolean;
     processingLabel?: string;
@@ -83,7 +83,7 @@ export type ButtonProps<T extends ElementType = "button"> = PolymorphicComponent
     outline?: boolean;
     pill?: boolean;
     positionInGroup?: keyof PositionInButtonGroup;
-    size?: keyof ButtonSizes;
+    size?: DynamicStringEnumKeysOf<ButtonSizes>;
     theme?: DeepPartial<FlowbiteButtonTheme>;
   }
 >;

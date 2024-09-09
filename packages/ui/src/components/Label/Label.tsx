@@ -2,7 +2,7 @@ import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteStateColors } from "../Flowbite";
 
 export interface FlowbiteLabelTheme {
@@ -21,7 +21,7 @@ export interface LabelColors extends FlowbiteStateColors {
 }
 
 export interface LabelProps extends Omit<ComponentProps<"label">, "color"> {
-  color?: keyof LabelColors;
+  color?: DynamicStringEnumKeysOf<LabelColors>;
   disabled?: boolean;
   theme?: DeepPartial<FlowbiteLabelTheme>;
   value?: string;

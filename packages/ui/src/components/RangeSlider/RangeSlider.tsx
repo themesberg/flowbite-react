@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteTextInputSizes } from "../TextInput";
 
 export interface FlowbiteRangeSliderTheme {
@@ -24,7 +24,7 @@ export interface FlowbiteRangeSliderFieldTheme {
 }
 
 export interface RangeSliderProps extends Omit<ComponentProps<"input">, "ref" | "type"> {
-  sizing?: keyof FlowbiteTextInputSizes;
+  sizing?: DynamicStringEnumKeysOf<FlowbiteTextInputSizes>;
   theme?: DeepPartial<FlowbiteRangeSliderTheme>;
 }
 
