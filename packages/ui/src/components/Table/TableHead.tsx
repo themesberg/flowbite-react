@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, type ComponentPropsWithRef } from "react";
+import { forwardRef, type ComponentPropsWithRef, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import type { DeepPartial } from "../../types";
@@ -15,10 +15,11 @@ export interface FlowbiteTableHeadTheme {
 
 export interface TableHeadProps extends ComponentPropsWithRef<"thead"> {
   theme?: DeepPartial<FlowbiteTableHeadTheme>;
+  renderHead: () => ReactNode; // Add renderHead prop for custom rendering
 }
 
 export const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
-  ({ children, className, theme: customTheme = {}, ...props }, ref) => {
+  ({ className, theme: customTheme = {}, renderHead, ...props }, ref) => {
     const { theme: rootTheme } = useTableContext();
 
     const theme = mergeDeep(rootTheme.head, customTheme);
@@ -26,7 +27,7 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
     return (
       <TableHeadContext.Provider value={{ theme }}>
         <thead className={twMerge(theme.base, className)} ref={ref} {...props}>
-          <tr>{children}</tr>
+        {renderHead ? renderHead() : null} {/* Call renderHead to render the header rows */}
         </thead>
       </TableHeadContext.Provider>
     );
