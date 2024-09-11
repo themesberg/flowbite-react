@@ -20,6 +20,8 @@ export interface FlowbiteModalHeaderTheme {
 export interface ModalHeaderProps extends ComponentProps<"div"> {
   as?: ElementType;
   theme?: DeepPartial<FlowbiteModalHeaderTheme>;
+  // New prop for custom aria-label
+  closeButtonLabel?: string; 
 }
 
 export const ModalHeader: FC<ModalHeaderProps> = ({
@@ -28,6 +30,8 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   className,
   theme: customTheme = {},
   id,
+  // Default to 'Close' if not provided
+  closeButtonLabel = "Close", 
   ...props
 }) => {
   const innerHeaderId = useId();
