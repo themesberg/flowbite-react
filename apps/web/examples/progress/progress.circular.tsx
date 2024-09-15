@@ -12,10 +12,10 @@ export function Component() {
 `;
 
 const codeRSC = `
-import { Progress } from "flowbite-react";
+import { ProgressCircular } from "flowbite-react";
 
 export function Component() {
-  return <Progress.Circular progress={45} />;
+  return <ProgressCircular progress={45} />;
 }
 `;
 
