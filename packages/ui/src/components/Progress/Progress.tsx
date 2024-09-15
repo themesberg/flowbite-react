@@ -5,6 +5,8 @@ import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite";
+import type { FlowbiteCircularProgressTheme } from "./ProgressCircular";
+import { CircularProgress } from "./ProgressCircular";
 
 export interface FlowbiteProgressTheme {
   base: string;
@@ -12,6 +14,7 @@ export interface FlowbiteProgressTheme {
   bar: string;
   color: ProgressColor;
   size: ProgressSizes;
+  circular: FlowbiteCircularProgressTheme;
 }
 
 export interface ProgressColor
@@ -37,7 +40,7 @@ export interface ProgressProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteProgressTheme>;
 }
 
-export const Progress: FC<ProgressProps> = ({
+const ProgressComponent: FC<ProgressProps> = ({
   className,
   color = "cyan",
   labelProgress = false,
@@ -83,4 +86,8 @@ export const Progress: FC<ProgressProps> = ({
   );
 };
 
-Progress.displayName = "Progress";
+ProgressComponent.displayName = "Progress";
+
+export const Progress = Object.assign(ProgressComponent, {
+  Circular: CircularProgress,
+});
