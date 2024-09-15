@@ -7,20 +7,20 @@ const code = `
 import { Progress } from "flowbite-react";
 
 export function Component() {
-  return <Progress.Circular progress={45} textLabel="45%" />;
+  return <Progress.Circular progress={45} labelText textLabel="45%" />;
 }
 `;
 
 const codeRSC = `
-import { Progress } from "flowbite-react";
+import { ProgressCircular } from "flowbite-react";
 
 export function Component() {
-  return <Progress.Circular progress={45} textLabel="45%" />;
+  return <ProgressCircular progress={45} labelText textLabel="45%" />;
 }
 `;
 
 export function Component() {
-  return <Progress.Circular progress={45} textLabel="45%" />;
+  return <Progress.Circular progress={45} labelText textLabel="45%" />;
 }
 
 export const circularProgressWithText: CodeData = {
