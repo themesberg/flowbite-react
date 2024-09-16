@@ -6,7 +6,18 @@ import { rollupPluginUseClient } from "rollup-plugin-use-client";
 import packageJson from "./package.json";
 
 const componentEntries = await glob("src/components/**/index.ts");
-const entries = ["src/index.ts", "src/tailwind.ts", ...componentEntries];
+const helperEntries = await glob("src/helpers/**/index.ts");
+const hooksEntries = await glob("src/hooks/**/index.ts");
+const themeStoreEntries = await glob("src/theme-store/**/index.ts");
+const entries = [
+  "src/index.ts",
+  "src/tailwind.ts",
+  "src/theme.ts",
+  ...helperEntries,
+  ...hooksEntries,
+  ...themeStoreEntries,
+  ...componentEntries,
+];
 const external = [
   "flowbite/plugin",
   "react/jsx-runtime",
