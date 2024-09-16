@@ -5,3 +5,4 @@ export type {
   FlowbiteRangeSliderTheme,
   RangeSliderProps,
 } from "./RangeSlider";
+export { rangeSliderTheme } from "./theme";

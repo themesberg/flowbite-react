@@ -5,3 +5,4 @@ export type {
   FlowbiteToggleSwitchToggleTheme,
   ToggleSwitchProps,
 } from "./ToggleSwitch";
+export { toggleSwitchTheme } from "./theme";

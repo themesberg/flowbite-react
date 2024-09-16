@@ -14,3 +14,4 @@ export { FooterLinkGroup } from "./FooterLinkGroup";
 export type { FlowbiteFooterLinkGroupTheme, FooterLinkGroupProps } from "./FooterLinkGroup";
 export { FooterTitle } from "./FooterTitle";
 export type { FlowbiteFooterTitleTheme, FooterTitleProps } from "./FooterTitle";
+export { footerTheme } from "./theme";

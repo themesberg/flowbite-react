@@ -6,3 +6,4 @@ export type {
   FloatingLabelVariant,
 } from "./FloatingLabel";
 export type { FlowbiteFloatingLabelTheme } from "./theme";
+export { floatingLabelTheme } from "./theme";

@@ -6,3 +6,4 @@ export type {
   FlowbiteBadgeRootTheme,
   FlowbiteBadgeTheme,
 } from "./Badge";
+export { badgeTheme } from "./theme";

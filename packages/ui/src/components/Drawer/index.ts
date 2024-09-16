@@ -6,3 +6,4 @@ export type { DrawerHeaderProps, FlowbiteDrawerHeaderTheme } from "./DrawerHeade
 
 export { DrawerItems } from "./DrawerItems";
 export type { DrawerItemsProps, FlowbiteDrawerItemsTheme } from "./DrawerItems";
+export { drawerTheme } from "./theme";

@@ -12,3 +12,4 @@ export { SidebarItems } from "./SidebarItems";
 export type { FlowbiteSidebarItemsTheme, SidebarItemsProps } from "./SidebarItems";
 export { SidebarLogo } from "./SidebarLogo";
 export type { FlowbiteSidebarLogoTheme, SidebarLogoProps } from "./SidebarLogo";
+export { sidebarTheme } from "./theme";

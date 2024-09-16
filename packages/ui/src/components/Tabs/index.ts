@@ -10,3 +10,4 @@ export type {
   TabsProps,
   TabsRef,
 } from "./Tabs";
+export { tabTheme } from "./theme";

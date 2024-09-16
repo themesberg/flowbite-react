@@ -6,3 +6,4 @@ export { DropdownHeader } from "./DropdownHeader";
 export type { DropdownHeaderProps, FlowbiteDropdownHeaderTheme } from "./DropdownHeader";
 export { DropdownItem } from "./DropdownItem";
 export type { DropdownItemProps, FlowbiteDropdownItemTheme } from "./DropdownItem";
+export { dropdownTheme } from "./theme";

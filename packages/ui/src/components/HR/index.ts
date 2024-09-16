@@ -12,3 +12,5 @@ export type { FlowbiteHRTextTheme, HRTextProps } from "./HRText";
 
 export { HRTrimmed } from "./HRTrimmed";
 export type { FlowbiteHRTrimmedTheme, HRTrimmedProps } from "./HRTrimmed";
+
+export { hrTheme } from "./theme";

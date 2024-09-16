@@ -8,3 +8,4 @@ export { NavbarLink } from "./NavbarLink";
 export type { FlowbiteNavbarLinkTheme, NavbarLinkProps } from "./NavbarLink";
 export { NavbarToggle } from "./NavbarToggle";
 export type { FlowbiteNavbarToggleTheme, NavbarToggleProps } from "./NavbarToggle";
+export { navbarTheme } from "./theme";

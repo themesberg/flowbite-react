@@ -14,3 +14,4 @@ export { AvatarGroup } from "./AvatarGroup";
 export type { AvatarGroupProps, FlowbiteAvatarGroupTheme } from "./AvatarGroup";
 export { AvatarGroupCounter } from "./AvatarGroupCounter";
 export type { AvatarGroupCounterProps, FlowbiteAvatarGroupCounterTheme } from "./AvatarGroupCounter";
+export { avatarTheme } from "./theme";

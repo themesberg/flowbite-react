@@ -10,3 +10,4 @@ export { TableHeadCell } from "./TableHeadCell";
 export type { FlowbiteTableHeadCellTheme, TableHeadCellProps } from "./TableHeadCell";
 export { TableRow } from "./TableRow";
 export type { FlowbiteTableRowTheme, TableRowProps } from "./TableRow";
+export { tableTheme } from "./theme";

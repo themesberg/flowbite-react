@@ -9,3 +9,4 @@ export type {
   FlowbiteCarouselScrollContainer,
   FlowbiteCarouselTheme,
 } from "./Carousel";
+export { carouselTheme } from "./theme";

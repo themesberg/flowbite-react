@@ -5,3 +5,4 @@ export type {
   FlowbiteTextInputTheme,
   TextInputProps,
 } from "./TextInput";
+export { textInputTheme } from "./theme";

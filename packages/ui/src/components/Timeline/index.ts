@@ -12,3 +12,4 @@ export { TimelineTime } from "./TimelineTime";
 export type { FlowbiteTimelineTimeTheme, TimelineTimeProps } from "./TimelineTime";
 export { TimelineTitle } from "./TimelineTitle";
 export type { FlowbiteTimelineTitleTheme, TimelineTitleProps } from "./TimelineTitle";
+export { timelineTheme } from "./theme";

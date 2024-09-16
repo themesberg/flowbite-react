@@ -4,3 +4,4 @@ export type {
   FlowbiteDarkThemeToggleRootTheme,
   FlowbiteDarkThemeToggleTheme,
 } from "./DarkThemeToggle";
+export { darkThemeToggleTheme } from "./theme";

@@ -4,3 +4,4 @@ export { RatingAdvanced } from "./RatingAdvanced";
 export type { FlowbiteRatingAdvancedTheme, RatingAdvancedProps } from "./RatingAdvanced";
 export { RatingStar } from "./RatingStar";
 export type { FlowbiteRatingStarTheme, FlowbiteStarSizes, RatingStarProps } from "./RatingStar";
+export { ratingTheme } from "./theme";

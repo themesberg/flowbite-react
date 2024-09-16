@@ -6,3 +6,4 @@ export type {
   FlowbiteFileInputRootTheme,
   FlowbiteFileInputTheme,
 } from "./FileInput";
+export { fileInputTheme } from "./theme";

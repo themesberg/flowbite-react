@@ -12,3 +12,4 @@ export type {
 } from "./Button";
 export { ButtonGroup } from "./ButtonGroup";
 export type { ButtonGroupProps, FlowbiteButtonGroupTheme, PositionInButtonGroup } from "./ButtonGroup";
+export { buttonTheme } from "./theme";
