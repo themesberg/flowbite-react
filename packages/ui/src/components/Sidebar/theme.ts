@@ -49,7 +49,7 @@ export const sidebarTheme: FlowbiteSidebarTheme = createTheme({
     },
   },
   item: {
-    base: "flex items-center justify-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700",
+    base: "flex items-center justify-center rounded-lg p-2 text-base font-normal text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 group",
     active: "bg-gray-100 dark:bg-gray-700",
     collapsed: {
       insideCollapse: "group w-full pl-8 transition duration-75",
