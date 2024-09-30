@@ -1,7 +1,7 @@
 "use client";
 
 import type { ForwardRefRenderFunction, ReactNode } from "react";
-import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { HiArrowLeft, HiArrowRight, HiCalendar } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
@@ -77,12 +77,13 @@ export interface DatepickerRef {
    */
   focus: () => void;
   /**
-   * Clears the datepicker value back to the defaultDate.
+   * Clears the datepicker value back to the defaultValue.
    */
   clear: () => void;
 }
 
-export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
+export interface DatepickerProps extends Omit<TextInputProps, "theme" | "onChange" | "value" | "defaultValue"> {
+  defaultValue?: Date;
   open?: boolean;
   inline?: boolean;
   autoHide?: boolean;
@@ -90,13 +91,14 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme"> {
   labelClearButton?: string;
   showTodayButton?: boolean;
   labelTodayButton?: string;
-  defaultDate?: Date;
   minDate?: Date;
   maxDate?: Date;
   language?: string;
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
-  onSelectedDateChanged?: (date: Date) => void;
+  onChange?: (date: Date | null) => void;
+  value?: Date | null;
+  label?: string;
 }
 
 const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps> = (
@@ -109,39 +111,43 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     labelClearButton = "Clear",
     showTodayButton = true,
     labelTodayButton = "Today",
-    defaultDate = new Date(),
+    defaultValue,
     minDate,
     maxDate,
     language = "en",
     weekStart = WeekStart.Sunday,
     className,
     theme: customTheme = {},
-    onSelectedDateChanged,
+    onChange,
+    label,
+    value,
     ...props
   },
   ref,
 ) => {
   const theme = mergeDeep(getTheme().datepicker, customTheme);
+  const initialDate = defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : null;
 
-  // Default date should respect the range
-  defaultDate = getFirstDateInRange(defaultDate, minDate, maxDate);
+  const effectiveDefaultView = useMemo(() => {
+    return defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : new Date();
+  }, []);
 
   const [isOpen, setIsOpen] = useState(open);
   const [view, setView] = useState<Views>(Views.Days);
   // selectedDate is the date selected by the user
-  const [selectedDate, setSelectedDate] = useState<Date>(defaultDate);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(value ?? initialDate);
   // viewDate is only for navigation
-  const [viewDate, setViewDate] = useState<Date>(defaultDate);
+  const [viewDate, setViewDate] = useState<Date>(value ?? effectiveDefaultView);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const datepickerRef = useRef<HTMLDivElement>(null);
 
   // Triggers when user select the date
-  const changeSelectedDate = (date: Date, useAutohide: boolean) => {
+  const changeSelectedDate = (date: Date | null, useAutohide: boolean) => {
     setSelectedDate(date);
 
-    if (onSelectedDateChanged) {
-      onSelectedDateChanged(date);
+    if ((date === null || date) && onChange) {
+      onChange(date);
     }
 
     if (autoHide && view === Views.Days && useAutohide == true && !inline) {
@@ -150,9 +156,9 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   };
 
   const clearDate = () => {
-    changeSelectedDate(defaultDate, true);
-    if (defaultDate) {
-      setViewDate(defaultDate);
+    changeSelectedDate(initialDate, true);
+    if (defaultValue) {
+      setViewDate(defaultValue);
     }
   };
 
@@ -241,6 +247,19 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     };
   }, [inputRef, datepickerRef, setIsOpen]);
 
+  useEffect(() => {
+    const effectiveValue = value && getFirstDateInRange(new Date(value), minDate, maxDate);
+    const effectiveSelectedDate = selectedDate && getFirstDateInRange(new Date(selectedDate), minDate, maxDate);
+    if (effectiveSelectedDate && effectiveValue && !isDateEqual(effectiveValue, effectiveSelectedDate)) {
+      setSelectedDate(effectiveValue);
+    }
+    if (selectedDate == null) {
+      setSelectedDate(initialDate);
+    }
+  }, [value, setSelectedDate, setViewDate, selectedDate]);
+
+  const displayValue = value === null ? label : getFormattedDate(language, selectedDate || new Date());
+
   return (
     <DatepickerContext.Provider
       value={{
@@ -267,13 +286,14 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
             icon={HiCalendar}
             ref={inputRef}
             onFocus={() => {
-              if (!isDateEqual(viewDate, selectedDate)) {
+              if (selectedDate && !isDateEqual(viewDate, selectedDate)) {
                 setViewDate(selectedDate);
               }
               setIsOpen(true);
             }}
-            value={selectedDate && getFormattedDate(language, selectedDate)}
+            value={displayValue}
             readOnly
+            defaultValue={initialDate ? getFormattedDate(language, initialDate) : label}
             {...props}
           />
         )}
@@ -336,10 +356,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
                       type="button"
                       className={twMerge(theme.popup.footer.button.base, theme.popup.footer.button.clear)}
                       onClick={() => {
-                        changeSelectedDate(defaultDate, true);
-                        if (defaultDate) {
-                          setViewDate(defaultDate);
-                        }
+                        changeSelectedDate(null, true);
                       }}
                     >
                       {labelClearButton}
