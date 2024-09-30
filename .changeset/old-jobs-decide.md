@@ -1,5 +1,5 @@
 ---
-"@flowbite/react": major
+"flowbite-react": patch
 ---
 
 ### Datepicker Component Updates
