@@ -36,6 +36,24 @@ NoArrow.args = {
   children: <Button>Tooltip with no arrow</Button>,
 };
 
+export const StillOpen = Template.bind({});
+StillOpen.storyName = "Still open";
+StillOpen.args = {
+  content: "Tooltip content",
+  isOpen: true,
+  placement: "bottom",
+  children: <Button>Tooltip that doesn't close</Button>,
+};
+
+export const StillClosed = Template.bind({});
+StillClosed.storyName = "Still closed";
+StillClosed.args = {
+  content: "Tooltip content",
+  isOpen: false,
+  placement: "bottom",
+  children: <Button>Tooltip that doesn't open</Button>,
+};
+
 export const SlowAnimation = Template.bind({});
 SlowAnimation.storyName = "Slow animation";
 SlowAnimation.args = {
