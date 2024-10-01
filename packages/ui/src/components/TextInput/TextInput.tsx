@@ -46,7 +46,7 @@ export interface TextInputProps extends Omit<ComponentProps<"input">, "ref" | "c
   color?: DynamicStringEnumKeysOf<FlowbiteTextInputColors>;
   helperText?: ReactNode;
   icon?: FC<ComponentProps<"svg">>;
-  onRightIconClick?: () => void;
+  onRightIconClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   rightIcon?: FC<ComponentProps<"svg">>;
   shadow?: boolean;
   sizing?: DynamicStringEnumKeysOf<FlowbiteTextInputSizes>;
@@ -87,7 +87,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               <div
                 data-testid="right-icon"
                 className={`${theme.field.rightIcon.base} ${!onRightIconClick ? "pointer-events-none" : ""}`}
-                onClick={onRightIconClick}
+                onClick={(e) => onRightIconClick?.(e)}
               >
                 <RightIcon className={theme.field.rightIcon.svg} />
               </div>
