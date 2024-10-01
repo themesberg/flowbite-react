@@ -51,26 +51,24 @@ const components: MDXComponents = {
     </h3>
   ),
   Example: ({ name }: { name: string }) => {
-    function pick<T extends object>(obj: T, path: string): CodeData | undefined {
-      if (!path) return obj as CodeData;
-      const properties = path.split(".");
-      const key = properties.shift() as keyof typeof obj;
-      if (!(key in obj)) return;
-      return pick(obj[key] as T, properties.join("."));
-    }
-
-    const codeData = pick(examples, name);
+    const codeData = get<CodeData>(examples, name);
 
     if (!codeData) return <>{`<Example name="${name}" />`}</>;
 
     return <CodeDemo data={codeData} />;
   },
   Theme: ({ name }: { name: keyof typeof theme }) => {
-    if (!(name in theme)) return <>{`<Theme name="${name}" />`}</>;
+    const value = get(theme, name);
 
-    return <CodeHighlight code={JSON.stringify(theme[name], null, 2)} language="json" />;
+    if (!value) return <>{`<Theme name="${name}" />`}</>;
+
+    return <CodeHighlight code={JSON.stringify(value, null, 2)} language="json" />;
   },
 };
+
+function get<T>(obj: Record<string, any>, path: string): T | undefined {
+  return path.split(".").reduce((acc, key) => acc && acc[key], obj) as T | undefined;
+}
 
 export function Mdx({ code }: { code: string }) {
   const Component = getMDXComponent(code);

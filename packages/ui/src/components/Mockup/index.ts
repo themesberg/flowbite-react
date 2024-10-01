@@ -1,0 +1,14 @@
+export { DefaultMockup } from "./DefaultMockup";
+export type { DefaultMockupProps } from "./DefaultMockup";
+export { DesktopMockup } from "./DesktopMockup";
+export type { DesktopMockupProps } from "./DesktopMockup";
+export { GooglePixelMockup } from "./GooglePixelMockup";
+export type { GooglePixelMockupProps } from "./GooglePixelMockup";
+export { IPhone12Mockup } from "./IPhone12Mockup";
+export type { IPhone12MockupProps } from "./IPhone12Mockup";
+export { LaptopMockup } from "./LaptopMockup";
+export type { LaptopMockupProps } from "./LaptopMockup";
+export { SmartwatchMockup } from "./SmartwatchMockup";
+export type { SmartwatchMockupProps } from "./SmartwatchMockup";
+export { TabletMockup } from "./TabletMockup";
+export type { TabletMockupProps } from "./TabletMockup";
