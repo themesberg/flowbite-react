@@ -87,7 +87,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
               <div
                 data-testid="right-icon"
                 className={`${theme.field.rightIcon.base} ${!onRightIconClick ? "pointer-events-none" : ""}`}
-                onClick={(e) => onRightIconClick?.(e)}
+                onClick={onRightIconClick}
               >
                 <RightIcon className={theme.field.rightIcon.svg} />
               </div>
