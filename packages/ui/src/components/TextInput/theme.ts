@@ -12,7 +12,7 @@ export const textInputTheme: FlowbiteTextInputTheme = createTheme({
       svg: "h-5 w-5 text-gray-500 dark:text-gray-400",
     },
     rightIcon: {
-      base: "pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3",
+      base: "absolute inset-y-0 right-0 flex items-center pr-3",
       svg: "h-5 w-5 text-gray-500 dark:text-gray-400",
     },
     input: {
