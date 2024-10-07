@@ -30,10 +30,30 @@
       "import": "./dist/esm/components/*/index.mjs",
       "require": "./dist/cjs/components/*/index.cjs"
     },
+    "./helpers/*": {
+      "types": "./dist/types/helpers/*/index.d.ts",
+      "import": "./dist/esm/helpers/*/index.mjs",
+      "require": "./dist/cjs/helpers/*/index.cjs"
+    },
+    "./hooks/*": {
+      "types": "./dist/types/hooks/*/index.d.ts",
+      "import": "./dist/esm/hooks/*/index.mjs",
+      "require": "./dist/cjs/hooks/*/index.cjs"
+    },
     "./tailwind": {
       "types": "./dist/types/tailwind.d.ts",
       "import": "./dist/esm/tailwind.mjs",
       "require": "./dist/cjs/tailwind.cjs"
+    },
+    "./theme": {
+      "types": "./dist/types/theme.d.ts",
+      "import": "./dist/esm/theme.mjs",
+      "require": "./dist/cjs/theme.cjs"
+    },
+    "./theme-store/*": {
+      "types": "./dist/types/theme-store/*/index.d.ts",
+      "import": "./dist/esm/theme-store/*/index.mjs",
+      "require": "./dist/cjs/theme-store/*/index.cjs"
     },
     "./package.json": "./package.json"
   },
