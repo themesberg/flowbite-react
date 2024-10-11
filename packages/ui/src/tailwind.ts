@@ -1,44 +1,23 @@
-import flowbitePlugin from "flowbite/plugin";
+import plugin from "tailwindcss/plugin";
+import classList from "./class-list.json";
+import { applyPrefix } from "./helpers/apply-prefix";
 
-interface Content {
+export type PluginOptions = Partial<{
   /**
-   * Path to `node_modules` where `flowbite-react` is installed
-   *
-   * ===============================================
-   *
-   * For monorepo setup where `flowbite-react` is installed in the root `node_modules` but used in `apps/web` directory
-   * @example
-   * ```
-   * // tailwind.config.(js|cjs|mjs) file
-   *
-   * // cjs
-   * const flowbite = require("flowbite-react/tailwind");
-   * // esm
-   * import flowbite from "flowbite-react/tailwind";
-   *
-   * {
-   *   content: [
-   *     // ...
-   *     flowbite.content({ base: "../../" })
-   *   ],
-   *   plugins: [
-   *     // ...
-   *     flowbite.plugin()
-   *   ]
-   * }
-   * ```
-   *
-   * @default "./"
+   * Prefix to apply to base class list
    */
-  base?: string;
-}
+  prefix: string;
+  /**
+   * Components to compile class list
+   */
+  components: string[];
+}>;
 
-export function content({ base = "./" }: Content = {}) {
-  const path = "node_modules/flowbite-react/dist/esm/**/*.mjs";
-
-  return `${base}${path}`;
-}
-
-export function plugin() {
-  return flowbitePlugin;
-}
+export default plugin.withOptions<PluginOptions>(
+  // plugin
+  () => () => {},
+  // config
+  ({ prefix } = {}) => ({
+    safelist: prefix ? classList.map((className) => applyPrefix(className, prefix)) : classList,
+  }),
+);

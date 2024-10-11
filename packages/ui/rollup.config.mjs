@@ -1,3 +1,4 @@
+import json from "@rollup/plugin-json";
 import { $ } from "bun";
 import glob from "fast-glob";
 import { rimraf } from "rimraf";
@@ -10,6 +11,7 @@ const entries = ["src/index.ts", "src/tailwind.ts", ...componentEntries];
 const external = [
   "flowbite/plugin",
   "react/jsx-runtime",
+  "tailwindcss/plugin",
   new RegExp("react-icons/*"),
   ...Object.keys({
     ...packageJson.dependencies,
@@ -41,7 +43,9 @@ export default {
   ],
   external,
   plugins: [
+    json(),
     cleanOutputDir(),
+    generateClassList(),
     esbuild({
       sourceMap: false,
     }),
@@ -54,6 +58,9 @@ export default {
     }
     warn(warning);
   },
+  watch: {
+    exclude: "src/class-list.json",
+  },
 };
 
 function cleanOutputDir() {
@@ -61,6 +68,16 @@ function cleanOutputDir() {
     name: "clean-output-dir",
     async buildStart() {
       await rimraf(outputDir);
+      await $`mkdir ${outputDir}`;
+    },
+  };
+}
+
+function generateClassList() {
+  return {
+    name: "generate-classlist",
+    async buildStart() {
+      await $`bun run generate-classlist`;
     },
   };
 }

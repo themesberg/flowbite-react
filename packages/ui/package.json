@@ -45,13 +45,15 @@
   ],
   "scripts": {
     "build": "bun --bun rollup -c",
-    "clean": "rimraf .turbo coverage dist node_modules tsconfig.tsbuildinfo",
+    "clean": "rimraf .turbo coverage dist node_modules src/class-list.json tsconfig.tsbuildinfo",
     "dev": "bun run build --watch",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
+    "generate-classlist": "bun scripts/generate-classlist.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",
+    "prepare": "bun run generate-classlist",
     "prepublishOnly": "bun run build",
     "test": "vitest",
     "test:coverage": "vitest run --coverage",
@@ -67,6 +69,7 @@
     "tailwind-merge": "2.4.0"
   },
   "devDependencies": {
+    "@rollup/plugin-json": "6.1.0",
     "@testing-library/jest-dom": "6.4.8",
     "@testing-library/react": "16.0.0",
     "@testing-library/user-event": "14.5.2",
@@ -84,6 +87,7 @@
     "rollup": "4.20.0",
     "rollup-plugin-esbuild": "6.1.1",
     "rollup-plugin-use-client": "1.4.0",
+    "tailwindcss-patch": "4.0.0",
     "typescript": "5.5.4",
     "vitest": "2.0.5"
   },
