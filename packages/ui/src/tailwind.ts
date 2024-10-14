@@ -1,9 +1,9 @@
 import plugin from "tailwindcss/plugin";
-import classListMap from "./class-list.json";
+import { CLASS_LIST_MAP } from "./class-list";
 import { applyPrefix } from "./helpers/apply-prefix";
 
 type ClassList = string[];
-type Component = keyof typeof classListMap;
+type Component = keyof typeof CLASS_LIST_MAP;
 
 export type PluginOptions = Partial<{
   /**
@@ -40,8 +40,8 @@ function resolveClassList(components: Component[]): ClassList {
     const invalidNames: string[] = [];
 
     for (const name of components) {
-      if (name in classListMap) {
-        resolvedClassList.push(...classListMap[name]);
+      if (name in CLASS_LIST_MAP) {
+        resolvedClassList.push(...CLASS_LIST_MAP[name]);
       } else {
         invalidNames.push(name);
       }
@@ -51,10 +51,10 @@ function resolveClassList(components: Component[]): ClassList {
       console.error(
         `\nflowbite-react/tailwind - invalid component${invalidNames.length ? "s" : ""}:\n"${invalidNames.join(", ")}"`,
       );
-      console.info(`\nAvailable components:\n${Object.keys(classListMap).join(", ")}\n`);
+      console.info(`\nAvailable components:\n${Object.keys(CLASS_LIST_MAP).join(", ")}\n`);
     }
   } else {
-    resolvedClassList = [...new Set(Object.values(classListMap).flat())];
+    resolvedClassList = [...new Set(Object.values(CLASS_LIST_MAP).flat())];
   }
 
   return resolvedClassList;

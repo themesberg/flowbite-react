@@ -1,4 +1,3 @@
-import json from "@rollup/plugin-json";
 import { $ } from "bun";
 import glob from "fast-glob";
 import { rimraf } from "rimraf";
@@ -43,7 +42,6 @@ export default {
   ],
   external,
   plugins: [
-    json(),
     cleanOutputDir(),
     generateClassList(),
     esbuild({
@@ -59,7 +57,7 @@ export default {
     warn(warning);
   },
   watch: {
-    exclude: "src/class-list.json",
+    exclude: "src/class-list.ts",
   },
 };
 

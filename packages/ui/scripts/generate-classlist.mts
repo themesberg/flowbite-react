@@ -1,6 +1,7 @@
 import { parse } from "acorn";
 import { Glob } from "bun";
 import { Node, walk } from "estree-walker";
+import prettier from "prettier";
 
 async function main() {
   const classListMap: Record<string, string[]> = {};
@@ -13,7 +14,14 @@ async function main() {
     classListMap[componentName] = classList;
   }
 
-  await Bun.write("src/class-list.json", JSON.stringify(classListMap, null, 2));
+  const OUTPUT_PATH = "src/class-list.ts";
+  const EXPORTED_VARIABLE = "CLASS_LIST_MAP";
+  const OUTPUT_CONTENT = `export const ${EXPORTED_VARIABLE} = ${JSON.stringify(classListMap, null, 2)}`;
+  const OUTPUT_CONTENT_FORMATTED = await prettier.format(OUTPUT_CONTENT, {
+    parser: "babel",
+  });
+
+  await Bun.write(OUTPUT_PATH, OUTPUT_CONTENT_FORMATTED);
 }
 
 async function extractClassList(content: string) {
