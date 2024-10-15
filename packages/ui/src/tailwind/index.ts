@@ -9,6 +9,8 @@ export default plugin.withOptions<PluginOptions>(
   // config
   ({ prefix, separator, components } = {}) => ({
     safelist: resolvePrefix(resolveClassList(components), prefix, separator),
-    theme,
+    theme: {
+      extend: theme,
+    },
   }),
 );
