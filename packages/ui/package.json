@@ -30,6 +30,16 @@
       "import": "./dist/esm/components/*/index.mjs",
       "require": "./dist/cjs/components/*/index.cjs"
     },
+    "./helpers/*": {
+      "types": "./dist/types/helpers/*/index.d.ts",
+      "import": "./dist/esm/helpers/*/index.mjs",
+      "require": "./dist/cjs/helpers/*/index.cjs"
+    },
+    "./hooks/*": {
+      "types": "./dist/types/hooks/*/index.d.ts",
+      "import": "./dist/esm/hooks/*/index.mjs",
+      "require": "./dist/cjs/hooks/*/index.cjs"
+    },
     "./tailwind": {
       "types": "./dist/types/tailwind/index.d.ts",
       "import": "./dist/esm/tailwind/index.mjs",
