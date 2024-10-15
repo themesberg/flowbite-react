@@ -40,15 +40,15 @@
       "import": "./dist/esm/hooks/*/index.mjs",
       "require": "./dist/cjs/hooks/*/index.cjs"
     },
-    "./tailwind": {
-      "types": "./dist/types/tailwind/index.d.ts",
-      "import": "./dist/esm/tailwind/index.mjs",
-      "require": "./dist/cjs/tailwind/index.cjs"
-    },
     "./tailwind/*": {
       "types": "./dist/types/tailwind/*.d.ts",
       "import": "./dist/esm/tailwind/*.mjs",
       "require": "./dist/cjs/tailwind/*.cjs"
+    },
+    "./tailwind": {
+      "types": "./dist/types/tailwind/index.d.ts",
+      "import": "./dist/esm/tailwind/index.mjs",
+      "require": "./dist/cjs/tailwind/index.cjs"
     },
     "./package.json": "./package.json"
   },
