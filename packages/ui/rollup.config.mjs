@@ -7,7 +7,6 @@ import packageJson from "./package.json";
 const componentEntries = await Array.fromAsync(new Glob("src/components/**/index.ts").scan());
 const entries = ["src/index.ts", "src/tailwind/index.ts", ...componentEntries];
 const external = [
-  "flowbite/plugin",
   "react/jsx-runtime",
   "tailwindcss/plugin",
   new RegExp("react-icons/*"),
