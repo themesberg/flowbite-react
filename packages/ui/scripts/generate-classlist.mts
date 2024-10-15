@@ -6,10 +6,7 @@ import prettier from "prettier";
 async function main() {
   const classListMap: Record<string, string[]> = {};
 
-  const paths: string[] = [];
-  for await (const path of new Glob("src/components/**/theme.ts").scan()) {
-    paths.push(path);
-  }
+  const paths = await Array.fromAsync(new Glob("src/components/**/theme.ts").scan());
   paths.sort();
 
   for (const path of paths) {
@@ -21,7 +18,7 @@ async function main() {
   }
 
   await Bun.write(
-    "src/class-list.ts",
+    "src/tailwind/class-list.ts",
     await prettier.format(`export const CLASS_LIST_MAP = ${JSON.stringify(classListMap, null, 2)}`, {
       parser: "babel",
     }),

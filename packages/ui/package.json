@@ -31,9 +31,14 @@
       "require": "./dist/cjs/components/*/index.cjs"
     },
     "./tailwind": {
-      "types": "./dist/types/tailwind.d.ts",
-      "import": "./dist/esm/tailwind.mjs",
-      "require": "./dist/cjs/tailwind.cjs"
+      "types": "./dist/types/tailwind/index.d.ts",
+      "import": "./dist/esm/tailwind/index.mjs",
+      "require": "./dist/cjs/tailwind/index.cjs"
+    },
+    "./tailwind/*": {
+      "types": "./dist/types/tailwind/*.d.ts",
+      "import": "./dist/esm/tailwind/*.mjs",
+      "require": "./dist/cjs/tailwind/*.cjs"
     },
     "./package.json": "./package.json"
   },
@@ -45,7 +50,7 @@
   ],
   "scripts": {
     "build": "bun --bun rollup -c",
-    "clean": "rimraf .turbo coverage dist node_modules src/class-list.ts tsconfig.tsbuildinfo",
+    "clean": "rimraf .turbo coverage dist node_modules src/tailwind/class-list.ts tsconfig.tsbuildinfo",
     "dev": "bun run build --watch",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
@@ -64,7 +69,6 @@
     "@floating-ui/react": "0.26.21",
     "classnames": "2.5.1",
     "debounce": "2.1.0",
-    "flowbite": "2.5.1",
     "react-icons": "5.2.1",
     "tailwind-merge": "2.4.0"
   },
@@ -83,7 +87,6 @@
     "eslint-plugin-storybook": "0.8.0",
     "eslint-plugin-vitest": "0.5.4",
     "estree-walker": "3.0.3",
-    "fast-glob": "3.3.2",
     "jsdom": "24.1.1",
     "rollup": "4.20.0",
     "rollup-plugin-esbuild": "6.1.1",

@@ -1,12 +1,11 @@
-import { $ } from "bun";
-import glob from "fast-glob";
+import { $, Glob } from "bun";
 import { rimraf } from "rimraf";
 import esbuild from "rollup-plugin-esbuild";
 import { rollupPluginUseClient } from "rollup-plugin-use-client";
 import packageJson from "./package.json";
 
-const componentEntries = await glob("src/components/**/index.ts");
-const entries = ["src/index.ts", "src/tailwind.ts", ...componentEntries];
+const componentEntries = await Array.fromAsync(new Glob("src/components/**/index.ts").scan());
+const entries = ["src/index.ts", "src/tailwind/index.ts", ...componentEntries];
 const external = [
   "flowbite/plugin",
   "react/jsx-runtime",
@@ -57,7 +56,7 @@ export default {
     warn(warning);
   },
   watch: {
-    exclude: "src/class-list.ts",
+    exclude: "src/tailwind/class-list.ts",
   },
 };
 
