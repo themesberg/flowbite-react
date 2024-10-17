@@ -20,6 +20,7 @@
   },
   "license": "MIT",
   "sideEffects": false,
+  "type": "commonjs",
   "exports": {
     ".": {
       "import": {
