@@ -144,7 +144,7 @@ export function CodeDemo({ data }: CodeDemoProps) {
         </div>
       </div>
       <CodePreview view={view} isRTL={isRTL} isDarkMode={isDarkMode} iframe={data.iframe}>
-        {data.iframe ? <IFrame data={data} isRTL={isRTL} isDarkMode={isDarkMode} /> : data.component}
+        {data.iframe ? <IFrame data={data} isRTL={isRTL} isDarkMode={isDarkMode} /> : <>{data.component}</>}
       </CodePreview>
       <div className="code-syntax-wrapper">
         <div

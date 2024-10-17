@@ -1,15 +1,14 @@
-import { $ } from "bun";
-import glob from "fast-glob";
+import { $, Glob } from "bun";
 import { rimraf } from "rimraf";
 import esbuild from "rollup-plugin-esbuild";
 import { rollupPluginUseClient } from "rollup-plugin-use-client";
 import packageJson from "./package.json";
 
-const componentEntries = await glob("src/components/**/index.ts");
-const entries = ["src/index.ts", "src/tailwind.ts", ...componentEntries];
+const componentEntries = await Array.fromAsync(new Glob("src/components/**/index.ts").scan());
+const entries = ["src/index.ts", "src/tailwind/index.ts", ...componentEntries];
 const external = [
-  "flowbite/plugin",
   "react/jsx-runtime",
+  "tailwindcss/plugin",
   new RegExp("react-icons/*"),
   ...Object.keys({
     ...packageJson.dependencies,
@@ -42,6 +41,7 @@ export default {
   external,
   plugins: [
     cleanOutputDir(),
+    generateClassList(),
     esbuild({
       sourceMap: false,
     }),
@@ -54,6 +54,9 @@ export default {
     }
     warn(warning);
   },
+  watch: {
+    exclude: "src/tailwind/class-list.ts",
+  },
 };
 
 function cleanOutputDir() {
@@ -61,6 +64,16 @@ function cleanOutputDir() {
     name: "clean-output-dir",
     async buildStart() {
       await rimraf(outputDir);
+      await $`mkdir ${outputDir}`;
+    },
+  };
+}
+
+function generateClassList() {
+  return {
+    name: "generate-classlist",
+    async buildStart() {
+      await $`bun run generate-classlist`;
     },
   };
 }
@@ -68,8 +81,20 @@ function cleanOutputDir() {
 function generateDts() {
   return {
     name: "generate-dts",
-    async closeBundle() {
+    async buildStart() {
+      // generate `.d.ts` files
       await $`tsc -p tsconfig.build.json --outDir ${outputDir}/types`;
+
+      // generate `.d.mts` files
+      for await (const path of new Glob(`${outputDir}/types/**/*.d.ts`).scan()) {
+        const file = Bun.file(path);
+        const content = await file.text();
+
+        await Bun.write(path.replace(".d.ts", ".d.mts"), content);
+        // fix incorrect default export
+        // https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseExportDefault.md
+        await Bun.write(path, content.replace("export default _default", "export = _default"));
+      }
     },
   };
 }
