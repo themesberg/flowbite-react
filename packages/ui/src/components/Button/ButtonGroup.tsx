@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 import { mergeDeep } from "../../helpers/merge-deep";
 import { getTheme } from "../../theme-store";
 import type { DeepPartial } from "../../types";
-import { Button, type ButtonProps } from "../Button";
+import { Button, type ButtonProps } from "../Button/Button";
 
 export interface FlowbiteButtonGroupTheme {
   base: string;
