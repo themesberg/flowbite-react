@@ -81,8 +81,20 @@ function generateClassList() {
 function generateDts() {
   return {
     name: "generate-dts",
-    async closeBundle() {
+    async buildStart() {
+      // generate `.d.ts` files
       await $`tsc -p tsconfig.build.json --outDir ${outputDir}/types`;
+
+      // generate `.d.mts` files
+      for await (const path of new Glob(`${outputDir}/types/**/*.d.ts`).scan()) {
+        const file = Bun.file(path);
+        const content = await file.text();
+
+        await Bun.write(path.replace(".d.ts", ".d.mts"), content);
+        // fix incorrect default export
+        // https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseExportDefault.md
+        await Bun.write(path, content.replace("export default _default", "export = _default"));
+      }
     },
   };
 }

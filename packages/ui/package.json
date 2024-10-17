@@ -19,36 +19,68 @@
     "directory": "packages/ui"
   },
   "license": "MIT",
+  "sideEffects": false,
+  "type": "commonjs",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.mjs",
-      "require": "./dist/cjs/index.cjs"
+      "import": {
+        "types": "./dist/types/index.d.mts",
+        "default": "./dist/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/cjs/index.cjs"
+      }
     },
     "./components/*": {
-      "types": "./dist/types/components/*/index.d.ts",
-      "import": "./dist/esm/components/*/index.mjs",
-      "require": "./dist/cjs/components/*/index.cjs"
+      "import": {
+        "types": "./dist/types/components/*/index.d.mts",
+        "default": "./dist/esm/components/*/index.mjs"
+      },
+      "require": {
+        "types": "./dist/types/components/*/index.d.ts",
+        "default": "./dist/cjs/components/*/index.cjs"
+      }
     },
     "./helpers/*": {
-      "types": "./dist/types/helpers/*/index.d.ts",
-      "import": "./dist/esm/helpers/*/index.mjs",
-      "require": "./dist/cjs/helpers/*/index.cjs"
+      "import": {
+        "types": "./dist/types/helpers/*.d.mts",
+        "default": "./dist/esm/helpers/*.mjs"
+      },
+      "require": {
+        "types": "./dist/types/helpers/*.d.ts",
+        "default": "./dist/cjs/helpers/*.cjs"
+      }
     },
     "./hooks/*": {
-      "types": "./dist/types/hooks/*/index.d.ts",
-      "import": "./dist/esm/hooks/*/index.mjs",
-      "require": "./dist/cjs/hooks/*/index.cjs"
+      "import": {
+        "types": "./dist/types/hooks/*.d.mts",
+        "default": "./dist/esm/hooks/*.mjs"
+      },
+      "require": {
+        "types": "./dist/types/hooks/*.d.ts",
+        "default": "./dist/cjs/hooks/*.cjs"
+      }
     },
     "./tailwind/*": {
-      "types": "./dist/types/tailwind/*.d.ts",
-      "import": "./dist/esm/tailwind/*.mjs",
-      "require": "./dist/cjs/tailwind/*.cjs"
+      "import": {
+        "types": "./dist/types/tailwind/*.d.mts",
+        "default": "./dist/esm/tailwind/*.mjs"
+      },
+      "require": {
+        "types": "./dist/types/tailwind/*.d.ts",
+        "default": "./dist/cjs/tailwind/*.cjs"
+      }
     },
     "./tailwind": {
-      "types": "./dist/types/tailwind/index.d.ts",
-      "import": "./dist/esm/tailwind/index.mjs",
-      "require": "./dist/cjs/tailwind/index.cjs"
+      "import": {
+        "types": "./dist/types/tailwind/index.d.mts",
+        "default": "./dist/esm/tailwind/index.mjs"
+      },
+      "require": {
+        "types": "./dist/types/tailwind/index.d.ts",
+        "default": "./dist/cjs/tailwind/index.cjs"
+      }
     },
     "./package.json": "./package.json"
   },
