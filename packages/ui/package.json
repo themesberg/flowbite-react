@@ -112,7 +112,7 @@
     "classnames": "2.5.1",
     "debounce": "2.1.0",
     "react-icons": "5.2.1",
-    "tailwind-merge": "2.4.0"
+    "tailwind-merge": "2.5.4"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "6.4.8",
@@ -130,7 +130,7 @@
     "eslint-plugin-vitest": "0.5.4",
     "estree-walker": "3.0.3",
     "jsdom": "24.1.1",
-    "rollup": "4.20.0",
+    "rollup": "4.24.0",
     "rollup-plugin-esbuild": "6.1.1",
     "rollup-plugin-use-client": "1.4.0",
     "typescript": "5.5.4",
