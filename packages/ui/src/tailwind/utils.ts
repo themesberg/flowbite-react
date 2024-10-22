@@ -1,6 +1,6 @@
 import { applyPrefix } from "../helpers/apply-prefix";
 import { CLASS_LIST_MAP } from "./class-list";
-import { ClassList, ComponentName } from "./types";
+import type { ClassList, ComponentName } from "./types";
 
 export function resolvePrefix(classList: ClassList, prefix?: string, separator?: string) {
   return prefix ? classList.map((className) => applyPrefix(className, prefix, separator)) : classList;

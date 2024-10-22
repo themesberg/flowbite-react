@@ -1,6 +1,6 @@
 import { parse } from "acorn";
 import { Glob } from "bun";
-import { Node, walk } from "estree-walker";
+import { walk, type Node } from "estree-walker";
 import prettier from "prettier";
 
 async function main() {

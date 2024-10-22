@@ -1,4 +1,4 @@
-import { CLASS_LIST_MAP } from "./class-list";
+import type { CLASS_LIST_MAP } from "./class-list";
 
 export type ClassList = string[];
 

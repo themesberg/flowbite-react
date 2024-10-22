@@ -1,4 +1,4 @@
-export function applyPrefix(classNames: string, prefix: string, separator: string = ":"): string {
+export function applyPrefix(classNames: string, prefix: string, separator = ":"): string {
   return classNames
     .split(/\s+/)
     .map((className) => {

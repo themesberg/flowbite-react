@@ -1,6 +1,6 @@
 import plugin from "tailwindcss/plugin";
 import { getConfig } from "./config";
-import { PluginOptions } from "./types";
+import type { PluginOptions } from "./types";
 
 export default plugin.withOptions<PluginOptions>(
   // plugin

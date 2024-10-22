@@ -1,4 +1,4 @@
-import { Config } from "tailwindcss";
+import type { Config } from "tailwindcss";
 
 export const boxShadow = {
   "sm-light": "0 2px 5px 0px rgba(255, 255, 255, 0.08)",
