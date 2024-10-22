@@ -6,7 +6,6 @@ import {
   NavbarCollapse,
   NavbarLink,
   NavbarToggle,
-  theme,
 } from "flowbite-react";
 import { type CodeData } from "~/components/code-demo";
 
@@ -112,11 +111,11 @@ function Component() {
 `;
 
 const codeRSC = `
-import { 
-  Button, 
-  MegaMenu, 
-  MegaMenuDropdown, 
-  Navbar, 
+import {
+  Button,
+  MegaMenu,
+  MegaMenuDropdown,
+  Navbar,
   NavbarBrand,
   NavbarCollapse,
   NavbarLink,
