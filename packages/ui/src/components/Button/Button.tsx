@@ -2,8 +2,8 @@ import type { ElementType } from "react";
 import { forwardRef, type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type {
   FlowbiteBoolean,
@@ -11,11 +11,12 @@ import type {
   FlowbiteGradientColors,
   FlowbiteGradientDuoToneColors,
   FlowbiteSizes,
-} from "../Flowbite";
+} from "../Flowbite/FlowbiteTheme";
 import { Spinner } from "../Spinner";
 import { ButtonBase, type ButtonBaseProps } from "./ButtonBase";
 import type { PositionInButtonGroup } from "./ButtonGroup";
 import { ButtonGroup } from "./ButtonGroup";
+import { buttonGroupTheme, buttonTheme } from "./theme";
 
 export interface FlowbiteButtonTheme {
   base: string;
@@ -110,13 +111,13 @@ const ButtonComponent = forwardRef(
       pill = false,
       positionInGroup = "none",
       size = "md",
-      theme: customTheme = {},
+      theme: customTheme,
       ...props
     }: ButtonProps<T>,
     ref: PolymorphicRef<T>,
   ) => {
-    const { buttonGroup: groupTheme, button: buttonTheme } = getTheme();
-    const theme = mergeDeep(buttonTheme, customTheme);
+    const theme = resolveTheme([buttonTheme, getStore().theme?.button, customTheme]);
+    const groupTheme = resolveTheme([buttonGroupTheme, getStore().theme?.buttonGroup]);
 
     const theirProps = props as ButtonBaseProps<T>;
 

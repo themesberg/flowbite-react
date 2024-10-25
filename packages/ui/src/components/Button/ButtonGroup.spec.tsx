@@ -99,7 +99,7 @@ describe("Components / Button group", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Button.Group>
             <Button>One</Button>
             <Button>Two</Button>
@@ -119,7 +119,7 @@ describe("Components / Button group", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Button.Group>
             <Button>One</Button>
             <Button>Two</Button>

@@ -85,7 +85,7 @@ describe("Components / Card", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Card />
         </Flowbite>,
       );
@@ -102,7 +102,7 @@ describe("Components / Card", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Card>
             <span aria-label="The content">Some content</span>
           </Card>
@@ -125,7 +125,7 @@ describe("Components / Card", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Card />
           <Card horizontal />
         </Flowbite>,
@@ -146,7 +146,7 @@ describe("Components / Card", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Card href="#">My card</Card>
         </Flowbite>,
       );
@@ -167,7 +167,7 @@ describe("Components / Card", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Card imgAlt="Card with image" imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg" />
           <Card
             horizontal

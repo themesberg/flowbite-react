@@ -4,7 +4,7 @@ import { useListItem, useMergeRefs } from "@floating-ui/react";
 import { forwardRef, type ComponentProps, type ElementType, type FC, type RefCallback } from "react";
 import { twMerge } from "tailwind-merge";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import type { DeepPartial } from "../../types";
 import { ButtonBase, type ButtonBaseProps } from "../Button/ButtonBase";
 import { useDropdownContext } from "./DropdownContext";
@@ -31,14 +31,14 @@ type DropdownItemType = (<C extends ElementType = "button">(props: DropdownItemP
 
 export const DropdownItem = forwardRef(
   <T extends ElementType = "button">(
-    { children, className, icon: Icon, onClick, theme: customTheme = {}, ...props }: DropdownItemProps<T>,
+    { children, className, icon: Icon, onClick, theme: customTheme, ...props }: DropdownItemProps<T>,
     forwardedRef: PolymorphicRef<T>,
   ) => {
     const { ref: listItemRef, index } = useListItem({ label: typeof children === "string" ? children : undefined });
     const ref = useMergeRefs([forwardedRef, listItemRef]);
     const { theme: rootTheme, activeIndex, dismissOnClick, getItemProps, handleSelect } = useDropdownContext();
     const isActive = activeIndex === index;
-    const theme = mergeDeep(rootTheme.floating.item, customTheme);
+    const theme = resolveTheme([rootTheme.floating.item, {}, customTheme], { shouldPrefix: false });
 
     const theirProps = props as ButtonBaseProps<T>;
 

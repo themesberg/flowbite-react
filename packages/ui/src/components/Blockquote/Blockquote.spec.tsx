@@ -14,7 +14,7 @@ describe("Components / Blockquote", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Blockquote />
         </Flowbite>,
       );

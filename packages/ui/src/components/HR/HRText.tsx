@@ -1,9 +1,10 @@
-import { forwardRef } from "react";
 import type { ComponentProps } from "react";
+import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
+import { hrTheme } from "./theme";
 
 export interface FlowbiteHRTextTheme {
   base: string;
@@ -17,8 +18,8 @@ export interface HRTextProps extends Omit<ComponentProps<"hr">, "ref"> {
 }
 
 export const HRText = forwardRef<HTMLHRElement, HRTextProps>(
-  ({ theme: customTheme = {}, text, className, ...props }, ref) => {
-    const theme = mergeDeep(getTheme().hr.text, customTheme);
+  ({ theme: customTheme, text, className, ...props }, ref) => {
+    const theme = resolveTheme([hrTheme.text, getStore().theme?.hr?.text, customTheme]);
 
     return (
       <div className={theme.base}>

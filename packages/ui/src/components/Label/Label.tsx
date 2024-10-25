@@ -1,9 +1,10 @@
 import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
-import type { FlowbiteStateColors } from "../Flowbite";
+import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
+import { labelTheme } from "./theme";
 
 export interface FlowbiteLabelTheme {
   root: FlowbiteLabelRootTheme;
@@ -32,11 +33,11 @@ export const Label: FC<LabelProps> = ({
   className,
   color = "default",
   disabled = false,
-  theme: customTheme = {},
+  theme: customTheme,
   value,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().label, customTheme);
+  const theme = resolveTheme([labelTheme, getStore().theme?.label, customTheme]);
 
   return (
     <label

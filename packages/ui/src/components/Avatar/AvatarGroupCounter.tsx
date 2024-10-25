@@ -1,8 +1,9 @@
 import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
+import { avatarTheme } from "./theme";
 
 export interface FlowbiteAvatarGroupCounterTheme {
   base: string;
@@ -16,11 +17,11 @@ export interface AvatarGroupCounterProps extends ComponentProps<"a"> {
 export const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({
   className,
   href,
-  theme: customTheme = {},
+  theme: customTheme,
   total,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().avatar.groupCounter, customTheme);
+  const theme = resolveTheme([avatarTheme.groupCounter, getStore().theme?.avatar?.groupCounter, customTheme]);
 
   return (
     <a href={href} className={twMerge(theme.base, className)} {...props}>

@@ -3,12 +3,13 @@
 import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, ReactElement } from "react";
 import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
-import type { FlowbiteBoolean } from "../Flowbite";
+import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { TabItemProps } from "./TabItem";
 import { TabItem } from "./TabItem";
+import { tabsTheme } from "./theme";
 
 export interface FlowbiteTabsTheme {
   base: string;
@@ -66,10 +67,10 @@ export interface TabsRef {
 
 const TabsComponent = forwardRef<TabsRef, TabsProps>(
   (
-    { children, className, onActiveTabChange, variant = "default", theme: customTheme = {}, ...props },
+    { children, className, onActiveTabChange, variant = "default", theme: customTheme, ...props },
     ref: ForwardedRef<TabsRef>,
   ) => {
-    const theme = mergeDeep(getTheme().tabs, customTheme);
+    const theme = resolveTheme([tabsTheme, getStore().theme?.tabs, customTheme]);
 
     const id = useId();
     const tabs = useMemo(

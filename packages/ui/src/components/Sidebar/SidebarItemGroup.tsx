@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import type { DeepPartial } from "../../types";
 import { useSidebarContext } from "./SidebarContext";
 import { SidebarItemContext } from "./SidebarItemContext";
@@ -15,15 +15,10 @@ export interface SidebarItemGroupProps extends ComponentProps<"ul"> {
   theme?: DeepPartial<FlowbiteSidebarItemGroupTheme>;
 }
 
-export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({
-  children,
-  className,
-  theme: customTheme = {},
-  ...props
-}) => {
+export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({ children, className, theme: customTheme, ...props }) => {
   const { theme: rootTheme } = useSidebarContext();
 
-  const theme = mergeDeep(rootTheme.itemGroup, customTheme);
+  const theme = resolveTheme([rootTheme.itemGroup, {}, customTheme], { shouldPrefix: false });
 
   return (
     <ul data-testid="flowbite-sidebar-item-group" className={twMerge(theme.base, className)} {...props}>

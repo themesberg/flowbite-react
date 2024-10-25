@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteTimelineContentTheme } from "./TimelineContent";
 import { useTimelineContext } from "./TimelineContext";
@@ -22,10 +22,10 @@ export interface TimelineItemProps extends ComponentProps<"li"> {
   theme?: DeepPartial<FlowbiteTimelineItemTheme>;
 }
 
-export const TimelineItem: FC<TimelineItemProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
+export const TimelineItem: FC<TimelineItemProps> = ({ children, className, theme: customTheme, ...props }) => {
   const { theme: rootTheme, horizontal } = useTimelineContext();
 
-  const theme = mergeDeep(rootTheme.item, customTheme);
+  const theme = resolveTheme([rootTheme.item, {}, customTheme], { shouldPrefix: false });
 
   return (
     <TimelineItemContext.Provider value={{ theme }}>

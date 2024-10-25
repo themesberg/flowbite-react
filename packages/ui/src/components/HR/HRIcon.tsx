@@ -2,9 +2,10 @@ import type { ComponentProps, FC } from "react";
 import { forwardRef } from "react";
 import { FaQuoteRight } from "react-icons/fa6";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
+import { hrTheme } from "./theme";
 
 export interface FlowbiteHRIconTheme {
   base: string;
@@ -21,8 +22,8 @@ export interface HRIconProps extends Omit<ComponentProps<"hr">, "ref"> {
 }
 
 export const HRIcon = forwardRef<HTMLHRElement, HRIconProps>(
-  ({ theme: customTheme = {}, icon: Icon = FaQuoteRight, className, ...props }, ref) => {
-    const theme = mergeDeep(getTheme().hr.icon, customTheme);
+  ({ theme: customTheme, icon: Icon = FaQuoteRight, className, ...props }, ref) => {
+    const theme = resolveTheme([hrTheme.icon, getStore().theme?.hr?.icon, customTheme]);
 
     return (
       <div className={theme.base}>

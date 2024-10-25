@@ -4,12 +4,13 @@ import type { Placement } from "@floating-ui/react";
 import { FloatingFocusManager, useMergeRefs } from "@floating-ui/react";
 import type { ComponentProps, ComponentPropsWithRef, Dispatch, ReactNode, SetStateAction } from "react";
 import { cloneElement, isValidElement, useMemo, useRef, useState } from "react";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
-import { getTheme } from "../../theme-store";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteFloatingArrowTheme } from "../Floating";
 import { getArrowPlacement } from "../Floating/helpers";
+import { popoverTheme } from "./theme";
 
 export interface FlowbitePopoverTheme {
   arrow: Omit<FlowbiteFloatingArrowTheme, "style">;
@@ -31,7 +32,7 @@ export interface PopoverProps extends Omit<ComponentProps<"div">, "content" | "s
 export function Popover({
   children,
   content,
-  theme: customTheme = {},
+  theme: customTheme,
   arrow = true,
   trigger = "click",
   initialOpen,
@@ -43,7 +44,7 @@ export function Popover({
   const [uncontrolledOpen, setUncontrolledOpen] = useState<boolean>(Boolean(initialOpen));
   const arrowRef = useRef<HTMLDivElement>(null);
 
-  const theme = mergeDeep(getTheme().popover, customTheme);
+  const theme = resolveTheme([popoverTheme, getStore().theme?.popover, customTheme]);
 
   const open = controlledOpen ?? uncontrolledOpen;
   const setOpen = setControlledOpen ?? setUncontrolledOpen;

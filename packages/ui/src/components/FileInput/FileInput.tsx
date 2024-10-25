@@ -1,11 +1,12 @@
 import type { ComponentProps, ReactNode } from "react";
 import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import { HelperText } from "../HelperText";
 import type { FlowbiteTextInputColors, FlowbiteTextInputSizes } from "../TextInput";
+import { fileInputTheme } from "./theme";
 
 export interface FlowbiteFileInputTheme {
   root: FlowbiteFileInputRootTheme;
@@ -35,8 +36,8 @@ export interface FileInputProps extends Omit<ComponentProps<"input">, "type" | "
 }
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ className, color = "gray", helperText, sizing = "md", theme: customTheme = {}, ...props }, ref) => {
-    const theme = mergeDeep(getTheme().fileInput, customTheme);
+  ({ className, color = "gray", helperText, sizing = "md", theme: customTheme, ...props }, ref) => {
+    const theme = resolveTheme([fileInputTheme, getStore().theme?.fileInput, customTheme]);
 
     return (
       <>

@@ -1,10 +1,11 @@
 import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
-import type { FlowbiteListItemTheme, FlowbiteStateColors } from "../..";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
-import { ListItem } from "./ListItem";
+import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
+import { ListItem, type FlowbiteListItemTheme } from "./ListItem";
+import { listTheme } from "./theme";
 
 export interface FlowbiteListTheme {
   root: FlowbiteListRootTheme;
@@ -42,20 +43,20 @@ const ListComponent: FC<ListProps> = ({
   nested,
   ordered,
   horizontal,
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().list, customTheme);
+  const theme = resolveTheme([listTheme.root, getStore().theme?.list?.root, customTheme]);
   const Component = ordered ? "ol" : "ul";
 
   return (
     <Component
       className={twMerge(
-        theme.root.base,
-        theme.root.ordered[ordered ? "on" : "off"],
-        unstyled && theme.root.unstyled,
-        nested && theme.root.nested,
-        horizontal && theme.root.horizontal,
+        theme.base,
+        theme.ordered[ordered ? "on" : "off"],
+        unstyled && theme.unstyled,
+        nested && theme.nested,
+        horizontal && theme.horizontal,
         className,
       )}
       {...props}

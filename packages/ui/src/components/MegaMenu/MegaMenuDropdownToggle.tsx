@@ -2,9 +2,10 @@
 
 import { useEffect, useId, useRef, useState, type ComponentProps, type FC, type MouseEventHandler } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import { DeepPartial } from "../../types";
+import { megaMenuTheme } from "./theme";
 
 export interface FlowbiteMegaMenuDropdownToggleTheme {
   base: string;
@@ -17,7 +18,7 @@ export interface MegaMenuDropdownToggleProps extends ComponentProps<"button"> {
 export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
   children,
   className,
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }) => {
   const id = useId();
@@ -25,7 +26,7 @@ export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
   const [controls, setControls] = useState<string | undefined>(undefined);
   const [isExpanded, setExpanded] = useState<boolean | undefined>(undefined);
 
-  const theme = mergeDeep(getTheme().megaMenu.dropdownToggle, customTheme);
+  const theme = resolveTheme([megaMenuTheme.dropdownToggle, getStore().theme?.megaMenu?.dropdownToggle, customTheme]);
 
   const findDropdown = function () {
     const megaMenu = ref.current?.closest("nav");

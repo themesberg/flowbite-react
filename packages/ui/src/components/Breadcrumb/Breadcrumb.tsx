@@ -1,10 +1,11 @@
 import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteBreadcrumbItemTheme } from "./BreadcrumbItem";
 import { BreadcrumbItem } from "./BreadcrumbItem";
+import { breadcrumbTheme } from "./theme";
 
 export interface FlowbiteBreadcrumbTheme {
   root: FlowbiteBreadcrumbRootTheme;
@@ -20,13 +21,8 @@ export interface BreadcrumbComponentProps extends ComponentProps<"nav"> {
   theme?: DeepPartial<FlowbiteBreadcrumbRootTheme>;
 }
 
-const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
-  children,
-  className,
-  theme: customTheme = {},
-  ...props
-}) => {
-  const theme = mergeDeep(getTheme().breadcrumb.root, customTheme);
+const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({ children, className, theme: customTheme, ...props }) => {
+  const theme = resolveTheme([breadcrumbTheme.root, getStore().theme?.breadcrumb?.root, customTheme]);
 
   return (
     <nav aria-label="Breadcrumb" className={twMerge(theme.base, className)} {...props}>

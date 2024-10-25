@@ -1,10 +1,10 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { forwardRef, useId } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
-import type { FlowbiteFloatingLabelTheme } from "./theme";
+import { floatingLabelTheme, type FlowbiteFloatingLabelTheme } from "./theme";
 
 export type FloatingLabelColor = "default" | "success" | "error";
 export type FloatingLabelSizing = "sm" | "md";
@@ -29,14 +29,14 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
       sizing = "md",
       variant,
       disabled = false,
-      theme: customTheme = {},
+      theme: customTheme,
       className,
       ...props
     },
     ref,
   ) => {
     const randomId = useId();
-    const theme = mergeDeep(getTheme().floatingLabel, customTheme);
+    const theme = resolveTheme([floatingLabelTheme, getStore().theme?.floatingLabel, customTheme]);
 
     return (
       <div>

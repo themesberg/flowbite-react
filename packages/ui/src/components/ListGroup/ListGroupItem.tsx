@@ -1,9 +1,10 @@
 import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
-import type { FlowbiteBoolean } from "../Flowbite";
+import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
+import { listGroupTheme } from "./theme";
 
 export interface FlowbiteListGroupItemTheme {
   base: string;
@@ -32,11 +33,11 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & Compon
   href,
   icon: Icon,
   onClick,
-  theme: customTheme = {},
+  theme: customTheme,
   disabled,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().listGroup.item, customTheme);
+  const theme = resolveTheme([listGroupTheme.item, getStore().theme?.listGroup?.item, customTheme]);
 
   const isLink = typeof href !== "undefined";
   const Component = isLink ? "a" : "button";

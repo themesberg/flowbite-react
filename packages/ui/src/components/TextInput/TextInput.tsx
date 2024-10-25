@@ -1,11 +1,12 @@
 import type { ComponentProps, FC, ReactNode } from "react";
 import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
-import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite";
+import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { HelperText } from "../HelperText";
+import { textInputTheme } from "./theme";
 
 export interface FlowbiteTextInputTheme {
   base: string;
@@ -63,13 +64,13 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       rightIcon: RightIcon,
       shadow,
       sizing = "md",
-      theme: customTheme = {},
+      theme: customTheme,
       type = "text",
       ...props
     },
     ref,
   ) => {
-    const theme = mergeDeep(getTheme().textInput, customTheme);
+    const theme = resolveTheme([textInputTheme, getStore().theme?.textInput, customTheme]);
 
     return (
       <>

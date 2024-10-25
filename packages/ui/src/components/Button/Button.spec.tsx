@@ -189,7 +189,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Button />
         </Flowbite>,
       );
@@ -207,7 +207,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Button color="primary" />
         </Flowbite>,
       );
@@ -223,7 +223,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Button disabled />
         </Flowbite>,
       );
@@ -241,7 +241,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Button gradientMonochrome="yellowToPink" />
         </Flowbite>,
       );
@@ -259,7 +259,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Button gradientDuoTone="yellowToPink" />
         </Flowbite>,
       );
@@ -277,7 +277,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Button>Hi there</Button>
         </Flowbite>,
       );
@@ -295,7 +295,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Button label="Hi there" />
         </Flowbite>,
       );
@@ -320,7 +320,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Button>Normal button</Button>
           <Button outline>Outline button</Button>
           <Button outline pill>
@@ -349,7 +349,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Button label="Normal button" />
           <Button label="Pill" pill />
         </Flowbite>,
@@ -372,7 +372,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Button size="xxl">Hello</Button>
         </Flowbite>,
       );

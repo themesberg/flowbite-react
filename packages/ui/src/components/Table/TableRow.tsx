@@ -2,7 +2,7 @@
 
 import { forwardRef, type ComponentPropsWithRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import type { DeepPartial } from "../../types";
 import { useTableContext } from "./TableContext";
 
@@ -17,10 +17,10 @@ export interface TableRowProps extends ComponentPropsWithRef<"tr"> {
 }
 
 export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
-  ({ children, className, theme: customTheme = {}, ...props }, ref) => {
+  ({ children, className, theme: customTheme, ...props }, ref) => {
     const { theme: rootTheme, hoverable, striped } = useTableContext();
 
-    const theme = mergeDeep(rootTheme.row, customTheme);
+    const theme = resolveTheme([rootTheme.row, {}, customTheme], { shouldPrefix: false });
 
     return (
       <tr

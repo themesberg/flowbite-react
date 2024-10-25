@@ -2,15 +2,16 @@
 
 import { forwardRef, useState, type ComponentProps, type ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import { Tooltip } from "../Tooltip";
-import { ClipboardWithIcon } from "./ClipboardWithIcon";
 import type { FlowbiteClipboardWithIconTheme } from "./ClipboardWithIcon";
-import { ClipboardWithIconText } from "./ClipboardWithIconText";
+import { ClipboardWithIcon } from "./ClipboardWithIcon";
 import type { FlowbiteClipboardWithIconTextTheme } from "./ClipboardWithIconText";
+import { ClipboardWithIconText } from "./ClipboardWithIconText";
 import { copyToClipboard } from "./helpers";
+import { clipboardTheme } from "./theme";
 
 export interface FlowbiteClipboardTheme {
   button: {
@@ -28,10 +29,10 @@ export interface ClipboardProps extends ComponentProps<"button"> {
 }
 
 const ClipboardComponent = forwardRef<HTMLButtonElement, ClipboardProps>(
-  ({ className, valueToCopy, label, theme: customTheme = {}, ...rest }, ref) => {
+  ({ className, valueToCopy, label, theme: customTheme, ...rest }, ref) => {
     const [isJustCopied, setIsJustCopied] = useState(false);
 
-    const theme = mergeDeep(getTheme().clipboard.button, customTheme);
+    const theme = resolveTheme([clipboardTheme.button, getStore().theme?.clipboard?.button, customTheme]);
 
     return (
       <Tooltip content={isJustCopied ? "Copied" : "Copy to clipboard"} className="[&_*]:cursor-pointer">

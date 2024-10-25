@@ -31,7 +31,7 @@ describe("Components / Spinner", () => {
 
       const spinner = getSpinner(
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <Spinner />
           </Flowbite>,
         ),
@@ -51,7 +51,7 @@ describe("Components / Spinner", () => {
 
       const spinner = getSpinner(
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <Spinner color="primary" />
           </Flowbite>,
         ),
@@ -75,7 +75,7 @@ describe("Components / Spinner", () => {
 
       const spinner = getSpinner(
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <Spinner color="success" light />
           </Flowbite>,
         ),

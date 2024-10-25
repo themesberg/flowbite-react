@@ -48,7 +48,7 @@ describe("Components / Breadcrumb", () => {
       },
     };
     render(
-      <Flowbite theme={{ theme }}>
+      <Flowbite theme={theme}>
         <TestBreadcrumb />
       </Flowbite>,
     );
@@ -71,7 +71,7 @@ describe("Components / Breadcrumb", () => {
       },
     };
     render(
-      <Flowbite theme={{ theme }}>
+      <Flowbite theme={theme}>
         <TestBreadcrumb />
       </Flowbite>,
     );

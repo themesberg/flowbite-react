@@ -69,7 +69,7 @@ describe("Components / Footer", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestFooter />
         </Flowbite>,
       );
@@ -86,7 +86,7 @@ describe("Components / Footer", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestFooter />
         </Flowbite>,
       );
@@ -103,7 +103,7 @@ describe("Components / Footer", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestFooter />
         </Flowbite>,
       );
@@ -123,7 +123,7 @@ describe("Components / Footer", () => {
           },
         };
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <Footer>
               <Footer.Brand alt="Flowbite" href="https://flowbite.com" src="">
                 Flowbite
@@ -137,7 +137,7 @@ describe("Components / Footer", () => {
 
         cleanup();
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <Footer>
               <Footer.Brand href="/" src="">
                 Flowbite
@@ -162,7 +162,7 @@ describe("Components / Footer", () => {
           },
         };
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <Footer>
               <Footer.Copyright by="Flowbite" year={2022}>
                 Test
@@ -176,7 +176,7 @@ describe("Components / Footer", () => {
 
         cleanup();
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <Footer>
               <Footer.Copyright by="Flowbite" href="/" year={2022}>
                 Test
@@ -200,7 +200,7 @@ describe("Components / Footer", () => {
           },
         };
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <Footer>
               <Footer.Icon ariaLabel="Icon" href="/" icon={BsFacebook} />
             </Footer>
@@ -211,7 +211,7 @@ describe("Components / Footer", () => {
 
         cleanup();
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <Footer>
               <Footer.Icon ariaLabel="Icon" icon={BsFacebook} />
             </Footer>
@@ -232,7 +232,7 @@ describe("Components / Footer", () => {
           },
         };
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <Footer.Title title="Flowbite" />
           </Flowbite>,
         );

@@ -3,10 +3,10 @@
 import type { ComponentProps, FC } from "react";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
-import type { FlowbiteBoolean } from "../Flowbite";
+import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteNavbarBrandTheme } from "./NavbarBrand";
 import { NavbarBrand } from "./NavbarBrand";
 import type { FlowbiteNavbarCollapseTheme } from "./NavbarCollapse";
@@ -16,6 +16,7 @@ import type { FlowbiteNavbarLinkTheme } from "./NavbarLink";
 import { NavbarLink } from "./NavbarLink";
 import type { FlowbiteNavbarToggleTheme } from "./NavbarToggle";
 import { NavbarToggle } from "./NavbarToggle";
+import { navbarTheme } from "./theme";
 
 export interface FlowbiteNavbarTheme {
   root: FlowbiteNavbarRootTheme;
@@ -50,12 +51,12 @@ const NavbarComponent: FC<NavbarComponentProps> = ({
   fluid = false,
   menuOpen,
   rounded,
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
-  const theme = mergeDeep(getTheme().navbar, customTheme);
+  const theme = resolveTheme([navbarTheme, getStore().theme?.navbar, customTheme]);
 
   return (
     <NavbarContext.Provider value={{ theme, isOpen, setIsOpen }}>

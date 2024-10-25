@@ -23,7 +23,7 @@ describe("Components / Checkbox", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Checkbox />
         </Flowbite>,
       );

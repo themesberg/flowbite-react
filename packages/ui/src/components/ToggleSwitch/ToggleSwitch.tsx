@@ -1,11 +1,12 @@
 import type { ComponentProps, KeyboardEvent } from "react";
 import { forwardRef, useId } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
-import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite";
+import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteTextInputSizes } from "../TextInput";
+import { toggleSwitchTheme } from "./theme";
 
 export interface FlowbiteToggleSwitchTheme {
   root: FlowbiteToggleSwitchRootTheme;
@@ -46,13 +47,13 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
       label,
       name,
       onChange,
-      theme: customTheme = {},
+      theme: customTheme,
       ...props
     },
     ref,
   ) => {
     const id = useId();
-    const theme = mergeDeep(getTheme().toggleSwitch, customTheme);
+    const theme = resolveTheme([toggleSwitchTheme, getStore().theme?.toggleSwitch, customTheme]);
 
     const toggle = (): void => onChange(!checked);
 

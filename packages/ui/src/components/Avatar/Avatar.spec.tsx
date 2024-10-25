@@ -16,7 +16,7 @@ describe("Components / Avatar", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Avatar size="xxl" />
         </Flowbite>,
       );
@@ -35,7 +35,7 @@ describe("Components / Avatar", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Avatar
             bordered
             color="rose"

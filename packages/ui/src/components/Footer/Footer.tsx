@@ -1,7 +1,7 @@
 import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteFooterBrandTheme } from "./FooterBrand";
 import { FooterBrand } from "./FooterBrand";
@@ -16,6 +16,7 @@ import type { FlowbiteFooterLinkGroupTheme } from "./FooterLinkGroup";
 import { FooterLinkGroup } from "./FooterLinkGroup";
 import type { FlowbiteFooterTitleTheme } from "./FooterTitle";
 import { FooterTitle } from "./FooterTitle";
+import { footerTheme } from "./theme";
 
 export interface FlowbiteFooterTheme {
   brand: FlowbiteFooterBrandTheme;
@@ -44,10 +45,10 @@ export const FooterComponent: FC<FooterProps> = ({
   children,
   className,
   container = false,
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().footer, customTheme);
+  const theme = resolveTheme([footerTheme, getStore().theme?.footer, customTheme]);
 
   return (
     <footer

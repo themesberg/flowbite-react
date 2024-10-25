@@ -1,10 +1,11 @@
 import type { ComponentProps, FC, ReactNode } from "react";
 import { HiX } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
-import type { FlowbiteColors } from "../Flowbite";
+import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
+import { alertTheme } from "./theme";
 
 export interface FlowbiteAlertTheme {
   base: string;
@@ -40,11 +41,11 @@ export const Alert: FC<AlertProps> = ({
   icon: Icon,
   onDismiss,
   rounded = true,
-  theme: customTheme = {},
+  theme: customTheme,
   withBorderAccent,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().alert, customTheme);
+  const theme = resolveTheme([alertTheme, getStore().theme?.alert, customTheme]);
 
   return (
     <div

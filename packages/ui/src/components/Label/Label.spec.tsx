@@ -45,7 +45,7 @@ describe("Components / Label", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Label disabled data-testid="flowbite-label" />
         </Flowbite>,
       );

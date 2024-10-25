@@ -2,9 +2,10 @@
 
 import { useEffect, useId, useRef, useState, type ComponentProps, type FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import { Dropdown, FlowbiteDropdownTheme } from "../Dropdown";
+import { megaMenuTheme } from "./theme";
 
 export interface FlowbiteMegaMenuDropdownTheme {
   base: string;
@@ -19,13 +20,13 @@ export interface MegaMenuDropdownProps extends ComponentProps<"div"> {
 export const MegaMenuDropdown: FC<MegaMenuDropdownProps> = ({
   children,
   className,
-  theme: customTheme = {},
+  theme: customTheme,
   toggle,
   ...props
 }) => {
   const [labelledBy, setLabelledBy] = useState<string | undefined>(undefined);
 
-  const theme = mergeDeep(getTheme().megaMenu.dropdown, customTheme);
+  const theme = resolveTheme([megaMenuTheme.dropdown, getStore().theme?.megaMenu?.dropdown, customTheme]);
 
   if (toggle) {
     return (

@@ -135,7 +135,7 @@ describe("Components / Accordion", () => {
         };
 
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <TestAccordion />
           </Flowbite>,
         );
@@ -156,7 +156,7 @@ describe("Components / Accordion", () => {
         };
 
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <TestAccordion />
             <TestAccordion flush />
           </Flowbite>,
@@ -182,7 +182,7 @@ describe("Components / Accordion", () => {
         };
 
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <TestAccordion />
           </Flowbite>,
         );
@@ -219,7 +219,7 @@ describe("Components / Accordion", () => {
         };
 
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <TestAccordion alwaysOpen />
             <TestAccordion alwaysOpen flush />
           </Flowbite>,

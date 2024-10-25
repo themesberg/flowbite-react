@@ -1,11 +1,12 @@
 import type { ComponentProps, FC, ReactNode } from "react";
 import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
-import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite";
+import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { HelperText } from "../HelperText";
+import { selectTheme } from "./theme";
 
 export interface FlowbiteSelectTheme {
   base: string;
@@ -56,12 +57,12 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       icon: Icon,
       shadow,
       sizing = "md",
-      theme: customTheme = {},
+      theme: customTheme,
       ...props
     },
     ref,
   ) => {
-    const theme = mergeDeep(getTheme().select, customTheme);
+    const theme = resolveTheme([selectTheme, getStore().theme?.select, customTheme]);
 
     return (
       <div className={twMerge(theme.base, className)}>

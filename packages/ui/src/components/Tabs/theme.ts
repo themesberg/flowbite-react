@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { FlowbiteTabsTheme } from "./Tabs";
 
-export const tabTheme: FlowbiteTabsTheme = createTheme({
+export const tabsTheme: FlowbiteTabsTheme = createTheme({
   base: "flex flex-col gap-2",
   tablist: {
     base: "flex text-center",

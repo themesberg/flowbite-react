@@ -3,7 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { FaBars } from "react-icons/fa";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import type { DeepPartial } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
 
@@ -20,12 +20,12 @@ export interface NavbarToggleProps extends ComponentProps<"button"> {
 export const NavbarToggle: FC<NavbarToggleProps> = ({
   barIcon: BarIcon = FaBars,
   className,
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }) => {
   const { theme: rootTheme, isOpen, setIsOpen } = useNavbarContext();
 
-  const theme = mergeDeep(rootTheme.toggle, customTheme);
+  const theme = resolveTheme([rootTheme.toggle, {}, customTheme], { shouldPrefix: false });
 
   const handleClick = () => {
     setIsOpen(!isOpen);

@@ -6,10 +6,11 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
 import ScrollContainer from "../../helpers/drag-scroll";
 import { isClient } from "../../helpers/is-client";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
-import type { FlowbiteBoolean } from "../Flowbite";
+import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
+import { carouselTheme } from "./theme";
 
 export interface FlowbiteCarouselTheme {
   root: FlowbiteCarouselRootTheme;
@@ -71,12 +72,12 @@ export const Carousel: FC<CarouselProps> = ({
   draggable = true,
   slideInterval,
   className,
-  theme: customTheme = {},
+  theme: customTheme,
   onSlideChange = null,
   pauseOnHover = false,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().carousel, customTheme);
+  const theme = resolveTheme([carouselTheme, getStore().theme?.carousel, customTheme]);
 
   const isDeviceMobile = isClient() && navigator.userAgent.indexOf("IEMobile") !== -1;
   const carouselContainer = useRef<HTMLDivElement>(null);
@@ -209,8 +210,9 @@ export const Carousel: FC<CarouselProps> = ({
   );
 };
 
-const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme = {} }) => {
-  const theme = mergeDeep(getTheme().carousel, customTheme);
+const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme }) => {
+  const theme = resolveTheme([carouselTheme, getStore().theme?.carousel, customTheme]);
+
   return (
     <span className={theme.control.base}>
       <HiOutlineChevronLeft className={theme.control.icon} />
@@ -218,8 +220,9 @@ const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customThe
   );
 };
 
-const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme = {} }) => {
-  const theme = mergeDeep(getTheme().carousel, customTheme);
+const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme }) => {
+  const theme = resolveTheme([carouselTheme, getStore().theme?.carousel, customTheme]);
+
   return (
     <span className={theme.control.base}>
       <HiOutlineChevronRight className={theme.control.icon} />

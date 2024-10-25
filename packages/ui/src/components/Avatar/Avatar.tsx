@@ -1,13 +1,14 @@
 import type { ComponentProps, FC, ReactElement } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
-import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from "../Flowbite";
+import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteAvatarGroupTheme } from "./AvatarGroup";
 import { AvatarGroup } from "./AvatarGroup";
 import type { FlowbiteAvatarGroupCounterTheme } from "./AvatarGroupCounter";
 import { AvatarGroupCounter } from "./AvatarGroupCounter";
+import { avatarTheme } from "./theme";
 
 export interface FlowbiteAvatarTheme {
   root: FlowbiteAvatarRootTheme;
@@ -88,10 +89,10 @@ const AvatarComponent: FC<AvatarProps> = ({
   stacked = false,
   status,
   statusPosition = "top-left",
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().avatar, customTheme);
+  const theme = resolveTheme([avatarTheme, getStore().theme?.avatar, customTheme]);
 
   const imgClassName = twMerge(
     theme.root.img.base,

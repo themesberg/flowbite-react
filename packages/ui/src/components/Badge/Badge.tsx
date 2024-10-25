@@ -1,9 +1,10 @@
 import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
-import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite";
+import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
+import { badgeTheme } from "./theme";
 
 export interface FlowbiteBadgeTheme {
   root: FlowbiteBadgeRootTheme;
@@ -40,10 +41,10 @@ export const Badge: FC<BadgeProps> = ({
   icon: Icon,
   size = "xs",
   className,
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().badge, customTheme);
+  const theme = resolveTheme([badgeTheme, getStore().theme?.badge, customTheme]);
 
   const Content: FC = () => (
     <span

@@ -2,10 +2,10 @@
 
 import type { ComponentProps, ElementType, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
-import type { FlowbiteBoolean } from "../Flowbite";
+import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { SidebarCollapse, type FlowbiteSidebarCollapseTheme } from "./SidebarCollapse";
 import { SidebarContext } from "./SidebarContext";
 import { SidebarCTA, type FlowbiteSidebarCTATheme } from "./SidebarCTA";
@@ -13,6 +13,7 @@ import { SidebarItem, type FlowbiteSidebarItemTheme } from "./SidebarItem";
 import { SidebarItemGroup, type FlowbiteSidebarItemGroupTheme } from "./SidebarItemGroup";
 import { SidebarItems, type FlowbiteSidebarItemsTheme } from "./SidebarItems";
 import { SidebarLogo, type FlowbiteSidebarLogoTheme } from "./SidebarLogo";
+import { sidebarTheme } from "./theme";
 
 export interface FlowbiteSidebarTheme {
   root: {
@@ -40,11 +41,11 @@ const SidebarComponent: FC<SidebarProps> = ({
   as: Component = "nav",
   collapseBehavior = "collapse",
   collapsed: isCollapsed = false,
-  theme: customTheme = {},
+  theme: customTheme,
   className,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().sidebar, customTheme);
+  const theme = resolveTheme([sidebarTheme, getStore().theme?.sidebar, customTheme]);
 
   return (
     <SidebarContext.Provider value={{ theme, isCollapsed }}>

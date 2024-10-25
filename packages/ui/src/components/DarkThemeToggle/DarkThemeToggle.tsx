@@ -4,11 +4,11 @@ import type { ComponentProps, FC } from "react";
 import type { IconBaseProps } from "react-icons";
 import { HiMoon, HiSun } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { useIsMounted } from "../../hooks/use-is-mounted";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import { useThemeMode } from "../../hooks/use-theme-mode";
-import { getTheme } from "../../theme-store";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
+import { darkThemeToggleTheme } from "./theme";
 
 export interface FlowbiteDarkThemeToggleTheme {
   root: FlowbiteDarkThemeToggleRootTheme;
@@ -16,7 +16,11 @@ export interface FlowbiteDarkThemeToggleTheme {
 
 export interface FlowbiteDarkThemeToggleRootTheme {
   base: string;
-  icon: string;
+  icon: {
+    base: string;
+    light: string;
+    dark: string;
+  };
 }
 
 export interface DarkThemeToggleProps extends ComponentProps<"button"> {
@@ -27,15 +31,14 @@ export interface DarkThemeToggleProps extends ComponentProps<"button"> {
 
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   className,
-  theme: customTheme = {},
+  theme: customTheme,
   iconDark: IconDark = HiSun,
   iconLight: IconLight = HiMoon,
   ...props
 }) => {
-  const isMounted = useIsMounted();
-  const { computedMode, toggleMode } = useThemeMode();
+  const { toggleMode } = useThemeMode();
 
-  const theme = mergeDeep(getTheme().darkThemeToggle, customTheme);
+  const theme = resolveTheme([darkThemeToggleTheme, getStore().theme?.darkThemeToggle, customTheme]);
 
   return (
     <button
@@ -46,16 +49,8 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
       onClick={toggleMode}
       {...props}
     >
-      <IconDark
-        aria-label="Currently dark mode"
-        data-active={isMounted && computedMode === "dark"}
-        className={twMerge(theme.root.icon, "hidden dark:block")}
-      />
-      <IconLight
-        aria-label="Currently light mode"
-        data-active={isMounted && computedMode === "light"}
-        className={twMerge(theme.root.icon, "dark:hidden")}
-      />
+      <IconDark aria-label="Currently dark mode" className={twMerge(theme.root.icon.base, theme.root.icon.dark)} />
+      <IconLight aria-label="Currently light mode" className={twMerge(theme.root.icon.base, theme.root.icon.light)} />
     </button>
   );
 };

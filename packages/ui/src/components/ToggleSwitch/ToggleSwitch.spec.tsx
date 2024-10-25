@@ -140,7 +140,7 @@ describe("Components / Toggle switch", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <ToggleSwitch checked={false} label="Enable" onChange={console.log} type="submit" />
         </Flowbite>,
       );
@@ -160,7 +160,7 @@ describe("Components / Toggle switch", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <ToggleSwitch checked={false} label="Enable" onChange={console.log} type="submit" />
           <ToggleSwitch disabled checked={false} label="Enable" onChange={console.log} type="submit" />
         </Flowbite>,
@@ -181,7 +181,7 @@ describe("Components / Toggle switch", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <ToggleSwitch checked={false} label="Enable" onChange={console.log} type="submit" />
         </Flowbite>,
       );
@@ -203,7 +203,7 @@ describe("Components / Toggle switch", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <ToggleSwitch checked label="Enable" onChange={console.log} type="submit" />
         </Flowbite>,
       );

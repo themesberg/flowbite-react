@@ -136,7 +136,7 @@ describe("Theme", () => {
     };
 
     const { getByLabelText } = render(
-      <Flowbite theme={{ theme }}>
+      <Flowbite theme={theme}>
         <TestSidebar aria-label="not-collapsed" />
         <TestSidebar aria-label="collapsed" collapsed />
       </Flowbite>,
@@ -181,7 +181,7 @@ describe("Theme", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestSidebar />
         </Flowbite>,
       );
@@ -214,7 +214,7 @@ describe("Theme", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestSidebar />
         </Flowbite>,
       );
@@ -245,7 +245,7 @@ describe("Theme", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestSidebar collapsed />
         </Flowbite>,
       );
@@ -279,7 +279,7 @@ describe("Theme", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestSidebar />
         </Flowbite>,
       );
@@ -299,7 +299,7 @@ describe("Theme", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestSidebar />
         </Flowbite>,
       );
@@ -323,7 +323,7 @@ describe("Theme", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestSidebar />
         </Flowbite>,
       );

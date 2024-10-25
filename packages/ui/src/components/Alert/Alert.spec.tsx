@@ -26,7 +26,7 @@ describe("Components / Alert", () => {
           },
         };
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <TestAlert />
           </Flowbite>,
         );
@@ -41,7 +41,7 @@ describe("Components / Alert", () => {
           },
         };
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <TestAlert withBorderAccent />
           </Flowbite>,
         );
@@ -56,7 +56,7 @@ describe("Components / Alert", () => {
           },
         };
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <TestAlert />
           </Flowbite>,
         );
@@ -78,7 +78,7 @@ describe("Components / Alert", () => {
           },
         };
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <TestAlert />
           </Flowbite>,
         );
@@ -98,7 +98,7 @@ describe("Components / Alert", () => {
           },
         };
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <TestAlert icon={HiHeart} />
           </Flowbite>,
         );
@@ -113,7 +113,7 @@ describe("Components / Alert", () => {
           },
         };
         render(
-          <Flowbite theme={{ theme }}>
+          <Flowbite theme={theme}>
             <TestAlert />
           </Flowbite>,
         );

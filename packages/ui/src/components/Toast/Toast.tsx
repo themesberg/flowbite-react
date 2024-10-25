@@ -3,9 +3,10 @@
 import type { ComponentProps, FC } from "react";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
+import { toastTheme } from "./theme";
 import type { Duration } from "./ToastContext";
 import { ToastContext } from "./ToastContext";
 import { ToastToggle } from "./ToastToggle";
@@ -37,11 +38,11 @@ const durationClasses: Record<Duration, string> = {
   1000: "duration-1000",
 };
 
-const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300, theme: customTheme = {}, ...props }) => {
+const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300, theme: customTheme, ...props }) => {
   const [isClosed, setIsClosed] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
 
-  const theme = mergeDeep(getTheme().toast, customTheme);
+  const theme = resolveTheme([toastTheme, getStore().theme?.toast, customTheme]);
 
   if (isRemoved) {
     return null;

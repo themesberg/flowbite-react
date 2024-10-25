@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import type { DeepPartial } from "../../types";
 import { useTimelineContext } from "./TimelineContext";
 import { useTimelineItemContext } from "./TimelineItemContext";
@@ -32,13 +32,13 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   children,
   className,
   icon: Icon,
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }) => {
   const { horizontal } = useTimelineContext();
   const { theme: itemTheme } = useTimelineItemContext();
 
-  const theme = mergeDeep(itemTheme.point, customTheme);
+  const theme = resolveTheme([itemTheme.point, {}, customTheme], { shouldPrefix: false });
 
   return (
     <div

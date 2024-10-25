@@ -1,12 +1,13 @@
 import type { ComponentProps, FC, ReactNode } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import { range } from "./helpers";
 import type { FlowbitePaginationButtonTheme, PaginationButtonProps } from "./PaginationButton";
 import { PaginationButton, PaginationNavigation } from "./PaginationButton";
+import { paginationTheme } from "./theme";
 
 export interface FlowbitePaginationTheme {
   base: string;
@@ -59,11 +60,11 @@ const PaginationComponent: FC<PaginationProps> = ({
   previousLabel = "Previous",
   renderPaginationButton = (props) => <PaginationButton {...props} />,
   showIcons: showIcon = false,
-  theme: customTheme = {},
+  theme: customTheme,
   totalPages,
   ...props
 }) => {
-  const theme = mergeDeep(getTheme().pagination, customTheme);
+  const theme = resolveTheme([paginationTheme, getStore().theme?.pagination, customTheme]);
 
   const lastPage = Math.min(Math.max(layout === "pagination" ? currentPage + 2 : currentPage + 4, 5), totalPages);
   const firstPage = Math.max(1, lastPage - 4);

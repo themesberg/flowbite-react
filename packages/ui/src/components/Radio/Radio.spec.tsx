@@ -23,7 +23,7 @@ describe("Components / Radio", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Radio />
         </Flowbite>,
       );

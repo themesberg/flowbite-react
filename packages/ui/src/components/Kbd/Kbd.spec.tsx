@@ -15,7 +15,7 @@ describe("Components / Kbd", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Kbd />
         </Flowbite>,
       );

@@ -3,9 +3,10 @@
 import type { ComponentProps, FC } from "react";
 import { useId } from "react";
 import { MdClose, MdHome } from "react-icons/md";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
-import type { FlowbiteBoolean } from "../Flowbite";
+import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useDrawerContext } from "./DrawerContext";
 
 export interface FlowbiteDrawerHeaderTheme {
@@ -29,7 +30,7 @@ export const DrawerHeader: FC<DrawerHeaderProps> = ({
   children,
   className,
   closeIcon: CloseIcon = MdClose,
-  theme: customTheme = {},
+  theme: customTheme,
   title,
   titleIcon: TitleIcon = MdHome,
   ...props
@@ -38,7 +39,9 @@ export const DrawerHeader: FC<DrawerHeaderProps> = ({
 
   const { id: mainDivId, isOpen, onClose, theme: rootTheme } = useDrawerContext();
 
-  const theme = mergeDeep(rootTheme.header, customTheme);
+  const theme = resolveTheme([rootTheme.header, getStore().theme?.drawer?.header, customTheme], {
+    shouldPrefix: false,
+  });
 
   return (
     <div className={className} {...props}>

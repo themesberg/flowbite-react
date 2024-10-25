@@ -14,10 +14,10 @@ import {
 import type { MutableRefObject } from "react";
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
-import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from "../Flowbite";
+import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteModalBodyTheme } from "./ModalBody";
 import { ModalBody } from "./ModalBody";
 import { ModalContext } from "./ModalContext";
@@ -25,6 +25,7 @@ import type { FlowbiteModalFooterTheme } from "./ModalFooter";
 import { ModalFooter } from "./ModalFooter";
 import type { FlowbiteModalHeaderTheme } from "./ModalHeader";
 import { ModalHeader } from "./ModalHeader";
+import { modalTheme } from "./theme";
 
 export interface FlowbiteModalTheme {
   root: FlowbiteModalRootTheme;
@@ -78,14 +79,14 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
       root,
       show,
       size = "2xl",
-      theme: customTheme = {},
+      theme: customTheme,
       initialFocus,
       ...props
     },
     theirRef,
   ) => {
     const [headerId, setHeaderId] = useState<string | undefined>(undefined);
-    const theme = mergeDeep(getTheme().modal, customTheme);
+    const theme = resolveTheme([modalTheme, getStore().theme?.modal, customTheme]);
 
     const { context } = useFloating({
       open: show,

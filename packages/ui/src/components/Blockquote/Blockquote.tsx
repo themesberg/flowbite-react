@@ -1,8 +1,9 @@
 import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
+import { blockquoteTheme } from "./theme";
 
 export interface FlowbiteBlockquoteTheme {
   root: FlowbiteBlockquoteRootTheme;
@@ -16,8 +17,8 @@ export interface BlockquoteProps extends ComponentProps<"blockquote"> {
   theme?: DeepPartial<FlowbiteBlockquoteTheme>;
 }
 
-export const Blockquote: FC<BlockquoteProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
-  const theme = mergeDeep(getTheme().blockquote, customTheme);
+export const Blockquote: FC<BlockquoteProps> = ({ children, className, theme: customTheme, ...props }) => {
+  const theme = resolveTheme([blockquoteTheme, getStore().theme?.blockquote, customTheme]);
 
   return (
     <blockquote className={twMerge(theme.root.base, className)} data-testid="flowbite-blockquote" {...props}>

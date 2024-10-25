@@ -1,10 +1,11 @@
 import type { ComponentProps, FC, ReactElement, ReactNode } from "react";
 import { Children, cloneElement, isValidElement, useMemo } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import { Button, type ButtonProps } from "../Button/Button";
+import { buttonGroupTheme } from "./theme";
 
 export interface FlowbiteButtonGroupTheme {
   base: string;
@@ -60,12 +61,12 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   className,
   outline,
   pill,
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }: ButtonGroupProps) => {
   const items = useMemo(() => processChildren(children, outline, pill), [children, outline, pill]);
 
-  const theme = mergeDeep(getTheme().buttonGroup, customTheme);
+  const theme = resolveTheme([buttonGroupTheme, getStore().theme?.buttonGroup, customTheme]);
 
   return (
     <div className={twMerge(theme.base, className)} role="group" {...props}>

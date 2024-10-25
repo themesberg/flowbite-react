@@ -146,7 +146,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <RangeSlider />
         </Flowbite>,
       );
@@ -164,7 +164,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <RangeSlider />
         </Flowbite>,
       );
@@ -184,7 +184,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <RangeSlider />
         </Flowbite>,
       );
@@ -206,7 +206,7 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <RangeSlider sizing="lg" />
         </Flowbite>,
       );

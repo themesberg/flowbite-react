@@ -64,7 +64,7 @@ describe("Components / List group", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestListGroup />
         </Flowbite>,
       );
@@ -92,7 +92,7 @@ describe("Components / List group", () => {
       };
 
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestListGroup />
         </Flowbite>,
       );

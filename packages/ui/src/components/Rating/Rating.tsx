@@ -2,13 +2,14 @@
 
 import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import { RatingAdvanced } from "./RatingAdvanced";
 import { RatingContext } from "./RatingContext";
 import type { FlowbiteRatingStarTheme, FlowbiteStarSizes } from "./RatingStar";
 import { RatingStar } from "./RatingStar";
+import { ratingTheme } from "./theme";
 
 export interface FlowbiteRatingTheme {
   root: {
@@ -22,8 +23,8 @@ export interface RatingProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteRatingTheme>;
 }
 
-const RatingComponent: FC<RatingProps> = ({ children, className, size = "sm", theme: customTheme = {}, ...props }) => {
-  const theme = mergeDeep(getTheme().rating, customTheme);
+const RatingComponent: FC<RatingProps> = ({ children, className, size = "sm", theme: customTheme, ...props }) => {
+  const theme = resolveTheme([ratingTheme, getStore().theme?.rating, customTheme]);
 
   return (
     <RatingContext.Provider value={{ theme, size }}>

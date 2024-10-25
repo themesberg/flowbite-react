@@ -3,10 +3,10 @@
 import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from "react";
 import { forwardRef, useId } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import { Badge } from "../Badge";
-import type { FlowbiteColors } from "../Flowbite";
+import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { Tooltip } from "../Tooltip";
 import { useSidebarContext } from "./SidebarContext";
 import { useSidebarItemContext } from "./SidebarItemContext";
@@ -92,7 +92,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       icon: Icon,
       label,
       labelColor = "info",
-      theme: customTheme = {},
+      theme: customTheme,
       ...props
     },
     ref,
@@ -101,7 +101,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
     const { theme: rootTheme, isCollapsed } = useSidebarContext();
     const { isInsideCollapse } = useSidebarItemContext();
 
-    const theme = mergeDeep(rootTheme.item, customTheme);
+    const theme = resolveTheme([rootTheme.item, {}, customTheme], { shouldPrefix: false });
 
     return (
       <ListItem theme={theme} className={theme.listItem} id={id} isCollapsed={isCollapsed} tooltipChildren={children}>

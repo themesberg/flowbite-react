@@ -4,8 +4,8 @@ import type { ForwardRefRenderFunction, ReactNode } from "react";
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { HiArrowLeft, HiArrowRight, HiCalendar } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from "../TextInput";
 import { DatepickerContext } from "./DatepickerContext";
@@ -19,6 +19,7 @@ import {
   Views,
   WeekStart,
 } from "./helpers";
+import { datePickerTheme } from "./theme";
 import type { FlowbiteDatepickerViewsDaysTheme } from "./Views/Days";
 import { DatepickerViewsDays } from "./Views/Days";
 import { DatepickerViewsDecades, type FlowbiteDatepickerViewsDecadesTheme } from "./Views/Decades";
@@ -117,7 +118,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     language = "en",
     weekStart = WeekStart.Sunday,
     className,
-    theme: customTheme = {},
+    theme: customTheme,
     onChange,
     label,
     value,
@@ -125,7 +126,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   },
   ref,
 ) => {
-  const theme = mergeDeep(getTheme().datepicker, customTheme);
+  const theme = resolveTheme([datePickerTheme, getStore().theme?.datepicker, customTheme]);
   const initialDate = defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : null;
 
   const effectiveDefaultView = useMemo(() => {

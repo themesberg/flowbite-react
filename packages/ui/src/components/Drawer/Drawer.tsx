@@ -3,13 +3,14 @@
 import type { ComponentProps, FC } from "react";
 import { useEffect, useId } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
-import type { FlowbiteBoolean } from "../Flowbite";
+import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { DrawerContext } from "./DrawerContext";
 import { DrawerHeader, type FlowbiteDrawerHeaderTheme } from "./DrawerHeader";
 import { DrawerItems, type FlowbiteDrawerItemsTheme } from "./DrawerItems";
+import { drawerTheme } from "./theme";
 
 export interface FlowbiteDrawerTheme {
   root: FlowbiteDrawerRootTheme;
@@ -46,12 +47,11 @@ const DrawerComponent: FC<DrawerProps> = ({
   position = "left",
   onClose,
   open: isOpen = false,
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }) => {
   const id = useId();
-
-  const theme = mergeDeep(getTheme().drawer, customTheme);
+  const theme = resolveTheme([drawerTheme, getStore().theme?.drawer, customTheme]);
 
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {

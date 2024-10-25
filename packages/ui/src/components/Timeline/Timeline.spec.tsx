@@ -23,7 +23,7 @@ describe("Components / Timeline", () => {
 
     it("should use `horizontal` classes of content if provided", () => {
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestTimelineNoIcon horizontal={true} />
         </Flowbite>,
       );
@@ -33,7 +33,7 @@ describe("Components / Timeline", () => {
 
     it("should not use `vertical` classes of content if provided", () => {
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestTimelineNoIcon horizontal={true} />
         </Flowbite>,
       );
@@ -58,7 +58,7 @@ describe("Components / Timeline", () => {
 
     it("should use `vertical` classes of content if provided", () => {
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestTimelineNoIcon />
         </Flowbite>,
       );
@@ -68,7 +68,7 @@ describe("Components / Timeline", () => {
 
     it("should not use `horizontal` classes of content if provided", () => {
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestTimelineNoIcon />
         </Flowbite>,
       );
@@ -79,7 +79,7 @@ describe("Components / Timeline", () => {
   describe("Theme", () => {
     it("should use `base` classes of content in horizontal mode", () => {
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestTimelineNoIcon horizontal={true} />
         </Flowbite>,
       );
@@ -89,7 +89,7 @@ describe("Components / Timeline", () => {
 
     it("should use `base` classes of content in vertical mode", () => {
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <TestTimelineNoIcon />
         </Flowbite>,
       );

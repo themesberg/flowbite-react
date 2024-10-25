@@ -1,10 +1,11 @@
 import type { ComponentProps, FC } from "react";
 import { useId } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
-import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite";
+import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
+import { progressTheme } from "./theme";
 
 export interface FlowbiteProgressTheme {
   base: string;
@@ -47,11 +48,11 @@ export const Progress: FC<ProgressProps> = ({
   size = "md",
   textLabel = "progressbar",
   textLabelPosition = "inside",
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }) => {
   const id = useId();
-  const theme = mergeDeep(getTheme().progress, customTheme);
+  const theme = resolveTheme([progressTheme, getStore().theme?.progress, customTheme]);
 
   return (
     <>

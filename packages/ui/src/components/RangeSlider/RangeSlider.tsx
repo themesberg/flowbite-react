@@ -1,10 +1,11 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteTextInputSizes } from "../TextInput";
+import { rangeSliderTheme } from "./theme";
 
 export interface FlowbiteRangeSliderTheme {
   root: FlowbiteRangeSliderRootTheme;
@@ -29,8 +30,8 @@ export interface RangeSliderProps extends Omit<ComponentProps<"input">, "ref" | 
 }
 
 export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
-  ({ className, sizing = "md", theme: customTheme = {}, ...props }, ref) => {
-    const theme = mergeDeep(getTheme().rangeSlider, customTheme);
+  ({ className, sizing = "md", theme: customTheme, ...props }, ref) => {
+    const theme = resolveTheme([rangeSliderTheme, getStore().theme?.rangeSlider, customTheme]);
 
     return (
       <>

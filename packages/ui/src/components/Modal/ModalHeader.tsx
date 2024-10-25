@@ -3,7 +3,7 @@
 import { useId, useLayoutEffect, type ComponentProps, type ElementType, type FC } from "react";
 import { HiOutlineX } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import type { DeepPartial } from "../../types";
 import { useModalContext } from "./ModalContext";
 
@@ -26,7 +26,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   as: Component = "h3",
   children,
   className,
-  theme: customTheme = {},
+  theme: customTheme,
   id,
   ...props
 }) => {
@@ -35,7 +35,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
 
   const { theme: rootTheme, popup, onClose, setHeaderId } = useModalContext();
 
-  const theme = mergeDeep(rootTheme.header, customTheme);
+  const theme = resolveTheme([rootTheme.header, {}, customTheme], { shouldPrefix: false });
 
   useLayoutEffect(() => {
     setHeaderId(headerId);

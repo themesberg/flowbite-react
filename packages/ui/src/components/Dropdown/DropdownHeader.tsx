@@ -14,10 +14,10 @@ export interface DropdownHeaderProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteDropdownHeaderTheme>;
 }
 
-export const DropdownHeader: FC<DropdownHeaderProps> = ({ children, className, theme: customTheme = {}, ...props }) => {
+export const DropdownHeader: FC<DropdownHeaderProps> = ({ children, className, theme: customTheme, ...props }) => {
   const { theme: rootTheme } = useDropdownContext();
 
-  const theme = customTheme.header ?? rootTheme.floating.header;
+  const theme = customTheme?.header ?? rootTheme.floating.header;
 
   return (
     <>

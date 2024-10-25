@@ -2,9 +2,9 @@
 
 import type { ComponentProps, ElementType, FC, MouseEvent } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import type { DeepPartial } from "../../types";
-import type { FlowbiteBoolean } from "../Flowbite";
+import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useNavbarContext } from "./NavbarContext";
 
 export interface FlowbiteNavbarLinkTheme {
@@ -27,13 +27,13 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   disabled,
   children,
   className,
-  theme: customTheme = {},
+  theme: customTheme,
   onClick,
   ...props
 }) => {
   const { theme: rootTheme, setIsOpen } = useNavbarContext();
 
-  const theme = mergeDeep(rootTheme.link, customTheme);
+  const theme = resolveTheme([rootTheme.link, {}, customTheme], { shouldPrefix: false });
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     setIsOpen(false);

@@ -2,7 +2,7 @@
 
 import type { ComponentProps, ElementType, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import type { DeepPartial } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
 
@@ -20,12 +20,12 @@ export const NavbarBrand: FC<NavbarBrandProps> = ({
   as: Component = "a",
   children,
   className,
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }) => {
   const { theme: rootTheme } = useNavbarContext();
 
-  const theme = mergeDeep(rootTheme.brand, customTheme);
+  const theme = resolveTheme([rootTheme.brand, {}, customTheme], { shouldPrefix: false });
 
   return (
     <Component className={twMerge(theme.base, className)} {...props}>

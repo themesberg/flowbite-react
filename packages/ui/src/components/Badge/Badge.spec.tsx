@@ -41,7 +41,7 @@ describe("Components / Badge", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Badge color="primary" href="/" icon={HiCheck}>
             A badge
           </Badge>
@@ -71,7 +71,7 @@ describe("Components / Badge", () => {
         },
       };
       render(
-        <Flowbite theme={{ theme }}>
+        <Flowbite theme={theme}>
           <Badge size="xxl">A badge</Badge>
           <Badge icon={HiCheck} size="xxl" />
         </Flowbite>,

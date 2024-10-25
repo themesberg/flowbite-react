@@ -3,7 +3,7 @@
 import type { ComponentProps, FC, MouseEvent } from "react";
 import { HiX } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import type { DeepPartial } from "../../types";
 import { useToastContext } from "./ToastContext";
 
@@ -21,16 +21,16 @@ export interface ToastToggleProps extends ComponentProps<"button"> {
 export const ToastToggle: FC<ToastToggleProps> = ({
   className,
   onClick,
-  theme: customTheme = {},
+  theme: customTheme,
   xIcon: XIcon = HiX,
   onDismiss,
   ...props
 }) => {
   const { theme: rootTheme, duration, isClosed, isRemoved, setIsClosed, setIsRemoved } = useToastContext();
 
-  const theme = mergeDeep(rootTheme.toggle, customTheme);
+  const theme = resolveTheme([rootTheme.toggle, {}, customTheme], { shouldPrefix: false });
 
-  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+  function handleClick(e: MouseEvent<HTMLButtonElement>) {
     if (onClick) onClick(e);
 
     if (onDismiss) {
@@ -40,7 +40,7 @@ export const ToastToggle: FC<ToastToggleProps> = ({
 
     setIsClosed(!isClosed);
     setTimeout(() => setIsRemoved(!isRemoved), duration);
-  };
+  }
 
   return (
     <button

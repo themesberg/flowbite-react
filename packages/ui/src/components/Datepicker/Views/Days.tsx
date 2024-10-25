@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../../helpers/merge-deep";
+import { resolveTheme } from "../../../helpers/resolve-theme";
 import type { DeepPartial } from "../../../types";
 import { useDatePickerContext } from "../DatepickerContext";
 import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateEqual, isDateInRange } from "../helpers";
@@ -24,7 +24,7 @@ export interface DatepickerViewsDaysProps {
   theme?: DeepPartial<FlowbiteDatepickerViewsDaysTheme>;
 }
 
-export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: customTheme = {} }) => {
+export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: customTheme }) => {
   const {
     theme: rootTheme,
     weekStart,
@@ -36,7 +36,7 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: custo
     language,
   } = useDatePickerContext();
 
-  const theme = mergeDeep(rootTheme.views.days, customTheme);
+  const theme = resolveTheme([rootTheme.views.days, {}, customTheme], { shouldPrefix: false });
 
   const weekDays = getWeekDays(language, weekStart);
   const startDate = getFirstDayOfTheMonth(viewDate, weekStart);

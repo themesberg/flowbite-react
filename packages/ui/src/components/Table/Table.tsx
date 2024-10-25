@@ -2,8 +2,8 @@
 
 import { forwardRef, type ComponentPropsWithRef } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import { TableBody, type FlowbiteTableBodyTheme } from "./TableBody";
 import { TableCell } from "./TableCell";
@@ -11,6 +11,7 @@ import { TableContext } from "./TableContext";
 import { TableHead, type FlowbiteTableHeadTheme } from "./TableHead";
 import { TableHeadCell } from "./TableHeadCell";
 import { TableRow, type FlowbiteTableRowTheme } from "./TableRow";
+import { tableTheme } from "./theme";
 
 export interface FlowbiteTableTheme {
   root: FlowbiteTableRootTheme;
@@ -32,8 +33,8 @@ export interface TableProps extends ComponentPropsWithRef<"table"> {
 }
 
 const TableComponent = forwardRef<HTMLTableElement, TableProps>(
-  ({ children, className, striped, hoverable, theme: customTheme = {}, ...props }, ref) => {
-    const theme = mergeDeep(getTheme().table, customTheme);
+  ({ children, className, striped, hoverable, theme: customTheme, ...props }, ref) => {
+    const theme = resolveTheme([tableTheme, getStore().theme?.table, customTheme]);
 
     return (
       <div data-testid="table-element" className={twMerge(theme.root.wrapper)}>

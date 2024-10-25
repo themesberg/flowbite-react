@@ -2,9 +2,10 @@
 
 import type { ComponentProps, FC } from "react";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
-import { getTheme } from "../../theme-store";
+import { resolveTheme } from "../../helpers/resolve-theme";
+import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
+import { timelineTheme } from "./theme";
 import { TimelineBody } from "./TimelineBody";
 import { TimelineContent } from "./TimelineContent";
 import { TimelineContext } from "./TimelineContext";
@@ -28,14 +29,8 @@ export interface TimelineProps extends ComponentProps<"ol"> {
   theme?: DeepPartial<FlowbiteTimelineTheme>;
 }
 
-const TimelineComponent: FC<TimelineProps> = ({
-  children,
-  className,
-  horizontal,
-  theme: customTheme = {},
-  ...props
-}) => {
-  const theme = mergeDeep(getTheme().timeline, customTheme);
+const TimelineComponent: FC<TimelineProps> = ({ children, className, horizontal, theme: customTheme, ...props }) => {
+  const theme = resolveTheme([timelineTheme, getStore().theme?.timeline, customTheme]);
 
   return (
     <TimelineContext.Provider value={{ theme, horizontal }}>

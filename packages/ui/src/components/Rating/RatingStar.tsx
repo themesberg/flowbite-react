@@ -3,9 +3,9 @@
 import type { ComponentProps, FC } from "react";
 import { HiStar } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
-import { mergeDeep } from "../../helpers/merge-deep";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import type { DeepPartial } from "../../types";
-import type { FlowbiteSizes } from "../Flowbite";
+import type { FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { useRatingContext } from "./RatingContext";
 
 export interface FlowbiteRatingStarTheme {
@@ -28,12 +28,12 @@ export const RatingStar: FC<RatingStarProps> = ({
   className,
   filled = true,
   starIcon: Icon = HiStar,
-  theme: customTheme = {},
+  theme: customTheme,
   ...props
 }) => {
   const { theme: rootTheme, size = "sm" } = useRatingContext();
 
-  const theme = mergeDeep(rootTheme.star, customTheme);
+  const theme = resolveTheme([rootTheme.star, {}, customTheme], { shouldPrefix: false });
 
   return (
     <Icon
