@@ -28,10 +28,10 @@ export function setStore(data: StoreProps = {}, options: { override?: boolean } 
   }
   if (theme) {
     if (options.override) {
+      store.data.theme = theme;
+    } else {
       // TODO: implement `twMerge()`
       store.data.theme = deepmerge(store.data.theme, theme);
-    } else {
-      store.data.theme = theme;
     }
   }
 }
