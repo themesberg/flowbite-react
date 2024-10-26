@@ -2,6 +2,10 @@ export function applyPrefix(classNames: string, prefix: string, separator = ":")
   return classNames
     .split(/\s+/)
     .map((className) => {
+      if (!className.trim()) {
+        return className;
+      }
+
       if (className.startsWith("[") && className.endsWith("]")) {
         return className;
       }
@@ -18,6 +22,10 @@ export function applyPrefix(classNames: string, prefix: string, separator = ":")
         }
         return acc;
       }, []);
+
+      if (prefixedBaseClass.startsWith(prefix)) {
+        return className;
+      }
 
       prefixedBaseClass = modifiers.join("") + prefix + prefixedBaseClass;
 
