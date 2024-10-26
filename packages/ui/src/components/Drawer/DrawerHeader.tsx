@@ -4,7 +4,6 @@ import type { ComponentProps, FC } from "react";
 import { useId } from "react";
 import { MdClose, MdHome } from "react-icons/md";
 import { resolveTheme } from "../../helpers/resolve-theme";
-import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useDrawerContext } from "./DrawerContext";
