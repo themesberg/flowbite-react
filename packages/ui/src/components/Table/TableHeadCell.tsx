@@ -18,7 +18,7 @@ export const TableHeadCell = forwardRef<HTMLTableCellElement, TableHeadCellProps
   ({ children, className, theme: customTheme, ...props }, ref) => {
     const { theme: headTheme } = useTableHeadContext();
 
-    const theme = resolveTheme([headTheme.cell, {}, customTheme], { shouldPrefix: false });
+    const theme = resolveTheme([headTheme.cell, customTheme], { shouldPrefix: false });
 
     return (
       <th className={twMerge(theme.base, className)} ref={ref} {...props}>

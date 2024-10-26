@@ -33,7 +33,7 @@ export const RatingStar: FC<RatingStarProps> = ({
 }) => {
   const { theme: rootTheme, size = "sm" } = useRatingContext();
 
-  const theme = resolveTheme([rootTheme.star, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.star, customTheme], { shouldPrefix: false });
 
   return (
     <Icon

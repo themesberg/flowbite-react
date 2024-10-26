@@ -39,9 +39,7 @@ export const DrawerHeader: FC<DrawerHeaderProps> = ({
 
   const { id: mainDivId, isOpen, onClose, theme: rootTheme } = useDrawerContext();
 
-  const theme = resolveTheme([rootTheme.header, getStore().theme?.drawer?.header, customTheme], {
-    shouldPrefix: false,
-  });
+  const theme = resolveTheme([rootTheme.header, customTheme], { shouldPrefix: false });
 
   return (
     <div className={className} {...props}>

@@ -25,7 +25,7 @@ export const NavbarBrand: FC<NavbarBrandProps> = ({
 }) => {
   const { theme: rootTheme } = useNavbarContext();
 
-  const theme = resolveTheme([rootTheme.brand, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.brand, customTheme], { shouldPrefix: false });
 
   return (
     <Component className={twMerge(theme.base, className)} {...props}>

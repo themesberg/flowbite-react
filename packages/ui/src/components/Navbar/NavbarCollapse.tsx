@@ -20,7 +20,7 @@ export interface NavbarCollapseProps extends ComponentProps<"div"> {
 export const NavbarCollapse: FC<NavbarCollapseProps> = ({ children, className, theme: customTheme, ...props }) => {
   const { theme: rootTheme, isOpen } = useNavbarContext();
 
-  const theme = resolveTheme([rootTheme.collapse, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.collapse, customTheme], { shouldPrefix: false });
 
   return (
     <div

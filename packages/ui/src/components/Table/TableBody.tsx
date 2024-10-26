@@ -21,7 +21,7 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
   ({ children, className, theme: customTheme, ...props }, ref) => {
     const { theme: rootTheme } = useTableContext();
 
-    const theme = resolveTheme([rootTheme.body, {}, customTheme], { shouldPrefix: false });
+    const theme = resolveTheme([rootTheme.body, customTheme], { shouldPrefix: false });
 
     return (
       <TableBodyContext.Provider value={{ theme }}>

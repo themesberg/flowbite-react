@@ -1,25 +1,22 @@
-import { deepmerge, deepmergeInto } from "deepmerge-ts";
+import { deepmergeInto } from "deepmerge-ts";
 import { getStore } from "../store";
 import { applyPrefix } from "./apply-prefix";
 
 const cache = new Map();
 
 /**
- * Merges [`base`, `store`, `custom`] and applies prefix to [`base`, `store`]
+ * Adds prefix to `base` and merges the result with `...custom`
  *
  * @param base base theme
- * @param store store theme
- * @param custom custom theme
- * @returns merged `[base, store, custom]`
+ * @param custom custom themes
+ * @returns merged `[base, ...custom]`
  */
 export function resolveTheme<T>(
-  [base, store, custom]: [
+  [base, ...custom]: [
     /** base theme */
     T,
-    /** store theme */
-    unknown,
-    /** custom theme */
-    unknown?,
+    /** custom themes */
+    ...unknown[],
   ],
   options: Partial<{
     shouldPrefix: boolean;
@@ -28,21 +25,21 @@ export function resolveTheme<T>(
   const { prefix } = getStore();
   const { shouldPrefix = true } = options ?? {};
 
-  const cacheKey = JSON.stringify({ base, store, custom, options, prefix });
+  const cacheKey = JSON.stringify({ base, custom, options, prefix });
   const cacheValue = cache.get(cacheKey);
 
   if (cacheValue) {
     return cacheValue;
   }
 
-  // TODO: implement `twMerge()`
-  const theme = structuredClone(deepmerge(base, store));
+  const theme = structuredClone(base);
 
   if (prefix && shouldPrefix) {
     stringIterator(theme, (value) => (value ? applyPrefix(value, prefix) : value));
   }
 
-  deepmergeInto(theme as object, custom);
+  // TODO: implement `twMerge()`
+  deepmergeInto(theme as object, ...custom);
   cache.set(cacheKey, theme);
 
   return theme as T;

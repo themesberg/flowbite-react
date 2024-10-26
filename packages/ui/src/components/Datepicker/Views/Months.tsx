@@ -31,7 +31,7 @@ export const DatepickerViewsMonth: FC<DatepickerViewsMonthsProps> = ({ theme: cu
     setView,
   } = useDatePickerContext();
 
-  const theme = resolveTheme([rootTheme.views.months, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.views.months, customTheme], { shouldPrefix: false });
 
   return (
     <div className={theme.items.base}>

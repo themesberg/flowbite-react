@@ -101,7 +101,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
     const { theme: rootTheme, isCollapsed } = useSidebarContext();
     const { isInsideCollapse } = useSidebarItemContext();
 
-    const theme = resolveTheme([rootTheme.item, {}, customTheme], { shouldPrefix: false });
+    const theme = resolveTheme([rootTheme.item, customTheme], { shouldPrefix: false });
 
     return (
       <ListItem theme={theme} className={theme.listItem} id={id} isCollapsed={isCollapsed} tooltipChildren={children}>

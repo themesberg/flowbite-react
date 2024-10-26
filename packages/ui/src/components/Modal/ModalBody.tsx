@@ -18,7 +18,7 @@ export interface ModalBodyProps extends ComponentProps<"div"> {
 export const ModalBody: FC<ModalBodyProps> = ({ children, className, theme: customTheme, ...props }) => {
   const { theme: rootTheme, popup } = useModalContext();
 
-  const theme = resolveTheme([rootTheme.body, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.body, customTheme], { shouldPrefix: false });
 
   return (
     <div className={twMerge(theme.base, popup && [theme.popup], className)} {...props}>

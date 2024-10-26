@@ -18,7 +18,7 @@ export interface ModalFooterProps extends ComponentProps<"div"> {
 export const ModalFooter: FC<ModalFooterProps> = ({ children, className, theme: customTheme, ...props }) => {
   const { theme: rootTheme, popup } = useModalContext();
 
-  const theme = resolveTheme([rootTheme.footer, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.footer, customTheme], { shouldPrefix: false });
 
   return (
     <div className={twMerge(theme.base, !popup && theme.popup, className)} {...props}>

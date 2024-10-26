@@ -53,7 +53,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   const [isOpen, setOpen] = useState(open);
   const { theme: rootTheme, isCollapsed } = useSidebarContext();
 
-  const theme = resolveTheme([rootTheme.collapse, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.collapse, customTheme], { shouldPrefix: false });
 
   useEffect(() => setOpen(open), [open]);
 

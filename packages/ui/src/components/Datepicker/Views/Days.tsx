@@ -36,7 +36,7 @@ export const DatepickerViewsDays: FC<DatepickerViewsDaysProps> = ({ theme: custo
     language,
   } = useDatePickerContext();
 
-  const theme = resolveTheme([rootTheme.views.days, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.views.days, customTheme], { shouldPrefix: false });
 
   const weekDays = getWeekDays(language, weekStart);
   const startDate = getFirstDayOfTheMonth(viewDate, weekStart);

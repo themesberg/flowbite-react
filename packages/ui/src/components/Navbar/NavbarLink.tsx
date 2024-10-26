@@ -33,7 +33,7 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
 }) => {
   const { theme: rootTheme, setIsOpen } = useNavbarContext();
 
-  const theme = resolveTheme([rootTheme.link, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.link, customTheme], { shouldPrefix: false });
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     setIsOpen(false);

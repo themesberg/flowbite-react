@@ -17,7 +17,7 @@ export interface TimelineBodyProps extends ComponentProps<"p"> {
 export const TimelineBody: FC<TimelineBodyProps> = ({ children, className, theme: customTheme, ...props }) => {
   const { theme: contentTheme } = useTimelineContentContext();
 
-  const theme = resolveTheme([contentTheme.body, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([contentTheme.body, customTheme], { shouldPrefix: false });
 
   return (
     <div className={twMerge(theme.base, className)} {...props}>

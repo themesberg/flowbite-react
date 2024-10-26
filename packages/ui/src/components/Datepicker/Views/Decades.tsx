@@ -22,7 +22,7 @@ export interface DatepickerViewsDecadesProps {
 export const DatepickerViewsDecades: FC<DatepickerViewsDecadesProps> = ({ theme: customTheme }) => {
   const { theme: rootTheme, viewDate, selectedDate, minDate, maxDate, setViewDate, setView } = useDatePickerContext();
 
-  const theme = resolveTheme([rootTheme.views.decades, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.views.decades, customTheme], { shouldPrefix: false });
   const first = startOfYearPeriod(viewDate, 100);
   return (
     <div className={theme.items.base}>

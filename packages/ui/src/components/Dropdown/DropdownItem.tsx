@@ -38,7 +38,7 @@ export const DropdownItem = forwardRef(
     const ref = useMergeRefs([forwardedRef, listItemRef]);
     const { theme: rootTheme, activeIndex, dismissOnClick, getItemProps, handleSelect } = useDropdownContext();
     const isActive = activeIndex === index;
-    const theme = resolveTheme([rootTheme.floating.item, {}, customTheme], { shouldPrefix: false });
+    const theme = resolveTheme([rootTheme.floating.item, customTheme], { shouldPrefix: false });
 
     const theirProps = props as ButtonBaseProps<T>;
 

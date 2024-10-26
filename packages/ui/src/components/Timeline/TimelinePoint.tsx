@@ -38,7 +38,7 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   const { horizontal } = useTimelineContext();
   const { theme: itemTheme } = useTimelineItemContext();
 
-  const theme = resolveTheme([itemTheme.point, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([itemTheme.point, customTheme], { shouldPrefix: false });
 
   return (
     <div

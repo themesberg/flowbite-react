@@ -25,7 +25,7 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({
 }) => {
   const { theme: rootTheme, isOpen, setIsOpen } = useNavbarContext();
 
-  const theme = resolveTheme([rootTheme.toggle, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.toggle, customTheme], { shouldPrefix: false });
 
   const handleClick = () => {
     setIsOpen(!isOpen);

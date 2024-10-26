@@ -35,7 +35,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
 
   const { theme: rootTheme, popup, onClose, setHeaderId } = useModalContext();
 
-  const theme = resolveTheme([rootTheme.header, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.header, customTheme], { shouldPrefix: false });
 
   useLayoutEffect(() => {
     setHeaderId(headerId);

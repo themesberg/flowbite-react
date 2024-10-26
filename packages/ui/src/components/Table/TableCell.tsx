@@ -18,7 +18,7 @@ export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
   ({ children, className, theme: customTheme, ...props }, ref) => {
     const { theme: bodyTheme } = useTableBodyContext();
 
-    const theme = resolveTheme([bodyTheme.cell, {}, customTheme], { shouldPrefix: false });
+    const theme = resolveTheme([bodyTheme.cell, customTheme], { shouldPrefix: false });
 
     return (
       <td className={twMerge(theme.base, className)} ref={ref} {...props}>

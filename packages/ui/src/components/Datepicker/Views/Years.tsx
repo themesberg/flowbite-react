@@ -24,7 +24,7 @@ export interface DatepickerViewsYearsProps {
 export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({ theme: customTheme }) => {
   const { theme: rootTheme, selectedDate, minDate, maxDate, viewDate, setViewDate, setView } = useDatePickerContext();
 
-  const theme = resolveTheme([rootTheme.views.years, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.views.years, customTheme], { shouldPrefix: false });
 
   return (
     <div className={theme.items.base}>

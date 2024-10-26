@@ -25,7 +25,7 @@ export interface TimelineItemProps extends ComponentProps<"li"> {
 export const TimelineItem: FC<TimelineItemProps> = ({ children, className, theme: customTheme, ...props }) => {
   const { theme: rootTheme, horizontal } = useTimelineContext();
 
-  const theme = resolveTheme([rootTheme.item, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.item, customTheme], { shouldPrefix: false });
 
   return (
     <TimelineItemContext.Provider value={{ theme }}>

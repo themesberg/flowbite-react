@@ -25,7 +25,7 @@ export const TimelineTitle: FC<TimelineTitleProps> = ({
 }) => {
   const { theme: contentTheme } = useTimelineContentContext();
 
-  const theme = resolveTheme([contentTheme.title, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([contentTheme.title, customTheme], { shouldPrefix: false });
 
   return (
     <Tag className={twMerge(theme.base, className)} {...props}>

@@ -18,7 +18,7 @@ export interface SidebarItemGroupProps extends ComponentProps<"ul"> {
 export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({ children, className, theme: customTheme, ...props }) => {
   const { theme: rootTheme } = useSidebarContext();
 
-  const theme = resolveTheme([rootTheme.itemGroup, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.itemGroup, customTheme], { shouldPrefix: false });
 
   return (
     <ul data-testid="flowbite-sidebar-item-group" className={twMerge(theme.base, className)} {...props}>

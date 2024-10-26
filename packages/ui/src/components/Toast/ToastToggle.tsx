@@ -28,7 +28,7 @@ export const ToastToggle: FC<ToastToggleProps> = ({
 }) => {
   const { theme: rootTheme, duration, isClosed, isRemoved, setIsClosed, setIsRemoved } = useToastContext();
 
-  const theme = resolveTheme([rootTheme.toggle, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.toggle, customTheme], { shouldPrefix: false });
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {
     if (onClick) onClick(e);

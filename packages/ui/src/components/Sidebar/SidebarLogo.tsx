@@ -33,7 +33,7 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
   const id = useId();
   const { theme: rootTheme, isCollapsed } = useSidebarContext();
 
-  const theme = resolveTheme([rootTheme.logo, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.logo, customTheme], { shouldPrefix: false });
 
   return (
     <a

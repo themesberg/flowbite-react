@@ -20,7 +20,7 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
   ({ children, className, theme: customTheme, ...props }, ref) => {
     const { theme: rootTheme, hoverable, striped } = useTableContext();
 
-    const theme = resolveTheme([rootTheme.row, {}, customTheme], { shouldPrefix: false });
+    const theme = resolveTheme([rootTheme.row, customTheme], { shouldPrefix: false });
 
     return (
       <tr

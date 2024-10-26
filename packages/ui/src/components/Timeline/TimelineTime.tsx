@@ -17,7 +17,7 @@ export interface TimelineTimeProps extends ComponentProps<"time"> {
 export const TimelineTime: FC<TimelineTimeProps> = ({ children, className, theme: customTheme, ...props }) => {
   const { theme: contentTheme } = useTimelineContentContext();
 
-  const theme = resolveTheme([contentTheme.time, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([contentTheme.time, customTheme], { shouldPrefix: false });
 
   return (
     <time className={twMerge(theme.base, className)} {...props}>

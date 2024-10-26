@@ -30,7 +30,7 @@ export const TimelineContent: FC<TimelineContentProps> = ({ children, className,
   const { horizontal } = useTimelineContext();
   const { theme: itemTheme } = useTimelineItemContext();
 
-  const theme = resolveTheme([itemTheme.content, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([itemTheme.content, customTheme], { shouldPrefix: false });
 
   return (
     <TimelineContentContext.Provider value={{ theme }}>

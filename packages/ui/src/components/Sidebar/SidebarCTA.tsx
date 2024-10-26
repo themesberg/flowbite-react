@@ -34,7 +34,7 @@ export const SidebarCTA: FC<SidebarCTAProps> = ({
 }) => {
   const { theme: rootTheme, isCollapsed } = useSidebarContext();
 
-  const theme = resolveTheme([rootTheme.cta, {}, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme([rootTheme.cta, customTheme], { shouldPrefix: false });
 
   return (
     <div
