@@ -2,8 +2,8 @@
 
 import { forwardRef, useState, type ComponentProps, type FC } from "react";
 import { FaCheck, FaClipboardList } from "react-icons/fa6";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import { copyToClipboard } from "./helpers";

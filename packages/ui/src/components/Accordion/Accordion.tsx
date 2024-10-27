@@ -3,8 +3,8 @@
 import type { ComponentProps, FC, ReactElement } from "react";
 import { Children, cloneElement, useMemo, useState } from "react";
 import { HiChevronDown } from "react-icons/hi";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, type ComponentProps, type FC } from "react";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
 import { Dropdown, FlowbiteDropdownTheme } from "../Dropdown";
 import { megaMenuTheme } from "./theme";

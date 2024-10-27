@@ -2,8 +2,8 @@
 
 import type { ComponentProps, FC } from "react";
 import { useState } from "react";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";

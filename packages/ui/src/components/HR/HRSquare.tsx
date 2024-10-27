@@ -1,7 +1,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import { hrTheme } from "./theme";

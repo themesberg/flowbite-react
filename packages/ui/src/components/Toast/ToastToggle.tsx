@@ -2,8 +2,8 @@
 
 import type { ComponentProps, FC, MouseEvent } from "react";
 import { HiX } from "react-icons/hi";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import type { DeepPartial } from "../../types";
 import { useToastContext } from "./ToastContext";
 

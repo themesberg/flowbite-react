@@ -1,8 +1,8 @@
 import type { ComponentProps, FC } from "react";
 import { forwardRef } from "react";
 import { FaQuoteRight } from "react-icons/fa6";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import { hrTheme } from "./theme";

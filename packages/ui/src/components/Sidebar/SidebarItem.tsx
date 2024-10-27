@@ -2,8 +2,8 @@
 
 import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from "react";
 import { forwardRef, useId } from "react";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import { Badge } from "../Badge";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";

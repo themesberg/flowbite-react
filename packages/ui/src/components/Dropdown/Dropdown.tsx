@@ -14,8 +14,8 @@ import type {
 } from "react";
 import { cloneElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from "react-icons/hi";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";

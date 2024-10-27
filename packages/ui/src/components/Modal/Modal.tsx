@@ -13,8 +13,8 @@ import {
 } from "@floating-ui/react";
 import type { MutableRefObject } from "react";
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";

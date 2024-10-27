@@ -1,8 +1,8 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { useSidebarContext } from "./SidebarContext";

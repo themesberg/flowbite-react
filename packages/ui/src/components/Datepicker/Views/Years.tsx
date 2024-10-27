@@ -1,8 +1,8 @@
 "use client";
 
 import type { FC } from "react";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../../helpers/resolve-theme";
+import { twMerge } from "../../../helpers/tailwind-merge";
 import { useDatePickerContext } from "../DatepickerContext";
 import { isDateEqual, isDateInRange, startOfYearPeriod, Views } from "../helpers";
 

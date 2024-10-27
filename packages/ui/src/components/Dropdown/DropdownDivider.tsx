@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
-import { twMerge } from "tailwind-merge";
+import { twMerge } from "../../helpers/tailwind-merge";
 import type { DeepPartial } from "../../types";
 import { useDropdownContext } from "./DropdownContext";
 

@@ -1,6 +1,6 @@
 import type { FC } from "react";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../../helpers/resolve-theme";
+import { twMerge } from "../../../helpers/tailwind-merge";
 import { useDatePickerContext } from "../DatepickerContext";
 import { getFormattedDate, isDateEqual, isDateInRange, Views } from "../helpers";
 

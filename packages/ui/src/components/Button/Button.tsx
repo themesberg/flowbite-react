@@ -1,8 +1,8 @@
 import type { ElementType } from "react";
 import { forwardRef, type ReactNode } from "react";
-import { twMerge } from "tailwind-merge";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type {

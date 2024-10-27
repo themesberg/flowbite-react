@@ -3,10 +3,10 @@
 import type { ComponentProps, FC, ReactElement, ReactNode } from "react";
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
-import { twMerge } from "tailwind-merge";
 import ScrollContainer from "../../helpers/drag-scroll";
 import { isClient } from "../../helpers/is-client";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";

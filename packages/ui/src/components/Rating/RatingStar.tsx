@@ -2,8 +2,8 @@
 
 import type { ComponentProps, FC } from "react";
 import { HiStar } from "react-icons/hi";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { useRatingContext } from "./RatingContext";

@@ -3,8 +3,8 @@
 import type { ComponentProps, FC } from "react";
 import type { IconBaseProps } from "react-icons";
 import { HiMoon, HiSun } from "react-icons/hi";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeMode } from "../../hooks/use-theme-mode";
 import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";

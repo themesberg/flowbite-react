@@ -2,8 +2,8 @@
 
 import type { ComponentProps, FC } from "react";
 import { FaBars } from "react-icons/fa";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import type { DeepPartial } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
 

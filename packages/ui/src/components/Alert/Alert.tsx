@@ -1,7 +1,7 @@
 import type { ComponentProps, FC, ReactNode } from "react";
 import { HiX } from "react-icons/hi";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";

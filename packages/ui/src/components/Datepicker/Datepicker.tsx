@@ -3,8 +3,8 @@
 import type { ForwardRefRenderFunction, ReactNode } from "react";
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { HiArrowLeft, HiArrowRight, HiCalendar } from "react-icons/hi";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
 import type { DeepPartial } from "../../types";
 import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from "../TextInput";

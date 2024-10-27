@@ -2,8 +2,8 @@
 
 import type { ComponentProps, FC } from "react";
 import { useId } from "react";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useSidebarContext } from "./SidebarContext";

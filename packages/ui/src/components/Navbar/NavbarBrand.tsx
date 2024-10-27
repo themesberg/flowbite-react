@@ -1,8 +1,8 @@
 "use client";
 
 import type { ComponentProps, ElementType, FC } from "react";
-import { twMerge } from "tailwind-merge";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { twMerge } from "../../helpers/tailwind-merge";
 import type { DeepPartial } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
 
