@@ -1,6 +1,7 @@
-import { deepmergeInto } from "deepmerge-ts";
 import { getStore } from "../store";
 import { applyPrefix } from "./apply-prefix";
+import { deepMergeStrings } from "./deep-merge";
+import { twMerge } from "./tailwind-merge";
 
 const cache = new Map();
 
@@ -32,17 +33,16 @@ export function resolveTheme<T>(
     return cacheValue;
   }
 
-  const theme = structuredClone(base);
+  const baseTheme = structuredClone(base);
 
   if (prefix && shouldPrefix) {
-    stringIterator(theme, (value) => (value ? applyPrefix(value, prefix) : value));
+    stringIterator(baseTheme, (value) => (value ? applyPrefix(value, prefix) : value));
   }
 
-  // TODO: implement `twMerge()`
-  deepmergeInto(theme as object, ...custom);
+  const theme = deepMergeStrings(twMerge)(baseTheme, ...custom) as T;
   cache.set(cacheKey, theme);
 
-  return theme as T;
+  return theme;
 }
 
 function stringIterator<T>(input: T, callback: (value: string) => string): void {

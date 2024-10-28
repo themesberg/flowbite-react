@@ -1,8 +1,18 @@
 export function applyPrefix(classNames: string, prefix: string, separator = ":"): string {
+  classNames = classNames.trim();
+  prefix = prefix.trim();
+  separator = separator.trim();
+
+  if (!classNames.length || !prefix.length) {
+    return classNames;
+  }
+
   return classNames
     .split(/\s+/)
     .map((className) => {
-      if (!className.trim()) {
+      className = className.trim();
+
+      if (!className.length) {
         return className;
       }
 

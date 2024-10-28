@@ -3,6 +3,8 @@ import { CLASS_LIST_MAP } from "./class-list";
 import type { ClassList, ComponentName } from "./types";
 
 export function resolvePrefix(classList: ClassList, prefix?: string, separator?: string) {
+  prefix = prefix?.trim();
+
   return prefix ? classList.map((className) => applyPrefix(className, prefix, separator)) : classList;
 }
 
