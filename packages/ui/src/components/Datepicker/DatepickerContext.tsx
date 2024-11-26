@@ -14,8 +14,8 @@ type DatepickerContextProps = {
   setIsOpen: (isOpen: boolean) => void;
   view: Views;
   setView: (value: Views) => void;
-  selectedDate: Date;
-  setSelectedDate: (date: Date) => void;
+  selectedDate: Date | null;
+  setSelectedDate: (date: Date | null) => void;
   changeSelectedDate: (date: Date, useAutohide: boolean) => void;
   viewDate: Date;
   setViewDate: (date: Date) => void;

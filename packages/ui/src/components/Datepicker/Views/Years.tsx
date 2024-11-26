@@ -34,7 +34,7 @@ export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({ theme: cus
         const newDate = new Date(viewDate.getTime());
         newDate.setFullYear(year);
 
-        const isSelected = isDateEqual(selectedDate, newDate);
+        const isSelected = selectedDate && isDateEqual(selectedDate, newDate);
         const isDisabled = !isDateInRange(newDate, minDate, maxDate);
 
         return (
