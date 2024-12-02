@@ -52,6 +52,10 @@ If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite
 
 Learn how to get started with `Flowbite React` and start leveraging the interactive React components coupled with `Flowbite` and `Tailwind CSS`.
 
+## Ask AI
+
+[Flowbite React](https://codeparrot.ai/oracle?owner=themesberg&repo=flowbite-react) Bot will help you understand this repository better. You can ask for code examples, installation guide, debugging help and much more.
+
 ### Using the CLI
 
 Easily scaffold a Flowbite React application using the most popular React frameworks and technologies out there.
