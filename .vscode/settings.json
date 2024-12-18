@@ -21,5 +21,6 @@
     "apps/web/tailwind.config.cjs": "apps/web/**",
     "packages/ui/tailwind.config.cjs": "packages/ui/**"
   },
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
   "typescript.tsdk": "node_modules/typescript/lib"
 }
