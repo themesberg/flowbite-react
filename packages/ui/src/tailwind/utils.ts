@@ -29,8 +29,8 @@ export function resolveClassList(components?: ComponentName[]): ClassList {
       console.info(`\nAvailable components:\n${Object.keys(CLASS_LIST_MAP).join(", ")}\n`);
     }
   } else {
-    resolvedClassList = [...new Set(Object.values(CLASS_LIST_MAP).flat())];
+    resolvedClassList = Object.values(CLASS_LIST_MAP).flat();
   }
 
-  return resolvedClassList;
+  return [...new Set(resolvedClassList)];
 }
