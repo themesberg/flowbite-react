@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Checkbox } from "./Checkbox";
 
 describe("Components / Checkbox", () => {
@@ -23,9 +24,9 @@ describe("Components / Checkbox", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Checkbox />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       const checkbox = screen.getByRole("checkbox");

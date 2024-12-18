@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { HiCheck } from "react-icons/hi";
 import { describe, expect, it } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Badge } from "./Badge";
 
 describe("Components / Badge", () => {
@@ -41,11 +42,11 @@ describe("Components / Badge", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Badge color="primary" href="/" icon={HiCheck}>
             A badge
           </Badge>
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(badge()).toHaveClass(
@@ -71,10 +72,10 @@ describe("Components / Badge", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Badge size="xxl">A badge</Badge>
           <Badge icon={HiCheck} size="xxl" />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       const badges = screen.getAllByTestId("flowbite-badge");

@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Blockquote } from "./Blockquote";
 
 describe("Components / Blockquote", () => {
@@ -14,9 +15,9 @@ describe("Components / Blockquote", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Blockquote />
-        </Flowbite>,
+        </ThemeProvider>,
       );
       expect(blockquote()).toBeInTheDocument();
       expect(blockquote()).toHaveClass("bg-yellow-400 dark:bg-yellow-40");

@@ -2,7 +2,8 @@ import { render, screen } from "@testing-library/react";
 import type { FC } from "react";
 import { HiHome } from "react-icons/hi";
 import { describe, expect, it } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Breadcrumb } from "./Breadcrumb";
 
 describe("Components / Breadcrumb", () => {
@@ -48,9 +49,9 @@ describe("Components / Breadcrumb", () => {
       },
     };
     render(
-      <Flowbite theme={theme}>
+      <ThemeProvider theme={theme}>
         <TestBreadcrumb />
-      </Flowbite>,
+      </ThemeProvider>,
     );
 
     expect(breadcrumbList()).toHaveClass("gap-6");
@@ -71,9 +72,9 @@ describe("Components / Breadcrumb", () => {
       },
     };
     render(
-      <Flowbite theme={theme}>
+      <ThemeProvider theme={theme}>
         <TestBreadcrumb />
-      </Flowbite>,
+      </ThemeProvider>,
     );
 
     expect(items()[0]).toHaveClass("justify-center");

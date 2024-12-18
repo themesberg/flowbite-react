@@ -3,8 +3,8 @@ import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 import { HiCloudDownload } from "react-icons/hi";
 import { describe, expect, it } from "vitest";
-import type { CustomFlowbiteTheme } from "../Flowbite";
-import { Flowbite } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { ListGroup } from "./ListGroup";
 
 describe("Components / List group", () => {
@@ -64,9 +64,9 @@ describe("Components / List group", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestListGroup />
-        </Flowbite>,
+        </ThemeProvider>,
       );
       expect(listGroup()).toHaveClass("text-gray-100");
     });
@@ -92,9 +92,9 @@ describe("Components / List group", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestListGroup />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       icons().forEach((icon) => expect(icon).toHaveClass("text-gray-300"));

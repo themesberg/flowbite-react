@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { MdKeyboardArrowLeft, MdKeyboardCommandKey } from "react-icons/md";
 import { describe, expect, it } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Kbd } from "./Kbd";
 
 describe("Components / Kbd", () => {
@@ -15,9 +16,9 @@ describe("Components / Kbd", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Kbd />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(kbd()).toBeInTheDocument();

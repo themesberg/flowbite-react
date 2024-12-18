@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Card } from "./Card";
 
 describe("Components / Card", () => {
@@ -85,9 +86,9 @@ describe("Components / Card", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Card />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(card()).toHaveClass("text-cyan-100");
@@ -102,11 +103,11 @@ describe("Components / Card", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Card>
             <span aria-label="The content">Some content</span>
           </Card>
-        </Flowbite>,
+        </ThemeProvider>,
       );
       const children = screen.getByLabelText("The content");
 
@@ -125,10 +126,10 @@ describe("Components / Card", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Card />
           <Card horizontal />
-        </Flowbite>,
+        </ThemeProvider>,
       );
       const normalCard = cards()[0];
       const horizontalCard = cards()[1];
@@ -146,9 +147,9 @@ describe("Components / Card", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Card href="#">My card</Card>
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(card()).toHaveClass("text-cyan-700");
@@ -167,14 +168,14 @@ describe("Components / Card", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Card imgAlt="Card with image" imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg" />
           <Card
             horizontal
             imgAlt="Horizontal card with image"
             imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg"
           />
-        </Flowbite>,
+        </ThemeProvider>,
       );
       const cardWithImage = screen.getByAltText("Card with image");
       const horizontalCardWithImage = screen.getByAltText("Horizontal card with image");

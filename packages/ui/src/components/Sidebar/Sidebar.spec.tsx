@@ -3,7 +3,8 @@ import userEvent from "@testing-library/user-event";
 import type { FC } from "react";
 import { HiChartPie, HiInbox, HiShoppingBag } from "react-icons/hi";
 import { describe, expect, it } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import type { SidebarProps } from "./Sidebar";
 import { Sidebar } from "./Sidebar";
 
@@ -136,10 +137,10 @@ describe("Theme", () => {
     };
 
     const { getByLabelText } = render(
-      <Flowbite theme={theme}>
+      <ThemeProvider theme={theme}>
         <TestSidebar aria-label="not-collapsed" />
         <TestSidebar aria-label="collapsed" collapsed />
-      </Flowbite>,
+      </ThemeProvider>,
     );
     const sidebar = getByLabelText("not-collapsed");
     const inner = sidebar.firstElementChild;
@@ -181,9 +182,9 @@ describe("Theme", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestSidebar />
-        </Flowbite>,
+        </ThemeProvider>,
       );
       const labelIcons = collapseLabels().map((label) => label.nextElementSibling);
 
@@ -214,9 +215,9 @@ describe("Theme", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestSidebar />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(cta()).toHaveClass("bg-gray-100 text-gray-100");
@@ -237,7 +238,7 @@ describe("Theme", () => {
               base: "bg-gray-200",
             },
             icon: {
-              base: "text-gray-400",
+              base: "size-6",
               active: "bg-gray-300",
             },
           },
@@ -245,9 +246,9 @@ describe("Theme", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestSidebar collapsed />
-        </Flowbite>,
+        </ThemeProvider>,
       );
       const theItems = items()
         .map((item) => item.firstElementChild)
@@ -263,7 +264,7 @@ describe("Theme", () => {
       itemContents().forEach((content) => expect(content).toHaveClass("bg-gray-200"));
       inactiveIcons.forEach((icon) => expect(icon).not.toHaveClass("bg-gray-300"));
       inactiveItems.forEach((item) => expect(item).not.toHaveClass("text-gray-100"));
-      icons().forEach((icon) => expect(icon).toHaveClass("text-gray-400"));
+      icons().forEach((icon) => expect(icon).toHaveClass("size-6"));
       theItems.forEach((item) => expect(item).toHaveClass("bg-gray-100"));
     });
   });
@@ -279,9 +280,9 @@ describe("Theme", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestSidebar />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       itemsContainers().forEach((container) => expect(container).toHaveClass("text-gray-100"));
@@ -299,9 +300,9 @@ describe("Theme", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestSidebar />
-        </Flowbite>,
+        </ThemeProvider>,
       );
       itemGroups().forEach((group) => expect(group).toHaveClass("text-gray-100"));
     });
@@ -323,9 +324,9 @@ describe("Theme", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestSidebar />
-        </Flowbite>,
+        </ThemeProvider>,
       );
       expect(logo()).toHaveClass("text-gray-100");
     });

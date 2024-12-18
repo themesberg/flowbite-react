@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { Avatar } from ".";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 
 describe("Components / Avatar", () => {
   describe("Theme", () => {
@@ -16,9 +17,9 @@ describe("Components / Avatar", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Avatar size="xxl" />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(img()).toHaveClass("h-64 w-64");
@@ -35,14 +36,14 @@ describe("Components / Avatar", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Avatar
             bordered
             color="rose"
             img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
             alt="Your avatar"
           />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(img()).toHaveClass("ring-rose-500 dark:ring-rose-400");
@@ -51,9 +52,9 @@ describe("Components / Avatar", () => {
   describe("Placeholder", () => {
     it("should display placeholder initials", () => {
       render(
-        <Flowbite>
+        <ThemeProvider>
           <Avatar placeholderInitials="RR" />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(initialsPlaceholderText()).toHaveTextContent("RR");
@@ -61,18 +62,18 @@ describe("Components / Avatar", () => {
 
     it("should support explicit sizes with placeholder initials", () => {
       render(
-        <Flowbite>
+        <ThemeProvider>
           <Avatar placeholderInitials="RR" size="xl" />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(initialsPlaceholder()).toHaveClass("h-36 w-36");
     });
     it("should support border color with placeholder initials", () => {
       render(
-        <Flowbite>
+        <ThemeProvider>
           <Avatar placeholderInitials="RR" bordered color="success" />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(initialsPlaceholder()).toHaveClass("ring-green-500 dark:ring-green-500");
@@ -81,9 +82,9 @@ describe("Components / Avatar", () => {
   describe("Image", () => {
     it("should support custom image elements", () => {
       render(
-        <Flowbite>
+        <ThemeProvider>
           <Avatar img={(props) => <img alt="" referrerPolicy="no-referrer" {...props} />} />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(img()).toHaveAttribute("referrerpolicy", "no-referrer");
@@ -92,9 +93,9 @@ describe("Components / Avatar", () => {
   describe("Status", () => {
     it("should have online status indicator", () => {
       render(
-        <Flowbite>
+        <ThemeProvider>
           <Avatar status="online" />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(status()).toHaveClass("bg-green-400");

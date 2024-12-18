@@ -111,7 +111,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
           className={twMerge(
             theme.base,
             isActive && theme.active,
-            !isCollapsed && isInsideCollapse && theme.collapsed?.insideCollapse,
+            !isCollapsed && isInsideCollapse && theme.collapsed.insideCollapse,
             className,
           )}
           {...props}
@@ -120,11 +120,11 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
             <Icon
               aria-hidden
               data-testid="flowbite-sidebar-item-icon"
-              className={twMerge(theme.icon?.base, isActive && theme.icon?.active)}
+              className={twMerge(theme.icon.base, isActive && theme.icon.active)}
             />
           )}
           {isCollapsed && !Icon && (
-            <span className={theme.collapsed?.noIcon}>{(children as string).charAt(0).toLocaleUpperCase() ?? "?"}</span>
+            <span className={theme.collapsed.noIcon}>{(children as string).charAt(0).toLocaleUpperCase() ?? "?"}</span>
           )}
           {!isCollapsed && (
             <Children id={id} theme={theme}>

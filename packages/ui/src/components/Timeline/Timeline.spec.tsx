@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import type { FC } from "react";
 import { describe, expect, it } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import type { TimelineProps } from "./Timeline";
 import { Timeline } from "./Timeline";
 
@@ -23,9 +24,9 @@ describe("Components / Timeline", () => {
 
     it("should use `horizontal` classes of content if provided", () => {
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestTimelineNoIcon horizontal={true} />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(timelineContent()).toHaveClass(horizontalContentClass);
@@ -33,9 +34,9 @@ describe("Components / Timeline", () => {
 
     it("should not use `vertical` classes of content if provided", () => {
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestTimelineNoIcon horizontal={true} />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(timelineContent()).not.toHaveClass(verticalContentClass);
@@ -58,9 +59,9 @@ describe("Components / Timeline", () => {
 
     it("should use `vertical` classes of content if provided", () => {
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestTimelineNoIcon />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(timelineContent()).toHaveClass(verticalContentClass);
@@ -68,9 +69,9 @@ describe("Components / Timeline", () => {
 
     it("should not use `horizontal` classes of content if provided", () => {
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestTimelineNoIcon />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(timelineContent()).not.toHaveClass(horizontalContentClass);
@@ -79,9 +80,9 @@ describe("Components / Timeline", () => {
   describe("Theme", () => {
     it("should use `base` classes of content in horizontal mode", () => {
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestTimelineNoIcon horizontal={true} />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(timelineContent()).toHaveClass(baseContentClass);
@@ -89,9 +90,9 @@ describe("Components / Timeline", () => {
 
     it("should use `base` classes of content in vertical mode", () => {
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestTimelineNoIcon />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(timelineContent()).toHaveClass(baseContentClass);

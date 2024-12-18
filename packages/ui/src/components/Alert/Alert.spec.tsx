@@ -4,7 +4,8 @@ import type { FC } from "react";
 import { useState } from "react";
 import { HiEye, HiHeart, HiInformationCircle } from "react-icons/hi";
 import { describe, expect, it, vi } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import type { AlertProps } from "./Alert";
 import { Alert } from "./Alert";
 
@@ -26,9 +27,9 @@ describe("Components / Alert", () => {
           },
         };
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <TestAlert />
-          </Flowbite>,
+          </ThemeProvider>,
         );
 
         expect(alert()).toHaveClass("text-purple-100");
@@ -41,9 +42,9 @@ describe("Components / Alert", () => {
           },
         };
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <TestAlert withBorderAccent />
-          </Flowbite>,
+          </ThemeProvider>,
         );
 
         expect(alert()).toHaveClass("border-t-4 border-purple-500");
@@ -56,9 +57,9 @@ describe("Components / Alert", () => {
           },
         };
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <TestAlert />
-          </Flowbite>,
+          </ThemeProvider>,
         );
 
         expect(wrapper()).toHaveClass("flex items-center");
@@ -78,9 +79,9 @@ describe("Components / Alert", () => {
           },
         };
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <TestAlert />
-          </Flowbite>,
+          </ThemeProvider>,
         );
 
         expect(alert()).toHaveClass(
@@ -98,9 +99,9 @@ describe("Components / Alert", () => {
           },
         };
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <TestAlert icon={HiHeart} />
-          </Flowbite>,
+          </ThemeProvider>,
         );
 
         expect(icon()).toHaveClass("alert-custom-icon");
@@ -113,9 +114,9 @@ describe("Components / Alert", () => {
           },
         };
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <TestAlert />
-          </Flowbite>,
+          </ThemeProvider>,
         );
 
         expect(alert()).toHaveClass("rounded");

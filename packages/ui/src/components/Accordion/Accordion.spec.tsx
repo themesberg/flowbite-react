@@ -3,7 +3,8 @@ import userEvent from "@testing-library/user-event";
 import type { FC } from "react";
 import { HiOutlineArrowCircleDown } from "react-icons/hi";
 import { beforeEach, describe, expect, it } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import type { AccordionProps } from "./Accordion";
 import { Accordion } from "./Accordion";
 
@@ -135,9 +136,9 @@ describe("Components / Accordion", () => {
         };
 
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <TestAccordion />
-          </Flowbite>,
+          </ThemeProvider>,
         );
 
         expect(accordion()).toHaveClass("text-4xl");
@@ -156,10 +157,10 @@ describe("Components / Accordion", () => {
         };
 
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <TestAccordion />
             <TestAccordion flush />
-          </Flowbite>,
+          </ThemeProvider>,
         );
 
         const accordions = screen.getAllByTestId("flowbite-accordion");
@@ -182,9 +183,9 @@ describe("Components / Accordion", () => {
         };
 
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <TestAccordion />
-          </Flowbite>,
+          </ThemeProvider>,
         );
 
         content().forEach((content) => {
@@ -219,10 +220,10 @@ describe("Components / Accordion", () => {
         };
 
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <TestAccordion alwaysOpen />
             <TestAccordion alwaysOpen flush />
-          </Flowbite>,
+          </ThemeProvider>,
         );
 
         const normalTitles = [titles()[0], titles()[1]];

@@ -2,7 +2,8 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createRef } from "react";
 import { describe, expect, it, vi } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { RangeSlider } from "./RangeSlider";
 
 describe("Components / Button", () => {
@@ -146,9 +147,9 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <RangeSlider />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(rangeSliderContainer()).toHaveClass("dummy-range-slider-base-classes");
@@ -164,9 +165,9 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <RangeSlider />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(rangeSliderContainer().childNodes[0]).toHaveClass("dummy-range-slider-field-base-classes");
@@ -184,9 +185,9 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <RangeSlider />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(rangeSlider()).toHaveClass("dummy-range-slider-field-input-base-classes");
@@ -206,9 +207,9 @@ describe("Components / Button", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <RangeSlider sizing="lg" />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(rangeSlider()).toHaveClass("dummy-range-slider-field-input-sizes-lg-classes");

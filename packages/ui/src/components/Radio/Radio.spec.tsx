@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Radio } from "./Radio";
 
 describe("Components / Radio", () => {
@@ -23,9 +24,9 @@ describe("Components / Radio", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Radio />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       const radio = screen.getByRole("radio");

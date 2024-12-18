@@ -3,7 +3,8 @@ import userEvent from "@testing-library/user-event";
 import type { FC } from "react";
 import { useState } from "react";
 import { describe, expect, it, vi } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { TextInput } from "../TextInput";
 import { ToggleSwitch } from "./ToggleSwitch";
 
@@ -140,9 +141,9 @@ describe("Components / Toggle switch", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <ToggleSwitch checked={false} label="Enable" onChange={console.log} type="submit" />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(toggleSwitch()).toHaveClass("text-cyan-100");
@@ -160,10 +161,10 @@ describe("Components / Toggle switch", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <ToggleSwitch checked={false} label="Enable" onChange={console.log} type="submit" />
           <ToggleSwitch disabled checked={false} label="Enable" onChange={console.log} type="submit" />
-        </Flowbite>,
+        </ThemeProvider>,
       );
       const activeToggleSwitch = toggleSwitches()[0];
       const disabledToggleSwitch = toggleSwitches()[1];
@@ -181,9 +182,9 @@ describe("Components / Toggle switch", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <ToggleSwitch checked={false} label="Enable" onChange={console.log} type="submit" />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(label()).toHaveClass("test-label");
@@ -203,9 +204,9 @@ describe("Components / Toggle switch", () => {
         },
       };
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <ToggleSwitch checked label="Enable" onChange={console.log} type="submit" />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(toggle()).toHaveClass("h-6 w-11 bg-pink-700");

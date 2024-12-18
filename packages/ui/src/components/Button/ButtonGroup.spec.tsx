@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { theme } from "../../theme";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { theme, ThemeProvider } from "../../theme";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Button } from "./Button";
 
 describe("Components / Button group", () => {
@@ -99,13 +99,13 @@ describe("Components / Button group", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Button.Group>
             <Button>One</Button>
             <Button>Two</Button>
             <Button>Three</Button>
           </Button.Group>
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(group()).toHaveClass("text-gray-400");
@@ -119,13 +119,13 @@ describe("Components / Button group", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Button.Group>
             <Button>One</Button>
             <Button>Two</Button>
             <Button>Three</Button>
           </Button.Group>
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(group()).toHaveClass("text-gray-400");

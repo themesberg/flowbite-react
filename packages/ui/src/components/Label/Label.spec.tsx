@@ -1,10 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { HiGlobe, HiLockClosed } from "react-icons/hi";
 import { describe, expect, it } from "vitest";
+import { ThemeProvider } from "../../theme/provider";
 import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
 import { FileInput } from "../FileInput";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Radio } from "../Radio";
 import { RangeSlider } from "../RangeSlider";
 import { Select } from "../Select";
@@ -45,9 +46,9 @@ describe("Components / Label", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <Label disabled data-testid="flowbite-label" />
-        </Flowbite>,
+        </ThemeProvider>,
       );
 
       expect(screen.getByTestId("flowbite-label")).toHaveClass("opacity-50");

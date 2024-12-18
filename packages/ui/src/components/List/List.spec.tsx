@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Flowbite } from "../../";
+import { ThemeProvider } from "../../theme/provider";
 import { List } from "./List";
 
 describe("Components / List group", () => {
@@ -15,9 +15,9 @@ describe("Components / List group", () => {
       };
 
       render(
-        <Flowbite theme={theme}>
+        <ThemeProvider theme={theme}>
           <TestList />
-        </Flowbite>,
+        </ThemeProvider>,
       );
       expect(listGroup()).toHaveClass("asd");
     });

@@ -1,7 +1,8 @@
 import type { RenderResult } from "@testing-library/react";
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { Flowbite, type CustomFlowbiteTheme } from "../Flowbite";
+import { ThemeProvider } from "../../theme/provider";
+import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Spinner } from "./Spinner";
 
 describe("Components / Spinner", () => {
@@ -31,9 +32,9 @@ describe("Components / Spinner", () => {
 
       const spinner = getSpinner(
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <Spinner />
-          </Flowbite>,
+          </ThemeProvider>,
         ),
       );
 
@@ -51,9 +52,9 @@ describe("Components / Spinner", () => {
 
       const spinner = getSpinner(
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <Spinner color="primary" />
-          </Flowbite>,
+          </ThemeProvider>,
         ),
       );
 
@@ -75,9 +76,9 @@ describe("Components / Spinner", () => {
 
       const spinner = getSpinner(
         render(
-          <Flowbite theme={theme}>
+          <ThemeProvider theme={theme}>
             <Spinner color="success" light />
-          </Flowbite>,
+          </ThemeProvider>,
         ),
       );
 
