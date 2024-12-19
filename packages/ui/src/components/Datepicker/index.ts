@@ -1,3 +1,3 @@
 export { Datepicker } from "./Datepicker";
 export type { DatepickerProps, FlowbiteDatepickerPopupTheme, FlowbiteDatepickerTheme } from "./Datepicker";
-export { WeekStart } from "./helpers";
+export { WeekStart, getFirstDateInRange } from "./helpers";

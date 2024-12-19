@@ -19,25 +19,13 @@ module.exports = {
       plugins: ["@typescript-eslint"],
       parser: "@typescript-eslint/parser",
       extends: ["plugin:@typescript-eslint/recommended"],
-      rules: {
-        "@typescript-eslint/no-unused-expressions": "off",
-        "@typescript-eslint/no-unused-vars": [
-          "error",
-          {
-            argsIgnorePattern: "^_",
-            caughtErrorsIgnorePattern: "^_",
-            destructuredArrayIgnorePattern: "^_",
-            varsIgnorePattern: "^_",
-          },
-        ],
-      },
     },
   ],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "vitest"],
+  plugins: ["react-refresh"],
   settings: {
     react: {
       version: "detect",
@@ -47,14 +35,10 @@ module.exports = {
       classRegex: "^(class(Name)|theme)?$",
     },
   },
-  ignorePatterns: ["dist"],
+  ignorePatterns: ["storybook-static"],
   rules: {
-    "no-undef": "off",
-    "no-unused-vars": "off",
-    "react/display-name": "off",
+    "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
     "react/no-unescaped-entities": "off",
     "react/prop-types": "off",
-    "tailwindcss/classnames-order": "off",
-    "tailwindcss/enforces-shorthand": "off",
   },
 };

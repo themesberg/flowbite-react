@@ -1,9 +1,9 @@
-const flowbite = require("../../packages/ui/src/tailwind");
+const flowbite = require("flowbite-react/tailwind");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  content: ["../../packages/ui/src/**/*.{ts,tsx}"],
+  content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {},
   },

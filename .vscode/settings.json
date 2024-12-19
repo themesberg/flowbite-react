@@ -7,7 +7,7 @@
   "editor.quickSuggestions": {
     "strings": "on"
   },
-  "eslint.workingDirectories": ["apps/web", "packages/ui"],
+  "eslint.workingDirectories": ["apps/storybook", "apps/web", "packages/ui"],
   "files.associations": {
     "*.css": "tailwindcss"
   },
