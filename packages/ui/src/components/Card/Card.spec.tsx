@@ -69,7 +69,7 @@ describe("Components / Card", () => {
     });
 
     it('should render an `<img>` given `imgSrc=".."`', () => {
-      render(<Card imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg" />);
+      render(<Card imgAlt="Card with image" imgSrc="https://flowbite.com/docs/images/blog/image-1.jpg" />);
       const img = screen.getByRole("img");
 
       expect(card()).toContainElement(img);
