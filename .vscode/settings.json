@@ -17,7 +17,7 @@
     ["createTheme\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
   "tailwindCSS.experimental.configFile": {
-    "apps/storybook/tailwind.config.cjs": "apps/web/**",
+    "apps/storybook/tailwind.config.cjs": "apps/storybook/**",
     "apps/web/tailwind.config.cjs": "apps/web/**",
     "packages/ui/tailwind.config.cjs": "packages/ui/**"
   },
