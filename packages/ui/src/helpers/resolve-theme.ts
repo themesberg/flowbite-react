@@ -1,4 +1,5 @@
 import { getStore } from "../store";
+import type { Unstyled } from "../types";
 import { applyPrefix } from "./apply-prefix";
 import { deepMergeStrings } from "./deep-merge";
 import { twMerge } from "./tailwind-merge";
@@ -19,14 +20,11 @@ export function resolveTheme<T>(
     /** custom themes */
     ...unknown[],
   ],
-  options: Partial<{
-    shouldPrefix: boolean;
-  }> = {},
+  unstyledList: Unstyled<T[]> = [],
 ): T {
   const { prefix } = getStore();
-  const { shouldPrefix = true } = options ?? {};
 
-  const cacheKey = JSON.stringify({ base, custom, options, prefix });
+  const cacheKey = JSON.stringify({ base, custom, unstyledList, prefix });
   const cacheValue = cache.get(cacheKey);
 
   if (cacheValue) {
@@ -34,9 +32,13 @@ export function resolveTheme<T>(
   }
 
   const baseTheme = structuredClone(base);
+  const unstyled = resolveUnstyled(unstyledList);
 
-  if (prefix && shouldPrefix) {
-    stringIterator(baseTheme, (value) => (value ? applyPrefix(value, prefix) : value));
+  if (unstyled) {
+    applyUnstyled(baseTheme, unstyled);
+  }
+  if (prefix) {
+    stringIterator(baseTheme, (value) => applyPrefix(value, prefix));
   }
 
   const theme = deepMergeStrings(twMerge)(baseTheme, ...custom) as T;
@@ -45,21 +47,60 @@ export function resolveTheme<T>(
   return theme;
 }
 
-function stringIterator<T>(input: T, callback: (value: string) => string): void {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function iterate(value: any) {
-    if (typeof value === "string") {
-      return callback(value) as T;
-    } else if (Array.isArray(value)) {
-      for (let i = 0; i < value.length; i++) {
-        value[i] = iterate(value[i]);
+function resolveUnstyled<T>(unstyledList: Unstyled<T[]>): Unstyled<T> | undefined {
+  if (!Array.isArray(unstyledList)) {
+    return;
+  }
+
+  if (!unstyledList.length) {
+    return;
+  }
+
+  // TODO: smart merge
+
+  return unstyledList[0];
+}
+
+function applyUnstyled<T>(base: T, unstyled: Unstyled<T>): void {
+  function iterate(base: T, unstyled?: Unstyled<T>) {
+    if (unstyled === true) {
+      if (typeof base === "object" && base !== null) {
+        for (const key in base) {
+          // @ts-expect-error - bypass
+          base[key] = iterate(base[key], unstyled);
+        }
       }
-    } else if (typeof value === "object" && value !== null) {
-      for (const key in value) {
-        value[key] = iterate(value[key]);
+      if (typeof base === "string") {
+        return "";
       }
     }
-    return value;
+    if (typeof unstyled === "object" && unstyled !== null) {
+      for (const key in unstyled) {
+        // @ts-expect-error - bypass
+        base[key] = iterate(base[key], unstyled[key]);
+      }
+    }
+    return base;
+  }
+
+  iterate(base, unstyled);
+}
+
+function stringIterator<T>(input: T, callback: (value: string) => string): void {
+  function iterate(input: T) {
+    if (typeof input === "string") {
+      return callback(input);
+    } else if (Array.isArray(input)) {
+      for (let i = 0; i < input.length; i++) {
+        input[i] = iterate(input[i]);
+      }
+    } else if (typeof input === "object" && input !== null) {
+      for (const key in input) {
+        // @ts-expect-error - bypass
+        input[key] = iterate(input[key]);
+      }
+    }
+    return input;
   }
 
   iterate(input);

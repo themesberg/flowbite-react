@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import { RatingAdvanced } from "./RatingAdvanced";
 import { RatingContext } from "./RatingContext";
 import type { FlowbiteRatingStarTheme, FlowbiteStarSizes } from "./RatingStar";
@@ -21,13 +21,21 @@ export interface FlowbiteRatingTheme {
 export interface RatingProps extends ComponentProps<"div"> {
   size?: DynamicStringEnumKeysOf<FlowbiteStarSizes>;
   theme?: DeepPartial<FlowbiteRatingTheme>;
+  unstyled?: Unstyled<FlowbiteRatingTheme>;
 }
 
-const RatingComponent: FC<RatingProps> = ({ children, className, size = "sm", theme: customTheme, ...props }) => {
-  const theme = resolveTheme([ratingTheme, getStore().theme?.rating, customTheme]);
+const RatingComponent: FC<RatingProps> = ({
+  children,
+  className,
+  size = "sm",
+  theme: customTheme,
+  unstyled,
+  ...props
+}) => {
+  const theme = resolveTheme([ratingTheme, getStore().theme?.rating, customTheme], [unstyled]);
 
   return (
-    <RatingContext.Provider value={{ theme, size }}>
+    <RatingContext.Provider value={{ theme: customTheme, unstyled, size }}>
       <div className={twMerge(theme.root.base, className)} {...props}>
         {children}
       </div>

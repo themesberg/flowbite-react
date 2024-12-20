@@ -1,10 +1,12 @@
 "use client";
 
 import { createContext, useContext } from "react";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteModalTheme } from "./Modal";
 
 type ModalContext = {
-  theme: FlowbiteModalTheme;
+  theme?: DeepPartial<FlowbiteModalTheme>;
+  unstyled?: Unstyled<FlowbiteModalTheme>;
   popup?: boolean;
   setHeaderId: (id: string | undefined) => void;
   onClose?: () => void;

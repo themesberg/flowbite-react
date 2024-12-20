@@ -4,9 +4,11 @@ import type { ComponentProps, FC } from "react";
 import { HiStar } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import type { DeepPartial } from "../../types";
+import { getStore } from "../../store";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { useRatingContext } from "./RatingContext";
+import { ratingTheme } from "./theme";
 
 export interface FlowbiteRatingStarTheme {
   empty: string;
@@ -22,6 +24,7 @@ export interface RatingStarProps extends ComponentProps<"svg"> {
   filled?: boolean;
   starIcon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteRatingStarTheme>;
+  unstyled?: Unstyled<FlowbiteRatingStarTheme>;
 }
 
 export const RatingStar: FC<RatingStarProps> = ({
@@ -29,11 +32,15 @@ export const RatingStar: FC<RatingStarProps> = ({
   filled = true,
   starIcon: Icon = HiStar,
   theme: customTheme,
+  unstyled,
   ...props
 }) => {
   const { theme: rootTheme, size = "sm" } = useRatingContext();
 
-  const theme = resolveTheme([rootTheme.star, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme(
+    [ratingTheme.star, getStore().theme?.rating?.star, rootTheme?.star, customTheme],
+    [unstyled],
+  );
 
   return (
     <Icon

@@ -8,7 +8,7 @@ import { isClient } from "../../helpers/is-client";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { carouselTheme } from "./theme";
 
@@ -55,6 +55,7 @@ export interface CarouselProps extends ComponentProps<"div"> {
   slide?: boolean;
   slideInterval?: number;
   theme?: DeepPartial<FlowbiteCarouselTheme>;
+  unstyled?: Unstyled<FlowbiteCarouselTheme>;
   onSlideChange?: (slide: number) => void;
   pauseOnHover?: boolean;
 }
@@ -73,11 +74,12 @@ export const Carousel: FC<CarouselProps> = ({
   slideInterval,
   className,
   theme: customTheme,
+  unstyled,
   onSlideChange = null,
   pauseOnHover = false,
   ...props
 }) => {
-  const theme = resolveTheme([carouselTheme, getStore().theme?.carousel, customTheme]);
+  const theme = resolveTheme([carouselTheme, getStore().theme?.carousel, customTheme], [unstyled]);
 
   const isDeviceMobile = isClient() && navigator.userAgent.indexOf("IEMobile") !== -1;
   const carouselContainer = useRef<HTMLDivElement>(null);

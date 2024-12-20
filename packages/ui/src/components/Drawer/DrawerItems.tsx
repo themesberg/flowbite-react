@@ -3,8 +3,10 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import type { DeepPartial } from "../../types";
+import { getStore } from "../../store";
+import type { DeepPartial, Unstyled } from "../../types";
 import { useDrawerContext } from "./DrawerContext";
+import { drawerTheme } from "./theme";
 
 export interface FlowbiteDrawerItemsTheme {
   base: string;
@@ -12,12 +14,16 @@ export interface FlowbiteDrawerItemsTheme {
 
 export interface DrawerItemsProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteDrawerItemsTheme>;
+  unstyled?: Unstyled<FlowbiteDrawerItemsTheme>;
 }
 
-export const DrawerItems: FC<DrawerItemsProps> = ({ children, className, theme: customTheme, ...props }) => {
+export const DrawerItems: FC<DrawerItemsProps> = ({ children, className, theme: customTheme, unstyled, ...props }) => {
   const { theme: rootTheme } = useDrawerContext();
 
-  const theme = resolveTheme([rootTheme.items, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme(
+    [drawerTheme.items, getStore().theme?.drawer?.items, rootTheme?.items, customTheme],
+    [unstyled],
+  );
 
   return (
     <div data-testid="flowbite-drawer-items" className={twMerge(theme.base, className)} {...props}>

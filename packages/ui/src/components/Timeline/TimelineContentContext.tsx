@@ -1,10 +1,12 @@
 "use client";
 
 import { createContext, useContext } from "react";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteTimelineContentTheme } from "./TimelineContent";
 
 export type TimelineContentContext = {
-  theme: FlowbiteTimelineContentTheme;
+  theme?: DeepPartial<FlowbiteTimelineContentTheme>;
+  unstyled?: Unstyled<FlowbiteTimelineContentTheme>;
 };
 
 export const TimelineContentContext = createContext<TimelineContentContext | undefined>(undefined);

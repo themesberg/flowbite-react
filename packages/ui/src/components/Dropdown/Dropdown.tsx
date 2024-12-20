@@ -18,7 +18,7 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { getStore } from "../../store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import { Button, type ButtonProps } from "../Button";
 import type { FloatingProps, FlowbiteFloatingTheme } from "../Floating";
 import { DropdownContext } from "./DropdownContext";
@@ -41,13 +41,16 @@ export interface FlowbiteDropdownTheme {
   arrowIcon: string;
 }
 
-export interface DropdownProps extends Pick<FloatingProps, "placement" | "trigger">, Omit<ButtonProps, "theme"> {
+export interface DropdownProps
+  extends Pick<FloatingProps, "placement" | "trigger">,
+    Omit<ButtonProps, "theme" | "unstyled"> {
   arrowIcon?: boolean;
   dismissOnClick?: boolean;
   floatingArrow?: boolean;
   inline?: boolean;
   label?: ReactNode;
   theme?: DeepPartial<FlowbiteDropdownTheme>;
+  unstyled?: Unstyled<FlowbiteDropdownTheme>;
   enableTypeAhead?: boolean;
   renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactElement;
   "data-testid"?: string;
@@ -110,6 +113,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   className,
   dismissOnClick = true,
   theme: customTheme,
+  unstyled,
   enableTypeAhead = true,
   renderTrigger,
   ...props
@@ -121,8 +125,8 @@ const DropdownComponent: FC<DropdownProps> = ({
   const elementsRef = useRef<Array<HTMLElement | null>>([]);
   const labelsRef = useRef<Array<string | null>>([]);
 
-  const theme = resolveTheme([dropdownTheme, getStore().theme?.dropdown, customTheme]);
-  const theirProps = props as Omit<DropdownProps, "theme">;
+  const theme = resolveTheme([dropdownTheme, getStore().theme?.dropdown, customTheme], [unstyled]);
+  const theirProps = props as Omit<DropdownProps, "theme" | "unstyled">;
   const dataTestId = props["data-testid"] || "flowbite-dropdown-target";
   const {
     placement = props.inline ? "bottom-start" : "bottom",
@@ -183,7 +187,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   }, [placement]);
 
   return (
-    <DropdownContext.Provider value={{ theme, activeIndex, dismissOnClick, getItemProps, handleSelect }}>
+    <DropdownContext.Provider value={{ theme: customTheme, activeIndex, dismissOnClick, getItemProps, handleSelect }}>
       <Trigger
         {...buttonProps}
         refs={refs}

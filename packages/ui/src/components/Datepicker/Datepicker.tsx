@@ -6,7 +6,7 @@ import { HiArrowLeft, HiArrowRight, HiCalendar } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from "../TextInput";
 import { DatepickerContext } from "./DatepickerContext";
 import {
@@ -97,6 +97,7 @@ export interface DatepickerProps extends Omit<TextInputProps, "theme" | "onChang
   language?: string;
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
+  unstyled?: Unstyled<FlowbiteDatepickerTheme>;
   onChange?: (date: Date | null) => void;
   value?: Date | null;
   label?: string;
@@ -119,6 +120,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     weekStart = WeekStart.Sunday,
     className,
     theme: customTheme,
+    unstyled,
     onChange,
     label,
     value,
@@ -126,7 +128,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   },
   ref,
 ) => {
-  const theme = resolveTheme([datePickerTheme, getStore().theme?.datepicker, customTheme]);
+  const theme = resolveTheme([datePickerTheme, getStore().theme?.datepicker, customTheme], [unstyled]);
   const initialDate = defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : null;
 
   const effectiveDefaultView = useMemo(() => {
@@ -176,14 +178,14 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   const renderView = (type: Views): ReactNode => {
     switch (type) {
       case Views.Decades:
-        return <DatepickerViewsDecades theme={theme.views.decades} />;
+        return <DatepickerViewsDecades />;
       case Views.Years:
-        return <DatepickerViewsYears theme={theme.views.years} />;
+        return <DatepickerViewsYears />;
       case Views.Months:
-        return <DatepickerViewsMonth theme={theme.views.months} />;
+        return <DatepickerViewsMonth />;
       case Views.Days:
       default:
-        return <DatepickerViewsDays theme={theme.views.days} />;
+        return <DatepickerViewsDays />;
     }
   };
 

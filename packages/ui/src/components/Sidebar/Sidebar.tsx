@@ -4,7 +4,7 @@ import type { ComponentProps, ElementType, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { SidebarCollapse, type FlowbiteSidebarCollapseTheme } from "./SidebarCollapse";
 import { SidebarContext } from "./SidebarContext";
@@ -34,6 +34,7 @@ export interface SidebarProps extends ComponentProps<"div"> {
   collapseBehavior?: "collapse" | "hide";
   collapsed?: boolean;
   theme?: DeepPartial<FlowbiteSidebarTheme>;
+  unstyled?: Unstyled<FlowbiteSidebarTheme>;
 }
 
 const SidebarComponent: FC<SidebarProps> = ({
@@ -42,13 +43,14 @@ const SidebarComponent: FC<SidebarProps> = ({
   collapseBehavior = "collapse",
   collapsed: isCollapsed = false,
   theme: customTheme,
+  unstyled,
   className,
   ...props
 }) => {
-  const theme = resolveTheme([sidebarTheme, getStore().theme?.sidebar, customTheme]);
+  const theme = resolveTheme([sidebarTheme, getStore().theme?.sidebar, customTheme], [unstyled]);
 
   return (
-    <SidebarContext.Provider value={{ theme, isCollapsed }}>
+    <SidebarContext.Provider value={{ theme: customTheme, isCollapsed }}>
       <Component
         aria-label="Sidebar"
         hidden={isCollapsed && collapseBehavior === "hide"}

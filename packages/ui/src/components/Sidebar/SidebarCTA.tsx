@@ -3,9 +3,11 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
+import { getStore } from "../../store";
+import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { useSidebarContext } from "./SidebarContext";
+import { sidebarTheme } from "./theme";
 
 export interface FlowbiteSidebarCTATheme {
   base: string;
@@ -15,6 +17,7 @@ export interface FlowbiteSidebarCTATheme {
 export interface SidebarCTAProps extends Omit<ComponentProps<"div">, "color"> {
   color?: DynamicStringEnumKeysOf<FlowbiteSidebarCTAColors>;
   theme?: DeepPartial<FlowbiteSidebarCTATheme>;
+  unstyled?: Unstyled<FlowbiteSidebarCTATheme>;
 }
 
 export interface FlowbiteSidebarCTAColors
@@ -30,11 +33,15 @@ export const SidebarCTA: FC<SidebarCTAProps> = ({
   color = "info",
   className,
   theme: customTheme,
+  unstyled,
   ...props
 }) => {
   const { theme: rootTheme, isCollapsed } = useSidebarContext();
 
-  const theme = resolveTheme([rootTheme.cta, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme(
+    [sidebarTheme.cta, getStore().theme?.sidebar?.cta, rootTheme?.cta, customTheme],
+    [unstyled],
+  );
 
   return (
     <div

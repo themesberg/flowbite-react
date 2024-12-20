@@ -1,10 +1,12 @@
 "use client";
 
 import { createContext, useContext } from "react";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteTableTheme } from "./Table";
 
 export type TableContext = {
-  theme: FlowbiteTableTheme;
+  theme?: DeepPartial<FlowbiteTableTheme>;
+  unstyled?: Unstyled<FlowbiteTableTheme>;
   striped?: boolean;
   hoverable?: boolean;
 };

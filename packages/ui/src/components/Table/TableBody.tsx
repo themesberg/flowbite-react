@@ -1,12 +1,15 @@
 "use client";
 
 import { forwardRef, type ComponentPropsWithRef } from "react";
+import { pluck } from "../../helpers/pluck";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import type { DeepPartial } from "../../types";
+import { getStore } from "../../store";
+import type { DeepPartial, Unstyled } from "../../types";
 import { TableBodyContext } from "./TableBodyContext";
 import type { FlowbiteTableCellTheme } from "./TableCell";
 import { useTableContext } from "./TableContext";
+import { tableTheme } from "./theme";
 
 export interface FlowbiteTableBodyTheme {
   base: string;
@@ -15,16 +18,20 @@ export interface FlowbiteTableBodyTheme {
 
 export interface TableBodyProps extends ComponentPropsWithRef<"tbody"> {
   theme?: DeepPartial<FlowbiteTableBodyTheme>;
+  unstyled?: Unstyled<FlowbiteTableBodyTheme>;
 }
 
 export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
-  ({ children, className, theme: customTheme, ...props }, ref) => {
-    const { theme: rootTheme } = useTableContext();
+  ({ children, className, theme: customTheme, unstyled, ...props }, ref) => {
+    const { theme: rootTheme, unstyled: rootUnstyled } = useTableContext();
 
-    const theme = resolveTheme([rootTheme.body, customTheme], { shouldPrefix: false });
+    const theme = resolveTheme(
+      [tableTheme.body, getStore().theme?.table?.body, rootTheme?.body, customTheme],
+      [pluck(rootUnstyled, "body"), unstyled],
+    );
 
     return (
-      <TableBodyContext.Provider value={{ theme }}>
+      <TableBodyContext.Provider value={{ theme: customTheme, unstyled }}>
         <tbody className={twMerge(theme.base, className)} ref={ref} {...props}>
           {children}
         </tbody>

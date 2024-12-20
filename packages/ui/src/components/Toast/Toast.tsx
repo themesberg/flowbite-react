@@ -5,7 +5,7 @@ import { useState } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import { toastTheme } from "./theme";
 import type { Duration } from "./ToastContext";
 import { ToastContext } from "./ToastContext";
@@ -25,6 +25,7 @@ export interface FlowbiteToastTheme {
 export interface ToastProps extends ComponentProps<"div"> {
   duration?: Duration;
   theme?: DeepPartial<FlowbiteToastTheme>;
+  unstyled?: Unstyled<FlowbiteToastTheme>;
 }
 
 const durationClasses: Record<Duration, string> = {
@@ -38,18 +39,27 @@ const durationClasses: Record<Duration, string> = {
   1000: "duration-1000",
 };
 
-const ToastComponent: FC<ToastProps> = ({ children, className, duration = 300, theme: customTheme, ...props }) => {
+const ToastComponent: FC<ToastProps> = ({
+  children,
+  className,
+  duration = 300,
+  theme: customTheme,
+  unstyled,
+  ...props
+}) => {
   const [isClosed, setIsClosed] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
 
-  const theme = resolveTheme([toastTheme, getStore().theme?.toast, customTheme]);
+  const theme = resolveTheme([toastTheme, getStore().theme?.toast, customTheme], [unstyled]);
 
   if (isRemoved) {
     return null;
   }
 
   return (
-    <ToastContext.Provider value={{ theme, duration, isClosed, isRemoved, setIsClosed, setIsRemoved }}>
+    <ToastContext.Provider
+      value={{ theme: customTheme, unstyled, duration, isClosed, isRemoved, setIsClosed, setIsRemoved }}
+    >
       <div
         data-testid="flowbite-toast"
         role="alert"

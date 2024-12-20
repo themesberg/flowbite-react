@@ -16,7 +16,7 @@ import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteModalBodyTheme } from "./ModalBody";
 import { ModalBody } from "./ModalBody";
@@ -64,6 +64,7 @@ export interface ModalProps extends ComponentPropsWithoutRef<"div"> {
   size?: DynamicStringEnumKeysOf<ModalSizes>;
   dismissible?: boolean;
   theme?: DeepPartial<FlowbiteModalTheme>;
+  unstyled?: Unstyled<FlowbiteModalTheme>;
   initialFocus?: number | MutableRefObject<HTMLElement | null>;
 }
 
@@ -80,13 +81,14 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
       show,
       size = "2xl",
       theme: customTheme,
+      unstyled,
       initialFocus,
       ...props
     },
     theirRef,
   ) => {
     const [headerId, setHeaderId] = useState<string | undefined>(undefined);
-    const theme = resolveTheme([modalTheme, getStore().theme?.modal, customTheme]);
+    const theme = resolveTheme([modalTheme, getStore().theme?.modal, customTheme], [unstyled]);
 
     const { context } = useFloating({
       open: show,
@@ -106,7 +108,7 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
     }
 
     return (
-      <ModalContext.Provider value={{ theme, popup, onClose, setHeaderId }}>
+      <ModalContext.Provider value={{ theme: customTheme, unstyled, popup, onClose, setHeaderId }}>
         <FloatingPortal root={root}>
           <FloatingOverlay
             lockScroll

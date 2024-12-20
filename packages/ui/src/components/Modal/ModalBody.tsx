@@ -1,10 +1,13 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { pluck } from "../../helpers/pluck";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import type { DeepPartial } from "../../types";
+import { getStore } from "../../store";
+import type { DeepPartial, Unstyled } from "../../types";
 import { useModalContext } from "./ModalContext";
+import { modalTheme } from "./theme";
 
 export interface FlowbiteModalBodyTheme {
   base: string;
@@ -13,15 +16,19 @@ export interface FlowbiteModalBodyTheme {
 
 export interface ModalBodyProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteModalBodyTheme>;
+  unstyled?: Unstyled<FlowbiteModalBodyTheme>;
 }
 
-export const ModalBody: FC<ModalBodyProps> = ({ children, className, theme: customTheme, ...props }) => {
-  const { theme: rootTheme, popup } = useModalContext();
+export const ModalBody: FC<ModalBodyProps> = ({ children, className, theme: customTheme, unstyled, ...props }) => {
+  const { theme: rootTheme, unstyled: rootUnstyled, popup } = useModalContext();
 
-  const theme = resolveTheme([rootTheme.body, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme(
+    [modalTheme.body, getStore().theme?.modal?.body, rootTheme?.body, customTheme],
+    [pluck(rootUnstyled, "body"), unstyled],
+  );
 
   return (
-    <div className={twMerge(theme.base, popup && [theme.popup], className)} {...props}>
+    <div className={twMerge(theme.base, popup && theme.popup, className)} {...props}>
       {children}
     </div>
   );

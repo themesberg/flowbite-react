@@ -1,7 +1,6 @@
 "use client";
 
 import type { FC } from "react";
-import { resolveTheme } from "../../../helpers/resolve-theme";
 import { twMerge } from "../../../helpers/tailwind-merge";
 import { useDatePickerContext } from "../DatepickerContext";
 import { isDateEqual, isDateInRange, startOfYearPeriod, Views } from "../helpers";
@@ -17,14 +16,10 @@ export interface FlowbiteDatepickerViewsYearsTheme {
   };
 }
 
-export interface DatepickerViewsYearsProps {
-  theme?: FlowbiteDatepickerViewsYearsTheme;
-}
-
-export const DatepickerViewsYears: FC<DatepickerViewsYearsProps> = ({ theme: customTheme }) => {
+export const DatepickerViewsYears: FC = () => {
   const { theme: rootTheme, selectedDate, minDate, maxDate, viewDate, setViewDate, setView } = useDatePickerContext();
 
-  const theme = resolveTheme([rootTheme.views.years, customTheme], { shouldPrefix: false });
+  const theme = rootTheme.views.years;
 
   return (
     <div className={theme.items.base}>

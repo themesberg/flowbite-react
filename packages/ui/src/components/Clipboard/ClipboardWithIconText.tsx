@@ -5,7 +5,7 @@ import { FaCheck, FaClipboardList } from "react-icons/fa6";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import { copyToClipboard } from "./helpers";
 import { clipboardTheme } from "./theme";
 
@@ -27,13 +27,20 @@ export interface ClipboardWithIconTextProps extends ComponentProps<"button"> {
   label?: string;
   icon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteClipboardWithIconTextTheme>;
+  unstyled?: Unstyled<FlowbiteClipboardWithIconTextTheme>;
 }
 
 export const ClipboardWithIconText = forwardRef<HTMLButtonElement, ClipboardWithIconTextProps>(
-  ({ valueToCopy, icon: Icon = FaClipboardList, label = "Copy", theme: customTheme, className, ...rest }, ref) => {
+  (
+    { valueToCopy, icon: Icon = FaClipboardList, label = "Copy", theme: customTheme, unstyled, className, ...rest },
+    ref,
+  ) => {
     const [isJustCopied, setIsJustCopied] = useState(false);
 
-    const theme = resolveTheme([clipboardTheme.withIconText, getStore().theme?.clipboard?.withIconText, customTheme]);
+    const theme = resolveTheme(
+      [clipboardTheme.withIconText, getStore().theme?.clipboard?.withIconText, customTheme],
+      [unstyled],
+    );
 
     return (
       <button

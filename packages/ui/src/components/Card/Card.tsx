@@ -3,7 +3,7 @@ import { omit } from "../../helpers/omit";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { cardTheme } from "./theme";
 
@@ -27,10 +27,8 @@ export interface FlowbiteCardImageTheme {
 interface CommonCardProps extends ComponentProps<"div"> {
   horizontal?: boolean;
   href?: string;
-  /** Overwrites the theme. Will be merged with the context theme.
-   * @default {}
-   */
   theme?: DeepPartial<FlowbiteCardTheme>;
+  unstyled?: Unstyled<FlowbiteCardTheme>;
 }
 
 export type CardProps = (
@@ -46,11 +44,11 @@ export type CardProps = (
   CommonCardProps;
 
 export const Card: FC<CardProps> = (props) => {
-  const { children, className, horizontal, href, theme: customTheme } = props;
+  const { children, className, horizontal, href, theme: customTheme, unstyled } = props;
   const Component = typeof href === "undefined" ? "div" : "a";
   const theirProps = removeCustomProps(props);
 
-  const theme = resolveTheme([cardTheme, getStore().theme?.card, customTheme]);
+  const theme = resolveTheme([cardTheme, getStore().theme?.card, customTheme], [unstyled]);
 
   return (
     <Component
@@ -92,12 +90,13 @@ const Image: FC<CardProps> = ({ theme: customTheme, ...props }) => {
 };
 
 const removeCustomProps = omit([
-  "renderImage",
-  "imgSrc",
-  "imgAlt",
   "children",
   "className",
   "horizontal",
   "href",
+  "imgAlt",
+  "imgSrc",
+  "renderImage",
   "theme",
+  "unstyled",
 ]);

@@ -2,10 +2,13 @@
 
 import { useId, useLayoutEffect, type ComponentProps, type ElementType, type FC } from "react";
 import { HiOutlineX } from "react-icons/hi";
+import { pluck } from "../../helpers/pluck";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import type { DeepPartial } from "../../types";
+import { getStore } from "../../store";
+import type { DeepPartial, Unstyled } from "../../types";
 import { useModalContext } from "./ModalContext";
+import { modalTheme } from "./theme";
 
 export interface FlowbiteModalHeaderTheme {
   base: string;
@@ -20,6 +23,7 @@ export interface FlowbiteModalHeaderTheme {
 export interface ModalHeaderProps extends ComponentProps<"div"> {
   as?: ElementType;
   theme?: DeepPartial<FlowbiteModalHeaderTheme>;
+  unstyled?: Unstyled<FlowbiteModalHeaderTheme>;
 }
 
 export const ModalHeader: FC<ModalHeaderProps> = ({
@@ -27,15 +31,19 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   children,
   className,
   theme: customTheme,
+  unstyled,
   id,
   ...props
 }) => {
   const innerHeaderId = useId();
   const headerId = id || innerHeaderId;
 
-  const { theme: rootTheme, popup, onClose, setHeaderId } = useModalContext();
+  const { theme: rootTheme, unstyled: rootUnstyled, popup, onClose, setHeaderId } = useModalContext();
 
-  const theme = resolveTheme([rootTheme.header, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme(
+    [modalTheme.header, getStore().theme?.modal?.header, rootTheme?.header, customTheme],
+    [pluck(rootUnstyled, "header"), unstyled],
+  );
 
   useLayoutEffect(() => {
     setHeaderId(headerId);

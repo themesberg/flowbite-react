@@ -1,10 +1,13 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import type { DeepPartial } from "../../types";
+import { getStore } from "../../store";
+import type { DeepPartial, Unstyled } from "../../types";
 import { useDropdownContext } from "./DropdownContext";
 import { DropdownDivider } from "./DropdownDivider";
+import { dropdownTheme } from "./theme";
 
 export interface FlowbiteDropdownHeaderTheme {
   header: string;
@@ -12,16 +15,26 @@ export interface FlowbiteDropdownHeaderTheme {
 
 export interface DropdownHeaderProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteDropdownHeaderTheme>;
+  unstyled?: Unstyled<FlowbiteDropdownHeaderTheme>;
 }
 
-export const DropdownHeader: FC<DropdownHeaderProps> = ({ children, className, theme: customTheme, ...props }) => {
+export const DropdownHeader: FC<DropdownHeaderProps> = ({
+  children,
+  className,
+  theme: customTheme,
+  unstyled,
+  ...props
+}) => {
   const { theme: rootTheme } = useDropdownContext();
 
-  const theme = customTheme?.header ?? rootTheme.floating.header;
+  const theme = resolveTheme(
+    [dropdownTheme.floating, getStore().theme?.dropdown?.floating, rootTheme?.floating, customTheme],
+    [unstyled],
+  );
 
   return (
     <>
-      <div className={twMerge(theme, className)} {...props}>
+      <div className={twMerge(theme.header, className)} {...props}>
         {children}
       </div>
       <DropdownDivider />

@@ -4,12 +4,14 @@ import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } fr
 import { forwardRef, useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
+import { getStore } from "../../store";
+import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import { Badge } from "../Badge";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { Tooltip } from "../Tooltip";
 import { useSidebarContext } from "./SidebarContext";
 import { useSidebarItemContext } from "./SidebarItemContext";
+import { sidebarTheme } from "./theme";
 
 export interface FlowbiteSidebarItemTheme {
   active: string;
@@ -37,6 +39,7 @@ export interface SidebarItemProps extends Omit<ComponentProps<"div">, "ref">, Re
   label?: string;
   labelColor?: DynamicStringEnumKeysOf<SidebarItemLabelColors>;
   theme?: DeepPartial<FlowbiteSidebarItemTheme>;
+  unstyled?: Unstyled<FlowbiteSidebarItemTheme>;
 }
 
 export interface SidebarItemLabelColors extends Pick<FlowbiteColors, "gray"> {
@@ -93,6 +96,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       label,
       labelColor = "info",
       theme: customTheme,
+      unstyled,
       ...props
     },
     ref,
@@ -101,7 +105,10 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
     const { theme: rootTheme, isCollapsed } = useSidebarContext();
     const { isInsideCollapse } = useSidebarItemContext();
 
-    const theme = resolveTheme([rootTheme.item, customTheme], { shouldPrefix: false });
+    const theme = resolveTheme(
+      [sidebarTheme.item, getStore().theme?.sidebar?.item, rootTheme?.item, customTheme],
+      [unstyled],
+    );
 
     return (
       <ListItem theme={theme} className={theme.listItem} id={id} isCollapsed={isCollapsed} tooltipChildren={children}>

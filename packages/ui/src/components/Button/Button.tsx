@@ -4,7 +4,7 @@ import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../help
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import type {
   FlowbiteBoolean,
   FlowbiteColors,
@@ -86,6 +86,7 @@ export type ButtonProps<T extends ElementType = "button"> = PolymorphicComponent
     positionInGroup?: keyof PositionInButtonGroup;
     size?: DynamicStringEnumKeysOf<ButtonSizes>;
     theme?: DeepPartial<FlowbiteButtonTheme>;
+    unstyled?: Unstyled<FlowbiteButtonTheme>;
   }
 >;
 
@@ -112,11 +113,12 @@ const ButtonComponent = forwardRef(
       positionInGroup = "none",
       size = "md",
       theme: customTheme,
+      unstyled,
       ...props
     }: ButtonProps<T>,
     ref: PolymorphicRef<T>,
   ) => {
-    const theme = resolveTheme([buttonTheme, getStore().theme?.button, customTheme]);
+    const theme = resolveTheme([buttonTheme, getStore().theme?.button, customTheme], [unstyled]);
     const groupTheme = resolveTheme([buttonGroupTheme, getStore().theme?.buttonGroup]);
 
     const theirProps = props as ButtonBaseProps<T>;

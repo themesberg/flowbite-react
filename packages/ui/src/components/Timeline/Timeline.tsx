@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import { timelineTheme } from "./theme";
 import { TimelineBody } from "./TimelineBody";
 import { TimelineContent } from "./TimelineContent";
@@ -27,13 +27,21 @@ export interface FlowbiteTimelineTheme {
 export interface TimelineProps extends ComponentProps<"ol"> {
   horizontal?: boolean;
   theme?: DeepPartial<FlowbiteTimelineTheme>;
+  unstyled?: Unstyled<FlowbiteTimelineTheme>;
 }
 
-const TimelineComponent: FC<TimelineProps> = ({ children, className, horizontal, theme: customTheme, ...props }) => {
-  const theme = resolveTheme([timelineTheme, getStore().theme?.timeline, customTheme]);
+const TimelineComponent: FC<TimelineProps> = ({
+  children,
+  className,
+  horizontal,
+  theme: customTheme,
+  unstyled,
+  ...props
+}) => {
+  const theme = resolveTheme([timelineTheme, getStore().theme?.timeline, customTheme], [unstyled]);
 
   return (
-    <TimelineContext.Provider value={{ theme, horizontal }}>
+    <TimelineContext.Provider value={{ theme: customTheme, unstyled, horizontal }}>
       <ol
         data-testid="timeline-component"
         className={twMerge(
@@ -58,10 +66,10 @@ TimelineTitle.displayName = "Timeline.Title";
 TimelineBody.displayName = "Timeline.Body";
 
 export const Timeline = Object.assign(TimelineComponent, {
+  Body: TimelineBody,
+  Content: TimelineContent,
   Item: TimelineItem,
   Point: TimelinePoint,
-  Content: TimelineContent,
   Time: TimelineTime,
   Title: TimelineTitle,
-  Body: TimelineBody,
 });

@@ -3,8 +3,10 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import type { DeepPartial } from "../../types";
+import { getStore } from "../../store";
+import type { DeepPartial, Unstyled } from "../../types";
 import { useSidebarContext } from "./SidebarContext";
+import { sidebarTheme } from "./theme";
 
 export interface FlowbiteSidebarItemsTheme {
   base: string;
@@ -12,12 +14,22 @@ export interface FlowbiteSidebarItemsTheme {
 
 export interface SidebarItemsProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteSidebarItemsTheme>;
+  unstyled?: Unstyled<FlowbiteSidebarItemsTheme>;
 }
 
-export const SidebarItems: FC<SidebarItemsProps> = ({ children, className, theme: customTheme, ...props }) => {
+export const SidebarItems: FC<SidebarItemsProps> = ({
+  children,
+  className,
+  theme: customTheme,
+  unstyled,
+  ...props
+}) => {
   const { theme: rootTheme } = useSidebarContext();
 
-  const theme = resolveTheme([rootTheme.items, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme(
+    [sidebarTheme.items, getStore().theme?.sidebar?.items, rootTheme?.items, customTheme],
+    [unstyled],
+  );
 
   return (
     <div className={twMerge(theme.base, className)} data-testid="flowbite-sidebar-items" {...props}>

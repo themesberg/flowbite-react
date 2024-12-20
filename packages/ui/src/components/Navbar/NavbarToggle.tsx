@@ -4,8 +4,10 @@ import type { ComponentProps, FC } from "react";
 import { FaBars } from "react-icons/fa";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import type { DeepPartial } from "../../types";
+import { getStore } from "../../store";
+import type { DeepPartial, Unstyled } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
+import { navbarTheme } from "./theme";
 
 export interface FlowbiteNavbarToggleTheme {
   base: string;
@@ -15,17 +17,22 @@ export interface FlowbiteNavbarToggleTheme {
 export interface NavbarToggleProps extends ComponentProps<"button"> {
   barIcon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteNavbarToggleTheme>;
+  unstyled?: Unstyled<FlowbiteNavbarToggleTheme>;
 }
 
 export const NavbarToggle: FC<NavbarToggleProps> = ({
   barIcon: BarIcon = FaBars,
   className,
   theme: customTheme,
+  unstyled,
   ...props
 }) => {
   const { theme: rootTheme, isOpen, setIsOpen } = useNavbarContext();
 
-  const theme = resolveTheme([rootTheme.toggle, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme(
+    [navbarTheme.toggle, getStore().theme?.navbar?.toggle, rootTheme?.toggle, customTheme],
+    [unstyled],
+  );
 
   const handleClick = () => {
     setIsOpen(!isOpen);

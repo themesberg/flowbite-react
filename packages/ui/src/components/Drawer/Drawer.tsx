@@ -5,7 +5,7 @@ import { useEffect, useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { DrawerContext } from "./DrawerContext";
 import { DrawerHeader, type FlowbiteDrawerHeaderTheme } from "./DrawerHeader";
@@ -37,6 +37,7 @@ export interface DrawerProps extends ComponentProps<"div"> {
   open?: boolean;
   position?: "top" | "right" | "bottom" | "left";
   theme?: DeepPartial<FlowbiteDrawerTheme>;
+  unstyled?: Unstyled<FlowbiteDrawerTheme>;
 }
 
 const DrawerComponent: FC<DrawerProps> = ({
@@ -48,10 +49,11 @@ const DrawerComponent: FC<DrawerProps> = ({
   onClose,
   open: isOpen = false,
   theme: customTheme,
+  unstyled,
   ...props
 }) => {
   const id = useId();
-  const theme = resolveTheme([drawerTheme, getStore().theme?.drawer, customTheme]);
+  const theme = resolveTheme([drawerTheme, getStore().theme?.drawer, customTheme], [unstyled]);
 
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
@@ -66,7 +68,7 @@ const DrawerComponent: FC<DrawerProps> = ({
   }, [onClose, isOpen]);
 
   return (
-    <DrawerContext.Provider value={{ theme, onClose, isOpen, id }}>
+    <DrawerContext.Provider value={{ theme: customTheme, onClose, isOpen, id }}>
       <div
         aria-modal
         aria-describedby={`drawer-dialog-${id}`}

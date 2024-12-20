@@ -1,10 +1,12 @@
 "use client";
 
 import { createContext, useContext } from "react";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteTableHeadTheme } from "./TableHead";
 
 export type TableHeadContext = {
-  theme: FlowbiteTableHeadTheme;
+  theme?: DeepPartial<FlowbiteTableHeadTheme>;
+  unstyled?: Unstyled<FlowbiteTableHeadTheme>;
 };
 
 export const TableHeadContext = createContext<TableHeadContext | undefined>(undefined);

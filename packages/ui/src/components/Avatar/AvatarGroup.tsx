@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import { avatarTheme } from "./theme";
 
 export interface FlowbiteAvatarGroupTheme {
@@ -11,10 +11,17 @@ export interface FlowbiteAvatarGroupTheme {
 
 export interface AvatarGroupProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteAvatarGroupTheme>;
+  unstyled?: Unstyled<FlowbiteAvatarGroupTheme>;
 }
 
-export const AvatarGroup: React.FC<AvatarGroupProps> = ({ children, className, theme: customTheme, ...props }) => {
-  const theme = resolveTheme([avatarTheme.group, getStore().theme?.avatar?.group, customTheme]);
+export const AvatarGroup: React.FC<AvatarGroupProps> = ({
+  children,
+  className,
+  theme: customTheme,
+  unstyled,
+  ...props
+}) => {
+  const theme = resolveTheme([avatarTheme.group, getStore().theme?.avatar?.group, customTheme], [unstyled]);
 
   return (
     <div data-testid="avatar-group-element" className={twMerge(theme.base, className)} {...props}>

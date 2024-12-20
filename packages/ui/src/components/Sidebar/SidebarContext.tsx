@@ -1,10 +1,12 @@
 "use client";
 
 import { createContext, useContext } from "react";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteSidebarTheme } from "./Sidebar";
 
 export type SidebarContext = {
-  theme: FlowbiteSidebarTheme;
+  theme?: DeepPartial<FlowbiteSidebarTheme>;
+  unstyled?: Unstyled<FlowbiteSidebarTheme>;
   isCollapsed: boolean;
 };
 

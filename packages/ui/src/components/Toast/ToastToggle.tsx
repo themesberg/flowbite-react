@@ -4,7 +4,9 @@ import type { ComponentProps, FC, MouseEvent } from "react";
 import { HiX } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import type { DeepPartial } from "../../types";
+import { getStore } from "../../store";
+import type { DeepPartial, Unstyled } from "../../types";
+import { toastTheme } from "./theme";
 import { useToastContext } from "./ToastContext";
 
 export interface FlowbiteToastToggleTheme {
@@ -14,6 +16,7 @@ export interface FlowbiteToastToggleTheme {
 
 export interface ToastToggleProps extends ComponentProps<"button"> {
   theme?: DeepPartial<FlowbiteToastToggleTheme>;
+  unstyled?: Unstyled<FlowbiteToastToggleTheme>;
   xIcon?: FC<ComponentProps<"svg">>;
   onDismiss?: () => void;
 }
@@ -22,13 +25,17 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   className,
   onClick,
   theme: customTheme,
+  unstyled,
   xIcon: XIcon = HiX,
   onDismiss,
   ...props
 }) => {
   const { theme: rootTheme, duration, isClosed, isRemoved, setIsClosed, setIsRemoved } = useToastContext();
 
-  const theme = resolveTheme([rootTheme.toggle, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme(
+    [toastTheme.toggle, getStore().theme?.toast?.toggle, rootTheme?.toggle, customTheme],
+    [unstyled],
+  );
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {
     if (onClick) onClick(e);

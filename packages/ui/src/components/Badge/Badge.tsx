@@ -2,7 +2,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
-import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { badgeTheme } from "./theme";
 
@@ -32,6 +32,7 @@ export interface BadgeProps extends Omit<ComponentProps<"span">, "color"> {
   icon?: FC<ComponentProps<"svg">>;
   size?: DynamicStringEnumKeysOf<BadgeSizes>;
   theme?: DeepPartial<FlowbiteBadgeTheme>;
+  unstyled?: Unstyled<FlowbiteBadgeTheme>;
 }
 
 export const Badge: FC<BadgeProps> = ({
@@ -42,9 +43,10 @@ export const Badge: FC<BadgeProps> = ({
   size = "xs",
   className,
   theme: customTheme,
+  unstyled,
   ...props
 }) => {
-  const theme = resolveTheme([badgeTheme, getStore().theme?.badge, customTheme]);
+  const theme = resolveTheme([badgeTheme, getStore().theme?.badge, customTheme], [unstyled]);
 
   const Content: FC = () => (
     <span

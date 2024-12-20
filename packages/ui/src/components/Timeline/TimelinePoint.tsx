@@ -3,7 +3,9 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import type { DeepPartial } from "../../types";
+import { getStore } from "../../store";
+import type { DeepPartial, Unstyled } from "../../types";
+import { timelineTheme } from "./theme";
 import { useTimelineContext } from "./TimelineContext";
 import { useTimelineItemContext } from "./TimelineItemContext";
 
@@ -26,6 +28,7 @@ export interface FlowbiteTimelinePointTheme {
 export interface TimelnePointProps extends ComponentProps<"div"> {
   icon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteTimelinePointTheme>;
+  unstyled?: Unstyled<FlowbiteTimelinePointTheme>;
 }
 
 export const TimelinePoint: FC<TimelnePointProps> = ({
@@ -33,12 +36,22 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   className,
   icon: Icon,
   theme: customTheme,
+  unstyled,
   ...props
 }) => {
-  const { horizontal } = useTimelineContext();
+  const { theme: rootTheme, horizontal } = useTimelineContext();
   const { theme: itemTheme } = useTimelineItemContext();
 
-  const theme = resolveTheme([itemTheme.point, customTheme], { shouldPrefix: false });
+  const theme = resolveTheme(
+    [
+      timelineTheme.item.point,
+      getStore().theme?.timeline?.item?.point,
+      rootTheme?.item?.point,
+      itemTheme?.point,
+      customTheme,
+    ],
+    [unstyled],
+  );
 
   return (
     <div
