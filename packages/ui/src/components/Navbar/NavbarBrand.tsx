@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, ElementType, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -27,11 +28,11 @@ export const NavbarBrand: FC<NavbarBrandProps> = ({
   unstyled,
   ...props
 }) => {
-  const { theme: rootTheme } = useNavbarContext();
+  const { theme: rootTheme, unstyled: rootUnstyled } = useNavbarContext();
 
   const theme = resolveTheme(
     [navbarTheme.brand, getStore().theme?.navbar?.brand, rootTheme?.brand, customTheme],
-    [unstyled],
+    [get(rootUnstyled, "brand"), unstyled],
   );
 
   return (

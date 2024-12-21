@@ -2,11 +2,12 @@
 
 import type { useInteractions } from "@floating-ui/react";
 import { createContext, useContext } from "react";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteDropdownTheme } from "./Dropdown";
 
 type DropdownContext = {
   theme?: DeepPartial<FlowbiteDropdownTheme>;
+  unstyled?: Unstyled<FlowbiteDropdownTheme>;
   activeIndex: number | null;
   dismissOnClick?: boolean;
   getItemProps: ReturnType<typeof useInteractions>["getItemProps"];

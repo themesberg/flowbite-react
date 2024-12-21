@@ -68,7 +68,7 @@ const DrawerComponent: FC<DrawerProps> = ({
   }, [onClose, isOpen]);
 
   return (
-    <DrawerContext.Provider value={{ theme: customTheme, onClose, isOpen, id }}>
+    <DrawerContext.Provider value={{ theme: customTheme, unstyled, onClose, isOpen, id }}>
       <div
         aria-modal
         aria-describedby={`drawer-dialog-${id}`}

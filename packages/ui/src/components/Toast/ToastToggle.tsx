@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC, MouseEvent } from "react";
 import { HiX } from "react-icons/hi";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -30,11 +31,19 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   onDismiss,
   ...props
 }) => {
-  const { theme: rootTheme, duration, isClosed, isRemoved, setIsClosed, setIsRemoved } = useToastContext();
+  const {
+    theme: rootTheme,
+    unstyled: rootUnstyled,
+    duration,
+    isClosed,
+    isRemoved,
+    setIsClosed,
+    setIsRemoved,
+  } = useToastContext();
 
   const theme = resolveTheme(
     [toastTheme.toggle, getStore().theme?.toast?.toggle, rootTheme?.toggle, customTheme],
-    [unstyled],
+    [get(rootUnstyled, "toggle"), unstyled],
   );
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {

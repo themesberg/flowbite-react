@@ -3,6 +3,7 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from "react";
 import { useEffect, useId, useState } from "react";
 import { HiChevronDown } from "react-icons/hi";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -55,11 +56,11 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
 }) => {
   const id = useId();
   const [isOpen, setOpen] = useState(open);
-  const { theme: rootTheme, isCollapsed } = useSidebarContext();
+  const { theme: rootTheme, unstyled: rootUnstyled, isCollapsed } = useSidebarContext();
 
   const theme = resolveTheme(
     [sidebarTheme.collapse, getStore().theme?.sidebar?.collapse, rootTheme?.collapse, customTheme],
-    [unstyled],
+    [get(rootUnstyled, "collapse"), unstyled],
   );
 
   useEffect(() => setOpen(open), [open]);

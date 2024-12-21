@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { FaBars } from "react-icons/fa";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -27,11 +28,11 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({
   unstyled,
   ...props
 }) => {
-  const { theme: rootTheme, isOpen, setIsOpen } = useNavbarContext();
+  const { theme: rootTheme, unstyled: rootUnstyled, isOpen, setIsOpen } = useNavbarContext();
 
   const theme = resolveTheme(
     [navbarTheme.toggle, getStore().theme?.navbar?.toggle, rootTheme?.toggle, customTheme],
-    [unstyled],
+    [get(rootUnstyled, "toggle"), unstyled],
   );
 
   const handleClick = () => {

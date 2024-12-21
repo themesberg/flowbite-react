@@ -3,6 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { useId } from "react";
 import { MdClose, MdHome } from "react-icons/md";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { getStore } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
@@ -40,11 +41,11 @@ export const DrawerHeader: FC<DrawerHeaderProps> = ({
 }) => {
   const id = useId();
 
-  const { id: mainDivId, isOpen, onClose, theme: rootTheme } = useDrawerContext();
+  const { id: mainDivId, isOpen, onClose, theme: rootTheme, unstyled: rootUnstyled } = useDrawerContext();
 
   const theme = resolveTheme(
     [drawerTheme.header, getStore().theme?.drawer?.header, rootTheme?.header, customTheme],
-    [unstyled],
+    [get(rootUnstyled, "header"), unstyled],
   );
 
   return (

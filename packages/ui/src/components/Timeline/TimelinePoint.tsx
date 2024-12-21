@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -39,8 +40,8 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   unstyled,
   ...props
 }) => {
-  const { theme: rootTheme, horizontal } = useTimelineContext();
-  const { theme: itemTheme } = useTimelineItemContext();
+  const { theme: rootTheme, unstyled: rootUnstyled, horizontal } = useTimelineContext();
+  const { theme: itemTheme, unstyled: itemUnstyled } = useTimelineItemContext();
 
   const theme = resolveTheme(
     [
@@ -50,7 +51,7 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
       itemTheme?.point,
       customTheme,
     ],
-    [unstyled],
+    [get(rootUnstyled, "item.point"), get(itemUnstyled, "point"), unstyled],
   );
 
   return (

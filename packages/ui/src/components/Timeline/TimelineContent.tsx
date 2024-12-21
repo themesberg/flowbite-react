@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -36,8 +37,8 @@ export const TimelineContent: FC<TimelineContentProps> = ({
   unstyled,
   ...props
 }) => {
-  const { theme: rootTheme, horizontal } = useTimelineContext();
-  const { theme: itemTheme } = useTimelineItemContext();
+  const { theme: rootTheme, unstyled: rootUnstyled, horizontal } = useTimelineContext();
+  const { theme: itemTheme, unstyled: itemUnstyled } = useTimelineItemContext();
 
   const theme = resolveTheme(
     [
@@ -47,7 +48,7 @@ export const TimelineContent: FC<TimelineContentProps> = ({
       itemTheme?.content,
       customTheme,
     ],
-    [unstyled],
+    [get(rootUnstyled, "item.content"), get(itemUnstyled, "content"), unstyled],
   );
 
   return (

@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef, type ComponentPropsWithRef } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -20,12 +21,12 @@ export interface TableHeadCellProps extends ComponentPropsWithRef<"th"> {
 
 export const TableHeadCell = forwardRef<HTMLTableCellElement, TableHeadCellProps>(
   ({ children, className, theme: customTheme, unstyled, ...props }, ref) => {
-    const { theme: rootTheme } = useTableContext();
-    const { theme: headTheme } = useTableHeadContext();
+    const { theme: rootTheme, unstyled: rootUnstyled } = useTableContext();
+    const { theme: headTheme, unstyled: headUnstyled } = useTableHeadContext();
 
     const theme = resolveTheme(
       [tableTheme.head.cell, getStore().theme?.table?.head?.cell, rootTheme?.head?.cell, headTheme?.cell, customTheme],
-      [unstyled],
+      [get(rootUnstyled, "head.cell"), get(headUnstyled, "cell"), unstyled],
     );
 
     return (

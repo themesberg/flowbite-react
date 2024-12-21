@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { useId } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -35,11 +36,11 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
   ...props
 }) => {
   const id = useId();
-  const { theme: rootTheme, isCollapsed } = useSidebarContext();
+  const { theme: rootTheme, unstyled: rootUnstyled, isCollapsed } = useSidebarContext();
 
   const theme = resolveTheme(
     [sidebarTheme.logo, getStore().theme?.sidebar?.logo, rootTheme?.logo, customTheme],
-    [unstyled],
+    [get(rootUnstyled, "logo"), unstyled],
   );
 
   return (

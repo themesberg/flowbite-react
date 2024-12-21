@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -18,11 +19,11 @@ export interface DrawerItemsProps extends ComponentProps<"div"> {
 }
 
 export const DrawerItems: FC<DrawerItemsProps> = ({ children, className, theme: customTheme, unstyled, ...props }) => {
-  const { theme: rootTheme } = useDrawerContext();
+  const { theme: rootTheme, unstyled: rootUnstyled } = useDrawerContext();
 
   const theme = resolveTheme(
     [drawerTheme.items, getStore().theme?.drawer?.items, rootTheme?.items, customTheme],
-    [unstyled],
+    [get(rootUnstyled, "items"), unstyled],
   );
 
   return (

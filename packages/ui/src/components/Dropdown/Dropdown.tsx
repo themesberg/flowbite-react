@@ -187,7 +187,9 @@ const DropdownComponent: FC<DropdownProps> = ({
   }, [placement]);
 
   return (
-    <DropdownContext.Provider value={{ theme: customTheme, activeIndex, dismissOnClick, getItemProps, handleSelect }}>
+    <DropdownContext.Provider
+      value={{ theme: customTheme, unstyled, activeIndex, dismissOnClick, getItemProps, handleSelect }}
+    >
       <Trigger
         {...buttonProps}
         refs={refs}

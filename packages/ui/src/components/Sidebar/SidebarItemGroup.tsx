@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -25,11 +26,11 @@ export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({
   unstyled,
   ...props
 }) => {
-  const { theme: rootTheme } = useSidebarContext();
+  const { theme: rootTheme, unstyled: rootUnstyled } = useSidebarContext();
 
   const theme = resolveTheme(
     [sidebarTheme.itemGroup, getStore().theme?.sidebar?.itemGroup, rootTheme?.itemGroup, customTheme],
-    [unstyled],
+    [get(rootUnstyled, "itemGroup"), unstyled],
   );
 
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { forwardRef, type ComponentPropsWithRef } from "react";
-import { pluck } from "../../helpers/pluck";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -27,7 +27,7 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
 
     const theme = resolveTheme(
       [tableTheme.body, getStore().theme?.table?.body, rootTheme?.body, customTheme],
-      [pluck(rootUnstyled, "body"), unstyled],
+      [get(rootUnstyled, "body"), unstyled],
     );
 
     return (

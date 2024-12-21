@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { HiStar } from "react-icons/hi";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -35,11 +36,11 @@ export const RatingStar: FC<RatingStarProps> = ({
   unstyled,
   ...props
 }) => {
-  const { theme: rootTheme, size = "sm" } = useRatingContext();
+  const { theme: rootTheme, unstyled: rootUnstyled, size = "sm" } = useRatingContext();
 
   const theme = resolveTheme(
     [ratingTheme.star, getStore().theme?.rating?.star, rootTheme?.star, customTheme],
-    [unstyled],
+    [get(rootUnstyled, "star"), unstyled],
   );
 
   return (

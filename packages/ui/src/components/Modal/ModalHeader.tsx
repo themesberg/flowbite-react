@@ -2,7 +2,7 @@
 
 import { useId, useLayoutEffect, type ComponentProps, type ElementType, type FC } from "react";
 import { HiOutlineX } from "react-icons/hi";
-import { pluck } from "../../helpers/pluck";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -42,7 +42,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
 
   const theme = resolveTheme(
     [modalTheme.header, getStore().theme?.modal?.header, rootTheme?.header, customTheme],
-    [pluck(rootUnstyled, "header"), unstyled],
+    [get(rootUnstyled, "header"), unstyled],
   );
 
   useLayoutEffect(() => {

@@ -2,6 +2,7 @@
 
 import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from "react";
 import { forwardRef, useId } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -102,12 +103,12 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
     ref,
   ) => {
     const id = useId();
-    const { theme: rootTheme, isCollapsed } = useSidebarContext();
+    const { theme: rootTheme, unstyled: rootUnstyled, isCollapsed } = useSidebarContext();
     const { isInsideCollapse } = useSidebarItemContext();
 
     const theme = resolveTheme(
       [sidebarTheme.item, getStore().theme?.sidebar?.item, rootTheme?.item, customTheme],
-      [unstyled],
+      [get(rootUnstyled, "item"), unstyled],
     );
 
     return (

@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, ElementType, FC, MouseEvent } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -35,11 +36,11 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   onClick,
   ...props
 }) => {
-  const { theme: rootTheme, setIsOpen } = useNavbarContext();
+  const { theme: rootTheme, unstyled: rootUnstyled, setIsOpen } = useNavbarContext();
 
   const theme = resolveTheme(
     [navbarTheme.link, getStore().theme?.navbar?.link, rootTheme?.link, customTheme],
-    [unstyled],
+    [get(rootUnstyled, "link"), unstyled],
   );
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {

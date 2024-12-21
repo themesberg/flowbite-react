@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
-import { pluck } from "../../helpers/pluck";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -24,7 +24,7 @@ export const ModalFooter: FC<ModalFooterProps> = ({ children, className, theme: 
 
   const theme = resolveTheme(
     [modalTheme.footer, getStore().theme?.modal?.footer, rootTheme?.footer, customTheme],
-    [pluck(rootUnstyled, "footer"), unstyled],
+    [get(rootUnstyled, "footer"), unstyled],
   );
 
   return (

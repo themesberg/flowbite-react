@@ -3,6 +3,7 @@
 import { useListItem, useMergeRefs } from "@floating-ui/react";
 import { forwardRef, type ComponentProps, type ElementType, type FC, type RefCallback } from "react";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -39,11 +40,18 @@ export const DropdownItem = forwardRef(
   ) => {
     const { ref: listItemRef, index } = useListItem({ label: typeof children === "string" ? children : undefined });
     const ref = useMergeRefs([forwardedRef, listItemRef]);
-    const { theme: rootTheme, activeIndex, dismissOnClick, getItemProps, handleSelect } = useDropdownContext();
+    const {
+      theme: rootTheme,
+      unstyled: rootUnstyled,
+      activeIndex,
+      dismissOnClick,
+      getItemProps,
+      handleSelect,
+    } = useDropdownContext();
     const isActive = activeIndex === index;
     const theme = resolveTheme(
       [dropdownTheme.floating.item, getStore().theme?.dropdown?.floating?.item, rootTheme?.floating?.item, customTheme],
-      [unstyled],
+      [get(rootUnstyled, "floating.item"), unstyled],
     );
 
     const theirProps = props as ButtonBaseProps<T>;

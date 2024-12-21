@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { getStore } from "../../store";
@@ -27,11 +28,11 @@ export const NavbarCollapse: FC<NavbarCollapseProps> = ({
   unstyled,
   ...props
 }) => {
-  const { theme: rootTheme, isOpen } = useNavbarContext();
+  const { theme: rootTheme, unstyled: rootUnstyled, isOpen } = useNavbarContext();
 
   const theme = resolveTheme(
     [navbarTheme.collapse, getStore().theme?.navbar?.collapse, rootTheme?.collapse, customTheme],
-    [unstyled],
+    [get(rootUnstyled, "collapse"), unstyled],
   );
 
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteDrawerTheme } from "./Drawer";
 
 interface DrawerContext {
@@ -9,6 +9,7 @@ interface DrawerContext {
   isOpen?: boolean;
   onClose?: () => void;
   theme?: DeepPartial<FlowbiteDrawerTheme>;
+  unstyled?: Unstyled<FlowbiteDrawerTheme>;
 }
 
 export const DrawerContext = createContext<DrawerContext | undefined>(undefined);
