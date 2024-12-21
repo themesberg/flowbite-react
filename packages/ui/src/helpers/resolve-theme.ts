@@ -1,3 +1,4 @@
+import { deepmerge } from "deepmerge-ts";
 import { getStore } from "../store";
 import type { Unstyled } from "../types";
 import { applyPrefix } from "./apply-prefix";
@@ -7,11 +8,12 @@ import { twMerge } from "./tailwind-merge";
 const cache = new Map();
 
 /**
- * Adds prefix to `base` and merges the result with `...custom`
+ * Adds prefix to `base` and merges with custom themes, applying optional unstyled modifications.
  *
- * @param base base theme
- * @param custom custom themes
- * @returns merged `[base, ...custom]`
+ * @template T - The type of the base theme.
+ * @param {[base, ...custom]} themes - An array where the first element is the base theme and the rest are custom themes.
+ * @param {Unstyled<T[]>} [unstyledList=[]] - An optional list of unstyled modifications to apply to the base theme.
+ * @returns {T} - The resolved and merged theme.
  */
 export function resolveTheme<T>(
   [base, ...custom]: [
@@ -47,6 +49,13 @@ export function resolveTheme<T>(
   return theme;
 }
 
+/**
+ * Resolves an array of unstyled theme objects into a single unstyled theme object.
+ *
+ * @template T - The type of the theme object.
+ * @param {Unstyled<T[]>} unstyledList - An array of unstyled theme objects.
+ * @returns {Unstyled<T> | undefined} - A single unstyled theme object or undefined if the input is not a valid array or is empty.
+ */
 function resolveUnstyled<T>(unstyledList: Unstyled<T[]>): Unstyled<T> | undefined {
   if (!Array.isArray(unstyledList)) {
     return;
@@ -56,11 +65,20 @@ function resolveUnstyled<T>(unstyledList: Unstyled<T[]>): Unstyled<T> | undefine
     return;
   }
 
-  // TODO: smart merge
-
-  return unstyledList[0];
+  return deepmerge(...unstyledList) as Unstyled<T> | undefined;
 }
 
+/**
+ * Applies unstyled modifications to a base object. If `unstyled` is `true`,
+ * it will recursively set all string properties of the base object to an empty string.
+ * If `unstyled` is an object, it will recursively apply the properties of the `unstyled`
+ * object to the base object.
+ *
+ * @template T - The type of the base object.
+ * @param {T} base - The base object to which unstyled modifications will be applied.
+ * @param {Unstyled<T>} unstyled - The unstyled modifications to apply. It can be a boolean or an object.
+ * @returns {void}
+ */
 function applyUnstyled<T>(base: T, unstyled: Unstyled<T>): void {
   function iterate(base: T, unstyled?: Unstyled<T>) {
     if (unstyled === true) {
@@ -86,6 +104,15 @@ function applyUnstyled<T>(base: T, unstyled: Unstyled<T>): void {
   iterate(base, unstyled);
 }
 
+/**
+ * Iterates over a given input and applies a callback function to each string value found.
+ * The input can be a string, an array, or an object containing strings.
+ *
+ * @template T - The type of the input.
+ * @param {T} input - The input to iterate over. It can be a string, an array, or an object.
+ * @param {(value: string) => string} callback - The callback function to apply to each string value.
+ * @returns {void}
+ */
 function stringIterator<T>(input: T, callback: (value: string) => string): void {
   function iterate(input: T) {
     if (typeof input === "string") {
