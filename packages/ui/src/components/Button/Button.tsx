@@ -17,7 +17,6 @@ import type {
 import { Spinner } from "../Spinner";
 import { ButtonBase, type ButtonBaseProps } from "./ButtonBase";
 import type { PositionInButtonGroup } from "./ButtonGroup";
-import { ButtonGroup } from "./ButtonGroup";
 import { buttonGroupTheme, buttonTheme } from "./theme";
 
 export interface FlowbiteButtonTheme {
@@ -96,7 +95,7 @@ type ButtonComponentType = (<C extends ElementType = "button">(props: ButtonProp
   displayName?: string;
 };
 
-const ButtonComponent = forwardRef(
+export const Button = forwardRef(
   <T extends ElementType = "button">(
     {
       children,
@@ -176,8 +175,4 @@ const ButtonComponent = forwardRef(
   },
 ) as ButtonComponentType;
 
-ButtonComponent.displayName = "Button";
-
-export const Button = Object.assign(ButtonComponent, {
-  Group: ButtonGroup,
-});
+Button.displayName = "Button";

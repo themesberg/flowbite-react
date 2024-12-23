@@ -1,3 +1,5 @@
+"use client";
+
 import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 import { type CodeData } from "~/components/code-demo";
@@ -16,23 +18,6 @@ export function Component() {
       </Breadcrumb.Item>
       <Breadcrumb.Item href="#">Projects</Breadcrumb.Item>
       <Breadcrumb.Item>Flowbite React</Breadcrumb.Item>
-    </Breadcrumb>
-  );
-}
-`;
-
-const codeRSC = `
-import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
-import { HiHome } from "react-icons/hi";
-
-export function Component() {
-  return (
-    <Breadcrumb aria-label="Default breadcrumb example">
-      <BreadcrumbItem href="#" icon={HiHome}>
-        Home
-      </BreadcrumbItem>
-      <BreadcrumbItem href="#">Projects</BreadcrumbItem>
-      <BreadcrumbItem>Flowbite React</BreadcrumbItem>
     </Breadcrumb>
   );
 }
@@ -57,11 +42,6 @@ export const root: CodeData = {
       fileName: "client",
       language: "tsx",
       code,
-    },
-    {
-      fileName: "server",
-      language: "tsx",
-      code: codeRSC,
     },
   ],
   githubSlug: "breadcrumb/breadcrumb.root.tsx",

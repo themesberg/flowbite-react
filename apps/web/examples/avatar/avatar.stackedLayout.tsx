@@ -1,3 +1,5 @@
+"use client";
+
 import { Avatar, AvatarGroup } from "flowbite-react";
 import { type CodeData } from "~/components/code-demo";
 

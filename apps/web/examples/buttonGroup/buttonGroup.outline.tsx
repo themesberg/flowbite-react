@@ -1,29 +1,31 @@
+"use client";
+
 import { Button, ButtonGroup } from "flowbite-react";
 import { type CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";
 
-import { Button } from "flowbite-react";
+import { Button, ButtonGroup } from "flowbite-react";
 
 export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
-      <Button.Group outline>
+      <ButtonGroup outline>
         <Button color="gray">Profile</Button>
         <Button color="gray">Settings</Button>
         <Button color="gray">Messages</Button>
-      </Button.Group>
-      <Button.Group outline>
+      </ButtonGroup>
+      <ButtonGroup outline>
         <Button gradientMonochrome="info">Profile</Button>
         <Button gradientMonochrome="info">Settings</Button>
         <Button gradientMonochrome="info">Messages</Button>
-      </Button.Group>
-      <Button.Group outline>
+      </ButtonGroup>
+      <ButtonGroup outline>
         <Button gradientDuoTone="cyanToBlue">Profile</Button>
         <Button gradientDuoTone="cyanToBlue">Settings</Button>
         <Button gradientDuoTone="cyanToBlue">Messages</Button>
-      </Button.Group>
+      </ButtonGroup>
     </div>
   );
 }

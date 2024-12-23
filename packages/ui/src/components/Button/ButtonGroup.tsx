@@ -80,4 +80,4 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   );
 };
 
-ButtonGroup.displayName = "Button.Group";
+ButtonGroup.displayName = "ButtonGroup";

@@ -1,18 +1,20 @@
+"use client";
+
 import { Button, ButtonGroup } from "flowbite-react";
 import { type CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";
 
-import { Button } from "flowbite-react";
+import { Button, ButtonGroup } from "flowbite-react";
 
 export function Component() {
   return (
-    <Button.Group>
+    <ButtonGroup>
       <Button color="gray">Profile</Button>
       <Button color="gray">Settings</Button>
       <Button color="gray">Messages</Button>
-    </Button.Group>
+    </ButtonGroup>
   );
 }
 `;

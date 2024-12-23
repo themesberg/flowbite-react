@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Tabs, type TabsRef } from "flowbite-react";
+import { Button, ButtonGroup, Tabs, type TabsRef } from "flowbite-react";
 import { useRef, useState } from "react";
 import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
@@ -9,7 +9,7 @@ import { type CodeData } from "~/components/code-demo";
 const code = `
 "use client";
 
-import { Button, Tabs, TabsRef } from "flowbite-react";
+import { Button, ButtonGroup, Tabs, TabsRef } from "flowbite-react";
 import { useRef, useState } from "react";
 import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
@@ -46,7 +46,7 @@ export function Component() {
         </Tabs.Item>
       </Tabs>
       <div className="text-sm text-gray-500 dark:text-gray-400">Active tab: {activeTab}</div>
-      <Button.Group>
+      <ButtonGroup>
         <Button color="gray" onClick={() => tabsRef.current?.setActiveTab(0)}>
           Profile
         </Button>
@@ -59,7 +59,7 @@ export function Component() {
         <Button color="gray" onClick={() => tabsRef.current?.setActiveTab(3)}>
           Contacts
         </Button>
-      </Button.Group>
+      </ButtonGroup>
     </div>
   );
 }
@@ -97,7 +97,7 @@ export function Component() {
         </Tabs.Item>
       </Tabs>
       <div className="text-sm text-gray-500 dark:text-gray-400">Active tab: {activeTab}</div>
-      <Button.Group>
+      <ButtonGroup>
         <Button color="gray" onClick={() => tabsRef.current?.setActiveTab(0)}>
           Profile
         </Button>
@@ -110,7 +110,7 @@ export function Component() {
         <Button color="gray" onClick={() => tabsRef.current?.setActiveTab(3)}>
           Contacts
         </Button>
-      </Button.Group>
+      </ButtonGroup>
     </div>
   );
 }
