@@ -5,7 +5,7 @@ import { HiOutlineX } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import { useModalContext } from "./ModalContext";
 import { modalTheme } from "./theme";
@@ -40,8 +40,9 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
 
   const { theme: rootTheme, unstyled: rootUnstyled, popup, onClose, setHeaderId } = useModalContext();
 
+  const provider = useThemeProvider();
   const theme = resolveTheme(
-    [modalTheme.header, getTheme()?.modal?.header, rootTheme?.header, customTheme],
+    [modalTheme.header, provider.theme?.modal?.header, rootTheme?.header, customTheme],
     [get(rootUnstyled, "header"), unstyled],
   );
 

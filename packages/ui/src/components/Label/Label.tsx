@@ -1,7 +1,9 @@
+"use client";
+
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import { labelTheme } from "./theme";
@@ -37,7 +39,8 @@ export const Label: FC<LabelProps> = ({
   value,
   ...props
 }) => {
-  const theme = resolveTheme([labelTheme, getTheme()?.label, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([labelTheme, provider.theme?.label, customTheme]);
 
   return (
     <label

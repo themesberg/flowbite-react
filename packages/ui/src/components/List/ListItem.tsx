@@ -1,7 +1,9 @@
+"use client";
+
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial } from "../../types";
 import { listTheme } from "./theme";
 
@@ -20,7 +22,8 @@ export interface ListItemProps extends ComponentProps<"li"> {
 }
 
 export const ListItem: FC<ListItemProps> = ({ children, className, icon: Icon, theme: customTheme, ...props }) => {
-  const theme = resolveTheme([listTheme.item, getTheme()?.list?.item, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([listTheme.item, provider.theme?.list?.item, customTheme]);
 
   return (
     <li className={twMerge(theme.withIcon[Icon ? "on" : "off"], className)} {...props}>

@@ -1,8 +1,10 @@
+"use client";
+
 import type { ComponentProps, FC, ReactNode } from "react";
 import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { HelperText } from "../HelperText";
@@ -70,7 +72,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     },
     ref,
   ) => {
-    const theme = resolveTheme([textInputTheme, getTheme()?.textInput, customTheme]);
+    const provider = useThemeProvider();
+    const theme = resolveTheme([textInputTheme, provider.theme?.textInput, customTheme]);
 
     return (
       <>

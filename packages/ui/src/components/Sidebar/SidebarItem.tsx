@@ -5,7 +5,7 @@ import { forwardRef, useId } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import { Badge } from "../Badge";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
@@ -106,8 +106,9 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
     const { theme: rootTheme, unstyled: rootUnstyled, isCollapsed } = useSidebarContext();
     const { isInsideCollapse } = useSidebarItemContext();
 
+    const provider = useThemeProvider();
     const theme = resolveTheme(
-      [sidebarTheme.item, getTheme()?.sidebar?.item, rootTheme?.item, customTheme],
+      [sidebarTheme.item, provider.theme?.sidebar?.item, rootTheme?.item, customTheme],
       [get(rootUnstyled, "item"), unstyled],
     );
 

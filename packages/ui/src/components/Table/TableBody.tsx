@@ -4,7 +4,7 @@ import { forwardRef, type ComponentPropsWithRef } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import { TableBodyContext } from "./TableBodyContext";
 import type { FlowbiteTableCellTheme } from "./TableCell";
@@ -25,8 +25,9 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
   ({ children, className, theme: customTheme, unstyled, ...props }, ref) => {
     const { theme: rootTheme, unstyled: rootUnstyled } = useTableContext();
 
+    const provider = useThemeProvider();
     const theme = resolveTheme(
-      [tableTheme.body, getTheme()?.table?.body, rootTheme?.body, customTheme],
+      [tableTheme.body, provider.theme?.table?.body, rootTheme?.body, customTheme],
       [get(rootUnstyled, "body"), unstyled],
     );
 

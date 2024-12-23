@@ -3,7 +3,7 @@
 import type { ComponentProps, ElementType, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { SidebarCollapse, type FlowbiteSidebarCollapseTheme } from "./SidebarCollapse";
@@ -47,7 +47,8 @@ const SidebarComponent: FC<SidebarProps> = ({
   className,
   ...props
 }) => {
-  const theme = resolveTheme([sidebarTheme, getTheme()?.sidebar, customTheme], [unstyled]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([sidebarTheme, provider.theme?.sidebar, customTheme], [unstyled]);
 
   return (
     <SidebarContext.Provider value={{ theme: customTheme, unstyled, isCollapsed }}>

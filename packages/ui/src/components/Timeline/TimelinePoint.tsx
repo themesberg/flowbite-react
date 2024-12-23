@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import { timelineTheme } from "./theme";
 import { useTimelineContext } from "./TimelineContext";
@@ -43,10 +43,11 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   const { theme: rootTheme, unstyled: rootUnstyled, horizontal } = useTimelineContext();
   const { theme: itemTheme, unstyled: itemUnstyled } = useTimelineItemContext();
 
+  const provider = useThemeProvider();
   const theme = resolveTheme(
     [
       timelineTheme.item.point,
-      getTheme()?.timeline?.item?.point,
+      provider.theme?.timeline?.item?.point,
       rootTheme?.item?.point,
       itemTheme?.point,
       customTheme,

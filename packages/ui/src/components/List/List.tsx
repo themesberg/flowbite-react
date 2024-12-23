@@ -1,7 +1,9 @@
+"use client";
+
 import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import { ListItem, type FlowbiteListItemTheme } from "./ListItem";
@@ -46,7 +48,8 @@ const ListComponent: FC<ListProps> = ({
   theme: customTheme,
   ...props
 }) => {
-  const theme = resolveTheme([listTheme.root, getTheme()?.list?.root, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([listTheme.root, provider.theme?.list?.root, customTheme]);
   const Component = ordered ? "ol" : "ul";
 
   return (

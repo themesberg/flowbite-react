@@ -1,8 +1,10 @@
+"use client";
+
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial } from "../../types";
 import { hrTheme } from "./theme";
 
@@ -16,7 +18,8 @@ export interface HRTrimmedProps extends Omit<ComponentProps<"hr">, "ref"> {
 
 export const HRTrimmed = forwardRef<HTMLHRElement, HRTrimmedProps>(
   ({ theme: customTheme, className, ...props }, ref) => {
-    const theme = resolveTheme([hrTheme.trimmed, getTheme()?.hr?.trimmed, customTheme]);
+    const provider = useThemeProvider();
+    const theme = resolveTheme([hrTheme.trimmed, provider.theme?.hr?.trimmed, customTheme]);
 
     return (
       <hr

@@ -1,7 +1,9 @@
+"use client";
+
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteFooterBrandTheme } from "./FooterBrand";
 import { FooterBrand } from "./FooterBrand";
@@ -48,7 +50,8 @@ export const FooterComponent: FC<FooterProps> = ({
   theme: customTheme,
   ...props
 }) => {
-  const theme = resolveTheme([footerTheme, getTheme()?.footer, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([footerTheme, provider.theme?.footer, customTheme]);
 
   return (
     <footer

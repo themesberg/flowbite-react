@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState, type ComponentProps, type FC, type MouseEventHandler } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import { DeepPartial } from "../../types";
 import { megaMenuTheme } from "./theme";
 
@@ -26,7 +26,8 @@ export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
   const [controls, setControls] = useState<string | undefined>(undefined);
   const [isExpanded, setExpanded] = useState<boolean | undefined>(undefined);
 
-  const theme = resolveTheme([megaMenuTheme.dropdownToggle, getTheme()?.megaMenu?.dropdownToggle, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([megaMenuTheme.dropdownToggle, provider.theme?.megaMenu?.dropdownToggle, customTheme]);
 
   const findDropdown = function () {
     const megaMenu = ref.current?.closest("nav");

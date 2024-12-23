@@ -2,7 +2,7 @@
 
 import type { FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { FlowbiteNavbarTheme, NavbarComponentProps } from "../Navbar";
 import { Navbar } from "../Navbar";
 import { FlowbiteMegaMenuDropdownTheme, MegaMenuDropdown } from "./MegaMenuDropdown";
@@ -17,7 +17,8 @@ export interface FlowbiteMegaMenuTheme extends FlowbiteNavbarTheme {
 export type MegaMenuProps = NavbarComponentProps;
 
 const MegaMenuComponent: FC<MegaMenuProps> = ({ children, theme: customTheme, ...props }) => {
-  const theme = resolveTheme([megaMenuTheme, getTheme()?.megaMenu, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([megaMenuTheme, provider.theme?.megaMenu, customTheme]);
 
   return (
     <Navbar theme={theme} fluid {...props}>

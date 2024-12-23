@@ -5,7 +5,7 @@ import { useId } from "react";
 import { MdClose, MdHome } from "react-icons/md";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useDrawerContext } from "./DrawerContext";
@@ -43,8 +43,9 @@ export const DrawerHeader: FC<DrawerHeaderProps> = ({
 
   const { id: mainDivId, isOpen, onClose, theme: rootTheme, unstyled: rootUnstyled } = useDrawerContext();
 
+  const provider = useThemeProvider();
   const theme = resolveTheme(
-    [drawerTheme.header, getTheme()?.drawer?.header, rootTheme?.header, customTheme],
+    [drawerTheme.header, provider.theme?.drawer?.header, rootTheme?.header, customTheme],
     [get(rootUnstyled, "header"), unstyled],
   );
 

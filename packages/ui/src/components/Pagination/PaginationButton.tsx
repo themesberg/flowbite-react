@@ -1,7 +1,9 @@
+"use client";
+
 import type { ComponentProps, FC, ReactEventHandler, ReactNode } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial } from "../../types";
 import { paginationTheme } from "./theme";
 
@@ -31,7 +33,8 @@ export const PaginationButton: FC<PaginationButtonProps> = ({
   theme: customTheme,
   ...props
 }) => {
-  const theme = resolveTheme([paginationTheme, getTheme()?.pagination, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([paginationTheme, provider.theme?.pagination, customTheme]);
 
   return (
     <button
@@ -55,7 +58,8 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   disabled = false,
   ...props
 }) => {
-  const theme = resolveTheme([paginationTheme, getTheme()?.pagination, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([paginationTheme, provider.theme?.pagination, customTheme]);
 
   return (
     <button

@@ -1,8 +1,10 @@
+"use client";
+
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { checkboxTheme } from "./theme";
@@ -23,7 +25,8 @@ export interface CheckboxProps extends Omit<ComponentProps<"input">, "type" | "r
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ className, color = "default", theme: customTheme, unstyled, ...props }, ref) => {
-    const theme = resolveTheme([checkboxTheme, getTheme()?.checkbox, customTheme], [unstyled]);
+    const provider = useThemeProvider();
+    const theme = resolveTheme([checkboxTheme, provider.theme?.checkbox, customTheme], [unstyled]);
 
     return (
       <input

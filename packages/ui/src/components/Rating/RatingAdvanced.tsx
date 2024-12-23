@@ -1,7 +1,9 @@
+"use client";
+
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial } from "../../types";
 import { ratingAdvancedTheme } from "./theme";
 
@@ -27,7 +29,8 @@ export const RatingAdvanced: FC<RatingAdvancedProps> = ({
   theme: customTheme,
   ...props
 }) => {
-  const theme = resolveTheme([ratingAdvancedTheme, getTheme()?.ratingAdvanced, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([ratingAdvancedTheme, provider.theme?.ratingAdvanced, customTheme]);
 
   return (
     <div className={twMerge(theme.base, className)} {...props}>

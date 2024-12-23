@@ -1,7 +1,9 @@
+"use client";
+
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { spinnerTheme } from "./theme";
@@ -46,7 +48,8 @@ export const Spinner: FC<SpinnerProps> = ({
   theme: customTheme,
   ...props
 }) => {
-  const theme = resolveTheme([spinnerTheme, getTheme()?.spinner, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([spinnerTheme, provider.theme?.spinner, customTheme]);
 
   return (
     <span role="status" {...props}>

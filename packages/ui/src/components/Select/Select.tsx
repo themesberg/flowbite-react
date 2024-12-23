@@ -1,8 +1,10 @@
+"use client";
+
 import type { ComponentProps, FC, ReactNode } from "react";
 import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { HelperText } from "../HelperText";
@@ -62,7 +64,8 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     },
     ref,
   ) => {
-    const theme = resolveTheme([selectTheme, getTheme()?.select, customTheme]);
+    const provider = useThemeProvider();
+    const theme = resolveTheme([selectTheme, provider.theme?.select, customTheme]);
 
     return (
       <div className={twMerge(theme.base, className)}>

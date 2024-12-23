@@ -1,3 +1,5 @@
+"use client";
+
 import type { ComponentPropsWithoutRef, ElementType, ForwardedRef } from "react";
 import { createElement, forwardRef } from "react";
 

@@ -5,7 +5,7 @@ import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState }
 import { HiArrowLeft, HiArrowRight, HiCalendar } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from "../TextInput";
 import { DatepickerContext } from "./DatepickerContext";
@@ -128,7 +128,8 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   },
   ref,
 ) => {
-  const theme = resolveTheme([datePickerTheme, getTheme()?.datepicker, customTheme], [unstyled]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([datePickerTheme, provider.theme?.datepicker, customTheme], [unstyled]);
   const initialDate = defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : null;
 
   const effectiveDefaultView = useMemo(() => {

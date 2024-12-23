@@ -6,7 +6,7 @@ import { HiMoon, HiSun } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeMode } from "../../hooks/use-theme-mode";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import { darkThemeToggleTheme } from "./theme";
 
@@ -40,7 +40,8 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
 }) => {
   const { toggleMode } = useThemeMode();
 
-  const theme = resolveTheme([darkThemeToggleTheme, getTheme()?.darkThemeToggle, customTheme], [unstyled]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([darkThemeToggleTheme, provider.theme?.darkThemeToggle, customTheme], [unstyled]);
 
   return (
     <button

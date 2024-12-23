@@ -17,7 +17,7 @@ import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOu
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import { Button, type ButtonProps } from "../Button";
 import type { FloatingProps, FlowbiteFloatingTheme } from "../Floating";
@@ -125,7 +125,8 @@ const DropdownComponent: FC<DropdownProps> = ({
   const elementsRef = useRef<Array<HTMLElement | null>>([]);
   const labelsRef = useRef<Array<string | null>>([]);
 
-  const theme = resolveTheme([dropdownTheme, getTheme()?.dropdown, customTheme], [unstyled]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([dropdownTheme, provider.theme?.dropdown, customTheme], [unstyled]);
   const theirProps = props as Omit<DropdownProps, "theme" | "unstyled">;
   const dataTestId = props["data-testid"] || "flowbite-dropdown-target";
   const {

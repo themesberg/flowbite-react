@@ -1,3 +1,5 @@
+"use client";
+
 import type { ComponentProps, FC } from "react";
 import { BannerCollapseButton } from "./BannerCollapseButton";
 

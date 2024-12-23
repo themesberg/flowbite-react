@@ -1,8 +1,10 @@
+"use client";
+
 import type { ComponentProps, FC, ReactNode } from "react";
 import { HiX } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { alertTheme } from "./theme";
@@ -47,7 +49,8 @@ export const Alert: FC<AlertProps> = ({
   withBorderAccent,
   ...props
 }) => {
-  const theme = resolveTheme([alertTheme, getTheme()?.alert, customTheme], [unstyled]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([alertTheme, provider.theme?.alert, customTheme], [unstyled]);
 
   return (
     <div

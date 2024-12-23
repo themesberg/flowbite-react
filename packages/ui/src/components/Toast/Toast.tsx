@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { useState } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import { toastTheme } from "./theme";
 import type { Duration } from "./ToastContext";
@@ -50,7 +50,8 @@ const ToastComponent: FC<ToastProps> = ({
   const [isClosed, setIsClosed] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
 
-  const theme = resolveTheme([toastTheme, getTheme()?.toast, customTheme], [unstyled]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([toastTheme, provider.theme?.toast, customTheme], [unstyled]);
 
   if (isRemoved) {
     return null;

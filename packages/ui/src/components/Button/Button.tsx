@@ -1,9 +1,11 @@
+"use client";
+
 import type { ElementType } from "react";
 import { forwardRef, type ReactNode } from "react";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import type {
   FlowbiteBoolean,
@@ -118,8 +120,9 @@ const ButtonComponent = forwardRef(
     }: ButtonProps<T>,
     ref: PolymorphicRef<T>,
   ) => {
-    const theme = resolveTheme([buttonTheme, getTheme()?.button, customTheme], [unstyled]);
-    const groupTheme = resolveTheme([buttonGroupTheme, getTheme()?.buttonGroup]);
+    const provider = useThemeProvider();
+    const theme = resolveTheme([buttonTheme, provider.theme?.button, customTheme], [unstyled]);
+    const groupTheme = resolveTheme([buttonGroupTheme, provider.theme?.buttonGroup]);
 
     const theirProps = props as ButtonBaseProps<T>;
 

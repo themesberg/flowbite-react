@@ -1,7 +1,9 @@
+"use client";
+
 import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { listGroupTheme } from "./theme";
@@ -37,7 +39,8 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & Compon
   disabled,
   ...props
 }) => {
-  const theme = resolveTheme([listGroupTheme.item, getTheme()?.listGroup?.item, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([listGroupTheme.item, provider.theme?.listGroup?.item, customTheme]);
 
   const isLink = typeof href !== "undefined";
   const Component = isLink ? "a" : "button";

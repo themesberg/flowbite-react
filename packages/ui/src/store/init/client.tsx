@@ -3,8 +3,8 @@
 import type { StoreInitProps } from ".";
 import { setStore } from "..";
 
-export function StoreInitClient({ cleanup, ...props }: StoreInitProps) {
-  setStore(props, { cleanup });
+export function StoreInitClient(props: StoreInitProps) {
+  setStore(props);
 
   return null;
 }

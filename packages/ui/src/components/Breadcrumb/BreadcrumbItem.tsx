@@ -1,9 +1,11 @@
+"use client";
+
 import type { ComponentProps, FC } from "react";
 import { forwardRef } from "react";
 import { HiOutlineChevronRight } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { breadcrumbTheme } from "./theme";
@@ -27,7 +29,8 @@ export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, Br
     const isLink = typeof href !== "undefined";
     const Component = isLink ? "a" : "span";
 
-    const theme = resolveTheme([breadcrumbTheme.item, getTheme()?.breadcrumb?.item, customTheme, unstyled]);
+    const provider = useThemeProvider();
+    const theme = resolveTheme([breadcrumbTheme.item, provider.theme?.breadcrumb?.item, customTheme, unstyled]);
 
     return (
       <li className={twMerge(theme.base, className)} {...props}>

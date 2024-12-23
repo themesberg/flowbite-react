@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import { useDrawerContext } from "./DrawerContext";
 import { drawerTheme } from "./theme";
@@ -21,8 +21,9 @@ export interface DrawerItemsProps extends ComponentProps<"div"> {
 export const DrawerItems: FC<DrawerItemsProps> = ({ children, className, theme: customTheme, unstyled, ...props }) => {
   const { theme: rootTheme, unstyled: rootUnstyled } = useDrawerContext();
 
+  const provider = useThemeProvider();
   const theme = resolveTheme(
-    [drawerTheme.items, getTheme()?.drawer?.items, rootTheme?.items, customTheme],
+    [drawerTheme.items, provider.theme?.drawer?.items, rootTheme?.items, customTheme],
     [get(rootUnstyled, "items"), unstyled],
   );
 

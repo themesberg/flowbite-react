@@ -1,8 +1,10 @@
+"use client";
+
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial } from "../../types";
 import { hrTheme } from "./theme";
 
@@ -19,7 +21,8 @@ export interface HRTextProps extends Omit<ComponentProps<"hr">, "ref"> {
 
 export const HRText = forwardRef<HTMLHRElement, HRTextProps>(
   ({ theme: customTheme, text, className, ...props }, ref) => {
-    const theme = resolveTheme([hrTheme.text, getTheme()?.hr?.text, customTheme]);
+    const provider = useThemeProvider();
+    const theme = resolveTheme([hrTheme.text, provider.theme?.hr?.text, customTheme]);
 
     return (
       <div className={theme.base}>

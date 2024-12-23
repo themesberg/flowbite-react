@@ -5,7 +5,7 @@ import { HiX } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import { toastTheme } from "./theme";
 import { useToastContext } from "./ToastContext";
@@ -41,8 +41,9 @@ export const ToastToggle: FC<ToastToggleProps> = ({
     setIsRemoved,
   } = useToastContext();
 
+  const provider = useThemeProvider();
   const theme = resolveTheme(
-    [toastTheme.toggle, getTheme()?.toast?.toggle, rootTheme?.toggle, customTheme],
+    [toastTheme.toggle, provider.theme?.toast?.toggle, rootTheme?.toggle, customTheme],
     [get(rootUnstyled, "toggle"), unstyled],
   );
 

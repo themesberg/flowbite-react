@@ -1,3 +1,5 @@
+"use client";
+
 import type { FC } from "react";
 import { twMerge } from "../../../helpers/tailwind-merge";
 import { useDatePickerContext } from "../DatepickerContext";

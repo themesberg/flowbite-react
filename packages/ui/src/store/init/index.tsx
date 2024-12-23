@@ -2,9 +2,7 @@ import { StoreProps } from "..";
 import { StoreInitClient } from "./client";
 import { StoreInitServer } from "./server";
 
-export interface StoreInitProps extends StoreProps {
-  cleanup?: boolean;
-}
+export type StoreInitProps = StoreProps;
 
 export function StoreInit(props: StoreInitProps) {
   return (

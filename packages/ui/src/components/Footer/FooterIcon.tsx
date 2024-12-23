@@ -1,7 +1,9 @@
+"use client";
+
 import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial } from "../../types";
 import { footerTheme } from "./theme";
 
@@ -26,7 +28,8 @@ export const FooterIcon: FC<FooterIconProps & ComponentProps<"a"> & ComponentPro
   theme: customTheme,
   ...props
 }) => {
-  const theme = resolveTheme([footerTheme.icon, getTheme()?.footer?.icon, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([footerTheme.icon, provider.theme?.footer?.icon, customTheme]);
 
   return (
     <div>

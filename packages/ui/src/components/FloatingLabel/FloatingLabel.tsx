@@ -1,8 +1,10 @@
+"use client";
+
 import type { ComponentPropsWithoutRef } from "react";
 import { forwardRef, useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial } from "../../types";
 import { floatingLabelTheme, type FlowbiteFloatingLabelTheme } from "./theme";
 
@@ -36,7 +38,9 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
     ref,
   ) => {
     const randomId = useId();
-    const theme = resolveTheme([floatingLabelTheme, getTheme()?.floatingLabel, customTheme]);
+
+    const provider = useThemeProvider();
+    const theme = resolveTheme([floatingLabelTheme, provider.theme?.floatingLabel, customTheme]);
 
     return (
       <div>

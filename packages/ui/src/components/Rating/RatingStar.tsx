@@ -5,7 +5,7 @@ import { HiStar } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { useRatingContext } from "./RatingContext";
@@ -38,8 +38,9 @@ export const RatingStar: FC<RatingStarProps> = ({
 }) => {
   const { theme: rootTheme, unstyled: rootUnstyled, size = "sm" } = useRatingContext();
 
+  const provider = useThemeProvider();
   const theme = resolveTheme(
-    [ratingTheme.star, getTheme()?.rating?.star, rootTheme?.star, customTheme],
+    [ratingTheme.star, provider.theme?.rating?.star, rootTheme?.star, customTheme],
     [get(rootUnstyled, "star"), unstyled],
   );
 

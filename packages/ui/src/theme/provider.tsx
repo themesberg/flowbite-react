@@ -1,19 +1,27 @@
-import type { PropsWithChildren } from "react";
-import { getThemeId, type StoreProps } from "../store";
-import { StoreInit } from "../store/init";
+"use client";
 
-export type ThemeProviderProps = PropsWithChildren<Pick<StoreProps, "theme">>;
+import { createContext, useContext, type PropsWithChildren } from "react";
+import type { FlowbiteTheme } from "../components/Flowbite/FlowbiteTheme";
+import type { DeepPartial, Unstyled } from "../types";
 
-export function ThemeProvider({ children, theme }: ThemeProviderProps) {
-  const prevThemeId = getThemeId();
+export interface ThemeProviderValue {
+  theme?: DeepPartial<FlowbiteTheme>;
+  unstyled?: Unstyled<FlowbiteTheme>;
+}
 
-  return (
-    <>
-      <StoreInit theme={theme} themeId={+new Date()} />
-      {children}
-      <StoreInit themeId={prevThemeId} cleanup />
-    </>
-  );
+export type ThemeProviderProps = PropsWithChildren<ThemeProviderValue>;
+
+const ThemeProviderContext = createContext<ThemeProviderValue | undefined>(undefined);
+
+export function ThemeProvider({ children, theme, unstyled }: ThemeProviderProps) {
+  // TODO: deepMergeStrings(twMerge)(currentTheme, theme)
+  // const parentValue = useContext(ThemeContext)
+
+  return <ThemeProviderContext.Provider value={{ theme, unstyled }}>{children}</ThemeProviderContext.Provider>;
 }
 
 ThemeProvider.displayName = "ThemeProvider";
+
+export function useThemeProvider() {
+  return useContext(ThemeProviderContext) ?? {};
+}

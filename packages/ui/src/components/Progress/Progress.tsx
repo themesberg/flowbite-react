@@ -1,8 +1,10 @@
+"use client";
+
 import type { ComponentProps, FC } from "react";
 import { useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { progressTheme } from "./theme";
@@ -52,7 +54,8 @@ export const Progress: FC<ProgressProps> = ({
   ...props
 }) => {
   const id = useId();
-  const theme = resolveTheme([progressTheme, getTheme()?.progress, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([progressTheme, provider.theme?.progress, customTheme]);
 
   return (
     <>

@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useNavbarContext } from "./NavbarContext";
@@ -30,8 +30,9 @@ export const NavbarCollapse: FC<NavbarCollapseProps> = ({
 }) => {
   const { theme: rootTheme, unstyled: rootUnstyled, isOpen } = useNavbarContext();
 
+  const provider = useThemeProvider();
   const theme = resolveTheme(
-    [navbarTheme.collapse, getTheme()?.navbar?.collapse, rootTheme?.collapse, customTheme],
+    [navbarTheme.collapse, provider.theme?.navbar?.collapse, rootTheme?.collapse, customTheme],
     [get(rootUnstyled, "collapse"), unstyled],
   );
 

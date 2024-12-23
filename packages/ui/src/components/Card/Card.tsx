@@ -1,8 +1,10 @@
+"use client";
+
 import type { ComponentProps, FC } from "react";
 import { omit } from "../../helpers/omit";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getTheme } from "../../store";
+import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { cardTheme } from "./theme";
@@ -48,7 +50,8 @@ export const Card: FC<CardProps> = (props) => {
   const Component = typeof href === "undefined" ? "div" : "a";
   const theirProps = removeCustomProps(props);
 
-  const theme = resolveTheme([cardTheme, getTheme()?.card, customTheme], [unstyled]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([cardTheme, provider.theme?.card, customTheme], [unstyled]);
 
   return (
     <Component
@@ -69,7 +72,8 @@ export const Card: FC<CardProps> = (props) => {
 };
 
 const Image: FC<CardProps> = ({ theme: customTheme, ...props }) => {
-  const theme = resolveTheme([cardTheme, getTheme()?.card, customTheme]);
+  const provider = useThemeProvider();
+  const theme = resolveTheme([cardTheme, provider.theme?.card, customTheme]);
 
   if (props.renderImage) {
     return props.renderImage(theme, props.horizontal ?? false);
