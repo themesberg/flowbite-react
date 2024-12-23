@@ -3,7 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteBoolean, FlowbiteHeadingLevel } from "../Flowbite/FlowbiteTheme";
 import { useAccordionContext } from "./AccordionPanelContext";
@@ -36,7 +36,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   const { arrowIcon: ArrowIcon, flush, isOpen, setOpen } = useAccordionContext();
   const onClick = () => typeof setOpen !== "undefined" && setOpen();
 
-  const theme = resolveTheme([accordionTheme.title, getStore().theme?.accordion?.title, customTheme]);
+  const theme = resolveTheme([accordionTheme.title, getTheme()?.accordion?.title, customTheme]);
 
   return (
     <button

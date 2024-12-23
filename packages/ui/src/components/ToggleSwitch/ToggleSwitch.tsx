@@ -2,7 +2,7 @@ import type { ComponentProps, KeyboardEvent } from "react";
 import { forwardRef, useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteTextInputSizes } from "../TextInput";
@@ -53,7 +53,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
     ref,
   ) => {
     const id = useId();
-    const theme = resolveTheme([toggleSwitchTheme, getStore().theme?.toggleSwitch, customTheme]);
+    const theme = resolveTheme([toggleSwitchTheme, getTheme()?.toggleSwitch, customTheme]);
 
     const toggle = (): void => onChange(!checked);
 

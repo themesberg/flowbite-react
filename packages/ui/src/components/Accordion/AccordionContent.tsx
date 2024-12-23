@@ -3,7 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import { useAccordionContext } from "./AccordionPanelContext";
 import { accordionTheme } from "./theme";
@@ -19,7 +19,7 @@ export interface AccordionContentProps extends ComponentProps<"div"> {
 export const AccordionContent: FC<AccordionContentProps> = ({ children, className, theme: customTheme, ...props }) => {
   const { isOpen } = useAccordionContext();
 
-  const theme = resolveTheme([accordionTheme.content, getStore().theme?.accordion?.content, customTheme]);
+  const theme = resolveTheme([accordionTheme.content, getTheme()?.accordion?.content, customTheme]);
 
   return (
     <div

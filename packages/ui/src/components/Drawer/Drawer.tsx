@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { useEffect, useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { DrawerContext } from "./DrawerContext";
@@ -53,7 +53,7 @@ const DrawerComponent: FC<DrawerProps> = ({
   ...props
 }) => {
   const id = useId();
-  const theme = resolveTheme([drawerTheme, getStore().theme?.drawer, customTheme], [unstyled]);
+  const theme = resolveTheme([drawerTheme, getTheme()?.drawer, customTheme], [unstyled]);
 
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {

@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { useDropdownContext } from "./DropdownContext";
 import { DropdownDivider } from "./DropdownDivider";
@@ -29,7 +29,7 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
   const { theme: rootTheme, unstyled: rootUnstyled } = useDropdownContext();
 
   const theme = resolveTheme(
-    [dropdownTheme.floating, getStore().theme?.dropdown?.floating, rootTheme?.floating, customTheme],
+    [dropdownTheme.floating, getTheme()?.dropdown?.floating, rootTheme?.floating, customTheme],
     [get(rootUnstyled, "floating"), unstyled],
   );
 

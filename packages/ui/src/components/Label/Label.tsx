@@ -1,7 +1,7 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import { labelTheme } from "./theme";
@@ -37,7 +37,7 @@ export const Label: FC<LabelProps> = ({
   value,
   ...props
 }) => {
-  const theme = resolveTheme([labelTheme, getStore().theme?.label, customTheme]);
+  const theme = resolveTheme([labelTheme, getTheme()?.label, customTheme]);
 
   return (
     <label

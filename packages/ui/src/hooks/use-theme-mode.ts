@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { isClient } from "../helpers/is-client";
 import { useWatchLocalStorageValue } from "../hooks/use-watch-localstorage-value";
-import { getStore } from "../store";
+import { getMode, getPrefix } from "../store";
 
 const DEFAULT_MODE: ThemeMode = "light";
 const LS_THEME_MODE = "flowbite-theme-mode";
@@ -12,15 +12,14 @@ const SYNC_THEME_MODE = "flowbite-theme-mode-sync";
 export type ThemeMode = "light" | "dark" | "auto";
 
 export function useThemeMode() {
-  const store = getStore();
-  const [mode, setMode] = useState<ThemeMode>(getInitialMode(store.mode));
+  const [mode, setMode] = useState<ThemeMode>(getInitialMode(getMode()));
 
   /**
    * Persist `mode` in local storage and add/remove `dark` class on `html`
    */
   useEffect(() => {
     setModeInLS(mode);
-    setModeInDOM(mode, store.prefix);
+    setModeInDOM(mode);
   }, []);
 
   /**
@@ -44,7 +43,7 @@ export function useThemeMode() {
   function handleSetMode(mode: ThemeMode) {
     setMode(mode);
     setModeInLS(mode);
-    setModeInDOM(mode, store.prefix);
+    setModeInDOM(mode);
     document.dispatchEvent(new CustomEvent(SYNC_THEME_MODE, { detail: mode }));
   }
 
@@ -99,7 +98,8 @@ function setModeInLS(mode: ThemeMode) {
 /**
  * Add or remove class `dark` on `html` element
  */
-function setModeInDOM(mode: ThemeMode, prefix = "") {
+function setModeInDOM(mode: ThemeMode) {
+  const prefix = getPrefix() ?? "";
   const computedMode = computeModeValue(mode);
 
   if (computedMode === "dark") {

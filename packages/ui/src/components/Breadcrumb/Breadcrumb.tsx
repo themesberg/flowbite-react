@@ -1,7 +1,7 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBreadcrumbItemTheme } from "./BreadcrumbItem";
 import { BreadcrumbItem } from "./BreadcrumbItem";
@@ -29,7 +29,7 @@ const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
   unstyled,
   ...props
 }) => {
-  const theme = resolveTheme([breadcrumbTheme.root, getStore().theme?.breadcrumb?.root, customTheme], [unstyled]);
+  const theme = resolveTheme([breadcrumbTheme.root, getTheme()?.breadcrumb?.root, customTheme], [unstyled]);
 
   return (
     <nav aria-label="Breadcrumb" className={twMerge(theme.base, className)} {...props}>

@@ -4,7 +4,7 @@ import { forwardRef, type ComponentPropsWithRef } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { useTableContext } from "./TableContext";
 import type { FlowbiteTableHeadCellTheme } from "./TableHeadCell";
@@ -26,7 +26,7 @@ export const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
     const { theme: rootTheme, unstyled: rootUnstyled } = useTableContext();
 
     const theme = resolveTheme(
-      [tableTheme.head, getStore().theme?.table?.head, rootTheme?.head, customTheme],
+      [tableTheme.head, getTheme()?.table?.head, rootTheme?.head, customTheme],
       [get(rootUnstyled, "head"), unstyled],
     );
 

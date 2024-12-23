@@ -1,7 +1,7 @@
 import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import { footerTheme } from "./theme";
 
@@ -30,7 +30,7 @@ export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentP
   theme: customTheme,
   ...props
 }) => {
-  const theme = resolveTheme([footerTheme.brand, getStore().theme?.footer?.brand, customTheme]);
+  const theme = resolveTheme([footerTheme.brand, getTheme()?.footer?.brand, customTheme]);
 
   return (
     <div>

@@ -2,7 +2,7 @@ import type { ComponentProps, FC, ReactNode } from "react";
 import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { HelperText } from "../HelperText";
@@ -70,7 +70,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     },
     ref,
   ) => {
-    const theme = resolveTheme([textInputTheme, getStore().theme?.textInput, customTheme]);
+    const theme = resolveTheme([textInputTheme, getTheme()?.textInput, customTheme]);
 
     return (
       <>

@@ -1,7 +1,7 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteListGroupItemTheme } from "./ListGroupItem";
 import { ListGroupItem } from "./ListGroupItem";
@@ -21,7 +21,7 @@ export interface ListGroupProps extends ComponentProps<"ul"> {
 }
 
 const ListGroupComponent: FC<ListGroupProps> = ({ children, className, theme: customTheme, ...props }) => {
-  const theme = resolveTheme([listGroupTheme.root, getStore().theme?.listGroup?.root, customTheme]);
+  const theme = resolveTheme([listGroupTheme.root, getTheme()?.listGroup?.root, customTheme]);
 
   return (
     <ul className={twMerge(theme.base, className)} {...props}>

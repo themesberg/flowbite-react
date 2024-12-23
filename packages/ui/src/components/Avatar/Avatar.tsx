@@ -1,7 +1,7 @@
 import type { ComponentProps, FC, ReactElement } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteAvatarGroupTheme } from "./AvatarGroup";
@@ -94,7 +94,7 @@ const AvatarComponent: FC<AvatarProps> = ({
   unstyled,
   ...props
 }) => {
-  const theme = resolveTheme([avatarTheme, getStore().theme?.avatar, customTheme], [unstyled]);
+  const theme = resolveTheme([avatarTheme, getTheme()?.avatar, customTheme], [unstyled]);
 
   const imgClassName = twMerge(
     theme.root.img.base,

@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { useSidebarContext } from "./SidebarContext";
 import { SidebarItemContext } from "./SidebarItemContext";
@@ -29,7 +29,7 @@ export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({
   const { theme: rootTheme, unstyled: rootUnstyled } = useSidebarContext();
 
   const theme = resolveTheme(
-    [sidebarTheme.itemGroup, getStore().theme?.sidebar?.itemGroup, rootTheme?.itemGroup, customTheme],
+    [sidebarTheme.itemGroup, getTheme()?.sidebar?.itemGroup, rootTheme?.itemGroup, customTheme],
     [get(rootUnstyled, "itemGroup"), unstyled],
   );
 

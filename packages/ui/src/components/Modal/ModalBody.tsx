@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { useModalContext } from "./ModalContext";
 import { modalTheme } from "./theme";
@@ -23,7 +23,7 @@ export const ModalBody: FC<ModalBodyProps> = ({ children, className, theme: cust
   const { theme: rootTheme, unstyled: rootUnstyled, popup } = useModalContext();
 
   const theme = resolveTheme(
-    [modalTheme.body, getStore().theme?.modal?.body, rootTheme?.body, customTheme],
+    [modalTheme.body, getTheme()?.modal?.body, rootTheme?.body, customTheme],
     [get(rootUnstyled, "body"), unstyled],
   );
 

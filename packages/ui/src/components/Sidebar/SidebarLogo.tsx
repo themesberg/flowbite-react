@@ -5,7 +5,7 @@ import { useId } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useSidebarContext } from "./SidebarContext";
@@ -39,7 +39,7 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
   const { theme: rootTheme, unstyled: rootUnstyled, isCollapsed } = useSidebarContext();
 
   const theme = resolveTheme(
-    [sidebarTheme.logo, getStore().theme?.sidebar?.logo, rootTheme?.logo, customTheme],
+    [sidebarTheme.logo, getTheme()?.sidebar?.logo, rootTheme?.logo, customTheme],
     [get(rootUnstyled, "logo"), unstyled],
   );
 

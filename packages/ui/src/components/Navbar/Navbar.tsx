@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { useState } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteNavbarBrandTheme } from "./NavbarBrand";
@@ -58,7 +58,7 @@ const NavbarComponent: FC<NavbarComponentProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
-  const theme = resolveTheme([navbarTheme, getStore().theme?.navbar, customTheme], [unstyled]);
+  const theme = resolveTheme([navbarTheme, getTheme()?.navbar, customTheme], [unstyled]);
 
   return (
     <NavbarContext.Provider value={{ theme: customTheme, unstyled, isOpen, setIsOpen }}>

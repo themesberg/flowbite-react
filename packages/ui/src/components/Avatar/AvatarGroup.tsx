@@ -1,7 +1,7 @@
 import type { ComponentProps } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { avatarTheme } from "./theme";
 
@@ -21,7 +21,7 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
   unstyled,
   ...props
 }) => {
-  const theme = resolveTheme([avatarTheme.group, getStore().theme?.avatar?.group, customTheme], [unstyled]);
+  const theme = resolveTheme([avatarTheme.group, getTheme()?.avatar?.group, customTheme], [unstyled]);
 
   return (
     <div data-testid="avatar-group-element" className={twMerge(theme.base, className)} {...props}>

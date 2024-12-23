@@ -7,7 +7,7 @@ import ScrollContainer from "../../helpers/drag-scroll";
 import { isClient } from "../../helpers/is-client";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { carouselTheme } from "./theme";
@@ -79,7 +79,7 @@ export const Carousel: FC<CarouselProps> = ({
   pauseOnHover = false,
   ...props
 }) => {
-  const theme = resolveTheme([carouselTheme, getStore().theme?.carousel, customTheme], [unstyled]);
+  const theme = resolveTheme([carouselTheme, getTheme()?.carousel, customTheme], [unstyled]);
 
   const isDeviceMobile = isClient() && navigator.userAgent.indexOf("IEMobile") !== -1;
   const carouselContainer = useRef<HTMLDivElement>(null);
@@ -213,7 +213,7 @@ export const Carousel: FC<CarouselProps> = ({
 };
 
 const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme }) => {
-  const theme = resolveTheme([carouselTheme, getStore().theme?.carousel, customTheme]);
+  const theme = resolveTheme([carouselTheme, getTheme()?.carousel, customTheme]);
 
   return (
     <span className={theme.control.base}>
@@ -223,7 +223,7 @@ const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customThe
 };
 
 const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme }) => {
-  const theme = resolveTheme([carouselTheme, getStore().theme?.carousel, customTheme]);
+  const theme = resolveTheme([carouselTheme, getTheme()?.carousel, customTheme]);
 
   return (
     <span className={theme.control.base}>

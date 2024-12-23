@@ -3,7 +3,7 @@
 import { forwardRef, type ComponentPropsWithRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { TableBody, type FlowbiteTableBodyTheme } from "./TableBody";
 import { TableCell } from "./TableCell";
@@ -35,7 +35,7 @@ export interface TableProps extends ComponentPropsWithRef<"table"> {
 
 const TableComponent = forwardRef<HTMLTableElement, TableProps>(
   ({ children, className, striped, hoverable, theme: customTheme, unstyled, ...props }, ref) => {
-    const theme = resolveTheme([tableTheme, getStore().theme?.table, customTheme], [unstyled]);
+    const theme = resolveTheme([tableTheme, getTheme()?.table, customTheme], [unstyled]);
 
     return (
       <div data-testid="table-element" className={twMerge(theme.root.wrapper)}>

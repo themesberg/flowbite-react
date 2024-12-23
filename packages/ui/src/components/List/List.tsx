@@ -1,7 +1,7 @@
 import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import { ListItem, type FlowbiteListItemTheme } from "./ListItem";
@@ -46,7 +46,7 @@ const ListComponent: FC<ListProps> = ({
   theme: customTheme,
   ...props
 }) => {
-  const theme = resolveTheme([listTheme.root, getStore().theme?.list?.root, customTheme]);
+  const theme = resolveTheme([listTheme.root, getTheme()?.list?.root, customTheme]);
   const Component = ordered ? "ol" : "ul";
 
   return (

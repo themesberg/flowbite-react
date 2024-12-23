@@ -6,7 +6,7 @@ import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../help
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { ButtonBase, type ButtonBaseProps } from "../Button/ButtonBase";
 import { useDropdownContext } from "./DropdownContext";
@@ -50,7 +50,7 @@ export const DropdownItem = forwardRef(
     } = useDropdownContext();
     const isActive = activeIndex === index;
     const theme = resolveTheme(
-      [dropdownTheme.floating.item, getStore().theme?.dropdown?.floating?.item, rootTheme?.floating?.item, customTheme],
+      [dropdownTheme.floating.item, getTheme()?.dropdown?.floating?.item, rootTheme?.floating?.item, customTheme],
       [get(rootUnstyled, "floating.item"), unstyled],
     );
 

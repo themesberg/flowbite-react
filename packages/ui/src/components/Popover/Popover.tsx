@@ -6,7 +6,7 @@ import type { ComponentProps, ComponentPropsWithRef, Dispatch, ReactNode, SetSta
 import { cloneElement, isValidElement, useMemo, useRef, useState } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteFloatingArrowTheme } from "../Floating";
 import { getArrowPlacement } from "../Floating/helpers";
@@ -44,7 +44,7 @@ export function Popover({
   const [uncontrolledOpen, setUncontrolledOpen] = useState<boolean>(Boolean(initialOpen));
   const arrowRef = useRef<HTMLDivElement>(null);
 
-  const theme = resolveTheme([popoverTheme, getStore().theme?.popover, customTheme]);
+  const theme = resolveTheme([popoverTheme, getTheme()?.popover, customTheme]);
 
   const open = controlledOpen ?? uncontrolledOpen;
   const setOpen = setControlledOpen ?? setUncontrolledOpen;

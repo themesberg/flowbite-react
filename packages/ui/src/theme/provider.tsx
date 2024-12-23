@@ -1,17 +1,19 @@
 import type { PropsWithChildren } from "react";
-import { getStore, type StoreProps } from "../store";
+import { getThemeId, type StoreProps } from "../store";
 import { StoreInit } from "../store/init";
 
 export type ThemeProviderProps = PropsWithChildren<Pick<StoreProps, "theme">>;
 
 export function ThemeProvider({ children, theme }: ThemeProviderProps) {
-  const { theme: prevTheme } = getStore();
+  const prevThemeId = getThemeId();
 
   return (
     <>
-      <StoreInit theme={theme} />
+      <StoreInit theme={theme} themeId={+new Date()} />
       {children}
-      <StoreInit theme={prevTheme} override />
+      <StoreInit themeId={prevThemeId} cleanup />
     </>
   );
 }
+
+ThemeProvider.displayName = "ThemeProvider";

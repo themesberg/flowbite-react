@@ -4,7 +4,7 @@ import type { ComponentProps, ElementType, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
 import { navbarTheme } from "./theme";
@@ -31,7 +31,7 @@ export const NavbarBrand: FC<NavbarBrandProps> = ({
   const { theme: rootTheme, unstyled: rootUnstyled } = useNavbarContext();
 
   const theme = resolveTheme(
-    [navbarTheme.brand, getStore().theme?.navbar?.brand, rootTheme?.brand, customTheme],
+    [navbarTheme.brand, getTheme()?.navbar?.brand, rootTheme?.brand, customTheme],
     [get(rootUnstyled, "brand"), unstyled],
   );
 

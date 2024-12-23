@@ -4,7 +4,7 @@ import { forwardRef, type ComponentPropsWithRef } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { useTableContext } from "./TableContext";
 import { tableTheme } from "./theme";
@@ -25,7 +25,7 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
     const { theme: rootTheme, unstyled: rootUnstyled, hoverable, striped } = useTableContext();
 
     const theme = resolveTheme(
-      [tableTheme.row, getStore().theme?.table?.row, rootTheme?.row, customTheme],
+      [tableTheme.row, getTheme()?.table?.row, rootTheme?.row, customTheme],
       [get(rootUnstyled, "row"), unstyled],
     );
 

@@ -3,7 +3,7 @@ import { StoreInitClient } from "./client";
 import { StoreInitServer } from "./server";
 
 export interface StoreInitProps extends StoreProps {
-  override?: boolean;
+  cleanup?: boolean;
 }
 
 export function StoreInit(props: StoreInitProps) {
@@ -14,3 +14,5 @@ export function StoreInit(props: StoreInitProps) {
     </>
   );
 }
+
+StoreInit.displayName = "StoreInit";

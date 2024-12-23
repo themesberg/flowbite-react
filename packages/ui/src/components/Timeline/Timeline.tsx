@@ -3,7 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { timelineTheme } from "./theme";
 import { TimelineBody } from "./TimelineBody";
@@ -38,7 +38,7 @@ const TimelineComponent: FC<TimelineProps> = ({
   unstyled,
   ...props
 }) => {
-  const theme = resolveTheme([timelineTheme, getStore().theme?.timeline, customTheme], [unstyled]);
+  const theme = resolveTheme([timelineTheme, getTheme()?.timeline, customTheme], [unstyled]);
 
   return (
     <TimelineContext.Provider value={{ theme: customTheme, unstyled, horizontal }}>

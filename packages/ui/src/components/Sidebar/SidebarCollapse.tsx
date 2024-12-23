@@ -6,7 +6,7 @@ import { HiChevronDown } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { Tooltip } from "../Tooltip";
@@ -59,7 +59,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   const { theme: rootTheme, unstyled: rootUnstyled, isCollapsed } = useSidebarContext();
 
   const theme = resolveTheme(
-    [sidebarTheme.collapse, getStore().theme?.sidebar?.collapse, rootTheme?.collapse, customTheme],
+    [sidebarTheme.collapse, getTheme()?.sidebar?.collapse, rootTheme?.collapse, customTheme],
     [get(rootUnstyled, "collapse"), unstyled],
   );
 

@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteHeadingLevel } from "../Flowbite/FlowbiteTheme";
 import { timelineTheme } from "./theme";
@@ -37,7 +37,7 @@ export const TimelineTitle: FC<TimelineTitleProps> = ({
   const theme = resolveTheme(
     [
       timelineTheme.item.content.title,
-      getStore().theme?.timeline?.item?.content?.title,
+      getTheme()?.timeline?.item?.content?.title,
       rootTheme?.item?.content?.title,
       itemTheme?.content?.title,
       contentTheme?.title,

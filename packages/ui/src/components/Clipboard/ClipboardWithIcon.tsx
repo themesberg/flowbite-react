@@ -4,7 +4,7 @@ import { forwardRef, useState, type ComponentProps, type FC } from "react";
 import { FaCheck, FaClipboardList } from "react-icons/fa6";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { copyToClipboard } from "./helpers";
 import { clipboardTheme } from "./theme";
@@ -28,10 +28,7 @@ export const ClipboardWithIcon = forwardRef<HTMLButtonElement, ClipboardWithIcon
   ({ valueToCopy, icon: Icon = FaClipboardList, theme: customTheme, unstyled, className, ...rest }, ref) => {
     const [isJustCopied, setIsJustCopied] = useState(false);
 
-    const theme = resolveTheme(
-      [clipboardTheme.withIcon, getStore().theme?.clipboard?.withIcon, customTheme],
-      [unstyled],
-    );
+    const theme = resolveTheme([clipboardTheme.withIcon, getTheme()?.clipboard?.withIcon, customTheme], [unstyled]);
 
     return (
       <button

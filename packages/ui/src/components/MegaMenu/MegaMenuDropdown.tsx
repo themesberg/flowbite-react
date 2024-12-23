@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState, type ComponentProps, type FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import { Dropdown, FlowbiteDropdownTheme } from "../Dropdown";
 import { megaMenuTheme } from "./theme";
 
@@ -26,7 +26,7 @@ export const MegaMenuDropdown: FC<MegaMenuDropdownProps> = ({
 }) => {
   const [labelledBy, setLabelledBy] = useState<string | undefined>(undefined);
 
-  const theme = resolveTheme([megaMenuTheme.dropdown, getStore().theme?.megaMenu?.dropdown, customTheme]);
+  const theme = resolveTheme([megaMenuTheme.dropdown, getTheme()?.megaMenu?.dropdown, customTheme]);
 
   if (toggle) {
     return (

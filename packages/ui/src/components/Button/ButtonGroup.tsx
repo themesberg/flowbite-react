@@ -2,7 +2,7 @@ import type { ComponentProps, FC, ReactElement, ReactNode } from "react";
 import { Children, cloneElement, isValidElement, useMemo } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { Button, type ButtonProps } from "../Button/Button";
 import { buttonGroupTheme } from "./theme";
@@ -68,7 +68,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
 }: ButtonGroupProps) => {
   const items = useMemo(() => processChildren(children, outline, pill), [children, outline, pill]);
 
-  const theme = resolveTheme([buttonGroupTheme, getStore().theme?.buttonGroup, customTheme], [unstyled]);
+  const theme = resolveTheme([buttonGroupTheme, getTheme()?.buttonGroup, customTheme], [unstyled]);
 
   return (
     <div className={twMerge(theme.base, className)} role="group" {...props}>

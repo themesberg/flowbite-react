@@ -1,7 +1,7 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import { ratingAdvancedTheme } from "./theme";
 
@@ -27,7 +27,7 @@ export const RatingAdvanced: FC<RatingAdvancedProps> = ({
   theme: customTheme,
   ...props
 }) => {
-  const theme = resolveTheme([ratingAdvancedTheme, getStore().theme?.ratingAdvanced, customTheme]);
+  const theme = resolveTheme([ratingAdvancedTheme, getTheme()?.ratingAdvanced, customTheme]);
 
   return (
     <div className={twMerge(theme.base, className)} {...props}>

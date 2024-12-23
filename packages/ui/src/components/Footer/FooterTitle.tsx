@@ -1,7 +1,7 @@
 import type { ComponentProps, ElementType, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import { footerTheme } from "./theme";
 
@@ -22,7 +22,7 @@ export const FooterTitle: FC<FooterTitleProps> = ({
   title,
   ...props
 }) => {
-  const theme = resolveTheme([footerTheme.title, getStore().theme?.footer?.title, customTheme]);
+  const theme = resolveTheme([footerTheme.title, getTheme()?.footer?.title, customTheme]);
 
   return (
     <Component data-testid="flowbite-footer-title" className={twMerge(theme.base, className)} {...props}>

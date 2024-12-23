@@ -2,7 +2,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { HelperText } from "../HelperText";
@@ -27,7 +27,7 @@ export interface TextareaProps extends Omit<ComponentProps<"textarea">, "color" 
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ({ className, color = "gray", helperText, shadow, theme: customTheme, ...props }, ref) => {
-    const theme = resolveTheme([textareaTheme, getStore().theme?.textarea, customTheme]);
+    const theme = resolveTheme([textareaTheme, getTheme()?.textarea, customTheme]);
 
     return (
       <>

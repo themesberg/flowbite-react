@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteHRIconTheme } from "./HRIcon";
 import { HRIcon } from "./HRIcon";
@@ -29,7 +29,7 @@ export interface HRProps extends Omit<ComponentProps<"hr">, "ref"> {
 }
 
 const HRComponent = forwardRef<HTMLHRElement, HRProps>(({ theme: customTheme, className, ...props }, ref) => {
-  const theme = resolveTheme([hrTheme.root, getStore().theme?.hr?.root, customTheme]);
+  const theme = resolveTheme([hrTheme.root, getTheme()?.hr?.root, customTheme]);
 
   return (
     <hr className={twMerge(theme.base, className)} role="separator" data-testid="flowbite-hr" ref={ref} {...props} />

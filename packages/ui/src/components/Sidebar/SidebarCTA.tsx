@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { useSidebarContext } from "./SidebarContext";
@@ -40,7 +40,7 @@ export const SidebarCTA: FC<SidebarCTAProps> = ({
   const { theme: rootTheme, unstyled: rootUnstyled, isCollapsed } = useSidebarContext();
 
   const theme = resolveTheme(
-    [sidebarTheme.cta, getStore().theme?.sidebar?.cta, rootTheme?.cta, customTheme],
+    [sidebarTheme.cta, getTheme()?.sidebar?.cta, rootTheme?.cta, customTheme],
     [get(rootUnstyled, "cta"), unstyled],
   );
 

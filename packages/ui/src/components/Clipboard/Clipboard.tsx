@@ -3,7 +3,7 @@
 import { forwardRef, useState, type ComponentProps, type ReactNode } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { Tooltip } from "../Tooltip";
 import type { FlowbiteClipboardWithIconTheme } from "./ClipboardWithIcon";
@@ -33,7 +33,7 @@ const ClipboardComponent = forwardRef<HTMLButtonElement, ClipboardProps>(
   ({ className, valueToCopy, label, theme: customTheme, unstyled, ...rest }, ref) => {
     const [isJustCopied, setIsJustCopied] = useState(false);
 
-    const theme = resolveTheme([clipboardTheme.button, getStore().theme?.clipboard?.button, customTheme], [unstyled]);
+    const theme = resolveTheme([clipboardTheme.button, getTheme()?.clipboard?.button, customTheme], [unstyled]);
 
     return (
       <Tooltip content={isJustCopied ? "Copied" : "Copy to clipboard"} className="[&_*]:cursor-pointer">

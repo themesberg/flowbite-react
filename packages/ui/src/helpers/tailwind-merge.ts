@@ -1,10 +1,10 @@
 import { ClassNameValue, extendTailwindMerge } from "tailwind-merge";
-import { getStore } from "../store";
+import { getPrefix } from "../store";
 
 const cache = new Map<string | undefined, ReturnType<typeof extendTailwindMerge>>();
 
 export function twMerge(...classLists: ClassNameValue[]) {
-  const { prefix } = getStore();
+  const prefix = getPrefix();
 
   const cacheKey = prefix;
   const cacheValue = cache.get(cacheKey);

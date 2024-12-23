@@ -2,7 +2,7 @@ import type { ComponentProps, ReactNode } from "react";
 import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import { HelperText } from "../HelperText";
 import type { FlowbiteTextInputColors, FlowbiteTextInputSizes } from "../TextInput";
@@ -37,7 +37,7 @@ export interface FileInputProps extends Omit<ComponentProps<"input">, "type" | "
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
   ({ className, color = "gray", helperText, sizing = "md", theme: customTheme, ...props }, ref) => {
-    const theme = resolveTheme([fileInputTheme, getStore().theme?.fileInput, customTheme]);
+    const theme = resolveTheme([fileInputTheme, getTheme()?.fileInput, customTheme]);
 
     return (
       <>

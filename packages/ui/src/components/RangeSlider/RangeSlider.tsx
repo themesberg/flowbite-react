@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteTextInputSizes } from "../TextInput";
 import { rangeSliderTheme } from "./theme";
@@ -31,7 +31,7 @@ export interface RangeSliderProps extends Omit<ComponentProps<"input">, "ref" | 
 
 export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
   ({ className, sizing = "md", theme: customTheme, ...props }, ref) => {
-    const theme = resolveTheme([rangeSliderTheme, getStore().theme?.rangeSlider, customTheme]);
+    const theme = resolveTheme([rangeSliderTheme, getTheme()?.rangeSlider, customTheme]);
 
     return (
       <>

@@ -2,7 +2,7 @@ import type { ComponentProps, FC } from "react";
 import { useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { progressTheme } from "./theme";
@@ -52,7 +52,7 @@ export const Progress: FC<ProgressProps> = ({
   ...props
 }) => {
   const id = useId();
-  const theme = resolveTheme([progressTheme, getStore().theme?.progress, customTheme]);
+  const theme = resolveTheme([progressTheme, getTheme()?.progress, customTheme]);
 
   return (
     <>

@@ -3,7 +3,7 @@ import { forwardRef, type ReactNode } from "react";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import type {
   FlowbiteBoolean,
@@ -118,8 +118,8 @@ const ButtonComponent = forwardRef(
     }: ButtonProps<T>,
     ref: PolymorphicRef<T>,
   ) => {
-    const theme = resolveTheme([buttonTheme, getStore().theme?.button, customTheme], [unstyled]);
-    const groupTheme = resolveTheme([buttonGroupTheme, getStore().theme?.buttonGroup]);
+    const theme = resolveTheme([buttonTheme, getTheme()?.button, customTheme], [unstyled]);
+    const groupTheme = resolveTheme([buttonGroupTheme, getTheme()?.buttonGroup]);
 
     const theirProps = props as ButtonBaseProps<T>;
 

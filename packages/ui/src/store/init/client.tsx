@@ -3,8 +3,10 @@
 import type { StoreInitProps } from ".";
 import { setStore } from "..";
 
-export function StoreInitClient({ override, ...props }: StoreInitProps) {
-  setStore(props, { override });
+export function StoreInitClient({ cleanup, ...props }: StoreInitProps) {
+  setStore(props, { cleanup });
 
   return null;
 }
+
+StoreInitClient.displayName = "StoreInitClient";

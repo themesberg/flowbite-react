@@ -8,34 +8,48 @@ export type StoreProps = DeepPartial<{
   mode: ThemeMode;
   prefix: string;
   theme: FlowbiteTheme;
+  themeId: number;
 }>;
 
-interface Store {
-  data: StoreProps;
-}
+const store: Omit<StoreProps, "theme"> = {};
+const themeStore = new Map<number, StoreProps["theme"]>();
 
-const store: Store = {
-  data: {},
-};
-
-export function setStore(data: StoreProps = {}, options: { override?: boolean } = {}) {
-  const { mode, prefix, theme } = data;
+export function setStore(data: StoreProps = {}, options: { cleanup?: boolean } = {}) {
+  const { mode, prefix, theme, themeId } = data;
 
   if (mode) {
-    store.data.mode = mode;
+    store.mode = mode;
   }
   if (prefix) {
-    store.data.prefix = prefix.trim();
+    store.prefix = prefix.trim();
   }
-  if ("theme" in data) {
-    if (options.override) {
-      store.data.theme = theme;
-    } else {
-      store.data.theme = deepMergeStrings(twMerge)(store.data.theme, theme);
+  if ("theme" in data && themeId) {
+    const currentTheme = themeStore.get(store.themeId ?? -1);
+
+    store.themeId = themeId;
+    themeStore.set(themeId, deepMergeStrings(twMerge)(currentTheme, theme));
+  }
+  if ("themeId" in data && options.cleanup) {
+    // TODO: figure out how to avoid this
+    if (store.themeId !== undefined) {
+      themeStore.delete(store.themeId);
     }
+    store.themeId = themeId;
   }
 }
 
-export function getStore(): StoreProps {
-  return structuredClone(store.data);
+export function getMode(): StoreProps["mode"] {
+  return store.mode;
+}
+
+export function getPrefix(): StoreProps["prefix"] {
+  return store.prefix;
+}
+
+export function getTheme(): StoreProps["theme"] {
+  return themeStore.get(store.themeId ?? -1);
+}
+
+export function getThemeId(): StoreProps["themeId"] {
+  return store.themeId;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import type { ThemeMode } from "../hooks/use-theme-mode";
-import { getStore } from "../store";
+import { getPrefix } from "../store";
 
 export interface ThemeModeScriptProps extends React.ComponentPropsWithoutRef<"script"> {
   mode?: ThemeMode;
@@ -25,11 +25,13 @@ export function ThemeModeScript({
       {...others}
       data-flowbite-theme-mode-script
       dangerouslySetInnerHTML={{
-        __html: getScript({ mode, defaultMode, localStorageKey, prefix: getStore().prefix ?? "" }),
+        __html: getScript({ mode, defaultMode, localStorageKey, prefix: getPrefix() ?? "" }),
       }}
     />
   );
 }
+
+ThemeModeScript.displayName = "ThemeModeScript";
 
 function getScript({
   mode,

@@ -4,7 +4,7 @@ import { forwardRef, type ComponentPropsWithRef } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { useTableBodyContext } from "./TableBodyContext";
 import { useTableContext } from "./TableContext";
@@ -25,7 +25,7 @@ export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
     const { theme: bodyTheme, unstyled: bodyUnstyled } = useTableBodyContext();
 
     const theme = resolveTheme(
-      [tableTheme.body.cell, getStore().theme?.table?.body?.cell, rootTheme?.body?.cell, bodyTheme?.cell, customTheme],
+      [tableTheme.body.cell, getTheme()?.table?.body?.cell, rootTheme?.body?.cell, bodyTheme?.cell, customTheme],
       [get(rootUnstyled, "body.cell"), get(bodyUnstyled, "cell"), unstyled],
     );
 

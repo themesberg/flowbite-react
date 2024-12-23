@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { HiOutlineChevronRight } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { breadcrumbTheme } from "./theme";
@@ -27,7 +27,7 @@ export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, Br
     const isLink = typeof href !== "undefined";
     const Component = isLink ? "a" : "span";
 
-    const theme = resolveTheme([breadcrumbTheme.item, getStore().theme?.breadcrumb?.item, customTheme, unstyled]);
+    const theme = resolveTheme([breadcrumbTheme.item, getTheme()?.breadcrumb?.item, customTheme, unstyled]);
 
     return (
       <li className={twMerge(theme.base, className)} {...props}>

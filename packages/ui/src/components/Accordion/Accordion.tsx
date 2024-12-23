@@ -5,7 +5,7 @@ import { Children, cloneElement, useMemo, useState } from "react";
 import { HiChevronDown } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteAccordionComponentTheme } from "./AccordionContent";
@@ -62,7 +62,7 @@ const AccordionComponent: FC<AccordionProps> = ({
     [alwaysOpen, arrowIcon, children, flush, isOpen],
   );
 
-  const theme = resolveTheme([accordionTheme.root, getStore().theme?.accordion?.root, customTheme]);
+  const theme = resolveTheme([accordionTheme.root, getTheme()?.accordion?.root, customTheme]);
 
   return (
     <div

@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { FaQuoteRight } from "react-icons/fa6";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import { hrTheme } from "./theme";
 
@@ -23,7 +23,7 @@ export interface HRIconProps extends Omit<ComponentProps<"hr">, "ref"> {
 
 export const HRIcon = forwardRef<HTMLHRElement, HRIconProps>(
   ({ theme: customTheme, icon: Icon = FaQuoteRight, className, ...props }, ref) => {
-    const theme = resolveTheme([hrTheme.icon, getStore().theme?.hr?.icon, customTheme]);
+    const theme = resolveTheme([hrTheme.icon, getTheme()?.hr?.icon, customTheme]);
 
     return (
       <div className={theme.base}>

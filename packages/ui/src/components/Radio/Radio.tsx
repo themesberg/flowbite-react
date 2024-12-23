@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import { radioTheme } from "./theme";
 
@@ -19,7 +19,7 @@ export interface RadioProps extends Omit<ComponentProps<"input">, "ref" | "type"
 }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(({ className, theme: customTheme, ...props }, ref) => {
-  const theme = resolveTheme([radioTheme, getStore().theme?.radio, customTheme]);
+  const theme = resolveTheme([radioTheme, getTheme()?.radio, customTheme]);
 
   return <input ref={ref} type="radio" className={twMerge(theme.root.base, className)} {...props} />;
 });

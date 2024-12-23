@@ -4,7 +4,7 @@ import type { ComponentProps, ElementType, FC, MouseEvent } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useNavbarContext } from "./NavbarContext";
@@ -39,7 +39,7 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   const { theme: rootTheme, unstyled: rootUnstyled, setIsOpen } = useNavbarContext();
 
   const theme = resolveTheme(
-    [navbarTheme.link, getStore().theme?.navbar?.link, rootTheme?.link, customTheme],
+    [navbarTheme.link, getTheme()?.navbar?.link, rootTheme?.link, customTheme],
     [get(rootUnstyled, "link"), unstyled],
   );
 

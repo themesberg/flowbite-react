@@ -1,7 +1,7 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { helperTextTheme } from "./theme";
@@ -33,7 +33,7 @@ export const HelperText: FC<HelperTextProps> = ({
   value,
   ...props
 }) => {
-  const theme = resolveTheme([helperTextTheme, getStore().theme?.helperText, customTheme]);
+  const theme = resolveTheme([helperTextTheme, getTheme()?.helperText, customTheme]);
 
   return (
     <p className={twMerge(theme.root.base, theme.root.colors[color], className)} {...props}>

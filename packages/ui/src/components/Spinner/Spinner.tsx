@@ -1,7 +1,7 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
 import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { spinnerTheme } from "./theme";
@@ -46,7 +46,7 @@ export const Spinner: FC<SpinnerProps> = ({
   theme: customTheme,
   ...props
 }) => {
-  const theme = resolveTheme([spinnerTheme, getStore().theme?.spinner, customTheme]);
+  const theme = resolveTheme([spinnerTheme, getTheme()?.spinner, customTheme]);
 
   return (
     <span role="status" {...props}>

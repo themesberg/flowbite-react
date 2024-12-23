@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import { hrTheme } from "./theme";
 
@@ -15,7 +15,7 @@ export interface HRSquareProps extends Omit<ComponentProps<"hr">, "ref"> {
 }
 
 export const HRSquare = forwardRef<HTMLHRElement, HRSquareProps>(({ theme: customTheme, className, ...props }, ref) => {
-  const theme = resolveTheme([hrTheme.square, getStore().theme?.hr?.square, customTheme]);
+  const theme = resolveTheme([hrTheme.square, getTheme()?.hr?.square, customTheme]);
 
   return (
     <hr

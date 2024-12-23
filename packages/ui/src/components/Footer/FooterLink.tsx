@@ -1,7 +1,7 @@
 import type { ComponentProps, ElementType, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import { footerTheme } from "./theme";
 
@@ -24,7 +24,7 @@ export const FooterLink: FC<FooterLinkProps> = ({
   theme: customTheme,
   ...props
 }) => {
-  const theme = resolveTheme([footerTheme.groupLink.link, getStore().theme?.footer?.groupLink?.link, customTheme]);
+  const theme = resolveTheme([footerTheme.groupLink.link, getTheme()?.footer?.groupLink?.link, customTheme]);
 
   return (
     <li className={twMerge(theme.base, className)}>

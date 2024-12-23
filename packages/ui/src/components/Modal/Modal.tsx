@@ -15,7 +15,7 @@ import type { MutableRefObject } from "react";
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteModalBodyTheme } from "./ModalBody";
@@ -88,7 +88,7 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
     theirRef,
   ) => {
     const [headerId, setHeaderId] = useState<string | undefined>(undefined);
-    const theme = resolveTheme([modalTheme, getStore().theme?.modal, customTheme], [unstyled]);
+    const theme = resolveTheme([modalTheme, getTheme()?.modal, customTheme], [unstyled]);
 
     const { context } = useFloating({
       open: show,

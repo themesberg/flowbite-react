@@ -4,7 +4,7 @@ import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, Re
 import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { TabItemProps } from "./TabItem";
@@ -70,7 +70,7 @@ const TabsComponent = forwardRef<TabsRef, TabsProps>(
     { children, className, onActiveTabChange, variant = "default", theme: customTheme, ...props },
     ref: ForwardedRef<TabsRef>,
   ) => {
-    const theme = resolveTheme([tabsTheme, getStore().theme?.tabs, customTheme]);
+    const theme = resolveTheme([tabsTheme, getTheme()?.tabs, customTheme]);
 
     const id = useId();
     const tabs = useMemo(

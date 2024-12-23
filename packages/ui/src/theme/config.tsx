@@ -6,3 +6,5 @@ export type ThemeConfigProps = Pick<StoreProps, "mode" | "prefix">;
 export function ThemeConfig({ mode, prefix }: ThemeConfigProps) {
   return <StoreInit mode={mode} prefix={prefix} />;
 }
+
+ThemeConfig.displayName = "ThemeConfig";

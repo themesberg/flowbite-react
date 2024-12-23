@@ -3,7 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import { RatingAdvanced } from "./RatingAdvanced";
 import { RatingContext } from "./RatingContext";
@@ -32,7 +32,7 @@ const RatingComponent: FC<RatingProps> = ({
   unstyled,
   ...props
 }) => {
-  const theme = resolveTheme([ratingTheme, getStore().theme?.rating, customTheme], [unstyled]);
+  const theme = resolveTheme([ratingTheme, getTheme()?.rating, customTheme], [unstyled]);
 
   return (
     <RatingContext.Provider value={{ theme: customTheme, unstyled, size }}>

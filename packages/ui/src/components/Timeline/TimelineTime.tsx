@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { timelineTheme } from "./theme";
 import { useTimelineContentContext } from "./TimelineContentContext";
@@ -34,7 +34,7 @@ export const TimelineTime: FC<TimelineTimeProps> = ({
   const theme = resolveTheme(
     [
       timelineTheme.item.content.time,
-      getStore().theme?.timeline?.item?.content?.time,
+      getTheme()?.timeline?.item?.content?.time,
       rootTheme?.item?.content?.time,
       itemTheme?.content?.time,
       contentTheme?.time,

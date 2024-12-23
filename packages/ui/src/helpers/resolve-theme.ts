@@ -1,5 +1,5 @@
 import { deepmerge } from "deepmerge-ts";
-import { getStore } from "../store";
+import { getPrefix } from "../store";
 import type { Unstyled } from "../types";
 import { applyPrefix } from "./apply-prefix";
 import { deepMergeStrings } from "./deep-merge";
@@ -24,7 +24,7 @@ export function resolveTheme<T>(
   ],
   unstyledList: Unstyled<T[]> = [],
 ): T {
-  const { prefix } = getStore();
+  const prefix = getPrefix();
 
   const cacheKey = JSON.stringify({ base, custom, unstyledList, prefix });
   const cacheValue = cache.get(cacheKey);

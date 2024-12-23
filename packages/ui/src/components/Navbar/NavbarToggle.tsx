@@ -5,7 +5,7 @@ import { FaBars } from "react-icons/fa";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { getStore } from "../../store";
+import { getTheme } from "../../store";
 import type { DeepPartial, Unstyled } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
 import { navbarTheme } from "./theme";
@@ -31,7 +31,7 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({
   const { theme: rootTheme, unstyled: rootUnstyled, isOpen, setIsOpen } = useNavbarContext();
 
   const theme = resolveTheme(
-    [navbarTheme.toggle, getStore().theme?.navbar?.toggle, rootTheme?.toggle, customTheme],
+    [navbarTheme.toggle, getTheme()?.navbar?.toggle, rootTheme?.toggle, customTheme],
     [get(rootUnstyled, "toggle"), unstyled],
   );
 
