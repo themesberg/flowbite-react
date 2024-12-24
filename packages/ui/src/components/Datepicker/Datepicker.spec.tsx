@@ -70,8 +70,7 @@ describe("Components / Datepicker", () => {
     expect(onChange).toHaveBeenCalledOnce();
   });
 
-  // TODO: fix
-  it.todo("should close month overlay when user clicks outside of it", async () => {
+  it("should close month overlay when user clicks outside of it", async () => {
     render(<Datepicker />);
 
     await userEvent.click(screen.getByRole("textbox"));
