@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import { useAccordionContext } from "./AccordionPanelContext";
 import { accordionTheme } from "./theme";
 
@@ -14,13 +14,20 @@ export interface FlowbiteAccordionComponentTheme {
 
 export interface AccordionContentProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteAccordionComponentTheme>;
+  unstyled?: Unstyled<FlowbiteAccordionComponentTheme>;
 }
 
-export const AccordionContent: FC<AccordionContentProps> = ({ children, className, theme: customTheme, ...props }) => {
+export const AccordionContent: FC<AccordionContentProps> = ({
+  children,
+  className,
+  theme: customTheme,
+  unstyled,
+  ...props
+}) => {
   const { isOpen } = useAccordionContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([accordionTheme.content, provider.theme?.accordion?.content, customTheme]);
+  const theme = resolveTheme([accordionTheme.content, provider.theme?.accordion?.content, customTheme], [unstyled]);
 
   return (
     <div

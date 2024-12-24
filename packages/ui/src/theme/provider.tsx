@@ -21,7 +21,7 @@ export function ThemeProvider({ children, theme, unstyled }: ThemeProviderProps)
   const value = useMemo(
     () => ({
       theme: parentProvider?.theme ? deepMergeStrings(twMerge)(parentProvider.theme, theme) : theme,
-      unstyled: parentProvider?.unstyled ? deepmerge(parentProvider.unstyled, unstyled) : unstyled,
+      unstyled: parentProvider?.unstyled ? deepmerge(parentProvider.unstyled) : unstyled,
     }),
     [theme, unstyled, parentProvider?.theme, parentProvider?.unstyled],
   );

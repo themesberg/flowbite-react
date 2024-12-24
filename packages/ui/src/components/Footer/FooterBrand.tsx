@@ -4,7 +4,7 @@ import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import { footerTheme } from "./theme";
 
 export interface FlowbiteFooterBrandTheme {
@@ -20,6 +20,7 @@ export interface FooterBrandProps extends PropsWithChildren {
   name?: string;
   src: string;
   theme?: DeepPartial<FlowbiteFooterBrandTheme>;
+  unstyled?: Unstyled<FlowbiteFooterBrandTheme>;
 }
 
 export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentProps<"img">> = ({
@@ -30,10 +31,11 @@ export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentP
   name,
   src,
   theme: customTheme,
+  unstyled,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([footerTheme.brand, provider.theme?.footer?.brand, customTheme]);
+  const theme = resolveTheme([footerTheme.brand, provider.theme?.footer?.brand, customTheme], [unstyled]);
 
   return (
     <div>

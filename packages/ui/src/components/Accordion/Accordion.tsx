@@ -3,10 +3,11 @@
 import type { ComponentProps, FC, ReactElement } from "react";
 import { Children, cloneElement, useMemo, useState } from "react";
 import { HiChevronDown } from "react-icons/hi";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteAccordionComponentTheme } from "./AccordionContent";
 import { AccordionContent } from "./AccordionContent";
@@ -34,6 +35,7 @@ export interface AccordionProps extends ComponentProps<"div"> {
   flush?: boolean;
   collapseAll?: boolean;
   theme?: DeepPartial<FlowbiteAccordionTheme>;
+  unstyled?: Unstyled<FlowbiteAccordionTheme>;
 }
 
 const AccordionComponent: FC<AccordionProps> = ({
@@ -44,6 +46,7 @@ const AccordionComponent: FC<AccordionProps> = ({
   collapseAll = false,
   className,
   theme: customTheme,
+  unstyled,
   ...props
 }) => {
   const [isOpen, setOpen] = useState(collapseAll ? -1 : 0);
@@ -63,7 +66,10 @@ const AccordionComponent: FC<AccordionProps> = ({
   );
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([accordionTheme.root, provider.theme?.accordion?.root, customTheme]);
+  const theme = resolveTheme(
+    [accordionTheme.root, provider.theme?.accordion?.root, customTheme],
+    [get(provider.unstyled, "accordion.root"), get(unstyled, "root")],
+  );
 
   return (
     <div

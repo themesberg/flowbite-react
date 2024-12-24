@@ -71,9 +71,9 @@ export const Card: FC<CardProps> = (props) => {
   );
 };
 
-const Image: FC<CardProps> = ({ theme: customTheme, ...props }) => {
+const Image: FC<CardProps> = ({ theme: customTheme, unstyled, ...props }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([cardTheme, provider.theme?.card, customTheme]);
+  const theme = resolveTheme([cardTheme, provider.theme?.card, customTheme], [unstyled]);
 
   if (props.renderImage) {
     return props.renderImage(theme, props.horizontal ?? false);

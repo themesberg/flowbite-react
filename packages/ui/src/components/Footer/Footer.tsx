@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteFooterBrandTheme } from "./FooterBrand";
 import { FooterBrand } from "./FooterBrand";
 import type { FlowbiteFooterCopyrightTheme } from "./FooterCopyright";
@@ -40,6 +40,7 @@ export interface FooterProps extends ComponentProps<"footer"> {
   bgDark?: boolean;
   container?: boolean;
   theme?: DeepPartial<FlowbiteFooterTheme>;
+  unstyled?: Unstyled<FlowbiteFooterTheme>;
 }
 
 export const FooterComponent: FC<FooterProps> = ({
@@ -48,10 +49,11 @@ export const FooterComponent: FC<FooterProps> = ({
   className,
   container = false,
   theme: customTheme,
+  unstyled,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([footerTheme, provider.theme?.footer, customTheme]);
+  const theme = resolveTheme([footerTheme, provider.theme?.footer, customTheme], [unstyled]);
 
   return (
     <footer

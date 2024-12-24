@@ -5,7 +5,7 @@ import { forwardRef, useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteTextInputSizes } from "../TextInput";
 import { toggleSwitchTheme } from "./theme";
@@ -36,6 +36,7 @@ export type ToggleSwitchProps = Omit<ComponentProps<"button">, "onChange" | "ref
   label?: string;
   onChange: (checked: boolean) => void;
   theme?: DeepPartial<FlowbiteToggleSwitchTheme>;
+  unstyled?: Unstyled<FlowbiteToggleSwitchTheme>;
 };
 
 export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
@@ -50,13 +51,14 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
       name,
       onChange,
       theme: customTheme,
+      unstyled,
       ...props
     },
     ref,
   ) => {
     const id = useId();
     const provider = useThemeProvider();
-    const theme = resolveTheme([toggleSwitchTheme, provider.theme?.toggleSwitch, customTheme]);
+    const theme = resolveTheme([toggleSwitchTheme, provider.theme?.toggleSwitch, customTheme], [unstyled]);
 
     const toggle = (): void => onChange(!checked);
 

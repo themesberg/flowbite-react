@@ -5,7 +5,7 @@ import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import { range } from "./helpers";
 import type { FlowbitePaginationButtonTheme, PaginationButtonProps } from "./PaginationButton";
 import { PaginationButton, PaginationNavigation } from "./PaginationButton";
@@ -50,6 +50,7 @@ export interface PaginationProps extends ComponentProps<"nav"> {
   renderPaginationButton?: (props: PaginationButtonProps) => ReactNode;
   showIcons?: boolean;
   theme?: DeepPartial<FlowbitePaginationTheme>;
+  unstyled?: Unstyled<FlowbitePaginationTheme>;
   totalPages: number;
 }
 
@@ -63,11 +64,12 @@ const PaginationComponent: FC<PaginationProps> = ({
   renderPaginationButton = (props) => <PaginationButton {...props} />,
   showIcons: showIcon = false,
   theme: customTheme,
+  unstyled,
   totalPages,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([paginationTheme, provider.theme?.pagination, customTheme]);
+  const theme = resolveTheme([paginationTheme, provider.theme?.pagination, customTheme], [unstyled]);
 
   const lastPage = Math.min(Math.max(layout === "pagination" ? currentPage + 2 : currentPage + 4, 5), totalPages);
   const firstPage = Math.max(1, lastPage - 4);

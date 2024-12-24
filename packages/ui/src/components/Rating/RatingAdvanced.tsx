@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import { ratingAdvancedTheme } from "./theme";
 
 export interface FlowbiteRatingAdvancedTheme {
@@ -20,6 +20,7 @@ export interface FlowbiteRatingAdvancedTheme {
 export interface RatingAdvancedProps extends ComponentProps<"div"> {
   percentFilled?: number;
   theme?: DeepPartial<FlowbiteRatingAdvancedTheme>;
+  unstyled?: Unstyled<FlowbiteRatingAdvancedTheme>;
 }
 
 export const RatingAdvanced: FC<RatingAdvancedProps> = ({
@@ -27,10 +28,11 @@ export const RatingAdvanced: FC<RatingAdvancedProps> = ({
   className,
   percentFilled = 0,
   theme: customTheme,
+  unstyled,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([ratingAdvancedTheme, provider.theme?.ratingAdvanced, customTheme]);
+  const theme = resolveTheme([ratingAdvancedTheme, provider.theme?.ratingAdvanced, customTheme], [unstyled]);
 
   return (
     <div className={twMerge(theme.base, className)} {...props}>

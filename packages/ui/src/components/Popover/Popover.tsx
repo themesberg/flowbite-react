@@ -7,7 +7,7 @@ import { cloneElement, isValidElement, useMemo, useRef, useState } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteFloatingArrowTheme } from "../Floating";
 import { getArrowPlacement } from "../Floating/helpers";
 import { popoverTheme } from "./theme";
@@ -23,6 +23,7 @@ export interface PopoverProps extends Omit<ComponentProps<"div">, "content" | "s
   content: ReactNode;
   placement?: "auto" | Placement;
   theme?: DeepPartial<FlowbitePopoverTheme>;
+  unstyled?: Unstyled<FlowbitePopoverTheme>;
   trigger?: "hover" | "click";
   initialOpen?: boolean;
   open?: boolean;
@@ -33,6 +34,7 @@ export function Popover({
   children,
   content,
   theme: customTheme,
+  unstyled,
   arrow = true,
   trigger = "click",
   initialOpen,
@@ -45,7 +47,7 @@ export function Popover({
   const arrowRef = useRef<HTMLDivElement>(null);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([popoverTheme, provider.theme?.popover, customTheme]);
+  const theme = resolveTheme([popoverTheme, provider.theme?.popover, customTheme], [unstyled]);
 
   const open = controlledOpen ?? uncontrolledOpen;
   const setOpen = setControlledOpen ?? setUncontrolledOpen;

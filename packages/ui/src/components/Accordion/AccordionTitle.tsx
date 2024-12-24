@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean, FlowbiteHeadingLevel } from "../Flowbite/FlowbiteTheme";
 import { useAccordionContext } from "./AccordionPanelContext";
 import { accordionTheme } from "./theme";
@@ -24,6 +24,7 @@ export interface AccordionTitleProps extends ComponentProps<"button"> {
   arrowIcon?: FC<ComponentProps<"svg">>;
   as?: FlowbiteHeadingLevel;
   theme?: DeepPartial<FlowbiteAccordionTitleTheme>;
+  unstyled?: Unstyled<FlowbiteAccordionTitleTheme>;
 }
 
 export const AccordionTitle: FC<AccordionTitleProps> = ({
@@ -31,13 +32,14 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   children,
   className,
   theme: customTheme,
+  unstyled,
   ...props
 }) => {
   const { arrowIcon: ArrowIcon, flush, isOpen, setOpen } = useAccordionContext();
   const onClick = () => typeof setOpen !== "undefined" && setOpen();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([accordionTheme.title, provider.theme?.accordion?.title, customTheme]);
+  const theme = resolveTheme([accordionTheme.title, provider.theme?.accordion?.title, customTheme], [unstyled]);
 
   return (
     <button

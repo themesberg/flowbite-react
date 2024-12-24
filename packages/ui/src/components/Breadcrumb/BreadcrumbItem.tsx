@@ -30,7 +30,10 @@ export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, Br
     const Component = isLink ? "a" : "span";
 
     const provider = useThemeProvider();
-    const theme = resolveTheme([breadcrumbTheme.item, provider.theme?.breadcrumb?.item, customTheme, unstyled]);
+    const theme = resolveTheme(
+      [breadcrumbTheme.item, provider.theme?.breadcrumb?.item, customTheme, unstyled],
+      [unstyled],
+    );
 
     return (
       <li className={twMerge(theme.base, className)} {...props}>

@@ -62,6 +62,7 @@ export interface CarouselProps extends ComponentProps<"div"> {
 
 export interface DefaultLeftRightControlProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteCarouselTheme>;
+  unstyled?: Unstyled<FlowbiteCarouselTheme>;
 }
 
 export const Carousel: FC<CarouselProps> = ({
@@ -213,9 +214,9 @@ export const Carousel: FC<CarouselProps> = ({
   );
 };
 
-const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme }) => {
+const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, unstyled }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme]);
+  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme], [unstyled]);
 
   return (
     <span className={theme.control.base}>
@@ -224,9 +225,9 @@ const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customThe
   );
 };
 
-const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme }) => {
+const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, unstyled }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme]);
+  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme], [unstyled]);
 
   return (
     <span className={theme.control.base}>

@@ -121,7 +121,7 @@ export const Button = forwardRef(
   ) => {
     const provider = useThemeProvider();
     const theme = resolveTheme([buttonTheme, provider.theme?.button, customTheme], [unstyled]);
-    const groupTheme = resolveTheme([buttonGroupTheme, provider.theme?.buttonGroup]);
+    const groupTheme = resolveTheme([buttonGroupTheme, provider.theme?.buttonGroup], [unstyled]);
 
     const theirProps = props as ButtonBaseProps<T>;
 

@@ -83,7 +83,8 @@ export interface DatepickerRef {
   clear: () => void;
 }
 
-export interface DatepickerProps extends Omit<TextInputProps, "theme" | "onChange" | "value" | "defaultValue"> {
+export interface DatepickerProps
+  extends Omit<TextInputProps, "theme" | "unstyled" | "onChange" | "value" | "defaultValue"> {
   defaultValue?: Date;
   open?: boolean;
   inline?: boolean;

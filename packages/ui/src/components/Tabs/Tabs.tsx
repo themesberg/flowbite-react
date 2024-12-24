@@ -5,7 +5,7 @@ import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, u
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial } from "../../types";
+import type { DeepPartial, Unstyled } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { TabItemProps } from "./TabItem";
 import { TabItem } from "./TabItem";
@@ -59,6 +59,7 @@ export interface TabsProps extends Omit<ComponentProps<"div">, "ref"> {
   onActiveTabChange?: (activeTab: number) => void;
   variant?: keyof TabStyles;
   theme?: DeepPartial<FlowbiteTabsTheme>;
+  unstyled?: Unstyled<FlowbiteTabsTheme>;
 }
 
 export interface TabsRef {
@@ -67,11 +68,11 @@ export interface TabsRef {
 
 const TabsComponent = forwardRef<TabsRef, TabsProps>(
   (
-    { children, className, onActiveTabChange, variant = "default", theme: customTheme, ...props },
+    { children, className, onActiveTabChange, variant = "default", theme: customTheme, unstyled, ...props },
     ref: ForwardedRef<TabsRef>,
   ) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([tabsTheme, provider.theme?.tabs, customTheme]);
+    const theme = resolveTheme([tabsTheme, provider.theme?.tabs, customTheme], [unstyled]);
 
     const id = useId();
     const tabs = useMemo(

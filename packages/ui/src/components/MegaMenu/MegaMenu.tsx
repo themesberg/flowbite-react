@@ -16,9 +16,9 @@ export interface FlowbiteMegaMenuTheme extends FlowbiteNavbarTheme {
 
 export type MegaMenuProps = NavbarComponentProps;
 
-const MegaMenuComponent: FC<MegaMenuProps> = ({ children, theme: customTheme, ...props }) => {
+const MegaMenuComponent: FC<MegaMenuProps> = ({ children, theme: customTheme, unstyled, ...props }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([megaMenuTheme, provider.theme?.megaMenu, customTheme]);
+  const theme = resolveTheme([megaMenuTheme, provider.theme?.megaMenu, customTheme], [unstyled]);
 
   return (
     <Navbar theme={theme} fluid {...props}>
