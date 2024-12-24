@@ -1,5 +1,5 @@
 export { Drawer } from "./Drawer";
-export type { DrawerProps, FlowbiteDrawerRootTheme, FlowbiteDrawerTheme } from "./Drawer";
+export type { DrawerProps, DrawerRootTheme, DrawerTheme } from "./Drawer";
 
 export { DrawerHeader } from "./DrawerHeader";
 export type { DrawerHeaderProps, FlowbiteDrawerHeaderTheme } from "./DrawerHeader";

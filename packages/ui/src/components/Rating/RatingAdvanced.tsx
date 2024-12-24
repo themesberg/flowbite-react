@@ -7,7 +7,7 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { ratingAdvancedTheme } from "./theme";
 
-export interface FlowbiteRatingAdvancedTheme {
+export interface RatingAdvancedTheme {
   base: string;
   label: string;
   progress: {
@@ -19,8 +19,8 @@ export interface FlowbiteRatingAdvancedTheme {
 
 export interface RatingAdvancedProps extends ComponentProps<"div"> {
   percentFilled?: number;
-  theme?: DeepPartial<FlowbiteRatingAdvancedTheme>;
-  resetTheme?: ResetTheme<FlowbiteRatingAdvancedTheme>;
+  theme?: DeepPartial<RatingAdvancedTheme>;
+  resetTheme?: ResetTheme<RatingAdvancedTheme>;
 }
 
 export const RatingAdvanced: FC<RatingAdvancedProps> = ({

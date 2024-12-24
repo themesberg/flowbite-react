@@ -2,11 +2,11 @@
 
 import { createContext, useContext } from "react";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteTableTheme } from "./Table";
+import type { TableTheme } from "./Table";
 
 export type TableContext = {
-  theme?: DeepPartial<FlowbiteTableTheme>;
-  resetTheme?: ResetTheme<FlowbiteTableTheme>;
+  theme?: DeepPartial<TableTheme>;
+  resetTheme?: ResetTheme<TableTheme>;
   striped?: boolean;
   hoverable?: boolean;
 };

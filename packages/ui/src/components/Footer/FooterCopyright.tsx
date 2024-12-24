@@ -7,7 +7,7 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { footerTheme } from "./theme";
 
-export interface FlowbiteFooterCopyrightTheme {
+export interface FooterCopyrightTheme {
   base: string;
   href: string;
   span: string;
@@ -16,8 +16,8 @@ export interface FlowbiteFooterCopyrightTheme {
 export interface CopyrightProps extends ComponentProps<"div"> {
   by: string;
   href?: string;
-  theme?: DeepPartial<FlowbiteFooterCopyrightTheme>;
-  resetTheme?: ResetTheme<FlowbiteFooterCopyrightTheme>;
+  theme?: DeepPartial<FooterCopyrightTheme>;
+  resetTheme?: ResetTheme<FooterCopyrightTheme>;
   year?: number;
 }
 

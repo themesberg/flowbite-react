@@ -7,19 +7,19 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { kbdTheme } from "./theme";
 
-export interface FlowbiteKbdTheme {
-  root: FlowbiteKbdRootTheme;
+export interface KbdTheme {
+  root: KbdRootTheme;
 }
 
-export interface FlowbiteKbdRootTheme {
+export interface KbdRootTheme {
   base: string;
   icon: string;
 }
 
 export interface KbdProps extends ComponentProps<"span"> {
   icon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<FlowbiteKbdTheme>;
-  resetTheme?: ResetTheme<FlowbiteKbdTheme>;
+  theme?: DeepPartial<KbdTheme>;
+  resetTheme?: ResetTheme<KbdTheme>;
 }
 
 export const Kbd: FC<KbdProps> = ({ children, className, icon: Icon, theme: customTheme, resetTheme, ...props }) => {

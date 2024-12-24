@@ -12,13 +12,13 @@ import { DrawerHeader, type FlowbiteDrawerHeaderTheme } from "./DrawerHeader";
 import { DrawerItems, type FlowbiteDrawerItemsTheme } from "./DrawerItems";
 import { drawerTheme } from "./theme";
 
-export interface FlowbiteDrawerTheme {
-  root: FlowbiteDrawerRootTheme;
+export interface DrawerTheme {
+  root: DrawerRootTheme;
   header: FlowbiteDrawerHeaderTheme;
   items: FlowbiteDrawerItemsTheme;
 }
 
-export interface FlowbiteDrawerRootTheme {
+export interface DrawerRootTheme {
   base: string;
   backdrop: string;
   edge: string;
@@ -36,8 +36,8 @@ export interface DrawerProps extends ComponentProps<"div"> {
   onClose: () => void;
   open?: boolean;
   position?: "top" | "right" | "bottom" | "left";
-  theme?: DeepPartial<FlowbiteDrawerTheme>;
-  resetTheme?: ResetTheme<FlowbiteDrawerTheme>;
+  theme?: DeepPartial<DrawerTheme>;
+  resetTheme?: ResetTheme<DrawerTheme>;
 }
 
 const DrawerComponent: FC<DrawerProps> = ({

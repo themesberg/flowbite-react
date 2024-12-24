@@ -2,11 +2,11 @@
 
 import { createContext, useContext } from "react";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteModalTheme } from "./Modal";
+import type { ModalTheme } from "./Modal";
 
 type ModalContext = {
-  theme?: DeepPartial<FlowbiteModalTheme>;
-  resetTheme?: ResetTheme<FlowbiteModalTheme>;
+  theme?: DeepPartial<ModalTheme>;
+  resetTheme?: ResetTheme<ModalTheme>;
   popup?: boolean;
   setHeaderId: (id: string | undefined) => void;
   onClose?: () => void;

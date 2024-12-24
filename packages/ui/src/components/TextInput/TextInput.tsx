@@ -10,7 +10,7 @@ import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite
 import { HelperText } from "../HelperText";
 import { textInputTheme } from "./theme";
 
-export interface FlowbiteTextInputTheme {
+export interface TextInputTheme {
   base: string;
   addon: string;
   field: {
@@ -25,8 +25,8 @@ export interface FlowbiteTextInputTheme {
     };
     input: {
       base: string;
-      sizes: FlowbiteTextInputSizes;
-      colors: FlowbiteTextInputColors;
+      sizes: TextInputSizes;
+      colors: TextInputColors;
       withIcon: FlowbiteBoolean;
       withRightIcon: FlowbiteBoolean;
       withAddon: FlowbiteBoolean;
@@ -35,25 +35,24 @@ export interface FlowbiteTextInputTheme {
   };
 }
 
-export interface FlowbiteTextInputColors
-  extends Pick<FlowbiteColors, "gray" | "info" | "failure" | "warning" | "success"> {
+export interface TextInputColors extends Pick<FlowbiteColors, "gray" | "info" | "failure" | "warning" | "success"> {
   [key: string]: string;
 }
 
-export interface FlowbiteTextInputSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg"> {
+export interface TextInputSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg"> {
   [key: string]: string;
 }
 
 export interface TextInputProps extends Omit<ComponentProps<"input">, "ref" | "color"> {
   addon?: ReactNode;
-  color?: DynamicStringEnumKeysOf<FlowbiteTextInputColors>;
+  color?: DynamicStringEnumKeysOf<TextInputColors>;
   helperText?: ReactNode;
   icon?: FC<ComponentProps<"svg">>;
   rightIcon?: FC<ComponentProps<"svg">>;
   shadow?: boolean;
-  sizing?: DynamicStringEnumKeysOf<FlowbiteTextInputSizes>;
-  theme?: DeepPartial<FlowbiteTextInputTheme>;
-  resetTheme?: ResetTheme<FlowbiteTextInputTheme>;
+  sizing?: DynamicStringEnumKeysOf<TextInputSizes>;
+  theme?: DeepPartial<TextInputTheme>;
+  resetTheme?: ResetTheme<TextInputTheme>;
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(

@@ -5,10 +5,10 @@ import type { ComponentProps, FC, ReactNode } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
-import { Floating, type FlowbiteFloatingTheme } from "../Floating";
+import { Floating, type FloatingTheme } from "../Floating";
 import { tooltipTheme } from "./theme";
 
-export type FlowbiteTooltipTheme = FlowbiteFloatingTheme;
+export type TooltipTheme = FloatingTheme;
 
 export interface TooltipProps extends Omit<ComponentProps<"div">, "content" | "style"> {
   animation?: false | `duration-${number}`;
@@ -16,8 +16,8 @@ export interface TooltipProps extends Omit<ComponentProps<"div">, "content" | "s
   content: ReactNode;
   placement?: "auto" | Placement;
   style?: "dark" | "light" | "auto";
-  theme?: DeepPartial<FlowbiteTooltipTheme>;
-  resetTheme?: ResetTheme<FlowbiteTooltipTheme>;
+  theme?: DeepPartial<TooltipTheme>;
+  resetTheme?: ResetTheme<TooltipTheme>;
   trigger?: "hover" | "click";
 }
 

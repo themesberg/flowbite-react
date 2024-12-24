@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteAlertTheme } from "./Alert";
+import type { AlertTheme } from "./Alert";
 
-export const alertTheme: FlowbiteAlertTheme = createTheme({
+export const alertTheme: AlertTheme = createTheme({
   base: "flex flex-col gap-2 p-4 text-sm",
   borderAccent: "border-t-4",
   closeButton: {

@@ -10,15 +10,15 @@ import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useNavbarContext } from "./NavbarContext";
 import { navbarTheme } from "./theme";
 
-export interface FlowbiteNavbarCollapseTheme {
+export interface NavbarCollapseTheme {
   base: string;
   list: string;
   hidden: FlowbiteBoolean;
 }
 
 export interface NavbarCollapseProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<FlowbiteNavbarCollapseTheme>;
-  resetTheme?: ResetTheme<FlowbiteNavbarCollapseTheme>;
+  theme?: DeepPartial<NavbarCollapseTheme>;
+  resetTheme?: ResetTheme<NavbarCollapseTheme>;
 }
 
 export const NavbarCollapse: FC<NavbarCollapseProps> = ({

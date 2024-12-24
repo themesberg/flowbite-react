@@ -5,23 +5,23 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteBreadcrumbItemTheme } from "./BreadcrumbItem";
+import type { BreadcrumbItemTheme } from "./BreadcrumbItem";
 import { BreadcrumbItem } from "./BreadcrumbItem";
 import { breadcrumbTheme } from "./theme";
 
-export interface FlowbiteBreadcrumbTheme {
-  root: FlowbiteBreadcrumbRootTheme;
-  item: FlowbiteBreadcrumbItemTheme;
+export interface BreadcrumbTheme {
+  root: BreadcrumbRootTheme;
+  item: BreadcrumbItemTheme;
 }
 
-export interface FlowbiteBreadcrumbRootTheme {
+export interface BreadcrumbRootTheme {
   base: string;
   list: string;
 }
 
 export interface BreadcrumbComponentProps extends ComponentProps<"nav"> {
-  theme?: DeepPartial<FlowbiteBreadcrumbRootTheme>;
-  resetTheme?: ResetTheme<FlowbiteBreadcrumbRootTheme>;
+  theme?: DeepPartial<BreadcrumbRootTheme>;
+  resetTheme?: ResetTheme<BreadcrumbRootTheme>;
 }
 
 const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({

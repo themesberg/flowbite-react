@@ -4,11 +4,11 @@ export type {
   AvatarImageProps,
   AvatarProps,
   AvatarSizes,
-  FlowbiteAvatarImageTheme,
-  FlowbiteAvatarInitialsTheme,
-  FlowbiteAvatarRootTheme,
-  FlowbiteAvatarStatusTheme,
-  FlowbiteAvatarTheme,
+  AvatarImageTheme,
+  AvatarInitialsTheme,
+  AvatarRootTheme,
+  AvatarStatusTheme,
+  AvatarTheme,
 } from "./Avatar";
 export { AvatarGroup } from "./AvatarGroup";
 export type { AvatarGroupProps, FlowbiteAvatarGroupTheme } from "./AvatarGroup";

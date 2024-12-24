@@ -10,11 +10,11 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { darkThemeToggleTheme } from "./theme";
 
-export interface FlowbiteDarkThemeToggleTheme {
-  root: FlowbiteDarkThemeToggleRootTheme;
+export interface DarkThemeToggleTheme {
+  root: DarkThemeToggleRootTheme;
 }
 
-export interface FlowbiteDarkThemeToggleRootTheme {
+export interface DarkThemeToggleRootTheme {
   base: string;
   icon: {
     base: string;
@@ -26,8 +26,8 @@ export interface FlowbiteDarkThemeToggleRootTheme {
 export interface DarkThemeToggleProps extends ComponentProps<"button"> {
   iconDark?: FC<IconBaseProps>;
   iconLight?: FC<IconBaseProps>;
-  theme?: DeepPartial<FlowbiteDarkThemeToggleTheme>;
-  resetTheme?: ResetTheme<FlowbiteDarkThemeToggleTheme>;
+  theme?: DeepPartial<DarkThemeToggleTheme>;
+  resetTheme?: ResetTheme<DarkThemeToggleTheme>;
 }
 
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({

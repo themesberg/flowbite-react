@@ -5,4 +5,4 @@ export type {
   FloatingLabelSizing,
   FloatingLabelVariant,
 } from "./FloatingLabel";
-export type { FlowbiteFloatingLabelTheme } from "./theme";
+export type { FloatingLabelTheme } from "./theme";

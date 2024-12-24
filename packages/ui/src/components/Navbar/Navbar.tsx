@@ -7,26 +7,26 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
-import type { FlowbiteNavbarBrandTheme } from "./NavbarBrand";
+import type { NavbarBrandTheme } from "./NavbarBrand";
 import { NavbarBrand } from "./NavbarBrand";
-import type { FlowbiteNavbarCollapseTheme } from "./NavbarCollapse";
+import type { NavbarCollapseTheme } from "./NavbarCollapse";
 import { NavbarCollapse } from "./NavbarCollapse";
 import { NavbarContext } from "./NavbarContext";
-import type { FlowbiteNavbarLinkTheme } from "./NavbarLink";
+import type { NavbarLinkTheme } from "./NavbarLink";
 import { NavbarLink } from "./NavbarLink";
-import type { FlowbiteNavbarToggleTheme } from "./NavbarToggle";
+import type { NavbarToggleThem } from "./NavbarToggle";
 import { NavbarToggle } from "./NavbarToggle";
 import { navbarTheme } from "./theme";
 
-export interface FlowbiteNavbarTheme {
-  root: FlowbiteNavbarRootTheme;
-  brand: FlowbiteNavbarBrandTheme;
-  collapse: FlowbiteNavbarCollapseTheme;
-  link: FlowbiteNavbarLinkTheme;
-  toggle: FlowbiteNavbarToggleTheme;
+export interface NavbarTheme {
+  root: NavbarRootTheme;
+  brand: NavbarBrandTheme;
+  collapse: NavbarCollapseTheme;
+  link: NavbarLinkTheme;
+  toggle: NavbarToggleThem;
 }
 
-export interface FlowbiteNavbarRootTheme {
+export interface NavbarRootTheme {
   base: string;
   rounded: FlowbiteBoolean;
   bordered: FlowbiteBoolean;
@@ -41,8 +41,8 @@ export interface NavbarComponentProps extends ComponentProps<"nav"> {
   fluid?: boolean;
   rounded?: boolean;
   border?: boolean;
-  theme?: DeepPartial<FlowbiteNavbarTheme>;
-  resetTheme?: ResetTheme<FlowbiteNavbarTheme>;
+  theme?: DeepPartial<NavbarTheme>;
+  resetTheme?: ResetTheme<NavbarTheme>;
 }
 
 const NavbarComponent: FC<NavbarComponentProps> = ({

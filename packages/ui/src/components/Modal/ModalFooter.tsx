@@ -9,14 +9,14 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import { useModalContext } from "./ModalContext";
 import { modalTheme } from "./theme";
 
-export interface FlowbiteModalFooterTheme {
+export interface ModalFooterTheme {
   base: string;
   popup: string;
 }
 
 export interface ModalFooterProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<FlowbiteModalFooterTheme>;
-  resetTheme?: ResetTheme<FlowbiteModalFooterTheme>;
+  theme?: DeepPartial<ModalFooterTheme>;
+  resetTheme?: ResetTheme<ModalFooterTheme>;
 }
 
 export const ModalFooter: FC<ModalFooterProps> = ({

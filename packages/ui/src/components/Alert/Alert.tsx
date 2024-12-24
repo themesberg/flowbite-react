@@ -9,17 +9,17 @@ import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../typ
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { alertTheme } from "./theme";
 
-export interface FlowbiteAlertTheme {
+export interface AlertTheme {
   base: string;
   borderAccent: string;
-  closeButton: FlowbiteAlertCloseButtonTheme;
+  closeButton: AlertCloseButtonTheme;
   color: FlowbiteColors;
   icon: string;
   rounded: string;
   wrapper: string;
 }
 
-export interface FlowbiteAlertCloseButtonTheme {
+export interface AlertCloseButtonTheme {
   base: string;
   color: FlowbiteColors;
   icon: string;
@@ -31,8 +31,8 @@ export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
   icon?: FC<ComponentProps<"svg">>;
   onDismiss?: boolean | (() => void);
   rounded?: boolean;
-  theme?: DeepPartial<FlowbiteAlertTheme>;
-  resetTheme?: ResetTheme<FlowbiteAlertTheme>;
+  theme?: DeepPartial<AlertTheme>;
+  resetTheme?: ResetTheme<AlertTheme>;
   withBorderAccent?: boolean;
 }
 

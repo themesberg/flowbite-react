@@ -10,13 +10,13 @@ import { useDropdownContext } from "./DropdownContext";
 import { DropdownDivider } from "./DropdownDivider";
 import { dropdownTheme } from "./theme";
 
-export interface FlowbiteDropdownHeaderTheme {
+export interface DropdownHeaderTheme {
   header: string;
 }
 
 export interface DropdownHeaderProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<FlowbiteDropdownHeaderTheme>;
-  resetTheme?: ResetTheme<FlowbiteDropdownHeaderTheme>;
+  theme?: DeepPartial<DropdownHeaderTheme>;
+  resetTheme?: ResetTheme<DropdownHeaderTheme>;
 }
 
 export const DropdownHeader: FC<DropdownHeaderProps> = ({

@@ -2,11 +2,11 @@
 
 import { createContext, useContext } from "react";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteSidebarTheme } from "./Sidebar";
+import type { SidebarTheme } from "./Sidebar";
 
 export type SidebarContext = {
-  theme?: DeepPartial<FlowbiteSidebarTheme>;
-  resetTheme?: ResetTheme<FlowbiteSidebarTheme>;
+  theme?: DeepPartial<SidebarTheme>;
+  resetTheme?: ResetTheme<SidebarTheme>;
   isCollapsed: boolean;
 };
 

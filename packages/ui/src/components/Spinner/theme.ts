@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteSpinnerTheme } from "./Spinner";
+import type { SpinnerTheme } from "./Spinner";
 
-export const spinnerTheme: FlowbiteSpinnerTheme = createTheme({
+export const spinnerTheme: SpinnerTheme = createTheme({
   base: "inline animate-spin text-gray-200",
   color: {
     failure: "fill-red-600",

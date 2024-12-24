@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteFileInputTheme } from "./FileInput";
+import type { FileInputTheme } from "./FileInput";
 
-export const fileInputTheme: FlowbiteFileInputTheme = createTheme({
+export const fileInputTheme: FileInputTheme = createTheme({
   root: {
     base: "flex",
   },

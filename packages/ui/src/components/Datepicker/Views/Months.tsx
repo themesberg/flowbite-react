@@ -5,7 +5,7 @@ import { twMerge } from "../../../helpers/tailwind-merge";
 import { useDatePickerContext } from "../DatepickerContext";
 import { getFormattedDate, isDateEqual, isDateInRange, Views } from "../helpers";
 
-export interface FlowbiteDatepickerViewsMonthsTheme {
+export interface DatepickerViewsMonthsTheme {
   items: {
     base: string;
     item: {

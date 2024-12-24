@@ -3,15 +3,15 @@
 import type { FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
-import type { FlowbiteNavbarTheme, NavbarComponentProps } from "../Navbar";
+import type { NavbarComponentProps, NavbarTheme } from "../Navbar";
 import { Navbar } from "../Navbar";
-import { FlowbiteMegaMenuDropdownTheme, MegaMenuDropdown } from "./MegaMenuDropdown";
-import { FlowbiteMegaMenuDropdownToggleTheme, MegaMenuDropdownToggle } from "./MegaMenuDropdownToggle";
+import { MegaMenuDropdown, MegaMenuDropdownTheme } from "./MegaMenuDropdown";
+import { MegaMenuDropdownToggle, MegaMenuDropdownToggleTheme } from "./MegaMenuDropdownToggle";
 import { megaMenuTheme } from "./theme";
 
-export interface FlowbiteMegaMenuTheme extends FlowbiteNavbarTheme {
-  dropdown: FlowbiteMegaMenuDropdownTheme;
-  dropdownToggle: FlowbiteMegaMenuDropdownToggleTheme;
+export interface MegaMenuTheme extends NavbarTheme {
+  dropdown: MegaMenuDropdownTheme;
+  dropdownToggle: MegaMenuDropdownToggleTheme;
 }
 
 export type MegaMenuProps = NavbarComponentProps;
@@ -27,8 +27,9 @@ const MegaMenuComponent: FC<MegaMenuProps> = ({ children, theme: customTheme, re
   );
 };
 
+MegaMenuComponent.displayName = "MegaMenu";
+
 export const MegaMenu = Object.assign(MegaMenuComponent, {
   Dropdown: MegaMenuDropdown,
   DropdownToggle: MegaMenuDropdownToggle,
 });
-MegaMenuComponent.displayName = "MegaMenu";

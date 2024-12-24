@@ -6,27 +6,27 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { Tooltip } from "../Tooltip";
-import type { FlowbiteClipboardWithIconTheme } from "./ClipboardWithIcon";
+import type { ClipboardWithIconTheme } from "./ClipboardWithIcon";
 import { ClipboardWithIcon } from "./ClipboardWithIcon";
-import type { FlowbiteClipboardWithIconTextTheme } from "./ClipboardWithIconText";
+import type { ClipboardWithIconTextTheme } from "./ClipboardWithIconText";
 import { ClipboardWithIconText } from "./ClipboardWithIconText";
 import { copyToClipboard } from "./helpers";
 import { clipboardTheme } from "./theme";
 
-export interface FlowbiteClipboardTheme {
+export interface ClipboardTheme {
   button: {
     base: string;
     label: string;
   };
-  withIcon: FlowbiteClipboardWithIconTheme;
-  withIconText: FlowbiteClipboardWithIconTextTheme;
+  withIcon: ClipboardWithIconTheme;
+  withIconText: ClipboardWithIconTextTheme;
 }
 
 export interface ClipboardProps extends ComponentProps<"button"> {
   valueToCopy: string;
   label?: ReactNode;
-  theme?: DeepPartial<FlowbiteClipboardTheme["button"]>;
-  resetTheme?: ResetTheme<FlowbiteClipboardTheme["button"]>;
+  theme?: DeepPartial<ClipboardTheme["button"]>;
+  resetTheme?: ResetTheme<ClipboardTheme["button"]>;
 }
 
 const ClipboardComponent = forwardRef<HTMLButtonElement, ClipboardProps>(

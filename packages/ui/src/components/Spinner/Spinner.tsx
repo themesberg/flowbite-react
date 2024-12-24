@@ -8,7 +8,7 @@ import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../typ
 import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { spinnerTheme } from "./theme";
 
-export interface FlowbiteSpinnerTheme {
+export interface SpinnerTheme {
   base: string;
   color: SpinnerColors;
   light: {
@@ -37,8 +37,8 @@ export interface SpinnerProps extends Omit<ComponentProps<"span">, "color"> {
   color?: DynamicStringEnumKeysOf<SpinnerColors>;
   light?: boolean;
   size?: DynamicStringEnumKeysOf<SpinnerSizes>;
-  theme?: DeepPartial<FlowbiteSpinnerTheme>;
-  resetTheme?: ResetTheme<FlowbiteSpinnerTheme>;
+  theme?: DeepPartial<SpinnerTheme>;
+  resetTheme?: ResetTheme<SpinnerTheme>;
 }
 
 export const Spinner: FC<SpinnerProps> = ({

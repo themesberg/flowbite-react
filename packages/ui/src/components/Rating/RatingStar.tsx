@@ -11,21 +11,21 @@ import type { FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { useRatingContext } from "./RatingContext";
 import { ratingTheme } from "./theme";
 
-export interface FlowbiteRatingStarTheme {
+export interface RatingStarTheme {
   empty: string;
   filled: string;
-  sizes: FlowbiteStarSizes;
+  sizes: RatingStarSizes;
 }
 
-export interface FlowbiteStarSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg"> {
+export interface RatingStarSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg"> {
   [key: string]: string;
 }
 
 export interface RatingStarProps extends ComponentProps<"svg"> {
   filled?: boolean;
   starIcon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<FlowbiteRatingStarTheme>;
-  resetTheme?: ResetTheme<FlowbiteRatingStarTheme>;
+  theme?: DeepPartial<RatingStarTheme>;
+  resetTheme?: ResetTheme<RatingStarTheme>;
 }
 
 export const RatingStar: FC<RatingStarProps> = ({

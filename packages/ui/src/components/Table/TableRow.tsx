@@ -9,15 +9,15 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import { useTableContext } from "./TableContext";
 import { tableTheme } from "./theme";
 
-export interface FlowbiteTableRowTheme {
+export interface TableRowTheme {
   base: string;
   hovered: string;
   striped: string;
 }
 
 export interface TableRowProps extends ComponentPropsWithRef<"tr"> {
-  theme?: DeepPartial<FlowbiteTableRowTheme>;
-  resetTheme?: ResetTheme<FlowbiteTableRowTheme>;
+  theme?: DeepPartial<TableRowTheme>;
+  resetTheme?: ResetTheme<TableRowTheme>;
 }
 
 export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(

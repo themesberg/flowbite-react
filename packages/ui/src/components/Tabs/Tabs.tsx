@@ -11,7 +11,7 @@ import type { TabItemProps } from "./TabItem";
 import { TabItem } from "./TabItem";
 import { tabsTheme } from "./theme";
 
-export interface FlowbiteTabsTheme {
+export interface TabsTheme {
   base: string;
   tablist: {
     base: string;
@@ -58,8 +58,8 @@ interface TabKeyboardEventProps extends TabEventProps {
 export interface TabsProps extends Omit<ComponentProps<"div">, "ref"> {
   onActiveTabChange?: (activeTab: number) => void;
   variant?: keyof TabStyles;
-  theme?: DeepPartial<FlowbiteTabsTheme>;
-  resetTheme?: ResetTheme<FlowbiteTabsTheme>;
+  theme?: DeepPartial<TabsTheme>;
+  resetTheme?: ResetTheme<TabsTheme>;
 }
 
 export interface TabsRef {

@@ -5,22 +5,22 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
-import { TableBody, type FlowbiteTableBodyTheme } from "./TableBody";
+import { TableBody, type TableBodyTheme } from "./TableBody";
 import { TableCell } from "./TableCell";
 import { TableContext } from "./TableContext";
-import { TableHead, type FlowbiteTableHeadTheme } from "./TableHead";
+import { TableHead, type TableHeadTheme } from "./TableHead";
 import { TableHeadCell } from "./TableHeadCell";
-import { TableRow, type FlowbiteTableRowTheme } from "./TableRow";
+import { TableRow, type TableRowTheme } from "./TableRow";
 import { tableTheme } from "./theme";
 
-export interface FlowbiteTableTheme {
-  root: FlowbiteTableRootTheme;
-  head: FlowbiteTableHeadTheme;
-  row: FlowbiteTableRowTheme;
-  body: FlowbiteTableBodyTheme;
+export interface TableTheme {
+  root: TableRootTheme;
+  head: TableHeadTheme;
+  row: TableRowTheme;
+  body: TableBodyTheme;
 }
 
-export interface FlowbiteTableRootTheme {
+export interface TableRootTheme {
   base: string;
   shadow: string;
   wrapper: string;
@@ -29,8 +29,8 @@ export interface FlowbiteTableRootTheme {
 export interface TableProps extends ComponentPropsWithRef<"table"> {
   striped?: boolean;
   hoverable?: boolean;
-  theme?: DeepPartial<FlowbiteTableTheme>;
-  resetTheme?: ResetTheme<FlowbiteTableTheme>;
+  theme?: DeepPartial<TableTheme>;
+  resetTheme?: ResetTheme<TableTheme>;
 }
 
 const TableComponent = forwardRef<HTMLTableElement, TableProps>(

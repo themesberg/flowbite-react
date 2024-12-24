@@ -1,2 +1,2 @@
 export { Kbd } from "./Kbd";
-export type { FlowbiteKbdRootTheme, FlowbiteKbdTheme, KbdProps } from "./Kbd";
+export type { KbdRootTheme, KbdTheme, KbdProps } from "./Kbd";

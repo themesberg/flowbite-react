@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteHelperTextTheme } from "./HelperText";
+import type { HelperTextTheme } from "./HelperText";
 
-export const helperTextTheme: FlowbiteHelperTextTheme = createTheme({
+export const helperTextTheme: HelperTextTheme = createTheme({
   root: {
     base: "mt-2 text-sm",
     colors: {

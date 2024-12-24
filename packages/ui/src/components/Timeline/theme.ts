@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteTimelineTheme } from "./Timeline";
+import type { TimelineTheme } from "./Timeline";
 
-export const timelineTheme: FlowbiteTimelineTheme = createTheme({
+export const timelineTheme: TimelineTheme = createTheme({
   root: {
     direction: {
       horizontal: "sm:flex",

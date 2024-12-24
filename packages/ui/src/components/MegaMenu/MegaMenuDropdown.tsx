@@ -5,17 +5,17 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
-import { Dropdown, FlowbiteDropdownTheme } from "../Dropdown";
+import { Dropdown, DropdownTheme } from "../Dropdown";
 import { megaMenuTheme } from "./theme";
 
-export interface FlowbiteMegaMenuDropdownTheme {
+export interface MegaMenuDropdownTheme {
   base: string;
-  toggle: FlowbiteDropdownTheme;
+  toggle: DropdownTheme;
 }
 
 export interface MegaMenuDropdownProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<FlowbiteMegaMenuDropdownTheme>;
-  resetTheme?: ResetTheme<FlowbiteMegaMenuDropdownTheme>;
+  theme?: DeepPartial<MegaMenuDropdownTheme>;
+  resetTheme?: ResetTheme<MegaMenuDropdownTheme>;
   toggle?: JSX.Element;
 }
 

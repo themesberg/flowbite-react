@@ -8,7 +8,7 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { listGroupTheme } from "./theme";
 
-export interface FlowbiteListGroupItemTheme {
+export interface ListGroupItemTheme {
   base: string;
   link: {
     base: string;
@@ -25,8 +25,8 @@ export interface ListGroupItemProps extends PropsWithChildren {
   href?: string;
   icon?: FC<ComponentProps<"svg">>;
   onClick?: () => void;
-  theme?: DeepPartial<FlowbiteListGroupItemTheme>;
-  resetTheme?: ResetTheme<FlowbiteListGroupItemTheme>;
+  theme?: DeepPartial<ListGroupItemTheme>;
+  resetTheme?: ResetTheme<ListGroupItemTheme>;
 }
 
 export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & ComponentProps<"button">> = ({

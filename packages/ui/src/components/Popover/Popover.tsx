@@ -8,12 +8,12 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteFloatingArrowTheme } from "../Floating";
+import type { FloatingArrowTheme } from "../Floating";
 import { getArrowPlacement } from "../Floating/helpers";
 import { popoverTheme } from "./theme";
 
-export interface FlowbitePopoverTheme {
-  arrow: Omit<FlowbiteFloatingArrowTheme, "style">;
+export interface PopoverTheme {
+  arrow: Omit<FloatingArrowTheme, "style">;
   base: string;
   content: string;
 }
@@ -22,8 +22,8 @@ export interface PopoverProps extends Omit<ComponentProps<"div">, "content" | "s
   arrow?: boolean;
   content: ReactNode;
   placement?: "auto" | Placement;
-  theme?: DeepPartial<FlowbitePopoverTheme>;
-  resetTheme?: ResetTheme<FlowbitePopoverTheme>;
+  theme?: DeepPartial<PopoverTheme>;
+  resetTheme?: ResetTheme<PopoverTheme>;
   trigger?: "hover" | "click";
   initialOpen?: boolean;
   open?: boolean;

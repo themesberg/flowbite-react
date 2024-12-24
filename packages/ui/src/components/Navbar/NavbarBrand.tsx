@@ -9,15 +9,15 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
 import { navbarTheme } from "./theme";
 
-export interface FlowbiteNavbarBrandTheme {
+export interface NavbarBrandTheme {
   base: string;
 }
 
 export interface NavbarBrandProps extends ComponentProps<"a">, Record<string, unknown> {
   as?: ElementType;
   href?: string;
-  theme?: DeepPartial<FlowbiteNavbarBrandTheme>;
-  resetTheme?: ResetTheme<FlowbiteNavbarBrandTheme>;
+  theme?: DeepPartial<NavbarBrandTheme>;
+  resetTheme?: ResetTheme<NavbarBrandTheme>;
 }
 
 export const NavbarBrand: FC<NavbarBrandProps> = ({

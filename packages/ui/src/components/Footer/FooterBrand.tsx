@@ -7,7 +7,7 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { footerTheme } from "./theme";
 
-export interface FlowbiteFooterBrandTheme {
+export interface FooterBrandTheme {
   base: string;
   img: string;
   span: string;
@@ -19,8 +19,8 @@ export interface FooterBrandProps extends PropsWithChildren {
   href?: string;
   name?: string;
   src: string;
-  theme?: DeepPartial<FlowbiteFooterBrandTheme>;
-  resetTheme?: ResetTheme<FlowbiteFooterBrandTheme>;
+  theme?: DeepPartial<FooterBrandTheme>;
+  resetTheme?: ResetTheme<FooterBrandTheme>;
 }
 
 export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentProps<"img">> = ({

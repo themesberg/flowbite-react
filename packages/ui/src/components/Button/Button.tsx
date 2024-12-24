@@ -19,7 +19,7 @@ import { ButtonBase, type ButtonBaseProps } from "./ButtonBase";
 import type { PositionInButtonGroup } from "./ButtonGroup";
 import { buttonGroupTheme, buttonTheme } from "./theme";
 
-export interface FlowbiteButtonTheme {
+export interface ButtonTheme {
   base: string;
   fullSized: string;
   color: FlowbiteColors;
@@ -29,21 +29,21 @@ export interface FlowbiteButtonTheme {
   spinnerLeftPosition: ButtonSizes;
   gradient: ButtonGradientColors;
   gradientDuoTone: ButtonGradientDuoToneColors;
-  inner: FlowbiteButtonInnerTheme;
+  inner: ButtonInnerTheme;
   label: string;
-  outline: FlowbiteButtonOutlineTheme;
+  outline: ButtonOutlineTheme;
   pill: FlowbiteBoolean;
   size: ButtonSizes;
 }
 
-export interface FlowbiteButtonInnerTheme {
+export interface ButtonInnerTheme {
   base: string;
   position: PositionInButtonGroup;
   outline: string;
   isProcessingPadding: ButtonSizes;
 }
 
-export interface FlowbiteButtonOutlineTheme extends FlowbiteBoolean {
+export interface ButtonOutlineTheme extends FlowbiteBoolean {
   color: ButtonOutlineColors;
   pill: FlowbiteBoolean;
 }
@@ -86,8 +86,8 @@ export type ButtonProps<T extends ElementType = "button"> = PolymorphicComponent
     pill?: boolean;
     positionInGroup?: keyof PositionInButtonGroup;
     size?: DynamicStringEnumKeysOf<ButtonSizes>;
-    theme?: DeepPartial<FlowbiteButtonTheme>;
-    resetTheme?: ResetTheme<FlowbiteButtonTheme>;
+    theme?: DeepPartial<ButtonTheme>;
+    resetTheme?: ResetTheme<ButtonTheme>;
   }
 >;
 

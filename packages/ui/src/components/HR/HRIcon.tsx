@@ -9,7 +9,7 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { hrTheme } from "./theme";
 
-export interface FlowbiteHRIconTheme {
+export interface HRIconTheme {
   base: string;
   hrLine: string;
   icon: {
@@ -19,8 +19,8 @@ export interface FlowbiteHRIconTheme {
 }
 
 export interface HRIconProps extends Omit<ComponentProps<"hr">, "ref"> {
-  theme?: DeepPartial<FlowbiteHRIconTheme>;
-  resetTheme?: ResetTheme<FlowbiteHRIconTheme>;
+  theme?: DeepPartial<HRIconTheme>;
+  resetTheme?: ResetTheme<HRIconTheme>;
   icon?: FC<ComponentProps<"svg">>;
 }
 

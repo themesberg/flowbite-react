@@ -8,13 +8,13 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { hrTheme } from "./theme";
 
-export interface FlowbiteHRSquareTheme {
+export interface HRSquareTheme {
   base: string;
 }
 
 export interface HRSquareProps extends Omit<ComponentProps<"hr">, "ref"> {
-  theme?: DeepPartial<FlowbiteHRSquareTheme>;
-  resetTheme?: ResetTheme<FlowbiteHRSquareTheme>;
+  theme?: DeepPartial<HRSquareTheme>;
+  resetTheme?: ResetTheme<HRSquareTheme>;
 }
 
 export const HRSquare = forwardRef<HTMLHRElement, HRSquareProps>(

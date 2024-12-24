@@ -1,2 +1,2 @@
 export { Card } from "./Card";
-export type { CardProps, FlowbiteCardImageTheme, FlowbiteCardRootTheme, FlowbiteCardTheme } from "./Card";
+export type { CardProps, CardImageTheme, CardRootTheme, CardTheme } from "./Card";

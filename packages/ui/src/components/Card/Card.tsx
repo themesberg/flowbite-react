@@ -9,19 +9,19 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { cardTheme } from "./theme";
 
-export interface FlowbiteCardTheme {
-  root: FlowbiteCardRootTheme;
-  img: FlowbiteCardImageTheme;
+export interface CardTheme {
+  root: CardRootTheme;
+  img: CardImageTheme;
 }
 
-export interface FlowbiteCardRootTheme {
+export interface CardRootTheme {
   base: string;
   children: string;
   horizontal: FlowbiteBoolean;
   href: string;
 }
 
-export interface FlowbiteCardImageTheme {
+export interface CardImageTheme {
   base: string;
   horizontal: FlowbiteBoolean;
 }
@@ -29,8 +29,8 @@ export interface FlowbiteCardImageTheme {
 interface CommonCardProps extends ComponentProps<"div"> {
   horizontal?: boolean;
   href?: string;
-  theme?: DeepPartial<FlowbiteCardTheme>;
-  resetTheme?: ResetTheme<FlowbiteCardTheme>;
+  theme?: DeepPartial<CardTheme>;
+  resetTheme?: ResetTheme<CardTheme>;
 }
 
 export type CardProps = (
@@ -38,7 +38,7 @@ export type CardProps = (
   | {
       /** Allows to provide a custom render function for the image component. Useful in Next.JS and Gatsby. **Setting this will disable `imgSrc` and `imgAlt`**.
        */
-      renderImage?: (theme: DeepPartial<FlowbiteCardTheme>, horizontal: boolean) => JSX.Element;
+      renderImage?: (theme: DeepPartial<CardTheme>, horizontal: boolean) => JSX.Element;
       imgAlt?: never;
       imgSrc?: never;
     }

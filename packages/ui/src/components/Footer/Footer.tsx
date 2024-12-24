@@ -5,32 +5,32 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteFooterBrandTheme } from "./FooterBrand";
+import type { FooterBrandTheme } from "./FooterBrand";
 import { FooterBrand } from "./FooterBrand";
-import type { FlowbiteFooterCopyrightTheme } from "./FooterCopyright";
+import type { FooterCopyrightTheme } from "./FooterCopyright";
 import { FooterCopyright } from "./FooterCopyright";
-import type { FlowbiteFooterDividerTheme } from "./FooterDivider";
+import type { FooterDividerTheme } from "./FooterDivider";
 import { FooterDivider } from "./FooterDivider";
-import type { FlowbiteFooterIconTheme } from "./FooterIcon";
+import type { FooterIconTheme } from "./FooterIcon";
 import { FooterIcon } from "./FooterIcon";
 import { FooterLink } from "./FooterLink";
-import type { FlowbiteFooterLinkGroupTheme } from "./FooterLinkGroup";
+import type { FooterLinkGroupTheme } from "./FooterLinkGroup";
 import { FooterLinkGroup } from "./FooterLinkGroup";
-import type { FlowbiteFooterTitleTheme } from "./FooterTitle";
+import type { FooterTitleTheme } from "./FooterTitle";
 import { FooterTitle } from "./FooterTitle";
 import { footerTheme } from "./theme";
 
-export interface FlowbiteFooterTheme {
-  brand: FlowbiteFooterBrandTheme;
-  copyright: FlowbiteFooterCopyrightTheme;
-  divider: FlowbiteFooterDividerTheme;
-  groupLink: FlowbiteFooterLinkGroupTheme;
-  icon: FlowbiteFooterIconTheme;
-  root: FlowbiteFooterRootTheme;
-  title: FlowbiteFooterTitleTheme;
+export interface FooterTheme {
+  brand: FooterBrandTheme;
+  copyright: FooterCopyrightTheme;
+  divider: FooterDividerTheme;
+  groupLink: FooterLinkGroupTheme;
+  icon: FooterIconTheme;
+  root: FooterRootTheme;
+  title: FooterTitleTheme;
 }
 
-export interface FlowbiteFooterRootTheme {
+export interface FooterRootTheme {
   base: string;
   bgDark: string;
   container: string;
@@ -39,8 +39,8 @@ export interface FlowbiteFooterRootTheme {
 export interface FooterProps extends ComponentProps<"footer"> {
   bgDark?: boolean;
   container?: boolean;
-  theme?: DeepPartial<FlowbiteFooterTheme>;
-  resetTheme?: ResetTheme<FlowbiteFooterTheme>;
+  theme?: DeepPartial<FooterTheme>;
+  resetTheme?: ResetTheme<FooterTheme>;
 }
 
 export const FooterComponent: FC<FooterProps> = ({

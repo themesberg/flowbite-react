@@ -10,15 +10,15 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
 import { navbarTheme } from "./theme";
 
-export interface FlowbiteNavbarToggleTheme {
+export interface NavbarToggleThem {
   base: string;
   icon: string;
 }
 
 export interface NavbarToggleProps extends ComponentProps<"button"> {
   barIcon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<FlowbiteNavbarToggleTheme>;
-  resetTheme?: ResetTheme<FlowbiteNavbarToggleTheme>;
+  theme?: DeepPartial<NavbarToggleThem>;
+  resetTheme?: ResetTheme<NavbarToggleThem>;
 }
 
 export const NavbarToggle: FC<NavbarToggleProps> = ({

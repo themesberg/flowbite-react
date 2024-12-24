@@ -7,13 +7,13 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { megaMenuTheme } from "./theme";
 
-export interface FlowbiteMegaMenuDropdownToggleTheme {
+export interface MegaMenuDropdownToggleTheme {
   base: string;
 }
 
 export interface MegaMenuDropdownToggleProps extends ComponentProps<"button"> {
-  theme?: DeepPartial<FlowbiteMegaMenuDropdownToggleTheme>;
-  resetTheme?: ResetTheme<FlowbiteMegaMenuDropdownToggleTheme>;
+  theme?: DeepPartial<MegaMenuDropdownToggleTheme>;
+  resetTheme?: ResetTheme<MegaMenuDropdownToggleTheme>;
 }
 
 export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({

@@ -9,7 +9,7 @@ import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../typ
 import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { progressTheme } from "./theme";
 
-export interface FlowbiteProgressTheme {
+export interface ProgressTheme {
   base: string;
   label: string;
   bar: string;
@@ -37,8 +37,8 @@ export interface ProgressProps extends ComponentProps<"div"> {
   size?: DynamicStringEnumKeysOf<ProgressSizes>;
   textLabel?: string;
   textLabelPosition?: "inside" | "outside";
-  theme?: DeepPartial<FlowbiteProgressTheme>;
-  resetTheme?: ResetTheme<FlowbiteProgressTheme>;
+  theme?: DeepPartial<ProgressTheme>;
+  resetTheme?: ResetTheme<ProgressTheme>;
 }
 
 export const Progress: FC<ProgressProps> = ({

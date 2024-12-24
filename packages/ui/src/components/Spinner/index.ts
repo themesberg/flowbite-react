@@ -1,2 +1,2 @@
 export { Spinner } from "./Spinner";
-export type { FlowbiteSpinnerTheme, SpinnerColors, SpinnerProps, SpinnerSizes } from "./Spinner";
+export type { SpinnerTheme, SpinnerColors, SpinnerProps, SpinnerSizes } from "./Spinner";

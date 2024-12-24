@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteHRTheme } from "./HR";
+import type { HRTheme } from "./HR";
 
-export const hrTheme: FlowbiteHRTheme = createTheme({
+export const hrTheme: HRTheme = createTheme({
   root: {
     base: "my-8 h-px border-0 bg-gray-200 dark:bg-gray-700",
   },

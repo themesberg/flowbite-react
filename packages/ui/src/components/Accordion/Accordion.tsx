@@ -17,13 +17,13 @@ import type { FlowbiteAccordionTitleTheme } from "./AccordionTitle";
 import { AccordionTitle } from "./AccordionTitle";
 import { accordionTheme } from "./theme";
 
-export interface FlowbiteAccordionTheme {
-  root: FlowbiteAccordionRootTheme;
+export interface AccordionTheme {
+  root: AccordionRootTheme;
   content: FlowbiteAccordionComponentTheme;
   title: FlowbiteAccordionTitleTheme;
 }
 
-export interface FlowbiteAccordionRootTheme {
+export interface AccordionRootTheme {
   base: string;
   flush: FlowbiteBoolean;
 }
@@ -34,8 +34,8 @@ export interface AccordionProps extends ComponentProps<"div"> {
   children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];
   flush?: boolean;
   collapseAll?: boolean;
-  theme?: DeepPartial<FlowbiteAccordionTheme>;
-  resetTheme?: ResetTheme<FlowbiteAccordionTheme>;
+  theme?: DeepPartial<AccordionTheme>;
+  resetTheme?: ResetTheme<AccordionTheme>;
 }
 
 const AccordionComponent: FC<AccordionProps> = ({

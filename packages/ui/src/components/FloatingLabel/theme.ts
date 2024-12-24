@@ -96,4 +96,4 @@ export const floatingLabelTheme = createTheme({
   },
 });
 
-export type FlowbiteFloatingLabelTheme = typeof floatingLabelTheme;
+export type FloatingLabelTheme = typeof floatingLabelTheme;

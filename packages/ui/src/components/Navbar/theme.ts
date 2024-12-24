@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteNavbarTheme } from "./Navbar";
+import type { NavbarTheme } from "./Navbar";
 
-export const navbarTheme: FlowbiteNavbarTheme = createTheme({
+export const navbarTheme: NavbarTheme = createTheme({
   root: {
     base: "bg-white px-2 py-2.5 sm:px-4 dark:border-gray-700 dark:bg-gray-800",
     rounded: {

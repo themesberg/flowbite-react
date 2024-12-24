@@ -10,7 +10,7 @@ import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite/FlowbiteTheme"
 import { HelperText } from "../HelperText";
 import { textareaTheme } from "./theme";
 
-export interface FlowbiteTextareaTheme {
+export interface TextareaTheme {
   base: string;
   colors: TextareaColors;
   withShadow: FlowbiteBoolean;
@@ -24,8 +24,8 @@ export interface TextareaProps extends Omit<ComponentProps<"textarea">, "color" 
   color?: DynamicStringEnumKeysOf<TextareaColors>;
   helperText?: ReactNode;
   shadow?: boolean;
-  theme?: DeepPartial<FlowbiteTextareaTheme>;
-  resetTheme?: ResetTheme<FlowbiteTextareaTheme>;
+  theme?: DeepPartial<TextareaTheme>;
+  resetTheme?: ResetTheme<TextareaTheme>;
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(

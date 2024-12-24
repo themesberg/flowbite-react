@@ -7,36 +7,36 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { range } from "./helpers";
-import type { FlowbitePaginationButtonTheme, PaginationButtonProps } from "./PaginationButton";
+import type { PaginationButtonProps, PaginationButtonTheme } from "./PaginationButton";
 import { PaginationButton, PaginationNavigation } from "./PaginationButton";
 import { paginationTheme } from "./theme";
 
-export interface FlowbitePaginationTheme {
+export interface PaginationTheme {
   base: string;
-  layout: FlowbitePaginationLayoutTheme;
-  pages: FlowbitePaginationPagesTheme;
+  layout: PaginationLayoutTheme;
+  pages: PaginationPagesTheme;
 }
 
-export interface FlowbitePaginationRootTheme {
+export interface PaginationRootTheme {
   base: string;
 }
 
-export interface FlowbitePaginationLayoutTheme {
+export interface PaginationLayoutTheme {
   table: {
     base: string;
     span: string;
   };
 }
 
-export interface FlowbitePaginationPagesTheme {
+export interface PaginationPagesTheme {
   base: string;
   showIcon: string;
-  previous: FlowbitePaginationNavigationTheme;
-  next: FlowbitePaginationNavigationTheme;
-  selector: FlowbitePaginationButtonTheme;
+  previous: PaginationNavigationTheme;
+  next: PaginationNavigationTheme;
+  selector: PaginationButtonTheme;
 }
 
-export interface FlowbitePaginationNavigationTheme {
+export interface PaginationNavigationTheme {
   base: string;
   icon: string;
 }
@@ -49,8 +49,8 @@ export interface PaginationProps extends ComponentProps<"nav"> {
   previousLabel?: string;
   renderPaginationButton?: (props: PaginationButtonProps) => ReactNode;
   showIcons?: boolean;
-  theme?: DeepPartial<FlowbitePaginationTheme>;
-  resetTheme?: ResetTheme<FlowbitePaginationTheme>;
+  theme?: DeepPartial<PaginationTheme>;
+  resetTheme?: ResetTheme<PaginationTheme>;
   totalPages: number;
 }
 

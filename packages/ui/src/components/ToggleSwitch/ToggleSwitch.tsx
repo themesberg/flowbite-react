@@ -7,23 +7,23 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite/FlowbiteTheme";
-import type { FlowbiteTextInputSizes } from "../TextInput";
+import type { TextInputSizes } from "../TextInput";
 import { toggleSwitchTheme } from "./theme";
 
-export interface FlowbiteToggleSwitchTheme {
-  root: FlowbiteToggleSwitchRootTheme;
-  toggle: FlowbiteToggleSwitchToggleTheme;
+export interface ToggleSwitchTheme {
+  root: ToggleSwitchRootTheme;
+  toggle: ToggleSwitchToggleTheme;
 }
 
-export interface FlowbiteToggleSwitchRootTheme {
+export interface ToggleSwitchRootTheme {
   base: string;
   active: FlowbiteBoolean;
   label: string;
 }
 
-export interface FlowbiteToggleSwitchToggleTheme {
+export interface ToggleSwitchToggleTheme {
   base: string;
-  sizes: FlowbiteTextInputSizes;
+  sizes: TextInputSizes;
   checked: FlowbiteBoolean & {
     color: FlowbiteColors;
   };
@@ -32,11 +32,11 @@ export interface FlowbiteToggleSwitchToggleTheme {
 export type ToggleSwitchProps = Omit<ComponentProps<"button">, "onChange" | "ref"> & {
   checked: boolean;
   color?: DynamicStringEnumKeysOf<FlowbiteColors>;
-  sizing?: DynamicStringEnumKeysOf<FlowbiteTextInputSizes>;
+  sizing?: DynamicStringEnumKeysOf<TextInputSizes>;
   label?: string;
   onChange: (checked: boolean) => void;
-  theme?: DeepPartial<FlowbiteToggleSwitchTheme>;
-  resetTheme?: ResetTheme<FlowbiteToggleSwitchTheme>;
+  theme?: DeepPartial<ToggleSwitchTheme>;
+  resetTheme?: ResetTheme<ToggleSwitchTheme>;
 };
 
 export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(

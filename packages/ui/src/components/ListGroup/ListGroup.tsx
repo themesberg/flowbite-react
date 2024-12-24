@@ -6,22 +6,22 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteListGroupItemTheme } from "./ListGroupItem";
+import type { ListGroupItemTheme } from "./ListGroupItem";
 import { ListGroupItem } from "./ListGroupItem";
 import { listGroupTheme } from "./theme";
 
-export interface FlowbiteListGroupTheme {
-  root: FlowbiteListGroupRootTheme;
-  item: FlowbiteListGroupItemTheme;
+export interface ListGroupTheme {
+  root: ListGroupRootTheme;
+  item: ListGroupItemTheme;
 }
 
-export interface FlowbiteListGroupRootTheme {
+export interface ListGroupRootTheme {
   base: string;
 }
 
 export interface ListGroupProps extends ComponentProps<"ul"> {
-  theme?: DeepPartial<FlowbiteListGroupTheme>;
-  resetTheme?: ResetTheme<FlowbiteListGroupTheme>;
+  theme?: DeepPartial<ListGroupTheme>;
+  resetTheme?: ResetTheme<ListGroupTheme>;
 }
 
 const ListGroupComponent: FC<ListGroupProps> = ({ children, className, theme: customTheme, resetTheme, ...props }) => {

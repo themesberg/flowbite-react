@@ -7,29 +7,29 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteHRIconTheme } from "./HRIcon";
+import type { HRIconTheme } from "./HRIcon";
 import { HRIcon } from "./HRIcon";
-import type { FlowbiteHRSquareTheme } from "./HRSquare";
+import type { HRSquareTheme } from "./HRSquare";
 import { HRSquare } from "./HRSquare";
-import type { FlowbiteHRTextTheme } from "./HRText";
+import type { HRTextTheme } from "./HRText";
 import { HRText } from "./HRText";
-import type { FlowbiteHRTrimmedTheme } from "./HRTrimmed";
+import type { HRTrimmedTheme } from "./HRTrimmed";
 import { HRTrimmed } from "./HRTrimmed";
 import { hrTheme } from "./theme";
 
-export interface FlowbiteHRTheme {
+export interface HRTheme {
   root: {
     base: string;
   };
-  trimmed: FlowbiteHRTrimmedTheme;
-  icon: FlowbiteHRIconTheme;
-  text: FlowbiteHRTextTheme;
-  square: FlowbiteHRSquareTheme;
+  trimmed: HRTrimmedTheme;
+  icon: HRIconTheme;
+  text: HRTextTheme;
+  square: HRSquareTheme;
 }
 
 export interface HRProps extends Omit<ComponentProps<"hr">, "ref"> {
-  theme?: DeepPartial<FlowbiteHRTheme>;
-  resetTheme?: ResetTheme<FlowbiteHRTheme>;
+  theme?: DeepPartial<HRTheme>;
+  resetTheme?: ResetTheme<HRTheme>;
 }
 
 const HRComponent = forwardRef<HTMLHRElement, HRProps>(

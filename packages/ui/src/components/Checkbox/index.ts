@@ -1,2 +1,2 @@
 export { Checkbox } from "./Checkbox";
-export type { CheckboxProps, FlowbiteCheckboxRootTheme, FlowbiteCheckboxTheme } from "./Checkbox";
+export type { CheckboxProps, CheckboxRootTheme, CheckboxTheme } from "./Checkbox";

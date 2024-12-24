@@ -8,11 +8,11 @@ import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../typ
 import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import { labelTheme } from "./theme";
 
-export interface FlowbiteLabelTheme {
-  root: FlowbiteLabelRootTheme;
+export interface LabelTheme {
+  root: LabelRootTheme;
 }
 
-export interface FlowbiteLabelRootTheme {
+export interface LabelRootTheme {
   base: string;
   colors: LabelColors;
   disabled: string;
@@ -26,8 +26,8 @@ export interface LabelColors extends FlowbiteStateColors {
 export interface LabelProps extends Omit<ComponentProps<"label">, "color"> {
   color?: DynamicStringEnumKeysOf<LabelColors>;
   disabled?: boolean;
-  theme?: DeepPartial<FlowbiteLabelTheme>;
-  resetTheme?: ResetTheme<FlowbiteLabelTheme>;
+  theme?: DeepPartial<LabelTheme>;
+  resetTheme?: ResetTheme<LabelTheme>;
   value?: string;
 }
 

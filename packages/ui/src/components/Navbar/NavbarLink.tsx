@@ -10,7 +10,7 @@ import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useNavbarContext } from "./NavbarContext";
 import { navbarTheme } from "./theme";
 
-export interface FlowbiteNavbarLinkTheme {
+export interface NavbarLinkTheme {
   base: string;
   active: FlowbiteBoolean;
   disabled: FlowbiteBoolean;
@@ -21,8 +21,8 @@ export interface NavbarLinkProps extends ComponentProps<"a">, Record<string, unk
   as?: ElementType;
   disabled?: boolean;
   href?: string;
-  theme?: DeepPartial<FlowbiteNavbarLinkTheme>;
-  resetTheme?: ResetTheme<FlowbiteNavbarLinkTheme>;
+  theme?: DeepPartial<NavbarLinkTheme>;
+  resetTheme?: ResetTheme<NavbarLinkTheme>;
 }
 
 export const NavbarLink: FC<NavbarLinkProps> = ({

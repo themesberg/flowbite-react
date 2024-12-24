@@ -8,8 +8,8 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { getArrowPlacement } from "./helpers";
 
-export interface FlowbiteFloatingTheme {
-  arrow: FlowbiteFloatingArrowTheme;
+export interface FloatingTheme {
+  arrow: FloatingArrowTheme;
   animation: string;
   base: string;
   content: string;
@@ -22,7 +22,7 @@ export interface FlowbiteFloatingTheme {
   target: string;
 }
 
-export interface FlowbiteFloatingArrowTheme {
+export interface FloatingArrowTheme {
   base: string;
   placement: string;
   style: {
@@ -40,7 +40,7 @@ export interface FloatingProps extends Omit<ComponentProps<"div">, "content" | "
   content: ReactNode;
   placement?: "auto" | Placement;
   style?: FloatingStyle;
-  theme: FlowbiteFloatingTheme;
+  theme: FloatingTheme;
   trigger?: "hover" | "click";
   minWidth?: number;
 }

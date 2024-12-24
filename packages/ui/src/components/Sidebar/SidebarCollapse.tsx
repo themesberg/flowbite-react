@@ -15,7 +15,7 @@ import type { SidebarItemProps } from "./SidebarItem";
 import { SidebarItemContext } from "./SidebarItemContext";
 import { sidebarTheme } from "./theme";
 
-export interface FlowbiteSidebarCollapseTheme {
+export interface SidebarCollapseTheme {
   button: string;
   icon: {
     base: string;
@@ -37,9 +37,9 @@ export interface SidebarCollapseProps
   onClick?: ComponentProps<"button">["onClick"];
   open?: boolean;
   chevronIcon?: FC<ComponentProps<"svg">>;
-  renderChevronIcon?: (theme: FlowbiteSidebarCollapseTheme, open: boolean) => ReactElement;
-  theme?: DeepPartial<FlowbiteSidebarCollapseTheme>;
-  resetTheme?: ResetTheme<FlowbiteSidebarCollapseTheme>;
+  renderChevronIcon?: (theme: SidebarCollapseTheme, open: boolean) => ReactElement;
+  theme?: DeepPartial<SidebarCollapseTheme>;
+  resetTheme?: ResetTheme<SidebarCollapseTheme>;
 }
 
 export const SidebarCollapse: FC<SidebarCollapseProps> = ({

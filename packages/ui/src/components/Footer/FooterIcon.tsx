@@ -7,7 +7,7 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { footerTheme } from "./theme";
 
-export interface FlowbiteFooterIconTheme {
+export interface FooterIconTheme {
   base: string;
   size: string;
 }
@@ -17,8 +17,8 @@ export interface FooterIconProps extends PropsWithChildren {
   className?: string;
   href?: string;
   icon: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<FlowbiteFooterIconTheme>;
-  resetTheme?: ResetTheme<FlowbiteFooterIconTheme>;
+  theme?: DeepPartial<FooterIconTheme>;
+  resetTheme?: ResetTheme<FooterIconTheme>;
 }
 
 export const FooterIcon: FC<FooterIconProps & ComponentProps<"a"> & ComponentProps<"svg">> = ({

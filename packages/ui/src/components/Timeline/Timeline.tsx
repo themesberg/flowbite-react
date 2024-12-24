@@ -9,25 +9,25 @@ import { timelineTheme } from "./theme";
 import { TimelineBody } from "./TimelineBody";
 import { TimelineContent } from "./TimelineContent";
 import { TimelineContext } from "./TimelineContext";
-import { TimelineItem, type FlowbiteTimelineItemTheme } from "./TimelineItem";
+import { TimelineItem, type TimelineItemTheme } from "./TimelineItem";
 import { TimelinePoint } from "./TimelinePoint";
 import { TimelineTime } from "./TimelineTime";
 import { TimelineTitle } from "./TimelineTitle";
 
-export interface FlowbiteTimelineTheme {
+export interface TimelineTheme {
   root: {
     direction: {
       horizontal: string;
       vertical: string;
     };
   };
-  item: FlowbiteTimelineItemTheme;
+  item: TimelineItemTheme;
 }
 
 export interface TimelineProps extends ComponentProps<"ol"> {
   horizontal?: boolean;
-  theme?: DeepPartial<FlowbiteTimelineTheme>;
-  resetTheme?: ResetTheme<FlowbiteTimelineTheme>;
+  theme?: DeepPartial<TimelineTheme>;
+  resetTheme?: ResetTheme<TimelineTheme>;
 }
 
 const TimelineComponent: FC<TimelineProps> = ({

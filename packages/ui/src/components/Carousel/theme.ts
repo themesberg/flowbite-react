@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteCarouselTheme } from "./Carousel";
+import type { CarouselTheme } from "./Carousel";
 
-export const carouselTheme: FlowbiteCarouselTheme = createTheme({
+export const carouselTheme: CarouselTheme = createTheme({
   root: {
     base: "relative h-full w-full",
     leftControl: "absolute left-0 top-0 flex h-full items-center justify-center px-4 focus:outline-none",

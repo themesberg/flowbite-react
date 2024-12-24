@@ -11,7 +11,7 @@ import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useSidebarContext } from "./SidebarContext";
 import { sidebarTheme } from "./theme";
 
-export interface FlowbiteSidebarLogoTheme {
+export interface SidebarLogoTheme {
   base: string;
   collapsed: FlowbiteBoolean;
   img: string;
@@ -21,8 +21,8 @@ export interface SidebarLogoProps extends ComponentProps<"a"> {
   href: string;
   img: string;
   imgAlt?: string;
-  theme?: DeepPartial<FlowbiteSidebarLogoTheme>;
-  resetTheme?: ResetTheme<FlowbiteSidebarLogoTheme>;
+  theme?: DeepPartial<SidebarLogoTheme>;
+  resetTheme?: ResetTheme<SidebarLogoTheme>;
 }
 
 export const SidebarLogo: FC<SidebarLogoProps> = ({

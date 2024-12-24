@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteRangeSliderTheme } from "./RangeSlider";
+import type { RangeSliderTheme } from "./RangeSlider";
 
-export const rangeSliderTheme: FlowbiteRangeSliderTheme = createTheme({
+export const rangeSliderTheme: RangeSliderTheme = createTheme({
   root: {
     base: "flex",
   },

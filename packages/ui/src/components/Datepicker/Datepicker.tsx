@@ -7,7 +7,7 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
-import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from "../TextInput";
+import { TextInput, type TextInputProps, type TextInputTheme } from "../TextInput";
 import { DatepickerContext } from "./DatepickerContext";
 import {
   addMonths,
@@ -20,27 +20,27 @@ import {
   WeekStart,
 } from "./helpers";
 import { datePickerTheme } from "./theme";
-import type { FlowbiteDatepickerViewsDaysTheme } from "./Views/Days";
+import type { DatepickerViewsDaysTheme } from "./Views/Days";
 import { DatepickerViewsDays } from "./Views/Days";
-import { DatepickerViewsDecades, type FlowbiteDatepickerViewsDecadesTheme } from "./Views/Decades";
-import { DatepickerViewsMonth, type FlowbiteDatepickerViewsMonthsTheme } from "./Views/Months";
-import { DatepickerViewsYears, type FlowbiteDatepickerViewsYearsTheme } from "./Views/Years";
+import { DatepickerViewsDecades, type DatepickerViewsDecadesTheme } from "./Views/Decades";
+import { DatepickerViewsMonth, type DatepickerViewsMonthsTheme } from "./Views/Months";
+import { DatepickerViewsYears, type DatepickerViewsYearsTheme } from "./Views/Years";
 
-export interface FlowbiteDatepickerTheme {
+export interface DatepickerTheme {
   root: {
     base: string;
-    input?: FlowbiteTextInputTheme;
+    input?: TextInputTheme;
   };
-  popup: FlowbiteDatepickerPopupTheme;
+  popup: DatepickerPopupTheme;
   views: {
-    days: FlowbiteDatepickerViewsDaysTheme;
-    months: FlowbiteDatepickerViewsMonthsTheme;
-    years: FlowbiteDatepickerViewsYearsTheme;
-    decades: FlowbiteDatepickerViewsDecadesTheme;
+    days: DatepickerViewsDaysTheme;
+    months: DatepickerViewsMonthsTheme;
+    years: DatepickerViewsYearsTheme;
+    decades: DatepickerViewsDecadesTheme;
   };
 }
 
-export interface FlowbiteDatepickerPopupTheme {
+export interface DatepickerPopupTheme {
   root: {
     base: string;
     inline: string;
@@ -97,8 +97,8 @@ export interface DatepickerProps
   maxDate?: Date;
   language?: string;
   weekStart?: WeekStart;
-  theme?: DeepPartial<FlowbiteDatepickerTheme>;
-  resetTheme?: ResetTheme<FlowbiteDatepickerTheme>;
+  theme?: DeepPartial<DatepickerTheme>;
+  resetTheme?: ResetTheme<DatepickerTheme>;
   onChange?: (date: Date | null) => void;
   value?: Date | null;
   label?: string;

@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteSidebarTheme } from "./Sidebar";
+import type { SidebarTheme } from "./Sidebar";
 
-export const sidebarTheme: FlowbiteSidebarTheme = createTheme({
+export const sidebarTheme: SidebarTheme = createTheme({
   root: {
     base: "h-full",
     collapsed: {

@@ -7,21 +7,21 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import { RatingAdvanced } from "./RatingAdvanced";
 import { RatingContext } from "./RatingContext";
-import type { FlowbiteRatingStarTheme, FlowbiteStarSizes } from "./RatingStar";
+import type { RatingStarSizes, RatingStarTheme } from "./RatingStar";
 import { RatingStar } from "./RatingStar";
 import { ratingTheme } from "./theme";
 
-export interface FlowbiteRatingTheme {
+export interface RatingTheme {
   root: {
     base: string;
   };
-  star: FlowbiteRatingStarTheme;
+  star: RatingStarTheme;
 }
 
 export interface RatingProps extends ComponentProps<"div"> {
-  size?: DynamicStringEnumKeysOf<FlowbiteStarSizes>;
-  theme?: DeepPartial<FlowbiteRatingTheme>;
-  resetTheme?: ResetTheme<FlowbiteRatingTheme>;
+  size?: DynamicStringEnumKeysOf<RatingStarSizes>;
+  theme?: DeepPartial<RatingTheme>;
+  resetTheme?: ResetTheme<RatingTheme>;
 }
 
 const RatingComponent: FC<RatingProps> = ({

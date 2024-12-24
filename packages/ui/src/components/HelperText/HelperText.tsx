@@ -8,11 +8,11 @@ import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../typ
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { helperTextTheme } from "./theme";
 
-export interface FlowbiteHelperTextTheme {
-  root: FlowbiteHelperTextRootTheme;
+export interface HelperTextTheme {
+  root: HelperTextRootTheme;
 }
 
-export interface FlowbiteHelperTextRootTheme {
+export interface HelperTextRootTheme {
   base: string;
   colors: HelperColors;
 }
@@ -23,8 +23,8 @@ export interface HelperColors extends Pick<FlowbiteColors, "gray" | "info" | "fa
 
 export interface HelperTextProps extends Omit<ComponentProps<"p">, "color"> {
   color?: DynamicStringEnumKeysOf<HelperColors>;
-  theme?: DeepPartial<FlowbiteHelperTextTheme>;
-  resetTheme?: ResetTheme<FlowbiteHelperTextTheme>;
+  theme?: DeepPartial<HelperTextTheme>;
+  resetTheme?: ResetTheme<HelperTextTheme>;
   value?: string;
 }
 

@@ -1,8 +1,8 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteButtonTheme } from "./Button";
-import type { FlowbiteButtonGroupTheme } from "./ButtonGroup";
+import type { ButtonTheme } from "./Button";
+import type { ButtonGroupTheme } from "./ButtonGroup";
 
-export const buttonTheme: FlowbiteButtonTheme = createTheme({
+export const buttonTheme: ButtonTheme = createTheme({
   base: "group relative flex items-stretch justify-center p-0.5 text-center font-medium transition-[color,background-color,border-color,text-decoration-color,fill,stroke,box-shadow] focus:z-10 focus:outline-none",
   fullSized: "w-full",
   color: {
@@ -117,7 +117,7 @@ export const buttonTheme: FlowbiteButtonTheme = createTheme({
   },
 });
 
-export const buttonGroupTheme: FlowbiteButtonGroupTheme = createTheme({
+export const buttonGroupTheme: ButtonGroupTheme = createTheme({
   base: "inline-flex",
   position: {
     none: "",

@@ -1,2 +1,2 @@
 export { Radio } from "./Radio";
-export type { FlowbiteRadioRootTheme, FlowbiteRadioTheme, RadioProps } from "./Radio";
+export type { RadioRootTheme, RadioTheme, RadioProps } from "./Radio";

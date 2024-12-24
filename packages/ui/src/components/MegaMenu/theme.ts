@@ -2,9 +2,9 @@ import { createTheme } from "../../helpers/create-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { dropdownTheme } from "../Dropdown/theme";
 import { navbarTheme } from "../Navbar/theme";
-import type { FlowbiteMegaMenuTheme } from "./MegaMenu";
+import type { MegaMenuTheme } from "./MegaMenu";
 
-export const megaMenuTheme: FlowbiteMegaMenuTheme = createTheme({
+export const megaMenuTheme: MegaMenuTheme = createTheme({
   ...navbarTheme,
   dropdown: {
     base: "",

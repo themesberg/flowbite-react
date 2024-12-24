@@ -12,37 +12,37 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { carouselTheme } from "./theme";
 
-export interface FlowbiteCarouselTheme {
-  root: FlowbiteCarouselRootTheme;
-  indicators: FlowbiteCarouselIndicatorsTheme;
-  item: FlowbiteCarouselItemTheme;
-  control: FlowbiteCarouselControlTheme;
-  scrollContainer: FlowbiteCarouselScrollContainer;
+export interface CarouselTheme {
+  root: CarouselRootTheme;
+  indicators: CarouselIndicatorsTheme;
+  item: CarouselItemTheme;
+  control: CarouselControlTheme;
+  scrollContainer: CarouselScrollContainer;
 }
 
-export interface FlowbiteCarouselRootTheme {
+export interface CarouselRootTheme {
   base: string;
   leftControl: string;
   rightControl: string;
 }
 
-export interface FlowbiteCarouselIndicatorsTheme {
+export interface CarouselIndicatorsTheme {
   active: FlowbiteBoolean;
   base: string;
   wrapper: string;
 }
 
-export interface FlowbiteCarouselItemTheme {
+export interface CarouselItemTheme {
   base: string;
   wrapper: FlowbiteBoolean;
 }
 
-export interface FlowbiteCarouselControlTheme {
+export interface CarouselControlTheme {
   base: string;
   icon: string;
 }
 
-export interface FlowbiteCarouselScrollContainer {
+export interface CarouselScrollContainer {
   base: string;
   snap: string;
 }
@@ -54,15 +54,15 @@ export interface CarouselProps extends ComponentProps<"div"> {
   draggable?: boolean;
   slide?: boolean;
   slideInterval?: number;
-  theme?: DeepPartial<FlowbiteCarouselTheme>;
-  resetTheme?: ResetTheme<FlowbiteCarouselTheme>;
+  theme?: DeepPartial<CarouselTheme>;
+  resetTheme?: ResetTheme<CarouselTheme>;
   onSlideChange?: (slide: number) => void;
   pauseOnHover?: boolean;
 }
 
 export interface DefaultLeftRightControlProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<FlowbiteCarouselTheme>;
-  resetTheme?: ResetTheme<FlowbiteCarouselTheme>;
+  theme?: DeepPartial<CarouselTheme>;
+  resetTheme?: ResetTheme<CarouselTheme>;
 }
 
 export const Carousel: FC<CarouselProps> = ({

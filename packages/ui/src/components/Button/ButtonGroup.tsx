@@ -9,7 +9,7 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import { Button, type ButtonProps } from "../Button/Button";
 import { buttonGroupTheme } from "./theme";
 
-export interface FlowbiteButtonGroupTheme {
+export interface ButtonGroupTheme {
   base: string;
   position: PositionInButtonGroup;
 }
@@ -22,8 +22,8 @@ export interface PositionInButtonGroup {
 }
 
 export interface ButtonGroupProps extends ComponentProps<"div">, Pick<ButtonProps, "outline" | "pill"> {
-  theme?: DeepPartial<FlowbiteButtonGroupTheme>;
-  resetTheme?: ResetTheme<FlowbiteButtonGroupTheme>;
+  theme?: DeepPartial<ButtonGroupTheme>;
+  resetTheme?: ResetTheme<ButtonGroupTheme>;
 }
 
 const processChildren = (

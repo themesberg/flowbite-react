@@ -7,13 +7,13 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { footerTheme } from "./theme";
 
-export interface FlowbiteFooterDividerTheme {
+export interface FooterDividerTheme {
   base: string;
 }
 
 export interface FooterDividerProps extends ComponentProps<"hr"> {
-  theme?: DeepPartial<FlowbiteFooterDividerTheme>;
-  resetTheme?: ResetTheme<FlowbiteFooterDividerTheme>;
+  theme?: DeepPartial<FooterDividerTheme>;
+  resetTheme?: ResetTheme<FooterDividerTheme>;
 }
 
 export const FooterDivider: FC<FooterDividerProps> = ({ className, theme: customTheme, resetTheme, ...props }) => {

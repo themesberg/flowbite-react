@@ -2,13 +2,13 @@
 
 import { createContext, useContext } from "react";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteToastTheme } from "./Toast";
+import type { ToastTheme } from "./Toast";
 
 export type Duration = 75 | 100 | 150 | 200 | 300 | 500 | 700 | 1000;
 
 type ToastContext = {
-  theme?: DeepPartial<FlowbiteToastTheme>;
-  resetTheme?: ResetTheme<FlowbiteToastTheme>;
+  theme?: DeepPartial<ToastTheme>;
+  resetTheme?: ResetTheme<ToastTheme>;
   duration?: Duration;
   isClosed?: boolean;
   isRemoved?: boolean;

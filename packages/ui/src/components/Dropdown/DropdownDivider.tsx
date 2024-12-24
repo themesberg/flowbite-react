@@ -9,13 +9,13 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import { useDropdownContext } from "./DropdownContext";
 import { dropdownTheme } from "./theme";
 
-export interface FlowbiteDropdownDividerTheme {
+export interface DropdownDividerTheme {
   divider: string;
 }
 
 export type DropdownDividerProps = {
-  theme?: DeepPartial<FlowbiteDropdownDividerTheme>;
-  resetTheme?: ResetTheme<FlowbiteDropdownDividerTheme>;
+  theme?: DeepPartial<DropdownDividerTheme>;
+  resetTheme?: ResetTheme<DropdownDividerTheme>;
 } & ComponentProps<"div">;
 
 export const DropdownDivider: FC<DropdownDividerProps> = ({ className, theme: customTheme, resetTheme, ...props }) => {

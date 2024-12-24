@@ -9,7 +9,7 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import { copyToClipboard } from "./helpers";
 import { clipboardTheme } from "./theme";
 
-export interface FlowbiteClipboardWithIconTextTheme {
+export interface ClipboardWithIconTextTheme {
   base: string;
   label: {
     base: string;
@@ -26,8 +26,8 @@ export interface ClipboardWithIconTextProps extends ComponentProps<"button"> {
   valueToCopy: string;
   label?: string;
   icon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<FlowbiteClipboardWithIconTextTheme>;
-  resetTheme?: ResetTheme<FlowbiteClipboardWithIconTextTheme>;
+  theme?: DeepPartial<ClipboardWithIconTextTheme>;
+  resetTheme?: ResetTheme<ClipboardWithIconTextTheme>;
 }
 
 export const ClipboardWithIconText = forwardRef<HTMLButtonElement, ClipboardWithIconTextProps>(

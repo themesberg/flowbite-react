@@ -10,13 +10,13 @@ import { useSidebarContext } from "./SidebarContext";
 import { SidebarItemContext } from "./SidebarItemContext";
 import { sidebarTheme } from "./theme";
 
-export interface FlowbiteSidebarItemGroupTheme {
+export interface SidebarItemGroupTheme {
   base: string;
 }
 
 export interface SidebarItemGroupProps extends ComponentProps<"ul"> {
-  theme?: DeepPartial<FlowbiteSidebarItemGroupTheme>;
-  resetTheme?: ResetTheme<FlowbiteSidebarItemGroupTheme>;
+  theme?: DeepPartial<SidebarItemGroupTheme>;
+  resetTheme?: ResetTheme<SidebarItemGroupTheme>;
 }
 
 export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({

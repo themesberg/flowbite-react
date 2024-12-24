@@ -6,9 +6,9 @@ export type {
   ButtonOutlineColors,
   ButtonProps,
   ButtonSizes,
-  FlowbiteButtonInnerTheme,
-  FlowbiteButtonOutlineTheme,
-  FlowbiteButtonTheme,
+  ButtonInnerTheme,
+  ButtonOutlineTheme,
+  ButtonTheme,
 } from "./Button";
 export { ButtonGroup } from "./ButtonGroup";
-export type { ButtonGroupProps, FlowbiteButtonGroupTheme, PositionInButtonGroup } from "./ButtonGroup";
+export type { ButtonGroupProps, ButtonGroupTheme, PositionInButtonGroup } from "./ButtonGroup";

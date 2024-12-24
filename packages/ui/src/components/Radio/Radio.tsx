@@ -8,17 +8,17 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { radioTheme } from "./theme";
 
-export interface FlowbiteRadioTheme {
-  root: FlowbiteRadioRootTheme;
+export interface RadioTheme {
+  root: RadioRootTheme;
 }
 
-export interface FlowbiteRadioRootTheme {
+export interface RadioRootTheme {
   base: string;
 }
 
 export interface RadioProps extends Omit<ComponentProps<"input">, "ref" | "type"> {
-  theme?: DeepPartial<FlowbiteRadioTheme>;
-  resetTheme?: ResetTheme<FlowbiteRadioTheme>;
+  theme?: DeepPartial<RadioTheme>;
+  resetTheme?: ResetTheme<RadioTheme>;
 }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(

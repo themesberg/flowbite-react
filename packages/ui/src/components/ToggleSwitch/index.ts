@@ -1,7 +1,7 @@
 export { ToggleSwitch } from "./ToggleSwitch";
 export type {
-  FlowbiteToggleSwitchRootTheme,
-  FlowbiteToggleSwitchTheme,
-  FlowbiteToggleSwitchToggleTheme,
+  ToggleSwitchRootTheme,
+  ToggleSwitchTheme,
+  ToggleSwitchToggleTheme,
   ToggleSwitchProps,
 } from "./ToggleSwitch";

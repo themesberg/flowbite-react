@@ -1,2 +1,2 @@
 export { Alert } from "./Alert";
-export type { AlertProps, FlowbiteAlertCloseButtonTheme, FlowbiteAlertTheme } from "./Alert";
+export type { AlertProps, AlertCloseButtonTheme, AlertTheme } from "./Alert";

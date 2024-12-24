@@ -10,7 +10,7 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { breadcrumbTheme } from "./theme";
 
-export interface FlowbiteBreadcrumbItemTheme {
+export interface BreadcrumbItemTheme {
   base: string;
   chevron: string;
   href: FlowbiteBoolean;
@@ -20,8 +20,8 @@ export interface FlowbiteBreadcrumbItemTheme {
 export interface BreadcrumbItemProps extends Omit<ComponentProps<"li">, "ref"> {
   href?: string;
   icon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<FlowbiteBreadcrumbItemTheme>;
-  resetTheme?: ResetTheme<FlowbiteBreadcrumbItemTheme>;
+  theme?: DeepPartial<BreadcrumbItemTheme>;
+  resetTheme?: ResetTheme<BreadcrumbItemTheme>;
 }
 
 export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, BreadcrumbItemProps>(

@@ -2,11 +2,11 @@
 
 import { createContext, useContext } from "react";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteNavbarTheme } from "./Navbar";
+import type { NavbarTheme } from "./Navbar";
 
 type NavbarContext = {
-  theme?: DeepPartial<FlowbiteNavbarTheme>;
-  resetTheme?: ResetTheme<FlowbiteNavbarTheme>;
+  theme?: DeepPartial<NavbarTheme>;
+  resetTheme?: ResetTheme<NavbarTheme>;
   isOpen?: boolean;
   setIsOpen: (isOpen: boolean) => void;
 };

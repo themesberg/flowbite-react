@@ -8,7 +8,7 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteFooterLinkTheme } from "./FooterLink";
 import { footerTheme } from "./theme";
 
-export interface FlowbiteFooterLinkGroupTheme {
+export interface FooterLinkGroupTheme {
   base: string;
   link: FlowbiteFooterLinkTheme;
   col: string;
@@ -16,8 +16,8 @@ export interface FlowbiteFooterLinkGroupTheme {
 
 export interface FooterLinkGroupProps extends ComponentProps<"ul"> {
   col?: boolean;
-  theme?: DeepPartial<FlowbiteFooterLinkGroupTheme>;
-  resetTheme?: ResetTheme<FlowbiteFooterLinkGroupTheme>;
+  theme?: DeepPartial<FooterLinkGroupTheme>;
+  resetTheme?: ResetTheme<FooterLinkGroupTheme>;
 }
 
 export const FooterLinkGroup: FC<FooterLinkGroupProps> = ({

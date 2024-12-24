@@ -10,7 +10,7 @@ import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite
 import { HelperText } from "../HelperText";
 import { selectTheme } from "./theme";
 
-export interface FlowbiteSelectTheme {
+export interface SelectTheme {
   base: string;
   addon: string;
   field: {
@@ -45,8 +45,8 @@ export interface SelectProps extends Omit<ComponentProps<"select">, "color" | "r
   icon?: FC<ComponentProps<"svg">>;
   shadow?: boolean;
   sizing?: DynamicStringEnumKeysOf<SelectSizes>;
-  theme?: DeepPartial<FlowbiteSelectTheme>;
-  resetTheme?: ResetTheme<FlowbiteSelectTheme>;
+  theme?: DeepPartial<SelectTheme>;
+  resetTheme?: ResetTheme<SelectTheme>;
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(

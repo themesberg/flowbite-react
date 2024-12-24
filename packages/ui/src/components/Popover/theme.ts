@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbitePopoverTheme } from "./Popover";
+import type { PopoverTheme } from "./Popover";
 
-export const popoverTheme: FlowbitePopoverTheme = createTheme({
+export const popoverTheme: PopoverTheme = createTheme({
   base: "absolute z-20 inline-block w-max max-w-[100vw] rounded-lg border border-gray-200 bg-white shadow-sm outline-none dark:border-gray-600 dark:bg-gray-800",
   content: "z-10 overflow-hidden rounded-[7px]",
   arrow: {

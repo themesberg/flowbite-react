@@ -1,11 +1,11 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import type { FlowbiteDatepickerTheme } from "./Datepicker";
+import type { DatepickerTheme } from "./Datepicker";
 import type { Views, WeekStart } from "./helpers";
 
 type DatepickerContextProps = {
-  theme: FlowbiteDatepickerTheme;
+  theme: DatepickerTheme;
   language: string;
   weekStart: WeekStart;
   minDate?: Date;

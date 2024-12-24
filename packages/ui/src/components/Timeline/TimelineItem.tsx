@@ -12,7 +12,7 @@ import { useTimelineContext } from "./TimelineContext";
 import { TimelineItemContext } from "./TimelineItemContext";
 import type { FlowbiteTimelinePointTheme } from "./TimelinePoint";
 
-export interface FlowbiteTimelineItemTheme {
+export interface TimelineItemTheme {
   root: {
     horizontal: string;
     vertical: string;
@@ -22,8 +22,8 @@ export interface FlowbiteTimelineItemTheme {
 }
 
 export interface TimelineItemProps extends ComponentProps<"li"> {
-  theme?: DeepPartial<FlowbiteTimelineItemTheme>;
-  resetTheme?: ResetTheme<FlowbiteTimelineItemTheme>;
+  theme?: DeepPartial<TimelineItemTheme>;
+  resetTheme?: ResetTheme<TimelineItemTheme>;
 }
 
 export const TimelineItem: FC<TimelineItemProps> = ({

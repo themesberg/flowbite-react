@@ -9,18 +9,18 @@ import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../typ
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { checkboxTheme } from "./theme";
 
-export interface FlowbiteCheckboxTheme {
-  root: FlowbiteCheckboxRootTheme;
+export interface CheckboxTheme {
+  root: CheckboxRootTheme;
 }
-export interface FlowbiteCheckboxRootTheme {
+export interface CheckboxRootTheme {
   base: string;
   color: FlowbiteColors;
 }
 
 export interface CheckboxProps extends Omit<ComponentProps<"input">, "type" | "ref" | "color"> {
   color?: DynamicStringEnumKeysOf<FlowbiteColors>;
-  theme?: DeepPartial<FlowbiteCheckboxTheme>;
-  resetTheme?: ResetTheme<FlowbiteCheckboxTheme>;
+  theme?: DeepPartial<CheckboxTheme>;
+  resetTheme?: ResetTheme<CheckboxTheme>;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(

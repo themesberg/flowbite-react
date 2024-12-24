@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteBadgeTheme } from "./Badge";
+import type { BadgeTheme } from "./Badge";
 
-export const badgeTheme: FlowbiteBadgeTheme = createTheme({
+export const badgeTheme: BadgeTheme = createTheme({
   root: {
     base: "flex h-fit items-center gap-1 font-semibold",
     color: {

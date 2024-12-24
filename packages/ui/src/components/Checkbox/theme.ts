@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteCheckboxTheme } from "./Checkbox";
+import type { CheckboxTheme } from "./Checkbox";
 
-export const checkboxTheme: FlowbiteCheckboxTheme = createTheme({
+export const checkboxTheme: CheckboxTheme = createTheme({
   root: {
     base: "h-4 w-4 rounded border border-gray-300 bg-gray-100 focus:ring-2 dark:border-gray-600 dark:bg-gray-700",
     color: {

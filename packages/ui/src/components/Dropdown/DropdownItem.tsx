@@ -12,7 +12,7 @@ import { ButtonBase, type ButtonBaseProps } from "../Button/ButtonBase";
 import { useDropdownContext } from "./DropdownContext";
 import { dropdownTheme } from "./theme";
 
-export interface FlowbiteDropdownItemTheme {
+export interface DropdownItemTheme {
   container: string;
   base: string;
   icon: string;
@@ -24,8 +24,8 @@ export type DropdownItemProps<T extends ElementType = "button"> = PolymorphicCom
     href?: string;
     icon?: FC<ComponentProps<"svg">>;
     onClick?: () => void;
-    theme?: DeepPartial<FlowbiteDropdownItemTheme>;
-    resetTheme?: ResetTheme<FlowbiteDropdownItemTheme>;
+    theme?: DeepPartial<DropdownItemTheme>;
+    resetTheme?: ResetTheme<DropdownItemTheme>;
   }
 >;
 

@@ -6,35 +6,35 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
-import { SidebarCollapse, type FlowbiteSidebarCollapseTheme } from "./SidebarCollapse";
+import { SidebarCollapse, type SidebarCollapseTheme } from "./SidebarCollapse";
 import { SidebarContext } from "./SidebarContext";
-import { SidebarCTA, type FlowbiteSidebarCTATheme } from "./SidebarCTA";
-import { SidebarItem, type FlowbiteSidebarItemTheme } from "./SidebarItem";
-import { SidebarItemGroup, type FlowbiteSidebarItemGroupTheme } from "./SidebarItemGroup";
-import { SidebarItems, type FlowbiteSidebarItemsTheme } from "./SidebarItems";
-import { SidebarLogo, type FlowbiteSidebarLogoTheme } from "./SidebarLogo";
+import { SidebarCTA, type SidebarCTATheme } from "./SidebarCTA";
+import { SidebarItem, type SidebarItemTheme } from "./SidebarItem";
+import { SidebarItemGroup, type SidebarItemGroupTheme } from "./SidebarItemGroup";
+import { SidebarItems, type SidebarItemsTheme } from "./SidebarItems";
+import { SidebarLogo, type SidebarLogoTheme } from "./SidebarLogo";
 import { sidebarTheme } from "./theme";
 
-export interface FlowbiteSidebarTheme {
+export interface SidebarTheme {
   root: {
     base: string;
     collapsed: FlowbiteBoolean;
     inner: string;
   };
-  collapse: FlowbiteSidebarCollapseTheme;
-  cta: FlowbiteSidebarCTATheme;
-  item: FlowbiteSidebarItemTheme;
-  items: FlowbiteSidebarItemsTheme;
-  itemGroup: FlowbiteSidebarItemGroupTheme;
-  logo: FlowbiteSidebarLogoTheme;
+  collapse: SidebarCollapseTheme;
+  cta: SidebarCTATheme;
+  item: SidebarItemTheme;
+  items: SidebarItemsTheme;
+  itemGroup: SidebarItemGroupTheme;
+  logo: SidebarLogoTheme;
 }
 
 export interface SidebarProps extends ComponentProps<"div"> {
   as?: ElementType;
   collapseBehavior?: "collapse" | "hide";
   collapsed?: boolean;
-  theme?: DeepPartial<FlowbiteSidebarTheme>;
-  resetTheme?: ResetTheme<FlowbiteSidebarTheme>;
+  theme?: DeepPartial<SidebarTheme>;
+  resetTheme?: ResetTheme<SidebarTheme>;
 }
 
 const SidebarComponent: FC<SidebarProps> = ({

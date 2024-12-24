@@ -9,13 +9,13 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import { useSidebarContext } from "./SidebarContext";
 import { sidebarTheme } from "./theme";
 
-export interface FlowbiteSidebarItemsTheme {
+export interface SidebarItemsTheme {
   base: string;
 }
 
 export interface SidebarItemsProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<FlowbiteSidebarItemsTheme>;
-  resetTheme?: ResetTheme<FlowbiteSidebarItemsTheme>;
+  theme?: DeepPartial<SidebarItemsTheme>;
+  resetTheme?: ResetTheme<SidebarItemsTheme>;
 }
 
 export const SidebarItems: FC<SidebarItemsProps> = ({

@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteToggleSwitchTheme } from "./ToggleSwitch";
+import type { ToggleSwitchTheme } from "./ToggleSwitch";
 
-export const toggleSwitchTheme: FlowbiteToggleSwitchTheme = createTheme({
+export const toggleSwitchTheme: ToggleSwitchTheme = createTheme({
   root: {
     base: "group flex rounded-lg focus:outline-none",
     active: {

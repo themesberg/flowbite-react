@@ -1,4 +1,4 @@
 export { List } from "./List";
-export type { FlowbiteListRootTheme, FlowbiteListTheme, ListProps } from "./List";
+export type { ListRootTheme, ListTheme, ListProps } from "./List";
 export { ListItem } from "./ListItem";
-export type { FlowbiteListItemTheme, ListItemProps } from "./ListItem";
+export type { ListItemTheme, ListItemProps } from "./ListItem";

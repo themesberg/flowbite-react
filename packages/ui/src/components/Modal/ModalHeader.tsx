@@ -10,7 +10,7 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import { useModalContext } from "./ModalContext";
 import { modalTheme } from "./theme";
 
-export interface FlowbiteModalHeaderTheme {
+export interface ModalHeaderTheme {
   base: string;
   popup: string;
   title: string;
@@ -22,8 +22,8 @@ export interface FlowbiteModalHeaderTheme {
 
 export interface ModalHeaderProps extends ComponentProps<"div"> {
   as?: ElementType;
-  theme?: DeepPartial<FlowbiteModalHeaderTheme>;
-  resetTheme?: ResetTheme<FlowbiteModalHeaderTheme>;
+  theme?: DeepPartial<ModalHeaderTheme>;
+  resetTheme?: ResetTheme<ModalHeaderTheme>;
 }
 
 export const ModalHeader: FC<ModalHeaderProps> = ({

@@ -1,6 +1,6 @@
 export { Rating } from "./Rating";
-export type { FlowbiteRatingTheme, RatingProps } from "./Rating";
+export type { RatingTheme, RatingProps } from "./Rating";
 export { RatingAdvanced } from "./RatingAdvanced";
-export type { FlowbiteRatingAdvancedTheme, RatingAdvancedProps } from "./RatingAdvanced";
+export type { RatingAdvancedTheme, RatingAdvancedProps } from "./RatingAdvanced";
 export { RatingStar } from "./RatingStar";
-export type { FlowbiteRatingStarTheme, FlowbiteStarSizes, RatingStarProps } from "./RatingStar";
+export type { RatingStarTheme, RatingStarSizes, RatingStarProps } from "./RatingStar";

@@ -7,15 +7,15 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
-import { ListItem, type FlowbiteListItemTheme } from "./ListItem";
+import { ListItem, type ListItemTheme } from "./ListItem";
 import { listTheme } from "./theme";
 
-export interface FlowbiteListTheme {
-  root: FlowbiteListRootTheme;
-  item: FlowbiteListItemTheme;
+export interface ListTheme {
+  root: ListRootTheme;
+  item: ListItemTheme;
 }
 
-export interface FlowbiteListRootTheme {
+export interface ListRootTheme {
   base: string;
   ordered: {
     on: string;
@@ -35,8 +35,8 @@ export interface ListProps extends PropsWithChildren<ComponentProps<"ul"> & Comp
   horizontal?: boolean;
   nested?: boolean;
   ordered?: boolean;
-  resetTheme?: ResetTheme<FlowbiteListTheme>;
-  theme?: DeepPartial<FlowbiteListTheme>;
+  resetTheme?: ResetTheme<ListTheme>;
+  theme?: DeepPartial<ListTheme>;
   unstyled?: boolean;
 }
 

@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
-import type { FlowbiteProgressTheme } from "./Progress";
+import type { ProgressTheme } from "./Progress";
 
-export const progressTheme: FlowbiteProgressTheme = createTheme({
+export const progressTheme: ProgressTheme = createTheme({
   base: "w-full overflow-hidden rounded-full bg-gray-200 dark:bg-gray-700",
   label: "mb-1 flex justify-between font-medium dark:text-white",
   bar: "space-x-2 rounded-full text-center font-medium leading-none text-cyan-300 dark:text-cyan-100",

@@ -7,35 +7,35 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import { HelperText } from "../HelperText";
-import type { FlowbiteTextInputColors, FlowbiteTextInputSizes } from "../TextInput";
+import type { TextInputColors, TextInputSizes } from "../TextInput";
 import { fileInputTheme } from "./theme";
 
-export interface FlowbiteFileInputTheme {
-  root: FlowbiteFileInputRootTheme;
-  field: FlowbiteFileInputFieldTheme;
+export interface FileInputTheme {
+  root: FileInputRootTheme;
+  field: FileInputFieldTheme;
 }
 
-export interface FlowbiteFileInputRootTheme {
+export interface FileInputRootTheme {
   base: string;
 }
 
-export interface FlowbiteFileInputFieldTheme {
+export interface FileInputFieldTheme {
   base: string;
-  input: FlowbiteFileInputFieldInputTheme;
+  input: FileInputFieldInputTheme;
 }
 
-export interface FlowbiteFileInputFieldInputTheme {
+export interface FileInputFieldInputTheme {
   base: string;
-  colors: FlowbiteTextInputColors;
-  sizes: FlowbiteTextInputSizes;
+  colors: TextInputColors;
+  sizes: TextInputSizes;
 }
 
 export interface FileInputProps extends Omit<ComponentProps<"input">, "type" | "ref" | "color"> {
-  color?: DynamicStringEnumKeysOf<FlowbiteTextInputColors>;
+  color?: DynamicStringEnumKeysOf<TextInputColors>;
   helperText?: ReactNode;
-  sizing?: DynamicStringEnumKeysOf<FlowbiteTextInputSizes>;
-  theme?: DeepPartial<FlowbiteFileInputTheme>;
-  resetTheme?: ResetTheme<FlowbiteFileInputTheme>;
+  sizing?: DynamicStringEnumKeysOf<TextInputSizes>;
+  theme?: DeepPartial<FileInputTheme>;
+  resetTheme?: ResetTheme<FileInputTheme>;
 }
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(

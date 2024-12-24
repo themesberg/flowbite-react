@@ -7,7 +7,7 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { paginationTheme } from "./theme";
 
-export interface FlowbitePaginationButtonTheme {
+export interface PaginationButtonTheme {
   base: string;
   active: string;
   disabled: string;
@@ -18,8 +18,8 @@ export interface PaginationButtonProps extends ComponentProps<"button"> {
   children?: ReactNode;
   className?: string;
   onClick?: ReactEventHandler<HTMLButtonElement>;
-  theme?: DeepPartial<FlowbitePaginationButtonTheme>;
-  resetTheme?: ResetTheme<FlowbitePaginationButtonTheme>;
+  theme?: DeepPartial<PaginationButtonTheme>;
+  resetTheme?: ResetTheme<PaginationButtonTheme>;
 }
 
 export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, "active"> {

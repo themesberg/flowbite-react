@@ -10,15 +10,15 @@ import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { useSidebarContext } from "./SidebarContext";
 import { sidebarTheme } from "./theme";
 
-export interface FlowbiteSidebarCTATheme {
+export interface SidebarCTATheme {
   base: string;
   color: FlowbiteSidebarCTAColors;
 }
 
 export interface SidebarCTAProps extends Omit<ComponentProps<"div">, "color"> {
   color?: DynamicStringEnumKeysOf<FlowbiteSidebarCTAColors>;
-  theme?: DeepPartial<FlowbiteSidebarCTATheme>;
-  resetTheme?: ResetTheme<FlowbiteSidebarCTATheme>;
+  theme?: DeepPartial<SidebarCTATheme>;
+  resetTheme?: ResetTheme<SidebarCTATheme>;
 }
 
 export interface FlowbiteSidebarCTAColors

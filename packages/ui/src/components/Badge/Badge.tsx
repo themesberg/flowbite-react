@@ -8,19 +8,19 @@ import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../typ
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { badgeTheme } from "./theme";
 
-export interface FlowbiteBadgeTheme {
-  root: FlowbiteBadgeRootTheme;
-  icon: FlowbiteBadgeIconTheme;
+export interface BadgeTheme {
+  root: BadgeRootTheme;
+  icon: BadgeIconTheme;
 }
 
-export interface FlowbiteBadgeRootTheme {
+export interface BadgeRootTheme {
   base: string;
   color: FlowbiteColors;
   href: string;
   size: BadgeSizes;
 }
 
-export interface FlowbiteBadgeIconTheme extends FlowbiteBoolean {
+export interface BadgeIconTheme extends FlowbiteBoolean {
   size: BadgeSizes;
 }
 
@@ -33,8 +33,8 @@ export interface BadgeProps extends Omit<ComponentProps<"span">, "color"> {
   href?: string;
   icon?: FC<ComponentProps<"svg">>;
   size?: DynamicStringEnumKeysOf<BadgeSizes>;
-  theme?: DeepPartial<FlowbiteBadgeTheme>;
-  resetTheme?: ResetTheme<FlowbiteBadgeTheme>;
+  theme?: DeepPartial<BadgeTheme>;
+  resetTheme?: ResetTheme<BadgeTheme>;
 }
 
 export const Badge: FC<BadgeProps> = ({

@@ -12,31 +12,31 @@ import type { FlowbiteAvatarGroupCounterTheme } from "./AvatarGroupCounter";
 import { AvatarGroupCounter } from "./AvatarGroupCounter";
 import { avatarTheme } from "./theme";
 
-export interface FlowbiteAvatarTheme {
-  root: FlowbiteAvatarRootTheme;
+export interface AvatarTheme {
+  root: AvatarRootTheme;
   group: FlowbiteAvatarGroupTheme;
   groupCounter: FlowbiteAvatarGroupCounterTheme;
 }
 
-export interface FlowbiteAvatarRootTheme {
+export interface AvatarRootTheme {
   base: string;
   bordered: string;
   color: AvatarColors;
-  img: FlowbiteAvatarImageTheme;
-  initials: FlowbiteAvatarInitialsTheme;
+  img: AvatarImageTheme;
+  initials: AvatarInitialsTheme;
   rounded: string;
   size: AvatarSizes;
   stacked: string;
-  status: FlowbiteAvatarStatusTheme;
+  status: AvatarStatusTheme;
   statusPosition: FlowbitePositions;
 }
 
-export interface FlowbiteAvatarImageTheme extends FlowbiteBoolean {
+export interface AvatarImageTheme extends FlowbiteBoolean {
   base: string;
   placeholder: string;
 }
 
-export interface FlowbiteAvatarStatusTheme {
+export interface AvatarStatusTheme {
   away: string;
   base: string;
   busy: string;
@@ -44,7 +44,7 @@ export interface FlowbiteAvatarStatusTheme {
   online: string;
 }
 
-export interface FlowbiteAvatarInitialsTheme {
+export interface AvatarInitialsTheme {
   base: string;
   text: string;
 }
@@ -75,8 +75,8 @@ export interface AvatarProps extends Omit<ComponentProps<"div">, "color"> {
   status?: "away" | "busy" | "offline" | "online";
   statusPosition?: keyof FlowbitePositions;
   placeholderInitials?: string;
-  theme?: DeepPartial<FlowbiteAvatarTheme>;
-  resetTheme?: ResetTheme<FlowbiteAvatarTheme>;
+  theme?: DeepPartial<AvatarTheme>;
+  resetTheme?: ResetTheme<AvatarTheme>;
 }
 
 const AvatarComponent: FC<AvatarProps> = ({

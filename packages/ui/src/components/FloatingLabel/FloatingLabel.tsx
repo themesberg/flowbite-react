@@ -6,7 +6,7 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
-import { floatingLabelTheme, type FlowbiteFloatingLabelTheme } from "./theme";
+import { floatingLabelTheme, type FloatingLabelTheme } from "./theme";
 
 export type FloatingLabelColor = "default" | "success" | "error";
 export type FloatingLabelSizing = "sm" | "md";
@@ -19,8 +19,8 @@ export interface FloatingLabelProps extends ComponentPropsWithoutRef<"input"> {
   sizing?: FloatingLabelSizing;
   variant: FloatingLabelVariant;
   disabled?: boolean;
-  theme?: DeepPartial<FlowbiteFloatingLabelTheme>;
-  resetTheme?: ResetTheme<FlowbiteFloatingLabelTheme>;
+  theme?: DeepPartial<FloatingLabelTheme>;
+  resetTheme?: ResetTheme<FloatingLabelTheme>;
 }
 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(

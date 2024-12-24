@@ -7,17 +7,17 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { blockquoteTheme } from "./theme";
 
-export interface FlowbiteBlockquoteTheme {
-  root: FlowbiteBlockquoteRootTheme;
+export interface BlockquoteTheme {
+  root: BlockquoteRootTheme;
 }
 
-export interface FlowbiteBlockquoteRootTheme {
+export interface BlockquoteRootTheme {
   base: string;
 }
 
 export interface BlockquoteProps extends ComponentProps<"blockquote"> {
-  theme?: DeepPartial<FlowbiteBlockquoteTheme>;
-  resetTheme?: ResetTheme<FlowbiteBlockquoteTheme>;
+  theme?: DeepPartial<BlockquoteTheme>;
+  resetTheme?: ResetTheme<BlockquoteTheme>;
 }
 
 export const Blockquote: FC<BlockquoteProps> = ({ children, className, theme: customTheme, resetTheme, ...props }) => {

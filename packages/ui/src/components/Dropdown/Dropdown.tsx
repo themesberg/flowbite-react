@@ -20,22 +20,19 @@ import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floati
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { Button, type ButtonProps } from "../Button";
-import type { FloatingProps, FlowbiteFloatingTheme } from "../Floating";
+import type { FloatingProps, FloatingTheme } from "../Floating";
 import { DropdownContext } from "./DropdownContext";
-import { DropdownDivider, type FlowbiteDropdownDividerTheme } from "./DropdownDivider";
-import { DropdownHeader, type FlowbiteDropdownHeaderTheme } from "./DropdownHeader";
-import { DropdownItem, type FlowbiteDropdownItemTheme } from "./DropdownItem";
+import { DropdownDivider, type DropdownDividerTheme } from "./DropdownDivider";
+import { DropdownHeader, type DropdownHeaderTheme } from "./DropdownHeader";
+import { DropdownItem, type DropdownItemTheme } from "./DropdownItem";
 import { dropdownTheme } from "./theme";
 
-export interface FlowbiteDropdownFloatingTheme
-  extends FlowbiteFloatingTheme,
-    FlowbiteDropdownDividerTheme,
-    FlowbiteDropdownHeaderTheme {
-  item: FlowbiteDropdownItemTheme;
+export interface DropdownFloatingTheme extends FloatingTheme, DropdownDividerTheme, DropdownHeaderTheme {
+  item: DropdownItemTheme;
 }
 
-export interface FlowbiteDropdownTheme {
-  floating: FlowbiteDropdownFloatingTheme;
+export interface DropdownTheme {
+  floating: DropdownFloatingTheme;
   content: string;
   inlineWrapper: string;
   arrowIcon: string;
@@ -49,10 +46,10 @@ export interface DropdownProps
   floatingArrow?: boolean;
   inline?: boolean;
   label?: ReactNode;
-  theme?: DeepPartial<FlowbiteDropdownTheme>;
-  resetTheme?: ResetTheme<FlowbiteDropdownTheme>;
+  theme?: DeepPartial<DropdownTheme>;
+  resetTheme?: ResetTheme<DropdownTheme>;
   enableTypeAhead?: boolean;
-  renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactElement;
+  renderTrigger?: (theme: DropdownTheme) => ReactElement;
   "data-testid"?: string;
 }
 
@@ -66,10 +63,10 @@ const icons: Record<string, FC<ComponentProps<"svg">>> = {
 export interface TriggerProps extends Omit<ButtonProps, "theme"> {
   refs: ExtendedRefs<HTMLElement>;
   inline?: boolean;
-  theme: FlowbiteDropdownTheme;
+  theme: DropdownTheme;
   setButtonWidth?: Dispatch<SetStateAction<number | undefined>>;
   getReferenceProps: (userProps?: HTMLProps<Element> | undefined) => Record<string, unknown>;
-  renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactElement;
+  renderTrigger?: (theme: DropdownTheme) => ReactElement;
 }
 
 const Trigger = ({

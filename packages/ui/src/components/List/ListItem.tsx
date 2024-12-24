@@ -7,7 +7,7 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { listTheme } from "./theme";
 
-export interface FlowbiteListItemTheme {
+export interface ListItemTheme {
   icon: string;
   withIcon: {
     on: string;
@@ -18,8 +18,8 @@ export interface FlowbiteListItemTheme {
 export interface ListItemProps extends ComponentProps<"li"> {
   className?: string;
   icon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<FlowbiteListItemTheme>;
-  resetTheme?: ResetTheme<FlowbiteListItemTheme>;
+  theme?: DeepPartial<ListItemTheme>;
+  resetTheme?: ResetTheme<ListItemTheme>;
 }
 
 export const ListItem: FC<ListItemProps> = ({

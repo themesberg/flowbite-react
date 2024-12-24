@@ -2,14 +2,14 @@
 
 import { createContext, useContext } from "react";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteDrawerTheme } from "./Drawer";
+import type { DrawerTheme } from "./Drawer";
 
 interface DrawerContext {
   id?: string;
   isOpen?: boolean;
   onClose?: () => void;
-  theme?: DeepPartial<FlowbiteDrawerTheme>;
-  resetTheme?: ResetTheme<FlowbiteDrawerTheme>;
+  theme?: DeepPartial<DrawerTheme>;
+  resetTheme?: ResetTheme<DrawerTheme>;
 }
 
 export const DrawerContext = createContext<DrawerContext | undefined>(undefined);

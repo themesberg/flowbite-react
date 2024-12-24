@@ -8,13 +8,13 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { hrTheme } from "./theme";
 
-export interface FlowbiteHRTrimmedTheme {
+export interface HRTrimmedTheme {
   base: string;
 }
 
 export interface HRTrimmedProps extends Omit<ComponentProps<"hr">, "ref"> {
-  theme?: DeepPartial<FlowbiteHRTrimmedTheme>;
-  resetTheme?: ResetTheme<FlowbiteHRTrimmedTheme>;
+  theme?: DeepPartial<HRTrimmedTheme>;
+  resetTheme?: ResetTheme<HRTrimmedTheme>;
 }
 
 export const HRTrimmed = forwardRef<HTMLHRElement, HRTrimmedProps>(

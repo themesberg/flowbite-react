@@ -14,7 +14,7 @@ import { useSidebarContext } from "./SidebarContext";
 import { useSidebarItemContext } from "./SidebarItemContext";
 import { sidebarTheme } from "./theme";
 
-export interface FlowbiteSidebarItemTheme {
+export interface SidebarItemTheme {
   active: string;
   base: string;
   collapsed: {
@@ -39,8 +39,8 @@ export interface SidebarItemProps extends Omit<ComponentProps<"div">, "ref">, Re
   icon?: FC<ComponentProps<"svg">>;
   label?: string;
   labelColor?: DynamicStringEnumKeysOf<SidebarItemLabelColors>;
-  theme?: DeepPartial<FlowbiteSidebarItemTheme>;
-  resetTheme?: ResetTheme<FlowbiteSidebarItemTheme>;
+  theme?: DeepPartial<SidebarItemTheme>;
+  resetTheme?: ResetTheme<SidebarItemTheme>;
 }
 
 export interface SidebarItemLabelColors extends Pick<FlowbiteColors, "gray"> {
@@ -50,7 +50,7 @@ export interface SidebarItemLabelColors extends Pick<FlowbiteColors, "gray"> {
 const ListItem: FC<
   PropsWithChildren<{
     id: string;
-    theme: FlowbiteSidebarItemTheme;
+    theme: SidebarItemTheme;
     isCollapsed: boolean;
     tooltipChildren: ReactNode | undefined;
     className?: string;
@@ -74,7 +74,7 @@ const ListItem: FC<
   </li>
 );
 
-const Children: FC<PropsWithChildren<{ id: string; theme: FlowbiteSidebarItemTheme }>> = ({ id, theme, children }) => {
+const Children: FC<PropsWithChildren<{ id: string; theme: SidebarItemTheme }>> = ({ id, theme, children }) => {
   return (
     <span
       data-testid="flowbite-sidebar-item-content"

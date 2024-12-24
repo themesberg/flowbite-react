@@ -11,7 +11,7 @@ import type { Duration } from "./ToastContext";
 import { ToastContext } from "./ToastContext";
 import { ToastToggle } from "./ToastToggle";
 
-export interface FlowbiteToastTheme {
+export interface ToastTheme {
   root: {
     base: string;
     closed: string;
@@ -24,8 +24,8 @@ export interface FlowbiteToastTheme {
 
 export interface ToastProps extends ComponentProps<"div"> {
   duration?: Duration;
-  theme?: DeepPartial<FlowbiteToastTheme>;
-  resetTheme?: ResetTheme<FlowbiteToastTheme>;
+  theme?: DeepPartial<ToastTheme>;
+  resetTheme?: ResetTheme<ToastTheme>;
 }
 
 const durationClasses: Record<Duration, string> = {

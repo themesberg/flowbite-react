@@ -18,31 +18,31 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
-import type { FlowbiteModalBodyTheme } from "./ModalBody";
+import type { ModalBodyTheme } from "./ModalBody";
 import { ModalBody } from "./ModalBody";
 import { ModalContext } from "./ModalContext";
-import type { FlowbiteModalFooterTheme } from "./ModalFooter";
+import type { ModalFooterTheme } from "./ModalFooter";
 import { ModalFooter } from "./ModalFooter";
-import type { FlowbiteModalHeaderTheme } from "./ModalHeader";
+import type { ModalHeaderTheme } from "./ModalHeader";
 import { ModalHeader } from "./ModalHeader";
 import { modalTheme } from "./theme";
 
-export interface FlowbiteModalTheme {
-  root: FlowbiteModalRootTheme;
-  content: FlowbiteModalContentTheme;
-  body: FlowbiteModalBodyTheme;
-  header: FlowbiteModalHeaderTheme;
-  footer: FlowbiteModalFooterTheme;
+export interface ModalTheme {
+  root: ModalRootTheme;
+  content: ModalContentTheme;
+  body: ModalBodyTheme;
+  header: ModalHeaderTheme;
+  footer: ModalFooterTheme;
 }
 
-export interface FlowbiteModalRootTheme {
+export interface ModalRootTheme {
   base: string;
   show: FlowbiteBoolean;
   sizes: ModalSizes;
   positions: ModalPositions;
 }
 
-export interface FlowbiteModalContentTheme {
+export interface ModalContentTheme {
   base: string;
   inner: string;
 }
@@ -63,8 +63,8 @@ export interface ModalProps extends ComponentPropsWithoutRef<"div"> {
   show?: boolean;
   size?: DynamicStringEnumKeysOf<ModalSizes>;
   dismissible?: boolean;
-  theme?: DeepPartial<FlowbiteModalTheme>;
-  resetTheme?: ResetTheme<FlowbiteModalTheme>;
+  theme?: DeepPartial<ModalTheme>;
+  resetTheme?: ResetTheme<ModalTheme>;
   initialFocus?: number | MutableRefObject<HTMLElement | null>;
 }
 

@@ -1,8 +1,2 @@
 export { Badge } from "./Badge";
-export type {
-  BadgeProps,
-  BadgeSizes,
-  FlowbiteBadgeIconTheme,
-  FlowbiteBadgeRootTheme,
-  FlowbiteBadgeTheme,
-} from "./Badge";
+export type { BadgeProps, BadgeSizes, BadgeIconTheme, BadgeRootTheme, BadgeTheme } from "./Badge";

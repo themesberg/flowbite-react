@@ -7,14 +7,14 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { footerTheme } from "./theme";
 
-export interface FlowbiteFooterTitleTheme {
+export interface FooterTitleTheme {
   base: string;
 }
 
 export interface FooterTitleProps extends ComponentProps<"h2"> {
   as?: ElementType;
-  theme?: DeepPartial<FlowbiteFooterTitleTheme>;
-  resetTheme?: ResetTheme<FlowbiteFooterTitleTheme>;
+  theme?: DeepPartial<FooterTitleTheme>;
+  resetTheme?: ResetTheme<FooterTitleTheme>;
   title: string;
 }
 
