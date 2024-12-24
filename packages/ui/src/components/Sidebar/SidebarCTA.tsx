@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { useSidebarContext } from "./SidebarContext";
 import { sidebarTheme } from "./theme";
@@ -18,7 +18,7 @@ export interface FlowbiteSidebarCTATheme {
 export interface SidebarCTAProps extends Omit<ComponentProps<"div">, "color"> {
   color?: DynamicStringEnumKeysOf<FlowbiteSidebarCTAColors>;
   theme?: DeepPartial<FlowbiteSidebarCTATheme>;
-  unstyled?: Unstyled<FlowbiteSidebarCTATheme>;
+  resetTheme?: ResetTheme<FlowbiteSidebarCTATheme>;
 }
 
 export interface FlowbiteSidebarCTAColors
@@ -34,15 +34,15 @@ export const SidebarCTA: FC<SidebarCTAProps> = ({
   color = "info",
   className,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
-  const { theme: rootTheme, unstyled: rootUnstyled, isCollapsed } = useSidebarContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, isCollapsed } = useSidebarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [sidebarTheme.cta, provider.theme?.sidebar?.cta, rootTheme?.cta, customTheme],
-    [get(rootUnstyled, "cta"), unstyled],
+    [get(rootResetTheme, "cta"), resetTheme],
   );
 
   return (

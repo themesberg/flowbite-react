@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { footerTheme } from "./theme";
 
 export interface FlowbiteFooterCopyrightTheme {
@@ -17,7 +17,7 @@ export interface CopyrightProps extends ComponentProps<"div"> {
   by: string;
   href?: string;
   theme?: DeepPartial<FlowbiteFooterCopyrightTheme>;
-  unstyled?: Unstyled<FlowbiteFooterCopyrightTheme>;
+  resetTheme?: ResetTheme<FlowbiteFooterCopyrightTheme>;
   year?: number;
 }
 
@@ -26,12 +26,12 @@ export const FooterCopyright: FC<CopyrightProps> = ({
   className,
   href,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   year,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([footerTheme.copyright, provider.theme?.footer?.copyright, customTheme], [unstyled]);
+  const theme = resolveTheme([footerTheme.copyright, provider.theme?.footer?.copyright, customTheme], [resetTheme]);
 
   return (
     <div data-testid="flowbite-footer-copyright" className={twMerge(theme.base, className)} {...props}>

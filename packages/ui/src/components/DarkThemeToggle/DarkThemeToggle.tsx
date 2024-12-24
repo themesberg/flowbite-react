@@ -7,7 +7,7 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeMode } from "../../hooks/use-theme-mode";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { darkThemeToggleTheme } from "./theme";
 
 export interface FlowbiteDarkThemeToggleTheme {
@@ -27,7 +27,7 @@ export interface DarkThemeToggleProps extends ComponentProps<"button"> {
   iconDark?: FC<IconBaseProps>;
   iconLight?: FC<IconBaseProps>;
   theme?: DeepPartial<FlowbiteDarkThemeToggleTheme>;
-  unstyled?: Unstyled<FlowbiteDarkThemeToggleTheme>;
+  resetTheme?: ResetTheme<FlowbiteDarkThemeToggleTheme>;
 }
 
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
@@ -35,13 +35,13 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   iconDark: IconDark = HiSun,
   iconLight: IconLight = HiMoon,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const { toggleMode } = useThemeMode();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([darkThemeToggleTheme, provider.theme?.darkThemeToggle, customTheme], [unstyled]);
+  const theme = resolveTheme([darkThemeToggleTheme, provider.theme?.darkThemeToggle, customTheme], [resetTheme]);
 
   return (
     <button

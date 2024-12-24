@@ -5,7 +5,7 @@ import { useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { progressTheme } from "./theme";
 
@@ -38,7 +38,7 @@ export interface ProgressProps extends ComponentProps<"div"> {
   textLabel?: string;
   textLabelPosition?: "inside" | "outside";
   theme?: DeepPartial<FlowbiteProgressTheme>;
-  unstyled?: Unstyled<FlowbiteProgressTheme>;
+  resetTheme?: ResetTheme<FlowbiteProgressTheme>;
 }
 
 export const Progress: FC<ProgressProps> = ({
@@ -52,12 +52,12 @@ export const Progress: FC<ProgressProps> = ({
   textLabel = "progressbar",
   textLabelPosition = "inside",
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const id = useId();
   const provider = useThemeProvider();
-  const theme = resolveTheme([progressTheme, provider.theme?.progress, customTheme], [unstyled]);
+  const theme = resolveTheme([progressTheme, provider.theme?.progress, customTheme], [resetTheme]);
 
   return (
     <>

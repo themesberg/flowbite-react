@@ -7,7 +7,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { Tooltip } from "../Tooltip";
 import { useSidebarContext } from "./SidebarContext";
@@ -39,7 +39,7 @@ export interface SidebarCollapseProps
   chevronIcon?: FC<ComponentProps<"svg">>;
   renderChevronIcon?: (theme: FlowbiteSidebarCollapseTheme, open: boolean) => ReactElement;
   theme?: DeepPartial<FlowbiteSidebarCollapseTheme>;
-  unstyled?: Unstyled<FlowbiteSidebarCollapseTheme>;
+  resetTheme?: ResetTheme<FlowbiteSidebarCollapseTheme>;
 }
 
 export const SidebarCollapse: FC<SidebarCollapseProps> = ({
@@ -51,17 +51,17 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   renderChevronIcon,
   open = false,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const id = useId();
   const [isOpen, setOpen] = useState(open);
-  const { theme: rootTheme, unstyled: rootUnstyled, isCollapsed } = useSidebarContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, isCollapsed } = useSidebarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [sidebarTheme.collapse, provider.theme?.sidebar?.collapse, rootTheme?.collapse, customTheme],
-    [get(rootUnstyled, "collapse"), unstyled],
+    [get(rootResetTheme, "collapse"), resetTheme],
   );
 
   useEffect(() => setOpen(open), [open]);

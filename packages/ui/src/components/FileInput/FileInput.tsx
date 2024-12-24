@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import { HelperText } from "../HelperText";
 import type { FlowbiteTextInputColors, FlowbiteTextInputSizes } from "../TextInput";
 import { fileInputTheme } from "./theme";
@@ -35,13 +35,13 @@ export interface FileInputProps extends Omit<ComponentProps<"input">, "type" | "
   helperText?: ReactNode;
   sizing?: DynamicStringEnumKeysOf<FlowbiteTextInputSizes>;
   theme?: DeepPartial<FlowbiteFileInputTheme>;
-  unstyled?: Unstyled<FlowbiteFileInputTheme>;
+  resetTheme?: ResetTheme<FlowbiteFileInputTheme>;
 }
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ className, color = "gray", helperText, sizing = "md", theme: customTheme, unstyled, ...props }, ref) => {
+  ({ className, color = "gray", helperText, sizing = "md", theme: customTheme, resetTheme, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([fileInputTheme, provider.theme?.fileInput, customTheme], [unstyled]);
+    const theme = resolveTheme([fileInputTheme, provider.theme?.fileInput, customTheme], [resetTheme]);
 
     return (
       <>

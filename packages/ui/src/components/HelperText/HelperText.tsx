@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { helperTextTheme } from "./theme";
 
@@ -24,7 +24,7 @@ export interface HelperColors extends Pick<FlowbiteColors, "gray" | "info" | "fa
 export interface HelperTextProps extends Omit<ComponentProps<"p">, "color"> {
   color?: DynamicStringEnumKeysOf<HelperColors>;
   theme?: DeepPartial<FlowbiteHelperTextTheme>;
-  unstyled?: Unstyled<FlowbiteHelperTextTheme>;
+  resetTheme?: ResetTheme<FlowbiteHelperTextTheme>;
   value?: string;
 }
 
@@ -33,12 +33,12 @@ export const HelperText: FC<HelperTextProps> = ({
   className,
   color = "default",
   theme: customTheme,
-  unstyled,
+  resetTheme,
   value,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([helperTextTheme, provider.theme?.helperText, customTheme], [unstyled]);
+  const theme = resolveTheme([helperTextTheme, provider.theme?.helperText, customTheme], [resetTheme]);
 
   return (
     <p className={twMerge(theme.root.base, theme.root.colors[color], className)} {...props}>

@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import { RatingAdvanced } from "./RatingAdvanced";
 import { RatingContext } from "./RatingContext";
 import type { FlowbiteRatingStarTheme, FlowbiteStarSizes } from "./RatingStar";
@@ -21,7 +21,7 @@ export interface FlowbiteRatingTheme {
 export interface RatingProps extends ComponentProps<"div"> {
   size?: DynamicStringEnumKeysOf<FlowbiteStarSizes>;
   theme?: DeepPartial<FlowbiteRatingTheme>;
-  unstyled?: Unstyled<FlowbiteRatingTheme>;
+  resetTheme?: ResetTheme<FlowbiteRatingTheme>;
 }
 
 const RatingComponent: FC<RatingProps> = ({
@@ -29,14 +29,14 @@ const RatingComponent: FC<RatingProps> = ({
   className,
   size = "sm",
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([ratingTheme, provider.theme?.rating, customTheme], [unstyled]);
+  const theme = resolveTheme([ratingTheme, provider.theme?.rating, customTheme], [resetTheme]);
 
   return (
-    <RatingContext.Provider value={{ theme: customTheme, unstyled, size }}>
+    <RatingContext.Provider value={{ theme: customTheme, resetTheme, size }}>
       <div className={twMerge(theme.root.base, className)} {...props}>
         {children}
       </div>

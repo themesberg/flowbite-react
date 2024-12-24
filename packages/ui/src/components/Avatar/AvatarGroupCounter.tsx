@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { avatarTheme } from "./theme";
 
 export interface FlowbiteAvatarGroupCounterTheme {
@@ -14,7 +14,7 @@ export interface FlowbiteAvatarGroupCounterTheme {
 export interface AvatarGroupCounterProps extends ComponentProps<"a"> {
   total?: number;
   theme?: DeepPartial<FlowbiteAvatarGroupCounterTheme>;
-  unstyled?: Unstyled<FlowbiteAvatarGroupCounterTheme>;
+  resetTheme?: ResetTheme<FlowbiteAvatarGroupCounterTheme>;
 }
 
 export const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({
@@ -22,11 +22,14 @@ export const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({
   href,
   total,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([avatarTheme.groupCounter, provider.theme?.avatar?.groupCounter, customTheme], [unstyled]);
+  const theme = resolveTheme(
+    [avatarTheme.groupCounter, provider.theme?.avatar?.groupCounter, customTheme],
+    [resetTheme],
+  );
 
   return (
     <a href={href} className={twMerge(theme.base, className)} {...props}>

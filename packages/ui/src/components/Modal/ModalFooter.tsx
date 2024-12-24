@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { useModalContext } from "./ModalContext";
 import { modalTheme } from "./theme";
 
@@ -16,16 +16,22 @@ export interface FlowbiteModalFooterTheme {
 
 export interface ModalFooterProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteModalFooterTheme>;
-  unstyled?: Unstyled<FlowbiteModalFooterTheme>;
+  resetTheme?: ResetTheme<FlowbiteModalFooterTheme>;
 }
 
-export const ModalFooter: FC<ModalFooterProps> = ({ children, className, theme: customTheme, unstyled, ...props }) => {
-  const { theme: rootTheme, unstyled: rootUnstyled, popup } = useModalContext();
+export const ModalFooter: FC<ModalFooterProps> = ({
+  children,
+  className,
+  theme: customTheme,
+  resetTheme,
+  ...props
+}) => {
+  const { theme: rootTheme, resetTheme: rootResetTheme, popup } = useModalContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [modalTheme.footer, provider.theme?.modal?.footer, rootTheme?.footer, customTheme],
-    [get(rootUnstyled, "footer"), unstyled],
+    [get(rootResetTheme, "footer"), resetTheme],
   );
 
   return (

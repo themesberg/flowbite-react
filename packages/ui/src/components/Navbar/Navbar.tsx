@@ -5,7 +5,7 @@ import { useState } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteNavbarBrandTheme } from "./NavbarBrand";
 import { NavbarBrand } from "./NavbarBrand";
@@ -42,7 +42,7 @@ export interface NavbarComponentProps extends ComponentProps<"nav"> {
   rounded?: boolean;
   border?: boolean;
   theme?: DeepPartial<FlowbiteNavbarTheme>;
-  unstyled?: Unstyled<FlowbiteNavbarTheme>;
+  resetTheme?: ResetTheme<FlowbiteNavbarTheme>;
 }
 
 const NavbarComponent: FC<NavbarComponentProps> = ({
@@ -53,16 +53,16 @@ const NavbarComponent: FC<NavbarComponentProps> = ({
   menuOpen,
   rounded,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([navbarTheme, provider.theme?.navbar, customTheme], [unstyled]);
+  const theme = resolveTheme([navbarTheme, provider.theme?.navbar, customTheme], [resetTheme]);
 
   return (
-    <NavbarContext.Provider value={{ theme: customTheme, unstyled, isOpen, setIsOpen }}>
+    <NavbarContext.Provider value={{ theme: customTheme, resetTheme, isOpen, setIsOpen }}>
       <nav
         className={twMerge(
           theme.root.base,

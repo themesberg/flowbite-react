@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { useDropdownContext } from "./DropdownContext";
 import { dropdownTheme } from "./theme";
 
@@ -15,16 +15,16 @@ export interface FlowbiteDropdownDividerTheme {
 
 export type DropdownDividerProps = {
   theme?: DeepPartial<FlowbiteDropdownDividerTheme>;
-  unstyled?: Unstyled<FlowbiteDropdownDividerTheme>;
+  resetTheme?: ResetTheme<FlowbiteDropdownDividerTheme>;
 } & ComponentProps<"div">;
 
-export const DropdownDivider: FC<DropdownDividerProps> = ({ className, theme: customTheme, unstyled, ...props }) => {
-  const { theme: rootTheme, unstyled: rootUnstyled } = useDropdownContext();
+export const DropdownDivider: FC<DropdownDividerProps> = ({ className, theme: customTheme, resetTheme, ...props }) => {
+  const { theme: rootTheme, resetTheme: rootResetTheme } = useDropdownContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [dropdownTheme.floating, provider.theme?.dropdown?.floating, rootTheme?.floating, customTheme],
-    [get(rootUnstyled, "floating"), unstyled],
+    [get(rootResetTheme, "floating"), resetTheme],
   );
 
   return <div className={twMerge(theme.divider, className)} {...props} />;

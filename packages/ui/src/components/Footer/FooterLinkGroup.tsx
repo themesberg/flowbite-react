@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteFooterLinkTheme } from "./FooterLink";
 import { footerTheme } from "./theme";
 
@@ -17,7 +17,7 @@ export interface FlowbiteFooterLinkGroupTheme {
 export interface FooterLinkGroupProps extends ComponentProps<"ul"> {
   col?: boolean;
   theme?: DeepPartial<FlowbiteFooterLinkGroupTheme>;
-  unstyled?: Unstyled<FlowbiteFooterLinkGroupTheme>;
+  resetTheme?: ResetTheme<FlowbiteFooterLinkGroupTheme>;
 }
 
 export const FooterLinkGroup: FC<FooterLinkGroupProps> = ({
@@ -25,11 +25,11 @@ export const FooterLinkGroup: FC<FooterLinkGroupProps> = ({
   className,
   col = false,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([footerTheme.groupLink, provider.theme?.footer?.groupLink, customTheme], [unstyled]);
+  const theme = resolveTheme([footerTheme.groupLink, provider.theme?.footer?.groupLink, customTheme], [resetTheme]);
 
   return (
     <ul data-testid="footer-groupLink" className={twMerge(theme.base, col && theme.col, className)} {...props}>

@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { HelperText } from "../HelperText";
 import { textInputTheme } from "./theme";
@@ -53,7 +53,7 @@ export interface TextInputProps extends Omit<ComponentProps<"input">, "ref" | "c
   shadow?: boolean;
   sizing?: DynamicStringEnumKeysOf<FlowbiteTextInputSizes>;
   theme?: DeepPartial<FlowbiteTextInputTheme>;
-  unstyled?: Unstyled<FlowbiteTextInputTheme>;
+  resetTheme?: ResetTheme<FlowbiteTextInputTheme>;
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
@@ -68,14 +68,14 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       shadow,
       sizing = "md",
       theme: customTheme,
-      unstyled,
+      resetTheme,
       type = "text",
       ...props
     },
     ref,
   ) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([textInputTheme, provider.theme?.textInput, customTheme], [unstyled]);
+    const theme = resolveTheme([textInputTheme, provider.theme?.textInput, customTheme], [resetTheme]);
 
     return (
       <>

@@ -4,7 +4,7 @@ import { forwardRef, useState, type ComponentProps, type ReactNode } from "react
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { Tooltip } from "../Tooltip";
 import type { FlowbiteClipboardWithIconTheme } from "./ClipboardWithIcon";
 import { ClipboardWithIcon } from "./ClipboardWithIcon";
@@ -26,15 +26,15 @@ export interface ClipboardProps extends ComponentProps<"button"> {
   valueToCopy: string;
   label?: ReactNode;
   theme?: DeepPartial<FlowbiteClipboardTheme["button"]>;
-  unstyled?: Unstyled<FlowbiteClipboardTheme["button"]>;
+  resetTheme?: ResetTheme<FlowbiteClipboardTheme["button"]>;
 }
 
 const ClipboardComponent = forwardRef<HTMLButtonElement, ClipboardProps>(
-  ({ className, valueToCopy, label, theme: customTheme, unstyled, ...rest }, ref) => {
+  ({ className, valueToCopy, label, theme: customTheme, resetTheme, ...rest }, ref) => {
     const [isJustCopied, setIsJustCopied] = useState(false);
 
     const provider = useThemeProvider();
-    const theme = resolveTheme([clipboardTheme.button, provider.theme?.clipboard?.button, customTheme], [unstyled]);
+    const theme = resolveTheme([clipboardTheme.button, provider.theme?.clipboard?.button, customTheme], [resetTheme]);
 
     return (
       <Tooltip content={isJustCopied ? "Copied" : "Copy to clipboard"} className="[&_*]:cursor-pointer">

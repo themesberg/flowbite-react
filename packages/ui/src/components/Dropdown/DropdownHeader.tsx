@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { useDropdownContext } from "./DropdownContext";
 import { DropdownDivider } from "./DropdownDivider";
 import { dropdownTheme } from "./theme";
@@ -16,22 +16,22 @@ export interface FlowbiteDropdownHeaderTheme {
 
 export interface DropdownHeaderProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteDropdownHeaderTheme>;
-  unstyled?: Unstyled<FlowbiteDropdownHeaderTheme>;
+  resetTheme?: ResetTheme<FlowbiteDropdownHeaderTheme>;
 }
 
 export const DropdownHeader: FC<DropdownHeaderProps> = ({
   children,
   className,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
-  const { theme: rootTheme, unstyled: rootUnstyled } = useDropdownContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme } = useDropdownContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [dropdownTheme.floating, provider.theme?.dropdown?.floating, rootTheme?.floating, customTheme],
-    [get(rootUnstyled, "floating"), unstyled],
+    [get(rootResetTheme, "floating"), resetTheme],
   );
 
   return (

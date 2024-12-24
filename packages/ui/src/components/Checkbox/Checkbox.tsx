@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { checkboxTheme } from "./theme";
 
@@ -20,13 +20,13 @@ export interface FlowbiteCheckboxRootTheme {
 export interface CheckboxProps extends Omit<ComponentProps<"input">, "type" | "ref" | "color"> {
   color?: DynamicStringEnumKeysOf<FlowbiteColors>;
   theme?: DeepPartial<FlowbiteCheckboxTheme>;
-  unstyled?: Unstyled<FlowbiteCheckboxTheme>;
+  resetTheme?: ResetTheme<FlowbiteCheckboxTheme>;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, color = "default", theme: customTheme, unstyled, ...props }, ref) => {
+  ({ className, color = "default", theme: customTheme, resetTheme, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([checkboxTheme, provider.theme?.checkbox, customTheme], [unstyled]);
+    const theme = resolveTheme([checkboxTheme, provider.theme?.checkbox, customTheme], [resetTheme]);
 
     return (
       <input

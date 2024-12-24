@@ -1,12 +1,12 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteTimelineTheme } from "./Timeline";
 
 export type TimelineContext = {
   theme?: DeepPartial<FlowbiteTimelineTheme>;
-  unstyled?: Unstyled<FlowbiteTimelineTheme>;
+  resetTheme?: ResetTheme<FlowbiteTimelineTheme>;
   horizontal?: boolean;
 };
 

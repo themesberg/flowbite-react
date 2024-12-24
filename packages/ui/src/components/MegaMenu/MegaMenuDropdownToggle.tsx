@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState, type ComponentProps, type FC, type 
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { megaMenuTheme } from "./theme";
 
 export interface FlowbiteMegaMenuDropdownToggleTheme {
@@ -13,14 +13,14 @@ export interface FlowbiteMegaMenuDropdownToggleTheme {
 
 export interface MegaMenuDropdownToggleProps extends ComponentProps<"button"> {
   theme?: DeepPartial<FlowbiteMegaMenuDropdownToggleTheme>;
-  unstyled?: Unstyled<FlowbiteMegaMenuDropdownToggleTheme>;
+  resetTheme?: ResetTheme<FlowbiteMegaMenuDropdownToggleTheme>;
 }
 
 export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
   children,
   className,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const id = useId();
@@ -31,7 +31,7 @@ export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [megaMenuTheme.dropdownToggle, provider.theme?.megaMenu?.dropdownToggle, customTheme],
-    [unstyled],
+    [resetTheme],
   );
 
   const findDropdown = function () {

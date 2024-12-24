@@ -6,7 +6,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { useRatingContext } from "./RatingContext";
 import { ratingTheme } from "./theme";
@@ -25,7 +25,7 @@ export interface RatingStarProps extends ComponentProps<"svg"> {
   filled?: boolean;
   starIcon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteRatingStarTheme>;
-  unstyled?: Unstyled<FlowbiteRatingStarTheme>;
+  resetTheme?: ResetTheme<FlowbiteRatingStarTheme>;
 }
 
 export const RatingStar: FC<RatingStarProps> = ({
@@ -33,15 +33,15 @@ export const RatingStar: FC<RatingStarProps> = ({
   filled = true,
   starIcon: Icon = HiStar,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
-  const { theme: rootTheme, unstyled: rootUnstyled, size = "sm" } = useRatingContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, size = "sm" } = useRatingContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [ratingTheme.star, provider.theme?.rating?.star, rootTheme?.star, customTheme],
-    [get(rootUnstyled, "star"), unstyled],
+    [get(rootResetTheme, "star"), resetTheme],
   );
 
   return (

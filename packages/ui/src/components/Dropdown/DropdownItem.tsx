@@ -7,7 +7,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { ButtonBase, type ButtonBaseProps } from "../Button/ButtonBase";
 import { useDropdownContext } from "./DropdownContext";
 import { dropdownTheme } from "./theme";
@@ -25,7 +25,7 @@ export type DropdownItemProps<T extends ElementType = "button"> = PolymorphicCom
     icon?: FC<ComponentProps<"svg">>;
     onClick?: () => void;
     theme?: DeepPartial<FlowbiteDropdownItemTheme>;
-    unstyled?: Unstyled<FlowbiteDropdownItemTheme>;
+    resetTheme?: ResetTheme<FlowbiteDropdownItemTheme>;
   }
 >;
 
@@ -35,14 +35,14 @@ type DropdownItemType = (<C extends ElementType = "button">(props: DropdownItemP
 
 export const DropdownItem = forwardRef(
   <T extends ElementType = "button">(
-    { children, className, icon: Icon, onClick, theme: customTheme, unstyled, ...props }: DropdownItemProps<T>,
+    { children, className, icon: Icon, onClick, theme: customTheme, resetTheme, ...props }: DropdownItemProps<T>,
     forwardedRef: PolymorphicRef<T>,
   ) => {
     const { ref: listItemRef, index } = useListItem({ label: typeof children === "string" ? children : undefined });
     const ref = useMergeRefs([forwardedRef, listItemRef]);
     const {
       theme: rootTheme,
-      unstyled: rootUnstyled,
+      resetTheme: rootResetTheme,
       activeIndex,
       dismissOnClick,
       getItemProps,
@@ -53,7 +53,7 @@ export const DropdownItem = forwardRef(
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [dropdownTheme.floating.item, provider.theme?.dropdown?.floating?.item, rootTheme?.floating?.item, customTheme],
-      [get(rootUnstyled, "floating.item"), unstyled],
+      [get(rootResetTheme, "floating.item"), resetTheme],
     );
 
     const theirProps = props as ButtonBaseProps<T>;

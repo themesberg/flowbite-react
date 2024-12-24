@@ -4,7 +4,7 @@ import type { ComponentProps, FC, ReactElement } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteAvatarGroupTheme } from "./AvatarGroup";
 import { AvatarGroup } from "./AvatarGroup";
@@ -76,7 +76,7 @@ export interface AvatarProps extends Omit<ComponentProps<"div">, "color"> {
   statusPosition?: keyof FlowbitePositions;
   placeholderInitials?: string;
   theme?: DeepPartial<FlowbiteAvatarTheme>;
-  unstyled?: Unstyled<FlowbiteAvatarTheme>;
+  resetTheme?: ResetTheme<FlowbiteAvatarTheme>;
 }
 
 const AvatarComponent: FC<AvatarProps> = ({
@@ -93,11 +93,11 @@ const AvatarComponent: FC<AvatarProps> = ({
   status,
   statusPosition = "top-left",
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([avatarTheme, provider.theme?.avatar, customTheme], [unstyled]);
+  const theme = resolveTheme([avatarTheme, provider.theme?.avatar, customTheme], [resetTheme]);
 
   const imgClassName = twMerge(
     theme.root.img.base,

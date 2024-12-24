@@ -16,7 +16,7 @@ import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteModalBodyTheme } from "./ModalBody";
 import { ModalBody } from "./ModalBody";
@@ -64,7 +64,7 @@ export interface ModalProps extends ComponentPropsWithoutRef<"div"> {
   size?: DynamicStringEnumKeysOf<ModalSizes>;
   dismissible?: boolean;
   theme?: DeepPartial<FlowbiteModalTheme>;
-  unstyled?: Unstyled<FlowbiteModalTheme>;
+  resetTheme?: ResetTheme<FlowbiteModalTheme>;
   initialFocus?: number | MutableRefObject<HTMLElement | null>;
 }
 
@@ -81,7 +81,7 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
       show,
       size = "2xl",
       theme: customTheme,
-      unstyled,
+      resetTheme,
       initialFocus,
       ...props
     },
@@ -89,7 +89,7 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
   ) => {
     const [headerId, setHeaderId] = useState<string | undefined>(undefined);
     const provider = useThemeProvider();
-    const theme = resolveTheme([modalTheme, provider.theme?.modal, customTheme], [unstyled]);
+    const theme = resolveTheme([modalTheme, provider.theme?.modal, customTheme], [resetTheme]);
 
     const { context } = useFloating({
       open: show,
@@ -109,7 +109,7 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
     }
 
     return (
-      <ModalContext.Provider value={{ theme: customTheme, unstyled, popup, onClose, setHeaderId }}>
+      <ModalContext.Provider value={{ theme: customTheme, resetTheme, popup, onClose, setHeaderId }}>
         <FloatingPortal root={root}>
           <FloatingOverlay
             lockScroll

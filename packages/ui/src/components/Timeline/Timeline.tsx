@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { timelineTheme } from "./theme";
 import { TimelineBody } from "./TimelineBody";
 import { TimelineContent } from "./TimelineContent";
@@ -27,7 +27,7 @@ export interface FlowbiteTimelineTheme {
 export interface TimelineProps extends ComponentProps<"ol"> {
   horizontal?: boolean;
   theme?: DeepPartial<FlowbiteTimelineTheme>;
-  unstyled?: Unstyled<FlowbiteTimelineTheme>;
+  resetTheme?: ResetTheme<FlowbiteTimelineTheme>;
 }
 
 const TimelineComponent: FC<TimelineProps> = ({
@@ -35,14 +35,14 @@ const TimelineComponent: FC<TimelineProps> = ({
   className,
   horizontal,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([timelineTheme, provider.theme?.timeline, customTheme], [unstyled]);
+  const theme = resolveTheme([timelineTheme, provider.theme?.timeline, customTheme], [resetTheme]);
 
   return (
-    <TimelineContext.Provider value={{ theme: customTheme, unstyled, horizontal }}>
+    <TimelineContext.Provider value={{ theme: customTheme, resetTheme, horizontal }}>
       <ol
         data-testid="timeline-component"
         className={twMerge(

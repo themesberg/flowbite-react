@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { radioTheme } from "./theme";
 
 export interface FlowbiteRadioTheme {
@@ -18,13 +18,13 @@ export interface FlowbiteRadioRootTheme {
 
 export interface RadioProps extends Omit<ComponentProps<"input">, "ref" | "type"> {
   theme?: DeepPartial<FlowbiteRadioTheme>;
-  unstyled?: Unstyled<FlowbiteRadioTheme>;
+  resetTheme?: ResetTheme<FlowbiteRadioTheme>;
 }
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ className, theme: customTheme, unstyled, ...props }, ref) => {
+  ({ className, theme: customTheme, resetTheme, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([radioTheme, provider.theme?.radio, customTheme], [unstyled]);
+    const theme = resolveTheme([radioTheme, provider.theme?.radio, customTheme], [resetTheme]);
 
     return <input ref={ref} type="radio" className={twMerge(theme.root.base, className)} {...props} />;
   },

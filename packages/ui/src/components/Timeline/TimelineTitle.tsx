@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteHeadingLevel } from "../Flowbite/FlowbiteTheme";
 import { timelineTheme } from "./theme";
 import { useTimelineContentContext } from "./TimelineContentContext";
@@ -19,7 +19,7 @@ export interface FlowbiteTimelineTitleTheme {
 export interface TimelineTitleProps extends ComponentProps<"h1"> {
   as?: FlowbiteHeadingLevel;
   theme?: DeepPartial<FlowbiteTimelineTitleTheme>;
-  unstyled?: Unstyled<FlowbiteTimelineTitleTheme>;
+  resetTheme?: ResetTheme<FlowbiteTimelineTitleTheme>;
 }
 
 export const TimelineTitle: FC<TimelineTitleProps> = ({
@@ -27,12 +27,12 @@ export const TimelineTitle: FC<TimelineTitleProps> = ({
   children,
   className,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
-  const { theme: rootTheme, unstyled: rootUnstyled } = useTimelineContext();
-  const { theme: itemTheme, unstyled: itemUnstyled } = useTimelineItemContext();
-  const { theme: contentTheme, unstyled: contentUnstyled } = useTimelineContentContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme } = useTimelineContext();
+  const { theme: itemTheme, resetTheme: itemResetTheme } = useTimelineItemContext();
+  const { theme: contentTheme, resetTheme: contentResetTheme } = useTimelineContentContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
@@ -45,10 +45,10 @@ export const TimelineTitle: FC<TimelineTitleProps> = ({
       customTheme,
     ],
     [
-      get(rootUnstyled, "item.content.title"),
-      get(itemUnstyled, "content.title"),
-      get(contentUnstyled, "title"),
-      unstyled,
+      get(rootResetTheme, "item.content.title"),
+      get(itemResetTheme, "content.title"),
+      get(contentResetTheme, "title"),
+      resetTheme,
     ],
   );
 

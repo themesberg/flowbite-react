@@ -6,7 +6,7 @@ import { MdClose, MdHome } from "react-icons/md";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useDrawerContext } from "./DrawerContext";
 import { drawerTheme } from "./theme";
@@ -24,7 +24,7 @@ export interface FlowbiteDrawerHeaderTheme {
 export interface DrawerHeaderProps extends ComponentProps<"div">, Record<string, unknown> {
   closeIcon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteDrawerHeaderTheme>;
-  unstyled?: Unstyled<FlowbiteDrawerHeaderTheme>;
+  resetTheme?: ResetTheme<FlowbiteDrawerHeaderTheme>;
   title?: string;
   titleIcon?: FC<ComponentProps<"svg">>;
 }
@@ -34,19 +34,19 @@ export const DrawerHeader: FC<DrawerHeaderProps> = ({
   className,
   closeIcon: CloseIcon = MdClose,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   title,
   titleIcon: TitleIcon = MdHome,
   ...props
 }) => {
   const id = useId();
 
-  const { id: mainDivId, isOpen, onClose, theme: rootTheme, unstyled: rootUnstyled } = useDrawerContext();
+  const { id: mainDivId, isOpen, onClose, theme: rootTheme, resetTheme: rootResetTheme } = useDrawerContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [drawerTheme.header, provider.theme?.drawer?.header, rootTheme?.header, customTheme],
-    [get(rootUnstyled, "header"), unstyled],
+    [get(rootResetTheme, "header"), resetTheme],
   );
 
   return (

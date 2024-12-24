@@ -5,7 +5,7 @@ import { forwardRef, useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { floatingLabelTheme, type FlowbiteFloatingLabelTheme } from "./theme";
 
 export type FloatingLabelColor = "default" | "success" | "error";
@@ -20,7 +20,7 @@ export interface FloatingLabelProps extends ComponentPropsWithoutRef<"input"> {
   variant: FloatingLabelVariant;
   disabled?: boolean;
   theme?: DeepPartial<FlowbiteFloatingLabelTheme>;
-  unstyled?: Unstyled<FlowbiteFloatingLabelTheme>;
+  resetTheme?: ResetTheme<FlowbiteFloatingLabelTheme>;
 }
 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
@@ -33,7 +33,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
       variant,
       disabled = false,
       theme: customTheme,
-      unstyled,
+      resetTheme,
       className,
       ...props
     },
@@ -42,7 +42,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
     const randomId = useId();
 
     const provider = useThemeProvider();
-    const theme = resolveTheme([floatingLabelTheme, provider.theme?.floatingLabel, customTheme], [unstyled]);
+    const theme = resolveTheme([floatingLabelTheme, provider.theme?.floatingLabel, customTheme], [resetTheme]);
 
     return (
       <div>

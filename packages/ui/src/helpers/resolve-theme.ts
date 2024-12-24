@@ -1,6 +1,6 @@
 import { deepmerge } from "deepmerge-ts";
 import { getPrefix } from "../store";
-import type { Unstyled } from "../types";
+import type { ResetTheme } from "../types";
 import { applyPrefix } from "./apply-prefix";
 import { deepMergeStrings } from "./deep-merge";
 import { twMerge } from "./tailwind-merge";
@@ -8,11 +8,11 @@ import { twMerge } from "./tailwind-merge";
 const cache = new Map();
 
 /**
- * Adds prefix to `base` and merges with custom themes, applying optional unstyled modifications.
+ * Adds prefix to `base` and merges with custom themes, applying optional `resetTheme` modifications.
  *
  * @template T - The type of the base theme.
  * @param {[base, ...custom]} themes - An array where the first element is the base theme and the rest are custom themes.
- * @param {Unstyled<T[]>} [unstyledList=[]] - An optional list of unstyled modifications to apply to the base theme.
+ * @param {ResetTheme<T[]>} [resetThemeList=[]] - An optional list of `resetTheme` modifications to apply to the base theme.
  * @returns {T} - The resolved and merged theme.
  */
 export function resolveTheme<T>(
@@ -22,11 +22,11 @@ export function resolveTheme<T>(
     /** custom themes */
     ...unknown[],
   ],
-  unstyledList: Unstyled<T[]> = [],
+  resetThemeList: ResetTheme<T[]> = [],
 ): T {
   const prefix = getPrefix();
 
-  const cacheKey = JSON.stringify({ base, custom, unstyledList, prefix });
+  const cacheKey = JSON.stringify({ base, custom, resetThemeList, prefix });
   const cacheValue = cache.get(cacheKey);
 
   if (cacheValue) {
@@ -34,10 +34,10 @@ export function resolveTheme<T>(
   }
 
   const baseTheme = structuredClone(base);
-  const unstyled = resolveUnstyled(unstyledList);
+  const resetTheme = resolveResetTheme(resetThemeList);
 
-  if (unstyled) {
-    applyUnstyled(baseTheme, unstyled);
+  if (resetTheme) {
+    applyReset(baseTheme, resetTheme);
   }
   if (prefix) {
     stringIterator(baseTheme, (value) => applyPrefix(value, prefix));
@@ -50,58 +50,58 @@ export function resolveTheme<T>(
 }
 
 /**
- * Resolves an array of unstyled theme objects into a single unstyled theme object.
+ * Resolves an array of `resetTheme` objects into a single `resetTheme` object.
  *
- * @template T - The type of the theme object.
- * @param {Unstyled<T[]>} unstyledList - An array of unstyled theme objects.
- * @returns {Unstyled<T> | undefined} - A single unstyled theme object or undefined if the input is not a valid array or is empty.
+ * @template T - The type of the object.
+ * @param {ResetTheme<T[]>} resetThemeList - An array of `resetTheme` objects.
+ * @returns {ResetTheme<T> | undefined} - A single `resetTheme` object or undefined if the input is not a valid array or is empty.
  */
-function resolveUnstyled<T>(unstyledList: Unstyled<T[]>): Unstyled<T> | undefined {
-  if (!Array.isArray(unstyledList)) {
+function resolveResetTheme<T>(resetThemeList: ResetTheme<T[]>): ResetTheme<T> | undefined {
+  if (!Array.isArray(resetThemeList)) {
     return;
   }
 
-  if (!unstyledList.length) {
+  if (!resetThemeList.length) {
     return;
   }
 
-  return deepmerge(...unstyledList) as Unstyled<T> | undefined;
+  return deepmerge(...resetThemeList) as ResetTheme<T> | undefined;
 }
 
 /**
- * Applies unstyled modifications to a base object. If `unstyled` is `true`,
+ * Applies `resetTheme` modifications to a base object. If ``resetTheme`` is `true`,
  * it will recursively set all string properties of the base object to an empty string.
- * If `unstyled` is an object, it will recursively apply the properties of the `unstyled`
+ * If ``resetTheme`` is an object, it will recursively apply the properties of the ``resetTheme``
  * object to the base object.
  *
  * @template T - The type of the base object.
- * @param {T} base - The base object to which unstyled modifications will be applied.
- * @param {Unstyled<T>} unstyled - The unstyled modifications to apply. It can be a boolean or an object.
+ * @param {T} base - The base object to which `resetTheme` modifications will be applied.
+ * @param {ResetTheme<T>} `resetTheme` - The `resetTheme` modifications to apply. It can be a boolean or an object.
  * @returns {void}
  */
-function applyUnstyled<T>(base: T, unstyled: Unstyled<T>): void {
-  function iterate(base: T, unstyled?: Unstyled<T>) {
-    if (unstyled === true) {
+function applyReset<T>(base: T, resetTheme: ResetTheme<T>): void {
+  function iterate(base: T, resetTheme?: ResetTheme<T>) {
+    if (resetTheme === true) {
       if (typeof base === "object" && base !== null) {
         for (const key in base) {
           // @ts-expect-error - bypass
-          base[key] = iterate(base[key], unstyled);
+          base[key] = iterate(base[key], resetTheme);
         }
       }
       if (typeof base === "string") {
         return "";
       }
     }
-    if (typeof unstyled === "object" && unstyled !== null) {
-      for (const key in unstyled) {
+    if (typeof resetTheme === "object" && resetTheme !== null) {
+      for (const key in resetTheme) {
         // @ts-expect-error - bypass
-        base[key] = iterate(base[key], unstyled[key]);
+        base[key] = iterate(base[key], resetTheme[key]);
       }
     }
     return base;
   }
 
-  iterate(base, unstyled);
+  iterate(base, resetTheme);
 }
 
 /**

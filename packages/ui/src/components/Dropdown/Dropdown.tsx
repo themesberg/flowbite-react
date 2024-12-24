@@ -18,7 +18,7 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { Button, type ButtonProps } from "../Button";
 import type { FloatingProps, FlowbiteFloatingTheme } from "../Floating";
 import { DropdownContext } from "./DropdownContext";
@@ -43,14 +43,14 @@ export interface FlowbiteDropdownTheme {
 
 export interface DropdownProps
   extends Pick<FloatingProps, "placement" | "trigger">,
-    Omit<ButtonProps, "theme" | "unstyled"> {
+    Omit<ButtonProps, "theme" | "resetTheme"> {
   arrowIcon?: boolean;
   dismissOnClick?: boolean;
   floatingArrow?: boolean;
   inline?: boolean;
   label?: ReactNode;
   theme?: DeepPartial<FlowbiteDropdownTheme>;
-  unstyled?: Unstyled<FlowbiteDropdownTheme>;
+  resetTheme?: ResetTheme<FlowbiteDropdownTheme>;
   enableTypeAhead?: boolean;
   renderTrigger?: (theme: FlowbiteDropdownTheme) => ReactElement;
   "data-testid"?: string;
@@ -113,7 +113,7 @@ const DropdownComponent: FC<DropdownProps> = ({
   className,
   dismissOnClick = true,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   enableTypeAhead = true,
   renderTrigger,
   ...props
@@ -126,8 +126,8 @@ const DropdownComponent: FC<DropdownProps> = ({
   const labelsRef = useRef<Array<string | null>>([]);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([dropdownTheme, provider.theme?.dropdown, customTheme], [unstyled]);
-  const theirProps = props as Omit<DropdownProps, "theme" | "unstyled">;
+  const theme = resolveTheme([dropdownTheme, provider.theme?.dropdown, customTheme], [resetTheme]);
+  const theirProps = props as Omit<DropdownProps, "theme" | "resetTheme">;
   const dataTestId = props["data-testid"] || "flowbite-dropdown-target";
   const {
     placement = props.inline ? "bottom-start" : "bottom",
@@ -189,7 +189,7 @@ const DropdownComponent: FC<DropdownProps> = ({
 
   return (
     <DropdownContext.Provider
-      value={{ theme: customTheme, unstyled, activeIndex, dismissOnClick, getItemProps, handleSelect }}
+      value={{ theme: customTheme, resetTheme, activeIndex, dismissOnClick, getItemProps, handleSelect }}
     >
       <Trigger
         {...buttonProps}

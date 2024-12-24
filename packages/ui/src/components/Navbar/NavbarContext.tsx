@@ -1,12 +1,12 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteNavbarTheme } from "./Navbar";
 
 type NavbarContext = {
   theme?: DeepPartial<FlowbiteNavbarTheme>;
-  unstyled?: Unstyled<FlowbiteNavbarTheme>;
+  resetTheme?: ResetTheme<FlowbiteNavbarTheme>;
   isOpen?: boolean;
   setIsOpen: (isOpen: boolean) => void;
 };

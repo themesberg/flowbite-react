@@ -5,7 +5,7 @@ import { omit } from "../../helpers/omit";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { cardTheme } from "./theme";
 
@@ -30,7 +30,7 @@ interface CommonCardProps extends ComponentProps<"div"> {
   horizontal?: boolean;
   href?: string;
   theme?: DeepPartial<FlowbiteCardTheme>;
-  unstyled?: Unstyled<FlowbiteCardTheme>;
+  resetTheme?: ResetTheme<FlowbiteCardTheme>;
 }
 
 export type CardProps = (
@@ -46,12 +46,12 @@ export type CardProps = (
   CommonCardProps;
 
 export const Card: FC<CardProps> = (props) => {
-  const { children, className, horizontal, href, theme: customTheme, unstyled } = props;
+  const { children, className, horizontal, href, theme: customTheme, resetTheme } = props;
   const Component = typeof href === "undefined" ? "div" : "a";
   const theirProps = removeCustomProps(props);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([cardTheme, provider.theme?.card, customTheme], [unstyled]);
+  const theme = resolveTheme([cardTheme, provider.theme?.card, customTheme], [resetTheme]);
 
   return (
     <Component
@@ -71,9 +71,9 @@ export const Card: FC<CardProps> = (props) => {
   );
 };
 
-const Image: FC<CardProps> = ({ theme: customTheme, unstyled, ...props }) => {
+const Image: FC<CardProps> = ({ theme: customTheme, resetTheme, ...props }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([cardTheme, provider.theme?.card, customTheme], [unstyled]);
+  const theme = resolveTheme([cardTheme, provider.theme?.card, customTheme], [resetTheme]);
 
   if (props.renderImage) {
     return props.renderImage(theme, props.horizontal ?? false);
@@ -102,5 +102,5 @@ const removeCustomProps = omit([
   "imgSrc",
   "renderImage",
   "theme",
-  "unstyled",
+  "resetTheme",
 ]);

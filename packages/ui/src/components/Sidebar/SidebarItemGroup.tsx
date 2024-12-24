@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { useSidebarContext } from "./SidebarContext";
 import { SidebarItemContext } from "./SidebarItemContext";
 import { sidebarTheme } from "./theme";
@@ -16,22 +16,22 @@ export interface FlowbiteSidebarItemGroupTheme {
 
 export interface SidebarItemGroupProps extends ComponentProps<"ul"> {
   theme?: DeepPartial<FlowbiteSidebarItemGroupTheme>;
-  unstyled?: Unstyled<FlowbiteSidebarItemGroupTheme>;
+  resetTheme?: ResetTheme<FlowbiteSidebarItemGroupTheme>;
 }
 
 export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({
   children,
   className,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
-  const { theme: rootTheme, unstyled: rootUnstyled } = useSidebarContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme } = useSidebarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [sidebarTheme.itemGroup, provider.theme?.sidebar?.itemGroup, rootTheme?.itemGroup, customTheme],
-    [get(rootUnstyled, "itemGroup"), unstyled],
+    [get(rootResetTheme, "itemGroup"), resetTheme],
   );
 
   return (

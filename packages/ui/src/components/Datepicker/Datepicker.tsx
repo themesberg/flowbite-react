@@ -6,7 +6,7 @@ import { HiArrowLeft, HiArrowRight, HiCalendar } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { TextInput, type FlowbiteTextInputTheme, type TextInputProps } from "../TextInput";
 import { DatepickerContext } from "./DatepickerContext";
 import {
@@ -84,7 +84,7 @@ export interface DatepickerRef {
 }
 
 export interface DatepickerProps
-  extends Omit<TextInputProps, "theme" | "unstyled" | "onChange" | "value" | "defaultValue"> {
+  extends Omit<TextInputProps, "theme" | "resetTheme" | "onChange" | "value" | "defaultValue"> {
   defaultValue?: Date;
   open?: boolean;
   inline?: boolean;
@@ -98,7 +98,7 @@ export interface DatepickerProps
   language?: string;
   weekStart?: WeekStart;
   theme?: DeepPartial<FlowbiteDatepickerTheme>;
-  unstyled?: Unstyled<FlowbiteDatepickerTheme>;
+  resetTheme?: ResetTheme<FlowbiteDatepickerTheme>;
   onChange?: (date: Date | null) => void;
   value?: Date | null;
   label?: string;
@@ -121,7 +121,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     weekStart = WeekStart.Sunday,
     className,
     theme: customTheme,
-    unstyled,
+    resetTheme,
     onChange,
     label,
     value,
@@ -130,7 +130,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   ref,
 ) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([datePickerTheme, provider.theme?.datepicker, customTheme], [unstyled]);
+  const theme = resolveTheme([datePickerTheme, provider.theme?.datepicker, customTheme], [resetTheme]);
   const initialDate = defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : null;
 
   const effectiveDefaultView = useMemo(() => {

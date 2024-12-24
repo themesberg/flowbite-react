@@ -6,7 +6,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { toastTheme } from "./theme";
 import { useToastContext } from "./ToastContext";
 
@@ -17,7 +17,7 @@ export interface FlowbiteToastToggleTheme {
 
 export interface ToastToggleProps extends ComponentProps<"button"> {
   theme?: DeepPartial<FlowbiteToastToggleTheme>;
-  unstyled?: Unstyled<FlowbiteToastToggleTheme>;
+  resetTheme?: ResetTheme<FlowbiteToastToggleTheme>;
   xIcon?: FC<ComponentProps<"svg">>;
   onDismiss?: () => void;
 }
@@ -26,14 +26,14 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   className,
   onClick,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   xIcon: XIcon = HiX,
   onDismiss,
   ...props
 }) => {
   const {
     theme: rootTheme,
-    unstyled: rootUnstyled,
+    resetTheme: rootResetTheme,
     duration,
     isClosed,
     isRemoved,
@@ -44,7 +44,7 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [toastTheme.toggle, provider.theme?.toast?.toggle, rootTheme?.toggle, customTheme],
-    [get(rootUnstyled, "toggle"), unstyled],
+    [get(rootResetTheme, "toggle"), resetTheme],
   );
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {

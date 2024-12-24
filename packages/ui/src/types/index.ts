@@ -8,4 +8,4 @@ export type DynamicStringEnum<T> = T | (string & {});
 
 export type DynamicStringEnumKeysOf<T extends object> = DynamicStringEnum<keyof RemoveIndexSignature<T>>;
 
-export type Unstyled<T> = T extends object ? { [K in keyof T]?: Unstyled<T[K]> } | boolean : boolean;
+export type ResetTheme<T> = T extends object ? { [K in keyof T]?: ResetTheme<T[K]> } | boolean : boolean;

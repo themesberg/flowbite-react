@@ -4,7 +4,7 @@ import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { listGroupTheme } from "./theme";
 
@@ -26,7 +26,7 @@ export interface ListGroupItemProps extends PropsWithChildren {
   icon?: FC<ComponentProps<"svg">>;
   onClick?: () => void;
   theme?: DeepPartial<FlowbiteListGroupItemTheme>;
-  unstyled?: Unstyled<FlowbiteListGroupItemTheme>;
+  resetTheme?: ResetTheme<FlowbiteListGroupItemTheme>;
 }
 
 export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & ComponentProps<"button">> = ({
@@ -37,12 +37,12 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & Compon
   icon: Icon,
   onClick,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   disabled,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([listGroupTheme.item, provider.theme?.listGroup?.item, customTheme], [unstyled]);
+  const theme = resolveTheme([listGroupTheme.item, provider.theme?.listGroup?.item, customTheme], [resetTheme]);
 
   const isLink = typeof href !== "undefined";
   const Component = isLink ? "a" : "button";

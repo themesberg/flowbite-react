@@ -6,7 +6,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import { Badge } from "../Badge";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { Tooltip } from "../Tooltip";
@@ -40,7 +40,7 @@ export interface SidebarItemProps extends Omit<ComponentProps<"div">, "ref">, Re
   label?: string;
   labelColor?: DynamicStringEnumKeysOf<SidebarItemLabelColors>;
   theme?: DeepPartial<FlowbiteSidebarItemTheme>;
-  unstyled?: Unstyled<FlowbiteSidebarItemTheme>;
+  resetTheme?: ResetTheme<FlowbiteSidebarItemTheme>;
 }
 
 export interface SidebarItemLabelColors extends Pick<FlowbiteColors, "gray"> {
@@ -97,19 +97,19 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       label,
       labelColor = "info",
       theme: customTheme,
-      unstyled,
+      resetTheme,
       ...props
     },
     ref,
   ) => {
     const id = useId();
-    const { theme: rootTheme, unstyled: rootUnstyled, isCollapsed } = useSidebarContext();
+    const { theme: rootTheme, resetTheme: rootResetTheme, isCollapsed } = useSidebarContext();
     const { isInsideCollapse } = useSidebarItemContext();
 
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [sidebarTheme.item, provider.theme?.sidebar?.item, rootTheme?.item, customTheme],
-      [get(rootUnstyled, "item"), unstyled],
+      [get(rootResetTheme, "item"), resetTheme],
     );
 
     return (

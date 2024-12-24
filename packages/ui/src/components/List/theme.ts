@@ -9,7 +9,7 @@ export const listTheme: FlowbiteListTheme = createTheme({
       on: "list-decimal",
     },
     horizontal: "flex list-none flex-wrap items-center justify-center space-x-4 space-y-0",
-    unstyled: "list-none",
+    resetTheme: "list-none",
     nested: "mt-2 ps-5",
   },
   item: {

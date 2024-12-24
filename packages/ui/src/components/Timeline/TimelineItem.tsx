@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { timelineTheme } from "./theme";
 import type { FlowbiteTimelineContentTheme } from "./TimelineContent";
 import { useTimelineContext } from "./TimelineContext";
@@ -23,26 +23,26 @@ export interface FlowbiteTimelineItemTheme {
 
 export interface TimelineItemProps extends ComponentProps<"li"> {
   theme?: DeepPartial<FlowbiteTimelineItemTheme>;
-  unstyled?: Unstyled<FlowbiteTimelineItemTheme>;
+  resetTheme?: ResetTheme<FlowbiteTimelineItemTheme>;
 }
 
 export const TimelineItem: FC<TimelineItemProps> = ({
   children,
   className,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
-  const { theme: rootTheme, unstyled: rootUnstyled, horizontal } = useTimelineContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, horizontal } = useTimelineContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [timelineTheme.item, provider.theme?.timeline?.item, rootTheme?.item, customTheme],
-    [get(rootUnstyled, "item"), unstyled],
+    [get(rootResetTheme, "item"), resetTheme],
   );
 
   return (
-    <TimelineItemContext.Provider value={{ theme: customTheme, unstyled }}>
+    <TimelineItemContext.Provider value={{ theme: customTheme, resetTheme }}>
       <li
         data-testid="timeline-item"
         className={twMerge(horizontal && theme.root.horizontal, !horizontal && theme.root.vertical, className)}

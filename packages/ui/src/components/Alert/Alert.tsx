@@ -5,7 +5,7 @@ import { HiX } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { alertTheme } from "./theme";
 
@@ -32,7 +32,7 @@ export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
   onDismiss?: boolean | (() => void);
   rounded?: boolean;
   theme?: DeepPartial<FlowbiteAlertTheme>;
-  unstyled?: Unstyled<FlowbiteAlertTheme>;
+  resetTheme?: ResetTheme<FlowbiteAlertTheme>;
   withBorderAccent?: boolean;
 }
 
@@ -45,12 +45,12 @@ export const Alert: FC<AlertProps> = ({
   onDismiss,
   rounded = true,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   withBorderAccent,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([alertTheme, provider.theme?.alert, customTheme], [unstyled]);
+  const theme = resolveTheme([alertTheme, provider.theme?.alert, customTheme], [resetTheme]);
 
   return (
     <div

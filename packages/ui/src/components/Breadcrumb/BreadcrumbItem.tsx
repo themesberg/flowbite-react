@@ -6,7 +6,7 @@ import { HiOutlineChevronRight } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { breadcrumbTheme } from "./theme";
 
@@ -21,18 +21,18 @@ export interface BreadcrumbItemProps extends Omit<ComponentProps<"li">, "ref"> {
   href?: string;
   icon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteBreadcrumbItemTheme>;
-  unstyled?: Unstyled<FlowbiteBreadcrumbItemTheme>;
+  resetTheme?: ResetTheme<FlowbiteBreadcrumbItemTheme>;
 }
 
 export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, BreadcrumbItemProps>(
-  ({ children, className, href, icon: Icon, theme: customTheme, unstyled, ...props }, ref) => {
+  ({ children, className, href, icon: Icon, theme: customTheme, resetTheme, ...props }, ref) => {
     const isLink = typeof href !== "undefined";
     const Component = isLink ? "a" : "span";
 
     const provider = useThemeProvider();
     const theme = resolveTheme(
-      [breadcrumbTheme.item, provider.theme?.breadcrumb?.item, customTheme, unstyled],
-      [unstyled],
+      [breadcrumbTheme.item, provider.theme?.breadcrumb?.item, customTheme, resetTheme],
+      [resetTheme],
     );
 
     return (

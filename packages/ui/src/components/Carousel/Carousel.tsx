@@ -8,7 +8,7 @@ import { isClient } from "../../helpers/is-client";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { carouselTheme } from "./theme";
 
@@ -55,14 +55,14 @@ export interface CarouselProps extends ComponentProps<"div"> {
   slide?: boolean;
   slideInterval?: number;
   theme?: DeepPartial<FlowbiteCarouselTheme>;
-  unstyled?: Unstyled<FlowbiteCarouselTheme>;
+  resetTheme?: ResetTheme<FlowbiteCarouselTheme>;
   onSlideChange?: (slide: number) => void;
   pauseOnHover?: boolean;
 }
 
 export interface DefaultLeftRightControlProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteCarouselTheme>;
-  unstyled?: Unstyled<FlowbiteCarouselTheme>;
+  resetTheme?: ResetTheme<FlowbiteCarouselTheme>;
 }
 
 export const Carousel: FC<CarouselProps> = ({
@@ -75,13 +75,13 @@ export const Carousel: FC<CarouselProps> = ({
   slideInterval,
   className,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   onSlideChange = null,
   pauseOnHover = false,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme], [unstyled]);
+  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme], [resetTheme]);
 
   const isDeviceMobile = isClient() && navigator.userAgent.indexOf("IEMobile") !== -1;
   const carouselContainer = useRef<HTMLDivElement>(null);
@@ -214,9 +214,9 @@ export const Carousel: FC<CarouselProps> = ({
   );
 };
 
-const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, unstyled }) => {
+const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, resetTheme }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme], [unstyled]);
+  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme], [resetTheme]);
 
   return (
     <span className={theme.control.base}>
@@ -225,9 +225,9 @@ const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customThe
   );
 };
 
-const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, unstyled }) => {
+const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, resetTheme }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme], [unstyled]);
+  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme], [resetTheme]);
 
   return (
     <span className={theme.control.base}>

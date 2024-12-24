@@ -6,7 +6,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useSidebarContext } from "./SidebarContext";
 import { sidebarTheme } from "./theme";
@@ -22,7 +22,7 @@ export interface SidebarLogoProps extends ComponentProps<"a"> {
   img: string;
   imgAlt?: string;
   theme?: DeepPartial<FlowbiteSidebarLogoTheme>;
-  unstyled?: Unstyled<FlowbiteSidebarLogoTheme>;
+  resetTheme?: ResetTheme<FlowbiteSidebarLogoTheme>;
 }
 
 export const SidebarLogo: FC<SidebarLogoProps> = ({
@@ -32,16 +32,16 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
   img,
   imgAlt = "",
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const id = useId();
-  const { theme: rootTheme, unstyled: rootUnstyled, isCollapsed } = useSidebarContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, isCollapsed } = useSidebarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [sidebarTheme.logo, provider.theme?.sidebar?.logo, rootTheme?.logo, customTheme],
-    [get(rootUnstyled, "logo"), unstyled],
+    [get(rootResetTheme, "logo"), resetTheme],
   );
 
   return (

@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import { labelTheme } from "./theme";
 
@@ -27,7 +27,7 @@ export interface LabelProps extends Omit<ComponentProps<"label">, "color"> {
   color?: DynamicStringEnumKeysOf<LabelColors>;
   disabled?: boolean;
   theme?: DeepPartial<FlowbiteLabelTheme>;
-  unstyled?: Unstyled<FlowbiteLabelTheme>;
+  resetTheme?: ResetTheme<FlowbiteLabelTheme>;
   value?: string;
 }
 
@@ -37,12 +37,12 @@ export const Label: FC<LabelProps> = ({
   color = "default",
   disabled = false,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   value,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([labelTheme, provider.theme?.label, customTheme], [unstyled]);
+  const theme = resolveTheme([labelTheme, provider.theme?.label, customTheme], [resetTheme]);
 
   return (
     <label

@@ -4,7 +4,7 @@ import type { Placement } from "@floating-ui/core";
 import type { ComponentProps, FC, ReactNode } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { Floating, type FlowbiteFloatingTheme } from "../Floating";
 import { tooltipTheme } from "./theme";
 
@@ -17,7 +17,7 @@ export interface TooltipProps extends Omit<ComponentProps<"div">, "content" | "s
   placement?: "auto" | Placement;
   style?: "dark" | "light" | "auto";
   theme?: DeepPartial<FlowbiteTooltipTheme>;
-  unstyled?: Unstyled<FlowbiteTooltipTheme>;
+  resetTheme?: ResetTheme<FlowbiteTooltipTheme>;
   trigger?: "hover" | "click";
 }
 
@@ -33,12 +33,12 @@ export const Tooltip: FC<TooltipProps> = ({
   placement = "top",
   style = "dark",
   theme: customTheme,
-  unstyled,
+  resetTheme,
   trigger = "hover",
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([tooltipTheme, provider.theme?.tooltip, customTheme], [unstyled]);
+  const theme = resolveTheme([tooltipTheme, provider.theme?.tooltip, customTheme], [resetTheme]);
 
   return (
     <Floating

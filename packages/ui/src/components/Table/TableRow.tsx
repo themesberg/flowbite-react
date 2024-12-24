@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { useTableContext } from "./TableContext";
 import { tableTheme } from "./theme";
 
@@ -17,17 +17,17 @@ export interface FlowbiteTableRowTheme {
 
 export interface TableRowProps extends ComponentPropsWithRef<"tr"> {
   theme?: DeepPartial<FlowbiteTableRowTheme>;
-  unstyled?: Unstyled<FlowbiteTableRowTheme>;
+  resetTheme?: ResetTheme<FlowbiteTableRowTheme>;
 }
 
 export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
-  ({ children, className, theme: customTheme, unstyled, ...props }, ref) => {
-    const { theme: rootTheme, unstyled: rootUnstyled, hoverable, striped } = useTableContext();
+  ({ children, className, theme: customTheme, resetTheme, ...props }, ref) => {
+    const { theme: rootTheme, resetTheme: rootResetTheme, hoverable, striped } = useTableContext();
 
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [tableTheme.row, provider.theme?.table?.row, rootTheme?.row, customTheme],
-      [get(rootUnstyled, "row"), unstyled],
+      [get(rootResetTheme, "row"), resetTheme],
     );
 
     return (

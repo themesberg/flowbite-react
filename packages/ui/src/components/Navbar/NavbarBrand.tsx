@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
 import { navbarTheme } from "./theme";
 
@@ -17,7 +17,7 @@ export interface NavbarBrandProps extends ComponentProps<"a">, Record<string, un
   as?: ElementType;
   href?: string;
   theme?: DeepPartial<FlowbiteNavbarBrandTheme>;
-  unstyled?: Unstyled<FlowbiteNavbarBrandTheme>;
+  resetTheme?: ResetTheme<FlowbiteNavbarBrandTheme>;
 }
 
 export const NavbarBrand: FC<NavbarBrandProps> = ({
@@ -25,15 +25,15 @@ export const NavbarBrand: FC<NavbarBrandProps> = ({
   children,
   className,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
-  const { theme: rootTheme, unstyled: rootUnstyled } = useNavbarContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme } = useNavbarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [navbarTheme.brand, provider.theme?.navbar?.brand, rootTheme?.brand, customTheme],
-    [get(rootUnstyled, "brand"), unstyled],
+    [get(rootResetTheme, "brand"), resetTheme],
   );
 
   return (

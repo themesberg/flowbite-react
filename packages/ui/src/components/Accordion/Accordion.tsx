@@ -7,7 +7,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { FlowbiteAccordionComponentTheme } from "./AccordionContent";
 import { AccordionContent } from "./AccordionContent";
@@ -35,7 +35,7 @@ export interface AccordionProps extends ComponentProps<"div"> {
   flush?: boolean;
   collapseAll?: boolean;
   theme?: DeepPartial<FlowbiteAccordionTheme>;
-  unstyled?: Unstyled<FlowbiteAccordionTheme>;
+  resetTheme?: ResetTheme<FlowbiteAccordionTheme>;
 }
 
 const AccordionComponent: FC<AccordionProps> = ({
@@ -46,7 +46,7 @@ const AccordionComponent: FC<AccordionProps> = ({
   collapseAll = false,
   className,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const [isOpen, setOpen] = useState(collapseAll ? -1 : 0);
@@ -68,7 +68,7 @@ const AccordionComponent: FC<AccordionProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [accordionTheme.root, provider.theme?.accordion?.root, customTheme],
-    [get(provider.unstyled, "accordion.root"), get(unstyled, "root")],
+    [get(provider.resetTheme, "accordion.root"), get(resetTheme, "root")],
   );
 
   return (

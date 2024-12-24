@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useNavbarContext } from "./NavbarContext";
 import { navbarTheme } from "./theme";
@@ -22,7 +22,7 @@ export interface NavbarLinkProps extends ComponentProps<"a">, Record<string, unk
   disabled?: boolean;
   href?: string;
   theme?: DeepPartial<FlowbiteNavbarLinkTheme>;
-  unstyled?: Unstyled<FlowbiteNavbarLinkTheme>;
+  resetTheme?: ResetTheme<FlowbiteNavbarLinkTheme>;
 }
 
 export const NavbarLink: FC<NavbarLinkProps> = ({
@@ -32,16 +32,16 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   children,
   className,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   onClick,
   ...props
 }) => {
-  const { theme: rootTheme, unstyled: rootUnstyled, setIsOpen } = useNavbarContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, setIsOpen } = useNavbarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [navbarTheme.link, provider.theme?.navbar?.link, rootTheme?.link, customTheme],
-    [get(rootUnstyled, "link"), unstyled],
+    [get(rootResetTheme, "link"), resetTheme],
   );
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {

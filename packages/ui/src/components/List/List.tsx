@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import { ListItem, type FlowbiteListItemTheme } from "./ListItem";
 import { listTheme } from "./theme";
@@ -22,7 +22,7 @@ export interface FlowbiteListRootTheme {
     off: string;
   };
   horizontal: string;
-  unstyled: string;
+  resetTheme: string;
   nested: string;
 }
 
@@ -32,27 +32,27 @@ export interface ListColors extends FlowbiteStateColors {
 }
 
 export interface ListProps extends PropsWithChildren<ComponentProps<"ul"> & ComponentProps<"ol">> {
-  _unstyled?: boolean; // TODO: fix
   horizontal?: boolean;
   nested?: boolean;
   ordered?: boolean;
+  resetTheme?: ResetTheme<FlowbiteListTheme>;
   theme?: DeepPartial<FlowbiteListTheme>;
-  unstyled?: Unstyled<FlowbiteListTheme>;
+  unstyled?: boolean;
 }
 
 const ListComponent: FC<ListProps> = ({
-  _unstyled, // TODO: fix
   children,
   className,
   horizontal,
   nested,
   ordered,
+  resetTheme,
   theme: customTheme,
   unstyled,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([listTheme.root, provider.theme?.list?.root, customTheme], [get(unstyled, "root")]);
+  const theme = resolveTheme([listTheme.root, provider.theme?.list?.root, customTheme], [get(resetTheme, "root")]);
   const Component = ordered ? "ol" : "ul";
 
   return (
@@ -60,7 +60,7 @@ const ListComponent: FC<ListProps> = ({
       className={twMerge(
         theme.base,
         theme.ordered[ordered ? "on" : "off"],
-        _unstyled && theme.unstyled,
+        unstyled && theme.resetTheme,
         nested && theme.nested,
         horizontal && theme.horizontal,
         className,

@@ -5,25 +5,25 @@ import { createContext, useContext, useMemo, type PropsWithChildren } from "reac
 import type { FlowbiteTheme } from "../components/Flowbite/FlowbiteTheme";
 import { deepMergeStrings } from "../helpers/deep-merge";
 import { twMerge } from "../helpers/tailwind-merge";
-import type { DeepPartial, Unstyled } from "../types";
+import type { DeepPartial, ResetTheme } from "../types";
 
 export interface ThemeProviderValue {
   theme?: DeepPartial<FlowbiteTheme>;
-  unstyled?: Unstyled<FlowbiteTheme>;
+  resetTheme?: ResetTheme<FlowbiteTheme>;
 }
 
 export type ThemeProviderProps = PropsWithChildren<ThemeProviderValue>;
 
 const ThemeProviderContext = createContext<ThemeProviderValue | undefined>(undefined);
 
-export function ThemeProvider({ children, theme, unstyled }: ThemeProviderProps) {
+export function ThemeProvider({ children, theme, resetTheme }: ThemeProviderProps) {
   const parentProvider = useContext(ThemeProviderContext);
   const value = useMemo(
     () => ({
       theme: parentProvider?.theme ? deepMergeStrings(twMerge)(parentProvider.theme, theme) : theme,
-      unstyled: parentProvider?.unstyled ? deepmerge(parentProvider.unstyled) : unstyled,
+      resetTheme: parentProvider?.resetTheme ? deepmerge(parentProvider.resetTheme) : resetTheme,
     }),
-    [theme, unstyled, parentProvider?.theme, parentProvider?.unstyled],
+    [theme, resetTheme, parentProvider?.theme, parentProvider?.resetTheme],
   );
 
   return <ThemeProviderContext.Provider value={value}>{children}</ThemeProviderContext.Provider>;

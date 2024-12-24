@@ -5,7 +5,7 @@ import { Children, cloneElement, isValidElement, useMemo } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { Button, type ButtonProps } from "../Button/Button";
 import { buttonGroupTheme } from "./theme";
 
@@ -23,7 +23,7 @@ export interface PositionInButtonGroup {
 
 export interface ButtonGroupProps extends ComponentProps<"div">, Pick<ButtonProps, "outline" | "pill"> {
   theme?: DeepPartial<FlowbiteButtonGroupTheme>;
-  unstyled?: Unstyled<FlowbiteButtonGroupTheme>;
+  resetTheme?: ResetTheme<FlowbiteButtonGroupTheme>;
 }
 
 const processChildren = (
@@ -65,11 +65,11 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   outline,
   pill,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }: ButtonGroupProps) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([buttonGroupTheme, provider.theme?.buttonGroup, customTheme], [unstyled]);
+  const theme = resolveTheme([buttonGroupTheme, provider.theme?.buttonGroup, customTheme], [resetTheme]);
 
   const items = useMemo(() => processChildren(children, outline, pill), [children, outline, pill]);
 

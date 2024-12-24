@@ -1,13 +1,13 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import { DynamicStringEnumKeysOf, type DeepPartial, type Unstyled } from "../../types";
+import { DynamicStringEnumKeysOf, type DeepPartial, type ResetTheme } from "../../types";
 import type { FlowbiteRatingTheme } from "./Rating";
 import type { FlowbiteStarSizes } from "./RatingStar";
 
 export type RatingContext = {
   theme?: DeepPartial<FlowbiteRatingTheme>;
-  unstyled?: Unstyled<FlowbiteRatingTheme>;
+  resetTheme?: ResetTheme<FlowbiteRatingTheme>;
   size?: DynamicStringEnumKeysOf<FlowbiteStarSizes>;
 };
 

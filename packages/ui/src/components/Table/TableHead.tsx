@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { useTableContext } from "./TableContext";
 import type { FlowbiteTableHeadCellTheme } from "./TableHeadCell";
 import { TableHeadContext } from "./TableHeadContext";
@@ -18,21 +18,21 @@ export interface FlowbiteTableHeadTheme {
 
 export interface TableHeadProps extends ComponentPropsWithRef<"thead"> {
   theme?: DeepPartial<FlowbiteTableHeadTheme>;
-  unstyled?: Unstyled<FlowbiteTableHeadTheme>;
+  resetTheme?: ResetTheme<FlowbiteTableHeadTheme>;
 }
 
 export const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
-  ({ children, className, theme: customTheme, unstyled, ...props }, ref) => {
-    const { theme: rootTheme, unstyled: rootUnstyled } = useTableContext();
+  ({ children, className, theme: customTheme, resetTheme, ...props }, ref) => {
+    const { theme: rootTheme, resetTheme: rootResetTheme } = useTableContext();
 
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [tableTheme.head, provider.theme?.table?.head, rootTheme?.head, customTheme],
-      [get(rootUnstyled, "head"), unstyled],
+      [get(rootResetTheme, "head"), resetTheme],
     );
 
     return (
-      <TableHeadContext.Provider value={{ theme: customTheme, unstyled }}>
+      <TableHeadContext.Provider value={{ theme: customTheme, resetTheme }}>
         <thead className={twMerge(theme.base, className)} ref={ref} {...props}>
           <tr>{children}</tr>
         </thead>

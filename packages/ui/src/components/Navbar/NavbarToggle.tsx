@@ -6,7 +6,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
 import { navbarTheme } from "./theme";
 
@@ -18,22 +18,22 @@ export interface FlowbiteNavbarToggleTheme {
 export interface NavbarToggleProps extends ComponentProps<"button"> {
   barIcon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteNavbarToggleTheme>;
-  unstyled?: Unstyled<FlowbiteNavbarToggleTheme>;
+  resetTheme?: ResetTheme<FlowbiteNavbarToggleTheme>;
 }
 
 export const NavbarToggle: FC<NavbarToggleProps> = ({
   barIcon: BarIcon = FaBars,
   className,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
-  const { theme: rootTheme, unstyled: rootUnstyled, isOpen, setIsOpen } = useNavbarContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, isOpen, setIsOpen } = useNavbarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [navbarTheme.toggle, provider.theme?.navbar?.toggle, rootTheme?.toggle, customTheme],
-    [get(rootUnstyled, "toggle"), unstyled],
+    [get(rootResetTheme, "toggle"), resetTheme],
   );
 
   const handleClick = () => {

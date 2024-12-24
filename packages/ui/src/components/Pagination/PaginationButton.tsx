@@ -4,7 +4,7 @@ import type { ComponentProps, FC, ReactEventHandler, ReactNode } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { paginationTheme } from "./theme";
 
 export interface FlowbitePaginationButtonTheme {
@@ -19,7 +19,7 @@ export interface PaginationButtonProps extends ComponentProps<"button"> {
   className?: string;
   onClick?: ReactEventHandler<HTMLButtonElement>;
   theme?: DeepPartial<FlowbitePaginationButtonTheme>;
-  unstyled?: Unstyled<FlowbitePaginationButtonTheme>;
+  resetTheme?: ResetTheme<FlowbitePaginationButtonTheme>;
 }
 
 export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, "active"> {
@@ -32,11 +32,11 @@ export const PaginationButton: FC<PaginationButtonProps> = ({
   className,
   onClick,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([paginationTheme, provider.theme?.pagination, customTheme], [unstyled]);
+  const theme = resolveTheme([paginationTheme, provider.theme?.pagination, customTheme], [resetTheme]);
 
   return (
     <button
@@ -57,12 +57,12 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   className,
   onClick,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   disabled = false,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([paginationTheme, provider.theme?.pagination, customTheme], [unstyled]);
+  const theme = resolveTheme([paginationTheme, provider.theme?.pagination, customTheme], [resetTheme]);
 
   return (
     <button

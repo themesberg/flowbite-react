@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { useDrawerContext } from "./DrawerContext";
 import { drawerTheme } from "./theme";
 
@@ -15,16 +15,22 @@ export interface FlowbiteDrawerItemsTheme {
 
 export interface DrawerItemsProps extends ComponentProps<"div"> {
   theme?: DeepPartial<FlowbiteDrawerItemsTheme>;
-  unstyled?: Unstyled<FlowbiteDrawerItemsTheme>;
+  resetTheme?: ResetTheme<FlowbiteDrawerItemsTheme>;
 }
 
-export const DrawerItems: FC<DrawerItemsProps> = ({ children, className, theme: customTheme, unstyled, ...props }) => {
-  const { theme: rootTheme, unstyled: rootUnstyled } = useDrawerContext();
+export const DrawerItems: FC<DrawerItemsProps> = ({
+  children,
+  className,
+  theme: customTheme,
+  resetTheme,
+  ...props
+}) => {
+  const { theme: rootTheme, resetTheme: rootResetTheme } = useDrawerContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [drawerTheme.items, provider.theme?.drawer?.items, rootTheme?.items, customTheme],
-    [get(rootUnstyled, "items"), unstyled],
+    [get(rootResetTheme, "items"), resetTheme],
   );
 
   return (

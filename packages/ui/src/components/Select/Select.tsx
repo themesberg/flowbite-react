@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, Unstyled } from "../../types";
+import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { HelperText } from "../HelperText";
 import { selectTheme } from "./theme";
@@ -46,7 +46,7 @@ export interface SelectProps extends Omit<ComponentProps<"select">, "color" | "r
   shadow?: boolean;
   sizing?: DynamicStringEnumKeysOf<SelectSizes>;
   theme?: DeepPartial<FlowbiteSelectTheme>;
-  unstyled?: Unstyled<FlowbiteSelectTheme>;
+  resetTheme?: ResetTheme<FlowbiteSelectTheme>;
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
@@ -61,13 +61,13 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       shadow,
       sizing = "md",
       theme: customTheme,
-      unstyled,
+      resetTheme,
       ...props
     },
     ref,
   ) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([selectTheme, provider.theme?.select, customTheme], [unstyled]);
+    const theme = resolveTheme([selectTheme, provider.theme?.select, customTheme], [resetTheme]);
 
     return (
       <div className={twMerge(theme.base, className)}>

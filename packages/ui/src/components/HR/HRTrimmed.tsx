@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { hrTheme } from "./theme";
 
 export interface FlowbiteHRTrimmedTheme {
@@ -14,13 +14,13 @@ export interface FlowbiteHRTrimmedTheme {
 
 export interface HRTrimmedProps extends Omit<ComponentProps<"hr">, "ref"> {
   theme?: DeepPartial<FlowbiteHRTrimmedTheme>;
-  unstyled?: Unstyled<FlowbiteHRTrimmedTheme>;
+  resetTheme?: ResetTheme<FlowbiteHRTrimmedTheme>;
 }
 
 export const HRTrimmed = forwardRef<HTMLHRElement, HRTrimmedProps>(
-  ({ theme: customTheme, unstyled, className, ...props }, ref) => {
+  ({ theme: customTheme, resetTheme, className, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([hrTheme.trimmed, provider.theme?.hr?.trimmed, customTheme], [unstyled]);
+    const theme = resolveTheme([hrTheme.trimmed, provider.theme?.hr?.trimmed, customTheme], [resetTheme]);
 
     return (
       <hr

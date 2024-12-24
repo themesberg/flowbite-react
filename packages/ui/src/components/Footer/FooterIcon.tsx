@@ -4,7 +4,7 @@ import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, Unstyled } from "../../types";
+import type { DeepPartial, ResetTheme } from "../../types";
 import { footerTheme } from "./theme";
 
 export interface FlowbiteFooterIconTheme {
@@ -18,7 +18,7 @@ export interface FooterIconProps extends PropsWithChildren {
   href?: string;
   icon: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteFooterIconTheme>;
-  unstyled?: Unstyled<FlowbiteFooterIconTheme>;
+  resetTheme?: ResetTheme<FlowbiteFooterIconTheme>;
 }
 
 export const FooterIcon: FC<FooterIconProps & ComponentProps<"a"> & ComponentProps<"svg">> = ({
@@ -27,11 +27,11 @@ export const FooterIcon: FC<FooterIconProps & ComponentProps<"a"> & ComponentPro
   href,
   icon: Icon,
   theme: customTheme,
-  unstyled,
+  resetTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([footerTheme.icon, provider.theme?.footer?.icon, customTheme], [unstyled]);
+  const theme = resolveTheme([footerTheme.icon, provider.theme?.footer?.icon, customTheme], [resetTheme]);
 
   return (
     <div>
