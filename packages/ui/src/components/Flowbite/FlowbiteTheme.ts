@@ -124,25 +124,6 @@ export interface FlowbiteColors extends FlowbiteStateColors {
   yellow: string;
 }
 
-export interface FlowbiteGradientColors extends Omit<FlowbiteStateColors, "warning"> {
-  [key: string]: string;
-  cyan: string;
-  lime: string;
-  pink: string;
-  purple: string;
-  teal: string;
-}
-
-export interface FlowbiteGradientDuoToneColors {
-  cyanToBlue: string;
-  greenToBlue: string;
-  pinkToOrange: string;
-  purpleToBlue: string;
-  purpleToPink: string;
-  redToYellow: string;
-  tealToLime: string;
-}
-
 export type FlowbiteHeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 export interface FlowbitePositions {
@@ -169,8 +150,4 @@ export interface FlowbiteSizes {
   "5xl": string;
   "6xl": string;
   "7xl": string;
-}
-
-export interface FlowbiteContentPositions {
-  center: string;
 }

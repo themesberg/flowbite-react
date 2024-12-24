@@ -7,13 +7,7 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
-import type {
-  FlowbiteBoolean,
-  FlowbiteColors,
-  FlowbiteGradientColors,
-  FlowbiteGradientDuoToneColors,
-  FlowbiteSizes,
-} from "../Flowbite/FlowbiteTheme";
+import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes, FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import { Spinner } from "../Spinner";
 import { ButtonBase, type ButtonBaseProps } from "./ButtonBase";
 import type { PositionInButtonGroup } from "./ButtonGroup";
@@ -53,12 +47,24 @@ export interface ButtonColors
   [key: string]: string;
 }
 
-export interface ButtonGradientColors extends FlowbiteGradientColors {
+export interface ButtonGradientColors extends Omit<FlowbiteStateColors, "warning"> {
   [key: string]: string;
+  cyan: string;
+  lime: string;
+  pink: string;
+  purple: string;
+  teal: string;
 }
 
-export interface ButtonGradientDuoToneColors extends FlowbiteGradientDuoToneColors {
+export interface ButtonGradientDuoToneColors {
   [key: string]: string;
+  cyanToBlue: string;
+  greenToBlue: string;
+  pinkToOrange: string;
+  purpleToBlue: string;
+  purpleToPink: string;
+  redToYellow: string;
+  tealToLime: string;
 }
 
 export interface ButtonOutlineColors extends Pick<FlowbiteColors, "gray"> {
