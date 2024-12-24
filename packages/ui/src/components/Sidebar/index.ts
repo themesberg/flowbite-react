@@ -1,7 +1,7 @@
 export { Sidebar } from "./Sidebar";
 export type { SidebarTheme, SidebarProps } from "./Sidebar";
 export { SidebarCTA } from "./SidebarCTA";
-export type { FlowbiteSidebarCTAColors, SidebarCTATheme, SidebarCTAProps } from "./SidebarCTA";
+export type { SidebarCTAColors, SidebarCTATheme, SidebarCTAProps } from "./SidebarCTA";
 export { SidebarCollapse } from "./SidebarCollapse";
 export type { SidebarCollapseTheme, SidebarCollapseProps } from "./SidebarCollapse";
 export { SidebarItem } from "./SidebarItem";

@@ -8,13 +8,13 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import { useAccordionContext } from "./AccordionPanelContext";
 import { accordionTheme } from "./theme";
 
-export interface FlowbiteAccordionComponentTheme {
+export interface AccordionComponentTheme {
   base: string;
 }
 
 export interface AccordionContentProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<FlowbiteAccordionComponentTheme>;
-  resetTheme?: ResetTheme<FlowbiteAccordionComponentTheme>;
+  theme?: DeepPartial<AccordionComponentTheme>;
+  resetTheme?: ResetTheme<AccordionComponentTheme>;
 }
 
 export const AccordionContent: FC<AccordionContentProps> = ({

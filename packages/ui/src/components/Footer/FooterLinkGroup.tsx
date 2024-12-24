@@ -5,12 +5,12 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteFooterLinkTheme } from "./FooterLink";
+import type { FooterLinkTheme } from "./FooterLink";
 import { footerTheme } from "./theme";
 
 export interface FooterLinkGroupTheme {
   base: string;
-  link: FlowbiteFooterLinkTheme;
+  link: FooterLinkTheme;
   col: string;
 }
 

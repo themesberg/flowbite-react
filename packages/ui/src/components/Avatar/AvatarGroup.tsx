@@ -7,13 +7,13 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { avatarTheme } from "./theme";
 
-export interface FlowbiteAvatarGroupTheme {
+export interface AvatarGroupTheme {
   base: string;
 }
 
 export interface AvatarGroupProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<FlowbiteAvatarGroupTheme>;
-  resetTheme?: ResetTheme<FlowbiteAvatarGroupTheme>;
+  theme?: DeepPartial<AvatarGroupTheme>;
+  resetTheme?: ResetTheme<AvatarGroupTheme>;
 }
 
 export const AvatarGroup: React.FC<AvatarGroupProps> = ({

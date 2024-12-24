@@ -8,14 +8,14 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { DrawerContext } from "./DrawerContext";
-import { DrawerHeader, type FlowbiteDrawerHeaderTheme } from "./DrawerHeader";
-import { DrawerItems, type FlowbiteDrawerItemsTheme } from "./DrawerItems";
+import { DrawerHeader, type DrawerHeaderTheme } from "./DrawerHeader";
+import { DrawerItems, type DrawerItemsTheme } from "./DrawerItems";
 import { drawerTheme } from "./theme";
 
 export interface DrawerTheme {
   root: DrawerRootTheme;
-  header: FlowbiteDrawerHeaderTheme;
-  items: FlowbiteDrawerItemsTheme;
+  header: DrawerHeaderTheme;
+  items: DrawerItemsTheme;
 }
 
 export interface DrawerRootTheme {

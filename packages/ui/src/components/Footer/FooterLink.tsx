@@ -7,7 +7,7 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { footerTheme } from "./theme";
 
-export interface FlowbiteFooterLinkTheme {
+export interface FooterLinkTheme {
   base: string;
   href: string;
 }
@@ -15,8 +15,8 @@ export interface FlowbiteFooterLinkTheme {
 export interface FooterLinkProps extends ComponentProps<"a"> {
   as?: ElementType;
   href: string;
-  theme?: DeepPartial<FlowbiteFooterLinkTheme>;
-  resetTheme?: ResetTheme<FlowbiteFooterLinkTheme>;
+  theme?: DeepPartial<FooterLinkTheme>;
+  resetTheme?: ResetTheme<FooterLinkTheme>;
 }
 
 export const FooterLink: FC<FooterLinkProps> = ({

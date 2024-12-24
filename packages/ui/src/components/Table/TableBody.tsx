@@ -7,13 +7,13 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { TableBodyContext } from "./TableBodyContext";
-import type { FlowbiteTableCellTheme } from "./TableCell";
+import type { TableCellTheme } from "./TableCell";
 import { useTableContext } from "./TableContext";
 import { tableTheme } from "./theme";
 
 export interface TableBodyTheme {
   base: string;
-  cell: FlowbiteTableCellTheme;
+  cell: TableCellTheme;
 }
 
 export interface TableBodyProps extends ComponentPropsWithRef<"tbody"> {

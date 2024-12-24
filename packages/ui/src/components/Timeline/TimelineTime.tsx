@@ -11,13 +11,13 @@ import { useTimelineContentContext } from "./TimelineContentContext";
 import { useTimelineContext } from "./TimelineContext";
 import { useTimelineItemContext } from "./TimelineItemContext";
 
-export interface FlowbiteTimelineTimeTheme {
+export interface TimelineTimeTheme {
   base: string;
 }
 
 export interface TimelineTimeProps extends ComponentProps<"time"> {
-  theme?: DeepPartial<FlowbiteTimelineTimeTheme>;
-  resetTheme?: ResetTheme<FlowbiteTimelineTimeTheme>;
+  theme?: DeepPartial<TimelineTimeTheme>;
+  resetTheme?: ResetTheme<TimelineTimeTheme>;
 }
 
 export const TimelineTime: FC<TimelineTimeProps> = ({

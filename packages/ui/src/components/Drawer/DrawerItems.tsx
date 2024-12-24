@@ -9,13 +9,13 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import { useDrawerContext } from "./DrawerContext";
 import { drawerTheme } from "./theme";
 
-export interface FlowbiteDrawerItemsTheme {
+export interface DrawerItemsTheme {
   base: string;
 }
 
 export interface DrawerItemsProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<FlowbiteDrawerItemsTheme>;
-  resetTheme?: ResetTheme<FlowbiteDrawerItemsTheme>;
+  theme?: DeepPartial<DrawerItemsTheme>;
+  resetTheme?: ResetTheme<DrawerItemsTheme>;
 }
 
 export const DrawerItems: FC<DrawerItemsProps> = ({

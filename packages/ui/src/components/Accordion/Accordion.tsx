@@ -9,18 +9,18 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
-import type { FlowbiteAccordionComponentTheme } from "./AccordionContent";
+import type { AccordionComponentTheme } from "./AccordionContent";
 import { AccordionContent } from "./AccordionContent";
 import type { AccordionPanelProps } from "./AccordionPanel";
 import { AccordionPanel } from "./AccordionPanel";
-import type { FlowbiteAccordionTitleTheme } from "./AccordionTitle";
+import type { AccordionTitleTheme } from "./AccordionTitle";
 import { AccordionTitle } from "./AccordionTitle";
 import { accordionTheme } from "./theme";
 
 export interface AccordionTheme {
   root: AccordionRootTheme;
-  content: FlowbiteAccordionComponentTheme;
-  title: FlowbiteAccordionTitleTheme;
+  content: AccordionComponentTheme;
+  title: AccordionTitleTheme;
 }
 
 export interface AccordionRootTheme {

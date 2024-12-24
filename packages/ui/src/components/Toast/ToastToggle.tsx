@@ -10,14 +10,14 @@ import type { DeepPartial, ResetTheme } from "../../types";
 import { toastTheme } from "./theme";
 import { useToastContext } from "./ToastContext";
 
-export interface FlowbiteToastToggleTheme {
+export interface ToastToggleTheme {
   base: string;
   icon: string;
 }
 
 export interface ToastToggleProps extends ComponentProps<"button"> {
-  theme?: DeepPartial<FlowbiteToastToggleTheme>;
-  resetTheme?: ResetTheme<FlowbiteToastToggleTheme>;
+  theme?: DeepPartial<ToastToggleTheme>;
+  resetTheme?: ResetTheme<ToastToggleTheme>;
   xIcon?: FC<ComponentProps<"svg">>;
   onDismiss?: () => void;
 }

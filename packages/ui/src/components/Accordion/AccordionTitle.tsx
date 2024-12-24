@@ -9,7 +9,7 @@ import type { FlowbiteBoolean, FlowbiteHeadingLevel } from "../Flowbite/Flowbite
 import { useAccordionContext } from "./AccordionPanelContext";
 import { accordionTheme } from "./theme";
 
-export interface FlowbiteAccordionTitleTheme {
+export interface AccordionTitleTheme {
   arrow: {
     base: string;
     open: FlowbiteBoolean;
@@ -23,8 +23,8 @@ export interface FlowbiteAccordionTitleTheme {
 export interface AccordionTitleProps extends ComponentProps<"button"> {
   arrowIcon?: FC<ComponentProps<"svg">>;
   as?: FlowbiteHeadingLevel;
-  theme?: DeepPartial<FlowbiteAccordionTitleTheme>;
-  resetTheme?: ResetTheme<FlowbiteAccordionTitleTheme>;
+  theme?: DeepPartial<AccordionTitleTheme>;
+  resetTheme?: ResetTheme<AccordionTitleTheme>;
 }
 
 export const AccordionTitle: FC<AccordionTitleProps> = ({

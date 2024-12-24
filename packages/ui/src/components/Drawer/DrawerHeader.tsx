@@ -11,7 +11,7 @@ import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useDrawerContext } from "./DrawerContext";
 import { drawerTheme } from "./theme";
 
-export interface FlowbiteDrawerHeaderTheme {
+export interface DrawerHeaderTheme {
   inner: {
     titleIcon: string;
     titleText: string;
@@ -23,8 +23,8 @@ export interface FlowbiteDrawerHeaderTheme {
 
 export interface DrawerHeaderProps extends ComponentProps<"div">, Record<string, unknown> {
   closeIcon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<FlowbiteDrawerHeaderTheme>;
-  resetTheme?: ResetTheme<FlowbiteDrawerHeaderTheme>;
+  theme?: DeepPartial<DrawerHeaderTheme>;
+  resetTheme?: ResetTheme<DrawerHeaderTheme>;
   title?: string;
   titleIcon?: FC<ComponentProps<"svg">>;
 }

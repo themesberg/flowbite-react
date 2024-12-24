@@ -9,7 +9,7 @@ export type { FooterDividerTheme, FooterDividerProps } from "./FooterDivider";
 export { FooterIcon } from "./FooterIcon";
 export type { FooterIconTheme, FooterIconProps } from "./FooterIcon";
 export { FooterLink } from "./FooterLink";
-export type { FlowbiteFooterLinkTheme, FooterLinkProps } from "./FooterLink";
+export type { FooterLinkTheme, FooterLinkProps } from "./FooterLink";
 export { FooterLinkGroup } from "./FooterLinkGroup";
 export type { FooterLinkGroupTheme, FooterLinkGroupProps } from "./FooterLinkGroup";
 export { FooterTitle } from "./FooterTitle";

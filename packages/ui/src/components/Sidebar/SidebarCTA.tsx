@@ -12,16 +12,16 @@ import { sidebarTheme } from "./theme";
 
 export interface SidebarCTATheme {
   base: string;
-  color: FlowbiteSidebarCTAColors;
+  color: SidebarCTAColors;
 }
 
 export interface SidebarCTAProps extends Omit<ComponentProps<"div">, "color"> {
-  color?: DynamicStringEnumKeysOf<FlowbiteSidebarCTAColors>;
+  color?: DynamicStringEnumKeysOf<SidebarCTAColors>;
   theme?: DeepPartial<SidebarCTATheme>;
   resetTheme?: ResetTheme<SidebarCTATheme>;
 }
 
-export interface FlowbiteSidebarCTAColors
+export interface SidebarCTAColors
   extends Pick<
     FlowbiteColors,
     "blue" | "dark" | "failure" | "gray" | "green" | "light" | "purple" | "red" | "success" | "warning" | "yellow"

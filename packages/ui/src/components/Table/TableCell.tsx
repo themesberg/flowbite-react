@@ -10,13 +10,13 @@ import { useTableBodyContext } from "./TableBodyContext";
 import { useTableContext } from "./TableContext";
 import { tableTheme } from "./theme";
 
-export interface FlowbiteTableCellTheme {
+export interface TableCellTheme {
   base: string;
 }
 
 export interface TableCellProps extends ComponentPropsWithRef<"td"> {
-  theme?: DeepPartial<FlowbiteTableCellTheme>;
-  resetTheme?: ResetTheme<FlowbiteTableCellTheme>;
+  theme?: DeepPartial<TableCellTheme>;
+  resetTheme?: ResetTheme<TableCellTheme>;
 }
 
 export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(

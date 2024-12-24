@@ -12,14 +12,14 @@ import { useTimelineContentContext } from "./TimelineContentContext";
 import { useTimelineContext } from "./TimelineContext";
 import { useTimelineItemContext } from "./TimelineItemContext";
 
-export interface FlowbiteTimelineTitleTheme {
+export interface TimelineTitleTheme {
   base: string;
 }
 
 export interface TimelineTitleProps extends ComponentProps<"h1"> {
   as?: FlowbiteHeadingLevel;
-  theme?: DeepPartial<FlowbiteTimelineTitleTheme>;
-  resetTheme?: ResetTheme<FlowbiteTimelineTitleTheme>;
+  theme?: DeepPartial<TimelineTitleTheme>;
+  resetTheme?: ResetTheme<TimelineTitleTheme>;
 }
 
 export const TimelineTitle: FC<TimelineTitleProps> = ({

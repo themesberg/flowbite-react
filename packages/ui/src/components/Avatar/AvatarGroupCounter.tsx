@@ -7,14 +7,14 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { avatarTheme } from "./theme";
 
-export interface FlowbiteAvatarGroupCounterTheme {
+export interface AvatarGroupCounterTheme {
   base: string;
 }
 
 export interface AvatarGroupCounterProps extends ComponentProps<"a"> {
   total?: number;
-  theme?: DeepPartial<FlowbiteAvatarGroupCounterTheme>;
-  resetTheme?: ResetTheme<FlowbiteAvatarGroupCounterTheme>;
+  theme?: DeepPartial<AvatarGroupCounterTheme>;
+  resetTheme?: ResetTheme<AvatarGroupCounterTheme>;
 }
 
 export const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({

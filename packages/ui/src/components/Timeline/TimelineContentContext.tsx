@@ -2,11 +2,11 @@
 
 import { createContext, useContext } from "react";
 import type { DeepPartial, ResetTheme } from "../../types";
-import type { FlowbiteTimelineContentTheme } from "./TimelineContent";
+import type { TimelineContentTheme } from "./TimelineContent";
 
 export type TimelineContentContext = {
-  theme?: DeepPartial<FlowbiteTimelineContentTheme>;
-  resetTheme?: ResetTheme<FlowbiteTimelineContentTheme>;
+  theme?: DeepPartial<TimelineContentTheme>;
+  resetTheme?: ResetTheme<TimelineContentTheme>;
 };
 
 export const TimelineContentContext = createContext<TimelineContentContext | undefined>(undefined);

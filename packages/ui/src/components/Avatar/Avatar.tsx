@@ -6,16 +6,16 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
-import type { FlowbiteAvatarGroupTheme } from "./AvatarGroup";
+import type { AvatarGroupTheme } from "./AvatarGroup";
 import { AvatarGroup } from "./AvatarGroup";
-import type { FlowbiteAvatarGroupCounterTheme } from "./AvatarGroupCounter";
+import type { AvatarGroupCounterTheme } from "./AvatarGroupCounter";
 import { AvatarGroupCounter } from "./AvatarGroupCounter";
 import { avatarTheme } from "./theme";
 
 export interface AvatarTheme {
   root: AvatarRootTheme;
-  group: FlowbiteAvatarGroupTheme;
-  groupCounter: FlowbiteAvatarGroupCounterTheme;
+  group: AvatarGroupTheme;
+  groupCounter: AvatarGroupCounterTheme;
 }
 
 export interface AvatarRootTheme {

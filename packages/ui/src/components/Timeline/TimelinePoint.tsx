@@ -10,7 +10,7 @@ import { timelineTheme } from "./theme";
 import { useTimelineContext } from "./TimelineContext";
 import { useTimelineItemContext } from "./TimelineItemContext";
 
-export interface FlowbiteTimelinePointTheme {
+export interface TimelinePointTheme {
   horizontal: string;
   line: string;
   marker: {
@@ -28,8 +28,8 @@ export interface FlowbiteTimelinePointTheme {
 
 export interface TimelnePointProps extends ComponentProps<"div"> {
   icon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<FlowbiteTimelinePointTheme>;
-  resetTheme?: ResetTheme<FlowbiteTimelinePointTheme>;
+  theme?: DeepPartial<TimelinePointTheme>;
+  resetTheme?: ResetTheme<TimelinePointTheme>;
 }
 
 export const TimelinePoint: FC<TimelnePointProps> = ({

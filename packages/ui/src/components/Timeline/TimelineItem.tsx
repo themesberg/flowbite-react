@@ -7,18 +7,18 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ResetTheme } from "../../types";
 import { timelineTheme } from "./theme";
-import type { FlowbiteTimelineContentTheme } from "./TimelineContent";
+import type { TimelineContentTheme } from "./TimelineContent";
 import { useTimelineContext } from "./TimelineContext";
 import { TimelineItemContext } from "./TimelineItemContext";
-import type { FlowbiteTimelinePointTheme } from "./TimelinePoint";
+import type { TimelinePointTheme } from "./TimelinePoint";
 
 export interface TimelineItemTheme {
   root: {
     horizontal: string;
     vertical: string;
   };
-  content: FlowbiteTimelineContentTheme;
-  point: FlowbiteTimelinePointTheme;
+  content: TimelineContentTheme;
+  point: TimelinePointTheme;
 }
 
 export interface TimelineItemProps extends ComponentProps<"li"> {
