@@ -21,6 +21,13 @@ describe("Components / Timeline", () => {
       expect(timelinePoint().childNodes[0]).toContainHTML("svg");
     });
 
+    it("should render custom inner content when using render prop", () => {
+      render(<TestTimelineWithRenderProp horizontal={true} />);
+
+      expect(timelinePoint()).toBeInTheDocument();
+      expect(timelinePoint().childNodes[0]).toContainHTML("img");
+    });
+
     it("should use `horizontal` classes of content if provided", () => {
       render(
         <Flowbite theme={{ theme }}>
@@ -54,6 +61,13 @@ describe("Components / Timeline", () => {
 
       expect(timelinePoint()).toBeInTheDocument();
       expect(timelinePoint().childNodes[0]).toContainHTML("svg");
+    });
+
+    it("should render custom inner content when using render prop", () => {
+      render(<TestTimelineWithRenderProp horizontal={false} />);
+
+      expect(timelinePoint()).toBeInTheDocument();
+      expect(timelinePoint().childNodes[0]).toContainHTML("img");
     });
 
     it("should use `vertical` classes of content if provided", () => {
@@ -122,6 +136,24 @@ const TestTimelineWithIcon: FC<TimelineProps> = ({ horizontal, className }): JSX
     <Timeline horizontal={horizontal} className={className}>
       <Timeline.Item>
         <Timeline.Point icon={IconSVG} />
+        <Timeline.Content>
+          <Timeline.Time>February 2022</Timeline.Time>
+          <Timeline.Title>Application UI code in Tailwind CSS</Timeline.Title>
+          <Timeline.Body>
+            Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order
+            E-commerce & Marketing pages.
+          </Timeline.Body>
+        </Timeline.Content>
+      </Timeline.Item>
+    </Timeline>
+  );
+};
+
+const TestTimelineWithRenderProp: FC<TimelineProps> = ({ horizontal, className }): JSX.Element => {
+  return (
+    <Timeline horizontal={horizontal} className={className}>
+      <Timeline.Item>
+        <Timeline.Point render={() => <img src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" />} />
         <Timeline.Content>
           <Timeline.Time>February 2022</Timeline.Time>
           <Timeline.Title>Application UI code in Tailwind CSS</Timeline.Title>

@@ -26,6 +26,7 @@ export interface FlowbiteTimelinePointTheme {
 export interface TimelnePointProps extends ComponentProps<"div"> {
   icon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteTimelinePointTheme>;
+  render?: () => React.ReactElement;
 }
 
 export const TimelinePoint: FC<TimelnePointProps> = ({
@@ -33,6 +34,7 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   className,
   icon: Icon,
   theme: customTheme = {},
+  render = undefined,
   ...props
 }) => {
   const { horizontal } = useTimelineContext();
@@ -51,6 +53,8 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
         <span className={twMerge(theme.marker.icon.wrapper)}>
           <Icon aria-hidden className={twMerge(theme.marker.icon.base)} />
         </span>
+      ) : render ? (
+        <span className={twMerge(theme.marker.icon.wrapper)}>{render()}</span>
       ) : (
         <div
           className={twMerge(horizontal && theme.marker.base.horizontal, !horizontal && theme.marker.base.vertical)}
