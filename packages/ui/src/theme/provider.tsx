@@ -7,7 +7,9 @@ import { deepMergeStrings } from "../helpers/deep-merge";
 import { twMerge } from "../helpers/tailwind-merge";
 import type { ThemingProps } from "../types";
 
-export interface ThemeProviderValue extends ThemingProps<FlowbiteTheme> {
+export type ThemeProviderValue = ThemingProps<FlowbiteTheme>;
+
+export interface ThemeProviderProps extends ThemeProviderValue, PropsWithChildren {
   /**
    * Prevent merging with parent context value.
    *
@@ -16,8 +18,6 @@ export interface ThemeProviderValue extends ThemingProps<FlowbiteTheme> {
    */
   root?: boolean;
 }
-
-export type ThemeProviderProps = PropsWithChildren<ThemeProviderValue>;
 
 const ThemeProviderContext = createContext<ThemeProviderValue | undefined>(undefined);
 
