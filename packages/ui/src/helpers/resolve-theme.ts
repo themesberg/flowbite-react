@@ -8,11 +8,12 @@ import { twMerge } from "./tailwind-merge";
 const cache = new Map();
 
 /**
- * Adds prefix to `base` and merges with custom themes, applying optional `resetTheme` modifications.
+ * Adds prefix to `base` and merges with custom themes, applying optional `resetTheme` and `applyTheme` modifications.
  *
  * @template T - The type of the base theme.
- * @param {[base, ...custom]} themes - An array where the first element is the base theme and the rest are custom themes.
- * @param {DeepPartialBoolean<T[]>} [resetThemeList=[]] - An optional list of `resetTheme` modifications to apply to the base theme.
+ * @param {[base, ...custom[]]} themes - An array where the first element is the base theme and the rest are custom themes.
+ * @param {DeepPartialBoolean<T[]>} resetThemeList - An array of `resetTheme` modifications to apply to the base theme.
+ * @param {DeepPartialApplyTheme<T[]>} applyThemeList - An optional array of `applyTheme` modifications to apply to the merged theme.
  * @returns {T} - The resolved and merged theme.
  */
 export function resolveTheme<T>(
