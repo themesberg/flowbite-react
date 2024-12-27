@@ -6,7 +6,7 @@ import { FaQuoteRight } from "react-icons/fa6";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { hrTheme } from "./theme";
 
 export interface HRIconTheme {
@@ -18,9 +18,7 @@ export interface HRIconTheme {
   };
 }
 
-export interface HRIconProps extends Omit<ComponentProps<"hr">, "ref"> {
-  theme?: DeepPartial<HRIconTheme>;
-  resetTheme?: ResetTheme<HRIconTheme>;
+export interface HRIconProps extends Omit<ComponentProps<"hr">, "ref">, ThemingProps<HRIconTheme> {
   icon?: FC<ComponentProps<"svg">>;
 }
 

@@ -4,7 +4,7 @@ import type { ComponentProps, FC, ReactEventHandler, ReactNode } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { paginationTheme } from "./theme";
 
 export interface PaginationButtonTheme {
@@ -13,13 +13,11 @@ export interface PaginationButtonTheme {
   disabled: string;
 }
 
-export interface PaginationButtonProps extends ComponentProps<"button"> {
+export interface PaginationButtonProps extends ComponentProps<"button">, ThemingProps<PaginationButtonTheme> {
   active?: boolean;
   children?: ReactNode;
   className?: string;
   onClick?: ReactEventHandler<HTMLButtonElement>;
-  theme?: DeepPartial<PaginationButtonTheme>;
-  resetTheme?: ResetTheme<PaginationButtonTheme>;
 }
 
 export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, "active"> {

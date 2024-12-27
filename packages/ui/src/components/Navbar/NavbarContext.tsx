@@ -1,15 +1,13 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { NavbarTheme } from "./Navbar";
 
-type NavbarContext = {
-  theme?: DeepPartial<NavbarTheme>;
-  resetTheme?: ResetTheme<NavbarTheme>;
+interface NavbarContext extends ThemingProps<NavbarTheme> {
   isOpen?: boolean;
   setIsOpen: (isOpen: boolean) => void;
-};
+}
 
 export const NavbarContext = createContext<NavbarContext | undefined>(undefined);
 

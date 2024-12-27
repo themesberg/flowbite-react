@@ -4,17 +4,16 @@ import { useEffect, useId, useRef, useState, type ComponentProps, type FC, type 
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { megaMenuTheme } from "./theme";
 
 export interface MegaMenuDropdownToggleTheme {
   base: string;
 }
 
-export interface MegaMenuDropdownToggleProps extends ComponentProps<"button"> {
-  theme?: DeepPartial<MegaMenuDropdownToggleTheme>;
-  resetTheme?: ResetTheme<MegaMenuDropdownToggleTheme>;
-}
+export interface MegaMenuDropdownToggleProps
+  extends ComponentProps<"button">,
+    ThemingProps<MegaMenuDropdownToggleTheme> {}
 
 export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
   children,

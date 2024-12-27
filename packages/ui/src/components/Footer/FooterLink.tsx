@@ -4,7 +4,7 @@ import type { ComponentProps, ElementType, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { footerTheme } from "./theme";
 
 export interface FooterLinkTheme {
@@ -12,11 +12,9 @@ export interface FooterLinkTheme {
   href: string;
 }
 
-export interface FooterLinkProps extends ComponentProps<"a"> {
+export interface FooterLinkProps extends ComponentProps<"a">, ThemingProps<FooterLinkTheme> {
   as?: ElementType;
   href: string;
-  theme?: DeepPartial<FooterLinkTheme>;
-  resetTheme?: ResetTheme<FooterLinkTheme>;
 }
 
 export const FooterLink: FC<FooterLinkProps> = ({

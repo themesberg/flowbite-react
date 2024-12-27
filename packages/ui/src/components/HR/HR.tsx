@@ -6,7 +6,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { HRIconTheme } from "./HRIcon";
 import { HRIcon } from "./HRIcon";
 import type { HRSquareTheme } from "./HRSquare";
@@ -27,10 +27,7 @@ export interface HRTheme {
   square: HRSquareTheme;
 }
 
-export interface HRProps extends Omit<ComponentProps<"hr">, "ref"> {
-  theme?: DeepPartial<HRTheme>;
-  resetTheme?: ResetTheme<HRTheme>;
-}
+export interface HRProps extends Omit<ComponentProps<"hr">, "ref">, ThemingProps<HRTheme> {}
 
 const HRComponent = forwardRef<HTMLHRElement, HRProps>(
   ({ theme: customTheme, resetTheme, className, ...props }, ref) => {

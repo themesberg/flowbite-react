@@ -1,15 +1,13 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { DrawerTheme } from "./Drawer";
 
-interface DrawerContext {
+interface DrawerContext extends ThemingProps<DrawerTheme> {
   id?: string;
   isOpen?: boolean;
   onClose?: () => void;
-  theme?: DeepPartial<DrawerTheme>;
-  resetTheme?: ResetTheme<DrawerTheme>;
 }
 
 export const DrawerContext = createContext<DrawerContext | undefined>(undefined);

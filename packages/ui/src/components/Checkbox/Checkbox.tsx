@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { checkboxTheme } from "./theme";
 
@@ -17,10 +17,10 @@ export interface CheckboxRootTheme {
   color: FlowbiteColors;
 }
 
-export interface CheckboxProps extends Omit<ComponentProps<"input">, "type" | "ref" | "color"> {
+export interface CheckboxProps
+  extends Omit<ComponentProps<"input">, "type" | "ref" | "color">,
+    ThemingProps<CheckboxTheme> {
   color?: DynamicStringEnumKeysOf<FlowbiteColors>;
-  theme?: DeepPartial<CheckboxTheme>;
-  resetTheme?: ResetTheme<CheckboxTheme>;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(

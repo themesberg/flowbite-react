@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { useDropdownContext } from "./DropdownContext";
 import { DropdownDivider } from "./DropdownDivider";
 import { dropdownTheme } from "./theme";
@@ -14,10 +14,7 @@ export interface DropdownHeaderTheme {
   header: string;
 }
 
-export interface DropdownHeaderProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<DropdownHeaderTheme>;
-  resetTheme?: ResetTheme<DropdownHeaderTheme>;
-}
+export interface DropdownHeaderProps extends ComponentProps<"div">, ThemingProps<DropdownHeaderTheme> {}
 
 export const DropdownHeader: FC<DropdownHeaderProps> = ({
   children,

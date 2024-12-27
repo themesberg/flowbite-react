@@ -5,7 +5,7 @@ import { HiX } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { alertTheme } from "./theme";
 
@@ -25,14 +25,12 @@ export interface AlertCloseButtonTheme {
   icon: string;
 }
 
-export interface AlertProps extends Omit<ComponentProps<"div">, "color"> {
+export interface AlertProps extends Omit<ComponentProps<"div">, "color">, ThemingProps<AlertTheme> {
   additionalContent?: ReactNode;
   color?: DynamicStringEnumKeysOf<FlowbiteColors>;
   icon?: FC<ComponentProps<"svg">>;
   onDismiss?: boolean | (() => void);
   rounded?: boolean;
-  theme?: DeepPartial<AlertTheme>;
-  resetTheme?: ResetTheme<AlertTheme>;
   withBorderAccent?: boolean;
 }
 

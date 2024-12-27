@@ -4,7 +4,7 @@ import type { ComponentProps, ElementType, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { SidebarCollapse, type SidebarCollapseTheme } from "./SidebarCollapse";
 import { SidebarContext } from "./SidebarContext";
@@ -29,12 +29,10 @@ export interface SidebarTheme {
   logo: SidebarLogoTheme;
 }
 
-export interface SidebarProps extends ComponentProps<"div"> {
+export interface SidebarProps extends ComponentProps<"div">, ThemingProps<SidebarTheme> {
   as?: ElementType;
   collapseBehavior?: "collapse" | "hide";
   collapsed?: boolean;
-  theme?: DeepPartial<SidebarTheme>;
-  resetTheme?: ResetTheme<SidebarTheme>;
 }
 
 const SidebarComponent: FC<SidebarProps> = ({

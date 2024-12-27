@@ -5,22 +5,20 @@ import { forwardRef, useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { floatingLabelTheme, type FloatingLabelTheme } from "./theme";
 
 export type FloatingLabelColor = "default" | "success" | "error";
 export type FloatingLabelSizing = "sm" | "md";
 export type FloatingLabelVariant = "filled" | "outlined" | "standard";
 
-export interface FloatingLabelProps extends ComponentPropsWithoutRef<"input"> {
+export interface FloatingLabelProps extends ComponentPropsWithoutRef<"input">, ThemingProps<FloatingLabelTheme> {
   label: string;
   helperText?: string;
   color?: FloatingLabelColor;
   sizing?: FloatingLabelSizing;
   variant: FloatingLabelVariant;
   disabled?: boolean;
-  theme?: DeepPartial<FloatingLabelTheme>;
-  resetTheme?: ResetTheme<FloatingLabelTheme>;
 }
 
 export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(

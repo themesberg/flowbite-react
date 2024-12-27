@@ -6,7 +6,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import { Badge } from "../Badge";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { Tooltip } from "../Tooltip";
@@ -32,15 +32,16 @@ export interface SidebarItemTheme {
   listItem: string;
 }
 
-export interface SidebarItemProps extends Omit<ComponentProps<"div">, "ref">, Record<string, unknown> {
+export interface SidebarItemProps
+  extends Omit<ComponentProps<"div">, "ref">,
+    Record<string, unknown>,
+    ThemingProps<SidebarItemTheme> {
   active?: boolean;
   as?: ElementType;
   href?: string;
   icon?: FC<ComponentProps<"svg">>;
   label?: string;
   labelColor?: DynamicStringEnumKeysOf<SidebarItemLabelColors>;
-  theme?: DeepPartial<SidebarItemTheme>;
-  resetTheme?: ResetTheme<SidebarItemTheme>;
 }
 
 export interface SidebarItemLabelColors extends Pick<FlowbiteColors, "gray"> {

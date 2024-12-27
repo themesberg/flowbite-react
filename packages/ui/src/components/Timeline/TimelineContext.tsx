@@ -1,14 +1,12 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { TimelineTheme } from "./Timeline";
 
-export type TimelineContext = {
-  theme?: DeepPartial<TimelineTheme>;
-  resetTheme?: ResetTheme<TimelineTheme>;
+export interface TimelineContext extends ThemingProps<TimelineTheme> {
   horizontal?: boolean;
-};
+}
 
 export const TimelineContext = createContext<TimelineContext | undefined>(undefined);
 

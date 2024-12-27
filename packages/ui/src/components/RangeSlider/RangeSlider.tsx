@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { TextInputSizes } from "../TextInput";
 import { rangeSliderTheme } from "./theme";
 
@@ -26,10 +26,10 @@ export interface RangeSliderFieldTheme {
   };
 }
 
-export interface RangeSliderProps extends Omit<ComponentProps<"input">, "ref" | "type"> {
+export interface RangeSliderProps
+  extends Omit<ComponentProps<"input">, "ref" | "type">,
+    ThemingProps<RangeSliderTheme> {
   sizing?: DynamicStringEnumKeysOf<TextInputSizes>;
-  theme?: DeepPartial<RangeSliderTheme>;
-  resetTheme?: ResetTheme<RangeSliderTheme>;
 }
 
 export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(

@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbiteHeadingLevel } from "../Flowbite/FlowbiteTheme";
 import { useAccordionContext } from "./AccordionPanelContext";
 import { accordionTheme } from "./theme";
@@ -20,11 +20,9 @@ export interface AccordionTitleTheme {
   open: FlowbiteBoolean;
 }
 
-export interface AccordionTitleProps extends ComponentProps<"button"> {
+export interface AccordionTitleProps extends ComponentProps<"button">, ThemingProps<AccordionTitleTheme> {
   arrowIcon?: FC<ComponentProps<"svg">>;
   as?: FlowbiteHeadingLevel;
-  theme?: DeepPartial<AccordionTitleTheme>;
-  resetTheme?: ResetTheme<AccordionTitleTheme>;
 }
 
 export const AccordionTitle: FC<AccordionTitleProps> = ({

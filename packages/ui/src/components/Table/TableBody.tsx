@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { TableBodyContext } from "./TableBodyContext";
 import type { TableCellTheme } from "./TableCell";
 import { useTableContext } from "./TableContext";
@@ -16,10 +16,7 @@ export interface TableBodyTheme {
   cell: TableCellTheme;
 }
 
-export interface TableBodyProps extends ComponentPropsWithRef<"tbody"> {
-  theme?: DeepPartial<TableBodyTheme>;
-  resetTheme?: ResetTheme<TableBodyTheme>;
-}
+export interface TableBodyProps extends ComponentPropsWithRef<"tbody">, ThemingProps<TableBodyTheme> {}
 
 export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
   ({ children, className, theme: customTheme, resetTheme, ...props }, ref) => {

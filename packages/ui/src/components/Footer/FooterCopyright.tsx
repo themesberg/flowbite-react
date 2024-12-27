@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { footerTheme } from "./theme";
 
 export interface FooterCopyrightTheme {
@@ -13,11 +13,9 @@ export interface FooterCopyrightTheme {
   span: string;
 }
 
-export interface CopyrightProps extends ComponentProps<"div"> {
+export interface CopyrightProps extends ComponentProps<"div">, ThemingProps<FooterCopyrightTheme> {
   by: string;
   href?: string;
-  theme?: DeepPartial<FooterCopyrightTheme>;
-  resetTheme?: ResetTheme<FooterCopyrightTheme>;
   year?: number;
 }
 

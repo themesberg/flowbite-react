@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useNavbarContext } from "./NavbarContext";
 import { navbarTheme } from "./theme";
@@ -16,13 +16,11 @@ export interface NavbarLinkTheme {
   disabled: FlowbiteBoolean;
 }
 
-export interface NavbarLinkProps extends ComponentProps<"a">, Record<string, unknown> {
+export interface NavbarLinkProps extends ComponentProps<"a">, Record<string, unknown>, ThemingProps<NavbarLinkTheme> {
   active?: boolean;
   as?: ElementType;
   disabled?: boolean;
   href?: string;
-  theme?: DeepPartial<NavbarLinkTheme>;
-  resetTheme?: ResetTheme<NavbarLinkTheme>;
 }
 
 export const NavbarLink: FC<NavbarLinkProps> = ({

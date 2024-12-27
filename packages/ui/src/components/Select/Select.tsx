@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { HelperText } from "../HelperText";
 import { selectTheme } from "./theme";
@@ -38,15 +38,13 @@ export interface SelectSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg"> {
   [key: string]: string;
 }
 
-export interface SelectProps extends Omit<ComponentProps<"select">, "color" | "ref"> {
+export interface SelectProps extends Omit<ComponentProps<"select">, "color" | "ref">, ThemingProps<SelectTheme> {
   addon?: ReactNode;
   color?: DynamicStringEnumKeysOf<SelectColors>;
   helperText?: ReactNode;
   icon?: FC<ComponentProps<"svg">>;
   shadow?: boolean;
   sizing?: DynamicStringEnumKeysOf<SelectSizes>;
-  theme?: DeepPartial<SelectTheme>;
-  resetTheme?: ResetTheme<SelectTheme>;
 }
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(

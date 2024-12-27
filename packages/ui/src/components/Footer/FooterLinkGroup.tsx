@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FooterLinkTheme } from "./FooterLink";
 import { footerTheme } from "./theme";
 
@@ -14,10 +14,8 @@ export interface FooterLinkGroupTheme {
   col: string;
 }
 
-export interface FooterLinkGroupProps extends ComponentProps<"ul"> {
+export interface FooterLinkGroupProps extends ComponentProps<"ul">, ThemingProps<FooterLinkGroupTheme> {
   col?: boolean;
-  theme?: DeepPartial<FooterLinkGroupTheme>;
-  resetTheme?: ResetTheme<FooterLinkGroupTheme>;
 }
 
 export const FooterLinkGroup: FC<FooterLinkGroupProps> = ({

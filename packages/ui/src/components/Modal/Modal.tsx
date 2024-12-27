@@ -16,7 +16,7 @@ import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import type { ModalBodyTheme } from "./ModalBody";
 import { ModalBody } from "./ModalBody";
@@ -55,7 +55,7 @@ export interface ModalSizes extends Omit<FlowbiteSizes, "xs"> {
   [key: string]: string;
 }
 
-export interface ModalProps extends ComponentPropsWithoutRef<"div"> {
+export interface ModalProps extends ComponentPropsWithoutRef<"div">, ThemingProps<ModalTheme> {
   onClose?: () => void;
   position?: DynamicStringEnumKeysOf<ModalPositions>;
   popup?: boolean;
@@ -63,8 +63,6 @@ export interface ModalProps extends ComponentPropsWithoutRef<"div"> {
   show?: boolean;
   size?: DynamicStringEnumKeysOf<ModalSizes>;
   dismissible?: boolean;
-  theme?: DeepPartial<ModalTheme>;
-  resetTheme?: ResetTheme<ModalTheme>;
   initialFocus?: number | MutableRefObject<HTMLElement | null>;
 }
 

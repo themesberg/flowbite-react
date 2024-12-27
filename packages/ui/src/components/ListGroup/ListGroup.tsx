@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { ListGroupItemTheme } from "./ListGroupItem";
 import { ListGroupItem } from "./ListGroupItem";
 import { listGroupTheme } from "./theme";
@@ -19,10 +19,7 @@ export interface ListGroupRootTheme {
   base: string;
 }
 
-export interface ListGroupProps extends ComponentProps<"ul"> {
-  theme?: DeepPartial<ListGroupTheme>;
-  resetTheme?: ResetTheme<ListGroupTheme>;
-}
+export interface ListGroupProps extends ComponentProps<"ul">, ThemingProps<ListGroupTheme> {}
 
 const ListGroupComponent: FC<ListGroupProps> = ({ children, className, theme: customTheme, resetTheme, ...props }) => {
   const provider = useThemeProvider();

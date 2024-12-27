@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { helperTextTheme } from "./theme";
 
@@ -21,10 +21,8 @@ export interface HelperColors extends Pick<FlowbiteColors, "gray" | "info" | "fa
   [key: string]: string;
 }
 
-export interface HelperTextProps extends Omit<ComponentProps<"p">, "color"> {
+export interface HelperTextProps extends Omit<ComponentProps<"p">, "color">, ThemingProps<HelperTextTheme> {
   color?: DynamicStringEnumKeysOf<HelperColors>;
-  theme?: DeepPartial<HelperTextTheme>;
-  resetTheme?: ResetTheme<HelperTextTheme>;
   value?: string;
 }
 

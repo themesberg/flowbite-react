@@ -7,7 +7,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { AccordionComponentTheme } from "./AccordionContent";
 import { AccordionContent } from "./AccordionContent";
@@ -28,14 +28,12 @@ export interface AccordionRootTheme {
   flush: FlowbiteBoolean;
 }
 
-export interface AccordionProps extends ComponentProps<"div"> {
+export interface AccordionProps extends ComponentProps<"div">, ThemingProps<AccordionTheme> {
   alwaysOpen?: boolean;
   arrowIcon?: FC<ComponentProps<"svg">>;
   children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];
   flush?: boolean;
   collapseAll?: boolean;
-  theme?: DeepPartial<AccordionTheme>;
-  resetTheme?: ResetTheme<AccordionTheme>;
 }
 
 const AccordionComponent: FC<AccordionProps> = ({

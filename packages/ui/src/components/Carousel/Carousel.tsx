@@ -8,7 +8,7 @@ import { isClient } from "../../helpers/is-client";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { carouselTheme } from "./theme";
 
@@ -47,23 +47,18 @@ export interface CarouselScrollContainer {
   snap: string;
 }
 
-export interface CarouselProps extends ComponentProps<"div"> {
+export interface CarouselProps extends ComponentProps<"div">, ThemingProps<CarouselTheme> {
   indicators?: boolean;
   leftControl?: ReactNode;
   rightControl?: ReactNode;
   draggable?: boolean;
   slide?: boolean;
   slideInterval?: number;
-  theme?: DeepPartial<CarouselTheme>;
-  resetTheme?: ResetTheme<CarouselTheme>;
   onSlideChange?: (slide: number) => void;
   pauseOnHover?: boolean;
 }
 
-export interface DefaultLeftRightControlProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<CarouselTheme>;
-  resetTheme?: ResetTheme<CarouselTheme>;
-}
+export interface DefaultLeftRightControlProps extends ComponentProps<"div">, ThemingProps<CarouselTheme> {}
 
 export const Carousel: FC<CarouselProps> = ({
   children,

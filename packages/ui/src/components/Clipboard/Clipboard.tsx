@@ -4,7 +4,7 @@ import { forwardRef, useState, type ComponentProps, type ReactNode } from "react
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { Tooltip } from "../Tooltip";
 import type { ClipboardWithIconTheme } from "./ClipboardWithIcon";
 import { ClipboardWithIcon } from "./ClipboardWithIcon";
@@ -22,11 +22,9 @@ export interface ClipboardTheme {
   withIconText: ClipboardWithIconTextTheme;
 }
 
-export interface ClipboardProps extends ComponentProps<"button"> {
+export interface ClipboardProps extends ComponentProps<"button">, ThemingProps<ClipboardTheme["button"]> {
   valueToCopy: string;
   label?: ReactNode;
-  theme?: DeepPartial<ClipboardTheme["button"]>;
-  resetTheme?: ResetTheme<ClipboardTheme["button"]>;
 }
 
 const ClipboardComponent = forwardRef<HTMLButtonElement, ClipboardProps>(

@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { HelperText } from "../HelperText";
 import { textareaTheme } from "./theme";
@@ -20,12 +20,10 @@ export interface TextareaColors extends Pick<FlowbiteColors, "gray" | "info" | "
   [key: string]: string;
 }
 
-export interface TextareaProps extends Omit<ComponentProps<"textarea">, "color" | "ref"> {
+export interface TextareaProps extends Omit<ComponentProps<"textarea">, "color" | "ref">, ThemingProps<TextareaTheme> {
   color?: DynamicStringEnumKeysOf<TextareaColors>;
   helperText?: ReactNode;
   shadow?: boolean;
-  theme?: DeepPartial<TextareaTheme>;
-  resetTheme?: ResetTheme<TextareaTheme>;
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(

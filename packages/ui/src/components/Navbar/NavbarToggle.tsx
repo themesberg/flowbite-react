@@ -6,7 +6,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
 import { navbarTheme } from "./theme";
 
@@ -15,10 +15,8 @@ export interface NavbarToggleThem {
   icon: string;
 }
 
-export interface NavbarToggleProps extends ComponentProps<"button"> {
+export interface NavbarToggleProps extends ComponentProps<"button">, ThemingProps<NavbarToggleThem> {
   barIcon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<NavbarToggleThem>;
-  resetTheme?: ResetTheme<NavbarToggleThem>;
 }
 
 export const NavbarToggle: FC<NavbarToggleProps> = ({

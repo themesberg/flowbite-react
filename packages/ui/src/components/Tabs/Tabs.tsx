@@ -5,7 +5,7 @@ import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, u
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { TabItemProps } from "./TabItem";
 import { TabItem } from "./TabItem";
@@ -55,11 +55,9 @@ interface TabKeyboardEventProps extends TabEventProps {
   event: KeyboardEvent<HTMLButtonElement>;
 }
 
-export interface TabsProps extends Omit<ComponentProps<"div">, "ref"> {
+export interface TabsProps extends Omit<ComponentProps<"div">, "ref">, ThemingProps<TabsTheme> {
   onActiveTabChange?: (activeTab: number) => void;
   variant?: keyof TabStyles;
-  theme?: DeepPartial<TabsTheme>;
-  resetTheme?: ResetTheme<TabsTheme>;
 }
 
 export interface TabsRef {

@@ -5,7 +5,7 @@ import { FaCheck, FaClipboardList } from "react-icons/fa6";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { copyToClipboard } from "./helpers";
 import { clipboardTheme } from "./theme";
 
@@ -17,11 +17,9 @@ export interface ClipboardWithIconTheme {
   };
 }
 
-export interface ClipboardWithIconProps extends ComponentProps<"button"> {
+export interface ClipboardWithIconProps extends ComponentProps<"button">, ThemingProps<ClipboardWithIconTheme> {
   valueToCopy: string;
   icon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<ClipboardWithIconTheme>;
-  resetTheme?: ResetTheme<ClipboardWithIconTheme>;
 }
 
 export const ClipboardWithIcon = forwardRef<HTMLButtonElement, ClipboardWithIconProps>(

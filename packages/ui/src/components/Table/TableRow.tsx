@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { useTableContext } from "./TableContext";
 import { tableTheme } from "./theme";
 
@@ -15,10 +15,7 @@ export interface TableRowTheme {
   striped: string;
 }
 
-export interface TableRowProps extends ComponentPropsWithRef<"tr"> {
-  theme?: DeepPartial<TableRowTheme>;
-  resetTheme?: ResetTheme<TableRowTheme>;
-}
+export interface TableRowProps extends ComponentPropsWithRef<"tr">, ThemingProps<TableRowTheme> {}
 
 export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
   ({ children, className, theme: customTheme, resetTheme, ...props }, ref) => {

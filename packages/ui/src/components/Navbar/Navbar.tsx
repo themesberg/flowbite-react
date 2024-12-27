@@ -5,7 +5,7 @@ import { useState } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { NavbarBrandTheme } from "./NavbarBrand";
 import { NavbarBrand } from "./NavbarBrand";
@@ -36,13 +36,11 @@ export interface NavbarRootTheme {
   };
 }
 
-export interface NavbarComponentProps extends ComponentProps<"nav"> {
+export interface NavbarComponentProps extends ComponentProps<"nav">, ThemingProps<NavbarTheme> {
   menuOpen?: boolean;
   fluid?: boolean;
   rounded?: boolean;
   border?: boolean;
-  theme?: DeepPartial<NavbarTheme>;
-  resetTheme?: ResetTheme<NavbarTheme>;
 }
 
 const NavbarComponent: FC<NavbarComponentProps> = ({

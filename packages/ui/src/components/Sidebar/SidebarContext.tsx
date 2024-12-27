@@ -1,14 +1,12 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { SidebarTheme } from "./Sidebar";
 
-export type SidebarContext = {
-  theme?: DeepPartial<SidebarTheme>;
-  resetTheme?: ResetTheme<SidebarTheme>;
+export interface SidebarContext extends ThemingProps<SidebarTheme> {
   isCollapsed: boolean;
-};
+}
 
 export const SidebarContext = createContext<SidebarContext | undefined>(undefined);
 

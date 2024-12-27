@@ -5,7 +5,7 @@ import { useEffect, useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { DrawerContext } from "./DrawerContext";
 import { DrawerHeader, type DrawerHeaderTheme } from "./DrawerHeader";
@@ -30,14 +30,12 @@ export interface DrawerRootTheme {
   };
 }
 
-export interface DrawerProps extends ComponentProps<"div"> {
+export interface DrawerProps extends ComponentProps<"div">, ThemingProps<DrawerTheme> {
   backdrop?: boolean;
   edge?: boolean;
   onClose: () => void;
   open?: boolean;
   position?: "top" | "right" | "bottom" | "left";
-  theme?: DeepPartial<DrawerTheme>;
-  resetTheme?: ResetTheme<DrawerTheme>;
 }
 
 const DrawerComponent: FC<DrawerProps> = ({

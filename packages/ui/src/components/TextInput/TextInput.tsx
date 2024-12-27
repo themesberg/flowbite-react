@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { HelperText } from "../HelperText";
 import { textInputTheme } from "./theme";
@@ -43,7 +43,7 @@ export interface TextInputSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg"> 
   [key: string]: string;
 }
 
-export interface TextInputProps extends Omit<ComponentProps<"input">, "ref" | "color"> {
+export interface TextInputProps extends Omit<ComponentProps<"input">, "ref" | "color">, ThemingProps<TextInputTheme> {
   addon?: ReactNode;
   color?: DynamicStringEnumKeysOf<TextInputColors>;
   helperText?: ReactNode;
@@ -51,8 +51,6 @@ export interface TextInputProps extends Omit<ComponentProps<"input">, "ref" | "c
   rightIcon?: FC<ComponentProps<"svg">>;
   shadow?: boolean;
   sizing?: DynamicStringEnumKeysOf<TextInputSizes>;
-  theme?: DeepPartial<TextInputTheme>;
-  resetTheme?: ResetTheme<TextInputTheme>;
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(

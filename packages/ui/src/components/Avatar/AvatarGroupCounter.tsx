@@ -4,17 +4,15 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { avatarTheme } from "./theme";
 
 export interface AvatarGroupCounterTheme {
   base: string;
 }
 
-export interface AvatarGroupCounterProps extends ComponentProps<"a"> {
+export interface AvatarGroupCounterProps extends ComponentProps<"a">, ThemingProps<AvatarGroupCounterTheme> {
   total?: number;
-  theme?: DeepPartial<AvatarGroupCounterTheme>;
-  resetTheme?: ResetTheme<AvatarGroupCounterTheme>;
 }
 
 export const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({

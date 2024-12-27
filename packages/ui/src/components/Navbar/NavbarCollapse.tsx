@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useNavbarContext } from "./NavbarContext";
 import { navbarTheme } from "./theme";
@@ -16,10 +16,7 @@ export interface NavbarCollapseTheme {
   hidden: FlowbiteBoolean;
 }
 
-export interface NavbarCollapseProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<NavbarCollapseTheme>;
-  resetTheme?: ResetTheme<NavbarCollapseTheme>;
-}
+export interface NavbarCollapseProps extends ComponentProps<"div">, ThemingProps<NavbarCollapseTheme> {}
 
 export const NavbarCollapse: FC<NavbarCollapseProps> = ({
   children,

@@ -6,7 +6,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useSidebarContext } from "./SidebarContext";
 import { sidebarTheme } from "./theme";
@@ -17,12 +17,10 @@ export interface SidebarLogoTheme {
   img: string;
 }
 
-export interface SidebarLogoProps extends ComponentProps<"a"> {
+export interface SidebarLogoProps extends ComponentProps<"a">, ThemingProps<SidebarLogoTheme> {
   href: string;
   img: string;
   imgAlt?: string;
-  theme?: DeepPartial<SidebarLogoTheme>;
-  resetTheme?: ResetTheme<SidebarLogoTheme>;
 }
 
 export const SidebarLogo: FC<SidebarLogoProps> = ({

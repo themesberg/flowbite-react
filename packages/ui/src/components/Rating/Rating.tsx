@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import { RatingAdvanced } from "./RatingAdvanced";
 import { RatingContext } from "./RatingContext";
 import type { RatingStarSizes, RatingStarTheme } from "./RatingStar";
@@ -18,10 +18,8 @@ export interface RatingTheme {
   star: RatingStarTheme;
 }
 
-export interface RatingProps extends ComponentProps<"div"> {
+export interface RatingProps extends ComponentProps<"div">, ThemingProps<RatingTheme> {
   size?: DynamicStringEnumKeysOf<RatingStarSizes>;
-  theme?: DeepPartial<RatingTheme>;
-  resetTheme?: ResetTheme<RatingTheme>;
 }
 
 const RatingComponent: FC<RatingProps> = ({

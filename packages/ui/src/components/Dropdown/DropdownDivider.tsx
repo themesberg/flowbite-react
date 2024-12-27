@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { useDropdownContext } from "./DropdownContext";
 import { dropdownTheme } from "./theme";
 
@@ -13,10 +13,7 @@ export interface DropdownDividerTheme {
   divider: string;
 }
 
-export type DropdownDividerProps = {
-  theme?: DeepPartial<DropdownDividerTheme>;
-  resetTheme?: ResetTheme<DropdownDividerTheme>;
-} & ComponentProps<"div">;
+export interface DropdownDividerProps extends ComponentProps<"div">, ThemingProps<DropdownDividerTheme> {}
 
 export const DropdownDivider: FC<DropdownDividerProps> = ({ className, theme: customTheme, resetTheme, ...props }) => {
   const { theme: rootTheme, resetTheme: rootResetTheme } = useDropdownContext();

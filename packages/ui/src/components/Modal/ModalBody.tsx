@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { useModalContext } from "./ModalContext";
 import { modalTheme } from "./theme";
 
@@ -14,10 +14,7 @@ export interface ModalBodyTheme {
   popup: string;
 }
 
-export interface ModalBodyProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<ModalBodyTheme>;
-  resetTheme?: ResetTheme<ModalBodyTheme>;
-}
+export interface ModalBodyProps extends ComponentProps<"div">, ThemingProps<ModalBodyTheme> {}
 
 export const ModalBody: FC<ModalBodyProps> = ({ children, className, theme: customTheme, resetTheme, ...props }) => {
   const { theme: rootTheme, resetTheme: rootResetTheme, popup } = useModalContext();

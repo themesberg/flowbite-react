@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { listTheme } from "./theme";
 
 export interface ListItemTheme {
@@ -15,11 +15,9 @@ export interface ListItemTheme {
   };
 }
 
-export interface ListItemProps extends ComponentProps<"li"> {
+export interface ListItemProps extends ComponentProps<"li">, ThemingProps<ListItemTheme> {
   className?: string;
   icon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<ListItemTheme>;
-  resetTheme?: ResetTheme<ListItemTheme>;
 }
 
 export const ListItem: FC<ListItemProps> = ({

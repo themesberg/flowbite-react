@@ -5,7 +5,7 @@ import { useState } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { toastTheme } from "./theme";
 import type { Duration } from "./ToastContext";
 import { ToastContext } from "./ToastContext";
@@ -22,10 +22,8 @@ export interface ToastTheme {
   };
 }
 
-export interface ToastProps extends ComponentProps<"div"> {
+export interface ToastProps extends ComponentProps<"div">, ThemingProps<ToastTheme> {
   duration?: Duration;
-  theme?: DeepPartial<ToastTheme>;
-  resetTheme?: ResetTheme<ToastTheme>;
 }
 
 const durationClasses: Record<Duration, string> = {

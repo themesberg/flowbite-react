@@ -1,15 +1,13 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { TableTheme } from "./Table";
 
-export type TableContext = {
-  theme?: DeepPartial<TableTheme>;
-  resetTheme?: ResetTheme<TableTheme>;
+export interface TableContext extends ThemingProps<TableTheme> {
   striped?: boolean;
   hoverable?: boolean;
-};
+}
 
 export const TableContext = createContext<TableContext | undefined>(undefined);
 

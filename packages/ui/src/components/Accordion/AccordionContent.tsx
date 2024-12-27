@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { useAccordionContext } from "./AccordionPanelContext";
 import { accordionTheme } from "./theme";
 
@@ -12,10 +12,7 @@ export interface AccordionComponentTheme {
   base: string;
 }
 
-export interface AccordionContentProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<AccordionComponentTheme>;
-  resetTheme?: ResetTheme<AccordionComponentTheme>;
-}
+export interface AccordionContentProps extends ComponentProps<"div">, ThemingProps<AccordionComponentTheme> {}
 
 export const AccordionContent: FC<AccordionContentProps> = ({
   children,

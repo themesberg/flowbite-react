@@ -4,7 +4,7 @@ import type { ComponentProps, FC, ReactElement } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import type { AvatarGroupTheme } from "./AvatarGroup";
 import { AvatarGroup } from "./AvatarGroup";
@@ -64,7 +64,7 @@ export interface AvatarImageProps {
   "data-testid": string;
 }
 
-export interface AvatarProps extends Omit<ComponentProps<"div">, "color"> {
+export interface AvatarProps extends Omit<ComponentProps<"div">, "color">, ThemingProps<AvatarTheme> {
   alt?: string;
   bordered?: boolean;
   img?: string | ((props: AvatarImageProps) => ReactElement);
@@ -75,8 +75,6 @@ export interface AvatarProps extends Omit<ComponentProps<"div">, "color"> {
   status?: "away" | "busy" | "offline" | "online";
   statusPosition?: keyof FlowbitePositions;
   placeholderInitials?: string;
-  theme?: DeepPartial<AvatarTheme>;
-  resetTheme?: ResetTheme<AvatarTheme>;
 }
 
 const AvatarComponent: FC<AvatarProps> = ({

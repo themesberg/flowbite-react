@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { kbdTheme } from "./theme";
 
 export interface KbdTheme {
@@ -16,10 +16,8 @@ export interface KbdRootTheme {
   icon: string;
 }
 
-export interface KbdProps extends ComponentProps<"span"> {
+export interface KbdProps extends ComponentProps<"span">, ThemingProps<KbdTheme> {
   icon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<KbdTheme>;
-  resetTheme?: ResetTheme<KbdTheme>;
 }
 
 export const Kbd: FC<KbdProps> = ({ children, className, icon: Icon, theme: customTheme, resetTheme, ...props }) => {

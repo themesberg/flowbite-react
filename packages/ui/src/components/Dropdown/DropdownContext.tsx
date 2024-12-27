@@ -2,17 +2,15 @@
 
 import type { useInteractions } from "@floating-ui/react";
 import { createContext, useContext } from "react";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { DropdownTheme } from "./Dropdown";
 
-type DropdownContext = {
-  theme?: DeepPartial<DropdownTheme>;
-  resetTheme?: ResetTheme<DropdownTheme>;
+interface DropdownContext extends ThemingProps<DropdownTheme> {
   activeIndex: number | null;
   dismissOnClick?: boolean;
   getItemProps: ReturnType<typeof useInteractions>["getItemProps"];
   handleSelect: (index: number | null) => void;
-};
+}
 
 export const DropdownContext = createContext<DropdownContext | undefined>(undefined);
 

@@ -7,7 +7,7 @@ import { cloneElement, isValidElement, useMemo, useRef, useState } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FloatingArrowTheme } from "../Floating";
 import { getArrowPlacement } from "../Floating/helpers";
 import { popoverTheme } from "./theme";
@@ -18,12 +18,10 @@ export interface PopoverTheme {
   content: string;
 }
 
-export interface PopoverProps extends Omit<ComponentProps<"div">, "content" | "style"> {
+export interface PopoverProps extends Omit<ComponentProps<"div">, "content" | "style">, ThemingProps<PopoverTheme> {
   arrow?: boolean;
   content: ReactNode;
   placement?: "auto" | Placement;
-  theme?: DeepPartial<PopoverTheme>;
-  resetTheme?: ResetTheme<PopoverTheme>;
   trigger?: "hover" | "click";
   initialOpen?: boolean;
   open?: boolean;

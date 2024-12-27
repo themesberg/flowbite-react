@@ -6,7 +6,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { useModalContext } from "./ModalContext";
 import { modalTheme } from "./theme";
 
@@ -20,10 +20,8 @@ export interface ModalHeaderTheme {
   };
 }
 
-export interface ModalHeaderProps extends ComponentProps<"div"> {
+export interface ModalHeaderProps extends ComponentProps<"div">, ThemingProps<ModalHeaderTheme> {
   as?: ElementType;
-  theme?: DeepPartial<ModalHeaderTheme>;
-  resetTheme?: ResetTheme<ModalHeaderTheme>;
 }
 
 export const ModalHeader: FC<ModalHeaderProps> = ({

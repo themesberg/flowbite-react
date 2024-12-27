@@ -4,7 +4,7 @@ import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { footerTheme } from "./theme";
 
 export interface FooterBrandTheme {
@@ -13,14 +13,12 @@ export interface FooterBrandTheme {
   span: string;
 }
 
-export interface FooterBrandProps extends PropsWithChildren {
+export interface FooterBrandProps extends PropsWithChildren, ThemingProps<FooterBrandTheme> {
   alt?: string;
   className?: string;
   href?: string;
   name?: string;
   src: string;
-  theme?: DeepPartial<FooterBrandTheme>;
-  resetTheme?: ResetTheme<FooterBrandTheme>;
 }
 
 export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentProps<"img">> = ({

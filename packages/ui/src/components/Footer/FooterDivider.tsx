@@ -4,17 +4,14 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { footerTheme } from "./theme";
 
 export interface FooterDividerTheme {
   base: string;
 }
 
-export interface FooterDividerProps extends ComponentProps<"hr"> {
-  theme?: DeepPartial<FooterDividerTheme>;
-  resetTheme?: ResetTheme<FooterDividerTheme>;
-}
+export interface FooterDividerProps extends ComponentProps<"hr">, ThemingProps<FooterDividerTheme> {}
 
 export const FooterDivider: FC<FooterDividerProps> = ({ className, theme: customTheme, resetTheme, ...props }) => {
   const provider = useThemeProvider();

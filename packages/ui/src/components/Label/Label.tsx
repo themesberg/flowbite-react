@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import { labelTheme } from "./theme";
 
@@ -23,11 +23,9 @@ export interface LabelColors extends FlowbiteStateColors {
   default: string;
 }
 
-export interface LabelProps extends Omit<ComponentProps<"label">, "color"> {
+export interface LabelProps extends Omit<ComponentProps<"label">, "color">, ThemingProps<LabelTheme> {
   color?: DynamicStringEnumKeysOf<LabelColors>;
   disabled?: boolean;
-  theme?: DeepPartial<LabelTheme>;
-  resetTheme?: ResetTheme<LabelTheme>;
   value?: string;
 }
 

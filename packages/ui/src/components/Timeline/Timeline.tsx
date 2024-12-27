@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { timelineTheme } from "./theme";
 import { TimelineBody } from "./TimelineBody";
 import { TimelineContent } from "./TimelineContent";
@@ -24,10 +24,8 @@ export interface TimelineTheme {
   item: TimelineItemTheme;
 }
 
-export interface TimelineProps extends ComponentProps<"ol"> {
+export interface TimelineProps extends ComponentProps<"ol">, ThemingProps<TimelineTheme> {
   horizontal?: boolean;
-  theme?: DeepPartial<TimelineTheme>;
-  resetTheme?: ResetTheme<TimelineTheme>;
 }
 
 const TimelineComponent: FC<TimelineProps> = ({

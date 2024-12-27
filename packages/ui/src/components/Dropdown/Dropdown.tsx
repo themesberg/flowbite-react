@@ -18,7 +18,7 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { Button, type ButtonProps } from "../Button";
 import type { FloatingProps, FloatingTheme } from "../Floating";
 import { DropdownContext } from "./DropdownContext";
@@ -40,14 +40,13 @@ export interface DropdownTheme {
 
 export interface DropdownProps
   extends Pick<FloatingProps, "placement" | "trigger">,
-    Omit<ButtonProps, "theme" | "resetTheme"> {
+    Omit<ButtonProps, "theme" | "resetTheme">,
+    ThemingProps<DropdownTheme> {
   arrowIcon?: boolean;
   dismissOnClick?: boolean;
   floatingArrow?: boolean;
   inline?: boolean;
   label?: ReactNode;
-  theme?: DeepPartial<DropdownTheme>;
-  resetTheme?: ResetTheme<DropdownTheme>;
   enableTypeAhead?: boolean;
   renderTrigger?: (theme: DropdownTheme) => ReactElement;
   "data-testid"?: string;

@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteHeadingLevel } from "../Flowbite/FlowbiteTheme";
 import { timelineTheme } from "./theme";
 import { useTimelineContentContext } from "./TimelineContentContext";
@@ -16,10 +16,8 @@ export interface TimelineTitleTheme {
   base: string;
 }
 
-export interface TimelineTitleProps extends ComponentProps<"h1"> {
+export interface TimelineTitleProps extends ComponentProps<"h1">, ThemingProps<TimelineTitleTheme> {
   as?: FlowbiteHeadingLevel;
-  theme?: DeepPartial<TimelineTitleTheme>;
-  resetTheme?: ResetTheme<TimelineTitleTheme>;
 }
 
 export const TimelineTitle: FC<TimelineTitleProps> = ({

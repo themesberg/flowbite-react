@@ -4,7 +4,7 @@ import type { ComponentProps, FC, PropsWithChildren } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { listGroupTheme } from "./theme";
 
@@ -19,14 +19,12 @@ export interface ListGroupItemTheme {
   };
 }
 
-export interface ListGroupItemProps extends PropsWithChildren {
+export interface ListGroupItemProps extends PropsWithChildren, ThemingProps<ListGroupItemTheme> {
   active?: boolean;
   disabled?: boolean;
   href?: string;
   icon?: FC<ComponentProps<"svg">>;
   onClick?: () => void;
-  theme?: DeepPartial<ListGroupItemTheme>;
-  resetTheme?: ResetTheme<ListGroupItemTheme>;
 }
 
 export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & ComponentProps<"button">> = ({

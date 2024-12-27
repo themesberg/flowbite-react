@@ -5,7 +5,7 @@ import { omit } from "../../helpers/omit";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { DeepPartial, ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { cardTheme } from "./theme";
 
@@ -26,11 +26,9 @@ export interface CardImageTheme {
   horizontal: FlowbiteBoolean;
 }
 
-interface CommonCardProps extends ComponentProps<"div"> {
+interface CommonCardProps extends ComponentProps<"div">, ThemingProps<CardTheme> {
   horizontal?: boolean;
   href?: string;
-  theme?: DeepPartial<CardTheme>;
-  resetTheme?: ResetTheme<CardTheme>;
 }
 
 export type CardProps = (

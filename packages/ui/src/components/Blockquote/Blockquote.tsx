@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { blockquoteTheme } from "./theme";
 
 export interface BlockquoteTheme {
@@ -15,10 +15,7 @@ export interface BlockquoteRootTheme {
   base: string;
 }
 
-export interface BlockquoteProps extends ComponentProps<"blockquote"> {
-  theme?: DeepPartial<BlockquoteTheme>;
-  resetTheme?: ResetTheme<BlockquoteTheme>;
-}
+export interface BlockquoteProps extends ComponentProps<"blockquote">, ThemingProps<BlockquoteTheme> {}
 
 export const Blockquote: FC<BlockquoteProps> = ({ children, className, theme: customTheme, resetTheme, ...props }) => {
   const provider = useThemeProvider();

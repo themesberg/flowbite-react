@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { timelineTheme } from "./theme";
 import { useTimelineContentContext } from "./TimelineContentContext";
 import { useTimelineContext } from "./TimelineContext";
@@ -15,10 +15,7 @@ export interface TimelineTimeTheme {
   base: string;
 }
 
-export interface TimelineTimeProps extends ComponentProps<"time"> {
-  theme?: DeepPartial<TimelineTimeTheme>;
-  resetTheme?: ResetTheme<TimelineTimeTheme>;
-}
+export interface TimelineTimeProps extends ComponentProps<"time">, ThemingProps<TimelineTimeTheme> {}
 
 export const TimelineTime: FC<TimelineTimeProps> = ({
   children,

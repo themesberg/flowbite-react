@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { hrTheme } from "./theme";
 
 export interface HRTextTheme {
@@ -14,10 +14,8 @@ export interface HRTextTheme {
   text: string;
 }
 
-export interface HRTextProps extends Omit<ComponentProps<"hr">, "ref"> {
+export interface HRTextProps extends Omit<ComponentProps<"hr">, "ref">, ThemingProps<HRTextTheme> {
   text: string;
-  theme?: DeepPartial<HRTextTheme>;
-  resetTheme?: ResetTheme<HRTextTheme>;
 }
 
 export const HRText = forwardRef<HTMLHRElement, HRTextProps>(

@@ -4,17 +4,14 @@ import type { ComponentProps } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { avatarTheme } from "./theme";
 
 export interface AvatarGroupTheme {
   base: string;
 }
 
-export interface AvatarGroupProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<AvatarGroupTheme>;
-  resetTheme?: ResetTheme<AvatarGroupTheme>;
-}
+export interface AvatarGroupProps extends ComponentProps<"div">, ThemingProps<AvatarGroupTheme> {}
 
 export const AvatarGroup: React.FC<AvatarGroupProps> = ({
   children,

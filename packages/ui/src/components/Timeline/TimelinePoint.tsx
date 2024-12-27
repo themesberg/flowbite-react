@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { timelineTheme } from "./theme";
 import { useTimelineContext } from "./TimelineContext";
 import { useTimelineItemContext } from "./TimelineItemContext";
@@ -26,10 +26,8 @@ export interface TimelinePointTheme {
   vertical: string;
 }
 
-export interface TimelnePointProps extends ComponentProps<"div"> {
+export interface TimelnePointProps extends ComponentProps<"div">, ThemingProps<TimelinePointTheme> {
   icon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<TimelinePointTheme>;
-  resetTheme?: ResetTheme<TimelinePointTheme>;
 }
 
 export const TimelinePoint: FC<TimelnePointProps> = ({

@@ -7,7 +7,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { Tooltip } from "../Tooltip";
 import { useSidebarContext } from "./SidebarContext";
@@ -33,13 +33,12 @@ export interface SidebarCollapseTheme {
 
 export interface SidebarCollapseProps
   extends Pick<SidebarItemProps, "active" | "as" | "href" | "icon" | "label" | "labelColor">,
-    ComponentProps<"button"> {
+    ComponentProps<"button">,
+    ThemingProps<SidebarCollapseTheme> {
   onClick?: ComponentProps<"button">["onClick"];
   open?: boolean;
   chevronIcon?: FC<ComponentProps<"svg">>;
   renderChevronIcon?: (theme: SidebarCollapseTheme, open: boolean) => ReactElement;
-  theme?: DeepPartial<SidebarCollapseTheme>;
-  resetTheme?: ResetTheme<SidebarCollapseTheme>;
 }
 
 export const SidebarCollapse: FC<SidebarCollapseProps> = ({

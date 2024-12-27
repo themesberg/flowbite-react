@@ -5,17 +5,14 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { hrTheme } from "./theme";
 
 export interface HRTrimmedTheme {
   base: string;
 }
 
-export interface HRTrimmedProps extends Omit<ComponentProps<"hr">, "ref"> {
-  theme?: DeepPartial<HRTrimmedTheme>;
-  resetTheme?: ResetTheme<HRTrimmedTheme>;
-}
+export interface HRTrimmedProps extends Omit<ComponentProps<"hr">, "ref">, ThemingProps<HRTrimmedTheme> {}
 
 export const HRTrimmed = forwardRef<HTMLHRElement, HRTrimmedProps>(
   ({ theme: customTheme, resetTheme, className, ...props }, ref) => {

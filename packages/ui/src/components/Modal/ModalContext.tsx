@@ -1,16 +1,14 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { ModalTheme } from "./Modal";
 
-type ModalContext = {
-  theme?: DeepPartial<ModalTheme>;
-  resetTheme?: ResetTheme<ModalTheme>;
+interface ModalContext extends ThemingProps<ModalTheme> {
   popup?: boolean;
   setHeaderId: (id: string | undefined) => void;
   onClose?: () => void;
-};
+}
 
 export const ModalContext = createContext<ModalContext | undefined>(undefined);
 

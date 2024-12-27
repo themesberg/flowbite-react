@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { useDrawerContext } from "./DrawerContext";
 import { drawerTheme } from "./theme";
 
@@ -13,10 +13,7 @@ export interface DrawerItemsTheme {
   base: string;
 }
 
-export interface DrawerItemsProps extends ComponentProps<"div"> {
-  theme?: DeepPartial<DrawerItemsTheme>;
-  resetTheme?: ResetTheme<DrawerItemsTheme>;
-}
+export interface DrawerItemsProps extends ComponentProps<"div">, ThemingProps<DrawerItemsTheme> {}
 
 export const DrawerItems: FC<DrawerItemsProps> = ({
   children,

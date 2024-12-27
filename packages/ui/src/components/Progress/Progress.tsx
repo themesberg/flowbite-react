@@ -5,7 +5,7 @@ import { useId } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { progressTheme } from "./theme";
 
@@ -29,7 +29,7 @@ export interface ProgressSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg" | 
   [key: string]: string;
 }
 
-export interface ProgressProps extends ComponentProps<"div"> {
+export interface ProgressProps extends ComponentProps<"div">, ThemingProps<ProgressTheme> {
   labelProgress?: boolean;
   labelText?: boolean;
   progress: number;
@@ -37,8 +37,6 @@ export interface ProgressProps extends ComponentProps<"div"> {
   size?: DynamicStringEnumKeysOf<ProgressSizes>;
   textLabel?: string;
   textLabelPosition?: "inside" | "outside";
-  theme?: DeepPartial<ProgressTheme>;
-  resetTheme?: ResetTheme<ProgressTheme>;
 }
 
 export const Progress: FC<ProgressProps> = ({

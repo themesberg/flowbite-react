@@ -6,7 +6,7 @@ import { MdClose, MdHome } from "react-icons/md";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { useDrawerContext } from "./DrawerContext";
 import { drawerTheme } from "./theme";
@@ -21,10 +21,11 @@ export interface DrawerHeaderTheme {
   collapsed: FlowbiteBoolean;
 }
 
-export interface DrawerHeaderProps extends ComponentProps<"div">, Record<string, unknown> {
+export interface DrawerHeaderProps
+  extends ComponentProps<"div">,
+    Record<string, unknown>,
+    ThemingProps<DrawerHeaderTheme> {
   closeIcon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<DrawerHeaderTheme>;
-  resetTheme?: ResetTheme<DrawerHeaderTheme>;
   title?: string;
   titleIcon?: FC<ComponentProps<"svg">>;
 }

@@ -6,7 +6,7 @@ import { HiOutlineChevronRight } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { breadcrumbTheme } from "./theme";
 
@@ -17,11 +17,9 @@ export interface BreadcrumbItemTheme {
   icon: string;
 }
 
-export interface BreadcrumbItemProps extends Omit<ComponentProps<"li">, "ref"> {
+export interface BreadcrumbItemProps extends Omit<ComponentProps<"li">, "ref">, ThemingProps<BreadcrumbItemTheme> {
   href?: string;
   icon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<BreadcrumbItemTheme>;
-  resetTheme?: ResetTheme<BreadcrumbItemTheme>;
 }
 
 export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, BreadcrumbItemProps>(

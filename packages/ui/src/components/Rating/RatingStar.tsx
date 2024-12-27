@@ -6,7 +6,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { useRatingContext } from "./RatingContext";
 import { ratingTheme } from "./theme";
@@ -21,11 +21,9 @@ export interface RatingStarSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg">
   [key: string]: string;
 }
 
-export interface RatingStarProps extends ComponentProps<"svg"> {
+export interface RatingStarProps extends ComponentProps<"svg">, ThemingProps<RatingStarTheme> {
   filled?: boolean;
   starIcon?: FC<ComponentProps<"svg">>;
-  theme?: DeepPartial<RatingStarTheme>;
-  resetTheme?: ResetTheme<RatingStarTheme>;
 }
 
 export const RatingStar: FC<RatingStarProps> = ({

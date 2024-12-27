@@ -7,7 +7,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { ButtonBase, type ButtonBaseProps } from "../Button/ButtonBase";
 import { useDropdownContext } from "./DropdownContext";
 import { dropdownTheme } from "./theme";
@@ -24,10 +24,9 @@ export type DropdownItemProps<T extends ElementType = "button"> = PolymorphicCom
     href?: string;
     icon?: FC<ComponentProps<"svg">>;
     onClick?: () => void;
-    theme?: DeepPartial<DropdownItemTheme>;
-    resetTheme?: ResetTheme<DropdownItemTheme>;
   }
->;
+> &
+  ThemingProps<DropdownItemTheme>;
 
 type DropdownItemType = (<C extends ElementType = "button">(props: DropdownItemProps<C>) => JSX.Element) & {
   displayName?: string;

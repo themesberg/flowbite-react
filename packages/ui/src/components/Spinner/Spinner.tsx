@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { spinnerTheme } from "./theme";
 
@@ -33,12 +33,10 @@ export interface SpinnerSizes extends Pick<FlowbiteSizes, "xs" | "sm" | "md" | "
   [key: string]: string;
 }
 
-export interface SpinnerProps extends Omit<ComponentProps<"span">, "color"> {
+export interface SpinnerProps extends Omit<ComponentProps<"span">, "color">, ThemingProps<SpinnerTheme> {
   color?: DynamicStringEnumKeysOf<SpinnerColors>;
   light?: boolean;
   size?: DynamicStringEnumKeysOf<SpinnerSizes>;
-  theme?: DeepPartial<SpinnerTheme>;
-  resetTheme?: ResetTheme<SpinnerTheme>;
 }
 
 export const Spinner: FC<SpinnerProps> = ({

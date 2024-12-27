@@ -4,7 +4,7 @@ import { forwardRef, type ComponentPropsWithRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { TableBody, type TableBodyTheme } from "./TableBody";
 import { TableCell } from "./TableCell";
 import { TableContext } from "./TableContext";
@@ -26,11 +26,9 @@ export interface TableRootTheme {
   wrapper: string;
 }
 
-export interface TableProps extends ComponentPropsWithRef<"table"> {
+export interface TableProps extends ComponentPropsWithRef<"table">, ThemingProps<TableTheme> {
   striped?: boolean;
   hoverable?: boolean;
-  theme?: DeepPartial<TableTheme>;
-  resetTheme?: ResetTheme<TableTheme>;
 }
 
 const TableComponent = forwardRef<HTMLTableElement, TableProps>(

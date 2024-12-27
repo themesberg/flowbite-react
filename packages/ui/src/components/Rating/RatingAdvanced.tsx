@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { ratingAdvancedTheme } from "./theme";
 
 export interface RatingAdvancedTheme {
@@ -17,10 +17,8 @@ export interface RatingAdvancedTheme {
   };
 }
 
-export interface RatingAdvancedProps extends ComponentProps<"div"> {
+export interface RatingAdvancedProps extends ComponentProps<"div">, ThemingProps<RatingAdvancedTheme> {
   percentFilled?: number;
-  theme?: DeepPartial<RatingAdvancedTheme>;
-  resetTheme?: ResetTheme<RatingAdvancedTheme>;
 }
 
 export const RatingAdvanced: FC<RatingAdvancedProps> = ({

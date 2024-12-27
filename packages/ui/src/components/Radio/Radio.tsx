@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { radioTheme } from "./theme";
 
 export interface RadioTheme {
@@ -16,10 +16,7 @@ export interface RadioRootTheme {
   base: string;
 }
 
-export interface RadioProps extends Omit<ComponentProps<"input">, "ref" | "type"> {
-  theme?: DeepPartial<RadioTheme>;
-  resetTheme?: ResetTheme<RadioTheme>;
-}
+export interface RadioProps extends Omit<ComponentProps<"input">, "ref" | "type">, ThemingProps<RadioTheme> {}
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ({ className, theme: customTheme, resetTheme, ...props }, ref) => {

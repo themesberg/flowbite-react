@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import { HelperText } from "../HelperText";
 import type { TextInputColors, TextInputSizes } from "../TextInput";
 import { fileInputTheme } from "./theme";
@@ -30,12 +30,12 @@ export interface FileInputFieldInputTheme {
   sizes: TextInputSizes;
 }
 
-export interface FileInputProps extends Omit<ComponentProps<"input">, "type" | "ref" | "color"> {
+export interface FileInputProps
+  extends Omit<ComponentProps<"input">, "type" | "ref" | "color">,
+    ThemingProps<FileInputTheme> {
   color?: DynamicStringEnumKeysOf<TextInputColors>;
   helperText?: ReactNode;
   sizing?: DynamicStringEnumKeysOf<TextInputSizes>;
-  theme?: DeepPartial<FileInputTheme>;
-  resetTheme?: ResetTheme<FileInputTheme>;
 }
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(

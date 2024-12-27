@@ -5,7 +5,7 @@ import { Children, cloneElement, isValidElement, useMemo } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { Button, type ButtonProps } from "../Button/Button";
 import { buttonGroupTheme } from "./theme";
 
@@ -21,10 +21,10 @@ export interface PositionInButtonGroup {
   end: string;
 }
 
-export interface ButtonGroupProps extends ComponentProps<"div">, Pick<ButtonProps, "outline" | "pill"> {
-  theme?: DeepPartial<ButtonGroupTheme>;
-  resetTheme?: ResetTheme<ButtonGroupTheme>;
-}
+export interface ButtonGroupProps
+  extends ComponentProps<"div">,
+    Pick<ButtonProps, "outline" | "pill">,
+    ThemingProps<ButtonGroupTheme> {}
 
 const processChildren = (
   children: React.ReactNode,

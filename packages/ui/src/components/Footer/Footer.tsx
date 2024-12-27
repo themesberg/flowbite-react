@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FooterBrandTheme } from "./FooterBrand";
 import { FooterBrand } from "./FooterBrand";
 import type { FooterCopyrightTheme } from "./FooterCopyright";
@@ -36,11 +36,9 @@ export interface FooterRootTheme {
   container: string;
 }
 
-export interface FooterProps extends ComponentProps<"footer"> {
+export interface FooterProps extends ComponentProps<"footer">, ThemingProps<FooterTheme> {
   bgDark?: boolean;
   container?: boolean;
-  theme?: DeepPartial<FooterTheme>;
-  resetTheme?: ResetTheme<FooterTheme>;
 }
 
 export const FooterComponent: FC<FooterProps> = ({

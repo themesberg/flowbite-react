@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { useSidebarContext } from "./SidebarContext";
 import { SidebarItemContext } from "./SidebarItemContext";
 import { sidebarTheme } from "./theme";
@@ -14,10 +14,7 @@ export interface SidebarItemGroupTheme {
   base: string;
 }
 
-export interface SidebarItemGroupProps extends ComponentProps<"ul"> {
-  theme?: DeepPartial<SidebarItemGroupTheme>;
-  resetTheme?: ResetTheme<SidebarItemGroupTheme>;
-}
+export interface SidebarItemGroupProps extends ComponentProps<"ul">, ThemingProps<SidebarItemGroupTheme> {}
 
 export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({
   children,

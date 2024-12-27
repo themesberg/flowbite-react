@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { useSidebarContext } from "./SidebarContext";
 import { sidebarTheme } from "./theme";
@@ -15,10 +15,8 @@ export interface SidebarCTATheme {
   color: SidebarCTAColors;
 }
 
-export interface SidebarCTAProps extends Omit<ComponentProps<"div">, "color"> {
+export interface SidebarCTAProps extends Omit<ComponentProps<"div">, "color">, ThemingProps<SidebarCTATheme> {
   color?: DynamicStringEnumKeysOf<SidebarCTAColors>;
-  theme?: DeepPartial<SidebarCTATheme>;
-  resetTheme?: ResetTheme<SidebarCTATheme>;
 }
 
 export interface SidebarCTAColors

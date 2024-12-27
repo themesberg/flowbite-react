@@ -6,7 +6,7 @@ import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../help
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes, FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import { Spinner } from "../Spinner";
 import { ButtonBase, type ButtonBaseProps } from "./ButtonBase";
@@ -92,10 +92,9 @@ export type ButtonProps<T extends ElementType = "button"> = PolymorphicComponent
     pill?: boolean;
     positionInGroup?: keyof PositionInButtonGroup;
     size?: DynamicStringEnumKeysOf<ButtonSizes>;
-    theme?: DeepPartial<ButtonTheme>;
-    resetTheme?: ResetTheme<ButtonTheme>;
   }
->;
+> &
+  ThemingProps<ButtonTheme>;
 
 type ButtonComponentType = (<C extends ElementType = "button">(props: ButtonProps<C>) => JSX.Element) & {
   displayName?: string;

@@ -4,20 +4,18 @@ import type { Placement } from "@floating-ui/core";
 import type { ComponentProps, FC, ReactNode } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { Floating, type FloatingTheme } from "../Floating";
 import { tooltipTheme } from "./theme";
 
 export type TooltipTheme = FloatingTheme;
 
-export interface TooltipProps extends Omit<ComponentProps<"div">, "content" | "style"> {
+export interface TooltipProps extends Omit<ComponentProps<"div">, "content" | "style">, ThemingProps<TooltipTheme> {
   animation?: false | `duration-${number}`;
   arrow?: boolean;
   content: ReactNode;
   placement?: "auto" | Placement;
   style?: "dark" | "light" | "auto";
-  theme?: DeepPartial<TooltipTheme>;
-  resetTheme?: ResetTheme<TooltipTheme>;
   trigger?: "hover" | "click";
 }
 

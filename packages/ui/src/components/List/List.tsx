@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import { ListItem, type ListItemTheme } from "./ListItem";
 import { listTheme } from "./theme";
@@ -31,12 +31,12 @@ export interface ListColors extends FlowbiteStateColors {
   default: string;
 }
 
-export interface ListProps extends PropsWithChildren<ComponentProps<"ul"> & ComponentProps<"ol">> {
+export interface ListProps
+  extends PropsWithChildren<ComponentProps<"ul"> & ComponentProps<"ol">>,
+    ThemingProps<ListTheme> {
   horizontal?: boolean;
   nested?: boolean;
   ordered?: boolean;
-  resetTheme?: ResetTheme<ListTheme>;
-  theme?: DeepPartial<ListTheme>;
   unstyled?: boolean;
 }
 

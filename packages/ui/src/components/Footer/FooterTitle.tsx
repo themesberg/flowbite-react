@@ -4,17 +4,15 @@ import type { ComponentProps, ElementType, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { footerTheme } from "./theme";
 
 export interface FooterTitleTheme {
   base: string;
 }
 
-export interface FooterTitleProps extends ComponentProps<"h2"> {
+export interface FooterTitleProps extends ComponentProps<"h2">, ThemingProps<FooterTitleTheme> {
   as?: ElementType;
-  theme?: DeepPartial<FooterTitleTheme>;
-  resetTheme?: ResetTheme<FooterTitleTheme>;
   title: string;
 }
 

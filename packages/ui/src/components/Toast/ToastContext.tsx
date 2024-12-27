@@ -1,20 +1,18 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { ToastTheme } from "./Toast";
 
 export type Duration = 75 | 100 | 150 | 200 | 300 | 500 | 700 | 1000;
 
-type ToastContext = {
-  theme?: DeepPartial<ToastTheme>;
-  resetTheme?: ResetTheme<ToastTheme>;
+interface ToastContext extends ThemingProps<ToastTheme> {
   duration?: Duration;
   isClosed?: boolean;
   isRemoved?: boolean;
   setIsClosed: (isClosed: boolean) => void;
   setIsRemoved: (isRemoved: boolean) => void;
-};
+}
 
 export const ToastContext = createContext<ToastContext | undefined>(undefined);
 

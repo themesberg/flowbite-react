@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import type { BreadcrumbItemTheme } from "./BreadcrumbItem";
 import { BreadcrumbItem } from "./BreadcrumbItem";
 import { breadcrumbTheme } from "./theme";
@@ -19,10 +19,7 @@ export interface BreadcrumbRootTheme {
   list: string;
 }
 
-export interface BreadcrumbComponentProps extends ComponentProps<"nav"> {
-  theme?: DeepPartial<BreadcrumbRootTheme>;
-  resetTheme?: ResetTheme<BreadcrumbRootTheme>;
-}
+export interface BreadcrumbComponentProps extends ComponentProps<"nav">, ThemingProps<BreadcrumbRootTheme> {}
 
 const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
   children,

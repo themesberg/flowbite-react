@@ -6,7 +6,7 @@ import { HiArrowLeft, HiArrowRight, HiCalendar } from "react-icons/hi";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ResetTheme } from "../../types";
+import type { ThemingProps } from "../../types";
 import { TextInput, type TextInputProps, type TextInputTheme } from "../TextInput";
 import { DatepickerContext } from "./DatepickerContext";
 import {
@@ -84,7 +84,8 @@ export interface DatepickerRef {
 }
 
 export interface DatepickerProps
-  extends Omit<TextInputProps, "theme" | "resetTheme" | "onChange" | "value" | "defaultValue"> {
+  extends Omit<TextInputProps, "theme" | "resetTheme" | "onChange" | "value" | "defaultValue">,
+    ThemingProps<DatepickerTheme> {
   defaultValue?: Date;
   open?: boolean;
   inline?: boolean;
@@ -97,8 +98,6 @@ export interface DatepickerProps
   maxDate?: Date;
   language?: string;
   weekStart?: WeekStart;
-  theme?: DeepPartial<DatepickerTheme>;
-  resetTheme?: ResetTheme<DatepickerTheme>;
   onChange?: (date: Date | null) => void;
   value?: Date | null;
   label?: string;

@@ -4,7 +4,7 @@ import type { ComponentProps, FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, DynamicStringEnumKeysOf, ResetTheme } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import { badgeTheme } from "./theme";
 
@@ -28,13 +28,11 @@ export interface BadgeSizes extends Pick<FlowbiteSizes, "xs" | "sm"> {
   [key: string]: string;
 }
 
-export interface BadgeProps extends Omit<ComponentProps<"span">, "color"> {
+export interface BadgeProps extends Omit<ComponentProps<"span">, "color">, ThemingProps<BadgeTheme> {
   color?: DynamicStringEnumKeysOf<FlowbiteColors>;
   href?: string;
   icon?: FC<ComponentProps<"svg">>;
   size?: DynamicStringEnumKeysOf<BadgeSizes>;
-  theme?: DeepPartial<BadgeTheme>;
-  resetTheme?: ResetTheme<BadgeTheme>;
 }
 
 export const Badge: FC<BadgeProps> = ({
