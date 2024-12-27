@@ -5,25 +5,40 @@ import { createContext, useContext, useMemo, type PropsWithChildren } from "reac
 import type { FlowbiteTheme } from "../components/Flowbite/FlowbiteTheme";
 import { deepMergeStrings } from "../helpers/deep-merge";
 import { twMerge } from "../helpers/tailwind-merge";
-import type { DeepPartial, ResetTheme } from "../types";
+import type { ThemingProps } from "../types";
 
-export interface ThemeProviderValue {
-  theme?: DeepPartial<FlowbiteTheme>;
-  resetTheme?: ResetTheme<FlowbiteTheme>;
+export interface ThemeProviderValue extends Omit<ThemingProps<FlowbiteTheme>, "applyTheme"> {
+  applyTheme?: Partial<Record<keyof FlowbiteTheme, ThemingProps<FlowbiteTheme>["applyTheme"]>>;
+  /**
+   * Prevent merging with parent themes
+   *
+   * @type {boolean}
+   * @default false
+   */
+  root?: boolean;
 }
 
 export type ThemeProviderProps = PropsWithChildren<ThemeProviderValue>;
 
 const ThemeProviderContext = createContext<ThemeProviderValue | undefined>(undefined);
 
-export function ThemeProvider({ children, theme, resetTheme }: ThemeProviderProps) {
+export function ThemeProvider({ children, theme, resetTheme, applyTheme, root }: ThemeProviderProps) {
   const parentProvider = useContext(ThemeProviderContext);
   const value = useMemo(
     () => ({
-      theme: parentProvider?.theme ? deepMergeStrings(twMerge)(parentProvider.theme, theme) : theme,
-      resetTheme: parentProvider?.resetTheme ? deepmerge(parentProvider.resetTheme) : resetTheme,
+      theme: !root && parentProvider?.theme ? deepMergeStrings(twMerge)(parentProvider.theme, theme) : theme,
+      resetTheme: !root && parentProvider?.resetTheme ? deepmerge(parentProvider.resetTheme, resetTheme) : resetTheme,
+      applyTheme: !root && parentProvider?.applyTheme ? deepmerge(parentProvider?.applyTheme, applyTheme) : applyTheme,
     }),
-    [theme, resetTheme, parentProvider?.theme, parentProvider?.resetTheme],
+    [
+      theme,
+      resetTheme,
+      applyTheme,
+      root,
+      parentProvider?.theme,
+      parentProvider?.resetTheme,
+      parentProvider?.applyTheme,
+    ],
   );
 
   return <ThemeProviderContext.Provider value={value}>{children}</ThemeProviderContext.Provider>;
