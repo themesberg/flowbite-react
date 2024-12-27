@@ -1,6 +1,6 @@
 import { deepmerge } from "deepmerge-ts";
 import { getPrefix } from "../store";
-import type { DeepPartialBoolean } from "../types";
+import type { DeepPartialApplyTheme, DeepPartialBoolean } from "../types";
 import { applyPrefix } from "./apply-prefix";
 import { deepMergeStrings } from "./deep-merge";
 import { twMerge } from "./tailwind-merge";
@@ -22,11 +22,12 @@ export function resolveTheme<T>(
     /** custom themes */
     ...unknown[],
   ],
-  resetThemeList: DeepPartialBoolean<T[]> = [],
+  resetThemeList: DeepPartialBoolean<T[]>,
+  applyThemeList: DeepPartialApplyTheme<T[]> = [],
 ): T {
   const prefix = getPrefix();
 
-  const cacheKey = JSON.stringify({ base, custom, resetThemeList, prefix });
+  const cacheKey = JSON.stringify({ base, custom, resetThemeList, applyThemeList, prefix });
   const cacheValue = cache.get(cacheKey);
 
   if (cacheValue) {
@@ -35,6 +36,7 @@ export function resolveTheme<T>(
 
   const baseTheme = structuredClone(base);
   const resetTheme = resolveResetTheme(resetThemeList);
+  const applyTheme = resolveApplyTheme(applyThemeList);
 
   if (resetTheme) {
     applyReset(baseTheme, resetTheme);
@@ -44,6 +46,11 @@ export function resolveTheme<T>(
   }
 
   const theme = deepMergeStrings(twMerge)(baseTheme, ...custom) as T;
+
+  if (applyTheme) {
+    patchApplyTheme(theme, deepmerge(baseTheme, ...custom) as T, applyTheme);
+  }
+
   cache.set(cacheKey, theme);
 
   return theme;
@@ -69,6 +76,24 @@ function resolveResetTheme<T>(resetThemeList: DeepPartialBoolean<T[]>): DeepPart
 }
 
 /**
+ * Resolves an array of `applyTheme` objects into a single `applyTheme` object.
+ *
+ * @param {DeepPartialApplyTheme<T[]>} applyThemeList - An array of `applyTheme` objects.
+ * @returns {DeepPartialApplyTheme<T> | undefined} - A single `applyTheme` object or undefined if the input is not a valid array or is empty.
+ */
+function resolveApplyTheme<T>(applyThemeList: DeepPartialApplyTheme<T[]>): DeepPartialApplyTheme<T> | undefined {
+  if (!Array.isArray(applyThemeList)) {
+    return;
+  }
+
+  if (!applyThemeList.length) {
+    return;
+  }
+
+  return deepmerge(...applyThemeList) as DeepPartialApplyTheme<T> | undefined;
+}
+
+/**
  * Applies `resetTheme` modifications to a base object. If ``resetTheme`` is `true`,
  * it will recursively set all string properties of the base object to an empty string.
  * If ``resetTheme`` is an object, it will recursively apply the properties of the ``resetTheme``
@@ -80,7 +105,7 @@ function resolveResetTheme<T>(resetThemeList: DeepPartialBoolean<T[]>): DeepPart
  * @returns {void}
  */
 function applyReset<T>(base: T, resetTheme: DeepPartialBoolean<T>): void {
-  function iterate(base: T, resetTheme?: DeepPartialBoolean<T>) {
+  function iterate(base: T, resetTheme: DeepPartialBoolean<T>) {
     if (resetTheme === true) {
       if (typeof base === "object" && base !== null) {
         for (const key in base) {
@@ -102,6 +127,41 @@ function applyReset<T>(base: T, resetTheme: DeepPartialBoolean<T>): void {
   }
 
   iterate(base, resetTheme);
+}
+
+/**
+ * Patches and applies a theme by recursively merging or replacing values between base and target objects
+ * based on the `applyTheme` configuration.
+ *
+ * @template T - The type of the theme object
+ * @param {T} base - The base theme object to be modified
+ * @param {T} target - The target theme object containing new values
+ * @param {DeepPartialApplyTheme<T>} applyTheme - Configuration object that determines how the theme should be applied
+ * @returns {void}
+ */
+function patchApplyTheme<T>(base: T, target: T, applyTheme: DeepPartialApplyTheme<T>): void {
+  function iterate(base: T, target: T, applyTheme: DeepPartialApplyTheme<T>) {
+    if (applyTheme === "replace") {
+      if (typeof base === "object" && base !== null) {
+        for (const key in base) {
+          // @ts-expect-error - bypass
+          base[key] = iterate(base[key], target[key], applyTheme);
+        }
+      }
+      if (typeof base === "string") {
+        return target;
+      }
+    }
+    if (typeof applyTheme === "object" && applyTheme !== null) {
+      for (const key in applyTheme) {
+        // @ts-expect-error - bypass
+        base[key] = iterate(base[key], target[key], applyTheme[key]);
+      }
+    }
+    return base;
+  }
+
+  iterate(base, target, applyTheme);
 }
 
 /**

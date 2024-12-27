@@ -1,0 +1,80 @@
+import { beforeEach, describe, expect, it } from "vitest";
+import { setStore } from "../store";
+import { resolveTheme } from "./resolve-theme";
+
+describe("resolveTheme", () => {
+  beforeEach(() => {
+    setStore({ prefix: "" });
+  });
+
+  it("should merge base theme with custom themes", () => {
+    const base = { color: "text-red-400" };
+    const custom = { background: "text-blue-400" };
+
+    expect(resolveTheme([base, custom], [])).toEqual({
+      color: "text-red-400",
+      background: "text-blue-400",
+    });
+  });
+
+  it("should apply prefix to string values when prefix is set", () => {
+    setStore({ prefix: "tw-" });
+
+    const base = { color: "text-red-400" };
+
+    expect(resolveTheme([base], [])).toEqual({
+      color: "tw-text-red-400",
+    });
+  });
+
+  it("should reset theme values when resetTheme is true", () => {
+    const base = { color: "text-red-400", nested: { background: "text-blue-400" } };
+    const resetTheme = [{ color: true, nested: { background: true } }];
+
+    expect(resolveTheme([base], resetTheme)).toEqual({
+      color: "",
+      nested: { background: "" },
+    });
+  });
+
+  it("should apply theme modifications", () => {
+    const base = { color: "flex text-red-100" };
+    const custom = { color: "grid" };
+    const applyTheme = [{ color: "replace" }];
+
+    expect(resolveTheme([base, custom], [], applyTheme)).toEqual({
+      color: "grid",
+    });
+  });
+
+  it("should cache results", () => {
+    const base = { color: "text-red-400" };
+    const custom = { background: "text-blue-400" };
+
+    const result1 = resolveTheme([base, custom], []);
+    const result2 = resolveTheme([base, custom], []);
+
+    expect(result1).toBe(result2);
+  });
+
+  it("should handle deep nested objects", () => {
+    const base = {
+      colors: {
+        primary: { light: "text-blue-100", dark: "text-blue-800" },
+        secondary: { light: "text-red-400", dark: "text-red-800" },
+      },
+    };
+    const custom = {
+      colors: {
+        primary: { light: "text-cyan-100" },
+      },
+    };
+
+    expect(resolveTheme([base, custom], [])).toEqual({
+      colors: {
+        primary: { light: "text-cyan-100", dark: "text-blue-800" },
+        secondary: { light: "text-red-400", dark: "text-red-800" },
+      },
+    });
+  });
+});

@@ -7,10 +7,9 @@ import { deepMergeStrings } from "../helpers/deep-merge";
 import { twMerge } from "../helpers/tailwind-merge";
 import type { ThemingProps } from "../types";
 
-export interface ThemeProviderValue extends Omit<ThemingProps<FlowbiteTheme>, "applyTheme"> {
-  applyTheme?: Partial<Record<keyof FlowbiteTheme, ThemingProps<FlowbiteTheme>["applyTheme"]>>;
+export interface ThemeProviderValue extends ThemingProps<FlowbiteTheme> {
   /**
-   * Prevent merging with parent themes
+   * Prevent merging with parent context value.
    *
    * @type {boolean}
    * @default false

@@ -8,12 +8,14 @@ export type DynamicStringEnum<T> = T | (string & {});
 
 export type DynamicStringEnumKeysOf<T extends object> = DynamicStringEnum<keyof RemoveIndexSignature<T>>;
 
-export type DeepPartialBoolean<T> = T extends object
-  ? { [K in keyof T]?: DeepPartialBoolean<T[K]> } | boolean
-  : boolean;
+export type DeepPartialOf<T, V> = T extends object ? { [K in keyof T]?: DeepPartialOf<T[K], V> } | V : V;
+
+export type DeepPartialBoolean<T> = DeepPartialOf<T, boolean>;
+export type DeepPartialApplyTheme<T> = DeepPartialOf<T, ApplyTheme>;
+export type ApplyTheme = "merge" | "replace";
 
 export interface ThemingProps<T> {
   theme?: DeepPartial<T>;
   resetTheme?: DeepPartialBoolean<T>;
-  applyTheme?: "merge" | "replace";
+  applyTheme?: DeepPartialApplyTheme<T>;
 }
