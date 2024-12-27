@@ -84,7 +84,7 @@ export interface DatepickerRef {
 }
 
 export interface DatepickerProps
-  extends Omit<TextInputProps, "theme" | "resetTheme" | "onChange" | "value" | "defaultValue">,
+  extends Omit<TextInputProps, keyof ThemingProps<DatepickerTheme> | "onChange" | "value" | "defaultValue">,
     ThemingProps<DatepickerTheme> {
   defaultValue?: Date;
   open?: boolean;
@@ -121,6 +121,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     className,
     theme: customTheme,
     resetTheme,
+    applyTheme: _applyTheme, // TODO: fix
     onChange,
     label,
     value,

@@ -40,7 +40,7 @@ export interface DropdownTheme {
 
 export interface DropdownProps
   extends Pick<FloatingProps, "placement" | "trigger">,
-    Omit<ButtonProps, "theme" | "resetTheme">,
+    Omit<ButtonProps, keyof ThemingProps<DropdownTheme>>,
     ThemingProps<DropdownTheme> {
   arrowIcon?: boolean;
   dismissOnClick?: boolean;
@@ -59,7 +59,7 @@ const icons: Record<string, FC<ComponentProps<"svg">>> = {
   left: HiOutlineChevronLeft,
 };
 
-export interface TriggerProps extends Omit<ButtonProps, "theme"> {
+export interface TriggerProps extends Omit<ButtonProps, keyof ThemingProps<DropdownTheme>> {
   refs: ExtendedRefs<HTMLElement>;
   inline?: boolean;
   theme: DropdownTheme;
