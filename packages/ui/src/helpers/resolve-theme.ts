@@ -1,6 +1,6 @@
 import { deepmerge } from "deepmerge-ts";
 import { getPrefix } from "../store";
-import type { ResetTheme } from "../types";
+import type { DeepPartialBoolean } from "../types";
 import { applyPrefix } from "./apply-prefix";
 import { deepMergeStrings } from "./deep-merge";
 import { twMerge } from "./tailwind-merge";
@@ -12,7 +12,7 @@ const cache = new Map();
  *
  * @template T - The type of the base theme.
  * @param {[base, ...custom]} themes - An array where the first element is the base theme and the rest are custom themes.
- * @param {ResetTheme<T[]>} [resetThemeList=[]] - An optional list of `resetTheme` modifications to apply to the base theme.
+ * @param {DeepPartialBoolean<T[]>} [resetThemeList=[]] - An optional list of `resetTheme` modifications to apply to the base theme.
  * @returns {T} - The resolved and merged theme.
  */
 export function resolveTheme<T>(
@@ -22,7 +22,7 @@ export function resolveTheme<T>(
     /** custom themes */
     ...unknown[],
   ],
-  resetThemeList: ResetTheme<T[]> = [],
+  resetThemeList: DeepPartialBoolean<T[]> = [],
 ): T {
   const prefix = getPrefix();
 
@@ -53,10 +53,10 @@ export function resolveTheme<T>(
  * Resolves an array of `resetTheme` objects into a single `resetTheme` object.
  *
  * @template T - The type of the object.
- * @param {ResetTheme<T[]>} resetThemeList - An array of `resetTheme` objects.
- * @returns {ResetTheme<T> | undefined} - A single `resetTheme` object or undefined if the input is not a valid array or is empty.
+ * @param {DeepPartialBoolean<T[]>} resetThemeList - An array of `resetTheme` objects.
+ * @returns {DeepPartialBoolean<T> | undefined} - A single `resetTheme` object or undefined if the input is not a valid array or is empty.
  */
-function resolveResetTheme<T>(resetThemeList: ResetTheme<T[]>): ResetTheme<T> | undefined {
+function resolveResetTheme<T>(resetThemeList: DeepPartialBoolean<T[]>): DeepPartialBoolean<T> | undefined {
   if (!Array.isArray(resetThemeList)) {
     return;
   }
@@ -65,7 +65,7 @@ function resolveResetTheme<T>(resetThemeList: ResetTheme<T[]>): ResetTheme<T> | 
     return;
   }
 
-  return deepmerge(...resetThemeList) as ResetTheme<T> | undefined;
+  return deepmerge(...resetThemeList) as DeepPartialBoolean<T> | undefined;
 }
 
 /**
@@ -76,11 +76,11 @@ function resolveResetTheme<T>(resetThemeList: ResetTheme<T[]>): ResetTheme<T> | 
  *
  * @template T - The type of the base object.
  * @param {T} base - The base object to which `resetTheme` modifications will be applied.
- * @param {ResetTheme<T>} `resetTheme` - The `resetTheme` modifications to apply. It can be a boolean or an object.
+ * @param {DeepPartialBoolean<T>} `resetTheme` - The `resetTheme` modifications to apply. It can be a boolean or an object.
  * @returns {void}
  */
-function applyReset<T>(base: T, resetTheme: ResetTheme<T>): void {
-  function iterate(base: T, resetTheme?: ResetTheme<T>) {
+function applyReset<T>(base: T, resetTheme: DeepPartialBoolean<T>): void {
+  function iterate(base: T, resetTheme?: DeepPartialBoolean<T>) {
     if (resetTheme === true) {
       if (typeof base === "object" && base !== null) {
         for (const key in base) {
