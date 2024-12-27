@@ -42,6 +42,7 @@ describe("resolveTheme", () => {
     const custom = { color: "grid" };
     const applyTheme = [{ color: "replace" }];
 
+    // @ts-expect-error - complex inference
     expect(resolveTheme([base, custom], [], applyTheme)).toEqual({
       color: "grid",
     });
