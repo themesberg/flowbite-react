@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -34,13 +35,18 @@ const TimelineComponent: FC<TimelineProps> = ({
   horizontal,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([timelineTheme, provider.theme?.timeline, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [timelineTheme, provider.theme?.timeline, customTheme],
+    [get(provider.resetTheme, "timeline"), resetTheme],
+    [get(provider.applyTheme, "timeline"), applyTheme],
+  );
 
   return (
-    <TimelineContext.Provider value={{ theme: customTheme, resetTheme, horizontal }}>
+    <TimelineContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, horizontal }}>
       <ol
         data-testid="timeline-component"
         className={twMerge(

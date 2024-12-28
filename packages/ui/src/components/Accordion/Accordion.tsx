@@ -67,8 +67,8 @@ const AccordionComponent: FC<AccordionProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [accordionTheme.root, provider.theme?.accordion?.root, customTheme],
-    [get(provider.resetTheme, "accordion.root"), get(resetTheme, "root")],
-    [get(provider.applyTheme, "accordion.root"), get(applyTheme, "root")],
+    [get(provider.resetTheme, "accordion.root"), resetTheme],
+    [get(provider.applyTheme, "accordion.root"), applyTheme],
   );
 
   return (

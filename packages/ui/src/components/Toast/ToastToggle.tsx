@@ -23,15 +23,17 @@ export interface ToastToggleProps extends ComponentProps<"button">, ThemingProps
 export const ToastToggle: FC<ToastToggleProps> = ({
   className,
   onClick,
+  onDismiss,
+  xIcon: XIcon = HiX,
   theme: customTheme,
   resetTheme,
-  xIcon: XIcon = HiX,
-  onDismiss,
+  applyTheme,
   ...props
 }) => {
   const {
     theme: rootTheme,
     resetTheme: rootResetTheme,
+    applyTheme: rootApplyTheme,
     duration,
     isClosed,
     isRemoved,
@@ -42,7 +44,8 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [toastTheme.toggle, provider.theme?.toast?.toggle, rootTheme?.toggle, customTheme],
-    [get(rootResetTheme, "toggle"), resetTheme],
+    [get(provider.resetTheme, "toast.toggle"), get(rootResetTheme, "toggle"), resetTheme],
+    [get(provider.applyTheme, "toast.toggle"), get(rootApplyTheme, "toggle"), applyTheme],
   );
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {

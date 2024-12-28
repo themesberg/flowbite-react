@@ -17,14 +17,25 @@ export interface TableHeadCellTheme {
 export interface TableHeadCellProps extends ComponentPropsWithRef<"th">, ThemingProps<TableHeadCellTheme> {}
 
 export const TableHeadCell = forwardRef<HTMLTableCellElement, TableHeadCellProps>(
-  ({ children, className, theme: customTheme, resetTheme, ...props }, ref) => {
-    const { theme: rootTheme, resetTheme: rootResetTheme } = useTableContext();
-    const { theme: headTheme, resetTheme: headResetTheme } = useTableHeadContext();
+  ({ children, className, theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
+    const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme } = useTableContext();
+    const { theme: headTheme, resetTheme: headResetTheme, applyTheme: headApplyTheme } = useTableHeadContext();
 
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [tableTheme.head.cell, provider.theme?.table?.head?.cell, rootTheme?.head?.cell, headTheme?.cell, customTheme],
-      [get(rootResetTheme, "head.cell"), get(headResetTheme, "cell"), resetTheme],
+      [
+        get(provider.resetTheme, "table.head.cell"),
+        get(rootResetTheme, "head.cell"),
+        get(headResetTheme, "cell"),
+        resetTheme,
+      ],
+      [
+        get(provider.applyTheme, "table.head.cell"),
+        get(rootApplyTheme, "head.cell"),
+        get(headApplyTheme, "cell"),
+        applyTheme,
+      ],
     );
 
     return (

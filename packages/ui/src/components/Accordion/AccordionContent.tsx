@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -27,8 +28,8 @@ export const AccordionContent: FC<AccordionContentProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [accordionTheme.content, provider.theme?.accordion?.content, customTheme],
-    [get(provider.resetTheme, "carousel"), resetTheme],
-    [get(provider.applyTheme, "carousel"), applyTheme],
+    [get(provider.resetTheme, "accordion.content"), resetTheme],
+    [get(provider.applyTheme, "accordion.content"), applyTheme],
   );
 
   return (

@@ -18,13 +18,20 @@ export interface TableRowTheme {
 export interface TableRowProps extends ComponentPropsWithRef<"tr">, ThemingProps<TableRowTheme> {}
 
 export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
-  ({ children, className, theme: customTheme, resetTheme, ...props }, ref) => {
-    const { theme: rootTheme, resetTheme: rootResetTheme, hoverable, striped } = useTableContext();
+  ({ children, className, theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
+    const {
+      theme: rootTheme,
+      resetTheme: rootResetTheme,
+      applyTheme: rootApplyTheme,
+      hoverable,
+      striped,
+    } = useTableContext();
 
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [tableTheme.row, provider.theme?.table?.row, rootTheme?.row, customTheme],
-      [get(rootResetTheme, "row"), resetTheme],
+      [get(provider.resetTheme, "table.row"), get(rootResetTheme, "row"), resetTheme],
+      [get(provider.applyTheme, "table.row"), get(rootApplyTheme, "row"), applyTheme],
     );
 
     return (

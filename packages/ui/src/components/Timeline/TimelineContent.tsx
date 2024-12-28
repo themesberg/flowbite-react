@@ -32,10 +32,11 @@ export const TimelineContent: FC<TimelineContentProps> = ({
   className,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, horizontal } = useTimelineContext();
-  const { theme: itemTheme, resetTheme: itemResetTheme } = useTimelineItemContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, horizontal } = useTimelineContext();
+  const { theme: itemTheme, resetTheme: itemResetTheme, applyTheme: itemApplyTheme } = useTimelineItemContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
@@ -46,11 +47,22 @@ export const TimelineContent: FC<TimelineContentProps> = ({
       itemTheme?.content,
       customTheme,
     ],
-    [get(rootResetTheme, "item.content"), get(itemResetTheme, "content"), resetTheme],
+    [
+      get(provider.resetTheme, "timeline.item.content"),
+      get(rootResetTheme, "item.content"),
+      get(itemResetTheme, "content"),
+      resetTheme,
+    ],
+    [
+      get(provider.applyTheme, "timeline.item.content"),
+      get(rootApplyTheme, "item.content"),
+      get(itemApplyTheme, "content"),
+      applyTheme,
+    ],
   );
 
   return (
-    <TimelineContentContext.Provider value={{ theme: customTheme, resetTheme }}>
+    <TimelineContentContext.Provider value={{ theme: customTheme, resetTheme, applyTheme }}>
       <div
         data-testid="timeline-content"
         className={twMerge(theme.root.base, horizontal ? theme.root.horizontal : theme.root.vertical, className)}

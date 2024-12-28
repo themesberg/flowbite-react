@@ -23,7 +23,7 @@ export function resolveTheme<T>(
     /** custom themes */
     ...unknown[],
   ],
-  resetThemeList: DeepPartialBoolean<T[]>,
+  resetThemeList: DeepPartialBoolean<T[]> = [],
   applyThemeList: DeepPartialApplyTheme<T[]> = [],
 ): T {
   const prefix = getPrefix();

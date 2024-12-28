@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC, ReactElement, ReactNode } from "react";
 import { Children, cloneElement, isValidElement, useMemo } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -71,8 +72,8 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [buttonGroupTheme, provider.theme?.buttonGroup, customTheme],
-    [get(provider.resetTheme, "carousel"), resetTheme],
-    [get(provider.applyTheme, "carousel"), applyTheme],
+    [get(provider.resetTheme, "buttonGroup"), resetTheme],
+    [get(provider.applyTheme, "buttonGroup"), applyTheme],
   );
 
   const items = useMemo(() => processChildren(children, outline, pill), [children, outline, pill]);
