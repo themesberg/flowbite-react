@@ -1,4 +1,4 @@
-import { StoreProps } from "..";
+import type { StoreProps } from "..";
 import { StoreInitClient } from "./client";
 import { StoreInitServer } from "./server";
 

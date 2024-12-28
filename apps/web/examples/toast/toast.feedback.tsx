@@ -1,6 +1,6 @@
 import { Toast } from "flowbite-react";
 import { FaTelegramPlane } from "react-icons/fa";
-import { type CodeData } from "~/components/code-demo";
+import type { CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";

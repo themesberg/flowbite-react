@@ -1,4 +1,4 @@
-import { ClassNameValue, extendTailwindMerge } from "tailwind-merge";
+import { type ClassNameValue, extendTailwindMerge } from "tailwind-merge";
 import { getPrefix } from "../store";
 
 const cache = new Map<string | undefined, ReturnType<typeof extendTailwindMerge>>();

@@ -2,7 +2,7 @@
 
 import { Button, Modal } from "flowbite-react";
 import { useState } from "react";
-import { type CodeData } from "~/components/code-demo";
+import type { CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";

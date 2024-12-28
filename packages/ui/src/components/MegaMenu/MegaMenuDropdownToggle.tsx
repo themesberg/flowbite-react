@@ -33,17 +33,17 @@ export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
     [resetTheme],
   );
 
-  const findDropdown = function () {
+  function findDropdown() {
     const megaMenu = ref.current?.closest("nav");
 
     return megaMenu?.querySelector('[role="menu"]');
-  };
+  }
 
-  const onClick: MouseEventHandler<HTMLButtonElement> = function () {
+  function onClick() {
     findDropdown()?.classList.toggle("hidden");
 
     setExpanded(!isExpanded);
-  };
+  }
 
   useEffect(() => {
     const dropdown = findDropdown();

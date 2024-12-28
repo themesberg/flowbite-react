@@ -1,6 +1,6 @@
 import { Card, Dropdown, DropdownItem } from "flowbite-react";
 import Image from "next/image";
-import { type CodeData } from "~/components/code-demo";
+import type { CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";

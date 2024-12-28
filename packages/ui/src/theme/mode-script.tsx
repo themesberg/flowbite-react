@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 import type { ThemeMode } from "../hooks/use-theme-mode";
 import { getPrefix } from "../store";
 

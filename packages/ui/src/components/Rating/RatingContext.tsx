@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext } from "react";
-import { DynamicStringEnumKeysOf, type ThemingProps } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { RatingTheme } from "./Rating";
 import type { RatingStarSizes } from "./RatingStar";
 

@@ -1,6 +1,6 @@
 import { Button } from "flowbite-react";
 import { AiOutlineLoading } from "react-icons/ai";
-import { type CodeData } from "~/components/code-demo";
+import type { CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";

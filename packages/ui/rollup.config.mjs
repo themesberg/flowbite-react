@@ -9,7 +9,7 @@ const entries = ["src/index.ts", "src/tailwind/index.ts", ...componentEntries];
 const external = [
   "react/jsx-runtime",
   "tailwindcss/plugin",
-  new RegExp("react-icons/*"),
+  /react-icons\/*/,
   ...Object.keys({
     ...packageJson.dependencies,
     ...packageJson.peerDependencies,

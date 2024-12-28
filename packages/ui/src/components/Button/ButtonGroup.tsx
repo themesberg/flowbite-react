@@ -34,7 +34,7 @@ const processChildren = (
   return Children.map(children as ReactElement<ButtonProps>[], (child, index) => {
     if (isValidElement(child)) {
       const positionInGroupProp =
-        child.type == Button ? { positionInGroup: determinePosition(index, Children.count(children)) } : {};
+        child.type === Button ? { positionInGroup: determinePosition(index, Children.count(children)) } : {};
       // Check if the child has nested children
       if (child.props.children) {
         // Recursively process nested children
@@ -43,13 +43,12 @@ const processChildren = (
           children: processChildren(child.props.children, outline, pill),
           ...positionInGroupProp,
         });
-      } else {
-        return cloneElement(child, {
-          outline,
-          pill,
-          ...positionInGroupProp,
-        });
       }
+      return cloneElement(child, {
+        outline,
+        pill,
+        ...positionInGroupProp,
+      });
     }
     return child;
   });

@@ -2,7 +2,7 @@
 
 import { Badge } from "flowbite-react";
 import { HiCheck, HiClock } from "react-icons/hi";
-import { type CodeData } from "~/components/code-demo";
+import type { CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";

@@ -5,8 +5,8 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
 import type { NavbarComponentProps, NavbarTheme } from "../Navbar";
 import { Navbar } from "../Navbar";
-import { MegaMenuDropdown, MegaMenuDropdownTheme } from "./MegaMenuDropdown";
-import { MegaMenuDropdownToggle, MegaMenuDropdownToggleTheme } from "./MegaMenuDropdownToggle";
+import { MegaMenuDropdown, type MegaMenuDropdownTheme } from "./MegaMenuDropdown";
+import { MegaMenuDropdownToggle, type MegaMenuDropdownToggleTheme } from "./MegaMenuDropdownToggle";
 import { megaMenuTheme } from "./theme";
 
 export interface MegaMenuTheme extends NavbarTheme {

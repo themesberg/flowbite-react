@@ -2,7 +2,7 @@
 
 import { List, ListItem } from "flowbite-react";
 import { HiCheckCircle } from "react-icons/hi";
-import { type CodeData } from "~/components/code-demo";
+import type { CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";

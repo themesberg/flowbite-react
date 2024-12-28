@@ -13,7 +13,7 @@ import {
   TimelineTitle,
 } from "flowbite-react";
 import { HiArrowNarrowRight, HiCalendar } from "react-icons/hi";
-import { type CodeData } from "~/components/code-demo";
+import type { CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";

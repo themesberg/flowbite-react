@@ -1,7 +1,7 @@
 import { Banner, BannerCollapseButton } from "flowbite-react";
 import { HiArrowRight, HiX } from "react-icons/hi";
 import { MdPercent } from "react-icons/md";
-import { type CodeData } from "~/components/code-demo";
+import type { CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";

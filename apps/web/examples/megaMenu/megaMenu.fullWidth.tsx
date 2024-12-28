@@ -8,7 +8,7 @@ import {
   NavbarToggle,
 } from "flowbite-react";
 import { HiChevronDown } from "react-icons/hi";
-import { type CodeData } from "~/components/code-demo";
+import type { CodeData } from "~/components/code-demo";
 
 const code = `
 'use client';
@@ -118,11 +118,11 @@ function Component() {
 `;
 
 const codeRSC = `
-import { 
-  MegaMenu, 
-  MegaMenuDropdown, 
+import {
+  MegaMenu,
+  MegaMenuDropdown,
   MegaMenuDropdownToggle,
-  Navbar, 
+  Navbar,
   NavbarBrand,
   NavbarCollapse,
   NavbarLink,

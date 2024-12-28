@@ -5,7 +5,7 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
-import { Dropdown, DropdownTheme } from "../Dropdown";
+import { Dropdown, type DropdownTheme } from "../Dropdown";
 import { megaMenuTheme } from "./theme";
 
 export interface MegaMenuDropdownTheme {
@@ -48,13 +48,8 @@ export const MegaMenuDropdown: FC<MegaMenuDropdownProps> = ({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const findToggle = function () {
-      const megaMenu = ref.current?.closest("nav");
-
-      return megaMenu?.querySelector('[aria-haspopup="menu"]');
-    };
-
-    setLabelledBy(findToggle()?.id);
+    const toggle = ref.current?.closest("nav")?.querySelector('[aria-haspopup="menu"]');
+    setLabelledBy(toggle?.id);
   }, []);
 
   return (

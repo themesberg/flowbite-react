@@ -163,7 +163,7 @@ const pages = () => {
   return screen
     .getAllByRole("listitem")
     .map((page) => page.textContent ?? "")
-    .map((page) => parseInt(page))
+    .map((page) => Number.parseInt(page))
     .filter((page) => Number.isInteger(page));
 };
 
@@ -173,7 +173,7 @@ const currentPage = () => {
     .find((elem) => elem.getAttribute("aria-current") === "page");
 
   expect(currentPageElement).toBeInTheDocument();
-  return parseInt(currentPageElement?.textContent ?? "0");
+  return Number.parseInt(currentPageElement?.textContent ?? "0");
 };
 
 const nextButton = () => buttons()[buttons().length - 1];

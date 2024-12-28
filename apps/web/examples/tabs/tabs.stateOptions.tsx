@@ -4,7 +4,7 @@ import { Button, ButtonGroup, Tabs, type TabsRef } from "flowbite-react";
 import { useRef, useState } from "react";
 import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
-import { type CodeData } from "~/components/code-demo";
+import type { CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";

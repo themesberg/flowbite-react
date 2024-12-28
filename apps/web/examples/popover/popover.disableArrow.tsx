@@ -1,5 +1,5 @@
 import { Button, Popover } from "flowbite-react";
-import { type CodeData } from "~/components/code-demo";
+import type { CodeData } from "~/components/code-demo";
 
 const code = `
 import { Button, Popover } from "flowbite-react";

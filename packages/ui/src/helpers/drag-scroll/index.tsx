@@ -73,7 +73,7 @@ export default class ScrollContainer extends PureComponent<Props> {
   scrolling: boolean;
   started: boolean;
   pressed: boolean;
-  isMobile: boolean = false;
+  isMobile = false;
   internal: boolean;
 
   scrollLeft?: number;
