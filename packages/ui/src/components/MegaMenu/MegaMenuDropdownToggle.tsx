@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type ComponentProps, type FC, type MouseEventHandler } from "react";
+import { useEffect, useId, useRef, useState, type ComponentProps, type FC } from "react";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
