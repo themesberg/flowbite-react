@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -44,10 +45,15 @@ export const Badge: FC<BadgeProps> = ({
   className,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([badgeTheme, provider.theme?.badge, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [badgeTheme, provider.theme?.badge, customTheme],
+    [get(provider.resetTheme, "badge"), resetTheme],
+    [get(provider.applyTheme, "badge"), applyTheme],
+  );
 
   const Content: FC = () => (
     <span

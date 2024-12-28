@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { useState } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -52,15 +53,20 @@ const NavbarComponent: FC<NavbarComponentProps> = ({
   rounded,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([navbarTheme, provider.theme?.navbar, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [navbarTheme, provider.theme?.navbar, customTheme],
+    [get(provider.resetTheme, "navbar"), resetTheme],
+    [get(provider.applyTheme, "navbar"), applyTheme],
+  );
 
   return (
-    <NavbarContext.Provider value={{ theme: customTheme, resetTheme, isOpen, setIsOpen }}>
+    <NavbarContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, isOpen, setIsOpen }}>
       <nav
         className={twMerge(
           theme.root.base,

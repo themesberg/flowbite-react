@@ -34,20 +34,29 @@ export const DrawerHeader: FC<DrawerHeaderProps> = ({
   children,
   className,
   closeIcon: CloseIcon = MdClose,
-  theme: customTheme,
-  resetTheme,
   title,
   titleIcon: TitleIcon = MdHome,
+  theme: customTheme,
+  resetTheme,
+  applyTheme,
   ...props
 }) => {
   const id = useId();
 
-  const { id: mainDivId, isOpen, onClose, theme: rootTheme, resetTheme: rootResetTheme } = useDrawerContext();
+  const {
+    id: mainDivId,
+    isOpen,
+    onClose,
+    theme: rootTheme,
+    resetTheme: rootResetTheme,
+    applyTheme: rootApplyTheme,
+  } = useDrawerContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [drawerTheme.header, provider.theme?.drawer?.header, rootTheme?.header, customTheme],
-    [get(rootResetTheme, "header"), resetTheme],
+    [get(provider.resetTheme, "drawer.header"), get(rootResetTheme, "header"), resetTheme],
+    [get(provider.applyTheme, "drawer.header"), get(rootApplyTheme, "header"), applyTheme],
   );
 
   return (

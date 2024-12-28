@@ -15,13 +15,20 @@ export interface DropdownDividerTheme {
 
 export interface DropdownDividerProps extends ComponentProps<"div">, ThemingProps<DropdownDividerTheme> {}
 
-export const DropdownDivider: FC<DropdownDividerProps> = ({ className, theme: customTheme, resetTheme, ...props }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme } = useDropdownContext();
+export const DropdownDivider: FC<DropdownDividerProps> = ({
+  className,
+  theme: customTheme,
+  resetTheme,
+  applyTheme,
+  ...props
+}) => {
+  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme } = useDropdownContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [dropdownTheme.floating, provider.theme?.dropdown?.floating, rootTheme?.floating, customTheme],
-    [get(rootResetTheme, "floating"), resetTheme],
+    [get(provider.resetTheme, "dropdown.floating"), get(rootResetTheme, "floating"), resetTheme],
+    [get(provider.applyTheme, "dropdown.floating"), get(rootApplyTheme, "floating"), applyTheme],
   );
 
   return <div className={twMerge(theme.divider, className)} {...props} />;

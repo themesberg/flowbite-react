@@ -19,12 +19,17 @@ export const AccordionContent: FC<AccordionContentProps> = ({
   className,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const { isOpen } = useAccordionContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([accordionTheme.content, provider.theme?.accordion?.content, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [accordionTheme.content, provider.theme?.accordion?.content, customTheme],
+    [get(provider.resetTheme, "carousel"), resetTheme],
+    [get(provider.applyTheme, "carousel"), applyTheme],
+  );
 
   return (
     <div

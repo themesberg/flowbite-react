@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC, ReactNode } from "react";
 import { forwardRef } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -64,15 +65,20 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       rightIcon: RightIcon,
       shadow,
       sizing = "md",
+      type = "text",
       theme: customTheme,
       resetTheme,
-      type = "text",
+      applyTheme,
       ...props
     },
     ref,
   ) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([textInputTheme, provider.theme?.textInput, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [textInputTheme, provider.theme?.textInput, customTheme],
+      [get(provider.resetTheme, "textInput"), resetTheme],
+      [get(provider.applyTheme, "textInput"), applyTheme],
+    );
 
     return (
       <>

@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { useId } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -51,11 +52,16 @@ export const Progress: FC<ProgressProps> = ({
   textLabelPosition = "inside",
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const id = useId();
   const provider = useThemeProvider();
-  const theme = resolveTheme([progressTheme, provider.theme?.progress, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [progressTheme, provider.theme?.progress, customTheme],
+    [get(provider.resetTheme, "progress"), resetTheme],
+    [get(provider.applyTheme, "progress"), applyTheme],
+  );
 
   return (
     <>

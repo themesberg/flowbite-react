@@ -4,6 +4,7 @@ import type { ComponentProps, FC, ReactElement, ReactNode } from "react";
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import ScrollContainer from "../../helpers/drag-scroll";
+import { get } from "../../helpers/get";
 import { isClient } from "../../helpers/is-client";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -69,14 +70,19 @@ export const Carousel: FC<CarouselProps> = ({
   draggable = true,
   slideInterval,
   className,
-  theme: customTheme,
-  resetTheme,
   onSlideChange = null,
   pauseOnHover = false,
+  theme: customTheme,
+  resetTheme,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [carouselTheme, provider.theme?.carousel, customTheme],
+    [get(provider.resetTheme, "carousel"), resetTheme],
+    [get(provider.applyTheme, "carousel"), applyTheme],
+  );
 
   const isDeviceMobile = isClient() && navigator.userAgent.indexOf("IEMobile") !== -1;
   const carouselContainer = useRef<HTMLDivElement>(null);
@@ -209,9 +215,13 @@ export const Carousel: FC<CarouselProps> = ({
   );
 };
 
-const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, resetTheme }) => {
+const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, resetTheme, applyTheme }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [carouselTheme, provider.theme?.carousel, customTheme],
+    [get(provider.resetTheme, "carousel"), resetTheme],
+    [get(provider.applyTheme, "carousel"), applyTheme],
+  );
 
   return (
     <span className={theme.control.base}>
@@ -220,9 +230,13 @@ const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customThe
   );
 };
 
-const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, resetTheme }) => {
+const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, resetTheme, applyTheme }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([carouselTheme, provider.theme?.carousel, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [carouselTheme, provider.theme?.carousel, customTheme],
+    [get(provider.resetTheme, "carousel"), resetTheme],
+    [get(provider.applyTheme, "carousel"), applyTheme],
+  );
 
   return (
     <span className={theme.control.base}>

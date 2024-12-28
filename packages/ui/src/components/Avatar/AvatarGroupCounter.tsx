@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -21,12 +22,14 @@ export const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({
   total,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [avatarTheme.groupCounter, provider.theme?.avatar?.groupCounter, customTheme],
-    [resetTheme],
+    [get(provider.resetTheme, "avatar.groupCounter"), resetTheme],
+    [get(provider.applyTheme, "avatar.groupCounter"), applyTheme],
   );
 
   return (

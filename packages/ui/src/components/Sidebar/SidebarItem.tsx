@@ -99,18 +99,25 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
       labelColor = "info",
       theme: customTheme,
       resetTheme,
+      applyTheme,
       ...props
     },
     ref,
   ) => {
     const id = useId();
-    const { theme: rootTheme, resetTheme: rootResetTheme, isCollapsed } = useSidebarContext();
+    const {
+      theme: rootTheme,
+      resetTheme: rootResetTheme,
+      applyTheme: rootApplyTheme,
+      isCollapsed,
+    } = useSidebarContext();
     const { isInsideCollapse } = useSidebarItemContext();
 
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [sidebarTheme.item, provider.theme?.sidebar?.item, rootTheme?.item, customTheme],
-      [get(rootResetTheme, "item"), resetTheme],
+      [get(provider.resetTheme, "sidebar.item"), get(rootResetTheme, "item"), resetTheme],
+      [get(provider.applyTheme, "sidebar.item"), get(rootApplyTheme, "item"), applyTheme],
     );
 
     return (

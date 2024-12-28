@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC, ReactElement } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -92,10 +93,15 @@ const AvatarComponent: FC<AvatarProps> = ({
   statusPosition = "top-left",
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([avatarTheme, provider.theme?.avatar, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [avatarTheme, provider.theme?.avatar, customTheme],
+    [get(provider.resetTheme, "avatar"), resetTheme],
+    [get(provider.applyTheme, "avatar"), applyTheme],
+  );
 
   const imgClassName = twMerge(
     theme.root.img.base,

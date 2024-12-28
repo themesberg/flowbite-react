@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC, ReactNode } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -61,24 +62,29 @@ const PaginationComponent: FC<PaginationProps> = ({
   previousLabel = "Previous",
   renderPaginationButton = (props) => <PaginationButton {...props} />,
   showIcons: showIcon = false,
+  totalPages,
   theme: customTheme,
   resetTheme,
-  totalPages,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([paginationTheme, provider.theme?.pagination, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [paginationTheme, provider.theme?.pagination, customTheme],
+    [get(provider.resetTheme, "pagination"), resetTheme],
+    [get(provider.applyTheme, "pagination"), applyTheme],
+  );
 
   const lastPage = Math.min(Math.max(layout === "pagination" ? currentPage + 2 : currentPage + 4, 5), totalPages);
   const firstPage = Math.max(1, lastPage - 4);
 
-  const goToNextPage = (): void => {
+  function goToNextPage() {
     onPageChange(Math.min(currentPage + 1, totalPages));
-  };
+  }
 
-  const goToPreviousPage = (): void => {
+  function goToPreviousPage() {
     onPageChange(Math.max(currentPage - 1, 1));
-  };
+  }
 
   return (
     <nav className={twMerge(theme.base, className)} {...props}>

@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC, ReactNode } from "react";
 import { HiX } from "react-icons/hi";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -42,13 +43,18 @@ export const Alert: FC<AlertProps> = ({
   icon: Icon,
   onDismiss,
   rounded = true,
+  withBorderAccent,
   theme: customTheme,
   resetTheme,
-  withBorderAccent,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([alertTheme, provider.theme?.alert, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [alertTheme, provider.theme?.alert, customTheme],
+    [get(provider.resetTheme, "alert"), resetTheme],
+    [get(provider.applyTheme, "alert"), applyTheme],
+  );
 
   return (
     <div

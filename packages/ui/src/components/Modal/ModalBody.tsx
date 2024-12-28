@@ -16,13 +16,21 @@ export interface ModalBodyTheme {
 
 export interface ModalBodyProps extends ComponentProps<"div">, ThemingProps<ModalBodyTheme> {}
 
-export const ModalBody: FC<ModalBodyProps> = ({ children, className, theme: customTheme, resetTheme, ...props }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, popup } = useModalContext();
+export const ModalBody: FC<ModalBodyProps> = ({
+  children,
+  className,
+  theme: customTheme,
+  resetTheme,
+  applyTheme,
+  ...props
+}) => {
+  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, popup } = useModalContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [modalTheme.body, provider.theme?.modal?.body, rootTheme?.body, customTheme],
-    [get(rootResetTheme, "body"), resetTheme],
+    [get(provider.resetTheme, "modal.body"), get(rootResetTheme, "body"), resetTheme],
+    [get(provider.applyTheme, "modal.body"), get(rootApplyTheme, "body"), applyTheme],
   );
 
   return (

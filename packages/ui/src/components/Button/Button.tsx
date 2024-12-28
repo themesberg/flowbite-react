@@ -3,6 +3,7 @@
 import type { ElementType } from "react";
 import { forwardRef, type ReactNode } from "react";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -120,13 +121,22 @@ export const Button = forwardRef(
       size = "md",
       theme: customTheme,
       resetTheme,
+      applyTheme,
       ...props
     }: ButtonProps<T>,
     ref: PolymorphicRef<T>,
   ) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([buttonTheme, provider.theme?.button, customTheme], [resetTheme]);
-    const groupTheme = resolveTheme([buttonGroupTheme, provider.theme?.buttonGroup], [resetTheme]);
+    const theme = resolveTheme(
+      [buttonTheme, provider.theme?.button, customTheme],
+      [get(provider.resetTheme, "button"), resetTheme],
+      [get(provider.applyTheme, "button"), applyTheme],
+    );
+    const groupTheme = resolveTheme(
+      [buttonGroupTheme, provider.theme?.buttonGroup],
+      [get(provider.resetTheme, "buttonGroup"), resetTheme],
+      [get(provider.applyTheme, "buttonGroup"), applyTheme],
+    );
 
     const theirProps = props as ButtonBaseProps<T>;
 

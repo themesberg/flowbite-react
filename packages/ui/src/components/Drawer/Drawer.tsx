@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { useEffect, useId } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -48,12 +49,17 @@ const DrawerComponent: FC<DrawerProps> = ({
   open: isOpen = false,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const id = useId();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([drawerTheme, provider.theme?.drawer, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [drawerTheme, provider.theme?.drawer, customTheme],
+    [get(provider.resetTheme, "drawer"), resetTheme],
+    [get(provider.applyTheme, "drawer"), applyTheme],
+  );
 
   useEffect(() => {
     const handleEscapeKey = (event: KeyboardEvent) => {
@@ -68,7 +74,7 @@ const DrawerComponent: FC<DrawerProps> = ({
   }, [onClose, isOpen]);
 
   return (
-    <DrawerContext.Provider value={{ theme: customTheme, resetTheme, onClose, isOpen, id }}>
+    <DrawerContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, onClose, isOpen, id }}>
       <div
         aria-modal
         aria-describedby={`drawer-dialog-${id}`}

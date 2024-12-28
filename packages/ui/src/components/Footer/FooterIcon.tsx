@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC, PropsWithChildren } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -26,10 +27,15 @@ export const FooterIcon: FC<FooterIconProps & ComponentProps<"a"> & ComponentPro
   icon: Icon,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([footerTheme.icon, provider.theme?.footer?.icon, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [footerTheme.icon, provider.theme?.footer?.icon, customTheme],
+    [get(provider.resetTheme, "footer.icon"), resetTheme],
+    [get(provider.applyTheme, "footer.icon"), applyTheme],
+  );
 
   return (
     <div>

@@ -2,6 +2,7 @@
 
 import type { ComponentProps, KeyboardEvent } from "react";
 import { forwardRef, useId } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -50,13 +51,18 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
       onChange,
       theme: customTheme,
       resetTheme,
+      applyTheme,
       ...props
     },
     ref,
   ) => {
     const id = useId();
     const provider = useThemeProvider();
-    const theme = resolveTheme([toggleSwitchTheme, provider.theme?.toggleSwitch, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [toggleSwitchTheme, provider.theme?.toggleSwitch, customTheme],
+      [get(provider.resetTheme, "toggleSwitch"), resetTheme],
+      [get(provider.applyTheme, "toggleSwitch"), applyTheme],
+    );
 
     const toggle = (): void => onChange(!checked);
 

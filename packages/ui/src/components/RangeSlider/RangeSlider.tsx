@@ -2,6 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -33,9 +34,13 @@ export interface RangeSliderProps
 }
 
 export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
-  ({ className, sizing = "md", theme: customTheme, resetTheme, ...props }, ref) => {
+  ({ className, sizing = "md", theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([rangeSliderTheme, provider.theme?.rangeSlider, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [rangeSliderTheme, provider.theme?.rangeSlider, customTheme],
+      [get(provider.resetTheme, "rangeSlider"), resetTheme],
+      [get(provider.applyTheme, "rangeSlider"), applyTheme],
+    );
 
     return (
       <>

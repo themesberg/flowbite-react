@@ -19,17 +19,18 @@ export interface TableHeadTheme {
 export interface TableHeadProps extends ComponentPropsWithRef<"thead">, ThemingProps<TableHeadTheme> {}
 
 export const TableHead = forwardRef<HTMLTableSectionElement, TableHeadProps>(
-  ({ children, className, theme: customTheme, resetTheme, ...props }, ref) => {
-    const { theme: rootTheme, resetTheme: rootResetTheme } = useTableContext();
+  ({ children, className, theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
+    const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme } = useTableContext();
 
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [tableTheme.head, provider.theme?.table?.head, rootTheme?.head, customTheme],
-      [get(rootResetTheme, "head"), resetTheme],
+      [get(provider.resetTheme, "table.head"), get(rootResetTheme, "head"), resetTheme],
+      [get(provider.applyTheme, "table.head"), get(rootApplyTheme, "head"), applyTheme],
     );
 
     return (
-      <TableHeadContext.Provider value={{ theme: customTheme, resetTheme }}>
+      <TableHeadContext.Provider value={{ theme: customTheme, resetTheme, applyTheme }}>
         <thead className={twMerge(theme.base, className)} ref={ref} {...props}>
           <tr>{children}</tr>
         </thead>

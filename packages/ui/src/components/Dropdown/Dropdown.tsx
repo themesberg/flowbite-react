@@ -14,6 +14,7 @@ import type {
 } from "react";
 import { cloneElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from "react-icons/hi";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
@@ -108,10 +109,11 @@ const DropdownComponent: FC<DropdownProps> = ({
   children,
   className,
   dismissOnClick = true,
-  theme: customTheme,
-  resetTheme,
   enableTypeAhead = true,
   renderTrigger,
+  theme: customTheme,
+  resetTheme,
+  applyTheme,
   ...props
 }) => {
   const [open, setOpen] = useState(false);
@@ -122,7 +124,11 @@ const DropdownComponent: FC<DropdownProps> = ({
   const labelsRef = useRef<Array<string | null>>([]);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([dropdownTheme, provider.theme?.dropdown, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [dropdownTheme, provider.theme?.dropdown, customTheme],
+    [get(provider.resetTheme, "dropdown"), resetTheme],
+    [get(provider.applyTheme, "dropdown"), applyTheme],
+  );
   const theirProps = props as Omit<DropdownProps, "theme" | "resetTheme">;
   const dataTestId = props["data-testid"] || "flowbite-dropdown-target";
   const {
@@ -185,7 +191,7 @@ const DropdownComponent: FC<DropdownProps> = ({
 
   return (
     <DropdownContext.Provider
-      value={{ theme: customTheme, resetTheme, activeIndex, dismissOnClick, getItemProps, handleSelect }}
+      value={{ theme: customTheme, resetTheme, applyTheme, activeIndex, dismissOnClick, getItemProps, handleSelect }}
     >
       <Trigger
         {...buttonProps}

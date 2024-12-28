@@ -24,19 +24,27 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({
   className,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, isOpen, setIsOpen } = useNavbarContext();
+  const {
+    theme: rootTheme,
+    resetTheme: rootResetTheme,
+    applyTheme: rootApplyTheme,
+    isOpen,
+    setIsOpen,
+  } = useNavbarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [navbarTheme.toggle, provider.theme?.navbar?.toggle, rootTheme?.toggle, customTheme],
-    [get(rootResetTheme, "toggle"), resetTheme],
+    [get(provider.resetTheme, "navbar.toggle"), get(rootResetTheme, "toggle"), resetTheme],
+    [get(provider.applyTheme, "navbar.toggle"), get(rootApplyTheme, "toggle"), applyTheme],
   );
 
-  const handleClick = () => {
+  function handleClick() {
     setIsOpen(!isOpen);
-  };
+  }
 
   return (
     <button

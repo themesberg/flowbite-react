@@ -13,6 +13,7 @@ import {
 } from "@floating-ui/react";
 import type { MutableRefObject } from "react";
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -78,16 +79,21 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
       root,
       show,
       size = "2xl",
+      initialFocus,
       theme: customTheme,
       resetTheme,
-      initialFocus,
+      applyTheme,
       ...props
     },
     theirRef,
   ) => {
     const [headerId, setHeaderId] = useState<string | undefined>(undefined);
     const provider = useThemeProvider();
-    const theme = resolveTheme([modalTheme, provider.theme?.modal, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [modalTheme, provider.theme?.modal, customTheme],
+      [get(provider.resetTheme, "modal"), resetTheme],
+      [get(provider.applyTheme, "modal"), applyTheme],
+    );
 
     const { context } = useFloating({
       open: show,
@@ -107,7 +113,7 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
     }
 
     return (
-      <ModalContext.Provider value={{ theme: customTheme, resetTheme, popup, onClose, setHeaderId }}>
+      <ModalContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, popup, onClose, setHeaderId }}>
         <FloatingPortal root={root}>
           <FloatingOverlay
             lockScroll

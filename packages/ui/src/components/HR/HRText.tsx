@@ -2,6 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -19,9 +20,13 @@ export interface HRTextProps extends Omit<ComponentProps<"hr">, "ref">, ThemingP
 }
 
 export const HRText = forwardRef<HTMLHRElement, HRTextProps>(
-  ({ theme: customTheme, resetTheme, text, className, ...props }, ref) => {
+  ({ theme: customTheme, resetTheme, applyTheme, text, className, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([hrTheme.text, provider.theme?.hr?.text, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [hrTheme.text, provider.theme?.hr?.text, customTheme],
+      [get(provider.resetTheme, "hr.text"), resetTheme],
+      [get(provider.applyTheme, "hr.text"), applyTheme],
+    );
 
     return (
       <div className={theme.base}>

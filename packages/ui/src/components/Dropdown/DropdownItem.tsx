@@ -34,7 +34,16 @@ type DropdownItemType = (<C extends ElementType = "button">(props: DropdownItemP
 
 export const DropdownItem = forwardRef(
   <T extends ElementType = "button">(
-    { children, className, icon: Icon, onClick, theme: customTheme, resetTheme, ...props }: DropdownItemProps<T>,
+    {
+      children,
+      className,
+      icon: Icon,
+      onClick,
+      theme: customTheme,
+      resetTheme,
+      applyTheme,
+      ...props
+    }: DropdownItemProps<T>,
     forwardedRef: PolymorphicRef<T>,
   ) => {
     const { ref: listItemRef, index } = useListItem({ label: typeof children === "string" ? children : undefined });
@@ -42,6 +51,7 @@ export const DropdownItem = forwardRef(
     const {
       theme: rootTheme,
       resetTheme: rootResetTheme,
+      applyTheme: rootApplyTheme,
       activeIndex,
       dismissOnClick,
       getItemProps,
@@ -52,7 +62,8 @@ export const DropdownItem = forwardRef(
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [dropdownTheme.floating.item, provider.theme?.dropdown?.floating?.item, rootTheme?.floating?.item, customTheme],
-      [get(rootResetTheme, "floating.item"), resetTheme],
+      [get(provider.resetTheme, "dropdown.floating.item"), get(rootResetTheme, "floating.item"), resetTheme],
+      [get(provider.applyTheme, "dropdown.floating.item"), get(rootApplyTheme, "floating.item"), applyTheme],
     );
 
     const theirProps = props as ButtonBaseProps<T>;

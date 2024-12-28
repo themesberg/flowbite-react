@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, ElementType, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -40,16 +41,21 @@ const SidebarComponent: FC<SidebarProps> = ({
   as: Component = "nav",
   collapseBehavior = "collapse",
   collapsed: isCollapsed = false,
+  className,
   theme: customTheme,
   resetTheme,
-  className,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([sidebarTheme, provider.theme?.sidebar, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [sidebarTheme, provider.theme?.sidebar, customTheme],
+    [get(provider.resetTheme, "sidebar"), resetTheme],
+    [get(provider.applyTheme, "sidebar"), applyTheme],
+  );
 
   return (
-    <SidebarContext.Provider value={{ theme: customTheme, resetTheme, isCollapsed }}>
+    <SidebarContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, isCollapsed }}>
       <Component
         aria-label="Sidebar"
         hidden={isCollapsed && collapseBehavior === "hide"}

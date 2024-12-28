@@ -2,6 +2,7 @@
 
 import type { ComponentPropsWithoutRef } from "react";
 import { forwardRef, useId } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -30,9 +31,10 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
       sizing = "md",
       variant,
       disabled = false,
+      className,
       theme: customTheme,
       resetTheme,
-      className,
+      applyTheme,
       ...props
     },
     ref,
@@ -40,7 +42,11 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
     const randomId = useId();
 
     const provider = useThemeProvider();
-    const theme = resolveTheme([floatingLabelTheme, provider.theme?.floatingLabel, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [floatingLabelTheme, provider.theme?.floatingLabel, customTheme],
+      [get(provider.resetTheme, "floatingLabel"), resetTheme],
+      [get(provider.applyTheme, "floatingLabel"), applyTheme],
+    );
 
     return (
       <div>

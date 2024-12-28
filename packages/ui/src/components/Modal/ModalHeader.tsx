@@ -28,20 +28,29 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   as: Component = "h3",
   children,
   className,
+  id,
   theme: customTheme,
   resetTheme,
-  id,
+  applyTheme,
   ...props
 }) => {
   const innerHeaderId = useId();
   const headerId = id || innerHeaderId;
 
-  const { theme: rootTheme, resetTheme: rootResetTheme, popup, onClose, setHeaderId } = useModalContext();
+  const {
+    theme: rootTheme,
+    resetTheme: rootResetTheme,
+    applyTheme: rootApplyTheme,
+    popup,
+    onClose,
+    setHeaderId,
+  } = useModalContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [modalTheme.header, provider.theme?.modal?.header, rootTheme?.header, customTheme],
-    [get(rootResetTheme, "header"), resetTheme],
+    [get(provider.resetTheme, "modal.header"), get(rootResetTheme, "header"), resetTheme],
+    [get(provider.applyTheme, "modal.header"), get(rootApplyTheme, "header"), applyTheme],
   );
 
   useLayoutEffect(() => {

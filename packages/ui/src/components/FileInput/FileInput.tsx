@@ -2,6 +2,7 @@
 
 import type { ComponentProps, ReactNode } from "react";
 import { forwardRef } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -39,9 +40,16 @@ export interface FileInputProps
 }
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ className, color = "gray", helperText, sizing = "md", theme: customTheme, resetTheme, ...props }, ref) => {
+  (
+    { className, color = "gray", helperText, sizing = "md", theme: customTheme, resetTheme, applyTheme, ...props },
+    ref,
+  ) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([fileInputTheme, provider.theme?.fileInput, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [fileInputTheme, provider.theme?.fileInput, customTheme],
+      [get(provider.resetTheme, "fileInput"), resetTheme],
+      [get(provider.applyTheme, "fileInput"), applyTheme],
+    );
 
     return (
       <>

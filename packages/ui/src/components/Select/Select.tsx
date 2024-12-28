@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC, ReactNode } from "react";
 import { forwardRef } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -60,12 +61,17 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       sizing = "md",
       theme: customTheme,
       resetTheme,
+      applyTheme,
       ...props
     },
     ref,
   ) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([selectTheme, provider.theme?.select, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [selectTheme, provider.theme?.select, customTheme],
+      [get(provider.resetTheme, "select"), resetTheme],
+      [get(provider.applyTheme, "select"), applyTheme],
+    );
 
     return (
       <div className={twMerge(theme.base, className)}>

@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef, useState, type ComponentProps, type ReactNode } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -28,11 +29,15 @@ export interface ClipboardProps extends ComponentProps<"button">, ThemingProps<C
 }
 
 const ClipboardComponent = forwardRef<HTMLButtonElement, ClipboardProps>(
-  ({ className, valueToCopy, label, theme: customTheme, resetTheme, ...rest }, ref) => {
+  ({ className, valueToCopy, label, theme: customTheme, resetTheme, applyTheme, ...rest }, ref) => {
     const [isJustCopied, setIsJustCopied] = useState(false);
 
     const provider = useThemeProvider();
-    const theme = resolveTheme([clipboardTheme.button, provider.theme?.clipboard?.button, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [clipboardTheme.button, provider.theme?.clipboard?.button, customTheme],
+      [get(provider.resetTheme, "clipboard.button"), resetTheme],
+      [get(provider.applyTheme, "clipboard.button"), applyTheme],
+    );
 
     return (
       <Tooltip content={isJustCopied ? "Copied" : "Copy to clipboard"} className="[&_*]:cursor-pointer">

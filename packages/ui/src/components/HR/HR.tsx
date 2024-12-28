@@ -30,9 +30,13 @@ export interface HRTheme {
 export interface HRProps extends Omit<ComponentProps<"hr">, "ref">, ThemingProps<HRTheme> {}
 
 const HRComponent = forwardRef<HTMLHRElement, HRProps>(
-  ({ theme: customTheme, resetTheme, className, ...props }, ref) => {
+  ({ theme: customTheme, resetTheme, applyTheme, className, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([hrTheme.root, provider.theme?.hr?.root, customTheme], [get(resetTheme, "root")]);
+    const theme = resolveTheme(
+      [hrTheme.root, provider.theme?.hr?.root, customTheme],
+      [get(provider.resetTheme, "hr.root"), resetTheme],
+      [get(provider.applyTheme, "hr.root"), applyTheme],
+    );
 
     return (
       <hr className={twMerge(theme.base, className)} role="separator" data-testid="flowbite-hr" ref={ref} {...props} />

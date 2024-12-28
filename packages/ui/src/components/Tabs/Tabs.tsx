@@ -2,6 +2,7 @@
 
 import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, ReactElement } from "react";
 import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -66,11 +67,24 @@ export interface TabsRef {
 
 const TabsComponent = forwardRef<TabsRef, TabsProps>(
   (
-    { children, className, onActiveTabChange, variant = "default", theme: customTheme, resetTheme, ...props },
+    {
+      children,
+      className,
+      onActiveTabChange,
+      variant = "default",
+      theme: customTheme,
+      resetTheme,
+      applyTheme,
+      ...props
+    },
     ref: ForwardedRef<TabsRef>,
   ) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([tabsTheme, provider.theme?.tabs, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [tabsTheme, provider.theme?.tabs, customTheme],
+      [get(provider.resetTheme, "tabs"), resetTheme],
+      [get(provider.applyTheme, "tabs"), applyTheme],
+    );
 
     const id = useId();
     const tabs = useMemo(

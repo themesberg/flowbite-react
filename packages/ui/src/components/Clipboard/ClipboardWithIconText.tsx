@@ -2,6 +2,7 @@
 
 import { forwardRef, useState, type ComponentProps, type FC } from "react";
 import { FaCheck, FaClipboardList } from "react-icons/fa6";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -30,7 +31,16 @@ export interface ClipboardWithIconTextProps extends ComponentProps<"button">, Th
 
 export const ClipboardWithIconText = forwardRef<HTMLButtonElement, ClipboardWithIconTextProps>(
   (
-    { valueToCopy, icon: Icon = FaClipboardList, label = "Copy", theme: customTheme, resetTheme, className, ...rest },
+    {
+      valueToCopy,
+      icon: Icon = FaClipboardList,
+      label = "Copy",
+      theme: customTheme,
+      resetTheme,
+      applyTheme,
+      className,
+      ...rest
+    },
     ref,
   ) => {
     const [isJustCopied, setIsJustCopied] = useState(false);
@@ -38,7 +48,8 @@ export const ClipboardWithIconText = forwardRef<HTMLButtonElement, ClipboardWith
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [clipboardTheme.withIconText, provider.theme?.clipboard?.withIconText, customTheme],
-      [resetTheme],
+      [get(provider.resetTheme, "clipboard.withIconText"), resetTheme],
+      [get(provider.applyTheme, "clipboard.withIconText"), applyTheme],
     );
 
     return (

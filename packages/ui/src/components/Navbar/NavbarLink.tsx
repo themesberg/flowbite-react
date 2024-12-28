@@ -29,23 +29,25 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   disabled,
   children,
   className,
+  onClick,
   theme: customTheme,
   resetTheme,
-  onClick,
+  applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, setIsOpen } = useNavbarContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, setIsOpen } = useNavbarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [navbarTheme.link, provider.theme?.navbar?.link, rootTheme?.link, customTheme],
-    [get(rootResetTheme, "link"), resetTheme],
+    [get(provider.resetTheme, "navbar.link"), get(rootResetTheme, "link"), resetTheme],
+    [get(provider.applyTheme, "navbar.link"), get(rootApplyTheme, "link"), applyTheme],
   );
 
-  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+  function handleClick(event: MouseEvent<HTMLAnchorElement>) {
     setIsOpen(false);
     onClick?.(event);
-  };
+  }
 
   return (
     <li>

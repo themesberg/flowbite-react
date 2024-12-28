@@ -2,6 +2,7 @@
 
 import type { ComponentProps, ReactNode } from "react";
 import { forwardRef } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -27,9 +28,13 @@ export interface TextareaProps extends Omit<ComponentProps<"textarea">, "color" 
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, color = "gray", helperText, shadow, theme: customTheme, resetTheme, ...props }, ref) => {
+  ({ className, color = "gray", helperText, shadow, theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([textareaTheme, provider.theme?.textarea, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [textareaTheme, provider.theme?.textarea, customTheme],
+      [get(provider.resetTheme, "textarea"), resetTheme],
+      [get(provider.applyTheme, "textarea"), applyTheme],
+    );
 
     return (
       <>

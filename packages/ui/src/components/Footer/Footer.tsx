@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -48,10 +49,15 @@ export const FooterComponent: FC<FooterProps> = ({
   container = false,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([footerTheme, provider.theme?.footer, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [footerTheme, provider.theme?.footer, customTheme],
+    [get(provider.resetTheme, "footer"), resetTheme],
+    [get(provider.applyTheme, "footer"), applyTheme],
+  );
 
   return (
     <footer

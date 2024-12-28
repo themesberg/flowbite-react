@@ -4,6 +4,7 @@ import type { Placement } from "@floating-ui/react";
 import { FloatingFocusManager, useMergeRefs } from "@floating-ui/react";
 import type { ComponentProps, ComponentPropsWithRef, Dispatch, ReactNode, SetStateAction } from "react";
 import { cloneElement, isValidElement, useMemo, useRef, useState } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { useThemeProvider } from "../../theme/provider";
@@ -31,21 +32,26 @@ export interface PopoverProps extends Omit<ComponentProps<"div">, "content" | "s
 export function Popover({
   children,
   content,
-  theme: customTheme,
-  resetTheme,
   arrow = true,
   trigger = "click",
   initialOpen,
   open: controlledOpen,
   onOpenChange: setControlledOpen,
   placement: theirPlacement = "bottom",
+  theme: customTheme,
+  resetTheme,
+  applyTheme,
   ...props
 }: PopoverProps) {
   const [uncontrolledOpen, setUncontrolledOpen] = useState<boolean>(Boolean(initialOpen));
   const arrowRef = useRef<HTMLDivElement>(null);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([popoverTheme, provider.theme?.popover, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [popoverTheme, provider.theme?.popover, customTheme],
+    [get(provider.resetTheme, "popover"), resetTheme],
+    [get(provider.applyTheme, "popover"), applyTheme],
+  );
 
   const open = controlledOpen ?? uncontrolledOpen;
   const setOpen = setControlledOpen ?? setUncontrolledOpen;

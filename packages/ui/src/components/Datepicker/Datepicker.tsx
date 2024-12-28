@@ -3,6 +3,7 @@
 import type { ForwardRefRenderFunction, ReactNode } from "react";
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { HiArrowLeft, HiArrowRight, HiCalendar } from "react-icons/hi";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -119,18 +120,22 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     language = "en",
     weekStart = WeekStart.Sunday,
     className,
-    theme: customTheme,
-    resetTheme,
-    applyTheme: _applyTheme, // TODO: fix
     onChange,
     label,
     value,
+    theme: customTheme,
+    resetTheme,
+    applyTheme,
     ...props
   },
   ref,
 ) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([datePickerTheme, provider.theme?.datepicker, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [datePickerTheme, provider.theme?.datepicker, customTheme],
+    [get(provider.resetTheme, "datepicker"), resetTheme],
+    [get(provider.applyTheme, "datepicker"), applyTheme],
+  );
   const initialDate = defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : null;
 
   const effectiveDefaultView = useMemo(() => {

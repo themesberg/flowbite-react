@@ -1,6 +1,7 @@
 "use client";
 
 import { forwardRef, type ComponentPropsWithRef } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -32,13 +33,17 @@ export interface TableProps extends ComponentPropsWithRef<"table">, ThemingProps
 }
 
 const TableComponent = forwardRef<HTMLTableElement, TableProps>(
-  ({ children, className, striped, hoverable, theme: customTheme, resetTheme, ...props }, ref) => {
+  ({ children, className, striped, hoverable, theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([tableTheme, provider.theme?.table, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [tableTheme, provider.theme?.table, customTheme],
+      [get(provider.resetTheme, "table"), resetTheme],
+      [get(provider.applyTheme, "table"), applyTheme],
+    );
 
     return (
       <div data-testid="table-element" className={twMerge(theme.root.wrapper)}>
-        <TableContext.Provider value={{ theme: customTheme, resetTheme, striped, hoverable }}>
+        <TableContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, striped, hoverable }}>
           <div className={twMerge(theme.root.shadow, className)}></div>
           <table className={twMerge(theme.root.base, className)} {...props} ref={ref}>
             {children}

@@ -45,6 +45,7 @@ const AccordionComponent: FC<AccordionProps> = ({
   className,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const [isOpen, setOpen] = useState(collapseAll ? -1 : 0);
@@ -67,6 +68,7 @@ const AccordionComponent: FC<AccordionProps> = ({
   const theme = resolveTheme(
     [accordionTheme.root, provider.theme?.accordion?.root, customTheme],
     [get(provider.resetTheme, "accordion.root"), get(resetTheme, "root")],
+    [get(provider.applyTheme, "accordion.root"), get(applyTheme, "root")],
   );
 
   return (

@@ -2,6 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -15,9 +16,13 @@ export interface HRSquareTheme {
 export interface HRSquareProps extends Omit<ComponentProps<"hr">, "ref">, ThemingProps<HRSquareTheme> {}
 
 export const HRSquare = forwardRef<HTMLHRElement, HRSquareProps>(
-  ({ theme: customTheme, resetTheme, className, ...props }, ref) => {
+  ({ theme: customTheme, resetTheme, applyTheme, className, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([hrTheme.square, provider.theme?.hr?.square, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [hrTheme.square, provider.theme?.hr?.square, customTheme],
+      [get(provider.resetTheme, "hr.square"), resetTheme],
+      [get(provider.applyTheme, "hr.square"), applyTheme],
+    );
 
     return (
       <hr

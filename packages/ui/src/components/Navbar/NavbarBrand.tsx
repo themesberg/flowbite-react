@@ -24,14 +24,16 @@ export const NavbarBrand: FC<NavbarBrandProps> = ({
   className,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme } = useNavbarContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme } = useNavbarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [navbarTheme.brand, provider.theme?.navbar?.brand, rootTheme?.brand, customTheme],
-    [get(rootResetTheme, "brand"), resetTheme],
+    [get(provider.resetTheme, "navbar.brand"), get(rootResetTheme, "brand"), resetTheme],
+    [get(provider.applyTheme, "navbar.brand"), get(rootApplyTheme, "brand"), applyTheme],
   );
 
   return (

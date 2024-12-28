@@ -21,14 +21,16 @@ export const ModalFooter: FC<ModalFooterProps> = ({
   className,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, popup } = useModalContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, popup } = useModalContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [modalTheme.footer, provider.theme?.modal?.footer, rootTheme?.footer, customTheme],
-    [get(rootResetTheme, "footer"), resetTheme],
+    [get(provider.resetTheme, "modal.footer"), get(rootResetTheme, "footer"), resetTheme],
+    [get(provider.applyTheme, "modal.footer"), get(rootApplyTheme, "footer"), applyTheme],
   );
 
   return (

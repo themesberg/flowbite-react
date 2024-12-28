@@ -3,6 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { forwardRef } from "react";
 import { HiOutlineChevronRight } from "react-icons/hi";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -23,14 +24,15 @@ export interface BreadcrumbItemProps extends Omit<ComponentProps<"li">, "ref">, 
 }
 
 export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, BreadcrumbItemProps>(
-  ({ children, className, href, icon: Icon, theme: customTheme, resetTheme, ...props }, ref) => {
+  ({ children, className, href, icon: Icon, theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
     const isLink = typeof href !== "undefined";
     const Component = isLink ? "a" : "span";
 
     const provider = useThemeProvider();
     const theme = resolveTheme(
-      [breadcrumbTheme.item, provider.theme?.breadcrumb?.item, customTheme, resetTheme],
-      [resetTheme],
+      [breadcrumbTheme.item, provider.theme?.breadcrumb?.item, customTheme],
+      [get(provider.resetTheme, "breadcrumb.item"), resetTheme],
+      [get(provider.applyTheme, "breadcrumb.item"), applyTheme],
     );
 
     return (

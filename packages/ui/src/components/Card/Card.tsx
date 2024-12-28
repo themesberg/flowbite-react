@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { omit } from "../../helpers/omit";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -44,12 +45,16 @@ export type CardProps = (
   CommonCardProps;
 
 export const Card: FC<CardProps> = (props) => {
-  const { children, className, horizontal, href, theme: customTheme, resetTheme } = props;
+  const { children, className, horizontal, href, theme: customTheme, resetTheme, applyTheme } = props;
   const Component = typeof href === "undefined" ? "div" : "a";
   const theirProps = removeCustomProps(props);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([cardTheme, provider.theme?.card, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [cardTheme, provider.theme?.card, customTheme],
+    [get(provider.resetTheme, "card"), resetTheme],
+    [get(provider.applyTheme, "card"), applyTheme],
+  );
 
   return (
     <Component
@@ -69,9 +74,13 @@ export const Card: FC<CardProps> = (props) => {
   );
 };
 
-const Image: FC<CardProps> = ({ theme: customTheme, resetTheme, ...props }) => {
+const Image: FC<CardProps> = ({ theme: customTheme, resetTheme, applyTheme, ...props }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([cardTheme, provider.theme?.card, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [cardTheme, provider.theme?.card, customTheme],
+    [get(provider.resetTheme, "carousel"), resetTheme],
+    [get(provider.applyTheme, "carousel"), applyTheme],
+  );
 
   if (props.renderImage) {
     return props.renderImage(theme, props.horizontal ?? false);

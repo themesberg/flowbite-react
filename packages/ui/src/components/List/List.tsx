@@ -46,13 +46,18 @@ const ListComponent: FC<ListProps> = ({
   horizontal,
   nested,
   ordered,
-  resetTheme,
-  theme: customTheme,
   unstyled,
+  theme: customTheme,
+  resetTheme,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([listTheme.root, provider.theme?.list?.root, customTheme], [get(resetTheme, "root")]);
+  const theme = resolveTheme(
+    [listTheme.root, provider.theme?.list?.root, customTheme],
+    [get(provider.resetTheme, "list.root"), get(resetTheme, "root")],
+    [get(provider.applyTheme, "list.root"), get(applyTheme, "root")],
+  );
   const Component = ordered ? "ol" : "ul";
 
   return (

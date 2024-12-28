@@ -31,15 +31,17 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
   imgAlt = "",
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const id = useId();
-  const { theme: rootTheme, resetTheme: rootResetTheme, isCollapsed } = useSidebarContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [sidebarTheme.logo, provider.theme?.sidebar?.logo, rootTheme?.logo, customTheme],
-    [get(rootResetTheme, "logo"), resetTheme],
+    [get(provider.resetTheme, "sidebar.logo"), get(rootResetTheme, "logo"), resetTheme],
+    [get(provider.applyTheme, "sidebar.logo"), get(rootApplyTheme, "logo"), applyTheme],
   );
 
   return (

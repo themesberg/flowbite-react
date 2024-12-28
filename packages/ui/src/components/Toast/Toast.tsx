@@ -2,6 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { useState } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -43,13 +44,18 @@ const ToastComponent: FC<ToastProps> = ({
   duration = 300,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const [isClosed, setIsClosed] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([toastTheme, provider.theme?.toast, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [toastTheme, provider.theme?.toast, customTheme],
+    [get(provider.resetTheme, "toast"), resetTheme],
+    [get(provider.applyTheme, "toast"), applyTheme],
+  );
 
   if (isRemoved) {
     return null;
@@ -57,7 +63,7 @@ const ToastComponent: FC<ToastProps> = ({
 
   return (
     <ToastContext.Provider
-      value={{ theme: customTheme, resetTheme, duration, isClosed, isRemoved, setIsClosed, setIsRemoved }}
+      value={{ theme: customTheme, resetTheme, applyTheme, duration, isClosed, isRemoved, setIsClosed, setIsRemoved }}
     >
       <div
         data-testid="flowbite-toast"

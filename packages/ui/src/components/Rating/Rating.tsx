@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -28,13 +29,18 @@ const RatingComponent: FC<RatingProps> = ({
   size = "sm",
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([ratingTheme, provider.theme?.rating, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [ratingTheme, provider.theme?.rating, customTheme],
+    [get(provider.resetTheme, "rating"), resetTheme],
+    [get(provider.applyTheme, "rating"), applyTheme],
+  );
 
   return (
-    <RatingContext.Provider value={{ theme: customTheme, resetTheme, size }}>
+    <RatingContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, size }}>
       <div className={twMerge(theme.root.base, className)} {...props}>
         {children}
       </div>

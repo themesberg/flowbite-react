@@ -20,14 +20,16 @@ export const DrawerItems: FC<DrawerItemsProps> = ({
   className,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme } = useDrawerContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme } = useDrawerContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [drawerTheme.items, provider.theme?.drawer?.items, rootTheme?.items, customTheme],
-    [get(rootResetTheme, "items"), resetTheme],
+    [get(provider.resetTheme, "drawer.items"), get(rootResetTheme, "items"), resetTheme],
+    [get(provider.applyTheme, "drawer.items"), get(rootApplyTheme, "items"), applyTheme],
   );
 
   return (

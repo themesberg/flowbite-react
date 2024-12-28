@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -20,9 +21,21 @@ export interface KbdProps extends ComponentProps<"span">, ThemingProps<KbdTheme>
   icon?: FC<ComponentProps<"svg">>;
 }
 
-export const Kbd: FC<KbdProps> = ({ children, className, icon: Icon, theme: customTheme, resetTheme, ...props }) => {
+export const Kbd: FC<KbdProps> = ({
+  children,
+  className,
+  icon: Icon,
+  theme: customTheme,
+  resetTheme,
+  applyTheme,
+  ...props
+}) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([kbdTheme, provider.theme?.kbd, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [kbdTheme, provider.theme?.kbd, customTheme],
+    [get(provider.resetTheme, "kbd"), resetTheme],
+    [get(provider.applyTheme, "kbd"), applyTheme],
+  );
 
   return (
     <span className={twMerge(theme.root.base, className)} data-testid="flowbite-kbd" {...props}>

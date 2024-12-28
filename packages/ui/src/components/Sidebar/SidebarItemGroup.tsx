@@ -21,14 +21,16 @@ export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({
   className,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme } = useSidebarContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme } = useSidebarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [sidebarTheme.itemGroup, provider.theme?.sidebar?.itemGroup, rootTheme?.itemGroup, customTheme],
-    [get(rootResetTheme, "itemGroup"), resetTheme],
+    [get(provider.resetTheme, "sidebar.itemGroup"), get(rootResetTheme, "itemGroup"), resetTheme],
+    [get(provider.applyTheme, "sidebar.itemGroup"), get(rootApplyTheme, "itemGroup"), applyTheme],
   );
 
   return (

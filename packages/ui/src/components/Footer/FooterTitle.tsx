@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, ElementType, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -19,13 +20,18 @@ export interface FooterTitleProps extends ComponentProps<"h2">, ThemingProps<Foo
 export const FooterTitle: FC<FooterTitleProps> = ({
   as: Component = "h2",
   className,
+  title,
   theme: customTheme,
   resetTheme,
-  title,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([footerTheme.title, provider.theme?.footer?.title, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [footerTheme.title, provider.theme?.footer?.title, customTheme],
+    [get(provider.resetTheme, "footer.title"), resetTheme],
+    [get(provider.applyTheme, "footer.title"), applyTheme],
+  );
 
   return (
     <Component data-testid="flowbite-footer-title" className={twMerge(theme.base, className)} {...props}>

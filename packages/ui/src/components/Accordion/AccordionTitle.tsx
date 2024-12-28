@@ -31,13 +31,18 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   className,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const { arrowIcon: ArrowIcon, flush, isOpen, setOpen } = useAccordionContext();
   const onClick = () => typeof setOpen !== "undefined" && setOpen();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme([accordionTheme.title, provider.theme?.accordion?.title, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [accordionTheme.title, provider.theme?.accordion?.title, customTheme],
+    [get(provider.resetTheme, "carousel"), resetTheme],
+    [get(provider.applyTheme, "carousel"), applyTheme],
+  );
 
   return (
     <button

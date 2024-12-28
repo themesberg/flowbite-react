@@ -21,11 +21,19 @@ export interface ListGroupRootTheme {
 
 export interface ListGroupProps extends ComponentProps<"ul">, ThemingProps<ListGroupTheme> {}
 
-const ListGroupComponent: FC<ListGroupProps> = ({ children, className, theme: customTheme, resetTheme, ...props }) => {
+const ListGroupComponent: FC<ListGroupProps> = ({
+  children,
+  className,
+  theme: customTheme,
+  resetTheme,
+  applyTheme,
+  ...props
+}) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [listGroupTheme.root, provider.theme?.listGroup?.root, customTheme],
-    [get(resetTheme, "root")],
+    [get(provider.resetTheme, "listGroup.root"), get(resetTheme, "root")],
+    [get(provider.applyTheme, "listGroup.root"), get(applyTheme, "root")],
   );
 
   return (

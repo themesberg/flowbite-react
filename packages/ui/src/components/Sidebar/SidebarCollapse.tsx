@@ -51,16 +51,18 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   open = false,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const id = useId();
   const [isOpen, setOpen] = useState(open);
-  const { theme: rootTheme, resetTheme: rootResetTheme, isCollapsed } = useSidebarContext();
+  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [sidebarTheme.collapse, provider.theme?.sidebar?.collapse, rootTheme?.collapse, customTheme],
-    [get(rootResetTheme, "collapse"), resetTheme],
+    [get(provider.resetTheme, "sidebar.collapse"), get(rootResetTheme, "collapse"), resetTheme],
+    [get(provider.applyTheme, "sidebar.collapse"), get(rootApplyTheme, "collapse"), applyTheme],
   );
 
   useEffect(() => setOpen(open), [open]);

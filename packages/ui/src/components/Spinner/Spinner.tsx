@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -46,10 +47,15 @@ export const Spinner: FC<SpinnerProps> = ({
   size = "md",
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([spinnerTheme, provider.theme?.spinner, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [spinnerTheme, provider.theme?.spinner, customTheme],
+    [get(provider.resetTheme, "spinner"), resetTheme],
+    [get(provider.applyTheme, "spinner"), applyTheme],
+  );
 
   return (
     <span role="status" {...props}>

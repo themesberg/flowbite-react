@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -26,10 +27,15 @@ export const ListItem: FC<ListItemProps> = ({
   icon: Icon,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([listTheme.item, provider.theme?.list?.item, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [listTheme.item, provider.theme?.list?.item, customTheme],
+    [get(provider.resetTheme, "list.item"), resetTheme],
+    [get(provider.applyTheme, "list.item"), applyTheme],
+  );
 
   return (
     <li className={twMerge(theme.withIcon[Icon ? "on" : "off"], className)} {...props}>

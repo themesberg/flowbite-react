@@ -65,10 +65,15 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   pill,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }: ButtonGroupProps) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([buttonGroupTheme, provider.theme?.buttonGroup, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [buttonGroupTheme, provider.theme?.buttonGroup, customTheme],
+    [get(provider.resetTheme, "carousel"), resetTheme],
+    [get(provider.applyTheme, "carousel"), applyTheme],
+  );
 
   const items = useMemo(() => processChildren(children, outline, pill), [children, outline, pill]);
 

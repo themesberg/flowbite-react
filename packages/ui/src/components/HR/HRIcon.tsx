@@ -3,6 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { forwardRef } from "react";
 import { FaQuoteRight } from "react-icons/fa6";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -23,9 +24,13 @@ export interface HRIconProps extends Omit<ComponentProps<"hr">, "ref">, ThemingP
 }
 
 export const HRIcon = forwardRef<HTMLHRElement, HRIconProps>(
-  ({ theme: customTheme, resetTheme, icon: Icon = FaQuoteRight, className, ...props }, ref) => {
+  ({ theme: customTheme, resetTheme, applyTheme, icon: Icon = FaQuoteRight, className, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme([hrTheme.icon, provider.theme?.hr?.icon, customTheme], [resetTheme]);
+    const theme = resolveTheme(
+      [hrTheme.icon, provider.theme?.hr?.icon, customTheme],
+      [get(provider.resetTheme, "hr.icon"), resetTheme],
+      [get(provider.applyTheme, "hr.icon"), applyTheme],
+    );
 
     return (
       <div className={theme.base}>

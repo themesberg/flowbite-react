@@ -2,6 +2,7 @@
 
 import type { Placement } from "@floating-ui/core";
 import type { ComponentProps, FC, ReactNode } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -32,11 +33,16 @@ export const Tooltip: FC<TooltipProps> = ({
   style = "dark",
   theme: customTheme,
   resetTheme,
+  applyTheme,
   trigger = "hover",
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([tooltipTheme, provider.theme?.tooltip, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [tooltipTheme, provider.theme?.tooltip, customTheme],
+    [get(provider.resetTheme, "tooltip"), resetTheme],
+    [get(provider.applyTheme, "tooltip"), applyTheme],
+  );
 
   return (
     <Floating

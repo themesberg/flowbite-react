@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps, FC, PropsWithChildren } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -34,13 +35,18 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & Compon
   href,
   icon: Icon,
   onClick,
+  disabled,
   theme: customTheme,
   resetTheme,
-  disabled,
+  applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme([listGroupTheme.item, provider.theme?.listGroup?.item, customTheme], [resetTheme]);
+  const theme = resolveTheme(
+    [listGroupTheme.item, provider.theme?.listGroup?.item, customTheme],
+    [get(provider.resetTheme, "listGroup.item"), resetTheme],
+    [get(provider.applyTheme, "listGroup.item"), applyTheme],
+  );
 
   const isLink = typeof href !== "undefined";
   const Component = isLink ? "a" : "button";

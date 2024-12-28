@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, type ComponentProps, type FC } from "react";
+import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -20,6 +21,7 @@ export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
   className,
   theme: customTheme,
   resetTheme,
+  applyTheme,
   ...props
 }) => {
   const id = useId();
@@ -30,7 +32,8 @@ export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [megaMenuTheme.dropdownToggle, provider.theme?.megaMenu?.dropdownToggle, customTheme],
-    [resetTheme],
+    [get(provider.resetTheme, "megaMenu.dropdownToggle"), resetTheme],
+    [get(provider.applyTheme, "megaMenu.dropdownToggle"), applyTheme],
   );
 
   function findDropdown() {
