@@ -34,7 +34,7 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   className,
   icon: Icon,
   theme: customTheme = {},
-  render = undefined,
+  render,
   ...props
 }) => {
   const { horizontal } = useTimelineContext();
