@@ -373,7 +373,7 @@ export default class ScrollContainer extends PureComponent<Props> {
         className={classnames(className, this.pressed && draggingClassName, {
           "!scroll-auto [&>*]:pointer-events-none [&>*]:cursor-grab": this.pressed,
           "overflow-auto": this.isMobile,
-          "overflow-hidden !overflow-x-hidden [overflow:-moz-scrollbars-none] [scrollbar-width:none]": hideScrollbars,
+          "overflow-hidden !overflow-x-hidden [scrollbar-width:none]": hideScrollbars,
           "[&::-webkit-scrollbar]:[-webkit-appearance:none !important] [&::-webkit-scrollbar]:!hidden [&::-webkit-scrollbar]:!h-0 [&::-webkit-scrollbar]:!w-0 [&::-webkit-scrollbar]:!bg-transparent":
             hideScrollbars,
         })}
