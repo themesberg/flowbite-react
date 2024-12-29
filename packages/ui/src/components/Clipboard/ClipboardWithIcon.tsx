@@ -1,10 +1,10 @@
 "use client";
 
 import { forwardRef, useState, type ComponentProps, type FC } from "react";
-import { FaCheck, FaClipboardList } from "react-icons/fa6";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
+import { CheckIcon, ClipboardListIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { copyToClipboard } from "./helpers";
@@ -25,7 +25,7 @@ export interface ClipboardWithIconProps extends ComponentProps<"button">, Themin
 
 export const ClipboardWithIcon = forwardRef<HTMLButtonElement, ClipboardWithIconProps>(
   (
-    { valueToCopy, icon: Icon = FaClipboardList, theme: customTheme, resetTheme, applyTheme, className, ...rest },
+    { valueToCopy, icon: Icon = ClipboardListIcon, theme: customTheme, resetTheme, applyTheme, className, ...rest },
     ref,
   ) => {
     const [isJustCopied, setIsJustCopied] = useState(false);
@@ -45,7 +45,7 @@ export const ClipboardWithIcon = forwardRef<HTMLButtonElement, ClipboardWithIcon
         ref={ref}
       >
         {isJustCopied ? (
-          <FaCheck aria-hidden className={theme.icon.successIcon} />
+          <CheckIcon aria-hidden className={theme.icon.successIcon} />
         ) : (
           <Icon aria-hidden className={theme.icon.defaultIcon} />
         )}

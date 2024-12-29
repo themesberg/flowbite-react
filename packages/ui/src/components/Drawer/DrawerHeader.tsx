@@ -2,9 +2,9 @@
 
 import type { ComponentProps, FC } from "react";
 import { useId } from "react";
-import { MdClose, MdHome } from "react-icons/md";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
+import { CloseIcon as DefaultCloseIcon, HomeIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
@@ -33,9 +33,9 @@ export interface DrawerHeaderProps
 export const DrawerHeader: FC<DrawerHeaderProps> = ({
   children,
   className,
-  closeIcon: CloseIcon = MdClose,
+  closeIcon: CloseIcon = DefaultCloseIcon,
   title,
-  titleIcon: TitleIcon = MdHome,
+  titleIcon: TitleIcon = HomeIcon,
   theme: customTheme,
   resetTheme,
   applyTheme,

@@ -122,7 +122,6 @@
     "classnames": "2.5.1",
     "debounce": "2.2.0",
     "deepmerge-ts": "7.1.3",
-    "react-icons": "5.2.1",
     "tailwind-merge": "2.5.5"
   },
   "devDependencies": {

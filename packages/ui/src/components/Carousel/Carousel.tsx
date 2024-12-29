@@ -2,12 +2,12 @@
 
 import type { ComponentProps, FC, ReactElement, ReactNode } from "react";
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import ScrollContainer from "../../helpers/drag-scroll";
 import { get } from "../../helpers/get";
 import { isClient } from "../../helpers/is-client";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
+import { ChevronLeftIcon, ChevronRightIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
@@ -225,7 +225,7 @@ const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customThe
 
   return (
     <span className={theme.control.base}>
-      <HiOutlineChevronLeft className={theme.control.icon} />
+      <ChevronLeftIcon className={theme.control.icon} />
     </span>
   );
 };
@@ -240,7 +240,7 @@ const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTh
 
   return (
     <span className={theme.control.base}>
-      <HiOutlineChevronRight className={theme.control.icon} />
+      <ChevronRightIcon className={theme.control.icon} />
     </span>
   );
 };

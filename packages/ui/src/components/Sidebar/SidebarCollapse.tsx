@@ -2,10 +2,10 @@
 
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from "react";
 import { useEffect, useId, useState } from "react";
-import { HiChevronDown } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
+import { ChevronDownIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
@@ -46,7 +46,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   className,
   icon: Icon,
   label,
-  chevronIcon: ChevronIcon = HiChevronDown,
+  chevronIcon: ChevronIcon = ChevronDownIcon,
   renderChevronIcon,
   open = false,
   theme: customTheme,

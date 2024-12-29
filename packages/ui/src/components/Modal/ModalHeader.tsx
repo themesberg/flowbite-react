@@ -1,10 +1,10 @@
 "use client";
 
 import { useId, useLayoutEffect, type ComponentProps, type ElementType, type FC } from "react";
-import { HiOutlineX } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
+import { OutlineXIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { useModalContext } from "./ModalContext";
@@ -65,7 +65,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
         {children}
       </Component>
       <button aria-label="Close" className={theme.close.base} type="button" onClick={onClose}>
-        <HiOutlineX aria-hidden className={theme.close.icon} />
+        <OutlineXIcon aria-hidden className={theme.close.icon} />
       </button>
     </div>
   );

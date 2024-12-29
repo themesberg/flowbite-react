@@ -2,10 +2,10 @@
 
 import type { ForwardRefRenderFunction, ReactNode } from "react";
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
-import { HiArrowLeft, HiArrowRight, HiCalendar } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
+import { ArrowLeftIcon, ArrowRightIcon, CalendarIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { TextInput, type TextInputProps, type TextInputTheme } from "../TextInput";
@@ -293,7 +293,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
         {!inline && (
           <TextInput
             theme={theme.root.input}
-            icon={HiCalendar}
+            icon={CalendarIcon}
             ref={inputRef}
             onFocus={() => {
               if (selectedDate && !isDateEqual(viewDate, selectedDate)) {
@@ -321,7 +321,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
                     )}
                     onClick={() => setViewDate(getViewDatePage(view, viewDate, -1))}
                   >
-                    <HiArrowLeft />
+                    <ArrowLeftIcon />
                   </button>
                   <button
                     type="button"
@@ -341,7 +341,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
                     )}
                     onClick={() => setViewDate(getViewDatePage(view, viewDate, 1))}
                   >
-                    <HiArrowRight />
+                    <ArrowRightIcon />
                   </button>
                 </div>
               </div>

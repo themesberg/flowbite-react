@@ -1,10 +1,10 @@
 "use client";
 
 import type { ComponentProps, FC, MouseEvent } from "react";
-import { HiX } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
+import { XIcon as DefaultXIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { toastTheme } from "./theme";
@@ -24,7 +24,7 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   className,
   onClick,
   onDismiss,
-  xIcon: XIcon = HiX,
+  xIcon: XIcon = DefaultXIcon,
   theme: customTheme,
   resetTheme,
   applyTheme,

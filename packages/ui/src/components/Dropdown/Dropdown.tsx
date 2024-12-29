@@ -13,11 +13,11 @@ import type {
   SetStateAction,
 } from "react";
 import { cloneElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { HiOutlineChevronDown, HiOutlineChevronLeft, HiOutlineChevronRight, HiOutlineChevronUp } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
+import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { Button, type ButtonProps } from "../Button";
@@ -54,10 +54,10 @@ export interface DropdownProps
 }
 
 const icons: Record<string, FC<ComponentProps<"svg">>> = {
-  top: HiOutlineChevronUp,
-  right: HiOutlineChevronRight,
-  bottom: HiOutlineChevronDown,
-  left: HiOutlineChevronLeft,
+  top: ChevronUpIcon,
+  right: ChevronRightIcon,
+  bottom: ChevronDownIcon,
+  left: ChevronLeftIcon,
 };
 
 export interface TriggerProps extends Omit<ButtonProps, keyof ThemingProps<DropdownTheme>> {
@@ -186,7 +186,7 @@ const DropdownComponent: FC<DropdownProps> = ({
 
   const Icon = useMemo(() => {
     const [p] = placement.split("-");
-    return icons[p] ?? HiOutlineChevronDown;
+    return icons[p] ?? ChevronDownIcon;
   }, [placement]);
 
   return (

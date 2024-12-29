@@ -2,10 +2,10 @@
 
 import type { ComponentProps, FC } from "react";
 import { forwardRef } from "react";
-import { HiOutlineChevronRight } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
+import { ChevronRightIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
@@ -37,7 +37,7 @@ export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, Br
 
     return (
       <li className={twMerge(theme.base, className)} {...props}>
-        <HiOutlineChevronRight aria-hidden className={theme.chevron} data-testid="flowbite-breadcrumb-separator" />
+        <ChevronRightIcon aria-hidden className={theme.chevron} data-testid="flowbite-breadcrumb-separator" />
         <Component
           ref={ref as never}
           className={theme.href[isLink ? "on" : "off"]}

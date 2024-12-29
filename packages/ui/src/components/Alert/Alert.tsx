@@ -1,10 +1,10 @@
 "use client";
 
 import type { ComponentProps, FC, ReactNode } from "react";
-import { HiX } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
+import { XIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
@@ -78,7 +78,7 @@ export const Alert: FC<AlertProps> = ({
             onClick={onDismiss}
             type="button"
           >
-            <HiX aria-hidden className={theme.closeButton.icon} />
+            <XIcon aria-hidden className={theme.closeButton.icon} />
           </button>
         )}
       </div>

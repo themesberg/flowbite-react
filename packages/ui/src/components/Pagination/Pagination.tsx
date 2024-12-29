@@ -1,10 +1,10 @@
 "use client";
 
 import type { ComponentProps, FC, ReactNode } from "react";
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
+import { ChevronLeftIcon, ChevronRightIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { range } from "./helpers";
@@ -102,7 +102,7 @@ const PaginationComponent: FC<PaginationProps> = ({
             onClick={goToPreviousPage}
             disabled={currentPage === 1}
           >
-            {showIcon && <HiChevronLeft aria-hidden className={theme.pages.previous.icon} />}
+            {showIcon && <ChevronLeftIcon aria-hidden className={theme.pages.previous.icon} />}
             {previousLabel}
           </PaginationNavigation>
         </li>
@@ -124,7 +124,7 @@ const PaginationComponent: FC<PaginationProps> = ({
             disabled={currentPage === totalPages}
           >
             {nextLabel}
-            {showIcon && <HiChevronRight aria-hidden className={theme.pages.next.icon} />}
+            {showIcon && <ChevronRightIcon aria-hidden className={theme.pages.next.icon} />}
           </PaginationNavigation>
         </li>
       </ul>

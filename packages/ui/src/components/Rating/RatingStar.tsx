@@ -1,10 +1,10 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
-import { HiStar } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
+import { StarIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
@@ -29,7 +29,7 @@ export interface RatingStarProps extends ComponentProps<"svg">, ThemingProps<Rat
 export const RatingStar: FC<RatingStarProps> = ({
   className,
   filled = true,
-  starIcon: Icon = HiStar,
+  starIcon: Icon = StarIcon,
   theme: customTheme,
   resetTheme,
   applyTheme,

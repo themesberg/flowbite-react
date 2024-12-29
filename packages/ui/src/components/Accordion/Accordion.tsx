@@ -2,10 +2,10 @@
 
 import type { ComponentProps, FC, ReactElement } from "react";
 import { Children, cloneElement, useMemo, useState } from "react";
-import { HiChevronDown } from "react-icons/hi";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
+import { ChevronDownIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
@@ -38,7 +38,7 @@ export interface AccordionProps extends ComponentProps<"div">, ThemingProps<Acco
 
 const AccordionComponent: FC<AccordionProps> = ({
   alwaysOpen = false,
-  arrowIcon = HiChevronDown,
+  arrowIcon = ChevronDownIcon,
   children,
   flush = false,
   collapseAll = false,

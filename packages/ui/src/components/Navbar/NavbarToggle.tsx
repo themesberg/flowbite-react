@@ -1,10 +1,10 @@
 "use client";
 
 import type { ComponentProps, FC } from "react";
-import { FaBars } from "react-icons/fa";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
+import { BarsIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { useNavbarContext } from "./NavbarContext";
@@ -20,7 +20,7 @@ export interface NavbarToggleProps extends ComponentProps<"button">, ThemingProp
 }
 
 export const NavbarToggle: FC<NavbarToggleProps> = ({
-  barIcon: BarIcon = FaBars,
+  barIcon: BarIcon = BarsIcon,
   className,
   theme: customTheme,
   resetTheme,

@@ -1,12 +1,11 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
-import type { IconBaseProps } from "react-icons";
-import { HiMoon, HiSun } from "react-icons/hi";
+import type { ComponentProps, FC, SVGProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeMode } from "../../hooks/use-theme-mode";
+import { MoonIcon, SunIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { darkThemeToggleTheme } from "./theme";
@@ -25,14 +24,14 @@ export interface DarkThemeToggleRootTheme {
 }
 
 export interface DarkThemeToggleProps extends ComponentProps<"button">, ThemingProps<DarkThemeToggleTheme> {
-  iconDark?: FC<IconBaseProps>;
-  iconLight?: FC<IconBaseProps>;
+  iconDark?: FC<SVGProps<SVGSVGElement>>;
+  iconLight?: FC<SVGProps<SVGSVGElement>>;
 }
 
 export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   className,
-  iconDark: IconDark = HiSun,
-  iconLight: IconLight = HiMoon,
+  iconDark: IconDark = SunIcon,
+  iconLight: IconLight = MoonIcon,
   theme: customTheme,
   resetTheme,
   applyTheme,
