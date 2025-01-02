@@ -43,6 +43,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
     title: "customize",
     items: [
       { title: "Theme", href: "/docs/customize/theme", isNew: true },
+      { title: "Plugin", href: "/docs/customize/plugin", isNew: true },
       { title: "Prefix", href: "/docs/customize/prefix", isNew: true },
       { title: "Dark Mode", href: "/docs/customize/dark-mode" },
     ],

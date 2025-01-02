@@ -53,7 +53,7 @@ export default function DocPage({ params }: Props) {
 
   return (
     <div className="flex">
-      <div className="flex min-w-0 flex-col px-4 pb-12 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
+      <div className="flex min-w-0 flex-1 flex-col px-4 pb-12 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
         <main>
           <ContentLayout title={doc.title} description={doc.description}>
             <Mdx code={doc.body.code} />
