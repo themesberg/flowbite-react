@@ -5,6 +5,7 @@ import { AvatarGroup } from "./AvatarGroup";
 describe("Components / Avatar.Group", () => {
   it("renders the avatar group element with the correct classname", () => {
     render(
+      // eslint-disable-next-line tailwindcss/no-custom-classname
       <AvatarGroup className="test-class">
         <div>Test child</div>
       </AvatarGroup>,
@@ -16,6 +17,7 @@ describe("Components / Avatar.Group", () => {
 
   it("merges the custom theme with the default theme", () => {
     render(
+      // eslint-disable-next-line tailwindcss/no-custom-classname
       <AvatarGroup theme={{ base: "custom-base-class" }}>
         <div>Test child</div>
       </AvatarGroup>,

@@ -25,7 +25,7 @@ export const tabsTheme: TabsTheme = createTheme({
         underline: {
           base: "rounded-t-lg",
           active: {
-            on: "active rounded-t-lg border-b-2 border-cyan-600 text-cyan-600 dark:border-cyan-500 dark:text-cyan-500",
+            on: "rounded-t-lg border-b-2 border-cyan-600 text-cyan-600 dark:border-cyan-500 dark:text-cyan-500",
             off: "border-b-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300",
           },
         },
@@ -39,7 +39,7 @@ export const tabsTheme: TabsTheme = createTheme({
         fullWidth: {
           base: "ml-0 flex w-full rounded-none first:ml-0",
           active: {
-            on: "active rounded-none bg-gray-100 p-4 text-gray-900 dark:bg-gray-700 dark:text-white",
+            on: "rounded-none bg-gray-100 p-4 text-gray-900 dark:bg-gray-700 dark:text-white",
             off: "rounded-none bg-white hover:bg-gray-50 hover:text-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white",
           },
         },
