@@ -84,7 +84,7 @@
 #mainContent > p > code,
 #mainContent > ul > li > code,
 #mainContent > ol > li > code {
-  @apply whitespace-nowrap break-all rounded-sm bg-gray-50 px-1 font-mono text-sm text-primary-600;
+  @apply whitespace-nowrap break-all rounded-sm bg-gray-50 px-1 text-sm text-primary-600;
   font-family:
     Menlo,
     ui-monospace,
