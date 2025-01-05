@@ -23,13 +23,13 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({
   barIcon: BarIcon = BarsIcon,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const {
     theme: rootTheme,
-    resetTheme: rootResetTheme,
+    clearTheme: rootClearTheme,
     applyTheme: rootApplyTheme,
     isOpen,
     setIsOpen,
@@ -38,7 +38,7 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [navbarTheme.toggle, provider.theme?.navbar?.toggle, rootTheme?.toggle, customTheme],
-    [get(provider.resetTheme, "navbar.toggle"), get(rootResetTheme, "toggle"), resetTheme],
+    [get(provider.clearTheme, "navbar.toggle"), get(rootClearTheme, "toggle"), clearTheme],
     [get(provider.applyTheme, "navbar.toggle"), get(rootApplyTheme, "toggle"), applyTheme],
   );
 

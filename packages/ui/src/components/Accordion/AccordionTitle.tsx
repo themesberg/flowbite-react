@@ -31,7 +31,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   children,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
@@ -41,7 +41,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [accordionTheme.title, provider.theme?.accordion?.title, customTheme],
-    [get(provider.resetTheme, "accordion.title"), resetTheme],
+    [get(provider.clearTheme, "accordion.title"), clearTheme],
     [get(provider.applyTheme, "accordion.title"), applyTheme],
   );
 

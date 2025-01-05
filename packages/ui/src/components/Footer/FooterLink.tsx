@@ -24,14 +24,14 @@ export const FooterLink: FC<FooterLinkProps> = ({
   className,
   href,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme.groupLink.link, provider.theme?.footer?.groupLink?.link, customTheme],
-    [get(provider.resetTheme, "footer.groupLink.link"), resetTheme],
+    [get(provider.clearTheme, "footer.groupLink.link"), clearTheme],
     [get(provider.applyTheme, "footer.groupLink.link"), applyTheme],
   );
 

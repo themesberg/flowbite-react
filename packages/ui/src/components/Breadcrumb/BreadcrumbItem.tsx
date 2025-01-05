@@ -24,14 +24,14 @@ export interface BreadcrumbItemProps extends Omit<ComponentProps<"li">, "ref">, 
 }
 
 export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, BreadcrumbItemProps>(
-  ({ children, className, href, icon: Icon, theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
+  ({ children, className, href, icon: Icon, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const isLink = typeof href !== "undefined";
     const Component = isLink ? "a" : "span";
 
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [breadcrumbTheme.item, provider.theme?.breadcrumb?.item, customTheme],
-      [get(provider.resetTheme, "breadcrumb.item"), resetTheme],
+      [get(provider.clearTheme, "breadcrumb.item"), clearTheme],
       [get(provider.applyTheme, "breadcrumb.item"), applyTheme],
     );
 

@@ -26,14 +26,14 @@ export const Kbd: FC<KbdProps> = ({
   className,
   icon: Icon,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [kbdTheme, provider.theme?.kbd, customTheme],
-    [get(provider.resetTheme, "kbd"), resetTheme],
+    [get(provider.clearTheme, "kbd"), clearTheme],
     [get(provider.applyTheme, "kbd"), applyTheme],
   );
 

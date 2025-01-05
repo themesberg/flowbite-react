@@ -36,7 +36,7 @@ export const ClipboardWithIconText = forwardRef<HTMLButtonElement, ClipboardWith
       icon: Icon = ClipboardListIcon,
       label = "Copy",
       theme: customTheme,
-      resetTheme,
+      clearTheme,
       applyTheme,
       className,
       ...rest
@@ -48,7 +48,7 @@ export const ClipboardWithIconText = forwardRef<HTMLButtonElement, ClipboardWith
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [clipboardTheme.withIconText, provider.theme?.clipboard?.withIconText, customTheme],
-      [get(provider.resetTheme, "clipboard.withIconText"), resetTheme],
+      [get(provider.clearTheme, "clipboard.withIconText"), clearTheme],
       [get(provider.applyTheme, "clipboard.withIconText"), applyTheme],
     );
 

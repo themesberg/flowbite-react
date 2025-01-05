@@ -21,15 +21,15 @@ export const TimelineTime: FC<TimelineTimeProps> = ({
   children,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme } = useTimelineContext();
-  const { theme: itemTheme, resetTheme: itemResetTheme, applyTheme: itemApplyTheme } = useTimelineItemContext();
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useTimelineContext();
+  const { theme: itemTheme, clearTheme: itemClearTheme, applyTheme: itemApplyTheme } = useTimelineItemContext();
   const {
     theme: contentTheme,
-    resetTheme: contentResetTheme,
+    clearTheme: contentClearTheme,
     applyTheme: contentApplyTheme,
   } = useTimelineContentContext();
 
@@ -44,11 +44,11 @@ export const TimelineTime: FC<TimelineTimeProps> = ({
       customTheme,
     ],
     [
-      get(provider.resetTheme, "timeline.item.content.time"),
-      get(rootResetTheme, "item.content.time"),
-      get(itemResetTheme, "content.time"),
-      get(contentResetTheme, "time"),
-      resetTheme,
+      get(provider.clearTheme, "timeline.item.content.time"),
+      get(rootClearTheme, "item.content.time"),
+      get(itemClearTheme, "content.time"),
+      get(contentClearTheme, "time"),
+      clearTheme,
     ],
     [
       get(provider.applyTheme, "timeline.item.content.time"),

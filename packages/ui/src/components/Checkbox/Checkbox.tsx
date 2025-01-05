@@ -25,11 +25,11 @@ export interface CheckboxProps
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, color = "default", theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
+  ({ className, color = "default", theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [checkboxTheme, provider.theme?.checkbox, customTheme],
-      [get(provider.resetTheme, "checkbox"), resetTheme],
+      [get(provider.clearTheme, "checkbox"), clearTheme],
       [get(provider.applyTheme, "checkbox"), applyTheme],
     );
 

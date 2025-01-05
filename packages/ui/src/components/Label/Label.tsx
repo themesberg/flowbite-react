@@ -37,14 +37,14 @@ export const Label: FC<LabelProps> = ({
   disabled = false,
   value,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [labelTheme, provider.theme?.label, customTheme],
-    [get(provider.resetTheme, "label"), resetTheme],
+    [get(provider.clearTheme, "label"), clearTheme],
     [get(provider.applyTheme, "label"), applyTheme],
   );
 

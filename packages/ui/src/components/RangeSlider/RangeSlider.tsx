@@ -34,11 +34,11 @@ export interface RangeSliderProps
 }
 
 export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
-  ({ className, sizing = "md", theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
+  ({ className, sizing = "md", theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [rangeSliderTheme, provider.theme?.rangeSlider, customTheme],
-      [get(provider.resetTheme, "rangeSlider"), resetTheme],
+      [get(provider.clearTheme, "rangeSlider"), clearTheme],
       [get(provider.applyTheme, "rangeSlider"), applyTheme],
     );
 

@@ -20,11 +20,11 @@ export interface RadioRootTheme {
 export interface RadioProps extends Omit<ComponentProps<"input">, "ref" | "type">, ThemingProps<RadioTheme> {}
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ className, theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
+  ({ className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [radioTheme, provider.theme?.radio, customTheme],
-      [get(provider.resetTheme, "radio"), resetTheme],
+      [get(provider.clearTheme, "radio"), clearTheme],
       [get(provider.applyTheme, "radio"), applyTheme],
     );
 

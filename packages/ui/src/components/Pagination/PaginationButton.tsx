@@ -31,14 +31,14 @@ export const PaginationButton: FC<PaginationButtonProps> = ({
   className,
   onClick,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [paginationTheme, provider.theme?.pagination, customTheme],
-    [get(provider.resetTheme, "pagination"), resetTheme],
+    [get(provider.clearTheme, "pagination"), clearTheme],
     [get(provider.applyTheme, "pagination"), applyTheme],
   );
 
@@ -62,14 +62,14 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   onClick,
   disabled = false,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [paginationTheme, provider.theme?.pagination, customTheme],
-    [get(provider.resetTheme, "pagination"), resetTheme],
+    [get(provider.clearTheme, "pagination"), clearTheme],
     [get(provider.applyTheme, "pagination"), applyTheme],
   );
 

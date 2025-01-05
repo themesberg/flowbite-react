@@ -26,11 +26,11 @@ export interface HRTheme {
 export interface HRProps extends Omit<ComponentProps<"hr">, "ref">, ThemingProps<HRTheme> {}
 
 export const HR = forwardRef<HTMLHRElement, HRProps>(
-  ({ theme: customTheme, resetTheme, applyTheme, className, ...props }, ref) => {
+  ({ theme: customTheme, clearTheme, applyTheme, className, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [hrTheme.root, provider.theme?.hr?.root, customTheme],
-      [get(provider.resetTheme, "hr.root"), resetTheme],
+      [get(provider.clearTheme, "hr.root"), clearTheme],
       [get(provider.applyTheme, "hr.root"), applyTheme],
     );
 

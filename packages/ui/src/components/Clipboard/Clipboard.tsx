@@ -27,13 +27,13 @@ export interface ClipboardProps extends ComponentProps<"button">, ThemingProps<C
 }
 
 export const Clipboard = forwardRef<HTMLButtonElement, ClipboardProps>(
-  ({ className, valueToCopy, label, theme: customTheme, resetTheme, applyTheme, ...rest }, ref) => {
+  ({ className, valueToCopy, label, theme: customTheme, clearTheme, applyTheme, ...rest }, ref) => {
     const [isJustCopied, setIsJustCopied] = useState(false);
 
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [clipboardTheme.button, provider.theme?.clipboard?.button, customTheme],
-      [get(provider.resetTheme, "clipboard.button"), resetTheme],
+      [get(provider.clearTheme, "clipboard.button"), clearTheme],
       [get(provider.applyTheme, "clipboard.button"), applyTheme],
     );
 

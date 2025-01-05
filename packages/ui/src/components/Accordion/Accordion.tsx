@@ -41,7 +41,7 @@ export const Accordion: FC<AccordionProps> = ({
   collapseAll = false,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
@@ -64,7 +64,7 @@ export const Accordion: FC<AccordionProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [accordionTheme.root, provider.theme?.accordion?.root, customTheme],
-    [get(provider.resetTheme, "accordion.root"), resetTheme],
+    [get(provider.clearTheme, "accordion.root"), clearTheme],
     [get(provider.applyTheme, "accordion.root"), applyTheme],
   );
 

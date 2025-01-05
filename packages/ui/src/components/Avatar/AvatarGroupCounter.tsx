@@ -21,14 +21,14 @@ export const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({
   href,
   total,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [avatarTheme.groupCounter, provider.theme?.avatar?.groupCounter, customTheme],
-    [get(provider.resetTheme, "avatar.groupCounter"), resetTheme],
+    [get(provider.clearTheme, "avatar.groupCounter"), clearTheme],
     [get(provider.applyTheme, "avatar.groupCounter"), applyTheme],
   );
 

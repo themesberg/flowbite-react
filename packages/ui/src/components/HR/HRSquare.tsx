@@ -16,11 +16,11 @@ export interface HRSquareTheme {
 export interface HRSquareProps extends Omit<ComponentProps<"hr">, "ref">, ThemingProps<HRSquareTheme> {}
 
 export const HRSquare = forwardRef<HTMLHRElement, HRSquareProps>(
-  ({ theme: customTheme, resetTheme, applyTheme, className, ...props }, ref) => {
+  ({ theme: customTheme, clearTheme, applyTheme, className, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [hrTheme.square, provider.theme?.hr?.square, customTheme],
-      [get(provider.resetTheme, "hr.square"), resetTheme],
+      [get(provider.clearTheme, "hr.square"), clearTheme],
       [get(provider.applyTheme, "hr.square"), applyTheme],
     );
 

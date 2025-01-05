@@ -44,14 +44,14 @@ export const Badge: FC<BadgeProps> = ({
   size = "xs",
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [badgeTheme, provider.theme?.badge, customTheme],
-    [get(provider.resetTheme, "badge"), resetTheme],
+    [get(provider.clearTheme, "badge"), clearTheme],
     [get(provider.applyTheme, "badge"), applyTheme],
   );
 

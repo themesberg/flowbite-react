@@ -21,21 +21,21 @@ export interface ThemeProviderProps extends ThemeProviderValue, PropsWithChildre
 
 const ThemeProviderContext = createContext<ThemeProviderValue | undefined>(undefined);
 
-export function ThemeProvider({ children, theme, resetTheme, applyTheme, root }: ThemeProviderProps) {
+export function ThemeProvider({ children, theme, clearTheme, applyTheme, root }: ThemeProviderProps) {
   const parentProvider = useContext(ThemeProviderContext);
   const value = useMemo(
     () => ({
       theme: !root && parentProvider?.theme ? deepMergeStrings(twMerge)(parentProvider.theme, theme) : theme,
-      resetTheme: !root && parentProvider?.resetTheme ? deepmerge(parentProvider.resetTheme, resetTheme) : resetTheme,
+      clearTheme: !root && parentProvider?.clearTheme ? deepmerge(parentProvider.clearTheme, clearTheme) : clearTheme,
       applyTheme: !root && parentProvider?.applyTheme ? deepmerge(parentProvider?.applyTheme, applyTheme) : applyTheme,
     }),
     [
       theme,
-      resetTheme,
+      clearTheme,
       applyTheme,
       root,
       parentProvider?.theme,
-      parentProvider?.resetTheme,
+      parentProvider?.clearTheme,
       parentProvider?.applyTheme,
     ],
   );

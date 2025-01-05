@@ -27,14 +27,14 @@ export const RatingAdvanced: FC<RatingAdvancedProps> = ({
   className,
   percentFilled = 0,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [ratingAdvancedTheme, provider.theme?.ratingAdvanced, customTheme],
-    [get(provider.resetTheme, "ratingAdvanced"), resetTheme],
+    [get(provider.clearTheme, "ratingAdvanced"), clearTheme],
     [get(provider.applyTheme, "ratingAdvanced"), applyTheme],
   );
 

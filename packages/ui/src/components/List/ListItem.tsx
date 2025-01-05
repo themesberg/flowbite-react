@@ -26,14 +26,14 @@ export const ListItem: FC<ListItemProps> = ({
   className,
   icon: Icon,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [listTheme.item, provider.theme?.list?.item, customTheme],
-    [get(provider.resetTheme, "list.item"), resetTheme],
+    [get(provider.clearTheme, "list.item"), clearTheme],
     [get(provider.applyTheme, "list.item"), applyTheme],
   );
 

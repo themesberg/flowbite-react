@@ -33,7 +33,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
       disabled = false,
       className,
       theme: customTheme,
-      resetTheme,
+      clearTheme,
       applyTheme,
       ...props
     },
@@ -44,7 +44,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [floatingLabelTheme, provider.theme?.floatingLabel, customTheme],
-      [get(provider.resetTheme, "floatingLabel"), resetTheme],
+      [get(provider.clearTheme, "floatingLabel"), clearTheme],
       [get(provider.applyTheme, "floatingLabel"), applyTheme],
     );
 

@@ -8,11 +8,11 @@ import { twMerge } from "./tailwind-merge";
 const cache = new Map();
 
 /**
- * Adds prefix to `base` and merges with custom themes, applying optional `resetTheme` and `applyTheme` modifications.
+ * Adds prefix to `base` and merges with custom themes, applying optional `clearTheme` and `applyTheme` modifications.
  *
  * @template T - The type of the base theme.
  * @param {[base, ...custom[]]} themes - An array where the first element is the base theme and the rest are custom themes.
- * @param {DeepPartialBoolean<T[]>} resetThemeList - An array of `resetTheme` modifications to apply to the base theme.
+ * @param {DeepPartialBoolean<T[]>} clearThemeList - An array of `clearTheme` modifications to apply to the base theme.
  * @param {DeepPartialApplyTheme<T[]>} applyThemeList - An optional array of `applyTheme` modifications to apply to the merged theme.
  * @returns {T} - The resolved and merged theme.
  */
@@ -23,12 +23,12 @@ export function resolveTheme<T>(
     /** custom themes */
     ...unknown[],
   ],
-  resetThemeList: DeepPartialBoolean<T[]> = [],
+  clearThemeList: DeepPartialBoolean<T[]> = [],
   applyThemeList: DeepPartialApplyTheme<T[]> = [],
 ): T {
   const prefix = getPrefix();
 
-  const cacheKey = JSON.stringify({ base, custom, resetThemeList, applyThemeList, prefix });
+  const cacheKey = JSON.stringify({ base, custom, clearThemeList, applyThemeList, prefix });
   const cacheValue = cache.get(cacheKey);
 
   if (cacheValue) {
@@ -36,11 +36,11 @@ export function resolveTheme<T>(
   }
 
   const baseTheme = structuredClone(base);
-  const resetTheme = resolveResetTheme(resetThemeList);
+  const clearTheme = resolveClearTheme(clearThemeList);
   const applyTheme = resolveApplyTheme(applyThemeList);
 
-  if (resetTheme) {
-    applyReset(baseTheme, resetTheme);
+  if (clearTheme) {
+    applyClearTheme(baseTheme, clearTheme);
   }
   if (prefix) {
     stringIterator(baseTheme, (value) => applyPrefix(value, prefix));
@@ -58,22 +58,22 @@ export function resolveTheme<T>(
 }
 
 /**
- * Resolves an array of `resetTheme` objects into a single `resetTheme` object.
+ * Resolves an array of `clearTheme` objects into a single `clearTheme` object.
  *
  * @template T - The type of the object.
- * @param {DeepPartialBoolean<T[]>} resetThemeList - An array of `resetTheme` objects.
- * @returns {DeepPartialBoolean<T> | undefined} - A single `resetTheme` object or undefined if the input is not a valid array or is empty.
+ * @param {DeepPartialBoolean<T[]>} clearThemeList - An array of `clearTheme` objects.
+ * @returns {DeepPartialBoolean<T> | undefined} - A single `clearTheme` object or undefined if the input is not a valid array or is empty.
  */
-function resolveResetTheme<T>(resetThemeList: DeepPartialBoolean<T[]>): DeepPartialBoolean<T> | undefined {
-  if (!Array.isArray(resetThemeList)) {
+function resolveClearTheme<T>(clearThemeList: DeepPartialBoolean<T[]>): DeepPartialBoolean<T> | undefined {
+  if (!Array.isArray(clearThemeList)) {
     return;
   }
 
-  if (!resetThemeList.length) {
+  if (!clearThemeList.length) {
     return;
   }
 
-  return deepmerge(...resetThemeList) as DeepPartialBoolean<T> | undefined;
+  return deepmerge(...clearThemeList) as DeepPartialBoolean<T> | undefined;
 }
 
 /**
@@ -95,39 +95,39 @@ function resolveApplyTheme<T>(applyThemeList: DeepPartialApplyTheme<T[]>): DeepP
 }
 
 /**
- * Applies `resetTheme` modifications to a base object. If ``resetTheme`` is `true`,
+ * Applies `clearTheme` modifications to a base object. If `clearTheme` is `true`,
  * it will recursively set all string properties of the base object to an empty string.
- * If ``resetTheme`` is an object, it will recursively apply the properties of the ``resetTheme``
+ * If `clearTheme` is an object, it will recursively apply the properties of the `clearTheme`
  * object to the base object.
  *
  * @template T - The type of the base object.
- * @param {T} base - The base object to which `resetTheme` modifications will be applied.
- * @param {DeepPartialBoolean<T>} `resetTheme` - The `resetTheme` modifications to apply. It can be a boolean or an object.
+ * @param {T} base - The base object to which `clearTheme` modifications will be applied.
+ * @param {DeepPartialBoolean<T>} `clearTheme` - The `clearTheme` modifications to apply. It can be a boolean or an object.
  * @returns {void}
  */
-function applyReset<T>(base: T, resetTheme: DeepPartialBoolean<T>): void {
-  function iterate(base: T, resetTheme: DeepPartialBoolean<T>) {
-    if (resetTheme === true) {
+function applyClearTheme<T>(base: T, clearTheme: DeepPartialBoolean<T>): void {
+  function iterate(base: T, clearTheme: DeepPartialBoolean<T>) {
+    if (clearTheme === true) {
       if (typeof base === "object" && base !== null) {
         for (const key in base) {
           // @ts-expect-error - bypass
-          base[key] = iterate(base[key], resetTheme);
+          base[key] = iterate(base[key], clearTheme);
         }
       }
       if (typeof base === "string") {
         return "";
       }
     }
-    if (typeof resetTheme === "object" && resetTheme !== null) {
-      for (const key in resetTheme) {
+    if (typeof clearTheme === "object" && clearTheme !== null) {
+      for (const key in clearTheme) {
         // @ts-expect-error - bypass
-        base[key] = iterate(base[key], resetTheme[key]);
+        base[key] = iterate(base[key], clearTheme[key]);
       }
     }
     return base;
   }
 
-  iterate(base, resetTheme);
+  iterate(base, clearTheme);
 }
 
 /**

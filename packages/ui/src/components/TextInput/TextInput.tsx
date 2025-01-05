@@ -67,7 +67,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       sizing = "md",
       type = "text",
       theme: customTheme,
-      resetTheme,
+      clearTheme,
       applyTheme,
       ...props
     },
@@ -76,7 +76,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [textInputTheme, provider.theme?.textInput, customTheme],
-      [get(provider.resetTheme, "textInput"), resetTheme],
+      [get(provider.clearTheme, "textInput"), clearTheme],
       [get(provider.applyTheme, "textInput"), applyTheme],
     );
 

@@ -24,11 +24,11 @@ export interface HRIconProps extends Omit<ComponentProps<"hr">, "ref">, ThemingP
 }
 
 export const HRIcon = forwardRef<HTMLHRElement, HRIconProps>(
-  ({ theme: customTheme, resetTheme, applyTheme, icon: Icon = QuoteRightIcon, className, ...props }, ref) => {
+  ({ theme: customTheme, clearTheme, applyTheme, icon: Icon = QuoteRightIcon, className, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [hrTheme.icon, provider.theme?.hr?.icon, customTheme],
-      [get(provider.resetTheme, "hr.icon"), resetTheme],
+      [get(provider.clearTheme, "hr.icon"), clearTheme],
       [get(provider.applyTheme, "hr.icon"), applyTheme],
     );
 

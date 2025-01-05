@@ -50,7 +50,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
       name,
       onChange,
       theme: customTheme,
-      resetTheme,
+      clearTheme,
       applyTheme,
       ...props
     },
@@ -60,7 +60,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [toggleSwitchTheme, provider.theme?.toggleSwitch, customTheme],
-      [get(provider.resetTheme, "toggleSwitch"), resetTheme],
+      [get(provider.clearTheme, "toggleSwitch"), clearTheme],
       [get(provider.applyTheme, "toggleSwitch"), applyTheme],
     );
 

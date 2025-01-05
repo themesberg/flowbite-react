@@ -16,6 +16,6 @@ export type ApplyTheme = "merge" | "replace";
 
 export interface ThemingProps<T> {
   theme?: DeepPartial<T>;
-  resetTheme?: DeepPartialBoolean<T>;
+  clearTheme?: DeepPartialBoolean<T>;
   applyTheme?: DeepPartialApplyTheme<T>;
 }

@@ -27,11 +27,11 @@ describe("resolveTheme", () => {
     });
   });
 
-  it("should reset theme values when resetTheme is true", () => {
+  it("should clear theme values when clearTheme is true", () => {
     const base = { color: "text-red-400", nested: { background: "text-blue-400" } };
-    const resetTheme = [{ color: true, nested: { background: true } }];
+    const clearTheme = [{ color: true, nested: { background: true } }];
 
-    expect(resolveTheme([base], resetTheme)).toEqual({
+    expect(resolveTheme([base], clearTheme)).toEqual({
       color: "",
       nested: { background: "" },
     });

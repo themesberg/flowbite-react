@@ -40,7 +40,7 @@ export const DropdownItem = forwardRef(
       icon: Icon,
       onClick,
       theme: customTheme,
-      resetTheme,
+      clearTheme,
       applyTheme,
       ...props
     }: DropdownItemProps<T>,
@@ -50,7 +50,7 @@ export const DropdownItem = forwardRef(
     const ref = useMergeRefs([forwardedRef, listItemRef]);
     const {
       theme: rootTheme,
-      resetTheme: rootResetTheme,
+      clearTheme: rootClearTheme,
       applyTheme: rootApplyTheme,
       activeIndex,
       dismissOnClick,
@@ -62,7 +62,7 @@ export const DropdownItem = forwardRef(
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [dropdownTheme.floating.item, provider.theme?.dropdown?.floating?.item, rootTheme?.floating?.item, customTheme],
-      [get(provider.resetTheme, "dropdown.floating.item"), get(rootResetTheme, "floating.item"), resetTheme],
+      [get(provider.clearTheme, "dropdown.floating.item"), get(rootClearTheme, "floating.item"), clearTheme],
       [get(provider.applyTheme, "dropdown.floating.item"), get(rootApplyTheme, "floating.item"), applyTheme],
     );
 

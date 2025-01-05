@@ -41,14 +41,14 @@ export const Footer: FC<FooterProps> = ({
   className,
   container = false,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme, provider.theme?.footer, customTheme],
-    [get(provider.resetTheme, "footer"), resetTheme],
+    [get(provider.clearTheme, "footer"), clearTheme],
     [get(provider.applyTheme, "footer"), applyTheme],
   );
 

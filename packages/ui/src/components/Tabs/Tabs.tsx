@@ -72,7 +72,7 @@ export const Tabs = forwardRef<TabsRef, TabsProps>(
       onActiveTabChange,
       variant = "default",
       theme: customTheme,
-      resetTheme,
+      clearTheme,
       applyTheme,
       ...props
     },
@@ -81,7 +81,7 @@ export const Tabs = forwardRef<TabsRef, TabsProps>(
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [tabsTheme, provider.theme?.tabs, customTheme],
-      [get(provider.resetTheme, "tabs"), resetTheme],
+      [get(provider.clearTheme, "tabs"), clearTheme],
       [get(provider.applyTheme, "tabs"), applyTheme],
     );
 

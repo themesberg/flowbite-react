@@ -24,14 +24,14 @@ export const ListGroup: FC<ListGroupProps> = ({
   children,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [listGroupTheme.root, provider.theme?.listGroup?.root, customTheme],
-    [get(provider.resetTheme, "listGroup.root"), get(resetTheme, "root")],
+    [get(provider.clearTheme, "listGroup.root"), get(clearTheme, "root")],
     [get(provider.applyTheme, "listGroup.root"), get(applyTheme, "root")],
   );
 

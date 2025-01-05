@@ -30,7 +30,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   className,
   id,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
@@ -39,7 +39,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
 
   const {
     theme: rootTheme,
-    resetTheme: rootResetTheme,
+    clearTheme: rootClearTheme,
     applyTheme: rootApplyTheme,
     popup,
     onClose,
@@ -49,7 +49,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [modalTheme.header, provider.theme?.modal?.header, rootTheme?.header, customTheme],
-    [get(provider.resetTheme, "modal.header"), get(rootResetTheme, "header"), resetTheme],
+    [get(provider.clearTheme, "modal.header"), get(rootClearTheme, "header"), clearTheme],
     [get(provider.applyTheme, "modal.header"), get(rootApplyTheme, "header"), applyTheme],
   );
 

@@ -32,7 +32,7 @@ export const Tooltip: FC<TooltipProps> = ({
   placement = "top",
   style = "dark",
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   trigger = "hover",
   ...props
@@ -40,7 +40,7 @@ export const Tooltip: FC<TooltipProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [tooltipTheme, provider.theme?.tooltip, customTheme],
-    [get(provider.resetTheme, "tooltip"), resetTheme],
+    [get(provider.clearTheme, "tooltip"), clearTheme],
     [get(provider.applyTheme, "tooltip"), applyTheme],
   );
 

@@ -30,14 +30,14 @@ export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentP
   name,
   src,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme.brand, provider.theme?.footer?.brand, customTheme],
-    [get(provider.resetTheme, "footer.brand"), resetTheme],
+    [get(provider.clearTheme, "footer.brand"), clearTheme],
     [get(provider.applyTheme, "footer.brand"), applyTheme],
   );
 

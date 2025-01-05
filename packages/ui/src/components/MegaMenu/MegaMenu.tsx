@@ -17,11 +17,11 @@ export interface MegaMenuTheme extends NavbarTheme {
 
 export type MegaMenuProps = NavbarProps;
 
-export const MegaMenu: FC<MegaMenuProps> = ({ children, theme: customTheme, resetTheme, applyTheme, ...props }) => {
+export const MegaMenu: FC<MegaMenuProps> = ({ children, theme: customTheme, clearTheme, applyTheme, ...props }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [megaMenuTheme, provider.theme?.megaMenu, customTheme],
-    [get(provider.resetTheme, "megaMenu"), resetTheme],
+    [get(provider.clearTheme, "megaMenu"), clearTheme],
     [get(provider.applyTheme, "megaMenu"), applyTheme],
   );
 

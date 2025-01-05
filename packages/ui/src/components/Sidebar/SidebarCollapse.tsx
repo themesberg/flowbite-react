@@ -50,18 +50,18 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   renderChevronIcon,
   open = false,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const id = useId();
   const [isOpen, setOpen] = useState(open);
-  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [sidebarTheme.collapse, provider.theme?.sidebar?.collapse, rootTheme?.collapse, customTheme],
-    [get(provider.resetTheme, "sidebar.collapse"), get(rootResetTheme, "collapse"), resetTheme],
+    [get(provider.clearTheme, "sidebar.collapse"), get(rootClearTheme, "collapse"), clearTheme],
     [get(provider.applyTheme, "sidebar.collapse"), get(rootApplyTheme, "collapse"), applyTheme],
   );
 

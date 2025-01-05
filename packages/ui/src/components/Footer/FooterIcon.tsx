@@ -26,14 +26,14 @@ export const FooterIcon: FC<FooterIconProps & ComponentProps<"a"> & ComponentPro
   href,
   icon: Icon,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme.icon, provider.theme?.footer?.icon, customTheme],
-    [get(provider.resetTheme, "footer.icon"), resetTheme],
+    [get(provider.clearTheme, "footer.icon"), clearTheme],
     [get(provider.applyTheme, "footer.icon"), applyTheme],
   );
 

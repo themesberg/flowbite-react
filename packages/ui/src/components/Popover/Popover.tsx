@@ -39,7 +39,7 @@ export function Popover({
   onOpenChange: setControlledOpen,
   placement: theirPlacement = "bottom",
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }: PopoverProps) {
@@ -49,7 +49,7 @@ export function Popover({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [popoverTheme, provider.theme?.popover, customTheme],
-    [get(provider.resetTheme, "popover"), resetTheme],
+    [get(provider.clearTheme, "popover"), clearTheme],
     [get(provider.applyTheme, "popover"), applyTheme],
   );
 

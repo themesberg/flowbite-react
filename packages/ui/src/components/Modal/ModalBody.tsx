@@ -20,16 +20,16 @@ export const ModalBody: FC<ModalBodyProps> = ({
   children,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, popup } = useModalContext();
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, popup } = useModalContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [modalTheme.body, provider.theme?.modal?.body, rootTheme?.body, customTheme],
-    [get(provider.resetTheme, "modal.body"), get(rootResetTheme, "body"), resetTheme],
+    [get(provider.clearTheme, "modal.body"), get(rootClearTheme, "body"), clearTheme],
     [get(provider.applyTheme, "modal.body"), get(rootApplyTheme, "body"), applyTheme],
   );
 

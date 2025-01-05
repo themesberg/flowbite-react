@@ -45,14 +45,14 @@ export type CardProps = (
   CommonCardProps;
 
 export const Card: FC<CardProps> = (props) => {
-  const { children, className, horizontal, href, theme: customTheme, resetTheme, applyTheme } = props;
+  const { children, className, horizontal, href, theme: customTheme, clearTheme, applyTheme } = props;
   const Component = typeof href === "undefined" ? "div" : "a";
   const theirProps = removeCustomProps(props);
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [cardTheme, provider.theme?.card, customTheme],
-    [get(provider.resetTheme, "card"), resetTheme],
+    [get(provider.clearTheme, "card"), clearTheme],
     [get(provider.applyTheme, "card"), applyTheme],
   );
 
@@ -76,11 +76,11 @@ export const Card: FC<CardProps> = (props) => {
 
 Card.displayName = "Card";
 
-const Image: FC<CardProps> = ({ theme: customTheme, resetTheme, applyTheme, ...props }) => {
+const Image: FC<CardProps> = ({ theme: customTheme, clearTheme, applyTheme, ...props }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [cardTheme, provider.theme?.card, customTheme],
-    [get(provider.resetTheme, "carousel"), resetTheme],
+    [get(provider.clearTheme, "carousel"), clearTheme],
     [get(provider.applyTheme, "carousel"), applyTheme],
   );
 
@@ -111,5 +111,5 @@ const removeCustomProps = omit([
   "imgSrc",
   "renderImage",
   "theme",
-  "resetTheme",
+  "clearTheme",
 ]);

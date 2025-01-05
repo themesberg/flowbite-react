@@ -45,14 +45,14 @@ export const Alert: FC<AlertProps> = ({
   rounded = true,
   withBorderAccent,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [alertTheme, provider.theme?.alert, customTheme],
-    [get(provider.resetTheme, "alert"), resetTheme],
+    [get(provider.clearTheme, "alert"), clearTheme],
     [get(provider.applyTheme, "alert"), applyTheme],
   );
 

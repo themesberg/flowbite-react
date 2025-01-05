@@ -64,14 +64,14 @@ export const Pagination: FC<PaginationProps> = ({
   showIcons: showIcon = false,
   totalPages,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [paginationTheme, provider.theme?.pagination, customTheme],
-    [get(provider.resetTheme, "pagination"), resetTheme],
+    [get(provider.clearTheme, "pagination"), clearTheme],
     [get(provider.applyTheme, "pagination"), applyTheme],
   );
 

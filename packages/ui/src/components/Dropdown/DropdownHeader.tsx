@@ -20,16 +20,16 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
   children,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme } = useDropdownContext();
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useDropdownContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [dropdownTheme.floating, provider.theme?.dropdown?.floating, rootTheme?.floating, customTheme],
-    [get(provider.resetTheme, "dropdown.floating"), get(rootResetTheme, "floating"), resetTheme],
+    [get(provider.clearTheme, "dropdown.floating"), get(rootClearTheme, "floating"), clearTheme],
     [get(provider.applyTheme, "dropdown.floating"), get(rootApplyTheme, "floating"), applyTheme],
   );
 

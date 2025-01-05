@@ -20,11 +20,11 @@ export interface HRTextProps extends Omit<ComponentProps<"hr">, "ref">, ThemingP
 }
 
 export const HRText = forwardRef<HTMLHRElement, HRTextProps>(
-  ({ theme: customTheme, resetTheme, applyTheme, text, className, ...props }, ref) => {
+  ({ theme: customTheme, clearTheme, applyTheme, text, className, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [hrTheme.text, provider.theme?.hr?.text, customTheme],
-      [get(provider.resetTheme, "hr.text"), resetTheme],
+      [get(provider.clearTheme, "hr.text"), clearTheme],
       [get(provider.applyTheme, "hr.text"), applyTheme],
     );
 

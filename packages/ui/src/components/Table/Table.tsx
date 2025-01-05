@@ -31,17 +31,17 @@ export interface TableProps extends ComponentPropsWithRef<"table">, ThemingProps
 }
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(
-  ({ children, className, striped, hoverable, theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
+  ({ children, className, striped, hoverable, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [tableTheme, provider.theme?.table, customTheme],
-      [get(provider.resetTheme, "table"), resetTheme],
+      [get(provider.clearTheme, "table"), clearTheme],
       [get(provider.applyTheme, "table"), applyTheme],
     );
 
     return (
       <div data-testid="table-element" className={twMerge(theme.root.wrapper)}>
-        <TableContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, striped, hoverable }}>
+        <TableContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, striped, hoverable }}>
           <div className={twMerge(theme.root.shadow, className)}></div>
           <table className={twMerge(theme.root.base, className)} {...props} ref={ref}>
             {children}

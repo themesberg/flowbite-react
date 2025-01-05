@@ -35,12 +35,12 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   className,
   icon: Icon,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, horizontal } = useTimelineContext();
-  const { theme: itemTheme, resetTheme: itemResetTheme, applyTheme: itemApplyTheme } = useTimelineItemContext();
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, horizontal } = useTimelineContext();
+  const { theme: itemTheme, clearTheme: itemClearTheme, applyTheme: itemApplyTheme } = useTimelineItemContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
@@ -52,10 +52,10 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
       customTheme,
     ],
     [
-      get(provider.resetTheme, "timeline.item.point"),
-      get(rootResetTheme, "item.point"),
-      get(itemResetTheme, "point"),
-      resetTheme,
+      get(provider.clearTheme, "timeline.item.point"),
+      get(rootClearTheme, "item.point"),
+      get(itemClearTheme, "point"),
+      clearTheme,
     ],
     [
       get(provider.applyTheme, "timeline.item.point"),

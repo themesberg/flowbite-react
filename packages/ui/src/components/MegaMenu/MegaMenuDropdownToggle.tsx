@@ -20,7 +20,7 @@ export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
   children,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
@@ -32,7 +32,7 @@ export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [megaMenuTheme.dropdownToggle, provider.theme?.megaMenu?.dropdownToggle, customTheme],
-    [get(provider.resetTheme, "megaMenu.dropdownToggle"), resetTheme],
+    [get(provider.clearTheme, "megaMenu.dropdownToggle"), clearTheme],
     [get(provider.applyTheme, "megaMenu.dropdownToggle"), applyTheme],
   );
 

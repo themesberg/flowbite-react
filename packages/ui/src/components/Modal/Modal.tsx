@@ -78,7 +78,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
       size = "2xl",
       initialFocus,
       theme: customTheme,
-      resetTheme,
+      clearTheme,
       applyTheme,
       ...props
     },
@@ -88,7 +88,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [modalTheme, provider.theme?.modal, customTheme],
-      [get(provider.resetTheme, "modal"), resetTheme],
+      [get(provider.clearTheme, "modal"), clearTheme],
       [get(provider.applyTheme, "modal"), applyTheme],
     );
 
@@ -110,7 +110,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
     }
 
     return (
-      <ModalContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, popup, onClose, setHeaderId }}>
+      <ModalContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, popup, onClose, setHeaderId }}>
         <FloatingPortal root={root}>
           <FloatingOverlay
             lockScroll

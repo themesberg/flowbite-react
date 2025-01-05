@@ -25,7 +25,7 @@ export interface ClipboardWithIconProps extends ComponentProps<"button">, Themin
 
 export const ClipboardWithIcon = forwardRef<HTMLButtonElement, ClipboardWithIconProps>(
   (
-    { valueToCopy, icon: Icon = ClipboardListIcon, theme: customTheme, resetTheme, applyTheme, className, ...rest },
+    { valueToCopy, icon: Icon = ClipboardListIcon, theme: customTheme, clearTheme, applyTheme, className, ...rest },
     ref,
   ) => {
     const [isJustCopied, setIsJustCopied] = useState(false);
@@ -33,7 +33,7 @@ export const ClipboardWithIcon = forwardRef<HTMLButtonElement, ClipboardWithIcon
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [clipboardTheme.withIcon, provider.theme?.clipboard?.withIcon, customTheme],
-      [get(provider.resetTheme, "clipboard.withIcon"), resetTheme],
+      [get(provider.clearTheme, "clipboard.withIcon"), clearTheme],
       [get(provider.applyTheme, "clipboard.withIcon"), applyTheme],
     );
 

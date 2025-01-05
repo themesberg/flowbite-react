@@ -22,7 +22,7 @@ export interface ListRootTheme {
     off: string;
   };
   horizontal: string;
-  resetTheme: string;
+  unstyled: string;
   nested: string;
 }
 
@@ -48,14 +48,14 @@ export const List: FC<ListProps> = ({
   ordered,
   unstyled,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [listTheme.root, provider.theme?.list?.root, customTheme],
-    [get(provider.resetTheme, "list.root"), get(resetTheme, "root")],
+    [get(provider.clearTheme, "list.root"), get(clearTheme, "root")],
     [get(provider.applyTheme, "list.root"), get(applyTheme, "root")],
   );
   const Component = ordered ? "ol" : "ul";
@@ -65,7 +65,7 @@ export const List: FC<ListProps> = ({
       className={twMerge(
         theme.base,
         theme.ordered[ordered ? "on" : "off"],
-        unstyled && theme.resetTheme,
+        unstyled && theme.unstyled,
         nested && theme.nested,
         horizontal && theme.horizontal,
         className,

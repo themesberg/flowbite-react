@@ -26,19 +26,19 @@ export const Rating: FC<RatingProps> = ({
   className,
   size = "sm",
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [ratingTheme, provider.theme?.rating, customTheme],
-    [get(provider.resetTheme, "rating"), resetTheme],
+    [get(provider.clearTheme, "rating"), clearTheme],
     [get(provider.applyTheme, "rating"), applyTheme],
   );
 
   return (
-    <RatingContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, size }}>
+    <RatingContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, size }}>
       <div className={twMerge(theme.root.base, className)} {...props}>
         {children}
       </div>

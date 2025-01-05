@@ -29,19 +29,19 @@ export const Timeline: FC<TimelineProps> = ({
   className,
   horizontal,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [timelineTheme, provider.theme?.timeline, customTheme],
-    [get(provider.resetTheme, "timeline"), resetTheme],
+    [get(provider.clearTheme, "timeline"), clearTheme],
     [get(provider.applyTheme, "timeline"), applyTheme],
   );
 
   return (
-    <TimelineContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, horizontal }}>
+    <TimelineContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, horizontal }}>
       <ol
         data-testid="timeline-component"
         className={twMerge(

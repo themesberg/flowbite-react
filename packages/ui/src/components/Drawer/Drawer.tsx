@@ -48,7 +48,7 @@ export const Drawer: FC<DrawerProps> = ({
   onClose,
   open: isOpen = false,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
@@ -57,7 +57,7 @@ export const Drawer: FC<DrawerProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [drawerTheme, provider.theme?.drawer, customTheme],
-    [get(provider.resetTheme, "drawer"), resetTheme],
+    [get(provider.clearTheme, "drawer"), clearTheme],
     [get(provider.applyTheme, "drawer"), applyTheme],
   );
 
@@ -74,7 +74,7 @@ export const Drawer: FC<DrawerProps> = ({
   }, [onClose, isOpen]);
 
   return (
-    <DrawerContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, onClose, isOpen, id }}>
+    <DrawerContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, onClose, isOpen, id }}>
       <div
         aria-modal
         aria-describedby={`drawer-dialog-${id}`}

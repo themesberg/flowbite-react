@@ -48,7 +48,7 @@ export const Navbar: FC<NavbarProps> = ({
   menuOpen,
   rounded,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
@@ -57,12 +57,12 @@ export const Navbar: FC<NavbarProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [navbarTheme, provider.theme?.navbar, customTheme],
-    [get(provider.resetTheme, "navbar"), resetTheme],
+    [get(provider.clearTheme, "navbar"), clearTheme],
     [get(provider.applyTheme, "navbar"), applyTheme],
   );
 
   return (
-    <NavbarContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, isOpen, setIsOpen }}>
+    <NavbarContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, isOpen, setIsOpen }}>
       <nav
         className={twMerge(
           theme.root.base,

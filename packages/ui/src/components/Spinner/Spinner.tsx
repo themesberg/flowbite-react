@@ -46,14 +46,14 @@ export const Spinner: FC<SpinnerProps> = ({
   light,
   size = "md",
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [spinnerTheme, provider.theme?.spinner, customTheme],
-    [get(provider.resetTheme, "spinner"), resetTheme],
+    [get(provider.clearTheme, "spinner"), clearTheme],
     [get(provider.applyTheme, "spinner"), applyTheme],
   );
 

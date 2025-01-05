@@ -120,7 +120,7 @@ export const Button = forwardRef(
       positionInGroup = "none",
       size = "md",
       theme: customTheme,
-      resetTheme,
+      clearTheme,
       applyTheme,
       ...props
     }: ButtonProps<T>,
@@ -129,12 +129,12 @@ export const Button = forwardRef(
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [buttonTheme, provider.theme?.button, customTheme],
-      [get(provider.resetTheme, "button"), resetTheme],
+      [get(provider.clearTheme, "button"), clearTheme],
       [get(provider.applyTheme, "button"), applyTheme],
     );
     const groupTheme = resolveTheme(
       [buttonGroupTheme, provider.theme?.buttonGroup],
-      [get(provider.resetTheme, "buttonGroup"), resetTheme],
+      [get(provider.clearTheme, "buttonGroup"), clearTheme],
       [get(provider.applyTheme, "buttonGroup"), applyTheme],
     );
 

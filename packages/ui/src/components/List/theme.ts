@@ -9,7 +9,7 @@ export const listTheme: ListTheme = createTheme({
       on: "list-decimal",
     },
     horizontal: "flex list-none flex-wrap items-center justify-center space-x-4 space-y-0",
-    resetTheme: "list-none",
+    unstyled: "list-none",
     nested: "mt-2 ps-5",
   },
   item: {

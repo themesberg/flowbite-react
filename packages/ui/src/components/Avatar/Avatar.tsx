@@ -90,14 +90,14 @@ export const Avatar: FC<AvatarProps> = ({
   status,
   statusPosition = "top-left",
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [avatarTheme, provider.theme?.avatar, customTheme],
-    [get(provider.resetTheme, "avatar"), resetTheme],
+    [get(provider.clearTheme, "avatar"), clearTheme],
     [get(provider.applyTheme, "avatar"), applyTheme],
   );
 

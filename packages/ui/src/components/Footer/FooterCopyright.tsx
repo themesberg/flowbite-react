@@ -26,14 +26,14 @@ export const FooterCopyright: FC<CopyrightProps> = ({
   href,
   year,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme.copyright, provider.theme?.footer?.copyright, customTheme],
-    [get(provider.resetTheme, "footer.copyright"), resetTheme],
+    [get(provider.clearTheme, "footer.copyright"), clearTheme],
     [get(provider.applyTheme, "footer.copyright"), applyTheme],
   );
 

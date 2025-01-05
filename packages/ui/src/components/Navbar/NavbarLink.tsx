@@ -31,16 +31,16 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   className,
   onClick,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, setIsOpen } = useNavbarContext();
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, setIsOpen } = useNavbarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [navbarTheme.link, provider.theme?.navbar?.link, rootTheme?.link, customTheme],
-    [get(provider.resetTheme, "navbar.link"), get(rootResetTheme, "link"), resetTheme],
+    [get(provider.clearTheme, "navbar.link"), get(rootClearTheme, "link"), clearTheme],
     [get(provider.applyTheme, "navbar.link"), get(rootApplyTheme, "link"), applyTheme],
   );
 

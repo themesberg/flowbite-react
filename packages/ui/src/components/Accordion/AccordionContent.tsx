@@ -19,7 +19,7 @@ export const AccordionContent: FC<AccordionContentProps> = ({
   children,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
@@ -28,7 +28,7 @@ export const AccordionContent: FC<AccordionContentProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [accordionTheme.content, provider.theme?.accordion?.content, customTheme],
-    [get(provider.resetTheme, "accordion.content"), resetTheme],
+    [get(provider.clearTheme, "accordion.content"), clearTheme],
     [get(provider.applyTheme, "accordion.content"), applyTheme],
   );
 

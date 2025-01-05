@@ -33,7 +33,7 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   iconDark: IconDark = SunIcon,
   iconLight: IconLight = MoonIcon,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
@@ -42,7 +42,7 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [darkThemeToggleTheme, provider.theme?.darkThemeToggle, customTheme],
-    [get(provider.resetTheme, "darkThemeToggle"), resetTheme],
+    [get(provider.clearTheme, "darkThemeToggle"), clearTheme],
     [get(provider.applyTheme, "darkThemeToggle"), applyTheme],
   );
 

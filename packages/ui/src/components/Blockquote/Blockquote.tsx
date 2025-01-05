@@ -22,14 +22,14 @@ export const Blockquote: FC<BlockquoteProps> = ({
   children,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [blockquoteTheme, provider.theme?.blockquote, customTheme],
-    [get(provider.resetTheme, "blockquote"), resetTheme],
+    [get(provider.clearTheme, "blockquote"), clearTheme],
     [get(provider.applyTheme, "blockquote"), applyTheme],
   );
 

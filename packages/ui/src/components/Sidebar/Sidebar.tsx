@@ -43,19 +43,19 @@ export const Sidebar: FC<SidebarProps> = ({
   collapsed: isCollapsed = false,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [sidebarTheme, provider.theme?.sidebar, customTheme],
-    [get(provider.resetTheme, "sidebar"), resetTheme],
+    [get(provider.clearTheme, "sidebar"), clearTheme],
     [get(provider.applyTheme, "sidebar"), applyTheme],
   );
 
   return (
-    <SidebarContext.Provider value={{ theme: customTheme, resetTheme, applyTheme, isCollapsed }}>
+    <SidebarContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, isCollapsed }}>
       <Component
         aria-label="Sidebar"
         hidden={isCollapsed && collapseBehavior === "hide"}

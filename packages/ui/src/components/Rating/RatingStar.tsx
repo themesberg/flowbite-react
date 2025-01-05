@@ -31,16 +31,16 @@ export const RatingStar: FC<RatingStarProps> = ({
   filled = true,
   starIcon: Icon = StarIcon,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, size = "sm" } = useRatingContext();
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, size = "sm" } = useRatingContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [ratingTheme.star, provider.theme?.rating?.star, rootTheme?.star, customTheme],
-    [get(provider.resetTheme, "rating.star"), get(rootResetTheme, "star"), resetTheme],
+    [get(provider.clearTheme, "rating.star"), get(rootClearTheme, "star"), clearTheme],
     [get(provider.applyTheme, "rating.star"), get(rootApplyTheme, "star"), applyTheme],
   );
 

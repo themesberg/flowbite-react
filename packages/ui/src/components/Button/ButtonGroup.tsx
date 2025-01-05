@@ -65,14 +65,14 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   outline,
   pill,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }: ButtonGroupProps) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [buttonGroupTheme, provider.theme?.buttonGroup, customTheme],
-    [get(provider.resetTheme, "buttonGroup"), resetTheme],
+    [get(provider.clearTheme, "buttonGroup"), clearTheme],
     [get(provider.applyTheme, "buttonGroup"), applyTheme],
   );
 

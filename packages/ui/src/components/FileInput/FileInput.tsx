@@ -41,13 +41,13 @@ export interface FileInputProps
 
 export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
   (
-    { className, color = "gray", helperText, sizing = "md", theme: customTheme, resetTheme, applyTheme, ...props },
+    { className, color = "gray", helperText, sizing = "md", theme: customTheme, clearTheme, applyTheme, ...props },
     ref,
   ) => {
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [fileInputTheme, provider.theme?.fileInput, customTheme],
-      [get(provider.resetTheme, "fileInput"), resetTheme],
+      [get(provider.clearTheme, "fileInput"), clearTheme],
       [get(provider.applyTheme, "fileInput"), applyTheme],
     );
 

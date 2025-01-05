@@ -33,14 +33,14 @@ export const HelperText: FC<HelperTextProps> = ({
   color = "default",
   value,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [helperTextTheme, provider.theme?.helperText, customTheme],
-    [get(provider.resetTheme, "helperText"), resetTheme],
+    [get(provider.clearTheme, "helperText"), clearTheme],
     [get(provider.applyTheme, "helperText"), applyTheme],
   );
 

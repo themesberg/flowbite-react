@@ -37,14 +37,14 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & Compon
   onClick,
   disabled,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [listGroupTheme.item, provider.theme?.listGroup?.item, customTheme],
-    [get(provider.resetTheme, "listGroup.item"), resetTheme],
+    [get(provider.clearTheme, "listGroup.item"), clearTheme],
     [get(provider.applyTheme, "listGroup.item"), applyTheme],
   );
 

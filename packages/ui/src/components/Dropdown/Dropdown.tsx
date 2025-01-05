@@ -112,7 +112,7 @@ export const Dropdown: FC<DropdownProps> = ({
   enableTypeAhead = true,
   renderTrigger,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
@@ -126,10 +126,10 @@ export const Dropdown: FC<DropdownProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [dropdownTheme, provider.theme?.dropdown, customTheme],
-    [get(provider.resetTheme, "dropdown"), resetTheme],
+    [get(provider.clearTheme, "dropdown"), clearTheme],
     [get(provider.applyTheme, "dropdown"), applyTheme],
   );
-  const theirProps = props as Omit<DropdownProps, "theme" | "resetTheme">;
+  const theirProps = props as Omit<DropdownProps, "theme" | "clearTheme">;
   const dataTestId = props["data-testid"] || "flowbite-dropdown-target";
   const {
     placement = props.inline ? "bottom-start" : "bottom",
@@ -191,7 +191,7 @@ export const Dropdown: FC<DropdownProps> = ({
 
   return (
     <DropdownContext.Provider
-      value={{ theme: customTheme, resetTheme, applyTheme, activeIndex, dismissOnClick, getItemProps, handleSelect }}
+      value={{ theme: customTheme, clearTheme, applyTheme, activeIndex, dismissOnClick, getItemProps, handleSelect }}
     >
       <Trigger
         {...buttonProps}

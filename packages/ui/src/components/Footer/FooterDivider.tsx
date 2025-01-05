@@ -17,14 +17,14 @@ export interface FooterDividerProps extends ComponentProps<"hr">, ThemingProps<F
 export const FooterDivider: FC<FooterDividerProps> = ({
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme.divider, provider.theme?.footer?.divider, customTheme],
-    [get(provider.resetTheme, "footer.divider"), resetTheme],
+    [get(provider.clearTheme, "footer.divider"), clearTheme],
     [get(provider.applyTheme, "footer.divider"), applyTheme],
   );
 

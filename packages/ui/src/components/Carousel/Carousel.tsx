@@ -73,14 +73,14 @@ export const Carousel: FC<CarouselProps> = ({
   onSlideChange = null,
   pauseOnHover = false,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [carouselTheme, provider.theme?.carousel, customTheme],
-    [get(provider.resetTheme, "carousel"), resetTheme],
+    [get(provider.clearTheme, "carousel"), clearTheme],
     [get(provider.applyTheme, "carousel"), applyTheme],
   );
 
@@ -215,11 +215,11 @@ export const Carousel: FC<CarouselProps> = ({
   );
 };
 
-const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, resetTheme, applyTheme }) => {
+const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, clearTheme, applyTheme }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [carouselTheme, provider.theme?.carousel, customTheme],
-    [get(provider.resetTheme, "carousel"), resetTheme],
+    [get(provider.clearTheme, "carousel"), clearTheme],
     [get(provider.applyTheme, "carousel"), applyTheme],
   );
 
@@ -230,11 +230,11 @@ const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customThe
   );
 };
 
-const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, resetTheme, applyTheme }) => {
+const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, clearTheme, applyTheme }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [carouselTheme, provider.theme?.carousel, customTheme],
-    [get(provider.resetTheme, "carousel"), resetTheme],
+    [get(provider.clearTheme, "carousel"), clearTheme],
     [get(provider.applyTheme, "carousel"), applyTheme],
   );
 

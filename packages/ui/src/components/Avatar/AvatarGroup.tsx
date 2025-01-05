@@ -18,14 +18,14 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
   children,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [avatarTheme.group, provider.theme?.avatar?.group, customTheme],
-    [get(provider.resetTheme, "avatar"), resetTheme],
+    [get(provider.clearTheme, "avatar"), clearTheme],
     [get(provider.applyTheme, "avatar"), applyTheme],
   );
 

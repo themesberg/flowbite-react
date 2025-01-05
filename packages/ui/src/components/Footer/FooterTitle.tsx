@@ -22,14 +22,14 @@ export const FooterTitle: FC<FooterTitleProps> = ({
   className,
   title,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme.title, provider.theme?.footer?.title, customTheme],
-    [get(provider.resetTheme, "footer.title"), resetTheme],
+    [get(provider.clearTheme, "footer.title"), clearTheme],
     [get(provider.applyTheme, "footer.title"), applyTheme],
   );
 

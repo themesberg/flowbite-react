@@ -60,7 +60,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       shadow,
       sizing = "md",
       theme: customTheme,
-      resetTheme,
+      clearTheme,
       applyTheme,
       ...props
     },
@@ -69,7 +69,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [selectTheme, provider.theme?.select, customTheme],
-      [get(provider.resetTheme, "select"), resetTheme],
+      [get(provider.clearTheme, "select"), clearTheme],
       [get(provider.applyTheme, "select"), applyTheme],
     );
 

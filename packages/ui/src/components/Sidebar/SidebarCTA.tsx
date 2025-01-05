@@ -32,16 +32,16 @@ export const SidebarCTA: FC<SidebarCTAProps> = ({
   color = "info",
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [sidebarTheme.cta, provider.theme?.sidebar?.cta, rootTheme?.cta, customTheme],
-    [get(provider.resetTheme, "sidebar.cta"), get(rootResetTheme, "cta"), resetTheme],
+    [get(provider.clearTheme, "sidebar.cta"), get(rootClearTheme, "cta"), clearTheme],
     [get(provider.applyTheme, "sidebar.cta"), get(rootApplyTheme, "cta"), applyTheme],
   );
 

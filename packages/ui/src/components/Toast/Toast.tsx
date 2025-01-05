@@ -42,7 +42,7 @@ export const Toast: FC<ToastProps> = ({
   className,
   duration = 300,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
@@ -52,7 +52,7 @@ export const Toast: FC<ToastProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [toastTheme, provider.theme?.toast, customTheme],
-    [get(provider.resetTheme, "toast"), resetTheme],
+    [get(provider.clearTheme, "toast"), clearTheme],
     [get(provider.applyTheme, "toast"), applyTheme],
   );
 
@@ -62,7 +62,16 @@ export const Toast: FC<ToastProps> = ({
 
   return (
     <ToastContext.Provider
-      value={{ theme: customTheme, resetTheme, applyTheme, duration, isClosed, isRemoved, setIsClosed, setIsRemoved }}
+      value={{
+        theme: customTheme,
+        clearTheme,
+        applyTheme,
+        duration,
+        isClosed,
+        isRemoved,
+        setIsClosed,
+        setIsRemoved,
+      }}
     >
       <div
         data-testid="flowbite-toast"

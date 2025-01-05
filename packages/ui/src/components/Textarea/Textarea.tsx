@@ -28,11 +28,11 @@ export interface TextareaProps extends Omit<ComponentProps<"textarea">, "color" 
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, color = "gray", helperText, shadow, theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
+  ({ className, color = "gray", helperText, shadow, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [textareaTheme, provider.theme?.textarea, customTheme],
-      [get(provider.resetTheme, "textarea"), resetTheme],
+      [get(provider.clearTheme, "textarea"), clearTheme],
       [get(provider.applyTheme, "textarea"), applyTheme],
     );
 

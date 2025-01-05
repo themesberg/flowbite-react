@@ -26,13 +26,13 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   onDismiss,
   xIcon: XIcon = DefaultXIcon,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const {
     theme: rootTheme,
-    resetTheme: rootResetTheme,
+    clearTheme: rootClearTheme,
     applyTheme: rootApplyTheme,
     duration,
     isClosed,
@@ -44,7 +44,7 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [toastTheme.toggle, provider.theme?.toast?.toggle, rootTheme?.toggle, customTheme],
-    [get(provider.resetTheme, "toast.toggle"), get(rootResetTheme, "toggle"), resetTheme],
+    [get(provider.clearTheme, "toast.toggle"), get(rootClearTheme, "toggle"), clearTheme],
     [get(provider.applyTheme, "toast.toggle"), get(rootApplyTheme, "toggle"), applyTheme],
   );
 

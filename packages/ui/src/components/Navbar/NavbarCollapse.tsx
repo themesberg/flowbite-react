@@ -22,16 +22,16 @@ export const NavbarCollapse: FC<NavbarCollapseProps> = ({
   children,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
-  const { theme: rootTheme, resetTheme: rootResetTheme, applyTheme: rootApplyTheme, isOpen } = useNavbarContext();
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, isOpen } = useNavbarContext();
 
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [navbarTheme.collapse, provider.theme?.navbar?.collapse, rootTheme?.collapse, customTheme],
-    [get(provider.resetTheme, "navbar.collapse"), get(rootResetTheme, "collapse"), resetTheme],
+    [get(provider.clearTheme, "navbar.collapse"), get(rootClearTheme, "collapse"), clearTheme],
     [get(provider.applyTheme, "navbar.collapse"), get(rootApplyTheme, "collapse"), applyTheme],
   );
 

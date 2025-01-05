@@ -51,7 +51,7 @@ export const Progress: FC<ProgressProps> = ({
   textLabel = "progressbar",
   textLabelPosition = "inside",
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
@@ -59,7 +59,7 @@ export const Progress: FC<ProgressProps> = ({
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [progressTheme, provider.theme?.progress, customTheme],
-    [get(provider.resetTheme, "progress"), resetTheme],
+    [get(provider.clearTheme, "progress"), clearTheme],
     [get(provider.applyTheme, "progress"), applyTheme],
   );
 

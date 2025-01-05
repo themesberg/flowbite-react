@@ -124,7 +124,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
     label,
     value,
     theme: customTheme,
-    resetTheme,
+    clearTheme,
     applyTheme,
     ...props
   },
@@ -133,7 +133,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [datePickerTheme, provider.theme?.datepicker, customTheme],
-    [get(provider.resetTheme, "datepicker"), resetTheme],
+    [get(provider.clearTheme, "datepicker"), clearTheme],
     [get(provider.applyTheme, "datepicker"), applyTheme],
   );
   const initialDate = defaultValue ? getFirstDateInRange(defaultValue, minDate, maxDate) : null;

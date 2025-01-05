@@ -25,14 +25,14 @@ export const Breadcrumb: FC<BreadcrumbProps> = ({
   children,
   className,
   theme: customTheme,
-  resetTheme,
+  clearTheme,
   applyTheme,
   ...props
 }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [breadcrumbTheme.root, provider.theme?.breadcrumb?.root, customTheme],
-    [get(provider.resetTheme, "breadcrumb.root"), resetTheme],
+    [get(provider.clearTheme, "breadcrumb.root"), clearTheme],
     [get(provider.applyTheme, "breadcrumb.root"), applyTheme],
   );
 
