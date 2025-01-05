@@ -15,7 +15,29 @@ export type DeepPartialApplyTheme<T> = DeepPartialOf<T, ApplyTheme>;
 export type ApplyTheme = "merge" | "replace";
 
 export interface ThemingProps<T> {
+  /**
+   * Partial theme object to merge (or replace, see `applyTheme` prop) with default theme
+   *
+   * @link https://flowbite-react.com/docs/customize/theme
+   * @default undefined
+   */
   theme?: DeepPartial<T>;
+  /**
+   * Indicates which theme properties should be cleared
+   *
+   * `boolean` | partial `theme` structure of `boolean`
+   *
+   * @link https://flowbite-react.com/docs/customize/theme
+   * @default undefined
+   */
   clearTheme?: DeepPartialBoolean<T>;
+  /**
+   * Specifies how theme properties should be applied/merged
+   *
+   * `"merge"` | `"replace"` | partial `theme` structure of `"merge"` | `"replace"`
+   *
+   * @link https://flowbite-react.com/docs/customize/theme
+   * @default "merge"
+   */
   applyTheme?: DeepPartialApplyTheme<T>;
 }
