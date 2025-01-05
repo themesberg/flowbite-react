@@ -59,13 +59,11 @@ export function Component() {
 
 export const withForm: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "card/card.withForm.tsx",
   component: <Component />,
 };

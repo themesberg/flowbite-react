@@ -63,13 +63,11 @@ export function Component() {
 
 export const outline: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "button/button.outline.tsx",
   component: <Component />,
 };

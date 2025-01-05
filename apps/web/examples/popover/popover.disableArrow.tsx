@@ -53,13 +53,11 @@ export function Component() {
 
 export const disableArrow: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "popover/popover.disableArrow.tsx",
   component: <Component />,
 };

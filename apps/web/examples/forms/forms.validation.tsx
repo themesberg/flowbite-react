@@ -85,13 +85,11 @@ export function Component() {
 
 export const validation: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "forms/forms.validation.tsx",
   component: <Component />,
 };

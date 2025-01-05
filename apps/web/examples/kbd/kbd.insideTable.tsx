@@ -91,13 +91,11 @@ export function Component() {
 
 export const insideTable: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "kbd/kbd.insideTable.tsx",
   component: <Component />,
 };

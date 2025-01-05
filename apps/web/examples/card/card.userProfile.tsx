@@ -129,13 +129,11 @@ export function Component() {
 
 export const userProfile: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "card/card.userProfile.tsx",
   component: <Component />,
 };

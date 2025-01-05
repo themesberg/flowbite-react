@@ -39,13 +39,11 @@ export function Component() {
 
 export const withIcon: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "button/button.withIcon.tsx",
   component: <Component />,
 };

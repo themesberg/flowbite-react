@@ -41,13 +41,11 @@ export function Component() {
 
 export const withButton: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "toast/toast.withButton.tsx",
   component: <Component />,
 };

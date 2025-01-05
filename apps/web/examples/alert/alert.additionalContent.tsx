@@ -81,13 +81,11 @@ function ExampleAdditionalContent() {
 
 export const additionalContent: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "alert/alert.additionalContent.tsx",
   component: <Component />,
 };

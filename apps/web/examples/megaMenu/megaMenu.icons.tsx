@@ -409,13 +409,11 @@ function Component() {
 
 export const icons: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "megaMenu/megaMenu.icons.tsx",
   component: <Component />,
 };

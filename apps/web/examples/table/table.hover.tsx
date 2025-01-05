@@ -121,13 +121,11 @@ export function Component() {
 
 export const hover: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "table/table.hover.tsx",
   component: <Component />,
 };

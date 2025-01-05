@@ -125,13 +125,11 @@ export function Component() {
 
 export const top: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "drawer/drawer.top.tsx",
   component: <Component />,
   iframe: 600,

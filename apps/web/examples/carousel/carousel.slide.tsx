@@ -35,13 +35,11 @@ export function Component() {
 
 export const slide: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "carousel/carousel.slide.tsx",
   component: <Component />,
 };

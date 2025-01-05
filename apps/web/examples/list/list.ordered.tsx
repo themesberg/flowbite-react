@@ -27,13 +27,11 @@ export function Component() {
 
 export const ordered: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "list/list.ordered.tsx",
   component: <Component />,
 };

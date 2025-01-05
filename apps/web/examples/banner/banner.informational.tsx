@@ -81,13 +81,11 @@ export function Component() {
 
 export const informational: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "banner/banner.informational.tsx",
   component: <Component />,
 };

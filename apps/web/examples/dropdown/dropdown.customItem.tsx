@@ -35,13 +35,11 @@ export function Component() {
 
 export const customItem: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "dropdown/dropdown.customItem.tsx",
   component: <Component />,
 };

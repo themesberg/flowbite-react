@@ -53,13 +53,11 @@ export function Component() {
 
 export const CTAButton: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "card/card.CTAButton.tsx",
   component: <Component />,
 };

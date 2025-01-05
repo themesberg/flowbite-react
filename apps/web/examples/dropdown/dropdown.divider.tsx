@@ -31,13 +31,11 @@ export function Component() {
 
 export const divider: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "dropdown/dropdown.divider.tsx",
   component: <Component />,
 };

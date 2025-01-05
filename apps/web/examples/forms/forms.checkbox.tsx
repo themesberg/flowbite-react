@@ -95,13 +95,11 @@ export function Component() {
 
 export const checkbox: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "forms/forms.checkbox.tsx",
   component: <Component />,
 };

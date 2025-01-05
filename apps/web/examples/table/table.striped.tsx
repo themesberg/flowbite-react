@@ -169,13 +169,11 @@ export function Component() {
 
 export const striped: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "table/table.striped.tsx",
   component: <Component />,
 };

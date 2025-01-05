@@ -35,13 +35,11 @@ export function Component() {
 
 export const pauseOnHover: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "carousel/carousel.pauseOnHover.tsx",
   component: <Component />,
 };

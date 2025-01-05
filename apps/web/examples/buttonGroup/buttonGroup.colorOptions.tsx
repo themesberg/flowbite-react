@@ -55,13 +55,11 @@ export function Component() {
 
 export const colorOptions: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "buttonGroup/buttonGroup.colorOptions.tsx",
   component: <Component />,
 };

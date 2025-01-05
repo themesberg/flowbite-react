@@ -57,13 +57,11 @@ export function Component() {
 
 export const helperText: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "forms/forms.helperText.tsx",
   component: <Component />,
 };

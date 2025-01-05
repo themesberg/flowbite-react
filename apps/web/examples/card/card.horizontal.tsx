@@ -33,13 +33,11 @@ export function Component() {
 
 export const horizontal: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "card/card.horizontal.tsx",
   component: <Component />,
   iframe: 630,

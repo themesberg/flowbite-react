@@ -29,13 +29,11 @@ export function Component() {
 
 export const inputAddon: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "forms/forms.inputAddon.tsx",
   component: <Component />,
 };

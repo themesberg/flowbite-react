@@ -35,13 +35,11 @@ export function Component() {
 
 export const positioning: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "progress/progress.positioning.tsx",
   component: <Component />,
 };

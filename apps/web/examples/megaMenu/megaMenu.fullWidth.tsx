@@ -225,13 +225,11 @@ function Component() {
 
 export const fullWidth: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "megaMenu/megaMenu.fullWidth.tsx",
   component: <Component />,
 };

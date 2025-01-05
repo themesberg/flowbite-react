@@ -45,13 +45,11 @@ export function Component() {
 
 export const functionKeys: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "kbd/kbd.functionKeys.tsx",
   component: <Component />,
 };

@@ -177,13 +177,11 @@ export function Component() {
 
 export const noBackdrop: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "drawer/drawer.noBackdrop.tsx",
   component: <Component />,
   iframe: 600,

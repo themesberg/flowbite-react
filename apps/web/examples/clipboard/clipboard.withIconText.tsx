@@ -49,13 +49,11 @@ export function Component() {
 
 export const withIconText: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "clipboard/clipboard.withIconText.tsx",
   component: <Component />,
 };

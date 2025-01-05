@@ -41,13 +41,11 @@ export function Component() {
 
 export const withImage: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "card/card.withImage.tsx",
   component: <Component />,
 };

@@ -31,13 +31,11 @@ export function Component() {
 
 export const sizing: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "spinner/spinner.sizing.tsx",
   component: <Component />,
 };

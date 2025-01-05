@@ -117,13 +117,11 @@ export function Component() {
 
 export const horizontal: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "timeline/timeline.horizontal.tsx",
   component: <Component />,
   iframe: 500,

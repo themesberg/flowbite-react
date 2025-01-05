@@ -39,13 +39,11 @@ export function Component() {
 
 export const select: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "forms/forms.select.tsx",
   component: <Component />,
 };

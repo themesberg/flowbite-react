@@ -43,13 +43,11 @@ function Component() {
 
 export const icon: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "/hr/hr.icon.tsx",
   component: <Component />,
 };

@@ -67,13 +67,11 @@ export function Component() {
 
 export const radioButton: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "forms/forms.radioButton.tsx",
   component: <Component />,
 };

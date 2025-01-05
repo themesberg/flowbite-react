@@ -15,13 +15,11 @@ export function Component() {
 
 export const withLabels: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "progress/progress.withLabels.tsx",
   component: <Component />,
 };

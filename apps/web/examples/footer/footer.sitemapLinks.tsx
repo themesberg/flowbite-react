@@ -125,13 +125,11 @@ export function Component() {
 
 export const sitemapLinks: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "footer/footer.sitemapLinks.tsx",
   component: <Component />,
   iframe: 580,

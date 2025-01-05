@@ -145,13 +145,11 @@ export function Component() {
 
 export const withCheckboxes: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "table/table.withCheckboxes.tsx",
   component: <Component />,
 };

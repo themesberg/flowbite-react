@@ -35,13 +35,11 @@ export function Component() {
 
 export const withIconOnly: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "badge/badge.withIconOnly.tsx",
   component: <Component />,
 };

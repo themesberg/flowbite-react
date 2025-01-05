@@ -153,13 +153,11 @@ export function Component() {
 
 export const collapseAll: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "accordion/accordion.collapseAll.tsx",
   component: <Component />,
 };

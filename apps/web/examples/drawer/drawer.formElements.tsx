@@ -171,13 +171,11 @@ export function Component() {
 
 export const formElements: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "drawer/drawer.formElements.tsx",
   component: <Component />,
   iframe: 600,

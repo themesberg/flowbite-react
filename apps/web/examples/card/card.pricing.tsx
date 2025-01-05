@@ -263,13 +263,11 @@ export function Component() {
 
 export const pricing: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "card/card.pricing.tsx",
   component: <Component />,
 };

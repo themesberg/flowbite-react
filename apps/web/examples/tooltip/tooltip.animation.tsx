@@ -51,13 +51,11 @@ export function Component() {
 
 export const animation: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "tooltip/tooltip.animation.tsx",
   component: <Component />,
 };

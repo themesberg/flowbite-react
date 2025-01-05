@@ -29,13 +29,11 @@ export function Component() {
 
 export const fileInput: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "forms/forms.fileInput.tsx",
   component: <Component />,
 };

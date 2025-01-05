@@ -27,13 +27,11 @@ export function Component() {
 
 export const unstyled: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "list/list.unstyled.tsx",
   component: <Component />,
 };

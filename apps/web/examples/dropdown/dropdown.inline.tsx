@@ -29,13 +29,11 @@ export function Component() {
 
 export const inline: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "dropdown/dropdown.inline.tsx",
   component: <Component />,
 };

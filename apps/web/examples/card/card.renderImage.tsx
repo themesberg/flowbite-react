@@ -45,13 +45,11 @@ export function Component() {
 
 export const renderImage: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "card/card.renderImage.tsx",
   component: <Component />,
 };

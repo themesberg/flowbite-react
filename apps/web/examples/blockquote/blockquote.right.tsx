@@ -25,13 +25,11 @@ export function Component() {
 
 export const right: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "blockquote/blockquote.right.tsx",
   component: <Component />,
 };

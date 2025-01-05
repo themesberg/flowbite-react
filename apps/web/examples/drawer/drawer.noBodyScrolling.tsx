@@ -177,13 +177,11 @@ export function Component() {
 
 export const noBodyScrolling: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "drawer/drawer.noBodyScrolling.tsx",
   component: <Component />,
   iframe: 600,

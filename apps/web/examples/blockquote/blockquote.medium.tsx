@@ -25,13 +25,11 @@ export function Component() {
 
 export const medium: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "blockquote/blockquote.medium.tsx",
   component: <Component />,
 };

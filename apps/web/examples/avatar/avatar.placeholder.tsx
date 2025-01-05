@@ -25,13 +25,11 @@ export function Component() {
 
 export const placeholder: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "avatar/avatar.placeholder.tsx",
   component: <Component />,
 };

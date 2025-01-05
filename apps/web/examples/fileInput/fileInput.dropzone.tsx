@@ -75,13 +75,11 @@ export function Component() {
 
 export const dropzone: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "fileInput/fileInput.dropzone.tsx",
   component: <Component />,
 };

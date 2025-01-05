@@ -91,13 +91,11 @@ export function Component() {
 
 export const controlled: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "popover/popover.controlled.tsx",
   component: <Component />,
 };

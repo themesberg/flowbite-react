@@ -41,13 +41,11 @@ export function Component() {
 
 export const sizes: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "floatingLabel/floatingLabel.sizes.tsx",
   component: <Component />,
 };

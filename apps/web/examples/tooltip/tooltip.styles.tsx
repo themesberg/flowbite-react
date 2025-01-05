@@ -33,13 +33,11 @@ export function Component() {
 
 export const styles: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "tooltip/tooltip.styles.tsx",
   component: <Component />,
 };

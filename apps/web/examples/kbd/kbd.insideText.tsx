@@ -23,13 +23,11 @@ export function Component() {
 
 export const insideText: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "kbd/kbd.insideText.tsx",
   component: <Component />,
 };

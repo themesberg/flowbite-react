@@ -57,13 +57,11 @@ export function Component() {
 
 export const withLogo: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "footer/footer.withLogo.tsx",
   component: <Component />,
   iframe: 220,

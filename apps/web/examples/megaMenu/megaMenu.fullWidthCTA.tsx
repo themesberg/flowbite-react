@@ -193,13 +193,11 @@ function Component() {
 
 export const fullWidthCTA: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "megaMenu/megaMenu.fullWidthCTA.tsx",
   component: <Component />,
 };

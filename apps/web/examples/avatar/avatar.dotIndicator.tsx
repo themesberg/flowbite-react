@@ -29,13 +29,11 @@ export function Component() {
 
 export const dotIndicator: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "avatar/avatar.dotIndicator.tsx",
   component: <Component />,
 };

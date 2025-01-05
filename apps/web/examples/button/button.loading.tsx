@@ -51,13 +51,11 @@ export function Component() {
 
 export const loading: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "button/button.loading.tsx",
   component: <Component />,
 };

@@ -45,13 +45,11 @@ export function Component() {
 
 export const placement: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "tooltip/tooltip.placement.tsx",
   component: <Component />,
 };

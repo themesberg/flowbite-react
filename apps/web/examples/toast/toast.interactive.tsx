@@ -63,13 +63,11 @@ export function Component() {
 
 export const interactive: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "toast/toast.interactive.tsx",
   component: <Component />,
 };

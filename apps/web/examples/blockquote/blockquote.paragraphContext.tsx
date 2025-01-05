@@ -67,13 +67,11 @@ export function Component() {
 
 export const paragraphContext: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "blockquote/blockquote.paragraphContext.tsx",
   component: <Component />,
 };

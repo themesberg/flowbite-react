@@ -33,13 +33,11 @@ export function Component() {
 
 export const icon: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "list/list.icon.tsx",
   component: <Component />,
 };

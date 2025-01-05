@@ -43,13 +43,11 @@ export function Component() {
 
 export const solidBackground: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "blockquote/blockquote.solidBackground.tsx",
   component: <Component />,
 };

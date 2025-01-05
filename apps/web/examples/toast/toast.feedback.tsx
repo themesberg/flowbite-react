@@ -27,13 +27,11 @@ export function Component() {
 
 export const feedback: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "toast/toast.feedback.tsx",
   component: <Component />,
 };

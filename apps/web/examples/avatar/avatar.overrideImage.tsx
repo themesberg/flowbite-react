@@ -69,13 +69,11 @@ export function Component() {
 
 export const overrideImage: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "avatar/avatar.overrideImage.tsx",
   component: <Component />,
 };

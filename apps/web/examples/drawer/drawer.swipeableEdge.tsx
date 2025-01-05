@@ -319,13 +319,11 @@ export function Component() {
 
 export const swipeableEdge: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "drawer/drawer.swipeableEdge.tsx",
   component: <Component />,
   iframe: 600,

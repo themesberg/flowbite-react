@@ -55,13 +55,11 @@ export function Component() {
 
 export const trigger: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "popover/popover.trigger.tsx",
   component: <Component />,
 };

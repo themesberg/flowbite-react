@@ -35,13 +35,11 @@ export function Component() {
 
 export const inputRightIcon: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "forms/forms.inputRightIcon.tsx",
   component: <Component />,
 };

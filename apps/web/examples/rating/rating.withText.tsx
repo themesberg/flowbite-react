@@ -33,13 +33,11 @@ export function Component() {
 
 export const withText: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "rating/rating.withText.tsx",
   component: <Component />,
 };

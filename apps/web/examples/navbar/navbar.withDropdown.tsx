@@ -109,13 +109,11 @@ export function Component() {
 
 export const withDropdown: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "navbar/navbar.withDropdown.tsx",
   component: <Component />,
   iframe: {

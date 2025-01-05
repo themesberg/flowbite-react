@@ -35,13 +35,11 @@ export function Component() {
 
 export const polymorph: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "button/button.polymorph.tsx",
   component: <Component />,
 };

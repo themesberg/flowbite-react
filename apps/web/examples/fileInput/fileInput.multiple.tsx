@@ -29,13 +29,11 @@ export function Component() {
 
 export const multiple: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "fileInput/fileInput.multiple.tsx",
   component: <Component />,
 };

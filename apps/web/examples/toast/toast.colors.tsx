@@ -65,13 +65,11 @@ export function Component() {
 
 export const colors: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "toast/toast.colors.tsx",
   component: <Component />,
 };

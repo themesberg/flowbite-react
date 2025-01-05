@@ -127,13 +127,11 @@ export function Component() {
 
 export const image: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "popover/popover.image.tsx",
   component: <Component />,
 };

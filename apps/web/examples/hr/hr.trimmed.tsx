@@ -43,13 +43,11 @@ function Component() {
 
 export const trimmed: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "/hr/hr.trimmed.tsx",
   component: <Component />,
 };

@@ -117,13 +117,11 @@ export function Component() {
 
 export const vertical: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "timeline/timeline.vertical.tsx",
   component: <Component />,
 };

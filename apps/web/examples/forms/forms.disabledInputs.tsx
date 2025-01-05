@@ -29,13 +29,11 @@ export function Component() {
 
 export const disabledInputs: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "forms/forms.disabledInputs.tsx",
   component: <Component />,
 };

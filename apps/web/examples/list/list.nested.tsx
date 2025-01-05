@@ -69,13 +69,11 @@ export function Component() {
 
 export const nested: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "list/list.nested.tsx",
   component: <Component />,
 };

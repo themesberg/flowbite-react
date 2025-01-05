@@ -39,13 +39,11 @@ export function Component() {
 
 export const header: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "dropdown/dropdown.header.tsx",
   component: <Component />,
 };

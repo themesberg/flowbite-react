@@ -49,13 +49,11 @@ export function Component() {
 
 export const stackedLayout: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "avatar/avatar.stackedLayout.tsx",
   component: <Component />,
 };

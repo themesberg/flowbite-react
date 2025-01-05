@@ -23,13 +23,11 @@ export function Component() {
 
 export const rounded: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "alert/alert.rounded.tsx",
   component: <Component />,
 };

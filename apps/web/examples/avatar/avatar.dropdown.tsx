@@ -47,13 +47,11 @@ export function Component() {
 
 export const dropdown: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "avatar/avatar.dropdown.tsx",
   component: <Component />,
 };

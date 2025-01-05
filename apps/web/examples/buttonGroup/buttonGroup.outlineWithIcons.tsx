@@ -111,13 +111,11 @@ export function Component() {
 
 export const outlineWithIcons: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "buttonGroup/buttonGroup.outlineWithIcons.tsx",
   component: <Component />,
 };

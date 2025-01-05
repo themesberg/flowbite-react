@@ -203,13 +203,11 @@ export function Component() {
 
 export const password: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "popover/popover.password.tsx",
   component: <Component />,
 };

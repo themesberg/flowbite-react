@@ -121,13 +121,11 @@ export function Component() {
 
 export const advanced: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "list/list.advanced.tsx",
   component: <Component />,
 };

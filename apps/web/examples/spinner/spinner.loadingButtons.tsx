@@ -37,13 +37,11 @@ export function Component() {
 
 export const loadingButtons: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "spinner/spinner.loadingButtons.tsx",
   component: <Component />,
 };

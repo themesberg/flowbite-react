@@ -65,13 +65,11 @@ export function Component() {
 
 export const advanced: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "rating/rating.advanced.tsx",
   component: <Component />,
 };

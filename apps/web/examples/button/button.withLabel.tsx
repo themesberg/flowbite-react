@@ -15,13 +15,11 @@ export function Component() {
 
 export const withLabel: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "button/button.withLabel.tsx",
   component: <Component />,
 };

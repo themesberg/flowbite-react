@@ -205,13 +205,11 @@ function Component() {
 
 export const fullWidthImage: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "megaMenu/megaMenu.fullWidthImage.tsx",
   component: <Component />,
 };

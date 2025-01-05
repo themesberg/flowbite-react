@@ -29,13 +29,11 @@ export function Component() {
 
 export const helper: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "fileInput/fileInput.helper.tsx",
   component: <Component />,
 };

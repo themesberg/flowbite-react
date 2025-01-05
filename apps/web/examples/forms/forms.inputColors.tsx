@@ -81,13 +81,11 @@ export function Component() {
 
 export const inputColors: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "forms/forms.inputColors.tsx",
   component: <Component />,
 };

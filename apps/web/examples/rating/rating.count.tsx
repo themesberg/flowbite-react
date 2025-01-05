@@ -33,13 +33,11 @@ export function Component() {
 
 export const count: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "rating/rating.count.tsx",
   component: <Component />,
 };

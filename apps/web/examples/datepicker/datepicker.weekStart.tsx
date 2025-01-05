@@ -23,13 +23,11 @@ export function Component() {
 
 export const weekStart: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "datepicker/datepicker.weekStart.tsx",
   component: <Component />,
 };

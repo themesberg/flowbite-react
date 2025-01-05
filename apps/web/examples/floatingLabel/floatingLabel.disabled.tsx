@@ -27,13 +27,11 @@ export function Component() {
 
 export const disabled: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "floatingLabel/floatingLabel.disabled.tsx",
   component: <Component />,
 };

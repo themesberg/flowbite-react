@@ -71,13 +71,11 @@ export function Component() {
 
 export const pill: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "button/button.pill.tsx",
   component: <Component />,
 };

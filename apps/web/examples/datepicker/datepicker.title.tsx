@@ -15,13 +15,11 @@ export function Component() {
 
 export const title: CodeData = {
   type: "single",
-  code: [
-    {
-      fileName: "index",
-      language: "tsx",
-      code,
-    },
-  ],
+  code: {
+    fileName: "index",
+    language: "tsx",
+    code,
+  },
   githubSlug: "datepicker/datepicker.title.tsx",
   component: <Component />,
 };
