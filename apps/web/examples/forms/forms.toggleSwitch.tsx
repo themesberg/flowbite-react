@@ -46,7 +46,7 @@ export function Component() {
 export const toggleSwitch: CodeData = {
   type: "single",
   code: {
-    fileName: "client",
+    fileName: "index",
     language: "tsx",
     code,
   },

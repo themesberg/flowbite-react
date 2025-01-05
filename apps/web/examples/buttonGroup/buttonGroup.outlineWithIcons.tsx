@@ -113,7 +113,7 @@ export const outlineWithIcons: CodeData = {
   type: "single",
   code: [
     {
-      fileName: "client",
+      fileName: "index",
       language: "tsx",
       code,
     },

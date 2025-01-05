@@ -69,7 +69,7 @@ export const radioButton: CodeData = {
   type: "single",
   code: [
     {
-      fileName: "client",
+      fileName: "index",
       language: "tsx",
       code,
     },

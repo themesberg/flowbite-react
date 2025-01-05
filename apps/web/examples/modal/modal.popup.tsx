@@ -74,7 +74,7 @@ export function Component() {
 export const popup: CodeData = {
   type: "single",
   code: {
-    fileName: "client",
+    fileName: "index",
     language: "tsx",
     code,
   },

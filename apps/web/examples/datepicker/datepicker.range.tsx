@@ -17,7 +17,7 @@ export const range: CodeData = {
   type: "single",
   code: [
     {
-      fileName: "client",
+      fileName: "index",
       language: "tsx",
       code,
     },

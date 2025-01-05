@@ -37,7 +37,7 @@ export const root: CodeData = {
   type: "single",
   code: [
     {
-      fileName: "client",
+      fileName: "index",
       language: "tsx",
       code,
     },

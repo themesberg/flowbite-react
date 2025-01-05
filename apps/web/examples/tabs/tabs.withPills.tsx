@@ -52,7 +52,7 @@ export function Component() {
 export const withPills: CodeData = {
   type: "single",
   code: {
-    fileName: "client",
+    fileName: "index",
     language: "tsx",
     code,
   },
