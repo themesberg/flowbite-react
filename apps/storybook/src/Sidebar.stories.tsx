@@ -1,5 +1,16 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import { Badge, Button, Sidebar, type SidebarProps } from "flowbite-react";
+import {
+  Badge,
+  Button,
+  Sidebar,
+  SidebarCollapse,
+  SidebarCTA,
+  SidebarItem,
+  SidebarItemGroup,
+  SidebarItems,
+  SidebarLogo,
+  type SidebarProps,
+} from "flowbite-react";
 import { BiBuoy } from "react-icons/bi";
 import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
 
@@ -14,31 +25,31 @@ export const Default = Template.bind({});
 Default.args = {
   children: (
     <>
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
+      <SidebarItems>
+        <SidebarItemGroup>
+          <SidebarItem href="#" icon={HiChartPie}>
             Dashboard
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards} label="Pro" labelColor="gray">
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiViewBoards} label="Pro" labelColor="gray">
             Kanban
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiInbox} label="3">
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiInbox} label="3">
             Inbox
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiUser}>
             Users
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiShoppingBag}>
             Products
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiArrowSmRight}>
             Sign In
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTable}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiTable}>
             Sign Up
-          </Sidebar.Item>
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
+          </SidebarItem>
+        </SidebarItemGroup>
+      </SidebarItems>
     </>
   ),
   collapsed: false,
@@ -49,21 +60,21 @@ WithoutIcons.storyName = "No icons";
 WithoutIcons.args = {
   children: (
     <>
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item href="#">Dashboard</Sidebar.Item>
-          <Sidebar.Item href="#" label="Pro" labelColor="alternative">
+      <SidebarItems>
+        <SidebarItemGroup>
+          <SidebarItem href="#">Dashboard</SidebarItem>
+          <SidebarItem href="#" label="Pro" labelColor="alternative">
             Kanban
-          </Sidebar.Item>
-          <Sidebar.Item href="#" label="3">
+          </SidebarItem>
+          <SidebarItem href="#" label="3">
             Inbox
-          </Sidebar.Item>
-          <Sidebar.Item href="#">Users</Sidebar.Item>
-          <Sidebar.Item href="#">Products</Sidebar.Item>
-          <Sidebar.Item href="#">Sign In</Sidebar.Item>
-          <Sidebar.Item href="#">Sign Up</Sidebar.Item>
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
+          </SidebarItem>
+          <SidebarItem href="#">Users</SidebarItem>
+          <SidebarItem href="#">Products</SidebarItem>
+          <SidebarItem href="#">Sign In</SidebarItem>
+          <SidebarItem href="#">Sign Up</SidebarItem>
+        </SidebarItemGroup>
+      </SidebarItems>
     </>
   ),
   collapsed: false,
@@ -74,31 +85,31 @@ MultiLevelDropdown.storyName = "Multi-level dropdown";
 MultiLevelDropdown.args = {
   children: (
     <>
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
+      <SidebarItems>
+        <SidebarItemGroup>
+          <SidebarItem href="#" icon={HiChartPie}>
             Dashboard
-          </Sidebar.Item>
-          <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
-            <Sidebar.Item href="#">Products</Sidebar.Item>
-          </Sidebar.Collapse>
-          <Sidebar.Item href="#" icon={HiInbox}>
+          </SidebarItem>
+          <SidebarCollapse icon={HiShoppingBag} label="E-commerce">
+            <SidebarItem href="#">Products</SidebarItem>
+          </SidebarCollapse>
+          <SidebarItem href="#" icon={HiInbox}>
             Inbox
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiUser}>
             Users
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiShoppingBag}>
             Products
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiArrowSmRight}>
             Sign In
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTable}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiTable}>
             Sign Up
-          </Sidebar.Item>
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
+          </SidebarItem>
+        </SidebarItemGroup>
+      </SidebarItems>
     </>
   ),
   collapsed: false,
@@ -108,34 +119,34 @@ export const DefaultExpandedDropdown = Template.bind({});
 DefaultExpandedDropdown.args = {
   children: (
     <>
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
+      <SidebarItems>
+        <SidebarItemGroup>
+          <SidebarItem href="#" icon={HiChartPie}>
             Dashboard
-          </Sidebar.Item>
-          <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
-            <Sidebar.Item href="#">Products</Sidebar.Item>
-          </Sidebar.Collapse>
-          <Sidebar.Collapse icon={HiShoppingBag} label="Billing" open>
-            <Sidebar.Item href="#">Usage Summary</Sidebar.Item>
-          </Sidebar.Collapse>
-          <Sidebar.Item href="#" icon={HiInbox}>
+          </SidebarItem>
+          <SidebarCollapse icon={HiShoppingBag} label="E-commerce">
+            <SidebarItem href="#">Products</SidebarItem>
+          </SidebarCollapse>
+          <SidebarCollapse icon={HiShoppingBag} label="Billing" open>
+            <SidebarItem href="#">Usage Summary</SidebarItem>
+          </SidebarCollapse>
+          <SidebarItem href="#" icon={HiInbox}>
             Inbox
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiUser}>
             Users
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiShoppingBag}>
             Products
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiArrowSmRight}>
             Sign In
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTable}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiTable}>
             Sign Up
-          </Sidebar.Item>
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
+          </SidebarItem>
+        </SidebarItemGroup>
+      </SidebarItems>
     </>
   ),
   collapsed: false,
@@ -146,42 +157,42 @@ ContentSeparator.storyName = "Content separator";
 ContentSeparator.args = {
   children: (
     <>
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
+      <SidebarItems>
+        <SidebarItemGroup>
+          <SidebarItem href="#" icon={HiChartPie}>
             Dashboard
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiViewBoards}>
             Kanban
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiInbox}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiInbox}>
             Inbox
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiUser}>
             Users
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiShoppingBag}>
             Products
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiArrowSmRight}>
             Sign In
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTable}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiTable}>
             Sign Up
-          </Sidebar.Item>
-        </Sidebar.ItemGroup>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
+          </SidebarItem>
+        </SidebarItemGroup>
+        <SidebarItemGroup>
+          <SidebarItem href="#" icon={HiChartPie}>
             Upgrade to Pro
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiViewBoards}>
             Documentation
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={BiBuoy}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={BiBuoy}>
             Help
-          </Sidebar.Item>
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
+          </SidebarItem>
+        </SidebarItemGroup>
+      </SidebarItems>
     </>
   ),
   collapsed: false,
@@ -192,32 +203,32 @@ CTAButton.storyName = "CTA button";
 CTAButton.args = {
   children: (
     <>
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
+      <SidebarItems>
+        <SidebarItemGroup>
+          <SidebarItem href="#" icon={HiChartPie}>
             Dashboard
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiViewBoards}>
             Kanban
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiInbox}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiInbox}>
             Inbox
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiUser}>
             Users
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiShoppingBag}>
             Products
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiArrowSmRight}>
             Sign In
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTable}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiTable}>
             Sign Up
-          </Sidebar.Item>
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
-      <Sidebar.CTA>
+          </SidebarItem>
+        </SidebarItemGroup>
+      </SidebarItems>
+      <SidebarCTA>
         <div className="mb-3 flex items-center">
           <Badge color="warning">Beta</Badge>
           <div className="-m-1.5 ml-auto">
@@ -242,7 +253,7 @@ CTAButton.args = {
         >
           Turn new navigation off
         </a>
-      </Sidebar.CTA>
+      </SidebarCTA>
     </>
   ),
   collapsed: false,
@@ -253,34 +264,34 @@ LogoBranding.storyName = "Logo branding";
 LogoBranding.args = {
   children: (
     <>
-      <Sidebar.Logo href="#" img="favicon.svg" imgAlt="Flowbite logo">
+      <SidebarLogo href="#" img="favicon.svg" imgAlt="Flowbite logo">
         Flowbite
-      </Sidebar.Logo>
-      <Sidebar.Items>
-        <Sidebar.ItemGroup>
-          <Sidebar.Item href="#" icon={HiChartPie}>
+      </SidebarLogo>
+      <SidebarItems>
+        <SidebarItemGroup>
+          <SidebarItem href="#" icon={HiChartPie}>
             Dashboard
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiViewBoards}>
             Kanban
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiInbox}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiInbox}>
             Inbox
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiUser}>
             Users
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiShoppingBag}>
             Products
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiArrowSmRight}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiArrowSmRight}>
             Sign In
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTable}>
+          </SidebarItem>
+          <SidebarItem href="#" icon={HiTable}>
             Sign Up
-          </Sidebar.Item>
-        </Sidebar.ItemGroup>
-      </Sidebar.Items>
+          </SidebarItem>
+        </SidebarItemGroup>
+      </SidebarItems>
     </>
   ),
   collapsed: false,

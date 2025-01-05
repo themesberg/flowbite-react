@@ -52,3 +52,5 @@ export const RatingAdvanced: FC<RatingAdvancedProps> = ({
     </div>
   );
 };
+
+RatingAdvanced.displayName = "RatingAdvanced";

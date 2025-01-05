@@ -43,3 +43,5 @@ export const AccordionContent: FC<AccordionContentProps> = ({
     </div>
   );
 };
+
+AccordionContent.displayName = "AccordionContent";

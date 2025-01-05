@@ -33,3 +33,5 @@ export const DropdownDivider: FC<DropdownDividerProps> = ({
 
   return <div className={twMerge(theme.divider, className)} {...props} />;
 };
+
+DropdownDivider.displayName = "DropdownDivider";

@@ -6,6 +6,7 @@ import { act } from "react-dom/test-utils";
 import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 import { describe, expect, it, vi } from "vitest";
+import { TabItem } from "./TabItem";
 import type { TabsRef } from "./Tabs";
 import { Tabs } from "./Tabs";
 
@@ -155,71 +156,71 @@ interface TestTabsProps {
 
 const TestTabs = forwardRef<TabsRef, TestTabsProps>(({ onActiveTabChange }, ref) => (
   <Tabs aria-label="Test tabs" onActiveTabChange={onActiveTabChange} ref={ref}>
-    <Tabs.Item title="Profile" icon={HiUserCircle}>
+    <TabItem title="Profile" icon={HiUserCircle}>
       Profile content
-    </Tabs.Item>
-    <Tabs.Item title="Dashboard" icon={MdDashboard}>
+    </TabItem>
+    <TabItem title="Dashboard" icon={MdDashboard}>
       Dashboard content
-    </Tabs.Item>
-    <Tabs.Item title="Settings" icon={HiAdjustments}>
+    </TabItem>
+    <TabItem title="Settings" icon={HiAdjustments}>
       Settings content
-    </Tabs.Item>
-    <Tabs.Item title="Contacts" icon={HiClipboardList}>
+    </TabItem>
+    <TabItem title="Contacts" icon={HiClipboardList}>
       Contacts content
-    </Tabs.Item>
-    <Tabs.Item disabled title="Disabled">
+    </TabItem>
+    <TabItem disabled title="Disabled">
       Disabled content
-    </Tabs.Item>
+    </TabItem>
   </Tabs>
 ));
 
 const TestConditionalTabs = forwardRef<TabsRef, TestTabsProps>(({ condition }) => (
   <Tabs aria-label="Test tabs">
     {condition && (
-      <Tabs.Item title="Profile" icon={HiUserCircle}>
+      <TabItem title="Profile" icon={HiUserCircle}>
         Profile content
-      </Tabs.Item>
+      </TabItem>
     )}
   </Tabs>
 ));
 
 const TestTabsDifferentActiveItem: FC = () => (
   <Tabs aria-label="Test tabs">
-    <Tabs.Item title="Profile" icon={HiUserCircle}>
+    <TabItem title="Profile" icon={HiUserCircle}>
       Profile content
-    </Tabs.Item>
-    <Tabs.Item active title="Dashboard" icon={MdDashboard}>
+    </TabItem>
+    <TabItem active title="Dashboard" icon={MdDashboard}>
       Dashboard content
-    </Tabs.Item>
-    <Tabs.Item title="Settings" icon={HiAdjustments}>
+    </TabItem>
+    <TabItem title="Settings" icon={HiAdjustments}>
       Settings content
-    </Tabs.Item>
-    <Tabs.Item title="Contacts" icon={HiClipboardList}>
+    </TabItem>
+    <TabItem title="Contacts" icon={HiClipboardList}>
       Contacts content
-    </Tabs.Item>
-    <Tabs.Item disabled title="Disabled">
+    </TabItem>
+    <TabItem disabled title="Disabled">
       Disabled content
-    </Tabs.Item>
+    </TabItem>
   </Tabs>
 );
 
 const TestTabsLastActiveItem: FC = () => (
   <Tabs aria-label="Test tabs">
-    <Tabs.Item title="Profile" icon={HiUserCircle}>
+    <TabItem title="Profile" icon={HiUserCircle}>
       Profile content
-    </Tabs.Item>
-    <Tabs.Item title="Dashboard" icon={MdDashboard}>
+    </TabItem>
+    <TabItem title="Dashboard" icon={MdDashboard}>
       Dashboard content
-    </Tabs.Item>
-    <Tabs.Item title="Settings" icon={HiAdjustments}>
+    </TabItem>
+    <TabItem title="Settings" icon={HiAdjustments}>
       Settings content
-    </Tabs.Item>
-    <Tabs.Item title="Contacts" icon={HiClipboardList}>
+    </TabItem>
+    <TabItem title="Contacts" icon={HiClipboardList}>
       Contacts content
-    </Tabs.Item>
-    <Tabs.Item active title="Still working">
+    </TabItem>
+    <TabItem active title="Still working">
       Completely functional content
-    </Tabs.Item>
+    </TabItem>
   </Tabs>
 );
 

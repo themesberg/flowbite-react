@@ -73,3 +73,5 @@ export const TimelineContent: FC<TimelineContentProps> = ({
     </TimelineContentContext.Provider>
   );
 };
+
+TimelineContent.displayName = "TimelineContent";

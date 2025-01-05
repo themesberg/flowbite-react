@@ -19,4 +19,4 @@ export const ButtonBase = forwardRef(
   },
 );
 
-ButtonBase.displayName = "ButtonBaseComponent";
+ButtonBase.displayName = "ButtonBase";

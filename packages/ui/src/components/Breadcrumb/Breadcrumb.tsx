@@ -7,7 +7,6 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { BreadcrumbItemTheme } from "./BreadcrumbItem";
-import { BreadcrumbItem } from "./BreadcrumbItem";
 import { breadcrumbTheme } from "./theme";
 
 export interface BreadcrumbTheme {
@@ -20,9 +19,9 @@ export interface BreadcrumbRootTheme {
   list: string;
 }
 
-export interface BreadcrumbComponentProps extends ComponentProps<"nav">, ThemingProps<BreadcrumbRootTheme> {}
+export interface BreadcrumbProps extends ComponentProps<"nav">, ThemingProps<BreadcrumbRootTheme> {}
 
-const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
+export const Breadcrumb: FC<BreadcrumbProps> = ({
   children,
   className,
   theme: customTheme,
@@ -44,8 +43,4 @@ const BreadcrumbComponent: FC<BreadcrumbComponentProps> = ({
   );
 };
 
-BreadcrumbComponent.displayName = "Breadcrumb";
-
-export const Breadcrumb = Object.assign(BreadcrumbComponent, {
-  Item: BreadcrumbItem,
-});
+Breadcrumb.displayName = "Breadcrumb";

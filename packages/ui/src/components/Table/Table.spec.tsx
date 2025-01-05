@@ -3,6 +3,11 @@ import type { FC } from "react";
 import { describe, expect, it } from "vitest";
 import type { TableProps } from "./Table";
 import { Table } from "./Table";
+import { TableBody } from "./TableBody";
+import { TableCell } from "./TableCell";
+import { TableHead } from "./TableHead";
+import { TableHeadCell } from "./TableHeadCell";
+import { TableRow } from "./TableRow";
 
 describe("Components / Table", () => {
   it("should be able to render a table", () => {
@@ -32,77 +37,77 @@ describe("Components / Table", () => {
 
 const TestTable: FC<TableProps> = (props) => (
   <Table {...props}>
-    <Table.Head>
-      <Table.HeadCell>Product name</Table.HeadCell>
-      <Table.HeadCell>Color</Table.HeadCell>
-      <Table.HeadCell>Category</Table.HeadCell>
-      <Table.HeadCell>Price</Table.HeadCell>
-      <Table.HeadCell>
+    <TableHead>
+      <TableHeadCell>Product name</TableHeadCell>
+      <TableHeadCell>Color</TableHeadCell>
+      <TableHeadCell>Category</TableHeadCell>
+      <TableHeadCell>Price</TableHeadCell>
+      <TableHeadCell>
         <span className="sr-only">Edit</span>
-      </Table.HeadCell>
-    </Table.Head>
-    <Table.Body className="divide-y">
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+      </TableHeadCell>
+    </TableHead>
+    <TableBody className="divide-y">
+      <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
           {'Apple MacBook Pro 17"'}
-        </Table.Cell>
-        <Table.Cell>Sliver</Table.Cell>
-        <Table.Cell>Laptop</Table.Cell>
-        <Table.Cell>$2999</Table.Cell>
-        <Table.Cell>
+        </TableCell>
+        <TableCell>Sliver</TableCell>
+        <TableCell>Laptop</TableCell>
+        <TableCell>$2999</TableCell>
+        <TableCell>
           <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
             Edit
           </a>
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+        </TableCell>
+      </TableRow>
+      <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
           Microsoft Surface Pro
-        </Table.Cell>
-        <Table.Cell>White</Table.Cell>
-        <Table.Cell>Laptop PC</Table.Cell>
-        <Table.Cell>$1999</Table.Cell>
-        <Table.Cell>
+        </TableCell>
+        <TableCell>White</TableCell>
+        <TableCell>Laptop PC</TableCell>
+        <TableCell>$1999</TableCell>
+        <TableCell>
           <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
             Edit
           </a>
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">Magic Mouse 2</Table.Cell>
-        <Table.Cell>Black</Table.Cell>
-        <Table.Cell>Accessories</Table.Cell>
-        <Table.Cell>$99</Table.Cell>
-        <Table.Cell>
+        </TableCell>
+      </TableRow>
+      <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">Magic Mouse 2</TableCell>
+        <TableCell>Black</TableCell>
+        <TableCell>Accessories</TableCell>
+        <TableCell>$99</TableCell>
+        <TableCell>
           <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
             Edit
           </a>
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
+        </TableCell>
+      </TableRow>
+      <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
           Google Pixel Phone
-        </Table.Cell>
-        <Table.Cell>Gray</Table.Cell>
-        <Table.Cell>Phone</Table.Cell>
-        <Table.Cell>$799</Table.Cell>
-        <Table.Cell>
+        </TableCell>
+        <TableCell>Gray</TableCell>
+        <TableCell>Phone</TableCell>
+        <TableCell>$799</TableCell>
+        <TableCell>
           <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
             Edit
           </a>
-        </Table.Cell>
-      </Table.Row>
-      <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-        <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">Apple Watch 5</Table.Cell>
-        <Table.Cell>Red</Table.Cell>
-        <Table.Cell>Wearables</Table.Cell>
-        <Table.Cell>$999</Table.Cell>
-        <Table.Cell>
+        </TableCell>
+      </TableRow>
+      <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
+        <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">Apple Watch 5</TableCell>
+        <TableCell>Red</TableCell>
+        <TableCell>Wearables</TableCell>
+        <TableCell>$999</TableCell>
+        <TableCell>
           <a href="/tables" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
             Edit
           </a>
-        </Table.Cell>
-      </Table.Row>
-    </Table.Body>
+        </TableCell>
+      </TableRow>
+    </TableBody>
   </Table>
 );

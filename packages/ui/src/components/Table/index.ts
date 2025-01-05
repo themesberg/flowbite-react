@@ -1,12 +1,12 @@
 export { Table } from "./Table";
-export type { TableRootTheme, TableTheme, TableProps } from "./Table";
+export type { TableProps, TableRootTheme, TableTheme } from "./Table";
 export { TableBody } from "./TableBody";
-export type { TableBodyTheme, TableBodyProps } from "./TableBody";
+export type { TableBodyProps, TableBodyTheme } from "./TableBody";
 export { TableCell } from "./TableCell";
-export type { TableCellTheme, TableCellProps } from "./TableCell";
+export type { TableCellProps, TableCellTheme } from "./TableCell";
 export { TableHead } from "./TableHead";
-export type { TableHeadTheme, TableHeadProps } from "./TableHead";
+export type { TableHeadProps, TableHeadTheme } from "./TableHead";
 export { TableHeadCell } from "./TableHeadCell";
-export type { TableHeadCellTheme, TableHeadCellProps } from "./TableHeadCell";
+export type { TableHeadCellProps, TableHeadCellTheme } from "./TableHeadCell";
 export { TableRow } from "./TableRow";
-export type { TableRowTheme, TableRowProps } from "./TableRow";
+export type { TableRowProps, TableRowTheme } from "./TableRow";

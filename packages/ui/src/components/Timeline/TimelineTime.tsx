@@ -65,3 +65,5 @@ export const TimelineTime: FC<TimelineTimeProps> = ({
     </time>
   );
 };
+
+TimelineTime.displayName = "TimelineTime";

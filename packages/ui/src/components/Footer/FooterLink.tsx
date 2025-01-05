@@ -43,3 +43,5 @@ export const FooterLink: FC<FooterLinkProps> = ({
     </li>
   );
 };
+
+FooterLink.displayName = "FooterLink";

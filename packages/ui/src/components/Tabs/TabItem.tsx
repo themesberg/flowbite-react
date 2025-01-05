@@ -11,4 +11,4 @@ export interface TabItemProps extends Omit<ComponentProps<"div">, "title"> {
 
 export const TabItem: FC<TabItemProps> = ({ children, className }) => <div className={className}>{children}</div>;
 
-TabItem.displayName = "Tabs.Item";
+TabItem.displayName = "TabItem";

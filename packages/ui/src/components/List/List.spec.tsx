@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
 import { List } from "./List";
+import { ListItem } from "./ListItem";
 
 describe("Components / List group", () => {
   describe("Theme", () => {
@@ -27,9 +28,9 @@ describe("Components / List group", () => {
 const TestList = (): JSX.Element => {
   return (
     <List>
-      <List.Item>Settings</List.Item>
-      <List.Item>Messages</List.Item>
-      <List.Item>Download</List.Item>
+      <ListItem>Settings</ListItem>
+      <ListItem>Messages</ListItem>
+      <ListItem>Download</ListItem>
     </List>
   );
 };

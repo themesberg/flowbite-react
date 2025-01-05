@@ -40,4 +40,4 @@ export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({
   );
 };
 
-SidebarItemGroup.displayName = "Sidebar.ItemGroup";
+SidebarItemGroup.displayName = "SidebarItemGroup";

@@ -39,3 +39,5 @@ export const ModalFooter: FC<ModalFooterProps> = ({
     </div>
   );
 };
+
+ModalFooter.displayName = "ModalFooter";

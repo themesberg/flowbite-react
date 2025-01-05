@@ -8,9 +8,7 @@ import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { Tooltip } from "../Tooltip";
 import type { ClipboardWithIconTheme } from "./ClipboardWithIcon";
-import { ClipboardWithIcon } from "./ClipboardWithIcon";
 import type { ClipboardWithIconTextTheme } from "./ClipboardWithIconText";
-import { ClipboardWithIconText } from "./ClipboardWithIconText";
 import { copyToClipboard } from "./helpers";
 import { clipboardTheme } from "./theme";
 
@@ -28,7 +26,7 @@ export interface ClipboardProps extends ComponentProps<"button">, ThemingProps<C
   label?: ReactNode;
 }
 
-const ClipboardComponent = forwardRef<HTMLButtonElement, ClipboardProps>(
+export const Clipboard = forwardRef<HTMLButtonElement, ClipboardProps>(
   ({ className, valueToCopy, label, theme: customTheme, resetTheme, applyTheme, ...rest }, ref) => {
     const [isJustCopied, setIsJustCopied] = useState(false);
 
@@ -54,11 +52,4 @@ const ClipboardComponent = forwardRef<HTMLButtonElement, ClipboardProps>(
   },
 );
 
-ClipboardComponent.displayName = "Clipboard";
-ClipboardWithIcon.displayName = "Clipboard.WithIcon";
-ClipboardWithIconText.displayName = "Clipboard.WithIconText";
-
-export const Clipboard = Object.assign(ClipboardComponent, {
-  WithIcon: ClipboardWithIcon,
-  WithIconText: ClipboardWithIconText,
-});
+Clipboard.displayName = "Clipboard";

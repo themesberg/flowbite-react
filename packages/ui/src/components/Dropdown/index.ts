@@ -1,5 +1,5 @@
 export { Dropdown } from "./Dropdown";
-export type { DropdownProps, DropdownFloatingTheme, DropdownTheme, TriggerProps } from "./Dropdown";
+export type { DropdownFloatingTheme, DropdownProps, DropdownTheme, TriggerProps } from "./Dropdown";
 export { DropdownDivider } from "./DropdownDivider";
 export type { DropdownDividerProps, DropdownDividerTheme } from "./DropdownDivider";
 export { DropdownHeader } from "./DropdownHeader";

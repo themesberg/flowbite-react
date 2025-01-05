@@ -4,10 +4,10 @@ import type { FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
-import type { NavbarComponentProps, NavbarTheme } from "../Navbar";
+import type { NavbarProps, NavbarTheme } from "../Navbar";
 import { Navbar } from "../Navbar";
-import { MegaMenuDropdown, type MegaMenuDropdownTheme } from "./MegaMenuDropdown";
-import { MegaMenuDropdownToggle, type MegaMenuDropdownToggleTheme } from "./MegaMenuDropdownToggle";
+import { type MegaMenuDropdownTheme } from "./MegaMenuDropdown";
+import { type MegaMenuDropdownToggleTheme } from "./MegaMenuDropdownToggle";
 import { megaMenuTheme } from "./theme";
 
 export interface MegaMenuTheme extends NavbarTheme {
@@ -15,9 +15,9 @@ export interface MegaMenuTheme extends NavbarTheme {
   dropdownToggle: MegaMenuDropdownToggleTheme;
 }
 
-export type MegaMenuProps = NavbarComponentProps;
+export type MegaMenuProps = NavbarProps;
 
-const MegaMenuComponent: FC<MegaMenuProps> = ({ children, theme: customTheme, resetTheme, applyTheme, ...props }) => {
+export const MegaMenu: FC<MegaMenuProps> = ({ children, theme: customTheme, resetTheme, applyTheme, ...props }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [megaMenuTheme, provider.theme?.megaMenu, customTheme],
@@ -32,9 +32,4 @@ const MegaMenuComponent: FC<MegaMenuProps> = ({ children, theme: customTheme, re
   );
 };
 
-MegaMenuComponent.displayName = "MegaMenu";
-
-export const MegaMenu = Object.assign(MegaMenuComponent, {
-  Dropdown: MegaMenuDropdown,
-  DropdownToggle: MegaMenuDropdownToggle,
-});
+MegaMenu.displayName = "MegaMenu";

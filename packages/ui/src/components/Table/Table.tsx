@@ -6,12 +6,10 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
-import { TableBody, type TableBodyTheme } from "./TableBody";
-import { TableCell } from "./TableCell";
+import { type TableBodyTheme } from "./TableBody";
 import { TableContext } from "./TableContext";
-import { TableHead, type TableHeadTheme } from "./TableHead";
-import { TableHeadCell } from "./TableHeadCell";
-import { TableRow, type TableRowTheme } from "./TableRow";
+import { type TableHeadTheme } from "./TableHead";
+import { type TableRowTheme } from "./TableRow";
 import { tableTheme } from "./theme";
 
 export interface TableTheme {
@@ -32,7 +30,7 @@ export interface TableProps extends ComponentPropsWithRef<"table">, ThemingProps
   hoverable?: boolean;
 }
 
-const TableComponent = forwardRef<HTMLTableElement, TableProps>(
+export const Table = forwardRef<HTMLTableElement, TableProps>(
   ({ children, className, striped, hoverable, theme: customTheme, resetTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = resolveTheme(
@@ -54,12 +52,4 @@ const TableComponent = forwardRef<HTMLTableElement, TableProps>(
   },
 );
 
-TableComponent.displayName = "Table";
-
-export const Table = Object.assign(TableComponent, {
-  Head: TableHead,
-  Body: TableBody,
-  Row: TableRow,
-  Cell: TableCell,
-  HeadCell: TableHeadCell,
-});
+Table.displayName = "Table";

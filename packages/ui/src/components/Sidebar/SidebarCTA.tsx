@@ -57,4 +57,4 @@ export const SidebarCTA: FC<SidebarCTAProps> = ({
   );
 };
 
-SidebarCTA.displayName = "Sidebar.CTA";
+SidebarCTA.displayName = "SidebarCTA";

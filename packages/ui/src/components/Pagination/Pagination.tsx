@@ -53,7 +53,7 @@ export interface PaginationProps extends ComponentProps<"nav">, ThemingProps<Pag
   totalPages: number;
 }
 
-const PaginationComponent: FC<PaginationProps> = ({
+export const Pagination: FC<PaginationProps> = ({
   className,
   currentPage,
   layout = "pagination",
@@ -132,8 +132,4 @@ const PaginationComponent: FC<PaginationProps> = ({
   );
 };
 
-PaginationComponent.displayName = "Pagination";
-
-export const Pagination = Object.assign(PaginationComponent, {
-  Button: PaginationButton,
-});
+Pagination.displayName = "Pagination";

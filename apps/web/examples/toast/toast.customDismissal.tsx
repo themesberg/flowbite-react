@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Toast } from "flowbite-react";
+import { Button, Toast, ToastToggle } from "flowbite-react";
 import { useState } from "react";
 import { HiFire } from "react-icons/hi";
 import type { CodeData } from "~/components/code-demo";
@@ -8,7 +8,7 @@ import type { CodeData } from "~/components/code-demo";
 const code = `
 "use client";
 
-import { Button, Toast } from "flowbite-react";
+import { Button, Toast, ToastToggle } from "flowbite-react";
 import { useState } from "react";
 import { HiFire } from "react-icons/hi";
 
@@ -24,7 +24,7 @@ export function Component() {
             <HiFire className="h-5 w-5" />
           </div>
           <div className="ml-3 text-sm font-normal">Set yourself free.</div>
-          <Toast.Toggle onDismiss={() => setShowToast(false)} />
+          <ToastToggle onDismiss={() => setShowToast(false)} />
         </Toast>
       )}
     </div>
@@ -44,7 +44,7 @@ export function Component() {
             <HiFire className="h-5 w-5" />
           </div>
           <div className="ml-3 text-sm font-normal">Set yourself free.</div>
-          <Toast.Toggle onDismiss={() => setShowToast(false)} />
+          <ToastToggle onDismiss={() => setShowToast(false)} />
         </Toast>
       )}
     </div>

@@ -151,3 +151,5 @@ export const Floating: FC<FloatingProps> = ({
     </>
   );
 };
+
+Floating.displayName = "Floating";

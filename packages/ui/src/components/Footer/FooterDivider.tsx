@@ -30,3 +30,5 @@ export const FooterDivider: FC<FooterDividerProps> = ({
 
   return <hr data-testid="footer-divider" className={twMerge(theme.base, className)} {...props} />;
 };
+
+FooterDivider.displayName = "FooterDivider";

@@ -2,34 +2,6 @@ import { Button } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-"use client";
-
-import { Button } from "flowbite-react";
-
-export function Component() {
-  return (
-    <div className="flex flex-wrap items-start gap-2">
-      <Button size="xs" isProcessing>
-        Click me!
-      </Button>
-      <Button size="sm" isProcessing gradientDuoTone="purpleToBlue">
-        Click me!
-      </Button>
-      <Button size="md" isProcessing color="red">
-        Click me!
-      </Button>
-      <Button size="lg" isProcessing pill>
-        Click me!
-      </Button>
-      <Button size="xl" isProcessing outline>
-        Click me!
-      </Button>
-    </div>
-  );
-}
-`;
-
-const codeRSC = `
 import { Button } from "flowbite-react";
 
 export function Component() {
@@ -84,11 +56,6 @@ export const loading: CodeData = {
       fileName: "client",
       language: "tsx",
       code,
-    },
-    {
-      fileName: "server",
-      language: "tsx",
-      code: codeRSC,
     },
   ],
   githubSlug: "button/button.loading.tsx",

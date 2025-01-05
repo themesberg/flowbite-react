@@ -42,3 +42,5 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
     </>
   );
 };
+
+DropdownHeader.displayName = "DropdownHeader";

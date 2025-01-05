@@ -65,3 +65,5 @@ export const TimelineBody: FC<TimelineBodyProps> = ({
     </div>
   );
 };
+
+TimelineBody.displayName = "TimelineBody";

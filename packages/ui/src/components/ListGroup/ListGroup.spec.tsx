@@ -6,10 +6,11 @@ import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
 import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { ListGroup } from "./ListGroup";
+import { ListGroupItem } from "./ListGroupItem";
 
 describe("Components / List group", () => {
   describe("Keyboard interactions", () => {
-    it("should trigger `onClick` when `Enter` is pressed on a `ListGroup.Item`", async () => {
+    it("should trigger `onClick` when `Enter` is pressed on a `ListGroupItem`", async () => {
       const user = userEvent.setup();
       render(<TestListGroup />);
 
@@ -21,7 +22,7 @@ describe("Components / List group", () => {
       expect(firstItem).toHaveAccessibleName("Clicked");
     });
 
-    it("should trigger `onClick` when `Space` is pressed on a `ListGroup.Item`", async () => {
+    it("should trigger `onClick` when `Space` is pressed on a `ListGroupItem`", async () => {
       const user = userEvent.setup();
       render(<TestListGroup />);
 
@@ -71,7 +72,7 @@ describe("Components / List group", () => {
       expect(listGroup()).toHaveClass("text-gray-100");
     });
 
-    it("should use custom classes on `ListGroup.Item`", () => {
+    it("should use custom classes on `ListGroupItem`", () => {
       const theme: CustomFlowbiteTheme = {
         listGroup: {
           item: {
@@ -117,12 +118,12 @@ const TestListGroup = (): JSX.Element => {
 
   return (
     <ListGroup>
-      <ListGroup.Item active onClick={() => setClicked(!isClicked)}>
+      <ListGroupItem active onClick={() => setClicked(!isClicked)}>
         {isClicked ? "Clicked" : "Waiting"}
-      </ListGroup.Item>
-      <ListGroup.Item href="#">Settings</ListGroup.Item>
-      <ListGroup.Item>Messages</ListGroup.Item>
-      <ListGroup.Item icon={HiCloudDownload}>Download</ListGroup.Item>
+      </ListGroupItem>
+      <ListGroupItem href="#">Settings</ListGroupItem>
+      <ListGroupItem>Messages</ListGroupItem>
+      <ListGroupItem icon={HiCloudDownload}>Download</ListGroupItem>
     </ListGroup>
   );
 };

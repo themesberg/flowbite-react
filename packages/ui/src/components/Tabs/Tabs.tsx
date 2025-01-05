@@ -9,7 +9,6 @@ import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { TabItemProps } from "./TabItem";
-import { TabItem } from "./TabItem";
 import { tabsTheme } from "./theme";
 
 export interface TabsTheme {
@@ -65,7 +64,7 @@ export interface TabsRef {
   setActiveTab: (activeTab: number) => void;
 }
 
-const TabsComponent = forwardRef<TabsRef, TabsProps>(
+export const Tabs = forwardRef<TabsRef, TabsProps>(
   (
     {
       children,
@@ -194,8 +193,4 @@ const TabsComponent = forwardRef<TabsRef, TabsProps>(
   },
 );
 
-TabsComponent.displayName = "Tabs";
-
-export const Tabs = Object.assign(TabsComponent, {
-  Item: TabItem,
-});
+Tabs.displayName = "Tabs";

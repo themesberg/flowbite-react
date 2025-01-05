@@ -2,40 +2,6 @@ import { Rating, RatingStar } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-"use client";
-
-import { Rating } from "flowbite-react";
-
-export function Component() {
-  return (
-    <div className="flex flex-col gap-2">
-      <Rating>
-        <Rating.Star />
-        <Rating.Star />
-        <Rating.Star />
-        <Rating.Star />
-        <Rating.Star filled={false} />
-      </Rating>
-      <Rating size="md">
-        <Rating.Star />
-        <Rating.Star />
-        <Rating.Star />
-        <Rating.Star />
-        <Rating.Star filled={false} />
-      </Rating>
-      <Rating size="lg">
-        <Rating.Star />
-        <Rating.Star />
-        <Rating.Star />
-        <Rating.Star />
-        <Rating.Star filled={false} />
-      </Rating>
-    </div>
-  );
-}
-`;
-
-const codeRSC = `
 import { Rating, RatingStar } from "flowbite-react";
 
 export function Component() {
@@ -102,11 +68,6 @@ export const sizing: CodeData = {
       fileName: "client",
       language: "tsx",
       code,
-    },
-    {
-      fileName: "server",
-      language: "tsx",
-      code: codeRSC,
     },
   ],
   githubSlug: "rating/rating.sizing.tsx",

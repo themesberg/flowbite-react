@@ -8,9 +8,7 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import type { AvatarGroupTheme } from "./AvatarGroup";
-import { AvatarGroup } from "./AvatarGroup";
 import type { AvatarGroupCounterTheme } from "./AvatarGroupCounter";
-import { AvatarGroupCounter } from "./AvatarGroupCounter";
 import { avatarTheme } from "./theme";
 
 export interface AvatarTheme {
@@ -78,7 +76,7 @@ export interface AvatarProps extends Omit<ComponentProps<"div">, "color">, Themi
   placeholderInitials?: string;
 }
 
-const AvatarComponent: FC<AvatarProps> = ({
+export const Avatar: FC<AvatarProps> = ({
   alt = "",
   bordered = false,
   children,
@@ -171,9 +169,4 @@ const AvatarComponent: FC<AvatarProps> = ({
   );
 };
 
-AvatarComponent.displayName = "Avatar";
-
-export const Avatar = Object.assign(AvatarComponent, {
-  Group: AvatarGroup,
-  Counter: AvatarGroupCounter,
-});
+Avatar.displayName = "Avatar";

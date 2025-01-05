@@ -7,6 +7,9 @@ import { ThemeProvider } from "../../theme/provider";
 import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import type { AccordionProps } from "./Accordion";
 import { Accordion } from "./Accordion";
+import { AccordionContent } from "./AccordionContent";
+import { AccordionPanel } from "./AccordionPanel";
+import { AccordionTitle } from "./AccordionTitle";
 
 describe("Components / Accordion", () => {
   describe("A11y", () => {
@@ -16,14 +19,14 @@ describe("Components / Accordion", () => {
       expect(accordion()).toHaveAccessibleName("My accordion");
     });
 
-    it('should use `aria-labelledby=""` in `Accordion.Content` if provided', () => {
+    it('should use `aria-labelledby=""` in `AccordionContent` if provided', () => {
       render(<TestAccordion />);
 
       expect(content()[0]).toHaveAccessibleName("Title");
       expect(content()[0]).toHaveAttribute("aria-labelledby", "accordion-title");
     });
 
-    it('should use `role="button"` in `Accordion.Title`', () => {
+    it('should use `role="button"` in `AccordionTitle`', () => {
       render(<TestAccordion />);
 
       titles().forEach((title) => {
@@ -31,13 +34,13 @@ describe("Components / Accordion", () => {
       });
     });
 
-    it('should use `id=""` if provided in `Accordion.Title`', () => {
+    it('should use `id=""` if provided in `AccordionTitle`', () => {
       render(<TestAccordion aria-label="My accordion" />);
 
       expect(accordion()).toHaveAccessibleName("My accordion");
     });
 
-    it("shouldn't include `arrowIcon` in `Accordion.Title` label", () => {
+    it("shouldn't include `arrowIcon` in `AccordionTitle` label", () => {
       render(<TestAccordion />);
 
       titles().forEach((title) => expect(title).toHaveAccessibleName("Title"));
@@ -45,7 +48,7 @@ describe("Components / Accordion", () => {
   });
 
   describe("Keyboard interactions", () => {
-    it("should open focused panel, and close others when `Space` is pressed on an `Accordion.Panel`", async () => {
+    it("should open focused panel, and close others when `Space` is pressed on an `AccordionPanel`", async () => {
       const user = userEvent.setup();
       render(<TestAccordion />);
 
@@ -58,7 +61,7 @@ describe("Components / Accordion", () => {
       expect(content()[1]).toBeVisible();
     });
 
-    it("should open and close self when `Space is pressed on the same`Accordion.Panel`", async () => {
+    it("should open and close self when `Space is pressed on the same`AccordionPanel`", async () => {
       const user = userEvent.setup();
       render(<TestAccordion />);
 
@@ -71,7 +74,7 @@ describe("Components / Accordion", () => {
       expect(content()[0]).not.toBeVisible();
       expect(content()[1]).not.toBeVisible();
     });
-    it("should open focused panel without closing others on an `Accordion.Panel` with `alwaysOpen={true}`", async () => {
+    it("should open focused panel without closing others on an `AccordionPanel` with `alwaysOpen={true}`", async () => {
       const user = userEvent.setup();
       render(<TestAccordion alwaysOpen />);
 
@@ -103,7 +106,7 @@ describe("Components / Accordion", () => {
       });
     });
 
-    it("should give each `Accordion.Title` focus in order while pressing `Tab`", async () => {
+    it("should give each `AccordionTitle` focus in order while pressing `Tab`", async () => {
       const user = userEvent.setup();
       render(<TestAccordion />);
 
@@ -116,7 +119,7 @@ describe("Components / Accordion", () => {
   });
 
   describe("Props", () => {
-    it('should use any HTML heading element in `Accordion.Title as=".."`', () => {
+    it('should use any HTML heading element in `AccordionTitle as=".."`', () => {
       render(<TestAccordion />);
 
       expect(headings()[0].tagName.toLocaleLowerCase()).toEqual("h3");
@@ -172,7 +175,7 @@ describe("Components / Accordion", () => {
       });
     });
 
-    describe("`Accordion.Content`", () => {
+    describe("`AccordionContent`", () => {
       it("should use custom `content` classes", () => {
         const theme: CustomFlowbiteTheme = {
           accordion: {
@@ -194,7 +197,7 @@ describe("Components / Accordion", () => {
       });
     });
 
-    describe("`Accordion.Title`", () => {
+    describe("`AccordionTitle`", () => {
       it("should use custom `title` classes", () => {
         const theme: CustomFlowbiteTheme = {
           accordion: {
@@ -268,20 +271,20 @@ describe("Components / Accordion", () => {
 
 const TestAccordion: FC<Omit<AccordionProps, "children">> = (props) => (
   <Accordion arrowIcon={HiOutlineArrowCircleDown} {...props}>
-    <Accordion.Panel>
-      <Accordion.Title as="h3" className="text-cyan-300" id="accordion-title">
+    <AccordionPanel>
+      <AccordionTitle as="h3" className="text-cyan-300" id="accordion-title">
         Title
-      </Accordion.Title>
-      <Accordion.Content aria-labelledby="accordion-title" className="text-cyan-300">
+      </AccordionTitle>
+      <AccordionContent aria-labelledby="accordion-title" className="text-cyan-300">
         <p>Content</p>
-      </Accordion.Content>
-    </Accordion.Panel>
-    <Accordion.Panel>
-      <Accordion.Title>Title</Accordion.Title>
-      <Accordion.Content>
+      </AccordionContent>
+    </AccordionPanel>
+    <AccordionPanel>
+      <AccordionTitle>Title</AccordionTitle>
+      <AccordionContent>
         <p>Content</p>
-      </Accordion.Content>
-    </Accordion.Panel>
+      </AccordionContent>
+    </AccordionPanel>
   </Accordion>
 );
 

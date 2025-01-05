@@ -2,27 +2,6 @@ import { ListGroup, ListGroupItem } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-"use client";
-
-import { ListGroup } from "flowbite-react";
-
-export function Component() {
-  return (
-    <div className="flex justify-center">
-      <ListGroup className="w-48">
-        <ListGroup.Item href="#" active>
-          Profile
-        </ListGroup.Item>
-        <ListGroup.Item href="#">Settings</ListGroup.Item>
-        <ListGroup.Item href="#">Messages</ListGroup.Item>
-        <ListGroup.Item href="#">Download</ListGroup.Item>
-      </ListGroup>
-    </div>
-  );
-}
-`;
-
-const codeRSC = `
 import { ListGroup, ListGroupItem } from "flowbite-react";
 
 export function Component() {
@@ -63,11 +42,6 @@ export const itemsAsLink: CodeData = {
       fileName: "client",
       language: "tsx",
       code,
-    },
-    {
-      fileName: "server",
-      language: "tsx",
-      code: codeRSC,
     },
   ],
   githubSlug: "listGroup/listGroup.itemsAsLink.tsx",

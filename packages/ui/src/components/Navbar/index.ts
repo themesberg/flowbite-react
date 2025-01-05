@@ -1,10 +1,10 @@
 export { Navbar } from "./Navbar";
-export type { NavbarRootTheme, NavbarTheme, NavbarComponentProps } from "./Navbar";
+export type { NavbarProps, NavbarRootTheme, NavbarTheme } from "./Navbar";
 export { NavbarBrand } from "./NavbarBrand";
-export type { NavbarBrandTheme, NavbarBrandProps } from "./NavbarBrand";
+export type { NavbarBrandProps, NavbarBrandTheme } from "./NavbarBrand";
 export { NavbarCollapse } from "./NavbarCollapse";
-export type { NavbarCollapseTheme, NavbarCollapseProps } from "./NavbarCollapse";
+export type { NavbarCollapseProps, NavbarCollapseTheme } from "./NavbarCollapse";
 export { NavbarLink } from "./NavbarLink";
-export type { NavbarLinkTheme, NavbarLinkProps } from "./NavbarLink";
+export type { NavbarLinkProps, NavbarLinkTheme } from "./NavbarLink";
 export { NavbarToggle } from "./NavbarToggle";
-export type { NavbarToggleThem, NavbarToggleProps } from "./NavbarToggle";
+export type { NavbarToggleProps, NavbarToggleThem } from "./NavbarToggle";

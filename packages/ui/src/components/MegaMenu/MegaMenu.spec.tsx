@@ -2,9 +2,11 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import { MegaMenu } from "./MegaMenu";
+import { MegaMenuDropdown } from "./MegaMenuDropdown";
+import { MegaMenuDropdownToggle } from "./MegaMenuDropdownToggle";
 
 describe("Components / MegaMenu", () => {
-  it("should hide/show <MegaMenu.Dropdown> on click <MegaMenu.DropdownToggle>", async () => {
+  it("should hide/show <MegaMenuDropdown> on click <MegaMenuDropdownToggle>", async () => {
     const user = userEvent.setup();
     render(<MegaMenuTest />);
 
@@ -27,7 +29,7 @@ describe("Components / MegaMenu", () => {
     expect(dropdown).not.toHaveClass("hidden");
   });
 
-  it("should hide/show <MegaMenu.Dropdown toggle={..}> on click toggle", async () => {
+  it("should hide/show <MegaMenuDropdown toggle={..}> on click toggle", async () => {
     const user = userEvent.setup();
     render(<MegaMenuDropdownOnlyTest />);
 
@@ -53,10 +55,10 @@ describe("Components / MegaMenu", () => {
 function MegaMenuTest() {
   return (
     <MegaMenu>
-      <MegaMenu.DropdownToggle>Click</MegaMenu.DropdownToggle>
-      <MegaMenu.Dropdown>
+      <MegaMenuDropdownToggle>Click</MegaMenuDropdownToggle>
+      <MegaMenuDropdown>
         <p>Test</p>
-      </MegaMenu.Dropdown>
+      </MegaMenuDropdown>
     </MegaMenu>
   );
 }
@@ -64,9 +66,9 @@ function MegaMenuTest() {
 function MegaMenuDropdownOnlyTest() {
   return (
     <MegaMenu>
-      <MegaMenu.Dropdown toggle={<>Toggle</>}>
+      <MegaMenuDropdown toggle={<>Toggle</>}>
         <p>Test</p>
-      </MegaMenu.Dropdown>
+      </MegaMenuDropdown>
     </MegaMenu>
   );
 }

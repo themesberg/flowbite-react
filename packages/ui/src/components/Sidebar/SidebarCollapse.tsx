@@ -121,4 +121,4 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   );
 };
 
-SidebarCollapse.displayName = "Sidebar.Collapse";
+SidebarCollapse.displayName = "SidebarCollapse";

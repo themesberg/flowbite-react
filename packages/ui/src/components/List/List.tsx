@@ -7,7 +7,7 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
-import { ListItem, type ListItemTheme } from "./ListItem";
+import { type ListItemTheme } from "./ListItem";
 import { listTheme } from "./theme";
 
 export interface ListTheme {
@@ -40,7 +40,7 @@ export interface ListProps
   unstyled?: boolean;
 }
 
-const ListComponent: FC<ListProps> = ({
+export const List: FC<ListProps> = ({
   children,
   className,
   horizontal,
@@ -77,7 +77,4 @@ const ListComponent: FC<ListProps> = ({
   );
 };
 
-ListComponent.displayName = "List";
-ListItem.displayName = "List.Item";
-
-export const List = Object.assign(ListComponent, { Item: ListItem });
+List.displayName = "List";

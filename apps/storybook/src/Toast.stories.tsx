@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import type { ToastProps } from "flowbite-react";
-import { Toast } from "flowbite-react";
+import { Toast, ToastToggle } from "flowbite-react";
 import { HiFire } from "react-icons/hi";
 
 export default {
@@ -15,7 +15,7 @@ export const DefaultToast: StoryFn<ToastProps> = (args) => {
         <HiFire className="size-5" />
       </div>
       <div className="ml-3 text-sm font-normal">Set yourself free.</div>
-      <Toast.Toggle />
+      <ToastToggle />
     </Toast>
   );
 };

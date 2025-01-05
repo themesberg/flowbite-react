@@ -1,2 +1,2 @@
 export { Label } from "./Label";
-export type { LabelRootTheme, LabelTheme, LabelColors, LabelProps } from "./Label";
+export type { LabelColors, LabelProps, LabelRootTheme, LabelTheme } from "./Label";

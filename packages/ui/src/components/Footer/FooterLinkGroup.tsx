@@ -41,3 +41,5 @@ export const FooterLinkGroup: FC<FooterLinkGroupProps> = ({
     </ul>
   );
 };
+
+FooterLinkGroup.displayName = "FooterLinkGroup";

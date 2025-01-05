@@ -46,4 +46,4 @@ export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
   },
 );
 
-TableCell.displayName = "Table.Cell";
+TableCell.displayName = "TableCell";

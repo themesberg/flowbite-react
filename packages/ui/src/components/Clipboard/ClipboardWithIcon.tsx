@@ -53,3 +53,5 @@ export const ClipboardWithIcon = forwardRef<HTMLButtonElement, ClipboardWithIcon
     );
   },
 );
+
+ClipboardWithIcon.displayName = "Clipboard.WithIcon";

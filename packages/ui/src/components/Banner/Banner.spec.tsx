@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import { Banner } from "./Banner";
+import { BannerCollapseButton } from "./BannerCollapseButton";
 
 describe("Components / Banner", () => {
   it("should close when collapse button is clicked", async () => {
@@ -9,7 +10,7 @@ describe("Components / Banner", () => {
     render(
       <div>
         <Banner>
-          <Banner.CollapseButton>Click me</Banner.CollapseButton>
+          <BannerCollapseButton>Click me</BannerCollapseButton>
         </Banner>
       </div>,
     );

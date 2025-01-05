@@ -44,3 +44,5 @@ export const ListItem: FC<ListItemProps> = ({
     </li>
   );
 };
+
+ListItem.displayName = "ListItem";

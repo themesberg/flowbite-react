@@ -55,3 +55,5 @@ export const FooterIcon: FC<FooterIconProps & ComponentProps<"a"> & ComponentPro
     </div>
   );
 };
+
+FooterIcon.displayName = "FooterIcon";

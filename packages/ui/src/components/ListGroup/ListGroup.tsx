@@ -7,7 +7,6 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { ListGroupItemTheme } from "./ListGroupItem";
-import { ListGroupItem } from "./ListGroupItem";
 import { listGroupTheme } from "./theme";
 
 export interface ListGroupTheme {
@@ -21,7 +20,7 @@ export interface ListGroupRootTheme {
 
 export interface ListGroupProps extends ComponentProps<"ul">, ThemingProps<ListGroupTheme> {}
 
-const ListGroupComponent: FC<ListGroupProps> = ({
+export const ListGroup: FC<ListGroupProps> = ({
   children,
   className,
   theme: customTheme,
@@ -43,9 +42,4 @@ const ListGroupComponent: FC<ListGroupProps> = ({
   );
 };
 
-ListGroupComponent.displayName = "ListGroup";
-ListGroupItem.displayName = "ListGroup.Item";
-
-export const ListGroup = Object.assign(ListGroupComponent, {
-  Item: ListGroupItem,
-});
+ListGroup.displayName = "ListGroup";

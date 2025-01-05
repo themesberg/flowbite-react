@@ -47,4 +47,4 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
   },
 );
 
-TableRow.displayName = "Table.Row";
+TableRow.displayName = "TableRow";

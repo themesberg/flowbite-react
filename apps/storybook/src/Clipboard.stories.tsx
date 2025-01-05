@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import type { ClipboardProps, ClipboardWithIconProps, ClipboardWithIconTextProps } from "flowbite-react";
-import { Clipboard } from "flowbite-react";
+import { Clipboard, ClipboardWithIcon, ClipboardWithIconText } from "flowbite-react";
 
 export default {
   title: "Components/Clipboard",
@@ -40,7 +40,7 @@ const CopyIconTemplate: StoryFn<ClipboardWithIconProps> = () => (
         disabled
         readOnly
       />
-      <Clipboard.WithIcon valueToCopy="npm install flowbite-react" />
+      <ClipboardWithIcon valueToCopy="npm install flowbite-react" />
     </div>
   </div>
 );
@@ -61,7 +61,7 @@ const CopyIconTextTemplate: StoryFn<ClipboardWithIconTextProps> = () => (
         disabled
         readOnly
       />
-      <Clipboard.WithIconText valueToCopy="npm install flowbite-react" />
+      <ClipboardWithIconText valueToCopy="npm install flowbite-react" />
     </div>
   </div>
 );

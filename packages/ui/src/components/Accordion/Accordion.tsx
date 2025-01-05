@@ -10,11 +10,8 @@ import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { AccordionComponentTheme } from "./AccordionContent";
-import { AccordionContent } from "./AccordionContent";
 import type { AccordionPanelProps } from "./AccordionPanel";
-import { AccordionPanel } from "./AccordionPanel";
 import type { AccordionTitleTheme } from "./AccordionTitle";
-import { AccordionTitle } from "./AccordionTitle";
 import { accordionTheme } from "./theme";
 
 export interface AccordionTheme {
@@ -36,7 +33,7 @@ export interface AccordionProps extends ComponentProps<"div">, ThemingProps<Acco
   collapseAll?: boolean;
 }
 
-const AccordionComponent: FC<AccordionProps> = ({
+export const Accordion: FC<AccordionProps> = ({
   alwaysOpen = false,
   arrowIcon = ChevronDownIcon,
   children,
@@ -82,13 +79,4 @@ const AccordionComponent: FC<AccordionProps> = ({
   );
 };
 
-AccordionComponent.displayName = "Accordion";
-AccordionPanel.displayName = "Accordion.Panel";
-AccordionTitle.displayName = "Accordion.Title";
-AccordionContent.displayName = "Accordion.Content";
-
-export const Accordion = Object.assign(AccordionComponent, {
-  Panel: AccordionPanel,
-  Title: AccordionTitle,
-  Content: AccordionContent,
-});
+Accordion.displayName = "Accordion";

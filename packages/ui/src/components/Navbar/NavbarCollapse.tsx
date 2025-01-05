@@ -45,3 +45,5 @@ export const NavbarCollapse: FC<NavbarCollapseProps> = ({
     </div>
   );
 };
+
+NavbarCollapse.displayName = "NavbarCollapse";

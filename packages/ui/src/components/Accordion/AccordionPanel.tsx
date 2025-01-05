@@ -24,3 +24,5 @@ export const AccordionPanel: FC<AccordionPanelProps> = ({ children, ...props }) 
 
   return <AccordionPanelContext.Provider value={provider}>{children}</AccordionPanelContext.Provider>;
 };
+
+AccordionPanel.displayName = "AccordionPanel";

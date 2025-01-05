@@ -52,4 +52,4 @@ export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, Br
   },
 );
 
-BreadcrumbItem.displayName = "Breadcrumb.Item";
+BreadcrumbItem.displayName = "BreadcrumbItem";

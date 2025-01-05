@@ -1,6 +1,6 @@
 export { MegaMenu } from "./MegaMenu";
-export type { MegaMenuTheme, MegaMenuProps } from "./MegaMenu";
+export type { MegaMenuProps, MegaMenuTheme } from "./MegaMenu";
 export { MegaMenuDropdown } from "./MegaMenuDropdown";
-export type { MegaMenuDropdownTheme, MegaMenuDropdownProps } from "./MegaMenuDropdown";
+export type { MegaMenuDropdownProps, MegaMenuDropdownTheme } from "./MegaMenuDropdown";
 export { MegaMenuDropdownToggle } from "./MegaMenuDropdownToggle";
-export type { MegaMenuDropdownToggleTheme, MegaMenuDropdownToggleProps } from "./MegaMenuDropdownToggle";
+export type { MegaMenuDropdownToggleProps, MegaMenuDropdownToggleTheme } from "./MegaMenuDropdownToggle";

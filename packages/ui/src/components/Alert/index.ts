@@ -1,2 +1,2 @@
 export { Alert } from "./Alert";
-export type { AlertProps, AlertCloseButtonTheme, AlertTheme } from "./Alert";
+export type { AlertCloseButtonTheme, AlertProps, AlertTheme } from "./Alert";

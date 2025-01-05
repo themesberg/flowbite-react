@@ -36,4 +36,4 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
   );
 };
 
-AvatarGroup.displayName = "Avatar.Group";
+AvatarGroup.displayName = "AvatarGroup";

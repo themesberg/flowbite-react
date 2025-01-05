@@ -74,6 +74,8 @@ export const Card: FC<CardProps> = (props) => {
   );
 };
 
+Card.displayName = "Card";
+
 const Image: FC<CardProps> = ({ theme: customTheme, resetTheme, applyTheme, ...props }) => {
   const provider = useThemeProvider();
   const theme = resolveTheme(

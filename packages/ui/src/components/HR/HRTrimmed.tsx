@@ -35,3 +35,5 @@ export const HRTrimmed = forwardRef<HTMLHRElement, HRTrimmedProps>(
     );
   },
 );
+
+HRTrimmed.displayName = "HRTrimmed";

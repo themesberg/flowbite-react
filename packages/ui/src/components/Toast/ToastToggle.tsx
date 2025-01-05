@@ -72,3 +72,5 @@ export const ToastToggle: FC<ToastToggleProps> = ({
     </button>
   );
 };
+
+ToastToggle.displayName = "ToastToggle";

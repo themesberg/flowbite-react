@@ -5,6 +5,12 @@ import { ThemeProvider } from "../../theme/provider";
 import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import type { TimelineProps } from "./Timeline";
 import { Timeline } from "./Timeline";
+import { TimelineBody } from "./TimelineBody";
+import { TimelineContent } from "./TimelineContent";
+import { TimelineItem } from "./TimelineItem";
+import { TimelinePoint } from "./TimelinePoint";
+import { TimelineTime } from "./TimelineTime";
+import { TimelineTitle } from "./TimelineTitle";
 
 describe("Components / Timeline", () => {
   describe("Rendering horizontal mode", () => {
@@ -103,17 +109,17 @@ describe("Components / Timeline", () => {
 const TestTimelineNoIcon: FC<TimelineProps> = ({ horizontal, className }): JSX.Element => {
   return (
     <Timeline horizontal={horizontal} className={className}>
-      <Timeline.Item>
-        <Timeline.Point />
-        <Timeline.Content>
-          <Timeline.Time>February 2022</Timeline.Time>
-          <Timeline.Title>Application UI code in Tailwind CSS</Timeline.Title>
-          <Timeline.Body>
+      <TimelineItem>
+        <TimelinePoint />
+        <TimelineContent>
+          <TimelineTime>February 2022</TimelineTime>
+          <TimelineTitle>Application UI code in Tailwind CSS</TimelineTitle>
+          <TimelineBody>
             Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order
             E-commerce & Marketing pages.
-          </Timeline.Body>
-        </Timeline.Content>
-      </Timeline.Item>
+          </TimelineBody>
+        </TimelineContent>
+      </TimelineItem>
     </Timeline>
   );
 };
@@ -121,17 +127,17 @@ const TestTimelineNoIcon: FC<TimelineProps> = ({ horizontal, className }): JSX.E
 const TestTimelineWithIcon: FC<TimelineProps> = ({ horizontal, className }): JSX.Element => {
   return (
     <Timeline horizontal={horizontal} className={className}>
-      <Timeline.Item>
-        <Timeline.Point icon={IconSVG} />
-        <Timeline.Content>
-          <Timeline.Time>February 2022</Timeline.Time>
-          <Timeline.Title>Application UI code in Tailwind CSS</Timeline.Title>
-          <Timeline.Body>
+      <TimelineItem>
+        <TimelinePoint icon={IconSVG} />
+        <TimelineContent>
+          <TimelineTime>February 2022</TimelineTime>
+          <TimelineTitle>Application UI code in Tailwind CSS</TimelineTitle>
+          <TimelineBody>
             Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order
             E-commerce & Marketing pages.
-          </Timeline.Body>
-        </Timeline.Content>
-      </Timeline.Item>
+          </TimelineBody>
+        </TimelineContent>
+      </TimelineItem>
     </Timeline>
   );
 };

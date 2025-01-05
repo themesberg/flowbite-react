@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import type { BannerComponentProps } from "flowbite-react";
-import { Banner } from "flowbite-react";
+import { Banner, BannerCollapseButton } from "flowbite-react";
 import { HiX } from "react-icons/hi";
 import { MdAnnouncement } from "react-icons/md";
 
@@ -30,9 +30,9 @@ DefaultBanner.args = {
           </span>
         </p>
       </div>
-      <Banner.CollapseButton color="gray" className="border-0 bg-transparent px-0">
+      <BannerCollapseButton color="gray" className="border-0 bg-transparent px-0">
         <HiX className="size-4" />
-      </Banner.CollapseButton>
+      </BannerCollapseButton>
     </div>
   ),
 };

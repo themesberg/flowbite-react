@@ -4,6 +4,9 @@ import type { FC, PropsWithChildren } from "react";
 import { describe, expect, it } from "vitest";
 import type { DropdownProps } from "./Dropdown";
 import { Dropdown } from "./Dropdown";
+import { DropdownDivider } from "./DropdownDivider";
+import { DropdownHeader } from "./DropdownHeader";
+import { DropdownItem } from "./DropdownItem";
 
 const delay = async (delayTime: number) => await new Promise((r) => setTimeout(r, delayTime));
 
@@ -167,7 +170,7 @@ describe("Components / Dropdown", () => {
   });
 
   describe("Dropdown item render", () => {
-    it("should override Dropdown.Item base component when using `as` prop", async () => {
+    it("should override DropdownItem base component when using `as` prop", async () => {
       const user = userEvent.setup();
 
       const CustomBaseItem = ({ children }: PropsWithChildren) => {
@@ -176,7 +179,7 @@ describe("Components / Dropdown", () => {
 
       render(
         <Dropdown label="Dropdown button" placement="right">
-          <Dropdown.Item as={CustomBaseItem}>Settings</Dropdown.Item>
+          <DropdownItem as={CustomBaseItem}>Settings</DropdownItem>
         </Dropdown>,
       );
 
@@ -204,15 +207,15 @@ const TestDropdown: FC<Partial<DropdownProps>> = ({
     disabled={disabled}
     renderTrigger={renderTrigger}
   >
-    <Dropdown.Header>
+    <DropdownHeader>
       <span className="block text-sm">Bonnie Green</span>
       <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-    </Dropdown.Header>
-    <Dropdown.Item>Dashboard</Dropdown.Item>
-    <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>Earnings</Dropdown.Item>
-    <Dropdown.Divider />
-    <Dropdown.Item>Sign out</Dropdown.Item>
+    </DropdownHeader>
+    <DropdownItem>Dashboard</DropdownItem>
+    <DropdownItem>Settings</DropdownItem>
+    <DropdownItem>Earnings</DropdownItem>
+    <DropdownDivider />
+    <DropdownItem>Sign out</DropdownItem>
   </Dropdown>
 );
 

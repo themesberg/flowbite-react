@@ -63,3 +63,5 @@ export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentP
     </div>
   );
 };
+
+FooterBrand.displayName = "FooterBrand";

@@ -39,3 +39,5 @@ export const ModalBody: FC<ModalBodyProps> = ({
     </div>
   );
 };
+
+ModalBody.displayName = "ModalBody";

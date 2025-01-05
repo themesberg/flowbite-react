@@ -52,3 +52,5 @@ export const TimelineItem: FC<TimelineItemProps> = ({
     </TimelineItemContext.Provider>
   );
 };
+
+TimelineItem.displayName = "TimelineItem";

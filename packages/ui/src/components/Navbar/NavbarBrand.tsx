@@ -42,3 +42,5 @@ export const NavbarBrand: FC<NavbarBrandProps> = ({
     </Component>
   );
 };
+
+NavbarBrand.displayName = "NavbarBrand";

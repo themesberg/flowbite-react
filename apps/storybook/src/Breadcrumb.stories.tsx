@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import type { BreadcrumbComponentProps } from "flowbite-react";
-import { Breadcrumb } from "flowbite-react";
+import type { BreadcrumbProps } from "flowbite-react";
+import { Breadcrumb, BreadcrumbItem } from "flowbite-react";
 import { HiHome } from "react-icons/hi";
 
 export default {
@@ -8,13 +8,13 @@ export default {
   component: Breadcrumb,
 } as Meta;
 
-const Template: StoryFn<BreadcrumbComponentProps> = (args) => (
+const Template: StoryFn<BreadcrumbProps> = (args) => (
   <Breadcrumb {...args}>
-    <Breadcrumb.Item href="#" icon={HiHome}>
+    <BreadcrumbItem href="#" icon={HiHome}>
       Home
-    </Breadcrumb.Item>
-    <Breadcrumb.Item href="#">Projects</Breadcrumb.Item>
-    <Breadcrumb.Item>Flowbite React</Breadcrumb.Item>
+    </BreadcrumbItem>
+    <BreadcrumbItem href="#">Projects</BreadcrumbItem>
+    <BreadcrumbItem>Flowbite React</BreadcrumbItem>
   </Breadcrumb>
 );
 

@@ -1,7 +1,7 @@
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryFn } from "@storybook/react";
 import type { DropdownProps } from "flowbite-react";
-import { Dropdown } from "flowbite-react";
+import { Dropdown, DropdownDivider, DropdownHeader, DropdownItem } from "flowbite-react";
 
 export default {
   title: "Components/Dropdown",
@@ -20,10 +20,10 @@ export const Default = Template.bind({});
 Default.args = {
   children: (
     <>
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
+      <DropdownItem>Dashboard</DropdownItem>
+      <DropdownItem>Settings</DropdownItem>
+      <DropdownItem>Earnings</DropdownItem>
+      <DropdownItem>Sign out</DropdownItem>
     </>
   ),
 };
@@ -33,11 +33,11 @@ WithDivider.storyName = "With divider";
 WithDivider.args = {
   children: (
     <>
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item>Separated link</Dropdown.Item>
+      <DropdownItem>Dashboard</DropdownItem>
+      <DropdownItem>Settings</DropdownItem>
+      <DropdownItem>Earnings</DropdownItem>
+      <DropdownDivider />
+      <DropdownItem>Separated link</DropdownItem>
     </>
   ),
 };
@@ -47,15 +47,15 @@ WithHeader.storyName = "With header";
 WithHeader.args = {
   children: (
     <>
-      <Dropdown.Header>
+      <DropdownHeader>
         <span className="block text-sm">Bonnie Green</span>
         <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-      </Dropdown.Header>
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item>Sign out</Dropdown.Item>
+      </DropdownHeader>
+      <DropdownItem>Dashboard</DropdownItem>
+      <DropdownItem>Settings</DropdownItem>
+      <DropdownItem>Earnings</DropdownItem>
+      <DropdownDivider />
+      <DropdownItem>Sign out</DropdownItem>
     </>
   ),
 };
@@ -66,13 +66,13 @@ WithUsableInputHeader.args = {
   enableTypeAhead: false,
   children: (
     <>
-      <Dropdown.Header>
+      <DropdownHeader>
         <input className="text-black" onChange={action("onChange")} />
-      </Dropdown.Header>
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
+      </DropdownHeader>
+      <DropdownItem>Dashboard</DropdownItem>
+      <DropdownItem>Settings</DropdownItem>
+      <DropdownItem>Earnings</DropdownItem>
+      <DropdownItem>Sign out</DropdownItem>
     </>
   ),
 };
@@ -82,10 +82,10 @@ Inline.args = {
   inline: true,
   children: (
     <>
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
+      <DropdownItem>Dashboard</DropdownItem>
+      <DropdownItem>Settings</DropdownItem>
+      <DropdownItem>Earnings</DropdownItem>
+      <DropdownItem>Sign out</DropdownItem>
     </>
   ),
 };
@@ -95,10 +95,10 @@ CustomTrigger.args = {
   renderTrigger: () => <button>Custom button</button>,
   children: (
     <>
-      <Dropdown.Item>Dashboard</Dropdown.Item>
-      <Dropdown.Item>Settings</Dropdown.Item>
-      <Dropdown.Item>Earnings</Dropdown.Item>
-      <Dropdown.Item>Sign out</Dropdown.Item>
+      <DropdownItem>Dashboard</DropdownItem>
+      <DropdownItem>Settings</DropdownItem>
+      <DropdownItem>Earnings</DropdownItem>
+      <DropdownItem>Sign out</DropdownItem>
     </>
   ),
 };
@@ -107,12 +107,12 @@ export const CustomItem = Template.bind({});
 CustomItem.args = {
   children: (
     <>
-      <Dropdown.Item>Default button</Dropdown.Item>
-      <Dropdown.Item as="span">As span</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item as="a" href="https://flowbite.com/" target="_blank">
+      <DropdownItem>Default button</DropdownItem>
+      <DropdownItem as="span">As span</DropdownItem>
+      <DropdownDivider />
+      <DropdownItem as="a" href="https://flowbite.com/" target="_blank">
         As link
-      </Dropdown.Item>
+      </DropdownItem>
     </>
   ),
 };
@@ -122,10 +122,10 @@ ItemClickHandler.storyName = "Item click handlers";
 ItemClickHandler.args = {
   children: (
     <>
-      <Dropdown.Item onClick={action("Dashboard!")}>Dashboard</Dropdown.Item>
-      <Dropdown.Item onClick={action("Settings!")}>Settings</Dropdown.Item>
-      <Dropdown.Item onClick={action("Earnings!")}>Earnings</Dropdown.Item>
-      <Dropdown.Item onClick={action("Sign out!")}>Sign out</Dropdown.Item>
+      <DropdownItem onClick={action("Dashboard!")}>Dashboard</DropdownItem>
+      <DropdownItem onClick={action("Settings!")}>Settings</DropdownItem>
+      <DropdownItem onClick={action("Earnings!")}>Earnings</DropdownItem>
+      <DropdownItem onClick={action("Sign out!")}>Sign out</DropdownItem>
     </>
   ),
 };

@@ -54,7 +54,7 @@ export const PaginationButton: FC<PaginationButtonProps> = ({
   );
 };
 
-PaginationButton.displayName = "Pagination.Button";
+PaginationButton.displayName = "PaginationButton";
 
 export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   children,
@@ -86,4 +86,4 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   );
 };
 
-PaginationNavigation.displayName = "Pagination.Navigation";
+PaginationNavigation.displayName = "PaginationNavigation";

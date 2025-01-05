@@ -3,14 +3,14 @@ export type {
   PaginationLayoutTheme,
   PaginationNavigationTheme,
   PaginationPagesTheme,
+  PaginationProps,
   PaginationRootTheme,
   PaginationTheme,
-  PaginationProps,
 } from "./Pagination";
 export { PaginationButton } from "./PaginationButton";
 export type {
-  PaginationButtonTheme,
   PaginationButtonProps,
+  PaginationButtonTheme,
   PaginationNavigation,
   PaginationPrevButtonProps,
 } from "./PaginationButton";

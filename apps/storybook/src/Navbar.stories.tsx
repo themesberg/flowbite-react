@@ -1,12 +1,25 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import { Avatar, Button, Dropdown, Navbar, type NavbarComponentProps } from "flowbite-react";
+import {
+  Avatar,
+  Button,
+  Dropdown,
+  DropdownDivider,
+  DropdownHeader,
+  DropdownItem,
+  Navbar,
+  NavbarBrand,
+  NavbarCollapse,
+  NavbarLink,
+  NavbarToggle,
+  type NavbarProps,
+} from "flowbite-react";
 
 export default {
   title: "Components/Navbar",
   component: Navbar,
 } as Meta;
 
-const Template: StoryFn<NavbarComponentProps> = (args) => (
+const Template: StoryFn<NavbarProps> = (args) => (
   <div className="w-4/5">
     <Navbar {...args} />
   </div>
@@ -17,20 +30,20 @@ DefaultNavbar.storyName = "Default";
 DefaultNavbar.args = {
   children: (
     <>
-      <Navbar.Brand href="https://flowbite.com/">
+      <NavbarBrand href="https://flowbite.com/">
         <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
-      </Navbar.Brand>
-      <Navbar.Toggle />
-      <Navbar.Collapse>
-        <Navbar.Link href="/navbars" active>
+      </NavbarBrand>
+      <NavbarToggle />
+      <NavbarCollapse>
+        <NavbarLink href="/navbars" active>
           Home
-        </Navbar.Link>
-        <Navbar.Link href="/navbars">About</Navbar.Link>
-        <Navbar.Link href="/navbars">Services</Navbar.Link>
-        <Navbar.Link href="/navbars">Pricing</Navbar.Link>
-        <Navbar.Link href="/navbars">Contact</Navbar.Link>
-      </Navbar.Collapse>
+        </NavbarLink>
+        <NavbarLink href="/navbars">About</NavbarLink>
+        <NavbarLink href="/navbars">Services</NavbarLink>
+        <NavbarLink href="/navbars">Pricing</NavbarLink>
+        <NavbarLink href="/navbars">Contact</NavbarLink>
+      </NavbarCollapse>
     </>
   ),
 };
@@ -39,23 +52,23 @@ export const WithCTA = Template.bind({});
 WithCTA.args = {
   children: (
     <>
-      <Navbar.Brand href="https://flowbite.com/">
+      <NavbarBrand href="https://flowbite.com/">
         <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
-      </Navbar.Brand>
+      </NavbarBrand>
       <div className="flex gap-3 md:order-2">
         <Button>Get started</Button>
-        <Navbar.Toggle />
+        <NavbarToggle />
       </div>
-      <Navbar.Collapse>
-        <Navbar.Link href="/navbars" active>
+      <NavbarCollapse>
+        <NavbarLink href="/navbars" active>
           Home
-        </Navbar.Link>
-        <Navbar.Link href="/navbars">About</Navbar.Link>
-        <Navbar.Link href="/navbars">Services</Navbar.Link>
-        <Navbar.Link href="/navbars">Pricing</Navbar.Link>
-        <Navbar.Link href="/navbars">Contact</Navbar.Link>
-      </Navbar.Collapse>
+        </NavbarLink>
+        <NavbarLink href="/navbars">About</NavbarLink>
+        <NavbarLink href="/navbars">Services</NavbarLink>
+        <NavbarLink href="/navbars">Pricing</NavbarLink>
+        <NavbarLink href="/navbars">Contact</NavbarLink>
+      </NavbarCollapse>
     </>
   ),
 };
@@ -65,10 +78,10 @@ WithDropdown.storyName = "With dropdown";
 WithDropdown.args = {
   children: (
     <>
-      <Navbar.Brand href="https://flowbite.com/">
+      <NavbarBrand href="https://flowbite.com/">
         <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
-      </Navbar.Brand>
+      </NavbarBrand>
       <div className="flex gap-3 md:order-2">
         <Dropdown
           arrowIcon={false}
@@ -77,27 +90,27 @@ WithDropdown.args = {
             <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
           }
         >
-          <Dropdown.Header>
+          <DropdownHeader>
             <span className="block text-sm">Bonnie Green</span>
             <span className="block truncate text-sm font-medium">name@flowbite.com</span>
-          </Dropdown.Header>
-          <Dropdown.Item>Dashboard</Dropdown.Item>
-          <Dropdown.Item>Settings</Dropdown.Item>
-          <Dropdown.Item>Earnings</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item>Sign out</Dropdown.Item>
+          </DropdownHeader>
+          <DropdownItem>Dashboard</DropdownItem>
+          <DropdownItem>Settings</DropdownItem>
+          <DropdownItem>Earnings</DropdownItem>
+          <DropdownDivider />
+          <DropdownItem>Sign out</DropdownItem>
         </Dropdown>
-        <Navbar.Toggle />
+        <NavbarToggle />
       </div>
-      <Navbar.Collapse>
-        <Navbar.Link href="/navbars" active>
+      <NavbarCollapse>
+        <NavbarLink href="/navbars" active>
           Home
-        </Navbar.Link>
-        <Navbar.Link href="/navbars">About</Navbar.Link>
-        <Navbar.Link href="/navbars">Services</Navbar.Link>
-        <Navbar.Link href="/navbars">Pricing</Navbar.Link>
-        <Navbar.Link href="/navbars">Contact</Navbar.Link>
-      </Navbar.Collapse>
+        </NavbarLink>
+        <NavbarLink href="/navbars">About</NavbarLink>
+        <NavbarLink href="/navbars">Services</NavbarLink>
+        <NavbarLink href="/navbars">Pricing</NavbarLink>
+        <NavbarLink href="/navbars">Contact</NavbarLink>
+      </NavbarCollapse>
     </>
   ),
 };

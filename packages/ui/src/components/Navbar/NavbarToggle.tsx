@@ -58,3 +58,5 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({
     </button>
   );
 };
+
+NavbarToggle.displayName = "NavbarToggle";

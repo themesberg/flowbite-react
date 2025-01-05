@@ -35,3 +35,5 @@ export const HRSquare = forwardRef<HTMLHRElement, HRSquareProps>(
     );
   },
 );
+
+HRSquare.displayName = "HRSquare";

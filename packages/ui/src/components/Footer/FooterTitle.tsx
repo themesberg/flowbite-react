@@ -39,3 +39,5 @@ export const FooterTitle: FC<FooterTitleProps> = ({
     </Component>
   );
 };
+
+FooterTitle.displayName = "FooterTitle";

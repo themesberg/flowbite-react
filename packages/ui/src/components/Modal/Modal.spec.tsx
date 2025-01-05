@@ -7,6 +7,9 @@ import { Button } from "../Button";
 import { TextInput } from "../TextInput";
 import type { ModalProps } from "./Modal";
 import { Modal } from "./Modal";
+import { ModalBody } from "./ModalBody";
+import { ModalFooter } from "./ModalFooter";
+import { ModalHeader } from "./ModalHeader";
 
 describe("Components / Modal", () => {
   it('should be closed by clicking outside if the "dismissible" prop is passed.', async () => {
@@ -162,8 +165,8 @@ const TestModal = ({
     <>
       <Button onClick={() => setOpen(true)}>Toggle modal</Button>
       <Modal dismissible={dismissible} root={root} show={open} onClose={() => setOpen(false)} initialFocus={inputRef}>
-        <Modal.Header id="test-dialog-header">Terms of Service</Modal.Header>
-        <Modal.Body>
+        <ModalHeader id="test-dialog-header">Terms of Service</ModalHeader>
+        <ModalBody>
           <div className="space-y-6">
             <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
               With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
@@ -176,13 +179,13 @@ const TestModal = ({
             </p>
           </div>
           <TextInput ref={inputRef} data-testid="text-input" />
-        </Modal.Body>
-        <Modal.Footer>
+        </ModalBody>
+        <ModalFooter>
           <Button onClick={() => setOpen(false)}>I accept</Button>
           <Button color="gray" onClick={() => setOpen(false)}>
             Decline
           </Button>
-        </Modal.Footer>
+        </ModalFooter>
       </Modal>
     </>
   );

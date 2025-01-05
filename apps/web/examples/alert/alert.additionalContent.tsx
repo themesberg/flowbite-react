@@ -7,8 +7,8 @@ import type { CodeData } from "~/components/code-demo";
 const code = `
 "use client";
 
-import { HiEye, HiInformationCircle } from "react-icons/hi";
 import { Alert } from "flowbite-react";
+import { HiEye, HiInformationCircle } from "react-icons/hi";
 
 export function Component() {
   return (

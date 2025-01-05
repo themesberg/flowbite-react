@@ -1,6 +1,6 @@
 import { action } from "@storybook/addon-actions";
 import type { Meta, StoryFn } from "@storybook/react";
-import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
+import { Button, Checkbox, Label, Modal, ModalBody, ModalFooter, ModalHeader, TextInput } from "flowbite-react";
 import type { ModalProps } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
@@ -27,8 +27,8 @@ export const Default = Template.bind({});
 Default.args = {
   children: (
     <>
-      <Modal.Header>Terms of Service</Modal.Header>
-      <Modal.Body>
+      <ModalHeader>Terms of Service</ModalHeader>
+      <ModalBody>
         <div className="space-y-6">
           <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
             With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
@@ -40,13 +40,13 @@ Default.args = {
             soon as possible of high-risk data breaches that could personally affect them.
           </p>
         </div>
-      </Modal.Body>
-      <Modal.Footer>
+      </ModalBody>
+      <ModalFooter>
         <Button onClick={action("close")}>I accept</Button>
         <Button color="gray" onClick={action("close")}>
           Decline
         </Button>
-      </Modal.Footer>
+      </ModalFooter>
     </>
   ),
 };
@@ -55,7 +55,7 @@ export const PopUp = Template.bind({});
 PopUp.storyName = "Pop-up modal";
 PopUp.args = {
   children: (
-    <Modal.Body>
+    <ModalBody>
       <div className="text-center">
         <HiOutlineExclamationCircle className="mx-auto mb-4 size-14 text-gray-400 dark:text-gray-200" />
         <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
@@ -70,7 +70,7 @@ PopUp.args = {
           </Button>
         </div>
       </div>
-    </Modal.Body>
+    </ModalBody>
   ),
 };
 
@@ -79,8 +79,8 @@ FormElements.storyName = "Form elements";
 FormElements.args = {
   children: (
     <>
-      <Modal.Header />
-      <Modal.Body>
+      <ModalHeader />
+      <ModalBody>
         <div className="space-y-6 px-6 pb-4 sm:pb-6 lg:px-8 xl:pb-8">
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
           <div>
@@ -114,7 +114,7 @@ FormElements.args = {
             </a>
           </div>
         </div>
-      </Modal.Body>
+      </ModalBody>
     </>
   ),
 };

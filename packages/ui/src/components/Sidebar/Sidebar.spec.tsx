@@ -7,6 +7,12 @@ import { ThemeProvider } from "../../theme/provider";
 import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import type { SidebarProps } from "./Sidebar";
 import { Sidebar } from "./Sidebar";
+import { SidebarCollapse } from "./SidebarCollapse";
+import { SidebarCTA } from "./SidebarCTA";
+import { SidebarItem } from "./SidebarItem";
+import { SidebarItemGroup } from "./SidebarItemGroup";
+import { SidebarItems } from "./SidebarItems";
+import { SidebarLogo } from "./SidebarLogo";
 
 describe("Components / Sidebar", () => {
   describe("A11y", () => {
@@ -18,7 +24,7 @@ describe("Components / Sidebar", () => {
       expect(sidebar).toHaveAccessibleName("My differently labelled sidebar");
     });
 
-    it("should use text content as accessible name in `Sidebar.Collapse` and `Sidebar.Item`", async () => {
+    it("should use text content as accessible name in `SidebarCollapse` and `SidebarItem`", async () => {
       const user = userEvent.setup();
       const itemLabels = ["Dashboard", "E-commerce", "Products", "Services", "Inbox", "My heading"];
 
@@ -33,13 +39,13 @@ describe("Components / Sidebar", () => {
       });
     });
 
-    it("should use text content as accessible name in `Sidebar.Logo`", () => {
+    it("should use text content as accessible name in `SidebarLogo`", () => {
       render(<TestSidebar />);
 
       expect(logo()).toHaveAccessibleName("Flowbite");
     });
 
-    it('should use `imgAlt` as alternative text for image in `Sidebar.Logo` given `img=".." and imgAlt=".."`', () => {
+    it('should use `imgAlt` as alternative text for image in `SidebarLogo` given `img=".." and imgAlt=".."`', () => {
       render(<TestSidebar />);
 
       const logoImg = screen.getByAltText("Flowbite logo");
@@ -50,7 +56,7 @@ describe("Components / Sidebar", () => {
 });
 
 describe("Keyboard interactions", () => {
-  it("should expand/collapse when `Space` is pressed on a `Sidebar.Collapse`", async () => {
+  it("should expand/collapse when `Space` is pressed on a `SidebarCollapse`", async () => {
     const user = userEvent.setup();
     render(<TestSidebar />);
 
@@ -63,7 +69,7 @@ describe("Keyboard interactions", () => {
     expect(collapse).toBeVisible();
   });
 
-  it('should follow link when `Space` is pressed on `Sidebar.Item` with `href=".."`', () => {
+  it('should follow link when `Space` is pressed on `SidebarItem` with `href=".."`', () => {
     render(<TestSidebar />);
 
     const link = screen.getAllByRole("link")[1];
@@ -100,19 +106,19 @@ describe("Props", () => {
     expect(sidebar).not.toBeVisible();
   });
 
-  it("shouldn't display `Sidebar.CTA` when `collapsed={true}`", () => {
+  it("shouldn't display `SidebarCTA` when `collapsed={true}`", () => {
     render(<TestSidebar collapsed />);
 
     expect(cta()).not.toBeVisible();
   });
 
-  it("shouldn't display text content in `Sidebar.Logo` when `collapsed={true}`", () => {
+  it("shouldn't display text content in `SidebarLogo` when `collapsed={true}`", () => {
     render(<TestSidebar collapsed />);
 
     expect(logo().lastElementChild).toHaveClass("hidden");
   });
 
-  it('should use the HTML element provided in `Sidebar.Item as=".."`', () => {
+  it('should use the HTML element provided in `SidebarItem as=".."`', () => {
     render(<TestSidebar />);
 
     const asItem = screen.getByLabelText("My heading");
@@ -152,7 +158,7 @@ describe("Theme", () => {
     expect(collapsedSidebar).toHaveClass("text-gray-300");
   });
 
-  describe("`Sidebar.Collapse`", () => {
+  describe("`SidebarCollapse`", () => {
     it("should use custom classes", async () => {
       const user = userEvent.setup();
       const theme: CustomFlowbiteTheme = {
@@ -201,7 +207,7 @@ describe("Theme", () => {
     });
   });
 
-  describe("`Sidebar.CTA`", () => {
+  describe("`SidebarCTA`", () => {
     it("should use custom classes", () => {
       const theme: CustomFlowbiteTheme = {
         sidebar: {
@@ -224,7 +230,7 @@ describe("Theme", () => {
     });
   });
 
-  describe("`Sidebar.Item`", () => {
+  describe("`SidebarItem`", () => {
     it("should use custom classes", () => {
       const theme: CustomFlowbiteTheme = {
         sidebar: {
@@ -269,7 +275,7 @@ describe("Theme", () => {
     });
   });
 
-  describe("`Sidebar.Items`", () => {
+  describe("`SidebarItems`", () => {
     it("should use custom classes", () => {
       const theme: CustomFlowbiteTheme = {
         sidebar: {
@@ -289,7 +295,7 @@ describe("Theme", () => {
     });
   });
 
-  describe("`Sidebar.ItemGroup`", () => {
+  describe("`SidebarItemGroup`", () => {
     it("should use custom classes", () => {
       const theme: CustomFlowbiteTheme = {
         sidebar: {
@@ -308,7 +314,7 @@ describe("Theme", () => {
     });
   });
 
-  describe("`Sidebar.Logo`", () => {
+  describe("`SidebarLogo`", () => {
     it("should use custom classes", () => {
       const theme: CustomFlowbiteTheme = {
         sidebar: {
@@ -335,25 +341,25 @@ describe("Theme", () => {
 
 const TestSidebar: FC<SidebarProps> = ({ ...props }) => (
   <Sidebar {...props}>
-    <Sidebar.Logo href="#" img="favicon.svg" imgAlt="Flowbite logo">
+    <SidebarLogo href="#" img="favicon.svg" imgAlt="Flowbite logo">
       Flowbite
-    </Sidebar.Logo>
-    <Sidebar.Items>
-      <Sidebar.ItemGroup>
-        <Sidebar.Item active data-testid="active-item" href="#" icon={HiChartPie} label="3" labelColor="success">
+    </SidebarLogo>
+    <SidebarItems>
+      <SidebarItemGroup>
+        <SidebarItem active data-testid="active-item" href="#" icon={HiChartPie} label="3" labelColor="success">
           Dashboard
-        </Sidebar.Item>
-        <Sidebar.Collapse aria-label="E-commerce" icon={HiShoppingBag}>
-          <Sidebar.Item href="#">Products</Sidebar.Item>
-          <Sidebar.Item href="#">Services</Sidebar.Item>
-        </Sidebar.Collapse>
-        <Sidebar.Item href="#" icon={HiInbox}>
+        </SidebarItem>
+        <SidebarCollapse aria-label="E-commerce" icon={HiShoppingBag}>
+          <SidebarItem href="#">Products</SidebarItem>
+          <SidebarItem href="#">Services</SidebarItem>
+        </SidebarCollapse>
+        <SidebarItem href="#" icon={HiInbox}>
           Inbox
-        </Sidebar.Item>
-        <Sidebar.Item as="h3">My heading</Sidebar.Item>
-      </Sidebar.ItemGroup>
-    </Sidebar.Items>
-    <Sidebar.CTA color="primary">Some content</Sidebar.CTA>
+        </SidebarItem>
+        <SidebarItem as="h3">My heading</SidebarItem>
+      </SidebarItemGroup>
+    </SidebarItems>
+    <SidebarCTA color="primary">Some content</SidebarCTA>
   </Sidebar>
 );
 

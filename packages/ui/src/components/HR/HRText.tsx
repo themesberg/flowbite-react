@@ -42,3 +42,5 @@ export const HRText = forwardRef<HTMLHRElement, HRTextProps>(
     );
   },
 );
+
+HRText.displayName = "HRText";

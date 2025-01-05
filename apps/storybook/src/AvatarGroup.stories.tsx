@@ -1,20 +1,20 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import { Avatar } from "flowbite-react";
 import type { AvatarGroupProps } from "flowbite-react";
+import { Avatar, AvatarGroup, AvatarGroupCounter } from "flowbite-react";
 
 export default {
   title: "Components/Avatar",
-  component: Avatar.Group,
+  component: AvatarGroup,
 } as Meta;
 
 const Template: StoryFn<AvatarGroupProps> = (args) => (
-  <Avatar.Group {...args}>
+  <AvatarGroup {...args}>
     <Avatar img="https://flowbite.com/docs/images/people/profile-picture-1.jpg" rounded stacked />
     <Avatar img="https://flowbite.com/docs/images/people/profile-picture-2.jpg" rounded stacked />
     <Avatar img="https://flowbite.com/docs/images/people/profile-picture-3.jpg" rounded stacked />
     <Avatar img="https://flowbite.com/docs/images/people/profile-picture-4.jpg" rounded stacked />
-    <Avatar.Counter total={99} href="#" />
-  </Avatar.Group>
+    <AvatarGroupCounter total={99} href="#" />
+  </AvatarGroup>
 );
 
 export const DefaultAvatarGroup = Template.bind({});

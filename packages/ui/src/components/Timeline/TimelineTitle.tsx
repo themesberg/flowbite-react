@@ -69,3 +69,5 @@ export const TimelineTitle: FC<TimelineTitleProps> = ({
     </Tag>
   );
 };
+
+TimelineTitle.displayName = "TimelineTitle";

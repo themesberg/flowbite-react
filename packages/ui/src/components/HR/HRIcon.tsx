@@ -48,3 +48,5 @@ export const HRIcon = forwardRef<HTMLHRElement, HRIconProps>(
     );
   },
 );
+
+HRIcon.displayName = "HRIcon";

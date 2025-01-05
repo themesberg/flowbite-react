@@ -85,3 +85,5 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
     </div>
   );
 };
+
+TimelinePoint.displayName = "TimelinePoint";

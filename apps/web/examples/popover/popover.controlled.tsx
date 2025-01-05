@@ -8,22 +8,21 @@ import type { CodeData } from "~/components/code-demo";
 const code = `
 "use client";
 
+import { Button, Label, Popover, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { BiCaretDown } from "react-icons/bi";
-import { Button, Popover, Label, TextInput  } from "flowbite-react";
 
 export function Component() {
   const [open, setOpen] = useState(false);
 
   return (
     <Popover
-      aria-labelledby="area-popover"
       open={open}
       onOpenChange={setOpen}
       content={
         <div className="flex w-64 flex-col gap-4 p-4 text-sm text-gray-500 dark:text-gray-400">
           <div>
-            <h2 id="area-popover" className="text-base text-gray-500">Area (sqft)</h2>
+            <h2 className="text-base text-gray-500">Area (sqft)</h2>
             <div className="mb-2 block">
               <Label htmlFor="minsqft" value="Minimum sqft" />
             </div>

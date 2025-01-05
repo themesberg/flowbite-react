@@ -9,14 +9,10 @@ import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import type { NavbarBrandTheme } from "./NavbarBrand";
-import { NavbarBrand } from "./NavbarBrand";
 import type { NavbarCollapseTheme } from "./NavbarCollapse";
-import { NavbarCollapse } from "./NavbarCollapse";
 import { NavbarContext } from "./NavbarContext";
 import type { NavbarLinkTheme } from "./NavbarLink";
-import { NavbarLink } from "./NavbarLink";
 import type { NavbarToggleThem } from "./NavbarToggle";
-import { NavbarToggle } from "./NavbarToggle";
 import { navbarTheme } from "./theme";
 
 export interface NavbarTheme {
@@ -37,14 +33,14 @@ export interface NavbarRootTheme {
   };
 }
 
-export interface NavbarComponentProps extends ComponentProps<"nav">, ThemingProps<NavbarTheme> {
+export interface NavbarProps extends ComponentProps<"nav">, ThemingProps<NavbarTheme> {
   menuOpen?: boolean;
   fluid?: boolean;
   rounded?: boolean;
   border?: boolean;
 }
 
-const NavbarComponent: FC<NavbarComponentProps> = ({
+export const Navbar: FC<NavbarProps> = ({
   border,
   children,
   className,
@@ -82,15 +78,4 @@ const NavbarComponent: FC<NavbarComponentProps> = ({
   );
 };
 
-NavbarComponent.displayName = "Navbar";
-NavbarBrand.displayName = "Navbar.Brand";
-NavbarCollapse.displayName = "Navbar.Collapse";
-NavbarLink.displayName = "Navbar.Link";
-NavbarToggle.displayName = "Navbar.Toggle";
-
-export const Navbar = Object.assign(NavbarComponent, {
-  Brand: NavbarBrand,
-  Collapse: NavbarCollapse,
-  Link: NavbarLink,
-  Toggle: NavbarToggle,
-});
+Navbar.displayName = "Navbar";

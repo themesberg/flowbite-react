@@ -1,13 +1,13 @@
 "use client";
 
-import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
+import { Button, Checkbox, Label, Modal, ModalBody, ModalHeader, TextInput } from "flowbite-react";
 import { useRef, useState } from "react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
 "use client";
 
-import { Button, Checkbox, Label, Modal, TextInput } from "flowbite-react";
+import { Button, Checkbox, Label, Modal, ModalBody, ModalHeader, TextInput } from "flowbite-react";
 import { useRef, useState } from "react";
 
 export function Component() {
@@ -18,8 +18,8 @@ export function Component() {
     <>
       <Button onClick={() => setOpenModal(true)}>Toggle modal</Button>
       <Modal show={openModal} size="md" popup onClose={() => setOpenModal(false)} initialFocus={emailInputRef}>
-        <Modal.Header />
-        <Modal.Body>
+        <ModalHeader />
+        <ModalBody>
           <div className="space-y-6">
             <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
             <div>
@@ -53,7 +53,7 @@ export function Component() {
               </a>
             </div>
           </div>
-        </Modal.Body>
+        </ModalBody>
       </Modal>
     </>
   );
@@ -68,8 +68,8 @@ export function Component() {
     <>
       <Button onClick={() => setOpenModal(true)}>Toggle modal</Button>
       <Modal show={openModal} size="md" popup onClose={() => setOpenModal(false)} initialFocus={emailInputRef}>
-        <Modal.Header />
-        <Modal.Body>
+        <ModalHeader />
+        <ModalBody>
           <div className="space-y-6">
             <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
             <div>
@@ -103,7 +103,7 @@ export function Component() {
               </a>
             </div>
           </div>
-        </Modal.Body>
+        </ModalBody>
       </Modal>
     </>
   );

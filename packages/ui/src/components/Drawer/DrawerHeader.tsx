@@ -76,4 +76,4 @@ export const DrawerHeader: FC<DrawerHeaderProps> = ({
   );
 };
 
-DrawerHeader.displayName = "Drawer.Header";
+DrawerHeader.displayName = "DrawerHeader";

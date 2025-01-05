@@ -39,4 +39,4 @@ export const DrawerItems: FC<DrawerItemsProps> = ({
   );
 };
 
-DrawerItems.displayName = "Drawer.Items";
+DrawerItems.displayName = "DrawerItems";

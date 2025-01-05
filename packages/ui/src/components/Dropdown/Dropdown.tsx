@@ -23,9 +23,9 @@ import type { ThemingProps } from "../../types";
 import { Button, type ButtonProps } from "../Button";
 import type { FloatingProps, FloatingTheme } from "../Floating";
 import { DropdownContext } from "./DropdownContext";
-import { DropdownDivider, type DropdownDividerTheme } from "./DropdownDivider";
-import { DropdownHeader, type DropdownHeaderTheme } from "./DropdownHeader";
-import { DropdownItem, type DropdownItemTheme } from "./DropdownItem";
+import { type DropdownDividerTheme } from "./DropdownDivider";
+import { type DropdownHeaderTheme } from "./DropdownHeader";
+import { type DropdownItemTheme } from "./DropdownItem";
 import { dropdownTheme } from "./theme";
 
 export interface DropdownFloatingTheme extends FloatingTheme, DropdownDividerTheme, DropdownHeaderTheme {
@@ -105,7 +105,7 @@ const Trigger = ({
   );
 };
 
-const DropdownComponent: FC<DropdownProps> = ({
+export const Dropdown: FC<DropdownProps> = ({
   children,
   className,
   dismissOnClick = true,
@@ -237,12 +237,4 @@ const DropdownComponent: FC<DropdownProps> = ({
   );
 };
 
-DropdownComponent.displayName = "Dropdown";
-DropdownHeader.displayName = "Dropdown.Header";
-DropdownDivider.displayName = "Dropdown.Divider";
-
-export const Dropdown = Object.assign(DropdownComponent, {
-  Item: DropdownItem,
-  Header: DropdownHeader,
-  Divider: DropdownDivider,
-});
+Dropdown.displayName = "Dropdown";

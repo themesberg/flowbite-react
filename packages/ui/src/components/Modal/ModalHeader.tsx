@@ -70,3 +70,5 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
     </div>
   );
 };
+
+ModalHeader.displayName = "ModalHeader";

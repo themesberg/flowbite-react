@@ -20,12 +20,9 @@ import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
 import type { ModalBodyTheme } from "./ModalBody";
-import { ModalBody } from "./ModalBody";
 import { ModalContext } from "./ModalContext";
 import type { ModalFooterTheme } from "./ModalFooter";
-import { ModalFooter } from "./ModalFooter";
 import type { ModalHeaderTheme } from "./ModalHeader";
-import { ModalHeader } from "./ModalHeader";
 import { modalTheme } from "./theme";
 
 export interface ModalTheme {
@@ -67,7 +64,7 @@ export interface ModalProps extends ComponentPropsWithoutRef<"div">, ThemingProp
   initialFocus?: number | MutableRefObject<HTMLElement | null>;
 }
 
-const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
+export const Modal = forwardRef<HTMLDivElement, ModalProps>(
   (
     {
       children,
@@ -143,13 +140,4 @@ const ModalComponent = forwardRef<HTMLDivElement, ModalProps>(
   },
 );
 
-ModalComponent.displayName = "Modal";
-ModalHeader.displayName = "Modal.Header";
-ModalBody.displayName = "Modal.Body";
-ModalFooter.displayName = "Modal.Footer";
-
-export const Modal = Object.assign(ModalComponent, {
-  Header: ModalHeader,
-  Body: ModalBody,
-  Footer: ModalFooter,
-});
+Modal.displayName = "Modal";

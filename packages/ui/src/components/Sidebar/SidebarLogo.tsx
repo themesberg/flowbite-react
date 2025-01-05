@@ -59,4 +59,4 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
   );
 };
 
-SidebarLogo.displayName = "Sidebar.Logo";
+SidebarLogo.displayName = "SidebarLogo";

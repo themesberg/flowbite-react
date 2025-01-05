@@ -7,13 +7,8 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { timelineTheme } from "./theme";
-import { TimelineBody } from "./TimelineBody";
-import { TimelineContent } from "./TimelineContent";
 import { TimelineContext } from "./TimelineContext";
-import { TimelineItem, type TimelineItemTheme } from "./TimelineItem";
-import { TimelinePoint } from "./TimelinePoint";
-import { TimelineTime } from "./TimelineTime";
-import { TimelineTitle } from "./TimelineTitle";
+import { type TimelineItemTheme } from "./TimelineItem";
 
 export interface TimelineTheme {
   root: {
@@ -29,7 +24,7 @@ export interface TimelineProps extends ComponentProps<"ol">, ThemingProps<Timeli
   horizontal?: boolean;
 }
 
-const TimelineComponent: FC<TimelineProps> = ({
+export const Timeline: FC<TimelineProps> = ({
   children,
   className,
   horizontal,
@@ -62,19 +57,4 @@ const TimelineComponent: FC<TimelineProps> = ({
   );
 };
 
-TimelineComponent.displayName = "Timeline";
-TimelineItem.displayName = "Timeline.Item";
-TimelinePoint.displayName = "Timeline.Point";
-TimelineContent.displayName = "Timeline.Content";
-TimelineTime.displayName = "Timeline.Time";
-TimelineTitle.displayName = "Timeline.Title";
-TimelineBody.displayName = "Timeline.Body";
-
-export const Timeline = Object.assign(TimelineComponent, {
-  Body: TimelineBody,
-  Content: TimelineContent,
-  Item: TimelineItem,
-  Point: TimelinePoint,
-  Time: TimelineTime,
-  Title: TimelineTitle,
-});
+Timeline.displayName = "Timeline";

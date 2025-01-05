@@ -1,7 +1,7 @@
 export { ToggleSwitch } from "./ToggleSwitch";
 export type {
+  ToggleSwitchProps,
   ToggleSwitchRootTheme,
   ToggleSwitchTheme,
   ToggleSwitchToggleTheme,
-  ToggleSwitchProps,
 } from "./ToggleSwitch";

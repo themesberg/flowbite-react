@@ -72,4 +72,4 @@ export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
   );
 };
 
-MegaMenuDropdownToggle.displayName = "MegaMenu.DropdownToggle";
+MegaMenuDropdownToggle.displayName = "MegaMenuDropdownToggle";

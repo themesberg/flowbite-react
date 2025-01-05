@@ -7,18 +7,11 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FooterBrandTheme } from "./FooterBrand";
-import { FooterBrand } from "./FooterBrand";
 import type { FooterCopyrightTheme } from "./FooterCopyright";
-import { FooterCopyright } from "./FooterCopyright";
 import type { FooterDividerTheme } from "./FooterDivider";
-import { FooterDivider } from "./FooterDivider";
 import type { FooterIconTheme } from "./FooterIcon";
-import { FooterIcon } from "./FooterIcon";
-import { FooterLink } from "./FooterLink";
 import type { FooterLinkGroupTheme } from "./FooterLinkGroup";
-import { FooterLinkGroup } from "./FooterLinkGroup";
 import type { FooterTitleTheme } from "./FooterTitle";
-import { FooterTitle } from "./FooterTitle";
 import { footerTheme } from "./theme";
 
 export interface FooterTheme {
@@ -42,7 +35,7 @@ export interface FooterProps extends ComponentProps<"footer">, ThemingProps<Foot
   container?: boolean;
 }
 
-export const FooterComponent: FC<FooterProps> = ({
+export const Footer: FC<FooterProps> = ({
   bgDark = false,
   children,
   className,
@@ -70,21 +63,4 @@ export const FooterComponent: FC<FooterProps> = ({
   );
 };
 
-FooterComponent.displayName = "Footer";
-FooterCopyright.displayName = "Footer.Copyright";
-FooterLink.displayName = "Footer.Link";
-FooterBrand.displayName = "Footer.Brand";
-FooterLinkGroup.displayName = "Footer.LinkGroup";
-FooterIcon.displayName = "Footer.Icon";
-FooterTitle.displayName = "Footer.Title";
-FooterDivider.displayName = "Footer.Divider";
-
-export const Footer = Object.assign(FooterComponent, {
-  Copyright: FooterCopyright,
-  Link: FooterLink,
-  LinkGroup: FooterLinkGroup,
-  Brand: FooterBrand,
-  Icon: FooterIcon,
-  Title: FooterTitle,
-  Divider: FooterDivider,
-});
+Footer.displayName = "Footer";

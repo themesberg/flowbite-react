@@ -1,2 +1,2 @@
 export { Kbd } from "./Kbd";
-export type { KbdRootTheme, KbdTheme, KbdProps } from "./Kbd";
+export type { KbdProps, KbdRootTheme, KbdTheme } from "./Kbd";

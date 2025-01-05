@@ -67,3 +67,5 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
     </li>
   );
 };
+
+NavbarLink.displayName = "NavbarLink";

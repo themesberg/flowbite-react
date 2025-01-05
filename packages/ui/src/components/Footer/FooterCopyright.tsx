@@ -52,3 +52,5 @@ export const FooterCopyright: FC<CopyrightProps> = ({
     </div>
   );
 };
+
+FooterCopyright.displayName = "FooterCopyright";

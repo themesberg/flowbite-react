@@ -2,24 +2,6 @@ import { Rating, RatingStar } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-"use client";
-
-import { Rating } from "flowbite-react";
-
-export function Component() {
-  return (
-    <Rating>
-      <Rating.Star />
-      <Rating.Star />
-      <Rating.Star />
-      <Rating.Star />
-      <Rating.Star filled={false} />
-    </Rating>
-  );
-}
-`;
-
-const codeRSC = `
 import { Rating, RatingStar } from "flowbite-react";
 
 export function Component() {
@@ -54,11 +36,6 @@ export const root: CodeData = {
       fileName: "client",
       language: "tsx",
       code,
-    },
-    {
-      fileName: "server",
-      language: "tsx",
-      code: codeRSC,
     },
   ],
   githubSlug: "rating/rating.root.tsx",

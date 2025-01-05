@@ -2,6 +2,7 @@ import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { Toast } from "./Toast";
+import { ToastToggle } from "./ToastToggle";
 
 describe("Components / Toast", () => {
   beforeAll(() => {
@@ -16,13 +17,13 @@ describe("Components / Toast", () => {
     vi.clearAllTimers();
   });
 
-  it("should remove `Toast` from DOM after give `duration` when `Toast.Toggle` is clicked", async () => {
+  it("should remove `Toast` from DOM after give `duration` when `ToastToggle` is clicked", async () => {
     const user = userEvent.setup();
     const handleClick = vi.fn();
 
     render(
       <Toast duration={200}>
-        <Toast.Toggle onClick={handleClick} />
+        <ToastToggle onClick={handleClick} />
       </Toast>,
     );
 
@@ -36,14 +37,14 @@ describe("Components / Toast", () => {
     expect(toast()).not.toBeInTheDocument();
   });
 
-  it("should convert `Toast` to stateless when `onDismiss` is given to `Toast.Toggle`", async () => {
+  it("should convert `Toast` to stateless when `onDismiss` is given to `ToastToggle`", async () => {
     const user = userEvent.setup();
     const handleClick = vi.fn();
     const handleDismiss = vi.fn();
 
     render(
       <Toast>
-        <Toast.Toggle onDismiss={handleDismiss} onClick={handleClick} />
+        <ToastToggle onDismiss={handleDismiss} onClick={handleClick} />
       </Toast>,
     );
 
@@ -64,7 +65,7 @@ describe("Components / Toast", () => {
     it("should have `role=alert`", async () => {
       render(
         <Toast>
-          <Toast.Toggle />
+          <ToastToggle />
         </Toast>,
       );
       expect(toast()).toBeInTheDocument();
@@ -72,13 +73,13 @@ describe("Components / Toast", () => {
   });
 
   describe("Keyboard interactions", () => {
-    it("should close `Toast` when `Space` is pressed on `Toast.Toggle`", async () => {
+    it("should close `Toast` when `Space` is pressed on `ToastToggle`", async () => {
       const user = userEvent.setup();
       const handleClick = vi.fn();
 
       render(
         <Toast>
-          <Toast.Toggle onClick={handleClick} />
+          <ToastToggle onClick={handleClick} />
         </Toast>,
       );
 

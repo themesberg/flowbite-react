@@ -39,4 +39,4 @@ export const AvatarGroupCounter: FC<AvatarGroupCounterProps> = ({
   );
 };
 
-AvatarGroupCounter.displayName = "Avatar.GroupCounter";
+AvatarGroupCounter.displayName = "AvatarGroupCounter";

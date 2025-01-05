@@ -6,10 +6,8 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
-import { RatingAdvanced } from "./RatingAdvanced";
 import { RatingContext } from "./RatingContext";
 import type { RatingStarSizes, RatingStarTheme } from "./RatingStar";
-import { RatingStar } from "./RatingStar";
 import { ratingTheme } from "./theme";
 
 export interface RatingTheme {
@@ -23,7 +21,7 @@ export interface RatingProps extends ComponentProps<"div">, ThemingProps<RatingT
   size?: DynamicStringEnumKeysOf<RatingStarSizes>;
 }
 
-const RatingComponent: FC<RatingProps> = ({
+export const Rating: FC<RatingProps> = ({
   children,
   className,
   size = "sm",
@@ -48,11 +46,4 @@ const RatingComponent: FC<RatingProps> = ({
   );
 };
 
-RatingComponent.displayName = "Rating";
-RatingStar.displayName = "Rating.Star";
-RatingAdvanced.displayName = "Rating.Advanced";
-
-export const Rating = Object.assign(RatingComponent, {
-  Star: RatingStar,
-  Advanced: RatingAdvanced,
-});
+Rating.displayName = "Rating";

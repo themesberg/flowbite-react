@@ -159,4 +159,4 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
   },
 );
 
-SidebarItem.displayName = "Sidebar.Item";
+SidebarItem.displayName = "SidebarItem";

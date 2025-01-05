@@ -10,7 +10,6 @@ import type { ThemingProps } from "../../types";
 import { toastTheme } from "./theme";
 import type { Duration } from "./ToastContext";
 import { ToastContext } from "./ToastContext";
-import { ToastToggle } from "./ToastToggle";
 
 export interface ToastTheme {
   root: {
@@ -38,7 +37,7 @@ const durationClasses: Record<Duration, string> = {
   1000: "duration-1000",
 };
 
-const ToastComponent: FC<ToastProps> = ({
+export const Toast: FC<ToastProps> = ({
   children,
   className,
   duration = 300,
@@ -77,9 +76,4 @@ const ToastComponent: FC<ToastProps> = ({
   );
 };
 
-ToastComponent.displayName = "Toast";
-ToastToggle.displayName = "Toast.Toggle";
-
-export const Toast = Object.assign(ToastComponent, {
-  Toggle: ToastToggle,
-});
+Toast.displayName = "Toast";

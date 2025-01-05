@@ -3,26 +3,8 @@ import Link from "next/link";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-"use client";
-
-import { Dropdown } from "flowbite-react";
-
-export function Component() {
-  return (
-    <Dropdown dismissOnClick={false} label="My custom item">
-      <Dropdown.Item as={Link} href="#">
-        Home
-      </Dropdown.Item>
-      <Dropdown.Item as="a" href="https://flowbite.com/" target="_blank">
-        External link
-      </Dropdown.Item>
-    </Dropdown>
-  );
-}
-`;
-
-const codeRSC = `
 import { Dropdown, DropdownItem } from "flowbite-react";
+import Link from "next/link";
 
 export function Component() {
   return (
@@ -58,11 +40,6 @@ export const customItem: CodeData = {
       fileName: "client",
       language: "tsx",
       code,
-    },
-    {
-      fileName: "server",
-      language: "tsx",
-      code: codeRSC,
     },
   ],
   githubSlug: "dropdown/dropdown.customItem.tsx",

@@ -65,3 +65,5 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
     </button>
   );
 };
+
+AccordionTitle.displayName = "AccordionTitle";

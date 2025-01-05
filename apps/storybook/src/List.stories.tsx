@@ -1,5 +1,5 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import { Avatar, List } from "flowbite-react";
+import { Avatar, List, ListItem } from "flowbite-react";
 import type { ListProps } from "flowbite-react";
 import { HiCheckCircle } from "react-icons/hi";
 
@@ -15,9 +15,9 @@ DefaultList.storyName = "Default";
 DefaultList.args = {
   children: (
     <>
-      <List.Item>At least 10 characters (and up to 100 characters)</List.Item>
-      <List.Item>At least one lowercase character</List.Item>
-      <List.Item>Inclusion of at least one special character, e.g., ! @ # ?</List.Item>
+      <ListItem>At least 10 characters (and up to 100 characters)</ListItem>
+      <ListItem>At least one lowercase character</ListItem>
+      <ListItem>Inclusion of at least one special character, e.g., ! @ # ?</ListItem>
     </>
   ),
 };
@@ -28,9 +28,9 @@ UnstyledList.args = {
   unstyled: true,
   children: (
     <>
-      <List.Item>At least 10 characters (and up to 100 characters)</List.Item>
-      <List.Item>At least one lowercase character</List.Item>
-      <List.Item>Inclusion of at least one special character, e.g., ! @ # ?</List.Item>
+      <ListItem>At least 10 characters (and up to 100 characters)</ListItem>
+      <ListItem>At least one lowercase character</ListItem>
+      <ListItem>Inclusion of at least one special character, e.g., ! @ # ?</ListItem>
     </>
   ),
 };
@@ -40,30 +40,30 @@ NestedList.storyName = "Nested";
 NestedList.args = {
   children: (
     <>
-      <List.Item>
+      <ListItem>
         List item one
         <List ordered nested>
-          <List.Item>You might feel like you are being really "organized" o</List.Item>
-          <List.Item>Nested navigation in UIs is a bad idea too, keep things as flat as possible.</List.Item>
-          <List.Item>Nesting tons of folders in your source code is also not helpful.</List.Item>
+          <ListItem>You might feel like you are being really "organized" o</ListItem>
+          <ListItem>Nested navigation in UIs is a bad idea too, keep things as flat as possible.</ListItem>
+          <ListItem>Nesting tons of folders in your source code is also not helpful.</ListItem>
         </List>
-      </List.Item>
-      <List.Item>
+      </ListItem>
+      <ListItem>
         List item two
         <List ordered nested>
-          <List.Item>I'm not sure if we'll bother styling more than two levels deep.</List.Item>
-          <List.Item>Two is already too much, three is guaranteed to be a bad idea.</List.Item>
-          <List.Item>If you nest four levels deep you belong in prison.</List.Item>
+          <ListItem>I'm not sure if we'll bother styling more than two levels deep.</ListItem>
+          <ListItem>Two is already too much, three is guaranteed to be a bad idea.</ListItem>
+          <ListItem>If you nest four levels deep you belong in prison.</ListItem>
         </List>
-      </List.Item>
-      <List.Item>
+      </ListItem>
+      <ListItem>
         List item three
         <List ordered nested>
-          <List.Item>Again please don't nest lists if you want</List.Item>
-          <List.Item>Nobody wants to look at this.</List.Item>
-          <List.Item>I'm upset that we even have to bother styling this.</List.Item>
+          <ListItem>Again please don't nest lists if you want</ListItem>
+          <ListItem>Nobody wants to look at this.</ListItem>
+          <ListItem>I'm upset that we even have to bother styling this.</ListItem>
         </List>
-      </List.Item>
+      </ListItem>
     </>
   ),
 };
@@ -74,9 +74,9 @@ OrderedList.args = {
   ordered: true,
   children: (
     <>
-      <List.Item>At least 10 characters (and up to 100 characters)</List.Item>
-      <List.Item>At least one lowercase character</List.Item>
-      <List.Item>Inclusion of at least one special character, e.g., ! @ # ?</List.Item>
+      <ListItem>At least 10 characters (and up to 100 characters)</ListItem>
+      <ListItem>At least one lowercase character</ListItem>
+      <ListItem>Inclusion of at least one special character, e.g., ! @ # ?</ListItem>
     </>
   ),
 };
@@ -87,13 +87,13 @@ HorizontalList.args = {
   horizontal: true,
   children: (
     <>
-      <List.Item>About</List.Item>
-      <List.Item>Premium</List.Item>
-      <List.Item>Campaigns</List.Item>
-      <List.Item>Blog</List.Item>
-      <List.Item>Affiliate Program</List.Item>
-      <List.Item>FAQs</List.Item>
-      <List.Item>Contact</List.Item>
+      <ListItem>About</ListItem>
+      <ListItem>Premium</ListItem>
+      <ListItem>Campaigns</ListItem>
+      <ListItem>Blog</ListItem>
+      <ListItem>Affiliate Program</ListItem>
+      <ListItem>FAQs</ListItem>
+      <ListItem>Contact</ListItem>
     </>
   ),
 };
@@ -103,9 +103,9 @@ WithIconList.storyName = "With Icon";
 WithIconList.args = {
   children: (
     <>
-      <List.Item icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</List.Item>
-      <List.Item icon={HiCheckCircle}>At least one lowercase character</List.Item>
-      <List.Item icon={HiCheckCircle}>Inclusion of at least one special character, e.g., ! @ # ?</List.Item>
+      <ListItem icon={HiCheckCircle}>At least 10 characters (and up to 100 characters)</ListItem>
+      <ListItem icon={HiCheckCircle}>At least one lowercase character</ListItem>
+      <ListItem icon={HiCheckCircle}>Inclusion of at least one special character, e.g., ! @ # ?</ListItem>
     </>
   ),
 };
@@ -117,7 +117,7 @@ AdvancedList.args = {
   className: "max-w-md divide-y divide-gray-200 dark:divide-gray-700",
   children: (
     <>
-      <List.Item className="pb-3 sm:pb-4">
+      <ListItem className="pb-3 sm:pb-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
           <Avatar
             img="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
@@ -131,8 +131,8 @@ AdvancedList.args = {
           </div>
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">$320</div>
         </div>
-      </List.Item>
-      <List.Item className="py-3 sm:py-4">
+      </ListItem>
+      <ListItem className="py-3 sm:py-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
           <Avatar
             img="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
@@ -146,8 +146,8 @@ AdvancedList.args = {
           </div>
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">$3467</div>
         </div>
-      </List.Item>
-      <List.Item className="py-3 sm:py-4">
+      </ListItem>
+      <ListItem className="py-3 sm:py-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
           <Avatar
             img="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
@@ -161,8 +161,8 @@ AdvancedList.args = {
           </div>
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">$67</div>
         </div>
-      </List.Item>
-      <List.Item className="py-3 sm:py-4">
+      </ListItem>
+      <ListItem className="py-3 sm:py-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
           <Avatar
             img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
@@ -176,8 +176,8 @@ AdvancedList.args = {
           </div>
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">$2367</div>
         </div>
-      </List.Item>
-      <List.Item className="pb-0 pt-3 sm:pt-4">
+      </ListItem>
+      <ListItem className="pb-0 pt-3 sm:pt-4">
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
           <Avatar
             img="https://flowbite.com/docs/images/people/profile-picture-4.jpg"
@@ -191,7 +191,7 @@ AdvancedList.args = {
           </div>
           <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">$367</div>
         </div>
-      </List.Item>
+      </ListItem>
     </>
   ),
 };

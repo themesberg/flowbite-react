@@ -133,3 +133,5 @@ export function Popover({
     </>
   );
 }
+
+Popover.displayName = "Popover";

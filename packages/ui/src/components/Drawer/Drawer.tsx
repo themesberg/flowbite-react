@@ -9,8 +9,8 @@ import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { DrawerContext } from "./DrawerContext";
-import { DrawerHeader, type DrawerHeaderTheme } from "./DrawerHeader";
-import { DrawerItems, type DrawerItemsTheme } from "./DrawerItems";
+import { type DrawerHeaderTheme } from "./DrawerHeader";
+import { type DrawerItemsTheme } from "./DrawerItems";
 import { drawerTheme } from "./theme";
 
 export interface DrawerTheme {
@@ -39,7 +39,7 @@ export interface DrawerProps extends ComponentProps<"div">, ThemingProps<DrawerT
   position?: "top" | "right" | "bottom" | "left";
 }
 
-const DrawerComponent: FC<DrawerProps> = ({
+export const Drawer: FC<DrawerProps> = ({
   backdrop = true,
   children,
   className,
@@ -96,9 +96,4 @@ const DrawerComponent: FC<DrawerProps> = ({
   );
 };
 
-DrawerComponent.displayName = "Drawer";
-
-export const Drawer = Object.assign(DrawerComponent, {
-  Header: DrawerHeader,
-  Items: DrawerItems,
-});
+Drawer.displayName = "Drawer";

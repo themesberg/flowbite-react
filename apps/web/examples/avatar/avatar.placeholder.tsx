@@ -2,21 +2,6 @@ import { Avatar } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-"use client";
-
-import { Avatar } from "flowbite-react";
-
-export function Component() {
-  return (
-    <div className="flex flex-wrap gap-2">
-      <Avatar />
-      <Avatar rounded />
-    </div>
-  );
-}
-`;
-
-const codeRSC = `
 import { Avatar } from "flowbite-react";
 
 export function Component() {
@@ -45,11 +30,6 @@ export const placeholder: CodeData = {
       fileName: "client",
       language: "tsx",
       code,
-    },
-    {
-      fileName: "server",
-      language: "tsx",
-      code: codeRSC,
     },
   ],
   githubSlug: "avatar/avatar.placeholder.tsx",

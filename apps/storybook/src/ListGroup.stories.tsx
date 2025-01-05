@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import type { ListGroupProps } from "flowbite-react";
-import { ListGroup } from "flowbite-react";
+import { ListGroup, ListGroupItem } from "flowbite-react";
 import { HiCloudDownload, HiInbox, HiOutlineAdjustments, HiUserCircle } from "react-icons/hi";
 
 export default {
@@ -15,10 +15,10 @@ DefaultListGroup.storyName = "Default";
 DefaultListGroup.args = {
   children: (
     <>
-      <ListGroup.Item>Profile</ListGroup.Item>
-      <ListGroup.Item>Settings</ListGroup.Item>
-      <ListGroup.Item>Messages</ListGroup.Item>
-      <ListGroup.Item>Download</ListGroup.Item>
+      <ListGroupItem>Profile</ListGroupItem>
+      <ListGroupItem>Settings</ListGroupItem>
+      <ListGroupItem>Messages</ListGroupItem>
+      <ListGroupItem>Download</ListGroupItem>
     </>
   ),
 };
@@ -28,12 +28,12 @@ WithLinks.storyName = "With links";
 WithLinks.args = {
   children: (
     <>
-      <ListGroup.Item active href="#">
+      <ListGroupItem active href="#">
         Profile
-      </ListGroup.Item>
-      <ListGroup.Item href="#">Settings</ListGroup.Item>
-      <ListGroup.Item href="#">Messages</ListGroup.Item>
-      <ListGroup.Item href="#">Download</ListGroup.Item>
+      </ListGroupItem>
+      <ListGroupItem href="#">Settings</ListGroupItem>
+      <ListGroupItem href="#">Messages</ListGroupItem>
+      <ListGroupItem href="#">Download</ListGroupItem>
     </>
   ),
 };
@@ -43,12 +43,12 @@ WithButtons.storyName = "With buttons";
 WithButtons.args = {
   children: (
     <>
-      <ListGroup.Item active onClick={() => alert("Profile clicked!")}>
+      <ListGroupItem active onClick={() => alert("Profile clicked!")}>
         Profile
-      </ListGroup.Item>
-      <ListGroup.Item>Settings</ListGroup.Item>
-      <ListGroup.Item>Messages</ListGroup.Item>
-      <ListGroup.Item>Download</ListGroup.Item>
+      </ListGroupItem>
+      <ListGroupItem>Settings</ListGroupItem>
+      <ListGroupItem>Messages</ListGroupItem>
+      <ListGroupItem>Download</ListGroupItem>
     </>
   ),
 };
@@ -58,12 +58,12 @@ WithIcons.storyName = "With icons";
 WithIcons.args = {
   children: (
     <>
-      <ListGroup.Item active icon={HiUserCircle}>
+      <ListGroupItem active icon={HiUserCircle}>
         Profile
-      </ListGroup.Item>
-      <ListGroup.Item icon={HiOutlineAdjustments}>Settings</ListGroup.Item>
-      <ListGroup.Item icon={HiInbox}>Messages</ListGroup.Item>
-      <ListGroup.Item icon={HiCloudDownload}>Download</ListGroup.Item>
+      </ListGroupItem>
+      <ListGroupItem icon={HiOutlineAdjustments}>Settings</ListGroupItem>
+      <ListGroupItem icon={HiInbox}>Messages</ListGroupItem>
+      <ListGroupItem icon={HiCloudDownload}>Download</ListGroupItem>
     </>
   ),
 };

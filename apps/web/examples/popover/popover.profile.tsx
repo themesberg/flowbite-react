@@ -36,7 +36,7 @@ export function Component() {
             </a>
           </p>
           <p className="mb-4 text-sm">
-            Open-source contributor. Building{' '}
+            Open-source contributor. Building{" "}
             <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">
               flowbite.com
             </a>

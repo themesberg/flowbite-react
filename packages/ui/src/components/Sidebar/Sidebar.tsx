@@ -7,13 +7,13 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
-import { SidebarCollapse, type SidebarCollapseTheme } from "./SidebarCollapse";
+import { type SidebarCollapseTheme } from "./SidebarCollapse";
 import { SidebarContext } from "./SidebarContext";
-import { SidebarCTA, type SidebarCTATheme } from "./SidebarCTA";
-import { SidebarItem, type SidebarItemTheme } from "./SidebarItem";
-import { SidebarItemGroup, type SidebarItemGroupTheme } from "./SidebarItemGroup";
-import { SidebarItems, type SidebarItemsTheme } from "./SidebarItems";
-import { SidebarLogo, type SidebarLogoTheme } from "./SidebarLogo";
+import { type SidebarCTATheme } from "./SidebarCTA";
+import { type SidebarItemTheme } from "./SidebarItem";
+import { type SidebarItemGroupTheme } from "./SidebarItemGroup";
+import { type SidebarItemsTheme } from "./SidebarItems";
+import { type SidebarLogoTheme } from "./SidebarLogo";
 import { sidebarTheme } from "./theme";
 
 export interface SidebarTheme {
@@ -36,7 +36,7 @@ export interface SidebarProps extends ComponentProps<"div">, ThemingProps<Sideba
   collapsed?: boolean;
 }
 
-const SidebarComponent: FC<SidebarProps> = ({
+export const Sidebar: FC<SidebarProps> = ({
   children,
   as: Component = "nav",
   collapseBehavior = "collapse",
@@ -68,13 +68,4 @@ const SidebarComponent: FC<SidebarProps> = ({
   );
 };
 
-SidebarComponent.displayName = "Sidebar";
-
-export const Sidebar = Object.assign(SidebarComponent, {
-  Collapse: SidebarCollapse,
-  CTA: SidebarCTA,
-  Item: SidebarItem,
-  Items: SidebarItems,
-  ItemGroup: SidebarItemGroup,
-  Logo: SidebarLogo,
-});
+Sidebar.displayName = "Sidebar";

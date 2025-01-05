@@ -2,26 +2,6 @@ import { Footer, FooterCopyright, FooterLink, FooterLinkGroup } from "flowbite-r
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-"use client";
-
-import { Footer } from "flowbite-react";
-
-export function Component() {
-  return (
-    <Footer container>
-      <Footer.Copyright href="#" by="Flowbite™" year={2022} />
-      <Footer.LinkGroup>
-        <Footer.Link href="#">About</Footer.Link>
-        <Footer.Link href="#">Privacy Policy</Footer.Link>
-        <Footer.Link href="#">Licensing</Footer.Link>
-        <Footer.Link href="#">Contact</Footer.Link>
-      </Footer.LinkGroup>
-    </Footer>
-  );
-}
-`;
-
-const codeRSC = `
 import { Footer, FooterCopyright, FooterLink, FooterLinkGroup } from "flowbite-react";
 
 export function Component() {
@@ -60,11 +40,6 @@ export const root: CodeData = {
       fileName: "client",
       language: "tsx",
       code,
-    },
-    {
-      fileName: "server",
-      language: "tsx",
-      code: codeRSC,
     },
   ],
   githubSlug: "footer/footer.root.tsx",

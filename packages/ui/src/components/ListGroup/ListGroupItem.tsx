@@ -72,3 +72,5 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & Compon
     </li>
   );
 };
+
+ListGroupItem.displayName = "ListGroupItem";

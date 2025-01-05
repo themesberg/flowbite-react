@@ -3,11 +3,11 @@ export type {
   ButtonColors,
   ButtonGradientColors,
   ButtonGradientDuoToneColors,
+  ButtonInnerTheme,
   ButtonOutlineColors,
+  ButtonOutlineTheme,
   ButtonProps,
   ButtonSizes,
-  ButtonInnerTheme,
-  ButtonOutlineTheme,
   ButtonTheme,
 } from "./Button";
 export { ButtonGroup } from "./ButtonGroup";

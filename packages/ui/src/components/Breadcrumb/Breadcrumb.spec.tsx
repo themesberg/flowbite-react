@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
 import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Breadcrumb } from "./Breadcrumb";
+import { BreadcrumbItem } from "./BreadcrumbItem";
 
 describe("Components / Breadcrumb", () => {
   it('should have `role="navigation"`', () => {
@@ -19,7 +20,7 @@ describe("Components / Breadcrumb", () => {
     expect(breadcrumb()).toContainElement(breadcrumbList());
   });
 
-  it('should contain a `role="listitem"` for each `Breadcrumb.Item`', () => {
+  it('should contain a `role="listitem"` for each `BreadcrumbItem`', () => {
     render(<TestBreadcrumb />);
 
     expect(items()[0]).toHaveTextContent("Home");
@@ -27,7 +28,7 @@ describe("Components / Breadcrumb", () => {
     expect(items()[2]).toHaveTextContent("Flowbite React");
   });
 
-  it('should contain a `role="link"` for each `Breadcrumb.Item href=".."`', () => {
+  it('should contain a `role="link"` for each `BreadcrumbItem href=".."`', () => {
     render(<TestBreadcrumb />);
 
     expect(links()[0]).toHaveTextContent("Home");
@@ -89,11 +90,11 @@ describe("Components / Breadcrumb", () => {
 
 const TestBreadcrumb: FC = () => (
   <Breadcrumb aria-label="test label">
-    <Breadcrumb.Item href="#" icon={HiHome}>
+    <BreadcrumbItem href="#" icon={HiHome}>
       Home
-    </Breadcrumb.Item>
-    <Breadcrumb.Item href="#">Projects</Breadcrumb.Item>
-    <Breadcrumb.Item icon={HiHome}>Flowbite React</Breadcrumb.Item>
+    </BreadcrumbItem>
+    <BreadcrumbItem href="#">Projects</BreadcrumbItem>
+    <BreadcrumbItem icon={HiHome}>Flowbite React</BreadcrumbItem>
   </Breadcrumb>
 );
 

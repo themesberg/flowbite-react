@@ -2,11 +2,11 @@ export { Avatar } from "./Avatar";
 export type {
   AvatarColors,
   AvatarImageProps,
-  AvatarProps,
-  AvatarSizes,
   AvatarImageTheme,
   AvatarInitialsTheme,
+  AvatarProps,
   AvatarRootTheme,
+  AvatarSizes,
   AvatarStatusTheme,
   AvatarTheme,
 } from "./Avatar";

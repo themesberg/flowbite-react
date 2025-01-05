@@ -21,4 +21,4 @@ export const BannerCollapseButton: FC<BannerCollapseButtonProps> = ({ children, 
   );
 };
 
-BannerCollapseButton.displayName = "Banner.CollapseButton";
+BannerCollapseButton.displayName = "BannerCollapseButton";

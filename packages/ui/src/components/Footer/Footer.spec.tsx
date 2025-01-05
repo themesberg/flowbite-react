@@ -5,15 +5,22 @@ import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
 import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Footer } from "./Footer";
+import { FooterBrand } from "./FooterBrand";
+import { FooterCopyright } from "./FooterCopyright";
+import { FooterDivider } from "./FooterDivider";
+import { FooterIcon } from "./FooterIcon";
+import { FooterLink } from "./FooterLink";
+import { FooterLinkGroup } from "./FooterLinkGroup";
+import { FooterTitle } from "./FooterTitle";
 
 describe("Components / Footer", () => {
   describe("Rendering", () => {
-    it('should render an `<a>` with an `<img>` on `Footer.Brand href=".."`', () => {
+    it('should render an `<a>` with an `<img>` on `FooterBrand href=".."`', () => {
       render(
         <Footer>
-          <Footer.Brand alt="Flowbite" href="https://flowbite.com" src="">
+          <FooterBrand alt="Flowbite" href="https://flowbite.com" src="">
             Flowbite
-          </Footer.Brand>
+          </FooterBrand>
         </Footer>,
       );
       const a = screen.getByTestId("flowbite-footer-brand");
@@ -24,12 +31,12 @@ describe("Components / Footer", () => {
     });
   });
 
-  it('should render an `<img>` on `Footer.Brand src=".."`', () => {
+  it('should render an `<img>` on `FooterBrand src=".."`', () => {
     render(
       <Footer>
-        <Footer.Brand alt="Flowbite" src="">
+        <FooterBrand alt="Flowbite" src="">
           Flowbite
-        </Footer.Brand>
+        </FooterBrand>
       </Footer>,
     );
     const img = screen.getByAltText("Flowbite");
@@ -37,22 +44,22 @@ describe("Components / Footer", () => {
     expect(img).toBeInTheDocument();
   });
 
-  it('should render an `<a>` on `Footer.Copyright href=".."`', () => {
+  it('should render an `<a>` on `FooterCopyright href=".."`', () => {
     render(
       <Footer>
-        <Footer.Copyright by="Flowbite" href="https://flowbite.com" year={2022}>
+        <FooterCopyright by="Flowbite" href="https://flowbite.com" year={2022}>
           Flowbite
-        </Footer.Copyright>
+        </FooterCopyright>
       </Footer>,
     );
 
     expect(copyright()).toContainElement(screen.getByRole("link"));
   });
 
-  it('should render an `<a>` on `Footer.Icon href=".."`', () => {
+  it('should render an `<a>` on `FooterIcon href=".."`', () => {
     render(
       <Footer>
-        <Footer.Icon ariaLabel="Icon" href="/" icon={BsFacebook} />
+        <FooterIcon ariaLabel="Icon" href="/" icon={BsFacebook} />
       </Footer>,
     );
     const iconLink = screen.getAllByRole("link")[0];
@@ -112,7 +119,7 @@ describe("Components / Footer", () => {
       expect(footer()).toHaveClass("text-gray-100");
     });
 
-    describe("`Footer.Brand`", () => {
+    describe("`FooterBrand`", () => {
       it("should use `brand` classes", () => {
         const theme: CustomFlowbiteTheme = {
           footer: {
@@ -126,9 +133,9 @@ describe("Components / Footer", () => {
         render(
           <ThemeProvider theme={theme}>
             <Footer>
-              <Footer.Brand alt="Flowbite" href="https://flowbite.com" src="">
+              <FooterBrand alt="Flowbite" href="https://flowbite.com" src="">
                 Flowbite
-              </Footer.Brand>
+              </FooterBrand>
             </Footer>
           </ThemeProvider>,
         );
@@ -140,9 +147,9 @@ describe("Components / Footer", () => {
         render(
           <ThemeProvider theme={theme}>
             <Footer>
-              <Footer.Brand href="/" src="">
+              <FooterBrand href="/" src="">
                 Flowbite
-              </Footer.Brand>
+              </FooterBrand>
             </Footer>
           </ThemeProvider>,
         );
@@ -151,7 +158,7 @@ describe("Components / Footer", () => {
       });
     });
 
-    describe("`Footer.Copyright`", () => {
+    describe("`FooterCopyright`", () => {
       it("should use `copyright` classes", () => {
         const theme: CustomFlowbiteTheme = {
           footer: {
@@ -165,9 +172,9 @@ describe("Components / Footer", () => {
         render(
           <ThemeProvider theme={theme}>
             <Footer>
-              <Footer.Copyright by="Flowbite" year={2022}>
+              <FooterCopyright by="Flowbite" year={2022}>
                 Test
-              </Footer.Copyright>
+              </FooterCopyright>
             </Footer>
           </ThemeProvider>,
         );
@@ -179,9 +186,9 @@ describe("Components / Footer", () => {
         render(
           <ThemeProvider theme={theme}>
             <Footer>
-              <Footer.Copyright by="Flowbite" href="/" year={2022}>
+              <FooterCopyright by="Flowbite" href="/" year={2022}>
                 Test
-              </Footer.Copyright>
+              </FooterCopyright>
             </Footer>
           </ThemeProvider>,
         );
@@ -190,7 +197,7 @@ describe("Components / Footer", () => {
       });
     });
 
-    describe("`Footer.Icon`", () => {
+    describe("`FooterIcon`", () => {
       it("should use `icon` classes", () => {
         const theme: CustomFlowbiteTheme = {
           footer: {
@@ -203,7 +210,7 @@ describe("Components / Footer", () => {
         render(
           <ThemeProvider theme={theme}>
             <Footer>
-              <Footer.Icon ariaLabel="Icon" href="/" icon={BsFacebook} />
+              <FooterIcon ariaLabel="Icon" href="/" icon={BsFacebook} />
             </Footer>
           </ThemeProvider>,
         );
@@ -214,7 +221,7 @@ describe("Components / Footer", () => {
         render(
           <ThemeProvider theme={theme}>
             <Footer>
-              <Footer.Icon ariaLabel="Icon" icon={BsFacebook} />
+              <FooterIcon ariaLabel="Icon" icon={BsFacebook} />
             </Footer>
           </ThemeProvider>,
         );
@@ -223,7 +230,7 @@ describe("Components / Footer", () => {
       });
     });
 
-    describe("`Footer.Title`", () => {
+    describe("`FooterTitle`", () => {
       it("should use `title` classes", () => {
         const theme: CustomFlowbiteTheme = {
           footer: {
@@ -234,7 +241,7 @@ describe("Components / Footer", () => {
         };
         render(
           <ThemeProvider theme={theme}>
-            <Footer.Title title="Flowbite" />
+            <FooterTitle title="Flowbite" />
           </ThemeProvider>,
         );
 
@@ -249,7 +256,7 @@ const TestFooter: FC = () => (
     <div className="w-full">
       <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
         <div>
-          <Footer.Brand
+          <FooterBrand
             href="https://flowbite.com"
             src="https://flowbite.com/docs/images/logo.svg"
             alt="Flowbite Logo"
@@ -258,37 +265,37 @@ const TestFooter: FC = () => (
         </div>
         <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
           <div>
-            <Footer.Title title="about" />
-            <Footer.LinkGroup col>
-              <Footer.Link href="#">Flowbite</Footer.Link>
-              <Footer.Link href="#">Tailwind CSS</Footer.Link>
-            </Footer.LinkGroup>
+            <FooterTitle title="about" />
+            <FooterLinkGroup col>
+              <FooterLink href="#">Flowbite</FooterLink>
+              <FooterLink href="#">Tailwind CSS</FooterLink>
+            </FooterLinkGroup>
           </div>
           <div>
-            <Footer.Title title="Follow us" />
-            <Footer.LinkGroup col>
-              <Footer.Link href="#">Github</Footer.Link>
-              <Footer.Link href="#">Discord</Footer.Link>
-            </Footer.LinkGroup>
+            <FooterTitle title="Follow us" />
+            <FooterLinkGroup col>
+              <FooterLink href="#">Github</FooterLink>
+              <FooterLink href="#">Discord</FooterLink>
+            </FooterLinkGroup>
           </div>
           <div>
-            <Footer.Title title="Legal" />
-            <Footer.LinkGroup col>
-              <Footer.Link href="#">Privacy Policy</Footer.Link>
-              <Footer.Link href="#">Terms & Conditions</Footer.Link>
-            </Footer.LinkGroup>
+            <FooterTitle title="Legal" />
+            <FooterLinkGroup col>
+              <FooterLink href="#">Privacy Policy</FooterLink>
+              <FooterLink href="#">Terms & Conditions</FooterLink>
+            </FooterLinkGroup>
           </div>
         </div>
       </div>
-      <Footer.Divider />
+      <FooterDivider />
       <div className="w-full sm:flex sm:items-center sm:justify-between">
-        <Footer.Copyright href="#" by="Flowbite™" year={2022} />
+        <FooterCopyright href="#" by="Flowbite™" year={2022} />
         <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-          <Footer.Icon href="#" icon={BsFacebook} />
-          <Footer.Icon href="#" icon={BsInstagram} />
-          <Footer.Icon href="#" icon={BsTwitter} />
-          <Footer.Icon href="#" icon={BsGithub} />
-          <Footer.Icon href="#" icon={BsDribbble} />
+          <FooterIcon href="#" icon={BsFacebook} />
+          <FooterIcon href="#" icon={BsInstagram} />
+          <FooterIcon href="#" icon={BsTwitter} />
+          <FooterIcon href="#" icon={BsGithub} />
+          <FooterIcon href="#" icon={BsDribbble} />
         </div>
       </div>
     </div>

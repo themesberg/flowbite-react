@@ -52,3 +52,5 @@ export const RatingStar: FC<RatingStarProps> = ({
     />
   );
 };
+
+RatingStar.displayName = "RatingStar";

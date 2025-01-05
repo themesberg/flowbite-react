@@ -39,4 +39,4 @@ export const SidebarItems: FC<SidebarItemsProps> = ({
   );
 };
 
-SidebarItems.displayName = "Sidebar.Items";
+SidebarItems.displayName = "SidebarItems";

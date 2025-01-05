@@ -49,11 +49,6 @@ export const root: CodeData = {
       language: "tsx",
       code,
     },
-    {
-      fileName: "server",
-      language: "tsx",
-      code,
-    },
   ],
   githubSlug: "/hr/hr.root.tsx",
   component: <Component />,

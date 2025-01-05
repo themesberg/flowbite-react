@@ -72,4 +72,4 @@ export const MegaMenuDropdown: FC<MegaMenuDropdownProps> = ({
   );
 };
 
-MegaMenuDropdown.displayName = "MegaMenu.Dropdown";
+MegaMenuDropdown.displayName = "MegaMenuDropdown";
