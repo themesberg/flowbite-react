@@ -149,7 +149,7 @@ function DocsPager({ doc }: { doc: Doc }) {
 
 function ToC({ doc }: { doc: Doc }) {
   return (
-    <div className="hidden w-64 flex-none px-8 xl:block xl:text-sm">
+    <div className="hidden w-64 flex-none xl:block xl:text-sm">
       <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-between overflow-y-auto pb-6">
         <div className="mb-8">
           <h4 className="mb-4 mt-5 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 lg:text-xs dark:text-white">
