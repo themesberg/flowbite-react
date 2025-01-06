@@ -1,5 +1,4 @@
 import { $, Glob } from "bun";
-import { rimraf } from "rimraf";
 import esbuild from "rollup-plugin-esbuild";
 import { rollupPluginUseClient } from "rollup-plugin-use-client";
 import packageJson from "./package.json";
@@ -63,7 +62,7 @@ function cleanOutputDir() {
   return {
     name: "clean-output-dir",
     async buildStart() {
-      await rimraf(outputDir);
+      await $`rm -rf ${outputDir}`;
       await $`mkdir ${outputDir}`;
     },
   };
