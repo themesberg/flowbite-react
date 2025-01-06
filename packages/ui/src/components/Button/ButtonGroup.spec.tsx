@@ -83,11 +83,11 @@ describe("Components / Button group", () => {
         </ButtonGroup>,
       );
 
-      const positionClasses = theme.buttonGroup.position;
+      const groupedClasses = theme.button.grouped;
 
-      expect(buttons()[0]).toHaveClass(positionClasses.start);
-      expect(buttons()[1]).toHaveClass(positionClasses.middle);
-      expect(buttons()[2]).toHaveClass(positionClasses.end);
+      expect(buttons()[0]).toHaveClass(groupedClasses);
+      expect(buttons()[1]).toHaveClass(groupedClasses);
+      expect(buttons()[2]).toHaveClass(groupedClasses);
     });
   });
 
