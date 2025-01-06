@@ -1,12 +1,8 @@
-"use client";
-
 import { Button, ButtonGroup } from "flowbite-react";
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from "react-icons/hi";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-"use client";
-
 import { Button, ButtonGroup } from "flowbite-react";
 import { HiAdjustments, HiCloudDownload, HiUserCircle } from "react-icons/hi";
 

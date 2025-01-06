@@ -11,12 +11,13 @@ import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes, FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import { Spinner } from "../Spinner";
 import { ButtonBase, type ButtonBaseProps } from "./ButtonBase";
-import type { PositionInButtonGroup } from "./ButtonGroup";
-import { buttonGroupTheme, buttonTheme } from "./theme";
+import { useButtonGroupContext } from "./ButtonGroupContext";
+import { buttonTheme } from "./theme";
 
 export interface ButtonTheme {
   base: string;
   fullSized: string;
+  grouped: string;
   color: FlowbiteColors;
   disabled: string;
   isProcessing: string;
@@ -33,7 +34,6 @@ export interface ButtonTheme {
 
 export interface ButtonInnerTheme {
   base: string;
-  position: PositionInButtonGroup;
   outline: string;
   isProcessingPadding: ButtonSizes;
 }
@@ -91,7 +91,6 @@ export type ButtonProps<T extends ElementType = "button"> = PolymorphicComponent
     label?: ReactNode;
     outline?: boolean;
     pill?: boolean;
-    positionInGroup?: keyof PositionInButtonGroup;
     size?: DynamicStringEnumKeysOf<ButtonSizes>;
   }
 > &
@@ -109,15 +108,14 @@ export const Button = forwardRef(
       color = "info",
       disabled,
       fullSized,
-      isProcessing = false,
+      isProcessing,
       processingLabel = "Loading...",
       processingSpinner,
       gradientDuoTone,
       gradientMonochrome,
       label,
-      outline = false,
-      pill = false,
-      positionInGroup = "none",
+      outline: _outline,
+      pill: _pill,
       size = "md",
       theme: customTheme,
       clearTheme,
@@ -126,13 +124,16 @@ export const Button = forwardRef(
     }: ButtonProps<T>,
     ref: PolymorphicRef<T>,
   ) => {
+    const buttonGroup = useButtonGroupContext();
     const provider = useThemeProvider();
     const theme = resolveTheme(
       [buttonTheme, provider.theme?.button, customTheme],
       [get(provider.clearTheme, "button"), clearTheme],
       [get(provider.applyTheme, "button"), applyTheme],
     );
-    const groupTheme = resolveTheme([buttonGroupTheme, provider.theme?.buttonGroup]);
+
+    const outline = buttonGroup?.outline ?? _outline;
+    const pill = buttonGroup?.pill ?? _pill;
 
     const theirProps = props as ButtonBaseProps<T>;
 
@@ -149,7 +150,7 @@ export const Button = forwardRef(
           outline && (theme.outline.color[color] ?? theme.outline.color.default),
           theme.pill[pill ? "on" : "off"],
           fullSized && theme.fullSized,
-          groupTheme.position[positionInGroup],
+          buttonGroup && theme.grouped,
           className,
         )}
         {...theirProps}
@@ -163,7 +164,6 @@ export const Button = forwardRef(
             outline && !theme.outline.color[color] && theme.inner.outline,
             isProcessing && theme.isProcessing,
             isProcessing && theme.inner.isProcessingPadding[size],
-            theme.inner.position[positionInGroup],
           )}
         >
           <>

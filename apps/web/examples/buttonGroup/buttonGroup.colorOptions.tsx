@@ -1,11 +1,7 @@
-"use client";
-
 import { Button, ButtonGroup } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-"use client";
-
 import { Button, ButtonGroup } from "flowbite-react";
 
 export function Component() {

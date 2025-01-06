@@ -1,5 +1,3 @@
-"use client";
-
 import { Button, ButtonGroup } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 

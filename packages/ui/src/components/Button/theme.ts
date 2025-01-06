@@ -5,6 +5,7 @@ import type { ButtonGroupTheme } from "./ButtonGroup";
 export const buttonTheme: ButtonTheme = createTheme({
   base: "group relative flex items-stretch justify-center p-0.5 text-center font-medium transition-[color,background-color,border-color,text-decoration-color,fill,stroke,box-shadow] focus:z-10 focus:outline-none",
   fullSized: "w-full",
+  grouped: "rounded-none border-l-0 first:rounded-s-lg first:border-l last:rounded-e-lg focus:ring-2",
   color: {
     dark: "border border-transparent bg-gray-800 text-white focus:ring-4 focus:ring-gray-300 enabled:hover:bg-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:focus:ring-gray-800 dark:enabled:hover:bg-gray-700",
     failure:
@@ -74,12 +75,6 @@ export const buttonTheme: ButtonTheme = createTheme({
   },
   inner: {
     base: "flex items-stretch transition-all duration-200",
-    position: {
-      none: "",
-      start: "rounded-r-none",
-      middle: "rounded-none",
-      end: "rounded-l-none",
-    },
     outline: "border border-transparent",
     isProcessingPadding: {
       xs: "pl-8",
@@ -118,11 +113,5 @@ export const buttonTheme: ButtonTheme = createTheme({
 });
 
 export const buttonGroupTheme: ButtonGroupTheme = createTheme({
-  base: "inline-flex",
-  position: {
-    none: "",
-    start: "rounded-r-none focus:ring-2",
-    middle: "rounded-none border-l-0 pl-0 focus:ring-2",
-    end: "rounded-l-none border-l-0 pl-0 focus:ring-2",
-  },
+  base: "inline-flex rounded-md shadow-sm",
 });
