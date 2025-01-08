@@ -5,8 +5,6 @@ import { applyPrefix } from "./apply-prefix";
 import { deepMergeStrings } from "./deep-merge";
 import { twMerge } from "./tailwind-merge";
 
-const cache = new Map();
-
 /**
  * Adds prefix to `base` and merges with custom themes, applying optional `clearTheme` and `applyTheme` modifications.
  *
@@ -28,13 +26,6 @@ export function resolveTheme<T>(
 ): T {
   const prefix = getPrefix();
 
-  const cacheKey = JSON.stringify({ base, custom, clearThemeList, applyThemeList, prefix });
-  const cacheValue = cache.get(cacheKey);
-
-  if (cacheValue) {
-    return cacheValue;
-  }
-
   const baseTheme = structuredClone(base);
   const clearTheme = resolveClearTheme(clearThemeList);
   const applyTheme = resolveApplyTheme(applyThemeList);
@@ -51,8 +42,6 @@ export function resolveTheme<T>(
   if (applyTheme) {
     patchApplyTheme(theme, deepmerge(baseTheme, ...custom) as T, applyTheme);
   }
-
-  cache.set(cacheKey, theme);
 
   return theme;
 }
