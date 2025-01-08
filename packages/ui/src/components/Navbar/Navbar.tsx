@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { useState } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -55,7 +55,7 @@ export function Navbar({
   const [isOpen, setIsOpen] = useState(menuOpen);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [navbarTheme, provider.theme?.navbar, customTheme],
     [get(provider.clearTheme, "navbar"), clearTheme],
     [get(provider.applyTheme, "navbar"), applyTheme],

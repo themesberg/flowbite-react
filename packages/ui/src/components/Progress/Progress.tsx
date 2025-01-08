@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { useId } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -57,7 +57,7 @@ export function Progress({
 }: ProgressProps) {
   const id = useId();
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [progressTheme, provider.theme?.progress, customTheme],
     [get(provider.clearTheme, "progress"), clearTheme],
     [get(provider.applyTheme, "progress"), applyTheme],

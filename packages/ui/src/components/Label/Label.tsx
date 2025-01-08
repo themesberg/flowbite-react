@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -42,7 +42,7 @@ export function Label({
   ...props
 }: LabelProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [labelTheme, provider.theme?.label, customTheme],
     [get(provider.clearTheme, "label"), clearTheme],
     [get(provider.applyTheme, "label"), applyTheme],

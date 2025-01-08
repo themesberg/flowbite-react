@@ -3,7 +3,7 @@
 import type { ForwardRefRenderFunction, ReactNode } from "react";
 import { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { ArrowLeftIcon, ArrowRightIcon, CalendarIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
@@ -131,7 +131,7 @@ const DatepickerRender: ForwardRefRenderFunction<DatepickerRef, DatepickerProps>
   ref,
 ) => {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [datePickerTheme, provider.theme?.datepicker, customTheme],
     [get(provider.clearTheme, "datepicker"), clearTheme],
     [get(provider.applyTheme, "datepicker"), applyTheme],

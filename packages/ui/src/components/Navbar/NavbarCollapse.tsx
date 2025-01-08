@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -29,7 +29,7 @@ export function NavbarCollapse({
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, isOpen } = useNavbarContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [navbarTheme.collapse, provider.theme?.navbar?.collapse, rootTheme?.collapse, customTheme],
     [get(provider.clearTheme, "navbar.collapse"), get(rootClearTheme, "collapse"), clearTheme],
     [get(provider.applyTheme, "navbar.collapse"), get(rootApplyTheme, "collapse"), applyTheme],

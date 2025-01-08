@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { useId } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -38,7 +38,7 @@ export function SidebarLogo({
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [sidebarTheme.logo, provider.theme?.sidebar?.logo, rootTheme?.logo, customTheme],
     [get(provider.clearTheme, "sidebar.logo"), get(rootClearTheme, "logo"), clearTheme],
     [get(provider.applyTheme, "sidebar.logo"), get(rootApplyTheme, "logo"), applyTheme],

@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -22,7 +22,7 @@ export interface RadioProps extends Omit<ComponentProps<"input">, "ref" | "type"
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   ({ className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [radioTheme, provider.theme?.radio, customTheme],
       [get(provider.clearTheme, "radio"), clearTheme],
       [get(provider.applyTheme, "radio"), applyTheme],

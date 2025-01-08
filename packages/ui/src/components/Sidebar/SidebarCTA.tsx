@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -39,7 +39,7 @@ export function SidebarCTA({
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [sidebarTheme.cta, provider.theme?.sidebar?.cta, rootTheme?.cta, customTheme],
     [get(provider.clearTheme, "sidebar.cta"), get(rootClearTheme, "cta"), clearTheme],
     [get(provider.applyTheme, "sidebar.cta"), get(rootApplyTheme, "cta"), applyTheme],

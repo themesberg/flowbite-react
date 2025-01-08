@@ -3,7 +3,7 @@
 import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from "react";
 import { forwardRef, useId } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -75,7 +75,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
     const { isInsideCollapse } = useSidebarItemContext();
 
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [sidebarTheme.item, provider.theme?.sidebar?.item, rootTheme?.item, customTheme],
       [get(provider.clearTheme, "sidebar.item"), get(rootClearTheme, "item"), clearTheme],
       [get(provider.applyTheme, "sidebar.item"), get(rootApplyTheme, "item"), applyTheme],

@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -30,7 +30,7 @@ export function ButtonGroup({
   ...props
 }: ButtonGroupProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [buttonGroupTheme, provider.theme?.buttonGroup, customTheme],
     [get(provider.clearTheme, "buttonGroup"), clearTheme],
     [get(provider.applyTheme, "buttonGroup"), applyTheme],

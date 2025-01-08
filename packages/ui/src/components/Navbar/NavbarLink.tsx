@@ -2,7 +2,7 @@
 
 import type { ComponentProps, ElementType, MouseEvent } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -38,7 +38,7 @@ export function NavbarLink({
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, setIsOpen } = useNavbarContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [navbarTheme.link, provider.theme?.navbar?.link, rootTheme?.link, customTheme],
     [get(provider.clearTheme, "navbar.link"), get(rootClearTheme, "link"), clearTheme],
     [get(provider.applyTheme, "navbar.link"), get(rootApplyTheme, "link"), applyTheme],

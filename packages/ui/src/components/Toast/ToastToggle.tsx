@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC, MouseEvent } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { XIcon as DefaultXIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
@@ -42,7 +42,7 @@ export function ToastToggle({
   } = useToastContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [toastTheme.toggle, provider.theme?.toast?.toggle, rootTheme?.toggle, customTheme],
     [get(provider.clearTheme, "toast.toggle"), get(rootClearTheme, "toggle"), clearTheme],
     [get(provider.applyTheme, "toast.toggle"), get(rootApplyTheme, "toggle"), applyTheme],

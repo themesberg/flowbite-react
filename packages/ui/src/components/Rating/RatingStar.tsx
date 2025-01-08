@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { StarIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
@@ -38,7 +38,7 @@ export function RatingStar({
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, size = "sm" } = useRatingContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [ratingTheme.star, provider.theme?.rating?.star, rootTheme?.star, customTheme],
     [get(provider.clearTheme, "rating.star"), get(rootClearTheme, "star"), clearTheme],
     [get(provider.applyTheme, "rating.star"), get(rootApplyTheme, "star"), applyTheme],

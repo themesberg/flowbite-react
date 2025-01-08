@@ -2,7 +2,7 @@
 
 import type { ComponentProps, ReactNode } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { ChevronLeftIcon, ChevronRightIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
@@ -69,7 +69,7 @@ export function Pagination({
   ...props
 }: PaginationProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [paginationTheme, provider.theme?.pagination, customTheme],
     [get(provider.clearTheme, "pagination"), clearTheme],
     [get(provider.applyTheme, "pagination"), applyTheme],

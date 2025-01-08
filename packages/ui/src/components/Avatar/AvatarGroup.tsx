@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -23,7 +23,7 @@ export function AvatarGroup({
   ...props
 }: AvatarGroupProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [avatarTheme.group, provider.theme?.avatar?.group, customTheme],
     [get(provider.clearTheme, "avatar"), clearTheme],
     [get(provider.applyTheme, "avatar"), applyTheme],

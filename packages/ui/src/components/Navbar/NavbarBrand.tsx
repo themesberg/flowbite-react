@@ -2,7 +2,7 @@
 
 import type { ComponentProps, ElementType } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -30,7 +30,7 @@ export function NavbarBrand({
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useNavbarContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [navbarTheme.brand, provider.theme?.navbar?.brand, rootTheme?.brand, customTheme],
     [get(provider.clearTheme, "navbar.brand"), get(rootClearTheme, "brand"), clearTheme],
     [get(provider.applyTheme, "navbar.brand"), get(rootApplyTheme, "brand"), applyTheme],

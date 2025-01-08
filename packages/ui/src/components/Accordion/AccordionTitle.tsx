@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -39,7 +39,7 @@ export function AccordionTitle({
   const onClick = () => typeof setOpen !== "undefined" && setOpen();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [accordionTheme.title, provider.theme?.accordion?.title, customTheme],
     [get(provider.clearTheme, "accordion.title"), clearTheme],
     [get(provider.applyTheme, "accordion.title"), applyTheme],

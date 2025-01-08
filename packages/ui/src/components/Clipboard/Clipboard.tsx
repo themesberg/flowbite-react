@@ -2,7 +2,7 @@
 
 import { forwardRef, useState, type ComponentProps, type ReactNode } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -31,7 +31,7 @@ export const Clipboard = forwardRef<HTMLButtonElement, ClipboardProps>(
     const [isJustCopied, setIsJustCopied] = useState(false);
 
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [clipboardTheme.button, provider.theme?.clipboard?.button, customTheme],
       [get(provider.clearTheme, "clipboard.button"), clearTheme],
       [get(provider.applyTheme, "clipboard.button"), applyTheme],

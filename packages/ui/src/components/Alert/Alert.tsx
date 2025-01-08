@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC, ReactNode } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { XIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
@@ -50,7 +50,7 @@ export function Alert({
   ...props
 }: AlertProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [alertTheme, provider.theme?.alert, customTheme],
     [get(provider.clearTheme, "alert"), clearTheme],
     [get(provider.applyTheme, "alert"), applyTheme],

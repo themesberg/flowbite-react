@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -31,7 +31,7 @@ export function Kbd({
   ...props
 }: KbdProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [kbdTheme, provider.theme?.kbd, customTheme],
     [get(provider.clearTheme, "kbd"), clearTheme],
     [get(provider.applyTheme, "kbd"), applyTheme],

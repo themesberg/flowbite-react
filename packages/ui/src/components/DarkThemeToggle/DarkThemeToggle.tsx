@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeMode } from "../../hooks/use-theme-mode";
 import { MoonIcon, SunIcon } from "../../icons";
@@ -40,7 +40,7 @@ export function DarkThemeToggle({
   const { toggleMode } = useThemeMode();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [darkThemeToggleTheme, provider.theme?.darkThemeToggle, customTheme],
     [get(provider.clearTheme, "darkThemeToggle"), clearTheme],
     [get(provider.applyTheme, "darkThemeToggle"), applyTheme],

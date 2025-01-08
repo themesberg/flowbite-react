@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -49,7 +49,7 @@ export function Badge({
   ...props
 }: BadgeProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [badgeTheme, provider.theme?.badge, customTheme],
     [get(provider.clearTheme, "badge"), clearTheme],
     [get(provider.applyTheme, "badge"), applyTheme],

@@ -3,7 +3,7 @@
 import type { ComponentProps, FC, ReactNode } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -74,7 +74,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     ref,
   ) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [textInputTheme, provider.theme?.textInput, customTheme],
       [get(provider.clearTheme, "textInput"), clearTheme],
       [get(provider.applyTheme, "textInput"), applyTheme],

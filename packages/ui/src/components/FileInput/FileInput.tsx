@@ -3,7 +3,7 @@
 import type { ComponentProps, ReactNode } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -45,7 +45,7 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
     ref,
   ) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [fileInputTheme, provider.theme?.fileInput, customTheme],
       [get(provider.clearTheme, "fileInput"), clearTheme],
       [get(provider.applyTheme, "fileInput"), applyTheme],

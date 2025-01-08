@@ -3,7 +3,7 @@
 import type { ComponentProps, FC, PropsWithChildren, ReactElement } from "react";
 import { useEffect, useId, useState } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { ChevronDownIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
@@ -59,7 +59,7 @@ export function SidebarCollapse({
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [sidebarTheme.collapse, provider.theme?.sidebar?.collapse, rootTheme?.collapse, customTheme],
     [get(provider.clearTheme, "sidebar.collapse"), get(rootClearTheme, "collapse"), clearTheme],
     [get(provider.applyTheme, "sidebar.collapse"), get(rootApplyTheme, "collapse"), applyTheme],

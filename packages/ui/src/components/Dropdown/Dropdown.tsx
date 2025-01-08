@@ -14,7 +14,7 @@ import type {
 } from "react";
 import { cloneElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon } from "../../icons";
@@ -124,7 +124,7 @@ export function Dropdown({
   const labelsRef = useRef<Array<string | null>>([]);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [dropdownTheme, provider.theme?.dropdown, customTheme],
     [get(provider.clearTheme, "dropdown"), clearTheme],
     [get(provider.applyTheme, "dropdown"), applyTheme],

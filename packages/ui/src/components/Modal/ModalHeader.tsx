@@ -2,7 +2,7 @@
 
 import { useId, useLayoutEffect, type ComponentProps, type ElementType } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { OutlineXIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
@@ -47,7 +47,7 @@ export function ModalHeader({
   } = useModalContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [modalTheme.header, provider.theme?.modal?.header, rootTheme?.header, customTheme],
     [get(provider.clearTheme, "modal.header"), get(rootClearTheme, "header"), clearTheme],
     [get(provider.applyTheme, "modal.header"), get(rootApplyTheme, "header"), applyTheme],

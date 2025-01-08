@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { omit } from "../../helpers/omit";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DeepPartial, ThemingProps } from "../../types";
@@ -50,7 +50,7 @@ export function Card(props: CardProps) {
   const theirProps = removeCustomProps(props);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [cardTheme, provider.theme?.card, customTheme],
     [get(provider.clearTheme, "card"), clearTheme],
     [get(provider.applyTheme, "card"), applyTheme],
@@ -78,7 +78,7 @@ Card.displayName = "Card";
 
 function Image({ theme: customTheme, clearTheme, applyTheme, ...props }: CardProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [cardTheme, provider.theme?.card, customTheme],
     [get(provider.clearTheme, "carousel"), clearTheme],
     [get(provider.applyTheme, "carousel"), applyTheme],

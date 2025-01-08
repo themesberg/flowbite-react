@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -27,7 +27,7 @@ export function ModalBody({
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, popup } = useModalContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [modalTheme.body, provider.theme?.modal?.body, rootTheme?.body, customTheme],
     [get(provider.clearTheme, "modal.body"), get(rootClearTheme, "body"), clearTheme],
     [get(provider.applyTheme, "modal.body"), get(rootApplyTheme, "body"), applyTheme],

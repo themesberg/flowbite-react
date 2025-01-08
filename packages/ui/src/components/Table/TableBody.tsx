@@ -2,7 +2,7 @@
 
 import { forwardRef, type ComponentPropsWithRef } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -23,7 +23,7 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
     const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useTableContext();
 
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [tableTheme.body, provider.theme?.table?.body, rootTheme?.body, customTheme],
       [get(provider.clearTheme, "table.body"), get(rootClearTheme, "body"), clearTheme],
       [get(provider.applyTheme, "table.body"), get(rootApplyTheme, "body"), applyTheme],

@@ -3,7 +3,7 @@
 import type { Placement } from "@floating-ui/core";
 import type { ComponentProps, ReactNode } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { Floating, type FloatingTheme } from "../Floating";
@@ -38,7 +38,7 @@ export function Tooltip({
   ...props
 }: TooltipProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [tooltipTheme, provider.theme?.tooltip, customTheme],
     [get(provider.clearTheme, "tooltip"), clearTheme],
     [get(provider.applyTheme, "tooltip"), applyTheme],

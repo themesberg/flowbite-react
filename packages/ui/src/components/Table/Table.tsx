@@ -2,7 +2,7 @@
 
 import { forwardRef, type ComponentPropsWithRef } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -33,7 +33,7 @@ export interface TableProps extends ComponentPropsWithRef<"table">, ThemingProps
 export const Table = forwardRef<HTMLTableElement, TableProps>(
   ({ children, className, striped, hoverable, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [tableTheme, provider.theme?.table, customTheme],
       [get(provider.clearTheme, "table"), clearTheme],
       [get(provider.applyTheme, "table"), applyTheme],

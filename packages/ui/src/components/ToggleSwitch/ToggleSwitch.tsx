@@ -3,7 +3,7 @@
 import type { ComponentProps, KeyboardEvent } from "react";
 import { forwardRef, useId } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -58,7 +58,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
   ) => {
     const id = useId();
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [toggleSwitchTheme, provider.theme?.toggleSwitch, customTheme],
       [get(provider.clearTheme, "toggleSwitch"), clearTheme],
       [get(provider.applyTheme, "toggleSwitch"), applyTheme],

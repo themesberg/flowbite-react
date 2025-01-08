@@ -14,7 +14,7 @@ import {
 import type { MutableRefObject } from "react";
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -86,7 +86,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>(
   ) => {
     const [headerId, setHeaderId] = useState<string | undefined>(undefined);
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [modalTheme, provider.theme?.modal, customTheme],
       [get(provider.clearTheme, "modal"), clearTheme],
       [get(provider.applyTheme, "modal"), applyTheme],

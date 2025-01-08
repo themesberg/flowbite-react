@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -18,7 +18,7 @@ export interface HRTrimmedProps extends Omit<ComponentProps<"hr">, "ref">, Themi
 export const HRTrimmed = forwardRef<HTMLHRElement, HRTrimmedProps>(
   ({ theme: customTheme, clearTheme, applyTheme, className, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [hrTheme.trimmed, provider.theme?.hr?.trimmed, customTheme],
       [get(provider.clearTheme, "hr.trimmed"), clearTheme],
       [get(provider.applyTheme, "hr.trimmed"), applyTheme],

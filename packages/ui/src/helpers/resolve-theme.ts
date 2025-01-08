@@ -1,9 +1,23 @@
 import { deepmerge } from "deepmerge-ts";
+import { useMemo } from "react";
 import { getPrefix } from "../store";
 import type { DeepPartialApplyTheme, DeepPartialBoolean } from "../types";
 import { applyPrefix } from "./apply-prefix";
 import { deepMergeStrings } from "./deep-merge";
 import { twMerge } from "./tailwind-merge";
+
+/**
+ * Memoize wrapper around `resolveTheme` function.
+ *
+ * @param {...Parameters<typeof resolveTheme>} input - Arguments to pass to `resolveTheme` function
+ * @returns {ReturnType<typeof resolveTheme>} The resolved theme configuration
+ */
+export function useResolveTheme<T>(...input: Parameters<typeof resolveTheme<T>>): ReturnType<typeof resolveTheme<T>> {
+  const [themeList, clearThemeList, applyThemeList] = input;
+
+  // @ts-expect-error - always array
+  return useMemo(() => resolveTheme(...input), [...themeList, ...clearThemeList, ...applyThemeList]);
+}
 
 /**
  * Adds prefix to `base` and merges with custom themes, applying optional `clearTheme` and `applyTheme` modifications.
@@ -25,10 +39,9 @@ export function resolveTheme<T>(
   applyThemeList: DeepPartialApplyTheme<T[]> = [],
 ): T {
   const prefix = getPrefix();
-
-  const baseTheme = structuredClone(base);
   const clearTheme = resolveClearTheme(clearThemeList);
   const applyTheme = resolveApplyTheme(applyThemeList);
+  const baseTheme = clearTheme || prefix ? structuredClone(base) : base;
 
   if (clearTheme) {
     applyClearTheme(baseTheme, clearTheme);

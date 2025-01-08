@@ -2,7 +2,7 @@
 
 import type { ComponentProps, ElementType } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -48,7 +48,7 @@ export function Sidebar({
   ...props
 }: SidebarProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [sidebarTheme, provider.theme?.sidebar, customTheme],
     [get(provider.clearTheme, "sidebar"), clearTheme],
     [get(provider.applyTheme, "sidebar"), applyTheme],

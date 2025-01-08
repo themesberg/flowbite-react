@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -26,7 +26,7 @@ export function DrawerItems({
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useDrawerContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [drawerTheme.items, provider.theme?.drawer?.items, rootTheme?.items, customTheme],
     [get(provider.clearTheme, "drawer.items"), get(rootClearTheme, "items"), clearTheme],
     [get(provider.applyTheme, "drawer.items"), get(rootApplyTheme, "items"), applyTheme],

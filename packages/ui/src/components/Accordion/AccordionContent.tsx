@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -26,7 +26,7 @@ export function AccordionContent({
   const { isOpen } = useAccordionContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [accordionTheme.content, provider.theme?.accordion?.content, customTheme],
     [get(provider.clearTheme, "accordion.content"), clearTheme],
     [get(provider.applyTheme, "accordion.content"), applyTheme],

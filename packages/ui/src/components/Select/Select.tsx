@@ -3,7 +3,7 @@
 import type { ComponentProps, FC, ReactNode } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -67,7 +67,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
     ref,
   ) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [selectTheme, provider.theme?.select, customTheme],
       [get(provider.clearTheme, "select"), clearTheme],
       [get(provider.applyTheme, "select"), applyTheme],

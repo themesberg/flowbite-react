@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -34,7 +34,7 @@ export function TimelineItem({
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, horizontal } = useTimelineContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [timelineTheme.item, provider.theme?.timeline?.item, rootTheme?.item, customTheme],
     [get(provider.clearTheme, "timeline.item"), get(rootClearTheme, "item"), clearTheme],
     [get(provider.applyTheme, "timeline.item"), get(rootApplyTheme, "item"), applyTheme],

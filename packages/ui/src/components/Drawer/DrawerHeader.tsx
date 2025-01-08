@@ -3,7 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { useId } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { CloseIcon as DefaultCloseIcon, HomeIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -53,7 +53,7 @@ export function DrawerHeader({
   } = useDrawerContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [drawerTheme.header, provider.theme?.drawer?.header, rootTheme?.header, customTheme],
     [get(provider.clearTheme, "drawer.header"), get(rootClearTheme, "header"), clearTheme],
     [get(provider.applyTheme, "drawer.header"), get(rootApplyTheme, "header"), applyTheme],

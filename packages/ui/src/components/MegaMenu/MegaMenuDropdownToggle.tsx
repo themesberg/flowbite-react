@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -30,7 +30,7 @@ export function MegaMenuDropdownToggle({
   const [isExpanded, setExpanded] = useState<boolean | undefined>(undefined);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [megaMenuTheme.dropdownToggle, provider.theme?.megaMenu?.dropdownToggle, customTheme],
     [get(provider.clearTheme, "megaMenu.dropdownToggle"), clearTheme],
     [get(provider.applyTheme, "megaMenu.dropdownToggle"), applyTheme],

@@ -2,7 +2,7 @@
 
 import type { ComponentProps, ReactElement } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -95,7 +95,7 @@ export function Avatar({
   ...props
 }: AvatarProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [avatarTheme, provider.theme?.avatar, customTheme],
     [get(provider.clearTheme, "avatar"), clearTheme],
     [get(provider.applyTheme, "avatar"), applyTheme],

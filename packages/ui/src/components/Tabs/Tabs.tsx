@@ -3,7 +3,7 @@
 import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, ReactElement } from "react";
 import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -79,7 +79,7 @@ export const Tabs = forwardRef<TabsRef, TabsProps>(
     ref: ForwardedRef<TabsRef>,
   ) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [tabsTheme, provider.theme?.tabs, customTheme],
       [get(provider.clearTheme, "tabs"), clearTheme],
       [get(provider.applyTheme, "tabs"), applyTheme],

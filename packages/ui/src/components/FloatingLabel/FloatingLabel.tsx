@@ -3,7 +3,7 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { forwardRef, useId } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -42,7 +42,7 @@ export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
     const randomId = useId();
 
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [floatingLabelTheme, provider.theme?.floatingLabel, customTheme],
       [get(provider.clearTheme, "floatingLabel"), clearTheme],
       [get(provider.applyTheme, "floatingLabel"), applyTheme],

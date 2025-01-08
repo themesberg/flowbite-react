@@ -5,7 +5,7 @@ import { FloatingFocusManager, useMergeRefs } from "@floating-ui/react";
 import type { ComponentProps, ComponentPropsWithRef, Dispatch, ReactNode, SetStateAction } from "react";
 import { cloneElement, isValidElement, useMemo, useRef, useState } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -47,7 +47,7 @@ export function Popover({
   const arrowRef = useRef<HTMLDivElement>(null);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [popoverTheme, provider.theme?.popover, customTheme],
     [get(provider.clearTheme, "popover"), clearTheme],
     [get(provider.applyTheme, "popover"), applyTheme],

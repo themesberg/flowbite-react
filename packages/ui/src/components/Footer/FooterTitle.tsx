@@ -2,7 +2,7 @@
 
 import type { ComponentProps, ElementType } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -27,7 +27,7 @@ export function FooterTitle({
   ...props
 }: FooterTitleProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [footerTheme.title, provider.theme?.footer?.title, customTheme],
     [get(provider.clearTheme, "footer.title"), clearTheme],
     [get(provider.applyTheme, "footer.title"), applyTheme],

@@ -2,7 +2,7 @@
 
 import type { ComponentProps, ReactEventHandler, ReactNode } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -36,7 +36,7 @@ export function PaginationButton({
   ...props
 }: PaginationButtonProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [paginationTheme, provider.theme?.pagination, customTheme],
     [get(provider.clearTheme, "pagination"), clearTheme],
     [get(provider.applyTheme, "pagination"), applyTheme],
@@ -67,7 +67,7 @@ export function PaginationNavigation({
   ...props
 }: PaginationPrevButtonProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [paginationTheme, provider.theme?.pagination, customTheme],
     [get(provider.clearTheme, "pagination"), clearTheme],
     [get(provider.applyTheme, "pagination"), applyTheme],

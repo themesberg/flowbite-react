@@ -5,7 +5,7 @@ import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useSta
 import ScrollContainer from "../../helpers/drag-scroll";
 import { get } from "../../helpers/get";
 import { isClient } from "../../helpers/is-client";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { ChevronLeftIcon, ChevronRightIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
@@ -78,7 +78,7 @@ export function Carousel({
   ...props
 }: CarouselProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [carouselTheme, provider.theme?.carousel, customTheme],
     [get(provider.clearTheme, "carousel"), clearTheme],
     [get(provider.applyTheme, "carousel"), applyTheme],
@@ -217,7 +217,7 @@ export function Carousel({
 
 function DefaultLeftControl({ theme: customTheme, clearTheme, applyTheme }: DefaultLeftRightControlProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [carouselTheme, provider.theme?.carousel, customTheme],
     [get(provider.clearTheme, "carousel"), clearTheme],
     [get(provider.applyTheme, "carousel"), applyTheme],
@@ -232,7 +232,7 @@ function DefaultLeftControl({ theme: customTheme, clearTheme, applyTheme }: Defa
 
 function DefaultRightControl({ theme: customTheme, clearTheme, applyTheme }: DefaultLeftRightControlProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [carouselTheme, provider.theme?.carousel, customTheme],
     [get(provider.clearTheme, "carousel"), clearTheme],
     [get(provider.applyTheme, "carousel"), applyTheme],

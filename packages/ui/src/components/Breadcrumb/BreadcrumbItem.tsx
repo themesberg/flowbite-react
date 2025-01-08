@@ -3,7 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { ChevronRightIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
@@ -29,7 +29,7 @@ export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, Br
     const Component = isLink ? "a" : "span";
 
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [breadcrumbTheme.item, provider.theme?.breadcrumb?.item, customTheme],
       [get(provider.clearTheme, "breadcrumb.item"), clearTheme],
       [get(provider.applyTheme, "breadcrumb.item"), applyTheme],

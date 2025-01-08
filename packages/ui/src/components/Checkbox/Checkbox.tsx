@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -27,7 +27,7 @@ export interface CheckboxProps
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   ({ className, color = "default", theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [checkboxTheme, provider.theme?.checkbox, customTheme],
       [get(provider.clearTheme, "checkbox"), clearTheme],
       [get(provider.applyTheme, "checkbox"), applyTheme],

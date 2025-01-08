@@ -1,7 +1,7 @@
 "use client";
 
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
 import type { NavbarProps, NavbarTheme } from "../Navbar";
 import { Navbar } from "../Navbar";
@@ -18,7 +18,7 @@ export type MegaMenuProps = NavbarProps;
 
 export function MegaMenu({ children, theme: customTheme, clearTheme, applyTheme, ...props }: MegaMenuProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [megaMenuTheme, provider.theme?.megaMenu, customTheme],
     [get(provider.clearTheme, "megaMenu"), clearTheme],
     [get(provider.applyTheme, "megaMenu"), applyTheme],

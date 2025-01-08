@@ -4,7 +4,7 @@ import { useListItem, useMergeRefs } from "@floating-ui/react";
 import { forwardRef, type ComponentProps, type ElementType, type FC, type RefCallback } from "react";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -60,7 +60,7 @@ export const DropdownItem = forwardRef(
     const isActive = activeIndex === index;
 
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [dropdownTheme.floating.item, provider.theme?.dropdown?.floating?.item, rootTheme?.floating?.item, customTheme],
       [get(provider.clearTheme, "dropdown.floating.item"), get(rootClearTheme, "floating.item"), clearTheme],
       [get(provider.applyTheme, "dropdown.floating.item"), get(rootApplyTheme, "floating.item"), applyTheme],

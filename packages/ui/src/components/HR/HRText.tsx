@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -22,7 +22,7 @@ export interface HRTextProps extends Omit<ComponentProps<"hr">, "ref">, ThemingP
 export const HRText = forwardRef<HTMLHRElement, HRTextProps>(
   ({ theme: customTheme, clearTheme, applyTheme, text, className, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [hrTheme.text, provider.theme?.hr?.text, customTheme],
       [get(provider.clearTheme, "hr.text"), clearTheme],
       [get(provider.applyTheme, "hr.text"), applyTheme],

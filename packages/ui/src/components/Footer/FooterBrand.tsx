@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -34,7 +34,7 @@ export function FooterBrand({
   ...props
 }: FooterBrandProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [footerTheme.brand, provider.theme?.footer?.brand, customTheme],
     [get(provider.clearTheme, "footer.brand"), clearTheme],
     [get(provider.applyTheme, "footer.brand"), applyTheme],

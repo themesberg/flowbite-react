@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -51,7 +51,7 @@ export function Spinner({
   ...props
 }: SpinnerProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [spinnerTheme, provider.theme?.spinner, customTheme],
     [get(provider.clearTheme, "spinner"), clearTheme],
     [get(provider.applyTheme, "spinner"), applyTheme],

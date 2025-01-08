@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -31,7 +31,7 @@ export function FooterIcon({
   ...props
 }: FooterIconProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [footerTheme.icon, provider.theme?.footer?.icon, customTheme],
     [get(provider.clearTheme, "footer.icon"), clearTheme],
     [get(provider.applyTheme, "footer.icon"), applyTheme],

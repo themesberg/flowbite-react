@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { useEffect, useId } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -55,7 +55,7 @@ export function Drawer({
   const id = useId();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [drawerTheme, provider.theme?.drawer, customTheme],
     [get(provider.clearTheme, "drawer"), clearTheme],
     [get(provider.applyTheme, "drawer"), applyTheme],

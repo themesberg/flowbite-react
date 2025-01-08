@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -36,7 +36,7 @@ export interface RangeSliderProps
 export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
   ({ className, sizing = "md", theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [rangeSliderTheme, provider.theme?.rangeSlider, customTheme],
       [get(provider.clearTheme, "rangeSlider"), clearTheme],
       [get(provider.applyTheme, "rangeSlider"), applyTheme],

@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -38,7 +38,7 @@ export function HelperText({
   ...props
 }: HelperTextProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [helperTextTheme, provider.theme?.helperText, customTheme],
     [get(provider.clearTheme, "helperText"), clearTheme],
     [get(provider.applyTheme, "helperText"), applyTheme],

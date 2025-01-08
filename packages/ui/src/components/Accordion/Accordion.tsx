@@ -3,7 +3,7 @@
 import type { ComponentProps, FC, ReactElement } from "react";
 import { Children, cloneElement, useMemo, useState } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { ChevronDownIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
@@ -62,7 +62,7 @@ export function Accordion({
   );
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [accordionTheme.root, provider.theme?.accordion?.root, customTheme],
     [get(provider.clearTheme, "accordion.root"), clearTheme],
     [get(provider.applyTheme, "accordion.root"), applyTheme],

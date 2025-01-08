@@ -2,7 +2,7 @@
 
 import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -31,7 +31,7 @@ export function ListItem({
   ...props
 }: ListItemProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [listTheme.item, provider.theme?.list?.item, customTheme],
     [get(provider.clearTheme, "list.item"), clearTheme],
     [get(provider.applyTheme, "list.item"), applyTheme],

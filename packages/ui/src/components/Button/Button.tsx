@@ -4,7 +4,7 @@ import type { ElementType } from "react";
 import { forwardRef, type ReactNode } from "react";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -126,7 +126,7 @@ export const Button = forwardRef(
   ) => {
     const buttonGroup = useButtonGroupContext();
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [buttonTheme, provider.theme?.button, customTheme],
       [get(provider.clearTheme, "button"), clearTheme],
       [get(provider.applyTheme, "button"), applyTheme],

@@ -2,7 +2,7 @@
 
 import { forwardRef, useState, type ComponentProps, type FC } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { CheckIcon, ClipboardListIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
@@ -46,7 +46,7 @@ export const ClipboardWithIconText = forwardRef<HTMLButtonElement, ClipboardWith
     const [isJustCopied, setIsJustCopied] = useState(false);
 
     const provider = useThemeProvider();
-    const theme = resolveTheme(
+    const theme = useResolveTheme(
       [clipboardTheme.withIconText, provider.theme?.clipboard?.withIconText, customTheme],
       [get(provider.clearTheme, "clipboard.withIconText"), clearTheme],
       [get(provider.applyTheme, "clipboard.withIconText"), applyTheme],

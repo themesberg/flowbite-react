@@ -3,7 +3,7 @@
 import type { ComponentProps } from "react";
 import { useState } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -50,7 +50,7 @@ export function Toast({
   const [isRemoved, setIsRemoved] = useState(false);
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [toastTheme, provider.theme?.toast, customTheme],
     [get(provider.clearTheme, "toast"), clearTheme],
     [get(provider.applyTheme, "toast"), applyTheme],

@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
@@ -31,7 +31,7 @@ export function Rating({
   ...props
 }: RatingProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [ratingTheme, provider.theme?.rating, customTheme],
     [get(provider.clearTheme, "rating"), clearTheme],
     [get(provider.applyTheme, "rating"), applyTheme],

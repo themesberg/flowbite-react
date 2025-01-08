@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -27,7 +27,7 @@ export function ModalFooter({
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, popup } = useModalContext();
 
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [modalTheme.footer, provider.theme?.modal?.footer, rootTheme?.footer, customTheme],
     [get(provider.clearTheme, "modal.footer"), get(rootClearTheme, "footer"), clearTheme],
     [get(provider.applyTheme, "modal.footer"), get(rootApplyTheme, "footer"), applyTheme],

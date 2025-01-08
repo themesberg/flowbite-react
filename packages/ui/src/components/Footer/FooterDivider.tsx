@@ -2,7 +2,7 @@
 
 import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -16,7 +16,7 @@ export interface FooterDividerProps extends ComponentProps<"hr">, ThemingProps<F
 
 export function FooterDivider({ className, theme: customTheme, clearTheme, applyTheme, ...props }: FooterDividerProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [footerTheme.divider, provider.theme?.footer?.divider, customTheme],
     [get(provider.clearTheme, "footer.divider"), clearTheme],
     [get(provider.applyTheme, "footer.divider"), applyTheme],

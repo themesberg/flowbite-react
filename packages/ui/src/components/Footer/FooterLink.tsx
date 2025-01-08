@@ -2,7 +2,7 @@
 
 import type { ComponentProps, ElementType } from "react";
 import { get } from "../../helpers/get";
-import { resolveTheme } from "../../helpers/resolve-theme";
+import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
@@ -29,7 +29,7 @@ export function FooterLink({
   ...props
 }: FooterLinkProps) {
   const provider = useThemeProvider();
-  const theme = resolveTheme(
+  const theme = useResolveTheme(
     [footerTheme.groupLink.link, provider.theme?.footer?.groupLink?.link, customTheme],
     [get(provider.clearTheme, "footer.groupLink.link"), clearTheme],
     [get(provider.applyTheme, "footer.groupLink.link"), applyTheme],
