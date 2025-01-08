@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -18,14 +18,14 @@ export interface BlockquoteRootTheme {
 
 export interface BlockquoteProps extends ComponentProps<"blockquote">, ThemingProps<BlockquoteTheme> {}
 
-export const Blockquote: FC<BlockquoteProps> = ({
+export function Blockquote({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: BlockquoteProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [blockquoteTheme, provider.theme?.blockquote, customTheme],
@@ -38,6 +38,6 @@ export const Blockquote: FC<BlockquoteProps> = ({
       {children}
     </blockquote>
   );
-};
+}
 
 Blockquote.displayName = "Blockquote";

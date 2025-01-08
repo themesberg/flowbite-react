@@ -33,7 +33,7 @@ export interface AccordionProps extends ComponentProps<"div">, ThemingProps<Acco
   collapseAll?: boolean;
 }
 
-export const Accordion: FC<AccordionProps> = ({
+export function Accordion({
   alwaysOpen = false,
   arrowIcon = ChevronDownIcon,
   children,
@@ -44,7 +44,7 @@ export const Accordion: FC<AccordionProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: AccordionProps) {
   const [isOpen, setOpen] = useState(collapseAll ? -1 : 0);
 
   const panels = useMemo(
@@ -77,6 +77,6 @@ export const Accordion: FC<AccordionProps> = ({
       {panels}
     </div>
   );
-};
+}
 
 Accordion.displayName = "Accordion";

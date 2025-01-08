@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import type { FC } from "react";
 import { describe, expect, it } from "vitest";
 import type { TableProps } from "./Table";
 import { Table } from "./Table";
@@ -35,7 +34,7 @@ describe("Components / Table", () => {
   });
 });
 
-const TestTable: FC<TableProps> = (props) => (
+const TestTable = (props: TableProps) => (
   <Table {...props}>
     <TableHead>
       <TableHeadCell>Product name</TableHeadCell>

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -23,14 +23,14 @@ export interface TimelineItemTheme {
 
 export interface TimelineItemProps extends ComponentProps<"li">, ThemingProps<TimelineItemTheme> {}
 
-export const TimelineItem: FC<TimelineItemProps> = ({
+export function TimelineItem({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: TimelineItemProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, horizontal } = useTimelineContext();
 
   const provider = useThemeProvider();
@@ -51,6 +51,6 @@ export const TimelineItem: FC<TimelineItemProps> = ({
       </li>
     </TimelineItemContext.Provider>
   );
-};
+}
 
 TimelineItem.displayName = "TimelineItem";

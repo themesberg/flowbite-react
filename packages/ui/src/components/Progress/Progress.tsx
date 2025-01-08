@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { useId } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
@@ -40,7 +40,7 @@ export interface ProgressProps extends ComponentProps<"div">, ThemingProps<Progr
   textLabelPosition?: "inside" | "outside";
 }
 
-export const Progress: FC<ProgressProps> = ({
+export function Progress({
   className,
   color = "cyan",
   labelProgress = false,
@@ -54,7 +54,7 @@ export const Progress: FC<ProgressProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: ProgressProps) {
   const id = useId();
   const provider = useThemeProvider();
   const theme = resolveTheme(
@@ -91,6 +91,6 @@ export const Progress: FC<ProgressProps> = ({
       </div>
     </>
   );
-};
+}
 
 Progress.displayName = "Progress";

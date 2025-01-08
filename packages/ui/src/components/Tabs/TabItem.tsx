@@ -9,6 +9,8 @@ export interface TabItemProps extends Omit<ComponentProps<"div">, "title"> {
   title: ReactNode;
 }
 
-export const TabItem: FC<TabItemProps> = ({ children, className }) => <div className={className}>{children}</div>;
+export function TabItem({ children, className }: TabItemProps) {
+  return <div className={className}>{children}</div>;
+}
 
 TabItem.displayName = "TabItem";

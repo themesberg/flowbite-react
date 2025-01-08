@@ -20,7 +20,7 @@ export interface ToastToggleProps extends ComponentProps<"button">, ThemingProps
   onDismiss?: () => void;
 }
 
-export const ToastToggle: FC<ToastToggleProps> = ({
+export function ToastToggle({
   className,
   onClick,
   onDismiss,
@@ -29,7 +29,7 @@ export const ToastToggle: FC<ToastToggleProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: ToastToggleProps) {
   const {
     theme: rootTheme,
     clearTheme: rootClearTheme,
@@ -71,6 +71,6 @@ export const ToastToggle: FC<ToastToggleProps> = ({
       <XIcon aria-hidden className={theme.icon} />
     </button>
   );
-};
+}
 
 ToastToggle.displayName = "ToastToggle";

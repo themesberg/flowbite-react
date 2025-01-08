@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -19,7 +19,7 @@ export interface ButtonGroupProps
     Pick<ButtonProps, "outline" | "pill">,
     ThemingProps<ButtonGroupTheme> {}
 
-export const ButtonGroup: FC<ButtonGroupProps> = ({
+export function ButtonGroup({
   children,
   className,
   outline,
@@ -28,7 +28,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}: ButtonGroupProps) => {
+}: ButtonGroupProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [buttonGroupTheme, provider.theme?.buttonGroup, customTheme],
@@ -43,6 +43,6 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
       </div>
     </ButtonGroupContext.Provider>
   );
-};
+}
 
 ButtonGroup.displayName = "ButtonGroup";

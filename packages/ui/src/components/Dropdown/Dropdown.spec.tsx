@@ -1,6 +1,6 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { FC, PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 import { describe, expect, it } from "vitest";
 import type { DropdownProps } from "./Dropdown";
 import { Dropdown } from "./Dropdown";
@@ -191,13 +191,13 @@ describe("Components / Dropdown", () => {
   });
 });
 
-const TestDropdown: FC<Partial<DropdownProps>> = ({
+const TestDropdown = ({
   dismissOnClick = true,
   inline = false,
   disabled,
   trigger,
   renderTrigger,
-}) => (
+}: Partial<DropdownProps>) => (
   <Dropdown
     label="Dropdown button"
     placement="right"

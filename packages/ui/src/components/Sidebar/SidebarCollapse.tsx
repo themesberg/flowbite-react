@@ -41,7 +41,7 @@ export interface SidebarCollapseProps
   renderChevronIcon?: (theme: SidebarCollapseTheme, open: boolean) => ReactElement;
 }
 
-export const SidebarCollapse: FC<SidebarCollapseProps> = ({
+export function SidebarCollapse({
   children,
   className,
   icon: Icon,
@@ -53,7 +53,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: SidebarCollapseProps) {
   const id = useId();
   const [isOpen, setOpen] = useState(open);
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
@@ -67,7 +67,7 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
 
   useEffect(() => setOpen(open), [open]);
 
-  const Wrapper: FC<PropsWithChildren> = ({ children }) => (
+  const Wrapper = ({ children }: PropsWithChildren) => (
     <li>
       {isCollapsed && !isOpen ? (
         <Tooltip content={label} placement="right">
@@ -119,6 +119,6 @@ export const SidebarCollapse: FC<SidebarCollapseProps> = ({
       </ul>
     </Wrapper>
   );
-};
+}
 
 SidebarCollapse.displayName = "SidebarCollapse";

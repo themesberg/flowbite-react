@@ -1,6 +1,5 @@
 "use client";
 
-import type { FC } from "react";
 import { twMerge } from "../../../helpers/tailwind-merge";
 import { useDatePickerContext } from "../DatepickerContext";
 import { getFormattedDate, isDateEqual, isDateInRange, Views } from "../helpers";
@@ -16,7 +15,7 @@ export interface DatepickerViewsMonthsTheme {
   };
 }
 
-export const DatepickerViewsMonth: FC = () => {
+export function DatepickerViewsMonth() {
   const {
     theme: rootTheme,
     minDate,
@@ -65,4 +64,6 @@ export const DatepickerViewsMonth: FC = () => {
       })}
     </div>
   );
-};
+}
+
+DatepickerViewsMonth.displayName = "DatepickerViewsMonth";

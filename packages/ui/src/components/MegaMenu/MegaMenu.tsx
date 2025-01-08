@@ -1,6 +1,5 @@
 "use client";
 
-import type { FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
@@ -17,7 +16,7 @@ export interface MegaMenuTheme extends NavbarTheme {
 
 export type MegaMenuProps = NavbarProps;
 
-export const MegaMenu: FC<MegaMenuProps> = ({ children, theme: customTheme, clearTheme, applyTheme, ...props }) => {
+export function MegaMenu({ children, theme: customTheme, clearTheme, applyTheme, ...props }: MegaMenuProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [megaMenuTheme, provider.theme?.megaMenu, customTheme],
@@ -30,6 +29,6 @@ export const MegaMenu: FC<MegaMenuProps> = ({ children, theme: customTheme, clea
       {children}
     </Navbar>
   );
-};
+}
 
 MegaMenu.displayName = "MegaMenu";

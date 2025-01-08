@@ -21,7 +21,7 @@ export interface ListItemProps extends ComponentProps<"li">, ThemingProps<ListIt
   icon?: FC<ComponentProps<"svg">>;
 }
 
-export const ListItem: FC<ListItemProps> = ({
+export function ListItem({
   children,
   className,
   icon: Icon,
@@ -29,7 +29,7 @@ export const ListItem: FC<ListItemProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: ListItemProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [listTheme.item, provider.theme?.list?.item, customTheme],
@@ -43,6 +43,6 @@ export const ListItem: FC<ListItemProps> = ({
       {children}
     </li>
   );
-};
+}
 
 ListItem.displayName = "ListItem";

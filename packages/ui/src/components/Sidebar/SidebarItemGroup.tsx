@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -16,14 +16,14 @@ export interface SidebarItemGroupTheme {
 
 export interface SidebarItemGroupProps extends ComponentProps<"ul">, ThemingProps<SidebarItemGroupTheme> {}
 
-export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({
+export function SidebarItemGroup({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: SidebarItemGroupProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useSidebarContext();
 
   const provider = useThemeProvider();
@@ -38,6 +38,6 @@ export const SidebarItemGroup: FC<SidebarItemGroupProps> = ({
       <SidebarItemContext.Provider value={{ isInsideCollapse: false }}>{children}</SidebarItemContext.Provider>
     </ul>
   );
-};
+}
 
 SidebarItemGroup.displayName = "SidebarItemGroup";

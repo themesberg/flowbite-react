@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -16,14 +16,14 @@ export interface ModalBodyTheme {
 
 export interface ModalBodyProps extends ComponentProps<"div">, ThemingProps<ModalBodyTheme> {}
 
-export const ModalBody: FC<ModalBodyProps> = ({
+export function ModalBody({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: ModalBodyProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, popup } = useModalContext();
 
   const provider = useThemeProvider();
@@ -38,6 +38,6 @@ export const ModalBody: FC<ModalBodyProps> = ({
       {children}
     </div>
   );
-};
+}
 
 ModalBody.displayName = "ModalBody";

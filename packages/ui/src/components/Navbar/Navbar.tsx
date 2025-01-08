@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { useState } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
@@ -40,7 +40,7 @@ export interface NavbarProps extends ComponentProps<"nav">, ThemingProps<NavbarT
   border?: boolean;
 }
 
-export const Navbar: FC<NavbarProps> = ({
+export function Navbar({
   border,
   children,
   className,
@@ -51,7 +51,7 @@ export const Navbar: FC<NavbarProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: NavbarProps) {
   const [isOpen, setIsOpen] = useState(menuOpen);
 
   const provider = useThemeProvider();
@@ -76,6 +76,6 @@ export const Navbar: FC<NavbarProps> = ({
       </nav>
     </NavbarContext.Provider>
   );
-};
+}
 
 Navbar.displayName = "Navbar";

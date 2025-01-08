@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -21,7 +21,7 @@ export interface RatingProps extends ComponentProps<"div">, ThemingProps<RatingT
   size?: DynamicStringEnumKeysOf<RatingStarSizes>;
 }
 
-export const Rating: FC<RatingProps> = ({
+export function Rating({
   children,
   className,
   size = "sm",
@@ -29,7 +29,7 @@ export const Rating: FC<RatingProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: RatingProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [ratingTheme, provider.theme?.rating, customTheme],
@@ -44,6 +44,6 @@ export const Rating: FC<RatingProps> = ({
       </div>
     </RatingContext.Provider>
   );
-};
+}
 
 Rating.displayName = "Rating";

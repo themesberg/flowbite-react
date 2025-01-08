@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -18,14 +18,14 @@ export interface NavbarCollapseTheme {
 
 export interface NavbarCollapseProps extends ComponentProps<"div">, ThemingProps<NavbarCollapseTheme> {}
 
-export const NavbarCollapse: FC<NavbarCollapseProps> = ({
+export function NavbarCollapse({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: NavbarCollapseProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, isOpen } = useNavbarContext();
 
   const provider = useThemeProvider();
@@ -44,6 +44,6 @@ export const NavbarCollapse: FC<NavbarCollapseProps> = ({
       <ul className={theme.list}>{children}</ul>
     </div>
   );
-};
+}
 
 NavbarCollapse.displayName = "NavbarCollapse";

@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { FC } from "react";
 import { useEffect, useState } from "react";
 import { describe, expect, it } from "vitest";
 import { Pagination } from "./Pagination";
@@ -129,7 +128,7 @@ describe("Pagination", () => {
   });
 });
 
-const PaginationTestFiveElements: FC = () => {
+function PaginationTestFiveElements() {
   const [page, setPage] = useState(1);
 
   const onPageChange = (page: number) => {
@@ -141,9 +140,9 @@ const PaginationTestFiveElements: FC = () => {
   }, [page]);
 
   return <Pagination currentPage={page} onPageChange={onPageChange} showIcons totalPages={5} />;
-};
+}
 
-const PaginationTestTenElements: FC = () => {
+function PaginationTestTenElements() {
   const [page, setPage] = useState(1);
 
   const onPageChange = (page: number) => {
@@ -155,7 +154,7 @@ const PaginationTestTenElements: FC = () => {
   }, [page]);
 
   return <Pagination currentPage={page} onPageChange={onPageChange} showIcons totalPages={10} />;
-};
+}
 
 const buttons = () => screen.getAllByRole("button");
 

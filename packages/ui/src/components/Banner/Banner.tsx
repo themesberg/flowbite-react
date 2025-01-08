@@ -1,15 +1,15 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 
 export type BannerComponentProps = ComponentProps<"div">;
 
-export const Banner: FC<BannerComponentProps> = ({ children, ...props }) => {
+export function Banner({ children, ...props }: BannerComponentProps) {
   return (
     <div data-testid="flowbite-banner" role="banner" tabIndex={-1} {...props}>
       {children}
     </div>
   );
-};
+}
 
 Banner.displayName = "Banner";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, ElementType, FC } from "react";
+import type { ComponentProps, ElementType } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -36,7 +36,7 @@ export interface SidebarProps extends ComponentProps<"div">, ThemingProps<Sideba
   collapsed?: boolean;
 }
 
-export const Sidebar: FC<SidebarProps> = ({
+export function Sidebar({
   children,
   as: Component = "nav",
   collapseBehavior = "collapse",
@@ -46,7 +46,7 @@ export const Sidebar: FC<SidebarProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: SidebarProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [sidebarTheme, provider.theme?.sidebar, customTheme],
@@ -66,6 +66,6 @@ export const Sidebar: FC<SidebarProps> = ({
       </Component>
     </SidebarContext.Provider>
   );
-};
+}
 
 Sidebar.displayName = "Sidebar";

@@ -30,7 +30,7 @@ export interface TimelnePointProps extends ComponentProps<"div">, ThemingProps<T
   icon?: FC<ComponentProps<"svg">>;
 }
 
-export const TimelinePoint: FC<TimelnePointProps> = ({
+export function TimelinePoint({
   children,
   className,
   icon: Icon,
@@ -38,7 +38,7 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: TimelnePointProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, horizontal } = useTimelineContext();
   const { theme: itemTheme, clearTheme: itemClearTheme, applyTheme: itemApplyTheme } = useTimelineItemContext();
 
@@ -84,6 +84,6 @@ export const TimelinePoint: FC<TimelnePointProps> = ({
       {horizontal && <div className={twMerge(theme.line)} />}
     </div>
   );
-};
+}
 
 TimelinePoint.displayName = "TimelinePoint";

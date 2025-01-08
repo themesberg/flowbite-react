@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -16,14 +16,14 @@ export interface DropdownHeaderTheme {
 
 export interface DropdownHeaderProps extends ComponentProps<"div">, ThemingProps<DropdownHeaderTheme> {}
 
-export const DropdownHeader: FC<DropdownHeaderProps> = ({
+export function DropdownHeader({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: DropdownHeaderProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useDropdownContext();
 
   const provider = useThemeProvider();
@@ -41,6 +41,6 @@ export const DropdownHeader: FC<DropdownHeaderProps> = ({
       <DropdownDivider />
     </>
   );
-};
+}
 
 DropdownHeader.displayName = "DropdownHeader";

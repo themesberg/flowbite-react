@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -21,14 +21,14 @@ export interface BreadcrumbRootTheme {
 
 export interface BreadcrumbProps extends ComponentProps<"nav">, ThemingProps<BreadcrumbRootTheme> {}
 
-export const Breadcrumb: FC<BreadcrumbProps> = ({
+export function Breadcrumb({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: BreadcrumbProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [breadcrumbTheme.root, provider.theme?.breadcrumb?.root, customTheme],
@@ -41,6 +41,6 @@ export const Breadcrumb: FC<BreadcrumbProps> = ({
       <ol className={theme.list}>{children}</ol>
     </nav>
   );
-};
+}
 
 Breadcrumb.displayName = "Breadcrumb";

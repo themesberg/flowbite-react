@@ -19,14 +19,14 @@ export interface NavbarToggleProps extends ComponentProps<"button">, ThemingProp
   barIcon?: FC<ComponentProps<"svg">>;
 }
 
-export const NavbarToggle: FC<NavbarToggleProps> = ({
+export function NavbarToggle({
   barIcon: BarIcon = BarsIcon,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: NavbarToggleProps) {
   const {
     theme: rootTheme,
     clearTheme: rootClearTheme,
@@ -57,6 +57,6 @@ export const NavbarToggle: FC<NavbarToggleProps> = ({
       <BarIcon aria-hidden className={theme.icon} />
     </button>
   );
-};
+}
 
 NavbarToggle.displayName = "NavbarToggle";

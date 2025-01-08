@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, ElementType, FC, MouseEvent } from "react";
+import type { ComponentProps, ElementType, MouseEvent } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -23,7 +23,7 @@ export interface NavbarLinkProps extends ComponentProps<"a">, Record<string, unk
   href?: string;
 }
 
-export const NavbarLink: FC<NavbarLinkProps> = ({
+export function NavbarLink({
   active,
   as: Component = "a",
   disabled,
@@ -34,7 +34,7 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: NavbarLinkProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, setIsOpen } = useNavbarContext();
 
   const provider = useThemeProvider();
@@ -66,6 +66,6 @@ export const NavbarLink: FC<NavbarLinkProps> = ({
       </Component>
     </li>
   );
-};
+}
 
 NavbarLink.displayName = "NavbarLink";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC, ReactElement } from "react";
+import type { ComponentProps, ReactElement } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -76,7 +76,7 @@ export interface AvatarProps extends Omit<ComponentProps<"div">, "color">, Themi
   placeholderInitials?: string;
 }
 
-export const Avatar: FC<AvatarProps> = ({
+export function Avatar({
   alt = "",
   bordered = false,
   children,
@@ -93,7 +93,7 @@ export const Avatar: FC<AvatarProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: AvatarProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [avatarTheme, provider.theme?.avatar, customTheme],
@@ -167,6 +167,6 @@ export const Avatar: FC<AvatarProps> = ({
       {children && <div>{children}</div>}
     </div>
   );
-};
+}
 
 Avatar.displayName = "Avatar";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC, SVGProps } from "react";
+import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -24,11 +24,11 @@ export interface DarkThemeToggleRootTheme {
 }
 
 export interface DarkThemeToggleProps extends ComponentProps<"button">, ThemingProps<DarkThemeToggleTheme> {
-  iconDark?: FC<SVGProps<SVGSVGElement>>;
-  iconLight?: FC<SVGProps<SVGSVGElement>>;
+  iconDark?: FC<ComponentProps<"svg">>;
+  iconLight?: FC<ComponentProps<"svg">>;
 }
 
-export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
+export function DarkThemeToggle({
   className,
   iconDark: IconDark = SunIcon,
   iconLight: IconLight = MoonIcon,
@@ -36,7 +36,7 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: DarkThemeToggleProps) {
   const { toggleMode } = useThemeMode();
 
   const provider = useThemeProvider();
@@ -59,6 +59,6 @@ export const DarkThemeToggle: FC<DarkThemeToggleProps> = ({
       <IconLight aria-label="Currently light mode" className={twMerge(theme.root.icon.base, theme.root.icon.light)} />
     </button>
   );
-};
+}
 
 DarkThemeToggle.displayName = "DarkThemeToggle";

@@ -21,7 +21,7 @@ export interface KbdProps extends ComponentProps<"span">, ThemingProps<KbdTheme>
   icon?: FC<ComponentProps<"svg">>;
 }
 
-export const Kbd: FC<KbdProps> = ({
+export function Kbd({
   children,
   className,
   icon: Icon,
@@ -29,7 +29,7 @@ export const Kbd: FC<KbdProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: KbdProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [kbdTheme, provider.theme?.kbd, customTheme],
@@ -43,6 +43,6 @@ export const Kbd: FC<KbdProps> = ({
       {children}
     </span>
   );
-};
+}
 
 Kbd.displayName = "Kbd";

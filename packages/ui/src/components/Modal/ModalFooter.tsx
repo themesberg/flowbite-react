@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -16,14 +16,14 @@ export interface ModalFooterTheme {
 
 export interface ModalFooterProps extends ComponentProps<"div">, ThemingProps<ModalFooterTheme> {}
 
-export const ModalFooter: FC<ModalFooterProps> = ({
+export function ModalFooter({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: ModalFooterProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, popup } = useModalContext();
 
   const provider = useThemeProvider();
@@ -38,6 +38,6 @@ export const ModalFooter: FC<ModalFooterProps> = ({
       {children}
     </div>
   );
-};
+}
 
 ModalFooter.displayName = "ModalFooter";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -20,7 +20,7 @@ export interface TimelineTitleProps extends ComponentProps<"h1">, ThemingProps<T
   as?: FlowbiteHeadingLevel;
 }
 
-export const TimelineTitle: FC<TimelineTitleProps> = ({
+export function TimelineTitle({
   as: Tag = "h3",
   children,
   className,
@@ -28,7 +28,7 @@ export const TimelineTitle: FC<TimelineTitleProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: TimelineTitleProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useTimelineContext();
   const { theme: itemTheme, clearTheme: itemClearTheme, applyTheme: itemApplyTheme } = useTimelineItemContext();
   const {
@@ -68,6 +68,6 @@ export const TimelineTitle: FC<TimelineTitleProps> = ({
       {children}
     </Tag>
   );
-};
+}
 
 TimelineTitle.displayName = "TimelineTitle";

@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import type { FC } from "react";
 import { HiHome } from "react-icons/hi";
 import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
@@ -88,15 +87,17 @@ describe("Components / Breadcrumb", () => {
   });
 });
 
-const TestBreadcrumb: FC = () => (
-  <Breadcrumb aria-label="test label">
-    <BreadcrumbItem href="#" icon={HiHome}>
-      Home
-    </BreadcrumbItem>
-    <BreadcrumbItem href="#">Projects</BreadcrumbItem>
-    <BreadcrumbItem icon={HiHome}>Flowbite React</BreadcrumbItem>
-  </Breadcrumb>
-);
+function TestBreadcrumb() {
+  return (
+    <Breadcrumb aria-label="test label">
+      <BreadcrumbItem href="#" icon={HiHome}>
+        Home
+      </BreadcrumbItem>
+      <BreadcrumbItem href="#">Projects</BreadcrumbItem>
+      <BreadcrumbItem icon={HiHome}>Flowbite React</BreadcrumbItem>
+    </Breadcrumb>
+  );
+}
 
 const breadcrumb = () => screen.getByRole("navigation");
 

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, ElementType, FC } from "react";
+import type { ComponentProps, ElementType } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -17,7 +17,7 @@ export interface FooterTitleProps extends ComponentProps<"h2">, ThemingProps<Foo
   title: string;
 }
 
-export const FooterTitle: FC<FooterTitleProps> = ({
+export function FooterTitle({
   as: Component = "h2",
   className,
   title,
@@ -25,7 +25,7 @@ export const FooterTitle: FC<FooterTitleProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: FooterTitleProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme.title, provider.theme?.footer?.title, customTheme],
@@ -38,6 +38,6 @@ export const FooterTitle: FC<FooterTitleProps> = ({
       {title}
     </Component>
   );
-};
+}
 
 FooterTitle.displayName = "FooterTitle";

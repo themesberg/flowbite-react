@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC, ReactElement, ReactNode } from "react";
+import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ScrollContainer from "../../helpers/drag-scroll";
 import { get } from "../../helpers/get";
@@ -61,7 +61,7 @@ export interface CarouselProps extends ComponentProps<"div">, ThemingProps<Carou
 
 export interface DefaultLeftRightControlProps extends ComponentProps<"div">, ThemingProps<CarouselTheme> {}
 
-export const Carousel: FC<CarouselProps> = ({
+export function Carousel({
   children,
   indicators = true,
   leftControl,
@@ -70,13 +70,13 @@ export const Carousel: FC<CarouselProps> = ({
   draggable = true,
   slideInterval,
   className,
-  onSlideChange = null,
+  onSlideChange,
   pauseOnHover = false,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: CarouselProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [carouselTheme, provider.theme?.carousel, customTheme],
@@ -213,9 +213,9 @@ export const Carousel: FC<CarouselProps> = ({
       )}
     </div>
   );
-};
+}
 
-const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, clearTheme, applyTheme }) => {
+function DefaultLeftControl({ theme: customTheme, clearTheme, applyTheme }: DefaultLeftRightControlProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [carouselTheme, provider.theme?.carousel, customTheme],
@@ -228,9 +228,9 @@ const DefaultLeftControl: FC<DefaultLeftRightControlProps> = ({ theme: customThe
       <ChevronLeftIcon className={theme.control.icon} />
     </span>
   );
-};
+}
 
-const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTheme, clearTheme, applyTheme }) => {
+function DefaultRightControl({ theme: customTheme, clearTheme, applyTheme }: DefaultLeftRightControlProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [carouselTheme, provider.theme?.carousel, customTheme],
@@ -243,6 +243,6 @@ const DefaultRightControl: FC<DefaultLeftRightControlProps> = ({ theme: customTh
       <ChevronRightIcon className={theme.control.icon} />
     </span>
   );
-};
+}
 
 Carousel.displayName = "Carousel";

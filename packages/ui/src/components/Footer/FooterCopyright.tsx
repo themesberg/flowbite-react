@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -20,7 +20,7 @@ export interface CopyrightProps extends ComponentProps<"div">, ThemingProps<Foot
   year?: number;
 }
 
-export const FooterCopyright: FC<CopyrightProps> = ({
+export function FooterCopyright({
   by,
   className,
   href,
@@ -29,7 +29,7 @@ export const FooterCopyright: FC<CopyrightProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: CopyrightProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme.copyright, provider.theme?.footer?.copyright, customTheme],
@@ -51,6 +51,6 @@ export const FooterCopyright: FC<CopyrightProps> = ({
       )}
     </div>
   );
-};
+}
 
 FooterCopyright.displayName = "FooterCopyright";

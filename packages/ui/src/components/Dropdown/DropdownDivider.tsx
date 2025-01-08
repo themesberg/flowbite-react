@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -15,13 +15,13 @@ export interface DropdownDividerTheme {
 
 export interface DropdownDividerProps extends ComponentProps<"div">, ThemingProps<DropdownDividerTheme> {}
 
-export const DropdownDivider: FC<DropdownDividerProps> = ({
+export function DropdownDivider({
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: DropdownDividerProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useDropdownContext();
 
   const provider = useThemeProvider();
@@ -32,6 +32,6 @@ export const DropdownDivider: FC<DropdownDividerProps> = ({
   );
 
   return <div className={twMerge(theme.divider, className)} {...props} />;
-};
+}
 
 DropdownDivider.displayName = "DropdownDivider";

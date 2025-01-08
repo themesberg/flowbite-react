@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -15,14 +15,14 @@ export interface AccordionComponentTheme {
 
 export interface AccordionContentProps extends ComponentProps<"div">, ThemingProps<AccordionComponentTheme> {}
 
-export const AccordionContent: FC<AccordionContentProps> = ({
+export function AccordionContent({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: AccordionContentProps) {
   const { isOpen } = useAccordionContext();
 
   const provider = useThemeProvider();
@@ -42,6 +42,6 @@ export const AccordionContent: FC<AccordionContentProps> = ({
       {children}
     </div>
   );
-};
+}
 
 AccordionContent.displayName = "AccordionContent";

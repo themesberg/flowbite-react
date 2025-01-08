@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import type { FC } from "react";
 import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
 import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
@@ -106,7 +105,7 @@ describe("Components / Timeline", () => {
   });
 });
 
-const TestTimelineNoIcon: FC<TimelineProps> = ({ horizontal, className }): JSX.Element => {
+function TestTimelineNoIcon({ horizontal, className }: TimelineProps): JSX.Element {
   return (
     <Timeline horizontal={horizontal} className={className}>
       <TimelineItem>
@@ -122,9 +121,9 @@ const TestTimelineNoIcon: FC<TimelineProps> = ({ horizontal, className }): JSX.E
       </TimelineItem>
     </Timeline>
   );
-};
+}
 
-const TestTimelineWithIcon: FC<TimelineProps> = ({ horizontal, className }): JSX.Element => {
+function TestTimelineWithIcon({ horizontal, className }: TimelineProps): JSX.Element {
   return (
     <Timeline horizontal={horizontal} className={className}>
       <TimelineItem>
@@ -140,7 +139,7 @@ const TestTimelineWithIcon: FC<TimelineProps> = ({ horizontal, className }): JSX
       </TimelineItem>
     </Timeline>
   );
-};
+}
 
 const IconSVG = () => (
   <svg

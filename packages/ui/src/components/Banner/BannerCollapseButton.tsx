@@ -1,12 +1,12 @@
 "use client";
 
-import type { FC, MouseEventHandler } from "react";
+import type { MouseEventHandler } from "react";
 import type { ButtonProps } from "../Button";
 import { Button } from "../Button";
 
 export type BannerCollapseButtonProps = ButtonProps;
 
-export const BannerCollapseButton: FC<BannerCollapseButtonProps> = ({ children, ...props }) => {
+export function BannerCollapseButton({ children, ...props }: BannerCollapseButtonProps) {
   const onClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     const collapseButton = event.target as HTMLButtonElement;
     const parentBanner = collapseButton.closest('[role="banner"]');
@@ -19,6 +19,6 @@ export const BannerCollapseButton: FC<BannerCollapseButtonProps> = ({ children, 
       {children}
     </Button>
   );
-};
+}
 
 BannerCollapseButton.displayName = "BannerCollapseButton";

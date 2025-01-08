@@ -1,6 +1,5 @@
 "use client";
 
-import type { FC } from "react";
 import { twMerge } from "../../../helpers/tailwind-merge";
 import { useDatePickerContext } from "../DatepickerContext";
 import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateEqual, isDateInRange } from "../helpers";
@@ -20,7 +19,7 @@ export interface DatepickerViewsDaysTheme {
   };
 }
 
-export const DatepickerViewsDays: FC = () => {
+export function DatepickerViewsDays() {
   const {
     theme: rootTheme,
     weekStart,
@@ -77,4 +76,6 @@ export const DatepickerViewsDays: FC = () => {
       </div>
     </>
   );
-};
+}
+
+DatepickerViewsDays.displayName = "DatepickerViewsDays";

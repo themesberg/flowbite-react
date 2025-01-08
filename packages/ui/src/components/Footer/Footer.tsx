@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -35,7 +35,7 @@ export interface FooterProps extends ComponentProps<"footer">, ThemingProps<Foot
   container?: boolean;
 }
 
-export const Footer: FC<FooterProps> = ({
+export function Footer({
   bgDark = false,
   children,
   className,
@@ -44,7 +44,7 @@ export const Footer: FC<FooterProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: FooterProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme, provider.theme?.footer, customTheme],
@@ -61,6 +61,6 @@ export const Footer: FC<FooterProps> = ({
       {children}
     </footer>
   );
-};
+}
 
 Footer.displayName = "Footer";

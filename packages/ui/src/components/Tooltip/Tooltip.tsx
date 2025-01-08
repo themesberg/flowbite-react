@@ -1,7 +1,7 @@
 "use client";
 
 import type { Placement } from "@floating-ui/core";
-import type { ComponentProps, FC, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
@@ -23,7 +23,7 @@ export interface TooltipProps extends Omit<ComponentProps<"div">, "content" | "s
 /**
  * @see https://floating-ui.com/docs/react-dom-interactions
  */
-export const Tooltip: FC<TooltipProps> = ({
+export function Tooltip({
   animation = "duration-300",
   arrow = true,
   children,
@@ -36,7 +36,7 @@ export const Tooltip: FC<TooltipProps> = ({
   applyTheme,
   trigger = "hover",
   ...props
-}) => {
+}: TooltipProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [tooltipTheme, provider.theme?.tooltip, customTheme],
@@ -59,6 +59,6 @@ export const Tooltip: FC<TooltipProps> = ({
       {children}
     </Floating>
   );
-};
+}
 
 Tooltip.displayName = "Tooltip";

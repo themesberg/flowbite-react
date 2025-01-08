@@ -14,14 +14,14 @@ export interface AvatarGroupTheme {
 
 export interface AvatarGroupProps extends ComponentProps<"div">, ThemingProps<AvatarGroupTheme> {}
 
-export const AvatarGroup: React.FC<AvatarGroupProps> = ({
+export function AvatarGroup({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: AvatarGroupProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [avatarTheme.group, provider.theme?.avatar?.group, customTheme],
@@ -34,6 +34,6 @@ export const AvatarGroup: React.FC<AvatarGroupProps> = ({
       {children}
     </div>
   );
-};
+}
 
 AvatarGroup.displayName = "AvatarGroup";

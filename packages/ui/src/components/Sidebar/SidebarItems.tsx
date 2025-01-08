@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -15,14 +15,14 @@ export interface SidebarItemsTheme {
 
 export interface SidebarItemsProps extends ComponentProps<"div">, ThemingProps<SidebarItemsTheme> {}
 
-export const SidebarItems: FC<SidebarItemsProps> = ({
+export function SidebarItems({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: SidebarItemsProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useSidebarContext();
 
   const provider = useThemeProvider();
@@ -37,6 +37,6 @@ export const SidebarItems: FC<SidebarItemsProps> = ({
       {children}
     </div>
   );
-};
+}
 
 SidebarItems.displayName = "SidebarItems";

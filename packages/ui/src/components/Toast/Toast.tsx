@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { useState } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
@@ -37,7 +37,7 @@ const durationClasses: Record<Duration, string> = {
   1000: "duration-1000",
 };
 
-export const Toast: FC<ToastProps> = ({
+export function Toast({
   children,
   className,
   duration = 300,
@@ -45,7 +45,7 @@ export const Toast: FC<ToastProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: ToastProps) {
   const [isClosed, setIsClosed] = useState(false);
   const [isRemoved, setIsRemoved] = useState(false);
 
@@ -83,6 +83,6 @@ export const Toast: FC<ToastProps> = ({
       </div>
     </ToastContext.Provider>
   );
-};
+}
 
 Toast.displayName = "Toast";

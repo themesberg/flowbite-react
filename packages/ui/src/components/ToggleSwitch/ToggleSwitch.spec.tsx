@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { FC } from "react";
 import { useState } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
@@ -67,7 +66,7 @@ describe("Components / Toggle switch", () => {
       const handleChange = vi.fn();
       const user = userEvent.setup();
 
-      const TestToggleSwitch: FC = () => {
+      function TestToggleSwitch() {
         const [state, setState] = useState(false);
 
         return (
@@ -81,7 +80,7 @@ describe("Components / Toggle switch", () => {
             }}
           />
         );
-      };
+      }
       render(<TestToggleSwitch />);
 
       await user.tab();

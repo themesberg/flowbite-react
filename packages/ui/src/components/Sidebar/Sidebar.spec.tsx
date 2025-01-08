@@ -1,6 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { FC } from "react";
 import { HiChartPie, HiInbox, HiShoppingBag } from "react-icons/hi";
 import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
@@ -339,7 +338,7 @@ describe("Theme", () => {
   });
 });
 
-const TestSidebar: FC<SidebarProps> = ({ ...props }) => (
+const TestSidebar = (props: SidebarProps) => (
   <Sidebar {...props}>
     <SidebarLogo href="#" img="favicon.svg" imgAlt="Flowbite logo">
       Flowbite

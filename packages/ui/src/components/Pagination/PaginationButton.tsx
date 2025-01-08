@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC, ReactEventHandler, ReactNode } from "react";
+import type { ComponentProps, ReactEventHandler, ReactNode } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -25,7 +25,7 @@ export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, "
   disabled?: boolean;
 }
 
-export const PaginationButton: FC<PaginationButtonProps> = ({
+export function PaginationButton({
   active,
   children,
   className,
@@ -34,7 +34,7 @@ export const PaginationButton: FC<PaginationButtonProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: PaginationButtonProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [paginationTheme, provider.theme?.pagination, customTheme],
@@ -52,11 +52,11 @@ export const PaginationButton: FC<PaginationButtonProps> = ({
       {children}
     </button>
   );
-};
+}
 
 PaginationButton.displayName = "PaginationButton";
 
-export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
+export function PaginationNavigation({
   children,
   className,
   onClick,
@@ -65,7 +65,7 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: PaginationPrevButtonProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [paginationTheme, provider.theme?.pagination, customTheme],
@@ -84,6 +84,6 @@ export const PaginationNavigation: FC<PaginationPrevButtonProps> = ({
       {children}
     </button>
   );
-};
+}
 
 PaginationNavigation.displayName = "PaginationNavigation";

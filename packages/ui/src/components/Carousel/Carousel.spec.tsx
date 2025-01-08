@@ -1,6 +1,5 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import Image from "next/image";
-import type { FC } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { CarouselProps } from "./Carousel";
 import { Carousel } from "./Carousel";
@@ -132,7 +131,7 @@ describe("Components / Carousel", () => {
 const activeIndicatorClasses = "bg-white dark:bg-gray-800";
 const nonActiveIndicatorClasses = "bg-white/50 hover:bg-white dark:bg-gray-800/50 dark:hover:bg-gray-800";
 
-const TestCarousel: FC<CarouselProps> = (props) => (
+const TestCarousel = (props: CarouselProps) => (
   <Carousel {...props}>
     <Image alt="" src="https://flowbite.com/docs/images/carousel/carousel-1.svg" height="100" width="100" />
     <Image alt="" src="https://flowbite.com/docs/images/carousel/carousel-2.svg" height="100" width="100" />

@@ -1,6 +1,5 @@
 "use client";
 
-import type { FC } from "react";
 import { twMerge } from "../../../helpers/tailwind-merge";
 import { useDatePickerContext } from "../DatepickerContext";
 import { addYears, isDateInDecade, isDateInRange, startOfYearPeriod, Views } from "../helpers";
@@ -16,7 +15,7 @@ export interface DatepickerViewsDecadesTheme {
   };
 }
 
-export const DatepickerViewsDecades: FC = () => {
+export function DatepickerViewsDecades() {
   const { theme: rootTheme, viewDate, selectedDate, minDate, maxDate, setViewDate, setView } = useDatePickerContext();
 
   const theme = rootTheme.views.decades;
@@ -56,4 +55,6 @@ export const DatepickerViewsDecades: FC = () => {
       })}
     </div>
   );
-};
+}
+
+DatepickerViewsDecades.displayName = "DatepickerViewsDecades";

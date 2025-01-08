@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -40,7 +40,7 @@ export interface SpinnerProps extends Omit<ComponentProps<"span">, "color">, The
   size?: DynamicStringEnumKeysOf<SpinnerSizes>;
 }
 
-export const Spinner: FC<SpinnerProps> = ({
+export function Spinner({
   className,
   color = "info",
   light,
@@ -49,7 +49,7 @@ export const Spinner: FC<SpinnerProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: SpinnerProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [spinnerTheme, provider.theme?.spinner, customTheme],
@@ -82,6 +82,6 @@ export const Spinner: FC<SpinnerProps> = ({
       </svg>
     </span>
   );
-};
+}
 
 Spinner.displayName = "Spinner";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, ElementType, FC } from "react";
+import type { ComponentProps, ElementType } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -18,7 +18,7 @@ export interface FooterLinkProps extends ComponentProps<"a">, ThemingProps<Foote
   href: string;
 }
 
-export const FooterLink: FC<FooterLinkProps> = ({
+export function FooterLink({
   as: Component = "a",
   children,
   className,
@@ -27,7 +27,7 @@ export const FooterLink: FC<FooterLinkProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: FooterLinkProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme.groupLink.link, provider.theme?.footer?.groupLink?.link, customTheme],
@@ -42,6 +42,6 @@ export const FooterLink: FC<FooterLinkProps> = ({
       </Component>
     </li>
   );
-};
+}
 
 FooterLink.displayName = "FooterLink";

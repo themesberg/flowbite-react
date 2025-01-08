@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, ElementType, FC } from "react";
+import type { ComponentProps, ElementType } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -18,7 +18,7 @@ export interface NavbarBrandProps extends ComponentProps<"a">, Record<string, un
   href?: string;
 }
 
-export const NavbarBrand: FC<NavbarBrandProps> = ({
+export function NavbarBrand({
   as: Component = "a",
   children,
   className,
@@ -26,7 +26,7 @@ export const NavbarBrand: FC<NavbarBrandProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: NavbarBrandProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useNavbarContext();
 
   const provider = useThemeProvider();
@@ -41,6 +41,6 @@ export const NavbarBrand: FC<NavbarBrandProps> = ({
       {children}
     </Component>
   );
-};
+}
 
 NavbarBrand.displayName = "NavbarBrand";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -20,14 +20,14 @@ export interface ListGroupRootTheme {
 
 export interface ListGroupProps extends ComponentProps<"ul">, ThemingProps<ListGroupTheme> {}
 
-export const ListGroup: FC<ListGroupProps> = ({
+export function ListGroup({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: ListGroupProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [listGroupTheme.root, provider.theme?.listGroup?.root, customTheme],
@@ -40,6 +40,6 @@ export const ListGroup: FC<ListGroupProps> = ({
       {children}
     </ul>
   );
-};
+}
 
 ListGroup.displayName = "ListGroup";

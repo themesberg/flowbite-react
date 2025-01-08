@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC, PropsWithChildren } from "react";
+import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -13,14 +13,14 @@ export interface FooterIconTheme {
   size: string;
 }
 
-export interface FooterIconProps extends PropsWithChildren, ThemingProps<FooterIconTheme> {
+type GenericLinkSvgProps = ComponentProps<"a"> & ComponentProps<"svg">;
+
+export interface FooterIconProps extends GenericLinkSvgProps, ThemingProps<FooterIconTheme> {
   ariaLabel?: string;
-  className?: string;
-  href?: string;
   icon: FC<ComponentProps<"svg">>;
 }
 
-export const FooterIcon: FC<FooterIconProps & ComponentProps<"a"> & ComponentProps<"svg">> = ({
+export function FooterIcon({
   ariaLabel,
   className,
   href,
@@ -29,7 +29,7 @@ export const FooterIcon: FC<FooterIconProps & ComponentProps<"a"> & ComponentPro
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: FooterIconProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme.icon, provider.theme?.footer?.icon, customTheme],
@@ -54,6 +54,6 @@ export const FooterIcon: FC<FooterIconProps & ComponentProps<"a"> & ComponentPro
       )}
     </div>
   );
-};
+}
 
 FooterIcon.displayName = "FooterIcon";

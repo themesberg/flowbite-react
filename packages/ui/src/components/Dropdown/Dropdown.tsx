@@ -105,7 +105,7 @@ const Trigger = ({
   );
 };
 
-export const Dropdown: FC<DropdownProps> = ({
+export function Dropdown({
   children,
   className,
   dismissOnClick = true,
@@ -115,7 +115,7 @@ export const Dropdown: FC<DropdownProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: DropdownProps) {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -235,6 +235,6 @@ export const Dropdown: FC<DropdownProps> = ({
       )}
     </DropdownContext.Provider>
   );
-};
+}
 
 Dropdown.displayName = "Dropdown";

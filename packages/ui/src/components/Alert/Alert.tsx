@@ -35,7 +35,7 @@ export interface AlertProps extends Omit<ComponentProps<"div">, "color">, Themin
   withBorderAccent?: boolean;
 }
 
-export const Alert: FC<AlertProps> = ({
+export function Alert({
   additionalContent,
   children,
   className,
@@ -48,7 +48,7 @@ export const Alert: FC<AlertProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: AlertProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [alertTheme, provider.theme?.alert, customTheme],
@@ -85,6 +85,6 @@ export const Alert: FC<AlertProps> = ({
       {additionalContent && <div>{additionalContent}</div>}
     </div>
   );
-};
+}
 
 Alert.displayName = "Alert";

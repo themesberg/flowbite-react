@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { useEffect, useId } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
@@ -39,7 +39,7 @@ export interface DrawerProps extends ComponentProps<"div">, ThemingProps<DrawerT
   position?: "top" | "right" | "bottom" | "left";
 }
 
-export const Drawer: FC<DrawerProps> = ({
+export function Drawer({
   backdrop = true,
   children,
   className,
@@ -51,7 +51,7 @@ export const Drawer: FC<DrawerProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: DrawerProps) {
   const id = useId();
 
   const provider = useThemeProvider();
@@ -94,6 +94,6 @@ export const Drawer: FC<DrawerProps> = ({
       {isOpen && backdrop && <div onClick={() => onClose()} className={theme.root.backdrop} />}
     </DrawerContext.Provider>
   );
-};
+}
 
 Drawer.displayName = "Drawer";

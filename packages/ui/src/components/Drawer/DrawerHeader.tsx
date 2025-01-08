@@ -30,7 +30,7 @@ export interface DrawerHeaderProps
   titleIcon?: FC<ComponentProps<"svg">>;
 }
 
-export const DrawerHeader: FC<DrawerHeaderProps> = ({
+export function DrawerHeader({
   children,
   className,
   closeIcon: CloseIcon = DefaultCloseIcon,
@@ -40,7 +40,7 @@ export const DrawerHeader: FC<DrawerHeaderProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: DrawerHeaderProps) {
   const id = useId();
 
   const {
@@ -74,6 +74,6 @@ export const DrawerHeader: FC<DrawerHeaderProps> = ({
       </span>
     </div>
   );
-};
+}
 
 DrawerHeader.displayName = "DrawerHeader";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC, PropsWithChildren } from "react";
+import type { ComponentProps, PropsWithChildren } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -40,7 +40,7 @@ export interface ListProps
   unstyled?: boolean;
 }
 
-export const List: FC<ListProps> = ({
+export function List({
   children,
   className,
   horizontal,
@@ -51,7 +51,7 @@ export const List: FC<ListProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: ListProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [listTheme.root, provider.theme?.list?.root, customTheme],
@@ -75,6 +75,6 @@ export const List: FC<ListProps> = ({
       {children}
     </Component>
   );
-};
+}
 
 List.displayName = "List";

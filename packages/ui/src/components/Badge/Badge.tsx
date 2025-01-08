@@ -36,7 +36,7 @@ export interface BadgeProps extends Omit<ComponentProps<"span">, "color">, Themi
   size?: DynamicStringEnumKeysOf<BadgeSizes>;
 }
 
-export const Badge: FC<BadgeProps> = ({
+export function Badge({
   children,
   color = "info",
   href,
@@ -47,7 +47,7 @@ export const Badge: FC<BadgeProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: BadgeProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [badgeTheme, provider.theme?.badge, customTheme],
@@ -55,22 +55,24 @@ export const Badge: FC<BadgeProps> = ({
     [get(provider.applyTheme, "badge"), applyTheme],
   );
 
-  const Content: FC = () => (
-    <span
-      className={twMerge(
-        theme.root.base,
-        theme.root.color[color],
-        theme.root.size[size],
-        theme.icon[Icon ? "on" : "off"],
-        className,
-      )}
-      data-testid="flowbite-badge"
-      {...props}
-    >
-      {Icon && <Icon aria-hidden className={theme.icon.size[size]} data-testid="flowbite-badge-icon" />}
-      {children && <span>{children}</span>}
-    </span>
-  );
+  function Content() {
+    return (
+      <span
+        className={twMerge(
+          theme.root.base,
+          theme.root.color[color],
+          theme.root.size[size],
+          theme.icon[Icon ? "on" : "off"],
+          className,
+        )}
+        data-testid="flowbite-badge"
+        {...props}
+      >
+        {Icon && <Icon aria-hidden className={theme.icon.size[size]} data-testid="flowbite-badge-icon" />}
+        {children && <span>{children}</span>}
+      </span>
+    );
+  }
 
   return href ? (
     <a className={theme.root.href} href={href}>
@@ -79,6 +81,6 @@ export const Badge: FC<BadgeProps> = ({
   ) : (
     <Content />
   );
-};
+}
 
 Badge.displayName = "Badge";

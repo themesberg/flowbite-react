@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC, PropsWithChildren } from "react";
+import type { ComponentProps, FC } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -20,15 +20,14 @@ export interface ListGroupItemTheme {
   };
 }
 
-export interface ListGroupItemProps extends PropsWithChildren, ThemingProps<ListGroupItemTheme> {
+type GenericLinkButtonProps = ComponentProps<"a"> & ComponentProps<"button">;
+
+export interface ListGroupItemProps extends GenericLinkButtonProps, ThemingProps<ListGroupItemTheme> {
   active?: boolean;
-  disabled?: boolean;
-  href?: string;
   icon?: FC<ComponentProps<"svg">>;
-  onClick?: () => void;
 }
 
-export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & ComponentProps<"button">> = ({
+export function ListGroupItem({
   active: isActive,
   children,
   className,
@@ -40,7 +39,7 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & Compon
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: ListGroupItemProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [listGroupTheme.item, provider.theme?.listGroup?.item, customTheme],
@@ -71,6 +70,6 @@ export const ListGroupItem: FC<ListGroupItemProps & ComponentProps<"a"> & Compon
       </Component>
     </li>
   );
-};
+}
 
 ListGroupItem.displayName = "ListGroupItem";

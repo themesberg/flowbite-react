@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState, type ComponentProps, type FC } from "react";
+import { useEffect, useId, useRef, useState, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -16,14 +16,14 @@ export interface MegaMenuDropdownToggleProps
   extends ComponentProps<"button">,
     ThemingProps<MegaMenuDropdownToggleTheme> {}
 
-export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
+export function MegaMenuDropdownToggle({
   children,
   className,
   theme: customTheme,
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: MegaMenuDropdownToggleProps) {
   const id = useId();
   const ref = useRef<HTMLButtonElement>(null);
   const [controls, setControls] = useState<string | undefined>(undefined);
@@ -70,6 +70,6 @@ export const MegaMenuDropdownToggle: FC<MegaMenuDropdownToggleProps> = ({
       {children}
     </button>
   );
-};
+}
 
 MegaMenuDropdownToggle.displayName = "MegaMenuDropdownToggle";

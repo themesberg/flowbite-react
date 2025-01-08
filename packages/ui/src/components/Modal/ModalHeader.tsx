@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useLayoutEffect, type ComponentProps, type ElementType, type FC } from "react";
+import { useId, useLayoutEffect, type ComponentProps, type ElementType } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -24,7 +24,7 @@ export interface ModalHeaderProps extends ComponentProps<"div">, ThemingProps<Mo
   as?: ElementType;
 }
 
-export const ModalHeader: FC<ModalHeaderProps> = ({
+export function ModalHeader({
   as: Component = "h3",
   children,
   className,
@@ -33,7 +33,7 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: ModalHeaderProps) {
   const innerHeaderId = useId();
   const headerId = id || innerHeaderId;
 
@@ -69,6 +69,6 @@ export const ModalHeader: FC<ModalHeaderProps> = ({
       </button>
     </div>
   );
-};
+}
 
 ModalHeader.displayName = "ModalHeader";

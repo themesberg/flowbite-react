@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { omit } from "../../helpers/omit";
 import { resolveTheme } from "../../helpers/resolve-theme";
@@ -44,7 +44,7 @@ export type CardProps = (
 ) &
   CommonCardProps;
 
-export const Card: FC<CardProps> = (props) => {
+export function Card(props: CardProps) {
   const { children, className, horizontal, href, theme: customTheme, clearTheme, applyTheme } = props;
   const Component = typeof href === "undefined" ? "div" : "a";
   const theirProps = removeCustomProps(props);
@@ -72,11 +72,11 @@ export const Card: FC<CardProps> = (props) => {
       <div className={theme.root.children}>{children}</div>
     </Component>
   );
-};
+}
 
 Card.displayName = "Card";
 
-const Image: FC<CardProps> = ({ theme: customTheme, clearTheme, applyTheme, ...props }) => {
+function Image({ theme: customTheme, clearTheme, applyTheme, ...props }: CardProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [cardTheme, provider.theme?.card, customTheme],
@@ -100,7 +100,7 @@ const Image: FC<CardProps> = ({ theme: customTheme, clearTheme, applyTheme, ...p
   }
 
   return null;
-};
+}
 
 const removeCustomProps = omit([
   "children",

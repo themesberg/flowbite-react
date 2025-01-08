@@ -1,6 +1,5 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle, type AccordionProps } from "flowbite-react";
-import type { ComponentProps, FC } from "react";
 import { HiChevronDown, HiOutlineArrowCircleDown } from "react-icons/hi";
 
 export default {
@@ -12,10 +11,8 @@ export default {
   },
 } as Meta;
 
-const icon: FC<ComponentProps<"svg">> = HiChevronDown;
-
 const Template: StoryFn<AccordionProps> = (args) => (
-  <Accordion arrowIcon={icon} {...args}>
+  <Accordion arrowIcon={HiChevronDown} {...args}>
     <AccordionPanel>
       <AccordionTitle>What is Flowbite?</AccordionTitle>
       <AccordionContent>

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -22,7 +22,7 @@ export interface RatingAdvancedProps extends ComponentProps<"div">, ThemingProps
   percentFilled?: number;
 }
 
-export const RatingAdvanced: FC<RatingAdvancedProps> = ({
+export function RatingAdvanced({
   children,
   className,
   percentFilled = 0,
@@ -30,7 +30,7 @@ export const RatingAdvanced: FC<RatingAdvancedProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: RatingAdvancedProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [ratingAdvancedTheme, provider.theme?.ratingAdvanced, customTheme],
@@ -51,6 +51,6 @@ export const RatingAdvanced: FC<RatingAdvancedProps> = ({
       <span className={theme.progress.label}>{`${percentFilled}%`}</span>
     </div>
   );
-};
+}
 
 RatingAdvanced.displayName = "RatingAdvanced";

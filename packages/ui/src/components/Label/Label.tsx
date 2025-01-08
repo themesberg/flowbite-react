@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -30,7 +30,7 @@ export interface LabelProps extends Omit<ComponentProps<"label">, "color">, Them
   value?: string;
 }
 
-export const Label: FC<LabelProps> = ({
+export function Label({
   children,
   className,
   color = "default",
@@ -40,7 +40,7 @@ export const Label: FC<LabelProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: LabelProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [labelTheme, provider.theme?.label, customTheme],
@@ -57,6 +57,6 @@ export const Label: FC<LabelProps> = ({
       {value ?? children ?? ""}
     </label>
   );
-};
+}
 
 Label.displayName = "Label";

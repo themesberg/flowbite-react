@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC, ReactNode } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -53,7 +53,7 @@ export interface PaginationProps extends ComponentProps<"nav">, ThemingProps<Pag
   totalPages: number;
 }
 
-export const Pagination: FC<PaginationProps> = ({
+export function Pagination({
   className,
   currentPage,
   layout = "pagination",
@@ -67,7 +67,7 @@ export const Pagination: FC<PaginationProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: PaginationProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [paginationTheme, provider.theme?.pagination, customTheme],
@@ -130,6 +130,6 @@ export const Pagination: FC<PaginationProps> = ({
       </ul>
     </nav>
   );
-};
+}
 
 Pagination.displayName = "Pagination";

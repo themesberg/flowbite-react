@@ -26,7 +26,7 @@ export interface RatingStarProps extends ComponentProps<"svg">, ThemingProps<Rat
   starIcon?: FC<ComponentProps<"svg">>;
 }
 
-export const RatingStar: FC<RatingStarProps> = ({
+export function RatingStar({
   className,
   filled = true,
   starIcon: Icon = StarIcon,
@@ -34,7 +34,7 @@ export const RatingStar: FC<RatingStarProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: RatingStarProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, size = "sm" } = useRatingContext();
 
   const provider = useThemeProvider();
@@ -51,6 +51,6 @@ export const RatingStar: FC<RatingStarProps> = ({
       {...props}
     />
   );
-};
+}
 
 RatingStar.displayName = "RatingStar";

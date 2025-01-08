@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC, PropsWithChildren } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -14,15 +14,14 @@ export interface FooterBrandTheme {
   span: string;
 }
 
-export interface FooterBrandProps extends PropsWithChildren, ThemingProps<FooterBrandTheme> {
-  alt?: string;
-  className?: string;
-  href?: string;
+type GenericLinkImageProps = ComponentProps<"a"> & ComponentProps<"img">;
+
+export interface FooterBrandProps extends GenericLinkImageProps, ThemingProps<FooterBrandTheme> {
   name?: string;
   src: string;
 }
 
-export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentProps<"img">> = ({
+export function FooterBrand({
   alt,
   className,
   children,
@@ -33,7 +32,7 @@ export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentP
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: FooterBrandProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme.brand, provider.theme?.footer?.brand, customTheme],
@@ -62,6 +61,6 @@ export const FooterBrand: FC<FooterBrandProps & ComponentProps<"a"> & ComponentP
       )}
     </div>
   );
-};
+}
 
 FooterBrand.displayName = "FooterBrand";

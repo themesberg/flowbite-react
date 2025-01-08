@@ -26,7 +26,7 @@ export interface AccordionTitleProps extends ComponentProps<"button">, ThemingPr
   as?: FlowbiteHeadingLevel;
 }
 
-export const AccordionTitle: FC<AccordionTitleProps> = ({
+export function AccordionTitle({
   as: Heading = "h2",
   children,
   className,
@@ -34,7 +34,7 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: AccordionTitleProps) {
   const { arrowIcon: ArrowIcon, flush, isOpen, setOpen } = useAccordionContext();
   const onClick = () => typeof setOpen !== "undefined" && setOpen();
 
@@ -64,6 +64,6 @@ export const AccordionTitle: FC<AccordionTitleProps> = ({
       )}
     </button>
   );
-};
+}
 
 AccordionTitle.displayName = "AccordionTitle";

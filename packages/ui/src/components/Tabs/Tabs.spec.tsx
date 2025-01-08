@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { FC } from "react";
 import { createRef, forwardRef } from "react";
 import { act } from "react-dom/test-utils";
 import { HiAdjustments, HiClipboardList, HiUserCircle } from "react-icons/hi";
@@ -184,45 +183,49 @@ const TestConditionalTabs = forwardRef<TabsRef, TestTabsProps>(({ condition }) =
   </Tabs>
 ));
 
-const TestTabsDifferentActiveItem: FC = () => (
-  <Tabs aria-label="Test tabs">
-    <TabItem title="Profile" icon={HiUserCircle}>
-      Profile content
-    </TabItem>
-    <TabItem active title="Dashboard" icon={MdDashboard}>
-      Dashboard content
-    </TabItem>
-    <TabItem title="Settings" icon={HiAdjustments}>
-      Settings content
-    </TabItem>
-    <TabItem title="Contacts" icon={HiClipboardList}>
-      Contacts content
-    </TabItem>
-    <TabItem disabled title="Disabled">
-      Disabled content
-    </TabItem>
-  </Tabs>
-);
+function TestTabsDifferentActiveItem() {
+  return (
+    <Tabs aria-label="Test tabs">
+      <TabItem title="Profile" icon={HiUserCircle}>
+        Profile content
+      </TabItem>
+      <TabItem active title="Dashboard" icon={MdDashboard}>
+        Dashboard content
+      </TabItem>
+      <TabItem title="Settings" icon={HiAdjustments}>
+        Settings content
+      </TabItem>
+      <TabItem title="Contacts" icon={HiClipboardList}>
+        Contacts content
+      </TabItem>
+      <TabItem disabled title="Disabled">
+        Disabled content
+      </TabItem>
+    </Tabs>
+  );
+}
 
-const TestTabsLastActiveItem: FC = () => (
-  <Tabs aria-label="Test tabs">
-    <TabItem title="Profile" icon={HiUserCircle}>
-      Profile content
-    </TabItem>
-    <TabItem title="Dashboard" icon={MdDashboard}>
-      Dashboard content
-    </TabItem>
-    <TabItem title="Settings" icon={HiAdjustments}>
-      Settings content
-    </TabItem>
-    <TabItem title="Contacts" icon={HiClipboardList}>
-      Contacts content
-    </TabItem>
-    <TabItem active title="Still working">
-      Completely functional content
-    </TabItem>
-  </Tabs>
-);
+function TestTabsLastActiveItem() {
+  return (
+    <Tabs aria-label="Test tabs">
+      <TabItem title="Profile" icon={HiUserCircle}>
+        Profile content
+      </TabItem>
+      <TabItem title="Dashboard" icon={MdDashboard}>
+        Dashboard content
+      </TabItem>
+      <TabItem title="Settings" icon={HiAdjustments}>
+        Settings content
+      </TabItem>
+      <TabItem title="Contacts" icon={HiClipboardList}>
+        Contacts content
+      </TabItem>
+      <TabItem active title="Still working">
+        Completely functional content
+      </TabItem>
+    </Tabs>
+  );
+}
 
 const tabs = () => screen.queryAllByRole("tab");
 

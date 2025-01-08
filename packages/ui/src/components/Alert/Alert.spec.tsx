@@ -1,6 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { FC } from "react";
 import { useState } from "react";
 import { HiEye, HiHeart, HiInformationCircle } from "react-icons/hi";
 import { describe, expect, it, vi } from "vitest";
@@ -155,7 +154,7 @@ describe("Components / Alert", () => {
   });
 });
 
-const TestAlert: FC<AlertProps> = (props: AlertProps) => {
+function TestAlert(props: AlertProps) {
   const [isDismissed, setDismissed] = useState(false);
 
   return (
@@ -193,7 +192,7 @@ const TestAlert: FC<AlertProps> = (props: AlertProps) => {
       {isDismissed ? "dismissed" : "waiting"}
     </Alert>
   );
-};
+}
 
 const alert = () => screen.getByRole("alert");
 

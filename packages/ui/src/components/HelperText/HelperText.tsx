@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -27,7 +27,7 @@ export interface HelperTextProps extends Omit<ComponentProps<"p">, "color">, The
   value?: string;
 }
 
-export const HelperText: FC<HelperTextProps> = ({
+export function HelperText({
   children,
   className,
   color = "default",
@@ -36,7 +36,7 @@ export const HelperText: FC<HelperTextProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: HelperTextProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [helperTextTheme, provider.theme?.helperText, customTheme],
@@ -49,6 +49,6 @@ export const HelperText: FC<HelperTextProps> = ({
       {value ?? children ?? ""}
     </p>
   );
-};
+}
 
 HelperText.displayName = "HelperText";

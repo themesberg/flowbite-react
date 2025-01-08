@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -27,7 +27,7 @@ export interface SidebarCTAColors
   [key: string]: string;
 }
 
-export const SidebarCTA: FC<SidebarCTAProps> = ({
+export function SidebarCTA({
   children,
   color = "info",
   className,
@@ -35,7 +35,7 @@ export const SidebarCTA: FC<SidebarCTAProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: SidebarCTAProps) {
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
 
   const provider = useThemeProvider();
@@ -55,6 +55,6 @@ export const SidebarCTA: FC<SidebarCTAProps> = ({
       {children}
     </div>
   );
-};
+}
 
 SidebarCTA.displayName = "SidebarCTA";

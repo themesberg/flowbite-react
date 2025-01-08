@@ -1,6 +1,5 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import type { FC } from "react";
 import { HiOutlineArrowCircleDown } from "react-icons/hi";
 import { beforeEach, describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
@@ -269,7 +268,7 @@ describe("Components / Accordion", () => {
   });
 });
 
-const TestAccordion: FC<Omit<AccordionProps, "children">> = (props) => (
+const TestAccordion = (props: Omit<AccordionProps, "children">) => (
   <Accordion arrowIcon={HiOutlineArrowCircleDown} {...props}>
     <AccordionPanel>
       <AccordionTitle as="h3" className="text-cyan-300" id="accordion-title">

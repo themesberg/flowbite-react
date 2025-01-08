@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -14,13 +14,7 @@ export interface FooterDividerTheme {
 
 export interface FooterDividerProps extends ComponentProps<"hr">, ThemingProps<FooterDividerTheme> {}
 
-export const FooterDivider: FC<FooterDividerProps> = ({
-  className,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}) => {
+export function FooterDivider({ className, theme: customTheme, clearTheme, applyTheme, ...props }: FooterDividerProps) {
   const provider = useThemeProvider();
   const theme = resolveTheme(
     [footerTheme.divider, provider.theme?.footer?.divider, customTheme],
@@ -29,6 +23,6 @@ export const FooterDivider: FC<FooterDividerProps> = ({
   );
 
   return <hr data-testid="footer-divider" className={twMerge(theme.base, className)} {...props} />;
-};
+}
 
 FooterDivider.displayName = "FooterDivider";

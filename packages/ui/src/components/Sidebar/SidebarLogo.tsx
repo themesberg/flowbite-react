@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 import { useId } from "react";
 import { get } from "../../helpers/get";
 import { resolveTheme } from "../../helpers/resolve-theme";
@@ -23,7 +23,7 @@ export interface SidebarLogoProps extends ComponentProps<"a">, ThemingProps<Side
   imgAlt?: string;
 }
 
-export const SidebarLogo: FC<SidebarLogoProps> = ({
+export function SidebarLogo({
   children,
   className,
   href,
@@ -33,7 +33,7 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
   clearTheme,
   applyTheme,
   ...props
-}) => {
+}: SidebarLogoProps) {
   const id = useId();
   const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
 
@@ -57,6 +57,6 @@ export const SidebarLogo: FC<SidebarLogoProps> = ({
       </span>
     </a>
   );
-};
+}
 
 SidebarLogo.displayName = "SidebarLogo";

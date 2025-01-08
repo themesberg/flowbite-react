@@ -48,45 +48,6 @@ export interface SidebarItemLabelColors extends Pick<FlowbiteColors, "gray"> {
   [key: string]: string;
 }
 
-const ListItem: FC<
-  PropsWithChildren<{
-    id: string;
-    theme: SidebarItemTheme;
-    isCollapsed: boolean;
-    tooltipChildren: ReactNode | undefined;
-    className?: string;
-  }>
-> = ({ id, theme, isCollapsed, tooltipChildren, children: wrapperChildren, ...props }) => (
-  <li {...props}>
-    {isCollapsed ? (
-      <Tooltip
-        content={
-          <Children id={id} theme={theme}>
-            {tooltipChildren}
-          </Children>
-        }
-        placement="right"
-      >
-        {wrapperChildren}
-      </Tooltip>
-    ) : (
-      wrapperChildren
-    )}
-  </li>
-);
-
-const Children: FC<PropsWithChildren<{ id: string; theme: SidebarItemTheme }>> = ({ id, theme, children }) => {
-  return (
-    <span
-      data-testid="flowbite-sidebar-item-content"
-      id={`flowbite-sidebar-item-${id}`}
-      className={twMerge(theme.content.base)}
-    >
-      {children}
-    </span>
-  );
-};
-
 export const SidebarItem = forwardRef<Element, SidebarItemProps>(
   (
     {
@@ -160,3 +121,53 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>(
 );
 
 SidebarItem.displayName = "SidebarItem";
+
+function ListItem({
+  id,
+  theme,
+  isCollapsed,
+  tooltipChildren,
+  children: wrapperChildren,
+  ...props
+}: PropsWithChildren<{
+  id: string;
+  theme: SidebarItemTheme;
+  isCollapsed: boolean;
+  tooltipChildren: ReactNode | undefined;
+  className?: string;
+}>) {
+  return (
+    <li {...props}>
+      {isCollapsed ? (
+        <Tooltip
+          content={
+            <Children id={id} theme={theme}>
+              {tooltipChildren}
+            </Children>
+          }
+          placement="right"
+        >
+          {wrapperChildren}
+        </Tooltip>
+      ) : (
+        wrapperChildren
+      )}
+    </li>
+  );
+}
+
+ListItem.displayName = "SidebarItem.ListItem";
+
+function Children({ id, theme, children }: PropsWithChildren<{ id: string; theme: SidebarItemTheme }>) {
+  return (
+    <span
+      data-testid="flowbite-sidebar-item-content"
+      id={`flowbite-sidebar-item-${id}`}
+      className={twMerge(theme.content.base)}
+    >
+      {children}
+    </span>
+  );
+}
+
+ListItem.displayName = "SidebarItem.Children";
