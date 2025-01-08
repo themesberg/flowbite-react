@@ -7,7 +7,7 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
-import { type ListItemTheme } from "./ListItem";
+import type { ListItemTheme } from "./ListItem";
 import { listTheme } from "./theme";
 
 export interface ListTheme {

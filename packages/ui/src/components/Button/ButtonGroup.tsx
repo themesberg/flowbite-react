@@ -6,7 +6,7 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
-import { type ButtonProps } from "../Button/Button";
+import type { ButtonProps } from "../Button/Button";
 import { ButtonGroupContext } from "./ButtonGroupContext";
 import { buttonGroupTheme } from "./theme";
 

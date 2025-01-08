@@ -130,7 +130,7 @@ export function Carousel({
 
   useEffect(() => {
     if (didMountRef.current) {
-      onSlideChange && onSlideChange(activeItem);
+      onSlideChange?.(activeItem);
     } else {
       didMountRef.current = true;
     }
@@ -138,8 +138,8 @@ export function Carousel({
 
   const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
 
-  const setHoveringTrue = useCallback(() => setIsHovering(true), [setIsHovering]);
-  const setHoveringFalse = useCallback(() => setIsHovering(false), [setIsHovering]);
+  const setHoveringTrue = useCallback(() => setIsHovering(true), []);
+  const setHoveringFalse = useCallback(() => setIsHovering(false), []);
 
   return (
     <div

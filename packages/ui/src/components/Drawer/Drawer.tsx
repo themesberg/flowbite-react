@@ -9,8 +9,8 @@ import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
 import { DrawerContext } from "./DrawerContext";
-import { type DrawerHeaderTheme } from "./DrawerHeader";
-import { type DrawerItemsTheme } from "./DrawerItems";
+import type { DrawerHeaderTheme } from "./DrawerHeader";
+import type { DrawerItemsTheme } from "./DrawerItems";
 import { drawerTheme } from "./theme";
 
 export interface DrawerTheme {

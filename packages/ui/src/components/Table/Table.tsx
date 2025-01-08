@@ -6,10 +6,10 @@ import { resolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
-import { type TableBodyTheme } from "./TableBody";
+import type { TableBodyTheme } from "./TableBody";
 import { TableContext } from "./TableContext";
-import { type TableHeadTheme } from "./TableHead";
-import { type TableRowTheme } from "./TableRow";
+import type { TableHeadTheme } from "./TableHead";
+import type { TableRowTheme } from "./TableRow";
 import { tableTheme } from "./theme";
 
 export interface TableTheme {

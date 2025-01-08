@@ -8,7 +8,7 @@ import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { timelineTheme } from "./theme";
 import { TimelineContext } from "./TimelineContext";
-import { type TimelineItemTheme } from "./TimelineItem";
+import type { TimelineItemTheme } from "./TimelineItem";
 
 export interface TimelineTheme {
   root: {

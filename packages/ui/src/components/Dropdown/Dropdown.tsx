@@ -23,9 +23,9 @@ import type { ThemingProps } from "../../types";
 import { Button, type ButtonProps } from "../Button";
 import type { FloatingProps, FloatingTheme } from "../Floating";
 import { DropdownContext } from "./DropdownContext";
-import { type DropdownDividerTheme } from "./DropdownDivider";
-import { type DropdownHeaderTheme } from "./DropdownHeader";
-import { type DropdownItemTheme } from "./DropdownItem";
+import type { DropdownDividerTheme } from "./DropdownDivider";
+import type { DropdownHeaderTheme } from "./DropdownHeader";
+import type { DropdownItemTheme } from "./DropdownItem";
 import { dropdownTheme } from "./theme";
 
 export interface DropdownFloatingTheme extends FloatingTheme, DropdownDividerTheme, DropdownHeaderTheme {

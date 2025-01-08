@@ -1,4 +1,4 @@
-import { forwardRef, SVGProps } from "react";
+import { forwardRef, type SVGProps } from "react";
 
 export const ChevronUpIcon = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>((props, ref) => (
   <svg
