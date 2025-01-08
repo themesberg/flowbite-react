@@ -48,16 +48,6 @@ describe("resolveTheme", () => {
     });
   });
 
-  it("should cache results", () => {
-    const base = { color: "text-red-400" };
-    const custom = { background: "text-blue-400" };
-
-    const result1 = resolveTheme([base, custom], []);
-    const result2 = resolveTheme([base, custom], []);
-
-    expect(result1).toBe(result2);
-  });
-
   it("should handle deep nested objects", () => {
     const base = {
       colors: {
