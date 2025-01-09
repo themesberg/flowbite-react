@@ -68,11 +68,19 @@ export function resolveTheme<T>(
   if (_clearThemeList?.length) {
     const finalClearTheme = cloneWithValue<T, boolean>(baseTheme, false);
 
+    let run = false;
+
     for (const clearTheme of _clearThemeList) {
+      if (clearTheme) {
+        run = true;
+      }
+
       patchClearTheme(finalClearTheme, clearTheme);
     }
 
-    runClearTheme(baseTheme, finalClearTheme as DeepPartialBoolean<T>);
+    if (run) {
+      runClearTheme(baseTheme, finalClearTheme as DeepPartialBoolean<T>);
+    }
   }
 
   if (prefix) {
@@ -84,11 +92,19 @@ export function resolveTheme<T>(
   if (_applyThemeList?.length) {
     const finalApplyTheme = cloneWithValue<T, ApplyTheme>(baseTheme, "merge");
 
+    let run = false;
+
     for (const applyTheme of _applyThemeList) {
+      if (applyTheme !== "merge") {
+        run = true;
+      }
+
       patchApplyTheme(finalApplyTheme, applyTheme);
     }
 
-    runApplyTheme(theme, deepmerge(baseTheme, ...custom) as T, finalApplyTheme as DeepPartialApplyTheme<T>);
+    if (run) {
+      runApplyTheme(theme, deepmerge(baseTheme, ...custom) as T, finalApplyTheme as DeepPartialApplyTheme<T>);
+    }
   }
 
   return theme;
