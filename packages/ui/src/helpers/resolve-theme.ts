@@ -1,7 +1,8 @@
 import { deepmerge } from "deepmerge-ts";
-import { useMemo } from "react";
+import isEqual from "fast-deep-equal";
+import { useRef } from "react";
 import { getPrefix } from "../store";
-import type { DeepPartialApplyTheme, DeepPartialBoolean } from "../types";
+import type { ApplyTheme, DeepPartialApplyTheme, DeepPartialBoolean } from "../types";
 import { applyPrefix } from "./apply-prefix";
 import { deepMergeStrings } from "./deep-merge";
 import { twMerge } from "./tailwind-merge";
@@ -13,10 +14,31 @@ import { twMerge } from "./tailwind-merge";
  * @returns {ReturnType<typeof resolveTheme>} The resolved theme configuration
  */
 export function useResolveTheme<T>(...input: Parameters<typeof resolveTheme<T>>): ReturnType<typeof resolveTheme<T>> {
-  const [themeList, clearThemeList, applyThemeList] = input;
+  return useStableMemo(() => resolveTheme(...input), input);
+}
 
-  // @ts-expect-error - always array
-  return useMemo(() => resolveTheme(...input), [...themeList, ...clearThemeList, ...applyThemeList]);
+/**
+ * A custom React hook that memoizes a value similar to `useMemo`, but with stable dependency comparison.
+ * This hook ensures that the memoized value only updates when the dependencies have actually changed,
+ * using deep equality comparison instead of reference equality.
+ *
+ * @template T - The type of the memoized value
+ * @param {() => T} factory - A function that creates the value to be memoized
+ * @param {unknown[]} dependencies - An array of dependencies that determine when the value should be recalculated
+ * @returns {T} The memoized value that only changes when dependencies change (using deep equality)
+ */
+export function useStableMemo<T>(factory: () => T, dependencies: unknown[]): T {
+  const prevDepsRef = useRef<unknown[]>();
+  const prevResultRef = useRef<T>();
+
+  const hasChanged = !prevDepsRef.current || !isEqual(prevDepsRef.current, dependencies);
+
+  if (hasChanged) {
+    prevDepsRef.current = dependencies;
+    prevResultRef.current = factory();
+  }
+
+  return prevResultRef.current!;
 }
 
 /**
@@ -24,8 +46,8 @@ export function useResolveTheme<T>(...input: Parameters<typeof resolveTheme<T>>)
  *
  * @template T - The type of the base theme.
  * @param {[base, ...custom[]]} themes - An array where the first element is the base theme and the rest are custom themes.
- * @param {DeepPartialBoolean<T[]>} clearThemeList - An array of `clearTheme` modifications to apply to the base theme.
- * @param {DeepPartialApplyTheme<T[]>} applyThemeList - An optional array of `applyTheme` modifications to apply to the merged theme.
+ * @param {DeepPartialBoolean<T>[]} clearThemeList - An array of `clearTheme` modifications to apply to the base theme.
+ * @param {DeepPartialApplyTheme<T>[]} applyThemeList - An optional array of `applyTheme` modifications to apply to the merged theme.
  * @returns {T} - The resolved and merged theme.
  */
 export function resolveTheme<T>(
@@ -35,65 +57,89 @@ export function resolveTheme<T>(
     /** custom themes */
     ...unknown[],
   ],
-  clearThemeList: DeepPartialBoolean<T[]> = [],
-  applyThemeList: DeepPartialApplyTheme<T[]> = [],
+  clearThemeList?: DeepPartialBoolean<T>[],
+  applyThemeList?: DeepPartialApplyTheme<T>[],
 ): T {
   const prefix = getPrefix();
-  const clearTheme = resolveClearTheme(clearThemeList);
-  const applyTheme = resolveApplyTheme(applyThemeList);
-  const baseTheme = clearTheme || prefix ? structuredClone(base) : base;
+  const _clearThemeList = clearThemeList?.filter((value) => value !== undefined);
+  const _applyThemeList = applyThemeList?.filter((value) => value !== undefined);
+  const baseTheme = _clearThemeList?.length || prefix ? structuredClone(base) : base;
 
-  if (clearTheme) {
-    applyClearTheme(baseTheme, clearTheme);
+  if (_clearThemeList?.length) {
+    const finalClearTheme = cloneWithValue<T, boolean>(baseTheme, false);
+
+    for (const clearTheme of _clearThemeList) {
+      patchClearTheme(finalClearTheme, clearTheme);
+    }
+
+    runClearTheme(baseTheme, finalClearTheme as DeepPartialBoolean<T>);
   }
+
   if (prefix) {
     stringIterator(baseTheme, (value) => applyPrefix(value, prefix));
   }
 
   const theme = deepMergeStrings(twMerge)(baseTheme, ...custom) as T;
 
-  if (applyTheme) {
-    patchApplyTheme(theme, deepmerge(baseTheme, ...custom) as T, applyTheme);
+  if (_applyThemeList?.length) {
+    const finalApplyTheme = cloneWithValue<T, ApplyTheme>(baseTheme, "merge");
+
+    for (const applyTheme of _applyThemeList) {
+      patchApplyTheme(finalApplyTheme, applyTheme);
+    }
+
+    runApplyTheme(theme, deepmerge(baseTheme, ...custom) as T, finalApplyTheme as DeepPartialApplyTheme<T>);
   }
 
   return theme;
 }
 
-/**
- * Resolves an array of `clearTheme` objects into a single `clearTheme` object.
- *
- * @template T - The type of the object.
- * @param {DeepPartialBoolean<T[]>} clearThemeList - An array of `clearTheme` objects.
- * @returns {DeepPartialBoolean<T> | undefined} - A single `clearTheme` object or undefined if the input is not a valid array or is empty.
- */
-function resolveClearTheme<T>(clearThemeList: DeepPartialBoolean<T[]>): DeepPartialBoolean<T> | undefined {
-  if (!Array.isArray(clearThemeList)) {
-    return;
+function patchClearTheme<T>(base: T, clearTheme: DeepPartialBoolean<T>): void {
+  function iterate(base: T, clearTheme: DeepPartialBoolean<T>) {
+    if (typeof clearTheme === "boolean") {
+      if (typeof base === "object" && base !== null) {
+        for (const key in base) {
+          // @ts-expect-error - bypass
+          base[key] = iterate(base[key], clearTheme);
+        }
+      } else {
+        return clearTheme;
+      }
+    }
+    if (typeof clearTheme === "object" && clearTheme !== null) {
+      for (const key in clearTheme) {
+        // @ts-expect-error - bypass
+        base[key] = iterate(base[key], clearTheme[key]);
+      }
+    }
+    return base;
   }
 
-  if (!clearThemeList.length) {
-    return;
-  }
-
-  return deepmerge(...clearThemeList) as DeepPartialBoolean<T> | undefined;
+  iterate(base, clearTheme);
 }
 
-/**
- * Resolves an array of `applyTheme` objects into a single `applyTheme` object.
- *
- * @param {DeepPartialApplyTheme<T[]>} applyThemeList - An array of `applyTheme` objects.
- * @returns {DeepPartialApplyTheme<T> | undefined} - A single `applyTheme` object or undefined if the input is not a valid array or is empty.
- */
-function resolveApplyTheme<T>(applyThemeList: DeepPartialApplyTheme<T[]>): DeepPartialApplyTheme<T> | undefined {
-  if (!Array.isArray(applyThemeList)) {
-    return;
+function patchApplyTheme<T>(base: T, applyTheme: DeepPartialApplyTheme<T>): void {
+  function iterate(base: T, applyTheme: DeepPartialApplyTheme<T>) {
+    if (typeof applyTheme === "string") {
+      if (typeof base === "object" && base !== null) {
+        for (const key in base) {
+          // @ts-expect-error - bypass
+          base[key] = iterate(base[key], applyTheme);
+        }
+      } else {
+        return applyTheme;
+      }
+    }
+    if (typeof applyTheme === "object" && applyTheme !== null) {
+      for (const key in applyTheme) {
+        // @ts-expect-error - bypass
+        base[key] = iterate(base[key], applyTheme[key]);
+      }
+    }
+    return base;
   }
 
-  if (!applyThemeList.length) {
-    return;
-  }
-
-  return deepmerge(...applyThemeList) as DeepPartialApplyTheme<T> | undefined;
+  iterate(base, applyTheme);
 }
 
 /**
@@ -107,7 +153,7 @@ function resolveApplyTheme<T>(applyThemeList: DeepPartialApplyTheme<T[]>): DeepP
  * @param {DeepPartialBoolean<T>} `clearTheme` - The `clearTheme` modifications to apply. It can be a boolean or an object.
  * @returns {void}
  */
-function applyClearTheme<T>(base: T, clearTheme: DeepPartialBoolean<T>): void {
+function runClearTheme<T>(base: T, clearTheme: DeepPartialBoolean<T>): void {
   function iterate(base: T, clearTheme: DeepPartialBoolean<T>) {
     if (clearTheme === true) {
       if (typeof base === "object" && base !== null) {
@@ -115,8 +161,7 @@ function applyClearTheme<T>(base: T, clearTheme: DeepPartialBoolean<T>): void {
           // @ts-expect-error - bypass
           base[key] = iterate(base[key], clearTheme);
         }
-      }
-      if (typeof base === "string") {
+      } else {
         return "";
       }
     }
@@ -142,7 +187,7 @@ function applyClearTheme<T>(base: T, clearTheme: DeepPartialBoolean<T>): void {
  * @param {DeepPartialApplyTheme<T>} applyTheme - Configuration object that determines how the theme should be applied
  * @returns {void}
  */
-function patchApplyTheme<T>(base: T, target: T, applyTheme: DeepPartialApplyTheme<T>): void {
+function runApplyTheme<T>(base: T, target: T, applyTheme: DeepPartialApplyTheme<T>): void {
   function iterate(base: T, target: T, applyTheme: DeepPartialApplyTheme<T>) {
     if (applyTheme === "replace") {
       if (typeof base === "object" && base !== null) {
@@ -150,8 +195,7 @@ function patchApplyTheme<T>(base: T, target: T, applyTheme: DeepPartialApplyThem
           // @ts-expect-error - bypass
           base[key] = iterate(base[key], target[key], applyTheme);
         }
-      }
-      if (typeof base === "string") {
+      } else {
         return target;
       }
     }
@@ -194,4 +238,32 @@ function stringIterator<T>(input: T, callback: (value: string) => string): void 
   }
 
   iterate(input);
+}
+
+/**
+ * Creates a deep clone of an object structure with all leaf values replaced by a specified value.
+ *
+ * @template T - The type of the input object
+ * @template V - The type of the value to replace with
+ * @param {T} input - The input object to clone
+ * @param {V} value - The value to replace all leaf values with
+ * @returns {T} A new object with the same structure as input but all leaf values replaced with the specified value
+ *
+ * @example
+ * const obj = { a: 1, b: { c: 2 } };
+ * const result = cloneWithValue(obj, 'new');
+ * // result = { a: 'new', b: { c: 'new' } }
+ */
+function cloneWithValue<T, V>(input: T, value: V): T {
+  if (input === null || typeof input !== "object") {
+    return value as unknown as T;
+  }
+
+  const clone = {} as T;
+
+  for (const key in input) {
+    clone[key as keyof T] = cloneWithValue(input[key as keyof T], value);
+  }
+
+  return clone;
 }
