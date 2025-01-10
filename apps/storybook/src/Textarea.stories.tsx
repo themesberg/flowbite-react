@@ -12,5 +12,6 @@ const Template: StoryFn<TextareaProps> = (args) => <Textarea {...args} />;
 export const DefaultTextarea = Template.bind({});
 DefaultTextarea.storyName = "Textarea";
 DefaultTextarea.args = {
-  children: "Text",
+  defaultValue: "Text",
+  placeholder: "Write your thoughts here...",
 };
