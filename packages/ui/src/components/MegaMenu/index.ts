@@ -4,3 +4,4 @@ export { MegaMenuDropdown } from "./MegaMenuDropdown";
 export type { MegaMenuDropdownProps, MegaMenuDropdownTheme } from "./MegaMenuDropdown";
 export { MegaMenuDropdownToggle } from "./MegaMenuDropdownToggle";
 export type { MegaMenuDropdownToggleProps, MegaMenuDropdownToggleTheme } from "./MegaMenuDropdownToggle";
+export { megaMenuTheme } from "./theme";

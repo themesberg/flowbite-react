@@ -14,3 +14,4 @@ export { FooterLinkGroup } from "./FooterLinkGroup";
 export type { FooterLinkGroupProps, FooterLinkGroupTheme } from "./FooterLinkGroup";
 export { FooterTitle } from "./FooterTitle";
 export type { FooterTitleProps, FooterTitleTheme } from "./FooterTitle";
+export { footerTheme } from "./theme";

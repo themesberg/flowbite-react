@@ -9,3 +9,4 @@ export type {
   CarouselTheme,
   DefaultLeftRightControlProps,
 } from "./Carousel";
+export { carouselTheme } from "./theme";

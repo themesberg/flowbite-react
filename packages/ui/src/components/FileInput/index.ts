@@ -6,3 +6,4 @@ export type {
   FileInputRootTheme,
   FileInputTheme,
 } from "./FileInput";
+export { fileInputTheme } from "./theme";

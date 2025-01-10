@@ -12,3 +12,4 @@ export { TimelineTime } from "./TimelineTime";
 export type { TimelineTimeProps, TimelineTimeTheme } from "./TimelineTime";
 export { TimelineTitle } from "./TimelineTitle";
 export type { TimelineTitleProps, TimelineTitleTheme } from "./TimelineTitle";
+export { timelineTheme } from "./theme";

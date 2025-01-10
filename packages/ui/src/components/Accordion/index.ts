@@ -6,3 +6,4 @@ export { AccordionPanel } from "./AccordionPanel";
 export type { AccordionPanelProps } from "./AccordionPanel";
 export { AccordionTitle } from "./AccordionTitle";
 export type { AccordionTitleProps, AccordionTitleTheme } from "./AccordionTitle";
+export { accordionTheme } from "./theme";

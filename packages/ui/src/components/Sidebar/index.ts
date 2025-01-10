@@ -12,3 +12,4 @@ export { SidebarItems } from "./SidebarItems";
 export type { SidebarItemsProps, SidebarItemsTheme } from "./SidebarItems";
 export { SidebarLogo } from "./SidebarLogo";
 export type { SidebarLogoProps, SidebarLogoTheme } from "./SidebarLogo";
+export { sidebarTheme } from "./theme";

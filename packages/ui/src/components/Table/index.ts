@@ -10,3 +10,4 @@ export { TableHeadCell } from "./TableHeadCell";
 export type { TableHeadCellProps, TableHeadCellTheme } from "./TableHeadCell";
 export { TableRow } from "./TableRow";
 export type { TableRowProps, TableRowTheme } from "./TableRow";
+export { tableTheme } from "./theme";

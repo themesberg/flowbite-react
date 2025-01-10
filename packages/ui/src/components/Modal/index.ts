@@ -6,3 +6,4 @@ export { ModalFooter } from "./ModalFooter";
 export type { ModalFooterProps, ModalFooterTheme } from "./ModalFooter";
 export { ModalHeader } from "./ModalHeader";
 export type { ModalHeaderProps, ModalHeaderTheme } from "./ModalHeader";
+export { modalTheme } from "./theme";

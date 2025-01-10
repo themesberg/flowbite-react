@@ -6,3 +6,4 @@ export { DropdownHeader } from "./DropdownHeader";
 export type { DropdownHeaderProps, DropdownHeaderTheme } from "./DropdownHeader";
 export { DropdownItem } from "./DropdownItem";
 export type { DropdownItemProps, DropdownItemTheme } from "./DropdownItem";
+export { dropdownTheme } from "./theme";

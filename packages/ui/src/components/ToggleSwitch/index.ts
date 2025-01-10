@@ -5,3 +5,4 @@ export type {
   ToggleSwitchTheme,
   ToggleSwitchToggleTheme,
 } from "./ToggleSwitch";
+export { toggleSwitchTheme } from "./theme";

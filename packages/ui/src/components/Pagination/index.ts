@@ -14,3 +14,4 @@ export type {
   PaginationNavigation,
   PaginationPrevButtonProps,
 } from "./PaginationButton";
+export { paginationTheme } from "./theme";

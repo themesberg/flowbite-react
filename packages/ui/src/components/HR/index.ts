@@ -8,3 +8,4 @@ export { HRText } from "./HRText";
 export type { HRTextProps, HRTextTheme } from "./HRText";
 export { HRTrimmed } from "./HRTrimmed";
 export type { HRTrimmedProps, HRTrimmedTheme } from "./HRTrimmed";
+export { hrTheme } from "./theme";

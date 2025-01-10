@@ -8,3 +8,4 @@ export { NavbarLink } from "./NavbarLink";
 export type { NavbarLinkProps, NavbarLinkTheme } from "./NavbarLink";
 export { NavbarToggle } from "./NavbarToggle";
 export type { NavbarToggleProps, NavbarToggleThem } from "./NavbarToggle";
+export { navbarTheme } from "./theme";
