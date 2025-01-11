@@ -6,6 +6,7 @@ import { Button } from "../Button";
 import { Checkbox } from "../Checkbox";
 import { FileInput } from "../FileInput";
 import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
+import { HelperText } from "../HelperText";
 import { Radio } from "../Radio";
 import { RangeSlider } from "../RangeSlider";
 import { Select } from "../Select";
@@ -95,7 +96,8 @@ const TestForm = (): JSX.Element => (
     </div>
     <div>
       <Label htmlFor="file">Upload file</Label>
-      <FileInput id="file" helperText="A profile picture is useful to confirm your are logged into your account" />
+      <FileInput id="file" />
+      <HelperText>A profile picture is useful to confirm your are logged into your account</HelperText>
     </div>
     <fieldset>
       <legend>Choose your favorite country</legend>

@@ -1,29 +1,27 @@
-import { FileInput, Label } from "flowbite-react";
+import { FileInput, HelperText, Label } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-import { FileInput, Label } from "flowbite-react";
+import { FileInput, HelperText, Label } from "flowbite-react";
 
 export function Component() {
   return (
-    <div>
-      <div>
-        <Label htmlFor="file-upload-helper-text" value="Upload file" />
-      </div>
-      <FileInput id="file-upload-helper-text" helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
-    </div>
+    <>
+      <Label className="mb-2 block" htmlFor="file-upload-helper-text" value="Upload file" />
+      <FileInput id="file-upload-helper-text" />
+      <HelperText>SVG, PNG, JPG or GIF (MAX. 800x400px).</HelperText>
+    </>
   );
 }
 `;
 
 export function Component() {
   return (
-    <div>
-      <div>
-        <Label htmlFor="file-upload-helper-text" value="Upload file" />
-      </div>
-      <FileInput id="file-upload-helper-text" helperText="SVG, PNG, JPG or GIF (MAX. 800x400px)." />
-    </div>
+    <>
+      <Label className="mb-2 block" htmlFor="file-upload-helper-text" value="Upload file" />
+      <FileInput id="file-upload-helper-text" />
+      <HelperText className="mt-1">SVG, PNG, JPG or GIF (MAX. 800x400px).</HelperText>
+    </>
   );
 }
 

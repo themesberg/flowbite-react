@@ -6,24 +6,20 @@ import { FileInput, Label } from "flowbite-react";
 
 export function Component() {
   return (
-    <div>
-      <div className="mb-2 block">
-        <Label htmlFor="file-upload" value="Upload file" />
-      </div>
+    <>
+      <Label className="mb-2 block" htmlFor="file-upload" value="Upload file" />
       <FileInput id="file-upload" />
-    </div>
+    </>
   );
 }
 `;
 
 export function Component() {
   return (
-    <div>
-      <div className="mb-2 block">
-        <Label htmlFor="file-upload" value="Upload file" />
-      </div>
+    <>
+      <Label className="mb-2 block" htmlFor="file-upload" value="Upload file" />
       <FileInput id="file-upload" />
-    </div>
+    </>
   );
 }
 
