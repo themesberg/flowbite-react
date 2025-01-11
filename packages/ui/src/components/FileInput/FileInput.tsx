@@ -12,20 +12,6 @@ import type { TextInputColors, TextInputSizes } from "../TextInput";
 import { fileInputTheme } from "./theme";
 
 export interface FileInputTheme {
-  root: FileInputRootTheme;
-  field: FileInputFieldTheme;
-}
-
-export interface FileInputRootTheme {
-  base: string;
-}
-
-export interface FileInputFieldTheme {
-  base: string;
-  input: FileInputFieldInputTheme;
-}
-
-export interface FileInputFieldInputTheme {
   base: string;
   colors: TextInputColors;
   sizes: TextInputSizes;
@@ -53,20 +39,12 @@ export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
 
     return (
       <>
-        <div className={twMerge(theme.root.base, className)}>
-          <div className={theme.field.base}>
-            <input
-              className={twMerge(
-                theme.field.input.base,
-                theme.field.input.colors[color],
-                theme.field.input.sizes[sizing],
-              )}
-              {...props}
-              type="file"
-              ref={ref}
-            />
-          </div>
-        </div>
+        <input
+          ref={ref}
+          type="file"
+          className={twMerge(theme.base, theme.colors[color], theme.sizes[sizing], className)}
+          {...props}
+        />
         {helperText && <HelperText color={color}>{helperText}</HelperText>}
       </>
     );
