@@ -13,7 +13,15 @@ export function twMerge(...classLists: ClassNameValue[]) {
     return cacheValue(...classLists);
   }
 
-  const twMergeFn = extendTailwindMerge({ prefix });
+  const twMergeFn = extendTailwindMerge({
+    extend: {
+      classGroups: {
+        "bg-image": ["bg-check-icon", "bg-dash-icon", "bg-dot-icon"],
+        shadow: ["shadow-sm-light"],
+      },
+    },
+    prefix,
+  });
   cache.set(cacheKey, twMergeFn);
 
   return twMergeFn(...classLists);

@@ -11,21 +11,20 @@ import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { checkboxTheme } from "./theme";
 
 export interface CheckboxTheme {
-  root: CheckboxRootTheme;
-}
-export interface CheckboxRootTheme {
   base: string;
   color: FlowbiteColors;
+  indeterminate: string;
 }
 
 export interface CheckboxProps
   extends Omit<ComponentProps<"input">, "type" | "ref" | "color">,
     ThemingProps<CheckboxTheme> {
   color?: DynamicStringEnumKeysOf<FlowbiteColors>;
+  indeterminate?: boolean;
 }
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, color = "default", theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+  ({ className, color = "default", indeterminate, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = useResolveTheme(
       [checkboxTheme, provider.theme?.checkbox, customTheme],
@@ -37,7 +36,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       <input
         ref={ref}
         type="checkbox"
-        className={twMerge(theme.root.base, theme.root.color[color], className)}
+        className={twMerge(theme.base, theme.color[color], indeterminate && theme.indeterminate, className)}
         {...props}
       />
     );
