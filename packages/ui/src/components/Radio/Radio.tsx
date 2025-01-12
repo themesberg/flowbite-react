@@ -6,21 +6,21 @@ import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { ThemingProps } from "../../types";
+import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
+import type { FlowbiteColors } from "../Flowbite/FlowbiteTheme";
 import { radioTheme } from "./theme";
 
 export interface RadioTheme {
-  root: RadioRootTheme;
-}
-
-export interface RadioRootTheme {
   base: string;
+  color: FlowbiteColors;
 }
 
-export interface RadioProps extends Omit<ComponentProps<"input">, "ref" | "type">, ThemingProps<RadioTheme> {}
+export interface RadioProps extends Omit<ComponentProps<"input">, "ref" | "type">, ThemingProps<RadioTheme> {
+  color?: DynamicStringEnumKeysOf<FlowbiteColors>;
+}
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(
-  ({ className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+  ({ color = "default", className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = useResolveTheme(
       [radioTheme, provider.theme?.radio, customTheme],
@@ -28,7 +28,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(
       [get(provider.applyTheme, "radio"), applyTheme],
     );
 
-    return <input ref={ref} type="radio" className={twMerge(theme.root.base, className)} {...props} />;
+    return <input ref={ref} type="radio" className={twMerge(theme.base, theme.color[color], className)} {...props} />;
   },
 );
 

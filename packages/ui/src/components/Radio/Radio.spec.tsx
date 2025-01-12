@@ -18,9 +18,7 @@ describe("Components / Radio", () => {
     it("should use custom `base` classes", () => {
       const theme: CustomFlowbiteTheme = {
         radio: {
-          root: {
-            base: "bg-yellow-400 dark:bg-yellow-40",
-          },
+          base: "bg-yellow-400 dark:bg-yellow-40",
         },
       };
       render(
