@@ -28,6 +28,7 @@ export interface SpinnerTheme {
 export interface SpinnerColors
   extends Pick<FlowbiteColors, "failure" | "gray" | "info" | "pink" | "purple" | "success" | "warning"> {
   [key: string]: string;
+  default: string;
 }
 
 export interface SpinnerSizes extends Pick<FlowbiteSizes, "xs" | "sm" | "md" | "lg" | "xl"> {
@@ -42,9 +43,9 @@ export interface SpinnerProps extends Omit<ComponentProps<"span">, "color">, The
 
 export function Spinner({
   className,
-  color = "info",
+  color = "default",
   light,
-  size = "md",
+  size = "lg",
   theme: customTheme,
   clearTheme,
   applyTheme,
