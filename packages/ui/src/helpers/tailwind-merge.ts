@@ -16,7 +16,7 @@ export function twMerge(...classLists: ClassNameValue[]) {
   const twMergeFn = extendTailwindMerge({
     extend: {
       classGroups: {
-        "bg-image": ["bg-check-icon", "bg-dash-icon", "bg-dot-icon"],
+        "bg-image": ["bg-arrow-down-icon", "bg-check-icon", "bg-dash-icon", "bg-dot-icon"],
         shadow: ["shadow-sm-light"],
       },
     },
