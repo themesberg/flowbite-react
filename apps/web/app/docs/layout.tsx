@@ -185,7 +185,7 @@ function NewBadge({ children }: PropsWithChildren) {
   return (
     <span className="flex items-center gap-2">
       {children}
-      <span className="ml-2 inline-flex h-[1.1rem] items-center rounded border border-cyan-100 bg-cyan-100 px-1.5 text-[10px] font-semibold uppercase text-cyan-800 dark:border-cyan-400 dark:bg-gray-700 dark:text-cyan-400">
+      <span className="ml-2 inline-flex h-[1.1rem] items-center rounded border border-primary-100 bg-primary-100 px-1.5 text-[10px] font-semibold uppercase text-primary-800 dark:border-primary-400 dark:bg-gray-700 dark:text-primary-400">
         new
       </span>
     </span>

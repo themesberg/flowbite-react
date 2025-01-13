@@ -22,7 +22,7 @@ export function MainFooter() {
                 href="https://github.com/themesberg/flowbite-react/blob/main/LICENSE"
                 rel="nofollow noopener noreferrer"
                 target="_blank"
-                className="text-cyan-600 hover:underline"
+                className="text-primary-600 hover:underline"
               >
                 MIT
               </a>
@@ -31,7 +31,7 @@ export function MainFooter() {
                 href="https://creativecommons.org/licenses/by/3.0/"
                 rel="nofollow noopener noreferrer"
                 target="_blank"
-                className="text-cyan-600 hover:underline"
+                className="text-primary-600 hover:underline"
               >
                 CC BY 3.0
               </a>
