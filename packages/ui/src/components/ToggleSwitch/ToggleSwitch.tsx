@@ -43,7 +43,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
     {
       checked,
       className,
-      color = "blue",
+      color = "default",
       sizing = "md",
       disabled,
       label,
@@ -64,23 +64,19 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
       [get(provider.applyTheme, "toggleSwitch"), applyTheme],
     );
 
-    const toggle = (): void => onChange(!checked);
+    function handleClick() {
+      onChange(!checked);
+    }
 
-    const handleClick = (): void => {
-      toggle();
-    };
-
-    const handleOnKeyDown = (event: KeyboardEvent<HTMLButtonElement>): void => {
+    function handleOnKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
       if (event.code == "Enter") {
         event.preventDefault();
       }
-    };
+    }
 
     return (
       <>
-        {name && checked ? (
-          <input ref={ref} checked={checked} hidden name={name} readOnly type="checkbox" className="sr-only" />
-        ) : null}
+        <input ref={ref} checked={checked} name={name} type="checkbox" className="sr-only" readOnly hidden />
         <button
           aria-checked={checked}
           aria-labelledby={`${id}-flowbite-toggleswitch-label`}
@@ -103,7 +99,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
               theme.toggle.sizes[sizing],
             )}
           />
-          {label?.length ? (
+          {!!label?.length && (
             <span
               data-testid="flowbite-toggleswitch-label"
               id={`${id}-flowbite-toggleswitch-label`}
@@ -111,7 +107,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
             >
               {label}
             </span>
-          ) : null}
+          )}
         </button>
       </>
     );
