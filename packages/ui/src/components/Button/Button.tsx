@@ -18,7 +18,7 @@ export interface ButtonTheme {
   base: string;
   fullSized: string;
   grouped: string;
-  color: FlowbiteColors;
+  color: ButtonColors;
   disabled: string;
   isProcessing: string;
   spinnerSlot: string;
@@ -46,6 +46,8 @@ export interface ButtonOutlineTheme extends FlowbiteBoolean {
 export interface ButtonColors
   extends Pick<FlowbiteColors, "dark" | "failure" | "gray" | "info" | "light" | "purple" | "success" | "warning"> {
   [key: string]: string;
+  default: string;
+  alternative: string;
 }
 
 export interface ButtonGradientColors extends Omit<FlowbiteStateColors, "warning"> {
@@ -80,7 +82,7 @@ export type ButtonProps<T extends ElementType = "button"> = PolymorphicComponent
   T,
   {
     href?: string;
-    color?: DynamicStringEnumKeysOf<FlowbiteColors>;
+    color?: DynamicStringEnumKeysOf<ButtonColors>;
     fullSized?: boolean;
     gradientDuoTone?: DynamicStringEnumKeysOf<ButtonGradientDuoToneColors>;
     gradientMonochrome?: DynamicStringEnumKeysOf<ButtonGradientColors>;
@@ -105,7 +107,7 @@ export const Button = forwardRef(
     {
       children,
       className,
-      color = "info",
+      color = "default",
       disabled,
       fullSized,
       isProcessing,

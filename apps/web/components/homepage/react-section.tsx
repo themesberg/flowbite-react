@@ -83,7 +83,7 @@ export function ReactSection() {
                 </Button>
                 <Button
                   as={Link}
-                  color="gray"
+                  color="alternative"
                   href="https://github.com/themesberg/flowbite-react"
                   rel="noopener"
                   target="_blank"

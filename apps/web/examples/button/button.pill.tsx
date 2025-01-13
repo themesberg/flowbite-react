@@ -8,11 +8,8 @@ export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button pill>Default</Button>
-      <Button color="blue" pill>
-        Blue
-      </Button>
-      <Button color="gray" pill>
-        Gray
+      <Button color="alternative" pill>
+        Alternative
       </Button>
       <Button color="dark" pill>
         Dark
@@ -21,13 +18,13 @@ export function Component() {
         Light
       </Button>
       <Button color="success" pill>
-        Success
+        Green
       </Button>
       <Button color="failure" pill>
-        Failure
+        Red
       </Button>
       <Button color="warning" pill>
-        Warning
+        Yellow
       </Button>
       <Button color="purple" pill>
         Purple
@@ -41,11 +38,8 @@ export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
       <Button pill>Default</Button>
-      <Button color="blue" pill>
-        Blue
-      </Button>
-      <Button color="gray" pill>
-        Gray
+      <Button color="alternative" pill>
+        Alternative
       </Button>
       <Button color="dark" pill>
         Dark
@@ -54,13 +48,13 @@ export function Component() {
         Light
       </Button>
       <Button color="success" pill>
-        Success
+        Green
       </Button>
       <Button color="failure" pill>
-        Failure
+        Red
       </Button>
       <Button color="warning" pill>
-        Warning
+        Yellow
       </Button>
       <Button color="purple" pill>
         Purple
