@@ -196,7 +196,7 @@ describe("Components / Toggle switch", () => {
             base: "h-6 w-11",
             checked: {
               color: {
-                blue: "bg-pink-700",
+                default: "bg-pink-700",
               },
             },
           },
