@@ -3,7 +3,7 @@ import type { ButtonTheme } from "./Button";
 import type { ButtonGroupTheme } from "./ButtonGroup";
 
 export const buttonTheme: ButtonTheme = createTheme({
-  base: "group relative flex items-stretch justify-center p-0.5 text-center font-medium focus:z-10 focus:outline-none",
+  base: "group relative flex items-stretch justify-center text-center font-medium focus:z-10 focus:outline-none",
   fullSized: "w-full",
   grouped: "rounded-none border-l-0 first:rounded-s-lg first:border-l last:rounded-e-lg focus:ring-2",
   color: {
@@ -108,11 +108,11 @@ export const buttonTheme: ButtonTheme = createTheme({
     on: "rounded-full",
   },
   size: {
-    xs: "px-2 py-1 text-xs",
-    sm: "px-3 py-1.5 text-sm",
-    md: "px-4 py-2 text-sm",
-    lg: "px-5 py-2.5 text-base",
-    xl: "px-6 py-3 text-base",
+    xs: "px-3 py-2 text-xs",
+    sm: "px-3 py-2 text-sm",
+    md: "px-5 py-2.5 text-sm",
+    lg: "px-5 py-3 text-base",
+    xl: "px-6 py-3.5 text-base",
   },
 });
 

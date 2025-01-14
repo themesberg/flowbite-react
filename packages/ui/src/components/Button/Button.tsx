@@ -145,6 +145,7 @@ export const Button = forwardRef(
         disabled={disabled}
         className={twMerge(
           theme.base,
+          theme.size[size],
           disabled && theme.disabled,
           !gradientDuoTone && !gradientMonochrome && theme.color[color],
           gradientDuoTone && !gradientMonochrome && theme.gradientDuoTone[gradientDuoTone],
@@ -162,7 +163,6 @@ export const Button = forwardRef(
             theme.inner.base,
             theme.outline[outline ? "on" : "off"],
             theme.outline.pill[outline && pill ? "on" : "off"],
-            theme.size[size],
             outline && !theme.outline.color[color] && theme.inner.outline,
             isProcessing && theme.isProcessing,
             isProcessing && theme.inner.isProcessingPadding[size],
