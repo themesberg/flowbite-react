@@ -6,7 +6,6 @@ import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
-import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
 import type { ListItemTheme } from "./ListItem";
 import { listTheme } from "./theme";
 
@@ -24,11 +23,6 @@ export interface ListRootTheme {
   horizontal: string;
   unstyled: string;
   nested: string;
-}
-
-export interface ListColors extends FlowbiteStateColors {
-  [key: string]: string;
-  default: string;
 }
 
 export interface ListProps
