@@ -1,16 +1,26 @@
-import { Button } from "flowbite-react";
+import { Badge, Button } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-import { Button } from "flowbite-react";
+import { Badge, Button } from "flowbite-react";
 
 export function Component() {
-  return <Button label="2">Messages</Button>;
+  return (
+    <Button>
+      Messages
+      <Badge className="ms-2 rounded-full px-1.5">2</Badge>
+    </Button>
+  );
 }
 `;
 
 export function Component() {
-  return <Button label="2">Messages</Button>;
+  return (
+    <Button>
+      Messages
+      <Badge className="ms-2 rounded-full px-1.5">2</Badge>
+    </Button>
+  );
 }
 
 export const withLabel: CodeData = {

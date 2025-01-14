@@ -17,13 +17,13 @@ export function Component() {
       <Button color="light" pill>
         Light
       </Button>
-      <Button color="success" pill>
+      <Button color="green" pill>
         Green
       </Button>
-      <Button color="failure" pill>
+      <Button color="red" pill>
         Red
       </Button>
-      <Button color="warning" pill>
+      <Button color="yellow" pill>
         Yellow
       </Button>
       <Button color="purple" pill>
@@ -47,13 +47,13 @@ export function Component() {
       <Button color="light" pill>
         Light
       </Button>
-      <Button color="success" pill>
+      <Button color="green" pill>
         Green
       </Button>
-      <Button color="failure" pill>
+      <Button color="red" pill>
         Red
       </Button>
-      <Button color="warning" pill>
+      <Button color="yellow" pill>
         Yellow
       </Button>
       <Button color="purple" pill>

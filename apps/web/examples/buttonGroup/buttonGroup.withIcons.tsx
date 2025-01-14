@@ -9,16 +9,16 @@ import { HiAdjustments, HiCloudDownload, HiUserCircle } from "react-icons/hi";
 export function Component() {
   return (
     <ButtonGroup>
-      <Button color="gray">
-        <HiUserCircle className="mr-3 h-4 w-4" />
+      <Button color="alternative">
+        <HiUserCircle className="me-2 h-4 w-4" />
         Profile
       </Button>
-      <Button color="gray">
-        <HiAdjustments className="mr-3 h-4 w-4" />
+      <Button color="alternative">
+        <HiAdjustments className="me-2 h-4 w-4" />
         Settings
       </Button>
-      <Button color="gray">
-        <HiCloudDownload className="mr-3 h-4 w-4" />
+      <Button color="alternative">
+        <HiCloudDownload className="me-2 h-4 w-4" />
         Messages
       </Button>
     </ButtonGroup>
@@ -29,16 +29,16 @@ export function Component() {
 export function Component() {
   return (
     <ButtonGroup>
-      <Button color="gray">
-        <HiUserCircle className="mr-3 h-4 w-4" />
+      <Button color="alternative">
+        <HiUserCircle className="me-2 h-4 w-4" />
         Profile
       </Button>
-      <Button color="gray">
-        <HiAdjustments className="mr-3 h-4 w-4" />
+      <Button color="alternative">
+        <HiAdjustments className="me-2 h-4 w-4" />
         Settings
       </Button>
-      <Button color="gray">
-        <HiCloudDownload className="mr-3 h-4 w-4" />
+      <Button color="alternative">
+        <HiCloudDownload className="me-2 h-4 w-4" />
         Messages
       </Button>
     </ButtonGroup>
