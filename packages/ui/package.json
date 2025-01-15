@@ -62,6 +62,16 @@
         "default": "./dist/cjs/hooks/*.cjs"
       }
     },
+    "./icons": {
+      "import": {
+        "types": "./dist/types/icons/index.d.mts",
+        "default": "./dist/esm/icons/index.mjs"
+      },
+      "require": {
+        "types": "./dist/types/icons/index.d.ts",
+        "default": "./dist/cjs/icons/index.cjs"
+      }
+    },
     "./tailwind/*": {
       "import": {
         "types": "./dist/types/tailwind/*.d.mts",
