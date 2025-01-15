@@ -5,13 +5,13 @@ import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { RatingTheme } from "./Rating";
 import type { RatingStarSizes } from "./RatingStar";
 
-export interface RatingContext extends ThemingProps<RatingTheme> {
+export interface RatingContextValue extends ThemingProps<RatingTheme> {
   size?: DynamicStringEnumKeysOf<RatingStarSizes>;
 }
 
-export const RatingContext = createContext<RatingContext | undefined>(undefined);
+export const RatingContext = createContext<RatingContextValue | undefined>(undefined);
 
-export function useRatingContext(): RatingContext {
+export function useRatingContext(): RatingContextValue {
   const context = useContext(RatingContext);
 
   if (!context) {

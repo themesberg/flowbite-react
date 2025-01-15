@@ -4,7 +4,7 @@ import { createContext, useContext } from "react";
 import type { DatepickerTheme } from "./Datepicker";
 import type { Views, WeekStart } from "./helpers";
 
-type DatepickerContextProps = {
+export interface DatepickerContextValue {
   theme: DatepickerTheme;
   language: string;
   weekStart: WeekStart;
@@ -19,11 +19,11 @@ type DatepickerContextProps = {
   changeSelectedDate: (date: Date, useAutohide: boolean) => void;
   viewDate: Date;
   setViewDate: (date: Date) => void;
-};
+}
 
-export const DatepickerContext = createContext<DatepickerContextProps | undefined>(undefined);
+export const DatepickerContext = createContext<DatepickerContextValue | undefined>(undefined);
 
-export function useDatePickerContext(): DatepickerContextProps {
+export function useDatePickerContext(): DatepickerContextValue {
   const context = useContext(DatepickerContext);
 
   if (!context) {

@@ -5,16 +5,16 @@ import { createContext, useContext } from "react";
 import type { ThemingProps } from "../../types";
 import type { DropdownTheme } from "./Dropdown";
 
-interface DropdownContext extends ThemingProps<DropdownTheme> {
+export interface DropdownContextValue extends ThemingProps<DropdownTheme> {
   activeIndex: number | null;
   dismissOnClick?: boolean;
   getItemProps: ReturnType<typeof useInteractions>["getItemProps"];
   handleSelect: (index: number | null) => void;
 }
 
-export const DropdownContext = createContext<DropdownContext | undefined>(undefined);
+export const DropdownContext = createContext<DropdownContextValue | undefined>(undefined);
 
-export function useDropdownContext(): DropdownContext {
+export function useDropdownContext(): DropdownContextValue {
   const context = useContext(DropdownContext);
 
   if (!context) {

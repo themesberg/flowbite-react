@@ -4,15 +4,15 @@ import { createContext, useContext } from "react";
 import type { ThemingProps } from "../../types";
 import type { ModalTheme } from "./Modal";
 
-interface ModalContext extends ThemingProps<ModalTheme> {
+export interface ModalContextValue extends ThemingProps<ModalTheme> {
   popup?: boolean;
   setHeaderId: (id: string | undefined) => void;
   onClose?: () => void;
 }
 
-export const ModalContext = createContext<ModalContext | undefined>(undefined);
+export const ModalContext = createContext<ModalContextValue | undefined>(undefined);
 
-export function useModalContext(): ModalContext {
+export function useModalContext(): ModalContextValue {
   const context = useContext(ModalContext);
 
   if (!context) {

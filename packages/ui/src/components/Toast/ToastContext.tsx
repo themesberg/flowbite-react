@@ -2,21 +2,19 @@
 
 import { createContext, useContext } from "react";
 import type { ThemingProps } from "../../types";
-import type { ToastTheme } from "./Toast";
+import type { ToastDuration, ToastTheme } from "./Toast";
 
-export type Duration = 75 | 100 | 150 | 200 | 300 | 500 | 700 | 1000;
-
-interface ToastContext extends ThemingProps<ToastTheme> {
-  duration?: Duration;
+export interface ToastContextValue extends ThemingProps<ToastTheme> {
+  duration?: ToastDuration;
   isClosed?: boolean;
   isRemoved?: boolean;
   setIsClosed: (isClosed: boolean) => void;
   setIsRemoved: (isRemoved: boolean) => void;
 }
 
-export const ToastContext = createContext<ToastContext | undefined>(undefined);
+export const ToastContext = createContext<ToastContextValue | undefined>(undefined);
 
-export function useToastContext(): ToastContext {
+export function useToastContext(): ToastContextValue {
   const context = useContext(ToastContext);
 
   if (!context) {

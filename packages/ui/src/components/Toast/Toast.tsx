@@ -8,7 +8,6 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { toastTheme } from "./theme";
-import type { Duration } from "./ToastContext";
 import { ToastContext } from "./ToastContext";
 
 export interface ToastTheme {
@@ -22,11 +21,13 @@ export interface ToastTheme {
   };
 }
 
+export type ToastDuration = 75 | 100 | 150 | 200 | 300 | 500 | 700 | 1000;
+
 export interface ToastProps extends ComponentProps<"div">, ThemingProps<ToastTheme> {
-  duration?: Duration;
+  duration?: ToastDuration;
 }
 
-const durationClasses: Record<Duration, string> = {
+const durationClasses: Record<ToastDuration, string> = {
   75: "duration-75",
   100: "duration-100",
   150: "duration-150",

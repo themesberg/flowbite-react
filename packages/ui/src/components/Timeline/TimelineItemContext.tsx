@@ -4,11 +4,11 @@ import { createContext, useContext } from "react";
 import type { ThemingProps } from "../../types";
 import type { TimelineItemTheme } from "./TimelineItem";
 
-export type TimelineItemContext = ThemingProps<TimelineItemTheme>;
+export type TimelineItemContextValue = ThemingProps<TimelineItemTheme>;
 
-export const TimelineItemContext = createContext<TimelineItemContext | undefined>(undefined);
+export const TimelineItemContext = createContext<TimelineItemContextValue | undefined>(undefined);
 
-export function useTimelineItemContext(): TimelineItemContext {
+export function useTimelineItemContext(): TimelineItemContextValue {
   const context = useContext(TimelineItemContext);
 
   if (!context) {

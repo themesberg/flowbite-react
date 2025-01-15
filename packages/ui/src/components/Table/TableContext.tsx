@@ -4,14 +4,14 @@ import { createContext, useContext } from "react";
 import type { ThemingProps } from "../../types";
 import type { TableTheme } from "./Table";
 
-export interface TableContext extends ThemingProps<TableTheme> {
+export interface TableContextValue extends ThemingProps<TableTheme> {
   striped?: boolean;
   hoverable?: boolean;
 }
 
-export const TableContext = createContext<TableContext | undefined>(undefined);
+export const TableContext = createContext<TableContextValue | undefined>(undefined);
 
-export function useTableContext(): TableContext {
+export function useTableContext(): TableContextValue {
   const context = useContext(TableContext);
 
   if (!context) {

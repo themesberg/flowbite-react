@@ -4,13 +4,13 @@ import { createContext, useContext } from "react";
 import type { ThemingProps } from "../../types";
 import type { SidebarTheme } from "./Sidebar";
 
-export interface SidebarContext extends ThemingProps<SidebarTheme> {
+export interface SidebarContextValue extends ThemingProps<SidebarTheme> {
   isCollapsed: boolean;
 }
 
-export const SidebarContext = createContext<SidebarContext | undefined>(undefined);
+export const SidebarContext = createContext<SidebarContextValue | undefined>(undefined);
 
-export function useSidebarContext(): SidebarContext {
+export function useSidebarContext(): SidebarContextValue {
   const context = useContext(SidebarContext);
 
   if (!context) {

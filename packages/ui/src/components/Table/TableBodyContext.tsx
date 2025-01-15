@@ -4,11 +4,11 @@ import { createContext, useContext } from "react";
 import type { ThemingProps } from "../../types";
 import type { TableBodyTheme } from "./TableBody";
 
-export type TableBodyContext = ThemingProps<TableBodyTheme>;
+export type TableBodyContextValue = ThemingProps<TableBodyTheme>;
 
-export const TableBodyContext = createContext<TableBodyContext | undefined>(undefined);
+export const TableBodyContext = createContext<TableBodyContextValue | undefined>(undefined);
 
-export function useTableBodyContext(): TableBodyContext {
+export function useTableBodyContext(): TableBodyContextValue {
   const context = useContext(TableBodyContext);
 
   if (!context) {
