@@ -26,7 +26,7 @@ export interface FlowbiteTimelinePointTheme {
 export interface TimelnePointProps extends ComponentProps<"div"> {
   icon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteTimelinePointTheme>;
-  render?: () => React.ReactElement;
+  render?: () => React.ReactNode;
 }
 
 export const TimelinePoint: FC<TimelnePointProps> = ({
