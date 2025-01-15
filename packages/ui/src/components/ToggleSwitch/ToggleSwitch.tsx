@@ -94,8 +94,8 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>(
             data-testid="flowbite-toggleswitch-toggle"
             className={twMerge(
               theme.toggle.base,
+              theme.toggle.checked.color[color],
               theme.toggle.checked[checked ? "on" : "off"],
-              checked && theme.toggle.checked.color[color],
               theme.toggle.sizes[sizing],
             )}
           />
