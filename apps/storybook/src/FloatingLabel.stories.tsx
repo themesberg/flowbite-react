@@ -101,10 +101,3 @@ SmallStandard.args = {
   label: "Small Standard",
   sizing: "sm",
 };
-
-export const HelperText = Template.bind({});
-HelperText.args = {
-  variant: "filled",
-  label: "Floating Helper",
-  helperText: "Remember, contributions to this topic should follow our Community Guidelines.",
-};
