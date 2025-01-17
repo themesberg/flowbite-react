@@ -40,6 +40,10 @@
   @apply mb-2 inline-block w-full text-3xl font-extrabold tracking-tight text-gray-900;
 }
 
+#mainContent > *:first-child {
+  @apply mt-0;
+}
+
 #mainContent > h2,
 #mainContent > div > h2 {
   @apply relative mb-4 mt-8 text-2xl font-bold leading-tight text-gray-900;
