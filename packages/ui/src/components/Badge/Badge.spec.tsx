@@ -7,15 +7,10 @@ import { Badge } from "./Badge";
 
 describe("Components / Badge", () => {
   describe("Rendering", () => {
-    it('should render an `<a>` given `href=".."`', () => {
-      render(
-        <Badge href="/" icon={HiCheck}>
-          A badge with a link
-        </Badge>,
-      );
+    it("should render", () => {
+      render(<Badge icon={HiCheck}>A badge</Badge>);
 
       expect(link()).toBeInTheDocument();
-      expect(link()).toHaveAttribute("href", "/");
     });
   });
 
@@ -43,7 +38,7 @@ describe("Components / Badge", () => {
       };
       render(
         <ThemeProvider theme={theme}>
-          <Badge color="primary" href="/" icon={HiCheck}>
+          <Badge color="primary" icon={HiCheck}>
             A badge
           </Badge>
         </ThemeProvider>,

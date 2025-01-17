@@ -7,10 +7,12 @@ import { Badge } from "flowbite-react";
 export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
-      <Badge href="#">Default</Badge>
-      <Badge size="sm" href="#">
-        Default
-      </Badge>
+      <a href="#">
+        <Badge>Default</Badge>
+      </a>
+      <a href="#">
+        <Badge size="sm">Default</Badge>
+      </a>
     </div>
   );
 }
@@ -19,10 +21,12 @@ export function Component() {
 export function Component() {
   return (
     <div className="flex flex-wrap gap-2">
-      <Badge href="#">Default</Badge>
-      <Badge size="sm" href="#">
-        Default
-      </Badge>
+      <a href="#">
+        <Badge>Default</Badge>
+      </a>
+      <a href="#">
+        <Badge size="sm">Default</Badge>
+      </a>
     </div>
   );
 }

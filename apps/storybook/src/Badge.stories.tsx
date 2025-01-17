@@ -44,10 +44,3 @@ BadgeOnlyIcon.args = {
   color: "green",
   icon: HiCheck,
 };
-
-export const BadgeAsLink = Template.bind({});
-BadgeAsLink.storyName = "As link";
-BadgeAsLink.args = {
-  href: "/badges",
-  children: "Read more →",
-};
