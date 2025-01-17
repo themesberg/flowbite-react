@@ -6,8 +6,7 @@ export interface DocsSidebarSection {
 export interface DocsSidebarItem {
   title: string;
   href: string;
-  isNew?: boolean;
-  isExternal?: boolean;
+  tag?: "new" | "updated";
 }
 
 export const DOCS_SIDEBAR: DocsSidebarSection[] = [
@@ -20,7 +19,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: "Editor Setup", href: "/docs/getting-started/editor-setup" },
       { title: "Server Components", href: "/docs/getting-started/server-components" },
       { title: "License", href: "/docs/getting-started/license" },
-      { title: "Changelog", href: "https://github.com/themesberg/flowbite-react/releases", isExternal: true },
+      { title: "Changelog", href: "https://github.com/themesberg/flowbite-react/releases" },
       { title: "Contributing", href: "/docs/getting-started/contributing" },
     ],
   },
@@ -42,9 +41,9 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
   {
     title: "customize",
     items: [
-      { title: "Theme", href: "/docs/customize/theme", isNew: true },
-      { title: "Plugin", href: "/docs/customize/plugin", isNew: true },
-      { title: "Prefix", href: "/docs/customize/prefix", isNew: true },
+      { title: "Theme", href: "/docs/customize/theme", tag: "updated" },
+      { title: "Plugin", href: "/docs/customize/plugin", tag: "new" },
+      { title: "Prefix", href: "/docs/customize/prefix", tag: "new" },
       { title: "Dark Mode", href: "/docs/customize/dark-mode" },
     ],
   },
