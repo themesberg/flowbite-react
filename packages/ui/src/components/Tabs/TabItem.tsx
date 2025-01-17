@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC, ReactNode } from "react";
+import { forwardRef, type ComponentProps, type FC, type ReactNode } from "react";
 
 export interface TabItemProps extends Omit<ComponentProps<"div">, "title"> {
   active?: boolean;
@@ -9,8 +9,10 @@ export interface TabItemProps extends Omit<ComponentProps<"div">, "title"> {
   title: ReactNode;
 }
 
-export function TabItem({ children, className }: TabItemProps) {
-  return <div className={className}>{children}</div>;
-}
+export const TabItem = forwardRef<HTMLDivElement, TabItemProps>(({ children, className }, ref) => (
+  <div ref={ref} className={className}>
+    {children}
+  </div>
+));
 
 TabItem.displayName = "TabItem";

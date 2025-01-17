@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentProps } from "react";
-import { useId } from "react";
+import { forwardRef, useId } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -42,54 +42,59 @@ export interface ProgressProps extends ComponentProps<"div">, ThemingProps<Progr
   textLabelPosition?: "inside" | "outside";
 }
 
-export function Progress({
-  className,
-  color = "default",
-  labelProgress = false,
-  labelText = false,
-  progress,
-  progressLabelPosition = "inside",
-  size = "md",
-  textLabel = "progressbar",
-  textLabelPosition = "inside",
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: ProgressProps) {
-  const id = useId();
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [progressTheme, provider.theme?.progress, customTheme],
-    [get(provider.clearTheme, "progress"), clearTheme],
-    [get(provider.applyTheme, "progress"), applyTheme],
-  );
+export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
+  (
+    {
+      className,
+      color = "default",
+      labelProgress = false,
+      labelText = false,
+      progress,
+      progressLabelPosition = "inside",
+      size = "md",
+      textLabel = "progressbar",
+      textLabelPosition = "inside",
+      theme: customTheme,
+      clearTheme,
+      applyTheme,
+      ...props
+    },
+    ref,
+  ) => {
+    const id = useId();
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [progressTheme, provider.theme?.progress, customTheme],
+      [get(provider.clearTheme, "progress"), clearTheme],
+      [get(provider.applyTheme, "progress"), applyTheme],
+    );
 
-  return (
-    <div id={id} aria-label={textLabel} aria-valuenow={progress} role="progressbar" {...props}>
-      {((textLabel && labelText && textLabelPosition === "outside") ||
-        (progress > 0 && labelProgress && progressLabelPosition === "outside")) && (
-        <div className={theme.label} data-testid="flowbite-progress-outer-label-container">
-          {textLabel && labelText && textLabelPosition === "outside" && (
-            <span data-testid="flowbite-progress-outer-text-label">{textLabel}</span>
-          )}
-          {labelProgress && progressLabelPosition === "outside" && (
-            <span data-testid="flowbite-progress-outer-progress-label">{progress}%</span>
-          )}
-        </div>
-      )}
-      <div className={twMerge(theme.base, theme.size[size], className)}>
-        <div style={{ width: `${progress}%` }} className={twMerge(theme.bar, theme.color[color], theme.size[size])}>
-          {textLabel && labelText && textLabelPosition === "inside" && (
-            <span data-testid="flowbite-progress-inner-text-label">{textLabel}</span>
-          )}
-          {progress > 0 && labelProgress && progressLabelPosition === "inside" && (
-            <span data-testid="flowbite-progress-inner-progress-label">{progress}%</span>
-          )}
+    return (
+      <div ref={ref} id={id} aria-label={textLabel} aria-valuenow={progress} role="progressbar" {...props}>
+        {((textLabel && labelText && textLabelPosition === "outside") ||
+          (progress > 0 && labelProgress && progressLabelPosition === "outside")) && (
+          <div className={theme.label} data-testid="flowbite-progress-outer-label-container">
+            {textLabel && labelText && textLabelPosition === "outside" && (
+              <span data-testid="flowbite-progress-outer-text-label">{textLabel}</span>
+            )}
+            {labelProgress && progressLabelPosition === "outside" && (
+              <span data-testid="flowbite-progress-outer-progress-label">{progress}%</span>
+            )}
+          </div>
+        )}
+        <div className={twMerge(theme.base, theme.size[size], className)}>
+          <div style={{ width: `${progress}%` }} className={twMerge(theme.bar, theme.color[color], theme.size[size])}>
+            {textLabel && labelText && textLabelPosition === "inside" && (
+              <span data-testid="flowbite-progress-inner-text-label">{textLabel}</span>
+            )}
+            {progress > 0 && labelProgress && progressLabelPosition === "inside" && (
+              <span data-testid="flowbite-progress-inner-progress-label">{progress}%</span>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  },
+);
 
 Progress.displayName = "Progress";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -18,26 +18,26 @@ export interface BlockquoteRootTheme {
 
 export interface BlockquoteProps extends ComponentProps<"blockquote">, ThemingProps<BlockquoteTheme> {}
 
-export function Blockquote({
-  children,
-  className,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: BlockquoteProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [blockquoteTheme, provider.theme?.blockquote, customTheme],
-    [get(provider.clearTheme, "blockquote"), clearTheme],
-    [get(provider.applyTheme, "blockquote"), applyTheme],
-  );
+export const Blockquote = forwardRef<HTMLQuoteElement, BlockquoteProps>(
+  ({ children, className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [blockquoteTheme, provider.theme?.blockquote, customTheme],
+      [get(provider.clearTheme, "blockquote"), clearTheme],
+      [get(provider.applyTheme, "blockquote"), applyTheme],
+    );
 
-  return (
-    <blockquote className={twMerge(theme.root.base, className)} data-testid="flowbite-blockquote" {...props}>
-      {children}
-    </blockquote>
-  );
-}
+    return (
+      <blockquote
+        ref={ref}
+        className={twMerge(theme.root.base, className)}
+        data-testid="flowbite-blockquote"
+        {...props}
+      >
+        {children}
+      </blockquote>
+    );
+  },
+);
 
 Blockquote.displayName = "Blockquote";

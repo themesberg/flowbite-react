@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import { forwardRef, type ComponentProps, type FC } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -17,7 +17,6 @@ export interface BadgeTheme {
 export interface BadgeRootTheme {
   base: string;
   color: FlowbiteColors;
-  href: string;
   size: BadgeSizes;
 }
 
@@ -31,33 +30,35 @@ export interface BadgeSizes extends Pick<FlowbiteSizes, "xs" | "sm"> {
 
 export interface BadgeProps extends Omit<ComponentProps<"span">, "color">, ThemingProps<BadgeTheme> {
   color?: DynamicStringEnumKeysOf<FlowbiteColors>;
-  href?: string;
   icon?: FC<ComponentProps<"svg">>;
   size?: DynamicStringEnumKeysOf<BadgeSizes>;
 }
 
-export function Badge({
-  children,
-  color = "info",
-  href,
-  icon: Icon,
-  size = "xs",
-  className,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: BadgeProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [badgeTheme, provider.theme?.badge, customTheme],
-    [get(provider.clearTheme, "badge"), clearTheme],
-    [get(provider.applyTheme, "badge"), applyTheme],
-  );
+export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
+  (
+    {
+      children,
+      color = "info",
+      icon: Icon,
+      size = "xs",
+      className,
+      theme: customTheme,
+      clearTheme,
+      applyTheme,
+      ...props
+    },
+    ref,
+  ) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [badgeTheme, provider.theme?.badge, customTheme],
+      [get(provider.clearTheme, "badge"), clearTheme],
+      [get(provider.applyTheme, "badge"), applyTheme],
+    );
 
-  function Content() {
     return (
       <span
+        ref={ref}
         className={twMerge(
           theme.root.base,
           theme.root.color[color],
@@ -72,15 +73,7 @@ export function Badge({
         {children && <span>{children}</span>}
       </span>
     );
-  }
-
-  return href ? (
-    <a className={theme.root.href} href={href}>
-      <Content />
-    </a>
-  ) : (
-    <Content />
-  );
-}
+  },
+);
 
 Badge.displayName = "Badge";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -21,26 +21,21 @@ export interface BreadcrumbRootTheme {
 
 export interface BreadcrumbProps extends ComponentProps<"nav">, ThemingProps<BreadcrumbRootTheme> {}
 
-export function Breadcrumb({
-  children,
-  className,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: BreadcrumbProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [breadcrumbTheme.root, provider.theme?.breadcrumb?.root, customTheme],
-    [get(provider.clearTheme, "breadcrumb.root"), clearTheme],
-    [get(provider.applyTheme, "breadcrumb.root"), applyTheme],
-  );
+export const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(
+  ({ children, className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [breadcrumbTheme.root, provider.theme?.breadcrumb?.root, customTheme],
+      [get(provider.clearTheme, "breadcrumb.root"), clearTheme],
+      [get(provider.applyTheme, "breadcrumb.root"), applyTheme],
+    );
 
-  return (
-    <nav aria-label="Breadcrumb" className={twMerge(theme.base, className)} {...props}>
-      <ol className={theme.list}>{children}</ol>
-    </nav>
-  );
-}
+    return (
+      <nav ref={ref} aria-label="Breadcrumb" className={twMerge(theme.base, className)} {...props}>
+        <ol className={theme.list}>{children}</ol>
+      </nav>
+    );
+  },
+);
 
 Breadcrumb.displayName = "Breadcrumb";

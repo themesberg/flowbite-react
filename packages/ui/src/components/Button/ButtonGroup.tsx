@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -19,30 +19,23 @@ export interface ButtonGroupProps
     Pick<ButtonProps, "outline" | "pill">,
     ThemingProps<ButtonGroupTheme> {}
 
-export function ButtonGroup({
-  children,
-  className,
-  outline,
-  pill,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: ButtonGroupProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [buttonGroupTheme, provider.theme?.buttonGroup, customTheme],
-    [get(provider.clearTheme, "buttonGroup"), clearTheme],
-    [get(provider.applyTheme, "buttonGroup"), applyTheme],
-  );
+export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
+  ({ children, className, outline, pill, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [buttonGroupTheme, provider.theme?.buttonGroup, customTheme],
+      [get(provider.clearTheme, "buttonGroup"), clearTheme],
+      [get(provider.applyTheme, "buttonGroup"), applyTheme],
+    );
 
-  return (
-    <ButtonGroupContext.Provider value={{ outline, pill }}>
-      <div className={twMerge(theme.base, className)} role="group" {...props}>
-        {children}
-      </div>
-    </ButtonGroupContext.Provider>
-  );
-}
+    return (
+      <ButtonGroupContext.Provider value={{ outline, pill }}>
+        <div ref={ref} className={twMerge(theme.base, className)} role="group" {...props}>
+          {children}
+        </div>
+      </ButtonGroupContext.Provider>
+    );
+  },
+);
 
 ButtonGroup.displayName = "ButtonGroup";

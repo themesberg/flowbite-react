@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import { forwardRef, type ComponentProps, type FC } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -21,28 +21,22 @@ export interface ListItemProps extends ComponentProps<"li">, ThemingProps<ListIt
   icon?: FC<ComponentProps<"svg">>;
 }
 
-export function ListItem({
-  children,
-  className,
-  icon: Icon,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: ListItemProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [listTheme.item, provider.theme?.list?.item, customTheme],
-    [get(provider.clearTheme, "list.item"), clearTheme],
-    [get(provider.applyTheme, "list.item"), applyTheme],
-  );
+export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
+  ({ children, className, icon: Icon, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [listTheme.item, provider.theme?.list?.item, customTheme],
+      [get(provider.clearTheme, "list.item"), clearTheme],
+      [get(provider.applyTheme, "list.item"), applyTheme],
+    );
 
-  return (
-    <li className={twMerge(theme.withIcon[Icon ? "on" : "off"], className)} {...props}>
-      {Icon && <Icon className={twMerge(theme.icon)} />}
-      {children}
-    </li>
-  );
-}
+    return (
+      <li ref={ref} className={twMerge(theme.withIcon[Icon ? "on" : "off"], className)} {...props}>
+        {Icon && <Icon className={twMerge(theme.icon)} />}
+        {children}
+      </li>
+    );
+  },
+);
 
 ListItem.displayName = "ListItem";

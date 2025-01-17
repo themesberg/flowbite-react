@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -23,34 +23,35 @@ export interface TimelineItemTheme {
 
 export interface TimelineItemProps extends ComponentProps<"li">, ThemingProps<TimelineItemTheme> {}
 
-export function TimelineItem({
-  children,
-  className,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: TimelineItemProps) {
-  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, horizontal } = useTimelineContext();
+export const TimelineItem = forwardRef<HTMLLIElement, TimelineItemProps>(
+  ({ children, className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const {
+      theme: rootTheme,
+      clearTheme: rootClearTheme,
+      applyTheme: rootApplyTheme,
+      horizontal,
+    } = useTimelineContext();
 
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [timelineTheme.item, provider.theme?.timeline?.item, rootTheme?.item, customTheme],
-    [get(provider.clearTheme, "timeline.item"), get(rootClearTheme, "item"), clearTheme],
-    [get(provider.applyTheme, "timeline.item"), get(rootApplyTheme, "item"), applyTheme],
-  );
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [timelineTheme.item, provider.theme?.timeline?.item, rootTheme?.item, customTheme],
+      [get(provider.clearTheme, "timeline.item"), get(rootClearTheme, "item"), clearTheme],
+      [get(provider.applyTheme, "timeline.item"), get(rootApplyTheme, "item"), applyTheme],
+    );
 
-  return (
-    <TimelineItemContext.Provider value={{ theme: customTheme, clearTheme, applyTheme }}>
-      <li
-        data-testid="timeline-item"
-        className={twMerge(horizontal && theme.root.horizontal, !horizontal && theme.root.vertical, className)}
-        {...props}
-      >
-        {children}
-      </li>
-    </TimelineItemContext.Provider>
-  );
-}
+    return (
+      <TimelineItemContext.Provider value={{ theme: customTheme, clearTheme, applyTheme }}>
+        <li
+          ref={ref}
+          data-testid="timeline-item"
+          className={twMerge(horizontal && theme.root.horizontal, !horizontal && theme.root.vertical, className)}
+          {...props}
+        >
+          {children}
+        </li>
+      </TimelineItemContext.Provider>
+    );
+  },
+);
 
 TimelineItem.displayName = "TimelineItem";

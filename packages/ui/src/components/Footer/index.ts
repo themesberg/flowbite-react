@@ -3,7 +3,7 @@ export type { FooterProps, FooterRootTheme, FooterTheme } from "./Footer";
 export { FooterBrand } from "./FooterBrand";
 export type { FooterBrandProps, FooterBrandTheme } from "./FooterBrand";
 export { FooterCopyright } from "./FooterCopyright";
-export type { CopyrightProps, FooterCopyrightTheme } from "./FooterCopyright";
+export type { FooterCopyrightProps, FooterCopyrightTheme } from "./FooterCopyright";
 export { FooterDivider } from "./FooterDivider";
 export type { FooterDividerProps, FooterDividerTheme } from "./FooterDivider";
 export { FooterIcon } from "./FooterIcon";

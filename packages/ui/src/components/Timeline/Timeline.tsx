@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -24,37 +24,32 @@ export interface TimelineProps extends ComponentProps<"ol">, ThemingProps<Timeli
   horizontal?: boolean;
 }
 
-export function Timeline({
-  children,
-  className,
-  horizontal,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: TimelineProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [timelineTheme, provider.theme?.timeline, customTheme],
-    [get(provider.clearTheme, "timeline"), clearTheme],
-    [get(provider.applyTheme, "timeline"), applyTheme],
-  );
+export const Timeline = forwardRef<HTMLOListElement, TimelineProps>(
+  ({ children, className, horizontal, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [timelineTheme, provider.theme?.timeline, customTheme],
+      [get(provider.clearTheme, "timeline"), clearTheme],
+      [get(provider.applyTheme, "timeline"), applyTheme],
+    );
 
-  return (
-    <TimelineContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, horizontal }}>
-      <ol
-        data-testid="timeline-component"
-        className={twMerge(
-          horizontal && theme.root.direction.horizontal,
-          !horizontal && theme.root.direction.vertical,
-          className,
-        )}
-        {...props}
-      >
-        {children}
-      </ol>
-    </TimelineContext.Provider>
-  );
-}
+    return (
+      <TimelineContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, horizontal }}>
+        <ol
+          ref={ref}
+          data-testid="timeline-component"
+          className={twMerge(
+            horizontal && theme.root.direction.horizontal,
+            !horizontal && theme.root.direction.vertical,
+            className,
+          )}
+          {...props}
+        >
+          {children}
+        </ol>
+      </TimelineContext.Provider>
+    );
+  },
+);
 
 Timeline.displayName = "Timeline";

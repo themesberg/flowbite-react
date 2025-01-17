@@ -8,7 +8,6 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
-import { HelperText } from "../HelperText";
 import { selectTheme } from "./theme";
 
 export interface SelectTheme {
@@ -42,7 +41,6 @@ export interface SelectSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg"> {
 export interface SelectProps extends Omit<ComponentProps<"select">, "color" | "ref">, ThemingProps<SelectTheme> {
   addon?: ReactNode;
   color?: DynamicStringEnumKeysOf<SelectColors>;
-  helperText?: ReactNode;
   icon?: FC<ComponentProps<"svg">>;
   shadow?: boolean;
   sizing?: DynamicStringEnumKeysOf<SelectSizes>;
@@ -55,7 +53,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       children,
       className,
       color = "gray",
-      helperText,
       icon: Icon,
       shadow,
       sizing = "md",
@@ -96,7 +93,6 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
           >
             {children}
           </select>
-          {helperText && <HelperText color={color}>{helperText}</HelperText>}
         </div>
       </div>
     );

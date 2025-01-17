@@ -20,6 +20,7 @@ export function DatepickerViewsDecades() {
 
   const theme = rootTheme.views.decades;
   const first = startOfYearPeriod(viewDate, 100);
+
   return (
     <div className={theme.items.base}>
       {[...Array(12)].map((_year, index) => {

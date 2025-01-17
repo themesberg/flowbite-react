@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentProps, ReactElement, ReactNode } from "react";
-import { Children, cloneElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Children, cloneElement, forwardRef, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ScrollContainer from "../../helpers/drag-scroll";
 import { get } from "../../helpers/get";
 import { isClient } from "../../helpers/is-client";
@@ -61,159 +61,167 @@ export interface CarouselProps extends ComponentProps<"div">, ThemingProps<Carou
 
 export interface DefaultLeftRightControlProps extends ComponentProps<"div">, ThemingProps<CarouselTheme> {}
 
-export function Carousel({
-  children,
-  indicators = true,
-  leftControl,
-  rightControl,
-  slide = true,
-  draggable = true,
-  slideInterval,
-  className,
-  onSlideChange,
-  pauseOnHover = false,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: CarouselProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [carouselTheme, provider.theme?.carousel, customTheme],
-    [get(provider.clearTheme, "carousel"), clearTheme],
-    [get(provider.applyTheme, "carousel"), applyTheme],
-  );
-
-  const isDeviceMobile = isClient() && navigator.userAgent.indexOf("IEMobile") !== -1;
-  const carouselContainer = useRef<HTMLDivElement>(null);
-  const [activeItem, setActiveItem] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [isHovering, setIsHovering] = useState(false);
-
-  const didMountRef = useRef(false);
-
-  const items = useMemo(
-    () =>
-      Children.map(children as ReactElement[], (child: ReactElement) =>
-        cloneElement(child, {
-          className: twMerge(theme.item.base, child.props.className),
-        }),
-      ),
-    [children, theme.item.base],
-  );
-
-  const navigateTo = useCallback(
-    (item: number) => () => {
-      if (!items) return;
-      item = (item + items.length) % items.length;
-      if (carouselContainer.current) {
-        carouselContainer.current.scrollLeft = carouselContainer.current.clientWidth * item;
-      }
-      setActiveItem(item);
+export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(
+  (
+    {
+      children,
+      indicators = true,
+      leftControl,
+      rightControl,
+      slide = true,
+      draggable = true,
+      slideInterval,
+      className,
+      onSlideChange,
+      pauseOnHover = false,
+      theme: customTheme,
+      clearTheme,
+      applyTheme,
+      ...props
     },
-    [items],
-  );
+    ref,
+  ) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [carouselTheme, provider.theme?.carousel, customTheme],
+      [get(provider.clearTheme, "carousel"), clearTheme],
+      [get(provider.applyTheme, "carousel"), applyTheme],
+    );
 
-  useEffect(() => {
-    if (carouselContainer.current && !isDragging && carouselContainer.current.scrollLeft !== 0) {
-      setActiveItem(Math.round(carouselContainer.current.scrollLeft / carouselContainer.current.clientWidth));
-    }
-  }, [isDragging]);
+    const isDeviceMobile = isClient() && navigator.userAgent.indexOf("IEMobile") !== -1;
+    const carouselContainer = useRef<HTMLDivElement>(null);
+    const [activeItem, setActiveItem] = useState(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const [isHovering, setIsHovering] = useState(false);
 
-  useEffect(() => {
-    if (slide && !(pauseOnHover && isHovering)) {
-      const intervalId = setInterval(() => !isDragging && navigateTo(activeItem + 1)(), slideInterval ?? 3000);
+    const didMountRef = useRef(false);
 
-      return () => clearInterval(intervalId);
-    }
-  }, [activeItem, isDragging, navigateTo, slide, slideInterval, pauseOnHover, isHovering]);
+    const items = useMemo(
+      () =>
+        Children.map(children as ReactElement[], (child: ReactElement) =>
+          cloneElement(child, {
+            className: twMerge(theme.item.base, child.props.className),
+          }),
+        ),
+      [children, theme.item.base],
+    );
 
-  useEffect(() => {
-    if (didMountRef.current) {
-      onSlideChange?.(activeItem);
-    } else {
-      didMountRef.current = true;
-    }
-  }, [onSlideChange, activeItem]);
+    const navigateTo = useCallback(
+      (item: number) => () => {
+        if (!items) return;
+        item = (item + items.length) % items.length;
+        if (carouselContainer.current) {
+          carouselContainer.current.scrollLeft = carouselContainer.current.clientWidth * item;
+        }
+        setActiveItem(item);
+      },
+      [items],
+    );
 
-  const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
+    useEffect(() => {
+      if (carouselContainer.current && !isDragging && carouselContainer.current.scrollLeft !== 0) {
+        setActiveItem(Math.round(carouselContainer.current.scrollLeft / carouselContainer.current.clientWidth));
+      }
+    }, [isDragging]);
 
-  const setHoveringTrue = useCallback(() => setIsHovering(true), []);
-  const setHoveringFalse = useCallback(() => setIsHovering(false), []);
+    useEffect(() => {
+      if (slide && !(pauseOnHover && isHovering)) {
+        const intervalId = setInterval(() => !isDragging && navigateTo(activeItem + 1)(), slideInterval ?? 3000);
 
-  return (
-    <div
-      className={twMerge(theme.root.base, className)}
-      data-testid="carousel"
-      onMouseEnter={setHoveringTrue}
-      onMouseLeave={setHoveringFalse}
-      onTouchStart={setHoveringTrue}
-      onTouchEnd={setHoveringFalse}
-      {...props}
-    >
-      <ScrollContainer
-        className={twMerge(theme.scrollContainer.base, (isDeviceMobile || !isDragging) && theme.scrollContainer.snap)}
-        draggingClassName="cursor-grab"
-        innerRef={carouselContainer}
-        onEndScroll={handleDragging(false)}
-        onStartScroll={handleDragging(draggable)}
-        vertical={false}
-        horizontal={draggable}
+        return () => clearInterval(intervalId);
+      }
+    }, [activeItem, isDragging, navigateTo, slide, slideInterval, pauseOnHover, isHovering]);
+
+    useEffect(() => {
+      if (didMountRef.current) {
+        onSlideChange?.(activeItem);
+      } else {
+        didMountRef.current = true;
+      }
+    }, [onSlideChange, activeItem]);
+
+    const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
+
+    const setHoveringTrue = useCallback(() => setIsHovering(true), []);
+    const setHoveringFalse = useCallback(() => setIsHovering(false), []);
+
+    return (
+      <div
+        ref={ref}
+        className={twMerge(theme.root.base, className)}
+        data-testid="carousel"
+        onMouseEnter={setHoveringTrue}
+        onMouseLeave={setHoveringFalse}
+        onTouchStart={setHoveringTrue}
+        onTouchEnd={setHoveringFalse}
+        {...props}
       >
-        {items?.map((item, index) => (
-          <div
-            key={index}
-            className={theme.item.wrapper[draggable ? "on" : "off"]}
-            data-active={activeItem === index}
-            data-testid="carousel-item"
-          >
-            {item}
-          </div>
-        ))}
-      </ScrollContainer>
-      {indicators && (
-        <div className={theme.indicators.wrapper}>
-          {items?.map((_, index) => (
-            <button
+        <ScrollContainer
+          className={twMerge(theme.scrollContainer.base, (isDeviceMobile || !isDragging) && theme.scrollContainer.snap)}
+          draggingClassName="cursor-grab"
+          innerRef={carouselContainer}
+          onEndScroll={handleDragging(false)}
+          onStartScroll={handleDragging(draggable)}
+          vertical={false}
+          horizontal={draggable}
+        >
+          {items?.map((item, index) => (
+            <div
               key={index}
-              className={twMerge(theme.indicators.base, theme.indicators.active[index === activeItem ? "on" : "off"])}
-              onClick={navigateTo(index)}
-              data-testid="carousel-indicator"
-              aria-label={`Slide ${index + 1}`}
-            />
+              className={theme.item.wrapper[draggable ? "on" : "off"]}
+              data-active={activeItem === index}
+              data-testid="carousel-item"
+            >
+              {item}
+            </div>
           ))}
-        </div>
-      )}
+        </ScrollContainer>
+        {indicators && (
+          <div className={theme.indicators.wrapper}>
+            {items?.map((_, index) => (
+              <button
+                key={index}
+                className={twMerge(theme.indicators.base, theme.indicators.active[index === activeItem ? "on" : "off"])}
+                onClick={navigateTo(index)}
+                data-testid="carousel-indicator"
+                aria-label={`Slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        )}
 
-      {items && (
-        <>
-          <div className={theme.root.leftControl}>
-            <button
-              className="group"
-              data-testid="carousel-left-control"
-              onClick={navigateTo(activeItem - 1)}
-              type="button"
-              aria-label="Previous slide"
-            >
-              {leftControl ? leftControl : <DefaultLeftControl theme={customTheme} />}
-            </button>
-          </div>
-          <div className={theme.root.rightControl}>
-            <button
-              className="group"
-              data-testid="carousel-right-control"
-              onClick={navigateTo(activeItem + 1)}
-              type="button"
-              aria-label="Next slide"
-            >
-              {rightControl ? rightControl : <DefaultRightControl theme={customTheme} />}
-            </button>
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
+        {items && (
+          <>
+            <div className={theme.root.leftControl}>
+              <button
+                className="group"
+                data-testid="carousel-left-control"
+                onClick={navigateTo(activeItem - 1)}
+                type="button"
+                aria-label="Previous slide"
+              >
+                {leftControl ? leftControl : <DefaultLeftControl theme={customTheme} />}
+              </button>
+            </div>
+            <div className={theme.root.rightControl}>
+              <button
+                className="group"
+                data-testid="carousel-right-control"
+                onClick={navigateTo(activeItem + 1)}
+                type="button"
+                aria-label="Next slide"
+              >
+                {rightControl ? rightControl : <DefaultRightControl theme={customTheme} />}
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    );
+  },
+);
+
+Carousel.displayName = "Carousel";
 
 function DefaultLeftControl({ theme: customTheme, clearTheme, applyTheme }: DefaultLeftRightControlProps) {
   const provider = useThemeProvider();
@@ -244,5 +252,3 @@ function DefaultRightControl({ theme: customTheme, clearTheme, applyTheme }: Def
     </span>
   );
 }
-
-Carousel.displayName = "Carousel";

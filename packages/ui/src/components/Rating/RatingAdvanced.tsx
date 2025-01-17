@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -22,35 +22,29 @@ export interface RatingAdvancedProps extends ComponentProps<"div">, ThemingProps
   percentFilled?: number;
 }
 
-export function RatingAdvanced({
-  children,
-  className,
-  percentFilled = 0,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: RatingAdvancedProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [ratingAdvancedTheme, provider.theme?.ratingAdvanced, customTheme],
-    [get(provider.clearTheme, "ratingAdvanced"), clearTheme],
-    [get(provider.applyTheme, "ratingAdvanced"), applyTheme],
-  );
+export const RatingAdvanced = forwardRef<HTMLDivElement, RatingAdvancedProps>(
+  ({ children, className, percentFilled = 0, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [ratingAdvancedTheme, provider.theme?.ratingAdvanced, customTheme],
+      [get(provider.clearTheme, "ratingAdvanced"), clearTheme],
+      [get(provider.applyTheme, "ratingAdvanced"), applyTheme],
+    );
 
-  return (
-    <div className={twMerge(theme.base, className)} {...props}>
-      <span className={theme.label}>{children}</span>
-      <div className={theme.progress.base}>
-        <div
-          className={theme.progress.fill}
-          data-testid="flowbite-rating-fill"
-          style={{ width: `${percentFilled}%` }}
-        />
+    return (
+      <div ref={ref} className={twMerge(theme.base, className)} {...props}>
+        <span className={theme.label}>{children}</span>
+        <div className={theme.progress.base}>
+          <div
+            className={theme.progress.fill}
+            data-testid="flowbite-rating-fill"
+            style={{ width: `${percentFilled}%` }}
+          />
+        </div>
+        <span className={theme.progress.label}>{`${percentFilled}%`}</span>
       </div>
-      <span className={theme.progress.label}>{`${percentFilled}%`}</span>
-    </div>
-  );
-}
+    );
+  },
+);
 
 RatingAdvanced.displayName = "RatingAdvanced";

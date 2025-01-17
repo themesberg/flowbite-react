@@ -82,17 +82,13 @@ const TestForm = (): JSX.Element => (
     </div>
     <div>
       <Label htmlFor="countries">Select your country</Label>
-      <Select
-        addon={<span>Or just pick any country</span>}
-        helperText="Or just pick any country"
-        icon={HiGlobe}
-        id="countries"
-      >
+      <Select addon={<span>Or just pick any country</span>} icon={HiGlobe} id="countries">
         <option>United States</option>
         <option>Canada</option>
         <option>France</option>
         <option>Germany</option>
       </Select>
+      <HelperText>Or just pick any country</HelperText>
     </div>
     <div>
       <Label htmlFor="file">Upload file</Label>
@@ -123,7 +119,8 @@ const TestForm = (): JSX.Element => (
       </div>
       <div>
         <Label htmlFor="comment">Your message</Label>
-        <Textarea id="comment" helperText="Leave a comment..." required rows={4} />
+        <Textarea id="comment" rows={4} required />
+        <HelperText>Leave a comment...</HelperText>
       </div>
       <div>
         <Label htmlFor="price">Price</Label>

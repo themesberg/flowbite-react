@@ -8,7 +8,6 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
-import { HelperText } from "../HelperText";
 import { textInputTheme } from "./theme";
 
 export interface TextInputTheme {
@@ -47,7 +46,6 @@ export interface TextInputSizes extends Pick<FlowbiteSizes, "sm" | "md" | "lg"> 
 export interface TextInputProps extends Omit<ComponentProps<"input">, "ref" | "color">, ThemingProps<TextInputTheme> {
   addon?: ReactNode;
   color?: DynamicStringEnumKeysOf<TextInputColors>;
-  helperText?: ReactNode;
   icon?: FC<ComponentProps<"svg">>;
   rightIcon?: FC<ComponentProps<"svg">>;
   shadow?: boolean;
@@ -60,7 +58,6 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       addon,
       className,
       color = "gray",
-      helperText,
       icon: Icon,
       rightIcon: RightIcon,
       shadow,
@@ -81,38 +78,35 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     );
 
     return (
-      <>
-        <div className={twMerge(theme.base, className)}>
-          {addon && <span className={theme.addon}>{addon}</span>}
-          <div className={theme.field.base}>
-            {Icon && (
-              <div className={theme.field.icon.base}>
-                <Icon className={theme.field.icon.svg} />
-              </div>
+      <div className={twMerge(theme.base, className)}>
+        {addon && <span className={theme.addon}>{addon}</span>}
+        <div className={theme.field.base}>
+          {Icon && (
+            <div className={theme.field.icon.base}>
+              <Icon className={theme.field.icon.svg} />
+            </div>
+          )}
+          {RightIcon && (
+            <div data-testid="right-icon" className={theme.field.rightIcon.base}>
+              <RightIcon className={theme.field.rightIcon.svg} />
+            </div>
+          )}
+          <input
+            className={twMerge(
+              theme.field.input.base,
+              theme.field.input.colors[color],
+              theme.field.input.sizes[sizing],
+              theme.field.input.withIcon[Icon ? "on" : "off"],
+              theme.field.input.withRightIcon[RightIcon ? "on" : "off"],
+              theme.field.input.withAddon[addon ? "on" : "off"],
+              theme.field.input.withShadow[shadow ? "on" : "off"],
             )}
-            {RightIcon && (
-              <div data-testid="right-icon" className={theme.field.rightIcon.base}>
-                <RightIcon className={theme.field.rightIcon.svg} />
-              </div>
-            )}
-            <input
-              className={twMerge(
-                theme.field.input.base,
-                theme.field.input.colors[color],
-                theme.field.input.sizes[sizing],
-                theme.field.input.withIcon[Icon ? "on" : "off"],
-                theme.field.input.withRightIcon[RightIcon ? "on" : "off"],
-                theme.field.input.withAddon[addon ? "on" : "off"],
-                theme.field.input.withShadow[shadow ? "on" : "off"],
-              )}
-              type={type}
-              {...props}
-              ref={ref}
-            />
-          </div>
+            type={type}
+            {...props}
+            ref={ref}
+          />
         </div>
-        {helperText && <HelperText color={color}>{helperText}</HelperText>}
-      </>
+      </div>
     );
   },
 );

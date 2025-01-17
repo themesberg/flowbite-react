@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC } from "react";
+import { forwardRef, type ComponentProps, type FC } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -26,31 +26,34 @@ export interface RatingStarProps extends ComponentProps<"svg">, ThemingProps<Rat
   starIcon?: FC<ComponentProps<"svg">>;
 }
 
-export function RatingStar({
-  className,
-  filled = true,
-  starIcon: Icon = StarIcon,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: RatingStarProps) {
-  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, size = "sm" } = useRatingContext();
+export const RatingStar = forwardRef<SVGSVGElement, RatingStarProps>(
+  (
+    { className, filled = true, starIcon: Icon = StarIcon, theme: customTheme, clearTheme, applyTheme, ...props },
+    ref,
+  ) => {
+    const {
+      theme: rootTheme,
+      clearTheme: rootClearTheme,
+      applyTheme: rootApplyTheme,
+      size = "sm",
+    } = useRatingContext();
 
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [ratingTheme.star, provider.theme?.rating?.star, rootTheme?.star, customTheme],
-    [get(provider.clearTheme, "rating.star"), get(rootClearTheme, "star"), clearTheme],
-    [get(provider.applyTheme, "rating.star"), get(rootApplyTheme, "star"), applyTheme],
-  );
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [ratingTheme.star, provider.theme?.rating?.star, rootTheme?.star, customTheme],
+      [get(provider.clearTheme, "rating.star"), get(rootClearTheme, "star"), clearTheme],
+      [get(provider.applyTheme, "rating.star"), get(rootApplyTheme, "star"), applyTheme],
+    );
 
-  return (
-    <Icon
-      data-testid="flowbite-rating-star"
-      className={twMerge(theme.sizes[size], theme[filled ? "filled" : "empty"], className)}
-      {...props}
-    />
-  );
-}
+    return (
+      <Icon
+        ref={ref}
+        data-testid="flowbite-rating-star"
+        className={twMerge(theme.sizes[size], theme[filled ? "filled" : "empty"], className)}
+        {...props}
+      />
+    );
+  },
+);
 
 RatingStar.displayName = "RatingStar";

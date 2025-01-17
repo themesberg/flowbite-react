@@ -1,15 +1,13 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 
-export type BannerComponentProps = ComponentProps<"div">;
+export type BannerProps = ComponentProps<"div">;
 
-export function Banner({ children, ...props }: BannerComponentProps) {
-  return (
-    <div data-testid="flowbite-banner" role="banner" tabIndex={-1} {...props}>
-      {children}
-    </div>
-  );
-}
+export const Banner = forwardRef<HTMLDivElement, BannerProps>(({ children, ...props }, ref) => (
+  <div ref={ref} data-testid="flowbite-banner" role="banner" tabIndex={-1} {...props}>
+    {children}
+  </div>
+));
 
 Banner.displayName = "Banner";

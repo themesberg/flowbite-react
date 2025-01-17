@@ -1,8 +1,8 @@
-import { Label, TextInput } from "flowbite-react";
+import { HelperText, Label, TextInput } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-import { Label, TextInput } from "flowbite-react";
+import { HelperText, Label, TextInput } from "flowbite-react";
 
 export function Component() {
   return (
@@ -10,21 +10,14 @@ export function Component() {
       <div className="mb-2 block">
         <Label htmlFor="email3" value="Your email" />
       </div>
-      <TextInput
-        id="email3"
-        type="email"
-        placeholder="name@flowbite.com"
-        required
-        helperText={
-          <>
-            We’ll never share your details. Read our
-            <a href="#" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-              Privacy Policy
-            </a>
-            .
-          </>
-        }
-      />
+      <TextInput id="email3" type="email" placeholder="name@flowbite.com" required />
+      <HelperText>
+        We’ll never share your details. Read our
+        <a href="#" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+          Privacy Policy
+        </a>
+        .
+      </HelperText>
     </div>
   );
 }
@@ -36,21 +29,14 @@ export function Component() {
       <div className="mb-2 block">
         <Label htmlFor="email3" value="Your email" />
       </div>
-      <TextInput
-        id="email3"
-        type="email"
-        placeholder="name@flowbite.com"
-        required
-        helperText={
-          <>
-            We’ll never share your details. Read our
-            <a href="#" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-              Privacy Policy
-            </a>
-            .
-          </>
-        }
-      />
+      <TextInput id="email3" type="email" placeholder="name@flowbite.com" required />
+      <HelperText>
+        We’ll never share your details. Read our
+        <a href="#" className="ml-1 font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+          Privacy Policy
+        </a>
+        .
+      </HelperText>
     </div>
   );
 }

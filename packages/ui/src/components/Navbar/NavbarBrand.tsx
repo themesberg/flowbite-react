@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, ElementType } from "react";
+import { forwardRef, type ComponentProps, type ElementType } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -18,29 +18,22 @@ export interface NavbarBrandProps extends ComponentProps<"a">, Record<string, un
   href?: string;
 }
 
-export function NavbarBrand({
-  as: Component = "a",
-  children,
-  className,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: NavbarBrandProps) {
-  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useNavbarContext();
+export const NavbarBrand = forwardRef<HTMLAnchorElement, NavbarBrandProps>(
+  ({ as: Component = "a", children, className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useNavbarContext();
 
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [navbarTheme.brand, provider.theme?.navbar?.brand, rootTheme?.brand, customTheme],
-    [get(provider.clearTheme, "navbar.brand"), get(rootClearTheme, "brand"), clearTheme],
-    [get(provider.applyTheme, "navbar.brand"), get(rootApplyTheme, "brand"), applyTheme],
-  );
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [navbarTheme.brand, provider.theme?.navbar?.brand, rootTheme?.brand, customTheme],
+      [get(provider.clearTheme, "navbar.brand"), get(rootClearTheme, "brand"), clearTheme],
+      [get(provider.applyTheme, "navbar.brand"), get(rootApplyTheme, "brand"), applyTheme],
+    );
 
-  return (
-    <Component className={twMerge(theme.base, className)} {...props}>
-      {children}
-    </Component>
-  );
-}
-
+    return (
+      <Component ref={ref} className={twMerge(theme.base, className)} {...props}>
+        {children}
+      </Component>
+    );
+  },
+);
 NavbarBrand.displayName = "NavbarBrand";

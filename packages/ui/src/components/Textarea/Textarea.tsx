@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, ReactNode } from "react";
+import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
@@ -8,7 +8,6 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
 import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite/FlowbiteTheme";
-import { HelperText } from "../HelperText";
 import { textareaTheme } from "./theme";
 
 export interface TextareaTheme {
@@ -23,12 +22,11 @@ export interface TextareaColors extends Pick<FlowbiteColors, "gray" | "info" | "
 
 export interface TextareaProps extends Omit<ComponentProps<"textarea">, "color" | "ref">, ThemingProps<TextareaTheme> {
   color?: DynamicStringEnumKeysOf<TextareaColors>;
-  helperText?: ReactNode;
   shadow?: boolean;
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, color = "gray", helperText, shadow, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+  ({ className, color = "gray", shadow, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = useResolveTheme(
       [textareaTheme, provider.theme?.textarea, customTheme],
@@ -37,14 +35,11 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     );
 
     return (
-      <>
-        <textarea
-          ref={ref}
-          className={twMerge(theme.base, theme.colors[color], theme.withShadow[shadow ? "on" : "off"], className)}
-          {...props}
-        />
-        {helperText && <HelperText color={color}>{helperText}</HelperText>}
-      </>
+      <textarea
+        ref={ref}
+        className={twMerge(theme.base, theme.colors[color], theme.withShadow[shadow ? "on" : "off"], className)}
+        {...props}
+      />
     );
   },
 );

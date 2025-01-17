@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, PropsWithChildren } from "react";
+import { forwardRef, type ComponentProps, type PropsWithChildren } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -34,41 +34,47 @@ export interface ListProps
   unstyled?: boolean;
 }
 
-export function List({
-  children,
-  className,
-  horizontal,
-  nested,
-  ordered,
-  unstyled,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: ListProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [listTheme.root, provider.theme?.list?.root, customTheme],
-    [get(provider.clearTheme, "list.root"), get(clearTheme, "root")],
-    [get(provider.applyTheme, "list.root"), get(applyTheme, "root")],
-  );
-  const Component = ordered ? "ol" : "ul";
+export const List = forwardRef<HTMLUListElement | HTMLOListElement, ListProps>(
+  (
+    {
+      children,
+      className,
+      horizontal,
+      nested,
+      ordered,
+      unstyled,
+      theme: customTheme,
+      clearTheme,
+      applyTheme,
+      ...props
+    },
+    ref,
+  ) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [listTheme.root, provider.theme?.list?.root, customTheme],
+      [get(provider.clearTheme, "list.root"), get(clearTheme, "root")],
+      [get(provider.applyTheme, "list.root"), get(applyTheme, "root")],
+    );
+    const Component = ordered ? "ol" : "ul";
 
-  return (
-    <Component
-      className={twMerge(
-        theme.base,
-        theme.ordered[ordered ? "on" : "off"],
-        unstyled && theme.unstyled,
-        nested && theme.nested,
-        horizontal && theme.horizontal,
-        className,
-      )}
-      {...props}
-    >
-      {children}
-    </Component>
-  );
-}
+    return (
+      <Component
+        ref={ref as never}
+        className={twMerge(
+          theme.base,
+          theme.ordered[ordered ? "on" : "off"],
+          unstyled && theme.unstyled,
+          nested && theme.nested,
+          horizontal && theme.horizontal,
+          className,
+        )}
+        {...props}
+      >
+        {children}
+      </Component>
+    );
+  },
+);
 
 List.displayName = "List";

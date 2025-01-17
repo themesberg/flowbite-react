@@ -1,5 +1,6 @@
 "use client";
 
+import { forwardRef } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
@@ -16,19 +17,21 @@ export interface MegaMenuTheme extends NavbarTheme {
 
 export type MegaMenuProps = NavbarProps;
 
-export function MegaMenu({ children, theme: customTheme, clearTheme, applyTheme, ...props }: MegaMenuProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [megaMenuTheme, provider.theme?.megaMenu, customTheme],
-    [get(provider.clearTheme, "megaMenu"), clearTheme],
-    [get(provider.applyTheme, "megaMenu"), applyTheme],
-  );
+export const MegaMenu = forwardRef<HTMLElement, MegaMenuProps>(
+  ({ children, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [megaMenuTheme, provider.theme?.megaMenu, customTheme],
+      [get(provider.clearTheme, "megaMenu"), clearTheme],
+      [get(provider.applyTheme, "megaMenu"), applyTheme],
+    );
 
-  return (
-    <Navbar theme={theme} fluid {...props}>
-      {children}
-    </Navbar>
-  );
-}
+    return (
+      <Navbar ref={ref} theme={theme} fluid {...props}>
+        {children}
+      </Navbar>
+    );
+  },
+);
 
 MegaMenu.displayName = "MegaMenu";

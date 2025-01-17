@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -15,23 +15,19 @@ export interface DropdownDividerTheme {
 
 export interface DropdownDividerProps extends ComponentProps<"div">, ThemingProps<DropdownDividerTheme> {}
 
-export function DropdownDivider({
-  className,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: DropdownDividerProps) {
-  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useDropdownContext();
+export const DropdownDivider = forwardRef<HTMLDivElement, DropdownDividerProps>(
+  ({ className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme } = useDropdownContext();
 
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [dropdownTheme.floating, provider.theme?.dropdown?.floating, rootTheme?.floating, customTheme],
-    [get(provider.clearTheme, "dropdown.floating"), get(rootClearTheme, "floating"), clearTheme],
-    [get(provider.applyTheme, "dropdown.floating"), get(rootApplyTheme, "floating"), applyTheme],
-  );
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [dropdownTheme.floating, provider.theme?.dropdown?.floating, rootTheme?.floating, customTheme],
+      [get(provider.clearTheme, "dropdown.floating"), get(rootClearTheme, "floating"), clearTheme],
+      [get(provider.applyTheme, "dropdown.floating"), get(rootApplyTheme, "floating"), applyTheme],
+    );
 
-  return <div className={twMerge(theme.divider, className)} {...props} />;
-}
+    return <div ref={ref} className={twMerge(theme.divider, className)} {...props} />;
+  },
+);
 
 DropdownDivider.displayName = "DropdownDivider";

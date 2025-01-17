@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, ElementType } from "react";
+import { forwardRef, type ComponentProps, type ElementType } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -18,30 +18,23 @@ export interface FooterLinkProps extends ComponentProps<"a">, ThemingProps<Foote
   href: string;
 }
 
-export function FooterLink({
-  as: Component = "a",
-  children,
-  className,
-  href,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: FooterLinkProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [footerTheme.groupLink.link, provider.theme?.footer?.groupLink?.link, customTheme],
-    [get(provider.clearTheme, "footer.groupLink.link"), clearTheme],
-    [get(provider.applyTheme, "footer.groupLink.link"), applyTheme],
-  );
+export const FooterLink = forwardRef<HTMLLIElement, FooterLinkProps>(
+  ({ as: Component = "a", children, className, href, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [footerTheme.groupLink.link, provider.theme?.footer?.groupLink?.link, customTheme],
+      [get(provider.clearTheme, "footer.groupLink.link"), clearTheme],
+      [get(provider.applyTheme, "footer.groupLink.link"), applyTheme],
+    );
 
-  return (
-    <li className={twMerge(theme.base, className)}>
-      <Component href={href} className={theme.href} {...props}>
-        {children}
-      </Component>
-    </li>
-  );
-}
+    return (
+      <li ref={ref} className={twMerge(theme.base, className)}>
+        <Component href={href} className={theme.href} {...props}>
+          {children}
+        </Component>
+      </li>
+    );
+  },
+);
 
 FooterLink.displayName = "FooterLink";

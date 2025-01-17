@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, ElementType } from "react";
+import { forwardRef, type ComponentProps, type ElementType } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -36,36 +36,42 @@ export interface SidebarProps extends ComponentProps<"div">, ThemingProps<Sideba
   collapsed?: boolean;
 }
 
-export function Sidebar({
-  children,
-  as: Component = "nav",
-  collapseBehavior = "collapse",
-  collapsed: isCollapsed = false,
-  className,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: SidebarProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [sidebarTheme, provider.theme?.sidebar, customTheme],
-    [get(provider.clearTheme, "sidebar"), clearTheme],
-    [get(provider.applyTheme, "sidebar"), applyTheme],
-  );
+export const Sidebar = forwardRef<HTMLElement, SidebarProps>(
+  (
+    {
+      children,
+      as: Component = "nav",
+      collapseBehavior = "collapse",
+      collapsed: isCollapsed = false,
+      className,
+      theme: customTheme,
+      clearTheme,
+      applyTheme,
+      ...props
+    },
+    ref,
+  ) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [sidebarTheme, provider.theme?.sidebar, customTheme],
+      [get(provider.clearTheme, "sidebar"), clearTheme],
+      [get(provider.applyTheme, "sidebar"), applyTheme],
+    );
 
-  return (
-    <SidebarContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, isCollapsed }}>
-      <Component
-        aria-label="Sidebar"
-        hidden={isCollapsed && collapseBehavior === "hide"}
-        className={twMerge(theme.root.base, theme.root.collapsed[isCollapsed ? "on" : "off"], className)}
-        {...props}
-      >
-        <div className={theme.root.inner}>{children}</div>
-      </Component>
-    </SidebarContext.Provider>
-  );
-}
+    return (
+      <SidebarContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, isCollapsed }}>
+        <Component
+          ref={ref}
+          aria-label="Sidebar"
+          hidden={isCollapsed && collapseBehavior === "hide"}
+          className={twMerge(theme.root.base, theme.root.collapsed[isCollapsed ? "on" : "off"], className)}
+          {...props}
+        >
+          <div className={theme.root.inner}>{children}</div>
+        </Component>
+      </SidebarContext.Provider>
+    );
+  },
+);
 
 Sidebar.displayName = "Sidebar";

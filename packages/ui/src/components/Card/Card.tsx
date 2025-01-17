@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { omit } from "../../helpers/omit";
 import { useResolveTheme } from "../../helpers/resolve-theme";
@@ -44,7 +44,7 @@ export type CardProps = (
 ) &
   CommonCardProps;
 
-export function Card(props: CardProps) {
+export const Card = forwardRef<HTMLDivElement | HTMLAnchorElement, CardProps>((props, ref) => {
   const { children, className, horizontal, href, theme: customTheme, clearTheme, applyTheme } = props;
   const Component = typeof href === "undefined" ? "div" : "a";
   const theirProps = removeCustomProps(props);
@@ -58,6 +58,7 @@ export function Card(props: CardProps) {
 
   return (
     <Component
+      ref={ref as never}
       data-testid="flowbite-card"
       href={href}
       className={twMerge(
@@ -72,7 +73,7 @@ export function Card(props: CardProps) {
       <div className={theme.root.children}>{children}</div>
     </Component>
   );
-}
+});
 
 Card.displayName = "Card";
 

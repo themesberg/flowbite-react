@@ -89,11 +89,6 @@ export const floatingLabelTheme = createTheme({
       },
     },
   },
-  helperText: {
-    default: "mt-2 text-xs text-gray-600 dark:text-gray-400",
-    success: "mt-2 text-xs text-green-600 dark:text-green-400",
-    error: "mt-2 text-xs text-red-600 dark:text-red-400",
-  },
 });
 
 export type FloatingLabelTheme = typeof floatingLabelTheme;

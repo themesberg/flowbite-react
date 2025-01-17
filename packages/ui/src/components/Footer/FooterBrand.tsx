@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -21,46 +21,37 @@ export interface FooterBrandProps extends GenericLinkImageProps, ThemingProps<Fo
   src: string;
 }
 
-export function FooterBrand({
-  alt,
-  className,
-  children,
-  href,
-  name,
-  src,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: FooterBrandProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [footerTheme.brand, provider.theme?.footer?.brand, customTheme],
-    [get(provider.clearTheme, "footer.brand"), clearTheme],
-    [get(provider.applyTheme, "footer.brand"), applyTheme],
-  );
+export const FooterBrand = forwardRef<HTMLDivElement, FooterBrandProps>(
+  ({ alt, className, children, href, name, src, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [footerTheme.brand, provider.theme?.footer?.brand, customTheme],
+      [get(provider.clearTheme, "footer.brand"), clearTheme],
+      [get(provider.applyTheme, "footer.brand"), applyTheme],
+    );
 
-  return (
-    <div>
-      {href ? (
-        <a data-testid="flowbite-footer-brand" href={href} className={twMerge(theme.base, className)} {...props}>
-          <img alt={alt} src={src} className={theme.img} />
-          <span data-testid="flowbite-footer-brand-span" className={theme.span}>
-            {name}
-          </span>
-          {children}
-        </a>
-      ) : (
-        <img
-          alt={alt}
-          data-testid="flowbite-footer-brand"
-          src={src}
-          className={twMerge(theme.img, className)}
-          {...props}
-        />
-      )}
-    </div>
-  );
-}
+    return (
+      <div ref={ref}>
+        {href ? (
+          <a data-testid="flowbite-footer-brand" href={href} className={twMerge(theme.base, className)} {...props}>
+            <img alt={alt} src={src} className={theme.img} />
+            <span data-testid="flowbite-footer-brand-span" className={theme.span}>
+              {name}
+            </span>
+            {children}
+          </a>
+        ) : (
+          <img
+            alt={alt}
+            data-testid="flowbite-footer-brand"
+            src={src}
+            className={twMerge(theme.img, className)}
+            {...props}
+          />
+        )}
+      </div>
+    );
+  },
+);
 
 FooterBrand.displayName = "FooterBrand";

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -30,33 +30,39 @@ export interface LabelProps extends Omit<ComponentProps<"label">, "color">, Them
   value?: string;
 }
 
-export function Label({
-  children,
-  className,
-  color = "default",
-  disabled = false,
-  value,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: LabelProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [labelTheme, provider.theme?.label, customTheme],
-    [get(provider.clearTheme, "label"), clearTheme],
-    [get(provider.applyTheme, "label"), applyTheme],
-  );
+export const Label = forwardRef<HTMLLabelElement, LabelProps>(
+  (
+    {
+      children,
+      className,
+      color = "default",
+      disabled = false,
+      value,
+      theme: customTheme,
+      clearTheme,
+      applyTheme,
+      ...props
+    },
+    ref,
+  ) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [labelTheme, provider.theme?.label, customTheme],
+      [get(provider.clearTheme, "label"), clearTheme],
+      [get(provider.applyTheme, "label"), applyTheme],
+    );
 
-  return (
-    <label
-      className={twMerge(theme.root.base, theme.root.colors[color], disabled && theme.root.disabled, className)}
-      data-testid="flowbite-label"
-      {...props}
-    >
-      {value ?? children ?? ""}
-    </label>
-  );
-}
+    return (
+      <label
+        ref={ref}
+        className={twMerge(theme.root.base, theme.root.colors[color], disabled && theme.root.disabled, className)}
+        data-testid="flowbite-label"
+        {...props}
+      >
+        {value ?? children ?? ""}
+      </label>
+    );
+  },
+);
 
 Label.displayName = "Label";

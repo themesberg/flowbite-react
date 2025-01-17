@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentProps } from "react";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -40,42 +40,48 @@ export interface NavbarProps extends ComponentProps<"nav">, ThemingProps<NavbarT
   border?: boolean;
 }
 
-export function Navbar({
-  border,
-  children,
-  className,
-  fluid = false,
-  menuOpen,
-  rounded,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: NavbarProps) {
-  const [isOpen, setIsOpen] = useState(menuOpen);
+export const Navbar = forwardRef<HTMLElement, NavbarProps>(
+  (
+    {
+      border,
+      children,
+      className,
+      fluid = false,
+      menuOpen,
+      rounded,
+      theme: customTheme,
+      clearTheme,
+      applyTheme,
+      ...props
+    },
+    ref,
+  ) => {
+    const [isOpen, setIsOpen] = useState(menuOpen);
 
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [navbarTheme, provider.theme?.navbar, customTheme],
-    [get(provider.clearTheme, "navbar"), clearTheme],
-    [get(provider.applyTheme, "navbar"), applyTheme],
-  );
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [navbarTheme, provider.theme?.navbar, customTheme],
+      [get(provider.clearTheme, "navbar"), clearTheme],
+      [get(provider.applyTheme, "navbar"), applyTheme],
+    );
 
-  return (
-    <NavbarContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, isOpen, setIsOpen }}>
-      <nav
-        className={twMerge(
-          theme.root.base,
-          theme.root.bordered[border ? "on" : "off"],
-          theme.root.rounded[rounded ? "on" : "off"],
-          className,
-        )}
-        {...props}
-      >
-        <div className={twMerge(theme.root.inner.base, theme.root.inner.fluid[fluid ? "on" : "off"])}>{children}</div>
-      </nav>
-    </NavbarContext.Provider>
-  );
-}
+    return (
+      <NavbarContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, isOpen, setIsOpen }}>
+        <nav
+          ref={ref}
+          className={twMerge(
+            theme.root.base,
+            theme.root.bordered[border ? "on" : "off"],
+            theme.root.rounded[rounded ? "on" : "off"],
+            className,
+          )}
+          {...props}
+        >
+          <div className={twMerge(theme.root.inner.base, theme.root.inner.fluid[fluid ? "on" : "off"])}>{children}</div>
+        </nav>
+      </NavbarContext.Provider>
+    );
+  },
+);
 
 Navbar.displayName = "Navbar";

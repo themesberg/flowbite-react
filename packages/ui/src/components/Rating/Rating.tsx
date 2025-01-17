@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -21,29 +21,23 @@ export interface RatingProps extends ComponentProps<"div">, ThemingProps<RatingT
   size?: DynamicStringEnumKeysOf<RatingStarSizes>;
 }
 
-export function Rating({
-  children,
-  className,
-  size = "sm",
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: RatingProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [ratingTheme, provider.theme?.rating, customTheme],
-    [get(provider.clearTheme, "rating"), clearTheme],
-    [get(provider.applyTheme, "rating"), applyTheme],
-  );
+export const Rating = forwardRef<HTMLDivElement, RatingProps>(
+  ({ children, className, size = "sm", theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [ratingTheme, provider.theme?.rating, customTheme],
+      [get(provider.clearTheme, "rating"), clearTheme],
+      [get(provider.applyTheme, "rating"), applyTheme],
+    );
 
-  return (
-    <RatingContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, size }}>
-      <div className={twMerge(theme.root.base, className)} {...props}>
-        {children}
-      </div>
-    </RatingContext.Provider>
-  );
-}
+    return (
+      <RatingContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, size }}>
+        <div ref={ref} className={twMerge(theme.root.base, className)} {...props}>
+          {children}
+        </div>
+      </RatingContext.Provider>
+    );
+  },
+);
 
 Rating.displayName = "Rating";

@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useLayoutEffect, type ComponentProps, type ElementType } from "react";
+import { forwardRef, useId, useLayoutEffect, type ComponentProps, type ElementType } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -24,51 +24,44 @@ export interface ModalHeaderProps extends ComponentProps<"div">, ThemingProps<Mo
   as?: ElementType;
 }
 
-export function ModalHeader({
-  as: Component = "h3",
-  children,
-  className,
-  id,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: ModalHeaderProps) {
-  const innerHeaderId = useId();
-  const headerId = id || innerHeaderId;
+export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>(
+  ({ as: Component = "h3", children, className, id, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const innerHeaderId = useId();
+    const headerId = id || innerHeaderId;
 
-  const {
-    theme: rootTheme,
-    clearTheme: rootClearTheme,
-    applyTheme: rootApplyTheme,
-    popup,
-    onClose,
-    setHeaderId,
-  } = useModalContext();
+    const {
+      theme: rootTheme,
+      clearTheme: rootClearTheme,
+      applyTheme: rootApplyTheme,
+      popup,
+      onClose,
+      setHeaderId,
+    } = useModalContext();
 
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [modalTheme.header, provider.theme?.modal?.header, rootTheme?.header, customTheme],
-    [get(provider.clearTheme, "modal.header"), get(rootClearTheme, "header"), clearTheme],
-    [get(provider.applyTheme, "modal.header"), get(rootApplyTheme, "header"), applyTheme],
-  );
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [modalTheme.header, provider.theme?.modal?.header, rootTheme?.header, customTheme],
+      [get(provider.clearTheme, "modal.header"), get(rootClearTheme, "header"), clearTheme],
+      [get(provider.applyTheme, "modal.header"), get(rootApplyTheme, "header"), applyTheme],
+    );
 
-  useLayoutEffect(() => {
-    setHeaderId(headerId);
+    useLayoutEffect(() => {
+      setHeaderId(headerId);
 
-    return () => setHeaderId(undefined);
-  }, [headerId, setHeaderId]);
+      return () => setHeaderId(undefined);
+    }, [headerId, setHeaderId]);
 
-  return (
-    <div className={twMerge(theme.base, popup && theme.popup, className)} {...props}>
-      <Component id={headerId} className={theme.title}>
-        {children}
-      </Component>
-      <button aria-label="Close" className={theme.close.base} type="button" onClick={onClose}>
-        <OutlineXIcon aria-hidden className={theme.close.icon} />
-      </button>
-    </div>
-  );
-}
+    return (
+      <div ref={ref} className={twMerge(theme.base, popup && theme.popup, className)} {...props}>
+        <Component id={headerId} className={theme.title}>
+          {children}
+        </Component>
+        <button aria-label="Close" className={theme.close.base} type="button" onClick={onClose}>
+          <OutlineXIcon aria-hidden className={theme.close.icon} />
+        </button>
+      </div>
+    );
+  },
+);
 
 ModalHeader.displayName = "ModalHeader";

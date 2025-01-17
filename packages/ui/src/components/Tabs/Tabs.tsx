@@ -103,17 +103,17 @@ export const Tabs = forwardRef<TabsRef, TabsProps>(
     );
     const [focusedTab, setFocusedTab] = useState(-1);
 
-    const setActiveTabWithCallback = (activeTab: number) => {
+    function setActiveTabWithCallback(activeTab: number) {
       setActiveTab(activeTab);
       if (onActiveTabChange) onActiveTabChange(activeTab);
-    };
+    }
 
-    const handleClick = ({ target }: TabEventProps): void => {
+    function handleClick({ target }: TabEventProps): void {
       setActiveTabWithCallback(target);
       setFocusedTab(target);
-    };
+    }
 
-    const handleKeyboard = ({ event, target }: TabKeyboardEventProps): void => {
+    function handleKeyboard({ event, target }: TabKeyboardEventProps): void {
       if (event.key === "ArrowLeft") {
         setFocusedTab(Math.max(0, focusedTab - 1));
       }
@@ -126,7 +126,7 @@ export const Tabs = forwardRef<TabsRef, TabsProps>(
         setActiveTabWithCallback(target);
         setFocusedTab(target);
       }
-    };
+    }
 
     const tabItemStyle = theme.tablist.tabitem.variant[variant];
     const tabItemContainerStyle = theme.tabitemcontainer.variant[variant];

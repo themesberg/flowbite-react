@@ -1,8 +1,8 @@
-import { Label, TextInput } from "flowbite-react";
+import { HelperText, Label, TextInput } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-import { Label, TextInput } from "flowbite-react";
+import { HelperText, Label, TextInput } from "flowbite-react";
 
 export function Component() {
   return (
@@ -11,33 +11,19 @@ export function Component() {
         <div className="mb-2 block">
           <Label htmlFor="username3" color="success" value="Your name" />
         </div>
-        <TextInput
-          id="username"
-          placeholder="Bonnie Green"
-          required
-          color="success"
-          helperText={
-            <>
-              <span className="font-medium">Alright!</span> Username available!
-            </>
-          }
-        />
+        <TextInput id="username" placeholder="Bonnie Green" required color="success" />
+        <HelperText>
+          <span className="font-medium">Alright!</span> Username available!
+        </HelperText>
       </div>
       <div>
         <div className="mb-2 block">
           <Label htmlFor="username4" color="failure" value="Your name" />
         </div>
-        <TextInput
-          id="username4"
-          placeholder="Bonnie Green"
-          required
-          color="failure"
-          helperText={
-            <>
-              <span className="font-medium">Oops!</span> Username already taken!
-            </>
-          }
-        />
+        <TextInput id="username4" placeholder="Bonnie Green" required color="failure" />
+        <HelperText>
+          <span className="font-medium">Oops!</span> Username already taken!
+        </HelperText>
       </div>
     </div>
   );
@@ -51,33 +37,19 @@ export function Component() {
         <div className="mb-2 block">
           <Label htmlFor="username3" color="success" value="Your name" />
         </div>
-        <TextInput
-          id="username"
-          placeholder="Bonnie Green"
-          required
-          color="success"
-          helperText={
-            <>
-              <span className="font-medium">Alright!</span> Username available!
-            </>
-          }
-        />
+        <TextInput id="username" placeholder="Bonnie Green" required color="success" />
+        <HelperText>
+          <span className="font-medium">Alright!</span> Username available!
+        </HelperText>
       </div>
       <div>
         <div className="mb-2 block">
           <Label htmlFor="username4" color="failure" value="Your name" />
         </div>
-        <TextInput
-          id="username4"
-          placeholder="Bonnie Green"
-          required
-          color="failure"
-          helperText={
-            <>
-              <span className="font-medium">Oops!</span> Username already taken!
-            </>
-          }
-        />
+        <TextInput id="username4" placeholder="Bonnie Green" required color="failure" />
+        <HelperText>
+          <span className="font-medium">Oops!</span> Username already taken!
+        </HelperText>
       </div>
     </div>
   );

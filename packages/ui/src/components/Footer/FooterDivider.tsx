@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps } from "react";
+import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -14,15 +14,17 @@ export interface FooterDividerTheme {
 
 export interface FooterDividerProps extends ComponentProps<"hr">, ThemingProps<FooterDividerTheme> {}
 
-export function FooterDivider({ className, theme: customTheme, clearTheme, applyTheme, ...props }: FooterDividerProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [footerTheme.divider, provider.theme?.footer?.divider, customTheme],
-    [get(provider.clearTheme, "footer.divider"), clearTheme],
-    [get(provider.applyTheme, "footer.divider"), applyTheme],
-  );
+export const FooterDivider = forwardRef<HTMLHRElement, FooterDividerProps>(
+  ({ className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [footerTheme.divider, provider.theme?.footer?.divider, customTheme],
+      [get(provider.clearTheme, "footer.divider"), clearTheme],
+      [get(provider.applyTheme, "footer.divider"), applyTheme],
+    );
 
-  return <hr data-testid="footer-divider" className={twMerge(theme.base, className)} {...props} />;
-}
+    return <hr ref={ref} data-testid="footer-divider" className={twMerge(theme.base, className)} {...props} />;
+  },
+);
 
 FooterDivider.displayName = "FooterDivider";
