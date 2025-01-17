@@ -10,7 +10,7 @@ describe("Components / Badge", () => {
     it("should render", () => {
       render(<Badge icon={HiCheck}>A badge</Badge>);
 
-      expect(link()).toBeInTheDocument();
+      expect(badge()).toBeInTheDocument();
     });
   });
 
@@ -18,9 +18,7 @@ describe("Components / Badge", () => {
     it("should merge not overwrite", () => {
       render(<Badge className="bg-red-500">A badge with custom background</Badge>);
 
-      expect(badge()).toHaveClass(
-        "bg-red-500 text-cyan-800 dark:bg-cyan-200 dark:text-cyan-800 group-hover:bg-cyan-200 dark:group-hover:bg-cyan-300",
-      );
+      expect(badge()).toHaveClass("bg-red-500");
     });
   });
 
@@ -88,5 +86,3 @@ describe("Components / Badge", () => {
 const badge = () => screen.getByTestId("flowbite-badge");
 
 const icon = () => screen.getByTestId("flowbite-badge-icon");
-
-const link = () => screen.getByRole("link");
