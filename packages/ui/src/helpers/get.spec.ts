@@ -35,29 +35,29 @@ describe("get helper", () => {
   });
 
   it("should handle true at root level", () => {
-    const resetTheme = true;
-    expect(get(resetTheme, "base")).toBe(true);
-    expect(get(resetTheme, "icon")).toBe(true);
-    expect(get(resetTheme, "icon.base")).toBe(true);
+    const clearTheme = true;
+    expect(get(clearTheme, "base")).toBe(true);
+    expect(get(clearTheme, "icon")).toBe(true);
+    expect(get(clearTheme, "icon.base")).toBe(true);
   });
 
   it("should handle partial object overrides", () => {
-    const resetTheme = { icon: true };
-    expect(get(resetTheme, "base")).toBeUndefined();
-    expect(get(resetTheme, "icon")).toBe(true);
-    expect(get(resetTheme, "icon.base")).toBe(true);
+    const clearTheme = { icon: true };
+    expect(get(clearTheme, "base")).toBeUndefined();
+    expect(get(clearTheme, "icon")).toBe(true);
+    expect(get(clearTheme, "icon.base")).toBe(true);
   });
 
   it("should handle nested partial object overrides", () => {
-    const resetTheme = { icon: { base: true } };
-    expect(get(resetTheme, "icon")).toEqual({ base: true });
-    expect(get(resetTheme, "icon.base")).toBe(true);
-    expect(get(resetTheme, "icon.size")).toBeUndefined();
+    const clearTheme = { icon: { base: true } };
+    expect(get(clearTheme, "icon")).toEqual({ base: true });
+    expect(get(clearTheme, "icon.base")).toBe(true);
+    expect(get(clearTheme, "icon.size")).toBeUndefined();
   });
 
   it("should handle invalid paths", () => {
-    const resetTheme = { icon: { base: true } };
-    expect(get(resetTheme, "invalid")).toBeUndefined();
-    expect(get(resetTheme, "icon.invalid")).toBeUndefined();
+    const clearTheme = { icon: { base: true } };
+    expect(get(clearTheme, "invalid")).toBeUndefined();
+    expect(get(clearTheme, "icon.invalid")).toBeUndefined();
   });
 });
