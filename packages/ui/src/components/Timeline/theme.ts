@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { TimelineTheme } from "./Timeline";
 
-export const timelineTheme: TimelineTheme = createTheme({
+export const timelineTheme = createTheme<TimelineTheme>({
   root: {
     direction: {
       horizontal: "sm:flex",

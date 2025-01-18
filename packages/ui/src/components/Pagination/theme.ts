@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { PaginationTheme } from "./Pagination";
 
-export const paginationTheme: PaginationTheme = createTheme({
+export const paginationTheme = createTheme<PaginationTheme>({
   base: "",
   layout: {
     table: {

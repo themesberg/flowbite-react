@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { AlertTheme } from "./Alert";
 
-export const alertTheme: AlertTheme = createTheme({
+export const alertTheme = createTheme<AlertTheme>({
   base: "flex flex-col gap-2 p-4 text-sm",
   borderAccent: "border-t-4",
   closeButton: {

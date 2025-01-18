@@ -4,7 +4,7 @@ import { dropdownTheme } from "../Dropdown/theme";
 import { navbarTheme } from "../Navbar/theme";
 import type { MegaMenuTheme } from "./MegaMenu";
 
-export const megaMenuTheme: MegaMenuTheme = createTheme({
+export const megaMenuTheme = createTheme<MegaMenuTheme>({
   ...navbarTheme,
   dropdown: {
     base: "",

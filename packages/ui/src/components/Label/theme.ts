@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { LabelTheme } from "./Label";
 
-export const labelTheme: LabelTheme = createTheme({
+export const labelTheme = createTheme<LabelTheme>({
   root: {
     base: "text-sm font-medium",
     disabled: "opacity-50",

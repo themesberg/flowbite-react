@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { SidebarTheme } from "./Sidebar";
 
-export const sidebarTheme: SidebarTheme = createTheme({
+export const sidebarTheme = createTheme<SidebarTheme>({
   root: {
     base: "h-full",
     collapsed: {

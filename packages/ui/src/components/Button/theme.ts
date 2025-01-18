@@ -2,7 +2,7 @@ import { createTheme } from "../../helpers/create-theme";
 import type { ButtonTheme } from "./Button";
 import type { ButtonGroupTheme } from "./ButtonGroup";
 
-export const buttonTheme: ButtonTheme = createTheme({
+export const buttonTheme = createTheme<ButtonTheme>({
   base: "relative flex items-center justify-center rounded-lg text-center font-medium focus:outline-none focus:ring-4",
   disabled: "pointer-events-none opacity-50",
   fullSized: "w-full",
@@ -61,6 +61,6 @@ export const buttonTheme: ButtonTheme = createTheme({
   },
 });
 
-export const buttonGroupTheme: ButtonGroupTheme = createTheme({
+export const buttonGroupTheme = createTheme<ButtonGroupTheme>({
   base: "inline-flex rounded-md shadow-sm",
 });

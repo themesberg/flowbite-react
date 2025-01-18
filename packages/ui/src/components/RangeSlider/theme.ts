@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { RangeSliderTheme } from "./RangeSlider";
 
-export const rangeSliderTheme: RangeSliderTheme = createTheme({
+export const rangeSliderTheme = createTheme<RangeSliderTheme>({
   root: {
     base: "flex",
   },

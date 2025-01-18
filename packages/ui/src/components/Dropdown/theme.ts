@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { DropdownTheme } from "./Dropdown";
 
-export const dropdownTheme: DropdownTheme = createTheme({
+export const dropdownTheme = createTheme<DropdownTheme>({
   arrowIcon: "ml-2 h-4 w-4",
   content: "py-1 focus:outline-none",
   floating: {

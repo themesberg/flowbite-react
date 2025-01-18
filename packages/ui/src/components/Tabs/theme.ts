@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { TabsTheme } from "./Tabs";
 
-export const tabsTheme: TabsTheme = createTheme({
+export const tabsTheme = createTheme<TabsTheme>({
   base: "flex flex-col gap-2",
   tablist: {
     base: "flex text-center",

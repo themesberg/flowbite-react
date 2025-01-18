@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { NavbarTheme } from "./Navbar";
 
-export const navbarTheme: NavbarTheme = createTheme({
+export const navbarTheme = createTheme<NavbarTheme>({
   root: {
     base: "bg-white px-2 py-2.5 sm:px-4 dark:border-gray-700 dark:bg-gray-800",
     rounded: {

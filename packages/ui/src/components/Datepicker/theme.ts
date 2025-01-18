@@ -1,7 +1,7 @@
 import type { DatepickerTheme } from ".";
 import { createTheme } from "../../helpers/create-theme";
 
-export const datePickerTheme: DatepickerTheme = createTheme({
+export const datePickerTheme = createTheme<DatepickerTheme>({
   root: {
     base: "relative",
   },

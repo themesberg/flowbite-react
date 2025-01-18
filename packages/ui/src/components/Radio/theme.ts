@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { RadioTheme } from "./Radio";
 
-export const radioTheme: RadioTheme = createTheme({
+export const radioTheme = createTheme<RadioTheme>({
   base: "h-4 w-4 appearance-none rounded-full border border-gray-300 bg-gray-100 bg-[length:1em_1em] bg-center bg-no-repeat checked:border-transparent checked:bg-current checked:bg-dot-icon focus:outline-none focus:ring-2 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-700 dark:checked:border-transparent dark:checked:bg-current",
   color: {
     default: "text-primary-600 focus:ring-primary-600 dark:ring-offset-gray-800 dark:focus:ring-primary-600",

@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { HRTheme } from "./HR";
 
-export const hrTheme: HRTheme = createTheme({
+export const hrTheme = createTheme<HRTheme>({
   root: {
     base: "my-8 h-px border-0 bg-gray-200 dark:bg-gray-700",
   },

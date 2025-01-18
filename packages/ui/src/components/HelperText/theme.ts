@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { HelperTextTheme } from "./HelperText";
 
-export const helperTextTheme: HelperTextTheme = createTheme({
+export const helperTextTheme = createTheme<HelperTextTheme>({
   root: {
     base: "mt-2 text-sm",
     colors: {

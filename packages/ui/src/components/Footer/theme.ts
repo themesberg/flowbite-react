@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { FooterTheme } from "./Footer";
 
-export const footerTheme: FooterTheme = createTheme({
+export const footerTheme = createTheme<FooterTheme>({
   root: {
     base: "w-full rounded-lg bg-white shadow md:flex md:items-center md:justify-between dark:bg-gray-800",
     container: "w-full p-6",

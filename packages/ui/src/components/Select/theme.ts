@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { SelectTheme } from "./Select";
 
-export const selectTheme: SelectTheme = createTheme({
+export const selectTheme = createTheme<SelectTheme>({
   base: "flex",
   addon:
     "inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-200 px-3 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-600 dark:text-gray-400",

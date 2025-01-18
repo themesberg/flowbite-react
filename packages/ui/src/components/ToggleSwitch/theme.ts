@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { ToggleSwitchTheme } from "./ToggleSwitch";
 
-export const toggleSwitchTheme: ToggleSwitchTheme = createTheme({
+export const toggleSwitchTheme = createTheme<ToggleSwitchTheme>({
   root: {
     base: "group flex rounded-lg focus:outline-none",
     active: {

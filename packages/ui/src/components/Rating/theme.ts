@@ -2,7 +2,7 @@ import { createTheme } from "../../helpers/create-theme";
 import type { RatingTheme } from "./Rating";
 import type { RatingAdvancedTheme } from "./RatingAdvanced";
 
-export const ratingTheme: RatingTheme = createTheme({
+export const ratingTheme = createTheme<RatingTheme>({
   root: {
     base: "flex items-center",
   },
@@ -17,7 +17,7 @@ export const ratingTheme: RatingTheme = createTheme({
   },
 });
 
-export const ratingAdvancedTheme: RatingAdvancedTheme = createTheme({
+export const ratingAdvancedTheme = createTheme<RatingAdvancedTheme>({
   base: "flex items-center",
   label: "text-sm font-medium text-cyan-600 dark:text-cyan-500",
   progress: {

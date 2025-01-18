@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { SpinnerTheme } from "./Spinner";
 
-export const spinnerTheme: SpinnerTheme = createTheme({
+export const spinnerTheme = createTheme<SpinnerTheme>({
   base: "inline animate-spin text-gray-200",
   color: {
     default: "fill-primary-600",

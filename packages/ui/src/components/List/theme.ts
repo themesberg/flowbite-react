@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { ListTheme } from "./List";
 
-export const listTheme: ListTheme = createTheme({
+export const listTheme = createTheme<ListTheme>({
   root: {
     base: "list-inside space-y-1 text-gray-500 dark:text-gray-400",
     ordered: {

@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { BadgeTheme } from "./Badge";
 
-export const badgeTheme: BadgeTheme = createTheme({
+export const badgeTheme = createTheme<BadgeTheme>({
   root: {
     base: "flex h-fit items-center gap-1 font-semibold",
     color: {

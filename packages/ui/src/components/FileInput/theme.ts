@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { FileInputTheme } from "./FileInput";
 
-export const fileInputTheme: FileInputTheme = createTheme({
+export const fileInputTheme = createTheme<FileInputTheme>({
   base: "block w-full cursor-pointer rounded-lg border file:-ms-4 file:me-4 file:cursor-pointer file:border-none file:bg-gray-800 file:py-2.5 file:pe-4 file:ps-8 file:text-sm file:font-medium file:leading-[inherit] file:text-white hover:file:bg-gray-700 focus:outline-none focus:ring-1 dark:file:bg-gray-600 dark:hover:file:bg-gray-500",
   sizes: {
     sm: "text-xs",

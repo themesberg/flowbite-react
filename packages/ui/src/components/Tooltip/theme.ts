@@ -1,7 +1,7 @@
 import { createTheme } from "../../helpers/create-theme";
 import type { TooltipTheme } from "./Tooltip";
 
-export const tooltipTheme: TooltipTheme = createTheme({
+export const tooltipTheme = createTheme<TooltipTheme>({
   target: "w-fit",
   animation: "transition-opacity",
   arrow: {
