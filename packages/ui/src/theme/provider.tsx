@@ -4,10 +4,10 @@ import { deepmerge } from "deepmerge-ts";
 import { createContext, useContext, useMemo, type PropsWithChildren } from "react";
 import { deepMergeStrings } from "../helpers/deep-merge";
 import { twMerge } from "../helpers/tailwind-merge";
-import type { DeepPartial, FlowbiteProps, FlowbiteTheme, ThemingProps } from "../types";
+import type { FlowbiteProps, FlowbiteTheme, ThemingProps } from "../types";
 
 export interface ThemeProviderValue extends ThemingProps<FlowbiteTheme> {
-  props?: DeepPartial<FlowbiteProps>;
+  props?: Partial<FlowbiteProps>;
 }
 
 export interface ThemeProviderProps extends ThemeProviderValue, PropsWithChildren {
