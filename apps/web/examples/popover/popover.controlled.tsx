@@ -24,13 +24,13 @@ export function Component() {
           <div>
             <h2 className="text-base text-gray-500">Area (sqft)</h2>
             <div className="mb-2 block">
-              <Label htmlFor="minsqft" value="Minimum sqft" />
+              <Label htmlFor="minsqft">Minimum sqft</Label>
             </div>
             <TextInput id="minsqft" type="number" />
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="maxsqft" value="Maximum sqft" />
+              <Label htmlFor="maxsqft">Maximum sqft</Label>
             </div>
             <TextInput id="maxsqft" type="number" />
           </div>
@@ -63,13 +63,13 @@ export function Component() {
           <div>
             <h2 className="text-base text-gray-500">Area (sqft)</h2>
             <div className="mb-2 block">
-              <Label htmlFor="minsqft" value="Minimum sqft" />
+              <Label htmlFor="minsqft">Minimum sqft</Label>
             </div>
             <TextInput id="minsqft" type="number" />
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="maxsqft" value="Maximum sqft" />
+              <Label htmlFor="maxsqft">Maximum sqft</Label>
             </div>
             <TextInput id="maxsqft" type="number" />
           </div>

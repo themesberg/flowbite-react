@@ -7,7 +7,9 @@ import { FileInput, Label } from "flowbite-react";
 export function Component() {
   return (
     <>
-      <Label className="mb-2 block" htmlFor="multiple-file-upload" value="Upload multiple files" />
+      <Label className="mb-2 block" htmlFor="multiple-file-upload">
+        Upload multiple files
+      </Label>
       <FileInput id="multiple-file-upload" multiple />
     </>
   );
@@ -17,7 +19,9 @@ export function Component() {
 export function Component() {
   return (
     <>
-      <Label className="mb-2 block" htmlFor="multiple-file-upload" value="Upload multiple files" />
+      <Label className="mb-2 block" htmlFor="multiple-file-upload">
+        Upload multiple files
+      </Label>
       <FileInput id="multiple-file-upload" multiple />
     </>
   );

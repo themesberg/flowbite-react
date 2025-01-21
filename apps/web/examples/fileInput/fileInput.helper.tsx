@@ -7,9 +7,11 @@ import { FileInput, HelperText, Label } from "flowbite-react";
 export function Component() {
   return (
     <>
-      <Label className="mb-2 block" htmlFor="file-upload-helper-text" value="Upload file" />
+      <Label className="mb-2 block" htmlFor="file-upload-helper-text">
+        Upload file
+      </Label>
       <FileInput id="file-upload-helper-text" />
-      <HelperText>SVG, PNG, JPG or GIF (MAX. 800x400px).</HelperText>
+      <HelperText className="mt-1">SVG, PNG, JPG or GIF (MAX. 800x400px).</HelperText>
     </>
   );
 }
@@ -18,7 +20,9 @@ export function Component() {
 export function Component() {
   return (
     <>
-      <Label className="mb-2 block" htmlFor="file-upload-helper-text" value="Upload file" />
+      <Label className="mb-2 block" htmlFor="file-upload-helper-text">
+        Upload file
+      </Label>
       <FileInput id="file-upload-helper-text" />
       <HelperText className="mt-1">SVG, PNG, JPG or GIF (MAX. 800x400px).</HelperText>
     </>

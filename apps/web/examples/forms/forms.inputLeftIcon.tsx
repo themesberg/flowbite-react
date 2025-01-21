@@ -14,7 +14,7 @@ export function Component() {
   return (
     <div className="max-w-md">
       <div className="mb-2 block">
-        <Label htmlFor="email4" value="Your email" />
+        <Label htmlFor="email4">Your email</Label>
       </div>
       <TextInput id="email4" type="email" icon={HiMail} placeholder="name@flowbite.com" required />
     </div>
@@ -26,7 +26,7 @@ export function Component() {
   return (
     <div className="max-w-md">
       <div className="mb-2 block">
-        <Label htmlFor="email4" value="Your email" />
+        <Label htmlFor="email4">Your email</Label>
       </div>
       <TextInput id="email4" type="email" icon={HiMail} placeholder="name@flowbite.com" required />
     </div>

@@ -9,7 +9,9 @@ export function Component() {
     <div className="flex max-w-md flex-col gap-4">
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="username3" color="success" value="Your name" />
+          <Label htmlFor="username3" color="success">
+            Your name
+          </Label>
         </div>
         <TextInput id="username" placeholder="Bonnie Green" required color="success" />
         <HelperText>
@@ -18,7 +20,9 @@ export function Component() {
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="username4" color="failure" value="Your name" />
+          <Label htmlFor="username4" color="failure">
+            Your name
+          </Label>
         </div>
         <TextInput id="username4" placeholder="Bonnie Green" required color="failure" />
         <HelperText>
@@ -35,7 +39,9 @@ export function Component() {
     <div className="flex max-w-md flex-col gap-4">
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="username3" color="success" value="Your name" />
+          <Label htmlFor="username3" color="success">
+            Your name
+          </Label>
         </div>
         <TextInput id="username" placeholder="Bonnie Green" required color="success" />
         <HelperText>
@@ -44,7 +50,9 @@ export function Component() {
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="username4" color="failure" value="Your name" />
+          <Label htmlFor="username4" color="failure">
+            Your name
+          </Label>
         </div>
         <TextInput id="username4" placeholder="Bonnie Green" required color="failure" />
         <HelperText>

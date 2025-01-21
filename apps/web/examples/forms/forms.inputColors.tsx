@@ -9,31 +9,41 @@ export function Component() {
     <div className="flex max-w-md flex-col gap-4">
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="input-gray" color="gray" value="Gray" />
+          <Label htmlFor="input-gray" color="gray">
+            Gray
+          </Label>
         </div>
         <TextInput id="input-gray" placeholder="Input Gray" required color="gray" />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="input-info" color="info" value="Info" />
+          <Label htmlFor="input-info" color="info">
+            Info
+          </Label>
         </div>
         <TextInput id="input-info" placeholder="Input Info" required color="info" />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="input-success" color="success" value="Success" />
+          <Label htmlFor="input-success" color="success">
+            Success
+          </Label>
         </div>
         <TextInput id="input-success" placeholder="Input Success" required color="success" />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="input-failure" color="failure" value="Failure" />
+          <Label htmlFor="input-failure" color="failure">
+            Failure
+          </Label>
         </div>
         <TextInput id="input-failure" placeholder="Input Failure" required color="failure" />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="input-warning" color="warning" value="Warning" />
+          <Label htmlFor="input-warning" color="warning">
+            Warning
+          </Label>
         </div>
         <TextInput id="input-warning" placeholder="Input Warning" required color="warning" />
       </div>
@@ -47,31 +57,41 @@ export function Component() {
     <div className="flex max-w-md flex-col gap-4">
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="input-gray" color="gray" value="Gray" />
+          <Label htmlFor="input-gray" color="gray">
+            Gray
+          </Label>
         </div>
         <TextInput id="input-gray" placeholder="Input Gray" required color="gray" />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="input-info" color="info" value="Info" />
+          <Label htmlFor="input-info" color="info">
+            Info
+          </Label>
         </div>
         <TextInput id="input-info" placeholder="Input Info" required color="info" />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="input-success" color="success" value="Success" />
+          <Label htmlFor="input-success" color="success">
+            Success
+          </Label>
         </div>
         <TextInput id="input-success" placeholder="Input Success" required color="success" />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="input-failure" color="failure" value="Failure" />
+          <Label htmlFor="input-failure" color="failure">
+            Failure
+          </Label>
         </div>
         <TextInput id="input-failure" placeholder="Input Failure" required color="failure" />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="input-warning" color="warning" value="Warning" />
+          <Label htmlFor="input-warning" color="warning">
+            Warning
+          </Label>
         </div>
         <TextInput id="input-warning" placeholder="Input Warning" required color="warning" />
       </div>

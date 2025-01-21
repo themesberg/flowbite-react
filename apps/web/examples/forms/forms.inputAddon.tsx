@@ -8,7 +8,7 @@ export function Component() {
   return (
     <div className="max-w-md">
       <div className="mb-2 block">
-        <Label htmlFor="username3" value="Username" />
+        <Label htmlFor="username3">Username</Label>
       </div>
       <TextInput id="username3" placeholder="Bonnie Green" addon="@" required />
     </div>
@@ -20,7 +20,7 @@ export function Component() {
   return (
     <div className="max-w-md">
       <div className="mb-2 block">
-        <Label htmlFor="username3" value="Username" />
+        <Label htmlFor="username3">Username</Label>
       </div>
       <TextInput id="username3" placeholder="Bonnie Green" addon="@" required />
     </div>

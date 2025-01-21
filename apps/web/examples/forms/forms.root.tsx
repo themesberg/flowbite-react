@@ -9,13 +9,13 @@ export function Component() {
     <form className="flex max-w-md flex-col gap-4">
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="email1" value="Your email" />
+          <Label htmlFor="email1">Your email</Label>
         </div>
         <TextInput id="email1" type="email" placeholder="name@flowbite.com" required />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="password1" value="Your password" />
+          <Label htmlFor="password1">Your password</Label>
         </div>
         <TextInput id="password1" type="password" required />
       </div>
@@ -34,13 +34,13 @@ export function Component() {
     <form className="flex max-w-md flex-col gap-4">
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="email1" value="Your email" />
+          <Label htmlFor="email1">Your email</Label>
         </div>
         <TextInput id="email1" type="email" placeholder="name@flowbite.com" required />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="password1" value="Your password" />
+          <Label htmlFor="password1">Your password</Label>
         </div>
         <TextInput id="password1" type="password" required />
       </div>

@@ -11,19 +11,19 @@ export function Component() {
     <form className="flex max-w-md flex-col gap-4">
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="email2" value="Your email" />
+          <Label htmlFor="email2">Your email</Label>
         </div>
         <TextInput id="email2" type="email" placeholder="name@flowbite.com" required shadow />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="password2" value="Your password" />
+          <Label htmlFor="password2">Your password</Label>
         </div>
         <TextInput id="password2" type="password" required shadow />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="repeat-password" value="Repeat password" />
+          <Label htmlFor="repeat-password">Repeat password</Label>
         </div>
         <TextInput id="repeat-password" type="password" required shadow />
       </div>
@@ -47,19 +47,19 @@ export function Component() {
     <form className="flex max-w-md flex-col gap-4">
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="email2" value="Your email" />
+          <Label htmlFor="email2">Your email</Label>
         </div>
         <TextInput id="email2" type="email" placeholder="name@flowbite.com" required shadow />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="password2" value="Your password" />
+          <Label htmlFor="password2">Your password</Label>
         </div>
         <TextInput id="password2" type="password" required shadow />
       </div>
       <div>
         <div className="mb-2 block">
-          <Label htmlFor="repeat-password" value="Repeat password" />
+          <Label htmlFor="repeat-password">Repeat password</Label>
         </div>
         <TextInput id="repeat-password" type="password" required shadow />
       </div>
