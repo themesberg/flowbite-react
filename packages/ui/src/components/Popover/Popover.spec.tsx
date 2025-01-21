@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { useState } from "react";
 import { describe, expect, it } from "vitest";
 import { Button } from "../Button";
-import { Popover } from "./index";
+import { Popover } from "./Popover";
 
 describe("Popover", () => {
   describe("Rendering", () => {

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import { Button } from "../Button";
-import { Tooltip } from "./index";
+import { Tooltip } from "./Tooltip";
 
 describe("Tooltip", () => {
   describe("Keyboard interactions", () => {
