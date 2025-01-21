@@ -6,8 +6,7 @@ import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { CloseIcon as DefaultCloseIcon, HomeIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
-import type { ThemingProps } from "../../types";
-import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
+import type { FlowbiteBoolean, ThemingProps } from "../../types";
 import { useDrawerContext } from "./DrawerContext";
 import { drawerTheme } from "./theme";
 

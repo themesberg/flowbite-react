@@ -6,8 +6,7 @@ import { omit } from "../../helpers/omit";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DeepPartial, ThemingProps } from "../../types";
-import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
+import type { DeepPartial, FlowbiteBoolean, ThemingProps } from "../../types";
 import { cardTheme } from "./theme";
 
 export interface CardTheme {

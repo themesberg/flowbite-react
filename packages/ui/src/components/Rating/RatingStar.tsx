@@ -6,8 +6,7 @@ import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { StarIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
-import type { ThemingProps } from "../../types";
-import type { FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
+import type { FlowbiteSizes, ThemingProps } from "../../types";
 import { useRatingContext } from "./RatingContext";
 import { ratingTheme } from "./theme";
 

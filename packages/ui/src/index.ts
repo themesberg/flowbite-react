@@ -51,5 +51,8 @@ export { createTheme } from "./helpers/create-theme";
 // hooks
 export * from "./hooks/use-theme-mode";
 
+// icons
+export * from "./icons";
+
 // theme
 export * from "./theme";

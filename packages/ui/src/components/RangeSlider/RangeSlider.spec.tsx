@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { createRef } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
-import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
+import type { CustomFlowbiteTheme } from "../../types";
 import { RangeSlider } from "./RangeSlider";
 
 describe("Components / Button", () => {

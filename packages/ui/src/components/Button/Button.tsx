@@ -7,8 +7,13 @@ import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
-import type { FlowbiteColors, FlowbiteSizes, FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
+import type {
+  DynamicStringEnumKeysOf,
+  FlowbiteColors,
+  FlowbiteSizes,
+  FlowbiteStateColors,
+  ThemingProps,
+} from "../../types";
 import { ButtonBase } from "./ButtonBase";
 import { useButtonGroupContext } from "./ButtonGroupContext";
 import { buttonTheme } from "./theme";

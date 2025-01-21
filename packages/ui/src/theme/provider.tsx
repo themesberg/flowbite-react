@@ -2,10 +2,9 @@
 
 import { deepmerge } from "deepmerge-ts";
 import { createContext, useContext, useMemo, type PropsWithChildren } from "react";
-import type { FlowbiteTheme } from "../components/Flowbite/FlowbiteTheme";
 import { deepMergeStrings } from "../helpers/deep-merge";
 import { twMerge } from "../helpers/tailwind-merge";
-import type { ThemingProps } from "../types";
+import type { FlowbiteTheme, ThemingProps } from "../types";
 
 export type ThemeProviderValue = ThemingProps<FlowbiteTheme>;
 

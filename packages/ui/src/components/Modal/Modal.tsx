@@ -17,8 +17,13 @@ import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
-import type { FlowbiteBoolean, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
+import type {
+  DynamicStringEnumKeysOf,
+  FlowbiteBoolean,
+  FlowbitePositions,
+  FlowbiteSizes,
+  ThemingProps,
+} from "../../types";
 import type { ModalBodyTheme } from "./ModalBody";
 import { ModalContext } from "./ModalContext";
 import type { ModalFooterTheme } from "./ModalFooter";

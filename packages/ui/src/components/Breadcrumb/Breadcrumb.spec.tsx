@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { HiHome } from "react-icons/hi";
 import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
-import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
+import type { CustomFlowbiteTheme } from "../../types";
 import { Breadcrumb } from "./Breadcrumb";
 import { BreadcrumbItem } from "./BreadcrumbItem";
 

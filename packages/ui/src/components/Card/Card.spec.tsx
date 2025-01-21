@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
-import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
+import type { CustomFlowbiteTheme } from "../../types";
 import { Card } from "./Card";
 
 describe("Components / Card", () => {

@@ -9,8 +9,7 @@ import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { ChevronLeftIcon, ChevronRightIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
-import type { ThemingProps } from "../../types";
-import type { FlowbiteBoolean } from "../Flowbite/FlowbiteTheme";
+import type { FlowbiteBoolean, ThemingProps } from "../../types";
 import { carouselTheme } from "./theme";
 
 export interface CarouselTheme {

@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import type { PropsWithChildren } from "react";
 import { describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
-import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
+import type { CustomFlowbiteTheme } from "../../types";
 import { Button } from "./Button";
 
 describe("Components / Button", () => {

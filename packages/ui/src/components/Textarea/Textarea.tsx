@@ -6,8 +6,7 @@ import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
-import type { FlowbiteBoolean, FlowbiteColors } from "../Flowbite/FlowbiteTheme";
+import type { DynamicStringEnumKeysOf, FlowbiteBoolean, FlowbiteColors, ThemingProps } from "../../types";
 import { textareaTheme } from "./theme";
 
 export interface TextareaTheme {

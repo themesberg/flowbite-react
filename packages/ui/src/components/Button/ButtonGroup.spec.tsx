@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../../theme";
-import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
+import type { CustomFlowbiteTheme } from "../../types";
 import { Button } from "./Button";
 import { ButtonGroup } from "./ButtonGroup";
 import { buttonTheme } from "./theme";

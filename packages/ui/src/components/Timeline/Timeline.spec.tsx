@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
-import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
+import type { CustomFlowbiteTheme } from "../../types";
 import type { TimelineProps } from "./Timeline";
 import { Timeline } from "./Timeline";
 import { TimelineBody } from "./TimelineBody";

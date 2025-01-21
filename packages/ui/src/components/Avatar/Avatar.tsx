@@ -5,8 +5,14 @@ import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
-import type { FlowbiteBoolean, FlowbiteColors, FlowbitePositions, FlowbiteSizes } from "../Flowbite/FlowbiteTheme";
+import type {
+  DynamicStringEnumKeysOf,
+  FlowbiteBoolean,
+  FlowbiteColors,
+  FlowbitePositions,
+  FlowbiteSizes,
+  ThemingProps,
+} from "../../types";
 import type { AvatarGroupTheme } from "./AvatarGroup";
 import type { AvatarGroupCounterTheme } from "./AvatarGroupCounter";
 import { avatarTheme } from "./theme";

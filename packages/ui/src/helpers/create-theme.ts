@@ -1,4 +1,4 @@
-import type { CustomFlowbiteTheme } from "../components/Flowbite/FlowbiteTheme";
+import type { CustomFlowbiteTheme } from "../types";
 
 /**
  * Used to apply `tailwindcss` intellisense.

@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { HiChartPie, HiInbox, HiShoppingBag } from "react-icons/hi";
 import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
-import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
+import type { CustomFlowbiteTheme } from "../../types";
 import type { SidebarProps } from "./Sidebar";
 import { Sidebar } from "./Sidebar";
 import { SidebarCollapse } from "./SidebarCollapse";

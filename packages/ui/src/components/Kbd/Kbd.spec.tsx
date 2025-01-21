@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { MdKeyboardArrowLeft, MdKeyboardCommandKey } from "react-icons/md";
 import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
-import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
+import type { CustomFlowbiteTheme } from "../../types";
 import { Kbd } from "./Kbd";
 
 describe("Components / Kbd", () => {

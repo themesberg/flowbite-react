@@ -5,8 +5,7 @@ import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { ThemingProps } from "../../types";
-import type { FlowbiteBoolean, FlowbiteHeadingLevel } from "../Flowbite/FlowbiteTheme";
+import type { FlowbiteBoolean, FlowbiteHeadingLevel, ThemingProps } from "../../types";
 import { useAccordionContext } from "./AccordionPanelContext";
 import { accordionTheme } from "./theme";
 

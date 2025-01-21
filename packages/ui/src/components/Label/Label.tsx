@@ -5,8 +5,7 @@ import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
-import type { DynamicStringEnumKeysOf, ThemingProps } from "../../types";
-import type { FlowbiteStateColors } from "../Flowbite/FlowbiteTheme";
+import type { DynamicStringEnumKeysOf, FlowbiteStateColors, ThemingProps } from "../../types";
 import { labelTheme } from "./theme";
 
 export interface LabelTheme {

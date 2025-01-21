@@ -2,7 +2,7 @@ import { cleanup, render, screen } from "@testing-library/react";
 import { BsDribbble, BsFacebook, BsGithub, BsInstagram, BsTwitter } from "react-icons/bs";
 import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
-import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
+import type { CustomFlowbiteTheme } from "../../types";
 import { Footer } from "./Footer";
 import { FooterBrand } from "./FooterBrand";
 import { FooterCopyright } from "./FooterCopyright";

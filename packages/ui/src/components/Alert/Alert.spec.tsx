@@ -4,7 +4,7 @@ import { useState } from "react";
 import { HiEye, HiHeart, HiInformationCircle } from "react-icons/hi";
 import { describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
-import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
+import type { CustomFlowbiteTheme } from "../../types";
 import type { AlertProps } from "./Alert";
 import { Alert } from "./Alert";
 
