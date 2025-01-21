@@ -1,10 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import { theme, ThemeProvider } from "../../theme";
+import { ThemeProvider } from "../../theme";
 import type { CustomFlowbiteTheme } from "../Flowbite/FlowbiteTheme";
 import { Button } from "./Button";
 import { ButtonGroup } from "./ButtonGroup";
+import { buttonTheme } from "./theme";
 
 describe("Components / Button group", () => {
   describe("A11y", () => {
@@ -83,7 +84,7 @@ describe("Components / Button group", () => {
         </ButtonGroup>,
       );
 
-      const groupedClasses = theme.button.grouped;
+      const groupedClasses = buttonTheme.grouped;
 
       expect(buttons()[0]).toHaveClass(groupedClasses);
       expect(buttons()[1]).toHaveClass(groupedClasses);
