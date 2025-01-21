@@ -85,13 +85,13 @@ FormElements.args = {
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="email" value="Your email" />
+              <Label htmlFor="email">Your email</Label>
             </div>
             <TextInput id="email" placeholder="name@company.com" required />
           </div>
           <div>
             <div className="mb-2 block">
-              <Label htmlFor="password" value="Your password" />
+              <Label htmlFor="password">Your password</Label>
             </div>
             <TextInput id="password" type="password" required />
           </div>
