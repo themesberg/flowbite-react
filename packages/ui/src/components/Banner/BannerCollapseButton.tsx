@@ -1,8 +1,8 @@
 "use client";
 
 import { forwardRef } from "react";
-import type { ButtonProps } from "../Button";
-import { Button } from "../Button";
+import { Button } from "../Button/Button";
+import type { ButtonProps } from "../Button/Button";
 
 export type BannerCollapseButtonProps = ButtonProps;
 

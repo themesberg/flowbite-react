@@ -1,5 +1,5 @@
-import type { DatepickerTheme } from ".";
 import { createTheme } from "../../helpers/create-theme";
+import type { DatepickerTheme } from "./Datepicker";
 
 export const datePickerTheme = createTheme<DatepickerTheme>({
   root: {
