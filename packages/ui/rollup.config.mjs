@@ -4,7 +4,13 @@ import { rollupPluginUseClient } from "rollup-plugin-use-client";
 import packageJson from "./package.json";
 
 const componentEntries = await Array.fromAsync(new Glob("src/components/**/index.ts").scan());
-const entries = ["src/index.ts", "src/icons/index.ts", "src/tailwind/index.ts", ...componentEntries];
+const entries = [
+  "src/index.ts",
+  "src/icons/index.ts",
+  "src/tailwind/index.ts",
+  "src/theme/index.ts",
+  ...componentEntries,
+];
 const external = [
   "react/jsx-runtime",
   "tailwindcss/plugin",
