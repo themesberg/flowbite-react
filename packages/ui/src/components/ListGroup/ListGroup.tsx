@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -20,21 +21,17 @@ export interface ListGroupRootTheme {
 
 export interface ListGroupProps extends ComponentProps<"ul">, ThemingProps<ListGroupTheme> {}
 
-export const ListGroup = forwardRef<HTMLUListElement, ListGroupProps>(
-  ({ children, className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [listGroupTheme.root, provider.theme?.listGroup?.root, customTheme],
-      [get(provider.clearTheme, "listGroup.root"), get(clearTheme, "root")],
-      [get(provider.applyTheme, "listGroup.root"), get(applyTheme, "root")],
-    );
+export const ListGroup = forwardRef<HTMLUListElement, ListGroupProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [listGroupTheme.root, provider.theme?.listGroup?.root, props.theme?.root],
+    [get(provider.clearTheme, "listGroup.root"), get(props.clearTheme, "root")],
+    [get(provider.applyTheme, "listGroup.root"), get(props.applyTheme, "root")],
+  );
 
-    return (
-      <ul ref={ref} className={twMerge(theme.base, className)} {...props}>
-        {children}
-      </ul>
-    );
-  },
-);
+  const { className, ...restProps } = resolveProps(props, provider.props?.listGroup);
+
+  return <ul ref={ref} className={twMerge(theme.base, className)} {...restProps} />;
+});
 
 ListGroup.displayName = "ListGroup";

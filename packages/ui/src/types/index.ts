@@ -1,27 +1,49 @@
 import type { AccordionProps, AccordionTheme } from "../components/Accordion";
 import type { AlertProps, AlertTheme } from "../components/Alert";
-import type { AvatarProps, AvatarTheme } from "../components/Avatar";
+import type { AvatarGroupCounterProps, AvatarGroupProps, AvatarProps, AvatarTheme } from "../components/Avatar";
 import type { BadgeProps, BadgeTheme } from "../components/Badge";
+import type { BannerCollapseButtonProps, BannerProps } from "../components/Banner";
 import type { BlockquoteProps, BlockquoteTheme } from "../components/Blockquote";
-import type { BreadcrumbProps, BreadcrumbTheme } from "../components/Breadcrumb";
+import type { BreadcrumbItemProps, BreadcrumbProps, BreadcrumbTheme } from "../components/Breadcrumb";
 import type { ButtonGroupProps, ButtonGroupTheme, ButtonProps, ButtonTheme } from "../components/Button";
 import type { CardProps, CardTheme } from "../components/Card";
 import type { CarouselProps, CarouselTheme } from "../components/Carousel";
 import type { CheckboxProps, CheckboxTheme } from "../components/Checkbox";
-import type { ClipboardProps, ClipboardTheme } from "../components/Clipboard";
+import type {
+  ClipboardProps,
+  ClipboardTheme,
+  ClipboardWithIconProps,
+  ClipboardWithIconTextProps,
+} from "../components/Clipboard";
 import type { DarkThemeToggleProps, DarkThemeToggleTheme } from "../components/DarkThemeToggle";
 import type { DatepickerProps, DatepickerTheme } from "../components/Datepicker";
-import type { DrawerProps, DrawerTheme } from "../components/Drawer";
-import type { DropdownProps, DropdownTheme } from "../components/Dropdown";
+import type { DrawerHeaderProps, DrawerItemsProps, DrawerProps, DrawerTheme } from "../components/Drawer";
+import type {
+  DropdownDividerProps,
+  DropdownHeaderProps,
+  DropdownItemProps,
+  DropdownProps,
+  DropdownTheme,
+} from "../components/Dropdown";
 import type { FileInputProps, FileInputTheme } from "../components/FileInput";
 import type { FloatingLabelProps, FloatingLabelTheme } from "../components/FloatingLabel";
-import type { FooterProps, FooterTheme } from "../components/Footer";
+import type {
+  FooterBrandProps,
+  FooterCopyrightProps,
+  FooterDividerProps,
+  FooterIconProps,
+  FooterLinkGroupProps,
+  FooterLinkProps,
+  FooterProps,
+  FooterTheme,
+  FooterTitleProps,
+} from "../components/Footer";
 import type { HelperTextProps, HelperTextTheme } from "../components/HelperText";
 import type { HRProps, HRTheme } from "../components/HR";
 import type { KbdProps, KbdTheme } from "../components/Kbd";
 import type { LabelProps, LabelTheme } from "../components/Label";
-import type { ListProps, ListTheme } from "../components/List";
-import type { ListGroupProps, ListGroupTheme } from "../components/ListGroup";
+import type { ListItemProps, ListProps, ListTheme } from "../components/List";
+import type { ListGroupItemProps, ListGroupProps, ListGroupTheme } from "../components/ListGroup";
 import type { MegaMenuProps, MegaMenuTheme } from "../components/MegaMenu";
 import type { ModalProps, ModalTheme } from "../components/Modal";
 import type { NavbarProps, NavbarTheme } from "../components/Navbar";
@@ -96,28 +118,49 @@ export interface FlowbiteProps {
   accordion: Partial<WithoutThemingProps<AccordionProps>>;
   alert: Partial<WithoutThemingProps<AlertProps>>;
   avatar: Partial<WithoutThemingProps<AvatarProps>>;
+  avatarGroup: Partial<WithoutThemingProps<AvatarGroupProps>>;
+  avatarGroupCounter: Partial<WithoutThemingProps<AvatarGroupCounterProps>>;
   badge: Partial<WithoutThemingProps<BadgeProps>>;
+  banner: Partial<WithoutThemingProps<BannerProps>>;
+  bannerCollapseButton: Partial<WithoutThemingProps<BannerCollapseButtonProps>>;
   blockquote: Partial<WithoutThemingProps<BlockquoteProps>>;
   breadcrumb: Partial<WithoutThemingProps<BreadcrumbProps>>;
+  breadcrumbItem: Partial<WithoutThemingProps<BreadcrumbItemProps>>;
   button: Partial<WithoutThemingProps<ButtonProps>>;
   buttonGroup: Partial<WithoutThemingProps<ButtonGroupProps>>;
   card: Partial<WithoutThemingProps<CardProps>>;
   carousel: Partial<WithoutThemingProps<CarouselProps>>;
   checkbox: Partial<WithoutThemingProps<CheckboxProps>>;
   clipboard: Partial<WithoutThemingProps<ClipboardProps>>;
+  clipboardWithIcon: Partial<WithoutThemingProps<ClipboardWithIconProps>>;
+  clipboardWithIconText: Partial<WithoutThemingProps<ClipboardWithIconTextProps>>;
   darkThemeToggle: Partial<WithoutThemingProps<DarkThemeToggleProps>>;
   datepicker: Partial<WithoutThemingProps<DatepickerProps>>;
   drawer: Partial<WithoutThemingProps<DrawerProps>>;
+  drawerHeader: Partial<WithoutThemingProps<DrawerHeaderProps>>;
+  drawerItems: Partial<WithoutThemingProps<DrawerItemsProps>>;
   dropdown: Partial<WithoutThemingProps<DropdownProps>>;
+  dropdownDivider: Partial<WithoutThemingProps<DropdownDividerProps>>;
+  dropdownHeader: Partial<WithoutThemingProps<DropdownHeaderProps>>;
+  dropdownItem: Partial<WithoutThemingProps<DropdownItemProps>>;
   fileInput: Partial<WithoutThemingProps<FileInputProps>>;
   floatingLabel: Partial<WithoutThemingProps<FloatingLabelProps>>;
   footer: Partial<WithoutThemingProps<FooterProps>>;
+  footerBrand: Partial<WithoutThemingProps<FooterBrandProps>>;
+  footerCopyright: Partial<WithoutThemingProps<FooterCopyrightProps>>;
+  footerDivider: Partial<WithoutThemingProps<FooterDividerProps>>;
+  footerIcon: Partial<WithoutThemingProps<FooterIconProps>>;
+  footerLink: Partial<WithoutThemingProps<FooterLinkProps>>;
+  footerLinkGroup: Partial<WithoutThemingProps<FooterLinkGroupProps>>;
+  footerTitle: Partial<WithoutThemingProps<FooterTitleProps>>;
   helperText: Partial<WithoutThemingProps<HelperTextProps>>;
   hr: Partial<WithoutThemingProps<HRProps>>;
   kbd: Partial<WithoutThemingProps<KbdProps>>;
   label: Partial<WithoutThemingProps<LabelProps>>;
   list: Partial<WithoutThemingProps<ListProps>>;
+  listItem: Partial<WithoutThemingProps<ListItemProps>>;
   listGroup: Partial<WithoutThemingProps<ListGroupProps>>;
+  listGroupItem: Partial<WithoutThemingProps<ListGroupItemProps>>;
   megaMenu: Partial<WithoutThemingProps<MegaMenuProps>>;
   modal: Partial<WithoutThemingProps<ModalProps>>;
   navbar: Partial<WithoutThemingProps<NavbarProps>>;

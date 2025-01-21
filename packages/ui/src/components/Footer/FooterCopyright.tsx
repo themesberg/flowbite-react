@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -20,30 +21,30 @@ export interface FooterCopyrightProps extends ComponentProps<"div">, ThemingProp
   year?: number;
 }
 
-export const FooterCopyright = forwardRef<HTMLDivElement, FooterCopyrightProps>(
-  ({ by, className, href, year, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [footerTheme.copyright, provider.theme?.footer?.copyright, customTheme],
-      [get(provider.clearTheme, "footer.copyright"), clearTheme],
-      [get(provider.applyTheme, "footer.copyright"), applyTheme],
-    );
+export const FooterCopyright = forwardRef<HTMLDivElement, FooterCopyrightProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [footerTheme.copyright, provider.theme?.footer?.copyright, props.theme],
+    [get(provider.clearTheme, "footer.copyright"), props.clearTheme],
+    [get(provider.applyTheme, "footer.copyright"), props.applyTheme],
+  );
 
-    return (
-      <div ref={ref} data-testid="flowbite-footer-copyright" className={twMerge(theme.base, className)} {...props}>
-        © {year}
-        {href ? (
-          <a href={href} className={theme.href}>
-            {by}
-          </a>
-        ) : (
-          <span data-testid="flowbite-footer-copyright-span" className={theme.span}>
-            {by}
-          </span>
-        )}
-      </div>
-    );
-  },
-);
+  const { by, className, href, year, ...restProps } = resolveProps(props, provider.props?.footerCopyright);
+
+  return (
+    <div ref={ref} data-testid="flowbite-footer-copyright" className={twMerge(theme.base, className)} {...restProps}>
+      © {year}
+      {href ? (
+        <a href={href} className={theme.href}>
+          {by}
+        </a>
+      ) : (
+        <span data-testid="flowbite-footer-copyright-span" className={theme.span}>
+          {by}
+        </span>
+      )}
+    </div>
+  );
+});
 
 FooterCopyright.displayName = "FooterCopyright";

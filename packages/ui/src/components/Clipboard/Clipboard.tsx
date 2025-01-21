@@ -2,6 +2,7 @@
 
 import { forwardRef, useState, type ComponentProps, type ReactNode } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -26,30 +27,30 @@ export interface ClipboardProps extends ComponentProps<"button">, ThemingProps<C
   label?: ReactNode;
 }
 
-export const Clipboard = forwardRef<HTMLButtonElement, ClipboardProps>(
-  ({ className, valueToCopy, label, theme: customTheme, clearTheme, applyTheme, ...rest }, ref) => {
-    const [isJustCopied, setIsJustCopied] = useState(false);
+export const Clipboard = forwardRef<HTMLButtonElement, ClipboardProps>((props, ref) => {
+  const [isJustCopied, setIsJustCopied] = useState(false);
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [clipboardTheme.button, provider.theme?.clipboard?.button, customTheme],
-      [get(provider.clearTheme, "clipboard.button"), clearTheme],
-      [get(provider.applyTheme, "clipboard.button"), applyTheme],
-    );
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [clipboardTheme.button, provider.theme?.clipboard?.button, props.theme],
+    [get(provider.clearTheme, "clipboard.button"), props.clearTheme],
+    [get(provider.applyTheme, "clipboard.button"), props.applyTheme],
+  );
 
-    return (
-      <Tooltip content={isJustCopied ? "Copied" : "Copy to clipboard"} className="[&_*]:cursor-pointer">
-        <button
-          className={twMerge(theme.base, className)}
-          onClick={() => copyToClipboard(valueToCopy, setIsJustCopied)}
-          {...rest}
-          ref={ref}
-        >
-          <span className={theme.label}>{label}</span>
-        </button>
-      </Tooltip>
-    );
-  },
-);
+  const { className, valueToCopy, label, ...restProps } = resolveProps(props, provider.props?.clipboard);
+
+  return (
+    <Tooltip content={isJustCopied ? "Copied" : "Copy to clipboard"} className="[&_*]:cursor-pointer">
+      <button
+        className={twMerge(theme.base, className)}
+        onClick={() => copyToClipboard(valueToCopy, setIsJustCopied)}
+        {...restProps}
+        ref={ref}
+      >
+        <span className={theme.label}>{label}</span>
+      </button>
+    </Tooltip>
+  );
+});
 
 Clipboard.displayName = "Clipboard";

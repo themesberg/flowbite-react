@@ -4,6 +4,7 @@ import type { ElementType } from "react";
 import { forwardRef } from "react";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -61,55 +62,50 @@ type ButtonComponentType = (<C extends ElementType = "button">(props: ButtonProp
   displayName?: string;
 };
 
-export const Button = forwardRef(
-  <T extends ElementType = "button">(
-    {
-      children,
-      className,
-      color = "default",
-      disabled,
-      fullSized,
-      outline: _outline,
-      pill: _pill,
-      size = "md",
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    }: ButtonProps<T>,
-    ref: PolymorphicRef<T>,
-  ) => {
-    const buttonGroup = useButtonGroupContext();
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [buttonTheme, provider.theme?.button, customTheme],
-      [get(provider.clearTheme, "button"), clearTheme],
-      [get(provider.applyTheme, "button"), applyTheme],
-    );
+export const Button = forwardRef(<T extends ElementType = "button">(props: ButtonProps<T>, ref: PolymorphicRef<T>) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [buttonTheme, provider.theme?.button, props.theme],
+    [get(provider.clearTheme, "button"), props.clearTheme],
+    [get(provider.applyTheme, "button"), props.applyTheme],
+  );
 
-    const outline = buttonGroup?.outline ?? _outline;
-    const pill = buttonGroup?.pill ?? _pill;
+  const {
+    children,
+    className,
+    color = "default",
+    disabled,
+    fullSized,
+    outline: _outline,
+    pill: _pill,
+    size = "md",
+    ...restProps
+  } = resolveProps(props, provider.props?.button);
 
-    return (
-      <ButtonBase
-        ref={ref}
-        disabled={disabled}
-        className={twMerge(
-          theme.base,
-          theme.size[size],
-          pill && theme.pill,
-          disabled && theme.disabled,
-          fullSized && theme.fullSized,
-          outline ? theme.outlineColor[color] : theme.color[color],
-          buttonGroup && theme.grouped,
-          className,
-        )}
-        {...props}
-      >
-        {children}
-      </ButtonBase>
-    );
-  },
-) as ButtonComponentType;
+  const buttonGroup = useButtonGroupContext();
+
+  const outline = buttonGroup?.outline ?? _outline;
+  const pill = buttonGroup?.pill ?? _pill;
+
+  return (
+    <ButtonBase
+      ref={ref}
+      disabled={disabled}
+      className={twMerge(
+        theme.base,
+        theme.size[size],
+        pill && theme.pill,
+        disabled && theme.disabled,
+        fullSized && theme.fullSized,
+        outline ? theme.outlineColor[color] : theme.color[color],
+        buttonGroup && theme.grouped,
+        className,
+      )}
+      {...restProps}
+    >
+      {children}
+    </ButtonBase>
+  );
+}) as ButtonComponentType;
 
 Button.displayName = "Button";

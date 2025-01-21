@@ -14,6 +14,7 @@ import type {
 } from "react";
 import { cloneElement, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
@@ -69,7 +70,7 @@ export interface TriggerProps extends Omit<ButtonProps, keyof ThemingProps<Dropd
   renderTrigger?: (theme: DropdownTheme) => ReactElement;
 }
 
-const Trigger = ({
+function Trigger({
   refs,
   children,
   inline,
@@ -79,7 +80,7 @@ const Trigger = ({
   getReferenceProps,
   renderTrigger,
   ...buttonProps
-}: TriggerProps) => {
+}: TriggerProps) {
   const ref = refs.reference as MutableRefObject<HTMLElement>;
   const a11yProps = getReferenceProps();
 
@@ -103,19 +104,9 @@ const Trigger = ({
       {children}
     </Button>
   );
-};
+}
 
-export function Dropdown({
-  children,
-  className,
-  dismissOnClick = true,
-  enableTypeAhead = true,
-  renderTrigger,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: DropdownProps) {
+export function Dropdown(props: DropdownProps) {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -125,20 +116,29 @@ export function Dropdown({
 
   const provider = useThemeProvider();
   const theme = useResolveTheme(
-    [dropdownTheme, provider.theme?.dropdown, customTheme],
-    [get(provider.clearTheme, "dropdown"), clearTheme],
-    [get(provider.applyTheme, "dropdown"), applyTheme],
+    [dropdownTheme, provider.theme?.dropdown, props.theme],
+    [get(provider.clearTheme, "dropdown"), props.clearTheme],
+    [get(provider.applyTheme, "dropdown"), props.applyTheme],
   );
-  const theirProps = props as Omit<DropdownProps, "theme" | "clearTheme">;
-  const dataTestId = props["data-testid"] || "flowbite-dropdown-target";
+
   const {
-    placement = props.inline ? "bottom-start" : "bottom",
+    children,
+    className,
+    dismissOnClick = true,
+    enableTypeAhead = true,
+    renderTrigger,
+    ...restProps
+  } = resolveProps(props, provider.props?.dropdown);
+
+  const {
+    placement = restProps.inline ? "bottom-start" : "bottom",
     trigger = "click",
     label,
     inline,
     arrowIcon = true,
     ...buttonProps
-  } = theirProps;
+  } = restProps;
+  const dataTestId = restProps["data-testid"] || "flowbite-dropdown-target";
 
   const handleSelect = useCallback((index: number | null) => {
     setSelectedIndex(index);
@@ -191,7 +191,15 @@ export function Dropdown({
 
   return (
     <DropdownContext.Provider
-      value={{ theme: customTheme, clearTheme, applyTheme, activeIndex, dismissOnClick, getItemProps, handleSelect }}
+      value={{
+        theme: props.theme,
+        clearTheme: props.clearTheme,
+        applyTheme: props.applyTheme,
+        activeIndex,
+        dismissOnClick,
+        getItemProps,
+        handleSelect,
+      }}
     >
       <Trigger
         {...buttonProps}
@@ -199,7 +207,7 @@ export function Dropdown({
         inline={inline}
         theme={theme}
         data-testid={dataTestId}
-        className={twMerge(theme.floating.target, buttonProps.className)}
+        className={twMerge(theme.floating.target, className)}
         setButtonWidth={setButtonWidth}
         getReferenceProps={getReferenceProps}
         renderTrigger={renderTrigger}

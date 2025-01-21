@@ -3,6 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -23,24 +24,24 @@ export interface FileInputProps
   sizing?: DynamicStringEnumKeysOf<TextInputSizes>;
 }
 
-export const FileInput = forwardRef<HTMLInputElement, FileInputProps>(
-  ({ className, color = "gray", sizing = "md", theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [fileInputTheme, provider.theme?.fileInput, customTheme],
-      [get(provider.clearTheme, "fileInput"), clearTheme],
-      [get(provider.applyTheme, "fileInput"), applyTheme],
-    );
+export const FileInput = forwardRef<HTMLInputElement, FileInputProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [fileInputTheme, provider.theme?.fileInput, props.theme],
+    [get(provider.clearTheme, "fileInput"), props.clearTheme],
+    [get(provider.applyTheme, "fileInput"), props.applyTheme],
+  );
 
-    return (
-      <input
-        ref={ref}
-        type="file"
-        className={twMerge(theme.base, theme.colors[color], theme.sizes[sizing], className)}
-        {...props}
-      />
-    );
-  },
-);
+  const { className, color = "gray", sizing = "md", ...restProps } = resolveProps(props, provider.props?.fileInput);
+
+  return (
+    <input
+      ref={ref}
+      type="file"
+      className={twMerge(theme.base, theme.colors[color], theme.sizes[sizing], className)}
+      {...restProps}
+    />
+  );
+});
 
 FileInput.displayName = "FileInput";

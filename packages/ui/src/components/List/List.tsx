@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps, type PropsWithChildren } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -34,47 +35,32 @@ export interface ListProps
   unstyled?: boolean;
 }
 
-export const List = forwardRef<HTMLUListElement | HTMLOListElement, ListProps>(
-  (
-    {
-      children,
-      className,
-      horizontal,
-      nested,
-      ordered,
-      unstyled,
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    },
-    ref,
-  ) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [listTheme.root, provider.theme?.list?.root, customTheme],
-      [get(provider.clearTheme, "list.root"), get(clearTheme, "root")],
-      [get(provider.applyTheme, "list.root"), get(applyTheme, "root")],
-    );
-    const Component = ordered ? "ol" : "ul";
+export const List = forwardRef<HTMLUListElement | HTMLOListElement, ListProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [listTheme.root, provider.theme?.list?.root, props.theme?.root],
+    [get(provider.clearTheme, "list.root"), get(props.clearTheme, "root")],
+    [get(provider.applyTheme, "list.root"), get(props.applyTheme, "root")],
+  );
 
-    return (
-      <Component
-        ref={ref as never}
-        className={twMerge(
-          theme.base,
-          theme.ordered[ordered ? "on" : "off"],
-          unstyled && theme.unstyled,
-          nested && theme.nested,
-          horizontal && theme.horizontal,
-          className,
-        )}
-        {...props}
-      >
-        {children}
-      </Component>
-    );
-  },
-);
+  const { className, horizontal, nested, ordered, unstyled, ...restProps } = resolveProps(props, provider.props?.list);
+
+  const Component = ordered ? "ol" : "ul";
+
+  return (
+    <Component
+      ref={ref as never}
+      className={twMerge(
+        theme.base,
+        theme.ordered[ordered ? "on" : "off"],
+        unstyled && theme.unstyled,
+        nested && theme.nested,
+        horizontal && theme.horizontal,
+        className,
+      )}
+      {...restProps}
+    />
+  );
+});
 
 List.displayName = "List";

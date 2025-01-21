@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps, type FC } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeMode } from "../../hooks/use-theme-mode";
@@ -28,43 +29,37 @@ export interface DarkThemeToggleProps extends ComponentProps<"button">, ThemingP
   iconLight?: FC<ComponentProps<"svg">>;
 }
 
-export const DarkThemeToggle = forwardRef<HTMLButtonElement, DarkThemeToggleProps>(
-  (
-    {
-      className,
-      iconDark: IconDark = SunIcon,
-      iconLight: IconLight = MoonIcon,
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    },
-    ref,
-  ) => {
-    const { toggleMode } = useThemeMode();
+export const DarkThemeToggle = forwardRef<HTMLButtonElement, DarkThemeToggleProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [darkThemeToggleTheme, provider.theme?.darkThemeToggle, props.theme],
+    [get(provider.clearTheme, "darkThemeToggle"), props.clearTheme],
+    [get(provider.applyTheme, "darkThemeToggle"), props.applyTheme],
+  );
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [darkThemeToggleTheme, provider.theme?.darkThemeToggle, customTheme],
-      [get(provider.clearTheme, "darkThemeToggle"), clearTheme],
-      [get(provider.applyTheme, "darkThemeToggle"), applyTheme],
-    );
+  const {
+    className,
+    iconDark: IconDark = SunIcon,
+    iconLight: IconLight = MoonIcon,
+    ...restProps
+  } = resolveProps(props, provider.props?.darkThemeToggle);
 
-    return (
-      <button
-        ref={ref}
-        type="button"
-        aria-label="Toggle dark mode"
-        data-testid="dark-theme-toggle"
-        className={twMerge(theme.root.base, className)}
-        onClick={toggleMode}
-        {...props}
-      >
-        <IconDark aria-label="Currently dark mode" className={twMerge(theme.root.icon.base, theme.root.icon.dark)} />
-        <IconLight aria-label="Currently light mode" className={twMerge(theme.root.icon.base, theme.root.icon.light)} />
-      </button>
-    );
-  },
-);
+  const { toggleMode } = useThemeMode();
+
+  return (
+    <button
+      ref={ref}
+      type="button"
+      aria-label="Toggle dark mode"
+      data-testid="dark-theme-toggle"
+      className={twMerge(theme.root.base, className)}
+      onClick={toggleMode}
+      {...restProps}
+    >
+      <IconDark aria-label="Currently dark mode" className={twMerge(theme.root.icon.base, theme.root.icon.dark)} />
+      <IconLight aria-label="Currently light mode" className={twMerge(theme.root.icon.base, theme.root.icon.light)} />
+    </button>
+  );
+});
 
 DarkThemeToggle.displayName = "DarkThemeToggle";

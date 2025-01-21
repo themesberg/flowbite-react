@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -26,42 +27,26 @@ export interface LabelColors extends FlowbiteStateColors {
 export interface LabelProps extends Omit<ComponentProps<"label">, "color">, ThemingProps<LabelTheme> {
   color?: DynamicStringEnumKeysOf<LabelColors>;
   disabled?: boolean;
-  value?: string;
 }
 
-export const Label = forwardRef<HTMLLabelElement, LabelProps>(
-  (
-    {
-      children,
-      className,
-      color = "default",
-      disabled = false,
-      value,
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    },
-    ref,
-  ) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [labelTheme, provider.theme?.label, customTheme],
-      [get(provider.clearTheme, "label"), clearTheme],
-      [get(provider.applyTheme, "label"), applyTheme],
-    );
+export const Label = forwardRef<HTMLLabelElement, LabelProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [labelTheme, provider.theme?.label, props.theme],
+    [get(provider.clearTheme, "label"), props.clearTheme],
+    [get(provider.applyTheme, "label"), props.applyTheme],
+  );
 
-    return (
-      <label
-        ref={ref}
-        className={twMerge(theme.root.base, theme.root.colors[color], disabled && theme.root.disabled, className)}
-        data-testid="flowbite-label"
-        {...props}
-      >
-        {value ?? children ?? ""}
-      </label>
-    );
-  },
-);
+  const { className, color = "default", disabled = false, ...restProps } = resolveProps(props, provider.props?.label);
+
+  return (
+    <label
+      ref={ref}
+      className={twMerge(theme.root.base, theme.root.colors[color], disabled && theme.root.disabled, className)}
+      data-testid="flowbite-label"
+      {...restProps}
+    />
+  );
+});
 
 Label.displayName = "Label";

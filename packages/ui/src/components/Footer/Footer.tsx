@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -35,29 +36,32 @@ export interface FooterProps extends ComponentProps<"footer">, ThemingProps<Foot
   container?: boolean;
 }
 
-export const Footer = forwardRef<HTMLElement, FooterProps>(
-  (
-    { bgDark = false, children, className, container = false, theme: customTheme, clearTheme, applyTheme, ...props },
-    ref,
-  ) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [footerTheme, provider.theme?.footer, customTheme],
-      [get(provider.clearTheme, "footer"), clearTheme],
-      [get(provider.applyTheme, "footer"), applyTheme],
-    );
+export const Footer = forwardRef<HTMLElement, FooterProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [footerTheme, provider.theme?.footer, props.theme],
+    [get(provider.clearTheme, "footer"), props.clearTheme],
+    [get(provider.applyTheme, "footer"), props.applyTheme],
+  );
 
-    return (
-      <footer
-        ref={ref}
-        data-testid="flowbite-footer"
-        className={twMerge(theme.root.base, bgDark && theme.root.bgDark, container && theme.root.container, className)}
-        {...props}
-      >
-        {children}
-      </footer>
-    );
-  },
-);
+  const {
+    bgDark = false,
+    children,
+    className,
+    container = false,
+    ...restProps
+  } = resolveProps(props, provider.props?.footer);
+
+  return (
+    <footer
+      ref={ref}
+      data-testid="flowbite-footer"
+      className={twMerge(theme.root.base, bgDark && theme.root.bgDark, container && theme.root.container, className)}
+      {...restProps}
+    >
+      {children}
+    </footer>
+  );
+});
 
 Footer.displayName = "Footer";

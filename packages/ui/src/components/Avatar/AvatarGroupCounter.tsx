@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -16,21 +17,21 @@ export interface AvatarGroupCounterProps extends ComponentProps<"a">, ThemingPro
   total?: number;
 }
 
-export const AvatarGroupCounter = forwardRef<HTMLAnchorElement, AvatarGroupCounterProps>(
-  ({ className, href, total, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [avatarTheme.groupCounter, provider.theme?.avatar?.groupCounter, customTheme],
-      [get(provider.clearTheme, "avatar.groupCounter"), clearTheme],
-      [get(provider.applyTheme, "avatar.groupCounter"), applyTheme],
-    );
+export const AvatarGroupCounter = forwardRef<HTMLAnchorElement, AvatarGroupCounterProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [avatarTheme.groupCounter, provider.theme?.avatar?.groupCounter, props.theme],
+    [get(provider.clearTheme, "avatar.groupCounter"), props.clearTheme],
+    [get(provider.applyTheme, "avatar.groupCounter"), props.applyTheme],
+  );
 
-    return (
-      <a ref={ref} href={href} className={twMerge(theme.base, className)} {...props}>
-        +{total}
-      </a>
-    );
-  },
-);
+  const { className, href, total, ...restProps } = resolveProps(props, provider.props?.avatarGroupCounter);
+
+  return (
+    <a ref={ref} href={href} className={twMerge(theme.base, className)} {...restProps}>
+      +{total}
+    </a>
+  );
+});
 
 AvatarGroupCounter.displayName = "AvatarGroupCounter";

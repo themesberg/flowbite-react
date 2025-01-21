@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps, type FC } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -39,46 +40,40 @@ export interface BadgeProps extends Omit<ComponentProps<"span">, "color">, Themi
   size?: DynamicStringEnumKeysOf<BadgeSizes>;
 }
 
-export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
-  (
-    {
-      children,
-      color = "info",
-      icon: Icon,
-      size = "xs",
-      className,
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    },
-    ref,
-  ) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [badgeTheme, provider.theme?.badge, customTheme],
-      [get(provider.clearTheme, "badge"), clearTheme],
-      [get(provider.applyTheme, "badge"), applyTheme],
-    );
+export const Badge = forwardRef<HTMLSpanElement, BadgeProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [badgeTheme, provider.theme?.badge, props.theme],
+    [get(provider.clearTheme, "badge"), props.clearTheme],
+    [get(provider.applyTheme, "badge"), props.applyTheme],
+  );
 
-    return (
-      <span
-        ref={ref}
-        className={twMerge(
-          theme.root.base,
-          theme.root.color[color],
-          theme.root.size[size],
-          theme.icon[Icon ? "on" : "off"],
-          className,
-        )}
-        data-testid="flowbite-badge"
-        {...props}
-      >
-        {Icon && <Icon aria-hidden className={theme.icon.size[size]} data-testid="flowbite-badge-icon" />}
-        {children && <span>{children}</span>}
-      </span>
-    );
-  },
-);
+  const {
+    children,
+    color = "info",
+    icon: Icon,
+    size = "xs",
+    className,
+    ...restProps
+  } = resolveProps(props, provider.props?.badge);
+
+  return (
+    <span
+      ref={ref}
+      className={twMerge(
+        theme.root.base,
+        theme.root.color[color],
+        theme.root.size[size],
+        theme.icon[Icon ? "on" : "off"],
+        className,
+      )}
+      data-testid="flowbite-badge"
+      {...restProps}
+    >
+      {Icon && <Icon aria-hidden className={theme.icon.size[size]} data-testid="flowbite-badge-icon" />}
+      {children && <span>{children}</span>}
+    </span>
+  );
+});
 
 Badge.displayName = "Badge";

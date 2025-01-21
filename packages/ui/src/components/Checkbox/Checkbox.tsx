@@ -3,6 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -22,24 +23,24 @@ export interface CheckboxProps
   indeterminate?: boolean;
 }
 
-export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, color = "default", indeterminate, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [checkboxTheme, provider.theme?.checkbox, customTheme],
-      [get(provider.clearTheme, "checkbox"), clearTheme],
-      [get(provider.applyTheme, "checkbox"), applyTheme],
-    );
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [checkboxTheme, provider.theme?.checkbox, props.theme],
+    [get(provider.clearTheme, "checkbox"), props.clearTheme],
+    [get(provider.applyTheme, "checkbox"), props.applyTheme],
+  );
 
-    return (
-      <input
-        ref={ref}
-        type="checkbox"
-        className={twMerge(theme.base, theme.color[color], indeterminate && theme.indeterminate, className)}
-        {...props}
-      />
-    );
-  },
-);
+  const { className, color = "default", indeterminate, ...restProps } = resolveProps(props, provider.props?.checkbox);
+
+  return (
+    <input
+      ref={ref}
+      type="checkbox"
+      className={twMerge(theme.base, theme.color[color], indeterminate && theme.indeterminate, className)}
+      {...restProps}
+    />
+  );
+});
 
 Checkbox.displayName = "Checkbox";

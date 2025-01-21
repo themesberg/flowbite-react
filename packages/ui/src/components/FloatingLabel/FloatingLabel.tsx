@@ -3,6 +3,7 @@
 import type { ComponentPropsWithoutRef } from "react";
 import { forwardRef, useId } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -21,53 +22,44 @@ export interface FloatingLabelProps extends ComponentPropsWithoutRef<"input">, T
   disabled?: boolean;
 }
 
-export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>(
-  (
-    {
-      label,
-      color = "default",
-      sizing = "md",
-      variant,
-      disabled = false,
-      className,
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    },
-    ref,
-  ) => {
-    const randomId = useId();
+export const FloatingLabel = forwardRef<HTMLInputElement, FloatingLabelProps>((props, ref) => {
+  const randomId = useId();
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [floatingLabelTheme, provider.theme?.floatingLabel, customTheme],
-      [get(provider.clearTheme, "floatingLabel"), clearTheme],
-      [get(provider.applyTheme, "floatingLabel"), applyTheme],
-    );
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [floatingLabelTheme, provider.theme?.floatingLabel, props.theme],
+    [get(provider.clearTheme, "floatingLabel"), props.clearTheme],
+    [get(provider.applyTheme, "floatingLabel"), props.applyTheme],
+  );
 
-    return (
-      <div className={twMerge("relative", variant === "standard" ? "z-0" : "")}>
-        <input
-          type="text"
-          id={props.id ? props.id : "floatingLabel" + randomId}
-          aria-describedby="outlined_success_help"
-          className={twMerge(theme.input[color][variant][sizing], className)}
-          placeholder=" "
-          data-testid="floating-label"
-          disabled={disabled}
-          {...props}
-          ref={ref}
-        />
-        <label
-          htmlFor={props.id ? props.id : "floatingLabel" + randomId}
-          className={twMerge(theme.label[color][variant][sizing], className)}
-        >
-          {label}
-        </label>
-      </div>
-    );
-  },
-);
+  const {
+    label,
+    color = "default",
+    sizing = "md",
+    variant,
+    disabled = false,
+    className,
+    ...restProps
+  } = resolveProps(props, provider.props?.floatingLabel);
+
+  return (
+    <div className={twMerge("relative", variant === "standard" ? "z-0" : "")}>
+      <input
+        type="text"
+        id={"floatingLabel" + randomId}
+        aria-describedby="outlined_success_help"
+        className={twMerge(theme.input[color][variant][sizing], className)}
+        placeholder=" "
+        data-testid="floating-label"
+        disabled={disabled}
+        {...restProps}
+        ref={ref}
+      />
+      <label htmlFor={"floatingLabel" + randomId} className={twMerge(theme.label[color][variant][sizing], className)}>
+        {label}
+      </label>
+    </div>
+  );
+});
 
 FloatingLabel.displayName = "FloatingLabel";

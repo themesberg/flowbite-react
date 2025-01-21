@@ -4,11 +4,12 @@ import { useListItem, useMergeRefs } from "@floating-ui/react";
 import { forwardRef, type ComponentProps, type ElementType, type FC, type RefCallback } from "react";
 import type { PolymorphicComponentPropWithRef, PolymorphicRef } from "../../helpers/generic-as-prop";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
-import { ButtonBase, type ButtonBaseProps } from "../Button/ButtonBase";
+import { ButtonBase } from "../Button/ButtonBase";
 import { useDropdownContext } from "./DropdownContext";
 import { dropdownTheme } from "./theme";
 
@@ -33,21 +34,7 @@ type DropdownItemType = (<C extends ElementType = "button">(props: DropdownItemP
 };
 
 export const DropdownItem = forwardRef(
-  <T extends ElementType = "button">(
-    {
-      children,
-      className,
-      icon: Icon,
-      onClick,
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    }: DropdownItemProps<T>,
-    forwardedRef: PolymorphicRef<T>,
-  ) => {
-    const { ref: listItemRef, index } = useListItem({ label: typeof children === "string" ? children : undefined });
-    const ref = useMergeRefs([forwardedRef, listItemRef]);
+  <T extends ElementType = "button">(props: DropdownItemProps<T>, forwardedRef: PolymorphicRef<T>) => {
     const {
       theme: rootTheme,
       clearTheme: rootClearTheme,
@@ -57,23 +44,32 @@ export const DropdownItem = forwardRef(
       getItemProps,
       handleSelect,
     } = useDropdownContext();
-    const isActive = activeIndex === index;
 
     const provider = useThemeProvider();
     const theme = useResolveTheme(
-      [dropdownTheme.floating.item, provider.theme?.dropdown?.floating?.item, rootTheme?.floating?.item, customTheme],
-      [get(provider.clearTheme, "dropdown.floating.item"), get(rootClearTheme, "floating.item"), clearTheme],
-      [get(provider.applyTheme, "dropdown.floating.item"), get(rootApplyTheme, "floating.item"), applyTheme],
+      [dropdownTheme.floating.item, provider.theme?.dropdown?.floating?.item, rootTheme?.floating?.item, props.theme],
+      [get(provider.clearTheme, "dropdown.floating.item"), get(rootClearTheme, "floating.item"), props.clearTheme],
+      [get(provider.applyTheme, "dropdown.floating.item"), get(rootApplyTheme, "floating.item"), props.applyTheme],
     );
 
-    const theirProps = props as ButtonBaseProps<T>;
+    const {
+      children,
+      className,
+      icon: Icon,
+      onClick,
+      ...restProps
+    } = resolveProps(props, provider.props?.dropdownItem);
+
+    const { ref: listItemRef, index } = useListItem({ label: typeof children === "string" ? children : undefined });
+    const ref = useMergeRefs([forwardedRef, listItemRef]);
+    const isActive = activeIndex === index;
 
     return (
       <li role="menuitem" className={theme.container}>
         <ButtonBase
           ref={ref as RefCallback<T>}
           className={twMerge(theme.base, className)}
-          {...theirProps}
+          {...restProps}
           {...getItemProps({
             onClick: () => {
               onClick?.();

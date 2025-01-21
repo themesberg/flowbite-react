@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -14,21 +15,17 @@ export interface AvatarGroupTheme {
 
 export interface AvatarGroupProps extends ComponentProps<"div">, ThemingProps<AvatarGroupTheme> {}
 
-export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
-  ({ children, className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [avatarTheme.group, provider.theme?.avatar?.group, customTheme],
-      [get(provider.clearTheme, "avatar"), clearTheme],
-      [get(provider.applyTheme, "avatar"), applyTheme],
-    );
+export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [avatarTheme.group, provider.theme?.avatar?.group, props.theme],
+    [get(provider.clearTheme, "avatar"), props.clearTheme],
+    [get(provider.applyTheme, "avatar"), props.applyTheme],
+  );
 
-    return (
-      <div ref={ref} data-testid="avatar-group-element" className={twMerge(theme.base, className)} {...props}>
-        {children}
-      </div>
-    );
-  },
-);
+  const { className, ...restProps } = resolveProps(props, provider.props?.avatarGroup);
+
+  return <div ref={ref} data-testid="avatar-group-element" className={twMerge(theme.base, className)} {...restProps} />;
+});
 
 AvatarGroup.displayName = "AvatarGroup";

@@ -3,6 +3,7 @@
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { omit } from "../../helpers/omit";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -44,16 +45,17 @@ export type CardProps = (
   CommonCardProps;
 
 export const Card = forwardRef<HTMLDivElement | HTMLAnchorElement, CardProps>((props, ref) => {
-  const { children, className, horizontal, href, theme: customTheme, clearTheme, applyTheme } = props;
-  const Component = typeof href === "undefined" ? "div" : "a";
-  const theirProps = removeCustomProps(props);
-
   const provider = useThemeProvider();
   const theme = useResolveTheme(
-    [cardTheme, provider.theme?.card, customTheme],
-    [get(provider.clearTheme, "card"), clearTheme],
-    [get(provider.applyTheme, "card"), applyTheme],
+    [cardTheme, provider.theme?.card, props.theme],
+    [get(provider.clearTheme, "card"), props.clearTheme],
+    [get(provider.applyTheme, "card"), props.applyTheme],
   );
+
+  const { children, className, horizontal, href, ...restProps } = resolveProps(props, provider.props?.card);
+
+  const Component = typeof href === "undefined" ? "div" : "a";
+  const theirProps = removeCustomProps(restProps);
 
   return (
     <Component
@@ -102,14 +104,4 @@ function Image({ theme: customTheme, clearTheme, applyTheme, ...props }: CardPro
   return null;
 }
 
-const removeCustomProps = omit([
-  "children",
-  "className",
-  "horizontal",
-  "href",
-  "imgAlt",
-  "imgSrc",
-  "renderImage",
-  "theme",
-  "clearTheme",
-]);
+const removeCustomProps = omit(["imgAlt", "imgSrc", "renderImage"]);

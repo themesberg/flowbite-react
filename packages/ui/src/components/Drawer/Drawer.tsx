@@ -3,6 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef, useEffect, useId } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -38,67 +39,63 @@ export interface DrawerProps extends ComponentProps<"div">, ThemingProps<DrawerT
   position?: "top" | "right" | "bottom" | "left";
 }
 
-export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
-  (
-    {
-      backdrop = true,
-      children,
-      className,
-      edge = false,
-      position = "left",
-      onClose,
-      open: isOpen = false,
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    },
-    ref,
-  ) => {
-    const id = useId();
+export const Drawer = forwardRef<HTMLDivElement, DrawerProps>((props, ref) => {
+  const id = useId();
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [drawerTheme, provider.theme?.drawer, customTheme],
-      [get(provider.clearTheme, "drawer"), clearTheme],
-      [get(provider.applyTheme, "drawer"), applyTheme],
-    );
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [drawerTheme, provider.theme?.drawer, props.theme],
+    [get(provider.clearTheme, "drawer"), props.clearTheme],
+    [get(provider.applyTheme, "drawer"), props.applyTheme],
+  );
 
-    useEffect(() => {
-      const handleEscapeKey = (event: KeyboardEvent) => {
-        if (event.key === "Escape" && isOpen && onClose) {
-          onClose();
-        }
-      };
+  const {
+    backdrop = true,
+    children,
+    className,
+    edge = false,
+    position = "left",
+    onClose,
+    open: isOpen = false,
+    ...restProps
+  } = resolveProps(props, provider.props?.drawer);
 
-      document.addEventListener("keydown", handleEscapeKey);
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isOpen && onClose) {
+        onClose();
+      }
+    };
 
-      return () => document.removeEventListener("keydown", handleEscapeKey);
-    }, [onClose, isOpen]);
+    document.addEventListener("keydown", handleEscapeKey);
 
-    return (
-      <DrawerContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, onClose, isOpen, id }}>
-        <div
-          ref={ref}
-          aria-modal
-          aria-describedby={`drawer-dialog-${id}`}
-          role="dialog"
-          tabIndex={-1}
-          data-testid="flowbite-drawer"
-          className={twMerge(
-            theme.root.base,
-            theme.root.position[position][isOpen ? "on" : "off"],
-            edge && !isOpen && theme.root.edge,
-            className,
-          )}
-          {...props}
-        >
-          {children}
-        </div>
-        {isOpen && backdrop && <div onClick={() => onClose()} className={theme.root.backdrop} />}
-      </DrawerContext.Provider>
-    );
-  },
-);
+    return () => document.removeEventListener("keydown", handleEscapeKey);
+  }, [onClose, isOpen]);
+
+  return (
+    <DrawerContext.Provider
+      value={{ theme: props.theme, clearTheme: props.clearTheme, applyTheme: props.applyTheme, onClose, isOpen, id }}
+    >
+      <div
+        ref={ref}
+        aria-modal
+        aria-describedby={`drawer-dialog-${id}`}
+        role="dialog"
+        tabIndex={-1}
+        data-testid="flowbite-drawer"
+        className={twMerge(
+          theme.root.base,
+          theme.root.position[position][isOpen ? "on" : "off"],
+          edge && !isOpen && theme.root.edge,
+          className,
+        )}
+        {...restProps}
+      >
+        {children}
+      </div>
+      {isOpen && backdrop && <div onClick={() => onClose()} className={theme.root.backdrop} />}
+    </DrawerContext.Provider>
+  );
+});
 
 Drawer.displayName = "Drawer";

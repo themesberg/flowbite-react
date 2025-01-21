@@ -2,6 +2,7 @@
 
 import { forwardRef, useState, type ComponentProps, type FC } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { CheckIcon, ClipboardListIcon } from "../../icons";
@@ -29,50 +30,44 @@ export interface ClipboardWithIconTextProps extends ComponentProps<"button">, Th
   icon?: FC<ComponentProps<"svg">>;
 }
 
-export const ClipboardWithIconText = forwardRef<HTMLButtonElement, ClipboardWithIconTextProps>(
-  (
-    {
-      valueToCopy,
-      icon: Icon = ClipboardListIcon,
-      label = "Copy",
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      className,
-      ...rest
-    },
-    ref,
-  ) => {
-    const [isJustCopied, setIsJustCopied] = useState(false);
+export const ClipboardWithIconText = forwardRef<HTMLButtonElement, ClipboardWithIconTextProps>((props, ref) => {
+  const [isJustCopied, setIsJustCopied] = useState(false);
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [clipboardTheme.withIconText, provider.theme?.clipboard?.withIconText, customTheme],
-      [get(provider.clearTheme, "clipboard.withIconText"), clearTheme],
-      [get(provider.applyTheme, "clipboard.withIconText"), applyTheme],
-    );
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [clipboardTheme.withIconText, provider.theme?.clipboard?.withIconText, props.theme],
+    [get(provider.clearTheme, "clipboard.withIconText"), props.clearTheme],
+    [get(provider.applyTheme, "clipboard.withIconText"), props.applyTheme],
+  );
 
-    return (
-      <button
-        className={twMerge(theme.base, className)}
-        onClick={() => copyToClipboard(valueToCopy, setIsJustCopied)}
-        {...rest}
-        ref={ref}
-      >
-        {isJustCopied ? (
-          <span className={theme.label.base}>
-            <CheckIcon aria-hidden className={theme.icon.successIcon} />
-            <span className={theme.label.successText}>Copied</span>
-          </span>
-        ) : (
-          <span className={theme.label.base}>
-            <Icon aria-hidden className={theme.icon.defaultIcon} />
-            <span className={theme.label.defaultText}>{label}</span>
-          </span>
-        )}
-      </button>
-    );
-  },
-);
+  const {
+    valueToCopy,
+    icon: Icon = ClipboardListIcon,
+    label = "Copy",
+    className,
+    ...rest
+  } = resolveProps(props, provider.props?.clipboardWithIconText);
+
+  return (
+    <button
+      className={twMerge(theme.base, className)}
+      onClick={() => copyToClipboard(valueToCopy, setIsJustCopied)}
+      {...rest}
+      ref={ref}
+    >
+      {isJustCopied ? (
+        <span className={theme.label.base}>
+          <CheckIcon aria-hidden className={theme.icon.successIcon} />
+          <span className={theme.label.successText}>Copied</span>
+        </span>
+      ) : (
+        <span className={theme.label.base}>
+          <Icon aria-hidden className={theme.icon.defaultIcon} />
+          <span className={theme.label.defaultText}>{label}</span>
+        </span>
+      )}
+    </button>
+  );
+});
 
 ClipboardWithIconText.displayName = "Clipboard.WithIconText";

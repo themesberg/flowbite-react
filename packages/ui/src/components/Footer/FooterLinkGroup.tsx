@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -19,26 +20,24 @@ export interface FooterLinkGroupProps extends ComponentProps<"ul">, ThemingProps
   col?: boolean;
 }
 
-export const FooterLinkGroup = forwardRef<HTMLUListElement, FooterLinkGroupProps>(
-  ({ children, className, col = false, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [footerTheme.groupLink, provider.theme?.footer?.groupLink, customTheme],
-      [get(provider.clearTheme, "footer.groupLink"), clearTheme],
-      [get(provider.applyTheme, "footer.groupLink"), applyTheme],
-    );
+export const FooterLinkGroup = forwardRef<HTMLUListElement, FooterLinkGroupProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [footerTheme.groupLink, provider.theme?.footer?.groupLink, props.theme],
+    [get(provider.clearTheme, "footer.groupLink"), props.clearTheme],
+    [get(provider.applyTheme, "footer.groupLink"), props.applyTheme],
+  );
 
-    return (
-      <ul
-        ref={ref}
-        data-testid="footer-groupLink"
-        className={twMerge(theme.base, col && theme.col, className)}
-        {...props}
-      >
-        {children}
-      </ul>
-    );
-  },
-);
+  const { className, col = false, ...restProps } = resolveProps(props, provider.props?.footerLinkGroup);
+
+  return (
+    <ul
+      ref={ref}
+      data-testid="footer-groupLink"
+      className={twMerge(theme.base, col && theme.col, className)}
+      {...restProps}
+    />
+  );
+});
 
 FooterLinkGroup.displayName = "FooterLinkGroup";

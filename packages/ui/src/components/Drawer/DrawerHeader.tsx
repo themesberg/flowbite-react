@@ -3,6 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { forwardRef, useId } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { CloseIcon as DefaultCloseIcon, HomeIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
@@ -20,64 +21,55 @@ export interface DrawerHeaderTheme {
   collapsed: FlowbiteBoolean;
 }
 
-export interface DrawerHeaderProps
-  extends ComponentProps<"div">,
-    Record<string, unknown>,
-    ThemingProps<DrawerHeaderTheme> {
+export interface DrawerHeaderProps extends ComponentProps<"div">, ThemingProps<DrawerHeaderTheme> {
   closeIcon?: FC<ComponentProps<"svg">>;
   title?: string;
   titleIcon?: FC<ComponentProps<"svg">>;
 }
 
-export const DrawerHeader = forwardRef<HTMLDivElement, DrawerHeaderProps>(
-  (
-    {
-      children,
-      className,
-      closeIcon: CloseIcon = DefaultCloseIcon,
-      title,
-      titleIcon: TitleIcon = HomeIcon,
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    },
-    ref,
-  ) => {
-    const id = useId();
+export const DrawerHeader = forwardRef<HTMLDivElement, DrawerHeaderProps>((props, ref) => {
+  const id = useId();
 
-    const {
-      id: mainDivId,
-      isOpen,
-      onClose,
-      theme: rootTheme,
-      clearTheme: rootClearTheme,
-      applyTheme: rootApplyTheme,
-    } = useDrawerContext();
+  const {
+    id: mainDivId,
+    isOpen,
+    onClose,
+    theme: rootTheme,
+    clearTheme: rootClearTheme,
+    applyTheme: rootApplyTheme,
+  } = useDrawerContext();
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [drawerTheme.header, provider.theme?.drawer?.header, rootTheme?.header, customTheme],
-      [get(provider.clearTheme, "drawer.header"), get(rootClearTheme, "header"), clearTheme],
-      [get(provider.applyTheme, "drawer.header"), get(rootApplyTheme, "header"), applyTheme],
-    );
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [drawerTheme.header, provider.theme?.drawer?.header, rootTheme?.header, props.theme],
+    [get(provider.clearTheme, "drawer.header"), get(rootClearTheme, "header"), props.clearTheme],
+    [get(provider.applyTheme, "drawer.header"), get(rootApplyTheme, "header"), props.applyTheme],
+  );
 
-    return (
-      <div ref={ref} className={className} {...props}>
-        <h5 className={theme.inner.titleText} id={mainDivId}>
-          <TitleIcon aria-hidden className={theme.inner.titleIcon} />
-          {title}
-        </h5>
-        <button onClick={onClose} data-testid="close-drawer" className={theme.inner.closeButton}>
-          <CloseIcon aria-hidden className={theme.inner.closeIcon} />
-          <span className="sr-only">Close menu</span>
-        </button>
-        <span className={theme.collapsed[isOpen ? "on" : "off"]} id={`flowbite-drawer-header-${id}`}>
-          {children}
-        </span>
-      </div>
-    );
-  },
-);
+  const {
+    children,
+    className,
+    closeIcon: CloseIcon = DefaultCloseIcon,
+    title,
+    titleIcon: TitleIcon = HomeIcon,
+    ...restProps
+  } = resolveProps(props, provider.props?.drawerHeader);
+
+  return (
+    <div ref={ref} className={className} {...restProps}>
+      <h5 className={theme.inner.titleText} id={mainDivId}>
+        <TitleIcon aria-hidden className={theme.inner.titleIcon} />
+        {title}
+      </h5>
+      <button onClick={onClose} data-testid="close-drawer" className={theme.inner.closeButton}>
+        <CloseIcon aria-hidden className={theme.inner.closeIcon} />
+        <span className="sr-only">Close menu</span>
+      </button>
+      <span className={theme.collapsed[isOpen ? "on" : "off"]} id={`flowbite-drawer-header-${id}`}>
+        {children}
+      </span>
+    </div>
+  );
+});
 
 DrawerHeader.displayName = "DrawerHeader";

@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps, type FC, type ReactNode } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { XIcon } from "../../icons";
@@ -34,62 +35,56 @@ export interface AlertProps extends Omit<ComponentProps<"div">, "color">, Themin
   withBorderAccent?: boolean;
 }
 
-export const Alert = forwardRef<HTMLDivElement, AlertProps>(
-  (
-    {
-      additionalContent,
-      children,
-      className,
-      color = "info",
-      icon: Icon,
-      onDismiss,
-      rounded = true,
-      withBorderAccent,
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    },
-    ref,
-  ) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [alertTheme, provider.theme?.alert, customTheme],
-      [get(provider.clearTheme, "alert"), clearTheme],
-      [get(provider.applyTheme, "alert"), applyTheme],
-    );
+export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [alertTheme, provider.theme?.alert, props.theme],
+    [get(provider.clearTheme, "alert"), props.clearTheme],
+    [get(provider.applyTheme, "alert"), props.applyTheme],
+  );
 
-    return (
-      <div
-        ref={ref}
-        className={twMerge(
-          theme.base,
-          theme.color[color],
-          rounded && theme.rounded,
-          withBorderAccent && theme.borderAccent,
-          className,
+  const {
+    additionalContent,
+    children,
+    className,
+    color = "info",
+    icon: Icon,
+    onDismiss,
+    rounded = true,
+    withBorderAccent,
+    ...restProps
+  } = resolveProps(props, provider.props?.alert);
+
+  return (
+    <div
+      ref={ref}
+      className={twMerge(
+        theme.base,
+        theme.color[color],
+        rounded && theme.rounded,
+        withBorderAccent && theme.borderAccent,
+        className,
+      )}
+      role="alert"
+      {...restProps}
+    >
+      <div className={theme.wrapper} data-testid="flowbite-alert-wrapper">
+        {Icon && <Icon className={theme.icon} data-testid="flowbite-alert-icon" />}
+        <div>{children}</div>
+        {typeof onDismiss === "function" && (
+          <button
+            aria-label="Dismiss"
+            className={twMerge(theme.closeButton.base, theme.closeButton.color[color])}
+            onClick={onDismiss}
+            type="button"
+          >
+            <XIcon aria-hidden className={theme.closeButton.icon} />
+          </button>
         )}
-        role="alert"
-        {...props}
-      >
-        <div className={theme.wrapper} data-testid="flowbite-alert-wrapper">
-          {Icon && <Icon className={theme.icon} data-testid="flowbite-alert-icon" />}
-          <div>{children}</div>
-          {typeof onDismiss === "function" && (
-            <button
-              aria-label="Dismiss"
-              className={twMerge(theme.closeButton.base, theme.closeButton.color[color])}
-              onClick={onDismiss}
-              type="button"
-            >
-              <XIcon aria-hidden className={theme.closeButton.icon} />
-            </button>
-          )}
-        </div>
-        {additionalContent && <div>{additionalContent}</div>}
       </div>
-    );
-  },
-);
+      {additionalContent && <div>{additionalContent}</div>}
+    </div>
+  );
+});
 
 Alert.displayName = "Alert";
