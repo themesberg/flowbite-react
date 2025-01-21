@@ -102,6 +102,16 @@
         "default": "./dist/cjs/tailwind/index.cjs"
       }
     },
+    "./theme/*": {
+      "import": {
+        "types": "./dist/types/theme/*.d.mts",
+        "default": "./dist/esm/theme/*.mjs"
+      },
+      "require": {
+        "types": "./dist/types/theme/*.d.ts",
+        "default": "./dist/cjs/theme/*.cjs"
+      }
+    },
     "./theme": {
       "import": {
         "types": "./dist/types/theme/index.d.mts",
