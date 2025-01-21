@@ -1,9 +1,9 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import { theme, ToggleSwitch } from "flowbite-react";
 import type { ToggleSwitchProps } from "flowbite-react";
+import { ToggleSwitch, toggleSwitchTheme } from "flowbite-react";
 import { useState } from "react";
 
-const colors = Object.keys(theme.toggleSwitch.toggle.checked.color);
+const colors = Object.keys(toggleSwitchTheme.toggle.checked.color);
 
 export default {
   title: "Components/ToggleSwitch",

@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import type { AlertProps } from "flowbite-react";
-import { Alert, theme } from "flowbite-react";
+import { Alert, alertTheme } from "flowbite-react";
 import { HiEye, HiInformationCircle } from "react-icons/hi";
 
 export default {
@@ -8,7 +8,7 @@ export default {
   component: Alert,
   argTypes: {
     color: {
-      options: Object.keys(theme.alert.color),
+      options: Object.keys(alertTheme.color),
       control: { type: "inline-radio" },
     },
   },

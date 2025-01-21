@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import { Badge, theme } from "flowbite-react";
 import type { BadgeProps } from "flowbite-react";
+import { Badge, badgeTheme } from "flowbite-react";
 import { HiCheck } from "react-icons/hi";
 
 export default {
@@ -8,11 +8,11 @@ export default {
   component: Badge,
   argTypes: {
     color: {
-      options: Object.keys(theme.badge.root.color),
+      options: Object.keys(badgeTheme.root.color),
       control: { type: "inline-radio" },
     },
     size: {
-      options: Object.keys(theme.badge.root.size),
+      options: Object.keys(badgeTheme.root.size),
       control: { type: "inline-radio" },
     },
   },

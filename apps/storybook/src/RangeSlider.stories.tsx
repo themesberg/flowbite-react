@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import { RangeSlider, theme } from "flowbite-react";
 import type { RangeSliderProps } from "flowbite-react";
+import { RangeSlider, rangeSliderTheme } from "flowbite-react";
 
 export default {
   title: "Components/RangeSlider",
@@ -14,7 +14,7 @@ export default {
   ],
   argTypes: {
     sizing: {
-      options: Object.keys(theme.rangeSlider.field.input.sizes),
+      options: Object.keys(rangeSliderTheme.field.input.sizes),
       control: { type: "select" },
     },
     disabled: {

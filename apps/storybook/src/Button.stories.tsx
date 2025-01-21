@@ -1,13 +1,13 @@
 import type { Meta, StoryFn } from "@storybook/react";
-import { Button, theme } from "flowbite-react";
 import type { ButtonProps } from "flowbite-react";
+import { Button, buttonTheme } from "flowbite-react";
 
 export default {
   title: "Components/Button",
   component: Button,
   argTypes: {
     color: {
-      options: Object.keys(theme.button.color),
+      options: Object.keys(buttonTheme.color),
       control: { type: "inline-radio" },
     },
     size: {
