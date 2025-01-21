@@ -17,6 +17,6 @@ export const listTheme = createTheme<ListTheme>({
       off: "",
       on: "flex items-center",
     },
-    icon: "me-2 h-3.5 w-3.5 flex-shrink-0",
+    icon: "me-2 h-3.5 w-3.5 shrink-0",
   },
 });

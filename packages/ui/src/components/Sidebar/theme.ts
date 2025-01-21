@@ -59,7 +59,7 @@ export const sidebarTheme = createTheme<SidebarTheme>({
       base: "flex-1 whitespace-nowrap px-3",
     },
     icon: {
-      base: "h-6 w-6 flex-shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white",
+      base: "h-6 w-6 shrink-0 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white",
       active: "text-gray-700 dark:text-gray-100",
     },
     label: "",

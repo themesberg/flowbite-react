@@ -52,7 +52,7 @@
 }
 
 .DocSearch .DocSearch-Container {
-  @apply bg-gray-900 bg-opacity-50;
+  @apply bg-gray-900/50;
 }
 
 .DocSearch .DocSearch-Modal {
@@ -163,7 +163,7 @@
   }
 
   .DocSearch .DocSearch-Container {
-    @apply bg-opacity-80;
+    @apply bg-gray-900/80;
   }
 
   .DocSearch .DocSearch-Modal {
