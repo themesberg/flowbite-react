@@ -91,11 +91,11 @@ export function resolveTheme<T>(
 
   let theme = baseTheme;
 
-  if (_custom.length) {
+  if (_custom?.length) {
     theme = deepMergeStrings(twMerge)(baseTheme, ...custom) as T;
   }
 
-  if (_applyThemeList?.length && _custom.length) {
+  if (_applyThemeList?.length && _custom?.length) {
     const finalApplyTheme = cloneWithValue<T, ApplyTheme>(baseTheme, "merge");
 
     let run = false;
