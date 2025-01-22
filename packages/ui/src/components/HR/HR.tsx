@@ -3,6 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -14,30 +15,38 @@ import type { HRTrimmedTheme } from "./HRTrimmed";
 import { hrTheme } from "./theme";
 
 export interface HRTheme {
-  root: {
-    base: string;
-  };
+  root: HRRootTheme;
   trimmed: HRTrimmedTheme;
   icon: HRIconTheme;
   text: HRTextTheme;
   square: HRSquareTheme;
 }
 
-export interface HRProps extends Omit<ComponentProps<"hr">, "ref">, ThemingProps<HRTheme> {}
+export interface HRRootTheme {
+  base: string;
+}
 
-export const HR = forwardRef<HTMLHRElement, HRProps>(
-  ({ theme: customTheme, clearTheme, applyTheme, className, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [hrTheme.root, provider.theme?.hr?.root, customTheme],
-      [get(provider.clearTheme, "hr.root"), clearTheme],
-      [get(provider.applyTheme, "hr.root"), applyTheme],
-    );
+export interface HRProps extends Omit<ComponentProps<"hr">, "ref">, ThemingProps<HRRootTheme> {}
 
-    return (
-      <hr className={twMerge(theme.base, className)} role="separator" data-testid="flowbite-hr" ref={ref} {...props} />
-    );
-  },
-);
+export const HR = forwardRef<HTMLHRElement, HRProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [hrTheme.root, provider.theme?.hr?.root, props.theme],
+    [get(provider.clearTheme, "hr.root"), props.clearTheme],
+    [get(provider.applyTheme, "hr.root"), props.applyTheme],
+  );
+
+  const { className, ...restProps } = resolveProps(props, provider.props?.hr);
+
+  return (
+    <hr
+      ref={ref}
+      className={twMerge(theme.base, className)}
+      data-testid="flowbite-hr"
+      role="separator"
+      {...restProps}
+    />
+  );
+});
 
 HR.displayName = "HR";

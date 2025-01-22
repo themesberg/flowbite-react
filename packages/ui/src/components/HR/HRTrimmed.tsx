@@ -3,6 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -15,25 +16,25 @@ export interface HRTrimmedTheme {
 
 export interface HRTrimmedProps extends Omit<ComponentProps<"hr">, "ref">, ThemingProps<HRTrimmedTheme> {}
 
-export const HRTrimmed = forwardRef<HTMLHRElement, HRTrimmedProps>(
-  ({ theme: customTheme, clearTheme, applyTheme, className, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [hrTheme.trimmed, provider.theme?.hr?.trimmed, customTheme],
-      [get(provider.clearTheme, "hr.trimmed"), clearTheme],
-      [get(provider.applyTheme, "hr.trimmed"), applyTheme],
-    );
+export const HRTrimmed = forwardRef<HTMLHRElement, HRTrimmedProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [hrTheme.trimmed, provider.theme?.hr?.trimmed, props.theme],
+    [get(provider.clearTheme, "hr.trimmed"), props.clearTheme],
+    [get(provider.applyTheme, "hr.trimmed"), props.applyTheme],
+  );
 
-    return (
-      <hr
-        className={twMerge(theme.base, className)}
-        role="separator"
-        data-testid="flowbite-hr-trimmed"
-        ref={ref}
-        {...props}
-      />
-    );
-  },
-);
+  const { className, ...restProps } = resolveProps(props, provider.props?.hrTrimmed);
+
+  return (
+    <hr
+      ref={ref}
+      className={twMerge(theme.base, className)}
+      data-testid="flowbite-hr-trimmed"
+      role="separator"
+      {...restProps}
+    />
+  );
+});
 
 HRTrimmed.displayName = "HRTrimmed";

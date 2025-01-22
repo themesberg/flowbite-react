@@ -1,5 +1,5 @@
 export { HR } from "./HR";
-export type { HRProps, HRTheme } from "./HR";
+export type { HRProps, HRRootTheme, HRTheme } from "./HR";
 export { HRIcon } from "./HRIcon";
 export type { HRIconProps, HRIconTheme } from "./HRIcon";
 export { HRSquare } from "./HRSquare";

@@ -28,7 +28,7 @@ export interface ListRootTheme {
 
 export interface ListProps
   extends PropsWithChildren<ComponentProps<"ul"> & ComponentProps<"ol">>,
-    ThemingProps<ListTheme> {
+    ThemingProps<ListRootTheme> {
   horizontal?: boolean;
   nested?: boolean;
   ordered?: boolean;
@@ -38,9 +38,9 @@ export interface ListProps
 export const List = forwardRef<HTMLUListElement | HTMLOListElement, ListProps>((props, ref) => {
   const provider = useThemeProvider();
   const theme = useResolveTheme(
-    [listTheme.root, provider.theme?.list?.root, props.theme?.root],
-    [get(provider.clearTheme, "list.root"), get(props.clearTheme, "root")],
-    [get(provider.applyTheme, "list.root"), get(props.applyTheme, "root")],
+    [listTheme.root, provider.theme?.list?.root, props.theme],
+    [get(provider.clearTheme, "list.root"), props.clearTheme],
+    [get(provider.applyTheme, "list.root"), props.applyTheme],
   );
 
   const { className, horizontal, nested, ordered, unstyled, ...restProps } = resolveProps(props, provider.props?.list);

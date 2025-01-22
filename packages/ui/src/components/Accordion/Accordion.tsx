@@ -3,19 +3,20 @@
 import type { ComponentProps, FC, ReactElement } from "react";
 import { Children, cloneElement, useMemo, useState } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { ChevronDownIcon } from "../../icons";
 import { useThemeProvider } from "../../theme/provider";
 import type { FlowbiteBoolean, ThemingProps } from "../../types";
-import type { AccordionComponentTheme } from "./AccordionContent";
+import type { AccordionContentTheme } from "./AccordionContent";
 import type { AccordionPanelProps } from "./AccordionPanel";
 import type { AccordionTitleTheme } from "./AccordionTitle";
 import { accordionTheme } from "./theme";
 
 export interface AccordionTheme {
   root: AccordionRootTheme;
-  content: AccordionComponentTheme;
+  content: AccordionContentTheme;
   title: AccordionTitleTheme;
 }
 
@@ -24,7 +25,7 @@ export interface AccordionRootTheme {
   flush: FlowbiteBoolean;
 }
 
-export interface AccordionProps extends ComponentProps<"div">, ThemingProps<AccordionTheme> {
+export interface AccordionProps extends ComponentProps<"div">, ThemingProps<AccordionRootTheme> {
   alwaysOpen?: boolean;
   arrowIcon?: FC<ComponentProps<"svg">>;
   children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];
@@ -32,18 +33,24 @@ export interface AccordionProps extends ComponentProps<"div">, ThemingProps<Acco
   collapseAll?: boolean;
 }
 
-export function Accordion({
-  alwaysOpen = false,
-  arrowIcon = ChevronDownIcon,
-  children,
-  flush = false,
-  collapseAll = false,
-  className,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: AccordionProps) {
+export function Accordion(props: AccordionProps) {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [accordionTheme.root, provider.theme?.accordion?.root, props.theme],
+    [get(provider.clearTheme, "accordion.root"), props.clearTheme],
+    [get(provider.applyTheme, "accordion.root"), props.applyTheme],
+  );
+
+  const {
+    alwaysOpen = false,
+    arrowIcon = ChevronDownIcon,
+    children,
+    flush = false,
+    collapseAll = false,
+    className,
+    ...restProps
+  } = resolveProps(props, provider.props?.accordion);
+
   const [isOpen, setOpen] = useState(collapseAll ? -1 : 0);
 
   const panels = useMemo(
@@ -60,18 +67,11 @@ export function Accordion({
     [alwaysOpen, arrowIcon, children, flush, isOpen],
   );
 
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [accordionTheme.root, provider.theme?.accordion?.root, customTheme],
-    [get(provider.clearTheme, "accordion.root"), clearTheme],
-    [get(provider.applyTheme, "accordion.root"), applyTheme],
-  );
-
   return (
     <div
       className={twMerge(theme.base, theme.flush[flush ? "on" : "off"], className)}
       data-testid="flowbite-accordion"
-      {...props}
+      {...restProps}
     >
       {panels}
     </div>

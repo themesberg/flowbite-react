@@ -19,14 +19,14 @@ export interface ListGroupRootTheme {
   base: string;
 }
 
-export interface ListGroupProps extends ComponentProps<"ul">, ThemingProps<ListGroupTheme> {}
+export interface ListGroupProps extends ComponentProps<"ul">, ThemingProps<ListGroupRootTheme> {}
 
 export const ListGroup = forwardRef<HTMLUListElement, ListGroupProps>((props, ref) => {
   const provider = useThemeProvider();
   const theme = useResolveTheme(
-    [listGroupTheme.root, provider.theme?.listGroup?.root, props.theme?.root],
-    [get(provider.clearTheme, "listGroup.root"), get(props.clearTheme, "root")],
-    [get(provider.applyTheme, "listGroup.root"), get(props.applyTheme, "root")],
+    [listGroupTheme.root, provider.theme?.listGroup?.root, props.theme],
+    [get(provider.clearTheme, "listGroup.root"), props.clearTheme],
+    [get(provider.applyTheme, "listGroup.root"), props.applyTheme],
   );
 
   const { className, ...restProps } = resolveProps(props, provider.props?.listGroup);

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, ForwardedRef, KeyboardEvent, PropsWithChildren, ReactElement } from "react";
+import type { ComponentProps, KeyboardEvent, PropsWithChildren, ReactElement } from "react";
 import { Children, forwardRef, useEffect, useId, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
@@ -64,7 +64,7 @@ export interface TabsRef {
   setActiveTab: (activeTab: number) => void;
 }
 
-export const Tabs = forwardRef<TabsRef, TabsProps>((props, ref: ForwardedRef<TabsRef>) => {
+export const Tabs = forwardRef<TabsRef, TabsProps>((props, ref) => {
   const provider = useThemeProvider();
   const theme = useResolveTheme(
     [tabsTheme, provider.theme?.tabs, props.theme],

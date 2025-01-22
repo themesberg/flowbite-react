@@ -1,7 +1,7 @@
 export { Accordion } from "./Accordion";
 export type { AccordionProps, AccordionRootTheme, AccordionTheme } from "./Accordion";
 export { AccordionContent } from "./AccordionContent";
-export type { AccordionComponentTheme, AccordionContentProps } from "./AccordionContent";
+export type { AccordionContentTheme, AccordionContentProps } from "./AccordionContent";
 export { AccordionPanel } from "./AccordionPanel";
 export type { AccordionPanelProps } from "./AccordionPanel";
 export { AccordionPanelContext, useAccordionContext } from "./AccordionPanelContext";

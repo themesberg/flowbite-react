@@ -1,4 +1,9 @@
-import type { AccordionProps, AccordionTheme } from "../components/Accordion";
+import type {
+  AccordionContentProps,
+  AccordionProps,
+  AccordionTheme,
+  AccordionTitleProps,
+} from "../components/Accordion";
 import type { AlertProps, AlertTheme } from "../components/Alert";
 import type { AvatarGroupCounterProps, AvatarGroupProps, AvatarProps, AvatarTheme } from "../components/Avatar";
 import type { BadgeProps, BadgeTheme } from "../components/Badge";
@@ -39,7 +44,7 @@ import type {
   FooterTitleProps,
 } from "../components/Footer";
 import type { HelperTextProps, HelperTextTheme } from "../components/HelperText";
-import type { HRProps, HRTheme } from "../components/HR";
+import type { HRIconProps, HRProps, HRSquareProps, HRTextProps, HRTheme, HRTrimmedProps } from "../components/HR";
 import type { KbdProps, KbdTheme } from "../components/Kbd";
 import type { LabelProps, LabelTheme } from "../components/Label";
 import type { ListItemProps, ListProps, ListTheme } from "../components/List";
@@ -160,6 +165,8 @@ export interface FlowbiteTheme {
 
 export interface FlowbiteProps {
   accordion: Partial<WithoutThemingProps<AccordionProps>>;
+  accordionContent: Partial<WithoutThemingProps<AccordionContentProps>>;
+  accordionTitle: Partial<WithoutThemingProps<AccordionTitleProps>>;
   alert: Partial<WithoutThemingProps<AlertProps>>;
   avatar: Partial<WithoutThemingProps<AvatarProps>>;
   avatarGroup: Partial<WithoutThemingProps<AvatarGroupProps>>;
@@ -199,6 +206,10 @@ export interface FlowbiteProps {
   footerTitle: Partial<WithoutThemingProps<FooterTitleProps>>;
   helperText: Partial<WithoutThemingProps<HelperTextProps>>;
   hr: Partial<WithoutThemingProps<HRProps>>;
+  hrIcon: Partial<WithoutThemingProps<HRIconProps>>;
+  hrSquare: Partial<WithoutThemingProps<HRSquareProps>>;
+  hrText: Partial<WithoutThemingProps<HRTextProps>>;
+  hrTrimmed: Partial<WithoutThemingProps<HRTrimmedProps>>;
   kbd: Partial<WithoutThemingProps<KbdProps>>;
   label: Partial<WithoutThemingProps<LabelProps>>;
   list: Partial<WithoutThemingProps<ListProps>>;

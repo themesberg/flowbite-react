@@ -3,6 +3,7 @@
 import type { ComponentProps, FC } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { QuoteRightIcon } from "../../icons";
@@ -23,30 +24,30 @@ export interface HRIconProps extends Omit<ComponentProps<"hr">, "ref">, ThemingP
   icon?: FC<ComponentProps<"svg">>;
 }
 
-export const HRIcon = forwardRef<HTMLHRElement, HRIconProps>(
-  ({ theme: customTheme, clearTheme, applyTheme, icon: Icon = QuoteRightIcon, className, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [hrTheme.icon, provider.theme?.hr?.icon, customTheme],
-      [get(provider.clearTheme, "hr.icon"), clearTheme],
-      [get(provider.applyTheme, "hr.icon"), applyTheme],
-    );
+export const HRIcon = forwardRef<HTMLHRElement, HRIconProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [hrTheme.icon, provider.theme?.hr?.icon, props.theme],
+    [get(provider.clearTheme, "hr.icon"), props.clearTheme],
+    [get(provider.applyTheme, "hr.icon"), props.applyTheme],
+  );
 
-    return (
-      <div className={theme.base}>
-        <hr
-          className={twMerge(theme.hrLine, className)}
-          role="separator"
-          data-testid="flowbite-hr-icon"
-          ref={ref}
-          {...props}
-        />
-        <div className={theme.icon.base}>
-          <Icon aria-hidden className={theme.icon.icon} />
-        </div>
+  const { icon: Icon = QuoteRightIcon, className, ...restProps } = resolveProps(props, provider.props?.hrIcon);
+
+  return (
+    <div className={theme.base}>
+      <hr
+        ref={ref}
+        className={twMerge(theme.hrLine, className)}
+        data-testid="flowbite-hr-icon"
+        role="separator"
+        {...restProps}
+      />
+      <div className={theme.icon.base}>
+        <Icon aria-hidden className={theme.icon.icon} />
       </div>
-    );
-  },
-);
+    </div>
+  );
+});
 
 HRIcon.displayName = "HRIcon";

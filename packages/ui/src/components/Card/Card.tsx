@@ -2,7 +2,6 @@
 
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
-import { omit } from "../../helpers/omit";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -52,14 +51,17 @@ export const Card = forwardRef<HTMLDivElement | HTMLAnchorElement, CardProps>((p
     [get(provider.applyTheme, "card"), props.applyTheme],
   );
 
-  const { children, className, horizontal, href, ...restProps } = resolveProps(props, provider.props?.card);
+  const { children, className, horizontal, href, imgAlt, imgSrc, renderImage, ...restProps } = resolveProps(
+    props,
+    provider.props?.card,
+  );
 
   const Component = typeof href === "undefined" ? "div" : "a";
-  const theirProps = removeCustomProps(restProps);
 
   return (
     <Component
-      ref={ref as never}
+      // @ts-expect-error - bypass
+      ref={ref}
       data-testid="flowbite-card"
       href={href}
       className={twMerge(
@@ -68,40 +70,19 @@ export const Card = forwardRef<HTMLDivElement | HTMLAnchorElement, CardProps>((p
         href && theme.root.href,
         className,
       )}
-      {...theirProps}
+      {...restProps}
     >
-      <Image {...props} />
+      {renderImage?.(theme, horizontal ?? false) ?? imgSrc ?? (
+        <img
+          data-testid="flowbite-card-image"
+          alt={imgAlt ?? ""}
+          src={imgSrc}
+          className={twMerge(theme.img.base, theme.img.horizontal[props.horizontal ? "on" : "off"])}
+        />
+      )}
       <div className={theme.root.children}>{children}</div>
     </Component>
   );
 });
 
 Card.displayName = "Card";
-
-function Image({ theme: customTheme, clearTheme, applyTheme, ...props }: CardProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [cardTheme, provider.theme?.card, customTheme],
-    [get(provider.clearTheme, "carousel"), clearTheme],
-    [get(provider.applyTheme, "carousel"), applyTheme],
-  );
-
-  if (props.renderImage) {
-    return props.renderImage(theme, props.horizontal ?? false);
-  }
-
-  if (props.imgSrc) {
-    return (
-      <img
-        data-testid="flowbite-card-image"
-        alt={props.imgAlt ?? ""}
-        src={props.imgSrc}
-        className={twMerge(theme.img.base, theme.img.horizontal[props.horizontal ? "on" : "off"])}
-      />
-    );
-  }
-
-  return null;
-}
-
-const removeCustomProps = omit(["imgAlt", "imgSrc", "renderImage"]);
