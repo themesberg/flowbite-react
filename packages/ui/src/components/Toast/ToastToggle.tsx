@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps, type FC, type MouseEvent } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { XIcon as DefaultXIcon } from "../../icons";
@@ -20,62 +21,58 @@ export interface ToastToggleProps extends ComponentProps<"button">, ThemingProps
   onDismiss?: () => void;
 }
 
-export const ToastToggle = forwardRef<HTMLButtonElement, ToastToggleProps>(
-  (
-    {
-      className,
-      onClick,
-      onDismiss,
-      xIcon: XIcon = DefaultXIcon,
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    },
-    ref,
-  ) => {
-    const {
-      theme: rootTheme,
-      clearTheme: rootClearTheme,
-      applyTheme: rootApplyTheme,
-      duration,
-      isClosed,
-      isRemoved,
-      setIsClosed,
-      setIsRemoved,
-    } = useToastContext();
+export const ToastToggle = forwardRef<HTMLButtonElement, ToastToggleProps>((props, ref) => {
+  const {
+    theme: rootTheme,
+    clearTheme: rootClearTheme,
+    applyTheme: rootApplyTheme,
+    duration,
+    isClosed,
+    isRemoved,
+    setIsClosed,
+    setIsRemoved,
+  } = useToastContext();
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [toastTheme.toggle, provider.theme?.toast?.toggle, rootTheme?.toggle, customTheme],
-      [get(provider.clearTheme, "toast.toggle"), get(rootClearTheme, "toggle"), clearTheme],
-      [get(provider.applyTheme, "toast.toggle"), get(rootApplyTheme, "toggle"), applyTheme],
-    );
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [toastTheme.toggle, provider.theme?.toast?.toggle, rootTheme?.toggle, props.theme],
+    [get(provider.clearTheme, "toast.toggle"), get(rootClearTheme, "toggle"), props.clearTheme],
+    [get(provider.applyTheme, "toast.toggle"), get(rootApplyTheme, "toggle"), props.applyTheme],
+  );
 
-    function handleClick(e: MouseEvent<HTMLButtonElement>) {
-      if (onClick) onClick(e);
+  const {
+    className,
+    onClick,
+    onDismiss,
+    xIcon: XIcon = DefaultXIcon,
+    ...restProps
+  } = resolveProps(props, provider.props?.toastToggle);
 
-      if (onDismiss) {
-        onDismiss();
-        return;
-      }
-
-      setIsClosed(!isClosed);
-      setTimeout(() => setIsRemoved(!isRemoved), duration);
+  function handleClick(e: MouseEvent<HTMLButtonElement>) {
+    if (onClick) {
+      onClick(e);
     }
 
-    return (
-      <button
-        ref={ref}
-        aria-label="Close"
-        onClick={handleClick}
-        type="button"
-        className={twMerge(theme.base, className)}
-        {...props}
-      >
-        <XIcon aria-hidden className={theme.icon} />
-      </button>
-    );
-  },
-);
+    if (onDismiss) {
+      onDismiss();
+      return;
+    }
+
+    setIsClosed(!isClosed);
+    setTimeout(() => setIsRemoved(!isRemoved), duration);
+  }
+
+  return (
+    <button
+      ref={ref}
+      aria-label="Close"
+      onClick={handleClick}
+      type="button"
+      className={twMerge(theme.base, className)}
+      {...restProps}
+    >
+      <XIcon aria-hidden className={theme.icon} />
+    </button>
+  );
+});
 ToastToggle.displayName = "ToastToggle";

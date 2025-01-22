@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -18,23 +19,17 @@ export interface MegaMenuDropdownProps extends ComponentProps<"div">, ThemingPro
   toggle?: JSX.Element;
 }
 
-export function MegaMenuDropdown({
-  children,
-  className,
-  toggle,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: MegaMenuDropdownProps) {
+export function MegaMenuDropdown(props: MegaMenuDropdownProps) {
   const [labelledBy, setLabelledBy] = useState<string | undefined>(undefined);
 
   const provider = useThemeProvider();
   const theme = useResolveTheme(
-    [megaMenuTheme.dropdown, provider.theme?.megaMenu?.dropdown, customTheme],
-    [get(provider.clearTheme, "megaMenu.dropdown"), clearTheme],
-    [get(provider.applyTheme, "megaMenu.dropdown"), applyTheme],
+    [megaMenuTheme.dropdown, provider.theme?.megaMenu?.dropdown, props.theme],
+    [get(provider.clearTheme, "megaMenu.dropdown"), props.clearTheme],
+    [get(provider.applyTheme, "megaMenu.dropdown"), props.applyTheme],
   );
+
+  const { children, className, toggle, ...restProps } = resolveProps(props, provider.props?.megaMenuDropdown);
 
   if (toggle) {
     return (
@@ -65,7 +60,7 @@ export function MegaMenuDropdown({
       ref={ref}
       role="menu"
       className={twMerge(theme.base, className)}
-      {...props}
+      {...restProps}
     >
       {children}
     </div>

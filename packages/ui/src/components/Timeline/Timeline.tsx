@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -24,32 +25,32 @@ export interface TimelineProps extends ComponentProps<"ol">, ThemingProps<Timeli
   horizontal?: boolean;
 }
 
-export const Timeline = forwardRef<HTMLOListElement, TimelineProps>(
-  ({ children, className, horizontal, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [timelineTheme, provider.theme?.timeline, customTheme],
-      [get(provider.clearTheme, "timeline"), clearTheme],
-      [get(provider.applyTheme, "timeline"), applyTheme],
-    );
+export const Timeline = forwardRef<HTMLOListElement, TimelineProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [timelineTheme, provider.theme?.timeline, props.theme],
+    [get(provider.clearTheme, "timeline"), props.clearTheme],
+    [get(provider.applyTheme, "timeline"), props.applyTheme],
+  );
 
-    return (
-      <TimelineContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, horizontal }}>
-        <ol
-          ref={ref}
-          data-testid="timeline-component"
-          className={twMerge(
-            horizontal && theme.root.direction.horizontal,
-            !horizontal && theme.root.direction.vertical,
-            className,
-          )}
-          {...props}
-        >
-          {children}
-        </ol>
-      </TimelineContext.Provider>
-    );
-  },
-);
+  const { className, horizontal, ...restProps } = resolveProps(props, provider.props?.timeline);
+
+  return (
+    <TimelineContext.Provider
+      value={{ theme: props.theme, clearTheme: props.clearTheme, applyTheme: props.applyTheme, horizontal }}
+    >
+      <ol
+        ref={ref}
+        data-testid="timeline-component"
+        className={twMerge(
+          horizontal && theme.root.direction.horizontal,
+          !horizontal && theme.root.direction.vertical,
+          className,
+        )}
+        {...restProps}
+      />
+    </TimelineContext.Provider>
+  );
+});
 
 Timeline.displayName = "Timeline";

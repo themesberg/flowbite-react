@@ -3,6 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -33,28 +34,28 @@ export interface RangeSliderProps
   sizing?: DynamicStringEnumKeysOf<TextInputSizes>;
 }
 
-export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>(
-  ({ className, sizing = "md", theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [rangeSliderTheme, provider.theme?.rangeSlider, customTheme],
-      [get(provider.clearTheme, "rangeSlider"), clearTheme],
-      [get(provider.applyTheme, "rangeSlider"), applyTheme],
-    );
+export const RangeSlider = forwardRef<HTMLInputElement, RangeSliderProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [rangeSliderTheme, provider.theme?.rangeSlider, props.theme],
+    [get(provider.clearTheme, "rangeSlider"), props.clearTheme],
+    [get(provider.applyTheme, "rangeSlider"), props.applyTheme],
+  );
 
-    return (
-      <div data-testid="flowbite-range-slider" className={twMerge(theme.root.base, className)}>
-        <div className={theme.field.base}>
-          <input
-            ref={ref}
-            type="range"
-            className={twMerge(theme.field.input.base, theme.field.input.sizes[sizing])}
-            {...props}
-          />
-        </div>
+  const { className, sizing = "md", ...restProps } = resolveProps(props, provider.props?.rangeSlider);
+
+  return (
+    <div data-testid="flowbite-range-slider" className={twMerge(theme.root.base, className)}>
+      <div className={theme.field.base}>
+        <input
+          ref={ref}
+          type="range"
+          className={twMerge(theme.field.input.base, theme.field.input.sizes[sizing])}
+          {...restProps}
+        />
       </div>
-    );
-  },
-);
+    </div>
+  );
+});
 
 RangeSlider.displayName = "RangeSlider";

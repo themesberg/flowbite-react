@@ -3,6 +3,7 @@
 import { forwardRef, useEffect, useId, useRef, useState, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
 import { mergeRefs } from "../../helpers/merge-refs";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -17,55 +18,53 @@ export interface MegaMenuDropdownToggleProps
   extends ComponentProps<"button">,
     ThemingProps<MegaMenuDropdownToggleTheme> {}
 
-export const MegaMenuDropdownToggle = forwardRef<HTMLButtonElement, MegaMenuDropdownToggleProps>(
-  ({ children, className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const id = useId();
-    const innerRef = useRef<HTMLButtonElement>(null);
-    const [controls, setControls] = useState<string | undefined>(undefined);
-    const [isExpanded, setExpanded] = useState<boolean | undefined>(undefined);
+export const MegaMenuDropdownToggle = forwardRef<HTMLButtonElement, MegaMenuDropdownToggleProps>((props, ref) => {
+  const id = useId();
+  const innerRef = useRef<HTMLButtonElement>(null);
+  const [controls, setControls] = useState<string | undefined>(undefined);
+  const [isExpanded, setExpanded] = useState<boolean | undefined>(undefined);
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [megaMenuTheme.dropdownToggle, provider.theme?.megaMenu?.dropdownToggle, customTheme],
-      [get(provider.clearTheme, "megaMenu.dropdownToggle"), clearTheme],
-      [get(provider.applyTheme, "megaMenu.dropdownToggle"), applyTheme],
-    );
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [megaMenuTheme.dropdownToggle, provider.theme?.megaMenu?.dropdownToggle, props.theme],
+    [get(provider.clearTheme, "megaMenu.dropdownToggle"), props.clearTheme],
+    [get(provider.applyTheme, "megaMenu.dropdownToggle"), props.applyTheme],
+  );
 
-    function findDropdown() {
-      const megaMenu = innerRef.current?.closest("nav");
+  const { className, ...restProps } = resolveProps(props, provider.props?.megaMenuDropdownToggle);
 
-      return megaMenu?.querySelector('[role="menu"]');
-    }
+  function findDropdown() {
+    const megaMenu = innerRef.current?.closest("nav");
 
-    function onClick() {
-      findDropdown()?.classList.toggle("hidden");
+    return megaMenu?.querySelector('[role="menu"]');
+  }
 
-      setExpanded(!isExpanded);
-    }
+  function onClick() {
+    findDropdown()?.classList.toggle("hidden");
 
-    useEffect(() => {
-      const dropdown = findDropdown();
-      const isDropdownHidden = dropdown?.classList.contains("hidden");
+    setExpanded(!isExpanded);
+  }
 
-      setControls(dropdown?.id);
-      setExpanded(!isDropdownHidden);
-    }, []);
+  useEffect(() => {
+    const dropdown = findDropdown();
+    const isDropdownHidden = dropdown?.classList.contains("hidden");
 
-    return (
-      <button
-        ref={mergeRefs([ref, innerRef])}
-        aria-controls={controls}
-        aria-expanded={isExpanded}
-        aria-haspopup="menu"
-        id={id}
-        onClick={onClick}
-        className={twMerge(theme.base, className)}
-        {...props}
-      >
-        {children}
-      </button>
-    );
-  },
-);
+    setControls(dropdown?.id);
+    setExpanded(!isDropdownHidden);
+  }, []);
+
+  return (
+    <button
+      ref={mergeRefs([ref, innerRef])}
+      aria-controls={controls}
+      aria-expanded={isExpanded}
+      aria-haspopup="menu"
+      id={id}
+      onClick={onClick}
+      className={twMerge(theme.base, className)}
+      {...restProps}
+    />
+  );
+});
 
 MegaMenuDropdownToggle.displayName = "MegaMenuDropdownToggle";

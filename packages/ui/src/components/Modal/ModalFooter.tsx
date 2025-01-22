@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -16,23 +17,19 @@ export interface ModalFooterTheme {
 
 export interface ModalFooterProps extends ComponentProps<"div">, ThemingProps<ModalFooterTheme> {}
 
-export const ModalFooter = forwardRef<HTMLDivElement, ModalFooterProps>(
-  ({ children, className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, popup } = useModalContext();
+export const ModalFooter = forwardRef<HTMLDivElement, ModalFooterProps>((props, ref) => {
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, popup } = useModalContext();
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [modalTheme.footer, provider.theme?.modal?.footer, rootTheme?.footer, customTheme],
-      [get(provider.clearTheme, "modal.footer"), get(rootClearTheme, "footer"), clearTheme],
-      [get(provider.applyTheme, "modal.footer"), get(rootApplyTheme, "footer"), applyTheme],
-    );
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [modalTheme.footer, provider.theme?.modal?.footer, rootTheme?.footer, props.theme],
+    [get(provider.clearTheme, "modal.footer"), get(rootClearTheme, "footer"), props.clearTheme],
+    [get(provider.applyTheme, "modal.footer"), get(rootApplyTheme, "footer"), props.applyTheme],
+  );
 
-    return (
-      <div ref={ref} className={twMerge(theme.base, !popup && theme.popup, className)} {...props}>
-        {children}
-      </div>
-    );
-  },
-);
+  const { className, ...restProps } = resolveProps(props, provider.props?.modalFooter);
+
+  return <div ref={ref} className={twMerge(theme.base, !popup && theme.popup, className)} {...restProps} />;
+});
 
 ModalFooter.displayName = "ModalFooter";

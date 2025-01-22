@@ -1,5 +1,3 @@
-"use client";
-
 import { withoutThemingProps } from "./without-theming-props";
 
 /**

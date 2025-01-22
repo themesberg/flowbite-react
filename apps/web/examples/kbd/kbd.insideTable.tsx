@@ -14,8 +14,10 @@ export function Component() {
   return (
     <Table>
       <TableHead>
-        <TableHeadCell>Key</TableHeadCell>
-        <TableHeadCell>Description</TableHeadCell>
+        <TableRow>
+          <TableHeadCell>Key</TableHeadCell>
+          <TableHeadCell>Description</TableHeadCell>
+        </TableRow>
       </TableHead>
       <TableBody className="divide-y">
         <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -54,8 +56,10 @@ export function Component() {
   return (
     <Table>
       <TableHead>
-        <TableHeadCell>Key</TableHeadCell>
-        <TableHeadCell>Description</TableHeadCell>
+        <TableRow>
+          <TableHeadCell>Key</TableHeadCell>
+          <TableHeadCell>Description</TableHeadCell>
+        </TableRow>
       </TableHead>
       <TableBody className="divide-y">
         <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">

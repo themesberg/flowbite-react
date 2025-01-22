@@ -3,6 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -24,23 +25,23 @@ export interface TextareaProps extends Omit<ComponentProps<"textarea">, "color" 
   shadow?: boolean;
 }
 
-export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, color = "gray", shadow, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [textareaTheme, provider.theme?.textarea, customTheme],
-      [get(provider.clearTheme, "textarea"), clearTheme],
-      [get(provider.applyTheme, "textarea"), applyTheme],
-    );
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [textareaTheme, provider.theme?.textarea, props.theme],
+    [get(provider.clearTheme, "textarea"), props.clearTheme],
+    [get(provider.applyTheme, "textarea"), props.applyTheme],
+  );
 
-    return (
-      <textarea
-        ref={ref}
-        className={twMerge(theme.base, theme.colors[color], theme.withShadow[shadow ? "on" : "off"], className)}
-        {...props}
-      />
-    );
-  },
-);
+  const { className, color = "gray", shadow, ...restProps } = resolveProps(props, provider.props?.textarea);
+
+  return (
+    <textarea
+      ref={ref}
+      className={twMerge(theme.base, theme.colors[color], theme.withShadow[shadow ? "on" : "off"], className)}
+      {...restProps}
+    />
+  );
+});
 
 Textarea.displayName = "Textarea";

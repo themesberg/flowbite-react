@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -26,34 +27,27 @@ export interface SidebarCTAColors
   [key: string]: string;
 }
 
-export const SidebarCTA = forwardRef<HTMLDivElement, SidebarCTAProps>(
-  ({ children, color = "info", className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const {
-      theme: rootTheme,
-      clearTheme: rootClearTheme,
-      applyTheme: rootApplyTheme,
-      isCollapsed,
-    } = useSidebarContext();
+export const SidebarCTA = forwardRef<HTMLDivElement, SidebarCTAProps>((props, ref) => {
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, isCollapsed } = useSidebarContext();
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [sidebarTheme.cta, provider.theme?.sidebar?.cta, rootTheme?.cta, customTheme],
-      [get(provider.clearTheme, "sidebar.cta"), get(rootClearTheme, "cta"), clearTheme],
-      [get(provider.applyTheme, "sidebar.cta"), get(rootApplyTheme, "cta"), applyTheme],
-    );
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [sidebarTheme.cta, provider.theme?.sidebar?.cta, rootTheme?.cta, props.theme],
+    [get(provider.clearTheme, "sidebar.cta"), get(rootClearTheme, "cta"), props.clearTheme],
+    [get(provider.applyTheme, "sidebar.cta"), get(rootApplyTheme, "cta"), props.applyTheme],
+  );
 
-    return (
-      <div
-        ref={ref}
-        data-testid="sidebar-cta"
-        hidden={isCollapsed}
-        className={twMerge(theme.base, theme.color[color], className)}
-        {...props}
-      >
-        {children}
-      </div>
-    );
-  },
-);
+  const { color = "info", className, ...restProps } = resolveProps(props, provider.props?.sidebarCTA);
+
+  return (
+    <div
+      ref={ref}
+      data-testid="sidebar-cta"
+      hidden={isCollapsed}
+      className={twMerge(theme.base, theme.color[color], className)}
+      {...restProps}
+    />
+  );
+});
 
 SidebarCTA.displayName = "SidebarCTA";

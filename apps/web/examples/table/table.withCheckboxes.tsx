@@ -9,16 +9,18 @@ export function Component() {
     <div className="overflow-x-auto">
       <Table hoverable>
         <TableHead>
-          <TableHeadCell className="p-4">
-            <Checkbox />
-          </TableHeadCell>
-          <TableHeadCell>Product name</TableHeadCell>
-          <TableHeadCell>Color</TableHeadCell>
-          <TableHeadCell>Category</TableHeadCell>
-          <TableHeadCell>Price</TableHeadCell>
-          <TableHeadCell>
-            <span className="sr-only">Edit</span>
-          </TableHeadCell>
+          <TableRow>
+            <TableHeadCell className="p-4">
+              <Checkbox />
+            </TableHeadCell>
+            <TableHeadCell>Product name</TableHeadCell>
+            <TableHeadCell>Color</TableHeadCell>
+            <TableHeadCell>Category</TableHeadCell>
+            <TableHeadCell>Price</TableHeadCell>
+            <TableHeadCell>
+              <span className="sr-only">Edit</span>
+            </TableHeadCell>
+          </TableRow>
         </TableHead>
         <TableBody className="divide-y">
           <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -26,7 +28,7 @@ export function Component() {
               <Checkbox />
             </TableCell>
             <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-              {'Apple MacBook Pro 17"'}
+              Apple MacBook Pro 17"
             </TableCell>
             <TableCell>Sliver</TableCell>
             <TableCell>Laptop</TableCell>
@@ -79,16 +81,18 @@ export function Component() {
     <div className="overflow-x-auto">
       <Table hoverable>
         <TableHead>
-          <TableHeadCell className="p-4">
-            <Checkbox />
-          </TableHeadCell>
-          <TableHeadCell>Product name</TableHeadCell>
-          <TableHeadCell>Color</TableHeadCell>
-          <TableHeadCell>Category</TableHeadCell>
-          <TableHeadCell>Price</TableHeadCell>
-          <TableHeadCell>
-            <span className="sr-only">Edit</span>
-          </TableHeadCell>
+          <TableRow>
+            <TableHeadCell className="p-4">
+              <Checkbox />
+            </TableHeadCell>
+            <TableHeadCell>Product name</TableHeadCell>
+            <TableHeadCell>Color</TableHeadCell>
+            <TableHeadCell>Category</TableHeadCell>
+            <TableHeadCell>Price</TableHeadCell>
+            <TableHeadCell>
+              <span className="sr-only">Edit</span>
+            </TableHeadCell>
+          </TableRow>
         </TableHead>
         <TableBody className="divide-y">
           <TableRow className="bg-white dark:border-gray-700 dark:bg-gray-800">
@@ -96,7 +100,7 @@ export function Component() {
               <Checkbox />
             </TableCell>
             <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-              {'Apple MacBook Pro 17"'}
+              Apple MacBook Pro 17"
             </TableCell>
             <TableCell>Sliver</TableCell>
             <TableCell>Laptop</TableCell>

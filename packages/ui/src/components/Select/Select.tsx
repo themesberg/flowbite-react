@@ -3,6 +3,7 @@
 import type { ComponentProps, FC, ReactNode } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -51,57 +52,48 @@ export interface SelectProps extends Omit<ComponentProps<"select">, "color" | "r
   sizing?: DynamicStringEnumKeysOf<SelectSizes>;
 }
 
-export const Select = forwardRef<HTMLSelectElement, SelectProps>(
-  (
-    {
-      addon,
-      children,
-      className,
-      color = "gray",
-      icon: Icon,
-      shadow,
-      sizing = "md",
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    },
-    ref,
-  ) => {
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [selectTheme, provider.theme?.select, customTheme],
-      [get(provider.clearTheme, "select"), clearTheme],
-      [get(provider.applyTheme, "select"), applyTheme],
-    );
+export const Select = forwardRef<HTMLSelectElement, SelectProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [selectTheme, provider.theme?.select, props.theme],
+    [get(provider.clearTheme, "select"), props.clearTheme],
+    [get(provider.applyTheme, "select"), props.applyTheme],
+  );
 
-    return (
-      <div className={twMerge(theme.base, className)}>
-        {addon && <span className={theme.addon}>{addon}</span>}
-        <div className={theme.field.base}>
-          {Icon && (
-            <div className={theme.field.icon.base}>
-              <Icon className={theme.field.icon.svg} />
-            </div>
+  const {
+    addon,
+    className,
+    color = "gray",
+    icon: Icon,
+    shadow,
+    sizing = "md",
+    ...restProps
+  } = resolveProps(props, provider.props?.select);
+
+  return (
+    <div className={twMerge(theme.base, className)}>
+      {addon && <span className={theme.addon}>{addon}</span>}
+      <div className={theme.field.base}>
+        {Icon && (
+          <div className={theme.field.icon.base}>
+            <Icon className={theme.field.icon.svg} />
+          </div>
+        )}
+        <select
+          ref={ref}
+          className={twMerge(
+            theme.field.select.base,
+            theme.field.select.colors[color],
+            theme.field.select.sizes[sizing],
+            theme.field.select.withIcon[Icon ? "on" : "off"],
+            theme.field.select.withAddon[addon ? "on" : "off"],
+            theme.field.select.withShadow[shadow ? "on" : "off"],
           )}
-          <select
-            className={twMerge(
-              theme.field.select.base,
-              theme.field.select.colors[color],
-              theme.field.select.sizes[sizing],
-              theme.field.select.withIcon[Icon ? "on" : "off"],
-              theme.field.select.withAddon[addon ? "on" : "off"],
-              theme.field.select.withShadow[shadow ? "on" : "off"],
-            )}
-            {...props}
-            ref={ref}
-          >
-            {children}
-          </select>
-        </div>
+          {...restProps}
+        />
       </div>
-    );
-  },
-);
+    </div>
+  );
+});
 
 Select.displayName = "Select";

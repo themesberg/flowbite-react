@@ -14,7 +14,7 @@ export type { TimelineItemProps, TimelineItemTheme } from "./TimelineItem";
 export { TimelineItemContext, useTimelineItemContext } from "./TimelineItemContext";
 export type { TimelineItemContextValue } from "./TimelineItemContext";
 export { TimelinePoint } from "./TimelinePoint";
-export type { TimelinePointTheme, TimelnePointProps } from "./TimelinePoint";
+export type { TimelinePointProps, TimelinePointTheme } from "./TimelinePoint";
 export { TimelineTime } from "./TimelineTime";
 export type { TimelineTimeProps, TimelineTimeTheme } from "./TimelineTime";
 export { TimelineTitle } from "./TimelineTitle";

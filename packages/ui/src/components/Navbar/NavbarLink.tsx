@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps, type ElementType, type MouseEvent } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -15,61 +16,55 @@ export interface NavbarLinkTheme {
   disabled: FlowbiteBoolean;
 }
 
-export interface NavbarLinkProps extends ComponentProps<"a">, Record<string, unknown>, ThemingProps<NavbarLinkTheme> {
+export interface NavbarLinkProps extends ComponentProps<"a">, ThemingProps<NavbarLinkTheme> {
   active?: boolean;
   as?: ElementType;
   disabled?: boolean;
   href?: string;
 }
 
-export const NavbarLink = forwardRef<HTMLLIElement, NavbarLinkProps>(
-  (
-    {
-      active,
-      as: Component = "a",
-      disabled,
-      children,
-      className,
-      onClick,
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    },
-    ref,
-  ) => {
-    const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, setIsOpen } = useNavbarContext();
+export const NavbarLink = forwardRef<HTMLLIElement, NavbarLinkProps>((props, ref) => {
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, setIsOpen } = useNavbarContext();
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [navbarTheme.link, provider.theme?.navbar?.link, rootTheme?.link, customTheme],
-      [get(provider.clearTheme, "navbar.link"), get(rootClearTheme, "link"), clearTheme],
-      [get(provider.applyTheme, "navbar.link"), get(rootApplyTheme, "link"), applyTheme],
-    );
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [navbarTheme.link, provider.theme?.navbar?.link, rootTheme?.link, props.theme],
+    [get(provider.clearTheme, "navbar.link"), get(rootClearTheme, "link"), props.clearTheme],
+    [get(provider.applyTheme, "navbar.link"), get(rootApplyTheme, "link"), props.applyTheme],
+  );
 
-    function handleClick(event: MouseEvent<HTMLAnchorElement>) {
-      setIsOpen(false);
-      onClick?.(event);
-    }
+  const {
+    active,
+    as: Component = "a",
+    disabled,
+    children,
+    className,
+    onClick,
+    ...restProps
+  } = resolveProps(props, provider.props?.navbarLink);
 
-    return (
-      <li ref={ref}>
-        <Component
-          className={twMerge(
-            theme.base,
-            active && theme.active.on,
-            !active && !disabled && theme.active.off,
-            theme.disabled[disabled ? "on" : "off"],
-            className,
-          )}
-          onClick={handleClick}
-          {...props}
-        >
-          {children}
-        </Component>
-      </li>
-    );
-  },
-);
+  function handleClick(event: MouseEvent<HTMLAnchorElement>) {
+    setIsOpen(false);
+    onClick?.(event);
+  }
+
+  return (
+    <li ref={ref}>
+      <Component
+        className={twMerge(
+          theme.base,
+          active && theme.active.on,
+          !active && !disabled && theme.active.off,
+          theme.disabled[disabled ? "on" : "off"],
+          className,
+        )}
+        onClick={handleClick}
+        {...restProps}
+      >
+        {children}
+      </Component>
+    </li>
+  );
+});
 
 NavbarLink.displayName = "NavbarLink";

@@ -3,6 +3,7 @@
 import type { ComponentProps } from "react";
 import { forwardRef, useState } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -38,47 +39,45 @@ const durationClasses: Record<ToastDuration, string> = {
   1000: "duration-1000",
 };
 
-export const Toast = forwardRef<HTMLDivElement, ToastProps>(
-  ({ children, className, duration = 300, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const [isClosed, setIsClosed] = useState(false);
-    const [isRemoved, setIsRemoved] = useState(false);
+export const Toast = forwardRef<HTMLDivElement, ToastProps>((props, ref) => {
+  const [isClosed, setIsClosed] = useState(false);
+  const [isRemoved, setIsRemoved] = useState(false);
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [toastTheme, provider.theme?.toast, customTheme],
-      [get(provider.clearTheme, "toast"), clearTheme],
-      [get(provider.applyTheme, "toast"), applyTheme],
-    );
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [toastTheme, provider.theme?.toast, props.theme],
+    [get(provider.clearTheme, "toast"), props.clearTheme],
+    [get(provider.applyTheme, "toast"), props.applyTheme],
+  );
 
-    if (isRemoved) {
-      return null;
-    }
+  const { className, duration = 300, ...restProps } = resolveProps(props, provider.props?.toast);
 
-    return (
-      <ToastContext.Provider
-        value={{
-          theme: customTheme,
-          clearTheme,
-          applyTheme,
-          duration,
-          isClosed,
-          isRemoved,
-          setIsClosed,
-          setIsRemoved,
-        }}
-      >
-        <div
-          ref={ref}
-          data-testid="flowbite-toast"
-          role="alert"
-          className={twMerge(theme.root.base, durationClasses[duration], isClosed && theme.root.closed, className)}
-          {...props}
-        >
-          {children}
-        </div>
-      </ToastContext.Provider>
-    );
-  },
-);
+  if (isRemoved) {
+    return null;
+  }
+
+  return (
+    <ToastContext.Provider
+      value={{
+        theme: props.theme,
+        clearTheme: props.clearTheme,
+        applyTheme: props.applyTheme,
+        duration,
+        isClosed,
+        isRemoved,
+        setIsClosed,
+        setIsRemoved,
+      }}
+    >
+      <div
+        ref={ref}
+        data-testid="flowbite-toast"
+        role="alert"
+        className={twMerge(theme.root.base, durationClasses[duration], isClosed && theme.root.closed, className)}
+        {...restProps}
+      />
+    </ToastContext.Provider>
+  );
+});
 
 Toast.displayName = "Toast";

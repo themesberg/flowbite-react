@@ -2,6 +2,7 @@
 
 import { forwardRef, type ComponentProps } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -16,23 +17,19 @@ export interface ModalBodyTheme {
 
 export interface ModalBodyProps extends ComponentProps<"div">, ThemingProps<ModalBodyTheme> {}
 
-export const ModalBody = forwardRef<HTMLDivElement, ModalBodyProps>(
-  ({ children, className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
-    const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, popup } = useModalContext();
+export const ModalBody = forwardRef<HTMLDivElement, ModalBodyProps>((props, ref) => {
+  const { theme: rootTheme, clearTheme: rootClearTheme, applyTheme: rootApplyTheme, popup } = useModalContext();
 
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [modalTheme.body, provider.theme?.modal?.body, rootTheme?.body, customTheme],
-      [get(provider.clearTheme, "modal.body"), get(rootClearTheme, "body"), clearTheme],
-      [get(provider.applyTheme, "modal.body"), get(rootApplyTheme, "body"), applyTheme],
-    );
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [modalTheme.body, provider.theme?.modal?.body, rootTheme?.body, props.theme],
+    [get(provider.clearTheme, "modal.body"), get(rootClearTheme, "body"), props.clearTheme],
+    [get(provider.applyTheme, "modal.body"), get(rootApplyTheme, "body"), props.applyTheme],
+  );
 
-    return (
-      <div ref={ref} className={twMerge(theme.base, popup && theme.popup, className)} {...props}>
-        {children}
-      </div>
-    );
-  },
-);
+  const { className, ...restProps } = resolveProps(props, provider.props?.modalBody);
+
+  return <div ref={ref} className={twMerge(theme.base, popup && theme.popup, className)} {...restProps} />;
+});
 
 ModalBody.displayName = "ModalBody";

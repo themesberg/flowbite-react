@@ -14,6 +14,7 @@ import {
 import type { MutableRefObject } from "react";
 import { forwardRef, useState, type ComponentPropsWithoutRef } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
@@ -69,80 +70,83 @@ export interface ModalProps extends ComponentPropsWithoutRef<"div">, ThemingProp
   initialFocus?: number | MutableRefObject<HTMLElement | null>;
 }
 
-export const Modal = forwardRef<HTMLDivElement, ModalProps>(
-  (
-    {
-      children,
-      className,
-      dismissible = false,
-      onClose,
-      popup,
-      position = "center",
-      root,
-      show,
-      size = "2xl",
-      initialFocus,
-      theme: customTheme,
-      clearTheme,
-      applyTheme,
-      ...props
-    },
-    theirRef,
-  ) => {
-    const [headerId, setHeaderId] = useState<string | undefined>(undefined);
-    const provider = useThemeProvider();
-    const theme = useResolveTheme(
-      [modalTheme, provider.theme?.modal, customTheme],
-      [get(provider.clearTheme, "modal"), clearTheme],
-      [get(provider.applyTheme, "modal"), applyTheme],
-    );
+export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
+  const [headerId, setHeaderId] = useState<string | undefined>(undefined);
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [modalTheme, provider.theme?.modal, props.theme],
+    [get(provider.clearTheme, "modal"), props.clearTheme],
+    [get(provider.applyTheme, "modal"), props.applyTheme],
+  );
 
-    const { context } = useFloating({
-      open: show,
-      onOpenChange: () => onClose && onClose(),
-    });
+  const {
+    children,
+    className,
+    dismissible = false,
+    onClose,
+    popup,
+    position = "center",
+    root,
+    show,
+    size = "2xl",
+    initialFocus,
+    ...restProps
+  } = resolveProps(props, provider.props?.modal);
 
-    const ref = useMergeRefs([context.refs.setFloating, theirRef]);
+  const { context } = useFloating({
+    open: show,
+    onOpenChange: () => onClose && onClose(),
+  });
 
-    const click = useClick(context);
-    const dismiss = useDismiss(context, { outsidePressEvent: "mousedown", enabled: dismissible });
-    const role = useRole(context);
+  const mergedRef = useMergeRefs([context.refs.setFloating, ref]);
 
-    const { getFloatingProps } = useInteractions([click, dismiss, role]);
+  const click = useClick(context);
+  const dismiss = useDismiss(context, { outsidePressEvent: "mousedown", enabled: dismissible });
+  const role = useRole(context);
 
-    if (!show) {
-      return null;
-    }
+  const { getFloatingProps } = useInteractions([click, dismiss, role]);
 
-    return (
-      <ModalContext.Provider value={{ theme: customTheme, clearTheme, applyTheme, popup, onClose, setHeaderId }}>
-        <FloatingPortal root={root}>
-          <FloatingOverlay
-            lockScroll
-            data-testid="modal-overlay"
-            className={twMerge(
-              theme.root.base,
-              theme.root.positions[position],
-              show ? theme.root.show.on : theme.root.show.off,
-              className,
-            )}
-            {...props}
-          >
-            <FloatingFocusManager context={context} initialFocus={initialFocus}>
-              <div
-                ref={ref}
-                {...getFloatingProps(props)}
-                aria-labelledby={headerId}
-                className={twMerge(theme.content.base, theme.root.sizes[size])}
-              >
-                <div className={theme.content.inner}>{children}</div>
-              </div>
-            </FloatingFocusManager>
-          </FloatingOverlay>
-        </FloatingPortal>
-      </ModalContext.Provider>
-    );
-  },
-);
+  if (!show) {
+    return null;
+  }
+
+  return (
+    <ModalContext.Provider
+      value={{
+        theme: props.theme,
+        clearTheme: props.clearTheme,
+        applyTheme: props.applyTheme,
+        popup,
+        onClose,
+        setHeaderId,
+      }}
+    >
+      <FloatingPortal root={root}>
+        <FloatingOverlay
+          lockScroll
+          data-testid="modal-overlay"
+          className={twMerge(
+            theme.root.base,
+            theme.root.positions[position],
+            show ? theme.root.show.on : theme.root.show.off,
+            className,
+          )}
+          {...restProps}
+        >
+          <FloatingFocusManager context={context} initialFocus={initialFocus}>
+            <div
+              ref={mergedRef}
+              {...getFloatingProps(restProps)}
+              aria-labelledby={headerId}
+              className={twMerge(theme.content.base, theme.root.sizes[size])}
+            >
+              <div className={theme.content.inner}>{children}</div>
+            </div>
+          </FloatingFocusManager>
+        </FloatingOverlay>
+      </FloatingPortal>
+    </ModalContext.Provider>
+  );
+});
 
 Modal.displayName = "Modal";

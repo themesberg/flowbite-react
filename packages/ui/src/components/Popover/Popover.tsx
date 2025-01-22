@@ -5,6 +5,7 @@ import { FloatingFocusManager, useMergeRefs } from "@floating-ui/react";
 import type { ComponentProps, ComponentPropsWithRef, Dispatch, ReactNode, SetStateAction } from "react";
 import { cloneElement, isValidElement, useMemo, useRef, useState } from "react";
 import { get } from "../../helpers/get";
+import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
 import { useThemeProvider } from "../../theme/provider";
@@ -29,29 +30,28 @@ export interface PopoverProps extends Omit<ComponentProps<"div">, "content" | "s
   onOpenChange?: Dispatch<SetStateAction<boolean>>;
 }
 
-export function Popover({
-  children,
-  content,
-  arrow = true,
-  trigger = "click",
-  initialOpen,
-  open: controlledOpen,
-  onOpenChange: setControlledOpen,
-  placement: theirPlacement = "bottom",
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: PopoverProps) {
-  const [uncontrolledOpen, setUncontrolledOpen] = useState<boolean>(Boolean(initialOpen));
-  const arrowRef = useRef<HTMLDivElement>(null);
-
+export function Popover(props: PopoverProps) {
   const provider = useThemeProvider();
   const theme = useResolveTheme(
-    [popoverTheme, provider.theme?.popover, customTheme],
-    [get(provider.clearTheme, "popover"), clearTheme],
-    [get(provider.applyTheme, "popover"), applyTheme],
+    [popoverTheme, provider.theme?.popover, props.theme],
+    [get(provider.clearTheme, "popover"), props.clearTheme],
+    [get(provider.applyTheme, "popover"), props.applyTheme],
   );
+
+  const {
+    children,
+    content,
+    arrow = true,
+    trigger = "click",
+    initialOpen,
+    open: controlledOpen,
+    onOpenChange: setControlledOpen,
+    placement: theirPlacement = "bottom",
+    ...restProps
+  } = resolveProps(props, provider.props?.popover);
+
+  const [uncontrolledOpen, setUncontrolledOpen] = useState<boolean>(Boolean(initialOpen));
+  const arrowRef = useRef<HTMLDivElement>(null);
 
   const open = controlledOpen ?? uncontrolledOpen;
   const setOpen = setControlledOpen ?? setUncontrolledOpen;
@@ -104,7 +104,7 @@ export function Popover({
             className={theme.base}
             ref={refs.setFloating}
             data-testid="flowbite-popover"
-            {...props}
+            {...restProps}
             style={floatingStyles}
             {...getFloatingProps()}
           >

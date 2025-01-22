@@ -44,24 +44,68 @@ import type { KbdProps, KbdTheme } from "../components/Kbd";
 import type { LabelProps, LabelTheme } from "../components/Label";
 import type { ListItemProps, ListProps, ListTheme } from "../components/List";
 import type { ListGroupItemProps, ListGroupProps, ListGroupTheme } from "../components/ListGroup";
-import type { MegaMenuProps, MegaMenuTheme } from "../components/MegaMenu";
-import type { ModalProps, ModalTheme } from "../components/Modal";
-import type { NavbarProps, NavbarTheme } from "../components/Navbar";
+import type {
+  MegaMenuDropdownProps,
+  MegaMenuDropdownToggleProps,
+  MegaMenuProps,
+  MegaMenuTheme,
+} from "../components/MegaMenu";
+import type { ModalBodyProps, ModalFooterProps, ModalHeaderProps, ModalProps, ModalTheme } from "../components/Modal";
+import type {
+  NavbarBrandProps,
+  NavbarCollapseProps,
+  NavbarLinkProps,
+  NavbarProps,
+  NavbarTheme,
+  NavbarToggleProps,
+} from "../components/Navbar";
 import type { PaginationProps, PaginationTheme } from "../components/Pagination";
 import type { PopoverProps, PopoverTheme } from "../components/Popover";
 import type { ProgressProps, ProgressTheme } from "../components/Progress";
 import type { RadioProps, RadioTheme } from "../components/Radio";
 import type { RangeSliderProps, RangeSliderTheme } from "../components/RangeSlider";
-import type { RatingAdvancedProps, RatingAdvancedTheme, RatingProps, RatingTheme } from "../components/Rating";
+import type {
+  RatingAdvancedProps,
+  RatingAdvancedTheme,
+  RatingProps,
+  RatingStarProps,
+  RatingTheme,
+} from "../components/Rating";
 import type { SelectProps, SelectTheme } from "../components/Select";
-import type { SidebarProps, SidebarTheme } from "../components/Sidebar";
+import type {
+  SidebarCollapseProps,
+  SidebarCTAProps,
+  SidebarItemGroupProps,
+  SidebarItemProps,
+  SidebarItemsProps,
+  SidebarLogoProps,
+  SidebarProps,
+  SidebarTheme,
+} from "../components/Sidebar";
 import type { SpinnerProps, SpinnerTheme } from "../components/Spinner";
-import type { TableProps, TableTheme } from "../components/Table";
-import type { TabsProps, TabsTheme } from "../components/Tabs";
+import type {
+  TableBodyProps,
+  TableCellProps,
+  TableHeadCellProps,
+  TableHeadProps,
+  TableProps,
+  TableRowProps,
+  TableTheme,
+} from "../components/Table";
+import type { TabItemProps, TabsProps, TabsTheme } from "../components/Tabs";
 import type { TextareaProps, TextareaTheme } from "../components/Textarea";
 import type { TextInputProps, TextInputTheme } from "../components/TextInput";
-import type { TimelineProps, TimelineTheme } from "../components/Timeline";
-import type { ToastProps, ToastTheme } from "../components/Toast";
+import type {
+  TimelineBodyProps,
+  TimelineContentProps,
+  TimelineItemProps,
+  TimelinePointProps,
+  TimelineProps,
+  TimelineTheme,
+  TimelineTimeProps,
+  TimelineTitleProps,
+} from "../components/Timeline";
+import type { ToastProps, ToastTheme, ToastToggleProps } from "../components/Toast";
 import type { ToggleSwitchProps, ToggleSwitchTheme } from "../components/ToggleSwitch";
 import type { TooltipProps, TooltipTheme } from "../components/Tooltip";
 
@@ -158,12 +202,21 @@ export interface FlowbiteProps {
   kbd: Partial<WithoutThemingProps<KbdProps>>;
   label: Partial<WithoutThemingProps<LabelProps>>;
   list: Partial<WithoutThemingProps<ListProps>>;
-  listItem: Partial<WithoutThemingProps<ListItemProps>>;
   listGroup: Partial<WithoutThemingProps<ListGroupProps>>;
   listGroupItem: Partial<WithoutThemingProps<ListGroupItemProps>>;
+  listItem: Partial<WithoutThemingProps<ListItemProps>>;
   megaMenu: Partial<WithoutThemingProps<MegaMenuProps>>;
+  megaMenuDropdown: Partial<WithoutThemingProps<MegaMenuDropdownProps>>;
+  megaMenuDropdownToggle: Partial<WithoutThemingProps<MegaMenuDropdownToggleProps>>;
   modal: Partial<WithoutThemingProps<ModalProps>>;
+  modalBody: Partial<WithoutThemingProps<ModalBodyProps>>;
+  modalFooter: Partial<WithoutThemingProps<ModalFooterProps>>;
+  modalHeader: Partial<WithoutThemingProps<ModalHeaderProps>>;
   navbar: Partial<WithoutThemingProps<NavbarProps>>;
+  navbarBrand: Partial<WithoutThemingProps<NavbarBrandProps>>;
+  navbarCollapse: Partial<WithoutThemingProps<NavbarCollapseProps>>;
+  navbarLink: Partial<WithoutThemingProps<NavbarLinkProps>>;
+  navbarToggle: Partial<WithoutThemingProps<NavbarToggleProps>>;
   pagination: Partial<WithoutThemingProps<PaginationProps>>;
   popover: Partial<WithoutThemingProps<PopoverProps>>;
   progress: Partial<WithoutThemingProps<ProgressProps>>;
@@ -171,15 +224,35 @@ export interface FlowbiteProps {
   rangeSlider: Partial<WithoutThemingProps<RangeSliderProps>>;
   rating: Partial<WithoutThemingProps<RatingProps>>;
   ratingAdvanced: Partial<WithoutThemingProps<RatingAdvancedProps>>;
+  ratingStar: Partial<WithoutThemingProps<RatingStarProps>>;
   select: Partial<WithoutThemingProps<SelectProps>>;
   sidebar: Partial<WithoutThemingProps<SidebarProps>>;
+  sidebarCollapse: Partial<WithoutThemingProps<SidebarCollapseProps>>;
+  sidebarCTA: Partial<WithoutThemingProps<SidebarCTAProps>>;
+  sidebarItem: Partial<WithoutThemingProps<SidebarItemProps>>;
+  sidebarItemGroup: Partial<WithoutThemingProps<SidebarItemGroupProps>>;
+  sidebarItems: Partial<WithoutThemingProps<SidebarItemsProps>>;
+  sidebarLogo: Partial<WithoutThemingProps<SidebarLogoProps>>;
   spinner: Partial<WithoutThemingProps<SpinnerProps>>;
+  tabItem: Partial<WithoutThemingProps<TabItemProps>>;
   table: Partial<WithoutThemingProps<TableProps>>;
+  tableBody: Partial<WithoutThemingProps<TableBodyProps>>;
+  tableCell: Partial<WithoutThemingProps<TableCellProps>>;
+  tableHead: Partial<WithoutThemingProps<TableHeadProps>>;
+  tableHeadCell: Partial<WithoutThemingProps<TableHeadCellProps>>;
+  tableRow: Partial<WithoutThemingProps<TableRowProps>>;
   tabs: Partial<WithoutThemingProps<TabsProps>>;
   textarea: Partial<WithoutThemingProps<TextareaProps>>;
   textInput: Partial<WithoutThemingProps<TextInputProps>>;
   timeline: Partial<WithoutThemingProps<TimelineProps>>;
+  timelineBody: Partial<WithoutThemingProps<TimelineBodyProps>>;
+  timelineContent: Partial<WithoutThemingProps<TimelineContentProps>>;
+  timelineItem: Partial<WithoutThemingProps<TimelineItemProps>>;
+  timelinePoint: Partial<WithoutThemingProps<TimelinePointProps>>;
+  timelineTime: Partial<WithoutThemingProps<TimelineTimeProps>>;
+  timelineTitle: Partial<WithoutThemingProps<TimelineTitleProps>>;
   toast: Partial<WithoutThemingProps<ToastProps>>;
+  toastToggle: Partial<WithoutThemingProps<ToastToggleProps>>;
   toggleSwitch: Partial<WithoutThemingProps<ToggleSwitchProps>>;
   tooltip: Partial<WithoutThemingProps<TooltipProps>>;
 }
