@@ -72,14 +72,15 @@ export const Card = forwardRef<HTMLDivElement | HTMLAnchorElement, CardProps>((p
       )}
       {...restProps}
     >
-      {renderImage?.(theme, horizontal ?? false) ?? imgSrc ?? (
-        <img
-          data-testid="flowbite-card-image"
-          alt={imgAlt ?? ""}
-          src={imgSrc}
-          className={twMerge(theme.img.base, theme.img.horizontal[props.horizontal ? "on" : "off"])}
-        />
-      )}
+      {renderImage?.(theme, !!horizontal) ??
+        (imgSrc && (
+          <img
+            data-testid="flowbite-card-image"
+            alt={imgAlt ?? ""}
+            src={imgSrc}
+            className={twMerge(theme.img.base, theme.img.horizontal[props.horizontal ? "on" : "off"])}
+          />
+        ))}
       <div className={theme.root.children}>{children}</div>
     </Component>
   );
