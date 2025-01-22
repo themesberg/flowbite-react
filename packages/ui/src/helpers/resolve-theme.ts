@@ -62,9 +62,9 @@ export function resolveTheme<T>(
   applyThemeList?: DeepPartialApplyTheme<T>[],
 ): T {
   const prefix = getPrefix();
-  const _custom = custom?.filter((value) => value !== undefined);
-  const _clearThemeList = clearThemeList?.filter((value) => value !== undefined);
-  const _applyThemeList = applyThemeList?.filter((value) => value !== undefined);
+  const _custom = custom?.length ? custom?.filter((value) => value !== undefined) : undefined;
+  const _clearThemeList = clearThemeList?.length ? clearThemeList?.filter((value) => value !== undefined) : undefined;
+  const _applyThemeList = applyThemeList?.length ? applyThemeList?.filter((value) => value !== undefined) : undefined;
   const baseTheme = _clearThemeList?.length || prefix ? klona(base) : base;
 
   if (_clearThemeList?.length) {
@@ -92,7 +92,7 @@ export function resolveTheme<T>(
   let theme = baseTheme;
 
   if (_custom?.length) {
-    theme = deepMergeStrings(twMerge)(baseTheme, ...custom) as T;
+    theme = deepMergeStrings(twMerge)(baseTheme, ..._custom) as T;
   }
 
   if (_applyThemeList?.length && _custom?.length) {
