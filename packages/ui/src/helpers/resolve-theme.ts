@@ -1,5 +1,6 @@
 import { deepmerge } from "deepmerge-ts";
 import isEqual from "fast-deep-equal";
+import { klona } from "klona/json";
 import { useRef } from "react";
 import { getPrefix } from "../store";
 import type { ApplyTheme, DeepPartialApplyTheme, DeepPartialBoolean } from "../types";
@@ -63,7 +64,7 @@ export function resolveTheme<T>(
   const prefix = getPrefix();
   const _clearThemeList = clearThemeList?.filter((value) => value !== undefined);
   const _applyThemeList = applyThemeList?.filter((value) => value !== undefined);
-  const baseTheme = _clearThemeList?.length || prefix ? structuredClone(base) : base;
+  const baseTheme = _clearThemeList?.length || prefix ? klona(base) : base;
 
   if (_clearThemeList?.length) {
     const finalClearTheme = cloneWithValue<T, boolean>(baseTheme, false);
