@@ -62,6 +62,7 @@ export function resolveTheme<T>(
   applyThemeList?: DeepPartialApplyTheme<T>[],
 ): T {
   const prefix = getPrefix();
+  const _custom = custom?.filter((value) => value !== undefined);
   const _clearThemeList = clearThemeList?.filter((value) => value !== undefined);
   const _applyThemeList = applyThemeList?.filter((value) => value !== undefined);
   const baseTheme = _clearThemeList?.length || prefix ? klona(base) : base;
@@ -88,9 +89,13 @@ export function resolveTheme<T>(
     stringIterator(baseTheme, (value) => applyPrefix(value, prefix));
   }
 
-  const theme = deepMergeStrings(twMerge)(baseTheme, ...custom) as T;
+  let theme = baseTheme;
 
-  if (_applyThemeList?.length) {
+  if (_custom.length) {
+    theme = deepMergeStrings(twMerge)(baseTheme, ...custom) as T;
+  }
+
+  if (_applyThemeList?.length && _custom.length) {
     const finalApplyTheme = cloneWithValue<T, ApplyTheme>(baseTheme, "merge");
 
     let run = false;
