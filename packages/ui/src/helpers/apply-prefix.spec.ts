@@ -30,6 +30,10 @@ describe("applyPrefix", () => {
     expect(applyPrefix("-mt-2", "tw-")).toBe("-tw-mt-2");
   });
 
+  it("should preserve ! and - modifiers", () => {
+    expect(applyPrefix("!-mt-2", "tw-")).toBe("!-tw-mt-2");
+  });
+
   it("should handle arbitrary values", () => {
     expect(applyPrefix("[&>*]:gap-4", "tw-")).toBe("[&>*]:tw-gap-4");
   });

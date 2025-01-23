@@ -7,13 +7,13 @@
  * @returns A new string with the prefix applied to each class name
  */
 export function applyPrefix(classNames: string, prefix: string, separator = ":"): string {
+  if (!classNames.trim().length || !prefix.trim().length) {
+    return classNames;
+  }
+
   classNames = classNames.trim();
   prefix = prefix.trim();
   separator = separator.trim();
-
-  if (!classNames.length || !prefix.length) {
-    return classNames;
-  }
 
   return classNames
     .split(/\s+/)
@@ -33,21 +33,27 @@ export function applyPrefix(classNames: string, prefix: string, separator = ":")
 
       let prefixedBaseClass = baseClass;
 
-      const modifiers = ["!", "-"].reduce<string[]>((acc, modifier) => {
-        if (prefixedBaseClass.startsWith(modifier)) {
-          acc.push(modifier);
-          prefixedBaseClass = prefixedBaseClass.replace(modifier, "");
-        }
-        return acc;
-      }, []);
+      let modifiers = "";
+      if (prefixedBaseClass[0] === "!") {
+        modifiers = "!";
+        prefixedBaseClass = prefixedBaseClass.slice(1);
+      }
+      if (prefixedBaseClass[0] === "-") {
+        modifiers += "-";
+        prefixedBaseClass = prefixedBaseClass.slice(1);
+      }
 
       if (prefixedBaseClass.startsWith(prefix)) {
         return className;
       }
 
-      prefixedBaseClass = modifiers.join("") + prefix + prefixedBaseClass;
+      prefixedBaseClass = modifiers + prefix + prefixedBaseClass;
 
-      return `${parts.join(separator)}${parts.length > 0 ? separator : ""}${prefixedBaseClass}`;
+      if (!parts.length) {
+        return prefixedBaseClass;
+      }
+
+      return `${parts.join(separator)}${separator}${prefixedBaseClass}`;
     })
     .join(" ");
 }
