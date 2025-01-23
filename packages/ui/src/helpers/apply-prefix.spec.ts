@@ -45,4 +45,16 @@ describe("applyPrefix", () => {
   it("should not add prefix if class already has it", () => {
     expect(applyPrefix("tw-text-lg", "tw-")).toBe("tw-text-lg");
   });
+
+  it("should handle extra whitespace", () => {
+    expect(applyPrefix("  text-lg   font-bold  ", "tw-")).toBe("tw-text-lg tw-font-bold");
+  });
+
+  it("should handle extra whitespace in prefix", () => {
+    expect(applyPrefix("text-lg", "  tw-  ")).toBe("tw-text-lg");
+  });
+
+  it("should handle multiple modifiers", () => {
+    expect(applyPrefix("dark:hover:!text-lg", "tw-")).toBe("dark:hover:!tw-text-lg");
+  });
 });

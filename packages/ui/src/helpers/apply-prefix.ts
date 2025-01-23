@@ -1,3 +1,5 @@
+const cache = new Map<string, string>();
+
 /**
  * Applies a prefix to class names while preserving modifiers and arbitrary values.
  *
@@ -15,7 +17,14 @@ export function applyPrefix(classNames: string, prefix: string, separator = ":")
   prefix = prefix.trim();
   separator = separator.trim();
 
-  return classNames
+  const cacheKey = classNames;
+  const cacheValue = cache.get(cacheKey);
+
+  if (cacheValue) {
+    return cacheValue;
+  }
+
+  const result = classNames
     .split(/\s+/)
     .map((className) => {
       className = className.trim();
@@ -56,4 +65,8 @@ export function applyPrefix(classNames: string, prefix: string, separator = ":")
       return `${parts.join(separator)}${separator}${prefixedBaseClass}`;
     })
     .join(" ");
+
+  cache.set(cacheKey, result);
+
+  return result;
 }
