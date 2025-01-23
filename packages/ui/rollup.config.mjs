@@ -8,6 +8,7 @@ const entries = [
   "src/index.ts",
   "src/icons/index.ts",
   "src/tailwind/index.ts",
+  "src/tailwind/v4.ts",
   "src/theme/index.ts",
   ...componentEntries,
 ];

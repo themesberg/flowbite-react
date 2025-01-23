@@ -2,9 +2,10 @@ import { deepmerge } from "deepmerge-ts";
 import isEqual from "fast-deep-equal";
 import { klona } from "klona/json";
 import { useRef } from "react";
-import { getPrefix } from "../store";
+import { getPrefix, getSeparator, getVersion } from "../store";
 import type { ApplyTheme, DeepPartialApplyTheme, DeepPartialBoolean } from "../types";
 import { applyPrefix } from "./apply-prefix";
+import { convertUtilitiesToV4 } from "./convert-utilities-to-v4";
 import { deepMergeStrings } from "./deep-merge";
 import { twMerge } from "./tailwind-merge";
 
@@ -62,10 +63,15 @@ export function resolveTheme<T>(
   applyThemeList?: DeepPartialApplyTheme<T>[],
 ): T {
   const prefix = getPrefix();
+  const separator = getSeparator();
+  const version = getVersion();
+  const v4 = version === 4;
+
   const _custom = custom?.length ? custom?.filter((value) => value !== undefined) : undefined;
   const _clearThemeList = clearThemeList?.length ? clearThemeList?.filter((value) => value !== undefined) : undefined;
   const _applyThemeList = applyThemeList?.length ? applyThemeList?.filter((value) => value !== undefined) : undefined;
-  const baseTheme = _clearThemeList?.length || prefix ? klona(base) : base;
+
+  const baseTheme = _clearThemeList?.length || v4 || prefix ? klona(base) : base;
 
   if (_clearThemeList?.length) {
     const finalClearTheme = cloneWithValue<T, boolean>(baseTheme, false);
@@ -85,8 +91,19 @@ export function resolveTheme<T>(
     }
   }
 
-  if (prefix) {
-    stringIterator(baseTheme, (value) => applyPrefix(value, prefix));
+  if (v4 || prefix) {
+    stringIterator(baseTheme, (value) => {
+      let result = value;
+
+      if (v4) {
+        result = convertUtilitiesToV4(result);
+      }
+      if (prefix) {
+        result = applyPrefix(result, prefix, separator);
+      }
+
+      return result;
+    });
   }
 
   let theme = baseTheme;

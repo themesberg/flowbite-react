@@ -1,8 +1,17 @@
 import { applyPrefix } from "../helpers/apply-prefix";
+import { convertUtilitiesToV4 } from "../helpers/convert-utilities-to-v4";
 import { CLASS_LIST_MAP } from "./class-list";
-import type { ClassList, ComponentName } from "./types";
+import type { ClassList, ComponentName, PluginOptions } from "./types";
 
-export function resolvePrefix(classList: ClassList, prefix?: string, separator?: string) {
+export function resolveVersion(classList: ClassList, version?: PluginOptions["version"]): ClassList {
+  return version === 4 ? classList.map((className) => convertUtilitiesToV4(className)) : classList;
+}
+
+export function resolvePrefix(
+  classList: ClassList,
+  prefix?: PluginOptions["prefix"],
+  separator?: PluginOptions["separator"],
+): ClassList {
   prefix = prefix?.trim();
 
   return prefix ? classList.map((className) => applyPrefix(className, prefix, separator)) : classList;

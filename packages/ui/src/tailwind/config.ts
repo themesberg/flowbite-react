@@ -1,6 +1,6 @@
 import { theme } from "./theme";
 import type { PluginOptions } from "./types";
-import { resolveClassList, resolvePrefix } from "./utils";
+import { resolveClassList, resolvePrefix, resolveVersion } from "./utils";
 
 import type { Config } from "tailwindcss";
 
@@ -14,5 +14,5 @@ export function getConfig(options: PluginOptions = {}): Partial<Config> {
 }
 
 export function getSafelist(options: PluginOptions = {}): Config["safelist"] {
-  return resolvePrefix(resolveClassList(options.components), options.prefix, options.separator);
+  return resolveVersion(resolvePrefix(resolveClassList(options.components), options.prefix, options.separator));
 }
