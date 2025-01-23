@@ -12,6 +12,7 @@ const entries = [
   ...componentEntries,
 ];
 const external = [
+  "klona/json",
   "react/jsx-runtime",
   "tailwindcss/plugin",
   ...Object.keys({
