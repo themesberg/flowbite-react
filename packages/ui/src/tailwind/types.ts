@@ -22,7 +22,7 @@ export type PluginOptions = Partial<{
    *
    * If version is `4` the base class list will be converted to v4 utilities
    * @see https://tailwindcss.com/docs/upgrade-guide#renamed-utilities
-   * @default 3
+   * @default 4
    */
   version: 3 | 4;
 }>;

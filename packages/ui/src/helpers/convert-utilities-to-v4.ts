@@ -1,10 +1,10 @@
 const cache = new Map<string, string>();
 
 /**
- * Convert TailwindCSS v3 utilities to v4
+ * Converts Tailwind CSS v3 utility classes to v4.
  *
- * @param {string} classNames
- * @returns {string}
+ * @param {string} classNames - The string of class names to convert
+ * @returns {string} The converted class names string
  */
 export function convertUtilitiesToV4(classNames: string): string {
   if (!classNames.trim().length) {
@@ -52,6 +52,7 @@ const regexMap = [
   [/\b(blur)\b(?!-)/g, "blur-sm"],
   [/\b(rounded-sm)\b/g, "rounded-xs"],
   [/\b(rounded)\b(?!-)/g, "rounded-sm"],
-  [/\b(outline-none)\b/g, "outline-hidden"],
+  // TODO: revisit this - it breaks anything focused using tab
+  // [/\b(outline-none)\b/g, "outline-hidden"],
   [/\b(ring)\b(?!-)/g, "ring-3"],
 ] as const;

@@ -16,12 +16,17 @@ export type StoreProps = DeepPartial<{
    *
    * If version is `4` the base class list will be converted to v4 utilities
    * @see https://tailwindcss.com/docs/upgrade-guide#renamed-utilities
-   * @default 3
+   * @default 4
    */
   version: 3 | 4;
 }>;
 
-const store: StoreProps = {};
+const store: StoreProps = {
+  mode: undefined,
+  prefix: undefined,
+  separator: undefined,
+  version: 4,
+};
 
 export function setStore(data: StoreProps) {
   if ("mode" in data) {

@@ -4,7 +4,7 @@ import { resolveClassList, resolvePrefix, resolveVersion } from "./utils";
 
 import type { Config } from "tailwindcss";
 
-export function getConfig(options: PluginOptions = {}): Partial<Config> {
+export function getConfig(options: PluginOptions): Partial<Config> {
   return {
     safelist: getSafelist(options),
     theme: {
@@ -13,6 +13,8 @@ export function getConfig(options: PluginOptions = {}): Partial<Config> {
   };
 }
 
-export function getSafelist(options: PluginOptions = {}): Config["safelist"] {
-  return resolveVersion(resolvePrefix(resolveClassList(options.components), options.prefix, options.separator));
+export function getSafelist(options: PluginOptions): Config["safelist"] {
+  return resolveVersion(
+    resolvePrefix(resolveClassList(options.components), options.prefix, options.separator, options.version),
+  );
 }

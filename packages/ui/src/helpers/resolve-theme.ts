@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { getPrefix, getSeparator, getVersion } from "../store";
 import type { ApplyTheme, DeepPartialApplyTheme, DeepPartialBoolean } from "../types";
 import { applyPrefix } from "./apply-prefix";
+import { applyPrefixV3 } from "./apply-prefix-v3";
 import { convertUtilitiesToV4 } from "./convert-utilities-to-v4";
 import { deepMergeStrings } from "./deep-merge";
 import { twMerge } from "./tailwind-merge";
@@ -65,13 +66,12 @@ export function resolveTheme<T>(
   const prefix = getPrefix();
   const separator = getSeparator();
   const version = getVersion();
-  const v4 = version === 4;
 
   const _custom = custom?.length ? custom?.filter((value) => value !== undefined) : undefined;
   const _clearThemeList = clearThemeList?.length ? clearThemeList?.filter((value) => value !== undefined) : undefined;
   const _applyThemeList = applyThemeList?.length ? applyThemeList?.filter((value) => value !== undefined) : undefined;
 
-  const baseTheme = _clearThemeList?.length || v4 || prefix ? klona(base) : base;
+  const baseTheme = _clearThemeList?.length || version === 4 || prefix ? klona(base) : base;
 
   if (_clearThemeList?.length) {
     const finalClearTheme = cloneWithValue<T, boolean>(baseTheme, false);
@@ -91,18 +91,21 @@ export function resolveTheme<T>(
     }
   }
 
-  if (v4 || prefix) {
+  if (version === 4 || prefix) {
     stringIterator(baseTheme, (value) => {
-      let result = value;
-
-      if (v4) {
-        result = convertUtilitiesToV4(result);
+      if (version === 4) {
+        value = convertUtilitiesToV4(value);
       }
       if (prefix) {
-        result = applyPrefix(result, prefix, separator);
+        if (version === 3) {
+          value = applyPrefixV3(value, prefix, separator);
+        }
+        if (version === 4) {
+          value = applyPrefix(value, prefix);
+        }
       }
 
-      return result;
+      return value;
     });
   }
 
