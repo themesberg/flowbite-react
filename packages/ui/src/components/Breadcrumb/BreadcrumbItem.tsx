@@ -1,4 +1,4 @@
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps, ElementType, FC } from "react";
 import { forwardRef } from "react";
 import { HiOutlineChevronRight } from "react-icons/hi";
 import { twMerge } from "tailwind-merge";
@@ -15,15 +15,16 @@ export interface FlowbiteBreadcrumbItemTheme {
 }
 
 export interface BreadcrumbItemProps extends Omit<ComponentProps<"li">, "ref"> {
+  as?: ElementType;
   href?: string;
   icon?: FC<ComponentProps<"svg">>;
   theme?: DeepPartial<FlowbiteBreadcrumbItemTheme>;
 }
 
 export const BreadcrumbItem = forwardRef<HTMLAnchorElement | HTMLSpanElement, BreadcrumbItemProps>(
-  ({ children, className, href, icon: Icon, theme: customTheme = {}, ...props }, ref) => {
+  ({ as = "a", children, className, href, icon: Icon, theme: customTheme = {}, ...props }, ref) => {
     const isLink = typeof href !== "undefined";
-    const Component = isLink ? "a" : "span";
+    const Component = isLink ? as : "span";
 
     const theme = mergeDeep(getTheme().breadcrumb.item, customTheme);
 
