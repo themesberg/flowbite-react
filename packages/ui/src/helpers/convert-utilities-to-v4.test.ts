@@ -26,7 +26,8 @@ describe("convertUtilitiesV4", () => {
   it("should handle multiple spaces between classes", () => {
     expect(convertUtilitiesToV4("shadow    rounded")).toBe("shadow-sm    rounded-sm");
     expect(convertUtilitiesToV4("blur   drop-shadow   ring")).toBe("blur-sm   drop-shadow-sm   ring-3");
-    expect(convertUtilitiesToV4("focus:outline-none")).toBe("focus:outline-hidden");
+    // TODO: revisit this - it breaks anything focused using tab
+    // expect(convertUtilitiesToV4("focus:outline-none")).toBe("focus:outline-hidden");
   });
 
   it("should convert shadow variants correctly", () => {
@@ -58,7 +59,8 @@ describe("convertUtilitiesV4", () => {
   });
 
   it("should convert outline and ring variants correctly", () => {
-    expect(convertUtilitiesToV4("outline-none")).toBe("outline-hidden");
+    // TODO: revisit this - it breaks anything focused using tab
+    // expect(convertUtilitiesToV4("outline-none")).toBe("outline-hidden");
     expect(convertUtilitiesToV4("ring")).toBe("ring-3");
     expect(convertUtilitiesToV4("ring-2 ring")).toBe("ring-2 ring-3");
     expect(convertUtilitiesToV4("hover:ring")).toBe("hover:ring-3");
