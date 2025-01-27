@@ -94,6 +94,5 @@ export const theme: FlowbiteTheme = {
 };
 
 export { ThemeConfig, type ThemeConfigProps } from "./config";
-export { ThemeConfigV3, type ThemeConfigV3Props } from "./config-v3";
 export { ThemeModeScript, type ThemeModeScriptProps } from "./mode-script";
 export { ThemeProvider, useThemeProvider, type ThemeProviderProps, type ThemeProviderValue } from "./provider";

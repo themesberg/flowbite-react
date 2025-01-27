@@ -8,13 +8,13 @@ const entries = [
   "src/index.ts",
   "src/icons/index.ts",
   "src/tailwind/index.ts",
-  "src/tailwind/v3.ts",
   "src/theme/index.ts",
   ...componentEntries,
 ];
 const external = [
   "klona/json",
   "react/jsx-runtime",
+  "tailwindcss/colors.js",
   "tailwindcss/plugin",
   ...Object.keys({
     ...packageJson.dependencies,

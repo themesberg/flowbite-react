@@ -10,19 +10,7 @@ export type PluginOptions = Partial<{
    */
   prefix: string;
   /**
-   * Separator to apply to base class list
-   */
-  separator: string;
-  /**
    * Components to compile class list
    */
   components: ComponentName[];
-  /**
-   * Tailwind version to use for base class list
-   *
-   * If version is `4` the base class list will be converted to v4 utilities
-   * @see https://tailwindcss.com/docs/upgrade-guide#renamed-utilities
-   * @default 4
-   */
-  version: 3 | 4;
 }>;

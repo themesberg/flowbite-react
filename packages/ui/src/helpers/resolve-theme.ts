@@ -2,12 +2,13 @@ import { deepmerge } from "deepmerge-ts";
 import isEqual from "fast-deep-equal";
 import { klona } from "klona/json";
 import { useRef } from "react";
-import { getPrefix, getSeparator, getVersion } from "../store";
+import { getPrefix } from "../store";
 import type { ApplyTheme, DeepPartialApplyTheme, DeepPartialBoolean } from "../types";
 import { applyPrefix } from "./apply-prefix";
 import { applyPrefixV3 } from "./apply-prefix-v3";
 import { convertUtilitiesToV4 } from "./convert-utilities-to-v4";
 import { deepMergeStrings } from "./deep-merge";
+import { getTailwindVersion } from "./get-tailwind-version";
 import { twMerge } from "./tailwind-merge";
 
 /**
@@ -64,8 +65,7 @@ export function resolveTheme<T>(
   applyThemeList?: DeepPartialApplyTheme<T>[],
 ): T {
   const prefix = getPrefix();
-  const separator = getSeparator();
-  const version = getVersion();
+  const version = getTailwindVersion();
 
   const _custom = custom?.length ? custom?.filter((value) => value !== undefined) : undefined;
   const _clearThemeList = clearThemeList?.length ? clearThemeList?.filter((value) => value !== undefined) : undefined;
@@ -98,7 +98,7 @@ export function resolveTheme<T>(
       }
       if (prefix) {
         if (version === 3) {
-          value = applyPrefixV3(value, prefix, separator);
+          value = applyPrefixV3(value, prefix);
         }
         if (version === 4) {
           value = applyPrefix(value, prefix);

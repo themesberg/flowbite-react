@@ -14,7 +14,5 @@ export function getConfig(options: PluginOptions): Partial<Config> {
 }
 
 export function getSafelist(options: PluginOptions): Config["safelist"] {
-  return resolveVersion(
-    resolvePrefix(resolveClassList(options.components), options.prefix, options.separator, options.version),
-  );
+  return resolveVersion(resolvePrefix(resolveClassList(options.components), options.prefix));
 }

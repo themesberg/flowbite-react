@@ -89,7 +89,6 @@ export default {
     // ...
     flowbite({
       prefix: "",
-      separator: ":",
       components: [],
     }),
   ],
@@ -99,10 +98,6 @@ export default {
 ### Prefix
 
 The `prefix` option allows you to apply a prefix to the base class list.
-
-### Separator
-
-The `separator` option allows you to apply a separator to the base class list.
 
 ### Components
 
@@ -124,12 +119,6 @@ export type PluginOptions = Partial<{
    * @default ""
    */
   prefix: string;
-  /**
-   * Separator to apply to base class list
-   *
-   * @default ":"
-   */
-  separator: string;
   /**
    * Components to compile class list
    *

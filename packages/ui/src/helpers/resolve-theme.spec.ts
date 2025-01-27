@@ -18,22 +18,12 @@ describe("resolveTheme", () => {
   });
 
   it("should apply prefix with version 3 format", () => {
-    setStore({ prefix: "tw-", version: 3 });
+    setStore({ prefix: "tw-" });
 
     const base = { color: "text-red-400" };
 
     expect(resolveTheme([base], [])).toEqual({
       color: "tw-text-red-400",
-    });
-  });
-
-  it("should apply prefix with version 4 format", () => {
-    setStore({ prefix: "tw", version: 4 });
-
-    const base = { color: "text-red-400" };
-
-    expect(resolveTheme([base], [])).toEqual({
-      color: "tw:text-red-400",
     });
   });
 

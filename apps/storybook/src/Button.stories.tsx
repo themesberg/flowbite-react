@@ -17,7 +17,6 @@ export default {
   },
   args: {
     disabled: false,
-    isProcessing: false,
   },
 } as Meta;
 
