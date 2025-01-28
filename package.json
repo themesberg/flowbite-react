@@ -33,18 +33,18 @@
     "@changesets/changelog-github": "0.5.0",
     "@changesets/cli": "2.27.11",
     "@ianvs/prettier-plugin-sort-imports": "4.4.0",
-    "@types/bun": "1.1.16",
-    "@types/web": "0.0.191",
+    "@types/bun": "1.2.1",
+    "@types/web": "0.0.199",
     "clean-package": "2.2.0",
     "eslint": "8.57.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-tailwindcss": "3.17.5",
-    "npm-check-updates": "17.1.13",
+    "npm-check-updates": "17.1.14",
     "prettier": "3.4.2",
     "prettier-plugin-packagejson": "2.5.6",
     "prettier-plugin-tailwindcss": "0.6.9",
     "rimraf": "6.0.1",
     "turbo": "2.3.4"
   },
-  "packageManager": "bun@1.1.43"
+  "packageManager": "bun@1.2.1"
 }
