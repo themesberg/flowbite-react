@@ -21,7 +21,7 @@ export function getContext(argv: string[]): Context {
     { argv, permissive: true },
   );
 
-  const cwd = flags["_"][0];
+  const cwd = flags._[0];
   const { "--template": template, "--git": git, "--version": version, "--help": help } = flags;
 
   return { projectName: cwd, template, git, version, help };
