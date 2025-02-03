@@ -32,6 +32,26 @@
         "default": "./dist/cjs/index.cjs"
       }
     },
+    "./cli/*": {
+      "import": {
+        "types": "./dist/types/cli/*.d.mts",
+        "default": "./dist/esm/cli/*.mjs"
+      },
+      "require": {
+        "types": "./dist/types/cli/*.d.ts",
+        "default": "./dist/cjs/cli/*.cjs"
+      }
+    },
+    "./cli": {
+      "import": {
+        "types": "./dist/types/cli/index.d.mts",
+        "default": "./dist/esm/cli/index.mjs"
+      },
+      "require": {
+        "types": "./dist/types/cli/index.d.ts",
+        "default": "./dist/cjs/cli/index.cjs"
+      }
+    },
     "./components/*": {
       "import": {
         "types": "./dist/types/components/*/index.d.mts",
@@ -127,6 +147,9 @@
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
   "types": "dist/types/index.d.ts",
+  "bin": {
+    "flowbite-react": "./dist/esm/cli/bin.mjs"
+  },
   "files": [
     "dist"
   ],
@@ -149,6 +172,7 @@
   "dependencies": {
     "@floating-ui/core": "1.6.9",
     "@floating-ui/react": "0.27.3",
+    "chokidar": "4.0.3",
     "classnames": "2.5.1",
     "debounce": "2.2.0",
     "deepmerge-ts": "7.1.4",

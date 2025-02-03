@@ -3,16 +3,21 @@ import esbuild from "rollup-plugin-esbuild";
 import { rollupPluginUseClient } from "rollup-plugin-use-client";
 import packageJson from "./package.json";
 
+const cliEntries = await Array.fromAsync(new Glob("src/cli/**/*").scan());
 const componentEntries = await Array.fromAsync(new Glob("src/components/**/index.ts").scan());
 const entries = [
   "src/index.ts",
   "src/icons/index.ts",
   "src/tailwind/index.ts",
   "src/theme/index.ts",
+  ...cliEntries,
   ...componentEntries,
 ];
 const external = [
+  "child_process",
+  "fs/promises",
   "klona/json",
+  "path",
   "react/jsx-runtime",
   "tailwindcss/colors.js",
   "tailwindcss/plugin",

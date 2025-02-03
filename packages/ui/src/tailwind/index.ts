@@ -1,10 +1,9 @@
 import plugin from "tailwindcss/plugin";
-import { getConfig } from "./config";
-import type { PluginOptions } from "./types";
+import { config } from "./config";
 
-export default plugin.withOptions<PluginOptions>(
+export default plugin(
   // plugin
   () => () => {},
   // config
-  (options = {}) => getConfig(options),
+  config,
 );
