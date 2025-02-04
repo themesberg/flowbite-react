@@ -8,6 +8,7 @@ module.exports = {
     "./components/**/*.{js,jsx,md,mdx,ts,tsx}",
     "./data/**/*.{js,jsx,ts,tsx}",
     "./examples/**/*.{js,jsx,ts,tsx}",
+    ".flowbite-react/class-list.json",
   ],
   theme: {
     extend: {

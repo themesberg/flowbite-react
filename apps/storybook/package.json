@@ -8,6 +8,7 @@
     "dev": "storybook dev -p 6006",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
+    "postinstall": "flowbite-react register",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit"

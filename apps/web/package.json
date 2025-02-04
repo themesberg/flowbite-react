@@ -8,6 +8,7 @@
     "dev": "next dev",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
+    "postinstall": "flowbite-react register",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "start": "next start",

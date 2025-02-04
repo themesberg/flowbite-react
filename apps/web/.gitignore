@@ -10,3 +10,6 @@ build
 
 # contentlayer
 .contentlayer
+
+# Flowbite React
+.flowbite-react
