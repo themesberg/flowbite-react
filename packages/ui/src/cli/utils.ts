@@ -9,8 +9,8 @@ import { CLASS_LIST_MAP } from "../tailwind/class-list";
 import { classListFile, configFile, outputDir } from "./consts";
 
 export interface Config {
-  prefix: string;
   components: string[];
+  prefix: string;
 }
 
 export interface FindFilesOptions {
@@ -123,7 +123,13 @@ export function detectPackageManager(): "yarn" | "pnpm" | "bun" | "npm" {
 export function buildClassList({ components, prefix }: { components: string[]; prefix: string }): string[] {
   const version = getTailwindVersion();
 
-  let classList = [...new Set(components.flatMap((name) => CLASS_LIST_MAP[name as keyof typeof CLASS_LIST_MAP] || []))];
+  let classList: string[] = [];
+
+  if (components.includes("*")) {
+    classList = [...new Set(Object.values(CLASS_LIST_MAP).flat())];
+  } else {
+    classList = [...new Set(components.flatMap((name) => CLASS_LIST_MAP[name as keyof typeof CLASS_LIST_MAP] || []))];
+  }
 
   if (version === 4) {
     classList = classList.map(convertUtilitiesToV4);
@@ -138,7 +144,7 @@ export function buildClassList({ components, prefix }: { components: string[]; p
 }
 
 export function extractComponentImports(content: string): string[] {
-  const importRegex = /import\s+{([^}]+)}\s+from\s+['"]flowbite-react(?:\/[^'"]*)?['"]/g;
+  const importRegex = /import\s+(?:{([^}]+)}|\*\s+as\s+\w+)\s+from\s+['"]flowbite-react(?:\/[^'"]*)?['"]/g;
   const matches = content.match(importRegex);
 
   if (!matches) {
@@ -146,10 +152,15 @@ export function extractComponentImports(content: string): string[] {
   }
 
   return matches
-    .flatMap((match) => (match.match(/{([^}]+)}/)?.[1] ?? "").replace(/\/\/[^\n]*/g, ""))
+    .flatMap((match) => {
+      if (match.includes("* as")) {
+        return "*";
+      }
+      return (match.match(/{([^}]+)}/)?.[1] ?? "").replace(/\/\/[^\n]*/g, "");
+    })
     .flatMap((components) => components.split(","))
     .map((component) => component.trim().split(" as ")[0])
-    .filter((component) => component && /^[A-Z][a-zA-Z0-9_]*$/.test(component));
+    .filter((component) => component && (component === "*" || /^[A-Z][a-zA-Z0-9_]*$/.test(component)));
 }
 
 /**
@@ -175,23 +186,27 @@ export async function getClassList(): Promise<string[]> {
   }
 }
 
-export async function getConfig() {
+export async function getConfig(): Promise<Config> {
   const config: Config = {
-    prefix: "",
     components: [],
+    prefix: "",
   };
 
-  const raw = await fs.readFile(configFile, "utf-8");
-  const parsed: Config = JSON.parse(raw);
+  try {
+    const raw = await fs.readFile(configFile, "utf-8");
+    const parsed: Config = JSON.parse(raw);
 
-  if (parsed.prefix !== undefined && typeof parsed.prefix === "string") {
-    config.prefix = parsed.prefix;
-  }
-  if (parsed.components !== undefined && Array.isArray(parsed.components)) {
-    config.components = parsed.components;
-  }
+    if (parsed.prefix !== undefined && typeof parsed.prefix === "string") {
+      config.prefix = parsed.prefix;
+    }
+    if (parsed.components !== undefined && Array.isArray(parsed.components)) {
+      config.components = parsed.components.map((component) => component.trim()).filter(Boolean);
+    }
 
-  return config;
+    return config;
+  } catch {
+    return config;
+  }
 }
 
 export async function getTailwindPackageJsonVersion(): Promise<string | undefined> {

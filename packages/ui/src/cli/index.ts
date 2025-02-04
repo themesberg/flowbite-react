@@ -3,7 +3,16 @@ import fs from "fs/promises";
 import path from "path";
 import chokidar from "chokidar";
 import isEqual from "fast-deep-equal";
-import { classListFile, configFile, excludeDirs, outputDir, processIdFile, vscodeDir } from "./consts";
+import {
+  automaticClassGenerationMessage,
+  classListFile,
+  configFile,
+  defaultConfig,
+  excludeDirs,
+  outputDir,
+  processIdFile,
+  vscodeDir,
+} from "./consts";
 import {
   buildClassList,
   extractComponentImports,
@@ -13,7 +22,6 @@ import {
   getPackageJson,
   getTailwindPackageJsonVersion,
   packageManager,
-  type Config,
 } from "./utils";
 
 export async function main(argv: string[]) {
@@ -39,6 +47,13 @@ export async function build() {
 }
 
 export async function dev() {
+  const config = await getConfig();
+
+  if (config.components.length) {
+    console.warn(automaticClassGenerationMessage);
+    return;
+  }
+
   const importedComponentsMap: Record<string, string[]> = {};
   let classList = await getClassList();
 
@@ -319,13 +334,8 @@ async function setupConfig() {
   try {
     await fs.access(configFile);
   } catch {
-    const config: Config = {
-      prefix: "",
-      components: [],
-    };
-
     console.log(`Creating ${configFile} file...`);
-    await fs.writeFile(configFile, JSON.stringify(config, null, 2), { flag: "w" });
+    await fs.writeFile(configFile, JSON.stringify(defaultConfig, null, 2), { flag: "w" });
   }
 }
 
@@ -480,22 +490,25 @@ async function setupVSCodeExtensions() {
 async function generateClassList() {
   try {
     const config = await getConfig();
-    const files = await findFiles({
-      patterns: ["**/*.astro", "**/*.js", "**/*.jsx", "**/*.md", "**/*.mdx", "**/*.ts", "**/*.tsx"],
-      excludeDirs,
-    });
-    const importedComponents = new Set<string>();
 
-    for (const file of files) {
-      const content = await fs.readFile(file, "utf-8");
+    if (!config.components.length) {
+      const files = await findFiles({
+        patterns: ["**/*.astro", "**/*.js", "**/*.jsx", "**/*.md", "**/*.mdx", "**/*.ts", "**/*.tsx"],
+        excludeDirs,
+      });
+      const importedComponents = new Set<string>();
 
-      for (const component of extractComponentImports(content)) {
-        importedComponents.add(component);
+      for (const file of files) {
+        const content = await fs.readFile(file, "utf-8");
+
+        for (const component of extractComponentImports(content)) {
+          importedComponents.add(component);
+        }
       }
-    }
 
-    if (importedComponents.size > 0) {
-      config.components = [...importedComponents];
+      if (importedComponents.size > 0) {
+        config.components = [...importedComponents];
+      }
     }
 
     const classList = buildClassList(config);
@@ -511,8 +524,16 @@ export async function register() {
     // clean up old process
     const pid = await fs.readFile(`${outputDir}/${processIdFile}`, "utf8");
     process.kill(parseInt(pid, 10));
+    await fs.unlink(`${outputDir}/${processIdFile}`);
   } catch {
     //
+  }
+
+  const config = await getConfig();
+
+  if (config.components.length) {
+    console.warn(automaticClassGenerationMessage);
+    return;
   }
 
   try {
