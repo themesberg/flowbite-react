@@ -120,7 +120,7 @@ export async function init() {
   await setupConfig();
 
   // setup `.flowbite-react` directory
-  await setupDirectory();
+  await setupOutputDirectory();
 
   // setup VSCode intellisense
   await setupVSCode();
@@ -342,7 +342,7 @@ async function setupConfig() {
   }
 }
 
-async function setupDirectory() {
+async function setupOutputDirectory() {
   try {
     await fs.access(outputDir);
   } catch {
@@ -568,6 +568,8 @@ export async function register() {
       detached: true,
       shell: true,
     });
+
+    await setupOutputDirectory();
 
     if (devProcess.pid) {
       await fs.writeFile(`${outputDir}/${processIdFile}`, devProcess.pid.toString(), { flag: "w" });
