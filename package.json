@@ -24,7 +24,7 @@
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "release": "changeset publish",
-    "setup": "bun run build:ui && bun install",
+    "setup": "bun run build:ui && bun install && chmod +x node_modules/.bin/flowbite-react",
     "test": "turbo test",
     "test:coverage": "turbo test:coverage",
     "typecheck": "turbo typecheck",
