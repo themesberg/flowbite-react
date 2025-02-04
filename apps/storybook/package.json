@@ -8,6 +8,7 @@
     "dev": "flowbite-react register && storybook dev -p 6006",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
+    "postinstall": "chmod +x node_modules/.bin/flowbite-react",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit"
