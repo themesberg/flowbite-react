@@ -26,7 +26,7 @@ import {
 } from "./utils";
 
 export async function main(argv: string[]) {
-  const command = argv[0].trim();
+  const command = argv[0]?.trim();
 
   if (command === "build") {
     await build();
