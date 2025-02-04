@@ -160,7 +160,6 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "generate-classlist": "bun scripts/generate-classlist.mts",
-    "postinstall": "bun run build",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",

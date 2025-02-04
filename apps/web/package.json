@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "next build && flowbite-react build",
-    "clean": "rimraf .contentlayer .next .turbo node_modules tsconfig.tsbuildinfo",
+    "build": "bun run build:class-list && next build",
+    "build:class-list": "bun install && flowbite-react build",
+    "clean": "rimraf .contentlayer .flowbite-react .next .turbo node_modules tsconfig.tsbuildinfo",
     "dev": "next dev",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
