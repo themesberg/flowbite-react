@@ -17,7 +17,7 @@ export function applyPrefixV3(classNames: string, prefix: string, separator = ":
   prefix = prefix.trim();
   separator = separator.trim();
 
-  const cacheKey = classNames;
+  const cacheKey = `${classNames}.${prefix}.${separator}`;
   const cacheValue = cache.get(cacheKey);
 
   if (cacheValue) {
