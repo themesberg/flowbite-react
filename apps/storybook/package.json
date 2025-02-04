@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "storybook build",
+    "build": "storybook build && flowbite-react build",
     "clean": "rimraf .turbo node_modules storybook-static",
     "dev": "storybook dev -p 6006",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "postinstall": "flowbite-react register",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc --noEmit"
