@@ -18,7 +18,6 @@ export const excludeDirs = [
   "node_modules",
   "out",
   "storybook-static",
-  outputDir,
 ];
 
 export const defaultConfig: Config = {

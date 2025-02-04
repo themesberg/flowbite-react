@@ -51,7 +51,6 @@ export async function dev() {
 
   if (config.components.length) {
     console.warn(automaticClassGenerationMessage);
-    return;
   }
 
   const importedComponentsMap: Record<string, string[]> = {};
@@ -77,7 +76,7 @@ export async function dev() {
     const config = await getConfig();
     const newClassList = buildClassList({
       prefix: config.prefix,
-      components: newImportedComponents,
+      components: config.components.length ? config.components : newImportedComponents,
     });
 
     if (!isEqual(classList, newClassList)) {
@@ -92,7 +91,7 @@ export async function dev() {
         return excludeDirs.some((dir) => path.endsWith(dir));
       }
       if (stats?.isFile()) {
-        return ![".astro", ".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"].some((type) => path.endsWith(type));
+        return ![".astro", ".js", ".jsx", ".md", ".mdx", ".ts", ".tsx", configFile].some((type) => path.endsWith(type));
       }
       return false;
     },
@@ -520,6 +519,12 @@ async function generateClassList() {
 }
 
 export async function register() {
+  const config = await getConfig();
+
+  if (config.components.length) {
+    console.warn(automaticClassGenerationMessage);
+  }
+
   try {
     // clean up old process
     const pid = await fs.readFile(`${outputDir}/${processIdFile}`, "utf8");
@@ -527,13 +532,6 @@ export async function register() {
     await fs.unlink(`${outputDir}/${processIdFile}`);
   } catch {
     //
-  }
-
-  const config = await getConfig();
-
-  if (config.components.length) {
-    console.warn(automaticClassGenerationMessage);
-    return;
   }
 
   try {
