@@ -44,6 +44,7 @@ export async function main(argv: string[]) {
 }
 
 export async function build() {
+  await setupOutputDirectory();
   await generateClassList();
 }
 
