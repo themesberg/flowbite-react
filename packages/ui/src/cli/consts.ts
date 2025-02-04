@@ -3,6 +3,7 @@ import type { Config } from "./utils";
 export const classListFile = "class-list.json";
 export const configFile = "flowbite-react.json";
 export const outputDir = ".flowbite-react";
+export const packageJsonFile = "package.json";
 export const processIdFile = "pid";
 export const vscodeDir = ".vscode";
 

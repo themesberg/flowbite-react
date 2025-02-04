@@ -6,7 +6,7 @@ import { applyPrefixV3 } from "../helpers/apply-prefix-v3";
 import { convertUtilitiesToV4 } from "../helpers/convert-utilities-to-v4";
 import { getTailwindVersion } from "../helpers/get-tailwind-version";
 import { CLASS_LIST_MAP } from "../tailwind/class-list";
-import { classListFile, configFile, outputDir } from "./consts";
+import { classListFile, configFile, outputDir, packageJsonFile } from "./consts";
 
 export interface Config {
   components: string[];
@@ -171,9 +171,9 @@ export function extractComponentImports(content: string): string[] {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getPackageJson(): Promise<any> {
   try {
-    return JSON.parse(await fs.readFile("package.json", "utf-8"));
+    return JSON.parse(await fs.readFile(packageJsonFile, "utf-8"));
   } catch {
-    console.error("Unable to find package.json.");
+    console.error(`Unable to find ${packageJsonFile}.`);
     process.exit(1);
   }
 }
