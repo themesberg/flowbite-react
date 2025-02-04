@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "bun run build:ui && bun i && turbo build",
+    "build": "turbo build",
     "build:cli": "turbo build --filter=create-flowbite-react",
     "build:storybook": "turbo build --filter=@/storybook",
     "build:ui": "turbo build --filter=flowbite-react",
@@ -24,6 +24,7 @@
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "release": "changeset publish",
+    "setup": "bun run build:ui && bun install",
     "test": "turbo test",
     "test:coverage": "turbo test:coverage",
     "typecheck": "turbo typecheck",
