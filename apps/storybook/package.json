@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "build": "bun run build:class-list && storybook build",
-    "build:class-list": "bun install && flowbite-react build",
+    "build:class-list": "flowbite-react build",
     "clean": "rimraf .flowbite-react .turbo node_modules storybook-static",
     "dev": "bun run register:class-list && storybook dev -p 6006",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "register:class-list": "bun install && flowbite-react register",
+    "register:class-list": "flowbite-react register",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
