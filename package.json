@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo build",
+    "build": "bun run build:ui && bun i && turbo build",
     "build:cli": "turbo build --filter=create-flowbite-react",
     "build:storybook": "turbo build --filter=@/storybook",
     "build:ui": "turbo build --filter=flowbite-react",

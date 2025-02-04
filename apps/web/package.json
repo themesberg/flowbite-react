@@ -3,15 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "bun run build:class-list && next build",
-    "build:class-list": "bun install && flowbite-react build",
+    "build": "flowbite-react build && next build",
     "clean": "rimraf .contentlayer .flowbite-react .next .turbo node_modules tsconfig.tsbuildinfo",
-    "dev": "bun run register:class-list && next dev",
+    "dev": "flowbite-react register && next dev",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "register:class-list": "bun install && flowbite-react register",
     "start": "next start",
     "typecheck": "contentlayer2 build && tsc --noEmit"
   },
