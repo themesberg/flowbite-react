@@ -7,7 +7,7 @@ import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
-import { Tooltip } from "../Tooltip";
+import { Tooltip } from "../Tooltip/Tooltip";
 import type { ClipboardWithIconTheme } from "./ClipboardWithIcon";
 import type { ClipboardWithIconTextTheme } from "./ClipboardWithIconText";
 import { copyToClipboard } from "./helpers";
