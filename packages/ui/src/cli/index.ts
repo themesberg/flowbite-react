@@ -325,9 +325,11 @@ async function setupGitIgnore() {
 
     if (!gitignore.includes(outputDir)) {
       console.log(`Adding ${outputDir} to ${fileName}...`);
-      await fs.writeFile(fileName, `${gitignore}${gitignore ? "\n\n" : ""}# Flowbite React\n${outputDir}`, {
-        flag: "w",
-      });
+      await fs.writeFile(
+        fileName,
+        `${gitignore.trim()}${gitignore.trim() ? "\n\n" : ""}# Flowbite React\n${outputDir}\n`,
+        { flag: "w" },
+      );
     }
   } catch (error) {
     console.error(`Failed to update ${fileName}:`, error);
