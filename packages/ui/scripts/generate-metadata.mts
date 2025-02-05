@@ -5,7 +5,22 @@ import prettier from "prettier";
 
 const outputDir = "src/metadata";
 
-async function generateClassList() {
+/**
+ * Generates class list mappings for components and writes them to a file.
+ *
+ * This function performs two main tasks:
+ * 1. Creates a mapping of component names to their theme classes by scanning theme.ts files
+ * 2. Creates a mapping of component file names to their root component names for files that import theme
+ *
+ * The function processes all theme.ts files in the components directory and generates:
+ * - CLASS_LIST_MAP: Record<string, string[]> mapping component names to their theme classes
+ * - COMPONENT_TO_CLASS_LIST_MAP: Record<string, string> mapping component filenames to root component names
+ *
+ * The results are written to 'class-list.ts' in the output directory after being formatted with prettier.
+ *
+ * @returns {Promise<void>}
+ */
+async function generateClassList(): Promise<void> {
   const classListMap: Record<string, string[]> = {};
   const themePaths = await Array.fromAsync(new Glob("src/components/**/theme.ts").scan());
   themePaths.sort();
@@ -48,7 +63,22 @@ async function generateClassList() {
   );
 }
 
-async function extractClassList(content: string) {
+/**
+ * Extracts and sorts unique class names from string literals within createTheme function calls in TypeScript/JavaScript code
+ * @param content - The source code content to analyze
+ * @returns {Promise<string[]>} A sorted array of unique class names found within createTheme function calls
+ * @example
+ * ```ts
+ * const content = `
+ *   createTheme({
+ *     button: "bg-blue-500 hover:bg-blue-600"
+ *   });
+ * `;
+ * const classes = await extractClassList(content);
+ * // Returns: ["bg-blue-500", "hover:bg-blue-600"]
+ * ```
+ */
+async function extractClassList(content: string): Promise<string[]> {
   const classList = new Set<string>();
   const transpiler = new Bun.Transpiler({
     loader: "ts",
@@ -87,7 +117,18 @@ async function extractClassList(content: string) {
   return [...classList].sort();
 }
 
-async function generateDependencyList() {
+/**
+ * Generates a dependency list map for components that use theme functionality.
+ * The function scans through all .tsx files in the src/components directory,
+ * identifies files that import from "./theme", and creates a mapping of
+ * component names to their dependencies.
+ *
+ * The resulting map is written to a TypeScript file in the output directory
+ * as a formatted constant named DEPENDENCY_LIST_MAP.
+ *
+ * @returns {Promise<void>} A promise that resolves when the dependency list file has been generated
+ */
+async function generateDependencyList(): Promise<void> {
   const dependencyListMap: Record<string, string[]> = {};
 
   let paths = await Array.fromAsync(new Glob("src/components/**/*.tsx").scan());
@@ -113,7 +154,22 @@ async function generateDependencyList() {
   );
 }
 
-async function extractDependencyList(content: string) {
+/**
+ * Extracts and sorts a list of imported component names from TypeScript/TSX content.
+ * The function transpiles the content, parses it into an AST, and walks through import declarations
+ * to collect component names.
+ *
+ * @param content - The TypeScript/TSX source code content to analyze
+ * @returns {Promise<string[]>} A sorted array of unique component names that are imported in the source code
+ * @example
+ * const content = `
+ *   import { Button, Card } from 'some-library';
+ *   import { Table } from 'other-library';
+ * `;
+ * const dependencies = await extractDependencyList(content);
+ * // returns ['Button', 'Card', 'Table']
+ */
+async function extractDependencyList(content: string): Promise<string[]> {
   const componentImports = new Set<string>();
   const transpiler = new Bun.Transpiler({
     loader: "tsx",
