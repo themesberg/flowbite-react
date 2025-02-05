@@ -5,7 +5,8 @@ import { applyPrefix } from "../helpers/apply-prefix";
 import { applyPrefixV3 } from "../helpers/apply-prefix-v3";
 import { convertUtilitiesToV4 } from "../helpers/convert-utilities-to-v4";
 import { getTailwindVersion } from "../helpers/get-tailwind-version";
-import { CLASS_LIST_MAP } from "../tailwind/class-list";
+import { CLASS_LIST_MAP, COMPONENT_TO_CLASS_LIST_MAP } from "../metadata/class-list";
+import { DEPENDENCY_LIST_MAP } from "../metadata/dependency-list";
 import { classListFile, configFile, outputDir, packageJsonFile } from "./consts";
 
 export interface Config {
@@ -128,7 +129,42 @@ export function buildClassList({ components, prefix }: { components: string[]; p
   if (components.includes("*")) {
     classList = [...new Set(Object.values(CLASS_LIST_MAP).flat())];
   } else {
-    classList = [...new Set(components.flatMap((name) => CLASS_LIST_MAP[name as keyof typeof CLASS_LIST_MAP] || []))];
+    const resolvedComponents = new Set<string>();
+    const visited = new Set<string>();
+
+    // eslint-disable-next-line no-inner-declarations
+    function resolveDependencies(name: string) {
+      if (visited.has(name)) {
+        return;
+      }
+      visited.add(name);
+
+      if (name in DEPENDENCY_LIST_MAP) {
+        resolvedComponents.add(name);
+
+        for (const dependency of DEPENDENCY_LIST_MAP[name as keyof typeof DEPENDENCY_LIST_MAP]) {
+          if (dependency in DEPENDENCY_LIST_MAP) {
+            resolvedComponents.add(dependency);
+            resolveDependencies(dependency);
+          }
+        }
+      }
+    }
+
+    for (const name of components) {
+      resolveDependencies(name);
+    }
+
+    classList = [
+      ...new Set(
+        [...resolvedComponents].flatMap((name) => {
+          const classListKey = COMPONENT_TO_CLASS_LIST_MAP[name as keyof typeof COMPONENT_TO_CLASS_LIST_MAP];
+          const resolvedClassList = CLASS_LIST_MAP[classListKey as keyof typeof CLASS_LIST_MAP];
+
+          return resolvedClassList || [];
+        }),
+      ),
+    ];
   }
 
   if (version === 4) {
@@ -140,7 +176,7 @@ export function buildClassList({ components, prefix }: { components: string[]; p
     );
   }
 
-  return classList;
+  return classList.sort();
 }
 
 export function extractComponentImports(content: string): string[] {

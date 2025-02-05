@@ -52,7 +52,7 @@ export default {
   external,
   plugins: [
     cleanOutputDir(),
-    generateClassList(),
+    generateMetadata(),
     esbuild({
       sourceMap: false,
     }),
@@ -66,7 +66,7 @@ export default {
     warn(warning);
   },
   watch: {
-    exclude: "src/tailwind/class-list.ts",
+    exclude: ["src/metadata/**"],
   },
 };
 
@@ -80,11 +80,11 @@ function cleanOutputDir() {
   };
 }
 
-function generateClassList() {
+function generateMetadata() {
   return {
-    name: "generate-classlist",
+    name: "generate-metadata",
     async buildStart() {
-      await $`bun run generate-classlist`;
+      await $`bun run generate-metadata`;
     },
   };
 }
