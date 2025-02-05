@@ -133,7 +133,7 @@ export async function init() {
   await generateClassList();
 }
 
-async function ensureTailwind() {
+export async function ensureTailwind() {
   const tailwindVersion = await getTailwindPackageJsonVersion();
 
   if (!tailwindVersion) {
@@ -142,7 +142,7 @@ async function ensureTailwind() {
   }
 }
 
-async function installFlowbiteReact() {
+export async function installFlowbiteReact() {
   try {
     const packageJson = await getPackageJson();
 
@@ -156,7 +156,7 @@ async function installFlowbiteReact() {
   }
 }
 
-async function setupTailwind() {
+export async function setupTailwind() {
   try {
     const tailwindVersion = (await getTailwindPackageJsonVersion()) || "";
     const cleanVersion = tailwindVersion.replace(/[\^~]/g, "");
@@ -174,7 +174,7 @@ async function setupTailwind() {
   }
 }
 
-async function setupTailwindV4() {
+export async function setupTailwindV4() {
   try {
     const cssFiles = await findFiles({
       patterns: ["**/*.css", "**/*.scss", "**/*.sass"],
@@ -221,7 +221,7 @@ async function setupTailwindV4() {
   }
 }
 
-async function setupTailwindV3() {
+export async function setupTailwindV3() {
   try {
     const configFiles = await findFiles({
       patterns: [
@@ -314,7 +314,7 @@ async function setupTailwindV3() {
   }
 }
 
-async function setupGitIgnore() {
+export async function setupGitIgnore() {
   const fileName = ".gitignore";
 
   try {
@@ -336,7 +336,7 @@ async function setupGitIgnore() {
   }
 }
 
-async function setupConfig() {
+export async function setupConfig() {
   try {
     await fs.access(configFile);
   } catch {
@@ -345,7 +345,7 @@ async function setupConfig() {
   }
 }
 
-async function setupOutputDirectory() {
+export async function setupOutputDirectory() {
   try {
     await fs.access(outputDir);
   } catch {
@@ -354,7 +354,7 @@ async function setupOutputDirectory() {
   }
 }
 
-async function setupVSCode() {
+export async function setupVSCode() {
   try {
     await fs.access(vscodeDir);
   } catch {
@@ -366,7 +366,7 @@ async function setupVSCode() {
   await setupVSCodeExtensions();
 }
 
-async function setupVSCodeSettings() {
+export async function setupVSCodeSettings() {
   try {
     const file = "settings.json";
     const filePath = path.join(vscodeDir, file);
@@ -444,7 +444,7 @@ async function setupVSCodeSettings() {
   }
 }
 
-async function setupVSCodeExtensions() {
+export async function setupVSCodeExtensions() {
   try {
     const file = "extensions.json";
     const filePath = path.join(vscodeDir, file);
@@ -493,7 +493,7 @@ async function setupVSCodeExtensions() {
   }
 }
 
-async function setupPackageJson() {
+export async function setupPackageJson() {
   try {
     const registerCommand = "flowbite-react register";
     const packageJson = await getPackageJson();
@@ -516,7 +516,7 @@ async function setupPackageJson() {
   }
 }
 
-async function generateClassList() {
+export async function generateClassList() {
   try {
     const config = await getConfig();
 
