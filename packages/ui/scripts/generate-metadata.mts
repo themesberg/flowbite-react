@@ -78,7 +78,7 @@ async function generateClassList(): Promise<void> {
  * // Returns: ["bg-blue-500", "hover:bg-blue-600"]
  * ```
  */
-async function extractClassList(content: string): Promise<string[]> {
+export async function extractClassList(content: string): Promise<string[]> {
   const classList = new Set<string>();
   const transpiler = new Bun.Transpiler({
     loader: "ts",
@@ -169,7 +169,7 @@ async function generateDependencyList(): Promise<void> {
  * const dependencies = await extractDependencyList(content);
  * // returns ['Button', 'Card', 'Table']
  */
-async function extractDependencyList(content: string): Promise<string[]> {
+export async function extractDependencyList(content: string): Promise<string[]> {
   const componentImports = new Set<string>();
   const transpiler = new Bun.Transpiler({
     loader: "tsx",

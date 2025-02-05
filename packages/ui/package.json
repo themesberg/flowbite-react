@@ -165,7 +165,7 @@
     "prepack": "clean-package",
     "prepare": "bun run generate-metadata",
     "prepublishOnly": "bun run build",
-    "test": "vitest",
+    "test": "bun test scripts && vitest",
     "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit"
   },
