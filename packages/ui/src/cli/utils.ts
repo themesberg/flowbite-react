@@ -7,7 +7,7 @@ import { convertUtilitiesToV4 } from "../helpers/convert-utilities-to-v4";
 import { getTailwindVersion } from "../helpers/get-tailwind-version";
 import { CLASS_LIST_MAP, COMPONENT_TO_CLASS_LIST_MAP } from "../metadata/class-list";
 import { DEPENDENCY_LIST_MAP } from "../metadata/dependency-list";
-import { classListFile, classListFilePath, configFilePath, outputDir, packageJsonFile } from "./consts";
+import { classListFilePath, configFilePath, packageJsonFile } from "./consts";
 
 export interface Config {
   $schema: string;
