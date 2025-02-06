@@ -142,7 +142,8 @@
         "default": "./dist/cjs/theme/index.cjs"
       }
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./schema.json": "./schema.json"
   },
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
@@ -151,7 +152,8 @@
     "flowbite-react": "./dist/esm/cli/bin.mjs"
   },
   "files": [
-    "dist"
+    "dist",
+    "schema.json"
   ],
   "scripts": {
     "build": "bun --bun rollup -c",
