@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "flowbite-react build && storybook build",
+    "build": "storybook build",
     "clean": "rimraf .flowbite-react/class-list.json .flowbite-react/pid .turbo node_modules storybook-static",
-    "dev": "flowbite-react register && storybook dev -p 6006",
+    "dev": "storybook dev -p 6006",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint .",

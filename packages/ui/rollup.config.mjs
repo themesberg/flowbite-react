@@ -5,6 +5,7 @@ import packageJson from "./package.json";
 
 const cliEntries = await Array.fromAsync(new Glob("src/cli/**/*").scan());
 const componentEntries = await Array.fromAsync(new Glob("src/components/**/index.ts").scan());
+const pluginEntries = await Array.fromAsync(new Glob("src/plugin/**/*").scan());
 const entries = [
   "src/index.ts",
   "src/icons/index.ts",
@@ -12,6 +13,7 @@ const entries = [
   "src/theme/index.ts",
   ...cliEntries,
   ...componentEntries,
+  ...pluginEntries,
 ];
 const external = [
   "child_process",

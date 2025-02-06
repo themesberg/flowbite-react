@@ -1,14 +1,12 @@
 const { withContentlayer } = require("next-contentlayer2");
+const flowbiteReact = require("flowbite-react/plugin/webpack");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "avatars.githubusercontent.com",
-      },
-    ],
+  webpack(config) {
+    config.plugins.push(flowbiteReact());
+
+    return config;
   },
   async redirects() {
     return [
@@ -138,6 +136,14 @@ const nextConfig = {
         permanent: true,
       },
     ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+      },
+    ],
   },
 };
 

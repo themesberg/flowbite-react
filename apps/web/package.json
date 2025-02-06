@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "flowbite-react build && next build",
+    "build": "next build",
     "clean": "rimraf .contentlayer .flowbite-react/class-list.json .flowbite-react/pid .next .turbo node_modules tsconfig.tsbuildinfo",
-    "dev": "flowbite-react register && next dev",
+    "dev": "next dev",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint .",

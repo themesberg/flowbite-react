@@ -102,6 +102,26 @@
         "default": "./dist/cjs/icons/index.cjs"
       }
     },
+    "./plugin/*": {
+      "import": {
+        "types": "./dist/types/plugin/*.d.mts",
+        "default": "./dist/esm/plugin/*.mjs"
+      },
+      "require": {
+        "types": "./dist/types/plugin/*.d.ts",
+        "default": "./dist/cjs/plugin/*.cjs"
+      }
+    },
+    "./plugin": {
+      "import": {
+        "types": "./dist/types/plugin/index.d.mts",
+        "default": "./dist/esm/plugin/index.mjs"
+      },
+      "require": {
+        "types": "./dist/types/plugin/index.d.ts",
+        "default": "./dist/cjs/plugin/index.cjs"
+      }
+    },
     "./tailwind/*": {
       "import": {
         "types": "./dist/types/tailwind/*.d.mts",
@@ -180,9 +200,12 @@
     "deepmerge-ts": "7.1.4",
     "fast-deep-equal": "3.1.3",
     "klona": "2.0.6",
-    "tailwind-merge": "2.6.0"
+    "tailwind-merge": "2.6.0",
+    "unplugin": "2.1.2"
   },
   "devDependencies": {
+    "@farmfe/core": "1.6.6",
+    "@rspack/core": "1.2.2",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.1.0",
     "@testing-library/user-event": "14.5.2",
@@ -197,11 +220,13 @@
     "eslint-plugin-vitest": "0.5.4",
     "estree-walker": "3.0.3",
     "jsdom": "25.0.1",
+    "rolldown": "1.0.0-beta.3",
     "rollup": "4.30.1",
     "rollup-plugin-esbuild": "6.1.1",
     "rollup-plugin-use-client": "1.4.0",
     "typescript": "5.6.3",
-    "vitest": "2.1.8"
+    "vitest": "2.1.8",
+    "webpack": "5.97.1"
   },
   "peerDependencies": {
     "react": ">=18",

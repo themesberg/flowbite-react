@@ -42,7 +42,6 @@ export async function main(argv: string[]) {
   }
   if (command === "init") {
     await init();
-    await register();
   }
   if (command === "register") {
     await register();
@@ -134,11 +133,12 @@ export async function init() {
   // setup VSCode intellisense
   await setupVSCode();
 
+  // TODO: only do this when bundler is not supported
   // setup `package.json` file
   await setupPackageJson();
 
-  // generate `.flowbite-react/class-list.json` file
-  await generateClassList();
+  // setup plugin based on bundler
+  await setupPlugin();
 }
 
 export async function ensureTailwind() {
@@ -514,6 +514,10 @@ export async function setupPackageJson() {
   } catch (error) {
     console.error(`Failed to setup ${packageJsonFile}:`, error);
   }
+}
+
+export async function setupPlugin() {
+  // TODO:
 }
 
 export async function generateClassList() {
