@@ -6,13 +6,19 @@ import isEqual from "fast-deep-equal";
 import {
   automaticClassGenerationMessage,
   classListFile,
-  configFile,
+  classListFilePath,
+  configFilePath,
   defaultConfig,
   excludeDirs,
+  gitIgnoreFilePath,
   outputDir,
   packageJsonFile,
   processIdFile,
+  processIdFilePath,
+  tailwindPlugin,
   vscodeDir,
+  vscodeExtensionsFilePath,
+  vscodeSettingsFilePath,
 } from "./consts";
 import {
   buildClassList,
@@ -83,7 +89,7 @@ export async function dev() {
 
     if (!isEqual(classList, newClassList)) {
       classList = newClassList;
-      await fs.writeFile(`${outputDir}/${classListFile}`, JSON.stringify(classList, null, 2), { flag: "w" });
+      await fs.writeFile(classListFilePath, JSON.stringify(classList, null, 2), { flag: "w" });
     }
   }
 
@@ -93,7 +99,9 @@ export async function dev() {
         return excludeDirs.some((dir) => path.endsWith(dir));
       }
       if (stats?.isFile()) {
-        return ![".astro", ".js", ".jsx", ".md", ".mdx", ".ts", ".tsx", configFile].some((type) => path.endsWith(type));
+        return ![".astro", ".js", ".jsx", ".md", ".mdx", ".ts", ".tsx", configFilePath].some((type) =>
+          path.endsWith(type),
+        );
       }
       return false;
     },
@@ -114,14 +122,14 @@ export async function init() {
   // setup `tailwindcss`
   await setupTailwind();
 
-  // setup `.gitignore` file
-  await setupGitIgnore();
-
-  // setup `flowbite-react.json` file
-  await setupConfig();
-
   // setup `.flowbite-react` directory
   await setupOutputDirectory();
+
+  // setup `.flowbite-react/config.json` file
+  await setupConfig();
+
+  // setup `.flowbite-react/.gitignore` file
+  await setupGitIgnore();
 
   // setup VSCode intellisense
   await setupVSCode();
@@ -129,7 +137,7 @@ export async function init() {
   // setup `package.json` file
   await setupPackageJson();
 
-  // generate `class-list.json` file in `.flowbite-react` directory
+  // generate `.flowbite-react/class-list.json` file
   await generateClassList();
 }
 
@@ -189,7 +197,11 @@ export async function setupTailwindV4() {
       if (content.includes(`@import 'tailwindcss'`) || content.includes(`@import "tailwindcss"`)) {
         found = true;
 
-        if (content.includes('@plugin "flowbite-react/tailwind"') || content.includes(outputDir)) {
+        if (
+          content.includes(`@plugin '${tailwindPlugin}'`) ||
+          content.includes(`@plugin "${tailwindPlugin}"`) ||
+          content.includes(outputDir)
+        ) {
           continue;
         }
 
@@ -202,7 +214,7 @@ export async function setupTailwindV4() {
         const updatedContent =
           content.slice(0, insertPosition) +
           "\n" +
-          '@plugin "flowbite-react/tailwind";' +
+          `@plugin "${tailwindPlugin}";` +
           "\n" +
           `@source "${sourceImportPath}";` +
           "\n" +
@@ -251,10 +263,10 @@ export async function setupTailwindV3() {
       const relativePath = path.relative(path.dirname(configFile), outputDir).replace(/\\/g, "/");
 
       // Add import/require statement if not present
-      if (isCJS && !content.includes("flowbite-react/tailwind")) {
-        updatedContent = `const flowbite = require("flowbite-react/tailwind");\n\n${updatedContent}`;
-      } else if (isESM && !content.includes("flowbite-react/tailwind")) {
-        updatedContent = `import flowbite from "flowbite-react/tailwind";\n\n${updatedContent}`;
+      if (isCJS && !content.includes(tailwindPlugin)) {
+        updatedContent = `const flowbite = require("${tailwindPlugin}");\n\n${updatedContent}`;
+      } else if (isESM && !content.includes(tailwindPlugin)) {
+        updatedContent = `import flowbite from "${tailwindPlugin}";\n\n${updatedContent}`;
       }
 
       // Update or create `content`
@@ -315,33 +327,27 @@ export async function setupTailwindV3() {
 }
 
 export async function setupGitIgnore() {
-  const fileName = ".gitignore";
-
   try {
-    const gitignore = await fs.readFile(fileName, "utf-8").catch(() => {
-      console.log(`Creating ${fileName} file...`);
+    const gitignore = await fs.readFile(gitIgnoreFilePath, "utf-8").catch(() => {
+      console.log(`Creating ${gitIgnoreFilePath} file...`);
       return "";
     });
 
-    if (!gitignore.includes(outputDir)) {
-      console.log(`Adding ${outputDir} to ${fileName}...`);
-      await fs.writeFile(
-        fileName,
-        `${gitignore.trim()}${gitignore.trim() ? "\n\n" : ""}# Flowbite React\n${outputDir}\n`,
-        { flag: "w" },
-      );
+    if (![classListFile, processIdFile].some((file) => gitignore.includes(file))) {
+      console.log(`Adding ${classListFile}, ${processIdFile} to ${gitIgnoreFilePath}...`);
+      await fs.writeFile(gitIgnoreFilePath, `${classListFile}\n${processIdFile}`, { flag: "w" });
     }
   } catch (error) {
-    console.error(`Failed to update ${fileName}:`, error);
+    console.error(`Failed to update ${gitIgnoreFilePath}:`, error);
   }
 }
 
 export async function setupConfig() {
   try {
-    await fs.access(configFile);
+    await fs.access(configFilePath);
   } catch {
-    console.log(`Creating ${configFile} file...`);
-    await fs.writeFile(configFile, JSON.stringify(defaultConfig, null, 2), { flag: "w" });
+    console.log(`Creating ${configFilePath} file...`);
+    await fs.writeFile(configFilePath, JSON.stringify(defaultConfig, null, 2), { flag: "w" });
   }
 }
 
@@ -368,9 +374,6 @@ export async function setupVSCode() {
 
 export async function setupVSCodeSettings() {
   try {
-    const file = "settings.json";
-    const filePath = path.join(vscodeDir, file);
-
     let settings: {
       "files.associations"?: Record<string, string>;
       "tailwindCSS.classAttributes"?: string[];
@@ -380,7 +383,7 @@ export async function setupVSCodeSettings() {
     let exists = true;
 
     try {
-      const content = await fs.readFile(filePath, "utf-8");
+      const content = await fs.readFile(vscodeSettingsFilePath, "utf-8");
       settings = JSON.parse(content);
     } catch {
       exists = false;
@@ -437,8 +440,8 @@ export async function setupVSCodeSettings() {
       return;
     }
 
-    console.log(`${exists ? "Updating" : "Creating"} ${vscodeDir}/${file} with flowbite-react configuration...`);
-    await fs.writeFile(filePath, JSON.stringify(settings, null, 2), { flag: "w" });
+    console.log(`${exists ? "Updating" : "Creating"} ${vscodeSettingsFilePath} with flowbite-react configuration...`);
+    await fs.writeFile(vscodeSettingsFilePath, JSON.stringify(settings, null, 2), { flag: "w" });
   } catch (error) {
     console.error("Failed to setup VSCode settings:", error);
   }
@@ -446,9 +449,6 @@ export async function setupVSCodeSettings() {
 
 export async function setupVSCodeExtensions() {
   try {
-    const file = "extensions.json";
-    const filePath = path.join(vscodeDir, file);
-
     let extensions: {
       recommendations?: string[];
     } = {};
@@ -456,7 +456,7 @@ export async function setupVSCodeExtensions() {
     let exists = true;
 
     try {
-      const content = await fs.readFile(filePath, "utf-8");
+      const content = await fs.readFile(vscodeExtensionsFilePath, "utf-8");
       extensions = JSON.parse(content);
     } catch {
       exists = false;
@@ -486,8 +486,8 @@ export async function setupVSCodeExtensions() {
       extensions.recommendations = flowbiteReactExtensions.recommendations;
     }
 
-    console.log(`${exists ? "Updating" : "Creating"} ${vscodeDir}/${file} with flowbite-react configuration...`);
-    await fs.writeFile(filePath, JSON.stringify(extensions, null, 2), { flag: "w" });
+    console.log(`${exists ? "Updating" : "Creating"} ${vscodeExtensionsFilePath} with flowbite-react configuration...`);
+    await fs.writeFile(vscodeExtensionsFilePath, JSON.stringify(extensions, null, 2), { flag: "w" });
   } catch (error) {
     console.error("Failed to setup VSCode extensions:", error);
   }
@@ -541,10 +541,11 @@ export async function generateClassList() {
     }
 
     const classList = buildClassList(config);
-    console.log(`Generating ${outputDir}/${classListFile} file...`);
-    await fs.writeFile(`${outputDir}/${classListFile}`, JSON.stringify(classList, null, 2), { flag: "w" });
+
+    console.log(`Generating ${classListFilePath} file...`);
+    await fs.writeFile(classListFilePath, JSON.stringify(classList, null, 2), { flag: "w" });
   } catch (error) {
-    console.error(`Failed to generate ${classListFile}:`, error);
+    console.error(`Failed to generate ${classListFilePath}:`, error);
   }
 }
 
@@ -557,9 +558,9 @@ export async function register() {
 
   try {
     // clean up old process
-    const pid = await fs.readFile(`${outputDir}/${processIdFile}`, "utf8");
+    const pid = await fs.readFile(processIdFilePath, "utf8");
     process.kill(parseInt(pid, 10));
-    await fs.unlink(`${outputDir}/${processIdFile}`);
+    await fs.unlink(processIdFilePath);
   } catch {
     //
   }
@@ -575,7 +576,7 @@ export async function register() {
     await setupOutputDirectory();
 
     if (devProcess.pid) {
-      await fs.writeFile(`${outputDir}/${processIdFile}`, devProcess.pid.toString(), { flag: "w" });
+      await fs.writeFile(processIdFilePath, devProcess.pid.toString(), { flag: "w" });
     }
   } catch (error) {
     console.error("Failed to register flowbite-react", error);
