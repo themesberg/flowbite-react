@@ -22,6 +22,7 @@ export const excludeDirs = [
 ];
 
 export const defaultConfig: Config = {
+  $schema: "https://unpkg.com/flowbite-react/schema.json",
   components: [],
   prefix: "",
 };

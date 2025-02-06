@@ -10,6 +10,7 @@ import { DEPENDENCY_LIST_MAP } from "../metadata/dependency-list";
 import { classListFile, configFile, outputDir, packageJsonFile } from "./consts";
 
 export interface Config {
+  $schema: string;
   components: string[];
   prefix: string;
 }
@@ -227,6 +228,7 @@ export async function getClassList(): Promise<string[]> {
 
 export async function getConfig(): Promise<Config> {
   const config: Config = {
+    $schema: "",
     components: [],
     prefix: "",
   };
@@ -235,6 +237,9 @@ export async function getConfig(): Promise<Config> {
     const raw = await fs.readFile(configFile, "utf-8");
     const parsed: Config = JSON.parse(raw);
 
+    if (parsed.$schema !== undefined && typeof parsed.$schema === "string") {
+      config.$schema = parsed.$schema;
+    }
     if (parsed.prefix !== undefined && typeof parsed.prefix === "string") {
       config.prefix = parsed.prefix;
     }
