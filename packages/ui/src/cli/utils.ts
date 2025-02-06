@@ -52,12 +52,15 @@ export async function findFiles({
   // Recursive search function
   async function search(directory: string): Promise<void> {
     // Skip excluded directories
-    if (excludeDirs.some((exclude) => directory.includes(exclude))) return;
+    if (excludeDirs.some((exclude) => directory.includes(exclude))) {
+      return;
+    }
 
     try {
       const entries = await fs.readdir(directory, { withFileTypes: true });
       const tasks = entries.map(async (entry) => {
         const fullPath = path.join(directory, entry.name);
+
         if (entry.isDirectory()) {
           return search(fullPath); // Recursive call for directories
         } else {
