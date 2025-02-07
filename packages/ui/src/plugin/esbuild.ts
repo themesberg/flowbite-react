@@ -8,9 +8,18 @@ import { pluginName } from "./index";
 export default (): EsbuildPlugin => ({
   name: pluginName,
   setup(pluginBuild) {
+    let registered = false;
+
     pluginBuild.onStart(async () => {
-      await build();
-      dev();
+      if (!registered) {
+        registered = true;
+        await build();
+
+        // assume production build when `initialOptions.minify = true`
+        if (!pluginBuild.initialOptions.minify) {
+          dev();
+        }
+      }
     });
   },
 });
