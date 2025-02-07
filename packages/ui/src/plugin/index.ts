@@ -20,7 +20,10 @@ export const unpluginFactory: UnpluginFactory<undefined> = () => ({
     },
   },
   rollup: {
-    // TODO:
+    async buildStart() {
+      await build();
+      await dev();
+    },
   },
   rolldown: {
     // TODO:
@@ -54,7 +57,12 @@ export const unpluginFactory: UnpluginFactory<undefined> = () => ({
     });
   },
   esbuild: {
-    // TODO:
+    setup(pluginBuild) {
+      pluginBuild.onStart(async () => {
+        await build();
+        await dev();
+      });
+    },
   },
   farm: {
     buildStart: {
