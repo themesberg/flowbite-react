@@ -155,7 +155,9 @@ export const Tabs = forwardRef<TabsRef, TabsProps>((props, ref) => {
             id={`${id}-tab-${index}`}
             onClick={() => handleClick({ target: index })}
             onKeyDown={(event) => handleKeyboard({ event, target: index })}
-            ref={(element) => (tabRefs.current[index] = element as HTMLButtonElement)}
+            ref={(element) => {
+              tabRefs.current[index] = element as HTMLButtonElement;
+            }}
             role="tab"
             tabIndex={index === focusedTab ? 0 : -1}
             style={{ zIndex: index === focusedTab ? 2 : 1 }}
