@@ -26,7 +26,10 @@ export const unpluginFactory: UnpluginFactory<undefined> = () => ({
     },
   },
   rolldown: {
-    // TODO:
+    async buildStart() {
+      await build();
+      await dev();
+    },
   },
   async webpack(compiler) {
     compiler.hooks.beforeCompile.tapPromise(pluginName, async () => {
