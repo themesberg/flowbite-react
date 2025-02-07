@@ -4,11 +4,6 @@ import { build, dev } from "../cli";
 
 export const pluginName = "unplugin-flowbite-react";
 
-const devServerStarted = {
-  webpack: false,
-  rspack: false,
-};
-
 export const unpluginFactory: UnpluginFactory<undefined> = () => ({
   name: pluginName,
   vite: {
@@ -32,28 +27,32 @@ export const unpluginFactory: UnpluginFactory<undefined> = () => ({
     },
   },
   webpack(compiler) {
+    let devServerStarted = false;
+
     compiler.hooks.beforeCompile.tapPromise(pluginName, async () => {
-      const isNextDev = compiler.options.mode === "development";
+      const isDev = compiler.options.mode === "development";
       const isBuild = compiler.options.mode === "production";
 
       if (isBuild) {
         await build();
-      } else if (isNextDev && !devServerStarted.webpack) {
-        devServerStarted.webpack = true;
+      } else if (isDev && !devServerStarted) {
+        devServerStarted = true;
         await build();
         await dev();
       }
     });
   },
   rspack(compiler) {
+    let devServerStarted = false;
+
     compiler.hooks.beforeCompile.tapPromise(pluginName, async () => {
-      const isNextDev = compiler.options.mode === "development";
+      const isDev = compiler.options.mode === "development";
       const isBuild = compiler.options.mode === "production";
 
       if (isBuild) {
         await build();
-      } else if (isNextDev && !devServerStarted.rspack) {
-        devServerStarted.rspack = true;
+      } else if (isDev && !devServerStarted) {
+        devServerStarted = true;
         await build();
         await dev();
       }

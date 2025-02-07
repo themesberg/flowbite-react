@@ -1,13 +1,8 @@
 const { withContentlayer } = require("next-contentlayer2");
-const flowbiteReact = require("flowbite-react/plugin/webpack");
+const { withFlobiteReact } = require("flowbite-react/plugin/nextjs");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack(config) {
-    config.plugins.push(flowbiteReact());
-
-    return config;
-  },
   async redirects() {
     return [
       {
@@ -147,4 +142,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withContentlayer(nextConfig);
+module.exports = withContentlayer(withFlobiteReact(nextConfig));
