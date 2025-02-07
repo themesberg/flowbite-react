@@ -15,8 +15,8 @@ export const unpluginFactory: UnpluginFactory<undefined> = () => ({
     async buildStart() {
       await build();
     },
-    configureServer() {
-      dev();
+    async configureServer() {
+      await dev();
     },
   },
   rollup: {
@@ -57,7 +57,14 @@ export const unpluginFactory: UnpluginFactory<undefined> = () => ({
     // TODO:
   },
   farm: {
-    // TODO:
+    buildStart: {
+      async executor() {
+        await build();
+      },
+    },
+    async configureDevServer() {
+      await dev();
+    },
   },
 });
 
