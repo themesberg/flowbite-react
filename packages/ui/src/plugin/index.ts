@@ -31,7 +31,7 @@ export const unpluginFactory: UnpluginFactory<undefined> = () => ({
       await dev();
     },
   },
-  async webpack(compiler) {
+  webpack(compiler) {
     compiler.hooks.beforeCompile.tapPromise(pluginName, async () => {
       const isNextDev = compiler.options.mode === "development";
       const isBuild = compiler.options.mode === "production";
