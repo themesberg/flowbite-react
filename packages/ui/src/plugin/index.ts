@@ -60,12 +60,7 @@ export const unpluginFactory: UnpluginFactory<undefined> = () => ({
     });
   },
   esbuild: {
-    setup(pluginBuild) {
-      pluginBuild.onStart(async () => {
-        await build();
-        await dev();
-      });
-    },
+    // see `packages/ui/src/plugin/esbuild.ts`
   },
   farm: {
     buildStart: {
