@@ -8,10 +8,7 @@ export function withFlobiteReact(nextConfig: NextConfig): NextConfig {
   return {
     ...nextConfig,
     webpack(config: Configuration, context) {
-      if (!config.plugins) {
-        config.plugins = [];
-      }
-
+      config.plugins ||= [];
       config.plugins.push(unpluginWebpack());
 
       if (typeof nextConfig.webpack === "function") {
