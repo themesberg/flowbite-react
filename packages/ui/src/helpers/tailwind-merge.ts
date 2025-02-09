@@ -3,7 +3,7 @@ import { getPrefix } from "../store";
 
 const cache = new Map<string | undefined, ReturnType<typeof extendTailwindMerge>>();
 
-export function twMerge(...classLists: ClassNameValue[]) {
+export function twMerge(...classLists: ClassNameValue[]): string {
   const prefix = getPrefix();
 
   const cacheKey = prefix;
