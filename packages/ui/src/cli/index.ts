@@ -16,6 +16,7 @@ import {
   processIdFile,
   processIdFilePath,
   tailwindPlugin,
+  tailwindPluginName,
   vscodeDir,
   vscodeExtensionsFilePath,
   vscodeSettingsFilePath,
@@ -185,7 +186,7 @@ export async function setupTailwind() {
 export async function setupTailwindV4() {
   try {
     const cssFiles = await findFiles({
-      patterns: ["**/*.css", "**/*.scss", "**/*.sass"],
+      patterns: ["**/*.css", "**/*.less", "**/*.sass", "**/*.scss"],
       excludeDirs,
     });
 
@@ -264,9 +265,9 @@ export async function setupTailwindV3() {
 
       // Add import/require statement if not present
       if (isCJS && !content.includes(tailwindPlugin)) {
-        updatedContent = `const flowbite = require("${tailwindPlugin}");\n\n${updatedContent}`;
+        updatedContent = `const ${tailwindPluginName} = require("${tailwindPlugin}");\n\n${updatedContent}`;
       } else if (isESM && !content.includes(tailwindPlugin)) {
-        updatedContent = `import flowbite from "${tailwindPlugin}";\n\n${updatedContent}`;
+        updatedContent = `import ${tailwindPluginName} from "${tailwindPlugin}";\n\n${updatedContent}`;
       }
 
       // Update or create `content`

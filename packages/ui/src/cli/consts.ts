@@ -1,6 +1,7 @@
 import path from "path";
 import type { Config } from "./utils";
 
+export const bundlerPluginName = "flowbiteReact";
 export const classListFile = "class-list.json";
 export const configFile = "config.json";
 export const gitIgnoreFile = ".gitignore";
@@ -8,6 +9,7 @@ export const outputDir = ".flowbite-react";
 export const packageJsonFile = "package.json";
 export const processIdFile = "pid";
 export const tailwindPlugin = "flowbite-react/tailwind";
+export const tailwindPluginName = "flowbiteReact";
 export const vscodeDir = ".vscode";
 export const vscodeExtensionsFile = "extensions.json";
 export const vscodeSettingsFile = "settings.json";
