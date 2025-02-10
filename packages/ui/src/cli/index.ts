@@ -5,6 +5,9 @@ import chokidar from "chokidar";
 import isEqual from "fast-deep-equal";
 import {
   automaticClassGenerationMessage,
+  bundlerPluginInvoked,
+  bundlerPluginName,
+  bundlerPluginPath,
   classListFile,
   classListFilePath,
   configFilePath,
@@ -134,12 +137,13 @@ export async function init() {
   // setup VSCode intellisense
   await setupVSCode();
 
-  // TODO: only do this when bundler is not supported
-  // setup `package.json` file
-  await setupPackageJson();
-
   // setup plugin based on bundler
-  await setupPlugin();
+  const hasBundler = await setupPlugin();
+
+  if (!hasBundler) {
+    // setup `package.json` file
+    await setupPackageJson();
+  }
 }
 
 export async function ensureTailwind() {
@@ -211,7 +215,7 @@ export async function setupTailwindV4() {
         const insertPosition = nextLineIndex === -1 ? targetIndex + '@import "tailwindcss"'.length : nextLineIndex;
 
         const relativePath = path.relative(path.dirname(file), process.cwd());
-        const sourceImportPath = `${relativePath}/${outputDir}/${classListFile}`.replace(/\\/g, "/");
+        const sourceImportPath = path.join(relativePath, outputDir, classListFile).replace(/\\/g, "/");
         const updatedContent =
           content.slice(0, insertPosition) +
           "\n" +
@@ -279,7 +283,7 @@ export async function setupTailwindV3() {
         if (!contentArray.includes(relativePath)) {
           updatedContent = updatedContent.replace(
             /content:\s*\[([\s\S]*?)\]/,
-            `content: [${contentArray.trim() ? `${contentArray.trim().endsWith(",") ? contentArray.trim() : contentArray + ","} ` : ""}"${relativePath}/${classListFile}"]`,
+            `content: [${contentArray.trim() ? `${contentArray.trim().endsWith(",") ? contentArray.trim() : contentArray + ","} ` : ""}"${path.join(relativePath, classListFile)}"]`,
           );
         }
       } else {
@@ -289,7 +293,7 @@ export async function setupTailwindV3() {
 
         updatedContent =
           updatedContent.slice(0, configObject + 1) +
-          `\n  content: ["${relativePath}/${classListFile}"],` +
+          `\n  content: ["${path.join(relativePath, classListFile)}"],` +
           updatedContent.slice(configObject + 1);
       }
 
@@ -327,6 +331,24 @@ export async function setupTailwindV3() {
   }
 }
 
+export async function setupOutputDirectory() {
+  try {
+    await fs.access(outputDir);
+  } catch {
+    console.log(`Creating ${outputDir} directory...`);
+    await fs.mkdir(outputDir, { recursive: true });
+  }
+}
+
+export async function setupConfig() {
+  try {
+    await fs.access(configFilePath);
+  } catch {
+    console.log(`Creating ${configFilePath} file...`);
+    await fs.writeFile(configFilePath, JSON.stringify(defaultConfig, null, 2), { flag: "w" });
+  }
+}
+
 export async function setupGitIgnore() {
   try {
     const gitignore = await fs.readFile(gitIgnoreFilePath, "utf-8").catch(() => {
@@ -340,24 +362,6 @@ export async function setupGitIgnore() {
     }
   } catch (error) {
     console.error(`Failed to update ${gitIgnoreFilePath}:`, error);
-  }
-}
-
-export async function setupConfig() {
-  try {
-    await fs.access(configFilePath);
-  } catch {
-    console.log(`Creating ${configFilePath} file...`);
-    await fs.writeFile(configFilePath, JSON.stringify(defaultConfig, null, 2), { flag: "w" });
-  }
-}
-
-export async function setupOutputDirectory() {
-  try {
-    await fs.access(outputDir);
-  } catch {
-    console.log(`Creating ${outputDir} directory...`);
-    await fs.mkdir(outputDir, { recursive: true });
   }
 }
 
@@ -494,6 +498,146 @@ export async function setupVSCodeExtensions() {
   }
 }
 
+export async function setupPlugin() {
+  const configFiles = {
+    astro: ["astro.config.cjs", "astro.config.mjs", "astro.config.ts", "astro.config.js"],
+    farm: ["farm.config.cjs", "farm.config.js", "farm.config.mjs", "farm.config.ts"],
+    nextjs: ["next.config.cjs", "next.config.mjs", "next.config.ts", "next.config.js"],
+    parcel: [".parcelrc"],
+    rolldown: ["rolldown.config.cjs", "rolldown.config.mjs", "rolldown.config.ts", "rolldown.config.js"],
+    rollup: ["rollup.config.cjs", "rollup.config.mjs", "rollup.config.ts", "rollup.config.js"],
+    rsbuild: ["rsbuild.config.cjs", "rsbuild.config.mjs", "rsbuild.config.ts", "rsbuild.config.js"],
+    rspack: ["rspack.config.cjs", "rspack.config.mjs", "rspack.config.ts", "rspack.config.js"],
+    vite: ["vite.config.cjs", "vite.config.mjs", "vite.config.ts", "vite.config.js"],
+    webpack: ["webpack.config.cjs", "webpack.config.mjs", "webpack.config.ts", "webpack.config.js"],
+  };
+  const configPath: Record<keyof typeof configFiles, string> = {
+    astro: "",
+    farm: "",
+    nextjs: "",
+    parcel: "",
+    rolldown: "",
+    rollup: "",
+    rsbuild: "",
+    rspack: "",
+    vite: "",
+    webpack: "",
+  };
+
+  for (const key in configFiles) {
+    const files = configFiles[key as keyof typeof configFiles];
+
+    for (const file of files) {
+      try {
+        await fs.access(file);
+        configPath[key as keyof typeof configFiles] = file;
+      } catch {
+        //
+      }
+    }
+  }
+
+  if (configPath.astro) {
+    setupPluginAstro(configPath.astro);
+  }
+  if (configPath.farm) {
+    // TODO: setup farm
+    console.log("Farm config file found:", configPath.farm);
+  }
+  if (configPath.nextjs) {
+    // TODO: setup nextjs
+    console.log("Next.js config file found:", configPath.nextjs);
+  }
+  if (configPath.parcel) {
+    // TODO: setup parcel
+    console.log("Parcel config file found:", configPath.parcel);
+  }
+  if (configPath.rolldown) {
+    // TODO: setup rolldown
+    console.log("Rolldown config file found:", configPath.rolldown);
+  }
+  if (configPath.rollup) {
+    // TODO: setup rollup
+    console.log("Rollup config file found:", configPath.rollup);
+  }
+  if (configPath.rsbuild) {
+    // TODO: setup rsbuild
+    console.log("Rsbuild config file found:", configPath.rsbuild);
+  }
+  if (configPath.rspack) {
+    // TODO: setup rspack
+    console.log("Rspack config file found:", configPath.rspack);
+  }
+  if (configPath.vite) {
+    // TODO: setup vite
+    console.log("Vite config file found:", configPath.vite);
+  }
+  if (configPath.webpack) {
+    // TODO: setup webpack
+    console.log("Webpack config file found:", configPath.webpack);
+  }
+
+  if (!Object.values(configPath).filter(Boolean).length) {
+    console.warn(
+      "Could not find bundler/framework config file.\n\nSee: https://flowbite-react.com/docs/getting-started/quickstart#integration-guides",
+    );
+    return;
+  }
+
+  return true;
+}
+
+export async function setupPluginAstro(configPath: string) {
+  try {
+    const content = await fs.readFile(configPath, "utf-8");
+    const isCJS = content.includes("module.exports");
+    const isESM = content.match(/export\s+default/);
+
+    if (!isCJS && !isESM) {
+      return;
+    }
+
+    let updatedContent = content;
+
+    // Add import/require statement if not present
+    if (isCJS && !content.includes(bundlerPluginPath)) {
+      updatedContent = `const ${bundlerPluginName} = require("${path.join(bundlerPluginPath, "astro")}");\n\n${updatedContent}`;
+    } else if (isESM && !content.includes(bundlerPluginPath)) {
+      updatedContent = `import ${bundlerPluginName} from "${path.join(bundlerPluginPath, "astro")}";\n\n${updatedContent}`;
+    }
+
+    // Update or create `integrations`
+    const integrationsMatch = updatedContent.match(/integrations:\s*\[([\s\S]*?)\]/);
+
+    if (integrationsMatch) {
+      const integrationsArray = integrationsMatch[1];
+
+      if (!integrationsArray.includes(bundlerPluginName)) {
+        updatedContent = updatedContent.replace(
+          /integrations:\s*\[([\s\S]*?)\]/,
+          `integrations: [${integrationsArray.trim() ? `${integrationsArray.trim().endsWith(",") ? integrationsArray.trim() : integrationsArray + ","} ` : ""}${bundlerPluginInvoked}]`,
+        );
+      }
+    } else {
+      const moduleExport = isCJS ? "module.exports = " : "export default ";
+      const configStart = updatedContent.indexOf(moduleExport) + moduleExport.length;
+      const configObject = updatedContent.indexOf("{", configStart);
+
+      updatedContent =
+        updatedContent.slice(0, configObject + 1) +
+        `\n  integrations: [${bundlerPluginInvoked}],` +
+        updatedContent.slice(configObject + 1);
+    }
+
+    if (updatedContent !== content) {
+      console.log(`Updating ${configPath} with flowbite-react plugin...`);
+      await fs.writeFile(configPath, updatedContent, "utf-8");
+    }
+  } catch (error) {
+    console.error("Failed to setup Astro flowbite-react plugin:", error);
+  }
+}
+
 export async function setupPackageJson() {
   try {
     const registerCommand = "flowbite-react register";
@@ -515,10 +659,6 @@ export async function setupPackageJson() {
   } catch (error) {
     console.error(`Failed to setup ${packageJsonFile}:`, error);
   }
-}
-
-export async function setupPlugin() {
-  // TODO:
 }
 
 export async function generateClassList() {

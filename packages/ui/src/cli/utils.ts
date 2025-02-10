@@ -20,6 +20,7 @@ export interface FindFilesOptions {
   startDir?: string;
   excludeDirs?: string[];
   parallel?: boolean;
+  recursive?: boolean;
 }
 
 export async function findFiles({
@@ -27,6 +28,7 @@ export async function findFiles({
   startDir = ".",
   excludeDirs = [],
   parallel = true,
+  recursive = true,
 }: FindFilesOptions): Promise<string[]> {
   const results: string[] = [];
 
@@ -63,7 +65,9 @@ export async function findFiles({
         const fullPath = path.join(directory, entry.name);
 
         if (entry.isDirectory()) {
-          return search(fullPath); // Recursive call for directories
+          if (recursive) {
+            return search(fullPath); // Recursive call for directories
+          }
         } else {
           // Check if file matches the pattern
           if (matchesPattern(entry.name)) {
@@ -94,6 +98,7 @@ export function packageManager() {
 
   function install(args: string) {
     console.log(`Installing ${args} using ${pm}...`);
+    // TODO: refactor this
     return execSync(`${pm} ${pm === "npm" ? "install" : "add"} ${args}`, { stdio: "inherit" });
   }
 
