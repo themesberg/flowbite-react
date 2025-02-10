@@ -24,159 +24,160 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/types/index.d.mts",
-        "default": "./dist/esm/index.mjs"
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
       },
       "require": {
-        "types": "./dist/types/index.d.ts",
-        "default": "./dist/cjs/index.cjs"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
       }
     },
     "./cli/*": {
       "import": {
-        "types": "./dist/types/cli/*.d.mts",
-        "default": "./dist/esm/cli/*.mjs"
+        "types": "./dist/cli/*.d.mts",
+        "default": "./dist/cli/*.mjs"
       },
       "require": {
-        "types": "./dist/types/cli/*.d.ts",
-        "default": "./dist/cjs/cli/*.cjs"
+        "types": "./dist/cli/*.d.ts",
+        "default": "./dist/cli/*.cjs"
       }
     },
     "./cli": {
       "import": {
-        "types": "./dist/types/cli/index.d.mts",
-        "default": "./dist/esm/cli/index.mjs"
+        "types": "./dist/cli/index.d.mts",
+        "default": "./dist/cli/index.mjs"
       },
       "require": {
-        "types": "./dist/types/cli/index.d.ts",
-        "default": "./dist/cjs/cli/index.cjs"
+        "types": "./dist/cli/index.d.ts",
+        "default": "./dist/cli/index.cjs"
       }
     },
     "./components/*": {
       "import": {
-        "types": "./dist/types/components/*/index.d.mts",
-        "default": "./dist/esm/components/*/index.mjs"
+        "types": "./dist/components/*/index.d.mts",
+        "default": "./dist/components/*/index.mjs"
       },
       "require": {
-        "types": "./dist/types/components/*/index.d.ts",
-        "default": "./dist/cjs/components/*/index.cjs"
+        "types": "./dist/components/*/index.d.ts",
+        "default": "./dist/components/*/index.cjs"
       }
     },
     "./helpers/*": {
       "import": {
-        "types": "./dist/types/helpers/*.d.mts",
-        "default": "./dist/esm/helpers/*.mjs"
+        "types": "./dist/helpers/*.d.mts",
+        "default": "./dist/helpers/*.mjs"
       },
       "require": {
-        "types": "./dist/types/helpers/*.d.ts",
-        "default": "./dist/cjs/helpers/*.cjs"
+        "types": "./dist/helpers/*.d.ts",
+        "default": "./dist/helpers/*.cjs"
       }
     },
     "./hooks/*": {
       "import": {
-        "types": "./dist/types/hooks/*.d.mts",
-        "default": "./dist/esm/hooks/*.mjs"
+        "types": "./dist/hooks/*.d.mts",
+        "default": "./dist/hooks/*.mjs"
       },
       "require": {
-        "types": "./dist/types/hooks/*.d.ts",
-        "default": "./dist/cjs/hooks/*.cjs"
+        "types": "./dist/hooks/*.d.ts",
+        "default": "./dist/hooks/*.cjs"
       }
     },
     "./icons/*": {
       "import": {
-        "types": "./dist/types/icons/*.d.mts",
-        "default": "./dist/esm/icons/*.mjs"
+        "types": "./dist/icons/*.d.mts",
+        "default": "./dist/icons/*.mjs"
       },
       "require": {
-        "types": "./dist/types/icons/*.d.ts",
-        "default": "./dist/cjs/icons/*.cjs"
+        "types": "./dist/icons/*.d.ts",
+        "default": "./dist/icons/*.cjs"
       }
     },
     "./icons": {
       "import": {
-        "types": "./dist/types/icons/index.d.mts",
-        "default": "./dist/esm/icons/index.mjs"
+        "types": "./dist/icons/index.d.mts",
+        "default": "./dist/icons/index.mjs"
       },
       "require": {
-        "types": "./dist/types/icons/index.d.ts",
-        "default": "./dist/cjs/icons/index.cjs"
+        "types": "./dist/icons/index.d.ts",
+        "default": "./dist/icons/index.cjs"
       }
     },
     "./plugin/*": {
       "import": {
-        "types": "./dist/types/plugin/*.d.mts",
-        "default": "./dist/esm/plugin/*.mjs"
+        "types": "./dist/plugin/*.d.mts",
+        "default": "./dist/plugin/*.mjs"
       },
       "require": {
-        "types": "./dist/types/plugin/*.d.ts",
-        "default": "./dist/cjs/plugin/*.cjs"
+        "types": "./dist/plugin/*.d.ts",
+        "default": "./dist/plugin/*.cjs"
       }
     },
     "./plugin": {
       "import": {
-        "types": "./dist/types/plugin/index.d.mts",
-        "default": "./dist/esm/plugin/index.mjs"
+        "types": "./dist/plugin/index.d.mts",
+        "default": "./dist/plugin/index.mjs"
       },
       "require": {
-        "types": "./dist/types/plugin/index.d.ts",
-        "default": "./dist/cjs/plugin/index.cjs"
+        "types": "./dist/plugin/index.d.ts",
+        "default": "./dist/plugin/index.cjs"
       }
     },
     "./tailwind/*": {
       "import": {
-        "types": "./dist/types/tailwind/*.d.mts",
-        "default": "./dist/esm/tailwind/*.mjs"
+        "types": "./dist/tailwind/*.d.mts",
+        "default": "./dist/tailwind/*.mjs"
       },
       "require": {
-        "types": "./dist/types/tailwind/*.d.ts",
-        "default": "./dist/cjs/tailwind/*.cjs"
+        "types": "./dist/tailwind/*.d.ts",
+        "default": "./dist/tailwind/*.cjs"
       }
     },
     "./tailwind": {
       "import": {
-        "types": "./dist/types/tailwind/index.d.mts",
-        "default": "./dist/esm/tailwind/index.mjs"
+        "types": "./dist/tailwind/index.d.mts",
+        "default": "./dist/tailwind/index.mjs"
       },
       "require": {
-        "types": "./dist/types/tailwind/index.d.ts",
-        "default": "./dist/cjs/tailwind/index.cjs"
+        "types": "./dist/tailwind/index.d.ts",
+        "default": "./dist/tailwind/index.cjs"
       }
     },
     "./theme/*": {
       "import": {
-        "types": "./dist/types/theme/*.d.mts",
-        "default": "./dist/esm/theme/*.mjs"
+        "types": "./dist/theme/*.d.mts",
+        "default": "./dist/theme/*.mjs"
       },
       "require": {
-        "types": "./dist/types/theme/*.d.ts",
-        "default": "./dist/cjs/theme/*.cjs"
+        "types": "./dist/theme/*.d.ts",
+        "default": "./dist/theme/*.cjs"
       }
     },
     "./theme": {
       "import": {
-        "types": "./dist/types/theme/index.d.mts",
-        "default": "./dist/esm/theme/index.mjs"
+        "types": "./dist/theme/index.d.mts",
+        "default": "./dist/theme/index.mjs"
       },
       "require": {
-        "types": "./dist/types/theme/index.d.ts",
-        "default": "./dist/cjs/theme/index.cjs"
+        "types": "./dist/theme/index.d.ts",
+        "default": "./dist/theme/index.cjs"
       }
     },
     "./package.json": "./package.json",
     "./schema.json": "./schema.json"
   },
-  "main": "dist/cjs/index.cjs",
-  "module": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "bin": {
-    "flowbite-react": "./dist/esm/cli/bin.mjs"
+    "flowbite-react": "./dist/cli/bin.mjs"
   },
   "files": [
     "dist",
     "schema.json"
   ],
   "scripts": {
-    "build": "bun --bun rollup -c",
+    "build": "bun --bun rslib build",
+    "build:doctor": "RSDOCTOR=true bun run build",
     "clean": "rimraf .turbo coverage dist node_modules src/metadata tsconfig.tsbuildinfo",
     "dev": "bun run build --watch",
     "format": "prettier . --write",
@@ -206,6 +207,9 @@
   "devDependencies": {
     "@farmfe/core": "1.6.6",
     "@rsbuild/core": "1.2.4",
+    "@rsbuild/plugin-react": "1.1.0",
+    "@rsdoctor/rspack-plugin": "0.4.13",
+    "@rslib/core": "0.4.1",
     "@rspack/core": "1.2.2",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.1.0",
@@ -221,17 +225,13 @@
     "eslint-plugin-vitest": "0.5.4",
     "estree-walker": "3.0.3",
     "jsdom": "25.0.1",
-    "rolldown": "1.0.0-beta.3",
-    "rollup": "4.30.1",
-    "rollup-plugin-esbuild": "6.1.1",
-    "rollup-plugin-use-client": "1.4.0",
     "typescript": "5.6.3",
     "vitest": "2.1.8",
     "webpack": "5.97.1"
   },
   "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18",
+    "react": "^18 || ^19",
+    "react-dom": "^18 || ^19",
     "tailwindcss": "^3 || ^4"
   },
   "clean-package": {

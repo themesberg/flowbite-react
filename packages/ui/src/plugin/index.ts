@@ -14,12 +14,14 @@ export const unpluginFactory: UnpluginFactory<undefined> = () => ({
       await dev();
     },
   },
+  // TODO: verify
   rollup: {
     async buildStart() {
       await build();
       await dev();
     },
   },
+  // TODO: verify
   rolldown: {
     async buildStart() {
       await build();
@@ -59,7 +61,21 @@ export const unpluginFactory: UnpluginFactory<undefined> = () => ({
     });
   },
   esbuild: {
-    // see `packages/ui/src/plugin/esbuild.ts`
+    setup(pluginBuild) {
+      let registered = false;
+
+      pluginBuild.onStart(async () => {
+        if (!registered) {
+          registered = true;
+          await build();
+
+          // assume production build when `initialOptions.minify = true`
+          if (!pluginBuild.initialOptions.minify) {
+            dev();
+          }
+        }
+      });
+    },
   },
   farm: {
     buildStart: {
