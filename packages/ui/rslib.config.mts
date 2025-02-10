@@ -62,6 +62,7 @@ export default defineConfig({
     distPath: {
       root: outputDir,
     },
+    sourceMap: true,
   },
   plugins: [pluginReact(), generateMetadata(), generateDts()],
 });
