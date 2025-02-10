@@ -3,7 +3,7 @@ import type { Config } from "./utils";
 
 export const bundlerPluginName = "flowbiteReact";
 export const bundlerPluginPath = "flowbite-react/plugin";
-export const bundlerPluginInvoked = `${bundlerPluginName}()`;
+export const bundlerPluginInvocation = `${bundlerPluginName}()`;
 export const classListFile = "class-list.json";
 export const configFile = "config.json";
 export const gitIgnoreFile = ".gitignore";

@@ -262,3 +262,125 @@ export async function getTailwindPackageJsonVersion(): Promise<string | undefine
   const packageJson = await getPackageJson();
   return packageJson?.dependencies?.["tailwindcss"] || packageJson?.devDependencies?.["tailwindcss"];
 }
+
+export async function addPluginToConfig({
+  configKey,
+  configPath,
+  pluginImportPath,
+  pluginInvocation,
+  pluginName,
+}: {
+  configKey: string;
+  configPath: string;
+  pluginImportPath: string;
+  pluginInvocation: string;
+  pluginName: string;
+}) {
+  try {
+    const content = await fs.readFile(configPath, "utf-8");
+    const { isCJS, isESM } = getJsType(content);
+
+    if (!isCJS && !isESM) {
+      console.error("Unsupported module format. Only CJS and ESM are supported.");
+      return;
+    }
+
+    let updatedContent = content;
+
+    const withImport = addImport({
+      content,
+      importName: pluginName,
+      importPath: pluginImportPath,
+    });
+
+    if (withImport !== undefined) {
+      updatedContent = withImport;
+    }
+
+    // Update or create the config key
+    const configKeyMatch = updatedContent.match(new RegExp(`${configKey}:\\s*\\[([\\s\\S]*?)\\]`));
+
+    if (configKeyMatch) {
+      const configArray = configKeyMatch[1];
+
+      if (!configArray.includes(pluginName)) {
+        updatedContent = updatedContent.replace(
+          new RegExp(`${configKey}:\\s*\\[([\\s\\S]*?)\\]`),
+          `${configKey}: [${configArray.trim() ? `${configArray.trim().endsWith(",") ? configArray.trim() : configArray + ","} ` : ""}${pluginInvocation}]`,
+        );
+      }
+    } else {
+      const moduleExport = isCJS ? "module.exports = " : "export default ";
+      const configStart = updatedContent.indexOf(moduleExport) + moduleExport.length;
+      const configObject = updatedContent.indexOf("{", configStart);
+
+      updatedContent =
+        updatedContent.slice(0, configObject + 1) +
+        `\n  ${configKey}: [${pluginInvocation}],` +
+        updatedContent.slice(configObject + 1);
+    }
+
+    if (updatedContent !== content) {
+      console.log(`Updating ${configPath} with ${pluginName} plugin...`);
+      await fs.writeFile(configPath, updatedContent, "utf-8");
+    }
+  } catch (error) {
+    console.error(`Failed to setup ${pluginName} plugin:`, error);
+  }
+}
+
+export function addImport({
+  content,
+  importPath,
+  importName,
+}: {
+  content: string;
+  importPath: string;
+  importName: string;
+}) {
+  const { isCJS, isESM } = getJsType(content);
+
+  if (!isCJS && !isESM) {
+    return content;
+  }
+
+  let updatedContent = content;
+
+  // Check if the import/require statement is already present
+  if (content.includes(importPath)) {
+    return updatedContent;
+  }
+
+  // Determine the import statement based on the module type
+  const importStatement = isCJS
+    ? `const ${importName} = require("${importPath}");`
+    : `import ${importName} from "${importPath}";`;
+
+  // Find the last import statement in the content
+  const importRegex = isCJS
+    ? /const\s+\w+\s*=\s*require\(["'][^"']+["']\);/g
+    : /import\s+[\w{}, *]+\s+from\s+["'][^"']+["'];/g;
+
+  const lastImportMatch = [...content.matchAll(importRegex)].pop();
+
+  if (lastImportMatch) {
+    // Insert the new import statement after the last import
+    const lastImportIndex = lastImportMatch.index + lastImportMatch[0].length;
+    updatedContent =
+      content.slice(0, lastImportIndex) +
+      `\n${importStatement}` + // Add the new import after the last one
+      content.slice(lastImportIndex);
+  } else {
+    // If no imports are found, add the import statement at the top with two newlines after it
+    updatedContent = `${importStatement}\n\n${content}`;
+  }
+
+  return updatedContent;
+}
+
+export function getJsType(content: string) {
+  const isCJS = content.includes("module.exports");
+  const isESM = !!content.match(/export\s+default/);
+
+  return { isCJS, isESM };
+}
