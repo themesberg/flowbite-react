@@ -1,5 +1,5 @@
 const { withContentlayer } = require("next-contentlayer2");
-const { withFlobiteReact } = require("flowbite-react/plugin/nextjs");
+const withFlowbiteReact = require("flowbite-react/plugin/nextjs");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -142,4 +142,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withContentlayer(withFlobiteReact(nextConfig));
+module.exports = withContentlayer(withFlowbiteReact(nextConfig));

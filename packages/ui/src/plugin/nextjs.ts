@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 import type { Configuration } from "webpack";
 import unpluginWebpack from "./webpack";
 
-export function withFlobiteReact(nextConfig: NextConfig): NextConfig {
+export default function withFlowbiteReact(nextConfig: NextConfig): NextConfig {
   // TODO: detect if --turbopack is enabled
 
   return {

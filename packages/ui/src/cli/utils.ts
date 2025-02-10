@@ -384,3 +384,27 @@ export function getJsType(content: string) {
 
   return { isCJS, isESM };
 }
+
+export function wrapDefaultExport(content: string, withFunction: string) {
+  const { isCJS, isESM } = getJsType(content);
+
+  if (!isCJS && !isESM) {
+    return content;
+  }
+
+  let wrappedContent = content;
+
+  const esmExportRegex = /export\s+default\s+([\s\S]*?);/;
+  const cjsExportRegex = /module\.exports\s*=\s*([\s\S]*?);/;
+
+  const exportValue = content.match(isESM ? esmExportRegex : cjsExportRegex)?.[1];
+
+  if (isESM && esmExportRegex.test(content)) {
+    wrappedContent = content.replace(esmExportRegex, `export default ${withFunction}(${exportValue})`);
+  }
+  if (isCJS && cjsExportRegex.test(content)) {
+    wrappedContent = content.replace(cjsExportRegex, `module.exports = ${withFunction}(${exportValue})`);
+  }
+
+  return wrappedContent;
+}

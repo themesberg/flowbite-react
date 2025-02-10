@@ -36,6 +36,7 @@ import {
   getPackageJson,
   getTailwindPackageJsonVersion,
   packageManager,
+  wrapDefaultExport,
 } from "./utils";
 
 export async function main(argv: string[]) {
@@ -550,8 +551,7 @@ export async function setupPlugin() {
     setupPluginFarm(configPathMap.farm);
   }
   if (configPathMap.nextjs) {
-    // TODO: setup nextjs
-    console.log("Next.js config file found:", configPathMap.nextjs);
+    setupPluginNextjs(configPathMap.nextjs);
   }
   if (configPathMap.parcel) {
     // TODO: setup parcel
@@ -604,6 +604,43 @@ export async function setupPluginFarm(configPath: string) {
     pluginInvocation: bundlerPluginInvocation,
     pluginName: bundlerPluginName,
   });
+}
+
+export async function setupPluginNextjs(configPath: string) {
+  const pluginName = "withFlowbiteReact";
+
+  try {
+    const content = await fs.readFile(configPath, "utf-8");
+    const { isCJS, isESM } = getJsType(content);
+
+    if (!isCJS && !isESM) {
+      console.error("Unsupported module format. Only CJS and ESM are supported.");
+      return;
+    }
+
+    let updatedContent = content;
+
+    const withImport = addImport({
+      content,
+      importName: pluginName,
+      importPath: path.join(bundlerPluginPath, "nextjs"),
+    });
+
+    if (withImport !== undefined) {
+      updatedContent = withImport;
+    }
+
+    if (!content.includes(`${pluginName}(`)) {
+      updatedContent = wrapDefaultExport(updatedContent, pluginName);
+    }
+
+    if (updatedContent !== content) {
+      console.log(`Updating ${configPath} with ${pluginName} plugin...`);
+      await fs.writeFile(configPath, updatedContent, "utf-8");
+    }
+  } catch (error) {
+    console.error(`Failed to setup ${pluginName} plugin:`, error);
+  }
 }
 
 export async function setupPluginRolldown(configPath: string) {
