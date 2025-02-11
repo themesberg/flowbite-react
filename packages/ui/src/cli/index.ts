@@ -554,8 +554,7 @@ export async function setupPlugin() {
     setupPluginNextjs(configPathMap.nextjs);
   }
   if (configPathMap.parcel) {
-    // TODO: setup parcel
-    console.log("Parcel config file found:", configPathMap.parcel);
+    setupPluginParcel(configPathMap.parcel);
   }
   if (configPathMap.rolldown) {
     setupPluginRolldown(configPathMap.rolldown);
@@ -640,6 +639,24 @@ export async function setupPluginNextjs(configPath: string) {
     }
   } catch (error) {
     console.error(`Failed to setup ${pluginName} plugin:`, error);
+  }
+}
+
+export async function setupPluginParcel(configPath: string) {
+  try {
+    const content = await fs.readFile(configPath, "utf-8");
+    const parsedContent: { transformers?: string[] } = JSON.parse(content);
+    const pluginImportPath = path.join(bundlerPluginPath, "parcel");
+
+    if (!parsedContent.transformers?.includes(pluginImportPath)) {
+      parsedContent.transformers ||= [];
+      parsedContent.transformers.push(pluginImportPath);
+
+      console.log(`Updating ${configPath} with ${pluginImportPath} plugin...`);
+      await fs.writeFile(configPath, JSON.stringify(parsedContent, null, 2), "utf-8");
+    }
+  } catch (error) {
+    console.error(`Failed to setup ${bundlerPluginName} plugin:`, error);
   }
 }
 
