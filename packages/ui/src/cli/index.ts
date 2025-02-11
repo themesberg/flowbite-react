@@ -310,10 +310,10 @@ export async function setupTailwindV3() {
       if (pluginsMatch) {
         const pluginsArray = pluginsMatch[1];
 
-        if (!pluginsArray.includes("flowbite")) {
+        if (!pluginsArray.includes(tailwindPluginName)) {
           updatedContent = updatedContent.replace(
             /plugins:\s*\[([\s\S]*?)\]/,
-            `plugins: [${pluginsArray.trim() ? `${pluginsArray.trim().endsWith(",") ? pluginsArray.trim() : pluginsArray + ","} ` : ""}flowbite]`,
+            `plugins: [${pluginsArray.trim() ? `${pluginsArray.trim().endsWith(",") ? pluginsArray.trim() : pluginsArray + ","} ` : ""}${tailwindPluginName}]`,
           );
         }
       } else {
@@ -323,7 +323,7 @@ export async function setupTailwindV3() {
 
         updatedContent =
           updatedContent.slice(0, configObject + 1) +
-          `\n  plugins: [flowbite],` +
+          `\n  plugins: [${tailwindPluginName}],` +
           updatedContent.slice(configObject + 1);
       }
 
