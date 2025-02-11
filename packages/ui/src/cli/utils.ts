@@ -356,23 +356,22 @@ export function addImport({
     ? `const ${importName} = require("${importPath}");`
     : `import ${importName} from "${importPath}";`;
 
-  // Find the last import statement in the content
+  // Find all existing imports
   const importRegex = isCJS
-    ? /const\s+\w+\s*=\s*require\(["'][^"']+["']\);/g
-    : /import\s+[\w{}, *]+\s+from\s+["'][^"']+["'];/g;
+    ? /^(?:const|let|var)\s+\w+\s*=\s*require\(["'][^"']+["']\)\s*;?/gm
+    : /^import\s+(?:\w+\s*,?\s*)?(?:\{[^}]*\}\s*,?\s*)?\w*\s*from\s+["'][^"']+["']\s*;?/gm;
 
-  const lastImportMatch = [...content.matchAll(importRegex)].pop();
+  const matches = [...updatedContent.matchAll(importRegex)];
 
-  if (lastImportMatch) {
-    // Insert the new import statement after the last import
+  if (matches.length > 0) {
+    // Insert after the last import statement
+    const lastImportMatch = matches[matches.length - 1];
     const lastImportIndex = lastImportMatch.index + lastImportMatch[0].length;
     updatedContent =
-      content.slice(0, lastImportIndex) +
-      `\n${importStatement}` + // Add the new import after the last one
-      content.slice(lastImportIndex);
+      updatedContent.slice(0, lastImportIndex) + `\n${importStatement}` + updatedContent.slice(lastImportIndex);
   } else {
-    // If no imports are found, add the import statement at the top with two newlines after it
-    updatedContent = `${importStatement}\n\n${content}`;
+    // If no imports are found, add the import statement at the top with two newlines
+    updatedContent = `${importStatement}\n\n${updatedContent.trim()}`;
   }
 
   return updatedContent;
@@ -394,16 +393,21 @@ export function wrapDefaultExport(content: string, withFunction: string) {
 
   let wrappedContent = content;
 
-  const esmExportRegex = /export\s+default\s+([\s\S]*?);/;
-  const cjsExportRegex = /module\.exports\s*=\s*([\s\S]*?);/;
+  const esmExportRegex = /export\s+default\s+([\s\S]*?)(;?\s*)$/;
+  const cjsExportRegex = /module\.exports\s*=\s*([\s\S]*?)(;?\s*)$/;
+  const match = content.match(isESM ? esmExportRegex : cjsExportRegex);
 
-  const exportValue = content.match(isESM ? esmExportRegex : cjsExportRegex)?.[1];
-
-  if (isESM && esmExportRegex.test(content)) {
-    wrappedContent = content.replace(esmExportRegex, `export default ${withFunction}(${exportValue})`);
+  if (!match) {
+    return content;
   }
-  if (isCJS && cjsExportRegex.test(content)) {
-    wrappedContent = content.replace(cjsExportRegex, `module.exports = ${withFunction}(${exportValue})`);
+
+  const exportValue = match[1].trim();
+  const semicolon = match[2] || "";
+
+  if (isESM) {
+    wrappedContent = content.replace(esmExportRegex, `export default ${withFunction}(${exportValue})${semicolon}`);
+  } else if (isCJS) {
+    wrappedContent = content.replace(cjsExportRegex, `module.exports = ${withFunction}(${exportValue})${semicolon}`);
   }
 
   return wrappedContent;
