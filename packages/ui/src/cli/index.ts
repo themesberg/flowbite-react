@@ -645,12 +645,12 @@ export async function setupPluginNextjs(configPath: string) {
 export async function setupPluginParcel(configPath: string) {
   try {
     const content = await fs.readFile(configPath, "utf-8");
-    const parsedContent: { transformers?: string[] } = JSON.parse(content);
+    const parsedContent: { reporters?: string[] } = JSON.parse(content);
     const pluginImportPath = path.join(bundlerPluginPath, "parcel");
 
-    if (!parsedContent.transformers?.includes(pluginImportPath)) {
-      parsedContent.transformers ||= [];
-      parsedContent.transformers.push(pluginImportPath);
+    if (!parsedContent.reporters?.includes(pluginImportPath)) {
+      parsedContent.reporters ||= [];
+      parsedContent.reporters.push(pluginImportPath);
 
       console.log(`Updating ${configPath} with ${pluginImportPath} plugin...`);
       await fs.writeFile(configPath, JSON.stringify(parsedContent, null, 2), "utf-8");
