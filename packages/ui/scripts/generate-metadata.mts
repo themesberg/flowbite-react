@@ -4,6 +4,7 @@ import { walk, type Node } from "estree-walker";
 import prettier from "prettier";
 
 const outputDir = "src/metadata";
+const schemaFile = "schema.json";
 
 /**
  * Generates class list mappings for components and writes them to a file.
@@ -18,9 +19,12 @@ const outputDir = "src/metadata";
  *
  * The results are written to 'class-list.ts' in the output directory after being formatted with prettier.
  *
- * @returns {Promise<void>}
+ * @returns {Promise<{ classListMap: Record<string, string[]>; componentToClassListMap: Record<string, string>; }>}
  */
-async function generateClassList(): Promise<void> {
+async function generateClassList(): Promise<{
+  classListMap: Record<string, string[]>;
+  componentToClassListMap: Record<string, string>;
+}> {
   const classListMap: Record<string, string[]> = {};
   const themePaths = await Array.fromAsync(new Glob("src/components/**/theme.ts").scan());
   themePaths.sort();
@@ -61,6 +65,8 @@ async function generateClassList(): Promise<void> {
       },
     ),
   );
+
+  return { classListMap, componentToClassListMap };
 }
 
 /**
@@ -197,5 +203,42 @@ export async function extractDependencyList(content: string): Promise<string[]> 
   return [...componentImports].sort();
 }
 
-generateClassList();
-generateDependencyList();
+async function generateSchema(components: string[]): Promise<void> {
+  try {
+    const defaultSchema = {
+      $schema: "http://json-schema.org/draft-07/schema#",
+      type: "object",
+      properties: {
+        components: {
+          description: "Array of component names",
+          type: "array",
+          items: {
+            type: "string",
+            enum: ["*"],
+          },
+          uniqueItems: true,
+        },
+        prefix: {
+          description: "Prefix string for the components",
+          type: "string",
+        },
+      },
+      required: ["components", "prefix"],
+    };
+
+    defaultSchema.properties.components.items.enum.push(...components);
+
+    await Bun.write(
+      schemaFile,
+      await prettier.format(JSON.stringify(defaultSchema), {
+        parser: "json",
+      }),
+    );
+  } catch (error) {
+    console.error(`Failed updating ${schemaFile} file`, error);
+  }
+}
+
+const { componentToClassListMap } = await generateClassList();
+await generateDependencyList();
+await generateSchema(Object.keys(componentToClassListMap));
