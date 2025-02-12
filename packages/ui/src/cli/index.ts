@@ -3,6 +3,7 @@ import fs from "fs/promises";
 import path from "path";
 import chokidar from "chokidar";
 import isEqual from "fast-deep-equal";
+import { getTailwindVersion } from "../helpers/get-tailwind-version";
 import {
   automaticClassGenerationMessage,
   bundlerPluginInvocation,
@@ -34,7 +35,6 @@ import {
   getConfig,
   getJsType,
   getPackageJson,
-  getTailwindPackageJsonVersion,
   packageManager,
   wrapDefaultExport,
 } from "./utils";
@@ -151,7 +151,8 @@ export async function init() {
 }
 
 export async function ensureTailwind() {
-  const tailwindVersion = await getTailwindPackageJsonVersion();
+  const packageJson = await getPackageJson();
+  const tailwindVersion = packageJson?.dependencies?.["tailwindcss"] || packageJson?.devDependencies?.["tailwindcss"];
 
   if (!tailwindVersion) {
     console.error("Install Tailwind CSS first.\n\nSee: https://tailwindcss.com/docs/installation");
@@ -175,16 +176,16 @@ export async function installFlowbiteReact() {
 
 export async function setupTailwind() {
   try {
-    const tailwindVersion = (await getTailwindPackageJsonVersion()) || "";
-    const cleanVersion = tailwindVersion.replace(/[\^~]/g, "");
-    const majorVersion = parseInt(cleanVersion.split(".")[0]);
+    const version = getTailwindVersion();
 
-    if (majorVersion >= 4) {
+    if (version === 4) {
       await setupTailwindV4();
-    } else if (majorVersion >= 3) {
+    }
+    if (version === 3) {
       await setupTailwindV3();
-    } else {
-      throw new Error(`Unsupported Tailwind CSS version installed: ${tailwindVersion}`);
+    }
+    if (version !== 4 && version !== 3) {
+      console.warn(`Unsupported Tailwind CSS version installed: ${version}`);
     }
   } catch (error) {
     console.error("Failed to setup Tailwind:", error);

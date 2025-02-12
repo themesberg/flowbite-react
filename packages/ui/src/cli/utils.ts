@@ -258,11 +258,6 @@ export async function getConfig(): Promise<Config> {
   }
 }
 
-export async function getTailwindPackageJsonVersion(): Promise<string | undefined> {
-  const packageJson = await getPackageJson();
-  return packageJson?.dependencies?.["tailwindcss"] || packageJson?.devDependencies?.["tailwindcss"];
-}
-
 export async function addPluginToConfig({
   configKey,
   configPath,
