@@ -525,6 +525,7 @@ export async function setupPlugin() {
   const configFileMap = {
     astro: ["astro.config.cjs", "astro.config.mjs", "astro.config.ts", "astro.config.js"],
     farm: ["farm.config.cjs", "farm.config.js", "farm.config.mjs", "farm.config.ts"],
+    modernjs: ["modern.config.cjs", "modern.config.mjs", "modern.config.ts", "modern.config.js"],
     nextjs: ["next.config.cjs", "next.config.mjs", "next.config.ts", "next.config.js"],
     parcel: [".parcelrc"],
     rolldown: ["rolldown.config.cjs", "rolldown.config.mjs", "rolldown.config.ts", "rolldown.config.js"],
@@ -537,6 +538,7 @@ export async function setupPlugin() {
   const configPathMap: Record<keyof typeof configFileMap, string> = {
     astro: "",
     farm: "",
+    modernjs: "",
     nextjs: "",
     parcel: "",
     rolldown: "",
@@ -565,6 +567,9 @@ export async function setupPlugin() {
   }
   if (configPathMap.farm) {
     setupPluginFarm(configPathMap.farm);
+  }
+  if (configPathMap.modernjs) {
+    setupPluginModernjs(configPathMap.modernjs);
   }
   if (configPathMap.nextjs) {
     setupPluginNextjs(configPathMap.nextjs);
@@ -616,6 +621,16 @@ export async function setupPluginFarm(configPath: string) {
     configKey: "plugins",
     configPath,
     pluginImportPath: path.join(bundlerPluginPath, "farm"),
+    pluginInvocation: bundlerPluginInvocation,
+    pluginName: bundlerPluginName,
+  });
+}
+
+export async function setupPluginModernjs(configPath: string) {
+  addPluginToConfig({
+    configKey: "plugins",
+    configPath,
+    pluginImportPath: path.join(bundlerPluginPath, "modernjs"),
     pluginInvocation: bundlerPluginInvocation,
     pluginName: bundlerPluginName,
   });

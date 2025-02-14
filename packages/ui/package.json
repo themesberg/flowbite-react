@@ -208,6 +208,7 @@
   },
   "devDependencies": {
     "@farmfe/core": "1.6.6",
+    "@modern-js/app-tools": "2.64.2",
     "@parcel/plugin": "2.13.3",
     "@rsbuild/core": "1.2.4",
     "@rsbuild/plugin-react": "1.1.0",
