@@ -3,6 +3,8 @@ import fs from "fs/promises";
 import path from "path";
 import chokidar from "chokidar";
 import isEqual from "fast-deep-equal";
+import { resolveCommand } from "package-manager-detector/commands";
+import { detect } from "package-manager-detector/detect";
 import { getTailwindVersion } from "../helpers/get-tailwind-version";
 import {
   automaticClassGenerationMessage,
@@ -29,13 +31,13 @@ import {
   addImport,
   addPluginToConfig,
   buildClassList,
+  execCommand,
   extractComponentImports,
   findFiles,
   getClassList,
   getConfig,
   getJsType,
   getPackageJson,
-  packageManager,
   wrapDefaultExport,
 } from "./utils";
 
@@ -168,7 +170,18 @@ export async function installFlowbiteReact() {
       return;
     }
 
-    packageManager().install("flowbite-react");
+    const pm = await detect();
+
+    if (!pm) {
+      console.error("Could not detect package manager");
+      process.exit(1);
+    }
+
+    const packageName = "flowbite-react";
+    const { command = "", args } = resolveCommand(pm.agent, "add", [packageName]) ?? {};
+
+    console.log(`Installing ${packageName} using ${pm.name}...`);
+    execCommand(command, args);
   } catch (error) {
     console.error("Failed to install flowbite-react:", error);
   }

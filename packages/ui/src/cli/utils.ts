@@ -1,4 +1,4 @@
-import { execSync } from "child_process";
+import { spawn, type SpawnOptions } from "child_process";
 import fs from "fs/promises";
 import path from "path";
 import { applyPrefix } from "../helpers/apply-prefix";
@@ -93,41 +93,50 @@ export async function findFiles({
   return results;
 }
 
-export function packageManager() {
-  const pm = detectPackageManager();
-
-  function install(args: string) {
-    console.log(`Installing ${args} using ${pm}...`);
-    // TODO: refactor this
-    return execSync(`${pm} ${pm === "npm" ? "install" : "add"} ${args}`, { stdio: "inherit" });
-  }
-
-  return { name: pm, install };
-}
-
 /**
- * Detects the package manager being used in the current environment.
- * Checks both the user agent string and execution path to determine the package manager.
+ * Runs a shell command asynchronously and captures its output.
  *
- * @returns {'npm' | 'yarn' | 'pnpm' | 'bun'}
+ * @param {string} command - The command to execute (e.g., "npm").
+ * @param {string[]} [args=[]] - Arguments for the command (e.g., ["install", "package-name"]).
+ * @param {SpawnOptions} [options={}] - Optional spawn configuration options.
+ * @returns {Promise<{ stdout: string; stderr: string; exitCode: number }>} - Resolves with command output and exit code.
+ * @throws {Error} If the process exits with a non-zero code.
  */
-export function detectPackageManager(): "yarn" | "pnpm" | "bun" | "npm" {
-  const userAgent = process.env.npm_config_user_agent;
-  const execPath = process.env.npm_execpath;
+export function execCommand(
+  command: string,
+  args: string[] = [],
+  options: SpawnOptions = {},
+): Promise<{ stdout: string; stderr: string; exitCode: number }> {
+  return new Promise((resolve, reject) => {
+    const child = spawn(command, args, { ...options, shell: true });
 
-  if (userAgent) {
-    if (userAgent.includes("yarn")) return "yarn";
-    if (userAgent.includes("pnpm")) return "pnpm";
-    if (userAgent.includes("bun")) return "bun";
-  }
+    let stdout = "";
+    let stderr = "";
 
-  if (execPath) {
-    if (execPath.includes("yarn")) return "yarn";
-    if (execPath.includes("pnpm")) return "pnpm";
-    if (execPath.includes("bun")) return "bun";
-  }
+    if (child.stdout) {
+      child.stdout.on("data", (data) => {
+        stdout += data.toString();
+      });
+    }
 
-  return "npm";
+    if (child.stderr) {
+      child.stderr.on("data", (data) => {
+        stderr += data.toString();
+      });
+    }
+
+    child.on("close", (code) => {
+      if (code === 0) {
+        resolve({ stdout, stderr, exitCode: code || 0 });
+      } else {
+        reject(new Error(`Process exited with code ${code}: ${stderr}`));
+      }
+    });
+
+    child.on("error", (err) => {
+      reject(err);
+    });
+  });
 }
 
 export function buildClassList({ components, prefix }: { components: string[]; prefix: string }): string[] {
