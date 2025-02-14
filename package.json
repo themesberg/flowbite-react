@@ -43,7 +43,7 @@
     "prettier": "3.4.2",
     "prettier-plugin-packagejson": "2.5.8",
     "prettier-plugin-tailwindcss": "0.6.9",
-    "turbo": "2.4.0"
+    "turbo": "2.4.2"
   },
   "packageManager": "bun@1.2.2"
 }
