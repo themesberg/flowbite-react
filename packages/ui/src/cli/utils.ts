@@ -55,7 +55,7 @@ export async function findFiles({
   // Recursive search function
   async function search(directory: string): Promise<void> {
     // Skip excluded directories
-    if (excludeDirs.some((exclude) => directory.includes(exclude))) {
+    if (excludeDirs.some((dir) => directory.endsWith(dir))) {
       return;
     }
 
