@@ -214,7 +214,7 @@
     "@rsbuild/plugin-react": "1.1.0",
     "@rsdoctor/rspack-plugin": "0.4.13",
     "@rslib/core": "0.4.1",
-    "@rspack/core": "1.2.2",
+    "@rspack/core": "1.2.3",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.1.0",
     "@testing-library/user-event": "14.5.2",
