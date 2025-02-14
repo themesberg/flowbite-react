@@ -398,6 +398,7 @@ export async function setupVSCode() {
   await setupVSCodeExtensions();
 }
 
+// TODO: handle `jsonc`
 export async function setupVSCodeSettings() {
   try {
     let settings: {
@@ -473,6 +474,7 @@ export async function setupVSCodeSettings() {
   }
 }
 
+// TODO: handle `jsonc`
 export async function setupVSCodeExtensions() {
   try {
     let extensions: {
