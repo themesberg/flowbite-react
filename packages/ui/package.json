@@ -178,7 +178,7 @@
   "scripts": {
     "build": "bun --bun rslib build",
     "build:doctor": "RSDOCTOR=true bun run build",
-    "clean": "rimraf .turbo coverage dist node_modules src/metadata tsconfig.tsbuildinfo",
+    "clean": "git clean -xdf",
     "dev": "bun run build --watch",
     "format": "prettier . --write",
     "format:check": "prettier . --check",

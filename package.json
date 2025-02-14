@@ -13,7 +13,7 @@
     "build:ui": "turbo build --filter=flowbite-react",
     "build:web": "turbo build --filter=@/web",
     "check-updates": "npm-check-updates --deep -i",
-    "clean": "turbo clean && rimraf .turbo node_modules",
+    "clean": "git clean -xdf",
     "dev": "turbo dev",
     "dev:cli": "turbo dev --filter=create-flowbite-react",
     "dev:storybook": "turbo dev --filter=@/storybook",
@@ -43,7 +43,6 @@
     "prettier": "3.4.2",
     "prettier-plugin-packagejson": "2.5.8",
     "prettier-plugin-tailwindcss": "0.6.9",
-    "rimraf": "6.0.1",
     "turbo": "2.4.0"
   },
   "packageManager": "bun@1.2.2"

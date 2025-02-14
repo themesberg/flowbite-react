@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "clean": "rimraf .contentlayer .flowbite-react/class-list.json .flowbite-react/pid .next .turbo node_modules tsconfig.tsbuildinfo",
+    "clean": "git clean -xdf",
     "dev": "next dev",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
