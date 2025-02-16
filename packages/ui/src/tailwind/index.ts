@@ -3,7 +3,7 @@ import { config } from "./config";
 
 export default plugin(
   // plugin
-  () => () => {},
+  () => {},
   // config
   config,
 );
