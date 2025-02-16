@@ -40,7 +40,7 @@ async function generateClassList(): Promise<{
 
   const componentToClassListMap: Record<string, string> = {};
   let componentPaths = await Array.fromAsync(new Glob("src/components/**/*.tsx").scan());
-  componentPaths = componentPaths.filter((path) => ![".test."].some((item) => path.includes(item))).sort();
+  componentPaths = componentPaths.filter((path) => !path.includes(".test.")).sort();
 
   for (const path of componentPaths) {
     const parts = path.split("/");
