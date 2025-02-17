@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { extractClassList, extractDependencyList } from "./generate-metadata.mjs";
+import { extractClassList, extractDependencyList } from "./generate-metadata";
 
 describe("extractClassList", () => {
   it("should extract class names from createTheme function call", async () => {

@@ -20,7 +20,7 @@
   },
   "license": "MIT",
   "sideEffects": false,
-  "type": "commonjs",
+  "type": "module",
   "exports": {
     ".": {
       "import": {
@@ -32,16 +32,6 @@
         "default": "./dist/index.cjs"
       }
     },
-    "./cli/*": {
-      "import": {
-        "types": "./dist/cli/*.d.mts",
-        "default": "./dist/cli/*.mjs"
-      },
-      "require": {
-        "types": "./dist/cli/*.d.ts",
-        "default": "./dist/cli/*.cjs"
-      }
-    },
     "./cli": {
       "import": {
         "types": "./dist/cli/index.d.mts",
@@ -50,6 +40,16 @@
       "require": {
         "types": "./dist/cli/index.d.ts",
         "default": "./dist/cli/index.cjs"
+      }
+    },
+    "./cli/*": {
+      "import": {
+        "types": "./dist/cli/*.d.mts",
+        "default": "./dist/cli/*.mjs"
+      },
+      "require": {
+        "types": "./dist/cli/*.d.ts",
+        "default": "./dist/cli/*.cjs"
       }
     },
     "./components/*": {
@@ -82,16 +82,6 @@
         "default": "./dist/hooks/*.cjs"
       }
     },
-    "./icons/*": {
-      "import": {
-        "types": "./dist/icons/*.d.mts",
-        "default": "./dist/icons/*.mjs"
-      },
-      "require": {
-        "types": "./dist/icons/*.d.ts",
-        "default": "./dist/icons/*.cjs"
-      }
-    },
     "./icons": {
       "import": {
         "types": "./dist/icons/index.d.mts",
@@ -102,14 +92,14 @@
         "default": "./dist/icons/index.cjs"
       }
     },
-    "./plugin/*": {
+    "./icons/*": {
       "import": {
-        "types": "./dist/plugin/*.d.mts",
-        "default": "./dist/plugin/*.mjs"
+        "types": "./dist/icons/*.d.mts",
+        "default": "./dist/icons/*.mjs"
       },
       "require": {
-        "types": "./dist/plugin/*.d.ts",
-        "default": "./dist/plugin/*.cjs"
+        "types": "./dist/icons/*.d.ts",
+        "default": "./dist/icons/*.cjs"
       }
     },
     "./plugin": {
@@ -122,34 +112,14 @@
         "default": "./dist/plugin/index.cjs"
       }
     },
-    "./tailwind/*": {
+    "./plugin/*": {
       "import": {
-        "types": "./dist/tailwind/*.d.mts",
-        "default": "./dist/tailwind/*.mjs"
+        "types": "./dist/plugin/*.d.mts",
+        "default": "./dist/plugin/*.mjs"
       },
       "require": {
-        "types": "./dist/tailwind/*.d.ts",
-        "default": "./dist/tailwind/*.cjs"
-      }
-    },
-    "./tailwind": {
-      "import": {
-        "types": "./dist/tailwind/index.d.mts",
-        "default": "./dist/tailwind/index.mjs"
-      },
-      "require": {
-        "types": "./dist/tailwind/index.d.ts",
-        "default": "./dist/tailwind/index.cjs"
-      }
-    },
-    "./theme/*": {
-      "import": {
-        "types": "./dist/theme/*.d.mts",
-        "default": "./dist/theme/*.mjs"
-      },
-      "require": {
-        "types": "./dist/theme/*.d.ts",
-        "default": "./dist/theme/*.cjs"
+        "types": "./dist/plugin/*.d.ts",
+        "default": "./dist/plugin/*.cjs"
       }
     },
     "./theme": {
@@ -160,6 +130,16 @@
       "require": {
         "types": "./dist/theme/index.d.ts",
         "default": "./dist/theme/index.cjs"
+      }
+    },
+    "./theme/*": {
+      "import": {
+        "types": "./dist/theme/*.d.mts",
+        "default": "./dist/theme/*.mjs"
+      },
+      "require": {
+        "types": "./dist/theme/*.d.ts",
+        "default": "./dist/theme/*.cjs"
       }
     },
     "./package.json": "./package.json",
@@ -176,13 +156,12 @@
     "schema.json"
   ],
   "scripts": {
-    "build": "bun --bun rslib build",
-    "build:doctor": "RSDOCTOR=true bun run build",
+    "build": "bun --bun rollup -c",
     "clean": "git clean -xdf",
     "dev": "bun run build --watch",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "generate-metadata": "bun scripts/generate-metadata.mts",
+    "generate-metadata": "bun scripts/generate-metadata.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",
@@ -203,17 +182,13 @@
     "klona": "2.0.6",
     "package-manager-detector": "0.2.9",
     "tailwind-merge-v2": "npm:tailwind-merge@2.6.0",
-    "tailwind-merge-v3": "npm:tailwind-merge@3.0.1",
-    "unplugin": "2.1.2"
+    "tailwind-merge-v3": "npm:tailwind-merge@3.0.1"
   },
   "devDependencies": {
     "@farmfe/core": "1.6.6",
     "@modern-js/app-tools": "2.64.2",
     "@parcel/plugin": "2.13.3",
     "@rsbuild/core": "1.2.4",
-    "@rsbuild/plugin-react": "1.1.0",
-    "@rsdoctor/rspack-plugin": "0.4.13",
-    "@rslib/core": "0.4.1",
     "@rspack/core": "1.2.3",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.1.0",
@@ -229,6 +204,10 @@
     "eslint-plugin-vitest": "0.5.4",
     "estree-walker": "3.0.3",
     "jsdom": "25.0.1",
+    "rolldown": "1.0.0-beta.3",
+    "rollup": "4.34.8",
+    "rollup-plugin-esbuild": "6.2.0",
+    "rollup-plugin-use-client": "1.4.0",
     "typescript": "5.6.3",
     "vitest": "2.1.8",
     "webpack": "5.97.1"

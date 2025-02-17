@@ -1,4 +1,15 @@
-import { createFarmPlugin } from "unplugin";
-import { unpluginFactory } from "./index";
+import type { JsPlugin } from "@farmfe/core";
+import { build, dev } from "../cli";
+import { pluginName } from "./index";
 
-export default createFarmPlugin(unpluginFactory);
+export default (): JsPlugin => ({
+  name: pluginName,
+  buildStart: {
+    async executor() {
+      await build();
+    },
+  },
+  async configureDevServer() {
+    await dev();
+  },
+});

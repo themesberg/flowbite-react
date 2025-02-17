@@ -1,4 +1,11 @@
-import { createRollupPlugin } from "unplugin";
-import { unpluginFactory } from "./index";
+import type { Plugin } from "rollup";
+import { build, dev } from "../cli";
+import { pluginName } from "./index";
 
-export default createRollupPlugin(unpluginFactory);
+export default (): Plugin => ({
+  name: pluginName,
+  async buildStart() {
+    await build();
+    await dev();
+  },
+});

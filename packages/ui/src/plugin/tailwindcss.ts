@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 export const backgroundImage = {
   "arrow-down-icon":
@@ -163,3 +164,16 @@ export const theme: Config["theme"] = {
   boxShadow,
   colors,
 };
+
+export const config: Partial<Config> = {
+  theme: {
+    extend: theme,
+  },
+};
+
+export default plugin(
+  // plugin
+  () => {},
+  // config
+  config,
+);
