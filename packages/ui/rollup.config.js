@@ -33,7 +33,7 @@ export default {
     {
       format: "es",
       dir: outputDir,
-      entryFileNames: "[name].mjs",
+      entryFileNames: "[name].js",
       preserveModules: true,
       sourcemap: true,
     },
@@ -85,6 +85,7 @@ function generateMetadata() {
   };
 }
 
+// TODO: generate .d.ts (ESM) and .d.cts (CJS)
 function generateDts() {
   return {
     name: "generate-dts",
@@ -92,12 +93,12 @@ function generateDts() {
       // generate `.d.ts` files
       await $`tsc -p tsconfig.build.json --outDir ${outputDir}`;
 
-      // generate `.d.mts` files
+      // generate `.d.cts` files
       for await (const path of new Glob(`${outputDir}/**/*.d.ts`).scan()) {
         const file = Bun.file(path);
         const content = await file.text();
 
-        await Bun.write(path.replace(".d.ts", ".d.mts"), content);
+        await Bun.write(path.replace(".d.ts", ".d.cts"), content);
         // fix incorrect default export
         // https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseExportDefault.md
         await Bun.write(path, content.replace("export default _default", "export = _default"));

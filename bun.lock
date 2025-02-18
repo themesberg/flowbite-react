@@ -110,7 +110,7 @@
       "name": "flowbite-react",
       "version": "0.10.2",
       "bin": {
-        "flowbite-react": "./dist/cli/bin.mjs"
+        "flowbite-react": "./dist/cli/bin.js"
       },
       "dependencies": {
         "@floating-ui/core": "1.6.9",

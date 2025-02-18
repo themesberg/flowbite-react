@@ -24,121 +24,121 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       },
       "require": {
-        "types": "./dist/index.d.ts",
+        "types": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
       }
     },
     "./cli": {
       "import": {
-        "types": "./dist/cli/index.d.mts",
-        "default": "./dist/cli/index.mjs"
+        "types": "./dist/cli/index.d.ts",
+        "default": "./dist/cli/index.js"
       },
       "require": {
-        "types": "./dist/cli/index.d.ts",
+        "types": "./dist/cli/index.d.cts",
         "default": "./dist/cli/index.cjs"
       }
     },
     "./cli/*": {
       "import": {
-        "types": "./dist/cli/*.d.mts",
-        "default": "./dist/cli/*.mjs"
+        "types": "./dist/cli/*.d.ts",
+        "default": "./dist/cli/*.js"
       },
       "require": {
-        "types": "./dist/cli/*.d.ts",
+        "types": "./dist/cli/*.d.cts",
         "default": "./dist/cli/*.cjs"
       }
     },
     "./components/*": {
       "import": {
-        "types": "./dist/components/*/index.d.mts",
-        "default": "./dist/components/*/index.mjs"
+        "types": "./dist/components/*/index.d.ts",
+        "default": "./dist/components/*/index.js"
       },
       "require": {
-        "types": "./dist/components/*/index.d.ts",
+        "types": "./dist/components/*/index.d.cts",
         "default": "./dist/components/*/index.cjs"
       }
     },
     "./helpers/*": {
       "import": {
-        "types": "./dist/helpers/*.d.mts",
-        "default": "./dist/helpers/*.mjs"
+        "types": "./dist/helpers/*.d.ts",
+        "default": "./dist/helpers/*.js"
       },
       "require": {
-        "types": "./dist/helpers/*.d.ts",
+        "types": "./dist/helpers/*.d.cts",
         "default": "./dist/helpers/*.cjs"
       }
     },
     "./hooks/*": {
       "import": {
-        "types": "./dist/hooks/*.d.mts",
-        "default": "./dist/hooks/*.mjs"
+        "types": "./dist/hooks/*.d.ts",
+        "default": "./dist/hooks/*.js"
       },
       "require": {
-        "types": "./dist/hooks/*.d.ts",
+        "types": "./dist/hooks/*.d.cts",
         "default": "./dist/hooks/*.cjs"
       }
     },
     "./icons": {
       "import": {
-        "types": "./dist/icons/index.d.mts",
-        "default": "./dist/icons/index.mjs"
+        "types": "./dist/icons/index.d.ts",
+        "default": "./dist/icons/index.js"
       },
       "require": {
-        "types": "./dist/icons/index.d.ts",
+        "types": "./dist/icons/index.d.cts",
         "default": "./dist/icons/index.cjs"
       }
     },
     "./icons/*": {
       "import": {
-        "types": "./dist/icons/*.d.mts",
-        "default": "./dist/icons/*.mjs"
+        "types": "./dist/icons/*.d.ts",
+        "default": "./dist/icons/*.js"
       },
       "require": {
-        "types": "./dist/icons/*.d.ts",
+        "types": "./dist/icons/*.d.cts",
         "default": "./dist/icons/*.cjs"
       }
     },
     "./plugin": {
       "import": {
-        "types": "./dist/plugin/index.d.mts",
-        "default": "./dist/plugin/index.mjs"
+        "types": "./dist/plugin/index.d.ts",
+        "default": "./dist/plugin/index.js"
       },
       "require": {
-        "types": "./dist/plugin/index.d.ts",
+        "types": "./dist/plugin/index.d.cts",
         "default": "./dist/plugin/index.cjs"
       }
     },
     "./plugin/*": {
       "import": {
-        "types": "./dist/plugin/*.d.mts",
-        "default": "./dist/plugin/*.mjs"
+        "types": "./dist/plugin/*.d.ts",
+        "default": "./dist/plugin/*.js"
       },
       "require": {
-        "types": "./dist/plugin/*.d.ts",
+        "types": "./dist/plugin/*.d.cts",
         "default": "./dist/plugin/*.cjs"
       }
     },
     "./theme": {
       "import": {
-        "types": "./dist/theme/index.d.mts",
-        "default": "./dist/theme/index.mjs"
+        "types": "./dist/theme/index.d.ts",
+        "default": "./dist/theme/index.js"
       },
       "require": {
-        "types": "./dist/theme/index.d.ts",
+        "types": "./dist/theme/index.d.cts",
         "default": "./dist/theme/index.cjs"
       }
     },
     "./theme/*": {
       "import": {
-        "types": "./dist/theme/*.d.mts",
-        "default": "./dist/theme/*.mjs"
+        "types": "./dist/theme/*.d.ts",
+        "default": "./dist/theme/*.js"
       },
       "require": {
-        "types": "./dist/theme/*.d.ts",
+        "types": "./dist/theme/*.d.cts",
         "default": "./dist/theme/*.cjs"
       }
     },
@@ -146,10 +146,10 @@
     "./schema.json": "./schema.json"
   },
   "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "flowbite-react": "./dist/cli/bin.mjs"
+    "flowbite-react": "./dist/cli/bin.js"
   },
   "files": [
     "dist",
