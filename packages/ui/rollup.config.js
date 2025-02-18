@@ -85,7 +85,6 @@ function generateMetadata() {
   };
 }
 
-// TODO: generate .d.ts (ESM) and .d.cts (CJS)
 function generateDts() {
   return {
     name: "generate-dts",
@@ -98,10 +97,12 @@ function generateDts() {
         const file = Bun.file(path);
         const content = await file.text();
 
-        await Bun.write(path.replace(".d.ts", ".d.cts"), content);
         // fix incorrect default export
         // https://github.com/arethetypeswrong/arethetypeswrong.github.io/blob/main/docs/problems/FalseExportDefault.md
-        await Bun.write(path, content.replace("export default _default", "export = _default"));
+        await Bun.write(
+          path.replace(".d.ts", ".d.cts"),
+          content.replace("export default _default", "export = _default"),
+        );
       }
     },
   };
