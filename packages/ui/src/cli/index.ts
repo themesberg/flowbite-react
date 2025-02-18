@@ -282,18 +282,16 @@ export async function setupTailwindV3() {
         updatedContent = withImport;
       }
 
-      const relativePath = path.relative(path.dirname(configFile), outputDir).replace(/\\/g, "/");
-
       // Update or create `content`
       const contentMatch = updatedContent.match(/content:\s*\[([\s\S]*?)\]/);
 
       if (contentMatch) {
         const contentArray = contentMatch[1];
 
-        if (!contentArray.includes(relativePath)) {
+        if (!contentArray.includes(classListFilePath)) {
           updatedContent = updatedContent.replace(
             /content:\s*\[([\s\S]*?)\]/,
-            `content: [${contentArray.trim() ? `${contentArray.trim().endsWith(",") ? contentArray.trim() : contentArray + ","} ` : ""}"${path.join(relativePath, classListFile)}"]`,
+            `content: [${contentArray.trim() ? `${contentArray.trim().endsWith(",") ? contentArray.trim() : contentArray + ","} ` : ""}"${classListFilePath}"]`,
           );
         }
       } else {
@@ -303,7 +301,7 @@ export async function setupTailwindV3() {
 
         updatedContent =
           updatedContent.slice(0, configObject + 1) +
-          `\n  content: ["${path.join(relativePath, classListFile)}"],` +
+          `\n  content: ["${classListFilePath}"],` +
           updatedContent.slice(configObject + 1);
       }
 
