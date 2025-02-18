@@ -6,7 +6,6 @@ import cjson from "comment-json";
 import isEqual from "fast-deep-equal";
 import { resolveCommand } from "package-manager-detector/commands";
 import { detect } from "package-manager-detector/detect";
-import { getTailwindVersion } from "../helpers/get-tailwind-version";
 import {
   automaticClassGenerationMessage,
   bundlerPluginInvocation,
@@ -191,16 +190,10 @@ export async function installFlowbiteReact() {
 
 export async function setupTailwind() {
   try {
-    const version = getTailwindVersion();
+    const found = !!((await setupTailwindV4()) || (await setupTailwindV3()));
 
-    if (version === 4) {
-      await setupTailwindV4();
-    }
-    if (version === 3) {
-      await setupTailwindV3();
-    }
-    if (version !== 4 && version !== 3) {
-      console.warn(`Unsupported Tailwind CSS version installed: ${version}`);
+    if (!found) {
+      console.warn("Missing Tailwind CSS configuration file.");
     }
   } catch (error) {
     console.error("Failed to setup Tailwind:", error);
@@ -250,9 +243,7 @@ export async function setupTailwindV4() {
       }
     }
 
-    if (!found) {
-      console.warn("Missing Tailwind CSS configuration file.");
-    }
+    return found;
   } catch (error) {
     console.error("Failed to setup Tailwind CSS v4:", error);
   }
@@ -270,10 +261,6 @@ export async function setupTailwindV3() {
       ],
       excludeDirs,
     });
-
-    if (!configFiles.length) {
-      return console.warn("Missing Tailwind CSS configuration file.");
-    }
 
     for (const configFile of configFiles) {
       const content = await fs.readFile(configFile, "utf-8");
@@ -349,6 +336,8 @@ export async function setupTailwindV3() {
       }
       break;
     }
+
+    return !!configFiles.length;
   } catch (error) {
     console.error("Failed to setup Tailwind CSS v3:", error);
   }
