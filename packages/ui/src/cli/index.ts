@@ -42,7 +42,7 @@ import {
 } from "./utils";
 
 export async function main(argv: string[]) {
-  const command = argv[0]?.trim();
+  const [command, subCommand] = argv.map((arg) => arg.trim());
 
   if (command === "build") {
     await build();
@@ -52,6 +52,20 @@ export async function main(argv: string[]) {
   }
   if (command === "init") {
     await init();
+  }
+  if (command === "install") {
+    await installFlowbiteReact();
+  }
+  if (command === "setup") {
+    if (subCommand === "plugin") {
+      await setupPlugin();
+    }
+    if (subCommand === "tailwindcss") {
+      await setupTailwind();
+    }
+    if (subCommand === "vscode") {
+      await setupVSCode();
+    }
   }
   if (command === "register") {
     await register();
