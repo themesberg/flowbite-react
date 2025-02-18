@@ -171,12 +171,13 @@ export async function installFlowbiteReact() {
       return;
     }
 
-    const pm = await detect();
+    let pm = await detect();
 
     if (!pm) {
       console.error("Could not detect package manager");
-      process.exit(1);
     }
+
+    pm ??= { agent: "npm", name: "npm" };
 
     const packageName = "flowbite-react";
     const { command = "", args } = resolveCommand(pm.agent, "add", [packageName]) ?? {};
