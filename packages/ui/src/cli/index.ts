@@ -2,6 +2,7 @@ import { spawn } from "child_process";
 import fs from "fs/promises";
 import path from "path";
 import chokidar from "chokidar";
+import cjson from "comment-json";
 import isEqual from "fast-deep-equal";
 import { resolveCommand } from "package-manager-detector/commands";
 import { detect } from "package-manager-detector/detect";
@@ -398,7 +399,6 @@ export async function setupVSCode() {
   await setupVSCodeExtensions();
 }
 
-// TODO: handle `jsonc`
 export async function setupVSCodeSettings() {
   try {
     let settings: {
@@ -411,7 +411,7 @@ export async function setupVSCodeSettings() {
 
     try {
       const content = await fs.readFile(vscodeSettingsFilePath, "utf-8");
-      settings = JSON.parse(content);
+      settings = cjson.parse(content) as typeof settings;
     } catch {
       exists = false;
     }
@@ -468,13 +468,12 @@ export async function setupVSCodeSettings() {
     }
 
     console.log(`${exists ? "Updating" : "Creating"} ${vscodeSettingsFilePath} with flowbite-react configuration...`);
-    await fs.writeFile(vscodeSettingsFilePath, JSON.stringify(settings, null, 2), { flag: "w" });
+    await fs.writeFile(vscodeSettingsFilePath, cjson.stringify(settings, null, 2), { flag: "w" });
   } catch (error) {
     console.error("Failed to setup VSCode settings:", error);
   }
 }
 
-// TODO: handle `jsonc`
 export async function setupVSCodeExtensions() {
   try {
     let extensions: {
@@ -485,7 +484,7 @@ export async function setupVSCodeExtensions() {
 
     try {
       const content = await fs.readFile(vscodeExtensionsFilePath, "utf-8");
-      extensions = JSON.parse(content);
+      extensions = cjson.parse(content) as typeof extensions;
     } catch {
       exists = false;
     }
@@ -515,7 +514,7 @@ export async function setupVSCodeExtensions() {
     }
 
     console.log(`${exists ? "Updating" : "Creating"} ${vscodeExtensionsFilePath} with flowbite-react configuration...`);
-    await fs.writeFile(vscodeExtensionsFilePath, JSON.stringify(extensions, null, 2), { flag: "w" });
+    await fs.writeFile(vscodeExtensionsFilePath, cjson.stringify(extensions, null, 2), { flag: "w" });
   } catch (error) {
     console.error("Failed to setup VSCode extensions:", error);
   }
@@ -641,7 +640,7 @@ export async function setupPluginModernjs(configPath: string) {
 
   try {
     const content = await fs.readFile(tsConfigFile, "utf-8");
-    const parsedContent: { compilerOptions?: Record<string, unknown> } = JSON.parse(content);
+    const parsedContent: { compilerOptions?: Record<string, unknown> } = cjson.parse(content) as typeof parsedContent;
 
     const defaultTsConfig = {
       module: "ESNext",
@@ -657,7 +656,7 @@ export async function setupPluginModernjs(configPath: string) {
       parsedContent.compilerOptions.moduleResolution = "bundler";
 
       console.log(`Updating ${tsConfigFile} file with flowbite-react configuration...`);
-      await fs.writeFile(tsConfigFile, JSON.stringify(parsedContent, null, 2), "utf-8");
+      await fs.writeFile(tsConfigFile, cjson.stringify(parsedContent, null, 2), "utf-8");
     }
   } catch (error) {
     console.error(`Failed to update ${tsConfigFile} file...`, error);
@@ -842,7 +841,7 @@ export async function setupPackageJson() {
       } else {
         packageJson.scripts.postinstall = registerCommand;
       }
-      await fs.writeFile(packageJsonFile, JSON.stringify(packageJson, null, 2), { flag: "w" });
+      await fs.writeFile(packageJsonFile, cjson.stringify(packageJson, null, 2), { flag: "w" });
     }
   } catch (error) {
     console.error(`Failed to setup ${packageJsonFile}:`, error);

@@ -1,6 +1,7 @@
 import { spawn, type SpawnOptions } from "child_process";
 import fs from "fs/promises";
 import path from "path";
+import cjson from "comment-json";
 import { applyPrefix } from "../helpers/apply-prefix";
 import { applyPrefixV3 } from "../helpers/apply-prefix-v3";
 import { convertUtilitiesToV4 } from "../helpers/convert-utilities-to-v4";
@@ -225,7 +226,7 @@ export function extractComponentImports(content: string): string[] {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function getPackageJson(): Promise<any> {
   try {
-    return JSON.parse(await fs.readFile(packageJsonFile, "utf-8"));
+    return cjson.parse(await fs.readFile(packageJsonFile, "utf-8"));
   } catch {
     console.error(`Unable to find ${packageJsonFile}.`);
     process.exit(1);
