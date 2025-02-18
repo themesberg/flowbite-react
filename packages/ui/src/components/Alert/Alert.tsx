@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { XIcon } from "../../icons";
+import { XIcon } from "../../icons/x-icon";
 import { useThemeProvider } from "../../theme/provider";
 import type { DynamicStringEnumKeysOf, FlowbiteColors, ThemingProps } from "../../types";
 import { alertTheme } from "./theme";

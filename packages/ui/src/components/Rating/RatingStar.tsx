@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { StarIcon } from "../../icons";
+import { StarIcon } from "../../icons/star-icon";
 import { useThemeProvider } from "../../theme/provider";
 import type { FlowbiteSizes, ThemingProps } from "../../types";
 import { useRatingContext } from "./RatingContext";

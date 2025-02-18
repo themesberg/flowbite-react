@@ -6,7 +6,7 @@ import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { ChevronRightIcon } from "../../icons";
+import { ChevronRightIcon } from "../../icons/chevron-right-icon";
 import { useThemeProvider } from "../../theme/provider";
 import type { FlowbiteBoolean, ThemingProps } from "../../types";
 import { breadcrumbTheme } from "./theme";

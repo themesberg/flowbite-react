@@ -5,7 +5,7 @@ import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { XIcon as DefaultXIcon } from "../../icons";
+import { XIcon as DefaultXIcon } from "../../icons/x-icon";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { toastTheme } from "./theme";
