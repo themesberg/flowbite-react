@@ -1,21 +1,13 @@
 import type { NextConfig } from "next";
-import type { Configuration } from "webpack";
-import webpackPlugin from "./webpack";
+import { build, dev } from "../cli";
 
 export default function withFlowbiteReact(nextConfig: NextConfig): NextConfig {
-  // TODO: detect if --turbopack is enabled
+  if (process.env.NODE_ENV === "development") {
+    return dev().finally(() => nextConfig);
+  }
+  if (process.env.NODE_ENV === "production") {
+    return build().finally(() => nextConfig);
+  }
 
-  return {
-    ...nextConfig,
-    webpack(config: Configuration, context) {
-      config.plugins ||= [];
-      config.plugins.push(webpackPlugin());
-
-      if (typeof nextConfig.webpack === "function") {
-        return nextConfig.webpack(config, context);
-      }
-
-      return config;
-    },
-  };
+  return nextConfig;
 }
