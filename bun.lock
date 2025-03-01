@@ -92,7 +92,7 @@
       "name": "create-flowbite-react",
       "version": "1.0.8",
       "bin": {
-        "create-flowbite-react": "./dist/index.js"
+        "create-flowbite-react": "./dist/index.js",
       },
       "dependencies": {
         "@clack/prompts": "0.8.2",
@@ -110,7 +110,7 @@
       "name": "flowbite-react",
       "version": "0.10.2",
       "bin": {
-        "flowbite-react": "./dist/cli/bin.js"
+        "flowbite-react": "./dist/cli/bin.js",
       },
       "dependencies": {
         "@floating-ui/core": "1.6.9",

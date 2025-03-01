@@ -35,7 +35,6 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: "Laravel", href: "/docs/guides/laravel" },
       { title: "Vite", href: "/docs/guides/vite" },
       { title: "Parcel", href: "/docs/guides/parcel" },
-      { title: "Create React App", href: "/docs/guides/create-react-app" },
     ],
   },
   {
