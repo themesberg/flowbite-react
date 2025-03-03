@@ -118,4 +118,24 @@ describe("addToConfig", () => {
     expect(result).toContain('"test-value"');
     expect(result).toMatch(/content:\s*\[\s*"\.\/existing-value",\s*"test-value"\s*\]/);
   });
+
+  it("should not add duplicate string values to the array", () => {
+    const input = `
+      export default {
+        content: ["test-value"],
+        theme: {}
+      };
+    `;
+
+    const result = addToConfig({
+      content: input,
+      targetPath: "content",
+      valueGenerator: mockValueGenerator,
+    });
+
+    // Normalize whitespace for comparison
+    const normalizedInput = input.replace(/\s+/g, " ").trim();
+    const normalizedResult = result.replace(/\s+/g, " ").trim();
+    expect(normalizedResult).toBe(normalizedInput);
+  });
 });

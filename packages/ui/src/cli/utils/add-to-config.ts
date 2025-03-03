@@ -151,12 +151,33 @@ function ensureArrayProperty(
 
     // Check if the value already exists
     const exists = current.elements.some((el) => {
-      if (value.type === "CallExpression" && el.type === "CallExpression") {
-        return el.callee.type === "Identifier" && el.callee.name === value.callee.name;
+      if (!el) return false;
+
+      // Both Literal and StringLiteral types have a 'value' property for string values
+      if (
+        (el.type === "StringLiteral" || el.type === "Literal") &&
+        (value.type === "StringLiteral" || value.type === "Literal") &&
+        typeof el.value === "string" &&
+        typeof value.value === "string"
+      ) {
+        return el.value === value.value;
       }
-      if (value.type === "Identifier" && el.type === "Identifier") {
+
+      // For function calls, compare the function names
+      if (
+        el.type === "CallExpression" &&
+        value.type === "CallExpression" &&
+        el.callee?.type === "Identifier" &&
+        value.callee?.type === "Identifier"
+      ) {
+        return el.callee.name === value.callee.name;
+      }
+
+      // For identifiers, compare their names
+      if (el.type === "Identifier" && value.type === "Identifier") {
         return el.name === value.name;
       }
+
       return false;
     });
 
