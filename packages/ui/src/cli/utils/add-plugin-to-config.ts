@@ -34,8 +34,8 @@ export async function addPluginToConfig({
     // Add the plugin to the configuration
     const finalUpdatedContent = addPlugin({
       content: updatedContentWithImport,
-      pluginName: `${pluginName}()`,
-      configPath: configKey,
+      targetPath: configKey,
+      pluginName,
     });
 
     if (finalUpdatedContent !== content) {

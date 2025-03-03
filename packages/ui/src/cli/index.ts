@@ -8,33 +8,26 @@ import { resolveCommand } from "package-manager-detector/commands";
 import { detect } from "package-manager-detector/detect";
 import {
   automaticClassGenerationMessage,
-  bundlerPluginName,
-  bundlerPluginPath,
   classListFile,
   classListFilePath,
   configFilePath,
-  defaultConfig,
   excludeDirs,
-  gitIgnoreFilePath,
   outputDir,
   packageJsonFile,
+  pluginName,
+  pluginPath,
   processIdFile,
-  processIdFilePath,
-  tailwindPlugin,
-  tailwindPluginName,
   vscodeDir,
-  vscodeExtensionsFilePath,
-  vscodeSettingsFilePath,
 } from "./consts";
 import { addImport } from "./utils/add-import";
 import { addPluginToConfig } from "./utils/add-plugin-to-config";
+import { addToConfig } from "./utils/add-to-config";
 import { buildClassList } from "./utils/build-class-list";
 import { execCommand } from "./utils/exec-command";
 import { extractComponentImports } from "./utils/extract-component-imports";
 import { findFiles } from "./utils/find-files";
 import { getClassList } from "./utils/get-class-list";
-import { getConfig } from "./utils/get-config";
-import { getJsType } from "./utils/get-js-type";
+import { getConfig, type Config } from "./utils/get-config";
 import { getPackageJson } from "./utils/get-package-json";
 import { wrapDefaultExport } from "./utils/wrap-default-export";
 
@@ -226,9 +219,11 @@ export async function setupTailwindV4() {
       if (content.includes(`@import 'tailwindcss'`) || content.includes(`@import "tailwindcss"`)) {
         found = true;
 
+        const tailwindPluginPath = path.join(pluginPath, "tailwindcss");
+
         if (
-          content.includes(`@plugin '${tailwindPlugin}'`) ||
-          content.includes(`@plugin "${tailwindPlugin}"`) ||
+          content.includes(`@plugin '${tailwindPluginPath}'`) ||
+          content.includes(`@plugin "${tailwindPluginPath}"`) ||
           content.includes(outputDir)
         ) {
           continue;
@@ -243,7 +238,7 @@ export async function setupTailwindV4() {
         const updatedContent =
           content.slice(0, insertPosition) +
           "\n" +
-          `@plugin "${tailwindPlugin}";` +
+          `@plugin "${tailwindPluginPath}";` +
           "\n" +
           `@source "${sourceImportPath}";` +
           "\n" +
@@ -275,63 +270,24 @@ export async function setupTailwindV3() {
 
     for (const configFile of configFiles) {
       const content = await fs.readFile(configFile, "utf-8");
-      const { isCJS, isESM } = getJsType(content);
-
-      if (!isCJS && !isESM) {
-        continue;
-      }
 
       let updatedContent = addImport({
         content,
-        importName: tailwindPluginName,
-        importPath: tailwindPlugin,
+        importName: pluginName,
+        importPath: path.join(pluginPath, "tailwindcss"),
       });
 
-      // Update or create `content`
-      const contentMatch = updatedContent.match(/content:\s*\[([\s\S]*?)\]/);
+      updatedContent = addToConfig({
+        content: updatedContent,
+        targetPath: "content",
+        valueGenerator: (b) => b.stringLiteral(classListFilePath),
+      });
 
-      if (contentMatch) {
-        const contentArray = contentMatch[1];
-
-        if (!contentArray.includes(classListFilePath)) {
-          updatedContent = updatedContent.replace(
-            /content:\s*\[([\s\S]*?)\]/,
-            `content: [${contentArray.trim() ? `${contentArray.trim().endsWith(",") ? contentArray.trim() : contentArray + ","} ` : ""}"${classListFilePath}"]`,
-          );
-        }
-      } else {
-        const moduleExport = isCJS ? "module.exports = " : "export default ";
-        const configStart = updatedContent.indexOf(moduleExport) + moduleExport.length;
-        const configObject = updatedContent.indexOf("{", configStart);
-
-        updatedContent =
-          updatedContent.slice(0, configObject + 1) +
-          `\n  content: ["${classListFilePath}"],` +
-          updatedContent.slice(configObject + 1);
-      }
-
-      // Update or create `plugins`
-      const pluginsMatch = updatedContent.match(/plugins:\s*\[([\s\S]*?)\]/);
-
-      if (pluginsMatch) {
-        const pluginsArray = pluginsMatch[1];
-
-        if (!pluginsArray.includes(tailwindPluginName)) {
-          updatedContent = updatedContent.replace(
-            /plugins:\s*\[([\s\S]*?)\]/,
-            `plugins: [${pluginsArray.trim() ? `${pluginsArray.trim().endsWith(",") ? pluginsArray.trim() : pluginsArray + ","} ` : ""}${tailwindPluginName}]`,
-          );
-        }
-      } else {
-        const moduleExport = isCJS ? "module.exports = " : "export default ";
-        const configStart = updatedContent.indexOf(moduleExport) + moduleExport.length;
-        const configObject = updatedContent.indexOf("{", configStart);
-
-        updatedContent =
-          updatedContent.slice(0, configObject + 1) +
-          `\n  plugins: [${tailwindPluginName}],` +
-          updatedContent.slice(configObject + 1);
-      }
+      updatedContent = addToConfig({
+        content: updatedContent,
+        targetPath: "plugins",
+        valueGenerator: (b) => b.identifier(pluginName),
+      });
 
       if (updatedContent !== content) {
         console.log(`Updating ${configFile} with flowbite-react configuration...`);
@@ -359,12 +315,19 @@ export async function setupConfig() {
   try {
     await fs.access(configFilePath);
   } catch {
+    const defaultConfig: Config = {
+      $schema: "https://unpkg.com/flowbite-react/schema.json",
+      components: [],
+      prefix: "",
+    };
     console.log(`Creating ${configFilePath} file...`);
     await fs.writeFile(configFilePath, JSON.stringify(defaultConfig, null, 2), { flag: "w" });
   }
 }
 
 export async function setupGitIgnore() {
+  const gitIgnoreFilePath = path.join(outputDir, ".gitignore");
+
   try {
     const gitignore = await fs.readFile(gitIgnoreFilePath, "utf-8").catch(() => {
       console.log(`Creating ${gitIgnoreFilePath} file...`);
@@ -394,6 +357,8 @@ export async function setupVSCode() {
 
 export async function setupVSCodeSettings() {
   try {
+    const vscodeSettingsFilePath = path.join(vscodeDir, "settings.json");
+
     let settings: {
       "files.associations"?: Record<string, string>;
       "tailwindCSS.classAttributes"?: string[];
@@ -469,6 +434,8 @@ export async function setupVSCodeSettings() {
 
 export async function setupVSCodeExtensions() {
   try {
+    const vscodeExtensionsFilePath = path.join(vscodeDir, "extensions.json");
+
     let extensions: {
       recommendations?: string[];
     } = {};
@@ -557,40 +524,40 @@ export async function setupPlugin() {
   }
 
   if (configPathMap.astro) {
-    setupPluginAstro(configPathMap.astro);
+    await setupPluginAstro(configPathMap.astro);
   }
   if (configPathMap.farm) {
-    setupPluginFarm(configPathMap.farm);
+    await setupPluginFarm(configPathMap.farm);
   }
   if (configPathMap.modernjs) {
-    setupPluginModernjs(configPathMap.modernjs);
+    await setupPluginModernjs(configPathMap.modernjs);
   }
   if (configPathMap.nextjs) {
-    setupPluginNextjs(configPathMap.nextjs);
+    await setupPluginNextjs(configPathMap.nextjs);
   }
   if (configPathMap.parcel) {
-    setupPluginParcel(configPathMap.parcel);
+    await setupPluginParcel(configPathMap.parcel);
   }
   if (configPathMap.rolldown) {
-    setupPluginRolldown(configPathMap.rolldown);
+    await setupPluginRolldown(configPathMap.rolldown);
   }
   if (configPathMap.rollup) {
-    setupPluginRollup(configPathMap.rollup);
+    await setupPluginRollup(configPathMap.rollup);
   }
   if (configPathMap.rsbuild) {
-    setupPluginRsbuild(configPathMap.rsbuild);
+    await setupPluginRsbuild(configPathMap.rsbuild);
   }
   if (configPathMap.rspack) {
-    setupPluginRspack(configPathMap.rspack);
+    await setupPluginRspack(configPathMap.rspack);
   }
   if (configPathMap.tanstack_start) {
-    setupPluginTanStackStart(configPathMap.tanstack_start);
+    await setupPluginTanStackStart(configPathMap.tanstack_start);
   }
   if (configPathMap.vite) {
-    setupPluginVite(configPathMap.vite);
+    await setupPluginVite(configPathMap.vite);
   }
   if (configPathMap.webpack) {
-    setupPluginWebpack(configPathMap.webpack);
+    await setupPluginWebpack(configPathMap.webpack);
   }
 
   if (!Object.values(configPathMap).filter(Boolean).length) {
@@ -607,8 +574,8 @@ export async function setupPluginAstro(configPath: string) {
   addPluginToConfig({
     configKey: "integrations",
     configPath,
-    pluginImportPath: path.join(bundlerPluginPath, "astro"),
-    pluginName: bundlerPluginName,
+    pluginImportPath: path.join(pluginPath, "astro"),
+    pluginName,
   });
 }
 
@@ -616,8 +583,8 @@ export async function setupPluginFarm(configPath: string) {
   addPluginToConfig({
     configKey: "plugins",
     configPath,
-    pluginImportPath: path.join(bundlerPluginPath, "farm"),
-    pluginName: bundlerPluginName,
+    pluginImportPath: path.join(pluginPath, "farm"),
+    pluginName,
   });
 }
 
@@ -625,8 +592,8 @@ export async function setupPluginModernjs(configPath: string) {
   addPluginToConfig({
     configKey: "plugins",
     configPath,
-    pluginImportPath: path.join(bundlerPluginPath, "modernjs"),
-    pluginName: bundlerPluginName,
+    pluginImportPath: path.join(pluginPath, "modernjs"),
+    pluginName,
   });
 
   // TODO: remove when `node/node10` moduleResolution is fixed in the build process
@@ -667,7 +634,7 @@ export async function setupPluginNextjs(configPath: string) {
     let updatedContent = addImport({
       content,
       importName: pluginName,
-      importPath: path.join(bundlerPluginPath, "nextjs"),
+      importPath: path.join(pluginPath, "nextjs"),
     });
 
     if (!content.includes(`${pluginName}(`)) {
@@ -719,7 +686,7 @@ export async function setupPluginParcel(configPath: string) {
     }
 
     // setup `.flowbite-react/parcel-config/parcel-reporter.cjs` file
-    const pluginImportPath = path.join(bundlerPluginPath, "parcel");
+    const pluginImportPath = path.join(pluginPath, "parcel");
     const parcelReporterFileContent = `module.exports = require("${pluginImportPath}");`;
     const parcelReporterFilePath = path.join(parcelConfigDir, parcelReporterFile);
 
@@ -744,7 +711,7 @@ export async function setupPluginParcel(configPath: string) {
       await fs.writeFile(configPath, JSON.stringify(parsedContent, null, 2), "utf-8");
     }
   } catch (error) {
-    console.error(`Failed to setup ${bundlerPluginName} plugin:`, error);
+    console.error(`Failed to setup ${pluginName} plugin:`, error);
   }
 }
 
@@ -752,8 +719,8 @@ export async function setupPluginRolldown(configPath: string) {
   addPluginToConfig({
     configKey: "plugins",
     configPath,
-    pluginImportPath: path.join(bundlerPluginPath, "rolldown"),
-    pluginName: bundlerPluginName,
+    pluginImportPath: path.join(pluginPath, "rolldown"),
+    pluginName,
   });
 }
 
@@ -761,8 +728,8 @@ export async function setupPluginRollup(configPath: string) {
   addPluginToConfig({
     configKey: "plugins",
     configPath,
-    pluginImportPath: path.join(bundlerPluginPath, "rollup"),
-    pluginName: bundlerPluginName,
+    pluginImportPath: path.join(pluginPath, "rollup"),
+    pluginName,
   });
 }
 
@@ -770,8 +737,8 @@ export async function setupPluginRsbuild(configPath: string) {
   addPluginToConfig({
     configKey: "plugins",
     configPath,
-    pluginImportPath: path.join(bundlerPluginPath, "rsbuild"),
-    pluginName: bundlerPluginName,
+    pluginImportPath: path.join(pluginPath, "rsbuild"),
+    pluginName,
   });
 }
 
@@ -779,8 +746,8 @@ export async function setupPluginRspack(configPath: string) {
   addPluginToConfig({
     configKey: "plugins",
     configPath,
-    pluginImportPath: path.join(bundlerPluginPath, "rspack"),
-    pluginName: bundlerPluginName,
+    pluginImportPath: path.join(pluginPath, "rspack"),
+    pluginName,
   });
 }
 
@@ -788,8 +755,8 @@ export async function setupPluginTanStackStart(configPath: string) {
   addPluginToConfig({
     configKey: "vite.plugins",
     configPath,
-    pluginImportPath: path.join(bundlerPluginPath, "vite"),
-    pluginName: bundlerPluginName,
+    pluginImportPath: path.join(pluginPath, "vite"),
+    pluginName,
   });
 }
 
@@ -797,8 +764,8 @@ export async function setupPluginVite(configPath: string) {
   addPluginToConfig({
     configKey: "plugins",
     configPath,
-    pluginImportPath: path.join(bundlerPluginPath, "vite"),
-    pluginName: bundlerPluginName,
+    pluginImportPath: path.join(pluginPath, "vite"),
+    pluginName,
   });
 }
 
@@ -806,8 +773,8 @@ export async function setupPluginWebpack(configPath: string) {
   addPluginToConfig({
     configKey: "plugins",
     configPath,
-    pluginImportPath: path.join(bundlerPluginPath, "webpack"),
-    pluginName: bundlerPluginName,
+    pluginImportPath: path.join(pluginPath, "webpack"),
+    pluginName,
   });
 }
 
@@ -873,6 +840,8 @@ export async function register() {
   if (config.components.length) {
     console.warn(automaticClassGenerationMessage);
   }
+
+  const processIdFilePath = path.join(outputDir, processIdFile);
 
   try {
     // clean up old process

@@ -16,19 +16,16 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "vite.plugins",
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
 export default defineConfig({
   vite: {
-    plugins: [
-      tsConfigPaths({
-        projects: ['./tsconfig.json'],
-      }),
-      flowbiteReact()
-    ],
+    plugins: [tsConfigPaths({
+      projects: ['./tsconfig.json'],
+    }), flowbiteReact()],
   },
 })
 `;
@@ -44,8 +41,8 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "vite.plugins",
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
@@ -71,8 +68,8 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "build.options.tools.plugins",
+      targetPath: "build.options.tools.plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
@@ -102,8 +99,8 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "vite.plugins",
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
     });
 
     expect(result.trim()).toBe(content.trim());
@@ -121,17 +118,14 @@ module.exports = {
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "vite.plugins",
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
 module.exports = {
   vite: {
-    plugins: [
-      tsConfigPaths(),
-      flowbiteReact()
-    ],
+    plugins: [tsConfigPaths(), flowbiteReact()],
   },
 }
 `;
@@ -148,16 +142,13 @@ module.exports = {
 `;
     const result = addPlugin({
       content,
+      targetPath: "plugins",
       pluginName: "flowbiteReact",
-      configPath: "plugins",
     });
 
     const expected = `
 module.exports = {
-  plugins: [
-    require('tailwindcss'),
-    flowbiteReact
-  ],
+  plugins: [require('tailwindcss'), flowbiteReact()],
 }
 `;
     expect(result.trim()).toBe(expected.trim());
@@ -173,16 +164,13 @@ export default {
 `;
     const result = addPlugin({
       content,
+      targetPath: "plugins",
       pluginName: "flowbiteReact",
-      configPath: "plugins",
     });
 
     const expected = `
 export default {
-  plugins: [
-    require('tailwindcss'),
-    flowbiteReact
-  ],
+  plugins: [require('tailwindcss'), flowbiteReact()],
 }
 `;
     expect(result.trim()).toBe(expected.trim());
@@ -201,8 +189,8 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "plugins",
+      targetPath: "plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
@@ -210,10 +198,7 @@ import { defineConfig } from 'astro';
 import tailwindcss from 'tailwindcss';
 
 export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    flowbiteReact()
-  ],
+  plugins: [tailwindcss(), flowbiteReact()],
 });
 `;
     expect(result.trim()).toBe(expected.trim());
@@ -229,16 +214,14 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "vite.plugins",
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
 export default defineConfig({
   vite: {
-    plugins: [
-      flowbiteReact()
-    ],
+    plugins: [flowbiteReact()],
   },
 })
 `;
@@ -265,25 +248,20 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "vite.plugins",
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
 export default defineConfig({
   vite: {
-    plugins: [
-      tsConfigPaths(),
-      vitePluginRequire(),
-      vuePlugin({
-        template: {
-          compilerOptions: {
-            isCustomElement: (tag) => tag.includes("-"),
-          },
+    plugins: [tsConfigPaths(), vitePluginRequire(), vuePlugin({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.includes("-"),
         },
-      }),
-      flowbiteReact()
-    ],
+      },
+    }), flowbiteReact()],
   },
 })
 `;
@@ -299,8 +277,8 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "vite.plugins",
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
@@ -325,8 +303,8 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "vite.plugins",
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
@@ -349,8 +327,8 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "build.tools.plugins",
+      targetPath: "build.tools.plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
@@ -375,8 +353,8 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "build.tools.config.advanced.plugins",
+      targetPath: "build.tools.config.advanced.plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
@@ -384,6 +362,7 @@ export default defineConfig({
   other: {
     settings: true
   },
+
   build: {
     tools: {
       config: {
@@ -407,8 +386,8 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "@custom/scope.plugins",
+      targetPath: "@custom/scope.plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
@@ -433,20 +412,159 @@ export default defineConfig({
 `;
     const result = addPlugin({
       content,
-      pluginName: "flowbiteReact()",
-      configPath: "vite.plugins",
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
     });
 
     const expected = `
 export default defineConfig({
     vite: {
-        plugins: [
-            tsConfigPaths(),
-            flowbiteReact()
-        ],
+        plugins: [tsConfigPaths(), flowbiteReact()],
     },
 })
 `;
+    expect(result.trim()).toBe(expected.trim());
+  });
+
+  it("should handle default exported value inside a variable", () => {
+    const content = `const config = {
+  vite: {
+    plugins: [],
+  },
+};
+export default config;`;
+    const result = addPlugin({
+      content,
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
+    });
+
+    const expected = `const config = {
+  vite: {
+    plugins: [flowbiteReact()],
+  },
+};
+export default config;`;
+    expect(result.trim()).toBe(expected.trim());
+  });
+
+  it("should handle default exported value inside a variable in CJS format", () => {
+    const content = `const config = {
+  vite: {
+    plugins: [],
+  },
+};
+module.exports = config;`;
+    const result = addPlugin({
+      content,
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
+    });
+
+    const expected = `const config = {
+  vite: {
+    plugins: [flowbiteReact()],
+  },
+};
+module.exports = config;`;
+    expect(result.trim()).toBe(expected.trim());
+  });
+
+  it("should handle defineConfig with default exported value", () => {
+    const content = `const config = defineConfig({
+  vite: {
+    plugins: [],
+  },
+});
+export default config;`;
+    const result = addPlugin({
+      content,
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
+    });
+
+    const expected = `const config = defineConfig({
+  vite: {
+    plugins: [flowbiteReact()],
+  },
+});
+export default config;`;
+    expect(result.trim()).toBe(expected.trim());
+  });
+
+  it("should handle defineConfig with default exported value in CJS format", () => {
+    const content = `const config = defineConfig({
+  vite: {
+    plugins: [],
+  },
+});
+module.exports = config;`;
+    const result = addPlugin({
+      content,
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
+    });
+
+    const expected = `const config = defineConfig({
+  vite: {
+    plugins: [flowbiteReact()],
+  },
+});
+module.exports = config;`;
+    expect(result.trim()).toBe(expected.trim());
+  });
+
+  it("should preserve comments in configuration", () => {
+    const content = `export default {
+  // This is a comment
+  vite: {
+    plugins: [
+      tsConfigPaths(),
+    ],
+  },
+}`;
+    const result = addPlugin({
+      content,
+      targetPath: "vite.plugins",
+      pluginName: "flowbiteReact",
+    });
+
+    const expected = `export default {
+  // This is a comment
+  vite: {
+    plugins: [tsConfigPaths(), flowbiteReact()],
+  },
+}`;
+    expect(result.trim()).toBe(expected.trim());
+  });
+
+  it("should handle comments within nested objects", () => {
+    const content = `export default {
+  vite: {
+    build: {
+      // This is a nested comment
+      rollupOptions: {
+        plugins: [],
+      },
+    },
+  },
+}`;
+    const result = addPlugin({
+      content,
+      targetPath: "vite.build.rollupOptions.plugins",
+      pluginName: "flowbiteReact",
+    });
+
+    const expected = `export default {
+  vite: {
+    build: {
+      // This is a nested comment
+      rollupOptions: {
+        plugins: [flowbiteReact()],
+      },
+    },
+  },
+}`;
     expect(result.trim()).toBe(expected.trim());
   });
 });
