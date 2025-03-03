@@ -8,7 +8,6 @@ import { resolveCommand } from "package-manager-detector/commands";
 import { detect } from "package-manager-detector/detect";
 import {
   automaticClassGenerationMessage,
-  bundlerPluginInvocation,
   bundlerPluginName,
   bundlerPluginPath,
   classListFile,
@@ -27,19 +26,17 @@ import {
   vscodeExtensionsFilePath,
   vscodeSettingsFilePath,
 } from "./consts";
-import {
-  addImport,
-  addPluginToConfig,
-  buildClassList,
-  execCommand,
-  extractComponentImports,
-  findFiles,
-  getClassList,
-  getConfig,
-  getJsType,
-  getPackageJson,
-  wrapDefaultExport,
-} from "./utils";
+import { addImport } from "./utils/add-import";
+import { addPluginToConfig } from "./utils/add-plugin-to-config";
+import { buildClassList } from "./utils/build-class-list";
+import { execCommand } from "./utils/exec-command";
+import { extractComponentImports } from "./utils/extract-component-imports";
+import { findFiles } from "./utils/find-files";
+import { getClassList } from "./utils/get-class-list";
+import { getConfig } from "./utils/get-config";
+import { getJsType } from "./utils/get-js-type";
+import { getPackageJson } from "./utils/get-package-json";
+import { wrapDefaultExport } from "./utils/wrap-default-export";
 
 export async function main(argv: string[]) {
   const [command, subCommand] = argv.map((arg) => arg.trim());
@@ -284,17 +281,11 @@ export async function setupTailwindV3() {
         continue;
       }
 
-      let updatedContent = content;
-
-      const withImport = addImport({
+      let updatedContent = addImport({
         content,
         importName: tailwindPluginName,
         importPath: tailwindPlugin,
       });
-
-      if (withImport !== undefined) {
-        updatedContent = withImport;
-      }
 
       // Update or create `content`
       const contentMatch = updatedContent.match(/content:\s*\[([\s\S]*?)\]/);
@@ -533,6 +524,7 @@ export async function setupPlugin() {
     rollup: ["rollup.config.cjs", "rollup.config.mjs", "rollup.config.ts", "rollup.config.js"],
     rsbuild: ["rsbuild.config.cjs", "rsbuild.config.mjs", "rsbuild.config.ts", "rsbuild.config.js"],
     rspack: ["rspack.config.cjs", "rspack.config.mjs", "rspack.config.ts", "rspack.config.js"],
+    tanstack_start: ["app.config.cjs", "app.config.mjs", "app.config.ts", "app.config.js"],
     vite: ["vite.config.cjs", "vite.config.mjs", "vite.config.ts", "vite.config.js"],
     webpack: ["webpack.config.cjs", "webpack.config.mjs", "webpack.config.ts", "webpack.config.js"],
   };
@@ -546,6 +538,7 @@ export async function setupPlugin() {
     rollup: "",
     rsbuild: "",
     rspack: "",
+    tanstack_start: "",
     vite: "",
     webpack: "",
   };
@@ -590,6 +583,9 @@ export async function setupPlugin() {
   if (configPathMap.rspack) {
     setupPluginRspack(configPathMap.rspack);
   }
+  if (configPathMap.tanstack_start) {
+    setupPluginTanStackStart(configPathMap.tanstack_start);
+  }
   if (configPathMap.vite) {
     setupPluginVite(configPathMap.vite);
   }
@@ -612,7 +608,6 @@ export async function setupPluginAstro(configPath: string) {
     configKey: "integrations",
     configPath,
     pluginImportPath: path.join(bundlerPluginPath, "astro"),
-    pluginInvocation: bundlerPluginInvocation,
     pluginName: bundlerPluginName,
   });
 }
@@ -622,7 +617,6 @@ export async function setupPluginFarm(configPath: string) {
     configKey: "plugins",
     configPath,
     pluginImportPath: path.join(bundlerPluginPath, "farm"),
-    pluginInvocation: bundlerPluginInvocation,
     pluginName: bundlerPluginName,
   });
 }
@@ -632,7 +626,6 @@ export async function setupPluginModernjs(configPath: string) {
     configKey: "plugins",
     configPath,
     pluginImportPath: path.join(bundlerPluginPath, "modernjs"),
-    pluginInvocation: bundlerPluginInvocation,
     pluginName: bundlerPluginName,
   });
 
@@ -670,24 +663,12 @@ export async function setupPluginNextjs(configPath: string) {
 
   try {
     const content = await fs.readFile(configPath, "utf-8");
-    const { isCJS, isESM } = getJsType(content);
 
-    if (!isCJS && !isESM) {
-      console.error("Unsupported module format. Only CJS and ESM are supported.");
-      return;
-    }
-
-    let updatedContent = content;
-
-    const withImport = addImport({
+    let updatedContent = addImport({
       content,
       importName: pluginName,
       importPath: path.join(bundlerPluginPath, "nextjs"),
     });
-
-    if (withImport !== undefined) {
-      updatedContent = withImport;
-    }
 
     if (!content.includes(`${pluginName}(`)) {
       updatedContent = wrapDefaultExport(updatedContent, pluginName);
@@ -772,7 +753,6 @@ export async function setupPluginRolldown(configPath: string) {
     configKey: "plugins",
     configPath,
     pluginImportPath: path.join(bundlerPluginPath, "rolldown"),
-    pluginInvocation: bundlerPluginInvocation,
     pluginName: bundlerPluginName,
   });
 }
@@ -782,7 +762,6 @@ export async function setupPluginRollup(configPath: string) {
     configKey: "plugins",
     configPath,
     pluginImportPath: path.join(bundlerPluginPath, "rollup"),
-    pluginInvocation: bundlerPluginInvocation,
     pluginName: bundlerPluginName,
   });
 }
@@ -792,7 +771,6 @@ export async function setupPluginRsbuild(configPath: string) {
     configKey: "plugins",
     configPath,
     pluginImportPath: path.join(bundlerPluginPath, "rsbuild"),
-    pluginInvocation: bundlerPluginInvocation,
     pluginName: bundlerPluginName,
   });
 }
@@ -802,7 +780,15 @@ export async function setupPluginRspack(configPath: string) {
     configKey: "plugins",
     configPath,
     pluginImportPath: path.join(bundlerPluginPath, "rspack"),
-    pluginInvocation: bundlerPluginInvocation,
+    pluginName: bundlerPluginName,
+  });
+}
+
+export async function setupPluginTanStackStart(configPath: string) {
+  addPluginToConfig({
+    configKey: "vite.plugins",
+    configPath,
+    pluginImportPath: path.join(bundlerPluginPath, "vite"),
     pluginName: bundlerPluginName,
   });
 }
@@ -812,7 +798,6 @@ export async function setupPluginVite(configPath: string) {
     configKey: "plugins",
     configPath,
     pluginImportPath: path.join(bundlerPluginPath, "vite"),
-    pluginInvocation: bundlerPluginInvocation,
     pluginName: bundlerPluginName,
   });
 }
@@ -822,7 +807,6 @@ export async function setupPluginWebpack(configPath: string) {
     configKey: "plugins",
     configPath,
     pluginImportPath: path.join(bundlerPluginPath, "webpack"),
-    pluginInvocation: bundlerPluginInvocation,
     pluginName: bundlerPluginName,
   });
 }

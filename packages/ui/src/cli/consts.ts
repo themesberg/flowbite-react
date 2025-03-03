@@ -1,9 +1,8 @@
 import path from "path";
-import type { Config } from "./utils";
+import type { Config } from "./utils/get-config";
 
 export const bundlerPluginName = "flowbiteReact";
 export const bundlerPluginPath = "flowbite-react/plugin";
-export const bundlerPluginInvocation = `${bundlerPluginName}()`;
 export const classListFile = "class-list.json";
 export const configFile = "config.json";
 export const gitIgnoreFile = ".gitignore";
