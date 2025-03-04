@@ -138,4 +138,24 @@ describe("addToConfig", () => {
     const normalizedResult = result.replace(/\s+/g, " ").trim();
     expect(normalizedResult).toBe(normalizedInput);
   });
+
+  it("should add value to config using typescript import type and satisfies", () => {
+    const input = `
+      import type { Config } from './types';
+      const config: Config = {
+        content: [],
+        theme: {}
+      };
+      export default config;
+    `;
+
+    const result = addToConfig({
+      content: input,
+      targetPath: "content",
+      valueGenerator: mockValueGenerator,
+    });
+
+    expect(result).toContain('"test-value"');
+    expect(result).toMatch(/content:\s*\[\s*"test-value"\s*\]/);
+  });
 });

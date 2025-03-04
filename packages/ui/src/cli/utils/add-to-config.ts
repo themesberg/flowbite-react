@@ -1,9 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-import * as acorn from "acorn";
+import { parse } from "@typescript-eslint/typescript-estree";
 import * as recast from "recast";
-import { types } from "recast";
 
 /**
  * Modifies the given content by adding a value to a specified path within the content.
@@ -23,34 +22,43 @@ export function addToConfig({
   targetPath: string;
   valueGenerator: (b: typeof recast.types.builders) => types.namedTypes.Expression;
 }): string {
-  const ast = recast.parse(content, { parser: acorn });
-  let configObject: types.namedTypes.ObjectExpression | null = null;
+  const ast = recast.parse(content, {
+    parser: {
+      parse: (source: string) =>
+        parse(source, {
+          loc: true,
+          range: true,
+          tokens: true,
+          comment: true,
+        }),
+    },
+  });
+  let configObject: recast.types.namedTypes.ObjectExpression | null = null;
 
   recast.types.visit(ast, {
     visitVariableDeclarator(path) {
+      const { node } = path;
       // Store reference to the config object if found
       if (
-        path.node.id.type === "Identifier" &&
-        path.node.id.name === "config" &&
-        path.node.init.type === "CallExpression" &&
-        path.node.init.callee.type === "Identifier" &&
-        path.node.init.arguments.length > 0 &&
-        path.node.init.arguments[0].type === "ObjectExpression"
+        node.id.type === "Identifier" &&
+        node.init.type === "CallExpression" &&
+        node.init.callee.type === "Identifier" &&
+        node.init.arguments.length > 0 &&
+        node.init.arguments[0].type === "ObjectExpression"
       ) {
-        configObject = path.node.init.arguments[0];
-      } else if (
-        path.node.id.type === "Identifier" &&
-        path.node.id.name === "config" &&
-        path.node.init.type === "ObjectExpression"
-      ) {
-        configObject = path.node.init;
+        configObject = node.init.arguments[0];
+      } else if (node.id.type === "Identifier" && node.init.type === "ObjectExpression") {
+        configObject = node.init;
       }
       return false;
     },
 
     visitExportDefaultDeclaration(path) {
       const { node } = path;
-      if (node.declaration.type === "ObjectExpression") {
+      if (node.declaration.type === "TSAsExpression" || node.declaration.type === "TSSatisfiesExpression") {
+        // Handle both 'as' and 'satisfies' expressions by accessing their underlying expression
+        ensureArrayProperty(node.declaration.expression, targetPath, valueGenerator);
+      } else if (node.declaration.type === "ObjectExpression") {
         // Handle direct object export: export default {}
         ensureArrayProperty(node.declaration, targetPath, valueGenerator);
       } else if (node.declaration.type === "Identifier" && configObject) {
@@ -106,9 +114,9 @@ export function addToConfig({
  * @param {Function} valueGenerator - Function that generates the AST node to be added.
  */
 function ensureArrayProperty(
-  objExpr: types.namedTypes.ObjectExpression,
+  objExpr: recast.types.namedTypes.ObjectExpression,
   path: string,
-  valueGenerator: (b: typeof recast.types.builders) => types.namedTypes.Expression,
+  valueGenerator: (b: typeof recast.types.builders) => recast.types.namedTypes.Expression,
 ): void {
   const b = recast.types.builders;
   const keys = path.split(".");
