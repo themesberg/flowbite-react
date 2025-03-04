@@ -157,6 +157,23 @@ function ensureArrayProperty(
     }
 
     if (prop.type === "Property") {
+      // Handle the case where the value is a chained array method
+      if (i === keys.length - 1 && prop.value.type === "CallExpression") {
+        const currentExpr = prop.value;
+        // Walk up the chain of method calls to find the original array
+        while (
+          currentExpr.type === "CallExpression" &&
+          currentExpr.callee.type === "MemberExpression" &&
+          currentExpr.callee.object.type === "ArrayExpression"
+        ) {
+          current = currentExpr.callee.object;
+          break;
+        }
+        if (current !== objExpr) {
+          continue;
+        }
+      }
+
       // Ensure the value is an object expression if we're not at the end
       if (i < keys.length - 1 && prop.value.type !== "ObjectExpression") {
         prop.value = b.objectExpression([]);

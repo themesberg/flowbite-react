@@ -177,4 +177,28 @@ describe("addToConfig", () => {
     expect(result).toContain('"test-value"');
     expect(result).toMatch(/plugins:\s*\[\s*react\(\),\s*"test-value"\s*\]/);
   });
+
+  it("should add value to config with filtered array", () => {
+    const input = `
+      export default defineConfig({
+        items: [
+          new Plugin({
+            option: "value",
+          }),
+          condition ? new ConditionalPlugin() : null,
+        ].filter(Boolean),
+      });
+    `;
+
+    const result = addToConfig({
+      content: input,
+      targetPath: "items",
+      valueGenerator: mockValueGenerator,
+    });
+
+    expect(result).toContain('"test-value"');
+    expect(result).toMatch(
+      /items:\s*\[\s*new Plugin\({\s*option: "value",\s*}\),\s*condition \? new ConditionalPlugin\(\) : null,\s*"test-value"\s*\]\.filter\(Boolean\)/,
+    );
+  });
 });
