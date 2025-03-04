@@ -115,6 +115,7 @@
       "dependencies": {
         "@floating-ui/core": "1.6.9",
         "@floating-ui/react": "0.27.3",
+        "acorn": "8.14.0",
         "chokidar": "4.0.3",
         "classnames": "2.5.1",
         "comment-json": "4.2.5",
@@ -142,7 +143,6 @@
         "@typescript-eslint/parser": "8.19.1",
         "@vitejs/plugin-react": "4.3.4",
         "@vitest/coverage-v8": "2.1.8",
-        "acorn": "8.14.0",
         "eslint-plugin-react": "7.37.3",
         "eslint-plugin-vitest": "0.5.4",
         "estree-walker": "3.0.3",
