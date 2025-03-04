@@ -33,7 +33,9 @@ export function addToConfig({
         }),
     },
   });
-  let configObject: recast.types.namedTypes.ObjectExpression | null = null;
+
+  // Store reference to config objects by their identifier names
+  const configMap = new Map<string, recast.types.namedTypes.ObjectExpression>();
 
   recast.types.visit(ast, {
     visitVariableDeclarator(path) {
@@ -46,9 +48,9 @@ export function addToConfig({
         node.init.arguments.length > 0 &&
         node.init.arguments[0].type === "ObjectExpression"
       ) {
-        configObject = node.init.arguments[0];
+        configMap.set(node.id.name, node.init.arguments[0]);
       } else if (node.id.type === "Identifier" && node.init.type === "ObjectExpression") {
-        configObject = node.init;
+        configMap.set(node.id.name, node.init);
       }
       return false;
     },
@@ -61,16 +63,27 @@ export function addToConfig({
       } else if (node.declaration.type === "ObjectExpression") {
         // Handle direct object export: export default {}
         ensureArrayProperty(node.declaration, targetPath, valueGenerator);
-      } else if (node.declaration.type === "Identifier" && configObject) {
+      } else if (node.declaration.type === "Identifier") {
         // Handle variable export: export default config
-        ensureArrayProperty(configObject, targetPath, valueGenerator);
+        const configForId = configMap.get(node.declaration.name);
+        if (configForId) {
+          ensureArrayProperty(configForId, targetPath, valueGenerator);
+        }
       } else if (
         node.declaration.type === "CallExpression" &&
-        node.declaration.arguments.length > 0 &&
-        node.declaration.arguments[0].type === "ObjectExpression"
+        node.declaration.callee.type === "Identifier" &&
+        node.declaration.arguments.length > 0
       ) {
-        // Handle function call with object argument for default export
-        ensureArrayProperty(node.declaration.arguments[0], targetPath, valueGenerator);
+        // Handle function call exports like defineConfig(viteConfig)
+        const arg = node.declaration.arguments[0];
+        if (arg.type === "ObjectExpression") {
+          ensureArrayProperty(arg, targetPath, valueGenerator);
+        } else if (arg.type === "Identifier") {
+          const configForId = configMap.get(arg.name);
+          if (configForId) {
+            ensureArrayProperty(configForId, targetPath, valueGenerator);
+          }
+        }
       }
       return false;
     },
@@ -87,9 +100,12 @@ export function addToConfig({
         if (node.right.type === "ObjectExpression") {
           // Direct object assignment: module.exports = {}
           ensureArrayProperty(node.right, targetPath, valueGenerator);
-        } else if (node.right.type === "Identifier" && configObject) {
+        } else if (node.right.type === "Identifier") {
           // Variable assignment: module.exports = config
-          ensureArrayProperty(configObject, targetPath, valueGenerator);
+          const configForId = configMap.get(node.right.name);
+          if (configForId) {
+            ensureArrayProperty(configForId, targetPath, valueGenerator);
+          }
         } else if (
           node.right.type === "CallExpression" &&
           node.right.arguments.length > 0 &&

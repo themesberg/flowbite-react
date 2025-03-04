@@ -158,4 +158,23 @@ describe("addToConfig", () => {
     expect(result).toContain('"test-value"');
     expect(result).toMatch(/content:\s*\[\s*"test-value"\s*\]/);
   });
+
+  it("should add value to config with defineConfig", () => {
+    const input = `
+      const config: UserConfig = {
+        plugins: [react()],
+      }
+
+      export default defineConfig(config)
+    `;
+
+    const result = addToConfig({
+      content: input,
+      targetPath: "plugins",
+      valueGenerator: mockValueGenerator,
+    });
+
+    expect(result).toContain('"test-value"');
+    expect(result).toMatch(/plugins:\s*\[\s*react\(\),\s*"test-value"\s*\]/);
+  });
 });
