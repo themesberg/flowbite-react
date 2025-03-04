@@ -1,12 +1,12 @@
 import type { NextConfig } from "next";
 import { build, dev } from "../cli";
 
-export default function withFlowbiteReact(nextConfig: NextConfig): NextConfig {
+export default async function withFlowbiteReact(nextConfig: NextConfig): Promise<NextConfig> {
   if (process.env.NODE_ENV === "development") {
-    return dev().finally(() => nextConfig);
+    await dev();
   }
   if (process.env.NODE_ENV === "production") {
-    return build().finally(() => nextConfig);
+    await build();
   }
 
   return nextConfig;
