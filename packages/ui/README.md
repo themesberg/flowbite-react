@@ -1,5 +1,6 @@
 <div align="center">
-  <h1>🚧 flowbite-react (unreleased) 🚧</h1>
+  <h1>flowbite-react</h1>
+  <p><em>⚠️ This is a pre-release version - please note that APIs may change before the final release</em></p>
   <p>
     <a href="https://flowbite-react.com">
       <img alt="Flowbite - Tailwind CSS components" width="350" src=".github/assets/flowbite-react-github.png">
@@ -54,16 +55,18 @@ Learn how to get started with `Flowbite React` and start leveraging the interact
 
 ### Using the CLI
 
-Easily scaffold a Flowbite React application using the most popular React frameworks and technologies out there.
+There are two ways to set up Flowbite React using the CLI:
 
-Run any of the following commands and answer the command prompt questions:
+#### 1. Create a new project
+
+Easily scaffold a new Flowbite React application using the most popular React frameworks and technologies:
 
 ```bash
 # npm
 npm create flowbite-react@latest
 
 # yarn
-yarn create flowbite-react
+yarn create flowbite-react@latest
 
 # pnpm
 pnpm create flowbite-react@latest
@@ -72,24 +75,51 @@ pnpm create flowbite-react@latest
 bun create flowbite-react@latest
 ```
 
-The CLI will prompt the directory name, what template to use and if it should initialize a new git repository.
+The CLI will prompt for the directory name, what template to use, and if it should initialize a new git repository.
 
 For more details, see how [`create-flowbite-react`](https://www.npmjs.com/package/create-flowbite-react) works.
 
-### Manual installation
+#### 2. Setup in an existing project
 
-To manually install `flowbite-react` into your application, here is a list of the official integration guides for the popular frameworks and technologies:
+To add Flowbite React to an existing project, use:
 
-- [Next.js](https://www.flowbite-react.com/docs/guides/next-js)
-- [Remix](https://www.flowbite-react.com/docs/guides/remix)
-- [Astro](https://www.flowbite-react.com/docs/guides/astro)
-- [Gatsby](https://www.flowbite-react.com/docs/guides/gatsby)
+```bash
+# npm
+npx flowbite-react@latest init
+
+# yarn
+yarn dlx flowbite-react@latest init
+
+# pnpm
+pnpm dlx flowbite-react@latest init
+
+# bun
+bunx flowbite-react@latest init
+```
+
+This will set up all necessary dependencies and configurations in your existing project.
+
+### Framework Integration Guides
+
+To integrate `flowbite-react` with your preferred framework or technology stack, follow our official integration guides:
+
 - [AdonisJS](https://www.flowbite-react.com/docs/guides/adonis-js)
-- [RedwoodJS](https://www.flowbite-react.com/docs/guides/redwood-js)
+- [Astro](https://www.flowbite-react.com/docs/guides/astro)
+- [Farm](https://www.flowbite-react.com/docs/guides/farm)
+- [Gatsby](https://www.flowbite-react.com/docs/guides/gatsby)
 - [Laravel](https://www.flowbite-react.com/docs/guides/laravel)
-- [Vite](https://www.flowbite-react.com/docs/guides/vite)
+- [Modern.js](https://www.flowbite-react.com/docs/guides/modern-js)
+- [Next.js](https://www.flowbite-react.com/docs/guides/next-js)
 - [Parcel](https://www.flowbite-react.com/docs/guides/parcel)
-- [Create React App](https://www.flowbite-react.com/docs/guides/create-react-app)
+- [React Router](https://www.flowbite-react.com/docs/guides/react-router)
+- [RedwoodJS](https://www.flowbite-react.com/docs/guides/redwood-js)
+- [Remix](https://www.flowbite-react.com/docs/guides/remix)
+- [RSBuild](https://www.flowbite-react.com/docs/guides/rsbuild)
+- [RSPack](https://www.flowbite-react.com/docs/guides/rspack)
+- [TanStack Router](https://www.flowbite-react.com/docs/guides/tanstack-router)
+- [TanStack Start](https://www.flowbite-react.com/docs/guides/tanstack-start)
+- [Vite](https://www.flowbite-react.com/docs/guides/vite)
+- [Webpack](https://www.flowbite-react.com/docs/guides/webpack)
 
 ## Components
 
