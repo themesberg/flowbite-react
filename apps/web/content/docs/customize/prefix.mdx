@@ -5,26 +5,45 @@ description: Learn how you can change the Tailwind CSS classes prefix used by th
 
 By following these steps, you can easily customize the Tailwind CSS prefix in your Flowbite React project, ensuring better compatibility with other CSS frameworks and avoiding class name conflicts.
 
-## Update Tailwind CSS
+## Setting the Prefix
 
-Provide the `prefix` property and the `flowbite-react/tailwind` plugin with a prefix value in the `tailwind.config.js` file:
+### Flowbite React Configuration
 
-```js {5,8}
-import flowbite from "flowbite-react/tailwind";
+To set a custom prefix for Flowbite React components, modify the `prefix` property in your `.flowbite-react/config.json` file:
 
+```json
+{
+  "$schema": "https://unpkg.com/flowbite-react/schema.json",
+  "components": [],
+  "prefix": "tw"
+}
+```
+
+### Tailwind CSS Configuration
+
+When using a prefix, you must also configure it in your Tailwind CSS setup. The configuration syntax differs between Tailwind CSS versions:
+
+#### Tailwind CSS v3 and v4
+
+For v3, you can use any prefix including special characters:
+
+```js
 /** @type {import('tailwindcss').Config} */
 export default {
   prefix: "tw-",
-  plugins: [
-    // ...
-    flowbite({ prefix: "tw-" }),
-  ],
+  // ... rest of your config
 };
+```
+
+For v4, note that the prefix cannot contain special characters (like hyphens). Use simple strings like `tw` instead of `tw-`:
+
+```css
+@import "tailwindcss" prefix(tw);
 ```
 
 ## Update Your React Application
 
-Next, render the `ThemeConfig` component at the **root of your app** with the `prefix` property:
+Next, render the `ThemeConfig` component at the **root of your app** with the same `prefix` property:
 
 ```tsx {1,6}
 import { ThemeConfig } from "flowbite-react";
@@ -32,11 +51,11 @@ import { ThemeConfig } from "flowbite-react";
 export default function App() {
   return (
     <>
-      <ThemeConfig prefix="tw-" />
+      <ThemeConfig prefix="tw" />
       {/* ... */}
     </>
   );
 }
 ```
 
-This ensures that all Flowbite React components use the specified prefix.
+This configuration will ensure that all Flowbite React components use the specified prefix for their Tailwind CSS classes. The prefix will be automatically applied to all component classes.
