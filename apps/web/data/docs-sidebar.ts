@@ -13,11 +13,11 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
   {
     title: "getting started",
     items: [
-      { title: "Introduction", href: "/docs/getting-started/introduction" },
-      { title: "Quickstart", href: "/docs/getting-started/quickstart" },
-      { title: "CLI", href: "/docs/getting-started/cli" },
-      { title: "Editor Setup", href: "/docs/getting-started/editor-setup" },
-      { title: "Server Components", href: "/docs/getting-started/server-components" },
+      { title: "Introduction", href: "/docs/getting-started/introduction", tag: "updated" },
+      { title: "Quickstart", href: "/docs/getting-started/quickstart", tag: "updated" },
+      { title: "CLI", href: "/docs/getting-started/cli", tag: "updated" },
+      { title: "Editor Setup", href: "/docs/getting-started/editor-setup", tag: "updated" },
+      { title: "Server Components", href: "/docs/getting-started/server-components", tag: "updated" },
       { title: "License", href: "/docs/getting-started/license" },
       { title: "Changelog", href: "https://github.com/themesberg/flowbite-react/releases" },
       { title: "Contributing", href: "/docs/getting-started/contributing" },
@@ -48,10 +48,10 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
   {
     title: "customize",
     items: [
-      { title: "Theme", href: "/docs/customize/theme", tag: "updated" },
+      { title: "Dark Mode", href: "/docs/customize/dark-mode" },
       { title: "Plugin", href: "/docs/customize/plugin", tag: "new" },
       { title: "Prefix", href: "/docs/customize/prefix", tag: "new" },
-      { title: "Dark Mode", href: "/docs/customize/dark-mode" },
+      { title: "Theme", href: "/docs/customize/theme", tag: "updated" },
     ],
   },
   {
