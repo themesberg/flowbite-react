@@ -422,6 +422,67 @@ When `root={true}` is specified:
 - Only the specified theme and default theme values are used
 - This affects all theme-related props (`theme`, `clearTheme`, `applyTheme`)
 
+## Provider-Level Props
+
+The `ThemeProvider` component accepts a `props` prop that allows you to set default props for all components within its scope. These props are merged with any component-specific props, with component props taking precedence:
+
+```tsx
+import { Button, ThemeProvider } from "flowbite-react";
+
+function App() {
+  return (
+    <ThemeProvider
+      props={{
+        // Set default props for all buttons
+        button: {
+          color: "success",
+          size: "lg",
+        },
+      }}
+    >
+      {/* Will be large and green */}
+      <Button>Inherits Provider Props</Button>
+
+      {/* Will be large and red (color prop overrides provider) */}
+      <Button color="error">Overrides Color Prop</Button>
+
+      {/* Nested providers merge props by default */}
+      <ThemeProvider
+        props={{
+          button: {
+            size: "sm", // Override size while keeping color from parent
+          },
+        }}
+      >
+        {/* Will be small and green */}
+        <Button>Inherits Merged Props</Button>
+      </ThemeProvider>
+
+      {/* root={true} prevents props inheritance */}
+      <ThemeProvider
+        root
+        props={{
+          button: {
+            size: "sm",
+          },
+        }}
+      >
+        {/* Will be small with default color */}
+        <Button>Independent Props</Button>
+      </ThemeProvider>
+    </ThemeProvider>
+  );
+}
+```
+
+Props are resolved in the following order:
+
+1. Component-specific props
+2. Nearest parent `ThemeProvider` props
+3. Default component props
+
+Like themes, provider props are deep merged between parent and child providers unless `root={true}` is specified.
+
 ## Component-Specific Theme
 
 You can also apply a custom theme to a specific component instance using the `theme` prop:
