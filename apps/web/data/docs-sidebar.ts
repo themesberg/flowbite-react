@@ -28,6 +28,8 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
     items: [
       { title: "AdonisJS", href: "/docs/guides/adonis-js" },
       { title: "Astro", href: "/docs/guides/astro" },
+      { title: "Bun", href: "/docs/guides/bun", tag: "new" },
+      { title: "ESBuild", href: "/docs/guides/esbuild", tag: "new" },
       { title: "Farm", href: "/docs/guides/farm", tag: "new" },
       { title: "Gatsby", href: "/docs/guides/gatsby" },
       { title: "Laravel", href: "/docs/guides/laravel" },

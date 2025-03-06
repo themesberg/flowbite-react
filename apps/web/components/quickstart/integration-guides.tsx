@@ -14,6 +14,8 @@ interface Guide {
 const GUIDES: Guide[] = [
   { name: "AdonisJS", slug: "/docs/guides/adonis-js", logo: "adonis-js.svg", className: "p-2", invert: true },
   { name: "Astro", slug: "/docs/guides/astro", logo: "astro.svg", invert: true },
+  { name: "Bun", slug: "/docs/guides/bun", logo: "bun.svg" },
+  { name: "ESBuild", slug: "/docs/guides/esbuild", logo: "esbuild.svg" },
   { name: "Farm", slug: "/docs/guides/farm", logo: "farm.svg" },
   { name: "Gatsby", slug: "/docs/guides/gatsby", logo: "gatsby.svg" },
   { name: "Laravel", slug: "/docs/guides/laravel", logo: "laravel.svg" },
