@@ -1,13 +1,15 @@
 ---
 title: Dark Mode - Flowbite React
-description: Learn how to configure and build a dark mode switcher for Flowbite using Tailwind CSS and start developing with the components from the library
+description: Learn how to implement and customize dark mode in your React application using Flowbite and Tailwind CSS. Includes step-by-step instructions for theme switching, SSR support, and framework-specific integrations.
 ---
 
-`Flowbite React` comes with dark mode support out of the box, it supports integration with all full-stack frameworks such as `Next.js`, `Remix`, `Astro`, `Gatsby` that are using server-side rendering (SSR).
+## Overview
 
-## Toggle dark mode
+Flowbite React provides built-in dark mode functionality that seamlessly integrates with popular full-stack frameworks like Next.js, Remix, Astro, and Gatsby. The dark mode implementation fully supports server-side rendering (SSR) and offers an intuitive developer experience.
 
-The `<DarkThemeToggle>` component will automatically detect the current theme and display the correct icon, and allow the user to switch between themes as they like.
+## Dark Mode Toggle
+
+The easiest way to implement dark mode in your application is by using the `DarkThemeToggle` component. This component automatically handles theme detection and provides a user-friendly interface for switching between light and dark modes.
 
 ```jsx
 import { DarkThemeToggle } from "flowbite-react";
@@ -20,13 +22,16 @@ export default function MyPage() {
 }
 ```
 
-### useThemeMode
+## Theme Mode Hook
 
-`useThemeMode` is the hook reponsible for changing, detecting and persisting the theme mode.
+For more granular control over theme management, Flowbite React provides the `useThemeMode` hook. This powerful hook handles:
 
-Theme mode persistence is by default located in the browsers `LocalStorage`.
+- Theme state management
+- Automatic theme detection
+- Theme persistence in LocalStorage
+- Cross-tab theme synchronization
 
-The `<DarkThemeToggle>` component uses `useThemeMode` hook under the hood.
+### Hook API
 
 ```tsx
 type ThemeMode = "light" | "dark" | "auto";
@@ -40,16 +45,18 @@ declare const useThemeMode: () => {
 };
 ```
 
-### Sync between tabs
+### Features
 
-The `useThemeMode` hook automatically keeps all tab instances in sync, no extra configuration needed.
+1. **Automatic Theme Persistence**: Your users' theme preferences are automatically saved in the browser's LocalStorage
+2. **Cross-Tab Synchronization**: Theme changes are instantly synchronized across all open browser tabs
+3. **No Additional Configuration**: All features work out of the box
 
-## Framework guides
+## Framework Integration
 
-Here's a list of step-by-step **dark mode** integration guide for the most popular full-stack frameworks:
+For detailed, framework-specific implementation instructions, refer to our comprehensive integration guides:
 
-- [Next.js](/docs/guides/next-js#dark-mode)
-- [Remix](/docs/guides/remix#dark-mode)
-- [Astro](/docs/guides/astro#dark-mode)
-- [Gatsby](/docs/guides/gatsby#dark-mode)
-- [AdonisJS](/docs/guides/adonis-js#dark-mode)
+- [AdonisJS Dark Mode](/docs/guides/adonis-js#dark-mode)
+- [Astro Dark Mode](/docs/guides/astro#dark-mode)
+- [Gatsby Dark Mode](/docs/guides/gatsby#dark-mode)
+- [Next.js Dark Mode](/docs/guides/next-js#dark-mode)
+- [Remix Dark Mode](/docs/guides/remix#dark-mode)
