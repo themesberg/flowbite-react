@@ -76,6 +76,41 @@ Starts the development mode which:
 - Provides real-time class generation
 - Monitors imported components
 
+### `flowbite-react install`
+
+Installs Flowbite React in your project:
+
+- Detects your package manager (npm, yarn, pnpm, bun, etc.)
+- Installs the latest version of flowbite-react
+- Skips installation if already installed
+
+### `flowbite-react setup plugin`
+
+Sets up the appropriate bundler plugin for your project:
+
+- Detects your bundler configuration file
+- Supports multiple bundlers (Bun, ESBuild, Parcel, Rsbuild, Rspack, Vite, Webpack, etc.)
+- Adds the Flowbite React plugin to your bundler config
+- Configures plugin settings automatically
+
+### `flowbite-react setup tailwindcss`
+
+Configures Tailwind CSS for use with Flowbite React:
+
+- Sets up Tailwind CSS v3 or v4 configuration
+- Adds necessary plugin configurations
+- Updates content paths for component styles
+- Configures class generation settings
+
+### `flowbite-react setup vscode`
+
+Sets up VSCode for optimal development:
+
+- Configures Tailwind CSS IntelliSense
+- Sets up file associations
+- Adds recommended extensions
+- Configures class attribute settings
+
 ### `flowbite-react register`
 
 Registers the Flowbite React process for development:
@@ -83,6 +118,7 @@ Registers the Flowbite React process for development:
 - Runs the dev process in the background
 - Manages process lifecycle
 - Handles automatic class generation
+- Creates and maintains process ID file
 
 ## Project Templates
 
