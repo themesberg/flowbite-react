@@ -30,6 +30,7 @@ import { findFiles } from "./utils/find-files";
 import { getClassList } from "./utils/get-class-list";
 import { getConfig, type Config } from "./utils/get-config";
 import { getPackageJson } from "./utils/get-package-json";
+import { updateBuildConfig } from "./utils/update-build-config";
 import { wrapDefaultExport } from "./utils/wrap-default-export";
 
 export async function main(argv: string[]) {
@@ -587,23 +588,38 @@ export async function setupPluginAstro(configPath: string) {
 
 export async function setupPluginBun(configPath: string) {
   try {
-    const content = await fs.readFile(configPath, "utf-8");
-    const parsedContent = toml.parse(content) as { serve?: { static?: { plugins?: string[] } } };
+    // update bunfig.toml
+    const bunfig = await fs.readFile(configPath, "utf-8");
+    const bunfigContent = toml.parse(bunfig) as { serve?: { static?: { plugins?: string[] } } };
     const bunPluginPath = path.join(pluginPath, "bun");
 
-    if (parsedContent.serve?.static?.plugins?.includes(pluginName)) {
+    if (bunfigContent.serve?.static?.plugins?.includes(pluginName)) {
       return;
     }
 
-    parsedContent.serve ??= {};
-    parsedContent.serve.static ??= {};
-    parsedContent.serve.static.plugins ??= [];
+    bunfigContent.serve ??= {};
+    bunfigContent.serve.static ??= {};
+    bunfigContent.serve.static.plugins ??= [];
 
-    if (!parsedContent.serve.static.plugins.includes(bunPluginPath)) {
-      parsedContent.serve.static.plugins.push(bunPluginPath);
+    if (!bunfigContent.serve.static.plugins.includes(bunPluginPath)) {
+      bunfigContent.serve.static.plugins.push(bunPluginPath);
 
       console.log(`Updating ${configPath} with flowbite-react configuration...`);
-      await fs.writeFile(configPath, toml.stringify(parsedContent), "utf-8");
+      await fs.writeFile(configPath, toml.stringify(bunfigContent), "utf-8");
+    }
+
+    // update build.ts
+    const buildConfigPath = "build.ts";
+    const buildConfig = await fs.readFile(buildConfigPath, "utf-8");
+    const updatedBuildConfig = updateBuildConfig({
+      content: buildConfig,
+      pluginName,
+      pluginImportPath: bunPluginPath,
+    });
+
+    if (buildConfig !== updatedBuildConfig) {
+      console.log(`Updating ${buildConfigPath} with flowbite-react configuration...`);
+      await fs.writeFile(buildConfigPath, updatedBuildConfig, "utf-8");
     }
   } catch (error) {
     console.error(`Failed to update ${configPath} file...`, error);
