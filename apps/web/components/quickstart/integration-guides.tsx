@@ -20,13 +20,13 @@ const GUIDES: Guide[] = [
   { name: "Modern.js", slug: "/docs/guides/modern-js", logo: "modern-js.svg" },
   { name: "Next.js", slug: "/docs/guides/next-js", logo: "next-js.svg", className: "p-2" },
   { name: "Parcel", slug: "/docs/guides/parcel", logo: "parcel.svg" },
-  { name: "React Router", slug: "/docs/guides/react-router", logo: "react-router.svg" },
+  { name: "React Router", slug: "/docs/guides/react-router", logo: "react-router" },
   { name: "RedwoodJS", slug: "/docs/guides/redwood-js", logo: "redwood-js.svg", className: "p-2" },
   { name: "Remix", slug: "/docs/guides/remix", logo: "remix.svg", invert: true },
   { name: "RSBuild", slug: "/docs/guides/rsbuild", logo: "rsbuild.svg" },
   { name: "RSPack", slug: "/docs/guides/rspack", logo: "rspack.svg" },
-  { name: "TanStack Router", slug: "/docs/guides/tanstack-router", logo: "tanstack.svg" },
-  { name: "TanStack Start", slug: "/docs/guides/tanstack-start", logo: "tanstack.svg" },
+  { name: "TanStack Router", slug: "/docs/guides/tanstack-router", logo: "tanstack.png" },
+  { name: "TanStack Start", slug: "/docs/guides/tanstack-start", logo: "tanstack.png" },
   { name: "Vite", slug: "/docs/guides/vite", logo: "vite.svg" },
   { name: "Webpack", slug: "/docs/guides/webpack", logo: "webpack.svg" },
 ];
@@ -47,13 +47,32 @@ function GuideCard({ name, slug, logo, invert, className }: Guide) {
       href={slug}
       className="flex h-40 flex-col items-center justify-center gap-3 rounded-lg border border-gray-200 text-center !no-underline shadow-sm hover:border-gray-300 hover:shadow-md dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500 dark:hover:shadow-lg-light"
     >
-      <Image
-        src={`/logos/${logo}`}
-        alt={name}
-        width={64}
-        height={64}
-        className={twMerge(invert && "dark:invert", className)}
-      />
+      {logo === "react-router" ? (
+        <>
+          <Image
+            src={`/logos/${logo}-light.svg`}
+            alt={name}
+            width={64}
+            height={64}
+            className={twMerge("block size-16 dark:hidden", className)}
+          />
+          <Image
+            src={`/logos/${logo}-dark.svg`}
+            alt={name}
+            width={64}
+            height={64}
+            className={twMerge("hidden size-16 dark:block", className)}
+          />
+        </>
+      ) : (
+        <Image
+          src={`/logos/${logo}`}
+          alt={name}
+          width={64}
+          height={64}
+          className={twMerge("size-16", invert && "dark:invert", className)}
+        />
+      )}
       <span className="font-medium text-gray-800 dark:text-gray-300">{name}</span>
     </Link>
   );
