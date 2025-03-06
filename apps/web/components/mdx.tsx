@@ -1,4 +1,4 @@
-import { Alert, theme } from "flowbite-react";
+import { Alert, List, ListItem, theme } from "flowbite-react";
 import type { MDXComponents } from "mdx/types";
 import { getMDXComponent } from "next-contentlayer2/hooks";
 import Link from "next/link";
@@ -24,6 +24,9 @@ const components: MDXComponents = {
       />
     );
   },
+  ul: (props) => <List {...props} />,
+  ol: (props) => <List ordered {...props} />,
+  li: (props) => <ListItem className="text-gray-500 dark:text-gray-400" {...props} />,
   // TODO: revisit
   h2: (props) => (
     <h2 className="group relative z-20 scroll-mt-20 text-2xl font-bold text-gray-900 dark:text-white" {...props}>
