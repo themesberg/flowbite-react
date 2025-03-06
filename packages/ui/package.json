@@ -184,6 +184,7 @@
   "dependencies": {
     "@floating-ui/core": "1.6.9",
     "@floating-ui/react": "0.27.3",
+    "@iarna/toml": "2.2.5",
     "@typescript-eslint/typescript-estree": "8.26.0",
     "chokidar": "4.0.3",
     "classnames": "2.5.1",

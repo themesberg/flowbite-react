@@ -1,6 +1,7 @@
 import { spawn } from "child_process";
 import fs from "fs/promises";
 import path from "path";
+import toml from "@iarna/toml";
 import chokidar from "chokidar";
 import cjson from "comment-json";
 import isEqual from "fast-deep-equal";
@@ -483,6 +484,7 @@ export async function setupVSCodeExtensions() {
 export async function setupPlugin() {
   const configFileMap = {
     astro: ["astro.config.cjs", "astro.config.mjs", "astro.config.ts", "astro.config.js"],
+    bun: ["bunfig.toml"],
     farm: ["farm.config.cjs", "farm.config.js", "farm.config.mjs", "farm.config.ts"],
     modernjs: ["modern.config.cjs", "modern.config.mjs", "modern.config.ts", "modern.config.js"],
     nextjs: ["next.config.cjs", "next.config.mjs", "next.config.ts", "next.config.js"],
@@ -497,6 +499,7 @@ export async function setupPlugin() {
   };
   const configPathMap: Record<keyof typeof configFileMap, string> = {
     astro: "",
+    bun: "",
     farm: "",
     modernjs: "",
     nextjs: "",
@@ -525,6 +528,9 @@ export async function setupPlugin() {
 
   if (configPathMap.astro) {
     await setupPluginAstro(configPathMap.astro);
+  }
+  if (configPathMap.bun) {
+    await setupPluginBun(configPathMap.bun);
   }
   if (configPathMap.farm) {
     await setupPluginFarm(configPathMap.farm);
@@ -577,6 +583,31 @@ export async function setupPluginAstro(configPath: string) {
     pluginImportPath: path.join(pluginPath, "astro"),
     pluginName,
   });
+}
+
+export async function setupPluginBun(configPath: string) {
+  try {
+    const content = await fs.readFile(configPath, "utf-8");
+    const parsedContent = toml.parse(content) as { serve?: { static?: { plugins?: string[] } } };
+    const bunPluginPath = path.join(pluginPath, "bun");
+
+    if (parsedContent.serve?.static?.plugins?.includes(pluginName)) {
+      return;
+    }
+
+    parsedContent.serve ??= {};
+    parsedContent.serve.static ??= {};
+    parsedContent.serve.static.plugins ??= [];
+
+    if (!parsedContent.serve.static.plugins.includes(bunPluginPath)) {
+      parsedContent.serve.static.plugins.push(bunPluginPath);
+
+      console.log(`Updating ${configPath} with flowbite-react configuration...`);
+      await fs.writeFile(configPath, toml.stringify(parsedContent), "utf-8");
+    }
+  } catch (error) {
+    console.error(`Failed to update ${configPath} file...`, error);
+  }
 }
 
 export async function setupPluginFarm(configPath: string) {
