@@ -142,6 +142,16 @@
         "default": "./dist/theme/*.cjs"
       }
     },
+    "./types": {
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/types/index.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.cts",
+        "default": "./dist/types/index.cjs"
+      }
+    },
     "./package.json": "./package.json",
     "./schema.json": "./schema.json"
   },
