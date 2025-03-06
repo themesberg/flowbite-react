@@ -1,0 +1,157 @@
+---
+title: Configuration - Flowbite React
+description: Learn how to configure Flowbite React using the config.json file to control component styles, automatic class generation, and more
+---
+
+# Configuration File
+
+The `.flowbite-react/config.json` file is a central configuration file that controls how Flowbite React generates and manages component styles. This guide explains its structure, features, and how it affects your application's behavior.
+
+## Schema
+
+The configuration file follows this JSON Schema:
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "components": {
+      "description": "List of component names to generate styles for. Empty array enables automatic detection.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "*"
+          // ...rest of the components
+        ]
+      },
+      "uniqueItems": true
+    },
+    "prefix": {
+      "description": "Optional prefix to apply to all Tailwind CSS classes",
+      "type": "string"
+    }
+  },
+  "required": ["components", "prefix"]
+}
+```
+
+## Properties
+
+### `components`
+
+- Type: `string[]`
+- Default: `[]`
+- Description: List of component names to generate Tailwind CSS classes for.
+  - When empty (`[]`), enables automatic component detection
+  - When populated, disables automatic detection and only generates styles for listed components
+  - Use `"*"` to explicitly include all components (equivalent to listing every component)
+  - When not using `"*"`, use valid component names (e.g., `Button`, `Card`, `Modal`). See the [schema](https://unpkg.com/flowbite-react/schema.json) for the full list of valid components.
+
+### `prefix`
+
+- Type: `string`
+- Default: `""`
+- Description: Optional prefix to apply to all Tailwind CSS classes. Useful for avoiding class name conflicts.
+
+For detailed instructions on configuring and using prefixes, see the [Prefix](/docs/customize/prefix) documentation.
+
+## Automatic Class Generation
+
+The automatic class generation system works in two modes:
+
+### 1. Automatic Mode (Default)
+
+When `components` array is empty:
+
+- Automatically scans your codebase for Flowbite React component imports
+- Generates styles for all detected components and their dependencies
+- Updates in real-time as you add/remove component imports
+- Watches for file changes during development
+
+Example config for automatic mode:
+
+```json
+{
+  "$schema": "https://unpkg.com/flowbite-react/schema.json",
+  "components": [],
+  "prefix": ""
+}
+```
+
+### 2. Manual Mode
+
+When `components` array contains component names:
+
+- Disables automatic component detection
+- Only generates styles for explicitly listed components
+- Includes styles for component dependencies automatically
+- Shows warning: "Components specified in config.json. Automatic class generation is disabled."
+
+Example config for manual mode:
+
+```json
+{
+  "$schema": "https://unpkg.com/flowbite-react/schema.json",
+  "components": ["Button", "Card", "Modal"],
+  "prefix": ""
+}
+```
+
+## Build Process
+
+The build process handles style generation differently based on your configuration:
+
+### Development (`flowbite-react dev`)
+
+1. Reads the `config.json` file
+2. If `components` is empty:
+   - Watches for component imports across your codebase
+   - Updates class list in real-time as components are added/removed
+   - Generates styles for all detected components
+3. If `components` has entries:
+   - Generates styles only for listed components
+   - Does not watch for new component imports
+   - Shows warning about disabled automatic generation
+
+### Production (`flowbite-react build`)
+
+1. Creates the `.flowbite-react` output directory if needed
+2. Generates the final `class-list.json` containing:
+   - All required Tailwind CSS classes
+   - Classes for component dependencies
+   - Prefixed classes if prefix is specified
+3. Optimizes the class list by:
+   - Removing duplicates
+   - Sorting for consistency
+   - Converting utilities to match your Tailwind version
+
+## Component Dependencies
+
+When generating styles, the system automatically includes dependencies:
+
+- Each component may depend on other components
+- Dependencies are defined in the `DEPENDENCY_LIST_MAP`
+- When a component is included (either automatically or manually), all its dependencies are also included
+- This ensures all necessary styles are available
+
+## Best Practices
+
+1. **Start with Automatic Mode**
+
+   - Leave `components` empty initially
+   - Let the system detect your usage
+   - Switch to manual mode if you need precise control
+
+2. **Use Manual Mode When**
+
+   - You need to strictly control bundle size
+   - You want to ensure specific components are included
+   - You have complex dependency requirements
+
+3. **Prefix Considerations**
+
+   - Use prefixes when integrating with other libraries
+   - Keep prefixes short but meaningful
+   - Consider your Tailwind version when choosing prefix format
