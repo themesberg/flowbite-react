@@ -10,119 +10,95 @@
   @apply overflow-hidden;
 }
 
-#mainContent > ul + h2 {
-  @apply mt-0;
+#mainContent {
+  @apply max-w-none;
+
+  /* Headings */
+  & h1 {
+    @apply mb-8 mt-2 text-4xl font-bold tracking-tight text-gray-900;
+  }
+
+  & h2 {
+    @apply mb-4 mt-12 text-2xl font-bold text-gray-900;
+  }
+
+  & h3 {
+    @apply mb-4 mt-8 text-xl font-bold text-gray-900;
+  }
+
+  & h4 {
+    @apply mb-4 mt-6 text-lg font-bold text-gray-900;
+  }
+
+  /* Spacing */
+  & > :first-child {
+    @apply mt-0;
+  }
+
+  & > ul + h2 {
+    @apply mt-0;
+  }
+
+  /* Text content */
+  & p {
+    @apply mb-4 leading-7 text-gray-600;
+  }
+
+  & ul,
+  & ol {
+    @apply mb-4 ml-6 text-gray-600;
+
+    & ul,
+    & ol {
+      @apply mt-2;
+    }
+  }
+
+  & ul {
+    @apply list-disc;
+  }
+
+  & ol {
+    @apply list-decimal;
+  }
+
+  & li {
+    @apply mb-2;
+  }
+
+  /* Links */
+  & a {
+    @apply font-medium text-gray-900 underline decoration-primary-700 decoration-1 underline-offset-2 hover:decoration-2;
+  }
+
+  /* Inline code */
+  & :not(pre) > code {
+    @apply whitespace-nowrap break-all rounded border border-primary-100 bg-gray-50 px-1 text-sm text-primary-700;
+    font-family:
+      Menlo,
+      ui-monospace,
+      SFMono-Regular,
+      Monaco,
+      Consolas,
+      Liberation Mono,
+      Courier New,
+      monospace;
+  }
 }
 
-#visible-table-of-contents a {
-  @apply py-2;
-}
+/* Table of contents styles */
+#visible-table-of-contents {
+  & a {
+    @apply inline-block border-l border-white py-2 pl-2.5 font-medium transition-none duration-200 after:ml-2 after:text-primary-700 after:opacity-0 after:transition-opacity after:duration-100 after:content-['#'] hover:border-gray-300 hover:text-gray-900 hover:after:opacity-100;
+  }
 
-#visible-table-of-contents ul ul li a {
-  @apply pl-6;
-}
+  & ul ul li a {
+    @apply pl-6;
+  }
 
-#visible-table-of-contents ul ul ul li a {
-  @apply pl-9;
-}
-
-#visible-table-of-contents a {
-  @apply inline-block border-l border-white pl-2.5 font-medium transition-none duration-200 after:ml-2 after:text-primary-700 after:opacity-0 after:transition-opacity after:duration-100 after:content-['#'] hover:border-gray-300 hover:text-gray-900 hover:after:opacity-100;
-}
-
-#mainContent > hr,
-#mainContent > div > hr {
-  @apply my-8 border-gray-200;
-}
-
-#mainContent > h1,
-#mainContent > div > h1 {
-  @apply mb-2 inline-block w-full text-3xl font-extrabold tracking-tight text-gray-900;
-}
-
-#mainContent > *:first-child {
-  @apply mt-0;
-}
-
-#mainContent > h2,
-#mainContent > div > h2 {
-  @apply relative mb-4 mt-8 text-2xl font-bold leading-tight text-gray-900;
-}
-
-#mainContent > h3,
-#mainContent > div > h3 {
-  @apply relative mb-4 mt-8 text-xl font-bold leading-tight text-gray-900;
-}
-
-#mainContent > h4,
-#mainContent > div > h4 {
-  @apply relative mb-4 mt-8 text-lg font-bold text-gray-900;
-}
-
-#mainContent > p,
-#mainContent > div > p {
-  @apply mb-4 text-base font-normal;
-}
-
-#mainContent > p > a,
-#mainContent > div > p > a,
-#mainContent > ul > li > a,
-#mainContent > div > ul > li > a,
-#mainContent > ol > li > a,
-#mainContent > div > ol > li > a {
-  @apply font-medium text-gray-900 underline decoration-primary-700 decoration-1 underline-offset-2;
-}
-
-#mainContent > p > code,
-#mainContent > ul > li > code,
-#mainContent > ol > li > code {
-  @apply whitespace-nowrap break-all rounded border border-primary-100 bg-gray-50 px-1 text-sm text-primary-700;
-  font-family:
-    Menlo,
-    ui-monospace,
-    SFMono-Regular,
-    Monaco,
-    Consolas,
-    Liberation Mono,
-    Courier New,
-    monospace;
-}
-
-#mainContent > p > a:hover,
-#mainContent > div > p > a:hover,
-#mainContent > ul > li > a:hover,
-#mainContent > div > ul > li > a:hover,
-#mainContent > ol > li > a:hover,
-#mainContent > div > ol > li > a:hover {
-  @apply decoration-2;
-}
-
-#mainContent > ul,
-#mainContent > div > ul {
-  @apply list-disc;
-}
-
-#mainContent > ol,
-#mainContent > div > ol {
-  @apply list-decimal;
-}
-
-#mainContent p > strong {
-  @apply text-gray-900;
-}
-
-#mainContent > ul,
-#mainContent > div > ul,
-#mainContent > ol,
-#mainContent > div > ol {
-  @apply mb-4 pl-4;
-}
-
-#mainContent > ul > li,
-#mainContent > div > ul > li,
-#mainContent > ol > li,
-#mainContent > div > ol > li {
-  @apply text-base font-normal text-gray-600;
+  & ul ul ul li a {
+    @apply pl-9;
+  }
 }
 
 /* prism styles */
@@ -441,64 +417,42 @@ code.language-html .token.comment {
     @apply border-gray-900 after:text-primary-700 hover:border-gray-700 hover:text-white;
   }
 
-  #mainContent > hr,
-  #mainContent > div > hr {
-    @apply border-gray-700;
-  }
+  #mainContent {
+    /* Headings */
+    & h1,
+    & h2,
+    & h3,
+    & h4 {
+      @apply text-white;
+    }
 
-  #mainContent > h1,
-  #mainContent > div > h1 {
-    @apply text-white;
-  }
+    /* Text content */
+    & p {
+      @apply text-gray-400;
+    }
 
-  #mainContent > h2,
-  #mainContent > div > h2 {
-    @apply text-white;
-  }
+    & ul,
+    & ol {
+      @apply text-gray-400;
+    }
 
-  #mainContent > h3,
-  #mainContent > div > h3 {
-    @apply text-white;
-  }
+    & li {
+      @apply text-gray-400;
+    }
 
-  #mainContent > h4,
-  #mainContent > div > h4 {
-    @apply text-white;
-  }
+    /* Links */
+    & a {
+      @apply text-white decoration-primary-700;
 
-  #mainContent > p > a,
-  #mainContent > div > p > a,
-  #mainContent > ul > li > a,
-  #mainContent > div > ul > li > a,
-  #mainContent > ol > li > a,
-  #mainContent > div > ol > li > a {
-    @apply text-white decoration-primary-700;
-  }
+      &:hover {
+        @apply text-white;
+      }
+    }
 
-  #mainContent > p > code,
-  #mainContent > ul > li > code,
-  #mainContent > ol > li > code {
-    @apply border-gray-700 bg-gray-800 text-primary-400;
-  }
-
-  #mainContent > p > a:hover,
-  #mainContent > div > p > a:hover,
-  #mainContent > ul > li > a:hover,
-  #mainContent > div > ul > li > a:hover,
-  #mainContent > ol > li > a:hover,
-  #mainContent > div > ol > li > a:hover {
-    @apply text-white;
-  }
-
-  #mainContent p > strong {
-    @apply text-white;
-  }
-
-  #mainContent > ul > li,
-  #mainContent > div > ul > li,
-  #mainContent > ol > li,
-  #mainContent > div > ol > li {
-    @apply text-gray-400;
+    /* Inline code */
+    & :not(pre) > code {
+      @apply border-gray-800 bg-gray-900 text-primary-400;
+    }
   }
 
   /* prism styles */
