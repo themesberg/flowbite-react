@@ -3,11 +3,11 @@ title: Configuration - Flowbite React
 description: Learn how to configure Flowbite React using the config.json file to control component styles, automatic class generation, and more
 ---
 
-# Configuration File
+## Configuration File
 
 The `.flowbite-react/config.json` file is a central configuration file that controls how Flowbite React generates and manages component styles. This guide explains its structure, features, and how it affects your application's behavior.
 
-## Schema
+### Schema
 
 The configuration file follows this JSON Schema:
 
@@ -37,9 +37,9 @@ The configuration file follows this JSON Schema:
 }
 ```
 
-## Properties
+### Properties
 
-### `components`
+#### `components`
 
 - Type: `string[]`
 - Default: `[]`
@@ -49,7 +49,7 @@ The configuration file follows this JSON Schema:
   - Use `"*"` to explicitly include all components (equivalent to listing every component)
   - When not using `"*"`, use valid component names (e.g., `Button`, `Card`, `Modal`). See the [schema](https://unpkg.com/flowbite-react/schema.json) for the full list of valid components.
 
-### `prefix`
+#### `prefix`
 
 - Type: `string`
 - Default: `""`
