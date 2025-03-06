@@ -26,7 +26,7 @@ const components: MDXComponents = {
   },
   ul: (props) => <List {...props} />,
   ol: (props) => <List ordered {...props} />,
-  li: (props) => <ListItem className="text-gray-500 dark:text-gray-400" {...props} />,
+  li: (props) => <ListItem {...props} />,
   // TODO: revisit
   h2: (props) => (
     <h2 className="group relative z-20 scroll-mt-20 text-2xl font-bold text-gray-900 dark:text-white" {...props}>

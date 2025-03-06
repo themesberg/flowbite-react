@@ -45,7 +45,7 @@ function GuideCard({ name, slug, logo, invert, className }: Guide) {
   return (
     <Link
       href={slug}
-      className="flex h-40 flex-col items-center justify-center gap-3 rounded-lg border border-gray-200 text-center shadow-sm hover:border-gray-300 hover:shadow-md dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500 dark:hover:shadow-lg-light"
+      className="flex h-40 flex-col items-center justify-center gap-3 rounded-lg border border-gray-200 text-center !no-underline shadow-sm hover:border-gray-300 hover:shadow-md dark:border-gray-600 dark:bg-gray-800 dark:hover:border-gray-500 dark:hover:shadow-lg-light"
     >
       <Image
         src={`/logos/${logo}`}
