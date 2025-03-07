@@ -1,0 +1,150 @@
+---
+title: Use with Farm - Flowbite React
+description: Learn how to install Flowbite React with Farm
+---
+
+This guide provides three ways to integrate Flowbite React with Farm:
+
+1. [Quick Start](#quick-start): Create a new project with everything pre-configured
+2. [Add to Existing Project](#add-to-existing-project): Add Flowbite React to an existing Farm project
+3. [Manual Setup](#manual-setup): Set up everything from scratch manually
+
+<TextDivider>Quick Start (Recommended)</TextDivider>
+
+## Quick Start
+
+The fastest way to get started is using our project creation CLI, which sets up a new Farm project with Flowbite React, Tailwind CSS, and all necessary configurations:
+
+```bash
+npm create flowbite-react@latest -- --template farm
+```
+
+This will:
+
+- Create a new Farm project
+- Install and configure Tailwind CSS
+- Set up Flowbite React with all required dependencies
+- Configure dark mode support
+- Set up example components
+
+<TextDivider>Add to Existing Project</TextDivider>
+
+## Add to Existing Project
+
+If you already have a Farm project and want to add Flowbite React, you can use our initialization CLI:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will automatically:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Set up necessary configurations
+
+<TextDivider>Manual Setup</TextDivider>
+
+## Manual Setup
+
+If you prefer to set everything up manually or need more control over the configuration, follow these steps:
+
+### 1. Create Project
+
+Create a new Farm project:
+
+```bash
+npm create farm@latest farm-project
+cd farm-project
+```
+
+When prompted:
+
+- Select "React"
+
+Install PostCSS:
+
+```bash
+npm install @farmfe/js-plugin-postcss postcss
+```
+
+Add `@farmfe/js-plugin-postcss` to your `farm.config.ts` file:
+
+```ts {3,6}
+// farm.config.ts
+import { defineConfig } from "@farmfe/core";
+import farmPluginPostcss from "@farmfe/js-plugin-postcss";
+
+export default defineConfig({
+  plugins: ["@farmfe/plugin-react", farmPluginPostcss()],
+});
+```
+
+### 2. Configure Tailwind CSS
+
+Install Tailwind CSS and its dependencies:
+
+```bash
+npm install tailwindcss @tailwindcss/postcss
+```
+
+Create a `postcss.config.mjs` file:
+
+```bash
+touch postcss.config.mjs
+```
+
+Add `@tailwindcss/postcss` to your `postcss.config.mjs` file:
+
+```js
+// postcss.config.mjs
+export default {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+```
+
+Update the css file `src/index.css` to include Tailwind CSS:
+
+```css
+@import "tailwindcss";
+```
+
+### 3. Install Flowbite React
+
+Install Flowbite React:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Configure Vite to include Flowbite React plugin
+
+## Try it out
+
+Now that you have successfully installed Flowbite React you can start using the components from the library:
+
+```tsx
+// src/main.tsx
+import { Button } from "flowbite-react";
+
+export function Main() {
+  return (
+    <>
+      <Button>Click me</Button>
+    </>
+  );
+}
+```
+
+<hr />
+
+## Templates
+
+- [Github](https://github.com/themesberg/flowbite-react-template-farm)
+- [StackBlitz](https://stackblitz.com/edit/flowbite-react-template-farm)
