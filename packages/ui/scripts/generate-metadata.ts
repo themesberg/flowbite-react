@@ -210,7 +210,8 @@ async function generateSchema(components: string[]): Promise<void> {
       type: "object",
       properties: {
         components: {
-          description: "Array of component names",
+          description:
+            "List of component names to generate styles for. Empty array enables automatic detection. \nSee https://flowbite-react.com/docs/customize/config#components for more details.",
           type: "array",
           items: {
             type: "string",
@@ -219,7 +220,8 @@ async function generateSchema(components: string[]): Promise<void> {
           uniqueItems: true,
         },
         prefix: {
-          description: "Prefix string for the components",
+          description:
+            "Optional prefix to apply to all Tailwind CSS classes. \nSee https://flowbite-react.com/docs/customize/config#prefix for more details.",
           type: "string",
         },
       },
