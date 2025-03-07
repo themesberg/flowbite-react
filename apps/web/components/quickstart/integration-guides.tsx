@@ -29,6 +29,7 @@ const GUIDES: Guide[] = [
   { name: "RSPack", slug: "/docs/guides/rspack", logo: "rspack.svg" },
   { name: "TanStack Router", slug: "/docs/guides/tanstack-router", logo: "tanstack.png" },
   { name: "TanStack Start", slug: "/docs/guides/tanstack-start", logo: "tanstack.png" },
+  { name: "Vike", slug: "/docs/guides/vike", logo: "vike.svg" },
   { name: "Vite", slug: "/docs/guides/vite", logo: "vite.svg" },
   { name: "Webpack", slug: "/docs/guides/webpack", logo: "webpack.svg" },
 ];

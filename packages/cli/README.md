@@ -90,5 +90,6 @@ Check out the full list of [official `flowbite-react` template examples](https:/
 | `rspack`          | RSPack          | https://github.com/themesberg/flowbite-react-template-rspack          |
 | `tanstack-router` | TanStack Router | https://github.com/themesberg/flowbite-react-template-tanstack-router |
 | `tanstack-start`  | TanStack Start  | https://github.com/themesberg/flowbite-react-template-tanstack-start  |
+| `vike`            | Vike            | https://github.com/themesberg/flowbite-react-template-vike            |
 | `vite`            | Vite            | https://github.com/themesberg/flowbite-react-template-vite            |
 | `webpack`         | Webpack         | https://github.com/themesberg/flowbite-react-template-webpack         |
