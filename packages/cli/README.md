@@ -71,13 +71,24 @@ Check out the full list of [official `flowbite-react` template examples](https:/
 
 ## Templates
 
-| \<name>     | Full name | URL                                                             |
-| ----------- | --------- | --------------------------------------------------------------- |
-| `nextjs`    | Next.js   | https://github.com/themesberg/flowbite-react-template-nextjs    |
-| `remix`     | Remix     | https://github.com/themesberg/flowbite-react-template-remix     |
-| `astro`     | Astro     | https://github.com/themesberg/flowbite-react-template-astro     |
-| `gatsby`    | Gatsby    | https://github.com/themesberg/flowbite-react-template-gatsby    |
-| `redwoodjs` | RedwoodJS | https://github.com/themesberg/flowbite-react-template-redwoodjs |
-| `laravel`   | Laravel   | https://github.com/themesberg/flowbite-react-template-laravel   |
-| `vite`      | Vite      | https://github.com/themesberg/flowbite-react-template-vite      |
-| `parcel`    | Parcel    | https://github.com/themesberg/flowbite-react-template-parcel    |
+| \<name>           | Full name       | URL                                                                   |
+| ----------------- | --------------- | --------------------------------------------------------------------- |
+| `adonis-js`       | AdonisJS        | https://github.com/themesberg/flowbite-react-template-adonis-js       |
+| `astro`           | Astro           | https://github.com/themesberg/flowbite-react-template-astro           |
+| `bun`             | Bun             | https://github.com/themesberg/flowbite-react-template-bun             |
+| `esbuild`         | ESBuild         | https://github.com/themesberg/flowbite-react-template-esbuild         |
+| `farm`            | Farm            | https://github.com/themesberg/flowbite-react-template-farm            |
+| `gatsby`          | Gatsby          | https://github.com/themesberg/flowbite-react-template-gatsby          |
+| `laravel`         | Laravel         | https://github.com/themesberg/flowbite-react-template-laravel         |
+| `modern-js`       | Modern.js       | https://github.com/themesberg/flowbite-react-template-modern-js       |
+| `next-js`         | Next.js         | https://github.com/themesberg/flowbite-react-template-next-js         |
+| `parcel`          | Parcel          | https://github.com/themesberg/flowbite-react-template-parcel          |
+| `react-router`    | React Router    | https://github.com/themesberg/flowbite-react-template-react-router    |
+| `redwood-js`      | RedwoodJS       | https://github.com/themesberg/flowbite-react-template-redwood-js      |
+| `remix`           | Remix           | https://github.com/themesberg/flowbite-react-template-remix           |
+| `rsbuild`         | RSBuild         | https://github.com/themesberg/flowbite-react-template-rsbuild         |
+| `rspack`          | RSPack          | https://github.com/themesberg/flowbite-react-template-rspack          |
+| `tanstack-router` | TanStack Router | https://github.com/themesberg/flowbite-react-template-tanstack-router |
+| `tanstack-start`  | TanStack Start  | https://github.com/themesberg/flowbite-react-template-tanstack-start  |
+| `vite`            | Vite            | https://github.com/themesberg/flowbite-react-template-vite            |
+| `webpack`         | Webpack         | https://github.com/themesberg/flowbite-react-template-webpack         |
