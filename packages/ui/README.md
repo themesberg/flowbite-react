@@ -103,16 +103,16 @@ This will set up all necessary dependencies and configurations in your existing 
 
 To integrate `flowbite-react` with your preferred framework or technology stack, follow our official integration guides:
 
-- [AdonisJS](https://www.flowbite-react.com/docs/guides/adonis-js)
+- [AdonisJS](https://www.flowbite-react.com/docs/guides/adonisjs)
 - [Astro](https://www.flowbite-react.com/docs/guides/astro)
 - [Farm](https://www.flowbite-react.com/docs/guides/farm)
 - [Gatsby](https://www.flowbite-react.com/docs/guides/gatsby)
 - [Laravel](https://www.flowbite-react.com/docs/guides/laravel)
-- [Modern.js](https://www.flowbite-react.com/docs/guides/modern-js)
-- [Next.js](https://www.flowbite-react.com/docs/guides/next-js)
+- [Modern.js](https://www.flowbite-react.com/docs/guides/modernjs)
+- [Next.js](https://www.flowbite-react.com/docs/guides/nextjs)
 - [Parcel](https://www.flowbite-react.com/docs/guides/parcel)
 - [React Router](https://www.flowbite-react.com/docs/guides/react-router)
-- [RedwoodJS](https://www.flowbite-react.com/docs/guides/redwood-js)
+- [RedwoodJS](https://www.flowbite-react.com/docs/guides/redwoodjs)
 - [Remix](https://www.flowbite-react.com/docs/guides/remix)
 - [RSBuild](https://www.flowbite-react.com/docs/guides/rsbuild)
 - [RSPack](https://www.flowbite-react.com/docs/guides/rspack)

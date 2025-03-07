@@ -73,18 +73,18 @@ Check out the full list of [official `flowbite-react` template examples](https:/
 
 | \<name>           | Full name       | URL                                                                   |
 | ----------------- | --------------- | --------------------------------------------------------------------- |
-| `adonis-js`       | AdonisJS        | https://github.com/themesberg/flowbite-react-template-adonis-js       |
+| `adonisjs`        | AdonisJS        | https://github.com/themesberg/flowbite-react-template-adonisjs        |
 | `astro`           | Astro           | https://github.com/themesberg/flowbite-react-template-astro           |
 | `bun`             | Bun             | https://github.com/themesberg/flowbite-react-template-bun             |
 | `esbuild`         | ESBuild         | https://github.com/themesberg/flowbite-react-template-esbuild         |
 | `farm`            | Farm            | https://github.com/themesberg/flowbite-react-template-farm            |
 | `gatsby`          | Gatsby          | https://github.com/themesberg/flowbite-react-template-gatsby          |
 | `laravel`         | Laravel         | https://github.com/themesberg/flowbite-react-template-laravel         |
-| `modern-js`       | Modern.js       | https://github.com/themesberg/flowbite-react-template-modern-js       |
-| `next-js`         | Next.js         | https://github.com/themesberg/flowbite-react-template-next-js         |
+| `modernjs`        | Modern.js       | https://github.com/themesberg/flowbite-react-template-modernjs        |
+| `nextjs`          | Next.js         | https://github.com/themesberg/flowbite-react-template-nextjs          |
 | `parcel`          | Parcel          | https://github.com/themesberg/flowbite-react-template-parcel          |
 | `react-router`    | React Router    | https://github.com/themesberg/flowbite-react-template-react-router    |
-| `redwood-js`      | RedwoodJS       | https://github.com/themesberg/flowbite-react-template-redwood-js      |
+| `redwoodjs`       | RedwoodJS       | https://github.com/themesberg/flowbite-react-template-redwoodjs       |
 | `remix`           | Remix           | https://github.com/themesberg/flowbite-react-template-remix           |
 | `rsbuild`         | RSBuild         | https://github.com/themesberg/flowbite-react-template-rsbuild         |
 | `rspack`          | RSPack          | https://github.com/themesberg/flowbite-react-template-rspack          |

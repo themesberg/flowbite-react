@@ -4,7 +4,7 @@ export const REPOS: { key: string; name: string; url: string }[] = [
   {
     key: "adonisjs",
     name: "AdonisJS",
-    url: "https://github.com/themesberg/flowbite-react-template-adonis-js.git",
+    url: "https://github.com/themesberg/flowbite-react-template-adonisjs.git",
   },
   {
     key: "astro",
@@ -39,12 +39,12 @@ export const REPOS: { key: string; name: string; url: string }[] = [
   {
     key: "modernjs",
     name: "Modern.js",
-    url: "https://github.com/themesberg/flowbite-react-template-modern-js.git",
+    url: "https://github.com/themesberg/flowbite-react-template-modernjs.git",
   },
   {
     key: "nextjs",
     name: "Next.js",
-    url: "https://github.com/themesberg/flowbite-react-template-next-js.git",
+    url: "https://github.com/themesberg/flowbite-react-template-nextjs.git",
   },
   {
     key: "parcel",
@@ -59,7 +59,7 @@ export const REPOS: { key: string; name: string; url: string }[] = [
   {
     key: "redwoodjs",
     name: "RedwoodJS",
-    url: "https://github.com/themesberg/flowbite-react-template-redwood-js.git",
+    url: "https://github.com/themesberg/flowbite-react-template-redwoodjs.git",
   },
   {
     key: "remix",
