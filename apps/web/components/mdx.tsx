@@ -13,7 +13,7 @@ const components: MDXComponents = {
   TextDivider,
   IntegrationGuides,
   a: ({ ref, href = "", ...props }) => {
-    const isLocal = href.startsWith("/");
+    const isLocal = href.startsWith("/") || href.startsWith("#");
 
     return (
       <Link
