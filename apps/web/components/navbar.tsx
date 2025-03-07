@@ -14,12 +14,12 @@ export function NavbarLinks() {
       >
         Docs
       </Link>
-      <a
+      <Link
         href="/docs/getting-started/quickstart"
         className="rounded-lg p-2.5 text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-gray-300 dark:hover:text-primary-500"
       >
         Quickstart
-      </a>
+      </Link>
       <a
         rel="noopener"
         target="_blank"
