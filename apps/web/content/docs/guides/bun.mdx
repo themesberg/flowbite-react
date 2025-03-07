@@ -1,0 +1,120 @@
+---
+title: Use with Bun - Flowbite React
+description: Learn how to install and set up Flowbite React in your Bun project and start building modern web applications with interactive components
+---
+
+This guide provides three ways to integrate Flowbite React with Bun:
+
+1. [Quick Start](#quick-start): Create a new project with everything pre-configured
+2. [Add to Existing Project](#add-to-existing-project): Add Flowbite React to an existing Bun project
+3. [Manual Setup](#manual-setup): Set up everything from scratch manually
+
+<TextDivider>Quick Start (Recommended)</TextDivider>
+
+## Quick Start
+
+The fastest way to get started is using our project creation CLI, which sets up a new Bun project with Flowbite React, Tailwind CSS, and all necessary configurations:
+
+```bash
+npx create-flowbite-react@latest --template bun
+```
+
+This will:
+
+- Create a new Bun project
+- Install and configure Tailwind CSS
+- Set up Flowbite React with all required dependencies
+- Configure development and build scripts
+- Set up example components
+
+<TextDivider>Add to Existing Project</TextDivider>
+
+## Add to Existing Project
+
+If you already have a Bun project and want to add Flowbite React, you can use our initialization CLI:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will automatically:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Set up necessary build configurations
+
+<TextDivider>Manual Setup</TextDivider>
+
+## Manual Setup
+
+If you prefer to set everything up manually or need more control over the configuration, follow these steps:
+
+### 1. Create Bun Project
+
+Create a new Bun project with React and Tailwind CSS:
+
+```bash
+mkdir my-app && cd my-app
+bun init
+```
+
+When prompted:
+
+- Select "React" for the project template
+- Select "TailwindCSS" for the React template
+
+### 2. Install Flowbite React
+
+Install Flowbite React:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Configure Bun to include Flowbite React plugin
+- Set up necessary build configurations
+
+### 3. Configure Dark Mode
+
+Add the `ThemeModeScript` component to prevent dark mode flickering:
+
+```tsx
+// src/main.tsx
+import { ThemeModeScript } from "flowbite-react";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+
+import "./index.css";
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <React.StrictMode>
+    <ThemeModeScript />
+    <App />
+  </React.StrictMode>,
+);
+```
+
+## Try it out
+
+Now that you have successfully installed Flowbite React you can start using the components from the library:
+
+```tsx
+// src/App.tsx
+import { Button } from "flowbite-react";
+
+export default function App() {
+  return <Button>Click me</Button>;
+}
+```
+
+<hr />
+
+## Templates
+
+- [Github](https://github.com/themesberg/flowbite-react-template-bun)
+- [StackBlitz](https://stackblitz.com/edit/flowbite-react-template-bun)
