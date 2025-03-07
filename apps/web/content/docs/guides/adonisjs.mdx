@@ -57,17 +57,15 @@ Create a new AdonisJS project with Inertia.js and React support:
 npx create-adonisjs@latest -K=inertia --adapter=react
 ```
 
-### 2. Install Dependencies
+### 2. Set Up Tailwind CSS
 
-Install `@tailwindcss/vite` and its peer dependencies:
+First, install Tailwind CSS and its Vite plugin:
 
 ```bash
 npm install tailwindcss @tailwindcss/vite
 ```
 
-### 3. Configure Tailwind CSS
-
-Add the `@tailwindcss/vite` plugin to your Vite configuration:
+Then, configure the Vite plugin in your configuration:
 
 ```js {3,8}
 // vite.config.ts
@@ -108,7 +106,7 @@ Make sure your compiled CSS is included in the `<head>`:
 </html>
 ```
 
-### 4. Install Flowbite React
+### 3. Install Flowbite React
 
 Install Flowbite React:
 
@@ -122,7 +120,7 @@ This will:
 - Configure Tailwind CSS to include Flowbite React plugin
 - Configure Vite to include Flowbite React plugin
 
-### 5. Configure Dark Mode
+### 4. Configure Dark Mode
 
 Add the `ThemeModeScript` component to prevent dark mode flickering:
 
