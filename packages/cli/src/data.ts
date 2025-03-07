@@ -87,6 +87,11 @@ export const REPOS: { key: string; name: string; url: string }[] = [
     url: "https://github.com/themesberg/flowbite-react-template-tanstack-start.git",
   },
   {
+    key: "vike",
+    name: "Vike",
+    url: "https://github.com/themesberg/flowbite-react-template-vike.git",
+  },
+  {
     key: "vite",
     name: "Vite",
     url: "https://github.com/themesberg/flowbite-react-template-vite.git",
