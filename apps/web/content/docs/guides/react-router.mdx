@@ -1,0 +1,179 @@
+---
+title: Use with React Router - Flowbite React
+description: Learn how to install Flowbite React with React Router
+---
+
+React Router v7 can be used either as a framework or as a library. This guide covers both approaches and provides three ways to integrate Flowbite React with each mode:
+
+1. [Quick Start](#quick-start): Create a new project with everything pre-configured
+2. [Add to Existing Project](#add-to-existing-project): Add Flowbite React to an existing React Router project
+3. [Manual Setup](#manual-setup): Set up everything from scratch manually
+
+<TextDivider>Quick Start (Recommended)</TextDivider>
+
+## Quick Start
+
+The fastest way to get started is using our project creation CLI, which sets up a new React Router project with Flowbite React, Tailwind CSS, and all necessary configurations:
+
+```bash
+npx create-flowbite-react@latest --template react-router
+```
+
+This will:
+
+- Create a new React Router project
+- Install and configure Tailwind CSS
+- Set up Flowbite React with all required dependencies
+- Configure dark mode support
+- Set up example components and routes
+
+<TextDivider>Add to Existing Project</TextDivider>
+
+## Add to Existing Project
+
+If you already have a React Router project and want to add Flowbite React, you can use our initialization CLI:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will automatically:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Set up necessary configurations
+
+<TextDivider>Manual Setup</TextDivider>
+
+## Manual Setup
+
+If you prefer to set everything up manually, follow these steps:
+
+### 1. Choose Your Mode
+
+#### Framework Mode Setup:
+
+See [React Router as a Framework](https://reactrouter.com/home#react-router-as-a-framework) for more information.
+
+```bash
+npx create-react-router@latest my-app
+cd my-app
+```
+
+#### Library Mode Setup:
+
+See [React Router as a Library](https://reactrouter.com/home#react-router-as-a-library) for more information.
+
+```bash
+npx create-vite@latest my-app
+cd my-app
+```
+
+When prompted, select the "React" option.
+
+Install React Router:
+
+```bash
+npm install react-router
+```
+
+Set up React Router by updating your `src/main.tsx` file to use the `BrowserRouter` component:
+
+```tsx {4, 10-12}
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter } from "react-router";
+import App from "./App";
+
+import "./index.css";
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
+);
+```
+
+#### Configure Tailwind CSS with Vite (Library Mode)
+
+Since the library mode doesn't include Tailwind CSS by default, you'll need to set it up manually:
+
+1. Install Tailwind CSS and its Vite plugin:
+
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
+
+2. Configure the Vite plugin in your `vite.config.ts`:
+
+```ts {1,7}
+import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+});
+```
+
+3. Add Tailwind CSS to your CSS file (`src/index.css`):
+
+```css
+@import "tailwindcss";
+```
+
+### 2. Install Flowbite React
+
+Install Flowbite React:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Configure Vite to include Flowbite React plugin
+
+## Try it out
+
+### Framework Mode Example
+
+```tsx
+// app/routes/home.tsx
+import { Button } from "flowbite-react";
+
+export default function Home() {
+  return (
+    <>
+      <Button>Click me</Button>
+    </>
+  );
+}
+```
+
+### Library Mode Example
+
+```tsx
+// src/App.tsx
+import { Button } from "flowbite-react";
+
+export default function App() {
+  return (
+    <>
+      <Button>Click me</Button>
+    </>
+  );
+}
+```
+
+<hr />
+
+## Templates
+
+- [Github](https://github.com/themesberg/flowbite-react-template-react-router)
+- [StackBlitz](https://stackblitz.com/edit/flowbite-react-template-react-router)
