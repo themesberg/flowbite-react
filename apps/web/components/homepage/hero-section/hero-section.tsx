@@ -20,7 +20,7 @@ export function HeroSection() {
                 and based on the Flowbite Design System.
               </p>
               <div className="mt-2 grid grid-cols-1 items-center justify-center gap-4 sm:grid-cols-2 sm:gap-6 [&>div:first-child]:w-full">
-                <CopyPackageInput value="npm create flowbite-react@latest" />
+                <CopyPackageInput value="npx create-flowbite-react@latest" />
                 <div className="justify-center sm:flex sm:justify-start">
                   <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
                     <Button
@@ -29,7 +29,7 @@ export function HeroSection() {
                       className="w-full whitespace-nowrap"
                       href="/docs/getting-started/introduction"
                     >
-                      Get started <HiOutlineArrowRight className="ml-2 mt-1 size-4" />
+                      Get started <HiOutlineArrowRight className="ml-2 size-4" />
                     </Button>
                   </div>
                 </div>
