@@ -18,10 +18,21 @@ import { resolveProps } from "flowbite-react/helpers/resolve-props";
 import { useResolveTheme } from "flowbite-react/helpers/resolve-theme";
 import { twMerge } from "flowbite-react/helpers/tailwind-merge";
 import { useThemeProvider } from "flowbite-react/theme/provider";
-import type { FlowbiteColors, ThemingProps } from "flowbite-react/types";
+import type { ThemingProps } from "flowbite-react/types";
 import { forwardRef, type ComponentProps } from "react";
 
-// 1. Theme structure
+// 1. Extend the FlowbiteTheme and FlowbiteProps interfaces
+declare module "flowbite-react/types" {
+  interface FlowbiteTheme {
+    myComponent: MyComponentTheme;
+  }
+
+  interface FlowbiteProps {
+    myComponent: Partial<WithoutThemingProps<MyComponentProps>>;
+  }
+}
+
+// 2. Theme structure
 export interface MyComponentTheme {
   base: string;
   color: MyComponentColors;
@@ -33,8 +44,8 @@ export interface MyComponentColors {
   error: string;
 }
 
-// 2. Default theme
-const myComponentTheme = createTheme<MyComponentTheme>({
+// 3. Default theme
+export const myComponentTheme = createTheme<MyComponentTheme>({
   base: "flex items-center font-medium",
   color: {
     info: "text-blue-600",
@@ -43,12 +54,12 @@ const myComponentTheme = createTheme<MyComponentTheme>({
   },
 });
 
-// 3. Props
+// 4. Props
 export interface MyComponentProps extends ComponentProps<"div">, ThemingProps<MyComponentTheme> {
   color?: keyof MyComponentColors;
 }
 
-// 4. Component
+// 5. Component
 export const MyComponent = forwardRef<HTMLDivElement, MyComponentProps>((props, ref) => {
   // Get theme from provider
   const provider = useThemeProvider();
@@ -145,18 +156,30 @@ The component automatically supports:
 
 Let's break down the key parts of the component blueprint:
 
-### 1. Theme Structure
+### 1. Extend the FlowbiteTheme interface
+
+```tsx
+declare module "flowbite-react/types" {
+  interface FlowbiteTheme {
+    myComponent: MyComponentTheme;
+  }
+}
+```
+
+This is necessary to enable TypeScript type inference for your component's theme.
+
+### 2. Theme Structure
 
 ```tsx
 export interface MyComponentTheme {
   base: string;
-  color: FlowbiteColors;
+  color: MyComponentColors;
 }
 ```
 
 This interface defines the structure of your component's theme. It should include all the customizable style aspects of your component.
 
-### 2. Default Theme
+### 3. Default Theme
 
 ```tsx
 const myComponentTheme = createTheme<MyComponentTheme>({
@@ -171,11 +194,11 @@ const myComponentTheme = createTheme<MyComponentTheme>({
 
 The default theme provides the base styling for your component when no custom theme is applied. Using `createTheme` ensures type safety and enables Tailwind CSS IntelliSense.
 
-### 3. Props Interface
+### 4. Props Interface
 
 ```tsx
 export interface MyComponentProps extends ComponentProps<"div">, ThemingProps<MyComponentTheme> {
-  color?: keyof FlowbiteColors;
+  color?: keyof MyComponentColors;
 }
 ```
 
@@ -185,7 +208,7 @@ The props interface extends:
 - `ThemingProps<MyComponentTheme>` - Theme-related props (`theme`, `clearTheme`, `applyTheme`)
 - Custom props specific to your component
 
-### 4. Theme Resolution
+### 5. Theme Resolution
 
 ```tsx
 const theme = useResolveTheme(
@@ -201,7 +224,7 @@ The `useResolveTheme` hook handles the complex logic of:
 - Applying theme clearing
 - Controlling how themes are merged or replaced
 
-### 5. Props Resolution
+### 6. Props Resolution
 
 ```tsx
 const { children, color = "info", className, ...restProps } = resolveProps(props, provider.props?.myComponent);
