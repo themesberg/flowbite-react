@@ -48,9 +48,31 @@ function App() {
 }
 ```
 
-## Nested Themes
+## Theme Resolution and Inheritance
 
-You can nest `ThemeProvider` components to override themes for specific sections of your app. By default, nested themes are merged with their parent themes:
+The theming system follows this resolution order:
+
+1. Component-specific `clearTheme` prop
+2. Component-specific `theme` prop
+3. Nearest parent `ThemeProvider` theme
+4. Default component theme
+
+When using nested `ThemeProvider` components, the following rules apply:
+
+Unless `root={true}` is specified:
+
+- Child providers inherit and merge all theme values from their parent
+- They only override the specific values they define
+- Parent values for undefined properties are preserved
+
+When `root={true}` is specified:
+
+- The theme provider ignores all parent theme values
+- No merging occurs with parent themes
+- Only the specified theme and default theme values are used
+- This affects all theme-related props (`theme`, `clearTheme`, `applyTheme`) and component props
+
+## Nested Themes
 
 ```tsx
 import { Button, createTheme, ThemeProvider } from "flowbite-react";
@@ -89,8 +111,6 @@ function App() {
 ```
 
 ### Preventing Theme Inheritance
-
-Use the `root` prop to prevent a `ThemeProvider` from merging with its parent theme:
 
 ```tsx
 import { Button, createTheme, ThemeProvider } from "flowbite-react";
@@ -141,7 +161,7 @@ The theme system uses the following merging strategy:
 3. **Clear Theme Merging**: `clearTheme` values are deep merged between providers
 4. **Apply Theme Merging**: `applyTheme` configurations are deep merged between providers
 
-The use of `tailwind-merge` under the hood ensures:
+The use of `tailwind-merge` ensures:
 
 - Automatic conflict resolution between Tailwind CSS classes
 - Support for both Tailwind CSS v3 and v4 (automatically detected)
@@ -153,65 +173,249 @@ For example:
 ```tsx
 import { Button, createTheme, ThemeProvider } from "flowbite-react";
 
-const theme = createTheme({
+const baseTheme = createTheme({
   button: {
-    base: "bg-blue-500 p-2", // Base styles
+    base: "rounded-lg shadow-md",
     color: {
-      primary: "bg-red-500 px-4", // Will intelligently override bg-blue-500 and extend padding
+      primary: "bg-blue-500 text-white",
+    },
+  },
+});
+
+const customTheme = createTheme({
+  button: {
+    base: "border-2",
+    color: {
+      primary: "bg-red-500",
     },
   },
 });
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <Button color="primary">
-        {/* Results in: p-2 px-4 bg-red-500 */}
-        Smart Class Merging
+    <ThemeProvider theme={baseTheme}>
+      {/* Merges themes: rounded-lg shadow-md border-2 */}
+      <Button theme={customTheme.button}>Merged Styles</Button>
+
+      {/* Replaces base completely: only border-2 remains */}
+      <Button theme={customTheme.button} applyTheme={{ base: "replace" }}>
+        Replaced Base Style
+      </Button>
+
+      {/* Replaces color completely: loses text-white */}
+      <Button theme={customTheme.button} applyTheme={{ color: { primary: "replace" } }}>
+        Replaced Color
       </Button>
     </ThemeProvider>
   );
 }
 ```
 
-Unless `root={true}` is specified, a child `ThemeProvider` will:
+## Theme Modification Tools
 
-- Inherit and merge all theme values from its parent
-- Override only the specific values it defines
-- Preserve parent values for properties it doesn't define
+The combination of `theme`, `clearTheme`, and `applyTheme` props provides granular control over component styling. Here are examples showing different levels of customization:
+
+### Component Level Control
 
 ```tsx
-import { Button, createTheme, ThemeProvider } from "flowbite-react";
+import { Card, createTheme } from "flowbite-react";
 
-const parentTheme = createTheme({
-  button: {
-    base: "rounded-lg",
-    color: {
-      primary: "bg-blue-500",
+const cardTheme = createTheme({
+  card: {
+    root: {
+      base: "rounded-xl bg-white shadow-md",
+      children: "space-y-4 p-6",
     },
-  },
-});
-
-const childTheme = createTheme({
-  button: {
-    color: {
-      primary: "bg-red-500", // Overrides parent's primary color
-      // Inherits base: "rounded-lg" from parent
+    img: {
+      base: "rounded-t-xl",
+      horizontal: "h-full w-full rounded-l-xl",
     },
   },
 });
 
 function App() {
   return (
-    <ThemeProvider theme={parentTheme}>
-      <Button>Rounded Blue Button</Button>
-      <ThemeProvider theme={childTheme}>
-        <Button>Rounded Red Button</Button> {/* Still rounded from parent */}
-      </ThemeProvider>
+    <>
+      {/* Basic theme override */}
+      <Card theme={cardTheme.card}>Basic Theme Override</Card>
+
+      {/* Clear specific nested properties */}
+      <Card
+        theme={cardTheme.card}
+        clearTheme={{
+          root: { children: true }, // Clear only padding and spacing
+          img: { horizontal: true }, // Clear horizontal image styles
+        }}
+      >
+        Selective Clearing
+      </Card>
+
+      {/* Control how new styles are applied */}
+      <Card
+        theme={cardTheme.card}
+        applyTheme={{
+          root: { base: "replace" }, // Replace entire base styles
+          img: { base: "merge" }, // Merge with existing image styles
+        }}
+      >
+        Controlled Style Application
+      </Card>
+
+      {/* Combining all three props */}
+      <Card theme={cardTheme.card} clearTheme={{ root: { children: true } }} applyTheme={{ img: { base: "replace" } }}>
+        Complex Style Control
+      </Card>
+    </>
+  );
+}
+```
+
+### Nested Component Control
+
+```tsx
+import { createTheme, Navbar, NavbarCollapse, NavbarLink, ThemeProvider } from "flowbite-react";
+
+const navTheme = createTheme({
+  navbar: {
+    root: {
+      base: "bg-white shadow-lg",
+    },
+    collapse: {
+      base: "w-full md:block md:w-auto",
+      list: "mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8",
+    },
+    link: {
+      base: "block px-3 py-2",
+      active: {
+        on: "text-blue-600",
+        off: "text-gray-900",
+      },
+    },
+  },
+});
+
+function App() {
+  return (
+    <ThemeProvider theme={navTheme}>
+      <Navbar>
+        {/* Control collapse styles */}
+        <NavbarCollapse
+          clearTheme={{ list: true }} // Remove default list styles
+          applyTheme={{ base: "replace" }} // Replace base styles
+        >
+          {/* Control individual link styles */}
+          <NavbarLink
+            href="#"
+            active
+            theme={{
+              base: "font-medium",
+              active: {
+                on: "text-green-600", // Override active state
+              },
+            }}
+            applyTheme={{
+              active: { on: "merge" }, // Merge active state styles
+            }}
+          >
+            Custom Link
+          </NavbarLink>
+        </NavbarCollapse>
+      </Navbar>
     </ThemeProvider>
   );
 }
 ```
+
+### Form Components Control
+
+```tsx
+import { createTheme, Label, TextInput } from "flowbite-react";
+
+const formTheme = createTheme({
+  label: {
+    root: {
+      base: "text-sm font-medium",
+      disabled: "opacity-50",
+      colors: {
+        default: "text-gray-900",
+        error: "text-red-700",
+      },
+    },
+  },
+  textInput: {
+    base: "block w-full",
+    field: {
+      base: "rounded-lg border",
+      input: {
+        base: "px-3 py-2",
+        sizes: {
+          sm: "text-sm",
+          md: "text-base",
+        },
+        colors: {
+          gray: "border-gray-300 bg-gray-50",
+          error: "border-red-500 bg-red-50",
+        },
+      },
+    },
+  },
+});
+
+function App() {
+  return (
+    <form>
+      {/* Label with error state */}
+      <Label
+        theme={formTheme.label}
+        color="error"
+        clearTheme={{
+          root: { disabled: true }, // Remove disabled styles
+        }}
+      >
+        Email
+      </Label>
+
+      {/* Input with custom styling */}
+      <TextInput
+        theme={formTheme.textInput}
+        color="error"
+        size="sm"
+        applyTheme={{
+          field: {
+            input: {
+              colors: { error: "replace" }, // Replace error styles
+              sizes: { sm: "merge" }, // Merge size styles
+            },
+          },
+        }}
+      />
+
+      {/* Combining multiple controls */}
+      <TextInput
+        theme={formTheme.textInput}
+        clearTheme={{
+          field: {
+            input: { sizes: true }, // Remove all size variations
+          },
+        }}
+        applyTheme={{
+          base: "merge", // Merge base styles
+          field: { base: "replace" }, // Replace field base styles
+        }}
+      />
+    </form>
+  );
+}
+```
+
+These examples demonstrate how to:
+
+- Use nested theme properties for precise control
+- Clear specific style categories while preserving others
+- Control how new styles are merged or replaced
+- Combine multiple theme controls for complex customization
+- Handle component-specific theme variations
+- Manage state-dependent styles (active, disabled, etc.)
 
 ## Clearing Theme Values
 
@@ -327,7 +531,7 @@ function App() {
 The `applyTheme` prop is particularly useful when working with nested components:
 
 ```tsx
-import { createTheme, Navbar, ThemeProvider } from "flowbite-react";
+import { createTheme, Navbar, NavbarCollapse, NavbarLink, ThemeProvider } from "flowbite-react";
 
 const theme = createTheme({
   navbar: {
@@ -345,13 +549,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar>
-        <Navbar.Collapse
+        <NavbarCollapse
           applyTheme={{
             list: "replace", // Replace entire list styles
           }}
         >
-          <Navbar.Link href="#">Custom Layout</Navbar.Link>
-        </Navbar.Collapse>
+          <NavbarLink href="#">Custom Layout</NavbarLink>
+        </NavbarCollapse>
       </Navbar>
     </ThemeProvider>
   );
@@ -369,58 +573,6 @@ When both `clearTheme` and `applyTheme` are used, the resolution follows this or
 5. Fall back to default component theme
 
 This system provides complete control over theme inheritance and application while maintaining a predictable behavior.
-
-## Theme Inheritance Control
-
-The `ThemeProvider` component accepts a `root` boolean prop that controls theme inheritance:
-
-```tsx
-import { Button, createTheme, ThemeProvider } from "flowbite-react";
-
-const parentTheme = createTheme({
-  button: {
-    color: {
-      primary: "bg-blue-500 hover:bg-blue-600",
-    },
-    size: {
-      lg: "px-6 py-3",
-    },
-  },
-});
-
-const independentTheme = createTheme({
-  button: {
-    color: {
-      primary: "bg-green-500 hover:bg-green-600",
-    },
-  },
-});
-
-function App() {
-  return (
-    <ThemeProvider theme={parentTheme}>
-      <Button size="lg">Large Blue Button</Button>
-
-      {/* Without root prop - inherits and merges with parent */}
-      <ThemeProvider theme={independentTheme}>
-        <Button size="lg">{/* Uses green color from independentTheme and lg size from parentTheme */}</Button>
-      </ThemeProvider>
-
-      {/* With root={true} - completely independent from parent */}
-      <ThemeProvider theme={independentTheme} root>
-        <Button size="lg">{/* Only uses independentTheme, lg size falls back to default theme */}</Button>
-      </ThemeProvider>
-    </ThemeProvider>
-  );
-}
-```
-
-When `root={true}` is specified:
-
-- The theme provider ignores all parent theme values
-- No merging occurs with parent themes
-- Only the specified theme and default theme values are used
-- This affects all theme-related props (`theme`, `clearTheme`, `applyTheme`)
 
 ## Provider-Level Props
 
@@ -507,17 +659,6 @@ function App() {
 }
 ```
 
-## Theme Resolution
-
-The theming system follows this resolution order:
-
-1. Component-specific `clearTheme` prop
-2. Component-specific `theme` prop
-3. Nearest parent `ThemeProvider` theme
-4. Default component theme
-
-This allows you to create consistent designs while maintaining the flexibility to override styles when needed.
-
 ## Type Safety and IntelliSense
 
 The `createTheme` helper ensures type safety and enables Tailwind CSS IntelliSense in your IDE:
@@ -547,340 +688,4 @@ const buttonTheme = createTheme({
 
 This helps catch errors early and provides better development experience with auto-completion for Tailwind CSS classes.
 
-## Advanced Theme Control
-
-The combination of `theme`, `clearTheme`, and `applyTheme` props provides granular control over component styling. Here are examples showing different levels of customization:
-
-### Component Level Control
-
-```tsx
-import { Card, createTheme } from "flowbite-react";
-
-const cardTheme = createTheme({
-  card: {
-    root: {
-      base: "rounded-xl bg-white shadow-md",
-      children: "space-y-4 p-6",
-    },
-    img: {
-      base: "rounded-t-xl",
-      horizontal: "h-full w-full rounded-l-xl",
-    },
-  },
-});
-
-function App() {
-  return (
-    <>
-      {/* Basic theme override */}
-      <Card theme={cardTheme.card}>Basic Theme Override</Card>
-
-      {/* Clear specific nested properties */}
-      <Card
-        theme={cardTheme.card}
-        clearTheme={{
-          root: { children: true }, // Clear only padding and spacing
-          img: { horizontal: true }, // Clear horizontal image styles
-        }}
-      >
-        Selective Clearing
-      </Card>
-
-      {/* Control how new styles are applied */}
-      <Card
-        theme={cardTheme.card}
-        applyTheme={{
-          root: { base: "replace" }, // Replace entire base styles
-          img: { base: "merge" }, // Merge with existing image styles
-        }}
-      >
-        Controlled Style Application
-      </Card>
-
-      {/* Combining all three props */}
-      <Card theme={cardTheme.card} clearTheme={{ root: { children: true } }} applyTheme={{ img: { base: "replace" } }}>
-        Complex Style Control
-      </Card>
-    </>
-  );
-}
-```
-
-### Nested Component Control
-
-```tsx
-import { createTheme, Navbar, ThemeProvider } from "flowbite-react";
-
-const navTheme = createTheme({
-  navbar: {
-    root: {
-      base: "bg-white shadow-lg",
-    },
-    collapse: {
-      base: "w-full md:block md:w-auto",
-      list: "mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8",
-    },
-    link: {
-      base: "block px-3 py-2",
-      active: {
-        on: "text-blue-600",
-        off: "text-gray-900",
-      },
-    },
-  },
-});
-
-function App() {
-  return (
-    <ThemeProvider theme={navTheme}>
-      <Navbar>
-        {/* Control collapse styles */}
-        <Navbar.Collapse
-          clearTheme={{ list: true }} // Remove default list styles
-          applyTheme={{ base: "replace" }} // Replace base styles
-        >
-          {/* Control individual link styles */}
-          <Navbar.Link
-            href="#"
-            active
-            theme={{
-              base: "font-medium",
-              active: {
-                on: "text-green-600", // Override active state
-              },
-            }}
-            applyTheme={{
-              active: { on: "merge" }, // Merge active state styles
-            }}
-          >
-            Custom Link
-          </Navbar.Link>
-        </Navbar.Collapse>
-      </Navbar>
-    </ThemeProvider>
-  );
-}
-```
-
-### Form Components Control
-
-```tsx
-import { createTheme, Label, TextInput } from "flowbite-react";
-
-const formTheme = createTheme({
-  label: {
-    root: {
-      base: "text-sm font-medium",
-      disabled: "opacity-50",
-      colors: {
-        default: "text-gray-900",
-        error: "text-red-700",
-      },
-    },
-  },
-  textInput: {
-    base: "block w-full",
-    field: {
-      base: "rounded-lg border",
-      input: {
-        base: "px-3 py-2",
-        sizes: {
-          sm: "text-sm",
-          md: "text-base",
-        },
-        colors: {
-          gray: "border-gray-300 bg-gray-50",
-          error: "border-red-500 bg-red-50",
-        },
-      },
-    },
-  },
-});
-
-function App() {
-  return (
-    <form>
-      {/* Label with error state */}
-      <Label
-        theme={formTheme.label}
-        color="error"
-        clearTheme={{
-          root: { disabled: true }, // Remove disabled styles
-        }}
-      >
-        Email
-      </Label>
-
-      {/* Input with custom styling */}
-      <TextInput
-        theme={formTheme.textInput}
-        color="error"
-        size="sm"
-        applyTheme={{
-          field: {
-            input: {
-              colors: { error: "replace" }, // Replace error styles
-              sizes: { sm: "merge" }, // Merge size styles
-            },
-          },
-        }}
-      />
-
-      {/* Combining multiple controls */}
-      <TextInput
-        theme={formTheme.textInput}
-        clearTheme={{
-          field: {
-            input: { sizes: true }, // Remove all size variations
-          },
-        }}
-        applyTheme={{
-          base: "merge", // Merge base styles
-          field: { base: "replace" }, // Replace field base styles
-        }}
-      />
-    </form>
-  );
-}
-```
-
-These examples demonstrate how to:
-
-- Use nested theme properties for precise control
-- Clear specific style categories while preserving others
-- Control how new styles are merged or replaced
-- Combine multiple theme controls for complex customization
-- Handle component-specific theme variations
-- Manage state-dependent styles (active, disabled, etc.)
-
-## Creating Custom Components
-
-The Flowbite React theming system can be used to create your own themeable components. The system provides powerful utilities from `resolve-theme.ts` that handle theme resolution, merging, and inheritance.
-
-### Component Blueprint
-
-Here's a minimal blueprint for creating Flowbite React components:
-
-```tsx
-"use client";
-
-import type { FlowbiteColors, ThemingProps } from "flowbite-react";
-import { createTheme } from "flowbite-react/helpers/create-theme";
-import { get } from "flowbite-react/helpers/get";
-import { resolveProps } from "flowbite-react/helpers/resolve-props";
-import { useResolveTheme } from "flowbite-react/helpers/resolve-theme";
-import { twMerge } from "flowbite-react/helpers/tailwind-merge";
-import { useThemeProvider } from "flowbite-react/theme/provider";
-import { forwardRef, type ComponentProps } from "react";
-
-// 1. Theme structure
-export interface MyComponentTheme {
-  base: string;
-  color: FlowbiteColors;
-}
-
-// 2. Default theme
-const myComponentTheme = createTheme<MyComponentTheme>({
-  base: "flex items-center font-medium",
-  color: {
-    info: "text-blue-600",
-    success: "text-green-600",
-    error: "text-red-600",
-  },
-});
-
-// 3. Props
-export interface MyComponentProps extends ComponentProps<"div">, ThemingProps<MyComponentTheme> {
-  color?: keyof FlowbiteColors;
-}
-
-// 4. Component
-export const MyComponent = forwardRef<HTMLDivElement, MyComponentProps>((props, ref) => {
-  // Get theme from provider
-  const provider = useThemeProvider();
-
-  // Resolve theme with proper inheritance
-  const theme = useResolveTheme(
-    [myComponentTheme, provider.theme?.myComponent, props.theme],
-    [get(provider.clearTheme, "myComponent"), props.clearTheme],
-    [get(provider.applyTheme, "myComponent"), props.applyTheme],
-  );
-
-  // Resolve props with provider
-  const { children, color = "info", className, ...restProps } = resolveProps(props, provider.props?.myComponent);
-
-  return (
-    <div ref={ref} className={twMerge(theme.base, theme.color[color], className)} {...restProps}>
-      {children}
-    </div>
-  );
-});
-
-MyComponent.displayName = "MyComponent";
-```
-
-### Using the Component
-
-```tsx
-import { createTheme, ThemeProvider } from "flowbite-react";
-import { MyComponent } from "./MyComponent";
-
-// Custom theme
-const theme = createTheme({
-  myComponent: {
-    base: "flex items-center gap-2 rounded-lg p-2",
-    color: {
-      info: "bg-blue-100 text-blue-800",
-      success: "bg-green-100 text-green-800",
-      error: "bg-red-100 text-red-800",
-    },
-  },
-});
-
-function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      {/* Basic usage */}
-      <MyComponent>Default Component</MyComponent>
-
-      {/* With color */}
-      <MyComponent color="success">Success Component</MyComponent>
-
-      {/* With theme override */}
-      <MyComponent
-        theme={{
-          base: "flex items-center gap-4 rounded-full p-3",
-          color: {
-            info: "bg-purple-100 text-purple-800",
-          },
-        }}
-      >
-        Custom Theme
-      </MyComponent>
-
-      {/* With theme clearing */}
-      <MyComponent clearTheme={{ color: true }}>Default Color Theme</MyComponent>
-
-      {/* With theme application control */}
-      <MyComponent
-        theme={{
-          base: "shadow-lg",
-        }}
-        applyTheme={{
-          base: "merge", // Will merge with existing base styles
-        }}
-      >
-        Merged Styles
-      </MyComponent>
-    </ThemeProvider>
-  );
-}
-```
-
-The component automatically supports:
-
-- Global theme inheritance
-- Component-level overrides
-- Provider-level props
-- Theme clearing and applying
-- Type safety
+For information on how to create your own themeable components that work with this system, see the [Creating Custom Components](/docs/customize/custom-components) guide.

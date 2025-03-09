@@ -1,0 +1,285 @@
+---
+title: Creating Custom Components - Flowbite React
+description: Learn how to create your own themeable components using the Flowbite React theming system
+---
+
+The Flowbite React theming system can be used to create your own themeable components. The system provides powerful utilities from `resolve-theme.ts` that handle theme resolution, merging, and inheritance.
+
+## Component Blueprint
+
+Here's a minimal blueprint for creating Flowbite React components:
+
+```tsx
+"use client";
+
+import { createTheme } from "flowbite-react/helpers/create-theme";
+import { get } from "flowbite-react/helpers/get";
+import { resolveProps } from "flowbite-react/helpers/resolve-props";
+import { useResolveTheme } from "flowbite-react/helpers/resolve-theme";
+import { twMerge } from "flowbite-react/helpers/tailwind-merge";
+import { useThemeProvider } from "flowbite-react/theme/provider";
+import type { FlowbiteColors, ThemingProps } from "flowbite-react/types";
+import { forwardRef, type ComponentProps } from "react";
+
+// 1. Theme structure
+export interface MyComponentTheme {
+  base: string;
+  color: MyComponentColors;
+}
+
+export interface MyComponentColors {
+  info: string;
+  success: string;
+  error: string;
+}
+
+// 2. Default theme
+const myComponentTheme = createTheme<MyComponentTheme>({
+  base: "flex items-center font-medium",
+  color: {
+    info: "text-blue-600",
+    success: "text-green-600",
+    error: "text-red-600",
+  },
+});
+
+// 3. Props
+export interface MyComponentProps extends ComponentProps<"div">, ThemingProps<MyComponentTheme> {
+  color?: keyof MyComponentColors;
+}
+
+// 4. Component
+export const MyComponent = forwardRef<HTMLDivElement, MyComponentProps>((props, ref) => {
+  // Get theme from provider
+  const provider = useThemeProvider();
+
+  // Resolve theme with proper inheritance
+  const theme = useResolveTheme(
+    [myComponentTheme, provider.theme?.myComponent, props.theme],
+    [get(provider.clearTheme, "myComponent"), props.clearTheme],
+    [get(provider.applyTheme, "myComponent"), props.applyTheme],
+  );
+
+  // Resolve props with provider
+  const { children, color = "info", className, ...restProps } = resolveProps(props, provider.props?.myComponent);
+
+  return (
+    <div ref={ref} className={twMerge(theme.base, theme.color[color], className)} {...restProps}>
+      {children}
+    </div>
+  );
+});
+
+MyComponent.displayName = "MyComponent";
+```
+
+## Using the Component
+
+```tsx
+import { createTheme, ThemeProvider } from "flowbite-react";
+import { MyComponent } from "./MyComponent";
+
+// Custom theme
+const theme = createTheme({
+  myComponent: {
+    base: "flex items-center gap-2 rounded-lg p-2",
+    color: {
+      info: "bg-blue-100 text-blue-800",
+      success: "bg-green-100 text-green-800",
+      error: "bg-red-100 text-red-800",
+    },
+  },
+});
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      {/* Basic usage */}
+      <MyComponent>Default Component</MyComponent>
+
+      {/* With color */}
+      <MyComponent color="success">Success Component</MyComponent>
+
+      {/* With theme override */}
+      <MyComponent
+        theme={{
+          base: "flex items-center gap-4 rounded-full p-3",
+          color: {
+            info: "bg-purple-100 text-purple-800",
+          },
+        }}
+      >
+        Custom Theme
+      </MyComponent>
+
+      {/* With theme clearing */}
+      <MyComponent clearTheme={{ color: true }}>Default Color Theme</MyComponent>
+
+      {/* With theme application control */}
+      <MyComponent
+        theme={{
+          base: "shadow-lg",
+        }}
+        applyTheme={{
+          base: "merge", // Will merge with existing base styles
+        }}
+      >
+        Merged Styles
+      </MyComponent>
+    </ThemeProvider>
+  );
+}
+```
+
+## Component Features
+
+The component automatically supports:
+
+- Global theme inheritance
+- Component-level overrides
+- Provider-level props
+- Theme clearing and applying
+- Type safety
+
+## Understanding the Blueprint
+
+Let's break down the key parts of the component blueprint:
+
+### 1. Theme Structure
+
+```tsx
+export interface MyComponentTheme {
+  base: string;
+  color: FlowbiteColors;
+}
+```
+
+This interface defines the structure of your component's theme. It should include all the customizable style aspects of your component.
+
+### 2. Default Theme
+
+```tsx
+const myComponentTheme = createTheme<MyComponentTheme>({
+  base: "flex items-center font-medium",
+  color: {
+    info: "text-blue-600",
+    success: "text-green-600",
+    error: "text-red-600",
+  },
+});
+```
+
+The default theme provides the base styling for your component when no custom theme is applied. Using `createTheme` ensures type safety and enables Tailwind CSS IntelliSense.
+
+### 3. Props Interface
+
+```tsx
+export interface MyComponentProps extends ComponentProps<"div">, ThemingProps<MyComponentTheme> {
+  color?: keyof FlowbiteColors;
+}
+```
+
+The props interface extends:
+
+- `ComponentProps<"div">` - All standard HTML div props
+- `ThemingProps<MyComponentTheme>` - Theme-related props (`theme`, `clearTheme`, `applyTheme`)
+- Custom props specific to your component
+
+### 4. Theme Resolution
+
+```tsx
+const theme = useResolveTheme(
+  [myComponentTheme, provider.theme?.myComponent, props.theme],
+  [get(provider.clearTheme, "myComponent"), props.clearTheme],
+  [get(provider.applyTheme, "myComponent"), props.applyTheme],
+);
+```
+
+The `useResolveTheme` hook handles the complex logic of:
+
+- Merging themes from different sources
+- Applying theme clearing
+- Controlling how themes are merged or replaced
+
+### 5. Props Resolution
+
+```tsx
+const { children, color = "info", className, ...restProps } = resolveProps(props, provider.props?.myComponent);
+```
+
+The `resolveProps` helper merges component-specific props with provider-level props, with component props taking precedence.
+
+## Advanced Component Patterns
+
+### Compound Components
+
+For more complex components with multiple parts, you can create separate theme structures for each part:
+
+```tsx
+export interface CardTheme {
+  root: {
+    base: string;
+    children: string;
+  };
+  img: {
+    base: string;
+    horizontal: string;
+  };
+  header: {
+    base: string;
+  };
+  footer: {
+    base: string;
+  };
+}
+```
+
+### State-Based Styling
+
+For components with different states, include state variations in your theme:
+
+```tsx
+export interface ButtonTheme {
+  base: string;
+  color: Record<string, string>;
+  disabled: string;
+  loading: string;
+}
+```
+
+### Responsive Components
+
+For responsive components, include different size variations:
+
+```tsx
+export interface ModalTheme {
+  base: string;
+  show: {
+    on: string;
+    off: string;
+  };
+  sizes: {
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+    "2xl": string;
+    "3xl": string;
+    "4xl": string;
+    "5xl": string;
+    "6xl": string;
+    "7xl": string;
+  };
+}
+```
+
+## Best Practices
+
+1. **Keep Theme Structures Flat**: Avoid deeply nested theme structures when possible
+2. **Use Descriptive Names**: Name theme properties clearly to make customization intuitive
+3. **Provide Sensible Defaults**: Default themes should work well without customization
+4. **Document Theme Structure**: Include comments or documentation for complex theme properties
+5. **Use Type Safety**: Always use TypeScript interfaces for theme structures
+6. **Test with Different Themes**: Ensure your component works with various theme configurations
+
+By following these patterns, you can create flexible, themeable components that integrate seamlessly with the Flowbite React theming system.
