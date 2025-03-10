@@ -23,6 +23,7 @@ const GUIDES: Guide[] = [
   { name: "Next.js", slug: "/docs/guides/nextjs", logo: "nextjs.svg", className: "p-2" },
   { name: "Parcel", slug: "/docs/guides/parcel", logo: "parcel.svg" },
   { name: "React Router", slug: "/docs/guides/react-router", logo: "react-router" },
+  { name: "React Server", slug: "/docs/guides/react-server", logo: "react-server.svg" },
   { name: "RedwoodJS", slug: "/docs/guides/redwoodjs", logo: "redwoodjs.svg", className: "p-2" },
   { name: "Remix", slug: "/docs/guides/remix", logo: "remix.svg", invert: true },
   { name: "RSBuild", slug: "/docs/guides/rsbuild", logo: "rsbuild.svg" },

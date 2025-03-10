@@ -84,6 +84,7 @@ Check out the full list of [official `flowbite-react` template examples](https:/
 | `nextjs`          | Next.js         | https://github.com/themesberg/flowbite-react-template-nextjs          |
 | `parcel`          | Parcel          | https://github.com/themesberg/flowbite-react-template-parcel          |
 | `react-router`    | React Router    | https://github.com/themesberg/flowbite-react-template-react-router    |
+| `react-server`    | React Server    | https://github.com/themesberg/flowbite-react-template-react-server    |
 | `redwoodjs`       | RedwoodJS       | https://github.com/themesberg/flowbite-react-template-redwoodjs       |
 | `remix`           | Remix           | https://github.com/themesberg/flowbite-react-template-remix           |
 | `rsbuild`         | RSBuild         | https://github.com/themesberg/flowbite-react-template-rsbuild         |

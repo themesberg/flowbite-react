@@ -52,9 +52,14 @@ export const REPOS: { key: string; name: string; url: string }[] = [
     url: "https://github.com/themesberg/flowbite-react-template-parcel.git",
   },
   {
-    key: "reactrouter",
+    key: "react-router",
     name: "React Router",
     url: "https://github.com/themesberg/flowbite-react-template-react-router.git",
+  },
+  {
+    key: "react-server",
+    name: "React Server",
+    url: "https://github.com/themesberg/flowbite-react-template-react-server.git",
   },
   {
     key: "redwoodjs",
@@ -77,12 +82,12 @@ export const REPOS: { key: string; name: string; url: string }[] = [
     url: "https://github.com/themesberg/flowbite-react-template-rspack.git",
   },
   {
-    key: "tanstackrouter",
+    key: "tanstack-router",
     name: "TanStack Router",
     url: "https://github.com/themesberg/flowbite-react-template-tanstack-router.git",
   },
   {
-    key: "tanstackstart",
+    key: "tanstack-start",
     name: "TanStack Start",
     url: "https://github.com/themesberg/flowbite-react-template-tanstack-start.git",
   },

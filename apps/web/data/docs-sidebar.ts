@@ -37,6 +37,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: "Next.js", href: "/docs/guides/nextjs" },
       { title: "Parcel", href: "/docs/guides/parcel" },
       { title: "React Router", href: "/docs/guides/react-router", tag: "new" },
+      { title: "React Server", href: "/docs/guides/react-server", tag: "new" },
       { title: "RedwoodJS", href: "/docs/guides/redwoodjs" },
       { title: "Remix", href: "/docs/guides/remix" },
       { title: "Rsbuild", href: "/docs/guides/rsbuild", tag: "new" },
