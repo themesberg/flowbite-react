@@ -4,9 +4,9 @@ import path from "path";
 import toml from "@iarna/toml";
 import chokidar from "chokidar";
 import cjson from "comment-json";
-import isEqual from "fast-deep-equal";
 import { resolveCommand } from "package-manager-detector/commands";
 import { detect } from "package-manager-detector/detect";
+import { isEqual } from "../helpers/is-equal";
 import {
   automaticClassGenerationMessage,
   classListFile,

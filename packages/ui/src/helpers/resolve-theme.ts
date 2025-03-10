@@ -1,5 +1,4 @@
 import { deepmerge } from "deepmerge-ts";
-import isEqual from "fast-deep-equal";
 import { klona } from "klona/json";
 import { useRef } from "react";
 import { getPrefix } from "../store";
@@ -9,6 +8,7 @@ import { applyPrefixV3 } from "./apply-prefix-v3";
 import { convertUtilitiesToV4 } from "./convert-utilities-to-v4";
 import { deepMergeStrings } from "./deep-merge";
 import { getTailwindVersion } from "./get-tailwind-version";
+import { isEqual } from "./is-equal";
 import { twMerge } from "./tailwind-merge";
 
 /**
