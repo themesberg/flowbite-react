@@ -3,9 +3,9 @@ import type { MDXComponents } from "mdx/types";
 import { getMDXComponent } from "next-contentlayer2/hooks";
 import Link from "next/link";
 import * as examples from "~/examples";
-import { PreWithCopy } from "./code-block";
 import { CodeDemo, type CodeData } from "./code-demo";
 import { CodeHighlight } from "./code-highlight";
+import { PreWithCopy } from "./pre-with-copy";
 import { IntegrationGuides } from "./quickstart/integration-guides";
 import { TextDivider } from "./text-divider";
 

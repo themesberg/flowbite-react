@@ -1,7 +1,7 @@
 /* eslint-disable tailwindcss/no-custom-classname */
 import Prism from "prismjs";
 import { twMerge } from "tailwind-merge";
-import { PreWithCopy } from "./code-block";
+import { PreWithCopy } from "./pre-with-copy";
 
 import "prismjs/components/prism-bash";
 import "prismjs/components/prism-css";
