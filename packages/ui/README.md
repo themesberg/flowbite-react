@@ -91,7 +91,7 @@ npx flowbite-react@latest init
 yarn dlx flowbite-react@latest init
 
 # pnpm
-pnpm dlx flowbite-react@latest init
+pnpx flowbite-react@latest init
 
 # bun
 bunx flowbite-react@latest init
