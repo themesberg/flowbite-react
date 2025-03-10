@@ -218,36 +218,48 @@ export async function setupTailwindV4() {
     for (const file of cssFiles) {
       const content = await fs.readFile(file, "utf-8");
 
-      if (content.includes(`@import 'tailwindcss'`) || content.includes(`@import "tailwindcss"`)) {
+      const hasImportWithSingleQuotes = content.includes(`@import 'tailwindcss'`);
+      const hasImportWithDoubleQuotes = content.includes(`@import "tailwindcss"`);
+
+      if (hasImportWithSingleQuotes || hasImportWithDoubleQuotes) {
         found = true;
 
         const tailwindPluginPath = path.join(pluginPath, "tailwindcss");
-
-        if (
-          content.includes(`@plugin '${tailwindPluginPath}'`) ||
-          content.includes(`@plugin "${tailwindPluginPath}"`) ||
-          content.includes(outputDir)
-        ) {
-          continue;
-        }
-
-        const targetIndex = content.indexOf('@import "tailwindcss"');
-        const nextLineIndex = content.indexOf("\n", targetIndex);
-        const insertPosition = nextLineIndex === -1 ? targetIndex + '@import "tailwindcss"'.length : nextLineIndex;
+        const quoteType = hasImportWithSingleQuotes ? "'" : '"';
 
         const relativePath = path.relative(path.dirname(file), process.cwd());
         const sourceImportPath = path.join(relativePath, outputDir, classListFile).replace(/\\/g, "/");
-        const updatedContent =
-          content.slice(0, insertPosition) +
-          "\n" +
-          `@plugin "${tailwindPluginPath}";` +
-          "\n" +
-          `@source "${sourceImportPath}";` +
-          "\n" +
-          content.slice(insertPosition);
 
-        console.log(`Updating ${file} with flowbite-react configuration...`);
-        await fs.writeFile(file, updatedContent, "utf-8");
+        const hasPlugin = content.includes(`@plugin ${quoteType}${tailwindPluginPath}${quoteType}`);
+        const hasSource = content.includes(`@source ${quoteType}${sourceImportPath}${quoteType}`);
+
+        if (hasPlugin && hasSource) {
+          continue;
+        }
+
+        const targetIndex = hasImportWithSingleQuotes
+          ? content.indexOf(`@import 'tailwindcss'`)
+          : content.indexOf(`@import "tailwindcss"`);
+        const importLength = hasImportWithSingleQuotes
+          ? `@import 'tailwindcss'`.length
+          : `@import "tailwindcss"`.length;
+        const nextLineIndex = content.indexOf("\n", targetIndex);
+        const insertPosition = nextLineIndex === -1 ? targetIndex + importLength : nextLineIndex;
+
+        let insertContent = "";
+        if (!hasPlugin) {
+          insertContent += `\n@plugin ${quoteType}${tailwindPluginPath}${quoteType};`;
+        }
+        if (!hasSource) {
+          insertContent += `\n@source ${quoteType}${sourceImportPath}${quoteType};`;
+        }
+
+        const updatedContent = content.slice(0, insertPosition) + insertContent + "\n" + content.slice(insertPosition);
+
+        if (insertContent) {
+          console.log(`Updating ${file} with flowbite-react configuration...`);
+          await fs.writeFile(file, updatedContent, "utf-8");
+        }
       }
     }
 
