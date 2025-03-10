@@ -105,6 +105,9 @@ To integrate `flowbite-react` with your preferred framework or technology stack,
 
 - [AdonisJS](https://www.flowbite-react.com/docs/guides/adonisjs)
 - [Astro](https://www.flowbite-react.com/docs/guides/astro)
+- [Blitz.js](https://www.flowbite-react.com/docs/guides/blitzjs)
+- [Bun](https://www.flowbite-react.com/docs/guides/bun)
+- [ESBuild](https://www.flowbite-react.com/docs/guides/esbuild)
 - [Farm](https://www.flowbite-react.com/docs/guides/farm)
 - [Gatsby](https://www.flowbite-react.com/docs/guides/gatsby)
 - [Laravel](https://www.flowbite-react.com/docs/guides/laravel)
@@ -112,13 +115,16 @@ To integrate `flowbite-react` with your preferred framework or technology stack,
 - [Next.js](https://www.flowbite-react.com/docs/guides/nextjs)
 - [Parcel](https://www.flowbite-react.com/docs/guides/parcel)
 - [React Router](https://www.flowbite-react.com/docs/guides/react-router)
+- [React Server](https://www.flowbite-react.com/docs/guides/react-server)
 - [RedwoodJS](https://www.flowbite-react.com/docs/guides/redwoodjs)
 - [Remix](https://www.flowbite-react.com/docs/guides/remix)
-- [RSBuild](https://www.flowbite-react.com/docs/guides/rsbuild)
-- [RSPack](https://www.flowbite-react.com/docs/guides/rspack)
+- [Rsbuild](https://www.flowbite-react.com/docs/guides/rsbuild)
+- [Rspack](https://www.flowbite-react.com/docs/guides/rspack)
 - [TanStack Router](https://www.flowbite-react.com/docs/guides/tanstack-router)
 - [TanStack Start](https://www.flowbite-react.com/docs/guides/tanstack-start)
+- [Vike](https://www.flowbite-react.com/docs/guides/vike)
 - [Vite](https://www.flowbite-react.com/docs/guides/vite)
+- [Waku](https://www.flowbite-react.com/docs/guides/waku)
 - [Webpack](https://www.flowbite-react.com/docs/guides/webpack)
 
 ## Components

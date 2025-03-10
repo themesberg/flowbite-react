@@ -75,6 +75,7 @@ Check out the full list of [official `flowbite-react` template examples](https:/
 | ----------------- | --------------- | --------------------------------------------------------------------- |
 | `adonisjs`        | AdonisJS        | https://github.com/themesberg/flowbite-react-template-adonisjs        |
 | `astro`           | Astro           | https://github.com/themesberg/flowbite-react-template-astro           |
+| `blitzjs`         | Blitz.js        | https://github.com/themesberg/flowbite-react-template-blitzjs         |
 | `bun`             | Bun             | https://github.com/themesberg/flowbite-react-template-bun             |
 | `esbuild`         | ESBuild         | https://github.com/themesberg/flowbite-react-template-esbuild         |
 | `farm`            | Farm            | https://github.com/themesberg/flowbite-react-template-farm            |

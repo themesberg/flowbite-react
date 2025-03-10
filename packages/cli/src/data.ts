@@ -12,6 +12,11 @@ export const REPOS: { key: string; name: string; url: string }[] = [
     url: "https://github.com/themesberg/flowbite-react-template-astro.git",
   },
   {
+    key: "blitzjs",
+    name: "Blitz.js",
+    url: "https://github.com/themesberg/flowbite-react-template-blitzjs.git",
+  },
+  {
     key: "bun",
     name: "Bun",
     url: "https://github.com/themesberg/flowbite-react-template-bun.git",

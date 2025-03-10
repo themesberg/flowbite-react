@@ -14,6 +14,7 @@ interface Guide {
 const GUIDES: Guide[] = [
   { name: "AdonisJS", slug: "/docs/guides/adonisjs", logo: "adonisjs.svg", className: "p-2", invert: true },
   { name: "Astro", slug: "/docs/guides/astro", logo: "astro.svg", invert: true },
+  { name: "Blitz.js", slug: "/docs/guides/blitzjs", logo: "blitzjs.svg" },
   { name: "Bun", slug: "/docs/guides/bun", logo: "bun.svg" },
   { name: "ESBuild", slug: "/docs/guides/esbuild", logo: "esbuild.svg" },
   { name: "Farm", slug: "/docs/guides/farm", logo: "farm.svg" },
