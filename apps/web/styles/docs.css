@@ -91,7 +91,7 @@
 /* Table of contents styles */
 #visible-table-of-contents {
   & a {
-    @apply inline-block border-l border-white py-2 pl-2.5 font-medium transition-none duration-200 after:ml-2 after:text-primary-700 after:opacity-0 after:transition-opacity after:duration-100 after:content-['#'] hover:border-gray-300 hover:text-gray-900 hover:after:opacity-100;
+    @apply inline-block py-2 pl-2.5 font-medium transition-none duration-200 after:ml-2 after:text-primary-700 after:opacity-0 after:transition-opacity after:duration-100 after:content-['#'] hover:after:opacity-100;
   }
 
   & ul ul li a {
@@ -415,10 +415,6 @@ code.language-html .token.comment {
 
 /* DARK MODE */
 .dark {
-  #visible-table-of-contents a {
-    @apply border-gray-900 after:text-primary-700 hover:border-gray-700 hover:text-white;
-  }
-
   #mainContent {
     /* Headings */
     & h1:not(.code-preview-wrapper *, .code-syntax-wrapper *),
