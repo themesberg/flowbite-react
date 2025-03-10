@@ -32,6 +32,7 @@ const GUIDES: Guide[] = [
   { name: "TanStack Start", slug: "/docs/guides/tanstack-start", logo: "tanstack.png" },
   { name: "Vike", slug: "/docs/guides/vike", logo: "vike.svg" },
   { name: "Vite", slug: "/docs/guides/vite", logo: "vite.svg" },
+  { name: "Waku", slug: "/docs/guides/waku", logo: "waku.png" },
   { name: "Webpack", slug: "/docs/guides/webpack", logo: "webpack.svg" },
 ];
 

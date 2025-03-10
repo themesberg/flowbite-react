@@ -102,6 +102,11 @@ export const REPOS: { key: string; name: string; url: string }[] = [
     url: "https://github.com/themesberg/flowbite-react-template-vite.git",
   },
   {
+    key: "waku",
+    name: "Waku",
+    url: "https://github.com/themesberg/flowbite-react-template-waku.git",
+  },
+  {
     key: "webpack",
     name: "Webpack",
     url: "https://github.com/themesberg/flowbite-react-template-webpack.git",

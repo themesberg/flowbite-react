@@ -46,6 +46,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: "TanStack Start", href: "/docs/guides/tanstack-start", tag: "new" },
       { title: "Vike", href: "/docs/guides/vike", tag: "new" },
       { title: "Vite", href: "/docs/guides/vite" },
+      { title: "Waku", href: "/docs/guides/waku", tag: "new" },
       { title: "Webpack", href: "/docs/guides/webpack", tag: "new" },
     ],
   },

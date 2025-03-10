@@ -93,4 +93,5 @@ Check out the full list of [official `flowbite-react` template examples](https:/
 | `tanstack-start`  | TanStack Start  | https://github.com/themesberg/flowbite-react-template-tanstack-start  |
 | `vike`            | Vike            | https://github.com/themesberg/flowbite-react-template-vike            |
 | `vite`            | Vite            | https://github.com/themesberg/flowbite-react-template-vite            |
+| `waku`            | Waku            | https://github.com/themesberg/flowbite-react-template-waku            |
 | `webpack`         | Webpack         | https://github.com/themesberg/flowbite-react-template-webpack         |
