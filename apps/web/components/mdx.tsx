@@ -3,6 +3,7 @@ import type { MDXComponents } from "mdx/types";
 import { getMDXComponent } from "next-contentlayer2/hooks";
 import Link from "next/link";
 import * as examples from "~/examples";
+import { PreWithCopy } from "./code-block";
 import { CodeDemo, type CodeData } from "./code-demo";
 import { CodeHighlight } from "./code-highlight";
 import { IntegrationGuides } from "./quickstart/integration-guides";
@@ -12,6 +13,7 @@ const components: MDXComponents = {
   Alert,
   TextDivider,
   IntegrationGuides,
+  pre: PreWithCopy,
   a: ({ ref, href = "", ...props }) => {
     const isLocal = href.startsWith("/") || href.startsWith("#");
 
@@ -71,7 +73,7 @@ const components: MDXComponents = {
   Theme: ({ name }: { name: keyof typeof theme }) => {
     if (!(name in theme)) return <>{`<Theme name="${name}" />`}</>;
 
-    return <CodeHighlight code={JSON.stringify(theme[name], null, 2)} language="json" />;
+    return <CodeHighlight code={JSON.stringify(theme[name], null, 2)} language="json" withCopy />;
   },
 };
 
