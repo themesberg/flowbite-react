@@ -74,7 +74,7 @@
   }
 
   /* Inline code */
-  & :not(.code-preview-wrapper *, .code-syntax-wrapper *) > code {
+  & :not(pre, .code-preview-wrapper *, .code-syntax-wrapper *) > code {
     @apply whitespace-nowrap break-all rounded border border-primary-100 bg-gray-50 px-1 text-sm text-primary-700;
     font-family:
       Menlo,
@@ -452,7 +452,7 @@ code.language-html .token.comment {
     }
 
     /* Inline code */
-    & :not(.code-preview-wrapper *, .code-syntax-wrapper *) > code {
+    & :not(pre, .code-preview-wrapper *, .code-syntax-wrapper *) > code {
       @apply border-gray-800 bg-gray-900 text-primary-400;
     }
   }
