@@ -14,65 +14,67 @@
   @apply max-w-none;
 
   /* Headings */
-  & h1 {
+  & h1:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
     @apply mb-8 mt-2 text-4xl font-bold tracking-tight text-gray-900;
   }
 
-  & h2 {
+  & h2:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
     @apply mb-4 mt-12 text-2xl font-bold text-gray-900;
   }
 
-  & h3 {
+  & h3:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
     @apply mb-4 mt-8 text-xl font-bold text-gray-900;
   }
 
-  & h4 {
+  & h4:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
     @apply mb-4 mt-6 text-lg font-bold text-gray-900;
   }
 
   /* Spacing */
-  & > :first-child {
+  & > :first-child:not(.code-preview-wrapper, .code-syntax-wrapper) {
     @apply mt-0;
   }
 
-  & > ul + h2 {
+  &
+    > ul:not(.code-preview-wrapper *, .code-syntax-wrapper *)
+    + h2:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
     @apply mt-0;
   }
 
   /* Text content */
-  & p {
+  & p:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
     @apply mb-4 leading-7 text-gray-600;
   }
 
-  & ul,
-  & ol {
+  & ul:not(.code-preview-wrapper *, .code-syntax-wrapper *),
+  & ol:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
     @apply mb-4 ml-6 text-gray-600;
 
-    & ul,
-    & ol {
+    & ul:not(.code-preview-wrapper *, .code-syntax-wrapper *),
+    & ol:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
       @apply mt-2;
     }
   }
 
-  & ul {
+  & ul:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
     @apply list-disc;
   }
 
-  & ol {
+  & ol:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
     @apply list-decimal;
   }
 
-  & li {
+  & li:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
     @apply mb-2;
   }
 
   /* Links */
-  & a {
+  & a:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
     @apply font-medium text-gray-900 underline decoration-primary-700 decoration-1 underline-offset-2 hover:decoration-2;
   }
 
   /* Inline code */
-  & :not(pre) > code {
+  & :not(.code-preview-wrapper *, .code-syntax-wrapper *) > code {
     @apply whitespace-nowrap break-all rounded border border-primary-100 bg-gray-50 px-1 text-sm text-primary-700;
     font-family:
       Menlo,
@@ -419,29 +421,29 @@ code.language-html .token.comment {
 
   #mainContent {
     /* Headings */
-    & h1,
-    & h2,
-    & h3,
-    & h4 {
+    & h1:not(.code-preview-wrapper *, .code-syntax-wrapper *),
+    & h2:not(.code-preview-wrapper *, .code-syntax-wrapper *),
+    & h3:not(.code-preview-wrapper *, .code-syntax-wrapper *),
+    & h4:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
       @apply text-white;
     }
 
     /* Text content */
-    & p {
+    & p:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
       @apply text-gray-400;
     }
 
-    & ul,
-    & ol {
+    & ul:not(.code-preview-wrapper *, .code-syntax-wrapper *),
+    & ol:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
       @apply text-gray-400;
     }
 
-    & li {
+    & li:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
       @apply text-gray-400;
     }
 
     /* Links */
-    & a {
+    & a:not(.code-preview-wrapper *, .code-syntax-wrapper *) {
       @apply text-white decoration-primary-700;
 
       &:hover {
@@ -450,7 +452,7 @@ code.language-html .token.comment {
     }
 
     /* Inline code */
-    & :not(pre) > code {
+    & :not(.code-preview-wrapper *, .code-syntax-wrapper *) > code {
       @apply border-gray-800 bg-gray-900 text-primary-400;
     }
   }
