@@ -80,7 +80,7 @@ export function ToC({ doc }: { doc: Doc }) {
             <Markdown
               components={{
                 a: ({ href, ...props }) => (
-                  <ToCLink href={href || "#"} activeId={activeId}>
+                  <ToCLink href={href || "#"} isActive={href === `#${activeId}`}>
                     {props.children}
                   </ToCLink>
                 ),
@@ -95,9 +95,7 @@ export function ToC({ doc }: { doc: Doc }) {
   );
 }
 
-function ToCLink({ href, children, activeId }: { href: string; children: React.ReactNode; activeId: string }) {
-  const isActive = href === `#${activeId}`;
-
+function ToCLink({ href, children, isActive }: { href: string; children: React.ReactNode; isActive: boolean }) {
   return (
     <Link
       href={href}
