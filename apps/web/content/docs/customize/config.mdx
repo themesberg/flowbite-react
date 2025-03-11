@@ -28,12 +28,27 @@ The configuration file follows this JSON Schema:
       },
       "uniqueItems": true
     },
+    "path": {
+      "description": "Path where components will be created, relative to the project root",
+      "type": "string",
+      "default": "src/components"
+    },
     "prefix": {
       "description": "Optional prefix to apply to all Tailwind CSS classes",
       "type": "string"
+    },
+    "rsc": {
+      "description": "Whether to include the 'use client' directive for React Server Components",
+      "type": "boolean",
+      "default": true
+    },
+    "tsx": {
+      "description": "Whether to use TypeScript (.tsx) or JavaScript (.jsx) for component creation",
+      "type": "boolean",
+      "default": true
     }
   },
-  "required": ["components", "prefix"]
+  "required": ["components", "path", "prefix", "rsc", "tsx"]
 }
 ```
 
@@ -49,6 +64,12 @@ The configuration file follows this JSON Schema:
   - Use `"*"` to explicitly include all components (equivalent to listing every component)
   - When not using `"*"`, use valid component names (e.g., `Button`, `Card`, `Modal`). See the [schema](https://unpkg.com/flowbite-react/schema.json) for the full list of valid components.
 
+#### `path`
+
+- Type: `string`
+- Default: `"src/components"`
+- Description: Path where components will be created, relative to the project root. Used by the CLI when creating new components.
+
 #### `prefix`
 
 - Type: `string`
@@ -56,6 +77,18 @@ The configuration file follows this JSON Schema:
 - Description: Optional prefix to apply to all Tailwind CSS classes. Useful for avoiding class name conflicts.
 
 For detailed instructions on configuring and using prefixes, see the [Prefix](/docs/customize/prefix) documentation.
+
+#### `rsc`
+
+- Type: `boolean`
+- Default: `true`
+- Description: Whether to include the 'use client' directive for React Server Components. When set to `true`, the "use client" directive will be added at the top of created component files.
+
+#### `tsx`
+
+- Type: `boolean`
+- Default: `true`
+- Description: Whether to use TypeScript (.tsx) or JavaScript (.jsx) for component creation. When set to `false`, components will be created with .jsx extension.
 
 ## Automatic Class Generation
 
@@ -76,7 +109,10 @@ Example config for automatic mode:
 {
   "$schema": "https://unpkg.com/flowbite-react/schema.json",
   "components": [],
-  "prefix": ""
+  "path": "src/components",
+  "prefix": "",
+  "rsc": true,
+  "tsx": true
 }
 ```
 
@@ -95,9 +131,28 @@ Example config for manual mode:
 {
   "$schema": "https://unpkg.com/flowbite-react/schema.json",
   "components": ["Button", "Card", "Modal"],
-  "prefix": ""
+  "path": "src/components",
+  "prefix": "",
+  "rsc": true,
+  "tsx": true
 }
 ```
+
+## Component Creation
+
+The CLI uses the configuration file to determine how to create new components:
+
+```bash
+npx flowbite-react create MyComponent
+```
+
+The component creation process is affected by these configuration options:
+
+- `path`: Determines where the component will be created
+- `rsc`: Determines whether to include the "use client" directive
+- `tsx`: Determines whether to use TypeScript (.tsx) or JavaScript (.jsx)
+
+For more information on creating custom components, see the [Custom Components](/docs/customize/custom-components) documentation.
 
 ## Build Process
 
@@ -155,3 +210,9 @@ When generating styles, the system automatically includes dependencies:
 - Use prefixes when integrating with other libraries
 - Keep prefixes short but meaningful
 - Consider your Tailwind version when choosing prefix format
+
+**4. Component Creation Settings**
+
+- Use `path` to organize components in your project structure
+- Set `rsc` to `false` if you're not using React Server Components
+- Set `tsx` to `false` if your project uses JavaScript instead of TypeScript

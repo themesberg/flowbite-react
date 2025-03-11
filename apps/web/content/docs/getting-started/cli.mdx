@@ -184,6 +184,41 @@ Each bundler plugin automatically handles class generation by:
 
 This means you don't need to manually run these commands - the bundler plugin takes care of everything automatically.
 
+### Configuration Options
+
+The CLI creates a `.flowbite-react/config.json` file with several configuration options:
+
+```json
+{
+  "$schema": "https://unpkg.com/flowbite-react/schema.json",
+  "components": [],
+  "path": "src/components",
+  "prefix": "",
+  "rsc": true,
+  "tsx": true
+}
+```
+
+#### components
+
+List of component names to generate styles for. An empty array enables automatic detection.
+
+#### path
+
+Path where components will be created, relative to the project root. Default is `"src/components"`.
+
+#### prefix
+
+Optional prefix to apply to all Tailwind CSS classes.
+
+#### rsc
+
+Whether to include the 'use client' directive for React Server Components. Default is `true`.
+
+#### tsx
+
+Whether to use TypeScript (.tsx) or JavaScript (.jsx) for component creation. Default is `true`.
+
 ### VSCode Integration
 
 The CLI sets up VSCode for optimal development:

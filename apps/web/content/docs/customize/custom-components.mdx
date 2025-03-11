@@ -5,6 +5,33 @@ description: Learn how to create your own themeable components using the Flowbit
 
 The Flowbite React theming system can be used to create your own themeable components. The system provides powerful utilities from `resolve-theme.ts` that handle theme resolution, merging, and inheritance.
 
+## Using the CLI
+
+The easiest way to create a new custom component is to use the Flowbite React CLI:
+
+```bash
+npx flowbite-react create MyComponent
+```
+
+This will generate a new component with the proper structure and theming setup. The CLI uses the configuration from `.flowbite-react/config.json` to determine:
+
+1. Where to create the component (`path`)
+2. Whether to include the "use client" directive (`rsc`)
+3. Whether to use TypeScript or JavaScript (`tsx`)
+
+You can customize these options in your config file `.flowbite-react/config.json`:
+
+```json
+{
+  "$schema": "https://unpkg.com/flowbite-react/schema.json",
+  "components": [],
+  "path": "src/components",
+  "prefix": "",
+  "rsc": true,
+  "tsx": true
+}
+```
+
 ## Component Blueprint
 
 Here's a minimal blueprint for creating Flowbite React components:

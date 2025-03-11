@@ -1,5 +1,8 @@
 {
   "$schema": "../../../node_modules/flowbite-react/schema.json",
   "components": [],
-  "prefix": ""
+  "path": "components",
+  "prefix": "",
+  "rsc": true,
+  "tsx": true
 }

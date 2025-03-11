@@ -4,7 +4,10 @@ import { configFilePath } from "../consts";
 export interface Config {
   $schema: string;
   components: string[];
+  path: string;
   prefix: string;
+  rsc: boolean;
+  tsx: boolean;
 }
 
 /**
@@ -19,7 +22,10 @@ export async function getConfig(): Promise<Config> {
   const config: Config = {
     $schema: "",
     components: [],
+    path: "src/components",
     prefix: "",
+    rsc: true,
+    tsx: true,
   };
 
   try {
@@ -29,11 +35,20 @@ export async function getConfig(): Promise<Config> {
     if (parsed.$schema !== undefined && typeof parsed.$schema === "string") {
       config.$schema = parsed.$schema;
     }
+    if (parsed.components !== undefined && Array.isArray(parsed.components)) {
+      config.components = parsed.components.map((component) => component.trim()).filter(Boolean);
+    }
+    if (parsed.path !== undefined && typeof parsed.path === "string") {
+      config.path = parsed.path;
+    }
     if (parsed.prefix !== undefined && typeof parsed.prefix === "string") {
       config.prefix = parsed.prefix;
     }
-    if (parsed.components !== undefined && Array.isArray(parsed.components)) {
-      config.components = parsed.components.map((component) => component.trim()).filter(Boolean);
+    if (parsed.rsc !== undefined && typeof parsed.rsc === "boolean") {
+      config.rsc = parsed.rsc;
+    }
+    if (parsed.tsx !== undefined && typeof parsed.tsx === "boolean") {
+      config.tsx = parsed.tsx;
     }
 
     return config;

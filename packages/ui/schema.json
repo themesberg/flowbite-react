@@ -116,10 +116,25 @@
       },
       "uniqueItems": true
     },
+    "path": {
+      "description": "Path where components will be created, relative to the project root. \nSee https://flowbite-react.com/docs/customize/config#path for more details.",
+      "type": "string",
+      "default": "src/components"
+    },
     "prefix": {
       "description": "Optional prefix to apply to all Tailwind CSS classes. \nSee https://flowbite-react.com/docs/customize/config#prefix for more details.",
       "type": "string"
+    },
+    "rsc": {
+      "description": "Whether to include the 'use client' directive for React Server Components. \nSee https://flowbite-react.com/docs/customize/config#rsc for more details.",
+      "type": "boolean",
+      "default": true
+    },
+    "tsx": {
+      "description": "Whether to use TypeScript (.tsx) or JavaScript (.jsx) for component creation. \nSee https://flowbite-react.com/docs/customize/config#tsx for more details.",
+      "type": "boolean",
+      "default": true
     }
   },
-  "required": ["components", "prefix"]
+  "required": ["components", "path", "prefix", "rsc", "tsx"]
 }
