@@ -114,19 +114,16 @@ export async function create(componentName?: string) {
       process.exit(1);
     }
 
-    // Use the path from config
-    const componentDir = path.join(process.cwd(), config.path);
-
     // Determine file extension based on tsx config
     const fileExtension = config.tsx ? ".tsx" : ".jsx";
-    const componentFilePath = path.join(componentDir, `${finalComponentName}${fileExtension}`);
+    const componentFilePath = path.join(config.path, `${finalComponentName}${fileExtension}`);
 
     // Ensure the components directory exists
     try {
-      await fs.access(componentDir);
+      await fs.access(config.path);
     } catch {
-      console.log(`Creating components directory at ${componentDir}...`);
-      await fs.mkdir(componentDir, { recursive: true });
+      console.log(`Creating components directory at ${config.path}...`);
+      await fs.mkdir(config.path, { recursive: true });
     }
 
     // Check if file already exists
@@ -239,10 +236,6 @@ ${formattedName}.displayName = "${formattedName}";`;
     await fs.writeFile(componentFilePath, componentContent, { flag: "w" });
 
     console.log(`\n✅ Component ${formattedName} created successfully!`);
-    console.log(`\nYou can now import it in your application:`);
-    console.log(`\nimport { ${formattedName} } from "${config.path}/${finalComponentName}";`);
-    console.log(`\nExample usage:`);
-    console.log(`\n<${formattedName}>Your content here</${formattedName}>`);
   } catch (error) {
     console.error("Failed to create component:", error);
   }
