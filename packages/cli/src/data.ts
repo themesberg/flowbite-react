@@ -42,6 +42,11 @@ export const REPOS: { key: string; name: string; url: string }[] = [
     url: "https://github.com/themesberg/flowbite-react-template-laravel.git",
   },
   {
+    key: "meteorjs",
+    name: "Meteor.js",
+    url: "https://github.com/themesberg/flowbite-react-template-meteorjs.git",
+  },
+  {
     key: "modernjs",
     name: "Modern.js",
     url: "https://github.com/themesberg/flowbite-react-template-modernjs.git",

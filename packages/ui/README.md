@@ -111,6 +111,7 @@ To integrate `flowbite-react` with your preferred framework or technology stack,
 - [Farm](https://www.flowbite-react.com/docs/guides/farm)
 - [Gatsby](https://www.flowbite-react.com/docs/guides/gatsby)
 - [Laravel](https://www.flowbite-react.com/docs/guides/laravel)
+- [Meteor.js](https://www.flowbite-react.com/docs/guides/meteorjs)
 - [Modern.js](https://www.flowbite-react.com/docs/guides/modernjs)
 - [Next.js](https://www.flowbite-react.com/docs/guides/nextjs)
 - [Parcel](https://www.flowbite-react.com/docs/guides/parcel)

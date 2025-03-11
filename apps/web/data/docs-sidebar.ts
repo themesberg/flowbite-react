@@ -34,6 +34,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: "Farm", href: "/docs/guides/farm", tag: "new" },
       { title: "Gatsby", href: "/docs/guides/gatsby" },
       { title: "Laravel", href: "/docs/guides/laravel" },
+      { title: "Meteor.js", href: "/docs/guides/meteorjs", tag: "new" },
       { title: "Modern.js", href: "/docs/guides/modernjs", tag: "new" },
       { title: "Next.js", href: "/docs/guides/nextjs" },
       { title: "Parcel", href: "/docs/guides/parcel" },

@@ -81,6 +81,7 @@ Check out the full list of [official `flowbite-react` template examples](https:/
 | `farm`            | Farm            | https://github.com/themesberg/flowbite-react-template-farm            |
 | `gatsby`          | Gatsby          | https://github.com/themesberg/flowbite-react-template-gatsby          |
 | `laravel`         | Laravel         | https://github.com/themesberg/flowbite-react-template-laravel         |
+| `meteorjs`        | Meteor.js       | https://github.com/themesberg/flowbite-react-template-meteorjs        |
 | `modernjs`        | Modern.js       | https://github.com/themesberg/flowbite-react-template-modernjs        |
 | `nextjs`          | Next.js         | https://github.com/themesberg/flowbite-react-template-nextjs          |
 | `parcel`          | Parcel          | https://github.com/themesberg/flowbite-react-template-parcel          |
