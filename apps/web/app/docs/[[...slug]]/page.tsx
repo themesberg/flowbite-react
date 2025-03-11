@@ -82,7 +82,7 @@ function ContentLayout({ title, description, children }: ContentLayoutProps) {
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-400">{description}</p>
       </div>
-      <div id="mainContent" className="py-8">
+      <div id="mainContent" className="py-8 [&>*:first-child]:mt-0">
         {children}
       </div>
     </div>

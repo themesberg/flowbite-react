@@ -1,15 +1,17 @@
 "use client";
 
 import type { Doc } from "contentlayer/generated";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
+import { twMerge } from "tailwind-merge";
 
 export function ToC({ doc }: { doc: Doc }) {
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      // Find the first visible heading
+    function handleIntersection(entries: IntersectionObserverEntry[]) {
+      // Find all visible headings
       const visibleEntries = entries.filter((entry) => entry.isIntersecting);
 
       if (visibleEntries.length > 0) {
@@ -20,10 +22,28 @@ export function ToC({ doc }: { doc: Doc }) {
           return aRect.top - bRect.top;
         });
 
-        // Use the first visible heading
+        // Get all headings
+        const allHeadings = Array.from(document.querySelectorAll("#mainContent h2, #mainContent h3, #mainContent h4"));
+
+        // Find index of first visible heading
+        const firstVisibleIndex = allHeadings.findIndex((h) => h.id === visibleEntries[0].target.id);
+
+        // If we're at the top of the page and first heading is partially visible
+        if (window.scrollY < 100 && firstVisibleIndex === 0) {
+          setActiveId(allHeadings[0].id);
+          return;
+        }
+
+        // If we're at the bottom of the page
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
+          setActiveId(allHeadings[allHeadings.length - 1].id);
+          return;
+        }
+
+        // Otherwise use the first visible heading
         setActiveId(visibleEntries[0].target.id);
       }
-    };
+    }
 
     // Create an observer with options
     const observer = new IntersectionObserver(handleIntersection, {
@@ -34,6 +54,11 @@ export function ToC({ doc }: { doc: Doc }) {
     // Target all headings in the main content
     const headings = document.querySelectorAll("#mainContent h2, #mainContent h3, #mainContent h4");
     headings.forEach((heading) => observer.observe(heading));
+
+    // Set initial active heading
+    if (headings.length > 0) {
+      setActiveId((headings[0] as HTMLElement).id);
+    }
 
     return () => {
       headings.forEach((heading) => observer.unobserve(heading));
@@ -47,11 +72,15 @@ export function ToC({ doc }: { doc: Doc }) {
           <h4 className="mb-4 mt-5 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 lg:text-xs dark:text-white">
             On this page
           </h4>
-          <nav id="visible-table-of-contents">
+          <nav
+            id="visible-table-of-contents"
+            // TODO: find a more elegant solution
+            className="[&_ul_ul_li_a]:pl-6 [&_ul_ul_ul_li_a]:pl-9"
+          >
             <Markdown
               components={{
                 a: ({ href, ...props }) => (
-                  <ToCLink href={href || "#"} activeId={activeId} setActiveId={setActiveId}>
+                  <ToCLink href={href || "#"} activeId={activeId}>
                     {props.children}
                   </ToCLink>
                 ),
@@ -66,38 +95,21 @@ export function ToC({ doc }: { doc: Doc }) {
   );
 }
 
-function ToCLink({
-  href,
-  children,
-  activeId,
-  setActiveId,
-}: {
-  href: string;
-  children: React.ReactNode;
-  activeId: string;
-  setActiveId: (id: string) => void;
-}) {
+function ToCLink({ href, children, activeId }: { href: string; children: React.ReactNode; activeId: string }) {
   const isActive = href === `#${activeId}`;
 
   return (
-    <a
+    <Link
       href={href}
-      className={`block border-l py-1 pl-3 text-sm transition-colors duration-200 ${
+      className={twMerge(
+        "group relative inline-block border-l py-2 pl-2.5 font-medium transition-colors duration-200",
         isActive
-          ? "border-primary-600 font-medium text-primary-600 dark:border-primary-500 dark:text-primary-500"
-          : "border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 dark:text-gray-400 dark:hover:border-gray-700 dark:hover:text-gray-300"
-      }`}
-      onClick={(e) => {
-        e.preventDefault();
-        const targetId = href.replace("#", "");
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView();
-          setActiveId(targetId);
-        }
-      }}
+          ? "border-primary-600 text-primary-600 dark:border-primary-500 dark:text-primary-500"
+          : "border-transparent text-gray-600 hover:border-gray-300 hover:text-gray-900 dark:text-gray-400 dark:hover:border-gray-700 dark:hover:text-gray-300",
+      )}
     >
       {children}
-    </a>
+      <span className="ml-2 text-primary-700 opacity-0 transition-opacity duration-100 group-hover:opacity-100">#</span>
+    </Link>
   );
 }

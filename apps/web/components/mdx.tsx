@@ -15,6 +15,24 @@ const components: MDXComponents = {
   IntegrationGuides,
   pre: PreWithCopy,
 
+  // Paragraph component
+  p: (props) => <p {...props} className="mb-4 leading-7 text-gray-600 dark:text-gray-400" />,
+
+  // Inline code component
+  code: (props) => {
+    // Only apply these styles to inline code, not code blocks
+    const isInlineCode = typeof props.className !== "string" || !props.className.includes("language-");
+
+    return isInlineCode ? (
+      <code
+        {...props}
+        className="whitespace-nowrap break-all rounded border border-primary-100 bg-gray-50 px-1 text-sm text-primary-700 dark:border-gray-800 dark:bg-gray-900 dark:text-primary-400"
+      />
+    ) : (
+      <code {...props} />
+    );
+  },
+
   // Link component with external link handling
   a: ({ ref, href = "", ...props }) => {
     const isLocal = href.startsWith("/") || href.startsWith("#");
@@ -25,19 +43,34 @@ const components: MDXComponents = {
         href={href}
         ref={ref as React.Ref<HTMLAnchorElement>}
         {...(!isLocal && { target: "_blank", rel: "noreferrer" })}
+        className="font-medium text-gray-900 underline decoration-primary-700 decoration-1 underline-offset-2 hover:decoration-2 dark:text-white dark:decoration-primary-700 dark:hover:text-white"
       />
     );
   },
 
   // List components
-  ul: (props) => <List {...props} />,
-  ol: (props) => <List ordered {...props} />,
-  li: (props) => <ListItem {...props} />,
+  ul: (props) => (
+    <List {...props} className="my-4 ml-5 list-outside list-disc space-y-3 text-gray-600 dark:text-gray-400" />
+  ),
+  ol: (props) => (
+    <List
+      {...props}
+      className="my-4 ml-5 list-outside list-decimal space-y-3 text-gray-600 dark:text-gray-400"
+      ordered
+    />
+  ),
+  li: (props) => <ListItem {...props} className="pl-1.5 leading-relaxed dark:text-gray-400" />,
 
   // Heading components
-  h2: (props) => <Heading as="h2" className="z-10 text-2xl" {...props} />,
-  h3: (props) => <Heading as="h3" className="z-10 text-2xl" {...props} />,
-  h4: (props) => <Heading as="h4" className="z-10" {...props} />,
+  h2: (props) => (
+    <Heading {...props} as="h2" className="z-10 mb-4 mt-12 text-2xl font-bold text-gray-900 dark:text-white" />
+  ),
+  h3: (props) => (
+    <Heading {...props} as="h3" className="z-10 mb-4 mt-8 text-xl font-bold text-gray-900 dark:text-white" />
+  ),
+  h4: (props) => (
+    <Heading {...props} as="h4" className="z-10 mb-4 mt-6 text-lg font-bold text-gray-900 dark:text-white" />
+  ),
 
   // Example component
   Example: ({ name }: { name: string }) => {

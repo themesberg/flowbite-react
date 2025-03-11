@@ -21,11 +21,11 @@ To set a custom prefix for Flowbite React components, modify the `prefix` proper
 
 ### Tailwind CSS Configuration
 
-When using a prefix, you must also configure it in your Tailwind CSS setup. The configuration syntax differs between Tailwind CSS versions:
+You must also configure the prefix in your Tailwind CSS setup. The configuration syntax differs between Tailwind CSS versions:
 
-#### Tailwind CSS v3 and v4
+#### Tailwind CSS v3
 
-For v3, you can use any prefix including special characters:
+In Tailwind CSS v3, you can use any prefix including special characters:
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -35,7 +35,9 @@ export default {
 };
 ```
 
-For v4, note that the prefix cannot contain special characters (like hyphens). Use simple strings like `tw` instead of `tw-`:
+#### Tailwind CSS v4
+
+In Tailwind CSS v4, the prefix cannot contain special characters (like hyphens). Use simple strings like `tw` instead of `tw-`:
 
 ```css
 @import "tailwindcss" prefix(tw);
