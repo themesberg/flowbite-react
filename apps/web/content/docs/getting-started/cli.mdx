@@ -49,6 +49,77 @@ This command performs several automated setup steps:
 
 ## CLI Commands
 
+### `flowbite-react build`
+
+Generates the class list for your components. This:
+
+- Creates the output directory if needed
+- Generates a comprehensive list of Tailwind classes used in your components
+
+```bash
+npx flowbite-react@latest build
+```
+
+### `flowbite-react create <component-name>`
+
+Creates a new component with the proper structure and theming setup:
+
+```bash
+npx flowbite-react@latest create button
+```
+
+The `create` command uses the configuration options from `.flowbite-react/config.json` to determine:
+
+1. **Where to create the component** (`path`):
+
+   - Determines the directory where the component will be created
+   - Default: `"src/components"`
+   - Example: With `"path": "src/ui/elements"`, the component will be created at `src/ui/elements/button.tsx`
+
+2. **Language format** (`tsx`):
+
+   - When `true`: Creates a TypeScript component (`.tsx`) with full type definitions
+   - When `false`: Creates a JavaScript component (`.jsx`) without TypeScript syntax
+   - Default: `true`
+   - Example: With `"tsx": false`, the component will be created as `button.jsx` with JavaScript syntax
+
+3. **React Server Components support** (`rsc`):
+   - When `true`: Adds the `"use client";` directive at the top of the component file
+   - When `false`: Omits the directive for client-only components
+   - Default: `true`
+   - Example: With `"rsc": false`, the component won't include the `"use client";` directive
+
+The generated component includes:
+
+- Proper theme structure with base styles
+- Theme resolution with the Flowbite React theming system
+- Component props with proper typing (in TypeScript mode)
+- Forward ref implementation for DOM access
+- Display name for better debugging
+
+Example usage after creation:
+
+```jsx
+import { Button } from "./src/components/button";
+
+function App() {
+  return <Button>Click me</Button>;
+}
+```
+
+### `flowbite-react dev`
+
+Starts the development mode which:
+
+- Watches for component changes
+- Automatically updates class lists
+- Provides real-time class generation
+- Monitors imported components
+
+```bash
+npx flowbite-react@latest dev
+```
+
 ### `flowbite-react init`
 
 Initializes Flowbite React in your project. This command:
@@ -60,22 +131,6 @@ Initializes Flowbite React in your project. This command:
 - Detects and configures your bundler with the appropriate plugin
 - Adds postinstall script to `package.json` (if no bundler detected)
 
-### `flowbite-react build`
-
-Generates the class list for your components. This:
-
-- Creates the output directory if needed
-- Generates a comprehensive list of Tailwind classes used in your components
-
-### `flowbite-react dev`
-
-Starts the development mode which:
-
-- Watches for component changes
-- Automatically updates class lists
-- Provides real-time class generation
-- Monitors imported components
-
 ### `flowbite-react install`
 
 Installs Flowbite React in your project:
@@ -83,6 +138,15 @@ Installs Flowbite React in your project:
 - Detects your package manager (npm, yarn, pnpm, bun, etc.)
 - Installs the latest version of flowbite-react
 - Skips installation if already installed
+
+### `flowbite-react register`
+
+Registers the Flowbite React process for development:
+
+- Runs the dev process in the background
+- Manages process lifecycle
+- Handles automatic class generation
+- Creates and maintains process ID file
 
 ### `flowbite-react setup plugin`
 
@@ -110,15 +174,6 @@ Sets up VSCode for optimal development:
 - Sets up file associations
 - Adds recommended extensions
 - Configures class attribute settings
-
-### `flowbite-react register`
-
-Registers the Flowbite React process for development:
-
-- Runs the dev process in the background
-- Manages process lifecycle
-- Handles automatic class generation
-- Creates and maintains process ID file
 
 ## Project Templates
 
