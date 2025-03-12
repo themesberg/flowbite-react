@@ -51,22 +51,17 @@ This command performs several automated setup steps:
 
 ### `flowbite-react build`
 
-Generates the class list for your components. This:
+Generates the class list for your components. This command:
 
-- Creates the output directory if needed
+- Creates the `.flowbite-react` output directory if it doesn't exist
 - Generates a comprehensive list of Tailwind classes used in your components
-
-```bash
-npx flowbite-react@latest build
-```
+- Analyzes your project files to find component imports if no components are explicitly defined in your config
+- Writes the generated class list to `.flowbite-react/class-list.json`
+- This class list is used by the Tailwind plugin to ensure all component classes are included in your CSS
 
 ### `flowbite-react create`
 
-Creates a new component with the proper structure and theming setup:
-
-```bash
-npx flowbite-react@latest create button
-```
+Creates a new component with the proper structure and theming setup.
 
 The `create` command uses the configuration options from `.flowbite-react/config.json` to determine:
 
@@ -97,16 +92,6 @@ The generated component includes:
 - Forward ref implementation for DOM access
 - Display name for better debugging
 
-Example usage after creation:
-
-```jsx
-import { Button } from "./src/components/button";
-
-function App() {
-  return <Button>Click me</Button>;
-}
-```
-
 ### `flowbite-react dev`
 
 Starts the development mode which:
@@ -115,10 +100,6 @@ Starts the development mode which:
 - Automatically updates class lists
 - Provides real-time class generation
 - Monitors imported components
-
-```bash
-npx flowbite-react@latest dev
-```
 
 ### `flowbite-react init`
 
