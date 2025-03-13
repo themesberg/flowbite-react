@@ -11,11 +11,15 @@ By following these steps, you can easily customize the Tailwind CSS prefix in yo
 
 To set a custom prefix for Flowbite React components, modify the `prefix` property in your `.flowbite-react/config.json` file:
 
-```json
+```json {6}
 {
   "$schema": "https://unpkg.com/flowbite-react/schema.json",
   "components": [],
-  "prefix": "tw"
+  "dark": true,
+  "path": "components",
+  "prefix": "tw",
+  "rsc": true,
+  "tsx": true
 }
 ```
 
