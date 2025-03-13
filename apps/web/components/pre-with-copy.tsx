@@ -17,7 +17,7 @@ export function PreWithCopy(props: React.HTMLAttributes<HTMLPreElement>) {
 
   return (
     <div className="group relative">
-      <pre ref={textInput} {...props} />
+      <pre ref={textInput} {...props} className={twMerge("max-h-[40rem] overflow-auto", props.className)} />
       <button
         className="absolute right-2 top-2 m-0.5 inline-flex h-8 items-center justify-center rounded-lg border border-gray-200 bg-white px-2.5 py-2 text-gray-900 opacity-0 transition-opacity hover:bg-gray-100 group-hover:opacity-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
         aria-label="Copy code to clipboard"
