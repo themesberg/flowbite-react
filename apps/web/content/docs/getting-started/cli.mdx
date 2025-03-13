@@ -69,20 +69,17 @@ The `create` command uses the configuration options from `.flowbite-react/config
 
    - Determines the directory where the component will be created
    - Default: `"src/components"`
-   - Example: With `"path": "src/ui/elements"`, the component will be created at `src/ui/elements/button.tsx`
 
 2. **Language format** (`tsx`):
 
    - When `true`: Creates a TypeScript component (`.tsx`) with full type definitions
    - When `false`: Creates a JavaScript component (`.jsx`) without TypeScript syntax
    - Default: `true`
-   - Example: With `"tsx": false`, the component will be created as `button.jsx` with JavaScript syntax
 
 3. **React Server Components support** (`rsc`):
    - When `true`: Adds the `"use client";` directive at the top of the component file
    - When `false`: Omits the directive for client-only components
    - Default: `true`
-   - Example: With `"rsc": false`, the component won't include the `"use client";` directive
 
 The generated component includes:
 
