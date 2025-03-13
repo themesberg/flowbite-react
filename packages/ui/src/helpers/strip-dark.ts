@@ -35,7 +35,7 @@ export function stripDark(classNames: string): string {
 
   const result = classNames
     .split(/\s+/)
-    .filter((className) => !className.startsWith("dark:"))
+    .filter((className) => !className.includes("dark:"))
     .join(" ");
 
   cache.set(cacheKey, result);
