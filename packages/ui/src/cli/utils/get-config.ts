@@ -4,6 +4,7 @@ import { configFilePath } from "../consts";
 export interface Config {
   $schema: string;
   components: string[];
+  dark: boolean;
   path: string;
   prefix: string;
   rsc: boolean;
@@ -22,6 +23,7 @@ export async function getConfig(): Promise<Config> {
   const config: Config = {
     $schema: "",
     components: [],
+    dark: true,
     path: "src/components",
     prefix: "",
     rsc: true,
@@ -37,6 +39,9 @@ export async function getConfig(): Promise<Config> {
     }
     if (parsed.components !== undefined && Array.isArray(parsed.components)) {
       config.components = parsed.components.map((component) => component.trim()).filter(Boolean);
+    }
+    if (parsed.dark !== undefined && typeof parsed.dark === "boolean") {
+      config.dark = parsed.dark;
     }
     if (parsed.path !== undefined && typeof parsed.path === "string") {
       config.path = parsed.path;

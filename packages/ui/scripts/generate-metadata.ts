@@ -219,6 +219,12 @@ async function generateSchema(components: string[]): Promise<void> {
           },
           uniqueItems: true,
         },
+        dark: {
+          description:
+            "Whether to generate dark mode styles. \nSee https://flowbite-react.com/docs/customize/config#dark for more details.",
+          type: "boolean",
+          default: true,
+        },
         path: {
           description:
             "Path where components will be created, relative to the project root. \nSee https://flowbite-react.com/docs/customize/config#path for more details.",

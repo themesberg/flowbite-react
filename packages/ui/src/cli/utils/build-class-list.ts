@@ -2,6 +2,7 @@ import { applyPrefix } from "../../helpers/apply-prefix";
 import { applyPrefixV3 } from "../../helpers/apply-prefix-v3";
 import { convertUtilitiesToV4 } from "../../helpers/convert-utilities-to-v4";
 import { getTailwindVersion } from "../../helpers/get-tailwind-version";
+import { stripDark } from "../../helpers/strip-dark";
 import { CLASS_LIST_MAP, COMPONENT_TO_CLASS_LIST_MAP } from "../../metadata/class-list";
 import { DEPENDENCY_LIST_MAP } from "../../metadata/dependency-list";
 
@@ -10,10 +11,19 @@ import { DEPENDENCY_LIST_MAP } from "../../metadata/dependency-list";
  *
  * @param {Object} options - The options for building the class list.
  * @param {string[]} options.components - The components to include in the class list.
+ * @param {boolean} options.dark - Whether to include dark mode classes.
  * @param {string} options.prefix - The prefix to apply to the class names.
  * @returns {string[]} The sorted list of CSS classes.
  */
-export function buildClassList({ components, prefix }: { components: string[]; prefix: string }): string[] {
+export function buildClassList({
+  components,
+  dark,
+  prefix,
+}: {
+  components: string[];
+  dark: boolean;
+  prefix: string;
+}): string[] {
   const version = getTailwindVersion();
 
   let classList: string[] = [];
@@ -59,6 +69,9 @@ export function buildClassList({ components, prefix }: { components: string[]; p
     ];
   }
 
+  if (dark === false) {
+    classList = classList.map(stripDark);
+  }
   if (version === 4) {
     classList = classList.map(convertUtilitiesToV4);
   }

@@ -270,8 +270,9 @@ export async function dev() {
 
     const config = await getConfig();
     const newClassList = buildClassList({
-      prefix: config.prefix,
       components: config.components.length ? config.components : newImportedComponents,
+      dark: config.dark,
+      prefix: config.prefix,
     });
 
     if (!isEqual(classList, newClassList)) {
@@ -504,6 +505,7 @@ export async function setupConfig() {
     const defaultConfig: Config = {
       $schema: "https://unpkg.com/flowbite-react/schema.json",
       components: [],
+      dark: true,
       prefix: "",
       path: "src/components",
       tsx: true,
