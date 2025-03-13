@@ -73,19 +73,15 @@ module.exports = {
 
 Set up ESLint to ensure code quality and catch potential issues:
 
-1. Initialize ESLint configuration:
+#### Legacy Configuration
 
-```bash
-npm init @eslint/config
-```
-
-2. Install the Tailwind CSS ESLint plugin:
+1. Install the Tailwind CSS ESLint plugin:
 
 ```bash
 npm i -D eslint-plugin-tailwindcss
 ```
 
-3. Configure ESLint with Tailwind CSS support:
+2. Configure ESLint with Tailwind CSS support:
 
 ```js {6,10-13}
 /** @type {import("eslint").Linter.Config} */
@@ -103,6 +99,34 @@ module.exports = {
     },
   },
 };
+```
+
+#### Flat Configuration
+
+Starting with ESLint v9, the flat config format is the default configuration method. Here's how to set up ESLint with Tailwind CSS support using the new flat config format:
+
+1. Install ESLint Tailwind CSS plugin:
+
+```bash
+npm i -D eslint-plugin-tailwindcss
+```
+
+2. Configure ESLint with Tailwind CSS support using the flat config format:
+
+```js {1,4,6-10}
+import tailwindcss from "eslint-plugin-tailwindcss";
+
+export default [
+  ...tailwindcss.configs["flat/recommended"],
+  {
+    settings: {
+      tailwindcss: {
+        callees: ["twMerge", "createTheme"],
+        classRegex: "^(class(Name)|theme)?$",
+      },
+    },
+  },
+];
 ```
 
 ## Automated Setup
