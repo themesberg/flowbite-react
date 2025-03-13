@@ -15,6 +15,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
     items: [
       { title: "Introduction", href: "/docs/getting-started/introduction" },
       { title: "Quickstart", href: "/docs/getting-started/quickstart", tag: "updated" },
+      { title: "Compatibility", href: "/docs/getting-started/compatibility", tag: "new" },
       { title: "CLI", href: "/docs/getting-started/cli", tag: "updated" },
       { title: "Editor Setup", href: "/docs/getting-started/editor-setup" },
       { title: "Server Components", href: "/docs/getting-started/server-components" },
