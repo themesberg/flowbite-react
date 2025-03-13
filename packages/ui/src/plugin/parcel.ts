@@ -1,5 +1,6 @@
 import { Reporter } from "@parcel/plugin";
-import { build, dev } from "../cli";
+import { build } from "../cli/commands/build";
+import { dev } from "../cli/commands/dev";
 
 export default new Reporter({
   async report({ event, options }) {

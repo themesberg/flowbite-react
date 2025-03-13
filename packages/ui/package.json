@@ -172,6 +172,7 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "generate-metadata": "bun scripts/generate-metadata.ts",
+    "postinstall": "bun run src/cli/bin.ts patch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",

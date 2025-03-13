@@ -1,5 +1,6 @@
 import type { WebpackPluginInstance } from "webpack";
-import { build, dev } from "../cli";
+import { build } from "../cli/commands/build";
+import { dev } from "../cli/commands/dev";
 import { pluginName } from "./index";
 
 export default (): WebpackPluginInstance => ({

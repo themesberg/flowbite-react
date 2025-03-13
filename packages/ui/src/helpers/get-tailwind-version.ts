@@ -1,4 +1,4 @@
-import colors from "tailwindcss/colors.js";
+import version from "tailwindcss/version";
 
 /**
  * Gets the major version number of the installed Tailwind CSS
@@ -7,12 +7,7 @@ import colors from "tailwindcss/colors.js";
  */
 export function getTailwindVersion(): 3 | 4 | undefined {
   try {
-    if (colors.slate[50].includes("#")) {
-      return 3;
-    }
-    if (colors.slate[50].includes("oklch")) {
-      return 4;
-    }
+    return parseInt(version.split(".")[0], 10) as 3 | 4;
   } catch (_) {
     return;
   }
