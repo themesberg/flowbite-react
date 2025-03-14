@@ -17,7 +17,7 @@ export async function create(componentName?: string) {
       });
 
       finalComponentName = await new Promise<string>((resolve) => {
-        rl.question('Enter component name (e.g., "button"): ', (answer) => {
+        rl.question('Enter component name (e.g., "my-component"): ', (answer) => {
           resolve(answer.trim());
         });
       });
