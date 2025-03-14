@@ -32,16 +32,6 @@
         "default": "./dist/index.cjs"
       }
     },
-    "./cli": {
-      "import": {
-        "types": "./dist/cli/index.d.ts",
-        "default": "./dist/cli/index.js"
-      },
-      "require": {
-        "types": "./dist/cli/index.d.cts",
-        "default": "./dist/cli/index.cjs"
-      }
-    },
     "./cli/*": {
       "import": {
         "types": "./dist/cli/*.d.ts",
@@ -50,6 +40,36 @@
       "require": {
         "types": "./dist/cli/*.d.cts",
         "default": "./dist/cli/*.cjs"
+      }
+    },
+    "./cli/commands/*": {
+      "import": {
+        "types": "./dist/cli/commands/*.d.ts",
+        "default": "./dist/cli/commands/*.js"
+      },
+      "require": {
+        "types": "./dist/cli/commands/*.d.cts",
+        "default": "./dist/cli/commands/*.cjs"
+      }
+    },
+    "./cli/commands/plugins/*": {
+      "import": {
+        "types": "./dist/cli/commands/plugins/*.d.ts",
+        "default": "./dist/cli/commands/plugins/*.js"
+      },
+      "require": {
+        "types": "./dist/cli/commands/plugins/*.d.cts",
+        "default": "./dist/cli/commands/plugins/*.cjs"
+      }
+    },
+    "./cli/utils/* ": {
+      "import": {
+        "types": "./dist/cli/utils/*.d.ts",
+        "default": "./dist/cli/utils/*.js"
+      },
+      "require": {
+        "types": "./dist/cli/utils/*.d.cts",
+        "default": "./dist/cli/utils/*.cjs"
       }
     },
     "./components/*": {
