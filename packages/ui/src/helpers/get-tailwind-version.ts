@@ -1,4 +1,4 @@
-import version from "tailwindcss/version";
+import version from "tailwindcss/version.js";
 
 /**
  * Gets the major version number of the installed Tailwind CSS

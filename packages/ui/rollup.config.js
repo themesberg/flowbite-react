@@ -17,7 +17,7 @@ const external = [
   "react/jsx-runtime",
   "readline",
   "tailwindcss/plugin",
-  "tailwindcss/version",
+  "tailwindcss/version.js",
   ...Object.keys({
     ...packageJson.dependencies,
     ...packageJson.devDependencies,
