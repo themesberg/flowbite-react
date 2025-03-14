@@ -12,6 +12,8 @@ The Flowbite React CLI provides a comprehensive set of tools for:
 - Managing development workflows
 - Handling class generation
 - Configuring your development environment
+- Patching Tailwind CSS configurations
+- Providing help and documentation
 
 ## Installation & Setup
 
@@ -98,6 +100,15 @@ Starts the development mode which:
 - Provides real-time class generation
 - Monitors imported components
 
+### `flowbite-react help`
+
+Displays help information about available commands:
+
+- Lists all available commands with descriptions
+- Shows usage examples
+- Provides guidance on command options
+- Can be accessed with `flowbite-react help` or `flowbite-react --help`
+
 ### `flowbite-react init`
 
 Initializes Flowbite React in your project. This command:
@@ -116,6 +127,15 @@ Installs Flowbite React in your project:
 - Detects your package manager (npm, yarn, pnpm, bun, etc.)
 - Installs the latest version of flowbite-react
 - Skips installation if already installed
+
+### `flowbite-react patch`
+
+Patches Tailwind CSS to expose its version number for compatibility detection:
+
+- Creates a JavaScript file that exports the Tailwind CSS version
+- Necessary because package.json cannot be reliably read by all bundlers
+- Makes the version accessible via `import version from "tailwindcss/version"`
+- Enables Flowbite React to adapt its behavior based on the installed Tailwind version
 
 ### `flowbite-react register`
 
