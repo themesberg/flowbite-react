@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
-import { classListFile, classListFilePath, excludeDirs, outputDir, pluginName, pluginPath } from "../consts";
+import { classListFilePath, excludeDirs, pluginName, pluginPath } from "../consts";
 import { addImport } from "../utils/add-import";
 import { addToConfig } from "../utils/add-to-config";
 import { findFiles } from "../utils/find-files";
@@ -28,50 +28,69 @@ async function setupTailwindV4() {
 
     for (const file of cssFiles) {
       const content = await fs.readFile(file, "utf-8");
+      const lines = content.split("\n");
 
-      const hasImportWithSingleQuotes = content.includes(`@import 'tailwindcss'`);
-      const hasImportWithDoubleQuotes = content.includes(`@import "tailwindcss"`);
+      let tailwindImportIndex = -1;
+      let quoteType = '"';
 
-      if (hasImportWithSingleQuotes || hasImportWithDoubleQuotes) {
-        found = true;
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        const singleQuoteMatch = line.match(/@import\s+'tailwindcss'/);
+        const doubleQuoteMatch = line.match(/@import\s+"tailwindcss"/);
 
-        const tailwindPluginPath = path.join(pluginPath, "tailwindcss");
-        const quoteType = hasImportWithSingleQuotes ? "'" : '"';
+        if (singleQuoteMatch || doubleQuoteMatch) {
+          tailwindImportIndex = i;
+          quoteType = singleQuoteMatch ? "'" : '"';
 
-        const relativePath = path.relative(path.dirname(file), process.cwd());
-        const sourceImportPath = path.join(relativePath, outputDir, classListFile).replace(/\\/g, "/");
+          if (!line.trim().endsWith(";")) {
+            lines[i] = line + ";";
+          }
 
-        const hasPlugin = content.includes(`@plugin ${quoteType}${tailwindPluginPath}${quoteType}`);
-        const hasSource = content.includes(`@source ${quoteType}${sourceImportPath}${quoteType}`);
-
-        if (hasPlugin && hasSource) {
-          continue;
-        }
-
-        const targetIndex = hasImportWithSingleQuotes
-          ? content.indexOf(`@import 'tailwindcss'`)
-          : content.indexOf(`@import "tailwindcss"`);
-        const importLength = hasImportWithSingleQuotes
-          ? `@import 'tailwindcss'`.length
-          : `@import "tailwindcss"`.length;
-        const nextLineIndex = content.indexOf("\n", targetIndex);
-        const insertPosition = nextLineIndex === -1 ? targetIndex + importLength : nextLineIndex;
-
-        let insertContent = "";
-        if (!hasPlugin) {
-          insertContent += `\n@plugin ${quoteType}${tailwindPluginPath}${quoteType};`;
-        }
-        if (!hasSource) {
-          insertContent += `\n@source ${quoteType}${sourceImportPath}${quoteType};`;
-        }
-
-        const updatedContent = content.slice(0, insertPosition) + insertContent + "\n" + content.slice(insertPosition);
-
-        if (insertContent) {
-          console.log(`Updating ${file} with flowbite-react configuration...`);
-          await fs.writeFile(file, updatedContent, "utf-8");
+          break;
         }
       }
+
+      if (tailwindImportIndex === -1) {
+        continue;
+      }
+
+      found = true;
+
+      const pluginDirectivePath = path.join(pluginPath, "tailwindcss");
+      const sourceDirectivePath = path
+        .join(path.relative(path.dirname(file), process.cwd()), classListFilePath)
+        .replace(/\\/g, "/");
+
+      const pluginRegex = new RegExp(
+        `@plugin\\s+['"](${pluginDirectivePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})['"](;|\\s|$)`,
+      );
+      const sourceRegex = new RegExp(
+        `@source\\s+['"](${sourceDirectivePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})['"](;|\\s|$)`,
+      );
+
+      const hasPluginDirective = pluginRegex.test(content);
+      const hasSourceDirective = sourceRegex.test(content);
+
+      if (hasPluginDirective && hasSourceDirective) {
+        continue;
+      }
+
+      const directivesToAdd = [];
+      if (!hasPluginDirective) {
+        const pluginDirective = `@plugin ${quoteType}${pluginDirectivePath}${quoteType};`;
+        directivesToAdd.push(pluginDirective);
+      }
+      if (!hasSourceDirective) {
+        const sourceDirective = `@source ${quoteType}${sourceDirectivePath}${quoteType};`;
+        directivesToAdd.push(sourceDirective);
+      }
+
+      lines.splice(tailwindImportIndex + 1, 0, ...directivesToAdd);
+
+      const updatedContent = lines.join("\n");
+
+      console.log(`Updating ${file} with flowbite-react configuration...`);
+      await fs.writeFile(file, updatedContent, "utf-8");
     }
 
     return found;
@@ -124,5 +143,6 @@ async function setupTailwindV3() {
     return !!configFiles.length;
   } catch (error) {
     console.error("Failed to setup Tailwind CSS v3:", error);
+    return false;
   }
 }

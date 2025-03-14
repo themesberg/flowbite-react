@@ -66,14 +66,14 @@ export async function patchTailwind(): Promise<void> {
 
       // Check and create `version.js` file (CJS)
       if (await shouldUpdateFile(versionFilePath, actualVersion)) {
-        const versionContent = `"use strict";\nmodule.exports = "${actualVersion}";\nmodule.exports.default = "${actualVersion}";\n`;
+        const versionContent = `"use strict";\n\nconst version = "${actualVersion}";\nmodule.exports = version;\n`;
         await fs.writeFile(versionFilePath, versionContent, "utf-8");
         filesCreated = true;
       }
 
       // Check and create `version.mjs` file (ESM)
       if (await shouldUpdateFile(versionMjsFilePath, actualVersion)) {
-        const versionMjsContent = `export default "${actualVersion}";\n`;
+        const versionMjsContent = `const version = "${actualVersion}";\nexport default version;\n`;
         await fs.writeFile(versionMjsFilePath, versionMjsContent, "utf-8");
         filesCreated = true;
       }
