@@ -70,7 +70,7 @@ export function buildClassList({
   }
 
   if (dark === false) {
-    classList = [...new Set(classList.map(stripDark))];
+    classList = classList.map(stripDark).filter(Boolean);
   }
   if (version === 4) {
     classList = classList.map(convertUtilitiesToV4);
