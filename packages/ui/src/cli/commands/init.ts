@@ -47,9 +47,7 @@ export async function init() {
       await setupRegister();
     }
 
-    console.log(
-      "\n✅ Flowbite React has been successfully initialized! You're all set to start building beautiful UI components.",
-    );
+    console.log("\n✅ Flowbite React has been successfully initialized!");
   } catch (error) {
     console.error("An error occurred during initialization:", error);
     process.exit(1);
