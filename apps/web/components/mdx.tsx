@@ -3,6 +3,7 @@ import type { MDXComponents } from "mdx/types";
 import { getMDXComponent } from "next-contentlayer2/hooks";
 import Link from "next/link";
 import * as examples from "~/examples";
+import { pick } from "~/helpers/pick";
 import { CodeDemo, type CodeData } from "./code-demo";
 import { CodeHighlight } from "./code-highlight";
 import { PreWithCopy } from "./pre-with-copy";
@@ -74,7 +75,7 @@ const components: MDXComponents = {
 
   // Example component
   Example: ({ name }: { name: string }) => {
-    const codeData = pick(examples, name);
+    const codeData = pick<CodeData>(examples, name);
 
     if (!codeData) {
       return <>{`<Example name="${name}" />`}</>;
@@ -117,28 +118,6 @@ function Heading({
       </a>
     </Component>
   );
-}
-
-/**
- * Recursively picks a nested value from an object using a dot-separated path string
- * @template T - The type of the input object
- * @param {T} obj - The object to pick from
- * @param {string} path - Dot-separated path to the desired value (e.g. "foo.bar.baz")
- * @returns {CodeData | undefined} The value at the specified path, or undefined if not found
- */
-function pick<T extends object>(obj: T, path: string): CodeData | undefined {
-  if (!path) {
-    return obj as CodeData;
-  }
-
-  const properties = path.split(".");
-  const key = properties.shift() as keyof typeof obj;
-
-  if (!(key in obj)) {
-    return;
-  }
-
-  return pick(obj[key] as T, properties.join("."));
 }
 
 export function Mdx({ code }: { code: string }) {

@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "bun run generate-llms && next build",
     "clean": "git clean -xdf",
     "dev": "next dev",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
+    "generate-llms": "bun run scripts/generate-llms.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "start": "next start",
