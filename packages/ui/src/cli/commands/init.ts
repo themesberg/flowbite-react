@@ -1,6 +1,7 @@
 import { ensureTailwind } from "./ensure-tailwind";
 import { installFlowbiteReact } from "./install";
 import { patchTailwind } from "./patch";
+import { setupClassList } from "./setup-class-list";
 import { setupConfig } from "./setup-config";
 import { setupGitIgnore } from "./setup-gitignore";
 import { setupOutputDirectory } from "./setup-output-directory";
@@ -29,6 +30,9 @@ export async function init() {
 
     // setup `.flowbite-react` directory
     await setupOutputDirectory();
+
+    // setup `.flowbite-react/class-list.json` file
+    await setupClassList();
 
     // setup `.flowbite-react/config.json` file
     await setupConfig();
