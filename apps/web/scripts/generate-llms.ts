@@ -1,6 +1,10 @@
 import { mkdir } from "node:fs/promises";
 import path from "path";
+import { theme } from "flowbite-react";
+import type { FlowbiteTheme } from "flowbite-react/types";
 import type { CodeData } from "~/components/code-demo";
+import { GUIDES } from "~/components/quickstart/integration-guides";
+import * as examples from "~/examples";
 import { pick } from "~/helpers/pick";
 import { DOCS_SIDEBAR } from "../data/docs-sidebar";
 
@@ -80,32 +84,40 @@ async function convertMdxToMd(sourcePath: string, destDir: string, fileName: str
   const destPath = path.join(destDir, fileName.replace(".mdx", ".md"));
   let content = await Bun.file(sourcePath).text();
 
-  // Process Theme components
-  content = content.replace(/<Theme\s+name="([^"]+)"\s*\/>/g, (_, name) => {
-    try {
-      const { theme } = require("flowbite-react");
-      return theme[name] ? "```json\n" + JSON.stringify(theme[name], null, 2) + "\n```" : `<Theme name="${name}" />`;
-    } catch (error) {
-      console.warn(`Could not process Theme component for "${name}":`, error);
-      return `<Theme name="${name}" />`;
+  // Process `Theme` component
+  content = content.replace(/<Theme\s+name="([^"]+)"\s*\/>/g, (_, name: keyof FlowbiteTheme) => {
+    if (theme[name]) {
+      return "```json\n" + JSON.stringify(theme[name], null, 2) + "\n```";
     }
+
+    return `<Theme name="${name}" />`;
   });
 
-  // Process Example components
+  // Process `Example` component
   content = content.replace(/<Example\s+name="([^"]+)"\s*\/>/g, (_, name) => {
-    try {
-      const examples = require("~/examples");
-      const codeData = pick<CodeData>(examples, name);
-      if (!codeData) return `<Example name="${name}" />`;
+    const codeData = pick<CodeData>(examples, name);
 
-      return formatCode(codeData);
-    } catch (error) {
-      console.warn(`Could not process Example component for "${name}":`, error);
+    if (!codeData) {
       return `<Example name="${name}" />`;
     }
+
+    return formatCode(codeData);
   });
 
-  // Fix links
+  // Process `IntegrationGuides` component
+  content = content.replace(/<IntegrationGuides\s*\/>/g, () => {
+    let guidesContent = "";
+
+    for (const guide of GUIDES) {
+      guidesContent += `- [${guide.name}](${guide.slug})\n`;
+    }
+
+    return guidesContent;
+  });
+
+  // Transform relative and absolute links to properly point to markdown files
+  // 1. Convert relative /docs/ links to include BASE_URL
+  // 2. Add .md extension to doc links
   content = content
     .replace(/\]\(\/docs\//g, `](${BASE_URL}/docs/`)
     .replace(/\]\(\/docs\/([^)]+)\)/g, `](${BASE_URL}/docs/$1.md)`)

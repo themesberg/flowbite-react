@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
-interface Guide {
+export interface Guide {
   name: string;
   slug: string;
   logo: string;
@@ -11,7 +11,7 @@ interface Guide {
   className?: string;
 }
 
-const GUIDES: Guide[] = [
+export const GUIDES: Guide[] = [
   { name: "AdonisJS", slug: "/docs/guides/adonisjs", logo: "adonisjs.svg", className: "p-2", invert: true },
   { name: "Astro", slug: "/docs/guides/astro", logo: "astro.svg", invert: true },
   { name: "Blitz.js", slug: "/docs/guides/blitzjs", logo: "blitzjs.svg" },
