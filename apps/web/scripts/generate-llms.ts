@@ -16,15 +16,15 @@ const BASE_URL = "https://flowbite-react.com";
 async function main(): Promise<void> {
   const outputDir = path.join(process.cwd(), "public");
   const outputFile = path.join(outputDir, "llms.txt");
-  const docsOutputDir = path.join(outputDir, "docs");
+  const outputFullFile = path.join(outputDir, "llms-full.txt");
   const docsContentDir = path.join(process.cwd(), "content", "docs");
 
   try {
-    await ensureDirectoryExists(docsOutputDir);
-    await copyMdxToMd(docsContentDir, docsOutputDir);
-    await Bun.write(outputFile, generateLlmContent().trim());
+    await ensureDirectoryExists(outputDir);
+    await Bun.write(outputFile, generateLlmContent());
+    await Bun.write(outputFullFile, await generateFullLlmContent(docsContentDir));
   } catch (error) {
-    console.error(`Failed to generate ${outputFile} file:`, error);
+    console.error(`Failed to generate LLM files:`, error);
   }
 }
 
@@ -58,33 +58,43 @@ function generateLlmContent(): string {
     content += "\n";
   }
 
-  return content;
+  return content.trim();
 }
 
 /**
- * Copies and converts MDX files to MD files
+ * Generates a full content file containing all documentation pages
  */
-async function copyMdxToMd(sourceDir: string, destDir: string): Promise<void> {
-  const mdxFiles = await Array.fromAsync(new Bun.Glob("**/*.mdx").scan({ cwd: sourceDir }));
+async function generateFullLlmContent(sourceDir: string): Promise<string> {
+  let fullContent = "# Flowbite React Full Documentation\n\n";
 
-  for (const relativePath of mdxFiles) {
-    const sourcePath = path.join(sourceDir, relativePath);
-    const destSubDir = path.join(destDir, path.dirname(relativePath));
-    const fileName = path.basename(relativePath);
+  for (const section of DOCS_SIDEBAR) {
+    fullContent += `# ${section.title.charAt(0).toUpperCase() + section.title.slice(1)}\n\n`;
 
-    await ensureDirectoryExists(destSubDir);
-    await convertMdxToMd(sourcePath, destSubDir, fileName);
+    for (const item of section.items) {
+      const relativePath = `${item.href.replace(/^\/docs\//, "")}.mdx`;
+      const sourcePath = path.join(sourceDir, relativePath);
+
+      const file = Bun.file(sourcePath);
+      if (await file.exists()) {
+        const content = await file.text();
+        const convertedContent = await convertMdxContentToMd(content);
+
+        const tagIndicator = item.tag ? ` (${item.tag})` : "";
+        fullContent += `## ${item.title}${tagIndicator}\n\n${convertedContent}\n\n---\n\n`;
+      }
+    }
   }
+
+  return fullContent.trim();
 }
 
 /**
- * Converts a single MDX file to MD format
+ * Converts MDX content to MD format
  */
-async function convertMdxToMd(sourcePath: string, destDir: string, fileName: string): Promise<void> {
-  const destPath = path.join(destDir, fileName.replace(".mdx", ".md"));
-  let content = await Bun.file(sourcePath).text();
+async function convertMdxContentToMd(content: string): Promise<string> {
+  let result = content;
 
-  // Extract frontmatter
+  // Convert frontmatter to MD format
   let title = "";
   let description = "";
   const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
@@ -101,10 +111,8 @@ async function convertMdxToMd(sourcePath: string, destDir: string, fileName: str
       description = descriptionMatch[1];
     }
 
-    // Remove frontmatter from content
-    content = content.replace(/^---\n[\s\S]*?\n---\n/, "");
+    result = result.replace(/^---\n[\s\S]*?\n---\n/, "");
 
-    // Add title as h1 and description as blockquote
     let newHeader = "";
     if (title) {
       newHeader += `# ${title}\n\n`;
@@ -113,11 +121,11 @@ async function convertMdxToMd(sourcePath: string, destDir: string, fileName: str
       newHeader += `> ${description}\n`;
     }
 
-    content = newHeader + content;
+    result = newHeader + result;
   }
 
   // Process `Theme` component
-  content = content.replace(/<Theme\s+name="([^"]+)"\s*\/>/g, (_, name: keyof FlowbiteTheme) => {
+  result = result.replace(/<Theme\s+name="([^"]+)"\s*\/>/g, (_, name: keyof FlowbiteTheme) => {
     if (theme[name]) {
       return "```json\n" + JSON.stringify(theme[name], null, 2) + "\n```";
     }
@@ -126,7 +134,7 @@ async function convertMdxToMd(sourcePath: string, destDir: string, fileName: str
   });
 
   // Process `Example` component
-  content = content.replace(/<Example\s+name="([^"]+)"\s*\/>/g, (_, name) => {
+  result = result.replace(/<Example\s+name="([^"]+)"\s*\/>/g, (_, name) => {
     const codeData = pick<CodeData>(examples, name);
 
     if (!codeData) {
@@ -137,20 +145,18 @@ async function convertMdxToMd(sourcePath: string, destDir: string, fileName: str
   });
 
   // Process `IntegrationGuides` component
-  content = content.replace(/<IntegrationGuides\s*\/>/g, () => {
+  result = result.replace(/<IntegrationGuides\s*\/>/g, () => {
     let guidesContent = "";
-
     for (const guide of GUIDES) {
       guidesContent += `- [${guide.name}](${guide.slug})\n`;
     }
-
     return guidesContent;
   });
 
   // Transform relative and absolute links to properly point to markdown files
   // 1. Convert relative /docs/ links to include BASE_URL
   // 2. Add .md extension to doc links
-  content = content
+  result = result
     .replace(/\]\(\/docs\//g, `](${BASE_URL}/docs/`)
     .replace(/\]\(\/docs\/([^)]+)\)/g, `](${BASE_URL}/docs/$1.md)`)
     .replace(/\]\((https?:\/\/flowbite-react\.com\/docs\/[^)]+)(?!\.md)\)/g, `]($1.md)`)
@@ -159,7 +165,7 @@ async function convertMdxToMd(sourcePath: string, destDir: string, fileName: str
       `](https://flowbite-react.com/docs/$2.md)`,
     );
 
-  await Bun.write(destPath, content);
+  return result;
 }
 
 /**

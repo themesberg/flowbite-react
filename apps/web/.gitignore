@@ -13,4 +13,5 @@ build
 
 # llms
 llms.txt
+llms-full.txt
 public/docs
