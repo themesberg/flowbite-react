@@ -84,6 +84,38 @@ async function convertMdxToMd(sourcePath: string, destDir: string, fileName: str
   const destPath = path.join(destDir, fileName.replace(".mdx", ".md"));
   let content = await Bun.file(sourcePath).text();
 
+  // Extract frontmatter
+  let title = "";
+  let description = "";
+  const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+
+  if (frontmatterMatch) {
+    const frontmatter = frontmatterMatch[1];
+    const titleMatch = frontmatter.match(/title:\s*["']?(.*?)["']?\s*(\n|$)/);
+    const descriptionMatch = frontmatter.match(/description:\s*["']?(.*?)["']?\s*(\n|$)/);
+
+    if (titleMatch) {
+      title = titleMatch[1];
+    }
+    if (descriptionMatch) {
+      description = descriptionMatch[1];
+    }
+
+    // Remove frontmatter from content
+    content = content.replace(/^---\n[\s\S]*?\n---\n/, "");
+
+    // Add title as h1 and description as blockquote
+    let newHeader = "";
+    if (title) {
+      newHeader += `# ${title}\n\n`;
+    }
+    if (description) {
+      newHeader += `> ${description}\n`;
+    }
+
+    content = newHeader + content;
+  }
+
   // Process `Theme` component
   content = content.replace(/<Theme\s+name="([^"]+)"\s*\/>/g, (_, name: keyof FlowbiteTheme) => {
     if (theme[name]) {
