@@ -1,4 +1,3 @@
-import { mkdir } from "node:fs/promises";
 import path from "path";
 import { theme } from "flowbite-react";
 import type { FlowbiteTheme } from "flowbite-react/types";
@@ -9,38 +8,26 @@ import { pick } from "~/helpers/pick";
 import { DOCS_SIDEBAR } from "../data/docs-sidebar";
 
 const BASE_URL = "https://flowbite-react.com";
+const OUTPUT_DIR = path.join(process.cwd(), "public");
+const DOCS_DIR = path.join(process.cwd(), "content", "docs");
 
 /**
  * Generates documentation content for LLM training and converts MDX to MD files
  */
 async function main(): Promise<void> {
-  const outputDir = path.join(process.cwd(), "public");
-  const outputFile = path.join(outputDir, "llms.txt");
-  const outputFullFile = path.join(outputDir, "llms-full.txt");
-  const docsContentDir = path.join(process.cwd(), "content", "docs");
-
   try {
-    await ensureDirectoryExists(outputDir);
-    await Bun.write(outputFile, generateLlmContent());
-    await Bun.write(outputFullFile, await generateFullLlmContent(docsContentDir));
+    await generateLlmsFile();
+    await generateLlmsFullFile();
+    await generateDocsFiles();
   } catch (error) {
     console.error(`Failed to generate LLM files:`, error);
   }
 }
 
 /**
- * Ensures a directory exists, creating it if needed
- */
-async function ensureDirectoryExists(directory: string): Promise<void> {
-  if (!(await Bun.file(directory).exists())) {
-    await mkdir(directory, { recursive: true });
-  }
-}
-
-/**
  * Generates content for LLM training based on documentation structure
  */
-function generateLlmContent(): string {
+async function generateLlmsFile(): Promise<void> {
   let content = "# Flowbite React Documentation\n\n";
   content +=
     "> Flowbite React is a UI component library based on Tailwind CSS and React, featuring interactive components for building modern web applications.\n\n";
@@ -58,13 +45,14 @@ function generateLlmContent(): string {
     content += "\n";
   }
 
-  return content.trim();
+  const outputFile = path.join(OUTPUT_DIR, "llms.txt");
+  await Bun.write(outputFile, content.trim());
 }
 
 /**
  * Generates a full content file containing all documentation pages
  */
-async function generateFullLlmContent(sourceDir: string): Promise<string> {
+async function generateLlmsFullFile(): Promise<void> {
   let fullContent = "# Flowbite React Full Documentation\n\n";
 
   for (const section of DOCS_SIDEBAR) {
@@ -72,7 +60,7 @@ async function generateFullLlmContent(sourceDir: string): Promise<string> {
 
     for (const item of section.items) {
       const relativePath = `${item.href.replace(/^\/docs\//, "")}.mdx`;
-      const sourcePath = path.join(sourceDir, relativePath);
+      const sourcePath = path.join(DOCS_DIR, relativePath);
 
       const file = Bun.file(sourcePath);
       if (await file.exists()) {
@@ -85,7 +73,26 @@ async function generateFullLlmContent(sourceDir: string): Promise<string> {
     }
   }
 
-  return fullContent.trim();
+  const outputFullFile = path.join(OUTPUT_DIR, "llms-full.txt");
+  await Bun.write(outputFullFile, fullContent.trim());
+}
+
+/**
+ * Converts MDX files to MD and saves them to the output directory.
+ */
+async function generateDocsFiles(): Promise<void> {
+  const globber = new Bun.Glob("**/*.mdx");
+  const files = await Array.fromAsync(globber.scan({ cwd: DOCS_DIR }));
+
+  for (const file of files) {
+    const sourcePath = path.join(DOCS_DIR, file);
+    const relativePath = file.replace(/\.mdx$/, ".md");
+    const outputPath = path.join(OUTPUT_DIR, "docs", relativePath);
+    const content = await Bun.file(sourcePath).text();
+    const convertedContent = await convertMdxContentToMd(content);
+
+    await Bun.write(outputPath, convertedContent);
+  }
 }
 
 /**
