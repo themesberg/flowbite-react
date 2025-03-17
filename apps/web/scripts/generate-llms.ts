@@ -65,7 +65,7 @@ async function generateLlmsFullFile(): Promise<void> {
       const file = Bun.file(sourcePath);
       if (await file.exists()) {
         const content = await file.text();
-        const convertedContent = await convertMdxContentToMd(content);
+        const convertedContent = convertMdxContentToMd(content);
 
         const tagIndicator = item.tag ? ` (${item.tag})` : "";
         fullContent += `## ${item.title}${tagIndicator}\n\n${convertedContent}\n\n---\n\n`;
@@ -89,7 +89,7 @@ async function generateDocsFiles(): Promise<void> {
     const relativePath = file.replace(/\.mdx$/, ".md");
     const outputPath = path.join(OUTPUT_DIR, "docs", relativePath);
     const content = await Bun.file(sourcePath).text();
-    const convertedContent = await convertMdxContentToMd(content);
+    const convertedContent = convertMdxContentToMd(content);
 
     await Bun.write(outputPath, convertedContent);
   }
@@ -98,7 +98,7 @@ async function generateDocsFiles(): Promise<void> {
 /**
  * Converts MDX content to MD format
  */
-async function convertMdxContentToMd(content: string): Promise<string> {
+function convertMdxContentToMd(content: string): string {
   let result = content;
 
   // Convert frontmatter to MD format
