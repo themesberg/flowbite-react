@@ -3,7 +3,6 @@ import { build } from "../cli/commands/build";
 import { dev } from "../cli/commands/dev";
 import { pluginName } from "./index";
 
-// TODO: export default is broken
 export default (): RspackPluginInstance => ({
   name: pluginName,
   apply(compiler) {

@@ -1,3 +1,4 @@
+import { build } from "@rslib/core";
 import { $, Glob } from "bun";
 import esbuild from "rollup-plugin-esbuild";
 import { rollupPluginUseClient } from "rollup-plugin-use-client";
@@ -56,6 +57,7 @@ export default {
     }),
     rollupPluginUseClient(),
     generateDts(),
+    generateRspackPlugin(),
   ],
   onwarn(warning, warn) {
     if (warning.code === "MODULE_LEVEL_DIRECTIVE") {
@@ -106,6 +108,39 @@ function generateDts() {
           content.replace("export default _default", "export = _default"),
         );
       }
+    },
+  };
+}
+
+function generateRspackPlugin() {
+  return {
+    name: "generate-rspack-plugin",
+    async closeBundle() {
+      await build({
+        source: {
+          entry: {
+            index: "./src/plugin/rspack.ts",
+          },
+        },
+        lib: [
+          {
+            format: "esm",
+            bundle: false,
+          },
+          {
+            format: "cjs",
+            bundle: false,
+          },
+        ],
+        output: {
+          target: "node",
+          distPath: {
+            root: "./dist/plugin",
+          },
+          cleanDistPath: false,
+          sourceMap: true,
+        },
+      });
     },
   };
 }
