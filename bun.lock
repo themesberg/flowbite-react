@@ -132,7 +132,7 @@
         "@farmfe/core": "1.6.6",
         "@modern-js/app-tools": "2.64.2",
         "@parcel/plugin": "2.13.3",
-        "@rsbuild/core": "^1.2.19",
+        "@rsbuild/core": "1.2.19",
         "@rslib/core": "0.5.4",
         "@rspack/core": "1.2.8",
         "@testing-library/jest-dom": "6.6.3",
