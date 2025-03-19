@@ -55,8 +55,8 @@ Check out the full list of [official `flowbite-react` template examples](https:/
 | `react-server`    | React Server    | https://github.com/themesberg/flowbite-react-template-react-server    |
 | `redwoodjs`       | RedwoodJS       | https://github.com/themesberg/flowbite-react-template-redwoodjs       |
 | `remix`           | Remix           | https://github.com/themesberg/flowbite-react-template-remix           |
-| `rsbuild`         | RSBuild         | https://github.com/themesberg/flowbite-react-template-rsbuild         |
-| `rspack`          | RSPack          | https://github.com/themesberg/flowbite-react-template-rspack          |
+| `rsbuild`         | Rsbuild         | https://github.com/themesberg/flowbite-react-template-rsbuild         |
+| `rspack`          | Rspack          | https://github.com/themesberg/flowbite-react-template-rspack          |
 | `tanstack-router` | TanStack Router | https://github.com/themesberg/flowbite-react-template-tanstack-router |
 | `tanstack-start`  | TanStack Start  | https://github.com/themesberg/flowbite-react-template-tanstack-start  |
 | `vike`            | Vike            | https://github.com/themesberg/flowbite-react-template-vike            |

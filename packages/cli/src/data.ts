@@ -83,12 +83,12 @@ export const REPOS: { key: string; name: string; url: string }[] = [
   },
   {
     key: "rsbuild",
-    name: "RSBuild",
+    name: "Rsbuild",
     url: "https://github.com/themesberg/flowbite-react-template-rsbuild.git",
   },
   {
     key: "rspack",
-    name: "RSPack",
+    name: "Rspack",
     url: "https://github.com/themesberg/flowbite-react-template-rspack.git",
   },
   {
