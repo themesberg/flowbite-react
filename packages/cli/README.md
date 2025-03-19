@@ -1,8 +1,8 @@
 # create-flowbite-react
 
-The easiest way to get started with `flowbite-react` is by using `create-flowbite-react` CLI.
+The easiest way to get started with `flowbite-react` is by using the `create-flowbite-react` CLI.
 
-Easily scaffold a `flowbite-react` application using the most popular React frameworks and technologies out there.
+Easily scaffold a `flowbite-react` application using the most popular React frameworks and technologies available.
 
 ## Getting started
 
@@ -10,30 +10,10 @@ Run any of the following commands and answer the command prompt questions:
 
 ### Interactive
 
-The CLI will prompt the directory name, what template to use and if it should initialize a new git repository:
-
-#### npm
+The CLI will prompt for the directory name, template to use, and whether to initialize a new git repository:
 
 ```bash
-npm create flowbite-react@latest
-```
-
-#### yarn
-
-```bash
-yarn create flowbite-react
-```
-
-#### pnpm
-
-```bash
-pnpm create flowbite-react@latest
-```
-
-#### bun
-
-```bash
-bun create flowbite-react@latest
+npx create-flowbite-react@latest
 ```
 
 ### Non-interactive
@@ -41,21 +21,7 @@ bun create flowbite-react@latest
 You can also pass command line arguments to set up a new project non-interactively. See `create-flowbite-react --help`:
 
 ```bash
-create-flowbite-react <project-directory> [options]
-```
-
-```bash
-# npm
-npm create flowbite-react@latest next-app -- --template nextjs
-
-# yarn
-yarn create flowbite-react remix-app --template remix
-
-# pnpm
-pnpm create flowbite-react@latest astro-app --template astro
-
-# bun
-bun create flowbite-react@latest vite-app --template vite
+npx create-flowbite-react@latest <project-directory> [options]
 ```
 
 Check out the full list of [official `flowbite-react` template examples](https://github.com/themesberg/flowbite-react-templates).

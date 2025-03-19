@@ -1,13 +1,8 @@
 <div align="center">
-  <h1>flowbite-react</h1>
+  <h1>Flowbite React</h1>
   <p><em>⚠️ This is a pre-release version - please note that APIs may change before the final release</em></p>
   <p>
-    <a href="https://flowbite-react.com">
-      <img alt="Flowbite - Tailwind CSS components" width="350" src=".github/assets/flowbite-react-github.png">
-    </a>
-  </p>
-  <p>
-    Build websites even faster with components on top of React and Tailwind CSS
+    Build websites faster with components built on React and Tailwind CSS
   </p>
   <p>
     <a href="https://codecov.io/gh/themesberg/flowbite-react">
@@ -30,78 +25,47 @@
 
 ---
 
-<div align="center">
-  <p />
-  <p>
-    <img alt="https://flowbite-react.com" src="https://i.postimg.cc/d0DwHMJZ/Screenshot-2023-07-12-at-16-36-54-Flowbite-React-UI-Component-Library.png" />
-  </p>
-</div>
-
----
-
-### `flowbite-react` is an open source collection of UI components, built in React, with utility classes from Tailwind CSS that you can use as a starting point for user interfaces and websites.
+### Flowbite React is an open-source collection of UI components built with React and Tailwind CSS utility classes that you can use as a starting point for your user interfaces and websites
 
 ## Documentation
 
-Documentation for `flowbite-react` is not yet finished.
+Browse the components at [flowbite-react.com](https://flowbite-react.com/).
 
-If you want to browse the components, visit [flowbite-react.com](https://flowbite-react.com/).
-
-If you want to learn more about Flowbite, visit [Flowbite docs](https://flowbite.com/docs/getting-started/introduction/).
+Learn more about Flowbite at [Flowbite docs](https://flowbite.com/docs/getting-started/introduction/).
 
 ## Getting started
 
-Learn how to get started with `Flowbite React` and start leveraging the interactive React components coupled with `Flowbite` and `Tailwind CSS`.
+Learn how to get started with `Flowbite React` and leverage the interactive React components built with `Tailwind CSS`.
 
 ### Using the CLI
 
-There are two ways to set up Flowbite React using the CLI:
+You can set up Flowbite React using the CLI in two ways:
 
 #### 1. Create a new project
 
-Easily scaffold a new Flowbite React application using the most popular React frameworks and technologies:
+Create a new Flowbite React application using popular React frameworks and technologies:
 
 ```bash
-# npm
-npm create flowbite-react@latest
-
-# yarn
-yarn create flowbite-react@latest
-
-# pnpm
-pnpm create flowbite-react@latest
-
-# bun
-bun create flowbite-react@latest
+npx create-flowbite-react@latest
 ```
 
 The CLI will prompt for the directory name, what template to use, and if it should initialize a new git repository.
 
-For more details, see how [`create-flowbite-react`](https://www.npmjs.com/package/create-flowbite-react) works.
+For more details about how [`create-flowbite-react`](https://www.npmjs.com/package/create-flowbite-react) works, visit the package page.
 
 #### 2. Setup in an existing project
 
-To add Flowbite React to an existing project, use:
+To add Flowbite React to an existing project, run:
 
 ```bash
-# npm
 npx flowbite-react@latest init
-
-# yarn
-yarn dlx flowbite-react@latest init
-
-# pnpm
-pnpx flowbite-react@latest init
-
-# bun
-bunx flowbite-react@latest init
 ```
 
 This will set up all necessary dependencies and configurations in your existing project.
 
 ### Framework Integration Guides
 
-To integrate `flowbite-react` with your preferred framework or technology stack, follow our official integration guides:
+Follow our official integration guides to set up Flowbite React with your preferred framework or technology stack:
 
 - [AdonisJS](https://www.flowbite-react.com/docs/guides/adonisjs)
 - [Astro](https://www.flowbite-react.com/docs/guides/astro)
@@ -130,7 +94,7 @@ To integrate `flowbite-react` with your preferred framework or technology stack,
 
 ## Components
 
-**Please note that some components in the vanilla Flowbite library are not yet available in Flowbite React.**
+**Note: Some components from the vanilla Flowbite library are not yet available in Flowbite React.**
 
 <table>
   <tr>
@@ -349,21 +313,21 @@ To integrate `flowbite-react` with your preferred framework or technology stack,
 
 ## Community
 
-If you need help or just want to discuss about the library join the community on Github:
+Get help or discuss the library with the community:
 
-⌨️ [Discuss about Flowbite on GitHub](https://github.com/themesberg/flowbite/discussions)
+⌨️ [Discuss Flowbite on GitHub](https://github.com/themesberg/flowbite/discussions)
 
-For casual chatting with others using the library:
+For casual conversations with other users using the library:
 
 💬 [Join the Flowbite Discord Server](https://discord.gg/4eeurUVvTy)
 
 ## Contributing
 
-Thank you for your interest in helping! Visit our [guide on contributing](https://github.com/themesberg/flowbite-react/blob/main/.github/CONTRIBUTING.md) to get started.
+We appreciate your interest in contributing! Please visit our [guide on contributing](https://github.com/themesberg/flowbite-react/blob/main/.github/CONTRIBUTING.md) to get started.
 
 ## Figma
 
-If you need the Figma files for the components you can check out our website for more information:
+For access to the Figma design files for our components, visit:
 
 🎨 [Get access to the Figma design files](https://flowbite.com/figma/)
 
@@ -372,4 +336,4 @@ If you need the Figma files for the components you can check out our website for
 The Flowbite name and logos are trademarks of Bergside Srl.
 
 📝 [Read about the licensing terms](https://flowbite.com/docs/getting-started/license/)
-📀 [Brand guideline and trademark usage agreement](https://flowbite.com/brand/)
+📀 [Brand guidelines and trademark usage agreement](https://flowbite.com/brand/)
