@@ -18,7 +18,7 @@ npx create-flowbite-react@latest
 
 ### Non-interactive
 
-You can also pass command line arguments to set up a new project non-interactively. See `create-flowbite-react --help`:
+You can also pass command line arguments to set up a new project non-interactively. See `npx create-flowbite-react@latest --help`:
 
 ```bash
 npx create-flowbite-react@latest <project-directory> [options]
