@@ -59,51 +59,31 @@ npx create-adonisjs@latest -K=inertia --adapter=react
 
 ### 2. Set Up Tailwind CSS
 
-First, install Tailwind CSS and its Vite plugin:
+1. Install Tailwind CSS and its Vite plugin:
 
 ```bash
-npm install tailwindcss @tailwindcss/vite
+npm install -D tailwindcss @tailwindcss/vite
 ```
 
-Then, configure the Vite plugin in your configuration:
+2. Configure the Vite plugin in your `vite.config.ts`:
 
 ```js {3,8}
 // vite.config.ts
-import adonisjs from "@adonisjs/vite/client";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [
+    // ...
     tailwindcss(),
-    adonisjs({
-      // ...
-    }),
   ],
 });
 ```
 
-Add an `@import` to `./resources/css/app.css` that imports Tailwind CSS's styles and tell Tailwind CSS to scan your `resources/views` directory for utilities:
+3. Add Tailwind CSS to your CSS file (`inertia/css/app.css`):
 
 ```css
 @import "tailwindcss";
-@source "../views";
-```
-
-Make sure your compiled CSS is included in the `<head>`:
-
-```html {6}
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-  </head>
-  <body>
-    <!-- Your content -->
-  </body>
-</html>
 ```
 
 ### 3. Install Flowbite React
