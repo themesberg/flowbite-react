@@ -114,6 +114,8 @@ Explore all integration guides in our [framework guides section](https://flowbit
   }
   ```
 
+Learn more about prefix configuration in our [prefix documentation](https://flowbite-react.com/docs/customize/prefix).
+
 ### 3. CLI Enhancements
 
 - New project initialization command:
@@ -121,6 +123,8 @@ Explore all integration guides in our [framework guides section](https://flowbit
   ```bash
   npx flowbite-react@latest init
   ```
+
+Learn more about CLI features in our [CLI documentation](https://flowbite-react.com/docs/getting-started/cli).
 
 ### 4. Tailwind CSS Version Compatibility
 
@@ -143,6 +147,8 @@ Explore all integration guides in our [framework guides section](https://flowbit
     "tsx": true
   }
   ```
+
+Learn more about configuration options in our [config documentation](https://flowbite-react.com/docs/customize/config).
 
 ### 6. Custom Components
 
@@ -240,6 +246,8 @@ Explore all integration guides in our [framework guides section](https://flowbit
   - Updated default colors to use `primary` instead of specific colors (e.g., `cyan`)
   - Standardized color naming across components
   - Enhanced color inheritance and theme customization
+
+Learn more about theming in our [theme documentation](https://flowbite-react.com/docs/customize/theme).
 
 ### Package and Build System
 
