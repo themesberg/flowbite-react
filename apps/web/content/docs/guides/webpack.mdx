@@ -107,6 +107,7 @@ Create `webpack.config.js` file:
 
 ```js
 const path = require("path");
+const { ProvidePlugin } = require("webpack");
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -141,6 +142,11 @@ module.exports = {
     },
     port: 3000,
   },
+  plugins: [
+    new ProvidePlugin({
+      React: "react",
+    }),
+  ],
 };
 ```
 
