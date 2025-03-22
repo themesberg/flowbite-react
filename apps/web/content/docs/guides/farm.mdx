@@ -71,7 +71,6 @@ npm install @farmfe/js-plugin-postcss postcss
 Add `@farmfe/js-plugin-postcss` to your `farm.config.ts` file:
 
 ```ts {3,6}
-// farm.config.ts
 import { defineConfig } from "@farmfe/core";
 import farmPluginPostcss from "@farmfe/js-plugin-postcss";
 
@@ -97,7 +96,7 @@ touch postcss.config.mjs
 Add `@tailwindcss/postcss` to your `postcss.config.mjs` file:
 
 ```js
-// postcss.config.mjs
+/** @type {import('postcss-load-config').Config} */
 export default {
   plugins: {
     "@tailwindcss/postcss": {},
