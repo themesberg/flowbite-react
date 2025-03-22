@@ -223,6 +223,7 @@ touch postcss.config.mjs
 Add `@tailwindcss/postcss` to your `postcss.config.mjs` file:
 
 ```js
+/** @type {import('postcss-load-config').Config} */
 export default {
   plugins: {
     "@tailwindcss/postcss": {},
