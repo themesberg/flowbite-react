@@ -1,6 +1,14 @@
 export const DEFAULT_PROJECT_NAME = "flowbite-react-app";
 
-export const REPOS: { key: string; name: string; url: string }[] = [
+export interface Template {
+  key: string;
+  name: string;
+  description?: string;
+  url?: string;
+  versions?: Template[];
+}
+
+export const REPOS: Template[] = [
   {
     key: "adonisjs",
     name: "AdonisJS",
@@ -59,12 +67,46 @@ export const REPOS: { key: string; name: string; url: string }[] = [
   {
     key: "parcel",
     name: "Parcel",
-    url: "https://github.com/themesberg/flowbite-react-template-parcel.git",
+    description: "Client Mode, Server Mode",
+    versions: [
+      {
+        key: "client",
+        name: "Client Mode",
+        description: "Client-side only React app",
+        url: "https://github.com/themesberg/flowbite-react-template-parcel-client.git",
+      },
+      {
+        key: "server",
+        name: "Server Mode",
+        description: "React Server Components setup",
+        url: "https://github.com/themesberg/flowbite-react-template-parcel-server.git",
+      },
+    ],
   },
   {
     key: "react-router",
     name: "React Router",
-    url: "https://github.com/themesberg/flowbite-react-template-react-router.git",
+    description: "Framework Mode, Data Mode, Declarative Mode",
+    versions: [
+      {
+        key: "framework",
+        name: "Framework Mode",
+        description: "Full-featured with SSR, code-splitting, and type safety",
+        url: "https://github.com/themesberg/flowbite-react-template-react-router-framework.git",
+      },
+      {
+        key: "data",
+        name: "Data Mode",
+        description: "Data loading and actions with pending states",
+        url: "https://github.com/themesberg/flowbite-react-template-react-router-data.git",
+      },
+      {
+        key: "declarative",
+        name: "Declarative Mode",
+        description: "Basic routing with BrowserRouter",
+        url: "https://github.com/themesberg/flowbite-react-template-react-router-declarative.git",
+      },
+    ],
   },
   {
     key: "react-server",

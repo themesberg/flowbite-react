@@ -15,6 +15,7 @@ export function getContext(argv: string[]): Context {
       "--git": Boolean,
       "--version": Boolean,
       "--help": Boolean,
+      "-t": "--template",
       "-v": "--version",
       "-h": "--help",
     },

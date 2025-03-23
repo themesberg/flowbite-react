@@ -28,38 +28,62 @@ Check out the full list of [official `flowbite-react` template examples](https:/
 
 ## Options
 
-| Name                | Description                     |
-| ------------------- | ------------------------------- |
-| `--template <name>` | Specify your template           |
-| `--git`             | Initialize a new git repository |
-| `--help` (`-h`)     | Display available flags         |
-| `--version` (`-v`)  | Display CLI version             |
+| Name                    | Description                     |
+| ----------------------- | ------------------------------- |
+| `--template, -t <name>` | Specify your template           |
+| `--git`                 | Initialize a new git repository |
+| `--help, -h`            | Display available flags         |
+| `--version, -v`         | Display CLI version             |
 
 ## Templates
 
-| \<name>           | Full name       | URL                                                                                                              |
-| ----------------- | --------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `adonisjs`        | AdonisJS        | [flowbite-react-template-adonisjs](https://github.com/themesberg/flowbite-react-template-adonisjs)               |
-| `astro`           | Astro           | [flowbite-react-template-astro](https://github.com/themesberg/flowbite-react-template-astro)                     |
-| `blitzjs`         | Blitz.js        | [flowbite-react-template-blitzjs](https://github.com/themesberg/flowbite-react-template-blitzjs)                 |
-| `bun`             | Bun             | [flowbite-react-template-bun](https://github.com/themesberg/flowbite-react-template-bun)                         |
-| `esbuild`         | ESBuild         | [flowbite-react-template-esbuild](https://github.com/themesberg/flowbite-react-template-esbuild)                 |
-| `farm`            | Farm            | [flowbite-react-template-farm](https://github.com/themesberg/flowbite-react-template-farm)                       |
-| `gatsby`          | Gatsby          | [flowbite-react-template-gatsby](https://github.com/themesberg/flowbite-react-template-gatsby)                   |
-| `laravel`         | Laravel         | [flowbite-react-template-laravel](https://github.com/themesberg/flowbite-react-template-laravel)                 |
-| `meteorjs`        | Meteor.js       | [flowbite-react-template-meteorjs](https://github.com/themesberg/flowbite-react-template-meteorjs)               |
-| `modernjs`        | Modern.js       | [flowbite-react-template-modernjs](https://github.com/themesberg/flowbite-react-template-modernjs)               |
-| `nextjs`          | Next.js         | [flowbite-react-template-nextjs](https://github.com/themesberg/flowbite-react-template-nextjs)                   |
-| `parcel`          | Parcel          | [flowbite-react-template-parcel](https://github.com/themesberg/flowbite-react-template-parcel)                   |
-| `react-router`    | React Router    | [flowbite-react-template-react-router](https://github.com/themesberg/flowbite-react-template-react-router)       |
-| `react-server`    | React Server    | [flowbite-react-template-react-server](https://github.com/themesberg/flowbite-react-template-react-server)       |
-| `redwoodjs`       | RedwoodJS       | [flowbite-react-template-redwoodjs](https://github.com/themesberg/flowbite-react-template-redwoodjs)             |
-| `remix`           | Remix           | [flowbite-react-template-remix](https://github.com/themesberg/flowbite-react-template-remix)                     |
-| `rsbuild`         | Rsbuild         | [flowbite-react-template-rsbuild](https://github.com/themesberg/flowbite-react-template-rsbuild)                 |
-| `rspack`          | Rspack          | [flowbite-react-template-rspack](https://github.com/themesberg/flowbite-react-template-rspack)                   |
-| `tanstack-router` | TanStack Router | [flowbite-react-template-tanstack-router](https://github.com/themesberg/flowbite-react-template-tanstack-router) |
-| `tanstack-start`  | TanStack Start  | [flowbite-react-template-tanstack-start](https://github.com/themesberg/flowbite-react-template-tanstack-start)   |
-| `vike`            | Vike            | [flowbite-react-template-vike](https://github.com/themesberg/flowbite-react-template-vike)                       |
-| `vite`            | Vite            | [flowbite-react-template-vite](https://github.com/themesberg/flowbite-react-template-vite)                       |
-| `waku`            | Waku            | [flowbite-react-template-waku](https://github.com/themesberg/flowbite-react-template-waku)                       |
-| `webpack`         | Webpack         | [flowbite-react-template-webpack](https://github.com/themesberg/flowbite-react-template-webpack)                 |
+| \<name>           | Repository                                                                                                                         |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `adonisjs`        | [flowbite-react-template-adonisjs](https://github.com/themesberg/flowbite-react-template-adonisjs)                                 |
+| `astro`           | [flowbite-react-template-astro](https://github.com/themesberg/flowbite-react-template-astro)                                       |
+| `blitzjs`         | [flowbite-react-template-blitzjs](https://github.com/themesberg/flowbite-react-template-blitzjs)                                   |
+| `bun`             | [flowbite-react-template-bun](https://github.com/themesberg/flowbite-react-template-bun)                                           |
+| `esbuild`         | [flowbite-react-template-esbuild](https://github.com/themesberg/flowbite-react-template-esbuild)                                   |
+| `farm`            | [flowbite-react-template-farm](https://github.com/themesberg/flowbite-react-template-farm)                                         |
+| `gatsby`          | [flowbite-react-template-gatsby](https://github.com/themesberg/flowbite-react-template-gatsby)                                     |
+| `laravel`         | [flowbite-react-template-laravel](https://github.com/themesberg/flowbite-react-template-laravel)                                   |
+| `meteorjs`        | [flowbite-react-template-meteorjs](https://github.com/themesberg/flowbite-react-template-meteorjs)                                 |
+| `modernjs`        | [flowbite-react-template-modernjs](https://github.com/themesberg/flowbite-react-template-modernjs)                                 |
+| `nextjs`          | [flowbite-react-template-nextjs](https://github.com/themesberg/flowbite-react-template-nextjs)                                     |
+| `parcel`          |                                                                                                                                    |
+| ↳ `client`        | [flowbite-react-template-parcel-client](https://github.com/themesberg/flowbite-react-template-parcel-client)                       |
+| ↳ `server`        | [flowbite-react-template-parcel-server](https://github.com/themesberg/flowbite-react-template-parcel-server)                       |
+| `react-router`    |                                                                                                                                    |
+| ↳ `framework`     | [flowbite-react-template-react-router-framework](https://github.com/themesberg/flowbite-react-template-react-router-framework)     |
+| ↳ `data`          | [flowbite-react-template-react-router-data](https://github.com/themesberg/flowbite-react-template-react-router-data)               |
+| ↳ `declarative`   | [flowbite-react-template-react-router-declarative](https://github.com/themesberg/flowbite-react-template-react-router-declarative) |
+| `react-server`    | [flowbite-react-template-react-server](https://github.com/themesberg/flowbite-react-template-react-server)                         |
+| `redwoodjs`       | [flowbite-react-template-redwoodjs](https://github.com/themesberg/flowbite-react-template-redwoodjs)                               |
+| `remix`           | [flowbite-react-template-remix](https://github.com/themesberg/flowbite-react-template-remix)                                       |
+| `rsbuild`         | [flowbite-react-template-rsbuild](https://github.com/themesberg/flowbite-react-template-rsbuild)                                   |
+| `rspack`          | [flowbite-react-template-rspack](https://github.com/themesberg/flowbite-react-template-rspack)                                     |
+| `tanstack-router` | [flowbite-react-template-tanstack-router](https://github.com/themesberg/flowbite-react-template-tanstack-router)                   |
+| `tanstack-start`  | [flowbite-react-template-tanstack-start](https://github.com/themesberg/flowbite-react-template-tanstack-start)                     |
+| `vike`            | [flowbite-react-template-vike](https://github.com/themesberg/flowbite-react-template-vike)                                         |
+| `vite`            | [flowbite-react-template-vite](https://github.com/themesberg/flowbite-react-template-vite)                                         |
+| `waku`            | [flowbite-react-template-waku](https://github.com/themesberg/flowbite-react-template-waku)                                         |
+| `webpack`         | [flowbite-react-template-webpack](https://github.com/themesberg/flowbite-react-template-webpack)                                   |
+
+## Examples
+
+Create a new project with a specific template:
+
+```bash
+npx create-flowbite-react@latest my-app --template react-router
+# or using shortcut
+npx create-flowbite-react@latest my-app -t react-router
+```
+
+Create a new project with a specific template version:
+
+```bash
+# Using dot notation for nested versions
+npx create-flowbite-react@latest my-app --template react-router.framework
+# or using shortcut
+npx create-flowbite-react@latest my-app -t react-router.framework
+```
