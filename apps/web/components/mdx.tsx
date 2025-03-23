@@ -1,4 +1,15 @@
-import { Alert, List, ListItem, theme } from "flowbite-react";
+import {
+  Alert,
+  List,
+  ListItem,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeadCell,
+  TableRow,
+  theme,
+} from "flowbite-react";
 import type { MDXComponents } from "mdx/types";
 import { getMDXComponent } from "next-contentlayer2/hooks";
 import Link from "next/link";
@@ -15,6 +26,20 @@ const components: MDXComponents = {
   TextDivider,
   IntegrationGuides,
   pre: PreWithCopy,
+
+  // Table component
+  table: (props) => (
+    <div className="relative mb-4 max-h-[40rem] overflow-auto rounded-lg shadow-md">
+      <Table {...props} />
+    </div>
+  ),
+  thead: (props) => <TableHead {...props} className="sticky top-0 z-10 bg-gray-50 dark:bg-gray-700" />,
+  tbody: (props) => (
+    <TableBody {...props} className="divide-y divide-gray-200 bg-white dark:divide-gray-700 dark:bg-gray-800" />
+  ),
+  tr: (props) => <TableRow {...props} />,
+  th: (props) => <TableHeadCell {...props} className="px-6 py-3 text-gray-500 dark:text-gray-400" />,
+  td: (props) => <TableCell {...props} className="px-6 py-4 font-medium" />,
 
   // Paragraph component
   p: (props) => <p {...props} className="mb-4 leading-7 text-gray-600 dark:text-gray-400" />,

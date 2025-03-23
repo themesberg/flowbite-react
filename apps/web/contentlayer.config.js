@@ -3,6 +3,7 @@ import toc from "markdown-toc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrismPlus from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 
 export const Doc = defineDocumentType(() => ({
   name: "Doc",
@@ -34,6 +35,7 @@ export default makeSource({
   contentDirPath: "content",
   documentTypes: [Doc],
   mdx: {
+    remarkPlugins: [remarkGfm],
     rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypePrismPlus],
   },
 });
