@@ -16,7 +16,7 @@ This guide provides three ways to integrate Flowbite React with Farm:
 The fastest way to get started is using our project creation CLI, which sets up a new Farm project with Flowbite React, Tailwind CSS, and all necessary configurations:
 
 ```bash
-npx create-flowbite-react@latest --template farm
+npx create-flowbite-react@latest -t farm
 ```
 
 This will:
@@ -70,7 +70,7 @@ npm install @farmfe/js-plugin-postcss postcss
 
 Add `@farmfe/js-plugin-postcss` to your `farm.config.ts` file:
 
-```ts {3,6}
+```ts {2,5}
 import { defineConfig } from "@farmfe/core";
 import farmPluginPostcss from "@farmfe/js-plugin-postcss";
 
