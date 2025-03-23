@@ -39,7 +39,7 @@ const components: MDXComponents = {
   ),
   tr: (props) => <TableRow {...props} />,
   th: (props) => <TableHeadCell {...props} className="px-6 py-3 text-gray-500 dark:text-gray-400" />,
-  td: (props) => <TableCell {...props} className="px-6 py-4 font-medium" />,
+  td: (props) => <TableCell {...props} className="px-6 py-4" />,
 
   // Paragraph component
   p: (props) => <p {...props} className="mb-4 leading-7 text-gray-600 dark:text-gray-400" />,
