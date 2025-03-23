@@ -77,11 +77,9 @@ In server-side rendered applications like Remix, to avoid page flicker (if `dark
 
 `ThemeModeScript` renders a script tag that sets `dark` or removes `dark` from the `<html>` element before hydration occurs.
 
-Import and render `ThemeModeScript` in the `<head>` tag:
+Import and render `ThemeModeScript` in `app/root.tsx` the `<head>` tag:
 
-```tsx {3,10}
-// app/root.tsx
-
+```tsx {1,8}
 import { ThemeModeScript } from "flowbite-react";
 
 export default function Layout() {
