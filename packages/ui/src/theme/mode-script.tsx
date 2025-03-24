@@ -88,7 +88,7 @@ export function getThemeModeScript(
 
   return `
     try {
-      const resolvedMode = window.localStorage.getItem("${localStorageKey}") ?? "${mode}" ?? "${defaultMode}";
+      const resolvedMode = window.localStorage.getItem("${localStorageKey}") ?? ${mode ? `"${mode}"` : undefined} ?? "${defaultMode}";
       const computedMode =
         resolvedMode === "auto" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : resolvedMode;
 
