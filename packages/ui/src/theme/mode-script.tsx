@@ -88,7 +88,9 @@ export function getThemeModeScript(
 
   return `
     try {
-      const resolvedMode = window.localStorage.getItem("${localStorageKey}") ?? ${mode ? `"${mode}"` : undefined} ?? "${defaultMode}";
+      const storedMode = window.localStorage.getItem("${localStorageKey}");
+      const isValidMode = storedMode === "light" || storedMode === "dark" || storedMode === "auto";
+      const resolvedMode = (isValidMode ? storedMode : null) ?? ${mode ? `"${mode}"` : undefined} ?? "${defaultMode}";
       const computedMode =
         resolvedMode === "auto" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : resolvedMode;
 
@@ -142,7 +144,9 @@ export function initThemeMode(
   } = props;
 
   try {
-    const resolvedMode = window.localStorage.getItem(localStorageKey) ?? mode ?? defaultMode;
+    const storedMode = window.localStorage.getItem(localStorageKey);
+    const isValidMode = storedMode === "light" || storedMode === "dark" || storedMode === "auto";
+    const resolvedMode = (isValidMode ? storedMode : null) ?? mode ?? defaultMode;
     const computedMode =
       resolvedMode === "auto"
         ? window.matchMedia("(prefers-color-scheme: dark)").matches
