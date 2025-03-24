@@ -2,7 +2,7 @@ import { createTheme } from "../../helpers/create-theme";
 import type { CheckboxTheme } from "./Checkbox";
 
 export const checkboxTheme = createTheme<CheckboxTheme>({
-  base: "h-4 w-4 appearance-none rounded border border-gray-300 bg-gray-100 bg-[length:0.55em_0.55em] bg-center bg-no-repeat checked:border-transparent checked:bg-current checked:bg-check-icon focus:outline-none focus:ring-2 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-700",
+  base: "h-4 w-4 appearance-none rounded border border-gray-300 bg-gray-100 bg-[length:0.55em_0.55em] bg-center bg-no-repeat checked:border-transparent checked:bg-current checked:bg-check-icon focus:outline-none focus:ring-2 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-700 dark:checked:border-transparent dark:checked:bg-current",
   color: {
     default: "text-primary-600 focus:ring-primary-600 dark:ring-offset-gray-800 dark:focus:ring-primary-600",
     dark: "text-gray-800 focus:ring-gray-800 dark:ring-offset-gray-800 dark:focus:ring-gray-800",
@@ -23,5 +23,5 @@ export const checkboxTheme = createTheme<CheckboxTheme>({
     teal: "text-teal-600 focus:ring-teal-600 dark:ring-offset-teal-600 dark:focus:ring-teal-600",
     yellow: "text-yellow-400 focus:ring-yellow-400 dark:ring-offset-yellow-400 dark:focus:ring-yellow-400",
   },
-  indeterminate: "border-transparent bg-current bg-dash-icon",
+  indeterminate: "border-transparent bg-current bg-dash-icon dark:border-transparent dark:bg-current",
 });
