@@ -123,6 +123,10 @@ function getInitialMode(defaultMode?: ThemeMode): ThemeMode {
  * @returns `light` | `dark`
  */
 function computeModeValue(mode: ThemeMode): ThemeMode {
+  if (!isClient()) {
+    return DEFAULT_MODE;
+  }
+
   return mode === "auto" ? prefersColorScheme() : mode;
 }
 
