@@ -104,8 +104,11 @@ export function getThemeModeScript(
       // Add listener for system theme changes
       const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
       mediaQuery.addEventListener("change", (e) => {
-        const currentMode = window.localStorage.getItem("${localStorageKey}");
-        if (currentMode === "auto") {
+        const storageMode = window.localStorage.getItem("${localStorageKey}");
+        const isStorageModeValid = storageMode === "light" || storageMode === "dark" || storageMode === "auto";
+        const resolvedMode = isStorageModeValid ? storageMode : "${defaultMode}";
+
+        if (resolvedMode === "auto") {
           if (e.matches) {
             document.documentElement.classList.add("${prefix}dark");
           } else {
@@ -179,8 +182,11 @@ export function initThemeMode(
     // Add listener for system theme changes
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     mediaQuery.addEventListener("change", (e) => {
-      const currentMode = window.localStorage.getItem(localStorageKey);
-      if (currentMode === "auto") {
+      const storageMode = window.localStorage.getItem(localStorageKey);
+      const isStorageModeValid = storageMode === "light" || storageMode === "dark" || storageMode === "auto";
+      const resolvedMode = isStorageModeValid ? storageMode : defaultMode;
+
+      if (resolvedMode === "auto") {
         if (e.matches) {
           document.documentElement.classList.add(`${prefix}dark`);
         } else {
