@@ -15,20 +15,14 @@ export function useThemeMode() {
   const [mode, setMode] = useState<ThemeMode>(getInitialMode(getMode()));
 
   /**
-   * Persist `mode` in local storage and add/remove `dark` class on `html`
-   */
-  useEffect(() => {
-    setModeInLS(mode);
-    setModeInDOM(mode);
-  }, []);
-
-  /**
    * Sync all tabs with the latest theme mode value
    */
   useWatchLocalStorageValue({
     key: LS_THEME_MODE,
-    onChange(newValue) {
-      if (newValue) handleSetMode(newValue as ThemeMode);
+    onChange(newValue: ThemeMode) {
+      if (newValue) {
+        handleSetMode(newValue);
+      }
     },
   });
 
@@ -53,7 +47,9 @@ export function useThemeMode() {
   function toggleMode() {
     let newMode = mode;
 
-    if (newMode === "auto") newMode = computeModeValue(newMode);
+    if (newMode === "auto") {
+      newMode = computeModeValue(newMode);
+    }
 
     newMode = newMode === "dark" ? "light" : "dark";
 
@@ -61,7 +57,7 @@ export function useThemeMode() {
   }
 
   /**
-   * Sets the value to `<Flowbite theme={{ mode }}>` prop
+   * Sets the value to `<ThemeConfig mode={mode} />` prop
    */
   function clearMode() {
     const newMode = mode ?? DEFAULT_MODE;
@@ -69,7 +65,13 @@ export function useThemeMode() {
     handleSetMode(newMode);
   }
 
-  return { mode, computedMode: computeModeValue(mode), setMode: handleSetMode, toggleMode, clearMode };
+  return {
+    mode,
+    computedMode: computeModeValue(mode),
+    setMode: handleSetMode,
+    toggleMode,
+    clearMode,
+  };
 }
 
 /**
@@ -79,7 +81,6 @@ function useSyncMode(onChange: (mode: ThemeMode) => void) {
   useEffect(() => {
     function handleSync(e: Event) {
       const mode = (e as CustomEvent<ThemeMode>).detail;
-
       onChange(mode);
     }
 
@@ -110,9 +111,11 @@ function setModeInDOM(mode: ThemeMode) {
 }
 
 function getInitialMode(defaultMode?: ThemeMode): ThemeMode {
-  if (!isClient()) return DEFAULT_MODE;
+  if (!isClient()) {
+    return DEFAULT_MODE;
+  }
 
-  const LSMode = localStorage.getItem(LS_THEME_MODE) as ThemeMode | undefined;
+  const LSMode = localStorage.getItem(LS_THEME_MODE) as ThemeMode | null;
 
   return LSMode ?? defaultMode ?? DEFAULT_MODE;
 }
