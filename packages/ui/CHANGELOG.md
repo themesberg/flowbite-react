@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.1
+
+### Patch Changes
+
+- [#1535](https://github.com/themesberg/flowbite-react/pull/1535) [`bd5ead5`](https://github.com/themesberg/flowbite-react/commit/bd5ead5d5cef14506a772e96001466cf52691ebd) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix `schema.json`: add missing `dark` field in `required`
+
 ## 0.11.0
 
 ### Minor Changes
