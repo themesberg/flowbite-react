@@ -35,7 +35,11 @@ export function setStore(data: StoreProps) {
     store.dark = data.dark;
   }
   if ("mode" in data) {
-    store.mode = data.mode;
+    if (["light", "dark", "auto"].includes(data.mode!)) {
+      store.mode = data.mode;
+    } else {
+      console.warn(`Invalid mode value: ${data.mode}.\nAvailable values: light, dark, auto`);
+    }
   }
   if ("prefix" in data) {
     store.prefix = data.prefix;

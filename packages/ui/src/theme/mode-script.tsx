@@ -88,9 +88,9 @@ export function getThemeModeScript(
 
   return `
     try {
-      const storedMode = window.localStorage.getItem("${localStorageKey}");
-      const isValidMode = storedMode === "light" || storedMode === "dark" || storedMode === "auto";
-      const resolvedMode = (isValidMode ? storedMode : null) ?? ${mode ? `"${mode}"` : undefined} ?? "${defaultMode}";
+      const storageMode = window.localStorage.getItem("${localStorageKey}");
+      const isStorageModeValid = storageMode === "light" || storageMode === "dark" || storageMode === "auto";
+      const resolvedMode = (isStorageModeValid ? storageMode : null) ?? ${mode ? `"${mode}"` : undefined} ?? "${defaultMode}";
       const computedMode =
         resolvedMode === "auto" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : resolvedMode;
 
@@ -107,6 +107,21 @@ export function getThemeModeScript(
         const currentMode = window.localStorage.getItem("${localStorageKey}");
         if (currentMode === "auto") {
           if (e.matches) {
+            document.documentElement.classList.add("${prefix}dark");
+          } else {
+            document.documentElement.classList.remove("${prefix}dark");
+          }
+        }
+      });
+
+      // Add listener for storage changes
+      window.addEventListener("storage", (e) => {
+        if (e.key === "${localStorageKey}") {
+          const newMode = e.newValue;
+          const isStorageModeValid = newMode === "light" || newMode === "dark" || newMode === "auto";
+          const resolvedMode = isStorageModeValid ? newMode : "${defaultMode}";
+
+          if (resolvedMode === "dark" || (resolvedMode === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
             document.documentElement.classList.add("${prefix}dark");
           } else {
             document.documentElement.classList.remove("${prefix}dark");
@@ -144,9 +159,9 @@ export function initThemeMode(
   } = props;
 
   try {
-    const storedMode = window.localStorage.getItem(localStorageKey);
-    const isValidMode = storedMode === "light" || storedMode === "dark" || storedMode === "auto";
-    const resolvedMode = (isValidMode ? storedMode : null) ?? mode ?? defaultMode;
+    const storageMode = window.localStorage.getItem(localStorageKey);
+    const isStorageModeValid = storageMode === "light" || storageMode === "dark" || storageMode === "auto";
+    const resolvedMode = (isStorageModeValid ? storageMode : null) ?? mode ?? defaultMode;
     const computedMode =
       resolvedMode === "auto"
         ? window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -167,6 +182,24 @@ export function initThemeMode(
       const currentMode = window.localStorage.getItem(localStorageKey);
       if (currentMode === "auto") {
         if (e.matches) {
+          document.documentElement.classList.add(`${prefix}dark`);
+        } else {
+          document.documentElement.classList.remove(`${prefix}dark`);
+        }
+      }
+    });
+
+    // Add listener for storage changes
+    window.addEventListener("storage", (e) => {
+      if (e.key === localStorageKey) {
+        const newMode = e.newValue;
+        const isStorageModeValid = newMode === "light" || newMode === "dark" || newMode === "auto";
+        const resolvedMode = isStorageModeValid ? newMode : defaultMode;
+
+        if (
+          resolvedMode === "dark" ||
+          (resolvedMode === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
           document.documentElement.classList.add(`${prefix}dark`);
         } else {
           document.documentElement.classList.remove(`${prefix}dark`);

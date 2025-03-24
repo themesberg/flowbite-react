@@ -5,7 +5,7 @@ import { isClient } from "../helpers/is-client";
 import { useWatchLocalStorageValue } from "../hooks/use-watch-localstorage-value";
 import { getMode, getPrefix } from "../store";
 
-const DEFAULT_MODE: ThemeMode = "light";
+const DEFAULT_MODE: ThemeMode = "auto";
 const LS_THEME_MODE = "flowbite-theme-mode";
 const SYNC_THEME_MODE = "flowbite-theme-mode-sync";
 
@@ -19,10 +19,8 @@ export function useThemeMode() {
    */
   useWatchLocalStorageValue({
     key: LS_THEME_MODE,
-    onChange(newValue: ThemeMode) {
-      if (newValue) {
-        handleSetMode(newValue);
-      }
+    onChange(newMode: ThemeMode | null) {
+      setMode(validateMode(newMode ?? DEFAULT_MODE));
     },
   });
 
@@ -57,7 +55,7 @@ export function useThemeMode() {
   }
 
   /**
-   * Sets the value to `<ThemeConfig mode={mode} />` prop
+   * Clears the mode
    */
   function clearMode() {
     const newMode = mode ?? DEFAULT_MODE;
@@ -115,9 +113,9 @@ function getInitialMode(defaultMode?: ThemeMode): ThemeMode {
     return DEFAULT_MODE;
   }
 
-  const LSMode = localStorage.getItem(LS_THEME_MODE) as ThemeMode | null;
+  const storageMode = localStorage.getItem(LS_THEME_MODE) as ThemeMode | null;
 
-  return LSMode ?? defaultMode ?? DEFAULT_MODE;
+  return validateMode(storageMode ?? defaultMode ?? DEFAULT_MODE);
 }
 
 /**
@@ -134,4 +132,16 @@ function computeModeValue(mode: ThemeMode): ThemeMode {
  */
 function prefersColorScheme(): ThemeMode {
   return window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+/**
+ * Validate the mode value
+ * @param mode - The mode value to validate
+ * @returns `light` | `dark` | `auto`
+ */
+function validateMode(mode: ThemeMode): ThemeMode {
+  if (["light", "dark", "auto"].includes(mode)) {
+    return mode;
+  }
+  return DEFAULT_MODE;
 }
