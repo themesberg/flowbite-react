@@ -1,5 +1,27 @@
 # create-flowbite-react
 
+## 1.1.0
+
+### Minor Changes
+
+- [#1498](https://github.com/themesberg/flowbite-react/pull/1498) [`169b5dd`](https://github.com/themesberg/flowbite-react/commit/169b5dd9ecae6878a411d4ec90d253265a5bba86) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - - Added new project templates:
+
+  - `blitzjs` - Blitz.js
+  - `bun` - Bun
+  - `esbuild` - ESBuild
+  - `farm` - Farm
+  - `meteorjs` - Meteor.js
+  - `modernjs` - Modern.js
+  - `react-router` - React Router
+  - `react-server` - React Server
+  - `rsbuild` - Rsbuild
+  - `rspack` - Rspack
+  - `tanstack-router` - TanStack Router
+  - `tanstack-start` - TanStack Start
+  - `vike` - Vike
+  - `waku` - Waku
+  - `webpack` - Webpack
+
 ## 1.0.8
 
 ### Patch Changes
