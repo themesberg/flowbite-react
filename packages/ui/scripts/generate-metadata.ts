@@ -249,7 +249,7 @@ async function generateSchema(components: string[]): Promise<void> {
           default: true,
         },
       },
-      required: ["components", "path", "prefix", "rsc", "tsx"],
+      required: ["components", "dark", "path", "prefix", "rsc", "tsx"],
     };
 
     defaultSchema.properties.components.items.enum.push(...components);
