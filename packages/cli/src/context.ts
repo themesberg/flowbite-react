@@ -15,14 +15,15 @@ export function getContext(argv: string[]): Context {
       "--git": Boolean,
       "--version": Boolean,
       "--help": Boolean,
+      "-t": "--template",
       "-v": "--version",
       "-h": "--help",
     },
     { argv, permissive: true },
   );
 
-  let cwd = flags["_"][0];
-  let { "--template": template, "--git": git, "--version": version, "--help": help } = flags;
+  const cwd = flags._[0];
+  const { "--template": template, "--git": git, "--version": version, "--help": help } = flags;
 
   return { projectName: cwd, template, git, version, help };
 }

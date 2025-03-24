@@ -1,0 +1,148 @@
+---
+title: Use with AdonisJS - Flowbite React
+description: Learn how to install Flowbite React for your AdonisJS project and start developing modern full-stack web applications
+---
+
+This guide provides three ways to integrate Flowbite React with AdonisJS:
+
+1. [Quick Start](#quick-start): Create a new project with everything pre-configured
+2. [Add to Existing Project](#add-to-existing-project): Add Flowbite React to an existing AdonisJS project
+3. [Manual Setup](#manual-setup): Set up everything from scratch manually
+
+<TextDivider>Quick Start (Recommended)</TextDivider>
+
+## Quick Start
+
+The fastest way to get started is using our project creation CLI, which sets up a new AdonisJS project with Flowbite React, Tailwind CSS, and all necessary configurations:
+
+```bash
+npx create-flowbite-react@latest -t adonisjs
+```
+
+This will:
+
+- Create a new AdonisJS project
+- Install and configure Tailwind CSS and Vite
+- Set up Flowbite React with all required dependencies
+- Configure dark mode support
+- Set up example components
+
+<TextDivider>Add to Existing Project</TextDivider>
+
+## Add to Existing Project
+
+If you already have an AdonisJS project and want to add Flowbite React, you can use our initialization CLI:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will automatically:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Configure Vite to include Flowbite React plugin
+
+<TextDivider>Manual Setup</TextDivider>
+
+## Manual Setup
+
+If you prefer to set everything up manually or need more control over the configuration, follow these steps:
+
+### 1. Create AdonisJS Project
+
+Create a new AdonisJS project with Inertia.js and React support:
+
+```bash
+npx create-adonisjs@latest -K=inertia --adapter=react
+```
+
+### 2. Set Up Tailwind CSS
+
+1. Install Tailwind CSS and its Vite plugin:
+
+```bash
+npm install -D tailwindcss @tailwindcss/vite
+```
+
+2. Configure the Vite plugin in your `vite.config.ts`:
+
+```js {2,7}
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [
+    // ...
+    tailwindcss(),
+  ],
+});
+```
+
+3. Add Tailwind CSS to your CSS file (`inertia/css/app.css`):
+
+```css
+@import "tailwindcss";
+```
+
+### 3. Install Flowbite React
+
+Install Flowbite React:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Configure Vite to include Flowbite React plugin
+
+### 4. Configure Dark Mode
+
+Add the `ThemeModeScript` component to prevent dark mode flickering:
+
+```tsx {3,16}
+// inertia/app/ssr.tsx
+import { createInertiaApp } from "@inertiajs/react";
+import { ThemeModeScript } from "flowbite-react";
+import ReactDOMServer from "react-dom/server";
+
+export default function render(page: any) {
+  return createInertiaApp({
+    page,
+    render: ReactDOMServer.renderToString,
+    resolve: (name) => {
+      const pages = import.meta.glob("../pages/**/*.tsx", { eager: true });
+      return pages[`../pages/${name}.tsx`];
+    },
+    setup: ({ App, props }) => (
+      <>
+        <ThemeModeScript />
+        <App {...props} />
+      </>
+    ),
+  });
+}
+```
+
+## Try it out
+
+Now that you have successfully installed Flowbite React you can start using the components from the library:
+
+```tsx
+// inertia/pages/home.tsx
+import { Button } from "flowbite-react";
+
+export default function Home() {
+  return <Button>Click me</Button>;
+}
+```
+
+<hr />
+
+## Templates
+
+- [Github](https://github.com/themesberg/flowbite-react-template-adonisjs)
+- [StackBlitz](https://stackblitz.com/edit/flowbite-react-template-adonisjs)

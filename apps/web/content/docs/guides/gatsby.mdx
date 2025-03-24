@@ -3,87 +3,103 @@ title: Use with Gatsby - Flowbite React
 description: Learn how to install Flowbite React for your Gatsby project and start building websites with an open-source static site generator built on top of React and GraphQL
 ---
 
-## Using the CLI
+This guide provides three ways to integrate Flowbite React with Gatsby:
 
-Run the following command to scaffold a new `Flowbite React` project using `Gatsby`:
+1. [Quick Start](#quick-start): Create a new project with everything pre-configured
+2. [Add to Existing Project](#add-to-existing-project): Add Flowbite React to an existing Gatsby project
+3. [Manual Setup](#manual-setup): Set up everything from scratch manually
+
+<TextDivider>Quick Start (Recommended)</TextDivider>
+
+## Quick Start
+
+The fastest way to get started is using our project creation CLI, which sets up a new Gatsby project with Flowbite React, Tailwind CSS, and all necessary configurations:
 
 ```bash
-# npm
-npm create flowbite-react@latest -- --template gatsby
-
-# yarn
-yarn create flowbite-react --template gatsby
-
-# pnpm
-pnpm create flowbite-react@latest --template gatsby
-
-# bun
-bun create flowbite-react@latest --template gatsby
+npx create-flowbite-react@latest -t gatsby
 ```
 
-<TextDivider>Manual Installation</TextDivider>
+This will:
 
-## Create project
+- Create a new Gatsby project
+- Install and configure Tailwind CSS
+- Set up Flowbite React with all required dependencies
+- Configure dark mode support
+- Set up example components
 
-1. Run the following command to create a new Gatsby project with Tailwind CSS:
+<TextDivider>Add to Existing Project</TextDivider>
+
+## Add to Existing Project
+
+If you already have a Gatsby project and want to add Flowbite React, you can use our initialization CLI:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will automatically:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Set up necessary configurations for dark mode
+
+<TextDivider>Manual Setup</TextDivider>
+
+## Manual Setup
+
+If you prefer to set everything up manually or need more control over the configuration, follow these steps:
+
+### 1. Create Project
+
+Create a new Gatsby project with Tailwind CSS:
 
 ```bash
 npm init gatsby
 ```
 
-2. Select `"Tailwind CSS"` to `"Would you like to install a styling system?"` question.
+When prompted:
 
-## Install Flowbite React
+- Select `"Tailwind CSS"` to `"Would you like to install a styling system?"` question.
 
-1. Run the following command to install `flowbite-react`:
+(Omit this when Gatsby CLI tailwind template is updated to v4.)
+
+> **Note:** Install the correct version of Tailwind CSS, Gatsby CLI installs Tailwind CSS v4 by default but their template is configured for v3:
 
 ```bash
-npm i flowbite-react
+npm install -D tailwindcss@^3
 ```
 
-2. Add the Flowbite React `content` path and `plugin` to `tailwind.config.js`:
+### 2. Install Flowbite React
 
-```js {1,7,11}
-import flowbite from "flowbite-react/tailwind";
+Install Flowbite React:
 
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    // ...
-    flowbite.content(),
-  ],
-  plugins: [
-    // ...
-    flowbite.plugin(),
-  ],
-};
+```bash
+npx flowbite-react@latest init
 ```
 
-## Dark mode
+This will:
 
-In server side rendered applications, such as Gatsby, to avoid page flicker (if `dark` mode is set) before Gatsby hydrates the content, `ThemeModeScript` component must be rendered in `Head` component (see implementation below).
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Configure Vite to include Flowbite React plugin
 
-`ThemeModeScript` renders a script tag that sets `dark` or removes `dark` from `<html>` element before hydration occurs.
+### 3. Configure Dark Mode
 
-### Configure
-
-To use the [Gatsby SSR APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/), create a file called `gatsby-ssr.js` in the root of your site. Export any of the APIs you wish to use in this file.
+In server side rendered applications like Gatsby, to avoid page flicker when dark mode is set, you need to configure the `ThemeModeScript` component:
 
 1. Create `gatsby-ssr.js` file at the root folder of the project:
 
 ```js
 // gatsby-ssr.js
-
 export const onRenderBody = ({ setPreBodyComponents }) => {
-  // ...
+  setPreBodyComponents([]);
 };
 ```
 
-2. Import `ThemeModeScript` and add it to `setPreBodyComponents` function inside an array:
+2. Import `ThemeModeScript` and add it to `setPreBodyComponents` function:
 
-```js {3,6}
+```js {2,5}
 // gatsby-ssr.js
-
 import { ThemeModeScript } from "flowbite-react";
 
 export const onRenderBody = ({ setPreBodyComponents }) => {
@@ -93,9 +109,10 @@ export const onRenderBody = ({ setPreBodyComponents }) => {
 
 ## Try it out
 
-Now that you have successfully installed Flowbite React you can start using the components from the library.
+Now that you have successfully installed Flowbite React you can start using the components from the library:
 
 ```tsx
+// src/pages/index.tsx (or .jsx)
 import { Button } from "flowbite-react";
 
 export default function IndexPage() {

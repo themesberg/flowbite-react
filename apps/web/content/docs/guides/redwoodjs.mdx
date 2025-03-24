@@ -1,0 +1,124 @@
+---
+title: Use with RedwoodJS - Flowbite React
+description: Learn how to install Flowbite React for your RedwoodJS project and start developing modern full-stack web applications
+---
+
+This guide provides three ways to integrate Flowbite React with RedwoodJS:
+
+1. [Quick Start](#quick-start): Create a new project with everything pre-configured
+2. [Add to Existing Project](#add-to-existing-project): Add Flowbite React to an existing RedwoodJS project
+3. [Manual Setup](#manual-setup): Set up everything from scratch manually
+
+<TextDivider>Quick Start (Recommended)</TextDivider>
+
+## Quick Start
+
+The fastest way to get started is using our project creation CLI, which sets up a new RedwoodJS project with Flowbite React, Tailwind CSS, and all necessary configurations:
+
+```bash
+npx create-flowbite-react@latest -t redwoodjs
+```
+
+This will:
+
+- Create a new RedwoodJS project
+- Install and configure Tailwind CSS
+- Set up Flowbite React with all required dependencies
+- Configure necessary project settings
+- Set up example components
+
+<TextDivider>Add to Existing Project</TextDivider>
+
+## Add to Existing Project
+
+If you already have a RedwoodJS project and want to add Flowbite React, you can use our initialization CLI:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will automatically:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Set up necessary configurations
+
+<TextDivider>Manual Setup</TextDivider>
+
+## Manual Setup
+
+If you prefer to set everything up manually or need more control over the configuration, follow these steps:
+
+### 1. Create Project
+
+Create a new RedwoodJS project:
+
+```bash
+yarn create redwood-app my-redwood-app
+cd my-redwood-app
+yarn install
+```
+
+Create a new homepage using the CLI:
+
+```bash
+yarn redwood generate page home /
+```
+
+### 2. Configure Tailwind CSS
+
+Install Tailwind CSS using the RedwoodJS CLI:
+
+```bash
+yarn rw setup ui tailwindcss
+```
+
+This will automatically:
+
+- Install Tailwind CSS and its dependencies
+- Create and configure the necessary Tailwind configuration files
+- Update your CSS files to include Tailwind directives
+
+### 3. Install Flowbite React
+
+Setup VSCode using Flowbite React CLI:
+
+```bash
+npx flowbite-react@latest setup vscode
+```
+
+Install Flowbite React in `web` directory:
+
+```bash
+cd web && npx flowbite-react@latest init
+```
+
+This will:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Configure Vite to include Flowbite React plugin
+
+## Try it out
+
+Now that you have successfully installed Flowbite React you can start using the components from the library:
+
+```tsx
+// web/src/pages/HomePage/HomePage.tsx
+import { Button } from "flowbite-react";
+
+export default function HomePage() {
+  return (
+    <>
+      <Button>Click me</Button>
+    </>
+  );
+}
+```
+
+<hr />
+
+## Templates
+
+- [Github](https://github.com/themesberg/flowbite-react-template-redwoodjs)
+- [StackBlitz](https://stackblitz.com/edit/flowbite-react-template-redwoodjs)

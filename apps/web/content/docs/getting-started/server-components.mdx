@@ -1,100 +1,116 @@
 ---
-title: React Server Components (RSC) - Flowbite
+title: Server Components (RSC) - Flowbite React
 description: Learn how to use Flowbite React components inside React Server Components
 ---
 
-React Server Components individually fetch data and render entirely on the server, and the resulting HTML is streamed into the client-side React component tree.
+React Server Components are a powerful feature that allows components to be rendered entirely on the server. When used with Flowbite React, they offer several benefits:
 
-RSCs can help reduce the size of the client-side JavaScript bundle and improve loading performance.
+- 🚀 Reduced client-side JavaScript bundle size
+- ⚡ Improved initial page load performance
+- 🔄 Server-side data fetching
 
-## Usage
+## Server vs Client Components
 
-Without `"use client"` directive:
+### Server Components (Default)
+
+By default, all components in React are now server components. They don't need any special directive:
 
 ```jsx
 import { Button } from "flowbite-react";
 
-function Component() {
-  return <Button>Default</Button>;
+function ServerComponent() {
+  // ✅ Works: Static button without interactions
+  return <Button>Click Me</Button>;
 }
 ```
 
-With `"use client"` directive:
+### Client Components
+
+To handle user interactions (like clicks or input), you need to mark your component as a client component using the `"use client"` directive:
 
 ```jsx
 "use client";
 
 import { Button } from "flowbite-react";
 
-function Component() {
-  return <Button onClick={() => console.log("clicked!")}>Default</Button>;
+function ClientComponent() {
+  // ✅ Works: Button with click handler
+  return <Button onClick={() => console.log("clicked!")}>Interactive Button</Button>;
 }
 ```
 
-Incorrect: without `"use client"` directive and user event passed as prop (`onClick`) resulting in error:
+## Common Pitfalls
+
+### ❌ Wrong: Event Handlers in Server Components
 
 ```jsx
-// errors
+// This will cause an error!
+import { Button } from "flowbite-react";
+
+function ServerComponent() {
+  return <Button onClick={() => console.log("clicked!")}>This Won't Work</Button>;
+}
+```
+
+### ✅ Correct: Event Handlers in Client Components
+
+```jsx
+"use client";
 
 import { Button } from "flowbite-react";
 
-function Component() {
-  return <Button onClick={() => console.log("clicked!")}>Default</Button>;
+function ClientComponent() {
+  return <Button onClick={() => console.log("clicked!")}>This Works Fine</Button>;
 }
 ```
 
-## Compound components
+## Important Notes
 
-Compound components DO NOT work in React Server Components, therefore each component must be specifically imported as such:
+1. **Flowbite React Compatibility**
 
-Incorrect usage:
+   - All Flowbite React components are server-component ready
+   - They can be used in both server and client components
 
-```jsx
-// errors
+2. **Event Handlers**
 
-import { Button } from "flowbite-react";
+   - User events (`onClick`, `onBlur`, etc.) require `"use client"`
+   - The component containing these events must be a client component
 
-function Component() {
-  return (
-    <Button.Group>
-      <Button color="gray">Profile</Button>
-      <Button color="gray">Settings</Button>
-      <Button color="gray">Messages</Button>
-    </Button.Group>
-  );
-}
-```
+3. **Props Limitations**
+   - Only serializable data can be passed to server components
+   - Functions, complex objects, and React nodes might not work as props in server components
 
-Correct usage:
+## Best Practices
 
-```jsx
-// works
+- Use server components by default for static content
+- Switch to client components only when you need:
+  - User interactions (event handlers)
+  - Browser APIs
+  - State management
+  - Effects
 
-import { Button, ButtonGroup } from "flowbite-react";
-
-function Component() {
-  return (
-    <ButtonGroup>
-      <Button color="gray">Profile</Button>
-      <Button color="gray">Settings</Button>
-      <Button color="gray">Messages</Button>
-    </ButtonGroup>
-  );
-}
-```
+This approach ensures optimal performance while maintaining full functionality.
 
 ## Support
 
-All Flowbite React components are server-ready, meaning they can be rendered inside React Server Components without the need of `"use client"` directive at the top of the file.
+💡 **Full Server Component Support**
 
-Here's a list of all Flowbite React components that are fully rendered on the server:
+Flowbite React is fully optimized for React Server Components:
 
-`Alert`, `Avatar`, `Badge`, `Banner`, `Blockquote`, `Breadcrumb`, `Button`, `Card`, `Checkbox`, `File input`, `Floating Label`, `Footer`, `Helper text`, `Kbd`, `Label`, `List`, `List Group`, `Progress`, `Radio`, `Range slider`, `Select`, `Spinner`, `Textarea`, `Text input`, `Tooltip`.
+- All components work out-of-the-box in server components
+- Zero configuration needed for server-side rendering
+- Automatic client/server boundary handling
+- Optimized for performance in both environments
 
-## Notes
+Just remember to add `"use client"` only when you need interactivity:
 
-User event props (such as `onClick`, `onBlur`, ...etc) DO NOT work in React Server Components.
+```jsx
+"use client";
 
-To pass any user events to a Flowbite React component (such as `onClick`, `onBlur`) the parent component must have the `"use client"` directive.
+import { Button, Modal } from "flowbite-react";
 
-Only serializable data can be passed to a server component as props (eg: functions will not work).
+function InteractiveWidget() {
+  // ✅ Use client components when you need interactivity
+  return <Button onClick={() => setIsOpen(true)}>Open Modal</Button>;
+}
+```

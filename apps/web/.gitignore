@@ -10,3 +10,8 @@ build
 
 # contentlayer
 .contentlayer
+
+# llms
+llms.txt
+llms-full.txt
+public/docs

@@ -3,69 +3,80 @@ title: Use with Laravel - Flowbite React
 description: Learn how to install Flowbite React for your Laravel project using Inertia and start building modern websites with the most popular PHP framework in the world
 ---
 
-## Using the CLI
+This guide provides three ways to integrate Flowbite React with Laravel:
 
-Run the following command to scaffold a new `Flowbite React` project using `Laravel` and `Inertia`:
+1. [Quick Start](#quick-start): Create a new project with everything pre-configured
+2. [Add to Existing Project](#add-to-existing-project): Add Flowbite React to an existing Laravel project
+3. [Manual Setup](#manual-setup): Set up everything from scratch manually
 
-```bash
-# npm
-npm create flowbite-react@latest -- --template laravel
+<TextDivider>Quick Start (Recommended)</TextDivider>
 
-# yarn
-yarn create flowbite-react --template laravel
+## Quick Start
 
-# pnpm
-pnpm create flowbite-react@latest --template laravel
-
-# bun
-bun create flowbite-react@latest --template laravel
-```
-
-<TextDivider>Manual Installation</TextDivider>
-
-## Create project
-
-Run the following command to create a new Laravel project with Inertia and Tailwind CSS:
+The fastest way to get started is using our project creation CLI, which sets up a new Laravel project with Flowbite React, Tailwind CSS, and all necessary configurations:
 
 ```bash
-laravel new flowbite-react-laravel --breeze --stack=react
+npx create-flowbite-react@latest -t laravel
 ```
 
-**Note:** The installer will ask some more questions.
+This will:
 
-## Install Flowbite React
+- Create a new Laravel project
+- Install and configure Tailwind CSS
+- Set up Flowbite React with all required dependencies
+- Configure Inertia.js and React
+- Set up example components
 
-1. Run the following command to install `flowbite-react`:
+<TextDivider>Add to Existing Project</TextDivider>
+
+## Add to Existing Project
+
+If you already have a Laravel project and want to add Flowbite React, you can use our initialization CLI:
 
 ```bash
-npm i flowbite-react
+npx flowbite-react@latest init
 ```
 
-2. Add the Flowbite React `content` path and `plugin` to `tailwind.config.js`:
+This will automatically:
 
-```js {1,7,11}
-import flowbite from "flowbite-react/tailwind";
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Set up necessary configurations
 
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    // ...
-    flowbite.content(),
-  ],
-  plugins: [
-    // ...
-    flowbite.plugin(),
-  ],
-};
+<TextDivider>Manual Setup</TextDivider>
+
+## Manual Setup
+
+If you prefer to set everything up manually or need more control over the configuration, follow these steps:
+
+### 1. Create Laravel Project
+
+Create a new Laravel project with Inertia.js and React support:
+
+```bash
+laravel new flowbite-react-laravel --react
 ```
+
+### 2. Install Flowbite React
+
+Install Flowbite React:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Configure Vite to include Flowbite React plugin
 
 ## Try it out
 
-Now that you have successfully installed Flowbite React you can start using the components from the library.
+Now that you have successfully installed Flowbite React you can start using the components from the library:
 
 ```jsx
-// resources/js/Pages/Welcome.jsx
-
+// resources/js/pages/welcome.tsx
 import { Button } from "flowbite-react";
 
 export default function Welcome() {

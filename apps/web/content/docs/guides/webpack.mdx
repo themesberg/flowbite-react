@@ -1,0 +1,280 @@
+---
+title: Use with Webpack - Flowbite React
+description: Learn how to install Flowbite React with Webpack
+---
+
+This guide provides three ways to integrate Flowbite React with Webpack:
+
+1. [Quick Start](#quick-start): Create a new project with everything pre-configured
+2. [Add to Existing Project](#add-to-existing-project): Add Flowbite React to an existing Webpack project
+3. [Manual Setup](#manual-setup): Set up everything from scratch manually
+
+<TextDivider>Quick Start (Recommended)</TextDivider>
+
+## Quick Start
+
+The fastest way to get started is using our project creation CLI, which sets up a new Webpack + React project with Flowbite React, Tailwind CSS, and all necessary configurations:
+
+```bash
+npx create-flowbite-react@latest -t webpack
+```
+
+This will:
+
+- Create a new React project with Webpack
+- Install and configure Tailwind CSS
+- Set up Flowbite React with all required dependencies
+- Configure dark mode support
+- Set up example components
+
+<TextDivider>Add to Existing Project</TextDivider>
+
+## Add to Existing Project
+
+If you already have a Webpack + React project and want to add Flowbite React, you can use our initialization CLI:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will automatically:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Set up necessary configurations
+
+<TextDivider>Manual Setup</TextDivider>
+
+## Manual Setup
+
+If you prefer to set everything up manually or need more control over the configuration, follow these steps:
+
+### 1. Create Project
+
+Create a new directory and initialize a new project:
+
+```bash
+mkdir webpack-project
+cd webpack-project
+npm init -y
+```
+
+Install necessary packages:
+
+```bash
+npm install react react-dom
+npm install -D webpack webpack-cli webpack-dev-server @babel/core @babel/preset-react @babel/preset-env @babel/preset-typescript babel-loader typescript @types/react @types/react-dom postcss css-loader style-loader postcss-loader
+```
+
+Update your `package.json` to include these scripts:
+
+```json
+{
+  "scripts": {
+    "dev": "webpack serve --mode development --open",
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode production"
+  }
+}
+```
+
+Create `tsconfig.json` file:
+
+```json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": false,
+    "jsx": "react-jsx"
+  },
+  "include": ["src"]
+}
+```
+
+Create `webpack.config.js` file:
+
+```js
+const path = require("path");
+const { ProvidePlugin } = require("webpack");
+
+module.exports = {
+  entry: "./src/index.tsx",
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx|js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
+          },
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader", "postcss-loader"],
+      },
+    ],
+  },
+  resolve: {
+    extensions: [".tsx", ".ts", ".js", ".jsx"],
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "public"),
+    },
+    port: 3000,
+  },
+  plugins: [
+    new ProvidePlugin({
+      React: "react",
+    }),
+  ],
+};
+```
+
+Create `public/index.html` file:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flowbite React + Webpack + TypeScript</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="/bundle.js"></script>
+  </body>
+</html>
+```
+
+Create `src/index.tsx` file:
+
+```tsx
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { App } from "./App";
+
+import "./styles.css";
+
+const container = document.getElementById("root");
+if (!container) throw new Error("Failed to find the root element");
+const root = createRoot(container);
+
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
+```
+
+Create `src/App.tsx` file:
+
+```tsx
+import React from "react";
+
+export function App() {
+  const [count, setCount] = React.useState(0);
+
+  return (
+    <div className="p-4">
+      <h1 className="mb-4 text-2xl font-bold">Welcome to React + Webpack</h1>
+      <p className="mb-4">This is a sample component to test your setup.</p>
+      <div className="flex items-center gap-2">
+        <button
+          onClick={() => setCount(count + 1)}
+          className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+        >
+          Count: {count}
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+### 2. Configure Tailwind CSS
+
+Install Tailwind CSS and its dependencies:
+
+```bash
+npm install -D tailwindcss @tailwindcss/postcss
+```
+
+Create a `postcss.config.mjs` file:
+
+```bash
+touch postcss.config.mjs
+```
+
+Add `@tailwindcss/postcss` to your `postcss.config.mjs` file:
+
+```js
+/** @type {import('postcss-load-config').Config} */
+export default {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+```
+
+Create `src/styles.css` file:
+
+```css
+@import "tailwindcss";
+```
+
+### 3. Install Flowbite React
+
+Install Flowbite React:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Set up necessary configurations
+
+## Try it out
+
+Now that you have successfully installed Flowbite React you can start using the components from the library:
+
+```tsx
+// src/App.tsx
+export function App() {
+  return (
+    <>
+      <Button>Click me</Button>
+    </>
+  );
+}
+```
+
+<hr />
+
+## Templates
+
+- [Github](https://github.com/themesberg/flowbite-react-template-webpack)
+- [StackBlitz](https://stackblitz.com/edit/flowbite-react-template-webpack)

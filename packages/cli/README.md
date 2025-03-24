@@ -1,8 +1,8 @@
 # create-flowbite-react
 
-The easiest way to get started with `flowbite-react` is by using `create-flowbite-react` CLI.
+The easiest way to get started with `flowbite-react` is by using the `create-flowbite-react` CLI.
 
-Easily scaffold a `flowbite-react` application using the most popular React frameworks and technologies out there.
+Easily scaffold a `flowbite-react` application using the most popular React frameworks and technologies available.
 
 ## Getting started
 
@@ -10,75 +10,80 @@ Run any of the following commands and answer the command prompt questions:
 
 ### Interactive
 
-The CLI will prompt the directory name, what template to use and if it should initialize a new git repository:
-
-#### npm
+The CLI will prompt for the directory name, template to use, and whether to initialize a new git repository:
 
 ```bash
-npm create flowbite-react@latest
-```
-
-#### yarn
-
-```bash
-yarn create flowbite-react
-```
-
-#### pnpm
-
-```bash
-pnpm create flowbite-react@latest
-```
-
-#### bun
-
-```bash
-bun create flowbite-react@latest
+npx create-flowbite-react@latest
 ```
 
 ### Non-interactive
 
-You can also pass command line arguments to set up a new project non-interactively. See `create-flowbite-react --help`:
+You can also pass command line arguments to set up a new project non-interactively. See `npx create-flowbite-react@latest --help`:
 
 ```bash
-create-flowbite-react <project-directory> [options]
-```
-
-```bash
-# npm
-npm create flowbite-react@latest next-app -- --template nextjs
-
-# yarn
-yarn create flowbite-react remix-app --template remix
-
-# pnpm
-pnpm create flowbite-react@latest astro-app --template astro
-
-# bun
-bun create flowbite-react@latest vite-app --template vite
+npx create-flowbite-react@latest <project-directory> [options]
 ```
 
 Check out the full list of [official `flowbite-react` template examples](https://github.com/themesberg/flowbite-react-templates).
 
 ## Options
 
-| Name                | Description                     |
-| ------------------- | ------------------------------- |
-| `--template <name>` | Specify your template           |
-| `--git`             | Initialize a new git repository |
-| `--help` (`-h`)     | Display available flags         |
-| `--version` (`-v`)  | Display CLI version             |
+| Name                    | Description                     |
+| ----------------------- | ------------------------------- |
+| `--template, -t <name>` | Specify your template           |
+| `--git`                 | Initialize a new git repository |
+| `--help, -h`            | Display available flags         |
+| `--version, -v`         | Display CLI version             |
 
 ## Templates
 
-| \<name>     | Full name        | URL                                                             |
-| ----------- | ---------------- | --------------------------------------------------------------- |
-| `nextjs`    | Next.js          | https://github.com/themesberg/flowbite-react-template-nextjs    |
-| `remix`     | Remix            | https://github.com/themesberg/flowbite-react-template-remix     |
-| `astro`     | Astro            | https://github.com/themesberg/flowbite-react-template-astro     |
-| `gatsby`    | Gatsby           | https://github.com/themesberg/flowbite-react-template-gatsby    |
-| `redwoodjs` | RedwoodJS        | https://github.com/themesberg/flowbite-react-template-redwoodjs |
-| `laravel`   | Laravel          | https://github.com/themesberg/flowbite-react-template-laravel   |
-| `vite`      | Vite             | https://github.com/themesberg/flowbite-react-template-vite      |
-| `parcel`    | Parcel           | https://github.com/themesberg/flowbite-react-template-parcel    |
-| `cra`       | Create React App | https://github.com/themesberg/flowbite-react-template-cra       |
+| \<name>           | Repository                                                                                                                         |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `adonisjs`        | [flowbite-react-template-adonisjs](https://github.com/themesberg/flowbite-react-template-adonisjs)                                 |
+| `astro`           | [flowbite-react-template-astro](https://github.com/themesberg/flowbite-react-template-astro)                                       |
+| `blitzjs`         | [flowbite-react-template-blitzjs](https://github.com/themesberg/flowbite-react-template-blitzjs)                                   |
+| `bun`             | [flowbite-react-template-bun](https://github.com/themesberg/flowbite-react-template-bun)                                           |
+| `esbuild`         | [flowbite-react-template-esbuild](https://github.com/themesberg/flowbite-react-template-esbuild)                                   |
+| `farm`            | [flowbite-react-template-farm](https://github.com/themesberg/flowbite-react-template-farm)                                         |
+| `gatsby`          | [flowbite-react-template-gatsby](https://github.com/themesberg/flowbite-react-template-gatsby)                                     |
+| `laravel`         | [flowbite-react-template-laravel](https://github.com/themesberg/flowbite-react-template-laravel)                                   |
+| `meteorjs`        | [flowbite-react-template-meteorjs](https://github.com/themesberg/flowbite-react-template-meteorjs)                                 |
+| `modernjs`        | [flowbite-react-template-modernjs](https://github.com/themesberg/flowbite-react-template-modernjs)                                 |
+| `nextjs`          | [flowbite-react-template-nextjs](https://github.com/themesberg/flowbite-react-template-nextjs)                                     |
+| `parcel`          |                                                                                                                                    |
+| ↳ `client`        | [flowbite-react-template-parcel-client](https://github.com/themesberg/flowbite-react-template-parcel-client)                       |
+| ↳ `server`        | [flowbite-react-template-parcel-server](https://github.com/themesberg/flowbite-react-template-parcel-server)                       |
+| `react-router`    |                                                                                                                                    |
+| ↳ `framework`     | [flowbite-react-template-react-router-framework](https://github.com/themesberg/flowbite-react-template-react-router-framework)     |
+| ↳ `data`          | [flowbite-react-template-react-router-data](https://github.com/themesberg/flowbite-react-template-react-router-data)               |
+| ↳ `declarative`   | [flowbite-react-template-react-router-declarative](https://github.com/themesberg/flowbite-react-template-react-router-declarative) |
+| `react-server`    | [flowbite-react-template-react-server](https://github.com/themesberg/flowbite-react-template-react-server)                         |
+| `redwoodjs`       | [flowbite-react-template-redwoodjs](https://github.com/themesberg/flowbite-react-template-redwoodjs)                               |
+| `remix`           | [flowbite-react-template-remix](https://github.com/themesberg/flowbite-react-template-remix)                                       |
+| `rsbuild`         | [flowbite-react-template-rsbuild](https://github.com/themesberg/flowbite-react-template-rsbuild)                                   |
+| `rspack`          | [flowbite-react-template-rspack](https://github.com/themesberg/flowbite-react-template-rspack)                                     |
+| `tanstack-router` | [flowbite-react-template-tanstack-router](https://github.com/themesberg/flowbite-react-template-tanstack-router)                   |
+| `tanstack-start`  | [flowbite-react-template-tanstack-start](https://github.com/themesberg/flowbite-react-template-tanstack-start)                     |
+| `vike`            | [flowbite-react-template-vike](https://github.com/themesberg/flowbite-react-template-vike)                                         |
+| `vite`            | [flowbite-react-template-vite](https://github.com/themesberg/flowbite-react-template-vite)                                         |
+| `waku`            | [flowbite-react-template-waku](https://github.com/themesberg/flowbite-react-template-waku)                                         |
+| `webpack`         | [flowbite-react-template-webpack](https://github.com/themesberg/flowbite-react-template-webpack)                                   |
+
+## Examples
+
+Create a new project with a specific template:
+
+```bash
+npx create-flowbite-react@latest my-app --template react-router
+# or using shortcut
+npx create-flowbite-react@latest my-app -t react-router
+```
+
+Create a new project with a specific template version:
+
+```bash
+# Using dot notation for nested versions
+npx create-flowbite-react@latest my-app --template react-router.framework
+# or using shortcut
+npx create-flowbite-react@latest my-app -t react-router.framework
+```

@@ -13,14 +13,14 @@ export function HeroSection() {
             <div className="flex flex-col gap-4 text-left lg:gap-6">
               <h1 className="max-w-3xl text-4xl font-extrabold leading-none text-gray-900 lg:text-5xl xl:text-6xl dark:text-white">
                 <span className="xl:inline">Build modern web applications with</span>
-                <span className="ml-2 text-cyan-700 xl:inline dark:text-cyan-700">Flowbite React</span>
+                <span className="ml-2 text-primary-700 xl:inline dark:text-primary-700">Flowbite React</span>
               </h1>
               <p className="max-w-3xl text-lg leading-normal text-gray-500 lg:text-xl dark:text-gray-400">
                 Flowbite React is an open-source UI component library built on top of Tailwind CSS with React components
                 and based on the Flowbite Design System.
               </p>
               <div className="mt-2 grid grid-cols-1 items-center justify-center gap-4 sm:grid-cols-2 sm:gap-6 [&>div:first-child]:w-full">
-                <CopyPackageInput value="npm create flowbite-react@latest" />
+                <CopyPackageInput value="npx create-flowbite-react@latest" />
                 <div className="justify-center sm:flex sm:justify-start">
                   <div className="mx-0 flex flex-row items-center gap-4 sm:gap-6">
                     <Button
@@ -29,7 +29,7 @@ export function HeroSection() {
                       className="w-full whitespace-nowrap"
                       href="/docs/getting-started/introduction"
                     >
-                      Get started <HiOutlineArrowRight className="ml-2 mt-1 size-4" />
+                      Get started <HiOutlineArrowRight className="ml-2 size-4" />
                     </Button>
                   </div>
                 </div>

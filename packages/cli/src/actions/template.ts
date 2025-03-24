@@ -1,33 +1,164 @@
 import * as p from "@clack/prompts";
-import { Context } from "../context.js";
-import { REPOS } from "../data.js";
+import type { Context } from "../context.js";
+import { REPOS, type Template } from "../data.js";
 
-export async function getTemplate(context: Context) {
-  let data = "";
+export async function getTemplate(context: Context): Promise<Template> {
+  let names: string[] = [];
 
-  if (context.template !== undefined) {
-    const TEMPLATES = REPOS.map((repo) => repo.key);
+  if (context.template) {
+    const result = findTemplateByPath(context.template);
 
-    if (!TEMPLATES.includes(context.template)) {
-      p.log.error("Invalid template name");
+    if (result.invalidPart) {
+      const { value, available } = result.invalidPart;
+      if (result.names.length) {
+        p.log.info(`Using template: ${result.names.join(" » ")}`);
+        p.log.error(
+          `Invalid version "${value}" for ${result.names[result.names.length - 1]}. Available: ${available.join(", ")}`,
+        );
+      } else {
+        p.log.error(`Invalid template "${value}". Available: ${available.join(", ")}`);
+      }
       process.exit(0);
     }
 
-    data = context.template;
-    p.log.success(`Using template: ${context.template}`);
-  } else {
-    const template = await p.select({
+    names = result.names;
+    p.log.info(`Using template: ${names.join(" -> ")}`);
+
+    if (result.template?.url) {
+      return result.template;
+    }
+
+    return await promptForTemplate(result.template);
+  }
+
+  return await promptForTemplate();
+}
+
+function findTemplateByPath(path: string): {
+  template: Template | undefined;
+  names: string[];
+  invalidPart?: {
+    value: string;
+    available: string[];
+  };
+} {
+  const parts = path.split(".");
+  let current: Template | undefined;
+  const names: string[] = [];
+
+  const rootTemplate = REPOS.find((repo) => repo.key === parts[0]);
+  if (!rootTemplate || !parts[0]) {
+    return {
+      template: undefined,
+      names,
+      invalidPart: {
+        value: parts[0] || "",
+        available: REPOS.map((t) => t.key),
+      },
+    };
+  }
+  current = rootTemplate;
+  names.push(current.name);
+
+  for (let i = 1; i < parts.length && current; i++) {
+    const versions: Template[] = current.versions || [];
+    const part = parts[i];
+
+    if (!part) {
+      continue;
+    }
+
+    if (!versions.length) {
+      return {
+        template: undefined,
+        names,
+        invalidPart: {
+          value: part,
+          available: [],
+        },
+      };
+    }
+
+    const nextVersion: Template | undefined = versions.find((v: Template) => v.key === part);
+    if (!nextVersion) {
+      return {
+        template: undefined,
+        names,
+        invalidPart: {
+          value: part,
+          available: versions.map((v: Template) => v.key),
+        },
+      };
+    }
+    current = nextVersion;
+    names.push(nextVersion.name);
+  }
+
+  return {
+    template: current,
+    names,
+  };
+}
+
+async function promptForTemplate(startFrom?: Template): Promise<Template> {
+  let current = startFrom;
+
+  while (true) {
+    if (current?.url) {
+      return current;
+    }
+
+    const options = current?.versions || REPOS;
+
+    if (current) {
+      current = await selectVersion(current);
+      continue;
+    }
+
+    const selection = await p.select({
       message: "What template would you like to use?",
-      options: REPOS.map((repo) => ({ label: repo.name, value: repo.key })),
+      options: options.map((template) => ({
+        value: template.key,
+        label: template.name,
+        hint: template.description,
+      })),
     });
 
-    data = String(template);
-
-    if (p.isCancel(template)) {
+    if (p.isCancel(selection)) {
       p.cancel("Operation cancelled.");
       process.exit(0);
     }
+
+    const selected = options.find((t) => t.key === selection);
+    if (!selected) {
+      p.log.error("Selection not found");
+      process.exit(0);
+    }
+
+    current = selected;
+  }
+}
+
+async function selectVersion(current: Template): Promise<Template> {
+  const selection = await p.select({
+    message: `Select version for ${current.name}:`,
+    options: current.versions!.map((version) => ({
+      value: version.key,
+      label: version.name,
+      hint: version.description,
+    })),
+  });
+
+  if (p.isCancel(selection)) {
+    p.cancel("Operation cancelled.");
+    process.exit(0);
   }
 
-  return data;
+  const version = current.versions!.find((v) => v.key === selection);
+  if (!version) {
+    p.log.error("Selection not found");
+    process.exit(0);
+  }
+
+  return version;
 }

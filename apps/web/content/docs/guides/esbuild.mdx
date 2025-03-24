@@ -1,0 +1,359 @@
+---
+title: Use with ESBuild - Flowbite React
+description: Learn how to install Flowbite React with ESBuild
+---
+
+This guide provides three ways to integrate Flowbite React with ESBuild:
+
+1. [Quick Start](#quick-start): Create a new project with everything pre-configured
+2. [Add to Existing Project](#add-to-existing-project): Add Flowbite React to an existing ESBuild project
+3. [Manual Setup](#manual-setup): Set up everything from scratch manually
+
+<TextDivider>Quick Start (Recommended)</TextDivider>
+
+## Quick Start
+
+The fastest way to get started is using our project creation CLI, which sets up a new ESBuild project with Flowbite React, Tailwind CSS, and all necessary configurations:
+
+```bash
+npx create-flowbite-react@latest -t esbuild
+```
+
+This will:
+
+- Create a new ESBuild project
+- Install and configure Tailwind CSS
+- Set up Flowbite React with all required dependencies
+- Configure dark mode support
+- Set up example components
+
+<TextDivider>Add to Existing Project</TextDivider>
+
+## Add to Existing Project
+
+If you already have an ESBuild project and want to add Flowbite React, you can use our initialization CLI:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will automatically:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Set up necessary configurations
+
+<TextDivider>Manual Setup</TextDivider>
+
+## Manual Setup
+
+If you prefer to set everything up manually or need more control over the configuration, follow these steps:
+
+### 1. Create Project
+
+Create a new directory and initialize a new project:
+
+```bash
+mkdir esbuild-react-app
+cd esbuild-react-app
+npm init -y
+```
+
+Create `package.json` file:
+
+```json {7,8}
+{
+  "name": "esbuild-react-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node esbuild.dev.js",
+    "build": "node esbuild.build.js"
+  }
+}
+```
+
+Install the required dependencies:
+
+```bash
+npm install react react-dom
+npm install -D @types/react @types/react-dom esbuild typescript tailwindcss @tailwindcss/postcss
+```
+
+Create `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}
+```
+
+Create `esbuild.dev.js`:
+
+```ts
+import { readFile } from "node:fs/promises";
+import { createServer } from "node:http";
+import tailwindcss from "@tailwindcss/postcss";
+import * as esbuild from "esbuild";
+import flowbiteReact from "flowbite-react/plugin/esbuild";
+import postcss from "postcss";
+
+const clients = new Set();
+
+const cssPlugin = {
+  name: "css",
+  setup(build) {
+    build.onLoad({ filter: /\.css$/ }, async (args) => {
+      const css = await readFile(args.path, "utf8");
+      const result = await postcss([tailwindcss]).process(css, {
+        from: args.path,
+        map: { inline: true },
+      });
+
+      return {
+        contents: result.css,
+        loader: "css",
+      };
+    });
+  },
+};
+
+const buildOptions = {
+  entryPoints: ["src/main.tsx"],
+  bundle: true,
+  outdir: "dist",
+  sourcemap: true,
+  format: "esm",
+  loader: {
+    ".tsx": "tsx",
+    ".ts": "tsx",
+    ".jsx": "jsx",
+    ".js": "jsx",
+  },
+  plugins: [
+    cssPlugin,
+    flowbiteReact(),
+    {
+      name: "live-reload",
+      setup(build) {
+        build.onEnd(() => {
+          clients.forEach((client) => client.write("data: update\n\n"));
+        });
+      },
+    },
+  ],
+};
+
+const ctx = await esbuild.context(buildOptions);
+await ctx.watch();
+
+// Initial build
+await ctx.rebuild();
+
+// Simple HTTP server
+createServer(async (req, res) => {
+  const { url } = req;
+
+  if (url === "/esbuild") {
+    return clients.add(
+      res.writeHead(200, {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+      }),
+    );
+  }
+
+  try {
+    let path = url === "/" ? "/index.html" : url;
+    const filePath = path.startsWith("/dist") ? path.slice(1) : `.${path}`;
+
+    const content = await readFile(filePath);
+    const ext = path.split(".").pop();
+
+    const contentTypes = {
+      html: "text/html",
+      js: "text/javascript",
+      css: "text/css",
+      png: "image/png",
+      jpg: "image/jpeg",
+      jpeg: "image/jpeg",
+      gif: "image/gif",
+      svg: "image/svg+xml",
+    };
+
+    res.writeHead(200, {
+      "Content-Type": contentTypes[ext] || "text/plain",
+    });
+    res.end(content);
+  } catch (e) {
+    res.writeHead(404);
+    res.end("Not found");
+  }
+}).listen(3000);
+
+console.log("Development server running on http://localhost:3000");
+```
+
+Create `esbuild.build.js`:
+
+```ts
+import { readFile } from "node:fs/promises";
+import tailwindcss from "@tailwindcss/postcss";
+import * as esbuild from "esbuild";
+import flowbiteReact from "flowbite-react/plugin/esbuild";
+import postcss from "postcss";
+
+const cssPlugin = {
+  name: "css",
+  setup(build) {
+    build.onLoad({ filter: /\.css$/ }, async (args) => {
+      const css = await readFile(args.path, "utf8");
+      const result = await postcss([tailwindcss]).process(css, {
+        from: args.path,
+      });
+
+      return {
+        contents: result.css,
+        loader: "css",
+      };
+    });
+  },
+};
+
+await esbuild.build({
+  entryPoints: ["src/main.tsx"],
+  bundle: true,
+  minify: true,
+  sourcemap: true,
+  outdir: "dist",
+  format: "esm",
+  loader: {
+    ".tsx": "tsx",
+    ".ts": "tsx",
+    ".jsx": "jsx",
+    ".js": "jsx",
+  },
+  plugins: [cssPlugin, flowbiteReact()],
+});
+```
+
+Create `index.html`:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>esbuild React App</title>
+    <link rel="stylesheet" href="/dist/main.css" />
+    <script type="module" src="/dist/main.js"></script>
+    <script>
+      new EventSource("/esbuild").addEventListener("message", () => location.reload());
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
+```
+
+Create `src/main.tsx`:
+
+```tsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+
+import "./index.css";
+
+const root = document.getElementById("root");
+if (!root) throw new Error("Root element not found");
+
+createRoot(root).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
+```
+
+Create `src/App.tsx`:
+
+```tsx
+export default function App() {
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gray-50">
+      <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-lg">
+        <h1 className="mb-4 text-3xl font-bold text-gray-900">esbuild + React + Tailwind</h1>
+        <p className="text-gray-600">
+          Welcome to your new project! This template is set up with esbuild for blazing-fast builds, React for UI
+          components, and Tailwind CSS for styling.
+        </p>
+      </div>
+    </div>
+  );
+}
+```
+
+Create `src/index.css`:
+
+```css
+@import "tailwindcss";
+```
+
+### 2. Install Flowbite React
+
+Install Flowbite React:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Configure Vite to include Flowbite React plugin
+
+## Try it out
+
+Now that you have successfully installed Flowbite React you can start using the components from the library:
+
+```tsx
+// src/App.tsx
+import { Button } from "flowbite-react";
+
+export default function App() {
+  return (
+    <>
+      <Button>Click me</Button>
+    </>
+  );
+}
+```
+
+<hr />
+
+## Templates
+
+- [Github](https://github.com/themesberg/flowbite-react-template-esbuild)
+- [StackBlitz](https://stackblitz.com/edit/flowbite-react-template-esbuild)

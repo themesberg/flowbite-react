@@ -1,0 +1,145 @@
+---
+title: Use with Next.js - Flowbite React
+description: Learn how to install Flowbite React for your Next.js project and start developing with the most popular React-based framework built by Vercel
+---
+
+This guide provides three ways to integrate Flowbite React with Next.js:
+
+1. [Quick Start](#quick-start): Create a new project with everything pre-configured
+2. [Add to Existing Project](#add-to-existing-project): Add Flowbite React to an existing Next.js project
+3. [Manual Setup](#manual-setup): Set up everything from scratch manually
+
+<TextDivider>Quick Start (Recommended)</TextDivider>
+
+## Quick Start
+
+The fastest way to get started is using our project creation CLI, which sets up a new Next.js project with Flowbite React, Tailwind CSS, and all necessary configurations:
+
+```bash
+npx create-flowbite-react@latest -t nextjs
+```
+
+This will:
+
+- Create a new Next.js project
+- Install and configure Tailwind CSS
+- Set up Flowbite React with all required dependencies
+- Configure dark mode support
+- Set up example components
+
+<TextDivider>Add to Existing Project</TextDivider>
+
+## Add to Existing Project
+
+If you already have a Next.js project and want to add Flowbite React, you can use our initialization CLI:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will automatically:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Set up necessary configurations
+
+<TextDivider>Manual Setup</TextDivider>
+
+## Manual Setup
+
+If you prefer to set everything up manually or need more control over the configuration, follow these steps:
+
+### 1. Create Project
+
+Create a new Next.js project:
+
+When prompted:
+
+- Would you like to use Tailwind CSS? » Yes
+
+```bash
+npx create-next-app@latest
+```
+
+### 2. Install Flowbite React
+
+Install Flowbite React:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Configure Vite to include Flowbite React plugin
+
+### 3. Configure Dark Mode (Optional)
+
+To avoid page flicker in dark mode before hydration, add the `ThemeModeScript` to your root layout:
+
+For App Router:
+
+```tsx
+// app/layout.tsx
+import { ThemeModeScript } from "flowbite-react";
+
+export default function RootLayout({ children }) {
+  return (
+    <html suppressHydrationWarning>
+      <head>
+        <ThemeModeScript />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+For Pages Router:
+
+```tsx
+// pages/_document.tsx
+import { ThemeModeScript } from "flowbite-react";
+
+export default function Document() {
+  return (
+    <Html suppressHydrationWarning>
+      <Head>
+        <ThemeModeScript />
+      </Head>
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  );
+}
+```
+
+## Try it out
+
+Now that you have successfully installed Flowbite React you can start using the components from the library:
+
+```tsx
+// app/page.tsx
+import { Button } from "flowbite-react";
+
+export default function Page() {
+  return <Button>Click me</Button>;
+}
+```
+
+<hr />
+
+## Templates
+
+#### Official
+
+- [Github](https://github.com/themesberg/flowbite-react-template-nextjs)
+- [StackBlitz](https://stackblitz.com/edit/flowbite-react-template-nextjs)
+
+#### Community
+
+- [Kitchen Sink](https://github.com/tulupinc/flowbite-next-starter) - [Demo](https://flowbite-next-starter.vercel.app/)

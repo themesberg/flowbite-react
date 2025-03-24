@@ -1,84 +1,335 @@
 ---
 title: CLI - Flowbite React
-description: Easily scaffold a Flowbite React application using the most popular React frameworks and technologies out there
+description: Learn about the powerful CLI tools for managing and developing Flowbite React applications
 ---
 
-## Getting started
+## Overview
 
-Run any of the following commands and answer the command prompt questions:
+The Flowbite React CLI provides a comprehensive set of tools for:
 
-### Interactive
+- Creating new Flowbite React projects
+- Setting up Flowbite React in existing projects
+- Managing development workflows
+- Handling class generation
+- Configuring your development environment
+- Patching Tailwind CSS configurations
+- Providing help and documentation
 
-The CLI will prompt the directory name, what template to use and if it should initialize a new git repository:
+## Installation & Setup
 
-#### npm
+### 1. Create a New Project
 
-```bash
-npm create flowbite-react@latest
-```
-
-#### yarn
-
-```bash
-yarn create flowbite-react
-```
-
-#### pnpm
+To scaffold a new Flowbite React application:
 
 ```bash
-pnpm create flowbite-react@latest
+npx create-flowbite-react@latest
 ```
 
-#### bun
+The CLI will guide you through:
+
+- Project directory name
+- Template selection
+- Git repository initialization
+
+### 2. Add to Existing Project
+
+To integrate Flowbite React into an existing project:
 
 ```bash
-bun create flowbite-react@latest
+npx flowbite-react@latest init
 ```
 
-### Non-interactive
+This command performs several automated setup steps:
 
-You can also pass command line arguments to set up a new project non-interactively. See `create-flowbite-react --help`:
+- Verifies Tailwind CSS installation
+- Installs Flowbite React dependencies
+- Configures Tailwind CSS
+- Creates the `.flowbite-react` config directory
+- Creates `config.json` and `.gitignore` files in the config directory
+- Creates `.vscode/settings.json` and `.vscode/extensions.json` files
+- Sets up bundler-specific plugins
+
+## CLI Commands
+
+### `flowbite-react build`
+
+Generates the class list for your components. This command:
+
+- Creates the `.flowbite-react` output directory if it doesn't exist
+- Generates a comprehensive list of Tailwind classes used in your components
+- Analyzes your project files to find component imports if no components are explicitly defined in your config
+- Writes the generated class list to `.flowbite-react/class-list.json`
+- This class list is used by the Tailwind plugin to ensure all component classes are included in your CSS
+
+### `flowbite-react create`
+
+Creates a new component with the proper structure and theming setup.
+
+The `create` command uses the configuration options from `.flowbite-react/config.json` to determine:
+
+1. **Where to create the component** (`path`):
+
+   - Determines the directory where the component will be created
+   - Default: `"src/components"`
+
+2. **Language format** (`tsx`):
+
+   - When `true`: Creates a TypeScript component (`.tsx`) with full type definitions
+   - When `false`: Creates a JavaScript component (`.jsx`) without TypeScript syntax
+   - Default: `true`
+
+3. **React Server Components support** (`rsc`):
+   - When `true`: Adds the `"use client";` directive at the top of the component file
+   - When `false`: Omits the directive for client-only components
+   - Default: `true`
+
+The generated component includes:
+
+- Proper theme structure with base styles
+- Theme resolution with the Flowbite React theming system
+- Component props with proper typing (in TypeScript mode)
+- Forward ref implementation for DOM access
+- Display name for better debugging
+
+### `flowbite-react dev`
+
+Starts the development mode which:
+
+- Watches for component changes
+- Automatically updates class lists
+- Provides real-time class generation
+- Monitors imported components
+
+### `flowbite-react help`
+
+Displays help information about available commands:
+
+- Lists all available commands with descriptions
+- Shows usage examples
+- Provides guidance on command options
+- Can be accessed with `flowbite-react help` or `flowbite-react --help`
+
+### `flowbite-react init`
+
+Initializes Flowbite React in your project. This command:
+
+- Ensures Tailwind CSS is installed
+- Creates the `.flowbite-react` config directory
+- Creates `config.json` and `.gitignore` files in the config directory
+- Creates `.vscode/settings.json` and `.vscode/extensions.json` files
+- Detects and configures your bundler with the appropriate plugin
+- Adds postinstall script to `package.json` (if no bundler detected)
+
+### `flowbite-react install`
+
+Installs Flowbite React in your project:
+
+- Detects your package manager (npm, yarn, pnpm, bun, etc.)
+- Installs the latest version of flowbite-react
+- Skips installation if already installed
+
+### `flowbite-react patch`
+
+Patches Tailwind CSS to expose its version number for compatibility detection:
+
+- Creates a JavaScript file that exports the Tailwind CSS version
+- Necessary because package.json cannot be reliably read by all bundlers
+- Makes the version accessible via `import version from "tailwindcss/version"`
+- Enables Flowbite React to adapt its behavior based on the installed Tailwind version
+
+### `flowbite-react register`
+
+Registers the Flowbite React process for development:
+
+- Runs the dev process in the background
+- Manages process lifecycle
+- Handles automatic class generation
+- Creates and maintains process ID file
+
+### `flowbite-react setup plugin`
+
+Sets up the appropriate bundler plugin for your project:
+
+- Detects your bundler configuration file
+- Supports multiple bundlers (Bun, ESBuild, Parcel, Rsbuild, Rspack, Vite, Webpack, etc.)
+- Adds the Flowbite React plugin to your bundler config
+- Configures plugin settings automatically
+
+### `flowbite-react setup tailwindcss`
+
+Configures Tailwind CSS for use with Flowbite React:
+
+- Sets up Tailwind CSS v3 or v4 configuration
+- Adds necessary plugin configurations
+- Updates content paths for component styles
+- Configures class generation settings
+
+### `flowbite-react setup vscode`
+
+Sets up VSCode for optimal development:
+
+- Configures Tailwind CSS IntelliSense
+- Sets up file associations
+- Adds recommended extensions
+- Configures class attribute settings
+
+## Configuration
+
+### Bundler Integration
+
+The CLI automatically detects and configures popular bundlers:
+
+- Bun
+- Farm
+- Parcel
+- Rolldown
+- Rollup
+- Rsbuild
+- Rspack
+- Turbopack
+- Vite
+- Webpack
+
+Each bundler plugin automatically handles class generation by:
+
+- Running the `flowbite-react dev` command during development
+- Running the `flowbite-react build` command during production builds
+- Watching for component changes and updating class lists in real-time
+- Managing the class generation process lifecycle
+
+This means you don't need to manually run these commands - the bundler plugin takes care of everything automatically.
+
+### Configuration Options
+
+The CLI creates a `.flowbite-react/config.json` file with several configuration options:
+
+```json
+{
+  "$schema": "https://unpkg.com/flowbite-react/schema.json",
+  "components": [],
+  "dark": true,
+  "path": "src/components",
+  "prefix": "",
+  "rsc": true,
+  "tsx": true
+}
+```
+
+#### `components`
+
+List of component names to generate styles for. An empty array enables automatic detection.
+
+#### `dark`
+
+Whether to generate dark mode styles. Default is `true`.
+
+#### `path`
+
+Path where components will be created, relative to the project root. Default is `"src/components"`.
+
+#### `prefix`
+
+Optional prefix to apply to all Tailwind CSS classes.
+
+#### `rsc`
+
+Whether to include the `"use client"` directive for React Server Components. Default is `true`.
+
+#### `tsx`
+
+Whether to use TypeScript (.tsx) or JavaScript (.jsx) for component creation. Default is `true`.
+
+### VSCode Integration
+
+The CLI sets up VSCode for optimal development:
+
+- Configures Tailwind CSS IntelliSense
+- Sets up file associations
+- Recommends essential extensions
+- Configures class attribute settings
+
+### Project Structure
+
+The CLI creates and manages:
+
+- `.flowbite-react/` directory for configuration
+- Class list generation
+- Bundler-specific configurations
+- Git ignore rules
+
+## Command Line Options
+
+When creating new projects:
 
 ```bash
-create-flowbite-react <project-directory> [options]
+npx create-flowbite-react@latest <project-directory> [options]
 ```
+
+Options:
+
+| Name                    | Description                     |
+| ----------------------- | ------------------------------- |
+| `--template, -t <name>` | Specify your template           |
+| `--git`                 | Initialize a new git repository |
+| `--help, -h`            | Display available flags         |
+| `--version, -v`         | Display CLI version             |
+
+Example:
 
 ```bash
-# npm
-npm create flowbite-react@latest next-app -- --template nextjs
-
-# yarn
-yarn create flowbite-react remix-app --template remix
-
-# pnpm
-pnpm create flowbite-react@latest astro-app --template astro
-
-# bun
-bun create flowbite-react@latest vite-app --template vite
+npx create-flowbite-react@latest my-app -t nextjs --git
 ```
 
-Check out the full list of [official `flowbite-react` template examples](https://github.com/themesberg/flowbite-react-templates).
+## Project Templates
 
-## Options
+The CLI supports various framework templates. Each template comes with a complete guide and example implementation:
+
+| \<name>           | Repository                                                                                                                         |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `adonisjs`        | [flowbite-react-template-adonisjs](https://github.com/themesberg/flowbite-react-template-adonisjs)                                 |
+| `astro`           | [flowbite-react-template-astro](https://github.com/themesberg/flowbite-react-template-astro)                                       |
+| `blitzjs`         | [flowbite-react-template-blitzjs](https://github.com/themesberg/flowbite-react-template-blitzjs)                                   |
+| `bun`             | [flowbite-react-template-bun](https://github.com/themesberg/flowbite-react-template-bun)                                           |
+| `esbuild`         | [flowbite-react-template-esbuild](https://github.com/themesberg/flowbite-react-template-esbuild)                                   |
+| `farm`            | [flowbite-react-template-farm](https://github.com/themesberg/flowbite-react-template-farm)                                         |
+| `gatsby`          | [flowbite-react-template-gatsby](https://github.com/themesberg/flowbite-react-template-gatsby)                                     |
+| `laravel`         | [flowbite-react-template-laravel](https://github.com/themesberg/flowbite-react-template-laravel)                                   |
+| `meteorjs`        | [flowbite-react-template-meteorjs](https://github.com/themesberg/flowbite-react-template-meteorjs)                                 |
+| `modernjs`        | [flowbite-react-template-modernjs](https://github.com/themesberg/flowbite-react-template-modernjs)                                 |
+| `nextjs`          | [flowbite-react-template-nextjs](https://github.com/themesberg/flowbite-react-template-nextjs)                                     |
+| `parcel`          |                                                                                                                                    |
+| ↳ `client`        | [flowbite-react-template-parcel-client](https://github.com/themesberg/flowbite-react-template-parcel-client)                       |
+| ↳ `server`        | [flowbite-react-template-parcel-server](https://github.com/themesberg/flowbite-react-template-parcel-server)                       |
+| `react-router`    |                                                                                                                                    |
+| ↳ `framework`     | [flowbite-react-template-react-router-framework](https://github.com/themesberg/flowbite-react-template-react-router-framework)     |
+| ↳ `data`          | [flowbite-react-template-react-router-data](https://github.com/themesberg/flowbite-react-template-react-router-data)               |
+| ↳ `declarative`   | [flowbite-react-template-react-router-declarative](https://github.com/themesberg/flowbite-react-template-react-router-declarative) |
+| `react-server`    | [flowbite-react-template-react-server](https://github.com/themesberg/flowbite-react-template-react-server)                         |
+| `redwoodjs`       | [flowbite-react-template-redwoodjs](https://github.com/themesberg/flowbite-react-template-redwoodjs)                               |
+| `remix`           | [flowbite-react-template-remix](https://github.com/themesberg/flowbite-react-template-remix)                                       |
+| `rsbuild`         | [flowbite-react-template-rsbuild](https://github.com/themesberg/flowbite-react-template-rsbuild)                                   |
+| `rspack`          | [flowbite-react-template-rspack](https://github.com/themesberg/flowbite-react-template-rspack)                                     |
+| `tanstack-router` | [flowbite-react-template-tanstack-router](https://github.com/themesberg/flowbite-react-template-tanstack-router)                   |
+| `tanstack-start`  | [flowbite-react-template-tanstack-start](https://github.com/themesberg/flowbite-react-template-tanstack-start)                     |
+| `vike`            | [flowbite-react-template-vike](https://github.com/themesberg/flowbite-react-template-vike)                                         |
+| `vite`            | [flowbite-react-template-vite](https://github.com/themesberg/flowbite-react-template-vite)                                         |
+| `waku`            | [flowbite-react-template-waku](https://github.com/themesberg/flowbite-react-template-waku)                                         |
+| `webpack`         | [flowbite-react-template-webpack](https://github.com/themesberg/flowbite-react-template-webpack)                                   |
+
+You can use any of these templates with the `--template` or `-t` flag:
 
 ```bash
---template <name>   # Specify your template
---git               # Initialize a new git repository
---help (-h)         # Display available flags
---version (-v)      # Display CLI version
+npx create-flowbite-react@latest my-app -t nextjs
 ```
 
-## Templates
+## Development Workflow
 
-```bash
-nextjs      # Next.js            https://github.com/themesberg/flowbite-react-template-nextjs
-remix       # Remix              https://github.com/themesberg/flowbite-react-template-remix
-astro       # Astro              https://github.com/themesberg/flowbite-react-template-astro
-gatsby      # Gatsby             https://github.com/themesberg/flowbite-react-template-gatsby
-adonisjs    # AdonisJS           https://github.com/themesberg/flowbite-react-template-adonisjs
-redwoodjs   # RedwoodJS          https://github.com/themesberg/flowbite-react-template-redwoodjs
-laravel     # Laravel            https://github.com/themesberg/flowbite-react-template-laravel
-vite        # Vite               https://github.com/themesberg/flowbite-react-template-vite
-parcel      # Parcel             https://github.com/themesberg/flowbite-react-template-parcel
-cra         # Create React App   https://github.com/themesberg/flowbite-react-template-cra
-```
+The CLI enhances your development workflow by:
+
+1. Watching for component changes
+2. Automatically generating class lists
+3. Updating configurations in real-time
+4. Managing bundler integrations
+5. Providing VSCode optimizations
+
+For the best development experience, ensure you have the recommended VSCode extensions installed and your bundler is properly configured.

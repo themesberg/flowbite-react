@@ -2,9 +2,9 @@ import { allDocs, type Doc } from "contentlayer/generated";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Markdown from "react-markdown";
 import { CarbonAds } from "~/components/carbon-ads";
 import { Mdx } from "~/components/mdx";
+import { ToC } from "~/components/toc";
 import { DOCS_SIDEBAR } from "~/data/docs-sidebar";
 
 interface Props {
@@ -53,7 +53,7 @@ export default function DocPage({ params }: Props) {
 
   return (
     <div className="flex">
-      <div className="flex min-w-0 flex-col px-4 pb-12 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
+      <div className="flex min-w-0 flex-1 flex-col px-4 pb-12 pt-6 lg:px-8 lg:pb-16 lg:pt-8 xl:pb-24">
         <main>
           <ContentLayout title={doc.title} description={doc.description}>
             <Mdx code={doc.body.code} />
@@ -82,7 +82,7 @@ function ContentLayout({ title, description, children }: ContentLayoutProps) {
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-400">{description}</p>
       </div>
-      <div id="mainContent" className="py-8">
+      <div id="mainContent" className="py-8 [&>*:first-child]:mt-0">
         {children}
       </div>
     </div>
@@ -144,22 +144,5 @@ function DocsPager({ doc }: { doc: Doc }) {
         </Link>
       )}
     </aside>
-  );
-}
-
-function ToC({ doc }: { doc: Doc }) {
-  return (
-    <div className="hidden w-64 flex-none px-8 xl:block xl:text-sm">
-      <div className="sticky top-20 flex h-[calc(100vh-5rem)] flex-col justify-between overflow-y-auto pb-6">
-        <div className="mb-8">
-          <h4 className="mb-4 mt-5 pl-2.5 text-sm font-semibold uppercase tracking-wide text-gray-900 lg:text-xs dark:text-white">
-            On this page
-          </h4>
-          <nav id="visible-table-of-contents">
-            <Markdown>{doc.toc}</Markdown>
-          </nav>
-        </div>
-      </div>
-    </div>
   );
 }

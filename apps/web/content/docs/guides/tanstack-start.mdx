@@ -1,0 +1,101 @@
+---
+title: Use with TanStack Start - Flowbite React
+description: Learn how to install Flowbite React with TanStack Start and start developing with the modern type-safe framework for React applications
+---
+
+This guide provides three ways to integrate Flowbite React with TanStack Start:
+
+1. [Quick Start](#quick-start): Create a new project with everything pre-configured
+2. [Add to Existing Project](#add-to-existing-project): Add Flowbite React to an existing TanStack Start project
+3. [Manual Setup](#manual-setup): Set up everything from scratch manually
+
+<TextDivider>Quick Start (Recommended)</TextDivider>
+
+## Quick Start
+
+The fastest way to get started is using our project creation CLI, which sets up a new TanStack Start project with Flowbite React, Tailwind CSS, and all necessary configurations:
+
+```bash
+npx create-flowbite-react@latest -t tanstack-start
+```
+
+This will:
+
+- Create a new TanStack Start project
+- Install and configure Tailwind CSS
+- Set up Flowbite React with all required dependencies
+- Configure example components
+
+<TextDivider>Add to Existing Project</TextDivider>
+
+## Add to Existing Project
+
+If you already have a TanStack Start project and want to add Flowbite React, you can use our initialization CLI:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will automatically:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Set up necessary configurations
+
+<TextDivider>Manual Setup</TextDivider>
+
+## Manual Setup
+
+If you prefer to set everything up manually or need more control over the configuration, follow these steps:
+
+### 1. Create Project
+
+Create a new TanStack Start project:
+
+```bash
+npx degit https://github.com/tanstack/router/examples/react/start-basic start-basic
+cd start-basic
+```
+
+### 2. Install Flowbite React
+
+Install Flowbite React:
+
+```bash
+npx flowbite-react@latest init
+```
+
+This will:
+
+- Install Flowbite React and its dependencies
+- Configure Tailwind CSS to include Flowbite React plugin
+- Configure Vite to include Flowbite React plugin
+
+## Try it out
+
+Now you can start using Flowbite React components in your application:
+
+```tsx
+// app/routes/index.tsx
+import { createFileRoute } from "@tanstack/react-router";
+import { Button } from "flowbite-react";
+
+export const Route = createFileRoute("/")({
+  component: Home,
+});
+
+function Home() {
+  return (
+    <div className="p-2">
+      <Button>Click me</Button>
+    </div>
+  );
+}
+```
+
+<hr />
+
+## Templates
+
+- [Github](https://github.com/themesberg/flowbite-react-template-tanstack-start)
+- [StackBlitz](https://stackblitz.com/edit/flowbite-react-template-tanstack-start)
