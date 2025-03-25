@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { joinNormalizedPath, normalizeImportPath } from "../normalize-path";
+import { joinNormalizedPath, normalizeImportPath } from "./normalize-path";
 
 describe("normalizeImportPath", () => {
   it("should normalize Windows-style paths to use forward slashes", () => {
