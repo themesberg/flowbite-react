@@ -26,6 +26,10 @@ export async function main(argv: string[]) {
       const { installFlowbiteReact } = await import("./commands/install");
       await installFlowbiteReact();
     }
+    if (command === "migrate") {
+      const { migrate } = await import("./commands/migrate");
+      await migrate();
+    }
     if (command === "patch") {
       const { patchTailwind } = await import("./commands/patch");
       await patchTailwind();
@@ -50,7 +54,19 @@ export async function main(argv: string[]) {
     }
 
     if (
-      !["build", "create", "dev", "help", "--help", "init", "install", "patch", "register", "setup"].includes(command)
+      ![
+        "build",
+        "create",
+        "dev",
+        "help",
+        "--help",
+        "init",
+        "install",
+        "migrate",
+        "patch",
+        "register",
+        "setup",
+      ].includes(command)
     ) {
       console.error(`Unknown command: ${command}`);
       const { help } = await import("./commands/help");

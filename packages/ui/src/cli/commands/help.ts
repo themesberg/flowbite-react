@@ -1,30 +1,36 @@
-export async function help() {
-  const commands = [
-    { name: "build", description: "Generates the class list for your components" },
-    { name: "create", description: "Creates a new component with the proper structure and theming setup" },
-    { name: "dev", description: "Starts the development mode which watches for component changes" },
-    { name: "help", description: "Show available commands" },
-    { name: "init", description: "Initializes Flowbite React in your project" },
-    { name: "install", description: "Installs Flowbite React in your project" },
-    { name: "patch", description: "Patch Tailwind CSS for compatibility" },
-    { name: "register", description: "Registers the Flowbite React process for development" },
-    { name: "setup", description: "Setup specific features (plugin, tailwindcss, vscode)" },
-  ];
+export async function help(): Promise<void> {
+  console.log(`
+Usage: flowbite-react [command] [options]
 
-  console.log("\nFlowbite React CLI\n");
-  console.log("Available commands:\n");
+Commands:
+  build               Generate class list for components and write to .flowbite-react/class-list.json
+  create <name>       Create a new component with proper structure and theming setup
+  dev                 Start development server with real-time class generation
+  help                Show this help message and command information
+  init                Initialize Flowbite React with config files and necessary setup
+  install             Install Flowbite React using your detected package manager
+  migrate             Run code transformations to update to latest patterns and APIs
+  patch               Patch Tailwind CSS to expose version number for compatibility
+  register            Register Flowbite React process for development with automatic class generation
+  setup <subcommand>  Setup additional features and configurations
 
-  const longestName = Math.max(...commands.map((cmd) => cmd.name.length));
+Setup subcommands:
+  plugin              Setup bundler-specific Flowbite React plugin
+  tailwindcss         Configure Tailwind CSS with necessary plugins and settings
+  vscode              Setup VS Code with recommended extensions and settings
 
-  commands.forEach((command) => {
-    const padding = " ".repeat(longestName - command.name.length + 2);
-    console.log(`  ${command.name}${padding}${command.description}`);
-  });
+Options:
+  --help              Show this help message and command information
+`);
 }
 
-export async function helpSetup() {
-  console.log("\nAvailable setup subcommands:\n");
-  console.log("  plugin       Sets up the appropriate bundler plugin for your project");
-  console.log("  tailwindcss  Configures Tailwind CSS for use with Flowbite React");
-  console.log("  vscode       Sets up VSCode for optimal development");
+export async function helpSetup(): Promise<void> {
+  console.log(`
+Usage: flowbite-react setup [subcommand]
+
+Subcommands:
+  plugin             Setup bundler-specific Flowbite React plugin
+  tailwindcss        Configure Tailwind CSS with necessary plugins and settings
+  vscode             Setup VS Code with recommended extensions and settings
+`);
 }
