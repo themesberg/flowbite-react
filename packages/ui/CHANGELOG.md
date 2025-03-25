@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.11.2
+
+### Patch Changes
+
+- [#1541](https://github.com/themesberg/flowbite-react/pull/1541) [`af49b10`](https://github.com/themesberg/flowbite-react/commit/af49b100f8412f1c8fcbb1ccb2c7d97e22c47d28) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(ui~cli): path normalzation for windows support (setup plugins paths)
+
+- [#1539](https://github.com/themesberg/flowbite-react/pull/1539) [`6caecce`](https://github.com/themesberg/flowbite-react/commit/6caeccedd7f5002c879f3c6c6ce6c6b38dcd7956) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - refactor(Alert): `onDismiss` prop
+
+  - Changed the type of `onDismiss` prop in Alert component from boolean to a function type
+  - Removed `onDismiss` default values from various Alert stories to align with the updated prop type
+
 ## 0.11.1
 
 ### Patch Changes
