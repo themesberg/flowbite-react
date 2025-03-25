@@ -135,7 +135,7 @@ function transform(content: string): { content: string; changed: boolean } {
         const { node } = path;
         if (
           node.type === "ImportDeclaration" &&
-          node.source.value === "flowbite-react" &&
+          (node.source.value === "flowbite-react" || node.source.value.startsWith("flowbite-react/components/")) &&
           Array.isArray(node.specifiers) &&
           node.specifiers.every((s) => s.type === "ImportSpecifier")
         ) {
