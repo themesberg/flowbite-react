@@ -19,7 +19,6 @@ const Template: StoryFn<AlertProps> = (props) => <Alert {...props} />;
 export const DefaultAlert = Template.bind({});
 DefaultAlert.storyName = "Default";
 DefaultAlert.args = {
-  onDismiss: false,
   children: (
     <>
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta minima rerum veritatis optio atque impedit, enim
@@ -32,7 +31,6 @@ export const AlertWithIcons = Template.bind({});
 AlertWithIcons.storyName = "With icons";
 AlertWithIcons.args = {
   icon: HiInformationCircle,
-  onDismiss: false,
   children: (
     <>
       More info about this info alert goes here. This example text is going to run a bit longer so that you can see how
@@ -54,7 +52,6 @@ AlertRounded.storyName = "Not rounded";
 AlertRounded.args = {
   color: "warning",
   rounded: false,
-  onDismiss: false,
   children: <>Info alert! Change a few things up and try submitting again.</>,
 };
 
@@ -62,7 +59,6 @@ export const AlertWithBorderAccent = Template.bind({});
 AlertWithBorderAccent.storyName = "Border accent";
 AlertWithBorderAccent.args = {
   color: "warning",
-  onDismiss: false,
   withBorderAccent: true,
   children: <>Info alert! Change a few things up and try submitting again.</>,
 };
@@ -72,7 +68,6 @@ AlertWithAdditionalContent.storyName = "Additional content";
 AlertWithAdditionalContent.args = {
   color: "info",
   icon: HiInformationCircle,
-  onDismiss: false,
   withBorderAccent: true,
   additionalContent: (
     <>
