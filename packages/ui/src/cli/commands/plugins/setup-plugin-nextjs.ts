@@ -1,7 +1,7 @@
 import fs from "fs/promises";
-import path from "path";
 import { pluginPath } from "../../consts";
 import { addImport } from "../../utils/add-import";
+import { joinNormalizedPath } from "../../utils/normalize-path";
 import { wrapDefaultExport } from "../../utils/wrap-default-export";
 
 export async function setupPluginNextjs(configPath: string) {
@@ -13,7 +13,7 @@ export async function setupPluginNextjs(configPath: string) {
     let updatedContent = addImport({
       content,
       importName: pluginName,
-      importPath: path.join(pluginPath, "nextjs"),
+      importPath: joinNormalizedPath(pluginPath, "nextjs"),
     });
 
     if (!content.includes(`${pluginName}(`)) {

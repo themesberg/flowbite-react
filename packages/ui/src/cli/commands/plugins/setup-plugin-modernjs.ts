@@ -1,14 +1,14 @@
 import fs from "fs/promises";
-import path from "path";
 import cjson from "comment-json";
 import { pluginName, pluginPath } from "../../consts";
 import { addPluginToConfig } from "../../utils/add-plugin-to-config";
+import { joinNormalizedPath } from "../../utils/normalize-path";
 
 export async function setupPluginModernjs(configPath: string) {
   await addPluginToConfig({
     configKey: "plugins",
     configPath,
-    pluginImportPath: path.join(pluginPath, "modernjs"),
+    pluginImportPath: joinNormalizedPath(pluginPath, "modernjs"),
     pluginName,
   });
 
