@@ -1,6 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import { outputDir, pluginName, pluginPath } from "../../consts";
+import { joinNormalizedPath } from "../../utils/normalize-path";
 
 export async function setupPluginParcel(configPath: string) {
   try {
@@ -38,7 +39,7 @@ export async function setupPluginParcel(configPath: string) {
     }
 
     // setup `.flowbite-react/parcel-config/parcel-reporter.cjs` file
-    const pluginImportPath = path.join(pluginPath, "parcel");
+    const pluginImportPath = joinNormalizedPath(pluginPath, "parcel");
     const parcelReporterFileContent = `module.exports = require("${pluginImportPath}");`;
     const parcelReporterFilePath = path.join(parcelConfigDir, parcelReporterFile);
 

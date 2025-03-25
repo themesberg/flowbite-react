@@ -4,6 +4,7 @@ import { classListFilePath, excludeDirs, pluginName, pluginPath } from "../const
 import { addImport } from "../utils/add-import";
 import { addToConfig } from "../utils/add-to-config";
 import { findFiles } from "../utils/find-files";
+import { joinNormalizedPath } from "../utils/normalize-path";
 
 export async function setupTailwind() {
   try {
@@ -56,7 +57,7 @@ async function setupTailwindV4() {
 
       found = true;
 
-      const pluginDirectivePath = path.join(pluginPath, "tailwindcss");
+      const pluginDirectivePath = joinNormalizedPath(pluginPath, "tailwindcss");
       const sourceDirectivePath = path
         .join(path.relative(path.dirname(file), process.cwd()), classListFilePath)
         .replace(/\\/g, "/");
@@ -118,7 +119,7 @@ async function setupTailwindV3() {
       let updatedContent = addImport({
         content,
         importName: pluginName,
-        importPath: path.join(pluginPath, "tailwindcss"),
+        importPath: joinNormalizedPath(pluginPath, "tailwindcss"),
       });
 
       updatedContent = addToConfig({
