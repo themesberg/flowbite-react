@@ -128,6 +128,27 @@ Installs Flowbite React in your project:
 - Installs the latest version of flowbite-react
 - Skips installation if already installed
 
+### `flowbite-react migrate`
+
+Runs code transformations to help migrate your codebase:
+
+- Transforms compound components to their simple form (e.g., `Accordion.Panel` to `AccordionPanel`)
+- Automatically updates import statements and component usage
+
+Example transformations:
+
+```tsx
+// Before
+import { Accordion } from "flowbite-react";
+
+<Accordion.Panel>...</Accordion.Panel>
+
+// After
+import { AccordionPanel } from "flowbite-react";
+
+<AccordionPanel>...</AccordionPanel>
+```
+
 ### `flowbite-react patch`
 
 Patches Tailwind CSS to expose its version number for compatibility detection:
