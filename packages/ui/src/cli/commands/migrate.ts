@@ -15,7 +15,7 @@ export interface Transformer {
 
 const transformers: Transformer[] = [
   compoundComponentsTransformer,
-  // ...
+  // Add more transformers as needed
 ];
 
 export async function migrate(): Promise<void> {
@@ -34,8 +34,16 @@ export async function migrate(): Promise<void> {
       console.log(`\n📝 Running ${transformer.name} transformer...`);
       let updatedFiles = 0;
       let skippedFiles = 0;
+      let processedFiles = 0;
+      const totalFiles = files.length;
 
       for (const file of files) {
+        processedFiles++;
+        if (processedFiles % 50 === 0 || processedFiles === totalFiles) {
+          process.stdout.write(
+            `\rProcessing: ${processedFiles}/${totalFiles} files (${Math.round((processedFiles / totalFiles) * 100)}%)`,
+          );
+        }
         try {
           const content = await fs.readFile(file, "utf-8");
           const result = transformer.transform(content);
