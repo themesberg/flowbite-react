@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.11.3
+
+### Patch Changes
+
+- [#1543](https://github.com/themesberg/flowbite-react/pull/1543) [`868e485`](https://github.com/themesberg/flowbite-react/commit/868e4857ad91e67b791bbef290b6334c7595639c) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - add new `migrate` CLI command
+
+  - add new transformer from compound components to singular imports
+
+    ```tsx
+    import { Button } from "flowbite-react";
+
+    // from
+    <Button.Group>
+      <Button>tab 1</Button>
+      <Button>tab 2</Button>
+      <Button>tab 3</Button>
+    </Button.Group>
+
+    // to
+    import { Button, ButtonGroup } from "flowbite-react";
+
+    <ButtonGroup>
+      <Button>tab 1</Button>
+      <Button>tab 2</Button>
+      <Button>tab 3</Button>
+    </ButtonGroup>
+    ```
+
 ## 0.11.2
 
 ### Patch Changes
