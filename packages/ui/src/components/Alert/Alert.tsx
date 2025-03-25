@@ -30,7 +30,7 @@ export interface AlertProps extends Omit<ComponentProps<"div">, "color">, Themin
   additionalContent?: ReactNode;
   color?: DynamicStringEnumKeysOf<FlowbiteColors>;
   icon?: FC<ComponentProps<"svg">>;
-  onDismiss?: boolean | (() => void);
+  onDismiss?: ComponentProps<"button">["onClick"];
   rounded?: boolean;
   withBorderAccent?: boolean;
 }

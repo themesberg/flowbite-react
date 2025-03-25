@@ -141,5 +141,5 @@
       "default": true
     }
   },
-  "required": ["components", "path", "prefix", "rsc", "tsx"]
+  "required": ["components", "dark", "path", "prefix", "rsc", "tsx"]
 }
