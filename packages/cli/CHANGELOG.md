@@ -1,5 +1,11 @@
 # create-flowbite-react
 
+## 1.1.1
+
+### Patch Changes
+
+- [#1546](https://github.com/themesberg/flowbite-react/pull/1546) [`4e90ee8`](https://github.com/themesberg/flowbite-react/commit/4e90ee8ac2f02070bdd678ea502b3593417bb4e6) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - add Parcel `server-bun` and `server-deno` templates
+
 ## 1.1.0
 
 ### Minor Changes
