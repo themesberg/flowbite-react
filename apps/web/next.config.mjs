@@ -130,6 +130,22 @@ const nextConfig = {
         destination: "/docs/components/tooltip",
         permanent: true,
       },
+      // renamed integration guides
+      {
+        source: "/docs/guides/adonis-js",
+        destination: "/docs/guides/adonisjs",
+        permanent: true,
+      },
+      {
+        source: "/docs/guides/next-js",
+        destination: "/docs/guides/nextjs",
+        permanent: true,
+      },
+      {
+        source: "/docs/guides/redwood-js",
+        destination: "/docs/guides/redwoodjs",
+        permanent: true,
+      },
     ];
   },
   images: {
