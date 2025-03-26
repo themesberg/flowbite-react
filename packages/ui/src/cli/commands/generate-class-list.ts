@@ -1,5 +1,5 @@
 import fs from "fs/promises";
-import { classListFilePath, excludeDirs } from "../consts";
+import { allowedExtensions, classListFilePath, excludeDirs } from "../consts";
 import { buildClassList } from "../utils/build-class-list";
 import { extractComponentImports } from "../utils/extract-component-imports";
 import { findFiles } from "../utils/find-files";
@@ -11,7 +11,7 @@ export async function generateClassList() {
 
     if (!config.components.length) {
       const files = await findFiles({
-        patterns: ["**/*.astro", "**/*.js", "**/*.jsx", "**/*.md", "**/*.mdx", "**/*.ts", "**/*.tsx"],
+        patterns: allowedExtensions.map((ext) => `**/*${ext}`),
         excludeDirs,
       });
       const importedComponents = new Set<string>();

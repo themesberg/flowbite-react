@@ -13,11 +13,14 @@ export const classListFilePath = path.join(outputDir, classListFile);
 export const configFilePath = path.join(outputDir, configFile);
 
 export const excludeDirs = [
+  ".astro",
   ".contentlayer",
   ".git",
   ".next",
+  ".parcel-cache",
   ".turbo",
   ".vercel",
+  ".vscode",
   "build",
   "coverage",
   "dist",
@@ -25,5 +28,7 @@ export const excludeDirs = [
   "out",
   "storybook-static",
 ];
+
+export const allowedExtensions = [".astro", ".js", ".jsx", ".md", ".mdx", ".ts", ".tsx"];
 
 export const automaticClassGenerationMessage = `Components specified in ${configFilePath}. Automatic class generation is disabled.`;

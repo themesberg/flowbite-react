@@ -1,7 +1,14 @@
 import fs from "fs/promises";
+import { basename } from "path";
 import chokidar from "chokidar";
 import { isEqual } from "../../helpers/is-equal";
-import { automaticClassGenerationMessage, classListFilePath, configFilePath, excludeDirs } from "../consts";
+import {
+  allowedExtensions,
+  automaticClassGenerationMessage,
+  classListFilePath,
+  configFilePath,
+  excludeDirs,
+} from "../consts";
 import { buildClassList } from "../utils/build-class-list";
 import { extractComponentImports } from "../utils/extract-component-imports";
 import { getClassList } from "../utils/get-class-list";
@@ -50,12 +57,10 @@ export async function dev() {
   const watcher = chokidar.watch(".", {
     ignored: (path, stats) => {
       if (stats?.isDirectory()) {
-        return excludeDirs.some((dir) => path.endsWith(dir));
+        return excludeDirs.includes(basename(path));
       }
       if (stats?.isFile()) {
-        return ![".astro", ".js", ".jsx", ".md", ".mdx", ".ts", ".tsx", configFilePath].some((type) =>
-          path.endsWith(type),
-        );
+        return !allowedExtensions.concat(configFilePath).some((ext) => path.endsWith(ext));
       }
       return false;
     },
