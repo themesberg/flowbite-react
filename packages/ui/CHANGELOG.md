@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.4
+
+### Patch Changes
+
+- [`c54183b`](https://github.com/themesberg/flowbite-react/commit/c54183bec1b6da47dee1519fabf1510cbfc48409) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - add orphan `className`s to the theme object
+
 ## 0.11.3
 
 ### Patch Changes
