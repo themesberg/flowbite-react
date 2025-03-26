@@ -9,6 +9,7 @@ export const toggleSwitchTheme = createTheme<ToggleSwitchTheme>({
       off: "cursor-not-allowed opacity-50",
     },
     label: "ms-3 mt-0.5 text-start text-sm font-medium text-gray-900 dark:text-gray-300",
+    input: "sr-only",
   },
   toggle: {
     base: "relative rounded-full after:absolute after:rounded-full after:border after:bg-white after:transition-all group-focus:ring-4",

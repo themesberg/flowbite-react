@@ -23,6 +23,7 @@ export interface SidebarCollapseTheme {
   };
   label: {
     base: string;
+    title: string;
     icon: {
       base: string;
       open: FlowbiteBoolean;
@@ -98,7 +99,7 @@ export const SidebarCollapse = forwardRef<HTMLLIElement, SidebarCollapseProps>((
             />
           )}
           {isCollapsed ? (
-            <span className="sr-only">{label}</span>
+            <span className={theme.label.title}>{label}</span>
           ) : (
             <>
               <span data-testid="flowbite-sidebar-collapse-label" className={theme.label.base}>

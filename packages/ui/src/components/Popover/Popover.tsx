@@ -15,9 +15,10 @@ import { getArrowPlacement } from "../Floating/helpers";
 import { popoverTheme } from "./theme";
 
 export interface PopoverTheme {
-  arrow: Omit<FloatingArrowTheme, "style">;
   base: string;
+  inner: string;
   content: string;
+  arrow: Omit<FloatingArrowTheme, "style">;
 }
 
 export interface PopoverProps extends Omit<ComponentProps<"div">, "content" | "style">, ThemingProps<PopoverTheme> {
@@ -108,7 +109,7 @@ export function Popover(props: PopoverProps) {
             style={floatingStyles}
             {...getFloatingProps()}
           >
-            <div className="relative">
+            <div className={theme.inner}>
               {arrow && (
                 <div
                   className={theme.arrow.base}

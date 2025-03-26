@@ -22,6 +22,7 @@ export const sidebarTheme = createTheme<SidebarTheme>({
     },
     label: {
       base: "ml-3 flex-1 whitespace-nowrap text-left",
+      title: "sr-only",
       icon: {
         base: "h-6 w-6 transition delay-0 ease-in-out",
         open: {

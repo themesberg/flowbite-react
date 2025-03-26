@@ -14,6 +14,7 @@ import { navbarTheme } from "./theme";
 export interface NavbarToggleThem {
   base: string;
   icon: string;
+  title: string;
 }
 
 export interface NavbarToggleProps extends ComponentProps<"button">, ThemingProps<NavbarToggleThem> {
@@ -50,7 +51,7 @@ export const NavbarToggle = forwardRef<HTMLButtonElement, NavbarToggleProps>((pr
       className={twMerge(theme.base, className)}
       {...restProps}
     >
-      <span className="sr-only">Open main menu</span>
+      <span className={theme.title}>Open main menu</span>
       <BarIcon aria-hidden className={theme.icon} />
     </button>
   );

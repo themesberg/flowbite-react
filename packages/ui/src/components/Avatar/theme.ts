@@ -4,6 +4,7 @@ import type { AvatarTheme } from "./Avatar";
 export const avatarTheme = createTheme<AvatarTheme>({
   root: {
     base: "flex items-center justify-center space-x-4 rounded",
+    inner: "relative",
     bordered: "p-1 ring-2",
     rounded: "rounded-full",
     color: {

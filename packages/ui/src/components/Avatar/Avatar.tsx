@@ -26,6 +26,7 @@ export interface AvatarTheme {
 
 export interface AvatarRootTheme {
   base: string;
+  inner: string;
   bordered: string;
   color: AvatarColors;
   img: AvatarImageTheme;
@@ -124,7 +125,7 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
 
   return (
     <div ref={ref} className={twMerge(theme.root.base, className)} data-testid="flowbite-avatar" {...restProps}>
-      <div className="relative">
+      <div className={theme.root.inner}>
         {img ? (
           typeof img === "string" ? (
             <img alt={alt} src={img} {...imgProps} />

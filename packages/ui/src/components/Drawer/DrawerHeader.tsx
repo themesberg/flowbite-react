@@ -18,6 +18,7 @@ export interface DrawerHeaderTheme {
     titleText: string;
     closeButton: string;
     closeIcon: string;
+    titleCloseIcon: string;
   };
   collapsed: FlowbiteBoolean;
 }
@@ -64,7 +65,7 @@ export const DrawerHeader = forwardRef<HTMLDivElement, DrawerHeaderProps>((props
       </h5>
       <button onClick={onClose} data-testid="close-drawer" className={theme.inner.closeButton}>
         <CloseIcon aria-hidden className={theme.inner.closeIcon} />
-        <span className="sr-only">Close menu</span>
+        <span className={theme.inner.titleCloseIcon}>Close menu</span>
       </button>
       <span className={theme.collapsed[isOpen ? "on" : "off"]} id={`flowbite-drawer-header-${id}`}>
         {children}

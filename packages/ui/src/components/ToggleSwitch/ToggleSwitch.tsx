@@ -20,6 +20,7 @@ export interface ToggleSwitchRootTheme {
   base: string;
   active: FlowbiteBoolean;
   label: string;
+  input: string;
 }
 
 export interface ToggleSwitchToggleTheme {
@@ -71,7 +72,7 @@ export const ToggleSwitch = forwardRef<HTMLInputElement, ToggleSwitchProps>((pro
 
   return (
     <>
-      <input ref={ref} checked={checked} name={name} type="checkbox" className="sr-only" readOnly hidden />
+      <input ref={ref} checked={checked} name={name} type="checkbox" className={theme.root.input} readOnly hidden />
       <button
         aria-checked={checked}
         aria-labelledby={`${id}-flowbite-toggleswitch-label`}
