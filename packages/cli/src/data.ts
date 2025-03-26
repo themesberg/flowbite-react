@@ -81,6 +81,18 @@ export const REPOS: Template[] = [
         description: "React Server Components setup",
         url: "https://github.com/themesberg/flowbite-react-template-parcel-server.git",
       },
+      {
+        key: "server-bun",
+        name: "Server Mode (Bun)",
+        description: "React Server Components setup with Bun",
+        url: "https://github.com/themesberg/flowbite-react-template-parcel-server-bun.git",
+      },
+      {
+        key: "server-deno",
+        name: "Server Mode (Deno)",
+        description: "React Server Components setup with Deno",
+        url: "https://github.com/themesberg/flowbite-react-template-parcel-server-deno.git",
+      },
     ],
   },
   {

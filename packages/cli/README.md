@@ -52,6 +52,8 @@ Check out the full list of [official `flowbite-react` template examples](https:/
 | `nextjs`          | [flowbite-react-template-nextjs](https://github.com/themesberg/flowbite-react-template-nextjs)                                     |
 | `parcel`          |                                                                                                                                    |
 | ↳ `client`        | [flowbite-react-template-parcel-client](https://github.com/themesberg/flowbite-react-template-parcel-client)                       |
+| ↳ `server-bun`    | [flowbite-react-template-parcel-server-bun](https://github.com/themesberg/flowbite-react-template-parcel-server-bun)               |
+| ↳ `server-deno`   | [flowbite-react-template-parcel-server-deno](https://github.com/themesberg/flowbite-react-template-parcel-server-deno)             |
 | ↳ `server`        | [flowbite-react-template-parcel-server](https://github.com/themesberg/flowbite-react-template-parcel-server)                       |
 | `react-router`    |                                                                                                                                    |
 | ↳ `framework`     | [flowbite-react-template-react-router-framework](https://github.com/themesberg/flowbite-react-template-react-router-framework)     |
