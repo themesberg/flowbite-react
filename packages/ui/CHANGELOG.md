@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.5
+
+### Patch Changes
+
+- [#1549](https://github.com/themesberg/flowbite-react/pull/1549) [`7327e55`](https://github.com/themesberg/flowbite-react/commit/7327e55ef080068b3639c1c2ff8f1d291bb0ec9b) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix file watcher ignore directory logic leading to false positives
+
 ## 0.11.4
 
 ### Patch Changes
