@@ -63,7 +63,7 @@ export const DrawerHeader = forwardRef<HTMLDivElement, DrawerHeaderProps>((props
         <TitleIcon aria-hidden className={theme.inner.titleIcon} />
         {title}
       </h5>
-      <button onClick={onClose} data-testid="close-drawer" className={theme.inner.closeButton}>
+      <button onClick={onClose} type="button" data-testid="close-drawer" className={theme.inner.closeButton}>
         <CloseIcon aria-hidden className={theme.inner.closeIcon} />
         <span className={theme.inner.titleCloseIcon}>Close menu</span>
       </button>
