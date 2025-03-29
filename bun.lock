@@ -91,7 +91,7 @@
     },
     "packages/cli": {
       "name": "create-flowbite-react",
-      "version": "1.0.8",
+      "version": "1.1.1",
       "bin": {
         "create-flowbite-react": "./dist/index.js",
       },
@@ -109,7 +109,7 @@
     },
     "packages/ui": {
       "name": "flowbite-react",
-      "version": "0.10.2",
+      "version": "0.11.5",
       "bin": {
         "flowbite-react": "./dist/cli/bin.js",
       },
