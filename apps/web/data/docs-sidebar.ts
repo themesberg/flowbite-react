@@ -18,6 +18,7 @@ export const DOCS_SIDEBAR: DocsSidebarSection[] = [
       { title: "Compatibility", href: "/docs/getting-started/compatibility", tag: "new" },
       { title: "CLI", href: "/docs/getting-started/cli", tag: "updated" },
       { title: "Editor Setup", href: "/docs/getting-started/editor-setup" },
+      { title: "AI Integration", href: "/docs/getting-started/ai-integration", tag: "new" },
       { title: "Server Components", href: "/docs/getting-started/server-components" },
       { title: "License", href: "/docs/getting-started/license" },
       { title: "Changelog", href: "https://github.com/themesberg/flowbite-react/releases" },
