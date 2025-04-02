@@ -18,11 +18,29 @@ export function convertUtilitiesToV4(classNames: string): string {
     return cacheValue;
   }
 
-  let result = classNames;
+  const parts = classNames.split(/(\s+)/);
+  const result = parts
+    .map((part) => {
+      if (/^\s+$/.test(part)) {
+        return part;
+      }
 
-  for (const [regex, replacement] of regexMap) {
-    result = result.replace(regex, replacement);
-  }
+      const processed = part;
+      const modifierMatch = processed.match(/^([^:]+:)?(.+)$/);
+
+      if (modifierMatch) {
+        const [, modifier = "", baseClass] = modifierMatch;
+
+        for (const [regex, replacement] of regexMap) {
+          if (regex.test(baseClass)) {
+            return modifier + baseClass.replace(regex, replacement);
+          }
+        }
+      }
+
+      return processed;
+    })
+    .join("");
 
   cache.set(cacheKey, result);
 
@@ -44,15 +62,15 @@ export function convertUtilitiesToV4(classNames: string): string {
 | ring           | ring-3         |
  */
 const regexMap = [
-  [/\b(shadow-sm)\b/g, "shadow-xs"],
-  [/(?<!-)(shadow)(?!-)\b/g, "shadow-sm"],
-  [/\b(drop-shadow-sm)\b/g, "drop-shadow-xs"],
-  [/\b(drop-shadow)\b(?!-)/g, "drop-shadow-sm"],
-  [/\b(blur-sm)\b/g, "blur-xs"],
-  [/\b(blur)\b(?!-)/g, "blur-sm"],
-  [/\b(rounded-sm)\b/g, "rounded-xs"],
-  [/\b(rounded)\b(?!-)/g, "rounded-sm"],
+  [/^shadow-sm$/, "shadow-xs"],
+  [/^shadow$/, "shadow-sm"],
+  [/^drop-shadow-sm$/, "drop-shadow-xs"],
+  [/^drop-shadow$/, "drop-shadow-sm"],
+  [/^blur-sm$/, "blur-xs"],
+  [/^blur$/, "blur-sm"],
+  [/^rounded-sm$/, "rounded-xs"],
+  [/^rounded$/, "rounded-sm"],
   // TODO: revisit this - it breaks anything focused using tab
-  // [/\b(outline-none)\b/g, "outline-hidden"],
-  [/\b(ring)\b(?!-)/g, "ring-3"],
+  // [/^outline-none$/, "outline-hidden"],
+  [/^ring$/, "ring-3"],
 ] as const;
