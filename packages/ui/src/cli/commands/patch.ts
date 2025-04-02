@@ -22,14 +22,14 @@ export async function patchTailwind(): Promise<void> {
         tailwindModulePath = require.resolve("tailwindcss/package.json", {
           paths: [process.cwd()],
         });
-        tailwindPath = path.dirname(tailwindModulePath);
+        tailwindPath = path.resolve(path.dirname(tailwindModulePath));
       } else {
         const { createRequire } = await import("module");
         const require = createRequire(import.meta.url);
         tailwindModulePath = require.resolve("tailwindcss/package.json", {
           paths: [process.cwd()],
         });
-        tailwindPath = path.dirname(tailwindModulePath);
+        tailwindPath = path.resolve(path.dirname(tailwindModulePath));
       }
     } catch {
       console.warn("Could not resolve Tailwind CSS module path. Skipping version patch.");
