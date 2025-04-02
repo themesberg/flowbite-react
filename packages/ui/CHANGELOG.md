@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.11.6
+
+### Patch Changes
+
+- [#1552](https://github.com/themesberg/flowbite-react/pull/1552) [`bab6c75`](https://github.com/themesberg/flowbite-react/commit/bab6c75bad8f0ab2dcdd708dd3a2099cd33a679f) Thanks [@bigbyte-stuart](https://github.com/bigbyte-stuart)! - make drawer close button type button
+
+- [#1555](https://github.com/themesberg/flowbite-react/pull/1555) [`2f461ea`](https://github.com/themesberg/flowbite-react/commit/2f461eae33284990c5d5d03bde0ad36f9001cc13) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - refactor(ui~convertUtilitiesToV4): drop `js-regexp-lookbehind` in favor of more simpler regex for improved browser support
+
 ## 0.11.5
 
 ### Patch Changes
