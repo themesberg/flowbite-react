@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.7
+
+### Patch Changes
+
+- [#1556](https://github.com/themesberg/flowbite-react/pull/1556) [`f0724b9`](https://github.com/themesberg/flowbite-react/commit/f0724b96e68c61aba34a4371d9fd710d9c3b5cd9) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(ui~cli): `patch` command windows support
+
 ## 0.11.6
 
 ### Patch Changes
