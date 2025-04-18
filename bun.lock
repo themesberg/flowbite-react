@@ -109,7 +109,7 @@
     },
     "packages/ui": {
       "name": "flowbite-react",
-      "version": "0.11.5",
+      "version": "0.11.7",
       "bin": {
         "flowbite-react": "./dist/cli/bin.js",
       },

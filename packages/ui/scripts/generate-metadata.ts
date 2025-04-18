@@ -248,8 +248,14 @@ async function generateSchema(components: string[]): Promise<void> {
           type: "boolean",
           default: true,
         },
+        version: {
+          description:
+            "The version of Tailwind CSS to use. \nSee https://flowbite-react.com/docs/customize/config#version for more details.",
+          type: "number",
+          default: 4,
+        },
       },
-      required: ["components", "dark", "path", "prefix", "rsc", "tsx"],
+      required: ["components", "dark", "path", "prefix", "rsc", "tsx", "version"],
     };
 
     defaultSchema.properties.components.items.enum.push(...components);

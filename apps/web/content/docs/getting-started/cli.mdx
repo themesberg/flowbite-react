@@ -12,7 +12,6 @@ The Flowbite React CLI provides a comprehensive set of tools for:
 - Managing development workflows
 - Handling class generation
 - Configuring your development environment
-- Patching Tailwind CSS configurations
 - Providing help and documentation
 
 ## Installation & Setup
@@ -149,15 +148,6 @@ import { AccordionPanel } from "flowbite-react";
 <AccordionPanel>...</AccordionPanel>
 ```
 
-### `flowbite-react patch`
-
-Patches Tailwind CSS to expose its version number for compatibility detection:
-
-- Creates a JavaScript file that exports the Tailwind CSS version
-- Necessary because package.json cannot be reliably read by all bundlers
-- Makes the version accessible via `import version from "tailwindcss/version"`
-- Enables Flowbite React to adapt its behavior based on the installed Tailwind version
-
 ### `flowbite-react register`
 
 Registers the Flowbite React process for development:
@@ -232,7 +222,8 @@ The CLI creates a `.flowbite-react/config.json` file with several configuration 
   "path": "src/components",
   "prefix": "",
   "rsc": true,
-  "tsx": true
+  "tsx": true,
+  "version": 4
 }
 ```
 
@@ -259,6 +250,10 @@ Whether to include the `"use client"` directive for React Server Components. Def
 #### `tsx`
 
 Whether to use TypeScript (.tsx) or JavaScript (.jsx) for component creation. Default is `true`.
+
+#### `version`
+
+The version of Tailwind CSS to use. Default is `4`.
 
 ### VSCode Integration
 

@@ -46,6 +46,7 @@ export async function dev() {
       components: config.components.length ? config.components : newImportedComponents,
       dark: config.dark,
       prefix: config.prefix,
+      version: config.version,
     });
 
     if (!isEqual(classList, newClassList)) {

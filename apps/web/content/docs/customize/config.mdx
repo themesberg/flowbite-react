@@ -51,9 +51,14 @@ The configuration file follows this JSON Schema:
       "description": "Whether to use TypeScript (.tsx) or JavaScript (.jsx) for component creation",
       "type": "boolean",
       "default": true
+    },
+    "version": {
+      "description": "The version of Tailwind CSS to use",
+      "type": "number",
+      "default": 4
     }
   },
-  "required": ["components", "dark", "path", "prefix", "rsc", "tsx"]
+  "required": ["components", "dark", "path", "prefix", "rsc", "tsx", "version"]
 }
 ```
 
@@ -101,6 +106,12 @@ For detailed instructions on configuring and using prefixes, see the [Prefix](/d
 - Default: `true`
 - Description: Whether to use TypeScript (.tsx) or JavaScript (.jsx) for component creation. When set to `false`, components will be created with .jsx extension.
 
+#### `version`
+
+- Type: `number`
+- Default: `4`
+- Description: The version of Tailwind CSS to use.
+
 ## Automatic Class Generation
 
 The automatic class generation system works in two modes:
@@ -123,7 +134,8 @@ Example config for automatic mode:
   "path": "src/components",
   "prefix": "",
   "rsc": true,
-  "tsx": true
+  "tsx": true,
+  "version": 4
 }
 ```
 
@@ -145,7 +157,8 @@ Example config for manual mode:
   "path": "src/components",
   "prefix": "",
   "rsc": true,
-  "tsx": true
+  "tsx": true,
+  "version": 4
 }
 ```
 

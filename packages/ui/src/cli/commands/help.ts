@@ -10,7 +10,6 @@ Commands:
   init                Initialize Flowbite React with config files and necessary setup
   install             Install Flowbite React using your detected package manager
   migrate             Run code transformations to update to latest patterns and APIs
-  patch               Patch Tailwind CSS to expose version number for compatibility
   register            Register Flowbite React process for development with automatic class generation
   setup <subcommand>  Setup additional features and configurations
 

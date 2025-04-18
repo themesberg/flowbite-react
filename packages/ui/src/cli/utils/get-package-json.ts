@@ -5,9 +5,9 @@ import { packageJsonFile } from "../consts";
 export interface PackageJson {
   name: string;
   version: string;
+  scripts: Record<string, string>;
   dependencies: Record<string, string>;
   devDependencies: Record<string, string>;
-  scripts: Record<string, string>;
 }
 /**
  * Reads and parses the package.json file.

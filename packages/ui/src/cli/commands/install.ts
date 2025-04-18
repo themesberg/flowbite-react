@@ -3,11 +3,15 @@ import { detect } from "package-manager-detector/detect";
 import { execCommand } from "../utils/exec-command";
 import { getPackageJson } from "../utils/get-package-json";
 
-export async function installFlowbiteReact() {
+/**
+ * Installs `flowbite-react` package using the detected package manager.
+ */
+export async function installPackage() {
   try {
     const packageJson = await getPackageJson();
 
     if (packageJson.dependencies?.["flowbite-react"] || packageJson.devDependencies?.["flowbite-react"]) {
+      // TODO: prompt to bump the version to latest
       return;
     }
 

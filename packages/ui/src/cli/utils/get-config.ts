@@ -9,6 +9,7 @@ export interface Config {
   prefix: string;
   rsc: boolean;
   tsx: boolean;
+  version: 3 | 4;
 }
 
 /**
@@ -28,6 +29,7 @@ export async function getConfig(): Promise<Config> {
     prefix: "",
     rsc: true,
     tsx: true,
+    version: 4,
   };
 
   try {
@@ -54,6 +56,9 @@ export async function getConfig(): Promise<Config> {
     }
     if (parsed.tsx !== undefined && typeof parsed.tsx === "boolean") {
       config.tsx = parsed.tsx;
+    }
+    if (parsed.version !== undefined && typeof parsed.version === "number") {
+      config.version = parsed.version;
     }
 
     return config;

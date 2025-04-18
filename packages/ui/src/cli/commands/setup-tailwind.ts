@@ -6,6 +6,12 @@ import { addToConfig } from "../utils/add-to-config";
 import { findFiles } from "../utils/find-files";
 import { joinNormalizedPath } from "../utils/normalize-path";
 
+/**
+ * Sets up Tailwind CSS configuration for the project.
+ *
+ * This function checks if Tailwind CSS is installed in the project and then
+ * attempts to add the necessary configuration for Tailwind CSS v4 or v3.
+ */
 export async function setupTailwind() {
   try {
     const found = !!((await setupTailwindV4()) || (await setupTailwindV3()));
@@ -18,6 +24,12 @@ export async function setupTailwind() {
   }
 }
 
+/**
+ * Sets up Tailwind CSS v4 configuration for the project.
+ *
+ * This function searches for Tailwind CSS files in the project and attempts to
+ * add the necessary configuration for Tailwind CSS v4.
+ */
 async function setupTailwindV4() {
   try {
     const cssFiles = await findFiles({
