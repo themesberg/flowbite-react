@@ -18,7 +18,7 @@ describe("resolveTheme", () => {
   });
 
   it("should apply prefix with version 3 format", () => {
-    setStore({ prefix: "tw-" });
+    setStore({ prefix: "tw-", version: 3 });
 
     const base = { color: "text-red-400" };
 

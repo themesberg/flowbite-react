@@ -40,7 +40,8 @@ The configuration file follows this JSON Schema:
     },
     "prefix": {
       "description": "Optional prefix to apply to all Tailwind CSS classes",
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "rsc": {
       "description": "Whether to include the 'use client' directive for React Server Components",
@@ -55,6 +56,7 @@ The configuration file follows this JSON Schema:
     "version": {
       "description": "The version of Tailwind CSS to use",
       "type": "number",
+      "enum": [3, 4],
       "default": 4
     }
   },
@@ -109,6 +111,7 @@ For detailed instructions on configuring and using prefixes, see the [Prefix](/d
 #### `version`
 
 - Type: `number`
+- Options: `3`, `4`
 - Default: `4`
 - Description: The version of Tailwind CSS to use.
 

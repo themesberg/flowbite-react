@@ -128,7 +128,8 @@
     },
     "prefix": {
       "description": "Optional prefix to apply to all Tailwind CSS classes. \nSee https://flowbite-react.com/docs/customize/config#prefix for more details.",
-      "type": "string"
+      "type": "string",
+      "default": ""
     },
     "rsc": {
       "description": "Whether to include the 'use client' directive for React Server Components. \nSee https://flowbite-react.com/docs/customize/config#rsc for more details.",
@@ -143,6 +144,7 @@
     "version": {
       "description": "The version of Tailwind CSS to use. \nSee https://flowbite-react.com/docs/customize/config#version for more details.",
       "type": "number",
+      "enum": [3, 4],
       "default": 4
     }
   },
