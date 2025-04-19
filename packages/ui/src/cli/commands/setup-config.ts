@@ -1,7 +1,7 @@
 import fs from "fs/promises";
-import tailwindcssPackageJson from "tailwindcss/package.json";
 import { configFilePath } from "../consts";
 import type { Config } from "../utils/get-config";
+import { getTailwindVersion } from "../utils/get-tailwind-version";
 
 /**
  * Sets up the `.flowbite-react/config.json` file in the project.
@@ -21,7 +21,7 @@ export async function setupConfig() {
       prefix: "",
       rsc: true,
       tsx: true,
-      version: parseInt(tailwindcssPackageJson.version.split(".")[0], 10) as 3 | 4,
+      version: await getTailwindVersion(),
     };
     console.log(`Creating ${configFilePath} file...`);
     await fs.writeFile(configFilePath, JSON.stringify(defaultConfig, null, 2), { flag: "w" });
