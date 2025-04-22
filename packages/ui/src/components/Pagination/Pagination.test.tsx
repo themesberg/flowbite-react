@@ -256,7 +256,7 @@ const tablePaginationState = () => {
     .getAllByRole("meter")
     .find((elem) => elem.getAttribute("aria-label") === "Table Pagination");
   const paginationValues = firstItemElement?.textContent?.match(/\d+/g);
-  if (paginationValues?.length !== 3) return { firstItem: null, lastItem: null, totalItems: null };
+  if (!paginationValues || paginationValues?.length !== 3) return { firstItem: null, lastItem: null, totalItems: null };
   return {
     firstItem: parseInt(paginationValues[0]),
     lastItem: parseInt(paginationValues[1]),
