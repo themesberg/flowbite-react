@@ -45,6 +45,7 @@ export interface PaginationNavigationTheme {
 }
 
 export interface BasePaginationProps extends ComponentProps<"nav">, ThemingProps<PaginationTheme> {
+  layout?: "navigation" | "pagination" | "table";
   currentPage: number;
   nextLabel?: string;
   onPageChange: (page: number) => void;
