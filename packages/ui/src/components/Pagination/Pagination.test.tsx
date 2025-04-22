@@ -253,7 +253,7 @@ const currentPage = () => {
 
 const tablePaginationState = () => {
   const firstItemElement = screen
-    .getAllByRole("meter")
+    .getAllByRole("status")
     .find((elem) => elem.getAttribute("aria-label") === "Table Pagination");
   const paginationValues = firstItemElement?.textContent?.match(/\d+/g);
   if (!paginationValues || paginationValues?.length !== 3) return { firstItem: null, lastItem: null, totalItems: null };
