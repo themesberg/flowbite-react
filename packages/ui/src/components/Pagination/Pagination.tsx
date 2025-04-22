@@ -92,6 +92,14 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
     ...restProps
   } = resolveProps<DefaultPaginationProps>(props, provider.props?.pagination);
 
+  if (!Number.isInteger(currentPage) || currentPage < 1) {
+    throw new Error("Invalid props: currentPage must be a positive integer");
+  }
+
+  if (!Number.isInteger(totalPages) || totalPages < 1) {
+    throw new Error("Invalid props: totalPages must be a positive integer");
+  }
+
   const lastPage = Math.min(Math.max(layout === "pagination" ? currentPage + 2 : currentPage + 4, 5), totalPages);
   const firstPage = Math.max(1, lastPage - 4);
 
@@ -162,6 +170,15 @@ const TablePagination = forwardRef<HTMLElement, TablePaginationProps>((props, re
     ...restProps
   } = resolveProps<TablePaginationProps>(props, provider.props?.pagination);
 
+  if (!Number.isInteger(currentPage) || currentPage < 1) {
+    throw new Error("Invalid props: currentPage must be a positive integer");
+  }
+  if (!Number.isInteger(itemsPerPage) || itemsPerPage < 1) {
+    throw new Error("Invalid props: itemsPerPage must be a positive integer");
+  }
+  if (!Number.isInteger(totalItems) || totalItems < 0) {
+    throw new Error("Invalid props: totalItems must be a non-negative integer");
+  }
   const totalPages = totalItems > 0 ? Math.ceil(totalItems / itemsPerPage) : 1;
 
   const offset = (currentPage - 1) * itemsPerPage;

@@ -177,12 +177,6 @@ describe("Pagination", () => {
       expect(pages()).toHaveLength(0);
     });
 
-    it('should display numbered buttons when `layout="table"`', () => {
-      render(<PaginationTestTable />);
-
-      expect(pages()).toHaveLength(0);
-    });
-
     it("should change previous and next text when provided", () => {
       render(
         <Pagination
@@ -197,6 +191,142 @@ describe("Pagination", () => {
 
       expect(previousButton()).toHaveTextContent("Go back");
       expect(nextButton()).toHaveTextContent("Go forward");
+    });
+
+    it("should throw an error if currentPage is not a positive integer", () => {
+      expect(() => render(<Pagination currentPage={0} onPageChange={() => undefined} totalPages={5} />)).toThrow(
+        "Invalid props: currentPage must be a positive integer",
+      );
+      expect(() => render(<Pagination currentPage={-1} onPageChange={() => undefined} totalPages={5} />)).toThrow(
+        "Invalid props: currentPage must be a positive integer",
+      );
+      expect(() => render(<Pagination currentPage={1.5} onPageChange={() => undefined} totalPages={5} />)).toThrow(
+        "Invalid props: currentPage must be a positive integer",
+      );
+    });
+
+    it("should throw an error if totalPages is not a positive integer", () => {
+      expect(() => render(<Pagination currentPage={1} onPageChange={() => undefined} totalPages={-1} />)).toThrow(
+        "Invalid props: totalPages must be a positive integer",
+      );
+      expect(() => render(<Pagination currentPage={1} onPageChange={() => undefined} totalPages={0} />)).toThrow(
+        "Invalid props: totalPages must be a positive integer",
+      );
+      expect(() => render(<Pagination currentPage={1} onPageChange={() => undefined} totalPages={1.5} />)).toThrow(
+        "Invalid props: totalPages must be a positive integer",
+      );
+    });
+    describe("TablePaginationProps", () => {
+      it('should not display numbered buttons when `layout="table"`', () => {
+        render(<PaginationTestTable />);
+
+        expect(pages()).toHaveLength(0);
+      });
+
+      it("should throw an error if current page is not positive", () => {
+        expect(() =>
+          render(
+            <Pagination
+              layout="table"
+              currentPage={0}
+              onPageChange={(_) => {}}
+              showIcons
+              itemsPerPage={0}
+              totalItems={95}
+            />,
+          ),
+        ).toThrow("Invalid props: currentPage must be a positive integer");
+        expect(() =>
+          render(
+            <Pagination
+              layout="table"
+              currentPage={-1}
+              onPageChange={(_) => {}}
+              showIcons
+              itemsPerPage={0}
+              totalItems={95}
+            />,
+          ),
+        ).toThrow("Invalid props: currentPage must be a positive integer");
+        expect(() =>
+          render(
+            <Pagination
+              layout="table"
+              currentPage={1.5}
+              onPageChange={(_) => {}}
+              showIcons
+              itemsPerPage={0}
+              totalItems={95}
+            />,
+          ),
+        ).toThrow("Invalid props: currentPage must be a positive integer");
+      });
+
+      it("should throw an error if itemsPerPage is not a positive integer", () => {
+        expect(() =>
+          render(
+            <Pagination
+              layout="table"
+              currentPage={1}
+              onPageChange={(_) => {}}
+              showIcons
+              itemsPerPage={0}
+              totalItems={95}
+            />,
+          ),
+        ).toThrow("Invalid props: itemsPerPage must be a positive integer");
+        expect(() =>
+          render(
+            <Pagination
+              layout="table"
+              currentPage={1}
+              onPageChange={(_) => {}}
+              showIcons
+              itemsPerPage={-1}
+              totalItems={95}
+            />,
+          ),
+        ).toThrow("Invalid props: itemsPerPage must be a positive integer");
+        expect(() =>
+          render(
+            <Pagination
+              layout="table"
+              currentPage={1}
+              onPageChange={(_) => {}}
+              showIcons
+              itemsPerPage={1.5}
+              totalItems={95}
+            />,
+          ),
+        ).toThrow("Invalid props: itemsPerPage must be a positive integer");
+      });
+
+      it("should throw an error if totalItems is not a non-negative integer", () => {
+        expect(() =>
+          render(
+            <Pagination
+              layout="table"
+              currentPage={1}
+              onPageChange={(_) => {}}
+              showIcons
+              itemsPerPage={10}
+              totalItems={-1}
+            />,
+          ),
+        ).toThrow("Invalid props: totalItems must be a non-negative integer");
+        expect(() =>
+          render(
+            <Pagination
+              layout="table"
+              currentPage={1}
+              onPageChange={(_) => {}}
+              showIcons
+              itemsPerPage={10}
+              totalItems={1.5}
+            />,
+          ),
+        ).toThrow("Invalid props: totalItems must be a non-negative integer");
+      });
     });
   });
 });
