@@ -195,7 +195,7 @@ const TablePagination = forwardRef<HTMLElement, TablePaginationProps>((props, re
 
   return (
     <nav ref={ref} className={twMerge(theme.base, className)} {...restProps}>
-      <div role="status" aria-label="Table Pagination" className={theme.layout.table.base}>
+      <div role="status" aria-live="polite" aria-label="Table Pagination" className={theme.layout.table.base}>
         Showing <span className={theme.layout.table.span}>{firstItem}</span> to&nbsp;
         <span className={theme.layout.table.span}>{lastItem}</span> of&nbsp;
         <span className={theme.layout.table.span}>{totalItems}</span> Entries
