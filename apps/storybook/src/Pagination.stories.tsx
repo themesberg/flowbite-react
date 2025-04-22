@@ -71,6 +71,8 @@ NavWithIcons.args = {
 export const Table = Template.bind({});
 Table.args = {
   layout: "table",
+  itemsPerPage: 10,
+  totalItems: 100,
 };
 
 export const TableWithIcons = Template.bind({});
@@ -78,4 +80,6 @@ TableWithIcons.storyName = "Table with icons";
 TableWithIcons.args = {
   layout: "table",
   showIcons: true,
+  itemsPerPage: 10,
+  totalItems: 100,
 };
