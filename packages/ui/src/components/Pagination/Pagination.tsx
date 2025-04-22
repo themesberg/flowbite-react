@@ -162,10 +162,10 @@ const TablePagination = forwardRef<HTMLElement, TablePaginationProps>((props, re
     ...restProps
   } = resolveProps<TablePaginationProps>(props, provider.props?.pagination);
 
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const totalPages = totalItems > 0 ? Math.ceil(totalItems / itemsPerPage) : 1;
 
   const offset = (currentPage - 1) * itemsPerPage;
-  const firstItem = offset + 1;
+  const firstItem = totalItems > 0 ? offset + 1 : 0;
   const lastItem = currentPage === totalPages ? totalItems : offset + itemsPerPage;
 
   function goToNextPage() {

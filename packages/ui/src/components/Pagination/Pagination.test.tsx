@@ -106,7 +106,7 @@ describe("Pagination", () => {
       expect(totalItems).toEqual(95);
     });
 
-    it("clicking next should increment the page offset by 1.", async () => {
+    it("should increment the page offset by 1 when clicking next", async () => {
       const user = userEvent.setup();
       render(<PaginationTestTable />);
       await user.click(nextButton());
@@ -145,6 +145,26 @@ describe("Pagination", () => {
       expect(firstItem).toEqual(91);
       expect(lastItem).toEqual(95);
       expect(totalItems).toEqual(95);
+      const lastButton = buttons()[buttons().length - 1];
+      expect(lastButton).toBeDisabled();
+    });
+
+    it("should show an empty page if totalItems is 0.", () => {
+      render(<PaginationTestEmptyTable />);
+      const { firstItem, lastItem, totalItems } = tablePaginationState();
+      expect(firstItem).toEqual(0);
+      expect(lastItem).toEqual(0);
+      expect(totalItems).toEqual(0);
+    });
+
+    it("should show one page if totalItems is less than itemsPerPage.", () => {
+      render(<PaginationTestOnePageTable />);
+      const { firstItem, lastItem, totalItems } = tablePaginationState();
+      expect(firstItem).toEqual(1);
+      expect(lastItem).toEqual(5);
+      expect(totalItems).toEqual(5);
+      const firstButton = buttons()[0];
+      expect(firstButton).toBeDisabled();
       const lastButton = buttons()[buttons().length - 1];
       expect(lastButton).toBeDisabled();
     });
@@ -228,6 +248,52 @@ function PaginationTestTable() {
       showIcons
       itemsPerPage={10}
       totalItems={95}
+    />
+  );
+}
+
+function PaginationTestOnePageTable() {
+  const [page, setPage] = useState(1);
+
+  const onPageChange = (page: number) => {
+    setPage(page);
+  };
+
+  useEffect(() => {
+    setPage(page);
+  }, [page]);
+
+  return (
+    <Pagination
+      layout="table"
+      currentPage={page}
+      onPageChange={onPageChange}
+      showIcons
+      itemsPerPage={10}
+      totalItems={5}
+    />
+  );
+}
+
+function PaginationTestEmptyTable() {
+  const [page, setPage] = useState(1);
+
+  const onPageChange = (page: number) => {
+    setPage(page);
+  };
+
+  useEffect(() => {
+    setPage(page);
+  }, [page]);
+
+  return (
+    <Pagination
+      layout="table"
+      currentPage={page}
+      onPageChange={onPageChange}
+      showIcons
+      itemsPerPage={10}
+      totalItems={0}
     />
   );
 }
