@@ -2,6 +2,10 @@ import type { Meta, StoryFn } from "@storybook/react";
 import type { PaginationProps } from "flowbite-react";
 import { Pagination } from "flowbite-react";
 import { useEffect, useState } from "react";
+import {
+  DefaultPaginationProps,
+  TablePaginationProps,
+} from "../../../packages/ui/dist/components/Pagination/Pagination";
 
 export default {
   title: "Components/Pagination",
@@ -15,7 +19,9 @@ export default {
   ],
 } as Meta;
 
-const Template: StoryFn<PaginationProps> = ({ currentPage = 1, layout = "pagination", totalPages = 100, ...rest }) => {
+const Template: StoryFn<PaginationProps> = (props) => {
+  const { currentPage = 1, layout = "pagination" } = props;
+
   const [page, setPage] = useState(currentPage);
 
   const onPageChange = (page: number) => {
@@ -26,6 +32,21 @@ const Template: StoryFn<PaginationProps> = ({ currentPage = 1, layout = "paginat
     setPage(currentPage);
   }, [currentPage]);
 
+  if (layout === "table") {
+    const { itemsPerPage = 10, totalItems = 100, ...rest } = props as TablePaginationProps;
+    return (
+      <Pagination
+        {...rest}
+        currentPage={page}
+        layout={layout}
+        onPageChange={onPageChange}
+        itemsPerPage={itemsPerPage}
+        totalItems={totalItems}
+      />
+    );
+  }
+
+  const { totalPages = 100, ...rest } = props as DefaultPaginationProps;
   return (
     <Pagination {...rest} currentPage={page} layout={layout} onPageChange={onPageChange} totalPages={totalPages} />
   );
