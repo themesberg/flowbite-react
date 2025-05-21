@@ -33,8 +33,9 @@ export function DatepickerViewsMonth() {
     <div className={theme.items.base}>
       {[...Array(12)].map((_month, index) => {
         const newDate = new Date();
-        // setting day to 1 to avoid overflow issues
-        newDate.setMonth(index, 1);
+        // if selectedDate is non-null, align days to accurately detect if month is selected
+        // else if selectedDate is null, set day to 1 to avoid overflow
+        newDate.setMonth(index, selectedDate ? selectedDate.getDate() : 1);
         newDate.setFullYear(viewDate.getFullYear());
         const month = getFormattedDate(language, newDate, { month: "short" });
 
