@@ -13,8 +13,10 @@ import { buildClassList } from "../utils/build-class-list";
 import { extractComponentImports } from "../utils/extract-component-imports";
 import { getClassList } from "../utils/get-class-list";
 import { getConfig } from "../utils/get-config";
+import { syncTailwindVersion } from "../utils/sync-tailwind-version";
 
 export async function dev() {
+  await syncTailwindVersion();
   const config = await getConfig();
 
   if (config.components.length) {
