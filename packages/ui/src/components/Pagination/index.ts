@@ -4,6 +4,8 @@ export type {
   PaginationNavigationTheme,
   PaginationPagesTheme,
   PaginationProps,
+  DefaultPaginationProps,
+  TablePaginationProps,
   PaginationRootTheme,
   PaginationTheme,
 } from "./Pagination";

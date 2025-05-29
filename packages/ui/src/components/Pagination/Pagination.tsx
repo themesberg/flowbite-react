@@ -44,18 +44,34 @@ export interface PaginationNavigationTheme {
   icon: string;
 }
 
-export interface PaginationProps extends ComponentProps<"nav">, ThemingProps<PaginationTheme> {
-  currentPage: number;
+export interface BasePaginationProps extends ComponentProps<"nav">, ThemingProps<PaginationTheme> {
   layout?: "navigation" | "pagination" | "table";
+  currentPage: number;
   nextLabel?: string;
   onPageChange: (page: number) => void;
   previousLabel?: string;
-  renderPaginationButton?: (props: PaginationButtonProps) => ReactNode;
   showIcons?: boolean;
-  totalPages: number;
 }
 
+export interface DefaultPaginationProps extends BasePaginationProps {
+  layout?: "navigation" | "pagination";
+  renderPaginationButton?: (props: PaginationButtonProps) => ReactNode;
+  totalPages: number;
+}
+export interface TablePaginationProps extends BasePaginationProps {
+  layout: "table";
+  itemsPerPage: number;
+  totalItems: number;
+}
+
+export type PaginationProps = DefaultPaginationProps | TablePaginationProps;
+
 export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) => {
+  if (props.layout === "table") return <TablePagination {...props} ref={ref} />;
+  return <DefaultPagination {...props} ref={ref} />;
+});
+
+const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props, ref) => {
   const provider = useThemeProvider();
   const theme = useResolveTheme(
     [paginationTheme, provider.theme?.pagination, props.theme],
@@ -71,10 +87,18 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) 
     onPageChange,
     previousLabel = "Previous",
     renderPaginationButton = (props: PaginationButtonProps) => <PaginationButton {...props} />,
-    showIcons: showIcon = false,
     totalPages,
+    showIcons: showIcon = false,
     ...restProps
-  } = resolveProps(props, provider.props?.pagination);
+  } = resolveProps<DefaultPaginationProps>(props, provider.props?.pagination);
+
+  if (!Number.isInteger(currentPage) || currentPage < 1) {
+    throw new Error("Invalid props: currentPage must be a positive integer");
+  }
+
+  if (!Number.isInteger(totalPages) || totalPages < 1) {
+    throw new Error("Invalid props: totalPages must be a positive integer");
+  }
 
   const lastPage = Math.min(Math.max(layout === "pagination" ? currentPage + 2 : currentPage + 4, 5), totalPages);
   const firstPage = Math.max(1, lastPage - 4);
@@ -89,13 +113,6 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) 
 
   return (
     <nav ref={ref} className={twMerge(theme.base, className)} {...restProps}>
-      {layout === "table" && (
-        <div className={theme.layout.table.base}>
-          Showing <span className={theme.layout.table.span}>{firstPage}</span> to&nbsp;
-          <span className={theme.layout.table.span}>{lastPage}</span> of&nbsp;
-          <span className={theme.layout.table.span}>{totalPages}</span> Entries
-        </div>
-      )}
       <ul className={theme.pages.base}>
         <li>
           <PaginationNavigation
@@ -133,4 +150,79 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) 
   );
 });
 
+const TablePagination = forwardRef<HTMLElement, TablePaginationProps>((props, ref) => {
+  const provider = useThemeProvider();
+  const theme = useResolveTheme(
+    [paginationTheme, provider.theme?.pagination, props.theme],
+    [get(provider.clearTheme, "pagination"), props.clearTheme],
+    [get(provider.applyTheme, "pagination"), props.applyTheme],
+  );
+
+  const {
+    className,
+    currentPage,
+    nextLabel = "Next",
+    onPageChange,
+    previousLabel = "Previous",
+    showIcons: showIcon = false,
+    itemsPerPage,
+    totalItems,
+    ...restProps
+  } = resolveProps<TablePaginationProps>(props, provider.props?.pagination);
+
+  if (!Number.isInteger(currentPage) || currentPage < 1) {
+    throw new Error("Invalid props: currentPage must be a positive integer");
+  }
+  if (!Number.isInteger(itemsPerPage) || itemsPerPage < 1) {
+    throw new Error("Invalid props: itemsPerPage must be a positive integer");
+  }
+  if (!Number.isInteger(totalItems) || totalItems < 0) {
+    throw new Error("Invalid props: totalItems must be a non-negative integer");
+  }
+  const totalPages = totalItems > 0 ? Math.ceil(totalItems / itemsPerPage) : 1;
+
+  const offset = (currentPage - 1) * itemsPerPage;
+  const firstItem = totalItems > 0 ? offset + 1 : 0;
+  const lastItem = currentPage === totalPages ? totalItems : offset + itemsPerPage;
+
+  function goToNextPage() {
+    onPageChange(Math.min(currentPage + 1, totalPages));
+  }
+
+  function goToPreviousPage() {
+    onPageChange(Math.max(currentPage - 1, 1));
+  }
+
+  return (
+    <nav ref={ref} className={twMerge(theme.base, className)} {...restProps}>
+      <div role="status" aria-live="polite" aria-label="Table Pagination" className={theme.layout.table.base}>
+        Showing <span className={theme.layout.table.span}>{firstItem}</span> to&nbsp;
+        <span className={theme.layout.table.span}>{lastItem}</span> of&nbsp;
+        <span className={theme.layout.table.span}>{totalItems}</span> Entries
+      </div>
+      <ul className={theme.pages.base}>
+        <li>
+          <PaginationNavigation
+            className={twMerge(theme.pages.previous.base, showIcon && theme.pages.showIcon)}
+            onClick={goToPreviousPage}
+            disabled={currentPage === 1}
+          >
+            {showIcon && <ChevronLeftIcon aria-hidden className={theme.pages.previous.icon} />}
+            {previousLabel}
+          </PaginationNavigation>
+        </li>
+        <li>
+          <PaginationNavigation
+            className={twMerge(theme.pages.next.base, showIcon && theme.pages.showIcon)}
+            onClick={goToNextPage}
+            disabled={currentPage === totalPages}
+          >
+            {nextLabel}
+            {showIcon && <ChevronRightIcon aria-hidden className={theme.pages.next.icon} />}
+          </PaginationNavigation>
+        </li>
+      </ul>
+    </nav>
+  );
+});
 Pagination.displayName = "Pagination";
