@@ -1,13 +1,12 @@
 import { deepmerge } from "deepmerge-ts";
 import { klona } from "klona/json";
 import { useRef } from "react";
-import { getDark, getPrefix } from "../store";
+import { getDark, getPrefix, getVersion } from "../store";
 import type { ApplyTheme, DeepPartialApplyTheme, DeepPartialBoolean } from "../types";
 import { applyPrefix } from "./apply-prefix";
 import { applyPrefixV3 } from "./apply-prefix-v3";
 import { convertUtilitiesToV4 } from "./convert-utilities-to-v4";
 import { deepMergeStrings } from "./deep-merge";
-import { getTailwindVersion } from "./get-tailwind-version";
 import { isEqual } from "./is-equal";
 import { stripDark } from "./strip-dark";
 import { twMerge } from "./tailwind-merge";
@@ -67,7 +66,7 @@ export function resolveTheme<T>(
 ): T {
   const dark = getDark();
   const prefix = getPrefix();
-  const version = getTailwindVersion();
+  const version = getVersion();
 
   const _custom = custom?.length ? custom?.filter((value) => value !== undefined) : undefined;
   const _clearThemeList = clearThemeList?.length ? clearThemeList?.filter((value) => value !== undefined) : undefined;

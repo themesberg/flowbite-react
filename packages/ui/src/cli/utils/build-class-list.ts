@@ -1,7 +1,6 @@
 import { applyPrefix } from "../../helpers/apply-prefix";
 import { applyPrefixV3 } from "../../helpers/apply-prefix-v3";
 import { convertUtilitiesToV4 } from "../../helpers/convert-utilities-to-v4";
-import { getTailwindVersion } from "../../helpers/get-tailwind-version";
 import { stripDark } from "../../helpers/strip-dark";
 import { CLASS_LIST_MAP, COMPONENT_TO_CLASS_LIST_MAP } from "../../metadata/class-list";
 import { DEPENDENCY_LIST_MAP } from "../../metadata/dependency-list";
@@ -19,13 +18,13 @@ export function buildClassList({
   components,
   dark,
   prefix,
+  version,
 }: {
   components: string[];
   dark: boolean;
   prefix: string;
+  version: 3 | 4;
 }): string[] {
-  const version = getTailwindVersion();
-
   let classList: string[] = [];
 
   if (components.includes("*")) {

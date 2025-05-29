@@ -1,13 +1,12 @@
 import { extendTailwindMerge as extendTailwindMerge_v2 } from "tailwind-merge-v2";
 import { extendTailwindMerge as extendTailwindMerge_v3, type ClassNameValue } from "tailwind-merge-v3";
-import { getPrefix } from "../store";
-import { getTailwindVersion } from "./get-tailwind-version";
+import { getPrefix, getVersion } from "../store";
 
 const cache = new Map<string | undefined, ReturnType<typeof extendTailwindMerge_v3>>();
 
 export function twMerge(...classLists: ClassNameValue[]): string {
   const prefix = getPrefix();
-  const version = getTailwindVersion();
+  const version = getVersion();
 
   const cacheKey = `${prefix}.${version}`;
   const cacheValue = cache.get(cacheKey);

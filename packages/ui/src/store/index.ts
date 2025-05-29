@@ -22,12 +22,19 @@ export type StoreProps = DeepPartial<{
    * @default undefined
    */
   prefix: string;
+  /**
+   * The version of Tailwind CSS to use
+   *
+   * @default 4
+   */
+  version: 3 | 4;
 }>;
 
 const store: StoreProps = {
   dark: undefined,
   mode: undefined,
   prefix: undefined,
+  version: undefined,
 };
 
 export function setStore(data: StoreProps) {
@@ -44,6 +51,13 @@ export function setStore(data: StoreProps) {
   if ("prefix" in data) {
     store.prefix = data.prefix;
   }
+  if ("version" in data) {
+    if (data.version === 3 || data.version === 4) {
+      store.version = data.version;
+    } else {
+      console.warn(`Invalid version value: ${data.version}.\nAvailable values: 3, 4`);
+    }
+  }
 }
 
 export function getDark(): StoreProps["dark"] {
@@ -56,4 +70,8 @@ export function getMode(): StoreProps["mode"] {
 
 export function getPrefix(): StoreProps["prefix"] {
   return store.prefix;
+}
+
+export function getVersion(): StoreProps["version"] {
+  return store.version;
 }
