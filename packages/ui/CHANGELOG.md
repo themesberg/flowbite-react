@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.8
+
+### Patch Changes
+
+- [#1579](https://github.com/themesberg/flowbite-react/pull/1579) [`d44648d`](https://github.com/themesberg/flowbite-react/commit/d44648d0ab413fe670b8a1ce850788df94629d03) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(Datepicker): switch hardcoded color `cyan` -> `primary`
+
 ## 0.11.7
 
 ### Patch Changes

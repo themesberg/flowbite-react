@@ -30,7 +30,7 @@ export function Component() {
               <Button color="red" onClick={() => setOpenModal(false)}>
                 Yes, I'm sure
               </Button>
-              <Button color="gray" onClick={() => setOpenModal(false)}>
+              <Button color="alternative" onClick={() => setOpenModal(false)}>
                 No, cancel
               </Button>
             </div>
@@ -60,7 +60,7 @@ export function Component() {
               <Button color="red" onClick={() => setOpenModal(false)}>
                 Yes, I'm sure
               </Button>
-              <Button color="gray" onClick={() => setOpenModal(false)}>
+              <Button color="alternative" onClick={() => setOpenModal(false)}>
                 No, cancel
               </Button>
             </div>
