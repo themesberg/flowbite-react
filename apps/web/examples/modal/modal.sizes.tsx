@@ -50,7 +50,7 @@ export function Component() {
         </ModalBody>
         <ModalFooter>
           <Button onClick={() => setOpenModal(false)}>I accept</Button>
-          <Button color="gray" onClick={() => setOpenModal(false)}>
+          <Button color="alternative" onClick={() => setOpenModal(false)}>
             Decline
           </Button>
         </ModalFooter>
@@ -100,7 +100,7 @@ export function Component() {
         </ModalBody>
         <ModalFooter>
           <Button onClick={() => setOpenModal(false)}>I accept</Button>
-          <Button color="gray" onClick={() => setOpenModal(false)}>
+          <Button color="alternative" onClick={() => setOpenModal(false)}>
             Decline
           </Button>
         </ModalFooter>
