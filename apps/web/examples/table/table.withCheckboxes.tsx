@@ -34,7 +34,7 @@ export function Component() {
             <TableCell>Laptop</TableCell>
             <TableCell>$2999</TableCell>
             <TableCell>
-              <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+              <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                 Edit
               </a>
             </TableCell>
@@ -50,7 +50,7 @@ export function Component() {
             <TableCell>Laptop PC</TableCell>
             <TableCell>$1999</TableCell>
             <TableCell>
-              <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+              <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                 Edit
               </a>
             </TableCell>
@@ -64,7 +64,7 @@ export function Component() {
             <TableCell>Accessories</TableCell>
             <TableCell>$99</TableCell>
             <TableCell>
-              <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+              <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                 Edit
               </a>
             </TableCell>
@@ -106,7 +106,7 @@ export function Component() {
             <TableCell>Laptop</TableCell>
             <TableCell>$2999</TableCell>
             <TableCell>
-              <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+              <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                 Edit
               </a>
             </TableCell>
@@ -122,7 +122,7 @@ export function Component() {
             <TableCell>Laptop PC</TableCell>
             <TableCell>$1999</TableCell>
             <TableCell>
-              <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+              <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                 Edit
               </a>
             </TableCell>
@@ -136,7 +136,7 @@ export function Component() {
             <TableCell>Accessories</TableCell>
             <TableCell>$99</TableCell>
             <TableCell>
-              <a href="#" className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
+              <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
                 Edit
               </a>
             </TableCell>
