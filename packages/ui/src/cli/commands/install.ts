@@ -3,11 +3,17 @@ import { detect } from "package-manager-detector/detect";
 import { execCommand } from "../utils/exec-command";
 import { getPackageJson } from "../utils/get-package-json";
 
-export async function installFlowbiteReact() {
+/**
+ * Installs `flowbite-react` package using the detected package manager.
+ */
+export async function installPackage() {
+  const packageName = "flowbite-react";
+
   try {
     const packageJson = await getPackageJson();
 
-    if (packageJson.dependencies?.["flowbite-react"] || packageJson.devDependencies?.["flowbite-react"]) {
+    if (packageJson.dependencies?.[packageName] || packageJson.devDependencies?.[packageName]) {
+      // TODO: prompt to bump the version to latest
       return;
     }
 
@@ -19,12 +25,11 @@ export async function installFlowbiteReact() {
 
     pm ??= { agent: "npm", name: "npm" };
 
-    const packageName = "flowbite-react";
     const { command = "", args } = resolveCommand(pm.agent, "add", [packageName]) ?? {};
 
     console.log(`Installing ${packageName} using ${pm.name}...`);
     execCommand(command, args);
   } catch (error) {
-    console.error("Failed to install flowbite-react:", error);
+    console.error(`Failed to install ${packageName}:`, error);
   }
 }

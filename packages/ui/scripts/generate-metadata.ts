@@ -235,6 +235,7 @@ async function generateSchema(components: string[]): Promise<void> {
           description:
             "Optional prefix to apply to all Tailwind CSS classes. \nSee https://flowbite-react.com/docs/customize/config#prefix for more details.",
           type: "string",
+          default: "",
         },
         rsc: {
           description:
@@ -248,8 +249,15 @@ async function generateSchema(components: string[]): Promise<void> {
           type: "boolean",
           default: true,
         },
+        version: {
+          description:
+            "The version of Tailwind CSS to use. \nSee https://flowbite-react.com/docs/customize/config#version for more details.",
+          type: "number",
+          enum: [3, 4],
+          default: 4,
+        },
       },
-      required: ["components", "dark", "path", "prefix", "rsc", "tsx"],
+      required: ["components", "dark", "path", "prefix", "rsc", "tsx", "version"],
     };
 
     defaultSchema.properties.components.items.enum.push(...components);
