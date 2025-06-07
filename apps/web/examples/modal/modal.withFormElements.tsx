@@ -50,7 +50,7 @@ export function Component() {
                 <Checkbox id="remember" />
                 <Label htmlFor="remember">Remember me</Label>
               </div>
-              <a href="#" className="text-sm text-cyan-700 hover:underline dark:text-cyan-500">
+              <a href="#" className="text-sm text-primary-700 hover:underline dark:text-primary-500">
                 Lost Password?
               </a>
             </div>
@@ -59,7 +59,7 @@ export function Component() {
             </div>
             <div className="flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300">
               Not registered?&nbsp;
-              <a href="#" className="text-cyan-700 hover:underline dark:text-cyan-500">
+              <a href="#" className="text-primary-700 hover:underline dark:text-primary-500">
                 Create account
               </a>
             </div>
@@ -111,7 +111,7 @@ export function Component() {
                 <Checkbox id="remember" />
                 <Label htmlFor="remember">Remember me</Label>
               </div>
-              <a href="#" className="text-sm text-cyan-700 hover:underline dark:text-cyan-500">
+              <a href="#" className="text-sm text-primary-700 hover:underline dark:text-primary-500">
                 Lost Password?
               </a>
             </div>
@@ -120,7 +120,7 @@ export function Component() {
             </div>
             <div className="flex justify-between text-sm font-medium text-gray-500 dark:text-gray-300">
               Not registered?&nbsp;
-              <a href="#" className="text-cyan-700 hover:underline dark:text-cyan-500">
+              <a href="#" className="text-primary-700 hover:underline dark:text-primary-500">
                 Create account
               </a>
             </div>

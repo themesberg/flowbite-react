@@ -27,10 +27,10 @@ export function Component() {
               Are you sure you want to delete this product?
             </h3>
             <div className="flex justify-center gap-4">
-              <Button color="failure" onClick={() => setOpenModal(false)}>
-                {"Yes, I'm sure"}
+              <Button color="red" onClick={() => setOpenModal(false)}>
+                Yes, I'm sure
               </Button>
-              <Button color="gray" onClick={() => setOpenModal(false)}>
+              <Button color="alternative" onClick={() => setOpenModal(false)}>
                 No, cancel
               </Button>
             </div>
@@ -57,10 +57,10 @@ export function Component() {
               Are you sure you want to delete this product?
             </h3>
             <div className="flex justify-center gap-4">
-              <Button color="failure" onClick={() => setOpenModal(false)}>
-                {"Yes, I'm sure"}
+              <Button color="red" onClick={() => setOpenModal(false)}>
+                Yes, I'm sure
               </Button>
-              <Button color="gray" onClick={() => setOpenModal(false)}>
+              <Button color="alternative" onClick={() => setOpenModal(false)}>
                 No, cancel
               </Button>
             </div>
