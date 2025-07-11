@@ -1,10 +1,14 @@
+"use client";
+
 import { Datepicker, Views } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
+"use client";
+
 import { Datepicker, Views } from "flowbite-react";
 
-export function Component() {s
+export function Component() {
   const filterFn = (date: Date, view: Views) => {
     if (view === Views.Days) {
       const day = date.getDay();
