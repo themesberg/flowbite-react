@@ -187,11 +187,10 @@ describe("Components / Datepicker", () => {
 
   it("the filter function should allow to disable a certain date", async () => {
     const today = new Date();
-    const todaysDateInDefaultLanguage = getFormattedDate("en", today);
 
     const filter = (date: Date, view: Views) => {
       if (view === Views.Days) {
-        return date === today;
+        return date !== today;
       }
       return true;
     };
@@ -200,7 +199,7 @@ describe("Components / Datepicker", () => {
 
     await userEvent.click(screen.getByText("Today"));
 
-    expect(screen.getByDisplayValue(todaysDateInDefaultLanguage)).toBeDisabled();
+    expect(screen.getByText(today.getDate())).toBeDisabled();
   });
 
   it("should focus the input when ref.current.focus is called", () => {
