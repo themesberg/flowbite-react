@@ -2,7 +2,7 @@ import { Datepicker, Views } from "flowbite-react";
 import type { CodeData } from "~/components/code-demo";
 
 const code = `
-import { Datepicker } from "flowbite-react";
+import { Datepicker, Views } from "flowbite-react";
 
 const filterFn = (date: Date, view: Views) => {
   if (view === Views.Days) {
