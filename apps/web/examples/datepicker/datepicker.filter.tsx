@@ -4,28 +4,28 @@ import type { CodeData } from "~/components/code-demo";
 const code = `
 import { Datepicker, Views } from "flowbite-react";
 
-const filterFn = (date: Date, view: Views) => {
-  if (view === Views.Days) {
-    const day = date.getDay();
-    return day >= 1 && day <= 5;
-  }
-  return true;
-};
+export function Component() {s
+  const filterFn = (date: Date, view: Views) => {
+    if (view === Views.Days) {
+      const day = date.getDay();
+      return day >= 1 && day <= 5;
+    }
+    return true;
+  };
 
-export function Component() {
   return <Datepicker filterDate={filterFn} />;
 }
 `;
 
-const filterFn = (date: Date, view: Views) => {
-  if (view === Views.Days) {
-    const day = date.getDay();
-    return day >= 1 && day <= 5;
-  }
-  return true;
-};
-
 export function Component() {
+  const filterFn = (date: Date, view: Views) => {
+    if (view === Views.Days) {
+      const day = date.getDay();
+      return day >= 1 && day <= 5;
+    }
+    return true;
+  };
+
   return <Datepicker filterDate={filterFn} />;
 }
 

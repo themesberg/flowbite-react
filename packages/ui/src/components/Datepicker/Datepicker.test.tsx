@@ -186,20 +186,21 @@ describe("Components / Datepicker", () => {
   });
 
   it("the filter function should allow to disable a certain date", async () => {
-    const today = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(new Date().getDate() + 1);
 
     const filter = (date: Date, view: Views) => {
       if (view === Views.Days) {
-        return date !== today;
+        return date !== tomorrow;
       }
       return true;
     };
 
     render(<Datepicker filterDate={filter} />);
 
-    await userEvent.click(screen.getByText("Today"));
+    await userEvent.click(screen.getByRole("textbox"));
 
-    expect(screen.getByText(today.getDate())).toBeDisabled();
+    expect(screen.getByText(tomorrow.getDate())).toBeDisabled();
   });
 
   it("should focus the input when ref.current.focus is called", () => {
