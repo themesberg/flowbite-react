@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { describe, expect, it, vi } from "vitest";
 import type { DatepickerRef } from "./Datepicker";
 import { Datepicker } from "./Datepicker";
-import { getFormattedDate } from "./helpers";
+import { getFormattedDate, Views } from "./helpers";
 
 describe("Components / Datepicker", () => {
   it("should display today's date by default", () => {
@@ -183,6 +183,24 @@ describe("Components / Datepicker", () => {
     const outsideRange = screen.getByText("2000");
     expect(outsideRange).toBeInstanceOf(HTMLButtonElement);
     expect(outsideRange).toBeDisabled();
+  });
+
+  it("the filter function should allow to disable a certain date", async () => {
+    const today = new Date();
+    const todaysDateInDefaultLanguage = getFormattedDate("en", today);
+
+    const filter = (date: Date, view: Views) => {
+      if (view === Views.Days) {
+        return date === today;
+      }
+      return true;
+    };
+
+    render(<Datepicker filterDate={filter} />);
+
+    await userEvent.click(screen.getByText("Today"));
+
+    expect(screen.getByDisplayValue(todaysDateInDefaultLanguage)).toBeDisabled();
   });
 
   it("should focus the input when ref.current.focus is called", () => {
