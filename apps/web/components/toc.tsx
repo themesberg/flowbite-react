@@ -136,7 +136,7 @@ function CopyMarkdownButton({ content }: { content: string }) {
   return (
     <button
       title="Copy as Markdown"
-      className="flex items-center rounded-md text-sm font-medium text-gray-900 hover:underline dark:text-gray-300 dark:hover:text-white"
+      className="flex items-center rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:underline dark:text-gray-400 dark:hover:text-gray-300"
       onClick={handleCopy}
     >
       <Icon className="me-1.5 size-4" />
@@ -151,7 +151,7 @@ function EditPageLink({ url }: { url: string }) {
       title="Edit this page"
       target="_blank"
       href={`https://github.com/themesberg/flowbite-react/tree/main/apps/web/content/docs/${url}.mdx`}
-      className="flex items-center font-medium text-gray-900 underline-offset-2 hover:underline dark:text-gray-300 dark:hover:text-white"
+      className="flex items-center font-medium text-gray-600 hover:text-gray-900 hover:underline dark:text-gray-400 dark:hover:text-gray-300"
     >
       <Github className="me-1.5 size-4" />
       Edit this page
