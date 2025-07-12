@@ -191,7 +191,7 @@ describe("Components / Datepicker", () => {
 
     const filter = (date: Date, view: Views) => {
       if (view === Views.Days) {
-        return date !== tomorrow;
+        return date.toDateString() !== tomorrow.toDateString();
       }
       return true;
     };
