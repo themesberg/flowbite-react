@@ -10,6 +10,7 @@ export interface DatepickerContextValue {
   weekStart: WeekStart;
   minDate?: Date;
   maxDate?: Date;
+  filterDate?: (date: Date, view: Views) => boolean;
   isOpen?: boolean;
   setIsOpen: (isOpen: boolean) => void;
   view: Views;

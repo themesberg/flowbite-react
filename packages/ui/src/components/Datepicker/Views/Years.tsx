@@ -16,7 +16,16 @@ export interface DatepickerViewsYearsTheme {
 }
 
 export function DatepickerViewsYears() {
-  const { theme: rootTheme, selectedDate, minDate, maxDate, viewDate, setViewDate, setView } = useDatePickerContext();
+  const {
+    theme: rootTheme,
+    selectedDate,
+    minDate,
+    maxDate,
+    filterDate,
+    viewDate,
+    setViewDate,
+    setView,
+  } = useDatePickerContext();
 
   const theme = rootTheme.views.years;
 
@@ -29,7 +38,8 @@ export function DatepickerViewsYears() {
         newDate.setFullYear(year);
 
         const isSelected = selectedDate && isDateEqual(selectedDate, newDate);
-        const isDisabled = !isDateInRange(newDate, minDate, maxDate);
+        const isDisabled =
+          !isDateInRange(newDate, minDate, maxDate) || (filterDate && !filterDate(newDate, Views.Years));
 
         return (
           <button
