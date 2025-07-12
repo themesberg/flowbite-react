@@ -1,10 +1,13 @@
 "use client";
 
 import type { Doc } from "contentlayer/generated";
+import { Check, Edit, FileCopy } from "flowbite-react-icons/outline";
+import { Github } from "flowbite-react-icons/solid";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Markdown from "react-markdown";
 import { twMerge } from "tailwind-merge";
+import { convertMdxContentToMd } from "~/helpers/md";
 
 export function ToC({ doc }: { doc: Doc }) {
   const [activeId, setActiveId] = useState<string>("");
@@ -89,6 +92,13 @@ export function ToC({ doc }: { doc: Doc }) {
               {doc.toc}
             </Markdown>
           </nav>
+          <div className="ml-2.5 mt-4 flex flex-col items-start justify-between gap-4 border-t border-gray-200 pt-4 dark:border-gray-700">
+            <CopyMarkdownButton
+              // add title and description to the body as frontmatter
+              content={`---\ntitle: ${doc.title}\ndescription: ${doc.description}\n---\n${doc.body.raw}`}
+            />
+            <EditPageLink url={doc.url} />
+          </div>
         </div>
       </div>
     </div>
@@ -108,6 +118,43 @@ function ToCLink({ href, children, isActive }: { href: string; children: React.R
     >
       {children}
       <span className="ml-2 text-primary-700 opacity-0 transition-opacity duration-100 group-hover:opacity-100">#</span>
+    </Link>
+  );
+}
+
+function CopyMarkdownButton({ content }: { content: string }) {
+  const [isCopied, setIsCopied] = useState(false);
+
+  function handleCopy() {
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+    navigator.clipboard.writeText(convertMdxContentToMd(content));
+  }
+
+  const Icon = isCopied ? Check : FileCopy;
+
+  return (
+    <button
+      title="Copy as Markdown"
+      className="flex items-center rounded-md text-sm font-medium text-gray-900 hover:underline dark:text-gray-300 dark:hover:text-white"
+      onClick={handleCopy}
+    >
+      <Icon className="me-1.5 size-4" />
+      Copy as Markdown
+    </button>
+  );
+}
+
+function EditPageLink({ url }: { url: string }) {
+  return (
+    <Link
+      title="Edit this page"
+      target="_blank"
+      href={`https://github.com/themesberg/flowbite-react/tree/main/apps/web/content/docs/${url}.mdx`}
+      className="flex items-center font-medium text-gray-900 underline-offset-2 hover:underline dark:text-gray-300 dark:hover:text-white"
+    >
+      <Github className="me-1.5 size-4" />
+      Edit this page
     </Link>
   );
 }

@@ -61,6 +61,7 @@
       "dependencies": {
         "contentlayer2": "0.5.3",
         "flowbite-react": "workspace:*",
+        "flowbite-react-icons": "1.3.0",
         "react-icons": "5.2.1",
         "remark-gfm": "4.0.1",
         "tailwind-merge": "2.6.0",
@@ -109,7 +110,7 @@
     },
     "packages/ui": {
       "name": "flowbite-react",
-      "version": "0.11.5",
+      "version": "0.11.9",
       "bin": {
         "flowbite-react": "./dist/cli/bin.js",
       },
@@ -2307,6 +2308,8 @@
     "flow-parser": ["flow-parser@0.263.0", "", {}, "sha512-F0Tr7SUvZ4BQYglFOkr8rCTO5FPjCwMhm/6i57h40F80Oz/hzzkqte4lGO0vGJ7THQonuXcTyYqCdKkAwt5d2w=="],
 
     "flowbite-react": ["flowbite-react@workspace:packages/ui"],
+
+    "flowbite-react-icons": ["flowbite-react-icons@1.3.0", "", { "peerDependencies": { "react": ">=16", "react-dom": ">=16" } }, "sha512-gu8I6ETu/L23hwDnyaGc61qjZTKZM/CrmXc2x2Q6pqrqv8fyJsIGc1E/vbYuVELAnXa/L2CgRuGrsz/GMi7L2w=="],
 
     "follow-redirects": ["follow-redirects@1.15.9", "", {}, "sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ=="],
 
