@@ -20,6 +20,7 @@ export function DatepickerViewsMonth() {
     theme: rootTheme,
     minDate,
     maxDate,
+    filterDate,
     selectedDate,
     viewDate,
     language,
@@ -39,7 +40,8 @@ export function DatepickerViewsMonth() {
         const month = getFormattedDate(language, newDate, { month: "short" });
 
         const isSelected = selectedDate && isDateEqual(selectedDate, newDate);
-        const isDisabled = !isDateInRange(newDate, minDate, maxDate);
+        const isDisabled =
+          !isDateInRange(newDate, minDate, maxDate) || (filterDate && !filterDate(newDate, Views.Months));
 
         return (
           <button

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.9
+
+### Patch Changes
+
+- [#1587](https://github.com/themesberg/flowbite-react/pull/1587) [`3028f83`](https://github.com/themesberg/flowbite-react/commit/3028f83f8958727163b569ec3234c640e1ba426d) Thanks [@raahed](https://github.com/raahed)! - feat(Datepicker): Implemented a filter function prop
+
 ## 0.11.8
 
 ### Patch Changes
