@@ -100,6 +100,7 @@ export interface DatepickerProps
   labelTodayButton?: string;
   minDate?: Date;
   maxDate?: Date;
+  filterDate?: (date: Date, view: Views) => boolean;
   language?: string;
   weekStart?: WeekStart;
   onChange?: (date: Date | null) => void;
@@ -127,6 +128,7 @@ export const Datepicker = forwardRef<DatepickerRef, DatepickerProps>((props, ref
     defaultValue,
     minDate,
     maxDate,
+    filterDate,
     language = "en",
     weekStart = WeekStart.Sunday,
     className,
@@ -277,6 +279,7 @@ export const Datepicker = forwardRef<DatepickerRef, DatepickerProps>((props, ref
         language,
         minDate,
         maxDate,
+        filterDate,
         weekStart,
         isOpen,
         setIsOpen,

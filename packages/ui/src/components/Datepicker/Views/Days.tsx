@@ -2,7 +2,15 @@
 
 import { twMerge } from "../../../helpers/tailwind-merge";
 import { useDatePickerContext } from "../DatepickerContext";
-import { addDays, getFirstDayOfTheMonth, getFormattedDate, getWeekDays, isDateEqual, isDateInRange } from "../helpers";
+import {
+  addDays,
+  getFirstDayOfTheMonth,
+  getFormattedDate,
+  getWeekDays,
+  isDateEqual,
+  isDateInRange,
+  Views,
+} from "../helpers";
 
 export interface DatepickerViewsDaysTheme {
   header: {
@@ -25,6 +33,7 @@ export function DatepickerViewsDays() {
     weekStart,
     minDate,
     maxDate,
+    filterDate,
     viewDate,
     selectedDate,
     changeSelectedDate,
@@ -51,7 +60,8 @@ export function DatepickerViewsDays() {
           const day = getFormattedDate(language, currentDate, { day: "numeric" });
 
           const isSelected = selectedDate && isDateEqual(selectedDate, currentDate);
-          const isDisabled = !isDateInRange(currentDate, minDate, maxDate);
+          const isDisabled =
+            !isDateInRange(currentDate, minDate, maxDate) || (filterDate && !filterDate(currentDate, Views.Days));
 
           return (
             <button

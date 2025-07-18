@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from "@storybook/react";
 import type { DatepickerProps } from "flowbite-react";
-import { Datepicker, getFirstDateInRange, WeekStart } from "flowbite-react";
+import { Datepicker, getFirstDateInRange, Views, WeekStart } from "flowbite-react";
 import { useEffect, useState } from "react";
 
 export default {
@@ -146,4 +146,49 @@ EmptyDates.args = {
   weekStart: WeekStart.Sunday,
   theme: {},
   label: "No date selected",
+};
+
+export const FilterWeekdaysOnly = Template.bind({});
+FilterWeekdaysOnly.args = {
+  open: true,
+  autoHide: false,
+  showClearButton: true,
+  showTodayButton: true,
+  defaultValue: undefined,
+  value: undefined,
+  minDate: undefined,
+  maxDate: undefined,
+  filterDate: (date: Date, view: Views) => {
+    if (view === Views.Days) {
+      const day = date.getDay();
+      return day >= 1 && day <= 5;
+    }
+    return true;
+  },
+  language: "en",
+  weekStart: WeekStart.Sunday,
+  theme: {},
+  label: "Filter: Weekdays only",
+};
+
+export const FilterEvenDatesOnly = Template.bind({});
+FilterEvenDatesOnly.args = {
+  open: true,
+  autoHide: false,
+  showClearButton: true,
+  showTodayButton: true,
+  defaultValue: undefined,
+  value: undefined,
+  minDate: undefined,
+  maxDate: undefined,
+  filterDate: (date: Date, view: Views) => {
+    if (view === Views.Days) {
+      return date.getDate() % 2 === 0;
+    }
+    return true;
+  },
+  language: "en",
+  weekStart: WeekStart.Sunday,
+  theme: {},
+  label: "Filter: Even dates only",
 };
