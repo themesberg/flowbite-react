@@ -1,13 +1,12 @@
-import { getPackageJson } from "../utils/get-package-json";
+import { getModulePackageJson } from "../utils/get-module-package-json";
 
 /**
  * Requires Tailwind CSS to be installed in the project.
  */
 export async function ensureTailwind() {
-  // TODO: runtime check
-  const packageJson = await getPackageJson();
+  const tailwindcssPackageJson = await getModulePackageJson("tailwindcss");
 
-  if (!(packageJson?.dependencies?.["tailwindcss"] || packageJson?.devDependencies?.["tailwindcss"])) {
+  if (!tailwindcssPackageJson) {
     console.error("Install Tailwind CSS first.\n\nSee: https://tailwindcss.com/docs/installation");
     process.exit(1);
   }
