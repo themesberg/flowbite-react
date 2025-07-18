@@ -21,7 +21,6 @@ export async function installPackage() {
     const currentPackage = await getModulePackageJson(packageName);
 
     if (currentPackage) {
-      // Upgrade to latest version if below 0.11.x since 0.11.x is the version with the new engine and CLI
       if (currentPackage.version.localeCompare("0.11", undefined, { numeric: true }) < 0) {
         console.log(
           "The current version of flowbite-react is below 0.11.x, which is the version with the new engine and CLI.",
