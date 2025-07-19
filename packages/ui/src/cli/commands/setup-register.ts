@@ -26,7 +26,7 @@ export async function setupRegister() {
       } else {
         packageJson.scripts.postinstall = registerCommand;
       }
-      await fs.writeFile(packageJsonFile, cjson.stringify(packageJson, null, 2), { flag: "w" });
+      await fs.writeFile(packageJsonFile, cjson.stringify(packageJson, null, 2));
     }
   } catch (error) {
     console.error(`Failed to setup ${packageJsonFile}:`, error);

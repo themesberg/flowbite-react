@@ -98,7 +98,7 @@ async function setupVSCodeSettings() {
     }
 
     console.log(`${exists ? "Updating" : "Creating"} ${vscodeSettingsFilePath} with flowbite-react configuration...`);
-    await fs.writeFile(vscodeSettingsFilePath, cjson.stringify(settings, null, 2), { flag: "w" });
+    await fs.writeFile(vscodeSettingsFilePath, cjson.stringify(settings, null, 2));
   } catch (error) {
     console.error("Failed to setup VSCode settings:", error);
   }
@@ -146,7 +146,7 @@ async function setupVSCodeExtensions() {
     }
 
     console.log(`${exists ? "Updating" : "Creating"} ${vscodeExtensionsFilePath} with flowbite-react configuration...`);
-    await fs.writeFile(vscodeExtensionsFilePath, cjson.stringify(extensions, null, 2), { flag: "w" });
+    await fs.writeFile(vscodeExtensionsFilePath, cjson.stringify(extensions, null, 2));
   } catch (error) {
     console.error("Failed to setup VSCode extensions:", error);
   }

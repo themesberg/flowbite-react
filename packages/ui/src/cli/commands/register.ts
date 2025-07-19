@@ -34,7 +34,7 @@ export async function register() {
     await setupOutputDirectory();
 
     if (devProcess.pid) {
-      await fs.writeFile(processIdFilePath, devProcess.pid.toString(), { flag: "w" });
+      await fs.writeFile(processIdFilePath, devProcess.pid.toString());
     }
   } catch (error) {
     console.error("Failed to register flowbite-react", error);

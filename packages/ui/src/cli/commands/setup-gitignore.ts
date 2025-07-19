@@ -19,7 +19,7 @@ export async function setupGitIgnore() {
 
     if (![classListFile, processIdFile].some((file) => gitignore.includes(file))) {
       console.log(`Adding ${classListFile}, ${processIdFile} to ${gitIgnoreFilePath}...`);
-      await fs.writeFile(gitIgnoreFilePath, `${classListFile}\n${processIdFile}`, { flag: "w" });
+      await fs.writeFile(gitIgnoreFilePath, `${classListFile}\n${processIdFile}`);
     }
   } catch (error) {
     console.error(`Failed to update ${gitIgnoreFilePath}:`, error);

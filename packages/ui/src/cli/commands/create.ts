@@ -163,7 +163,7 @@ ${formattedName}.displayName = "${formattedName}";`;
 
     // Write the component file
     console.log(`Creating component file at ${componentFilePath}...`);
-    await fs.writeFile(componentFilePath, componentContent, { flag: "w" });
+    await fs.writeFile(componentFilePath, componentContent);
 
     console.log(`\n✅ Component ${formattedName} created successfully!`);
   } catch (error) {
