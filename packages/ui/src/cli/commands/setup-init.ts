@@ -72,7 +72,7 @@ ThemeInit.displayName = "ThemeInit";
 /**
  * Compare two AST nodes ignoring location info and comments
  */
-function compareNodes(a: any, b: any): boolean {
+function compareNodes(a: unknown, b: unknown): boolean {
   if (a === b) {
     return true;
   }
@@ -100,5 +100,5 @@ function compareNodes(a: any, b: any): boolean {
   if (keysA.length !== keysB.length) {
     return false;
   }
-  return keysA.every((key) => compareNodes(a[key], b[key]));
+  return keysA.every((key) => compareNodes(a[key as keyof typeof a], b[key as keyof typeof b]));
 }
