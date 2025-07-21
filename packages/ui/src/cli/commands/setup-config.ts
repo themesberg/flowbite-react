@@ -46,7 +46,7 @@ export async function setupConfig(): Promise<Config> {
     }
     if (!Array.isArray(newConfig.components)) {
       console.warn(`Invalid components in ${configFilePath}: ${newConfig.components}`);
-      newConfig.components = defaultConfig.components;
+      newConfig.components = [...defaultConfig.components];
     } else {
       const isValidComponent = (component: unknown) =>
         typeof component === "string" &&
@@ -80,7 +80,7 @@ export async function setupConfig(): Promise<Config> {
       newConfig.tsx = defaultConfig.tsx;
     }
     if (newConfig.version !== defaultConfig.version) {
-      console.warn(`Invalid version in ${configFilePath}: ${newConfig.version}`);
+      console.warn(`Invalid version in ${configFilePath}: ${newConfig.version} (detected: ${defaultConfig.version})`);
       newConfig.version = defaultConfig.version;
     }
 

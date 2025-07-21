@@ -1,9 +1,10 @@
 import fs from "fs/promises";
-import { allowedExtensions, classListFilePath, excludeDirs } from "../consts";
+import { allowedExtensions, automaticClassGenerationMessage, classListFilePath, excludeDirs } from "../consts";
 import { buildClassList } from "../utils/build-class-list";
 import { extractComponentImports } from "../utils/extract-component-imports";
 import { findFiles } from "../utils/find-files";
 import { getConfig } from "../utils/get-config";
+import { setupInit } from "./setup-init";
 import { setupOutputDirectory } from "./setup-output-directory";
 
 export async function build() {
@@ -11,28 +12,34 @@ export async function build() {
 
   try {
     const config = await getConfig();
+    await setupInit(config);
 
-    if (!config.components.length) {
+    const importedComponents: string[] = [];
+
+    if (config.components.length) {
+      console.warn(automaticClassGenerationMessage);
+    } else {
       const files = await findFiles({
         patterns: allowedExtensions.map((ext) => `**/*${ext}`),
         excludeDirs,
       });
-      const importedComponents = new Set<string>();
 
       for (const file of files) {
         const content = await fs.readFile(file, "utf-8");
+        const components = extractComponentImports(content);
 
-        for (const component of extractComponentImports(content)) {
-          importedComponents.add(component);
+        if (components.length) {
+          importedComponents.push(...components);
         }
-      }
-
-      if (importedComponents.size > 0) {
-        config.components = [...importedComponents];
       }
     }
 
-    const classList = buildClassList(config);
+    const classList = buildClassList({
+      components: config.components.length ? config.components : [...new Set(importedComponents)],
+      dark: config.dark,
+      prefix: config.prefix,
+      version: config.version,
+    });
 
     console.log(`Generating ${classListFilePath} file...`);
     await fs.writeFile(classListFilePath, JSON.stringify(classList, null, 2));

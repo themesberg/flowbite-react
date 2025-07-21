@@ -1,8 +1,7 @@
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Decorator, Preview } from "@storybook/react";
-import { ThemeConfig } from "flowbite-react";
 import React from "react";
-import config from "../.flowbite-react/config.json";
+import { ThemeInit } from "../.flowbite-react/init";
 
 import "./style.css";
 
@@ -23,7 +22,7 @@ const preview: Preview = {
 export const decorators: Decorator[] = [
   (Story) => (
     <>
-      <ThemeConfig version={config.version as 3 | 4} />
+      <ThemeInit />
       <Story />
     </>
   ),

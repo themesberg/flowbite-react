@@ -2,10 +2,12 @@ import fs from "fs/promises";
 import path from "path";
 import readline from "readline";
 import { getConfig } from "../utils/get-config";
+import { setupInit } from "./setup-init";
 
 export async function create(componentName?: string) {
   try {
     const config = await getConfig();
+    await setupInit(config);
 
     let finalComponentName = componentName;
 

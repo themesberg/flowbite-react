@@ -1,10 +1,10 @@
 import type { StoreProps } from "../store";
 import { StoreInit } from "../store/init";
 
-export type ThemeConfigProps = StoreProps;
+export type ThemeConfigProps = Pick<StoreProps, "mode">;
 
-export function ThemeConfig(props: ThemeConfigProps) {
-  return <StoreInit {...props} />;
+export function ThemeConfig({ mode }: ThemeConfigProps) {
+  return <StoreInit {...{ mode }} />;
 }
 
 ThemeConfig.displayName = "ThemeConfig";

@@ -3,6 +3,7 @@ import { installPackage } from "./install";
 import { setupClassList } from "./setup-class-list";
 import { setupConfig } from "./setup-config";
 import { setupGitIgnore } from "./setup-gitignore";
+import { setupInit } from "./setup-init";
 import { setupOutputDirectory } from "./setup-output-directory";
 import { setupPlugin } from "./setup-plugin";
 import { setupRegister } from "./setup-register";
@@ -16,7 +17,8 @@ export async function init() {
     await setupOutputDirectory();
     await setupGitIgnore();
     await setupClassList();
-    await setupConfig();
+    const config = await setupConfig();
+    await setupInit(config);
     await setupVSCode();
     await setupTailwind();
     const hasBundler = await setupPlugin();

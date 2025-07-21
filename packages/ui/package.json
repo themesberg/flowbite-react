@@ -162,6 +162,26 @@
         "default": "./dist/plugin/tailwindcss/*.cjs"
       }
     },
+    "./store": {
+      "import": {
+        "types": "./dist/store/index.d.ts",
+        "default": "./dist/store/index.js"
+      },
+      "require": {
+        "types": "./dist/store/index.d.cts",
+        "default": "./dist/store/index.cjs"
+      }
+    },
+    "./store/init": {
+      "import": {
+        "types": "./dist/store/init/index.d.ts",
+        "default": "./dist/store/init/index.js"
+      },
+      "require": {
+        "types": "./dist/store/init/index.d.cts",
+        "default": "./dist/store/init/index.cjs"
+      }
+    },
     "./theme": {
       "import": {
         "types": "./dist/theme/index.d.ts",
