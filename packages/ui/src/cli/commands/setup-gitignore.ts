@@ -1,5 +1,5 @@
 import fs from "fs/promises";
-import { classListFile, gitIgnoreFilePath, initFile, processIdFile } from "../consts";
+import { classListFile, gitIgnoreFilePath, processIdFile } from "../consts";
 
 /**
  * Sets up the `.flowbite-react/.gitignore` file in the project.
@@ -8,7 +8,7 @@ import { classListFile, gitIgnoreFilePath, initFile, processIdFile } from "../co
  * It will create or update the file if needed.
  */
 export async function setupGitIgnore() {
-  const content = `${classListFile}\n${initFile}\n${processIdFile}`;
+  const content = `${classListFile}\n${processIdFile}`;
 
   try {
     let currentContent: string;
