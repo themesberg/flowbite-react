@@ -10,7 +10,7 @@
     "format:check": "prettier . --check",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "flowbite-react build && tsc --noEmit"
   },
   "dependencies": {
     "flowbite-react": "workspace:*",
