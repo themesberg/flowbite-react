@@ -102,6 +102,19 @@ export async function setupConfig(): Promise<Config> {
       setTimeout(() => fs.writeFile(configFilePath, JSON.stringify(newConfig, null, 2)), writeTimeout);
     }
 
+    if (
+      newConfig.dark !== defaultConfig.dark ||
+      newConfig.prefix !== defaultConfig.prefix ||
+      newConfig.version !== defaultConfig.version
+    ) {
+      // TODO: search for <ThemeInit /> in the project and warn if it's not found
+      console.info(
+        `\n[!] Custom values detected in ${configFilePath}, render <ThemeInit /> at root level of your app to sync runtime with node config values.`,
+        `\n[!] Otherwise, your app will use the default values instead of your custom configuration.`,
+        `\n[!] Example: In case of custom 'prefix' or 'version', the app will not display the correct class names.`,
+      );
+    }
+
     return newConfig;
   } catch (error) {
     if (error instanceof Error && error.message.includes("ENOENT")) {
