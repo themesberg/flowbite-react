@@ -10,6 +10,7 @@ import {
   excludeDirs,
   gitIgnoreFilePath,
   initFilePath,
+  initJsxFilePath,
 } from "../consts";
 import { buildClassList } from "../utils/build-class-list";
 import { extractComponentImports } from "../utils/extract-component-imports";
@@ -78,7 +79,7 @@ export async function dev() {
 
     const newImportedComponents = [...new Set(Object.values(importedComponentsMap).flat())];
 
-    if ([configFilePath, initFilePath].includes(path)) {
+    if ([configFilePath, initFilePath, initJsxFilePath].includes(path)) {
       config = await getConfig();
       await setupInit(config);
     }
@@ -106,7 +107,7 @@ export async function dev() {
       }
       if (stats?.isFile()) {
         return !allowedExtensions
-          .concat(configFilePath, gitIgnoreFilePath, initFilePath)
+          .concat(configFilePath, gitIgnoreFilePath, initFilePath, initJsxFilePath)
           .some((ext) => path.endsWith(ext));
       }
       return false;

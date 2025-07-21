@@ -3,7 +3,7 @@ import path from "path";
 export const classListFile = "class-list.json";
 export const configFile = "config.json";
 export const gitIgnoreFile = ".gitignore";
-export const initFile = "init.tsx";
+export const initFile = "init";
 export const outputDir = ".flowbite-react";
 export const packageJsonFile = "package.json";
 export const pluginName = "flowbiteReact";
@@ -14,7 +14,8 @@ export const vscodeDir = ".vscode";
 export const classListFilePath = path.join(outputDir, classListFile);
 export const configFilePath = path.join(outputDir, configFile);
 export const gitIgnoreFilePath = path.join(outputDir, gitIgnoreFile);
-export const initFilePath = path.join(outputDir, initFile);
+export const initFilePath = path.join(outputDir, `${initFile}.tsx`);
+export const initJsxFilePath = path.join(outputDir, `${initFile}.jsx`);
 
 export const excludeDirs = [
   ".astro",
