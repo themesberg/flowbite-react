@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.12.2
+
+### Patch Changes
+
+- [#1596](https://github.com/themesberg/flowbite-react/pull/1596) [`ab26436`](https://github.com/themesberg/flowbite-react/commit/ab26436dab2de339c4cdc461317fb2548d554be0) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - refactor(setup-init): relax checks on React imports due to IDE formatters removing it if not necessary
+
+  - filter out `import React from "react"` from the AST when parsing current and new content
+
 ## 0.12.1
 
 ### Patch Changes
