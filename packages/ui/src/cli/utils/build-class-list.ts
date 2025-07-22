@@ -12,6 +12,7 @@ import { DEPENDENCY_LIST_MAP } from "../../metadata/dependency-list";
  * @param {string[]} options.components - The components to include in the class list.
  * @param {boolean} options.dark - Whether to include dark mode classes.
  * @param {string} options.prefix - The prefix to apply to the class names.
+ * @param {3 | 4} options.version - The version of Tailwind CSS to use.
  * @returns {string[]} The sorted list of CSS classes.
  */
 export function buildClassList({

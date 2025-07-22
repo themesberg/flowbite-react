@@ -1,6 +1,5 @@
 import { render } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { getPrefix } from "../store";
 import { ThemeModeScript } from "./mode-script";
 
 describe("ThemeModeScript", () => {
@@ -34,11 +33,17 @@ describe("ThemeModeScript", () => {
     expect(script?.innerHTML).toContain("custom-key");
   });
 
-  it("should include prefix from getPrefix()", () => {
-    const prefix = getPrefix() ?? "";
-    const { container } = render(<ThemeModeScript />);
+  it("should include prefix when version is 3", () => {
+    const { container } = render(<ThemeModeScript prefix="custom-" version={3} />);
     const script = container.querySelector("script");
 
-    expect(script?.innerHTML).toContain(`"${prefix}dark"`);
+    expect(script?.innerHTML).toContain("custom-dark");
+  });
+
+  it("should not include prefix when version is 4", () => {
+    const { container } = render(<ThemeModeScript prefix="custom-" version={4} />);
+    const script = container.querySelector("script");
+
+    expect(script?.innerHTML).toContain("dark");
   });
 });

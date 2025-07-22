@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { isClient } from "../helpers/is-client";
 import { useWatchLocalStorageValue } from "../hooks/use-watch-localstorage-value";
-import { getMode, getPrefix } from "../store";
+import { getMode, getPrefix, getVersion } from "../store";
 
 const DEFAULT_MODE: ThemeMode = "auto";
 const LS_THEME_MODE = "flowbite-theme-mode";
@@ -98,13 +98,15 @@ function setModeInLS(mode: ThemeMode) {
  * Add or remove class `dark` on `html` element
  */
 function setModeInDOM(mode: ThemeMode) {
-  const prefix = getPrefix() ?? "";
   const computedMode = computeModeValue(mode);
+  const prefix = getPrefix() ?? "";
+  const version = getVersion();
+  const className = version === 3 ? `${prefix}dark` : "dark";
 
   if (computedMode === "dark") {
-    document.documentElement.classList.add(`${prefix}dark`);
+    document.documentElement.classList.add(className);
   } else {
-    document.documentElement.classList.remove(`${prefix}dark`);
+    document.documentElement.classList.remove(className);
   }
 }
 
