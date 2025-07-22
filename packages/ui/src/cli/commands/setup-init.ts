@@ -22,7 +22,7 @@ export async function setupInit(config: Config) {
 import { StoreInit } from "flowbite-react/store/init";
 import React from "react";
 
-const config = {
+export const config = {
   dark: ${config.dark},
   prefix: "${config.prefix}",
   version: ${config.version},
