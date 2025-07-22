@@ -37,13 +37,13 @@ describe("ThemeModeScript", () => {
     const { container } = render(<ThemeModeScript prefix="custom-" version={3} />);
     const script = container.querySelector("script");
 
-    expect(script?.innerHTML).toContain("custom-dark");
+    expect(script?.innerHTML).toContain('const className = "custom-dark"');
   });
 
   it("should not include prefix when version is 4", () => {
     const { container } = render(<ThemeModeScript prefix="custom-" version={4} />);
     const script = container.querySelector("script");
 
-    expect(script?.innerHTML).toContain("dark");
+    expect(script?.innerHTML).toContain('const className = "dark"');
   });
 });

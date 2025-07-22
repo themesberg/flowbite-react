@@ -117,7 +117,7 @@ export function getThemeModeScript(
       const resolvedMode = (isStorageModeValid ? storageMode : null) ?? ${mode ? `"${mode}"` : undefined} ?? "${defaultMode}";
       const computedMode =
         resolvedMode === "auto" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : resolvedMode;
-      const className = ${version === 3 ? `"${prefix}dark"` : "dark"};
+      const className = ${version === 3 ? `"${prefix}dark"` : `"dark"`};
 
       if (computedMode === "dark") {
         document.documentElement.classList.add(className);
