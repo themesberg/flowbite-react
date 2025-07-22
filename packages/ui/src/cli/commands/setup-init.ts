@@ -1,6 +1,7 @@
 import fs from "fs/promises";
 import { parse } from "recast";
 import { initFilePath, initJsxFilePath } from "../consts";
+import { compareNodes } from "../utils/compare-nodes";
 import type { Config } from "./setup-config";
 
 /**
@@ -67,38 +68,4 @@ ThemeInit.displayName = "ThemeInit";
   } catch (error) {
     console.error(`Failed to update ${targetPath}:`, error);
   }
-}
-
-/**
- * Compare two AST nodes ignoring location info and comments
- */
-function compareNodes(a: unknown, b: unknown): boolean {
-  if (a === b) {
-    return true;
-  }
-  if (!a || !b) {
-    return false;
-  }
-  if (Array.isArray(a)) {
-    if (!Array.isArray(b) || a.length !== b.length) {
-      return false;
-    }
-    return a.every((item, i) => compareNodes(item, b[i]));
-  }
-  if (typeof a !== "object" || typeof b !== "object") {
-    return a === b;
-  }
-
-  // Skip location and comment-related properties
-  const keysA = Object.keys(a).filter(
-    (k) => !["start", "end", "loc", "range", "tokens", "comments", "leadingComments", "trailingComments"].includes(k),
-  );
-  const keysB = Object.keys(b).filter(
-    (k) => !["start", "end", "loc", "range", "tokens", "comments", "leadingComments", "trailingComments"].includes(k),
-  );
-
-  if (keysA.length !== keysB.length) {
-    return false;
-  }
-  return keysA.every((key) => compareNodes(a[key as keyof typeof a], b[key as keyof typeof b]));
 }
