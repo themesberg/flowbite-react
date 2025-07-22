@@ -18,6 +18,7 @@
   - bump the version to latest if below `0.11.x`
 - remove redundant `{ flag: "w" }` in `fs.writeFile`
 - update `dark-mode.md` and `prefix.md` documentation to reflect the `<ThemeInit />` changes
+- add Tailwind CSS version support in theme mode handling and fix dark theme toggle class in Tailwind CSS v4
 
 ## Migration Guide
 
