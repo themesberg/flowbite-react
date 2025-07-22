@@ -1,4 +1,5 @@
 import fs from "fs/promises";
+import type { namedTypes } from "ast-types";
 import { parse } from "recast";
 import { initFilePath, initJsxFilePath } from "../consts";
 import { compareNodes } from "../utils/compare-nodes";
@@ -49,8 +50,8 @@ ThemeInit.displayName = "ThemeInit";
     }
 
     if (currentContent) {
-      const currentAst = parse(currentContent);
-      const newAst = parse(content);
+      const currentAst = removeReactImport(parse(currentContent));
+      const newAst = removeReactImport(parse(content));
 
       if (!compareNodes(currentAst.program, newAst.program)) {
         console.log(`Updating ${targetPath} file...`);
@@ -68,4 +69,23 @@ ThemeInit.displayName = "ThemeInit";
   } catch (error) {
     console.error(`Failed to update ${targetPath}:`, error);
   }
+}
+
+/**
+ * Removes `import React from "react"` from the AST
+ */
+function removeReactImport(ast: namedTypes.File): namedTypes.File {
+  if (ast?.program?.body) {
+    ast.program.body = ast.program.body.filter(
+      (node) =>
+        !(
+          node.type === "ImportDeclaration" &&
+          "value" in node.source &&
+          typeof node.source.value === "string" &&
+          node.source.value === "react" &&
+          node.specifiers?.[0]?.local?.name === "React"
+        ),
+    );
+  }
+  return ast;
 }
