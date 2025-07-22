@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.12.1
+
+### Patch Changes
+
+- [#1594](https://github.com/themesberg/flowbite-react/pull/1594) [`9017065`](https://github.com/themesberg/flowbite-react/commit/90170651ba4e113a792b6c493b7868094a1d382d) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(compareNodes): support:
+
+      - different quote styles
+      - with and without semicolons
+      - trailing commas in objects and arrays
+
+  - add tests
+
 ## 0.12.0
 
 ### Minor Changes
