@@ -3,6 +3,12 @@ import path from "path";
 import cjson from "comment-json";
 import { vscodeDir } from "../consts";
 
+/**
+ * Sets up the VSCode configuration for the project.
+ *
+ * This function checks if the `.vscode` directory exists and creates it if it does not.
+ * It then sets up the `settings.json` and `extensions.json` files with the necessary configuration for Flowbite React.
+ */
 export async function setupVSCode() {
   try {
     await fs.access(vscodeDir);
@@ -15,6 +21,12 @@ export async function setupVSCode() {
   await setupVSCodeExtensions();
 }
 
+/**
+ * Sets up the VSCode settings for the project.
+ *
+ * This function checks if the `settings.json` file exists and creates it if it does not.
+ * It then sets up the `files.associations`, `tailwindCSS.classAttributes`, and `tailwindCSS.experimental.classRegex` settings.
+ */
 async function setupVSCodeSettings() {
   try {
     const vscodeSettingsFilePath = path.join(vscodeDir, "settings.json");
@@ -86,7 +98,7 @@ async function setupVSCodeSettings() {
     }
 
     console.log(`${exists ? "Updating" : "Creating"} ${vscodeSettingsFilePath} with flowbite-react configuration...`);
-    await fs.writeFile(vscodeSettingsFilePath, cjson.stringify(settings, null, 2), { flag: "w" });
+    await fs.writeFile(vscodeSettingsFilePath, cjson.stringify(settings, null, 2));
   } catch (error) {
     console.error("Failed to setup VSCode settings:", error);
   }
@@ -134,7 +146,7 @@ async function setupVSCodeExtensions() {
     }
 
     console.log(`${exists ? "Updating" : "Creating"} ${vscodeExtensionsFilePath} with flowbite-react configuration...`);
-    await fs.writeFile(vscodeExtensionsFilePath, cjson.stringify(extensions, null, 2), { flag: "w" });
+    await fs.writeFile(vscodeExtensionsFilePath, cjson.stringify(extensions, null, 2));
   } catch (error) {
     console.error("Failed to setup VSCode extensions:", error);
   }

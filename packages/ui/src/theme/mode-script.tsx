@@ -1,12 +1,12 @@
 import type React from "react";
 import type { ThemeMode } from "../hooks/use-theme-mode";
-import { getPrefix } from "../store";
 
 const defaultOptions = {
   mode: "auto" as ThemeMode,
   defaultMode: "auto" as ThemeMode,
   localStorageKey: "flowbite-theme-mode",
   prefix: "",
+  version: 4 as 3 | 4,
 };
 
 export interface ThemeModeScriptProps extends React.ComponentPropsWithoutRef<"script"> {
@@ -30,6 +30,20 @@ export interface ThemeModeScriptProps extends React.ComponentPropsWithoutRef<"sc
    * @default "flowbite-theme-mode"
    */
   localStorageKey?: string;
+  /**
+   * The prefix to use for the theme mode class
+   *
+   * @type {string}
+   * @default ""
+   */
+  prefix?: string;
+  /**
+   * The version of Tailwind CSS to use
+   *
+   * @type {3 | 4}
+   * @default 4
+   */
+  version?: 3 | 4;
 }
 
 /**
@@ -46,6 +60,8 @@ export function ThemeModeScript({
   mode,
   defaultMode = defaultOptions.defaultMode,
   localStorageKey = defaultOptions.localStorageKey,
+  prefix = defaultOptions.prefix,
+  version = defaultOptions.version,
   ...others
 }: ThemeModeScriptProps): JSX.Element {
   return (
@@ -53,7 +69,13 @@ export function ThemeModeScript({
       {...others}
       data-flowbite-theme-mode-script
       dangerouslySetInnerHTML={{
-        __html: getThemeModeScript({ mode, defaultMode, localStorageKey, prefix: getPrefix() ?? "" }),
+        __html: getThemeModeScript({
+          mode,
+          defaultMode,
+          localStorageKey,
+          prefix,
+          version,
+        }),
       }}
     />
   );
@@ -77,6 +99,7 @@ export function getThemeModeScript(
     defaultMode?: ThemeMode;
     localStorageKey?: string;
     prefix?: string;
+    version?: 3 | 4;
   } = {},
 ): string {
   const {
@@ -84,6 +107,7 @@ export function getThemeModeScript(
     defaultMode = defaultOptions.defaultMode,
     localStorageKey = defaultOptions.localStorageKey,
     prefix = defaultOptions.prefix,
+    version = defaultOptions.version,
   } = props;
 
   return `
@@ -93,11 +117,12 @@ export function getThemeModeScript(
       const resolvedMode = (isStorageModeValid ? storageMode : null) ?? ${mode ? `"${mode}"` : undefined} ?? "${defaultMode}";
       const computedMode =
         resolvedMode === "auto" ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : resolvedMode;
+      const className = ${version === 3 ? `"${prefix}dark"` : `"dark"`};
 
       if (computedMode === "dark") {
-        document.documentElement.classList.add("${prefix}dark");
+        document.documentElement.classList.add(className);
       } else {
-        document.documentElement.classList.remove("${prefix}dark");
+        document.documentElement.classList.remove(className);
       }
       localStorage.setItem("${localStorageKey}", resolvedMode);
 
@@ -110,9 +135,9 @@ export function getThemeModeScript(
 
         if (resolvedMode === "auto") {
           if (e.matches) {
-            document.documentElement.classList.add("${prefix}dark");
+            document.documentElement.classList.add(className);
           } else {
-            document.documentElement.classList.remove("${prefix}dark");
+            document.documentElement.classList.remove(className);
           }
         }
       });
@@ -125,9 +150,9 @@ export function getThemeModeScript(
           const resolvedMode = isStorageModeValid ? newMode : "${defaultMode}";
 
           if (resolvedMode === "dark" || (resolvedMode === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-            document.documentElement.classList.add("${prefix}dark");
+            document.documentElement.classList.add(className);
           } else {
-            document.documentElement.classList.remove("${prefix}dark");
+            document.documentElement.classList.remove(className);
           }
         }
       });
@@ -144,6 +169,7 @@ export function getThemeModeScript(
  * @param {ThemeMode} [options.defaultMode="auto"] - The default theme mode if none is set
  * @param {string} [options.localStorageKey="flowbite-theme-mode"] - Key used to store theme mode in localStorage
  * @param {string} [options.prefix=""] - The prefix to use for the theme mode class
+ * @param {3 | 4} [options.version=4] - The version of Tailwind CSS to use
  * @returns {void}
  */
 export function initThemeMode(
@@ -152,6 +178,7 @@ export function initThemeMode(
     defaultMode?: ThemeMode;
     localStorageKey?: string;
     prefix?: string;
+    version?: 3 | 4;
   } = {},
 ): void {
   const {
@@ -159,6 +186,7 @@ export function initThemeMode(
     defaultMode = defaultOptions.defaultMode,
     localStorageKey = defaultOptions.localStorageKey,
     prefix = defaultOptions.prefix,
+    version = defaultOptions.version,
   } = props;
 
   try {
@@ -171,11 +199,12 @@ export function initThemeMode(
           ? "dark"
           : "light"
         : resolvedMode;
+    const className = version === 3 ? `${prefix}dark` : "dark";
 
     if (computedMode === "dark") {
-      document.documentElement.classList.add(`${prefix}dark`);
+      document.documentElement.classList.add(className);
     } else {
-      document.documentElement.classList.remove(`${prefix}dark`);
+      document.documentElement.classList.remove(className);
     }
     localStorage.setItem(localStorageKey, resolvedMode);
 
@@ -188,9 +217,9 @@ export function initThemeMode(
 
       if (resolvedMode === "auto") {
         if (e.matches) {
-          document.documentElement.classList.add(`${prefix}dark`);
+          document.documentElement.classList.add(className);
         } else {
-          document.documentElement.classList.remove(`${prefix}dark`);
+          document.documentElement.classList.remove(className);
         }
       }
     });
@@ -206,9 +235,9 @@ export function initThemeMode(
           resolvedMode === "dark" ||
           (resolvedMode === "auto" && window.matchMedia("(prefers-color-scheme: dark)").matches)
         ) {
-          document.documentElement.classList.add(`${prefix}dark`);
+          document.documentElement.classList.add(className);
         } else {
-          document.documentElement.classList.remove(`${prefix}dark`);
+          document.documentElement.classList.remove(className);
         }
       }
     });

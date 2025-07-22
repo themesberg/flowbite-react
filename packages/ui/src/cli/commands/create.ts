@@ -2,10 +2,12 @@ import fs from "fs/promises";
 import path from "path";
 import readline from "readline";
 import { getConfig } from "../utils/get-config";
+import { setupInit } from "./setup-init";
 
 export async function create(componentName?: string) {
   try {
     const config = await getConfig();
+    await setupInit(config);
 
     let finalComponentName = componentName;
 
@@ -163,7 +165,7 @@ ${formattedName}.displayName = "${formattedName}";`;
 
     // Write the component file
     console.log(`Creating component file at ${componentFilePath}...`);
-    await fs.writeFile(componentFilePath, componentContent, { flag: "w" });
+    await fs.writeFile(componentFilePath, componentContent);
 
     console.log(`\n✅ Component ${formattedName} created successfully!`);
   } catch (error) {

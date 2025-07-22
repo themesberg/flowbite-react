@@ -1,19 +1,26 @@
 import fs from "fs/promises";
-import path from "path";
-import { classListFile, outputDir, processIdFile } from "../consts";
+import { classListFile, gitIgnoreFilePath, processIdFile } from "../consts";
 
+/**
+ * Sets up the `.flowbite-react/.gitignore` file in the project.
+ *
+ * This function ensures the `.gitignore` file exists in the `.flowbite-react` directory.
+ * It will create or update the file if needed.
+ */
 export async function setupGitIgnore() {
-  const gitIgnoreFilePath = path.join(outputDir, ".gitignore");
+  const content = `${classListFile}\n${processIdFile}`;
 
   try {
-    const gitignore = await fs.readFile(gitIgnoreFilePath, "utf-8").catch(() => {
-      console.log(`Creating ${gitIgnoreFilePath} file...`);
-      return "";
-    });
+    let currentContent: string;
+    try {
+      currentContent = await fs.readFile(gitIgnoreFilePath, "utf-8");
+    } catch {
+      currentContent = "";
+    }
 
-    if (![classListFile, processIdFile].some((file) => gitignore.includes(file))) {
-      console.log(`Adding ${classListFile}, ${processIdFile} to ${gitIgnoreFilePath}...`);
-      await fs.writeFile(gitIgnoreFilePath, `${classListFile}\n${processIdFile}`, { flag: "w" });
+    if (currentContent.trimEnd() !== content) {
+      console.log(`${currentContent ? "Updating" : "Creating"} ${gitIgnoreFilePath} file...`);
+      setTimeout(() => fs.writeFile(gitIgnoreFilePath, content), 10);
     }
   } catch (error) {
     console.error(`Failed to update ${gitIgnoreFilePath}:`, error);

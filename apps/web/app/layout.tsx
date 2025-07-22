@@ -3,6 +3,7 @@ import { Inter as InterFont } from "next/font/google";
 import type { Metadata, Viewport } from "next/types";
 import type { PropsWithChildren } from "react";
 import { FathomScript } from "~/components/fathom-script";
+import { ThemeInit } from "../.flowbite-react/init";
 
 import "~/styles/globals.css";
 
@@ -60,6 +61,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <ThemeModeScript />
       </head>
       <body className="bg-white text-gray-600 antialiased dark:bg-gray-900 dark:text-gray-400">
+        <ThemeInit />
         {children}
         <FathomScript />
       </body>

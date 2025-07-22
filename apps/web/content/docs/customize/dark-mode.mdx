@@ -55,28 +55,9 @@ declare const useThemeMode: () => {
 
 To completely disable dark mode class generation in your Flowbite React application, you should use both of the following methods:
 
-### 1. Using the ThemeConfig Component
+### 1. Using the Configuration File
 
-First, disable dark mode at the application level by setting the `dark` prop to `false` in the `ThemeConfig` component:
-
-```jsx
-import { ThemeConfig } from "flowbite-react";
-
-function App() {
-  return (
-    <>
-      <ThemeConfig dark={false} />
-      {/* Your application */}
-    </>
-  );
-}
-```
-
-This approach prevents the dark mode toggle functionality from working in your application's runtime.
-
-### 2. Using the Configuration File
-
-Additionally, you must disable dark mode in your build configuration by setting the `dark` property to `false` in your `.flowbite-react/config.json` file:
+First, disable dark mode in your build configuration by setting the `dark` property to `false` in your `.flowbite-react/config.json` file:
 
 ```json {4}
 {
@@ -86,13 +67,32 @@ Additionally, you must disable dark mode in your build configuration by setting 
   "path": "src/components",
   "prefix": "",
   "rsc": true,
-  "tsx": true
+  "tsx": true,
+  "version": 4
 }
 ```
 
 This method prevents dark mode classes from being generated during the build process, which reduces your CSS bundle size.
 
-> **Important**: For complete dark mode disabling, both methods should be used together. The ThemeConfig approach affects runtime behavior, while the config.json approach affects build-time class generation.
+### 2. Using the ThemeInit Component
+
+When you have custom configuration in your `.flowbite-react/config.json` (including disabling dark mode), you must render the `ThemeInit` component at the root level of your application to sync the runtime with your configuration:
+
+```jsx
+// src/App.tsx
+import { ThemeInit } from "../.flowbite-react/init";
+
+function App() {
+  return (
+    <>
+      <ThemeInit />
+      {/* Your application */}
+    </>
+  );
+}
+```
+
+> **Important**: The configuration file approach affects build-time class generation, while the ThemeInit component ensures your runtime behavior matches your configuration.
 
 ## Framework Integration
 

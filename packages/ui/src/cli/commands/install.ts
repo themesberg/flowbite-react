@@ -1,16 +1,16 @@
 import { resolveCommand } from "package-manager-detector/commands";
 import { detect } from "package-manager-detector/detect";
 import { execCommand } from "../utils/exec-command";
+import { getModulePackageJson } from "../utils/get-module-package-json";
 import { getPackageJson } from "../utils/get-package-json";
 
-export async function installFlowbiteReact() {
+/**
+ * Installs `flowbite-react` package using the detected package manager.
+ */
+export async function installPackage() {
+  const packageName = "flowbite-react";
+
   try {
-    const packageJson = await getPackageJson();
-
-    if (packageJson.dependencies?.["flowbite-react"] || packageJson.devDependencies?.["flowbite-react"]) {
-      return;
-    }
-
     let pm = await detect();
 
     if (!pm) {
@@ -19,12 +19,26 @@ export async function installFlowbiteReact() {
 
     pm ??= { agent: "npm", name: "npm" };
 
-    const packageName = "flowbite-react";
+    const packageJson = await getPackageJson();
+    const currentPackage = await getModulePackageJson(packageName);
+
+    if (currentPackage && (packageJson?.dependencies?.[packageName] || packageJson?.devDependencies?.[packageName])) {
+      if (currentPackage.version.localeCompare("0.11", undefined, { numeric: true }) < 0) {
+        console.log(
+          "The current version of flowbite-react is below 0.11.x, which is the version with the new engine and CLI.",
+        );
+        const { command = "", args } = resolveCommand(pm.agent, "add", [`${packageName}@latest`]) ?? {};
+        console.log(`Updating ${packageName} to latest version using ${pm.name}...`);
+        await execCommand(command, args);
+      }
+      return;
+    }
+
     const { command = "", args } = resolveCommand(pm.agent, "add", [packageName]) ?? {};
 
     console.log(`Installing ${packageName} using ${pm.name}...`);
-    execCommand(command, args);
+    await execCommand(command, args);
   } catch (error) {
-    console.error("Failed to install flowbite-react:", error);
+    console.error(`Failed to install ${packageName}:`, error);
   }
 }

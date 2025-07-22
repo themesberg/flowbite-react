@@ -162,6 +162,46 @@
         "default": "./dist/plugin/tailwindcss/*.cjs"
       }
     },
+    "./store": {
+      "import": {
+        "types": "./dist/store/index.d.ts",
+        "default": "./dist/store/index.js"
+      },
+      "require": {
+        "types": "./dist/store/index.d.cts",
+        "default": "./dist/store/index.cjs"
+      }
+    },
+    "./store/*": {
+      "import": {
+        "types": "./dist/store/*.d.ts",
+        "default": "./dist/store/*.js"
+      },
+      "require": {
+        "types": "./dist/store/*.d.cts",
+        "default": "./dist/store/*.cjs"
+      }
+    },
+    "./store/init": {
+      "import": {
+        "types": "./dist/store/init/index.d.ts",
+        "default": "./dist/store/init/index.js"
+      },
+      "require": {
+        "types": "./dist/store/init/index.d.cts",
+        "default": "./dist/store/init/index.cjs"
+      }
+    },
+    "./store/init/*": {
+      "import": {
+        "types": "./dist/store/init/*.d.ts",
+        "default": "./dist/store/init/*.js"
+      },
+      "require": {
+        "types": "./dist/store/init/*.d.cts",
+        "default": "./dist/store/init/*.cjs"
+      }
+    },
     "./theme": {
       "import": {
         "types": "./dist/theme/index.d.ts",
@@ -212,7 +252,6 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "generate-metadata": "bun scripts/generate-metadata.ts",
-    "postinstall": "bun run src/cli/bin.ts patch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",

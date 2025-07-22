@@ -19,7 +19,8 @@ To set a custom prefix for Flowbite React components, modify the `prefix` proper
   "path": "components",
   "prefix": "tw",
   "rsc": true,
-  "tsx": true
+  "tsx": true,
+  "version": 4
 }
 ```
 
@@ -49,16 +50,17 @@ In Tailwind CSS v4, the prefix cannot contain special characters (like hyphens).
 
 ## Update Your React Application
 
-Next, render the `ThemeConfig` component at the **root of your app** with the same `prefix` property:
+When you have custom configuration in your `.flowbite-react/config.json` (including a custom prefix), you must render the `ThemeInit` component at the root level of your application to sync the runtime with your configuration:
 
-```tsx {1,6}
-import { ThemeConfig } from "flowbite-react";
+```tsx
+// src/App.tsx
+import { ThemeInit } from "../.flowbite-react/init";
 
 export default function App() {
   return (
     <>
-      <ThemeConfig prefix="tw" />
-      {/* ... */}
+      <ThemeInit />
+      {/* Your application */}
     </>
   );
 }

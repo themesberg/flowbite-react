@@ -1,5 +1,7 @@
 import { withThemeByClassName } from "@storybook/addon-themes";
-import type { Preview } from "@storybook/react";
+import type { Decorator, Preview } from "@storybook/react";
+import React from "react";
+import { ThemeInit } from "../.flowbite-react/init";
 
 import "./style.css";
 
@@ -17,7 +19,13 @@ const preview: Preview = {
   },
 };
 
-export const decorators = [
+export const decorators: Decorator[] = [
+  (Story) => (
+    <>
+      <ThemeInit />
+      <Story />
+    </>
+  ),
   withThemeByClassName({
     themes: {
       light: "light",
