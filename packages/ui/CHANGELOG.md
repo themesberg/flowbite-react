@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.12.3
+
+### Patch Changes
+
+- [#1600](https://github.com/themesberg/flowbite-react/pull/1600) [`12d3290`](https://github.com/themesberg/flowbite-react/commit/12d32902e5f01867e49927d0c508e6ad184686cd) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(ui/cli/setup-init): nextjs warning
+
+  ### Changes
+
+  - [x] rename `config` -> `CONFIG` export in `.flowbite-react/init.(jsx|tsx)`
+
 ## 0.12.2
 
 ### Patch Changes
