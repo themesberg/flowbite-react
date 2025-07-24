@@ -24,14 +24,14 @@ export async function setupInit(config: Config) {
 import { StoreInit } from "flowbite-react/store/init";
 import React from "react";
 
-export const config = {
+export const CONFIG = {
   dark: ${config.dark},
   prefix: "${config.prefix}",
   version: ${config.version},
 };
 
 export function ThemeInit() {
-  return <StoreInit {...config} />;
+  return <StoreInit {...CONFIG} />;
 }
 
 ThemeInit.displayName = "ThemeInit";
