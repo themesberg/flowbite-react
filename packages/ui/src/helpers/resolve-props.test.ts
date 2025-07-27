@@ -1,9 +1,9 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, mock } from "bun:test";
 import { resolveProps } from "./resolve-props";
 import { withoutThemingProps } from "./without-theming-props";
 
-vi.mock("./without-theming-props", () => ({
-  withoutThemingProps: vi.fn((props) => props),
+mock.module("./without-theming-props", () => ({
+  withoutThemingProps: mock((props) => props),
 }));
 
 describe("resolveProps", () => {
@@ -26,6 +26,7 @@ describe("resolveProps", () => {
     expect(result).toEqual({
       foo: "bar",
       baz: "qux",
+      // @ts-expect-error - bypass
       test: "provider",
     });
   });

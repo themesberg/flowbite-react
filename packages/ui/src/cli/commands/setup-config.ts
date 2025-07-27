@@ -3,18 +3,8 @@ import { klona } from "klona/json";
 import { isEqual } from "../../helpers/is-equal";
 import { COMPONENT_TO_CLASS_LIST_MAP } from "../../metadata/class-list";
 import { configFilePath } from "../consts";
+import { createConfig, type Config } from "../utils/create-config";
 import { getTailwindVersion } from "../utils/get-tailwind-version";
-
-export interface Config {
-  $schema: string;
-  components: string[];
-  dark: boolean;
-  path: string;
-  prefix: string;
-  rsc: boolean;
-  tsx: boolean;
-  version: 3 | 4;
-}
 
 /**
  * Sets up the `.flowbite-react/config.json` file in the project.
@@ -22,17 +12,9 @@ export interface Config {
  * This function creates or updates the configuration file with default values and validates existing configurations.
  */
 export async function setupConfig(): Promise<Config> {
-  const defaultConfig: Config = {
-    $schema: "https://unpkg.com/flowbite-react/schema.json",
-    components: [],
-    dark: true,
-    path: "src/components",
-    // TODO: infer from project
-    prefix: "",
-    rsc: true,
-    tsx: true,
+  const defaultConfig = createConfig({
     version: await getTailwindVersion(),
-  };
+  });
   const writeTimeout = 10;
 
   try {
@@ -100,19 +82,6 @@ export async function setupConfig(): Promise<Config> {
     if (!isEqual(config, newConfig) || !isSorted) {
       console.log(`Updating ${configFilePath} file...`);
       setTimeout(() => fs.writeFile(configFilePath, JSON.stringify(newConfig, null, 2)), writeTimeout);
-    }
-
-    if (
-      newConfig.dark !== defaultConfig.dark ||
-      newConfig.prefix !== defaultConfig.prefix ||
-      newConfig.version !== defaultConfig.version
-    ) {
-      // TODO: search for <ThemeInit /> in the project and warn if it's not found
-      console.info(
-        `\n[!] Custom values detected in ${configFilePath}, render <ThemeInit /> at root level of your app to sync runtime with node config values.`,
-        `\n[!] Otherwise, your app will use the default values instead of your custom configuration.`,
-        `\n[!] Example: In case of custom 'prefix' or 'version', the app will not display the correct class names.`,
-      );
     }
 
     return newConfig;

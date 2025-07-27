@@ -13,6 +13,7 @@ import {
   initJsxFilePath,
 } from "../consts";
 import { buildClassList } from "../utils/build-class-list";
+import { createInitLogger } from "../utils/create-init-logger";
 import { extractComponentImports } from "../utils/extract-component-imports";
 import { findFiles } from "../utils/find-files";
 import { getClassList } from "../utils/get-class-list";
@@ -25,6 +26,7 @@ export async function dev() {
   await setupOutputDirectory();
   let config = await getConfig();
   await setupInit(config);
+  const initLogger = createInitLogger(config);
 
   if (config.components.length) {
     console.warn(automaticClassGenerationMessage);
@@ -42,11 +44,14 @@ export async function dev() {
   for (const file of files) {
     const content = await fs.readFile(file, "utf-8");
     const componentImports = extractComponentImports(content);
+    initLogger.check(file, content);
 
     if (componentImports.length) {
       importedComponentsMap[file] = componentImports;
     }
   }
+
+  initLogger.log();
 
   const newImportedComponents = [...new Set(Object.values(importedComponentsMap).flat())];
   const newClassList = buildClassList({
@@ -63,9 +68,19 @@ export async function dev() {
 
   // watch for changes
   async function handleChange(path: string, eventName: "change" | "unlink") {
+    if ([configFilePath, initFilePath, initJsxFilePath].includes(path)) {
+      config = await getConfig();
+      await setupInit(config);
+      initLogger.config = config;
+    }
+    if (path === gitIgnoreFilePath) {
+      await setupGitIgnore();
+    }
+
     if (eventName === "change") {
       const content = await fs.readFile(path, "utf-8");
       const componentImports = extractComponentImports(content);
+      initLogger.check(path, content);
 
       if (componentImports.length) {
         importedComponentsMap[path] = componentImports;
@@ -75,17 +90,12 @@ export async function dev() {
     }
     if (eventName === "unlink") {
       delete importedComponentsMap[path];
+      initLogger.checkedMap.delete(path);
     }
+
+    initLogger.log();
 
     const newImportedComponents = [...new Set(Object.values(importedComponentsMap).flat())];
-
-    if ([configFilePath, initFilePath, initJsxFilePath].includes(path)) {
-      config = await getConfig();
-      await setupInit(config);
-    }
-    if (path === gitIgnoreFilePath) {
-      await setupGitIgnore();
-    }
 
     const newClassList = buildClassList({
       components: config.components.length ? config.components : newImportedComponents,

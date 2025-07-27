@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "bun:test";
 import { extractComponentImports } from "./extract-component-imports";
 
 describe("extractComponentImports", () => {

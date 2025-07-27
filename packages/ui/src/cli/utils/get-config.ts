@@ -1,4 +1,5 @@
-import { setupConfig, type Config } from "../commands/setup-config";
+import { setupConfig } from "../commands/setup-config";
+import type { Config } from "./create-config";
 
 /**
  * Gets the current configuration by reading and validating the config file.

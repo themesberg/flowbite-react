@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "bun:test";
 import { setStore } from "../store";
 import { resolveTheme } from "./resolve-theme";
 
@@ -13,6 +13,7 @@ describe("resolveTheme", () => {
 
     expect(resolveTheme([base, custom], [])).toEqual({
       color: "text-red-400",
+      // @ts-expect-error - bypass
       background: "text-blue-400",
     });
   });

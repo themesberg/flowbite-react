@@ -3,7 +3,7 @@ import type { namedTypes } from "ast-types";
 import { parse } from "recast";
 import { initFilePath, initJsxFilePath } from "../consts";
 import { compareNodes } from "../utils/compare-nodes";
-import type { Config } from "./setup-config";
+import type { Config } from "../utils/create-config";
 
 /**
  * Sets up the `.flowbite-react/init.tsx` file in the project.

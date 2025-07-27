@@ -1,5 +1,5 @@
+import { describe, expect, it } from "bun:test";
 import * as recast from "recast";
-import { describe, expect, it } from "vitest";
 import { addToConfig } from "./add-to-config";
 
 describe("addToConfig", () => {
