@@ -8,6 +8,7 @@ let entries = await Array.fromAsync(new Glob("src/**/*").scan());
 entries = entries.filter((path) => !path.includes(".test.")).sort();
 
 const external = [
+  "ast-types",
   "child_process",
   "fs/promises",
   "klona/json",
@@ -17,7 +18,7 @@ const external = [
   "path",
   "react/jsx-runtime",
   "readline",
-  "tailwindcss/plugin",
+  "tailwindcss/plugin.js",
   ...Object.keys({
     ...packageJson.dependencies,
     ...packageJson.devDependencies,
