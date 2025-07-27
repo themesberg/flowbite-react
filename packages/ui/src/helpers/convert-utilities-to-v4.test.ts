@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "bun:test";
 import { convertUtilitiesToV4 } from "./convert-utilities-to-v4";
 
 describe("convertUtilitiesV4", () => {

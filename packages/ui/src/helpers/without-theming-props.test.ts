@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "bun:test";
 import type { ThemingProps } from "../types";
 import { withoutThemingProps } from "./without-theming-props";
 

@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "bun:test";
 import { applyPrefixV3 } from "./apply-prefix-v3";
 
 describe("applyPrefix_v3", () => {
