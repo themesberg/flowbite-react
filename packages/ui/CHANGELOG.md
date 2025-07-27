@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.12.4
+
+### Patch Changes
+
+- [#1607](https://github.com/themesberg/flowbite-react/pull/1607) [`a89a098`](https://github.com/themesberg/flowbite-react/commit/a89a09808bc1a5227e614aa160d932890fb1b126) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix: `Error: Cannot find module 'tailwindcss/plugin'`
+
+- [#1605](https://github.com/themesberg/flowbite-react/pull/1605) [`262cde0`](https://github.com/themesberg/flowbite-react/commit/262cde0defd27ac0496cbb5a4f0dc08261f6e094) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - Search for `<ThemeInit />` in the project and warn if it's not found instead of warning all the time
+
+  ### Changes
+
+  - during commands `build` and `dev` check files content for custom configuration and display a warning if `<ThemeInit />` is not found
+  - switch tests in `src/cli` and `src/helpers` from `vitest` -> `bun:test`
+
 ## 0.12.3
 
 ### Patch Changes
