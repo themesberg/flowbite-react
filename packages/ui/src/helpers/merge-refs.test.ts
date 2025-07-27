@@ -1,14 +1,14 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, mock } from "bun:test";
+import type { RefObject } from "react";
 import { mergeRefs } from "./merge-refs";
 
 describe("mergeRefs", () => {
   it("should handle multiple mutable refs", () => {
-    const ref1 = { current: null };
-    const ref2 = { current: null };
+    const ref1: RefObject<string> = { current: null };
+    const ref2: RefObject<string> = { current: null };
     const value = "test";
 
     const mergedRef = mergeRefs([ref1, ref2]);
-    // @ts-expect-error - bypass
     mergedRef(value);
 
     expect(ref1.current).toBe(value);
@@ -16,7 +16,7 @@ describe("mergeRefs", () => {
   });
 
   it("should handle callback refs", () => {
-    const callbackRef = vi.fn();
+    const callbackRef = mock();
     const value = "test";
 
     const mergedRef = mergeRefs([callbackRef]);
@@ -26,8 +26,8 @@ describe("mergeRefs", () => {
   });
 
   it("should handle mixture of mutable and callback refs", () => {
-    const mutableRef = { current: null };
-    const callbackRef = vi.fn();
+    const mutableRef: RefObject<string> = { current: null };
+    const callbackRef = mock();
     const value = "test";
 
     const mergedRef = mergeRefs([mutableRef, callbackRef]);
@@ -38,11 +38,10 @@ describe("mergeRefs", () => {
   });
 
   it("should handle null and undefined refs", () => {
-    const ref1 = { current: null };
+    const ref1: RefObject<string> = { current: null };
     const value = "test";
 
     const mergedRef = mergeRefs([ref1, null, undefined]);
-    // @ts-expect-error - bypass
     mergedRef(value);
 
     expect(ref1.current).toBe(value);

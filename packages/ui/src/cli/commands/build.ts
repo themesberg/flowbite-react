@@ -1,6 +1,7 @@
 import fs from "fs/promises";
 import { allowedExtensions, automaticClassGenerationMessage, classListFilePath, excludeDirs } from "../consts";
 import { buildClassList } from "../utils/build-class-list";
+import { createInitLogger } from "../utils/create-init-logger";
 import { extractComponentImports } from "../utils/extract-component-imports";
 import { findFiles } from "../utils/find-files";
 import { getConfig } from "../utils/get-config";
@@ -13,11 +14,24 @@ export async function build() {
   try {
     const config = await getConfig();
     await setupInit(config);
+    const initLogger = createInitLogger(config);
 
     const importedComponents: string[] = [];
 
     if (config.components.length) {
       console.warn(automaticClassGenerationMessage);
+
+      if (initLogger.isCustomConfig) {
+        const files = await findFiles({
+          patterns: allowedExtensions.map((ext) => `**/*${ext}`),
+          excludeDirs,
+        });
+
+        for (const file of files) {
+          const content = await fs.readFile(file, "utf-8");
+          initLogger.check(file, content);
+        }
+      }
     } else {
       const files = await findFiles({
         patterns: allowedExtensions.map((ext) => `**/*${ext}`),
@@ -27,12 +41,15 @@ export async function build() {
       for (const file of files) {
         const content = await fs.readFile(file, "utf-8");
         const components = extractComponentImports(content);
+        initLogger.check(file, content);
 
         if (components.length) {
           importedComponents.push(...components);
         }
       }
     }
+
+    initLogger.log();
 
     const classList = buildClassList({
       components: config.components.length ? config.components : [...new Set(importedComponents)],
