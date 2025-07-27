@@ -7,4 +7,4 @@ Search for `<ThemeInit />` in the project and warn if it's not found instead of 
 ### Changes
 
 - during commands `build` and `dev` check files content for custom configuration and display a warning if `<ThemeInit />` is not found
-- switch tests `src/cli` `src/helpers` from `vitest` -> `bun:test`
+- switch tests in `src/cli` and `src/helpers` from `vitest` -> `bun:test`
