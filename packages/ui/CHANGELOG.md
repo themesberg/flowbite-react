@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.5
+
+### Patch Changes
+
+- [#1608](https://github.com/themesberg/flowbite-react/pull/1608) [`e1b5bb1`](https://github.com/themesberg/flowbite-react/commit/e1b5bb10b34b9d7fe77d19e1874c140558c054f9) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix: (node:50743) [DEP0190] DeprecationWarning
+
 ## 0.12.4
 
 ### Patch Changes
