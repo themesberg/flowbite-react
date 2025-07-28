@@ -200,7 +200,10 @@ describe("Components / Datepicker", () => {
 
     await userEvent.click(screen.getByRole("textbox"));
 
-    expect(screen.getByText(tomorrow.getDate())).toBeDisabled();
+    const dateButtons = screen.getAllByText(tomorrow.getDate().toString());
+    const disabledButton = dateButtons.find((button) => button.hasAttribute("disabled"));
+    expect(disabledButton).toBeInTheDocument();
+    expect(disabledButton).toBeDisabled();
   });
 
   it("should focus the input when ref.current.focus is called", () => {

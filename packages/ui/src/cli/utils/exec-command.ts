@@ -1,7 +1,7 @@
 import { spawn, type SpawnOptions } from "child_process";
 
 /**
- * Runs a shell command asynchronously and captures its output.
+ * Runs a command asynchronously and captures its output.
  *
  * @param {string} command - The command to execute (e.g., "npm").
  * @param {string[]} [args=[]] - Arguments for the command (e.g., ["install", "package-name"]).
@@ -15,7 +15,7 @@ export function execCommand(
   options: SpawnOptions = {},
 ): Promise<{ stdout: string; stderr: string; exitCode: number }> {
   return new Promise((resolve, reject) => {
-    const child = spawn(command, args, { ...options, shell: true });
+    const child = spawn(command, args, options);
 
     let stdout = "";
     let stderr = "";
