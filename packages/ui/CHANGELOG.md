@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.12.6
+
+### Patch Changes
+
+- [#1612](https://github.com/themesberg/flowbite-react/pull/1612) [`941a075`](https://github.com/themesberg/flowbite-react/commit/941a0758786a680b43c5c703ce9292b4a2781e14) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - Fix `nextjs` plugin to work on all environments
+
+  ## Changes
+
+  - fix(ui): `nextjs` plugin to run properly on `NODE_ENV` environments: `production`, `development` and `test`
+  - log file writes in `dev`
+
+  ## Breaking changes
+
+  `withFlowbiteReact` now always returns async configuration (see: [Async Configuration](https://nextjs.org/docs/app/api-reference/config/next-config-js#async-configuration)) so make sure to wrap any other HOC (higher-order-functions) such as `withContentlayer` because most of them do not forward pass async config arguments (eg: `phase, options`)
+
+  ```tsx
+  // ❌ not working
+  export default withContentlayer(withFlowbiteReact(nextConfig));
+
+  // ✅ working
+  export default withFlowbiteReact(withContentlayer(nextConfig));
+  ```
+
 ## 0.12.5
 
 ### Patch Changes
