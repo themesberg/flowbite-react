@@ -63,6 +63,7 @@ export async function dev() {
 
   if (!isEqual(classList, newClassList)) {
     classList = newClassList;
+    console.log(`Generating ${classListFilePath} file...`);
     await fs.writeFile(classListFilePath, JSON.stringify(classList, null, 2));
   }
 
@@ -106,6 +107,7 @@ export async function dev() {
 
     if (!isEqual(classList, newClassList)) {
       classList = newClassList;
+      console.log(`Generating ${classListFilePath} file...`);
       await fs.writeFile(classListFilePath, JSON.stringify(classList, null, 2));
     }
   }
