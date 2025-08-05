@@ -158,4 +158,4 @@ const nextConfig = {
   },
 };
 
-export default withContentlayer(withFlowbiteReact(nextConfig));
+export default withFlowbiteReact(withContentlayer(nextConfig));
