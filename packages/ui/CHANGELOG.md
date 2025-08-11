@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.7
+
+### Patch Changes
+
+- [#1615](https://github.com/themesberg/flowbite-react/pull/1615) [`50ae2ee`](https://github.com/themesberg/flowbite-react/commit/50ae2eeb147d3e6cb86c59c881762fa5874e3b20) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(ui/cli/plugins): `setup-plugin-bun` also detect `Bun.build`
+
 ## 0.12.6
 
 ### Patch Changes
