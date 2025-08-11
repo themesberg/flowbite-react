@@ -40,10 +40,14 @@ export function updateBuildConfig({
     visitCallExpression(path) {
       const { node } = path;
 
-      // Check if this is a build() call
+      // Check if this is a build() or Bun.build() call
       if (
-        node.callee.type === "Identifier" &&
-        node.callee.name === "build" &&
+        ((node.callee.type === "Identifier" && node.callee.name === "build") ||
+          (node.callee.type === "MemberExpression" &&
+            node.callee.object.type === "Identifier" &&
+            node.callee.object.name === "Bun" &&
+            node.callee.property.type === "Identifier" &&
+            node.callee.property.name === "build")) &&
         node.arguments.length > 0 &&
         node.arguments[0].type === "ObjectExpression"
       ) {

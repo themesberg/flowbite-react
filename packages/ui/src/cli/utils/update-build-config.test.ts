@@ -90,4 +90,32 @@ describe("updateBuildConfig", () => {
     expect(result).toContain('import customPlugin from "@custom/plugin"');
     expect(result).toMatch(/plugins:\s*\[\s*customPlugin\s*\]/);
   });
+
+  it("should handle config with Bun.build", () => {
+    const input = `
+      import { plugin } from './plugins';
+
+      const result = await Bun.build({
+        entrypoints,
+        outdir,
+        plugins: [plugin],
+        minify: true,
+        target: "browser",
+        sourcemap: "linked",
+        define: {
+          "process.env.NODE_ENV": JSON.stringify("production"),
+        },
+        ...cliConfig,
+      });
+    `;
+
+    const result = updateBuildConfig({
+      content: input,
+      pluginName: "flowbiteReact",
+      pluginImportPath: "flowbite-react/plugin/bun",
+    });
+
+    expect(result).toContain('import flowbiteReact from "flowbite-react/plugin/bun"');
+    expect(result).toMatch(/plugins:\s*\[\s*plugin,\s*flowbiteReact\s*\]/);
+  });
 });
