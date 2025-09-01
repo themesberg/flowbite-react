@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.8
+
+### Patch Changes
+
+- [#1621](https://github.com/themesberg/flowbite-react/pull/1621) [`c02a977`](https://github.com/themesberg/flowbite-react/commit/c02a97717a881ad6c6be96baaf703ba45260105d) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix: Error: spawn npm ENOENT
+
 ## 0.12.7
 
 ### Patch Changes
