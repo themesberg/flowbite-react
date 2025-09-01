@@ -29,7 +29,7 @@ export async function installPackage() {
         );
         const { command = "", args } = resolveCommand(pm.agent, "add", [`${packageName}@latest`]) ?? {};
         console.log(`Updating ${packageName} to latest version using ${pm.name}...`);
-        await execCommand(command, args);
+        await execCommand(withWindowsSupport(command), args);
       }
       return;
     }
