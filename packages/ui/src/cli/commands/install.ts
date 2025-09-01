@@ -29,7 +29,7 @@ export async function installPackage() {
         );
         const { command = "", args } = resolveCommand(pm.agent, "add", [`${packageName}@latest`]) ?? {};
         console.log(`Updating ${packageName} to latest version using ${pm.name}...`);
-        await execCommand(command, args);
+        await execCommand(withWindowsSupport(command), args);
       }
       return;
     }
@@ -37,8 +37,12 @@ export async function installPackage() {
     const { command = "", args } = resolveCommand(pm.agent, "add", [packageName]) ?? {};
 
     console.log(`Installing ${packageName} using ${pm.name}...`);
-    await execCommand(command, args);
+    await execCommand(withWindowsSupport(command), args);
   } catch (error) {
     console.error(`Failed to install ${packageName}:`, error);
   }
+}
+
+function withWindowsSupport(command: string): string {
+  return process.platform === "win32" ? `${command}.cmd` : command;
 }
