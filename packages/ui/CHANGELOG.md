@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.9
+
+### Patch Changes
+
+- [#1624](https://github.com/themesberg/flowbite-react/pull/1624) [`e2b007f`](https://github.com/themesberg/flowbite-react/commit/e2b007fbd28d17c33d9e246f2ba9d2eca3fef037) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(wrapDefaultExport): handle complex multiline exports
+
 ## 0.12.8
 
 ### Patch Changes
