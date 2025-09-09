@@ -45,7 +45,7 @@ export interface DropdownTheme {
 
 export interface DropdownProps
   extends Pick<FloatingProps, "placement" | "trigger">,
-    Omit<ButtonProps, keyof ThemingProps<DropdownTheme>>,
+    Omit<ButtonProps, keyof ThemingProps<DropdownTheme> | "onToggle">,
     ThemingProps<DropdownTheme> {
   arrowIcon?: boolean;
   dismissOnClick?: boolean;
@@ -54,6 +54,7 @@ export interface DropdownProps
   label?: ReactNode;
   enableTypeAhead?: boolean;
   renderTrigger?: (theme: DropdownTheme) => ReactElement;
+  onToggle?: (open: boolean) => void;
   "data-testid"?: string;
 }
 
@@ -130,6 +131,7 @@ export function Dropdown(props: DropdownProps) {
     dismissOnClick = true,
     enableTypeAhead = true,
     renderTrigger,
+    onToggle,
     ...restProps
   } = resolveProps(props, provider.props?.dropdown);
 
@@ -143,10 +145,21 @@ export function Dropdown(props: DropdownProps) {
   } = restProps;
   const dataTestId = restProps["data-testid"] || "flowbite-dropdown-target";
 
-  const handleSelect = useCallback((index: number | null) => {
-    setSelectedIndex(index);
-    setOpen(false);
-  }, []);
+  const handleOpenChange = useCallback(
+    (newOpen: boolean) => {
+      setOpen(newOpen);
+      onToggle?.(newOpen);
+    },
+    [onToggle],
+  );
+
+  const handleSelect = useCallback(
+    (index: number | null) => {
+      setSelectedIndex(index);
+      handleOpenChange(false);
+    },
+    [handleOpenChange],
+  );
 
   const handleTypeaheadMatch = useCallback(
     (index: number | null) => {
@@ -161,7 +174,10 @@ export function Dropdown(props: DropdownProps) {
 
   const { context, floatingStyles, refs } = useBaseFLoating<HTMLButtonElement>({
     open,
-    setOpen,
+    setOpen: (value) => {
+      const newOpen = typeof value === "function" ? value(open) : value;
+      handleOpenChange(newOpen);
+    },
     placement,
   });
 
