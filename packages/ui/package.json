@@ -262,8 +262,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@floating-ui/core": "1.6.9",
-    "@floating-ui/react": "0.27.3",
+    "@floating-ui/core": "1.7.3",
+    "@floating-ui/react": "0.27.16",
     "@iarna/toml": "2.2.5",
     "@typescript-eslint/typescript-estree": "8.46.2",
     "chokidar": "4.0.3",
@@ -301,11 +301,13 @@
     "estree-walker": "3.0.3",
     "jsdom": "25.0.1",
     "next": "^16.0.0",
+    "react-icons": "^5.5.0",
     "rolldown": "1.0.0-beta.45",
     "rollup": "4.52.5",
     "rollup-plugin-esbuild": "6.2.1",
     "rollup-plugin-use-client": "1.4.0",
     "typescript": "5.6.3",
+    "vite": "^7.1.12",
     "vitest": "2.1.8",
     "webpack": "5.102.1"
   },
