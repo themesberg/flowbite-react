@@ -13,6 +13,7 @@ const external = [
   "fs/promises",
   "klona/json",
   "module",
+  "next/constants.js",
   "package-manager-detector/commands",
   "package-manager-detector/detect",
   "path",
