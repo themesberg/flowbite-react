@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { CardProps } from "flowbite-react";
 import { Card } from "flowbite-react";
 

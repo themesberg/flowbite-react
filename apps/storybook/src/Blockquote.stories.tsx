@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { BlockquoteProps } from "flowbite-react";
 import { Blockquote } from "flowbite-react";
 
