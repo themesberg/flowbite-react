@@ -295,6 +295,7 @@
     "@vitest/coverage-v8": "2.1.8",
     "acorn": "8.15.0",
     "ast-types": "0.14.2",
+    "autoprefixer": "10.4.21",
     "esbuild": "0.25.11",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-vitest": "0.5.4",
