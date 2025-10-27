@@ -129,3 +129,17 @@ ItemClickHandler.args = {
     </>
   ),
 };
+
+export const onToggleHandler = Template.bind({});
+onToggleHandler.storyName = "onToggle handlers";
+onToggleHandler.args = {
+  onToggle: action("Dropdown toggled"),
+  children: (
+    <>
+      <DropdownItem onClick={action("Dashboard!")}>Dashboard</DropdownItem>
+      <DropdownItem onClick={action("Settings!")}>Settings</DropdownItem>
+      <DropdownItem onClick={action("Earnings!")}>Earnings</DropdownItem>
+      <DropdownItem onClick={action("Sign out!")}>Sign out</DropdownItem>
+    </>
+  ),
+};
