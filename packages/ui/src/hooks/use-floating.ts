@@ -19,7 +19,7 @@ export type UseBaseFloatingParams = {
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-export const useBaseFLoating = <Type extends ReferenceType>({
+export const useBaseFloating = <Type extends ReferenceType>({
   open,
   arrowRef,
   placement = "top",

@@ -17,7 +17,7 @@ import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
-import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
+import { useBaseFloating, useFloatingInteractions } from "../../hooks/use-floating";
 import { ChevronDownIcon } from "../../icons/chevron-down-icon";
 import { ChevronLeftIcon } from "../../icons/chevron-left-icon";
 import { ChevronRightIcon } from "../../icons/chevron-right-icon";
@@ -159,7 +159,7 @@ export function Dropdown(props: DropdownProps) {
     [open, handleSelect],
   );
 
-  const { context, floatingStyles, refs } = useBaseFLoating<HTMLButtonElement>({
+  const { context, floatingStyles, refs } = useBaseFloating<HTMLButtonElement>({
     open,
     setOpen,
     placement,
