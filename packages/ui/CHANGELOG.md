@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.10
+
+### Patch Changes
+
+- [#1631](https://github.com/themesberg/flowbite-react/pull/1631) [`615fda0`](https://github.com/themesberg/flowbite-react/commit/615fda072f6f12385d3984b5bad69b1bac6da53b) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - up packages
+
 ## 0.12.9
 
 ### Patch Changes
