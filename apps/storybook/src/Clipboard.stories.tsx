@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { ClipboardProps, ClipboardWithIconProps, ClipboardWithIconTextProps } from "flowbite-react";
 import { Clipboard, ClipboardWithIcon, ClipboardWithIconText } from "flowbite-react";
 

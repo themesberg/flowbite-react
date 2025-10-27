@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { ButtonGroupProps } from "flowbite-react";
 import { Button, ButtonGroup } from "flowbite-react";
 

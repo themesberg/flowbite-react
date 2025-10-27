@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import { Accordion, AccordionContent, AccordionPanel, AccordionTitle, type AccordionProps } from "flowbite-react";
 import { HiChevronDown, HiOutlineArrowCircleDown } from "react-icons/hi";
 

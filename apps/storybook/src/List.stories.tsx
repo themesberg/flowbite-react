@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import { Avatar, List, ListItem } from "flowbite-react";
 import type { ListProps } from "flowbite-react";
 import { HiCheckCircle } from "react-icons/hi";

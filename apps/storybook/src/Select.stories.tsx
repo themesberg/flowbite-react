@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { SelectProps } from "flowbite-react";
 import { Select } from "flowbite-react";
 import { BsFlagFill } from "react-icons/bs";
