@@ -301,6 +301,7 @@
     "eslint-plugin-vitest": "0.5.4",
     "estree-walker": "3.0.3",
     "jsdom": "25.0.1",
+    "minimatch": "^10.0.3",
     "next": "16.0.0",
     "react-icons": "5.5.0",
     "rolldown": "1.0.0-beta.45",
