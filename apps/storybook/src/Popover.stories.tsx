@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import { Button, Popover, type PopoverProps } from "flowbite-react";
 import { useState } from "react";
 
