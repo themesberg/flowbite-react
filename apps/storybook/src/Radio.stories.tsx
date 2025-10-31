@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { RadioProps } from "flowbite-react";
 import { Radio } from "flowbite-react";
 

@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { LabelProps } from "flowbite-react";
 import { Label } from "flowbite-react";
 
