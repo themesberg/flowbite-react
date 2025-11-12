@@ -9,6 +9,7 @@ import {
   getWeekDays,
   isDateEqual,
   isDateInRange,
+  isDateToday,
   Views,
 } from "../helpers";
 
@@ -23,6 +24,7 @@ export interface DatepickerViewsDaysTheme {
       base: string;
       selected: string;
       disabled: string;
+      today: string;
     };
   };
 }
@@ -62,6 +64,7 @@ export function DatepickerViewsDays() {
           const isSelected = selectedDate && isDateEqual(selectedDate, currentDate);
           const isDisabled =
             !isDateInRange(currentDate, minDate, maxDate) || (filterDate && !filterDate(currentDate, Views.Days));
+          const isToday = isDateToday(currentDate);
 
           return (
             <button
@@ -70,6 +73,7 @@ export function DatepickerViewsDays() {
               type="button"
               className={twMerge(
                 theme.items.item.base,
+                isToday && theme.items.item.today,
                 isSelected && theme.items.item.selected,
                 isDisabled && theme.items.item.disabled,
               )}
