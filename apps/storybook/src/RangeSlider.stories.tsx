@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { RangeSliderProps } from "flowbite-react";
 import { RangeSlider, rangeSliderTheme } from "flowbite-react";
 

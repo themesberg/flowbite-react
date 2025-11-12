@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { ToggleSwitchProps } from "flowbite-react";
 import { ToggleSwitch, toggleSwitchTheme } from "flowbite-react";
 import { useState } from "react";

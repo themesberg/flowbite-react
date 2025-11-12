@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { AlertProps } from "flowbite-react";
 import { Alert, alertTheme } from "flowbite-react";
 import { HiEye, HiInformationCircle } from "react-icons/hi";

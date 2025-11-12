@@ -1,8 +1,8 @@
-import { action } from "@storybook/addon-actions";
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import { Button, Checkbox, Label, Modal, ModalBody, ModalFooter, ModalHeader, TextInput } from "flowbite-react";
 import type { ModalProps } from "flowbite-react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { action } from "storybook/actions";
 
 export default {
   title: "Components/Modal",
