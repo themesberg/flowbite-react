@@ -140,3 +140,26 @@ export const colors = {
   ...baseColors,
   ...semanticColors,
 } as const;
+
+export type Colors = typeof colors;
+export type ColorName = keyof Colors;
+export type ShadeName<C extends ColorName = ColorName> = keyof Colors[C];
+export type ColorVariable = `--color-${ColorName}-${ShadeName}`;
+export type ColorsAsVariables = Record<ColorVariable, string>;
+export type ColorsAsVariablesRef = Record<ColorName, Record<ShadeName<ColorName>, string>>;
+
+export const colorsAsVariables = {} as ColorsAsVariables;
+export const colorsAsVariablesRef = {} as ColorsAsVariablesRef;
+
+for (const key in colors) {
+  const name = key as ColorName;
+  const color = colors[name];
+  colorsAsVariablesRef[name] = {} as ColorsAsVariablesRef[typeof name];
+  for (const key in color) {
+    const shade = key as unknown as ShadeName<typeof name>;
+    colorsAsVariables[`--color-${name}-${shade}` as const] = color[shade];
+    colorsAsVariablesRef[name][shade] =
+      // add fallback to display Tailwind CSS intellisense color in IDE
+      `var(--color-${name}-${shade}, ${color[shade]})`;
+  }
+}

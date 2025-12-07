@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { colors } from "./colors";
+import { colorsAsVariablesRef } from "./colors";
 
 export const backgroundImage = {
   "arrow-down-icon":
@@ -19,5 +19,5 @@ export const boxShadow = {
 export const theme: Config["theme"] = {
   backgroundImage,
   boxShadow,
-  colors,
+  colors: colorsAsVariablesRef,
 };
