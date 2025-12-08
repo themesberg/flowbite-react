@@ -11,7 +11,6 @@ export default (): CliPlugin<AppTools> => ({
         await build();
       },
       async beforeDev() {
-        await build();
         await dev();
       },
     };

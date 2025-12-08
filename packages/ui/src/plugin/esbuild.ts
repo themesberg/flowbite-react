@@ -11,10 +11,11 @@ export default (): Plugin => ({
     pluginBuild.onStart(async () => {
       if (!registered) {
         registered = true;
-        await build();
 
         // assume production build when `initialOptions.minify = true`
-        if (!pluginBuild.initialOptions.minify) {
+        if (pluginBuild.initialOptions.minify) {
+          await build();
+        } else {
           dev();
         }
       }
