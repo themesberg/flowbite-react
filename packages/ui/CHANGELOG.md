@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.12
+
+### Patch Changes
+
+- [#1637](https://github.com/themesberg/flowbite-react/pull/1637) [`7ae1bb7`](https://github.com/themesberg/flowbite-react/commit/7ae1bb74b132bca20f3891ac2768d0f0975bdfdb) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - remove redundant `build` CLI command invocation
+
 ## 0.12.11
 
 ### Patch Changes
