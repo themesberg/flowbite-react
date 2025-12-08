@@ -1,6 +1,6 @@
 {
   "lockfileVersion": 1,
-  "configVersion": 0,
+  "configVersion": 1,
   "workspaces": {
     "": {
       "name": "root",
@@ -109,7 +109,7 @@
     },
     "packages/ui": {
       "name": "flowbite-react",
-      "version": "0.12.11",
+      "version": "0.12.12",
       "bin": {
         "flowbite-react": "./dist/cli/bin.js",
       },
