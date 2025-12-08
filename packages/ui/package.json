@@ -150,7 +150,8 @@
       "require": {
         "types": "./dist/plugin/tailwindcss/index.d.cts",
         "default": "./dist/plugin/tailwindcss/index.cjs"
-      }
+      },
+      "style": "./dist/plugin/tailwindcss/index.css"
     },
     "./plugin/tailwindcss/*": {
       "import": {
@@ -252,10 +253,11 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "generate-metadata": "bun scripts/generate-metadata.ts",
+    "generate-tailwind-plugin-css-file": "bun scripts/generate-tailwind-plugin-css-file.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",
-    "prepare": "bun run generate-metadata",
+    "prepare": "bun run generate-metadata && bun run generate-tailwind-plugin-css-file",
     "prepublishOnly": "bun run build",
     "test": "bun test scripts src/cli src/helpers && vitest",
     "test:coverage": "vitest run --coverage",
