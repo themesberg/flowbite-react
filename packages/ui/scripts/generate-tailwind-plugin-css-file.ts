@@ -20,7 +20,7 @@ for (const colorName in colors) {
 }
 
 const BACKGROUND_IMAGES = Object.entries(backgroundImage)
-  .map(([name, value]) => `--bg-${name}: ${value};`)
+  .map(([name, value]) => `--background-image-${name}: ${value};`)
   .join("\n");
 
 const SHADOWS = Object.entries(boxShadow)
