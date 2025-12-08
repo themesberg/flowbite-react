@@ -55,6 +55,7 @@ export default {
   plugins: [
     cleanOutputDir(),
     generateMetadata(),
+    generateTailwindPluginCssFile(),
     esbuild({
       sourceMap: false,
     }),
@@ -89,6 +90,15 @@ function generateMetadata() {
     name: "generate-metadata",
     async buildStart() {
       await $`bun run generate-metadata`;
+    },
+  };
+}
+
+function generateTailwindPluginCssFile() {
+  return {
+    name: "generate-tailwind-plugin-css-file",
+    async buildStart() {
+      await $`bun run generate-tailwind-plugin-css-file`;
     },
   };
 }
