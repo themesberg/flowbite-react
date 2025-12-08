@@ -74,13 +74,17 @@ async function setupTailwindV4() {
         .join(path.relative(path.dirname(file), process.cwd()), classListFilePath)
         .replace(/\\/g, "/");
 
-      const pluginRegex = new RegExp(
+      const pluginRegex_OLD = new RegExp(
         `@plugin\\s+['"](${pluginDirectivePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})['"](;|\\s|$)`,
+      );
+      const pluginRegex = new RegExp(
+        `@import\\s+['"](${pluginDirectivePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})['"](;|\\s|$)`,
       );
       const sourceRegex = new RegExp(
         `@source\\s+['"](${sourceDirectivePath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})['"](;|\\s|$)`,
       );
 
+      const hasPluginDirective_OLD = pluginRegex_OLD.test(content);
       const hasPluginDirective = pluginRegex.test(content);
       const hasSourceDirective = sourceRegex.test(content);
 
@@ -88,9 +92,17 @@ async function setupTailwindV4() {
         continue;
       }
 
+      if (hasPluginDirective_OLD) {
+        const pluginImportIndex = lines.findIndex((line) => pluginRegex_OLD.test(line));
+        if (pluginImportIndex !== -1) {
+          console.log(`Removing old flowbite-react plugin import directive from ${file}...`);
+          lines.splice(pluginImportIndex, 1);
+        }
+      }
+
       const directivesToAdd = [];
       if (!hasPluginDirective) {
-        const pluginDirective = `@plugin ${quoteType}${pluginDirectivePath}${quoteType};`;
+        const pluginDirective = `@import ${quoteType}${pluginDirectivePath}${quoteType};`;
         directivesToAdd.push(pluginDirective);
       }
       if (!hasSourceDirective) {

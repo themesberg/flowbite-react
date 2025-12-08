@@ -4,8 +4,10 @@ import esbuild from "rollup-plugin-esbuild";
 import { rollupPluginUseClient } from "rollup-plugin-use-client";
 import packageJson from "./package.json";
 
+const tailwindPluginCssFile = "plugin/tailwindcss/index.css";
+
 let entries = await Array.fromAsync(new Glob("src/**/*").scan());
-entries = entries.filter((path) => !path.includes(".test.")).sort();
+entries = entries.filter((path) => !path.includes(".test.") && !path.includes(tailwindPluginCssFile)).sort();
 
 const external = [
   "ast-types",
@@ -57,6 +59,7 @@ export default {
       sourceMap: false,
     }),
     rollupPluginUseClient(),
+    copyTailwindPluginCssFile(),
     generateDts(),
     generateRspackPlugin(),
   ],
@@ -86,6 +89,15 @@ function generateMetadata() {
     name: "generate-metadata",
     async buildStart() {
       await $`bun run generate-metadata`;
+    },
+  };
+}
+
+function copyTailwindPluginCssFile() {
+  return {
+    name: "copy-tailwind-plugin-css-file",
+    async buildEnd() {
+      await Bun.write(`${outputDir}/${tailwindPluginCssFile}`, await Bun.file(`src/${tailwindPluginCssFile}`).text());
     },
   };
 }

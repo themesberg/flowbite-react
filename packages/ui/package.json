@@ -150,7 +150,8 @@
       "require": {
         "types": "./dist/plugin/tailwindcss/index.d.cts",
         "default": "./dist/plugin/tailwindcss/index.cjs"
-      }
+      },
+      "style": "./dist/plugin/tailwindcss/index.css"
     },
     "./plugin/tailwindcss/*": {
       "import": {
