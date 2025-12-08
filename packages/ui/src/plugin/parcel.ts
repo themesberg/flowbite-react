@@ -8,7 +8,6 @@ export default new Reporter({
       await build();
     }
     if (event.type === "watchStart") {
-      await build();
       await dev();
     }
   },
