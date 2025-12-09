@@ -1,6 +1,6 @@
 {
   "name": "flowbite-react",
-  "version": "0.12.10",
+  "version": "0.12.12",
   "description": "Official React components built for Flowbite and Tailwind CSS",
   "keywords": [
     "design-system",
@@ -150,7 +150,8 @@
       "require": {
         "types": "./dist/plugin/tailwindcss/index.d.cts",
         "default": "./dist/plugin/tailwindcss/index.cjs"
-      }
+      },
+      "style": "./dist/plugin/tailwindcss/index.css"
     },
     "./plugin/tailwindcss/*": {
       "import": {
@@ -252,10 +253,11 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "generate-metadata": "bun scripts/generate-metadata.ts",
+    "generate-tailwind-plugin-css-file": "bun scripts/generate-tailwind-plugin-css-file.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepack": "clean-package",
-    "prepare": "bun run generate-metadata",
+    "prepare": "bun run generate-metadata && bun run generate-tailwind-plugin-css-file",
     "prepublishOnly": "bun run build",
     "test": "bun test scripts src/cli src/helpers && vitest",
     "test:coverage": "vitest run --coverage",
@@ -302,7 +304,7 @@
     "estree-walker": "3.0.3",
     "jsdom": "25.0.1",
     "minimatch": "10.0.3",
-    "next": "16.0.0",
+    "next": "16.0.7",
     "react-icons": "5.5.0",
     "rolldown": "1.0.0-beta.45",
     "rollup": "4.52.5",

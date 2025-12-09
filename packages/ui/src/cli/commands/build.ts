@@ -7,6 +7,7 @@ import { findFiles } from "../utils/find-files";
 import { getConfig } from "../utils/get-config";
 import { setupInit } from "./setup-init";
 import { setupOutputDirectory } from "./setup-output-directory";
+import { setupTailwind } from "./setup-tailwind";
 
 export async function build() {
   await setupOutputDirectory();
@@ -14,6 +15,7 @@ export async function build() {
   try {
     const config = await getConfig();
     await setupInit(config);
+    await setupTailwind();
     const initLogger = createInitLogger(config);
 
     const importedComponents: string[] = [];
