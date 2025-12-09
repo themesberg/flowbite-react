@@ -44,6 +44,11 @@ export function isDateEqual(date: Date, selectedDate: Date): boolean {
   return date.getTime() === selectedDate.getTime();
 }
 
+export function isDateToday(date: Date): boolean {
+  const today = new Date();
+  return isDateEqual(date, today);
+}
+
 export function isMonthEqual(date: Date, selectedDate: Date): boolean {
   return date.getMonth() === selectedDate.getMonth();
 }

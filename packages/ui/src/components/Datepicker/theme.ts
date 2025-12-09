@@ -49,6 +49,7 @@ export const datePickerTheme = createTheme<DatepickerTheme>({
           base: "block flex-1 cursor-pointer rounded-lg border-0 text-center text-sm font-semibold leading-9 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-600",
           selected: "bg-primary-700 text-white hover:bg-primary-600",
           disabled: "text-gray-500",
+          today: "",
         },
       },
     },
