@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.13
+
+### Patch Changes
+
+- [#1627](https://github.com/themesberg/flowbite-react/pull/1627) [`3a08772`](https://github.com/themesberg/flowbite-react/commit/3a08772d5857988a02c458b053a4cf406abd2d00) Thanks [@jonasho](https://github.com/jonasho)! - add theme option for today in datepicker
+
 ## 0.12.12
 
 ### Patch Changes
