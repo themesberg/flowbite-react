@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { KbdProps } from "flowbite-react";
 import { Kbd } from "flowbite-react";
 import { MdKeyboardArrowDown, MdKeyboardCommandKey } from "react-icons/md";

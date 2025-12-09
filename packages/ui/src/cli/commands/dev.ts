@@ -21,11 +21,13 @@ import { getConfig } from "../utils/get-config";
 import { setupGitIgnore } from "./setup-gitignore";
 import { setupInit } from "./setup-init";
 import { setupOutputDirectory } from "./setup-output-directory";
+import { setupTailwind } from "./setup-tailwind";
 
 export async function dev() {
   await setupOutputDirectory();
   let config = await getConfig();
   await setupInit(config);
+  await setupTailwind();
   const initLogger = createInitLogger(config);
 
   if (config.components.length) {

@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { TextInputProps } from "flowbite-react";
 import { TextInput } from "flowbite-react";
 

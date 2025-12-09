@@ -1,5 +1,39 @@
 # Changelog
 
+## 0.12.12
+
+### Patch Changes
+
+- [#1637](https://github.com/themesberg/flowbite-react/pull/1637) [`7ae1bb7`](https://github.com/themesberg/flowbite-react/commit/7ae1bb74b132bca20f3891ac2768d0f0975bdfdb) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - remove redundant `build` CLI command invocation
+
+## 0.12.11
+
+### Patch Changes
+
+- [#1635](https://github.com/themesberg/flowbite-react/pull/1635) [`2024216`](https://github.com/themesberg/flowbite-react/commit/20242167a0c235344c6669a234d6fbb3b1992b60) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - Use CSS variables for `tailwindcss@v4` instead of inline colors.
+
+  ### Changes
+  - [x] automatically generate `tailwindcss@v4` config file
+  - [x] use css variables for the `v4` config
+
+  ### Breaking changes
+
+  Only applicable to `tailwindcss@v4`:
+
+  before
+  `@plugin "flowbite-react/plugins/tailwindcss"` - this points to the legacy JS plugin (that uses inline colors)
+
+  after
+  `@import "flowbite-react/plugins/tailwindcss"` - this points to the CSS-based plugin (that uses CSS variables)
+
+  The breaking change is self-managed once upgrading `flowbite-react` and starting/building the app, which runs the `flowbite-react dev` or respectively `flowbite-react build` command that triggers the patch/fix/migration automatically.
+
+## 0.12.10
+
+### Patch Changes
+
+- [#1631](https://github.com/themesberg/flowbite-react/pull/1631) [`615fda0`](https://github.com/themesberg/flowbite-react/commit/615fda072f6f12385d3984b5bad69b1bac6da53b) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - up packages
+
 ## 0.12.9
 
 ### Patch Changes
@@ -25,7 +59,6 @@
 - [#1612](https://github.com/themesberg/flowbite-react/pull/1612) [`941a075`](https://github.com/themesberg/flowbite-react/commit/941a0758786a680b43c5c703ce9292b4a2781e14) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - Fix `nextjs` plugin to work on all environments
 
   ## Changes
-
   - fix(ui): `nextjs` plugin to run properly on `NODE_ENV` environments: `production`, `development` and `test`
   - log file writes in `dev`
 
@@ -56,7 +89,6 @@
 - [#1605](https://github.com/themesberg/flowbite-react/pull/1605) [`262cde0`](https://github.com/themesberg/flowbite-react/commit/262cde0defd27ac0496cbb5a4f0dc08261f6e094) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - Search for `<ThemeInit />` in the project and warn if it's not found instead of warning all the time
 
   ### Changes
-
   - during commands `build` and `dev` check files content for custom configuration and display a warning if `<ThemeInit />` is not found
   - switch tests in `src/cli` and `src/helpers` from `vitest` -> `bun:test`
 
@@ -67,7 +99,6 @@
 - [#1600](https://github.com/themesberg/flowbite-react/pull/1600) [`12d3290`](https://github.com/themesberg/flowbite-react/commit/12d32902e5f01867e49927d0c508e6ad184686cd) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(ui/cli/setup-init): nextjs warning
 
   ### Changes
-
   - [x] rename `config` -> `CONFIG` export in `.flowbite-react/init.(jsx|tsx)`
 
 ## 0.12.2
@@ -75,7 +106,6 @@
 ### Patch Changes
 
 - [#1596](https://github.com/themesberg/flowbite-react/pull/1596) [`ab26436`](https://github.com/themesberg/flowbite-react/commit/ab26436dab2de339c4cdc461317fb2548d554be0) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - refactor(setup-init): relax checks on React imports due to IDE formatters removing it if not necessary
-
   - filter out `import React from "react"` from the AST when parsing current and new content
 
 ## 0.12.1
@@ -95,11 +125,9 @@
 ### Minor Changes
 
 - [#1566](https://github.com/themesberg/flowbite-react/pull/1566) [`7b79b18`](https://github.com/themesberg/flowbite-react/commit/7b79b18e63bc1bf25250186a55c439a534b8a254) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - # Breaking changes
-
   - removed `flowbite-react patch` CLI command
 
   ## Changes
-
   - `flowbite-react/.gitignore`, `flowbite-react/config.json` self manages, regenerates and repairs
   - new generated file `init.(jsx|tsx)` in `.flowbite-react/` directory that syncs up values from `config.json` that also are needed in React app runtime (similar to how a React context works)
     - synced on CLI commands: `init`, `build`, `dev`, `register`
@@ -113,7 +141,6 @@
   - add Tailwind CSS version support in theme mode handling and fix dark theme toggle class in Tailwind CSS v4
 
   ## Migration Guide
-
   1. Remove `flowbite-react patch` from your `package.json`
 
      ```diff
@@ -169,7 +196,6 @@
 ### Patch Changes
 
 - [#1543](https://github.com/themesberg/flowbite-react/pull/1543) [`868e485`](https://github.com/themesberg/flowbite-react/commit/868e4857ad91e67b791bbef290b6334c7595639c) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - add new `migrate` CLI command
-
   - add new transformer from compound components to singular imports
 
     ```tsx
@@ -199,7 +225,6 @@
 - [#1541](https://github.com/themesberg/flowbite-react/pull/1541) [`af49b10`](https://github.com/themesberg/flowbite-react/commit/af49b100f8412f1c8fcbb1ccb2c7d97e22c47d28) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(ui~cli): path normalzation for windows support (setup plugins paths)
 
 - [#1539](https://github.com/themesberg/flowbite-react/pull/1539) [`6caecce`](https://github.com/themesberg/flowbite-react/commit/6caeccedd7f5002c879f3c6c6ce6c6b38dcd7956) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - refactor(Alert): `onDismiss` prop
-
   - Changed the type of `onDismiss` prop in Alert component from boolean to a function type
   - Removed `onDismiss` default values from various Alert stories to align with the updated prop type
 
@@ -216,7 +241,6 @@
 - [#1498](https://github.com/themesberg/flowbite-react/pull/1498) [`169b5dd`](https://github.com/themesberg/flowbite-react/commit/169b5dd9ecae6878a411d4ec90d253265a5bba86) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - ## Summary
 
   This release brings massive improvements to Flowbite React's capabilities, introducing the first automatic Tailwind CSS class generation system and native support for both Tailwind CSS v3 and v4. Key highlights include:
-
   - **Automatic Class Generation**: First UI library to automatically detect and generate Tailwind CSS classes
   - **Tailwind CSS v4 Support**: Native compatibility with both Tailwind CSS v3 and v4
   - **Comprehensive Prefix Support**: Complete system for customizing class prefixes
@@ -226,7 +250,6 @@
   ## New Engine
 
   ### Automatic Class Generation
-
   - First UI library to implement automatic Tailwind CSS class detection
   - Only includes styles for components you actually import and use
   - Works like tree-shaking but for Tailwind CSS classes
@@ -242,7 +265,6 @@
   ```
 
   This single command:
-
   - Detects your project's environment
   - Installs necessary dependencies
   - Configures Tailwind CSS
@@ -253,7 +275,6 @@
   See our [quickstart guide](https://flowbite-react.com/docs/getting-started/quickstart) for detailed setup instructions.
 
   ### Smart Version Handling
-
   - Automatic detection of Tailwind CSS version (v3 or v4)
   - No manual configuration needed
   - Adapts class generation to version-specific syntax
@@ -264,7 +285,6 @@
   ## Major Features
 
   ### 1. Enhanced Integration Support
-
   - Added new framework integration guides and templates:
     - Blitz.js
     - Bun
@@ -285,7 +305,6 @@
   Explore all integration guides in our [framework guides section](https://flowbite-react.com/docs/guides).
 
   ### 2. Prefix Support System
-
   - Added support for customizing Tailwind CSS class prefixes
   - Different configuration options for Tailwind CSS v3 and v4:
 
@@ -328,7 +347,6 @@
   Learn more about prefix configuration in our [prefix documentation](https://flowbite-react.com/docs/customize/prefix).
 
   ### 3. CLI Enhancements
-
   - New project initialization command:
 
     ```bash
@@ -338,13 +356,11 @@
   Learn more about CLI features in our [CLI documentation](https://flowbite-react.com/docs/getting-started/cli).
 
   ### 4. Tailwind CSS Version Compatibility
-
   - Automatic version detection between Tailwind CSS v3 and v4
   - Seamless support for both versions without manual configuration
   - Improved class merging and prefix handling for each version
 
   ### 5. Configuration System
-
   - New `.flowbite-react/config.json` for centralized configuration (automatically generated):
 
     ```json
@@ -364,7 +380,6 @@
   ### 6. Custom Components
 
   #### Component Creation
-
   - Added CLI command for component generation:
 
     ```bash
@@ -377,7 +392,6 @@
     - TypeScript/JavaScript selection
 
   #### Theme System Integration
-
   - Full theming system support for custom components:
     - Global theme inheritance
     - Component-level overrides
@@ -388,26 +402,22 @@
   ## Technical Improvements
 
   ### Build System
-
   - Improved bundler compatibility and performance
   - Added support for tree-shaking
   - Enhanced TypeScript configuration
   - Optimized production builds
 
   ### Component Updates
-
   - Improved component primitives
   - Enhanced type safety across components
   - Added extensive test coverage
 
   ### Developer Experience
-
   - Added comprehensive TypeScript types
   - Improved VSCode integration
   - Enhanced debugging capabilities
 
   ### Exports and Package Structure
-
   - All components, hooks, and utilities are now exported from the root package
   - Every internal part and primitive is exposed for advanced customization
   - Improved module resolution with better tree-shaking support
@@ -417,7 +427,6 @@
   ## Breaking Changes
 
   ### Component Changes
-
   - Deprecated compound components in favor of simpler component primitives:
 
     ```tsx
@@ -447,7 +456,6 @@
     - Moved theme size styles from inner span to root button element
 
   ### Theme System
-
   - Changed theme application behavior:
     - Enhanced `ThemeProvider` with deep merging of themes
     - Added support for granular theme resets using `clearTheme`
@@ -461,21 +469,18 @@
   Learn more about theming in our [theme documentation](https://flowbite-react.com/docs/customize/theme).
 
   ### Package and Build System
-
   - Switched package type to `module`
   - Added new entry points for better module resolution
   - Removed `react-icons` dependency in favor of custom icon components
   - Added support for [Yarn Plug'n'Play (PnP)](https://yarnpkg.com/features/pnp):
 
   ### API Changes
-
   - Deprecated `<Flowbite>` component in favor of `ThemeProvider`
   - Removed `getStore()` export and limited to finite actions and getters
   - Added `forwardRef` to almost all components
   - Removed redundant `Flowbite` prefix from type names
 
   ## Migration Guide
-
   1. Update to the latest version:
 
      ```bash
@@ -489,7 +494,6 @@
      ```
 
      This will:
-
      - Set up the `.flowbite-react` directory
      - Configure your bundler
      - Update VSCode settings
@@ -516,7 +520,6 @@
   ## Fixed Issues and Pull Requests
 
   ### Resolved Issues
-
   - [#339](https://github.com/themesberg/flowbite-react/issues/339)
   - [#1197](https://github.com/themesberg/flowbite-react/issues/1197)
   - [#1286](https://github.com/themesberg/flowbite-react/issues/1286)
@@ -529,11 +532,9 @@
   - [#1523](https://github.com/themesberg/flowbite-react/issues/1523)
 
   ### Resolved Pull Requests
-
   - [#1155](https://github.com/themesberg/flowbite-react/pull/1155)
 
   ## Technical Requirements
-
   - Node.js 16+
   - Tailwind CSS v3 or v4
   - React 18+
@@ -541,7 +542,6 @@
   For detailed documentation on all new features and integrations, visit:
 
   ## Core Documentation
-
   - [Quickstart (Updated)](https://flowbite-react.com/docs/getting-started/quickstart)
   - [CLI (Updated)](https://flowbite-react.com/docs/getting-started/cli)
   - [Compatibility (New)](https://flowbite-react.com/docs/getting-started/compatibility)
@@ -549,7 +549,6 @@
   - [Server Components (Updated)](https://flowbite-react.com/docs/getting-started/server-components)
 
   ## Customization
-
   - [Theme (Updated)](https://flowbite-react.com/docs/customize/theme)
   - [Config (New)](https://flowbite-react.com/docs/customize/config)
   - [Prefix (New)](https://flowbite-react.com/docs/customize/prefix)
@@ -563,7 +562,6 @@
 - [#1190](https://github.com/themesberg/flowbite-react/pull/1190) [`25bb353`](https://github.com/themesberg/flowbite-react/commit/25bb353685c595c2b05f1a355a381c28fd57526a) Thanks [@ddiasfront](https://github.com/ddiasfront)! - ### Datepicker Component Updates
 
   The Datepicker has been enhanced with several improvements:
-
   1. **Controlled Inputs**: Supports controlled inputs via `value` and `defaultValue` props, enabling programmatic date updates without manual clicks.
   2. **State Management**: Optimized internal state management using `useMemo` and `useEffect`.
   3. **Documentation**: Added sections in documentation for controlled usage and handling `null` values.
@@ -571,7 +569,6 @@
   5. **Storybook**: Improved stories, showcasing different states (controlled/uncontrolled).
 
   ### Files Updated:
-
   - `apps/web/content/docs/components/datepicker.mdx`: Added controlled usage section.
   - `Datepicker.spec.tsx`: Added unit tests.
   - `Datepicker.stories.tsx`: Enhanced story variants.
@@ -600,7 +597,6 @@
 - [#1430](https://github.com/themesberg/flowbite-react/pull/1430) [`83a055a`](https://github.com/themesberg/flowbite-react/commit/83a055ac66c5d3ac9f28b17361278465d87b5ddc) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(ui): timeline - content - separate `TimelineContent` base styles from horizontal/vertical styles
 
 - [#1428](https://github.com/themesberg/flowbite-react/pull/1428) [`b963b2c`](https://github.com/themesberg/flowbite-react/commit/b963b2c1be555522ea1a6bbc0d25c614ef75e17c) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - fix(ui): Toggle Switch - styles
-
   - RTL
   - broken switch when label too long
   - bring back animations
@@ -624,7 +620,6 @@
   These long-awaited components from the [vanilla Flowbite library](https://flowbite.com) have finally made their way to Flowbite React. Everything you need to get started - including full theme support, and the full set of examples to match the main Flowbite library - are ready at your fingertips.
 
   ### Changes
-
   - added Drawer component
   - added Mega menu component
 
@@ -641,7 +636,6 @@
   After evaluating various tools including `tsup`, `tshy`, and `bun build`, we chose `rollup` with the `esbuild` plugin for transpiling due to its performance and flexibility. We continue to use `tsc` solely for generating `*.d.ts` declaration files.
 
   ### Changes
-
   - added `rollup` + `esbuild` for transpiling files
     - all files in the `cjs` directory now have `.cjs` extension
     - all files in the `esm` directory now have `.mjs` extension

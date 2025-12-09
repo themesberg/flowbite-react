@@ -7,10 +7,10 @@ export default {
   name: pluginName,
   setup({ onStart, config }) {
     onStart(async () => {
-      await build();
-
       // assume production build when `config.minify = true`
-      if (!config.minify) {
+      if (config.minify) {
+        await build();
+      } else {
         await dev();
       }
     });

@@ -16,7 +16,6 @@ export default (): RspackPluginInstance => ({
         await build();
       } else if (isDev && !devServerStarted) {
         devServerStarted = true;
-        await build();
         await dev();
       }
     });

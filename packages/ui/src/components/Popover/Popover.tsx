@@ -7,7 +7,7 @@ import { cloneElement, isValidElement, useMemo, useRef, useState } from "react";
 import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
-import { useBaseFLoating, useFloatingInteractions } from "../../hooks/use-floating";
+import { useBaseFloating, useFloatingInteractions } from "../../hooks/use-floating";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import type { FloatingArrowTheme } from "../Floating";
@@ -57,7 +57,7 @@ export function Popover(props: PopoverProps) {
   const open = controlledOpen ?? uncontrolledOpen;
   const setOpen = setControlledOpen ?? setUncontrolledOpen;
 
-  const floatingProps = useBaseFLoating({
+  const floatingProps = useBaseFloating({
     open,
     placement: theirPlacement,
     arrowRef,

@@ -1,4 +1,4 @@
-import type { ElementProps, Placement, ReferenceType, UseRoleProps } from "@floating-ui/react";
+import type { ElementProps, Placement, ReferenceType, UseFloatingReturn, UseRoleProps } from "@floating-ui/react";
 import {
   autoUpdate,
   safePolygon,
@@ -19,12 +19,12 @@ export type UseBaseFloatingParams = {
   setOpen: Dispatch<SetStateAction<boolean>>;
 };
 
-export const useBaseFLoating = <Type extends ReferenceType>({
+export const useBaseFloating = <Type extends ReferenceType>({
   open,
   arrowRef,
   placement = "top",
   setOpen,
-}: UseBaseFloatingParams) => {
+}: UseBaseFloatingParams): UseFloatingReturn<Type> => {
   return useFloating<Type>({
     placement: getPlacement({ placement }),
     open,

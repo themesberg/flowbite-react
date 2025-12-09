@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { CarouselProps } from "flowbite-react";
 import { Carousel } from "flowbite-react";
 

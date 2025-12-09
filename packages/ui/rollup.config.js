@@ -4,8 +4,10 @@ import esbuild from "rollup-plugin-esbuild";
 import { rollupPluginUseClient } from "rollup-plugin-use-client";
 import packageJson from "./package.json";
 
+const tailwindPluginCssFile = "plugin/tailwindcss/index.css";
+
 let entries = await Array.fromAsync(new Glob("src/**/*").scan());
-entries = entries.filter((path) => !path.includes(".test.")).sort();
+entries = entries.filter((path) => !path.includes(".test.") && !path.includes(tailwindPluginCssFile)).sort();
 
 const external = [
   "ast-types",
@@ -13,6 +15,7 @@ const external = [
   "fs/promises",
   "klona/json",
   "module",
+  "next/constants.js",
   "package-manager-detector/commands",
   "package-manager-detector/detect",
   "path",
@@ -52,10 +55,12 @@ export default {
   plugins: [
     cleanOutputDir(),
     generateMetadata(),
+    generateTailwindPluginCssFile(),
     esbuild({
       sourceMap: false,
     }),
     rollupPluginUseClient(),
+    copyTailwindPluginCssFile(),
     generateDts(),
     generateRspackPlugin(),
   ],
@@ -85,6 +90,24 @@ function generateMetadata() {
     name: "generate-metadata",
     async buildStart() {
       await $`bun run generate-metadata`;
+    },
+  };
+}
+
+function generateTailwindPluginCssFile() {
+  return {
+    name: "generate-tailwind-plugin-css-file",
+    async buildStart() {
+      await $`bun run generate-tailwind-plugin-css-file`;
+    },
+  };
+}
+
+function copyTailwindPluginCssFile() {
+  return {
+    name: "copy-tailwind-plugin-css-file",
+    async buildEnd() {
+      await Bun.write(`${outputDir}/${tailwindPluginCssFile}`, await Bun.file(`src/${tailwindPluginCssFile}`).text());
     },
   };
 }

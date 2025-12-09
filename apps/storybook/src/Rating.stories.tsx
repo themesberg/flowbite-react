@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { RatingProps } from "flowbite-react";
 import { Rating, RatingAdvanced, RatingStar } from "flowbite-react";
 

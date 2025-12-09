@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import type { AvatarGroupProps } from "flowbite-react";
 import { Avatar, AvatarGroup, AvatarGroupCounter } from "flowbite-react";
 
