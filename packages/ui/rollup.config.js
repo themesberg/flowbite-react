@@ -7,7 +7,9 @@ import packageJson from "./package.json";
 const tailwindPluginCssFile = "plugin/tailwindcss/index.css";
 
 let entries = await Array.fromAsync(new Glob("src/**/*").scan());
-entries = entries.filter((path) => !path.includes(".test.") && !path.includes(tailwindPluginCssFile)).sort();
+entries = entries
+  .filter((path) => !path.includes(".test.") && !path.replace(/\\/g, "/").includes(tailwindPluginCssFile))
+  .sort();
 
 const external = [
   "ast-types",
