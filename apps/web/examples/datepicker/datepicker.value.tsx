@@ -48,11 +48,7 @@ export function Component() {
           Clear
         </Button>
       </div>
-      {selectedDate && (
-        <p className="text-sm text-gray-500">
-          Selected: {selectedDate.toLocaleDateString()}
-        </p>
-      )}
+      {selectedDate && <p className="text-sm text-gray-500">Selected: {selectedDate.toLocaleDateString()}</p>}
     </div>
   );
 }
