@@ -117,6 +117,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         clearTheme: props.clearTheme,
         applyTheme: props.applyTheme,
         popup,
+        dismissible,
         onClose,
         setHeaderId,
       }}

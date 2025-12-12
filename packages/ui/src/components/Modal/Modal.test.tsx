@@ -26,6 +26,34 @@ describe("Components / Modal", () => {
     expect(modal).not.toBeInTheDocument();
   });
 
+  it("should not render close button when modal is not dismissible", async () => {
+    const user = userEvent.setup();
+
+    render(<TestModal />);
+
+    await user.click(triggerButton());
+
+    const modal = dialog();
+    expect(modal).toBeInTheDocument();
+
+    const closeButton = screen.queryByLabelText("Close");
+    expect(closeButton).not.toBeInTheDocument();
+  });
+
+  it("should render close button when modal is dismissible", async () => {
+    const user = userEvent.setup();
+
+    render(<TestModal dismissible />);
+
+    await user.click(triggerButton());
+
+    const modal = dialog();
+    expect(modal).toBeInTheDocument();
+
+    const closeButton = screen.queryByLabelText("Close");
+    expect(closeButton).toBeInTheDocument();
+  });
+
   it("should append to root element when root prop is provided", async () => {
     const root = document.createElement("div");
     const user = userEvent.setup();
@@ -82,7 +110,7 @@ describe("Components / Modal", () => {
     it("should close `Modal` when `Space` is pressed on any of its buttons", async () => {
       const user = userEvent.setup();
 
-      render(<TestModal />);
+      render(<TestModal dismissible />);
 
       const openButton = triggerButton();
 
