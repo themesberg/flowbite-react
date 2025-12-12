@@ -6,6 +6,7 @@ import type { ModalTheme } from "./Modal";
 
 export interface ModalContextValue extends ThemingProps<ModalTheme> {
   popup?: boolean;
+  dismissible?: boolean;
   setHeaderId: (id: string | undefined) => void;
   onClose?: () => void;
 }

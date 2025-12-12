@@ -31,6 +31,7 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>((props, 
     clearTheme: rootClearTheme,
     applyTheme: rootApplyTheme,
     popup,
+    dismissible,
     onClose,
     setHeaderId,
   } = useModalContext();
@@ -64,9 +65,11 @@ export const ModalHeader = forwardRef<HTMLDivElement, ModalHeaderProps>((props, 
       <Component id={headerId} className={theme.title}>
         {children}
       </Component>
-      <button aria-label="Close" className={theme.close.base} type="button" onClick={onClose}>
-        <OutlineXIcon aria-hidden className={theme.close.icon} />
-      </button>
+      {dismissible && (
+        <button aria-label="Close" className={theme.close.base} type="button" onClick={onClose}>
+          <OutlineXIcon aria-hidden className={theme.close.icon} />
+        </button>
+      )}
     </div>
   );
 });
