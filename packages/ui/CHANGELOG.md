@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.14
+
+### Patch Changes
+
+- [#1641](https://github.com/themesberg/flowbite-react/pull/1641) [`5007ee9`](https://github.com/themesberg/flowbite-react/commit/5007ee9153f21c4ef5cc4a9c70b319d3af82277e) Thanks [@ebbbang](https://github.com/ebbbang)! - Ensure modal close button respects dismissible prop
+
 ## 0.12.13
 
 ### Patch Changes
