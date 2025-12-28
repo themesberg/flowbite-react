@@ -45,12 +45,12 @@ export const modalTheme = createTheme<ModalTheme>({
     popup: "border-b-0 p-2",
     title: "text-xl font-medium text-gray-900 dark:text-white",
     close: {
-      base: "ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white",
+      base: "ms-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white",
       icon: "h-5 w-5",
     },
   },
   footer: {
-    base: "flex items-center space-x-2 rounded-b border-gray-200 p-6 dark:border-gray-600",
+    base: "flex items-center gap-2 rounded-b border-gray-200 p-6 dark:border-gray-600",
     popup: "border-t",
   },
 });
