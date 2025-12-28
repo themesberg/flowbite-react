@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.15
+
+### Patch Changes
+
+- [#1643](https://github.com/themesberg/flowbite-react/pull/1643) [`d123007`](https://github.com/themesberg/flowbite-react/commit/d12300764e7e23d91188ce3ae329be0203e89174) Thanks [@SarthakPandey2002](https://github.com/SarthakPandey2002)! - Improve RTL support in the modal component
+
 ## 0.12.14
 
 ### Patch Changes
