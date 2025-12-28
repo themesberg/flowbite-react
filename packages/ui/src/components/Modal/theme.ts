@@ -50,7 +50,7 @@ export const modalTheme = createTheme<ModalTheme>({
     },
   },
   footer: {
-    base: "flex items-center space-x-2 rounded-b border-gray-200 p-6 dark:border-gray-600",
+    base: "flex items-center gap-2 rounded-b border-gray-200 p-6 dark:border-gray-600",
     popup: "border-t",
   },
 });
