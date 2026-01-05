@@ -25,6 +25,7 @@ export interface DatepickerViewsDaysTheme {
       selected: string;
       disabled: string;
       today: string;
+      outside: string; // ✅ Updated: Added 'outside' key for theme support
     };
   };
 }
@@ -66,6 +67,9 @@ export function DatepickerViewsDays() {
             !isDateInRange(currentDate, minDate, maxDate) || (filterDate && !filterDate(currentDate, Views.Days));
           const isToday = isDateToday(currentDate);
 
+          // ✅ Logic: Check if the date belongs to the currently displayed month
+          const isOutOfMonth = currentDate.getMonth() !== viewDate.getMonth();
+
           return (
             <button
               disabled={isDisabled}
@@ -76,6 +80,8 @@ export function DatepickerViewsDays() {
                 isToday && theme.items.item.today,
                 isSelected && theme.items.item.selected,
                 isDisabled && theme.items.item.disabled,
+                // ✅ Logic: Apply 'outside' style only if NOT selected
+                isOutOfMonth && !isSelected && theme.items.item.outside
               )}
               onClick={() => {
                 if (isDisabled) return;
