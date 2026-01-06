@@ -79,7 +79,7 @@ export function DatepickerViewsDays() {
                 isToday && theme.items.item.today,
                 isSelected && theme.items.item.selected,
                 isDisabled && theme.items.item.disabled,
-                isOutOfMonth && !isSelected && !isDisabled && theme.items.item.outside
+                isOutOfMonth && !isSelected && !isDisabled && theme.items.item.outside,
               )}
               onClick={() => {
                 if (isDisabled) return;
