@@ -20,7 +20,16 @@ export function createInitLogger(config: Config) {
       );
     },
     get showWarning() {
-      return this.checkedMap.values().find((value) => value) === undefined;
+      let hasChecked = false;
+
+      for (const value of this.checkedMap.values()) {
+        if (value) {
+          hasChecked = true;
+          break;
+        }
+      }
+
+      return !hasChecked;
     },
     /**
      * Checks if `<ThemeInit />` component is used in the given file content
