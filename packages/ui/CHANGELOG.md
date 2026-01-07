@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.16
+
+### Patch Changes
+
+- [#1649](https://github.com/themesberg/flowbite-react/pull/1649) [`3e65ed2`](https://github.com/themesberg/flowbite-react/commit/3e65ed2b0eab2464cd1278cf58185f4dddef522a) Thanks [@aliamadi](https://github.com/aliamadi)! - Fix CLI crash by safely iterating over Map values in init logger
+
 ## 0.12.15
 
 ### Patch Changes
