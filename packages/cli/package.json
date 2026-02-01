@@ -33,9 +33,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsdown",
     "clean": "git clean -xdf",
-    "dev": "tsup --watch",
+    "dev": "tsdown --watch",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "prepack": "clean-package",
@@ -51,7 +51,7 @@
     "picocolors": "1.1.1"
   },
   "devDependencies": {
-    "tsup": "8.3.5",
+    "tsdown": "0.20.1",
     "typescript": "5.6.3"
   },
   "engines": {
