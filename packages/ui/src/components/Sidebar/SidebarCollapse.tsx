@@ -33,7 +33,8 @@ export interface SidebarCollapseTheme {
 }
 
 export interface SidebarCollapseProps
-  extends Pick<SidebarItemProps, "active" | "as" | "href" | "icon" | "label" | "labelColor">,
+  extends
+    Pick<SidebarItemProps, "active" | "as" | "href" | "icon" | "label" | "labelColor">,
     ComponentProps<"button">,
     ThemingProps<SidebarCollapseTheme> {
   onClick?: ComponentProps<"button">["onClick"];

@@ -56,8 +56,10 @@ export interface AvatarInitialsTheme {
   text: string;
 }
 
-export interface AvatarColors
-  extends Pick<FlowbiteColors, "failure" | "gray" | "info" | "pink" | "purple" | "success" | "warning"> {
+export interface AvatarColors extends Pick<
+  FlowbiteColors,
+  "failure" | "gray" | "info" | "pink" | "purple" | "success" | "warning"
+> {
   [key: string]: string;
 }
 

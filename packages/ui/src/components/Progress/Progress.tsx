@@ -18,11 +18,10 @@ export interface ProgressTheme {
   size: ProgressSizes;
 }
 
-export interface ProgressColor
-  extends Pick<
-    FlowbiteColors,
-    "dark" | "blue" | "red" | "green" | "yellow" | "indigo" | "purple" | "cyan" | "gray" | "lime" | "pink" | "teal"
-  > {
+export interface ProgressColor extends Pick<
+  FlowbiteColors,
+  "dark" | "blue" | "red" | "green" | "yellow" | "indigo" | "purple" | "cyan" | "gray" | "lime" | "pink" | "teal"
+> {
   [key: string]: string;
   default: string;
 }

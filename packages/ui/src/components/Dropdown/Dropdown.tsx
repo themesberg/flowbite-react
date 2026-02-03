@@ -44,7 +44,8 @@ export interface DropdownTheme {
 }
 
 export interface DropdownProps
-  extends Pick<FloatingProps, "placement" | "trigger">,
+  extends
+    Pick<FloatingProps, "placement" | "trigger">,
     Omit<ButtonProps, keyof ThemingProps<DropdownTheme>>,
     ThemingProps<DropdownTheme> {
   arrowIcon?: boolean;

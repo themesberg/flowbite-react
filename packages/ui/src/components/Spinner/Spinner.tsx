@@ -25,8 +25,10 @@ export interface SpinnerTheme {
   size: SpinnerSizes;
 }
 
-export interface SpinnerColors
-  extends Pick<FlowbiteColors, "failure" | "gray" | "info" | "pink" | "purple" | "success" | "warning"> {
+export interface SpinnerColors extends Pick<
+  FlowbiteColors,
+  "failure" | "gray" | "info" | "pink" | "purple" | "success" | "warning"
+> {
   [key: string]: string;
   default: string;
 }

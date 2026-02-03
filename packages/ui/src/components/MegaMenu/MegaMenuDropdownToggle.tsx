@@ -15,8 +15,7 @@ export interface MegaMenuDropdownToggleTheme {
 }
 
 export interface MegaMenuDropdownToggleProps
-  extends ComponentProps<"button">,
-    ThemingProps<MegaMenuDropdownToggleTheme> {}
+  extends ComponentProps<"button">, ThemingProps<MegaMenuDropdownToggleTheme> {}
 
 export const MegaMenuDropdownToggle = forwardRef<HTMLButtonElement, MegaMenuDropdownToggleProps>((props, ref) => {
   const id = useId();

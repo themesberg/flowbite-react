@@ -29,8 +29,7 @@ export interface RangeSliderFieldTheme {
 }
 
 export interface RangeSliderProps
-  extends Omit<ComponentProps<"input">, "ref" | "type">,
-    ThemingProps<RangeSliderTheme> {
+  extends Omit<ComponentProps<"input">, "ref" | "type">, ThemingProps<RangeSliderTheme> {
   sizing?: DynamicStringEnumKeysOf<TextInputSizes>;
 }
 

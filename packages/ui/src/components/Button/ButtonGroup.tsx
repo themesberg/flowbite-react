@@ -16,9 +16,7 @@ export interface ButtonGroupTheme {
 }
 
 export interface ButtonGroupProps
-  extends ComponentProps<"div">,
-    Pick<ButtonProps, "outline" | "pill">,
-    ThemingProps<ButtonGroupTheme> {}
+  extends ComponentProps<"div">, Pick<ButtonProps, "outline" | "pill">, ThemingProps<ButtonGroupTheme> {}
 
 export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) => {
   const provider = useThemeProvider();

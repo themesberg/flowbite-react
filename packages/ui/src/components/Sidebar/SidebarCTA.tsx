@@ -19,11 +19,10 @@ export interface SidebarCTAProps extends Omit<ComponentProps<"div">, "color">, T
   color?: DynamicStringEnumKeysOf<SidebarCTAColors>;
 }
 
-export interface SidebarCTAColors
-  extends Pick<
-    FlowbiteColors,
-    "blue" | "dark" | "failure" | "gray" | "green" | "light" | "purple" | "red" | "success" | "warning" | "yellow"
-  > {
+export interface SidebarCTAColors extends Pick<
+  FlowbiteColors,
+  "blue" | "dark" | "failure" | "gray" | "green" | "light" | "purple" | "red" | "success" | "warning" | "yellow"
+> {
   [key: string]: string;
 }
 
