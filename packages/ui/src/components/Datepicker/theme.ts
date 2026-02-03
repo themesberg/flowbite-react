@@ -50,6 +50,7 @@ export const datePickerTheme = createTheme<DatepickerTheme>({
           selected: "bg-primary-700 text-white hover:bg-primary-600",
           disabled: "text-gray-500",
           today: "",
+          outside: "text-gray-500 opacity-40",
         },
       },
     },
