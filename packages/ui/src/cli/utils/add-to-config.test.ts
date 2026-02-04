@@ -1,9 +1,8 @@
 import { describe, expect, it } from "bun:test";
-import * as recast from "recast";
-import { addToConfig } from "./add-to-config";
+import { addToConfig, builders } from "./add-to-config";
 
 describe("addToConfig", () => {
-  const mockValueGenerator = (b: typeof recast.types.builders) => {
+  const mockValueGenerator = (b: typeof builders) => {
     return b.stringLiteral("test-value");
   };
 
@@ -198,7 +197,7 @@ describe("addToConfig", () => {
 
     expect(result).toContain('"test-value"');
     expect(result).toMatch(
-      /items:\s*\[\s*new Plugin\({\s*option: "value",\s*}\),\s*condition \? new ConditionalPlugin\(\) : null,\s*"test-value"\s*\]\.filter\(Boolean\)/,
+      /items:\s*\[\s*new Plugin\({\s*option: "value",\s*}\),\s*condition \? new ConditionalPlugin\(\) : null,\s*"test-value",?\s*\]\.filter\(Boolean\)/,
     );
   });
 });

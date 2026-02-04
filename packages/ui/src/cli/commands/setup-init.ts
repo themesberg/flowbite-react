@@ -1,6 +1,5 @@
 import fs from "fs/promises";
-import type { namedTypes } from "ast-types";
-import { parse } from "recast";
+import { parseSync } from "oxc-parser";
 import { initFilePath, initJsxFilePath } from "../consts";
 import { compareNodes } from "../utils/compare-nodes";
 import type { Config } from "../utils/create-config";
@@ -50,8 +49,8 @@ ThemeInit.displayName = "ThemeInit";
     }
 
     if (currentContent) {
-      const currentAst = removeReactImport(parse(currentContent));
-      const newAst = removeReactImport(parse(content));
+      const currentAst = removeReactImport(parseSync("init.tsx", currentContent));
+      const newAst = removeReactImport(parseSync("init.tsx", content));
 
       if (!compareNodes(currentAst.program, newAst.program)) {
         console.log(`Updating ${targetPath} file...`);
@@ -72,20 +71,28 @@ ThemeInit.displayName = "ThemeInit";
 }
 
 /**
- * Removes `import React from "react"` from the AST
+ * Removes `import React from "react"` from the AST program body
  */
-function removeReactImport(ast: namedTypes.File): namedTypes.File {
-  if (ast?.program?.body) {
-    ast.program.body = ast.program.body.filter(
-      (node) =>
+function removeReactImport(parseResult: { program: { body: unknown[] } }): { program: { body: unknown[] } } {
+  if (parseResult?.program?.body) {
+    parseResult.program.body = parseResult.program.body.filter(
+      (node: unknown) =>
         !(
+          typeof node === "object" &&
+          node !== null &&
+          "type" in node &&
           node.type === "ImportDeclaration" &&
+          "source" in node &&
+          typeof node.source === "object" &&
+          node.source !== null &&
           "value" in node.source &&
           typeof node.source.value === "string" &&
           node.source.value === "react" &&
-          node.specifiers?.[0]?.local?.name === "React"
+          "specifiers" in node &&
+          Array.isArray(node.specifiers) &&
+          node.specifiers[0]?.local?.name === "React"
         ),
     );
   }
-  return ast;
+  return parseResult;
 }

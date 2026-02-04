@@ -1,6 +1,6 @@
-import { parse } from "acorn";
 import { Glob } from "bun";
-import { walk, type Node } from "estree-walker";
+import type { CallExpression, ImportDeclaration, ImportSpecifier } from "oxc-parser";
+import { parseSync, Visitor } from "oxc-parser";
 import prettier from "prettier";
 
 const outputDir = "src/metadata";
@@ -86,39 +86,35 @@ async function generateClassList(): Promise<{
  */
 export async function extractClassList(content: string): Promise<string[]> {
   const classList = new Set<string>();
-  const transpiler = new Bun.Transpiler({
-    loader: "ts",
-  });
-  const transpiledContent = transpiler.transformSync(content);
-  const ast = parse(transpiledContent, {
-    ecmaVersion: "latest",
-    sourceType: "module",
-  });
+  const result = parseSync("theme.ts", content);
+
+  if (result.errors.length > 0) {
+    return [];
+  }
+
   let isInsideCreateTheme = false;
 
-  walk(ast as Node, {
-    enter(node) {
-      if (isCreateThemeNode(node)) {
+  const visitor = new Visitor({
+    CallExpression(node: CallExpression) {
+      if (node.callee.type === "Identifier" && node.callee.name === "createTheme") {
         isInsideCreateTheme = true;
       }
-      if (isInsideCreateTheme) {
-        if (node.type === "Literal" && typeof node.value === "string") {
-          for (const className of node.value.split(/\s+/)) {
-            if (className) classList.add(className);
-          }
-        }
-      }
     },
-    leave(node) {
-      if (isCreateThemeNode(node)) {
+    "CallExpression:exit"(node: CallExpression) {
+      if (node.callee.type === "Identifier" && node.callee.name === "createTheme") {
         isInsideCreateTheme = false;
       }
     },
+    Literal(node) {
+      if (isInsideCreateTheme && node.type === "Literal" && typeof node.value === "string") {
+        for (const className of node.value.split(/\s+/)) {
+          if (className) classList.add(className);
+        }
+      }
+    },
   });
 
-  function isCreateThemeNode(node: Node) {
-    return node.type === "CallExpression" && "name" in node.callee && node.callee.name === "createTheme";
-  }
+  visitor.visit(result.program);
 
   return [...classList].sort();
 }
@@ -162,43 +158,50 @@ async function generateDependencyList(): Promise<void> {
 
 /**
  * Extracts and sorts a list of imported component names from TypeScript/TSX content.
- * The function transpiles the content, parses it into an AST, and walks through import declarations
- * to collect component names.
+ * The function parses the content into an AST and walks through import declarations
+ * to collect component names. Type-only imports are excluded.
  *
  * @param content - The TypeScript/TSX source code content to analyze
  * @returns {Promise<string[]>} A sorted array of unique component names that are imported in the source code
  * @example
  * const content = `
  *   import { Button, Card } from 'some-library';
- *   import { Table } from 'other-library';
+ *   import type { ButtonProps } from 'some-library';
  * `;
  * const dependencies = await extractDependencyList(content);
- * // returns ['Button', 'Card', 'Table']
+ * // returns ['Button', 'Card'] (type imports are excluded)
  */
 export async function extractDependencyList(content: string): Promise<string[]> {
   const componentImports = new Set<string>();
-  const transpiler = new Bun.Transpiler({
-    loader: "tsx",
-  });
-  const transpiledContent = transpiler.transformSync(content);
-  const ast = parse(transpiledContent, {
-    ecmaVersion: "latest",
-    sourceType: "module",
-  });
+  const result = parseSync("component.tsx", content);
 
-  walk(ast as Node, {
-    enter(node) {
-      if (node.type === "ImportDeclaration") {
-        if ("specifiers" in node && Array.isArray(node.specifiers)) {
-          for (const specifier of node.specifiers) {
-            if ("imported" in specifier && "name" in specifier.imported) {
-              componentImports.add(specifier.imported.name);
+  if (result.errors.length > 0) {
+    return [];
+  }
+
+  const visitor = new Visitor({
+    ImportDeclaration(node: ImportDeclaration) {
+      if (node.importKind === "type") {
+        return;
+      }
+
+      if (Array.isArray(node.specifiers)) {
+        for (const specifier of node.specifiers) {
+          if (specifier.type === "ImportSpecifier") {
+            const importSpec = specifier as ImportSpecifier;
+            if (importSpec.importKind === "type") {
+              continue;
+            }
+            if (importSpec.imported.type === "Identifier") {
+              componentImports.add(importSpec.imported.name);
             }
           }
         }
       }
     },
   });
+
+  visitor.visit(result.program);
 
   return [...componentImports].sort();
 }
