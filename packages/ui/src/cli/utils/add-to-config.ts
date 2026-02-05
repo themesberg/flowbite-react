@@ -26,6 +26,12 @@ interface ArrayLocation {
   }>;
 }
 
+interface ArrayStyle {
+  isMultiLine: boolean;
+  indent: string;
+  elementIndent: string;
+}
+
 interface PropertyCreationInfo {
   insertPosition: number;
   propertyPath: string[];
@@ -159,20 +165,46 @@ export function addToConfig({
       return content;
     }
 
+    const arrayStyle = detectArrayStyle(content, targetArrayLocation);
+
     if (targetArrayLocation.elements.length > 0) {
       const lastElement = targetArrayLocation.elements[targetArrayLocation.elements.length - 1];
-      s.appendLeft(lastElement.end, `, ${valueToAdd}`);
+
+      if (arrayStyle.isMultiLine) {
+        // Multi-line style: add on a new line with proper indentation
+        // Check if there's already a trailing comma after the last element
+        const afterLastElement = content.slice(lastElement.end, targetArrayLocation.end);
+        const hasTrailingComma = /^[\s]*,/.test(afterLastElement);
+
+        if (hasTrailingComma) {
+          // Find where to insert (after the comma)
+          const commaOffset = afterLastElement.indexOf(",") + 1;
+          s.appendLeft(lastElement.end + commaOffset, `\n${arrayStyle.elementIndent}${valueToAdd}`);
+        } else {
+          // Add comma and new element on new line
+          s.appendLeft(lastElement.end, `,\n${arrayStyle.elementIndent}${valueToAdd}`);
+        }
+      } else {
+        // Inline style: add with comma and space
+        s.appendLeft(lastElement.end, `, ${valueToAdd}`);
+      }
     } else {
-      s.appendLeft(targetArrayLocation.start + 1, valueToAdd);
+      // Empty array
+      if (arrayStyle.isMultiLine) {
+        s.appendLeft(targetArrayLocation.start + 1, `\n${arrayStyle.elementIndent}${valueToAdd}\n${arrayStyle.indent}`);
+      } else {
+        s.appendLeft(targetArrayLocation.start + 1, valueToAdd);
+      }
     }
   } else if (result.type === "create") {
     const { insertPosition, propertyPath, needsComma, indent } = result.creation;
+    const indentUnit = detectIndentUnit(content);
     let newContent = "";
     const lastIndex = propertyPath.length - 1;
 
     for (let i = 0; i < propertyPath.length; i++) {
       const key = propertyPath[i];
-      const currentIndent = indent + "  ".repeat(i);
+      const currentIndent = indent + indentUnit.repeat(i);
 
       if (i === lastIndex) {
         newContent += `${currentIndent}${key}: [${valueToAdd}]`;
@@ -182,7 +214,7 @@ export function addToConfig({
     }
 
     for (let i = propertyPath.length - 2; i >= 0; i--) {
-      const currentIndent = indent + "  ".repeat(i);
+      const currentIndent = indent + indentUnit.repeat(i);
       newContent += `\n${currentIndent}}`;
     }
 
@@ -288,8 +320,9 @@ function findTargetArrayOrCreationPoint(
       const needsComma = objInfo.properties.length > 0;
       const beforeObj = content.slice(Math.max(0, objInfo.start - 50), objInfo.start);
       const indentMatch = beforeObj.match(/\n([ \t]*)$/);
-      const baseIndent = indentMatch ? indentMatch[1] : "  ";
-      const indent = baseIndent + "  ".repeat(depth);
+      const indentUnit = detectIndentUnit(content);
+      const baseIndent = indentMatch ? indentMatch[1] : indentUnit;
+      const indent = baseIndent + indentUnit.repeat(depth);
 
       return {
         type: "create",
@@ -408,6 +441,115 @@ function extractArrayFromCallExpression(node: unknown, offset: number): ArrayLoc
   }
 
   return null;
+}
+
+/**
+ * Detect the indentation unit used in the file (tabs or spaces, and how many)
+ */
+function detectIndentUnit(content: string): string {
+  // Look for common indentation patterns
+  const lines = content.split("\n");
+  const indentCounts: Map<string, number> = new Map();
+
+  for (const line of lines) {
+    const match = line.match(/^(\s+)\S/);
+    if (match) {
+      const indent = match[1];
+      // Check if this looks like a base indent (not nested)
+      if (indent === "\t") {
+        indentCounts.set("\t", (indentCounts.get("\t") || 0) + 1);
+      } else if (/^ +$/.test(indent)) {
+        // Count spaces - try to find the smallest common unit
+        const len = indent.length;
+        if (len <= 4) {
+          indentCounts.set(indent, (indentCounts.get(indent) || 0) + 1);
+        }
+      }
+    }
+  }
+
+  // Find most common indent
+  let bestIndent = "  "; // default to 2 spaces
+  let bestCount = 0;
+
+  for (const [indent, count] of indentCounts) {
+    if (count > bestCount) {
+      bestCount = count;
+      bestIndent = indent;
+    }
+  }
+
+  // If we found tabs, use tab; otherwise use the detected space count
+  if (bestIndent === "\t") {
+    return "\t";
+  }
+
+  // Try to determine the base indent unit (2 or 4 spaces typically)
+  const spaceCounts = Array.from(indentCounts.entries())
+    .filter(([k]) => /^ +$/.test(k))
+    .map(([k, v]) => ({ len: k.length, count: v }));
+
+  if (spaceCounts.length > 0) {
+    // Find the GCD of all space lengths to determine the unit
+    const lengths = spaceCounts.map((s) => s.len);
+    const gcd = lengths.reduce((a, b) => {
+      while (b) {
+        [a, b] = [b, a % b];
+      }
+      return a;
+    });
+
+    if (gcd === 2 || gcd === 4) {
+      return " ".repeat(gcd);
+    }
+  }
+
+  return bestIndent;
+}
+
+/**
+ * Detect the array formatting style (inline vs multi-line)
+ */
+function detectArrayStyle(content: string, arrayLocation: ArrayLocation): ArrayStyle {
+  const arrayContent = content.slice(arrayLocation.start, arrayLocation.end);
+  const indentUnit = detectIndentUnit(content);
+
+  // Check if the array spans multiple lines
+  const hasNewlines = arrayContent.includes("\n");
+
+  if (!hasNewlines || arrayLocation.elements.length === 0) {
+    // Inline style: [a, b, c]
+    return {
+      isMultiLine: false,
+      indent: "",
+      elementIndent: "",
+    };
+  }
+
+  // Multi-line style - detect the element indentation
+  const firstElement = arrayLocation.elements[0];
+  const contentBeforeFirst = content.slice(arrayLocation.start, firstElement.start);
+
+  // Find the indentation of the first element
+  const indentMatch = contentBeforeFirst.match(/\n([ \t]*)$/);
+  const elementIndent = indentMatch ? indentMatch[1] : indentUnit;
+
+  // Determine the array's base indent (one level less than elements)
+  let arrayIndent = "";
+  if (elementIndent.startsWith("\t")) {
+    arrayIndent = elementIndent.slice(0, -1);
+  } else {
+    const unitLen = indentUnit.length;
+    if (elementIndent.length >= unitLen) {
+      arrayIndent = elementIndent.slice(0, -unitLen);
+    }
+  }
+
+  return {
+    isMultiLine: true,
+    indent: arrayIndent,
+    elementIndent,
+  };
 }
 
 /**

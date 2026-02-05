@@ -6,6 +6,10 @@ describe("addToConfig", () => {
     return b.stringLiteral("test-value");
   };
 
+  const mockPluginGenerator = (b: typeof builders) => {
+    return b.callExpression("flowbiteReact", []);
+  };
+
   it("should add value to config with variable declaration", () => {
     const input = `
       const config = {
@@ -199,5 +203,184 @@ describe("addToConfig", () => {
     expect(result).toMatch(
       /items:\s*\[\s*new Plugin\({\s*option: "value",\s*}\),\s*condition \? new ConditionalPlugin\(\) : null,\s*"test-value",?\s*\]\.filter\(Boolean\)/,
     );
+  });
+
+  describe("array style detection", () => {
+    it("should add plugin inline when array is inline style", () => {
+      const input = `import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [react()],
+});
+`;
+
+      const result = addToConfig({
+        content: input,
+        targetPath: "plugins",
+        valueGenerator: mockPluginGenerator,
+      });
+
+      expect(result).toContain("flowbiteReact()");
+      // Should be inline, not on a new line
+      expect(result).toMatch(/plugins: \[react\(\), flowbiteReact\(\)\]/);
+    });
+
+    it("should add plugin on new line when array is multi-line style with 2-space indent", () => {
+      const input = `import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [
+    react(),
+  ],
+});
+`;
+
+      const result = addToConfig({
+        content: input,
+        targetPath: "plugins",
+        valueGenerator: mockPluginGenerator,
+      });
+
+      expect(result).toContain("flowbiteReact()");
+      // Should preserve multi-line style with proper indentation
+      expect(result).toMatch(/plugins: \[\n\s+react\(\),\n\s+flowbiteReact\(\),?\n\s*\]/);
+    });
+
+    it("should add plugin on new line when array is multi-line style with 4-space indent", () => {
+      const input = `import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+    plugins: [
+        react(),
+    ],
+});
+`;
+
+      const result = addToConfig({
+        content: input,
+        targetPath: "plugins",
+        valueGenerator: mockPluginGenerator,
+      });
+
+      expect(result).toContain("flowbiteReact()");
+      // Should preserve 4-space indentation
+      expect(result).toMatch(/plugins: \[\n {8}react\(\),\n {8}flowbiteReact\(\),?\n {4}\]/);
+    });
+
+    it("should add plugin on new line when array is multi-line style with tab indent", () => {
+      const input = `import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+\tplugins: [
+\t\treact(),
+\t],
+});
+`;
+
+      const result = addToConfig({
+        content: input,
+        targetPath: "plugins",
+        valueGenerator: mockPluginGenerator,
+      });
+
+      expect(result).toContain("flowbiteReact()");
+      // Should preserve tab indentation
+      expect(result).toMatch(/plugins: \[\n\t\treact\(\),\n\t\tflowbiteReact\(\),?\n\t\]/);
+    });
+
+    it("should handle multi-line array with trailing comma", () => {
+      const input = `export default {
+  plugins: [
+    plugin1(),
+    plugin2(),
+  ],
+};
+`;
+
+      const result = addToConfig({
+        content: input,
+        targetPath: "plugins",
+        valueGenerator: mockPluginGenerator,
+      });
+
+      expect(result).toContain("flowbiteReact()");
+      // Should add after trailing comma
+      expect(result).toMatch(/plugin2\(\),\n {4}flowbiteReact\(\)/);
+    });
+
+    it("should handle multi-line array without trailing comma", () => {
+      const input = `export default {
+  plugins: [
+    plugin1(),
+    plugin2()
+  ],
+};
+`;
+
+      const result = addToConfig({
+        content: input,
+        targetPath: "plugins",
+        valueGenerator: mockPluginGenerator,
+      });
+
+      expect(result).toContain("flowbiteReact()");
+      // Should add comma and new element
+      expect(result).toMatch(/plugin2\(\),\n {4}flowbiteReact\(\)/);
+    });
+
+    it("should handle inline array with multiple elements", () => {
+      const input = `export default {
+  plugins: [a(), b(), c()],
+};
+`;
+
+      const result = addToConfig({
+        content: input,
+        targetPath: "plugins",
+        valueGenerator: mockPluginGenerator,
+      });
+
+      expect(result).toContain("flowbiteReact()");
+      // Should stay inline
+      expect(result).toMatch(/plugins: \[a\(\), b\(\), c\(\), flowbiteReact\(\)\]/);
+    });
+
+    it("should create new property with detected indent unit (4 spaces)", () => {
+      const input = `export default {
+    theme: {},
+};
+`;
+
+      const result = addToConfig({
+        content: input,
+        targetPath: "plugins",
+        valueGenerator: mockPluginGenerator,
+      });
+
+      expect(result).toContain("flowbiteReact()");
+      // Should use 4-space indentation
+      expect(result).toMatch(/theme: {},\n {4}plugins: \[flowbiteReact\(\)\]/);
+    });
+
+    it("should create new property with detected indent unit (tabs)", () => {
+      const input = `export default {
+\ttheme: {},
+};
+`;
+
+      const result = addToConfig({
+        content: input,
+        targetPath: "plugins",
+        valueGenerator: mockPluginGenerator,
+      });
+
+      expect(result).toContain("flowbiteReact()");
+      // Should use tab indentation
+      expect(result).toMatch(/theme: {},\n\tplugins: \[flowbiteReact\(\)\]/);
+    });
   });
 });
