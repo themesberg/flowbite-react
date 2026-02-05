@@ -130,21 +130,25 @@ function hello() { return 'world'; }`;
     });
 
     it("should handle null/undefined parseResult gracefully", () => {
-      const result1 = removeReactImport(null as any);
-      expect(result1).toBe(null);
+      // @ts-expect-error Test passing invalid null
+      const result1 = removeReactImport(null);
+      expect(result1).toBeNull();
 
-      const result2 = removeReactImport(undefined as any);
-      expect(result2).toBe(undefined);
+      // @ts-expect-error Test passing invalid undefined
+      const result2 = removeReactImport(undefined);
+      expect(result2).toBeUndefined();
     });
 
     it("should handle parseResult with undefined program", () => {
-      const result = removeReactImport({ program: undefined } as any);
-      expect(result.program).toBe(undefined);
+      // @ts-expect-error Test with undefined program property
+      const result = removeReactImport({ program: undefined });
+      expect(result.program).toBeUndefined();
     });
 
     it("should handle parseResult with undefined body", () => {
-      const result = removeReactImport({ program: { body: undefined } } as any);
-      expect(result.program.body).toBe(undefined);
+      // @ts-expect-error Test with undefined body property
+      const result = removeReactImport({ program: { body: undefined } });
+      expect(result.program.body).toBeUndefined();
     });
 
     it("should return the modified parseResult", () => {
