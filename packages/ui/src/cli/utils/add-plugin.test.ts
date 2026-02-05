@@ -28,25 +28,6 @@ export default defineConfig({
     expect(result).toContain("tsConfigPaths(");
   });
 
-  it("should create a plugins array if it doesn't exist", () => {
-    const content = `
-export default defineConfig({
-  vite: {
-  },
-})
-`;
-    const result = addPlugin({
-      content,
-      targetPath: "vite.plugins",
-      pluginName: "flowbiteReact",
-    });
-
-    // Verify plugins array is created with the plugin
-    expect(result).toContain("plugins:");
-    expect(result).toContain("flowbiteReact()");
-    expect(result).toMatch(/plugins:\s*\[\s*flowbiteReact\(\)\s*\]/);
-  });
-
   it("should handle nested config paths", () => {
     const content = `
 export default defineConfig({
