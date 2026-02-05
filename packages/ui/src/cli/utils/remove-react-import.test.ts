@@ -167,7 +167,7 @@ const Component = () => <div>Hello</div>;`;
       const result = removeReactImport(parseResult);
 
       const reactImports = result.program.body.filter(
-        (node) => node.type === "ImportDeclaration" && (node as any).source.value === "react",
+        (node) => node.type === "ImportDeclaration" && node.source.value === "react",
       );
       expect(reactImports.length).toBe(0);
     });
