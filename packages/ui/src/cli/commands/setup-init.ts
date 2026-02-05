@@ -1,5 +1,5 @@
 import fs from "fs/promises";
-import { parseSync } from "oxc-parser";
+import { parseSync, type ParseResult } from "oxc-parser";
 import { initFilePath, initJsxFilePath } from "../consts";
 import { compareNodes } from "../utils/compare-nodes";
 import type { Config } from "../utils/create-config";
@@ -73,10 +73,10 @@ ThemeInit.displayName = "ThemeInit";
 /**
  * Removes `import React from "react"` from the AST program body
  */
-function removeReactImport(parseResult: { program: { body: unknown[] } }): { program: { body: unknown[] } } {
+function removeReactImport(parseResult: ParseResult) {
   if (parseResult?.program?.body) {
     parseResult.program.body = parseResult.program.body.filter(
-      (node: unknown) =>
+      (node) =>
         !(
           typeof node === "object" &&
           node !== null &&
