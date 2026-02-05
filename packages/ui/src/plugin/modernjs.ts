@@ -5,14 +5,12 @@ import { pluginName } from "./index";
 
 export default (): CliPlugin<AppTools> => ({
   name: pluginName,
-  setup() {
-    return {
-      async beforeBuild() {
-        await build();
-      },
-      async beforeDev() {
-        await dev();
-      },
-    };
+  setup(api) {
+    api.onBeforeBuild(async () => {
+      await build();
+    });
+    api.onBeforeDev(async () => {
+      await dev();
+    });
   },
 });
