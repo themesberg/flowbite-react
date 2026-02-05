@@ -12,7 +12,6 @@ entries = entries
   .sort();
 
 const external = [
-  "ast-types",
   "child_process",
   "fs/promises",
   "klona/json",
