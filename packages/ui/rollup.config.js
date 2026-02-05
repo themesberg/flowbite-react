@@ -1,4 +1,4 @@
-import { build } from "@rslib/core";
+import { createRslib } from "@rslib/core";
 import { $, Glob } from "bun";
 import esbuild from "rollup-plugin-esbuild";
 import { rollupPluginUseClient } from "rollup-plugin-use-client";
@@ -140,31 +140,35 @@ function generateRspackPlugin() {
   return {
     name: "generate-rspack-plugin",
     async closeBundle() {
-      await build({
-        source: {
-          entry: {
-            index: "./src/plugin/rspack.ts",
+      const rslib = await createRslib({
+        config: {
+          source: {
+            entry: {
+              index: "./src/plugin/rspack.ts",
+            },
           },
-        },
-        lib: [
-          {
-            format: "esm",
-            bundle: false,
+          lib: [
+            {
+              format: "esm",
+              bundle: false,
+            },
+            {
+              format: "cjs",
+              bundle: false,
+            },
+          ],
+          output: {
+            target: "node",
+            distPath: {
+              root: "./dist/plugin",
+            },
+            cleanDistPath: false,
+            sourceMap: true,
           },
-          {
-            format: "cjs",
-            bundle: false,
-          },
-        ],
-        output: {
-          target: "node",
-          distPath: {
-            root: "./dist/plugin",
-          },
-          cleanDistPath: false,
-          sourceMap: true,
         },
       });
+
+      await rslib.build();
     },
   };
 }
