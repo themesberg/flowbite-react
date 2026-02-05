@@ -1,5 +1,5 @@
 import MagicString from "magic-string";
-import type { ArrayExpression, CallExpression, Expression, IdentifierReference, ObjectExpression } from "oxc-parser";
+import type { ArrayExpression, Expression, IdentifierReference, ObjectExpression } from "oxc-parser";
 import { parseSync, Visitor } from "oxc-parser";
 import { addImport } from "./add-import";
 
@@ -64,7 +64,7 @@ export function updateBuildConfig({
   let buildOptionsInfo: BuildOptionsInfo | null = null;
 
   const visitor = new Visitor({
-    CallExpression(node: CallExpression) {
+    CallExpression(node) {
       const { callee } = node;
 
       let isBuildCall = false;
