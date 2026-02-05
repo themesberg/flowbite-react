@@ -1,7 +1,7 @@
-import classnames from "classnames";
 import debounce from "debounce";
 import type { CSSProperties, ElementType, MutableRefObject, ReactNode, Ref, RefObject } from "react";
 import React, { PureComponent } from "react";
+import { twMerge } from "./tailwind-merge";
 
 export interface ScrollEvent {
   external: boolean;
@@ -370,13 +370,15 @@ export default class ScrollContainer extends PureComponent<Props> {
 
     return (
       <div
-        className={classnames(className, this.pressed && draggingClassName, {
-          "!scroll-auto [&>*]:pointer-events-none [&>*]:cursor-grab": this.pressed,
-          "overflow-auto": this.isMobile,
-          "overflow-hidden !overflow-x-hidden [scrollbar-width:none]": hideScrollbars,
-          "[&::-webkit-scrollbar]:[-webkit-appearance:none !important] [&::-webkit-scrollbar]:!hidden [&::-webkit-scrollbar]:!h-0 [&::-webkit-scrollbar]:!w-0 [&::-webkit-scrollbar]:!bg-transparent":
-            hideScrollbars,
-        })}
+        className={twMerge(
+          className,
+          this.pressed && draggingClassName,
+          this.pressed && "!scroll-auto [&>*]:pointer-events-none [&>*]:cursor-grab",
+          this.isMobile && "overflow-auto",
+          hideScrollbars && "overflow-hidden !overflow-x-hidden [scrollbar-width:none]",
+          hideScrollbars &&
+            "[&::-webkit-scrollbar]:!hidden [&::-webkit-scrollbar]:!h-0 [&::-webkit-scrollbar]:!w-0 [&::-webkit-scrollbar]:!bg-transparent [&::-webkit-scrollbar]:![-webkit-appearance:none]",
+        )}
         style={style}
         ref={this.getRef}
         onScroll={this.onScroll}

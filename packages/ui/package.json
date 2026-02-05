@@ -268,7 +268,6 @@
     "@floating-ui/react": "0.27.16",
     "@iarna/toml": "2.2.5",
     "chokidar": "4.0.3",
-    "classnames": "2.5.1",
     "comment-json": "4.4.1",
     "debounce": "2.2.0",
     "deepmerge-ts": "7.1.5",
