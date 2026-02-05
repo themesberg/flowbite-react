@@ -1,5 +1,4 @@
 import { Glob } from "bun";
-import type { CallExpression, ImportDeclaration, ImportSpecifier } from "oxc-parser";
 import { parseSync, Visitor } from "oxc-parser";
 import prettier from "prettier";
 
@@ -95,12 +94,12 @@ export async function extractClassList(content: string): Promise<string[]> {
   let isInsideCreateTheme = false;
 
   const visitor = new Visitor({
-    CallExpression(node: CallExpression) {
+    CallExpression(node) {
       if (node.callee.type === "Identifier" && node.callee.name === "createTheme") {
         isInsideCreateTheme = true;
       }
     },
-    "CallExpression:exit"(node: CallExpression) {
+    "CallExpression:exit"(node) {
       if (node.callee.type === "Identifier" && node.callee.name === "createTheme") {
         isInsideCreateTheme = false;
       }
@@ -180,7 +179,7 @@ export async function extractDependencyList(content: string): Promise<string[]> 
   }
 
   const visitor = new Visitor({
-    ImportDeclaration(node: ImportDeclaration) {
+    ImportDeclaration(node) {
       if (node.importKind === "type") {
         return;
       }
@@ -188,12 +187,11 @@ export async function extractDependencyList(content: string): Promise<string[]> 
       if (Array.isArray(node.specifiers)) {
         for (const specifier of node.specifiers) {
           if (specifier.type === "ImportSpecifier") {
-            const importSpec = specifier as ImportSpecifier;
-            if (importSpec.importKind === "type") {
+            if (specifier.importKind === "type") {
               continue;
             }
-            if (importSpec.imported.type === "Identifier") {
-              componentImports.add(importSpec.imported.name);
+            if (specifier.imported.type === "Identifier") {
+              componentImports.add(specifier.imported.name);
             }
           }
         }
