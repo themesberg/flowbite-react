@@ -240,7 +240,7 @@
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "flowbite-react": "./dist/cli/bin.js"
+    "flowbite-react": "dist/cli/bin.js"
   },
   "files": [
     "dist",
