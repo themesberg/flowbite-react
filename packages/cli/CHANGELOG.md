@@ -1,5 +1,14 @@
 # create-flowbite-react
 
+## 1.1.2
+
+### Patch Changes
+
+- [#1654](https://github.com/themesberg/flowbite-react/pull/1654) [`98852dc`](https://github.com/themesberg/flowbite-react/commit/98852dc661a6065d3666ed2d2bd40be9566c7b6c) Thanks [@SutuSebastian](https://github.com/SutuSebastian)! - Change bundler to `tsdown`
+
+  ### Changes
+  - [x] migrate `tsup` to `tsdown`
+
 ## 1.1.1
 
 ### Patch Changes
