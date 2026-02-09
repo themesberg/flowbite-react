@@ -275,8 +275,8 @@
     "magic-string": "0.30.21",
     "oxc-parser": "0.112.0",
     "package-manager-detector": "1.6.0",
-    "tailwind-merge@2": "npm:tailwind-merge@2.6.1",
-    "tailwind-merge@3": "npm:tailwind-merge@3.4.0"
+    "tailwind-merge-v2": "npm:tailwind-merge@2.6.1",
+    "tailwind-merge-v3": "npm:tailwind-merge@3.4.0"
   },
   "devDependencies": {
     "@farmfe/core": "1.7.11",
