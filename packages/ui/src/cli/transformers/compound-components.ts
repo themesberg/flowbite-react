@@ -105,12 +105,18 @@ const COMPOUND_TO_SIMPLE_MAP: Record<string, string> = {
   "Toast.Toggle": "ToastToggle",
 };
 
+interface SpecifierInfo {
+  name: string;
+  originalText: string;
+}
+
 interface ImportInfo {
   start: number;
   end: number;
   specifiersStart: number;
   specifiersEnd: number;
-  specifiers: string[];
+  specifiers: SpecifierInfo[];
+  source: string;
 }
 
 interface Replacement {
@@ -129,7 +135,7 @@ function transform(content: string): { content: string; changed: boolean } {
     }
 
     const flowbiteImportSpecifiers: string[] = [];
-    let flowbiteImportInfo: ImportInfo | null = null;
+    const flowbiteImportInfos: ImportInfo[] = [];
     const replacements: Replacement[] = [];
     const newImportsToAdd: Set<string> = new Set();
 
@@ -145,20 +151,26 @@ function transform(content: string): { content: string; changed: boolean } {
             const braceEnd = importText.lastIndexOf("}");
 
             if (braceStart !== -1 && braceEnd !== -1) {
-              flowbiteImportInfo = {
+              const importInfo: ImportInfo = {
                 start: node.start,
                 end: node.end,
                 specifiersStart: node.start + braceStart + 1,
                 specifiersEnd: node.start + braceEnd,
                 specifiers: [],
+                source: node.source?.value as string,
               };
 
               node.specifiers.forEach((specifier) => {
                 if (specifier.imported?.type === "Identifier") {
                   flowbiteImportSpecifiers.push(specifier.imported.name);
-                  flowbiteImportInfo!.specifiers.push(specifier.imported.name);
+                  importInfo.specifiers.push({
+                    name: specifier.imported.name,
+                    originalText: content.slice(specifier.start, specifier.end),
+                  });
                 }
               });
+
+              flowbiteImportInfos.push(importInfo);
             }
           }
         }
@@ -177,7 +189,7 @@ function transform(content: string): { content: string; changed: boolean } {
           const compoundName = `${node.object.name}.${node.property.name}`;
           const simpleName = COMPOUND_TO_SIMPLE_MAP[compoundName];
 
-          if (simpleName && flowbiteImportInfo) {
+          if (simpleName && flowbiteImportInfos.length > 0) {
             replacements.push({
               start: node.start,
               end: node.end,
@@ -198,7 +210,8 @@ function transform(content: string): { content: string; changed: boolean } {
       return { content, changed: false };
     }
 
-    const finalImportInfo = flowbiteImportInfo as ImportInfo | null;
+    const finalImportInfo =
+      flowbiteImportInfos.find((info) => info.source === "flowbite-react") || flowbiteImportInfos[0] || null;
     const s = new MagicString(content);
 
     const sortedReplacements = [...replacements].sort((a, b) => b.start - a.start);
@@ -207,15 +220,21 @@ function transform(content: string): { content: string; changed: boolean } {
     }
 
     if (newImportsToAdd.size > 0 && finalImportInfo) {
-      const allSpecifiers = [...finalImportInfo.specifiers, ...newImportsToAdd].sort((a, b) => a.localeCompare(b));
+      const existingSpecifierTexts = finalImportInfo.specifiers.map((s) => s.originalText);
+      const existingNames = new Set(finalImportInfo.specifiers.map((s) => s.name));
+      const newSpecifierNames = [...newImportsToAdd].filter((name) => !existingNames.has(name));
+      const allSpecifiers = [
+        ...existingSpecifierTexts.map((text, i) => ({ text, name: finalImportInfo.specifiers[i].name })),
+        ...newSpecifierNames.map((name) => ({ text: name, name })),
+      ].sort((a, b) => a.name.localeCompare(b.name));
       const originalImportText = content.slice(finalImportInfo.specifiersStart, finalImportInfo.specifiersEnd);
       const isMultiline = originalImportText.includes("\n");
 
       let newSpecifiersText: string;
       if (isMultiline) {
-        newSpecifiersText = "\n  " + allSpecifiers.join(",\n  ") + ",\n";
+        newSpecifiersText = "\n  " + allSpecifiers.map((s) => s.text).join(",\n  ") + ",\n";
       } else {
-        newSpecifiersText = " " + allSpecifiers.join(", ") + " ";
+        newSpecifiersText = " " + allSpecifiers.map((s) => s.text).join(", ") + " ";
       }
 
       s.overwrite(finalImportInfo.specifiersStart, finalImportInfo.specifiersEnd, newSpecifiersText);

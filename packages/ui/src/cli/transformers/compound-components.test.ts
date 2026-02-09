@@ -188,6 +188,96 @@ export function MyComponent() {
       expect(result.changed).toBe(true);
       expect(result.content).toBe(expected);
     });
+
+    it("prefers base flowbite-react import over component-specific imports when multiple exist", () => {
+      const input = `import { Button } from "flowbite-react";
+import { Accordion } from "flowbite-react/components/Accordion";
+
+export function MyComponent() {
+  return (
+    <>
+      <Button.Group>
+        <Button>One</Button>
+      </Button.Group>
+      <Accordion.Panel>Content</Accordion.Panel>
+    </>
+  );
+}`;
+
+      // New imports are added to the base "flowbite-react" import and sorted alphabetically
+      const expected = `import { AccordionPanel, Button, ButtonGroup } from "flowbite-react";
+import { Accordion } from "flowbite-react/components/Accordion";
+
+export function MyComponent() {
+  return (
+    <>
+      <ButtonGroup>
+        <Button>One</Button>
+      </ButtonGroup>
+      <AccordionPanel>Content</AccordionPanel>
+    </>
+  );
+}`;
+
+      const result = transform(input);
+
+      expect(result.changed).toBe(true);
+      expect(result.content).toBe(expected);
+    });
+
+    it("preserves import aliases when adding new imports", () => {
+      // Test that existing aliased imports are preserved when adding new imports alongside them
+      const input = `import { Accordion, Button as MyButton } from "flowbite-react";
+
+export function MyComponent() {
+  return (
+    <Accordion>
+      <Accordion.Panel>Content</Accordion.Panel>
+    </Accordion>
+  );
+}`;
+
+      const expected = `import { Accordion, AccordionPanel, Button as MyButton } from "flowbite-react";
+
+export function MyComponent() {
+  return (
+    <Accordion>
+      <AccordionPanel>Content</AccordionPanel>
+    </Accordion>
+  );
+}`;
+
+      const result = transform(input);
+
+      expect(result.changed).toBe(true);
+      expect(result.content).toBe(expected);
+    });
+
+    it("preserves import aliases in multiline imports", () => {
+      const input = `import {
+  Accordion,
+  Button as MyButton,
+} from "flowbite-react";
+
+export function MyComponent() {
+  return <Accordion.Panel>Content</Accordion.Panel>;
+}`;
+
+      const expected = `import {
+  Accordion,
+  AccordionPanel,
+  Button as MyButton,
+} from "flowbite-react";
+
+export function MyComponent() {
+  return <AccordionPanel>Content</AccordionPanel>;
+}`;
+
+      const result = transform(input);
+
+      expect(result.changed).toBe(true);
+      expect(result.content).toBe(expected);
+    });
   });
 
   describe("no transformation needed", () => {
