@@ -88,7 +88,8 @@ export interface DatepickerRef {
 }
 
 export interface DatepickerProps
-  extends Omit<TextInputProps, keyof ThemingProps<DatepickerTheme> | "onChange" | "value" | "defaultValue">,
+  extends
+    Omit<TextInputProps, keyof ThemingProps<DatepickerTheme> | "onChange" | "value" | "defaultValue">,
     ThemingProps<DatepickerTheme> {
   defaultValue?: Date;
   open?: boolean;

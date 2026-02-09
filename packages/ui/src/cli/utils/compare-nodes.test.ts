@@ -1,6 +1,10 @@
 import { describe, expect, it } from "bun:test";
-import { parse } from "recast";
+import { parseSync } from "oxc-parser";
 import { compareNodes } from "./compare-nodes";
+
+function parse(code: string) {
+  return parseSync("test.ts", code);
+}
 
 describe("compareNodes", () => {
   it("should handle basic equality", () => {

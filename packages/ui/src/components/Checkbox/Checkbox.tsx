@@ -17,8 +17,7 @@ export interface CheckboxTheme {
 }
 
 export interface CheckboxProps
-  extends Omit<ComponentProps<"input">, "type" | "ref" | "color">,
-    ThemingProps<CheckboxTheme> {
+  extends Omit<ComponentProps<"input">, "type" | "ref" | "color">, ThemingProps<CheckboxTheme> {
   color?: DynamicStringEnumKeysOf<FlowbiteColors>;
   indeterminate?: boolean;
 }

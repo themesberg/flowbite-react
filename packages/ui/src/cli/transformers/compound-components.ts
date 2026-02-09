@@ -1,9 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
-
-import { parse } from "@typescript-eslint/typescript-estree";
-import { visit } from "ast-types";
-import * as recast from "recast";
+import MagicString from "magic-string";
+import { parseSync, Visitor } from "oxc-parser";
 import type { Transformer } from "../commands/migrate";
 
 const COMPOUND_TO_SIMPLE_MAP: Record<string, string> = {
@@ -109,96 +105,146 @@ const COMPOUND_TO_SIMPLE_MAP: Record<string, string> = {
   "Toast.Toggle": "ToastToggle",
 };
 
+interface SpecifierInfo {
+  name: string;
+  originalText: string;
+}
+
+interface ImportInfo {
+  start: number;
+  end: number;
+  specifiersStart: number;
+  specifiersEnd: number;
+  specifiers: SpecifierInfo[];
+  source: string;
+}
+
+interface Replacement {
+  start: number;
+  end: number;
+  newText: string;
+}
+
 function transform(content: string): { content: string; changed: boolean } {
   try {
-    const ast = recast.parse(content, {
-      parser: {
-        parse: (source: string) =>
-          parse(source, {
-            jsx: true,
-            loc: true,
-            range: true,
-            tokens: true,
-            errorOnUnknownASTType: false,
-            tolerant: true,
-            useJSXTextNode: true,
-          }),
-      },
-    });
+    const result = parseSync("file.tsx", content);
 
-    let flowbiteImportPath = null;
-    const flowbiteImportSpecifiers = [];
-    let hasChanges = false;
+    if (result.errors.length > 0) {
+      console.warn("Warning: Parsing errors detected, skipping transformation");
+      return { content, changed: false };
+    }
 
-    visit(ast, {
-      visitImportDeclaration(path) {
-        const { node } = path;
+    const flowbiteImportSpecifiers: string[] = [];
+    const flowbiteImportInfos: ImportInfo[] = [];
+    const replacements: Replacement[] = [];
+    const newImportsToAdd: Set<string> = new Set();
+
+    const importVisitor = new Visitor({
+      ImportDeclaration(node) {
         if (
-          node.type === "ImportDeclaration" &&
-          (node.source.value === "flowbite-react" || node.source.value.startsWith("flowbite-react/components/")) &&
-          Array.isArray(node.specifiers) &&
-          node.specifiers.every((s) => s.type === "ImportSpecifier")
+          node.source?.value === "flowbite-react" ||
+          (typeof node.source?.value === "string" && node.source.value.startsWith("flowbite-react/components/"))
         ) {
-          flowbiteImportPath = node;
-          node.specifiers.forEach((specifier) => {
-            if (specifier.imported.type === "Identifier") {
-              flowbiteImportSpecifiers.push(specifier.imported.name);
+          if (Array.isArray(node.specifiers) && node.specifiers.every((s) => s.type === "ImportSpecifier")) {
+            const importText = content.slice(node.start, node.end);
+            const braceStart = importText.indexOf("{");
+            const braceEnd = importText.lastIndexOf("}");
+
+            if (braceStart !== -1 && braceEnd !== -1) {
+              const importInfo: ImportInfo = {
+                start: node.start,
+                end: node.end,
+                specifiersStart: node.start + braceStart + 1,
+                specifiersEnd: node.start + braceEnd,
+                specifiers: [],
+                source: node.source?.value as string,
+              };
+
+              node.specifiers.forEach((specifier) => {
+                if (specifier.imported?.type === "Identifier") {
+                  flowbiteImportSpecifiers.push(specifier.imported.name);
+                  importInfo.specifiers.push({
+                    name: specifier.imported.name,
+                    originalText: content.slice(specifier.start, specifier.end),
+                  });
+                }
+              });
+
+              flowbiteImportInfos.push(importInfo);
             }
-          });
+          }
         }
-        return false;
       },
     });
 
-    visit(ast, {
-      visitJSXMemberExpression(path) {
-        const { node } = path;
+    importVisitor.visit(result.program);
+
+    const jsxVisitor = new Visitor({
+      JSXMemberExpression(node) {
         if (
-          node.object.type === "JSXIdentifier" &&
-          node.property.type === "JSXIdentifier" &&
+          node.object?.type === "JSXIdentifier" &&
+          node.property?.type === "JSXIdentifier" &&
           flowbiteImportSpecifiers.includes(node.object.name)
         ) {
           const compoundName = `${node.object.name}.${node.property.name}`;
           const simpleName = COMPOUND_TO_SIMPLE_MAP[compoundName];
 
-          if (simpleName && flowbiteImportPath) {
-            // Replace the compound component with the simple one
-            path.replace(recast.types.builders.jsxIdentifier(simpleName));
-            hasChanges = true;
+          if (simpleName && flowbiteImportInfos.length > 0) {
+            replacements.push({
+              start: node.start,
+              end: node.end,
+              newText: simpleName,
+            });
 
-            // Add the simple component to imports if not already present
-            if (!flowbiteImportSpecifiers.includes(simpleName)) {
-              flowbiteImportSpecifiers.push(simpleName);
-              flowbiteImportPath.specifiers.push(
-                recast.types.builders.importSpecifier(
-                  recast.types.builders.identifier(simpleName),
-                  recast.types.builders.identifier(simpleName),
-                ),
-              );
+            if (!flowbiteImportSpecifiers.includes(simpleName) && !newImportsToAdd.has(simpleName)) {
+              newImportsToAdd.add(simpleName);
             }
           }
         }
-        return false;
       },
     });
 
-    // Sort import specifiers alphabetically
-    if (flowbiteImportPath) {
-      flowbiteImportPath.specifiers.sort((a, b) => {
-        if (a.imported.type === "Identifier" && b.imported.type === "Identifier") {
-          return a.imported.name.localeCompare(b.imported.name);
-        }
-        return 0;
-      });
+    jsxVisitor.visit(result.program);
+
+    if (replacements.length === 0) {
+      return { content, changed: false };
     }
 
-    const transformedContent = recast.print(ast).code;
+    const finalImportInfo =
+      flowbiteImportInfos.find((info) => info.source === "flowbite-react") || flowbiteImportInfos[0] || null;
+    const s = new MagicString(content);
+
+    const sortedReplacements = [...replacements].sort((a, b) => b.start - a.start);
+    for (const { start, end, newText } of sortedReplacements) {
+      s.overwrite(start, end, newText);
+    }
+
+    if (newImportsToAdd.size > 0 && finalImportInfo) {
+      const existingSpecifierTexts = finalImportInfo.specifiers.map((s) => s.originalText);
+      const existingNames = new Set(finalImportInfo.specifiers.map((s) => s.name));
+      const newSpecifierNames = [...newImportsToAdd].filter((name) => !existingNames.has(name));
+      const allSpecifiers = [
+        ...existingSpecifierTexts.map((text, i) => ({ text, name: finalImportInfo.specifiers[i].name })),
+        ...newSpecifierNames.map((name) => ({ text: name, name })),
+      ].sort((a, b) => a.name.localeCompare(b.name));
+      const originalImportText = content.slice(finalImportInfo.specifiersStart, finalImportInfo.specifiersEnd);
+      const isMultiline = originalImportText.includes("\n");
+
+      let newSpecifiersText: string;
+      if (isMultiline) {
+        newSpecifiersText = "\n  " + allSpecifiers.map((s) => s.text).join(",\n  ") + ",\n";
+      } else {
+        newSpecifiersText = " " + allSpecifiers.map((s) => s.text).join(", ") + " ";
+      }
+
+      s.overwrite(finalImportInfo.specifiersStart, finalImportInfo.specifiersEnd, newSpecifiersText);
+    }
+
     return {
-      content: transformedContent,
-      changed: hasChanges,
+      content: s.toString(),
+      changed: true,
     };
   } catch (_error) {
-    // If parsing fails, return the original content unchanged
     console.warn("Warning: Could not parse file, skipping transformation");
     return {
       content,

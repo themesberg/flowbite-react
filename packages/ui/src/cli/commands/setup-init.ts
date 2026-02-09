@@ -1,9 +1,9 @@
 import fs from "fs/promises";
-import type { namedTypes } from "ast-types";
-import { parse } from "recast";
+import { parseSync } from "oxc-parser";
 import { initFilePath, initJsxFilePath } from "../consts";
 import { compareNodes } from "../utils/compare-nodes";
 import type { Config } from "../utils/create-config";
+import { removeReactImport } from "../utils/remove-react-import";
 
 /**
  * Sets up the `.flowbite-react/init.tsx` file in the project.
@@ -50,8 +50,8 @@ ThemeInit.displayName = "ThemeInit";
     }
 
     if (currentContent) {
-      const currentAst = removeReactImport(parse(currentContent));
-      const newAst = removeReactImport(parse(content));
+      const currentAst = removeReactImport(parseSync("init.tsx", currentContent));
+      const newAst = removeReactImport(parseSync("init.tsx", content));
 
       if (!compareNodes(currentAst.program, newAst.program)) {
         console.log(`Updating ${targetPath} file...`);
@@ -69,23 +69,4 @@ ThemeInit.displayName = "ThemeInit";
   } catch (error) {
     console.error(`Failed to update ${targetPath}:`, error);
   }
-}
-
-/**
- * Removes `import React from "react"` from the AST
- */
-function removeReactImport(ast: namedTypes.File): namedTypes.File {
-  if (ast?.program?.body) {
-    ast.program.body = ast.program.body.filter(
-      (node) =>
-        !(
-          node.type === "ImportDeclaration" &&
-          "value" in node.source &&
-          typeof node.source.value === "string" &&
-          node.source.value === "react" &&
-          node.specifiers?.[0]?.local?.name === "React"
-        ),
-    );
-  }
-  return ast;
 }

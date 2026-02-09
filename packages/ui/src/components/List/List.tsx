@@ -27,8 +27,7 @@ export interface ListRootTheme {
 }
 
 export interface ListProps
-  extends PropsWithChildren<ComponentProps<"ul"> & ComponentProps<"ol">>,
-    ThemingProps<ListRootTheme> {
+  extends PropsWithChildren<ComponentProps<"ul"> & ComponentProps<"ol">>, ThemingProps<ListRootTheme> {
   horizontal?: boolean;
   nested?: boolean;
   ordered?: boolean;

@@ -1,5 +1,5 @@
-import { extendTailwindMerge as extendTailwindMerge_v2 } from "tailwind-merge-v2";
-import { extendTailwindMerge as extendTailwindMerge_v3, type ClassNameValue } from "tailwind-merge-v3";
+import { extendTailwindMerge as extendTailwindMerge_v2 } from "tailwind-merge@2";
+import { extendTailwindMerge as extendTailwindMerge_v3, type ClassNameValue } from "tailwind-merge@3";
 import { getPrefix, getVersion } from "../store";
 
 const cache = new Map<string | undefined, ReturnType<typeof extendTailwindMerge_v3>>();

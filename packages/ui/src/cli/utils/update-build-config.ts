@@ -1,13 +1,47 @@
-import { parse } from "@typescript-eslint/typescript-estree";
-import * as recast from "recast";
+import MagicString from "magic-string";
+import type { ArrayExpression, Expression, IdentifierReference, ObjectExpression } from "oxc-parser";
+import { parseSync, Visitor } from "oxc-parser";
 import { addImport } from "./add-import";
+
+interface PluginsArrayInfo {
+  arrayStart: number;
+  arrayEnd: number;
+  hasElements: boolean;
+  lastElementEnd?: number;
+  pluginExists: boolean;
+}
+
+interface BuildOptionsInfo {
+  objectStart: number;
+  objectEnd: number;
+  lastPropertyEnd?: number;
+  hasProperties: boolean;
+}
+
+function isIdentifier(node: Expression): node is IdentifierReference {
+  return node.type === "Identifier";
+}
+
+function isMemberExpression(
+  node: Expression,
+): node is Expression & { type: "MemberExpression"; object: Expression; property: { name?: string } } {
+  return node.type === "MemberExpression";
+}
+
+function isObjectExpression(node: Expression | ObjectExpression): node is ObjectExpression {
+  return node.type === "ObjectExpression";
+}
+
+function isArrayExpression(node: Expression | ArrayExpression): node is ArrayExpression {
+  return node.type === "ArrayExpression";
+}
 
 /**
  * Updates the build configuration by adding a plugin to the build options.
  *
  * @param {Object} options - The options for updating the build config.
  * @param {string} options.content - The source code content to modify.
- * @param {string} [options.pluginName='flowbiteReact'] - The name to use for the imported plugin.
+ * @param {string} options.pluginName - The name to use for the imported plugin.
  * @param {string} options.pluginImportPath - The import path for the plugin.
  * @returns {string} The modified source code with the plugin added.
  */
@@ -20,72 +54,121 @@ export function updateBuildConfig({
   pluginName: string;
   pluginImportPath: string;
 }): string {
-  // Parse the content first
-  const ast = recast.parse(content, {
-    parser: {
-      parse: (source: string) =>
-        parse(source, {
-          loc: true,
-          range: true,
-          tokens: true,
-          comment: true,
-        }),
-    },
-  });
+  const result = parseSync("config.ts", content);
 
-  const b = recast.types.builders;
+  if (result.errors.length > 0) {
+    return content;
+  }
 
-  // Visit the AST to find build({...}) calls
-  recast.types.visit(ast, {
-    visitCallExpression(path) {
-      const { node } = path;
+  let pluginsArrayInfo: PluginsArrayInfo | null = null;
+  let buildOptionsInfo: BuildOptionsInfo | null = null;
 
-      // Check if this is a build() or Bun.build() call
-      if (
-        ((node.callee.type === "Identifier" && node.callee.name === "build") ||
-          (node.callee.type === "MemberExpression" &&
-            node.callee.object.type === "Identifier" &&
-            node.callee.object.name === "Bun" &&
-            node.callee.property.type === "Identifier" &&
-            node.callee.property.name === "build")) &&
-        node.arguments.length > 0 &&
-        node.arguments[0].type === "ObjectExpression"
+  const visitor = new Visitor({
+    CallExpression(node) {
+      const { callee } = node;
+
+      let isBuildCall = false;
+
+      if (isIdentifier(callee) && callee.name === "build") {
+        isBuildCall = true;
+      } else if (
+        isMemberExpression(callee) &&
+        isIdentifier(callee.object) &&
+        callee.object.name === "Bun" &&
+        callee.property.name === "build"
       ) {
-        const buildOptions = node.arguments[0];
-
-        // Find or create plugins property
-        let pluginsProperty = buildOptions.properties.find(
-          (p): p is recast.types.namedTypes.Property =>
-            p.type === "Property" &&
-            ((p.key.type === "Identifier" && p.key.name === "plugins") ||
-              (p.key.type === "Literal" && p.key.value === "plugins")),
-        );
-
-        if (!pluginsProperty) {
-          // Create new plugins array with our plugin
-          pluginsProperty = b.property("init", b.identifier("plugins"), b.arrayExpression([b.identifier(pluginName)]));
-          buildOptions.properties.push(pluginsProperty);
-        } else if (pluginsProperty.value.type === "ArrayExpression") {
-          // Check if plugin already exists in array
-          const hasPlugin = pluginsProperty.value.elements.some(
-            (el) => el?.type === "Identifier" && el.name === pluginName,
-          );
-
-          if (!hasPlugin) {
-            // Add plugin to existing array
-            pluginsProperty.value.elements.push(b.identifier(pluginName));
-          }
-        }
+        isBuildCall = true;
       }
 
-      return false;
+      if (!isBuildCall || node.arguments.length === 0) return;
+
+      const firstArg = node.arguments[0] as Expression;
+      if (!isObjectExpression(firstArg)) return;
+
+      const properties = firstArg.properties;
+
+      buildOptionsInfo = {
+        objectStart: firstArg.start,
+        objectEnd: firstArg.end,
+        hasProperties: properties.length > 0,
+      };
+
+      if (properties.length > 0) {
+        const lastProp = properties[properties.length - 1];
+        buildOptionsInfo.lastPropertyEnd = lastProp.end;
+      }
+
+      for (const prop of properties) {
+        if (prop.type === "SpreadElement") continue;
+
+        let isPluginsKey = false;
+        if (prop.key.type === "Identifier" && prop.key.name === "plugins") {
+          isPluginsKey = true;
+        } else if (prop.key.type === "Literal" && prop.key.value === "plugins") {
+          isPluginsKey = true;
+        }
+
+        if (!isPluginsKey) continue;
+
+        const propValue = prop.value;
+        if (isArrayExpression(propValue)) {
+          const elements = propValue.elements;
+          const pluginExists = elements.some((el) => el !== null && el.type === "Identifier" && el.name === pluginName);
+
+          let lastElementEnd: number | undefined;
+          if (elements.length > 0) {
+            const lastElement = elements[elements.length - 1];
+            if (lastElement) {
+              lastElementEnd = lastElement.end;
+            }
+          }
+
+          pluginsArrayInfo = {
+            arrayStart: propValue.start,
+            arrayEnd: propValue.end,
+            hasElements: elements.length > 0,
+            lastElementEnd,
+            pluginExists,
+          };
+        }
+        break;
+      }
     },
   });
 
-  // Get the modified code
-  let modifiedCode = recast.print(ast).code;
+  visitor.visit(result.program);
 
-  // Now add the import using the existing utility
+  const finalBuildOptions = buildOptionsInfo as BuildOptionsInfo | null;
+  const finalPluginsArray = pluginsArrayInfo as PluginsArrayInfo | null;
+
+  if (!finalBuildOptions) {
+    return addImport({
+      content,
+      importName: pluginName,
+      importPath: pluginImportPath,
+    });
+  }
+
+  const s = new MagicString(content);
+
+  if (finalPluginsArray) {
+    if (!finalPluginsArray.pluginExists) {
+      if (finalPluginsArray.hasElements && finalPluginsArray.lastElementEnd) {
+        s.appendLeft(finalPluginsArray.lastElementEnd, `, ${pluginName}`);
+      } else {
+        s.appendLeft(finalPluginsArray.arrayStart + 1, pluginName);
+      }
+    }
+  } else {
+    if (finalBuildOptions.hasProperties && finalBuildOptions.lastPropertyEnd) {
+      s.appendLeft(finalBuildOptions.lastPropertyEnd, `,\n        plugins: [${pluginName}]`);
+    } else {
+      s.appendLeft(finalBuildOptions.objectStart + 1, ` plugins: [${pluginName}] `);
+    }
+  }
+
+  let modifiedCode = s.toString();
+
   modifiedCode = addImport({
     content: modifiedCode,
     importName: pluginName,

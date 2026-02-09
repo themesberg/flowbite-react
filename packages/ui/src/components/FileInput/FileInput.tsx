@@ -18,8 +18,7 @@ export interface FileInputTheme {
 }
 
 export interface FileInputProps
-  extends Omit<ComponentProps<"input">, "type" | "ref" | "color">,
-    ThemingProps<FileInputTheme> {
+  extends Omit<ComponentProps<"input">, "type" | "ref" | "color">, ThemingProps<FileInputTheme> {
   color?: DynamicStringEnumKeysOf<TextInputColors>;
   sizing?: DynamicStringEnumKeysOf<TextInputSizes>;
 }
