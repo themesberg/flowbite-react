@@ -27,7 +27,7 @@
   },
   "type": "module",
   "bin": {
-    "create-flowbite-react": "./dist/index.js"
+    "create-flowbite-react": "dist/index.js"
   },
   "files": [
     "dist"
