@@ -283,7 +283,7 @@ describe("Components / Accordion", () => {
       const firstContent = content()[0];
 
       expect(firstContent).not.toHaveStyle("transition: max-height 400ms ease-out");
-      expect(firstContent).not.toHaveAttribute("aria-hidden", "false");
+      expect(firstContent).not.toHaveAttribute("aria-hidden");
     });
 
     it("should use the default `animationDuration` when `animate` is enabled and `animationDuration` is not provided", () => {
@@ -293,6 +293,46 @@ describe("Components / Accordion", () => {
 
       expect(firstContent).toHaveStyle("transition: max-height 300ms ease-out");
       expect(firstContent).toHaveAttribute("aria-hidden", "false");
+    });
+
+    it("should set inert on closed animated content to suppress focus", () => {
+      render(<TestAccordion animate collapseAll />);
+
+      const firstContent = content()[0];
+
+      expect(firstContent).toHaveAttribute("aria-hidden", "true");
+      expect(firstContent).toHaveAttribute("inert");
+    });
+
+    it("should set inert when closed and remove when open; focusable descendants reachable when open", async () => {
+      const user = userEvent.setup();
+      render(
+        <Accordion animate>
+          <AccordionPanel>
+            <AccordionTitle>First</AccordionTitle>
+            <AccordionContent>
+              <a href="#link">Link inside</a>
+            </AccordionContent>
+          </AccordionPanel>
+          <AccordionPanel>
+            <AccordionTitle>Second</AccordionTitle>
+            <AccordionContent>
+              <p>Content</p>
+            </AccordionContent>
+          </AccordionPanel>
+        </Accordion>,
+      );
+
+      const link = screen.getByText("Link inside");
+      const firstTitle = screen.getByRole("button", { name: "First" });
+
+      await user.click(screen.getByRole("button", { name: "Second" }));
+      expect(content()[0]).toHaveAttribute("inert");
+
+      await user.click(firstTitle);
+      expect(content()[0]).not.toHaveAttribute("inert");
+      await user.tab();
+      expect(link).toHaveFocus();
     });
   });
 });

@@ -20,12 +20,25 @@ export interface AccordionContentProps extends ComponentProps<"div">, ThemingPro
 export function AccordionContent(props: AccordionContentProps) {
   const { isOpen, animate = false, animationDuration = 300 } = useAccordionContext();
   const contentRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<number>(0);
 
   useLayoutEffect(() => {
     if (!animate || !isOpen) return;
     const el = contentRef.current;
     if (el) setHeight(el.scrollHeight);
+  }, [animate, isOpen]);
+
+  /** When closed, set inert on the wrapper so descendants are not focusable. */
+  useLayoutEffect(() => {
+    if (!animate) return;
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+    if (isOpen) {
+      wrapper.removeAttribute("inert");
+    } else {
+      wrapper.setAttribute("inert", "");
+    }
   }, [animate, isOpen]);
 
   const provider = useThemeProvider();
@@ -50,6 +63,7 @@ export function AccordionContent(props: AccordionContentProps) {
     />
   ) : (
     <div
+      ref={wrapperRef}
       data-testid="flowbite-accordion-content"
       aria-hidden={!isOpen}
       style={{

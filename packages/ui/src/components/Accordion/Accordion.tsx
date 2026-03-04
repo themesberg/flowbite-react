@@ -27,7 +27,9 @@ export interface AccordionRootTheme {
 
 export interface AccordionProps extends ComponentProps<"div">, ThemingProps<AccordionRootTheme> {
   alwaysOpen?: boolean;
+  /** Enable smooth open/close animation for panel content. */
   animate?: boolean;
+  /** Duration of the open/close animation in milliseconds. Only used when `animate` is true. Defaults to 300. */
   animationDuration?: number;
   arrowIcon?: FC<ComponentProps<"svg">>;
   children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];
