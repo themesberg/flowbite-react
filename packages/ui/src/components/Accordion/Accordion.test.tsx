@@ -266,6 +266,35 @@ describe("Components / Accordion", () => {
       expect(content()[1]).not.toBeVisible(); // content should not be visible
     });
   });
+
+  describe("Animation", () => {
+    it("should apply transition styles when `animate` is enabled", () => {
+      render(<TestAccordion animate animationDuration={400} />);
+
+      const animatedContent = content()[0];
+
+      expect(animatedContent).toHaveStyle("transition: max-height 400ms ease-out");
+      expect(animatedContent).toHaveAttribute("aria-hidden", "false");
+    });
+
+    it("should not break the animation when `animate` is disabled", () => {
+      render(<TestAccordion />);
+
+      const firstContent = content()[0];
+
+      expect(firstContent).not.toHaveStyle("transition: max-height 400ms ease-out");
+      expect(firstContent).not.toHaveAttribute("aria-hidden", "false");
+    });
+
+    it("should use the default `animationDuration` when `animate` is enabled and `animationDuration` is not provided", () => {
+      render(<TestAccordion animate />);
+
+      const firstContent = content()[0];
+
+      expect(firstContent).toHaveStyle("transition: max-height 300ms ease-out");
+      expect(firstContent).toHaveAttribute("aria-hidden", "false");
+    });
+  });
 });
 
 const TestAccordion = (props: Omit<AccordionProps, "children">) => (
