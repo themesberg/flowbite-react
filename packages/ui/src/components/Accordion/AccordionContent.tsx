@@ -32,7 +32,11 @@ export function AccordionContent(props: AccordionContentProps) {
     <div
       className={twMerge(theme.base, className)}
       data-testid="flowbite-accordion-content"
-      hidden={!isOpen}
+      style={{
+      overflow: "hidden",
+      maxHeight: isOpen ? "1000px" : "0",
+      transition: "max-height 0.3s ease-in-out",
+    }}
       {...restProps}
     />
   );
