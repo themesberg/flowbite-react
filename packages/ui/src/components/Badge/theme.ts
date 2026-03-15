@@ -3,7 +3,7 @@ import type { BadgeTheme } from "./Badge";
 
 export const badgeTheme = createTheme<BadgeTheme>({
   root: {
-    base: "flex h-fit items-center gap-1 font-semibold",
+    base: "inline-flex h-fit items-center gap-1 font-semibold",
     color: {
       info: "bg-cyan-100 text-cyan-800 hover:bg-cyan-200 dark:bg-cyan-200 dark:text-cyan-800 dark:hover:bg-cyan-300",
       gray: "bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600",
