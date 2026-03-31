@@ -10,7 +10,6 @@ import {
   isDateEqual,
   isDateInRange,
   isDateToday,
-  isOutOfMonth,
   isMonthEqual,
   Views,
 } from "../helpers";
