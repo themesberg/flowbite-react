@@ -103,13 +103,7 @@ export function PaginationNavigation({
   }
 
   return (
-    <button
-      type="button"
-      className={mergedClassName}
-      disabled={disabled}
-      onClick={onClick}
-      {...props}
-    >
+    <button type="button" className={mergedClassName} disabled={disabled} onClick={onClick} {...props}>
       {children}
     </button>
   );
