@@ -43,12 +43,19 @@ type PaginationNavigationAsButton = PaginationNavigationBaseProps &
     href?: never;
   };
 
-type PaginationNavigationAsAnchor = PaginationNavigationBaseProps &
+export type PaginationNavigationAsAnchor = PaginationNavigationBaseProps &
   Omit<ComponentProps<"a">, keyof PaginationNavigationBaseProps> & {
     href: string;
   };
 
-export type PaginationPrevButtonProps = PaginationNavigationAsButton | PaginationNavigationAsAnchor;
+/**
+ * Union type for PaginationNavigation props — used as the re-exported
+ * `PaginationNavigation` type in index.ts for consumers who need the type
+ * (not the component).
+ */
+export type PaginationNavigation = PaginationNavigationAsButton | PaginationNavigationAsAnchor;
+
+export type PaginationPrevButtonProps = PaginationNavigation;
 
 export const PaginationButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, PaginationButtonProps>(
   ({ active, children, className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {

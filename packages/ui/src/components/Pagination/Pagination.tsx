@@ -48,27 +48,40 @@ export interface BasePaginationProps extends ComponentProps<"nav">, ThemingProps
   layout?: "navigation" | "pagination" | "table";
   currentPage: number;
   nextLabel?: string;
-  /**
-   * Callback fired when a page is selected. Required when `getPageUrl` is not provided.
-   * When `getPageUrl` is provided, this is optional — if omitted, the anchor links handle
-   * navigation natively without client-side routing.
-   */
-  onPageChange?: (page: number) => void;
   previousLabel?: string;
   showIcons?: boolean;
 }
 
-export interface DefaultPaginationProps extends BasePaginationProps {
+interface DefaultPaginationSharedProps extends BasePaginationProps {
   layout?: "navigation" | "pagination";
+  renderPaginationButton?: (props: PaginationButtonProps) => ReactNode;
+  totalPages: number;
+}
+
+/**
+ * Client-side pagination: uses `onPageChange` callback for navigation.
+ */
+interface ClientSidePaginationProps extends DefaultPaginationSharedProps {
+  onPageChange: (page: number) => void;
+  getPageUrl?: never;
+}
+
+/**
+ * Anchor-based pagination: uses `getPageUrl` to render `<a>` elements for SEO.
+ * `onPageChange` is optional — if omitted, anchor links handle navigation natively.
+ */
+interface AnchorPaginationProps extends DefaultPaginationSharedProps {
   /**
    * A function that returns a URL for a given page number. When provided, pagination buttons
    * render as `<a>` elements instead of `<button>` elements, improving SEO by making
    * pagination links crawlable by search engines.
    */
-  getPageUrl?: (page: number) => string;
-  renderPaginationButton?: (props: PaginationButtonProps) => ReactNode;
-  totalPages: number;
+  getPageUrl: (page: number) => string;
+  onPageChange?: (page: number) => void;
 }
+
+export type DefaultPaginationProps = ClientSidePaginationProps | AnchorPaginationProps;
+
 export interface TablePaginationProps extends BasePaginationProps {
   layout: "table";
   onPageChange: (page: number) => void;
