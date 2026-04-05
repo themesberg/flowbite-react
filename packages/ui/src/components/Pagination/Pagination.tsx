@@ -121,6 +121,9 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
     onPageChange(previousPage);
   }
 
+  const previousHref = getPageUrl && currentPage > 1 ? getPageUrl(previousPage) : undefined;
+  const nextHref = getPageUrl && currentPage < totalPages ? getPageUrl(nextPage) : undefined;
+
   return (
     <nav ref={ref} className={twMerge(theme.base, className)} {...restProps}>
       <ul className={theme.pages.base}>
@@ -129,30 +132,33 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
             className={twMerge(theme.pages.previous.base, showIcon && theme.pages.showIcon)}
             onClick={goToPreviousPage}
             disabled={currentPage === 1}
-            href={getPageUrl && currentPage > 1 ? getPageUrl(previousPage) : undefined}
+            {...(previousHref ? { href: previousHref } : {})}
           >
             {showIcon && <ChevronLeftIcon aria-hidden className={theme.pages.previous.icon} />}
             {previousLabel}
           </PaginationNavigation>
         </li>
         {layout === "pagination" &&
-          range(firstPage, lastPage).map((page: number) => (
-            <li aria-current={page === currentPage ? "page" : undefined} key={page}>
-              {renderPaginationButton({
-                className: twMerge(theme.pages.selector.base, currentPage === page && theme.pages.selector.active),
-                active: page === currentPage,
-                onClick: () => onPageChange(page),
-                href: getPageUrl ? getPageUrl(page) : undefined,
-                children: page,
-              })}
-            </li>
-          ))}
+          range(firstPage, lastPage).map((page: number) => {
+            const pageHref = getPageUrl ? getPageUrl(page) : undefined;
+            return (
+              <li aria-current={page === currentPage ? "page" : undefined} key={page}>
+                {renderPaginationButton({
+                  className: twMerge(theme.pages.selector.base, currentPage === page && theme.pages.selector.active),
+                  active: page === currentPage,
+                  onClick: () => onPageChange(page),
+                  ...(pageHref ? { href: pageHref } : {}),
+                  children: page,
+                })}
+              </li>
+            );
+          })}
         <li>
           <PaginationNavigation
             className={twMerge(theme.pages.next.base, showIcon && theme.pages.showIcon)}
             onClick={goToNextPage}
             disabled={currentPage === totalPages}
-            href={getPageUrl && currentPage < totalPages ? getPageUrl(nextPage) : undefined}
+            {...(nextHref ? { href: nextHref } : {})}
           >
             {nextLabel}
             {showIcon && <ChevronRightIcon aria-hidden className={theme.pages.next.icon} />}

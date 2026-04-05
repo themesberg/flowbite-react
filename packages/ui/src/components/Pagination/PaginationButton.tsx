@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, type ComponentProps, type ReactEventHandler, type ReactNode, type Ref } from "react";
+import { forwardRef, type ComponentProps, type ReactNode, type Ref } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -14,21 +14,44 @@ export interface PaginationButtonTheme {
   disabled: string;
 }
 
-export interface PaginationButtonProps extends ComponentProps<"button">, ThemingProps<PaginationButtonTheme> {
+interface PaginationButtonBaseProps extends ThemingProps<PaginationButtonTheme> {
   active?: boolean;
   children?: ReactNode;
   className?: string;
-  href?: string;
-  onClick?: ReactEventHandler<HTMLButtonElement>;
 }
 
-export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, "active"> {
+type PaginationButtonAsButton = PaginationButtonBaseProps &
+  Omit<ComponentProps<"button">, keyof PaginationButtonBaseProps> & {
+    href?: never;
+  };
+
+type PaginationButtonAsAnchor = PaginationButtonBaseProps &
+  Omit<ComponentProps<"a">, keyof PaginationButtonBaseProps> & {
+    href: string;
+  };
+
+export type PaginationButtonProps = PaginationButtonAsButton | PaginationButtonAsAnchor;
+
+interface PaginationNavigationBaseProps extends ThemingProps<PaginationButtonTheme> {
+  children?: ReactNode;
+  className?: string;
   disabled?: boolean;
-  href?: string;
 }
+
+type PaginationNavigationAsButton = PaginationNavigationBaseProps &
+  Omit<ComponentProps<"button">, keyof PaginationNavigationBaseProps> & {
+    href?: never;
+  };
+
+type PaginationNavigationAsAnchor = PaginationNavigationBaseProps &
+  Omit<ComponentProps<"a">, keyof PaginationNavigationBaseProps> & {
+    href: string;
+  };
+
+export type PaginationPrevButtonProps = PaginationNavigationAsButton | PaginationNavigationAsAnchor;
 
 export const PaginationButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, PaginationButtonProps>(
-  ({ active, children, className, href, onClick, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+  ({ active, children, className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = useResolveTheme(
       [paginationTheme, provider.theme?.pagination, customTheme],
@@ -38,28 +61,18 @@ export const PaginationButton = forwardRef<HTMLButtonElement | HTMLAnchorElement
 
     const mergedClassName = twMerge(active && theme.pages.selector.active, className);
 
-    if (href) {
+    if ("href" in props && props.href) {
+      const { href, ...anchorProps } = props;
       return (
-        <a
-          ref={ref as Ref<HTMLAnchorElement>}
-          href={href}
-          className={mergedClassName}
-          onClick={onClick as unknown as ReactEventHandler<HTMLAnchorElement>}
-          {...(props as ComponentProps<"a">)}
-        >
+        <a ref={ref as Ref<HTMLAnchorElement>} href={href} className={mergedClassName} {...anchorProps}>
           {children}
         </a>
       );
     }
 
+    const { href: _, ...buttonProps } = props as PaginationButtonAsButton;
     return (
-      <button
-        ref={ref as Ref<HTMLButtonElement>}
-        type="button"
-        className={mergedClassName}
-        onClick={onClick}
-        {...props}
-      >
+      <button ref={ref as Ref<HTMLButtonElement>} type="button" className={mergedClassName} {...buttonProps}>
         {children}
       </button>
     );
@@ -71,8 +84,6 @@ PaginationButton.displayName = "PaginationButton";
 export function PaginationNavigation({
   children,
   className,
-  href,
-  onClick,
   disabled = false,
   theme: customTheme,
   clearTheme,
@@ -88,22 +99,18 @@ export function PaginationNavigation({
 
   const mergedClassName = twMerge(disabled && theme.pages.selector.disabled, className);
 
-  if (href && !disabled) {
+  if ("href" in props && props.href && !disabled) {
+    const { href, ...anchorProps } = props;
     return (
-      <a
-        href={href}
-        className={mergedClassName}
-        onClick={onClick as unknown as ReactEventHandler<HTMLAnchorElement>}
-        aria-disabled={disabled}
-        {...(props as ComponentProps<"a">)}
-      >
+      <a href={href} className={mergedClassName} {...anchorProps}>
         {children}
       </a>
     );
   }
 
+  const { href: _, ...buttonProps } = props as PaginationNavigationAsButton;
   return (
-    <button type="button" className={mergedClassName} disabled={disabled} onClick={onClick} {...props}>
+    <button type="button" className={mergedClassName} disabled={disabled} {...buttonProps}>
       {children}
     </button>
   );
