@@ -55,6 +55,12 @@ export interface BasePaginationProps extends ComponentProps<"nav">, ThemingProps
 
 export interface DefaultPaginationProps extends BasePaginationProps {
   layout?: "navigation" | "pagination";
+  /**
+   * A function that returns a URL for a given page number. When provided, pagination buttons
+   * render as `<a>` elements instead of `<button>` elements, improving SEO by making
+   * pagination links crawlable by search engines.
+   */
+  getPageUrl?: (page: number) => string;
   renderPaginationButton?: (props: PaginationButtonProps) => ReactNode;
   totalPages: number;
 }
@@ -82,6 +88,7 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
   const {
     className,
     currentPage,
+    getPageUrl,
     layout = "pagination",
     nextLabel = "Next",
     onPageChange,
@@ -103,12 +110,15 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
   const lastPage = Math.min(Math.max(layout === "pagination" ? currentPage + 2 : currentPage + 4, 5), totalPages);
   const firstPage = Math.max(1, lastPage - 4);
 
+  const previousPage = Math.max(currentPage - 1, 1);
+  const nextPage = Math.min(currentPage + 1, totalPages);
+
   function goToNextPage() {
-    onPageChange(Math.min(currentPage + 1, totalPages));
+    onPageChange(nextPage);
   }
 
   function goToPreviousPage() {
-    onPageChange(Math.max(currentPage - 1, 1));
+    onPageChange(previousPage);
   }
 
   return (
@@ -119,6 +129,7 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
             className={twMerge(theme.pages.previous.base, showIcon && theme.pages.showIcon)}
             onClick={goToPreviousPage}
             disabled={currentPage === 1}
+            href={getPageUrl && currentPage > 1 ? getPageUrl(previousPage) : undefined}
           >
             {showIcon && <ChevronLeftIcon aria-hidden className={theme.pages.previous.icon} />}
             {previousLabel}
@@ -131,6 +142,7 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
                 className: twMerge(theme.pages.selector.base, currentPage === page && theme.pages.selector.active),
                 active: page === currentPage,
                 onClick: () => onPageChange(page),
+                href: getPageUrl ? getPageUrl(page) : undefined,
                 children: page,
               })}
             </li>
@@ -140,6 +152,7 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
             className={twMerge(theme.pages.next.base, showIcon && theme.pages.showIcon)}
             onClick={goToNextPage}
             disabled={currentPage === totalPages}
+            href={getPageUrl && currentPage < totalPages ? getPageUrl(nextPage) : undefined}
           >
             {nextLabel}
             {showIcon && <ChevronRightIcon aria-hidden className={theme.pages.next.icon} />}

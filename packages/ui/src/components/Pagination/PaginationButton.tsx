@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, type ComponentProps, type ReactEventHandler, type ReactNode } from "react";
+import { forwardRef, type ComponentProps, type ReactEventHandler, type ReactNode, type Ref } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -18,15 +18,17 @@ export interface PaginationButtonProps extends ComponentProps<"button">, Theming
   active?: boolean;
   children?: ReactNode;
   className?: string;
+  href?: string;
   onClick?: ReactEventHandler<HTMLButtonElement>;
 }
 
 export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, "active"> {
   disabled?: boolean;
+  href?: string;
 }
 
-export const PaginationButton = forwardRef<HTMLButtonElement, PaginationButtonProps>(
-  ({ active, children, className, onClick, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+export const PaginationButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, PaginationButtonProps>(
+  ({ active, children, className, href, onClick, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = useResolveTheme(
       [paginationTheme, provider.theme?.pagination, customTheme],
@@ -34,11 +36,27 @@ export const PaginationButton = forwardRef<HTMLButtonElement, PaginationButtonPr
       [get(provider.applyTheme, "pagination"), applyTheme],
     );
 
+    const mergedClassName = twMerge(active && theme.pages.selector.active, className);
+
+    if (href) {
+      return (
+        <a
+          ref={ref as Ref<HTMLAnchorElement>}
+          href={href}
+          className={mergedClassName}
+          onClick={onClick as unknown as ReactEventHandler<HTMLAnchorElement>}
+          {...(props as ComponentProps<"a">)}
+        >
+          {children}
+        </a>
+      );
+    }
+
     return (
       <button
-        ref={ref}
+        ref={ref as Ref<HTMLButtonElement>}
         type="button"
-        className={twMerge(active && theme.pages.selector.active, className)}
+        className={mergedClassName}
         onClick={onClick}
         {...props}
       >
@@ -53,6 +71,7 @@ PaginationButton.displayName = "PaginationButton";
 export function PaginationNavigation({
   children,
   className,
+  href,
   onClick,
   disabled = false,
   theme: customTheme,
@@ -67,10 +86,26 @@ export function PaginationNavigation({
     [get(provider.applyTheme, "pagination"), applyTheme],
   );
 
+  const mergedClassName = twMerge(disabled && theme.pages.selector.disabled, className);
+
+  if (href && !disabled) {
+    return (
+      <a
+        href={href}
+        className={mergedClassName}
+        onClick={onClick as unknown as ReactEventHandler<HTMLAnchorElement>}
+        aria-disabled={disabled}
+        {...(props as ComponentProps<"a">)}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
     <button
       type="button"
-      className={twMerge(disabled && theme.pages.selector.disabled, className)}
+      className={mergedClassName}
       disabled={disabled}
       onClick={onClick}
       {...props}
