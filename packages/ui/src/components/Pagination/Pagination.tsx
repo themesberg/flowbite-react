@@ -48,7 +48,12 @@ export interface BasePaginationProps extends ComponentProps<"nav">, ThemingProps
   layout?: "navigation" | "pagination" | "table";
   currentPage: number;
   nextLabel?: string;
-  onPageChange: (page: number) => void;
+  /**
+   * Callback fired when a page is selected. Required when `getPageUrl` is not provided.
+   * When `getPageUrl` is provided, this is optional — if omitted, the anchor links handle
+   * navigation natively without client-side routing.
+   */
+  onPageChange?: (page: number) => void;
   previousLabel?: string;
   showIcons?: boolean;
 }
@@ -66,6 +71,7 @@ export interface DefaultPaginationProps extends BasePaginationProps {
 }
 export interface TablePaginationProps extends BasePaginationProps {
   layout: "table";
+  onPageChange: (page: number) => void;
   itemsPerPage: number;
   totalItems: number;
 }
@@ -114,11 +120,11 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
   const nextPage = Math.min(currentPage + 1, totalPages);
 
   function goToNextPage() {
-    onPageChange(nextPage);
+    onPageChange?.(nextPage);
   }
 
   function goToPreviousPage() {
-    onPageChange(previousPage);
+    onPageChange?.(previousPage);
   }
 
   const previousHref = getPageUrl && currentPage > 1 ? getPageUrl(previousPage) : undefined;
@@ -144,9 +150,9 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
             return (
               <li aria-current={page === currentPage ? "page" : undefined} key={page}>
                 {renderPaginationButton({
-                  className: twMerge(theme.pages.selector.base, currentPage === page && theme.pages.selector.active),
+                  className: theme.pages.selector.base,
                   active: page === currentPage,
-                  onClick: () => onPageChange(page),
+                  onClick: () => onPageChange?.(page),
                   ...(pageHref ? { href: pageHref } : {}),
                   children: page,
                 })}

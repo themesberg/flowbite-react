@@ -81,39 +81,39 @@ export const PaginationButton = forwardRef<HTMLButtonElement | HTMLAnchorElement
 
 PaginationButton.displayName = "PaginationButton";
 
-export function PaginationNavigation({
-  children,
-  className,
-  disabled = false,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: PaginationPrevButtonProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [paginationTheme, provider.theme?.pagination, customTheme],
-    [get(provider.clearTheme, "pagination"), clearTheme],
-    [get(provider.applyTheme, "pagination"), applyTheme],
-  );
-
-  const mergedClassName = twMerge(disabled && theme.pages.selector.disabled, className);
-
-  if ("href" in props && props.href && !disabled) {
-    const { href, ...anchorProps } = props;
-    return (
-      <a href={href} className={mergedClassName} {...anchorProps}>
-        {children}
-      </a>
+export const PaginationNavigation = forwardRef<HTMLButtonElement | HTMLAnchorElement, PaginationPrevButtonProps>(
+  ({ children, className, disabled = false, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [paginationTheme, provider.theme?.pagination, customTheme],
+      [get(provider.clearTheme, "pagination"), clearTheme],
+      [get(provider.applyTheme, "pagination"), applyTheme],
     );
-  }
 
-  const { href: _, ...buttonProps } = props as PaginationNavigationAsButton;
-  return (
-    <button type="button" className={mergedClassName} disabled={disabled} {...buttonProps}>
-      {children}
-    </button>
-  );
-}
+    const mergedClassName = twMerge(disabled && theme.pages.selector.disabled, className);
+
+    if ("href" in props && props.href && !disabled) {
+      const { href, ...anchorProps } = props;
+      return (
+        <a ref={ref as Ref<HTMLAnchorElement>} href={href} className={mergedClassName} {...anchorProps}>
+          {children}
+        </a>
+      );
+    }
+
+    const { href: _, ...buttonProps } = props as PaginationNavigationAsButton;
+    return (
+      <button
+        ref={ref as Ref<HTMLButtonElement>}
+        type="button"
+        className={mergedClassName}
+        disabled={disabled}
+        {...buttonProps}
+      >
+        {children}
+      </button>
+    );
+  },
+);
 
 PaginationNavigation.displayName = "PaginationNavigation";
