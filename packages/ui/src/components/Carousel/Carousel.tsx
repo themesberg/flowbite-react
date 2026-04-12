@@ -62,6 +62,8 @@ export interface CarouselProps extends ComponentProps<"div">, ThemingProps<Carou
 
 export interface DefaultLeftRightControlProps extends ComponentProps<"div">, ThemingProps<CarouselTheme> {}
 
+const SCROLL_ANIMATION_DURATION_MS = 500;
+
 export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
   const provider = useThemeProvider();
   const theme = useResolveTheme(
@@ -89,8 +91,11 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
   const [activeItem, setActiveItem] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const didMountRef = useRef(false);
+  const initializedRef = useRef(false);
+  const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const items = useMemo(
     () =>
@@ -102,31 +107,102 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
     [children, theme.item.base],
   );
 
+  const itemCount = items?.length ?? 0;
+
   const navigateTo = useCallback(
     (item: number) => () => {
-      if (!items) return;
-      item = (item + items.length) % items.length;
-      if (carouselContainer.current) {
-        carouselContainer.current.scrollLeft = carouselContainer.current.clientWidth * item;
+      if (!items || isAnimating) return;
+
+      const container = carouselContainer.current;
+      if (!container) return;
+
+      const totalItems = items.length;
+      const targetItem = ((item % totalItems) + totalItems) % totalItems;
+
+      const isWrappingForward = activeItem === totalItems - 1 && item >= totalItems;
+      const isWrappingBackward = activeItem === 0 && item < 0;
+
+      if (isWrappingForward || isWrappingBackward) {
+        setIsAnimating(true);
+
+        if (transitionTimeoutRef.current) {
+          clearTimeout(transitionTimeoutRef.current);
+        }
+
+        // Scroll to the clone (last element for backward, first-after-last for forward)
+        if (isWrappingForward) {
+          container.scrollTo({
+            left: container.clientWidth * (totalItems + 1),
+            behavior: "smooth",
+          });
+        } else {
+          container.scrollTo({
+            left: 0,
+            behavior: "smooth",
+          });
+        }
+
+        // After the smooth scroll animation, jump instantly to the real slide
+        const onTransitionDone = () => {
+          container.style.scrollBehavior = "auto";
+          if (isWrappingForward) {
+            container.scrollLeft = container.clientWidth * 1;
+          } else {
+            container.scrollLeft = container.clientWidth * totalItems;
+          }
+          container.style.scrollBehavior = "";
+          setIsAnimating(false);
+          transitionTimeoutRef.current = null;
+        };
+
+        transitionTimeoutRef.current = setTimeout(onTransitionDone, SCROLL_ANIMATION_DURATION_MS);
+        setActiveItem(targetItem);
+      } else {
+        // Normal navigation - account for the prepended clone
+        container.scrollTo({
+          left: container.clientWidth * (targetItem + 1),
+          behavior: "smooth",
+        });
+        setActiveItem(targetItem);
       }
-      setActiveItem(item);
     },
-    [items],
+    [items, activeItem, isAnimating],
   );
 
+  // Initialize scroll position to first real slide (past the prepended clone)
   useEffect(() => {
-    if (carouselContainer.current && !isDragging && carouselContainer.current.scrollLeft !== 0) {
-      setActiveItem(Math.round(carouselContainer.current.scrollLeft / carouselContainer.current.clientWidth));
+    const container = carouselContainer.current;
+    if (container && items && items.length > 0 && !initializedRef.current) {
+      initializedRef.current = true;
+      container.style.scrollBehavior = "auto";
+      container.scrollLeft = container.clientWidth * 1;
+      container.style.scrollBehavior = "";
     }
-  }, [isDragging]);
+  }, [items]);
+
+  useEffect(() => {
+    if (carouselContainer.current && !isDragging && !isAnimating) {
+      const container = carouselContainer.current;
+      const rawIndex = Math.round(container.scrollLeft / container.clientWidth);
+      // Account for the prepended clone: real items start at index 1
+      const totalItems = items?.length ?? 0;
+      if (totalItems > 0) {
+        const realIndex = (((rawIndex - 1) % totalItems) + totalItems) % totalItems;
+        setActiveItem(realIndex);
+      }
+    }
+  }, [isDragging, isAnimating, items]);
 
   useEffect(() => {
     if (slide && !(pauseOnHover && isHovering)) {
-      const intervalId = setInterval(() => !isDragging && navigateTo(activeItem + 1)(), slideInterval ?? 3000);
+      const intervalId = setInterval(
+        () => !isDragging && !isAnimating && navigateTo(activeItem + 1)(),
+        slideInterval ?? 3000,
+      );
 
       return () => clearInterval(intervalId);
     }
-  }, [activeItem, isDragging, navigateTo, slide, slideInterval, pauseOnHover, isHovering]);
+  }, [activeItem, isDragging, isAnimating, navigateTo, slide, slideInterval, pauseOnHover, isHovering]);
 
   useEffect(() => {
     if (didMountRef.current) {
@@ -136,10 +212,54 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
     }
   }, [onSlideChange, activeItem]);
 
+  // Cleanup transition timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (transitionTimeoutRef.current) {
+        clearTimeout(transitionTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
+
+  // Handle drag end: snap to nearest real slide and fix wrap-around
+  const handleDragEnd = useCallback(() => {
+    setIsDragging(false);
+    const container = carouselContainer.current;
+    if (!container || !items) return;
+
+    const totalItems = items.length;
+    const rawIndex = Math.round(container.scrollLeft / container.clientWidth);
+
+    // If scrolled to the prepended clone (index 0), jump to real last slide
+    if (rawIndex <= 0) {
+      container.style.scrollBehavior = "auto";
+      container.scrollLeft = container.clientWidth * totalItems;
+      container.style.scrollBehavior = "";
+      setActiveItem(totalItems - 1);
+    }
+    // If scrolled to the appended clone (index totalItems + 1), jump to real first slide
+    else if (rawIndex >= totalItems + 1) {
+      container.style.scrollBehavior = "auto";
+      container.scrollLeft = container.clientWidth * 1;
+      container.style.scrollBehavior = "";
+      setActiveItem(0);
+    } else {
+      setActiveItem(rawIndex - 1);
+    }
+  }, [items]);
 
   const setHoveringTrue = useCallback(() => setIsHovering(true), []);
   const setHoveringFalse = useCallback(() => setIsHovering(false), []);
+
+  // Build the extended items array: [cloneLast, ...items, cloneFirst]
+  const extendedItems = useMemo(() => {
+    if (!items || items.length === 0) return items;
+    const lastClone = cloneElement(items[items.length - 1], { key: "clone-last" });
+    const firstClone = cloneElement(items[0], { key: "clone-first" });
+    return [lastClone, ...items, firstClone];
+  }, [items]);
 
   return (
     <div
@@ -156,16 +276,16 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
         className={twMerge(theme.scrollContainer.base, (isDeviceMobile || !isDragging) && theme.scrollContainer.snap)}
         draggingClassName="cursor-grab"
         innerRef={carouselContainer}
-        onEndScroll={handleDragging(false)}
+        onEndScroll={handleDragEnd}
         onStartScroll={handleDragging(draggable)}
         vertical={false}
         horizontal={draggable}
       >
-        {items?.map((item, index) => (
+        {extendedItems?.map((item, index) => (
           <div
             key={index}
             className={theme.item.wrapper[draggable ? "on" : "off"]}
-            data-active={activeItem === index}
+            data-active={activeItem === (index - 1 + itemCount) % itemCount}
             data-testid="carousel-item"
           >
             {item}
