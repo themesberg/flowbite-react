@@ -10,7 +10,7 @@
  * ```
  */
 export function range(start: number, end: number): number[] {
-  if (start >= end) {
+  if (start > end) {
     return [];
   }
 
