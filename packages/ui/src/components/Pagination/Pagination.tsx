@@ -48,18 +48,43 @@ export interface BasePaginationProps extends ComponentProps<"nav">, ThemingProps
   layout?: "navigation" | "pagination" | "table";
   currentPage: number;
   nextLabel?: string;
-  onPageChange: (page: number) => void;
   previousLabel?: string;
   showIcons?: boolean;
 }
 
-export interface DefaultPaginationProps extends BasePaginationProps {
+interface DefaultPaginationSharedProps extends BasePaginationProps {
   layout?: "navigation" | "pagination";
   renderPaginationButton?: (props: PaginationButtonProps) => ReactNode;
   totalPages: number;
 }
+
+/**
+ * Client-side pagination: uses `onPageChange` callback for navigation.
+ */
+interface ClientSidePaginationProps extends DefaultPaginationSharedProps {
+  onPageChange: (page: number) => void;
+  getPageUrl?: never;
+}
+
+/**
+ * Anchor-based pagination: uses `getPageUrl` to render `<a>` elements for SEO.
+ * `onPageChange` is optional — if omitted, anchor links handle navigation natively.
+ */
+interface AnchorPaginationProps extends DefaultPaginationSharedProps {
+  /**
+   * A function that returns a URL for a given page number. When provided, pagination buttons
+   * render as `<a>` elements instead of `<button>` elements, improving SEO by making
+   * pagination links crawlable by search engines.
+   */
+  getPageUrl: (page: number) => string;
+  onPageChange?: (page: number) => void;
+}
+
+export type DefaultPaginationProps = ClientSidePaginationProps | AnchorPaginationProps;
+
 export interface TablePaginationProps extends BasePaginationProps {
   layout: "table";
+  onPageChange: (page: number) => void;
   itemsPerPage: number;
   totalItems: number;
 }
@@ -82,6 +107,7 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
   const {
     className,
     currentPage,
+    getPageUrl,
     layout = "pagination",
     nextLabel = "Next",
     onPageChange,
@@ -103,13 +129,19 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
   const lastPage = Math.min(Math.max(layout === "pagination" ? currentPage + 2 : currentPage + 4, 5), totalPages);
   const firstPage = Math.max(1, lastPage - 4);
 
+  const previousPage = Math.max(currentPage - 1, 1);
+  const nextPage = Math.min(currentPage + 1, totalPages);
+
   function goToNextPage() {
-    onPageChange(Math.min(currentPage + 1, totalPages));
+    onPageChange?.(nextPage);
   }
 
   function goToPreviousPage() {
-    onPageChange(Math.max(currentPage - 1, 1));
+    onPageChange?.(previousPage);
   }
+
+  const previousHref = getPageUrl && currentPage > 1 ? getPageUrl(previousPage) : undefined;
+  const nextHref = getPageUrl && currentPage < totalPages ? getPageUrl(nextPage) : undefined;
 
   return (
     <nav ref={ref} className={twMerge(theme.base, className)} {...restProps}>
@@ -119,27 +151,33 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
             className={twMerge(theme.pages.previous.base, showIcon && theme.pages.showIcon)}
             onClick={goToPreviousPage}
             disabled={currentPage === 1}
+            {...(previousHref ? { href: previousHref } : {})}
           >
             {showIcon && <ChevronLeftIcon aria-hidden className={theme.pages.previous.icon} />}
             {previousLabel}
           </PaginationNavigation>
         </li>
         {layout === "pagination" &&
-          range(firstPage, lastPage).map((page: number) => (
-            <li aria-current={page === currentPage ? "page" : undefined} key={page}>
-              {renderPaginationButton({
-                className: twMerge(theme.pages.selector.base, currentPage === page && theme.pages.selector.active),
-                active: page === currentPage,
-                onClick: () => onPageChange(page),
-                children: page,
-              })}
-            </li>
-          ))}
+          range(firstPage, lastPage).map((page: number) => {
+            const pageHref = getPageUrl ? getPageUrl(page) : undefined;
+            return (
+              <li aria-current={page === currentPage ? "page" : undefined} key={page}>
+                {renderPaginationButton({
+                  className: theme.pages.selector.base,
+                  active: page === currentPage,
+                  onClick: () => onPageChange?.(page),
+                  ...(pageHref ? { href: pageHref } : {}),
+                  children: page,
+                })}
+              </li>
+            );
+          })}
         <li>
           <PaginationNavigation
             className={twMerge(theme.pages.next.base, showIcon && theme.pages.showIcon)}
             onClick={goToNextPage}
             disabled={currentPage === totalPages}
+            {...(nextHref ? { href: nextHref } : {})}
           >
             {nextLabel}
             {showIcon && <ChevronRightIcon aria-hidden className={theme.pages.next.icon} />}
