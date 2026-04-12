@@ -9,6 +9,8 @@ beforeEach(() => {
   vi.spyOn(global, "setTimeout");
   // Mock scrollTo since jsdom does not implement it
   Element.prototype.scrollTo = vi.fn();
+  // Mock clientWidth so scroll-based index calculations work correctly in jsdom
+  Object.defineProperty(HTMLElement.prototype, "clientWidth", { configurable: true, value: 100 });
 });
 
 afterEach(() => {
