@@ -33,7 +33,7 @@ export const modalTheme = createTheme<ModalTheme>({
     },
   },
   content: {
-    base: "relative h-full w-full p-4 md:h-auto flex flex-col",
+    base: "relative flex h-full w-full flex-col p-4 md:h-auto",
     inner: "relative flex max-h-[90dvh] flex-col rounded-lg bg-white shadow dark:bg-gray-700",
   },
   body: {
