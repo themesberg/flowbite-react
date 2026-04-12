@@ -62,6 +62,8 @@ export interface CarouselProps extends ComponentProps<"div">, ThemingProps<Carou
 
 export interface DefaultLeftRightControlProps extends ComponentProps<"div">, ThemingProps<CarouselTheme> {}
 
+const SCROLL_ANIMATION_DURATION_MS = 500;
+
 export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
   const provider = useThemeProvider();
   const theme = useResolveTheme(
@@ -92,6 +94,8 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
   const [isAnimating, setIsAnimating] = useState(false);
 
   const didMountRef = useRef(false);
+  const initializedRef = useRef(false);
+  const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const items = useMemo(
     () =>
@@ -121,16 +125,17 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
       if (isWrappingForward || isWrappingBackward) {
         setIsAnimating(true);
 
+        if (transitionTimeoutRef.current) {
+          clearTimeout(transitionTimeoutRef.current);
+        }
+
         // Scroll to the clone (last element for backward, first-after-last for forward)
         if (isWrappingForward) {
-          // Clone of first slide is at the end (index = totalItems + 1 in the extended list)
-          // But we use scrollLeft directly
           container.scrollTo({
             left: container.clientWidth * (totalItems + 1),
             behavior: "smooth",
           });
         } else {
-          // Clone of last slide is at position 0
           container.scrollTo({
             left: 0,
             behavior: "smooth",
@@ -141,15 +146,16 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
         const onTransitionDone = () => {
           container.style.scrollBehavior = "auto";
           if (isWrappingForward) {
-            container.scrollLeft = container.clientWidth * 1; // real first slide at index 1
+            container.scrollLeft = container.clientWidth * 1;
           } else {
-            container.scrollLeft = container.clientWidth * totalItems; // real last slide
+            container.scrollLeft = container.clientWidth * totalItems;
           }
           container.style.scrollBehavior = "";
           setIsAnimating(false);
+          transitionTimeoutRef.current = null;
         };
 
-        setTimeout(onTransitionDone, 500);
+        transitionTimeoutRef.current = setTimeout(onTransitionDone, SCROLL_ANIMATION_DURATION_MS);
         setActiveItem(targetItem);
       } else {
         // Normal navigation - account for the prepended clone
@@ -166,7 +172,8 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
   // Initialize scroll position to first real slide (past the prepended clone)
   useEffect(() => {
     const container = carouselContainer.current;
-    if (container && items && items.length > 0) {
+    if (container && items && items.length > 0 && !initializedRef.current) {
+      initializedRef.current = true;
       container.style.scrollBehavior = "auto";
       container.scrollLeft = container.clientWidth * 1;
       container.style.scrollBehavior = "";
@@ -180,7 +187,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
       // Account for the prepended clone: real items start at index 1
       const totalItems = items?.length ?? 0;
       if (totalItems > 0) {
-        const realIndex = ((rawIndex - 1) % totalItems + totalItems) % totalItems;
+        const realIndex = (((rawIndex - 1) % totalItems) + totalItems) % totalItems;
         setActiveItem(realIndex);
       }
     }
@@ -188,7 +195,10 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
 
   useEffect(() => {
     if (slide && !(pauseOnHover && isHovering)) {
-      const intervalId = setInterval(() => !isDragging && !isAnimating && navigateTo(activeItem + 1)(), slideInterval ?? 3000);
+      const intervalId = setInterval(
+        () => !isDragging && !isAnimating && navigateTo(activeItem + 1)(),
+        slideInterval ?? 3000,
+      );
 
       return () => clearInterval(intervalId);
     }
@@ -201,6 +211,15 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
       didMountRef.current = true;
     }
   }, [onSlideChange, activeItem]);
+
+  // Cleanup transition timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (transitionTimeoutRef.current) {
+        clearTimeout(transitionTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleDragging = (dragging: boolean) => () => setIsDragging(dragging);
 
@@ -266,7 +285,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>((props, ref) =
           <div
             key={index}
             className={theme.item.wrapper[draggable ? "on" : "off"]}
-            data-active={activeItem === ((index - 1 + itemCount) % itemCount)}
+            data-active={activeItem === (index - 1 + itemCount) % itemCount}
             data-testid="carousel-item"
           >
             {item}
