@@ -7,6 +7,8 @@ import { Carousel } from "./Carousel";
 beforeEach(() => {
   vi.useFakeTimers();
   vi.spyOn(global, "setTimeout");
+  // Mock scrollTo since jsdom does not implement it
+  Element.prototype.scrollTo = vi.fn();
 });
 
 afterEach(() => {
@@ -19,8 +21,9 @@ describe("Components / Carousel", () => {
   it("should render and show first item", () => {
     render(<TestCarousel />);
 
-    expect(carouselItems()[0]).toHaveAttribute("data-active", "true");
-    expect(carouselItems()[1]).toHaveAttribute("data-active", "false");
+    // With cloned slides the real items start at index 1
+    expect(realCarouselItems()[0]).toHaveAttribute("data-active", "true");
+    expect(realCarouselItems()[1]).toHaveAttribute("data-active", "false");
     expect(carouselIndicators()).toHaveLength(5);
     expect(carouselIndicators()[0]).toHaveClass(activeIndicatorClasses);
     expect(carouselIndicators()[1]).toHaveClass(nonActiveIndicatorClasses);
@@ -38,14 +41,14 @@ describe("Components / Carousel", () => {
     render(<TestCarousel />);
 
     expect(carouselIndicators()[0]).toHaveClass(activeIndicatorClasses);
-    expect(carouselItems()[0]).toHaveAttribute("data-active", "true");
+    expect(realCarouselItems()[0]).toHaveAttribute("data-active", "true");
 
     act(() => {
       fireEvent.click(carouselIndicators()[3]);
     });
 
-    expect(carouselItems()[0]).toHaveAttribute("data-active", "false");
-    expect(carouselItems()[3]).toHaveAttribute("data-active", "true");
+    expect(realCarouselItems()[0]).toHaveAttribute("data-active", "false");
+    expect(realCarouselItems()[3]).toHaveAttribute("data-active", "true");
     expect(carouselIndicators()[0]).not.toHaveClass(activeIndicatorClasses);
     expect(carouselIndicators()[3]).toHaveClass(activeIndicatorClasses);
   });
@@ -61,14 +64,14 @@ describe("Components / Carousel", () => {
     render(<TestCarousel />);
 
     expect(carouselIndicators()[0]).toHaveClass(activeIndicatorClasses);
-    expect(carouselItems()[0]).toHaveAttribute("data-active", "true");
+    expect(realCarouselItems()[0]).toHaveAttribute("data-active", "true");
 
     act(() => {
       fireEvent.click(carouselRightControl());
     });
 
-    expect(carouselItems()[0]).toHaveAttribute("data-active", "false");
-    expect(carouselItems()[1]).toHaveAttribute("data-active", "true");
+    expect(realCarouselItems()[0]).toHaveAttribute("data-active", "false");
+    expect(realCarouselItems()[1]).toHaveAttribute("data-active", "true");
     expect(carouselIndicators()[0]).not.toHaveClass(activeIndicatorClasses);
     expect(carouselIndicators()[1]).toHaveClass(activeIndicatorClasses);
   });
@@ -76,8 +79,8 @@ describe("Components / Carousel", () => {
   it("should transition to the next item after about 3 s by default", () => {
     render(<TestCarousel />);
 
-    expect(carouselItems()[0]).toHaveAttribute("data-active", "true");
-    expect(carouselItems()[1]).toHaveAttribute("data-active", "false");
+    expect(realCarouselItems()[0]).toHaveAttribute("data-active", "true");
+    expect(realCarouselItems()[1]).toHaveAttribute("data-active", "false");
     expect(carouselIndicators()[0]).toHaveClass(activeIndicatorClasses);
     expect(carouselIndicators()[1]).toHaveClass(nonActiveIndicatorClasses);
 
@@ -85,8 +88,8 @@ describe("Components / Carousel", () => {
       vi.advanceTimersByTime(3000);
     });
 
-    expect(carouselItems()[0]).toHaveAttribute("data-active", "false");
-    expect(carouselItems()[1]).toHaveAttribute("data-active", "true");
+    expect(realCarouselItems()[0]).toHaveAttribute("data-active", "false");
+    expect(realCarouselItems()[1]).toHaveAttribute("data-active", "true");
     expect(carouselIndicators()[0]).toHaveClass(nonActiveIndicatorClasses);
     expect(carouselIndicators()[1]).toHaveClass(activeIndicatorClasses);
   });
@@ -94,8 +97,8 @@ describe("Components / Carousel", () => {
   it("should transition to the next item after `slideInterval` when it is provided", () => {
     render(<TestCarousel slideInterval={9000} />);
 
-    expect(carouselItems()[0]).toHaveAttribute("data-active", "true");
-    expect(carouselItems()[1]).toHaveAttribute("data-active", "false");
+    expect(realCarouselItems()[0]).toHaveAttribute("data-active", "true");
+    expect(realCarouselItems()[1]).toHaveAttribute("data-active", "false");
     expect(carouselIndicators()[0]).toHaveClass(activeIndicatorClasses);
     expect(carouselIndicators()[1]).toHaveClass(nonActiveIndicatorClasses);
 
@@ -103,8 +106,8 @@ describe("Components / Carousel", () => {
       vi.advanceTimersByTime(9000);
     });
 
-    expect(carouselItems()[0]).toHaveAttribute("data-active", "false");
-    expect(carouselItems()[1]).toHaveAttribute("data-active", "true");
+    expect(realCarouselItems()[0]).toHaveAttribute("data-active", "false");
+    expect(realCarouselItems()[1]).toHaveAttribute("data-active", "true");
     expect(carouselIndicators()[0]).toHaveClass(nonActiveIndicatorClasses);
     expect(carouselIndicators()[1]).toHaveClass(activeIndicatorClasses);
   });
@@ -112,8 +115,8 @@ describe("Components / Carousel", () => {
   it("should not automatically transition to the next item when `slide={false}`", () => {
     render(<TestCarousel slide={false} />);
 
-    expect(carouselItems()[0]).toHaveAttribute("data-active", "true");
-    expect(carouselItems()[1]).toHaveAttribute("data-active", "false");
+    expect(realCarouselItems()[0]).toHaveAttribute("data-active", "true");
+    expect(realCarouselItems()[1]).toHaveAttribute("data-active", "false");
     expect(carouselIndicators()[0]).toHaveClass(activeIndicatorClasses);
     expect(carouselIndicators()[1]).toHaveClass(nonActiveIndicatorClasses);
 
@@ -121,8 +124,8 @@ describe("Components / Carousel", () => {
       vi.advanceTimersByTime(3000);
     });
 
-    expect(carouselItems()[0]).toHaveAttribute("data-active", "true");
-    expect(carouselItems()[1]).toHaveAttribute("data-active", "false");
+    expect(realCarouselItems()[0]).toHaveAttribute("data-active", "true");
+    expect(realCarouselItems()[1]).toHaveAttribute("data-active", "false");
     expect(carouselIndicators()[0]).toHaveClass(activeIndicatorClasses);
     expect(carouselIndicators()[1]).toHaveClass(nonActiveIndicatorClasses);
   });
@@ -142,6 +145,11 @@ const TestCarousel = (props: CarouselProps) => (
 );
 
 const carouselItems = () => screen.getAllByTestId("carousel-item");
+// Real items exclude the prepended and appended clones
+const realCarouselItems = () => {
+  const items = carouselItems();
+  return items.slice(1, items.length - 1);
+};
 const carouselIndicators = () => screen.getAllByTestId("carousel-indicator");
 const carouselLeftControl = () => screen.getByTestId("carousel-left-control");
 const carouselRightControl = () => screen.getByTestId("carousel-right-control");
