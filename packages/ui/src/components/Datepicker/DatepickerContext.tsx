@@ -8,6 +8,7 @@ export interface DatepickerContextValue {
   theme: DatepickerTheme;
   language: string;
   weekStart: WeekStart;
+  showOutsideDays: boolean;
   minDate?: Date;
   maxDate?: Date;
   filterDate?: (date: Date, view: Views) => boolean;

@@ -99,6 +99,7 @@ export interface DatepickerProps
   labelClearButton?: string;
   showTodayButton?: boolean;
   labelTodayButton?: string;
+  showOutsideDays?: boolean;
   minDate?: Date;
   maxDate?: Date;
   filterDate?: (date: Date, view: Views) => boolean;
@@ -126,6 +127,7 @@ export const Datepicker = forwardRef<DatepickerRef, DatepickerProps>((props, ref
     labelClearButton = "Clear",
     showTodayButton = true,
     labelTodayButton = "Today",
+    showOutsideDays = true,
     defaultValue,
     minDate,
     maxDate,
@@ -158,7 +160,7 @@ export const Datepicker = forwardRef<DatepickerRef, DatepickerProps>((props, ref
   // Triggers when user select the date
   function changeSelectedDate(date: Date | null, useAutohide: boolean) {
     setSelectedDate(date);
-
+    if (date) setViewDate(date);
     if ((date === null || date) && onChange) {
       onChange(date);
     }
@@ -282,6 +284,7 @@ export const Datepicker = forwardRef<DatepickerRef, DatepickerProps>((props, ref
         maxDate,
         filterDate,
         weekStart,
+        showOutsideDays,
         isOpen,
         setIsOpen,
         view,
