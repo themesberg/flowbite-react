@@ -10,6 +10,7 @@ import {
   isDateEqual,
   isDateInRange,
   isDateToday,
+  isMonthEqual,
   Views,
 } from "../helpers";
 
@@ -24,6 +25,8 @@ export interface DatepickerViewsDaysTheme {
       base: string;
       selected: string;
       disabled: string;
+      outside: string;
+      hidden: string;
       today: string;
     };
   };
@@ -35,6 +38,7 @@ export function DatepickerViewsDays() {
     weekStart,
     minDate,
     maxDate,
+    showOutsideDays,
     filterDate,
     viewDate,
     selectedDate,
@@ -65,10 +69,12 @@ export function DatepickerViewsDays() {
           const isDisabled =
             !isDateInRange(currentDate, minDate, maxDate) || (filterDate && !filterDate(currentDate, Views.Days));
           const isToday = isDateToday(currentDate);
+          const isOutsideDay = !isMonthEqual(currentDate, viewDate);
+          const isHidden = isOutsideDay && !showOutsideDays;
 
           return (
             <button
-              disabled={isDisabled}
+              disabled={isDisabled || isHidden}
               key={index}
               type="button"
               className={twMerge(
@@ -76,9 +82,11 @@ export function DatepickerViewsDays() {
                 isToday && theme.items.item.today,
                 isSelected && theme.items.item.selected,
                 isDisabled && theme.items.item.disabled,
+                isOutsideDay && !isSelected && !isDisabled && showOutsideDays && theme.items.item.outside,
+                isHidden && theme.items.item.hidden,
               )}
               onClick={() => {
-                if (isDisabled) return;
+                if (isDisabled || isHidden) return;
 
                 changeSelectedDate(currentDate, true);
               }}
