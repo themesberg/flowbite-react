@@ -50,9 +50,11 @@ export const datePickerTheme = createTheme<DatepickerTheme>({
           selected: "bg-primary-700 text-white hover:bg-primary-600",
           disabled: "text-gray-500",
           today: "",
+          outOfMonth: "text-gray-400 hover:bg-gray-100 dark:text-gray-500 dark:hover:bg-gray-600",   
         },
       },
     },
+    
     months: {
       items: {
         base: "grid w-64 grid-cols-4",
