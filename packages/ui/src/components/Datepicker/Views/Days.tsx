@@ -25,6 +25,7 @@ export interface DatepickerViewsDaysTheme {
       selected: string;
       disabled: string;
       today: string;
+      outOfMonth: string;
     };
   };
 }
@@ -65,6 +66,7 @@ export function DatepickerViewsDays() {
           const isDisabled =
             !isDateInRange(currentDate, minDate, maxDate) || (filterDate && !filterDate(currentDate, Views.Days));
           const isToday = isDateToday(currentDate);
+          const isOutOfMonth = currentDate.getMonth() !== viewDate.getMonth();
 
           return (
             <button
@@ -73,6 +75,7 @@ export function DatepickerViewsDays() {
               type="button"
               className={twMerge(
                 theme.items.item.base,
+                isOutOfMonth && theme.items.item.outOfMonth,
                 isToday && theme.items.item.today,
                 isSelected && theme.items.item.selected,
                 isDisabled && theme.items.item.disabled,
