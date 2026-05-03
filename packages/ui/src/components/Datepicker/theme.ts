@@ -32,8 +32,7 @@ export const datePickerTheme = createTheme<DatepickerTheme>({
       button: {
         base: "w-full rounded-lg px-5 py-2 text-center text-sm font-medium focus:ring-4 focus:ring-primary-300",
         today: "bg-primary-700 text-white hover:bg-primary-800 dark:bg-primary-600 dark:hover:bg-primary-700",
-        clear:
-          "border border-gray-300 bg-white text-gray-900 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600",
+        clear: "border border-gray-300 bg-white text-gray-900 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600",
       },
     },
   },
@@ -50,6 +49,7 @@ export const datePickerTheme = createTheme<DatepickerTheme>({
           selected: "bg-primary-700 text-white hover:bg-primary-600",
           disabled: "text-gray-500",
           today: "",
+          outside: "opacity-40 text-gray-400", // ← ajouté
         },
       },
     },
