@@ -66,7 +66,7 @@ export function DatepickerViewsDays() {
           const isDisabled =
             !isDateInRange(currentDate, minDate, maxDate) || (filterDate && !filterDate(currentDate, Views.Days));
           const isToday = isDateToday(currentDate);
-          const isOutside = currentDate.getMonth() !== viewDate.getMonth(); 
+          const isOutside = currentDate.getMonth() !== viewDate.getMonth();
 
           return (
             <button
@@ -78,7 +78,7 @@ export function DatepickerViewsDays() {
                 isToday && theme.items.item.today,
                 isSelected && theme.items.item.selected,
                 isDisabled && theme.items.item.disabled,
-                isOutside && !isSelected && theme.items.item.outside, 
+                isOutside && !isSelected && theme.items.item.outside,
               )}
               onClick={() => {
                 if (isDisabled) return;
