@@ -67,8 +67,9 @@ export const TimelinePoint = forwardRef<HTMLDivElement, TimelinePointProps>((pro
       className={twMerge(horizontal && theme.horizontal, !horizontal && theme.vertical, className)}
       {...restProps}
     >
-      {children}
-      {Icon ? (
+      {children ? (
+        <span className={twMerge(theme.marker.icon.wrapper)}>{children}</span>
+      ) : Icon ? (
         <span className={twMerge(theme.marker.icon.wrapper)}>
           <Icon aria-hidden className={twMerge(theme.marker.icon.base)} />
         </span>
