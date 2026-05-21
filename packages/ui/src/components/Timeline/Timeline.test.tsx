@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
 import type { CustomFlowbiteTheme } from "../../types";
+import { Avatar } from "../Avatar";
 import type { TimelineProps } from "./Timeline";
 import { Timeline } from "./Timeline";
 import { TimelineBody } from "./TimelineBody";
@@ -60,6 +61,14 @@ describe("Components / Timeline", () => {
 
       expect(timelinePoint()).toBeInTheDocument();
       expect(timelinePoint().childNodes[0]).toContainHTML("svg");
+    });
+
+    it("should render children as the point marker", () => {
+      render(<TestTimelineWithCustomPoint />);
+
+      expect(timelinePoint()).toBeInTheDocument();
+      expect(timelinePoint().childNodes).toHaveLength(1);
+      expect(screen.getByTestId("flowbite-avatar")).toBeInTheDocument();
     });
 
     it("should use `vertical` classes of content if provided", () => {
@@ -128,6 +137,26 @@ function TestTimelineWithIcon({ horizontal, className }: TimelineProps): JSX.Ele
     <Timeline horizontal={horizontal} className={className}>
       <TimelineItem>
         <TimelinePoint icon={IconSVG} />
+        <TimelineContent>
+          <TimelineTime>February 2022</TimelineTime>
+          <TimelineTitle>Application UI code in Tailwind CSS</TimelineTitle>
+          <TimelineBody>
+            Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order
+            E-commerce & Marketing pages.
+          </TimelineBody>
+        </TimelineContent>
+      </TimelineItem>
+    </Timeline>
+  );
+}
+
+function TestTimelineWithCustomPoint(): JSX.Element {
+  return (
+    <Timeline>
+      <TimelineItem>
+        <TimelinePoint>
+          <Avatar rounded size="xs" img="/images/people/profile-picture-1.jpg" />
+        </TimelinePoint>
         <TimelineContent>
           <TimelineTime>February 2022</TimelineTime>
           <TimelineTitle>Application UI code in Tailwind CSS</TimelineTitle>
