@@ -39,6 +39,7 @@
           "DropdownDivider",
           "DropdownHeader",
           "DropdownItem",
+          "Empty",
           "FileInput",
           "FloatingLabel",
           "Footer",
