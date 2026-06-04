@@ -1,0 +1,74 @@
+---
+title: React Empty State - Flowbite
+description: Use the empty state component to communicate that a table, list, dashboard, or search result has no content to display.
+---
+
+The empty state component helps you explain why a section has no content and guide users toward the next action. Use it for empty dashboards, lists, tables, search results, and filtered views.
+
+To start using the empty state component you will need to import it from `flowbite-react`:
+
+```jsx
+import { Empty } from "flowbite-react";
+```
+
+## Default empty state
+
+Use the default empty state when you need a simple message for a section that has no data to display.
+
+```jsx
+import { Empty } from "flowbite-react";
+
+export function Component() {
+  return <Empty />;
+}
+```
+
+## Custom content
+
+Use the `title` and `description` props to explain the current state with your own copy.
+
+```jsx
+import { Empty } from "flowbite-react";
+
+export function Component() {
+  return <Empty title="No projects yet" description="Create your first project to start organizing your work." />;
+}
+```
+
+## Empty state with action
+
+Add children to render calls to action, filters, links, or any other content below the description.
+
+```jsx
+import { Button, Empty } from "flowbite-react";
+
+export function Component() {
+  return (
+    <Empty title="No projects yet" description="Create your first project to start organizing your work.">
+      <Button>Create project</Button>
+    </Empty>
+  );
+}
+```
+
+## Empty state without text
+
+Set `title` or `description` to `null` when you want to hide one of the default text blocks.
+
+```jsx
+import { Button, Empty } from "flowbite-react";
+
+export function Component() {
+  return (
+    <Empty title={null} description={null}>
+      <Button>Add item</Button>
+    </Empty>
+  );
+}
+```
+
+## Theme
+
+To learn more about how to customize the appearance of components, please see the [Theme docs](/docs/customize/theme).
+
+<Theme name="empty" />
