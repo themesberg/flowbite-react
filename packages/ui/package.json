@@ -244,6 +244,7 @@
   },
   "files": [
     "dist",
+    "readme-images",
     "schema.json"
   ],
   "scripts": {

@@ -105,17 +105,17 @@ Follow our official integration guides to set up Flowbite React with your prefer
   <tr>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/accordion">
-            <img alt="React Accordion" src="https://flowbite.s3.amazonaws.com/github/accordion.jpg">
+            <img alt="React Accordion" src="readme-images/accordion.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/alert">
-            <img alt="React Alert" src="https://flowbite.s3.amazonaws.com/github/alerts.jpg">
+            <img alt="React Alert" src="readme-images/alerts.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/avatar">
-            <img alt="React Avatar" src="https://flowbite.s3.amazonaws.com/github/avatar.jpg">
+            <img alt="React Avatar" src="readme-images/avatar.jpg">
         </a>
     </td>
   </tr>
@@ -127,17 +127,17 @@ Follow our official integration guides to set up Flowbite React with your prefer
   <tr>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/banner">
-            <img alt="React Banner" src="https://flowbite.s3.amazonaws.com/github/banner.jpg">
+            <img alt="React Banner" src="readme-images/banner.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/badge">
-            <img alt="React Badge" src="https://flowbite.s3.amazonaws.com/github/badge.jpg">
+            <img alt="React Badge" src="readme-images/badge.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/breadcrumb">
-            <img alt="React Breadcrumb" src="https://flowbite.s3.amazonaws.com/github/breadcrumbs.jpg">
+            <img alt="React Breadcrumb" src="readme-images/breadcrumbs.jpg">
         </a>
     </td>
   </tr>
@@ -149,17 +149,17 @@ Follow our official integration guides to set up Flowbite React with your prefer
   <tr>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/button">
-            <img alt="React Button" src="https://flowbite.s3.amazonaws.com/github/buttons.jpg">
+            <img alt="React Button" src="readme-images/buttons.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/button-group">
-            <img alt="React Button group" src="https://flowbite.s3.amazonaws.com/github/button-group.jpg">
+            <img alt="React Button group" src="readme-images/button-group.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/card">
-            <img alt="React Card" src="https://flowbite.s3.amazonaws.com/github/cards.jpg">
+            <img alt="React Card" src="readme-images/cards.jpg">
         </a>
     </td>
   </tr>
@@ -171,17 +171,17 @@ Follow our official integration guides to set up Flowbite React with your prefer
   <tr>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/carousel/">
-            <img alt="React Carousel" src="https://flowbite.s3.amazonaws.com/github/carousel.jpg">
+            <img alt="React Carousel" src="readme-images/carousel.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/datepicker">
-            <img alt="React Datepicker" src="https://flowbite.s3.amazonaws.com/github/datepicker.jpg">
+            <img alt="React Datepicker" src="readme-images/datepicker.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/dropdown">
-            <img alt="React Dropdown" src="https://flowbite.s3.amazonaws.com/github/dropdown.jpg">
+            <img alt="React Dropdown" src="readme-images/dropdown.jpg">
         </a>
     </td>
   </tr>
@@ -193,17 +193,17 @@ Follow our official integration guides to set up Flowbite React with your prefer
   <tr>
   <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/footer">
-            <img alt="React Footer" src="https://flowbite.s3.amazonaws.com/github/footer.jpg">
+            <img alt="React Footer" src="readme-images/footer.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/forms">
-            <img alt="React Forms" src="https://flowbite.s3.amazonaws.com/github/input-field.jpg">
+            <img alt="React Forms" src="readme-images/input-field.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/list-group">
-            <img alt="React List group" src="https://flowbite.s3.amazonaws.com/github/list-group.jpg">
+            <img alt="React List group" src="readme-images/list-group.jpg">
         </a>
     </td>
   </tr>
@@ -215,17 +215,17 @@ Follow our official integration guides to set up Flowbite React with your prefer
   <tr>
    <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/modal">
-            <img alt="React Modal" src="https://flowbite.s3.amazonaws.com/github/modal.jpg">
+            <img alt="React Modal" src="readme-images/modal.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/navbar">
-            <img alt="React Navbar" src="https://flowbite.s3.amazonaws.com/github/navbar.jpg">
+            <img alt="React Navbar" src="readme-images/navbar.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/pagination">
-            <img alt="React Pagination" src="https://flowbite.s3.amazonaws.com/github/pagination.jpg">
+            <img alt="React Pagination" src="readme-images/pagination.jpg">
         </a>
     </td>
   </tr>
@@ -237,17 +237,17 @@ Follow our official integration guides to set up Flowbite React with your prefer
   <tr>
   <td width="33.3333%">
         <a href="https://www.flowbite-react.com/docs/components/progress">
-            <img alt="React Progress bar" src="https://flowbite.s3.amazonaws.com/github/progress.jpg">
+            <img alt="React Progress bar" src="readme-images/progress.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/rating">
-            <img alt="React Rating" src="https://flowbite.s3.amazonaws.com/github/rating.jpg">
+            <img alt="React Rating" src="readme-images/rating.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/sidebar">
-            <img alt="React Sidebar" src="https://flowbite.s3.amazonaws.com/github/sidebar.jpg">
+            <img alt="React Sidebar" src="readme-images/sidebar.jpg">
         </a>
     </td>
   </tr>
@@ -259,17 +259,17 @@ Follow our official integration guides to set up Flowbite React with your prefer
   <tr>
   <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/spinner">
-            <img alt="React Spinner" src="https://flowbite.s3.amazonaws.com/github/spinner.jpg">
+            <img alt="React Spinner" src="readme-images/spinner.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/table">
-            <img alt="React Table" src="https://flowbite.s3.amazonaws.com/github/tables.jpg">
+            <img alt="React Table" src="readme-images/tables.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/tabs">
-            <img alt="React Tabs" src="https://flowbite.s3.amazonaws.com/github/tabs.jpg">
+            <img alt="React Tabs" src="readme-images/tabs.jpg">
         </a>
     </td>
   </tr>
@@ -281,17 +281,17 @@ Follow our official integration guides to set up Flowbite React with your prefer
   <tr>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/tooltip">
-            <img alt="React Tooltip" src="https://flowbite.s3.amazonaws.com/github/tooltips.jpg">
+            <img alt="React Tooltip" src="readme-images/tooltips.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/timeline">
-            <img alt="React Timeline" src="https://flowbite.s3.amazonaws.com/github/timeline.jpg">
+            <img alt="React Timeline" src="readme-images/timeline.jpg">
         </a>
     </td>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/toast">
-            <img alt="React Toast" src="https://flowbite.s3.amazonaws.com/github/toast.jpg">
+            <img alt="React Toast" src="readme-images/toast.jpg">
         </a>
     </td>
   </tr>
@@ -303,7 +303,7 @@ Follow our official integration guides to set up Flowbite React with your prefer
   <tr>
     <td width="33.3333%">
         <a href="https://flowbite-react.com/docs/components/banner">
-            <img alt="React Banner" src="https://flowbite.s3.amazonaws.com/github/banner.jpg">
+            <img alt="React Banner" src="readme-images/banner.jpg">
         </a>
     </td>
     <td width="33.3333%"></td>
