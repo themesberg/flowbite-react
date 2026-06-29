@@ -71,6 +71,12 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) 
   return <DefaultPagination {...props} ref={ref} />;
 });
 
+/**
+ * Default pagination component.
+ * @param props - Pagination props (currentPage, totalPages, layout, etc.)
+ * @param ref - Ref to the nav element.
+ * @returns The rendered navigation component.
+ */
 const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props, ref) => {
   const provider = useThemeProvider();
   const theme = useResolveTheme(
@@ -162,6 +168,12 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
   );
 });
 
+/**
+ * Table pagination component.
+ * @param props - Pagination props (currentPage, itemsPerPage, totalItems, etc.)
+ * @param ref - Ref to the nav element.
+ * @returns The rendered navigation component.
+ */
 const TablePagination = forwardRef<HTMLElement, TablePaginationProps>((props, ref) => {
   const provider = useThemeProvider();
   const theme = useResolveTheme(
