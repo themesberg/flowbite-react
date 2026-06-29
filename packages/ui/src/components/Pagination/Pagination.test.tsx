@@ -176,6 +176,12 @@ describe("Pagination", () => {
 
       expect(pages()).toHaveLength(0);
     });
+    it("should render page 1 when totalPages is 1", () => {
+      render(<Pagination currentPage={1} totalPages={1} onPageChange={() => undefined} />);
+      expect(pages()).toHaveLength(1);
+      expect(pages()[0]).toBe(1);
+    });
+
 
     it("should change previous and next text when provided", () => {
       render(

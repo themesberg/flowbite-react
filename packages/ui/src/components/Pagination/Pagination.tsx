@@ -102,6 +102,7 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
 
   const lastPage = Math.min(Math.max(layout === "pagination" ? currentPage + 2 : currentPage + 4, 5), totalPages);
   const firstPage = Math.max(1, lastPage - 4);
+  const lastPageInRange = Math.max(lastPage, firstPage);
 
   function goToNextPage() {
     onPageChange(Math.min(currentPage + 1, totalPages));
@@ -125,16 +126,27 @@ const DefaultPagination = forwardRef<HTMLElement, DefaultPaginationProps>((props
           </PaginationNavigation>
         </li>
         {layout === "pagination" &&
-          range(firstPage, lastPage).map((page: number) => (
-            <li aria-current={page === currentPage ? "page" : undefined} key={page}>
-              {renderPaginationButton({
-                className: twMerge(theme.pages.selector.base, currentPage === page && theme.pages.selector.active),
-                active: page === currentPage,
-                onClick: () => onPageChange(page),
-                children: page,
-              })}
-            </li>
-          ))}
+          (totalPages <= 5
+            ? Array.from({ length: totalPages }, (_, i) => i + 1).map((page: number) => (
+                <li aria-current={page === currentPage ? "page" : undefined} key={page}>
+                  {renderPaginationButton({
+                    className: twMerge(theme.pages.selector.base, currentPage === page && theme.pages.selector.active),
+                    active: page === currentPage,
+                    onClick: () => onPageChange(page),
+                    children: page,
+                  })}
+                </li>
+              ))
+            : range(firstPage, lastPageInRange).map((page: number) => (
+                <li aria-current={page === currentPage ? "page" : undefined} key={page}>
+                  {renderPaginationButton({
+                    className: twMerge(theme.pages.selector.base, currentPage === page && theme.pages.selector.active),
+                    active: page === currentPage,
+                    onClick: () => onPageChange(page),
+                    children: page,
+                  })}
+                </li>
+              )))}
         <li>
           <PaginationNavigation
             className={twMerge(theme.pages.next.base, showIcon && theme.pages.showIcon)}
