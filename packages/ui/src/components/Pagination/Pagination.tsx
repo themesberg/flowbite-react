@@ -66,6 +66,13 @@ export interface TablePaginationProps extends BasePaginationProps {
 
 export type PaginationProps = DefaultPaginationProps | TablePaginationProps;
 
+/**
+ * Top-level Pagination component. Switches between Default and Table variants
+ * based on the `layout` prop.
+ * @param props - Discriminated union of DefaultPaginationProps and TablePaginationProps.
+ * @param ref - Ref forwarded to the underlying nav element.
+ * @returns The rendered pagination navigation.
+ */
 export const Pagination = forwardRef<HTMLElement, PaginationProps>((props, ref) => {
   if (props.layout === "table") return <TablePagination {...props} ref={ref} />;
   return <DefaultPagination {...props} ref={ref} />;

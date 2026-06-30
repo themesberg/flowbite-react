@@ -182,7 +182,6 @@ describe("Pagination", () => {
       expect(pages()[0]).toBe(1);
     });
 
-
     it("should change previous and next text when provided", () => {
       render(
         <Pagination
