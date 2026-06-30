@@ -3,7 +3,7 @@ import type { ModalTheme } from "./Modal";
 
 export const modalTheme = createTheme<ModalTheme>({
   root: {
-    base: "fixed inset-x-0 top-0 z-50 h-screen overflow-y-auto overflow-x-hidden md:inset-0 md:h-full",
+    base: "fixed inset-x-0 top-0 z-50 h-full overflow-y-auto overflow-x-hidden md:inset-0 md:h-full",
     show: {
       on: "flex bg-gray-900/50 dark:bg-gray-900/80",
       off: "hidden",
@@ -33,7 +33,7 @@ export const modalTheme = createTheme<ModalTheme>({
     },
   },
   content: {
-    base: "relative h-full w-full p-4 md:h-auto",
+    base: "relative flex h-full w-full flex-col p-4 md:h-auto",
     inner: "relative flex max-h-[90dvh] flex-col rounded-lg bg-white shadow dark:bg-gray-700",
   },
   body: {
