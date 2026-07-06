@@ -93,6 +93,33 @@ describe("Components / Datepicker", () => {
     expect(titleButton.textContent).toBe("1990 - 2100");
   });
 
+  it("should show the years of the clicked decade when the view date differs from the selected date", async () => {
+    const testDate = new Date(2024, 6, 20);
+    render(<Datepicker defaultValue={testDate} />);
+
+    const textBox = screen.getByRole("textbox");
+    await userEvent.click(textBox);
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    expect(titleButton.textContent).toBe("1990 - 2100");
+
+    // navigate the view (but not the selection) to a different decade
+    await userEvent.click(screen.getByText("1990"));
+    expect(titleButton.textContent).toBe("1990 - 2001");
+    await userEvent.click(screen.getByText("1994"));
+
+    // go back up to the decades view and pick another decade
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    expect(titleButton.textContent).toBe("1890 - 2000");
+    await userEvent.click(screen.getByText("2000"));
+
+    expect(titleButton.textContent).toBe("2000 - 2011");
+  });
+
   it("should allow selecting earlier decades when setting max date", async () => {
     const testDate = new Date(2024, 6, 20);
     render(<Datepicker defaultValue={testDate} maxDate={testDate} />);
