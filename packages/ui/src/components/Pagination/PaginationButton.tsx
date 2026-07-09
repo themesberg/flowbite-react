@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, type ComponentProps, type ReactEventHandler, type ReactNode } from "react";
+import { forwardRef, type ComponentProps, type ReactNode, type Ref } from "react";
 import { get } from "../../helpers/get";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
@@ -14,19 +14,51 @@ export interface PaginationButtonTheme {
   disabled: string;
 }
 
-export interface PaginationButtonProps extends ComponentProps<"button">, ThemingProps<PaginationButtonTheme> {
+interface PaginationButtonBaseProps extends ThemingProps<PaginationButtonTheme> {
   active?: boolean;
   children?: ReactNode;
   className?: string;
-  onClick?: ReactEventHandler<HTMLButtonElement>;
 }
 
-export interface PaginationPrevButtonProps extends Omit<PaginationButtonProps, "active"> {
+type PaginationButtonAsButton = PaginationButtonBaseProps &
+  Omit<ComponentProps<"button">, keyof PaginationButtonBaseProps> & {
+    href?: never;
+  };
+
+type PaginationButtonAsAnchor = PaginationButtonBaseProps &
+  Omit<ComponentProps<"a">, keyof PaginationButtonBaseProps> & {
+    href: string;
+  };
+
+export type PaginationButtonProps = PaginationButtonAsButton | PaginationButtonAsAnchor;
+
+interface PaginationNavigationBaseProps extends ThemingProps<PaginationButtonTheme> {
+  children?: ReactNode;
+  className?: string;
   disabled?: boolean;
 }
 
-export const PaginationButton = forwardRef<HTMLButtonElement, PaginationButtonProps>(
-  ({ active, children, className, onClick, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+type PaginationNavigationAsButton = PaginationNavigationBaseProps &
+  Omit<ComponentProps<"button">, keyof PaginationNavigationBaseProps> & {
+    href?: never;
+  };
+
+export type PaginationNavigationAsAnchor = PaginationNavigationBaseProps &
+  Omit<ComponentProps<"a">, keyof PaginationNavigationBaseProps> & {
+    href: string;
+  };
+
+/**
+ * Union type for PaginationNavigation props — used as the re-exported
+ * `PaginationNavigation` type in index.ts for consumers who need the type
+ * (not the component).
+ */
+export type PaginationNavigation = PaginationNavigationAsButton | PaginationNavigationAsAnchor;
+
+export type PaginationPrevButtonProps = PaginationNavigation;
+
+export const PaginationButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, PaginationButtonProps>(
+  ({ active, children, className, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
     const provider = useThemeProvider();
     const theme = useResolveTheme(
       [paginationTheme, provider.theme?.pagination, customTheme],
@@ -34,14 +66,20 @@ export const PaginationButton = forwardRef<HTMLButtonElement, PaginationButtonPr
       [get(provider.applyTheme, "pagination"), applyTheme],
     );
 
+    const mergedClassName = twMerge(active && theme.pages.selector.active, className);
+
+    if ("href" in props && props.href) {
+      const { href, ...anchorProps } = props;
+      return (
+        <a ref={ref as Ref<HTMLAnchorElement>} href={href} className={mergedClassName} {...anchorProps}>
+          {children}
+        </a>
+      );
+    }
+
+    const { href: _, ...buttonProps } = props as PaginationButtonAsButton;
     return (
-      <button
-        ref={ref}
-        type="button"
-        className={twMerge(active && theme.pages.selector.active, className)}
-        onClick={onClick}
-        {...props}
-      >
+      <button ref={ref as Ref<HTMLButtonElement>} type="button" className={mergedClassName} {...buttonProps}>
         {children}
       </button>
     );
@@ -50,34 +88,39 @@ export const PaginationButton = forwardRef<HTMLButtonElement, PaginationButtonPr
 
 PaginationButton.displayName = "PaginationButton";
 
-export function PaginationNavigation({
-  children,
-  className,
-  onClick,
-  disabled = false,
-  theme: customTheme,
-  clearTheme,
-  applyTheme,
-  ...props
-}: PaginationPrevButtonProps) {
-  const provider = useThemeProvider();
-  const theme = useResolveTheme(
-    [paginationTheme, provider.theme?.pagination, customTheme],
-    [get(provider.clearTheme, "pagination"), clearTheme],
-    [get(provider.applyTheme, "pagination"), applyTheme],
-  );
+export const PaginationNavigation = forwardRef<HTMLButtonElement | HTMLAnchorElement, PaginationPrevButtonProps>(
+  ({ children, className, disabled = false, theme: customTheme, clearTheme, applyTheme, ...props }, ref) => {
+    const provider = useThemeProvider();
+    const theme = useResolveTheme(
+      [paginationTheme, provider.theme?.pagination, customTheme],
+      [get(provider.clearTheme, "pagination"), clearTheme],
+      [get(provider.applyTheme, "pagination"), applyTheme],
+    );
 
-  return (
-    <button
-      type="button"
-      className={twMerge(disabled && theme.pages.selector.disabled, className)}
-      disabled={disabled}
-      onClick={onClick}
-      {...props}
-    >
-      {children}
-    </button>
-  );
-}
+    const mergedClassName = twMerge(disabled && theme.pages.selector.disabled, className);
+
+    if ("href" in props && props.href && !disabled) {
+      const { href, ...anchorProps } = props;
+      return (
+        <a ref={ref as Ref<HTMLAnchorElement>} href={href} className={mergedClassName} {...anchorProps}>
+          {children}
+        </a>
+      );
+    }
+
+    const { href: _, ...buttonProps } = props as PaginationNavigationAsButton;
+    return (
+      <button
+        ref={ref as Ref<HTMLButtonElement>}
+        type="button"
+        className={mergedClassName}
+        disabled={disabled}
+        {...buttonProps}
+      >
+        {children}
+      </button>
+    );
+  },
+);
 
 PaginationNavigation.displayName = "PaginationNavigation";
