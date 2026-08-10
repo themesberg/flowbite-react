@@ -27,3 +27,11 @@ DefaultButton.storyName = "Default";
 DefaultButton.args = {
   children: "Button",
 };
+
+export const GhostButton = Template.bind({});
+GhostButton.storyName = "Ghost";
+GhostButton.args = {
+  children: "Ghost button",
+  color: "green",
+  ghost: true,
+};
