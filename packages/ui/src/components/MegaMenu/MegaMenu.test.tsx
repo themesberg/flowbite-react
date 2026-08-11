@@ -63,8 +63,35 @@ describe("Components / MegaMenu", () => {
 
     expect(marketingDropdown).not.toHaveClass("hidden");
     expect(marketingToggle).toHaveAttribute("aria-expanded", "true");
+  });
+
+  it("should close the other <MegaMenuDropdown> when one is opened", async () => {
+    const user = userEvent.setup();
+    render(<MultipleMegaMenuTest />);
+
+    const [companyToggle, marketingToggle] = screen.getAllByRole("button");
+    const [companyDropdown, marketingDropdown] = screen.getAllByRole("menu");
+
+    // both panels are declared without `hidden`, so they start open
+    await user.click(companyToggle);
+    await user.click(marketingToggle);
+
+    expect(companyDropdown).toHaveClass("hidden");
+    expect(marketingDropdown).toHaveClass("hidden");
+
+    await user.click(companyToggle);
+
     expect(companyDropdown).not.toHaveClass("hidden");
     expect(companyToggle).toHaveAttribute("aria-expanded", "true");
+    expect(marketingDropdown).toHaveClass("hidden");
+    expect(marketingToggle).toHaveAttribute("aria-expanded", "false");
+
+    await user.click(marketingToggle);
+
+    expect(marketingDropdown).not.toHaveClass("hidden");
+    expect(marketingToggle).toHaveAttribute("aria-expanded", "true");
+    expect(companyDropdown).toHaveClass("hidden");
+    expect(companyToggle).toHaveAttribute("aria-expanded", "false");
   });
 
   it("should hide/show <MegaMenuDropdown toggle={..}> on click toggle", async () => {

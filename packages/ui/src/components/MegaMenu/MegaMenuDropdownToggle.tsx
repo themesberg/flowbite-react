@@ -9,6 +9,7 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { findPairedDropdown, megaMenuDropdownToggleAttr } from "./helpers";
+import { useMegaMenuContext } from "./MegaMenuContext";
 import { megaMenuTheme } from "./theme";
 
 export interface MegaMenuDropdownToggleTheme {
@@ -23,6 +24,9 @@ export const MegaMenuDropdownToggle = forwardRef<HTMLButtonElement, MegaMenuDrop
   const innerRef = useRef<HTMLButtonElement>(null);
   const [controls, setControls] = useState<string | undefined>(undefined);
   const [isExpanded, setExpanded] = useState<boolean | undefined>(undefined);
+
+  const megaMenu = useMegaMenuContext();
+  const openToggleId = megaMenu?.openToggleId;
 
   const provider = useThemeProvider();
   const theme = useResolveTheme(
@@ -40,7 +44,10 @@ export const MegaMenuDropdownToggle = forwardRef<HTMLButtonElement, MegaMenuDrop
       return;
     }
 
-    setExpanded(!dropdown.classList.toggle("hidden"));
+    const expanded = !dropdown.classList.toggle("hidden");
+
+    setExpanded(expanded);
+    megaMenu?.setOpenToggleId(expanded ? id : undefined);
   }
 
   useEffect(() => {
@@ -50,6 +57,22 @@ export const MegaMenuDropdownToggle = forwardRef<HTMLButtonElement, MegaMenuDrop
     setControls(dropdown?.id);
     setExpanded(!isDropdownHidden);
   }, []);
+
+  // Collapse this dropdown once another toggle of the same mega menu opens its own.
+  useEffect(() => {
+    if (openToggleId === undefined || openToggleId === id) {
+      return;
+    }
+
+    const dropdown = findPairedDropdown(innerRef.current);
+
+    if (!dropdown || dropdown.classList.contains("hidden")) {
+      return;
+    }
+
+    dropdown.classList.add("hidden");
+    setExpanded(false);
+  }, [openToggleId, id]);
 
   return (
     <button

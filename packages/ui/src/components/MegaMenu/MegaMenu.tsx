@@ -1,12 +1,13 @@
 "use client";
 
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
 import { useThemeProvider } from "../../theme/provider";
 import type { NavbarProps, NavbarTheme } from "../Navbar";
 import { Navbar } from "../Navbar";
+import { MegaMenuContext } from "./MegaMenuContext";
 import type { MegaMenuDropdownTheme } from "./MegaMenuDropdown";
 import type { MegaMenuDropdownToggleTheme } from "./MegaMenuDropdownToggle";
 import { megaMenuTheme } from "./theme";
@@ -28,7 +29,13 @@ export const MegaMenu = forwardRef<HTMLElement, MegaMenuProps>((props, ref) => {
 
   const mergedProps = resolveProps(props, provider.props?.megaMenu);
 
-  return <Navbar ref={ref} theme={theme} fluid {...mergedProps} />;
+  const [openToggleId, setOpenToggleId] = useState<string | undefined>(undefined);
+
+  return (
+    <MegaMenuContext.Provider value={{ openToggleId, setOpenToggleId }}>
+      <Navbar ref={ref} theme={theme} fluid {...mergedProps} />
+    </MegaMenuContext.Provider>
+  );
 });
 
 MegaMenu.displayName = "MegaMenu";
