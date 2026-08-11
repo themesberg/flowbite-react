@@ -29,6 +29,44 @@ describe("Components / MegaMenu", () => {
     expect(dropdown).not.toHaveClass("hidden");
   });
 
+  it("should pair each <MegaMenuDropdownToggle> with its own <MegaMenuDropdown>", async () => {
+    render(<MultipleMegaMenuTest />);
+
+    const [companyToggle, marketingToggle] = screen.getAllByRole("button");
+    const [companyDropdown, marketingDropdown] = screen.getAllByRole("menu");
+
+    expect(companyToggle.getAttribute("aria-controls")).toEqual(companyDropdown.id);
+    expect(marketingToggle.getAttribute("aria-controls")).toEqual(marketingDropdown.id);
+
+    expect(companyDropdown.getAttribute("aria-labelledby")).toEqual(companyToggle.id);
+    expect(marketingDropdown.getAttribute("aria-labelledby")).toEqual(marketingToggle.id);
+  });
+
+  it("should hide/show only its own <MegaMenuDropdown> on click <MegaMenuDropdownToggle>", async () => {
+    const user = userEvent.setup();
+    render(<MultipleMegaMenuTest />);
+
+    const [companyToggle, marketingToggle] = screen.getAllByRole("button");
+    const [companyDropdown, marketingDropdown] = screen.getAllByRole("menu");
+
+    expect(companyDropdown).not.toHaveClass("hidden");
+    expect(marketingDropdown).not.toHaveClass("hidden");
+
+    await user.click(marketingToggle);
+
+    expect(marketingDropdown).toHaveClass("hidden");
+    expect(marketingToggle).toHaveAttribute("aria-expanded", "false");
+    expect(companyDropdown).not.toHaveClass("hidden");
+    expect(companyToggle).toHaveAttribute("aria-expanded", "true");
+
+    await user.click(marketingToggle);
+
+    expect(marketingDropdown).not.toHaveClass("hidden");
+    expect(marketingToggle).toHaveAttribute("aria-expanded", "true");
+    expect(companyDropdown).not.toHaveClass("hidden");
+    expect(companyToggle).toHaveAttribute("aria-expanded", "true");
+  });
+
   it("should hide/show <MegaMenuDropdown toggle={..}> on click toggle", async () => {
     const user = userEvent.setup();
     render(<MegaMenuDropdownOnlyTest />);
@@ -58,6 +96,21 @@ function MegaMenuTest() {
       <MegaMenuDropdownToggle>Click</MegaMenuDropdownToggle>
       <MegaMenuDropdown>
         <p>Test</p>
+      </MegaMenuDropdown>
+    </MegaMenu>
+  );
+}
+
+function MultipleMegaMenuTest() {
+  return (
+    <MegaMenu>
+      <MegaMenuDropdownToggle>Company</MegaMenuDropdownToggle>
+      <MegaMenuDropdown>
+        <p>Company content</p>
+      </MegaMenuDropdown>
+      <MegaMenuDropdownToggle>Marketing</MegaMenuDropdownToggle>
+      <MegaMenuDropdown>
+        <p>Marketing content</p>
       </MegaMenuDropdown>
     </MegaMenu>
   );
