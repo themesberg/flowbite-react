@@ -8,6 +8,7 @@ import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
+import { findPairedDropdown, megaMenuDropdownToggleAttr } from "./helpers";
 import { megaMenuTheme } from "./theme";
 
 export interface MegaMenuDropdownToggleTheme {
@@ -32,20 +33,18 @@ export const MegaMenuDropdownToggle = forwardRef<HTMLButtonElement, MegaMenuDrop
 
   const { className, ...restProps } = resolveProps(props, provider.props?.megaMenuDropdownToggle);
 
-  function findDropdown() {
-    const megaMenu = innerRef.current?.closest("nav");
-
-    return megaMenu?.querySelector('[role="menu"]');
-  }
-
   function onClick() {
-    findDropdown()?.classList.toggle("hidden");
+    const dropdown = findPairedDropdown(innerRef.current);
 
-    setExpanded(!isExpanded);
+    if (!dropdown) {
+      return;
+    }
+
+    setExpanded(!dropdown.classList.toggle("hidden"));
   }
 
   useEffect(() => {
-    const dropdown = findDropdown();
+    const dropdown = findPairedDropdown(innerRef.current);
     const isDropdownHidden = dropdown?.classList.contains("hidden");
 
     setControls(dropdown?.id);
@@ -61,6 +60,7 @@ export const MegaMenuDropdownToggle = forwardRef<HTMLButtonElement, MegaMenuDrop
       id={id}
       onClick={onClick}
       className={twMerge(theme.base, className)}
+      {...{ [megaMenuDropdownToggleAttr]: "" }}
       {...restProps}
     />
   );

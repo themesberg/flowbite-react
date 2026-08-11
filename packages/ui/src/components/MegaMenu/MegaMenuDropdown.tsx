@@ -8,6 +8,7 @@ import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
 import { Dropdown, type DropdownTheme } from "../Dropdown";
+import { findPairedToggle, megaMenuDropdownAttr } from "./helpers";
 import { megaMenuTheme } from "./theme";
 
 export interface MegaMenuDropdownTheme {
@@ -20,8 +21,6 @@ export interface MegaMenuDropdownProps extends ComponentProps<"div">, ThemingPro
 }
 
 export function MegaMenuDropdown(props: MegaMenuDropdownProps) {
-  const [labelledBy, setLabelledBy] = useState<string | undefined>(undefined);
-
   const provider = useThemeProvider();
   const theme = useResolveTheme(
     [megaMenuTheme.dropdown, provider.theme?.megaMenu?.dropdown, props.theme],
@@ -45,23 +44,31 @@ export function MegaMenuDropdown(props: MegaMenuDropdownProps) {
     );
   }
 
+  return (
+    <MegaMenuDropdownPanel className={twMerge(theme.base, className)} {...restProps}>
+      {children}
+    </MegaMenuDropdownPanel>
+  );
+}
+
+/**
+ * Rendered when no `toggle` is given: a panel whose visibility is driven by the
+ * `<MegaMenuDropdownToggle>` declared at the matching position.
+ *
+ * Kept as its own component so that these hooks are never called behind the `toggle`
+ * branch above, which would break the rules of hooks.
+ */
+function MegaMenuDropdownPanel({ children, ...restProps }: ComponentProps<"div">) {
   const id = useId();
   const ref = useRef<HTMLDivElement>(null);
+  const [labelledBy, setLabelledBy] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    const toggle = ref.current?.closest("nav")?.querySelector('[aria-haspopup="menu"]');
-    setLabelledBy(toggle?.id);
+    setLabelledBy(findPairedToggle(ref.current)?.id);
   }, []);
 
   return (
-    <div
-      aria-labelledby={labelledBy}
-      id={id}
-      ref={ref}
-      role="menu"
-      className={twMerge(theme.base, className)}
-      {...restProps}
-    >
+    <div aria-labelledby={labelledBy} id={id} ref={ref} role="menu" {...{ [megaMenuDropdownAttr]: "" }} {...restProps}>
       {children}
     </div>
   );
