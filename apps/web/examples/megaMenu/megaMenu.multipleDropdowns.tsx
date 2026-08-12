@@ -46,7 +46,7 @@ function Component() {
         </NavbarLink>
         <NavbarLink href="/">Contact</NavbarLink>
       </NavbarCollapse>
-      <MegaMenuDropdown className="hidden">
+      <MegaMenuDropdown className="hidden w-full">
         <ul className="mx-auto mt-6 grid max-w-screen-xl border-y border-gray-200 px-2 py-5 shadow-sm sm:grid-cols-2 md:grid-cols-3 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
           <li>
             <a href="#" className="block rounded-lg p-3 hover:bg-gray-50 dark:hover:bg-gray-700">
@@ -68,7 +68,7 @@ function Component() {
           </li>
         </ul>
       </MegaMenuDropdown>
-      <MegaMenuDropdown className="hidden">
+      <MegaMenuDropdown className="hidden w-full">
         <ul className="mx-auto mt-6 grid max-w-screen-xl border-y border-gray-200 px-2 py-5 shadow-sm sm:grid-cols-2 md:grid-cols-3 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
           <li>
             <a href="#" className="block rounded-lg p-3 hover:bg-gray-50 dark:hover:bg-gray-700">
@@ -119,7 +119,7 @@ function Component() {
         </NavbarLink>
         <NavbarLink href="/">Contact</NavbarLink>
       </NavbarCollapse>
-      <MegaMenuDropdown className="hidden">
+      <MegaMenuDropdown className="hidden w-full">
         <ul className="mx-auto mt-6 grid max-w-screen-xl border-y border-gray-200 px-2 py-5 shadow-sm sm:grid-cols-2 md:grid-cols-3 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
           <li>
             <a href="#" className="block rounded-lg p-3 hover:bg-gray-50 dark:hover:bg-gray-700">
@@ -141,7 +141,7 @@ function Component() {
           </li>
         </ul>
       </MegaMenuDropdown>
-      <MegaMenuDropdown className="hidden">
+      <MegaMenuDropdown className="hidden w-full">
         <ul className="mx-auto mt-6 grid max-w-screen-xl border-y border-gray-200 px-2 py-5 shadow-sm sm:grid-cols-2 md:grid-cols-3 dark:border-gray-600 dark:bg-gray-800 dark:text-white">
           <li>
             <a href="#" className="block rounded-lg p-3 hover:bg-gray-50 dark:hover:bg-gray-700">

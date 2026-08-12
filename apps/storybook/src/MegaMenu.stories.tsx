@@ -125,7 +125,7 @@ const MultipleDropdownsTemplate: StoryFn<MegaMenuProps> = (args) => (
       </NavbarLink>
       <NavbarLink href="#">Contact</NavbarLink>
     </NavbarCollapse>
-    <MegaMenuDropdown className="hidden">
+    <MegaMenuDropdown className="hidden w-full">
       <ul className="mx-auto mt-6 grid max-w-screen-xl border-y border-gray-200 px-2 py-5 shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-white sm:grid-cols-2 md:grid-cols-3">
         <li>
           <a href="#" className="block rounded-lg p-3 hover:bg-gray-50 dark:hover:bg-gray-700">
@@ -144,7 +144,7 @@ const MultipleDropdownsTemplate: StoryFn<MegaMenuProps> = (args) => (
         </li>
       </ul>
     </MegaMenuDropdown>
-    <MegaMenuDropdown className="hidden">
+    <MegaMenuDropdown className="hidden w-full">
       <ul className="mx-auto mt-6 grid max-w-screen-xl border-y border-gray-200 px-2 py-5 shadow-sm dark:border-gray-600 dark:bg-gray-800 dark:text-white sm:grid-cols-2 md:grid-cols-3">
         <li>
           <a href="#" className="block rounded-lg p-3 hover:bg-gray-50 dark:hover:bg-gray-700">
