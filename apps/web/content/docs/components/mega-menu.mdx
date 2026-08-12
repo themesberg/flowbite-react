@@ -23,6 +23,14 @@ This example of a mega menu dropdown can be used to also show an icon near the t
 
 <Example name="megaMenu.icons" />
 
+## Multiple dropdowns
+
+Use this example to show more than one mega menu dropdown inside the same navbar. Pair each `<MegaMenuDropdownToggle>` with a `<MegaMenuDropdown>` by declaring them in the same order: the first toggle controls the first dropdown, the second toggle the second one, and so on. The toggles and the dropdowns do not need to be siblings, so the toggles can stay inside `<NavbarCollapse>` while the dropdowns span the full width of the navbar.
+
+Opening a dropdown closes any other dropdown of the same mega menu. Add a `hidden` class to a `<MegaMenuDropdown>` to have it start closed.
+
+<Example name="megaMenu.multipleDropdowns" />
+
 ## Full width dropdown
 
 Use this example to show a mega menu dropdown that spans the entire width of the document page.
