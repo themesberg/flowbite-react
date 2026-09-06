@@ -3,7 +3,7 @@ import type { RangeSliderTheme } from "./RangeSlider";
 
 export const rangeSliderTheme = createTheme<RangeSliderTheme>({
   root: {
-    base: "flex",
+    base: "flex items-center",
   },
   field: {
     base: "relative w-full",
