@@ -89,10 +89,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
         {Icon && (
           <div
             onClick={onIconClick}
-            className={twMerge(
-              theme.field.icon.base,
-              onIconClick && "cursor-pointer pointer-events-auto",
-            )}
+            className={twMerge(theme.field.icon.base, onIconClick && "pointer-events-auto cursor-pointer")}
           >
             <Icon className={theme.field.icon.svg} />
           </div>
@@ -101,10 +98,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
           <div
             data-testid="right-icon"
             onClick={onRightIconClick}
-            className={twMerge(
-              theme.field.rightIcon.base,
-              onRightIconClick && "cursor-pointer pointer-events-auto",
-            )}
+            className={twMerge(theme.field.rightIcon.base, onRightIconClick && "pointer-events-auto cursor-pointer")}
           >
             <RightIcon className={theme.field.rightIcon.svg} />
           </div>
