@@ -1,29 +1,32 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+// @vitest-environment jsdom
+import { cleanup, fireEvent, render } from "@testing-library/react";
 import { HiEye } from "react-icons/hi";
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { TextInput } from "./TextInput";
 
-describe.concurrent("Components / Text input", () => {
-  describe.concurrent("A11y", () => {
-    it('should have `role="textbox"` by default', () => {
-      const textInput = render(<TextInput />).getByRole("textbox");
+describe("Components / Text input", () => {
+  afterEach(() => {
+    cleanup();
+  });
 
-      expect(textInput).toBeInTheDocument();
+  describe("A11y", () => {
+    it('should have `role="textbox"` by default', () => {
+      const { getByRole } = render(<TextInput />);
+
+      expect(getByRole("textbox")).toBeDefined();
     });
 
     it("should have Icon if selected", () => {
-      const page = render(<TextInput rightIcon={HiEye} />).getByTestId("right-icon");
+      const { getByTestId } = render(<TextInput rightIcon={HiEye} />);
 
-      expect(page).toBeInTheDocument();
+      expect(getByTestId("right-icon")).toBeDefined();
     });
 
     it("should trigger onRightIconClick when right icon is clicked", () => {
       const handleClick = vi.fn();
+      const { getByTestId } = render(<TextInput rightIcon={HiEye} onRightIconClick={handleClick} />);
 
-      render(<TextInput rightIcon={HiEye} onRightIconClick={handleClick} />);
-      const rightIconWrapper = screen.getByTestId("right-icon");
-
-      fireEvent.click(rightIconWrapper);
+      fireEvent.click(getByTestId("right-icon"));
       expect(handleClick).toHaveBeenCalledTimes(1);
     });
   });
