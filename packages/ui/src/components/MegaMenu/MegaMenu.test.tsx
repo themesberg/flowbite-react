@@ -94,6 +94,50 @@ describe("Components / MegaMenu", () => {
     expect(companyToggle).toHaveAttribute("aria-expanded", "false");
   });
 
+  it("should preserve pairing when a standalone dropdown opens between separated toggle and panel pairs", async () => {
+    const user = userEvent.setup();
+    render(
+      <MegaMenu>
+        <div>
+          <MegaMenuDropdownToggle>Company</MegaMenuDropdownToggle>
+          <MegaMenuDropdown toggle={<>Standalone</>}>
+            <p>Standalone content</p>
+          </MegaMenuDropdown>
+          <MegaMenuDropdownToggle>Marketing</MegaMenuDropdownToggle>
+        </div>
+        <MegaMenuDropdown className="hidden">
+          <p>Company content</p>
+        </MegaMenuDropdown>
+        <MegaMenuDropdown className="hidden">
+          <p>Marketing content</p>
+        </MegaMenuDropdown>
+      </MegaMenu>,
+    );
+
+    const companyToggle = screen.getByRole("button", { name: "Company" });
+    const marketingToggle = screen.getByRole("button", { name: "Marketing" });
+    const companyDropdown = screen.getByText("Company content").parentElement;
+    const marketingDropdown = screen.getByText("Marketing content").parentElement;
+
+    await user.click(screen.getByRole("button", { name: "Standalone" }));
+    expect(screen.getByText("Standalone content")).toBeVisible();
+
+    await user.click(marketingToggle);
+
+    expect(marketingToggle).toHaveAttribute("aria-controls", marketingDropdown?.id);
+    expect(marketingDropdown).toHaveAttribute("aria-labelledby", marketingToggle.id);
+    expect(marketingDropdown).not.toHaveClass("hidden");
+    expect(companyDropdown).toHaveClass("hidden");
+
+    await user.click(companyToggle);
+
+    expect(companyToggle).toHaveAttribute("aria-controls", companyDropdown?.id);
+    expect(companyDropdown).toHaveAttribute("aria-labelledby", companyToggle.id);
+    expect(companyDropdown).not.toHaveClass("hidden");
+    expect(marketingDropdown).toHaveClass("hidden");
+    expect(marketingToggle).toHaveAttribute("aria-expanded", "false");
+  });
+
   it("should hide/show <MegaMenuDropdown toggle={..}> on click toggle", async () => {
     const user = userEvent.setup();
     render(<MegaMenuDropdownOnlyTest />);
