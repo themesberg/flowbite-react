@@ -271,7 +271,7 @@
     "chokidar": "4.0.3",
     "comment-json": "4.5.1",
     "debounce": "3.0.0",
-    "deepmerge-ts": "7.1.5",
+    "deepmerge-ts": "8.0.0",
     "klona": "2.0.6",
     "magic-string": "0.30.21",
     "oxc-parser": "0.112.0",
