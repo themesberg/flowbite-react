@@ -45,9 +45,7 @@ export const NavbarLink = forwardRef<HTMLLIElement, NavbarLinkProps>((props, ref
 
   function handleClick(event: MouseEvent<HTMLAnchorElement>) {
     const target = event.target as Element;
-    const interactiveTarget = target.closest(
-      "a, button, input, select, textarea, [role=\"button\"]",
-    );
+    const interactiveTarget = target.closest('a, button, input, select, textarea, [role="button"]');
 
     if (interactiveTarget && interactiveTarget !== event.currentTarget) {
       onClick?.(event);
