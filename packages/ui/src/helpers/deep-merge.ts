@@ -2,6 +2,7 @@ import { deepmergeCustom } from "deepmerge-ts";
 
 export function deepMergeStrings(merge: (values: string[]) => string) {
   return deepmergeCustom({
+    mergeMaps: (values) => new Map(values.flatMap((value) => [...value])),
     mergeOthers: (values, utils) => {
       if (values.some((value) => typeof value === "string")) {
         const strings = values.filter((value) => typeof value === "string");
