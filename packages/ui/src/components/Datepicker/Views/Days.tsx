@@ -5,7 +5,6 @@ import { useDatePickerContext } from "../DatepickerContext";
 import {
   addDays,
   getFirstDayOfTheMonth,
-  getFormattedDate,
   getWeekDays,
   isDateEqual,
   isDateInRange,
@@ -59,7 +58,7 @@ export function DatepickerViewsDays() {
       <div className={theme.items.base}>
         {[...Array(42)].map((_date, index) => {
           const currentDate = addDays(startDate, index);
-          const day = getFormattedDate(language, currentDate, { day: "numeric" });
+          const day = currentDate.getDate();
 
           const isSelected = selectedDate && isDateEqual(selectedDate, currentDate);
           const isDisabled =
