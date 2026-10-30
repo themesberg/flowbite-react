@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { Button } from "../Button";
 import { Tooltip } from "./Tooltip";
 
@@ -49,6 +49,31 @@ describe("Tooltip", () => {
       await user.click(tooltip);
 
       expect(arrow).toHaveStyle("left: -4px");
+    });
+  });
+
+  describe("Hover interactions", () => {
+    it("delays opening when delay is provided", () => {
+      vi.useFakeTimers();
+
+      try {
+        render(
+          <Tooltip content="Tooltip content" delay={500}>
+            <Button>Delayed tooltip</Button>
+          </Tooltip>,
+        );
+
+        const target = targets()[0];
+        const tooltip = tooltips()[0];
+
+        fireEvent.mouseEnter(target);
+        expect(tooltip).toHaveClass("invisible");
+
+        act(() => vi.advanceTimersByTime(500));
+        expect(tooltip).not.toHaveClass("invisible");
+      } finally {
+        vi.useRealTimers();
+      }
     });
   });
 });
