@@ -3,12 +3,12 @@ import type { RangeSliderTheme } from "./RangeSlider";
 
 export const rangeSliderTheme = createTheme<RangeSliderTheme>({
   root: {
-    base: "flex",
+    base: "flex items-center",
   },
   field: {
     base: "relative w-full",
     input: {
-      base: "w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700",
+      base: "block w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700",
       sizes: {
         sm: "h-1",
         md: "h-2",
