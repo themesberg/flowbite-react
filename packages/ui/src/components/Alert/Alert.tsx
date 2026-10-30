@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, type ComponentProps, type FC, type ReactNode } from "react";
+import { forwardRef, useEffect, useState, type ComponentProps, type FC, type ReactNode } from "react";
 import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
@@ -17,6 +17,7 @@ export interface AlertTheme {
   color: FlowbiteColors;
   icon: string;
   rounded: string;
+  transition?: Partial<AlertTransitionTheme>;
   wrapper: string;
 }
 
@@ -26,12 +27,21 @@ export interface AlertCloseButtonTheme {
   icon: string;
 }
 
+export interface AlertTransitionTheme {
+  base: string;
+  duration: string;
+  timing: string;
+}
+
 export interface AlertProps extends Omit<ComponentProps<"div">, "color">, ThemingProps<AlertTheme> {
   additionalContent?: ReactNode;
   color?: DynamicStringEnumKeysOf<FlowbiteColors>;
+  duration?: number;
   icon?: FC<ComponentProps<"svg">>;
   onDismiss?: ComponentProps<"button">["onClick"];
   rounded?: boolean;
+  timing?: string;
+  transition?: string;
   withBorderAccent?: boolean;
 }
 
@@ -48,12 +58,35 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     children,
     className,
     color = "info",
+    duration = 300,
     icon: Icon,
     onDismiss,
     rounded = true,
+    timing = "ease-out",
+    transition = "transition-opacity",
     withBorderAccent,
     ...restProps
   } = resolveProps(props, provider.props?.alert);
+
+  const [isDismissing, setIsDismissing] = useState(false);
+
+  useEffect(() => {
+    if (!isDismissing) {
+      return;
+    }
+    const timeoutId = setTimeout(() => {
+      onDismiss?.(new MouseEvent("click") as unknown as React.MouseEvent<HTMLButtonElement>);
+    }, duration);
+    return () => clearTimeout(timeoutId);
+  }, [isDismissing, duration, onDismiss]);
+
+  const handleDismissClick: ComponentProps<"button">["onClick"] = (event) => {
+    if (transition || duration > 0) {
+      setIsDismissing(true);
+      return;
+    }
+    onDismiss?.(event);
+  };
 
   return (
     <div
@@ -63,6 +96,16 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         theme.color[color],
         rounded && theme.rounded,
         withBorderAccent && theme.borderAccent,
+        isDismissing &&
+          twMerge(
+            transition,
+            `duration-${duration}`,
+            timing,
+            theme.transition?.base,
+            theme.transition?.duration,
+            theme.transition?.timing,
+            "opacity-0",
+          ),
         className,
       )}
       role="alert"
@@ -75,7 +118,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
           <button
             aria-label="Dismiss"
             className={twMerge(theme.closeButton.base, theme.closeButton.color[color])}
-            onClick={onDismiss}
+            onClick={handleDismissClick}
             type="button"
           >
             <XIcon aria-hidden className={theme.closeButton.icon} />

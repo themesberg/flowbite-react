@@ -33,6 +33,16 @@ You can use the `onDismiss` prop on the `<Alert>` component to add a dismiss but
 
 <Example name="alert.dismissible" />
 
+## Dismiss transition
+
+Animate the alert while it is being dismissed by passing the `transition`, `timing` and `duration` props, mirroring the [options of vanilla Flowbite's `Dismiss` class](https://flowbite.com/docs/components/alerts/#options). `onDismiss` fires once the transition has finished.
+
+- `transition` — a Tailwind CSS transition utility class (default: `transition-opacity`)
+- `timing` — a Tailwind CSS transition-timing-function utility class (default: `ease-out`)
+- `duration` — the length of the transition in milliseconds (default: `300`)
+
+<Example name="alert.transition" />
+
 ## Rounded alert
 
 To make the alert box rounded you can use the `rounded` prop on the `<Alert>` component.

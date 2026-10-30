@@ -123,11 +123,75 @@ describe("Components / Alert", () => {
     });
   });
 
+  describe("Dismiss transition", () => {
+    it("should apply the default transition classes while dismissing", async () => {
+      const user = userEvent.setup();
+      render(<Alert onDismiss={vi.fn()} />);
+
+      await user.click(dismiss());
+
+      expect(alert()).toHaveClass("transition-opacity", "duration-300", "ease-out", "opacity-0");
+    });
+
+    it("should fire `onDismiss` after the `duration` has elapsed", async () => {
+      const onDismiss = vi.fn();
+      const user = userEvent.setup();
+      render(<Alert duration={50} onDismiss={onDismiss} />);
+
+      await user.click(dismiss());
+
+      expect(onDismiss).not.toHaveBeenCalled();
+
+      await waitFor(() => expect(onDismiss).toHaveBeenCalledTimes(1));
+    });
+
+    it("should use the custom `transition`, `timing` and `duration` props", async () => {
+      const user = userEvent.setup();
+      render(<Alert duration={1000} onDismiss={vi.fn()} timing="ease-in" transition="transition-transform" />);
+
+      await user.click(dismiss());
+
+      expect(alert()).toHaveClass("transition-transform", "duration-1000", "ease-in", "opacity-0");
+    });
+
+    it("should honour a custom `transition` theme", async () => {
+      const theme: CustomFlowbiteTheme = {
+        alert: {
+          transition: {
+            base: "transition-transform",
+            duration: "duration-700",
+            timing: "ease-in-out",
+          },
+        },
+      };
+      const user = userEvent.setup();
+      render(
+        <ThemeProvider theme={theme}>
+          <Alert onDismiss={vi.fn()} />
+        </ThemeProvider>,
+      );
+
+      await user.click(dismiss());
+
+      expect(alert()).toHaveClass("transition-transform", "duration-700", "ease-in-out", "opacity-0");
+    });
+
+    it("should fire `onDismiss` immediately when `duration` is 0", async () => {
+      const onDismiss = vi.fn();
+      const user = userEvent.setup();
+      render(<Alert duration={0} onDismiss={onDismiss} />);
+
+      await user.click(dismiss());
+
+      expect(onDismiss).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe("Keyboard interactions", () => {
     it("should dismiss when `Tab` is pressed to navigate to Dismiss button and `Space` is pressed", async () => {
       const onDismiss = vi.fn();
       const user = userEvent.setup();
-      render(<Alert onDismiss={onDismiss} />);
+      render(<Alert duration={0} onDismiss={onDismiss} />);
 
       await waitFor(async () => {
         await user.tab();
@@ -142,10 +206,10 @@ describe("Components / Alert", () => {
   });
 
   describe("Props", () => {
-    it("should call `onDismiss` when clicked", async () => {
+    it("should call `onDismiss` when clicked (after the dismiss transition)", async () => {
       const onDismiss = vi.fn();
       const user = userEvent.setup();
-      render(<Alert onDismiss={onDismiss} />);
+      render(<Alert duration={0} onDismiss={onDismiss} />);
 
       await user.click(dismiss());
 

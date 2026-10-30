@@ -4,4 +4,5 @@ export { borderAccent } from "./alert.borderAccent";
 export { dismissible } from "./alert.dismissible";
 export { root } from "./alert.root";
 export { rounded } from "./alert.rounded";
+export { transition } from "./alert.transition";
 export { withIcon } from "./alert.withIcon";
