@@ -69,7 +69,10 @@ describe("Tooltip", () => {
         fireEvent.mouseEnter(target);
         expect(tooltip).toHaveClass("invisible");
 
-        act(() => vi.advanceTimersByTime(500));
+        act(() => vi.advanceTimersByTime(499));
+        expect(tooltip).toHaveClass("invisible");
+
+        act(() => vi.advanceTimersByTime(1));
         expect(tooltip).not.toHaveClass("invisible");
       } finally {
         vi.useRealTimers();
