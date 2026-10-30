@@ -8,6 +8,8 @@ import { useResolveTheme } from "../../helpers/resolve-theme";
 import { twMerge } from "../../helpers/tailwind-merge";
 import { useThemeProvider } from "../../theme/provider";
 import type { ThemingProps } from "../../types";
+import { findPairedDropdown, megaMenuDropdownToggleAttr } from "./helpers";
+import { useMegaMenuContext } from "./MegaMenuContext";
 import { megaMenuTheme } from "./theme";
 
 export interface MegaMenuDropdownToggleTheme {
@@ -23,6 +25,9 @@ export const MegaMenuDropdownToggle = forwardRef<HTMLButtonElement, MegaMenuDrop
   const [controls, setControls] = useState<string | undefined>(undefined);
   const [isExpanded, setExpanded] = useState<boolean | undefined>(undefined);
 
+  const megaMenu = useMegaMenuContext();
+  const openToggleId = megaMenu?.openToggleId;
+
   const provider = useThemeProvider();
   const theme = useResolveTheme(
     [megaMenuTheme.dropdownToggle, provider.theme?.megaMenu?.dropdownToggle, props.theme],
@@ -32,25 +37,42 @@ export const MegaMenuDropdownToggle = forwardRef<HTMLButtonElement, MegaMenuDrop
 
   const { className, ...restProps } = resolveProps(props, provider.props?.megaMenuDropdownToggle);
 
-  function findDropdown() {
-    const megaMenu = innerRef.current?.closest("nav");
-
-    return megaMenu?.querySelector('[role="menu"]');
-  }
-
   function onClick() {
-    findDropdown()?.classList.toggle("hidden");
+    const dropdown = findPairedDropdown(innerRef.current);
 
-    setExpanded(!isExpanded);
+    if (!dropdown) {
+      return;
+    }
+
+    const expanded = !dropdown.classList.toggle("hidden");
+
+    setExpanded(expanded);
+    megaMenu?.setOpenToggleId(expanded ? id : undefined);
   }
 
   useEffect(() => {
-    const dropdown = findDropdown();
+    const dropdown = findPairedDropdown(innerRef.current);
     const isDropdownHidden = dropdown?.classList.contains("hidden");
 
     setControls(dropdown?.id);
     setExpanded(!isDropdownHidden);
   }, []);
+
+  // Collapse this dropdown once another toggle of the same mega menu opens its own.
+  useEffect(() => {
+    if (openToggleId === undefined || openToggleId === id) {
+      return;
+    }
+
+    const dropdown = findPairedDropdown(innerRef.current);
+
+    if (!dropdown || dropdown.classList.contains("hidden")) {
+      return;
+    }
+
+    dropdown.classList.add("hidden");
+    setExpanded(false);
+  }, [openToggleId, id]);
 
   return (
     <button
@@ -61,6 +83,7 @@ export const MegaMenuDropdownToggle = forwardRef<HTMLButtonElement, MegaMenuDrop
       id={id}
       onClick={onClick}
       className={twMerge(theme.base, className)}
+      {...{ [megaMenuDropdownToggleAttr]: "" }}
       {...restProps}
     />
   );
