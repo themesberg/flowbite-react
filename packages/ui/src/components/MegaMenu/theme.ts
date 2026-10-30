@@ -12,7 +12,7 @@ export const megaMenuTheme = createTheme<MegaMenuTheme>({
       ...dropdownTheme,
       floating: {
         ...dropdownTheme.floating,
-        base: twMerge(dropdownTheme.floating.base, "mt-2 block"),
+        base: twMerge(dropdownTheme.floating.base, "!ml-0 mt-2 block"),
         content: twMerge(dropdownTheme.floating.content, "text-gray-500 dark:text-gray-400"),
         style: {
           ...dropdownTheme.floating.style,
