@@ -16,6 +16,7 @@ export interface TooltipProps extends Omit<ComponentProps<"div">, "content" | "s
   animation?: false | `duration-${number}`;
   arrow?: boolean;
   content: ReactNode;
+  delay?: number;
   placement?: "auto" | Placement;
   style?: "dark" | "light" | "auto";
   trigger?: "hover" | "click";
@@ -38,6 +39,7 @@ export function Tooltip(props: TooltipProps) {
     children,
     className,
     content,
+    delay,
     placement = "top",
     style = "dark",
     trigger = "hover",
@@ -49,6 +51,7 @@ export function Tooltip(props: TooltipProps) {
       animation={animation}
       arrow={arrow}
       content={content}
+      delay={delay}
       placement={placement}
       style={style}
       theme={theme}
