@@ -23,11 +23,15 @@ Using a `openModal` and `setOpenModal` state for the main React component should
 
 <Example name="modal.root" />
 
-## Backdrop dismissible
+## Dismissible modal
 
-To enable the modal to be dismissed when clicking outside of the component (ie. the backdrop) then you can pass the `dismissible` prop to the `<Modal>` component from React.
+To enable the close (X) button and allow the modal to be dismissed by clicking the backdrop or pressing the Escape key, pass the `dismissible` prop to the `<Modal>` component.
+
+When `dismissible` is set to `true`, the close button will appear in the header and the `onClose` callback will be triggered when the user tries to close the modal.
 
 <Example name="modal.dismissible" />
+
+
 
 ## Pop-up modal
 
