@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.13.0
+
+### Minor Changes
+
+- [#1698](https://github.com/themesberg/flowbite-react/pull/1698) [`699cbcf`](https://github.com/themesberg/flowbite-react/commit/699cbcf34eef10ea9c1f3707624e0c56479a0431) Thanks [@badrisatyam1-ctrl](https://github.com/badrisatyam1-ctrl)! - Add an optional `delay` prop to postpone opening hover-triggered tooltips.
+
+### Patch Changes
+
+- [#1697](https://github.com/themesberg/flowbite-react/pull/1697) [`25ff1f7`](https://github.com/themesberg/flowbite-react/commit/25ff1f750fda05605342af886156b0afb87193bd) Thanks [@paganjin](https://github.com/paganjin)! - Upgrade DeepmergeTS to 8.0.0 to fix stack exhaustion when merging circular records (CVE-2026-40345), while preserving last-value-wins Map merging in the theme merge helper.
+
 ## 0.12.17
 
 ### Patch Changes
