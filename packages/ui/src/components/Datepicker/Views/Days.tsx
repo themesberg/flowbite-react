@@ -24,6 +24,7 @@ export interface DatepickerViewsDaysTheme {
       base: string;
       selected: string;
       disabled: string;
+      outside: string;
       today: string;
     };
   };
@@ -64,6 +65,8 @@ export function DatepickerViewsDays() {
           const isSelected = selectedDate && isDateEqual(selectedDate, currentDate);
           const isDisabled =
             !isDateInRange(currentDate, minDate, maxDate) || (filterDate && !filterDate(currentDate, Views.Days));
+          const isOutside =
+            currentDate.getMonth() !== viewDate.getMonth() || currentDate.getFullYear() !== viewDate.getFullYear();
           const isToday = isDateToday(currentDate);
 
           return (
@@ -76,6 +79,7 @@ export function DatepickerViewsDays() {
                 isToday && theme.items.item.today,
                 isSelected && theme.items.item.selected,
                 isDisabled && theme.items.item.disabled,
+                isOutside && theme.items.item.outside,
               )}
               onClick={() => {
                 if (isDisabled) return;
