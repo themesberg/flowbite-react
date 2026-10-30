@@ -123,6 +123,7 @@ export interface FlowbiteTheme {
   datepicker: import("../components/Datepicker").DatepickerTheme;
   drawer: import("../components/Drawer").DrawerTheme;
   dropdown: import("../components/Dropdown").DropdownTheme;
+  empty: import("../components/Empty").EmptyTheme;
   fileInput: import("../components/FileInput").FileInputTheme;
   floatingLabel: import("../components/FloatingLabel").FloatingLabelTheme;
   footer: import("../components/Footer").FooterTheme;
@@ -189,6 +190,7 @@ export interface FlowbiteProps {
   dropdownDivider: Partial<WithoutThemingProps<import("../components/Dropdown").DropdownDividerProps>>;
   dropdownHeader: Partial<WithoutThemingProps<import("../components/Dropdown").DropdownHeaderProps>>;
   dropdownItem: Partial<WithoutThemingProps<import("../components/Dropdown").DropdownItemProps>>;
+  empty: Partial<WithoutThemingProps<import("../components/Empty").EmptyProps>>;
   fileInput: Partial<WithoutThemingProps<import("../components/FileInput").FileInputProps>>;
   floatingLabel: Partial<WithoutThemingProps<import("../components/FloatingLabel").FloatingLabelProps>>;
   footer: Partial<WithoutThemingProps<import("../components/Footer").FooterProps>>;

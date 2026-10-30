@@ -412,5 +412,12 @@ export const COMPONENTS_DATA: Component[] = [
   //   imageDark: "/images/components/jumbotron-dark.svg",
   //   link: "/docs/components/jumbotron",
   //   classes: "w-64"
-  // }
+  // },
+  {
+    name: "Empty",
+    image: "/images/components/empty.svg",
+    imageDark: "/images/components/empty-dark.svg",
+    link: "/docs/components/empty",
+    classes: "w-64",
+  },
 ];

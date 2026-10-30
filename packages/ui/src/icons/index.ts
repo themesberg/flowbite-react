@@ -9,6 +9,7 @@ export { ChevronRightIcon } from "./chevron-right-icon";
 export { ChevronUpIcon } from "./chevron-up-icon";
 export { ClipboardListIcon } from "./clipboard-list-icon";
 export { CloseIcon } from "./close-icon";
+export { EmptyIcon } from "./empty-icon";
 export { HomeIcon } from "./home-icon";
 export { MoonIcon } from "./moon-icon";
 export { OutlineXIcon } from "./outline-x-icon";

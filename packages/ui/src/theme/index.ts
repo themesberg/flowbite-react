@@ -13,6 +13,7 @@ import { darkThemeToggleTheme } from "../components/DarkThemeToggle/theme";
 import { datePickerTheme } from "../components/Datepicker/theme";
 import { drawerTheme } from "../components/Drawer/theme";
 import { dropdownTheme } from "../components/Dropdown/theme";
+import { emptyTheme } from "../components/Empty/theme";
 import { fileInputTheme } from "../components/FileInput/theme";
 import { floatingLabelTheme } from "../components/FloatingLabel/theme";
 import { footerTheme } from "../components/Footer/theme";
@@ -61,6 +62,7 @@ export const theme: FlowbiteTheme = {
   datepicker: datePickerTheme,
   drawer: drawerTheme,
   dropdown: dropdownTheme,
+  empty: emptyTheme,
   fileInput: fileInputTheme,
   floatingLabel: floatingLabelTheme,
   footer: footerTheme,
