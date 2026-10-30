@@ -1,6 +1,6 @@
 "use client";
 
-import type { ComponentProps, FC, ReactNode } from "react";
+import type { ComponentProps, FC, MouseEvent, ReactNode } from "react";
 import { forwardRef } from "react";
 import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
@@ -54,6 +54,8 @@ export interface TextInputProps extends Omit<ComponentProps<"input">, "ref" | "c
   color?: DynamicStringEnumKeysOf<TextInputColors>;
   icon?: FC<ComponentProps<"svg">>;
   rightIcon?: FC<ComponentProps<"svg">>;
+  onIconClick?: (event: MouseEvent<HTMLDivElement>) => void;
+  onRightIconClick?: (event: MouseEvent<HTMLDivElement>) => void;
   shadow?: boolean;
   sizing?: DynamicStringEnumKeysOf<TextInputSizes>;
 }
@@ -72,6 +74,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
     color = "gray",
     icon: Icon,
     rightIcon: RightIcon,
+    onIconClick,
+    onRightIconClick,
     shadow,
     sizing = "md",
     type = "text",
@@ -83,12 +87,19 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, re
       {addon && <span className={theme.addon}>{addon}</span>}
       <div className={theme.field.base}>
         {Icon && (
-          <div className={theme.field.icon.base}>
+          <div
+            onClick={onIconClick}
+            className={twMerge(theme.field.icon.base, onIconClick && "pointer-events-auto cursor-pointer")}
+          >
             <Icon className={theme.field.icon.svg} />
           </div>
         )}
         {RightIcon && (
-          <div data-testid="right-icon" className={theme.field.rightIcon.base}>
+          <div
+            data-testid="right-icon"
+            onClick={onRightIconClick}
+            className={twMerge(theme.field.rightIcon.base, onRightIconClick && "pointer-events-auto cursor-pointer")}
+          >
             <RightIcon className={theme.field.rightIcon.svg} />
           </div>
         )}
