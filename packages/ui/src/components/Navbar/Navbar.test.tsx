@@ -17,6 +17,27 @@ describe("Navbar", () => {
   });
 
   describe("Interactions", () => {
+    it("should keep the collapse open when clicking a nested interactive element", async () => {
+      const user = userEvent.setup();
+      render(
+        <Navbar>
+          <NavbarToggle />
+          <NavbarCollapse>
+            <NavbarLink as="span">
+              <button type="button">Open menu</button>
+            </NavbarLink>
+          </NavbarCollapse>
+        </Navbar>,
+      );
+
+      const collapse = screen.getByTestId("flowbite-navbar-collapse");
+      await user.click(screen.getByTestId("flowbite-navbar-toggle"));
+      expect(collapse).not.toHaveClass("hidden");
+
+      await user.click(screen.getByRole("button", { name: "Open menu" }));
+      expect(collapse).not.toHaveClass("hidden");
+    });
+
     it("should hide/show `NavbarMenu` when toggle is clicked", async () => {
       const user = userEvent.setup();
       render(<NavbarTest />);
