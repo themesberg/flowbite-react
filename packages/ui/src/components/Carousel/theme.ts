@@ -16,7 +16,7 @@ export const carouselTheme = createTheme<CarouselTheme>({
     wrapper: "absolute bottom-5 left-1/2 flex -translate-x-1/2 space-x-3",
   },
   item: {
-    base: "absolute left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2",
+    base: "relative left-1/2 top-1/2 block w-full -translate-x-1/2 -translate-y-1/2",
     wrapper: {
       off: "w-full shrink-0 transform cursor-default snap-center",
       on: "w-full shrink-0 transform cursor-grab snap-center",
