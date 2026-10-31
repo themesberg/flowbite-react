@@ -38,6 +38,7 @@ export interface FloatingProps extends Omit<ComponentProps<"div">, "content" | "
   animation?: false | `duration-${number}`;
   arrow?: boolean;
   content: ReactNode;
+  delay?: number;
   placement?: "auto" | Placement;
   style?: FloatingStyle;
   theme: FloatingTheme;
@@ -54,6 +55,7 @@ export function Floating({
   children,
   className,
   content,
+  delay,
   placement = "top",
   style = "dark",
   theme,
@@ -84,6 +86,7 @@ export function Floating({
   const focus = useFocus(context);
   const { getFloatingProps, getReferenceProps } = useFloatingInteractions({
     context,
+    delay,
     role: "tooltip",
     trigger,
     interactions: [focus],

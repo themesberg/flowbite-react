@@ -36,6 +36,7 @@ export const useBaseFloating = <Type extends ReferenceType>({
 
 export type UseFloatingInteractionsParams = {
   context: ReturnType<typeof useFloating>["context"];
+  delay?: number;
   trigger?: "hover" | "click";
   role?: UseRoleProps["role"];
   interactions?: ElementProps[];
@@ -43,6 +44,7 @@ export type UseFloatingInteractionsParams = {
 
 export const useFloatingInteractions = ({
   context,
+  delay,
   trigger,
   role = "tooltip",
   interactions = [],
@@ -50,6 +52,7 @@ export const useFloatingInteractions = ({
   return useInteractions([
     useClick(context, { enabled: trigger === "click" }),
     useHover(context, {
+      delay: delay === undefined ? undefined : { open: delay },
       enabled: trigger === "hover",
       handleClose: safePolygon(),
     }),

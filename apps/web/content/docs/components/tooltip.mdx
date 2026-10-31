@@ -41,6 +41,16 @@ The default trigger type is `hover` and you can also use `click`.
 
 <Example name="tooltip.trigger" />
 
+## Delay
+
+Use the `delay` prop to wait a specified number of milliseconds before a hover-triggered tooltip opens.
+
+```jsx
+<Tooltip content="Tooltip content" delay={500}>
+  <Button>Show after 500ms</Button>
+</Tooltip>
+```
+
 ## Animation
 
 Update the default animation of the tooltip component by using the `animation` prop. The default animation is `duration-300` and you can also use `duration-150`, `duration-500`, and `duration-1000`.
