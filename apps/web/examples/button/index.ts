@@ -1,4 +1,5 @@
 export { disabled } from "./button.disabled";
+export { ghost } from "./button.ghost";
 export { gradientDuo } from "./button.gradientDuo";
 export { gradientMono } from "./button.gradientMono";
 export { iconOnly } from "./button.iconOnly";

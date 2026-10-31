@@ -39,6 +39,30 @@ export const buttonTheme = createTheme<ButtonTheme>({
     yellow:
       "bg-yellow-400 text-white hover:bg-yellow-500 focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-400 dark:focus:ring-yellow-900",
   },
+  ghostColor: {
+    default:
+      "bg-transparent text-primary-700 hover:bg-primary-100 focus:ring-primary-300 dark:text-primary-500 dark:hover:bg-primary-900/50 dark:focus:ring-primary-800",
+    alternative:
+      "bg-transparent text-gray-900 hover:bg-gray-100 focus:ring-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700",
+    blue: "bg-transparent text-blue-700 hover:bg-blue-100 focus:ring-blue-300 dark:text-blue-500 dark:hover:bg-blue-900/50 dark:focus:ring-blue-800",
+    cyan: "bg-transparent text-cyan-700 hover:bg-cyan-100 focus:ring-cyan-300 dark:text-cyan-500 dark:hover:bg-cyan-900/50 dark:focus:ring-cyan-800",
+    dark: "bg-transparent text-gray-800 hover:bg-gray-100 focus:ring-gray-300 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700",
+    gray: "bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-300 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800",
+    green:
+      "bg-transparent text-green-700 hover:bg-green-100 focus:ring-green-300 dark:text-green-500 dark:hover:bg-green-900/50 dark:focus:ring-green-800",
+    indigo:
+      "bg-transparent text-indigo-700 hover:bg-indigo-100 focus:ring-indigo-300 dark:text-indigo-400 dark:hover:bg-indigo-900/50 dark:focus:ring-indigo-800",
+    light:
+      "bg-transparent text-gray-500 hover:bg-gray-100 focus:ring-gray-100 dark:text-gray-300 dark:hover:bg-gray-700 dark:focus:ring-gray-700",
+    lime: "bg-transparent text-lime-700 hover:bg-lime-100 focus:ring-lime-300 dark:text-lime-500 dark:hover:bg-lime-900/50 dark:focus:ring-lime-800",
+    pink: "bg-transparent text-pink-700 hover:bg-pink-100 focus:ring-pink-300 dark:text-pink-500 dark:hover:bg-pink-900/50 dark:focus:ring-pink-800",
+    purple:
+      "bg-transparent text-purple-700 hover:bg-purple-100 focus:ring-purple-300 dark:text-purple-400 dark:hover:bg-purple-900/50 dark:focus:ring-purple-800",
+    red: "bg-transparent text-red-700 hover:bg-red-100 focus:ring-red-300 dark:text-red-500 dark:hover:bg-red-900/50 dark:focus:ring-red-900",
+    teal: "bg-transparent text-teal-700 hover:bg-teal-100 focus:ring-teal-300 dark:text-teal-400 dark:hover:bg-teal-900/50 dark:focus:ring-teal-800",
+    yellow:
+      "bg-transparent text-yellow-500 hover:bg-yellow-100 focus:ring-yellow-300 dark:text-yellow-300 dark:hover:bg-yellow-900/50 dark:focus:ring-yellow-900",
+  },
   outlineColor: {
     default:
       "border border-primary-700 text-primary-700 hover:border-primary-800 hover:bg-primary-800 hover:text-white focus:ring-primary-300 dark:border-primary-600 dark:text-primary-500 dark:hover:border-primary-700 dark:hover:bg-primary-700 dark:hover:text-white dark:focus:ring-primary-800",

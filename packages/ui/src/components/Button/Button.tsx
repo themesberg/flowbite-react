@@ -28,6 +28,7 @@ export interface ButtonTheme {
   size: ButtonSizes;
   // colors
   color: ButtonColors;
+  ghostColor: ButtonColors;
   outlineColor: ButtonOutlineColors;
 }
 
@@ -51,6 +52,7 @@ export type ButtonProps<T extends ElementType = "button"> = PolymorphicComponent
     href?: string;
     color?: DynamicStringEnumKeysOf<ButtonColors>;
     fullSized?: boolean;
+    ghost?: boolean;
     outline?: boolean;
     pill?: boolean;
     size?: DynamicStringEnumKeysOf<ButtonSizes>;
@@ -76,6 +78,7 @@ export const Button = forwardRef(<T extends ElementType = "button">(props: Butto
     color = "default",
     disabled,
     fullSized,
+    ghost,
     outline: _outline,
     pill: _pill,
     size = "md",
@@ -97,7 +100,7 @@ export const Button = forwardRef(<T extends ElementType = "button">(props: Butto
         pill && theme.pill,
         disabled && theme.disabled,
         fullSized && theme.fullSized,
-        outline ? theme.outlineColor[color] : theme.color[color],
+        ghost ? theme.ghostColor[color] : outline ? theme.outlineColor[color] : theme.color[color],
         buttonGroup && theme.grouped,
         className,
       )}
