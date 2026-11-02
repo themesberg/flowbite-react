@@ -168,7 +168,11 @@ export function getFormattedDate(language: string, date: Date, options?: Intl.Da
       return formatter.format(anchored);
     }
 
-    anchored = new Date(anchored.getTime() - diff);
+    const shifted = new Date(anchored.getTime() - diff);
+    if (Number.isNaN(shifted.getTime())) {
+      return formatter.format(date);
+    }
+    anchored = shifted;
   }
 
   return formatter.format(anchored);

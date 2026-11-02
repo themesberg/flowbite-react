@@ -236,6 +236,11 @@ describe("getFormattedDate", () => {
     const formattedDate = getFormattedDate("en-US", date, { timeZone: "UTC" });
     expect(formattedDate).toBe(expected);
   });
+
+  it("does not throw when the timeZone correction overflows at the maximum Date", () => {
+    const formattedDate = getFormattedDate("en-US", new Date(8.64e15), { timeZone: "America/New_York" });
+    expect(typeof formattedDate).toBe("string");
+  });
 });
 
 describe("startOfYearPeriod", () => {
