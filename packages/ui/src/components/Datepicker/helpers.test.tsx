@@ -170,6 +170,77 @@ describe("getFormattedDate", () => {
     const formattedDate = getFormattedDate("pt-BR", date);
     expect(formattedDate).toBe("15 de janeiro de 2023");
   });
+
+  it("keeps the selected calendar day when formatting in another timeZone", () => {
+    const date = new Date(2023, 0, 15); // January 15th, 2023
+    const options: Intl.DateTimeFormatOptions = { timeZone: "UTC", day: "2-digit", month: "2-digit", year: "numeric" };
+    const formattedDate = getFormattedDate("en", date, options);
+    expect(formattedDate).toBe("01/15/2023");
+  });
+
+  it("keeps the selected calendar day at month boundaries in far-ahead time zones", () => {
+    const date = new Date(2026, 0, 31); // January 31st, 2026
+    const options: Intl.DateTimeFormatOptions = {
+      timeZone: "Pacific/Kiritimati",
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    };
+    const formattedDate = getFormattedDate("en", date, options);
+    expect(formattedDate).toBe("01/31/2026");
+  });
+
+  it("keeps years 0-99 when formatting in another timeZone", () => {
+    const date = new Date(0);
+    date.setFullYear(5, 0, 15); // January 15th, year 5
+    const formattedDate = getFormattedDate("en-US", date, {
+      timeZone: "UTC",
+      day: "numeric",
+      month: "numeric",
+      year: "numeric",
+    });
+    expect(formattedDate).toBe("1/15/5");
+  });
+
+  it("keeps BCE dates on the selected calendar day when formatting in another timeZone", () => {
+    const date = new Date(0);
+    date.setFullYear(-1, 0, 15); // January 15th, 2 BC
+    const formattedDate = getFormattedDate("en-US", date, {
+      timeZone: "UTC",
+      day: "numeric",
+      month: "numeric",
+      year: "numeric",
+    });
+    expect(formattedDate).toBe("1/15/2");
+  });
+
+  it("keeps the time from the date when time fields are used with a timeZone", () => {
+    const date = new Date(2023, 0, 15, 14, 30);
+    const formattedDate = getFormattedDate("en-US", date, { timeZone: "UTC", hour: "numeric", minute: "numeric" });
+    expect(formattedDate).toBe("2:30 PM");
+  });
+
+  it("shows the selected wall time in the requested timeZone", () => {
+    const date = new Date(2023, 0, 15, 14, 30);
+    const formattedDate = getFormattedDate("en-US", date, {
+      timeZone: "America/New_York",
+      hour: "numeric",
+      minute: "numeric",
+    });
+    expect(formattedDate).toBe("2:30 PM");
+  });
+
+  it("formats the maximum Date without throwing when a timeZone is set", () => {
+    const date = new Date(8.64e15);
+    const expected = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    const formattedDate = getFormattedDate("en-US", date, { timeZone: "UTC" });
+    expect(formattedDate).toBe(expected);
+  });
+
+  it("does not throw when the timeZone correction overflows at the maximum Date", () => {
+    const formattedDate = getFormattedDate("en-US", new Date(8.64e15), { timeZone: "America/New_York" });
+    expect(typeof formattedDate).toBe("string");
+  });
 });
 
 describe("startOfYearPeriod", () => {

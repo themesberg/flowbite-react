@@ -27,6 +27,12 @@ The `labelTodayButton` and `labelClearButton` can also be used to update the tex
 
 <Example name="datepicker.localization" />
 
+## Date format
+
+Use the `dateFormat` prop to customize how the selected date is displayed in the input. It accepts [Intl.DateTimeFormatOptions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat) and combines with the `language` prop, so the same options render locale-appropriate output — the example shows `15/01/2026` for `en-GB`, while `en` renders `01/15/2026`.
+
+<Example name="datepicker.format" />
+
 ## Filter dates
 
 You can use the `filterDate` prop to filter out specific dates from the datepicker component. This is useful if you want to disable certain dates or only allow selection of weekdays, for example.

@@ -119,7 +119,63 @@ export function getFormattedDate(language: string, date: Date, options?: Intl.Da
     defaultOptions = options;
   }
 
-  return new Intl.DateTimeFormat(language, defaultOptions).format(date);
+  const formatter = new Intl.DateTimeFormat(language, defaultOptions);
+
+  if (!defaultOptions.timeZone) {
+    return formatter.format(date);
+  }
+
+  const zonedDateFormatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: defaultOptions.timeZone,
+    era: "short",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: false,
+  });
+
+  // The date is a local wall clock. Anchor the same wall time at UTC so most
+  // zone offsets keep the selected calendar day, then correct the remaining
+  // offsets by shifting the instant until the zoned wall clock matches.
+  let anchored = new Date(0);
+  anchored.setUTCFullYear(date.getFullYear(), date.getMonth(), date.getDate());
+  anchored.setUTCHours(date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+
+  if (Number.isNaN(anchored.getTime())) {
+    // Only reachable near the maximum Date, where the instant cannot represent
+    // the local day in every zone; format the date as-is.
+    return formatter.format(date);
+  }
+
+  for (let i = 0; i < 3; i++) {
+    const parts = new Map(zonedDateFormatter.formatToParts(anchored).map((part) => [part.type, part.value]));
+    const zonedYear = (parts.get("era") ?? "").startsWith("B")
+      ? 1 - Number(parts.get("year"))
+      : Number(parts.get("year"));
+    const zonedWall = new Date(0);
+    zonedWall.setUTCFullYear(zonedYear, Number(parts.get("month")) - 1, Number(parts.get("day")));
+    zonedWall.setUTCHours(Number(parts.get("hour")) % 24, Number(parts.get("minute")), Number(parts.get("second")), 0);
+    const targetWall = new Date(0);
+    targetWall.setUTCFullYear(date.getFullYear(), date.getMonth(), date.getDate());
+    targetWall.setUTCHours(date.getHours(), date.getMinutes(), date.getSeconds(), 0);
+
+    const diff = zonedWall.getTime() - targetWall.getTime();
+
+    if (diff === 0) {
+      return formatter.format(anchored);
+    }
+
+    const shifted = new Date(anchored.getTime() - diff);
+    if (Number.isNaN(shifted.getTime())) {
+      return formatter.format(date);
+    }
+    anchored = shifted;
+  }
+
+  return formatter.format(anchored);
 }
 
 export function startOfYearPeriod(date: Date, years: number): number {

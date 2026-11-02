@@ -15,6 +15,29 @@ describe("Components / Datepicker", () => {
     expect(screen.getByDisplayValue(todaysDateInDefaultLanguage)).toBeInTheDocument();
   });
 
+  it("should format the input value with the given `dateFormat`", () => {
+    render(
+      <Datepicker
+        defaultValue={new Date(2023, 0, 15)}
+        dateFormat={{ day: "2-digit", month: "2-digit", year: "numeric" }}
+      />,
+    );
+
+    expect(screen.getByDisplayValue("01/15/2023")).toBeInTheDocument();
+  });
+
+  it("should format the input value with the given `dateFormat` and `language`", () => {
+    render(
+      <Datepicker
+        defaultValue={new Date(2023, 0, 15)}
+        language="en-GB"
+        dateFormat={{ day: "2-digit", month: "2-digit", year: "numeric" }}
+      />,
+    );
+
+    expect(screen.getByDisplayValue("15/01/2023")).toBeInTheDocument();
+  });
+
   it("should update date when a different day is clicked", async () => {
     const todaysDayOfMonth = new Date().getDate();
     const anotherDay = todaysDayOfMonth === 1 ? 2 : 1;
