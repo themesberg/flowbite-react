@@ -127,23 +127,31 @@ export function getFormattedDate(language: string, date: Date, options?: Intl.Da
 
   const zonedDateFormatter = new Intl.DateTimeFormat("en-US", {
     timeZone: defaultOptions.timeZone,
+    era: "short",
     year: "numeric",
     month: "numeric",
     day: "numeric",
   });
 
-  // The date is a local calendar day at midnight. Anchor it to UTC noon so
-  // common zone offsets keep the same day, then correct the remaining offsets.
+  // The date is a local calendar day. Anchor its wall time at UTC so common
+  // zone offsets keep the same day, then correct the remaining offsets.
   let anchored = new Date(0);
   anchored.setUTCFullYear(date.getFullYear(), date.getMonth(), date.getDate());
-  anchored.setUTCHours(12, 0, 0, 0);
+  anchored.setUTCHours(date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+
+  if (Number.isNaN(anchored.getTime())) {
+    return formatter.format(date);
+  }
 
   for (let i = 0; i < 3; i++) {
-    const parts = new Map(zonedDateFormatter.formatToParts(anchored).map((part) => [part.type, Number(part.value)]));
+    const parts = new Map(zonedDateFormatter.formatToParts(anchored).map((part) => [part.type, part.value]));
+    const zonedYear = (parts.get("era") ?? "").startsWith("B")
+      ? 1 - Number(parts.get("year"))
+      : Number(parts.get("year"));
     const diff =
-      (parts.get("year") ?? 0) - date.getFullYear() ||
-      (parts.get("month") ?? 0) - (date.getMonth() + 1) ||
-      (parts.get("day") ?? 0) - date.getDate();
+      zonedYear - date.getFullYear() ||
+      Number(parts.get("month")) - (date.getMonth() + 1) ||
+      Number(parts.get("day")) - date.getDate();
 
     if (diff === 0) {
       return formatter.format(anchored);

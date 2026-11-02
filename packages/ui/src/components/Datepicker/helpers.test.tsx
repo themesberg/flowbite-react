@@ -201,6 +201,29 @@ describe("getFormattedDate", () => {
     });
     expect(formattedDate).toBe("1/15/5");
   });
+
+  it("keeps BCE dates on the selected calendar day when formatting in another timeZone", () => {
+    const date = new Date(0);
+    date.setFullYear(-1, 0, 15); // January 15th, 2 BC
+    const formattedDate = getFormattedDate("en-US", date, {
+      timeZone: "UTC",
+      day: "numeric",
+      month: "numeric",
+      year: "numeric",
+    });
+    expect(formattedDate).toBe("1/15/2");
+  });
+
+  it("keeps the time from the date when time fields are used with a timeZone", () => {
+    const date = new Date(2023, 0, 15, 14, 30);
+    const formattedDate = getFormattedDate("en-US", date, { timeZone: "UTC", hour: "numeric", minute: "numeric" });
+    expect(formattedDate).toBe("2:30 PM");
+  });
+
+  it("formats the maximum Date without throwing when a timeZone is set", () => {
+    const formattedDate = getFormattedDate("en-US", new Date(8.64e15), { timeZone: "UTC" });
+    expect(formattedDate).toBe("9/13/275760");
+  });
 });
 
 describe("startOfYearPeriod", () => {
