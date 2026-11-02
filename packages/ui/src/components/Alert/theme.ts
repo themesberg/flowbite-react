@@ -56,5 +56,9 @@ export const alertTheme = createTheme<AlertTheme>({
   },
   icon: "mr-3 inline h-5 w-5 shrink-0",
   rounded: "rounded-lg",
+  transition: {
+    base: "opacity-0 transition-opacity",
+    timing: "ease-out",
+  },
   wrapper: "flex items-center",
 });

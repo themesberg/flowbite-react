@@ -165,7 +165,10 @@ describe("Components / Alert", () => {
       });
 
       expect(onDismiss).toHaveBeenCalledTimes(1);
-      expect(onDismiss.mock.calls[0]?.[0]?.nativeEvent).toBe(nativeEvent);
+
+      const dismissEvent = onDismiss.mock.calls[0]?.[0];
+      expect(dismissEvent?.nativeEvent).toBe(nativeEvent);
+      expect(dismissEvent?.currentTarget).toBe(dismiss());
     });
 
     it("should use the custom `transition`, `timing` and `duration` props", async () => {
@@ -208,8 +211,23 @@ describe("Components / Alert", () => {
       await user.click(dismiss());
 
       expect(onDismiss).toHaveBeenCalledTimes(1);
+      expect(vi.getTimerCount()).toBe(0);
       expect(alert()).not.toHaveClass("opacity-0");
       expect(alert()).not.toHaveStyle({ transitionDuration: "300ms" });
+    });
+
+    it("should hide the alert from keyboard focus after the fade completes", async () => {
+      const user = userEvent.setup();
+      render(<Alert duration={200} onDismiss={vi.fn()} />);
+
+      await user.click(dismiss());
+      expect(alert()).not.toHaveStyle({ visibility: "hidden" });
+
+      act(() => {
+        vi.advanceTimersByTime(200);
+      });
+
+      expect(screen.getByRole("alert", { hidden: true })).toHaveStyle({ visibility: "hidden" });
     });
 
     it("should not reset the dismiss timeout when rerendered during the transition", async () => {
