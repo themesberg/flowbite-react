@@ -7,6 +7,7 @@ import { Datepicker } from "flowbite-react";
 export function Component() {
   return (
     <Datepicker
+      defaultValue={new Date(2026, 0, 15)}
       language="en-GB"
       dateFormat={{ day: "2-digit", month: "2-digit", year: "numeric" }}
     />
@@ -15,7 +16,13 @@ export function Component() {
 `;
 
 export function Component() {
-  return <Datepicker language="en-GB" dateFormat={{ day: "2-digit", month: "2-digit", year: "numeric" }} />;
+  return (
+    <Datepicker
+      defaultValue={new Date(2026, 0, 15)}
+      language="en-GB"
+      dateFormat={{ day: "2-digit", month: "2-digit", year: "numeric" }}
+    />
+  );
 }
 
 export const format: CodeData = {

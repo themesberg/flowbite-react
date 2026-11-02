@@ -170,6 +170,13 @@ describe("getFormattedDate", () => {
     const formattedDate = getFormattedDate("pt-BR", date);
     expect(formattedDate).toBe("15 de janeiro de 2023");
   });
+
+  it("keeps the selected calendar day when formatting in another timeZone", () => {
+    const date = new Date(2023, 0, 15); // January 15th, 2023
+    const options: Intl.DateTimeFormatOptions = { timeZone: "UTC", day: "2-digit", month: "2-digit", year: "numeric" };
+    const formattedDate = getFormattedDate("en", date, options);
+    expect(formattedDate).toBe("01/15/2023");
+  });
 });
 
 describe("startOfYearPeriod", () => {

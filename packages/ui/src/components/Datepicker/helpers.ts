@@ -119,7 +119,27 @@ export function getFormattedDate(language: string, date: Date, options?: Intl.Da
     defaultOptions = options;
   }
 
-  return new Intl.DateTimeFormat(language, defaultOptions).format(date);
+  const formatter = new Intl.DateTimeFormat(language, defaultOptions);
+
+  if (!defaultOptions.timeZone) {
+    return formatter.format(date);
+  }
+
+  // The date is a local calendar day at midnight. Anchor it to UTC noon so
+  // common zone offsets keep the same day, then correct the remaining offsets.
+  let anchored = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 12));
+
+  for (let i = 0; i < 3; i++) {
+    const zonedDay = Number(formatter.formatToParts(anchored).find((part) => part.type === "day")?.value);
+
+    if (zonedDay === date.getDate()) {
+      return formatter.format(anchored);
+    }
+
+    anchored = addDays(anchored, zonedDay > date.getDate() ? -1 : 1);
+  }
+
+  return formatter.format(anchored);
 }
 
 export function startOfYearPeriod(date: Date, years: number): number {
