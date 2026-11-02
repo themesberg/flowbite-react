@@ -1,8 +1,8 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiEye, HiHeart, HiInformationCircle } from "react-icons/hi";
-import { describe, expect, it, vi } from "vitest";
+import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { ThemeProvider } from "../../theme/provider";
 import type { CustomFlowbiteTheme } from "../../types";
 import type { AlertProps } from "./Alert";
@@ -124,25 +124,48 @@ describe("Components / Alert", () => {
   });
 
   describe("Dismiss transition", () => {
+    beforeAll(() => {
+      vi.useFakeTimers({ shouldAdvanceTime: true });
+    });
+
+    afterAll(() => {
+      vi.useRealTimers();
+    });
+
+    beforeEach(() => {
+      vi.clearAllTimers();
+    });
+
     it("should apply the default transition classes while dismissing", async () => {
       const user = userEvent.setup();
       render(<Alert onDismiss={vi.fn()} />);
 
       await user.click(dismiss());
 
-      expect(alert()).toHaveClass("transition-opacity", "duration-300", "ease-out", "opacity-0");
+      expect(alert()).toHaveClass("transition-opacity", "ease-out", "opacity-0");
+      expect(alert()).toHaveStyle({ transitionDuration: "300ms" });
     });
 
-    it("should fire `onDismiss` after the `duration` has elapsed", async () => {
+    it("should fire `onDismiss` with the clicked event after the `duration` has elapsed", async () => {
       const onDismiss = vi.fn();
       const user = userEvent.setup();
       render(<Alert duration={50} onDismiss={onDismiss} />);
+
+      let nativeEvent: MouseEvent | null = null;
+      dismiss().addEventListener("click", (event) => {
+        nativeEvent = event;
+      });
 
       await user.click(dismiss());
 
       expect(onDismiss).not.toHaveBeenCalled();
 
-      await waitFor(() => expect(onDismiss).toHaveBeenCalledTimes(1));
+      act(() => {
+        vi.advanceTimersByTime(50);
+      });
+
+      expect(onDismiss).toHaveBeenCalledTimes(1);
+      expect(onDismiss.mock.calls[0]?.[0]?.nativeEvent).toBe(nativeEvent);
     });
 
     it("should use the custom `transition`, `timing` and `duration` props", async () => {
@@ -151,7 +174,8 @@ describe("Components / Alert", () => {
 
       await user.click(dismiss());
 
-      expect(alert()).toHaveClass("transition-transform", "duration-1000", "ease-in", "opacity-0");
+      expect(alert()).toHaveClass("transition-transform", "ease-in", "opacity-0");
+      expect(alert()).toHaveStyle({ transitionDuration: "1000ms" });
     });
 
     it("should honour a custom `transition` theme", async () => {
@@ -159,7 +183,6 @@ describe("Components / Alert", () => {
         alert: {
           transition: {
             base: "transition-transform",
-            duration: "duration-700",
             timing: "ease-in-out",
           },
         },
@@ -173,7 +196,8 @@ describe("Components / Alert", () => {
 
       await user.click(dismiss());
 
-      expect(alert()).toHaveClass("transition-transform", "duration-700", "ease-in-out", "opacity-0");
+      expect(alert()).toHaveClass("transition-transform", "ease-in-out", "opacity-0");
+      expect(alert()).toHaveStyle({ transitionDuration: "300ms" });
     });
 
     it("should fire `onDismiss` immediately when `duration` is 0", async () => {
@@ -182,6 +206,39 @@ describe("Components / Alert", () => {
       render(<Alert duration={0} onDismiss={onDismiss} />);
 
       await user.click(dismiss());
+
+      expect(onDismiss).toHaveBeenCalledTimes(1);
+      expect(alert()).not.toHaveClass("opacity-0");
+      expect(alert()).not.toHaveStyle({ transitionDuration: "300ms" });
+    });
+
+    it("should not reset the dismiss timeout when rerendered during the transition", async () => {
+      const onDismiss = vi.fn();
+      const user = userEvent.setup();
+
+      function RerenderingAlert() {
+        const [, setTick] = useState(0);
+        useEffect(() => {
+          const intervalId = setInterval(() => setTick((tick) => tick + 1), 10);
+          return () => clearInterval(intervalId);
+        }, []);
+
+        return <Alert duration={100} onDismiss={() => onDismiss()} />;
+      }
+
+      render(<RerenderingAlert />);
+
+      await user.click(dismiss());
+
+      for (let tick = 0; tick < 9; tick++) {
+        act(() => {
+          vi.advanceTimersByTime(10);
+        });
+      }
+
+      act(() => {
+        vi.advanceTimersByTime(10);
+      });
 
       expect(onDismiss).toHaveBeenCalledTimes(1);
     });
@@ -206,7 +263,7 @@ describe("Components / Alert", () => {
   });
 
   describe("Props", () => {
-    it("should call `onDismiss` when clicked (after the dismiss transition)", async () => {
+    it("should call `onDismiss` when the dismiss button is clicked", async () => {
       const onDismiss = vi.fn();
       const user = userEvent.setup();
       render(<Alert duration={0} onDismiss={onDismiss} />);

@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, useEffect, useState, type ComponentProps, type FC, type ReactNode } from "react";
+import { forwardRef, useEffect, useRef, useState, type ComponentProps, type FC, type ReactNode } from "react";
 import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
@@ -29,7 +29,6 @@ export interface AlertCloseButtonTheme {
 
 export interface AlertTransitionTheme {
   base: string;
-  duration: string;
   timing: string;
 }
 
@@ -62,6 +61,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
     icon: Icon,
     onDismiss,
     rounded = true,
+    style,
     timing = "ease-out",
     transition = "transition-opacity",
     withBorderAccent,
@@ -69,19 +69,24 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   } = resolveProps(props, provider.props?.alert);
 
   const [isDismissing, setIsDismissing] = useState(false);
+  const dismissal = useRef<{
+    delay: number;
+    event: React.MouseEvent<HTMLButtonElement>;
+    onDismiss: AlertProps["onDismiss"];
+  } | null>(null);
 
   useEffect(() => {
-    if (!isDismissing) {
+    if (!isDismissing || !dismissal.current) {
       return;
     }
-    const timeoutId = setTimeout(() => {
-      onDismiss?.(new MouseEvent("click") as unknown as React.MouseEvent<HTMLButtonElement>);
-    }, duration);
+    const { delay, event, onDismiss } = dismissal.current;
+    const timeoutId = setTimeout(() => onDismiss?.(event), delay);
     return () => clearTimeout(timeoutId);
-  }, [isDismissing, duration, onDismiss]);
+  }, [isDismissing]);
 
   const handleDismissClick: ComponentProps<"button">["onClick"] = (event) => {
-    if (transition || duration > 0) {
+    if (duration > 0) {
+      dismissal.current = { delay: duration, event, onDismiss };
       setIsDismissing(true);
       return;
     }
@@ -96,19 +101,11 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
         theme.color[color],
         rounded && theme.rounded,
         withBorderAccent && theme.borderAccent,
-        isDismissing &&
-          twMerge(
-            transition,
-            `duration-${duration}`,
-            timing,
-            theme.transition?.base,
-            theme.transition?.duration,
-            theme.transition?.timing,
-            "opacity-0",
-          ),
+        isDismissing && twMerge(transition, timing, theme.transition?.base, theme.transition?.timing, "opacity-0"),
         className,
       )}
       role="alert"
+      style={isDismissing ? { ...style, transitionDuration: `${duration}ms` } : style}
       {...restProps}
     >
       <div className={theme.wrapper} data-testid="flowbite-alert-wrapper">
