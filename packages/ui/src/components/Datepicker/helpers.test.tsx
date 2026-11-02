@@ -177,6 +177,30 @@ describe("getFormattedDate", () => {
     const formattedDate = getFormattedDate("en", date, options);
     expect(formattedDate).toBe("01/15/2023");
   });
+
+  it("keeps the selected calendar day at month boundaries in far-ahead time zones", () => {
+    const date = new Date(2026, 0, 31); // January 31st, 2026
+    const options: Intl.DateTimeFormatOptions = {
+      timeZone: "Pacific/Kiritimati",
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    };
+    const formattedDate = getFormattedDate("en", date, options);
+    expect(formattedDate).toBe("01/31/2026");
+  });
+
+  it("keeps years 0-99 when formatting in another timeZone", () => {
+    const date = new Date(0);
+    date.setFullYear(5, 0, 15); // January 15th, year 5
+    const formattedDate = getFormattedDate("en-US", date, {
+      timeZone: "UTC",
+      day: "numeric",
+      month: "numeric",
+      year: "numeric",
+    });
+    expect(formattedDate).toBe("1/15/5");
+  });
 });
 
 describe("startOfYearPeriod", () => {

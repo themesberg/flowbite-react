@@ -125,18 +125,31 @@ export function getFormattedDate(language: string, date: Date, options?: Intl.Da
     return formatter.format(date);
   }
 
+  const zonedDateFormatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: defaultOptions.timeZone,
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
+
   // The date is a local calendar day at midnight. Anchor it to UTC noon so
   // common zone offsets keep the same day, then correct the remaining offsets.
-  let anchored = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 12));
+  let anchored = new Date(0);
+  anchored.setUTCFullYear(date.getFullYear(), date.getMonth(), date.getDate());
+  anchored.setUTCHours(12, 0, 0, 0);
 
   for (let i = 0; i < 3; i++) {
-    const zonedDay = Number(formatter.formatToParts(anchored).find((part) => part.type === "day")?.value);
+    const parts = new Map(zonedDateFormatter.formatToParts(anchored).map((part) => [part.type, Number(part.value)]));
+    const diff =
+      (parts.get("year") ?? 0) - date.getFullYear() ||
+      (parts.get("month") ?? 0) - (date.getMonth() + 1) ||
+      (parts.get("day") ?? 0) - date.getDate();
 
-    if (zonedDay === date.getDate()) {
+    if (diff === 0) {
       return formatter.format(anchored);
     }
 
-    anchored = addDays(anchored, zonedDay > date.getDate() ? -1 : 1);
+    anchored = addDays(anchored, diff > 0 ? -1 : 1);
   }
 
   return formatter.format(anchored);
