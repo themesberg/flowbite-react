@@ -220,9 +220,21 @@ describe("getFormattedDate", () => {
     expect(formattedDate).toBe("2:30 PM");
   });
 
+  it("shows the selected wall time in the requested timeZone", () => {
+    const date = new Date(2023, 0, 15, 14, 30);
+    const formattedDate = getFormattedDate("en-US", date, {
+      timeZone: "America/New_York",
+      hour: "numeric",
+      minute: "numeric",
+    });
+    expect(formattedDate).toBe("2:30 PM");
+  });
+
   it("formats the maximum Date without throwing when a timeZone is set", () => {
-    const formattedDate = getFormattedDate("en-US", new Date(8.64e15), { timeZone: "UTC" });
-    expect(formattedDate).toBe("9/13/275760");
+    const date = new Date(8.64e15);
+    const expected = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+    const formattedDate = getFormattedDate("en-US", date, { timeZone: "UTC" });
+    expect(formattedDate).toBe(expected);
   });
 });
 

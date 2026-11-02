@@ -131,15 +131,22 @@ export function getFormattedDate(language: string, date: Date, options?: Intl.Da
     year: "numeric",
     month: "numeric",
     day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: false,
   });
 
-  // The date is a local calendar day. Anchor its wall time at UTC so common
-  // zone offsets keep the same day, then correct the remaining offsets.
+  // The date is a local wall clock. Anchor the same wall time at UTC so most
+  // zone offsets keep the selected calendar day, then correct the remaining
+  // offsets by shifting the instant until the zoned wall clock matches.
   let anchored = new Date(0);
   anchored.setUTCFullYear(date.getFullYear(), date.getMonth(), date.getDate());
   anchored.setUTCHours(date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
 
   if (Number.isNaN(anchored.getTime())) {
+    // Only reachable near the maximum Date, where the instant cannot represent
+    // the local day in every zone; format the date as-is.
     return formatter.format(date);
   }
 
@@ -148,16 +155,20 @@ export function getFormattedDate(language: string, date: Date, options?: Intl.Da
     const zonedYear = (parts.get("era") ?? "").startsWith("B")
       ? 1 - Number(parts.get("year"))
       : Number(parts.get("year"));
-    const diff =
-      zonedYear - date.getFullYear() ||
-      Number(parts.get("month")) - (date.getMonth() + 1) ||
-      Number(parts.get("day")) - date.getDate();
+    const zonedWall = new Date(0);
+    zonedWall.setUTCFullYear(zonedYear, Number(parts.get("month")) - 1, Number(parts.get("day")));
+    zonedWall.setUTCHours(Number(parts.get("hour")) % 24, Number(parts.get("minute")), Number(parts.get("second")), 0);
+    const targetWall = new Date(0);
+    targetWall.setUTCFullYear(date.getFullYear(), date.getMonth(), date.getDate());
+    targetWall.setUTCHours(date.getHours(), date.getMinutes(), date.getSeconds(), 0);
+
+    const diff = zonedWall.getTime() - targetWall.getTime();
 
     if (diff === 0) {
       return formatter.format(anchored);
     }
 
-    anchored = addDays(anchored, diff > 0 ? -1 : 1);
+    anchored = new Date(anchored.getTime() - diff);
   }
 
   return formatter.format(anchored);
