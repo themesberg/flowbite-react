@@ -102,6 +102,7 @@ export interface DatepickerProps
   minDate?: Date;
   maxDate?: Date;
   filterDate?: (date: Date, view: Views) => boolean;
+  dateFormat?: Intl.DateTimeFormatOptions;
   language?: string;
   weekStart?: WeekStart;
   onChange?: (date: Date | null) => void;
@@ -130,6 +131,7 @@ export const Datepicker = forwardRef<DatepickerRef, DatepickerProps>((props, ref
     minDate,
     maxDate,
     filterDate,
+    dateFormat,
     language = "en",
     weekStart = WeekStart.Sunday,
     className,
@@ -271,7 +273,7 @@ export const Datepicker = forwardRef<DatepickerRef, DatepickerProps>((props, ref
     }
   }, [value, setSelectedDate, setViewDate, selectedDate]);
 
-  const displayValue = value === null ? label : getFormattedDate(language, selectedDate || new Date());
+  const displayValue = value === null ? label : getFormattedDate(language, selectedDate || new Date(), dateFormat);
 
   return (
     <DatepickerContext.Provider
@@ -306,7 +308,7 @@ export const Datepicker = forwardRef<DatepickerRef, DatepickerProps>((props, ref
               setIsOpen(true);
             }}
             value={displayValue}
-            defaultValue={initialDate ? getFormattedDate(language, initialDate) : label}
+            defaultValue={initialDate ? getFormattedDate(language, initialDate, dateFormat) : label}
             readOnly
             {...restProps}
           />
