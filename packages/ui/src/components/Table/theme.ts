@@ -21,7 +21,7 @@ export const tableTheme = createTheme<TableTheme>({
   },
   row: {
     base: "group/row",
-    hovered: "hover:bg-gray-50 dark:hover:bg-gray-600",
+    hovered: "hover:bg-gray-100 dark:hover:bg-gray-600",
     striped: "odd:bg-white even:bg-gray-50 odd:dark:bg-gray-800 even:dark:bg-gray-700",
   },
 });
