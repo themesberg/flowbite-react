@@ -28,7 +28,17 @@ describe("Components / Table", () => {
 
     const rows = screen.getAllByTestId("table-row-element");
 
-    expect(rows[0].className).toContain("hover:bg-gray-50 dark:hover:bg-gray-600");
+    expect(rows[0].className).toContain("hover:bg-gray-100 dark:hover:bg-gray-600");
+  });
+
+  it("should use a hover color that differs from the striped row colors", () => {
+    render(<TestTable striped hoverable />);
+
+    const rows = screen.getAllByTestId("table-row-element");
+
+    expect(rows[0].className).toContain("even:bg-gray-50");
+    expect(rows[0].className).toContain("hover:bg-gray-100");
+    expect(rows[0].className).not.toContain("hover:bg-gray-50");
   });
 });
 
