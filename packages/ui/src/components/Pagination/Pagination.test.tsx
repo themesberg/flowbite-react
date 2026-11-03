@@ -205,6 +205,96 @@ describe("Pagination", () => {
       );
     });
 
+    describe("getPageUrl", () => {
+      it("should render anchor elements when getPageUrl is provided", () => {
+        render(
+          <Pagination
+            currentPage={2}
+            onPageChange={() => undefined}
+            totalPages={5}
+            getPageUrl={(page) => `/blog?page=${page}`}
+          />,
+        );
+
+        const links = screen.getAllByRole("link");
+        expect(links.length).toBeGreaterThan(0);
+      });
+
+      it("should set correct href on page links", () => {
+        render(
+          <Pagination
+            currentPage={2}
+            onPageChange={() => undefined}
+            totalPages={5}
+            getPageUrl={(page) => `/blog?page=${page}`}
+          />,
+        );
+
+        const links = screen.getAllByRole("link");
+        const hrefs = links.map((link) => link.getAttribute("href"));
+
+        expect(hrefs).toContain("/blog?page=1");
+        expect(hrefs).toContain("/blog?page=3");
+      });
+
+      it("should not render previous as link on first page", () => {
+        render(
+          <Pagination
+            currentPage={1}
+            onPageChange={() => undefined}
+            totalPages={5}
+            getPageUrl={(page) => `/blog?page=${page}`}
+          />,
+        );
+
+        const prevButton = previousButton();
+        expect(prevButton.tagName).toBe("BUTTON");
+        expect(prevButton).toBeDisabled();
+      });
+
+      it("should not render next as link on last page", () => {
+        render(
+          <Pagination
+            currentPage={5}
+            onPageChange={() => undefined}
+            totalPages={5}
+            getPageUrl={(page) => `/blog?page=${page}`}
+          />,
+        );
+
+        const nextBtn = nextButton();
+        expect(nextBtn.tagName).toBe("BUTTON");
+        expect(nextBtn).toBeDisabled();
+      });
+
+      it("should render previous and next as links on middle pages", () => {
+        render(
+          <Pagination
+            currentPage={3}
+            onPageChange={() => undefined}
+            totalPages={5}
+            getPageUrl={(page) => `/blog?page=${page}`}
+          />,
+        );
+
+        const links = screen.getAllByRole("link");
+        const hrefs = links.map((link) => link.getAttribute("href"));
+
+        expect(hrefs).toContain("/blog?page=2");
+        expect(hrefs).toContain("/blog?page=4");
+      });
+
+      it("should render buttons when getPageUrl is not provided", () => {
+        render(<Pagination currentPage={2} onPageChange={() => undefined} totalPages={5} />);
+
+        const links = screen.queryAllByRole("link");
+        expect(links).toHaveLength(0);
+
+        const btns = screen.getAllByRole("button");
+        expect(btns.length).toBeGreaterThan(0);
+      });
+    });
+
     it("should throw an error if totalPages is not a positive integer", () => {
       expect(() => render(<Pagination currentPage={1} onPageChange={() => undefined} totalPages={-1} />)).toThrow(
         "Invalid props: totalPages must be a positive integer",
