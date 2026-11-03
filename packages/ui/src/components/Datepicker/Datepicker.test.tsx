@@ -93,6 +93,39 @@ describe("Components / Datepicker", () => {
     expect(titleButton.textContent).toBe("1990 - 2100");
   });
 
+  it("should show the clicked decade after paging back in the decades view", async () => {
+    const testDate = new Date(2024, 6, 20);
+    render(<Datepicker defaultValue={testDate} />);
+
+    await userEvent.click(screen.getByRole("textbox"));
+
+    const titleButton = screen.getByText("July 2024");
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    expect(titleButton.textContent).toBe("1990 - 2100");
+
+    await userEvent.click(titleButton.previousElementSibling as HTMLElement);
+    expect(titleButton.textContent).toBe("1890 - 2000");
+
+    await userEvent.click(screen.getByText("1990"));
+    expect(titleButton.textContent).toBe("1990 - 2001");
+  });
+
+  it("should show the clicked decade when no date is selected", async () => {
+    render(<Datepicker />);
+
+    await userEvent.click(screen.getByRole("textbox"));
+
+    const titleButton = screen.getByText(getFormattedDate("en", new Date(), { month: "long", year: "numeric" }));
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+    await userEvent.click(titleButton);
+
+    await userEvent.click(screen.getByText("1990"));
+    expect(titleButton.textContent).toBe("1990 - 2001");
+  });
+
   it("should allow selecting earlier decades when setting max date", async () => {
     const testDate = new Date(2024, 6, 20);
     render(<Datepicker defaultValue={testDate} maxDate={testDate} />);
