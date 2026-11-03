@@ -57,7 +57,7 @@ export function DatepickerViewsDecades() {
             onClick={() => {
               if (isDisabled) return;
 
-              selectedDate && setViewDate(addYears(viewDate, year - selectedDate.getFullYear()));
+              setViewDate(newDate);
               setView(Views.Years);
             }}
           >
