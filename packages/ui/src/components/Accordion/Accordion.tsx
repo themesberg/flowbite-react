@@ -27,6 +27,10 @@ export interface AccordionRootTheme {
 
 export interface AccordionProps extends ComponentProps<"div">, ThemingProps<AccordionRootTheme> {
   alwaysOpen?: boolean;
+  /** Enable smooth open/close animation for panel content. */
+  animate?: boolean;
+  /** Duration of the open/close animation in milliseconds. Only used when `animate` is true. Defaults to 300. */
+  animationDuration?: number;
   arrowIcon?: FC<ComponentProps<"svg">>;
   children: ReactElement<AccordionPanelProps> | ReactElement<AccordionPanelProps>[];
   flush?: boolean;
@@ -43,6 +47,8 @@ export function Accordion(props: AccordionProps) {
 
   const {
     alwaysOpen = false,
+    animate = false,
+    animationDuration = 300,
     arrowIcon = ChevronDownIcon,
     children,
     flush = false,
@@ -58,13 +64,15 @@ export function Accordion(props: AccordionProps) {
       Children.map(children, (child, i) =>
         cloneElement(child, {
           alwaysOpen,
+          animate,
+          animationDuration,
           arrowIcon,
           flush,
           isOpen: isOpen === i,
           setOpen: () => setOpen(isOpen === i ? -1 : i),
         }),
       ),
-    [alwaysOpen, arrowIcon, children, flush, isOpen],
+    [alwaysOpen, animate, animationDuration, arrowIcon, children, flush, isOpen],
   );
 
   return (

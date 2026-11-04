@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentProps } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
@@ -17,7 +18,28 @@ export interface AccordionContentTheme {
 export interface AccordionContentProps extends ComponentProps<"div">, ThemingProps<AccordionContentTheme> {}
 
 export function AccordionContent(props: AccordionContentProps) {
-  const { isOpen } = useAccordionContext();
+  const { isOpen, animate = false, animationDuration = 300 } = useAccordionContext();
+  const contentRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState<number>(0);
+
+  useLayoutEffect(() => {
+    if (!animate || !isOpen) return;
+    const el = contentRef.current;
+    if (el) setHeight(el.scrollHeight);
+  }, [animate, isOpen]);
+
+  /** When closed, set inert on the wrapper so descendants are not focusable. */
+  useLayoutEffect(() => {
+    if (!animate) return;
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+    if (isOpen) {
+      wrapper.removeAttribute("inert");
+    } else {
+      wrapper.setAttribute("inert", "");
+    }
+  }, [animate, isOpen]);
 
   const provider = useThemeProvider();
   const theme = useResolveTheme(
@@ -28,13 +50,31 @@ export function AccordionContent(props: AccordionContentProps) {
 
   const { className, ...restProps } = resolveProps(props, provider.props?.accordionContent);
 
-  return (
+  const handleTransitionEnd = () => {
+    if (!isOpen) setHeight(0);
+  };
+
+  return !animate ? (
     <div
       className={twMerge(theme.base, className)}
       data-testid="flowbite-accordion-content"
       hidden={!isOpen}
       {...restProps}
     />
+  ) : (
+    <div
+      ref={wrapperRef}
+      data-testid="flowbite-accordion-content"
+      aria-hidden={!isOpen}
+      style={{
+        overflow: "hidden",
+        maxHeight: isOpen ? height : 0,
+        transition: `max-height ${animationDuration}ms ease-out`,
+      }}
+      onTransitionEnd={handleTransitionEnd}
+    >
+      <div ref={contentRef} className={twMerge(theme.base, className)} {...restProps} />
+    </div>
   );
 }
 

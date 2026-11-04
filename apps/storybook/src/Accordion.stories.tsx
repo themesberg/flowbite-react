@@ -100,3 +100,10 @@ WithArrowIcon.storyName = "With arrow icon";
 WithArrowIcon.args = {
   arrowIcon: HiOutlineArrowCircleDown,
 };
+
+export const WithAnimation = Template.bind({});
+WithAnimation.storyName = "With animation";
+WithAnimation.args = {
+  animate: true,
+  animationDuration: 300,
+};
