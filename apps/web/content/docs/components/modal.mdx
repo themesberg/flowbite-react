@@ -19,7 +19,7 @@ Use the `<Modal>` React component to show a dialog element to the user with a he
 
 The visibility of the component can be set by passing a boolean value to the `show` prop on the `<Modal>` component and we recommend you to do this via the React state.
 
-Using a `openModal` and `setOpenModal` state for the main React component should allow you to easily manage the state of the Modal component and use inline functions on event listeners such as `onClick` or `onClose`.
+Using a `openModal` and `setOpenModal` state for the main React component should allow you to easily manage the state of the Modal component and use inline functions on event listeners such as `onClick` or `onClose`. When you pass the `onClose` prop, the header close (X) button is shown and calls `onClose` when clicked.
 
 <Example name="modal.root" />
 

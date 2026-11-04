@@ -26,10 +26,23 @@ describe("Components / Modal", () => {
     expect(modal).not.toBeInTheDocument();
   });
 
-  it("should not render close button when modal is not dismissible", async () => {
+  it("should not close on backdrop press when dismissible but onClose is not provided", async () => {
     const user = userEvent.setup();
 
-    render(<TestModal />);
+    render(<TestModalWithoutOnClose dismissible />);
+
+    await user.click(triggerButton());
+    const modal = dialog();
+    expect(modal).toBeInTheDocument();
+
+    await user.click(dialogOverlay());
+    expect(modal).toBeInTheDocument();
+  });
+
+  it("should not render close button when onClose is not provided", async () => {
+    const user = userEvent.setup();
+
+    render(<TestModalWithoutOnClose />);
 
     await user.click(triggerButton());
 
@@ -40,10 +53,10 @@ describe("Components / Modal", () => {
     expect(closeButton).not.toBeInTheDocument();
   });
 
-  it("should render close button when modal is dismissible", async () => {
+  it("should render close button when onClose is provided", async () => {
     const user = userEvent.setup();
 
-    render(<TestModal dismissible />);
+    render(<TestModal />);
 
     await user.click(triggerButton());
 
@@ -110,7 +123,7 @@ describe("Components / Modal", () => {
     it("should close `Modal` when `Space` is pressed on any of its buttons", async () => {
       const user = userEvent.setup();
 
-      render(<TestModal dismissible />);
+      render(<TestModal />);
 
       const openButton = triggerButton();
 
@@ -145,7 +158,7 @@ describe("Components / Modal", () => {
       const user = userEvent.setup();
       const inputRef = createRef<HTMLInputElement>();
 
-      render(<TestModal dismissible inputRef={inputRef} />);
+      render(<TestModal inputRef={inputRef} />);
 
       await user.click(triggerButton());
       const modal = dialog();
@@ -214,6 +227,25 @@ const TestModal = ({
             Decline
           </Button>
         </ModalFooter>
+      </Modal>
+    </>
+  );
+};
+
+const TestModalWithoutOnClose = ({
+  root,
+  dismissible = false,
+}: Pick<ModalProps, "root" | "dismissible">): JSX.Element => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Toggle modal</Button>
+      <Modal root={root} show={open} dismissible={dismissible}>
+        <ModalHeader id="test-dialog-header">Terms of Service</ModalHeader>
+        <ModalBody>
+          <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">Modal without onClose</p>
+        </ModalBody>
       </Modal>
     </>
   );
