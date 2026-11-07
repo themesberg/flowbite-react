@@ -124,6 +124,66 @@ describe("Props", () => {
 
     expect(asItem.tagName.toLocaleLowerCase()).toEqual("h3");
   });
+
+  it("should display the first letter of nested text in a `SidebarItem` without `icon` when `collapsed={true}`", () => {
+    render(
+      <Sidebar collapsed>
+        <SidebarItems>
+          <SidebarItemGroup>
+            <SidebarItem href="#">
+              <span>settings</span>
+            </SidebarItem>
+          </SidebarItemGroup>
+        </SidebarItems>
+      </Sidebar>,
+    );
+
+    expect(screen.getByText("S")).toBeInTheDocument();
+  });
+
+  it("should keep a leading emoji whole in a `SidebarItem` without `icon` when `collapsed={true}`", () => {
+    render(
+      <Sidebar collapsed>
+        <SidebarItems>
+          <SidebarItemGroup>
+            <SidebarItem href="#">😀 Status</SidebarItem>
+          </SidebarItemGroup>
+        </SidebarItems>
+      </Sidebar>,
+    );
+
+    expect(screen.getByText("😀")).toBeInTheDocument();
+  });
+
+  it("should keep a leading multi-code-point emoji whole in a `SidebarItem` without `icon` when `collapsed={true}`", () => {
+    render(
+      <Sidebar collapsed>
+        <SidebarItems>
+          <SidebarItemGroup>
+            <SidebarItem href="#">🇸🇦 Region</SidebarItem>
+          </SidebarItemGroup>
+        </SidebarItems>
+      </Sidebar>,
+    );
+
+    expect(screen.getByText("🇸🇦")).toBeInTheDocument();
+  });
+
+  it("should display `?` in a `SidebarItem` without `icon` or text when `collapsed={true}`", () => {
+    render(
+      <Sidebar collapsed>
+        <SidebarItems>
+          <SidebarItemGroup>
+            <SidebarItem href="#">
+              <img src="favicon.svg" alt="" />
+            </SidebarItem>
+          </SidebarItemGroup>
+        </SidebarItems>
+      </Sidebar>,
+    );
+
+    expect(screen.getByText("?")).toBeInTheDocument();
+  });
 });
 
 describe("Theme", () => {

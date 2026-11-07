@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from "react";
-import { forwardRef, useId } from "react";
+import { forwardRef, isValidElement, useId } from "react";
 import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
@@ -88,9 +88,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>((props, ref) =>
             className={twMerge(theme.icon.base, isActive && theme.icon.active)}
           />
         )}
-        {isCollapsed && !Icon && (
-          <span className={theme.collapsed.noIcon}>{(children as string).charAt(0).toLocaleUpperCase() ?? "?"}</span>
-        )}
+        {isCollapsed && !Icon && <span className={theme.collapsed.noIcon}>{getInitial(getTextContent(children))}</span>}
         {!isCollapsed && (
           <Children id={id} theme={theme}>
             {children}
@@ -157,3 +155,25 @@ function Children({ id, theme, children }: PropsWithChildren<{ id: string; theme
 }
 
 ListItem.displayName = "SidebarItem.Children";
+
+function getTextContent(node: ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") {
+    return String(node);
+  }
+
+  if (Array.isArray(node)) {
+    return node.map(getTextContent).join("");
+  }
+
+  if (isValidElement<{ children?: ReactNode }>(node)) {
+    return getTextContent(node.props.children);
+  }
+
+  return "";
+}
+
+function getInitial(text: string): string {
+  const [first] = new Intl.Segmenter().segment(text.trim());
+
+  return first ? first.segment.toLocaleUpperCase() : "?";
+}
