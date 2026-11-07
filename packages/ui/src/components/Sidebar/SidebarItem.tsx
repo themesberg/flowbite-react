@@ -88,11 +88,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>((props, ref) =>
             className={twMerge(theme.icon.base, isActive && theme.icon.active)}
           />
         )}
-        {isCollapsed && !Icon && (
-          <span className={theme.collapsed.noIcon}>
-            {(Array.from(getTextContent(children).trim())[0] ?? "?").toLocaleUpperCase()}
-          </span>
-        )}
+        {isCollapsed && !Icon && <span className={theme.collapsed.noIcon}>{getInitial(getTextContent(children))}</span>}
         {!isCollapsed && (
           <Children id={id} theme={theme}>
             {children}
@@ -174,4 +170,10 @@ function getTextContent(node: ReactNode): string {
   }
 
   return "";
+}
+
+function getInitial(text: string): string {
+  const [first] = new Intl.Segmenter().segment(text.trim());
+
+  return first ? first.segment.toLocaleUpperCase() : "?";
 }
