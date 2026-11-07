@@ -1,7 +1,7 @@
 "use client";
 
 import type { ComponentProps, ElementType, FC, PropsWithChildren, ReactNode } from "react";
-import { forwardRef, useId } from "react";
+import { forwardRef, isValidElement, useId } from "react";
 import { get } from "../../helpers/get";
 import { resolveProps } from "../../helpers/resolve-props";
 import { useResolveTheme } from "../../helpers/resolve-theme";
@@ -89,7 +89,9 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>((props, ref) =>
           />
         )}
         {isCollapsed && !Icon && (
-          <span className={theme.collapsed.noIcon}>{(children as string).charAt(0).toLocaleUpperCase() ?? "?"}</span>
+          <span className={theme.collapsed.noIcon}>
+            {getTextContent(children).trim().charAt(0).toLocaleUpperCase() || "?"}
+          </span>
         )}
         {!isCollapsed && (
           <Children id={id} theme={theme}>
@@ -157,3 +159,19 @@ function Children({ id, theme, children }: PropsWithChildren<{ id: string; theme
 }
 
 ListItem.displayName = "SidebarItem.Children";
+
+function getTextContent(node: ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") {
+    return String(node);
+  }
+
+  if (Array.isArray(node)) {
+    return node.map(getTextContent).join("");
+  }
+
+  if (isValidElement<{ children?: ReactNode }>(node)) {
+    return getTextContent(node.props.children);
+  }
+
+  return "";
+}
