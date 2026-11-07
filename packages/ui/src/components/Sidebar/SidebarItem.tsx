@@ -90,7 +90,7 @@ export const SidebarItem = forwardRef<Element, SidebarItemProps>((props, ref) =>
         )}
         {isCollapsed && !Icon && (
           <span className={theme.collapsed.noIcon}>
-            {getTextContent(children).trim().charAt(0).toLocaleUpperCase() || "?"}
+            {(Array.from(getTextContent(children).trim())[0] ?? "?").toLocaleUpperCase()}
           </span>
         )}
         {!isCollapsed && (

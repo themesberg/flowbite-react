@@ -141,6 +141,20 @@ describe("Props", () => {
     expect(screen.getByText("S")).toBeInTheDocument();
   });
 
+  it("should keep a leading emoji whole in a `SidebarItem` without `icon` when `collapsed={true}`", () => {
+    render(
+      <Sidebar collapsed>
+        <SidebarItems>
+          <SidebarItemGroup>
+            <SidebarItem href="#">😀 Status</SidebarItem>
+          </SidebarItemGroup>
+        </SidebarItems>
+      </Sidebar>,
+    );
+
+    expect(screen.getByText("😀")).toBeInTheDocument();
+  });
+
   it("should display `?` in a `SidebarItem` without `icon` or text when `collapsed={true}`", () => {
     render(
       <Sidebar collapsed>
