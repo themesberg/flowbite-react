@@ -171,6 +171,7 @@ export function Dropdown(props: DropdownProps) {
     activeIndex,
     selectedIndex,
     onNavigate: setActiveIndex,
+    enabled: !buttonProps.disabled,
   });
 
   const typeahead = useTypeahead(context, {
@@ -178,13 +179,20 @@ export function Dropdown(props: DropdownProps) {
     activeIndex,
     selectedIndex,
     onMatch: handleTypeaheadMatch,
-    enabled: enableTypeAhead,
+    enabled: enableTypeAhead && !buttonProps.disabled,
   });
+
+  useEffect(() => {
+    if (buttonProps.disabled) {
+      setOpen(false);
+      setActiveIndex(null);
+    }
+  }, [buttonProps.disabled]);
 
   const { getReferenceProps, getFloatingProps, getItemProps } = useFloatingInteractions({
     context,
     role: "menu",
-    trigger,
+    trigger: buttonProps.disabled ? undefined : trigger,
     interactions: [listNav, typeahead],
   });
 
