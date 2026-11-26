@@ -44,6 +44,35 @@ describe("Components / Dropdown", () => {
       await act(() => user.hover(button()));
       expect(dropdown()).not.toBeInTheDocument();
     });
+
+    it("should not open when a custom trigger is disabled", async () => {
+      const user = userEvent.setup();
+      render(<TestDropdown disabled renderTrigger={() => <span>Custom trigger</span>} />);
+
+      await act(() => user.click(screen.getByText("Custom trigger")));
+
+      expect(dropdown()).not.toBeInTheDocument();
+    });
+
+    it("should not open on hover when a custom trigger is disabled", async () => {
+      const user = userEvent.setup();
+      render(<TestDropdown disabled trigger="hover" renderTrigger={() => <span>Custom trigger</span>} />);
+
+      await act(() => user.hover(screen.getByText("Custom trigger")));
+
+      expect(dropdown()).not.toBeInTheDocument();
+    });
+
+    it("should not open from the keyboard when a custom trigger is disabled", async () => {
+      const user = userEvent.setup();
+      render(<TestDropdown disabled renderTrigger={() => <span tabIndex={0}>Custom trigger</span>} />);
+      const trigger = screen.getByText("Custom trigger");
+
+      await act(() => user.tab());
+      await act(() => fireEvent.keyDown(trigger, { key: "ArrowDown", code: "ArrowDown" }));
+
+      expect(dropdown()).not.toBeInTheDocument();
+    });
   });
 
   describe("Keyboard interactions", () => {

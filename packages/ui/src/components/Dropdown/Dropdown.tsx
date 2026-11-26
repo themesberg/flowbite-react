@@ -184,8 +184,8 @@ export function Dropdown(props: DropdownProps) {
   const { getReferenceProps, getFloatingProps, getItemProps } = useFloatingInteractions({
     context,
     role: "menu",
-    trigger,
-    interactions: [listNav, typeahead],
+    trigger: buttonProps.disabled ? undefined : trigger,
+    interactions: buttonProps.disabled ? [] : [listNav, typeahead],
   });
 
   const Icon = useMemo(() => {
